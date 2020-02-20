@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "coke_oven_bricks": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_coke_oven_bricks"
+        }
+      },
+      "tungstensteel_gearbox_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/gearbox/machine_casing_gearbox_tungstensteel"
+        }
+      },
+      "chemically_inert_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_chemically_inert"
+        }
+      },
+      "large_assembler_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_large_assembler"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "red_steel_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_red_steel"
+        }
+      },
+      "red_steel": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_red_steel"
+        }
+      },
+      "potin_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_potin"
+        }
+      },
+      "potin": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_potin"
+        }
+      },
+      "tumbaga_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tumbaga"
+        }
+      },
+      "tumbaga": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tumbaga"
+        }
+      },
+      "stellite_talonite_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_stellite_talonite"
+        }
+      },
+      "stellite_talonite": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_stellite_talonite"
+        }
+      },
+      "staballoy_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_staballoy"
+        }
+      },
+      "staballoy": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_staballoy"
+        }
+      },
+      "eglin_steel_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_eglin_steel"
+        }
+      },
+      "eglin_steel": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_eglin_steel"
+        }
+      },
+      "grisium_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_grisium"
+        }
+      },
+      "grisium": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_grisium"
+        }
+      },
+      "maraging_steel_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_maraging_steel"
+        }
+      },
+      "maraging_steel": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_maraging_steel"
+        }
+      },
+      "inconel_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_inconel"
+        }
+      },
+      "inconel": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_inconel"
+        }
+      },
+      "hastelloy_n_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_hastelloy_n"
+        }
+      },
+      "hastelloy_n": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_hastelloy_n"
+        }
+      }
+    }
+  }
+}

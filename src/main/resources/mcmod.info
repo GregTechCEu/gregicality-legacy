@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gtadditions",
+  "name": "Gregic Additions Rework",
+  "description": "The big spook takes your lunch money.  Who reads these?",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Shadows_of_Fire", "TheEmosewaPixel","Bartz24", "rhuneau"],
+  "credits": "The creators of GTCE, GT5U and most importantly, GregoriusT.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["gregtech"]
+}
+]
