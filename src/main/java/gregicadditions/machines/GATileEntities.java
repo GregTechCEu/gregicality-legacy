@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.GregicAdditions;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.multi.advance.TileEntityVolcanus;
+import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
@@ -16,7 +17,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
-import gregicadditions.machines.multi.advance.MetaTileEntityCrackingUnit;
+import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import net.minecraft.util.ResourceLocation;
 
 public class GATileEntities {
@@ -65,6 +66,7 @@ public class GATileEntities {
 	public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
 	public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
 
+	//multiblock
 	public static TileEntityAssemblyLine ASSEMBLY_LINE;
 	public static TileEntityProcessingArray PROCESSING_ARRAY;
 	public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
@@ -82,7 +84,19 @@ public class GATileEntities {
 	public static TileEntityLargeExtruder LARGE_EXTRUDER;
 	public static TileEntityVolcanus VOLCANUS;
 	public static TileEntityLargeAssembler LARGE_ASSEMBLER;
+
+	//override from GTCE
+	public static MetaTileEntityElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
+	public static MetaTileEntityVacuumFreezer VACUUM_FREEZER;
+	public static MetaTileEntityImplosionCompressor IMPLOSION_COMPRESSOR;
+	public static MetaTileEntityDistillationTower DISTILLATION_TOWER;
 	public static MetaTileEntityCrackingUnit CRACKER;
+	public static MetaTileEntityMultiFurnace MULTI_FURNACE;
+	public static MetaTileEntityDieselEngine DIESEL_ENGINE;
+
+	public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
+	public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
+	public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
 
 	public static TileEntityDrum WOODEN_DRUM;
 	public static TileEntityDrum BRONZE_DRUM;
@@ -450,8 +464,27 @@ public class GATileEntities {
 		VOLCANUS = GregTechAPI.registerMetaTileEntity(2532, new TileEntityVolcanus(location("volcanus")));
 		LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeAssembler(location("large_assembler")));
 
-		MetaTileEntities.CRACKER = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityCrackingUnit(gregtechId("cracker")));
+		MetaTileEntities.ELECTRIC_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityElectricBlastFurnace(gregtechId("electric_blast_furnace")));
+		ELECTRIC_BLAST_FURNACE = (MetaTileEntityElectricBlastFurnace) MetaTileEntities.ELECTRIC_BLAST_FURNACE;
+		MetaTileEntities.VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(2535, new MetaTileEntityVacuumFreezer(gregtechId("vacuum_freezer")));
+		VACUUM_FREEZER = (MetaTileEntityVacuumFreezer) MetaTileEntities.VACUUM_FREEZER;
+		MetaTileEntities.IMPLOSION_COMPRESSOR = GregTechAPI.registerMetaTileEntity(2536, new MetaTileEntityImplosionCompressor(gregtechId("implosion_compressor")));
+		IMPLOSION_COMPRESSOR = (MetaTileEntityImplosionCompressor) MetaTileEntities.IMPLOSION_COMPRESSOR;
+		MetaTileEntities.DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2537, new MetaTileEntityDistillationTower(gregtechId("distillation_tower")));
+		DISTILLATION_TOWER = (MetaTileEntityDistillationTower) MetaTileEntities.DISTILLATION_TOWER;
+		MetaTileEntities.CRACKER = GregTechAPI.registerMetaTileEntity(2538, new MetaTileEntityCrackingUnit(gregtechId("cracker")));
 		CRACKER = (MetaTileEntityCrackingUnit) MetaTileEntities.CRACKER;
+		MetaTileEntities.MULTI_FURNACE = GregTechAPI.registerMetaTileEntity(2539, new MetaTileEntityMultiFurnace(gregtechId("multi_furnace")));
+		MULTI_FURNACE = (MetaTileEntityMultiFurnace) MetaTileEntities.MULTI_FURNACE;
+		MetaTileEntities.DIESEL_ENGINE = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityDieselEngine(gregtechId("diesel_engine")));
+		DIESEL_ENGINE = (MetaTileEntityDieselEngine) MetaTileEntities.DIESEL_ENGINE;
+
+		MetaTileEntities.LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
+		LARGE_STEAM_TURBINE = MetaTileEntities.LARGE_STEAM_TURBINE;
+		MetaTileEntities.LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
+		LARGE_GAS_TURBINE = MetaTileEntities.LARGE_GAS_TURBINE;
+		MetaTileEntities.LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
+		LARGE_PLASMA_TURBINE = MetaTileEntities.LARGE_PLASMA_TURBINE;
 
 		if (GAConfig.GT6.registerDums) {
 			WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

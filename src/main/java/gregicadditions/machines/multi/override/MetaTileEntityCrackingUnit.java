@@ -1,4 +1,4 @@
-package gregicadditions.machines.multi.advance;
+package gregicadditions.machines.multi.override;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -18,11 +18,13 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
 		return new MetaTileEntityCrackingUnit(this.metaTileEntityId);
 	}
 
+	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
 		return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel);
 	}
 
-	protected IBlockState getCasingState() {
+	@Override
+	public IBlockState getCasingState() {
 		return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel).getDefaultState();
 	}
 }

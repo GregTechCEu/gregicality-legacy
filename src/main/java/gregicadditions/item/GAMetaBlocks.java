@@ -3,6 +3,9 @@ package gregicadditions.item;
 import gregicadditions.GAMaterials;
 import gregicadditions.blocks.GAMetalCasing;
 import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.machines.FuelRecipeMap;
+import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.IngotMaterial;
@@ -10,6 +13,7 @@ import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.cable.WireProperties;
 import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
 import net.minecraft.block.Block;
@@ -22,6 +26,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -66,6 +71,17 @@ public class GAMetaBlocks {
 				METAL_CASING.put((IngotMaterial) material, blockMetalCasing);
 			}
 		}
+
+		EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
+				new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
+				RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
+		EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
+				new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
+				RecipeMaps.GAS_TURBINE_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel), false);
+		EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
+				new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
+				RecipeMaps.PLASMA_GENERATOR_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel), true);
+
 	}
 
 	@SideOnly(Side.CLIENT)

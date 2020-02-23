@@ -19,25 +19,35 @@ import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENE
 public class GAEnums {
 
 	public static void preInit() {
-		EnumHelper.addEnum(Element.class, "Nt", new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class}, 0L, 5000L, -1L, null, "NEUTRONIUM", false);
+		EnumHelper.addEnum(Element.class, "Nt",
+				new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
+				0L, 5000L, -1L, null, "NEUTRONIUM", false);
 		EnumHelper.addEnum(MaterialIconSet.class, "COKE", new Class[0]);
 		EnumHelper.addEnum(MaterialIconType.class, "gtMetalCasing", new Class[0]);
-		EnumHelper.addEnum(OrePrefix.class, "gtMetalCasing", new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class}, "Metal Casing", Math.round(M * 6.375), null, MaterialIconType.valueOf("gtMetalCasing"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_FRAME | GENERATE_PLATE)));
+		EnumHelper.addEnum(OrePrefix.class, "gtMetalCasing",
+				new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+				"Metal Casing", Math.round(M * 6.375), null, MaterialIconType.valueOf("gtMetalCasing"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_FRAME | GENERATE_PLATE)));
 
 
 		if (GAConfig.GT6.addCurvedPlates) {
 			EnumHelper.addEnum(MaterialIconType.class, "plateCurved", new Class[0]);
-			EnumHelper.addEnum(OrePrefix.class, "plateCurved", new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class}, "Curved Plate", M, null, MaterialIconType.valueOf("plateCurved"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
+			EnumHelper.addEnum(OrePrefix.class, "plateCurved",
+					new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+					"Curved Plate", M, null, MaterialIconType.valueOf("plateCurved"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
 		}
 
 		if (GAConfig.GT6.addDoubleIngots) {
 			EnumHelper.addEnum(MaterialIconType.class, "ingotDouble", new Class[0]);
-			EnumHelper.addEnum(OrePrefix.class, "ingotDouble", new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class}, "Double Ingot", M, null, MaterialIconType.valueOf("ingotDouble"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
+			EnumHelper.addEnum(OrePrefix.class, "ingotDouble",
+					new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+					"Double Ingot", M, null, MaterialIconType.valueOf("ingotDouble"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
 		}
 
 		if (GAConfig.GT6.addRounds) {
 			EnumHelper.addEnum(MaterialIconType.class, "round", new Class[0]);
-			EnumHelper.addEnum(OrePrefix.class, "round", new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class}, "Round", M, null, MaterialIconType.valueOf("round"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(IngotMaterial.MatFlags.GENERATE_SMALL_GEAR)));
+			EnumHelper.addEnum(OrePrefix.class, "round",
+					new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+					"Round", M, null, MaterialIconType.valueOf("round"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(IngotMaterial.MatFlags.GENERATE_SMALL_GEAR)));
 		}
 	}
 

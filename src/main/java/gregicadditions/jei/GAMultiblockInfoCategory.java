@@ -1,9 +1,12 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
-import gregicadditions.jei.multi.advance.*;
+import gregicadditions.jei.multi.advance.VolcanusInfo;
+import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.simple.*;
+import gregicadditions.machines.GATileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
+import gregtech.integration.jei.multiblock.infos.LargeTurbineInfo;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawable;
@@ -42,7 +45,16 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 				new MultiblockInfoRecipeWrapper(new VolcanusInfo()),
 				new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()),
 				new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()),
-				new MultiblockInfoRecipeWrapper(new CrackerUnitInfo())
+				new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
+				new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
+				new MultiblockInfoRecipeWrapper(new DistilationTowerInfo()),
+				new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
+				new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
+				new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
+				new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
+				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
+				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
+				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE))
 		), "gtadditions:multiblock_info2");
 	}
 

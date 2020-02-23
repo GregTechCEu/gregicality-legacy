@@ -1,6 +1,7 @@
 package gregicadditions.machines;
 
 import gregicadditions.GAEnums;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
@@ -15,11 +16,9 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.Textures;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -33,7 +32,7 @@ import java.util.*;
 
 public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = { MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY };
+	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
 	public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES);
@@ -46,18 +45,24 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 	@Override
 	protected BlockPattern createStructurePattern() {
 
-		return FactoryBlockPattern.start().aisle("XXX", "XXX", "XXX").aisle("XXX", "X#X", "XXX").aisle("XXX", "XSX", "XXX").where('S', selfPredicate()).where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))).where('#', isAirPredicate()).build();
+		return FactoryBlockPattern.start()
+				.aisle("XXX", "XXX", "XXX")
+				.aisle("XXX", "X#X", "XXX")
+				.aisle("XXX", "XSX", "XXX")
+				.where('S', selfPredicate())
+				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('#', isAirPredicate()).build();
 
 	}
 
 	public IBlockState getCasingState() {
-		return MetaBlocks.METAL_CASING.getState(MetalCasingType.TUNGSTENSTEEL_ROBUST);
+		return GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState();
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
 		// TODO Auto-generated method stub
-		return Textures.ROBUST_TUNGSTENSTEEL_CASING;
+		return GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel);
 	}
 
 	@Override
@@ -79,86 +84,86 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 
 		public RecipeMap<?> getRecipeMaps(String machineName) {
 			switch (machineName) {
-			case "macerator":
-				return RecipeMaps.MACERATOR_RECIPES;
-			case "cluster_mill":
-				return GARecipeMaps.CLUSTER_MILL_RECIPES;
-			case "lathe":
-				return RecipeMaps.LATHE_RECIPES;
-			case "extractor":
-				return RecipeMaps.EXTRACTOR_RECIPES;
-			case "fluid_extractor":
-				return RecipeMaps.FLUID_EXTRACTION_RECIPES;
-			case "alloy_smelter":
-				return RecipeMaps.ALLOY_SMELTER_RECIPES;
-			case "ore_washer":
-				return RecipeMaps.ORE_WASHER_RECIPES;
-			case "thermal_centrifuge":
-				return RecipeMaps.THERMAL_CENTRIFUGE_RECIPES;
-			case "centrifuge":
-				return RecipeMaps.CENTRIFUGE_RECIPES;
-			case "electrolyzer":
-				return RecipeMaps.ELECTROLYZER_RECIPES;
-			case "furnace":
-				return RecipeMaps.FURNACE_RECIPES;
-			case "bender":
-				return RecipeMaps.BENDER_RECIPES;
-			case "arc_furnace":
-				return RecipeMaps.ARC_FURNACE_RECIPES;
-			case "autoclave":
-				return RecipeMaps.AUTOCLAVE_RECIPES;
-			case "assembler":
-				return RecipeMaps.ASSEMBLER_RECIPES;
-			case "brewery":
-				return RecipeMaps.BREWING_RECIPES;
-			case "canner":
-				return RecipeMaps.CANNER_RECIPES;
-			case "chemical_bath":
-				return RecipeMaps.CHEMICAL_BATH_RECIPES;
-			case "chemical_reactor":
-				return RecipeMaps.CHEMICAL_RECIPES;
-			case "compressor":
-				return RecipeMaps.COMPRESSOR_RECIPES;
-			case "cutter":
-				return RecipeMaps.CUTTER_RECIPES;
-			case "distillery":
-				return RecipeMaps.DISTILLATION_RECIPES;
-			case "electromagnetic_separator":
-				return RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
-			case "fermenter":
-				return RecipeMaps.FERMENTING_RECIPES;
-			case "fluid_canner":
-				return RecipeMaps.FLUID_CANNER_RECIPES;
-			case "fluid_heater":
-				return RecipeMaps.FLUID_HEATER_RECIPES;
-			case "fluid_solidifier":
-				return RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
-			case "forge_hammer":
-				return RecipeMaps.FORGE_HAMMER_RECIPES;
-			case "forming_press":
-				return RecipeMaps.FORMING_PRESS_RECIPES;
-			case "microwave":
-				return RecipeMaps.MICROWAVE_RECIPES;
-			case "mixer":
-				return RecipeMaps.MIXER_RECIPES;
-			case "packer":
-				return RecipeMaps.PACKER_RECIPES;
-			case "unpacker":
-				return RecipeMaps.UNPACKER_RECIPES;
-			case "plasma_arc_furnace":
-				return RecipeMaps.PLASMA_ARC_FURNACE_RECIPES;
-			case "polarizer":
-				return RecipeMaps.POLARIZER_RECIPES;
-			case "laser_engraver":
-				return RecipeMaps.LASER_ENGRAVER_RECIPES;
-			case "wiremill":
-				return RecipeMaps.WIREMILL_RECIPES;
-			case "mass_fab":
-				return GARecipeMaps.MASS_FAB_RECIPES;
-			case "replicator":
-				return GARecipeMaps.REPLICATOR_RECIPES;
-			default:
-				return null;
+				case "macerator":
+					return RecipeMaps.MACERATOR_RECIPES;
+				case "cluster_mill":
+					return GARecipeMaps.CLUSTER_MILL_RECIPES;
+				case "lathe":
+					return RecipeMaps.LATHE_RECIPES;
+				case "extractor":
+					return RecipeMaps.EXTRACTOR_RECIPES;
+				case "fluid_extractor":
+					return RecipeMaps.FLUID_EXTRACTION_RECIPES;
+				case "alloy_smelter":
+					return RecipeMaps.ALLOY_SMELTER_RECIPES;
+				case "ore_washer":
+					return RecipeMaps.ORE_WASHER_RECIPES;
+				case "thermal_centrifuge":
+					return RecipeMaps.THERMAL_CENTRIFUGE_RECIPES;
+				case "centrifuge":
+					return RecipeMaps.CENTRIFUGE_RECIPES;
+				case "electrolyzer":
+					return RecipeMaps.ELECTROLYZER_RECIPES;
+				case "furnace":
+					return RecipeMaps.FURNACE_RECIPES;
+				case "bender":
+					return RecipeMaps.BENDER_RECIPES;
+				case "arc_furnace":
+					return RecipeMaps.ARC_FURNACE_RECIPES;
+				case "autoclave":
+					return RecipeMaps.AUTOCLAVE_RECIPES;
+				case "assembler":
+					return RecipeMaps.ASSEMBLER_RECIPES;
+				case "brewery":
+					return RecipeMaps.BREWING_RECIPES;
+				case "canner":
+					return RecipeMaps.CANNER_RECIPES;
+				case "chemical_bath":
+					return RecipeMaps.CHEMICAL_BATH_RECIPES;
+				case "chemical_reactor":
+					return RecipeMaps.CHEMICAL_RECIPES;
+				case "compressor":
+					return RecipeMaps.COMPRESSOR_RECIPES;
+				case "cutter":
+					return RecipeMaps.CUTTER_RECIPES;
+				case "distillery":
+					return RecipeMaps.DISTILLATION_RECIPES;
+				case "electromagnetic_separator":
+					return RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
+				case "fermenter":
+					return RecipeMaps.FERMENTING_RECIPES;
+				case "fluid_canner":
+					return RecipeMaps.FLUID_CANNER_RECIPES;
+				case "fluid_heater":
+					return RecipeMaps.FLUID_HEATER_RECIPES;
+				case "fluid_solidifier":
+					return RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
+				case "forge_hammer":
+					return RecipeMaps.FORGE_HAMMER_RECIPES;
+				case "forming_press":
+					return RecipeMaps.FORMING_PRESS_RECIPES;
+				case "microwave":
+					return RecipeMaps.MICROWAVE_RECIPES;
+				case "mixer":
+					return RecipeMaps.MIXER_RECIPES;
+				case "packer":
+					return RecipeMaps.PACKER_RECIPES;
+				case "unpacker":
+					return RecipeMaps.UNPACKER_RECIPES;
+				case "plasma_arc_furnace":
+					return RecipeMaps.PLASMA_ARC_FURNACE_RECIPES;
+				case "polarizer":
+					return RecipeMaps.POLARIZER_RECIPES;
+				case "laser_engraver":
+					return RecipeMaps.LASER_ENGRAVER_RECIPES;
+				case "wiremill":
+					return RecipeMaps.WIREMILL_RECIPES;
+				case "mass_fab":
+					return GARecipeMaps.MASS_FAB_RECIPES;
+				case "replicator":
+					return GARecipeMaps.REPLICATOR_RECIPES;
+				default:
+					return null;
 			}
 
 		}
@@ -182,11 +187,15 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 			String machineName = findMachine(inputs, fluidInputs);
 			RecipeMap<?> recipeM = getRecipeMaps(machineName);
 
-			if (recipeM == null) { return null; }
+			if (recipeM == null) {
+				return null;
+			}
 
 			Recipe r = recipeM.findRecipe(machineTierVoltage, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank()));
 
-			if (r == null) { return null; }
+			if (r == null) {
+				return null;
+			}
 
 			int minMultiplier = Integer.MAX_VALUE;
 
@@ -394,7 +403,9 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 
 			boolean enoughPower = totalEUt >= 0 ? getEnergyStored() >= (totalEUt > getEnergyCapacity() / 2 ? resultOverclock[0] : totalEUt) : getEnergyStored() - resultOverclock[0] * this.numberOfOperations <= getEnergyCapacity();
 
-			if (!enoughPower) { return false; }
+			if (!enoughPower) {
+				return false;
+			}
 
 			return MetaTileEntity.addItemsToItemHandler(exportInventory, true, recipe.getAllItemOutputs(exportInventory.getSlots())) && MetaTileEntity.addFluidsToFluidHandler(exportFluids, true, recipe.getFluidOutputs()) && recipe.matches(true, importInventory, importFluids);
 		}
