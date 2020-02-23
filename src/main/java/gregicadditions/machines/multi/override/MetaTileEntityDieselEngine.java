@@ -15,7 +15,7 @@ public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityDistillationTower(this.metaTileEntityId);
+		return new MetaTileEntityDieselEngine(this.metaTileEntityId);
 	}
 
 	@Override

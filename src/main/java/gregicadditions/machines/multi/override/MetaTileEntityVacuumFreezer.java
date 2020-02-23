@@ -15,7 +15,7 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityDistillationTower(this.metaTileEntityId);
+		return new MetaTileEntityVacuumFreezer(this.metaTileEntityId);
 	}
 
 	@Override

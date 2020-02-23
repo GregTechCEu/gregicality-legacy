@@ -15,7 +15,7 @@ public class MetaTileEntityElectricBlastFurnace extends gregtech.common.metatile
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityDistillationTower(this.metaTileEntityId);
+		return new MetaTileEntityElectricBlastFurnace(this.metaTileEntityId);
 	}
 
 	@Override

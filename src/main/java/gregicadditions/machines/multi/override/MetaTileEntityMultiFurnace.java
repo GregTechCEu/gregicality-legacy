@@ -15,7 +15,7 @@ public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityDistillationTower(this.metaTileEntityId);
+		return new MetaTileEntityMultiFurnace(this.metaTileEntityId);
 	}
 
 	@Override

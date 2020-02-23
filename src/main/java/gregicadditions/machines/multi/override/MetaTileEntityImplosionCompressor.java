@@ -15,7 +15,7 @@ public class MetaTileEntityImplosionCompressor extends gregtech.common.metatilee
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityDistillationTower(this.metaTileEntityId);
+		return new MetaTileEntityImplosionCompressor(this.metaTileEntityId);
 	}
 
 	@Override
