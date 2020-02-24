@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.GregicAdditions;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.multi.advance.TileEntityVolcanus;
+import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.recipes.GARecipeMaps;
@@ -84,6 +85,9 @@ public class GATileEntities {
 	public static TileEntityLargeExtruder LARGE_EXTRUDER;
 	public static TileEntityVolcanus VOLCANUS;
 	public static TileEntityLargeAssembler LARGE_ASSEMBLER;
+
+	//Nuclear
+	public static BoilingWaterReactor BOILING_WATER_REACTOR;
 
 	//override from GTCE
 	public static MetaTileEntityElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
@@ -485,6 +489,8 @@ public class GATileEntities {
 		LARGE_GAS_TURBINE = MetaTileEntities.LARGE_GAS_TURBINE;
 		MetaTileEntities.LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
 		LARGE_PLASMA_TURBINE = MetaTileEntities.LARGE_PLASMA_TURBINE;
+
+		BOILING_WATER_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor")));
 
 		if (GAConfig.GT6.registerDums) {
 			WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

@@ -74,10 +74,14 @@ public class GAMetalCasing extends Block implements ICubeRenderer, TextureUtils.
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void render(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline, Cuboid6 bounds) {
+		int oldBaseColour = renderState.baseColour;
+		int oldAlphaOverride = renderState.alphaOverride;
 		renderState.baseColour = metalCasingMaterial.materialRGB << 8;
 		renderState.alphaOverride = 0xFF;
 		for (EnumFacing side : EnumFacing.values()) {
 			renderSided(side, translation, bounds, renderState, pipeline);
 		}
+		renderState.baseColour = oldBaseColour;
+		renderState.alphaOverride = oldAlphaOverride;
 	}
 }
