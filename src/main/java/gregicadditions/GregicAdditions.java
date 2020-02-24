@@ -41,7 +41,7 @@ import java.util.function.Function;
 
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING;
 
-@Mod(modid = GregicAdditions.MODID, name = GregicAdditions.NAME, version = GregicAdditions.VERSION, dependencies = "required-after:gregtech@[1.8.6.437,);after:forestry;after:tconstruct")
+@Mod(modid = GregicAdditions.MODID, name = GregicAdditions.NAME, version = GregicAdditions.VERSION, dependencies = "required-after:gregtech;after:forestry;after:tconstruct")
 public class GregicAdditions {
 	public static final String MODID = "gtadditions";
 	public static final String NAME = "Gregic Additions Rework";

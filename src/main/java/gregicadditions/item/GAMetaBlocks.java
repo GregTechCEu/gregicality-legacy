@@ -88,7 +88,7 @@ public class GAMetaBlocks {
 	public static void registerItemModels() {
 		registerItemModel(MUTLIBLOCK_CASING);
 		registerItemModel(TRANSPARENT_CASING);
-		METAL_CASING.values().forEach(it -> registerItemModelWithFilteredProperties(it));
+		METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -107,12 +107,12 @@ public class GAMetaBlocks {
 				return new ModelResourceLocation(Block.REGISTRY.getNameForObject(state.getBlock()), "normal");
 			}
 		};
-		METAL_CASING.values().forEach(it -> ModelLoader.setCustomStateMapper(it, normalStateMapper));
+		METAL_CASING.values().stream().distinct().forEach(it -> ModelLoader.setCustomStateMapper(it, normalStateMapper));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static void registerColors() {
-		GAMetaBlocks.METAL_CASING.values().forEach(block -> {
+		GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(block -> {
 			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(METAL_CASING_BLOCK_COLOR, block);
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(METAL_CASING_ITEM_COLOR, block);
 		});
@@ -151,21 +151,6 @@ public class GAMetaBlocks {
 		}
 
 		return stringbuilder.toString();
-	}
-
-	@SideOnly(Side.CLIENT)
-	private static void registerItemModelWithFilteredProperties(Block block, IProperty<?>... filteredProperties) {
-		for (IBlockState state : block.getBlockState().getValidStates()) {
-			HashMap<IProperty<?>, Comparable<?>> stringProperties = new HashMap<>();
-			for (IProperty<?> property : filteredProperties) {
-				stringProperties.put(property, state.getValue(property));
-			}
-			//noinspection ConstantConditions
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
-					block.getMetaFromState(state),
-					new ModelResourceLocation(block.getRegistryName(),
-							statePropertiesToString(stringProperties)));
-		}
 	}
 
 	@SuppressWarnings("unchecked")
