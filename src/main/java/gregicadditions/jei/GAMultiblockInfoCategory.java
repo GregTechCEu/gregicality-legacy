@@ -56,7 +56,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
 				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
 				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
-				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo())
+				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
+				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
+				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR))
 		), "gtadditions:multiblock_info2");
 	}
 

@@ -95,6 +95,7 @@ public class GAMaterials implements IMaterialHandler {
 		Materials.TungstenSteel.addFlag(GENERATE_METAL_CASING);
 		Materials.Aluminium.addFlag(GENERATE_METAL_CASING);
 		Materials.Invar.addFlag(GENERATE_METAL_CASING);
+		Materials.Lead.addFlag(GENERATE_METAL_CASING);
 
 		Materials.Apatite.addFlag(SolidMaterial.MatFlags.GENERATE_ROD);
 

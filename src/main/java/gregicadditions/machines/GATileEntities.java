@@ -87,7 +87,9 @@ public class GATileEntities {
 	public static TileEntityLargeAssembler LARGE_ASSEMBLER;
 
 	//Nuclear
-	public static BoilingWaterReactor BOILING_WATER_REACTOR;
+	public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
+	public static BoilingWaterReactor BOILING_WATER_URANIUM_REACTOR;
+	public static BoilingWaterReactor BOILING_WATER_PLUTONIUM_REACTOR;
 
 	//override from GTCE
 	public static MetaTileEntityElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
@@ -490,7 +492,9 @@ public class GATileEntities {
 		MetaTileEntities.LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
 		LARGE_PLASMA_TURBINE = MetaTileEntities.LARGE_PLASMA_TURBINE;
 
-		BOILING_WATER_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor")));
+		BOILING_WATER_THORIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor.thorium"), BoilingWaterReactor.RodType.THORIUM));
+		BOILING_WATER_URANIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2546, new BoilingWaterReactor(location("boiling_water_reactor.uranium"), BoilingWaterReactor.RodType.URANIUM));
+		BOILING_WATER_PLUTONIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2547, new BoilingWaterReactor(location("boiling_water_reactor.plutonium"), BoilingWaterReactor.RodType.PLUTONIUM));
 
 		if (GAConfig.GT6.registerDums) {
 			WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

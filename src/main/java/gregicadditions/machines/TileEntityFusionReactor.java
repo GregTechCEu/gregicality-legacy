@@ -73,12 +73,34 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
 	@Override
 	protected BlockPattern createStructurePattern() {
 		FactoryBlockPattern.start();
-		return FactoryBlockPattern.start(LEFT, DOWN, BACK).aisle("###############", "######OCO######", "###############").aisle("######ICI######", "####CCcccCC####", "######ICI######").aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####").aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###").aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##").aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##").aisle("#I###########I#", "OcO#########OcO", "#I###########I#").aisle("#C###########C#", "CcC#########CcC", "#C###########C#").aisle("#I###########I#", "OcO#########OcO", "#I###########I#").aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##").aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##").aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###").aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####").aisle("######ICI######", "####CCcccCC####", "######ICI######").aisle("###############", "######OSO######", "###############").where('S', selfPredicate()).where('C', statePredicate(getCasingState())).where('c', statePredicate(getCoilState())).where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS))).where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
-			for (int i = tier; i < GTValues.V.length; i++) {
-				if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId)) return true;
-			}
-			return false;
-		}))).where('I', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))).where('#', (tile) -> true).build();
+		return FactoryBlockPattern.start(LEFT, DOWN, BACK)
+				.aisle("###############", "######OCO######", "###############")
+				.aisle("######ICI######", "####CCcccCC####", "######ICI######")
+				.aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
+				.aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
+				.aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##")
+				.aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
+				.aisle("#I###########I#", "OcO#########OcO", "#I###########I#")
+				.aisle("#C###########C#", "CcC#########CcC", "#C###########C#")
+				.aisle("#I###########I#", "OcO#########OcO", "#I###########I#")
+				.aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
+				.aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##")
+				.aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
+				.aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
+				.aisle("######ICI######", "####CCcccCC####", "######ICI######")
+				.aisle("###############", "######OSO######", "###############")
+				.where('S', selfPredicate())
+				.where('C', statePredicate(getCasingState()))
+				.where('c', statePredicate(getCoilState()))
+				.where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS)))
+				.where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
+					for (int i = tier; i < GTValues.V.length; i++) {
+						if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId))
+							return true;
+					}
+					return false;
+				}))).where('I', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
+				.where('#', (tile) -> true).build();
 	}
 
 	@Override
@@ -89,25 +111,25 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
 	private IBlockState getCasingState() {
 
 		switch (tier) {
-		case 6:
-			return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.LuV);
-		case 7:
-			return MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING);
-		case 8:
-		default:
-			return MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2);
+			case 6:
+				return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.LuV);
+			case 7:
+				return MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING);
+			case 8:
+			default:
+				return MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2);
 		}
 	}
 
 	private IBlockState getCoilState() {
 
 		switch (tier) {
-		case 6:
-			return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR);
-		case 7:
-		case 8:
-		default:
-			return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL);
+			case 6:
+				return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR);
+			case 7:
+			case 8:
+			default:
+				return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL);
 		}
 	}
 
@@ -204,10 +226,10 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
 				int currentProgress;
 				if (energyContainer.getEnergyCapacity() > 0) {
 					currentProgress = (int) (this.recipeMapWorkable.getProgressPercent() * 100.0D);
-					textList.add(new TextComponentTranslation("gregtech.multiblock.progress", new Object[] { currentProgress }));
+					textList.add(new TextComponentTranslation("gregtech.multiblock.progress", new Object[]{currentProgress}));
 				} else {
 					currentProgress = -this.recipeMapWorkable.getRecipeEUt();
-					textList.add(new TextComponentTranslation("gregtech.multiblock.generation_eu", new Object[] { currentProgress }));
+					textList.add(new TextComponentTranslation("gregtech.multiblock.generation_eu", new Object[]{currentProgress}));
 				}
 			} else {
 				textList.add(new TextComponentTranslation("gregtech.multiblock.idling", new Object[0]));

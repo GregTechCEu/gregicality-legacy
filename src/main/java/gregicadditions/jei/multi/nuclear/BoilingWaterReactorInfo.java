@@ -1,29 +1,54 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.GAMaterials;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.StoneBlock;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
 public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 
+	public final BoilingWaterReactor reactor;
+
+	public BoilingWaterReactorInfo(BoilingWaterReactor boiler) {
+		this.reactor = boiler;
+	}
+
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.BOILING_WATER_REACTOR;
+		return reactor;
 	}
 
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-				.aisle("S")
-				.where('S', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.DARK_CONCRETE, StoneBlock.ChiselingVariant.NORMAL ))
+				.aisle("#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####")
+				.aisle("###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###")
+				.aisle("##CCCCCCC##", "###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###", "##CCCCCCC##")
+				.aisle("#CCCCCCCCC#", "##CCCCCCC##", "###CCCCC###", "###CCCCC###", "###CCCCC###", "###CCCCC###", "###CCCCC###", "###CCCCC###", "###CCCCC###", "##CCCCCCC##", "#CCCCCCCCC#")
+				.aisle("#CCCYYYCCC#", "##CCYYYCC##", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "##CC###CC##", "#CCC###CCC#")
+				.aisle("CCCCYYYCCCC", "#CCCYRYCCC#", "##CCYRYCC##", "###CYRYC###", "###CYRYC###", "###CYRYC###", "###CYRYC###", "###CYRYC###", "##CCYYYCC##", "#CCC###CCC#", "CCCC###CCCC")
+				.aisle("#CCCYYYCCC#", "##CCYYYCC##", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "###CYYYC###", "##CC###CC##", "#CCC###CCC#")
+				.aisle("#CCCCCCCCC#", "##CCCCCCC##", "###CCCCC###", "###CCCCC###", "###CCCCC###", "###CCSCC###", "###CCCCC###", "###CCCCC###", "###CCCCC###", "##CCCCCCC##", "#CCCCCCCCC#")
+				.aisle("##CCCCCCC##", "###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###", "##CCCCCCC##")
+				.aisle("###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###")
+				.aisle("#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####")
+				.where('S', reactor, EnumFacing.SOUTH)
+				.where('R', reactor.rodType.casingState)
+				.where('Y', GAMetaBlocks.METAL_CASING.get(Materials.Lead).getDefaultState())
+				.where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
+				.where('#', Blocks.AIR.getDefaultState())
 				.build();
 		return Lists.newArrayList(shapeInfo);
 	}
