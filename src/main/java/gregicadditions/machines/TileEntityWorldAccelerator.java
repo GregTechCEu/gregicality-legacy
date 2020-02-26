@@ -7,19 +7,24 @@ import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
+import gregtech.api.util.GTLog;
+import gregtech.common.pipelike.cable.tile.TileEntityCable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 
@@ -38,12 +43,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 
 	@Override
 	protected ModularUI createUI(EntityPlayer entityPlayer) {
-		ModularUI.Builder builder = ModularUI.defaultBuilder()
-				.label(10, 5, getMetaFullName())
-				.widget(new SlotWidget(importItems, 0, 18, 18, true, true)
-						.setBackgroundTexture(GuiTextures.SLOT, GuiTextures.STRING_SLOT_OVERLAY));
-
-		return builder.build(getHolder(), entityPlayer);
+		return null;
 	}
 
 	@Override
@@ -51,6 +51,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 		tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
 		tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
 	}
+
 
 	@Override
 	public void update() {
@@ -61,18 +62,28 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 			BlockPos[] neighbours = new BlockPos[]{blockPos.down(), blockPos.up(), blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west()};
 			for (BlockPos neighbour : neighbours) {
 				TileEntity targetTE = world.getTileEntity(neighbour);
+				List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(neighbour).grow(0.2));
+				GTLog.logger.info(entities);
+				if (targetTE instanceof TileEntityCable) {
+					continue;
+				}
 				boolean horror = false;
 				if (clazz != null && targetTE instanceof ITickable) {
 					horror = clazz.isInstance(targetTE);
 				}
-				if (targetTE != null && targetTE instanceof ITickable && (!horror || !world.isRemote)) {
-					((ITickable) targetTE).update();
+				if (targetTE instanceof ITickable && (!horror || !world.isRemote)) {
+					energyContainer.removeEnergy(energyPerTick);
+					IntStream.range(0, getTier() * 1000).forEach(value -> ((ITickable) targetTE).update());
 				}
 				if (world.rand.nextInt(1365) == 0) {
-					IBlockState targetBlock = world.getBlockState(neighbour);
-					if (targetBlock.getBlock().getTickRandomly()) {
-						targetBlock.getBlock().randomTick(world, neighbour, targetBlock, world.rand);
-					}
+					energyContainer.removeEnergy(energyPerTick);
+					IntStream.range(0, getTier() * 1000).forEach(value -> {
+						IBlockState targetBlock = world.getBlockState(neighbour);
+						if (targetBlock.getBlock().getTickRandomly()) {
+							targetBlock.getBlock().randomTick(world, neighbour, targetBlock, world.rand);
+						}
+					});
+
 				}
 
 

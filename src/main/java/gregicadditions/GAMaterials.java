@@ -11,8 +11,7 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.GENERATE_PLATE;
-import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENERATE_FRAME;
-import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENERATE_GEAR;
+import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.*;
 import static gregtech.api.util.GTUtility.createFlag;
 
 @IMaterialHandler.RegisterMaterialHandler
@@ -127,6 +126,8 @@ public class GAMaterials implements IMaterialHandler {
 
 		Materials.Duranium.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
 		Materials.Graphene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
+
+		Materials.Thorium.addFlag(SolidMaterial.MatFlags.GENERATE_ROD);
 
 		for (Material material : Material.MATERIAL_REGISTRY) {
 			if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {

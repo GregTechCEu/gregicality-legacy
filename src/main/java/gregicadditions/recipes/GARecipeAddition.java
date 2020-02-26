@@ -1072,6 +1072,12 @@ public class GARecipeAddition {
 		RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, Tier.Superconductor, 8), GAMetaItems.MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
 		RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, LuVSuperconductor, 32), GAMetaItems.MICA_INSULATOR_FOIL.getStackForm(16)).fluidInputs(NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
 
+
+		//Nuclear react recipe
+		GARecipeMaps.BOILING_THORIUM_REACTOR_RECIPES.recipeBuilder().duration(2000).EUt(480).input(stick, Thorium, 1 ).outputs(OreDictUnifier.get(dustTiny, Uranium235, 2)).buildAndRegister();
+		GARecipeMaps.BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 1 ).outputs(OreDictUnifier.get(dustTiny, Plutonium241, 2)).buildAndRegister();
+		GARecipeMaps.BOILING_PLUTONIUM_REACTOR_RECIPES.recipeBuilder().duration(6000).EUt(480).input(stick, Plutonium241, 1 ).outputs(OreDictUnifier.get(dustTiny, Americium, 2)).buildAndRegister();
+
 	}
 
 	public static void forestrySupport() {

@@ -120,6 +120,7 @@ public class GATileEntities {
 
 	public static MetaTileEntityPump[] PUMP = new MetaTileEntityPump[8];
 	public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
+	public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
 
 	public static void init() {
 
@@ -524,6 +525,17 @@ public class GATileEntities {
 			STAINLESS_STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2210, new TileEntityCrate(location("crate.stainless_steel"), Materials.StainlessSteel, 90));
 			TITANIUM_CRATE = GregTechAPI.registerMetaTileEntity(2211, new TileEntityCrate(location("crate.titanium"), Materials.Titanium, 108));
 			TUNGSTENSTEEL_CRATE = GregTechAPI.registerMetaTileEntity(2212, new TileEntityCrate(location("crate.tungstensteel"), Materials.TungstenSteel, 126));
+		}
+
+		WORLD_ACCELERATOR[0] = GregTechAPI.registerMetaTileEntity(2213, new TileEntityWorldAccelerator(location("world_accelerator.lv"), 1));
+		WORLD_ACCELERATOR[1] = GregTechAPI.registerMetaTileEntity(2214, new TileEntityWorldAccelerator(location("world_accelerator.mv"), 2));
+		WORLD_ACCELERATOR[2] = GregTechAPI.registerMetaTileEntity(2215, new TileEntityWorldAccelerator(location("world_accelerator.hv"), 3));
+		WORLD_ACCELERATOR[3] = GregTechAPI.registerMetaTileEntity(2216, new TileEntityWorldAccelerator(location("world_accelerator.ev"), 4));
+		if (GAConfig.GT5U.highTierCircuitAssemblers) {
+			WORLD_ACCELERATOR[4] = GregTechAPI.registerMetaTileEntity(2217, new TileEntityWorldAccelerator(location("world_accelerator.iv"), 5));
+			WORLD_ACCELERATOR[5] = GregTechAPI.registerMetaTileEntity(2218, new TileEntityWorldAccelerator(location("world_accelerator.luv"), 6));
+			WORLD_ACCELERATOR[6] = GregTechAPI.registerMetaTileEntity(2219, new TileEntityWorldAccelerator(location("world_accelerator.zpm"), 7));
+			WORLD_ACCELERATOR[7] = GregTechAPI.registerMetaTileEntity(2220, new TileEntityWorldAccelerator(location("world_accelerator.uv"), 8));
 		}
 	}
 
