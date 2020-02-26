@@ -1,9 +1,7 @@
 package gregicadditions.machines;
 
 import gregtech.api.GTValues;
-import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
@@ -11,13 +9,11 @@ import gregtech.api.util.GTLog;
 import gregtech.common.pipelike.cable.tile.TileEntityCable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -52,6 +48,10 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 		tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
 	}
 
+	@Override
+	protected long getMaxInputOutputAmperage() {
+		return 8L;
+	}
 
 	@Override
 	public void update() {
@@ -62,8 +62,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 			BlockPos[] neighbours = new BlockPos[]{blockPos.down(), blockPos.up(), blockPos.north(), blockPos.south(), blockPos.east(), blockPos.west()};
 			for (BlockPos neighbour : neighbours) {
 				TileEntity targetTE = world.getTileEntity(neighbour);
-				List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(neighbour).grow(0.2));
-				GTLog.logger.info(entities);
+				GTLog.logger.info(targetTE);
 				if (targetTE instanceof TileEntityCable) {
 					continue;
 				}
@@ -72,22 +71,19 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 					horror = clazz.isInstance(targetTE);
 				}
 				if (targetTE instanceof ITickable && (!horror || !world.isRemote)) {
-					energyContainer.removeEnergy(energyPerTick);
-					IntStream.range(0, getTier() * 1000).forEach(value -> ((ITickable) targetTE).update());
-				}
-				if (world.rand.nextInt(1365) == 0) {
-					energyContainer.removeEnergy(energyPerTick);
 					IntStream.range(0, getTier() * 1000).forEach(value -> {
-						IBlockState targetBlock = world.getBlockState(neighbour);
-						if (targetBlock.getBlock().getTickRandomly()) {
-							targetBlock.getBlock().randomTick(world, neighbour, targetBlock, world.rand);
-						}
+						((ITickable) targetTE).update();
 					});
-
 				}
-
-
+				IBlockState targetBlock = world.getBlockState(neighbour);
+				GTLog.logger.info(targetBlock);
+				IntStream.range(0, getTier() * 1000).forEach(value -> {
+					if (targetBlock.getBlock().getTickRandomly()) {
+						targetBlock.getBlock().randomTick(world, neighbour, targetBlock, world.rand);
+					}
+				});
 			}
+			energyContainer.removeEnergy(energyPerTick);
 		}
 
 	}
