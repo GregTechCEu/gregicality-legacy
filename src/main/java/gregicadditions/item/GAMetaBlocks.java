@@ -64,6 +64,7 @@ public class GAMetaBlocks {
 		MetaBlocks.CABLE.addCableMaterial(GAMaterials.IVSuperconductor, new WireProperties(8192, 4, 0));
 		MetaBlocks.CABLE.addCableMaterial(GAMaterials.LuVSuperconductor, new WireProperties(32768, 8, 0));
 		MetaBlocks.CABLE.addCableMaterial(GAMaterials.ZPMSuperconductor, new WireProperties(131072, 8, 0));
+
 		for (Material material : Material.MATERIAL_REGISTRY) {
 			if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
 				GAMetalCasing blockMetalCasing = new GAMetalCasing((IngotMaterial) material);

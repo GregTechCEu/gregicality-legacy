@@ -1,8 +1,5 @@
 package gregicadditions.machines.multi.nuclear;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -16,19 +13,24 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.StoneBlock;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 
@@ -97,6 +99,12 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
 				.build();
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.format("gregtech.multiblock.reactor.description"));
+	}
+
 	public IBlockState getCasingState() {
 		return GAMetaBlocks.METAL_CASING.get(Materials.Lead).getDefaultState();
 	}
@@ -109,12 +117,9 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
 
 	private int currentTemperature;
 	private int throttlePercentage = 100;
-	private boolean isActive;
 	private boolean hasNoWater;
-	private int lastTickSteamOutput;
 	public final RodType rodType;
 
-	private static final int CONSUMPTION_MULTIPLIER = 100;
 	private static final int BOILING_TEMPERATURE = 100;
 
 
@@ -123,7 +128,6 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
 		super.invalidateStructure();
 		this.currentTemperature = 0; //reset temperature
 		this.hasNoWater = false;
-		this.isActive = false;
 		this.throttlePercentage = 100;
 	}
 
@@ -174,7 +178,6 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
 			}
 		}
 
-		this.lastTickSteamOutput = 0;
 		if (currentTemperature >= BOILING_TEMPERATURE) {
 			boolean doWaterDrain = getTimer() % 20 == 0;
 			FluidStack drainedWater = inputFluidInventory.drain(ModHandler.getWater(1), doWaterDrain);
@@ -194,7 +197,6 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
 					int steamOutput = (int) (rodType.baseSteamOutput * outputMultiplier);
 					FluidStack steamStack = ModHandler.getSteam(steamOutput);
 					outputFluidInventory.fill(steamStack, true);
-					this.lastTickSteamOutput = steamOutput;
 				}
 			} else {
 				this.hasNoWater = true;

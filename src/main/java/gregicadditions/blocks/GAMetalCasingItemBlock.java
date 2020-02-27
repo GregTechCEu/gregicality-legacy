@@ -33,7 +33,7 @@ public class GAMetalCasingItemBlock extends ItemBlock {
     @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack stack) {
         Material material = metalCasingBlock.getMetalCasingMaterial();
-        return I18n.format(String.format("tile.metal_casing.%s.name", material.getUnlocalizedName()));
+        return I18n.format(String.format("tile.ga_metal_casing.%s.name", material.getUnlocalizedName()));
     }
 
 

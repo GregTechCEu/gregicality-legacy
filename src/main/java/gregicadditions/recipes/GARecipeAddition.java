@@ -23,7 +23,6 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -43,6 +42,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -103,6 +103,22 @@ public class GARecipeAddition {
 			new MaterialStack(Lapis, 1),
 			new MaterialStack(Lazurite, 1),
 			new MaterialStack(Sodalite, 1)};
+
+	private static final List<Material> tieredCables = Arrays.asList(new Material[]{
+			Tungsten, Osmium, Platinum, TungstenSteel, Graphene,
+			VanadiumGallium, HSSG, YttriumBariumCuprate, NiobiumTitanium,
+			Naquadah, NiobiumTitanium, NaquadahEnriched, Duranium,
+			NaquadahAlloy
+	});
+	private static final List<Material> superconductors = Arrays.asList(new Material[]{
+			MVSuperconductor, HVSuperconductor, EVSuperconductor,
+			IVSuperconductor, LuVSuperconductor, ZPMSuperconductor
+	});
+
+	private static final List<Material> tieredSuperconductors = Arrays.asList(new Material[]{
+			EVSuperconductor, IVSuperconductor,
+			LuVSuperconductor, ZPMSuperconductor
+	});
 
 	public static void init() {
 
@@ -204,52 +220,74 @@ public class GARecipeAddition {
 			}
 
 			//Cables
-			if (m instanceof IngotMaterial && !OreDictUnifier.get(cableGtSingle, m).isEmpty() && m != RedAlloy && m != Cobalt && m != Zinc && m != SolderingAlloy && m != Tin && m != Lead && GAConfig.GT5U.CablesGT5U) {
+			if ((m instanceof IngotMaterial || superconductors.contains(m)) && !OreDictUnifier.get(OrePrefix.cableGtSingle, m).isEmpty() && m != RedAlloy && m != Cobalt && m != Zinc && m != SolderingAlloy && m != Tin && m != Lead && GAConfig.GT5U.CablesGT5U) {
 				for (MaterialStack stackFluid : cableFluids) {
 					IngotMaterial fluid = (IngotMaterial) stackFluid.material;
 					int multiplier = (int) stackFluid.amount;
-					if (m == Tungsten || m == Osmium || m == Platinum || m == TungstenSteel || m == Graphene || m == VanadiumGallium || m == HSSG || m == YttriumBariumCuprate || m == NiobiumTitanium || m == Naquadah || m == NiobiumTitanium || m == NaquadahEnriched || m == Duranium || m == NaquadahAlloy) {
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, m, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, m, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, m, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, m, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
+					// Low-tiered superconductors recipe
+					if (superconductors.contains(m) && !tieredSuperconductors.contains(m)) {
+						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
 						for (MaterialStack stackDust : cableDusts) {
 							Material dust = stackDust.material;
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, m), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, m, 2), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, m, 4), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, m, 8), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, m, 16), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
 						}
-					} else {
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-						RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-						for (MaterialStack stackDust : cableDusts) {
-							Material dust = stackDust.material;
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-						}
-					}
+					} else
+						// EV+ tiered superconductors cable recipe
+						if (tieredSuperconductors.contains(m)) {
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+							RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+							for (MaterialStack stackDust : cableDusts) {
+								Material dust = stackDust.material;
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide), OreDictUnifier.get(OrePrefix.dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 2), OreDictUnifier.get(OrePrefix.dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 4), OreDictUnifier.get(OrePrefix.dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 8), OreDictUnifier.get(OrePrefix.dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 16), OreDictUnifier.get(OrePrefix.dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+							}
+						} else
+							// EV+ tiered cables recipe
+							if (tieredCables.contains(m)) {
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+								for (MaterialStack stackDust : cableDusts) {
+									Material dust = stackDust.material;
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide), OreDictUnifier.get(OrePrefix.dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 2), OreDictUnifier.get(OrePrefix.dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 4), OreDictUnifier.get(OrePrefix.dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 8), OreDictUnifier.get(OrePrefix.dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.foil, PolyphenyleneSulfide, 16), OreDictUnifier.get(OrePrefix.dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+								}
+							} else
+							// Low-tier cable recipes
+							{
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+								RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+								for (MaterialStack stackDust : cableDusts) {
+									Material dust = stackDust.material;
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtSingle, m), OreDictUnifier.get(OrePrefix.dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtSingle, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(OrePrefix.cableGtDouble, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtQuadruple, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(OrePrefix.cableGtQuadruple, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtOctal, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(OrePrefix.cableGtOctal, m)).buildAndRegister();
+									RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(OrePrefix.wireGtHex, m), OreDictUnifier.get(OrePrefix.dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(OrePrefix.cableGtHex, m)).buildAndRegister();
+								}
+							}
 				}
 			}
 
@@ -418,27 +456,16 @@ public class GARecipeAddition {
 
 		//Pyrolise Oven Recipes
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(0).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(Creosote.getFluid(4000)).duration(440).EUt(64).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(1).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(Creosote.getFluid(4000)).duration(200).EUt(96).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(2).outputs(OreDictUnifier.get(dust, Ash, 4)).fluidOutputs(OilHeavy.getFluid(200)).duration(280).EUt(192).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(3).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodVinegar.getFluid(3000)).duration(640).EUt(64).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(4).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodVinegar.getFluid(3000)).duration(320).EUt(96).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(5).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodGas.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(6).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodGas.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(7).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodTar.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(8).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(WoodTar.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(9).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(CharcoalByproducts.getFluid(4000)).duration(320).EUt(96).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(1).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
-
 		RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(2).fluidInputs(Nitrogen.getFluid(400)).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
 
 		//Chemical Reactor Cracking
@@ -618,10 +645,6 @@ public class GARecipeAddition {
 		ModHandler.removeRecipes(MetaItems.BASIC_CIRCUIT_LV.getStackForm());
 		ModHandler.addShapedRecipe("gautils:basic_circuit", MetaItems.BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', MetaItems.RESISTOR, 'P', "plateSteel", 'T', MetaItems.VACUUM_TUBE, 'B', GAMetaItems.BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
 		ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
-		GTLog.logger.info(GAMetaItems.GOOD_CIRCUIT);
-		GTLog.logger.info(MetaItems.BASIC_CIRCUIT_LV);
-		GTLog.logger.info(MetaItems.DIODE);
-		GTLog.logger.info(GAMetaItems.GOOD_PHENOLIC_BOARD);
 		ModHandler.addShapedRecipe("gautils:good_circuit", GAMetaItems.GOOD_CIRCUIT.getStackForm(), "WPW", "CBC", "DCD", 'P', "plateSteel", 'C', MetaItems.BASIC_CIRCUIT_LV.getStackForm(), 'W', OreDictUnifier.get(wireGtSingle, Copper), 'D', MetaItems.DIODE.getStackForm(), 'B', GAMetaItems.GOOD_PHENOLIC_BOARD);
 
 		for (MaterialStack stack : solderingList) {
@@ -1074,9 +1097,9 @@ public class GARecipeAddition {
 
 
 		//Nuclear react recipe
-		GARecipeMaps.BOILING_THORIUM_REACTOR_RECIPES.recipeBuilder().duration(2000).EUt(480).input(stick, Thorium, 1 ).outputs(OreDictUnifier.get(dustTiny, Uranium235, 2)).buildAndRegister();
-		GARecipeMaps.BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 1 ).outputs(OreDictUnifier.get(dustTiny, Plutonium241, 2)).buildAndRegister();
-		GARecipeMaps.BOILING_PLUTONIUM_REACTOR_RECIPES.recipeBuilder().duration(6000).EUt(480).input(stick, Plutonium241, 1 ).outputs(OreDictUnifier.get(dustTiny, Americium, 2)).buildAndRegister();
+		GARecipeMaps.BOILING_THORIUM_REACTOR_RECIPES.recipeBuilder().duration(2000).EUt(480).input(stick, Thorium, 1).outputs(OreDictUnifier.get(dustTiny, Uranium235, 2)).buildAndRegister();
+		GARecipeMaps.BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 1).outputs(OreDictUnifier.get(dustTiny, Plutonium241, 2)).buildAndRegister();
+		GARecipeMaps.BOILING_PLUTONIUM_REACTOR_RECIPES.recipeBuilder().duration(6000).EUt(480).input(stick, Plutonium241, 1).outputs(OreDictUnifier.get(dustTiny, Americium, 2)).buildAndRegister();
 
 	}
 

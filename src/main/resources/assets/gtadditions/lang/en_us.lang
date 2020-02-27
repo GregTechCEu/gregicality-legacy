@@ -448,6 +448,19 @@ gregtech.machine.air_collector.ev.name=Advanced Air Collector III
 gtadditions.machine.air_collector.iv.name=Atmosphere Collector
 gtadditions.machine.air_collector.luv.name=Atmosphere Collector
 
+gtadditions.machine.world_accelerator.lv.name=Basic World Accelerator
+gtadditions.machine.world_accelerator.mv.name=Advanced World Accelerator
+gtadditions.machine.world_accelerator.hv.name=Advanced World Accelerator II
+gtadditions.machine.world_accelerator.ev.name=Advanced World Accelerator III
+gtadditions.machine.world_accelerator.iv.name=Advanced World Accelerator IV
+gtadditions.machine.world_accelerator.luv.name=Advanced World Accelerator V
+gtadditions.machine.world_accelerator.zpm.name=Advanced World Accelerator VI
+gtadditions.machine.world_accelerator.uv.name=Advanced World Accelerator VII
+
+gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Throium Nuclear Reactor
+gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
+gtadditions.machine.boiling_water_reactor.plutonium.name=Boiling Plutonium Nuclear Reactor
+
 gtadditions.machine.replicator.tooltip=Producing The Purest Of Elements
 
 gtadditions.machine.fusion_reactor.luv.name=Fusion Reactor Computer Mark 1
@@ -462,16 +475,16 @@ tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
 tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Assembler Casing
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
-tile.ga_metal_casing.red_steel.name=Red Steel Casing
-tile.ga_metal_casing.tumbaga.name=Tumbaga Casing
-tile.ga_metal_casing.potin.name=Potin Casing
-tile.ga_metal_casing.stellite_talonite.name=Stellite and Talonite Casing
-tile.ga_metal_casing.staballoy.name=Staballoy Casing
-tile.ga_metal_casing.eglin_steel.name=Eglin Steel Casing
-tile.ga_metal_casing.grisium.name=Grisium Casing
-tile.ga_metal_casing.maraging_steel.name=Maraging Steel 250 Casing
-tile.ga_metal_casing.inconel.name=Inconel 625 Casing
-tile.ga_metal_casing.hastelloy_n.name=Hastelloy N Casing
+tile.ga_metal_casing.material.red_steel.name=Red Steel Casing
+tile.ga_metal_casing.material.tumbaga.name=Tumbaga Casing
+tile.ga_metal_casing.material.potin.name=Potin Casing
+tile.ga_metal_casing.material.stellite_talonite.name=Stellite and Talonite Casing
+tile.ga_metal_casing.material.staballoy.name=Staballoy Casing
+tile.ga_metal_casing.material.eglin_steel.name=Eglin Steel Casing
+tile.ga_metal_casing.material.grisium.name=Grisium Casing
+tile.ga_metal_casing.material.maraging_steel.name=Maraging Steel 250 Casing
+tile.ga_metal_casing.material.inconel.name=Inconel 625 Casing
+tile.ga_metal_casing.material.hastelloy_n.name=Hastelloy N Casing
 
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
 metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
@@ -723,6 +736,7 @@ gregtech.multiblock.distill_tower.description=The GA Distillation Tower is a mul
 gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is a large multiblock structure used for fusing elements into heavier ones. The Mark 1 Fusion Reactor can use LuV, ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 100k.
 gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
 gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
+gregtech.multiblock.reactor.description=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 
