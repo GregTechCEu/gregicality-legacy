@@ -251,6 +251,10 @@ public class GAMachineRecipeRemoval {
 		removeRecipesByInputs(RecipeMaps.BLAST_RECIPES, OreDictUnifier.get(dust, Silicon, 32), OreDictUnifier.get(dustTiny, Gallium), IntCircuitIngredient.getIntegratedCircuit(1));
 		removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireFine, Copper, 4), OreDictUnifier.get(dust, Coal));
 
+		//Remove Nuclear processing
+		removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
+		removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
+
 	}
 
 	private static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
