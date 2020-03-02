@@ -3,6 +3,8 @@ package gregicadditions.machines;
 import gregicadditions.GAConfig;
 import gregicadditions.GregicAdditions;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.machines.miner.Miner;
+import gregicadditions.machines.miner.TileEntityMiner;
 import gregicadditions.machines.multi.advance.TileEntityVolcanus;
 import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregicadditions.machines.multi.override.*;
@@ -121,6 +123,7 @@ public class GATileEntities {
 	public static MetaTileEntityPump[] PUMP = new MetaTileEntityPump[8];
 	public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
 	public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
+	public static TileEntityMiner[] MINER = new TileEntityMiner[3];
 
 	public static void init() {
 
@@ -537,6 +540,9 @@ public class GATileEntities {
 			WORLD_ACCELERATOR[6] = GregTechAPI.registerMetaTileEntity(2219, new TileEntityWorldAccelerator(location("world_accelerator.zpm"), 7));
 			WORLD_ACCELERATOR[7] = GregTechAPI.registerMetaTileEntity(2220, new TileEntityWorldAccelerator(location("world_accelerator.uv"), 8));
 		}
+		MINER[0] = GregTechAPI.registerMetaTileEntity(2221, new TileEntityMiner(location("miner.lv"), Miner.Type.LV, 1));
+		MINER[1] = GregTechAPI.registerMetaTileEntity(2222, new TileEntityMiner(location("miner.mv"), Miner.Type.MV, 2));
+		MINER[2] = GregTechAPI.registerMetaTileEntity(2223, new TileEntityMiner(location("miner.hv"), Miner.Type.HV, 3));
 	}
 
 	private static ResourceLocation location(String name) {

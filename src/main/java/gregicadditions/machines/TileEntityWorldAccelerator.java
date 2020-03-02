@@ -41,6 +41,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 		super(metaTileEntityId, tier);
 		//consume 8 amps
 		this.energyPerTick = GTValues.V[tier] * 8;
+		initializeInventory();
 	}
 
 	@Override
