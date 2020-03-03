@@ -2,7 +2,7 @@ package gregicadditions.jei.multi.miner;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.miner.MetaTileEntityLargeMiner;
+import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;

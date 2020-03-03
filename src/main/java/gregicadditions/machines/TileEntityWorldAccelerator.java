@@ -5,7 +5,11 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregtech.api.GTValues;
+import gregtech.api.capability.GregtechTileCapabilities;
+import gregtech.api.capability.IControllable;
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
+import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
@@ -17,30 +21,35 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
+public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements IControllable {
 
 	private final long energyPerTick;
 	private boolean tileMode = true;
 	private boolean isActive = false;
+	private boolean isPaused = false;
 
 	public TileEntityWorldAccelerator(ResourceLocation metaTileEntityId, int tier) {
 		super(metaTileEntityId, tier);
 		//consume 8 amps
-		this.energyPerTick = GTValues.V[tier] * 8;
+		this.energyPerTick = GTValues.V[tier] * getMaxInputOutputAmperage();
 		initializeInventory();
 	}
 
@@ -49,17 +58,30 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 		return new TileEntityWorldAccelerator(metaTileEntityId, getTier());
 	}
 
+	void addDisplayText(List<ITextComponent> textList) {
+		textList.add(new TextComponentString(tileMode ? "Tile entity mode" : "Entity mode"));
+	}
+
 
 	@Override
 	protected ModularUI createUI(EntityPlayer entityPlayer) {
-		return null;
+		ModularUI.Builder builder = ModularUI.extendedBuilder();
+		builder.image(7, 4, 162, 121, GuiTextures.DISPLAY);
+		builder.label(10, 7, getMetaFullName(), 0xFFFFFF);
+		builder.widget(new AdvancedTextWidget(10, 17, this::addDisplayText, 0xFFFFFF)
+				.setMaxWidthLimit(156));
+		builder.bindPlayerInventory(entityPlayer.inventory, 134);
+		return builder.build(getHolder(), entityPlayer);
 
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
 		tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
+		tooltip.add(I18n.format("gtadditions.universal.tooltip.amperage_in", getMaxInputOutputAmperage()));
 		tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
+		tooltip.add(I18n.format("gtadditions.machine.world_accelerator.description"));
+		tooltip.add(I18n.format("gtadditions.machine.world_accelerator.area", getArea(), getArea()));
 	}
 
 	@Override
@@ -70,8 +92,19 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 	@Override
 	public void update() {
 		super.update();
-		if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyPerTick) {
-			isActive = true;
+		if (!getWorld().isRemote) {
+			if (isPaused) {
+				if (isActive)
+					setActive(false);
+				return;
+			}
+			if (energyContainer.getEnergyStored() < energyPerTick) {
+				if (isActive)
+					setActive(false);
+				return;
+			}
+			if (!isActive)
+				setActive(true);
 			energyContainer.removeEnergy(energyPerTick);
 			WorldServer world = (WorldServer) this.getWorld();
 			BlockPos worldAcceleratorPos = getPos();
@@ -94,9 +127,9 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 				}
 			} else {
 				BlockPos upperConner = worldAcceleratorPos.north(getTier()).east(getTier());
-				for (int x = 0; x < (getTier() * 2) + 1; x++) {
+				for (int x = 0; x < getArea(); x++) {
 					BlockPos row = upperConner.south(x);
-					for (int y = 0; y < (getTier() * 2) + 1; y++) {
+					for (int y = 0; y < getArea(); y++) {
 						BlockPos cell = row.west(y);
 
 						IBlockState targetBlock = world.getBlockState(cell);
@@ -110,10 +143,12 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 					}
 				}
 			}
-		}else {
-			isActive = false;
 		}
 
+	}
+
+	public int getArea() {
+		return (getTier() * 2) + 1;
 	}
 
 	static Class clazz;
@@ -136,7 +171,9 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 	@Override
 	public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
 		tileMode = !tileMode;
-		playerIn.sendStatusMessage(new TextComponentTranslation(tileMode ? "Tile entity mode" : "Entity mode"), false);
+		if (!getWorld().isRemote) {
+			playerIn.sendStatusMessage(new TextComponentTranslation(tileMode ? "Tile entity mode" : "Entity mode"), false);
+		}
 		return true;
 	}
 
@@ -144,6 +181,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 	public NBTTagCompound writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setTag("TileMode", new NBTTagString(Boolean.valueOf(tileMode).toString()));
+		data.setTag("isPaused", new NBTTagString(Boolean.valueOf(isPaused).toString()));
 		return data;
 	}
 
@@ -151,5 +189,42 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity {
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
 		tileMode = Boolean.parseBoolean(data.getString("TileMode"));
+		isPaused = Boolean.parseBoolean(data.getString("isPaused"));
+	}
+
+	protected void setActive(boolean active) {
+		this.isActive = active;
+		markDirty();
+		if (!getWorld().isRemote) {
+			writeCustomData(1, buf -> buf.writeBoolean(active));
+		}
+	}
+
+	@Override
+	public void receiveCustomData(int dataId, PacketBuffer buf) {
+		super.receiveCustomData(dataId, buf);
+		if (dataId == 1) {
+			this.isActive = buf.readBoolean();
+			getHolder().scheduleChunkForRenderUpdate();
+		}
+	}
+
+	@Override
+	public boolean isWorkingEnabled() {
+		return isPaused;
+	}
+
+	@Override
+	public void setWorkingEnabled(boolean b) {
+		isPaused = b;
+		getHolder().notifyBlockUpdate();
+	}
+
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing side) {
+		if (capability == GregtechTileCapabilities.CAPABILITY_CONTROLLABLE) {
+			return GregtechTileCapabilities.CAPABILITY_CONTROLLABLE.cast(this);
+		}
+		return super.getCapability(capability, side);
 	}
 }

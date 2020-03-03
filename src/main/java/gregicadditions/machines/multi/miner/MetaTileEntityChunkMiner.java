@@ -1,4 +1,4 @@
-package gregicadditions.machines.miner;
+package gregicadditions.machines.multi.miner;
 
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
@@ -122,6 +122,8 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
 		tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
 		tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
+		tooltip.add(I18n.format("gtadditions.machine.miner.description"));
+		tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));
 	}
 
 	public boolean drainEnergy() {

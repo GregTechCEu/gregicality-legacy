@@ -178,6 +178,8 @@ metaitem.energy.module.name=Energy Module
 metaitem.energy.cluster.name=Energy Cluster
 metaitem.max.battery.name=MAX Battery
 
+gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
+
 gtadditions.machine.circuit_assembler.lv.name=Basic Circuit Assembling Machine
 gtadditions.machine.circuit_assembler.mv.name=Advanced Circuit Assembling Machine
 gtadditions.machine.circuit_assembler.hv.name=Advanced Circuit Assembling Machine II
@@ -456,6 +458,8 @@ gtadditions.machine.world_accelerator.iv.name=Advanced World Accelerator IV
 gtadditions.machine.world_accelerator.luv.name=Advanced World Accelerator V
 gtadditions.machine.world_accelerator.zpm.name=Advanced World Accelerator VI
 gtadditions.machine.world_accelerator.uv.name=Advanced World Accelerator VII
+gtadditions.machine.world_accelerator.description=Increase tick update per tick. 2 modes: TileEntity or Random Tick. Use screwdriver to change mode.
+gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d.
 
 gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Throium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
@@ -466,6 +470,16 @@ gtadditions.machine.replicator.tooltip=Producing The Purest Of Elements
 gtadditions.machine.fusion_reactor.luv.name=Fusion Reactor Computer Mark 1
 gtadditions.machine.fusion_reactor.zpm.name=Fusion Reactor Computer Mark 2
 gtadditions.machine.fusion_reactor.uv.name=Fusion Reactor Computer Mark 3
+gtadditions.machine.miner.lv.name=Basic Chunk Miner
+gtadditions.machine.miner.mv.name=Advanced Chunk Miner
+gtadditions.machine.miner.hv.name=Advanced Chunk Miner II
+gtadditions.machine.miner.basic.name=Basic Large Miner
+gtadditions.machine.miner.large.name=Large Miner
+gtadditions.machine.miner.advance.name=Advance Large Miner
+gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d. Break down Ore as Hammer tool using fortune %d.
+gtadditions.machine.miner.description=Mine all ores in the current chunk.
+gtadditions.machine.miner.fluid_usage=Consume %dmb of %s per tick
+
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet

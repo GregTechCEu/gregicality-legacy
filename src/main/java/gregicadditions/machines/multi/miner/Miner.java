@@ -1,4 +1,4 @@
-package gregicadditions.machines.miner;
+package gregicadditions.machines.multi.miner;
 
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;

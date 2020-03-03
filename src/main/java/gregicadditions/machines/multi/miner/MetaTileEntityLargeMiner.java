@@ -1,4 +1,4 @@
-package gregicadditions.machines.miner;
+package gregicadditions.machines.multi.miner;
 
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
@@ -23,12 +23,12 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
@@ -40,12 +40,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -79,6 +81,8 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 	public void invalidateStructure() {
 		super.invalidateStructure();
 		resetTileAbilities();
+		if (isActive)
+			setActive(false);
 	}
 
 	@Override
@@ -112,22 +116,21 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
 	@Override
 	public long getNbBlock() {
-		return (GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV) * 10;
+		return GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
 	}
 
 	@Override
 	protected void updateFormedValid() {
-		if (!getWorld().isRemote && !done) {
-			if (!drainEnergy()) {
-				setActive(false);
+		if (!getWorld().isRemote) {
+			if (!done && !drainEnergy()) {
+				if (isActive)
+					setActive(false);
 				return;
 			}
-			if (wasActiveAndNeedsUpdate) {
-				wasActiveAndNeedsUpdate = false;
-			} else {
+
+			if (!isActive)
 				setActive(true);
-				wasActiveAndNeedsUpdate = true;
-			}
+
 			WorldServer world = (WorldServer) this.getWorld();
 			ChunkPos chunkPos = world.getChunk(getPos()).getPos();
 			BlockPos origin = null;
@@ -151,20 +154,20 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 				}
 			}
 
-			if(currentChunk.intValue() == chunks.size()){
+			if (currentChunk.intValue() == chunks.size()) {
 				setActive(false);
 				return;
 			}
 
 			Chunk chunk = chunks.get(currentChunk.intValue());
 
-			if (x.get() == Long.MAX_VALUE || x.get() == 0) {
+			if (x.get() == Long.MAX_VALUE) {
 				x.set(chunk.getPos().getXStart());
 			}
-			if (z.get() == Long.MAX_VALUE || z.get() == 0) {
+			if (z.get() == Long.MAX_VALUE) {
 				z.set(chunk.getPos().getZStart());
 			}
-			if (y.get() == Long.MAX_VALUE || y.get() == 0) {
+			if (y.get() == Long.MAX_VALUE) {
 				y.set(getPos().getY());
 			}
 
@@ -182,11 +185,12 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
 			if (y.get() < 0) {
 				currentChunk.incrementAndGet();
-				x.set(chunks.get(currentChunk.intValue()).getPos().getXStart());
-				z.set(chunks.get(currentChunk.intValue()).getPos().getZStart());
-				y.set(getPos().getY());
-				if (currentChunk.get() == chunks.size()) {
+				if (currentChunk.get() <= chunks.size()) {
 					done = true;
+				}else{
+					x.set(chunks.get(currentChunk.intValue()).getPos().getXStart());
+					z.set(chunks.get(currentChunk.intValue()).getPos().getZStart());
+					y.set(getPos().getY());
 				}
 			}
 
@@ -219,6 +223,12 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 				.where('F', statePredicate(MetaBlocks.FRAMES.get(material).getDefaultState()))
 				.where('#', blockWorldState -> true)
 				.build();
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.format("gtadditions.machine.miner.multi.description", type.chunk, type.chunk, type.fortune));
+		tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));
 	}
 
 	@Override
@@ -286,7 +296,6 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 	}
 
 	protected void setActive(boolean active) {
-		GTLog.logger.info("ICI------------------");
 		this.isActive = active;
 		markDirty();
 		if (!getWorld().isRemote) {
@@ -296,6 +305,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
 	@Override
 	public void receiveCustomData(int dataId, PacketBuffer buf) {
+		super.receiveCustomData(dataId, buf);
 		if (dataId == 1) {
 			this.isActive = buf.readBoolean();
 			getHolder().scheduleChunkForRenderUpdate();
