@@ -3,8 +3,9 @@ package gregicadditions.machines;
 import gregicadditions.GAConfig;
 import gregicadditions.GregicAdditions;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.machines.miner.MetaTileEntityChunkMiner;
+import gregicadditions.machines.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.miner.Miner;
-import gregicadditions.machines.miner.TileEntityMiner;
 import gregicadditions.machines.multi.advance.TileEntityVolcanus;
 import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregicadditions.machines.multi.override.*;
@@ -87,6 +88,7 @@ public class GATileEntities {
 	public static TileEntityLargeExtruder LARGE_EXTRUDER;
 	public static TileEntityVolcanus VOLCANUS;
 	public static TileEntityLargeAssembler LARGE_ASSEMBLER;
+	public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
 
 	//Nuclear
 	public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
@@ -123,7 +125,7 @@ public class GATileEntities {
 	public static MetaTileEntityPump[] PUMP = new MetaTileEntityPump[8];
 	public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
 	public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
-	public static TileEntityMiner[] MINER = new TileEntityMiner[3];
+	public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3];
 
 	public static void init() {
 
@@ -499,6 +501,9 @@ public class GATileEntities {
 		BOILING_WATER_THORIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor.thorium"), BoilingWaterReactor.RodType.THORIUM));
 		BOILING_WATER_URANIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2546, new BoilingWaterReactor(location("boiling_water_reactor.uranium"), BoilingWaterReactor.RodType.URANIUM));
 		BOILING_WATER_PLUTONIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2547, new BoilingWaterReactor(location("boiling_water_reactor.plutonium"), BoilingWaterReactor.RodType.PLUTONIUM));
+		LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
+		LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
+		LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advence"), Miner.Type.ADVANCE, Materials.HSSS));
 
 		if (GAConfig.GT6.registerDums) {
 			WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
@@ -540,9 +545,9 @@ public class GATileEntities {
 			WORLD_ACCELERATOR[6] = GregTechAPI.registerMetaTileEntity(2219, new TileEntityWorldAccelerator(location("world_accelerator.zpm"), 7));
 			WORLD_ACCELERATOR[7] = GregTechAPI.registerMetaTileEntity(2220, new TileEntityWorldAccelerator(location("world_accelerator.uv"), 8));
 		}
-		MINER[0] = GregTechAPI.registerMetaTileEntity(2221, new TileEntityMiner(location("miner.lv"), Miner.Type.LV, 1));
-		MINER[1] = GregTechAPI.registerMetaTileEntity(2222, new TileEntityMiner(location("miner.mv"), Miner.Type.MV, 2));
-		MINER[2] = GregTechAPI.registerMetaTileEntity(2223, new TileEntityMiner(location("miner.hv"), Miner.Type.HV, 3));
+		MINER[0] = GregTechAPI.registerMetaTileEntity(2221, new MetaTileEntityChunkMiner(location("miner.lv"), Miner.Type.LV, 1));
+		MINER[1] = GregTechAPI.registerMetaTileEntity(2222, new MetaTileEntityChunkMiner(location("miner.mv"), Miner.Type.MV, 2));
+		MINER[2] = GregTechAPI.registerMetaTileEntity(2223, new MetaTileEntityChunkMiner(location("miner.hv"), Miner.Type.HV, 3));
 	}
 
 	private static ResourceLocation location(String name) {

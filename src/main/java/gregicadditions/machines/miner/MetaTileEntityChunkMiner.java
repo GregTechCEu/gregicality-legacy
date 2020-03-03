@@ -37,9 +37,10 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class TileEntityMiner extends TieredMetaTileEntity {
+public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Miner {
 
 	private final int inventorySize;
 	private final long energyPerTick;
@@ -47,7 +48,7 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 	private AtomicLong x = new AtomicLong(Long.MAX_VALUE), y = new AtomicLong(Long.MAX_VALUE), z = new AtomicLong(Long.MAX_VALUE);
 	private final ItemStackHandler containerInventory;
 
-	public TileEntityMiner(ResourceLocation metaTileEntityId, Miner.Type type, int tier) {
+	public MetaTileEntityChunkMiner(ResourceLocation metaTileEntityId, Miner.Type type, int tier) {
 		super(metaTileEntityId, tier);
 		this.inventorySize = (tier + 1) * (tier + 1);
 		this.energyPerTick = GTValues.V[tier];
@@ -58,12 +59,13 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 
 	@Override
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new TileEntityMiner(metaTileEntityId, type, getTier());
+		return new MetaTileEntityChunkMiner(metaTileEntityId, type, getTier());
 	}
 
 	@Override
 	protected FluidTankList createImportFluidHandler() {
-		return new FluidTankList(false, new FilteredFluidHandler(16000));
+		return new FluidTankList(false, new FilteredFluidHandler(16000)
+				.setFillPredicate(fluidStack -> Objects.requireNonNull(Materials.DrillingFluid.getFluid(0)).isFluidEqual(fluidStack)));
 	}
 
 	@Override
@@ -130,7 +132,6 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 			this.exportFluids.drain(drillingFluid, true);
 			return true;
 		}
-
 		return false;
 	}
 
@@ -138,9 +139,11 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 	@Override
 	public void update() {
 		super.update();
-		if (!getWorld().isRemote /*&& energyContainer.getEnergyStored() >= energyPerTick*/) {
+		if (!getWorld().isRemote) {
 			fillInternalTankFromFluidContainer(containerInventory, containerInventory, 0, 1);
-//			energyContainer.removeEnergy(energyPerTick);
+			if (!drainEnergy()) {
+				return;
+			}
 			WorldServer world = (WorldServer) this.getWorld();
 			Chunk chuck = world.getChunk(getPos());
 			ChunkPos chunkPos = chuck.getPos();
@@ -154,9 +157,7 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 				y.set(getPos().getY());
 			}
 
-
 			List<BlockPos> blockPos = Miner.getBlockToMinePerChunk(this, x, y, z, chuck.getPos());
-
 			blockPos.forEach(blockPos1 -> {
 				NonNullList<ItemStack> itemStacks = NonNullList.create();
 				IBlockState blockState = this.getWorld().getBlockState(blockPos1);
@@ -166,7 +167,6 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 					world.destroyBlock(blockPos1, false);
 				}
 			});
-
 
 			if (!getWorld().isRemote && getTimer() % 5 == 0) {
 				pushItemsIntoNearbyHandlers(getFrontFacing());
@@ -189,5 +189,10 @@ public class TileEntityMiner extends TieredMetaTileEntity {
 		x.set(data.getLong("xPos"));
 		y.set(data.getLong("yPos"));
 		z.set(data.getLong("zPos"));
+	}
+
+	@Override
+	public Type getType() {
+		return type;
 	}
 }

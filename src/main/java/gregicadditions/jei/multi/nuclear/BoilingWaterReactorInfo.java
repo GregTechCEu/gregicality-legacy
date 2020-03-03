@@ -44,7 +44,7 @@ public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 				.aisle("##CCCCCCC##", "###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###", "##CCCCCCC##")
 				.aisle("###CCCCC###", "#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####", "###CCCCC###")
 				.aisle("#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####")
-				.where('S', reactor, EnumFacing.SOUTH)
+				.where('S', reactor, EnumFacing.WEST)
 				.where('R', reactor.rodType.casingState)
 				.where('Y', GAMetaBlocks.METAL_CASING.get(Materials.Lead).getDefaultState())
 				.where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
