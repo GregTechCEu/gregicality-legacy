@@ -6,6 +6,8 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.ceu.utils.CeuCraftingHelper;
+import gregicadditions.machines.ceu.utils.CeuType;
 import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -363,6 +365,12 @@ public class MachineCraftingRecipes {
 		registerMachineRecipe(GATileEntities.MASS_FAB, "CFC", "QMQ", "CFC", 'M', HULL, 'Q', CABLE_QUAD, 'C', BETTER_CIRCUIT, 'F', FIELD_GENERATOR);
 		registerMachineRecipe(GATileEntities.REPLICATOR, "EFE", "CMC", "EQE", 'M', HULL, 'Q', CABLE_QUAD, 'C', BETTER_CIRCUIT, 'F', FIELD_GENERATOR, 'E', EMITTER);
 		if (GAConfig.Misc.highTierCollector) registerMachineRecipe(GATileEntities.AIR_COLLECTOR, "WFW", "PHP", "WCW", 'W', Blocks.IRON_BARS, 'F', MetaItems.ITEM_FILTER, 'P', PUMP, 'H', HULL, 'C', CIRCUIT);
+
+		for (final CeuType type : CeuType.values()) {
+			if (GATileEntities.CEUS.containsKey(type)) {
+				GATileEntities.CEUS.get(type).forEach(CeuCraftingHelper.HELPER.logic(type));
+			}
+		}
 	}
 
 	public static <T extends MetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {

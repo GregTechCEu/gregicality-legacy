@@ -224,6 +224,19 @@ public class GAConfig {
 		public boolean GregsConstructGlassProcessing = true;
 	}
 
+	@Config.Comment("Config options for ceu features")
+	public static CEU ceu = new CEU();
+	public static class CEU{
+		public boolean Disable = false;
+		@Config.Comment("True if you want CEU & CEF to accept batteries with same voltage as CEU/CEF's. False if you want CEU & CEF to accept any tier of batteries.")
+		public boolean PermitOnlyExactVoltage = false;
+
+		@Config.Comment("Ratio FE to GTCE")
+		public int Ratio = 4;
+
+
+	}
+
 	@Config.Comment("Config options of miscellaneous features")
 	public static Misc Misc = new Misc();
 

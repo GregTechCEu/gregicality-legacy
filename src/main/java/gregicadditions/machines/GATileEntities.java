@@ -1,12 +1,17 @@
 package gregicadditions.machines;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
 import gregicadditions.GregicAdditions;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.machines.ceu.MTECeu;
+import gregicadditions.machines.ceu.utils.CeuType;
+import gregicadditions.machines.ceu.utils.ConverterType;
+import gregicadditions.machines.multi.advance.TileEntityVolcanus;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.Miner;
-import gregicadditions.machines.multi.advance.TileEntityVolcanus;
 import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
@@ -69,6 +74,7 @@ public class GATileEntities {
 	public static SimpleMachineMetaTileEntity[] REPLICATOR = new SimpleMachineMetaTileEntity[8];
 	public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
 	public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
+	public static ListMultimap<CeuType, MTECeu> CEUS = ArrayListMultimap.create();
 
 	//multiblock
 	public static TileEntityAssemblyLine ASSEMBLY_LINE;
@@ -504,6 +510,17 @@ public class GATileEntities {
 		LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
 		LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
 		LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advence"), Miner.Type.ADVANCE, Materials.HSSS));
+
+		int id = 2551;
+		for (final ConverterType t : ConverterType.values()) {
+			for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
+				for (int slot = 1; slot <= 4; ++slot) {
+					final String vn = GTValues.VN[tier].toLowerCase();
+					CEUS.put(t.getCeuType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCeuType() + "." + vn + "." + slot * slot), tier, t.getCeuType(), slot)));
+					CEUS.put(t.getCefType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCefType() + "." + vn + "." + slot * slot), tier, t.getCefType(), slot)));
+				}
+			}
+		}
 
 		if (GAConfig.GT6.registerDums) {
 			WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
