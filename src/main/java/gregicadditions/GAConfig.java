@@ -233,8 +233,13 @@ public class GAConfig {
 
 		@Config.Comment("Ratio FE to GTCE")
 		public int Ratio = 4;
+	}
 
-
+	@Config.Comment("Config options for exNihilo features")
+	public static ExNihilo exNihilo = new ExNihilo();
+	public static class ExNihilo{
+		public boolean Disable = false;
+		public boolean highTierSieve = true;
 	}
 
 	@Config.Comment("Config options of miscellaneous features")

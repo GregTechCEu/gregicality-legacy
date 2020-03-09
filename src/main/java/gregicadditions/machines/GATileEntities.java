@@ -28,6 +28,7 @@ import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 
 public class GATileEntities {
 	public static SimpleMachineMetaTileEntity[] CIRCUITASSEMBLER = new SimpleMachineMetaTileEntity[8];
@@ -74,6 +75,7 @@ public class GATileEntities {
 	public static SimpleMachineMetaTileEntity[] REPLICATOR = new SimpleMachineMetaTileEntity[8];
 	public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
 	public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
+	public static SimpleMachineMetaTileEntity[] SIEVES  = new SimpleMachineMetaTileEntity[8];
 	public static ListMultimap<CeuType, MTECeu> CEUS = ArrayListMultimap.create();
 
 	//multiblock
@@ -565,6 +567,19 @@ public class GATileEntities {
 		MINER[0] = GregTechAPI.registerMetaTileEntity(2221, new MetaTileEntityChunkMiner(location("miner.lv"), Miner.Type.LV, 1));
 		MINER[1] = GregTechAPI.registerMetaTileEntity(2222, new MetaTileEntityChunkMiner(location("miner.mv"), Miner.Type.MV, 2));
 		MINER[2] = GregTechAPI.registerMetaTileEntity(2223, new MetaTileEntityChunkMiner(location("miner.hv"), Miner.Type.HV, 3));
+
+		if(!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")){
+			SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new SimpleMachineMetaTileEntity(location("sieve.lv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
+			SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new SimpleMachineMetaTileEntity(location("sieve.mv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));
+			SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new SimpleMachineMetaTileEntity(location("sieve.hv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 3));
+			SIEVES[3] = GregTechAPI.registerMetaTileEntity(2227, new SimpleMachineMetaTileEntity(location("sieve.ev"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 4));
+			if (GAConfig.exNihilo.highTierSieve) {
+				SIEVES[4] = GregTechAPI.registerMetaTileEntity(2228, new SimpleMachineMetaTileEntity(location("sieve.iv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 5));
+				SIEVES[5] = GregTechAPI.registerMetaTileEntity(2229, new SimpleMachineMetaTileEntity(location("sieve.luv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 6));
+				SIEVES[6] = GregTechAPI.registerMetaTileEntity(2230, new SimpleMachineMetaTileEntity(location("sieve.zpm"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 7));
+				SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new SimpleMachineMetaTileEntity(location("sieve.uv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 8));
+			}
+		}
 	}
 
 	private static ResourceLocation location(String name) {

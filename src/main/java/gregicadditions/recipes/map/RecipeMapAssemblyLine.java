@@ -1,4 +1,4 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.map;
 
 import java.util.function.DoubleSupplier;
 

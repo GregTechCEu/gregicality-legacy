@@ -1,5 +1,8 @@
 package gregicadditions.recipes;
 
+import exnihilocreatio.compatibility.jei.sieve.SieveRecipe;
+import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
+import exnihilocreatio.registries.types.Siftable;
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.EnumElectronTube;
@@ -15,6 +18,7 @@ import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -1348,5 +1352,33 @@ public class GARecipeAddition {
 				ModHandler.removeFurnaceSmelting(woodStack);
 			}
 		}
+
+		if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio"))
+
+			for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
+				for (ItemStack sievable : recipe.getSievables()) {
+					ItemStack mesh = recipe.getMesh();
+					SimpleRecipeBuilder builder = GARecipeMaps.SIEVE_RECIPES.recipeBuilder()
+							.notConsumable(mesh)
+							.inputs(sievable)
+							.duration(100)
+							.EUt(4);
+					for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(sievable)) {
+						if (siftable.getMeshLevel() == mesh.getMetadata()) {
+							builder.chancedOutput(
+									siftable.getDrop().getItemStack(),
+									floatChanceToIntChance(siftable.getChance()),
+									750
+							);
+						}
+					}
+					builder.buildAndRegister();
+				}
+			}
+	}
+
+	private static int floatChanceToIntChance(float chance) {
+		float getMaxChancedValueAsFloat = (float) Recipe.getMaxChancedValue();
+		return (int) (chance * getMaxChancedValueAsFloat);
 	}
 }
