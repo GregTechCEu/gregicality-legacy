@@ -59,15 +59,7 @@ public enum Energy {
 	}
 
 	public String getName() {
-		return I18n.format("ceu.energy." + this.name);
-	}
-
-	public String getSimpleName() {
-		return I18n.format("ceu.energy.simple." + this.name);
-	}
-
-	public String getRawName() {
-		return this.name;
+		return I18n.format("gtadditions.ceu.energy." + this.name);
 	}
 
 	public int getDefaultConversionRate() {

@@ -1,4 +1,4 @@
-package gregicadditions.bees;
+package gregicadditions.integrations.bees;
 
 import com.google.common.collect.ImmutableMap;
 

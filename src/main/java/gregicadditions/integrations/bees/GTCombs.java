@@ -1,4 +1,4 @@
-package gregicadditions.bees;
+package gregicadditions.integrations.bees;
 
 import java.awt.Color;
 import java.util.Locale;

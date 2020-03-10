@@ -1,14 +1,8 @@
-package gregicadditions.tconstruct;
-
-import java.util.ArrayList;
+package gregicadditions.integrations.tconstruct;
 
 import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.GemMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
-import gregtech.api.unification.material.type.SolidMaterial;
+import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Items;
@@ -17,6 +11,8 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
+
+import java.util.ArrayList;
 
 public class TinkersMaterials {
 	private static ArrayList<slimeknights.tconstruct.library.materials.Material> ingotMaterials = new ArrayList<>();

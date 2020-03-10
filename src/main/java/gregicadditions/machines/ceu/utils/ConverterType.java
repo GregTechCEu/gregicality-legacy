@@ -58,18 +58,5 @@ public enum ConverterType {
 		return isCeu ? this.ceuOutput : Energy.GTEU;
 	}
 
-	public boolean uses(final Energy energy) {
-		return energy == Energy.GTEU || this.ceuOutput == energy;
-	}
 
-	public boolean isDisabledByDefault() {
-		switch (this) {
-			case CEU_CEF: {
-				return false;
-			}
-			default: {
-				throw new IllegalArgumentException();
-			}
-		}
-	}
 }

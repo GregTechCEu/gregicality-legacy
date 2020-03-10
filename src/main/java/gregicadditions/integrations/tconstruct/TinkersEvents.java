@@ -1,4 +1,4 @@
-package gregicadditions.tconstruct;
+package gregicadditions.integrations.tconstruct;
 
 import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;

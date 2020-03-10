@@ -2,7 +2,7 @@ package gregicadditions.recipes;
 
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.recipes.map.RecipeMapAssemblyLine;
-import gregicadditions.recipes.map.SieveRecipeMap;
+import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;

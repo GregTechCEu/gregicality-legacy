@@ -42,6 +42,7 @@ public enum CeuType implements CeuCraftingHelper.RecipeFunction {
 	}
 
 	public Ratio ratio(final int tier) {
+		this.
 		return Ratio.ratioOf(1, GAConfig.ceu.Ratio);
 	}
 

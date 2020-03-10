@@ -1,8 +1,4 @@
-package gregicadditions.tconstruct;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package gregicadditions.integrations.tconstruct;
 
 import gregicadditions.GAConfig;
 import gregtech.api.recipes.RecipeMaps;
@@ -15,6 +11,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.tconstruct.shared.TinkerCommons;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TinkersGtRecipes {
 	public static void init() {

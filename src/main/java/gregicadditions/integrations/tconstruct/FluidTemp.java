@@ -1,4 +1,4 @@
-package gregicadditions.tconstruct;
+package gregicadditions.integrations.tconstruct;
 
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.type.DustMaterial;

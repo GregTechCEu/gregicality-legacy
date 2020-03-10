@@ -1,4 +1,4 @@
-package gregicadditions.bees;
+package gregicadditions.integrations.bees;
 
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;

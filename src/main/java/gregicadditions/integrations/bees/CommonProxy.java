@@ -1,4 +1,4 @@
-package gregicadditions.bees;
+package gregicadditions.integrations.bees;
 
 import forestry.api.recipes.ICentrifugeRecipe;
 import forestry.api.recipes.ISqueezerRecipe;

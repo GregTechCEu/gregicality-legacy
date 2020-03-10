@@ -1,4 +1,4 @@
-package gregicadditions.bees;
+package gregicadditions.integrations.bees;
 
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;

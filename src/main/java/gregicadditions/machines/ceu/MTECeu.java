@@ -191,17 +191,17 @@ public class MTECeu extends TieredMetaTileEntity implements CeuCharger {
 	}
 
 	public void addInformation(final ItemStack stack, @Nullable final World player, final List<String> tooltip, final boolean advanced) {
-		tooltip.add(I18n.format("ceu.description", this.type.getInput(), this.type.getOutput()));
+		tooltip.add(I18n.format("gtadditions.ceu.description", this.type.getInput(), this.type.getOutput()));
 		tooltip.add(I18n.format("gregtech.universal.tooltip.item_storage_capacity", this.invSize));
 		if (this.getType().isDisabled(this.getTier())) {
-			tooltip.add(I18n.format("ceu.disabled"));
+			tooltip.add(I18n.format("gtadditions.ceu.disabled"));
 		} else {
 			if (this.type.getInput() == Energy.GTEU) {
 				tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", this.energyStorage.getInputVoltage(), GTValues.VN[this.getTier()]));
 			} else {
 				tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", this.energyStorage.getOutputVoltage(), GTValues.VN[this.getTier()]));
 			}
-			tooltip.add(I18n.format(this.isCeu() ? "ceu.energy_out" : "ceu.energy_in", this.type.getConverterType().getCeuOutput(), this.ratioGteuAsInput().convert(GTValues.V[this.getTier()] * this.invSize, this.type.getConverterType().getCeuOutput().getNumberType())));
+			tooltip.add(I18n.format(this.isCeu() ? "gtadditions.ceu.energy_out" : "gtadditions.ceu.energy_in", this.type.getConverterType().getCeuOutput(), this.ratioGteuAsInput().convert(GTValues.V[this.getTier()] * this.invSize, this.type.getConverterType().getCeuOutput().getNumberType())));
 			tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", this.energyStorage.getEnergyCapacity()));
 		}
 	}

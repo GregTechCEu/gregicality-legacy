@@ -939,3 +939,119 @@ material.amethyst.name=Amethyst
 material.garnet_red.name=Red Garnet
 material.garnet_yellow.name=Yellow Garnet
 material.vinteum.name=Vinteum
+
+
+
+
+gtadditions.machine.ceu.ulv.1.name=CEU (ULV)
+gtadditions.machine.ceu.ulv.4.name=CEU (ULV)
+gtadditions.machine.ceu.ulv.9.name=CEU (ULV)
+gtadditions.machine.ceu.ulv.16.name=CEU (ULV)
+
+gtadditions.machine.ceu.lv.1.name=CEU (LV)
+gtadditions.machine.ceu.lv.4.name=CEU (LV)
+gtadditions.machine.ceu.lv.9.name=CEU (LV)
+gtadditions.machine.ceu.lv.16.name=CEU (LV)
+
+gtadditions.machine.ceu.mv.1.name=CEU (MV)
+gtadditions.machine.ceu.mv.4.name=CEU (MV)
+gtadditions.machine.ceu.mv.9.name=CEU (MV)
+gtadditions.machine.ceu.mv.16.name=CEU (MV)
+
+gtadditions.machine.ceu.hv.1.name=CEU (HV)
+gtadditions.machine.ceu.hv.4.name=CEU (HV)
+gtadditions.machine.ceu.hv.9.name=CEU (HV)
+gtadditions.machine.ceu.hv.16.name=CEU (HV)
+
+gtadditions.machine.ceu.ev.1.name=CEU (EV)
+gtadditions.machine.ceu.ev.4.name=CEU (EV)
+gtadditions.machine.ceu.ev.9.name=CEU (EV)
+gtadditions.machine.ceu.ev.16.name=CEU (EV)
+
+gtadditions.machine.ceu.iv.1.name=CEU (IV)
+gtadditions.machine.ceu.iv.4.name=CEU (IV)
+gtadditions.machine.ceu.iv.9.name=CEU (IV)
+gtadditions.machine.ceu.iv.16.name=CEU (IV)
+
+gtadditions.machine.ceu.luv.1.name=CEU (LuV)
+gtadditions.machine.ceu.luv.4.name=CEU (LuV)
+gtadditions.machine.ceu.luv.9.name=CEU (LuV)
+gtadditions.machine.ceu.luv.16.name=CEU (LuV)
+
+gtadditions.machine.ceu.zpm.1.name=CEU (ZPM)
+gtadditions.machine.ceu.zpm.4.name=CEU (ZPM)
+gtadditions.machine.ceu.zpm.9.name=CEU (ZPM)
+gtadditions.machine.ceu.zpm.16.name=CEU (ZPM)
+
+gtadditions.machine.ceu.uv.1.name=CEU (UV)
+gtadditions.machine.ceu.uv.4.name=CEU (UV)
+gtadditions.machine.ceu.uv.9.name=CEU (UV)
+gtadditions.machine.ceu.uv.16.name=CEU (UV)
+
+gtadditions.machine.ceu.max.1.name=CEU (MAX)
+gtadditions.machine.ceu.max.4.name=CEU (MAX)
+gtadditions.machine.ceu.max.9.name=CEU (MAX)
+gtadditions.machine.ceu.max.16.name=CEU (MAX)
+
+
+gtadditions.machine.cef.ulv.1.name=CEF (ULV)
+gtadditions.machine.cef.ulv.4.name=CEF (ULV)
+gtadditions.machine.cef.ulv.9.name=CEF (ULV)
+gtadditions.machine.cef.ulv.16.name=CEF (ULV)
+
+gtadditions.machine.cef.lv.1.name=CEF (LV)
+gtadditions.machine.cef.lv.4.name=CEF (LV)
+gtadditions.machine.cef.lv.9.name=CEF (LV)
+gtadditions.machine.cef.lv.16.name=CEF (LV)
+
+gtadditions.machine.cef.mv.1.name=CEF (MV)
+gtadditions.machine.cef.mv.4.name=CEF (MV)
+gtadditions.machine.cef.mv.9.name=CEF (MV)
+gtadditions.machine.cef.mv.16.name=CEF (MV)
+
+gtadditions.machine.cef.hv.1.name=CEF (HV)
+gtadditions.machine.cef.hv.4.name=CEF (HV)
+gtadditions.machine.cef.hv.9.name=CEF (HV)
+gtadditions.machine.cef.hv.16.name=CEF (HV)
+
+gtadditions.machine.cef.ev.1.name=CEF (EV)
+gtadditions.machine.cef.ev.4.name=CEF (EV)
+gtadditions.machine.cef.ev.9.name=CEF (EV)
+gtadditions.machine.cef.ev.16.name=CEF (EV)
+
+gtadditions.machine.cef.iv.1.name=CEF (IV)
+gtadditions.machine.cef.iv.4.name=CEF (IV)
+gtadditions.machine.cef.iv.9.name=CEF (IV)
+gtadditions.machine.cef.iv.16.name=CEF (IV)
+
+gtadditions.machine.cef.luv.1.name=CEF (LuV)
+gtadditions.machine.cef.luv.4.name=CEF (LuV)
+gtadditions.machine.cef.luv.9.name=CEF (LuV)
+gtadditions.machine.cef.luv.16.name=CEF (LuV)
+
+gtadditions.machine.cef.zpm.1.name=CEF (ZPM)
+gtadditions.machine.cef.zpm.4.name=CEF (ZPM)
+gtadditions.machine.cef.zpm.9.name=CEF (ZPM)
+gtadditions.machine.cef.zpm.16.name=CEF (ZPM)
+
+gtadditions.machine.cef.uv.1.name=CEF (UV)
+gtadditions.machine.cef.uv.4.name=CEF (UV)
+gtadditions.machine.cef.uv.9.name=CEF (UV)
+gtadditions.machine.cef.uv.16.name=CEF (UV)
+
+gtadditions.machine.cef.max.1.name=CEF (MAX)
+gtadditions.machine.cef.max.4.name=CEF (MAX)
+gtadditions.machine.cef.max.9.name=CEF (MAX)
+gtadditions.machine.cef.max.16.name=CEF (MAX)
+
+gtadditions.ceu.energy.fe=FE
+gtadditions.ceu.energy.gteu=GTEU
+gtadditions.ceu.energy.simple.fe=FE
+gtadditions.ceu.energy.simple.gteu=EU
+
+gtadditions.ceu.energy_out=Maximum %s OUT: §e%d FE§7/tick
+gtadditions.ceu.energy_in=Maximum %s IN: §e%d FE§7/tick
+gtadditions.ceu.description=Converts %s to %s
+gtadditions.ceu=Converts EU to FE
+gtadditions.cef=Converts FE to EU
+gtadditions.ceu.disabled=§cDisabled
