@@ -140,7 +140,7 @@ public class MTECeu extends TieredMetaTileEntity implements CeuCharger {
 	}
 
 	public Ratio ratio() {
-		return this.getType().ratio(this.getTier());
+		return this.getType().ratio();
 	}
 
 	public Ratio ratioGteuAsInput() {
@@ -152,7 +152,7 @@ public class MTECeu extends TieredMetaTileEntity implements CeuCharger {
 	}
 
 	public boolean isThisEnabled() {
-		return !this.getType().isDisabled(this.getTier());
+		return !this.getType().isDisabled();
 	}
 
 	public boolean isCeu() {
@@ -193,7 +193,7 @@ public class MTECeu extends TieredMetaTileEntity implements CeuCharger {
 	public void addInformation(final ItemStack stack, @Nullable final World player, final List<String> tooltip, final boolean advanced) {
 		tooltip.add(I18n.format("gtadditions.ceu.description", this.type.getInput(), this.type.getOutput()));
 		tooltip.add(I18n.format("gregtech.universal.tooltip.item_storage_capacity", this.invSize));
-		if (this.getType().isDisabled(this.getTier())) {
+		if (this.getType().isDisabled()) {
 			tooltip.add(I18n.format("gtadditions.ceu.disabled"));
 		} else {
 			if (this.type.getInput() == Energy.GTEU) {

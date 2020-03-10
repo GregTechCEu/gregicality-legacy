@@ -8,17 +8,12 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.metatileentities.MetaTileEntities;
-import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class CeuCraftingHelper {
 	public static final CeuCraftingHelper HELPER;
-	private ItemStack[] hulls;
-	private Object[] circuits;
-	private UnificationEntry[][] wires;
 	private UnificationEntry[] redCables;
 	private UnificationEntry[][] cables;
 
@@ -31,66 +26,13 @@ public class CeuCraftingHelper {
 		};
 	}
 
-	public ItemStack hull(final int tier) {
-		if (this.hulls == null) {
-			this.hulls = new ItemStack[MetaTileEntities.HULL.length];
-			for (int i = 0; i < this.hulls.length; ++i) {
-				this.hulls[i] = MetaTileEntities.HULL[i].getStackForm();
-			}
-		}
-		return this.hulls[tier];
-	}
 
-	public Object circuit(final int tier) {
-		if (this.circuits == null) {
-			this.circuits = new Object[GTValues.V.length];
-			for (int i = 0; i < GTValues.V.length; ++i) {
-				this.circuits[i] = circuitGTCE(i);
-			}
-		}
-		return this.circuits[tier];
-	}
-
-	private static Object circuitGTCE(final int tier) {
-		switch (tier) {
-			case 0: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
-			}
-			case 1: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
-			}
-			case 2: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-			}
-			case 3: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
-			}
-			case 4: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
-			}
-			case 5: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-			}
-			case 6: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Master);
-			}
-			case 7: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
-			}
-			case 8: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-			}
-			default: {
-				return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-			}
-		}
-	}
 
 	public UnificationEntry redCable(final int stack) {
 		if (this.redCables == null) {
 			this.redCables = new UnificationEntry[4];
 			for (int slot = 0; slot < 4; ++slot) {
-				this.redCables[slot] = new UnificationEntry(this.prefixCable(slot + 1), (Material) Materials.RedAlloy);
+				this.redCables[slot] = new UnificationEntry(this.prefixCable(slot + 1), Materials.RedAlloy);
 			}
 		}
 		return this.redCables[stack - 1];
@@ -111,31 +53,31 @@ public class CeuCraftingHelper {
 	public Material cableMaterialByTier(final int tier) {
 		switch (tier) {
 			case 0: {
-				return (Material) Materials.Lead;
+				return Materials.Lead;
 			}
 			case 1: {
-				return (Material) Materials.Tin;
+				return Materials.Tin;
 			}
 			case 2: {
-				return (Material) Materials.Copper;
+				return Materials.Copper;
 			}
 			case 3: {
-				return (Material) Materials.Gold;
+				return Materials.Gold;
 			}
 			case 4: {
-				return (Material) Materials.Aluminium;
+				return Materials.Aluminium;
 			}
 			case 5: {
-				return (Material) Materials.Tungsten;
+				return Materials.Platinum;
 			}
 			case 6: {
-				return (Material) Materials.VanadiumGallium;
+				return Materials.NiobiumTitanium;
 			}
 			case 7: {
-				return (Material) Materials.Naquadah;
+				return Materials.Naquadah;
 			}
 			case 8: {
-				return (Material) Materials.NaquadahAlloy;
+				return Materials.NaquadahAlloy;
 			}
 			default: {
 				return MarkerMaterials.Tier.Superconductor;
@@ -156,23 +98,6 @@ public class CeuCraftingHelper {
 			}
 			default: {
 				return OrePrefix.cableGtHex;
-			}
-		}
-	}
-
-	public OrePrefix prefixWire(final int stack) {
-		switch (stack) {
-			case 1: {
-				return OrePrefix.wireGtSingle;
-			}
-			case 2: {
-				return OrePrefix.wireGtQuadruple;
-			}
-			case 3: {
-				return OrePrefix.wireGtOctal;
-			}
-			default: {
-				return OrePrefix.wireGtHex;
 			}
 		}
 	}

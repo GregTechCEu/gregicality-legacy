@@ -18,7 +18,7 @@ import static gregtech.api.GTValues.W;
 public enum GACraftingComponents {
 	CIRCUIT {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 					return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
@@ -45,7 +45,7 @@ public enum GACraftingComponents {
 	},
 	BETTER_CIRCUIT {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier + 1) {
 				case 0:
 					return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
@@ -72,7 +72,7 @@ public enum GACraftingComponents {
 	},
 	PUMP {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -96,7 +96,7 @@ public enum GACraftingComponents {
 	},
 	CABLE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 					return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Lead);
@@ -123,7 +123,7 @@ public enum GACraftingComponents {
 	},
 	WIRE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -141,7 +141,7 @@ public enum GACraftingComponents {
 	},
 	CABLE_QUAD {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 					return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Lead);
@@ -166,19 +166,19 @@ public enum GACraftingComponents {
 	},
 	HULL {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			return MetaTileEntities.HULL[tier].getStackForm();
 		}
 	},
 	WORSE_HULL {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			return MetaTileEntities.HULL[tier - 1].getStackForm();
 		}
 	},
 	PIPE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -203,7 +203,7 @@ public enum GACraftingComponents {
 	},
 	GLASS {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 6:
 				case 7:
@@ -216,7 +216,7 @@ public enum GACraftingComponents {
 	},
 	PLATE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -241,7 +241,7 @@ public enum GACraftingComponents {
 	},
 	MOTOR {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -265,7 +265,7 @@ public enum GACraftingComponents {
 	},
 	ROTOR {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -289,7 +289,7 @@ public enum GACraftingComponents {
 	},
 	SENSOR {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -313,7 +313,7 @@ public enum GACraftingComponents {
 	},
 	GRINDER {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -326,13 +326,13 @@ public enum GACraftingComponents {
 	},
 	DIAMOND {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			return new UnificationEntry(OrePrefix.gem, Materials.Diamond);
 		}
 	},
 	PISTON {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -356,7 +356,7 @@ public enum GACraftingComponents {
 	},
 	EMITTER {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -380,7 +380,7 @@ public enum GACraftingComponents {
 	},
 	CONVEYOR {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -404,7 +404,7 @@ public enum GACraftingComponents {
 	},
 	ROBOT_ARM {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -428,7 +428,7 @@ public enum GACraftingComponents {
 	},
 	COIL_HEATING {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -453,7 +453,7 @@ public enum GACraftingComponents {
 	},
 	COIL_ELECTRIC {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 					return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Tin);
@@ -478,7 +478,7 @@ public enum GACraftingComponents {
 	},
 	STICK_MAGNETIC {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -499,13 +499,13 @@ public enum GACraftingComponents {
 	},
 	STICK_DISTILLATION {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			return new UnificationEntry(OrePrefix.stick, Materials.Blaze);
 		}
 	},
 	FIELD_GENERATOR {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -529,7 +529,7 @@ public enum GACraftingComponents {
 	},
 	COIL_HEATING_DOUBLE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -553,7 +553,7 @@ public enum GACraftingComponents {
 	},
 	STICK_ELECTROMAGNETIC {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 0:
 				case 1:
@@ -570,7 +570,7 @@ public enum GACraftingComponents {
 	},
 	STICK_RADIOACTIVE {
 		@Override
-		Object getIngredient(int tier) {
+		public Object getIngredient(int tier) {
 			switch (tier) {
 				case 4:
 					return new UnificationEntry(OrePrefix.stick, Materials.Uranium235);
@@ -586,5 +586,5 @@ public enum GACraftingComponents {
 		}
 	};
 
-	abstract Object getIngredient(int tier);
+	public abstract Object getIngredient(int tier);
 }

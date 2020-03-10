@@ -1,19 +1,20 @@
 package gregicadditions.machines.ceu.utils;
 
 import gregicadditions.GAConfig;
+import gregicadditions.recipes.GACraftingComponents;
 import gregtech.api.items.OreDictNames;
 
 public enum CeuType implements CeuCraftingHelper.RecipeFunction {
 	CEU(ConverterType.CEU_CEF, true) {
 		@Override
 		public Object[] createRecipe(final int tier, final int slots) {
-			return new Object[]{"WTW", "RMR", "WSW", 'M', CeuCraftingHelper.HELPER.hull(tier), 'W', CeuCraftingHelper.HELPER.cable(tier, slots), 'T', OreDictNames.chestWood, 'R', CeuCraftingHelper.HELPER.redCable(slots), 'S', CeuCraftingHelper.HELPER.circuit(tier)};
+			return new Object[]{"WTW", "RMR", "WSW", 'M', GACraftingComponents.HULL.getIngredient(tier), 'W', CeuCraftingHelper.HELPER.cable(tier, slots), 'T', OreDictNames.chestWood, 'R', CeuCraftingHelper.HELPER.redCable(slots), 'S', GACraftingComponents.CIRCUIT.getIngredient(tier)};
 		}
 	},
 	CEF(ConverterType.CEU_CEF, false) {
 		@Override
 		public Object[] createRecipe(final int tier, final int slots) {
-			return new Object[]{"WSW", "RMR", "WTW", 'M', CeuCraftingHelper.HELPER.hull(tier), 'W', CeuCraftingHelper.HELPER.cable(tier, slots), 'T', OreDictNames.chestWood, 'R', CeuCraftingHelper.HELPER.redCable(slots), 'S', CeuCraftingHelper.HELPER.circuit(tier)};
+			return new Object[]{"WSW", "RMR", "WTW", 'M', GACraftingComponents.HULL.getIngredient(tier), 'W', CeuCraftingHelper.HELPER.cable(tier, slots), 'T', OreDictNames.chestWood, 'R', CeuCraftingHelper.HELPER.redCable(slots), 'S', GACraftingComponents.CIRCUIT.getIngredient(tier)};
 		}
 	};
 
@@ -41,12 +42,11 @@ public enum CeuType implements CeuCraftingHelper.RecipeFunction {
 		return this.type.getOutput(this.isCeu);
 	}
 
-	public Ratio ratio(final int tier) {
-		this.
-		return Ratio.ratioOf(1, GAConfig.ceu.Ratio);
+	public Ratio ratio() {
+		return type.getOutput(isCeu) == Energy.FE ? Ratio.ratioOf(GAConfig.ceu.Ratio, 1) : Ratio.ratioOf(1, GAConfig.ceu.Ratio);
 	}
 
-	public boolean isDisabled(final int tier) {
+	public boolean isDisabled() {
 		return GAConfig.ceu.Disable;
 	}
 
