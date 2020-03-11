@@ -128,6 +128,8 @@ public class GATileEntities {
 	public static TileEntityCrate TITANIUM_CRATE;
 	public static TileEntityCrate TUNGSTENSTEEL_CRATE;
 
+	public static SteamPump STEAM_PUMP;
+
 	public static MetaTileEntityPump[] PUMP = new MetaTileEntityPump[8];
 	public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
 	public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
@@ -565,6 +567,7 @@ public class GATileEntities {
 		MINER[0] = GregTechAPI.registerMetaTileEntity(2221, new MetaTileEntityChunkMiner(location("miner.lv"), Miner.Type.LV, 1));
 		MINER[1] = GregTechAPI.registerMetaTileEntity(2222, new MetaTileEntityChunkMiner(location("miner.mv"), Miner.Type.MV, 2));
 		MINER[2] = GregTechAPI.registerMetaTileEntity(2223, new MetaTileEntityChunkMiner(location("miner.hv"), Miner.Type.HV, 3));
+		STEAM_PUMP = GregTechAPI.registerMetaTileEntity(2232, new SteamPump(location("pump.steam")));
 	}
 
 	public static ResourceLocation location(String name) {
