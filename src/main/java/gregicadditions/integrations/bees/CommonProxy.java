@@ -7,6 +7,7 @@ import forestry.api.recipes.ICentrifugeRecipe;
 import forestry.api.recipes.ISqueezerRecipe;
 import forestry.api.recipes.RecipeManagers;
 import forestry.apiculture.genetics.BeeDefinition;
+import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
@@ -42,6 +43,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
+import static gregicadditions.recipes.GACraftingComponents.*;
+import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
 @Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
 public class CommonProxy {
@@ -58,6 +61,13 @@ public class CommonProxy {
         BEE_ATTRACTOR[5] = GregTechAPI.registerMetaTileEntity(2764, new SimpleMachineMetaTileEntity(location("attractor.luv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 6));
         BEE_ATTRACTOR[6] = GregTechAPI.registerMetaTileEntity(2765, new SimpleMachineMetaTileEntity(location("attractor.zpm"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 7));
         BEE_ATTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2766, new SimpleMachineMetaTileEntity(location("attractor.uv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 8));
+
+
+    }
+
+    @Mod.EventHandler
+    public void init(){
+        registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
     }
 

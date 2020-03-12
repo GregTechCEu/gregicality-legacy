@@ -220,6 +220,7 @@ public class MachineCraftingRecipes {
 		ModHandler.addShapedRecipe("ga_large_miner.basic", GATileEntities.LARGE_MINER[0].getStackForm(), "GCG", "IHI", "GCG", 'H', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Extreme), 'G', new UnificationEntry(gear, BlackSteel), 'I', MetaItems.COMPONENT_GRINDER_TUNGSTEN);
 		ModHandler.addShapedRecipe("ga_large_miner.large", GATileEntities.LARGE_MINER[1].getStackForm(), "GCG", "IHI", "GCG", 'H', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Elite), 'G', new UnificationEntry(gear, HSSG), 'I', MetaItems.COMPONENT_GRINDER_TUNGSTEN);
 		ModHandler.addShapedRecipe("ga_large_miner.advance", GATileEntities.LARGE_MINER[2].getStackForm(), "GCG", "IHI", "GCG", 'H', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Master), 'G', new UnificationEntry(gear, HSSS), 'I', MetaItems.COMPONENT_GRINDER_TUNGSTEN);
+		ModHandler.addShapedRecipe("steam_pump", GATileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(OrePrefix.pipeMedium, Bronze), 'L', new UnificationEntry(OrePrefix.pipeLarge, Bronze), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'R', new UnificationEntry(OrePrefix.rotor, Bronze));
 
 
 		List<Recipe> removals = new ArrayList<>();
