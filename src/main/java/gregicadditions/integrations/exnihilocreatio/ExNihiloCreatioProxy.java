@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import static gregicadditions.machines.GATileEntities.location;
@@ -39,6 +40,7 @@ public class ExNihiloCreatioProxy {
     public static SteamRockBreaker STEAM_BREAKER;
 
 
+    @Optional.Method(modid = "exnihilocreatio")
     public void preInit() {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             ExNihiloEnums.preInit();
@@ -64,14 +66,16 @@ public class ExNihiloCreatioProxy {
 
     }
 
+    @Optional.Method(modid = "exnihilocreatio")
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
 
-        registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
-        ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
-        ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
-
+            registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
+            ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
+            ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
+        }
     }
 
 

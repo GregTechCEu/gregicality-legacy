@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class ExNihiloCreatioEvents {
 
-    @Optional.Method(modid = "tconstruct")
+    @Optional.Method(modid = "exnihilocreatio")
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {

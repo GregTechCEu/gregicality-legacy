@@ -1,16 +1,16 @@
 package gregicadditions;
 
-import gregicadditions.integrations.bees.CommonProxy;
-import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
+import gregicadditions.integrations.bees.CommonProxy;
+import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
+import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.*;
-import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -90,9 +90,9 @@ public class GregicAdditions {
         GATileEntities.init();
         if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct"))
             TinkersMaterials.preInit();
-        if(!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")){
-			exNihiloCreatioProxy.preInit();
-		}
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+            exNihiloCreatioProxy.preInit();
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -105,7 +105,8 @@ public class GregicAdditions {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         GARecipeAddition.generatedRecipes();
-        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) proxy.postInit();
+        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry") && Loader.isModLoaded("extrabees"))
+            proxy.postInit();
     }
 
     @SubscribeEvent
