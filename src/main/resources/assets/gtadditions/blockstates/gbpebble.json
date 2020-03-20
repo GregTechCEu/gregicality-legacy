@@ -8,22 +8,22 @@
     "type": {
       "basalt": {
         "textures": {
-          "layer0": "gregblockutils:items/basalt_pebble"
+          "layer0": "gtadditions:items/basalt_pebble"
         }
       },
       "black_granite": {
         "textures": {
-          "layer0": "gregblockutils:items/black_granite_pebble"
+          "layer0": "gtadditions:items/black_granite_pebble"
         }
       },
       "marble": {
         "textures": {
-          "layer0": "gregblockutils:items/marble_pebble"
+          "layer0": "gtadditions:items/marble_pebble"
         }
       },
       "red_granite": {
         "textures": {
-          "layer0": "gregblockutils:items/red_granite_pebble"
+          "layer0": "gtadditions:items/red_granite_pebble"
         }
       }
     }

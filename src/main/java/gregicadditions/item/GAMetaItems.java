@@ -20,6 +20,8 @@ public class GAMetaItems {
 	public static MetaItem<?>.MetaValueItem GLASS_FIBER;
 	public static MetaItem<?>.MetaValueItem PETRI_DISH;
 	public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY;
+	public static MetaItem<?>.MetaValueItem COMPRESSED_FIRECLAY;
+	public static MetaItem<?>.MetaValueItem FIRECLAY_BRICK;
 	public static MetaItem<?>.MetaValueItem ENERGY_MODULE;
 	public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
 	public static MetaItem<?>.MetaValueItem MAX_BATTERY;

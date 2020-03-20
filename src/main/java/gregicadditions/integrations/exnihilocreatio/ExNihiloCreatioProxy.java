@@ -46,115 +46,117 @@ import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineReci
 @Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
 public class ExNihiloCreatioProxy {
 
-	public static SimpleMachineMetaTileEntity[] SIEVES = new SimpleMachineMetaTileEntity[8];
+    public static SimpleMachineMetaTileEntity[] SIEVES = new SimpleMachineMetaTileEntity[8];
 
-	public static SteamSieve STEAM_SIEVE;
-	public static SteamRockBreaker STEAM_BREAKER;
+    public static SteamSieve STEAM_SIEVE;
+    public static SteamRockBreaker STEAM_BREAKER;
 
 
-	@Optional.Method(modid = "exnihilocreatio")
-	@Mod.EventHandler
-	public void preInit() {
-		if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
-			ExNihiloEnums.preInit();
-			ExNihiloMetaItems.preInit();
-			new ExNihiloItems();
-			SieveDrops.addSieveRecipe();
-			ExNihiloRegistryManager.registerSieveDefaultRecipeHandler(new GASieveDrops());
+    @Optional.Method(modid = "exnihilocreatio")
+    @Mod.EventHandler
+    public void preInit() {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+            ExNihiloEnums.preInit();
+            ExNihiloMetaItems.preInit();
+            new ExNihiloItems();
+            SieveDrops.addSieveRecipe();
+            ExNihiloRegistryManager.registerSieveDefaultRecipeHandler(new GASieveDrops());
 
-			SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new SimpleMachineMetaTileEntity(location("sieve.lv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
-			SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new SimpleMachineMetaTileEntity(location("sieve.mv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));
-			SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new SimpleMachineMetaTileEntity(location("sieve.hv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 3));
-			SIEVES[3] = GregTechAPI.registerMetaTileEntity(2227, new SimpleMachineMetaTileEntity(location("sieve.ev"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 4));
-			if (GAConfig.exNihilo.highTierSieve) {
-				SIEVES[4] = GregTechAPI.registerMetaTileEntity(2228, new SimpleMachineMetaTileEntity(location("sieve.iv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 5));
-				SIEVES[5] = GregTechAPI.registerMetaTileEntity(2229, new SimpleMachineMetaTileEntity(location("sieve.luv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 6));
-				SIEVES[6] = GregTechAPI.registerMetaTileEntity(2230, new SimpleMachineMetaTileEntity(location("sieve.zpm"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 7));
-				SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new SimpleMachineMetaTileEntity(location("sieve.uv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 8));
-			}
+        }
 
-			STEAM_BREAKER = GregTechAPI.registerMetaTileEntity(2767, new SteamRockBreaker(location("rock_breaker.steam")));
-			STEAM_SIEVE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam"), false));
-		}
+    }
 
-	}
+    @Optional.Method(modid = "exnihilocreatio")
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
 
-	@Optional.Method(modid = "exnihilocreatio")
-	@Mod.EventHandler
-	public void init(FMLInitializationEvent event) {
-		if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
-			MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
+            SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new SimpleMachineMetaTileEntity(location("sieve.lv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
+            SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new SimpleMachineMetaTileEntity(location("sieve.mv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));
+            SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new SimpleMachineMetaTileEntity(location("sieve.hv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 3));
+            SIEVES[3] = GregTechAPI.registerMetaTileEntity(2227, new SimpleMachineMetaTileEntity(location("sieve.ev"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 4));
+            if (GAConfig.exNihilo.highTierSieve) {
+                SIEVES[4] = GregTechAPI.registerMetaTileEntity(2228, new SimpleMachineMetaTileEntity(location("sieve.iv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 5));
+                SIEVES[5] = GregTechAPI.registerMetaTileEntity(2229, new SimpleMachineMetaTileEntity(location("sieve.luv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 6));
+                SIEVES[6] = GregTechAPI.registerMetaTileEntity(2230, new SimpleMachineMetaTileEntity(location("sieve.zpm"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 7));
+                SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new SimpleMachineMetaTileEntity(location("sieve.uv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 8));
+            }
 
-			registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
-			ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
-			ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
-		}
-	}
+            STEAM_BREAKER = GregTechAPI.registerMetaTileEntity(2767, new SteamRockBreaker(location("rock_breaker.steam")));
+            STEAM_SIEVE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam"), false));
 
-	@Optional.Method(modid = "exnihilocreatio")
-	@Mod.EventHandler
-	public void postInit() {
-		for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
-			for (ItemStack stack : recipe.getSievables()) {
-				SimpleRecipeBuilder builder = GARecipeMaps.SIEVE_RECIPES.recipeBuilder();
-				builder.notConsumable(recipe.getMesh()).inputs(stack);
-				for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
-					if (siftable.getMeshLevel() == recipe.getMesh().getMetadata())
-						builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 500);
-				}
-				builder.duration(100).EUt(4);
-				builder.buildAndRegister();
-			}
-		}
-		ModHandler.addShapedRecipe("pebbles_to_basalt", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("basalt"));
-		ModHandler.addShapedRecipe("pebbles_to_black_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("black_granite"));
-		ModHandler.addShapedRecipe("pebbles_to_marble", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("marble"));
-		ModHandler.addShapedRecipe("pebbles_to_red_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("red_granite"));
+            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
 
-		ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.NORMAL));
-		ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
-		ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.NORMAL));
-		ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
+            registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
+            ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
+            ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
+        }
+    }
 
-	}
+    @Optional.Method(modid = "exnihilocreatio")
+    @Mod.EventHandler
+    public void postInit() {
+        for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
+            for (ItemStack stack : recipe.getSievables()) {
+                SimpleRecipeBuilder builder = GARecipeMaps.SIEVE_RECIPES.recipeBuilder();
+                builder.notConsumable(recipe.getMesh()).inputs(stack);
+                for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
+                    if (siftable.getMeshLevel() == recipe.getMesh().getMetadata())
+                        builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 500);
+                }
+                builder.duration(100).EUt(4);
+                builder.buildAndRegister();
+            }
+        }
+        ModHandler.addShapedRecipe("pebbles_to_basalt", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("basalt"));
+        ModHandler.addShapedRecipe("pebbles_to_black_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("black_granite"));
+        ModHandler.addShapedRecipe("pebbles_to_marble", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("marble"));
+        ModHandler.addShapedRecipe("pebbles_to_red_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("red_granite"));
 
-	@Optional.Method(modid = "exnihilocreatio")
-	@SubscribeEvent
-	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		ExNihiloCreatioProxy.register();
-	}
+        ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.NORMAL));
+        ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
+        ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.NORMAL));
+        ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
 
-	public static void register() {
-		OrePrefix.valueOf("oreChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
-		OrePrefix.valueOf("oreEnderChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
-		OrePrefix.valueOf("oreNetherChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
-		OrePrefix.valueOf("oreSandyChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
-	}
+    }
 
-	public static void processOre(OrePrefix orePrefix, DustMaterial material) {
-		ItemStack ingotStack = null;
-		DustMaterial smeltingMaterial = material;
-		if (material.directSmelting != null) {
-			smeltingMaterial = material.directSmelting;
-		}
-		if (smeltingMaterial instanceof IngotMaterial)
-			ingotStack = OreDictUnifier.get(OrePrefix.ingot, smeltingMaterial);
-		else if (smeltingMaterial instanceof GemMaterial)
-			ingotStack = OreDictUnifier.get(OrePrefix.gem, smeltingMaterial);
+    @Optional.Method(modid = "exnihilocreatio")
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        ExNihiloCreatioProxy.register();
+    }
 
-		if (ingotStack != null) {
-			ingotStack.setCount(material.oreMultiplier);
+    public static void register() {
+        OrePrefix.valueOf("oreChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
+        OrePrefix.valueOf("oreEnderChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
+        OrePrefix.valueOf("oreNetherChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
+        OrePrefix.valueOf("oreSandyChunk").addProcessingHandler(DustMaterial.class, ExNihiloCreatioProxy::processOre);
+    }
 
-			if (!ingotStack.isEmpty() && doesMaterialUseNormalFurnace(material)) {
-				ModHandler.addSmeltingRecipe(new UnificationEntry(orePrefix, material), ingotStack);
-			}
-		}
-	}
+    public static void processOre(OrePrefix orePrefix, DustMaterial material) {
+        ItemStack ingotStack = null;
+        DustMaterial smeltingMaterial = material;
+        if (material.directSmelting != null) {
+            smeltingMaterial = material.directSmelting;
+        }
+        if (smeltingMaterial instanceof IngotMaterial)
+            ingotStack = OreDictUnifier.get(OrePrefix.ingot, smeltingMaterial);
+        else if (smeltingMaterial instanceof GemMaterial)
+            ingotStack = OreDictUnifier.get(OrePrefix.gem, smeltingMaterial);
 
-	private static boolean doesMaterialUseNormalFurnace(Material material) {
-		return !(material instanceof IngotMaterial) ||
-				((IngotMaterial) material).blastFurnaceTemperature <= 0;
-	}
+        if (ingotStack != null) {
+            ingotStack.setCount(material.oreMultiplier);
+
+            if (!ingotStack.isEmpty() && doesMaterialUseNormalFurnace(material)) {
+                ModHandler.addSmeltingRecipe(new UnificationEntry(orePrefix, material), ingotStack);
+            }
+        }
+    }
+
+    private static boolean doesMaterialUseNormalFurnace(Material material) {
+        return !(material instanceof IngotMaterial) ||
+                ((IngotMaterial) material).blastFurnaceTemperature <= 0;
+    }
 
 
 }

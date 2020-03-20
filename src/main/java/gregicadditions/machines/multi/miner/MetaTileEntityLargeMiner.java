@@ -21,8 +21,11 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -170,7 +173,6 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 			if (y.get() == Long.MAX_VALUE) {
 				y.set(getPos().getY());
 			}
-
 
 			List<BlockPos> blockPos = Miner.getBlockToMinePerChunk(this, x, y, z, chunk.getPos());
 			blockPos.forEach(blockPos1 -> {

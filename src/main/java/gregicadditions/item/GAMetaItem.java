@@ -80,6 +80,13 @@ public class GAMetaItem extends MaterialMetaItem {
 		GAMetaItems.ELITE_BOARD = addItem(34, "board.elite");
 		GAMetaItems.MASTER_BOARD = addItem(35, "board.master");
 		GAMetaItems.COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
+		GAMetaItems.COMPRESSED_FIRECLAY = addItem(37, "ga_compressed.fireclay");
+		GAMetaItems.FIRECLAY_BRICK = addItem(38, "brick.fireclay").setUnificationData(OrePrefix.ingot, Materials.Fireclay);
+
+		MetaItems.COMPRESSED_CLAY.setInvisible();
+		MetaItems.COMPRESSED_FIRECLAY.setInvisible();
+		MetaItems.COKE_OVEN_BRICK.setInvisible();
+		MetaItems.FIRECLAY_BRICK.setInvisible();
 	}
 
 	@Override
