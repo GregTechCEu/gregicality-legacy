@@ -93,13 +93,22 @@ public class GregicAdditions {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.preInit();
         }
+        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+            proxy.preInit();
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) GTBees.initBees();
+        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+            GTBees.initBees();
+            proxy.init();
+        }
         GAMetaBlocks.registerColors();
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+            exNihiloCreatioProxy.init(event);
+        }
     }
 
     @EventHandler
@@ -107,6 +116,9 @@ public class GregicAdditions {
         GARecipeAddition.generatedRecipes();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry") && Loader.isModLoaded("extrabees"))
             proxy.postInit();
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+            exNihiloCreatioProxy.postInit();
+        }
     }
 
     @SubscribeEvent

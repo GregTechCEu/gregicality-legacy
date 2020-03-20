@@ -61,12 +61,10 @@ public class CommonProxy {
         BEE_ATTRACTOR[5] = GregTechAPI.registerMetaTileEntity(2764, new SimpleMachineMetaTileEntity(location("attractor.luv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 6));
         BEE_ATTRACTOR[6] = GregTechAPI.registerMetaTileEntity(2765, new SimpleMachineMetaTileEntity(location("attractor.zpm"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 7));
         BEE_ATTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2766, new SimpleMachineMetaTileEntity(location("attractor.uv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 8));
-
-
     }
 
     @Mod.EventHandler
-    public void init(){
+    public void init() {
         registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
     }
