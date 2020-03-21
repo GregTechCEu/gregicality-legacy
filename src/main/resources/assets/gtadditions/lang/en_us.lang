@@ -18,6 +18,13 @@ metaitem.board.plastic.name=Plastic Circuit Board
 metaitem.board.plastic.tooltip=A Good Board
 metaitem.board.wetware.name=Wetware Lifesupport Circuit Board
 metaitem.board.wetware.tooltip=The Board That Keeps Life
+metaitem.board.basic.name=Basic Circuit Board
+metaitem.board.good.phenolic.name=Good Phenolic Circuit Board
+metaitem.board.good.plastic.name=Good Plastic Circuit Board
+metaitem.board.advanced.name=Advanced Circuit Board
+metaitem.board.extreme.name=Extreme Circuit Board
+metaitem.board.elite.name=Elite Circuit Board
+metaitem.board.master.name=Master Circuit Board
 metaitem.boule.silicon.name=Monocrystalline Silicon Boule
 metaitem.boule.silicon.tooltip=Raw Circuit
 metaitem.boule.glowstone.name=Glowstone doped Monocrystalline Silicon Boule
@@ -671,6 +678,27 @@ material.hastelloy_n=Hastelloy N
 material.tumbaga=Tumbaga
 material.stellite=Stellite
 material.talonite=Talonite
+material.enderium=enderium
+material.mv_superconductor_base=MV Superconductor Base
+material.hv_superconductor_base=HV Superconductor Base
+material.ev_superconductor_base=EV Superconductor Base
+material.iv_superconductor_base=IV Superconductor Base
+material.luv_superconductor_base=LuV Superconductor Base
+material.zpm_superconductor_base=ZPM Superconductor Base
+material.mv_superconductor=MV Superconductor
+material.hv_superconductor=HV Superconductor
+material.ev_superconductor=EV Superconductor
+material.iv_superconductor=IV Superconductor
+material.luv_superconductor=LuV Superconductor
+material.zpm_superconductor=ZPM Superconductor
+material.alumino_silicate_wool=Alumino Silicate Wool
+item.alumino_silicate_wool.dust=Alumino Silicate Wool
+material.mica_based=Mica Based Pulp
+item.mica_based.dust=Mica Based Pulp
+material.ultima=Ultima Alloy
+material.iron_chloride=Iron III Chloride
+material.blize=blize
+material.cryotheum=Cryotheum
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp
@@ -784,6 +812,7 @@ metaitem.credit.darmstadtium.name=Neutronium Credit
 metaitem.rubber_drop.name=Sticky Resin
 
 tile.metal_casing.primitive_bricks.name=Firebricks
+tile.ga_metal_casing.material.name=%s Metal Casing
 gregtech.machine.primitive_blast_furnace.bronze.tooltip=Structure: 3x3x4 (WxLxH) The entire structure is made out of Firebricks (32 in total)./nFirst Layer is a 3x3 square./nSecond, third, and fourth layers are hollow, without the middle block./nThis block goes on the middle of any side in the second layer./nThe sides of Blast Furnaces can be shared, if the side does not have a controller./n
 
 gtadditions.machine.drum.wood.name=Wooden Barrel
@@ -1088,6 +1117,7 @@ gtadditions.machine.attractor.uv.name=Advanced Bee Attractor VII
 
 gtadditions.machine.pump.steam.name=Steam Pump
 gtadditions.machine.sieve.steam.name=Steam Sieve
+gtadditions.machine.steam_mixer.name=Steam Mixer
 
 gtadditions.machine.rock_breaker.steam.name=Steam Rock Breaker
 item.material.oreprefix.oreSandyChunk=Sandy %s Ore Chunk

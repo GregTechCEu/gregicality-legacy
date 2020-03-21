@@ -19,75 +19,75 @@ import mezz.jei.gui.recipes.RecipeLayout;
 import net.minecraft.client.resources.I18n;
 
 public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoRecipeWrapper> {
-	private final IDrawable background;
+    private final IDrawable background;
 
-	public GAMultiblockInfoCategory(IJeiHelpers helpers) {
-		this.background = helpers.getGuiHelper().createBlankDrawable(176, 166);
-	}
+    public GAMultiblockInfoCategory(IJeiHelpers helpers) {
+        this.background = helpers.getGuiHelper().createBlankDrawable(176, 166);
+    }
 
-	public static void registerRecipes(IModRegistry registry) {
-		registry.addRecipes(Lists.newArrayList(
-				new MultiblockInfoRecipeWrapper(new AssemblyLineInfo()),
-				new MultiblockInfoRecipeWrapper(new FusionReactor1Info()),
-				new MultiblockInfoRecipeWrapper(new FusionReactor2Info()),
-				new MultiblockInfoRecipeWrapper(new FusionReactor3Info()),
-				new MultiblockInfoRecipeWrapper(new ProcessingArrayInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeThermalCentrifugeInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeElectrolyzerInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeCuttingInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeMixerInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeMultiUseInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeSifterInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeWashingPlantInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeWiremillInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeChemicalReactorInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeExtruderInfo()),
-				new MultiblockInfoRecipeWrapper(new VolcanusInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()),
-				new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
-				new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
-				new MultiblockInfoRecipeWrapper(new DistilationTowerInfo()),
-				new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
-				new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
-				new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
-				new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
-				new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[0])),
-				new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[1])),
-				new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[2])),
-				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
-				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
-				new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
-				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
-				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
-				new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR))
-		), "gtadditions:multiblock_info2");
-	}
+    public static void registerRecipes(IModRegistry registry) {
+        registry.addRecipes(Lists.newArrayList(
+                new MultiblockInfoRecipeWrapper(new AssemblyLineInfo()),
+                new MultiblockInfoRecipeWrapper(new FusionReactor1Info()),
+                new MultiblockInfoRecipeWrapper(new FusionReactor2Info()),
+                new MultiblockInfoRecipeWrapper(new FusionReactor3Info()),
+                new MultiblockInfoRecipeWrapper(new ProcessingArrayInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeThermalCentrifugeInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeElectrolyzerInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeCuttingInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeMixerInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeMultiUseInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeSifterInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeWashingPlantInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeWiremillInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeChemicalReactorInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeExtruderInfo()),
+                new MultiblockInfoRecipeWrapper(new VolcanusInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()),
+                new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
+                new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
+                new MultiblockInfoRecipeWrapper(new DistilationTowerInfo()),
+                new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
+                new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
+                new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
+                new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[0])),
+                new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[1])),
+                new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[2])),
+                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
+                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
+                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR))
+        ), "gtadditions:multiblock_info2");
+    }
 
-	@Override
-	public String getUid() {
-		return "gtadditions:multiblock_info2";
-	}
+    @Override
+    public String getUid() {
+        return "gtadditions:multiblock_info2";
+    }
 
-	@Override
-	public String getTitle() {
-		return I18n.format("gregtech.multiblock.title", new Object[0]);
-	}
+    @Override
+    public String getTitle() {
+        return I18n.format("gregtech.multiblock.title", new Object[0]);
+    }
 
-	@Override
-	public String getModName() {
-		return "gtadditions";
-	}
+    @Override
+    public String getModName() {
+        return "gtadditions";
+    }
 
-	@Override
-	public IDrawable getBackground() {
-		return this.background;
-	}
+    @Override
+    public IDrawable getBackground() {
+        return this.background;
+    }
 
-	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, MultiblockInfoRecipeWrapper recipeWrapper, IIngredients ingredients) {
-		recipeWrapper.setRecipeLayout((RecipeLayout) recipeLayout);
-	}
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, MultiblockInfoRecipeWrapper recipeWrapper, IIngredients ingredients) {
+        recipeWrapper.setRecipeLayout((RecipeLayout) recipeLayout);
+    }
 }
