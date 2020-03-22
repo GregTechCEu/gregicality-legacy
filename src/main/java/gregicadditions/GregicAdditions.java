@@ -12,6 +12,7 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.*;
 import gregtech.api.unification.material.type.Material;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

@@ -43,6 +43,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ATTRACTOR_RECIPES;
+    @ZenProperty
+    public static final FuelRecipeMap HIGH_PRESSURE_STEAM_TURBINE_FUELS;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -58,5 +60,7 @@ public class GARecipeMaps {
         BOILING_URANIUM_REACTOR_RECIPES = new RecipeMap<>("boiling_uranium_reactor", 1, 1, 1, 3, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         BOILING_PLUTONIUM_REACTOR_RECIPES = new RecipeMap<>("boiling_plutonium_reactor", 1, 1, 1, 3, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         SIEVE_RECIPES = (new SieveRecipeMap("electric_sieve", 2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL));
-        ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL); }
+        ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
+        HIGH_PRESSURE_STEAM_TURBINE_FUELS = new FuelRecipeMap("high_pressure_steam_turbine");
+    }
 }

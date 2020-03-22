@@ -60,9 +60,11 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_HIGH_PRESSURE_STEAM_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
-                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR))
+                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR)),
+                new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLine())
         ), "gtadditions:multiblock_info2");
     }
 
@@ -73,7 +75,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     @Override
     public String getTitle() {
-        return I18n.format("gregtech.multiblock.title", new Object[0]);
+        return I18n.format("gregtech.multiblock.title");
     }
 
     @Override

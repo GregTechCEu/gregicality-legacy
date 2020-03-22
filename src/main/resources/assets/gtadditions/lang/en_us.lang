@@ -410,6 +410,7 @@ gtadditions.machine.wiremill.uv.name=Advanced Wiremill VII
 
 gtadditions.machine.distill_tower.name=[Deprecated] Distillation Tower
 gtadditions.machine.assembly_line.name=Assembly Line
+gtadditions.machine.large_circuit_assembly.name=Large Circuit Assembly Line
 gtadditions.machine.processing_array.name=Processing Array
 gtadditions.machine.volcanus.name=Volcanus
 gtadditions.machine.large_thermal_centrifuge.name=Large Thermal Centrifuge
@@ -428,6 +429,7 @@ gtadditions.machine.large_wiremill.name=Large Wiremill
 gtadditions.machine.large_washing_plant.name=Large Washing Plant
 gtadditions.machine.coke_oven.name=[Deprecated] Coke Oven
 gtadditions.machine.cracker_unit.name=[Deprecated] Cracking Unit
+gtadditions.machine.large_turbine.high_pressure_steam.name=Large Plasma Turbine
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -472,7 +474,7 @@ gtadditions.machine.world_accelerator.uv.name=Advanced World Accelerator VII
 gtadditions.machine.world_accelerator.description=Increase tick update per tick. 2 modes: TileEntity or Random Tick. Use screwdriver to change mode.
 gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d.
 
-gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Throium Nuclear Reactor
+gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Thorium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.plutonium.name=Boiling Plutonium Nuclear Reactor
 
@@ -699,6 +701,7 @@ material.ultima=Ultima Alloy
 material.iron_chloride=Iron III Chloride
 material.blize=blize
 material.cryotheum=Cryotheum
+material.high_pressure_steam=High Pressure Steam
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp
@@ -762,7 +765,8 @@ item.meat.dust=Mince Meat
 
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
-gregtech.multiblock.processing_array.description=The Processing Array combines up to 16 single block machines in a single multiblock, effectively easing automation. 
+gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is use to create high tier circuit.
+gregtech.multiblock.processing_array.description=The Processing Array combines up to 16 single block machines in a single multiblock, effectively easing automation.
 gregtech.multiblock.volcanus.description=The Volcanus is built as EBF. It consume 20L of Pyrotheum per sec and it is 3x faster.
 gregtech.multiblock.large_assembler.description=The large assembler is 2.0x faster on the same voltage and Processes 2 items per voltage tier difference.
 gregtech.multiblock.large_thermal_centrifuge.description=The large thermal centrifuge is 2.5x faster on the same voltage, has 80%% EUt discount and Processes 8 items per voltage tier difference.
@@ -1095,6 +1099,10 @@ item.material.oreprefix.oreEnderChunk=%s Ore Chunk
 item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
 
 recipemap.electric_sieve.name=Electric Sieve Recipes
+recipemap.high_pressure_steam_turbine.name=High Pressure Steam Recipes
+recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
+recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
+recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
 recipemap.attractor.name=Bee Attractor Recipes
 
 gtadditions.machine.sieve.lv.name=Basic Electric Sieve

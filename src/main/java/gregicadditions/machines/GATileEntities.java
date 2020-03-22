@@ -26,11 +26,10 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
-import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import net.minecraft.util.ResourceLocation;
 
 public class GATileEntities {
-    public static SimpleMachineMetaTileEntity[] CIRCUITASSEMBLER = new SimpleMachineMetaTileEntity[8];
+    public static SimpleMachineMetaTileEntity[] CIRCUITASSEMBLER = new SimpleMachineMetaTileEntity[4];
     public static SimpleMachineMetaTileEntity[] CLUSTERMILL = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] ELECTRIC_FURNACE = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] MACERATOR = new SimpleMachineMetaTileEntity[8];
@@ -94,6 +93,7 @@ public class GATileEntities {
     public static TileEntityLargeExtruder LARGE_EXTRUDER;
     public static TileEntityVolcanus VOLCANUS;
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
+    public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
 
     //Nuclear
@@ -111,6 +111,7 @@ public class GATileEntities {
     public static MetaTileEntityDieselEngine DIESEL_ENGINE;
 
     public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
+    public static MetaTileEntityLargeTurbine LARGE_HIGH_PRESSURE_STEAM_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
 
@@ -143,10 +144,7 @@ public class GATileEntities {
         CIRCUITASSEMBLER[2] = GregTechAPI.registerMetaTileEntity(2002, new SimpleMachineMetaTileEntity(location("circuit_assembler.hv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 3));
         CIRCUITASSEMBLER[3] = GregTechAPI.registerMetaTileEntity(2003, new SimpleMachineMetaTileEntity(location("circuit_assembler.ev"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 4));
         if (GAConfig.GT5U.highTierCircuitAssemblers) {
-            CIRCUITASSEMBLER[4] = GregTechAPI.registerMetaTileEntity(2004, new SimpleMachineMetaTileEntity(location("circuit_assembler.iv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 5));
-            CIRCUITASSEMBLER[5] = GregTechAPI.registerMetaTileEntity(2005, new SimpleMachineMetaTileEntity(location("circuit_assembler.luv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 6));
-            CIRCUITASSEMBLER[6] = GregTechAPI.registerMetaTileEntity(2006, new SimpleMachineMetaTileEntity(location("circuit_assembler.zpm"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 7));
-            CIRCUITASSEMBLER[7] = GregTechAPI.registerMetaTileEntity(2007, new SimpleMachineMetaTileEntity(location("circuit_assembler.uv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 8));
+            LARGE_CIRCUIT_ASSEMBLY_LINE = GregTechAPI.registerMetaTileEntity(2004, new TileEntityLargeCircuitAssemblyLine(location("large_circuit_assembly")));
         }
 
         if (GAConfig.GT5U.highTierClusterMills) {
@@ -500,12 +498,13 @@ public class GATileEntities {
         MetaTileEntities.DIESEL_ENGINE = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityDieselEngine(gregtechId("diesel_engine")));
         DIESEL_ENGINE = (MetaTileEntityDieselEngine) MetaTileEntities.DIESEL_ENGINE;
 
-        MetaTileEntities.LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
-        LARGE_STEAM_TURBINE = MetaTileEntities.LARGE_STEAM_TURBINE;
-        MetaTileEntities.LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
-        LARGE_GAS_TURBINE = MetaTileEntities.LARGE_GAS_TURBINE;
-        MetaTileEntities.LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
-        LARGE_PLASMA_TURBINE = MetaTileEntities.LARGE_PLASMA_TURBINE;
+        LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
+        MetaTileEntities.LARGE_STEAM_TURBINE = LARGE_STEAM_TURBINE;
+        LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
+        MetaTileEntities.LARGE_GAS_TURBINE = LARGE_GAS_TURBINE;
+        LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
+        MetaTileEntities.LARGE_PLASMA_TURBINE = LARGE_PLASMA_TURBINE;
+        LARGE_HIGH_PRESSURE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityLargeTurbine(location("large_turbine.high_pressure_steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("HIGH_PRESSURE_STEAM_OVERRIDE")));
 
         BOILING_WATER_THORIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor.thorium"), BoilingWaterReactor.RodType.THORIUM));
         BOILING_WATER_URANIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2546, new BoilingWaterReactor(location("boiling_water_reactor.uranium"), BoilingWaterReactor.RodType.URANIUM));
@@ -513,6 +512,7 @@ public class GATileEntities {
         LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advence"), Miner.Type.ADVANCE, Materials.HSSS));
+
 
         int id = 2551;
         for (final ConverterType t : ConverterType.values()) {
