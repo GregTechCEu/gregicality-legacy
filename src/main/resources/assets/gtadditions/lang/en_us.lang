@@ -1,3 +1,4 @@
+
 metaitem.assembly.normal.name=Processor Assembly
 metaitem.assembly.normal.tooltip=An Advanced Circuit
 metaitem.assembly.nano.name=Nanoprocessor Assembly
@@ -430,6 +431,8 @@ gtadditions.machine.large_washing_plant.name=Large Washing Plant
 gtadditions.machine.coke_oven.name=[Deprecated] Coke Oven
 gtadditions.machine.cracker_unit.name=[Deprecated] Cracking Unit
 gtadditions.machine.large_turbine.high_pressure_steam.name=Large Plasma Turbine
+gtadditions.machine.large_transformer.name=Large Transformer
+gtadditions.machine.void_miner.name=Void Ore Miner
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -787,6 +790,12 @@ gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is 
 gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
 gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
 gregtech.multiblock.reactor.description=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
+gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
+gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
+gtadditions.multiblock.void_miner.description.3=Temperature will increase if there is only Pyrotheum and will decrease if there is only Cryotheum.
+gtadditions.multiblock.void_miner.description.4=First Step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryothuem.
+gtadditions.multiblock.void_miner.description.5=If Temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
+gtadditions.multiblock.large_transformer.description=Large Transformer can convert any GTEU/AMPS by any GTEU/AMPS.
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 
@@ -979,7 +988,6 @@ material.vinteum.name=Vinteum
 
 
 
-
 gtadditions.machine.ceu.ulv.1.name=CEU (ULV)
 gtadditions.machine.ceu.ulv.4.name=CEU (ULV)
 gtadditions.machine.ceu.ulv.9.name=CEU (ULV)
@@ -1134,3 +1142,122 @@ item.gbpebble.basalt.name=Basalt Pebble
 item.gbpebble.black_granite.name=Black Granite Pebble
 item.gbpebble.marble.name=Marble Pebble
 item.gbpebble.red_granite.name=Red Granite Pebble
+
+
+gtadditions.machine.transformer.lv.4.name=Low Voltage Transformer 4 Amps
+gtadditions.machine.transformer.lv.8.name=Low Voltage Transformer 8 Amps
+gtadditions.machine.transformer.lv.12.name=Low Voltage Transformer 12 Amps
+gtadditions.machine.transformer.lv.16.name=Low Voltage Transformer 16 Amps
+gtadditions.machine.transformer.mv.4.name=Medium Voltage Transformer 4 Amps
+gtadditions.machine.transformer.mv.8.name=Medium Voltage Transformer 8 Amps
+gtadditions.machine.transformer.mv.12.name=Medium Voltage Transformer 12 Amps
+gtadditions.machine.transformer.mv.16.name=Medium Voltage Transformer 16 Amps
+gtadditions.machine.transformer.hv.4.name=High Voltage Transformer 4 Amps
+gtadditions.machine.transformer.hv.8.name=High Voltage Transformer 8 Amps
+gtadditions.machine.transformer.hv.12.name=High Voltage Transformer 12 Amps
+gtadditions.machine.transformer.hv.16.name=High Voltage Transformer 16 Amps
+gtadditions.machine.transformer.ev.4.name=Extreme Voltage Transformer 4 Amps
+gtadditions.machine.transformer.ev.8.name=Extreme Voltage Transformer 8 Amps
+gtadditions.machine.transformer.ev.12.name=Extreme Voltage Transformer 12 Amps
+gtadditions.machine.transformer.ev.16.name=Extreme Voltage Transformer 16 Amps
+gtadditions.machine.transformer.iv.4.name=Insane Voltage Transformer 4 Amps
+gtadditions.machine.transformer.iv.8.name=Insane Voltage Transformer 8 Amps
+gtadditions.machine.transformer.iv.12.name=Insane Voltage Transformer 12 Amps
+gtadditions.machine.transformer.iv.16.name=Insane Voltage Transformer 16 Amps
+gtadditions.machine.transformer.luv.4.name=Ludicrous Voltage Transformer 4 Amps
+gtadditions.machine.transformer.luv.8.name=Ludicrous Voltage Transformer 8 Amps
+gtadditions.machine.transformer.luv.12.name=Ludicrous Voltage Transformer 12 Amps
+gtadditions.machine.transformer.luv.16.name=Ludicrous Voltage Transformer 16 Amps
+gtadditions.machine.transformer.zpm.4.name=ZPM Voltage Transformer 4 Amps
+gtadditions.machine.transformer.zpm.8.name=ZPM Voltage Transformer 8 Amps
+gtadditions.machine.transformer.zpm.12.name=ZPM Voltage Transformer 12 Amps
+gtadditions.machine.transformer.zpm.16.name=ZPM Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uv.4.name=Ultimate Voltage Transformer 4 Amps
+gtadditions.machine.transformer.uv.8.name=Ultimate Voltage Transformer 8 Amps
+gtadditions.machine.transformer.uv.12.name=Ultimate Voltage Transformer 12 Amps
+gtadditions.machine.transformer.uv.16.name=Ultimate Voltage Transformer 16 Amps
+
+gtadditions.machine.energy_hatch.input.ulv.4.name=Energy Input Hatch 4 Amps (ULV)
+gtadditions.machine.energy_hatch.input.ulv.16.name=Energy Input Hatch 16 Amps (ULV)
+gtadditions.machine.energy_hatch.input.ulv.64.name=Energy Input Hatch 64 Amps (ULV)
+gtadditions.machine.energy_hatch.input.ulv.128.name=Energy Input Hatch 128 Amps (ULV)
+gtadditions.machine.energy_hatch.input.lv.4.name=Energy Input Hatch 4 Amps (LV)
+gtadditions.machine.energy_hatch.input.lv.16.name=Energy Input Hatch 16 Amps (LV)
+gtadditions.machine.energy_hatch.input.lv.64.name=Energy Input Hatch 64 Amps (LV)
+gtadditions.machine.energy_hatch.input.lv.128.name=Energy Input Hatch 128 Amps (LV)
+gtadditions.machine.energy_hatch.input.mv.4.name=Energy Input Hatch 4 Amps (MV)
+gtadditions.machine.energy_hatch.input.mv.16.name=Energy Input Hatch 16 Amps (MV)
+gtadditions.machine.energy_hatch.input.mv.64.name=Energy Input Hatch 64 Amps (MV)
+gtadditions.machine.energy_hatch.input.mv.128.name=Energy Input Hatch 128 Amps (MV)
+gtadditions.machine.energy_hatch.input.hv.4.name=Energy Input Hatch 4 Amps (HV)
+gtadditions.machine.energy_hatch.input.hv.16.name=Energy Input Hatch 16 Amps (HV)
+gtadditions.machine.energy_hatch.input.hv.64.name=Energy Input Hatch 64 Amps (HV)
+gtadditions.machine.energy_hatch.input.hv.128.name=Energy Input Hatch 128 Amps (HV)
+gtadditions.machine.energy_hatch.input.ev.4.name=Energy Input Hatch 4 Amps (EV)
+gtadditions.machine.energy_hatch.input.ev.16.name=Energy Input Hatch 16 Amps (EV)
+gtadditions.machine.energy_hatch.input.ev.64.name=Energy Input Hatch 64 Amps (EV)
+gtadditions.machine.energy_hatch.input.ev.128.name=Energy Input Hatch 128 Amps (EV)
+gtadditions.machine.energy_hatch.input.iv.4.name=Energy Input Hatch 4 Amps (IV)
+gtadditions.machine.energy_hatch.input.iv.16.name=Energy Input Hatch 16 Amps (IV)
+gtadditions.machine.energy_hatch.input.iv.64.name=Energy Input Hatch 64 Amps (IV)
+gtadditions.machine.energy_hatch.input.iv.128.name=Energy Input Hatch 128 Amps (IV)
+gtadditions.machine.energy_hatch.input.luv.4.name=Energy Input Hatch 4 Amps (LuV)
+gtadditions.machine.energy_hatch.input.luv.16.name=Energy Input Hatch 16 Amps (LuV)
+gtadditions.machine.energy_hatch.input.luv.64.name=Energy Input Hatch 64 Amps (LuV)
+gtadditions.machine.energy_hatch.input.luv.128.name=Energy Input Hatch 128 Amps (LuV)
+gtadditions.machine.energy_hatch.input.zpm.4.name=Energy Input Hatch 4 Amps (ZPM)
+gtadditions.machine.energy_hatch.input.zpm.16.name=Energy Input Hatch 16 Amps (ZPM)
+gtadditions.machine.energy_hatch.input.zpm.64.name=Energy Input Hatch 64 Amps (ZPM)
+gtadditions.machine.energy_hatch.input.zpm.128.name=Energy Input Hatch 128 Amps (ZPM)
+gtadditions.machine.energy_hatch.input.uv.4.name=Energy Input Hatch 4 Amps (UV)
+gtadditions.machine.energy_hatch.input.uv.16.name=Energy Input Hatch 16 Amps (UV)
+gtadditions.machine.energy_hatch.input.uv.64.name=Energy Input Hatch 64 Amps (UV)
+gtadditions.machine.energy_hatch.input.uv.128.name=Energy Input Hatch 128 Amps (UV)
+
+gtadditions.machine.energy_hatch.output.ulv.16.name=Energy Output Hatch 16 Amps (ULV)
+gtadditions.machine.energy_hatch.output.ulv.32.name=Energy Output Hatch 32 Amps (ULV)
+gtadditions.machine.energy_hatch.output.ulv.64.name=Energy Output Hatch 64 Amps (ULV)
+gtadditions.machine.energy_hatch.output.ulv.128.name=Energy Output Hatch 128 Amps (ULV)
+gtadditions.machine.energy_hatch.output.lv.16.name=Energy Output Hatch 16 Amps (LV)
+gtadditions.machine.energy_hatch.output.lv.32.name=Energy Output Hatch 32 Amps (LV)
+gtadditions.machine.energy_hatch.output.lv.64.name=Energy Output Hatch 64 Amps (LV)
+gtadditions.machine.energy_hatch.output.lv.128.name=Energy Output Hatch 128 Amps (LV)
+gtadditions.machine.energy_hatch.output.mv.16.name=Energy Output Hatch 16 Amps (MV)
+gtadditions.machine.energy_hatch.output.mv.32.name=Energy Output Hatch 32 Amps (MV)
+gtadditions.machine.energy_hatch.output.mv.64.name=Energy Output Hatch 64 Amps (MV)
+gtadditions.machine.energy_hatch.output.mv.128.name=Energy Output Hatch 128 Amps (MV)
+gtadditions.machine.energy_hatch.output.hv.16.name=Energy Output Hatch 16 Amps (HV)
+gtadditions.machine.energy_hatch.output.hv.32.name=Energy Output Hatch 32 Amps (HV)
+gtadditions.machine.energy_hatch.output.hv.64.name=Energy Output Hatch 64 Amps (HV)
+gtadditions.machine.energy_hatch.output.hv.128.name=Energy Output Hatch 128 Amps (HV)
+gtadditions.machine.energy_hatch.output.ev.16.name=Energy Output Hatch 16 Amps (EV)
+gtadditions.machine.energy_hatch.output.ev.32.name=Energy Output Hatch 32 Amps (EV)
+gtadditions.machine.energy_hatch.output.ev.64.name=Energy Output Hatch 64 Amps (EV)
+gtadditions.machine.energy_hatch.output.ev.128.name=Energy Output Hatch 128 Amps (EV)
+gtadditions.machine.energy_hatch.output.iv.16.name=Energy Output Hatch 16 Amps (IV)
+gtadditions.machine.energy_hatch.output.iv.32.name=Energy Output Hatch 32 Amps (IV)
+gtadditions.machine.energy_hatch.output.iv.64.name=Energy Output Hatch 64 Amps (IV)
+gtadditions.machine.energy_hatch.output.iv.128.name=Energy Output Hatch 128 Amps (IV)
+gtadditions.machine.energy_hatch.output.luv.16.name=Energy Output Hatch 16 Amps (LuV)
+gtadditions.machine.energy_hatch.output.luv.32.name=Energy Output Hatch 32 Amps (LuV)
+gtadditions.machine.energy_hatch.output.luv.64.name=Energy Output Hatch 64 Amps (LuV)
+gtadditions.machine.energy_hatch.output.luv.128.name=Energy Output Hatch 128 Amps (LuV)
+gtadditions.machine.energy_hatch.output.zpm.16.name=Energy Output Hatch 16 Amps (ZPM)
+gtadditions.machine.energy_hatch.output.zpm.32.name=Energy Output Hatch 32 Amps (ZPM)
+gtadditions.machine.energy_hatch.output.zpm.64.name=Energy Output Hatch 64 Amps (ZPM)
+gtadditions.machine.energy_hatch.output.zpm.128name=Energy Output Hatch 128 Amps (ZPM)
+gtadditions.machine.energy_hatch.output.uv.16.name=Energy Output Hatch 16 Amps (UV)
+gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (UV)
+gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)
+gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
+
+
+
+
+
+
+
+
+
+
+

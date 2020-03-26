@@ -1,8 +1,10 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.jei.multi.LargeTransformerInfo;
 import gregicadditions.jei.multi.advance.VolcanusInfo;
 import gregicadditions.jei.multi.miner.LargeMinerInfo;
+import gregicadditions.jei.multi.miner.VoidMinerInfo;
 import gregicadditions.jei.multi.nuclear.BoilingWaterReactorInfo;
 import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.simple.*;
@@ -64,7 +66,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR)),
-                new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLine())
+                new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLine()),
+                new MultiblockInfoRecipeWrapper(new VoidMinerInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeTransformerInfo())
         ), "gtadditions:multiblock_info2");
     }
 

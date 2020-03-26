@@ -12,7 +12,6 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.*;
 import gregtech.api.unification.material.type.Material;
-import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -110,16 +109,12 @@ public class GregicAdditions {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
+        GARecipeAddition.generatedRecipes();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        GARecipeAddition.generatedRecipes();
-        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry") && Loader.isModLoaded("extrabees"))
-            proxy.postInit();
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
-            exNihiloCreatioProxy.postInit();
-        }
+
     }
 
     @SubscribeEvent
@@ -154,6 +149,7 @@ public class GregicAdditions {
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
         RecipeHandler.register();
+        VoidMinerOres.init();
     }
 
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

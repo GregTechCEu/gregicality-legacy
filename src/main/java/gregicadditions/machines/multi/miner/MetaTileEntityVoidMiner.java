@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
@@ -17,298 +18,290 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagInt;
-import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Map;
+import java.util.function.Predicate;
+
+import static gregicadditions.GAMaterials.HastelloyN;
+import static gregicadditions.GAMaterials.Staballoy;
+import static gregicadditions.recipes.VoidMinerOres.ORES;
+import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
-public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase implements Miner {
+public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
-	public final Type type;
-	private final Material material;
-	private AtomicLong x = new AtomicLong(Long.MAX_VALUE), y = new AtomicLong(Long.MAX_VALUE), z = new AtomicLong(Long.MAX_VALUE);
-	private AtomicInteger currentChunk = new AtomicInteger(0);
-	private IEnergyContainer energyContainer;
-	private IMultipleTankHandler importFluidHandler;
-	protected IItemHandlerModifiable outputInventory;
-	private List<Chunk> chunks = new ArrayList<>();
-	private boolean isActive = false;
-	private boolean done = false;
-	protected boolean wasActiveAndNeedsUpdate;
-
-
-	public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId, Type type, Material material) {
-		super(metaTileEntityId);
-		this.type = type;
-		this.material = material;
-		reinitializeStructurePattern();
-	}
-
-	@Override
-	public void invalidateStructure() {
-		super.invalidateStructure();
-		resetTileAbilities();
-		if (isActive)
-			setActive(false);
-	}
-
-	@Override
-	protected void formStructure(PatternMatchContext context) {
-		super.formStructure(context);
-		initializeAbilities();
-	}
-
-	private void initializeAbilities() {
-		this.importFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.IMPORT_FLUIDS));
-		this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
-		this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
-	}
-
-	private void resetTileAbilities() {
-		this.importFluidHandler = new FluidTankList(true);
-		this.outputInventory = new ItemStackHandler(0);
-		this.energyContainer = new EnergyContainerList(Lists.newArrayList());
-	}
-
-	public boolean drainEnergy() {
-		FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
-		FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
-		if (energyContainer.getEnergyStored() >= energyContainer.getInputVoltage() && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
-			energyContainer.removeEnergy(energyContainer.getInputVoltage());
-			importFluidHandler.drain(drillingFluid, true);
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public long getNbBlock() {
-		return GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
-	}
-
-	@Override
-	protected void updateFormedValid() {
-		if (!getWorld().isRemote) {
-			if (!done && !drainEnergy()) {
-				if (isActive)
-					setActive(false);
-				return;
-			}
-
-			if (!isActive)
-				setActive(true);
-
-			WorldServer world = (WorldServer) this.getWorld();
-			ChunkPos chunkPos = world.getChunk(getPos()).getPos();
-			BlockPos origin = null;
-			if (type.chunk / 2.0 > 1.0 && chunks.size() == 0) {
-				for (int i = 0; i < Math.floorDiv(type.chunk, 2); i++) {
-					BlockPos pos = new BlockPos(chunkPos.getXStart(), getPos().getY(), chunkPos.getZStart());
-					origin = pos.north().west();
-					chunkPos = world.getChunk(origin).getPos();
-				}
-				BlockPos tmpX = origin;
-				BlockPos tmpZ = origin;
-				for (int i = 0; i < type.chunk; i++) {
-					for (int j = 0; j < type.chunk; j++) {
-						Chunk chunk = world.getChunk(tmpX);
-						chunks.add(chunk);
-						tmpX = new BlockPos(chunk.getPos().getXEnd(), getPos().getY(), chunk.z).east();
-					}
-					Chunk chunk = world.getChunk(tmpZ);
-					tmpZ = new BlockPos(chunk.x, getPos().getY(), chunk.getPos().getZEnd()).south();
-					tmpX = tmpZ;
-				}
-			}
-
-			if (currentChunk.intValue() == chunks.size()) {
-				setActive(false);
-				return;
-			}
-
-			Chunk chunk = chunks.get(currentChunk.intValue());
-
-			if (x.get() == Long.MAX_VALUE) {
-				x.set(chunk.getPos().getXStart());
-			}
-			if (z.get() == Long.MAX_VALUE) {
-				z.set(chunk.getPos().getZStart());
-			}
-			if (y.get() == Long.MAX_VALUE) {
-				y.set(getPos().getY());
-			}
-
-			List<BlockPos> blockPos = Miner.getBlockToMinePerChunk(this, x, y, z, chunk.getPos());
-			blockPos.forEach(blockPos1 -> {
-				NonNullList<ItemStack> itemStacks = NonNullList.create();
-				IBlockState blockState = this.getWorld().getBlockState(blockPos1);
-				ToolUtility.applyHammerDrops(world.rand, blockState, itemStacks, type.fortune, null);
-				if (addItemsToItemHandler(outputInventory, true, itemStacks)) {
-					addItemsToItemHandler(outputInventory, false, itemStacks);
-					world.destroyBlock(blockPos1, false);
-				}
-			});
-
-			if (y.get() < 0) {
-				currentChunk.incrementAndGet();
-				if (currentChunk.get() <= chunks.size()) {
-					done = true;
-				}else{
-					x.set(chunks.get(currentChunk.intValue()).getPos().getXStart());
-					z.set(chunks.get(currentChunk.intValue()).getPos().getZStart());
-					y.set(getPos().getY());
-				}
-			}
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final int MAX_TEMPERATURE = 9000;
+    private static final int CONSUME_START = 100;
+    private IEnergyContainer energyContainer;
+    private IMultipleTankHandler importFluidHandler;
+    protected IItemHandlerModifiable outputInventory;
+    private boolean isActive = false;
+    private boolean overheat = false;
+    private boolean usingPyrotheum = true;
+    private int temperature = 0;
+    private double currentDrillingFluid = CONSUME_START;
+    private long energyDrain = GTValues.V[GTValues.V.length - 2];
 
 
-			if (!getWorld().isRemote && getTimer() % 5 == 0) {
-				pushItemsIntoNearbyHandlers(getFrontFacing());
-			}
-		}
+    public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId);
+    }
 
-	}
+    @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        resetTileAbilities();
+        if (isActive)
+            setActive(false);
+    }
 
-	@Override
-	protected BlockPattern createStructurePattern() {
-		return material == null || type == null ? null : FactoryBlockPattern.start()
-				.aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
-				.aisle("#####", "#####", "PPPPP", "#CEC#", "#####", "#####", "#####", "#####", "#####", "#####")
-				.aisle("#####", "#####", "PPPPP", "#CPC#", "#FFF#", "#FFF#", "#FFF#", "##F##", "##F##", "##F##")
-				.aisle("#####", "#####", "PPPPP", "#CSC#", "#####", "#####", "#####", "#####", "#####", "#####")
-				.aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
-				.where('S', selfPredicate())
-				.where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS)))
-				.where('P', statePredicate(getCasingState()))
-				.where('E', tilePredicate((state, tile) -> {
-					for (int i = GTValues.EV; i < GTValues.V.length; i++) {
-						if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId))
-							return true;
-					}
-					return false;
-				}))
-				.where('F', statePredicate(MetaBlocks.FRAMES.get(material).getDefaultState()))
-				.where('#', blockWorldState -> true)
-				.build();
-	}
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        initializeAbilities();
+    }
 
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-		tooltip.add(I18n.format("gtadditions.machine.miner.multi.description", type.chunk, type.chunk, type.fortune));
-		tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));
-	}
+    private void initializeAbilities() {
+        this.importFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
+        this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
+    }
 
-	@Override
-	protected void addDisplayText(List<ITextComponent> textList) {
-		if (this.isStructureFormed()) {
-			textList.add(new TextComponentString(String.format("X: %d", x.get())));
-			textList.add(new TextComponentString(String.format("Y: %d", y.get())));
-			textList.add(new TextComponentString(String.format("Z: %d", z.get())));
-			textList.add(new TextComponentString(String.format("chuck: %d", currentChunk.get())));
-			textList.add(new TextComponentString(String.format("nb chunk: %d", chunks.size())));
-			textList.add(new TextComponentString(String.format("block per tick: %d", getNbBlock())));
-		}
+    private void resetTileAbilities() {
+        this.importFluidHandler = new FluidTankList(true);
+        this.outputInventory = new ItemStackHandler(0);
+        this.energyContainer = new EnergyContainerList(Lists.newArrayList());
+    }
 
-		super.addDisplayText(textList);
-	}
+    public boolean drainEnergy() {
+        if (energyContainer.getEnergyStored() >= energyDrain) {
+            energyContainer.removeEnergy(energyDrain);
+            return true;
+        }
+        return false;
+    }
 
-	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(material).getDefaultState();
-	}
+    @Override
+    protected void updateFormedValid() {
+        if (!getWorld().isRemote) {
+            if (overheat || !drainEnergy()) {
+                if (temperature > 0) {
+                    temperature--;
+                }
+                if (temperature == 0) {
+                    overheat = false;
+                }
+                if (currentDrillingFluid > CONSUME_START) {
+                    currentDrillingFluid--;
+                }
+                if (currentDrillingFluid < CONSUME_START) {
+                    currentDrillingFluid = CONSUME_START;
+                }
 
-	@Override
-	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(material);
-	}
+                if (isActive)
+                    setActive(false);
+                return;
+            }
 
-	@Override
-	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new MetaTileEntityVoidMiner(metaTileEntityId, getType(), material);
-	}
+            if (!isActive)
+                setActive(true);
 
-	@Override
-	public Type getType() {
-		return type;
-	}
 
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound data) {
-		super.writeToNBT(data);
-		data.setTag("xPos", new NBTTagLong(x.get()));
-		data.setTag("yPos", new NBTTagLong(y.get()));
-		data.setTag("zPos", new NBTTagLong(z.get()));
-		data.setTag("chunk", new NBTTagInt(currentChunk.get()));
-		data.setTag("done", new NBTTagInt(done ? 1 : 0));
-		return data;
-	}
+            if (getTimer() % 20 == 0) {
+                FluidStack pyrotheumFluid = GAMaterials.Pyrotheum.getFluid((int) currentDrillingFluid);
+                FluidStack cryotheumFluid = GAMaterials.Cryotheum.getFluid((int) currentDrillingFluid);
+                FluidStack canDrainPyrotheum = importFluidHandler.drain(pyrotheumFluid, false);
+                FluidStack canDrainCryotheum = importFluidHandler.drain(cryotheumFluid, false);
+                boolean hasConsume = false;
+                //consume fluid
+                if (usingPyrotheum && canDrainPyrotheum != null && canDrainPyrotheum.amount == (int) currentDrillingFluid) {
+                    importFluidHandler.drain(pyrotheumFluid, true);
+                    temperature += currentDrillingFluid / 100;
+                    currentDrillingFluid = currentDrillingFluid * 1.02;
+                    hasConsume = true;
+                } else if (temperature > 0 && canDrainCryotheum != null && canDrainCryotheum.amount == (int) currentDrillingFluid) {
+                    importFluidHandler.drain(cryotheumFluid, true);
+                    temperature -= currentDrillingFluid / 100;
+                    currentDrillingFluid = currentDrillingFluid * 0.98;
+                }
+                if (temperature < 0) {
+                    temperature = 0;
+                }
+                if (currentDrillingFluid < CONSUME_START) {
+                    currentDrillingFluid = CONSUME_START;
+                }
+                if (temperature > MAX_TEMPERATURE) {
+                    overheat = true;
+                    currentDrillingFluid = CONSUME_START;
+                    return;
+                }
+                usingPyrotheum = !usingPyrotheum;
 
-	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		super.readFromNBT(data);
-		x.set(data.getLong("xPos"));
-		y.set(data.getLong("yPos"));
-		z.set(data.getLong("zPos"));
-		currentChunk.set(data.getInteger("chunk"));
-		done = data.getInteger("done") != 0;
-	}
+                //mine
 
-	public Material getMaterial() {
-		return material;
-	}
 
-	@Override
-	public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-		super.renderMetaTileEntity(renderState, translation, pipeline);
-		Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
-	}
+                int nbOres = temperature / 1000;
 
-	protected void setActive(boolean active) {
-		this.isActive = active;
-		markDirty();
-		if (!getWorld().isRemote) {
-			writeCustomData(1, buf -> buf.writeBoolean(active));
-		}
-	}
+                if (nbOres == 0 || !hasConsume) {
+                    return;
+                }
 
-	@Override
-	public void receiveCustomData(int dataId, PacketBuffer buf) {
-		super.receiveCustomData(dataId, buf);
-		if (dataId == 1) {
-			this.isActive = buf.readBoolean();
-			getHolder().scheduleChunkForRenderUpdate();
-		}
-	}
+                List<ItemStack> ores = new ArrayList<>(ORES);
+                Collections.shuffle(ores);
+                ores.stream().limit(10).peek(itemStack -> itemStack.setCount(getWorld().rand.nextInt(nbOres * nbOres) + 1)).forEach(itemStack -> {
+                    addItemsToItemHandler(outputInventory, false, Collections.singletonList(itemStack));
+                });
+
+
+            }
+        }
+    }
+
+    @Override
+    protected BlockPattern createStructurePattern() {
+        return FactoryBlockPattern.start()
+                .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
+                .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
+                .aisle("C#######C", "C#######C", "#########", "####D####", "###DDD###", "C##DDD##C", "F#DD#DD#F", "F#D###D#F", "##D###D##", "#########")
+                .aisle("C###D###C", "C###D###C", "###DDD###", "###D#D###", "##DD#DD##", "C#D###D#C", "FDD###DDF", "FD#####DF", "#D#####D#", "#########")
+                .aisle("C##D#D##C", "C##D#D##C", "###D#D###", "##D###D##", "##D###D##", "CDD###DDC", "FD#####DF", "FD#####DF", "#D#####D#", "#########")
+                .aisle("C###D###C", "C###D###C", "###DDD###", "###D#D###", "##DD#DD##", "C#D###D#C", "FDD###DDF", "FD#####DF", "#D#####D#", "#########")
+                .aisle("C#######C", "C#######C", "#########", "####D####", "###DDD###", "C##DDD##C", "F#DD#DD#F", "F#D###D#F", "##D###D##", "#########")
+                .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
+                .aisle("CCCCCCCCC", "CCCCSCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
+                .where('S', selfPredicate())
+                .where('C', ((Predicate<BlockWorldState>) blockWorldState -> ArrayUtils.contains(Collections.singletonList(getCasingState()).toArray(), blockWorldState.getBlockState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('D', blockWorldState -> GAMetaBlocks.METAL_CASING.get(Staballoy).getDefaultState().equals(blockWorldState.getBlockState()))
+                .where('F', blockWorldState -> MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState().equals(blockWorldState.getBlockState()))
+                .where('#', blockWorldState -> true)
+                .build();
+    }
+
+    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
+        //basically check minimal requirements for inputs count
+        int fluidInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_FLUIDS, Collections.emptyList()).size();
+        return fluidInputsCount >= 1 &&
+                abilities.containsKey(MultiblockAbility.INPUT_ENERGY);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.4"));
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.5"));
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        if (this.isStructureFormed()) {
+            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
+                long maxVoltage = energyContainer.getInputVoltage();
+                String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
+                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
+            }
+            textList.add(new TextComponentString(String.format("energy using: %d", energyDrain)));
+            textList.add(new TextComponentString(String.format("temperature: %d/%d", temperature, MAX_TEMPERATURE)));
+            textList.add(new TextComponentString(String.format("currentDrillingFluid: %.02f", currentDrillingFluid)));
+            if (overheat) {
+                textList.add(new TextComponentString("overheat !!").setStyle(new Style().setColor(TextFormatting.RED)));
+            }
+        }
+
+        super.addDisplayText(textList);
+    }
+
+    public IBlockState getCasingState() {
+        return GAMetaBlocks.METAL_CASING.get(HastelloyN).getDefaultState();
+    }
+
+    @Override
+    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
+        return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+    }
+
+    @Override
+    public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
+        return new MetaTileEntityVoidMiner(metaTileEntityId);
+    }
+
+    @Override
+    public void writeInitialSyncData(PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
+        buf.writeBoolean(isActive);
+    }
+
+    @Override
+    public void receiveInitialSyncData(PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
+        this.isActive = buf.readBoolean();
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        super.writeToNBT(data);
+        data.setTag("temperature", new NBTTagInt(temperature));
+        data.setTag("currentDrillingFluid", new NBTTagDouble(currentDrillingFluid));
+        data.setTag("overheat", new NBTTagInt(overheat ? 1 : 0));
+        return data;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        temperature = data.getInteger("temperature");
+        currentDrillingFluid = data.getDouble("currentDrillingFluid");
+        overheat = data.getInteger("overheat") != 0;
+    }
+
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        super.renderMetaTileEntity(renderState, translation, pipeline);
+        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
+    }
+
+    protected void setActive(boolean active) {
+        this.isActive = active;
+        markDirty();
+        if (!getWorld().isRemote) {
+            writeCustomData(1, buf -> buf.writeBoolean(active));
+        }
+    }
+
+    @Override
+    public void receiveCustomData(int dataId, PacketBuffer buf) {
+        super.receiveCustomData(dataId, buf);
+        if (dataId == 1) {
+            this.isActive = buf.readBoolean();
+            getHolder().scheduleChunkForRenderUpdate();
+        }
+    }
 
 }

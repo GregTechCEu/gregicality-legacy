@@ -8,9 +8,14 @@ import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.ceu.MTECeu;
 import gregicadditions.machines.ceu.utils.CeuType;
 import gregicadditions.machines.ceu.utils.ConverterType;
+import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
+import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
+import gregicadditions.machines.energy.MetaTileEntityTransformer;
+import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.multi.advance.TileEntityVolcanus;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
+import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregicadditions.machines.multi.override.*;
@@ -27,6 +32,9 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] CIRCUITASSEMBLER = new SimpleMachineMetaTileEntity[4];
@@ -95,6 +103,8 @@ public class GATileEntities {
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
+    public static MetaTileEntityVoidMiner VOID_MINER;
+    public static TileEntityLargeTransformer LARGE_TRANSFORMER;
 
     //Nuclear
     public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
@@ -102,6 +112,18 @@ public class GATileEntities {
     public static BoilingWaterReactor BOILING_WATER_PLUTONIUM_REACTOR;
 
     //override from GTCE
+    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_16_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_64_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_16_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
+    public static List<MetaTileEntityTransformer> TRANSFORMER_16_AMPS = new ArrayList<>();
     public static MetaTileEntityElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
     public static MetaTileEntityVacuumFreezer VACUUM_FREEZER;
     public static MetaTileEntityImplosionCompressor IMPLOSION_COMPRESSOR;
@@ -512,18 +534,9 @@ public class GATileEntities {
         LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advence"), Miner.Type.ADVANCE, Materials.HSSS));
+        VOID_MINER = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner")));
+        LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));
 
-
-        int id = 2551;
-        for (final ConverterType t : ConverterType.values()) {
-            for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
-                for (int slot = 1; slot <= 4; ++slot) {
-                    final String vn = GTValues.VN[tier].toLowerCase();
-                    CEUS.put(t.getCeuType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCeuType() + "." + vn + "." + slot * slot), tier, t.getCeuType(), slot)));
-                    CEUS.put(t.getCefType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCefType() + "." + vn + "." + slot * slot), tier, t.getCefType(), slot)));
-                }
-            }
-        }
 
         if (GAConfig.GT6.registerDums) {
             WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
@@ -572,7 +585,38 @@ public class GATileEntities {
 
         STEAM_MIXER = GregTechAPI.registerMetaTileEntity(2235, new TileEntitySteamMixer(location("steam_mixer")));
 
+        int id = 2900;
+        for (final ConverterType t : ConverterType.values()) {
+            for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
+                for (int slot = 1; slot <= 4; ++slot) {
+                    final String vn = GTValues.VN[tier].toLowerCase();
+                    CEUS.put(t.getCeuType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCeuType() + "." + vn + "." + slot * slot), tier, t.getCeuType(), slot)));
+                    CEUS.put(t.getCefType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCefType() + "." + vn + "." + slot * slot), tier, t.getCefType(), slot)));
+                }
+            }
+        }
+
+        for (int i = 0; i < GTValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
+            if (i > 0) {
+                TRANSFORMER_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".4"), i, 4, 16)));
+                TRANSFORMER_8_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".8"), i, 8, 32)));
+                TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
+                TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
+            }
+        }
+        for (int i = 0; i < GTValues.V.length - 1; i++) {
+            ENERGY_INPUT_HATCH_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".4"), i, 4)));
+            ENERGY_INPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".16"), i, 16)));
+            ENERGY_INPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".64"), i, 64)));
+            ENERGY_INPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".128"), i, 128)));
+
+            ENERGY_OUTPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".16"), i, 16)));
+            ENERGY_OUTPUT_HATCH_32_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".32"), i, 32)));
+            ENERGY_OUTPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".64"), i, 64)));
+            ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".128"), i, 128)));
+        }
     }
+
 
     public static ResourceLocation location(String name) {
         return new ResourceLocation(GregicAdditions.MODID, name);

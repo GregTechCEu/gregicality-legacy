@@ -24,12 +24,12 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void postInit() {
-
+	public void init() {
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
 		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) itemColors.registerItemColorHandler(ColoredItemItemColor.INSTANCE, GTCombs.combItem);
-		super.postInit();
+		super.init();
 	}
+
 
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {

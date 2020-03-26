@@ -61,16 +61,6 @@ public class ExNihiloCreatioProxy {
             new ExNihiloItems();
             SieveDrops.addSieveRecipe();
             ExNihiloRegistryManager.registerSieveDefaultRecipeHandler(new GASieveDrops());
-
-        }
-
-    }
-
-    @Optional.Method(modid = "exnihilocreatio")
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
-
             SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new SimpleMachineMetaTileEntity(location("sieve.lv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
             SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new SimpleMachineMetaTileEntity(location("sieve.mv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));
             SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new SimpleMachineMetaTileEntity(location("sieve.hv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 3));
@@ -82,42 +72,45 @@ public class ExNihiloCreatioProxy {
                 SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new SimpleMachineMetaTileEntity(location("sieve.uv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 8));
             }
 
+        }
+
+    }
+
+    @Optional.Method(modid = "exnihilocreatio")
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+
             STEAM_BREAKER = GregTechAPI.registerMetaTileEntity(2767, new SteamRockBreaker(location("rock_breaker.steam")));
             STEAM_SIEVE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam"), false));
 
             MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
 
-            registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
+            registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE_SINGLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
             ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
             ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
-        }
-    }
-
-    @Optional.Method(modid = "exnihilocreatio")
-    @Mod.EventHandler
-    public void postInit() {
-        for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
-            for (ItemStack stack : recipe.getSievables()) {
-                SimpleRecipeBuilder builder = GARecipeMaps.SIEVE_RECIPES.recipeBuilder();
-                builder.notConsumable(recipe.getMesh()).inputs(stack);
-                for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
-                    if (siftable.getMeshLevel() == recipe.getMesh().getMetadata())
-                        builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 500);
+            for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
+                for (ItemStack stack : recipe.getSievables()) {
+                    SimpleRecipeBuilder builder = GARecipeMaps.SIEVE_RECIPES.recipeBuilder();
+                    builder.notConsumable(recipe.getMesh()).inputs(stack);
+                    for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
+                        if (siftable.getMeshLevel() == recipe.getMesh().getMetadata())
+                            builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 500);
+                    }
+                    builder.duration(100).EUt(4);
+                    builder.buildAndRegister();
                 }
-                builder.duration(100).EUt(4);
-                builder.buildAndRegister();
             }
+            ModHandler.addShapedRecipe("pebbles_to_basalt", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("basalt"));
+            ModHandler.addShapedRecipe("pebbles_to_black_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("black_granite"));
+            ModHandler.addShapedRecipe("pebbles_to_marble", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("marble"));
+            ModHandler.addShapedRecipe("pebbles_to_red_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("red_granite"));
+
+            ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.NORMAL));
+            ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
+            ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.NORMAL));
+            ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
         }
-        ModHandler.addShapedRecipe("pebbles_to_basalt", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("basalt"));
-        ModHandler.addShapedRecipe("pebbles_to_black_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("black_granite"));
-        ModHandler.addShapedRecipe("pebbles_to_marble", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("marble"));
-        ModHandler.addShapedRecipe("pebbles_to_red_granite", MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', ExNihiloPebble.getPebbleStack("red_granite"));
-
-        ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.NORMAL));
-        ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.BLACK_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
-        ModHandler.addSmeltingRecipe(MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.MARBLE, StoneBlock.ChiselingVariant.NORMAL));
-        ModHandler.addSmeltingRecipe(MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.CRACKED), MetaBlocks.GRANITE.getItemVariant(BlockGranite.GraniteVariant.RED_GRANITE, StoneBlock.ChiselingVariant.NORMAL));
-
     }
 
     @Optional.Method(modid = "exnihilocreatio")
