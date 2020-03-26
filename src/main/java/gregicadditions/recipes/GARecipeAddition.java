@@ -652,21 +652,30 @@ public class GARecipeAddition {
                 .input(dust, Phosphorus, 2)
                 .input(dust, Molybdenum, 1)
                 .outputs(OreDictUnifier.get(dust, Talonite, 10)).buildAndRegister();
+
+        //Pyrotheum
         RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
                 .input(dust, Sulfur)
                 .input(dust, Blaze, 2)
                 .outputs(OreDictUnifier.get(dust, Pyrotheum, 2)).buildAndRegister();
+        RecipeMaps.FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+                .input(dust, Pyrotheum)
+                .fluidOutputs(Pyrotheum.getFluid(250)).buildAndRegister();
 
+        //Cryotheum
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Snow)
+                .fluidInputs(Redstone.getFluid(250))
+                .outputs(OreDictUnifier.get(dust, Blize, 2)).buildAndRegister();
         RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
                 .input(dust, Snow)
                 .input(dust, Blize, 2)
                 .outputs(OreDictUnifier.get(dust, Cryotheum, 2)).buildAndRegister();
-
         RecipeMaps.FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input(dust, Pyrotheum)
-                .fluidOutputs(Pyrotheum.getFluid(250)).buildAndRegister();
+                .input(dust, Cryotheum)
+                .fluidOutputs(Cryotheum.getFluid(250)).buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID)).fluidInputs(Polytetrafluoroethylene.getFluid(216)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CHEMICALLY_INERT, 1)).duration(100).EUt(8000).buildAndRegister();

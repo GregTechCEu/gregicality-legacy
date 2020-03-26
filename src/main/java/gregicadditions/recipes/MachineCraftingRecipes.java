@@ -224,6 +224,22 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_large_miner.advance", GATileEntities.LARGE_MINER[2].getStackForm(), "GCG", "IHI", "GCG", 'H', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Master), 'G', new UnificationEntry(gear, HSSS), 'I', MetaItems.COMPONENT_GRINDER_TUNGSTEN);
         ModHandler.addShapedRecipe("ga_steam_pump", GATileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(OrePrefix.pipeMedium, Bronze), 'L', new UnificationEntry(OrePrefix.pipeLarge, Bronze), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'R', new UnificationEntry(OrePrefix.rotor, Bronze));
         ModHandler.addShapedRecipe("ga_large_circuit_assembly", GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE.getStackForm(), "CRC", "SAS", "CRC", 'A', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'R', MetaItems.ROBOT_ARM_IV, 'C', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING), 'S', new UnificationEntry(circuit, Tier.Elite));
+        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(130000)
+                .fluidInputs(GAMaterials.HastelloyN.getFluid(144 * 4))
+                .input(OrePrefix.valueOf("gtMetalCasing"), GAMaterials.Staballoy, 2)
+                .inputs(MetaItems.SENSOR_UV.getStackForm(1))
+                .inputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
+                .inputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
+                .inputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
+                .inputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
+                .inputs(GATileEntities.LARGE_MINER[0].getStackForm())
+                .inputs(GATileEntities.LARGE_MINER[1].getStackForm())
+                .inputs(GATileEntities.LARGE_MINER[2].getStackForm())
+                .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
+                .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
+                .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
+                .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
+                .outputs(GATileEntities.VOID_MINER.getStackForm()).buildAndRegister();
 
 
         List<Recipe> removals = new ArrayList<>();

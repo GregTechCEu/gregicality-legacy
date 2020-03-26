@@ -533,7 +533,7 @@ public class GATileEntities {
         BOILING_WATER_PLUTONIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2547, new BoilingWaterReactor(location("boiling_water_reactor.plutonium"), BoilingWaterReactor.RodType.PLUTONIUM));
         LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
-        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advence"), Miner.Type.ADVANCE, Materials.HSSS));
+        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, Materials.HSSS));
         VOID_MINER = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner")));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));
 
