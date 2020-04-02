@@ -433,6 +433,8 @@ gtadditions.machine.cracker_unit.name=[Deprecated] Cracking Unit
 gtadditions.machine.large_turbine.high_pressure_steam.name=Large Plasma Turbine
 gtadditions.machine.large_transformer.name=Large Transformer
 gtadditions.machine.void_miner.name=Void Ore Miner
+gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive Blast Furnace
+
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -796,6 +798,10 @@ gtadditions.multiblock.void_miner.description.3=Temperature will increase if the
 gtadditions.multiblock.void_miner.description.4=First Step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryothuem.
 gtadditions.multiblock.void_miner.description.5=If Temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
 gtadditions.multiblock.large_transformer.description=Large Transformer can convert any GTEU/AMPS by any GTEU/AMPS.
+gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Industrial Primitive Blast Furnace is a large multiblock structure consisting of 1 to 64 "slices".
+gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's the upgraded version of The Primitive Blast Furnace.
+gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitibe Blast Furnace can be automate and speed up.
+
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 
@@ -827,6 +833,8 @@ metaitem.rubber_drop.name=Sticky Resin
 tile.metal_casing.primitive_bricks.name=Firebricks
 tile.ga_metal_casing.material.name=%s Metal Casing
 gregtech.machine.primitive_blast_furnace.bronze.tooltip=Structure: 3x3x4 (WxLxH) The entire structure is made out of Firebricks (32 in total)./nFirst Layer is a 3x3 square./nSecond, third, and fourth layers are hollow, without the middle block./nThis block goes on the middle of any side in the second layer./nThe sides of Blast Furnaces can be shared, if the side does not have a controller./n
+gregtech.machine.primitive_blast_furnace.industrial.tooltip=It's the upgraded version of The Primitive Blast Furnace.
+
 
 gtadditions.machine.drum.wood.name=Wooden Barrel
 gtadditions.machine.drum.bronze.name=Bronze Drum
