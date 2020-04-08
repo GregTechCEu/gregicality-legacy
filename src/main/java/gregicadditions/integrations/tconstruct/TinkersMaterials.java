@@ -111,11 +111,11 @@ public class TinkersMaterials {
 
 			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.TinAlloy.getFluid(2), gregtech.api.unification.material.Materials.Iron.getFluid(1), gregtech.api.unification.material.Materials.Tin.getFluid(1));
 
-			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.Invar.getFluid(3), gregtech.api.unification.material.Materials.Iron.getFluid(1), gregtech.api.unification.material.Materials.Nickel.getFluid(1));
+			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.Invar.getFluid(3), gregtech.api.unification.material.Materials.Iron.getFluid(2), gregtech.api.unification.material.Materials.Nickel.getFluid(1));
 
 			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.TinAlloy.getFluid(2), gregtech.api.unification.material.Materials.WroughtIron.getFluid(1), gregtech.api.unification.material.Materials.Tin.getFluid(1));
 
-			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.Invar.getFluid(3), gregtech.api.unification.material.Materials.WroughtIron.getFluid(1), gregtech.api.unification.material.Materials.Nickel.getFluid(1));
+			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.Invar.getFluid(3), gregtech.api.unification.material.Materials.WroughtIron.getFluid(2), gregtech.api.unification.material.Materials.Nickel.getFluid(1));
 
 			TinkerRegistry.registerAlloy(gregtech.api.unification.material.Materials.BatteryAlloy.getFluid(5), gregtech.api.unification.material.Materials.Lead.getFluid(4), gregtech.api.unification.material.Materials.Antimony.getFluid(1));
 
