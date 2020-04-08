@@ -707,6 +707,7 @@ material.iron_chloride=Iron III Chloride
 material.blize=blize
 material.cryotheum=Cryotheum
 material.high_pressure_steam=High Pressure Steam
+material.sand=Sand
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp
