@@ -8,6 +8,10 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
+import gregtech.api.util.GTLog;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+
+import java.lang.reflect.Field;
 
 import static com.google.common.collect.ImmutableList.of;
 import static gregtech.api.unification.material.Materials.*;
@@ -108,6 +112,9 @@ public class GAMaterials implements IMaterialHandler {
         Alunite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
         GlauconiteSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
 
+        removeFlags(Platinum, GENERATE_ORE);
+        removeFlags(Palladium, GENERATE_ORE);
+
         YttriumBariumCuprate.addFlag(IngotMaterial.MatFlags.GENERATE_FINE_WIRE);
         Manganese.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
         Naquadah.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
@@ -174,6 +181,17 @@ public class GAMaterials implements IMaterialHandler {
                 material.addFlag(GENERATE_PLATE);
             }
         }
+    }
 
+    public static void removeFlags(Material material, long flags) {
+        if(!material.hasFlag(flags)){
+            return;
+        }
+        try {
+            Field materialGenerationFlags = ObfuscationReflectionHelper.findField(Material.class, "materialGenerationFlags");
+            materialGenerationFlags.setLong(material, materialGenerationFlags.getLong(material) ^ flags);
+        } catch (IllegalAccessException e) {
+            GTLog.logger.error("Remove flags doesnt seems to works", e);
+        }
     }
 }
