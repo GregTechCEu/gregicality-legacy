@@ -27,6 +27,56 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_large_assembler"
         }
+      },
+      "tiered_hull_ulv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ulv"
+        }
+      },
+      "tiered_hull_lv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+        }
+      },
+      "tiered_hull_mv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+        }
+      },
+      "tiered_hull_hv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+        }
+      },
+      "tiered_hull_ev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+        }
+      },
+      "tiered_hull_iv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+        }
+      },
+      "tiered_hull_luv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+        }
+      },
+      "tiered_hull_zpm": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+        }
+      },
+      "tiered_hull_uv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+        }
+      },
+      "tiered_hull_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
       }
     }
   }

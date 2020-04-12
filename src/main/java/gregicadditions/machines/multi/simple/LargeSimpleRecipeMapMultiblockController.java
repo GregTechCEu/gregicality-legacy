@@ -31,7 +31,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 	 * @param EUtPercentage      should be between 0 ~ Integer.MAX_VALUE, Default should be 100
 	 * @param durationPercentage should be between 0 ~ Integer.MAX_VALUE, Default should be 100
 	 * @param chancePercentage   should be between 0 ~ Integer.MAX_VALUE, Default should be 100
-	 * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 100
+	 * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 1
 	 */
 	public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
 		super(metaTileEntityId, recipeMap);

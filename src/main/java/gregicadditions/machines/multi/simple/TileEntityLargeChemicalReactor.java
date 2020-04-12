@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -29,7 +30,7 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 
 
 	public TileEntityLargeChemicalReactor(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.CHEMICAL_RECIPES, 50, 150, 100, 2);
+		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, 50, 150, 100, 2);
 	}
 
 	@Override

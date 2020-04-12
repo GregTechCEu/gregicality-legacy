@@ -50,6 +50,7 @@ import java.util.stream.Collectors;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.TOOL_DATA_ORB;
 
 public class GARecipeAddition {
 
@@ -488,7 +489,6 @@ public class GARecipeAddition {
         }
 
 
-
         //Pyrolise Oven Recipes
         RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(0).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(Creosote.getFluid(4000)).duration(440).EUt(64).buildAndRegister();
         RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(1).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(Creosote.getFluid(4000)).duration(200).EUt(96).buildAndRegister();
@@ -502,30 +502,6 @@ public class GARecipeAddition {
         RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().input(log, Wood, 16).circuitMeta(9).fluidInputs(Nitrogen.getFluid(400)).outputs(new ItemStack(Items.COAL, 20, 1)).fluidOutputs(CharcoalByproducts.getFluid(4000)).duration(320).EUt(96).buildAndRegister();
         RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(1).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
         RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(2).fluidInputs(Nitrogen.getFluid(400)).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
-
-        //Chemical Reactor Cracking
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Ethane.getFluid(1000)).fluidOutputs(HydroCrackedEthane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Ethylene.getFluid(1000)).fluidOutputs(HydroCrackedEthylene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Propene.getFluid(1000)).fluidOutputs(HydroCrackedPropene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Propane.getFluid(1000)).fluidOutputs(HydroCrackedPropane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), LightFuel.getFluid(1000)).fluidOutputs(HydroCrackedLightFuel.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Butane.getFluid(1000)).fluidOutputs(HydroCrackedButane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Naphtha.getFluid(1000)).fluidOutputs(HydroCrackedNaphtha.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), HeavyFuel.getFluid(1000)).fluidOutputs(HydroCrackedHeavyFuel.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Gas.getFluid(1000)).fluidOutputs(HydroCrackedGas.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Butene.getFluid(1000)).fluidOutputs(HydroCrackedButene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Hydrogen.getFluid(2000), Butadiene.getFluid(1000)).fluidOutputs(HydroCrackedButadiene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Ethane.getFluid(1000)).fluidOutputs(SteamCrackedEthane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Ethylene.getFluid(1000)).fluidOutputs(SteamCrackedEthylene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Propene.getFluid(1000)).fluidOutputs(SteamCrackedPropene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Propane.getFluid(1000)).fluidOutputs(SteamCrackedPropane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), LightFuel.getFluid(1000)).fluidOutputs(CrackedLightFuel.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Butane.getFluid(1000)).fluidOutputs(SteamCrackedButane.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Naphtha.getFluid(1000)).fluidOutputs(SteamCrackedNaphtha.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), HeavyFuel.getFluid(1000)).fluidOutputs(CrackedHeavyFuel.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Gas.getFluid(1000)).fluidOutputs(SteamCrackedGas.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Butene.getFluid(1000)).fluidOutputs(SteamCrackedButene.getFluid(1000)).buildAndRegister();
-        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).fluidInputs(Steam.getFluid(2000), Butadiene.getFluid(1000)).fluidOutputs(SteamCrackedButadiene.getFluid(1000)).buildAndRegister();
 
         //Distillation Recipes
         RecipeMaps.DISTILLATION_RECIPES.recipeBuilder().duration(16).EUt(96).fluidInputs(FishOil.getFluid(24)).fluidOutputs(Lubricant.getFluid(12)).buildAndRegister();
@@ -599,9 +575,14 @@ public class GARecipeAddition {
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(30).input(dust, Calcite).notConsumable(new IntCircuitIngredient(1)).outputs(OreDictUnifier.get(dust, Quicklime)).fluidOutputs(CarbonDioxide.getFluid(1000)).buildAndRegister();
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(30).input(dust, Magnesite).outputs(OreDictUnifier.get(dust, Magnesia)).fluidOutputs(CarbonDioxide.getFluid(1000)).buildAndRegister();
 
+
+        //GAMetaBlocks.MUTLIBLOCK_CASING recipe
         ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING, 2), "PhP", "AFA", "PwP", 'P', "plateSteel", 'A', MetaItems.ROBOT_ARM_IV.getStackForm(), 'F', OreDictUnifier.get(frameGt, TungstenSteel));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_assembler_casing"));
         ModHandler.addShapedRecipe("ga_assmbler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.ASSEMBLER_CASING, 3), "CCC", "CFC", "CMC", 'C', "circuitElite", 'F', "frameGtTungstenSteel", 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm());
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8000).input(valueOf("gtMetalCasing"), Steel, 1).fluidInputs(Polytetrafluoroethylene.getFluid(216)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CHEMICALLY_INERT, 1)).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8000).input(circuit, Tier.Extreme).inputs(OreDictUnifier.get(gear, Nitinol60), OreDictUnifier.get(plate, Nitinol60), TOOL_DATA_ORB.getStackForm(), OreDictUnifier.get(cableGtOctal, Nichrome), MetaTileEntities.HULL[GTValues.IV].getStackForm()).fluidInputs(Thorium.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_IV, 1)).buildAndRegister();
+
 
         RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
 
@@ -671,6 +652,28 @@ public class GARecipeAddition {
                 .input(dust, Phosphorus, 2)
                 .input(dust, Molybdenum, 1)
                 .outputs(OreDictUnifier.get(dust, Talonite, 10)).buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .input(dust, Titanium, 3)
+                .input(dust, Nickel, 2)
+                .outputs(OreDictUnifier.get(dust, Nitinol60, 5)).buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .input(dust, Tin, 5)
+                .input(dust, Lead, 36)
+                .input(dust, Antimony, 8)
+                .input(dust, Arsenic, 1)
+                .outputs(OreDictUnifier.get(dust, BabbitAlloy, 50)).buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(1000).EUt(1920)
+                .input(dust, Iron, 16)
+                .input(dust, Aluminium, 3)
+                .input(dust, Chrome, 5)
+                .input(dust, Yttrium, 1)
+                .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25)).buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(240).EUt(30720)
+                .fluidInputs(Mercury.getFluid(1000), Oxygen.getFluid(8000))
+                .input(dust, Barium, 2)
+                .input(dust, Calcium, 2)
+                .input(dust, Copper, 3)
+                .outputs(OreDictUnifier.get(dust, HG1223, 16)).buildAndRegister();
 
         //Pyrotheum
         RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
@@ -697,7 +700,6 @@ public class GARecipeAddition {
                 .fluidOutputs(Cryotheum.getFluid(250)).buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().input(valueOf("gtMetalCasing"), Steel, 1).fluidInputs(Polytetrafluoroethylene.getFluid(216)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CHEMICALLY_INERT, 1)).duration(100).EUt(8000).buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 1
         ModHandler.removeRecipes(MetaItems.BASIC_CIRCUIT_LV.getStackForm());
@@ -844,6 +846,13 @@ public class GARecipeAddition {
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).notConsumable(new IntCircuitIngredient(2)).fluidInputs(Oxygen.getFluid(4000), Ammonia.getFluid(1000)).fluidOutputs(NitricAcid.getFluid(1000), Water.getFluid(1000)).buildAndRegister();
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(30).notConsumable(new IntCircuitIngredient(4)).fluidInputs(Water.getFluid(1000), Oxygen.getFluid(1000), NitrogenDioxide.getFluid(2000)).fluidOutputs(NitricAcid.getFluid(2000)).buildAndRegister();
         RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(480).notConsumable(new IntCircuitIngredient(24)).fluidInputs(Oxygen.getFluid(4000), Nitrogen.getFluid(1000), Hydrogen.getFluid(3000)).fluidOutputs(NitricAcid.getFluid(1000), Water.getFluid(1000)).buildAndRegister();
+
+        //Fuel high Octane
+        GARecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(1920).fluidInputs(NitricOxide.getFluid(6000), Gasoline.getFluid(20000), Toluene.getFluid(1000), Octane.getFluid(2000), EthylTertButylEther.getFluid(3000)).fluidOutputs(HighOctaneGasoline.getFluid(32)).buildAndRegister();
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(10).EUt(480).fluidInputs(RawGasoline.getFluid(10000), Toluene.getFluid(1000)).fluidOutputs(Gasoline.getFluid(11000)).buildAndRegister();
+        GARecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480).fluidInputs(Naphtha.getFluid(16000), Gas.getFluid(2000), Methanol.getFluid(1000), Acetone.getFluid(1000)).fluidOutputs(RawGasoline.getFluid(20000)).buildAndRegister();
+        RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(480).fluidInputs(Ethanol.getFluid(1000), Butane.getFluid(1000)).fluidOutputs(EthylTertButylEther.getFluid(2000)).buildAndRegister();
+        RecipeMaps.DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120).fluidInputs(HydroCrackedLightFuel.getFluid(1000)).fluidOutputs(Naphtha.getFluid(750), Propane.getFluid(200), Butane.getFluid(150), Ethane.getFluid(125), Methane.getFluid(125), Octane.getFluid(50)).buildAndRegister();
 
         //Assline Recipes
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 1), OreDictUnifier.get(stickLong, HSSG, 2), OreDictUnifier.get(ring, HSSG, 4), OreDictUnifier.get(valueOf("round"), HSSG, 16), OreDictUnifier.get(wireFine, AnnealedCopper, 64), OreDictUnifier.get(wireFine, AnnealedCopper, 64), OreDictUnifier.get(wireFine, AnnealedCopper, 64), OreDictUnifier.get(wireFine, AnnealedCopper, 64), OreDictUnifier.get(cableGtSingle, YttriumBariumCuprate, 2)).fluidInputs(SolderingAlloy.getFluid(144), Lubricant.getFluid(250)).outputs(MetaItems.ELECTRIC_MOTOR_LUV.getStackForm()).duration(600).EUt(10240).buildAndRegister();

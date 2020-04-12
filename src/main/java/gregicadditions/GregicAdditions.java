@@ -11,7 +11,10 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.*;
+import gregicadditions.theoneprobe.TheOneProbeCompatibility;
+import gregtech.api.GTValues;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -110,6 +113,11 @@ public class GregicAdditions {
             exNihiloCreatioProxy.init(event);
         }
         GARecipeAddition.generatedRecipes();
+
+        if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
+            GTLog.logger.info("TheOneProbe found. Enabling integration...");
+            TheOneProbeCompatibility.registerCompatibility();
+        }
     }
 
     @EventHandler
@@ -149,6 +157,7 @@ public class GregicAdditions {
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
         RecipeHandler.register();
+        RecipeHandler.registerLargeChemicalRecipes();
         VoidMinerOres.init();
     }
 

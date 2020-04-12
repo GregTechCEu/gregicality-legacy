@@ -434,6 +434,8 @@ gtadditions.machine.large_turbine.high_pressure_steam.name=Large Plasma Turbine
 gtadditions.machine.large_transformer.name=Large Transformer
 gtadditions.machine.void_miner.name=Void Ore Miner
 gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive Blast Furnace
+gtadditions.machine.cryogenic_freezer.name=Cryogenic Freezer
+gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
 
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
@@ -506,6 +508,16 @@ tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
 tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Assembler Casing
+tile.ga_multiblock_casing.tiered_hull_ulv.name=Integral Framework I
+tile.ga_multiblock_casing.tiered_hull_lv.name=Integral Framework II
+tile.ga_multiblock_casing.tiered_hull_mv.name=Integral Framework III
+tile.ga_multiblock_casing.tiered_hull_hv.name=Integral Framework IV
+tile.ga_multiblock_casing.tiered_hull_ev.name=Integral Framework V
+tile.ga_multiblock_casing.tiered_hull_iv.name=Integral Framework VI
+tile.ga_multiblock_casing.tiered_hull_luv.name=Integral Framework VII
+tile.ga_multiblock_casing.tiered_hull_zpm.name=Integral Framework VIII
+tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
+tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
 tile.ga_metal_casing.material.red_steel.name=Red Steel Casing
 tile.ga_metal_casing.material.tumbaga.name=Tumbaga Casing
@@ -708,6 +720,16 @@ material.blize=blize
 material.cryotheum=Cryotheum
 material.high_pressure_steam=High Pressure Steam
 material.sand=Sand
+material.hg_alloy=HG-1223
+material.incoloy_ma=incoloy MA-956
+material.babbit_alloy=Babbit alloy
+material.nitinol_a=Nitinol 60
+material.raw_gasoline=Raw Gasoline
+material.gasoline=Gasoline
+material.octane=Octane
+material.high_octane=High Octane Gasoline
+material.ethyl_tert_butyl_ether=Ethyl Tert-Butyl Ether
+
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp
@@ -803,7 +825,11 @@ gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Indust
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's the upgraded version of The Primitive Blast Furnace.
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitibe Blast Furnace can be automate and speed up.
 gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite, Diorite and Granite. have to be ajacent to lava and water.
-
+gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built as the Vacuum Freezer. It consume 20L of Cryotheum per sec and it is 2x faster and process 4 items at one time.
+gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built as the the Distillation Tower with 26 layer.
+gregtech.multiblock.advanced_distillation_tower.description2=2 Modes :
+gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
+gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 
@@ -1122,6 +1148,7 @@ recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
 recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
 recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
 recipemap.attractor.name=Bee Attractor Recipes
+recipemap.large_chemical_reactor.name= Large Chemical Reactor
 
 gtadditions.machine.sieve.lv.name=Basic Electric Sieve
 gtadditions.machine.sieve.mv.name=Advanced Electric Sieve

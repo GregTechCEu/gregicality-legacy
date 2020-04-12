@@ -12,25 +12,38 @@ import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
 
 public class RecipeHandler {
 
-	public static void register() {
-		OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
-	}
+    public static void register() {
+        OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
+    }
 
-	private static void processMetalCasing(OrePrefix prefix, IngotMaterial material) {
-		if (material.hasFlag(GENERATE_METAL_CASING)) {
-			ItemStack metalCasingStack = OreDictUnifier.get(prefix, material, 3);
-			ModHandler.addShapedRecipe(String.format("metal_casing_%s", material), metalCasingStack,
-					"PhP", "PBP", "PwP",
-					'P', new UnificationEntry(OrePrefix.plate, material),
-					'B', new UnificationEntry(OrePrefix.frameGt, material));
+    private static void processMetalCasing(OrePrefix prefix, IngotMaterial material) {
+        if (material.hasFlag(GENERATE_METAL_CASING)) {
+            ItemStack metalCasingStack = OreDictUnifier.get(prefix, material, 3);
+            ModHandler.addShapedRecipe(String.format("metal_casing_%s", material), metalCasingStack,
+                    "PhP", "PBP", "PwP",
+                    'P', new UnificationEntry(OrePrefix.plate, material),
+                    'B', new UnificationEntry(OrePrefix.frameGt, material));
 
 
-			RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-					.input(OrePrefix.plate, material, 6)
-					.input(OrePrefix.frameGt, material, 1)
-					.outputs(metalCasingStack)
-					.EUt(8).duration(200)
-					.buildAndRegister();
-		}
-	}
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                    .input(OrePrefix.plate, material, 6)
+                    .input(OrePrefix.frameGt, material, 1)
+                    .outputs(metalCasingStack)
+                    .EUt(8).duration(200)
+                    .buildAndRegister();
+        }
+    }
+
+    public static void registerLargeChemicalRecipes() {
+        RecipeMaps.CHEMICAL_RECIPES.getRecipeList().stream().forEach(recipe -> {
+            GARecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .buildAndRegister();
+        });
+    }
 }

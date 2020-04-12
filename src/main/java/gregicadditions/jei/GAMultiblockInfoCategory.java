@@ -3,6 +3,8 @@ package gregicadditions.jei;
 import com.google.common.collect.Lists;
 import gregicadditions.jei.multi.IndustrialPrimitiveBlastFurnaceInfo;
 import gregicadditions.jei.multi.LargeTransformerInfo;
+import gregicadditions.jei.multi.advance.AdvancedDistillationTowerInfo;
+import gregicadditions.jei.multi.advance.CryogenicFreezerInfo;
 import gregicadditions.jei.multi.advance.VolcanusInfo;
 import gregicadditions.jei.multi.miner.LargeMinerInfo;
 import gregicadditions.jei.multi.miner.VoidMinerInfo;
@@ -52,7 +54,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()),
                 new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
                 new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
-                new MultiblockInfoRecipeWrapper(new DistilationTowerInfo()),
+                new MultiblockInfoRecipeWrapper(new DistillationTowerInfo()),
                 new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
                 new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
                 new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
@@ -70,7 +72,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLine()),
                 new MultiblockInfoRecipeWrapper(new VoidMinerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeTransformerInfo()),
-                new MultiblockInfoRecipeWrapper(new IndustrialPrimitiveBlastFurnaceInfo())
+                new MultiblockInfoRecipeWrapper(new IndustrialPrimitiveBlastFurnaceInfo()),
+                new MultiblockInfoRecipeWrapper(new AdvancedDistillationTowerInfo()),
+                new MultiblockInfoRecipeWrapper(new CryogenicFreezerInfo())
         ), "gtadditions:multiblock_info2");
     }
 

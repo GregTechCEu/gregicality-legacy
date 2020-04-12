@@ -15,7 +15,7 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-public class DistilationTowerInfo extends MultiblockInfoPage {
+public class DistillationTowerInfo extends MultiblockInfoPage {
 
 	@Override
 	public MultiblockControllerBase getController() {

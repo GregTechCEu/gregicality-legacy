@@ -23,6 +23,16 @@ public class ClientHandler {
 
     public static SimpleCubeRenderer CHEMICALLY_INERT = new SimpleCubeRenderer("casings/solid/machine_casing_chemically_inert");
     public static SimpleCubeRenderer LARGE_ASSEMBLER = new SimpleCubeRenderer("casings/solid/machine_casing_large_assembler");
+    public static SimpleCubeRenderer TIERED_HULL_ULV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_ulv");
+    public static SimpleCubeRenderer TIERED_HULL_LV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_lv");
+    public static SimpleCubeRenderer TIERED_HULL_MV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_mv");
+    public static SimpleCubeRenderer TIERED_HULL_HV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_hv");
+    public static SimpleCubeRenderer TIERED_HULL_EV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_ev");
+    public static SimpleCubeRenderer TIERED_HULL_IV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_iv");
+    public static SimpleCubeRenderer TIERED_HULL_LUV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_luv");
+    public static SimpleCubeRenderer TIERED_HULL_ZPM = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_zpm");
+    public static SimpleCubeRenderer TIERED_HULL_UV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_uv");
+    public static SimpleCubeRenderer TIERED_HULL_MAX = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_max");
     public static SimpleCubeRenderer FUSION_TEXTURE = new SimpleCubeRenderer("casings/fusion/machine_casing_fusion_glass");
     public static SimpleCubeRenderer ACTIVE_FUSION_TEXTURE = new SimpleCubeRenderer("gregtech:casings/fusion/machine_casing_fusion_glass_yellow");
     public static OrientedOverlayRenderer NAQADAH_OVERLAY = new OrientedOverlayRenderer("machines/naquadah_reactor", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);

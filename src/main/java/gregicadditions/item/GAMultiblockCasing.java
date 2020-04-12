@@ -30,7 +30,17 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
 
         TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing"),
         CHEMICALLY_INERT("chemically_inert_casing"),
-        LARGE_ASSEMBLER("large_assembler_casing");
+        LARGE_ASSEMBLER("large_assembler_casing"),
+        TIERED_HULL_ULV("tiered_hull_ulv"),
+        TIERED_HULL_LV("tiered_hull_lv"),
+        TIERED_HULL_MV("tiered_hull_mv"),
+        TIERED_HULL_HV("tiered_hull_hv"),
+        TIERED_HULL_EV("tiered_hull_ev"),
+        TIERED_HULL_IV("tiered_hull_iv"),
+        TIERED_HULL_LUV("tiered_hull_luv"),
+        TIERED_HULL_ZPM("tiered_hull_zpm"),
+        TIERED_HULL_UV("tiered_hull_uv"),
+        TIERED_HULL_MAX("tiered_hull_max");
 
         private final String name;
 

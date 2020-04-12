@@ -38,7 +38,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
 	public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
-		this.recipeMapWorkable = new VolacanusRecipeLogic(this);
+		this.recipeMapWorkable = new VolcanusRecipeLogic(this);
 		reinitializeStructurePattern();
 	}
 
@@ -79,9 +79,9 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 	}
 
 
-	public class VolacanusRecipeLogic extends MultiblockRecipeLogic {
+	public class VolcanusRecipeLogic extends MultiblockRecipeLogic {
 
-		public VolacanusRecipeLogic(RecipeMapMultiblockController tileEntity) {
+		public VolcanusRecipeLogic(RecipeMapMultiblockController tileEntity) {
 			super(tileEntity);
 		}
 

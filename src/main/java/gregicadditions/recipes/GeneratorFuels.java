@@ -11,7 +11,7 @@ import gregtech.loaders.recipe.FuelRecipes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 
-import static gregicadditions.GAMaterials.HighPressureSteam;
+import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class GeneratorFuels {
@@ -72,6 +72,9 @@ public class GeneratorFuels {
         FuelRecipes.registerDieselGeneratorFuel(LightFuel.getFluid(32), 305, GTValues.LV);
         FuelRecipes.registerDieselGeneratorFuel(Fuel.getFluid(1), 15, GTValues.LV);
         FuelRecipes.registerDieselGeneratorFuel(NitroFuel.getFluid(2), 45, GTValues.LV);
+        FuelRecipes.registerDieselGeneratorFuel(Gasoline.getFluid(8), 135, GTValues.LV);
+        FuelRecipes.registerDieselGeneratorFuel(HighOctaneGasoline.getFluid(4), 225, GTValues.LV);
+        FuelRecipes.registerDieselGeneratorFuel(Octane.getFluid(4), 9, GTValues.LV);
 
         //Naquadah Reactor
         registerNaquadahReactorFuel(NaquadahEnriched.getFluid(1), 750, GTValues.LV);
