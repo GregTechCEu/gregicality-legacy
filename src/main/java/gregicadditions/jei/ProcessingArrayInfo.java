@@ -29,11 +29,12 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-				.aisle("XXX", "XXX", "XXX")
-				.aisle("IXX", "X#X", "XXX")
-				.aisle("OXX", "XSX", "XXX")
-				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.SOUTH)
+				.aisle("EXX", "XXX", "XXX")
+				.aisle("IXX", "S#X", "XXX")
+				.aisle("OXX", "XXX", "XXX")
+				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.WEST)
 				.where('X', GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState())
+				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.WEST)
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 				.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST).build();

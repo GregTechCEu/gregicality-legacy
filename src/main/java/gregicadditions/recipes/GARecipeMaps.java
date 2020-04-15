@@ -47,6 +47,12 @@ public class GARecipeMaps {
     public static final FuelRecipeMap HIGH_PRESSURE_STEAM_TURBINE_FUELS;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> LARGE_CHEMICAL_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> CHEMICAL_DEHYDRATOR_RECIPES;
+    @ZenProperty
+    public static final FuelRecipeMap ROCKET_FUEL_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> CHEMICAL_PLANT_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -65,6 +71,11 @@ public class GARecipeMaps {
         ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         HIGH_PRESSURE_STEAM_TURBINE_FUELS = new FuelRecipeMap("high_pressure_steam_turbine");
         LARGE_CHEMICAL_RECIPES = new RecipeMap<>("large_chemical_reactor", 0, 2, 0, 1, 0, 5, 0, 2, (new SimpleRecipeBuilder()).EUt(30)).setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2).setSlotOverlay(false, true, GuiTextures.MOLECULAR_OVERLAY_3).setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1).setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL);
+        CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
+                .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
+        ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
+        CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 0, 0, 4, 0, 2, (new SimpleRecipeBuilder()))
+                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
     }
 }

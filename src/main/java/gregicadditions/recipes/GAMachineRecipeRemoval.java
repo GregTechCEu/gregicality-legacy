@@ -62,6 +62,9 @@ public class GAMachineRecipeRemoval {
                 removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(1152)});
                 removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(2304)});
             }
+            //remove packer recipes
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m),IntCircuitIngredient.getIntegratedCircuit(2));
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m),IntCircuitIngredient.getIntegratedCircuit(1));
         }
         //Remove Old Bucket Recipe
         if (GAConfig.GT6.BendingCurvedPlates) {
@@ -259,6 +262,10 @@ public class GAMachineRecipeRemoval {
         //Remove Nuclear processing
         removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
         removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
+
+        //remove Brewing
+        removeAllRecipes(RecipeMaps.BREWING_RECIPES);
+
 
     }
 

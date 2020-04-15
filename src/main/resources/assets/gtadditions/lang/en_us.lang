@@ -1,10 +1,3 @@
-
-metaitem.assembly.normal.name=Processor Assembly
-metaitem.assembly.normal.tooltip=An Advanced Circuit
-metaitem.assembly.nano.name=Nanoprocessor Assembly
-metaitem.assembly.nano.tooltip=An Extreme Circuit
-metaitem.assembly.wetware.name=Wetwareprocessor Assembly
-metaitem.assembly.wetware.tooltip=An Ultimate Circuit
 metaitem.board.coated.name=Coated Circuit Board
 metaitem.board.coated.tooltip=A Basic Board
 metaitem.board.epoxy.name=Epoxy Circuit Board
@@ -26,6 +19,8 @@ metaitem.board.advanced.name=Advanced Circuit Board
 metaitem.board.extreme.name=Extreme Circuit Board
 metaitem.board.elite.name=Elite Circuit Board
 metaitem.board.master.name=Master Circuit Board
+metaitem.circuit.board.elite.name=Neuro Processing Unit
+metaitem.circuit.board.elite.tooltip=Neuto CPU
 metaitem.boule.silicon.name=Monocrystalline Silicon Boule
 metaitem.boule.silicon.tooltip=Raw Circuit
 metaitem.boule.glowstone.name=Glowstone doped Monocrystalline Silicon Boule
@@ -34,14 +29,7 @@ metaitem.boule.naquadah.name=Naquadah doped Monocrystalline Silicon Boule
 metaitem.boule.naquadah.tooltip=Raw Circuit
 metaitem.brick.coke.name=Coke Oven Brick
 metaitem.brick.fireclay.name=Firebrick
-metaitem.circuit.advanced.regular.name=Advanced Circuit
-metaitem.circuit.advanced.regular.tooltip=An Advanced Circuit
-metaitem.circuit.good.regular.name=Good Integrated Circuit
-metaitem.circuit.good.regular.tooltip=A Good Circuit
-metaitem.circuit.basic.regular.name=Basic Circuit
-metaitem.circuit.basic.regular.tooltip=A Basic Circuit
-metaitem.circuit.vacuum.tube.name=Vacuum Tube
-metaitem.circuit.vacuum.tube.tooltip=A Very Simple Circuit
+metaitem.credit.darmstadtium.name=Neutronium Credit
 metaitem.component.diode.name=Diode
 metaitem.component.diode.tooltip=Basic Electronic Component
 metaitem.component.capacitor.name=Capacitor
@@ -68,24 +56,6 @@ metaitem.component.transistor.tooltip=Basic Electronic Component
 metaitem.compressed.clay.name=Unfired Clay Brick
 metaitem.compressed.fireclay.name=Compressed Fireclay
 metaitem.compressed.fireclay.tooltip=Brick-Shaped
-metaitem.computer.crystal.name=Ultimate Crystalcomputer
-metaitem.computer.crystal.tooltip=An Ultimate Circuit
-metaitem.computer.nano.name=Elite Nanocomputer
-metaitem.computer.nano.tooltip=An Elite Circuit
-metaitem.computer.quantum.name=Master Quantumcomputer
-metaitem.computer.quantum.tooltip=A Master Circuit
-metaitem.computer.wetware.name=Wetware Supercomputer
-metaitem.computer.wetware.tooltip=A Super Circuit
-metaitem.mainframe.crystal.name=Crystalprocessor Mainframe
-metaitem.mainframe.crystal.tooltip=A Super Circuit
-metaitem.mainframe.nano.name=Nanoprocessor Mainframe
-metaitem.mainframe.nano.tooltip=A Master Circuit
-metaitem.mainframe.normal.name=Mainframe
-metaitem.mainframe.normal.tooltip=An Elite Circuit
-metaitem.mainframe.quantum.name=Quantumprocessor Mainframe
-metaitem.mainframe.quantum.tooltip=An Ultimate Circuit
-metaitem.mainframe.wetware.name=Wetware Mainframe
-metaitem.mainframe.wetware.tooltip=An Infinite Circuit
 metaitem.plate.asoc.name=ASoC
 metaitem.plate.asoc.tooltip=Advanced System on a Chip
 metaitem.plate.circuit.name=Integrated Logic Circuit
@@ -108,14 +78,6 @@ metaitem.plate.ram.name=Random Access Memory Chip
 metaitem.plate.ram.tooltip=Integrated Circuit
 metaitem.plate.soc.name=SoC
 metaitem.plate.soc.tooltip=System on a Chip
-metaitem.processor.crystal.name=Crystalprocessor
-metaitem.processor.crystal.tooltip=An Elite Circuit
-metaitem.processor.nano.name=Nanoprocessor
-metaitem.processor.nano.tooltip=An Advanced Circuit
-metaitem.processor.quantum.name=Quantumprocessor
-metaitem.processor.quantum.tooltip=An Extreme Circuit
-metaitem.processor.wetware.name=Wetwareprocessor
-metaitem.processor.wetware.tooltip=A Master Circuit
 metaitem.wafer.asoc.name=ASoC Wafer
 metaitem.wafer.asoc.tooltip=Raw Circuit
 metaitem.wafer.circuit.name=Integrated Logic Circuit (Wafer)
@@ -189,6 +151,89 @@ metaitem.mica_insulator_foil.name=Mica Insulator Foil
 metaitem.energy.module.name=Energy Module
 metaitem.energy.cluster.name=Energy Cluster
 metaitem.max.battery.name=MAX Battery
+
+
+/////////////////////CIRCUIT///////////////////////////
+
+//LV
+metaitem.circuit.basic.name=Primitive Processor
+metaitem.circuit.basic.tooltip=§b§oLV Circuit
+metaitem.circuit.processor.refined.name=Refined Processor
+metaitem.circuit.processor.refined.tooltip=§b§oLV Circuit
+metaitem.circuit.basic_electronic.name=Electronic Processor
+metaitem.circuit.basic_electronic.tooltip=§b§oLV Circuit
+
+//MV
+metaitem.circuit.assembly.primitive.name=Primitive Assembly
+metaitem.circuit.assembly.primitive.tooltip=§b§oMV Circuit
+metaitem.circuit.assembly.electronic.name=Electronic Assembly
+metaitem.circuit.assembly.electronic.tooltip=§b§oMV Circuit
+metaitem.circuit.assembly.refined.name=Refined Assembly
+metaitem.circuit.assembly.refined.tooltip=§b§oMV Circuit
+metaitem.circuit.processor.micro.name=Micro Processor
+metaitem.circuit.processor.micro.tooltip=§b§oMV Circuit
+
+//HV
+metaitem.circuit.computer.electronic.name=Electronic Computer
+metaitem.circuit.computer.electronic.tooltip=§b§oHV Circuit
+metaitem.circuit.computer.refined.name=Refined Computer
+metaitem.circuit.computer.refined.tooltip=§b§oHV Circuit
+metaitem.circuit.processor_assembly.name=Micro Assembly
+metaitem.circuit.processor_assembly.tooltip=§b§oHV Circuit
+metaitem.circuit.nano_processor.name=Nano Processor
+metaitem.circuit.nano_processor.tooltip=§b§oHV Circuit
+
+
+//EV
+metaitem.circuit.mainframe.refined.name=Refined Mainframe
+metaitem.circuit.mainframe.refined.tooltip=§b§oEV Circuit
+metaitem.circuit.computer.micro.name=Micro Computer
+metaitem.circuit.computer.micro.tooltip=§b§oEV Circuit
+metaitem.circuit.nano_processor_assembly.name=Nano Assembly
+metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV Circuit
+metaitem.circuit.quantum_processor.name=Quantum Processor
+metaitem.circuit.quantum_processor.tooltip=§b§oEV Circuit
+
+//IV
+metaitem.circuit.mainframe.micro.name=Micro Mainframe
+metaitem.circuit.mainframe.micro.tooltip=§b§oIV Circuit
+metaitem.circuit.computer.nano.name=Nano Computer
+metaitem.circuit.computer.nano.tooltip=§b§oIV Circuit
+metaitem.circuit.assembly.quantum.name=Quantum Assembly
+metaitem.circuit.assembly.quantum.tooltip=§b§oIV Circuit
+metaitem.circuit.processor.crystal.name=Crystal Processor
+metaitem.circuit.processor.crystal.tooltip=§b§oIV Circuit
+
+//Luv
+metaitem.circuit.mainframe.nano.name=Nano Mainframe
+metaitem.circuit.mainframe.nano.tooltip=§b§oLuV Circuit
+metaitem.circuit.computer.quantum.name=Quantum Computer
+metaitem.circuit.computer.quantum.tooltip=§b§oLuV Circuit
+metaitem.circuit.energy_flow.name=Crystal Assembly
+metaitem.circuit.energy_flow.tooltip=§b§oLuV Circuit
+metaitem.circuit.wetware_processor.name=Wetware Processor
+metaitem.circuit.wetware_processor.tooltip=§b§oLuV Circuit
+
+//ZPM
+metaitem.circuit.mainframe.quantum.name=Quantum Mainframe
+metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM Circuit
+metaitem.circuit.computer.crystal.name=Crystal Computer
+metaitem.circuit.computer.crystal.tooltip=§b§oZPM Circuit
+metaitem.circuit.wetware_assembly.name=Wetware Assembly
+metaitem.circuit.wetware_assembly.tooltip=§b§oZPM Circuit
+
+//UV
+metaitem.circuit.mainframe.crystal.name=Crystal Mainframe
+metaitem.circuit.mainframe.crystal.tooltip=§b§oUV Circuit
+metaitem.circuit.wetware_super_computer.name=Wetware Computer
+metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
+
+//MAX
+metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
+metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
+
+///////////////////////////////////////////////////////
+
 
 gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
 
@@ -436,12 +481,17 @@ gtadditions.machine.void_miner.name=Void Ore Miner
 gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive Blast Furnace
 gtadditions.machine.cryogenic_freezer.name=Cryogenic Freezer
 gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
+gtadditions.machine.chemical_plant.name=Chemical Plant
 
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor Mk. 3
 gtadditions.machine.naquadah_reactor.mk4.name=Naquadah Reactor Mk. 4
+
+gtadditions.machine.rocket_generator.mk1.name=Basic Rocket Engine
+gtadditions.machine.rocket_generator.mk2.name=Advanced Rocket Engine
+gtadditions.machine.rocket_generator.mk3.name=Turbo Rocket Engine
 
 gtadditions.machine.mass_fab.lv.name=Basic Mass Fabricator
 gtadditions.machine.mass_fab.mv.name=Advanced Mass Fabricator
@@ -496,7 +546,7 @@ gtadditions.machine.miner.hv.name=Advanced Chunk Miner II
 gtadditions.machine.miner.basic.name=Basic Large Miner
 gtadditions.machine.miner.large.name=Large Miner
 gtadditions.machine.miner.advance.name=Advance Large Miner
-gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d. Break down Ore as Hammer tool using fortune %d.
+gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d. Break down Ore as Hammer tool using fortune %s.
 gtadditions.machine.miner.description=Mine all ores in the current chunk.
 gtadditions.machine.miner.fluid_usage=Consume %dmb of %s per tick
 
@@ -514,9 +564,13 @@ tile.ga_multiblock_casing.tiered_hull_mv.name=Integral Framework III
 tile.ga_multiblock_casing.tiered_hull_hv.name=Integral Framework IV
 tile.ga_multiblock_casing.tiered_hull_ev.name=Integral Framework V
 tile.ga_multiblock_casing.tiered_hull_iv.name=Integral Framework VI
+tile.ga_multiblock_casing.tiered_hull_iv.tooltip=§eMax Voltage IV
 tile.ga_multiblock_casing.tiered_hull_luv.name=Integral Framework VII
+tile.ga_multiblock_casing.tiered_hull_luv.tooltip=§eMax Voltage LuV
 tile.ga_multiblock_casing.tiered_hull_zpm.name=Integral Framework VIII
+tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§eMax Voltage ZPM
 tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
+tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eMax Voltage UV
 tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
 tile.ga_metal_casing.material.red_steel.name=Red Steel Casing
@@ -716,7 +770,7 @@ material.mica_based=Mica Based Pulp
 item.mica_based.dust=Mica Based Pulp
 material.ultima=Ultima Alloy
 material.iron_chloride=Iron III Chloride
-material.blize=blize
+material.blize=Blize
 material.cryotheum=Cryotheum
 material.high_pressure_steam=High Pressure Steam
 material.sand=Sand
@@ -729,6 +783,29 @@ material.gasoline=Gasoline
 material.octane=Octane
 material.high_octane=High Octane Gasoline
 material.ethyl_tert_butyl_ether=Ethyl Tert-Butyl Ether
+material.rocket_fuel_a=Rocket fuel H8N4C2O4
+material.nitrogen_tetroxide=Nitrogen Tetroxide
+material.coal_tar=Coal Tar
+material.coal_tar_oil=Coil Tar Oil
+material.sulfuric_coal_tar_oil=Sulfuric Coil Tar Oil
+material.anthracene=Anthracene
+material.kerosene=Kerosene
+material.ethylbenzene=Ethylbenzene
+material.monomethylhydrazine=Monomethylhydrazine
+material.hydrazine=Hydrazine
+material.hydrogen_peroxide=Hydrogen Peroxide
+material.ethylanthraquinone=Ethylanthraquinone
+material.ethylanthrahydroquinone=Ethylanthrahydroquinone
+material.phthalicanhydride=Phthalic Anhydride
+material.phthalicacid=Phthalic Acid
+material.naphtalene=Naphtalene
+material.dense_hydrazine_fuel_mixture=Dense Hydrazine Fuel Mixture
+material.rocket_fuel_b=Rocket Fuel CN3H7O3
+material.rocket_fuel_c=Rocket Fuel RP-1
+material.rp=RP-1
+material.liquid_oxygen=Liquid Oxygen
+material.fermentation_base=Fermentation Bse
+
 
 
 item.epoxid.ingot=Epoxy Resin Bar
@@ -791,6 +868,7 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
+gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is use to create high tier circuit.
@@ -830,8 +908,10 @@ gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distil
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes :
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
+gtadditions.multiblock.chemical_plant.tooltip=Duration Depend on Coil Tier.
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
+gregtech.universal.tooltip.efficiency=Efficiency: %s %%
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot
@@ -839,22 +919,7 @@ item.material.oreprefix.pipeGaSmall=Small %s Pipe
 item.material.oreprefix.pipeGa=%s Pipe
 item.material.oreprefix.pipeGaLarge=Large %s Pipe
 
-metaitem.circuit.parts.advanced.name=Microprocessor
-metaitem.circuit.parts.advanced.tooltip=A Basic Circuit
-metaitem.circuit.integrated.name=Programmed Circuit
-metaitem.circuit.basic.name=Integrated Logic Circuit
-metaitem.circuit.basic.tooltip=A Basic Circuit
-metaitem.circuit.advanced.name=Integrated Processor
-metaitem.circuit.advanced.tooltip=A Good Circuit
-metaitem.circuit.master.name=Crystalprocessor Assembly
-metaitem.circuit.master.tooltip=A Master Circuit
-metaitem.circuit.elite.name=Quantumprocessor Assembly
-metaitem.circuit.elite.tooltip=An Elite Circuit
-metaitem.circuit.data.name=Workstation
-metaitem.circuit.data.tooltip=An Extreme Circuit
-metaitem.circuit.board.elite.name=Neuro Processing Unit
-metaitem.circuit.board.elite.tooltip=Neuto CPU
-metaitem.credit.darmstadtium.name=Neutronium Credit
+
 
 metaitem.rubber_drop.name=Sticky Resin
 
@@ -896,7 +961,7 @@ metaitem.schematic.dust.name=Schematic (Dust)
 metaitem.schematic.3by3.name=Schematic (3x3)
 metaitem.schematic.2by2.name=Schematic (2x2)
 metaitem.schematic.name=Blank Schematic
-metaitem.circuit.wetware_super_computer.name=Wetware Supercomputer
+
 
 item.gtadditions:comb.lignite.name=Lignite Comb
 item.gtadditions:comb.coal.name=Coal Comb
@@ -1148,7 +1213,10 @@ recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
 recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
 recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
 recipemap.attractor.name=Bee Attractor Recipes
-recipemap.large_chemical_reactor.name= Large Chemical Reactor
+recipemap.large_chemical_reactor.name=Large Chemical Reactor
+recipemap.rocket_fuel.name=Rocket Fuel Generator
+recipemap.chemical_plant.name=Chemical Plant
+recipemap.chemical_dehydrator.name=Chemical Dehydrator
 
 gtadditions.machine.sieve.lv.name=Basic Electric Sieve
 gtadditions.machine.sieve.mv.name=Advanced Electric Sieve
@@ -1291,7 +1359,7 @@ gtadditions.machine.energy_hatch.output.luv.128.name=Energy Output Hatch 128 Amp
 gtadditions.machine.energy_hatch.output.zpm.16.name=Energy Output Hatch 16 Amps (ZPM)
 gtadditions.machine.energy_hatch.output.zpm.32.name=Energy Output Hatch 32 Amps (ZPM)
 gtadditions.machine.energy_hatch.output.zpm.64.name=Energy Output Hatch 64 Amps (ZPM)
-gtadditions.machine.energy_hatch.output.zpm.128name=Energy Output Hatch 128 Amps (ZPM)
+gtadditions.machine.energy_hatch.output.zpm.128.name=Energy Output Hatch 128 Amps (ZPM)
 gtadditions.machine.energy_hatch.output.uv.16.name=Energy Output Hatch 16 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)

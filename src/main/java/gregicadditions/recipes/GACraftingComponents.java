@@ -13,33 +13,36 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
+import static gregicadditions.GAMaterials.*;
 import static gregtech.api.GTValues.W;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
-public enum GACraftingComponents {
+public enum GACraftingComponents     {
     CIRCUIT {
         @Override
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Primitive);
                 case 1:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Basic);
                 case 2:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Good);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Good);
                 case 3:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced);
                 case 4:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme);
                 case 5:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Elite);
                 case 6:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Master);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Master);
                 case 7:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
             }
         }
     },
@@ -48,25 +51,79 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier + 1) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Primitive);
                 case 1:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Basic);
                 case 2:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Good);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Good);
                 case 3:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced);
                 case 4:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme);
                 case 5:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Elite);
                 case 6:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Master);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Master);
                 case 7:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
+            }
+        }
+    },
+    CIRCUIT_PLATE{
+        @Override
+        public Object getIngredient(int tier) {
+            switch (tier) {
+                case 0:
+                    return new UnificationEntry(plate, WroughtIron);
+                case 1:
+                    return new UnificationEntry(plate, Steel);
+                case 2:
+                    return new UnificationEntry(plate, Aluminium);
+                case 3:
+                    return new UnificationEntry(plate, StainlessSteel);
+                case 4:
+                    return new UnificationEntry(plate, Titanium);
+                case 5:
+                    return new UnificationEntry(plate, TungstenSteel);
+                case 6:
+                    return new UnificationEntry(plateDense, HSSG);
+                case 7:
+                    return new UnificationEntry(plateDense, HSSE);
+                default:
+                    return new UnificationEntry(plateDense, Neutronium);
+
+            }
+        }
+    },
+    CIRCUIT_WIRE{
+        @Override
+        public Object getIngredient(int tier) {
+            switch (tier) {
+                case 0:
+                    return new UnificationEntry(wireFine, Lead);
+                case 1:
+                    return new UnificationEntry(wireFine, Tin);
+                case 2:
+                    return new UnificationEntry(wireGtSingle, Copper);
+                case 3:
+                    return new UnificationEntry(wireGtSingle, Gold);
+                case 4:
+                    return new UnificationEntry(wireGtDouble, Aluminium);
+                case 5:
+                    return new UnificationEntry(cableGtDouble, Platinum);
+                case 6:
+                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
+                case 7:
+                    return new UnificationEntry(cableGtOctal, Naquadah);
+                case 8:
+                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
+
             }
         }
     },
@@ -99,25 +156,25 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Lead);
+                    return new UnificationEntry(cableGtSingle, Lead);
                 case 1:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Tin);
+                    return new UnificationEntry(cableGtSingle, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Copper);
+                    return new UnificationEntry(cableGtSingle, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Gold);
+                    return new UnificationEntry(cableGtSingle, Gold);
                 case 4:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Aluminium);
+                    return new UnificationEntry(cableGtSingle, Aluminium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Platinum);
+                    return new UnificationEntry(cableGtSingle, Platinum);
                 case 6:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.NiobiumTitanium);
+                    return new UnificationEntry(cableGtSingle, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.cableGtSingle, Materials.Naquadah);
+                    return new UnificationEntry(cableGtSingle, Naquadah);
                 case 8:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.NaquadahAlloy);
+                    return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtSingle, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -126,25 +183,25 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Lead);
+                    return new UnificationEntry(cableGtDouble, Lead);
                 case 1:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Tin);
+                    return new UnificationEntry(cableGtDouble, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Copper);
+                    return new UnificationEntry(cableGtDouble, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Gold);
+                    return new UnificationEntry(cableGtDouble, Gold);
                 case 4:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Aluminium);
+                    return new UnificationEntry(cableGtDouble, Aluminium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Platinum);
+                    return new UnificationEntry(cableGtDouble, Platinum);
                 case 6:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.NiobiumTitanium);
+                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.cableGtDouble, Materials.Naquadah);
+                    return new UnificationEntry(cableGtDouble, Naquadah);
                 case 8:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.NaquadahAlloy);
+                    return new UnificationEntry(wireGtDouble, NaquadahAlloy);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtDouble, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -153,23 +210,23 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Lead);
+                    return new UnificationEntry(cableGtQuadruple, Lead);
                 case 1:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Tin);
+                    return new UnificationEntry(cableGtQuadruple, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Copper);
+                    return new UnificationEntry(cableGtQuadruple, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Gold);
+                    return new UnificationEntry(cableGtQuadruple, Gold);
                 case 4:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Aluminium);
+                    return new UnificationEntry(cableGtQuadruple, Aluminium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Platinum);
+                    return new UnificationEntry(cableGtQuadruple, Platinum);
                 case 6:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.NiobiumTitanium);
+                    return new UnificationEntry(cableGtQuadruple, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.Naquadah);
+                    return new UnificationEntry(cableGtQuadruple, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.cableGtQuadruple, Materials.NaquadahAlloy);
+                    return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
             }
         }
     },
@@ -178,23 +235,23 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Lead);
+                    return new UnificationEntry(cableGtOctal, Lead);
                 case 1:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Tin);
+                    return new UnificationEntry(cableGtOctal, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Copper);
+                    return new UnificationEntry(cableGtOctal, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Gold);
+                    return new UnificationEntry(cableGtOctal, Gold);
                 case 4:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Aluminium);
+                    return new UnificationEntry(cableGtOctal, Aluminium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Platinum);
+                    return new UnificationEntry(cableGtOctal, Platinum);
                 case 6:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.NiobiumTitanium);
+                    return new UnificationEntry(cableGtOctal, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.Naquadah);
+                    return new UnificationEntry(cableGtOctal, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.cableGtOctal, Materials.NaquadahAlloy);
+                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
             }
         }
     },
@@ -204,23 +261,23 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Lead);
+                    return new UnificationEntry(cableGtHex, Lead);
                 case 1:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Tin);
+                    return new UnificationEntry(cableGtHex, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Copper);
+                    return new UnificationEntry(cableGtHex, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Gold);
+                    return new UnificationEntry(cableGtHex, Gold);
                 case 4:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Aluminium);
+                    return new UnificationEntry(cableGtHex, Aluminium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Platinum);
+                    return new UnificationEntry(cableGtHex, Platinum);
                 case 6:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.NiobiumTitanium);
+                    return new UnificationEntry(cableGtHex, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.Naquadah);
+                    return new UnificationEntry(cableGtHex, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.cableGtHex, Materials.NaquadahAlloy);
+                    return new UnificationEntry(cableGtHex, NaquadahAlloy);
             }
         }
     },
@@ -230,15 +287,15 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Gold);
+                    return new UnificationEntry(wireGtSingle, Gold);
                 case 2:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Silver);
+                    return new UnificationEntry(wireGtSingle, Silver);
                 case 3:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Electrum);
+                    return new UnificationEntry(wireGtSingle, Electrum);
                 case 4:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Platinum);
+                    return new UnificationEntry(wireGtSingle, Platinum);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Osmium);
+                    return new UnificationEntry(wireGtSingle, Osmium);
             }
         }
     },
@@ -261,21 +318,21 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.Bronze);
+                    return new UnificationEntry(pipeMedium, Bronze);
                 case 2:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.Steel);
+                    return new UnificationEntry(pipeMedium, Steel);
                 case 3:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.StainlessSteel);
+                    return new UnificationEntry(pipeMedium, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.Titanium);
+                    return new UnificationEntry(pipeMedium, Titanium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.TungstenSteel);
+                    return new UnificationEntry(pipeMedium, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(OrePrefix.pipeMedium, GAMaterials.Enderium);
+                    return new UnificationEntry(pipeMedium, Enderium);
                 case 7:
-                    return new UnificationEntry(OrePrefix.pipeMedium, Materials.Naquadah);
+                    return new UnificationEntry(pipeMedium, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.pipeMedium, GAMaterials.Neutronium);
+                    return new UnificationEntry(pipeMedium, Neutronium);
 
             }
         }
@@ -299,21 +356,21 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.plate, Materials.Steel);
+                    return new UnificationEntry(plate, Steel);
                 case 2:
-                    return new UnificationEntry(OrePrefix.plate, Materials.Aluminium);
+                    return new UnificationEntry(plate, Aluminium);
                 case 3:
-                    return new UnificationEntry(OrePrefix.plate, Materials.StainlessSteel);
+                    return new UnificationEntry(plate, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(OrePrefix.plate, Materials.Titanium);
+                    return new UnificationEntry(plate, Titanium);
                 case 5:
-                    return new UnificationEntry(OrePrefix.plate, Materials.TungstenSteel);
+                    return new UnificationEntry(plate, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(OrePrefix.plate, Materials.HSSG);
+                    return new UnificationEntry(plate, HSSG);
                 case 7:
-                    return new UnificationEntry(OrePrefix.plate, Materials.HSSE);
+                    return new UnificationEntry(plate, HSSE);
                 default:
-                    return new UnificationEntry(OrePrefix.plate, GAMaterials.Neutronium);
+                    return new UnificationEntry(plate, Neutronium);
 
             }
         }
@@ -348,21 +405,21 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Tin);
+                    return new UnificationEntry(rotor, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Bronze);
+                    return new UnificationEntry(rotor, Bronze);
                 case 3:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Steel);
+                    return new UnificationEntry(rotor, Steel);
                 case 4:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.StainlessSteel);
+                    return new UnificationEntry(rotor, StainlessSteel);
                 case 5:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.TungstenSteel);
+                    return new UnificationEntry(rotor, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Chrome);
+                    return new UnificationEntry(rotor, Chrome);
                 case 7:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Iridium);
+                    return new UnificationEntry(rotor, Iridium);
                 default:
-                    return new UnificationEntry(OrePrefix.rotor, Materials.Osmium);
+                    return new UnificationEntry(rotor, Osmium);
             }
         }
     },
@@ -397,7 +454,7 @@ public enum GACraftingComponents {
                 case 0:
                 case 1:
                 case 2:
-                    return new UnificationEntry(OrePrefix.gem, Materials.Diamond);
+                    return new UnificationEntry(gem, Diamond);
                 default:
                     return OreDictNames.craftingGrinder;
             }
@@ -406,7 +463,7 @@ public enum GACraftingComponents {
     DIAMOND {
         @Override
         public Object getIngredient(int tier) {
-            return new UnificationEntry(OrePrefix.gem, Materials.Diamond);
+            return new UnificationEntry(gem, Diamond);
         }
     },
     PISTON {
@@ -511,21 +568,21 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Copper);
+                    return new UnificationEntry(wireGtDouble, Copper);
                 case 2:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Cupronickel);
+                    return new UnificationEntry(wireGtDouble, Cupronickel);
                 case 3:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Kanthal);
+                    return new UnificationEntry(wireGtDouble, Kanthal);
                 case 4:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Nichrome);
+                    return new UnificationEntry(wireGtDouble, Nichrome);
                 case 5:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.TungstenSteel);
+                    return new UnificationEntry(wireGtDouble, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.HSSG);
+                    return new UnificationEntry(wireGtDouble, HSSG);
                 case 7:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Naquadah);
+                    return new UnificationEntry(wireGtDouble, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.NaquadahAlloy);
+                    return new UnificationEntry(wireGtDouble, NaquadahAlloy);
 
             }
         }
@@ -535,23 +592,23 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(OrePrefix.wireGtSingle, Materials.Tin);
+                    return new UnificationEntry(wireGtSingle, Tin);
                 case 1:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Tin);
+                    return new UnificationEntry(wireGtDouble, Tin);
                 case 2:
-                    return new UnificationEntry(OrePrefix.wireGtDouble, Materials.Copper);
+                    return new UnificationEntry(wireGtDouble, Copper);
                 case 3:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Copper);
+                    return new UnificationEntry(wireGtQuadruple, Copper);
                 case 4:
-                    return new UnificationEntry(OrePrefix.wireGtOctal, Materials.AnnealedCopper);
+                    return new UnificationEntry(wireGtOctal, AnnealedCopper);
                 case 5:
-                    return new UnificationEntry(OrePrefix.wireGtOctal, Materials.AnnealedCopper);
+                    return new UnificationEntry(wireGtOctal, AnnealedCopper);
                 case 6:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.YttriumBariumCuprate);
+                    return new UnificationEntry(wireGtQuadruple, YttriumBariumCuprate);
                 case 7:
-                    return new UnificationEntry(OrePrefix.wireGtOctal, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtOctal, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtHex, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -561,25 +618,25 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.stick, Materials.IronMagnetic);
+                    return new UnificationEntry(stick, IronMagnetic);
                 case 2:
                 case 3:
-                    return new UnificationEntry(OrePrefix.stick, Materials.SteelMagnetic);
+                    return new UnificationEntry(stick, SteelMagnetic);
                 case 4:
                 case 5:
-                    return new UnificationEntry(OrePrefix.stick, Materials.NeodymiumMagnetic);
+                    return new UnificationEntry(stick, NeodymiumMagnetic);
                 case 6:
                 case 7:
-                    return new UnificationEntry(OrePrefix.stickLong, Materials.NeodymiumMagnetic);
+                    return new UnificationEntry(stickLong, NeodymiumMagnetic);
                 default:
-                    return new UnificationEntry(OrePrefix.block, Materials.NeodymiumMagnetic);
+                    return new UnificationEntry(block, NeodymiumMagnetic);
             }
         }
     },
     STICK_DISTILLATION {
         @Override
         public Object getIngredient(int tier) {
-            return new UnificationEntry(OrePrefix.stick, Materials.Blaze);
+            return new UnificationEntry(stick, Blaze);
         }
     },
     FIELD_GENERATOR {
@@ -612,21 +669,21 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Copper);
+                    return new UnificationEntry(wireGtQuadruple, Copper);
                 case 2:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Cupronickel);
+                    return new UnificationEntry(wireGtQuadruple, Cupronickel);
                 case 3:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Kanthal);
+                    return new UnificationEntry(wireGtQuadruple, Kanthal);
                 case 4:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Nichrome);
+                    return new UnificationEntry(wireGtQuadruple, Nichrome);
                 case 5:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.TungstenSteel);
+                    return new UnificationEntry(wireGtQuadruple, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.HSSG);
+                    return new UnificationEntry(wireGtQuadruple, HSSG);
                 case 7:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Naquadah);
+                    return new UnificationEntry(wireGtQuadruple, Naquadah);
                 default:
-                    return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.NaquadahAlloy);
+                    return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
             }
         }
     },
@@ -636,14 +693,14 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Iron);
+                    return new UnificationEntry(stick, Iron);
                 case 2:
                 case 3:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Steel);
+                    return new UnificationEntry(stick, Steel);
                 case 4:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Neodymium);
+                    return new UnificationEntry(stick, Neodymium);
                 default:
-                    return new UnificationEntry(OrePrefix.stick, Materials.VanadiumGallium);
+                    return new UnificationEntry(stick, VanadiumGallium);
             }
         }
     },
@@ -652,18 +709,42 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 4:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Uranium235);
+                    return new UnificationEntry(stick, Uranium235);
                 case 5:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Plutonium241);
+                    return new UnificationEntry(stick, Plutonium241);
                 case 6:
-                    return new UnificationEntry(OrePrefix.stick, Materials.NaquadahEnriched);
+                    return new UnificationEntry(stick, NaquadahEnriched);
                 case 7:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Americium);
+                    return new UnificationEntry(stick, Americium);
                 default:
-                    return new UnificationEntry(OrePrefix.stick, Materials.Tritanium);
+                    return new UnificationEntry(stick, Tritanium);
             }
         }
-    };
+    },
+    GEAR {
+        @Override
+        public Object getIngredient(int tier) {
+            switch (tier) {
+                case 0:
+                case 1:
+                    return new UnificationEntry(plate, Steel);
+                case 2:
+                    return new UnificationEntry(plate, Aluminium);
+                case 3:
+                    return new UnificationEntry(plate, StainlessSteel);
+                case 4:
+                    return new UnificationEntry(plate, Titanium);
+                case 5:
+                    return new UnificationEntry(plate, TungstenSteel);
+                case 6:
+                    return new UnificationEntry(plate, HSSG);
+                case 7:
+                    return new UnificationEntry(plate, HSSE);
+                default:
+                    return new UnificationEntry(plate, Neutronium);
+            }
+        }
+    },;
 
     public abstract Object getIngredient(int tier);
 }

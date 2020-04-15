@@ -30,6 +30,6 @@ public class LargeTransformerInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gregtech.multiblock.large_transformer.description")};
+        return new String[]{I18n.format("gtadditions.multiblock.large_transformer.description")};
     }
 }

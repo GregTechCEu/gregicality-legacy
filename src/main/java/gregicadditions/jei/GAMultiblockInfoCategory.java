@@ -1,6 +1,7 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.jei.multi.ChemicalPlantInfo;
 import gregicadditions.jei.multi.IndustrialPrimitiveBlastFurnaceInfo;
 import gregicadditions.jei.multi.LargeTransformerInfo;
 import gregicadditions.jei.multi.advance.AdvancedDistillationTowerInfo;
@@ -69,12 +70,13 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR)),
-                new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLine()),
+                new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLineInfo()),
                 new MultiblockInfoRecipeWrapper(new VoidMinerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeTransformerInfo()),
                 new MultiblockInfoRecipeWrapper(new IndustrialPrimitiveBlastFurnaceInfo()),
                 new MultiblockInfoRecipeWrapper(new AdvancedDistillationTowerInfo()),
-                new MultiblockInfoRecipeWrapper(new CryogenicFreezerInfo())
+                new MultiblockInfoRecipeWrapper(new CryogenicFreezerInfo()),
+                new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo())
         ), "gtadditions:multiblock_info2");
     }
 

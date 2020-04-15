@@ -86,6 +86,28 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial BabbitAlloy = new IngotMaterial(942, "babbit_alloy", 0xA19CA4, MaterialIconSet.METALLIC, 4, ImmutableList.of(new MaterialStack(Tin, 5), new MaterialStack(Lead, 36), new MaterialStack(Antimony, 8), new MaterialStack(Arsenic, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 5925);
     public static final IngotMaterial HG1223 = new IngotMaterial(941, "hg_alloy", 0x245397, MaterialIconSet.METALLIC, 4, ImmutableList.of(new MaterialStack(Iron, 16), new MaterialStack(Aluminium, 3), new MaterialStack(Chrome, 5), new MaterialStack(Yttrium, 1)), EXT2_METAL | GENERATE_METAL_CASING | GENERATE_DENSE, null, 5925);
     public static final IngotMaterial IncoloyMA956 = new IngotMaterial(940, "incoloy_ma", 0xAABEBB, MaterialIconSet.METALLIC, 4, ImmutableList.of(new MaterialStack(Mercury, 1), new MaterialStack(Barium, 2), new MaterialStack(Calcium, 2), new MaterialStack(Copper, 3), new MaterialStack(Oxygen, 8)), EXT2_METAL | GENERATE_METAL_CASING, null, 5925);
+    public static final FluidMaterial RocketFuelH8N4C2O4 = new FluidMaterial(939,"rocket_fuel_a", 0x5ECB22, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial NitrogenTetroxide = new FluidMaterial(938,"nitrogen_tetroxide", 0xBE6800, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial CoalTar = new FluidMaterial(937,"coal_tar", 0x5E3122, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial CoalTarOil = new FluidMaterial(936,"coal_tar_oil", 0xB5B553, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial SulfuricCoalTarOil = new FluidMaterial(935,"sulfuric_coal_tar_oil", 0xFFFFAD, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial Anthracene = new FluidMaterial(934,"anthracene", 0xA2ACA2, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial Kerosene = new FluidMaterial(933,"kerosene", 0xD570D5, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial EthylBenzene = new FluidMaterial(932,"ethylbenzene", 0xD5D5D5, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial MonoMethylHydrazine = new FluidMaterial(931,"monomethylhydrazine", 0xFFFFFF, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial Hydrazine = new FluidMaterial(930,"hydrazine", 0xFFFFFF, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial HydrogenPeroxide = new FluidMaterial(929,"hydrogen_peroxide", 0xD1FFFF, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial EthylAnthraQuinone = new FluidMaterial(928,"ethylanthraquinone", 0xFFFF00, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial EthylAnthraHydroQuinone = new FluidMaterial(927,"ethylanthrahydroquinone", 0xFFFF47, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final DustMaterial PhthalicAnhydride = new DustMaterial(926,"phthalicanhydride", 0xD1D1D1, MaterialIconSet.SAND, 1 ,of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial PhthalicAcid = new FluidMaterial(925,"phthalicacid", 0xD1D1D1, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial Naphtalene = new FluidMaterial(924,"naphtalene", 0xFFFFFF, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial DenseHydrazineFuelMixture = new FluidMaterial(923,"dense_hydrazine_fuel_mixture", 0x5E2B4A, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial RocketFuelCN3H7O3 = new FluidMaterial(922,"rocket_fuel_b", 0xBE46C5, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial RP1RocketFuel = new FluidMaterial(921,"rocket_fuel_c", 0xFF503C, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial RP1 = new FluidMaterial(920,"rp", 0xFF6E5D, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial LiquidOxygen = new FluidMaterial(919,"liquid_oxygen", 0x81FFFD, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
+    public static final FluidMaterial FermentationBase = new FluidMaterial(918,"fermentation_base", 0x3D5917, MaterialIconSet.FLUID, of(),NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION );
 
 
     @Override
@@ -131,6 +153,7 @@ public class GAMaterials implements IMaterialHandler {
         NaquadahEnriched.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
         Duranium.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
         Graphene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
+        Polytetrafluoroethylene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
         Helium.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
         Oxygen.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
         Iron.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);

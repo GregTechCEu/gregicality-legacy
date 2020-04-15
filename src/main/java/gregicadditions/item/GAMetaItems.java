@@ -25,17 +25,29 @@ public class GAMetaItems {
 	public static MetaItem<?>.MetaValueItem ENERGY_MODULE;
 	public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
 	public static MetaItem<?>.MetaValueItem MAX_BATTERY;
-	public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
-	public static MetaItem<?>.MetaValueItem INTEGRATED_COMPUTER;
-	public static MetaItem<?>.MetaValueItem CRYSTAL_COMPUTER;
+
+
+	public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
+	public static MetaItem<?>.MetaValueItem ELECTRONIC_ASSEMBLY;
+	public static MetaItem<?>.MetaValueItem ELECTRONIC_COMPUTER;
+	public static MetaItem<?>.MetaValueItem REFINED_PROCESSOR;
+	public static MetaItem<?>.MetaValueItem REFINED_ASSEMBLY;
+	public static MetaItem<?>.MetaValueItem REFINED_COMPUTER;
+	public static MetaItem<?>.MetaValueItem REFINED_MAINFRAME;
+	public static MetaItem<?>.MetaValueItem MICRO_PROCESSOR;
+	public static MetaItem<?>.MetaValueItem MICRO_COMPUTER;
+	public static MetaItem<?>.MetaValueItem MICRO_MAINFRAME;
 	public static MetaItem<?>.MetaValueItem NANO_COMPUTER;
-	public static MetaItem<?>.MetaValueItem QUANTUM_COMPUTER;
-	public static MetaItem<?>.MetaValueItem GOOD_CIRCUIT;
-	public static MetaItem<?>.MetaValueItem ADVANCED_CIRCUIT;
-	public static MetaItem<?>.MetaValueItem CRYSTAL_MAINFRAME;
 	public static MetaItem<?>.MetaValueItem NANO_MAINFRAME;
-	public static MetaItem<?>.MetaValueItem INTEGRATED_MAINFRAME;
+	public static MetaItem<?>.MetaValueItem CRYSTAL_PROCESSOR;
+	public static MetaItem<?>.MetaValueItem CRYSTAL_COMPUTER;
+	public static MetaItem<?>.MetaValueItem CRYSTAL_MAINFRAME;
+	public static MetaItem<?>.MetaValueItem QUANTUM_ASSEMBLY;
+	public static MetaItem<?>.MetaValueItem QUANTUM_COMPUTER;
 	public static MetaItem<?>.MetaValueItem QUANTUM_MAINFRAME;
+
+
+	public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
 	public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP;
 
 	public static MetaItem<?>.MetaValueItem MICA_SHEET;

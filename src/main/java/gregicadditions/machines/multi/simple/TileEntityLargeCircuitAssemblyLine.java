@@ -4,24 +4,42 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.GARecipeMaps;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
+
+    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV);
+
+    private long maxVolatage = 0;
+
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
     }
@@ -45,10 +63,67 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
                 .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
-                .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
+                .where('T', tieredCasingPredicate())
                 .build();
 
     }
+
+    public static Predicate<BlockWorldState> tieredCasingPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof GAMultiblockCasing)) {
+                return false;
+            } else {
+                GAMultiblockCasing blockWireCoil = (GAMultiblockCasing) blockState.getBlock();
+                GAMultiblockCasing.CasingType tieredCasingType = blockWireCoil.getState(blockState);
+                if (!CASING_ALLOYED.contains(tieredCasingType)) {
+                    return false;
+                }
+                GAMultiblockCasing.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
+                return currentCoilType.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
+        switch (currentTier) {
+            case TIERED_HULL_IV:
+                maxVolatage = GTValues.V[GTValues.IV];
+                break;
+            case TIERED_HULL_LUV:
+                maxVolatage = GTValues.V[GTValues.LuV];
+                break;
+            case TIERED_HULL_ZPM:
+                maxVolatage = GTValues.V[GTValues.ZPM];
+                break;
+            case TIERED_HULL_UV:
+                maxVolatage = GTValues.V[GTValues.UV];
+                break;
+            default:
+                maxVolatage = 0;
+                break;
+        }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add("Framework casing defined which tier you are alloyed to run it");
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+        textList.add(new TextComponentString(String.format("Current Max Tiered Voltage: %d EU/t", this.maxVolatage)));
+    }
+
+        @Override
+        public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
+            return recipe.getEUt() < maxVolatage;
+        }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {

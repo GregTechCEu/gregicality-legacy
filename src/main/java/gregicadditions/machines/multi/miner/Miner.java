@@ -14,66 +14,67 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public interface Miner {
 
-	enum Type {
-		LV(4, 1, 0, 1),
-		MV(2, 1, 0, 2),
-		HV(1, 1, 0, 4),
-		BASIC(1, 3, 3, 8),
-		LARGE(1, 5, 6, 16),
-		ADVANCE(1, 7, 9, 32);
+    enum Type {
+        LV(4, 1, 0, "",1),
+        MV(2, 1, 0, "",2),
+        HV(1, 1, 0, "",4),
+        BASIC(1, 3, 3, "III",8),
+        LARGE(1, 5, 6, "VI",16),
+        ADVANCE(1, 7, 9,"IX", 32);
 
-		public final int tick;
-		public final int chunk;
-		public final int fortune;
-		public final int drillingFluidConsumePerTick;
+        public final int tick;
+        public final int chunk;
+        public final int fortune;
+        public final int drillingFluidConsumePerTick;
+        public final String fortuneString;
 
-		Type(int tick, int chunk, int fortune, int drillingFluidConsumePerTick) {
-			this.tick = tick;
-			this.chunk = chunk;
-			this.fortune = fortune;
-			this.drillingFluidConsumePerTick = drillingFluidConsumePerTick;
+        Type(int tick, int chunk, int fortune, String fortuneString, int drillingFluidConsumePerTick) {
+            this.tick = tick;
+            this.chunk = chunk;
+            this.fortune = fortune;
+            this.drillingFluidConsumePerTick = drillingFluidConsumePerTick;
+            this.fortuneString = fortuneString;
+        }
 
-		}
+    }
 
-	}
+    Type getType();
 
-	Type getType();
+    World getWorld();
 
-	World getWorld();
+    long getTimer();
 
-	long getTimer();
+    default long getNbBlock() {
+        return 1L;
+    }
 
-	default long getNbBlock() {
-		return 1L;
-	}
-
-	static List<BlockPos> getBlockToMinePerChunk(Miner miner, AtomicLong x, AtomicLong y, AtomicLong z, ChunkPos chunkPos) {
-		List<BlockPos> blocks = new ArrayList<>();
-		for (int i = 0; i < miner.getNbBlock(); i++) {
-			if (y.get() >= 0 && miner.getTimer() % miner.getType().tick == 0) {
-				if (z.get() <= chunkPos.getZEnd()) {
-					if (x.get() <= chunkPos.getXEnd()) {
-						BlockPos blockPos = new BlockPos(x.get(), y.get(), z.get());
-						Block block = miner.getWorld().getBlockState(blockPos).getBlock();
-						if (miner.getWorld().getTileEntity(blockPos) == null) {
-							OrePrefix orePrefix = OreDictUnifier.getPrefix(Item.getItemFromBlock(block).getDefaultInstance());
-							if (orePrefix == OrePrefix.ore) {
-								blocks.add(blockPos);
-							}
-						}
-						x.incrementAndGet();
-					} else {
-						x.set(chunkPos.getXStart());
-						z.incrementAndGet();
-					}
-				} else {
-					z.set(chunkPos.getZStart());
-					y.decrementAndGet();
-				}
-			}
-		}
-		return blocks;
-	}
+    static List<BlockPos> getBlockToMinePerChunk(Miner miner, AtomicLong x, AtomicLong y, AtomicLong z, ChunkPos chunkPos) {
+        List<BlockPos> blocks = new ArrayList<>();
+        for (int i = 0; i < miner.getNbBlock(); i++) {
+            if (y.get() >= 0 && miner.getTimer() % miner.getType().tick == 0) {
+                if (z.get() <= chunkPos.getZEnd()) {
+                    if (x.get() <= chunkPos.getXEnd()) {
+                        BlockPos blockPos = new BlockPos(x.get(), y.get(), z.get());
+                        Block block = miner.getWorld().getBlockState(blockPos).getBlock();
+                        if (miner.getWorld().getTileEntity(blockPos) == null) {
+                            OrePrefix orePrefix = OreDictUnifier.getPrefix(Item.getItemFromBlock(block).getDefaultInstance());
+                            if (orePrefix == OrePrefix.ore) {
+                                blocks.add(blockPos);
+                            }
+                        }
+                        x.incrementAndGet();
+                    } else {
+                        x.set(chunkPos.getXStart());
+                        z.incrementAndGet();
+                    }
+                } else {
+                    z.set(chunkPos.getZStart());
+                    y.decrementAndGet();
+                }
+            }
+        }
+        return blocks;
+    }
 
 
 }
