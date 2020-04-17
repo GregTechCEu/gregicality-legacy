@@ -9,6 +9,7 @@ import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.util.GTLog;
 import gregtech.common.ConfigHolder;
 import gregtech.common.MetaFluids;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityRotorHolder;
@@ -87,14 +88,14 @@ public class MetaTileEntityLargeTurbine extends gregtech.common.metatileentities
                 case "STEAM_OVERRIDE":
                     return ConfigHolder.steamTurbineBonusOutput;
                 case "HIGH_PRESSURE_STEAM_OVERRIDE":
-                    return (int) (ConfigHolder.steamTurbineBonusOutput * 1.15);
+                    return (int) (ConfigHolder.steamTurbineBonusOutput * 1.3);
                 case "PLASMA_OVERRIDE":
                     return ConfigHolder.plasmaTurbineBonusOutput;
                 default:
                     return 1;
             }
-
         }
+
 
         @Override
         public long getRecipeOutputVoltage() {

@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static gregicadditions.GAMaterials.HastelloyN;
+
 public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
@@ -63,7 +65,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
 	@Override
 	protected IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.HastelloyN).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
 	}
 
 	@Override

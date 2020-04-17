@@ -33,7 +33,7 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 				.aisle("IXX", "S#X", "XXX")
 				.aisle("OXX", "XXX", "XXX")
 				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.WEST)
-				.where('X', GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState())
+				.where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel))
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.WEST)
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

@@ -869,7 +869,7 @@ public class GARecipeAddition {
         MIXER_RECIPES.recipeBuilder().duration(16).EUt(120).fluidInputs(LightFuel.getFluid(5000), HeavyFuel.getFluid(1000)).fluidOutputs(Fuel.getFluid(6000)).buildAndRegister();
 
         //Fuel high Octane
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(1920).fluidInputs(NitricOxide.getFluid(6000), Gasoline.getFluid(20000), Toluene.getFluid(1000), Octane.getFluid(2000), EthylTertButylEther.getFluid(3000)).fluidOutputs(HighOctaneGasoline.getFluid(32)).buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(1920).fluidInputs(NitricOxide.getFluid(6000), Gasoline.getFluid(20000), Toluene.getFluid(1000), Octane.getFluid(2000), EthylTertButylEther.getFluid(3000)).fluidOutputs(HighOctaneGasoline.getFluid(32000)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(10).EUt(480).fluidInputs(RawGasoline.getFluid(10000), Toluene.getFluid(1000)).fluidOutputs(Gasoline.getFluid(11000)).buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480).fluidInputs(Naphtha.getFluid(16000), Gas.getFluid(2000), Methanol.getFluid(1000), Acetone.getFluid(1000)).fluidOutputs(RawGasoline.getFluid(20000)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(480).fluidInputs(Ethanol.getFluid(1000), Butane.getFluid(1000)).fluidOutputs(EthylTertButylEther.getFluid(2000)).buildAndRegister();

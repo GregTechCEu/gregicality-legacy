@@ -17,7 +17,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -34,6 +33,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+
+import static gregtech.api.unification.material.Materials.Steel;
 
 
 public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
@@ -175,12 +176,12 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(Steel);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Steel);
+        return GAMetaBlocks.METAL_CASING.get(Steel);
     }
 
     @Override

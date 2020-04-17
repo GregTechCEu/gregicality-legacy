@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.simple;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -21,6 +20,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static gregicadditions.GAMaterials.Tumbaga;
 
 public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockController {
 
@@ -52,12 +53,12 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 	}
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Tumbaga).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Tumbaga);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Tumbaga);
+		return GAMetaBlocks.METAL_CASING.get(Tumbaga);
 	}
 
 	@Override

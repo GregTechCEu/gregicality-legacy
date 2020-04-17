@@ -63,8 +63,15 @@ public class GAMachineRecipeRemoval {
                 removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(2304)});
             }
             //remove packer recipes
-            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m),IntCircuitIngredient.getIntegratedCircuit(2));
-            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m),IntCircuitIngredient.getIntegratedCircuit(1));
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m), IntCircuitIngredient.getIntegratedCircuit(2));
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m), IntCircuitIngredient.getIntegratedCircuit(1));
+
+            //Remove Old turbine blade
+            if (!OreDictUnifier.get(turbineBlade, m).isEmpty()) {
+                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, m, 5), OreDictUnifier.get(screw, m, 2), IntCircuitIngredient.getIntegratedCircuit(10));
+                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(stickLong, Titanium), OreDictUnifier.get(turbineBlade, m, 8));
+                ModHandler.removeRecipeByName(new ResourceLocation("gregtech:" + String.format("turbine_blade_%s", m)));
+            }
         }
         //Remove Old Bucket Recipe
         if (GAConfig.GT6.BendingCurvedPlates) {

@@ -3,7 +3,6 @@ package gregicadditions.item;
 import gregicadditions.GAMaterials;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -11,7 +10,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
-import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
@@ -22,8 +20,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
@@ -66,26 +62,19 @@ public class GAMetaBlocks {
         MetaBlocks.CABLE.addCableMaterial(GAMaterials.LuVSuperconductor, new WireProperties(32768, 8, 0));
         MetaBlocks.CABLE.addCableMaterial(GAMaterials.ZPMSuperconductor, new WireProperties(131072, 8, 0));
 
-        for (Material material : Material.MATERIAL_REGISTRY) {
-            if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
-                GAMetalCasing blockMetalCasing = new GAMetalCasing((IngotMaterial) material);
-                blockMetalCasing.setRegistryName(GTValues.MODID, "metal_casing_" + material.toString());
-                METAL_CASING.put((IngotMaterial) material, blockMetalCasing);
-            }
-        }
-
+        createMachineCasing();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
+                RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.Steel), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "HIGH_PRESSURE_STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                GARecipeMaps.HIGH_PRESSURE_STEAM_TURBINE_FUELS, GAMetaBlocks.METAL_CASING.get(GAMaterials.Stellite).getDefaultState(), GAMetaBlocks.METAL_CASING.get(GAMaterials.Stellite), true);
+                GARecipeMaps.HIGH_PRESSURE_STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(GAMaterials.MaragingSteel250), GAMetaBlocks.METAL_CASING.get(GAMaterials.MaragingSteel250), true);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.GAS_TURBINE_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel), false);
+                RecipeMaps.GAS_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.StainlessSteel), GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel), false);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.PLASMA_GENERATOR_FUELS, GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState(), GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel), true);
+                RecipeMaps.PLASMA_GENERATOR_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel), GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel), true);
 
     }
 
@@ -100,19 +89,11 @@ public class GAMetaBlocks {
     private static void registerItemModel(Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             //noinspection ConstantConditions
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), block.getMetaFromState(state), new ModelResourceLocation(block.getRegistryName(), statePropertiesToString(state.getProperties())));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
+                    block.getMetaFromState(state),
+                    new ModelResourceLocation(block.getRegistryName(),
+                            statePropertiesToString(state.getProperties())));
         }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static void registerStateMappers() {
-        IStateMapper normalStateMapper = new StateMapperBase() {
-            @Override
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return new ModelResourceLocation(Block.REGISTRY.getNameForObject(state.getBlock()), "normal");
-            }
-        };
-        METAL_CASING.values().stream().distinct().forEach(it -> ModelLoader.setCustomStateMapper(it, normalStateMapper));
     }
 
     @SideOnly(Side.CLIENT)
@@ -126,13 +107,12 @@ public class GAMetaBlocks {
 
     public static void registerOreDict() {
         for (Map.Entry<IngotMaterial, GAMetalCasing> entry : METAL_CASING.entrySet()) {
-            SolidMaterial material = entry.getKey();
+            IngotMaterial material = entry.getKey();
             GAMetalCasing block = entry.getValue();
-            for (int i = 0; i < 16; i++) {
-                ItemStack itemStack = new ItemStack(block, 1, i);
-                OreDictUnifier.registerOre(itemStack, OrePrefix.valueOf("gtMetalCasing"), material);
-            }
+            ItemStack itemStack = block.getItem(material);
+            OreDictUnifier.registerOre(itemStack, OrePrefix.valueOf("gtMetalCasing"), material);
         }
+
     }
 
     private static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {
@@ -162,4 +142,23 @@ public class GAMetaBlocks {
     private static <T extends Comparable<T>> String getPropertyName(IProperty<T> property, Comparable<?> value) {
         return property.getName((T) value);
     }
+
+
+    private static void createMachineCasing() {
+        int index = 0;
+        for (Material material : Material.MATERIAL_REGISTRY) {
+            if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
+                GAMetalCasing block = new GAMetalCasing(material);
+                block.setRegistryName("gregtech:metal_casing_" + index);
+                METAL_CASING.put((IngotMaterial) material, block);
+                index += 1;
+            }
+        }
+    }
+
+    public static IBlockState getMetalCasingBlockState(Material material) {
+        return METAL_CASING.get(material).getStateFromMaterial(material);
+    }
+
+
 }

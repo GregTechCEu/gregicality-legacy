@@ -97,7 +97,7 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(Aluminium).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(Aluminium);
     }
 
     @Override

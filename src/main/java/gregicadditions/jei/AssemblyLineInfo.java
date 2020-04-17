@@ -37,7 +37,7 @@ public class AssemblyLineInfo extends MultiblockInfoPage {
 			}
 			builder.aisle("CIC", "RTR", "GSG", "#Y#")
 					.where('S', GATileEntities.ASSEMBLY_LINE, EnumFacing.SOUTH)
-					.where('C', GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState())
+					.where('C', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
 					.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
 					.where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.DOWN)

@@ -14,7 +14,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -35,6 +34,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
+
+import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
 
@@ -75,7 +76,7 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Titanium).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(Titanium);
     }
 
     @Override

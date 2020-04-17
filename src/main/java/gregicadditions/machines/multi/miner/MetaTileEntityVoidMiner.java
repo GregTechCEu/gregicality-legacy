@@ -197,7 +197,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 .aisle("CCCCCCCCC", "CCCCSCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', selfPredicate())
                 .where('C', ((Predicate<BlockWorldState>) blockWorldState -> ArrayUtils.contains(Collections.singletonList(getCasingState()).toArray(), blockWorldState.getBlockState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('D', blockWorldState -> GAMetaBlocks.METAL_CASING.get(Staballoy).getDefaultState().equals(blockWorldState.getBlockState()))
+                .where('D', blockWorldState -> GAMetaBlocks.getMetalCasingBlockState(Staballoy).equals(blockWorldState.getBlockState()))
                 .where('F', blockWorldState -> MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState().equals(blockWorldState.getBlockState()))
                 .where('#', blockWorldState -> true)
                 .build();
@@ -239,7 +239,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(HastelloyN).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
     }
 
     @Override

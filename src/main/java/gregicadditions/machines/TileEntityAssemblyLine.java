@@ -12,7 +12,6 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -20,6 +19,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityAssemblyLine extends RecipeMapMultiblockController {
 	public TileEntityAssemblyLine(ResourceLocation metaTileEntityId) {
@@ -53,11 +53,11 @@ public class TileEntityAssemblyLine extends RecipeMapMultiblockController {
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Steel);
+		return GAMetaBlocks.METAL_CASING.get(Steel);
 	}
 
 	protected IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Steel);
 	}
 
 }

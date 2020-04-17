@@ -1,11 +1,9 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.StoneBlock;
@@ -16,6 +14,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.Lead;
 
 public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 
@@ -46,7 +46,7 @@ public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 				.aisle("#####C#####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "#####C#####")
 				.where('S', reactor, EnumFacing.WEST)
 				.where('R', reactor.rodType.casingState)
-				.where('Y', GAMetaBlocks.METAL_CASING.get(Materials.Lead).getDefaultState())
+				.where('Y', GAMetaBlocks.getMetalCasingBlockState(Lead))
 				.where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
 				.where('#', Blocks.AIR.getDefaultState())
 				.build();

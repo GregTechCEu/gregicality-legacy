@@ -5,9 +5,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -16,6 +13,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.Steel;
 
 public class ImplosionCompressorInfo extends MultiblockInfoPage {
 
@@ -31,7 +30,7 @@ public class ImplosionCompressorInfo extends MultiblockInfoPage {
 				.aisle("XXX", "C#E", "XXX")
 				.aisle("XXX", "XIX", "XXX")
 				.where('C', GATileEntities.IMPLOSION_COMPRESSOR, EnumFacing.WEST)
-				.where('X', GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState())
+				.where('X', GAMetaBlocks.getMetalCasingBlockState(Steel))
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.EAST)

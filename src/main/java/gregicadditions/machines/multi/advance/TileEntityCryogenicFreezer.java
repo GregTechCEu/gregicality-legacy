@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static gregicadditions.GAMaterials.IncoloyMA956;
+
 public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
@@ -65,7 +67,7 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     @Override
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.IncoloyMA956).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(IncoloyMA956);
     }
 
     @Override

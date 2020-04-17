@@ -47,7 +47,7 @@ import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.PRIMITIVE_
 
 public class MachineCraftingRecipes {
 
-    private static String[] tiers = {"lv", "mv", "hv", "ev"};
+    private static String[] tiers = {"lv", "mv", "hv", "ev", "iv"};
 
     public static void init() {
         //Removal

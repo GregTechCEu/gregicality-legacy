@@ -24,6 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.GAMaterials.Staballoy;
+
 public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockController {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
@@ -56,7 +58,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
 	}
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Staballoy).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
 	}
 
 	@Override

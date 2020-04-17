@@ -5,7 +5,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -16,6 +15,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class CrackerUnitInfo extends MultiblockInfoPage {
 
@@ -31,7 +32,7 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
 				.aisle("XCXCX", "H###X", "XCXCX")
 				.aisle("XCXCX", "XCECF", "XCXCX")
 				.where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-				.where('X', GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel).getDefaultState())
+				.where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
 				.where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL))
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.EAST)

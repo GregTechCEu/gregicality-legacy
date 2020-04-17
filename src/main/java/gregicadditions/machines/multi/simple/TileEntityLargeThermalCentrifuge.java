@@ -9,7 +9,6 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -21,6 +20,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.RedSteel;
 
 public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultiblockController {
 
@@ -52,12 +53,12 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 	}
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.RedSteel).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(RedSteel);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(Materials.RedSteel);
+		return GAMetaBlocks.METAL_CASING.get(RedSteel);
 	}
 
 	@Override

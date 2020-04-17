@@ -22,6 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.GAMaterials.Stellite;
+
 public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockController {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
@@ -54,7 +56,7 @@ public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockContro
 	}
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Stellite).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Stellite);
 	}
 
 	@Override

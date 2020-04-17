@@ -11,6 +11,7 @@ import gregicadditions.integrations.exnihilocreatio.items.ExNihiloItems;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloMetaItems;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloPebble;
 import gregicadditions.integrations.exnihilocreatio.machines.MetaTileEntityRockBreaker;
+import gregicadditions.integrations.exnihilocreatio.machines.MetaTileEntitySieve;
 import gregicadditions.integrations.exnihilocreatio.machines.SteamRockBreaker;
 import gregicadditions.integrations.exnihilocreatio.machines.SteamSieve;
 import gregicadditions.recipes.GARecipeMaps;
@@ -19,7 +20,6 @@ import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.render.Textures;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.DustMaterial;
@@ -63,15 +63,15 @@ public class ExNihiloCreatioProxy {
             new ExNihiloItems();
             SieveDrops.addSieveRecipe();
             ExNihiloRegistryManager.registerSieveDefaultRecipeHandler(new GASieveDrops());
-            SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new SimpleMachineMetaTileEntity(location("sieve.lv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
-            SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new SimpleMachineMetaTileEntity(location("sieve.mv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));
-            SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new SimpleMachineMetaTileEntity(location("sieve.hv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 3));
-            SIEVES[3] = GregTechAPI.registerMetaTileEntity(2227, new SimpleMachineMetaTileEntity(location("sieve.ev"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 4));
+            SIEVES[0] = GregTechAPI.registerMetaTileEntity(2224, new MetaTileEntitySieve(location("sieve.lv"), 1));
+            SIEVES[1] = GregTechAPI.registerMetaTileEntity(2225, new MetaTileEntitySieve(location("sieve.mv"), 2));
+            SIEVES[2] = GregTechAPI.registerMetaTileEntity(2226, new MetaTileEntitySieve(location("sieve.hv"), 3));
+            SIEVES[3] = GregTechAPI.registerMetaTileEntity(2227, new MetaTileEntitySieve(location("sieve.ev"), 4));
             if (GAConfig.exNihilo.highTierSieve) {
-                SIEVES[4] = GregTechAPI.registerMetaTileEntity(2228, new SimpleMachineMetaTileEntity(location("sieve.iv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 5));
-                SIEVES[5] = GregTechAPI.registerMetaTileEntity(2229, new SimpleMachineMetaTileEntity(location("sieve.luv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 6));
-                SIEVES[6] = GregTechAPI.registerMetaTileEntity(2230, new SimpleMachineMetaTileEntity(location("sieve.zpm"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 7));
-                SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new SimpleMachineMetaTileEntity(location("sieve.uv"), GARecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 8));
+                SIEVES[4] = GregTechAPI.registerMetaTileEntity(2228, new MetaTileEntitySieve(location("sieve.iv"), 5));
+                SIEVES[5] = GregTechAPI.registerMetaTileEntity(2229, new MetaTileEntitySieve(location("sieve.luv"), 6));
+                SIEVES[6] = GregTechAPI.registerMetaTileEntity(2230, new MetaTileEntitySieve(location("sieve.zpm"), 7));
+                SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new MetaTileEntitySieve(location("sieve.uv"), 8));
             }
 
             ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(4000, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));

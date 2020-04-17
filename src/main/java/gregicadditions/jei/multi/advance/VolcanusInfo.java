@@ -32,7 +32,7 @@ public class VolcanusInfo extends MultiblockInfoPage {
 					.aisle("IFX", "CCC", "CCC", "XXX")
 					.aisle("SXE", "C#C", "C#C", "XXX")
 					.aisle("ODX", "CCC", "CCC", "XXX")
-					.where('X', GAMetaBlocks.METAL_CASING.get(GAMaterials.HastelloyN).getDefaultState())
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(GAMaterials.HastelloyN))
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
 

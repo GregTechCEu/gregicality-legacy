@@ -1,7 +1,6 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
@@ -17,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregicadditions.GAMaterials.EglinSteel;
 
 public class LargeSifterInfo extends MultiblockInfoPage {
 	@Override
@@ -37,7 +38,7 @@ public class LargeSifterInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_SIFTER, EnumFacing.SOUTH)
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-					.where('X', GAMetaBlocks.METAL_CASING.get(GAMaterials.EglinSteel).getDefaultState())
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(EglinSteel))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

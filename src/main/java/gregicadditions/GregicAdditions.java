@@ -13,7 +13,6 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -43,8 +42,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Function;
 
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING;
-
 @Mod(modid = GregicAdditions.MODID, name = GregicAdditions.NAME, version = GregicAdditions.VERSION,
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
@@ -56,15 +53,13 @@ public class GregicAdditions {
     public static final String NAME = "Gregic Additions Rework";
     public static final String VERSION = "@VERSION@";
 
-    public static final IBlockColor METAL_CASING_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) -> {
-        Material material = ((GAMetalCasing) state.getBlock()).getMetalCasingMaterial();
-        return material.materialRGB;
-    };
+    public static final IBlockColor METAL_CASING_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) ->
+            state.getValue(((GAMetalCasing) state.getBlock()).variantProperty).materialRGB;
 
     public static final IItemColor METAL_CASING_ITEM_COLOR = (stack, tintIndex) -> {
-        IBlockState metalCasingState = ((GAMetalCasingItemBlock) stack.getItem()).getBlockState(stack);
-        GAMetalCasing block = (GAMetalCasing) metalCasingState.getBlock();
-        return block.getMetalCasingMaterial().materialRGB;
+        GAMetalCasing block = (GAMetalCasing) ((ItemBlock) stack.getItem()).getBlock();
+        IBlockState state = block.getStateFromMeta(stack.getItemDamage());
+        return state.getValue(block.variantProperty).materialRGB;
     };
 
     static {
@@ -130,7 +125,7 @@ public class GregicAdditions {
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
-        METAL_CASING.values().stream().distinct().forEach(registry::register);
+        GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
     }
 
     @SubscribeEvent
@@ -138,10 +133,16 @@ public class GregicAdditions {
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
-        METAL_CASING.values()
+
+        GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()
                 .map(block -> createItemBlock(block, GAMetalCasingItemBlock::new))
                 .forEach(registry::register);
+    }
+
+    @SubscribeEvent
+    public void registerOrePrefix(RegistryEvent.Register<IRecipe> event){
+        RecipeHandler.register();
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -156,7 +157,6 @@ public class GregicAdditions {
         GAMetaItems.registerOreDict();
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
-        RecipeHandler.register();
         RecipeHandler.registerLargeChemicalRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();

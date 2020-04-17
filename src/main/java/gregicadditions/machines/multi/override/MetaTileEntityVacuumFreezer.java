@@ -9,6 +9,8 @@ import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregtech.api.unification.material.Materials.Aluminium;
+
 public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentities.multi.electric.MetaTileEntityVacuumFreezer {
 	public MetaTileEntityVacuumFreezer(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
@@ -25,6 +27,6 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
 
 	@Override
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Aluminium).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Aluminium);
 	}
 }

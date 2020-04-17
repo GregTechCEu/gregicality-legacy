@@ -5,7 +5,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -14,6 +13,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class DistillationTowerInfo extends MultiblockInfoPage {
 
@@ -29,7 +30,7 @@ public class DistillationTowerInfo extends MultiblockInfoPage {
 				.aisle("SFX", "X#X", "X#X", "X#X", "X#X", "XXX")
 				.aisle("IXX", "HXX", "HXX", "HXX", "HXX", "HXX")
 				.where('#', Blocks.AIR.getDefaultState())
-				.where('X', GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel).getDefaultState())
+				.where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
 				.where('S', GATileEntities.DISTILLATION_TOWER, EnumFacing.WEST)
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.WEST)
 				.where('I', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.EV], EnumFacing.WEST)

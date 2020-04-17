@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
-import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
@@ -45,6 +44,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
+import static gregicadditions.GAMaterials.BabbitAlloy;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower implements IMultiRecipe {
@@ -88,12 +88,12 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.BabbitAlloy).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(BabbitAlloy);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.BabbitAlloy);
+        return GAMetaBlocks.METAL_CASING.get(BabbitAlloy);
     }
 
     @Override

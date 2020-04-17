@@ -1,6 +1,10 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
+import gregicadditions.item.behavior.HugeTurbineBehavior;
+import gregicadditions.item.behavior.LargeTurbineBehavior;
+import gregicadditions.item.behavior.MediumTurbineBehavior;
+import gregicadditions.item.behavior.SmallTurbineBehavior;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.stats.IItemComponent;
@@ -12,8 +16,10 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
 
 import static gregicadditions.item.GAMetaItems.*;
+import static gregtech.common.items.MetaItems.TURBINE_ROTOR;
 
 public class GAMetaItem extends MaterialMetaItem {
 
@@ -78,6 +84,13 @@ public class GAMetaItem extends MaterialMetaItem {
         CRYSTAL_PROCESSOR = addItem(213, "circuit.processor.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
         CRYSTAL_COMPUTER = addItem(214, "circuit.computer.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
         CRYSTAL_MAINFRAME = addItem(215, "circuit.mainframe.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+
+        TURBINE_ROTOR.setInvisible();
+
+        HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new HugeTurbineBehavior());
+        LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new LargeTurbineBehavior());
+        MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new MediumTurbineBehavior());
+        SMALL_TURBINE_ROTOR = addItem(303, "small_turbine_rotor").addComponents(new SmallTurbineBehavior());
 
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");

@@ -34,6 +34,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregtech.api.unification.material.Materials.Lead;
+
 
 public class BoilingWaterReactor extends RecipeMapMultiblockController {
 
@@ -107,12 +109,12 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Lead).getDefaultState();
+        return GAMetaBlocks.getMetalCasingBlockState(Lead);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Lead);
+        return GAMetaBlocks.METAL_CASING.get(Lead);
     }
 
 
@@ -169,7 +171,7 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
     protected void updateFormedValid() {
         super.updateFormedValid();
 
-        if (!this.recipeMapWorkable.isActive()) {
+        if (!this.recipeMapWorkable.isActive() || this.recipeMapWorkable.isHasNotEnoughEnergy()) {
             if (this.currentTemperature > 0)
                 --this.currentTemperature;
             return;

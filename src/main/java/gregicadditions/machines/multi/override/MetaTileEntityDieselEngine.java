@@ -9,6 +9,8 @@ import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregtech.api.unification.material.Materials.Titanium;
+
 public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityDieselEngine {
 	public MetaTileEntityDieselEngine(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
@@ -25,6 +27,6 @@ public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities
 
 	@Override
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Titanium).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Titanium);
 	}
 }

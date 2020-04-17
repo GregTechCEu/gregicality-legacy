@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GAMetalCasingItemBlock extends ItemBlock {
 
-    private GAMetalCasing metalCasingBlock;
+    private final GAMetalCasing metalCasingBlock;
 
     public GAMetalCasingItemBlock(GAMetalCasing block) {
         super(block);
@@ -32,7 +32,7 @@ public class GAMetalCasingItemBlock extends ItemBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack stack) {
-        Material material = metalCasingBlock.getMetalCasingMaterial();
+        Material material = getBlockState(stack).getValue(metalCasingBlock.variantProperty);
         return I18n.format("tile.ga_metal_casing.material.name", material.getLocalizedName());
     }
 

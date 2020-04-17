@@ -5,7 +5,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -17,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.RedSteel;
 
 public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
 	@Override
@@ -35,7 +36,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.SOUTH)
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-					.where('X', GAMetaBlocks.METAL_CASING.get(Materials.RedSteel).getDefaultState())
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(RedSteel))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

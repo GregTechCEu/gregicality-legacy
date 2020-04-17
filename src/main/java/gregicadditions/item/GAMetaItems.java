@@ -87,6 +87,11 @@ public class GAMetaItems {
 
 	public static MetaItem<?>.MetaValueItem STEM_CELLS;
 
+	public static MetaItem<?>.MetaValueItem HUGE_TURBINE_ROTOR;
+	public static MetaItem<?>.MetaValueItem LARGE_TURBINE_ROTOR;
+	public static MetaItem<?>.MetaValueItem MEDIUM_TURBINE_ROTOR;
+	public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
+
 	public static void init() {
 		GAMetaItem item = new GAMetaItem();
 		item.setRegistryName("ga_meta_item");

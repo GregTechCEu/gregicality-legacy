@@ -16,7 +16,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
@@ -29,6 +28,8 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import java.lang.reflect.Field;
 import java.util.*;
+
+import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 
@@ -56,13 +57,13 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
 	}
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(TungstenSteel);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
 		// TODO Auto-generated method stub
-		return GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel);
+		return GAMetaBlocks.METAL_CASING.get(TungstenSteel);
 	}
 
 	@Override

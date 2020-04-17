@@ -9,6 +9,8 @@ import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregtech.api.unification.material.Materials.Steel;
+
 public class MetaTileEntityImplosionCompressor extends gregtech.common.metatileentities.multi.electric.MetaTileEntityImplosionCompressor {
 	public MetaTileEntityImplosionCompressor(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
@@ -25,6 +27,6 @@ public class MetaTileEntityImplosionCompressor extends gregtech.common.metatilee
 
 	@Override
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Steel).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Steel);
 	}
 }

@@ -4,7 +4,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -16,6 +15,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.Invar;
 
 public class MultiSmelterInfo extends MultiblockInfoPage {
 
@@ -32,7 +33,7 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 					.aisle("IXX", "CCC", "XXX")
 					.aisle("SXE", "C#C", "XXX")
 					.aisle("OXX", "CCC", "XXX")
-					.where('X', GAMetaBlocks.METAL_CASING.get(Materials.Invar).getDefaultState())
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.EAST)

@@ -151,6 +151,10 @@ metaitem.mica_insulator_foil.name=Mica Insulator Foil
 metaitem.energy.module.name=Energy Module
 metaitem.energy.cluster.name=Energy Cluster
 metaitem.max.battery.name=MAX Battery
+metaitem.small_turbine_rotor.name=%s Small Turbine Rotor
+metaitem.medium_turbine_rotor.name=%s Medium Turbine Rotor
+metaitem.large_turbine_rotor.name=%s Large Turbine Rotor
+metaitem.huge_turbine_rotor.name=%s Huge Turbine Rotor
 
 
 /////////////////////CIRCUIT///////////////////////////
@@ -475,7 +479,7 @@ gtadditions.machine.large_wiremill.name=Large Wiremill
 gtadditions.machine.large_washing_plant.name=Large Washing Plant
 gtadditions.machine.coke_oven.name=[Deprecated] Coke Oven
 gtadditions.machine.cracker_unit.name=[Deprecated] Cracking Unit
-gtadditions.machine.large_turbine.high_pressure_steam.name=Large Plasma Turbine
+gtadditions.machine.large_turbine.high_pressure_steam.name=Large High Pressure Steam Turbine
 gtadditions.machine.large_transformer.name=Large Transformer
 gtadditions.machine.void_miner.name=Void Ore Miner
 gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive Blast Furnace
@@ -519,6 +523,15 @@ gtadditions.machine.pump.uv.name=Advanced Pump VII
 gregtech.machine.air_collector.ev.name=Advanced Air Collector III
 gtadditions.machine.air_collector.iv.name=Atmosphere Collector
 gtadditions.machine.air_collector.luv.name=Atmosphere Collector
+
+gtadditions.machine.dehydrator.lv.name=Basic Chemical Dehydrator
+gtadditions.machine.dehydrator.mv.name=Advanced Chemical Dehydrator
+gtadditions.machine.dehydrator.hv.name=Advanced Chemical Dehydrator II
+gtadditions.machine.dehydrator.ev.name=Advanced Chemical Dehydrator III
+gtadditions.machine.dehydrator.iv.name=Advanced Chemical Dehydrator IV
+gtadditions.machine.dehydrator.luv.name=Advanced Chemical Dehydrator V
+gtadditions.machine.dehydrator.zpm.name=Advanced Chemical Dehydrator VI
+gtadditions.machine.dehydrator.uv.name=Advanced Chemical Dehydrator VII
 
 gtadditions.machine.world_accelerator.lv.name=Basic World Accelerator
 gtadditions.machine.world_accelerator.mv.name=Advanced World Accelerator
@@ -780,7 +793,7 @@ material.cryotheum=Cryotheum
 material.high_pressure_steam=High Pressure Steam
 material.sand=Sand
 material.hg_alloy=HG-1223
-material.incoloy_ma=incoloy MA-956
+material.incoloy_ma=Incoloy MA-956
 material.babbit_alloy=Babbit alloy
 material.nitinol_a=Nitinol 60
 material.raw_gasoline=Raw Gasoline
@@ -788,7 +801,7 @@ material.gasoline=Gasoline
 material.octane=Octane
 material.high_octane=High Octane Gasoline
 material.ethyl_tert_butyl_ether=Ethyl Tert-Butyl Ether
-material.rocket_fuel_a=Rocket fuel H8N4C2O4
+material.rocket_fuel_a=Rocket Fuel H8N4C2O4
 material.nitrogen_tetroxide=Nitrogen Tetroxide
 material.coal_tar=Coal Tar
 material.coal_tar_oil=Coil Tar Oil

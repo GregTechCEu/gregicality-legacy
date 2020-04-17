@@ -5,8 +5,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -31,7 +29,7 @@ public class CryogenicFreezerInfo  extends MultiblockInfoPage {
                 .aisle("XXX", "C#E", "XXX")
                 .aisle("XXX", "IXF", "XXX")
                 .where('C', GATileEntities.CRYOGENIC_FREEZER, EnumFacing.WEST)
-                .where('X', GAMetaBlocks.METAL_CASING.get(IncoloyMA956).getDefaultState())
+                .where('X', GAMetaBlocks.getMetalCasingBlockState(IncoloyMA956))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)

@@ -9,6 +9,8 @@ import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregtech.api.unification.material.Materials.Invar;
+
 public class MetaTileEntityElectricBlastFurnace extends gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace {
 	public MetaTileEntityElectricBlastFurnace(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
@@ -25,6 +27,6 @@ public class MetaTileEntityElectricBlastFurnace extends gregtech.common.metatile
 
 	@Override
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Invar).getDefaultState();
+		return GAMetaBlocks.getMetalCasingBlockState(Invar);
 	}
 }
