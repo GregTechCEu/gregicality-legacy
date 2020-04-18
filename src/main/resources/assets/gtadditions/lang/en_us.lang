@@ -486,6 +486,7 @@ gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive
 gtadditions.machine.cryogenic_freezer.name=Cryogenic Freezer
 gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
 gtadditions.machine.chemical_plant.name=Chemical Plant
+gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
@@ -769,7 +770,6 @@ material.hastelloy_n=Hastelloy N
 material.tumbaga=Tumbaga
 material.stellite=Stellite
 material.talonite=Talonite
-material.enderium=enderium
 material.mv_superconductor_base=MV Superconductor Base
 material.hv_superconductor_base=HV Superconductor Base
 material.ev_superconductor_base=EV Superconductor Base
@@ -794,7 +794,7 @@ material.high_pressure_steam=High Pressure Steam
 material.sand=Sand
 material.hg_alloy=HG-1223
 material.incoloy_ma=Incoloy MA-956
-material.babbit_alloy=Babbit alloy
+material.babbit_alloy=Babbit Alloy
 material.nitinol_a=Nitinol 60
 material.raw_gasoline=Raw Gasoline
 material.gasoline=Gasoline
@@ -804,8 +804,8 @@ material.ethyl_tert_butyl_ether=Ethyl Tert-Butyl Ether
 material.rocket_fuel_a=Rocket Fuel H8N4C2O4
 material.nitrogen_tetroxide=Nitrogen Tetroxide
 material.coal_tar=Coal Tar
-material.coal_tar_oil=Coil Tar Oil
-material.sulfuric_coal_tar_oil=Sulfuric Coil Tar Oil
+material.coal_tar_oil=Coal Tar Oil
+material.sulfuric_coal_tar_oil=Sulfuric Coal Tar Oil
 material.anthracene=Anthracene
 material.kerosene=Kerosene
 material.ethylbenzene=Ethylbenzene
@@ -822,7 +822,8 @@ material.rocket_fuel_b=Rocket Fuel CN3H7O3
 material.rocket_fuel_c=Rocket Fuel RP-1
 material.rp=RP-1
 material.liquid_oxygen=Liquid Oxygen
-material.fermentation_base=Fermentation Bse
+material.fermentation_base=Fermentation Base
+material.liquid_hydrogen=Liquid Hydrogen
 
 
 
@@ -886,6 +887,7 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
+gtaddition.multiblock.large_rocket_engine.description=The Large Rocket Engine is built as 3x3x10 (WxHxD).
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
@@ -927,6 +929,14 @@ gregtech.multiblock.advanced_distillation_tower.description2=2 Modes :
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
 gtadditions.multiblock.chemical_plant.tooltip=Duration Depend on Coil Tier.
+gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amount of power.
+gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as much as you feed it.
+gtadditions.multiblock.large_rocket_engine.tooltip.3=Consume 37500mB of Air and 10mB of Carbon Dioxide per Second .
+gtadditions.multiblock.large_rocket_engine.tooltip.4=Use Liquid Hydrogen to boost by 3 the output energy (4mB/second /2048 EU/t)
+gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
+gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
+gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
+gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%

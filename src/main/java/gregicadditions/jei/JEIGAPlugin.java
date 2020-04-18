@@ -1,5 +1,6 @@
 package gregicadditions.jei;
 
+import gregtech.common.items.MetaItems;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 
@@ -14,6 +15,7 @@ public class JEIGAPlugin implements IModPlugin {
 	@Override
 	public void register(IModRegistry registry) {
 		GAMultiblockInfoCategory.registerRecipes(registry);
+		registry.getJeiHelpers().getIngredientBlacklist().addIngredientToBlacklist(MetaItems.DATA_CONTROL_CIRCUIT_IV.getStackForm());
 	}
 
 	@Override

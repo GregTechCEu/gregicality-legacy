@@ -895,6 +895,7 @@ public class GARecipeAddition {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(1200).EUt(120).fluidInputs(PhthalicAcid.getFluid(144)).outputs(OreDictUnifier.get(dust, PhthalicAnhydride)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).input(dust, Lithium, 5).fluidInputs(Naphtalene.getFluid(2000)).fluidOutputs(PhthalicAcid.getFluid(2500)).buildAndRegister();
         VACUUM_RECIPES.recipeBuilder().duration(30).EUt(480).fluidInputs(Oxygen.getFluid(1000)).fluidOutputs(LiquidOxygen.getFluid(1000)).buildAndRegister();
+        VACUUM_RECIPES.recipeBuilder().duration(16).EUt(540).fluidInputs(Hydrogen.getFluid(60)).fluidOutputs(LiquidHydrogen.getFluid(60)).buildAndRegister();
 
         //Coal tar byproduct
         PYROLYSE_RECIPES.recipeBuilder().duration(1080).EUt(60).notConsumable(new IntCircuitIngredient(20)).input(gem, Lignite, 16).outputs(OreDictUnifier.get(dust, Ash, 4)).fluidOutputs(CoalTar.getFluid(800)).buildAndRegister();
@@ -1179,11 +1180,6 @@ public class GARecipeAddition {
             CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30).input(dustTiny, SodiumHydroxide).fluidInputs(FishOil.getFluid(6000), Ethanol.getFluid(1000)).fluidOutputs(Glycerol.getFluid(1000), BioDiesel.getFluid(6000)).buildAndRegister();
         }
 
-        //Lube Mixer Recipes
-        for (MaterialStack lubeDust : lubeDusts) {
-            DustMaterial dust = (DustMaterial) lubeDust.material;
-            MIXER_RECIPES.recipeBuilder().duration(128).EUt(4).input(OrePrefix.dust, dust).fluidInputs(FishOil.getFluid(750)).fluidOutputs(Lubricant.getFluid(750)).buildAndRegister();
-        }
 
         if (Loader.isModLoaded("forestry") && GAConfig.GT6.electrodes) {
             ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_APATITE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.APATITE, 1)).buildAndRegister();

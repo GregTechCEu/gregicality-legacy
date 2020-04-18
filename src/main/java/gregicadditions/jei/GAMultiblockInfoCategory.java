@@ -1,16 +1,10 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
-import gregicadditions.jei.multi.ChemicalPlantInfo;
-import gregicadditions.jei.multi.IndustrialPrimitiveBlastFurnaceInfo;
-import gregicadditions.jei.multi.LargeTransformerInfo;
-import gregicadditions.jei.multi.advance.AdvancedDistillationTowerInfo;
-import gregicadditions.jei.multi.advance.CryogenicFreezerInfo;
-import gregicadditions.jei.multi.advance.VolcanusInfo;
-import gregicadditions.jei.multi.miner.LargeMinerInfo;
-import gregicadditions.jei.multi.miner.VoidMinerInfo;
+import gregicadditions.jei.multi.*;
+import gregicadditions.jei.multi.advance.*;
+import gregicadditions.jei.multi.miner.*;
 import gregicadditions.jei.multi.nuclear.BoilingWaterReactorInfo;
-import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.override.CrackerUnitInfo;
 import gregicadditions.jei.multi.override.DieselEngineInfo;
 import gregicadditions.jei.multi.override.DistillationTowerInfo;
@@ -91,7 +85,8 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new IndustrialPrimitiveBlastFurnaceInfo()),
                 new MultiblockInfoRecipeWrapper(new AdvancedDistillationTowerInfo()),
                 new MultiblockInfoRecipeWrapper(new CryogenicFreezerInfo()),
-                new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo())
+                new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeRocketEngine())
         ), "gtadditions:multiblock_info2");
     }
 
