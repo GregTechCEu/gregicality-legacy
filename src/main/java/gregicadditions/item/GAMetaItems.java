@@ -47,6 +47,22 @@ public class GAMetaItems {
 	public static MetaItem<?>.MetaValueItem QUANTUM_MAINFRAME;
 
 
+	public static MetaItem<?>.MetaValueItem RAW_IMPRINT_SUPPORTED_BOARD;
+	public static MetaItem<?>.MetaValueItem IMPRINT_SUPPORTED_BOARD;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ULV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_MV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_HV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_EV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_IV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LUV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ZPM;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UV;
+	public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_MAX;
+
+
+
+
 	public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
 	public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP;
 

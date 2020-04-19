@@ -14,9 +14,11 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import java.lang.reflect.Field;
 
 import static com.google.common.collect.ImmutableList.of;
+import static gregtech.api.unification.Element.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.*;
 import static gregtech.api.unification.material.type.FluidMaterial.MatFlags.GENERATE_FLUID_BLOCK;
+import static gregtech.api.unification.material.type.GemMaterial.MatFlags.HIGH_SIFTER_OUTPUT;
 import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.GENERATE_DENSE;
 import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.*;
@@ -109,6 +111,17 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial LiquidOxygen = new FluidMaterial(919, "liquid_oxygen", 0x81FFFD, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(54);
     public static final FluidMaterial FermentationBase = new FluidMaterial(918, "fermentation_base", 0x3D5917, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial LiquidHydrogen = new FluidMaterial(917, "liquid_hydrogen", 0x3AFFC6, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(14);
+    public static final FluidMaterial Xenon = new FluidMaterial(916, "xenon", 0x270095, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Xe);
+    public static final FluidMaterial Neon = new FluidMaterial(915, "neon", 0xFF422A, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Ne);
+    public static final FluidMaterial Krypton = new FluidMaterial(914, "krypton", 0x31C42F, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Kr);
+    public static final IngotMaterial Zirconium = new IngotMaterial(912, "zirconium", 0xE0E1E1, MaterialIconSet.METALLIC, 6, of(), 0, Zr);
+    public static final GemMaterial CubicZirconia = new GemMaterial(911, "cubic_zirconia", 0xFFDFE2, MaterialIconSet.DIAMOND, 6, of(new MaterialStack(Zirconium, 1), new MaterialStack(Oxygen, 2)), NO_RECYCLING);
+    public static final GemMaterial Prasiolite = new GemMaterial(910, "prasiolite", 0x9EB749, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Silicon, 5), new MaterialStack(Oxygen, 10), new MaterialStack(Iron, 1)), GENERATE_ORE);
+    public static final DustMaterial Dibismusthydroborat = new DustMaterial(909, "dibismuthhydroborat", 0x00B749, MaterialIconSet.SAND, 2, of(new MaterialStack(Bismuth, 2), new MaterialStack(Hydrogen, 1), new MaterialStack(Boron, 1)), 0);
+    public static final DustMaterial BismuthTellurite = new DustMaterial(908, "bismuth_tellurite", 0x006B38, MaterialIconSet.SAND, 2, of(new MaterialStack(Bismuth, 2), new MaterialStack(Tellurium, 3)), 0);
+    public static final DustMaterial CircuitCompoundMK3 = new DustMaterial(907, "circuit_compound_mkc", 0x003316, MaterialIconSet.SAND, 2, of(new MaterialStack(IndiumGalliumPhosphide, 1), new MaterialStack(Dibismusthydroborat, 3), new MaterialStack(BismuthTellurite, 2)), 0);
+    public static final DustMaterial YttriumOxide = new DustMaterial(906, "yttrium_oxide", 0xC6EBB3, MaterialIconSet.SAND, 2, of(new MaterialStack(Yttrium, 2), new MaterialStack(Oxygen, 3)), 0);
+    public static final GemMaterial MagnetoResonatic = new GemMaterial(913, "magneto_resonatic", 0xFF97FF, MaterialIconSet.MAGNETIC, 2, of(new MaterialStack(Prasiolite, 3), new MaterialStack(BismuthTellurite, 6), new MaterialStack(CubicZirconia, 1), new MaterialStack(SteelMagnetic, 1)), NO_RECYCLING | DISABLE_DECOMPOSITION | FLAMMABLE | HIGH_SIFTER_OUTPUT | NO_SMELTING);
 
 
     @Override
@@ -125,6 +138,7 @@ public class GAMaterials implements IMaterialHandler {
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
 
+        Tellurium.addFlag(GENERATE_ORE);
         Diatomite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
         GarnetSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
         Mica.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
@@ -198,6 +212,7 @@ public class GAMaterials implements IMaterialHandler {
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
         OrePrefix.block.setIgnored(Snow);
+        OrePrefix.block.setIgnored(MagnetoResonatic);
         OrePrefix.dust.setIgnored(Snow);
         OrePrefix.dustSmall.setIgnored(Snow);
         OrePrefix.dustTiny.setIgnored(Snow);

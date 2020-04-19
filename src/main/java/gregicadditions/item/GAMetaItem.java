@@ -16,10 +16,8 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
 
 import static gregicadditions.item.GAMetaItems.*;
-import static gregtech.common.items.MetaItems.TURBINE_ROTOR;
 
 public class GAMetaItem extends MaterialMetaItem {
 
@@ -85,7 +83,19 @@ public class GAMetaItem extends MaterialMetaItem {
         CRYSTAL_COMPUTER = addItem(214, "circuit.computer.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
         CRYSTAL_MAINFRAME = addItem(215, "circuit.mainframe.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
 
-        TURBINE_ROTOR.setInvisible();
+        CIRCUIT_MAGNETIC_ULV = addItem(220, "circuit.resonatic.ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
+        CIRCUIT_MAGNETIC_LV = addItem(221, "circuit.resonatic.lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
+        CIRCUIT_MAGNETIC_MV = addItem(222, "circuit.resonatic.mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
+        CIRCUIT_MAGNETIC_HV = addItem(223, "circuit.resonatic.hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
+        CIRCUIT_MAGNETIC_EV = addItem(224, "circuit.resonatic.ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
+        CIRCUIT_MAGNETIC_IV = addItem(225, "circuit.resonatic.iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
+        CIRCUIT_MAGNETIC_LUV = addItem(226, "circuit.resonatic.luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Master);
+        CIRCUIT_MAGNETIC_ZPM = addItem(227, "circuit.resonatic.zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
+        CIRCUIT_MAGNETIC_UV = addItem(228, "circuit.resonatic.uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        CIRCUIT_MAGNETIC_MAX = addItem(229, "circuit.resonatic.max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        RAW_IMPRINT_SUPPORTED_BOARD = addItem(230, "board.raw.magnetic");
+        IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
+
 
         HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new HugeTurbineBehavior());
         LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new LargeTurbineBehavior());
@@ -118,6 +128,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();
         MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
+        MetaItems.TURBINE_ROTOR.setInvisible();
 
     }
 

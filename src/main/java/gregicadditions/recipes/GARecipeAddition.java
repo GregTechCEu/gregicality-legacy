@@ -21,11 +21,15 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.*;
+import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.type.GemMaterial;
+import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
+import gregtech.api.util.ValidationResult;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType;
@@ -477,6 +481,8 @@ public class GARecipeAddition {
 
         //Distillation Recipes
         DISTILLATION_RECIPES.recipeBuilder().duration(16).EUt(96).fluidInputs(FishOil.getFluid(24)).fluidOutputs(Lubricant.getFluid(12)).buildAndRegister();
+        ValidationResult<Recipe> result = DISTILLATION_RECIPES.recipeBuilder().duration(7500).EUt(1920).fluidInputs(LiquidAir.getFluid(100000)).fluidOutputs(Nitrogen.getFluid(78000), Oxygen.getFluid(20000), Argon.getFluid(1000), CarbonDioxide.getFluid(500), Neon.getFluid(100), Helium.getFluid(50), Methane.getFluid(20), Krypton.getFluid(10), Hydrogen.getFluid(5), Xenon.getFluid(1)).build();
+        DISTILLATION_RECIPES.addRecipe(result);
 
         //Fluid Heater Recipes
         FLUID_HEATER_RECIPES.recipeBuilder().duration(16).EUt(30).circuitMeta(1).fluidInputs(Acetone.getFluid(100)).fluidOutputs(Ethenone.getFluid(100)).buildAndRegister();
@@ -763,17 +769,16 @@ public class GARecipeAddition {
         //MAINFRAME
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2000).EUt(300000).outputs(WETWARE_MAINFRAME_MAX.getStackForm()).inputs(WETWARE_SUPER_COMPUTER_UV.getStackForm(2), SMD_RESISTOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_DIODE.getStackForm(64), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), GRAVI_STAR.getStackForm(4)).input(frameGt, Tritanium, 4).input(plate, Duranium, 32).input(wireGtSingle, Tier.Superconductor, 64).input(foil, Polytetrafluoroethylene, 64).fluidInputs(SterileGrowthMedium.getFluid(2000), UUMatter.getFluid(1000)).buildAndRegister();
 
-
         //Circuit Rabbit Hole - Layer 2
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(480).inputs(ELITE_BOARD.getStackForm(), PETRI_DISH.getStackForm(), ELECTRIC_PUMP_LV.getStackForm(), SENSOR_LV.getStackForm()).input(circuit, Tier.Good).fluidInputs(SterileGrowthMedium.getFluid(250)).outputs(WETWARE_BOARD.getStackForm()).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(30).EUt(480).fluidInputs(PositiveMatter.getFluid(10), NeutralMatter.getFluid(10)).fluidOutputs(UUMatter.getFluid(20)).buildAndRegister();
 
         ModHandler.removeRecipes(COATED_BOARD.getStackForm(3));
-        ModHandler.addShapedRecipe("gautils:coated_board_shaped", COATED_BOARD.getStackForm(3), "RRR", "BBB", "RRR", 'R', RUBBER_DROP, 'B', "plateWood");
-        ModHandler.addShapelessRecipe("gautils:coated_board_shapeless", COATED_BOARD.getStackForm(), RUBBER_DROP, RUBBER_DROP, "plateWood");
-        ModHandler.addShapedRecipe("gautils:basic_board", BASIC_BOARD.getStackForm(), "WWW", "WBW", "WWW", 'W', new UnificationEntry(wireGtSingle, Copper), 'B', COATED_BOARD);
+        ModHandler.addShapedRecipe("coated_board_shaped", COATED_BOARD.getStackForm(3), "RRR", "BBB", "RRR", 'R', RUBBER_DROP, 'B', "plateWood");
+        ModHandler.addShapelessRecipe("coated_board_shapeless", COATED_BOARD.getStackForm(), RUBBER_DROP, RUBBER_DROP, "plateWood");
+        ModHandler.addShapedRecipe("basic_board", BASIC_BOARD.getStackForm(), "WWW", "WBW", "WWW", 'W', new UnificationEntry(wireGtSingle, Copper), 'B', COATED_BOARD);
         ASSEMBLER_RECIPES.recipeBuilder().duration(40).EUt(20).input(plate, Wood).input(foil, Copper, 4).fluidInputs(Glue.getFluid(72)).outputs(BASIC_BOARD.getStackForm()).buildAndRegister();
-        ModHandler.addShapedRecipe("gautils:good_board", GOOD_PHENOLIC_BOARD.getStackForm(), "WWW", "WBW", "WWW", 'W', new UnificationEntry(wireGtSingle, Gold), 'B', PHENOLIC_BOARD);
+        ModHandler.addShapedRecipe("good_board", GOOD_PHENOLIC_BOARD.getStackForm(), "WWW", "WBW", "WWW", 'W', new UnificationEntry(wireGtSingle, Gold), 'B', PHENOLIC_BOARD);
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30).inputs(PHENOLIC_BOARD.getStackForm()).input(foil, Gold, 4).fluidInputs(SodiumPersulfate.getFluid(200)).outputs(GOOD_PHENOLIC_BOARD.getStackForm()).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30).inputs(PHENOLIC_BOARD.getStackForm()).input(foil, Gold, 4).fluidInputs(IronChloride.getFluid(100)).outputs(GOOD_PHENOLIC_BOARD.getStackForm()).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(30).inputs(PLASTIC_BOARD.getStackForm()).input(foil, Copper, 6).fluidInputs(SodiumPersulfate.getFluid(500)).outputs(GOOD_PLASTIC_BOARD.getStackForm()).buildAndRegister();
@@ -829,6 +834,33 @@ public class GARecipeAddition {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(10000).inputs(ENGRAVED_CRYSTAL_CHIP.getStackForm()).notConsumable(craftingLens, MarkerMaterials.Color.Lime).outputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm()).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(9000).EUt(120).blastFurnaceTemp(1784).input(dust, Silicon, 32).input(dustSmall, GalliumArsenide).outputs(SILICON_BOULE.getStackForm()).buildAndRegister();
+
+        //Circuit resonatic Magneto
+        CHEMICAL_RECIPES.recipeBuilder().duration(4000).EUt(30).input(dust, Yttrium, 2).fluidInputs(Oxygen.getFluid(3000)).outputs(OreDictUnifier.get(dust, YttriumOxide, 5)).buildAndRegister();
+        BLAST_RECIPES.recipeBuilder().duration(56000).EUt(480).blastFurnaceTemp(2953).input(dust, Zirconium, 10).input(dust, YttriumOxide, 1).fluidInputs(Oxygen.getFluid(10000)).outputs(OreDictUnifier.get(gemFlawed, CubicZirconia, 10)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(1080).EUt(20).input(dust, Prasiolite, 3).input(dust, BismuthTellurite, 4).input(dust, CubicZirconia, 1).input(dust, SteelMagnetic).outputs(OreDictUnifier.get(dust, MagnetoResonatic, 9)).buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(570).EUt(90).input(dust, Bismuth, 2).input(dust, Boron).fluidInputs(Hydrogen.getFluid(1000)).outputs(OreDictUnifier.get(dust, Dibismusthydroborat, 4)).buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(161).EUt(60).input(dust, Bismuth, 2).input(dust, Tellurium, 3).outputs(OreDictUnifier.get(dust, BismuthTellurite, 5)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(982).EUt(15).input(dust, IndiumGalliumPhosphide).input(dust, Dibismusthydroborat, 3).input(dust, BismuthTellurite, 2).outputs(OreDictUnifier.get(dust, CircuitCompoundMK3, 6)).buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(300).EUt(480).input(dust, CircuitCompoundMK3, 4).input(dust, MagnetoResonatic).outputs(RAW_IMPRINT_SUPPORTED_BOARD.getStackForm()).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(300).EUt(1920).inputs(RAW_IMPRINT_SUPPORTED_BOARD.getStackForm()).fluidInputs(SolderingAlloy.getFluid(GTValues.L * 3)).outputs(IMPRINT_SUPPORTED_BOARD.getStackForm()).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(4500).EUt(7680).input(dust, MagnetoResonatic).fluidInputs(Neon.getFluid(1000)).outputs(OreDictUnifier.get(gemChipped, MagnetoResonatic)).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(4500).EUt(7680).input(dust, MagnetoResonatic).fluidInputs(Krypton.getFluid(1000)).outputs(OreDictUnifier.get(gem, MagnetoResonatic)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(900).EUt(480).input(gem, MagnetoResonatic, 2).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Magenta).outputs(OreDictUnifier.get(gemFlawless, MagnetoResonatic)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(9000).EUt(1920).input(gemFlawless, MagnetoResonatic, 2).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Magenta).outputs(OreDictUnifier.get(gemExquisite, MagnetoResonatic)).buildAndRegister();
+
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(75).EUt(30).outputs(CIRCUIT_MAGNETIC_ULV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), IMPRINT_SUPPORTED_BOARD.getStackForm(), SMD_DIODE.getStackForm(4), SMD_CAPACITOR.getStackForm(4), SMD_TRANSISTOR.getStackForm(4)).fluidInputs(SolderingAlloy.getFluid(36)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(120).outputs(CIRCUIT_MAGNETIC_LV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_ULV.getStackForm(), SMD_DIODE.getStackForm(8), SMD_CAPACITOR.getStackForm(8), SMD_TRANSISTOR.getStackForm(8)).fluidInputs(SolderingAlloy.getFluid(72)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(225).EUt(480).outputs(CIRCUIT_MAGNETIC_MV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_LV.getStackForm(), SMD_DIODE.getStackForm(12), SMD_CAPACITOR.getStackForm(12), SMD_TRANSISTOR.getStackForm(12)).fluidInputs(SolderingAlloy.getFluid(108)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920).outputs(CIRCUIT_MAGNETIC_HV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_MV.getStackForm(), SMD_DIODE.getStackForm(16), SMD_CAPACITOR.getStackForm(16), SMD_TRANSISTOR.getStackForm(16)).fluidInputs(SolderingAlloy.getFluid(144)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(375).EUt(7680).outputs(CIRCUIT_MAGNETIC_EV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_HV.getStackForm(), SMD_DIODE.getStackForm(20), SMD_CAPACITOR.getStackForm(20), SMD_TRANSISTOR.getStackForm(20)).fluidInputs(SolderingAlloy.getFluid(180)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(1800).EUt(30720).outputs(CIRCUIT_MAGNETIC_IV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_EV.getStackForm(), SMD_DIODE.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(864)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(2100).EUt(122880).outputs(CIRCUIT_MAGNETIC_LUV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_IV.getStackForm(), SMD_DIODE.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(1008)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(4800).EUt(491520).outputs(CIRCUIT_MAGNETIC_ZPM.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic), CIRCUIT_MAGNETIC_LUV.getStackForm(), SMD_DIODE.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(4608)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(5400).EUt(491520).outputs(CIRCUIT_MAGNETIC_UV.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_ZPM.getStackForm(), SMD_DIODE.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5184)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(6000).EUt(491520).outputs(CIRCUIT_MAGNETIC_MAX.getStackForm()).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic,6), CIRCUIT_MAGNETIC_UV.getStackForm(), SMD_DIODE.getStackForm(64), SMD_CAPACITOR.getStackForm(64), SMD_TRANSISTOR.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5760)).buildAndRegister();
 
         //distillery and new brewing
         DISTILLERY_RECIPES.recipeBuilder().duration(16).EUt(60).circuitMeta(0).fluidInputs(FermentationBase.getFluid(40)).fluidOutputs(Ethanol.getFluid(4)).buildAndRegister();

@@ -19,6 +19,8 @@ metaitem.board.advanced.name=Advanced Circuit Board
 metaitem.board.extreme.name=Extreme Circuit Board
 metaitem.board.elite.name=Elite Circuit Board
 metaitem.board.master.name=Master Circuit Board
+metaitem.board.raw.magnetic.name=Raw Imprinted Resonatic Circuit Board
+metaitem.board.magnetic.name=Imprinted Resonatic Circuit Board
 metaitem.circuit.board.elite.name=Neuro Processing Unit
 metaitem.circuit.board.elite.tooltip=Neuto CPU
 metaitem.boule.silicon.name=Monocrystalline Silicon Boule
@@ -235,6 +237,29 @@ metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
 //MAX
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
 metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
+
+
+//magneto resonatic
+metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
+metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
+metaitem.circuit.resonatic.lv.tooltip=§b§oLV Circuit
+metaitem.circuit.resonatic.mv.name=Good Magneto Resonatic Circuit
+metaitem.circuit.resonatic.mv.tooltip=§b§oMV Circuit
+metaitem.circuit.resonatic.hv.name=Advanced Magneto Resonatic Circuit
+metaitem.circuit.resonatic.hv.tooltip=§b§oHV Circuit
+metaitem.circuit.resonatic.ev.name=Extreme Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ev.tooltip=§b§oEV Circuit
+metaitem.circuit.resonatic.iv.name=Elite Magneto Resonatic Circuit
+metaitem.circuit.resonatic.iv.tooltip=§b§oIV Circuit
+metaitem.circuit.resonatic.luv.name=Master Magneto Resonatic Circuit
+metaitem.circuit.resonatic.luv.tooltip=§b§oLuV Circuit
+metaitem.circuit.resonatic.zpm.name=Ultimate Magneto Resonatic Circuit
+metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM Circuit
+metaitem.circuit.resonatic.uv.name=Superconductor Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
+metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
+metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
 
 ///////////////////////////////////////////////////////
 
@@ -1098,7 +1123,6 @@ material.naquadah_alloy.name=Naquadah Alloy
 material.naquadah_enriched.name=Enriched Naquadah
 material.tritanium.name=Tritanium
 material.duranium.name=Duranium
-material.enderium.name=Enderium
 material.neutronium.name=Neutronium
 material.blue_topaz.name=Blue Topaz
 material.diamond.name=Diamond
@@ -1114,6 +1138,19 @@ material.amethyst.name=Amethyst
 material.garnet_red.name=Red Garnet
 material.garnet_yellow.name=Yellow Garnet
 material.vinteum.name=Vinteum
+material.xenon=Xenon
+material.krypton=Krypton
+material.neon=Neon
+material.zirconium=Zirconium
+material.cubic_zirconia=Cubic Zirconia
+material.prasiolite=Prosalite
+material.magneto_resonatic=Magneto Resonatic
+material.dibismuthhydroborat=Dibismuthhydroborat
+material.bismuth_tellurite=Bismuth Tellurite
+material.circuit_compound_mkc=Circuit Compound MK3
+material.yttrium_oxide=Yttrium Oxide
+material.enderium=Enderium
+
 
 
 
