@@ -352,6 +352,7 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(256).inputs(OreDictUnifier.get(pipeLarge, TungstenSteel), ELECTRIC_PUMP_IV.getStackForm(2)).outputs(OreDictUnifier.get(pipeLarge, Ultimet)).buildAndRegister();
 
         //Reinforced Glass
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:ingot_mixed_metal"));
         int multiplier2;
         for (MaterialStack metal1 : firstMetal) {
             IngotMaterial material1 = (IngotMaterial) metal1.material;
@@ -363,12 +364,10 @@ public class GARecipeAddition {
                 ModHandler.addShapedRecipe("mixed_metal_1_" + material1.toString() + "_" + material2.toString(), INGOT_MIXED_METAL.getStackForm(multiplier1 + multiplier2), "F", "M", "L", 'F', new UnificationEntry(plate, material1), 'M', "plateBronze", 'L', OreDictUnifier.get(plate, material2));
                 ModHandler.addShapedRecipe("mixed_metal_2_" + material1.toString() + "_" + material2.toString(), INGOT_MIXED_METAL.getStackForm(multiplier1 + multiplier2), "F", "M", "L", 'F', new UnificationEntry(plate, material1), 'M', "plateBrass", 'L', OreDictUnifier.get(plate, material2));
 
-                ASSEMBLER_RECIPES.recipeBuilder().duration(40 * multiplier1 + multiplier2 * 40).EUt(8).input(plate, material1).input(plank, Bronze).input(plate, material2).outputs(INGOT_MIXED_METAL.getStackForm(multiplier1 + multiplier2)).buildAndRegister();
-                ASSEMBLER_RECIPES.recipeBuilder().duration(40 * multiplier1 + multiplier2 * 40).EUt(8).input(plate, material1).input(plate, Brass).input(plate, material2).outputs(INGOT_MIXED_METAL.getStackForm(multiplier1 + multiplier2)).buildAndRegister();
+                FORMING_PRESS_RECIPES.recipeBuilder().duration(40 * multiplier1 + multiplier2 * 40).EUt(8).input(plate, material1).input(plank, Bronze).input(plate, material2).outputs(INGOT_MIXED_METAL.getStackForm((multiplier1 + multiplier2)*2)).buildAndRegister();
+                FORMING_PRESS_RECIPES.recipeBuilder().duration(40 * multiplier1 + multiplier2 * 40).EUt(8).input(plate, material1).input(plate, Brass).input(plate, material2).outputs(INGOT_MIXED_METAL.getStackForm((multiplier1 + multiplier2)*2)).buildAndRegister();
             }
         }
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).inputs(INGOT_MIXED_METAL.getStackForm()).outputs(ADVANCED_ALLOY_PLATE.getStackForm()).buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(400).EUt(4).inputs(ADVANCED_ALLOY_PLATE.getStackForm()).input(dust, Glass, 3).outputs(GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 4)).buildAndRegister();
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(400).EUt(4).inputs(ADVANCED_ALLOY_PLATE.getStackForm(), new ItemStack(Blocks.GLASS, 3)).outputs(GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 4)).buildAndRegister();
