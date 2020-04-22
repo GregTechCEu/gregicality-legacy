@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-import static gregicadditions.GAMaterials.BabbitAlloy;
+import static gregicadditions.GAMaterials.BabbittAlloy;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower implements IMultiRecipe {
@@ -88,12 +88,12 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(BabbitAlloy);
+        return GAMetaBlocks.getMetalCasingBlockState(BabbittAlloy);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(BabbitAlloy);
+        return GAMetaBlocks.METAL_CASING.get(BabbittAlloy);
     }
 
     @Override

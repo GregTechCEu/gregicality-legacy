@@ -14,6 +14,7 @@ import gregicadditions.machines.energy.MetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
 import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
+import gregicadditions.machines.multi.TileEntityAlloyBlastFurnace;
 import gregicadditions.machines.multi.advance.MetaTileEntityLargeRocketEngine;
 import gregicadditions.machines.multi.advance.TileEntityAdvancedDistillationTower;
 import gregicadditions.machines.multi.advance.TileEntityCryogenicFreezer;
@@ -117,6 +118,7 @@ public class GATileEntities {
     public static TileEntityCryogenicFreezer CRYOGENIC_FREEZER;
     public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
     public static MetaTileEntityLargeRocketEngine LARGE_ROCKET_ENGINE;
+    public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
 
     //Nuclear
     public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
@@ -552,6 +554,8 @@ public class GATileEntities {
         CRYOGENIC_FREEZER = GregTechAPI.registerMetaTileEntity(2556, new TileEntityCryogenicFreezer(location("cryogenic_freezer")));
         CHEMICAL_PLANT = GregTechAPI.registerMetaTileEntity(2557, new MetaTileEntityChemicalPlant(location("chemical_plant")));
         LARGE_ROCKET_ENGINE = GregTechAPI.registerMetaTileEntity(2558, new MetaTileEntityLargeRocketEngine(location("large_rocket_engine")));
+        ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2559, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
+
 
         if (GAConfig.GT6.registerDums) {
             WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

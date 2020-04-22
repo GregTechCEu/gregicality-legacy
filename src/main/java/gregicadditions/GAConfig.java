@@ -267,5 +267,12 @@ public class GAConfig {
 		@Config.Comment("Set this to false to disable the high tier Air Collectors")
 		@Config.Name("Air Collector have IV and LuV version")
 		public boolean highTierCollector = true;
+
+		@Config.Comment({"Sets HUD location", "1 - left-upper conrer", "2 - right-upper corner", "3 - left-bottom corner", "4 - right-bottom corner"})
+		public byte hudLocation = 1;
+		@Config.Comment("Horizontal offset of HUD [0 ~ 100)")
+		public byte hudOffsetX = 0;
+		@Config.Comment("Vertical ooffset of HUD [0 ~ 100)")
+		public byte hudOffsetY = 0;
 	}
 }

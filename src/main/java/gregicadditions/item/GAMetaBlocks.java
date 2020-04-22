@@ -33,9 +33,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static gregicadditions.ClientProxy.METAL_CASING_BLOCK_COLOR;
+import static gregicadditions.ClientProxy.METAL_CASING_ITEM_COLOR;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
-import static gregicadditions.GregicAdditions.METAL_CASING_BLOCK_COLOR;
-import static gregicadditions.GregicAdditions.METAL_CASING_ITEM_COLOR;
 
 public class GAMetaBlocks {
 

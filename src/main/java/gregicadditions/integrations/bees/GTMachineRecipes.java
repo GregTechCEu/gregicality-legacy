@@ -167,7 +167,7 @@ public class GTMachineRecipes {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.Naquadah)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.Naquadah, 4)).fluidOutputs(Materials.NaquadahEnriched.getFluid(144)).buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.NaquadahEnriched)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.NaquadahEnriched, 4)).fluidOutputs(Materials.Naquadah.getFluid(144)).buildAndRegister();
         }
-        registerMachineRecipe(CommonProxy.BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
+        registerMachineRecipe(ForestryCommonProxy.BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
     }
 }

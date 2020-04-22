@@ -53,6 +53,10 @@ public class GARecipeMaps {
     public static final FuelRecipeMap ROCKET_FUEL_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> CHEMICAL_PLANT_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> LARGE_MIXER_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -76,6 +80,11 @@ public class GARecipeMaps {
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
         CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 0, 0, 4, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+        LARGE_MIXER_RECIPES = new RecipeMap<>("large_mixer", 0, 9, 0, 1, 0, 2, 0, 1, new SimpleRecipeBuilder())
+                .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
+                .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+        BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy", 0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
 
     }
 }

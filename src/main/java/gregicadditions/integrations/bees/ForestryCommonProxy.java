@@ -47,7 +47,7 @@ import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
 @Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
-public class CommonProxy {
+public class ForestryCommonProxy {
 
     public static SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
 

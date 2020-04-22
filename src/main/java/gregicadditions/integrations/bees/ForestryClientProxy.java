@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
-public class ClientProxy extends CommonProxy {
+public class ForestryClientProxy extends ForestryCommonProxy {
 
 	@Override
 	public void preInit() {
@@ -38,7 +38,7 @@ public class ClientProxy extends CommonProxy {
 
 	@SideOnly(Side.CLIENT)
 	private static class ColoredItemItemColor implements IItemColor {
-		public static final ClientProxy.ColoredItemItemColor INSTANCE = new ClientProxy.ColoredItemItemColor();
+		public static final ForestryClientProxy.ColoredItemItemColor INSTANCE = new ForestryClientProxy.ColoredItemItemColor();
 
 		private ColoredItemItemColor() {
 

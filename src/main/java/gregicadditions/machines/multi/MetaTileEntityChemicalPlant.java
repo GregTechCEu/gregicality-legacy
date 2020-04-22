@@ -71,7 +71,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
         int fluidOutput = abilities.getOrDefault(MultiblockAbility.EXPORT_FLUIDS, Collections.emptyList()).size();
         int fluidInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_FLUIDS, Collections.emptyList()).size();
         return fluidOutput >= 2 &&
-                fluidInputsCount >= 4 && itemInputsCount > 4 &&
+                fluidInputsCount >= 4 && itemInputsCount >= 4 &&
                 abilities.containsKey(MultiblockAbility.INPUT_ENERGY);
     }
 

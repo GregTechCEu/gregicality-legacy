@@ -157,6 +157,30 @@ metaitem.small_turbine_rotor.name=%s Small Turbine Rotor
 metaitem.medium_turbine_rotor.name=%s Medium Turbine Rotor
 metaitem.large_turbine_rotor.name=%s Large Turbine Rotor
 metaitem.huge_turbine_rotor.name=%s Huge Turbine Rotor
+metaitem.insulating_tape.name=Duct Tape
+
+metaitem.liquid_fuel_jetpack.name=§eLiquid fuel jetpack
+metaitem.impeller_jetpack.name=§eThruster Jetpack
+metaitem.advanced_impeller_jetpack.name=§bAdvanced Thruster Jetpack
+metaitem.battery_pack.lv.name=Battery pack (§eLV§r)
+metaitem.battery_pack.mv.name=Battery pack (§eMV§r)
+metaitem.battery_pack.hv.name=Battery pack (§eHV§r)
+
+metaitem.nms.chestplate.name=§eNanoMuscle™ Suite Chestplate
+metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggins
+metaitem.nms.boots.name=§eNanoMuscle™ Suite Boots
+metaitem.nms.helmet.name=§eNanoMuscle™ Suite Helmet
+metaitem.nms.advanced_chestplate.name=§bAdvanced NanoMuscle™ Suite Chestplate
+
+metaitem.qts.chestplate.name=§bQuarkTech™ Suite Chestplate
+metaitem.qts.leggins.name=§bQuarkTech™ Suite Leggins
+metaitem.qts.boots.name=§bQuarkTech™ Suite Boots
+metaitem.qts.helmet.name=§bQuarkTech™ Suite Helmet
+metaitem.qts.advanced_chestplate.name=§5Advanced QuarkTech™ Suite Chestplate
+
+metaitem.impeller.mv.name=§ePower Thruster
+metaitem.impeller.hv.name=§bAdvanced Power Thruster
+metaitem.gravitation_engine.name=§5Gravitation Engine Unit
 
 
 /////////////////////CIRCUIT///////////////////////////
@@ -262,6 +286,31 @@ metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
 
 ///////////////////////////////////////////////////////
+
+
+metaarmor.nms.nightvision.enabled=NanoMuscle™ Suite: NightVision enabled
+metaarmor.nms.nightvision.disabled=NanoMuscle™ Suite: NightVision disabled
+
+metaarmor.qts.nightvision.enabled=QuarkTech™ Suite: NightVision enabled
+metaarmor.qts.nightvision.disabled=QuarkTech™ Suite: NightVision disabled
+
+metaarmor.jetpack.hover.enable=Jetpack: hover mode enabled
+metaarmor.jetpack.hover.disable=Jetpack: hover mode disabled
+
+metaarmor.hud.status.enabled=§aON
+metaarmor.hud.status.disabled=§cOFF
+metaarmor.hud.energy_lvl=Energy level: %s
+metaarmor.hud.fuel_lvl=Fuel level: %s
+metaarmor.hud.hover_mode=Hover mode: %s
+mataarmor.hud.supply_mode=Supply mode: %s
+metaarmor.hud.fly_mode=Fly mode: %s
+metaarmor.hud.gravi_engine=GraviEngine: %s
+
+metaarmor.energy_share.enable=Energy Supply: Gadgets charging enabled
+metaarmor.energy_share.disable=Energy Supply: Gadgets charging disabled
+metaarmor.energy_share.tooltip=Supply mode: %s
+metaarmor.energy_share.tooltip.guide=To change mode shift-right click when holding item
+
 
 
 gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
@@ -512,6 +561,7 @@ gtadditions.machine.cryogenic_freezer.name=Cryogenic Freezer
 gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
 gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
+gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
@@ -631,6 +681,7 @@ tile.ga_metal_casing.material.hastelloy_n.name=Hastelloy N Casing
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
 metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
 
+recipemap.blast_alloy.name=Blast Alloy
 recipemap.cluster_mill.name=Cluster Mill
 recipemap.circuit_assembler.name=Circuit Assembler
 recipemap.coke_oven.name=[Deprecated] Coke Oven
@@ -819,7 +870,7 @@ material.high_pressure_steam=High Pressure Steam
 material.sand=Sand
 material.hg_alloy=HG-1223
 material.incoloy_ma=Incoloy MA-956
-material.babbit_alloy=Babbit Alloy
+material.babbitt_alloy=Babbitt Alloy
 material.nitinol_a=Nitinol 60
 material.raw_gasoline=Raw Gasoline
 material.gasoline=Gasoline
@@ -912,7 +963,6 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
-gtaddition.multiblock.large_rocket_engine.description=The Large Rocket Engine is built as 3x3x10 (WxHxD).
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.

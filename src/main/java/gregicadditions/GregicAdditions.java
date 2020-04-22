@@ -1,29 +1,25 @@
 package gregicadditions;
 
-import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
-import gregicadditions.integrations.bees.CommonProxy;
+import gregicadditions.input.Keybinds;
+import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
 import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -53,14 +49,6 @@ public class GregicAdditions {
     public static final String NAME = "Gregic Additions Rework";
     public static final String VERSION = "@VERSION@";
 
-    public static final IBlockColor METAL_CASING_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) ->
-            state.getValue(((GAMetalCasing) state.getBlock()).variantProperty).materialRGB;
-
-    public static final IItemColor METAL_CASING_ITEM_COLOR = (stack, tintIndex) -> {
-        GAMetalCasing block = (GAMetalCasing) ((ItemBlock) stack.getItem()).getBlock();
-        IBlockState state = block.getStateFromMeta(stack.getItemDamage());
-        return state.getValue(block.variantProperty).materialRGB;
-    };
 
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
@@ -68,11 +56,14 @@ public class GregicAdditions {
         }
     }
 
-    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.bees.ClientProxy", serverSide = "gregicadditions.integrations.bees.CommonProxy")
-    public static CommonProxy proxy;
+    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.bees.ForestryClientProxy", serverSide = "gregicadditions.integrations.bees.ForestryCommonProxy")
+    public static ForestryCommonProxy forestryProxy;
 
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy", serverSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy")
     public static ExNihiloCreatioProxy exNihiloCreatioProxy;
+
+    @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
+    public static CommonProxy proxy;
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
@@ -83,6 +74,10 @@ public class GregicAdditions {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        NetworkHandler.init();
+        proxy.preLoad();
+        Keybinds.register();
+        MinecraftForge.EVENT_BUS.register(new GAEventHandler());
         GAMetaItems.init();
         GAMetaBlocks.init();
         GATileEntities.init();
@@ -92,18 +87,18 @@ public class GregicAdditions {
             exNihiloCreatioProxy.preInit();
         }
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
-            proxy.preInit();
+            forestryProxy.preInit();
         }
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        proxy.onLoad();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             GTBees.initBees();
-            proxy.init();
+            forestryProxy.init();
         }
-        GAMetaBlocks.registerColors();
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
@@ -141,7 +136,7 @@ public class GregicAdditions {
     }
 
     @SubscribeEvent
-    public void registerOrePrefix(RegistryEvent.Register<IRecipe> event){
+    public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.register();
     }
 
@@ -158,6 +153,8 @@ public class GregicAdditions {
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
         RecipeHandler.registerLargeChemicalRecipes();
+        RecipeHandler.registerLargeMixerRecipes();
+        RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
     }

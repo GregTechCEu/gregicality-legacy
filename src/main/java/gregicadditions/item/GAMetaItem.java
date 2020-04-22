@@ -102,6 +102,11 @@ public class GAMetaItem extends MaterialMetaItem {
         MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new MediumTurbineBehavior());
         SMALL_TURBINE_ROTOR = addItem(303, "small_turbine_rotor").addComponents(new SmallTurbineBehavior());
 
+        IMPELLER_MV = addItem(304, "impeller.mv");
+        IMPELLER_HV = addItem(305, "impeller.hv");
+        GRAVITATION_ENGINE = addItem(306, "gravitation_engine");
+        INSULATING_TAPE = addItem(307, "insulating_tape");
+
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");

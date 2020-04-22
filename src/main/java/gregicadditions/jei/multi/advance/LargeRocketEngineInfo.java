@@ -18,7 +18,7 @@ import java.util.List;
 
 import static gregicadditions.GAMaterials.Nitinol60;
 
-public class LargeRocketEngine extends MultiblockInfoPage {
+public class LargeRocketEngineInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
@@ -45,6 +45,6 @@ public class LargeRocketEngine extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gtaddition.multiblock.large_rocket_engine.description")};
+        return new String[]{};
     }
 }
