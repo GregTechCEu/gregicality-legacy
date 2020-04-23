@@ -87,7 +87,8 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new CryogenicFreezerInfo()),
                 new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeRocketEngineInfo()),
-                new MultiblockInfoRecipeWrapper(new AlloyBlastFurnaceInfo())
+                new MultiblockInfoRecipeWrapper(new AlloyBlastFurnaceInfo()),
+                new MultiblockInfoRecipeWrapper(new LargeForgeHammerInfo())
         ), "gtadditions:multiblock_info2");
     }
 

@@ -176,6 +176,7 @@ public class GAMaterials implements IMaterialHandler {
         Nickel.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GemMaterial.MatFlags.GENERATE_LENSE);
+        Iron.addFlag(GENERATE_METAL_CASING);
         Tritanium.addFlag(GENERATE_FRAME);
         RedSteel.addFlag(GENERATE_GEAR);
         RedSteel.addFlag(GENERATE_METAL_CASING);

@@ -21,6 +21,7 @@ import java.util.Collections;
 
 import static gregicadditions.GAMaterials.FermentationBase;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
+import static gregtech.api.unification.material.Materials.Lubricant;
 
 public class RecipeHandler {
 
@@ -111,6 +112,18 @@ public class RecipeHandler {
                         .EUt(recipe.getEUt())
                         .duration(recipe.getDuration())
                         .fluidInputs(recipe.getFluidInputs())
+                        .inputsIngredients(recipe.getInputs())
+                        .outputs(recipe.getOutputs())
+                        .fluidOutputs(recipe.getFluidOutputs())
+                        .buildAndRegister());
+    }
+
+    public static void registerLargeForgeHammerRecipes() {
+        RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe ->
+                GARecipeMaps.LARGE_FORGE_HAMMER.recipeBuilder()
+                        .EUt(recipe.getEUt())
+                        .duration(recipe.getDuration())
+                        .fluidInputs(Lubricant.getFluid(2))
                         .inputsIngredients(recipe.getInputs())
                         .outputs(recipe.getOutputs())
                         .fluidOutputs(recipe.getFluidOutputs())

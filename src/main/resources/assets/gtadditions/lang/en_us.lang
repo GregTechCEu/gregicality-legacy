@@ -562,6 +562,7 @@ gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
 gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
+gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
 
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
@@ -618,7 +619,7 @@ gtadditions.machine.world_accelerator.luv.name=Advanced World Accelerator V
 gtadditions.machine.world_accelerator.zpm.name=Advanced World Accelerator VI
 gtadditions.machine.world_accelerator.uv.name=Advanced World Accelerator VII
 gtadditions.machine.world_accelerator.description=Increase tick update per tick. 2 modes: TileEntity or Random Tick. Use screwdriver to change mode.
-gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d.
+gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d blocks radius.
 
 gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Thorium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
@@ -635,7 +636,7 @@ gtadditions.machine.miner.hv.name=Advanced Chunk Miner II
 gtadditions.machine.miner.basic.name=Basic Large Miner
 gtadditions.machine.miner.large.name=Large Miner
 gtadditions.machine.miner.advance.name=Advance Large Miner
-gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d. Break down Ore as Hammer tool using fortune %s.
+gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d Chunks. Break down Ore as Hammer tool using fortune %s.
 gtadditions.machine.miner.description=Mine all ores in the current chunk.
 gtadditions.machine.miner.fluid_usage=Consume %dmb of %s per tick
 
@@ -707,7 +708,17 @@ recipemap.naquadah_reactor.name=Naquadah Reactor Fuels
 recipemap.replicator.name=Replicator
 recipemap.mass_fab.name=Mass Fabricator
 recipemap.cracker_unit.name=[Deprecated] Cracking Recipes
-
+recipemap.electric_sieve.name=Electric Sieve Recipes
+recipemap.high_pressure_steam_turbine.name=High Pressure Steam Recipes
+recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
+recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
+recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
+recipemap.attractor.name=Bee Attractor Recipes
+recipemap.large_chemical_reactor.name=Large Chemical Reactor
+recipemap.rocket_fuel.name=Rocket Fuel Generator
+recipemap.chemical_plant.name=Chemical Plant
+recipemap.chemical_dehydrator.name=Chemical Dehydrator
+recipemap.large_forge_hammer.name=Forge hammer
 recipemap.plasma_generator.name=Plasma Turbine Fuels
 
 material.brick=Brick
@@ -964,6 +975,8 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
+gregtech.multiblock.large_forge_hammer.description=
+gregtech.multiblock.large_forge_hammer.tooltip=Use lubricant to Run. Processes 2 items per voltage tier difference, 1.25x faster and 90%% EUt.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
@@ -1323,16 +1336,7 @@ item.material.oreprefix.oreNetherChunk=%s Ore Chunk
 item.material.oreprefix.oreEnderChunk=%s Ore Chunk
 item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
 
-recipemap.electric_sieve.name=Electric Sieve Recipes
-recipemap.high_pressure_steam_turbine.name=High Pressure Steam Recipes
-recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
-recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
-recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
-recipemap.attractor.name=Bee Attractor Recipes
-recipemap.large_chemical_reactor.name=Large Chemical Reactor
-recipemap.rocket_fuel.name=Rocket Fuel Generator
-recipemap.chemical_plant.name=Chemical Plant
-recipemap.chemical_dehydrator.name=Chemical Dehydrator
+
 
 gtadditions.machine.sieve.lv.name=Basic Electric Sieve
 gtadditions.machine.sieve.mv.name=Advanced Electric Sieve

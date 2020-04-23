@@ -57,6 +57,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> LARGE_MIXER_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> LARGE_FORGE_HAMMER;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -85,6 +87,8 @@ public class GARecipeMaps {
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
         BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy", 0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
-
+        LARGE_FORGE_HAMMER = new RecipeMap<>("large_forge_hammer", 1, 1, 1, 1, 1, 1, 0, 0, new SimpleRecipeBuilder())
+                .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
     }
 }

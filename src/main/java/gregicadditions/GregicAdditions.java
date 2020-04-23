@@ -154,6 +154,7 @@ public class GregicAdditions {
         GAMetaBlocks.registerOreDict();
         RecipeHandler.registerLargeChemicalRecipes();
         RecipeHandler.registerLargeMixerRecipes();
+        RecipeHandler.registerLargeForgeHammerRecipes();
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
