@@ -115,6 +115,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
 			tierNeeded = Math.max(1, getOverclockingTier(matchingRecipe.getEUt()));
 			maxItemsLimit *= currentTier - tierNeeded;
+			maxItemsLimit= Math.max(1, maxItemsLimit);
+
 
 			Set<ItemStack> countIngredients = new HashSet<>();
 			if (matchingRecipe.getInputs().size() != 0) {
