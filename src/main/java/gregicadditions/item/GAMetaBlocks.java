@@ -149,7 +149,7 @@ public class GAMetaBlocks {
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
                 GAMetalCasing block = new GAMetalCasing(material);
-                block.setRegistryName("gregtech:metal_casing_" + index);
+                block.setRegistryName("gregtech:metal_casing_" + material.toString());
                 METAL_CASING.put((IngotMaterial) material, block);
                 index += 1;
             }
