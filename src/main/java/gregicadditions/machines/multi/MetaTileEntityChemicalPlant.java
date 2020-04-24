@@ -164,7 +164,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add("Framework casing defined which tier you are alloyed to run it");
+        tooltip.add("The framework casings define which tier of recipe the multiblock is able to run.");
         tooltip.add(I18n.format("gtadditions.multiblock.chemical_plant.tooltip"));
     }
 
