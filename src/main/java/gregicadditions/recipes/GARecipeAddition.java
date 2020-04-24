@@ -1093,8 +1093,6 @@ public class GARecipeAddition {
 
         ModHandler.addShapedRecipe("fusion_coil", MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), "CRC", "FSF", "CRC", 'C', "circuitMaster", 'R', NEUTRON_REFLECTOR.getStackForm(), 'F', FIELD_GENERATOR_MV.getStackForm(), 'S', MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR));
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(4000).EUt(120).inputs(PLATE_IRIDIUM_ALLOY.getStackForm()).input(plate, Beryllium, 30).input(plate, TungstenCarbide, 3).fluidInputs(TinAlloy.getFluid(13824)).outputs(NEUTRON_REFLECTOR.getStackForm()).buildAndRegister();
-
         //Explosive Recipes
         ModHandler.removeRecipes(new ItemStack(Blocks.TNT));
         ModHandler.removeRecipes(DYNAMITE.getStackForm());
