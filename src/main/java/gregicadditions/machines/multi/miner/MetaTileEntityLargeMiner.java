@@ -107,7 +107,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GTValues.V[Math.max(GTValues.UV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GTValues.V[Math.max(GTValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
