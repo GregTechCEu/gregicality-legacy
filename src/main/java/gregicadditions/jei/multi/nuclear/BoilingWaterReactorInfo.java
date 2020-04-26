@@ -55,7 +55,7 @@ public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{I18n.format("gregtech.multiblock.reactor.description")};
+		return new String[]{I18n.format("gregtech.multiblock.reactor.tooltip.1")};
 	}
 
 }

@@ -1002,7 +1002,9 @@ gregtech.multiblock.distill_tower.description=The GA Distillation Tower is a mul
 gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is a large multiblock structure used for fusing elements into heavier ones. The Mark 1 Fusion Reactor can use LuV, ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 100k.
 gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
 gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
-gregtech.multiblock.reactor.description=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
+gregtech.multiblock.reactor.tooltip.1=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
+gregtech.multiblock.reactor.tooltip.2=It Produce High Pressure Steam.
+
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
 gtadditions.multiblock.void_miner.description.3=Temperature will increase if there is only Pyrotheum and will decrease if there is only Cryotheum.
