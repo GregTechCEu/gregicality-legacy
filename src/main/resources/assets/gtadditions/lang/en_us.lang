@@ -1002,14 +1002,14 @@ gregtech.multiblock.distill_tower.description=The GA Distillation Tower is a mul
 gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is a large multiblock structure used for fusing elements into heavier ones. The Mark 1 Fusion Reactor can use LuV, ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 100k.
 gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
 gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
-gregtech.multiblock.reactor.tooltip.1=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
-gregtech.multiblock.reactor.tooltip.2=It Produce High Pressure Steam.
+gregtech.multiblock.reactor.tooltip.1=The Boiling Nuclear Reactor is a large multiblock structure used to generate large amount of steam.
+gregtech.multiblock.reactor.tooltip.2=It produces High Pressure Steam.
 
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
 gtadditions.multiblock.void_miner.description.3=Temperature will increase if there is only Pyrotheum and will decrease if there is only Cryotheum.
-gtadditions.multiblock.void_miner.description.4=First Step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryotheum.
-gtadditions.multiblock.void_miner.description.5=If Temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
+gtadditions.multiblock.void_miner.description.4=First step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryotheum.
+gtadditions.multiblock.void_miner.description.5=If temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
 gtadditions.multiblock.large_transformer.description=Large Transformer can convert any GTEU/AMPS by any GTEU/AMPS.
 gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Industrial Primitive Blast Furnace is a large multiblock structure consisting of 1 to 64 "slices".
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's the upgraded version of The Primitive Blast Furnace.
@@ -1021,15 +1021,15 @@ gregtech.multiblock.advanced_distillation_tower.description2=2 Modes :
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
 gtadditions.multiblock.chemical_plant.tooltip=Duration Depend on Coil Tier.
-gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amount of power.
-gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as much as you feed it.
+gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
+gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
 gtadditions.multiblock.large_rocket_engine.tooltip.3=Consume 37500mB of Air and 10mB of Carbon Dioxide per Second .
 gtadditions.multiblock.large_rocket_engine.tooltip.4=Use Liquid Hydrogen to boost by 3 the output energy (4mB/second /2048 EU/t)
 gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
 gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
-gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than Blast Furnace
+gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
