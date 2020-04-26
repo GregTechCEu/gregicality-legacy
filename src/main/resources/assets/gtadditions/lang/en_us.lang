@@ -624,6 +624,8 @@ gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent bloc
 gtadditions.machine.boiling_water_reactor.thorium.name=Boiling Thorium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.plutonium.name=Boiling Plutonium Nuclear Reactor
+gtadditions.machine.simple_ore_washer.name=Simple Ore washer
+gtadditions.machine.simple_ore_washer.tooltip=Instead of using cauldron...
 
 gtadditions.machine.replicator.tooltip=Producing The Purest Of Elements
 
@@ -720,6 +722,7 @@ recipemap.chemical_plant.name=Chemical Plant
 recipemap.chemical_dehydrator.name=Chemical Dehydrator
 recipemap.large_forge_hammer.name=Forge hammer
 recipemap.plasma_generator.name=Plasma Turbine Fuels
+recipemap.simple_ore_washer.name=Simple Ore Washer
 
 material.brick=Brick
 material.fireclay=Fireclay

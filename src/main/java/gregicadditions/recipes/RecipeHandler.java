@@ -14,6 +14,7 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTLog;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
+import gregtech.loaders.oreprocessing.OreRecipeHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -22,12 +23,14 @@ import java.util.Collections;
 import static gregicadditions.GAMaterials.FermentationBase;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
 import static gregtech.api.unification.material.Materials.Lubricant;
+import static gregtech.api.unification.material.Materials.Water;
 
 public class RecipeHandler {
 
     public static void register() {
         OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
+        OrePrefix.dustImpure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
     }
 
     private static void processMetalCasing(OrePrefix prefix, IngotMaterial material) {
@@ -46,6 +49,12 @@ public class RecipeHandler {
                     .EUt(8).duration(200)
                     .buildAndRegister();
         }
+    }
+
+    public static void processDirtyDust(OrePrefix dustImpurePrefix, DustMaterial dustMaterial) {
+        GARecipeMaps.SIMPLE_ORE_WASHER.recipeBuilder().input(dustImpurePrefix, dustMaterial)
+                .fluidInputs(Water.getFluid(100))
+                .outputs(OreDictUnifier.get(OrePrefix.dust, dustMaterial)).buildAndRegister();
     }
 
     public static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {

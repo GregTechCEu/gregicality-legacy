@@ -59,6 +59,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> LARGE_FORGE_HAMMER;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> SIMPLE_ORE_WASHER;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -90,5 +92,9 @@ public class GARecipeMaps {
         LARGE_FORGE_HAMMER = new RecipeMap<>("large_forge_hammer", 1, 1, 1, 1, 1, 1, 0, 0, new SimpleRecipeBuilder())
                 .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
+        SIMPLE_ORE_WASHER = new RecipeMap<>("simple_ore_washer", 1, 1, 1, 1, 0, 1, 0, 0, new SimpleRecipeBuilder().duration(5).EUt(7))
+                .setSlotOverlay(false, false, GuiTextures.CRUSHED_ORE_OVERLAY)
+                .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
     }
 }

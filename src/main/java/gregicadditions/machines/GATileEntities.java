@@ -168,6 +168,7 @@ public class GATileEntities {
 
     public static SteamPump STEAM_PUMP;
     public static TileEntitySteamMixer STEAM_MIXER;
+    public static SimpleMachineMetaTileEntity SIMPLE_ORE_WASHER;
 
     public static MetaTileEntityPump[] PUMP = new MetaTileEntityPump[8];
     public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
@@ -632,6 +633,8 @@ public class GATileEntities {
             DEHYDRATOR[7] = GregTechAPI.registerMetaTileEntity(2255, new SimpleMachineMetaTileEntity(location("dehydrator.uv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 8));
 
         }
+
+        SIMPLE_ORE_WASHER = GregTechAPI.registerMetaTileEntity(2256, new SimpleMachineMetaTileEntity(location("simple_ore_washer"), GARecipeMaps.SIMPLE_ORE_WASHER, Textures.ORE_WASHER_OVERLAY, 1));
 
         int id = 2900;
         for (final ConverterType t : ConverterType.values()) {

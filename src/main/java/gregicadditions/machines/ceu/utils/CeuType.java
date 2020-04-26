@@ -43,7 +43,9 @@ public enum CeuType implements CeuCraftingHelper.RecipeFunction {
 	}
 
 	public Ratio ratio() {
-		return type.getOutput(isCeu) == Energy.FE ? Ratio.ratioOf(1, GAConfig.ceu.Ratio) : Ratio.ratioOf(GAConfig.ceu.Ratio, 1);
+		return type.getOutput(isCeu) == Energy.FE ?
+				Ratio.ratioOf(1, GAConfig.ceu.RatioEUtoRF) : //EU to RF
+				Ratio.ratioOf(GAConfig.ceu.RatioRFtoEU, 1); //RF to RF
 	}
 
 	public boolean isDisabled() {
