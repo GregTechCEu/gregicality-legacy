@@ -1030,6 +1030,24 @@ gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
+gregtech.multiblock.universal.energy_used=Energy using: %d EU
+gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.02fmB
+gregtech.multiblock.universal.overheat=Overheat !
+gregtech.machine.world_accelerator.mode.tile=Tile entity mode
+gregtech.machine.world_accelerator.mode.entity=Entity mode
+gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
+gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
+gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
+gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
+gregtech.multiblock.universal.air_amount=Air: %dmB
+gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen needed to boost: %dmB
+gregtech.multiblock.large_rocket_engine.boost=Boosted !
+gregtech.multiblock.advanced_distillation_tower.multiplier=Current multiplier: %d
+gregtech.multiblock.large_miner.chunk=Chunk: %d
+gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
+gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
+
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

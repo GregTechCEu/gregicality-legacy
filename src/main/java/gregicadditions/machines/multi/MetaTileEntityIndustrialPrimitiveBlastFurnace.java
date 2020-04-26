@@ -380,9 +380,9 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
-            textList.add(new TextComponentString(String.format("Size: %d", size)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.size", size));
             if (currentProgress > 0)
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", (int)(currentProgress / (double) (maxProgressDuration) * 100)));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", (int) (currentProgress / (double) (maxProgressDuration) * 100)));
         }
         super.addDisplayText(textList);
     }

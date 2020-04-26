@@ -677,11 +677,11 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Snow)
                 .fluidInputs(Redstone.getFluid(250))
-                .outputs(OreDictUnifier.get(dust, Blize, 2)).buildAndRegister();
+                .outputs(OreDictUnifier.get(dust, Blizz, 2)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
                 .input(dust, Snow)
-                .input(dust, Blize, 2)
+                .input(dust, Blizz, 2)
                 .outputs(OreDictUnifier.get(dust, Cryotheum, 2)).buildAndRegister();
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
                 .input(dust, Cryotheum)
@@ -1079,7 +1079,7 @@ public class GARecipeAddition {
         FUSION_RECIPES.recipeBuilder().fluidInputs(Vanadium.getFluid(16), Hydrogen.getFluid(125)).fluidOutputs(Chrome.getFluid(16)).duration(64).EUt(24576).EUToStart(140000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Gallium.getFluid(16), Radon.getFluid(125)).fluidOutputs(Duranium.getFluid(16)).duration(64).EUt(16384).EUToStart(140000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Titanium.getFluid(48), Duranium.getFluid(32)).fluidOutputs(Tritanium.getFluid(16)).duration(64).EUt(32768).EUToStart(200000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Gold.getFluid(16), Mercury.getFluid(16)).fluidOutputs(Radon.getFluid(125)).duration(64).EUt(32768).EUToStart(200000000).buildAndRegister();
+        FUSION_RECIPES.recipeBuilder().fluidInputs(Gold.getFluid(16), Mercury.getFluid(16)).fluidOutputs(Radon.getPlasma(125)).duration(64).EUt(32768).EUToStart(200000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Tantalum.getFluid(16), Tritium.getFluid(16)).fluidOutputs(Tungsten.getFluid(16)).duration(16).EUt(24576).EUToStart(200000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Silver.getFluid(16), Lithium.getFluid(16)).fluidOutputs(Indium.getFluid(16)).duration(32).EUt(24576).EUToStart(380000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(NaquadahEnriched.getFluid(15), Radon.getFluid(125)).fluidOutputs(Naquadria.getFluid(3)).duration(64).EUt(49152).EUToStart(400000000).buildAndRegister();

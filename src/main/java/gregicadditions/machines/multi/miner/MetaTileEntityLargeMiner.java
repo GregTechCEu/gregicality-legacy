@@ -40,6 +40,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
@@ -251,9 +252,9 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentString(String.format("X: %d", x.get())));
             textList.add(new TextComponentString(String.format("Y: %d", y.get())));
             textList.add(new TextComponentString(String.format("Z: %d", z.get())));
-            textList.add(new TextComponentString(String.format("chuck: %d", currentChunk.get())));
-            textList.add(new TextComponentString(String.format("nb chunk: %d", chunks.size())));
-            textList.add(new TextComponentString(String.format("block per tick: %d", getNbBlock())));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.chunk", currentChunk.get()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.nb_chunk", chunks.size()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.block_per_tick", getNbBlock()));
         }
 
         super.addDisplayText(textList);

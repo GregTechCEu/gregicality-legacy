@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 
@@ -164,14 +165,14 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add("The framework casings define which tier of recipe the multiblock is able to run.");
+        tooltip.add(I18n.format("gregtech.multiblock.universal.framework.tooltip"));
         tooltip.add(I18n.format("gtadditions.multiblock.chemical_plant.tooltip"));
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentString(String.format("Current Max Tiered Voltage: %d EU/t", this.maxVolatage)));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVolatage));
     }
 
 

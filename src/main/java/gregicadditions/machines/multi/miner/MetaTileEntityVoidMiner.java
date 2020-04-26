@@ -66,7 +66,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     private boolean usingPyrotheum = true;
     private int temperature = 0;
     private double currentDrillingFluid = CONSUME_START;
-    private long energyDrain = GTValues.V[GTValues.V.length - 2];
+    private final long energyDrain = GTValues.V[GTValues.UV];
 
 
     public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId) {
@@ -227,11 +227,11 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
-            textList.add(new TextComponentString(String.format("energy using: %d", energyDrain)));
-            textList.add(new TextComponentString(String.format("temperature: %d/%d", temperature, MAX_TEMPERATURE)));
-            textList.add(new TextComponentString(String.format("currentDrillingFluid: %.02f", currentDrillingFluid)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, MAX_TEMPERATURE));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.drilling_fluid_amount", currentDrillingFluid));
             if (overheat) {
-                textList.add(new TextComponentString("overheat !!").setStyle(new Style().setColor(TextFormatting.RED)));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
             }
         }
 
