@@ -20,10 +20,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -64,12 +61,12 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
             int airAmount = air == null ? 0 : air.amount;
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 
-            textList.add(new TextComponentString(String.format("Carbon Dioxide: %d", carbonDioxideAmount)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.carbon_dioxide_amount", carbonDioxideAmount));
             textList.add(new TextComponentString(fuelStack != null ? String.format("%dmb %s", fuelAmount, fuelStack.getLocalizedName()) : ""));
-            textList.add(new TextComponentString(String.format("Liquid Hydrogen: %d", hydrogenAmount)));
-            textList.add(new TextComponentString(String.format("Air: %d", airAmount)));
-            textList.add(new TextComponentString("Hydrogen needed: " + hydrogenNeededToBoost));
-            textList.add(new TextComponentString(isBoosted ? "BOOST !" : "").setStyle(new Style().setColor(TextFormatting.RED)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.liquid_hydrogen_amount", hydrogenAmount));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.air_amount", airAmount));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.hydrogen_need", hydrogenNeededToBoost));
+            textList.add(new TextComponentTranslation(isBoosted ? "gregtech.multiblock.large_rocket_engine.boost" : "").setStyle(new Style().setColor(TextFormatting.GREEN)));
         }
         super.addDisplayText(textList);
     }

@@ -36,8 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.BabbittAlloy;
-import static gregicadditions.GAMaterials.Stellite;
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.machines.GATileEntities.THERMAL_CENTRIFUGE;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregtech.api.GTValues.L;
@@ -190,7 +189,7 @@ public class MachineCraftingRecipes {
         //MultiBlocks
         ModHandler.addShapedRecipe("ga_primitive_blast_furnace", MetaTileEntities.PRIMITIVE_BLAST_FURNACE.getStackForm(), "hRS", "PBR", "dRS", 'R', OreDictUnifier.get(stick, Iron), 'S', OreDictUnifier.get(screw, Iron), 'P', "plateIron", 'B', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS));
         ModHandler.addShapedRecipe("ga_electric_blast_furnace", MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(), "FFF", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Invar), 'F', OreDictNames.craftingFurnace, 'C', new UnificationEntry(circuit, Tier.Basic), 'W', new UnificationEntry(cableGtSingle, Tin));
-        ModHandler.addShapedRecipe("ga_vacuum_freezer", MetaTileEntities.VACUUM_FREEZER.getStackForm(), "PPP", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Aluminium), 'P', MetaItems.ELECTRIC_PUMP_HV, 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme), 'W', new UnificationEntry(cableGtSingle, Gold));
+        ModHandler.addShapedRecipe("ga_vacuum_freezer", MetaTileEntities.VACUUM_FREEZER.getStackForm(), "PPP", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Aluminium), 'P', MetaItems.ELECTRIC_PUMP_HV, 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced), 'W', new UnificationEntry(cableGtSingle, Gold));
         ModHandler.addShapedRecipe("ga_implosion_compressor", MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm(), "OOO", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Steel), 'O', new UnificationEntry(stone, Obsidian), 'C', new UnificationEntry(circuit, Tier.Advanced), 'W', new UnificationEntry(cableGtSingle, Aluminium));
         ModHandler.addShapedRecipe("ga_pyrolyse_oven", MetaTileEntities.PYROLYSE_OVEN.getStackForm(), "WEP", "EME", "WCP", 'M', MetaTileEntities.HULL[GTValues.MV].getStackForm(), 'W', MetaItems.ELECTRIC_PISTON_MV, 'P', new UnificationEntry(wireGtQuadruple, Cupronickel), 'E', new UnificationEntry(circuit, Tier.Good), 'C', MetaItems.ELECTRIC_PUMP_MV);
         ModHandler.addShapedRecipe("ga_diesel_engine", MetaTileEntities.DIESEL_ENGINE.getStackForm(), "PCP", "EME", "GWG", 'M', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'P', MetaItems.ELECTRIC_PISTON_EV, 'E', MetaItems.ELECTRIC_MOTOR_EV, 'C', new UnificationEntry(circuit, Tier.Elite), 'W', new UnificationEntry(wireGtSingle, TungstenSteel), 'G', new UnificationEntry(gear, Titanium));
@@ -234,6 +233,29 @@ public class MachineCraftingRecipes {
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720).fluidInputs(Kanthal.getFluid(2304), Bronze.getFluid(9216), BabbittAlloy.getFluid(2304), SolderingAlloy.getFluid(L * 10)).inputs(CountableIngredient.from(circuit, Tier.Elite), CountableIngredient.from(circuit, Tier.Elite)).inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_IV, 2), MetaTileEntities.DISTILLATION_TOWER.getStackForm(2)).outputs(GATileEntities.ADVANCED_DISTILLATION_TOWER.getStackForm()).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(Steel.getFluid(144 * 4)).input(OrePrefix.valueOf("gtMetalCasing"), Steel, 2).input(plate, Aluminium, 32).input(gear, Steel, 4).input(dust, CobaltBrass, 16).inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LV)).outputs(GATileEntities.CHEMICAL_PLANT.getStackForm()).duration(2400).EUt(120).buildAndRegister();
         ModHandler.addShapedRecipe("ga_large_forge_hammer", GATileEntities.LARGE_FORGE_HAMMER.getStackForm(), "PCP", "CHC", "PCP", 'H', MetaTileEntities.FORGE_HAMMER[0].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Basic), 'P', MetaItems.ELECTRIC_PISTON_MV);
+        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720)
+                .fluidInputs(Lubricant.getFluid(2304),
+                        RP1RocketFuel.getFluid(9216),
+                        SolderingAlloy.getFluid(L * 10))
+                .inputs(CountableIngredient.from(circuit, Tier.Master),
+                        CountableIngredient.from(circuit, Tier.Master),
+                        CountableIngredient.from(circuit, Tier.Master),
+                        CountableIngredient.from(circuit, Tier.Master)
+                )
+                .input(wireGtQuadruple, IVSuperconductor, 64)
+                .input(wireGtQuadruple, IVSuperconductor, 64)
+                .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LUV, 2),
+                        GATileEntities.ROCKET_GENERATOR[GTValues.LuV].getStackForm(2),
+                        MetaItems.ELECTRIC_PISTON_LUV.getStackForm(16))
+                .outputs(GATileEntities.LARGE_ROCKET_ENGINE.getStackForm()).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .fluidInputs(SolderingAlloy.getFluid(144 * 4))
+                .input(OrePrefix.valueOf("gtMetalCasing"), ZirconiumCarbide, 2)
+                .input(plate, Zirconium, 32)
+                .input(gear, Staballoy, 4)
+                .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_EV))
+                .outputs(GATileEntities.ALLOY_BLAST_FURNACE.getStackForm()).duration(2400).EUt(5000).buildAndRegister();
+
 
 
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(130000)

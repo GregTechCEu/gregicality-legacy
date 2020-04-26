@@ -38,7 +38,7 @@ public class VoidMinerInfo extends MultiblockInfoPage {
                 .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', GATileEntities.VOID_MINER, EnumFacing.WEST)
                 .where('C', GAMetaBlocks.getMetalCasingBlockState(HastelloyN))
-                .where('D',GAMetaBlocks.getMetalCasingBlockState(Staballoy))
+                .where('D', GAMetaBlocks.getMetalCasingBlockState(Staballoy))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[8], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[0], EnumFacing.WEST)
                 .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[0], EnumFacing.WEST)

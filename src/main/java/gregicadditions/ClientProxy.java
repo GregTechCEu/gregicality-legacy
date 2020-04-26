@@ -29,12 +29,12 @@ public class ClientProxy extends CommonProxy{
     public void preLoad(){
         super.preLoad();
         Keybinds.initBinds();
-        Keybinds.registerClient();
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
+        Keybinds.registerClient();
         GAMetaBlocks.registerColors();
     }
 }

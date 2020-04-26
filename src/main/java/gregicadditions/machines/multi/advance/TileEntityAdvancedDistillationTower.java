@@ -110,7 +110,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
-        textList.add(new TextComponentString("Current multiplier: " +((AdvancedDistillationRecipeLogic) (this.recipeMapWorkable)).multiplier));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.advanced_distillation_tower.multiplier", ((AdvancedDistillationRecipeLogic) (this.recipeMapWorkable)).multiplier));
     }
 
     @Override
@@ -170,9 +170,9 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
         public AdvancedDistillationRecipeLogic(RecipeMapMultiblockController tileEntity, RecipeMap<?> recipeMap) {
             super(tileEntity);
             this.recipeMap = recipeMap;
-            if(recipeMap == RecipeMaps.DISTILLATION_RECIPES)
+            if (recipeMap == RecipeMaps.DISTILLATION_RECIPES)
                 multiplier = 4;
-            if(recipeMap == RecipeMaps.DISTILLERY_RECIPES)
+            if (recipeMap == RecipeMaps.DISTILLERY_RECIPES)
                 multiplier = 12;
         }
 

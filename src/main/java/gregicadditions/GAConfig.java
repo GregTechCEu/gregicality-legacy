@@ -274,5 +274,8 @@ public class GAConfig {
 		public byte hudOffsetX = 0;
 		@Config.Comment("Vertical ooffset of HUD [0 ~ 100)")
 		public byte hudOffsetY = 0;
+
+		@Config.Comment("Platinum and Palladium are found in Platinum sludge but if you need it, you can activate the generation default: [false]")
+		public boolean generatePlatinumAndPalladium = false;
 	}
 }

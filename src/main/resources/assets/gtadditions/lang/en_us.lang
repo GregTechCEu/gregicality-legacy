@@ -912,6 +912,7 @@ material.liquid_oxygen=Liquid Oxygen
 material.fermentation_base=Fermentation Base
 material.liquid_hydrogen=Liquid Hydrogen
 material.zirconium_carbide=Zirconium Carbide
+material.zirkelite=Zirkelite
 
 
 
@@ -1001,11 +1002,13 @@ gregtech.multiblock.distill_tower.description=The GA Distillation Tower is a mul
 gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is a large multiblock structure used for fusing elements into heavier ones. The Mark 1 Fusion Reactor can use LuV, ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 100k.
 gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
 gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
-gregtech.multiblock.reactor.description=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
+gregtech.multiblock.reactor.tooltip.1=The Boiling Nuclear Reactor is a large multiblock structure use to generate large amount of steam.
+gregtech.multiblock.reactor.tooltip.2=It Produce High Pressure Steam.
+
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
 gtadditions.multiblock.void_miner.description.3=Temperature will increase if there is only Pyrotheum and will decrease if there is only Cryotheum.
-gtadditions.multiblock.void_miner.description.4=First Step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryothuem.
+gtadditions.multiblock.void_miner.description.4=First Step, will be to only feed with Pyrotheum and then, when the temperature is a the perfect spot, slowly add Cryotheum.
 gtadditions.multiblock.void_miner.description.5=If Temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
 gtadditions.multiblock.large_transformer.description=Large Transformer can convert any GTEU/AMPS by any GTEU/AMPS.
 gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Industrial Primitive Blast Furnace is a large multiblock structure consisting of 1 to 64 "slices".
@@ -1026,9 +1029,29 @@ gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
 gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
+gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than Blast Furnace
+
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
+gregtech.multiblock.universal.energy_used=Energy using: %d EU
+gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.02fmB
+gregtech.multiblock.universal.overheat=Overheat !
+gregtech.machine.world_accelerator.mode.tile=Tile entity mode
+gregtech.machine.world_accelerator.mode.entity=Entity mode
+gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
+gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
+gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
+gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
+gregtech.multiblock.universal.air_amount=Air: %dmB
+gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen needed to boost: %dmB
+gregtech.multiblock.large_rocket_engine.boost=Boosted !
+gregtech.multiblock.advanced_distillation_tower.multiplier=Current multiplier: %d
+gregtech.multiblock.large_miner.chunk=Chunk: %d
+gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
+gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
+
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

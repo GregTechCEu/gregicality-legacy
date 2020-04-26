@@ -40,6 +40,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
@@ -107,7 +108,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GTValues.V[Math.max(GTValues.UV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GTValues.V[Math.max(GTValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
@@ -251,9 +252,9 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentString(String.format("X: %d", x.get())));
             textList.add(new TextComponentString(String.format("Y: %d", y.get())));
             textList.add(new TextComponentString(String.format("Z: %d", z.get())));
-            textList.add(new TextComponentString(String.format("chuck: %d", currentChunk.get())));
-            textList.add(new TextComponentString(String.format("nb chunk: %d", chunks.size())));
-            textList.add(new TextComponentString(String.format("block per tick: %d", getNbBlock())));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.chunk", currentChunk.get()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.nb_chunk", chunks.size()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.block_per_tick", getNbBlock()));
         }
 
         super.addDisplayText(textList);

@@ -105,7 +105,8 @@ public class BoilingWaterReactor extends RecipeMapMultiblockController {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.description"));
+        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.1"));
+        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.2"));
     }
 
     public IBlockState getCasingState() {

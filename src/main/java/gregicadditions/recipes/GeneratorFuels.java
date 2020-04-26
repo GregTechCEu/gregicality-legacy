@@ -82,6 +82,7 @@ public class GeneratorFuels {
         //Plasma Generator
         registerPlasmaFuel(Helium.getPlasma(1), 2560, GTValues.LV);
         registerPlasmaFuel(Nitrogen.getPlasma(1), 4032, GTValues.LV);
+        registerPlasmaFuel(Radon.getPlasma(1), 6144, GTValues.LV);
         registerPlasmaFuel(Oxygen.getPlasma(1), 4096, GTValues.LV);
         registerPlasmaFuel(Iron.getPlasma(16), 103219, GTValues.LV);
         registerPlasmaFuel(Nickel.getPlasma(16), 106905, GTValues.LV);
@@ -120,7 +121,7 @@ public class GeneratorFuels {
         GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
-    public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier){
+    public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {
         GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
