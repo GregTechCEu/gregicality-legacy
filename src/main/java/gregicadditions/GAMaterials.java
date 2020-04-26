@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import java.lang.reflect.Field;
 
 import static com.google.common.collect.ImmutableList.of;
+import static gregicadditions.GAConfig.Misc;
 import static gregtech.api.unification.Element.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.*;
@@ -161,8 +162,11 @@ public class GAMaterials implements IMaterialHandler {
         Alunite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
         GlauconiteSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
 
-        removeFlags(Platinum, GENERATE_ORE);
-        removeFlags(Palladium, GENERATE_ORE);
+        if(!Misc.generatePlatinumAndPalladium){
+            removeFlags(Platinum, GENERATE_ORE);
+            removeFlags(Palladium, GENERATE_ORE);
+        }
+
 
         YttriumBariumCuprate.addFlag(IngotMaterial.MatFlags.GENERATE_FINE_WIRE);
         Manganese.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);

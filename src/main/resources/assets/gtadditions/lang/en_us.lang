@@ -1027,6 +1027,8 @@ gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
 gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
+gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than Blast Furnace
+
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
