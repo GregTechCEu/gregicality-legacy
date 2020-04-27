@@ -418,11 +418,11 @@ metaitem.nms.boots.name=§e纳米™ 套装靴子
 metaitem.nms.helmet.name=§e纳米™ 套装头盔
 metaitem.nms.advanced_chestplate.name=§b先进纳米™ 套装胸甲
 
-metaitem.qts.chestplate.name=§bQuarkTech™ Suite Chestplate
-metaitem.qts.leggins.name=§bQuarkTech™ Suite Leggins
-metaitem.qts.boots.name=§bQuarkTech™ Suite Boots
-metaitem.qts.helmet.name=§bQuarkTech™ Suite Helmet
-metaitem.qts.advanced_chestplate.name=§5Advanced QuarkTech™ Suite Chestplate
+metaitem.qts.chestplate.name=§b量子™ 套装胸甲
+metaitem.qts.leggins.name=§b量子™ 套装护腿
+metaitem.qts.boots.name=§b量子™ 套装靴子
+metaitem.qts.helmet.name=§b量子™ 套装头盔
+metaitem.qts.advanced_chestplate.name=§5A先进量子™ 套装胸甲
 
 metaitem.impeller.mv.name=§e动力推进器
 metaitem.impeller.hv.name=§b先进动力推进器
