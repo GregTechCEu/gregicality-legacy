@@ -99,7 +99,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 				return null;
 			}
 
-			return createRecipe(maxVoltage, recipePerInput.getInput(), fluidInputs, recipePerInput.recipe);
+			return createRecipe(maxVoltage, recipePerInput.getInput(), fluidInputs, recipePerInput.getRecipe());
 
 
 		}
@@ -260,23 +260,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 			}
 		}
 
-		private class Tuple {
-			private final Recipe recipe;
-			private final IItemHandlerModifiable input;
-
-			public Tuple(Recipe recipe, IItemHandlerModifiable input) {
-				this.recipe = recipe;
-				this.input = input;
-			}
-
-			public Recipe getRecipe() {
-				return recipe;
-			}
-
-			public IItemHandlerModifiable getInput() {
-				return input;
-			}
-		}
 	}
 
 
