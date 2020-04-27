@@ -25,6 +25,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -54,6 +55,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWithDisplayBase {
@@ -149,28 +151,24 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
                 .filter(itemStack -> OreDictUnifier.getMaterial(itemStack) != null)
                 .filter(itemStack -> !MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material))
                 .findFirst().orElse(null);
-        ItemStack fuelStack = IntStream.range(0, inputInventory.getSlots())
+        List<ItemStack> fuelStack = IntStream.range(0, inputInventory.getSlots())
                 .mapToObj(value -> inputInventory.getStackInSlot(value))
                 .filter(itemStack -> OreDictUnifier.getMaterial(itemStack) != null)
-                .filter(itemStack -> MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material))
-                .findFirst().orElse(null);
-        if (inputStack == null || inputStack.isEmpty() || fuelStack == null || (fuelStack.isEmpty() && fuelUnitsLeft == 0)) {
+                .filter(itemStack -> MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material)).collect(Collectors.toList());
+
+        if (inputStack == null || inputStack.isEmpty() || (fuelStack.isEmpty() && fuelUnitsLeft == 0)) {
             return false;
         }
-        float fuelUnitsPerItem = getFuelUnits(fuelStack);
-        float totalFuelUnits = fuelUnitsLeft + fuelUnitsPerItem * fuelStack.getCount();
+
+        float totalFuelUnits = fuelUnitsLeft + fuelStack.stream().map(MetaTileEntityIndustrialPrimitiveBlastFurnace::getFuelUnits).reduce(0f, Float::sum);
         PrimitiveBlastFurnaceRecipe currentRecipe = getOrRefreshRecipe(inputStack);
         if (currentRecipe != null && setupRecipe(inputStack, (int) totalFuelUnits, currentRecipe)) {
             inputStack.shrink(currentRecipe.getInput().getCount());
             float fuelUnitsToConsume = currentRecipe.getFuelAmount();
             float remainderConsumed = Math.min(fuelUnitsToConsume, fuelUnitsLeft);
-            fuelUnitsToConsume -= remainderConsumed;
 
-            int fuelItemsToConsume = (int) Math.ceil(fuelUnitsToConsume / (fuelUnitsPerItem * 1.0));
-            float remainderAdded = fuelItemsToConsume * fuelUnitsPerItem - fuelUnitsToConsume;
-
-            this.fuelUnitsLeft += (remainderAdded - remainderConsumed);
-            fuelStack.shrink(fuelItemsToConsume);
+            this.fuelUnitsLeft += (totalFuelUnits - remainderConsumed);
+            fuelStack.forEach(itemStack -> itemStack.shrink(inputStack.getCount()));
             this.maxProgressDuration = currentRecipe.getDuration();
             this.currentProgress = 0;
             NonNullList<ItemStack> outputs = NonNullList.create();
@@ -274,7 +272,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         if (materialStack != null && materialStack.amount >= GTValues.M) {
             int materialAmount = (int) (materialStack.amount / GTValues.M);
             Float materialMultiplier = MATERIAL_FUEL_MAP.get(materialStack.material);
-            return materialMultiplier == null ? 0 : materialAmount * materialMultiplier;
+            return materialMultiplier == null ? 0 : materialAmount * materialMultiplier * fuelType.getCount();
         }
         return 0;
     }
@@ -381,6 +379,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.size", size));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft", fuelUnitsLeft));
             if (currentProgress > 0)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.progress", (int) (currentProgress / (double) (maxProgressDuration) * 100)));
         }

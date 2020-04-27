@@ -38,9 +38,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
@@ -121,7 +119,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        return GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
+        return  GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
     }
 
     @Override
@@ -189,7 +187,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
             if (y.get() < 0) {
                 currentChunk.incrementAndGet();
-                if (currentChunk.get() <= chunks.size()) {
+                if (currentChunk.get() >= chunks.size()) {
                     done = true;
                 } else {
                     x.set(chunks.get(currentChunk.intValue()).getPos().getXStart());
@@ -249,12 +247,17 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
+
             textList.add(new TextComponentString(String.format("X: %d", x.get())));
             textList.add(new TextComponentString(String.format("Y: %d", y.get())));
             textList.add(new TextComponentString(String.format("Z: %d", z.get())));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.chunk", currentChunk.get()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.nb_chunk", chunks.size()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.block_per_tick", getNbBlock()));
+            if (done)
+                textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.done", getNbBlock()).setStyle(new Style().setColor(TextFormatting.GREEN)));
+
+
         }
 
         super.addDisplayText(textList);

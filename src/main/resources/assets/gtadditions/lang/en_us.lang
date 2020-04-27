@@ -720,7 +720,7 @@ recipemap.large_chemical_reactor.name=Large Chemical Reactor
 recipemap.rocket_fuel.name=Rocket Fuel Generator
 recipemap.chemical_plant.name=Chemical Plant
 recipemap.chemical_dehydrator.name=Chemical Dehydrator
-recipemap.large_forge_hammer.name=Forge hammer
+recipemap.large_forge_hammer.name=Large Forge Hammer
 recipemap.plasma_generator.name=Plasma Turbine Fuels
 recipemap.simple_ore_washer.name=Simple Ore Washer
 
@@ -1045,6 +1045,7 @@ gregtech.machine.world_accelerator.mode.entity=Entity mode
 gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
 gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %.02f Units
 gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
@@ -1054,6 +1055,7 @@ gregtech.multiblock.advanced_distillation_tower.multiplier=Current multiplier: %
 gregtech.multiblock.large_miner.chunk=Chunk: %d
 gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
 gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
+gregtech.multiblock.large_miner.done=Done !
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

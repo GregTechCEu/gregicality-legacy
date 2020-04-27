@@ -282,5 +282,9 @@ public class GAConfig {
 
         @Config.Comment("Platinum and Palladium are found in Platinum sludge but if you need it, you can activate the generation default: [false]")
         public boolean generatePlatinumAndPalladium = false;
+
+        @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
+        @Config.RequiresMcRestart
+        public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
     }
 }
