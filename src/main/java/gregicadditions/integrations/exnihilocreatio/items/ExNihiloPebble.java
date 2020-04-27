@@ -41,6 +41,13 @@ public class ExNihiloPebble extends Item implements IHasModel {
         return new ItemStack(ExNihiloItems.pebble, 1, names.indexOf(name));
     }
 
+
+    @Override
+    @Nonnull
+    public String getTranslationKey(ItemStack stack) {
+        return getTranslationKey() + "." + names.get(stack.getItemDamage());
+    }
+
     /**
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */

@@ -274,6 +274,8 @@ public class MachineCraftingRecipes {
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .outputs(GATileEntities.VOID_MINER.getStackForm()).buildAndRegister();
+        ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(),'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
+
 
 
         List<Recipe> removals = new ArrayList<>();
@@ -331,6 +333,8 @@ public class MachineCraftingRecipes {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:magic_energy_absorber"));
             ModHandler.addShapedRecipe("ga_magic_energy_absorber", MetaTileEntities.MAGIC_ENERGY_ABSORBER.getStackForm(), "PCP", "SMS", "PCP", 'M', MetaTileEntities.HULL[GTValues.MV].getStackForm(), 'P', MetaItems.ELECTRIC_PUMP_MV, 'S', MetaItems.SENSOR_MV, 'C', new UnificationEntry(circuit, Tier.Good));
         }
+
+        ModHandler.addShapedRecipe("ga_simple_ore_washer", GATileEntities.SIMPLE_ORE_WASHER.getStackForm(), "PIP", "PTP", "PCP", 'C', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'T', MetaItems.ELECTRIC_PUMP_LV, 'I', new UnificationEntry(plate, Steel), 'P', new UnificationEntry(pipeLarge, Bronze));
 
         //Machines
         registerMachineRecipe(GATileEntities.CIRCUITASSEMBLER, "ACE", "VMV", "WCW", 'M', HULL, 'V', CONVEYOR, 'A', ROBOT_ARM, 'C', BETTER_CIRCUIT, 'W', CABLE_SINGLE, 'E', EMITTER);
