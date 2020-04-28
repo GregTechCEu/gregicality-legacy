@@ -6,6 +6,7 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.LabelWidget;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.gui.widgets.SlotWidget;
+import gregtech.api.gui.widgets.ToggleButtonWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
@@ -26,6 +27,13 @@ public class MetaTileEntitySieve extends SimpleMachineMetaTileEntity {
                 .widget(new SlotWidget(this.importItems, 0, 35, 25).setBackgroundTexture(GuiTextures.SLOT))
                 .widget(new SlotWidget(this.importItems, 1, 53, 25).setBackgroundTexture(GuiTextures.SLOT))
                 .widget(new ProgressWidget(workable::getProgressPercent, 78, 24, 20, 18, GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.VERTICAL_INVERTED));
+
+        int leftButtonStartX = 7;
+        if (exportItems.getSlots() > 0) {
+            builder.widget(new ToggleButtonWidget(leftButtonStartX, 62, 18, 18,
+                    GuiTextures.BUTTON_ITEM_OUTPUT, this::isAutoOutputItems, this::setAutoOutputItems)
+                    .setTooltipText("gregtech.gui.item_auto_output.tooltip"));
+        }
 
         for (int y = 0; y < 6; y++) {
             for (int x = 0; x < 4; x++) {
