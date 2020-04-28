@@ -17,6 +17,7 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.util.GTLog;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -128,10 +129,12 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
 
 	public boolean drainEnergy() {
 		FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
-		FluidStack canDrain = this.exportFluids.drain(drillingFluid, false);
+		FluidStack canDrain = this.importFluids.drain(drillingFluid, false);
+		GTLog.logger.info("ICI4");
 		if (energyContainer.getEnergyStored() >= energyPerTick && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
+			GTLog.logger.info("ICI5");
 			energyContainer.removeEnergy(energyPerTick);
-			this.exportFluids.drain(drillingFluid, true);
+			this.importFluids.drain(drillingFluid, true);
 			return true;
 		}
 		return false;
@@ -143,9 +146,13 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
 		super.update();
 		if (!getWorld().isRemote) {
 			fillInternalTankFromFluidContainer(containerInventory, containerInventory, 0, 1);
+			GTLog.logger.info("ICI1");
 			if (!drainEnergy()) {
+				GTLog.logger.info("ICI2");
 				return;
 			}
+
+			GTLog.logger.info("ICI3");
 			WorldServer world = (WorldServer) this.getWorld();
 			Chunk chuck = world.getChunk(getPos());
 			ChunkPos chunkPos = chuck.getPos();
