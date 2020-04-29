@@ -12,14 +12,14 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.items.ToolDictNames;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.*;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
@@ -27,6 +27,7 @@ import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.blocks.BlockMachineCasing;
@@ -51,9 +52,7 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
@@ -66,6 +65,13 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class GARecipeAddition {
+
+    static List<Material> platinumGroupMaterials = Arrays.asList(Materials.Iridium, Materials.Osmium, Materials.Platinum,
+            Materials.Palladium, GAMaterials.Ruthenium, GAMaterials.Rhodium);
+    static List<Material> replacementMaterials = Arrays.asList(GAMaterials.IrLeachResidue, GAMaterials.IrOsLeachResidue, GAMaterials.PlatinumMetallicPowder,
+            GAMaterials.PalladiumMetallicPowder, GAMaterials.LeachResidue, GAMaterials.CrudeRhodiumMetall);
+    static List<OrePrefix> orePrefixes = Arrays.asList(OrePrefix.dust, OrePrefix.dustTiny, OrePrefix.dustSmall);
+    static Map<RecipeMap<SimpleRecipeBuilder>, List<OrePrefix>> blehMap = new HashMap<>();
 
     private static final MaterialStack[] sawLubricants = {
             new MaterialStack(Lubricant, 1L),
@@ -1609,7 +1615,85 @@ public class GARecipeAddition {
                 .EUt(10)
                 .duration(60)
                 .buildAndRegister();
+    }
 
+    public static void hjaeOreProcessing() {
+        blehMap.put(RecipeMaps.MACERATOR_RECIPES, Arrays.asList(OrePrefix.ore, OrePrefix.crushed, OrePrefix.crushedCentrifuged, OrePrefix.crushedPurified,
+                OrePrefix.crystalline));
+        blehMap.put(RecipeMaps.ORE_WASHER_RECIPES, Collections.singletonList(OrePrefix.crushed));
+        blehMap.put(RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Arrays.asList(OrePrefix.crushed, OrePrefix.crushedPurified));
+        blehMap.put(RecipeMaps.CHEMICAL_BATH_RECIPES, Collections.singletonList(OrePrefix.crushed));
+        blehMap.put(RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Collections.singletonList(OrePrefix.dustImpure));
+        blehMap.put(RecipeMaps.CENTRIFUGE_RECIPES, Arrays.asList(OrePrefix.dustImpure, OrePrefix.dustPure, OrePrefix.crushed, OrePrefix.crushedPurified));
+        blehMap.put(RecipeMaps.FORGE_HAMMER_RECIPES, Arrays.asList(OrePrefix.crushedCentrifuged, OrePrefix.crystalline));
+        blehMap.put(SIMPLE_ORE_WASHER, Arrays.asList(dustImpure));
+        blehMap.put(ELECTROLYZER_RECIPES, Arrays.asList(dust));
+
+        long t1 = System.currentTimeMillis();
+        for (Material mat : Material.MATERIAL_REGISTRY) {
+            for (Map.Entry<RecipeMap<gregtech.api.recipes.builders.SimpleRecipeBuilder>, List<OrePrefix>> entry : blehMap.entrySet()) {
+                for (OrePrefix orePrefix : entry.getValue()) {
+                    findRecipe(entry.getKey(), mat, orePrefix);
+                }
+            }
+        }
+        for (Material material : platinumGroupMaterials) {
+            String base = "gregtech:centrifuged_ore_to_dust_";
+            ModHandler.removeRecipeByName(new ResourceLocation(base + material));
+        }
+        GTLog.logger.info("Time taken: " + (System.currentTimeMillis() - t1));
+    }
+
+    static <R extends RecipeBuilder<R>> void findElectrolyzerRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
+        int totalComponents = 0;
+        for (MaterialStack materialStack : material.materialComponents) {
+            totalComponents += materialStack.amount;
+        }
+        Recipe recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material, totalComponents)), Collections.emptyList(), Integer.MAX_VALUE);
+        if (recipe != null) {
+            buildNewOutputs(map, recipe);
+        }
+    }
+
+    static <R extends RecipeBuilder<R>> void buildNewOutputs(RecipeMap<R> map, Recipe recipe) {
+        List<ItemStack> newOutputs = new ArrayList<>(recipe.getOutputs());
+        for (ItemStack itemStack : recipe.getOutputs()) {
+            OrePrefix o = OreDictUnifier.getPrefix(itemStack);
+            if ((o != null) && orePrefixes.contains(o)) {
+                MaterialStack m = OreDictUnifier.getMaterial(itemStack);
+                if ((m != null) && platinumGroupMaterials.contains(m.material)) {
+                    newOutputs.remove(itemStack);
+                    newOutputs.add(OreDictUnifier.get(o, replacementMaterials.get(recipe.getOutputs().indexOf(itemStack)), itemStack.getCount()));
+                    GTLog.logger.info("Replacing outputs in " + map.getUnlocalizedName() + " material: " + m.material.getUnlocalizedName() + " oreprefix: " + o.categoryName);
+                }
+            }
+        }
+    replaceOutputsAndRemoveRecipe(map, recipe, newOutputs);
+    }
+
+    static <R extends RecipeBuilder<R>> void replaceOutputsAndRemoveRecipe(RecipeMap<R> map, Recipe recipe, List<ItemStack> newOutputs) {
+        map.recipeBuilder()
+                .inputsIngredients(recipe.getInputs())
+                .outputs(newOutputs)
+                .duration(recipe.getDuration())
+                .EUt(recipe.getEUt())
+                .fluidInputs(recipe.getFluidInputs())
+                .fluidOutputs(recipe.getFluidOutputs())
+                .buildAndRegister();
+        map.removeRecipe(recipe);
+    }
+
+
+        static <R extends RecipeBuilder<R>> void findRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
+        for (MaterialStack materialComponent : material.materialComponents) {
+            if (platinumGroupMaterials.contains(materialComponent.material)) {
+                findElectrolyzerRecipe(map, material, orePrefix);
+            }
+        }
+        Recipe recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
+        if (recipe != null) {
+            buildNewOutputs(map, recipe);
+        }
     }
 
     public static void forestrySupport() {

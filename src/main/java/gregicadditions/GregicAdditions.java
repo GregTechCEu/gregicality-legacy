@@ -160,6 +160,11 @@ public class GregicAdditions {
         VoidMinerOres.init();
     }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerRecipes2(RegistryEvent.Register<IRecipe> event) {
+        GARecipeAddition.hjaeOreProcessing();
+    }
+
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
