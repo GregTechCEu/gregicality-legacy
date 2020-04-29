@@ -12,9 +12,8 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.items.ToolDictNames;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.*;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
@@ -51,9 +50,7 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
@@ -1609,6 +1606,66 @@ public class GARecipeAddition {
                 .EUt(10)
                 .duration(60)
                 .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Rhodium, 1)
+                .input(dust, Palladium, 3)
+                .outputs(OreDictUnifier.get(dust, RhodiumPlatedPalladium, 4))
+                .EUt(10)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Diaminobenzidine.getFluid(1000))
+                .fluidInputs(Diphenylisophtalate.getFluid(1000))
+                .fluidOutputs(Phenol.getFluid(1000))
+                .fluidOutputs(Polybenzimidazole.getFluid(1000))
+                .EUt(7500)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Phenol.getFluid(2000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(PhthalicAcid.getFluid(1000))
+                .fluidOutputs(Diphenylisophtalate.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
+                .EUt(7500)
+                .duration(1000)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dustTiny, Potassiumdichromate)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(PhthalicAcid.getFluid(1000))
+                .EUt(1920)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Zinc)
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidInputs(Dichlorobenzidine.getFluid(1000))
+                .fluidOutputs(Diaminobenzidine.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .EUt(7500)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dustTiny, Copper)
+                .fluidInputs(Nitrochlorobenzene.getFluid(1000))
+                .fluidOutputs(Dichlorobenzidine.getFluid(1000))
+                .EUt(1920)
+                .duration(200)
+                .buildAndRegister();
+
+//        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+//                .fluidInputs(NitrationMixture.getFluid(1000))
+//                .fluidInputs(.getFluid(1000))
+
 
     }
 

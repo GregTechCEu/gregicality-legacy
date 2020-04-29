@@ -4,6 +4,7 @@ import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.items.OreDictNames;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
@@ -12,334 +13,335 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.GTValues.W;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public enum GACraftingComponents     {
+public enum GACraftingComponents {
     CIRCUIT {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Primitive);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Primitive);
                 case 1:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Basic);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Basic);
                 case 2:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Good);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Good);
                 case 3:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Advanced);
                 case 4:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Extreme);
                 case 5:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Elite);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Elite);
                 case 6:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Master);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Master);
                 case 7:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Infinite);
             }
         }
     },
     BETTER_CIRCUIT {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier + 1) {
                 case 0:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Primitive);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Primitive);
                 case 1:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Basic);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Basic);
                 case 2:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Good);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Good);
                 case 3:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Advanced);
                 case 4:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Extreme);
                 case 5:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Elite);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Elite);
                 case 6:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Master);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Master);
                 case 7:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
+                    return OreDictUnifier.get(circuit, MarkerMaterials.Tier.Infinite);
             }
         }
     },
-    CIRCUIT_PLATE{
+    CIRCUIT_PLATE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(plate, WroughtIron);
+                    return OreDictUnifier.get(plate, WroughtIron);
                 case 1:
-                    return new UnificationEntry(plate, Steel);
+                    return OreDictUnifier.get(plate, Steel);
                 case 2:
-                    return new UnificationEntry(plate, Aluminium);
+                    return OreDictUnifier.get(plate, Aluminium);
                 case 3:
-                    return new UnificationEntry(plate, StainlessSteel);
+                    return OreDictUnifier.get(plate, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(plate, Titanium);
+                    return OreDictUnifier.get(plate, Titanium);
                 case 5:
-                    return new UnificationEntry(plate, TungstenSteel);
+                    return OreDictUnifier.get(plate, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(plateDense, HSSG);
+                    return OreDictUnifier.get(plateDense, HSSG);
                 case 7:
-                    return new UnificationEntry(plateDense, HSSE);
+                    return OreDictUnifier.get(plateDense, HSSE);
                 default:
-                    return new UnificationEntry(plateDense, Neutronium);
+                    return OreDictUnifier.get(plateDense, Neutronium);
 
             }
         }
     },
-    CIRCUIT_WIRE{
+    CIRCUIT_WIRE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(wireFine, Lead);
+                    return OreDictUnifier.get(wireFine, Lead);
                 case 1:
-                    return new UnificationEntry(wireFine, Tin);
+                    return OreDictUnifier.get(wireFine, Tin);
                 case 2:
-                    return new UnificationEntry(wireGtSingle, Copper);
+                    return OreDictUnifier.get(wireGtSingle, Copper);
                 case 3:
-                    return new UnificationEntry(wireGtSingle, Gold);
+                    return OreDictUnifier.get(wireGtSingle, Gold);
                 case 4:
-                    return new UnificationEntry(wireGtDouble, Aluminium);
+                    return OreDictUnifier.get(wireGtDouble, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtDouble, Platinum);
+                    return OreDictUnifier.get(cableGtDouble, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtDouble, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtOctal, Naquadah);
+                    return OreDictUnifier.get(cableGtOctal, Naquadah);
                 case 8:
-                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                    return OreDictUnifier.get(cableGtOctal, NaquadahAlloy);
                 default:
-                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(wireGtHex, MarkerMaterials.Tier.Superconductor);
 
             }
         }
     },
     PUMP {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.ELECTRIC_PUMP_LV;
+                    return MetaItems.ELECTRIC_PUMP_LV.getStackForm();
                 case 2:
-                    return MetaItems.ELECTRIC_PUMP_MV;
+                    return MetaItems.ELECTRIC_PUMP_MV.getStackForm();
                 case 3:
-                    return MetaItems.ELECTRIC_PUMP_HV;
+                    return MetaItems.ELECTRIC_PUMP_HV.getStackForm();
                 case 4:
-                    return MetaItems.ELECTRIC_PUMP_EV;
+                    return MetaItems.ELECTRIC_PUMP_EV.getStackForm();
                 case 5:
-                    return MetaItems.ELECTRIC_PUMP_IV;
+                    return MetaItems.ELECTRIC_PUMP_IV.getStackForm();
                 case 6:
-                    return MetaItems.ELECTRIC_PUMP_LUV;
+                    return MetaItems.ELECTRIC_PUMP_LUV.getStackForm();
                 case 7:
-                    return MetaItems.ELECTRIC_PUMP_ZPM;
+                    return MetaItems.ELECTRIC_PUMP_ZPM.getStackForm();
                 default:
-                    return MetaItems.ELECTRIC_PUMP_UV;
+                    return MetaItems.ELECTRIC_PUMP_UV.getStackForm();
             }
         }
     },
     CABLE_SINGLE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(cableGtSingle, Lead);
+                    return OreDictUnifier.get(cableGtSingle, Lead);
                 case 1:
-                    return new UnificationEntry(cableGtSingle, Tin);
+                    return OreDictUnifier.get(cableGtSingle, Tin);
                 case 2:
-                    return new UnificationEntry(cableGtSingle, Copper);
+                    return OreDictUnifier.get(cableGtSingle, Copper);
                 case 3:
-                    return new UnificationEntry(cableGtSingle, Gold);
+                    return OreDictUnifier.get(cableGtSingle, Gold);
                 case 4:
-                    return new UnificationEntry(cableGtSingle, Aluminium);
+                    return OreDictUnifier.get(cableGtSingle, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtSingle, Platinum);
+                    return OreDictUnifier.get(cableGtSingle, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtSingle, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtSingle, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtSingle, Naquadah);
+                    return OreDictUnifier.get(cableGtSingle, Naquadah);
                 case 8:
-                    return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
+                    return OreDictUnifier.get(wireGtQuadruple, NaquadahAlloy);
                 default:
-                    return new UnificationEntry(wireGtSingle, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
     CABLE_DOUBLE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(cableGtDouble, Lead);
+                    return OreDictUnifier.get(cableGtDouble, Lead);
                 case 1:
-                    return new UnificationEntry(cableGtDouble, Tin);
+                    return OreDictUnifier.get(cableGtDouble, Tin);
                 case 2:
-                    return new UnificationEntry(cableGtDouble, Copper);
+                    return OreDictUnifier.get(cableGtDouble, Copper);
                 case 3:
-                    return new UnificationEntry(cableGtDouble, Gold);
+                    return OreDictUnifier.get(cableGtDouble, Gold);
                 case 4:
-                    return new UnificationEntry(cableGtDouble, Aluminium);
+                    return OreDictUnifier.get(cableGtDouble, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtDouble, Platinum);
+                    return OreDictUnifier.get(cableGtDouble, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtDouble, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtDouble, Naquadah);
+                    return OreDictUnifier.get(cableGtDouble, Naquadah);
                 case 8:
-                    return new UnificationEntry(wireGtDouble, NaquadahAlloy);
+                    return OreDictUnifier.get(wireGtDouble, NaquadahAlloy);
                 default:
-                    return new UnificationEntry(wireGtDouble, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(wireGtDouble, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
     CABLE_QUAD {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(cableGtQuadruple, Lead);
+                    return OreDictUnifier.get(cableGtQuadruple, Lead);
                 case 1:
-                    return new UnificationEntry(cableGtQuadruple, Tin);
+                    return OreDictUnifier.get(cableGtQuadruple, Tin);
                 case 2:
-                    return new UnificationEntry(cableGtQuadruple, Copper);
+                    return OreDictUnifier.get(cableGtQuadruple, Copper);
                 case 3:
-                    return new UnificationEntry(cableGtQuadruple, Gold);
+                    return OreDictUnifier.get(cableGtQuadruple, Gold);
                 case 4:
-                    return new UnificationEntry(cableGtQuadruple, Aluminium);
+                    return OreDictUnifier.get(cableGtQuadruple, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtQuadruple, Platinum);
+                    return OreDictUnifier.get(cableGtQuadruple, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtQuadruple, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtQuadruple, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtQuadruple, Naquadah);
+                    return OreDictUnifier.get(cableGtQuadruple, Naquadah);
                 default:
-                    return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
+                    return OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy);
             }
         }
     },
     CABLE_OCTAL {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(cableGtOctal, Lead);
+                    return OreDictUnifier.get(cableGtOctal, Lead);
                 case 1:
-                    return new UnificationEntry(cableGtOctal, Tin);
+                    return OreDictUnifier.get(cableGtOctal, Tin);
                 case 2:
-                    return new UnificationEntry(cableGtOctal, Copper);
+                    return OreDictUnifier.get(cableGtOctal, Copper);
                 case 3:
-                    return new UnificationEntry(cableGtOctal, Gold);
+                    return OreDictUnifier.get(cableGtOctal, Gold);
                 case 4:
-                    return new UnificationEntry(cableGtOctal, Aluminium);
+                    return OreDictUnifier.get(cableGtOctal, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtOctal, Platinum);
+                    return OreDictUnifier.get(cableGtOctal, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtOctal, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtOctal, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtOctal, Naquadah);
+                    return OreDictUnifier.get(cableGtOctal, Naquadah);
                 default:
-                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                    return OreDictUnifier.get(cableGtOctal, NaquadahAlloy);
             }
         }
     },
 
     CABLE_HEX {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(cableGtHex, Lead);
+                    return OreDictUnifier.get(cableGtHex, Lead);
                 case 1:
-                    return new UnificationEntry(cableGtHex, Tin);
+                    return OreDictUnifier.get(cableGtHex, Tin);
                 case 2:
-                    return new UnificationEntry(cableGtHex, Copper);
+                    return OreDictUnifier.get(cableGtHex, Copper);
                 case 3:
-                    return new UnificationEntry(cableGtHex, Gold);
+                    return OreDictUnifier.get(cableGtHex, Gold);
                 case 4:
-                    return new UnificationEntry(cableGtHex, Aluminium);
+                    return OreDictUnifier.get(cableGtHex, Aluminium);
                 case 5:
-                    return new UnificationEntry(cableGtHex, Platinum);
+                    return OreDictUnifier.get(cableGtHex, Platinum);
                 case 6:
-                    return new UnificationEntry(cableGtHex, NiobiumTitanium);
+                    return OreDictUnifier.get(cableGtHex, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtHex, Naquadah);
+                    return OreDictUnifier.get(cableGtHex, Naquadah);
                 default:
-                    return new UnificationEntry(cableGtHex, NaquadahAlloy);
+                    return OreDictUnifier.get(cableGtHex, NaquadahAlloy);
             }
         }
     },
     WIRE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(wireGtSingle, Gold);
+                    return OreDictUnifier.get(wireGtSingle, Gold);
                 case 2:
-                    return new UnificationEntry(wireGtSingle, Silver);
+                    return OreDictUnifier.get(wireGtSingle, Silver);
                 case 3:
-                    return new UnificationEntry(wireGtSingle, Electrum);
+                    return OreDictUnifier.get(wireGtSingle, Electrum);
                 case 4:
-                    return new UnificationEntry(wireGtSingle, Platinum);
+                    return OreDictUnifier.get(wireGtSingle, Platinum);
                 default:
-                    return new UnificationEntry(wireGtSingle, Osmium);
+                    return OreDictUnifier.get(wireGtSingle, Osmium);
             }
         }
     },
 
     HULL {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             return MetaTileEntities.HULL[tier].getStackForm();
         }
     },
     WORSE_HULL {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             return MetaTileEntities.HULL[tier - 1].getStackForm();
         }
     },
     PIPE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(pipeMedium, Bronze);
+                    return OreDictUnifier.get(pipeMedium, Bronze);
                 case 2:
-                    return new UnificationEntry(pipeMedium, Steel);
+                    return OreDictUnifier.get(pipeMedium, Steel);
                 case 3:
-                    return new UnificationEntry(pipeMedium, StainlessSteel);
+                    return OreDictUnifier.get(pipeMedium, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(pipeMedium, Titanium);
+                    return OreDictUnifier.get(pipeMedium, Titanium);
                 case 5:
-                    return new UnificationEntry(pipeMedium, TungstenSteel);
+                    return OreDictUnifier.get(pipeMedium, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(pipeMedium, Enderium);
+                    return OreDictUnifier.get(pipeMedium, Enderium);
                 case 7:
-                    return new UnificationEntry(pipeMedium, Naquadah);
+                    return OreDictUnifier.get(pipeMedium, Naquadah);
                 default:
-                    return new UnificationEntry(pipeMedium, Neutronium);
+                    return OreDictUnifier.get(pipeMedium, Neutronium);
 
             }
         }
     },
     GLASS {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 6:
                 case 7:
@@ -352,399 +354,402 @@ public enum GACraftingComponents     {
     },
     PLATE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(plate, Steel);
+                    return OreDictUnifier.get(plate, Steel);
                 case 2:
-                    return new UnificationEntry(plate, Aluminium);
+                    return OreDictUnifier.get(plate, Aluminium);
                 case 3:
-                    return new UnificationEntry(plate, StainlessSteel);
+                    return OreDictUnifier.get(plate, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(plate, Titanium);
+                    return OreDictUnifier.get(plate, Titanium);
                 case 5:
-                    return new UnificationEntry(plate, TungstenSteel);
+                    return OreDictUnifier.get(plate, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(plate, HSSG);
+                    return OreDictUnifier.get(plate, HSSG);
                 case 7:
-                    return new UnificationEntry(plate, HSSE);
+                    return OreDictUnifier.get(plate, HSSE);
                 default:
-                    return new UnificationEntry(plate, Neutronium);
+                    return OreDictUnifier.get(plate, Neutronium);
 
             }
         }
     },
     MOTOR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.ELECTRIC_MOTOR_LV;
+                    return MetaItems.ELECTRIC_MOTOR_LV.getStackForm();
                 case 2:
-                    return MetaItems.ELECTRIC_MOTOR_MV;
+                    return MetaItems.ELECTRIC_MOTOR_MV.getStackForm();
                 case 3:
-                    return MetaItems.ELECTRIC_MOTOR_HV;
+                    return MetaItems.ELECTRIC_MOTOR_HV.getStackForm();
                 case 4:
-                    return MetaItems.ELECTRIC_MOTOR_EV;
+                    return MetaItems.ELECTRIC_MOTOR_EV.getStackForm();
                 case 5:
-                    return MetaItems.ELECTRIC_MOTOR_IV;
+                    return MetaItems.ELECTRIC_MOTOR_IV.getStackForm();
                 case 6:
-                    return MetaItems.ELECTRIC_MOTOR_LUV;
+                    return MetaItems.ELECTRIC_MOTOR_LUV.getStackForm();
                 case 7:
-                    return MetaItems.ELECTRIC_MOTOR_ZPM;
+                    return MetaItems.ELECTRIC_MOTOR_ZPM.getStackForm();
                 default:
-                    return MetaItems.ELECTRIC_MOTOR_UV;
+                    return MetaItems.ELECTRIC_MOTOR_UV.getStackForm();
             }
         }
     },
     ROTOR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(rotor, Tin);
+                    return OreDictUnifier.get(rotor, Tin);
                 case 2:
-                    return new UnificationEntry(rotor, Bronze);
+                    return OreDictUnifier.get(rotor, Bronze);
                 case 3:
-                    return new UnificationEntry(rotor, Steel);
+                    return OreDictUnifier.get(rotor, Steel);
                 case 4:
-                    return new UnificationEntry(rotor, StainlessSteel);
+                    return OreDictUnifier.get(rotor, StainlessSteel);
                 case 5:
-                    return new UnificationEntry(rotor, TungstenSteel);
+                    return OreDictUnifier.get(rotor, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(rotor, Chrome);
+                    return OreDictUnifier.get(rotor, Chrome);
                 case 7:
-                    return new UnificationEntry(rotor, Iridium);
+                    return OreDictUnifier.get(rotor, Iridium);
                 default:
-                    return new UnificationEntry(rotor, Osmium);
+                    return OreDictUnifier.get(rotor, Osmium);
             }
         }
     },
     SENSOR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.SENSOR_LV;
+                    return MetaItems.SENSOR_LV.getStackForm();
                 case 2:
-                    return MetaItems.SENSOR_MV;
+                    return MetaItems.SENSOR_MV.getStackForm();
                 case 3:
-                    return MetaItems.SENSOR_HV;
+                    return MetaItems.SENSOR_HV.getStackForm();
                 case 4:
-                    return MetaItems.SENSOR_EV;
+                    return MetaItems.SENSOR_EV.getStackForm();
                 case 5:
-                    return MetaItems.SENSOR_IV;
+                    return MetaItems.SENSOR_IV.getStackForm();
                 case 6:
-                    return MetaItems.SENSOR_LUV;
+                    return MetaItems.SENSOR_LUV.getStackForm();
                 case 7:
-                    return MetaItems.SENSOR_ZPM;
+                    return MetaItems.SENSOR_ZPM.getStackForm();
                 default:
-                    return MetaItems.SENSOR_UV;
+                    return MetaItems.SENSOR_UV.getStackForm();
             }
         }
     },
     GRINDER {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
                 case 2:
-                    return new UnificationEntry(gem, Diamond);
+                    return OreDictUnifier.get(gem, Diamond);
                 default:
-                    return OreDictNames.craftingGrinder;
+                    return OreDictUnifier.get(gem, Diamond);
             }
         }
     },
     DIAMOND {
         @Override
-        public Object getIngredient(int tier) {
-            return new UnificationEntry(gem, Diamond);
+        public ItemStack getIngredient(int tier) {
+            return OreDictUnifier.get(gem, Diamond);
         }
     },
     PISTON {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.ELECTRIC_PISTON_LV;
+                    return MetaItems.ELECTRIC_PISTON_LV.getStackForm();
                 case 2:
-                    return MetaItems.ELECTRIC_PISTON_MV;
+                    return MetaItems.ELECTRIC_PISTON_MV.getStackForm();
                 case 3:
-                    return MetaItems.ELECTRIC_PISTON_HV;
+                    return MetaItems.ELECTRIC_PISTON_HV.getStackForm();
                 case 4:
-                    return MetaItems.ELECTRIC_PISTON_EV;
+                    return MetaItems.ELECTRIC_PISTON_EV.getStackForm();
                 case 5:
-                    return MetaItems.ELECTRIC_PISTON_IV;
+                    return MetaItems.ELECTRIC_PISTON_IV.getStackForm();
                 case 6:
-                    return MetaItems.ELECTRIC_PISTON_LUV;
+                    return MetaItems.ELECTRIC_PISTON_LUV.getStackForm();
                 case 7:
-                    return MetaItems.ELECTRIC_PISTON_ZPM;
+                    return MetaItems.ELECTRIC_PISTON_ZPM.getStackForm();
                 default:
-                    return MetaItems.ELECTRIC_PISTON_UV;
+                    return MetaItems.ELECTRIC_PISTON_UV.getStackForm();
             }
         }
     },
     EMITTER {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.EMITTER_LV;
+                    return MetaItems.EMITTER_LV.getStackForm();
                 case 2:
-                    return MetaItems.EMITTER_MV;
+                    return MetaItems.EMITTER_MV.getStackForm();
                 case 3:
-                    return MetaItems.EMITTER_HV;
+                    return MetaItems.EMITTER_HV.getStackForm();
                 case 4:
-                    return MetaItems.EMITTER_EV;
+                    return MetaItems.EMITTER_EV.getStackForm();
                 case 5:
-                    return MetaItems.EMITTER_IV;
+                    return MetaItems.EMITTER_IV.getStackForm();
                 case 6:
-                    return MetaItems.EMITTER_LUV;
+                    return MetaItems.EMITTER_LUV.getStackForm();
                 case 7:
-                    return MetaItems.EMITTER_ZPM;
+                    return MetaItems.EMITTER_ZPM.getStackForm();
                 default:
-                    return MetaItems.EMITTER_UV;
+                    return MetaItems.EMITTER_UV.getStackForm();
             }
         }
     },
     CONVEYOR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.CONVEYOR_MODULE_LV;
+                    return MetaItems.CONVEYOR_MODULE_LV.getStackForm();
                 case 2:
-                    return MetaItems.CONVEYOR_MODULE_MV;
+                    return MetaItems.CONVEYOR_MODULE_MV.getStackForm();
                 case 3:
-                    return MetaItems.CONVEYOR_MODULE_HV;
+                    return MetaItems.CONVEYOR_MODULE_HV.getStackForm();
                 case 4:
-                    return MetaItems.CONVEYOR_MODULE_EV;
+                    return MetaItems.CONVEYOR_MODULE_EV.getStackForm();
                 case 5:
-                    return MetaItems.CONVEYOR_MODULE_IV;
+                    return MetaItems.CONVEYOR_MODULE_IV.getStackForm();
                 case 6:
-                    return MetaItems.CONVEYOR_MODULE_LUV;
+                    return MetaItems.CONVEYOR_MODULE_LUV.getStackForm();
                 case 7:
-                    return MetaItems.CONVEYOR_MODULE_ZPM;
+                    return MetaItems.CONVEYOR_MODULE_ZPM.getStackForm();
                 default:
-                    return MetaItems.CONVEYOR_MODULE_UV;
+                    return MetaItems.CONVEYOR_MODULE_UV.getStackForm();
             }
         }
     },
     ROBOT_ARM {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.ROBOT_ARM_LV;
+                    return MetaItems.ROBOT_ARM_LV.getStackForm();
                 case 2:
-                    return MetaItems.ROBOT_ARM_MV;
+                    return MetaItems.ROBOT_ARM_MV.getStackForm();
                 case 3:
-                    return MetaItems.ROBOT_ARM_HV;
+                    return MetaItems.ROBOT_ARM_HV.getStackForm();
                 case 4:
-                    return MetaItems.ROBOT_ARM_EV;
+                    return MetaItems.ROBOT_ARM_EV.getStackForm();
                 case 5:
-                    return MetaItems.ROBOT_ARM_IV;
+                    return MetaItems.ROBOT_ARM_IV.getStackForm();
                 case 6:
-                    return MetaItems.ROBOT_ARM_LUV;
+                    return MetaItems.ROBOT_ARM_LUV.getStackForm();
                 case 7:
-                    return MetaItems.ROBOT_ARM_ZPM;
+                    return MetaItems.ROBOT_ARM_ZPM.getStackForm();
                 default:
-                    return MetaItems.ROBOT_ARM_UV;
+                    return MetaItems.ROBOT_ARM_UV.getStackForm();
             }
         }
     },
     COIL_HEATING {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(wireGtDouble, Copper);
+                    return OreDictUnifier.get(wireGtDouble, Copper);
                 case 2:
-                    return new UnificationEntry(wireGtDouble, Cupronickel);
+                    return OreDictUnifier.get(wireGtDouble, Cupronickel);
                 case 3:
-                    return new UnificationEntry(wireGtDouble, Kanthal);
+                    return OreDictUnifier.get(wireGtDouble, Kanthal);
                 case 4:
-                    return new UnificationEntry(wireGtDouble, Nichrome);
+                    return OreDictUnifier.get(wireGtDouble, Nichrome);
                 case 5:
-                    return new UnificationEntry(wireGtDouble, TungstenSteel);
+                    return OreDictUnifier.get(wireGtDouble, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(wireGtDouble, HSSG);
+                    return OreDictUnifier.get(wireGtDouble, HSSG);
                 case 7:
-                    return new UnificationEntry(wireGtDouble, Naquadah);
+                    return OreDictUnifier.get(wireGtDouble, Naquadah);
                 default:
-                    return new UnificationEntry(wireGtDouble, NaquadahAlloy);
+                    return OreDictUnifier.get(wireGtDouble, NaquadahAlloy);
 
             }
         }
     },
     COIL_ELECTRIC {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
-                    return new UnificationEntry(wireGtSingle, Tin);
+                    return OreDictUnifier.get(wireGtSingle, Tin);
                 case 1:
-                    return new UnificationEntry(wireGtDouble, Tin);
+                    return OreDictUnifier.get(wireGtDouble, Tin);
                 case 2:
-                    return new UnificationEntry(wireGtDouble, Copper);
+                    return OreDictUnifier.get(wireGtDouble, Copper);
                 case 3:
-                    return new UnificationEntry(wireGtQuadruple, Copper);
+                    return OreDictUnifier.get(wireGtQuadruple, Copper);
                 case 4:
-                    return new UnificationEntry(wireGtOctal, AnnealedCopper);
+                    return OreDictUnifier.get(wireGtOctal, AnnealedCopper);
                 case 5:
-                    return new UnificationEntry(wireGtOctal, AnnealedCopper);
+                    return OreDictUnifier.get(wireGtOctal, AnnealedCopper);
                 case 6:
-                    return new UnificationEntry(wireGtQuadruple, YttriumBariumCuprate);
+                    return OreDictUnifier.get(wireGtQuadruple, YttriumBariumCuprate);
                 case 7:
-                    return new UnificationEntry(wireGtOctal, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(wireGtOctal, MarkerMaterials.Tier.Superconductor);
                 default:
-                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
+                    return OreDictUnifier.get(wireGtHex, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
     STICK_MAGNETIC {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(stick, IronMagnetic);
+                    return OreDictUnifier.get(stick, IronMagnetic);
                 case 2:
                 case 3:
-                    return new UnificationEntry(stick, SteelMagnetic);
+                    return OreDictUnifier.get(stick, SteelMagnetic);
                 case 4:
                 case 5:
-                    return new UnificationEntry(stick, NeodymiumMagnetic);
+                    return OreDictUnifier.get(stick, NeodymiumMagnetic);
                 case 6:
                 case 7:
-                    return new UnificationEntry(stickLong, NeodymiumMagnetic);
+                    return OreDictUnifier.get(stickLong, NeodymiumMagnetic);
                 default:
-                    return new UnificationEntry(block, NeodymiumMagnetic);
+                    return OreDictUnifier.get(block, NeodymiumMagnetic);
             }
         }
     },
     STICK_DISTILLATION {
         @Override
-        public Object getIngredient(int tier) {
-            return new UnificationEntry(stick, Blaze);
+        public ItemStack getIngredient(int tier) {
+            return OreDictUnifier.get(stick, Blaze);
         }
     },
     FIELD_GENERATOR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return MetaItems.FIELD_GENERATOR_LV;
+                    return MetaItems.FIELD_GENERATOR_LV.getStackForm();
                 case 2:
-                    return MetaItems.FIELD_GENERATOR_MV;
+                    return MetaItems.FIELD_GENERATOR_MV.getStackForm();
                 case 3:
-                    return MetaItems.FIELD_GENERATOR_HV;
+                    return MetaItems.FIELD_GENERATOR_HV.getStackForm();
                 case 4:
-                    return MetaItems.FIELD_GENERATOR_EV;
+                    return MetaItems.FIELD_GENERATOR_EV.getStackForm();
                 case 5:
-                    return MetaItems.FIELD_GENERATOR_IV;
+                    return MetaItems.FIELD_GENERATOR_IV.getStackForm();
                 case 6:
-                    return MetaItems.FIELD_GENERATOR_LUV;
+                    return MetaItems.FIELD_GENERATOR_LUV.getStackForm();
                 case 7:
-                    return MetaItems.FIELD_GENERATOR_ZPM;
+                    return MetaItems.FIELD_GENERATOR_ZPM.getStackForm();
                 default:
-                    return MetaItems.FIELD_GENERATOR_UV;
+                    return MetaItems.FIELD_GENERATOR_UV.getStackForm();
             }
         }
     },
     COIL_HEATING_DOUBLE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(wireGtQuadruple, Copper);
+                    return OreDictUnifier.get(wireGtQuadruple, Copper);
                 case 2:
-                    return new UnificationEntry(wireGtQuadruple, Cupronickel);
+                    return OreDictUnifier.get(wireGtQuadruple, Cupronickel);
                 case 3:
-                    return new UnificationEntry(wireGtQuadruple, Kanthal);
+                    return OreDictUnifier.get(wireGtQuadruple, Kanthal);
                 case 4:
-                    return new UnificationEntry(wireGtQuadruple, Nichrome);
+                    return OreDictUnifier.get(wireGtQuadruple, Nichrome);
                 case 5:
-                    return new UnificationEntry(wireGtQuadruple, TungstenSteel);
+                    return OreDictUnifier.get(wireGtQuadruple, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(wireGtQuadruple, HSSG);
+                    return OreDictUnifier.get(wireGtQuadruple, HSSG);
                 case 7:
-                    return new UnificationEntry(wireGtQuadruple, Naquadah);
+                    return OreDictUnifier.get(wireGtQuadruple, Naquadah);
                 default:
-                    return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
+                    return OreDictUnifier.get(wireGtQuadruple, NaquadahAlloy);
             }
         }
     },
     STICK_ELECTROMAGNETIC {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(stick, Iron);
+                    return OreDictUnifier.get(stick, Iron);
                 case 2:
                 case 3:
-                    return new UnificationEntry(stick, Steel);
+                    return OreDictUnifier.get(stick, Steel);
                 case 4:
-                    return new UnificationEntry(stick, Neodymium);
+                    return OreDictUnifier.get(stick, Neodymium);
                 default:
-                    return new UnificationEntry(stick, VanadiumGallium);
+                    return OreDictUnifier.get(stick, VanadiumGallium);
             }
         }
     },
     STICK_RADIOACTIVE {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
+                case 3:
+                    return OreDictUnifier.get(stick, Thorium);
                 case 4:
-                    return new UnificationEntry(stick, Uranium235);
+                    return OreDictUnifier.get(stick, Uranium235);
                 case 5:
-                    return new UnificationEntry(stick, Plutonium241);
+                    return OreDictUnifier.get(stick, Plutonium241);
                 case 6:
-                    return new UnificationEntry(stick, NaquadahEnriched);
+                    return OreDictUnifier.get(stick, NaquadahEnriched);
                 case 7:
-                    return new UnificationEntry(stick, Americium);
+                    return OreDictUnifier.get(stick, Americium);
                 default:
-                    return new UnificationEntry(stick, Tritanium);
+                    return OreDictUnifier.get(stick, Tritanium);
             }
         }
     },
     GEAR {
         @Override
-        public Object getIngredient(int tier) {
+        public ItemStack getIngredient(int tier) {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(plate, Steel);
+                    return OreDictUnifier.get(plate, Steel);
                 case 2:
-                    return new UnificationEntry(plate, Aluminium);
+                    return OreDictUnifier.get(plate, Aluminium);
                 case 3:
-                    return new UnificationEntry(plate, StainlessSteel);
+                    return OreDictUnifier.get(plate, StainlessSteel);
                 case 4:
-                    return new UnificationEntry(plate, Titanium);
+                    return OreDictUnifier.get(plate, Titanium);
                 case 5:
-                    return new UnificationEntry(plate, TungstenSteel);
+                    return OreDictUnifier.get(plate, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(plate, HSSG);
+                    return OreDictUnifier.get(plate, HSSG);
                 case 7:
-                    return new UnificationEntry(plate, HSSE);
+                    return OreDictUnifier.get(plate, HSSE);
                 default:
-                    return new UnificationEntry(plate, Neutronium);
+                    return OreDictUnifier.get(plate, Neutronium);
             }
         }
-    },;
+    },
+    ;
 
-    public abstract Object getIngredient(int tier);
+    public abstract ItemStack getIngredient(int tier);
 }
