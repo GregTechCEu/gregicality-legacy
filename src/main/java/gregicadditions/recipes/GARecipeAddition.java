@@ -1634,35 +1634,7 @@ public class GARecipeAddition {
         GTLog.logger.info("Time taken: " + (System.currentTimeMillis() - t1));
     }
 
-    static <R extends RecipeBuilder<R>> void findRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
-        Recipe recipe = null;
-        for (MaterialStack materialComponent : material.materialComponents) {
-            if (platinumGroupMaterials.contains(materialComponent.material)) {
-                //findElectrolyzerRecipe(map, material, orePrefix);
-                //pointless wont work
-            }
-        }
-        if (map == CHEMICAL_BATH_RECIPES && material instanceof DustMaterial && ((DustMaterial) material).washedIn != null) {
-            List<FluidStack> fluidInputs = new ArrayList<>();
-            fluidInputs.add(((DustMaterial) material).washedIn.getFluid(1000));
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), fluidInputs, Integer.MAX_VALUE);
-        } else if (map == ORE_WASHER_RECIPES) {
-            List<FluidStack> water = new ArrayList<>();
-            List<FluidStack> distilledWater = new ArrayList<>();
-            water.add(Water.getFluid(1000));
-            distilledWater.add(DistilledWater.getFluid(1000));
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), water, Integer.MAX_VALUE);
-            Recipe distilledWaterRecipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), distilledWater, Integer.MAX_VALUE);
-                if(distilledWaterRecipe != null) {
-                    buildNewOutputs(map, distilledWaterRecipe);
-                }
-        } else {
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
-        }
-        if (recipe != null) {
-            buildNewOutputs(map, recipe);
-        }
-    }
+
 
     static <R extends RecipeBuilder<R>> void findElectrolyzerRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
         int totalComponents = 0;
@@ -1717,6 +1689,35 @@ public class GARecipeAddition {
     }
 
 
+    static void findRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
+        Recipe recipe = null;
+        for (MaterialStack materialComponent : material.materialComponents) {
+            if (platinumGroupMaterials.contains(materialComponent.material)) {
+                //findElectrolyzerRecipe(map, material, orePrefix);
+                //pointless wont work
+            }
+        }
+        if (map == CHEMICAL_BATH_RECIPES && material instanceof DustMaterial && ((DustMaterial) material).washedIn != null) {
+            List<FluidStack> fluidInputs = new ArrayList<>();
+            fluidInputs.add(((DustMaterial) material).washedIn.getFluid(1000));
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), fluidInputs, Integer.MAX_VALUE);
+        } else if (map == ORE_WASHER_RECIPES) {
+            List<FluidStack> water = new ArrayList<>();
+            List<FluidStack> distilledWater = new ArrayList<>();
+            water.add(Water.getFluid(1000));
+            distilledWater.add(DistilledWater.getFluid(1000));
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), water, Integer.MAX_VALUE);
+            Recipe distilledWaterRecipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), distilledWater, Integer.MAX_VALUE);
+            if(distilledWaterRecipe != null) {
+                buildNewOutputs(map, distilledWaterRecipe);
+            }
+        } else {
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
+        }
+        if (recipe != null) {
+            buildNewOutputs(map, recipe);
+        }
+    }
 
 
     public static void forestrySupport() {

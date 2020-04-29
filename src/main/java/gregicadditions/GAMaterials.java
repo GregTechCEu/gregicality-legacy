@@ -5,6 +5,7 @@ import gregicadditions.item.BasicMaterial;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.MaterialIconSet;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
@@ -188,9 +189,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial Diphenylisophtalate = new FluidMaterial(841, "diphenylisophtalate", 0x246E57, MaterialIconSet.DULL, of(), 0);
     public static final DustMaterial Polybenzimidazole = new DustMaterial(840, "polybenzimidazole", 0x2D2D2D, MaterialIconSet.DULL, 0, of(), 0);
 
-
     @Override
     public void onMaterialsInit() {
+
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
