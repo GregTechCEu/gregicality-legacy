@@ -12,19 +12,22 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.items.ToolDictNames;
-import gregtech.api.recipes.*;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.recipes.CountableIngredient;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.*;
+import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.type.GemMaterial;
+import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.blocks.BlockMachineCasing;
@@ -49,7 +52,9 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
@@ -62,11 +67,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class GARecipeAddition {
-
-    private static List<Material> platinumGroupMaterials = Arrays.asList(Iridium, Osmium, Platinum, Palladium, Ruthenium, Rhodium);
-    private static List<Material> replacementMaterials = Arrays.asList(IrLeachResidue, IrOsLeachResidue, PlatinumMetallicPowder, PalladiumMetallicPowder, LeachResidue, CrudeRhodiumMetall);
-    private static List<OrePrefix> orePrefixes = Arrays.asList(dust, dustTiny, dustSmall);
-
 
     private static final MaterialStack[] sawLubricants = {
             new MaterialStack(Lubricant, 1L),
@@ -1324,6 +1324,15 @@ public class GARecipeAddition {
                 .duration(30)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium, 2)
+                .input(dust, Sulfur, 2)
+                .fluidInputs(Oxygen.getFluid(7000))
+                .outputs(OreDictUnifier.get(dust, PotassiumDisulfate, 11))
+                .EUt(90)
+                .duration(42)
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, PlatinumResidue)
                 .fluidInputs(PotassiumDisulfate.getFluid(360))
@@ -1489,6 +1498,14 @@ public class GARecipeAddition {
                 .duration(30)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Sodium)
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, SodiumNitrate, 2))
+                .EUt(60)
+                .duration(8)
+                .buildAndRegister();
+
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(RhodiumSaltSolution.getFluid(1000))
                 .input(dust, SodiumNitrate)
@@ -1612,6 +1629,7 @@ public class GARecipeAddition {
                 .duration(100)
                 .buildAndRegister();
 
+        //platics
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Diaminobenzidine.getFluid(1000))
                 .fluidInputs(Diphenylisophtalate.getFluid(1000))
@@ -1659,128 +1677,60 @@ public class GARecipeAddition {
                 .duration(200)
                 .buildAndRegister();
 
-//        LARGE_CHEMICAL_RECIPES.recipeBuilder()
-//                .fluidInputs(NitrationMixture.getFluid(1000))
-//                .fluidInputs(.getFluid(1000))
-
-
-    }
-
-    /**
-     * replace for platinum, palladium, osmium, iridium
-     */
-    public static void replaceOre() {
-        Map<RecipeMap<SimpleRecipeBuilder>, List<OrePrefix>> blehMap = new HashMap<>();
-        blehMap.put(MACERATOR_RECIPES, Arrays.asList(ore, crushed, crushedCentrifuged, crushedPurified, crystalline));
-        blehMap.put(ORE_WASHER_RECIPES, Collections.singletonList(crushed));
-        blehMap.put(THERMAL_CENTRIFUGE_RECIPES, Arrays.asList(crushed, crushedPurified));
-        blehMap.put(CHEMICAL_BATH_RECIPES, Collections.singletonList(crushed));
-        blehMap.put(ELECTROMAGNETIC_SEPARATOR_RECIPES, Collections.singletonList(dustImpure));
-        blehMap.put(CENTRIFUGE_RECIPES, Arrays.asList(dustImpure, dustPure, crushed, crushedPurified));
-        blehMap.put(FORGE_HAMMER_RECIPES, Arrays.asList(crushedCentrifuged, crystalline));
-        blehMap.put(SIMPLE_ORE_WASHER, Collections.singletonList(dustImpure));
-        blehMap.put(ELECTROLYZER_RECIPES, Collections.singletonList(dust));
-
-        long t1 = System.currentTimeMillis();
-        for (Material mat : Material.MATERIAL_REGISTRY) {
-            for (Map.Entry<RecipeMap<gregtech.api.recipes.builders.SimpleRecipeBuilder>, List<OrePrefix>> entry : blehMap.entrySet()) {
-                for (OrePrefix orePrefix : entry.getValue()) {
-                    findRecipe(entry.getKey(), mat, orePrefix);
-                }
-            }
-        }
-        for (Material material : platinumGroupMaterials) {
-            String base = "gregtech:centrifuged_ore_to_dust_";
-            ModHandler.removeRecipeByName(new ResourceLocation(base + material));
-        }
-        GTLog.logger.info("Time taken: " + (System.currentTimeMillis() - t1));
-    }
-
-
-    static void findElectrolyzerRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
-
-        int totalComponents = 0;
-        for (MaterialStack materialStack : material.materialComponents) {
-            totalComponents += materialStack.amount;
-        }
-        Recipe recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material, totalComponents)), Collections.emptyList(), Integer.MAX_VALUE);
-        if (recipe != null) {
-            buildNewOutputs(map, recipe);
-        }
-    }
-
-    static void buildNewOutputs(RecipeMap<?> map, Recipe recipe) {
-        List<ItemStack> newOutputs = new ArrayList<>(recipe.getOutputs());
-		List<Recipe.ChanceEntry> newChancedOutputs = new ArrayList<>(recipe.getChancedOutputs());
-		for (Recipe.ChanceEntry chanceEntry : recipe.getChancedOutputs()) {
-			ItemStack itemStack = chanceEntry.getItemStack();
-			OrePrefix o = OreDictUnifier.getPrefix(itemStack);
-			if ((o != null) && orePrefixes.contains(o)) {
-				MaterialStack m = OreDictUnifier.getMaterial(itemStack);
-				if ((m != null) && platinumGroupMaterials.contains(m.material)) {
-					newChancedOutputs.remove(chanceEntry);
-					newChancedOutputs.add(new Recipe.ChanceEntry(OreDictUnifier.get(o, replacementMaterials.get(recipe.getChancedOutputs().indexOf(chanceEntry)), itemStack.getCount()), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-					GTLog.logger.info("Replacing chanced outputs in " + map.getUnlocalizedName() + " material: " + m.material.getUnlocalizedName() + " oreprefix: " + o.categoryName);
-				}
-			}
-		}
-		for (ItemStack itemStack : recipe.getOutputs()) {
-            OrePrefix o = OreDictUnifier.getPrefix(itemStack);
-            if ((o != null) && orePrefixes.contains(o)) {
-                MaterialStack m = OreDictUnifier.getMaterial(itemStack);
-                if ((m != null) && platinumGroupMaterials.contains(m.material)) {
-                    newOutputs.remove(itemStack);
-                    newOutputs.add(OreDictUnifier.get(o, replacementMaterials.get(recipe.getOutputs().indexOf(itemStack)), itemStack.getCount()));
-                    GTLog.logger.info("Replacing outputs in " + map.getUnlocalizedName() + " material: " + m.material.getUnlocalizedName() + " oreprefix: " + o.categoryName);
-                }
-            }
-        }
-        replaceOutputsAndRemoveRecipe(map, recipe, newOutputs);
-    }
-
-    static void replaceOutputsAndRemoveRecipe(RecipeMap<?> map, Recipe recipe, List<ItemStack> newOutputs) {
-        map.recipeBuilder()
-                .inputsIngredients(recipe.getInputs())
-                .outputs(newOutputs)
-                .duration(recipe.getDuration())
-                .EUt(recipe.getEUt())
-                .fluidInputs(recipe.getFluidInputs())
-                .fluidOutputs(recipe.getFluidOutputs())
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, ZincSulfate, 6)
+                .outputs(OreDictUnifier.get(dust, Zinc))
+                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .fluidInputs(Oxygen.getFluid(4000))
+                .EUt(90)
+                .duration(26)
                 .buildAndRegister();
-        map.removeRecipe(recipe);
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Chrome)
+                .fluidInputs(Oxygen.getFluid(3000))
+                .outputs(OreDictUnifier.get(dust, ChromiumTrioxide, 1))
+                .EUt(60)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, ChromiumTrioxide, 2)
+                .input(dust, PotassiumNitrade, 2)
+                .outputs(OreDictUnifier.get(dust, Potassiumdichromate))
+                .EUt(480)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PotassiumNitrade))
+                .EUt(30)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(Chlorobenzene.getFluid(1000))
+                .fluidOutputs(Nitrochlorobenzene.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .EUt(480)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(2000))
+                .fluidOutputs(Chlorobenzene.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .EUt(30)
+                .duration(240)
+                .buildAndRegister();
+
+
     }
-
-
-    static void findRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
-        Recipe recipe = null;
-        for (MaterialStack materialComponent : material.materialComponents) {
-            if (platinumGroupMaterials.contains(materialComponent.material)) {
-                //findElectrolyzerRecipe(map, material, orePrefix);
-                //pointless wont work
-            }
-        }
-        if (map == CHEMICAL_BATH_RECIPES && material instanceof DustMaterial && ((DustMaterial) material).washedIn != null) {
-            List<FluidStack> fluidInputs = new ArrayList<>();
-            fluidInputs.add(((DustMaterial) material).washedIn.getFluid(1000));
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), fluidInputs, Integer.MAX_VALUE);
-        } else if (map == ORE_WASHER_RECIPES) {
-            List<FluidStack> water = new ArrayList<>();
-            List<FluidStack> distilledWater = new ArrayList<>();
-            water.add(Water.getFluid(1000));
-            distilledWater.add(DistilledWater.getFluid(1000));
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), water, Integer.MAX_VALUE);
-            Recipe distilledWaterRecipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), distilledWater, Integer.MAX_VALUE);
-            if(distilledWaterRecipe != null) {
-                buildNewOutputs(map, distilledWaterRecipe);
-            }
-        } else {
-            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
-        }
-        if (recipe != null) {
-            buildNewOutputs(map, recipe);
-        }
-    }
-
 
     public static void forestrySupport() {
         //Making BioDiesel
@@ -1794,31 +1744,53 @@ public class GARecipeAddition {
 
 
         if (Loader.isModLoaded("forestry") && GAConfig.GT6.electrodes) {
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_APATITE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.APATITE, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_BLAZE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.BLAZE, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_BRONZE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.BRONZE, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_COPPER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.COPPER, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_DIAMOND.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.DIAMOND, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_EMERALD.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.EMERALD, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_ENDER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.ENDER, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_GOLD.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.GOLD, 1)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_APATITE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.APATITE, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Apatite, 2).input(bolt, Apatite).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_APATITE.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Apatite, 4).input(bolt, Apatite, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_APATITE.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_BLAZE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.BLAZE, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(dust, Blaze, 2).input(dustSmall, Blaze, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_BLAZE.getStackForm(2)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(24).input(dust, Blaze, 5).input(dust, Redstone, 2).outputs(GAMetaItems.ELECTRODE_BLAZE.getStackForm(4)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_BRONZE.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.BRONZE, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Bronze, 2).input(bolt, Bronze).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_BRONZE.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Bronze, 4).input(bolt, Bronze, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_BRONZE.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_COPPER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.COPPER, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Copper, 2).input(bolt, Copper).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_COPPER.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Copper, 4).input(bolt, Copper, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_COPPER.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_DIAMOND.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.DIAMOND, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Diamond, 2).input(bolt, Diamond).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_DIAMOND.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Diamond, 4).input(bolt, Diamond, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_DIAMOND.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_EMERALD.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.EMERALD, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Emerald, 2).input(bolt, Emerald).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_EMERALD.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Emerald, 4).input(bolt, Emerald, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_EMERALD.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_ENDER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.ENDER, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(dust, Endstone, 2).input(dustSmall, Endstone, 2).input(dust, EnderEye).outputs(GAMetaItems.ELECTRODE_ENDER.getStackForm(2)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(24).input(dust, Endstone, 5).input(dust, EnderEye, 2).outputs(GAMetaItems.ELECTRODE_ENDER.getStackForm(4)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_GOLD.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.GOLD, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Gold, 2).input(bolt, Gold).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_GOLD.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Gold, 4).input(bolt, Gold, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_GOLD.getStackForm(2)).buildAndRegister();
             if (Loader.isModLoaded("ic2") || Loader.isModLoaded("binniecore")) {
-                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_IRON.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.IRON, 1)).buildAndRegister();
-                FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Iron, 2).input(bolt, Iron).input(dustSmall, Redstone, 2).outputs(ELECTRODE_IRON.getStackForm()).buildAndRegister();
-                FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Iron, 4).input(bolt, Iron, 2).input(dust, Redstone).outputs(ELECTRODE_IRON.getStackForm(2)).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_IRON.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.IRON, 1)).buildAndRegister();
+                RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Iron, 2).input(bolt, Iron).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_IRON.getStackForm()).buildAndRegister();
+                RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Iron, 4).input(bolt, Iron, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_IRON.getStackForm(2)).buildAndRegister();
             }
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_LAPIS.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.LAPIS, 1)).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_OBSIDIAN.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.OBSIDIAN, 1)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_LAPIS.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.LAPIS, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Lapis, 2).input(bolt, Lapis).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_LAPIS.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Lapis, 4).input(bolt, Lapis, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_LAPIS.getStackForm(2)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_OBSIDIAN.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.OBSIDIAN, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(dust, Obsidian, 2).input(dustSmall, Obsidian, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_OBSIDIAN.getStackForm(2)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(24).input(dust, Obsidian, 5).input(dust, Redstone, 2).outputs(GAMetaItems.ELECTRODE_OBSIDIAN.getStackForm(4)).buildAndRegister();
             if (Loader.isModLoaded("extrautils2")) {
-                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_ORCHID.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.ORCHID, 1)).buildAndRegister();
-                FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(24).inputs(new ItemStack(Blocks.REDSTONE_ORE, 5), OreDictUnifier.get(dust, Redstone)).outputs(ELECTRODE_ORCHID.getStackForm(4)).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_ORCHID.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.ORCHID, 1)).buildAndRegister();
+                RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(24).inputs(new ItemStack(Blocks.REDSTONE_ORE, 5), OreDictUnifier.get(dust, Redstone)).outputs(GAMetaItems.ELECTRODE_ORCHID.getStackForm(4)).buildAndRegister();
             }
             if (Loader.isModLoaded("ic2") || Loader.isModLoaded("techreborn")) {
-                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_RUBBER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.RUBBER, 1)).buildAndRegister();
-                FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Rubber, 2).input(bolt, Rubber).input(dustSmall, Redstone, 2).outputs(ELECTRODE_RUBBER.getStackForm()).buildAndRegister();
-                FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Rubber, 4).input(bolt, Rubber, 2).input(dust, Redstone).outputs(ELECTRODE_RUBBER.getStackForm(2)).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_RUBBER.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.RUBBER, 1)).buildAndRegister();
+                RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Rubber, 2).input(bolt, Rubber).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_RUBBER.getStackForm()).buildAndRegister();
+                RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Rubber, 4).input(bolt, Rubber, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_RUBBER.getStackForm(2)).buildAndRegister();
             }
-            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(ELECTRODE_TIN.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.TIN, 1)).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16).inputs(GAMetaItems.ELECTRODE_TIN.getStackForm(), OreDictUnifier.get(plate, Glass)).outputs(ModuleCore.getItems().tubes.get(EnumElectronTube.TIN, 1)).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(24).input(stick, Tin, 2).input(bolt, Tin).input(dustSmall, Redstone, 2).outputs(GAMetaItems.ELECTRODE_TIN.getStackForm()).buildAndRegister();
+            RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder().duration(200).EUt(24).input(stick, Tin, 4).input(bolt, Tin, 2).input(dust, Redstone).outputs(GAMetaItems.ELECTRODE_TIN.getStackForm(2)).buildAndRegister();
         }
     }
 

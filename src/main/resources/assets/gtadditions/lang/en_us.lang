@@ -599,7 +599,7 @@ gtadditions.machine.pump.uv.name=Advanced Pump VII
 
 gregtech.machine.air_collector.ev.name=Advanced Air Collector III
 gtadditions.machine.air_collector.iv.name=Atmosphere Collector
-gtadditions.machine.air_collector.luv.name=Atmosphere Collector
+gtadditions.machine.air_collector.luv.name=Advanced Atmosphere Collector
 
 gtadditions.machine.dehydrator.lv.name=Basic Chemical Dehydrator
 gtadditions.machine.dehydrator.mv.name=Advanced Chemical Dehydrator
@@ -979,6 +979,7 @@ material.dichlorobenzidine=Dichlorobenzidine
 material.diaminobenzidine=Diaminobenzidine
 material.diphenylisophtalate=Diphenylisophtalate
 material.polybenzimidazole=Polybenzimidazole
+material.chlorobenzene=Chlorobenzene
 
 
 
