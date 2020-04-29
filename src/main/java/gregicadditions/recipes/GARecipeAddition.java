@@ -1638,7 +1638,8 @@ public class GARecipeAddition {
         Recipe recipe = null;
         for (MaterialStack materialComponent : material.materialComponents) {
             if (platinumGroupMaterials.contains(materialComponent.material)) {
-                findElectrolyzerRecipe(map, material, orePrefix);
+                //findElectrolyzerRecipe(map, material, orePrefix);
+                //pointless wont work
             }
         }
         if (map == CHEMICAL_BATH_RECIPES && material instanceof DustMaterial && ((DustMaterial) material).washedIn != null) {

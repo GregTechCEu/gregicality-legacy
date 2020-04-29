@@ -158,11 +158,13 @@ public class GregicAdditions {
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
+        GARecipeAddition.hjaeOreProcessing();
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void registerRecipes2(RegistryEvent.Register<IRecipe> event) {
-        GARecipeAddition.hjaeOreProcessing();
+
     }
 
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
