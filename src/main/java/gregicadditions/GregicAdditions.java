@@ -158,6 +158,8 @@ public class GregicAdditions {
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
+        GARecipeAddition.hjaeOreProcessing();
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

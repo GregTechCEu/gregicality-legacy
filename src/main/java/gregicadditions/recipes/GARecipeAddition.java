@@ -20,10 +20,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.GemMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -1274,13 +1271,6 @@ public class GARecipeAddition {
 
         //Platinum Process
 
-        MACERATOR_RECIPES.recipeBuilder()
-                .input(ore, Iridium)
-                .outputs(OreDictUnifier.get(dust, IrLeachResidue))
-                .duration(400)
-                .EUt(2)
-                .buildAndRegister();
-
         BLAST_RECIPES.recipeBuilder()
                 .blastFurnaceTemp(775)
                 .input(dust, IrLeachResidue)
@@ -1706,7 +1696,9 @@ public class GARecipeAddition {
         GTLog.logger.info("Time taken: " + (System.currentTimeMillis() - t1));
     }
 
+
     static void findElectrolyzerRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
+
         int totalComponents = 0;
         for (MaterialStack materialStack : material.materialComponents) {
             totalComponents += materialStack.amount;
@@ -1719,7 +1711,20 @@ public class GARecipeAddition {
 
     static void buildNewOutputs(RecipeMap<?> map, Recipe recipe) {
         List<ItemStack> newOutputs = new ArrayList<>(recipe.getOutputs());
-        for (ItemStack itemStack : recipe.getOutputs()) {
+		List<Recipe.ChanceEntry> newChancedOutputs = new ArrayList<>(recipe.getChancedOutputs());
+		for (Recipe.ChanceEntry chanceEntry : recipe.getChancedOutputs()) {
+			ItemStack itemStack = chanceEntry.getItemStack();
+			OrePrefix o = OreDictUnifier.getPrefix(itemStack);
+			if ((o != null) && orePrefixes.contains(o)) {
+				MaterialStack m = OreDictUnifier.getMaterial(itemStack);
+				if ((m != null) && platinumGroupMaterials.contains(m.material)) {
+					newChancedOutputs.remove(chanceEntry);
+					newChancedOutputs.add(new Recipe.ChanceEntry(OreDictUnifier.get(o, replacementMaterials.get(recipe.getChancedOutputs().indexOf(chanceEntry)), itemStack.getCount()), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
+					GTLog.logger.info("Replacing chanced outputs in " + map.getUnlocalizedName() + " material: " + m.material.getUnlocalizedName() + " oreprefix: " + o.categoryName);
+				}
+			}
+		}
+		for (ItemStack itemStack : recipe.getOutputs()) {
             OrePrefix o = OreDictUnifier.getPrefix(itemStack);
             if ((o != null) && orePrefixes.contains(o)) {
                 MaterialStack m = OreDictUnifier.getMaterial(itemStack);
@@ -1747,16 +1752,35 @@ public class GARecipeAddition {
 
 
     static void findRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
+        Recipe recipe = null;
         for (MaterialStack materialComponent : material.materialComponents) {
             if (platinumGroupMaterials.contains(materialComponent.material)) {
-                findElectrolyzerRecipe(map, material, orePrefix);
+                //findElectrolyzerRecipe(map, material, orePrefix);
+                //pointless wont work
             }
         }
-        Recipe recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
+        if (map == CHEMICAL_BATH_RECIPES && material instanceof DustMaterial && ((DustMaterial) material).washedIn != null) {
+            List<FluidStack> fluidInputs = new ArrayList<>();
+            fluidInputs.add(((DustMaterial) material).washedIn.getFluid(1000));
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), fluidInputs, Integer.MAX_VALUE);
+        } else if (map == ORE_WASHER_RECIPES) {
+            List<FluidStack> water = new ArrayList<>();
+            List<FluidStack> distilledWater = new ArrayList<>();
+            water.add(Water.getFluid(1000));
+            distilledWater.add(DistilledWater.getFluid(1000));
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), water, Integer.MAX_VALUE);
+            Recipe distilledWaterRecipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), distilledWater, Integer.MAX_VALUE);
+            if(distilledWaterRecipe != null) {
+                buildNewOutputs(map, distilledWaterRecipe);
+            }
+        } else {
+            recipe = map.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
+        }
         if (recipe != null) {
             buildNewOutputs(map, recipe);
         }
     }
+
 
     public static void forestrySupport() {
         //Making BioDiesel
