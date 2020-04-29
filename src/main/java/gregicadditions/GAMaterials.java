@@ -202,6 +202,8 @@ public class GAMaterials implements IMaterialHandler {
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
 
+
+
         Tellurium.addFlag(GENERATE_ORE);
         Radon.addFlag(GENERATE_PLASMA);
         Diatomite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
