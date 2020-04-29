@@ -1273,13 +1273,6 @@ public class GARecipeAddition {
 
         //Platinum Process
 
-        MACERATOR_RECIPES.recipeBuilder()
-                .input(ore, Iridium)
-                .outputs(OreDictUnifier.get(dust, IrLeachResidue))
-                .duration(400)
-                .EUt(2)
-                .buildAndRegister();
-
         BLAST_RECIPES.recipeBuilder()
                 .blastFurnaceTemp(775)
                 .input(dust, IrLeachResidue)
