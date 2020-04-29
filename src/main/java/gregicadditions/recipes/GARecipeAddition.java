@@ -66,12 +66,10 @@ import static gregtech.common.items.MetaItems.*;
 
 public class GARecipeAddition {
 
-    static List<Material> platinumGroupMaterials = Arrays.asList(Materials.Iridium, Materials.Osmium, Materials.Platinum,
-            Materials.Palladium, GAMaterials.Ruthenium, GAMaterials.Rhodium);
-    static List<Material> replacementMaterials = Arrays.asList(GAMaterials.IrLeachResidue, GAMaterials.IrOsLeachResidue, GAMaterials.PlatinumMetallicPowder,
-            GAMaterials.PalladiumMetallicPowder, GAMaterials.LeachResidue, GAMaterials.CrudeRhodiumMetall);
-    static List<OrePrefix> orePrefixes = Arrays.asList(OrePrefix.dust, OrePrefix.dustTiny, OrePrefix.dustSmall);
-    static Map<RecipeMap<SimpleRecipeBuilder>, List<OrePrefix>> blehMap = new HashMap<>();
+    private static List<Material> platinumGroupMaterials = Arrays.asList(Iridium, Osmium, Platinum, Palladium, Ruthenium, Rhodium);
+    private static List<Material> replacementMaterials = Arrays.asList(IrLeachResidue, IrOsLeachResidue, PlatinumMetallicPowder, PalladiumMetallicPowder, LeachResidue, CrudeRhodiumMetall);
+    private static List<OrePrefix> orePrefixes = Arrays.asList(dust, dustTiny, dustSmall);
+
 
     private static final MaterialStack[] sawLubricants = {
             new MaterialStack(Lubricant, 1L),
@@ -1678,17 +1676,20 @@ public class GARecipeAddition {
 
     }
 
-    public static void hjaeOreProcessing() {
-        blehMap.put(RecipeMaps.MACERATOR_RECIPES, Arrays.asList(OrePrefix.ore, OrePrefix.crushed, OrePrefix.crushedCentrifuged, OrePrefix.crushedPurified,
-                OrePrefix.crystalline));
-        blehMap.put(RecipeMaps.ORE_WASHER_RECIPES, Collections.singletonList(OrePrefix.crushed));
-        blehMap.put(RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Arrays.asList(OrePrefix.crushed, OrePrefix.crushedPurified));
-        blehMap.put(RecipeMaps.CHEMICAL_BATH_RECIPES, Collections.singletonList(OrePrefix.crushed));
-        blehMap.put(RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Collections.singletonList(OrePrefix.dustImpure));
-        blehMap.put(RecipeMaps.CENTRIFUGE_RECIPES, Arrays.asList(OrePrefix.dustImpure, OrePrefix.dustPure, OrePrefix.crushed, OrePrefix.crushedPurified));
-        blehMap.put(RecipeMaps.FORGE_HAMMER_RECIPES, Arrays.asList(OrePrefix.crushedCentrifuged, OrePrefix.crystalline));
-        blehMap.put(SIMPLE_ORE_WASHER, Arrays.asList(dustImpure));
-        blehMap.put(ELECTROLYZER_RECIPES, Arrays.asList(dust));
+    /**
+     * replace for platinum, palladium, osmium, iridium
+     */
+    public static void replaceOre() {
+        Map<RecipeMap<SimpleRecipeBuilder>, List<OrePrefix>> blehMap = new HashMap<>();
+        blehMap.put(MACERATOR_RECIPES, Arrays.asList(ore, crushed, crushedCentrifuged, crushedPurified, crystalline));
+        blehMap.put(ORE_WASHER_RECIPES, Collections.singletonList(crushed));
+        blehMap.put(THERMAL_CENTRIFUGE_RECIPES, Arrays.asList(crushed, crushedPurified));
+        blehMap.put(CHEMICAL_BATH_RECIPES, Collections.singletonList(crushed));
+        blehMap.put(ELECTROMAGNETIC_SEPARATOR_RECIPES, Collections.singletonList(dustImpure));
+        blehMap.put(CENTRIFUGE_RECIPES, Arrays.asList(dustImpure, dustPure, crushed, crushedPurified));
+        blehMap.put(FORGE_HAMMER_RECIPES, Arrays.asList(crushedCentrifuged, crystalline));
+        blehMap.put(SIMPLE_ORE_WASHER, Collections.singletonList(dustImpure));
+        blehMap.put(ELECTROLYZER_RECIPES, Collections.singletonList(dust));
 
         long t1 = System.currentTimeMillis();
         for (Material mat : Material.MATERIAL_REGISTRY) {
@@ -1705,7 +1706,7 @@ public class GARecipeAddition {
         GTLog.logger.info("Time taken: " + (System.currentTimeMillis() - t1));
     }
 
-    static <R extends RecipeBuilder<R>> void findElectrolyzerRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
+    static void findElectrolyzerRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
         int totalComponents = 0;
         for (MaterialStack materialStack : material.materialComponents) {
             totalComponents += materialStack.amount;
@@ -1716,7 +1717,7 @@ public class GARecipeAddition {
         }
     }
 
-    static <R extends RecipeBuilder<R>> void buildNewOutputs(RecipeMap<R> map, Recipe recipe) {
+    static void buildNewOutputs(RecipeMap<?> map, Recipe recipe) {
         List<ItemStack> newOutputs = new ArrayList<>(recipe.getOutputs());
         for (ItemStack itemStack : recipe.getOutputs()) {
             OrePrefix o = OreDictUnifier.getPrefix(itemStack);
@@ -1732,7 +1733,7 @@ public class GARecipeAddition {
         replaceOutputsAndRemoveRecipe(map, recipe, newOutputs);
     }
 
-    static <R extends RecipeBuilder<R>> void replaceOutputsAndRemoveRecipe(RecipeMap<R> map, Recipe recipe, List<ItemStack> newOutputs) {
+    static void replaceOutputsAndRemoveRecipe(RecipeMap<?> map, Recipe recipe, List<ItemStack> newOutputs) {
         map.recipeBuilder()
                 .inputsIngredients(recipe.getInputs())
                 .outputs(newOutputs)
@@ -1745,7 +1746,7 @@ public class GARecipeAddition {
     }
 
 
-    static <R extends RecipeBuilder<R>> void findRecipe(RecipeMap<R> map, Material material, OrePrefix orePrefix) {
+    static void findRecipe(RecipeMap<?> map, Material material, OrePrefix orePrefix) {
         for (MaterialStack materialComponent : material.materialComponents) {
             if (platinumGroupMaterials.contains(materialComponent.material)) {
                 findElectrolyzerRecipe(map, material, orePrefix);

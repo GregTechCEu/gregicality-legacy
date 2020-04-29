@@ -162,7 +162,7 @@ public class GregicAdditions {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void registerRecipes2(RegistryEvent.Register<IRecipe> event) {
-        GARecipeAddition.hjaeOreProcessing();
+        GARecipeAddition.replaceOre();
     }
 
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
