@@ -6,10 +6,10 @@ public class CommonProxy {
 
 
     public void preLoad() {
-        WorldGenRegister.init();
+
     }
 
     public void onLoad() {
-
+        WorldGenRegister.init();
     }
 }
