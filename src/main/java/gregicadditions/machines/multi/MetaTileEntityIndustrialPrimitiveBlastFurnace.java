@@ -82,6 +82,8 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
 
     private ItemStack lastInputStack = ItemStack.EMPTY;
     private PrimitiveBlastFurnaceRecipe previousRecipe;
+    private int efficiency;
+
 
     public MetaTileEntityIndustrialPrimitiveBlastFurnace(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -96,11 +98,13 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
                 } else setActive(true);
             }
         } else {
-            currentProgress += size;
-            if (currentProgress >= maxProgressDuration) {
-                finishCurrentRecipe();
-                this.wasActiveAndNeedUpdate = true;
-                return;
+            if (consumeFuel()) {
+                currentProgress += size;
+                if (currentProgress >= maxProgressDuration) {
+                    finishCurrentRecipe(false);
+                    return;
+                }
+                fuelUnitsLeft -= (((previousRecipe.getFuelAmount()) * 1.0) / ((previousRecipe.getDuration()) * 1.0)) * size;
             }
         }
         if (wasActiveAndNeedUpdate) {
@@ -109,12 +113,34 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         }
     }
 
-    private void finishCurrentRecipe() {
+    private void finishCurrentRecipe(boolean isFail) {
         this.maxProgressDuration = 0;
         this.currentProgress = 0;
-        MetaTileEntity.addItemsToItemHandler(outputInventory, false, outputsList);
+        if (!isFail) {
+            MetaTileEntity.addItemsToItemHandler(outputInventory, false, outputsList);
+        }
         this.outputsList = null;
+        this.wasActiveAndNeedUpdate = true;
         markDirty();
+    }
+
+    private boolean consumeFuel() {
+        if (fuelUnitsLeft > 0) {
+            return true;
+        }
+        List<ItemStack> fuelStacks = IntStream.range(0, inputInventory.getSlots())
+                .mapToObj(value -> inputInventory.getStackInSlot(value))
+                .filter(itemStack -> OreDictUnifier.getMaterial(itemStack) != null)
+                .filter(itemStack -> MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material)).collect(Collectors.toList());
+
+        if (fuelStacks.isEmpty()) {
+            finishCurrentRecipe(true);
+            return false;
+        }
+        ItemStack itemStack = fuelStacks.get(0);
+        fuelUnitsLeft = getFuelUnits(itemStack) * efficiency / 100;
+        itemStack.shrink(1);
+        return true;
     }
 
     private PrimitiveBlastFurnaceRecipe getOrRefreshRecipe(ItemStack inputStack) {
@@ -151,24 +177,18 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
                 .filter(itemStack -> OreDictUnifier.getMaterial(itemStack) != null)
                 .filter(itemStack -> !MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material))
                 .findFirst().orElse(null);
-        List<ItemStack> fuelStack = IntStream.range(0, inputInventory.getSlots())
-                .mapToObj(value -> inputInventory.getStackInSlot(value))
-                .filter(itemStack -> OreDictUnifier.getMaterial(itemStack) != null)
-                .filter(itemStack -> MATERIAL_FUEL_MAP.containsKey(OreDictUnifier.getMaterial(itemStack).material)).collect(Collectors.toList());
 
-        if (inputStack == null || inputStack.isEmpty() || (fuelStack.isEmpty() && fuelUnitsLeft == 0)) {
+        if (inputStack == null || inputStack.isEmpty()) {
             return false;
         }
 
-        float totalFuelUnits = fuelUnitsLeft + fuelStack.stream().map(MetaTileEntityIndustrialPrimitiveBlastFurnace::getFuelUnits).reduce(0f, Float::sum);
         PrimitiveBlastFurnaceRecipe currentRecipe = getOrRefreshRecipe(inputStack);
-        if (currentRecipe != null && setupRecipe(inputStack, (int) totalFuelUnits, currentRecipe)) {
-            inputStack.shrink(currentRecipe.getInput().getCount());
-            float fuelUnitsToConsume = currentRecipe.getFuelAmount();
-            float remainderConsumed = Math.min(fuelUnitsToConsume, fuelUnitsLeft);
+        if (currentRecipe != null && setupRecipe(inputStack, Integer.MAX_VALUE, currentRecipe)) {
+            if (!consumeFuel()) {
+                return false;
+            }
 
-            this.fuelUnitsLeft += (totalFuelUnits - remainderConsumed);
-            fuelStack.forEach(itemStack -> itemStack.shrink(inputStack.getCount()));
+            inputStack.shrink(currentRecipe.getInput().getCount());
             this.maxProgressDuration = currentRecipe.getDuration();
             this.currentProgress = 0;
             NonNullList<ItemStack> outputs = NonNullList.create();
@@ -272,7 +292,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         if (materialStack != null && materialStack.amount >= GTValues.M) {
             int materialAmount = (int) (materialStack.amount / GTValues.M);
             Float materialMultiplier = MATERIAL_FUEL_MAP.get(materialStack.material);
-            return materialMultiplier == null ? 0 : materialAmount * materialMultiplier * fuelType.getCount();
+            return materialMultiplier == null ? 0 : materialAmount * materialMultiplier;
         }
         return 0;
     }
@@ -309,6 +329,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.inputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.IMPORT_ITEMS));
         this.size = getAbilities(MultiblockAbility.EXPORT_ITEMS).size();
+        this.efficiency = (int) (((size - 1.0) / (64 - 1.0)) * (50 - 90) + 90);
     }
 
     private void resetTileAbilities() {
@@ -379,7 +400,8 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.size", size));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft", fuelUnitsLeft));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft", (int) (fuelUnitsLeft * 100)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency", efficiency));
             if (currentProgress > 0)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.progress", (int) (currentProgress / (double) (maxProgressDuration) * 100)));
         }
