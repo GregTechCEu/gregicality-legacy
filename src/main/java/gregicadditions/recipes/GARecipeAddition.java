@@ -1440,7 +1440,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, PalladiumRawPowder)
+                .input(dust, PalladiumRawPowder, 2)
                 .fluidInputs(FormicAcid.getFluid(4000))
                 .fluidOutputs(Ammonia.getFluid(2000))
                 .fluidOutputs(Ethylene.getFluid(1000))
