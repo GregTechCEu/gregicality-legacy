@@ -104,7 +104,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
                     finishCurrentRecipe(false);
                     return;
                 }
-                fuelUnitsLeft -= (((previousRecipe.getFuelAmount()) * 1.0) / ((previousRecipe.getDuration()) * 1.0)) * size;
+                fuelUnitsLeft -= previousRecipe == null ? 0 : (((previousRecipe.getFuelAmount()) * 1.0) / ((previousRecipe.getDuration()) * 1.0)) * size;
             }
         }
         if (wasActiveAndNeedUpdate) {

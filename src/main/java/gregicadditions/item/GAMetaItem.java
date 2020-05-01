@@ -128,6 +128,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.COMPRESSED_CLAY.setInvisible();
         MetaItems.COMPRESSED_FIRECLAY.setInvisible();
 
+
         MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
         MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();

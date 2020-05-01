@@ -78,7 +78,7 @@ public class GregicAdditions {
         proxy.preLoad();
         Keybinds.register();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
-        GAMetaItems.init();
+
         GAMetaBlocks.init();
         GATileEntities.init();
         if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct"))
@@ -143,22 +143,21 @@ public class GregicAdditions {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GAMachineRecipeRemoval.init();
+        GAMetaItems.registerOreDict();
+        GAMetaItems.registerRecipes();
+        GAMetaBlocks.registerOreDict();
         GARecipeAddition.init();
         GARecipeAddition.init2();
         GARecipeAddition.forestrySupport();
         MatterReplication.init();
         MachineCraftingRecipes.init();
         GeneratorFuels.init();
-        GAMetaItems.registerOreDict();
-        GAMetaItems.registerRecipes();
-        GAMetaBlocks.registerOreDict();
         RecipeHandler.registerLargeChemicalRecipes();
         RecipeHandler.registerLargeMixerRecipes();
         RecipeHandler.registerLargeForgeHammerRecipes();
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
-//        GARecipeAddition.replaceOre();
     }
 
 
