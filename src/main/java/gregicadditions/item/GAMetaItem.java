@@ -7,6 +7,7 @@ import gregicadditions.item.behavior.MediumTurbineBehavior;
 import gregicadditions.item.behavior.SmallTurbineBehavior;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemComponent;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
@@ -95,6 +96,32 @@ public class GAMetaItem extends MaterialMetaItem {
         CIRCUIT_MAGNETIC_MAX = addItem(229, "circuit.resonatic.max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
         RAW_IMPRINT_SUPPORTED_BOARD = addItem(230, "board.raw.magnetic");
         IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
+
+
+        ARRAY_RESISTOR  = addItem(240, "component.smd.array.resistor");
+        ARRAY_DIODE  = addItem(241, "component.smd.array.diode");
+        ARRAY_CAPACITOR  = addItem(242, "component.smd.array.capacitor");
+        ARRAY_TRANSISTOR  = addItem(243, "component.smd.array.transistor");
+
+        SMS_CAPACITOR_2  = addItem(244, "component.smd.capacitor.2");
+        SMS_CAPACITOR_3  = addItem(245, "component.smd.capacitor.3");
+        SMS_CAPACITOR_4  = addItem(246, "component.smd.capacitor.4");
+        SMS_CAPACITOR_5  = addItem(247, "component.smd.capacitor.5");
+
+        SMS_RESISTOR_2  = addItem(248, "component.smd.resistor.2");
+        SMS_RESISTOR_3  = addItem(249, "component.smd.resistor.3");
+        SMS_RESISTOR_4  = addItem(250, "component.smd.resistor.4");
+        SMS_RESISTOR_5  = addItem(251, "component.smd.resistor.5");
+
+        SMS_DIODE_2  = addItem(252, "component.smd.diode.2");
+        SMS_DIODE_3  = addItem(253, "component.smd.diode.3");
+        SMS_DIODE_4  = addItem(254, "component.smd.diode.4");
+        SMS_DIODE_5  = addItem(255, "component.smd.diode.5");
+
+        SMS_TRANSISTOR_2  = addItem(256, "component.smd.transistor.2");
+        SMS_TRANSISTOR_3  = addItem(257, "component.smd.transistor.3");
+        SMS_TRANSISTOR_4  = addItem(258, "component.smd.transistor.4");
+        SMS_TRANSISTOR_5  = addItem(259, "component.smd.transistor.5");
 
 
         HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new HugeTurbineBehavior());

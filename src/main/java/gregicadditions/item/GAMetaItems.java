@@ -27,7 +27,34 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
     public static MetaItem<?>.MetaValueItem MAX_BATTERY;
 
+    //more smd
+    public static MetaItem<?>.MetaValueItem ARRAY_RESISTOR;
+    public static MetaItem<?>.MetaValueItem ARRAY_DIODE;
+    public static MetaItem<?>.MetaValueItem ARRAY_CAPACITOR;
+    public static MetaItem<?>.MetaValueItem ARRAY_TRANSISTOR;
 
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_2;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_3;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_4;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_5;
+
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_2;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_3;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_4;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_5;
+
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_2;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_3;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_4;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_5;
+
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_2;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_3;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_4;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_5;
+
+
+    //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem ELECTRONIC_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem ELECTRONIC_COMPUTER;
@@ -47,7 +74,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem QUANTUM_COMPUTER;
     public static MetaItem<?>.MetaValueItem QUANTUM_MAINFRAME;
 
-
+    //magneto circuit
     public static MetaItem<?>.MetaValueItem RAW_IMPRINT_SUPPORTED_BOARD;
     public static MetaItem<?>.MetaValueItem IMPRINT_SUPPORTED_BOARD;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ULV;

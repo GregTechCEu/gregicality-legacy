@@ -5,6 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.machines.MultiRecipesTrait;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -47,7 +48,7 @@ import java.util.stream.IntStream;
 import static gregicadditions.GAMaterials.BabbittAlloy;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower implements IMultiRecipe {
+public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower {
 
     public RecipeMap<?> recipeMap;
 
@@ -55,17 +56,19 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
             RecipeMaps.DISTILLERY_RECIPES,
             RecipeMaps.DISTILLATION_RECIPES
     };
-    private int pos = 0;
+
+    private final MultiRecipesTrait multiRecipesTrait;
 
     public TileEntityAdvancedDistillationTower(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId);
         this.recipeMap = recipeMap;
         this.recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
+        this.multiRecipesTrait = new MultiRecipesTrait(this, possibleRecipe);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityAdvancedDistillationTower(metaTileEntityId, possibleRecipe[pos]);
+        return new TileEntityAdvancedDistillationTower(metaTileEntityId, multiRecipesTrait.getRecipes()[multiRecipesTrait.getCurrentRecipe()]);
     }
 
     @Override
@@ -115,52 +118,23 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
 
     @Override
     public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        boolean isEmpty = IntStream.range(0, getInputInventory().getSlots())
-                .mapToObj(i -> getInputInventory().getStackInSlot(i))
-                .allMatch(ItemStack::isEmpty);
-        if (!isEmpty) {
+        RecipeMap<?> recipe = multiRecipesTrait.getNextRecipe();
+        if (recipe == null) {
             return false;
         }
-
-        pos = ++pos % possibleRecipe.length;
-        this.recipeMap = possibleRecipe[pos];
-        this.recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
+        recipeMap = recipe;
+        recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
         return true;
     }
 
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
-        super.writeToNBT(data);
-        data.setTag("Recipe", new NBTTagInt(pos));
-        return data;
-    }
 
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        this.pos = data.getInteger("Recipe");
-        this.recipeMap = possibleRecipe[pos];
+        this.recipeMap = multiRecipesTrait.getRecipes()[multiRecipesTrait.getCurrentRecipe()];
         this.recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
     }
 
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
-        T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
-            return (T) this;
-        }
-        return capabilityResult;
-    }
-
-    @Override
-    public RecipeMap<?>[] getRecipes() {
-        return possibleRecipe;
-    }
-
-    @Override
-    public int getCurrentRecipe() {
-        return pos;
-    }
 
     public static class AdvancedDistillationRecipeLogic extends MultiblockRecipeLogic {
 
