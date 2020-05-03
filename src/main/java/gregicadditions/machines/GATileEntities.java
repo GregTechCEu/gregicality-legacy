@@ -15,10 +15,7 @@ import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
 import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
 import gregicadditions.machines.multi.TileEntityAlloyBlastFurnace;
-import gregicadditions.machines.multi.advance.MetaTileEntityLargeRocketEngine;
-import gregicadditions.machines.multi.advance.TileEntityAdvancedDistillationTower;
-import gregicadditions.machines.multi.advance.TileEntityCryogenicFreezer;
-import gregicadditions.machines.multi.advance.TileEntityVolcanus;
+import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
@@ -120,6 +117,7 @@ public class GATileEntities {
     public static MetaTileEntityLargeRocketEngine LARGE_ROCKET_ENGINE;
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
+    public static MetaTileEntityLargeNaquadahReactor LARGE_NAQUADAH_REACTOR;
 
     //Nuclear
     public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
@@ -460,9 +458,9 @@ public class GATileEntities {
         }
 
         NAQUADAH_REACTOR[3] = GregTechAPI.registerMetaTileEntity(2172, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk1"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 4, 100));
-        NAQUADAH_REACTOR[4] = GregTechAPI.registerMetaTileEntity(2173, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk2"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 5, 90));
-        NAQUADAH_REACTOR[5] = GregTechAPI.registerMetaTileEntity(2174, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk3"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 6, 80));
-        NAQUADAH_REACTOR[6] = GregTechAPI.registerMetaTileEntity(2191, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk4"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 7, 70));
+        NAQUADAH_REACTOR[4] = GregTechAPI.registerMetaTileEntity(2173, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk2"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 5, 80));
+        NAQUADAH_REACTOR[5] = GregTechAPI.registerMetaTileEntity(2174, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk3"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 6, 70));
+        NAQUADAH_REACTOR[6] = GregTechAPI.registerMetaTileEntity(2191, new SimpleGeneratorWithLossMetaTileEntity(location("naquadah_reactor.mk4"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 7, 50));
 
 
         MASS_FAB[0] = GregTechAPI.registerMetaTileEntity(2175, new SimpleMachineMetaTileEntity(location("mass_fab.lv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 1));
@@ -558,6 +556,7 @@ public class GATileEntities {
         LARGE_ROCKET_ENGINE = GregTechAPI.registerMetaTileEntity(2558, new MetaTileEntityLargeRocketEngine(location("large_rocket_engine")));
         ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2559, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
         LARGE_FORGE_HAMMER = GregTechAPI.registerMetaTileEntity(2560, new TileEntityLargeForgeHammer(location("large_forge_hammer")));
+        LARGE_NAQUADAH_REACTOR = GregTechAPI.registerMetaTileEntity(2561, new MetaTileEntityLargeNaquadahReactor(location("large_naquadah_reactor")));
 
         if (GAConfig.GT6.registerDums) {
             WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

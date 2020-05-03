@@ -78,6 +78,7 @@ public class GeneratorFuels {
 
         //Naquadah Reactor
         registerNaquadahReactorFuel(NaquadahEnriched.getFluid(1), 750, GTValues.LV);
+        registerNaquadahReactorFuel(Naquadria.getFluid(1), 4500, GTValues.LV);
 
         //Plasma Generator
         registerPlasmaFuel(Helium.getPlasma(1), 2560, GTValues.LV);

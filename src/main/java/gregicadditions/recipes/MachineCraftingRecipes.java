@@ -21,10 +21,7 @@ import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
@@ -39,10 +36,12 @@ import java.util.List;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.machines.GATileEntities.THERMAL_CENTRIFUGE;
 import static gregicadditions.recipes.GACraftingComponents.*;
+import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS;
+import static gregtech.common.items.MetaItems.*;
 
 public class MachineCraftingRecipes {
 
@@ -257,7 +256,6 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.ALLOY_BLAST_FURNACE.getStackForm()).duration(2400).EUt(5000).buildAndRegister();
 
 
-
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(130000)
                 .fluidInputs(GAMaterials.HastelloyN.getFluid(144 * 4))
                 .input(OrePrefix.valueOf("gtMetalCasing"), GAMaterials.Staballoy, 2)
@@ -274,8 +272,23 @@ public class MachineCraftingRecipes {
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .outputs(GATileEntities.VOID_MINER.getStackForm()).buildAndRegister();
-        ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(),'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
-
+        ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(), 'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
+                .inputs(
+                        MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        WETWARE_MAINFRAME_MAX.getStackForm(),
+                        WETWARE_MAINFRAME_MAX.getStackForm(),
+                        WETWARE_MAINFRAME_MAX.getStackForm(),
+                        WETWARE_MAINFRAME_MAX.getStackForm(),
+                        OreDictUnifier.get(plateDense, Naquadria, 4),
+                        FIELD_GENERATOR_UV.getStackForm(2),
+                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
+                        OreDictUnifier.get(wireGtHex, Tier.Superconductor, 32))
+                .fluidInputs(SolderingAlloy.getFluid(2880))
+                .outputs(GATileEntities.LARGE_NAQUADAH_REACTOR.getStackForm()).buildAndRegister();
 
 
         List<Recipe> removals = new ArrayList<>();

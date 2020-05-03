@@ -1078,6 +1078,7 @@ public class GARecipeAddition {
         //Fusion Recipes
         FUSION_RECIPES.recipeBuilder().fluidInputs(Deuterium.getFluid(125), Tritium.getFluid(125)).fluidOutputs(Helium.getPlasma(125)).duration(16).EUt(4096).EUToStart(40000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Deuterium.getFluid(125), Helium3.getFluid(125)).fluidOutputs(Helium.getPlasma(125)).duration(16).EUt(2048).EUToStart(60000000).buildAndRegister();
+        FUSION_RECIPES.recipeBuilder().fluidInputs(Fluorine.getFluid(125), Helium3.getFluid(125)).fluidOutputs(Potassium.getPlasma(125)).duration(16).EUt(2048).EUToStart(60000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Carbon.getFluid(125), Helium3.getFluid(125)).fluidOutputs(Oxygen.getPlasma(125)).duration(32).EUt(4096).EUToStart(80000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Beryllium.getFluid(16), Deuterium.getFluid(375)).fluidOutputs(Nitrogen.getPlasma(175)).duration(16).EUt(16384).EUToStart(180000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Silicon.getFluid(16), Magnesium.getFluid(16)).fluidOutputs(Iron.getPlasma(125)).duration(32).EUt(8192).EUToStart(360000000).buildAndRegister();

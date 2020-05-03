@@ -563,7 +563,7 @@ gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
-
+gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -1098,6 +1098,8 @@ gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
+gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Potassium Plasma and Produce 10UV/t.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
@@ -1113,6 +1115,7 @@ gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
 gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
+gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %dmb
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
 gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen needed to boost: %dmB

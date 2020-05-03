@@ -64,8 +64,8 @@ public class GAMachineRecipeRemoval {
                 removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(2304)});
             }
             //remove packer recipes
-            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m), IntCircuitIngredient.getIntegratedCircuit(2));
-            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m), IntCircuitIngredient.getIntegratedCircuit(1));
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m, 4), IntCircuitIngredient.getIntegratedCircuit(2));
+            removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m, 9), IntCircuitIngredient.getIntegratedCircuit(1));
 
             //Remove Old turbine blade
             if (!OreDictUnifier.get(turbineBlade, m).isEmpty()) {
