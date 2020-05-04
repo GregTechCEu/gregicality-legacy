@@ -252,6 +252,7 @@ public class GAMaterials implements IMaterialHandler {
         Vermiculite.addFlag(GENERATE_ORE);
         Alunite.addFlag(GENERATE_ORE);
         GlauconiteSand.addFlag(GENERATE_ORE);
+        Niter.addFlag(GENERATE_ORE);
 
         if (!GAConfig.Misc.generatePlatinumAndPalladium) {
             removeFlags(Platinum, GENERATE_ORE);
@@ -279,6 +280,12 @@ public class GAMaterials implements IMaterialHandler {
         Duranium.addFlag(GENERATE_FOIL);
         Graphene.addFlag(GENERATE_FOIL);
         Polytetrafluoroethylene.addFlag(GENERATE_FOIL);
+        Rubber.addFlag(GENERATE_FOIL);
+        Polybenzimidazole.addFlag(GENERATE_FOIL);
+        Polycaprolactam.addFlag(GENERATE_FOIL);
+        Polystyrene.addFlag(GENERATE_FOIL);
+        Plastic.addFlag(GENERATE_FOIL);
+
 
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);

@@ -53,15 +53,7 @@ public class GAMachineRecipeRemoval {
 
             //Remove EV+ Cable Recipes
             if (GAConfig.GT5U.CablesGT5U) {
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(144)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, m, 2), IntCircuitIngredient.getIntegratedCircuit(25)}, new FluidStack[]{Rubber.getFluid(288)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, m, 4), IntCircuitIngredient.getIntegratedCircuit(26)}, new FluidStack[]{Rubber.getFluid(576)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, m, 8), IntCircuitIngredient.getIntegratedCircuit(27)}, new FluidStack[]{Rubber.getFluid(1152)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, m, 16), IntCircuitIngredient.getIntegratedCircuit(28)}, new FluidStack[]{Rubber.getFluid(2304)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtDouble, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(288)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtQuadruple, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(576)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(1152)});
-                removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, m), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{Rubber.getFluid(2304)});
+
             }
             //remove packer recipes
             removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m, 4), IntCircuitIngredient.getIntegratedCircuit(2));
@@ -173,6 +165,7 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Glyceryl.getFluid(250), Fuel.getFluid(1000));
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Fuel.getFluid(4000), Glyceryl.getFluid(1000));
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, LightFuel.getFluid(4000), Glyceryl.getFluid(1000));
+
         //remove old hydrocracked light fuel to add a better one
         removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, HydroCrackedLightFuel.getFluid(1000));
         removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
@@ -289,21 +282,21 @@ public class GAMachineRecipeRemoval {
 
     }
 
-    private static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
+    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
         List<ItemStack> inputs = new ArrayList<>();
         for (ItemStack s : itemInputs)
             inputs.add(s);
         map.removeRecipe(map.findRecipe(Long.MAX_VALUE, inputs, Collections.emptyList(), Integer.MAX_VALUE));
     }
 
-    private static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, FluidStack... fluidInputs) {
+    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, FluidStack... fluidInputs) {
         List<FluidStack> inputs = new ArrayList<>();
         for (FluidStack s : fluidInputs)
             inputs.add(s);
         map.removeRecipe(map.findRecipe(Long.MAX_VALUE, Collections.emptyList(), inputs, Integer.MAX_VALUE));
     }
 
-    private static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack[] itemInputs, FluidStack[] fluidInputs) {
+    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack[] itemInputs, FluidStack[] fluidInputs) {
         List<ItemStack> itemIn = new ArrayList<>();
         for (ItemStack s : itemInputs)
             itemIn.add(s);
@@ -313,7 +306,7 @@ public class GAMachineRecipeRemoval {
         map.removeRecipe(map.findRecipe(Long.MAX_VALUE, itemIn, fluidIn, Integer.MAX_VALUE));
     }
 
-    private static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
+    public static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
 
         List<Recipe> recipes = new ArrayList<>();
         recipes.addAll(map.getRecipeList());

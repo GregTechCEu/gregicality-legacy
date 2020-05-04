@@ -50,6 +50,7 @@ public class WorldGenRegister {
                         .filter(file ->
                                 file.getFileName().toString().startsWith("platinum_vein.json")
                                         || file.getFileName().toString().startsWith("olivine_vein.json")
+                                        || file.getFileName().toString().startsWith("sulfur_vein.json")
                         )
                         .collect(Collectors.toList());
                 for (Path config : configs) {
@@ -63,7 +64,7 @@ public class WorldGenRegister {
     private static void copyCustomConfigs() throws IOException {
         Path configPath = Loader.instance().getConfigDir().toPath().resolve(GTValues.MODID);
         Path worldgenRootPath = configPath.resolve("worldgen");
-        Path jarFileExtractLock = configPath.resolve("ga_worldgen");
+        Path jarFileExtractLock = configPath.resolve("ga_worldgen_2");
         if (!Files.exists(worldgenRootPath)) {
             Files.createDirectories(worldgenRootPath);
         }

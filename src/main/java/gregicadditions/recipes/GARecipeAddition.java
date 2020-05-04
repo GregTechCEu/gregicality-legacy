@@ -74,20 +74,17 @@ public class GARecipeAddition {
             new MaterialStack(DistilledWater, 3L),
             new MaterialStack(Water, 4L)
     };
-    private static final MaterialStack[] solderingList = {
-            new MaterialStack(Tin, 2L),
-            new MaterialStack(SolderingAlloy, 1L),
-            new MaterialStack(Lead, 4L)
-    };
 
     private static final MaterialStack[] cableFluids = {
             new MaterialStack(Rubber, 144),
             new MaterialStack(StyreneButadieneRubber, 108),
-            new MaterialStack(SiliconeRubber, 72)};
+            new MaterialStack(SiliconeRubber, 72)
+    };
 
     private static final MaterialStack[] cableDusts = {
             new MaterialStack(Polydimethylsiloxane, 1),
-            new MaterialStack(PolyvinylChloride, 1)};
+            new MaterialStack(PolyvinylChloride, 1)
+    };
 
     private static final MaterialStack[] firstMetal = {
             new MaterialStack(Iron, 1),
@@ -97,29 +94,28 @@ public class GARecipeAddition {
             new MaterialStack(StainlessSteel, 3),
             new MaterialStack(Titanium, 3),
             new MaterialStack(Tungsten, 4),
-            new MaterialStack(TungstenSteel, 5)};
+            new MaterialStack(TungstenSteel, 5)
+    };
 
     private static final MaterialStack[] lastMetal = {
             new MaterialStack(Tin, 0),
             new MaterialStack(Zinc, 0),
-            new MaterialStack(Aluminium, 1)};
+            new MaterialStack(Aluminium, 1)
+    };
 
     private static final MaterialStack[] ironOres = {
             new MaterialStack(Pyrite, 1),
             new MaterialStack(BrownLimonite, 1),
             new MaterialStack(YellowLimonite, 1),
             new MaterialStack(Magnetite, 1),
-            new MaterialStack(Iron, 1)};
-
-    private static final MaterialStack[] lubeDusts = {
-            new MaterialStack(Talc, 1),
-            new MaterialStack(Soapstone, 1),
-            new MaterialStack(Redstone, 1)};
+            new MaterialStack(Iron, 1)
+    };
 
     private static final MaterialStack[] lapisLike = {
             new MaterialStack(Lapis, 1),
             new MaterialStack(Lazurite, 1),
-            new MaterialStack(Sodalite, 1)};
+            new MaterialStack(Sodalite, 1)
+    };
 
     private static final List<Material> tieredCables = Arrays.asList(new Material[]{
             Tungsten, Osmium, Platinum, TungstenSteel, Graphene,
@@ -215,144 +211,15 @@ public class GARecipeAddition {
             ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS), "RRR", "RhR", "R R", 'R', "ringIron");
             ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS), "R R", "RhR", 'R', "ringIron");
         }
-        for (Material m : Material.MATERIAL_REGISTRY) {
-            if (!OreDictUnifier.get(ring, m).isEmpty() && !OreDictUnifier.get(stick, m).isEmpty() && m != Rubber && m != StyreneButadieneRubber && m != SiliconeRubber && GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders) {
-                ModHandler.removeRecipes(OreDictUnifier.get(ring, m));
-                ModHandler.addShapedRecipe("tod_to_ring_" + m.toString(), OreDictUnifier.get(ring, m), "hS", " C", 'S', OreDictUnifier.get(stick, m), 'C', "craftingToolBendingCylinderSmall");
-            }
-            if (!OreDictUnifier.get(valueOf("plateCurved"), m).isEmpty() && GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders) {
-                ModHandler.addShapedRecipe("curved_plate_" + m.toString(), OreDictUnifier.get(valueOf("plateCurved"), m), "h", "P", "C", 'P', new UnificationEntry(plate, m), 'C', "craftingToolBendingCylinder");
-                ModHandler.addShapedRecipe("flatten_plate_" + m.toString(), OreDictUnifier.get(plate, m), "h", "C", 'C', new UnificationEntry(valueOf("plateCurved"), m));
-                BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) m.getMass()).input(plate, m).circuitMeta(0).outputs(OreDictUnifier.get(valueOf("plateCurved"), m)).buildAndRegister();
-            }
-            if (!OreDictUnifier.get(rotor, m).isEmpty() && GAConfig.GT6.BendingRotors && GAConfig.GT6.BendingCylinders) {
-                ModHandler.removeRecipes(OreDictUnifier.get(rotor, m));
-                ModHandler.addShapedRecipe("ga_rotor_" + m.toString(), OreDictUnifier.get(rotor, m), "ChC", "SRf", "CdC", 'C', OreDictUnifier.get(valueOf("plateCurved"), m), 'S', OreDictUnifier.get(screw, m), 'R', OreDictUnifier.get(ring, m));
-                ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24).inputs(OreDictUnifier.get(valueOf("plateCurved"), m, 4), OreDictUnifier.get(ring, m)).fluidInputs(SolderingAlloy.getFluid(32)).outputs(OreDictUnifier.get(rotor, m)).buildAndRegister();
-            }
-            if (!OreDictUnifier.get(foil, m).isEmpty()) {
-                if (GAConfig.GT6.BendingFoils && GAConfig.GT6.BendingCylinders) {
-                    ModHandler.addShapedRecipe("foil_" + m.toString(), OreDictUnifier.get(foil, m, 2), "hPC", 'P', new UnificationEntry(plate, m), 'C', "craftingToolBendingCylinder");
-                }
-                if (GAConfig.GT6.BendingFoilsAutomatic && GAConfig.GT6.BendingCylinders) {
-                    CLUSTER_MILL_RECIPES.recipeBuilder().EUt(24).duration((int) m.getMass()).input(plate, m).outputs(OreDictUnifier.get(foil, m, 4)).buildAndRegister();
-                } else if (GAConfig.GT6.BendingFoilsAutomatic == false || GAConfig.GT6.BendingCylinders == false) {
-                    BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) m.getMass()).circuitMeta(4).input(plate, m).outputs(OreDictUnifier.get(foil, m, 4)).buildAndRegister();
-                }
-            }
-            if (!OreDictUnifier.get(wireGtSingle, m).isEmpty() && !OreDictUnifier.get(wireFine, m).isEmpty() && GAConfig.GT5U.OldFineWireRecipes && GAConfig.GT6.BendingCylinders) {
-                WIREMILL_RECIPES.recipeBuilder().EUt(9).duration(200).inputs(OreDictUnifier.get(wireGtSingle, m)).outputs(OreDictUnifier.get(wireFine, m, 4)).buildAndRegister();
-            }
 
-            if (!OreDictUnifier.get(valueOf("round"), m).isEmpty()) {
-                ModHandler.addShapedRecipe("round" + m.toString(), OreDictUnifier.get(valueOf("round"), m), "fN", "N ", 'N', OreDictUnifier.get(nugget, m));
-                LATHE_RECIPES.recipeBuilder().EUt(8).duration(100).inputs(OreDictUnifier.get(nugget, m)).outputs(OreDictUnifier.get(valueOf("round"), m)).buildAndRegister();
-            }
-
-            //ModHandler.addShapedRecipe("plasma_pipe", OreDictUnifier.get(OrePrefix.pipeMedium, Materials.Plasma), "ESE", "NTN", "ESE", 'E', "platePlastic", 'S', OreDictUnifier.get(OrePrefix.wireGtDouble, Tier.Superconductor), 'N', "plateNeodymiumMagnetic", 'T', OreDictUnifier.get(OrePrefix.pipeSmall, Materials.Titanium));
-
-            if (GAConfig.GT6.BendingPipes && GAConfig.GT6.BendingCylinders) {
-                ModHandler.removeRecipes(OreDictUnifier.get(pipeSmall, Wood));
-                ModHandler.removeRecipes(OreDictUnifier.get(pipeMedium, Wood));
-                ModHandler.addShapedRecipe("pipe_ga_wood", OreDictUnifier.get(pipeMedium, Wood, 2), "PPP", "sCh", "PPP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
-                ModHandler.addShapedRecipe("pipe_ga_large_wood", OreDictUnifier.get(pipeLarge, Wood), "PhP", "PCP", "PsP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
-                ModHandler.addShapedRecipe("pipe_ga_small_wood", OreDictUnifier.get(pipeSmall, Wood, 6), "PsP", "PCP", "PhP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
-            }
-
-            //Cables
-            if ((m instanceof IngotMaterial || superconductors.contains(m)) && !OreDictUnifier.get(cableGtSingle, m).isEmpty() && m != RedAlloy && m != Cobalt && m != Zinc && m != SolderingAlloy && m != Tin && m != Lead && GAConfig.GT5U.CablesGT5U) {
-                for (MaterialStack stackFluid : cableFluids) {
-                    IngotMaterial fluid = (IngotMaterial) stackFluid.material;
-                    int multiplier = (int) stackFluid.amount;
-                    // Low-tiered superconductors recipe
-                    if (superconductors.contains(m) && !tieredSuperconductors.contains(m)) {
-                        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                        for (MaterialStack stackDust : cableDusts) {
-                            Material dust = stackDust.material;
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                        }
-                    } else
-                        // EV+ tiered superconductors cable recipe
-                        if (tieredSuperconductors.contains(m)) {
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                            ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                            for (MaterialStack stackDust : cableDusts) {
-                                Material dust = stackDust.material;
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                            }
-                        } else
-                            // EV+ tiered cables recipe
-                            if (tieredCables.contains(m)) {
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                                for (MaterialStack stackDust : cableDusts) {
-                                    Material dust = stackDust.material;
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(foil, PolyphenyleneSulfide), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 2), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 4), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 8), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(foil, PolyphenyleneSulfide, 16), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                                }
-                            } else
-                            // Low-tier cable recipes
-                            {
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m)).fluidInputs(fluid.getFluid(multiplier)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m)).fluidInputs(fluid.getFluid(multiplier * 2)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m)).fluidInputs(fluid.getFluid(multiplier * 4)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m)).fluidInputs(fluid.getFluid(multiplier * 8)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                                ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m)).fluidInputs(fluid.getFluid(multiplier * 16)).circuitMeta(24).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                                for (MaterialStack stackDust : cableDusts) {
-                                    Material dust = stackDust.material;
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtSingle, m), OreDictUnifier.get(dustSmall, dust)).fluidInputs(fluid.getFluid(multiplier / 2)).outputs(OreDictUnifier.get(cableGtSingle, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtDouble, m), OreDictUnifier.get(dustSmall, dust, 2)).fluidInputs(fluid.getFluid(multiplier)).outputs(OreDictUnifier.get(cableGtDouble, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtQuadruple, m), OreDictUnifier.get(dustSmall, dust, 4)).fluidInputs(fluid.getFluid(multiplier * 2)).outputs(OreDictUnifier.get(cableGtQuadruple, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtOctal, m), OreDictUnifier.get(dustSmall, dust, 8)).fluidInputs(fluid.getFluid(multiplier * 4)).outputs(OreDictUnifier.get(cableGtOctal, m)).buildAndRegister();
-                                    ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8).inputs(OreDictUnifier.get(wireGtHex, m), OreDictUnifier.get(dustSmall, dust, 16)).fluidInputs(fluid.getFluid(multiplier * 8)).outputs(OreDictUnifier.get(cableGtHex, m)).buildAndRegister();
-                                }
-                            }
-                }
-            }
-
-            //GT6 Plate Recipe
-            if (m instanceof IngotMaterial && !OreDictUnifier.get(plate, m).isEmpty() && !OreDictUnifier.get(valueOf("ingotDouble"), m).isEmpty() && GAConfig.GT6.PlateDoubleIngot) {
-                ModHandler.removeRecipes(OreDictUnifier.get(plate, m));
-                ModHandler.addShapedRecipe("ingot_double_" + m.toString(), OreDictUnifier.get(valueOf("ingotDouble"), m), "h", "I", "I", 'I', new UnificationEntry(ingot, m));
-                ModHandler.addShapedRecipe("double_ingot_to_plate_" + m.toString(), OreDictUnifier.get(plate, m), "h", "I", 'I', OreDictUnifier.get(valueOf("ingotDouble"), m));
-            }
+        //wood pipe
+        if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders) {
+            ModHandler.removeRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
+            ModHandler.removeRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
+            ModHandler.addShapedRecipe("pipe_ga_wood", OreDictUnifier.get(pipeMedium, Wood, 2), "PPP", "sCh", "PPP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
+            ModHandler.addShapedRecipe("pipe_ga_large_wood", OreDictUnifier.get(pipeLarge, Wood), "PhP", "PCP", "PsP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
+            ModHandler.addShapedRecipe("pipe_ga_small_wood", OreDictUnifier.get(pipeSmall, Wood, 6), "PsP", "PCP", "PhP", 'P', "plankWood", 'C', "craftingToolBendingCylinder");
         }
-
-        //Pipes
-        for (Material m : Material.MATERIAL_REGISTRY) {
-            if (!OreDictUnifier.get(pipeMedium, m).isEmpty() && GAConfig.GT6.BendingPipes) {
-                ModHandler.removeRecipeByName(new ResourceLocation("gregtech:small_" + m.toString() + "_pipe"));
-                ModHandler.removeRecipeByName(new ResourceLocation("gregtech:medium_" + m.toString() + "_pipe"));
-                ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_" + m.toString() + "_pipe"));
-                if (!OreDictUnifier.get(valueOf("plateCurved"), m).isEmpty()) {
-                    ModHandler.addShapedRecipe("pipe_ga_" + m.toString(), OreDictUnifier.get(pipeMedium, m, 2), "PPP", "wCh", "PPP", 'P', OreDictUnifier.get(valueOf("plateCurved"), m), 'C', "craftingToolBendingCylinder");
-                    ModHandler.addShapedRecipe("pipe_ga_large_" + m.toString(), OreDictUnifier.get(pipeLarge, m), "PhP", "PCP", "PwP", 'P', OreDictUnifier.get(valueOf("plateCurved"), m), 'C', "craftingToolBendingCylinder");
-                    ModHandler.addShapedRecipe("pipe_ga_small_" + m.toString(), OreDictUnifier.get(pipeSmall, m, 4), "PwP", "PCP", "PhP", 'P', OreDictUnifier.get(valueOf("plateCurved"), m), 'C', "craftingToolBendingCylinder");
-                }
-            }
-        }
-
         //Ultimate Pipes
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(96).inputs(OreDictUnifier.get(pipeSmall, TungstenSteel), ELECTRIC_PUMP_EV.getStackForm()).outputs(OreDictUnifier.get(pipeSmall, Ultimet)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(148).inputs(OreDictUnifier.get(pipeMedium, TungstenSteel), ELECTRIC_PUMP_IV.getStackForm()).outputs(OreDictUnifier.get(pipeMedium, Ultimet)).buildAndRegister();
@@ -738,7 +605,7 @@ public class GARecipeAddition {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(90).outputs(REFINED_COMPUTER.getStackForm()).inputs(REFINED_ASSEMBLY.getStackForm(4), RESISTOR.getStackForm(2), TRANSISTOR.getStackForm(2), RANDOM_ACCESS_MEMORY.getStackForm(2), GOOD_PLASTIC_BOARD.getStackForm()).input(wireGtSingle, MVSuperconductor, 1).fluidInputs(fluidStack).buildAndRegister();
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(90).outputs(REFINED_COMPUTER.getStackForm()).inputs(REFINED_ASSEMBLY.getStackForm(4), SMD_RESISTOR.getStackForm(2), SMD_TRANSISTOR.getStackForm(2), RANDOM_ACCESS_MEMORY.getStackForm(2), GOOD_PLASTIC_BOARD.getStackForm()).input(wireGtSingle, MVSuperconductor, 1).fluidInputs(fluidStack).buildAndRegister();
             //MAINFRAME
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(110).outputs(REFINED_MAINFRAME.getStackForm()).inputs(REFINED_COMPUTER.getStackForm(2), SMD_RESISTOR.getStackForm(16), SMD_TRANSISTOR.getStackForm(8), SMD_DIODE.getStackForm(4), RANDOM_ACCESS_MEMORY.getStackForm(4)).input(frameGt, StainlessSteel, 4).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(110).outputs(REFINED_MAINFRAME.getStackForm()).inputs(REFINED_COMPUTER.getStackForm(2), SMD_RESISTOR.getStackForm(16), SMD_TRANSISTOR.getStackForm(8), SMD_CAPACITOR.getStackForm(4), RANDOM_ACCESS_MEMORY.getStackForm(4)).input(frameGt, StainlessSteel, 4).fluidInputs(fluidStack).buildAndRegister();
 
 
             //MICRO       //PROCESSOR
@@ -1667,6 +1534,14 @@ public class GARecipeAddition {
                 .duration(1000)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Methane.getFluid(2000))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidOutputs(Dimethylbenzene.getFluid(3000))
+                .EUt(120)
+                .duration(4000)
+                .buildAndRegister();
+
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dustTiny, Potassiumdichromate)
                 .fluidInputs(Oxygen.getFluid(2000))
@@ -1878,6 +1753,7 @@ public class GARecipeAddition {
                     UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).inputs(new CountableIngredient(new IntCircuitIngredient(1), 0)).outputs(recipe.getRecipeOutput()).buildAndRegister();
                 }
             }
+
         }
 
         for (ResourceLocation r : recipesToRemove)
