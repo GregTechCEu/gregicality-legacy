@@ -366,7 +366,7 @@ public enum GACraftingComponents     {
                 case 5:
                     return new UnificationEntry(plate, TungstenSteel);
                 case 6:
-                    return new UnificationEntry(plate, HSSG);
+                    return new UnificationEntry(plate, RhodiumPlatedPalladium);
                 case 7:
                     return new UnificationEntry(plate, HSSE);
                 default:

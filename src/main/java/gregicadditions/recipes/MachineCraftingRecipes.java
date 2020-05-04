@@ -41,6 +41,7 @@ import static gregtech.api.GTValues.L;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS;
+import static gregtech.common.blocks.BlockWireCoil.CoilType.CUPRONICKEL;
 import static gregtech.common.items.MetaItems.*;
 
 public class MachineCraftingRecipes {
@@ -110,7 +111,7 @@ public class MachineCraftingRecipes {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:vacuum_freezer"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:implosion_compressor"));
         //ModHandler.removeRecipeByName(new ResourceLocation("gregtech:distillation_tower"));
-        //ModHandler.removeRecipeByName(new ResourceLocation("gregtech:cracking_unit"));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:cracking_unit"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:pyrolyse_oven"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:diesel_engine"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:engine_intake_casing"));
@@ -186,6 +187,7 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_steam_mixer", GATileEntities.STEAM_MIXER.getStackForm(), "GRG", "GPG", "PMP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'P', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'R', "rotorBronze", 'G', "blockGlass");
 
         //MultiBlocks
+        ModHandler.addShapedRecipe("ga_cracking_unit", MetaTileEntities.CRACKER.getStackForm(), "CEC", "PHP", "CEC", 'C', MetaBlocks.WIRE_COIL.getItemVariant(CUPRONICKEL), 'E', MetaItems.ELECTRIC_PUMP_HV, 'P', new UnificationEntry(OrePrefix.circuit, Tier.Advanced), 'H', MetaTileEntities.HULL[GTValues.HV].getStackForm());
         ModHandler.addShapedRecipe("ga_primitive_blast_furnace", MetaTileEntities.PRIMITIVE_BLAST_FURNACE.getStackForm(), "hRS", "PBR", "dRS", 'R', OreDictUnifier.get(stick, Iron), 'S', OreDictUnifier.get(screw, Iron), 'P', "plateIron", 'B', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS));
         ModHandler.addShapedRecipe("ga_electric_blast_furnace", MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(), "FFF", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Invar), 'F', OreDictNames.craftingFurnace, 'C', new UnificationEntry(circuit, Tier.Basic), 'W', new UnificationEntry(cableGtSingle, Tin));
         ModHandler.addShapedRecipe("ga_vacuum_freezer", MetaTileEntities.VACUUM_FREEZER.getStackForm(), "PPP", "CMC", "WCW", 'M', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Aluminium), 'P', MetaItems.ELECTRIC_PUMP_HV, 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced), 'W', new UnificationEntry(cableGtSingle, Gold));
