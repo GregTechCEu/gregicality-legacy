@@ -254,11 +254,15 @@ public class GAMaterials implements IMaterialHandler {
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
 
-        if (!GAConfig.Misc.generatePlatinumAndPalladium) {
-            removeFlags(Platinum, GENERATE_ORE);
-            removeFlags(Palladium, GENERATE_ORE);
-            removeFlags(Cooperite, GENERATE_ORE);
-        }
+//        if (!GAConfig.Misc.generatePlatinumAndPalladium) {
+//            removeFlags(Platinum, GENERATE_ORE);
+//            removeFlags(Palladium, GENERATE_ORE);
+//            removeFlags(Cooperite, GENERATE_ORE);
+//        }
+//        if (!GAConfig.Misc.generateIridiumAndOsmium) {
+//            removeFlags(Iridium, GENERATE_ORE);
+//            removeFlags(Osmium, GENERATE_ORE);
+//        }
 
         PlatinumMetallicPowder.setOreMultiplier(2);
         PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue);
@@ -271,6 +275,8 @@ public class GAMaterials implements IMaterialHandler {
         Platinum.addOreByProducts(Nickel, IrLeachResidue);
         Osmium.oreByProducts.clear();
         Osmium.addOreByProducts(IrLeachResidue);
+        IrOsLeachResidue.addOreByProducts(IrLeachResidue);
+        IrLeachResidue.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
 
 
         YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
