@@ -1693,6 +1693,10 @@ public class GARecipeAddition {
         List<ResourceLocation> recipesToRemove = new ArrayList<>();
 
         for (IRecipe recipe : CraftingManager.REGISTRY) {
+            if(recipe.getRecipeOutput().isEmpty()){
+                //dont know how it can be possible but its appear
+                continue;
+            }
             if (recipe.getIngredients().size() == 9) {
                 if (recipe.getIngredients().get(0).getMatchingStacks().length > 0 && Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) != Blocks.AIR) {
                     boolean match = true;

@@ -64,7 +64,7 @@ public class WorldGenRegister {
     private static void copyCustomConfigs() throws IOException {
         Path configPath = Loader.instance().getConfigDir().toPath().resolve(GTValues.MODID);
         Path worldgenRootPath = configPath.resolve("worldgen");
-        Path jarFileExtractLock = configPath.resolve("ga_worldgen_2");
+        Path jarFileExtractLock = configPath.resolve("ga_worldgen_3");
         if (!Files.exists(worldgenRootPath)) {
             Files.createDirectories(worldgenRootPath);
         }

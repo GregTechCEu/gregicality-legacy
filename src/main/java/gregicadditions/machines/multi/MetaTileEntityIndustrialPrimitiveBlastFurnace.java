@@ -25,7 +25,6 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -41,7 +40,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
@@ -57,6 +55,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.lang.Math.PI;
 
 public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWithDisplayBase {
 
@@ -79,6 +79,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     protected IItemHandlerModifiable outputInventory;
     protected IItemHandlerModifiable inputInventory;
     protected int size = 0;
+    protected final static int MAX_SIZE = 64;
 
     private ItemStack lastInputStack = ItemStack.EMPTY;
     private PrimitiveBlastFurnaceRecipe previousRecipe;
@@ -329,7 +330,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.inputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.IMPORT_ITEMS));
         this.size = getAbilities(MultiblockAbility.EXPORT_ITEMS).size();
-        this.efficiency = (int) (((size - 1.0) / (64 - 1.0)) * (50 - 90) + 90);
+        this.efficiency = (int) ((((-Math.atan(size / 4.0 / PI - MAX_SIZE / 4.0 / PI / 2) + (PI / 2)) / PI + ((-Math.atan(MAX_SIZE / 4.0 / PI / 2) + PI / 2) / PI)/2)) * 100.0);
     }
 
     private void resetTileAbilities() {
@@ -381,7 +382,7 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("YYY", "YYY", "YYY", "YYY")
-                .aisle("YYY", "I#O", "Y#Y", "Y#Y").setRepeatable(1, 64)
+                .aisle("YYY", "I#O", "Y#Y", "Y#Y").setRepeatable(1, MAX_SIZE)
                 .aisle("YYY", "YXY", "YYY", "YYY")
                 .where('X', selfPredicate())
                 .where('#', isAirPredicate())
