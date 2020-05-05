@@ -38,15 +38,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Function;
 
-@Mod(modid = GregicAdditions.MODID, name = GregicAdditions.NAME, version = GregicAdditions.VERSION,
+@Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
                 "after:tconstruct;" +
                 "after:exnihilocreatio"
 )
-public class GregicAdditions {
+public class Gregicality {
     public static final String MODID = "gtadditions";
-    public static final String NAME = "Gregic Additions Rework";
+    public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
 
 
@@ -67,7 +67,7 @@ public class GregicAdditions {
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public GregicAdditions() {
+    public Gregicality() {
         GAEnums.preInit();
 
     }

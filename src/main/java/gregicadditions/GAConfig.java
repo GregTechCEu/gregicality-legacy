@@ -2,7 +2,7 @@ package gregicadditions;
 
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = GregicAdditions.MODID)
+@Config(modid = Gregicality.MODID)
 public class GAConfig {
 
     @Config.Comment("Config options for GT6 features")

@@ -3,7 +3,7 @@ package gregicadditions.machines;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.ceu.MTECeu;
 import gregicadditions.machines.ceu.utils.CeuType;
@@ -669,7 +669,7 @@ public class GATileEntities {
 
 
     public static ResourceLocation location(String name) {
-        return new ResourceLocation(GregicAdditions.MODID, name);
+        return new ResourceLocation(Gregicality.MODID, name);
     }
 
     private static ResourceLocation gregtechId(String name) {

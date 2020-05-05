@@ -10,9 +10,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-0.14.0"
+version = "1.12.2-0.15.0"
 group = "gregicadditions"
-archivesBaseName = "Gregic_Additions_Rework"
+archivesBaseName = "Gregicality"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {

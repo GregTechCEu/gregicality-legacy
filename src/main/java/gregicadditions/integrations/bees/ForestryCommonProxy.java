@@ -11,7 +11,7 @@ import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;
@@ -46,7 +46,7 @@ import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
-@Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
+@Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class ForestryCommonProxy {
 
     public static SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
