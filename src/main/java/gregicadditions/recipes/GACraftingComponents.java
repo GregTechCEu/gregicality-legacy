@@ -18,7 +18,7 @@ import static gregtech.api.GTValues.W;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public enum GACraftingComponents     {
+public enum GACraftingComponents {
     CIRCUIT {
         @Override
         public Object getIngredient(int tier) {
@@ -73,7 +73,7 @@ public enum GACraftingComponents     {
             }
         }
     },
-    CIRCUIT_PLATE{
+    CIRCUIT_PLATE {
         @Override
         public Object getIngredient(int tier) {
             switch (tier) {
@@ -99,7 +99,7 @@ public enum GACraftingComponents     {
             }
         }
     },
-    CIRCUIT_WIRE{
+    CIRCUIT_WIRE {
         @Override
         public Object getIngredient(int tier) {
             switch (tier) {
@@ -341,12 +341,23 @@ public enum GACraftingComponents     {
         @Override
         public Object getIngredient(int tier) {
             switch (tier) {
+                case 0:
+                case 1:
+                    new ItemStack(Blocks.GLASS, 1, W);
+                case 2:
+                    GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS);
+                case 3:
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.BOROSILICATE_GLASS);
+                case 4:
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.NICKEL_GLASS);
+                case 5:
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.CHROME_GLASS);
                 case 6:
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.TUNGSTEN_GLASS);
                 case 7:
-                case 8:
-                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS);
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.IRIDIUM_GLASS);
                 default:
-                    return new ItemStack(Blocks.GLASS, 1, W);
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.OSMIUM_GLASS);
             }
         }
     },
@@ -744,7 +755,8 @@ public enum GACraftingComponents     {
                     return new UnificationEntry(plate, Neutronium);
             }
         }
-    },;
+    },
+    ;
 
     public abstract Object getIngredient(int tier);
 }

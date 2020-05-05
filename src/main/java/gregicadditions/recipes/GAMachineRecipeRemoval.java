@@ -34,9 +34,6 @@ public class GAMachineRecipeRemoval {
     public static void init() {
         for (Material m : Material.MATERIAL_REGISTRY) {
 
-            //Foil recipes
-            removeRecipesByInputs(RecipeMaps.BENDER_RECIPES, OreDictUnifier.get(plate, m), IntCircuitIngredient.getIntegratedCircuit(0));
-
             //Remove Old Rotor Recipe
             if (!OreDictUnifier.get(rotor, m).isEmpty() && GAConfig.GT6.BendingRotors && GAConfig.GT6.BendingCylinders)
                 removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(plate, m, 4), OreDictUnifier.get(ring, m)}, new FluidStack[]{SolderingAlloy.getFluid(32)});

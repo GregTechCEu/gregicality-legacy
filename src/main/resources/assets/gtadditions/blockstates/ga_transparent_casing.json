@@ -12,6 +12,36 @@
         "textures": {
           "all": "gregtech:blocks/casings/transparent/reinforced_glass"
         }
+      },
+      "borosilicate_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/borosiliate_reinforced_glass"
+        }
+      },
+      "nickel_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/nickel_reinforced_glass"
+        }
+      },
+      "chrome_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/chrome_reinforced_glass"
+        }
+      },
+      "tungsten_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/tungsten_reinforced_glass"
+        }
+      },
+      "iridium_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/iridium_reinforced_glass"
+        }
+      },
+      "osmium_reinforced_glass": {
+        "textures": {
+          "all": "gregtech:blocks/casings/transparent/osmium_reinforced_glass"
+        }
       }
     }
   }

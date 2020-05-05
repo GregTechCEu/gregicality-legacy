@@ -149,7 +149,7 @@ public class RecipeHandler {
 
         ModHandler.addShapedRecipe("curved_plate_" + material.toString(), OreDictUnifier.get(plateCurved, material), "h", "P", "C", 'P', new UnificationEntry(plate, material), 'C', "craftingToolBendingCylinder");
         ModHandler.addShapedRecipe("flatten_plate_" + material.toString(), OreDictUnifier.get(plate, material), "h", "C", 'C', new UnificationEntry(plateCurved, material));
-        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass()).input(plate, material).circuitMeta(0).outputs(OreDictUnifier.get(plateCurved, material)).buildAndRegister();
+        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass()).input(plate, material).circuitMeta(1).outputs(OreDictUnifier.get(plateCurved, material)).buildAndRegister();
         BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass()).input(plateCurved, material).circuitMeta(0).outputs(OreDictUnifier.get(plate, material)).buildAndRegister();
 
         if (!OreDictUnifier.get(rotor, material).isEmpty() && GAConfig.GT6.BendingRotors) {
@@ -162,9 +162,9 @@ public class RecipeHandler {
                 ModHandler.addShapedRecipe("foil_" + material.toString(), OreDictUnifier.get(foil, material, 2), "hPC", 'P', new UnificationEntry(plate, material), 'C', "craftingToolBendingCylinder");
             }
             if (GAConfig.GT6.BendingFoilsAutomatic) {
+                //Foil recipes
+                removeRecipesByInputs(RecipeMaps.BENDER_RECIPES, OreDictUnifier.get(plate, material), IntCircuitIngredient.getIntegratedCircuit(0));
                 CLUSTER_MILL_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass()).input(plate, material).outputs(OreDictUnifier.get(foil, material, 4)).buildAndRegister();
-            } else if (!GAConfig.GT6.BendingFoilsAutomatic || GAConfig.GT6.BendingCylinders == false) {
-                BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass()).circuitMeta(4).input(plate, material).outputs(OreDictUnifier.get(foil, material, 4)).buildAndRegister();
             }
         }
 
