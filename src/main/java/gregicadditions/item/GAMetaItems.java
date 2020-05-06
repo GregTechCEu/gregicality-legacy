@@ -33,29 +33,29 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ARRAY_CAPACITOR;
     public static MetaItem<?>.MetaValueItem ARRAY_TRANSISTOR;
 
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_REFINED;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_NANO;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
 
 
     //circuits
