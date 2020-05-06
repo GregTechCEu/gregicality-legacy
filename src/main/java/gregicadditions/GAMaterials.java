@@ -195,6 +195,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial Diphenylisophtalate = new FluidMaterial(841, "diphenylisophtalate", 0x246E57, MaterialIconSet.DULL, of(), 0);
     public static final IngotMaterial Polybenzimidazole = new IngotMaterial(840, "polybenzimidazole", 0x2D2D2D, MaterialIconSet.DULL, 0, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final FluidMaterial Chlorobenzene = new FluidMaterial(839, "chlorobenzene", 0x326A3E, MaterialIconSet.DULL, of(), 0);
+    public static final IngotMaterial Polonium = new IngotMaterial(838, "polonium", 0xC9D47E, MaterialIconSet.DULL, 4, of(), 0, Po);
+    public static final IngotMaterial Copernicium = new IngotMaterial(837, "copernicium", 0xFFFEFF, MaterialIconSet.DULL, 4, of(), 0, Cn);
 
     @Override
     public void onMaterialsInit() {
@@ -291,6 +293,12 @@ public class GAMaterials implements IMaterialHandler {
         Polycaprolactam.addFlag(GENERATE_FOIL);
         Polystyrene.addFlag(GENERATE_FOIL);
         Plastic.addFlag(GENERATE_FOIL);
+        ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
+        Plutonium.addFlag(GENERATE_FINE_WIRE);
+        Europium.addFlag(GENERATE_FINE_WIRE);
+        Arsenic.addFlag(SMELT_INTO_FLUID);
+        Polonium.addFlag(SMELT_INTO_FLUID);
+        Copernicium.addFlag(GENERATE_FLUID_BLOCK);
 
 
         GreenSapphire.addFlag(GENERATE_PLATE);

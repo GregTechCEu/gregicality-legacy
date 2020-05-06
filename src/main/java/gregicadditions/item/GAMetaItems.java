@@ -33,25 +33,29 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ARRAY_CAPACITOR;
     public static MetaItem<?>.MetaValueItem ARRAY_TRANSISTOR;
 
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_2;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_3;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_4;
-    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_5;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMS_CAPACITOR_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_2;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_3;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_4;
-    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_5;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMS_RESISTOR_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_2;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_3;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_4;
-    public static MetaItem<?>.MetaValueItem SMS_DIODE_5;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_REFINED;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_NANO;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMS_DIODE_WETWARE;
 
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_2;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_3;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_4;
-    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_5;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMS_TRANSISTOR_WETWARE;
 
 
     //circuits

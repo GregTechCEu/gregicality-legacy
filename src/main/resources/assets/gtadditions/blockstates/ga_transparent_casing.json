@@ -15,7 +15,7 @@
       },
       "borosilicate_reinforced_glass": {
         "textures": {
-          "all": "gregtech:blocks/casings/transparent/borosiliate_reinforced_glass"
+          "all": "gregtech:blocks/casings/transparent/borosilicate_reinforced_glass"
         }
       },
       "nickel_reinforced_glass": {

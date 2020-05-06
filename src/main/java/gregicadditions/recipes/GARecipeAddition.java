@@ -725,6 +725,61 @@ public class GARecipeAddition {
         MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(9000).EUt(120).blastFurnaceTemp(1784).input(dust, Silicon, 32).input(dustSmall, GalliumArsenide).outputs(SILICON_BOULE.getStackForm()).buildAndRegister();
 
+        //SMD REFINED
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(96).input(wireFine, AnnealedCopper, 6).inputs(TRANSISTOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_REFINED.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(96).input(wireFine, AnnealedCopper, 6).input(plate, Silver).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_REFINED.getStackForm(32)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(96).input(wireFine, Copper, 4).inputs(RESISTOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_REFINED.getStackForm(12)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(96).input(wireFine, Copper, 4).input(dust, Carbon).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_REFINED.getStackForm(24)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(96).input(foil, Rubber, 4).inputs(CAPACITOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_REFINED.getStackForm(8)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(120).input(foil, Rubber, 4).input(foil, Steel).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_REFINED.getStackForm(16)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).input(wireFine, Gold, 8).inputs(DIODE.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_REFINED.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).input(wireFine, Gold, 8).input(dust, Lithium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_REFINED.getStackForm(32)).buildAndRegister();
+
+        //SMD MICRO
+
+        //SMD NANO
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(494).input(wireFine, AnnealedCopper, 12).inputs(SMD_TRANSISTOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_NANO.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(494).input(wireFine, AnnealedCopper, 12).input(plate, Magnalium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_NANO.getStackForm(32)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(494).input(wireFine, RedAlloy, 8).inputs(SMD_RESISTOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_NANO.getStackForm(12)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(494).input(wireFine, RedAlloy, 8).input(dust, Graphite).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_NANO.getStackForm(24)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(480).input(foil, Silicon, 4).inputs(SMD_CAPACITOR.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_NANO.getStackForm(8)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(480).input(foil, Silicon, 4).input(foil, Titanium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_NANO.getStackForm(16)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(120).input(wireFine, ReinforcedEpoxyResin, 8).inputs(SMD_DIODE.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_NANO.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(120).input(wireFine, ReinforcedEpoxyResin, 8).input(dust, Cerium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_NANO.getStackForm(32)).buildAndRegister();
+
+        //SMD QUANTUM
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(1976).input(wireFine, Plutonium, 12).inputs(SMS_TRANSISTOR_NANO.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_QUANTUM.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(1976).input(wireFine, Plutonium, 12).input(plate, Americium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_QUANTUM.getStackForm(32)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(1976).input(wireFine, Ruthenium, 8).inputs(SMS_RESISTOR_NANO.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_QUANTUM.getStackForm(12)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(1976).input(wireFine, Ruthenium, 8).input(plate, Graphene).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_QUANTUM.getStackForm(24)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(1920).input(foil, SiliconeRubber, 4).inputs(SMS_CAPACITOR_NANO.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_QUANTUM.getStackForm(8)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(1920).input(foil, SiliconeRubber, 4).input(foil, Tungsten).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_QUANTUM.getStackForm(16)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(480).input(wireFine, HSSG, 8).inputs(SMS_DIODE_NANO.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_QUANTUM.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(480).input(wireFine, HSSG, 8).input(dust, Polonium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_QUANTUM.getStackForm(32)).buildAndRegister();
+
+        //SMD CRYSTAL
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Europium, 12).inputs(SMS_TRANSISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_CRYSTAL.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Europium, 12).input(plate, NetherStar).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_TRANSISTOR_CRYSTAL.getStackForm(32)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).inputs(SMS_RESISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_CRYSTAL.getStackForm(12)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).input(plate, Graphene).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_RESISTOR_CRYSTAL.getStackForm(24)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680).input(foil, Polybenzimidazole, 4).inputs(SMS_CAPACITOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_CRYSTAL.getStackForm(8)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680).input(foil, Polybenzimidazole, 4).input(foil, NaquadahAlloy).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_CAPACITOR_CRYSTAL.getStackForm(16)).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSE, 8).inputs(SMS_DIODE_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_CRYSTAL.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSE, 8).input(dust, Copernicium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMS_DIODE_CRYSTAL.getStackForm(32)).buildAndRegister();
+
+
         //Circuit resonatic Magneto
         CHEMICAL_RECIPES.recipeBuilder().duration(4000).EUt(30).input(dust, Yttrium, 2).fluidInputs(Oxygen.getFluid(3000)).outputs(OreDictUnifier.get(dust, YttriumOxide, 5)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(56000).EUt(480).blastFurnaceTemp(2953).input(dust, Zirconium, 10).input(dust, YttriumOxide, 1).fluidInputs(Oxygen.getFluid(10000)).outputs(OreDictUnifier.get(gemFlawed, CubicZirconia, 40)).buildAndRegister();
@@ -957,6 +1012,7 @@ public class GARecipeAddition {
         FUSION_RECIPES.recipeBuilder().fluidInputs(Mercury.getFluid(16), Magnesium.getFluid(16)).fluidOutputs(Uranium.getFluid(16)).duration(64).EUt(49152).EUToStart(240000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Gold.getFluid(16), Aluminium.getFluid(16)).fluidOutputs(Uranium.getFluid(16)).duration(64).EUt(49152).EUToStart(240000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Uranium.getFluid(16), Helium.getFluid(16)).fluidOutputs(Plutonium.getFluid(16)).duration(128).EUt(49152).EUToStart(480000000).buildAndRegister();
+        FUSION_RECIPES.recipeBuilder().fluidInputs(Arsenic.getFluid(16), Polonium.getFluid(16)).fluidOutputs(Copernicium.getFluid(16)).duration(128).EUt(49152).EUToStart(480000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Vanadium.getFluid(16), Hydrogen.getFluid(125)).fluidOutputs(Chrome.getFluid(16)).duration(64).EUt(24576).EUToStart(140000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Gallium.getFluid(16), Radon.getFluid(125)).fluidOutputs(Duranium.getFluid(16)).duration(64).EUt(16384).EUToStart(140000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Titanium.getFluid(48), Duranium.getFluid(32)).fluidOutputs(Tritanium.getFluid(16)).duration(64).EUt(32768).EUToStart(200000000).buildAndRegister();
@@ -1132,7 +1188,7 @@ public class GARecipeAddition {
 
         //Nuclear react recipe
         BOILING_THORIUM_REACTOR_RECIPES.recipeBuilder().duration(2000).EUt(480).input(stick, Thorium, 1).outputs(OreDictUnifier.get(dustTiny, Thorium, 3), OreDictUnifier.get(dustTiny, Uranium, 2), OreDictUnifier.get(dustTiny, Uranium235, 1)).buildAndRegister();
-        BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 1).outputs(OreDictUnifier.get(dustTiny, Plutonium, 3), OreDictUnifier.get(dustTiny, Plutonium241, 1)).buildAndRegister();
+        BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 1).outputs(OreDictUnifier.get(dustTiny, Plutonium, 3), OreDictUnifier.get(dustTiny, Plutonium241, 1)).chancedOutput(OreDictUnifier.get(dustTiny, Polonium, 1), 1000, 0).buildAndRegister();
         BOILING_PLUTONIUM_REACTOR_RECIPES.recipeBuilder().duration(6000).EUt(480).input(stick, Plutonium241, 1).outputs(OreDictUnifier.get(dustTiny, Naquadah, 3), OreDictUnifier.get(dustTiny, Americium, 1)).buildAndRegister();
 
         //Platinum Process

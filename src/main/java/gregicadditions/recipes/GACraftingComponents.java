@@ -343,9 +343,9 @@ public enum GACraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    new ItemStack(Blocks.GLASS, 1, W);
+                    return new ItemStack(Blocks.GLASS, 1, W);
                 case 2:
-                    GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS);
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS);
                 case 3:
                     return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.BOROSILICATE_GLASS);
                 case 4:
