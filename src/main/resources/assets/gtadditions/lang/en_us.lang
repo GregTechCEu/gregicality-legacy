@@ -182,6 +182,27 @@ metaitem.impeller.mv.name=§ePower Thruster
 metaitem.impeller.hv.name=§bAdvanced Power Thruster
 metaitem.gravitation_engine.name=§5Gravitation Engine Unit
 
+metaitem.component.smd.capacitor.nano.name=Nano SMD Capacitor
+metaitem.component.smd.capacitor.wetware.name=Wetware SMD Capacitor
+metaitem.component.smd.capacitor.quantum.name=Quantum SMD Capacitor
+metaitem.component.smd.capacitor.crystal.name=Crystal SMD Capacitor
+metaitem.component.smd.capacitor.refined.name=Refined SMD Capacitor
+metaitem.component.smd.resistor.nano.name=Nano SMD Resistor
+metaitem.component.smd.resistor.wetware.name=Wetware SMD Resistor
+metaitem.component.smd.resistor.quantum.name=Quantum SMD Resistor
+metaitem.component.smd.resistor.crystal.name=Crystal SMD Resistor
+metaitem.component.smd.resistor.refined.name=Refined SMD Resistor
+metaitem.component.smd.diode.nano.name=Nano SMD Diode
+metaitem.component.smd.diode.wetware.name=Wetware SMD Diode
+metaitem.component.smd.diode.quantum.name=Quantum SMD Diode
+metaitem.component.smd.diode.crystal.name=Crystal SMD Diode
+metaitem.component.smd.diode.refined.name=Refined SMD Diode
+metaitem.component.smd.transistor.nano.name=Nano SMD Transistor
+metaitem.component.smd.transistor.wetware.name=Wetware SMD Transistor
+metaitem.component.smd.transistor.quantum.name=Quantum SMD Transistor
+metaitem.component.smd.transistor.crystal.name=Crystal SMD Transistor
+metaitem.component.smd.transistor.refined.name=Refined SMD Transistor
+
 
 /////////////////////CIRCUIT///////////////////////////
 
