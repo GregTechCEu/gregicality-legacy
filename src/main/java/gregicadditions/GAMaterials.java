@@ -281,6 +281,7 @@ public class GAMaterials implements IMaterialHandler {
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
         Europium.addFlag(GENERATE_FINE_WIRE);
+        Cerium.addFlag(GENERATE_FINE_WIRE);
         Arsenic.addFlag(SMELT_INTO_FLUID);
         Polonium.addFlag(SMELT_INTO_FLUID);
         Copernicium.addFlag(GENERATE_FLUID_BLOCK);
