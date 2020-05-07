@@ -223,27 +223,31 @@ public class RecipeHandler {
         TurbineRotorBehavior.getInstanceFor(hugeTurbineRotorStackForm).setPartMaterial(hugeTurbineRotorStackForm, material);
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(0)
                 .input(OrePrefix.turbineBlade, material, 4)
                 .input(OrePrefix.stickLong, Titanium)
                 .outputs(smallTurbineRotorStackForm)
                 .duration(200).EUt(400)
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(1)
                 .input(OrePrefix.turbineBlade, material, 8)
-                .input(OrePrefix.stickLong, Titanium)
+                .input(OrePrefix.stickLong, Tungsten)
                 .outputs(mediumTurbineRotorStackForm)
                 .duration(400).EUt(800)
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(2)
                 .input(OrePrefix.turbineBlade, material, 16)
-                .input(OrePrefix.stickLong, Titanium)
+                .input(OrePrefix.stickLong, Osmium)
                 .outputs(largeTurbineRotorStackForm)
                 .duration(800).EUt(1600)
                 .buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(3)
                 .input(OrePrefix.turbineBlade, material, 32)
-                .input(OrePrefix.stickLong, Titanium)
+                .input(OrePrefix.stickLong, Europium)
                 .outputs(hugeTurbineRotorStackForm)
                 .duration(1600).EUt(3200)
                 .buildAndRegister();
