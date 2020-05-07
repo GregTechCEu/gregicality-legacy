@@ -96,7 +96,6 @@ public class Gregicality {
     public void init(FMLInitializationEvent event) {
         proxy.onLoad();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
-            GTBees.initBees();
             forestryProxy.init();
         }
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {

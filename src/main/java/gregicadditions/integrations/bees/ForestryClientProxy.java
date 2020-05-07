@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,11 +19,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ForestryClientProxy extends ForestryCommonProxy {
 
+	@Optional.Method(modid = "forestry")
 	@Override
 	public void preInit() {
 		super.preInit();
 	}
 
+	@Optional.Method(modid = "forestry")
 	@Override
 	public void init() {
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
@@ -31,10 +34,12 @@ public class ForestryClientProxy extends ForestryCommonProxy {
 	}
 
 
+	@Optional.Method(modid = "forestry")
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
 		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
 	}
+
 
 	@SideOnly(Side.CLIENT)
 	private static class ColoredItemItemColor implements IItemColor {
@@ -44,6 +49,7 @@ public class ForestryClientProxy extends ForestryCommonProxy {
 
 		}
 
+		@Optional.Method(modid = "forestry")
 		@Override
 		public int colorMultiplier(ItemStack stack, int tintIndex) {
 			Item item = stack.getItem();
