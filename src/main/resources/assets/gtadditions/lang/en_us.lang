@@ -988,6 +988,16 @@ material.polybenzimidazole=Polybenzimidazole
 material.chlorobenzene=Chlorobenzene
 material.polonium=Polonium
 material.copernicium=Copernicium
+material.copper_leach=Copper Leach
+material.silver_oxide=Silver Oxide
+material.silver_chloride=Silver Chloride
+material.precious_leach_nitrate=Precious Leach Nitrate
+material.potassium_metabisulfite=Potassium Metabisulfite
+material.chloroauric_acid=Chloroauric Acid
+material.lead_nitrate=Lead Nitrate
+material.gold_leach=Gold Leach
+material.gold_alloy=Gold Alloy
+material.precious_metal=Precious Metal
 
 
 

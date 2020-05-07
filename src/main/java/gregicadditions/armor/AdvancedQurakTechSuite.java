@@ -64,7 +64,7 @@ public class AdvancedQurakTechSuite extends QuarkTechSuite {
         }
 
         // Additional features
-        if (player.onGround) hoverMode = false;
+//        if (player.onGround) hoverMode = false;
         if (cont.getCharge() >= energyPerUse) player.extinguish();
 
         // Backpack mechanics
@@ -112,7 +112,7 @@ public class AdvancedQurakTechSuite extends QuarkTechSuite {
 
         // Fly mechanics
         if (flyEnabled && cont.canUse(energyPerUse)) {
-            if (hoverMode) {
+            if (hoverMode && !player.onGround) {
                 if (!ArmorUtils.isKeyDown(player, EnumKey.JUMP) || !ArmorUtils.isKeyDown(player, EnumKey.SHIFT)) {
                     if (player.motionY > 0.1D) {
                         player.motionY -= 0.1D;

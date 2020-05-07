@@ -47,11 +47,6 @@ public class GAMachineRecipeRemoval {
             if (!OreDictUnifier.get(wireFine, m).isEmpty() && !OreDictUnifier.get(stick, m).isEmpty() && GAConfig.GT5U.OldFineWireRecipes) {
                 removeRecipesByInputs(RecipeMaps.WIREMILL_RECIPES, OreDictUnifier.get(stick, m));
             }
-
-            //Remove EV+ Cable Recipes
-            if (GAConfig.GT5U.CablesGT5U) {
-
-            }
             //remove packer recipes
             removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, m, 4), IntCircuitIngredient.getIntegratedCircuit(2));
             removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, m, 9), IntCircuitIngredient.getIntegratedCircuit(1));

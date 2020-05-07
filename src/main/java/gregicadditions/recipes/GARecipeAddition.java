@@ -713,7 +713,7 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(1920).inputs(CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(), CARBON_FIBERS.getStackForm(16)).fluidInputs(Glowstone.getFluid(576)).outputs(NANO_CENTRAL_PROCESSING_UNIT_WAFER.getStackForm()).buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 4
-        ModHandler.removeRecipes(OreDictUnifier.get(OrePrefix.dust, Materials.ReinforcedEpoxyResin));
+        ModHandler.removeRecipes(OreDictUnifier.get(dust, Materials.ReinforcedEpoxyResin));
 
         AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).inputs(OreDictUnifier.get(gemExquisite, Olivine)).fluidInputs(Europium.getFluid(16)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 1000, 750).buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).inputs(OreDictUnifier.get(gemExquisite, Emerald)).fluidInputs(Europium.getFluid(16)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 1000, 750).buildAndRegister();
@@ -862,9 +862,9 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(2400).EUt(1600).input("circuitExtreme", 4).inputs(MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(6), MetaItems.CONVEYOR_MODULE_EV.getStackForm(2), NANO_MUSCLE_SUITE_LEGGINS.getStackForm()).outputs(QUARK_TECH_SUITE_LEGGINS.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(2400).EUt(1600).input("circuitExtreme", 4).inputs(MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(8), MetaItems.FIELD_GENERATOR_EV.getStackForm(2), NANO_MUSCLE_SUITE_CHESTPLATE.getStackForm()).outputs(QUARK_TECH_SUITE_CHESTPLATE.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(2400).EUt(1600).input("circuitExtreme", 2).inputs(MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.LAPOTRON_CRYSTAL.getStackForm(), MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(4), MetaItems.SENSOR_EV.getStackForm(), MetaItems.EMITTER_EV.getStackForm(), NANO_MUSCLE_SUITE_HELMET.getStackForm()).outputs(QUARK_TECH_SUITE_HELMET.getStackForm()).buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1800).EUt(7100).inputs(MetaItems.FIELD_GENERATOR_IV.getStackForm()).inputs(MetaItems.FIELD_GENERATOR_EV.getStackForm(2)).input("circuitMaster", 4).input(cableGtSingle, IVSuperconductor, 4).inputs(MetaItems.POWER_INTEGRATED_CIRCUIT.getStackForm(4)).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(GRAVITATION_ENGINE.getStackForm()).buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(3600).EUt(8192).inputs(MetaItems.HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(16)).input(cableGtSingle, IVSuperconductor, 8).inputs(GRAVITATION_ENGINE.getStackForm(2)).inputs(MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(12)).input("circuitElite", 4).inputs(QUARK_TECH_SUITE_CHESTPLATE.getStackForm()).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm()).buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(3600).EUt(8192).inputs(MetaItems.HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8)).input(cableGtSingle, IVSuperconductor, 8).inputs(GRAVITATION_ENGINE.getStackForm(2)).inputs(MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(16)).input("circuitElite", 2).inputs(ADVANCED_NANO_MUSCLE_CHESTPLATE.getStackForm()).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1800).EUt(7100).inputs(MetaItems.FIELD_GENERATOR_IV.getStackForm()).inputs(MetaItems.FIELD_GENERATOR_EV.getStackForm(2)).input("circuitMaster", 4).input(wireGtSingle, IVSuperconductor, 4).inputs(MetaItems.POWER_INTEGRATED_CIRCUIT.getStackForm(4)).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(GRAVITATION_ENGINE.getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(3600).EUt(8192).inputs(MetaItems.HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(16)).input(wireGtSingle, IVSuperconductor, 8).inputs(GRAVITATION_ENGINE.getStackForm(2)).inputs(MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(12)).input("circuitElite", 4).inputs(QUARK_TECH_SUITE_CHESTPLATE.getStackForm()).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(3600).EUt(8192).inputs(MetaItems.HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8)).input(wireGtSingle, IVSuperconductor, 8).inputs(GRAVITATION_ENGINE.getStackForm(2)).inputs(MetaItems.PLATE_IRIDIUM_ALLOY.getStackForm(16)).input("circuitElite", 2).inputs(ADVANCED_NANO_MUSCLE_CHESTPLATE.getStackForm()).fluidInputs(SolderingAlloy.getFluid(1152)).outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm()).buildAndRegister();
 
         // Jetpack cleaning recipes
         // could be better, but....
@@ -1039,6 +1039,18 @@ public class GARecipeAddition {
         }
 
         //Add Missing Superconducter Wire Tiering Recipes
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGtSingle, Tier.Superconductor, 1).input(foil, PolyphenyleneSulfide, 1).outputs(OreDictUnifier.get(cableGtSingle, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(25).input(wireGtSingle, Tier.Superconductor, 2).input(foil, PolyphenyleneSulfide, 2).outputs(OreDictUnifier.get(cableGtDouble, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(26).input(wireGtSingle, Tier.Superconductor, 4).input(foil, PolyphenyleneSulfide, 4).outputs(OreDictUnifier.get(cableGtQuadruple, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(27).input(wireGtSingle, Tier.Superconductor, 8).input(foil, PolyphenyleneSulfide, 8).outputs(OreDictUnifier.get(cableGtOctal, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(28).input(wireGtSingle, Tier.Superconductor, 16).input(foil, PolyphenyleneSulfide, 16).outputs(OreDictUnifier.get(cableGtHex, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGtDouble, Tier.Superconductor).input(foil, Rubber, 2).outputs(OreDictUnifier.get(cableGtDouble, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGtQuadruple, Tier.Superconductor).input(foil, Rubber, 4).outputs(OreDictUnifier.get(cableGtQuadruple, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGtOctal, Tier.Superconductor).input(foil, Rubber, 8).outputs(OreDictUnifier.get(cableGtOctal, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGtHex, Tier.Superconductor).input(foil, Rubber, 16).outputs(OreDictUnifier.get(cableGtHex, Tier.Superconductor)).duration(150).EUt(8).buildAndRegister();
+
+
         ModHandler.addShapelessRecipe("superonducter_wire_gtsingle_doubling", OreDictUnifier.get(wireGtDouble, Tier.Superconductor), OreDictUnifier.get(wireGtSingle, Tier.Superconductor), OreDictUnifier.get(wireGtSingle, Tier.Superconductor));
         ModHandler.addShapelessRecipe("superonducter_wire_gtdouble_doubling", OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor), OreDictUnifier.get(wireGtDouble, Tier.Superconductor), OreDictUnifier.get(wireGtDouble, Tier.Superconductor));
         ModHandler.addShapelessRecipe("superonducter_wire_gtquadruple_doubling", OreDictUnifier.get(wireGtOctal, Tier.Superconductor), OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor), OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor));
@@ -1237,7 +1249,7 @@ public class GARecipeAddition {
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidInputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(AquaRegia.getFluid(1000))
                 .EUt(30)
                 .duration(30)
@@ -1564,7 +1576,7 @@ public class GARecipeAddition {
                 .duration(100)
                 .buildAndRegister();
 
-        //platics
+        //platics Polybenzimidazole
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Diaminobenzidine.getFluid(1000))
                 .fluidInputs(Diphenylisophtalate.getFluid(1000))
@@ -1670,6 +1682,87 @@ public class GARecipeAddition {
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .EUt(30)
                 .duration(240)
+                .buildAndRegister();
+
+        //GOLD process
+
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, PreciousMetal), OreDictUnifier.get(nugget, Gold));
+
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(800).blastFurnaceTemp(750)
+                .input(dust, PreciousMetal)
+                .input(dust, Copper, 3)
+                .outputs(OreDictUnifier.get(ingot, GoldAlloy, 4))
+                .buildAndRegister();
+
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(ingot, GoldAlloy, 4)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, GoldLeach))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(PreciousLeachNitrate.getFluid(3000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, GoldLeach)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .chancedOutput(OreDictUnifier.get(dustTiny, LeadNitrate), 1000, 0)
+                .fluidOutputs(ChloroauricAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(3000)
+                .input(dust, PotassiumMetabisulfite)
+                .fluidInputs(ChloroauricAcid.getFluid(10000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Gold, 9))
+                .fluidOutputs(SulfurDioxide.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(3000)
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(PreciousLeachNitrate.getFluid(10000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SilverChloride, 3))
+                .fluidOutputs(CopperLeach.getFluid(7000))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, SilverChloride, 2)
+                .input(dust, SodiumHydroxide)
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SilverOxide, 2))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
+                .input(dust, SilverOxide, 2)
+                .input(dust, Carbon)
+                .outputs(OreDictUnifier.get(ingot, Silver, 3))
+                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .buildAndRegister();
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(3000)
+                .fluidInputs(CopperLeach.getFluid(10000))
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .buildAndRegister();
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .input(dust, CopperLeach, 9)
+                .outputs(OreDictUnifier.get(dustTiny, Copper, 8))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 5000, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Nickel), 5000, 0)
                 .buildAndRegister();
 
 
@@ -1821,7 +1914,7 @@ public class GARecipeAddition {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_compress_nether_quartz"));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_decompress_nether_quartz"));
             FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24).inputs(OreDictUnifier.get(block, NetherQuartz)).outputs(OreDictUnifier.get(gem, NetherQuartz, 4)).buildAndRegister();
-            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2).input(OrePrefix.gem, Materials.NetherQuartz, 4).outputs(new ItemStack(Blocks.QUARTZ_BLOCK)).buildAndRegister();
+            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2).input(gem, Materials.NetherQuartz, 4).outputs(new ItemStack(Blocks.QUARTZ_BLOCK)).buildAndRegister();
 
         }
 
