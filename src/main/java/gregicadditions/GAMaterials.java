@@ -11,6 +11,7 @@ import gregtech.api.util.GTLog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 import static com.google.common.collect.ImmutableList.of;
 import static gregtech.api.unification.Element.*;
@@ -191,7 +192,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Polonium = new IngotMaterial(838, "polonium", 0xC9D47E, MaterialIconSet.DULL, 4, of(), 0, Po);
     public static final IngotMaterial Copernicium = new IngotMaterial(837, "copernicium", 0xFFFEFF, MaterialIconSet.DULL, 4, of(), 0, Cn);
     public static final DustMaterial CopperLeach = new DustMaterial(836, "copper_leach", 0x765A30, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(RareEarth, 1)), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION | SMELT_INTO_FLUID | NO_SMELTING);
-    public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)),0);
+    public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial SilverChloride = new DustMaterial(834, "silver_chloride", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 1), new MaterialStack(Chlorine, 1)), DISABLE_DECOMPOSITION | GENERATE_FLUID_BLOCK);
     public static final FluidMaterial PreciousLeachNitrate = new FluidMaterial(833, "precious_leach_nitrate", 0x1D1F4D, MaterialIconSet.DULL, of(new MaterialStack(CopperLeach, 1), new MaterialStack(Silver, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PotassiumMetabisulfite = new DustMaterial(832, "potassium_metabisulfite", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 5)), 0);
@@ -208,6 +209,7 @@ public class GAMaterials implements IMaterialHandler {
         goldProcess();
 
 
+//        setBlastFurnaceTemperature(Magnalium, 1500);
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
@@ -262,8 +264,6 @@ public class GAMaterials implements IMaterialHandler {
         Alunite.addFlag(GENERATE_ORE);
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
-
-
 
 
         YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
@@ -347,7 +347,7 @@ public class GAMaterials implements IMaterialHandler {
         }
     }
 
-    public static void goldProcess(){
+    public static void goldProcess() {
         PreciousMetal.setOreMultiplier(3);
 
         Bornite.oreByProducts.clear();
@@ -366,7 +366,7 @@ public class GAMaterials implements IMaterialHandler {
         Magnetite.addOreByProducts(Iron, PreciousMetal);
     }
 
-    public static void platinumProcess(){
+    public static void platinumProcess() {
         PlatinumMetallicPowder.setOreMultiplier(2);
         PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue);
         PalladiumMetallicPowder.setOreMultiplier(2);
@@ -390,6 +390,21 @@ public class GAMaterials implements IMaterialHandler {
             OrePrefix.cableGtQuadruple.setIgnored(m);
             OrePrefix.cableGtOctal.setIgnored(m);
             OrePrefix.cableGtHex.setIgnored(m);
+        }
+    }
+
+    public static void setBlastFurnaceTemperature(IngotMaterial material, int temperature) {
+        try {
+            Field blastFurnaceTemperature = IngotMaterial.class.getField("blastFurnaceTemperature");
+            blastFurnaceTemperature.setAccessible(true);
+
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(blastFurnaceTemperature, blastFurnaceTemperature.getModifiers() & ~Modifier.FINAL);
+
+            blastFurnaceTemperature.setInt(material, temperature);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            GTLog.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
         }
     }
 
