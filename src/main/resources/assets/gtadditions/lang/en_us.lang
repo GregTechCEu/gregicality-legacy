@@ -203,6 +203,11 @@ metaitem.component.smd.transistor.quantum.name=Quantum SMD Transistor
 metaitem.component.smd.transistor.crystal.name=Crystal SMD Transistor
 metaitem.component.smd.transistor.refined.name=Refined SMD Transistor
 
+metaitem.component.smd.diode.name=Micro SMD Diode
+metaitem.component.smd.capacitor.name=Micro SMD Capacitor
+metaitem.component.smd.transistor.name=Micro SMD Transistor
+metaitem.component.smd.resistor.name=Micro SMD Resistor
+
 
 /////////////////////CIRCUIT///////////////////////////
 
