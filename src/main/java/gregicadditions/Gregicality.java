@@ -119,6 +119,7 @@ public class Gregicality {
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
+        registry.register(GAMetaBlocks.CELL_CASING);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
     }
 
@@ -127,6 +128,7 @@ public class Gregicality {
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
 
         GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()

@@ -280,7 +280,7 @@ public class GAMaterials implements IMaterialHandler {
         Plastic.addFlag(GENERATE_FOIL);
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
-        Europium.addFlag(GENERATE_FINE_WIRE);
+        Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
         Cerium.addFlag(GENERATE_FINE_WIRE);
         Arsenic.addFlag(SMELT_INTO_FLUID);
         Polonium.addFlag(SMELT_INTO_FLUID);

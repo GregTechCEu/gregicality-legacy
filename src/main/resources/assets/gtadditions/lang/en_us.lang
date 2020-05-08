@@ -590,6 +590,7 @@ gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
 gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
+gtadditions.machine.battery_tower.name=Battery Tower
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -1088,6 +1089,7 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
+gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 height. You can put energy hatch everywhere. Hatch cannot be higher than Cell Casings.
 gregtech.multiblock.large_forge_hammer.description=
 gregtech.multiblock.large_forge_hammer.tooltip=Use lubricant to Run. Processes 2 items per voltage tier difference, 1.25x faster and 90%% EUt.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
@@ -1144,6 +1146,8 @@ gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Potassium Plasma and Produce 10UV/t.
+gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower can store EU
+gtadditions.multiblock.battery_tower.tooltip.2=It will consume 10%% of the tier built.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
@@ -1169,7 +1173,7 @@ gregtech.multiblock.large_miner.chunk=Chunk: %d
 gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
 gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
 gregtech.multiblock.large_miner.done=Done !
-
+gregtech.multiblock.universal.energy_store=%d EU / %d EU
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

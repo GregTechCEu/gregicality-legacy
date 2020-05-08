@@ -1,0 +1,43 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "cell_uv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.uv"
+        }
+      },
+      "cell_zpm": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.zpm"
+        }
+      },
+      "cell_luv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.luv"
+        }
+      },
+      "cell_iv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.iv"
+        }
+      },
+      "cell_ev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.ev"
+        }
+      },
+      "cell_hv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.hv"
+        }
+      }
+    }
+  }
+}
