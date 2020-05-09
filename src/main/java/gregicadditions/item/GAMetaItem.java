@@ -97,29 +97,30 @@ public class GAMetaItem extends MaterialMetaItem {
         IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
 
 
-        SMD_CAPACITOR_NANO = addItem(240, "component.smd.capacitor.nano");
-        SMD_CAPACITOR_WETWARE = addItem(241, "component.smd.capacitor.wetware");
-        SMD_CAPACITOR_QUANTUM = addItem(242, "component.smd.capacitor.quantum");
-        SMD_CAPACITOR_CRYSTAL = addItem(243, "component.smd.capacitor.crystal");
-        SMD_CAPACITOR_REFINED = addItem(244, "component.smd.capacitor.refined");
+        SMD_TRANSISTOR_REFINED = addItem(240, "component.smd.transistor.refined");
+        SMD_RESISTOR_REFINED = addItem(241, "component.smd.resistor.refined");
+        SMD_CAPACITOR_REFINED = addItem(242, "component.smd.capacitor.refined");
+        SMD_DIODE_REFINED = addItem(243, "component.smd.diode.refined");
 
+        SMD_TRANSISTOR_NANO = addItem(244, "component.smd.transistor.nano");
         SMD_RESISTOR_NANO = addItem(245, "component.smd.resistor.nano");
-        SMD_RESISTOR_WETWARE = addItem(246, "component.smd.resistor.wetware");
-        SMD_RESISTOR_QUANTUM = addItem(247, "component.smd.resistor.quantum");
-        SMD_RESISTOR_CRYSTAL = addItem(248, "component.smd.resistor.crystal");
-        SMD_RESISTOR_REFINED = addItem(249, "component.smd.resistor.refined");
+        SMD_CAPACITOR_NANO = addItem(246, "component.smd.capacitor.nano");
+        SMD_DIODE_NANO = addItem(247, "component.smd.diode.nano");
 
-        SMD_DIODE_NANO = addItem(250, "component.smd.diode.nano");
-        SMD_DIODE_WETWARE = addItem(251, "component.smd.diode.wetware");
-        SMD_DIODE_QUANTUM = addItem(252, "component.smd.diode.quantum");
-        SMD_DIODE_CRYSTAL = addItem(253, "component.smd.diode.crystal");
-        SMD_DIODE_REFINED = addItem(254, "component.smd.diode.refined");
+        SMD_TRANSISTOR_CRYSTAL = addItem(248, "component.smd.transistor.crystal");
+        SMD_CAPACITOR_CRYSTAL = addItem(249, "component.smd.capacitor.crystal");
+        SMD_RESISTOR_CRYSTAL = addItem(250, "component.smd.resistor.crystal");
+        SMD_DIODE_CRYSTAL = addItem(251, "component.smd.diode.crystal");
 
-        SMD_TRANSISTOR_NANO = addItem(255, "component.smd.transistor.nano");
+        SMD_TRANSISTOR_QUANTUM = addItem(252, "component.smd.transistor.quantum");
+        SMD_CAPACITOR_QUANTUM = addItem(253, "component.smd.capacitor.quantum");
+        SMD_RESISTOR_QUANTUM = addItem(254, "component.smd.resistor.quantum");
+        SMD_DIODE_QUANTUM = addItem(255, "component.smd.diode.quantum");
+
         SMD_TRANSISTOR_WETWARE = addItem(256, "component.smd.transistor.wetware");
-        SMD_TRANSISTOR_QUANTUM = addItem(257, "component.smd.transistor.quantum");
-        SMD_TRANSISTOR_CRYSTAL = addItem(258, "component.smd.transistor.crystal");
-        SMD_TRANSISTOR_REFINED = addItem(259, "component.smd.transistor.refined");
+        SMD_CAPACITOR_WETWARE = addItem(257, "component.smd.capacitor.wetware");
+        SMD_RESISTOR_WETWARE = addItem(258, "component.smd.resistor.wetware");
+        SMD_DIODE_WETWARE = addItem(259, "component.smd.diode.wetware");
 
 
         HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new HugeTurbineBehavior());

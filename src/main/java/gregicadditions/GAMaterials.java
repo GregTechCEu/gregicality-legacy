@@ -11,6 +11,7 @@ import gregtech.api.util.GTLog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 import static com.google.common.collect.ImmutableList.of;
 import static gregtech.api.unification.Element.*;
@@ -38,7 +39,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Meat = new DustMaterial(996, "meat", 12667980, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final FluidMaterial NeutralMatter = new FluidMaterial(995, "neutral_matter", 3956968, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final FluidMaterial PositiveMatter = new FluidMaterial(994, "positive_matter", 11279131, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
-    public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, ImmutableList.of(), EXT2_METAL | GENERATE_RING | GENERATE_ROTOR | GENERATE_SMALL_GEAR | GENERATE_LONG_ROD | GENERATE_FRAME, Element.valueOf("Nt"), 24.0F, 12F, 655360);
+    public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, ImmutableList.of(), EXT2_METAL | GENERATE_RING | GENERATE_ROTOR | GENERATE_SMALL_GEAR | GENERATE_LONG_ROD | GENERATE_FRAME | GENERATE_DENSE, Element.valueOf("Nt"), 24.0F, 12F, 655360);
     public static final DustMaterial Pyrotheum = new DustMaterial(991, "pyrotheum", 0xFF9A3C, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial EglinSteelBase = new DustMaterial(990, "eglin_steel_base", 0x8B4513, MaterialIconSet.SAND, 6, ImmutableList.of(new MaterialStack(Iron, 4), new MaterialStack(Kanthal, 1), new MaterialStack(Invar, 5)), 0);
     public static final IngotMaterial EglinSteel = new IngotMaterial(989, "eglin_steel", 0x8B4513, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(GAMaterials.EglinSteelBase, 10), new MaterialStack(Sulfur, 1), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 1048);
@@ -191,12 +192,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Polonium = new IngotMaterial(838, "polonium", 0xC9D47E, MaterialIconSet.DULL, 4, of(), 0, Po);
     public static final IngotMaterial Copernicium = new IngotMaterial(837, "copernicium", 0xFFFEFF, MaterialIconSet.DULL, 4, of(), 0, Cn);
     public static final DustMaterial CopperLeach = new DustMaterial(836, "copper_leach", 0x765A30, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(RareEarth, 1)), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION | SMELT_INTO_FLUID | NO_SMELTING);
-    public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)),0);
+    public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial SilverChloride = new DustMaterial(834, "silver_chloride", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 1), new MaterialStack(Chlorine, 1)), DISABLE_DECOMPOSITION | GENERATE_FLUID_BLOCK);
     public static final FluidMaterial PreciousLeachNitrate = new FluidMaterial(833, "precious_leach_nitrate", 0x1D1F4D, MaterialIconSet.DULL, of(new MaterialStack(CopperLeach, 1), new MaterialStack(Silver, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PotassiumMetabisulfite = new DustMaterial(832, "potassium_metabisulfite", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 5)), 0);
     public static final FluidMaterial ChloroauricAcid = new FluidMaterial(831, "chloroauric_acid", 0xDFD11F, MaterialIconSet.SHINY, of(new MaterialStack(Hydrogen, 1), new MaterialStack(Gold, 1), new MaterialStack(Chlorine, 4)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial LeadNitrate = new DustMaterial(830, "lead_nitrate", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Lead, 1), new MaterialStack(NitrogenTetroxide, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial LeadNitrate = new DustMaterial(830, "lead_nitrate", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Lead, 1), new MaterialStack(NitrogenTetroxide, 2)), 0);
     public static final DustMaterial GoldLeach = new DustMaterial(829, "gold_leach", 0xBBA52B, MaterialIconSet.DULL, 2, of(new MaterialStack(Gold, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial GoldAlloy = new IngotMaterial(828, "gold_alloy", 0xBBA52B, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(CopperLeach, 3)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial PreciousMetal = new IngotMaterial(827, "precious_metal", 0xB99023, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION | GENERATE_ORE, null);
@@ -208,6 +209,7 @@ public class GAMaterials implements IMaterialHandler {
         goldProcess();
 
 
+//        setBlastFurnaceTemperature(Magnalium, 1500);
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
@@ -264,8 +266,6 @@ public class GAMaterials implements IMaterialHandler {
         Niter.addFlag(GENERATE_ORE);
 
 
-
-
         YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
         Manganese.addFlag(GENERATE_FOIL);
         Naquadah.addFlag(GENERATE_FOIL);
@@ -280,7 +280,8 @@ public class GAMaterials implements IMaterialHandler {
         Plastic.addFlag(GENERATE_FOIL);
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
-        Europium.addFlag(GENERATE_FINE_WIRE);
+        Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
+        Cerium.addFlag(GENERATE_FINE_WIRE);
         Arsenic.addFlag(SMELT_INTO_FLUID);
         Polonium.addFlag(SMELT_INTO_FLUID);
         Copernicium.addFlag(GENERATE_FLUID_BLOCK);
@@ -319,6 +320,7 @@ public class GAMaterials implements IMaterialHandler {
         Salt.addOreByProducts(Borax);
         RockSalt.addOreByProducts(Borax);
         Lepidolite.addOreByProducts(Boron);
+        Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
 
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
@@ -346,7 +348,7 @@ public class GAMaterials implements IMaterialHandler {
         }
     }
 
-    public static void goldProcess(){
+    public static void goldProcess() {
         PreciousMetal.setOreMultiplier(3);
 
         Bornite.oreByProducts.clear();
@@ -365,7 +367,7 @@ public class GAMaterials implements IMaterialHandler {
         Magnetite.addOreByProducts(Iron, PreciousMetal);
     }
 
-    public static void platinumProcess(){
+    public static void platinumProcess() {
         PlatinumMetallicPowder.setOreMultiplier(2);
         PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue);
         PalladiumMetallicPowder.setOreMultiplier(2);
@@ -389,6 +391,21 @@ public class GAMaterials implements IMaterialHandler {
             OrePrefix.cableGtQuadruple.setIgnored(m);
             OrePrefix.cableGtOctal.setIgnored(m);
             OrePrefix.cableGtHex.setIgnored(m);
+        }
+    }
+
+    public static void setBlastFurnaceTemperature(IngotMaterial material, int temperature) {
+        try {
+            Field blastFurnaceTemperature = IngotMaterial.class.getField("blastFurnaceTemperature");
+            blastFurnaceTemperature.setAccessible(true);
+
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(blastFurnaceTemperature, blastFurnaceTemperature.getModifiers() & ~Modifier.FINAL);
+
+            blastFurnaceTemperature.setInt(material, temperature);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            GTLog.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
         }
     }
 

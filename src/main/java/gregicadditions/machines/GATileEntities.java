@@ -12,6 +12,7 @@ import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
 import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.energy.MetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
+import gregicadditions.machines.multi.MetaTileEntityBatteryTower;
 import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
 import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
 import gregicadditions.machines.multi.TileEntityAlloyBlastFurnace;
@@ -118,6 +119,7 @@ public class GATileEntities {
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
     public static MetaTileEntityLargeNaquadahReactor LARGE_NAQUADAH_REACTOR;
+    public static MetaTileEntityBatteryTower BATTERY_TOWER;
 
     //Nuclear
     public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
@@ -557,6 +559,7 @@ public class GATileEntities {
         ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2559, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
         LARGE_FORGE_HAMMER = GregTechAPI.registerMetaTileEntity(2560, new TileEntityLargeForgeHammer(location("large_forge_hammer")));
         LARGE_NAQUADAH_REACTOR = GregTechAPI.registerMetaTileEntity(2561, new MetaTileEntityLargeNaquadahReactor(location("large_naquadah_reactor")));
+        BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(2562, new MetaTileEntityBatteryTower(location("battery_tower")));
 
         if (GAConfig.GT6.registerDums) {
             WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));

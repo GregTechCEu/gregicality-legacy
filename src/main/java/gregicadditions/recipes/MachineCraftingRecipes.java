@@ -234,6 +234,8 @@ public class MachineCraftingRecipes {
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720).fluidInputs(Kanthal.getFluid(2304), Bronze.getFluid(9216), BabbittAlloy.getFluid(2304), SolderingAlloy.getFluid(L * 10)).inputs(CountableIngredient.from(circuit, Tier.Elite), CountableIngredient.from(circuit, Tier.Elite)).inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_IV, 2), MetaTileEntities.DISTILLATION_TOWER.getStackForm(2)).outputs(GATileEntities.ADVANCED_DISTILLATION_TOWER.getStackForm()).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(Steel.getFluid(144 * 4)).input(OrePrefix.valueOf("gtMetalCasing"), Steel, 2).input(plate, Aluminium, 32).input(gear, Steel, 4).input(dust, CobaltBrass, 16).inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LV)).outputs(GATileEntities.CHEMICAL_PLANT.getStackForm()).duration(2400).EUt(120).buildAndRegister();
         ModHandler.addShapedRecipe("ga_large_forge_hammer", GATileEntities.LARGE_FORGE_HAMMER.getStackForm(), "PCP", "CHC", "PCP", 'H', MetaTileEntities.FORGE_HAMMER[0].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Basic), 'P', MetaItems.ELECTRIC_PISTON_MV);
+        ModHandler.addShapedRecipe("ga_battery_tower", GATileEntities.BATTERY_TOWER.getStackForm(), "PCP", "CHC", "PCP", 'H', MetaTileEntities.HULL[GTValues.HV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Extreme), 'P', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Talonite));
+
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720)
                 .fluidInputs(Lubricant.getFluid(2304),
                         RP1RocketFuel.getFluid(9216),
