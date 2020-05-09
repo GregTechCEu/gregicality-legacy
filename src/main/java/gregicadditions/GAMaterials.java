@@ -320,7 +320,7 @@ public class GAMaterials implements IMaterialHandler {
         Salt.addOreByProducts(Borax);
         RockSalt.addOreByProducts(Borax);
         Lepidolite.addOreByProducts(Boron);
-        Zirkelite.addOreByProducts(Thorium, Cerium, Zirconium, Niobium);
+        Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
 
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
