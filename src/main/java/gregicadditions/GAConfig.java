@@ -2,7 +2,7 @@ package gregicadditions;
 
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = GregicAdditions.MODID)
+@Config(modid = Gregicality.MODID)
 public class GAConfig {
 
     @Config.Comment("Config options for GT6 features")
@@ -19,9 +19,9 @@ public class GAConfig {
         @Config.Name("Bending - Rings are crafted with Bending Cyliders")
         public boolean BendingRings = true;
         @Config.Name("Bending - Foils are made with Bending Cylinders")
-        public boolean BendingFoils = true;
+        public boolean BendingFoils = false;
         @Config.Name("Bending - Foils are automated in the Cluster Mill instead of the Bending Machine")
-        public boolean BendingFoilsAutomatic = true;
+        public boolean BendingFoilsAutomatic = false;
         @Config.Name("Bending - Pipes are crafted with Curved Plates")
         public boolean BendingPipes = true;
 
@@ -282,6 +282,9 @@ public class GAConfig {
 
         @Config.Comment("Platinum and Palladium are found in Platinum sludge but if you need it, you can activate the generation default: [false]")
         public boolean generatePlatinumAndPalladium = false;
+
+        @Config.Comment("Iridium and Osmium are found in rarest sludge but if you need it, you can activate the generation default: [false]")
+        public boolean generateIridiumAndOsmium = false;
 
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
         @Config.RequiresMcRestart

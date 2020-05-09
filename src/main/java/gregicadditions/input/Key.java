@@ -9,7 +9,7 @@ public class Key {
     private KeyBinding binding;
     public final EnumKey KEY;
     public boolean state;
-    public static final String KEYS_CATEGORY = "Gregic Additions";
+    public static final String KEYS_CATEGORY = "Gregicality";
 
     public Key(EnumKey type) {
         this.KEY = type;

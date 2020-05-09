@@ -1,6 +1,6 @@
 package gregicadditions.client;
 
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.CrateRenderer;
 import gregicadditions.machines.DrumRenderer;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.util.HashMap;
 import java.util.Map;
 
-@EventBusSubscriber(modid = GregicAdditions.MODID, value = Side.CLIENT)
+@EventBusSubscriber(modid = Gregicality.MODID, value = Side.CLIENT)
 public class ClientHandler {
 
     public static SimpleCubeRenderer CHEMICALLY_INERT = new SimpleCubeRenderer("casings/solid/machine_casing_chemically_inert");

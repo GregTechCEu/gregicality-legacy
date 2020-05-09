@@ -182,6 +182,32 @@ metaitem.impeller.mv.name=§ePower Thruster
 metaitem.impeller.hv.name=§bAdvanced Power Thruster
 metaitem.gravitation_engine.name=§5Gravitation Engine Unit
 
+metaitem.component.smd.capacitor.nano.name=Nano SMD Capacitor
+metaitem.component.smd.capacitor.wetware.name=Wetware SMD Capacitor
+metaitem.component.smd.capacitor.quantum.name=Quantum SMD Capacitor
+metaitem.component.smd.capacitor.crystal.name=Crystal SMD Capacitor
+metaitem.component.smd.capacitor.refined.name=Refined SMD Capacitor
+metaitem.component.smd.resistor.nano.name=Nano SMD Resistor
+metaitem.component.smd.resistor.wetware.name=Wetware SMD Resistor
+metaitem.component.smd.resistor.quantum.name=Quantum SMD Resistor
+metaitem.component.smd.resistor.crystal.name=Crystal SMD Resistor
+metaitem.component.smd.resistor.refined.name=Refined SMD Resistor
+metaitem.component.smd.diode.nano.name=Nano SMD Diode
+metaitem.component.smd.diode.wetware.name=Wetware SMD Diode
+metaitem.component.smd.diode.quantum.name=Quantum SMD Diode
+metaitem.component.smd.diode.crystal.name=Crystal SMD Diode
+metaitem.component.smd.diode.refined.name=Refined SMD Diode
+metaitem.component.smd.transistor.nano.name=Nano SMD Transistor
+metaitem.component.smd.transistor.wetware.name=Wetware SMD Transistor
+metaitem.component.smd.transistor.quantum.name=Quantum SMD Transistor
+metaitem.component.smd.transistor.crystal.name=Crystal SMD Transistor
+metaitem.component.smd.transistor.refined.name=Refined SMD Transistor
+
+metaitem.component.smd.diode.name=Micro SMD Diode
+metaitem.component.smd.capacitor.name=Micro SMD Capacitor
+metaitem.component.smd.transistor.name=Micro SMD Transistor
+metaitem.component.smd.resistor.name=Micro SMD Resistor
+
 
 /////////////////////CIRCUIT///////////////////////////
 
@@ -563,7 +589,8 @@ gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
-
+gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
+gtadditions.machine.battery_tower.name=Battery Tower
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -599,7 +626,7 @@ gtadditions.machine.pump.uv.name=Advanced Pump VII
 
 gregtech.machine.air_collector.ev.name=Advanced Air Collector III
 gtadditions.machine.air_collector.iv.name=Atmosphere Collector
-gtadditions.machine.air_collector.luv.name=Atmosphere Collector
+gtadditions.machine.air_collector.luv.name=Advanced Atmosphere Collector
 
 gtadditions.machine.dehydrator.lv.name=Basic Chemical Dehydrator
 gtadditions.machine.dehydrator.mv.name=Advanced Chemical Dehydrator
@@ -670,6 +697,12 @@ tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eMax Voltage UV
 tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
+tile.ga_transparent_casing.borosilicate_reinforced_glass.name=Borosilicate Reinforced Glass
+tile.ga_transparent_casing.nickel_reinforced_glass.name=Nickel Reinforced Glass
+tile.ga_transparent_casing.chrome_reinforced_glass.name=Chrome Reinforced Glass
+tile.ga_transparent_casing.tungsten_reinforced_glass.name=Tungsten Reinforced Glass
+tile.ga_transparent_casing.iridium_reinforced_glass.name=Iridium Reinforced Glass
+tile.ga_transparent_casing.osmium_reinforced_glass.name=Osmium Reinforced Glass
 tile.ga_metal_casing.material.red_steel.name=Red Steel Casing
 tile.ga_metal_casing.material.tumbaga.name=Tumbaga Casing
 tile.ga_metal_casing.material.potin.name=Potin Casing
@@ -680,6 +713,16 @@ tile.ga_metal_casing.material.grisium.name=Grisium Casing
 tile.ga_metal_casing.material.maraging_steel.name=Maraging Steel 250 Casing
 tile.ga_metal_casing.material.inconel.name=Inconel 625 Casing
 tile.ga_metal_casing.material.hastelloy_n.name=Hastelloy N Casing
+tile.cell_casing.cell_hv.name=HV Power Cell
+tile.cell_casing.cell_ev.name=EV Power Cell
+tile.cell_casing.cell_iv.name=IV Power Cell
+tile.cell_casing.cell_luv.name=LUV Power Cell
+tile.cell_casing.cell_zpm.name=ZPM Power Cell
+tile.cell_casing.cell_uv.name=UV Power Cell
+tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
+tile.cell_casing.tooltip.2=    Capacity: §e%d
+tile.cell_casing.tooltip.3=    Max Tier: §e%s
+
 
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
 metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
@@ -961,7 +1004,7 @@ material.rhodium_filter_cake=Rhodium Filter Cake
 material.rhodium_filter_cake_solution=Rhodium Filter Cake Solution
 material.reprecipitated_rhodium=Reprecipitated Rhodium
 material.rhodium_plated_palladium=Rhodium Plated Palladium
-material.tiberiumTiberium
+material.tiberium=Tiberium
 material.ruridit=Ruridit
 material.fluorspar=Cluorspar
 material.high_durability_compound_steel=High Durability Compound Steel
@@ -979,6 +1022,19 @@ material.dichlorobenzidine=Dichlorobenzidine
 material.diaminobenzidine=Diaminobenzidine
 material.diphenylisophtalate=Diphenylisophtalate
 material.polybenzimidazole=Polybenzimidazole
+material.chlorobenzene=Chlorobenzene
+material.polonium=Polonium
+material.copernicium=Copernicium
+material.copper_leach=Copper Leach
+material.silver_oxide=Silver Oxide
+material.silver_chloride=Silver Chloride
+material.precious_leach_nitrate=Precious Leach Nitrate
+material.potassium_metabisulfite=Potassium Metabisulfite
+material.chloroauric_acid=Chloroauric Acid
+material.lead_nitrate=Lead Nitrate
+material.gold_leach=Gold Leach
+material.gold_alloy=Gold Alloy
+material.precious_metal=Precious Metal
 
 
 
@@ -1043,6 +1099,7 @@ item.meat.dustTiny=Tiny Pile of Mince Meat
 item.meat.dustSmall=Small Pile of Mince Meat
 item.meat.dust=Mince Meat
 
+gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 height. You can put energy hatch everywhere. Hatch cannot be higher than Cell Casings.
 gregtech.multiblock.large_forge_hammer.description=
 gregtech.multiblock.large_forge_hammer.tooltip=Use lubricant to Run. Processes 2 items per voltage tier difference, 1.25x faster and 90%% EUt.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
@@ -1097,20 +1154,26 @@ gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
+gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Potassium Plasma and Produce 10UV/t.
+gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower can store EU
+gtadditions.multiblock.battery_tower.tooltip.2=It will consume 10%% of the tier built.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
 gregtech.multiblock.universal.energy_used=Energy using: %d EU
-gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.02fmB
+gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.2fmB
 gregtech.multiblock.universal.overheat=Overheat !
 gregtech.machine.world_accelerator.mode.tile=Tile entity mode
 gregtech.machine.world_accelerator.mode.entity=Entity mode
 gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
 gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
-gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %.02f Units
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
 gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
+gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %dmb
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
 gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen needed to boost: %dmB
@@ -1120,7 +1183,7 @@ gregtech.multiblock.large_miner.chunk=Chunk: %d
 gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
 gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
 gregtech.multiblock.large_miner.done=Done !
-
+gregtech.multiblock.universal.energy_store=%d EU / %d EU
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot
@@ -1299,7 +1362,7 @@ material.krypton=Krypton
 material.neon=Neon
 material.zirconium=Zirconium
 material.cubic_zirconia=Cubic Zirconia
-material.prasiolite=Prosalite
+material.prasiolite=Prasiolite
 material.magneto_resonatic=Magneto Resonatic
 material.dibismuthhydroborat=Dibismuthhydroborat
 material.bismuth_tellurite=Bismuth Tellurite

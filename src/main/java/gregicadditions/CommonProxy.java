@@ -1,15 +1,16 @@
 package gregicadditions;
 
-import gregicadditions.input.Keybinds;
+import gregicadditions.item.GAMetaItems;
+import gregicadditions.worldgen.WorldGenRegister;
 
 public class CommonProxy {
 
 
-    public void preLoad(){
-
-
+    public void preLoad() {
+        GAMetaItems.init();
     }
 
     public void onLoad() {
+        WorldGenRegister.init();
     }
 }

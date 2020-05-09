@@ -2,7 +2,6 @@ package gregicadditions.machines;
 
 import gregicadditions.GAEnums;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.machines.multi.simple.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -193,7 +192,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
             if (recipeM == null) {
                 return null;
             }
-            List<IItemHandlerModifiable> itemInputs = ((LargeSimpleRecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
+            List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             Tuple recipePerInput = itemInputs.stream()
                     .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
                     .filter(tuple -> tuple.getRecipe() != null)

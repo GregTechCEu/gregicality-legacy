@@ -54,7 +54,13 @@ public class GATransparentCasing extends VariantBlock<GATransparentCasing.Casing
 
 	public enum CasingType implements IStringSerializable {
 
-		REINFORCED_GLASS("reinforced_glass");
+		REINFORCED_GLASS("reinforced_glass"),
+		BOROSILICATE_GLASS("borosilicate_reinforced_glass"),
+		NICKEL_GLASS("nickel_reinforced_glass"),
+		CHROME_GLASS("chrome_reinforced_glass"),
+		TUNGSTEN_GLASS("tungsten_reinforced_glass"),
+		IRIDIUM_GLASS("iridium_reinforced_glass"),
+		OSMIUM_GLASS("osmium_reinforced_glass");
 
 		private final String name;
 

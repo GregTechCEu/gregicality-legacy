@@ -1,11 +1,9 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
-import gregicadditions.item.BasicMaterial;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.MaterialIconSet;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
@@ -13,6 +11,7 @@ import gregtech.api.util.GTLog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 import static com.google.common.collect.ImmutableList.of;
 import static gregtech.api.unification.Element.*;
@@ -20,8 +19,9 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.*;
 import static gregtech.api.unification.material.type.FluidMaterial.MatFlags.GENERATE_FLUID_BLOCK;
 import static gregtech.api.unification.material.type.FluidMaterial.MatFlags.GENERATE_PLASMA;
+import static gregtech.api.unification.material.type.GemMaterial.MatFlags.GENERATE_LENSE;
 import static gregtech.api.unification.material.type.GemMaterial.MatFlags.HIGH_SIFTER_OUTPUT;
-import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.GENERATE_DENSE;
+import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.*;
 import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.*;
 import static gregtech.api.util.GTUtility.createFlag;
@@ -32,15 +32,15 @@ public class GAMaterials implements IMaterialHandler {
     public static final long GENERATE_METAL_CASING = createFlag(46);
 
     public static long STD_METAL = GENERATE_PLATE;
-    static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | SolidMaterial.MatFlags.GENERATE_ROD | IngotMaterial.MatFlags.GENERATE_BOLT_SCREW | SolidMaterial.MatFlags.GENERATE_GEAR | IngotMaterial.MatFlags.GENERATE_FOIL | IngotMaterial.MatFlags.GENERATE_FINE_WIRE;
-    public static final FluidMaterial FishOil = new FluidMaterial(999, "fish_oil", 14467421, MaterialIconSet.FLUID, ImmutableList.of(), FluidMaterial.MatFlags.GENERATE_FLUID_BLOCK | Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final FluidMaterial RawGrowthMedium = new FluidMaterial(998, "raw_growth_medium", 10777425, MaterialIconSet.FLUID, ImmutableList.of(), FluidMaterial.MatFlags.GENERATE_FLUID_BLOCK | Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final FluidMaterial SterileGrowthMedium = new FluidMaterial(997, "sterilized_growth_medium", 11306862, MaterialIconSet.FLUID, ImmutableList.of(), FluidMaterial.MatFlags.GENERATE_FLUID_BLOCK | Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final DustMaterial Meat = new DustMaterial(996, "meat", 12667980, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final FluidMaterial NeutralMatter = new FluidMaterial(995, "neutral_matter", 3956968, MaterialIconSet.FLUID, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final FluidMaterial PositiveMatter = new FluidMaterial(994, "positive_matter", 11279131, MaterialIconSet.FLUID, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, ImmutableList.of(), EXT2_METAL | IngotMaterial.MatFlags.GENERATE_RING | IngotMaterial.MatFlags.GENERATE_ROTOR | IngotMaterial.MatFlags.GENERATE_SMALL_GEAR | SolidMaterial.MatFlags.GENERATE_LONG_ROD | GENERATE_FRAME, Element.valueOf("Nt"), 24.0F, 12F, 655360);
-    public static final DustMaterial Pyrotheum = new DustMaterial(991, "pyrotheum", 0xFF9A3C, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION | DustMaterial.MatFlags.EXCLUDE_BLOCK_CRAFTING_RECIPES | DustMaterial.MatFlags.SMELT_INTO_FLUID);
+    static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | GENERATE_ROD | GENERATE_BOLT_SCREW | GENERATE_GEAR | GENERATE_FOIL | GENERATE_FINE_WIRE;
+    public static final FluidMaterial FishOil = new FluidMaterial(999, "fish_oil", 14467421, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
+    public static final FluidMaterial RawGrowthMedium = new FluidMaterial(998, "raw_growth_medium", 10777425, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
+    public static final FluidMaterial SterileGrowthMedium = new FluidMaterial(997, "sterilized_growth_medium", 11306862, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
+    public static final DustMaterial Meat = new DustMaterial(996, "meat", 12667980, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
+    public static final FluidMaterial NeutralMatter = new FluidMaterial(995, "neutral_matter", 3956968, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
+    public static final FluidMaterial PositiveMatter = new FluidMaterial(994, "positive_matter", 11279131, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, ImmutableList.of(), EXT2_METAL | GENERATE_RING | GENERATE_ROTOR | GENERATE_SMALL_GEAR | GENERATE_LONG_ROD | GENERATE_FRAME | GENERATE_DENSE, Element.valueOf("Nt"), 24.0F, 12F, 655360);
+    public static final DustMaterial Pyrotheum = new DustMaterial(991, "pyrotheum", 0xFF9A3C, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial EglinSteelBase = new DustMaterial(990, "eglin_steel_base", 0x8B4513, MaterialIconSet.SAND, 6, ImmutableList.of(new MaterialStack(Iron, 4), new MaterialStack(Kanthal, 1), new MaterialStack(Invar, 5)), 0);
     public static final IngotMaterial EglinSteel = new IngotMaterial(989, "eglin_steel", 0x8B4513, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(GAMaterials.EglinSteelBase, 10), new MaterialStack(Sulfur, 1), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 1048);
     public static final IngotMaterial Grisium = new IngotMaterial(987, "grisium", 0x355D6A, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(Titanium, 9), new MaterialStack(Carbon, 9), new MaterialStack(Potassium, 9), new MaterialStack(Lithium, 9), new MaterialStack(Sulfur, 9), new MaterialStack(Hydrogen, 5)), EXT2_METAL | GENERATE_METAL_CASING, null, 3850);
@@ -52,23 +52,23 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Tumbaga = new IngotMaterial(981, "tumbaga", 0xFFB20F, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(Gold, 7), new MaterialStack(Bronze, 3)), EXT2_METAL | GENERATE_METAL_CASING, null, 1200);
     public static final IngotMaterial Stellite = new IngotMaterial(980, "stellite", 0x9991A5, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(Cobalt, 9), new MaterialStack(Chrome, 9), new MaterialStack(Manganese, 5), new MaterialStack(Titanium, 2)), EXT2_METAL | GENERATE_METAL_CASING, null, 4310);
     public static final IngotMaterial Talonite = new IngotMaterial(979, "talonite", 0x9991A5, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(Cobalt, 4), new MaterialStack(Chrome, 3), new MaterialStack(Phosphorus, 2), new MaterialStack(Molybdenum, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 3454);
-    public static final FluidMaterial IronChloride = new FluidMaterial(978, "iron_chloride", 0x060b0b, MaterialIconSet.FLUID, ImmutableList.of(new MaterialStack(Iron, 1), new MaterialStack(Chlorine, 3)), Material.MatFlags.DECOMPOSITION_BY_ELECTROLYZING);
+    public static final FluidMaterial IronChloride = new FluidMaterial(978, "iron_chloride", 0x060b0b, MaterialIconSet.FLUID, ImmutableList.of(new MaterialStack(Iron, 1), new MaterialStack(Chlorine, 3)), DECOMPOSITION_BY_ELECTROLYZING);
     public static final IngotMaterial MVSuperconductorBase = new IngotMaterial(976, "mv_superconductor_base", 0x535353, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Cadmium, 5), new MaterialStack(Magnesium, 1), new MaterialStack(Oxygen, 6)), STD_METAL, null, 2500);
     public static final IngotMaterial HVSuperconductorBase = new IngotMaterial(975, "hv_superconductor_base", 0x4a2400, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Titanium, 1), new MaterialStack(Barium, 9), new MaterialStack(Copper, 10), new MaterialStack(Oxygen, 20)), STD_METAL, null, 3300);
     public static final IngotMaterial EVSuperconductorBase = new IngotMaterial(974, "ev_superconductor_base", 0x005800, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Uranium, 1), new MaterialStack(Platinum, 3)), STD_METAL, null, 4400);
     public static final IngotMaterial IVSuperconductorBase = new IngotMaterial(973, "iv_superconductor_base", 0x300030, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Vanadium, 1), new MaterialStack(Indium, 3)), STD_METAL, null, 5200);
     public static final IngotMaterial LuVSuperconductorBase = new IngotMaterial(972, "luv_superconductor_base", 0x7a3c00, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Indium, 4), new MaterialStack(Bronze, 8), new MaterialStack(Barium, 2), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 14)), STD_METAL, null, 6000);
     public static final IngotMaterial ZPMSuperconductorBase = new IngotMaterial(971, "zpm_superconductor_base", 0x111111, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadah, 4), new MaterialStack(Indium, 2), new MaterialStack(Palladium, 6), new MaterialStack(Osmium, 1)), STD_METAL, null, 8100);
-    public static final BasicMaterial MVSuperconductor = new BasicMaterial(970, "mv_superconductor", 0x535353, MaterialIconSet.SHINY);
-    public static final BasicMaterial HVSuperconductor = new BasicMaterial(969, "hv_superconductor", 0x4a2400, MaterialIconSet.SHINY);
-    public static final BasicMaterial EVSuperconductor = new BasicMaterial(968, "ev_superconductor", 0x005800, MaterialIconSet.SHINY);
-    public static final BasicMaterial IVSuperconductor = new BasicMaterial(967, "iv_superconductor", 0x300030, MaterialIconSet.SHINY);
-    public static final BasicMaterial LuVSuperconductor = new BasicMaterial(966, "luv_superconductor", 0x7a3c00, MaterialIconSet.SHINY);
-    public static final BasicMaterial ZPMSuperconductor = new BasicMaterial(964, "zpm_superconductor", 0x111111, MaterialIconSet.SHINY);
-    public static final IngotMaterial Enderium = new IngotMaterial(963, "enderium", 0x23524a, MaterialIconSet.METALLIC, 3, ImmutableList.of(new MaterialStack(Lead, 3), new MaterialStack(Platinum, 1), new MaterialStack(EnderPearl, 1)), EXT2_METAL | Material.MatFlags.DISABLE_DECOMPOSITION, null, 8.0F, 3.0F, 1280, 4500);
-    public static final DustMaterial MicaPulp = new DustMaterial(962, "mica_based", 0x917445, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final DustMaterial AluminoSilicateWool = new DustMaterial(961, "alumino_silicate_wool", 0xbbbbbb, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
-    public static final DustMaterial QuartzSand = new DustMaterial(960, "sand", 0xd2cfbc, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION);
+    public static final IngotMaterial MVSuperconductor = new IngotMaterial(970, "mv_superconductor", 0x535353, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial HVSuperconductor = new IngotMaterial(969, "hv_superconductor", 0x4a2400, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial EVSuperconductor = new IngotMaterial(968, "ev_superconductor", 0x005800, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial IVSuperconductor = new IngotMaterial(967, "iv_superconductor", 0x300030, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial LuVSuperconductor = new IngotMaterial(966, "luv_superconductor", 0x7a3c00, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial ZPMSuperconductor = new IngotMaterial(964, "zpm_superconductor", 0x111111, MaterialIconSet.SHINY, 1, of(), 0);
+    public static final IngotMaterial Enderium = new IngotMaterial(963, "enderium", 0x23524a, MaterialIconSet.METALLIC, 3, ImmutableList.of(new MaterialStack(Lead, 3), new MaterialStack(Platinum, 1), new MaterialStack(EnderPearl, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 8.0F, 3.0F, 1280, 4500);
+    public static final DustMaterial MicaPulp = new DustMaterial(962, "mica_based", 0x917445, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
+    public static final DustMaterial AluminoSilicateWool = new DustMaterial(961, "alumino_silicate_wool", 0xbbbbbb, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
+    public static final DustMaterial QuartzSand = new DustMaterial(960, "sand", 0xd2cfbc, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final DustMaterial Massicot = new DustMaterial(959, "massicot", 8943149, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Lead, 1), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial AntimonyTrioxide = new DustMaterial(958, "antimony_trioxide", 8092544, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Antimony, 2), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial Zincite = new DustMaterial(957, "zincite", 8947843, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Zinc, 1), new MaterialStack(Oxygen, 1)), 0);
@@ -76,7 +76,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial ArsenicTrioxide = new DustMaterial(955, "arsenic_trioxide", 15856113, MaterialIconSet.ROUGH, 1, ImmutableList.of(new MaterialStack(Arsenic, 2), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial CupricOxide = new DustMaterial(954, "cupric_oxide", 526344, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Copper, 1), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial Ferrosilite = new DustMaterial(953, "ferrosilite", 5256470, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Iron, 1), new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 3)), 0);
-    public static final DustMaterial Cryotheum = new DustMaterial(952, "cryotheum", 0x01F3F6, MaterialIconSet.SAND, 1, ImmutableList.of(), Material.MatFlags.DISABLE_DECOMPOSITION | DustMaterial.MatFlags.EXCLUDE_BLOCK_CRAFTING_RECIPES | DustMaterial.MatFlags.SMELT_INTO_FLUID);
+    public static final DustMaterial Cryotheum = new DustMaterial(952, "cryotheum", 0x01F3F6, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial Blizz = new DustMaterial(951, "blizz", 0x01F3F6, MaterialIconSet.DULL, 1, ImmutableList.of(), NO_SMELTING | SMELT_INTO_FLUID | MORTAR_GRINDABLE | BURNING);
     public static final DustMaterial Snow = new DustMaterial(950, "snow", 0xFFFFFF, MaterialIconSet.OPAL, 1, ImmutableList.of(), NO_SMELTING);
     public static final FluidMaterial HighPressureSteam = new FluidMaterial(949, "high_pressure_steam", 0xFFFFFF, MaterialIconSet.GAS, of(new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(1000);
@@ -128,33 +128,33 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial PlatinumConcentrate = new FluidMaterial(903, "platinum_concentrate", Platinum.materialRGB, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial PlatinumSaltCrude = new DustMaterial(902, "platinum_salt", Platinum.materialRGB, MaterialIconSet.DULL, 2, of(), 0);
     public static final DustMaterial PlatinumSaltRefined = new DustMaterial(901, "refined_platinum_salt", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
-    public static final DustMaterial PlatinumMetallicPowder = new DustMaterial(900, "platinum_metallic_powder", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
+    public static final DustMaterial PlatinumMetallicPowder = new DustMaterial(900, "platinum_metallic_powder", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(), GENERATE_ORE);
     public static final FluidMaterial AquaRegia = new FluidMaterial(899, "aqua_regia", 0xFFB132, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial PlatinumResidue = new DustMaterial(898, "platinum_residue", 0x64632E, MaterialIconSet.ROUGH, 2, of(), 0);
     public static final FluidMaterial AmmoniumChloride = new FluidMaterial(897, "ammonium_chloride", 0xFFFFFF, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial PlatinumRawPowder = new DustMaterial(896, "reprecipitated_platinum", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final FluidMaterial PalladiumAmmonia = new FluidMaterial(895, "palladium_enriched_ammonia", Platinum.materialRGB, MaterialIconSet.FLUID, of(), 0);
-    public static final DustMaterial PalladiumMetallicPowder = new DustMaterial(894, "palladium_metallic_powder", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
+    public static final DustMaterial PalladiumMetallicPowder = new DustMaterial(894, "palladium_metallic_powder", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), GENERATE_ORE);
     public static final DustMaterial PalladiumRawPowder = new DustMaterial(893, "reprecipitated_palladium", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final DustMaterial PalladiumSalt = new DustMaterial(892, "palladium_salt", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final FluidMaterial Sodiumformate = new FluidMaterial(891, "sodium_formate", 0xFFAAAA, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial Sodiumsulfate = new FluidMaterial(890, "sodium_sulfate", 0xFFFFFF, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial FormicAcid = new FluidMaterial(889, "formic_acid", 0xFFAA77, MaterialIconSet.FLUID, of(), 0);
-    public static final FluidMaterial PotassiumDisulfate = new FluidMaterial(888, "potassium_disulfate", 0xFBBB66, MaterialIconSet.FLUID, of(), 0);
+    public static final DustMaterial PotassiumDisulfate = new DustMaterial(888, "potassium_disulfate", 0xFBBB66, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial LeachResidue = new DustMaterial(887, "leach_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(), 0);
     public static final FluidMaterial RhodiumSulfate = new FluidMaterial(886, "rhodium_sulfate", 0xEEAA55, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial RhodiumSulfateSolution = new FluidMaterial(885, "rhodium_sulfate_solution", 0xFFBB66, MaterialIconSet.FLUID, of(), 0);
-    public static final DustMaterial CalciumChloride = new DustMaterial(884, "calcium_chloride", 0xFFFFFF, MaterialIconSet.DULL, 2, of(), 0);
+    public static final DustMaterial CalciumChloride = new DustMaterial(884, "calcium_chloride", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Calcium, 1), new MaterialStack(Chlorine, 2)), 0);
     public static final IngotMaterial Ruthenium = new IngotMaterial(883, "ruthenium", 0x646464, MaterialIconSet.METALLIC, 2, of(), EXT2_METAL, null, 2607);
     public static final DustMaterial SodiumRuthenate = new DustMaterial(882, "sodium_ruthenate", 0x3A40CB, MaterialIconSet.SHINY, 2, of(), 0);
     public static final DustMaterial RutheniumTetroxide = new DustMaterial(881, "ruthenium_tetroxide", 0xC7C7C7, MaterialIconSet.DULL, 2, of(), SMELT_INTO_FLUID | GENERATE_FLUID_BLOCK);
     public static final FluidMaterial HotRutheniumTetroxideSolution = new FluidMaterial(880, "hot_ruthenium_tetroxide_solution", 0xC7C7C7, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial RutheniumTetroxideSolution = new FluidMaterial(879, "ruthenium_tetroxide_solution", 0xC7C7C7, MaterialIconSet.FLUID, of(), 0);
-    public static final DustMaterial IrOsLeachResidue = new DustMaterial(878, "rarest_metal_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(), 0);
-    public static final DustMaterial IrLeachResidue = new DustMaterial(877, "iridium_metal_residue", 0x846649, MaterialIconSet.ROUGH, 2, of(), 0);
+    public static final DustMaterial IrOsLeachResidue = new DustMaterial(878, "rarest_metal_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(), GENERATE_ORE);
+    public static final DustMaterial IrLeachResidue = new DustMaterial(877, "iridium_metal_residue", 0x846649, MaterialIconSet.ROUGH, 2, of(), GENERATE_ORE);
     public static final DustMaterial PGSDResidue = new DustMaterial(876, "sludge_dust_residue", 0x846649, MaterialIconSet.DULL, 2, of(), 0);
     public static final FluidMaterial AcidicOsmiumSolution = new FluidMaterial(875, "acidic_osmium_solution", 0x846649, MaterialIconSet.FLUID, of(), 0);
-    public static final FluidMaterial IridiumDioxide = new FluidMaterial(874, "iridium_dioxide", 0x846649, MaterialIconSet.FLUID, of(), 0);
+    public static final DustMaterial IridiumDioxide = new DustMaterial(874, "iridium_dioxide", 0x846649, MaterialIconSet.DULL, 0, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final FluidMaterial OsmiumSolution = new FluidMaterial(873, "osmium_solution", 0x846649, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial AcidicIridiumSolution = new FluidMaterial(872, "acidic_iridium_solution", 0x846649, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial IridiumChloride = new DustMaterial(871, "iridium_chloride", 0x846649, MaterialIconSet.LAPIS, 2, of(), 0);
@@ -180,22 +180,41 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial AdemicSteel = new DustMaterial(851, "ademic_steel", 0xCCCCCC, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final DustMaterial RawAdemicSteel = new DustMaterial(850, "raw_ademic_steel", 0xEDEDED, MaterialIconSet.ROUGH, 2, of(), 0);
     public static final DustMaterial PotassiumNitrade = new DustMaterial(849, "potassium_nitrade", 0x81228D, MaterialIconSet.DULL, 0, of(), 0);
-    public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(), 0);
+    public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final FluidMaterial Nitrochlorobenzene = new FluidMaterial(847, "nitrochlorobenzene", 0x8FB51A, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Dimethylbenzene = new FluidMaterial(846, "dimethylbenzene", 0x669C40, MaterialIconSet.DULL, of(), 0);
     public static final DustMaterial Potassiumdichromate = new DustMaterial(845, "potassiumdichromate", 0xFF087F, MaterialIconSet.DULL, 0, of(), 0);
     public static final FluidMaterial Dichlorobenzidine = new FluidMaterial(843, "dichlorobenzidine", 0xA1DEA6, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Diaminobenzidine = new FluidMaterial(842, "diaminobenzidine", 0x337D59, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Diphenylisophtalate = new FluidMaterial(841, "diphenylisophtalate", 0x246E57, MaterialIconSet.DULL, of(), 0);
-    public static final DustMaterial Polybenzimidazole = new DustMaterial(840, "polybenzimidazole", 0x2D2D2D, MaterialIconSet.DULL, 0, of(), 0);
+    public static final IngotMaterial Polybenzimidazole = new IngotMaterial(840, "polybenzimidazole", 0x2D2D2D, MaterialIconSet.DULL, 0, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final FluidMaterial Chlorobenzene = new FluidMaterial(839, "chlorobenzene", 0x326A3E, MaterialIconSet.DULL, of(), 0);
+    public static final IngotMaterial Polonium = new IngotMaterial(838, "polonium", 0xC9D47E, MaterialIconSet.DULL, 4, of(), 0, Po);
+    public static final IngotMaterial Copernicium = new IngotMaterial(837, "copernicium", 0xFFFEFF, MaterialIconSet.DULL, 4, of(), 0, Cn);
+    public static final DustMaterial CopperLeach = new DustMaterial(836, "copper_leach", 0x765A30, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(RareEarth, 1)), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION | SMELT_INTO_FLUID | NO_SMELTING);
+    public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)), 0);
+    public static final DustMaterial SilverChloride = new DustMaterial(834, "silver_chloride", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 1), new MaterialStack(Chlorine, 1)), DISABLE_DECOMPOSITION | GENERATE_FLUID_BLOCK);
+    public static final FluidMaterial PreciousLeachNitrate = new FluidMaterial(833, "precious_leach_nitrate", 0x1D1F4D, MaterialIconSet.DULL, of(new MaterialStack(CopperLeach, 1), new MaterialStack(Silver, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial PotassiumMetabisulfite = new DustMaterial(832, "potassium_metabisulfite", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 5)), 0);
+    public static final FluidMaterial ChloroauricAcid = new FluidMaterial(831, "chloroauric_acid", 0xDFD11F, MaterialIconSet.SHINY, of(new MaterialStack(Hydrogen, 1), new MaterialStack(Gold, 1), new MaterialStack(Chlorine, 4)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial LeadNitrate = new DustMaterial(830, "lead_nitrate", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Lead, 1), new MaterialStack(NitrogenTetroxide, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial GoldLeach = new DustMaterial(829, "gold_leach", 0xBBA52B, MaterialIconSet.DULL, 2, of(new MaterialStack(Gold, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial GoldAlloy = new IngotMaterial(828, "gold_alloy", 0xBBA52B, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(CopperLeach, 3)), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial PreciousMetal = new IngotMaterial(827, "precious_metal", 0xB99023, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION | GENERATE_ORE, null);
+
 
     @Override
     public void onMaterialsInit() {
+        platinumProcess();
+        goldProcess();
 
+
+//        setBlastFurnaceTemperature(Magnalium, 1500);
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
         NiobiumTitanium.setFluidPipeProperties(450, 2900, true);
+
         MVSuperconductorBase.setCableProperties(128, 1, 2);
         HVSuperconductorBase.setCableProperties(512, 1, 2);
         EVSuperconductorBase.setCableProperties(2048, 2, 2);
@@ -203,49 +222,73 @@ public class GAMaterials implements IMaterialHandler {
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
 
+        MVSuperconductor.setCableProperties(128, 2, 0);
+        ignoreCable(MVSuperconductor);
+        HVSuperconductor.setCableProperties(512, 2, 0);
+        ignoreCable(HVSuperconductor);
+        EVSuperconductor.setCableProperties(2048, 4, 0);
+        ignoreCable(EVSuperconductor);
+        IVSuperconductor.setCableProperties(8192, 4, 0);
+        ignoreCable(IVSuperconductor);
+        LuVSuperconductor.setCableProperties(32768, 8, 0);
+        ignoreCable(LuVSuperconductor);
+        ZPMSuperconductor.setCableProperties(131072, 8, 0);
+        ignoreCable(ZPMSuperconductor);
 
+
+        Radon.addFlag(GENERATE_PLASMA);
+        Potassium.addFlag(GENERATE_PLASMA);
+        Helium.addFlag(GENERATE_PLASMA);
+        Oxygen.addFlag(GENERATE_PLASMA);
+        Iron.addFlag(GENERATE_PLASMA);
+        Nickel.addFlag(GENERATE_PLASMA);
 
         Tellurium.addFlag(GENERATE_ORE);
-        Radon.addFlag(GENERATE_PLASMA);
-        Diatomite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        GarnetSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Mica.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Asbestos.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Kyanite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Pollucite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        BasalticMineralSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        GraniticMineralSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        FullersEarth.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Gypsum.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Zeolite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Kaolinite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Dolomite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Wollastonite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Trona.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Andradite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Vermiculite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        Alunite.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-        GlauconiteSand.addFlag(DustMaterial.MatFlags.GENERATE_ORE);
-
-//        if (!Misc.generatePlatinumAndPalladium) {
-//            removeFlags(Platinum, GENERATE_ORE);
-//            removeFlags(Palladium, GENERATE_ORE);
-//        }
+        Diatomite.addFlag(GENERATE_ORE);
+        GarnetSand.addFlag(GENERATE_ORE);
+        Mica.addFlag(GENERATE_ORE);
+        Asbestos.addFlag(GENERATE_ORE);
+        Kyanite.addFlag(GENERATE_ORE);
+        Pollucite.addFlag(GENERATE_ORE);
+        BasalticMineralSand.addFlag(GENERATE_ORE);
+        GraniticMineralSand.addFlag(GENERATE_ORE);
+        FullersEarth.addFlag(GENERATE_ORE);
+        Gypsum.addFlag(GENERATE_ORE);
+        Zeolite.addFlag(GENERATE_ORE);
+        Kaolinite.addFlag(GENERATE_ORE);
+        Dolomite.addFlag(GENERATE_ORE);
+        Wollastonite.addFlag(GENERATE_ORE);
+        Trona.addFlag(GENERATE_ORE);
+        Andradite.addFlag(GENERATE_ORE);
+        Vermiculite.addFlag(GENERATE_ORE);
+        Alunite.addFlag(GENERATE_ORE);
+        GlauconiteSand.addFlag(GENERATE_ORE);
+        Niter.addFlag(GENERATE_ORE);
 
 
-        YttriumBariumCuprate.addFlag(IngotMaterial.MatFlags.GENERATE_FINE_WIRE);
-        Manganese.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Naquadah.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        NaquadahEnriched.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Duranium.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Graphene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Polytetrafluoroethylene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Helium.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
-        Oxygen.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
-        Iron.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
-        Nickel.addFlag(FluidMaterial.MatFlags.GENERATE_PLASMA);
+        YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
+        Manganese.addFlag(GENERATE_FOIL);
+        Naquadah.addFlag(GENERATE_FOIL);
+        NaquadahEnriched.addFlag(GENERATE_FOIL);
+        Duranium.addFlag(GENERATE_FOIL);
+        Graphene.addFlag(GENERATE_FOIL);
+        Polytetrafluoroethylene.addFlag(GENERATE_FOIL);
+        Rubber.addFlag(GENERATE_FOIL);
+        Polybenzimidazole.addFlag(GENERATE_FOIL);
+        Polycaprolactam.addFlag(GENERATE_FOIL);
+        Polystyrene.addFlag(GENERATE_FOIL);
+        Plastic.addFlag(GENERATE_FOIL);
+        ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
+        Plutonium.addFlag(GENERATE_FINE_WIRE);
+        Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
+        Cerium.addFlag(GENERATE_FINE_WIRE);
+        Arsenic.addFlag(SMELT_INTO_FLUID);
+        Polonium.addFlag(SMELT_INTO_FLUID);
+        Copernicium.addFlag(GENERATE_FLUID_BLOCK);
+
+
         GreenSapphire.addFlag(GENERATE_PLATE);
-        GreenSapphire.addFlag(GemMaterial.MatFlags.GENERATE_LENSE);
+        GreenSapphire.addFlag(GENERATE_LENSE);
         Iron.addFlag(GENERATE_METAL_CASING);
         Tritanium.addFlag(GENERATE_FRAME);
         RedSteel.addFlag(GENERATE_GEAR);
@@ -260,23 +303,24 @@ public class GAMaterials implements IMaterialHandler {
         BlackSteel.addFlag(GENERATE_METAL_CASING | GENERATE_GEAR);
         HSSG.addFlag(GENERATE_METAL_CASING);
         HSSS.addFlag(GENERATE_METAL_CASING);
+        Naquadria.addFlag(GENERATE_METAL_CASING | GENERATE_DENSE | GENERATE_GEAR);
 
-        Apatite.addFlag(SolidMaterial.MatFlags.GENERATE_ROD);
+        Apatite.addFlag(GENERATE_ROD);
+        Iron.addFlag(GENERATE_LONG_ROD);
+        Bronze.addFlag(GENERATE_LONG_ROD);
+        Steel.addFlag(GENERATE_LONG_ROD);
+        StainlessSteel.addFlag(GENERATE_LONG_ROD);
 
-        Iron.addFlag(SolidMaterial.MatFlags.GENERATE_LONG_ROD);
-        Bronze.addFlag(SolidMaterial.MatFlags.GENERATE_LONG_ROD);
-        Steel.addFlag(SolidMaterial.MatFlags.GENERATE_LONG_ROD);
-        StainlessSteel.addFlag(SolidMaterial.MatFlags.GENERATE_LONG_ROD);
+        Steel.addFlag(DISABLE_DECOMPOSITION);
 
-        Steel.addFlag(Material.MatFlags.DISABLE_DECOMPOSITION);
+        Rubber.addFlag(GENERATE_BOLT_SCREW);
 
-        Rubber.addFlag(IngotMaterial.MatFlags.GENERATE_BOLT_SCREW);
-
-        Plastic.addFlag(IngotMaterial.MatFlags.GENERATE_ROTOR);
+        Plastic.addFlag(GENERATE_ROTOR);
 
         Salt.addOreByProducts(Borax);
         RockSalt.addOreByProducts(Borax);
         Lepidolite.addOreByProducts(Boron);
+        Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
 
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
@@ -288,10 +332,10 @@ public class GAMaterials implements IMaterialHandler {
 
         Magnetite.setDirectSmelting(Iron);
 
-        Duranium.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
-        Graphene.addFlag(IngotMaterial.MatFlags.GENERATE_FOIL);
+        Duranium.addFlag(GENERATE_FOIL);
+        Graphene.addFlag(GENERATE_FOIL);
 
-        Thorium.addFlag(SolidMaterial.MatFlags.GENERATE_ROD);
+        Thorium.addFlag(GENERATE_ROD);
 
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
@@ -301,6 +345,67 @@ public class GAMaterials implements IMaterialHandler {
             if (material instanceof IngotMaterial && ((IngotMaterial) material).toolSpeed > 0) {
                 material.addFlag(GENERATE_DENSE);
             }
+        }
+    }
+
+    public static void goldProcess() {
+        PreciousMetal.setOreMultiplier(3);
+
+        Bornite.oreByProducts.clear();
+        Bornite.addOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+
+        Chalcopyrite.oreByProducts.clear();
+        Chalcopyrite.addOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+
+        Copper.oreByProducts.clear();
+        Copper.addOreByProducts(Cobalt, PreciousMetal, Nickel);
+
+        Glowstone.oreByProducts.clear();
+        Glowstone.addOreByProducts(Redstone, PreciousMetal);
+
+        Magnetite.oreByProducts.clear();
+        Magnetite.addOreByProducts(Iron, PreciousMetal);
+    }
+
+    public static void platinumProcess() {
+        PlatinumMetallicPowder.setOreMultiplier(2);
+        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue);
+        PalladiumMetallicPowder.setOreMultiplier(2);
+        Nickel.oreByProducts.clear();
+        Nickel.addOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);
+        Iridium.oreByProducts.clear();
+        Iridium.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
+        Platinum.oreByProducts.clear();
+        Platinum.addOreByProducts(Nickel, IrLeachResidue);
+        Osmium.oreByProducts.clear();
+        Osmium.addOreByProducts(IrLeachResidue);
+        IrOsLeachResidue.addOreByProducts(IrLeachResidue);
+        IrLeachResidue.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
+    }
+
+    public static void ignoreCable(Material m) {
+        if (m instanceof IngotMaterial && ((IngotMaterial) m).cableProperties != null) {
+            GTLog.logger.info("disable " + m);
+            OrePrefix.cableGtSingle.setIgnored(m);
+            OrePrefix.cableGtDouble.setIgnored(m);
+            OrePrefix.cableGtQuadruple.setIgnored(m);
+            OrePrefix.cableGtOctal.setIgnored(m);
+            OrePrefix.cableGtHex.setIgnored(m);
+        }
+    }
+
+    public static void setBlastFurnaceTemperature(IngotMaterial material, int temperature) {
+        try {
+            Field blastFurnaceTemperature = IngotMaterial.class.getField("blastFurnaceTemperature");
+            blastFurnaceTemperature.setAccessible(true);
+
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(blastFurnaceTemperature, blastFurnaceTemperature.getModifiers() & ~Modifier.FINAL);
+
+            blastFurnaceTemperature.setInt(material, temperature);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            GTLog.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
         }
     }
 

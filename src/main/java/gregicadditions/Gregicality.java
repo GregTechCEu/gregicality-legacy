@@ -38,15 +38,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Function;
 
-@Mod(modid = GregicAdditions.MODID, name = GregicAdditions.NAME, version = GregicAdditions.VERSION,
+@Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
                 "after:tconstruct;" +
                 "after:exnihilocreatio"
 )
-public class GregicAdditions {
+public class Gregicality {
     public static final String MODID = "gtadditions";
-    public static final String NAME = "Gregic Additions Rework";
+    public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
 
 
@@ -67,7 +67,7 @@ public class GregicAdditions {
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public GregicAdditions() {
+    public Gregicality() {
         GAEnums.preInit();
 
     }
@@ -78,7 +78,7 @@ public class GregicAdditions {
         proxy.preLoad();
         Keybinds.register();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
-        GAMetaItems.init();
+
         GAMetaBlocks.init();
         GATileEntities.init();
         if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct"))
@@ -96,7 +96,6 @@ public class GregicAdditions {
     public void init(FMLInitializationEvent event) {
         proxy.onLoad();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
-            GTBees.initBees();
             forestryProxy.init();
         }
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
@@ -120,6 +119,7 @@ public class GregicAdditions {
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
+        registry.register(GAMetaBlocks.CELL_CASING);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
     }
 
@@ -128,6 +128,7 @@ public class GregicAdditions {
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
 
         GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()
@@ -143,27 +144,23 @@ public class GregicAdditions {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GAMachineRecipeRemoval.init();
+        GAMetaItems.registerOreDict();
+        GAMetaItems.registerRecipes();
+        GAMetaBlocks.registerOreDict();
         GARecipeAddition.init();
         GARecipeAddition.init2();
         GARecipeAddition.forestrySupport();
         MatterReplication.init();
         MachineCraftingRecipes.init();
         GeneratorFuels.init();
-        GAMetaItems.registerOreDict();
-        GAMetaItems.registerRecipes();
-        GAMetaBlocks.registerOreDict();
         RecipeHandler.registerLargeChemicalRecipes();
         RecipeHandler.registerLargeMixerRecipes();
         RecipeHandler.registerLargeForgeHammerRecipes();
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         VoidMinerOres.init();
-        GARecipeAddition.replaceOre();
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void registerRecipes2(RegistryEvent.Register<IRecipe> event) {
-    }
 
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);

@@ -11,7 +11,7 @@ import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;
@@ -33,6 +33,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -46,11 +47,12 @@ import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
-@Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
+@Mod.EventBusSubscriber()
 public class ForestryCommonProxy {
 
     public static SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
 
+    @Optional.Method(modid = "forestry")
     public void preInit() {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
         BEE_ATTRACTOR[0] = GregTechAPI.registerMetaTileEntity(2759, new SimpleMachineMetaTileEntity(location("attractor.lv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 1));
@@ -63,9 +65,11 @@ public class ForestryCommonProxy {
         BEE_ATTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2766, new SimpleMachineMetaTileEntity(location("attractor.uv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 8));
     }
 
+    @Optional.Method(modid = "forestry")
     @Mod.EventHandler
     public void init() {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        GTBees.initBees();
         registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
         if (GAConfig.GTBees.GenerateCentrifugeRecipes)
@@ -206,6 +210,7 @@ public class ForestryCommonProxy {
     }
 
 
+    @Optional.Method(modid = "forestry")
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
@@ -213,6 +218,7 @@ public class ForestryCommonProxy {
 
     }
 
+    @Optional.Method(modid = "forestry")
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
@@ -220,6 +226,7 @@ public class ForestryCommonProxy {
         registry.register(GTCombs.combItem);
     }
 
+    @Optional.Method(modid = "forestry")
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;

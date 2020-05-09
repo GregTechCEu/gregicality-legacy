@@ -5,7 +5,7 @@ import exnihilocreatio.compatibility.jei.sieve.SieveRecipe;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.types.Siftable;
 import gregicadditions.GAConfig;
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloEnums;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloItems;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloMetaItems;
@@ -44,7 +44,7 @@ import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
-@Mod.EventBusSubscriber(modid = GregicAdditions.MODID)
+@Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class ExNihiloCreatioProxy {
 
     public static SimpleMachineMetaTileEntity[] SIEVES = new SimpleMachineMetaTileEntity[8];

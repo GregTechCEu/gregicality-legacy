@@ -43,6 +43,8 @@ public class GAMetaBlocks {
 
     public static GATransparentCasing TRANSPARENT_CASING;
 
+    public static CellCasing CELL_CASING;
+
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static void init() {
@@ -52,15 +54,13 @@ public class GAMetaBlocks {
         TRANSPARENT_CASING = new GATransparentCasing();
         TRANSPARENT_CASING.setRegistryName("ga_transparent_casing");
 
+        CELL_CASING = new CellCasing();
+        CELL_CASING.setRegistryName("ga_cell_casing");
+
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.MVSuperconductor, new WireProperties(128, 2, 0));
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.HVSuperconductor, new WireProperties(512, 2, 0));
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.EVSuperconductor, new WireProperties(2048, 4, 0));
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.IVSuperconductor, new WireProperties(8192, 4, 0));
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.LuVSuperconductor, new WireProperties(32768, 8, 0));
-        MetaBlocks.CABLE.addCableMaterial(GAMaterials.ZPMSuperconductor, new WireProperties(131072, 8, 0));
+
 
         createMachineCasing();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
@@ -82,6 +82,7 @@ public class GAMetaBlocks {
     public static void registerItemModels() {
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(TRANSPARENT_CASING);
+        registerItemModel(CELL_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }
 

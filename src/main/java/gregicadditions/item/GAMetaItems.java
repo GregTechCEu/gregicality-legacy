@@ -1,6 +1,6 @@
 package gregicadditions.item;
 
-import gregicadditions.GregicAdditions;
+import gregicadditions.Gregicality;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.common.items.MetaItems;
@@ -27,7 +27,38 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
     public static MetaItem<?>.MetaValueItem MAX_BATTERY;
 
+    //more smd
+    public static MetaItem<?>.MetaValueItem ARRAY_RESISTOR;
+    public static MetaItem<?>.MetaValueItem ARRAY_DIODE;
+    public static MetaItem<?>.MetaValueItem ARRAY_CAPACITOR;
+    public static MetaItem<?>.MetaValueItem ARRAY_TRANSISTOR;
 
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
+
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
+
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
+
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_QUANTUM;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
+
+
+    //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem ELECTRONIC_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem ELECTRONIC_COMPUTER;
@@ -47,7 +78,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem QUANTUM_COMPUTER;
     public static MetaItem<?>.MetaValueItem QUANTUM_MAINFRAME;
 
-
+    //magneto circuit
     public static MetaItem<?>.MetaValueItem RAW_IMPRINT_SUPPORTED_BOARD;
     public static MetaItem<?>.MetaValueItem IMPRINT_SUPPORTED_BOARD;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ULV;
@@ -164,8 +195,8 @@ public class GAMetaItems {
             fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
 
         } catch (Exception e) {
-            GregicAdditions.LOGGER.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
-            GregicAdditions.LOGGER.error(e);
+            Gregicality.LOGGER.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
+            Gregicality.LOGGER.error(e);
             fluidHandlerItem.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
         }
         fluidCell = fluidHandlerItem.getContainer();
