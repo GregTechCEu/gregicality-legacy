@@ -102,7 +102,9 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
             long inputEnergyStore = input.getEnergyStored();
             long energyAddedFromInput = this.addEnergy(inputEnergyStore);
             input.changeEnergy(-energyAddedFromInput);
-            this.changeEnergy(GTValues.V[cell.getTier()] * 10 / 100);
+
+            this.changeEnergy(-GTValues.V[cell.getTier()] * 10 / 100);
+
             long bankEnergyStore = this.getEnergyStored();
             long energyAddedFromBank = output.addEnergy(bankEnergyStore);
             this.changeEnergy(-energyAddedFromBank);
