@@ -1,10 +1,22 @@
 package gregicadditions.item;
 
 import gregtech.api.GTValues;
+import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.VariantBlock;
+import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class CellCasing extends VariantBlock<CellCasing.CellType> {
     public CellCasing() {
@@ -15,6 +27,21 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
         setDefaultState(getState(CellType.CELL_LUV));
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, @Nullable World worldIn, List<String> lines, ITooltipFlag tooltipFlag) {
+        super.addInformation(itemStack, worldIn, lines, tooltipFlag);
+
+        VariantItemBlock itemBlock = (VariantItemBlock<CellCasing.CellType, CellCasing>) itemStack.getItem();
+        IBlockState stackState = itemBlock.getBlock().getStateFromMeta(itemBlock.getMetadata(itemStack.getItemDamage()));
+        CellCasing.CellType coilType = getState(stackState);
+
+        lines.add(I18n.format("tile.cell_casing.tooltip.1"));
+        lines.add(I18n.format("tile.cell_casing.tooltip.2", coilType.getStorage()));
+        lines.add(I18n.format("tile.cell_casing.tooltip.3", GTValues.VN[coilType.getTier()]));
+
     }
 
 

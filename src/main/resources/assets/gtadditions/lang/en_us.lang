@@ -713,6 +713,16 @@ tile.ga_metal_casing.material.grisium.name=Grisium Casing
 tile.ga_metal_casing.material.maraging_steel.name=Maraging Steel 250 Casing
 tile.ga_metal_casing.material.inconel.name=Inconel 625 Casing
 tile.ga_metal_casing.material.hastelloy_n.name=Hastelloy N Casing
+tile.cell_casing.cell_hv.name=HV Power Cell
+tile.cell_casing.cell_ev.name=EV Power Cell
+tile.cell_casing.cell_iv.name=IV Power Cell
+tile.cell_casing.cell_luv.name=LUV Power Cell
+tile.cell_casing.cell_zpm.name=ZPM Power Cell
+tile.cell_casing.cell_uv.name=UV Power Cell
+tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
+tile.cell_casing.tooltip.2=    Capacity: §e%d
+tile.cell_casing.tooltip.3=    Max Tier: §e%s
+
 
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
 metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
