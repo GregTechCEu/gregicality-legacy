@@ -1156,8 +1156,10 @@ gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Potassium Plasma and Produce 10UV/t.
-gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower can store EU
-gtadditions.multiblock.battery_tower.tooltip.2=It will consume 10%% of the tier built.
+gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
+gtadditions.multiblock.battery_tower.tooltip.2=All the cells in the tower need to be of the same tier and the tower will drain 10%% of the cells voltage per tick.
+gtadditions.multiblock.battery_tower.tooltip.3=The input/output hatches can not be of a higher tier than the tier of the cells.
+
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s

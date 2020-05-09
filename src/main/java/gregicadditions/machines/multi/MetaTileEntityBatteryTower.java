@@ -94,6 +94,8 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.1"));
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.3"));
+
     }
 
     @Override
