@@ -1750,6 +1750,13 @@ public class GARecipeAddition {
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(100)
+                .input(dust, Potassium, 2)
+                .input(dust, Sodium, 2)
+                .fluidInputs(Oxygen.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, PotassiumMetabisulfite, 9))
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(3000)
                 .input(dust, PotassiumMetabisulfite)
                 .fluidInputs(ChloroauricAcid.getFluid(10000))
