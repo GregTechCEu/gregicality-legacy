@@ -7,6 +7,7 @@ import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.util.GTLog;
 
 public class MatterReplication {
 	public static void init() {
@@ -19,7 +20,7 @@ public class MatterReplication {
 		}
 		GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (GAMaterials.Neutronium.getMass() * 100)).EUt(32).inputs(OreDictUnifier.get(OrePrefix.dust, GAMaterials.Neutronium)).fluidOutputs(GAMaterials.NeutralMatter.getFluid(5000)).buildAndRegister();
 		for (Material m : Material.MATERIAL_REGISTRY) {
-			if (m.getProtons() >= 1 && m.getNeutrons() >= 0 && m.getMass() != 98 && m instanceof DustMaterial && m != Materials.Sphalerite && m != Materials.Naquadria && m != Materials.Ash && m != Materials.DarkAsh && m != GAMaterials.Neutronium && m != Materials.Monazite && m != Materials.Bentonite) {
+			if (m.getProtons() >= 1 && m.getNeutrons() >= 0 && m.getMass() != 98 && m instanceof DustMaterial && m != Materials.Sphalerite && m != Materials.Naquadria && m != Materials.Ash && m != Materials.DarkAsh && m != GAMaterials.Neutronium && m != Materials.Monazite && m != Materials.Bentonite && !OreDictUnifier.get(OrePrefix.dust, m).isEmpty()) {
 				GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (m.getMass() * 100)).EUt(32).inputs(OreDictUnifier.get(OrePrefix.dust, m)).fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) m.getProtons()), GAMaterials.NeutralMatter.getFluid((int) m.getNeutrons())).buildAndRegister();
 			}
 		}
@@ -33,7 +34,7 @@ public class MatterReplication {
 		}
 		GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (GAMaterials.Neutronium.getMass() * 100)).EUt(32).notConsumable(OreDictUnifier.get(OrePrefix.dust, GAMaterials.Neutronium)).outputs(OreDictUnifier.get(OrePrefix.dust, GAMaterials.Neutronium)).fluidInputs(GAMaterials.NeutralMatter.getFluid(5000)).buildAndRegister();
 		for (Material m : Material.MATERIAL_REGISTRY) {
-			if (m.getProtons() >= 1 && m.getNeutrons() >= 0 && m.getMass() != 98 && m instanceof DustMaterial && m != Materials.Sphalerite && m != Materials.Naquadria && m != Materials.Ash && m != Materials.DarkAsh && m != GAMaterials.Neutronium && m != Materials.Monazite && m != Materials.Bentonite) {
+			if (m.getProtons() >= 1 && m.getNeutrons() >= 0 && m.getMass() != 98 && m instanceof DustMaterial && m != Materials.Sphalerite && m != Materials.Naquadria && m != Materials.Ash && m != Materials.DarkAsh && m != GAMaterials.Neutronium && m != Materials.Monazite && m != Materials.Bentonite && !OreDictUnifier.get(OrePrefix.dust, m).isEmpty()) {
 				GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (m.getMass() * 100)).EUt(32).notConsumable(OreDictUnifier.get(OrePrefix.dust, m)).outputs(OreDictUnifier.get(OrePrefix.dust, m)).fluidInputs(GAMaterials.PositiveMatter.getFluid((int) m.getProtons()), GAMaterials.NeutralMatter.getFluid((int) m.getNeutrons())).buildAndRegister();
 			}
 		}

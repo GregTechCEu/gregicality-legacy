@@ -138,6 +138,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem MEDIUM_TURBINE_ROTOR;
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
+    public static MetaItem<?>.MetaValueItem RADIOACTIVE_ROD;
+
 
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
