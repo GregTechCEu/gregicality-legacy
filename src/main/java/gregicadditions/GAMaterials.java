@@ -208,8 +208,6 @@ public class GAMaterials implements IMaterialHandler {
         platinumProcess();
         goldProcess();
 
-
-//        setBlastFurnaceTemperature(Magnalium, 1500);
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);

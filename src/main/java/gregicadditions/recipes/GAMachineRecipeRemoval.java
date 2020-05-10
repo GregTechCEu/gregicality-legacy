@@ -6,6 +6,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Color;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
@@ -100,6 +101,10 @@ public class GAMachineRecipeRemoval {
 
         //Remove Pyrolise Oven Recipes
         removeAllRecipes(RecipeMaps.PYROLYSE_RECIPES);
+
+        //remove easy rocket fuel
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(1)}, new FluidStack[]{NitrogenDioxide.getFluid(1000), Hydrogen.getFluid(3000), Oxygen.getFluid(500), Water.getFluid(4000)});
+
 
         //Remove Hydrogen Sulfide Recipes
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, NaturalGas.getFluid(16000), Hydrogen.getFluid(1000));

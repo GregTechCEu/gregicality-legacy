@@ -50,7 +50,7 @@ public class GeneratorFuels {
         FuelRecipes.registerGasGeneratorFuel(Propene.getFluid(10), 60, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(Butadiene.getFluid(16), 103, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(Propane.getFluid(4), 29, GTValues.LV);
-        FuelRecipes.registerGasGeneratorFuel(RocketFuel.getFluid(16), 125, GTValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(RocketFuel.getFluid(1), 5, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(Butene.getFluid(10), 80, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(Phenol.getFluid(10), 90, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(Benzene.getFluid(10), 90, GTValues.LV);
