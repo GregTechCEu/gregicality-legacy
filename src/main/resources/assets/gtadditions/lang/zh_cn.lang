@@ -1611,3 +1611,20 @@ metaitem.component.smd.diode.name=微型贴片二极管
 metaitem.component.smd.capacitor.name=微型贴片电容
 metaitem.component.smd.transistor.name=微型贴片晶体管
 metaitem.component.smd.resistor.name=微型贴片电阻
+
+gtadditions.machine.battery_tower.name=储能塔
+gtadditions.multiblock.battery_tower.description=储能塔的允许搭建高度为4-16格。你可以随意摆放能源仓，但位置不得高于能量单元外壳。
+gtadditions.multiblock.battery_tower.tooltip.1=储能塔是一座可以存储大量EU能量的大型多方块机械
+gtadditions.multiblock.battery_tower.tooltip.2=储能塔中布置的所有能量单元必须保持层级一致，且储能塔每tick会抽取当前层级最大进电量的10%%来维持自身运转。
+gtadditions.multiblock.battery_tower.tooltip.3=能源仓及动力仓的层级均不得高于储能塔中布置的能量单元层级。
+gregtech.multiblock.universal.energy_store=%d EU / %d EU
+
+tile.cell_casing.cell_hv.name=高压能量单元
+tile.cell_casing.cell_ev.name=超高压能量单元
+tile.cell_casing.cell_iv.name=强导压能量单元
+tile.cell_casing.cell_luv.name=剧差压能量单元
+tile.cell_casing.cell_zpm.name=零点压能量单元
+tile.cell_casing.cell_uv.name=极限压能量单元
+tile.cell_casing.tooltip.1=§a储能塔§7建构部件
+tile.cell_casing.tooltip.2=    电容量： §e%d
+tile.cell_casing.tooltip.3=    最大层级： §e%s
