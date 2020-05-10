@@ -756,6 +756,31 @@ public enum GACraftingComponents {
             }
         }
     },
+    PLATE_DENSE {
+        @Override
+        public Object getIngredient(int tier) {
+            switch (tier) {
+                case 0:
+                case 1:
+                    return new UnificationEntry(plateDense, Steel);
+                case 2:
+                    return new UnificationEntry(plateDense, Aluminium);
+                case 3:
+                    return new UnificationEntry(plateDense, StainlessSteel);
+                case 4:
+                    return new UnificationEntry(plateDense, Titanium);
+                case 5:
+                    return new UnificationEntry(plateDense, TungstenSteel);
+                case 6:
+                    return new UnificationEntry(plateDense, RhodiumPlatedPalladium);
+                case 7:
+                    return new UnificationEntry(plateDense, HSSS);
+                default:
+                    return new UnificationEntry(plateDense, Neutronium);
+
+            }
+        }
+    },
     ;
 
     public abstract Object getIngredient(int tier);
