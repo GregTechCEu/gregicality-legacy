@@ -131,7 +131,7 @@ public class GAMetaItem extends MaterialMetaItem {
         INSULATING_TAPE = addItem(307, "insulating_tape");
 
         RADIOACTIVE_ROD = addItem(310, "radioactive_rod").addComponents(new RadioactiveRodBehavior());
-
+        DEPLETED_RADIOACTIVE_ROD = addItem(311, "depleted_radioactive_rod").addComponents(new RadioactiveRodBehavior());
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
