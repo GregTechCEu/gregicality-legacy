@@ -152,12 +152,12 @@ public class GATileEntities {
     public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
 
-    public static TileEntityDrum WOODEN_DRUM;
-    public static TileEntityDrum BRONZE_DRUM;
-    public static TileEntityDrum STEEL_DRUM;
-    public static TileEntityDrum STAINLESS_STEEL_DRUM;
-    public static TileEntityDrum TITANIUM_DRUM;
-    public static TileEntityDrum TUNGSTENSTEEL_DRUM;
+    public static MetaTileEntityDrum WOODEN_DRUM;
+    public static MetaTileEntityDrum BRONZE_DRUM;
+    public static MetaTileEntityDrum STEEL_DRUM;
+    public static MetaTileEntityDrum STAINLESS_STEEL_DRUM;
+    public static MetaTileEntityDrum TITANIUM_DRUM;
+    public static MetaTileEntityDrum TUNGSTENSTEEL_DRUM;
 
     public static TileEntityCrate WOODEN_CRATE;
     public static TileEntityCrate BRONZE_CRATE;
@@ -562,12 +562,12 @@ public class GATileEntities {
         BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(2562, new MetaTileEntityBatteryTower(location("battery_tower")));
 
         if (GAConfig.GT6.registerDums) {
-            WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
-            BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new TileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
-            STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new TileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
-            STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new TileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
-            TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new TileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
-            TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new TileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
+            WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new MetaTileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
+            BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new MetaTileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
+            STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new MetaTileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
+            STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new MetaTileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
+            TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new MetaTileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
+            TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new MetaTileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
         }
 
         if (GAConfig.GT5U.highTierPumps) {

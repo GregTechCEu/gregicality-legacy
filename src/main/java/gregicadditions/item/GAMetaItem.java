@@ -131,7 +131,10 @@ public class GAMetaItem extends MaterialMetaItem {
         GRAVITATION_ENGINE = addItem(306, "gravitation_engine");
         INSULATING_TAPE = addItem(307, "insulating_tape");
 
-        HAND_PUMP = addItem(308, "hand_pump").addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true)).addComponents(new HandPumpBehavior());
+        HAND_PUMP = addItem(308, "hand_pump")
+                .setMaxStackSize(1)
+                .addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true))
+                .addComponents(new HandPumpBehavior());
 
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
