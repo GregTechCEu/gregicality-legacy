@@ -1,12 +1,10 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.behavior.HugeTurbineBehavior;
-import gregicadditions.item.behavior.LargeTurbineBehavior;
-import gregicadditions.item.behavior.MediumTurbineBehavior;
-import gregicadditions.item.behavior.SmallTurbineBehavior;
+import gregicadditions.item.behavior.*;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
+import gregtech.api.items.metaitem.FluidStats;
 import gregtech.api.items.metaitem.stats.IItemComponent;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
@@ -132,6 +130,8 @@ public class GAMetaItem extends MaterialMetaItem {
         IMPELLER_HV = addItem(305, "impeller.hv");
         GRAVITATION_ENGINE = addItem(306, "gravitation_engine");
         INSULATING_TAPE = addItem(307, "insulating_tape");
+
+        HAND_PUMP = addItem(308, "hand_pump").addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true)).addComponents(new HandPumpBehavior());
 
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
