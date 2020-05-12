@@ -834,6 +834,7 @@ recipemap.large_mixer.name=大型搅拌机
 recipemap.large_sifter.name=大型筛选器
 recipemap.large_bender_and_forming.name=大型弯曲成型机
 recipemap.large_multi_use.name=大型多用控制器
+recipemap.simple_ore_washer.name=简易洗矿机
 material.coke=焦煤
 material.phosphorous_pentoxide=五氧化二磷
 material.phosphoric_acid=磷酸
@@ -1628,3 +1629,5 @@ tile.cell_casing.cell_uv.name=极限压能量单元
 tile.cell_casing.tooltip.1=§a储能塔§7建构部件
 tile.cell_casing.tooltip.2=    电容量： §e%d
 tile.cell_casing.tooltip.3=    最大层级： §e%s
+
+metaitem.hand_pump.name=手泵
