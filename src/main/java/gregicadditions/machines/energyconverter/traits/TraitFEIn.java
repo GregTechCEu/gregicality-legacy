@@ -6,8 +6,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TraitFeIn extends TraitEnergyConverter implements IEnergyStorage {
-    public TraitFeIn(final MetaTileEntityEnergyConverter energyConverter) {
+public class TraitFEIn extends TraitEnergyConverter implements IEnergyStorage {
+    public TraitFEIn(final MetaTileEntityEnergyConverter energyConverter) {
         super(energyConverter);
     }
 
@@ -17,7 +17,7 @@ public class TraitFeIn extends TraitEnergyConverter implements IEnergyStorage {
     }
 
     public String getName() {
-        return "TraitFeIn";
+        return "TraitFEIn";
     }
 
 	public int getNetworkID() {

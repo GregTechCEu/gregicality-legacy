@@ -30,7 +30,7 @@ public class TraitGTEUOut extends TraitEnergyConverter.TraitEnergyConverterCapab
 	}
 
 	public String getName() {
-		return "TraitGteuOut";
+		return "TraitGTEUOut";
 	}
 
 	public int getNetworkID() {

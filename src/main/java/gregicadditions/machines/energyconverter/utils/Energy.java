@@ -1,7 +1,7 @@
 package gregicadditions.machines.energyconverter.utils;
 
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
-import gregicadditions.machines.energyconverter.traits.TraitFeIn;
+import gregicadditions.machines.energyconverter.traits.TraitFEIn;
 import gregicadditions.machines.energyconverter.traits.TraitFEOut;
 import gregicadditions.machines.energyconverter.traits.TraitGTEUIn;
 import gregicadditions.machines.energyconverter.traits.TraitGTEUOut;
@@ -23,7 +23,7 @@ public enum Energy {
 
         @Override
         public void createEnergyReceiverTrait(final MetaTileEntityEnergyConverter energyConverter) {
-            new TraitFeIn(energyConverter);
+            new TraitFEIn(energyConverter);
         }
 
         @Override
