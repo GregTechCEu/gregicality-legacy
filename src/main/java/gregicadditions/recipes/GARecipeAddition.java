@@ -1290,6 +1290,10 @@ public class GARecipeAddition {
                 .duration(30)
                 .buildAndRegister();
 
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+                .input(dust, PotassiumDisulfate)
+                .fluidOutputs(PotassiumDisulfate.getFluid(144)).buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Potassium, 2)
                 .input(dust, Sulfur, 2)
@@ -1313,17 +1317,17 @@ public class GARecipeAddition {
                 .input(dust, Saltpeter, 10)
                 .input(dust, LeachResidue, 10)
                 .fluidInputs(SaltWater.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, IrOsLeachResidue))
+                .outputs(OreDictUnifier.get(dust, IrOsLeachResidue, 6))
                 .outputs(OreDictUnifier.get(dust, SodiumRuthenate, 3))
                 .fluidOutputs(Steam.getFluid(1000))
                 .blastFurnaceTemp(775)
                 .EUt(120)
-                .duration(100)
+                .duration(200)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .input(dust, IrOsLeachResidue)
+                .input(dust, IrOsLeachResidue, 2)
                 .fluidOutputs(AcidicOsmiumSolution.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, IrLeachResidue))
                 .blastFurnaceTemp(775)
@@ -1570,13 +1574,14 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         //Osmium
-        DISTILLATION_RECIPES.recipeBuilder()
+        ValidationResult<Recipe> result = DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicOsmiumSolution.getFluid(1000))
                 .fluidOutputs(OsmiumSolution.getFluid(100))
                 .fluidOutputs(Water.getFluid(900))
                 .EUt(7680)
-                .duration(150)
-                .buildAndRegister();
+                .duration(150).build();
+        DISTILLATION_RECIPES.addRecipe(result);
+
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(OsmiumSolution.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
