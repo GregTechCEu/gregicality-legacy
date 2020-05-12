@@ -1,8 +1,8 @@
-package gregicadditions.machines.ceu.energy;
+package gregicadditions.machines.energyconverter.energy;
 
-import gregicadditions.machines.ceu.utils.Energy;
+import gregicadditions.machines.energyconverter.utils.Energy;
 
-public interface CeuCharger {
+public interface EnergyConverterCharger {
 	Number extractEnergy(final Energy p0, final Number p1, final boolean p2, final boolean p3);
 
 	Number insertEnergy(final Energy p0, final Number p1, final boolean p2, final boolean p3);

@@ -1,15 +1,15 @@
-package gregicadditions.machines.ceu.traits;
+package gregicadditions.machines.energyconverter.traits;
 
 
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.Energy;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.Energy;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TraitFeOut extends TraitCeu.TraitCeuCapabilityBasedEmitter<IEnergyStorage> implements IEnergyStorage {
-	public TraitFeOut(final MTECeu ceu) {
-		super(ceu);
+public class TraitFEOut extends TraitEnergyConverter.TraitEnergyConverterCapabilityBasedEmitter<IEnergyStorage> implements IEnergyStorage {
+	public TraitFEOut(final MetaTileEntityEnergyConverter energyConverter) {
+		super(energyConverter);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class TraitFeOut extends TraitCeu.TraitCeuCapabilityBasedEmitter<IEnergyS
 	}
 
 	public String getName() {
-		return "TraitFeOut";
+		return "TraitFEOut";
 	}
 
 	public int getNetworkID() {
@@ -43,15 +43,15 @@ public class TraitFeOut extends TraitCeu.TraitCeuCapabilityBasedEmitter<IEnergyS
 	}
 
 	public int extractEnergy(final int maxExtract, final boolean simulate) {
-		return this.ceu.extractEnergy(Energy.FE, maxExtract, true, simulate).intValue();
+		return this.energyConverter.extractEnergy(Energy.FE, maxExtract, true, simulate).intValue();
 	}
 
 	public int getEnergyStored() {
-		return this.ceu.getStoredSum(Energy.FE, true).intValue();
+		return this.energyConverter.getStoredSum(Energy.FE, true).intValue();
 	}
 
 	public int getMaxEnergyStored() {
-		return this.ceu.getCapacitySum(Energy.FE, true).intValue();
+		return this.energyConverter.getCapacitySum(Energy.FE, true).intValue();
 	}
 
 	public boolean canExtract() {

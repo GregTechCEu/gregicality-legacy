@@ -1,12 +1,12 @@
-package gregicadditions.machines.ceu.traits.charger;
+package gregicadditions.machines.energyconverter.traits.charger;
 
 
 import gregicadditions.GAConfig;
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.energy.ElectricItemFE;
-import gregicadditions.machines.ceu.energy.EnergyStorageGteu;
-import gregicadditions.machines.ceu.utils.Energy;
-import gregicadditions.machines.ceu.utils.Numbers;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.energy.ElectricItemFE;
+import gregicadditions.machines.energyconverter.energy.EnergyStorageGTEU;
+import gregicadditions.machines.energyconverter.utils.Energy;
+import gregicadditions.machines.energyconverter.utils.Numbers;
 import gregtech.api.capability.IElectricItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -16,8 +16,8 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 
 public class ChargeHandlerFE extends ChargeHandler {
-	public ChargeHandlerFE(final MTECeu ceu) {
-		super(ceu);
+	public ChargeHandlerFE(final MetaTileEntityEnergyConverter energyConverter) {
+		super(energyConverter);
 	}
 
 	public Number getStoredSum(final Energy e, final boolean includeWrapped) {
@@ -65,7 +65,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 			return 0L;
 		}
 		long total = 0L;
-		final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+		final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
 		for (int i = 0; i < inventory.getSlots(); ++i) {
 			final ItemStack s = inventory.getStackInSlot(i);
 			if (!s.isEmpty()) {
@@ -86,7 +86,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 			return 0L;
 		}
 		long total = 0L;
-		final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+		final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
 		for (int i = 0; i < inventory.getSlots(); ++i) {
 			final ItemStack s = inventory.getStackInSlot(i);
 			if (!s.isEmpty()) {
@@ -107,7 +107,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 			return 0L;
 		}
 		long total = 0L;
-		final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+		final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
 		for (int i = 0; i < inventory.getSlots(); ++i) {
 			final ItemStack s = inventory.getStackInSlot(i);
 			if (!s.isEmpty()) {
@@ -128,7 +128,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 			return 0L;
 		}
 		long total = 0L;
-		final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+		final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
 		for (int i = 0; i < inventory.getSlots(); ++i) {
 			final ItemStack s = inventory.getStackInSlot(i);
 			if (!s.isEmpty()) {
@@ -148,7 +148,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 	@Override
 	protected IElectricItem getWrappedBatteryContainer(final ItemStack s) {
 		final IEnergyStorage storage = this.getItemEnergyStorage(s, false);
-		return (storage != null) ? new ElectricItemFE(this.ceu, storage) : null;
+		return (storage != null) ? new ElectricItemFE(this.energyConverter, storage) : null;
 	}
 
 	@Nullable
@@ -157,7 +157,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 		Label_0049:
 		{
 			if (storage != null) {
-				if (this.ceu.isCeu()) {
+				if (this.energyConverter.isGTEU()) {
 					if (!storage.canReceive()) {
 						break Label_0049;
 					}
@@ -169,7 +169,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 		}
 		if (wrapEUBattery) {
 			final IElectricItem i = this.getBatteryContainer(s, false);
-			return (i != null && (!GAConfig.ceu.PermitOnlyExactVoltage || i.getTier() == this.ceu.getTier())) ? new EnergyStorageGteu(this.ceu, i) : null;
+			return (i != null && (!GAConfig.energyConverter.PermitOnlyExactVoltage || i.getTier() == this.energyConverter.getTier())) ? new EnergyStorageGTEU(this.energyConverter, i) : null;
 		}
 		return null;
 	}

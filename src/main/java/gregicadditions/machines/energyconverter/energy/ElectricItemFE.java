@@ -1,8 +1,8 @@
-package gregicadditions.machines.ceu.energy;
+package gregicadditions.machines.energyconverter.energy;
 
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.Energy;
-import gregicadditions.machines.ceu.utils.Ratio;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.Energy;
+import gregicadditions.machines.energyconverter.utils.Ratio;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IElectricItem;
 import net.minecraft.item.ItemStack;
@@ -11,14 +11,14 @@ import net.minecraftforge.energy.IEnergyStorage;
 import java.util.function.BiConsumer;
 
 public class ElectricItemFE implements IElectricItem {
-    private final MTECeu ceu;
+    private final MetaTileEntityEnergyConverter energyConverter;
     private final IEnergyStorage storage;
     private final Ratio ratio;
 
-    public ElectricItemFE(final MTECeu ceu, final IEnergyStorage storage) {
-        this.ceu = ceu;
+    public ElectricItemFE(final MetaTileEntityEnergyConverter energyConverter, final IEnergyStorage storage) {
+        this.energyConverter = energyConverter;
         this.storage = storage;
-        this.ratio = ((ceu.getType().getInput() == Energy.FE) ? ceu.ratio() : ceu.ratio().reverse());
+        this.ratio = ((energyConverter.getType().getInput() == Energy.FE) ? energyConverter.ratio() : energyConverter.ratio().reverse());
     }
 
     public boolean canProvideChargeExternally() {
@@ -49,7 +49,7 @@ public class ElectricItemFE implements IElectricItem {
     }
 
     public int getTier() {
-        return this.ceu.getTier();
+        return this.energyConverter.getTier();
     }
 
     public long getTransferLimit() {

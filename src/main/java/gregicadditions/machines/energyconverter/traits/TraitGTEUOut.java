@@ -1,28 +1,28 @@
-package gregicadditions.machines.ceu.traits;
+package gregicadditions.machines.energyconverter.traits;
 
-import gregicadditions.machines.ceu.MTECeu;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
-public class TraitGteuOut extends TraitCeu.TraitCeuCapabilityBasedEmitter<IEnergyContainer> implements IEnergyContainer {
-	public TraitGteuOut(final MTECeu ceu) {
-		super(ceu);
+public class TraitGTEUOut extends TraitEnergyConverter.TraitEnergyConverterCapabilityBasedEmitter<IEnergyContainer> implements IEnergyContainer {
+	public TraitGTEUOut(final MetaTileEntityEnergyConverter energyConverter) {
+		super(energyConverter);
 	}
 
 	@Override
 	protected void operate(final IEnergyContainer energy) {
-		if (energy.inputsEnergy(this.ceu.getFrontFacing().getOpposite())) {
-			final long volt = this.ceu.getEnergyStorage().getOutputVoltage();
-			final long amp = this.ceu.getEnergyStorage().getOutputAmperage();
-			final long energyStored = this.ceu.extractEU(Long.MAX_VALUE, true, true);
+		if (energy.inputsEnergy(this.energyConverter.getFrontFacing().getOpposite())) {
+			final long volt = this.energyConverter.getEnergyStorage().getOutputVoltage();
+			final long amp = this.energyConverter.getEnergyStorage().getOutputAmperage();
+			final long energyStored = this.energyConverter.extractEU(Long.MAX_VALUE, true, true);
 			if (energyStored > volt) {
 				long ampere = Math.min(amp, energyStored / volt);
 				if (ampere > 0L) {
-					ampere = energy.acceptEnergyFromNetwork(this.ceu.getFrontFacing().getOpposite(), volt, ampere);
+					ampere = energy.acceptEnergyFromNetwork(this.energyConverter.getFrontFacing().getOpposite(), volt, ampere);
 					if (ampere > 0L) {
-						this.ceu.extractEU(volt * ampere, true, false);
+						this.energyConverter.extractEU(volt * ampere, true, false);
 					}
 				}
 			}
@@ -59,18 +59,18 @@ public class TraitGteuOut extends TraitCeu.TraitCeuCapabilityBasedEmitter<IEnerg
 	}
 
 	public long getEnergyStored() {
-		return this.ceu.getEUStoredSum(true);
+		return this.energyConverter.getEUStoredSum(true);
 	}
 
 	public long getEnergyCapacity() {
-		return this.ceu.getEUCapacitySum(true);
+		return this.energyConverter.getEUCapacitySum(true);
 	}
 
 	public long getInputAmperage() {
-		return this.ceu.getEnergyStorage().getInputAmperage();
+		return this.energyConverter.getEnergyStorage().getInputAmperage();
 	}
 
 	public long getInputVoltage() {
-		return this.ceu.getEnergyStorage().getInputVoltage();
+		return this.energyConverter.getEnergyStorage().getInputVoltage();
 	}
 }

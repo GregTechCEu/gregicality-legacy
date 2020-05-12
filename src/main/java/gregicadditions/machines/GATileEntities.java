@@ -5,9 +5,9 @@ import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.CeuType;
-import gregicadditions.machines.ceu.utils.ConverterType;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregicadditions.machines.energyconverter.utils.ConverterType;
 import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
 import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.energy.MetaTileEntityTransformer;
@@ -87,7 +87,7 @@ public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] REPLICATOR = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
-    public static ListMultimap<CeuType, MTECeu> CEUS = ArrayListMultimap.create();
+    public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
 
     //multiblock
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
@@ -643,8 +643,8 @@ public class GATileEntities {
             for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
                 for (int slot = 1; slot <= 4; ++slot) {
                     final String vn = GTValues.VN[tier].toLowerCase();
-                    CEUS.put(t.getCeuType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCeuType() + "." + vn + "." + slot * slot), tier, t.getCeuType(), slot)));
-                    CEUS.put(t.getCefType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCefType() + "." + vn + "." + slot * slot), tier, t.getCefType(), slot)));
+                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + slot * slot), tier, t.getGTEUToForgeType(), slot)));
+                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + slot * slot), tier, t.getForgeToGTEUType(), slot)));
                 }
             }
         }

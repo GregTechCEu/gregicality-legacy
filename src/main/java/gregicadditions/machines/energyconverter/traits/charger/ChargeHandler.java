@@ -1,10 +1,10 @@
-package gregicadditions.machines.ceu.traits.charger;
+package gregicadditions.machines.energyconverter.traits.charger;
 
 import gregicadditions.GAConfig;
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.energy.CeuCharger;
-import gregicadditions.machines.ceu.utils.Numbers;
-import gregicadditions.machines.ceu.utils.Ratio;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.energy.EnergyConverterCharger;
+import gregicadditions.machines.energyconverter.utils.Numbers;
+import gregicadditions.machines.energyconverter.utils.Ratio;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.metatileentity.MTETrait;
@@ -14,16 +14,16 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nullable;
 
-public abstract class ChargeHandler extends MTETrait implements CeuCharger {
-    protected final MTECeu ceu;
+public abstract class ChargeHandler extends MTETrait implements EnergyConverterCharger {
+    protected final MetaTileEntityEnergyConverter energyConverter;
 
-    public ChargeHandler(final MTECeu ceu) {
-        super(ceu);
-        this.ceu = ceu;
+    public ChargeHandler(final MetaTileEntityEnergyConverter energyConverter) {
+        super(energyConverter);
+        this.energyConverter = energyConverter;
     }
 
     public String getName() {
-        return "CeuChargeHandler";
+        return "ChargeHandler";
     }
 
     public int getNetworkID() {
@@ -36,18 +36,18 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
     }
 
     public void update() {
-        if (!this.ceu.getWorld().isRemote && this.ceu.isThisEnabled()) {
-            final Ratio r = this.ceu.ratio();
+        if (!this.energyConverter.getWorld().isRemote && this.energyConverter.isThisEnabled()) {
+            final Ratio r = this.energyConverter.ratio();
             final Number charged = r.reverse().
                     convert(
-                            this.insertEnergy(this.ceu.getType().getOutput(), r.convert(this.ceu.extractEnergy(this.ceu.getType().getInput(), Long.MAX_VALUE, false, true), this.ceu.getType().getOutput().getNumberType()), false, false),
-                            this.ceu.getType().getInput().getNumberType());
-            this.ceu.extractEnergy(this.ceu.getType().getInput(), charged, false, false);
-            if (this.ceu.getEnergyStorage().getEnergyStored() > 0L) {
-                if (this.ceu.isCeu()) {
-                    this.ceu.getEnergyStorage().removeEnergy(this.chargeEU(this.ceu.getEnergyStorage().getEnergyStored(), false, false, false));
+                            this.insertEnergy(this.energyConverter.getType().getOutput(), r.convert(this.energyConverter.extractEnergy(this.energyConverter.getType().getInput(), Long.MAX_VALUE, false, true), this.energyConverter.getType().getOutput().getNumberType()), false, false),
+                            this.energyConverter.getType().getInput().getNumberType());
+            this.energyConverter.extractEnergy(this.energyConverter.getType().getInput(), charged, false, false);
+            if (this.energyConverter.getEnergyStorage().getEnergyStored() > 0L) {
+                if (this.energyConverter.isGTEU()) {
+                    this.energyConverter.getEnergyStorage().removeEnergy(this.chargeEU(this.energyConverter.getEnergyStorage().getEnergyStored(), false, false, false));
                 } else {
-                    this.ceu.getEnergyStorage().removeEnergy(r.convertToLong(this.insertEnergy(this.ceu.getType().getInput(), r.reverse().convert(this.ceu.getEnergyStorage().getEnergyStored(), this.ceu.getType().getInput().getNumberType()), false, false)));
+                    this.energyConverter.getEnergyStorage().removeEnergy(r.convertToLong(this.insertEnergy(this.energyConverter.getType().getInput(), r.reverse().convert(this.energyConverter.getEnergyStorage().getEnergyStored(), this.energyConverter.getType().getInput().getNumberType()), false, false)));
                 }
             }
         }
@@ -58,7 +58,7 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
             return 0L;
         }
         long total = 0L;
-        final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+        final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
         for (int i = 0; i < inventory.getSlots(); ++i) {
             final ItemStack s = inventory.getStackInSlot(i);
             if (!s.isEmpty()) {
@@ -79,7 +79,7 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
             return 0L;
         }
         long total = 0L;
-        final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+        final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
         for (int i = 0; i < inventory.getSlots(); ++i) {
             final ItemStack s = inventory.getStackInSlot(i);
             if (!s.isEmpty()) {
@@ -97,7 +97,7 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
 
     public long capacityEU(final boolean includeWrapped) {
         long total = 0L;
-        final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+        final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
         for (int i = 0; i < inventory.getSlots(); ++i) {
             final ItemStack s = inventory.getStackInSlot(i);
             if (!s.isEmpty()) {
@@ -115,7 +115,7 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
 
     public long storedEU(final boolean includeWrapped) {
         long total = 0L;
-        final IItemHandlerModifiable inventory = this.ceu.getImportItems();
+        final IItemHandlerModifiable inventory = this.energyConverter.getImportItems();
         for (int i = 0; i < inventory.getSlots(); ++i) {
             final ItemStack s = inventory.getStackInSlot(i);
             if (!s.isEmpty()) {
@@ -135,7 +135,7 @@ public abstract class ChargeHandler extends MTETrait implements CeuCharger {
     public IElectricItem getBatteryContainer(final ItemStack s, final boolean wrap) {
         final IElectricItem i = s.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         if (i != null && i.canProvideChargeExternally()) {
-            return (GAConfig.ceu.PermitOnlyExactVoltage && i.getTier() != this.ceu.getTier()) ? null : i;
+            return (GAConfig.energyConverter.PermitOnlyExactVoltage && i.getTier() != this.energyConverter.getTier()) ? null : i;
         }
         if (wrap) {
             return this.getWrappedBatteryContainer(s);

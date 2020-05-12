@@ -224,12 +224,12 @@ public class GAConfig {
         public boolean GregsConstructGlassProcessing = true;
     }
 
-    @Config.Comment("Config options for ceu features")
-    public static CEU ceu = new CEU();
+    @Config.Comment("Config options for energyConverter features")
+    public static EnergyConverter energyConverter = new EnergyConverter();
 
-    public static class CEU {
+    public static class EnergyConverter {
         public boolean Disable = false;
-        @Config.Comment("True if you want CEU & CEF to accept batteries with same voltage as CEU/CEF's. False if you want CEU & CEF to accept any tier of batteries.")
+        @Config.Comment("True if you want Energy Converter  to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
         public boolean PermitOnlyExactVoltage = false;
 
         @Config.Comment("Ratio 1 EU to X RF")
