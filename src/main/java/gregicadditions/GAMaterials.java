@@ -208,8 +208,6 @@ public class GAMaterials implements IMaterialHandler {
         platinumProcess();
         goldProcess();
 
-
-//        setBlastFurnaceTemperature(Magnalium, 1500);
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
@@ -326,6 +324,7 @@ public class GAMaterials implements IMaterialHandler {
         OrePrefix.block.setIgnored(Cryotheum);
         OrePrefix.block.setIgnored(Snow);
         OrePrefix.block.setIgnored(MagnetoResonatic);
+        OrePrefix.block.setIgnored(PotassiumDisulfate);
         OrePrefix.dust.setIgnored(Snow);
         OrePrefix.dustSmall.setIgnored(Snow);
         OrePrefix.dustTiny.setIgnored(Snow);
@@ -369,7 +368,8 @@ public class GAMaterials implements IMaterialHandler {
 
     public static void platinumProcess() {
         PlatinumMetallicPowder.setOreMultiplier(2);
-        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue);
+        PlatinumMetallicPowder.washedIn = SodiumPersulfate;
+        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue, IrLeachResidue, PlatinumMetallicPowder);
         PalladiumMetallicPowder.setOreMultiplier(2);
         Nickel.oreByProducts.clear();
         Nickel.addOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);

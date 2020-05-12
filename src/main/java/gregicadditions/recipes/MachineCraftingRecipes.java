@@ -248,7 +248,7 @@ public class MachineCraftingRecipes {
                 .input(wireGtQuadruple, IVSuperconductor, 64)
                 .input(wireGtQuadruple, IVSuperconductor, 64)
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LUV, 2),
-                        GATileEntities.ROCKET_GENERATOR[GTValues.LuV].getStackForm(2),
+                        GATileEntities.ROCKET_GENERATOR[GTValues.LuV-1].getStackForm(2),
                         MetaItems.ELECTRIC_PISTON_LUV.getStackForm(16))
                 .outputs(GATileEntities.LARGE_ROCKET_ENGINE.getStackForm()).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -399,7 +399,7 @@ public class MachineCraftingRecipes {
         registerMachineRecipe(GATileEntities.WORLD_ACCELERATOR, "ABC", "DHE", "FGI", 'H', HULL, 'A', PISTON, 'B', ROBOT_ARM, 'C', PUMP, 'D', MOTOR, 'E', CONVEYOR, 'F', EMITTER, 'G', SENSOR, 'I', FIELD_GENERATOR);
         registerMachineRecipe(GATileEntities.MINER, "WPW", "CMC", "WPW", 'M', HULL, 'P', PISTON, 'C', CIRCUIT, 'W', MetaItems.COMPONENT_GRINDER_DIAMOND);
         registerMachineRecipe(GATileEntities.DEHYDRATOR, "WCW", "MHM", "GAG", 'C', CIRCUIT, 'M', CABLE_QUAD, 'H', HULL, 'G', GEAR, 'A', ROBOT_ARM, 'W', COIL_HEATING_DOUBLE);
-        registerMachineRecipe(GATileEntities.ROCKET_GENERATOR, "PCP", "MHM", "GAG", 'C', BETTER_CIRCUIT, 'M', MOTOR, 'H', HULL, 'G', GEAR, 'A', CABLE_DOUBLE, 'P', PISTON);
+        registerMachineRecipe(GATileEntities.ROCKET_GENERATOR, "PCP", "MHM", "GAG", 'C', CIRCUIT, 'M', MOTOR, 'H', HULL, 'G', PLATE_DENSE, 'A', CABLE_DOUBLE, 'P', PISTON);
         if (GAConfig.GT5U.highTierPumps)
             registerMachineRecipe(GATileEntities.PUMP, "WGW", "GMG", "TGT", 'M', HULL, 'W', CIRCUIT, 'G', PUMP, 'T', PIPE);
         if (GAConfig.GT5U.highTierAlloySmelter)

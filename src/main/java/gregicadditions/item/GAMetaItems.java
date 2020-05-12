@@ -160,10 +160,13 @@ public class GAMetaItems {
     public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_NANO_MUSCLE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_QAURK_TECH_SUITE_CHESTPLATE;
 
-	public static MetaItem<?>.MetaValueItem IMPELLER_MV;
-	public static MetaItem<?>.MetaValueItem IMPELLER_HV;
-	public static MetaItem<?>.MetaValueItem GRAVITATION_ENGINE;
-	public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
+    public static MetaItem<?>.MetaValueItem IMPELLER_MV;
+    public static MetaItem<?>.MetaValueItem IMPELLER_HV;
+    public static MetaItem<?>.MetaValueItem GRAVITATION_ENGINE;
+    public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
+
+    public static MetaItem<?>.MetaValueItem HAND_PUMP;
+
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
