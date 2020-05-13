@@ -1411,6 +1411,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(PalladiumAmmonia.getFluid(1000))
                 .input(dust, PalladiumMetallicPowder)
                 .outputs(OreDictUnifier.get(dustTiny, PalladiumSalt, 12))
@@ -1578,8 +1579,8 @@ public class GARecipeAddition {
         //Osmium
         ValidationResult<Recipe> result = DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicOsmiumSolution.getFluid(1000))
-                .fluidOutputs(OsmiumSolution.getFluid(100))
-                .fluidOutputs(Water.getFluid(900))
+                .fluidOutputs(OsmiumSolution.getFluid(500))
+                .fluidOutputs(Water.getFluid(500))
                 .EUt(7680)
                 .duration(150).build();
         DISTILLATION_RECIPES.addRecipe(result);

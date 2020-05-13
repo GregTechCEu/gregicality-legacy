@@ -232,10 +232,10 @@ public class GAConfig {
         @Config.Comment("True if you want Energy Converter  to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
         public boolean PermitOnlyExactVoltage = false;
 
-        @Config.Comment("Ratio 1 EU to X RF")
+        @Config.Name("Ratio 1 EU to X RF")
         public int RatioEUtoRF = 4;
 
-        @Config.Comment("Ratio X RF to 1 EU")
+        @Config.Name("Ratio X RF to 1 EU")
         public int RatioRFtoEU = 4;
     }
 

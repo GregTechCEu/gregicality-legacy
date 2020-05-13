@@ -25,7 +25,7 @@
         },
 		  {
           "weight": 20,
-          "value": "ore:iridium_metal_residue"
+          "value": "ore:rarest_metal_residue"
         }
       ]
     }

@@ -30,6 +30,7 @@ import static gregtech.api.util.GTUtility.createFlag;
 public class GAMaterials implements IMaterialHandler {
 
     public static final long GENERATE_METAL_CASING = createFlag(46);
+    public static final long DISABLE_REPLICATION = createFlag(47);
 
     public static long STD_METAL = GENERATE_PLATE;
     static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | GENERATE_ROD | GENERATE_BOLT_SCREW | GENERATE_GEAR | GENERATE_FOIL | GENERATE_FINE_WIRE;
@@ -369,7 +370,7 @@ public class GAMaterials implements IMaterialHandler {
     public static void platinumProcess() {
         PlatinumMetallicPowder.setOreMultiplier(2);
         PlatinumMetallicPowder.washedIn = SodiumPersulfate;
-        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue, IrLeachResidue, PlatinumMetallicPowder);
+        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue, IrOsLeachResidue, PlatinumMetallicPowder);
         PalladiumMetallicPowder.setOreMultiplier(2);
         Nickel.oreByProducts.clear();
         Nickel.addOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);
@@ -379,8 +380,10 @@ public class GAMaterials implements IMaterialHandler {
         Platinum.addOreByProducts(Nickel, IrLeachResidue);
         Osmium.oreByProducts.clear();
         Osmium.addOreByProducts(IrLeachResidue);
-        IrOsLeachResidue.addOreByProducts(IrLeachResidue);
+        IrOsLeachResidue.addOreByProducts(IrLeachResidue, IrLeachResidue, IrLeachResidue, IrOsLeachResidue);
+        IrOsLeachResidue.washedIn = SodiumPersulfate;
         IrLeachResidue.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
+        IrLeachResidue.washedIn = SodiumPersulfate;
     }
 
     public static void ignoreCable(Material m) {
