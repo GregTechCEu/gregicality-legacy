@@ -4,7 +4,7 @@ import gregicadditions.Gregicality;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.CrateRenderer;
 import gregicadditions.machines.DrumRenderer;
-import gregicadditions.machines.ceu.utils.CeuType;
+import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
@@ -47,7 +47,7 @@ public class ClientHandler {
     public static final TextureArea BRONZE_FLUID_SLOT = TextureArea.fullImage("textures/gui/steam/fluid_slot.png");
     public static OrientedOverlayRenderer STEAM_MIXER_OVERLAY = new OrientedOverlayRenderer("machines/steam_mixer", OverlayFace.FRONT, OverlayFace.SIDE, OverlayFace.TOP);
     public static final TextureArea COAL_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze/overlay_bronze_coal.png");
-    public static final Map<CeuType, SimpleOverlayRenderer> CEU_FACES = new HashMap<>();
+    public static final Map<EnergyConverterType, SimpleOverlayRenderer> CONVERTER_FACES = new HashMap<>();
     public static final TextureArea BRONZE_DISPLAY = TextureArea.fullImage("textures/gui/steam/bronze_display.png");
     public static final TextureArea BRONZE_IN_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_in_slot_overlay.png");
     public static final TextureArea BRONZE_OUT_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_out_slot_overlay.png");
@@ -57,8 +57,8 @@ public class ClientHandler {
 
 
     static {
-        for (final CeuType t : CeuType.values()) {
-            CEU_FACES.put(t, new SimpleOverlayRenderer("overlay/machine/ceu/" + t.toString().toLowerCase()));
+        for (final EnergyConverterType t : EnergyConverterType.values()) {
+            CONVERTER_FACES.put(t, new SimpleOverlayRenderer("overlay/machine/converter/" + t.toString().toLowerCase()));
         }
     }
 

@@ -5,9 +5,9 @@ import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.CeuType;
-import gregicadditions.machines.ceu.utils.ConverterType;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregicadditions.machines.energyconverter.utils.ConverterType;
 import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
 import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.energy.MetaTileEntityTransformer;
@@ -87,7 +87,7 @@ public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] REPLICATOR = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
-    public static ListMultimap<CeuType, MTECeu> CEUS = ArrayListMultimap.create();
+    public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
 
     //multiblock
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
@@ -152,12 +152,12 @@ public class GATileEntities {
     public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
 
-    public static TileEntityDrum WOODEN_DRUM;
-    public static TileEntityDrum BRONZE_DRUM;
-    public static TileEntityDrum STEEL_DRUM;
-    public static TileEntityDrum STAINLESS_STEEL_DRUM;
-    public static TileEntityDrum TITANIUM_DRUM;
-    public static TileEntityDrum TUNGSTENSTEEL_DRUM;
+    public static MetaTileEntityDrum WOODEN_DRUM;
+    public static MetaTileEntityDrum BRONZE_DRUM;
+    public static MetaTileEntityDrum STEEL_DRUM;
+    public static MetaTileEntityDrum STAINLESS_STEEL_DRUM;
+    public static MetaTileEntityDrum TITANIUM_DRUM;
+    public static MetaTileEntityDrum TUNGSTENSTEEL_DRUM;
 
     public static TileEntityCrate WOODEN_CRATE;
     public static TileEntityCrate BRONZE_CRATE;
@@ -562,12 +562,12 @@ public class GATileEntities {
         BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(2562, new MetaTileEntityBatteryTower(location("battery_tower")));
 
         if (GAConfig.GT6.registerDums) {
-            WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new TileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
-            BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new TileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
-            STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new TileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
-            STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new TileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
-            TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new TileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
-            TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new TileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
+            WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new MetaTileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
+            BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new MetaTileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
+            STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new MetaTileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
+            STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new MetaTileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
+            TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new MetaTileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
+            TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new MetaTileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
         }
 
         if (GAConfig.GT5U.highTierPumps) {
@@ -643,8 +643,8 @@ public class GATileEntities {
             for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
                 for (int slot = 1; slot <= 4; ++slot) {
                     final String vn = GTValues.VN[tier].toLowerCase();
-                    CEUS.put(t.getCeuType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCeuType() + "." + vn + "." + slot * slot), tier, t.getCeuType(), slot)));
-                    CEUS.put(t.getCefType(), GregTechAPI.registerMetaTileEntity(id++, new MTECeu(location(t.getCefType() + "." + vn + "." + slot * slot), tier, t.getCefType(), slot)));
+                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + slot * slot), tier, t.getGTEUToForgeType(), slot)));
+                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + slot * slot), tier, t.getForgeToGTEUType(), slot)));
                 }
             }
         }

@@ -1,5 +1,6 @@
 package gregicadditions.item.behavior;
 
+import gregicadditions.machines.MetaTileEntityDrum;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -33,7 +34,7 @@ public class HandPumpBehavior implements IItemBehaviour {
             }
             if (tileEntity instanceof MetaTileEntityHolder && !player.isSneaking()) {
                 MetaTileEntity metaTileEntity = ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityHolder.class, (MetaTileEntityHolder) tileEntity, "metaTileEntity");
-                if (metaTileEntity instanceof MetaTileEntityTank) {
+                if (metaTileEntity instanceof MetaTileEntityTank || metaTileEntity instanceof MetaTileEntityDrum) {
                     drainFromCapabilities(tileEntity, player, fluidHandlerItem, capacity, content);
                 } else {
                     FluidStack fluidStack;

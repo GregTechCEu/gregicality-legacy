@@ -1,7 +1,7 @@
-package gregicadditions.machines.ceu.energy;
+package gregicadditions.machines.energyconverter.energy;
 
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.Numbers;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.Numbers;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.capability.IEnergyContainer;
@@ -17,18 +17,18 @@ import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializable<NBTTagCompound> {
-    private final MTECeu ceu;
+    private final MetaTileEntityEnergyConverter energyConverter;
     private long current;
     private long max;
     private final ElectricItemWrapped electricItem;
 
-    public UniversalEnergyStorage(final MTECeu ceu, final long max) {
-        this(ceu, 0L, max);
+    public UniversalEnergyStorage(final MetaTileEntityEnergyConverter energyConverter, final long max) {
+        this(energyConverter, 0L, max);
     }
 
-    public UniversalEnergyStorage(final MTECeu ceu, final long current, final long max) {
+    public UniversalEnergyStorage(final MetaTileEntityEnergyConverter energyConverter, final long current, final long max) {
         this.electricItem = new ElectricItemWrapped();
-        this.ceu = ceu;
+        this.energyConverter = energyConverter;
         this.current = current;
         this.max = max;
     }
@@ -40,10 +40,10 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
     public long acceptEnergyFromNetwork(@Nullable final EnumFacing side, final long voltage, final long amperage) {
         if (voltage > 0L && amperage > 0L && (side == null || this.inputsEnergy(side))) {
             if (voltage > this.getInputVoltage()) {
-                final BlockPos pos = this.ceu.getPos();
-                this.ceu.getWorld().removeTileEntity(pos);
+                final BlockPos pos = this.energyConverter.getPos();
+                this.energyConverter.getWorld().removeTileEntity(pos);
                 if (ConfigHolder.doExplosions) {
-                    this.ceu.getWorld().createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, GTUtility.getTierByVoltage(voltage), true);
+                    this.energyConverter.getWorld().createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, GTUtility.getTierByVoltage(voltage), true);
                 }
                 return Math.min(amperage, this.getInputAmperage());
             }
@@ -60,7 +60,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
     }
 
     public boolean inputsEnergy(final EnumFacing side) {
-        return this.ceu.isCeu() && this.ceu.getFrontFacing() != side;
+        return this.energyConverter.isGTEU() && this.energyConverter.getFrontFacing() != side;
     }
 
     public long changeEnergy(final long differenceAmount) {
@@ -82,7 +82,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
     }
 
     public long getInputAmperage() {
-        return this.ceu.getImportItems().getSlots();
+        return this.energyConverter.getImportItems().getSlots();
     }
 
     public long getOutputAmperage() {
@@ -90,7 +90,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
     }
 
     public long getInputVoltage() {
-        return GTValues.V[this.ceu.getTier()];
+        return GTValues.V[this.energyConverter.getTier()];
     }
 
     public long getOutputVoltage() {
@@ -158,7 +158,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
         }
 
         public int getTier() {
-            return UniversalEnergyStorage.this.ceu.getTier();
+            return UniversalEnergyStorage.this.energyConverter.getTier();
         }
 
         public long getTransferLimit() {

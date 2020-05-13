@@ -42,12 +42,12 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityDrum extends MetaTileEntity {
+public class MetaTileEntityDrum extends MetaTileEntity {
 	private final int tankSize;
 	private final SolidMaterial material;
 	private SyncFluidTank fluidTank;
 
-	public TileEntityDrum(ResourceLocation metaTileEntityId, SolidMaterial material, int tankSize) {
+	public MetaTileEntityDrum(ResourceLocation metaTileEntityId, SolidMaterial material, int tankSize) {
 		super(metaTileEntityId);
 		this.tankSize = tankSize;
 		this.material = material;
@@ -56,7 +56,7 @@ public class TileEntityDrum extends MetaTileEntity {
 
 	@Override
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new TileEntityDrum(metaTileEntityId, material, tankSize);
+		return new MetaTileEntityDrum(metaTileEntityId, material, tankSize);
 	}
 
 	@Override

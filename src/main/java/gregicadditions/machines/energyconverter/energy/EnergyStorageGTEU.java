@@ -1,18 +1,18 @@
-package gregicadditions.machines.ceu.energy;
+package gregicadditions.machines.energyconverter.energy;
 
-import gregicadditions.machines.ceu.MTECeu;
-import gregicadditions.machines.ceu.utils.Energy;
-import gregicadditions.machines.ceu.utils.Ratio;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.Energy;
+import gregicadditions.machines.energyconverter.utils.Ratio;
 import gregtech.api.capability.IElectricItem;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class EnergyStorageGteu implements IEnergyStorage {
+public class EnergyStorageGTEU implements IEnergyStorage {
     private final IElectricItem battery;
     private final Ratio ratio;
 
-    public EnergyStorageGteu(final MTECeu ceu, final IElectricItem battery) {
+    public EnergyStorageGTEU(final MetaTileEntityEnergyConverter energyConverter, final IElectricItem battery) {
         this.battery = battery;
-        this.ratio = ((ceu.getType().getInput() == Energy.GTEU) ? ceu.ratio() : ceu.ratio().reverse());
+        this.ratio = ((energyConverter.getType().getInput() == Energy.GTEU) ? energyConverter.ratio() : energyConverter.ratio().reverse());
     }
 
     public int receiveEnergy(final int maxReceive, final boolean simulate) {

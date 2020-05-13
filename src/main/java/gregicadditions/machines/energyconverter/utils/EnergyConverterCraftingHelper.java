@@ -1,6 +1,6 @@
-package gregicadditions.machines.ceu.utils;
+package gregicadditions.machines.energyconverter.utils;
 
-import gregicadditions.machines.ceu.MTECeu;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -12,20 +12,19 @@ import gregtech.api.unification.stack.UnificationEntry;
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
-public class CeuCraftingHelper {
-	public static final CeuCraftingHelper HELPER;
+public class EnergyConverterCraftingHelper {
+	public static final EnergyConverterCraftingHelper HELPER;
 	private UnificationEntry[] redCables;
 	private UnificationEntry[][] cables;
 
-	public Consumer<MTECeu> logic(final RecipeFunction function) {
-		return ceu -> {
-			Object[] objs = function.createRecipe(ceu.getTier(), ceu.getSize());
+	public Consumer<MetaTileEntityEnergyConverter> logic(final RecipeFunction function) {
+		return energyConverter -> {
+			Object[] objs = function.createRecipe(energyConverter.getTier(), energyConverter.getSize());
 			if (objs != null) {
-				ModHandler.addShapedRecipe(ceu.metaTileEntityId.toString(), ceu.getStackForm(), objs);
+				ModHandler.addShapedRecipe(energyConverter.metaTileEntityId.toString(), energyConverter.getStackForm(), objs);
 			}
 		};
 	}
-
 
 
 	public UnificationEntry redCable(final int stack) {
@@ -103,7 +102,7 @@ public class CeuCraftingHelper {
 	}
 
 	static {
-		HELPER = new CeuCraftingHelper();
+		HELPER = new EnergyConverterCraftingHelper();
 	}
 
 	@FunctionalInterface
