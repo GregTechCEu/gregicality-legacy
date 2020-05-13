@@ -941,7 +941,7 @@ public class GARecipeAddition {
         //Rocket fuel tier 2
         MIXER_RECIPES.recipeBuilder().duration(16).EUt(240).fluidInputs(Hydrazine.getFluid(40), Methanol.getFluid(60)).fluidOutputs(DenseHydrazineFuelMixture.getFluid(100)).buildAndRegister();
         //rocket fuel tier 1
-        MIXER_RECIPES.recipeBuilder().duration(16).EUt(240).fluidInputs(LiquidOxygen.getFluid(1000), RP1.getFluid(5)).fluidOutputs(RP1RocketFuel.getFluid(5)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(16).EUt(240).fluidInputs(LiquidOxygen.getFluid(100), RP1.getFluid(25)).fluidOutputs(RP1RocketFuel.getFluid(25)).buildAndRegister();
 
         //Rocket fuel chemical
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(Ammonia.getFluid(1000), HydrogenPeroxide.getFluid(1000)).fluidOutputs(Hydrazine.getFluid(1000), Water.getFluid(100)).buildAndRegister();
