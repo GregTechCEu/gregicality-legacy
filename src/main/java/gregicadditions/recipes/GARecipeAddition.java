@@ -962,7 +962,7 @@ public class GARecipeAddition {
 
         DISTILLATION_RECIPES.recipeBuilder().duration(900).EUt(60).fluidInputs(CoalTar.getFluid(1000)).fluidOutputs(CoalTarOil.getFluid(500), Kerosene.getFluid(200), EthylBenzene.getFluid(150), Naphtha.getFluid(100), Anthracene.getFluid(50)).buildAndRegister();
 
-        DISTILLERY_RECIPES.recipeBuilder().duration(16).EUt(120).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Kerosene.getFluid(4)).fluidOutputs(RP1.getFluid(2)).buildAndRegister();
+        DISTILLERY_RECIPES.recipeBuilder().duration(16).EUt(120).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Kerosene.getFluid(50)).fluidOutputs(RP1.getFluid(25)).buildAndRegister();
         DISTILLERY_RECIPES.recipeBuilder().duration(25).EUt(30).notConsumable(new IntCircuitIngredient(0)).fluidInputs(SulfuricCoalTarOil.getFluid(20)).fluidOutputs(Naphtalene.getFluid(20)).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(SulfuricAcid.getFluid(8000), CoalTarOil.getFluid(8000)).fluidOutputs(SulfuricCoalTarOil.getFluid(16000)).buildAndRegister();
