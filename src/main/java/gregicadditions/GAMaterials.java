@@ -203,14 +203,19 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial PreciousMetal = new IngotMaterial(827, "precious_metal", 0xB99023, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION | GENERATE_ORE, null);
     public static final FluidMaterial HydrogenFluoride = new FluidMaterial(826, "hydrogen_fluoride", 0xFFFFFF, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 1), new MaterialStack(Chlorine, 1)), 0);
     public static final DustMaterial UranylNitrate = new DustMaterial(825, "uranyl_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Uraninite, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial UraniumHexachloride = new DustMaterial(824, "uranium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial UraniumHexafluoride = new DustMaterial(823, "uranium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial UraniumHexachloride = new DustMaterial(824, "uranium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial UraniumHexafluoride = new DustMaterial(823, "uranium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final IngotMaterial Uranium238 = new IngotMaterial(822, "uranium_238", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium, 1)), EXT2_METAL);
-    public static final IngotMaterial Neptunium239 = new IngotMaterial(821, "neptunium_239", 0x115F7B, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Np);
-    public static final IngotMaterial Plutonium239 = new IngotMaterial(820, "plutonium_239", 0xFF0000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Pu);
-    public static final IngotMaterial Thorium232 = new IngotMaterial(819, "thorium_232", 0x000000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Th);
+    public static final DustMaterial Uranium235Hexafluoride = new DustMaterial(821, "uranium_235_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium235, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);// + steam in autoclave
+    public static final DustMaterial Uranium238Hexafluoride = new DustMaterial(820, "uranium_238_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium238, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);// + steam in autoclave
+    public static final IngotMaterial Uranium238Dioxide = new IngotMaterial(819, "uranium_238_dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238, 1), new MaterialStack(Oxygen, 2)), EXT2_METAL);
+    public static final IngotMaterial Uranium235Dioxide = new IngotMaterial(818, "uranium_235_dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238, 1), new MaterialStack(Oxygen, 2)), EXT2_METAL);
+    public static final IngotMaterial Uranium233 = new IngotMaterial(817, "uranium_233", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium, 1)), EXT2_METAL);
 
 
+//    public static final IngotMaterial Neptunium239 = new IngotMaterial(821, "neptunium_239", 0x115F7B, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Np);
+//    public static final IngotMaterial Plutonium239 = new IngotMaterial(820, "plutonium_239", 0xFF0000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Pu);
+//    public static final IngotMaterial Thorium232 = new IngotMaterial(819, "thorium_232", 0x000000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Th);
 
 
     @Override
