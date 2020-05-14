@@ -296,6 +296,7 @@ public class RecipeHandler {
     public static void registerLargeMixerRecipes() {
         RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe ->
                 GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
+                        .notConsumable(new IntCircuitIngredient(recipe.getInputs().size() + recipe.getFluidInputs().size()))
                         .EUt(recipe.getEUt())
                         .duration(recipe.getDuration())
                         .fluidInputs(recipe.getFluidInputs())

@@ -441,6 +441,7 @@ public class GARecipeAddition {
                 .input(dust, Carbon, 1)
                 .outputs(OreDictUnifier.get(dust, EglinSteel, 13)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .notConsumable(new IntCircuitIngredient(6))
                 .input(dust, Titanium, 9)
                 .input(dust, Carbon, 9)
                 .input(dust, Lithium, 9)
@@ -449,6 +450,7 @@ public class GARecipeAddition {
                 .fluidInputs(Hydrogen.getFluid(500))
                 .outputs(OreDictUnifier.get(dust, Grisium, 48)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Chrome, 7)
                 .input(dust, Molybdenum, 10)
                 .input(dust, Invar, 10)
@@ -456,6 +458,7 @@ public class GARecipeAddition {
                 .input(dust, Nickel, 3)
                 .outputs(OreDictUnifier.get(dust, Inconel625, 43)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Steel, 16)
                 .input(dust, Molybdenum, 1)
                 .input(dust, Titanium, 1)
@@ -472,6 +475,7 @@ public class GARecipeAddition {
                 .input(dust, Titanium, 1)
                 .outputs(OreDictUnifier.get(dust, Staballoy, 10)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+                .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Yttrium, 2)
                 .input(dust, Molybdenum, 4)
                 .input(dust, Chrome, 2)
