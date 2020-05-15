@@ -1,6 +1,8 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
+import gregicadditions.materials.IsotopeMaterial;
+import gregicadditions.materials.RadioactiveMaterial;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.MaterialIconSet;
@@ -202,24 +204,274 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial GoldAlloy = new IngotMaterial(828, "gold_alloy", 0xBBA52B, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(CopperLeach, 3)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial PreciousMetal = new IngotMaterial(827, "precious_metal", 0xB99023, MaterialIconSet.SHINY, 2, of(new MaterialStack(GoldLeach, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION | GENERATE_ORE, null);
     public static final FluidMaterial HydrogenFluoride = new FluidMaterial(826, "hydrogen_fluoride", 0xFFFFFF, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 1), new MaterialStack(Chlorine, 1)), 0);
-    public static final DustMaterial UranylNitrate = new DustMaterial(825, "uranyl_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Uraninite, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial UraniumHexachloride = new DustMaterial(824, "uranium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
-    public static final DustMaterial UraniumHexafluoride = new DustMaterial(823, "uranium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
-    public static final IngotMaterial Uranium238 = new IngotMaterial(822, "uranium_238", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium, 1)), EXT2_METAL);
-    public static final DustMaterial Uranium235Hexafluoride = new DustMaterial(821, "uranium_235_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium235, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);// + steam in autoclave
-    public static final DustMaterial Uranium238Hexafluoride = new DustMaterial(820, "uranium_238_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium238, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);// + steam in autoclave
-    public static final IngotMaterial Uranium238Dioxide = new IngotMaterial(819, "uranium_238_dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238, 1), new MaterialStack(Oxygen, 2)), EXT2_METAL);
-    public static final IngotMaterial Uranium235Dioxide = new IngotMaterial(818, "uranium_235_dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238, 1), new MaterialStack(Oxygen, 2)), EXT2_METAL);
-    public static final IngotMaterial Uranium233 = new IngotMaterial(817, "uranium_233", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium, 1)), EXT2_METAL);
+
+    //Thorium
+    public static final RadioactiveMaterial ThoriumRadioactive = new RadioactiveMaterial(Thorium);
+    public static final IsotopeMaterial Thorium232 = new IsotopeMaterial(Thorium, RadioactiveMaterial.REGISTRY.get(Thorium), 232);
+    public static final IsotopeMaterial Thorium233 = new IsotopeMaterial(825, RadioactiveMaterial.REGISTRY.get(Thorium), 233, EXT2_METAL);
+
+    //Protactinium
+    public static final RadioactiveMaterial Protactinium = new RadioactiveMaterial(824, "protactinium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Pa, 0, 0, 0, 0);
+    public static final IsotopeMaterial Protactinium233 = new IsotopeMaterial(823, RadioactiveMaterial.REGISTRY.get(Protactinium.getMaterial()), 233, EXT2_METAL);
+
+    //uranium
+    public static final RadioactiveMaterial UraniumRadioactive = new RadioactiveMaterial(Uranium);
+    public static final IsotopeMaterial Uranium233 = new IsotopeMaterial(822, RadioactiveMaterial.REGISTRY.get(Uranium), 233, EXT2_METAL);
+    public static final IsotopeMaterial Uranium234 = new IsotopeMaterial(821, RadioactiveMaterial.REGISTRY.get(Uranium), 234, EXT2_METAL);
+    public static final IsotopeMaterial Uranium235Isotope = new IsotopeMaterial(Uranium235, RadioactiveMaterial.REGISTRY.get(Uranium), 235);
+    public static final IsotopeMaterial Uranium238 = new IsotopeMaterial(820, RadioactiveMaterial.REGISTRY.get(Uranium), 238, EXT2_METAL);
+    public static final IsotopeMaterial Uranium239 = new IsotopeMaterial(819, RadioactiveMaterial.REGISTRY.get(Uranium), 239, EXT2_METAL);
+
+    public static final DustMaterial UranylNitrate = new DustMaterial(818, "uranyl_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Uraninite, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial UraniumHexachloride = new DustMaterial(817, "uranium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial UraniumHexafluoride = new DustMaterial(816, "uranium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Uranium234Hexafluoride = new DustMaterial(815, "uranium234hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium234.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Uranium235Hexafluoride = new DustMaterial(814, "uranium235hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium235, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Uranium238Hexafluoride = new DustMaterial(813, "uranium238hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium238.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Uranium234Dioxide = new IngotMaterial(812, "uranium234dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium234.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Uranium235Dioxide = new IngotMaterial(811, "uranium235dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium235, 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Uranium238Dioxide = new IngotMaterial(810, "uranium238dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
 
 
-//    public static final IngotMaterial Neptunium239 = new IngotMaterial(821, "neptunium_239", 0x115F7B, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Np);
-//    public static final IngotMaterial Plutonium239 = new IngotMaterial(820, "plutonium_239", 0xFF0000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Pu);
-//    public static final IngotMaterial Thorium232 = new IngotMaterial(819, "thorium_232", 0x000000, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Th);
+    //Neptunium
+    public static final RadioactiveMaterial Neptunium = new RadioactiveMaterial(809, "neptunium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Np, 0, 0, 0, 0);
+    public static final IsotopeMaterial Neptunium235 = new IsotopeMaterial(808, RadioactiveMaterial.REGISTRY.get(Neptunium.getMaterial()), 235, EXT2_METAL);
+    public static final IsotopeMaterial Neptunium237 = new IsotopeMaterial(807, RadioactiveMaterial.REGISTRY.get(Neptunium.getMaterial()), 237, EXT2_METAL);
+    public static final IsotopeMaterial Neptunium239 = new IsotopeMaterial(806, RadioactiveMaterial.REGISTRY.get(Neptunium.getMaterial()), 239, EXT2_METAL);
+
+    public static final DustMaterial NeptuniumDioxide = new DustMaterial(805, "neptunium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial NeptuniumNitrate = new DustMaterial(804, "neptunium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(NeptuniumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial NeptuniumHexachloride = new DustMaterial(803, "neptunium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial NeptuniumHexafluoride = new DustMaterial(802, "neptunium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Neptunium235Hexafluoride = new DustMaterial(801, "neptunium235hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium235.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Neptunium237Hexafluoride = new DustMaterial(800, "neptunium237hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium237.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Neptunium239Hexafluoride = new DustMaterial(799, "neptunium239hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Neptunium239.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Neptunium235Dioxide = new IngotMaterial(798, "neptunium235dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Neptunium235.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Neptunium237Dioxide = new IngotMaterial(797, "neptunium237dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Neptunium237.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Neptunium239Dioxide = new IngotMaterial(796, "neptunium239dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Neptunium239.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+    //plutonium
+    public static final RadioactiveMaterial PlutoniumRadioactive = new RadioactiveMaterial(Plutonium);
+    public static final IsotopeMaterial Plutonium239 = new IsotopeMaterial(795, RadioactiveMaterial.REGISTRY.get(Plutonium), 239, EXT2_METAL);
+    public static final IsotopeMaterial Plutonium240 = new IsotopeMaterial(794, RadioactiveMaterial.REGISTRY.get(Plutonium), 240, EXT2_METAL);
+    public static final IsotopeMaterial Plutonium241Isotope = new IsotopeMaterial(Plutonium241, RadioactiveMaterial.REGISTRY.get(Plutonium), 241);
+    public static final IsotopeMaterial Plutonium244 = new IsotopeMaterial(793, RadioactiveMaterial.REGISTRY.get(Plutonium), 244, EXT2_METAL);
+    public static final IsotopeMaterial Plutonium245 = new IsotopeMaterial(792, RadioactiveMaterial.REGISTRY.get(Plutonium), 245, EXT2_METAL);
+
+    public static final DustMaterial PlutoniumDioxide = new DustMaterial(791, "plutonium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium, 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial PlutoniumNitrate = new DustMaterial(790, "plutonium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(PlutoniumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial PlutoniumHexachloride = new DustMaterial(789, "plutonium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial PlutoniumHexafluoride = new DustMaterial(788, "plutonium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium, 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Plutonium240Hexafluoride = new DustMaterial(787, "plutonium240hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium240.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Plutonium241Hexafluoride = new DustMaterial(786, "plutonium241hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium241Isotope.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Plutonium244Hexafluoride = new DustMaterial(785, "plutonium244hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium244.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Plutonium240Dioxide = new IngotMaterial(784, "plutonium240dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium240.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Plutonium241Dioxide = new IngotMaterial(783, "plutonium241dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium241Isotope.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Plutonium244Dioxide = new IngotMaterial(782, "plutonium244dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium244.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+
+    //americium
+    public static final RadioactiveMaterial AmericiumRadioactive = new RadioactiveMaterial(Americium);
+    public static final IsotopeMaterial Americium241 = new IsotopeMaterial(781, RadioactiveMaterial.REGISTRY.get(Americium), 235, EXT2_METAL);
+    public static final IsotopeMaterial Americium243 = new IsotopeMaterial(780, RadioactiveMaterial.REGISTRY.get(Americium), 237, EXT2_METAL);
+    public static final IsotopeMaterial Americium245 = new IsotopeMaterial(779, RadioactiveMaterial.REGISTRY.get(Americium), 239, EXT2_METAL);
+
+    public static final DustMaterial AmericiumDioxide = new DustMaterial(778, "americium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(AmericiumRadioactive.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial AmericiumNitrate = new DustMaterial(777, "americium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(AmericiumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial AmericiumHexachloride = new DustMaterial(776, "americium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(AmericiumRadioactive.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial AmericiumHexafluoride = new DustMaterial(775, "americium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(AmericiumRadioactive.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Americium241Hexafluoride = new DustMaterial(774, "americium241hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Americium241.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Americium243Hexafluoride = new DustMaterial(773, "americium243hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Americium243.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Americium245Hexafluoride = new DustMaterial(772, "americium245hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Americium245.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Americium241Dioxide = new IngotMaterial(771, "americium241dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Americium241.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Americium243Dioxide = new IngotMaterial(770, "americium243dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Americium243.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Americium245Dioxide = new IngotMaterial(769, "americium245dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Americium245.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+    //curium
+    public static final RadioactiveMaterial Curium = new RadioactiveMaterial(768, "curium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Cm, 0, 0, 0, 0);
+    public static final IsotopeMaterial Curium245 = new IsotopeMaterial(767, RadioactiveMaterial.REGISTRY.get(Curium.getMaterial()), 245, EXT2_METAL);
+    public static final IsotopeMaterial Curium246 = new IsotopeMaterial(766, RadioactiveMaterial.REGISTRY.get(Curium.getMaterial()), 246, EXT2_METAL);
+    public static final IsotopeMaterial Curium247 = new IsotopeMaterial(765, RadioactiveMaterial.REGISTRY.get(Curium.getMaterial()), 247, EXT2_METAL);
+    public static final IsotopeMaterial Curium250 = new IsotopeMaterial(764, RadioactiveMaterial.REGISTRY.get(Curium.getMaterial()), 250, EXT2_METAL);
+    public static final IsotopeMaterial Curium251 = new IsotopeMaterial(763, RadioactiveMaterial.REGISTRY.get(Curium.getMaterial()), 251, EXT2_METAL);
+
+    public static final DustMaterial CuriumDioxide = new DustMaterial(762, "curium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial CuriumNitrate = new DustMaterial(761, "curium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(CuriumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial CuriumHexachloride = new DustMaterial(760, "curium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial CuriumHexafluoride = new DustMaterial(759, "curium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Curium246Hexafluoride = new DustMaterial(758, "curium246hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium246.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Curium247Hexafluoride = new DustMaterial(757, "curium247hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium247.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Curium250Hexafluoride = new DustMaterial(756, "curium250hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium250.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Curium246Dioxide = new IngotMaterial(755, "curium246dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium246.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Curium247Dioxide = new IngotMaterial(754, "curiumm247dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium247.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Curium250Dioxide = new IngotMaterial(753, "curium250dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium250.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+    //Berkelium
+    public static final RadioactiveMaterial Berkelium = new RadioactiveMaterial(752, "berkelium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Bk, 0, 0, 0, 0);
+    public static final IsotopeMaterial Berkelium247 = new IsotopeMaterial(751, RadioactiveMaterial.REGISTRY.get(Berkelium.getMaterial()), 247, EXT2_METAL);
+    public static final IsotopeMaterial Berkelium249 = new IsotopeMaterial(740, RadioactiveMaterial.REGISTRY.get(Berkelium.getMaterial()), 249, EXT2_METAL);
+    public static final IsotopeMaterial Berkelium251 = new IsotopeMaterial(749, RadioactiveMaterial.REGISTRY.get(Berkelium.getMaterial()), 251, EXT2_METAL);
+
+    public static final DustMaterial BerkeliumDioxide = new DustMaterial(748, "berkelium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial BerkeliumNitrate = new DustMaterial(747, "berkelium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(BerkeliumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial BerkeliumHexachloride = new DustMaterial(746, "berkelium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial BerkeliumHexafluoride = new DustMaterial(745, "berkelium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Berkelium247Hexafluoride = new DustMaterial(744, "berkelium247hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium247.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Berkelium249Hexafluoride = new DustMaterial(743, "berkelium249hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium249.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Berkelium251Hexafluoride = new DustMaterial(742, "berkelium251hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Berkelium251.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Berkelium247Dioxide = new IngotMaterial(741, "berkelium247dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Berkelium247.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Berkelium249Dioxide = new IngotMaterial(740, "berkelium249dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Berkelium249.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Berkelium251Dioxide = new IngotMaterial(739, "berkelium251dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Berkelium251.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+    //Californium
+    public static final RadioactiveMaterial Californium = new RadioactiveMaterial(738, "californium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Cf, 0, 0, 0, 0);
+    public static final IsotopeMaterial Californium251 = new IsotopeMaterial(737, RadioactiveMaterial.REGISTRY.get(Californium.getMaterial()), 251, EXT2_METAL);
+    public static final IsotopeMaterial Californium252 = new IsotopeMaterial(736, RadioactiveMaterial.REGISTRY.get(Californium.getMaterial()), 252, EXT2_METAL);
+    public static final IsotopeMaterial Californium253 = new IsotopeMaterial(735, RadioactiveMaterial.REGISTRY.get(Californium.getMaterial()), 253, EXT2_METAL);
+    public static final IsotopeMaterial Californium256 = new IsotopeMaterial(734, RadioactiveMaterial.REGISTRY.get(Californium.getMaterial()), 256, EXT2_METAL);
+    public static final IsotopeMaterial Californium257 = new IsotopeMaterial(733, RadioactiveMaterial.REGISTRY.get(Californium.getMaterial()), 257, EXT2_METAL);
+
+    public static final DustMaterial CaliforniumDioxide = new DustMaterial(732, "californium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial CaliforniumNitrate = new DustMaterial(731, "californium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(CaliforniumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial CaliforniumHexachloride = new DustMaterial(730, "californium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial CaliforniumHexafluoride = new DustMaterial(729, "californium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Californium252Hexafluoride = new DustMaterial(728, "californium252hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium252.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Californium253Hexafluoride = new DustMaterial(727, "californium253hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium253.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Californium256Hexafluoride = new DustMaterial(726, "californium256hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Californium256.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Californium252Dioxide = new IngotMaterial(725, "californium252dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Californium252.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Californium253Dioxide = new IngotMaterial(724, "californium253dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Californium253.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Californium256Dioxide = new IngotMaterial(723, "californium256dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Californium256.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+    //Einsteinium
+    public static final RadioactiveMaterial Einsteinium = new RadioactiveMaterial(722, "einsteinium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Es, 0, 0, 0, 0);
+    public static final IsotopeMaterial Einsteinium253 = new IsotopeMaterial(721, RadioactiveMaterial.REGISTRY.get(Einsteinium.getMaterial()), 253, EXT2_METAL);
+    public static final IsotopeMaterial Einsteinium255 = new IsotopeMaterial(720, RadioactiveMaterial.REGISTRY.get(Einsteinium.getMaterial()), 255, EXT2_METAL);
+    public static final IsotopeMaterial Einsteinium257 = new IsotopeMaterial(719, RadioactiveMaterial.REGISTRY.get(Einsteinium.getMaterial()), 257, EXT2_METAL);
+
+    public static final DustMaterial EinsteiniumDioxide = new DustMaterial(718, "einsteinium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial EinsteiniumNitrate = new DustMaterial(717, "einsteinium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(EinsteiniumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial EinsteiniumHexachloride = new DustMaterial(716, "einsteinium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial EinsteiniumHexafluoride = new DustMaterial(715, "einsteinium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Einsteinium253Hexafluoride = new DustMaterial(714, "einsteinium253hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium253.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Einsteinium255Hexafluoride = new DustMaterial(713, "einsteinium255hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium255.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Einsteinium257Hexafluoride = new DustMaterial(712, "einsteinium257hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Einsteinium257.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Einsteinium253Dioxide = new IngotMaterial(711, "einsteinium253dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Einsteinium253.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Einsteinium255Dioxide = new IngotMaterial(710, "einsteinium255dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Einsteinium255.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Einsteinium257Dioxide = new IngotMaterial(709, "einsteinium257dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Einsteinium257.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+
+    //Fermium
+    public static final RadioactiveMaterial Fermium = new RadioactiveMaterial(708, "fermium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Fm, 0, 0, 0, 0);
+    public static final IsotopeMaterial Fermium257 = new IsotopeMaterial(707, RadioactiveMaterial.REGISTRY.get(Fermium.getMaterial()), 257, EXT2_METAL);
+    public static final IsotopeMaterial Fermium258 = new IsotopeMaterial(706, RadioactiveMaterial.REGISTRY.get(Fermium.getMaterial()), 258, EXT2_METAL);
+    public static final IsotopeMaterial Fermium259 = new IsotopeMaterial(705, RadioactiveMaterial.REGISTRY.get(Fermium.getMaterial()), 259, EXT2_METAL);
+    public static final IsotopeMaterial Fermium262 = new IsotopeMaterial(704, RadioactiveMaterial.REGISTRY.get(Fermium.getMaterial()), 262, EXT2_METAL);
+    public static final IsotopeMaterial Fermium263 = new IsotopeMaterial(703, RadioactiveMaterial.REGISTRY.get(Fermium.getMaterial()), 263, EXT2_METAL);
+
+    public static final DustMaterial FermiumDioxide = new DustMaterial(702, "fermium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial FermiumNitrate = new DustMaterial(701, "fermium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(FermiumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial FermiumHexachloride = new DustMaterial(700, "fermium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial FermiumHexafluoride = new DustMaterial(699, "fermium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Fermium258Hexafluoride = new DustMaterial(698, "fermium258hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium258.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Fermium259Hexafluoride = new DustMaterial(697, "fermium259hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium259.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Fermium262Hexafluoride = new DustMaterial(696, "fermium262hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Fermium262.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Fermium258Dioxide = new IngotMaterial(695, "fermium258dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Fermium258.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Fermium259Dioxide = new IngotMaterial(694, "fermium259dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Fermium259.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Fermium262Dioxide = new IngotMaterial(693, "fermium262dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Fermium262.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+
+    //Mendelevium
+    public static final RadioactiveMaterial Mendelevium = new RadioactiveMaterial(692, "mendelevium", 0xFFFFFF, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Md, 0, 0, 0, 0);
+    public static final IsotopeMaterial Mendelevium259 = new IsotopeMaterial(691, RadioactiveMaterial.REGISTRY.get(Mendelevium.getMaterial()), 259, EXT2_METAL);
+    public static final IsotopeMaterial Mendelevium261 = new IsotopeMaterial(690, RadioactiveMaterial.REGISTRY.get(Mendelevium.getMaterial()), 261, EXT2_METAL);
+    public static final IsotopeMaterial Mendelevium263 = new IsotopeMaterial(689, RadioactiveMaterial.REGISTRY.get(Mendelevium.getMaterial()), 263, EXT2_METAL);
+
+    public static final DustMaterial MendeleviumDioxide = new DustMaterial(688, "mendelevium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial MendeleviumNitrate = new DustMaterial(687, "mendelevium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(MendeleviumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial MendeleviumHexachloride = new DustMaterial(686, "mendelevium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial MendeleviumHexafluoride = new DustMaterial(685, "mendelevium_hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+
+    public static final DustMaterial Mendelevium259Hexafluoride = new DustMaterial(684, "mendelevium259hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium259.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Mendelevium261Hexafluoride = new DustMaterial(683, "mendelevium261hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium261.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Mendelevium263Hexafluoride = new DustMaterial(682, "mendelevium263hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Mendelevium263.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+
+    public static final DustMaterial Mendelevium259Dioxide = new IngotMaterial(681, "mendelevium259dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Mendelevium259.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Mendelevium261Dioxide = new IngotMaterial(680, "mendelevium261dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Mendelevium261.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Mendelevium263Dioxide = new IngotMaterial(679, "mendelevium263dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Mendelevium263.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+
+
+    public static void initNuclearMaterial() {
+        Thorium232.fertile = true;
+        Thorium232.isotopeDecay.put(Thorium233, 100);
+        Thorium232.isotopeDecay.put(Protactinium233, 1000);
+        Thorium232.isotopeDecay.put(Uranium233, 8900);
+
+        Thorium233.isotopeDecay.put(Protactinium233, 10000);
+
+        Protactinium233.isotopeDecay.put(Uranium233, 10000);
+
+        UraniumRadioactive.composition.put(Uranium238, 9890);
+        UraniumRadioactive.composition.put(Uranium235Isotope, 100);
+        UraniumRadioactive.composition.put(Uranium234, 10);
+
+        UraniumRadioactive.materailHexachloride = UraniumHexachloride;
+        UraniumRadioactive.materailHexafluoride = UraniumHexafluoride;
+        UraniumRadioactive.materialDioxide = Uraninite;
+        UraniumRadioactive.materialNitrate = UranylNitrate;
+
+        Uranium233.fertile = true;
+
+        Uranium234.materailHexafluoride = Uranium234Hexafluoride;
+        Uranium234.materialDioxide = Uranium234Dioxide;
+        Uranium234.fertile = true;
+        Uranium234.isotopeDecay.put(Uranium235Isotope, 10000);
+
+        Uranium238.materailHexafluoride = Uranium238Hexafluoride;
+        Uranium238.materialDioxide = Uranium238Dioxide;
+        Uranium238.fertile = true;
+        Uranium238.isotopeDecay.put(Uranium239, 100);
+        Uranium238.isotopeDecay.put(Neptunium239, 1000);
+        Uranium238.isotopeDecay.put(Plutonium239, 8900);
+
+        Uranium239.isotopeDecay.put(Neptunium239, 10000);
+
+        Uranium235Isotope.materailHexafluoride = Uranium235Hexafluoride;
+        Uranium235Isotope.materialDioxide = Uranium235Dioxide;
+
+
+        PlutoniumRadioactive.composition.put(Plutonium244, 9890);
+        PlutoniumRadioactive.composition.put(Uranium235Isotope, 100);
+        PlutoniumRadioactive.composition.put(Uranium234, 10);
+
+        PlutoniumRadioactive.materailHexachloride = UraniumHexachloride;
+        PlutoniumRadioactive.materailHexafluoride = UraniumHexafluoride;
+        PlutoniumRadioactive.materialDioxide = Uraninite;
+        PlutoniumRadioactive.materialNitrate = UranylNitrate;
+    }
 
 
     @Override
     public void onMaterialsInit() {
+
+
         platinumProcess();
         goldProcess();
 

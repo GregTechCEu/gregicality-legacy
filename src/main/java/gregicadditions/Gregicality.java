@@ -4,7 +4,6 @@ import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
-import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
@@ -150,6 +149,7 @@ public class Gregicality {
         GARecipeAddition.init();
         GARecipeAddition.init2();
         GARecipeAddition.forestrySupport();
+        GARecipeAddition.initNuclearProcess();
         MatterReplication.init();
         MachineCraftingRecipes.init();
         GeneratorFuels.init();

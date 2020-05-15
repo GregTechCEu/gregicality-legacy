@@ -56,7 +56,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.Uranium238Dioxide;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -1875,18 +1874,26 @@ public class GARecipeAddition {
     }
 
     public static void initNuclearProcess() {
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(1).duration(1).EUt(1)
+        CHEMICAL_RECIPES.recipeBuilder().duration(1)
                 .input(dust, Uranium)
-                .fluidInputs(Oxygen.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Uraninite))
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, UranylNitrate, 3))
                 .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+                .input(dust, UranylNitrate)
+                .fluidInputs(Water.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, Uraninite))
+                .fluidOutputs(NitrogenTetroxide.getFluid(1000))
+                .buildAndRegister();
+
 
         CHEMICAL_RECIPES.recipeBuilder().duration(1)
                 .input(dust, Uraninite)
-                .fluidInputs(NitricAcid.getFluid(2000))
-                .fluidOutputs(UranylNitrate.getFluid(3000))
+                .fluidInputs(Chlorine.getFluid(6000))
+                .fluidOutputs(UraniumHexachloride.getFluid(6000))
+                .fluidOutputs(Oxygen.getFluid(2000))
                 .buildAndRegister();
-
 
         CHEMICAL_RECIPES.recipeBuilder().duration(1)
                 .fluidInputs(UraniumHexachloride.getFluid(2000))
@@ -1902,21 +1909,36 @@ public class GARecipeAddition {
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(1).EUt(1)
                 .input(dust, UraniumHexafluoride)
-                .chancedOutput(OreDictUnifier.get(dust, Uranium235Hexafluoride, 1), 1, 1)
-                .chancedOutput(OreDictUnifier.get(dust, Uranium238Hexafluoride, 1), 1, 1)
+                .chancedOutput(OreDictUnifier.get(dust, Uranium235Hexafluoride), 1, 1)
+                .chancedOutput(OreDictUnifier.get(dust, Uranium238Hexafluoride), 1, 1)
                 .buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(1).EUt(1)
+        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
                 .fluidInputs(Steam.getFluid(6000))
                 .input(dust, Uranium235Hexafluoride)
                 .outputs(OreDictUnifier.get(dust, Uranium235Dioxide))
+                .fluidOutputs(Fluorine.getFluid(6000))
                 .buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(1).EUt(1)
+        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
                 .fluidInputs(Steam.getFluid(6000))
                 .input(dust, Uranium238Hexafluoride)
                 .outputs(OreDictUnifier.get(dust, Uranium238Dioxide))
+                .fluidOutputs(Fluorine.getFluid(6000))
                 .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+                .input(dust, Uranium235Dioxide)
+                .outputs(OreDictUnifier.get(ingot, Uranium235))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+                .input(dust, Uranium238Dioxide)
+                .outputs(OreDictUnifier.get(ingot, Uranium238.getMaterial()))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .buildAndRegister();
+
 
     }
 
