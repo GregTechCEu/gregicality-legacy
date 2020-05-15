@@ -285,6 +285,13 @@ public class GAMaterials implements IMaterialHandler {
         Polonium.addFlag(SMELT_INTO_FLUID);
         Copernicium.addFlag(GENERATE_FLUID_BLOCK);
 
+        //turbine component
+        Cobalt.addFlag(GENERATE_BOLT_SCREW);
+        Manganese.addFlag(GENERATE_BOLT_SCREW);
+        Manganese.addFlag(GENERATE_DENSE);
+        Molybdenum.addFlag(GENERATE_BOLT_SCREW);
+        Neodymium.addFlag(GENERATE_BOLT_SCREW);
+
 
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);
