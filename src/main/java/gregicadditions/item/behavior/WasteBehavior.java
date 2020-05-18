@@ -11,13 +11,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
 
     private Material material;
+    private String unlocalizedName;
+    private int color;
 
     public WasteBehavior(Material material) {
         this.material = material;
     }
 
+    public WasteBehavior(String unlocalizedName, int color) {
+        this.unlocalizedName = unlocalizedName;
+        this.color = color;
+    }
+
     @Override
     public int getItemStackColor(ItemStack itemStack, int i) {
+        if (color != 0) {
+            return color;
+        }
         int colorValue = material.materialRGB;
         int colorOffset = 0x25;
         int r = (colorValue >> 16) & 0xFF;
@@ -33,6 +43,9 @@ public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
     @Override
     @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack itemStack, String unlocalizedName) {
-        return I18n.format(unlocalizedName, material.getLocalizedName());
+        if (material != null)
+            return I18n.format(unlocalizedName, material.getLocalizedName());
+        else
+            return I18n.format(unlocalizedName, I18n.format(this.unlocalizedName));
     }
 }

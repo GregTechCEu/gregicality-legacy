@@ -133,8 +133,8 @@ public class RecipeHandler {
             });
         } else if (isotopeMaterial != null && isotopeMaterial.fissile) {
             IntStream.range(1, 10).forEach(operand ->
-                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction(isotopeMaterial.baseHeat * operand * 2).duration(2000)
-                            .notConsumable(new IntCircuitIngredient(operand))
+                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2).duration(2000)
+                            .notConsumable(new IntCircuitIngredient(operand + 10))
                             .input(stickLong, isotopeMaterial.getMaterial(), operand)
                             .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand))
                             .buildAndRegister());
@@ -142,7 +142,7 @@ public class RecipeHandler {
                     IsotopeMaterial.REGISTRY.entrySet().stream()
                             .filter(isotopeMaterialEntry -> isotopeMaterialEntry.getValue().fertile)
                             .forEach(isotopeMaterialEntry -> {
-                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction(isotopeMaterial.baseHeat * operand).duration(2000)
+                                NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand).duration(2000)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
@@ -150,11 +150,11 @@ public class RecipeHandler {
                                                 .outputs(isotopeMaterialEntry.getValue().getRadioactiveMaterial().waste.getStackForm(9))
                                                 .buildAndRegister();
 
-                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction(isotopeMaterial.baseHeat * operand / 5).duration(2000)
-                                                .notConsumable(new IntCircuitIngredient(operand))
-                                                .input(stickLong, isotopeMaterial.getMaterial(), operand)
-                                                .input(stickLong, isotopeMaterialEntry.getKey(), 9)
-                                                .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand));
+                                NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5).duration(2000)
+                                        .notConsumable(new IntCircuitIngredient(operand))
+                                        .input(stickLong, isotopeMaterial.getMaterial(), operand)
+                                        .input(stickLong, isotopeMaterialEntry.getKey(), 9)
+                                        .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand));
 
                                         isotopeMaterialEntry.getValue().isotopeDecay.forEach((key, value) ->
                                                 builder.chancedOutput(OreDictUnifier.get(stickLong, key.getMaterial(), 9), value, 100));
@@ -163,7 +163,7 @@ public class RecipeHandler {
                             ));
         } else if (isotopeMaterial != null && !isotopeMaterial.fertile && isotopeMaterial.isotopeDecay.size() > 0) {
             isotopeMaterial.isotopeDecay.keySet().forEach(isotopeMaterialDecay -> {
-                DECAY_CHAMBERS.recipeBuilder().duration(6000).EUt(32)
+                DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
                         .input(stickLong, isotopeMaterial.getMaterial())
                         .chancedOutput(OreDictUnifier.get(stickLong, isotopeMaterialDecay.getMaterial()), 9000, 100)
                         .buildAndRegister();

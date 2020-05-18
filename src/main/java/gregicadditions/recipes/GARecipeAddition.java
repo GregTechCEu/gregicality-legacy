@@ -1886,6 +1886,192 @@ public class GARecipeAddition {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Potassium)
+                .input(dust, Sodium)
+                .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 2))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(2000).EUt(240)
+                .input(dust, Lithium)
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, LithiumHydroxide))
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, LithiumHydroxide)
+                .fluidInputs(HydrogenFluoride.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, LithiumFluoride))
+                .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Sodium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SodiumFluoride))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Potassium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PotassiumFluoride))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().EUt(64).duration(600)
+                .input(dust, LithiumFluoride)
+                .input(dust, SodiumFluoride)
+                .input(dust, PotassiumFluoride)
+                .outputs(OreDictUnifier.get(dust, FLiNaK, 3))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Beryllium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, BerylliumFluoride))
+                .buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(600).EUt(64)
+                .input(dust, LithiumFluoride)
+                .input(dust, BerylliumFluoride)
+                .outputs(OreDictUnifier.get(dust, FLiBe, 2))
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(dust, Lead, 3)
+                .input(dust, Bismuth, 7)
+                .outputs(OreDictUnifier.get(dust, LeadBismuthEutectic, 10))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(560).duration(2000).input(dust, LeadBismuthEutectic).fluidOutputs(LeadBismuthEutectic.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(2000).input(dust, FLiBe).fluidOutputs(FLiBe.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(1000).input(dust, FLiNaK).fluidOutputs(FLiNaK.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60).input(dust, SodiumPotassiumAlloy).fluidOutputs(SodiumPotassiumAlloy.getFluid(GTValues.L)).buildAndRegister();
+        ModHandler.addShapelessRecipe("protactinium_to_protactinium233", OreDictUnifier.get(ingot, Protactinium233.getMaterial()), new UnificationEntry(ingot, Protactinium.getMaterial()));
+        ModHandler.addShapelessRecipe("protactinium233_to_protactinium", OreDictUnifier.get(ingot, Protactinium.getMaterial()), new UnificationEntry(ingot, Protactinium233.getMaterial()));
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(64).EUt(20)
+                .input(OrePrefix.dust, Materials.RareEarth, 1)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Cadmium, 1), 2500, 400)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Neodymium, 1), 2500, 400)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Caesium, 1), 2500, 400)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Scandium, 1), 2500, 400)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Yttrium, 1), 2500, 400)
+                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Lanthanum, 1), 2500, 400)
+                .buildAndRegister();
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE_LANTHANIDE_A.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_LANTHANIDE_B.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_ALKALINE.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_HEAVY_METAL.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_A.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_B.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_C.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_REACTIVE_NONMETAL.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METALOID.getStackForm(), 2500, 1500).buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_HEAVY_METAL.getStackForm())
+                .fluidOutputs(Mercury.getFluid(36))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Zinc, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gallium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cadmium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Indium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tin, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thallium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lead, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Bismuth, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Polonium, 2), 2500, 1500)
+                .buildAndRegister();
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_LANTHANIDE_A.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Dysprosium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Holmium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Erbium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thulium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Ytterbium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lutetium, 2), 2500, 1500)
+                .buildAndRegister();
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_LANTHANIDE_B.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lanthanum, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cerium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Praseodymium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neodymium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Promethium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Samarium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Europium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gadolinium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Terbium, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_A.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Hafnium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tantalum, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tungsten, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Osmium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iridium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Platinum, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gold, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_B.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Yttrium, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Zirconium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Niobium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Molybdenum, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Technetium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Ruthenium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhodium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Palladium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Silver, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_C.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iron, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cobalt, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Nickel, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Copper, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METALOID.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Germanium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Arsenic, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Antimony, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tellurium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Astatine, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Actinium, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_ALKALINE.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rubidium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Strontium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Caesium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Barium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Francium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Radium, 2), 2500, 1500)
+                .buildAndRegister();
+
+
+        CENTRIFUGE_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_REACTIVE_NONMETAL.getStackForm())
+                .fluidOutputs(Krypton.getFluid(36))
+                .fluidOutputs(Xenon.getFluid(72))
+                .fluidOutputs(Radon.getFluid(144))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Selenium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 2500, 1500)
+                .buildAndRegister();
+
 
     }
 

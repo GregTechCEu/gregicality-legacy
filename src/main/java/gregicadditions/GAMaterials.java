@@ -427,11 +427,28 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial FLiNaK = new DustMaterial(673, "flinak", 0x252525, MaterialIconSet.DULL, 2, of(new MaterialStack(LithiumFluoride, 1), new MaterialStack(SodiumFluoride, 1), new MaterialStack(PotassiumFluoride, 1)), SMELT_INTO_FLUID);
     public static final IngotMaterial BerylliumFluoride = new IngotMaterial(672, "beryllium_fluoride", 0x757575, MaterialIconSet.SHINY, 2, of(new MaterialStack(Beryllium, 1), new MaterialStack(Fluorine, 2)), 0);
     public static final DustMaterial FLiBe = new DustMaterial(671, "flibe", 0x252525, MaterialIconSet.DULL, 2, of(new MaterialStack(LithiumFluoride, 1), new MaterialStack(BerylliumFluoride, 1)), SMELT_INTO_FLUID);
-    public static final IngotMaterial LeadBismuthEutectic = new IngotMaterial(670, "lead_bismuth_eutatic", 0x757575, MaterialIconSet.SHINY, 2, of(new MaterialStack(Lead, 3), new MaterialStack(Bismuth, 7)), SMELT_INTO_FLUID);
+    public static final DustMaterial LeadBismuthEutectic = new IngotMaterial(670, "lead_bismuth_eutatic", 0x757575, MaterialIconSet.SHINY, 2, of(new MaterialStack(Lead, 3), new MaterialStack(Bismuth, 7)), SMELT_INTO_FLUID);
 
+    public static final IngotMaterial Francium = new IngotMaterial(669, "francium", 0xAAAAAA, MaterialIconSet.SHINY, 2, of(), 0, Fr);
+    public static final IngotMaterial Radium = new IngotMaterial(668, "radium", 0xFFC840, MaterialIconSet.SHINY, 2, of(), 0, Ra);
+    public static final IngotMaterial Actinium = new IngotMaterial(667, "actinium", 0xC3D1FF, MaterialIconSet.SHINY, 2, of(), 0, Ac);
+    public static final IngotMaterial Hafnium = new IngotMaterial(666, "hafnium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Hf);
+    public static final IngotMaterial Rhenium = new IngotMaterial(665, "rhenium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Re);
+    public static final IngotMaterial Technetium = new IngotMaterial(664, "technetium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tc);
+    public static final IngotMaterial Thallium = new IngotMaterial(663, "thalium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tl);
+    public static final IngotMaterial Germanium = new IngotMaterial(662, "germanium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Ge);
+    public static final DustMaterial Selenium = new IngotMaterial(660, "selenium", 0xB6BA6B, MaterialIconSet.SHINY, 2, of(), 0, Se);
+    public static final FluidMaterial Bromine = new FluidMaterial(659, "bromine", 0xB64D6B, MaterialIconSet.SHINY, of(), 0, Br);
+    public static final DustMaterial Iodine = new DustMaterial(658, "iodine", 0x2C344F, MaterialIconSet.SHINY, 2, of(), 0, I);
+    public static final IngotMaterial Astatine = new IngotMaterial(657, "astatine", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, At);
 
     @Override
     public void onMaterialsInit() {
+        OrePrefix.block.setIgnored(SodiumPotassiumAlloy);
+        OrePrefix.block.setIgnored(FLiNaK);
+        OrePrefix.block.setIgnored(FLiBe);
+        OrePrefix.block.setIgnored(LeadBismuthEutectic);
+
 
         initNuclearMaterial();
         platinumProcess();
@@ -923,7 +940,6 @@ public class GAMaterials implements IMaterialHandler {
 
     public static void ignoreCable(Material m) {
         if (m instanceof IngotMaterial && ((IngotMaterial) m).cableProperties != null) {
-            GTLog.logger.info("disable " + m);
             OrePrefix.cableGtSingle.setIgnored(m);
             OrePrefix.cableGtDouble.setIgnored(m);
             OrePrefix.cableGtQuadruple.setIgnored(m);

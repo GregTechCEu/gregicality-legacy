@@ -47,7 +47,7 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ATTRACTOR_RECIPES;
     @ZenProperty
-    public static final FuelRecipeMap HIGH_PRESSURE_STEAM_TURBINE_FUELS;
+    public static final FuelRecipeMap HOT_COOLANT_TURBINE_FUELS;
     @ZenProperty
     public static final LargeRecipeMap LARGE_CHEMICAL_RECIPES;
     @ZenProperty
@@ -69,7 +69,7 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<NuclearReactorBuilder> NUCLEAR_BREEDER_RECIPES;
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS;
+    public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -86,7 +86,7 @@ public class GARecipeMaps {
         BOILING_PLUTONIUM_REACTOR_RECIPES = new RecipeMap<>("boiling_plutonium_reactor", 1, 1, 1, 12, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         SIEVE_RECIPES = (new SieveRecipeMap("electric_sieve", 2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL));
         ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
-        HIGH_PRESSURE_STEAM_TURBINE_FUELS = new FuelRecipeMap("high_pressure_steam_turbine");
+        HOT_COOLANT_TURBINE_FUELS = new FuelRecipeMap("hot_coolant_turbine");
         LARGE_CHEMICAL_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_chemical_reactor", 0, 2, 0, 2, 0, 5, 0, 3, (new LargeRecipeBuilder(RecipeMaps.CHEMICAL_RECIPES)).EUt(30)).setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2).setSlotOverlay(false, true, GuiTextures.MOLECULAR_OVERLAY_3).setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1).setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL);
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
@@ -107,7 +107,7 @@ public class GARecipeMaps {
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
         NUCLEAR_REACTOR_RECIPES = new RecipeMap<>("nuclear_reactor", 2, 3, 1, 2, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
-        DECAY_CHAMBERS = new RecipeMap<>("decay_chamber", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder().EUt(32))
+        DECAY_CHAMBERS_RECIPES = new RecipeMap<>("decay_chamber", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder().EUt(32))
                 .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
 

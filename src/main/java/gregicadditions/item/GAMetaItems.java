@@ -170,6 +170,15 @@ public class GAMetaItems {
 
 
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_ALKALINE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_C;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_HEAVY_METAL;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
     public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
     public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
     public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
