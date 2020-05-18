@@ -77,14 +77,15 @@ public class RecipeHandler {
         RadioactiveMaterial radioactiveMaterial = RadioactiveMaterial.REGISTRY.get(material);
         IsotopeMaterial isotopeMaterial = IsotopeMaterial.REGISTRY.get(material);
         if (radioactiveMaterial != null && radioactiveMaterial.composition.size() > 0) {
+            int complexity = radioactiveMaterial.complexity;
 
-            CHEMICAL_RECIPES.recipeBuilder().duration(1)
+            CHEMICAL_RECIPES.recipeBuilder().duration(2000 * complexity / 100)
                     .input(dust, radioactiveMaterial.getMaterial())
                     .fluidInputs(NitricAcid.getFluid(2000))
                     .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materialNitrate, 3))
                     .buildAndRegister();
 
-            BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+            BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(100 * complexity / 100).EUt(120 * complexity / 100)
                     .input(dust, radioactiveMaterial.materialNitrate)
                     .fluidInputs(Water.getFluid(6000))
                     .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materialDioxide))
@@ -92,41 +93,41 @@ public class RecipeHandler {
                     .buildAndRegister();
 
 
-            CHEMICAL_RECIPES.recipeBuilder().duration(1)
+            CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .input(dust, radioactiveMaterial.materialDioxide)
                     .fluidInputs(Chlorine.getFluid(6000))
                     .fluidOutputs(radioactiveMaterial.materailHexachloride.getFluid(6000))
                     .fluidOutputs(Oxygen.getFluid(2000))
                     .buildAndRegister();
 
-            CHEMICAL_RECIPES.recipeBuilder().duration(1)
+            CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .fluidInputs(radioactiveMaterial.materailHexachloride.getFluid(2000))
                     .fluidInputs(HydrogenFluoride.getFluid(10000))
                     .fluidOutputs(HydrochloricAcid.getFluid(10000))
                     .fluidOutputs(radioactiveMaterial.materailHexafluoride.getFluid(2000))
                     .buildAndRegister();
 
-            CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(1).EUt(1)
+            CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(100 * complexity / 100).EUt(120)
                     .fluidInputs(radioactiveMaterial.materailHexafluoride.getFluid(1000))
                     .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materailHexafluoride))
                     .buildAndRegister();
 
 
-            SimpleRecipeBuilder builder = THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(1).EUt(1)
+            SimpleRecipeBuilder builder = THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000 * complexity / 100).EUt(60 * complexity / 100)
                     .input(dust, radioactiveMaterial.materailHexafluoride);
             radioactiveMaterial.composition.forEach((key, value) -> builder.chancedOutput(OreDictUnifier.get(dust, key.materailHexafluoride), value, 100));
             builder.buildAndRegister();
 
 
             radioactiveMaterial.composition.forEach((key, value) -> {
-                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(600 * complexity / 100).EUt(120 * complexity / 100)
                         .fluidInputs(Steam.getFluid(6000))
                         .input(dust, key.materailHexafluoride)
                         .outputs(OreDictUnifier.get(dust, key.materialDioxide))
                         .fluidOutputs(Fluorine.getFluid(6000))
                         .buildAndRegister();
 
-                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
+                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1000 * complexity / 100).EUt(120 * complexity / 100)
                         .input(dust, key.materialDioxide)
                         .outputs(OreDictUnifier.get(ingot, key.getMaterial()))
                         .fluidOutputs(Oxygen.getFluid(2000))
@@ -143,7 +144,7 @@ public class RecipeHandler {
                     IsotopeMaterial.REGISTRY.entrySet().stream()
                             .filter(isotopeMaterialEntry -> isotopeMaterialEntry.getValue().fertile)
                             .forEach(isotopeMaterialEntry -> {
-                                NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand).duration(2000)
+                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand).duration(2000)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
@@ -151,11 +152,11 @@ public class RecipeHandler {
                                                 .outputs(isotopeMaterialEntry.getValue().getRadioactiveMaterial().waste.getStackForm(9))
                                                 .buildAndRegister();
 
-                                NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5).duration(2000)
-                                        .notConsumable(new IntCircuitIngredient(operand))
-                                        .input(stickLong, isotopeMaterial.getMaterial(), operand)
-                                        .input(stickLong, isotopeMaterialEntry.getKey(), 9)
-                                        .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand));
+                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5).duration(2000)
+                                                .notConsumable(new IntCircuitIngredient(operand))
+                                                .input(stickLong, isotopeMaterial.getMaterial(), operand)
+                                                .input(stickLong, isotopeMaterialEntry.getKey(), 9)
+                                                .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand));
 
                                         isotopeMaterialEntry.getValue().isotopeDecay.forEach((key, value) ->
                                                 builder.chancedOutput(OreDictUnifier.get(stickLong, key.getMaterial(), 9), value, 100));

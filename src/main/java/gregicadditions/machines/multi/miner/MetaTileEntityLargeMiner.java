@@ -37,7 +37,6 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -119,7 +118,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        return  GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
+        return GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
     }
 
     @Override
@@ -135,25 +134,15 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
                 setActive(true);
 
             WorldServer world = (WorldServer) this.getWorld();
-            ChunkPos chunkPos = world.getChunk(getPos()).getPos();
-            BlockPos origin = null;
-            if (type.chunk / 2.0 > 1.0 && chunks.size() == 0) {
-                for (int i = 0; i < Math.floorDiv(type.chunk, 2); i++) {
-                    BlockPos pos = new BlockPos(chunkPos.getXStart(), getPos().getY(), chunkPos.getZStart());
-                    origin = pos.north().west();
-                    chunkPos = world.getChunk(origin).getPos();
-                }
-                BlockPos tmpX = origin;
-                BlockPos tmpZ = origin;
+            Chunk chunkMiner = world.getChunk(getPos());
+            Chunk origin;
+            if (chunks.size() == 0 && type.chunk / 2.0 > 1.0) {
+                int tmp = Math.floorDiv(type.chunk, 2);
+                origin = world.getChunk(chunkMiner.x - tmp, chunkMiner.z - tmp);
                 for (int i = 0; i < type.chunk; i++) {
                     for (int j = 0; j < type.chunk; j++) {
-                        Chunk chunk = world.getChunk(tmpX);
-                        chunks.add(chunk);
-                        tmpX = new BlockPos(chunk.getPos().getXEnd(), getPos().getY(), chunk.z).east();
+                        chunks.add(world.getChunk(origin.x + i, origin.z + j));
                     }
-                    Chunk chunk = world.getChunk(tmpZ);
-                    tmpZ = new BlockPos(chunk.x, getPos().getY(), chunk.getPos().getZEnd()).south();
-                    tmpX = tmpZ;
                 }
             }
 

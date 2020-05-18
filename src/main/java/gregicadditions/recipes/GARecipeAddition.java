@@ -1235,12 +1235,6 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, Tier.Superconductor, 8), MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, LuVSuperconductor, 32), MICA_INSULATOR_FOIL.getStackForm(16)).fluidInputs(NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
 
-
-        //Nuclear react recipe
-        BOILING_THORIUM_REACTOR_RECIPES.recipeBuilder().duration(2000).EUt(480).input(stick, Thorium, 3).outputs(OreDictUnifier.get(dustTiny, Thorium, 3), OreDictUnifier.get(dustTiny, Uranium, 2), OreDictUnifier.get(dustTiny, Uranium235, 1)).fluidOutputs(Radon.getFluid(100)).buildAndRegister();
-        BOILING_URANIUM_REACTOR_RECIPES.recipeBuilder().duration(4000).EUt(480).input(stick, Uranium235, 3).outputs(OreDictUnifier.get(dustTiny, Plutonium, 3), OreDictUnifier.get(dustTiny, Plutonium241, 1)).chancedOutput(OreDictUnifier.get(dustTiny, Polonium, 1), 1000, 0).chancedOutput(OreDictUnifier.get(dustTiny, Caesium, 1), 1000, 0).buildAndRegister();
-        BOILING_PLUTONIUM_REACTOR_RECIPES.recipeBuilder().duration(6000).EUt(480).input(stick, Plutonium241, 3).outputs(OreDictUnifier.get(dustTiny, Naquadah, 3), OreDictUnifier.get(dustTiny, Americium, 1)).buildAndRegister();
-
         //Platinum Process
 
         BLAST_RECIPES.recipeBuilder()
@@ -2082,6 +2076,12 @@ public class GARecipeAddition {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Selenium, 2), 2300, 1300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 2400, 1400)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 2500, 1500)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(300).EUt(30)
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(1000))
+                .fluidOutputs(HydrogenFluoride.getFluid(2000))
                 .buildAndRegister();
 
 

@@ -316,7 +316,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Curium250Hexafluoride = new DustMaterial(756, "curium250hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Curium250.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
 
     public static final DustMaterial Curium246Dioxide = new IngotMaterial(755, "curium246dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium246.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
-    public static final DustMaterial Curium247Dioxide = new IngotMaterial(754, "curiumm247dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium247.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Curium247Dioxide = new IngotMaterial(754, "curium247dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium247.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
     public static final DustMaterial Curium250Dioxide = new IngotMaterial(753, "curium250dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Curium250.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
 
     //Berkelium
@@ -445,12 +445,6 @@ public class GAMaterials implements IMaterialHandler {
 
     @Override
     public void onMaterialsInit() {
-        OrePrefix.block.setIgnored(SodiumPotassiumAlloy);
-        OrePrefix.block.setIgnored(FLiNaK);
-        OrePrefix.block.setIgnored(FLiBe);
-        OrePrefix.block.setIgnored(LeadBismuthEutectic);
-
-
         initNuclearMaterial();
         platinumProcess();
         goldProcess();
@@ -641,6 +635,23 @@ public class GAMaterials implements IMaterialHandler {
 
 
     public static void initNuclearMaterial() {
+        OrePrefix.block.setIgnored(SodiumPotassiumAlloy);
+        OrePrefix.block.setIgnored(FLiNaK);
+        OrePrefix.block.setIgnored(FLiBe);
+        OrePrefix.block.setIgnored(LeadBismuthEutectic);
+
+        ThoriumRadioactive.complexity = 100;
+        Protactinium.complexity = 100;
+        UraniumRadioactive.complexity = 100;
+        Neptunium.complexity = 115;
+        PlutoniumRadioactive.complexity = 120;
+        AmericiumRadioactive.complexity = 135;
+        Curium.complexity = 145;
+        Berkelium.complexity = 150;
+        Californium.complexity = 160;
+        Einsteinium.complexity = 170;
+        Fermium.complexity = 185;
+        Mendelevium.complexity = 200;
 
 
         Thorium.addFlag(GENERATE_LONG_ROD);

@@ -777,7 +777,7 @@ recipemap.replicator.name=Replicator
 recipemap.mass_fab.name=Mass Fabricator
 recipemap.cracker_unit.name=[Deprecated] Cracking Recipes
 recipemap.electric_sieve.name=Electric Sieve Recipes
-recipemap.high_pressure_steam_turbine.name=High Pressure Steam Recipes
+recipemap.hot_coolant_turbine.name=Hot Coolant Turbine
 recipemap.boiling_thorium_reactor.name=Boiling Thorium Reactor Recipes
 recipemap.boiling_uranium_reactor.name=Boiling uranium Reactor Recipes
 recipemap.boiling_plutonium_reactor.name=Boiling plutonium Reactor Recipes
@@ -1176,7 +1176,7 @@ material.lithium_fluoride=Lithium Fluoride
 material.sodium_fluoride=Sodium Fluoride
 material.potassium_fluoride=Potassium Fluoride
 material.flinak=FLiNaK (Reactor Moderator)
-material.beryllium_fluoride=beryllium_fluoride
+material.beryllium_fluoride=Beryllium Fluoride
 material.flibe=FLiBe (Reactor Moderator)
 material.lead_bismuth_eutatic=Lead Bismuth Eutatic (Reactor Moderator)
 material.francium=Francium
@@ -1231,6 +1231,7 @@ material.fermium263=Fermium 263
 material.mendelevium259=Mendelevium 259
 material.mendelevium261=Mendelevium 261
 material.mendelevium263=Mendelevium 263
+material.hydrogen_fluoride=Hydrogen Fluoride
 
 
 

@@ -17,7 +17,7 @@ public class RadioactiveMaterial extends EnrichmentProcess {
     public final List<IsotopeMaterial> fissile = new ArrayList<>();
     public final List<IsotopeMaterial> fertile = new ArrayList<>();
     public final Map<IsotopeMaterial, Integer> composition = new HashMap<>(3);
-    public int complexity = 1;
+    public int complexity = 100;
     public MetaItem<?>.MetaValueItem waste;
 
 
