@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
 import gregicadditions.jei.multi.miner.*;
-import gregicadditions.jei.multi.nuclear.BoilingWaterReactorInfo;
+import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
 import gregicadditions.jei.multi.override.CrackerUnitInfo;
 import gregicadditions.jei.multi.override.DieselEngineInfo;
 import gregicadditions.jei.multi.override.DistillationTowerInfo;
@@ -75,10 +75,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
-                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_HIGH_PRESSURE_STEAM_TURBINE)),
-                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_URANIUM_REACTOR)),
-                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_PLUTONIUM_REACTOR)),
-                new MultiblockInfoRecipeWrapper(new BoilingWaterReactorInfo(GATileEntities.BOILING_WATER_THORIUM_REACTOR)),
+                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.HOT_COOLANT_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_REACTOR)),
+                new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_BREEDER)),
                 new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLineInfo()),
                 new MultiblockInfoRecipeWrapper(new VoidMinerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeTransformerInfo()),

@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.fluid.GAMetaFluids;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -33,7 +34,15 @@ public class GeneratorFuels {
 
         //Steam Turbine
         FuelRecipes.registerSteamGeneratorFuel(Steam.getFluid(640), 10, GTValues.LV);
-        GARecipeMaps.HIGH_PRESSURE_STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(HighPressureSteam.getFluid(320), 10, GTValues.V[GTValues.LV]));
+
+        //reactor turbine
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(Steam, 50), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(Deuterium, 45), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(SodiumPotassiumAlloy, 40), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(Sodium, 47), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(FLiNaK, 25), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(FLiBe, 30), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(LeadBismuthEutectic, 35), 1, GTValues.V[GTValues.LV]));
 
         //Gas Turbine Fuels
         FuelRecipes.registerGasGeneratorFuel(NaturalGas.getFluid(20), 13, GTValues.LV);
@@ -77,8 +86,8 @@ public class GeneratorFuels {
         FuelRecipes.registerDieselGeneratorFuel(Octane.getFluid(20), 45, GTValues.LV);
 
         //Naquadah Reactor
-        registerNaquadahReactorFuel(NaquadahEnriched.getFluid(1), 750, GTValues.LV);
-        registerNaquadahReactorFuel(Naquadria.getFluid(1), 4500, GTValues.LV);
+        registerNaquadahReactorFuel(NaquadahEnriched.getFluid(1), 375, GTValues.LV);
+        registerNaquadahReactorFuel(Naquadria.getFluid(1), 9000, GTValues.LV);
 
         //Plasma Generator
         registerPlasmaFuel(Helium.getPlasma(1), 2560, GTValues.LV);

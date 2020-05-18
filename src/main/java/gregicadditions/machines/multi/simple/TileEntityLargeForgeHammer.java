@@ -31,7 +31,7 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
 
 
     public TileEntityLargeForgeHammer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.LARGE_FORGE_HAMMER, 90, 125, 100, 2);
+        super(metaTileEntityId, GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES, 90, 125, 100, 2);
     }
 
     @Override

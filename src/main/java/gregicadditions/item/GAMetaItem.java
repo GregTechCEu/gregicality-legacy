@@ -15,7 +15,9 @@ import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregtech.api.unification.material.Materials.*;
 
 public class GAMetaItem extends MaterialMetaItem {
 
@@ -136,6 +138,40 @@ public class GAMetaItem extends MaterialMetaItem {
                 .addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true))
                 .addComponents(new HandPumpBehavior());
 
+        NUCLEAR_WASTE = addItem(312, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.global", 0xDEDEDE));
+        THORIUM_WASTE = addItem(313, "waste.nuclear").addComponents(new WasteBehavior(Thorium));
+        URANIUM_WASTE = addItem(314, "waste.nuclear").addComponents(new WasteBehavior(Uranium));
+        NEPTUNIUM_WASTE = addItem(315, "waste.nuclear").addComponents(new WasteBehavior(Neptunium.getMaterial()));
+        PLUTONIUM_WASTE = addItem(316, "waste.nuclear").addComponents(new WasteBehavior(Plutonium));
+        AMERICIUM_WASTE = addItem(317, "waste.nuclear").addComponents(new WasteBehavior(Americium));
+        CURIUM_WASTE = addItem(318, "waste.nuclear").addComponents(new WasteBehavior(Curium.getMaterial()));
+        BERKELIUM_WASTE = addItem(319, "waste.nuclear").addComponents(new WasteBehavior(Berkelium.getMaterial()));
+        CALIFORNIUM_WASTE = addItem(320, "waste.nuclear").addComponents(new WasteBehavior(Californium.getMaterial()));
+        EINSTEINIUM_WASTE = addItem(321, "waste.nuclear").addComponents(new WasteBehavior(Einsteinium.getMaterial()));
+        FERMIUM_WASTE = addItem(322, "waste.nuclear").addComponents(new WasteBehavior(Fermium.getMaterial()));
+        MENDELEVIUM_WASTE = addItem(323, "waste.nuclear").addComponents(new WasteBehavior(Mendelevium.getMaterial()));
+        NUCLEAR_WASTE_LANTHANIDE_A = addItem(324, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.lanthanide.a", 0xC9CBCF));
+        NUCLEAR_WASTE_LANTHANIDE_B = addItem(325, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.lanthanide.b", 0xA9A8AA));
+        NUCLEAR_WASTE_ALKALINE = addItem(326, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.alkaline", 0xDEDEDE));
+        NUCLEAR_WASTE_METAL_A = addItem(327, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metal.a", 0x48484D));
+        NUCLEAR_WASTE_METAL_B = addItem(328, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metal.b", 0x626065));
+        NUCLEAR_WASTE_METAL_C = addItem(329, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metal.c", 0x828485));
+        NUCLEAR_WASTE_HEAVY_METAL = addItem(330, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.heavy_metal", 0x738198));
+        NUCLEAR_WASTE_METALOID = addItem(331, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metaloid", 0xD16D4F));
+        NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
+
+
+        ThoriumRadioactive.waste = THORIUM_WASTE;
+        UraniumRadioactive.waste = URANIUM_WASTE;
+        Neptunium.waste = NEPTUNIUM_WASTE;
+        PlutoniumRadioactive.waste = PLUTONIUM_WASTE;
+        AmericiumRadioactive.waste = AMERICIUM_WASTE;
+        Curium.waste = CURIUM_WASTE;
+        Berkelium.waste = BERKELIUM_WASTE;
+        Californium.waste = CALIFORNIUM_WASTE;
+        Einsteinium.waste = EINSTEINIUM_WASTE;
+        Fermium.waste = FERMIUM_WASTE;
+        Mendelevium.waste = MENDELEVIUM_WASTE;
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");

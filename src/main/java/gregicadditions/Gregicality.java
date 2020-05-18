@@ -4,7 +4,6 @@ import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
-import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
@@ -139,6 +138,9 @@ public class Gregicality {
     @SubscribeEvent
     public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.register();
+        GARecipeAddition.init();
+
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -147,7 +149,7 @@ public class Gregicality {
         GAMetaItems.registerOreDict();
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
-        GARecipeAddition.init();
+
         GARecipeAddition.init2();
         GARecipeAddition.forestrySupport();
         MatterReplication.init();

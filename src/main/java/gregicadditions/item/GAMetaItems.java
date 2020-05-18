@@ -139,6 +139,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
 
+
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_BOOTS;
@@ -166,6 +167,30 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
 
     public static MetaItem<?>.MetaValueItem HAND_PUMP;
+
+
+
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_ALKALINE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_C;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_HEAVY_METAL;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
+    public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem AMERICIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CURIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem BERKELIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CALIFORNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem EINSTEINIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
 
     public static void init() {

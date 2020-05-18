@@ -9,7 +9,6 @@ import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.util.GTLog;
 import gregtech.common.ConfigHolder;
 import gregtech.common.MetaFluids;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityRotorHolder;
@@ -63,11 +62,12 @@ public class MetaTileEntityLargeTurbine extends gregtech.common.metatileentities
                 if (material != null) {
                     MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
                 }
-            } else if (MetaTileEntityLargeTurbine.this.turbineType.toString().equals("HIGH_PRESSURE_STEAM_OVERRIDE")) {
-                int steamFluidAmount = fuelAmountUsed;
-                if (steamFluidAmount > 0) {
-                    FluidStack steamStack = Materials.Steam.getFluid(steamFluidAmount);
-                    MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(steamStack, true);
+            } else if (MetaTileEntityLargeTurbine.this.turbineType.toString().equals("HOT_COOLANT")) {
+                if (fuelAmountUsed > 0) {
+                    FluidMaterial material = MetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
+                    if (material != null) {
+                        MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
+                    }
                 }
             }
         }
@@ -87,7 +87,7 @@ public class MetaTileEntityLargeTurbine extends gregtech.common.metatileentities
                     return ConfigHolder.gasTurbineBonusOutput;
                 case "STEAM_OVERRIDE":
                     return ConfigHolder.steamTurbineBonusOutput;
-                case "HIGH_PRESSURE_STEAM_OVERRIDE":
+                case "HOT_COOLANT":
                     return (int) (ConfigHolder.steamTurbineBonusOutput * 1.3);
                 case "PLASMA_OVERRIDE":
                     return ConfigHolder.plasmaTurbineBonusOutput;

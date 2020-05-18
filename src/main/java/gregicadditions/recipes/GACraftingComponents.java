@@ -1,12 +1,9 @@
 package gregicadditions.recipes;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -719,14 +716,18 @@ public enum GACraftingComponents {
         @Override
         public Object getIngredient(int tier) {
             switch (tier) {
-                case 4:
+                case 2:
                     return new UnificationEntry(stick, Uranium235);
-                case 5:
+                case 3:
                     return new UnificationEntry(stick, Plutonium241);
+                case 4:
+                    return new UnificationEntry(stick, Curium247.getMaterial());
+                case 5:
+                    return new UnificationEntry(stick, Californium253.getMaterial());
                 case 6:
-                    return new UnificationEntry(stick, NaquadahEnriched);
+                    return new UnificationEntry(stick, Fermium259.getMaterial());
                 case 7:
-                    return new UnificationEntry(stick, Americium);
+                    return new UnificationEntry(stick, Naquadria);
                 default:
                     return new UnificationEntry(stick, Tritanium);
             }
