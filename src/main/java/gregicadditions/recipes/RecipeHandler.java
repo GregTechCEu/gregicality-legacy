@@ -3,9 +3,9 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
+import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.CountableIngredient;
@@ -27,9 +27,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -80,7 +77,6 @@ public class RecipeHandler {
         RadioactiveMaterial radioactiveMaterial = RadioactiveMaterial.REGISTRY.get(material);
         IsotopeMaterial isotopeMaterial = IsotopeMaterial.REGISTRY.get(material);
         if (radioactiveMaterial != null && radioactiveMaterial.composition.size() > 0) {
-            GTLog.logger.info(radioactiveMaterial);
 
             CHEMICAL_RECIPES.recipeBuilder().duration(1)
                     .input(dust, radioactiveMaterial.getMaterial())
