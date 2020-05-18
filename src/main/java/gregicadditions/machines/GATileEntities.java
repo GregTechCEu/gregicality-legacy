@@ -21,7 +21,7 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
-import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
+import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.recipes.GARecipeMaps;
@@ -122,9 +122,9 @@ public class GATileEntities {
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
 
     //Nuclear
-    public static BoilingWaterReactor BOILING_WATER_THORIUM_REACTOR;
-    public static BoilingWaterReactor BOILING_WATER_URANIUM_REACTOR;
-    public static BoilingWaterReactor BOILING_WATER_PLUTONIUM_REACTOR;
+    public static MetaTileEntityNuclearReactor BOILING_WATER_THORIUM_REACTOR;
+    public static MetaTileEntityNuclearReactor BOILING_WATER_URANIUM_REACTOR;
+    public static MetaTileEntityNuclearReactor BOILING_WATER_PLUTONIUM_REACTOR;
 
     //override from GTCE
     public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
@@ -542,9 +542,9 @@ public class GATileEntities {
         MetaTileEntities.LARGE_PLASMA_TURBINE = LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
         LARGE_HIGH_PRESSURE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityLargeTurbine(location("large_turbine.high_pressure_steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("HIGH_PRESSURE_STEAM_OVERRIDE")));
 
-        BOILING_WATER_THORIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new BoilingWaterReactor(location("boiling_water_reactor.thorium"), BoilingWaterReactor.RodType.THORIUM));
-        BOILING_WATER_URANIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2546, new BoilingWaterReactor(location("boiling_water_reactor.uranium"), BoilingWaterReactor.RodType.URANIUM));
-        BOILING_WATER_PLUTONIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2547, new BoilingWaterReactor(location("boiling_water_reactor.plutonium"), BoilingWaterReactor.RodType.PLUTONIUM));
+        BOILING_WATER_THORIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("boiling_water_reactor.thorium"), MetaTileEntityNuclearReactor.RodType.THORIUM));
+        BOILING_WATER_URANIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("boiling_water_reactor.uranium"), MetaTileEntityNuclearReactor.RodType.URANIUM));
+        BOILING_WATER_PLUTONIUM_REACTOR = GregTechAPI.registerMetaTileEntity(2547, new MetaTileEntityNuclearReactor(location("boiling_water_reactor.plutonium"), MetaTileEntityNuclearReactor.RodType.PLUTONIUM));
         LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, Materials.HSSS));
@@ -636,7 +636,7 @@ public class GATileEntities {
 
         }
 
-        SIMPLE_ORE_WASHER = GregTechAPI.registerMetaTileEntity(2256, new SimpleMachineMetaTileEntity(location("simple_ore_washer"), GARecipeMaps.SIMPLE_ORE_WASHER, Textures.ORE_WASHER_OVERLAY, 1));
+        SIMPLE_ORE_WASHER = GregTechAPI.registerMetaTileEntity(2256, new SimpleMachineMetaTileEntity(location("simple_ore_washer"), GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 1));
 
         int id = 2900;
         for (final ConverterType t : ConverterType.values()) {

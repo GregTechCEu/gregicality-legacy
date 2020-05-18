@@ -208,6 +208,8 @@ metaitem.component.smd.capacitor.name=Micro SMD Capacitor
 metaitem.component.smd.transistor.name=Micro SMD Transistor
 metaitem.component.smd.resistor.name=Micro SMD Resistor
 
+metaitem.waste.nuclear.name=%s Waste
+
 
 /////////////////////CIRCUIT///////////////////////////
 
@@ -766,6 +768,7 @@ recipemap.chemical_dehydrator.name=Chemical Dehydrator
 recipemap.large_forge_hammer.name=Large Forge Hammer
 recipemap.plasma_generator.name=Plasma Turbine Fuels
 recipemap.simple_ore_washer.name=Simple Ore Washer
+gregtech.recipe.base_heat_production=Heat: %dK
 
 material.brick=Brick
 material.fireclay=Fireclay
@@ -1036,7 +1039,10 @@ material.gold_leach=Gold Leach
 material.gold_alloy=Gold Alloy
 material.precious_metal=Precious Metal
 material.uranium=Uranium
+material.plutonium=Plutonium
+material.plutonium.tooltip=svretbtb
 
+gregtech.fluid.hot=Hot %s
 
 
 
@@ -1187,6 +1193,7 @@ gregtech.multiblock.large_miner.nb_chunk=Chunk to mine: %d
 gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
 gregtech.multiblock.large_miner.done=Done !
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
+gregtech.multiblock.nuclear_reactor.coolant=Coolant: %s
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

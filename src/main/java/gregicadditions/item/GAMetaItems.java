@@ -163,10 +163,25 @@ public class GAMetaItems {
     public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_NANO_MUSCLE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_QAURK_TECH_SUITE_CHESTPLATE;
 
-	public static MetaItem<?>.MetaValueItem IMPELLER_MV;
-	public static MetaItem<?>.MetaValueItem IMPELLER_HV;
-	public static MetaItem<?>.MetaValueItem GRAVITATION_ENGINE;
-	public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
+    public static MetaItem<?>.MetaValueItem IMPELLER_MV;
+    public static MetaItem<?>.MetaValueItem IMPELLER_HV;
+    public static MetaItem<?>.MetaValueItem GRAVITATION_ENGINE;
+    public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
+
+
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
+    public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem AMERICIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CURIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem BERKELIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CALIFORNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem EINSTEINIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
+
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

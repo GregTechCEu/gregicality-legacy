@@ -2,7 +2,7 @@ package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.nuclear.BoilingWaterReactor;
+import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
@@ -19,9 +19,9 @@ import static gregtech.api.unification.material.Materials.Lead;
 
 public class BoilingWaterReactorInfo extends MultiblockInfoPage {
 
-	public final BoilingWaterReactor reactor;
+	public final MetaTileEntityNuclearReactor reactor;
 
-	public BoilingWaterReactorInfo(BoilingWaterReactor boiler) {
+	public BoilingWaterReactorInfo(MetaTileEntityNuclearReactor boiler) {
 		this.reactor = boiler;
 	}
 

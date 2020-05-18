@@ -138,6 +138,9 @@ public class Gregicality {
     @SubscribeEvent
     public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.register();
+        GARecipeAddition.init();
+
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -146,10 +149,9 @@ public class Gregicality {
         GAMetaItems.registerOreDict();
         GAMetaItems.registerRecipes();
         GAMetaBlocks.registerOreDict();
-        GARecipeAddition.init();
+
         GARecipeAddition.init2();
         GARecipeAddition.forestrySupport();
-        GARecipeAddition.initNuclearProcess();
         MatterReplication.init();
         MachineCraftingRecipes.init();
         GeneratorFuels.init();

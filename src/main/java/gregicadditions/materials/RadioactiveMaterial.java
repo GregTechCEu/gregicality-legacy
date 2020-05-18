@@ -1,6 +1,7 @@
 package gregicadditions.materials;
 
 import com.google.common.collect.ImmutableList;
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.IngotMaterial;
@@ -16,6 +17,8 @@ public class RadioactiveMaterial extends EnrichmentProcess {
     public final List<IsotopeMaterial> fissile = new ArrayList<>();
     public final List<IsotopeMaterial> fertile = new ArrayList<>();
     public final Map<IsotopeMaterial, Integer> composition = new HashMap<>(3);
+    public int complexity = 1;
+    public MetaItem<?>.MetaValueItem waste;
 
 
     public RadioactiveMaterial(int metaItemSubId, String name, int materialRGB, MaterialIconSet materialIconSet, int harvestLevel, ImmutableList<MaterialStack> materialComponents, long materialGenerationFlags, Element element, float toolSpeed, float attackDamage, int toolDurability, int blastFurnaceTemperature) {
@@ -31,5 +34,10 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     public IngotMaterial getMaterial() {
         return from;
+    }
+
+    @Override
+    public String toString() {
+        return from.toString();
     }
 }

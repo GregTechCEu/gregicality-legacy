@@ -1809,6 +1809,84 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
 
+        //NUCLEAR PROCESSING
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(THORIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(URANIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(NEPTUNIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(PLUTONIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(AMERICIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(CURIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(BERKELIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(CALIFORNIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(EINSTEINIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(FERMIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(MENDELEVIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
+                .buildAndRegister();
+
+
     }
 
     public static void forestrySupport() {
@@ -1873,74 +1951,6 @@ public class GARecipeAddition {
         }
     }
 
-    public static void initNuclearProcess() {
-        CHEMICAL_RECIPES.recipeBuilder().duration(1)
-                .input(dust, Uranium)
-                .fluidInputs(NitricAcid.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, UranylNitrate, 3))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
-                .input(dust, UranylNitrate)
-                .fluidInputs(Water.getFluid(6000))
-                .outputs(OreDictUnifier.get(dust, Uraninite))
-                .fluidOutputs(NitrogenTetroxide.getFluid(1000))
-                .buildAndRegister();
-
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(1)
-                .input(dust, Uraninite)
-                .fluidInputs(Chlorine.getFluid(6000))
-                .fluidOutputs(UraniumHexachloride.getFluid(6000))
-                .fluidOutputs(Oxygen.getFluid(2000))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(1)
-                .fluidInputs(UraniumHexachloride.getFluid(2000))
-                .fluidInputs(HydrogenFluoride.getFluid(10000))
-                .fluidOutputs(HydrochloricAcid.getFluid(10000))
-                .fluidOutputs(UraniumHexafluoride.getFluid(2000))
-                .buildAndRegister();
-
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(1).EUt(1)
-                .fluidInputs(UraniumHexafluoride.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, UraniumHexafluoride))
-                .buildAndRegister();
-
-        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(1).EUt(1)
-                .input(dust, UraniumHexafluoride)
-                .chancedOutput(OreDictUnifier.get(dust, Uranium235Hexafluoride), 1, 1)
-                .chancedOutput(OreDictUnifier.get(dust, Uranium238Hexafluoride), 1, 1)
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
-                .fluidInputs(Steam.getFluid(6000))
-                .input(dust, Uranium235Hexafluoride)
-                .outputs(OreDictUnifier.get(dust, Uranium235Dioxide))
-                .fluidOutputs(Fluorine.getFluid(6000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
-                .fluidInputs(Steam.getFluid(6000))
-                .input(dust, Uranium238Hexafluoride)
-                .outputs(OreDictUnifier.get(dust, Uranium238Dioxide))
-                .fluidOutputs(Fluorine.getFluid(6000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
-                .input(dust, Uranium235Dioxide)
-                .outputs(OreDictUnifier.get(ingot, Uranium235))
-                .fluidOutputs(Oxygen.getFluid(2000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1).EUt(1)
-                .input(dust, Uranium238Dioxide)
-                .outputs(OreDictUnifier.get(ingot, Uranium238.getMaterial()))
-                .fluidOutputs(Oxygen.getFluid(2000))
-                .buildAndRegister();
-
-
-    }
 
     public static void generatedRecipes() {
         List<ResourceLocation> recipesToRemove = new ArrayList<>();

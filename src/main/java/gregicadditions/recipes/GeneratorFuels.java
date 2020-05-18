@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.fluid.GAMetaFluids;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -33,7 +34,7 @@ public class GeneratorFuels {
 
         //Steam Turbine
         FuelRecipes.registerSteamGeneratorFuel(Steam.getFluid(640), 10, GTValues.LV);
-        GARecipeMaps.HIGH_PRESSURE_STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(HighPressureSteam.getFluid(320), 10, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HIGH_PRESSURE_STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(GAMetaFluids.getHotFluid(Steam, 320), 10, GTValues.V[GTValues.LV]));
 
         //Gas Turbine Fuels
         FuelRecipes.registerGasGeneratorFuel(NaturalGas.getFluid(20), 13, GTValues.LV);

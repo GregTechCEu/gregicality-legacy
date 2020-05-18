@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
+import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregicadditions.recipes.map.RecipeMapAssemblyLine;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
@@ -60,9 +61,15 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES;
     @ZenProperty
-    public static final LargeRecipeMap LARGE_FORGE_HAMMER;
+    public static final LargeRecipeMap LARGE_FORGE_HAMMER_RECIPES;
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SIMPLE_ORE_WASHER;
+    public static final RecipeMap<SimpleRecipeBuilder> SIMPLE_ORE_WASHER_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<NuclearReactorBuilder> NUCLEAR_REACTOR_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<NuclearReactorBuilder> NUCLEAR_BREEDER_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -91,12 +98,19 @@ public class GARecipeMaps {
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
         BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy", 0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
-        LARGE_FORGE_HAMMER = (LargeRecipeMap) new LargeRecipeMap("large_forge_hammer", 1, 1, 1, 1, 1, 1, 0, 0, new LargeRecipeBuilder(RecipeMaps.FORGE_HAMMER_RECIPES))
+        LARGE_FORGE_HAMMER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_forge_hammer", 1, 1, 1, 1, 1, 1, 0, 0, new LargeRecipeBuilder(RecipeMaps.FORGE_HAMMER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
-        SIMPLE_ORE_WASHER = new RecipeMap<>("simple_ore_washer", 1, 1, 1, 1, 0, 1, 0, 0, new SimpleRecipeBuilder().duration(5).EUt(7))
+        SIMPLE_ORE_WASHER_RECIPES = new RecipeMap<>("simple_ore_washer", 1, 1, 1, 1, 0, 1, 0, 0, new SimpleRecipeBuilder().duration(5).EUt(7))
                 .setSlotOverlay(false, false, GuiTextures.CRUSHED_ORE_OVERLAY)
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+
+        NUCLEAR_REACTOR_RECIPES = new RecipeMap<>("nuclear_reactor", 2, 3, 1, 2, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
+        DECAY_CHAMBERS = new RecipeMap<>("decay_chamber", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder().EUt(32))
+                .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
+
+        NUCLEAR_BREEDER_RECIPES = new RecipeMap<>("nuclear_breeder", 2, 3, 1, 4, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
     }
 }

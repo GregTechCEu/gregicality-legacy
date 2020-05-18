@@ -15,6 +15,8 @@ public class IsotopeMaterial extends EnrichmentProcess {
     private final RadioactiveMaterial radioactiveMaterial;
 
     public boolean fertile = false;
+    public boolean fissile = false;
+    public int baseHeat = 10;
 
     public final Map<IsotopeMaterial, Integer> isotopeDecay = new HashMap<>();
 
@@ -33,4 +35,12 @@ public class IsotopeMaterial extends EnrichmentProcess {
         return from;
     }
 
+    public RadioactiveMaterial getRadioactiveMaterial() {
+        return radioactiveMaterial;
+    }
+
+    @Override
+    public String toString() {
+        return from.toString();
+    }
 }
