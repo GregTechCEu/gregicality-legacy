@@ -457,7 +457,7 @@ public class RecipeHandler {
     public static void registerChemicalPlantRecipes() {
         RecipeMaps.BREWING_RECIPES.getRecipeList().forEach(recipe -> {
             FluidStack fluidInput = recipe.getFluidInputs().get(0).copy();
-            fluidInput.amount *= 10;
+            fluidInput.amount = (fluidInput.amount * 10 * 125 / 100);
             CountableIngredient itemInput = new CountableIngredient(recipe.getInputs().get(0).getIngredient(), recipe.getInputs().get(0).getCount() * 10);
             FluidStack fluidOutput = FermentationBase.getFluid(recipe.getFluidOutputs().get(0).amount * 10);
 
