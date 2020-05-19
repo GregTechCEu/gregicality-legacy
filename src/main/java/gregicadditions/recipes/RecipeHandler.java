@@ -135,7 +135,8 @@ public class RecipeHandler {
             });
         } else if (isotopeMaterial != null && isotopeMaterial.fissile) {
             IntStream.range(1, 10).forEach(operand ->
-                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2).duration(2000)
+                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand * 2)
+                            .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2)
                             .notConsumable(new IntCircuitIngredient(operand + 10))
                             .input(stickLong, isotopeMaterial.getMaterial(), operand)
                             .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand))
@@ -144,7 +145,8 @@ public class RecipeHandler {
                     IsotopeMaterial.REGISTRY.entrySet().stream()
                             .filter(isotopeMaterialEntry -> isotopeMaterialEntry.getValue().fertile)
                             .forEach(isotopeMaterialEntry -> {
-                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand).duration(2000)
+                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(20000).EUt((isotopeMaterial.baseHeat + operand) * operand / 2)
+                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
@@ -152,7 +154,8 @@ public class RecipeHandler {
                                                 .outputs(isotopeMaterialEntry.getValue().getRadioactiveMaterial().waste.getStackForm(9))
                                                 .buildAndRegister();
 
-                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5).duration(2000)
+                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand)
+                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
