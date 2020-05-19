@@ -66,7 +66,7 @@ public class GAMachineRecipeRemoval {
         }
 
         //Fix Brick Exploit
-        removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, new ItemStack(Items.BRICK));
+//        removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, new ItemStack(Items.BRICK));
 
         //Remove GTCE Circuit recipes
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Silicon, 2), OreDictUnifier.get(plate, Polytetrafluoroethylene));
@@ -102,17 +102,6 @@ public class GAMachineRecipeRemoval {
         //remove easy rocket fuel
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(1)}, new FluidStack[]{NitrogenDioxide.getFluid(1000), Hydrogen.getFluid(3000), Oxygen.getFluid(500), Water.getFluid(4000)});
 
-
-        //Remove Hydrogen Sulfide Recipes
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, NaturalGas.getFluid(16000), Hydrogen.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, SulfuricGas.getFluid(16000), Hydrogen.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, SulfuricLightFuel.getFluid(6000), Hydrogen.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, SulfuricHeavyFuel.getFluid(4000), Hydrogen.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, SulfuricNaphtha.getFluid(7000), Hydrogen.getFluid(1000));
-
-        //Remove GTCE Titanium Tetrachloride Recipe
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Carbon, 3), OreDictUnifier.get(dust, Rutile)}, new FluidStack[]{Chlorine.getFluid(2000)});
-
         //Remove GT5 Ash Centrifuging
         removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, DarkAsh, 2));
         removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Ash));
@@ -125,7 +114,8 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, OreDictUnifier.get(ingot, Plutonium, 6));
 
         //Remove The Bad Nitric Acid Recipe
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Water.getFluid(2000), NitrogenDioxide.getFluid(4000), Oxygen.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Water.getFluid(1000), NitrogenDioxide.getFluid(4000), Oxygen.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(4)}, new FluidStack[]{Water.getFluid(1000), NitrogenDioxide.getFluid(2000), Oxygen.getFluid(1000)});
 
         //Remove Simple Copper Cable Recipes
         removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES, OreDictUnifier.get(ingot, Rubber, 2), OreDictUnifier.get(wireGtSingle, Copper));
