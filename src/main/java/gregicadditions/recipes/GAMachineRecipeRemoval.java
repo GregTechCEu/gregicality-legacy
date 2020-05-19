@@ -98,8 +98,6 @@ public class GAMachineRecipeRemoval {
         //Circuit Rabbit Hole-Related Recipe Removal
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Silicon)}, new FluidStack[]{Epichlorhydrin.getFluid(144)});
 
-        //Remove Pyrolise Oven Recipes
-        removeAllRecipes(RecipeMaps.PYROLYSE_RECIPES);
 
         //remove easy rocket fuel
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(1)}, new FluidStack[]{NitrogenDioxide.getFluid(1000), Hydrogen.getFluid(3000), Oxygen.getFluid(500), Water.getFluid(4000)});
@@ -169,6 +167,11 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
         removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
         removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
+
+        //remove biomas distilery
+        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, Biomass.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{Biomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{Biomass.getFluid(1000)});
 
 
         //Remove Cheap Diesel Recipe
@@ -260,7 +263,7 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(RecipeMaps.CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
 
         //remove Brewing
-        removeAllRecipes(RecipeMaps.BREWING_RECIPES);
+
 
         //remove old casing
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Invar, 6), OreDictUnifier.get(frameGt, Invar, 1));

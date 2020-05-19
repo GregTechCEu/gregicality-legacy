@@ -339,8 +339,11 @@ public class GARecipeAddition {
 
 
         //Pyrolise Oven Recipes
+
         PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(1).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
         PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(2).fluidInputs(Nitrogen.getFluid(400)).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
+        PYROLYSE_RECIPES.recipeBuilder().inputs(PLANT_BALL.getStackForm()).circuitMeta(2).fluidInputs(Water.getFluid(1500)).chancedOutput(PLANT_BALL.getStackForm(), 1000, 100).fluidOutputs(FermentedBiomass.getFluid(1500)).duration(200).EUt(10).buildAndRegister();
+
 
         //Distillation Recipes
         DISTILLATION_RECIPES.recipeBuilder().duration(16).EUt(96).fluidInputs(FishOil.getFluid(24)).fluidOutputs(Lubricant.getFluid(12)).buildAndRegister();
@@ -848,8 +851,9 @@ public class GARecipeAddition {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(750).EUt(491520).outputs(CIRCUIT_MAGNETIC_MAX.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_UV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5760)).buildAndRegister();
 
         //distillery and new brewing
-        DISTILLERY_RECIPES.recipeBuilder().duration(16).EUt(60).circuitMeta(0).fluidInputs(FermentationBase.getFluid(40)).fluidOutputs(Ethanol.getFluid(4)).buildAndRegister();
+        DISTILLERY_RECIPES.recipeBuilder().duration(64).EUt(100).circuitMeta(0).fluidInputs(FermentationBase.getFluid(1000)).fluidOutputs(Ethanol.getFluid(500)).buildAndRegister();
 
+        removeAllRecipes(BREWING_RECIPES);
         BREWING_RECIPES.recipeBuilder().duration(1440).EUt(3).inputs(MetaItems.PLANT_BALL.getStackForm()).fluidInputs(Honey.getFluid(180)).fluidOutputs(Biomass.getFluid(270)).buildAndRegister();
         BREWING_RECIPES.recipeBuilder().duration(600).EUt(3).input("treeSapling", 1).fluidInputs(Honey.getFluid(100)).fluidOutputs(Biomass.getFluid(150)).buildAndRegister();
         BREWING_RECIPES.recipeBuilder().duration(240).EUt(3).inputs(new ItemStack(Items.POTATO)).fluidInputs(Honey.getFluid(20)).fluidOutputs(Biomass.getFluid(30)).buildAndRegister();
