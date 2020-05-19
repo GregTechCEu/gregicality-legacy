@@ -323,6 +323,10 @@ public class RecipeHandler {
     }
 
     public static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, material, 5), OreDictUnifier.get(screw, material, 2), IntCircuitIngredient.getIntegratedCircuit(10));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(stickLong, Titanium), OreDictUnifier.get(turbineBlade, material, 8));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:" + String.format("turbine_blade_%s", material)));
+
         ItemStack hugeTurbineRotorStackForm = GAMetaItems.HUGE_TURBINE_ROTOR.getStackForm();
         ItemStack largeTurbineRotorStackForm = GAMetaItems.LARGE_TURBINE_ROTOR.getStackForm();
         ItemStack mediumTurbineRotorStackForm = GAMetaItems.MEDIUM_TURBINE_ROTOR.getStackForm();
