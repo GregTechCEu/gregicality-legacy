@@ -1846,3 +1846,9 @@ gtadditions.machine.decay_chamber.iv.name=进阶衰变室 III
 gtadditions.machine.decay_chamber.luv.name=进阶衰变室 IV
 gtadditions.machine.decay_chamber.zpm.name=进阶衰变室 V
 gtadditions.machine.decay_chamber.uv.name=进阶衰变室 VI
+
+metaitem.nuclear.dust.dioxide.name=二氧化%s粉
+metaitem.nuclear.dust.nitrate.name=硝酸%s粉
+metaitem.nuclear.dust.hexafluoride.name=六氟化%s粉
+gregtech.fluid.hexachloride=六氯化%s
+gregtech.fluid.hexafluoride=六氟化%s
