@@ -135,7 +135,8 @@ public class RecipeHandler {
             });
         } else if (isotopeMaterial != null && isotopeMaterial.fissile) {
             IntStream.range(1, 10).forEach(operand ->
-                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2).duration(2000)
+                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand * 2)
+                            .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2)
                             .notConsumable(new IntCircuitIngredient(operand + 10))
                             .input(stickLong, isotopeMaterial.getMaterial(), operand)
                             .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand))
@@ -144,7 +145,8 @@ public class RecipeHandler {
                     IsotopeMaterial.REGISTRY.entrySet().stream()
                             .filter(isotopeMaterialEntry -> isotopeMaterialEntry.getValue().fertile)
                             .forEach(isotopeMaterialEntry -> {
-                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand).duration(2000)
+                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(20000).EUt((isotopeMaterial.baseHeat + operand) * operand / 2)
+                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
@@ -152,7 +154,8 @@ public class RecipeHandler {
                                                 .outputs(isotopeMaterialEntry.getValue().getRadioactiveMaterial().waste.getStackForm(9))
                                                 .buildAndRegister();
 
-                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5).duration(2000)
+                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand)
+                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5)
                                                 .notConsumable(new IntCircuitIngredient(operand))
                                                 .input(stickLong, isotopeMaterial.getMaterial(), operand)
                                                 .input(stickLong, isotopeMaterialEntry.getKey(), 9)
@@ -320,6 +323,10 @@ public class RecipeHandler {
     }
 
     public static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, material, 5), OreDictUnifier.get(screw, material, 2), IntCircuitIngredient.getIntegratedCircuit(10));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(stickLong, Titanium), OreDictUnifier.get(turbineBlade, material, 8));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:" + String.format("turbine_blade_%s", material)));
+
         ItemStack hugeTurbineRotorStackForm = GAMetaItems.HUGE_TURBINE_ROTOR.getStackForm();
         ItemStack largeTurbineRotorStackForm = GAMetaItems.LARGE_TURBINE_ROTOR.getStackForm();
         ItemStack mediumTurbineRotorStackForm = GAMetaItems.MEDIUM_TURBINE_ROTOR.getStackForm();
@@ -457,7 +464,7 @@ public class RecipeHandler {
     public static void registerChemicalPlantRecipes() {
         RecipeMaps.BREWING_RECIPES.getRecipeList().forEach(recipe -> {
             FluidStack fluidInput = recipe.getFluidInputs().get(0).copy();
-            fluidInput.amount *= 10;
+            fluidInput.amount = (fluidInput.amount * 10 * 125 / 100);
             CountableIngredient itemInput = new CountableIngredient(recipe.getInputs().get(0).getIngredient(), recipe.getInputs().get(0).getCount() * 10);
             FluidStack fluidOutput = FermentationBase.getFluid(recipe.getFluidOutputs().get(0).amount * 10);
 

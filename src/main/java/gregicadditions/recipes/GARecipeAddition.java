@@ -57,6 +57,7 @@ import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.recipes.GAMachineRecipeRemoval.removeAllRecipes;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -115,6 +116,7 @@ public class GARecipeAddition {
 
 
     public static void init() {
+
 
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
@@ -339,8 +341,11 @@ public class GARecipeAddition {
 
 
         //Pyrolise Oven Recipes
+
         PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(1).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(640).EUt(64).buildAndRegister();
         PYROLYSE_RECIPES.recipeBuilder().inputs(new ItemStack(Items.SUGAR, 23)).circuitMeta(2).fluidInputs(Nitrogen.getFluid(400)).outputs(OreDictUnifier.get(dust, Charcoal, 12)).fluidOutputs(Water.getFluid(1500)).duration(320).EUt(96).buildAndRegister();
+        PYROLYSE_RECIPES.recipeBuilder().inputs(PLANT_BALL.getStackForm()).circuitMeta(2).fluidInputs(Water.getFluid(1500)).chancedOutput(PLANT_BALL.getStackForm(), 1000, 100).fluidOutputs(FermentedBiomass.getFluid(1500)).duration(200).EUt(10).buildAndRegister();
+
 
         //Distillation Recipes
         DISTILLATION_RECIPES.recipeBuilder().duration(16).EUt(96).fluidInputs(FishOil.getFluid(24)).fluidOutputs(Lubricant.getFluid(12)).buildAndRegister();
@@ -848,8 +853,9 @@ public class GARecipeAddition {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(750).EUt(491520).outputs(CIRCUIT_MAGNETIC_MAX.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_UV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5760)).buildAndRegister();
 
         //distillery and new brewing
-        DISTILLERY_RECIPES.recipeBuilder().duration(16).EUt(60).circuitMeta(0).fluidInputs(FermentationBase.getFluid(40)).fluidOutputs(Ethanol.getFluid(4)).buildAndRegister();
+        DISTILLERY_RECIPES.recipeBuilder().duration(64).EUt(100).circuitMeta(0).fluidInputs(FermentationBase.getFluid(1000)).fluidOutputs(Ethanol.getFluid(500)).buildAndRegister();
 
+        removeAllRecipes(BREWING_RECIPES);
         BREWING_RECIPES.recipeBuilder().duration(1440).EUt(3).inputs(MetaItems.PLANT_BALL.getStackForm()).fluidInputs(Honey.getFluid(180)).fluidOutputs(Biomass.getFluid(270)).buildAndRegister();
         BREWING_RECIPES.recipeBuilder().duration(600).EUt(3).input("treeSapling", 1).fluidInputs(Honey.getFluid(100)).fluidOutputs(Biomass.getFluid(150)).buildAndRegister();
         BREWING_RECIPES.recipeBuilder().duration(240).EUt(3).inputs(new ItemStack(Items.POTATO)).fluidInputs(Honey.getFluid(20)).fluidOutputs(Biomass.getFluid(30)).buildAndRegister();
@@ -1029,7 +1035,6 @@ public class GARecipeAddition {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), WETWARE_MAINFRAME_MAX.getStackForm(), WETWARE_MAINFRAME_MAX.getStackForm(), WETWARE_MAINFRAME_MAX.getStackForm(), WETWARE_MAINFRAME_MAX.getStackForm(), OreDictUnifier.get(plate, Americium, 4), FIELD_GENERATOR_ZPM.getStackForm(2), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64), OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor, 32)).fluidInputs(SolderingAlloy.getFluid(2880)).outputs(GATileEntities.FUSION_REACTOR[2].getStackForm()).duration(1000).EUt(90000).buildAndRegister();
 
         //Star Recipes
-        CHEMICAL_RECIPES.recipeBuilder().duration(60000).EUt(8).input(ingot, Plutonium, 3).outputs(OreDictUnifier.get(dust, Plutonium, 3)).fluidOutputs(Radon.getFluid(50)).buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680).inputs(new ItemStack(Items.NETHER_STAR)).fluidInputs(Neutronium.getFluid(288)).outputs(GRAVI_STAR.getStackForm()).buildAndRegister();
 
         //Fusion Recipes
@@ -2169,8 +2174,11 @@ public class GARecipeAddition {
                     }
                     if (match) {
                         if (GAConfig.GT5U.Remove3x3BlockRecipes) recipesToRemove.add(recipe.getRegistryName());
-                        if (GAConfig.GT5U.GenerateCompressorRecipes)
+                        if (GAConfig.GT5U.GenerateCompressorRecipes && !recipe.getIngredients().get(0).test(new ItemStack(Items.WHEAT))) {
                             COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2).inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size())).outputs(recipe.getRecipeOutput()).buildAndRegister();
+                        } else {
+                            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size())).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(recipe.getRecipeOutput()).buildAndRegister();
+                        }
                     }
                 }
             }
@@ -2267,6 +2275,19 @@ public class GARecipeAddition {
                 ModHandler.removeFurnaceSmelting(woodStack);
             }
         }
+
+        //seed oil
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2).input("listAllSeed", 1).fluidOutputs(Materials.SeedOil.getFluid(10)).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllmushroom", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfruit", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllveggie", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllspice", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllgrain", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllnut", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllpepper", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllherb", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfiber", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+
     }
 
 }

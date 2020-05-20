@@ -62,13 +62,6 @@ public class MetaTileEntityLargeTurbine extends gregtech.common.metatileentities
                 if (material != null) {
                     MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
                 }
-            } else if (MetaTileEntityLargeTurbine.this.turbineType.toString().equals("HOT_COOLANT")) {
-                if (fuelAmountUsed > 0) {
-                    FluidMaterial material = MetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
-                    if (material != null) {
-                        MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
-                    }
-                }
             }
         }
 

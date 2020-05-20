@@ -23,7 +23,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
@@ -239,7 +238,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                     multiplier = 100;
                     break;
             }
-            setMaxProgress(duration * multiplier);
+            setMaxProgress(duration * 100 / multiplier);
         }
     }
 }

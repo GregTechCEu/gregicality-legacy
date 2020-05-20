@@ -218,12 +218,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final IsotopeMaterial Protactinium233 = new IsotopeMaterial(823, RadioactiveMaterial.REGISTRY.get(Protactinium.getMaterial()), 233, GENERATE_LONG_ROD);
 
     //uranium
-    public static final RadioactiveMaterial UraniumRadioactive = new RadioactiveMaterial(Uranium);
-    public static final IsotopeMaterial Uranium233 = new IsotopeMaterial(822, RadioactiveMaterial.REGISTRY.get(Uranium), 233, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Uranium234 = new IsotopeMaterial(821, RadioactiveMaterial.REGISTRY.get(Uranium), 234, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Uranium235Isotope = new IsotopeMaterial(Uranium235, RadioactiveMaterial.REGISTRY.get(Uranium), 235);
-    public static final IsotopeMaterial Uranium238 = new IsotopeMaterial(820, RadioactiveMaterial.REGISTRY.get(Uranium), 238, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Uranium239 = new IsotopeMaterial(819, RadioactiveMaterial.REGISTRY.get(Uranium), 239, GENERATE_LONG_ROD);
+    public static final RadioactiveMaterial UraniumRadioactive = new RadioactiveMaterial(656, "uranium_radioactive", Uranium.materialRGB, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, U, 0, 0, 0, 0);
+
+
+    public static final IsotopeMaterial Uranium238Isotope = new IsotopeMaterial(Uranium, RadioactiveMaterial.REGISTRY.get(UraniumRadioactive.getMaterial()), 238);
+    public static final IsotopeMaterial Uranium233 = new IsotopeMaterial(822, RadioactiveMaterial.REGISTRY.get(UraniumRadioactive.getMaterial()), 233, GENERATE_LONG_ROD);
+    public static final IsotopeMaterial Uranium234 = new IsotopeMaterial(821, RadioactiveMaterial.REGISTRY.get(UraniumRadioactive.getMaterial()), 234, GENERATE_LONG_ROD);
+    public static final IsotopeMaterial Uranium235Isotope = new IsotopeMaterial(Uranium235, RadioactiveMaterial.REGISTRY.get(UraniumRadioactive.getMaterial()), 235);
+    public static final IsotopeMaterial Uranium239 = new IsotopeMaterial(819, RadioactiveMaterial.REGISTRY.get(UraniumRadioactive.getMaterial()), 239, GENERATE_LONG_ROD);
 
     public static final DustMaterial UranylNitrate = new DustMaterial(818, "uranyl_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Uraninite, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial UraniumHexachloride = new DustMaterial(817, "uranium_hexachloride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
@@ -231,11 +233,11 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final DustMaterial Uranium234Hexafluoride = new DustMaterial(815, "uranium234hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium234.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
     public static final DustMaterial Uranium235Hexafluoride = new DustMaterial(814, "uranium235hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium235, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
-    public static final DustMaterial Uranium238Hexafluoride = new DustMaterial(813, "uranium238hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium238.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Uranium238Hexafluoride = new DustMaterial(813, "uranium238hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Uranium238Isotope.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
 
     public static final DustMaterial Uranium234Dioxide = new IngotMaterial(812, "uranium234dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium234.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
     public static final DustMaterial Uranium235Dioxide = new IngotMaterial(811, "uranium235dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium235, 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
-    public static final DustMaterial Uranium238Dioxide = new IngotMaterial(810, "uranium238dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Uranium238Dioxide = new IngotMaterial(810, "uranium238dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Uranium238Isotope.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
 
 
     //Neptunium
@@ -258,12 +260,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Neptunium239Dioxide = new IngotMaterial(796, "neptunium239dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Neptunium239.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
 
     //plutonium
-    public static final RadioactiveMaterial PlutoniumRadioactive = new RadioactiveMaterial(Plutonium);
-    public static final IsotopeMaterial Plutonium239 = new IsotopeMaterial(795, RadioactiveMaterial.REGISTRY.get(Plutonium), 239, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Plutonium240 = new IsotopeMaterial(794, RadioactiveMaterial.REGISTRY.get(Plutonium), 240, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Plutonium241Isotope = new IsotopeMaterial(Plutonium241, RadioactiveMaterial.REGISTRY.get(Plutonium), 241);
-    public static final IsotopeMaterial Plutonium244 = new IsotopeMaterial(793, RadioactiveMaterial.REGISTRY.get(Plutonium), 244, GENERATE_LONG_ROD);
-    public static final IsotopeMaterial Plutonium245 = new IsotopeMaterial(792, RadioactiveMaterial.REGISTRY.get(Plutonium), 245, GENERATE_LONG_ROD);
+    public static final RadioactiveMaterial PlutoniumRadioactive = new RadioactiveMaterial(655, "plutonium_radioactive", Plutonium.materialRGB, MaterialIconSet.SHINY, 3, of(), EXT2_METAL, Pu, 0, 0, 0, 0);
+    public static final IsotopeMaterial Plutonium239 = new IsotopeMaterial(795, RadioactiveMaterial.REGISTRY.get(PlutoniumRadioactive.getMaterial()), 239, GENERATE_LONG_ROD);
+    public static final IsotopeMaterial Plutonium240 = new IsotopeMaterial(794, RadioactiveMaterial.REGISTRY.get(PlutoniumRadioactive.getMaterial()), 240, GENERATE_LONG_ROD);
+    public static final IsotopeMaterial Plutonium241Isotope = new IsotopeMaterial(Plutonium241, RadioactiveMaterial.REGISTRY.get(PlutoniumRadioactive.getMaterial()), 241);
+    public static final IsotopeMaterial Plutonium244Isotope = new IsotopeMaterial(Plutonium, RadioactiveMaterial.REGISTRY.get(PlutoniumRadioactive.getMaterial()), 244);
+    public static final IsotopeMaterial Plutonium245 = new IsotopeMaterial(792, RadioactiveMaterial.REGISTRY.get(PlutoniumRadioactive.getMaterial()), 245, GENERATE_LONG_ROD);
 
     public static final DustMaterial PlutoniumDioxide = new DustMaterial(791, "plutonium_dioxide", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium, 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PlutoniumNitrate = new DustMaterial(790, "plutonium_nitrate", 0xFFFF00, MaterialIconSet.DULL, 2, of(new MaterialStack(PlutoniumDioxide, 1), new MaterialStack(NitrogenTetroxide, 1)), DISABLE_DECOMPOSITION);
@@ -272,11 +274,11 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final DustMaterial Plutonium240Hexafluoride = new DustMaterial(787, "plutonium240hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium240.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
     public static final DustMaterial Plutonium241Hexafluoride = new DustMaterial(786, "plutonium241hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium241Isotope.getMaterial(), 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
-    public static final DustMaterial Plutonium244Hexafluoride = new DustMaterial(785, "plutonium244hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium244.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
+    public static final DustMaterial Plutonium244Hexafluoride = new DustMaterial(785, "plutonium244hexafluoride", 0x225511, MaterialIconSet.DULL, 2, of(new MaterialStack(Plutonium244Isotope.getMaterial(), 1), new MaterialStack(Fluorine, 6)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES);// + steam in autoclave
 
     public static final DustMaterial Plutonium240Dioxide = new IngotMaterial(784, "plutonium240dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium240.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
     public static final DustMaterial Plutonium241Dioxide = new IngotMaterial(783, "plutonium241dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium241Isotope.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
-    public static final DustMaterial Plutonium244Dioxide = new IngotMaterial(782, "plutonium244dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium244.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
+    public static final DustMaterial Plutonium244Dioxide = new IngotMaterial(782, "plutonium244dioxide", 0x00DD00, MaterialIconSet.SHINY, 3, of(new MaterialStack(Plutonium244Isotope.getMaterial(), 1), new MaterialStack(Oxygen, 2)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | NO_SMELTING);
 
 
     //americium
@@ -640,6 +642,9 @@ public class GAMaterials implements IMaterialHandler {
         OrePrefix.block.setIgnored(FLiBe);
         OrePrefix.block.setIgnored(LeadBismuthEutectic);
 
+        Uranium.addFlag(GENERATE_LONG_ROD);
+        Plutonium.addFlag(GENERATE_LONG_ROD);
+
         ThoriumRadioactive.complexity = 100;
         Protactinium.complexity = 100;
         UraniumRadioactive.complexity = 100;
@@ -667,7 +672,7 @@ public class GAMaterials implements IMaterialHandler {
         Protactinium233.isotopeDecay.put(Uranium233, 9000);
 
         //Uranium
-        UraniumRadioactive.composition.put(Uranium238, 9890);
+        UraniumRadioactive.composition.put(Uranium238Isotope, 9890);
         UraniumRadioactive.composition.put(Uranium235Isotope, 100);
         UraniumRadioactive.composition.put(Uranium234, 10);
 
@@ -679,22 +684,22 @@ public class GAMaterials implements IMaterialHandler {
         Uranium233.fissile = true;
         Uranium235Isotope.fissile = true;
         Uranium234.fertile = true;
-        Uranium238.fertile = true;
+        Uranium238Isotope.fertile = true;
 
         Uranium235Isotope.baseHeat = 10;
         Uranium233.baseHeat = 7;
 
         Uranium234.isotopeDecay.put(Uranium235Isotope, 9000);
-        Uranium238.isotopeDecay.put(Uranium239, 100);
-        Uranium238.isotopeDecay.put(Neptunium239, 1000);
-        Uranium238.isotopeDecay.put(Plutonium239, 8900);
+        Uranium238Isotope.isotopeDecay.put(Uranium239, 100);
+        Uranium238Isotope.isotopeDecay.put(Neptunium239, 1000);
+        Uranium238Isotope.isotopeDecay.put(Plutonium239, 8900);
         Uranium239.isotopeDecay.put(Neptunium239, 9000);
 
         Uranium234.materailHexafluoride = Uranium234Hexafluoride;
         Uranium234.materialDioxide = Uranium234Dioxide;
 
-        Uranium238.materailHexafluoride = Uranium238Hexafluoride;
-        Uranium238.materialDioxide = Uranium238Dioxide;
+        Uranium238Isotope.materailHexafluoride = Uranium238Hexafluoride;
+        Uranium238Isotope.materialDioxide = Uranium238Dioxide;
 
         Uranium235Isotope.materailHexafluoride = Uranium235Hexafluoride;
         Uranium235Isotope.materialDioxide = Uranium235Dioxide;
@@ -727,7 +732,7 @@ public class GAMaterials implements IMaterialHandler {
         Neptunium239.materialDioxide = Neptunium239Dioxide;
 
         //plutonium
-        PlutoniumRadioactive.composition.put(Plutonium244, 9890);
+        PlutoniumRadioactive.composition.put(Plutonium244Isotope, 9890);
         PlutoniumRadioactive.composition.put(Plutonium241Isotope, 100);
         PlutoniumRadioactive.composition.put(Plutonium240, 10);
 
@@ -739,15 +744,15 @@ public class GAMaterials implements IMaterialHandler {
         Plutonium241Isotope.fissile = true;
         Plutonium239.fissile = true;
         Plutonium240.fertile = true;
-        Plutonium244.fertile = true;
+        Plutonium244Isotope.fertile = true;
 
         Plutonium241Isotope.baseHeat = 13;
         Plutonium239.baseHeat = 10;
 
         Plutonium240.isotopeDecay.put(Plutonium241Isotope, 9000);
-        Plutonium244.isotopeDecay.put(Plutonium245, 100);
-        Plutonium244.isotopeDecay.put(Americium245, 1000);
-        Plutonium244.isotopeDecay.put(Curium245, 8900);
+        Plutonium244Isotope.isotopeDecay.put(Plutonium245, 100);
+        Plutonium244Isotope.isotopeDecay.put(Americium245, 1000);
+        Plutonium244Isotope.isotopeDecay.put(Curium245, 8900);
         Plutonium245.isotopeDecay.put(Americium245, 9000);
 
         Plutonium240.materailHexafluoride = Plutonium240Hexafluoride;
@@ -756,8 +761,8 @@ public class GAMaterials implements IMaterialHandler {
         Plutonium241Isotope.materailHexafluoride = Plutonium241Hexafluoride;
         Plutonium241Isotope.materialDioxide = Plutonium241Dioxide;
 
-        Plutonium244.materailHexafluoride = Plutonium244Hexafluoride;
-        Plutonium244.materialDioxide = Plutonium244Dioxide;
+        Plutonium244Isotope.materailHexafluoride = Plutonium244Hexafluoride;
+        Plutonium244Isotope.materialDioxide = Plutonium244Dioxide;
 
         //Americium
         AmericiumRadioactive.composition.put(Americium241, 2000);

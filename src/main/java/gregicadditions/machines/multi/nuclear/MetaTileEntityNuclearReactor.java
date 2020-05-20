@@ -130,6 +130,7 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
         tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.5"));
         tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.6"));
         tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.7"));
+        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.8"));
     }
 
     public IBlockState getCasingState() {
