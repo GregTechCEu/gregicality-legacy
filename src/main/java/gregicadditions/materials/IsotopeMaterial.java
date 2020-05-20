@@ -9,8 +9,6 @@ public class IsotopeMaterial extends EnrichmentProcess {
 
     public static Map<IngotMaterial, IsotopeMaterial> REGISTRY = new HashMap<>();
 
-    private final IngotMaterial from;
-
     private final int nuclide;
     private final RadioactiveMaterial radioactiveMaterial;
 
@@ -25,14 +23,10 @@ public class IsotopeMaterial extends EnrichmentProcess {
     }
 
     public IsotopeMaterial(IngotMaterial from, RadioactiveMaterial material, int nuclide) {
-        this.from = from;
+        this.material = from;
         this.radioactiveMaterial = material;
         this.nuclide = nuclide;
         REGISTRY.put(from, this);
-    }
-
-    public IngotMaterial getMaterial() {
-        return from;
     }
 
     public RadioactiveMaterial getRadioactiveMaterial() {
@@ -41,6 +35,6 @@ public class IsotopeMaterial extends EnrichmentProcess {
 
     @Override
     public String toString() {
-        return from.toString();
+        return material.toString();
     }
 }

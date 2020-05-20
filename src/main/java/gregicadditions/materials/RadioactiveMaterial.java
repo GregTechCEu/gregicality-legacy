@@ -13,9 +13,7 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     public static Map<IngotMaterial, RadioactiveMaterial> REGISTRY = new HashMap<>();
 
-    private final IngotMaterial from;
-    public final List<IsotopeMaterial> fissile = new ArrayList<>();
-    public final List<IsotopeMaterial> fertile = new ArrayList<>();
+
     public final Map<IsotopeMaterial, Integer> composition = new HashMap<>(3);
     public int complexity = 100;
     public MetaItem<?>.MetaValueItem waste;
@@ -27,17 +25,13 @@ public class RadioactiveMaterial extends EnrichmentProcess {
     }
 
     public RadioactiveMaterial(IngotMaterial from) {
-        this.from = from;
+        this.material = from;
         REGISTRY.put(from, this);
     }
 
 
-    public IngotMaterial getMaterial() {
-        return from;
-    }
-
     @Override
     public String toString() {
-        return from.toString();
+        return material.toString();
     }
 }
