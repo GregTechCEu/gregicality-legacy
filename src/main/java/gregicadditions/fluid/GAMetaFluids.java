@@ -1,5 +1,6 @@
 package gregicadditions.fluid;
 
+import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.fluids.Fluid;
@@ -15,7 +16,7 @@ import static gregtech.api.unification.material.Materials.*;
 public class GAMetaFluids {
 
 
-    public static final Map<Material, Fluid> HOT_FLUIDS = new HashMap<>();
+    public static final Map<FluidMaterial, Fluid> HOT_FLUIDS = new HashMap<>();
 
     public static void init() {
         HOT_FLUIDS.put(Steam, MetaFluids.registerFluid(Steam, MetaFluids.FluidType.valueOf("HOT"), 423));

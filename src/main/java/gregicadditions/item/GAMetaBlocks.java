@@ -1,8 +1,6 @@
 package gregicadditions.item;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.blocks.GAMetalCasing;
-import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -65,9 +63,6 @@ public class GAMetaBlocks {
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.Steel), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "HOT_COOLANT",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                GARecipeMaps.HOT_COOLANT_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(GAMaterials.MaragingSteel250), GAMetaBlocks.METAL_CASING.get(GAMaterials.MaragingSteel250), true);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.GAS_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.StainlessSteel), GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel), false);

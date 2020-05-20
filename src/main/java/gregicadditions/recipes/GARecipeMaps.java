@@ -5,6 +5,7 @@ import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregicadditions.recipes.map.RecipeMapAssemblyLine;
+import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -41,7 +42,7 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ATTRACTOR_RECIPES;
     @ZenProperty
-    public static final FuelRecipeMap HOT_COOLANT_TURBINE_FUELS;
+    public static final HotCoolantRecipeMap HOT_COOLANT_TURBINE_FUELS;
     @ZenProperty
     public static final LargeRecipeMap LARGE_CHEMICAL_RECIPES;
     @ZenProperty
@@ -77,7 +78,7 @@ public class GARecipeMaps {
         CIRCUIT_ASSEMBLER_RECIPES = (new RecipeMap<>("circuit_assembler", 1, 6, 1, 1, 0, 1, 0, 0, new AssemblerRecipeBuilder())).setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL);
         SIEVE_RECIPES = (new SieveRecipeMap("electric_sieve", 2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL));
         ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
-        HOT_COOLANT_TURBINE_FUELS = new FuelRecipeMap("hot_coolant_turbine");
+        HOT_COOLANT_TURBINE_FUELS = new HotCoolantRecipeMap("hot_coolant_turbine");
         LARGE_CHEMICAL_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_chemical_reactor", 0, 2, 0, 2, 0, 5, 0, 3, (new LargeRecipeBuilder(RecipeMaps.CHEMICAL_RECIPES)).EUt(30)).setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2).setSlotOverlay(false, true, GuiTextures.MOLECULAR_OVERLAY_3).setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1).setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL);
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);

@@ -5,13 +5,13 @@ import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
-import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
-import gregicadditions.machines.energyconverter.utils.ConverterType;
 import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
 import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.energy.MetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
+import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
+import gregicadditions.machines.energyconverter.utils.ConverterType;
+import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.machines.multi.MetaTileEntityBatteryTower;
 import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
 import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
@@ -21,6 +21,7 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
+import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
@@ -148,7 +149,7 @@ public class GATileEntities {
     public static MetaTileEntityDieselEngine DIESEL_ENGINE;
 
     public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
-    public static MetaTileEntityLargeTurbine HOT_COOLANT_TURBINE;
+    public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
 
@@ -539,7 +540,7 @@ public class GATileEntities {
         MetaTileEntities.LARGE_STEAM_TURBINE = LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
         MetaTileEntities.LARGE_GAS_TURBINE = LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
         MetaTileEntities.LARGE_PLASMA_TURBINE = LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
-        HOT_COOLANT_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityLargeTurbine(location("large_turbine.hot_coolant"), MetaTileEntityLargeTurbine.TurbineType.valueOf("HOT_COOLANT")));
+        HOT_COOLANT_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityHotCoolantTurbine(location("large_turbine.hot_coolant"), MetaTileEntityHotCoolantTurbine.TurbineType.HOT_COOLANT));
 
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
         NUCLEAR_BREEDER = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("nuclear_breeder"), GARecipeMaps.NUCLEAR_BREEDER_RECIPES));

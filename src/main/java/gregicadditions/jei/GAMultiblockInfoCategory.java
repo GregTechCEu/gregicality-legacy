@@ -3,7 +3,9 @@ package gregicadditions.jei;
 import com.google.common.collect.Lists;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
-import gregicadditions.jei.multi.miner.*;
+import gregicadditions.jei.multi.miner.LargeMinerInfo;
+import gregicadditions.jei.multi.miner.VoidMinerInfo;
+import gregicadditions.jei.multi.nuclear.HotCoolantTurbineInfo;
 import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
 import gregicadditions.jei.multi.override.CrackerUnitInfo;
 import gregicadditions.jei.multi.override.DieselEngineInfo;
@@ -75,7 +77,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_STEAM_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_GAS_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.LARGE_PLASMA_TURBINE)),
-                new MultiblockInfoRecipeWrapper(new LargeTurbineInfo(GATileEntities.HOT_COOLANT_TURBINE)),
+                new MultiblockInfoRecipeWrapper(new HotCoolantTurbineInfo(GATileEntities.HOT_COOLANT_TURBINE)),
                 new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_REACTOR)),
                 new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_BREEDER)),
                 new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLineInfo()),

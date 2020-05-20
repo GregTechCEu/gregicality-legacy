@@ -791,7 +791,9 @@ recipemap.simple_ore_washer.name=Simple Ore Washer
 recipemap.nuclear_reactor.name=Nuclear Reactor
 recipemap.nuclear_breeder.name=Nuclear Reactor Breeder
 recipemap.decay_chamber.name=Decay Chamber
-gregtech.recipe.base_heat_production=Heat: %dK
+
+gregtech.recipe.base_heat_production=Heat: %dC
+gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
 
 material.brick=Brick
 material.fireclay=Fireclay
@@ -1062,7 +1064,7 @@ material.gold_leach=Gold Leach
 material.gold_alloy=Gold Alloy
 material.precious_metal=Precious Metal
 material.uranium=Uranium
-material.plutonium=Plutonium
+material.plutonium=Plutonium 
 material.protactinium=Protactinium
 material.uranyl_nitrate=Uranyl Nitrate
 material.uranium_hexachloride=Uranium Hexachloride
