@@ -1,5 +1,6 @@
 package gregicadditions.fluid;
 
+import gregicadditions.materials.RadioactiveMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.MetaFluids;
@@ -26,6 +27,12 @@ public class GAMetaFluids {
         HOT_FLUIDS.put(FLiNaK, MetaFluids.registerFluid(FLiNaK, MetaFluids.FluidType.valueOf("HOT"), 1843));
         HOT_FLUIDS.put(FLiBe, MetaFluids.registerFluid(FLiBe, MetaFluids.FluidType.valueOf("HOT"), 1703));
         HOT_FLUIDS.put(LeadBismuthEutectic, MetaFluids.registerFluid(LeadBismuthEutectic, MetaFluids.FluidType.valueOf("HOT"), 1943));
+
+
+        RadioactiveMaterial.REGISTRY.forEach((ingotMaterial, radioactiveMaterial) -> {
+            radioactiveMaterial.fluidHexachloride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXACHLORIDE"), 300);
+            radioactiveMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
+        });
 
     }
 

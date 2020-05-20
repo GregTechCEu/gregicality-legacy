@@ -79,56 +79,57 @@ public class RecipeHandler {
         if (radioactiveMaterial != null && radioactiveMaterial.composition.size() > 0) {
             int complexity = radioactiveMaterial.complexity;
 
+
             CHEMICAL_RECIPES.recipeBuilder().duration(2000 * complexity / 100)
                     .input(dust, radioactiveMaterial.getMaterial())
                     .fluidInputs(NitricAcid.getFluid(2000))
-                    .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materialNitrate, 3))
+                    .outputs(radioactiveMaterial.getDustNitrate(3))
                     .buildAndRegister();
 
             BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(100 * complexity / 100).EUt(120 * complexity / 100)
-                    .input(dust, radioactiveMaterial.materialNitrate)
+                    .inputs(radioactiveMaterial.getDustNitrate(1))
                     .fluidInputs(Water.getFluid(6000))
-                    .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materialDioxide))
+                    .outputs(radioactiveMaterial.getDustDioxide(1))
                     .fluidOutputs(NitrogenTetroxide.getFluid(1000))
                     .buildAndRegister();
 
 
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
-                    .input(dust, radioactiveMaterial.materialDioxide)
+                    .inputs(radioactiveMaterial.getDustDioxide(1))
                     .fluidInputs(Chlorine.getFluid(6000))
-                    .fluidOutputs(radioactiveMaterial.materailHexachloride.getFluid(6000))
+                    .fluidOutputs(radioactiveMaterial.getFluidHexachloride(6000))
                     .fluidOutputs(Oxygen.getFluid(2000))
                     .buildAndRegister();
 
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
-                    .fluidInputs(radioactiveMaterial.materailHexachloride.getFluid(2000))
+                    .fluidInputs(radioactiveMaterial.getFluidHexachloride(2000))
                     .fluidInputs(HydrogenFluoride.getFluid(10000))
                     .fluidOutputs(HydrochloricAcid.getFluid(10000))
-                    .fluidOutputs(radioactiveMaterial.materailHexafluoride.getFluid(2000))
+                    .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
                     .buildAndRegister();
 
             CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(100 * complexity / 100).EUt(120)
-                    .fluidInputs(radioactiveMaterial.materailHexafluoride.getFluid(1000))
-                    .outputs(OreDictUnifier.get(dust, radioactiveMaterial.materailHexafluoride))
+                    .fluidInputs(radioactiveMaterial.getFluidHexafluoride(1000))
+                    .outputs(radioactiveMaterial.getDustHexafluoride(1))
                     .buildAndRegister();
 
 
             SimpleRecipeBuilder builder = THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000 * complexity / 100).EUt(60 * complexity / 100)
-                    .input(dust, radioactiveMaterial.materailHexafluoride);
-            radioactiveMaterial.composition.forEach((key, value) -> builder.chancedOutput(OreDictUnifier.get(dust, key.materailHexafluoride), value, 100));
+                    .inputs(radioactiveMaterial.getDustHexafluoride(1));
+            radioactiveMaterial.composition.forEach((key, value) -> builder.chancedOutput(key.getDustHexafluoride(1), value, 100));
             builder.buildAndRegister();
 
 
             radioactiveMaterial.composition.forEach((key, value) -> {
                 BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(600 * complexity / 100).EUt(120 * complexity / 100)
                         .fluidInputs(Steam.getFluid(6000))
-                        .input(dust, key.materailHexafluoride)
-                        .outputs(OreDictUnifier.get(dust, key.materialDioxide))
+                        .inputs(key.getDustHexafluoride(1))
+                        .outputs(key.getDustDioxide(1))
                         .fluidOutputs(Fluorine.getFluid(6000))
                         .buildAndRegister();
 
                 BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1000 * complexity / 100).EUt(120 * complexity / 100)
-                        .input(dust, key.materialDioxide)
+                        .inputs(key.getDustDioxide(1))
                         .outputs(OreDictUnifier.get(ingot, key.getMaterial()))
                         .fluidOutputs(Oxygen.getFluid(2000))
                         .buildAndRegister();

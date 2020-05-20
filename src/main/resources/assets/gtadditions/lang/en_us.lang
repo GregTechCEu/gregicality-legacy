@@ -222,6 +222,10 @@ waste.nuclear.heavy_metal=Heavy Metal
 waste.nuclear.metaloid=Metaloid
 waste.nuclear.nonmetal=Nonmetal
 
+metaitem.nuclear.dust.dioxide.name=%s Dioxide Dust
+metaitem.nuclear.dust.nitrate.name=%s Nitrate Dust
+metaitem.nuclear.dust.hexafluoride.name=%s Hexafluoride Dust
+
 
 /////////////////////CIRCUIT///////////////////////////
 
@@ -1236,6 +1240,8 @@ material.hydrogen_fluoride=Hydrogen Fluoride
 
 
 gregtech.fluid.hot=Hot %s
+gregtech.fluid.hexachloride=%s Hexachloride
+gregtech.fluid.hexafluoride=%s Hexafluoride
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp

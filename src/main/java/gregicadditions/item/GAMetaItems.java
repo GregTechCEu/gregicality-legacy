@@ -139,7 +139,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
 
-
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_BOOTS;
@@ -169,7 +168,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem HAND_PUMP;
 
 
-
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_B;
@@ -191,6 +189,10 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem EINSTEINIUM_WASTE;
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
+
+    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_DIOXIDE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_NITRATE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_HEXAFLUORIDE;
 
 
     public static void init() {
