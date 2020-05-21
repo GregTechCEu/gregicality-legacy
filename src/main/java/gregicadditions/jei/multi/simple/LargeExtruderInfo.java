@@ -50,6 +50,6 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{I18n.format("gregtech.multiblock.large_electrolyzer.description")};
+		return new String[]{I18n.format("gregtech.multiblock.large_extruder.description")};
 	}
 }
