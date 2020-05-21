@@ -7,7 +7,10 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
 
 public class RadioactiveMaterial extends EnrichmentProcess {
 
@@ -26,6 +29,7 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     public RadioactiveMaterial(IngotMaterial from) {
         this.material = from;
+        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND);
         REGISTRY.put(from, this);
     }
 

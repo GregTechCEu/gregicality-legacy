@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.function.Predicate;
 import java.util.function.Function;
 
+import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.GENERATE_PLATE;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENERATE_FRAME;
@@ -30,6 +31,19 @@ public class GAEnums {
         EnumHelper.addEnum(OrePrefix.class, "gtMetalCasing",
                 new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                 "Metal Casing", Math.round(M * 6.375), null, MaterialIconType.valueOf("gtMetalCasing"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_FRAME | GENERATE_PLATE)));
+
+        EnumHelper.addEnum(MaterialIconType.class, "dioxide", new Class[0]);
+        EnumHelper.addEnum(OrePrefix.class, "dioxide",
+                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                "Dioxide", M, null, MaterialIconType.valueOf("dioxide"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
+        EnumHelper.addEnum(MaterialIconType.class, "nitrate", new Class[0]);
+        EnumHelper.addEnum(OrePrefix.class, "nitrate",
+                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                "Nitrate", M, null, MaterialIconType.valueOf("nitrate"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
+        EnumHelper.addEnum(MaterialIconType.class, "hexafluoride", new Class[0]);
+        EnumHelper.addEnum(OrePrefix.class, "hexafluoride",
+                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                "Hexafluoride", M, null, MaterialIconType.valueOf("hexafluoride"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
 
 
         if (GAConfig.GT6.addCurvedPlates) {

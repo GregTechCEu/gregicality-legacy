@@ -22,7 +22,7 @@ import static gregtech.api.unification.material.Materials.*;
 public class GAMetaItem extends MaterialMetaItem {
 
     public GAMetaItem() {
-        super(OrePrefix.valueOf("plateCurved"), OrePrefix.valueOf("ingotDouble"), OrePrefix.valueOf("round"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        super(OrePrefix.valueOf("plateCurved"), OrePrefix.valueOf("ingotDouble"), OrePrefix.valueOf("round"), OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
@@ -159,10 +159,6 @@ public class GAMetaItem extends MaterialMetaItem {
         NUCLEAR_WASTE_HEAVY_METAL = addItem(330, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.heavy_metal", 0x738198));
         NUCLEAR_WASTE_METALOID = addItem(331, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metaloid", 0xD16D4F));
         NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
-
-        NUCLEAR_DUST_DIOXIDE = addItem(333, "nuclear.dust.dioxide").addComponents(new DustNuclear());
-        NUCLEAR_DUST_NITRATE = addItem(334, "nuclear.dust.nitrate").addComponents(new DustNuclear());
-        NUCLEAR_DUST_HEXAFLUORIDE = addItem(335, "nuclear.dust.hexafluoride").addComponents(new DustNuclear());
 
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
