@@ -1852,3 +1852,7 @@ metaitem.nuclear.dust.nitrate.name=硝酸%s粉
 metaitem.nuclear.dust.hexafluoride.name=六氟化%s粉
 gregtech.fluid.hexachloride=六氯化%s
 gregtech.fluid.hexafluoride=六氟化%s
+
+item.material.oreprefix.nitrate=硝酸%s
+item.material.oreprefix.dioxide=二氧化%s
+item.material.oreprefix.hexafluoride=六氟化%s
