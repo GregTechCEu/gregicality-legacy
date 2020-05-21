@@ -108,6 +108,7 @@ public class RecipeHandler {
                     .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
                     .buildAndRegister();
 
+
             CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(100 * complexity / 100).EUt(120)
                     .fluidInputs(radioactiveMaterial.getFluidHexafluoride(1000))
                     .outputs(radioactiveMaterial.getDustHexafluoride(1))

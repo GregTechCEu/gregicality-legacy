@@ -1407,6 +1407,9 @@ item.material.oreprefix.ingotDouble=Double %s Ingot
 item.material.oreprefix.pipeGaSmall=Small %s Pipe
 item.material.oreprefix.pipeGa=%s Pipe
 item.material.oreprefix.pipeGaLarge=Large %s Pipe
+item.material.oreprefix.nitrate=%s Nitrate
+item.material.oreprefix.dioxide=%s Dioxide
+item.material.oreprefix.hexafluoride=%s Hexafluoride
 
 
 

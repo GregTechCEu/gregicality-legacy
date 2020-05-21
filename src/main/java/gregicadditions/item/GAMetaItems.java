@@ -190,10 +190,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
-    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_DIOXIDE;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_NITRATE;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_DUST_HEXAFLUORIDE;
-
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
