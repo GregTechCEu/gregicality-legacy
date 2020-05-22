@@ -293,22 +293,22 @@ public class GAConfig {
     public static Multis multis = new Multis();
     public static class Multis {
         @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate (temperature/1000)^2 ores. default: [9000]")
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = 1000)
         @Config.Name("Void Miner max temperature")
         public int voidMinerMaxTemp = 9000;
 
         @Config.Comment("The diameter in chunks of the area for which the Basic Large Miner will mine.")
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = 1)
         @Config.Name("Basic Large Miner chunk diameter")
         public int basicMinerDiameter = 3;
 
         @Config.Comment("The diameter in chunks of the area for which the Large Miner will mine.")
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = 1)
         @Config.Name("Large Miner chunk diameter")
         public int largeMinerDiameter = 5;
 
         @Config.Comment("The diameter in chunks of the area for which the Advanced Large Miner will mine.")
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = 1)
         @Config.Name("Advanced Large Miner chunk diameter")
         public int advancedMinerDiameter = 7;
 
