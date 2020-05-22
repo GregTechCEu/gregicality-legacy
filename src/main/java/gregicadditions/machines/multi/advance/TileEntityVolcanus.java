@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -37,6 +38,10 @@ import static gregicadditions.GAMaterials.HastelloyN;
 public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+
+	private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.volcanusDurationDecreaseFactor;
+
+	private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanusEnergyDecreaseFactor;
 
 	public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
@@ -103,8 +108,8 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 					.fluidInputs(newFluidInputs)
 					.outputs(outputI)
 					.fluidOutputs(outputF)
-					.EUt((int) (recipe.getEUt() * 0.8))
-					.duration((int) (recipe.getDuration() / 3.0));
+					.EUt((int) (recipe.getEUt() * ENERGY_DECREASE_FACTOR))
+					.duration((int) (recipe.getDuration() / DURATION_DECREASE_FACTOR));
 			return newRecipe.build().getResult();
 		}
 
