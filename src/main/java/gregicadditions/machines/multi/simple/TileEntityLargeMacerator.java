@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +31,7 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 
 
 	public TileEntityLargeMacerator(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.MACERATOR_RECIPES, 100, 160, 175, 8);
+		super(metaTileEntityId, RecipeMaps.MACERATOR_RECIPES, GAConfig.multis.largeMacerator.euPercentage, GAConfig.multis.largeMacerator.durationPercentage, GAConfig.multis.largeMacerator.chancedBoostPercentage, GAConfig.multis.largeMacerator.stack);
 	}
 
 	@Override

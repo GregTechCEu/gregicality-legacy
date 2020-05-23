@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
@@ -50,7 +51,7 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
     private int pos = 0;
 
     public TileEntityLargeWashingPlant(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, RecipeMaps.ORE_WASHER_RECIPES, 100, 500, 100, 4);
+        super(metaTileEntityId, RecipeMaps.ORE_WASHER_RECIPES, GAConfig.multis.largeWashingPlant.euPercentage, GAConfig.multis.largeWashingPlant.durationPercentage, GAConfig.multis.largeWashingPlant.chancedBoostPercentage, GAConfig.multis.largeWashingPlant.stack);
         this.recipeMap = recipeMap;
     }
 

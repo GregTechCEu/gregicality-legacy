@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +31,7 @@ public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockContro
 
 
 	public TileEntityLargeCutting(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES, 75, 300, 100, 4);
+		super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES, GAConfig.multis.largeCutting.euPercentage, GAConfig.multis.largeCutting.durationPercentage, GAConfig.multis.largeCutting.chancedBoostPercentage, GAConfig.multis.largeCutting.stack);
 	}
 
 	@Override

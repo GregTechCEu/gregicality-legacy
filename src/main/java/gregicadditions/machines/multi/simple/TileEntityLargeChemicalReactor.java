@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
@@ -30,7 +31,7 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 
 
 	public TileEntityLargeChemicalReactor(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, 50, 150, 100, 2);
+		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, GAConfig.multis.largeChemicalReactor.euPercentage, GAConfig.multis.largeChemicalReactor.durationPercentage, GAConfig.multis.largeChemicalReactor.chancedBoostPercentage, GAConfig.multis.largeChemicalReactor.stack);
 	}
 
 	@Override
