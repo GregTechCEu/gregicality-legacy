@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
@@ -59,7 +60,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
 
 
     public TileEntityLargeMultiUse(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, 80, 350, 100, 2);
+        super(metaTileEntityId, recipeMap, GAConfig.multis.largeMultiUse.euPercentage, GAConfig.multis.largeMultiUse.durationPercentage, GAConfig.multis.largeMultiUse.chancedBoostPercentage, GAConfig.multis.largeMultiUse.stack);
         this.recipeMap = recipeMap;
     }
 

@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
@@ -29,7 +30,7 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 
 
 	public TileEntityLargeAssembler(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES, 100, 300, 100, 2);
+		super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES, GAConfig.multis.largeAssembler.euPercentage, GAConfig.multis.largeAssembler.durationPercentage, GAConfig.multis.largeAssembler.chancedBoostPercentage, GAConfig.multis.largeAssembler.stack);
 	}
 
 	@Override

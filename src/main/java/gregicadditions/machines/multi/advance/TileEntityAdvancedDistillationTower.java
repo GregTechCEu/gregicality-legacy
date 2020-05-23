@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
+import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
@@ -51,6 +52,9 @@ import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower {
 
     public RecipeMap<?> recipeMap;
+
+    private static final int DISTILLER_MULTIPLIER = GAConfig.multis.distillationTower.distillerMultiplier;
+    private static final int DISTILLATION_MULTIPLIER = GAConfig.multis.distillationTower.distillationMultiplier;
 
     private static final RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
             RecipeMaps.DISTILLERY_RECIPES,
@@ -145,9 +149,9 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
             super(tileEntity);
             this.recipeMap = recipeMap;
             if (recipeMap == RecipeMaps.DISTILLATION_RECIPES)
-                multiplier = 4;
+                multiplier = DISTILLATION_MULTIPLIER;
             if (recipeMap == RecipeMaps.DISTILLERY_RECIPES)
-                multiplier = 12;
+                multiplier = DISTILLER_MULTIPLIER;
         }
 
         @Override

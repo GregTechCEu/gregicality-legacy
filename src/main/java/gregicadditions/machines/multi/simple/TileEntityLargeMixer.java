@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.recipes.GARecipeMaps;
@@ -33,7 +34,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
 
 
     public TileEntityLargeMixer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.LARGE_MIXER_RECIPES, 100, 350, 100, 8);
+        super(metaTileEntityId, GARecipeMaps.LARGE_MIXER_RECIPES, GAConfig.multis.largeMixer.euPercentage, GAConfig.multis.largeMixer.durationPercentage, GAConfig.multis.largeMixer.chancedBoostPercentage, GAConfig.multis.largeMixer.stack);
     }
 
     @Override

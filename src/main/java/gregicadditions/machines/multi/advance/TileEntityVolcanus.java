@@ -39,9 +39,9 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
-    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.volacnus.durationDecreaseFactor;
+    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.volcanus.durationDecreaseFactor;
 
-    private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volacnus.energyDecreaseFactor;
+    private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreaseFactor;
 
     public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
