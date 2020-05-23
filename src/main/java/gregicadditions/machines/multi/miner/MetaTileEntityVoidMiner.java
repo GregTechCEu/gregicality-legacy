@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.GTValues;
@@ -56,7 +57,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
-    private static final int MAX_TEMPERATURE = 9000;
+    private static final int MAX_TEMPERATURE = GAConfig.multis.voidMinerMaxTemp;
     private static final int CONSUME_START = 100;
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;

@@ -290,4 +290,46 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
     }
+    public static Multis multis = new Multis();
+    public static class Multis {
+        @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate (temperature/1000)^2 ores. default: [9000]")
+        @Config.RangeInt(min = 1000)
+        @Config.Name("Void Miner max temperature")
+        public int voidMinerMaxTemp = 9000;
+
+        @Config.Comment("The diameter in chunks of the area for which the Basic Large Miner will mine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Basic Large Miner chunk diameter")
+        public int basicMinerDiameter = 3;
+
+        @Config.Comment("The diameter in chunks of the area for which the Large Miner will mine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Miner chunk diameter")
+        public int largeMinerDiameter = 5;
+
+        @Config.Comment("The diameter in chunks of the area for which the Advanced Large Miner will mine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Advanced Large Miner chunk diameter")
+        public int advancedMinerDiameter = 7;
+
+        @Config.Comment("The factor by which the duration of recipes in the Volcanus is decreased. E.g. duration/3.0.")
+        @Config.RangeDouble(min = 1.0)
+        @Config.Name("Volcanus recipe duration decrease factor")
+        public double volcanusDurationDecreaseFactor = 3.0;
+
+        @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
+        @Config.RangeDouble(min = 0.01, max = 1.0)
+        @Config.Name("Volcanus recipe EU/t discount")
+        public double volcanusEnergyDecreaseFactor = 0.8;
+
+        @Config.Comment("The amount of parallel recipes the Cryogenic Freezer will run.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Cryogenic Freezer parallel recipes")
+        public int cfRecipeMultiplier = 4;
+
+        @Config.Comment("The factor by which the duration of recipes in the Cryogenic Freezer is decreased. E.g. duration/2.0.")
+        @Config.RangeDouble(min = 1.0)
+        @Config.Name("Cryogenic Freezer duration decrease factor")
+        public double cfDurationDecreaseFactor = 2.0;
+    }
 }

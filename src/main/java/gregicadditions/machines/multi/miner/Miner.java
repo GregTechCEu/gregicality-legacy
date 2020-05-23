@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.miner;
 
+import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.block.Block;
@@ -18,9 +19,9 @@ public interface Miner {
         LV(4, 1, 0, "",1),
         MV(2, 1, 0, "",2),
         HV(1, 1, 0, "",4),
-        BASIC(1, 3, 3, "III",8),
-        LARGE(1, 5, 6, "VI",16),
-        ADVANCE(1, 7, 9,"IX", 32);
+        BASIC(1, GAConfig.multis.basicMinerDiameter, 3, "III",8),
+        LARGE(1, GAConfig.multis.largeMinerDiameter, 6, "VI",16),
+        ADVANCE(1, GAConfig.multis.advancedMinerDiameter, 9,"IX", 32);
 
         public final int tick;
         public final int chunk;
