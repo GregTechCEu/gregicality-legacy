@@ -39,9 +39,9 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
-    private static final int RECIPE_MULTIPLIER = GAConfig.multis.cfRecipeMultiplier;
+    private static final int RECIPE_MULTIPLIER = GAConfig.multis.cryogenicFreezer.recipeMultiplier;
 
-    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.volcanusDurationDecreaseFactor;
+    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreaseFactor;
 
     public TileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);

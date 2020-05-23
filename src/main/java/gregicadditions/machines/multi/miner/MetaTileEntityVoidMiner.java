@@ -57,7 +57,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
-    private static final int MAX_TEMPERATURE = GAConfig.multis.voidMinerMaxTemp;
+    private static final int MAX_TEMPERATURE = GAConfig.multis.voidMiner.maxTemp;
     private static final int CONSUME_START = 100;
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
