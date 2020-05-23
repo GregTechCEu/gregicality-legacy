@@ -476,7 +476,7 @@ public class GARecipeAddition {
                 .input(dust, Tin, 1)
                 .outputs(OreDictUnifier.get(dust, Potin, 5)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
-                .input(dust, Uranium, 9)
+                .input(dust, UraniumRadioactive.getMaterial(), 9)
                 .input(dust, Titanium, 1)
                 .outputs(OreDictUnifier.get(dust, Staballoy, 10)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
@@ -1183,7 +1183,7 @@ public class GARecipeAddition {
         //Improved Superconductor recipes
         MIXER_RECIPES.recipeBuilder().duration(1200).EUt(120).input(dust, Cadmium, 5).input(dust, Magnesium).fluidInputs(Oxygen.getFluid(6000)).outputs(OreDictUnifier.get(dust, MVSuperconductorBase, 12)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(2400).EUt(120).input(dust, Titanium).input(dust, Barium, 9).input(dust, Copper, 10).fluidInputs(Oxygen.getFluid(20000)).outputs(OreDictUnifier.get(dust, HVSuperconductorBase, 40)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(400).EUt(480).input(dust, Uranium).input(dust, Platinum, 3).outputs(OreDictUnifier.get(dust, EVSuperconductorBase, 4)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(400).EUt(480).input(dust, UraniumRadioactive.getMaterial()).input(dust, Platinum, 3).outputs(OreDictUnifier.get(dust, EVSuperconductorBase, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(480).input(dust, Vanadium).input(dust, Indium, 3).outputs(OreDictUnifier.get(dust, IVSuperconductorBase, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(2400).EUt(1920).input(dust, Indium, 4).input(dust, Bronze, 8).input(dust, Barium, 2).input(dust, Titanium).fluidInputs(Oxygen.getFluid(14000)).outputs(OreDictUnifier.get(dust, LuVSuperconductorBase, 29)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(1200).EUt(1920).input(dust, Naquadah, 4).input(dust, Indium, 2).input(dust, Palladium, 6).input(dust, Osmium).outputs(OreDictUnifier.get(dust, ZPMSuperconductorBase, 13)).buildAndRegister();

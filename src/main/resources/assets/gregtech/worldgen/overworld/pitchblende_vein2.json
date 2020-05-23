@@ -1,0 +1,26 @@
+{
+  "weight": 45,
+  "density": 0.5,
+  "max_height": 40,
+  "min_height": 10,
+  "surface_stone_material": "uranium_radioactive",
+  "generator": {
+    "type": "ellipsoid",
+    "radius": [
+      13,
+      13
+    ]
+  },
+  "filler": {
+    "type": "simple",
+    "value": {
+      "type": "weight_random",
+      "values": [
+        {
+          "weight": 100,
+          "value": "ore:uranium_radioactive"
+        }
+      ]
+    }
+  }
+}
