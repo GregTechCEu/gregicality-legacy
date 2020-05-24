@@ -159,7 +159,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
 		protected void copyChancedItemOutputs(RecipeBuilder<?> newRecipe, Recipe oldRecipe, int multiplier) {
 			for (Recipe.ChanceEntry s : oldRecipe.getChancedOutputs()) {
-				int chance = s.getChance() * this.chancePercentage / 100;
+				int chance = Math.min(10000, s.getChance() * this.chancePercentage / 100);
 				int boost = s.getBoostPerTier() * this.chancePercentage / 100;
 				IntStream.range(0, multiplier).forEach(value -> {
 					ItemStack itemStack = s.getItemStack().copy();
