@@ -140,9 +140,9 @@ public class GAMetaItem extends MaterialMetaItem {
 
         NUCLEAR_WASTE = addItem(312, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.global", 0xDEDEDE));
         THORIUM_WASTE = addItem(313, "waste.nuclear").addComponents(new WasteBehavior(Thorium));
-        URANIUM_WASTE = addItem(314, "waste.nuclear").addComponents(new WasteBehavior(Uranium));
+        URANIUM_WASTE = addItem(314, "waste.nuclear").addComponents(new WasteBehavior(UraniumRadioactive.getMaterial()));
         NEPTUNIUM_WASTE = addItem(315, "waste.nuclear").addComponents(new WasteBehavior(Neptunium.getMaterial()));
-        PLUTONIUM_WASTE = addItem(316, "waste.nuclear").addComponents(new WasteBehavior(Plutonium));
+        PLUTONIUM_WASTE = addItem(316, "waste.nuclear").addComponents(new WasteBehavior(PlutoniumRadioactive.getMaterial()));
         AMERICIUM_WASTE = addItem(317, "waste.nuclear").addComponents(new WasteBehavior(Americium));
         CURIUM_WASTE = addItem(318, "waste.nuclear").addComponents(new WasteBehavior(Curium.getMaterial()));
         BERKELIUM_WASTE = addItem(319, "waste.nuclear").addComponents(new WasteBehavior(Berkelium.getMaterial()));

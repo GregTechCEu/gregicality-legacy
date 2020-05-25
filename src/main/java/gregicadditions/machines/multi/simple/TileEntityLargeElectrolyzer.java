@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +31,7 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 
 
 	public TileEntityLargeElectrolyzer(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.ELECTROLYZER_RECIPES, 90, 280, 100, 2);
+		super(metaTileEntityId, RecipeMaps.ELECTROLYZER_RECIPES, GAConfig.multis.largeElectrolyzer.euPercentage, GAConfig.multis.largeElectrolyzer.durationPercentage, GAConfig.multis.largeElectrolyzer.chancedBoostPercentage, GAConfig.multis.largeElectrolyzer.stack);
 	}
 
 	@Override

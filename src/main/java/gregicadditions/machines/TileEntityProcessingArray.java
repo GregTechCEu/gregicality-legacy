@@ -255,9 +255,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                 ItemStack itemStack = s.getItemStack().copy();
                 int boost = s.getBoostPerTier();
                 itemStack.setCount(itemStack.getCount() * numberOfOperations);
-
                 newRecipe.chancedOutput(itemStack, chance, boost);
-
             }
         }
 

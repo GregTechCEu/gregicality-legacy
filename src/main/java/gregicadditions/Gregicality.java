@@ -100,7 +100,6 @@ public class Gregicality {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
-        GARecipeAddition.generatedRecipes();
 
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
             GTLog.logger.info("TheOneProbe found. Enabling integration...");
@@ -152,8 +151,7 @@ public class Gregicality {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GAMachineRecipeRemoval.init();
-
-
+        GARecipeAddition.generatedRecipes();
         RecipeHandler.registerLargeChemicalRecipes();
         RecipeHandler.registerLargeMixerRecipes();
         RecipeHandler.registerLargeForgeHammerRecipes();

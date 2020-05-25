@@ -290,4 +290,496 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
     }
+
+    public static Multis multis = new Multis();
+
+    public static class Multis {
+
+        public VoidMiner voidMiner = new VoidMiner();
+        public LargeMiner largeMiner = new LargeMiner();
+        public Volcanus volcanus = new Volcanus();
+        public CryogenicFreezer cryogenicFreezer = new CryogenicFreezer();
+        public DistillationTower distillationTower = new DistillationTower();
+        public LargeAssembler largeAssembler = new LargeAssembler();
+        public LargeBenderAndForming largeBenderAndForming = new LargeBenderAndForming();
+        public LargeCentrifuge largeCentrifuge = new LargeCentrifuge();
+        public LargeChemicalReactor largeChemicalReactor = new LargeChemicalReactor();
+        public LargeCutting largeCutting = new LargeCutting();
+        public LargeElectrolyzer largeElectrolyzer = new LargeElectrolyzer();
+        public LargeExtruder largeExtruder = new LargeExtruder();
+        public LargeForgeHammer largeForgeHammer = new LargeForgeHammer();
+        public LargeMacerator largeMacerator = new LargeMacerator();
+        public LargeMixer largeMixer = new LargeMixer();
+        public LargeMultiUse largeMultiUse = new LargeMultiUse();
+        public LargeSifter largeSifter = new LargeSifter();
+        public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
+        public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
+        public LargeWiremill largeWiremill = new LargeWiremill();
+
+        public static class DistillationTower {
+            @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a Distillation Tower recipe.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Distillation recipe multiplier")
+            @Config.RequiresMcRestart
+            public int distillationMultiplier = 4;
+
+            @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a distillery recipe.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Distillery recipe multiplier")
+            @Config.RequiresMcRestart
+            public int distillerMultiplier = 12;
+        }
+
+        public static class LargeAssembler {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Assembler.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Assembler EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 100;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Assembler parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 2;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Assembler is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Assembler duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 300;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Assembler.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Assembler chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeBenderAndForming {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Bender And Forming.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Bender And Forming EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 100;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Bender And Forming parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Bender And Forming is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Bender And Forming duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 600;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Bender And Forming.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Bender And Forming chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeCentrifuge {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Centrifuge.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Centrifuge EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 90;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Centrifuge parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 6;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Centrifuge is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Centrifuge duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 225;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Centrifuge.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Centrifuge chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeChemicalReactor {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Chemical Reactor.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Chemical Reactor EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 50;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Chemical Reactor parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 2;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Chemical Reactor is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Chemical Reactor duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 150;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Chemical Reactor.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Chemical Reactor chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeCutting {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Cutting.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Cutting EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 75;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Cutting parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Cutting is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Cutting duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 300;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Cutting.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Cutting chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeElectrolyzer {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Electrolyzer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Electrolyzer EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 90;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Electrolyzer parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 2;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Electrolyzer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Electrolyzer duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 280;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Electrolyzer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Electrolyzer chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeExtruder {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Extruder.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Extruder EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 90;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Extruder parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 6;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Extruder is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Extruder duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 225;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Extruder.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Extruder chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeForgeHammer {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Forge Hammer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Forge Hammer EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 90;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Forge Hammer parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 2;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Forge Hammer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Forge Hammer duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 125;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Forge Hammer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Forge Hammer chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeMacerator {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Macerator.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 100;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 8;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Macerator is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 160;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Macerator.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 175;
+        }
+
+        public static class LargeMixer {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mixer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Mixer EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 100;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Mixer parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 8;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Mixer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Mixer duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 350;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mixer.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Mixer chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeMultiUse {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Multi Use.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Multi Use EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 80;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Multi Use parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 2;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Multi Use is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Multi Use duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 350;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Multi Use.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Multi Use chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeSifter {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Sifter.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Sifter EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 75;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Sifter parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Sifter is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Sifter duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 500;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Sifter.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Sifter chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 188;
+        }
+
+        public static class LargeThermalCentrifuge {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Thermal Centrifuge.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Thermal Centrifuge EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 80;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Thermal Centrifuge parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 8;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Thermal Centrifuge is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Thermal Centrifuge duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 250;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Thermal Centrifuge.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Thermal Centrifuge chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeWashingPlant {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Washing Plant.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Washing Plant EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 100;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Washing Plant parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Washing Plant is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Washing Plant duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 500;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Washing Plant.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Washing Plant chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class LargeWiremill {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Wiremill.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Wiremill EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 75;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Wiremill parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The amount by which the duration of a recipe run in the Large Wiremill is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Wiremill duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 300;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Wiremill.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Wiremill chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
+
+        public static class VoidMiner {
+            @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
+            @Config.RangeInt(min = 1000, max = 9000)
+            @Config.RequiresMcRestart
+            @Config.Name("Void Miner max temperature")
+            public int maxTemp = 9000;
+        }
+
+        public static class LargeMiner {
+
+            @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            @Config.Name("Basic Large Miner chunk diameter")
+            public int basicMinerDiameter = 3;
+
+            @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            @Config.Name("Large Miner chunk diameter")
+            public int largeMinerDiameter = 5;
+
+            @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            @Config.Name("Advanced Large Miner chunk diameter")
+            public int advancedMinerDiameter = 7;
+
+        }
+
+        public static class Volcanus {
+            @Config.Comment("The factor by which the duration of recipes in the Volcanus is decreased. E.g. duration/3.0.")
+            @Config.RangeDouble(min = 1.0)
+            @Config.RequiresMcRestart
+            @Config.Name("Volcanus recipe duration decrease factor")
+            public double durationDecreaseFactor = 3.0;
+
+            @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
+            @Config.RangeDouble(min = 0.01, max = 1.0)
+            @Config.RequiresMcRestart
+            @Config.Name("Volcanus recipe EU/t discount")
+            public double energyDecreaseFactor = 0.8;
+
+        }
+
+        public static class CryogenicFreezer {
+            @Config.Comment("The amount of parallel recipes the Cryogenic Freezer will run.")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            @Config.Name("Cryogenic Freezer parallel recipes")
+            public int recipeMultiplier = 4;
+
+            @Config.Comment("The factor by which the duration of recipes in the Cryogenic Freezer is decreased. E.g. duration/2.0.")
+            @Config.RangeDouble(min = 1.0)
+            @Config.RequiresMcRestart
+            @Config.Name("Cryogenic Freezer duration decrease factor")
+            public double durationDecreaseFactor = 2.0;
+
+        }
+
+
+    }
 }

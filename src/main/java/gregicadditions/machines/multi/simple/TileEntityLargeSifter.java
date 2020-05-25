@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +31,7 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 
 
 	public TileEntityLargeSifter(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.SIFTER_RECIPES, 75, 500, 188, 4);
+		super(metaTileEntityId, RecipeMaps.SIFTER_RECIPES, GAConfig.multis.largeSifter.euPercentage, GAConfig.multis.largeSifter.durationPercentage, GAConfig.multis.largeSifter.chancedBoostPercentage, GAConfig.multis.largeSifter.stack);
 	}
 
 	@Override

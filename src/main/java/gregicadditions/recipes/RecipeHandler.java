@@ -14,10 +14,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
@@ -33,6 +30,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
+import static gregicadditions.item.GAMetaItems.SCHEMATIC_DUST;
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.M;
@@ -68,10 +67,37 @@ public class RecipeHandler {
                 wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
             }
         }
-        ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNuclearMaterial);
+        OrePrefix.ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNuclearMaterial);
         OrePrefix.dust.addProcessingHandler(DustMaterial.class, RecipeHandler::processReplication);
 
+        if (GAConfig.Misc.PackagerDustRecipes) {
+            OrePrefix.dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
+            OrePrefix.dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
+            OrePrefix.nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
+        }
+
     }
+
+
+    private static void processTinyDust(OrePrefix dustTiny, DustMaterial material) {
+        removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, material, 9), IntCircuitIngredient.getIntegratedCircuit(1));
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(dustTiny, material, 9).notConsumable(SCHEMATIC_DUST.getStackForm()).outputs(OreDictUnifier.get(dust, material)).buildAndRegister();
+    }
+
+    private static void processSmallDust(OrePrefix dustSmall, DustMaterial material) {
+        removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustSmall, material, 4), IntCircuitIngredient.getIntegratedCircuit(2));
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(dustSmall, material, 4).notConsumable(SCHEMATIC_DUST.getStackForm()).outputs(OreDictUnifier.get(dust, material)).buildAndRegister();
+    }
+
+    private static void processNugget(OrePrefix nugget, IngotMaterial material) {
+        removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(nugget, material, 9), IntCircuitIngredient.getIntegratedCircuit(1));
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(nugget, material, 9).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(OreDictUnifier.get(ingot, material)).buildAndRegister();
+
+        removeRecipesByInputs(RecipeMaps.UNPACKER_RECIPES, OreDictUnifier.get(ingot, material, 1), IntCircuitIngredient.getIntegratedCircuit(1));
+        UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(ingot, material, 1).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(OreDictUnifier.get(nugget, material, 9)).buildAndRegister();
+
+    }
+
 
     private static void processNuclearMaterial(OrePrefix ingot, IngotMaterial material) {
         RadioactiveMaterial radioactiveMaterial = RadioactiveMaterial.REGISTRY.get(material);

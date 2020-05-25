@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +31,7 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 
 
 	public TileEntityLargeWiremill(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.WIREMILL_RECIPES, 75, 300, 100, 4);
+		super(metaTileEntityId, RecipeMaps.WIREMILL_RECIPES, GAConfig.multis.largeWiremill.euPercentage, GAConfig.multis.largeWiremill.durationPercentage, GAConfig.multis.largeWiremill.chancedBoostPercentage, GAConfig.multis.largeWiremill.stack);
 	}
 
 	@Override

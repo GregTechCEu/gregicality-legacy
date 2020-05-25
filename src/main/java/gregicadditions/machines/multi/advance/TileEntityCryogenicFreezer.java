@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -38,6 +39,9 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
+    private static final int RECIPE_MULTIPLIER = GAConfig.multis.cryogenicFreezer.recipeMultiplier;
+
+    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreaseFactor;
 
     public TileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -99,14 +103,14 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
             List<FluidStack> newFluidInputs = new ArrayList<>();
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
-            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipe, 4);
+            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipe, RECIPE_MULTIPLIER);
             RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) (recipe.getEUt()))
-                    .duration((int) (recipe.getDuration() / 2));
+                    .duration((int) (recipe.getDuration() / DURATION_DECREASE_FACTOR));
             return newRecipe.build().getResult();
         }
 

@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -29,7 +30,7 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 
 
 	public TileEntityLargeCentrifuge(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES, 90, 225, 100, 6);
+		super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES, GAConfig.multis.largeCentrifuge.euPercentage, GAConfig.multis.largeCentrifuge.durationPercentage, GAConfig.multis.largeCentrifuge.chancedBoostPercentage, GAConfig.multis.largeCentrifuge.stack);
 	}
 
 	@Override
