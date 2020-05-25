@@ -12,15 +12,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 import static gregtech.api.unification.material.Materials.RedSteel;
 
@@ -62,9 +54,5 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 		return GAMetaBlocks.METAL_CASING.get(RedSteel);
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-		tooltip.add(I18n.format("gregtech.multiblock.large_thermal_centrifuge.description"));
-	}
+
 }
