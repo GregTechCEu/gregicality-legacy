@@ -330,7 +330,7 @@ public class GAConfig {
             public int distillerMultiplier = 12;
         }
 
-        public class LargeAssembler {
+        public static class LargeAssembler {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Assembler.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Assembler EU/t percentage cost")
@@ -356,7 +356,7 @@ public class GAConfig {
             public int chancedBoostPercentage = 100;
         }
 
-        public class LargeBenderAndForming {
+        public static class LargeBenderAndForming {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Bender And Forming.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming EU/t percentage cost")
@@ -381,7 +381,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeCentrifuge {
+
+        public static class LargeCentrifuge {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge EU/t percentage cost")
@@ -406,7 +407,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeChemicalReactor {
+
+        public static class LargeChemicalReactor {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Chemical Reactor.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Chemical Reactor EU/t percentage cost")
@@ -431,7 +433,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeCutting {
+
+        public static class LargeCutting {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Cutting.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting EU/t percentage cost")
@@ -456,7 +459,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeElectrolyzer {
+
+        public static class LargeElectrolyzer {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Electrolyzer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Electrolyzer EU/t percentage cost")
@@ -481,7 +485,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeExtruder {
+
+        public static class LargeExtruder {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Extruder.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Extruder EU/t percentage cost")
@@ -506,7 +511,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeForgeHammer {
+
+        public static class LargeForgeHammer {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Forge Hammer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Forge Hammer EU/t percentage cost")
@@ -531,7 +537,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeMacerator {
+
+        public static class LargeMacerator {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Macerator.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator EU/t percentage cost")
@@ -556,7 +563,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 175;
         }
-        public class LargeMixer {
+
+        public static class LargeMixer {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mixer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer EU/t percentage cost")
@@ -581,7 +589,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeMultiUse {
+
+        public static class LargeMultiUse {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Multi Use.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Multi Use EU/t percentage cost")
@@ -606,7 +615,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeSifter {
+
+        public static class LargeSifter {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Sifter.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter EU/t percentage cost")
@@ -631,7 +641,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 188;
         }
-        public class LargeThermalCentrifuge {
+
+        public static class LargeThermalCentrifuge {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Thermal Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge EU/t percentage cost")
@@ -656,7 +667,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeWashingPlant {
+
+        public static class LargeWashingPlant {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Washing Plant.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant EU/t percentage cost")
@@ -681,7 +693,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-        public class LargeWiremill {
+
+        public static class LargeWiremill {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Wiremill.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill EU/t percentage cost")

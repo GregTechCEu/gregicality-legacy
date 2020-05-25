@@ -27,7 +27,6 @@ import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -120,6 +119,19 @@ public class GARecipeAddition {
 
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
+
+        //seed oil
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2).input("listAllSeed", 1).fluidOutputs(Materials.SeedOil.getFluid(10)).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllmushroom", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfruit", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllveggie", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllspice", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllgrain", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllnut", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllpepper", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllherb", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfiber", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(32).fluidInputs(Redstone.getFluid(144 * 3), Copper.getFluid(144)).fluidOutputs(RedAlloy.getFluid(144)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).fluidInputs(Redstone.getFluid(144 * 2)).inputs(CountableIngredient.from(ingot, Copper)).outputs(OreDictUnifier.get(ingot, RedAlloy)).buildAndRegister();
@@ -1106,14 +1118,6 @@ public class GARecipeAddition {
         ModHandler.addShapelessRecipe("superonducter_wire_gtoctal_splitting", OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor, 2), OreDictUnifier.get(wireGtOctal, Tier.Superconductor));
         ModHandler.addShapelessRecipe("superonducter_wire_gthex_splitting", OreDictUnifier.get(wireGtOctal, Tier.Superconductor, 2), OreDictUnifier.get(wireGtHex, Tier.Superconductor));
 
-        //Dust Packing
-        for (Material m : Material.MATERIAL_REGISTRY) {
-            if (!OreDictUnifier.get(dust, m).isEmpty() && GAConfig.Misc.PackagerDustRecipes) {
-                PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(dustSmall, m, 4).notConsumable(SCHEMATIC_DUST.getStackForm()).outputs(OreDictUnifier.get(dust, m)).buildAndRegister();
-                PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(dustTiny, m, 9).notConsumable(SCHEMATIC_DUST.getStackForm()).outputs(OreDictUnifier.get(dust, m)).buildAndRegister();
-            }
-        }
-
         //Schematic Recipes
         ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4).input(circuit, Tier.Good, 4).input(plate, StainlessSteel, 2).outputs(SCHEMATIC.getStackForm()).buildAndRegister();
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:schematic/schematic_1"));
@@ -1956,8 +1960,8 @@ public class GARecipeAddition {
         FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(2000).input(dust, FLiBe).fluidOutputs(FLiBe.getFluid(GTValues.L)).buildAndRegister();
         FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(1000).input(dust, FLiNaK).fluidOutputs(FLiNaK.getFluid(GTValues.L)).buildAndRegister();
         FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60).input(dust, SodiumPotassiumAlloy).fluidOutputs(SodiumPotassiumAlloy.getFluid(GTValues.L)).buildAndRegister();
-        ModHandler.addShapelessRecipe("protactinium_to_protactinium233", OreDictUnifier.get(ingot, Protactinium233.getMaterial()), new UnificationEntry(ingot, Protactinium.getMaterial()));
-        ModHandler.addShapelessRecipe("protactinium233_to_protactinium", OreDictUnifier.get(ingot, Protactinium.getMaterial()), new UnificationEntry(ingot, Protactinium233.getMaterial()));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(64).EUt(20)
                 .input(OrePrefix.dust, Materials.RareEarth, 1)
@@ -2191,7 +2195,7 @@ public class GARecipeAddition {
                             break;
                         }
                     }
-                    if (match && !recipesToRemove.contains(recipe.getRegistryName()) && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustTiny") && recipe.getRecipeOutput().getCount() == 1 && GAConfig.Misc.Packager3x3Recipes) {
+                    if (match && !recipesToRemove.contains(recipe.getRegistryName()) && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustTiny") && !hasPrefix(recipe.getRecipeOutput(), "ingot") && recipe.getRecipeOutput().getCount() == 1 && GAConfig.Misc.Packager3x3Recipes) {
                         PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size())).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(recipe.getRecipeOutput()).buildAndRegister();
                     }
                 }
@@ -2210,7 +2214,7 @@ public class GARecipeAddition {
                     }
                 }
             }
-            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9 && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.AIR && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.SLIME_BLOCK) {
+            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9 && !hasPrefix(recipe.getIngredients().get(0).getMatchingStacks()[0], "ingot") && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.AIR && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.SLIME_BLOCK) {
                 boolean isIngot = false;
                 for (int i : OreDictionary.getOreIDs(recipe.getRecipeOutput())) {
                     if (OreDictionary.getOreName(i).startsWith("ingot")) {
@@ -2223,9 +2227,9 @@ public class GARecipeAddition {
                     FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).outputs(recipe.getRecipeOutput()).buildAndRegister();
                 }
             }
-            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9) {
+            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9 && !hasPrefix(recipe.getIngredients().get(0).getMatchingStacks()[0], "ingot")) {
                 if (!recipesToRemove.contains(recipe.getRegistryName()) && GAConfig.Misc.Unpackager3x3Recipes) {
-                    UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).inputs(new CountableIngredient(new IntCircuitIngredient(1), 0)).outputs(recipe.getRecipeOutput()).buildAndRegister();
+                    UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(recipe.getRecipeOutput()).buildAndRegister();
                 }
             }
 
@@ -2243,51 +2247,21 @@ public class GARecipeAddition {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_decompress_nether_quartz"));
             FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24).inputs(OreDictUnifier.get(block, NetherQuartz)).outputs(OreDictUnifier.get(gem, NetherQuartz, 4)).buildAndRegister();
             COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2).input(gem, Materials.NetherQuartz, 4).outputs(new ItemStack(Blocks.QUARTZ_BLOCK)).buildAndRegister();
-
         }
 
-        //Generate Plank Recipes
-        for (IRecipe recipe : CraftingManager.REGISTRY) {
-            if (recipe.getRecipeOutput().isEmpty()) continue;
-            for (int i : OreDictionary.getOreIDs(recipe.getRecipeOutput())) {
-                if (OreDictionary.getOreName(i).equals("plankWood") && recipe.getIngredients().size() == 1 && recipe.getRecipeOutput().getCount() == 4) {
-                    if (GAConfig.GT5U.GeneratedSawingRecipes) {
-                        ModHandler.removeRecipeByName(recipe.getRegistryName());
-                        ModHandler.addShapelessRecipe("log_to_4_" + recipe.getRecipeOutput().toString(), GTUtility.copyAmount(4, recipe.getRecipeOutput()), recipe.getIngredients().get(0).getMatchingStacks()[0], ToolDictNames.craftingToolSaw);
-                        ModHandler.addShapelessRecipe("log_to_2_" + recipe.getRecipeOutput().toString(), GTUtility.copyAmount(2, recipe.getRecipeOutput()), recipe.getIngredients().get(0).getMatchingStacks()[0]);
-                    }
-                    CUTTER_RECIPES.recipeBuilder().duration(200).EUt(8).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).fluidInputs(Lubricant.getFluid(1)).outputs(GTUtility.copyAmount(6, recipe.getRecipeOutput()), OreDictUnifier.get(dust, Wood, 2)).buildAndRegister();
-                }
-                if (OreDictionary.getOreName(i).equals("slabWood") && recipe.getRecipeOutput().getCount() == 6) {
-                    CUTTER_RECIPES.recipeBuilder().duration(50).EUt(4).inputs(recipe.getIngredients().get(0).getMatchingStacks()[0]).outputs(GTUtility.copyAmount(2, recipe.getRecipeOutput())).buildAndRegister();
+
+        if (GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
+            List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood").stream().flatMap(stack -> ModHandler.getAllSubItems(stack).stream()).collect(Collectors.toList());
+
+            for (ItemStack stack : allWoodLogs) {
+                ItemStack smeltingOutput = ModHandler.getSmeltingOutput(stack);
+                if (!smeltingOutput.isEmpty() && smeltingOutput.getItem() == Items.COAL && smeltingOutput.getMetadata() == 1) {
+                    ItemStack woodStack = stack.copy();
+                    woodStack.setItemDamage(OreDictionary.WILDCARD_VALUE);
+                    ModHandler.removeFurnaceSmelting(woodStack);
                 }
             }
         }
-
-        //Disable Wood To Charcoal Recipes
-        List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood").stream().flatMap(stack -> ModHandler.getAllSubItems(stack).stream()).collect(Collectors.toList());
-
-        for (ItemStack stack : allWoodLogs) {
-            ItemStack smeltingOutput = ModHandler.getSmeltingOutput(stack);
-            if (!smeltingOutput.isEmpty() && smeltingOutput.getItem() == Items.COAL && smeltingOutput.getMetadata() == 1 && GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
-                ItemStack woodStack = stack.copy();
-                woodStack.setItemDamage(OreDictionary.WILDCARD_VALUE);
-                ModHandler.removeFurnaceSmelting(woodStack);
-            }
-        }
-
-        //seed oil
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2).input("listAllSeed", 1).fluidOutputs(Materials.SeedOil.getFluid(10)).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllmushroom", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfruit", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllveggie", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllspice", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllgrain", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllnut", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllpepper", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllherb", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfiber", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
-
     }
 
 }

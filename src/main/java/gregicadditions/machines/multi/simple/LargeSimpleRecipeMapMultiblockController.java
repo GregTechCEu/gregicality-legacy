@@ -165,7 +165,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 					ItemStack itemStack = s.getItemStack().copy();
 					newRecipe.chancedOutput(itemStack, chance, boost);
 				});
-
 			}
 		}
 
