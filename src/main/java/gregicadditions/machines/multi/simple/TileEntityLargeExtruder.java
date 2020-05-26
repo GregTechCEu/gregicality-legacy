@@ -11,10 +11,12 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Inconel625;
 
 public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockController {
@@ -48,13 +50,17 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 				.build();
 	}
 
+	private static final Material defaultMaterial = Inconel625;
+	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeExtruder.casingMaterial);
+
+
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(Inconel625);
+		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Inconel625);
+		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
 	}
 
 }

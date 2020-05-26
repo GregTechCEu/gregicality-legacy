@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -8,6 +9,7 @@ import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.resources.I18n;
@@ -68,6 +70,14 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
     }
 
+    protected static Material getCasingMaterial(Material defaultMaterial, String materialString) {
+        Material mat = Material.MATERIAL_REGISTRY.getObject(materialString);
+        if (mat != null && mat.hasFlag(GAMaterials.GENERATE_METAL_CASING)) {
+            return mat;
+        }
+        return defaultMaterial;
+    }
+
     public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {
 
         private int EUtPercentage = 100;
@@ -75,6 +85,9 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         private int chancePercentage = 100;
         private int stack = 1;
         public RecipeMap<?> recipeMap;
+
+
+
 
         public LargeSimpleMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
             super(tileEntity);

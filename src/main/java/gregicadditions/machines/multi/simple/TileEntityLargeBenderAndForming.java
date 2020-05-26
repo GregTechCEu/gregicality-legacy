@@ -15,6 +15,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static gregicadditions.GAMaterials.Grisium;
 import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -76,13 +78,17 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
                 .build();
     }
 
+    private static final Material defaultMaterial = Titanium;
+    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeBenderAndForming.casingMaterial);
+
+
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Titanium);
+        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Titanium);
+        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
     }
 
     @Override
