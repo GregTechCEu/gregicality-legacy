@@ -16,6 +16,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
@@ -408,14 +409,15 @@ public class RecipeHandler {
         if (material.hasFlag(DISABLE_REPLICATION)) {
             return;
         }
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getMass() * 100)).EUt(32)
+
+        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
                 .notConsumable(OreDictUnifier.get(dustPrefix, material))
-                .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) material.getProtons()), GAMaterials.NeutralMatter.getFluid((int) material.getNeutrons()))
+                .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .outputs(OreDictUnifier.get(dustPrefix, material))
                 .buildAndRegister();
-        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getMass() * 100)).EUt(32)
+        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
                 .inputs(OreDictUnifier.get(dustPrefix, material))
-                .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) material.getProtons()), GAMaterials.NeutralMatter.getFluid((int) material.getNeutrons()))
+                .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .buildAndRegister();
     }
 
