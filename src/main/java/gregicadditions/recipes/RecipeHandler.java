@@ -409,21 +409,15 @@ public class RecipeHandler {
         if (material.hasFlag(DISABLE_REPLICATION)) {
             return;
         }
-        double componentAmount = 1.0;
-        if (!material.materialComponents.isEmpty()) {
-            componentAmount = 0.0;
-            for (MaterialStack component : material.materialComponents) {
-                componentAmount += component.amount;
-            }
-        }
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getMass() * 100 / componentAmount)).EUt(32)
+
+        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
                 .notConsumable(OreDictUnifier.get(dustPrefix, material))
-                .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getProtons() / componentAmount)), GAMaterials.NeutralMatter.getFluid((int) (material.getNeutrons() / componentAmount)))
+                .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .outputs(OreDictUnifier.get(dustPrefix, material))
                 .buildAndRegister();
-        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getMass() * 100 / componentAmount)).EUt(32)
+        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
                 .inputs(OreDictUnifier.get(dustPrefix, material))
-                .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getProtons() / componentAmount)), GAMaterials.NeutralMatter.getFluid((int) (material.getNeutrons() / componentAmount)))
+                .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .buildAndRegister();
     }
 
