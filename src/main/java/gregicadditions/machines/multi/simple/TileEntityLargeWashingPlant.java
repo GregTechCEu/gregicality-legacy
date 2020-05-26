@@ -15,6 +15,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -79,13 +80,16 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
                 .build();
     }
 
+    private static final Material defaultMaterial = Grisium;
+    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeWashingPlant.casingMaterial);
+
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Grisium);
+        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.Grisium);
+        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
     }
 
     @Override
