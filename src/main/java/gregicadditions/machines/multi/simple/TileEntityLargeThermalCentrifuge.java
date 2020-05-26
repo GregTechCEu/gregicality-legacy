@@ -10,6 +10,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.GAMaterials.Grisium;
 import static gregtech.api.unification.material.Materials.RedSteel;
 
 public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultiblockController {
@@ -52,14 +54,17 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 				.where('#', isAirPredicate())
 				.build();
 	}
+	private static final Material defaultMaterial = RedSteel;
+	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeThermalCentrifuge.casingMaterial);
+
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(RedSteel);
+		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(RedSteel);
+		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
 	}
 
 	@Override

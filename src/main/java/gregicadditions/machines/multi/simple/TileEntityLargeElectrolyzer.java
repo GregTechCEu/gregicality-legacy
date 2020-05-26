@@ -11,6 +11,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Potin;
 
 public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockController {
@@ -54,13 +56,17 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 				.build();
 	}
 
+	private static final Material defaultMaterial = Potin;
+	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeElectrolyzer.casingMaterial);
+
+
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(Potin);
+		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(GAMaterials.Potin);
+		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
 	}
 
 	@Override

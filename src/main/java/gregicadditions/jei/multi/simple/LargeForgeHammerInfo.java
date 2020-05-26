@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.simple.TileEntityLargeForgeHammer;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -27,7 +28,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("SBO", "E#X", "IPX", "FXX")
                 .where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.SOUTH)
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(Iron))
+                .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeForgeHammer.casingMaterial))
                 .where('B', Blocks.IRON_BLOCK.getDefaultState())
                 .where('P', Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN))
                 .where('#', Blocks.AIR.getDefaultState())

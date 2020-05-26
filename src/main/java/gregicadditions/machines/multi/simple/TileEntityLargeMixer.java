@@ -12,6 +12,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Staballoy;
 
 public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockController {
@@ -59,13 +61,17 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .build();
     }
 
+    private static final Material defaultMaterial = Staballoy;
+    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeMixer.casingMaterial);
+
+
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.Staballoy);
+        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
     }
 
     @Override

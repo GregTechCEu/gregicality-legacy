@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.simple.TileEntityLargeMixer;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -37,7 +38,7 @@ public class LargeMixerInfo extends MultiblockInfoPage {
 					.aisle("OEX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_MIXER, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(Staballoy))
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeMixer.casingMaterial))
 					.where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
