@@ -47,7 +47,7 @@ import static gregtech.common.items.MetaItems.*;
 
 public class MachineCraftingRecipes {
 
-    private static String[] tiers = {"lv", "mv", "hv", "ev", "iv"};
+    private static final String[] tiers = {"lv", "mv", "hv", "ev", "iv", "luv", "zpm", "max"};
 
     public static void init() {
         //Removal
@@ -92,6 +92,9 @@ public class MachineCraftingRecipes {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.plasma_arc_furnace." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.pump." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.air_collector." + tier));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_" + tier));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_" + tier));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_" + tier));
         }
 
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_boiler_solar_bronze"));
@@ -134,42 +137,12 @@ public class MachineCraftingRecipes {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gas_turbine_hv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_turbine_hv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:magic_energy_absorber"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_ulv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_hv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_ev"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_iv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_max"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_ev"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_iv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_luv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_zpm"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_uv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_max"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_ulv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_hv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_ev"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_iv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_max"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_ulv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_hv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_ev"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_iv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_max"));
 
 
         //machine hull
