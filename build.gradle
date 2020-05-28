@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-0.19.6"
+version = "1.12.2-0.19.7"
 group = "gregicadditions"
 archivesBaseName = "Gregicality"
 
@@ -82,6 +82,9 @@ dependencies {
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
     provided "binnie:binnie-mods-1.12.2:2.5.1.184"
     provided "exnihilocreatio:exnihilocreatio:+"
+//    compileOnly files("libs/Cucumber-1.12.2-1.1.3.jar")
+//    compileOnly files("libs/MysticalAgradditions-1.12.2-1.3.2.jar")
+//    compileOnly files("libs/MysticalAgriculture-1.12.2-1.7.5.jar")
 }
 
 processResources {
