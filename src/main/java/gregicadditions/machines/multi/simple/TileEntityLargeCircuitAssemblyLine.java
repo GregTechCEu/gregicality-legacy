@@ -24,7 +24,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -38,7 +37,7 @@ import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
 
-    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV);
+    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV, GAMultiblockCasing.CasingType.TIERED_HULL_MAX);
 
     private long maxVolatage = 0;
 
@@ -103,6 +102,9 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
                 break;
             case TIERED_HULL_UV:
                 maxVolatage = GTValues.V[GTValues.UV];
+                break;
+            case TIERED_HULL_MAX:
+                maxVolatage = GTValues.V[GTValues.MAX];
                 break;
             default:
                 maxVolatage = 0;

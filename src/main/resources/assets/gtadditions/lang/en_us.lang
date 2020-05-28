@@ -723,6 +723,7 @@ tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§eMax Voltage ZPM
 tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eMax Voltage UV
 tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
+tile.ga_multiblock_casing.tiered_hull_max.tooltip=§eMax Voltage MAX
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=Borosilicate Reinforced Glass
 tile.ga_transparent_casing.nickel_reinforced_glass.name=Nickel Reinforced Glass
@@ -1236,6 +1237,7 @@ material.mendelevium259=Mendelevium 259
 material.mendelevium261=Mendelevium 261
 material.mendelevium263=Mendelevium 263
 material.hydrogen_fluoride=Hydrogen Fluoride
+material.abyssal_alloy=Abyssal Alloy
 
 
 

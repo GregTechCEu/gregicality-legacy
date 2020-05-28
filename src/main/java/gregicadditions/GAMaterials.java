@@ -309,6 +309,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial Bromine = new FluidMaterial(758, "bromine", 0xB64D6B, MaterialIconSet.SHINY, of(), 0, Br);
     public static final DustMaterial Iodine = new DustMaterial(757, "iodine", 0x2C344F, MaterialIconSet.SHINY, 2, of(), 0, I);
     public static final IngotMaterial Astatine = new IngotMaterial(756, "astatine", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, At);
+    public static final IngotMaterial AbyssalAlloy = new IngotMaterial(755, "abyssal_alloy", 0x9E706A, MaterialIconSet.METALLIC, 6, of(new MaterialStack(StainlessSteel, 5), new MaterialStack(TungstenCarbide, 5), new MaterialStack(Nichrome, 5), new MaterialStack(Bronze, 5), new MaterialStack(IncoloyMA956, 5), new MaterialStack(Iodine, 1), new MaterialStack(Germanium, 1), new MaterialStack(Radon, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 9625);
 
     @Override
     public void onMaterialsInit() {
