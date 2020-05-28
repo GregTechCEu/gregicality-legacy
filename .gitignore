@@ -19,7 +19,6 @@ build
 
 # other
 run
-libs
 classes
 logs/debug.log
 logs/latest.log
