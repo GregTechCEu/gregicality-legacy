@@ -28,7 +28,7 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
-        return TileEntityLargeCircuitAssemblyLine.CASING_ALLOYED.stream().map(casingType -> {
+        return TileEntityLargeCircuitAssemblyLine.CASING_ALLOWED.stream().map(casingType -> {
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             builder.aisle("COC", "RTR", "GYG");
             for (int num = 0; num < 5; num++) {
