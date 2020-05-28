@@ -10,11 +10,15 @@ import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.*;
+import gregtech.api.unification.material.type.DustMaterial;
+import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -51,6 +55,19 @@ public class RecipeHandler {
     };
 
     public static void register() {
+        //ore tripling
+        OrePrefix.ore.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreBasalt.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreBlackgranite.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreEndstone.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreGravel.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreNetherrack.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreMarble.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreRedgranite.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        OrePrefix.oreSand.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
+        //ore quad and sextupling
+        OrePrefix.crushedPurified.addProcessingHandler(DustMaterial.class, RecipeHandler::processCrushedPurified);
+
         OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
         OrePrefix.dustImpure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
@@ -75,6 +92,51 @@ public class RecipeHandler {
             OrePrefix.dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
             OrePrefix.dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
             OrePrefix.nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
+        }
+
+    }
+
+    public static void processCrushedPurified(OrePrefix purifiedPrefix, DustMaterial material) {
+        ItemStack crushedCentrifugedStack = OreDictUnifier.get(OrePrefix.crushedCentrifuged, material);
+        Material byproductMaterial = GTUtility.selectItemInList(1, material, material.oreByProducts, DustMaterial.class);
+
+
+        if (!crushedCentrifugedStack.isEmpty()) {
+            removeRecipesByInputs(THERMAL_CENTRIFUGE_RECIPES, OreDictUnifier.get(purifiedPrefix, material));
+
+            RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder()
+                    .input(purifiedPrefix, material)
+                    .outputs(GTUtility.copyAmount(2, crushedCentrifugedStack))
+                    .chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, byproductMaterial, 6), 5000, 500)
+                    .duration((int) (material.getAverageMass() * 24))
+                    .EUt(60)
+                    .buildAndRegister();
+        }
+
+    }
+
+    public static void processOre(OrePrefix orePrefix, DustMaterial material) {
+        DustMaterial byproductMaterial = GTUtility.selectItemInList(0, material, material.oreByProducts, DustMaterial.class);
+        ItemStack byproductStack = OreDictUnifier.get(OrePrefix.dust, byproductMaterial, 2);
+        ItemStack crushedStack = OreDictUnifier.get(OrePrefix.crushed, material.crushedInto);
+        DustMaterial smeltingMaterial = material.directSmelting == null ? material : material.directSmelting;
+        double amountOfCrushedOre = material.oreMultiplier / getPercentOfComponentInMaterial(material, smeltingMaterial);
+        crushedStack.setCount(crushedStack.getCount() * material.oreMultiplier);
+
+        if (!crushedStack.isEmpty()) {
+            RecipeBuilder<?> builder = CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .fluidInputs(UUMatter.getFluid((int) material.getAverageMass()))
+                    .input(orePrefix, material)
+                    .outputs(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre) * 3, crushedStack))
+                    .chancedOutput(byproductStack, 1400, 850)
+                    .duration(800).EUt(24);
+            for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials) {
+                if (secondaryMaterial.material instanceof DustMaterial) {
+                    ItemStack dustStack = OreDictUnifier.getDust(secondaryMaterial);
+                    builder.chancedOutput(dustStack, 6700, 800);
+                }
+            }
+            builder.buildAndRegister();
         }
 
     }
@@ -410,11 +472,12 @@ public class RecipeHandler {
             return;
         }
 
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
+        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 200)).EUt(32)
                 .notConsumable(OreDictUnifier.get(dustPrefix, material))
                 .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .outputs(OreDictUnifier.get(dustPrefix, material))
                 .buildAndRegister();
+
         GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
                 .inputs(OreDictUnifier.get(dustPrefix, material))
                 .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
@@ -508,11 +571,15 @@ public class RecipeHandler {
         });
     }
 
-    private static int getMaterialAmount(int cableTier, int insulationTier) {
-        if (cableTier > insulationTier) {
-            return -1;
+
+    private static double getPercentOfComponentInMaterial(Material material, Material materialToFind) {
+        if (material == materialToFind) {
+            return 1.0;
         }
-        int insulationDiscount = (insulationTier - cableTier) / 2;
-        return Math.max(36, 144 / (1 + insulationDiscount));
+        double amountOfComponents = material.materialComponents.stream()
+                .mapToLong(it -> it.amount).sum();
+        return material.materialComponents.stream()
+                .mapToDouble(it -> getPercentOfComponentInMaterial(it.material, materialToFind) *
+                        (it.amount / amountOfComponents)).sum();
     }
 }

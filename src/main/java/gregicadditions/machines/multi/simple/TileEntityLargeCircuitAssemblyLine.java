@@ -37,7 +37,7 @@ import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
 
-    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOWED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV);
+    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV, GAMultiblockCasing.CasingType.TIERED_HULL_MAX);
 
     private long maxVoltage = 0;
 
@@ -102,6 +102,9 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
                 break;
             case TIERED_HULL_UV:
                 maxVoltage = GTValues.V[GTValues.UV];
+                break;
+            case TIERED_HULL_MAX:
+                maxVolatage = GTValues.V[GTValues.MAX];
                 break;
             default:
                 maxVoltage = 0;

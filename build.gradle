@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-0.19.5"
+version = "1.12.2-0.19.6"
 group = "gregicadditions"
 archivesBaseName = "Gregicality"
 
@@ -25,7 +25,7 @@ minecraft {
     mappings = "stable_39"
     makeObfSourceJar = false
     replace("@VERSION@", project.version)
-    replaceIn("GregicAdditions.java")
+    replaceIn("Gregicality.java")
 }
 
 repositories {
