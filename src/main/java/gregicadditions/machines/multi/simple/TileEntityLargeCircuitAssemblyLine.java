@@ -104,7 +104,7 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
                 maxVoltage = GTValues.V[GTValues.UV];
                 break;
             case TIERED_HULL_MAX:
-                maxVolatage = GTValues.V[GTValues.MAX];
+                maxVoltage = GTValues.V[GTValues.MAX];
                 break;
             default:
                 maxVoltage = 0;
