@@ -119,7 +119,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
             Optional<IFluidTank> fluidTank =
                     getInputFluidInventory().getFluidTanks().stream()
                             .filter(iFluidTank -> iFluidTank.getFluid() != null)
-                            .filter(iFluidTank -> iFluidTank.getFluid().isFluidEqual(GAMaterials.Pyrotheum.getFluid(1)))
+                            .filter(iFluidTank -> iFluidTank.getFluid().isFluidEqual(GAMaterials.Pyrotheum.getFluid(2)))
                             .findFirst();
             if (fluidTank.isPresent()) {
                 IFluidTank tank = fluidTank.get();
