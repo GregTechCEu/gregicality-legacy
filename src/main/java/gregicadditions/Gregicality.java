@@ -5,6 +5,7 @@ import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
+import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
@@ -55,6 +56,9 @@ public class Gregicality {
         }
     }
 
+    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.mysticalagriculture.MysticalClientProxy", serverSide = "gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy")
+    public static MysticalCommonProxy mysticalCommonProxy;
+
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.bees.ForestryClientProxy", serverSide = "gregicadditions.integrations.bees.ForestryCommonProxy")
     public static ForestryCommonProxy forestryProxy;
 
@@ -88,6 +92,7 @@ public class Gregicality {
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             forestryProxy.preInit();
         }
+        mysticalCommonProxy.preInit();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -100,7 +105,7 @@ public class Gregicality {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
-
+        mysticalCommonProxy.init();
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
             GTLog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();

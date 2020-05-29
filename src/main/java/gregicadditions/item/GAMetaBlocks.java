@@ -58,7 +58,6 @@ public class GAMetaBlocks {
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
 
-
         createMachineCasing();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
@@ -70,6 +69,12 @@ public class GAMetaBlocks {
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.PLASMA_GENERATOR_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel), GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel), true);
 
+    }
+
+
+    public static IBlockState getCompressedFromMaterial(Material material) {
+        int index = MetaBlocks.COMPRESSED.get(material).variantProperty.getAllowedValues().indexOf(material);
+        return MetaBlocks.COMPRESSED.get(material).getStateFromMeta(index);
     }
 
     @SideOnly(Side.CLIENT)
