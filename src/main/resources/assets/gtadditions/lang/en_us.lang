@@ -696,6 +696,17 @@ gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d Chu
 gtadditions.machine.miner.description=Mine all ores in the current chunk.
 gtadditions.machine.miner.fluid_usage=Consume %dmb of %s per tick
 
+gtadditions.machine.rotor_holder.ulv.name=Hot Coolant Rotor Holder (ULV)
+gtadditions.machine.rotor_holder.lv.name=Hot Coolant Rotor Holder (LV)
+gtadditions.machine.rotor_holder.mv.name=Hot Coolant Rotor Holder (MV)
+gtadditions.machine.rotor_holder.hv.name=Hot Coolant Rotor Holder (HV)
+gtadditions.machine.rotor_holder.ev.name=Hot Coolant Rotor Holder (EV)
+gtadditions.machine.rotor_holder.iv.name=Hot Coolant Rotor Holder (IV)
+gtadditions.machine.rotor_holder.luv.name=Hot Coolant Rotor Holder (LuV)
+gtadditions.machine.rotor_holder.zpm.name=Hot Coolant Rotor Holder (ZPM)
+gtadditions.machine.rotor_holder.uv.name=Hot Coolant Rotor Holder (UV)
+gtadditions.machine.rotor_holder.max.name=Hot Coolant Rotor Holder (MAX)
+
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet

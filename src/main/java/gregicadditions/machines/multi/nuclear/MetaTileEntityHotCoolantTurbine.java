@@ -5,6 +5,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantTurbineWorkableHandler;
+import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregtech.api.GTValues;
@@ -17,7 +18,6 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityRotorHolder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -29,9 +29,9 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.List;
 
-import static gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine.ABILITY_ROTOR_HOLDER;
-
 public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController {
+
+    public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility();
 
     private static final int MIN_DURABILITY_TO_WARN = 10;
 
@@ -108,7 +108,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (isStructureFormed()) {
-            MetaTileEntityRotorHolder rotorHolder = getAbilities(ABILITY_ROTOR_HOLDER).get(0);
+            MetaTileEntityRotorHolderForNuclearCoolant rotorHolder = getAbilities(ABILITY_ROTOR_HOLDER).get(0);
             FluidStack fuelStack = ((HotCoolantTurbineWorkableHandler) workableHandler).getFuelStack();
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 

@@ -8,14 +8,14 @@ import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.ConfigHolder;
 import gregtech.common.MetaFluids;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityRotorHolder;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.function.Supplier;
 
-import static gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine.ABILITY_ROTOR_HOLDER;
+import static gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine.ABILITY_ROTOR_HOLDER;
+
 
 public class HotCoolantTurbineWorkableHandler extends HotCoolantRecipeLogic {
 
@@ -49,7 +49,7 @@ public class HotCoolantTurbineWorkableHandler extends HotCoolantRecipeLogic {
 
     @Override
     public boolean checkRecipe(HotCoolantRecipe recipe) {
-        MetaTileEntityRotorHolder rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
+        MetaTileEntityRotorHolderForNuclearCoolant rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
         if (++rotorCycleLength >= CYCLE_LENGTH) {
             int damageToBeApplied = (int) Math.round(BASE_ROTOR_DAMAGE * rotorHolder.getRelativeRotorSpeed()) + 1;
             if (rotorHolder.applyDamageToRotor(damageToBeApplied, false)) {
@@ -62,7 +62,7 @@ public class HotCoolantTurbineWorkableHandler extends HotCoolantRecipeLogic {
 
     @Override
     public long getMaxVoltage() {
-        MetaTileEntityRotorHolder rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
+        MetaTileEntityRotorHolderForNuclearCoolant rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
         if (rotorHolder.hasRotorInInventory()) {
             double rotorEfficiency = rotorHolder.getRotorEfficiency();
             double totalEnergyOutput = (BASE_EU_OUTPUT + getBonusForTurbineType(largeTurbine) * rotorEfficiency);
@@ -97,7 +97,7 @@ public class HotCoolantTurbineWorkableHandler extends HotCoolantRecipeLogic {
 
     @Override
     public long getRecipeOutputVoltage() {
-        MetaTileEntityRotorHolder rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
+        MetaTileEntityRotorHolderForNuclearCoolant rotorHolder = largeTurbine.getAbilities(ABILITY_ROTOR_HOLDER).get(0);
         double relativeRotorSpeed = rotorHolder.getRelativeRotorSpeed();
         if (rotorHolder.getCurrentRotorSpeed() > 0 && rotorHolder.hasRotorInInventory()) {
             double rotorEfficiency = rotorHolder.getRotorEfficiency();
