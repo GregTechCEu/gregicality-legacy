@@ -280,15 +280,19 @@ public class GAConfig {
         @Config.Comment("Vertical ooffset of HUD [0 ~ 100)")
         public byte hudOffsetY = 0;
 
-        @Config.Comment("Platinum and Palladium are found in Platinum sludge but if you need it, you can activate the generation default: [false]")
-        public boolean generatePlatinumAndPalladium = false;
-
-        @Config.Comment("Iridium and Osmium are found in rarest sludge but if you need it, you can activate the generation default: [false]")
-        public boolean generateIridiumAndOsmium = false;
-
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
+
+        @Config.Comment("Replace the normal thermal centrifuge recipes for purified ores with one that gives less crushed centrifuged but more byproduct material.")
+        @Config.Name("Thermal Centrifuge ore processing changes")
+        @Config.RequiresMcRestart
+        public boolean thermalCentrifugeOreProcessing = true;
+
+        @Config.Comment("Add Chemical Bath recipes taking ores and UU-Matter as input and resulting in a larger amount of outputs.")
+        @Config.Name("UU-Matter ore processing multiplication recipes")
+        @Config.RequiresMcRestart
+        public boolean uuMatterOreProcessing = true;
     }
 
     public static Multis multis = new Multis();
