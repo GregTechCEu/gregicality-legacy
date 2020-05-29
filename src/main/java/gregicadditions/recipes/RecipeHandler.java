@@ -97,46 +97,50 @@ public class RecipeHandler {
     }
 
     public static void processCrushedPurified(OrePrefix purifiedPrefix, DustMaterial material) {
-        ItemStack crushedCentrifugedStack = OreDictUnifier.get(OrePrefix.crushedCentrifuged, material);
-        Material byproductMaterial = GTUtility.selectItemInList(1, material, material.oreByProducts, DustMaterial.class);
+        if (GAConfig.Misc.thermalCentrifugeOreProcessing) {
+            ItemStack crushedCentrifugedStack = OreDictUnifier.get(OrePrefix.crushedCentrifuged, material);
+            Material byproductMaterial = GTUtility.selectItemInList(1, material, material.oreByProducts, DustMaterial.class);
 
 
-        if (!crushedCentrifugedStack.isEmpty()) {
-            removeRecipesByInputs(THERMAL_CENTRIFUGE_RECIPES, OreDictUnifier.get(purifiedPrefix, material));
+            if (!crushedCentrifugedStack.isEmpty()) {
+                removeRecipesByInputs(THERMAL_CENTRIFUGE_RECIPES, OreDictUnifier.get(purifiedPrefix, material));
 
-            RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder()
-                    .input(purifiedPrefix, material)
-                    .outputs(GTUtility.copyAmount(2, crushedCentrifugedStack))
-                    .chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, byproductMaterial, 6), 5000, 500)
-                    .duration((int) (material.getAverageMass() * 24))
-                    .EUt(60)
-                    .buildAndRegister();
+                RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder()
+                        .input(purifiedPrefix, material)
+                        .outputs(GTUtility.copyAmount(2, crushedCentrifugedStack))
+                        .chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, byproductMaterial, 6), 5000, 500)
+                        .duration((int) (material.getAverageMass() * 24))
+                        .EUt(60)
+                        .buildAndRegister();
+            }
         }
 
     }
 
     public static void processOre(OrePrefix orePrefix, DustMaterial material) {
-        DustMaterial byproductMaterial = GTUtility.selectItemInList(0, material, material.oreByProducts, DustMaterial.class);
-        ItemStack byproductStack = OreDictUnifier.get(OrePrefix.dust, byproductMaterial, 2);
-        ItemStack crushedStack = OreDictUnifier.get(OrePrefix.crushed, material.crushedInto);
-        DustMaterial smeltingMaterial = material.directSmelting == null ? material : material.directSmelting;
-        double amountOfCrushedOre = material.oreMultiplier / getPercentOfComponentInMaterial(material, smeltingMaterial);
-        crushedStack.setCount(crushedStack.getCount() * material.oreMultiplier);
+        if (GAConfig.Misc.uuMatterOreProcessing) {
+            DustMaterial byproductMaterial = GTUtility.selectItemInList(0, material, material.oreByProducts, DustMaterial.class);
+            ItemStack byproductStack = OreDictUnifier.get(OrePrefix.dust, byproductMaterial, 2);
+            ItemStack crushedStack = OreDictUnifier.get(OrePrefix.crushed, material.crushedInto);
+            DustMaterial smeltingMaterial = material.directSmelting == null ? material : material.directSmelting;
+            double amountOfCrushedOre = material.oreMultiplier / getPercentOfComponentInMaterial(material, smeltingMaterial);
+            crushedStack.setCount(crushedStack.getCount() * material.oreMultiplier);
 
-        if (!crushedStack.isEmpty()) {
-            RecipeBuilder<?> builder = CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .fluidInputs(UUMatter.getFluid((int) material.getAverageMass()))
-                    .input(orePrefix, material)
-                    .outputs(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre) * 3, crushedStack))
-                    .chancedOutput(byproductStack, 1400, 850)
-                    .duration(800).EUt(24);
-            for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials) {
-                if (secondaryMaterial.material instanceof DustMaterial) {
-                    ItemStack dustStack = OreDictUnifier.getDust(secondaryMaterial);
-                    builder.chancedOutput(dustStack, 6700, 800);
+            if (!crushedStack.isEmpty()) {
+                RecipeBuilder<?> builder = CHEMICAL_BATH_RECIPES.recipeBuilder()
+                        .fluidInputs(UUMatter.getFluid((int) material.getAverageMass()))
+                        .input(orePrefix, material)
+                        .outputs(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre) * 3, crushedStack))
+                        .chancedOutput(byproductStack, 1400, 850)
+                        .duration(800).EUt(24);
+                for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials) {
+                    if (secondaryMaterial.material instanceof DustMaterial) {
+                        ItemStack dustStack = OreDictUnifier.getDust(secondaryMaterial);
+                        builder.chancedOutput(dustStack, 6700, 800);
+                    }
                 }
+                builder.buildAndRegister();
             }
-            builder.buildAndRegister();
         }
 
     }
