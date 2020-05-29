@@ -280,15 +280,19 @@ public class GAConfig {
         @Config.Comment("Vertical ooffset of HUD [0 ~ 100)")
         public byte hudOffsetY = 0;
 
-        @Config.Comment("Platinum and Palladium are found in Platinum sludge but if you need it, you can activate the generation default: [false]")
-        public boolean generatePlatinumAndPalladium = false;
-
-        @Config.Comment("Iridium and Osmium are found in rarest sludge but if you need it, you can activate the generation default: [false]")
-        public boolean generateIridiumAndOsmium = false;
-
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
+
+        @Config.Comment("Replace the normal thermal centrifuge recipes for purified ores with one that gives more crushed centrifuged and more byproduct material but with 20% more power hungry.")
+        @Config.Name("Thermal Centrifuge ore doubling")
+        @Config.RequiresMcRestart
+        public boolean thermalCentrifugeOreProcessing = true;
+
+        @Config.Comment("Add Chemical Bath recipes taking ores and UU-Matter as input and resulting in a larger amount of outputs.")
+        @Config.Name("UU-Matter ore tripling")
+        @Config.RequiresMcRestart
+        public boolean uuMatterOreProcessing = true;
     }
 
     public static Multis multis = new Multis();
@@ -335,9 +339,9 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Assembler EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 100;
+            public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on IV power, then by default it will process 4 * 2 items per operation.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Assembler parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -347,7 +351,7 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Assembler duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 300;
+            public int durationPercentage = 50;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Assembler.")
             @Config.RangeInt(min = 1)
@@ -361,9 +365,9 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 100;
+            public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -373,13 +377,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 600;
+            public int durationPercentage = 40;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Bender And Forming.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Bending and Forming casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "titanium";
         }
 
         public static class LargeCentrifuge {
@@ -387,9 +396,9 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 90;
+            public int euPercentage = 80;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -399,13 +408,19 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 225;
+            public int durationPercentage = 30;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Centrifuge casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "Tumbaga";
         }
 
         public static class LargeChemicalReactor {
@@ -415,7 +430,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 50;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Chemical Reactor parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -425,13 +440,14 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Chemical Reactor duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 150;
+            public int durationPercentage = 80;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Chemical Reactor.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Chemical Reactor chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
         }
 
         public static class LargeCutting {
@@ -439,25 +455,30 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 75;
+            public int euPercentage = 80;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 4;
+            public int stack = 2;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Cutting is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 300;
+            public int durationPercentage = 60;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Cutting.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Cutting Machine casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "stellite";
         }
 
         public static class LargeElectrolyzer {
@@ -467,7 +488,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Electrolyzer parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -477,13 +498,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Electrolyzer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 280;
+            public int durationPercentage = 50;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Electrolyzer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Electrolyzer chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Electrolyzer casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "potin";
         }
 
         public static class LargeExtruder {
@@ -493,7 +519,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Extruder parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -503,13 +529,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Extruder duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 225;
+            public int durationPercentage = 40;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Extruder.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Extruder chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Extruder casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "inconel_a";
         }
 
         public static class LargeForgeHammer {
@@ -519,23 +550,28 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Forge Hammer parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 2;
+            public int stack = 4;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Forge Hammer is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Forge Hammer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 125;
+            public int durationPercentage = 80;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Forge Hammer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Forge Hammer chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Forge Hammer casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "iron";
         }
 
         public static class LargeMacerator {
@@ -543,25 +579,30 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 100;
+            public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 8;
+            public int stack = 10;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Macerator is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 160;
+            public int durationPercentage = 20;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Macerator.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator chanced output boost percentage")
             @Config.RequiresMcRestart
-            public int chancedBoostPercentage = 175;
+            public int chancedBoostPercentage = 200;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Macerator casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "potin";
         }
 
         public static class LargeMixer {
@@ -569,9 +610,9 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 100;
+            public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -581,13 +622,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 350;
+            public int durationPercentage = 30;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mixer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Mixer casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "staballoy";
         }
 
         public static class LargeMultiUse {
@@ -597,23 +643,28 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 80;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Multi Use parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 2;
+            public int stack = 4;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Multi Use is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Multi Use duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 350;
+            public int durationPercentage = 50;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Multi Use.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Multi Use chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Multiuse casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "staballoy";
         }
 
         public static class LargeSifter {
@@ -623,7 +674,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 75;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -633,13 +684,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 500;
+            public int durationPercentage = 40;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Sifter.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 188;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Sifter casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "eglin_steel";
         }
 
         public static class LargeThermalCentrifuge {
@@ -649,7 +705,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int euPercentage = 80;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
@@ -659,13 +715,18 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 250;
+            public int durationPercentage = 40;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Thermal Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge chanced output boost percentage")
             @Config.RequiresMcRestart
-            public int chancedBoostPercentage = 100;
+            public int chancedBoostPercentage = 150;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Centrifuge casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "red_steel";
         }
 
         public static class LargeWashingPlant {
@@ -673,25 +734,30 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 100;
+            public int euPercentage = 90;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 4;
+            public int stack = 6;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Washing Plant is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 500;
+            public int durationPercentage = 30;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Washing Plant.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Washing Plant casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "grisium";
         }
 
         public static class LargeWiremill {
@@ -699,25 +765,30 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill EU/t percentage cost")
             @Config.RequiresMcRestart
-            public int euPercentage = 75;
+            public int euPercentage = 80;
 
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference. E.g. recipe requires 32 EU/t, machine runs on HV power, then by default it will process 2 * 2 items per operation.")
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 4;
+            public int stack = 6;
 
             @Config.Comment("The amount by which the duration of a recipe run in the Large Wiremill is decreased. E.g. duration/(300/100) = duration/3.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 300;
+            public int durationPercentage = 30;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Wiremill.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Name("Large Wiremill casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "maraging_steel_a";
         }
 
         public static class VoidMiner {
@@ -736,17 +807,35 @@ public class GAConfig {
             @Config.Name("Basic Large Miner chunk diameter")
             public int basicMinerDiameter = 3;
 
+            @Config.Comment("The level of fortune which will be applied to blocks that the Miner mines.")
+            @Config.RangeInt(min = 0, max = 100)
+            @Config.RequiresMcRestart
+            @Config.Name("Basic Large Miner fortune level")
+            public int basicMinerFortune = 3;
+
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Large Miner chunk diameter")
             public int largeMinerDiameter = 5;
 
+            @Config.Comment("The level of fortune which will be applied to blocks that the Miner mines.")
+            @Config.RangeInt(min = 0, max = 100)
+            @Config.RequiresMcRestart
+            @Config.Name("Large Miner fortune level")
+            public int largeMinerFortune = 6;
+
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Advanced Large Miner chunk diameter")
             public int advancedMinerDiameter = 7;
+
+            @Config.Comment("The level of fortune which will be applied to blocks that the Miner mines.")
+            @Config.RangeInt(min = 0, max = 100)
+            @Config.RequiresMcRestart
+            @Config.Name("Advanced Large Miner fortune level")
+            public int advancedMinerFortune = 9;
 
         }
 

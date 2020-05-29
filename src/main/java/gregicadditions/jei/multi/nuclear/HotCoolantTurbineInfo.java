@@ -1,6 +1,8 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
+import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -11,7 +13,6 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityRotorHolder;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
@@ -37,12 +38,12 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MetaTileEntityHolder holder = new MetaTileEntityHolder();
-        holder.setMetaTileEntity(MetaTileEntities.ROTOR_HOLDER[2]);
+        holder.setMetaTileEntity(GATileEntities.ROTOR_HOLDER[2]);
         holder.getMetaTileEntity().setFrontFacing(EnumFacing.WEST);
         ItemStack rotorStack = MetaItems.TURBINE_ROTOR.getStackForm();
         //noinspection ConstantConditions
         TurbineRotorBehavior.getInstanceFor(rotorStack).setPartMaterial(rotorStack, Materials.Darmstadtium);
-        ((MetaTileEntityRotorHolder) holder.getMetaTileEntity()).getRotorInventory().setStackInSlot(0, rotorStack);
+        ((MetaTileEntityRotorHolderForNuclearCoolant) holder.getMetaTileEntity()).getRotorInventory().setStackInSlot(0, rotorStack);
         MultiblockShapeInfo.Builder shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("CCCC", "CIOC", "CCCC")
                 .aisle("CCCC", "R##D", "CCCC")

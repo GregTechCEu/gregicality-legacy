@@ -24,7 +24,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -38,9 +37,9 @@ import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
 
-    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV);
+    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOWED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV, GAMultiblockCasing.CasingType.TIERED_HULL_MAX);
 
-    private long maxVolatage = 0;
+    private long maxVoltage = 0;
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
@@ -78,7 +77,7 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
             } else {
                 GAMultiblockCasing blockWireCoil = (GAMultiblockCasing) blockState.getBlock();
                 GAMultiblockCasing.CasingType tieredCasingType = blockWireCoil.getState(blockState);
-                if (!CASING_ALLOYED.contains(tieredCasingType)) {
+                if (!CASING_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
                 GAMultiblockCasing.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
@@ -93,19 +92,22 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
         GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
         switch (currentTier) {
             case TIERED_HULL_IV:
-                maxVolatage = GTValues.V[GTValues.IV];
+                maxVoltage = GTValues.V[GTValues.IV];
                 break;
             case TIERED_HULL_LUV:
-                maxVolatage = GTValues.V[GTValues.LuV];
+                maxVoltage = GTValues.V[GTValues.LuV];
                 break;
             case TIERED_HULL_ZPM:
-                maxVolatage = GTValues.V[GTValues.ZPM];
+                maxVoltage = GTValues.V[GTValues.ZPM];
                 break;
             case TIERED_HULL_UV:
-                maxVolatage = GTValues.V[GTValues.UV];
+                maxVoltage = GTValues.V[GTValues.UV];
+                break;
+            case TIERED_HULL_MAX:
+                maxVoltage = GTValues.V[GTValues.MAX];
                 break;
             default:
-                maxVolatage = 0;
+                maxVoltage = 0;
                 break;
         }
     }
@@ -119,12 +121,12 @@ public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockContr
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVolatage));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVolatage;
+        return recipe.getEUt() < maxVoltage;
     }
 
     @Override

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 public interface Miner {
@@ -19,9 +20,9 @@ public interface Miner {
         LV(4, 1, 0, "", 1),
         MV(2, 1, 0, "", 2),
         HV(1, 1, 0, "", 4),
-        BASIC(1, GAConfig.multis.largeMiner.basicMinerDiameter, 3, "III", 8),
-        LARGE(1, GAConfig.multis.largeMiner.largeMinerDiameter, 6, "VI", 16),
-        ADVANCE(1, GAConfig.multis.largeMiner.advancedMinerDiameter, 9, "IX", 32);
+        BASIC(1, GAConfig.multis.largeMiner.basicMinerDiameter, GAConfig.multis.largeMiner.basicMinerFortune, fortuneString(GAConfig.multis.largeMiner.basicMinerFortune), 8),
+        LARGE(1, GAConfig.multis.largeMiner.largeMinerDiameter, GAConfig.multis.largeMiner.largeMinerFortune, fortuneString(GAConfig.multis.largeMiner.largeMinerFortune), 16),
+        ADVANCE(1, GAConfig.multis.largeMiner.advancedMinerDiameter, GAConfig.multis.largeMiner.advancedMinerFortune, fortuneString(GAConfig.multis.largeMiner.advancedMinerFortune), 32);
 
         public final int tick;
         public final int chunk;
@@ -77,5 +78,30 @@ public interface Miner {
         return blocks;
     }
 
+
+    static String fortuneString(int fortuneLevel) {
+
+        final TreeMap<Integer, String> map = new TreeMap<Integer, String>();
+
+            map.put(1000, "M");
+            map.put(900, "CM");
+            map.put(500, "D");
+            map.put(400, "CD");
+            map.put(100, "C");
+            map.put(90, "XC");
+            map.put(50, "L");
+            map.put(40, "XL");
+            map.put(10, "X");
+            map.put(9, "IX");
+            map.put(5, "V");
+            map.put(4, "IV");
+            map.put(1, "I");
+
+        int l =  map.floorKey(fortuneLevel);
+        if ( fortuneLevel == l ) {
+            return map.get(fortuneLevel);
+        }
+        return map.get(l) + fortuneString(fortuneLevel-l);
+    }
 
 }

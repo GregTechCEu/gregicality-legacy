@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -8,18 +9,32 @@ import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.IntStream;
 
 abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMapMultiblockController {
+
+    private int EUtPercentage = 100;
+    private int durationPercentage = 100;
+    private int chancePercentage = 100;
+    private int stack = 1;
+
+    DecimalFormat formatter = new DecimalFormat("#0.0");
 
     /**
      * Create large multiblock machine for simple machine.
@@ -37,6 +52,30 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
         super(metaTileEntityId, recipeMap);
         this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
+
+        this.EUtPercentage = EUtPercentage;
+        this.durationPercentage = durationPercentage;
+        this.chancePercentage = chancePercentage;
+        this.stack = stack;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(100.0 / this.durationPercentage)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
+    }
+
+    protected static Material getCasingMaterial(Material defaultMaterial, String materialString) {
+        Material mat = Material.MATERIAL_REGISTRY.getObject(materialString);
+        if (mat != null && mat.hasFlag(GAMaterials.GENERATE_METAL_CASING)) {
+            return mat;
+        }
+        return defaultMaterial;
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {
@@ -46,6 +85,9 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         private int chancePercentage = 100;
         private int stack = 1;
         public RecipeMap<?> recipeMap;
+
+
+
 
         public LargeSimpleMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
             super(tileEntity);
@@ -157,14 +199,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
             return newRecipe.build().getResult();
         }
-
-//        protected void copyChancedItemOutputs(RecipeBuilder<?> newRecipe, Recipe oldRecipe, int multiplier) {
-//            for (Recipe.ChanceEntry s : oldRecipe.getChancedOutputs()) {
-//                ItemStack itemStack = s.getItemStack().copy();
-//                itemStack.setCount(itemStack.getCount() * multiplier);
-//                newRecipe.chancedOutput(itemStack, Math.min(10000, s.getChance() * this.chancePercentage / 100), s.getBoostPerTier() * this.chancePercentage / 100);
-//            }
-//        }
 
         protected void copyChancedItemOutputs(RecipeBuilder<?> newRecipe, Recipe oldRecipe, int multiplier) {
             for (Recipe.ChanceEntry s : oldRecipe.getChancedOutputs()) {
