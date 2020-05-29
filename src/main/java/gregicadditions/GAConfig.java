@@ -284,13 +284,13 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
 
-        @Config.Comment("Replace the normal thermal centrifuge recipes for purified ores with one that gives less crushed centrifuged but more byproduct material.")
-        @Config.Name("Thermal Centrifuge ore processing changes")
+        @Config.Comment("Replace the normal thermal centrifuge recipes for purified ores with one that gives more crushed centrifuged and more byproduct material but with 20% more power hungry.")
+        @Config.Name("Thermal Centrifuge ore doubling")
         @Config.RequiresMcRestart
         public boolean thermalCentrifugeOreProcessing = true;
 
         @Config.Comment("Add Chemical Bath recipes taking ores and UU-Matter as input and resulting in a larger amount of outputs.")
-        @Config.Name("UU-Matter ore processing multiplication recipes")
+        @Config.Name("UU-Matter ore tripling")
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
     }
