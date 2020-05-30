@@ -41,7 +41,7 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     private static final int RECIPE_MULTIPLIER = GAConfig.multis.cryogenicFreezer.recipeMultiplier;
 
-    private static final double DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreaseFactor;
+    private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreaseFactor;
 
     public TileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -110,7 +110,7 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) (recipe.getEUt()))
-                    .duration((int) (recipe.getDuration() / DURATION_DECREASE_FACTOR));
+                    .duration((int) (recipe.getDuration() * DURATION_DECREASE_FACTOR));
             return newRecipe.build().getResult();
         }
 

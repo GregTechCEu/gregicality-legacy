@@ -347,11 +347,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Assembler is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Assembler.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Assembler duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 50;
+            public int durationPercentage = 200;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Assembler.")
             @Config.RangeInt(min = 1)
@@ -373,11 +373,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 4;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Bender And Forming is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Bender and Forming.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Bender And Forming duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 40;
+            public int durationPercentage = 250;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Bender And Forming.")
             @Config.RangeInt(min = 1)
@@ -404,11 +404,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 6;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Centrifuge is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Centrifuge duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 30;
+            public int durationPercentage = 333;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Centrifuge.")
             @Config.RangeInt(min = 1)
@@ -436,11 +436,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Chemical Reactor is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Chemical Reactor.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Chemical Reactor duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 80;
+            public int durationPercentage = 125;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Chemical Reactor.")
             @Config.RangeInt(min = 1)
@@ -463,11 +463,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Cutting is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Cutting Machine.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Cutting duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 60;
+            public int durationPercentage = 166;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Cutting.")
             @Config.RangeInt(min = 1)
@@ -494,11 +494,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Electrolyzer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Electrolyzer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Electrolyzer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 50;
+            public int durationPercentage = 200;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Electrolyzer.")
             @Config.RangeInt(min = 1)
@@ -525,11 +525,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 6;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Extruder is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Extruder.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Extruder duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 40;
+            public int durationPercentage = 250;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Extruder.")
             @Config.RangeInt(min = 1)
@@ -556,11 +556,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 4;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Forge Hammer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Forge Hammer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Forge Hammer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 80;
+            public int durationPercentage = 125;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Forge Hammer.")
             @Config.RangeInt(min = 1)
@@ -587,11 +587,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 10;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Macerator is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Macerator.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Macerator duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 20;
+            public int durationPercentage = 500;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Macerator.")
             @Config.RangeInt(min = 1)
@@ -618,11 +618,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 8;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Mixer is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Mixer.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Mixer duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 30;
+            public int durationPercentage = 333;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mixer.")
             @Config.RangeInt(min = 1)
@@ -649,11 +649,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 4;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Multi Use is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Multiuse.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Multi Use duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 50;
+            public int durationPercentage = 200;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Multi Use.")
             @Config.RangeInt(min = 1)
@@ -680,11 +680,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 4;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Sifter is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Sifter.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 40;
+            public int durationPercentage = 250;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Sifter.")
             @Config.RangeInt(min = 1)
@@ -711,11 +711,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 8;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Thermal Centrifuge is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Thermal Centrifuge.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 40;
+            public int durationPercentage = 250;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Thermal Centrifuge.")
             @Config.RangeInt(min = 1)
@@ -742,11 +742,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 6;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Washing Plant is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Washing Plant.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Washing Plant duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 30;
+            public int durationPercentage = 333;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Washing Plant.")
             @Config.RangeInt(min = 1)
@@ -773,11 +773,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int stack = 6;
 
-            @Config.Comment("The amount by which the duration of a recipe run in the Large Wiremill is decreased. E.g. duration/(300/100) = duration/3.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Wiremill.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Wiremill duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 30;
+            public int durationPercentage = 333;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Wiremill.")
             @Config.RangeInt(min = 1)
@@ -840,11 +840,11 @@ public class GAConfig {
         }
 
         public static class Volcanus {
-            @Config.Comment("The factor by which the duration of recipes in the Volcanus is decreased. E.g. duration/3.0.")
+            @Config.Comment("The duration percentage of a recipe when done in the Volcanus.")
             @Config.RangeDouble(min = 1.0)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
-            public double durationDecreaseFactor = 3.0;
+            public int durationDecreaseFactor = 33;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
             @Config.RangeDouble(min = 0.01, max = 1.0)
@@ -861,11 +861,11 @@ public class GAConfig {
             @Config.Name("Cryogenic Freezer parallel recipes")
             public int recipeMultiplier = 4;
 
-            @Config.Comment("The factor by which the duration of recipes in the Cryogenic Freezer is decreased. E.g. duration/2.0.")
+            @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeDouble(min = 1.0)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer duration decrease factor")
-            public double durationDecreaseFactor = 2.0;
+            public int durationDecreaseFactor = 50;
 
         }
 
