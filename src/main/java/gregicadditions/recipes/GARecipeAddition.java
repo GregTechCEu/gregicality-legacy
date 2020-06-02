@@ -2107,6 +2107,15 @@ public class GARecipeAddition {
                 .fluidOutputs(HydrogenFluoride.getFluid(2000))
                 .buildAndRegister();
 
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .EUt(60)
+                .duration((int) Uraninite.getAverageProtons() * 3 * 8)
+                .input(dust, Uraninite, 3)
+                .outputs(OreDictUnifier.get(dust, Uranium))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .buildAndRegister();
+
+
 
     }
 
