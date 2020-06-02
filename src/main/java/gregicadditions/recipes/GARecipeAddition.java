@@ -1417,6 +1417,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(PalladiumAmmonia.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, PalladiumSalt))
                 .EUt(30)
