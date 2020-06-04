@@ -1,187 +1,786 @@
-metaitem.board.coated.name=Coated Circuit Board
-metaitem.board.coated.tooltip=A Basic Board
-metaitem.board.epoxy.name=Epoxy Circuit Board
-metaitem.board.epoxy.tooltip=An Advanced Board
-metaitem.board.fiber-reinforced.name=Fiber-Reinforced Circuit Board
-metaitem.board.fiber-reinforced.tooltip=An Extreme Board
-metaitem.board.multilayer.fiber-reinforced.name=Multilayer Fiber-Reinforced Circuit Board
-metaitem.board.multilayer.fiber-reinforced.tooltip=An Elite Board
-metaitem.board.phenolic.name=Phenolic Circuit Board
-metaitem.board.phenolic.tooltip=A Good Board
-metaitem.board.plastic.name=Plastic Circuit Board
-metaitem.board.plastic.tooltip=A Good Board
-metaitem.board.wetware.name=Wetware Lifesupport Circuit Board
-metaitem.board.wetware.tooltip=The Board That Keeps Life
-metaitem.board.basic.name=Basic Circuit Board
-metaitem.board.good.phenolic.name=Good Phenolic Circuit Board
-metaitem.board.good.plastic.name=Good Plastic Circuit Board
-metaitem.board.advanced.name=Advanced Circuit Board
-metaitem.board.extreme.name=Extreme Circuit Board
-metaitem.board.elite.name=Elite Circuit Board
-metaitem.board.master.name=Master Circuit Board
+gregtech.universal.tooltip.voltage_out_till=Выходное напряжение до: §a%d §7(§a%s§7)
+
+metaitem.assembly.normal.name=Сборный процессор
+metaitem.assembly.normal.tooltip=Продвинутая микросхема
+metaitem.assembly.nano.name=Сборный нанопроцессор
+metaitem.assembly.nano.tooltip=Экстримальная микросхема
+metaitem.assembly.wetware.name=Сборный нейроный процессор
+metaitem.assembly.wetware.tooltip=Ультимативная микросхема
+metaitem.board.coated.name=Печатная плата с покрытием
+metaitem.board.coated.tooltip=Базовая печатная плата
+metaitem.board.epoxy.name=Эпоксидная печатная плата
+metaitem.board.epoxy.tooltip=Продвинутая печатная плата
+metaitem.board.fiber-reinforced.name=Стеклотекстолитовая печатная плата
+metaitem.board.fiber-reinforced.tooltip=Экстримальная печатная плата
+metaitem.board.multilayer.fiber-reinforced.name=Многослойная стекловолоконная печатная плата
+metaitem.board.multilayer.fiber-reinforced.tooltip=Элитная печатная плата
+metaitem.board.phenolic.name=Фенольная плата
+metaitem.board.phenolic.tooltip=Хорошая печатная плата
+metaitem.board.plastic.name=Пластиковая печатная плата
+metaitem.board.plastic.tooltip=Хорошая печатная плата
+metaitem.board.wetware.name=Нейронная плата жизнеобеспечения
+metaitem.board.wetware.tooltip=Плата поддерживающая жизнь
+metaitem.boule.silicon.name=Монокристалл кремния
+metaitem.boule.silicon.tooltip=Необработанная интегральная микросхема
+metaitem.boule.glowstone.name=Монокристалл кремния с присадкой из светопыли
+metaitem.boule.glowstone.tooltip=Необработанная интегральная микросхема
+metaitem.boule.naquadah.name=Монокристалл кремния с присадкой из наквадаха
+metaitem.boule.naquadah.tooltip=Необработанная интегральная микросхема
+metaitem.ga_brick.coke.name=Кирпич коксовой печи
+metaitem.ga_brick.fireclay.name=Огнеупорный кирпич
+metaitem.circuit.advanced.regular.name=Продвинутая микросхема
+metaitem.circuit.good.regular.name=Хорошая интегральная микросхема
+metaitem.circuit.good.regular.tooltip=Хорошая микросхема
+metaitem.circuit.basic.regular.name=Базовая микросхема
+metaitem.circuit.basic.regular.tooltip=Базовая микросхема
+metaitem.circuit.vacuum.tube.name=Электронная лампа
+metaitem.circuit.vacuum.tube.tooltip=Элементарная микросхема
+metaitem.component.diode.name=Диод
+metaitem.component.diode.tooltip=Основная радиодеталь
+metaitem.component.capacitor.name=Конденсатор
+metaitem.component.capacitor.tooltip=Радиодеталь
+metaitem.component.glass.fiber.name=Стекловолокно
+metaitem.component.glass.fiber.tooltip=B(SiO2)7
+metaitem.component.glass.tube.name=Стеклянная трубка
+metaitem.component.petri.dish.name=Чашка Петри
+metaitem.component.petri.dish.tooltip=Для разведения клеток
+metaitem.component.resistor.name=Резистор
+metaitem.component.resistor.tooltip=Основная радиодеталь
+metaitem.component.small.coil.name=Маленький дроссель
+metaitem.component.small.coil.tooltip=Основная радиодеталь
+metaitem.component.smd.capacitor.name=Конденсатор поверхностного монтажа
+metaitem.component.smd.capacitor.tooltip=Радиодеталь
+metaitem.component.smd.diode.name=Диод поверхностного монтажа
+metaitem.component.smd.diode.tooltip=Радиодеталь
+metaitem.component.smd.resistor.name=Резистор поверхностного монтажа
+metaitem.component.smd.resistor.tooltip=Радиодеталь
+metaitem.component.smd.transistor.name=Транзистор поверхностного монтажа
+metaitem.component.smd.transistor.tooltip=Радиодеталь
+metaitem.component.transistor.name=Транзистор
+metaitem.component.transistor.tooltip=Основная радиодеталь
+metaitem.ga_compressed.clay.name=Необожженный глиняный кирпич
+metaitem.ga_compressed.coke.clay.name=Необожженный кирпич коксовой печи
+metaitem.ga_compressed.fireclay.name=Формированный кирпич из огнеупорной глины
+metaitem.ga_compressed.fireclay.tooltip=В форме кирпича
+metaitem.computer.crystal.name=Ультимативный кристальный процессор
+metaitem.computer.crystal.tooltip=Ультимативная микросхема
+metaitem.computer.nano.name=Элитный нанокомпьютер
+metaitem.computer.nano.tooltip=Элитная микросхема
+metaitem.computer.quantum.name=Мастерский квантовый компьютер
+metaitem.computer.quantum.tooltip=Омега микросхема
+metaitem.computer.wetware.name=Нейро-суперкомпьютер
+metaitem.computer.wetware.tooltip=Супер процессор
+metaitem.mainframe.crystal.name=Кристальный центраяльный процессор
+metaitem.mainframe.crystal.tooltip=Супер процессор
+metaitem.mainframe.nano.name=Центральный нанопроцессор
+metaitem.mainframe.nano.tooltip=Омега микросхема
+metaitem.mainframe.normal.name=Центральный процессор
+metaitem.mainframe.normal.tooltip=Элитная микросхема
+metaitem.mainframe.quantum.name=Квантовый центральный процессор
+metaitem.mainframe.quantum.tooltip=Ультимативная микросхема
+metaitem.mainframe.wetware.name=Центраяльный нейропроцессор
+metaitem.mainframe.wetware.tooltip=Бесконечный потенциал вычислений 
+metaitem.plate.asoc.name=ASoC
+metaitem.plate.asoc.tooltip=Продвинутая система на одном чипе
+metaitem.plate.circuit.name=Интегрированная логическая микросхема
+metaitem.plate.circuit.tooltip=Интегрированная микросхема
+metaitem.plate.cpu.name=Центральное процессорное устройство
+metaitem.plate.cpu.tooltip=Интегрированная микросхема
+metaitem.plate.hpic.name=Высокомощный силовой драйвер
+metaitem.plate.hpic.tooltip=Микросхема высокой мощности
+metaitem.plate.nand.name=Чип NAND-памяти
+metaitem.plate.nand.tooltip=Интегрированная микросхема
+metaitem.plate.nanocpu.name=Нанокомпонентный центральный процессор
+metaitem.plate.nanocpu.tooltip=Мощная микросхема
+metaitem.plate.nor.name=Чип NOR-памяти
+metaitem.plate.nor.tooltip=Интегрированная микросхема
+metaitem.plate.pic.name=Мощный драйвер
+metaitem.plate.pic.tooltip=Мощная микросхема
+metaitem.plate.qbit.name=Блок обработки на технологии QBit
+metaitem.plate.qbit.tooltip=Квантовый ЦПУ
+metaitem.plate.ram.name=Чип оперативной памяти
+metaitem.plate.ram.tooltip=Интегрированная микросхема
+metaitem.plate.soc.name=SoC
+metaitem.plate.soc.tooltip=Система на одном чипе
+metaitem.processor.crystal.name=Кристальный процессор
+metaitem.processor.crystal.tooltip=Элитная микросхема
+metaitem.processor.nano.name=Нанопроцессор
+metaitem.processor.nano.tooltip=Продвинутая микросхема
+metaitem.processor.quantum.name=Квантовый процессор
+metaitem.processor.quantum.tooltip=Экстримальный процессор
+metaitem.processor.wetware.name=Нейропроцессор
+metaitem.processor.wetware.tooltip=Мастер-схема
+metaitem.wafer.asoc.name=Вафля ASoC
+metaitem.wafer.asoc.tooltip=Необработанная микросхема
+metaitem.wafer.circuit.name=Интегрированная логическая схема (Вафля)
+metaitem.wafer.circuit.tooltip=Необработанная микросхема
+metaitem.wafer.cpu.name=Центральное процессорное устройство (Вафля)
+metaitem.wafer.cpu.tooltip=Необработанная микросхема
+metaitem.wafer.glowstone.name=Вафля с присадкой светопыли
+metaitem.wafer.glowstone.tooltip=Необработанная микросхема
+metaitem.wafer.hpic.name=Вафля HPIC
+metaitem.wafer.hpic.tooltip=Необработанная микросхема
+metaitem.wafer.naquadah.name=Вафля с присадкой из наквадаха
+metaitem.wafer.naquadah.tooltip=Необработанная микросхема
+metaitem.wafer.nand.name=Чип NAND-памяти (Вафля)
+metaitem.wafer.nand.tooltip=Необработанная микросхема
+metaitem.wafer.nanocpu.name=NanoCPU Wafer
+metaitem.wafer.nanocpu.tooltip=Необработанная микросхема
+metaitem.wafer.nor.name=Чип NOR-памяти (Вафля)
+metaitem.wafer.nor.tooltip=Необработанная микросхема
+metaitem.wafer.pic.name=Вафля PIC
+metaitem.wafer.pic.tooltip=Необработанная микросхема
+metaitem.wafer.qbit.name=Вафля QBit
+metaitem.wafer.qbit.tooltip=Необработанная микросхема
+metaitem.wafer.ram.name=Чип оперативной	памяти (Вафля)
+metaitem.wafer.ram.tooltip=Необработанная микросхема
+metaitem.wafer.silicon.name=Вафля
+metaitem.wafer.silicon.tooltip=Необработанная микросхема
+metaitem.wafer.soc.name=SoC Wafer
+metaitem.wafer.soc.tooltip=Необработанная микросхема
+metaitem.carbon.fibers.name=Необработанные углеродные волокна
+metaitem.plate.mixed.metal.name=Смешанная металлическая пластина
+metaitem.plate.advanced.alloy.name=Пластина продвинутого сплава
+metaitem.crystal.raw.name=Необработанный кристальный чип
+metaitem.crystal.raw.tooltip=Необработанный кристальный процессор
+metaitem.crystal.cpu.name=Кристальный блок обработки
+metaitem.crystal.cpu.tooltip=Кристальный ЦПУ
+metaitem.crystal.soc.name=Кристальная SoC
+metaitem.crystal.soc.tooltip=Кристальная с система на одном чипе
+metaitem.stemcells.name=Стволовые клетки
+metaitem.stemcells.tooltip=Сырой интеллект
+metaitem.crystal.lapotron.name=Лапотрон Кристалл
+metaitem.plate.iridium.alloy.name=Пластина иридиевого сплава
+metaitem.plate.iridium.alloy.uncompressed.name=Несжатая пластина иридиевого сплава
+metaitem.neutron.reflector.name=Отражатель нейтронов
+metaitem.computer.normal.name=Экстримальный компьютер
+metaitem.computer.normal.tooltip=Эктримальная микросхема
+metaitem.processor.neuro.name=Нейро Процессор
+metaitem.processor.neuro.tooltip=Нейро ЦПУ
+
+metaitem.electrode.apatite.name=Апатитовый электрод
+metaitem.electrode.blaze.name=Полыхающий электрод
+metaitem.electrode.bronze.name=Бронзовый электрод
+metaitem.electrode.copper.name=Медный электрод
+metaitem.electrode.diamond.name=Алмазный электрод
+metaitem.electrode.emerald.name=Изумрудный электрод
+metaitem.electrode.ender.name=Эндер электрод
+metaitem.electrode.gold.name=Золотой электрод
+metaitem.electrode.iron.name=Железный электрод
+metaitem.electrode.lapis.name=Ляпис электрод
+metaitem.electrode.obsidian.name=Обсидиановый электрод
+metaitem.electrode.orchid.name=Орхидейный электрод
+metaitem.electrode.rubber.name=Прорезиненный электрод
+metaitem.electrode.tin.name=Оловянный электрод
+
+metaitem.energy.module.name=Энергетический модуль
+metaitem.energy.cluster.name=Энергетический кластер
+metaitem.max.battery.name=МАКСИМАЛЬНАЯ Батарея
+
+metaitem.mica_sheet.name=Лист на основе слюды
+metaitem.mica_insulator_sheet.name=Лист слюденной изоляции
+metaitem.mica_insulator_foil.name=Фольга из слюденной изоляции
+
+metaitem.board.basic.name=Базовая печатная плата
+metaitem.board.good.phenolic.name=Хорошая фенольная плата
+metaitem.board.good.plastic.name=Хорошая пластиковая плата
+metaitem.board.advanced.name=Усовершенствованная печатная плата
+metaitem.board.extreme.name=Экстремальная печатная плата
+metaitem.board.elite.name=Элитная плата
+metaitem.board.master.name=Мастер печатная плата
+
+
+
+metaitem.insulating_tape.name=МегаМозгТех Аэрокосмическая улучшенная укреплённая изолента FAL-84
+
+
+
+metaarmor.nms.nightvision.enabled=Костюм NanoMuscle™: Ночное зрение активировано
+metaarmor.nms.nightvision.disabled=Костюм NanoMuscle™: Ночное зрение отключено
+
+metaarmor.qts.nightvision.enabled=Костюм QuarkTech™: Ночное зрение активировано
+metaarmor.qts.nightvision.disabled=Костюм QuarkTech™: Ночное зрение отключено
+
+metaarmor.jetpack.hover.enable=Реактивный ранец: режим зависания активирован
+metaarmor.jetpack.hover.disable=Реактивный ранец: режим зависания отключен
+
+metaarmor.hud.status.enabled=§aВКЛ
+metaarmor.hud.status.disabled=§cВЫКЛ
+metaarmor.hud.energy_lvl=Уровень энергии: %s
+metaarmor.hud.fuel_lvl=Уровень топлива: %s
+metaarmor.hud.hover_mode=Режим парения: %s
+mataarmor.hud.supply_mode=Режим зарядки: %s
+metaarmor.hud.fly_mode=Режим полёта: %s
+metaarmor.hud.gravi_engine=ГравиДвигатель: %s
+
+metaarmor.energy_share.enable=Передача энергии: Подзарядка гаджетов активирована
+metaarmor.energy_share.disable=Передача энергии: Подзарядка гаджетов отключена
+metaarmor.energy_share.tooltip=Режим зарядки: %s
+metaarmor.energy_share.tooltip.guide=Для изменения режима нажмите shift-правый клик держа в руках
+
+
+metaitem.liquid_fuel_jetpack.name=§eРеактивный ранец на жидком топливе
+metaitem.impeller_jetpack.name=§eРанец на основе импеллера
+metaitem.advanced_impeller_jetpack.name=§bПродвинутый ранец на основе импеллера
+metaitem.battery_pack.lv.name=Ранец с аккумуляторами (§eLV§r)
+metaitem.battery_pack.mv.name=Ранец с аккумуляторами (§eMV§r)
+metaitem.battery_pack.hv.name=Ранец с аккумуляторами (§eHV§r)
+
+metaitem.nms.chestplate.name=§eНагрудник костюма NanoMuscle™
+metaitem.nms.leggins.name=§eПоножи костюма NanoMuscle™
+metaitem.nms.boots.name=§eБотинки костюма NanoMuscle™
+metaitem.nms.helmet.name=§eШлем костюма NanoMuscle™
+metaitem.nms.advanced_chestplate.name=§bПродвинутый нагрудник костюма NanoMuscle™
+
+metaitem.qts.chestplate.name=§bНагрудник костюма QuarkTech™
+metaitem.qts.leggins.name=§bПоножи костюма  QuarkTech™
+metaitem.qts.boots.name=§bБотинки костюма QuarkTech™
+metaitem.qts.helmet.name=§bШлем костюма QuarkTech™
+metaitem.qts.advanced_chestplate.name=§5Продвинутый нагрудник костюма QuarkTech™
+
+metaitem.impeller.mv.name=§eМощный импеллер
+metaitem.impeller.hv.name=§bУлучшенный мощный импеллер
+metaitem.gravitation_engine.name=§5Модуль гравитационного двигателя
+
+
+
+gtadditions.machine.processing_array.name=Массив обработки
+
+
+
+gtadditions.machine.vending_machine.name=§eТорговый автомат
+gtadditions.machine.vending_machine.label=Торговый автомат
+
+gtadditions.machine.circuit_assembler.lv.name=Базовый стонок по сборке интегральных микросхем
+gtadditions.machine.circuit_assembler.mv.name=Улучшеный стонок по сборке интегральных микросхем
+gtadditions.machine.circuit_assembler.hv.name=Улучшеный стонок по сборке интегральных микросхем II
+gtadditions.machine.circuit_assembler.ev.name=Улучшеный стонок по сборке интегральных микросхем III
+gtadditions.machine.circuit_assembler.iv.name=Улучшеный стонок по сборке интегральных микросхем IV
+gtadditions.machine.circuit_assembler.luv.name=Улучшеный стонок по сборке интегральных микросхем V
+gtadditions.machine.circuit_assembler.zpm.name=Улучшеный стонок по сборке интегральных микросхем VI
+gtadditions.machine.circuit_assembler.uv.name=Улучшеный стонок по сборке интегральных микросхем VII
+
+
+gtadditions.machine.cluster_mill.lv.name=Базовый прокатный станок
+gtadditions.machine.cluster_mill.mv.name=Улучшеный прокатный станок
+gtadditions.machine.cluster_mill.hv.name=Улучшеный прокатный станок II
+gtadditions.machine.cluster_mill.ev.name=Улучшеный прокатный станок III
+gtadditions.machine.cluster_mill.iv.name=Улучшеный прокатный станок IV
+gtadditions.machine.cluster_mill.luv.name=Улучшеный прокатный станок V
+gtadditions.machine.cluster_mill.zpm.name=Улучшеный прокатный станок VI
+gtadditions.machine.cluster_mill.uv.name=Улучшеный прокатный станок VII
+
+gtadditions.machine.electric_furnace.iv.name=Процессор электронного возбуждения
+gtadditions.machine.electric_furnace.luv.name=Процессор электронного возбуждения
+gtadditions.machine.electric_furnace.zpm.name=Процессор электронного возбуждения
+gtadditions.machine.electric_furnace.uv.name=Процессор электронного возбуждения
+
+gtadditions.machine.macerator.iv.name=Blend-O-Matic 9001
+gtadditions.machine.macerator.luv.name=Blend-O-Matic 9002
+gtadditions.machine.macerator.zpm.name=Blend-O-Matic 9003
+gtadditions.machine.macerator.uv.name=Blend-O-Matic 9004
+
+gtadditions.machine.alloy_smelter.iv.name=Продвинутая сплавная печь IV
+gtadditions.machine.alloy_smelter.luv.name=Продвинутая сплавная печь V
+gtadditions.machine.alloy_smelter.zpm.name=Продвинутая сплавная печь VI
+gtadditions.machine.alloy_smelter.uv.name=Продвинутая сплавная печь VII
+
+gtadditions.machine.amplifab.iv.name=Улучшеный амплифабрикатор IV
+gtadditions.machine.amplifab.luv.name=Улучшеный амплифабрикатор V
+gtadditions.machine.amplifab.zpm.name=Улучшеный амплифабрикатор VI
+gtadditions.machine.amplifab.uv.name=Улучшеный амплифабрикатор VII
+
+gtadditions.machine.arc_furnace.iv.name=Продвинутая дуговая печь IV
+gtadditions.machine.arc_furnace.luv.name=Продвинутая дуговая печь V
+gtadditions.machine.arc_furnace.zpm.name=Продвинутая дуговая печь VI
+gtadditions.machine.arc_furnace.uv.name=Продвинутая дуговая печь VII
+
+gregtech.machine.assembler.iv.name=Улучшеный сборочный станок IV
+gtadditions.machine.assembler.luv.name=Улучшеный сборочный станок V
+gtadditions.machine.assembler.zpm.name=Улучшеный сборочный станок VI
+gtadditions.machine.assembler.uv.name=Улучшеный сборочный станок VII
+
+gregtech.machine.autoclave.iv.name=Улучшеный автоклав IV
+gtadditions.machine.autoclave.luv.name=Улучшеный автоклав V
+gtadditions.machine.autoclave.zpm.name=Улучшеный автоклав VI
+gtadditions.machine.autoclave.uv.name=Улучшеный автоклав VII
+
+gtadditions.machine.bender.iv.name=Улучшеный загибочный станок IV
+gtadditions.machine.bender.luv.name=Улучшеный загибочный станок V
+gtadditions.machine.bender.zpm.name=Улучшеный загибочный станок VI
+gtadditions.machine.bender.uv.name=Улучшеный загибочный станок VII
+
+gtadditions.machine.brewery.iv.name=Улучшеный пивоваренный завод IV
+gtadditions.machine.brewery.luv.name=Улучшеный пивоваренный завод V
+gtadditions.machine.brewery.zpm.name=Улучшеный пивоваренный завод VI
+gtadditions.machine.brewery.uv.name=Улучшеный пивоваренный завод VII
+
+gtadditions.machine.canner.iv.name=Продвинутая консервная машина IV
+gtadditions.machine.canner.luv.name=Продвинутая консервная машина V
+gtadditions.machine.canner.zpm.name=Продвинутая консервная машина VI
+gtadditions.machine.canner.uv.name=Продвинутая консервная машина VII
+
+gregtech.machine.centrifuge.ev.name=Молекулярный разделитель
+gtadditions.machine.centrifuge.iv.name=Молекулярный Циклон
+gtadditions.machine.centrifuge.luv.name=Молекулярный Циклон
+gtadditions.machine.centrifuge.zpm.name=Молекулярный Циклон
+gtadditions.machine.centrifuge.uv.name=Молекулярный Циклон
+
+gtadditions.machine.chemical_bath.iv.name=Продвинутая Хим.ванна IV
+gtadditions.machine.chemical_bath.luv.name=Продвинутая Хим.ванна V
+gtadditions.machine.chemical_bath.zpm.name=Продвинутая Хим.ванна VI
+gtadditions.machine.chemical_bath.uv.name=Продвинутая Хим.ванна VII
+
+gtadditions.machine.chemical_reactor.iv.name=Улучшеный хим.реактор IV
+gtadditions.machine.chemical_reactor.luv.name=Улучшеный хим.реактор V
+gtadditions.machine.chemical_reactor.zpm.name=Улучшеный хим.реактор VI
+gtadditions.machine.chemical_reactor.uv.name=Улучшеный хим.реактор VII
+
+gregtech.machine.compressor.ev.name=Улучшеный компрессор III
+gtadditions.machine.compressor.iv.name=Сингулирующий компрессор
+gtadditions.machine.compressor.luv.name=Сингулирующий компрессор
+gtadditions.machine.compressor.zpm.name=Сингулирующий компрессор
+gtadditions.machine.compressor.uv.name=Сингулирующий компрессор
+
+gtadditions.machine.cutter.iv.name=Улучшеный нарезной станок IV
+gtadditions.machine.cutter.luv.name=Улучшеный нарезной станок V
+gtadditions.machine.cutter.zpm.name=Улучшеный нарезной станок VI
+gtadditions.machine.cutter.uv.name=Улучшеный нарезной станок VII
+
+gtadditions.machine.distillery.iv.name=Улучшеный дистиллятор IV
+gtadditions.machine.distillery.luv.name=Улучшеный дистиллятор V
+gtadditions.machine.distillery.zpm.name=Улучшеный дистиллятор VI
+gtadditions.machine.distillery.uv.name=Улучшеный дистиллятор VII
+
+gregtech.machine.electrolyzer.ev.name=Улучшеный электролизер III
+gtadditions.machine.electrolyzer.iv.name=Молекулярный дезинтегратор E-4905
+gtadditions.machine.electrolyzer.luv.name=Молекулярный дезинтегратор E-4906
+gtadditions.machine.electrolyzer.zpm.name=Молекулярный дезинтегратор E-4907
+gtadditions.machine.electrolyzer.uv.name=Молекулярный дезинтеграторr E-4908
+
+gtadditions.machine.electromagnetic_separator.iv.name=Улучшеный Электромагнитный Сепаратор IV
+gtadditions.machine.electromagnetic_separator.luv.name=Улучшеный Электромагнитный Сепаратор V
+gtadditions.machine.electromagnetic_separator.zpm.name=Улучшеный Электромагнитный Сепаратор VI
+gtadditions.machine.electromagnetic_separator.uv.name=Улучшеный Электромагнитный Сепаратор VII
+
+gregtech.machine.extractor.ev.name=Улучшеный Экстрактор III
+gtadditions.machine.extractor.iv.name=Вакуумный Экстрактор I
+gtadditions.machine.extractor.luv.name=Вакуумный Экстрактор II
+gtadditions.machine.extractor.zpm.name=Вакуумный Экстрактор III
+gtadditions.machine.extractor.uv.name=Вакуумный Экстрактор IV
+
+gtadditions.machine.extruder.iv.name=Улучшеный Экструдер IV
+gtadditions.machine.extruder.luv.name=Улучшеный Экструдер V
+gtadditions.machine.extruder.zpm.name=Улучшеный Экструдер VI
+gtadditions.machine.extruder.uv.name=Улучшеный Экструдер VII
+
+gtadditions.machine.fermenter.iv.name=Улучшеный Ферментер IV
+gtadditions.machine.fermenter.luv.name=Улучшеный Ферментер V
+gtadditions.machine.fermenter.zpm.name=Улучшеный Ферментер VI
+gtadditions.machine.fermenter.uv.name=Улучшеный Ферментер VII
+
+gtadditions.machine.fluid_canner.iv.name=Мнгновненный разливочный аппарат I
+gtadditions.machine.fluid_canner.luv.name=Мнгновненный разливочный аппарат II
+gtadditions.machine.fluid_canner.zpm.name=Мнгновненный разливочный аппарат III
+gtadditions.machine.fluid_canner.uv.name=Мнгновненный разливочный аппарат IV
+
+gtadditions.machine.fluid_extractor.iv.name=Улучшеный жидкостный экстрактор IV
+gtadditions.machine.fluid_extractor.luv.name=Улучшеный жидкостный экстрактор V
+gtadditions.machine.fluid_extractor.zpm.name=Улучшеный жидкостный экстрактор VI
+gtadditions.machine.fluid_extractor.uv.name=Улучшеный жидкостный экстрактор VII
+
+gtadditions.machine.fluid_heater.iv.name=Улучшеный жидкостный нагреватель IV
+gtadditions.machine.fluid_heater.luv.name=Улучшеный жидкостный нагреватель V
+gtadditions.machine.fluid_heater.zpm.name=Улучшеный жидкостный нагреватель VI
+gtadditions.machine.fluid_heater.uv.name=Улучшеный жидкостный нагреватель VII
+
+gtadditions.machine.fluid_solidifier.iv.name=Улучшеный жидкостный отвердитель IV
+gtadditions.machine.fluid_solidifier.luv.name=Улучшеный жидкостный отвердитель V
+gtadditions.machine.fluid_solidifier.zpm.name=Улучшеный жидкостный отвердитель VI
+gtadditions.machine.fluid_solidifier.uv.name=Улучшеный жидкостный отвердитель VII
+
+gtadditions.machine.forge_hammer.iv.name=Улучшеная кузнечный молот IV
+gtadditions.machine.forge_hammer.luv.name=Улучшеная кузнечный молот V
+gtadditions.machine.forge_hammer.zpm.name=Улучшеная кузнечный молот VI
+gtadditions.machine.forge_hammer.uv.name=Улучшеная кузнечный молот VII
+
+gtadditions.machine.forming_press.iv.name=Улучшеный формовочный пресс IV
+gtadditions.machine.forming_press.luv.name=Улучшеный формовочный пресс V
+gtadditions.machine.forming_press.zpm.name=Улучшеный формовочный пресс VI
+gtadditions.machine.forming_press.uv.name=Улучшеный формовочный пресс VII
+
+gtadditions.machine.lathe.iv.name=ЧПУ токарный станок IV
+gtadditions.machine.lathe.luv.name=ЧПУ токарный станок V
+gtadditions.machine.lathe.zpm.name=ЧПУ токарный станок VI
+gtadditions.machine.lathe.uv.name=ЧПУ токарный станок VII
+
+gtadditions.machine.microwave.iv.name=Улучшеная микроволновка IV
+gtadditions.machine.microwave.luv.name=Улучшеная микроволновка V
+gtadditions.machine.microwave.zpm.name=Улучшеная микроволновка VI
+gtadditions.machine.microwave.uv.name=Улучшеная микроволновка VII
+
+gtadditions.machine.mixer.iv.name=Улучшеный смеситель IV
+gtadditions.machine.mixer.luv.name=Улучшеный смеситель V
+gtadditions.machine.mixer.zpm.name=Улучшеный смеситель VI
+gtadditions.machine.mixer.uv.name=Улучшеный смеситель VII
+
+gtadditions.machine.ore_washer.iv.name=Многофункциональная стиральная машина I-360
+gtadditions.machine.ore_washer.luv.name=Многофункциональная стиральная машина I-720
+gtadditions.machine.ore_washer.zpm.name=Многофункциональная стиральная машина I-1080
+gtadditions.machine.ore_washer.uv.name=Многофункциональная стиральная машина I-1440
+
+gtadditions.machine.packer.iv.name=Короб'о'натор K-4001
+gtadditions.machine.packer.luv.name=Короб'о'натор K-4002
+gtadditions.machine.packer.zpm.name=Короб'о'натор K-4003
+gtadditions.machine.packer.uv.name=Короб'о'натор K-4004
+
+gtadditions.machine.unpacker.iv.name=Разкороб'о'натор U-4001
+gtadditions.machine.unpacker.luv.name=Разкороб'о'натор U-4002
+gtadditions.machine.unpacker.zpm.name=Разкороб'о'натор U-4003
+gtadditions.machine.unpacker.uv.name=Разкороб'о'натор U-4004
+
+gtadditions.machine.plasma_arc_furnace.iv.name=Улучшеная плазменная дуговая печь IV
+gtadditions.machine.plasma_arc_furnace.luv.name=Улучшеная плазменная дуговая печь V
+gtadditions.machine.plasma_arc_furnace.zpm.name=Улучшеная плазменная дуговая печь VI
+gtadditions.machine.plasma_arc_furnace.uv.name=Улучшеная плазменная дуговая печь VII
+
+gtadditions.machine.polarizer.iv.name=Улучшеный поляризатор IV
+gtadditions.machine.polarizer.luv.name=Улучшеный поляризатор V
+gtadditions.machine.polarizer.zpm.name=Улучшеный поляризатор VI
+gtadditions.machine.polarizer.uv.name=Улучшеный поляризатор VII
+
+gregtech.machine.laser_engraver.iv.name=Улучшеный точный лазерный гравер IV
+gtadditions.machine.laser_engraver.luv.name=Ультра точный лазерный гравер V
+gtadditions.machine.laser_engraver.zpm.name=Омега точный лазерный гравер VI
+gtadditions.machine.laser_engraver.uv.name=Супер-пупер омега точный лазерный гравер L-1401
+
+gtadditions.machine.sifter.iv.name=Улучшеная просеивающая машина IV
+gtadditions.machine.sifter.luv.name=Улучшеная просеивающая машина V
+gtadditions.machine.sifter.zpm.name=Улучшеная просеивающая машина VI
+gtadditions.machine.sifter.uv.name=Улучшеная просеивающая машина VII
+
+gtadditions.machine.thermal_centrifuge.iv.name=Полыхающий барабан T-6350
+gtadditions.machine.thermal_centrifuge.luv.name=Полыхающий барабан T-6360
+gtadditions.machine.thermal_centrifuge.zpm.name=Полыхающий барабан T-6370
+gtadditions.machine.thermal_centrifuge.uv.name=Полыхающий барабан T-6380
+
+gtadditions.machine.wiremill.iv.name=Улучшеный волочильный стан IV
+gtadditions.machine.wiremill.luv.name=Улучшеный волочильный стан V
+gtadditions.machine.wiremill.zpm.name=Улучшеный волочильный стан VI
+gtadditions.machine.wiremill.uv.name=Улучшеный волочильный стан VII
+
+gtadditions.machine.assembly_line.name=Сборочный конвеер
+
+gtadditions.machine.steam_mixer.name=Смеситель на паровой тяге
+
+gtadditions.machine.naquadah_reactor.mk1.name=Наквадах реактор Mk. 1
+gtadditions.machine.naquadah_reactor.mk2.name=Наквадах реактор Mk. 2
+gtadditions.machine.naquadah_reactor.mk3.name=Наквадах реактор Mk. 3
+gtadditions.machine.naquadah_reactor.mk4.name=Наквадах реактор Mk. 4
+
+gtadditions.machine.mass_fab.lv.name=Базовый фабрикатор материи
+gtadditions.machine.mass_fab.mv.name=Улучшеный фабрикатор материи
+gtadditions.machine.mass_fab.hv.name=Улучшеный фабрикатор материи II
+gtadditions.machine.mass_fab.ev.name=Улучшеный фабрикатор материи III
+gtadditions.machine.mass_fab.iv.name=Улучшеный фабрикатор материи IV
+gtadditions.machine.mass_fab.luv.name=Улучшеный фабрикатор материи V
+gtadditions.machine.mass_fab.zpm.name=Улучшеный фабрикатор материи VI
+gtadditions.machine.mass_fab.uv.name=Улучшеный фабрикатор материи VII
+
+gtadditions.machine.replicator.lv.name=Базовый репликатор
+gtadditions.machine.replicator.mv.name=Улучшеный репликатор
+gtadditions.machine.replicator.hv.name=Улучшеный репликатор II
+gtadditions.machine.replicator.ev.name=Улучшеный репликатор III
+gtadditions.machine.replicator.iv.name=Улучшеный репликатор IV
+gtadditions.machine.replicator.luv.name=Улучшеный репликатор V
+gtadditions.machine.replicator.zpm.name=Улучшеный репликатор VI
+gtadditions.machine.replicator.uv.name=Улучшеный репликатор VII
+
+gtadditions.machine.pump.iv.name=Улучшеный насос IV
+gtadditions.machine.pump.luv.name=Улучшеный насос V
+gtadditions.machine.pump.zpm.name=Улучшеный насос VI
+gtadditions.machine.pump.uv.name=Улучшеный насос VII
+
+gregtech.machine.air_collector.ev.name=Улучшеный воздухосборник III
+gtadditions.machine.air_collector.iv.name=Атмосферный коллектор I
+gtadditions.machine.air_collector.luv.name=Атмосферный коллектор II
+
+gtadditions.machine.replicator.tooltip=Производство наичистейших элементов
+
+gtadditions.machine.fusion_reactor.luv.name=Компьютер термоядерного реактора версия 1
+gtadditions.machine.fusion_reactor.zpm.name=Компьютер термоядерного реактора версия 2
+gtadditions.machine.fusion_reactor.uv.name=Компьютер термоядерного реактора версия 3
+
+tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Корпус сборочного конвеера
+tile.ga_transparent_casing.reinforced_glass.name=Армированное стекло
+tile.ga_multiblock_casing.reactor_casing.name=Реакторный корпус
+
+metaitem.tool.bending_cylinder.name=%s гнущий цилиндр
+metaitem.tool.bending_cylinder_small.name=Малый %s гнущий цилиндр
+
+recipemap.cluster_mill.name=Прокатывание
+recipemap.circuit_assembler.name=Сборка микросхем
+recipemap.assembly_line.name=Сборочный конвеер
+recipemap.naquadah_reactor.name=Топливо для наквадах реактора
+recipemap.replicator.name=Репликация
+recipemap.mass_fab.name=Фабрикация Материи
+recipemap.disassembling_machine.name=Разборка
+recipemap.processing_array.name=Массив обработки
+
+recipemap.plasma_generator.name=Топливо для плазменной турбины
+
+material.coke=Коксовый уголь
+material.phosphorous_pentoxide=Пентоксид фосфора
+material.phosphoric_acid=Ортофосфорная кислота
+material.polyvinyl_acetate=Поливинилацетат
+material.phenol=Фенол
+material.bisphenol_a=Бисфенол А
+material.epoxid=Эпоксидная смола
+material.reinforced_epoxy_resin=Волоконно-укреплённая эпоксидная смола
+material.borosilicate_glass=Боросиликатное стекло
+material.polyvinyl_chloride=Поливинил хлорид
+material.vinyl_chloride=Винил хлорид
+material.ethylene=Этилен
+material.charcoal_byproducts=Побочные продукты древесного угля
+material.benzene=Бензол
+material.wood_gas=Древесный газ
+material.wood_vinegar=Древесный уксус
+material.wood_tar=Древесная смола
+material.sodium_hydroxide=Гидроксид натрия
+material.quicklime=Негашеная известь
+material.acetone=Ацетон
+material.sulfur_trioxide=Триоксид серы
+material.sulfur_dioxide=Диоксид серы
+material.glycerol=Глицерин
+material.fish_oil=Рыбий жир
+material.sodium_hydroxide_solution=Раствор гидроксида натрия
+material.methanol=Метанол
+material.carbon_monoxide=Угарный газ
+material.nitro_fuel=Цетановый дизель
+material.diluted_sulfuric_acid=Разбавленная серная кислота
+material.sodium_bisulfate=Бисульфат натрия
+material.chloroform=Хлороформ
+material.diluted_hydrochloric_acid=Разбавленная соляная кислота
+material.hypochlorous_acid=Хлорноватистая кислота
+material.ammonia=Амиак
+material.chloramine=Хлорамин
+material.dimethylamine=Диметиламин
+material.dimethylhidrazine=1,1-Диметилгидразин
+material.rocket_fuel=Ракетное топливо
+material.dinitrogen_tetroxide=Динитроген тетроксид
+material.silicon_rubber=Силиконовая резина
+material.polydimethylsiloxane=Полидиметилсилоксан
+material.dimethyldichlorosilane=Диметилдихлорсилан
+material.styrene=Стирол
+material.Полистирол=Полистирол
+material.butadiene=Бутадиен
+material.raw_styrene_butadiene_rubber=Сырой Стирол-бутадиеновый каучук
+material.styrene_butadiene_rubber=Стирол-бутадиеновый каучук
+material.dichlorobenzene=Дихлорбензол
+material.hydrochloric_acid=Соляная кислота
+material.acetic_acid=Уксусная кислота
+material.fermented_biomass=Забродившая биомасса
+material.potash=Поташ
+material.soda_ash=Кальцинированная сода
+material.hydrofluoric_acid=Плавиковая кислота
+material.nitric_oxide=Оксид азота
+material.methyl_acetate=Метилацетат
+material.ethenone=Кетен
+material.tetranitromethane=Тетранитрометан
+material.bio_diesel=Био-дизель
+material.raw_growth_medium=Сырая среда роста
+material.sterilized_growth_medium=Стерилизованная среда роста
+material.meat=Мясо
+material.cooked_meat=Приготовленное мясо
+material.vinyl_acetate=Винилацетат
+material.gallium_arsenide=Арсенид галлия
+material.polyphenylene_sulfide=Полифениленсульфид
+material.nickel_sulfate_water_solution=Водный раствор сульфата никеля
+material.blue_vitriol_water_solution=Водный раствор медного купороса
+material.propane=Пропан
+material.propene=Пропен
+material.ethane=Этан
+material.butene=Бутен
+material.butane=Бутан
+material.calcium_acetate=Раствор ацетата кальция
+material.cumene=Кумол
+material.indium_gallium_phosphide=Индий-Галлий фосфид
+material.platinum_group_sludge=Шлак платновой группы
+material.ferrite_mixture=Ферритовая смесь
+material.nickel_zinc_ferrite=Цинк-никелиевый феррит
+material.indium_concentrate=Индиевый концентрат
+material.lead_zinc_solution=Свинец-цинковый раствор
+material.tetrafluoroethylene=Тетрафторэтилен
+material.salt_water=Солёная вода
+material.hydrocracked_ethane=Этан прошедший крекинг водородом
+material.hydrocracked_ethylene=Этилен прошедший крекинг водородом
+material.hydrocracked_propene=Пропен прошедший крекинг водородом
+material.hydrocracked_propane=Пропан прошедший крекинг водородом
+material.hydrocracked_light_fuel=Легкое топливо прошедшее крекинг водородом
+material.hydrocracked_butane=Бутан прошедший крекинг водородом
+material.hydrocracked_naphtha=Лигроин прошедший крекинг водородом
+material.hydrocracked_heavy_fuel=Тяжёлое топливо прошедшее крекинг водородом
+material.hydrocracked_gas=Попутный газ прошедший крекинг водородом
+material.hydrocracked_butene=Бутен прошедший крекинг водородом
+material.hydrocracked_butadiene=Бутадиен прошедший крекинг водородом
+material.steamcracked_ethane=Этан прошедший крекинг паром
+material.steamcracked_ethylene=Этилен прошедший крекинг паром
+material.steamcracked_propene=Пропен прошедший крекинг паром
+material.steamcracked_propane=Пропан прошедший крекинг паром
+material.cracked_light_fuel=Лёгкое топливо прошедшее крекинг паром
+material.steamcracked_butane=Бутан прошедший крекинг паром
+material.steamcracked_naphtha=Легроин прошедший крекинг паром
+material.cracked_heavy_fuel=Тяжёлое топливо прошедлее крекинг паром
+material.steamcracked_gas=Попутный газ прошедший крекинг паром
+material.steamcracked_butene=Бутен прошедший крекинг паром
+material.steamcracked_butadiene=Бутадиен прошедший крекинг паром
+material.biogas=Биогаз
+material.chloromethane=Хлорметан
+material.allyl_chloride=Аллилхлорид
+material.isoprene=Изопропен
+material.massicot=Массикот
+material.antimony_trioxide=Триоксид сурьмы
+material.zincite=Цинкит
+material.cobalt_oxide=Оксид кобальта
+material.arsenic_trioxide=Триоксид мышьяка
+material.cupric_oxide=Оксид меди
+material.ferrosilite=Ферросилит
+material.magnesia=Жжёная магнезия
+material.ga_sodium_sulfide=Сульфид натрия
+material.neutral_matter=Нейтральная материя
+material.positive_matter=Позитивная материя
+material.neutronium=Нейтроний
+material.plasma=Плазменный конфайнмент
+material.lignite_coke=Кокс из бурого угля
+material.mv_superconductor_base=MV Основа суперпроводника
+material.hv_superconductor_base=HV Основа суперпроводника
+material.ev_superconductor_base=EV Основа суперпроводника
+material.iv_superconductor_base=IV Основа суперпроводника
+material.luv_superconductor_base=LuV Основа суперпроводника
+material.zpm_superconductor_base=ZPM Основа суперпроводника
+material.mv_superconductor=MV Суперпроводник
+material.hv_superconductor=HV Суперпроводник
+material.ev_superconductor=EV Суперпроводник
+material.iv_superconductor=IV Суперпроводник
+material.luv_superconductor=LuV Суперпроводник
+material.zpm_superconductor=ZPM Суперпроводник
+material.enderium=Эндериум
+material.alumino_silicate_wool=Алюмосиликатная шерсть
+item.alumino_silicate_wool.dust=Алюмосиликатная шерсть
+material.mica_based=Слюдяная мякоть
+item.mica_based.dust=Слюдяная мякоть
+material.iron_chloride=Хлорид железа III
+material.sand=Кварцевый песок
+material.electrical_steel=Электротехническая сталь
+
+item.epoxid.ingot=Брусок эпоксидной смолы
+item.epoxid.dustTiny=Крошечная пылька эпоксидной смолы
+item.epoxid.dustSmall=Малая пыль эпоксидной смолы
+item.epoxid.dust=Пыль эпоксидной смолы
+item.epoxid.nugget=Кусочек эпоксидной смолы
+item.epoxid.plateDense=Плотный лист эпоксидной смолы
+item.epoxid.plate=Лист эпоксидной смолы
+item.epoxid.foil=Тонкий лист эпоксидной смолы
+item.reinforced_epoxy_resin.ingot=Брусок из аримрованной эпоксидки
+item.reinforced_epoxy_resin.dustTiny=Крошечная пыльки аримрованной эпоксидки
+item.reinforced_epoxy_resin.dustSmall=Малая пыль аримрованной эпоксидки
+item.reinforced_epoxy_resin.dust=Пыль аримрованной эпоксидки
+item.reinforced_epoxy_resin.nugget=Кусочек аримрованной эпоксидки
+item.reinforced_epoxy_resin.plateDense=Плотный лист аримрованной эпоксидки
+item.reinforced_epoxy_resin.plate=Лист аримрованной эпоксидки
+item.reinforced_epoxy_resin.foil=Тонкий лист аримрованной эпоксидки
+item.borosilicate_glass.ingot=Брусок боросиликатного стекла
+item.borosilicate_glass.dustTiny=Крошечная пыль боросиликатного стекла
+item.borosilicate_glass.dustSmall=Малая пыль боросиликатного стекла
+item.borosilicate_glass.dust=Пыль боросиликатного стекла
+item.borosilicate_glass.nugget=Кусочек боросиликатного стекла
+item.borosilicate_glass.plateDense=Плотный лист боросиликатного стекла
+item.borosilicate_glass.plate=Лист боросиликатного стекла
+item.borosilicate_glass.foil=Тонкий лист боросиликатного стекла
+item.polyvinyl_chloride.ingot=Брусок поливинилхлорида
+item.polyvinyl_chloride.dustTiny=Крошечная пыль поливинилхлорида
+item.polyvinyl_chloride.dustSmall=Малая пыль поливинилхлорида 
+item.polyvinyl_chloride.dust=Пыль поливинилхлорида
+item.polyvinyl_chloride.nugget=Кусочек поливинилхлорида
+item.polyvinyl_chloride.plateDense=Плотный лист поливинилхлорида
+item.polyvinyl_chloride.plate=Лист из поливинилхлорида
+item.polyvinyl_chloride.foil=Тонкий лист из поливинилхлорида
+item.silicone_rubber.ingot=Брусок силиконовой резины
+item.silicone_rubber.dustTiny=Крошечная пыль силиконовой резины
+item.silicone_rubber.dustSmall=Малая пыль силиконовой резины
+item.silicone_rubber.dust=Пыль силиконовой резины
+item.silicone_rubber.nugget=Кусочек силиконовой резины
+item.silicone_rubber.plateDense=Плотный лист силиконовой резины
+item.silicone_rubber.plate=Лист из силиконовой резины
+item.silicone_rubber.foil=Тонкий лист из силиконовой резины
+item.Полистирол.ingot=Брусок полистирола
+item.Полистирол.dustTiny=Крошечная пыль полистирола
+item.Полистирол.dustSmall=Малая пыль полистирола
+item.Полистирол.dust=Пыль полистирола
+item.Полистирол.nugget=Кусочек полистирол
+item.Полистирол.plateDense=Плотный лист полистирол
+item.Полистирол.plate=Лист из полистирола
+item.Полистирол.foil=Тонкий лист из полистирола
+item.styrene_butadiene_rubber.ingot=Брусок стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.dustTiny=Крошечная пыль стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.dustSmall=Малая пыль стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.dust=Пыль стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.nugget=Кусочек стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.plateDense=Плотный лист из стирол-бутадиенового каучука
+item.styrene_butadiene_rubber.plate=Лист из тирол-бутадиенового каучука
+item.styrene_butadiene_rubber.foil=Тонкий лист из стирол-бутадиенового каучука
+item.meat.dustTiny=Крошечная кучка молотого мяса
+item.meat.dustSmall=Малая куча молотого мяса
+item.meat.dust=Молотое мяса
+
+gregtech.multiblock.assembly_line.description=Сборочный конвеер - большой мультиблок состоящий от 5 до 16 "слоёв". В теории, это большая сборочная машина для создания более продвинутых деталей для ремесла.
+gregtech.multiblock.processing_array.description=Массив обработки объединяет до 16 одноблочных машин в одном мультиблоке.
+gregtech.multiblock.fusion_reactor_mk1.description=Термоядерный реактор - большая многоблочная структура использующаяся для термоядерного синтеза двух элементов в один. Версия 1 термоядерного реакторма может использовать LuV, ZPM или UV энерго-люки. За каждый люк внутренний буффер увеличиваеться на 100т.
+gregtech.multiblock.fusion_reactor_mk2.description=Термоядерный реактор - большая многоблочная структура использующаяся для термоядерного синтеза двух элементов в один. Версия 1 термоядерного реакторма может использовать ZPM или UV энерго-люки. За каждый люк внутренний буффер увеличиваеться на 200т.
+gregtech.multiblock.fusion_reactor_mk3.description=Термоядерный реактор - большая многоблочная структура использующаяся для термоядерного синтеза двух элементов в один. Версия 1 термоядерного реакторма может использовать UV энерго-люки. За каждый люк внутренний буффер увеличиваеться на 400т.
+
+item.material.oreprefix.plateCurved=Изогнутый %s лист
+item.material.oreprefix.ingotDouble=Двойной слиток %s
+
+metaitem.circuit.advanced_parts.name=Микропроцессор
+metaitem.circuit.advanced_parts.tooltip=Базовая микросхема
+metaitem.circuit.integrated.name=Программируемый контроллер
+metaitem.circuit.basic.name=Интегрированная микросхема
+metaitem.circuit.basic.tooltip=Базовая микросхема
+metaitem.circuit.advanced.name=Интегрированный процессор
+metaitem.circuit.advanced.tooltip=Хорошая микросхема
+metaitem.circuit.energy_flow.name=Сборный кристальный процессор
+metaitem.circuit.energy_flow.tooltip=Отличная микросхема
+metaitem.circuit.data_control.name=Сборный квантовый процессор
+metaitem.circuit.data_control.tooltip=Элитная микросхема
+metaitem.credit.darmstadtium.name=Нейтрониевая монета
+
+metaitem.rubber_drop.name=Каучук
+
+tile.metal_casing.primitive_bricks.name=Огнеупорный крипич
+gregtech.machine.primitive_blast_furnace.bronze.tooltip=Структура: 3x3x4 (ШxДxВ) Вся структура сделанна из огнеупорного кирпича (32 в сумме)./nПервый слой - квадрат 3x3./nВторой, третий, и четвёртые слои - с дыркой посередине./nЭтот блок нужно разместить во втором слое посередине с любой стороны./nСтороны доменной печи могут быть раздеденны между несколькими печами, если там нет контрлллера./n
+
+fluid.tile.water=Вода
+
 metaitem.board.raw.magnetic.name=Raw Imprinted Resonatic Circuit Board
 metaitem.board.magnetic.name=Imprinted Resonatic Circuit Board
 metaitem.circuit.board.elite.name=Neuro Processing Unit
 metaitem.circuit.board.elite.tooltip=Neuto CPU
-metaitem.boule.silicon.name=Monocrystalline Silicon Boule
-metaitem.boule.silicon.tooltip=Raw Circuit
-metaitem.boule.glowstone.name=Glowstone doped Monocrystalline Silicon Boule
-metaitem.boule.glowstone.tooltip=Raw Circuit
-metaitem.boule.naquadah.name=Naquadah doped Monocrystalline Silicon Boule
-metaitem.boule.naquadah.tooltip=Raw Circuit
 metaitem.brick.coke.name=Coke Oven Brick
 metaitem.brick.fireclay.name=Firebrick
-metaitem.credit.darmstadtium.name=Neutronium Credit
-metaitem.component.diode.name=Diode
-metaitem.component.diode.tooltip=Basic Electronic Component
-metaitem.component.capacitor.name=Capacitor
-metaitem.component.capacitor.tooltip=Electronic Component
-metaitem.component.glass.fiber.name=Glass Fiber
-metaitem.component.glass.fiber.tooltip=B(SiO2)7
-metaitem.component.glass.tube.name=Glass Tube
-metaitem.component.petri.dish.name=Petri Dish
-metaitem.component.petri.dish.tooltip=For Cultivating Cells
-metaitem.component.resistor.name=Resistor
-metaitem.component.resistor.tooltip=Basic Electronic Component
-metaitem.component.small.coil.name=Small Coil
-metaitem.component.small.coil.tooltip=Basic Electronic Component
-metaitem.component.smd.capacitor.name=SMD Capacitor
-metaitem.component.smd.capacitor.tooltip=Electronic Component
-metaitem.component.smd.diode.name=SMD Diode
-metaitem.component.smd.diode.tooltip=Electronic Component
-metaitem.component.smd.resistor.name=SMD Resistor
-metaitem.component.smd.resistor.tooltip=Electronic Component
-metaitem.component.smd.transistor.name=SMD Transistor
-metaitem.component.smd.transistor.tooltip=Electronic Component
-metaitem.component.transistor.name=Transistor
-metaitem.component.transistor.tooltip=Basic Electronic Component
 metaitem.compressed.clay.name=Unfired Clay Brick
 metaitem.compressed.fireclay.name=Compressed Fireclay
 metaitem.compressed.fireclay.tooltip=Brick-Shaped
-metaitem.plate.asoc.name=ASoC
-metaitem.plate.asoc.tooltip=Advanced System on a Chip
-metaitem.plate.circuit.name=Integrated Logic Circuit
-metaitem.plate.circuit.tooltip=Integrated Circuit
-metaitem.plate.cpu.name=Central Processing Unit
-metaitem.plate.cpu.tooltip=Integrated Circuit
-metaitem.plate.hpic.name=High Power IC
-metaitem.plate.hpic.tooltip=High Power Circuit
-metaitem.plate.nand.name=NAND Memory Chip
-metaitem.plate.nand.tooltip=Integrated Circuit
-metaitem.plate.nanocpu.name=Nanocomponent Central Processing Unit
-metaitem.plate.nanocpu.tooltip=Power Circuit
-metaitem.plate.nor.name=NOR Memory Chip
-metaitem.plate.nor.tooltip=Integrated Circuit
-metaitem.plate.pic.name=Power IC
-metaitem.plate.pic.tooltip=Power Circuit
-metaitem.plate.qbit.name=QBit Processing Unit
-metaitem.plate.qbit.tooltip=Quantum CPU
-metaitem.plate.ram.name=Random Access Memory Chip
-metaitem.plate.ram.tooltip=Integrated Circuit
-metaitem.plate.soc.name=SoC
-metaitem.plate.soc.tooltip=System on a Chip
-metaitem.wafer.asoc.name=ASoC Wafer
-metaitem.wafer.asoc.tooltip=Raw Circuit
-metaitem.wafer.circuit.name=Integrated Logic Circuit (Wafer)
-metaitem.wafer.circuit.tooltip=Raw Circuit
-metaitem.wafer.cpu.name=Central Processing Unit (wafer)
-metaitem.wafer.cpu.tooltip=Raw Circuit
-metaitem.wafer.glowstone.name=Glowstone doped Wafer
-metaitem.wafer.glowstone.tooltip=Raw Circuit
-metaitem.wafer.hpic.name=HPIC Wafer
-metaitem.wafer.hpic.tooltip=Raw Circuit
-metaitem.wafer.naquadah.name=Naquadah doped Wafer
-metaitem.wafer.naquadah.tooltip=Raw Circuit
-metaitem.wafer.nand.name=NAND Memory Chip (Wafer)
-metaitem.wafer.nand.tooltip=Raw Circuit
-metaitem.wafer.nanocpu.name=NanoCPU Wafer
-metaitem.wafer.nanocpu.tooltip=Raw Circuit
-metaitem.wafer.nor.name=NOR Memory Chip (wafer)
-metaitem.wafer.nor.tooltip=Raw Circuit
-metaitem.wafer.pic.name=PIC Wafer
-metaitem.wafer.pic.tooltip=Raw Circuit
-metaitem.wafer.qbit.name=QBit Wafer
-metaitem.wafer.qbit.tooltip=Raw Circuit
-metaitem.wafer.ram.name=Random Acccess Memory Chip (Wafer)
-metaitem.wafer.ram.tooltip=Raw Circuit
-metaitem.wafer.silicon.name=Wafer
-metaitem.wafer.silicon.tooltip=Raw Circuit
-metaitem.wafer.soc.name=SoC Wafer
-metaitem.wafer.soc.tooltip=Raw Circuit
 metaitem.form.acacia.name=Acacia Brick Form
 metaitem.form.birch.name=Birch Brick Form
 metaitem.form.darkoak.name=Dark Oak Brick Form
 metaitem.form.jungle.name=Jungle Brick Form
 metaitem.form.oak.name=Oak Brick Form
 metaitem.form.spruce.name=Spruce Brick Form
-metaitem.carbon.fibers.name=Raw Carbon Fibers
-metaitem.plate.mixed.metal.name=Mixed Metal plate
-metaitem.plate.advanced.alloy.name=Advanced Alloy Plate
-metaitem.crystal.raw.name=Raw Crystal Chip
-metaitem.crystal.raw.tooltip=Raw Crystal Processor
-metaitem.crystal.cpu.name=Crystal Processing Unit
-metaitem.crystal.cpu.tooltip=Crystal CPU
-metaitem.crystal.soc.name=Crystal SoC
-metaitem.crystal.soc.tooltip=Crystal System on a Chip
-metaitem.stemcells.name=Stemcells
-metaitem.stemcells.tooltip=Raw Intelligence
-metaitem.crystal.lapotron.name=Lapotron Crystal
-metaitem.plate.iridium.alloy.name=Iridium Alloy Plate
-metaitem.plate.iridium.alloy.uncompressed.name=Uncompressed Iridium Alloy Plate
-metaitem.neutron.reflector.name=Neutron Reflector
-metaitem.processor.neuro.name=Neuro Processing Unit
-
-metaitem.electrode.apatite.name=Apatine Electrode
-metaitem.electrode.blaze.name=Blazing Electrode
-metaitem.electrode.bronze.name=Bronze Electrode
-metaitem.electrode.copper.name=Copper Electrode
-metaitem.electrode.diamond.name=Diamantine Electrode
-metaitem.electrode.emerald.name=Emerald Electrode
-metaitem.electrode.ender.name=Ender Electrode
-metaitem.electrode.gold.name=Golden Electrode
-metaitem.electrode.iron.name=Iron Electrode
-metaitem.electrode.lapis.name=Lapis Electrode
-metaitem.electrode.obsidian.name=Obsidian Electrode
-metaitem.electrode.orchid.name=Orchid Electrode
-metaitem.electrode.rubber.name=Rubberised Electrode
-metaitem.electrode.tin.name=Tin Electrode
-
-metaitem.mica_sheet.name=Mica Based Sheet
-metaitem.mica_insulator_sheet.name=Mica Insulator Sheet
-metaitem.mica_insulator_foil.name=Mica Insulator Foil
-
-metaitem.energy.module.name=Energy Module
-metaitem.energy.cluster.name=Energy Cluster
-metaitem.max.battery.name=MAX Battery
 metaitem.small_turbine_rotor.name=%s Small Turbine Rotor
 metaitem.medium_turbine_rotor.name=%s Medium Turbine Rotor
 metaitem.large_turbine_rotor.name=%s Large Turbine Rotor
 metaitem.huge_turbine_rotor.name=%s Huge Turbine Rotor
-metaitem.insulating_tape.name=Duct Tape
-
-metaitem.liquid_fuel_jetpack.name=§eLiquid fuel jetpack
-metaitem.impeller_jetpack.name=§eThruster Jetpack
-metaitem.advanced_impeller_jetpack.name=§bAdvanced Thruster Jetpack
-metaitem.battery_pack.lv.name=Battery pack (§eLV§r)
-metaitem.battery_pack.mv.name=Battery pack (§eMV§r)
-metaitem.battery_pack.hv.name=Battery pack (§eHV§r)
-
-metaitem.nms.chestplate.name=§eNanoMuscle™ Suite Chestplate
-metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggins
-metaitem.nms.boots.name=§eNanoMuscle™ Suite Boots
-metaitem.nms.helmet.name=§eNanoMuscle™ Suite Helmet
-metaitem.nms.advanced_chestplate.name=§bAdvanced NanoMuscle™ Suite Chestplate
-
-metaitem.qts.chestplate.name=§bQuarkTech™ Suite Chestplate
-metaitem.qts.leggins.name=§bQuarkTech™ Suite Leggins
-metaitem.qts.boots.name=§bQuarkTech™ Suite Boots
-metaitem.qts.helmet.name=§bQuarkTech™ Suite Helmet
-metaitem.qts.advanced_chestplate.name=§5Advanced QuarkTech™ Suite Chestplate
-
-metaitem.impeller.mv.name=§ePower Thruster
-metaitem.impeller.hv.name=§bAdvanced Power Thruster
-metaitem.gravitation_engine.name=§5Gravitation Engine Unit
-
 metaitem.component.smd.capacitor.nano.name=Nano SMD Capacitor
 metaitem.component.smd.capacitor.wetware.name=Wetware SMD Capacitor
 metaitem.component.smd.capacitor.quantum.name=Quantum SMD Capacitor
@@ -202,14 +801,7 @@ metaitem.component.smd.transistor.wetware.name=Wetware SMD Transistor
 metaitem.component.smd.transistor.quantum.name=Quantum SMD Transistor
 metaitem.component.smd.transistor.crystal.name=Crystal SMD Transistor
 metaitem.component.smd.transistor.refined.name=Refined SMD Transistor
-
-metaitem.component.smd.diode.name=Micro SMD Diode
-metaitem.component.smd.capacitor.name=Micro SMD Capacitor
-metaitem.component.smd.transistor.name=Micro SMD Transistor
-metaitem.component.smd.resistor.name=Micro SMD Resistor
-
 metaitem.hand_pump.name=Hand Pump
-
 metaitem.waste.nuclear.name=%s Waste
 waste.nuclear.global=Nuclear
 waste.nuclear.lanthanide.a=Lanthanide Group A
@@ -221,23 +813,16 @@ waste.nuclear.metal.c=Metal Group C
 waste.nuclear.heavy_metal=Heavy Metal
 waste.nuclear.metaloid=Metaloid
 waste.nuclear.nonmetal=Nonmetal
-
 metaitem.nuclear.dust.dioxide.name=%s Dioxide Dust
 metaitem.nuclear.dust.nitrate.name=%s Nitrate Dust
 metaitem.nuclear.dust.hexafluoride.name=%s Hexafluoride Dust
-
-
-/////////////////////CIRCUIT///////////////////////////
-
-//LV
-metaitem.circuit.basic.name=Primitive Processor
-metaitem.circuit.basic.tooltip=§b§oLV Circuit
+/////////////////////CIRCUIT///////////////////////////=
+//LV=
 metaitem.circuit.processor.refined.name=Refined Processor
 metaitem.circuit.processor.refined.tooltip=§b§oLV Circuit
 metaitem.circuit.basic_electronic.name=Electronic Processor
 metaitem.circuit.basic_electronic.tooltip=§b§oLV Circuit
-
-//MV
+//MV=
 metaitem.circuit.assembly.primitive.name=Primitive Assembly
 metaitem.circuit.assembly.primitive.tooltip=§b§oMV Circuit
 metaitem.circuit.assembly.electronic.name=Electronic Assembly
@@ -246,8 +831,7 @@ metaitem.circuit.assembly.refined.name=Refined Assembly
 metaitem.circuit.assembly.refined.tooltip=§b§oMV Circuit
 metaitem.circuit.processor.micro.name=Micro Processor
 metaitem.circuit.processor.micro.tooltip=§b§oMV Circuit
-
-//HV
+//HV=
 metaitem.circuit.computer.electronic.name=Electronic Computer
 metaitem.circuit.computer.electronic.tooltip=§b§oHV Circuit
 metaitem.circuit.computer.refined.name=Refined Computer
@@ -256,9 +840,7 @@ metaitem.circuit.processor_assembly.name=Micro Assembly
 metaitem.circuit.processor_assembly.tooltip=§b§oHV Circuit
 metaitem.circuit.nano_processor.name=Nano Processor
 metaitem.circuit.nano_processor.tooltip=§b§oHV Circuit
-
-
-//EV
+//EV=
 metaitem.circuit.mainframe.refined.name=Refined Mainframe
 metaitem.circuit.mainframe.refined.tooltip=§b§oEV Circuit
 metaitem.circuit.computer.micro.name=Micro Computer
@@ -267,8 +849,7 @@ metaitem.circuit.nano_processor_assembly.name=Nano Assembly
 metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV Circuit
 metaitem.circuit.quantum_processor.name=Quantum Processor
 metaitem.circuit.quantum_processor.tooltip=§b§oEV Circuit
-
-//IV
+//IV=
 metaitem.circuit.mainframe.micro.name=Micro Mainframe
 metaitem.circuit.mainframe.micro.tooltip=§b§oIV Circuit
 metaitem.circuit.computer.nano.name=Nano Computer
@@ -277,37 +858,29 @@ metaitem.circuit.assembly.quantum.name=Quantum Assembly
 metaitem.circuit.assembly.quantum.tooltip=§b§oIV Circuit
 metaitem.circuit.processor.crystal.name=Crystal Processor
 metaitem.circuit.processor.crystal.tooltip=§b§oIV Circuit
-
-//Luv
+//Luv=
 metaitem.circuit.mainframe.nano.name=Nano Mainframe
 metaitem.circuit.mainframe.nano.tooltip=§b§oLuV Circuit
 metaitem.circuit.computer.quantum.name=Quantum Computer
 metaitem.circuit.computer.quantum.tooltip=§b§oLuV Circuit
-metaitem.circuit.energy_flow.name=Crystal Assembly
-metaitem.circuit.energy_flow.tooltip=§b§oLuV Circuit
 metaitem.circuit.wetware_processor.name=Wetware Processor
 metaitem.circuit.wetware_processor.tooltip=§b§oLuV Circuit
-
-//ZPM
+//ZPM=
 metaitem.circuit.mainframe.quantum.name=Quantum Mainframe
 metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM Circuit
 metaitem.circuit.computer.crystal.name=Crystal Computer
 metaitem.circuit.computer.crystal.tooltip=§b§oZPM Circuit
 metaitem.circuit.wetware_assembly.name=Wetware Assembly
 metaitem.circuit.wetware_assembly.tooltip=§b§oZPM Circuit
-
-//UV
+//UV=
 metaitem.circuit.mainframe.crystal.name=Crystal Mainframe
 metaitem.circuit.mainframe.crystal.tooltip=§b§oUV Circuit
 metaitem.circuit.wetware_super_computer.name=Wetware Computer
 metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
-
-//MAX
+//MAX=
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
 metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
-
-
-//magneto resonatic
+//magneto resonatic=
 metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
 metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
@@ -328,258 +901,13 @@ metaitem.circuit.resonatic.uv.name=Superconductor Magneto Resonatic Circuit
 metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
 metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
-
-///////////////////////////////////////////////////////
-
-
-metaarmor.nms.nightvision.enabled=NanoMuscle™ Suite: NightVision enabled
-metaarmor.nms.nightvision.disabled=NanoMuscle™ Suite: NightVision disabled
-
-metaarmor.qts.nightvision.enabled=QuarkTech™ Suite: NightVision enabled
-metaarmor.qts.nightvision.disabled=QuarkTech™ Suite: NightVision disabled
-
-metaarmor.jetpack.hover.enable=Jetpack: hover mode enabled
-metaarmor.jetpack.hover.disable=Jetpack: hover mode disabled
-
-metaarmor.hud.status.enabled=§aON
-metaarmor.hud.status.disabled=§cOFF
-metaarmor.hud.energy_lvl=Energy level: %s
-metaarmor.hud.fuel_lvl=Fuel level: %s
-metaarmor.hud.hover_mode=Hover mode: %s
-mataarmor.hud.supply_mode=Supply mode: %s
-metaarmor.hud.fly_mode=Fly mode: %s
-metaarmor.hud.gravi_engine=GraviEngine: %s
-
-metaarmor.energy_share.enable=Energy Supply: Gadgets charging enabled
-metaarmor.energy_share.disable=Energy Supply: Gadgets charging disabled
-metaarmor.energy_share.tooltip=Supply mode: %s
-metaarmor.energy_share.tooltip.guide=To change mode shift-right click when holding item
-
-
-
+///////////////////////////////////////////////////////=
 gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
-
-gtadditions.machine.circuit_assembler.lv.name=Basic Circuit Assembling Machine
-gtadditions.machine.circuit_assembler.mv.name=Advanced Circuit Assembling Machine
-gtadditions.machine.circuit_assembler.hv.name=Advanced Circuit Assembling Machine II
-gtadditions.machine.circuit_assembler.ev.name=Advanced Circuit Assembling Machine III
-gtadditions.machine.circuit_assembler.iv.name=Advanced Circuit Assembling Machine IV
-gtadditions.machine.circuit_assembler.luv.name=Advanced Circuit Assembling Machine V
-gtadditions.machine.circuit_assembler.zpm.name=Advanced Circuit Assembling Machine VI
-gtadditions.machine.circuit_assembler.uv.name=Advanced Circuit Assembling Machine VII
-
-gtadditions.machine.cluster_mill.lv.name=Basic Cluster Mill
-gtadditions.machine.cluster_mill.mv.name=Advanced Cluster Mill
-gtadditions.machine.cluster_mill.hv.name=Advanced Cluster Mill II
-gtadditions.machine.cluster_mill.ev.name=Advanced Cluster Mill III
-gtadditions.machine.cluster_mill.iv.name=Advanced Cluster Mill IV
-gtadditions.machine.cluster_mill.luv.name=Advanced Cluster Mill V
-gtadditions.machine.cluster_mill.zpm.name=Advanced Cluster Mill VI
-gtadditions.machine.cluster_mill.uv.name=Advanced Cluster Mill VII
-
-gtadditions.machine.electric_furnace.iv.name=Electron Excitement Processor
-gtadditions.machine.electric_furnace.luv.name=Electron Excitement Processor
-gtadditions.machine.electric_furnace.zpm.name=Electron Excitement Processor
-gtadditions.machine.electric_furnace.uv.name=Electron Excitement Processor
-
-gtadditions.machine.macerator.iv.name=Blend-O-Matic 9001
-gtadditions.machine.macerator.luv.name=Blend-O-Matic 9002
-gtadditions.machine.macerator.zpm.name=Blend-O-Matic 9003
-gtadditions.machine.macerator.uv.name=Blend-O-Matic 9004
-
-gtadditions.machine.alloy_smelter.iv.name=Advanced Alloy Smelter IV
-gtadditions.machine.alloy_smelter.luv.name=Advanced Alloy Smelter V
-gtadditions.machine.alloy_smelter.zpm.name=Advanced Alloy Smelter VI
-gtadditions.machine.alloy_smelter.uv.name=Advanced Alloy Smelter VII
-
-gtadditions.machine.amplifab.iv.name=Advanced Amplifabricator IV
-gtadditions.machine.amplifab.luv.name=Advanced Amplifabricator V
-gtadditions.machine.amplifab.zpm.name=Advanced Amplifabricator VI
-gtadditions.machine.amplifab.uv.name=Advanced Amplifabricator VII
-
-gtadditions.machine.arc_furnace.iv.name=Advanced Arc Furnace IV
-gtadditions.machine.arc_furnace.luv.name=Advanced Arc Furnace V
-gtadditions.machine.arc_furnace.zpm.name=Advanced Arc Furnace VI
-gtadditions.machine.arc_furnace.uv.name=Advanced Arc Furnace VII
-
 gtadditions.machine.assembler.iv.name=Advanced Assembling Machine IV
-gtadditions.machine.assembler.luv.name=Advanced Assembling Machine V
-gtadditions.machine.assembler.zpm.name=Advanced Assembling Machine VI
-gtadditions.machine.assembler.uv.name=Advanced Assembling Machine VII
-
 gtadditions.machine.autoclave.iv.name=Advanced Autoclave IV
-gtadditions.machine.autoclave.luv.name=Advanced Autoclave V
-gtadditions.machine.autoclave.zpm.name=Advanced Autoclave VI
-gtadditions.machine.autoclave.uv.name=Advanced Autoclave VII
-
-gtadditions.machine.bender.iv.name=Advanced Bending Machine IV
-gtadditions.machine.bender.luv.name=Advanced Bending Machine V
-gtadditions.machine.bender.zpm.name=Advanced Bending Machine VI
-gtadditions.machine.bender.uv.name=Advanced Bending Machine VII
-
-gtadditions.machine.brewery.iv.name=Advanced Brewery IV
-gtadditions.machine.brewery.luv.name=Advanced Brewery V
-gtadditions.machine.brewery.zpm.name=Advanced Brewery VI
-gtadditions.machine.brewery.uv.name=Advanced Brewery VII
-
-gtadditions.machine.canner.iv.name=Advanced Canning Machine IV
-gtadditions.machine.canner.luv.name=Advanced Canning Machine V
-gtadditions.machine.canner.zpm.name=Advanced Canning Machine VI
-gtadditions.machine.canner.uv.name=Advanced Canning Machine VII
-
-gregtech.machine.centrifuge.ev.name=Molecular Separator
-gtadditions.machine.centrifuge.iv.name=Molecular Cyclone
-gtadditions.machine.centrifuge.luv.name=Molecular Cyclone
-gtadditions.machine.centrifuge.zpm.name=Molecular Cyclone
-gtadditions.machine.centrifuge.uv.name=Molecular Cyclone
-
-gtadditions.machine.chemical_bath.iv.name=Advanced Chemical Bath IV
-gtadditions.machine.chemical_bath.luv.name=Advanced Chemical Bath V
-gtadditions.machine.chemical_bath.zpm.name=Advanced Chemical Bath VI
-gtadditions.machine.chemical_bath.uv.name=Advanced Chemical Bath VII
-
-gtadditions.machine.chemical_reactor.iv.name=Advanced Chemical Reactor IV
-gtadditions.machine.chemical_reactor.luv.name=Advanced Chemical Reactor V
-gtadditions.machine.chemical_reactor.zpm.name=Advanced Chemical Reactor VI
-gtadditions.machine.chemical_reactor.uv.name=Advanced Chemical Reactor VII
-
-gregtech.machine.compressor.ev.name=Advanced Compressor III
-gtadditions.machine.compressor.iv.name=Singularity Compressor
-gtadditions.machine.compressor.luv.name=Singularity Compressor
-gtadditions.machine.compressor.zpm.name=Singularity Compressor
-gtadditions.machine.compressor.uv.name=Singularity Compressor
-
-gtadditions.machine.cutter.iv.name=Advanced Cutting Machine IV
-gtadditions.machine.cutter.luv.name=Advanced Cutting Machine V
-gtadditions.machine.cutter.zpm.name=Advanced Cutting Machine VI
-gtadditions.machine.cutter.uv.name=Advanced Cutting Machine VII
-
-gtadditions.machine.distillery.iv.name=Advanced Distillery IV
-gtadditions.machine.distillery.luv.name=Advanced Distillery V
-gtadditions.machine.distillery.zpm.name=Advanced Distillery VI
-gtadditions.machine.distillery.uv.name=Advanced Distillery VII
-
-gregtech.machine.electrolyzer.ev.name=Advanced Electrolyzer III
-gtadditions.machine.electrolyzer.iv.name=Molecular Disintegrator E-4905
-gtadditions.machine.electrolyzer.luv.name=Molecular Disintegrator E-4906
-gtadditions.machine.electrolyzer.zpm.name=Molecular Disintegrator E-4907
-gtadditions.machine.electrolyzer.uv.name=Molecular Disintegrator E-4908
-
-gtadditions.machine.electromagnetic_separator.iv.name=Advanced Electromagnetic Separator IV
-gtadditions.machine.electromagnetic_separator.luv.name=Advanced Electromagnetic Separator V
-gtadditions.machine.electromagnetic_separator.zpm.name=Advanced Electromagnetic Separator VI
-gtadditions.machine.electromagnetic_separator.uv.name=Advanced Electromagnetic Separator VII
-
-gregtech.machine.extractor.ev.name=Advanced Extractor III
-gtadditions.machine.extractor.iv.name=Vacuum Extractor
-gtadditions.machine.extractor.luv.name=Vacuum Extractor
-gtadditions.machine.extractor.zpm.name=Vacuum Extractor
-gtadditions.machine.extractor.uv.name=Vacuum Extractor
-
-gtadditions.machine.extruder.iv.name=Advanced Extruder IV
-gtadditions.machine.extruder.luv.name=Advanced Extruder V
-gtadditions.machine.extruder.zpm.name=Advanced Extruder VI
-gtadditions.machine.extruder.uv.name=Advanced Extruder VII
-
-gtadditions.machine.fermenter.iv.name=Advanced Fermenter IV
-gtadditions.machine.fermenter.luv.name=Advanced Fermenter V
-gtadditions.machine.fermenter.zpm.name=Advanced Fermenter VI
-gtadditions.machine.fermenter.uv.name=Advanced Fermenter VII
-
-gtadditions.machine.fluid_canner.iv.name=Instant Fluid Canner
-gtadditions.machine.fluid_canner.luv.name=Instant Fluid Canner
-gtadditions.machine.fluid_canner.zpm.name=Instant Fluid Canner
-gtadditions.machine.fluid_canner.uv.name=Instant Fluid Canner
-
-gtadditions.machine.fluid_extractor.iv.name=Advanced Fluid Extractor IV
-gtadditions.machine.fluid_extractor.luv.name=Advanced Fluid Extractor V
-gtadditions.machine.fluid_extractor.zpm.name=Advanced Fluid Extractor VI
-gtadditions.machine.fluid_extractor.uv.name=Advanced Fluid Extractor VII
-
-gtadditions.machine.fluid_heater.iv.name=Advanced Fluid Heater IV
-gtadditions.machine.fluid_heater.luv.name=Advanced Fluid Heater V
-gtadditions.machine.fluid_heater.zpm.name=Advanced Fluid Heater VI
-gtadditions.machine.fluid_heater.uv.name=Advanced Fluid Heater VII
-
-gtadditions.machine.fluid_solidifier.iv.name=Advanced Fluid Solidifier IV
-gtadditions.machine.fluid_solidifier.luv.name=Advanced Fluid Solidifier V
-gtadditions.machine.fluid_solidifier.zpm.name=Advanced Fluid Solidifier VI
-gtadditions.machine.fluid_solidifier.uv.name=Advanced Fluid Solidifier VII
-
-gtadditions.machine.forge_hammer.iv.name=Advanced Forge Hammer IV
-gtadditions.machine.forge_hammer.luv.name=Advanced Forge Hammer V
-gtadditions.machine.forge_hammer.zpm.name=Advanced Forge Hammer VI
-gtadditions.machine.forge_hammer.uv.name=Advanced Forge Hammer VII
-
-gtadditions.machine.forming_press.iv.name=Advanced Forming Press IV
-gtadditions.machine.forming_press.luv.name=Advanced Forming Press V
-gtadditions.machine.forming_press.zpm.name=Advanced Forming Press VI
-gtadditions.machine.forming_press.uv.name=Advanced Forming Press VII
-
-gtadditions.machine.lathe.iv.name=Advanced Lathe IV
-gtadditions.machine.lathe.luv.name=Advanced Lathe V
-gtadditions.machine.lathe.zpm.name=Advanced Lathe VI
-gtadditions.machine.lathe.uv.name=Advanced Lathe VII
-
-gtadditions.machine.microwave.iv.name=Advanced Microwave IV
-gtadditions.machine.microwave.luv.name=Advanced Microwave V
-gtadditions.machine.microwave.zpm.name=Advanced Microwave VI
-gtadditions.machine.microwave.uv.name=Advanced Microwave VII
-
-gtadditions.machine.mixer.iv.name=Advanced Mixer IV
-gtadditions.machine.mixer.luv.name=Advanced Mixer V
-gtadditions.machine.mixer.zpm.name=Advanced Mixer VI
-gtadditions.machine.mixer.uv.name=Advanced Mixer VII
-
-gtadditions.machine.ore_washer.iv.name=Repurposed Laundry-Washer I-360
-gtadditions.machine.ore_washer.luv.name=Repurposed Laundry-Washer I-720
-gtadditions.machine.ore_washer.zpm.name=Repurposed Laundry-Washer I-1080
-gtadditions.machine.ore_washer.uv.name=Repurposed Laundry-Washer I-1440
-
-gtadditions.machine.packer.iv.name=Boxinator
-gtadditions.machine.packer.luv.name=Boxinator
-gtadditions.machine.packer.zpm.name=Boxinator
-gtadditions.machine.packer.uv.name=Boxinator
-
-gtadditions.machine.unpacker.iv.name=Unboxinator
-gtadditions.machine.unpacker.luv.name=Unboxinator
-gtadditions.machine.unpacker.zpm.name=Unboxinator
-gtadditions.machine.unpacker.uv.name=Unboxinator
-
-gtadditions.machine.plasma_arc_furnace.iv.name=Advanced Plasma Arc Furnace IV
-gtadditions.machine.plasma_arc_furnace.luv.name=Advanced Plasma Arc Furnace V
-gtadditions.machine.plasma_arc_furnace.zpm.name=Advanced Plasma Arc Furnace VI
-gtadditions.machine.plasma_arc_furnace.uv.name=Advanced Plasma Arc Furnace VII
-
-gtadditions.machine.polarizer.iv.name=Advanced Polarizer IV
-gtadditions.machine.polarizer.luv.name=Advanced Polarizer V
-gtadditions.machine.polarizer.zpm.name=Advanced Polarizer VI
-gtadditions.machine.polarizer.uv.name=Advanced Polarizer VII
-
 gtadditions.machine.laser_engraver.iv.name=Advanced Precision Laser Engraver IV
-gtadditions.machine.laser_engraver.luv.name=Advanced Precision Laser Engraver V
-gtadditions.machine.laser_engraver.zpm.name=Advanced Precision Laser Engraver VI
-gtadditions.machine.laser_engraver.uv.name=Advanced Precision Laser Engraver VII
-
-gtadditions.machine.sifter.iv.name=Advanced Sifting Machine IV
-gtadditions.machine.sifter.luv.name=Advanced Sifting Machine V
-gtadditions.machine.sifter.zpm.name=Advanced Sifting Machine VI
-gtadditions.machine.sifter.uv.name=Advanced Sifting Machine VII
-
-gtadditions.machine.thermal_centrifuge.iv.name=Blaze Sweatshop T-6350
-gtadditions.machine.thermal_centrifuge.luv.name=Blaze Sweatshop T-6360
-gtadditions.machine.thermal_centrifuge.zpm.name=Blaze Sweatshop T-6370
-gtadditions.machine.thermal_centrifuge.uv.name=Blaze Sweatshop T-6380
-
-gtadditions.machine.wiremill.iv.name=Advanced Wiremill IV
-gtadditions.machine.wiremill.luv.name=Advanced Wiremill V
-gtadditions.machine.wiremill.zpm.name=Advanced Wiremill VI
-gtadditions.machine.wiremill.uv.name=Advanced Wiremill VII
-
 gtadditions.machine.distill_tower.name=[Deprecated] Distillation Tower
-gtadditions.machine.assembly_line.name=Assembly Line
 gtadditions.machine.large_circuit_assembly.name=Large Circuit Assembly Line
-gtadditions.machine.processing_array.name=Processing Array
 gtadditions.machine.volcanus.name=Volcanus
 gtadditions.machine.large_thermal_centrifuge.name=Large Thermal Centrifuge
 gtadditions.machine.large_assembler.name=Large Assembler
@@ -609,34 +937,9 @@ gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
 gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 gtadditions.machine.battery_tower.name=Battery Tower
-
-gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
-gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
-gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor Mk. 3
-gtadditions.machine.naquadah_reactor.mk4.name=Naquadah Reactor Mk. 4
-
 gtadditions.machine.rocket_generator.mk1.name=Basic Rocket Engine
 gtadditions.machine.rocket_generator.mk2.name=Advanced Rocket Engine
 gtadditions.machine.rocket_generator.mk3.name=Turbo Rocket Engine
-
-gtadditions.machine.mass_fab.lv.name=Basic Mass Fabricator
-gtadditions.machine.mass_fab.mv.name=Advanced Mass Fabricator
-gtadditions.machine.mass_fab.hv.name=Advanced Mass Fabricator II
-gtadditions.machine.mass_fab.ev.name=Advanced Mass Fabricator III
-gtadditions.machine.mass_fab.iv.name=Advanced Mass Fabricator IV
-gtadditions.machine.mass_fab.luv.name=Advanced Mass Fabricator V
-gtadditions.machine.mass_fab.zpm.name=Advanced Mass Fabricator VI
-gtadditions.machine.mass_fab.uv.name=Advanced Mass Fabricator VII
-
-gtadditions.machine.replicator.lv.name=Basic Replicator
-gtadditions.machine.replicator.mv.name=Advanced Replicator
-gtadditions.machine.replicator.hv.name=Advanced Replicator II
-gtadditions.machine.replicator.ev.name=Advanced Replicator III
-gtadditions.machine.replicator.iv.name=Advanced Replicator IV
-gtadditions.machine.replicator.luv.name=Advanced Replicator V
-gtadditions.machine.replicator.zpm.name=Advanced Replicator VI
-gtadditions.machine.replicator.uv.name=Advanced Replicator VII
-
 gtadditions.machine.decay_chamber.mv.name=Basic Decay Chamber
 gtadditions.machine.decay_chamber.hv.name=Advanced Decay Chamber
 gtadditions.machine.decay_chamber.ev.name=Advanced Decay Chamber II
@@ -644,16 +947,6 @@ gtadditions.machine.decay_chamber.iv.name=Advanced Decay Chamber III
 gtadditions.machine.decay_chamber.luv.name=Advanced Decay Chamber IV
 gtadditions.machine.decay_chamber.zpm.name=Advanced Decay Chamber V
 gtadditions.machine.decay_chamber.uv.name=Advanced Decay Chamber VI
-
-gtadditions.machine.pump.iv.name=Advanced Pump IV
-gtadditions.machine.pump.luv.name=Advanced Pump V
-gtadditions.machine.pump.zpm.name=Advanced Pump VI
-gtadditions.machine.pump.uv.name=Advanced Pump VII
-
-gregtech.machine.air_collector.ev.name=Advanced Air Collector III
-gtadditions.machine.air_collector.iv.name=Atmosphere Collector
-gtadditions.machine.air_collector.luv.name=Advanced Atmosphere Collector
-
 gtadditions.machine.dehydrator.lv.name=Basic Chemical Dehydrator
 gtadditions.machine.dehydrator.mv.name=Advanced Chemical Dehydrator
 gtadditions.machine.dehydrator.hv.name=Advanced Chemical Dehydrator II
@@ -662,7 +955,6 @@ gtadditions.machine.dehydrator.iv.name=Advanced Chemical Dehydrator IV
 gtadditions.machine.dehydrator.luv.name=Advanced Chemical Dehydrator V
 gtadditions.machine.dehydrator.zpm.name=Advanced Chemical Dehydrator VI
 gtadditions.machine.dehydrator.uv.name=Advanced Chemical Dehydrator VII
-
 gtadditions.machine.world_accelerator.lv.name=Basic World Accelerator
 gtadditions.machine.world_accelerator.mv.name=Advanced World Accelerator
 gtadditions.machine.world_accelerator.hv.name=Advanced World Accelerator II
@@ -673,19 +965,12 @@ gtadditions.machine.world_accelerator.zpm.name=Advanced World Accelerator VI
 gtadditions.machine.world_accelerator.uv.name=Advanced World Accelerator VII
 gtadditions.machine.world_accelerator.description=Increase tick update per tick. 2 modes: TileEntity or Random Tick. Use screwdriver to change mode.
 gtadditions.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d blocks radius.
-
 gtadditions.machine.nuclear_reactor.name=Nuclear Reactor
 gtadditions.machine.nuclear_breeder.name=Nuclear Breeder Reactor
 gtadditions.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
 gtadditions.machine.boiling_water_reactor.plutonium.name=Boiling Plutonium Nuclear Reactor
 gtadditions.machine.simple_ore_washer.name=Simple Ore Washer
 gtadditions.machine.simple_ore_washer.tooltip=Instead of using cauldron...
-
-gtadditions.machine.replicator.tooltip=Producing The Purest Of Elements
-
-gtadditions.machine.fusion_reactor.luv.name=Fusion Reactor Computer Mark 1
-gtadditions.machine.fusion_reactor.zpm.name=Fusion Reactor Computer Mark 2
-gtadditions.machine.fusion_reactor.uv.name=Fusion Reactor Computer Mark 3
 gtadditions.machine.miner.lv.name=Basic Chunk Miner
 gtadditions.machine.miner.mv.name=Advanced Chunk Miner
 gtadditions.machine.miner.hv.name=Advanced Chunk Miner II
@@ -695,13 +980,9 @@ gtadditions.machine.miner.advance.name=Advanced Large Miner
 gtadditions.machine.miner.multi.description=Mine all ore in an area of %dx%d Chunks. Break down Ore as Hammer tool using fortune %s.
 gtadditions.machine.miner.description=Mine all ores in the current chunk.
 gtadditions.machine.miner.fluid_usage=Consume %dmb of %s per tick
-
-
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet
-
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
-tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
 tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Assembler Casing
 tile.ga_multiblock_casing.tiered_hull_ulv.name=Integral Framework I
@@ -724,7 +1005,6 @@ tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eMax Voltage UV
 tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
 tile.ga_multiblock_casing.tiered_hull_max.tooltip=§eMax Voltage MAX
-tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=Borosilicate Reinforced Glass
 tile.ga_transparent_casing.nickel_reinforced_glass.name=Nickel Reinforced Glass
 tile.ga_transparent_casing.chrome_reinforced_glass.name=Chrome Reinforced Glass
@@ -750,18 +1030,9 @@ tile.cell_casing.cell_uv.name=UV Power Cell
 tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
 tile.cell_casing.tooltip.2=    Capacity: §e%d
 tile.cell_casing.tooltip.3=    Max Tier: §e%s
-
-
-metaitem.tool.bending_cylinder.name=%s Bending Cylinder
-metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
-
 recipemap.blast_alloy.name=Blast Alloy
-recipemap.cluster_mill.name=Cluster Mill
-recipemap.circuit_assembler.name=Circuit Assembler
 recipemap.coke_oven.name=[Deprecated] Coke Oven
 recipemap.distill_tower.name=[Deprecated] Distillation Tower
-recipemap.assembly_line.name=Assembly Line
-recipemap.processing_array.name=Processing Array
 recipemap.volcanus.name=Volcanus
 recipemap.large_thermal_centifuge.name=Large Thermal Centrifuge
 recipemap.large_assembler.name=Large Assembler
@@ -777,9 +1048,6 @@ recipemap.large_bender_and_forming.name=Large Bending and Forming machine
 recipemap.large_multi_use.name=Large Multi Use Machine
 recipemap.large_washing_plant.name=Large Washing Plant
 recipemap.large_Wiremill.name=Large Wiremill
-recipemap.naquadah_reactor.name=Naquadah Reactor Fuels
-recipemap.replicator.name=Replicator
-recipemap.mass_fab.name=Mass Fabricator
 recipemap.cracker_unit.name=[Deprecated] Cracking Recipes
 recipemap.electric_sieve.name=Electric Sieve Recipes
 recipemap.hot_coolant_turbine.name=Hot Coolant Turbine
@@ -791,139 +1059,15 @@ recipemap.rocket_fuel.name=Rocket Fuel Generator
 recipemap.chemical_plant.name=Chemical Plant
 recipemap.chemical_dehydrator.name=Chemical Dehydrator
 recipemap.large_forge_hammer.name=Large Forge Hammer
-recipemap.plasma_generator.name=Plasma Turbine Fuels
 recipemap.simple_ore_washer.name=Simple Ore Washer
 recipemap.nuclear_reactor.name=Nuclear Reactor
 recipemap.nuclear_breeder.name=Nuclear Reactor Breeder
 recipemap.decay_chamber.name=Decay Chamber
-
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
-
 material.brick=Brick
 material.fireclay=Fireclay
-material.coke=Coal Coke
-material.phosphorous_pentoxide=Phosphorous Pentoxide
-material.phosphoric_acid=Phosphoric Acid
-material.polyvinyl_acetate=Polyvinyl Acetate
-material.phenol=Phenol
-material.bisphenol_a=Bisphenol A
-material.epoxid=Epoxy Resin
-material.reinforced_epoxy_resin=Fiber-Reinforced Epoxy Resin
-material.borosilicate_glass=Borosilicate Glass
-material.polyvinyl_chloride=Polyvinyl Chloride
-material.vinyl_chloride=Vinyl Chloride
-material.ethylene=Ethylene
-material.charcoal_byproducts=Charcoal Byproducts
-material.benzene=Benzene
-material.wood_gas=Wood Gas
-material.wood_vinegar=Wood Vinegar
-material.wood_tar=Wood Tar
-material.sodium_hydroxide=Sodium Hydroxide
-material.quicklime=Quicklime
-material.acetone=Acetone
-material.sulfur_trioxide=Sulfur Trioxide
-material.sulfur_dioxide=Sulfur Dioxide
-material.glycerol=Glycerol
-material.fish_oil=Fish Oil
-material.methanol=Methanol
-material.carbon_monoxide=Carbon Monoxide
-material.nitro_fuel=Cetane-Boosted Diesel
-material.diluted_sulfuric_acid=Diluted Sulfuric Acid
-material.sodium_bisulfate=Sodium Bisulfate
-material.chloroform=Chloroform
-material.diluted_hydrochloric_acid=Diluted Hydrochloric Acid
-material.hypochlorous_acid=Hypochlorous Acid
-material.ammonia=Ammonia
-material.chloramine=Chloramine
-material.dimethylamine=Dimethylamine
-material.dimethylhidrazine=1,1-Dimethylhydrazine
-material.rocket_fuel=Rocket Fuel
-material.dinitrogen_tetroxide=Dinitrogen Tetroxide
-material.silicon_rubber=Silicone Rubber
-material.polydimethylsiloxane=Polydimethylsiloxane
-material.dimethyldichlorosilane=Dimethyldichlorosilane
-material.styrene=Styrene
 material.polystyrene=Polystyrene
-material.butadiene=Butadiene
-material.raw_styrene_butadiene_rubber=Raw Styrene-Butadiene Rubber
-material.styrene_butadiene_rubber=Styrene-Butadiene Rubber
-material.dichlorobenzene=Dichlorobenzene
-material.hydrochloric_acid=Hydrochloric Acid
-material.acetic_acid=Acetic Acid
-material.fermented_biomass=Fermented Biomass
-material.potash=Potash
-material.soda_ash=Soda Ash
-material.hydrofluoric_acid=Hydrofluoric Acid
-material.nitric_oxide=Nitric Oxide
-material.methyl_acetate=Methyl Acetate
-material.ethenone=Ethenone
-material.tetranitromethane=Tetranitromethane
-material.bio_diesel=Bio Diesel
-material.raw_growth_medium=Raw Growth Medium
-material.sterilized_growth_medium=Sterilized Growth Medium
-material.meat=Meat
-material.cooked_meat=Cooked Meat
-material.vinyl_acetate=Vinyl Acetate
-material.gallium_arsenide=Gallium Arsenide
-material.polyphenylene_sulfide=Polyphenylene Sulfide
-material.nickel_sulfate_water_solution=Nickel Sulfate Water Solution
-material.blue_vitriol_water_solution=Blue Vitriol Water Solution
-material.propane=Propane
-material.propene=Propene
-material.ethane=Ethane
-material.butene=Butene
-material.butane=Butane
-material.calcium_acetate=Calcium Acetate Solution
-material.cumene=Cumene
-material.indium_gallium_phosphide=Indium Gallium Phosphide
-material.platinum_group_sludge=Platinum Group Sludge
-material.ferrite_mixture=Ferrite Mixture
-material.nickel_zinc_ferrite=Nickel Zinc Ferrite
-material.indium_concentrate=Indium Concentrate
-material.lead_zinc_solution=Lead-Zinc Solution
-material.tetrafluoroethylene=Tetrafluoroethylene
-material.salt_water=Salt Water
-material.hydrocracked_ethane=Hydro-Cracked Ethane
-material.hydrocracked_ethylene=Hydro-Cracked Ethylene
-material.hydrocracked_propene=Hydro-Cracked Propene
-material.hydrocracked_propane=Hydro-Cracked Propane
-material.hydrocracked_light_fuel=Hydro-Cracked Light Fuel
-material.hydrocracked_butane=Hydro-Cracked Butane
-material.hydrocracked_naphtha=Hydro-Cracked Naphtha
-material.hydrocracked_heavy_fuel=Hydro-Cracked Heavy Fuel
-material.hydrocracked_gas=Hydro-Cracked Refinery Gas
-material.hydrocracked_butene=Hydro-Cracked Butene
-material.hydrocracked_butadiene=Hydro-Cracked Butadiene
-material.steamcracked_ethane=Steam-Cracked Ethane
-material.steamcracked_ethylene=Steam-Cracked Ethylene
-material.steamcracked_propene=Steam-Cracked Propene
-material.steamcracked_propane=Steam-Cracked Propane
-material.cracked_light_fuel=Steam-Cracked Light Fuel
-material.steamcracked_butane=Steam-Cracked Butane
-material.steamcracked_naphtha=Steam-Cracked Naphtha
-material.cracked_heavy_fuel=Steam-Cracked Heavy Fuel
-material.steamcracked_gas=Steam-Cracked Refinery Gas
-material.steamcracked_butene=Steam-Cracked Butene
-material.steamcracked_butadiene=Steam-Cracked Butadiene
-material.biogas=Bio Gas
-material.chloromethane=Chloromethane
-material.allyl_chloride=Allyl Chloride
-material.isoprene=Isoprene
-material.massicot=Massicot
-material.antimony_trioxide=Antimony Trioxide
-material.zincite=Zincite
-material.cobalt_oxide=Cobalt Oxide
-material.arsenic_trioxide=Arsenic Trioxide
-material.cupric_oxide=Cupric Oxide
-material.ferrosilite=Ferrosilite
-material.magnesia=Magnesia
-material.ga_sodium_sulfide=Sodium Sulfide
-material.neutral_matter=Neutral Matter
-material.positive_matter=Positive Matter
-material.neutronium=Neutronium
-material.plasma=Plasma Confinement
-material.lignite_coke=Lignite Coke
 material.pyrotheum=Pyrotheum
 material.eglin_steel_base=Eglin Steel Base
 material.eglin_steel=Eglin Steel
@@ -936,28 +1080,10 @@ material.hastelloy_n=Hastelloy N
 material.tumbaga=Tumbaga
 material.stellite=Stellite
 material.talonite=Talonite
-material.mv_superconductor_base=MV Superconductor Base
-material.hv_superconductor_base=HV Superconductor Base
-material.ev_superconductor_base=EV Superconductor Base
-material.iv_superconductor_base=IV Superconductor Base
-material.luv_superconductor_base=LuV Superconductor Base
-material.zpm_superconductor_base=ZPM Superconductor Base
-material.mv_superconductor=MV Superconductor
-material.hv_superconductor=HV Superconductor
-material.ev_superconductor=EV Superconductor
-material.iv_superconductor=IV Superconductor
-material.luv_superconductor=LuV Superconductor
-material.zpm_superconductor=ZPM Superconductor
-material.alumino_silicate_wool=Alumino Silicate Wool
-item.alumino_silicate_wool.dust=Alumino Silicate Wool
-material.mica_based=Mica Based Pulp
-item.mica_based.dust=Mica Based Pulp
 material.ultima=Ultima Alloy
-material.iron_chloride=Iron III Chloride
 material.blizz=Blizz
 material.cryotheum=Cryotheum
 material.high_pressure_steam=High Pressure Steam
-material.sand=Sand
 material.hg_alloy=HG-1223
 material.incoloy_ma=Incoloy MA-956
 material.babbitt_alloy=Babbitt Alloy
@@ -1238,53 +1364,9 @@ material.mendelevium261=Mendelevium 261
 material.mendelevium263=Mendelevium 263
 material.hydrogen_fluoride=Hydrogen Fluoride
 material.abyssal_alloy=Abyssal Alloy
-
-
-
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
 gregtech.fluid.hexafluoride=%s Hexafluoride
-
-item.epoxid.ingot=Epoxy Resin Bar
-item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp
-item.epoxid.dustSmall=Small Pile of Epoxy Resin Pulp
-item.epoxid.dust=Epoxy Resin Pulp
-item.epoxid.nugget=Epoxy Resin Chip
-item.epoxid.plateDense=Dense Epoxy Resin Sheet
-item.epoxid.plate=Epoxy Resin Sheet
-item.epoxid.foil=Thin Epoxy Resin Sheet
-item.reinforced_epoxy_resin.ingot=Fiber-Reinforced Epoxy Resin Bar
-item.reinforced_epoxy_resin.dustTiny=Tiny Pile of Fiber-Reinforced Epoxy Resin Pulp
-item.reinforced_epoxy_resin.dustSmall=Small Pile of Fiber-Reinforced Epoxy Resin Pulp
-item.reinforced_epoxy_resin.dust=Fiber-Reinforced Epoxy Resin Pulp
-item.reinforced_epoxy_resin.nugget=Fiber-Reinforced Epoxy Resin Chip
-item.reinforced_epoxy_resin.plateDense=Dense Fiber-Reinforced Epoxy Resin Sheet
-item.reinforced_epoxy_resin.plate=Fiber-Reinforced Epoxy Resin Sheet
-item.reinforced_epoxy_resin.foil=Thin Fiber-Reinforced Epoxy Resin Sheet
-item.borosilicate_glass.ingot=Borosilicate Glass Bar
-item.borosilicate_glass.dustTiny=Tiny Pile of Borosilicate Glass Pulp
-item.borosilicate_glass.dustSmall=Small Pile of Borosilicate Glass Pulp
-item.borosilicate_glass.dust=Borosilicate Glass Pulp
-item.borosilicate_glass.nugget=Borosilicate Glass Chip
-item.borosilicate_glass.plateDense=Dense Borosilicate Glass Sheet
-item.borosilicate_glass.plate=Borosilicate Glass Sheet
-item.borosilicate_glass.foil=Thin Borosilicate Glass Sheet
-item.polyvinyl_chloride.ingot=Polyvinyl Chloride Bar
-item.polyvinyl_chloride.dustTiny=Tiny Pile of Polyvinyl Chloride Pulp
-item.polyvinyl_chloride.dustSmall=Small Pile of Polyvinyl Chloride Pulp
-item.polyvinyl_chloride.dust=Polyvinyl Chloride Pulp
-item.polyvinyl_chloride.nugget=Polyvinyl Chloride Chip
-item.polyvinyl_chloride.plateDense=Dense Polyvinyl Chloride Sheet
-item.polyvinyl_chloride.plate=Polyvinyl Chloride Sheet
-item.polyvinyl_chloride.foil=Thin Polyvinyl Chloride Sheet
-item.silicone_rubber.ingot=Silicone Rubber Bar
-item.silicone_rubber.dustTiny=Tiny Pile of Silicone Rubber Pulp
-item.silicone_rubber.dustSmall=Small Pile of Silicone Rubber Pulp
-item.silicone_rubber.dust=Silicone Rubber Pulp
-item.silicone_rubber.nugget=Silicone Rubber Chip
-item.silicone_rubber.plateDense=Dense Silicone Rubber Sheet
-item.silicone_rubber.plate=Silicone Rubber Sheet
-item.silicone_rubber.foil=Thin Silicone Rubber Sheet
 item.polystyrene.ingot=Polystyrene Bar
 item.polystyrene.dustTiny=Tiny Pile of Polystyrene Pulp
 item.polystyrene.dustSmall=Small Pile of Polystyrene Pulp
@@ -1293,36 +1375,19 @@ item.polystyrene.nugget=Polystyrene Chip
 item.polystyrene.plateDense=Dense Polystyrene Sheet
 item.polystyrene.plate=Polystyrene Sheet
 item.polystyrene.foil=Thin Polystyrene Sheet
-item.styrene_butadiene_rubber.ingot=Styrene-Butadiene Rubber Bar
-item.styrene_butadiene_rubber.dustTiny=Tiny Pile of Styrene-Butadiene Rubber Pulp
-item.styrene_butadiene_rubber.dustSmall=Small Pile of Styrene-Butadiene Rubber Pulp
-item.styrene_butadiene_rubber.dust=Styrene-Butadiene Rubber Pulp
-item.styrene_butadiene_rubber.nugget=Styrene-Butadiene Rubber Chip
-item.styrene_butadiene_rubber.plateDense=Dense Styrene-Butadiene Rubber Sheet
-item.styrene_butadiene_rubber.plate=Styrene-Butadiene Rubber Sheet
-item.styrene_butadiene_rubber.foil=Thin Styrene-Butadiene Rubber Sheet
-item.meat.dustTiny=Tiny Pile of Mince Meat
-item.meat.dustSmall=Small Pile of Mince Meat
-item.meat.dust=Mince Meat
 item.ga_seed.material.name=%s Seed
 item.ga_essence.material.name=%s Essence
-
 gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 height. You can put energy hatch everywhere. Hatch cannot be higher than Cell Casings.
 gregtech.multiblock.large_forge_hammer.description=
 gregtech.multiblock.large_forge_hammer.tooltip=Use lubricant to Run. Processes 2 items per voltage tier difference, 1.25x faster and 90%% EUt.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 structure with Tiered Casing that defined the Tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
-gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is use to create high tier circuit.
-gregtech.multiblock.processing_array.description=The Processing Array combines up to 16 single block machines in a single multiblock, effectively easing automation.
 gregtech.multiblock.volcanus.description=The Volcanus is built as EBF. It consume 40L of Pyrotheum per sec and it is 3x faster.
 gregtech.multiblock.large_bender_and_forming.description=The large bending and forming is 6x faster on the same voltage,  Processes 4 items per voltage tier difference.
 gregtech.multiblock.large_multi_use.description=The multi use is 3.5x faster on the same voltage, has 80%% EUt discount  and Processes 2 items per voltage tier difference.
 gregtech.multiblock.large_washing_plant.description=The washing plant is 5x faster on the same voltage and Processes 4 items per voltage tier difference.
 gregtech.multiblock.distill_tower.description=The GA Distillation Tower is a multiblock structure consisting of 2-12 layers. It's used for distilling fluids, but unlike the Distillery, gives you multiple outputs per input, including item outputs. Every layer has a different output.
-gregtech.multiblock.fusion_reactor_mk1.description=The Fusion Reactor Mark 1 is a large multiblock structure used for fusing elements into heavier ones. The Mark 1 Fusion Reactor can use LuV, ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 100k.
-gregtech.multiblock.fusion_reactor_mk2.description=The Fusion Reactor Mark 2 is a large multiblock structure used for fusing elements into heavier ones. The Mark 2 Fusion Reactor can use ZPM or UV Energy Hatches. For every Hatch it has its buffer increases by 200k.
-gregtech.multiblock.fusion_reactor_mk3.description=The Fusion Reactor Mark 3 is a large multiblock structure used for fusing elements into heavier ones. The Mark 3 Fusion Reactor can only use UV Energy Hatches. For every Hatch it has its buffer increases by 400k.
 gregtech.multiblock.reactor.tooltip.1=The Nuclear Reactor and the Nuclear Breeder Reactor use Nuclear Power to generate Hot Coolant.
 gregtech.multiblock.reactor.tooltip.2=Coolant is fluid and can be Steam(150C), Deuterium(450C), Sodium(800C), Sodium Potassium Alloy(900C), FLiNaK(1800C), FLiBe(1700C) and Lead Bismuth Eutatic(1900C).
 gregtech.multiblock.reactor.tooltip.3=The Nuclear Reactor will drain all coolant store in Hatches and 1 Bucket of Coolant decrease Temperature by 1C.
@@ -1337,7 +1402,6 @@ gtadditions.multiblock.universal.tooltip.2=EUt Multiplier: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.3=Duration Multiplier: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.4=Max Parallel: §e%d§7 Per Overclocking Tier
 gtadditions.multiblock.universal.tooltip.5=Boost Chance: §e%d%%§r
-
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
 gtadditions.multiblock.void_miner.description.3=Temperature will increase if there is only Pyrotheum and will decrease if there is only Cryotheum.
@@ -1351,8 +1415,8 @@ gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite,
 gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built as the Vacuum Freezer. It consume 20L of Cryotheum per sec and it is 2x faster and process 4 items at one time.
 gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built as the the Distillation Tower with 26 layer.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes :
-gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
-gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
+gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower
+gregtech.multiblock.advanced_distillation_tower.description4=    Distillery
 gtadditions.multiblock.chemical_plant.tooltip=Duration Depend on Coil Tier.
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
 gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
@@ -1368,9 +1432,6 @@ gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Pot
 gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
 gtadditions.multiblock.battery_tower.tooltip.2=All the cells in the tower need to be of the same tier and the tower will drain 10%% of the cells voltage per tick.
 gtadditions.multiblock.battery_tower.tooltip.3=The input/output hatches can not be of a higher tier than the tier of the cells.
-
-
-
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
 gregtech.multiblock.universal.energy_used=Energy using: %d EU
@@ -1399,47 +1460,26 @@ gregtech.multiblock.nuclear_reactor.coolant=Coolant: %s Min Temp: %dC
 gregtech.multiblock.nuclear_reactor.base_heat=Heat Produce: %d C/sec
 gregtech.multiblock.nuclear_reactor.rod_type=Rod Heat Factor: %d%%
 gregtech.multiblock.nuclear_reactor.produce=Produce Hot Coolant !
-
-item.material.oreprefix.plateCurved=Curved %s Plate
-item.material.oreprefix.ingotDouble=Double %s Ingot
 item.material.oreprefix.pipeGaSmall=Small %s Pipe
 item.material.oreprefix.pipeGa=%s Pipe
 item.material.oreprefix.pipeGaLarge=Large %s Pipe
 item.material.oreprefix.nitrate=%s Nitrate
 item.material.oreprefix.dioxide=%s Dioxide
 item.material.oreprefix.hexafluoride=%s Hexafluoride
-
-
-
-metaitem.rubber_drop.name=Sticky Resin
-
-tile.metal_casing.primitive_bricks.name=Firebricks
 tile.ga_metal_casing.material.name=%s Metal Casing
-gregtech.machine.primitive_blast_furnace.bronze.tooltip=Structure: 3x3x4 (WxLxH) The entire structure is made out of Firebricks (32 in total)./nFirst Layer is a 3x3 square./nSecond, third, and fourth layers are hollow, without the middle block./nThis block goes on the middle of any side in the second layer./nThe sides of Blast Furnaces can be shared, if the side does not have a controller./n
 gregtech.machine.primitive_blast_furnace.industrial.tooltip=It's the upgraded version of The Primitive Blast Furnace.
-
-
 gtadditions.machine.drum.wood.name=Wooden Barrel
 gtadditions.machine.drum.bronze.name=Bronze Drum
 gtadditions.machine.drum.steel.name=Steel Drum
 gtadditions.machine.drum.stainless_steel.name=Stainless Steel Drum
 gtadditions.machine.drum.titanium.name=Titanium Drum
 gtadditions.machine.drum.tungstensteel.name=Tungstensteel Drum
-
 gtadditions.machine.crate.wood.name=Wooden Crate
 gtadditions.machine.crate.bronze.name=Bronze Crate
 gtadditions.machine.crate.steel.name=Steel Crate
 gtadditions.machine.crate.stainless_steel.name=Stainless Steel Crate
 gtadditions.machine.crate.titanium.name=Titanium Crate
 gtadditions.machine.crate.tungstensteel.name=Tungstensteel Crate
-
-fluid.tile.water=Water
-fluid.tile.lava=Lava
-
-gregtech.machine.assembler.iv.name=Assembler IV
-gregtech.machine.autoclave.iv.name=Autoclave IV
-gregtech.machine.laser_engraver.iv.name=Laser Engraver IV
-
 metaitem.plank.jungle.name=Jungle Plank
 metaitem.plank.acacia.name=Acacia Plank
 metaitem.plank.darkoak.name=Dark Oak Plank
@@ -1451,8 +1491,6 @@ metaitem.schematic.dust.name=Schematic (Dust)
 metaitem.schematic.3by3.name=Schematic (3x3)
 metaitem.schematic.2by2.name=Schematic (2x2)
 metaitem.schematic.name=Blank Schematic
-
-
 item.gtadditions:comb.lignite.name=Lignite Comb
 item.gtadditions:comb.coal.name=Coal Comb
 item.gtadditions:comb.rubbery.name=Sticky Comb
@@ -1518,7 +1556,6 @@ for.bees.species.iridium=Iridium
 for.bees.species.uranium=Uranium
 for.bees.species.plutonium=Plutonium
 for.bees.species.naquadah=Naquadah
-
 material.aluminium.name=Aluminium
 material.chrome.name=Chrome
 material.iridium.name=Iridium
@@ -1586,134 +1623,103 @@ material.dibismuthhydroborat=Dibismuthhydroborat
 material.bismuth_tellurite=Bismuth Tellurite
 material.circuit_compound_mkc=Circuit Compound MK3
 material.yttrium_oxide=Yttrium Oxide
-material.enderium=Enderium
-
-
-
 gtadditions.machine.convert_gteu.ulv.1.name=GTEU Energy Converter (ULV)
 gtadditions.machine.convert_gteu.ulv.4.name=GTEU Energy Converter (ULV)
 gtadditions.machine.convert_gteu.ulv.9.name=GTEU Energy Converter (ULV)
 gtadditions.machine.convert_gteu.ulv.16.name=GTEU Energy Converter (ULV)
-
 gtadditions.machine.convert_gteu.lv.1.name=GTEU Energy Converter (LV)
 gtadditions.machine.convert_gteu.lv.4.name=GTEU Energy Converter (LV)
 gtadditions.machine.convert_gteu.lv.9.name=GTEU Energy Converter (LV)
 gtadditions.machine.convert_gteu.lv.16.name=GTEU Energy Converter (LV)
-
 gtadditions.machine.convert_gteu.mv.1.name=GTEU Energy Converter (MV)
 gtadditions.machine.convert_gteu.mv.4.name=GTEU Energy Converter (MV)
 gtadditions.machine.convert_gteu.mv.9.name=GTEU Energy Converter (MV)
 gtadditions.machine.convert_gteu.mv.16.name=GTEU Energy Converter (MV)
-
 gtadditions.machine.convert_gteu.hv.1.name=GTEU Energy Converter (HV)
 gtadditions.machine.convert_gteu.hv.4.name=GTEU Energy Converter (HV)
 gtadditions.machine.convert_gteu.hv.9.name=GTEU Energy Converter (HV)
 gtadditions.machine.convert_gteu.hv.16.name=GTEU Energy Converter (HV)
-
 gtadditions.machine.convert_gteu.ev.1.name=GTEU Energy Converter (EV)
 gtadditions.machine.convert_gteu.ev.4.name=GTEU Energy Converter (EV)
 gtadditions.machine.convert_gteu.ev.9.name=GTEU Energy Converter (EV)
 gtadditions.machine.convert_gteu.ev.16.name=GTEU Energy Converter (EV)
-
 gtadditions.machine.convert_gteu.iv.1.name=GTEU Energy Converter (IV)
 gtadditions.machine.convert_gteu.iv.4.name=GTEU Energy Converter (IV)
 gtadditions.machine.convert_gteu.iv.9.name=GTEU Energy Converter (IV)
 gtadditions.machine.convert_gteu.iv.16.name=GTEU Energy Converter (IV)
-
 gtadditions.machine.convert_gteu.luv.1.name=GTEU Energy Converter (LuV)
 gtadditions.machine.convert_gteu.luv.4.name=GTEU Energy Converter (LuV)
 gtadditions.machine.convert_gteu.luv.9.name=GTEU Energy Converter (LuV)
 gtadditions.machine.convert_gteu.luv.16.name=GTEU Energy Converter (LuV)
-
 gtadditions.machine.convert_gteu.zpm.1.name=GTEU Energy Converter (ZPM)
 gtadditions.machine.convert_gteu.zpm.4.name=GTEU Energy Converter (ZPM)
 gtadditions.machine.convert_gteu.zpm.9.name=GTEU Energy Converter (ZPM)
 gtadditions.machine.convert_gteu.zpm.16.name=GTEU Energy Converter (ZPM)
-
 gtadditions.machine.convert_gteu.uv.1.name=GTEU Energy Converter (UV)
 gtadditions.machine.convert_gteu.uv.4.name=GTEU Energy Converter (UV)
 gtadditions.machine.convert_gteu.uv.9.name=GTEU Energy Converter (UV)
 gtadditions.machine.convert_gteu.uv.16.name=GTEU Energy Converter (UV)
-
 gtadditions.machine.convert_gteu.max.1.name=GTEU Energy Converter (MAX)
 gtadditions.machine.convert_gteu.max.4.name=GTEU Energy Converter (MAX)
 gtadditions.machine.convert_gteu.max.9.name=GTEU Energy Converter (MAX)
 gtadditions.machine.convert_gteu.max.16.name=GTEU Energy Converter (MAX)
-
-
 gtadditions.machine.convert_forge.ulv.1.name=Forge Energy Converter (ULV)
 gtadditions.machine.convert_forge.ulv.4.name=Forge Energy Converter (ULV)
 gtadditions.machine.convert_forge.ulv.9.name=Forge Energy Converter (ULV)
 gtadditions.machine.convert_forge.ulv.16.name=Forge Energy Converter (ULV)
-
 gtadditions.machine.convert_forge.lv.1.name=Forge Energy Converter (LV)
 gtadditions.machine.convert_forge.lv.4.name=Forge Energy Converter (LV)
 gtadditions.machine.convert_forge.lv.9.name=Forge Energy Converter (LV)
 gtadditions.machine.convert_forge.lv.16.name=Forge Energy Converter (LV)
-
 gtadditions.machine.convert_forge.mv.1.name=Forge Energy Converter (MV)
 gtadditions.machine.convert_forge.mv.4.name=Forge Energy Converter (MV)
 gtadditions.machine.convert_forge.mv.9.name=Forge Energy Converter (MV)
 gtadditions.machine.convert_forge.mv.16.name=Forge Energy Converter (MV)
-
 gtadditions.machine.convert_forge.hv.1.name=Forge Energy Converter (HV)
 gtadditions.machine.convert_forge.hv.4.name=Forge Energy Converter (HV)
 gtadditions.machine.convert_forge.hv.9.name=Forge Energy Converter (HV)
 gtadditions.machine.convert_forge.hv.16.name=Forge Energy Converter (HV)
-
 gtadditions.machine.convert_forge.ev.1.name=Forge Energy Converter (EV)
 gtadditions.machine.convert_forge.ev.4.name=Forge Energy Converter (EV)
 gtadditions.machine.convert_forge.ev.9.name=Forge Energy Converter (EV)
 gtadditions.machine.convert_forge.ev.16.name=Forge Energy Converter (EV)
-
 gtadditions.machine.convert_forge.iv.1.name=Forge Energy Converter (IV)
 gtadditions.machine.convert_forge.iv.4.name=Forge Energy Converter (IV)
 gtadditions.machine.convert_forge.iv.9.name=Forge Energy Converter (IV)
 gtadditions.machine.convert_forge.iv.16.name=Forge Energy Converter (IV)
-
 gtadditions.machine.convert_forge.luv.1.name=Forge Energy Converter (LuV)
 gtadditions.machine.convert_forge.luv.4.name=Forge Energy Converter (LuV)
 gtadditions.machine.convert_forge.luv.9.name=Forge Energy Converter (LuV)
 gtadditions.machine.convert_forge.luv.16.name=Forge Energy Converter (LuV)
-
 gtadditions.machine.convert_forge.zpm.1.name=Forge Energy Converter (ZPM)
 gtadditions.machine.convert_forge.zpm.4.name=Forge Energy Converter (ZPM)
 gtadditions.machine.convert_forge.zpm.9.name=Forge Energy Converter (ZPM)
 gtadditions.machine.convert_forge.zpm.16.name=Forge Energy Converter (ZPM)
-
 gtadditions.machine.convert_forge.uv.1.name=Forge Energy Converter (UV)
 gtadditions.machine.convert_forge.uv.4.name=Forge Energy Converter (UV)
 gtadditions.machine.convert_forge.uv.9.name=Forge Energy Converter (UV)
 gtadditions.machine.convert_forge.uv.16.name=Forge Energy Converter (UV)
-
 gtadditions.machine.convert_forge.max.1.name=Forge Energy Converter (MAX)
 gtadditions.machine.convert_forge.max.4.name=Forge Energy Converter (MAX)
 gtadditions.machine.convert_forge.max.9.name=Forge Energy Converter (MAX)
 gtadditions.machine.convert_forge.max.16.name=Forge Energy Converter (MAX)
-
 gtadditions.converter.energy.fe=FE
 gtadditions.converter.energy.gteu=GTEU
 gtadditions.converter.energy.simple.fe=FE
 gtadditions.converter.energy.simple.gteu=EU
-
 gtadditions.converter.energy_out=Maximum %s OUT: §e%d FE§7/tick
 gtadditions.converter.energy_in=Maximum %s IN: §e%d FE§7/tick
 gtadditions.converter.description=Converts %s to %s
 gtadditions.convert_gteu=Converts EU to FE
 gtadditions.convert_forge=Converts FE to EU
 gtadditions.converter.disabled=§cDisabled
-
 item.material.oreprefix.oreChunk=%s Ore Chunk
 item.material.oreprefix.oreNetherChunk=%s Ore Chunk
 item.material.oreprefix.oreEnderChunk=%s Ore Chunk
 item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
-
 item.material.oreprefix.seed=%s Seed
 item.material.oreprefix.essence=%s Essence
 item.material.oreprefix.crop=%s crop
-
-
-
 gtadditions.machine.sieve.lv.name=Basic Electric Sieve
 gtadditions.machine.sieve.mv.name=Advanced Electric Sieve
 gtadditions.machine.sieve.hv.name=Advanced Electric Sieve II
@@ -1722,7 +1728,6 @@ gtadditions.machine.sieve.iv.name=Advanced Electric Sieve IV
 gtadditions.machine.sieve.luv.name=Advanced Electric Sieve V
 gtadditions.machine.sieve.zpm.name=Advanced Electric Sieve VI
 gtadditions.machine.sieve.uv.name=Advanced Electric Sieve VII
-
 gtadditions.machine.rock_breaker.lv.name=Basic Electric Rock Breaker
 gtadditions.machine.rock_breaker.mv.name=Advanced Electric Rock Breaker
 gtadditions.machine.rock_breaker.hv.name=Advanced Electric Rock Breaker II
@@ -1731,7 +1736,6 @@ gtadditions.machine.rock_breaker.iv.name=Advanced Electric Rock Breaker IV
 gtadditions.machine.rock_breaker.luv.name=Advanced Electric Rock Breaker V
 gtadditions.machine.rock_breaker.zpm.name=Advanced Electric Rock Breaker VI
 gtadditions.machine.rock_breaker.uv.name=Advanced Electric Rock Breaker VII
-
 gtadditions.machine.attractor.lv.name=Basic Bee Attractor
 gtadditions.machine.attractor.mv.name=Advanced Bee Attractor
 gtadditions.machine.attractor.hv.name=Advanced Bee Attractor II
@@ -1740,20 +1744,14 @@ gtadditions.machine.attractor.iv.name=Advanced Bee Attractor IV
 gtadditions.machine.attractor.luv.name=Advanced Bee Attractor V
 gtadditions.machine.attractor.zpm.name=Advanced Bee Attractor VI
 gtadditions.machine.attractor.uv.name=Advanced Bee Attractor VII
-
 gtadditions.machine.pump.steam.name=Steam Pump
 gtadditions.machine.sieve.steam.name=Steam Sieve
-gtadditions.machine.steam_mixer.name=Steam Mixer
-
 gtadditions.machine.rock_breaker.steam.name=Steam Rock Breaker
 item.material.oreprefix.oreSandyChunk=Sandy %s Ore Chunk
-
 item.gbpebble.basalt.name=Basalt Pebble
 item.gbpebble.black_granite.name=Black Granite Pebble
 item.gbpebble.marble.name=Marble Pebble
 item.gbpebble.red_granite.name=Red Granite Pebble
-
-
 gtadditions.machine.transformer.lv.4.name=Low Voltage Transformer 4 Amps
 gtadditions.machine.transformer.lv.8.name=Low Voltage Transformer 8 Amps
 gtadditions.machine.transformer.lv.12.name=Low Voltage Transformer 12 Amps
@@ -1786,7 +1784,6 @@ gtadditions.machine.transformer.uv.4.name=Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uv.8.name=Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uv.12.name=Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uv.16.name=Ultimate Voltage Transformer 16 Amps
-
 gtadditions.machine.energy_hatch.input.ulv.4.name=Energy Input Hatch 4 Amps (ULV)
 gtadditions.machine.energy_hatch.input.ulv.16.name=Energy Input Hatch 16 Amps (ULV)
 gtadditions.machine.energy_hatch.input.ulv.64.name=Energy Input Hatch 64 Amps (ULV)
@@ -1823,7 +1820,6 @@ gtadditions.machine.energy_hatch.input.uv.4.name=Energy Input Hatch 4 Amps (UV)
 gtadditions.machine.energy_hatch.input.uv.16.name=Energy Input Hatch 16 Amps (UV)
 gtadditions.machine.energy_hatch.input.uv.64.name=Energy Input Hatch 64 Amps (UV)
 gtadditions.machine.energy_hatch.input.uv.128.name=Energy Input Hatch 128 Amps (UV)
-
 gtadditions.machine.energy_hatch.output.ulv.16.name=Energy Output Hatch 16 Amps (ULV)
 gtadditions.machine.energy_hatch.output.ulv.32.name=Energy Output Hatch 32 Amps (ULV)
 gtadditions.machine.energy_hatch.output.ulv.64.name=Energy Output Hatch 64 Amps (ULV)
@@ -1859,15 +1855,5 @@ gtadditions.machine.energy_hatch.output.zpm.128.name=Energy Output Hatch 128 Amp
 gtadditions.machine.energy_hatch.output.uv.16.name=Energy Output Hatch 16 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)
-gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
 
-
-
-
-
-
-
-
-
-
-
+fluid.tile.lava=Lavagtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)fluid.tile.lava=Лава

@@ -3,6 +3,7 @@ package gregicadditions.integrations.mysticalagriculture.block;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.mysticalagradditions.lib.MAHelper;
 import com.blakebr0.mysticalagriculture.blocks.crop.BlockMysticalCrop;
+import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -14,17 +15,29 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
-public class BlockTier7Crop extends BlockMysticalCrop {
+public class BlockCrop extends BlockMysticalCrop {
+
+    public static final Map<Material, BlockCrop> REGISTRY = new HashMap<>();
 
     private static final AxisAlignedBB CROPS_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D);
     private IBlockState root;
     private Item seed;
     private Item crop;
 
-    public BlockTier7Crop(String name) {
+    private final Material material;
+
+    public BlockCrop(String name, Material material) {
         super(name);
+        this.material = material;
+        REGISTRY.put(material, this);
+    }
+
+    public Material getMaterial() {
+        return material;
     }
 
     @Override
