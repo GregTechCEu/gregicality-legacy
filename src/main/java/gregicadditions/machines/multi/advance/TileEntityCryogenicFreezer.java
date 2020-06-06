@@ -110,7 +110,7 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) (recipe.getEUt()))
-                    .duration((int) (recipe.getDuration() * ( DURATION_DECREASE_FACTOR / 100));
+                    .duration((int) (recipe.getDuration() * ( DURATION_DECREASE_FACTOR / 100)));
             return newRecipe.build().getResult();
         }
 

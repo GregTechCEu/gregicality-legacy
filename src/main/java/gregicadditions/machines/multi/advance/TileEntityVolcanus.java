@@ -109,7 +109,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) (recipe.getEUt() * ENERGY_DECREASE_FACTOR))
-                    .duration((int) (recipe.getDuration() * ( DURATION_DECREASE_FACTOR / 100));
+                    .duration((int) (recipe.getDuration() * ( DURATION_DECREASE_FACTOR / 100)));
             return newRecipe.build().getResult();
         }
 
