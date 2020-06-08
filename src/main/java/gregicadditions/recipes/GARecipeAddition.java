@@ -1417,6 +1417,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(PalladiumAmmonia.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, PalladiumSalt))
                 .EUt(30)
@@ -2105,6 +2106,15 @@ public class GARecipeAddition {
                 .fluidInputs(Fluorine.getFluid(1000))
                 .fluidOutputs(HydrogenFluoride.getFluid(2000))
                 .buildAndRegister();
+
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .EUt(60)
+                .duration((int) Uraninite.getAverageProtons() * 3 * 8)
+                .input(dust, Uraninite, 3)
+                .outputs(OreDictUnifier.get(dust, Uranium))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .buildAndRegister();
+
 
 
     }
