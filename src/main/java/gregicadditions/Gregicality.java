@@ -1,13 +1,14 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
+import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-import gregicadditions.integrations.mysticalagriculture.items.ModItems;
+import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
@@ -155,12 +156,15 @@ public class Gregicality {
         GeneratorFuels.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID)) {
-            ModItems.registerOreDict();
+            MysticalAgricultureItems.registerOreDict();
         }
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        if (Loader.isModLoaded(MysticalAgriculture.MOD_ID)) {
+            MysticalAgricultureItems.removeMARecipe();
+        }
         GAMachineRecipeRemoval.init();
         GARecipeAddition.generatedRecipes();
         RecipeHandler.registerLargeChemicalRecipes();
@@ -168,6 +172,7 @@ public class Gregicality {
         RecipeHandler.registerLargeForgeHammerRecipes();
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
+        RecipeHandler.registerGreenHouseRecipes();
         VoidMinerOres.init();
     }
 

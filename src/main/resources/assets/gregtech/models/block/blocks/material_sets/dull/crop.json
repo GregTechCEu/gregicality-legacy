@@ -1,6 +1,7 @@
 {
-  "parent": "block/cross",
+  "parent": "gregtech:block/cross",
   "textures": {
-    "cross": "mysticalagriculture:blocks/iron_crop"
+    "crop": "gregtech:blocks/material_sets/bottom_crop",
+    "head": "gregtech:blocks/material_sets/metallic/crop"
   }
 }

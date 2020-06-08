@@ -22,7 +22,7 @@ public class CropBlockModelFactory extends AbstractBlockModelFactory {
 
     @Override
     protected String fillSample(Block block, String blockStateSample) {
-        Material material = ((BlockCrop) block).getMaterial();
+        Material material = ((MaterialBlockCrop) block).getMaterial();
 
         return blockStateSample.replace("$LAST_AGE$", VARIANT_DEFINITION
                 .replace("$TEXTURE$", MaterialIconType.valueOf("crop").getBlockPath(material.materialIconSet).toString()));

@@ -645,6 +645,15 @@ gtadditions.machine.decay_chamber.luv.name=Advanced Decay Chamber IV
 gtadditions.machine.decay_chamber.zpm.name=Advanced Decay Chamber V
 gtadditions.machine.decay_chamber.uv.name=Advanced Decay Chamber VI
 
+gtadditions.machine.green_house.lv.name=Basic Green House
+gtadditions.machine.green_house.mv.name=Advanced Green House
+gtadditions.machine.green_house.hv.name=Advanced Green House II
+gtadditions.machine.green_house.ev.name=Advanced Green House III
+gtadditions.machine.green_house.iv.name=Advanced Green House IV
+gtadditions.machine.green_house.luv.name=Advanced Green House V
+gtadditions.machine.green_house.zpm.name=Advanced Green House VI
+gtadditions.machine.green_house.uv.name=Advanced Green House VII
+
 gtadditions.machine.pump.iv.name=Advanced Pump IV
 gtadditions.machine.pump.luv.name=Advanced Pump V
 gtadditions.machine.pump.zpm.name=Advanced Pump VI
@@ -796,6 +805,8 @@ recipemap.simple_ore_washer.name=Simple Ore Washer
 recipemap.nuclear_reactor.name=Nuclear Reactor
 recipemap.nuclear_breeder.name=Nuclear Reactor Breeder
 recipemap.decay_chamber.name=Decay Chamber
+recipemap.green_house.name=Green House
+
 
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
@@ -1238,6 +1249,7 @@ material.mendelevium261=Mendelevium 261
 material.mendelevium263=Mendelevium 263
 material.hydrogen_fluoride=Hydrogen Fluoride
 material.abyssal_alloy=Abyssal Alloy
+material.organic_fertilizer=Organic Fertilizer
 
 
 

@@ -1914,10 +1914,10 @@ public class GARecipeAddition {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(300)
-                .input(dust, Potassium)
-                .input(dust, Sodium)
-                .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 2))
+        MIXER_RECIPES.recipeBuilder().duration(300).EUt(120)
+                .input(dust, Potassium, 3)
+                .input(dust, Sodium, 7)
+                .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 10))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(2000).EUt(240)
@@ -2104,6 +2104,14 @@ public class GARecipeAddition {
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(1000))
                 .fluidOutputs(HydrogenFluoride.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Calcium, 5)
+                .input(dust, Phosphate, 3)
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, OrganicFertilizer, 10))
                 .buildAndRegister();
 
 

@@ -88,6 +88,7 @@ public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] REPLICATOR = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] DECAY_CHAMBER = new SimpleMachineMetaTileEntity[8];
+    public static SimpleMachineMetaTileEntity[] GREEN_HOUSE = new SimpleMachineMetaTileEntity[8];
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
     public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
 
@@ -676,6 +677,15 @@ public class GATileEntities {
         DECAY_CHAMBER[5] = GregTechAPI.registerMetaTileEntity(3205, new SimpleMachineMetaTileEntity(location("decay_chamber.luv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 6));
         DECAY_CHAMBER[6] = GregTechAPI.registerMetaTileEntity(3206, new SimpleMachineMetaTileEntity(location("decay_chamber.zpm"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 7));
         DECAY_CHAMBER[7] = GregTechAPI.registerMetaTileEntity(3207, new SimpleMachineMetaTileEntity(location("decay_chamber.uv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 8));
+
+        GREEN_HOUSE[0] = GregTechAPI.registerMetaTileEntity(3208, new SimpleMachineMetaTileEntity(location("green_house.lv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 1));
+        GREEN_HOUSE[1] = GregTechAPI.registerMetaTileEntity(3209, new SimpleMachineMetaTileEntity(location("green_house.mv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 2));
+        DECAY_CHAMBER[2] = GregTechAPI.registerMetaTileEntity(3210, new SimpleMachineMetaTileEntity(location("green_house.hv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 3));
+        DECAY_CHAMBER[3] = GregTechAPI.registerMetaTileEntity(3211, new SimpleMachineMetaTileEntity(location("green_house.ev"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 4));
+        DECAY_CHAMBER[4] = GregTechAPI.registerMetaTileEntity(3212, new SimpleMachineMetaTileEntity(location("green_house.iv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 5));
+        DECAY_CHAMBER[5] = GregTechAPI.registerMetaTileEntity(3213, new SimpleMachineMetaTileEntity(location("green_house.luv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 6));
+        DECAY_CHAMBER[6] = GregTechAPI.registerMetaTileEntity(3214, new SimpleMachineMetaTileEntity(location("green_house.zpm"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 7));
+        DECAY_CHAMBER[7] = GregTechAPI.registerMetaTileEntity(3215, new SimpleMachineMetaTileEntity(location("green_house.uv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 8));
 
     }
 
