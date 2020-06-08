@@ -1,9 +1,5 @@
 package gregicadditions.integrations.bees;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import forestry.api.core.IItemModelRegister;
 import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
@@ -21,8 +17,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-@SuppressWarnings("deprecation")
-@Optional.InterfaceList({ @Optional.Interface(iface = "forestry.api.core.IItemModelRegister", modid = "forestry"), @Optional.Interface(iface = "forestry.core.items.IColoredItem", modid = "forestry") })
+import javax.annotation.Nullable;
+import java.util.List;
+
+
+@Optional.InterfaceList({@Optional.Interface(iface = "forestry.api.core.IItemModelRegister", modid = "forestry"), @Optional.Interface(iface = "forestry.core.items.IColoredItem", modid = "forestry")})
 public class GTCombItem extends Item implements IColoredItem, IItemModelRegister {
 	public GTCombItem() {
 		setMaxDamage(0);

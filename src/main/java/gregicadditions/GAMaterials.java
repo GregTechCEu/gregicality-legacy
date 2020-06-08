@@ -288,7 +288,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IsotopeMaterial Mendelevium261 = new IsotopeMaterial(778, RadioactiveMaterial.REGISTRY.get(Mendelevium.getMaterial()), 261, 0);
     public static final IsotopeMaterial Mendelevium263 = new IsotopeMaterial(777, RadioactiveMaterial.REGISTRY.get(Mendelevium.getMaterial()), 263, 0);
 
-    public static final FluidMaterial SodiumPotassiumAlloy = new FluidMaterial(776, "sodium_potassium_alloy", 0x252525, MaterialIconSet.SHINY, of(new MaterialStack(Sodium, 7), new MaterialStack(Potassium, 3)), SMELT_INTO_FLUID);
+    public static final DustMaterial SodiumPotassiumAlloy = new DustMaterial(776, "sodium_potassium_alloy", 0x252525, MaterialIconSet.SHINY, 2, of(new MaterialStack(Sodium, 7), new MaterialStack(Potassium, 3)), SMELT_INTO_FLUID);
     public static final DustMaterial LithiumHydroxide = new DustMaterial(775, "lithium_hydroxide", 0xFDFDFD, MaterialIconSet.DULL, 2, of(new MaterialStack(Lithium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1)), 0); // Lithium + water = LithiumHydroxide
     public static final IngotMaterial LithiumFluoride = new IngotMaterial(774, "lithium_fluoride", 0x757575, MaterialIconSet.SHINY, 2, of(new MaterialStack(Lithium, 1), new MaterialStack(Fluorine, 1)), 0); //LithiumHydroxide + Hydrogen = LithiumFluoride
     public static final DustMaterial SodiumFluoride = new DustMaterial(773, "sodium_fluoride", 0xFDFDFD, MaterialIconSet.DULL, 2, of(new MaterialStack(Sodium, 1), new MaterialStack(Fluorine, 1)), 0);
@@ -310,6 +310,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Iodine = new DustMaterial(757, "iodine", 0x2C344F, MaterialIconSet.SHINY, 2, of(), 0, I);
     public static final IngotMaterial Astatine = new IngotMaterial(756, "astatine", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, At);
     public static final IngotMaterial AbyssalAlloy = new IngotMaterial(755, "abyssal_alloy", 0x9E706A, MaterialIconSet.METALLIC, 6, of(new MaterialStack(StainlessSteel, 5), new MaterialStack(TungstenCarbide, 5), new MaterialStack(Nichrome, 5), new MaterialStack(Bronze, 5), new MaterialStack(IncoloyMA956, 5), new MaterialStack(Iodine, 1), new MaterialStack(Germanium, 1), new MaterialStack(Radon, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 9625);
+    public static final DustMaterial OrganicFertilizer = new DustMaterial(754, "organic_fertilizer", 0xDDDDDD, MaterialIconSet.SHINY, 2, of(new MaterialStack(Calcium, 5), new MaterialStack(Phosphate, 3), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 1)), 0);
 
     @Override
     public void onMaterialsInit() {

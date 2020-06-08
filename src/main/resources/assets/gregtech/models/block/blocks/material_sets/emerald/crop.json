@@ -1,0 +1,7 @@
+{
+  "parent": "gregtech:block/cross",
+  "textures": {
+    "crop": "gregtech:blocks/material_sets/bottom_crop",
+    "head": "gregtech:blocks/material_sets/emerald/crop"
+  }
+}
