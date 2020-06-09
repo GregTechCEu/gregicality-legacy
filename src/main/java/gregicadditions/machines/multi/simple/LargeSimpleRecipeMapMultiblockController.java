@@ -65,7 +65,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(100.0 / this.durationPercentage)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
     }
@@ -193,7 +193,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) Math.max(1, EUt * this.EUtPercentage / 100))
-                    .duration((int) Math.max(1.0, duration /* * minMultiplier*/ / (this.durationPercentage / 100.0)));
+                    .duration((int) Math.max(1.0, duration * (this.durationPercentage / 100.0)));
 
             copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
 

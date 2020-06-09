@@ -27,11 +27,13 @@ import gregtech.common.items.behaviors.TurbineRotorBehavior;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
@@ -567,6 +569,37 @@ public class RecipeHandler {
                     .fluidOutputs(fluidOutput)
                     .buildAndRegister();
         });
+    }
+
+    public static void registerGreenHouseRecipes() {
+        Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
+            String oreName = name.substring(4);
+            String seedName = "seed" + titleCase(oreName);
+            String cropName = "essence" + titleCase(oreName);
+
+            List<ItemStack> registeredSeeds = OreDictionary.getOres(seedName, false);
+            List<ItemStack> registeredCrops = OreDictionary.getOres(cropName, false);
+
+            if (registeredSeeds.isEmpty() || registeredCrops.isEmpty()) {
+                return;
+            }
+
+            ItemStack seed = registeredSeeds.get(0).copy();
+            ItemStack essence = registeredCrops.get(0).copy();
+
+
+            GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(seed).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
+
+            essence = registeredCrops.get(0).copy();
+            essence.setCount(3);
+            GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).fluidInputs(Water.getFluid(2000)).notConsumable(seed).input(dust, OrganicFertilizer).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
+
+        });
+
+    }
+
+    public static String titleCase(String input) {
+        return input.substring(0, 1).toUpperCase(Locale.US) + input.substring(1);
     }
 
 

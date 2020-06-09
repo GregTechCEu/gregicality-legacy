@@ -65,6 +65,8 @@ public class GARecipeMaps {
     public static final RecipeMap<NuclearReactorBuilder> NUCLEAR_BREEDER_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> GREEN_HOUSE_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -100,9 +102,11 @@ public class GARecipeMaps {
 
         NUCLEAR_REACTOR_RECIPES = new RecipeMap<>("nuclear_reactor", 2, 3, 1, 2, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
         DECAY_CHAMBERS_RECIPES = new RecipeMap<>("decay_chamber", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder().EUt(32))
-                .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
 
         NUCLEAR_BREEDER_RECIPES = new RecipeMap<>("nuclear_breeder", 2, 3, 1, 4, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
+
+        GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house", 1, 2, 1, 2, 1, 1, 0, 0, new SimpleRecipeBuilder().EUt(16))
+                .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
     }
 }

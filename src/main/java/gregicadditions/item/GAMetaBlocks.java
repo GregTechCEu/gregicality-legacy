@@ -58,7 +58,6 @@ public class GAMetaBlocks {
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
 
-
         createMachineCasing();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
@@ -72,6 +71,15 @@ public class GAMetaBlocks {
 
     }
 
+
+    public static IBlockState getCompressedFromMaterial(Material material) {
+        if (MetaBlocks.COMPRESSED.get(material) == null) {
+            return null;
+        }
+        int index = MetaBlocks.COMPRESSED.get(material).variantProperty.getAllowedValues().indexOf(material);
+        return MetaBlocks.COMPRESSED.get(material).getStateFromMeta(index);
+    }
+
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(MUTLIBLOCK_CASING);
@@ -81,7 +89,7 @@ public class GAMetaBlocks {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerItemModel(Block block) {
+    public static void registerItemModel(Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             //noinspection ConstantConditions
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
@@ -110,7 +118,7 @@ public class GAMetaBlocks {
 
     }
 
-    private static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {
+    public static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {
         StringBuilder stringbuilder = new StringBuilder();
 
         List<Map.Entry<IProperty<?>, Comparable<?>>> entries = properties.entrySet().stream().sorted(Comparator.comparing(c -> c.getKey().getName())).collect(Collectors.toList());
@@ -140,13 +148,11 @@ public class GAMetaBlocks {
 
 
     private static void createMachineCasing() {
-        int index = 0;
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
                 GAMetalCasing block = new GAMetalCasing(material);
                 block.setRegistryName("gregtech:metal_casing_" + material.toString());
                 METAL_CASING.put((IngotMaterial) material, block);
-                index += 1;
             }
         }
     }
