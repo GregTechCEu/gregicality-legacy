@@ -672,6 +672,13 @@ public class RecipeHandler {
                         }
                     }
                 }
+                for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
+                    for (FluidStack fluidStack : mcFluidOutputs) {
+                        if (!fluidOutput.isFluidEqual(fluidStack)) {
+                            matches = false;
+                        }
+                    }
+                }
             }
             if (matches) {
                 recipesToRemove.add((Recipe) recipe);
