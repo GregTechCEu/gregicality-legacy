@@ -160,7 +160,6 @@ public class RecipeHandler {
 
         removeRecipesByInputs(RecipeMaps.UNPACKER_RECIPES, OreDictUnifier.get(ingot, material, 1), IntCircuitIngredient.getIntegratedCircuit(1));
         UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(ingot, material, 1).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(OreDictUnifier.get(nugget, material, 9)).buildAndRegister();
-
     }
 
 
@@ -270,7 +269,6 @@ public class RecipeHandler {
 
     }
 
-
     private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
         if (material.cableProperties == null) return;
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
@@ -336,7 +334,6 @@ public class RecipeHandler {
         }
 
     }
-
 
     private static void processRing(OrePrefix ring, IngotMaterial material) {
         if (!material.hasFlag(NO_SMASHING)) {
@@ -528,7 +525,6 @@ public class RecipeHandler {
                         .buildAndRegister());
     }
 
-
     public static void registerAlloyBlastRecipes() {
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (!(material instanceof IngotMaterial))
@@ -626,7 +622,6 @@ public class RecipeHandler {
     public static String titleCase(String input) {
         return input.substring(0, 1).toUpperCase(Locale.US) + input.substring(1);
     }
-
 
     private static double getPercentOfComponentInMaterial(Material material, Material materialToFind) {
         if (material == materialToFind) {

@@ -1,9 +1,12 @@
 package gregicadditions.integrations.mysticalagriculture;
 
+import com.blakebr0.mysticalagradditions.MysticalAgradditions;
+import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.block.CropBlockModelFactory;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -26,14 +29,18 @@ public class MysticalClientProxy extends MysticalCommonProxy {
     @Mod.EventHandler
     public void init() {
         super.init();
-        MysticalAgricultureItems.registerColor();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            MysticalAgricultureItems.registerColor();
+        }
     }
 
 
     @SubscribeEvent
     @Optional.Method(modid = Gregicality.MODID)
     public static void registerModels(ModelRegistryEvent event) {
-        MysticalAgricultureItems.registerModels();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            MysticalAgricultureItems.registerModels();
+        }
     }
 
 }
