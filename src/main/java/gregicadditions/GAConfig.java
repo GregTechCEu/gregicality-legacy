@@ -58,6 +58,9 @@ public class GAConfig {
     public static GT5U GT5U = new GT5U();
 
     public static class GT5U {
+        @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
+        public boolean stickGT5U = false;
+
         @Config.Comment("Set to false to disable GT5U Cable isolation recipes")
         @Config.Name("Cables can be isolated with different combinations of Rubbers and Dusts with varying efficiencies")
         public boolean CablesGT5U = true;
