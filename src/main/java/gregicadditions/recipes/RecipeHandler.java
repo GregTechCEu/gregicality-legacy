@@ -1,17 +1,19 @@
 package gregicadditions.recipes;
 
+import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.liquid.ILiquidStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.Gregicality;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
@@ -29,13 +31,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
+import net.minecraftforge.fml.common.Optional.Method;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
@@ -49,6 +54,8 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
+@ZenClass("mods.gtadditions.recipe.RecipeHandler")
+@ZenRegister
 public class RecipeHandler {
 
     private static final List<FluidMaterial> OLD_INSULATION_MATERIAL = Arrays.asList(Rubber, StyreneButadieneRubber, SiliconeRubber);
@@ -637,5 +644,41 @@ public class RecipeHandler {
         return material.materialComponents.stream()
                 .mapToDouble(it -> getPercentOfComponentInMaterial(it.material, materialToFind) *
                         (it.amount / amountOfComponents)).sum();
+    }
+
+
+    @ZenMethod("removeRecipeByOutput")
+    @Method(modid = Gregicality.MODID)
+    public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs) {
+        List<Recipe> recipesToRemove = new ArrayList<>();
+        boolean matches = true;
+        List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
+                Arrays.stream(outputs)
+                        .map(CraftTweakerMC::getItemStack)
+                        .collect(Collectors.toList());
+
+        List<FluidStack> mcFluidOutputs = fluidOutputs == null ? Collections.emptyList() :
+                Arrays.stream(fluidOutputs)
+                        .map(CraftTweakerMC::getLiquidStack)
+                        .collect(Collectors.toList());
+
+        for (Object recipe : recipeMap.getRecipeList()) {
+            matches = true;
+            if (recipe instanceof Recipe) {
+                for (ItemStack output : ((Recipe) recipe).getOutputs()) {
+                    for (ItemStack itemStack : mcItemOutputs) {
+                        if (!output.isItemEqual(itemStack)) {
+                            matches = false;
+                        }
+                    }
+                }
+            }
+            if (matches) {
+                recipesToRemove.add((Recipe) recipe);
+            }
+        }
+        for (Recipe recipe : recipesToRemove) {
+            recipeMap.removeRecipe(recipe);
+        }
     }
 }
