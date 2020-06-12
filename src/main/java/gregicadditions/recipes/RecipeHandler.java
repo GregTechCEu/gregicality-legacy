@@ -679,9 +679,9 @@ public class RecipeHandler {
                         }
                     }
                 }
-            }
-            if (matches) {
-                recipesToRemove.add((Recipe) recipe);
+                if (matches) {
+                    recipesToRemove.add((Recipe) recipe);
+                }
             }
         }
         for (Recipe recipe : recipesToRemove) {
