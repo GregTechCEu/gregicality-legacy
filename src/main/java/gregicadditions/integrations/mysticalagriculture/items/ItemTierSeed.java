@@ -1,10 +1,10 @@
 package gregicadditions.integrations.mysticalagriculture.items;
 
+import com.blakebr0.cucumber.iface.IColoredItem;
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import com.blakebr0.mysticalagriculture.items.ItemSeed;
 import com.blakebr0.mysticalagriculture.lib.Tooltips;
-import forestry.core.items.IColoredItem;
 import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
@@ -53,7 +53,7 @@ public class ItemTierSeed extends ItemSeed implements IColoredItem {
     }
 
     @Override
-    public int getColorFromItemstack(ItemStack stack, int tintIndex) {
+    public int color() {
         return material.materialRGB;
     }
 

@@ -1,11 +1,11 @@
 package gregicadditions.integrations.mysticalagriculture.items;
 
+import com.blakebr0.cucumber.iface.IColoredItem;
 import com.blakebr0.cucumber.registry.ModRegistry;
-import com.blakebr0.mysticalagriculture.MysticalAgriculture;
+import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import com.blakebr0.mysticalagriculture.items.ItemSeed;
 import com.blakebr0.mysticalagriculture.items.ModItems;
 import com.google.common.base.CaseFormat;
-import forestry.core.items.IColoredItem;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.CropType;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
@@ -215,8 +215,8 @@ public class MysticalAgricultureItems {
                 return;
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
                 Item item = stack.getItem();
-                if (item instanceof IColoredItem && Loader.isModLoaded(MysticalAgriculture.MOD_ID)) {
-                    return ((IColoredItem) item).getColorFromItemstack(stack, tintIndex);
+                if (item instanceof IColoredItem && Loader.isModLoaded(MysticalAgradditions.MOD_ID)) {
+                    return ((IColoredItem) item).color();
                 }
                 return 0xffffff;
             }, itemSeeds);
@@ -225,8 +225,8 @@ public class MysticalAgricultureItems {
         ESSENCES.values().stream().distinct().forEach(essence -> {
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
                 Item item = stack.getItem();
-                if (item instanceof IColoredItem && Loader.isModLoaded(MysticalAgriculture.MOD_ID)) {
-                    return ((IColoredItem) item).getColorFromItemstack(stack, tintIndex);
+                if (item instanceof IColoredItem && Loader.isModLoaded(MysticalAgradditions.MOD_ID)) {
+                    return ((IColoredItem) item).color();
                 }
                 return 0xffffff;
             }, essence);

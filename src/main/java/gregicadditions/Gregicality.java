@@ -44,7 +44,8 @@ import java.util.function.Function;
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
                 "after:tconstruct;" +
-                "after:exnihilocreatio"
+                "after:exnihilocreatio;" +
+                "after:mysticalagradditions"
 )
 public class Gregicality {
     public static final String MODID = "gtadditions";
