@@ -145,7 +145,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial Sodiumformate = new FluidMaterial(891, "sodium_formate", 0xFFAAAA, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial Sodiumsulfate = new FluidMaterial(890, "sodium_sulfate", 0xFFFFFF, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial FormicAcid = new FluidMaterial(889, "formic_acid", 0xFFAA77, MaterialIconSet.FLUID, of(), 0);
-    public static final DustMaterial PotassiumDisulfate = new DustMaterial(888, "potassium_disulfate", 0xFBBB66, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial PotassiumDisulfate = new DustMaterial(888, "potassium_disulfate", 0xFBBB66, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 7)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial LeachResidue = new DustMaterial(887, "leach_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(), 0);
     public static final FluidMaterial RhodiumSulfate = new FluidMaterial(886, "rhodium_sulfate", 0xEEAA55, MaterialIconSet.FLUID, of(), 0);
     public static final FluidMaterial RhodiumSulfateSolution = new FluidMaterial(885, "rhodium_sulfate_solution", 0xFFBB66, MaterialIconSet.FLUID, of(), 0);
@@ -184,7 +184,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final GemMaterial Terlinguaite = new GemMaterial(852, "terlinguaite", 0xF5F5F5, MaterialIconSet.GEM_HORIZONTAL, 2, of(), 0);
     public static final DustMaterial AdemicSteel = new DustMaterial(851, "ademic_steel", 0xCCCCCC, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final DustMaterial RawAdemicSteel = new DustMaterial(850, "raw_ademic_steel", 0xEDEDED, MaterialIconSet.ROUGH, 2, of(), 0);
-    public static final DustMaterial PotassiumNitrade = new DustMaterial(849, "potassium_nitrade", 0x81228D, MaterialIconSet.DULL, 0, of(), 0);
+    public static final DustMaterial PotassiumNitrade = new DustMaterial(849, "potassium_nitrade", 0x81228D, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final FluidMaterial Nitrochlorobenzene = new FluidMaterial(847, "nitrochlorobenzene", 0x8FB51A, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Dimethylbenzene = new FluidMaterial(846, "dimethylbenzene", 0x669C40, MaterialIconSet.DULL, of(), 0);

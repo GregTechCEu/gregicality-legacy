@@ -169,6 +169,12 @@ public class GAConfig {
         public boolean highTierUnpackers = true;
         @Config.Name("Should higher tier Wiremills be registered?")
         public boolean highTierWiremills = true;
+        @Config.Name("Should higher tier Chemical dehydrator be registered?")
+        public boolean highTierChemicalDehydrator = true;
+        @Config.Name("Should higher tier Decay Chamber be registered?")
+        public boolean highTierDecayChamber = true;
+        @Config.Name("Should higher tier Green House be registered?")
+        public boolean highTierGreenHouse = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
         @Config.Name("Batteries - Enable an extra ZPM and UV Battery (this also makes the Ultimate Battery harder to make)")
@@ -245,6 +251,16 @@ public class GAConfig {
     public static class ExNihilo {
         public boolean Disable = false;
         public boolean highTierSieve = true;
+    }
+
+    @Config.Comment("Config options for Mystical Agriculture features.")
+    public static MysticalAgriculture mysticalAgriculture = new MysticalAgriculture();
+
+    public static class MysticalAgriculture {
+        @Config.Comment("Disable all Mystical Agriculture integration features")
+        @Config.Name("Disable Mystical Agriculture integration")
+        @Config.RequiresMcRestart
+        public boolean disable = false;
     }
 
     @Config.Comment("Config options of miscellaneous features")
@@ -841,7 +857,7 @@ public class GAConfig {
 
         public static class Volcanus {
             @Config.Comment("The duration percentage of a recipe when done in the Volcanus.")
-            @Config.RangeDouble(min = 1.0)
+            @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
             public int durationDecreaseFactor = 33;
@@ -862,7 +878,7 @@ public class GAConfig {
             public int recipeMultiplier = 4;
 
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
-            @Config.RangeDouble(min = 1.0)
+            @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer duration decrease factor")
             public int durationDecreaseFactor = 50;

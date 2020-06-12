@@ -1316,7 +1316,8 @@ public class GARecipeAddition {
                 .input(dust, PotassiumDisulfate)
                 .fluidOutputs(PotassiumDisulfate.getFluid(144)).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(0))
                 .input(dust, Potassium, 2)
                 .input(dust, Sulfur, 2)
                 .fluidInputs(Oxygen.getFluid(7000))
@@ -1778,9 +1779,10 @@ public class GARecipeAddition {
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(100)
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .notConsumable(new IntCircuitIngredient(1))
                 .input(dust, Potassium, 2)
-                .input(dust, Sodium, 2)
+                .input(dust, Sulfur, 2)
                 .fluidInputs(Oxygen.getFluid(5000))
                 .outputs(OreDictUnifier.get(dust, PotassiumMetabisulfite, 9))
                 .buildAndRegister();

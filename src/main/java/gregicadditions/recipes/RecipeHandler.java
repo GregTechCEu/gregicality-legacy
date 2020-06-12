@@ -24,6 +24,8 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
@@ -572,6 +574,29 @@ public class RecipeHandler {
     }
 
     public static void registerGreenHouseRecipes() {
+
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 1)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 1)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
+
+
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 3)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 3)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN, 3)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
+
+
         Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
             String oreName = name.substring(4);
             String seedName = "seed" + titleCase(oreName);

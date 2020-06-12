@@ -1,6 +1,5 @@
 package gregicadditions.integrations.mysticalagriculture;
 
-import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.block.CropBlockModelFactory;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
@@ -17,13 +16,13 @@ public class MysticalClientProxy extends MysticalCommonProxy {
         CropBlockModelFactory.init();
     }
 
-    @Optional.Method(modid = MysticalAgriculture.MOD_ID)
+    @Optional.Method(modid = Gregicality.MODID)
     @Mod.EventHandler
     public void preInit() {
         super.preInit();
     }
 
-    @Optional.Method(modid = MysticalAgriculture.MOD_ID)
+    @Optional.Method(modid = Gregicality.MODID)
     @Mod.EventHandler
     public void init() {
         super.init();
@@ -32,7 +31,7 @@ public class MysticalClientProxy extends MysticalCommonProxy {
 
 
     @SubscribeEvent
-    @Optional.Method(modid = MysticalAgriculture.MOD_ID)
+    @Optional.Method(modid = Gregicality.MODID)
     public static void registerModels(ModelRegistryEvent event) {
         MysticalAgricultureItems.registerModels();
     }

@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
@@ -45,7 +44,8 @@ import java.util.function.Function;
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
                 "after:tconstruct;" +
-                "after:exnihilocreatio"
+                "after:exnihilocreatio;" +
+                "after:mysticalagradditions"
 )
 public class Gregicality {
     public static final String MODID = "gtadditions";
@@ -95,7 +95,9 @@ public class Gregicality {
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             forestryProxy.preInit();
         }
-        mysticalCommonProxy.preInit();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            mysticalCommonProxy.preInit();
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -108,7 +110,9 @@ public class Gregicality {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
-        mysticalCommonProxy.init();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            mysticalCommonProxy.init();
+        }
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
             GTLog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
@@ -155,14 +159,14 @@ public class Gregicality {
         MachineCraftingRecipes.init();
         GeneratorFuels.init();
 
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID)) {
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
         }
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        if (Loader.isModLoaded(MysticalAgriculture.MOD_ID)) {
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
         GAMachineRecipeRemoval.init();
