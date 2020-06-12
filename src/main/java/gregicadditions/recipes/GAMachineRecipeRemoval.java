@@ -7,8 +7,10 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Color;
 import gregtech.api.unification.material.type.DustMaterial;
+import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -46,6 +48,21 @@ public class GAMachineRecipeRemoval {
             //Remove GTCE's weird fine wire recipes
             if (!OreDictUnifier.get(wireFine, m).isEmpty() && !OreDictUnifier.get(stick, m).isEmpty() && GAConfig.GT5U.OldFineWireRecipes) {
                 removeRecipesByInputs(RecipeMaps.WIREMILL_RECIPES, OreDictUnifier.get(stick, m));
+            }
+
+            if (GAConfig.GT5U.stickGT5U && (m instanceof IngotMaterial || m instanceof GemMaterial) && !OreDictUnifier.get(stick, m).isEmpty()) {
+                OrePrefix orePrefix = m instanceof IngotMaterial ? ingot : gem;
+                    Recipe r = LATHE_RECIPES.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, m)), Collections.emptyList(), Integer.MAX_VALUE);
+                    if (r != null) {
+                        LATHE_RECIPES.removeRecipe(r);
+                        LATHE_RECIPES.recipeBuilder()
+                            .input(orePrefix, m)
+                            .outputs(OreDictUnifier.get(stick, m))
+                            .outputs(OreDictUnifier.get(dustSmall, m, 2))
+                            .duration((int) Math.max(m.getAverageMass() * 2, 1))
+                            .EUt(16)
+                            .buildAndRegister();
+                    }
             }
 
         }
