@@ -169,6 +169,12 @@ public class GAConfig {
         public boolean highTierUnpackers = true;
         @Config.Name("Should higher tier Wiremills be registered?")
         public boolean highTierWiremills = true;
+        @Config.Name("Should higher tier Chemical dehydrator be registered?")
+        public boolean highTierChemicalDehydrator = true;
+        @Config.Name("Should higher tier Decay Chamber be registered?")
+        public boolean highTierDecayChamber = true;
+        @Config.Name("Should higher tier Green House be registered?")
+        public boolean highTierGreenHouse = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
         @Config.Name("Batteries - Enable an extra ZPM and UV Battery (this also makes the Ultimate Battery harder to make)")

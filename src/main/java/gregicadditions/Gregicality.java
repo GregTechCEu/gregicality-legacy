@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.input.Keybinds;
@@ -95,7 +94,7 @@ public class Gregicality {
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             forestryProxy.preInit();
         }
-        if (!GAConfig.mysticalAgriculture.disable) {
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             mysticalCommonProxy.preInit();
         }
         MinecraftForge.EVENT_BUS.register(this);
@@ -110,7 +109,7 @@ public class Gregicality {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
             exNihiloCreatioProxy.init(event);
         }
-        if (!GAConfig.mysticalAgriculture.disable) {
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             mysticalCommonProxy.init();
         }
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
@@ -166,7 +165,7 @@ public class Gregicality {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        if (Loader.isModLoaded(MysticalAgriculture.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
         GAMachineRecipeRemoval.init();
