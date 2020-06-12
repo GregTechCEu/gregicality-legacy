@@ -1,12 +1,7 @@
 package gregicadditions.recipes;
 
-import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.liquid.ILiquidStack;
-import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
-import gregicadditions.Gregicality;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
@@ -17,10 +12,7 @@ import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -31,16 +23,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenMethod;
-import net.minecraftforge.fml.common.Optional.Method;
 
-
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
@@ -54,8 +43,6 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-@ZenClass("mods.gtadditions.recipe.RecipeHandler")
-@ZenRegister
 public class RecipeHandler {
 
     private static final List<FluidMaterial> OLD_INSULATION_MATERIAL = Arrays.asList(Rubber, StyreneButadieneRubber, SiliconeRubber);
@@ -109,6 +96,27 @@ public class RecipeHandler {
             OrePrefix.nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
         }
 
+        if (GAConfig.GT5U.stickGT5U) {
+            OrePrefix.stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
+        }
+
+    }
+
+    public static void processStick(OrePrefix stickPrefix, DustMaterial material) {
+        if (material instanceof GemMaterial || material instanceof IngotMaterial) {
+            OrePrefix orePrefix = material instanceof IngotMaterial ? ingot : gem;
+            Recipe r = LATHE_RECIPES.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
+            if (r != null) {
+                LATHE_RECIPES.removeRecipe(r);
+                LATHE_RECIPES.recipeBuilder()
+                        .input(orePrefix, material)
+                        .outputs(OreDictUnifier.get(stickPrefix, material))
+                        .outputs(OreDictUnifier.get(dustSmall, material, 2))
+                        .duration((int) Math.max(material.getAverageMass() * 2, 1))
+                        .EUt(16)
+                        .buildAndRegister();
+            }
+        }
     }
 
     public static void processCrushedPurified(OrePrefix purifiedPrefix, DustMaterial material) {
@@ -642,45 +650,4 @@ public class RecipeHandler {
     }
 
 
-    @ZenMethod("removeRecipeByOutput")
-    @Method(modid = Gregicality.MODID)
-    public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs) {
-        List<Recipe> recipesToRemove = new ArrayList<>();
-        boolean matches;
-        List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
-                Arrays.stream(outputs)
-                        .map(CraftTweakerMC::getItemStack)
-                        .collect(Collectors.toList());
-
-        List<FluidStack> mcFluidOutputs = fluidOutputs == null ? Collections.emptyList() :
-                Arrays.stream(fluidOutputs)
-                        .map(CraftTweakerMC::getLiquidStack)
-                        .collect(Collectors.toList());
-
-        for (Object recipe : recipeMap.getRecipeList()) {
-            matches = true;
-            if (recipe instanceof Recipe) {
-                for (ItemStack output : ((Recipe) recipe).getOutputs()) {
-                    for (ItemStack itemStack : mcItemOutputs) {
-                        if (!output.isItemEqual(itemStack)) {
-                            matches = false;
-                        }
-                    }
-                }
-                for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
-                    for (FluidStack fluidStack : mcFluidOutputs) {
-                        if (!fluidOutput.isFluidEqual(fluidStack)) {
-                            matches = false;
-                        }
-                    }
-                }
-                if (matches) {
-                    recipesToRemove.add((Recipe) recipe);
-                }
-            }
-        }
-        for (Recipe recipe : recipesToRemove) {
-            recipeMap.removeRecipe(recipe);
-        }
-    }
 }
