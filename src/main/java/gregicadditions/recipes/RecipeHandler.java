@@ -651,7 +651,7 @@ public class RecipeHandler {
     @Method(modid = Gregicality.MODID)
     public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs) {
         List<Recipe> recipesToRemove = new ArrayList<>();
-        boolean matches = true;
+        boolean matches;
         List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
                 Arrays.stream(outputs)
                         .map(CraftTweakerMC::getItemStack)
