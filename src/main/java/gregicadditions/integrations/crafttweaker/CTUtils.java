@@ -44,7 +44,7 @@ public class CTUtils {
             if (recipe instanceof Recipe) {
                 for (ItemStack output : ((Recipe) recipe).getOutputs()) {
                     for (ItemStack itemStack : mcItemOutputs) {
-                        if (output.isItemEqual(itemStack) && output.getCount() == itemStack.getCount()) {
+                        if (!output.isItemEqual(itemStack) && output.getCount() != itemStack.getCount()) {
                             matches = false;
                             break;
                         }
