@@ -26,7 +26,7 @@ public class CTUtils {
 
     @ZenMethod("removeRecipeByOutput")
     @Optional.Method(modid = Gregicality.MODID)
-    public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs) {
+    public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs, boolean useAmounts) {
         List<Recipe> recipesToRemove = new ArrayList<>();
         boolean matches;
         List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
@@ -45,14 +45,22 @@ public class CTUtils {
                 for (ItemStack output : ((Recipe) recipe).getOutputs()) {
                     for (ItemStack itemStack : mcItemOutputs) {
                         if (!output.isItemEqual(itemStack)) {
-                            matches = false;
-                            break;
+                            if (useAmounts && output.getCount() != itemStack.getCount()) {
+                                matches = false;
+                                break;
+                            } else if (!useAmounts) {
+                                matches = false;
+                                break;
+                            }
                         }
                     }
                 }
                 for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
                     for (FluidStack fluidStack : mcFluidOutputs) {
-                        if (!fluidOutput.isFluidEqual(fluidStack)) {
+                        if (useAmounts && !fluidOutput.isFluidStackIdentical(fluidStack)) {
+                            matches = false;
+                            break;
+                        } else if (!useAmounts && !fluidOutput.isFluidEqual(fluidStack)) {
                             matches = false;
                             break;
                         }
@@ -67,4 +75,6 @@ public class CTUtils {
             recipeMap.removeRecipe(recipe);
         }
     }
+
+
 }
