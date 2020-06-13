@@ -45,11 +45,11 @@ public enum EnergyConverterType implements EnergyConverterCraftingHelper.RecipeF
 	public Ratio ratio() {
 		return type.getOutput(isGTEU) == Energy.FE ?
 				Ratio.ratioOf(1, GAConfig.energyConverter.RatioEUtoRF) : //EU to RF
-				Ratio.ratioOf(GAConfig.energyConverter.RatioRFtoEU, 1); //RF to RF
+				Ratio.ratioOf(GAConfig.energyConverter.RatioRFtoEU, 1); //RF to EU
 	}
 
 	public boolean isDisabled() {
-		return GAConfig.energyConverter.Disable;
+		return this.isGTEU() ? GAConfig.energyConverter.disableEUtoRF : GAConfig.energyConverter.disableRFtoEU;
 	}
 
 

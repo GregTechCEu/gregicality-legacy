@@ -233,12 +233,20 @@ public class GAConfig {
         public boolean GregsConstructGlassProcessing = true;
     }
 
-    @Config.Comment("Config options for energyConverter features")
+    @Config.Comment("Config options for Energy Converter features")
     public static EnergyConverter energyConverter = new EnergyConverter();
 
     public static class EnergyConverter {
-        public boolean Disable = false;
-        @Config.Comment("True if you want Energy Converter  to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
+
+        @Config.Comment("Whether or not to disable GregTech EU to RF energy converters.")
+        @Config.RequiresMcRestart
+        public boolean disableEUtoRF = false;
+
+        @Config.Comment("Whether or not to disable RF to GregTech EU energy converters.")
+        @Config.RequiresMcRestart
+        public boolean disableRFtoEU = false;
+
+        @Config.Comment("True if you want Energy Converter to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
         public boolean PermitOnlyExactVoltage = false;
 
         @Config.Name("Ratio 1 EU to X RF")
