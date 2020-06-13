@@ -44,7 +44,7 @@ public class CTUtils {
             if (recipe instanceof Recipe) {
                 for (ItemStack output : ((Recipe) recipe).getOutputs()) {
                     for (ItemStack itemStack : mcItemOutputs) {
-                        if (!output.isItemEqual(itemStack)) {
+                        if (output.isItemEqual(itemStack) && output.getCount() == itemStack.getCount()) {
                             matches = false;
                             break;
                         }
@@ -52,7 +52,7 @@ public class CTUtils {
                 }
                 for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
                     for (FluidStack fluidStack : mcFluidOutputs) {
-                        if (!fluidOutput.isFluidEqual(fluidStack)) {
+                        if (!fluidOutput.isFluidStackIdentical(fluidStack)) {
                             matches = false;
                             break;
                         }
