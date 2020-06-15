@@ -1,7 +1,6 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeWashingPlant;
@@ -12,14 +11,11 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static gregicadditions.GAMaterials.Grisium;
 
 public class LargeWashingPlantInfo extends MultiblockInfoPage {
 	@Override
@@ -54,6 +50,6 @@ public class LargeWashingPlantInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{I18n.format("gregtech.multiblock.large_washing_plant.description")};
+		return new String[]{};
 	}
 }
