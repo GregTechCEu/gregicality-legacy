@@ -26,7 +26,7 @@ public class CTUtils {
 
     @ZenMethod("removeRecipeByOutput")
     @Optional.Method(modid = Gregicality.MODID)
-    public static void removeRecipesByOutPut(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs, boolean useAmounts) {
+    public static void removeRecipeByOutput(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs, boolean useAmounts) {
         List<Recipe> recipesToRemove = new ArrayList<>();
         boolean matches;
         List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
