@@ -7,9 +7,11 @@ import gregicadditions.worldgen.WorldGenRegister;
 public class CommonProxy {
 
 
+
     public void preLoad() {
         GAMetaItems.init();
         GAMetaFluids.init();
+
     }
 
     public void onLoad() {
