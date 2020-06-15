@@ -12,11 +12,14 @@ import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
+import gregtech.api.util.ValidationResult;
+import gregtech.common.items.MetaItems;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -98,6 +101,31 @@ public class RecipeHandler {
 
         if (GAConfig.GT5U.stickGT5U) {
             OrePrefix.stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
+        }
+        OrePrefix.dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
+
+    }
+
+    public static void processGem(OrePrefix gemPrefix, GemMaterial material) {
+        ItemStack gemStack = OreDictUnifier.get(gemPrefix, material);
+        ItemStack tinyDarkAshStack = OreDictUnifier.get(OrePrefix.dustTiny, Materials.DarkAsh);
+
+        if (!material.hasFlag(GemMaterial.MatFlags.CRYSTALLISABLE) && !material.hasFlag(Material.MatFlags.EXPLOSIVE) && !material.hasFlag(Material.MatFlags.FLAMMABLE)) {
+            removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dust, material, 4), new ItemStack(Blocks.TNT, 2));
+            ValidationResult<Recipe> result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, material, 4)
+                    .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
+                    .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                    .build();
+            RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+            result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dust, material, 4)
+                    .inputs(MetaItems.DYNAMITE.getStackForm(12))
+                    .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                    .build();
+            RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
         }
 
     }
