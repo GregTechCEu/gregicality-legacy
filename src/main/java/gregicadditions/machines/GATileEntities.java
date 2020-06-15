@@ -643,10 +643,10 @@ public class GATileEntities {
         int id = 2900;
         for (final ConverterType t : ConverterType.values()) {
             for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
-                for (int slot = 1; slot <= 4; ++slot) {
+                for (int value : GAConfig.energyConverter.values) {
                     final String vn = GTValues.VN[tier].toLowerCase();
-                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + slot * slot), tier, t.getGTEUToForgeType(), slot)));
-                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + slot * slot), tier, t.getForgeToGTEUType(), slot)));
+                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
+                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
                 }
             }
         }

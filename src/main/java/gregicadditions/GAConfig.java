@@ -238,6 +238,10 @@ public class GAConfig {
 
     public static class EnergyConverter {
 
+        @Config.Comment("Define Power converter size")
+        @Config.RequiresMcRestart
+        public int[] values = new int[]{1, 4, 9, 16};
+
         @Config.Comment("Whether or not to disable GregTech EU to RF energy converters.")
         @Config.RequiresMcRestart
         public boolean disableEUtoRF = false;
