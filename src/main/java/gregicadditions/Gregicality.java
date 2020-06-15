@@ -3,6 +3,7 @@ package gregicadditions;
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
+import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
@@ -16,11 +17,18 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.type.DustMaterial;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.ore.StoneType;
 import gregtech.api.util.GTLog;
+import gregtech.common.blocks.BlockOre;
+import gregtech.common.blocks.OreItemBlock;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -40,6 +48,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Function;
 
+import static gregicadditions.item.GAMetaBlocks.GA_ORES;
+
 @Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
         dependencies = "required-after:gregtech;" +
                 "after:forestry;" +
@@ -53,9 +63,11 @@ public class Gregicality {
     public static final String VERSION = "@VERSION@";
 
 
+
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
             GAMetalCasingBlockFactory.init();
+            GAOreBlockFactory.init();
         }
     }
 
@@ -131,6 +143,7 @@ public class Gregicality {
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
         registry.register(GAMetaBlocks.CELL_CASING);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
+        GA_ORES.forEach(registry::register);
     }
 
     @SubscribeEvent
@@ -143,6 +156,10 @@ public class Gregicality {
         GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()
                 .map(block -> createItemBlock(block, GAMetalCasingItemBlock::new))
+                .forEach(registry::register);
+
+        GA_ORES.stream()
+                .map(block -> createItemBlock(block, OreItemBlock::new))
                 .forEach(registry::register);
     }
 
@@ -161,6 +178,13 @@ public class Gregicality {
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
+        }
+        for (BlockOre blockOre : GA_ORES) {
+            DustMaterial mat = blockOre.material;
+            for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
+                ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
+                OreDictUnifier.registerOre(normalStack, OrePrefix.valueOf("oreDense"), mat);
+            }
         }
     }
 
