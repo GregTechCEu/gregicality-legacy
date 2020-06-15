@@ -5,6 +5,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.Gregicality;
+
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @ZenClass("mods.gtadditions.recipe.Utils")
 @ZenRegister
@@ -75,6 +77,5 @@ public class CTUtils {
             recipeMap.removeRecipe(recipe);
         }
     }
-
-
+    
 }
