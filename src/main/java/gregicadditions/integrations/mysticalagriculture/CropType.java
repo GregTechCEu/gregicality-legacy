@@ -1,7 +1,14 @@
 package gregicadditions.integrations.mysticalagriculture;
 
+import com.blakebr0.cucumber.registry.ModRegistry;
+import crafttweaker.annotations.ZenRegister;
+import gregicadditions.Gregicality;
+import gregicadditions.integrations.mysticalagriculture.block.MaterialBlockCrop;
 import gregicadditions.integrations.mysticalagriculture.items.ItemTierSeed;
 import gregtech.api.unification.material.type.Material;
+import net.minecraftforge.fml.common.Optional;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,13 +16,35 @@ import java.util.Map;
 import static gregicadditions.GAMaterials.QuartzSand;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems.CROPS;
+import static gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems.ESSENCES;
 import static gregtech.api.unification.material.Materials.*;
 
-
+@ZenClass("mods.gtadditions.mystical.Crop")
+@ZenRegister
 public final class CropType {
 
     public static final Map<Material, ItemTierSeed> SEEDS = new HashMap<>();
 
+    @ZenMethod("addCrop")
+    @Optional.Method(modid = Gregicality.MODID)
+    public static void addCrop(Material material, int tier) {
+        final ModRegistry registry = MysticalCommonProxy.REGISTRY;
+
+        MaterialBlockCrop materialBlockCrop = new MaterialBlockCrop(material.toString() + ".crop", material);
+        materialBlockCrop.setRegistryName("gregtech:crop_" + material.toString());
+
+
+        ItemTierSeed itemTierSeed = new ItemTierSeed(materialBlockCrop, material, tier);
+        materialBlockCrop.setCrop(ESSENCES.get(material));
+        materialBlockCrop.setSeed(itemTierSeed);
+
+        SEEDS.put(material, itemTierSeed);
+
+        registry.register(itemTierSeed, material.toString() + "_seeds");
+
+        registry.addOre(itemTierSeed, "listAllSeed");
+
+    }
 
     public static void init() {
 
