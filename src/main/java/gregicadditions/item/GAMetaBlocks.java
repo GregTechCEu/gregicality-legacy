@@ -105,7 +105,7 @@ public class GAMetaBlocks {
     private static void createOreBlock(DustMaterial material, StoneType[] stoneTypes, int index, OrePrefix orePrefix) {
         BlockOre block = new BlockOre(material, stoneTypes);
 
-        block.setRegistryName("ore_dense_" + material + "_" + index);
+        block.setRegistryName("gregtech:dense_ore_" + material + "_" + index);
 
 //        for (StoneType stoneType : stoneTypes) {
 //            GregTechAPI.oreBlockTable.computeIfAbsent(material, m -> new HashMap<>()).put(stoneType, block);

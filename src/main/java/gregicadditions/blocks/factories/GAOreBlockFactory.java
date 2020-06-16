@@ -32,7 +32,7 @@ public class GAOreBlockFactory extends AbstractBlockModelFactory {
     }
 
     public GAOreBlockFactory() {
-        super("ore_dense_block", "ore_dense_");
+        super("dense_ore_block", "dense_ore_");
     }
 
     @Override
