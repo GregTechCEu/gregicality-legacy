@@ -76,6 +76,7 @@ public class RecipeHandler {
         OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
         OrePrefix.dustImpure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
+        OrePrefix.dustPure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             OrePrefix.valueOf("plateCurved").addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
         if (GAConfig.GT6.PlateDoubleIngot) {
@@ -449,8 +450,8 @@ public class RecipeHandler {
         }
     }
 
-    public static void processDirtyDust(OrePrefix dustImpurePrefix, DustMaterial dustMaterial) {
-        GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES.recipeBuilder().input(dustImpurePrefix, dustMaterial)
+    public static void processDirtyDust(OrePrefix dustPureAndImpurePrefix, DustMaterial dustMaterial) {
+        GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES.recipeBuilder().input(dustPureAndImpurePrefix, dustMaterial)
                 .fluidInputs(Water.getFluid(100))
                 .outputs(OreDictUnifier.get(OrePrefix.dust, dustMaterial)).buildAndRegister();
     }
