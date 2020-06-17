@@ -128,7 +128,9 @@ public class ExNihiloCreatioProxy {
     @Optional.Method(modid = "exnihilocreatio")
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        ExNihiloCreatioProxy.register();
+        if (!GAConfig.exNihilo.Disable) {
+            ExNihiloCreatioProxy.register();
+        }
     }
 
     public static void register() {
