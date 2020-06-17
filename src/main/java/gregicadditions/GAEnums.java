@@ -73,12 +73,6 @@ public class GAEnums {
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HOT", new Class[]{String.class, Function.class}, "hot.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HOT"));
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE", new Class[]{String.class, Function.class}, "hexafluoride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE"));
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXACHLORIDE", new Class[]{String.class, Function.class}, "hexachloride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXACHLORIDE"));
-
-        EnumHelper.addEnum(MaterialIconType.class, "oreDense", new Class[0]);
-        EnumHelper.addEnum(OrePrefix.class, "oreDense",
-                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                "Dense Ore", M * 2, null, MaterialIconType.valueOf("oreDense"), OrePrefix.Flags.ENABLE_UNIFICATION, null);
-
     }
 
     public static final Predicate<Material> dust = mat -> mat instanceof DustMaterial;
