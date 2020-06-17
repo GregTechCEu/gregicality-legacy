@@ -1,8 +1,6 @@
 package gregicadditions.integrations.mysticalagriculture;
 
 import com.blakebr0.cucumber.registry.ModRegistry;
-import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.block.MaterialBlockCrop;
@@ -23,7 +21,6 @@ import static gregtech.api.unification.material.Materials.*;
 
 @ZenClass("mods.gtadditions.mystical.Crop")
 @ZenRegister
-@ModOnly(MysticalAgradditions.MOD_ID)
 public final class CropType {
 
     public static final Map<Material, ItemTierSeed> SEEDS = new HashMap<>();

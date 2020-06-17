@@ -31,6 +31,8 @@ public class ClientProxy extends CommonProxy{
         Keybinds.initBinds();
     }
 
+
+
     @Override
     public void onLoad() {
         super.onLoad();
