@@ -3,11 +3,13 @@ package gregicadditions;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.MaterialIconType;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -75,22 +77,28 @@ public class GAEnums {
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXACHLORIDE", new Class[]{String.class, Function.class}, "hexachloride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXACHLORIDE"));
 
         String[] stoneTypes = {"", "Blackgranite", "Redgranite", "Marble", "Basalt", "Sand", "Gravel", "Netherrack", "Endstone"};
+        Material[] secondaryMaterials = {Materials.Stone, Materials.GraniteBlack, Materials.GraniteRed, Materials.Marble,
+                Materials.Basalt, Materials.SiliconDioxide, Materials.Flint, Materials.Netherrack, Materials.Endstone};
         
-        for (String stoneType : stoneTypes) {
-            EnumHelper.addEnum(MaterialIconType.class, "oreRich" + stoneType, new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "oreRich" + stoneType,
+        for (int i = 0; i < stoneTypes.length; i++) {
+            EnumHelper.addEnum(MaterialIconType.class, "oreRich" + stoneTypes[i], new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "oreRich" + stoneTypes[i],
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Rich " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("oreRich" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+                    "Rich " + stoneTypes[i] + " Ore", M * 2, null, MaterialIconType.valueOf("oreRich" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+            OrePrefix.valueOf("oreRich" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
 
-            EnumHelper.addEnum(MaterialIconType.class, "orePoor" + stoneType, new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "orePoor" + stoneType,
+            EnumHelper.addEnum(MaterialIconType.class, "orePoor" + stoneTypes[i], new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "orePoor" + stoneTypes[i],
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Poor " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("orePoor" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+                    "Poor " + stoneTypes[i] + " Ore", M / 2, null, MaterialIconType.valueOf("orePoor" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+            OrePrefix.valueOf("orePoor" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
 
-            EnumHelper.addEnum(MaterialIconType.class, "orePure" + stoneType, new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "orePure" + stoneType,
+
+            EnumHelper.addEnum(MaterialIconType.class, "orePure" + stoneTypes[i], new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "orePure" + stoneTypes[i],
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Pure " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("orePure" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+                    "Pure " + stoneTypes[i] + " Ore", M * 4, null, MaterialIconType.valueOf("orePure" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+            OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
 
         }
 

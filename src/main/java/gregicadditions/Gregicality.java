@@ -49,6 +49,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.util.function.Function;
 
 import static gregicadditions.item.GAMetaBlocks.GA_ORES;
@@ -117,7 +118,7 @@ public class Gregicality {
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event) throws IOException {
         proxy.onLoad();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             forestryProxy.init();

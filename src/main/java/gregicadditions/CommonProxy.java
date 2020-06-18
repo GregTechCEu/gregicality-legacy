@@ -4,6 +4,8 @@ import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.worldgen.WorldGenRegister;
 
+import java.io.IOException;
+
 public class CommonProxy {
 
 
@@ -14,7 +16,7 @@ public class CommonProxy {
 
     }
 
-    public void onLoad() {
+    public void onLoad() throws IOException {
         WorldGenRegister.init();
     }
 }
