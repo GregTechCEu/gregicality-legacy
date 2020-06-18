@@ -3,6 +3,7 @@ package gregicadditions.worldgen;
 
 import gregtech.api.GTValues;
 import gregtech.api.util.GTLog;
+import gregtech.api.worldgen.config.WorldGenRegistry;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;
 
@@ -15,9 +16,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WorldGenRegister {
-    public static void init() {
+    public static void init() throws IOException {
         long time = System.currentTimeMillis();
         GTLog.logger.info("WorldGen init started");
+        GTLog.logger.info("Adding Gregicality block filler to the ore generation registry");
+        WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
         try {
             WorldGenRegister.removeGTConfigs();
         } catch (IOException e) {
@@ -30,7 +33,7 @@ public class WorldGenRegister {
             GTLog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
-
+        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
         GTLog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
     }
