@@ -2,6 +2,7 @@ package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
+import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.input.Keybinds;
@@ -159,7 +160,7 @@ public class Gregicality {
                 .forEach(registry::register);
 
         GA_ORES.stream()
-                .map(block -> createItemBlock(block, OreItemBlock::new))
+                .map(block -> createItemBlock(block, GAOreItemBlock::new))
                 .forEach(registry::register);
     }
 
@@ -179,13 +180,7 @@ public class Gregicality {
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
         }
-        for (BlockOre blockOre : GA_ORES) {
-            DustMaterial mat = blockOre.material;
-            for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
-                ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
-                OreDictUnifier.registerOre(normalStack, OrePrefix.valueOf("oreDense"), mat);
-            }
-        }
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

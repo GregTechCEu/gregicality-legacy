@@ -52,7 +52,6 @@ public abstract class AbstractBlockModelFactory implements ResourcePackHook.IRes
 
     @Override
     public InputStream getInputStream(ResourceLocation location) throws IOException {
-        Gregicality.LOGGER.info("get input stream " + location);
         String resourcePath = location.getPath(); // blockstates/compressed_1.json
         resourcePath = resourcePath.substring(0, resourcePath.length() - 5); //remove .json
         resourcePath = resourcePath.substring(12); //remove blockstates/

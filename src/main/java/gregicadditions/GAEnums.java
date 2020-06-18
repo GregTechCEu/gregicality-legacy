@@ -74,10 +74,25 @@ public class GAEnums {
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE", new Class[]{String.class, Function.class}, "hexafluoride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE"));
         EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXACHLORIDE", new Class[]{String.class, Function.class}, "hexachloride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXACHLORIDE"));
 
-        EnumHelper.addEnum(MaterialIconType.class, "oreDense", new Class[0]);
-        EnumHelper.addEnum(OrePrefix.class, "oreDense",
-                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                "Dense Ore", M * 2, null, MaterialIconType.valueOf("oreDense"), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+        String[] stoneTypes = {"", "Blackgranite", "Redgranite", "Marble", "Basalt", "Sand", "Gravel", "Netherrack", "Endstone"};
+        
+        for (String stoneType : stoneTypes) {
+            EnumHelper.addEnum(MaterialIconType.class, "oreRich" + stoneType, new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "oreRich" + stoneType,
+                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                    "Rich " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("oreRich" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+
+            EnumHelper.addEnum(MaterialIconType.class, "orePoor" + stoneType, new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "orePoor" + stoneType,
+                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                    "Poor " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("orePoor" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+
+            EnumHelper.addEnum(MaterialIconType.class, "orePure" + stoneType, new Class[0]);
+            EnumHelper.addEnum(OrePrefix.class, "orePure" + stoneType,
+                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
+                    "Pure " + stoneType + " Ore", M * 4, null, MaterialIconType.valueOf("orePure" + stoneType), OrePrefix.Flags.ENABLE_UNIFICATION, null);
+
+        }
 
     }
 

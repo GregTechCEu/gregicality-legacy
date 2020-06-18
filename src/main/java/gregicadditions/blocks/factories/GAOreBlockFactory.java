@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class GAOreBlockFactory extends AbstractBlockModelFactory {
 
+    private final String orePrefix;
+
     private static final String VARIANT_DEFINITION =
             "      \"$STONE_TYPE$\": {\n" +
                     "        \"textures\": {\n" +
@@ -27,16 +29,23 @@ public class GAOreBlockFactory extends AbstractBlockModelFactory {
     private static final Joiner COMMA_JOINER = Joiner.on(",\n");
 
     public static void init() {
-        GAOreBlockFactory factory = new GAOreBlockFactory();
+        GAOreBlockFactory factory = new GAOreBlockFactory("rich");
         ResourcePackHook.addResourcePackFileHook(factory);
+        GAOreBlockFactory factory2 = new GAOreBlockFactory("pure");
+        ResourcePackHook.addResourcePackFileHook(factory2);
+        GAOreBlockFactory factory3 = new GAOreBlockFactory("poor");
+        ResourcePackHook.addResourcePackFileHook(factory3);
+
     }
 
-    public GAOreBlockFactory() {
-        super("dense_ore_block", "dense_ore_");
+    public GAOreBlockFactory(String orePrefix) {
+        super(orePrefix + "_ore_block", orePrefix + "_ore_");
+        this.orePrefix = orePrefix;
     }
 
     @Override
     protected String fillSample(Block block, String blockStateSample) {
+        MaterialIconType ore = MaterialIconType.valueOf("ore" + orePrefix.substring(0, 1).toUpperCase() + orePrefix.substring(1));
         return blockStateSample
                 .replace("$STONE_TYPES$", COMMA_JOINER.join(((BlockOre) block).STONE_TYPE.getAllowedValues().stream()
                         .map(stoneType -> VARIANT_DEFINITION
@@ -44,6 +53,6 @@ public class GAOreBlockFactory extends AbstractBlockModelFactory {
                                 .replace("$BASE_TEXTURE_TOP$", stoneType.backgroundTopTexture.toString())
                                 .replace("$BASE_TEXTURE_SIDE$", stoneType.backgroundSideTexture.toString()))
                         .collect(Collectors.toList())))
-                .replace("$MATERIAL_TEXTURE_NORMAL$", MaterialIconType.ore.getBlockPath(((BlockOre) block).material.materialIconSet).toString());
+                .replace("$MATERIAL_TEXTURE_NORMAL$", ore.getBlockPath(((BlockOre) block).material.materialIconSet).toString());
     }
 }
