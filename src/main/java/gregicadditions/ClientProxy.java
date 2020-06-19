@@ -3,6 +3,7 @@ package gregicadditions;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GAMetaBlocks;
+import gregtech.common.blocks.BlockOre;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -12,6 +13,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(Side.CLIENT)
@@ -25,14 +28,22 @@ public class ClientProxy extends CommonProxy{
         return state.getValue(block.variantProperty).materialRGB;
     };
 
+    public static final IBlockColor ORE_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) ->
+            tintIndex == 1 ? ((BlockOre) state.getBlock()).material.materialRGB : 0xFFFFFF;
+
+    public static final IItemColor ORE_ITEM_COLOR = (stack, tintIndex) ->
+            tintIndex == 1 ? ((BlockOre) ((ItemBlock) stack.getItem()).getBlock()).material.materialRGB : 0xFFFFFF;
+
     @Override
     public void preLoad(){
         super.preLoad();
         Keybinds.initBinds();
     }
 
+
+
     @Override
-    public void onLoad() {
+    public void onLoad() throws IOException {
         super.onLoad();
         Keybinds.registerClient();
         GAMetaBlocks.registerColors();
