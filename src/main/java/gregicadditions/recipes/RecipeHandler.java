@@ -584,11 +584,11 @@ public class RecipeHandler {
 
         Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
 
-            if (name.length() <= 0) {
+            String oreName = name.substring(4);
+
+            if (oreName.length() <= 0) {
                 return;
             }
-
-            String oreName = name.substring(4);
             String seedName = "seed" + titleCase(oreName);
             String cropName = "essence" + titleCase(oreName);
 
