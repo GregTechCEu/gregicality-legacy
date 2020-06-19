@@ -134,7 +134,6 @@ public class RecipeHandler {
     }
 
 
-
     private static void processTinyDust(OrePrefix dustTiny, DustMaterial material) {
         removeRecipesByInputs(RecipeMaps.PACKER_RECIPES, OreDictUnifier.get(dustTiny, material, 9), IntCircuitIngredient.getIntegratedCircuit(1));
         PACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(dustTiny, material, 9).notConsumable(SCHEMATIC_DUST.getStackForm()).outputs(OreDictUnifier.get(dust, material)).buildAndRegister();
@@ -584,6 +583,11 @@ public class RecipeHandler {
 
 
         Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
+
+            if (name.length() <= 0) {
+                return;
+            }
+
             String oreName = name.substring(4);
             String seedName = "seed" + titleCase(oreName);
             String cropName = "essence" + titleCase(oreName);
