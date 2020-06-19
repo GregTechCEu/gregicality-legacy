@@ -17,21 +17,12 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
-import gregicadditions.worldgen.GABlockFiller;
 import gregtech.api.GTValues;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.ore.StoneType;
 import gregtech.api.util.GTLog;
-import gregtech.api.worldgen.config.WorldGenRegistry;
-import gregtech.common.blocks.BlockOre;
-import gregtech.common.blocks.OreItemBlock;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -65,7 +56,6 @@ public class Gregicality {
     public static final String MODID = "gtadditions";
     public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
-
 
 
     static {
@@ -170,6 +160,7 @@ public class Gregicality {
     @SubscribeEvent
     public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.register();
+        OreRecipeHandler.register();
         GARecipeAddition.init();
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
