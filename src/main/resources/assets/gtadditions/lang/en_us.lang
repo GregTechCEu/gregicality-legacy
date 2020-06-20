@@ -1422,6 +1422,11 @@ gregtech.multiblock.nuclear_reactor.coolant=Coolant: %s Min Temp: %dC
 gregtech.multiblock.nuclear_reactor.base_heat=Heat Produce: %d C/sec
 gregtech.multiblock.nuclear_reactor.rod_type=Rod Heat Factor: %d%%
 gregtech.multiblock.nuclear_reactor.produce=Produce Hot Coolant !
+gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
+gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
+gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
+gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
+
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot
