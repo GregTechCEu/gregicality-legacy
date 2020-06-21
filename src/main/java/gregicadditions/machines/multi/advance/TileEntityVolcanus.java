@@ -39,9 +39,9 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
-    private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.volcanus.durationDecreaseFactor;
+    private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.volcanus.durationDecreasePercentage;
 
-    private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreaseFactor;
+    private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreasePercentage;
 
     public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -108,8 +108,8 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt((int) (recipe.getEUt() * ENERGY_DECREASE_FACTOR))
-                    .duration((int) (recipe.getDuration() * ( DURATION_DECREASE_FACTOR / 100)));
+                    .EUt((int) (recipe.getEUt() * ENERGY_DECREASE_FACTOR / 100))
+                    .duration((int) (recipe.getDuration() *  DURATION_DECREASE_FACTOR / 100));
             return newRecipe.build().getResult();
         }
 
