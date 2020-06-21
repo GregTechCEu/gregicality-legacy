@@ -41,7 +41,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
     private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.volcanus.durationDecreasePercentage;
 
-    private static final double ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreasePercentage;
+    private static final int ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreasePercentage;
 
     public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
