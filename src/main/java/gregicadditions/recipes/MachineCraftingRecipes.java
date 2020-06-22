@@ -47,7 +47,7 @@ import static gregtech.common.items.MetaItems.*;
 
 public class MachineCraftingRecipes {
 
-    private static final String[] tiers = {"lv", "mv", "hv", "ev", "iv", "luv", "zpm", "max"};
+    private static final String[] tiers = {"lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "max"};
 
     public static void init() {
         //Removal
