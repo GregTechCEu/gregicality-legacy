@@ -190,6 +190,22 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
+    public static MetaItem<?>.MetaValueItem COSMIC_CIRCUIT;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem WAFER_AMERICIUM;
+    public static MetaItem<?>.MetaValueItem WAFER_EUROPIUM;
+    public static MetaItem<?>.MetaValueItem WAFER_NEUTRONIUM;
+
+    public static MetaItem<?>.MetaValueItem BOULE_AMERICIUM;
+    public static MetaItem<?>.MetaValueItem BOULE_EUROPIUM;
+    public static MetaItem<?>.MetaValueItem BOULE_NEUTRONIUM;
+
+
+
+
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
