@@ -92,21 +92,21 @@ public class RecipeHandler {
 
     }
 
-    public static void processGem(OrePrefix gemPrefix, GemMaterial material) {
-        ItemStack gemStack = OreDictUnifier.get(gemPrefix, material);
+    public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
+        ItemStack gemStack = OreDictUnifier.get(OrePrefix.gem, material);
         ItemStack tinyDarkAshStack = OreDictUnifier.get(OrePrefix.dustTiny, Materials.DarkAsh);
 
         if (!material.hasFlag(GemMaterial.MatFlags.CRYSTALLISABLE) && !material.hasFlag(Material.MatFlags.EXPLOSIVE) && !material.hasFlag(Material.MatFlags.FLAMMABLE)) {
-            removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dust, material, 4), new ItemStack(Blocks.TNT, 2));
+            removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
             ValidationResult<Recipe> result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dust, material, 4)
+                    .input(dustPrefix, material, 4)
                     .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
                     .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
                     .build();
             RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
 
             result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dust, material, 4)
+                    .input(dustPrefix, material, 4)
                     .inputs(MetaItems.DYNAMITE.getStackForm(12))
                     .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
                     .build();
