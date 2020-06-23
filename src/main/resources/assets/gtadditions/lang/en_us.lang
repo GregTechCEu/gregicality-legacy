@@ -29,6 +29,9 @@ metaitem.boule.glowstone.name=Glowstone doped Monocrystalline Silicon Boule
 metaitem.boule.glowstone.tooltip=Raw Circuit
 metaitem.boule.naquadah.name=Naquadah doped Monocrystalline Silicon Boule
 metaitem.boule.naquadah.tooltip=Raw Circuit
+metaitem.boule.europium.name=Europium doped Monocrystalline Silicon Boule
+metaitem.boule.americium.name=Americium doped Monocrystalline Silicon Boule
+metaitem.boule.neutronium.name=Neutronium doped Monocrystalline Silicon Boule
 metaitem.brick.coke.name=Coke Oven Brick
 metaitem.brick.fireclay.name=Firebrick
 metaitem.credit.darmstadtium.name=Neutronium Credit
@@ -80,6 +83,9 @@ metaitem.plate.ram.name=Random Access Memory Chip
 metaitem.plate.ram.tooltip=Integrated Circuit
 metaitem.plate.soc.name=SoC
 metaitem.plate.soc.tooltip=System on a Chip
+metaitem.wafer.americium.name=Americium doped Wafer
+metaitem.wafer.neutronium.name=Neutronium doped Wafer
+metaitem.wafer.europium.name=Europium doped Wafer
 metaitem.wafer.asoc.name=ASoC Wafer
 metaitem.wafer.asoc.tooltip=Raw Circuit
 metaitem.wafer.circuit.name=Integrated Logic Circuit (Wafer)
@@ -208,6 +214,7 @@ metaitem.component.smd.capacitor.name=Micro SMD Capacitor
 metaitem.component.smd.transistor.name=Micro SMD Transistor
 metaitem.component.smd.resistor.name=Micro SMD Resistor
 
+
 metaitem.hand_pump.name=Hand Pump
 
 metaitem.waste.nuclear.name=%s Waste
@@ -328,6 +335,12 @@ metaitem.circuit.resonatic.uv.name=Superconductor Magneto Resonatic Circuit
 metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
 metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
+
+//cosmic
+metaitem.circuit.circuit.cosmic.name=Cosmic Circuit
+metaitem.circuit.processor.cosmic.name=Cosmic Processor
+metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
+metaitem.circuit.mainframe.cosmic.namne=Cosmic Computer
 
 ///////////////////////////////////////////////////////
 

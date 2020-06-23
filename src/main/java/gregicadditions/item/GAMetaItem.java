@@ -161,6 +161,19 @@ public class GAMetaItem extends MaterialMetaItem {
         NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
 
 
+        WAFER_AMERICIUM = addItem(333, "wafer.americium");
+        WAFER_EUROPIUM = addItem(334, "wafer.europium");
+        WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
+
+        COSMIC_CIRCUIT = addItem(336, "circuit.circuit.cosmic");
+        COSMIC_PROCESSOR = addItem(337, "circuit.processor.cosmic");
+        COSMIC_PROCESSOR_ARRAY = addItem(338, "circuit.assembly.cosmic");
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic");
+
+        BOULE_AMERICIUM = addItem(340, "boule.americium");
+        BOULE_EUROPIUM = addItem(341, "boule.europium");
+        BOULE_NEUTRONIUM = addItem(342, "boule.neutronium");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;
@@ -200,6 +213,9 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
+
+
+
 
     }
 
