@@ -58,6 +58,9 @@ public class GAConfig {
     public static GT5U GT5U = new GT5U();
 
     public static class GT5U {
+        @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
+        public boolean stickGT5U = false;
+
         @Config.Comment("Set to false to disable GT5U Cable isolation recipes")
         @Config.Name("Cables can be isolated with different combinations of Rubbers and Dusts with varying efficiencies")
         public boolean CablesGT5U = true;
@@ -230,12 +233,24 @@ public class GAConfig {
         public boolean GregsConstructGlassProcessing = true;
     }
 
-    @Config.Comment("Config options for energyConverter features")
+    @Config.Comment("Config options for Energy Converter features")
     public static EnergyConverter energyConverter = new EnergyConverter();
 
     public static class EnergyConverter {
-        public boolean Disable = false;
-        @Config.Comment("True if you want Energy Converter  to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
+
+        @Config.Comment("Define Power converter size")
+        @Config.RequiresMcRestart
+        public int[] values = new int[]{1, 4, 9, 16};
+
+        @Config.Comment("Whether or not to disable GregTech EU to RF energy converters.")
+        @Config.RequiresMcRestart
+        public boolean disableEUtoRF = false;
+
+        @Config.Comment("Whether or not to disable RF to GregTech EU energy converters.")
+        @Config.RequiresMcRestart
+        public boolean disableRFtoEU = false;
+
+        @Config.Comment("True if you want Energy Converter to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
         public boolean PermitOnlyExactVoltage = false;
 
         @Config.Name("Ratio 1 EU to X RF")
@@ -860,13 +875,13 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
-            public int durationDecreaseFactor = 33;
+            public int durationDecreasePercentage = 33;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
-            @Config.RangeDouble(min = 0.01, max = 1.0)
+            @Config.RangeDouble(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
-            public double energyDecreaseFactor = 0.8;
+            public int energyDecreasePercentage = 80;
 
         }
 
@@ -881,7 +896,7 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer duration decrease factor")
-            public int durationDecreaseFactor = 50;
+            public int durationDecreasePercentage = 50;
 
         }
 

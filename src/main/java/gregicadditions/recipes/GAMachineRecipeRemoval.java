@@ -55,6 +55,18 @@ public class GAMachineRecipeRemoval {
             removeRecipesByInputs(RecipeMaps.BENDER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 12), IntCircuitIngredient.getIntegratedCircuit(1));
         }
 
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Tungsten, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Chrome, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Iridium, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Osmium, 8), IntCircuitIngredient.getIntegratedCircuit(8));
+
+
         //Fix Brick Exploit
 //        removeRecipesByInputs(RecipeMaps.MACERATOR_RECIPES, new ItemStack(Items.BRICK));
 

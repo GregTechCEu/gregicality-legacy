@@ -103,10 +103,13 @@ public class MysticalAgricultureItems {
         ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:diamond_seeds"));
         ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:emerald_seeds"));
         ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:lapis_lazuli_seeds"));
-        ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:copper_seeds"));
-        ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:bronze_seeds"));
-        ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:tin_seeds"));
         ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:redstone_seeds"));
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.COPPER.isEnabled())
+            ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:copper_seeds"));
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.BRONZE.isEnabled())
+            ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:bronze_seeds"));
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.TIN.isEnabled())
+            ModHandler.removeRecipeByName(new ResourceLocation("mysticalagriculture:tin_seeds"));
     }
 
     public static void registerRecipe() {
@@ -152,24 +155,30 @@ public class MysticalAgricultureItems {
                 'E', getEssence(lapisSeed.getTier()),
                 'S', getCraftingSeed(lapisSeed.getTier()),
                 'M', OreDictUnifier.get(OrePrefix.block, Lapis));
-        ItemSeed copperSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.COPPER.getSeed();
-        ModHandler.addShapedRecipe("gtadditions:seed_" + copperSeed.toString(), new ItemStack(copperSeed, 1),
-                "MEM", "ESE", "MEM",
-                'E', getEssence(copperSeed.getTier()),
-                'S', getCraftingSeed(copperSeed.getTier()),
-                'M', OreDictUnifier.get(OrePrefix.block, Copper));
-        ItemSeed bronzeSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.BRONZE.getSeed();
-        ModHandler.addShapedRecipe("gtadditions:seed_" + Bronze.toString(), new ItemStack(bronzeSeed, 1),
-                "MEM", "ESE", "MEM",
-                'E', getEssence(bronzeSeed.getTier()),
-                'S', getCraftingSeed(bronzeSeed.getTier()),
-                'M', OreDictUnifier.get(OrePrefix.block, Bronze));
-        ItemSeed tinSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.TIN.getSeed();
-        ModHandler.addShapedRecipe("gtadditions:seed_" + Tin.toString(), new ItemStack(tinSeed, 1),
-                "MEM", "ESE", "MEM",
-                'E', getEssence(tinSeed.getTier()),
-                'S', getCraftingSeed(tinSeed.getTier()),
-                'M', OreDictUnifier.get(OrePrefix.block, Tin));
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.COPPER.isEnabled()) {
+            ItemSeed copperSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.COPPER.getSeed();
+            ModHandler.addShapedRecipe("gtadditions:seed_" + copperSeed.toString(), new ItemStack(copperSeed, 1),
+                    "MEM", "ESE", "MEM",
+                    'E', getEssence(copperSeed.getTier()),
+                    'S', getCraftingSeed(copperSeed.getTier()),
+                    'M', OreDictUnifier.get(OrePrefix.block, Copper));
+        }
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.BRONZE.isEnabled()) {
+            ItemSeed bronzeSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.BRONZE.getSeed();
+            ModHandler.addShapedRecipe("gtadditions:seed_" + Bronze.toString(), new ItemStack(bronzeSeed, 1),
+                    "MEM", "ESE", "MEM",
+                    'E', getEssence(bronzeSeed.getTier()),
+                    'S', getCraftingSeed(bronzeSeed.getTier()),
+                    'M', OreDictUnifier.get(OrePrefix.block, Bronze));
+        }
+        if (com.blakebr0.mysticalagriculture.lib.CropType.Type.TIN.isEnabled()) {
+            ItemSeed tinSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.TIN.getSeed();
+            ModHandler.addShapedRecipe("gtadditions:seed_" + Tin.toString(), new ItemStack(tinSeed, 1),
+                    "MEM", "ESE", "MEM",
+                    'E', getEssence(tinSeed.getTier()),
+                    'S', getCraftingSeed(tinSeed.getTier()),
+                    'M', OreDictUnifier.get(OrePrefix.block, Tin));
+        }
         ItemSeed redstoneSeed = com.blakebr0.mysticalagriculture.lib.CropType.Type.REDSTONE.getSeed();
         ModHandler.addShapedRecipe("gtadditions:seed_" + Redstone.toString(), new ItemStack(redstoneSeed, 1),
                 "MEM", "ESE", "MEM",

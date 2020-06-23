@@ -1,7 +1,9 @@
 package gregicadditions.integrations.mysticalagriculture;
 
 import com.blakebr0.cucumber.registry.ModRegistry;
+import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import com.blakebr0.mysticalagriculture.MysticalAgriculture;
+import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import net.minecraft.item.crafting.IRecipe;
@@ -41,20 +43,26 @@ public class MysticalCommonProxy {
     @Optional.Method(modid = Gregicality.MODID)
     @SubscribeEvent(priority = EventPriority.LOW)
     public void registerRecipesLow(RegistryEvent.Register<IRecipe> event) {
-        MysticalAgricultureItems.removeMARecipe();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            MysticalAgricultureItems.removeMARecipe();
+        }
     }
 
     @Optional.Method(modid = Gregicality.MODID)
     @SubscribeEvent
     public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
-        MysticalAgricultureItems.registerOreDict();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            MysticalAgricultureItems.registerOreDict();
+        }
 
     }
 
     @SubscribeEvent
     @Optional.Method(modid = Gregicality.MODID)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        MysticalAgricultureItems.registerRecipe();
+        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+            MysticalAgricultureItems.registerRecipe();
+        }
 
     }
 
