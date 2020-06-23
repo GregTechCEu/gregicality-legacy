@@ -5,6 +5,8 @@ import com.blakebr0.cucumber.item.ItemBase;
 import gregtech.api.unification.material.type.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemEssence extends ItemBase implements IColoredItem {
 
@@ -16,6 +18,7 @@ public class ItemEssence extends ItemBase implements IColoredItem {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack stack) {
         return I18n.format("item.ga_essence.material.name", material.getLocalizedName());
     }
