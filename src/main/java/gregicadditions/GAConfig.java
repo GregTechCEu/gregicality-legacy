@@ -106,8 +106,6 @@ public class GAConfig {
         public boolean highTierChemicalBaths = true;
         @Config.Name("Should higher tier Chemical Reactors be registered?")
         public boolean highTierChemicalReactors = true;
-        @Config.Name("Should higher tier Circuit Assembling Machines be registered?")
-        public boolean highTierCircuitAssemblers = true;
         @Config.Name("Should higher tier Compressors be registered?")
         public boolean highTierCompressors = true;
         @Config.Name("Should higher tier Cutting Machines be registered?")
@@ -178,6 +176,8 @@ public class GAConfig {
         public boolean highTierDecayChamber = true;
         @Config.Name("Should higher tier Green House be registered?")
         public boolean highTierGreenHouse = true;
+        @Config.Name("Should higher tier world accelerator be registered?")
+        public boolean highTierWorldAccelerator = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
         @Config.Name("Batteries - Enable an extra ZPM and UV Battery (this also makes the Ultimate Battery harder to make)")
