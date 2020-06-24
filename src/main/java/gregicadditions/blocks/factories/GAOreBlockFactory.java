@@ -2,6 +2,7 @@ package gregicadditions.blocks.factories;
 
 import com.google.common.base.Joiner;
 import gregicadditions.blocks.AbstractBlockModelFactory;
+import gregicadditions.blocks.GABlockOre;
 import gregtech.api.model.ResourcePackHook;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.common.blocks.BlockOre;
@@ -53,6 +54,6 @@ public class GAOreBlockFactory extends AbstractBlockModelFactory {
                                 .replace("$BASE_TEXTURE_TOP$", stoneType.backgroundTopTexture.toString())
                                 .replace("$BASE_TEXTURE_SIDE$", stoneType.backgroundSideTexture.toString()))
                         .collect(Collectors.toList())))
-                .replace("$MATERIAL_TEXTURE_NORMAL$", ore.getBlockPath(((BlockOre) block).material.materialIconSet).toString());
+                .replace("$MATERIAL_TEXTURE_NORMAL$", ore.getBlockPath(((GABlockOre) block).material.materialIconSet).toString());
     }
 }
