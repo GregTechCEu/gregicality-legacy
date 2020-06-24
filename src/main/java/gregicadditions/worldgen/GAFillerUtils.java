@@ -7,7 +7,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import exnihilocreatio.items.ore.Ore;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.unification.material.type.DustMaterial;
@@ -17,12 +16,10 @@ import gregtech.api.unification.ore.StoneTypes;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.WorldBlockPredicate;
 import gregtech.api.util.XSTR;
-import gregtech.api.worldgen.config.FillerConfigUtils;
 import gregtech.api.worldgen.config.OreConfigUtils;
 import gregtech.api.worldgen.config.PredicateConfigUtils;
 import gregtech.api.worldgen.filler.FillerEntry;
 import gregtech.common.blocks.BlockOre;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -93,10 +90,10 @@ public class GAFillerUtils {
         DustMaterial material;
         String materialName;
         if (stringDeclaration.startsWith("ore:")) {
-            if (stringDeclaration.contains("poor") || stringDeclaration.contains("rich") || stringDeclaration.contains("pure")) {
+            if (stringDeclaration.contains("poor:") || stringDeclaration.contains("rich:") || stringDeclaration.contains("pure:")) {
                 String orePrefix = stringDeclaration.substring(4, 8);
                 orePrefix = orePrefix.substring(0, 1).toUpperCase() + orePrefix.substring(1);
-                materialName = stringDeclaration.substring(8).toLowerCase();
+                materialName = stringDeclaration.substring(9).toLowerCase();
                 material = OreConfigUtils.getMaterialByName(materialName);
                 return getOreForMaterial(material, orePrefix);
             } else {

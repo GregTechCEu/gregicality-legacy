@@ -13,6 +13,7 @@ public class CommonProxy {
     public void preLoad() {
         GAMetaItems.init();
         GAMetaFluids.init();
+        WorldGenRegister.preInit();
 
     }
 

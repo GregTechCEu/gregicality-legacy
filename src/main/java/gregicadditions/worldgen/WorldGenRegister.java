@@ -16,11 +16,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WorldGenRegister {
+
+    public static void preInit() {
+        GTLog.logger.info("Adding Gregicality block filler to the ore generation registry");
+        WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
+    }
+
     public static void init() throws IOException {
         long time = System.currentTimeMillis();
         GTLog.logger.info("WorldGen init started");
-        GTLog.logger.info("Adding Gregicality block filler to the ore generation registry");
-        WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
+
         try {
             WorldGenRegister.removeGTConfigs();
         } catch (IOException e) {
@@ -33,8 +38,8 @@ public class WorldGenRegister {
             GTLog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
-        GTLog.logger.info("Reloading ore vein definitions to use our block filler");
-        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+//        GTLog.logger.info("Reloading ore vein definitions to use our block filler");
+//        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
         GTLog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
     }

@@ -25,27 +25,27 @@
         },
         {
           "weight": 20,
-          "value": "ore:poorPreciousMetal"
+          "value": "ore:poor:precious_metal"
         },
         {
           "weight": 50,
-          "value": "ore:PreciousMetal"
+          "value": "ore:precious_metal"
         },
         {
           "weight": 10,
-          "value": "ore:richPreciousMetal"
+          "value": "ore:rich:precious_metal"
         },
         {
           "weight": 5,
-          "value": "ore:purePreciousMetal"
+          "value": "ore:pure:precious_metal"
         },
         {
           "weight": 10,
-          "value": "ore:poorGold"
+          "value": "ore:poor:gold"
         },
         {
           "weight": 5,
-          "value": "ore:Gold"
+          "value": "ore:gold"
         }
       ]
     }
