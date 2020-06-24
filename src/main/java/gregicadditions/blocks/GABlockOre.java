@@ -10,10 +10,12 @@ import net.minecraft.block.SoundType;
 public class GABlockOre extends BlockOre {
 
     private OrePrefix orePrefix;
+    public DustMaterial material;
 
     public GABlockOre(DustMaterial material, StoneType[] allowedValues, OrePrefix orePrefix) {
         super(material, allowedValues);
         this.orePrefix = orePrefix;
+        this.material = material;
     }
 
     public OrePrefix getOrePrefix() {
