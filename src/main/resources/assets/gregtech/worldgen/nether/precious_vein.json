@@ -3,25 +3,49 @@
   "density": 0.3,
   "max_height": 120,
   "min_height": 50,
-  "dimension_filter": ["is_nether"],
+  "dimension_filter": [
+    "is_nether"
+  ],
   "surface_stone_material": "gold",
-
   "generator": {
     "type": "ellipsoid",
-    "radius": [14, 17]
+    "radius": [
+      14,
+      17
+    ]
   },
   "filler": {
-    "type": "simple",
+    "type": "ga_simple",
     "value": {
       "type": "weight_random",
       "values": [
-		{
-          "weight": 70,
+        {
+          "weight": 100,
           "value": "ore:silver"
         },
-		{
-          "weight": 30,
-          "value": "ore:precious_metal"
+        {
+          "weight": 20,
+          "value": "ore:poorPreciousMetal"
+        },
+        {
+          "weight": 50,
+          "value": "ore:PreciousMetal"
+        },
+        {
+          "weight": 10,
+          "value": "ore:richPreciousMetal"
+        },
+        {
+          "weight": 5,
+          "value": "ore:purePreciousMetal"
+        },
+        {
+          "weight": 10,
+          "value": "ore:poorGold"
+        },
+        {
+          "weight": 5,
+          "value": "ore:Gold"
         }
       ]
     }
