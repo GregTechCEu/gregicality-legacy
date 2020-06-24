@@ -31,6 +31,7 @@ public class ItemTierSeed extends ItemSeed implements IColoredItem {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack stack) {
         return I18n.format("item.ga_seed.material.name", material.getLocalizedName());
     }

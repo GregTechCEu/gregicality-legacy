@@ -6,9 +6,12 @@ import gregtech.api.model.ResourcePackHook;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.common.blocks.BlockOre;
 import net.minecraft.block.Block;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.stream.Collectors;
 
+@SideOnly(Side.CLIENT)
 public class GAOreBlockFactory extends AbstractBlockModelFactory {
 
     private final String orePrefix;

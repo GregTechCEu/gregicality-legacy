@@ -539,6 +539,7 @@ public class GARecipeAddition {
                 .input(dust, Arsenic, 1)
                 .outputs(OreDictUnifier.get(dust, BabbittAlloy, 50)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(1000).EUt(1920)
+                .notConsumable(new IntCircuitIngredient(4))
                 .input(dust, Iron, 16)
                 .input(dust, Aluminium, 3)
                 .input(dust, Chrome, 5)
