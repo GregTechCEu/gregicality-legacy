@@ -878,7 +878,7 @@ public class GAConfig {
             public int durationDecreasePercentage = 33;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
-            @Config.RangeDouble(min = 1, max = 100)
+            @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
             public int energyDecreasePercentage = 80;
