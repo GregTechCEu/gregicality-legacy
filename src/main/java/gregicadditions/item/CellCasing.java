@@ -1,5 +1,6 @@
 package gregicadditions.item;
 
+import gregicadditions.GAConfig;
 import gregtech.api.GTValues;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.VariantBlock;
@@ -47,12 +48,12 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
 
     public enum CellType implements IStringSerializable {
 
-        CELL_UV("cell_uv", 25600000000L, GTValues.UV),
-        CELL_ZPM("cell_zpm", 6400000000L, GTValues.ZPM),
-        CELL_LUV("cell_luv", 1600000000L, GTValues.LuV),
-        CELL_IV("cell_iv", 400000000L, GTValues.IV),
-        CELL_EV("cell_ev", 100000000L, GTValues.EV),
-        CELL_HV("cell_hv", 25000000L, GTValues.HV);
+        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
+        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
+        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GTValues.LuV),
+        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GTValues.IV),
+        CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GTValues.EV),
+        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GTValues.HV);
 
         private final String name;
         private final long storage;
