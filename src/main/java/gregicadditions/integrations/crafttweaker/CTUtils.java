@@ -1,6 +1,7 @@
 package gregicadditions.integrations.crafttweaker;
 
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.block.IBlock;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -8,7 +9,14 @@ import gregicadditions.Gregicality;
 
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.ore.StoneType;
+import gregtech.api.util.GTLog;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -76,6 +84,16 @@ public class CTUtils {
         for (Recipe recipe : recipesToRemove) {
             recipeMap.removeRecipe(recipe);
         }
+    }
+
+    @ZenMethod("registerStoneType")
+    @Optional.Method(modid = Gregicality.MODID)
+    public static void registerStoneType(IBlock block, String name, int id) {
+        Block mcBlock = CraftTweakerMC.getBlock(block);
+        StoneType stoneType = new StoneType(id, name, new ResourceLocation(Gregicality.MODID , "blocks/" + name), SoundType.STONE, OrePrefix.ore, Materials.Stone,
+        "pickaxe", 0, mcBlock::getDefaultState, state -> state.getBlock() == mcBlock);
+        GTLog.logger.info("Registered stone type with name " + name + " and ID " + id);
+
     }
     
 }
