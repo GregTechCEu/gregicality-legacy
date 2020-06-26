@@ -350,6 +350,16 @@ public class GAConfig {
         public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
         public LargeWiremill largeWiremill = new LargeWiremill();
+        public BatteryTower batteryTower = new BatteryTower();
+
+
+        public static class BatteryTower {
+            @Config.Comment("The base amount of energy a battery cell will hold. This is the amount the HV will hold, each tier above is multiplied by 4.")
+            @Config.Name("Battery Tower cell base energy storage")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            public int baseCellCapacity = 25000000;
+        }
 
         public static class DistillationTower {
             @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a Distillation Tower recipe.")
@@ -878,7 +888,7 @@ public class GAConfig {
             public int durationDecreasePercentage = 33;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
-            @Config.RangeDouble(min = 1, max = 100)
+            @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
             public int energyDecreasePercentage = 80;
