@@ -314,14 +314,14 @@ public class MachineCraftingRecipes {
                         MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
                         MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
                         MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
-                        WETWARE_MAINFRAME_MAX.getStackForm(),
-                        WETWARE_MAINFRAME_MAX.getStackForm(),
-                        WETWARE_MAINFRAME_MAX.getStackForm(),
-                        WETWARE_MAINFRAME_MAX.getStackForm(),
                         OreDictUnifier.get(plateDense, Naquadria, 4),
                         FIELD_GENERATOR_UV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
                         OreDictUnifier.get(wireGtHex, Tier.Superconductor, 32))
+                .inputs(CountableIngredient.from(circuit, Tier.Infinite))
+                .inputs(CountableIngredient.from(circuit, Tier.Infinite))
+                .inputs(CountableIngredient.from(circuit, Tier.Infinite))
+                .inputs(CountableIngredient.from(circuit, Tier.Infinite))
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.LARGE_NAQUADAH_REACTOR.getStackForm()).buildAndRegister();
 
