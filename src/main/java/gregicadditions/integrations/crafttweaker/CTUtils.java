@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -86,14 +87,19 @@ public class CTUtils {
         }
     }
 
+
+
+
     @ZenMethod("registerStoneType")
     @Optional.Method(modid = Gregicality.MODID)
-    public static void registerStoneType(IBlock block, String name, int id) {
-        Block mcBlock = CraftTweakerMC.getBlock(block);
-        StoneType stoneType = new StoneType(id, name, new ResourceLocation(Gregicality.MODID , "blocks/" + name), SoundType.STONE, OrePrefix.ore, Materials.Stone,
-        "pickaxe", 0, mcBlock::getDefaultState, state -> state.getBlock() == mcBlock);
+    public static void registerStoneType(String className, String fieldName, int id, String tool, String name)
+            throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+        Class<?> c = Class.forName(className);
+        Field f = c.getDeclaredField(fieldName);
+        Block block = (Block) f.get(f);
+        StoneType stoneType = new StoneType(id, name, new ResourceLocation(Gregicality.MODID, "blocks/" + name),
+                SoundType.STONE, OrePrefix.ore, Materials.Stone, tool, 0, block::getDefaultState, state -> state.getBlock() == block);
         GTLog.logger.info("Registered stone type with name " + name + " and ID " + id);
-
     }
     
 }
