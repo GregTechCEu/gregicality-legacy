@@ -1,6 +1,7 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
+import crafttweaker.CraftTweakerAPI;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
@@ -26,11 +27,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -90,6 +88,7 @@ public class Gregicality {
         proxy.preLoad();
         Keybinds.register();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
+
 
         GAMetaBlocks.init();
         GATileEntities.init();

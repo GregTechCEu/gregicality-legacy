@@ -2,6 +2,7 @@ package gregicadditions.item;
 
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
+import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -91,13 +92,13 @@ public class GAMetaBlocks {
         for (StoneType stoneType : StoneType.STONE_TYPE_REGISTRY) {
             int id = StoneType.STONE_TYPE_REGISTRY.getIDForObject(stoneType), index = id / 16;
             if (index > generationIndex) {
-                createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+                createOreBlockWithDensities(material, copyNotNull(stoneTypeBuffer), generationIndex);
                 Arrays.fill(stoneTypeBuffer, null);
             }
             stoneTypeBuffer[id % 16] = stoneType;
             generationIndex = index;
         }
-        createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+        createOreBlockWithDensities(material, copyNotNull(stoneTypeBuffer), generationIndex);
     }
 
     private static <T> T[] copyNotNull(T[] src) {
@@ -105,10 +106,8 @@ public class GAMetaBlocks {
         return Arrays.copyOfRange(src, 0, nullIndex == -1 ? src.length : nullIndex);
     }
 
-    private static void createOreBlock(DustMaterial material, StoneType[] stoneTypes, int index) {
-
+    private static void createOreBlockWithDensities(DustMaterial material, StoneType[] stoneTypes, int index) {
         String[] orePrefixes = {"Rich", "Poor", "Pure"};
-
         for (String orePrefix : orePrefixes) {
             GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.valueOf("ore" + orePrefix));
             block.setRegistryName("gregtech:" + orePrefix.toLowerCase() + "_ore_" + material + "_" + index);
