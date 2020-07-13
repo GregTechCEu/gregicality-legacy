@@ -838,6 +838,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Void Miner max temperature")
             public int maxTemp = 9000;
+
+            @Config.Comment("Whether or not to add all ore variants to the Void Miner's ore table. If false only the first ore in the material's ore dictionary will be added.")
+            @Config.RequiresMcRestart
+            @Config.Name("Void miner ore variants")
+            public boolean oreVariants = true;
         }
 
         public static class LargeMiner {
