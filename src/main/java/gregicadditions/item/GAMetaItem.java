@@ -20,9 +20,8 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class GAMetaItem extends MaterialMetaItem {
-
     public GAMetaItem() {
-        super(OrePrefix.valueOf("plateCurved"), OrePrefix.valueOf("ingotDouble"), OrePrefix.valueOf("round"), OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        super(GAConfig.GT6.addCurvedPlates ? OrePrefix.valueOf("plateCurved") : null, GAConfig.GT6.addDoubleIngots ? OrePrefix.valueOf("ingotDouble") : null, GAConfig.GT6.addRounds ? OrePrefix.valueOf("round") : null, OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
