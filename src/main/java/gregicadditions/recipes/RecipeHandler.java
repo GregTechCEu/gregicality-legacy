@@ -64,7 +64,7 @@ public class RecipeHandler {
 
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             OrePrefix.valueOf("plateCurved").addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
-        if (GAConfig.GT6.PlateDoubleIngot) {
+        if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots) {
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
         }
         valueOf("round").addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
