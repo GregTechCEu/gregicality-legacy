@@ -35,7 +35,7 @@ public class GAConfig {
 
         @Config.Comment("Set this to false to disable Drums")
         @Config.Name("Should Drums be registered?")
-        public boolean registerDums = true;
+        public boolean registerDrums = true;
 
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
