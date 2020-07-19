@@ -317,11 +317,11 @@ public class GARecipeAddition {
         }
 
         //Automatic Machine Component Recipes
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).inputs(CountableIngredient.from(circuit, Tier.Basic, 4), CountableIngredient.from(dust, EnderPearl)).fluidInputs(Osmium.getFluid(288)).outputs(FIELD_GENERATOR_LV.getStackForm()).buildAndRegister();
+/*        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).inputs(CountableIngredient.from(circuit, Tier.Basic, 4), CountableIngredient.from(dust, EnderPearl)).fluidInputs(Osmium.getFluid(288)).outputs(FIELD_GENERATOR_LV.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(120).inputs(CountableIngredient.from(circuit, Tier.Good, 4), CountableIngredient.from(dust, EnderEye)).fluidInputs(Osmium.getFluid(576)).outputs(FIELD_GENERATOR_MV.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(480).inputs(CountableIngredient.from(circuit, Tier.Advanced, 4), CountableIngredient.from(QUANTUM_EYE.getStackForm())).fluidInputs(Osmium.getFluid(1152)).outputs(FIELD_GENERATOR_HV.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).inputs(CountableIngredient.from(circuit, MarkerMaterials.Tier.Extreme, 4), CountableIngredient.from(dust, NetherStar)).fluidInputs(Osmium.getFluid(2304)).outputs(FIELD_GENERATOR_EV.getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(7680).inputs(CountableIngredient.from(circuit, Tier.Elite, 4), CountableIngredient.from(QUANTUM_STAR.getStackForm())).fluidInputs(Osmium.getFluid(4608)).outputs(FIELD_GENERATOR_IV.getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(7680).inputs(CountableIngredient.from(circuit, Tier.Elite, 4), CountableIngredient.from(QUANTUM_STAR.getStackForm())).fluidInputs(Osmium.getFluid(4608)).outputs(FIELD_GENERATOR_IV.getStackForm()).buildAndRegister();*/
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(10).inputs(CountableIngredient.from(cableGtSingle, Tin, 2), CountableIngredient.from(stick, Iron, 2), CountableIngredient.from(stick, IronMagnetic)).fluidInputs(Copper.getFluid(288)).outputs(ELECTRIC_MOTOR_LV.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(10).inputs(CountableIngredient.from(cableGtSingle, Tin, 2), CountableIngredient.from(stick, Steel, 2), CountableIngredient.from(stick, SteelMagnetic)).fluidInputs(Copper.getFluid(288)).outputs(ELECTRIC_MOTOR_LV.getStackForm()).buildAndRegister();
