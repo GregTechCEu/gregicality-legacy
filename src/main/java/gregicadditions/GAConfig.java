@@ -35,7 +35,7 @@ public class GAConfig {
 
         @Config.Comment("Set this to false to disable Drums")
         @Config.Name("Should Drums be registered?")
-        public boolean registerDums = true;
+        public boolean registerDrums = true;
 
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
@@ -838,6 +838,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Void Miner max temperature")
             public int maxTemp = 9000;
+
+            @Config.Comment("Whether or not to add all ore variants to the Void Miner's ore table. If false only the first ore in the material's ore dictionary will be added.")
+            @Config.RequiresMcRestart
+            @Config.Name("Void miner ore variants")
+            public boolean oreVariants = true;
         }
 
         public static class LargeMiner {
