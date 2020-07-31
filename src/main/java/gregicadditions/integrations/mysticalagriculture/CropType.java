@@ -99,7 +99,7 @@ public final class CropType {
         SEEDS.put(Samarium, new ItemTierSeed(CROPS.get(Samarium), Samarium, 2));
         SEEDS.put(Scandium, new ItemTierSeed(CROPS.get(Scandium), Scandium, 2));
         SEEDS.put(Silicon, new ItemTierSeed(CROPS.get(Silicon), Silicon, 2));
-        SEEDS.put(Silver, new ItemTierSeed(CROPS.get(Silver), Silver, 2));
+        //SEEDS.put(Silver, new ItemTierSeed(CROPS.get(Silver), Silver, 2));
         SEEDS.put(Sodium, new ItemTierSeed(CROPS.get(Sodium), Sodium, 2));
         SEEDS.put(Strontium, new ItemTierSeed(CROPS.get(Strontium), Strontium, 2));
         SEEDS.put(Sulfur, new ItemTierSeed(CROPS.get(Sulfur), Sulfur, 2));
@@ -108,7 +108,7 @@ public final class CropType {
         SEEDS.put(Terbium, new ItemTierSeed(CROPS.get(Terbium), Terbium, 2));
         SEEDS.put(Thorium, new ItemTierSeed(CROPS.get(Thorium), Thorium, 2));
         SEEDS.put(Thulium, new ItemTierSeed(CROPS.get(Thulium), Thulium, 2));
-        SEEDS.put(Tin, new ItemTierSeed(CROPS.get(Tin), Tin, 2));
+        //SEEDS.put(Tin, new ItemTierSeed(CROPS.get(Tin), Tin, 2));
         SEEDS.put(Titanium, new ItemTierSeed(CROPS.get(Titanium), Titanium, 4));
         SEEDS.put(Tungsten, new ItemTierSeed(CROPS.get(Tungsten), Tungsten, 5));
         SEEDS.put(Vanadium, new ItemTierSeed(CROPS.get(Vanadium), Vanadium, 2));
@@ -123,7 +123,7 @@ public final class CropType {
         SEEDS.put(BatteryAlloy, new ItemTierSeed(CROPS.get(BatteryAlloy), BatteryAlloy, 2));
         SEEDS.put(BlueTopaz, new ItemTierSeed(CROPS.get(BlueTopaz), BlueTopaz, 2));
         SEEDS.put(Brass, new ItemTierSeed(CROPS.get(Brass), Brass, 2));
-        SEEDS.put(Bronze, new ItemTierSeed(CROPS.get(Bronze), Bronze, 2));
+        //SEEDS.put(Bronze, new ItemTierSeed(CROPS.get(Bronze), Bronze, 2));
         SEEDS.put(Calcite, new ItemTierSeed(CROPS.get(Calcite), Calcite, 2));
         SEEDS.put(Cassiterite, new ItemTierSeed(CROPS.get(Cassiterite), Cassiterite, 2));
         SEEDS.put(Chalcopyrite, new ItemTierSeed(CROPS.get(Chalcopyrite), Chalcopyrite, 2));

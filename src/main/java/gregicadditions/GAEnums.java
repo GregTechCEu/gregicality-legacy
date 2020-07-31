@@ -48,26 +48,20 @@ public class GAEnums {
                 "Hexafluoride", M, null, MaterialIconType.valueOf("hexafluoride"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
 
 
-        if (GAConfig.GT6.addCurvedPlates) {
             EnumHelper.addEnum(MaterialIconType.class, "plateCurved", new Class[0]);
             EnumHelper.addEnum(OrePrefix.class, "plateCurved",
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Curved Plate", M, null, MaterialIconType.valueOf("plateCurved"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
-        }
 
-        if (GAConfig.GT6.addDoubleIngots) {
             EnumHelper.addEnum(MaterialIconType.class, "ingotDouble", new Class[0]);
             EnumHelper.addEnum(OrePrefix.class, "ingotDouble",
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Double Ingot", M * 2, null, MaterialIconType.valueOf("ingotDouble"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
-        }
 
-        if (GAConfig.GT6.addRounds) {
             EnumHelper.addEnum(MaterialIconType.class, "round", new Class[0]);
             EnumHelper.addEnum(OrePrefix.class, "round",
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Round", M / 9, null, MaterialIconType.valueOf("round"), OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(IngotMaterial.MatFlags.GENERATE_SMALL_GEAR)));
-        }
 
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HOT", new Class[]{String.class}, "gregtech.fluid.hot");
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HEXAFLUORIDE", new Class[]{String.class}, "gregtech.fluid.hexafluoride");

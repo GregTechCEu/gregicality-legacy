@@ -1,5 +1,6 @@
 package gregicadditions.recipes;
 
+import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
@@ -16,7 +17,11 @@ public class VoidMinerOres {
 
     public static void init() {
         for (Material material : Material.MATERIAL_REGISTRY) {
-            ORES.addAll(OreDictUnifier.getAll(new UnificationEntry(OrePrefix.ore, material)));
+            if (GAConfig.multis.voidMiner.oreVariants) {
+                ORES.addAll(OreDictUnifier.getAll(new UnificationEntry(OrePrefix.ore, material)));
+            } else {
+                ORES.add(OreDictUnifier.get(new UnificationEntry(OrePrefix.ore, material)));
+            }
         }
 
     }
