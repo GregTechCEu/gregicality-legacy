@@ -22,6 +22,7 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
@@ -129,6 +130,9 @@ public class GATileEntities {
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
+
+    //multiblock
+    public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
 
     //override from GTCE
     public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
@@ -694,6 +698,12 @@ public class GATileEntities {
             GREEN_HOUSE[6] = GregTechAPI.registerMetaTileEntity(3217, new SimpleMachineMetaTileEntity(location("green_house.zpm"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 7));
             GREEN_HOUSE[7] = GregTechAPI.registerMetaTileEntity(3218, new SimpleMachineMetaTileEntity(location("green_house.uv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 8));
         }
+
+        id = 3220;
+        for (int i = 0; i < GTValues.V.length - 1; i++) {
+            OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i)));
+        }
+
 
     }
 
