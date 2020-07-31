@@ -183,7 +183,7 @@ public class RecipeHandler {
 
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .fluidInputs(radioactiveMaterial.getFluidHexachloride(2000))
-                    .fluidInputs(HydrogenFluoride.getFluid(10000))
+                    .fluidInputs(HydrofluoricAcid.getFluid(10000))
                     .fluidOutputs(HydrochloricAcid.getFluid(10000))
                     .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
                     .buildAndRegister();
