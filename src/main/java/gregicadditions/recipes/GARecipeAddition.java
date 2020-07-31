@@ -1947,7 +1947,7 @@ public class GARecipeAddition {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, LithiumHydroxide)
-                .fluidInputs(HydrogenFluoride.getFluid(1000))
+                .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, LithiumFluoride))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -2116,12 +2116,6 @@ public class GARecipeAddition {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Selenium, 2), 2300, 1300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 2400, 1400)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 2500, 1500)
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(300).EUt(30)
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidInputs(Fluorine.getFluid(1000))
-                .fluidOutputs(HydrogenFluoride.getFluid(2000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder()
