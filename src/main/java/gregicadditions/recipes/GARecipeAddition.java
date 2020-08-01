@@ -1648,11 +1648,11 @@ public class GARecipeAddition {
                 .duration(60)
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Rhodium, 1)
-                .input(dust, Palladium, 3)
-                .outputs(OreDictUnifier.get(dust, RhodiumPlatedPalladium, 4))
-                .EUt(10)
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .input(ingot, Palladium, 3)
+                .fluidInputs(Rhodium.getFluid(144))
+                .outputs(OreDictUnifier.get(ingotHot, RhodiumPlatedPalladium, 4))
+                .EUt(23940)
                 .duration(100)
                 .buildAndRegister();
 
