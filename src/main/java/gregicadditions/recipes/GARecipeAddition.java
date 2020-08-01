@@ -2198,6 +2198,24 @@ public class GARecipeAddition {
                 .duration(100)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Tungsten)
+                .fluidInputs(Chlorine.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, TungstenHexachloride))
+                .duration(600)
+                .EUt(480)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, TungstenHexachloride)
+                .fluidInputs(Methane.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, TungstenCarbide))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(8000))
+                .EUt(480)
+                .duration(600)
+                .buildAndRegister();
+
 
     }
 

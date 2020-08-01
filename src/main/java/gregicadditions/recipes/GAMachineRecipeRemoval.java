@@ -279,6 +279,8 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Aluminium));
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Magnesium));
 
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Carbon), OreDictUnifier.get(ingot, Tungsten));
+
     }
 
     public static void init2() {

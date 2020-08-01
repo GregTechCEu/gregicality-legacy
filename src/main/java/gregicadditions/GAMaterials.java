@@ -316,7 +316,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial SodiumTungstate = new FluidMaterial(752, "sodium_tungstate", 0x7a7777, MaterialIconSet.FLUID, of(new MaterialStack(Sodium, 1), new MaterialStack(Tungstate, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial TungsticAcid = new DustMaterial(751, "tungstic_acid", 0x4f4a4a, MaterialIconSet.SHINY, 0, of(new MaterialStack(Tungsten, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial TungstenTrioxide = new DustMaterial(750, "tungsten_trioxide", Tungsten.materialRGB, Tungsten.materialIconSet, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
-
+    public static final DustMaterial TungstenHexachloride = new DustMaterial(749, "tungsten_hexachloride", 0x533f75, MaterialIconSet.METALLIC, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION);
 
     @Override
     public void onMaterialsInit() {
