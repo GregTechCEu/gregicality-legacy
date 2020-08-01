@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -278,6 +279,11 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Aluminium));
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Magnesium));
 
+    }
+
+    public static void init2() {
+        removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[] {OreDictUnifier.get(dust, Scheelite, 7)}, new FluidStack[] {Hydrogen.getFluid(7000)});
+        removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[] {OreDictUnifier.get(dust, Tungstate, 7)}, new FluidStack[] {Hydrogen.getFluid(7000)});
     }
 
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
