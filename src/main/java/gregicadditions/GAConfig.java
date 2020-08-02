@@ -324,6 +324,16 @@ public class GAConfig {
         @Config.Name("UU-Matter ore tripling")
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
+
+        @Config.Comment("Assembly line can make LV to IV components cheaper (Motor, Pump, Conveyor, Piston, etc)")
+        @Config.Name("Assembly Line make cheaper components")
+        @Config.RequiresMcRestart
+        public boolean assemblyLineMakeCheaperComponents = true;
+
+        @Config.Comment("Assembler can make components (Motor, Pump, Conveyor, Piston, etc)")
+        @Config.Name("Assembler can make components")
+        @Config.RequiresMcRestart
+        public boolean assemblerCanMakeComponents = true;
     }
 
     public static Multis multis = new Multis();
