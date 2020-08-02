@@ -324,6 +324,11 @@ public class GAConfig {
         @Config.Name("UU-Matter ore tripling")
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
+
+        @Config.Comment("Remove the standard electrolyzer recipes of Scheelite and Tungstate and add a more complex chemical purification process")
+        @Config.Name("Tungsten Purification Process")
+        @Config.RequiresMcRestart
+        public boolean tungstenProcess = true;
     }
 
     public static Multis multis = new Multis();

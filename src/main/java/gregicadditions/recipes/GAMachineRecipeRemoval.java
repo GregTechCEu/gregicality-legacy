@@ -284,8 +284,10 @@ public class GAMachineRecipeRemoval {
     }
 
     public static void init2() {
-        removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[] {OreDictUnifier.get(dust, Scheelite, 7)}, new FluidStack[] {Hydrogen.getFluid(7000)});
-        removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[] {OreDictUnifier.get(dust, Tungstate, 7)}, new FluidStack[] {Hydrogen.getFluid(7000)});
+        if (GAConfig.Misc.tungstenProcess) {
+            removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Scheelite, 7)}, new FluidStack[]{Hydrogen.getFluid(7000)});
+            removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Tungstate, 7)}, new FluidStack[]{Hydrogen.getFluid(7000)});
+        }
     }
 
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
