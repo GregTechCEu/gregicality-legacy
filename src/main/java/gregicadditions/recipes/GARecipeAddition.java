@@ -1652,8 +1652,8 @@ public class GARecipeAddition {
                 .input(ingot, Palladium, 3)
                 .fluidInputs(Rhodium.getFluid(144))
                 .outputs(OreDictUnifier.get(ingotHot, RhodiumPlatedPalladium, 4))
-                .EUt(23940)
-                .duration(100)
+                .EUt(7980)
+                .duration(200)
                 .buildAndRegister();
 
         //platics Polybenzimidazole
