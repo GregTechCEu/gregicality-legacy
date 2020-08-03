@@ -279,12 +279,12 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Aluminium));
         removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite), OreDictUnifier.get(dust, Magnesium));
 
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Carbon), OreDictUnifier.get(ingot, Tungsten));
 
     }
 
     public static void init2() {
         if (GAConfig.Misc.tungstenProcess) {
+            removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Carbon), OreDictUnifier.get(ingot, Tungsten));
             removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Scheelite, 7)}, new FluidStack[]{Hydrogen.getFluid(7000)});
             removeRecipesByInputs(ELECTROLYZER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Tungstate, 7)}, new FluidStack[]{Hydrogen.getFluid(7000)});
         }
