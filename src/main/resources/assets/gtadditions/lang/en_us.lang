@@ -1628,6 +1628,11 @@ material.bismuth_tellurite=Bismuth Tellurite
 material.circuit_compound_mkc=Circuit Compound MK3
 material.yttrium_oxide=Yttrium Oxide
 material.enderium=Enderium
+material.calcium_tungstate=Calcium Tungstate
+material.sodium_tungstate=Sodium Tungstate
+material.tungstic_acid=Tungstic Acid
+material.tungsten_trioxide=Tungsten Trioxide
+material.tungsten_hexachloride=Tungsten Hexachloride
 
 
 

@@ -325,6 +325,12 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
 
+
+        @Config.Comment("Remove the standard electrolyzer recipes of Scheelite and Tungstate and add a more complex chemical purification process")
+        @Config.Name("Tungsten Purification Process")
+        @Config.RequiresMcRestart
+        public boolean tungstenProcess = true;
+
         @Config.Comment("Assembly line can make LV to IV components cheaper (Motor, Pump, Conveyor, Piston, etc)")
         @Config.Name("Assembly Line make cheaper components")
         @Config.RequiresMcRestart
@@ -334,6 +340,7 @@ public class GAConfig {
         @Config.Name("Assembler can make components")
         @Config.RequiresMcRestart
         public boolean assemblerCanMakeComponents = true;
+
     }
 
     public static Multis multis = new Multis();
