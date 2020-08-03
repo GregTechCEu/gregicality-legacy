@@ -27,11 +27,9 @@ public class GADustItem extends StandardMetaItem {
 
     @Override
     public void registerSubItems() {
-        int count = 0;
         for (SimpleDustMaterial material : GA_DUSTS) {
-            addItem(count, material.name);
-            OreDictUnifier.registerOre(new ItemStack(this, 1, count), material.getOre());
-            count++;
+            addItem(material.id, material.name);
+            OreDictUnifier.registerOre(new ItemStack(this, 1, material.id), material.getOre());
         }
     }
 

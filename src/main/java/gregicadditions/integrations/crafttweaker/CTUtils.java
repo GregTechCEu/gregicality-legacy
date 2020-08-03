@@ -83,8 +83,8 @@ public class CTUtils {
 
     @ZenMethod("registerDust")
     @Optional.Method(modid = Gregicality.MODID)
-    public static void registerDust(String name, int rgb, String materialIconSet) {
-        new SimpleDustMaterial(name, rgb, MaterialIconSet.valueOf(materialIconSet));
+    public static void registerDust(String name, short id, int rgb, String materialIconSet) {
+        new SimpleDustMaterial(name, rgb, id, MaterialIconSet.valueOf(materialIconSet));
     }
 
     @ZenMethod("registerFluid")

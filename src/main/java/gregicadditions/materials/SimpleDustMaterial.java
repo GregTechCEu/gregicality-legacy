@@ -13,11 +13,13 @@ public class SimpleDustMaterial {
     public String name;
     public int rgb;
     public MaterialIconSet materialIconSet;
+    public int id;
 
-    public SimpleDustMaterial(String name, int rgb, MaterialIconSet materialIconSet) {
+    public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet) {
         this.name = name;
         this.rgb = rgb;
         this.materialIconSet = materialIconSet;
+        this.id = id;
         GA_DUSTS.add(this);
     }
 
