@@ -30,7 +30,7 @@ public class GADustItem extends StandardMetaItem {
         int count = 0;
         for (SimpleDustMaterial material : GA_DUSTS) {
             addItem(count, material.name);
-            OreDictUnifier.registerOre(new ItemStack(this, 1, count), "dust" + toCamelCaseString(material.name));
+            OreDictUnifier.registerOre(new ItemStack(this, 1, count), material.getOre());
             count++;
         }
     }
@@ -65,8 +65,5 @@ public class GADustItem extends StandardMetaItem {
         }
     }
 
-    String toCamelCaseString(String string) {
-        return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, string);
-    }
 
 }
