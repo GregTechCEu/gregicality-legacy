@@ -193,6 +193,11 @@ public class Gregicality {
         VoidMinerOres.init();
     }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerLateRecipes(RegistryEvent.Register<IRecipe> event) {
+        GAMachineRecipeRemoval.init2();
+    }
+
 
     private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
