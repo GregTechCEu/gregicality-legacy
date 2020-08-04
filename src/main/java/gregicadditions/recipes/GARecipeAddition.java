@@ -2424,7 +2424,7 @@ public class GARecipeAddition {
                 .EUt(7680)
                 .duration(500)
                 .buildAndRegister();
-        CHEMICAL_BATH_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CesiumXenontrioxideFluoride.getFluid(1000))
                 .fluidInputs(RadonNaquadriaoctafluoride.getFluid(1000))
                 .fluidOutputs(RadonTrioxide.getFluid(1000))
@@ -2544,7 +2544,7 @@ public class GARecipeAddition {
                 .EUt(7680)
                 .duration(400)
                 .buildAndRegister();
-        MIXER_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(IndiumTrifluoride.getItemStack())
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .outputs(IndiumTrioxide.getItemStack())
