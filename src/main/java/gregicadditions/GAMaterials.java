@@ -329,7 +329,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Antimoniate = new SimpleDustMaterial("antimoniate", Antimony.materialRGB, (short) 0, Antimony.materialIconSet);
     public static final SimpleDustMaterial AntimonyTrifluoride = new SimpleDustMaterial("antimony_trifluoride", 0xc7c7c7, (short) 1, Antimony.materialIconSet);
     public static final SimpleFluidMaterial AntimonyPentafluoride = new SimpleFluidMaterial("antimony_pentafluoride", Antimony.materialRGB);
-    public static final SimpleFluidMaterial FlouroantimonicAcid = new SimpleFluidMaterial("flouroantimonic_acid", 0x8da2a5);
+    public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5);
     public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluroronaquadric_acid", 0x485d60);
     public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluroronaquadric_acid", 0x485d60);
     public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluroronaquadriatic_acid", 0x485d60);
@@ -338,9 +338,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NaquadriaDifluoride = new SimpleFluidMaterial("naquadria_difluoride", 0x141e1f);
     public static final SimpleDustMaterial IndiumTrifluoride = new SimpleDustMaterial("indium_trifluoride", 0x2b0f48, (short) 2, Indium.materialIconSet);
     public static final SimpleDustMaterial IndiumTrioxide = new SimpleDustMaterial("indium_trioxide", 0x2b0f48, (short) 3, Indium.materialIconSet);
-    public static final SimpleDustMaterial NaquadahConcentrade = new SimpleDustMaterial("naquadah_concentrate", Naquadah.materialRGB, (short) 4, Naquadah.materialIconSet);
-    public static final SimpleDustMaterial EnrichedNaquadahConcentrade = new SimpleDustMaterial("enriched_naquadah_concentrate", NaquadahEnriched.materialRGB, (short) 5, NaquadahEnriched.materialIconSet);
-    public static final SimpleDustMaterial NaquadriaConcentrade = new SimpleDustMaterial("naquadria_concentrate", Naquadria.materialRGB, (short) 6, Naquadria.materialIconSet);
+    public static final SimpleDustMaterial NaquadahConcentrate = new SimpleDustMaterial("naquadah_concentrate", Naquadah.materialRGB, (short) 4, Naquadah.materialIconSet);
+    public static final SimpleDustMaterial EnrichedNaquadahConcentrate = new SimpleDustMaterial("enriched_naquadah_concentrate", NaquadahEnriched.materialRGB, (short) 5, NaquadahEnriched.materialIconSet);
+    public static final SimpleDustMaterial NaquadriaConcentrate = new SimpleDustMaterial("naquadria_concentrate", Naquadria.materialRGB, (short) 6, Naquadria.materialIconSet);
 
     public static final SimpleFluidMaterial NaquadriaHexafluoride = new SimpleFluidMaterial("naquadria_hexafluoride", 0x111c27);
     public static final SimpleFluidMaterial RadonDifluoride = new SimpleFluidMaterial("radon_difluoride", 0x9966ff);
@@ -359,7 +359,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial AuricChloride = new SimpleFluidMaterial("auric_chloride", 0xdffb50);
     public static final SimpleFluidMaterial BromineTrifluoride = new SimpleFluidMaterial("bromine_trifluoride", 0xfcde1d);
     public static final SimpleDustMaterial AuricFluoride = new SimpleDustMaterial("auric_fluoride", 0xdffb50, (short) 7, MaterialIconSet.SHINY);
-    public static final SimpleFluidMaterial TetraxenongoldFluoroantimonicAcid = new SimpleFluidMaterial("tetraxenongold_fluoroantimonic_acid", 0x685b08);
+    public static final SimpleFluidMaterial XenoauricFluoroantimonicAcid = new SimpleFluidMaterial("xenoauric_fluoroantimonic_acid", 0x685b08);
 
     public static final SimpleFluidMaterial FluoricAcid = new SimpleFluidMaterial("fluoric_acid", Fluorine.materialRGB);
     public static final SimpleFluidMaterial NaquadahSulfate = new SimpleFluidMaterial("naquadah_sulfate", 0x38330f);
@@ -369,6 +369,7 @@ public class GAMaterials implements IMaterialHandler {
         initNuclearMaterial();
         platinumProcess();
         goldProcess();
+        naqProcess();
 
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
@@ -514,6 +515,11 @@ public class GAMaterials implements IMaterialHandler {
                 material.addFlag(GENERATE_DENSE);
             }
         }
+    }
+
+    public static void naqProcess() {
+        EnrichedNaquadricCompound.addOreByProducts(NaquadricCompound, NaquadriaticCompound);
+        NaquadricCompound.addOreByProducts(EnrichedNaquadricCompound);
     }
 
     public static void goldProcess() {
