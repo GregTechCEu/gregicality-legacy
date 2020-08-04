@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -11,6 +12,7 @@ public class SimpleFluidMaterial {
     public static List<SimpleFluidMaterial> GA_FLUIDS = new ArrayList<>();
     public String name;
     public int rgb;
+    public Fluid fluid;
 
     public SimpleFluidMaterial(String name, int rgb) {
         this.name = name;
@@ -19,7 +21,7 @@ public class SimpleFluidMaterial {
     }
 
     public FluidStack getFluid(int amount) {
-        return new FluidStack(FluidRegistry.getFluid(this.name), amount);
+        return new FluidStack(fluid, amount);
     }
 
 }
