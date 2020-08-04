@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.covers.filter.FilterTypeRegistry;
 import gregtech.common.covers.filter.FluidFilter;
 import gregtech.common.covers.filter.SimpleFluidFilter;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
@@ -30,6 +31,7 @@ import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -37,14 +39,49 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
 
     private static final int INITIAL_INVENTORY_SIZE = 1000;
     private final ItemStackHandler containerInventory;
-    private final FluidFilter currentFluidFilter;
+    private FluidFilter currentFluidFilter;
     private boolean isBlacklistFilter = false;
+    private final ItemStackHandler filterInventory;
 
     public MetaTileEntityOutputFilteredHatch(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         this.containerInventory = new ItemStackHandler(2);
-        this.currentFluidFilter = new SimpleFluidFilter();
+        this.filterInventory = new ItemStackHandler(1) {
+            @Override
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+                return FilterTypeRegistry.getFluidFilterForStack(stack) != null;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+
+            @Override
+            protected void onLoad() {
+                onFilterSlotChange();
+            }
+
+            @Override
+            protected void onContentsChanged(int slot) {
+                onFilterSlotChange();
+            }
+        };
         initializeInventory();
+    }
+
+    protected void onFilterSlotChange() {
+        ItemStack filterStack = filterInventory.getStackInSlot(0);
+        FluidFilter newFluidFilter = FilterTypeRegistry.getFluidFilterForStack(filterStack);
+        if (newFluidFilter == null) {
+            if (currentFluidFilter != null) {
+                this.currentFluidFilter = null;
+            }
+        } else if (currentFluidFilter == null ||
+                newFluidFilter.getClass() != currentFluidFilter.getClass()) {
+            this.currentFluidFilter = new SimpleFluidFilter();
+        }
+
     }
 
     @Override
@@ -101,6 +138,11 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
     protected FluidTankList createExportFluidHandler() {
         return new FluidTankList(false, new FluidTank(getInventorySize()) {
             @Override
+            public boolean canFill() {
+                return super.canFill();
+            }
+
+            @Override
             public boolean canFillFluidType(FluidStack fluid) {
                 boolean result = true;
                 if (currentFluidFilter != null) {
@@ -132,7 +174,7 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
     }
 
     public ModularUI.Builder createTankUI(IFluidTank fluidTank, IItemHandlerModifiable containerInventory, String title, EntityPlayer entityPlayer) {
-        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND, 195, 166);
+        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND, 190, 156);
         builder.image(7, 16, 81, 55, GuiTextures.DISPLAY);
         TankWidget tankWidget = new TankWidget(fluidTank, 69, 52, 18, 18)
                 .setHideTooltip(true).setAlwaysShowFull(true);
@@ -141,9 +183,11 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
         builder.dynamicLabel(11, 30, tankWidget::getFormattedFluidAmount, 0xFFFFFF);
         builder.dynamicLabel(11, 40, tankWidget::getFluidLocalizedName, 0xFFFFFF);
 
-        builder.widget(new ToggleButtonWidget(110, 30, 18, 18, GuiTextures.BUTTON_BLACKLIST,
+        builder.widget(new ToggleButtonWidget(110, 36, 18, 18, GuiTextures.BUTTON_BLACKLIST,
                 () -> isBlacklistFilter, this::setBlacklistFilter).setTooltipText("cover.filter.blacklist"));
-        builder.widget(new WidgetGroupFluidFilter(110, 20, () -> currentFluidFilter));
+        builder.widget(new SlotWidget(filterInventory, 0, 110, 17)
+                .setBackgroundTexture(GuiTextures.SLOT, GuiTextures.FILTER_SLOT_OVERLAY));
+        builder.widget(new WidgetGroupFluidFilter(120, 17, () -> currentFluidFilter));
 
         return builder.label(6, 6, title)
                 .widget(new FluidContainerSlotWidget(containerInventory, 0, 90, 17, false)
@@ -151,7 +195,7 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
                 .widget(new ImageWidget(91, 36, 14, 15, GuiTextures.TANK_ICON))
                 .widget(new SlotWidget(containerInventory, 1, 90, 54, true, false)
                         .setBackgroundTexture(GuiTextures.SLOT, GuiTextures.OUT_SLOT_OVERLAY))
-                .bindPlayerInventory(entityPlayer.inventory);
+                .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 14, 74);
     }
 
     @Override

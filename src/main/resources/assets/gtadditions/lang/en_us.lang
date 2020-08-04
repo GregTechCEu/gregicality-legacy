@@ -336,13 +336,13 @@ metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
 metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
 
-//cosmic
+##cosmic
 metaitem.circuit.circuit.cosmic.name=Cosmic Circuit
 metaitem.circuit.processor.cosmic.name=Cosmic Processor
 metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
 metaitem.circuit.mainframe.cosmic.namne=Cosmic Computer
 
-///////////////////////////////////////////////////////
+####################################################################
 
 
 metaarmor.nms.nightvision.enabled=NanoMuscle™ Suite: NightVision enabled
@@ -728,6 +728,17 @@ gtadditions.machine.rotor_holder.luv.name=Hot Coolant Rotor Holder (LuV)
 gtadditions.machine.rotor_holder.zpm.name=Hot Coolant Rotor Holder (ZPM)
 gtadditions.machine.rotor_holder.uv.name=Hot Coolant Rotor Holder (UV)
 gtadditions.machine.rotor_holder.max.name=Hot Coolant Rotor Holder (MAX)
+
+gtadditions.machine.fluid_hatch.export_filtered.ulv.name=Filtered Output Hatch (ULV)
+gtadditions.machine.fluid_hatch.export_filtered.lv.name=Filtered Output Hatch (LV)
+gtadditions.machine.fluid_hatch.export_filtered.mv.name=Filtered Output Hatch (MV)
+gtadditions.machine.fluid_hatch.export_filtered.hv.name=Filtered Output Hatch (HV)
+gtadditions.machine.fluid_hatch.export_filtered.ev.name=Filtered Output Hatch (EV)
+gtadditions.machine.fluid_hatch.export_filtered.iv.name=Filtered Output Hatch (IV)
+gtadditions.machine.fluid_hatch.export_filtered.luv.name=Filtered Output Hatch (LuV)
+gtadditions.machine.fluid_hatch.export_filtered.zpm.name=Filtered Output Hatch (ZPM)
+gtadditions.machine.fluid_hatch.export_filtered.uv.name=Filtered Output Hatch (UV)
+gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
