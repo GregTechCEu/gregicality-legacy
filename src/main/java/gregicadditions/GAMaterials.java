@@ -311,10 +311,10 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial AbyssalAlloy = new IngotMaterial(755, "abyssal_alloy", 0x9E706A, MaterialIconSet.METALLIC, 6, of(new MaterialStack(StainlessSteel, 5), new MaterialStack(TungstenCarbide, 5), new MaterialStack(Nichrome, 5), new MaterialStack(Bronze, 5), new MaterialStack(IncoloyMA956, 5), new MaterialStack(Iodine, 1), new MaterialStack(Germanium, 1), new MaterialStack(Radon, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 9625);
     public static final DustMaterial OrganicFertilizer = new DustMaterial(754, "organic_fertilizer", 0xDDDDDD, MaterialIconSet.SHINY, 2, of(new MaterialStack(Calcium, 5), new MaterialStack(Phosphate, 3), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 1)), 0);
 
-    public static final DustMaterial CalciumTungstate = new DustMaterial(753, "calcium_tungstate", 0x6e6867, MaterialIconSet.SHINY, 0, of(new MaterialStack(Tungstate, 1), new MaterialStack(Calcium, 1)), DISABLE_DECOMPOSITION);
-    public static final FluidMaterial SodiumTungstate = new FluidMaterial(752, "sodium_tungstate", 0x7a7777, MaterialIconSet.FLUID, of(new MaterialStack(Sodium, 1), new MaterialStack(Tungstate, 1)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial TungsticAcid = new DustMaterial(751, "tungstic_acid", 0x4f4a4a, MaterialIconSet.SHINY, 0, of(new MaterialStack(Tungsten, 1)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial TungstenTrioxide = new DustMaterial(750, "tungsten_trioxide", Tungsten.materialRGB, Tungsten.materialIconSet, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial CalciumTungstate = new DustMaterial(753, "calcium_tungstate", 0x6e6867, MaterialIconSet.SHINY, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Calcium, 1), new MaterialStack(Oxygen, 4)), DISABLE_DECOMPOSITION);
+    public static final FluidMaterial SodiumTungstate = new FluidMaterial(752, "sodium_tungstate", 0x7a7777, MaterialIconSet.FLUID, of(new MaterialStack(Sodium, 2), new MaterialStack(Tungsten, 1), new MaterialStack(Oxygen, 4)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial TungsticAcid = new DustMaterial(751, "tungstic_acid", 0xFFE700, MaterialIconSet.SHINY, 0, of(new MaterialStack(Hydrogen, 2), new MaterialStack(Tungsten, 1), new MaterialStack(Oxygen, 4)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial TungstenTrioxide = new DustMaterial(750, "tungsten_trioxide", 0x99FF97, Tungsten.materialIconSet, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial TungstenHexachloride = new DustMaterial(749, "tungsten_hexachloride", 0x533f75, MaterialIconSet.METALLIC, 0, of(new MaterialStack(Tungsten, 1), new MaterialStack(Chlorine, 6)), DISABLE_DECOMPOSITION);
 
     @Override

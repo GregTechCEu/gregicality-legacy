@@ -2221,7 +2221,7 @@ public class GARecipeAddition {
                     .input(dust, Scheelite, 7)
                     .input(dust, SodiumHydroxide, 4)
                     .fluidInputs(Water.getFluid(4000))
-                    .outputs(OreDictUnifier.get(dust, Sodium, 2))
+                    .outputs(OreDictUnifier.get(dust, Calcium, 2))
                     .fluidOutputs(SodiumTungstate.getFluid(4000))
                     .EUt(480)
                     .duration(150)
