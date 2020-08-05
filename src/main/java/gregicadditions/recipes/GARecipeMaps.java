@@ -14,6 +14,7 @@ import gregtech.api.recipes.builders.AssemblerRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
+import net.minecraft.client.gui.Gui;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -67,6 +68,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> GREEN_HOUSE_RECIPES;
+    @ZenProperty
+    public static final LargeRecipeMap LARGE_CENTRIFUGE_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -87,7 +90,7 @@ public class GARecipeMaps {
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
         CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 0, 0, 4, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
-        LARGE_MIXER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_mixer", 0, 9, 0, 1, 0, 2, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
+        LARGE_MIXER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_mixer", 0, 9, 0, 1, 0, 4, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
@@ -108,5 +111,9 @@ public class GARecipeMaps {
 
         GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house", 1, 2, 1, 2, 1, 1, 0, 0, new SimpleRecipeBuilder().EUt(16))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
+        LARGE_CENTRIFUGE_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_centrifuge", 0, 1, 0, 9, 0, 2, 0, 9, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
+                .setSlotOverlay(false, false, true, GuiTextures.EXTRACTOR_OVERLAY)
+                .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL);
     }
 }

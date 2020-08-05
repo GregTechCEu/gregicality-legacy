@@ -364,6 +364,46 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial FluoricAcid = new SimpleFluidMaterial("fluoric_acid", Fluorine.materialRGB);
     public static final SimpleFluidMaterial NaquadahSulfate = new SimpleFluidMaterial("naquadah_sulfate", 0x38330f);
 
+    public static final SimpleFluidMaterial NaquadahSolution = new SimpleFluidMaterial("naquadah_solution", 0x523b3a);
+    public static final SimpleFluidMaterial ClearNaquadahLiquid = new SimpleFluidMaterial("clear_naquadah_liquid", 0xa89f9e);
+    public static final SimpleFluidMaterial ComplicatedNaquadahGas = new SimpleFluidMaterial("complicated_naquadah_gas", 0x403d3d);
+    public static final SimpleFluidMaterial ComplicatedHeavyNaquadah = new SimpleFluidMaterial("complicated_heavy_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial ComplicatedMediumNaquadah = new SimpleFluidMaterial("complicated_medium_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial ComplicatedLightNaquadah = new SimpleFluidMaterial("complicated_light_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial NaquadahGas = new SimpleFluidMaterial("naquadah_gas", 0x575757);
+    public static final SimpleFluidMaterial LightNaquadah = new SimpleFluidMaterial("light_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial MediumNaquadah = new SimpleFluidMaterial("medium_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial HeavyNaquadah = new SimpleFluidMaterial("heavy_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial FlCrackedLightNaquadah = new SimpleFluidMaterial("fl_cracked_light_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial FlCrackedMediumNaquadah = new SimpleFluidMaterial("fl_cracked_medium_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial FlCrackedHeavyNaquadah = new SimpleFluidMaterial("fl_cracked_heavy_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial LightNaquadahFuel = new SimpleFluidMaterial("light_naquadah_fuel", 0x2e2e2e);
+    public static final SimpleFluidMaterial MediumNaquadahFuel = new SimpleFluidMaterial("medium_naquadah_fuel", 0x2e2e2e);
+    public static final SimpleFluidMaterial HeavyNaquadahFuel = new SimpleFluidMaterial("heavy_naquadah_fuel", 0x2e2e2e);
+
+    public static final SimpleFluidMaterial AmmoniaNitrate = new SimpleFluidMaterial("ammonia_nitrate", Ammonia.materialRGB);
+
+
+    public static final SimpleFluidMaterial ENaquadahSolution = new SimpleFluidMaterial("e_naquadah_solution", 0x523b3a);
+    public static final SimpleFluidMaterial ClearENaquadahLiquid = new SimpleFluidMaterial("clear_e_naquadah_liquid", 0xa89f9e);
+    public static final SimpleFluidMaterial ComplicatedHeavyENaquadah = new SimpleFluidMaterial("complicated_heavy_e_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial ComplicatedMediumENaquadah = new SimpleFluidMaterial("complicated_medium_e_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial ComplicatedLightENaquadah = new SimpleFluidMaterial("complicated_light_e_naquadah", 0x403d3d);
+    public static final SimpleFluidMaterial LightENaquadah = new SimpleFluidMaterial("light_e_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial MediumENaquadah = new SimpleFluidMaterial("medium_e_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial HeavyENaquadah = new SimpleFluidMaterial("heavy_e_naquadah", 0x2e2e2e);
+    public static final SimpleFluidMaterial RnCrackedLighteNaquadah = new SimpleFluidMaterial("rn_cracked_light_e_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial RnCrackedMediumENaquadah = new SimpleFluidMaterial("rn_cracked_medium_e_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial RnCrackedHeavyENaquadah = new SimpleFluidMaterial("rn_cracked_heavy_e_naquadah", 0x505e5b);
+    public static final SimpleFluidMaterial LightENaquadahFuel = new SimpleFluidMaterial("light_e_naquadah_fuel", 0x2e2e2e);
+    public static final SimpleFluidMaterial MediumENaquadahFuel = new SimpleFluidMaterial("medium_e_naquadah_fuel", 0x2e2e2e);
+    public static final SimpleFluidMaterial HeavyENaquadahFuel = new SimpleFluidMaterial("heavy_e_naquadah_fuel", 0x2e2e2e);
+
+    public static final SimpleFluidMaterial NaquadriaSolution = new SimpleFluidMaterial("naquadria_solution", 0x523b3a);
+    public static final SimpleFluidMaterial HyperFuelI = new SimpleFluidMaterial("hyper_fluid_i", 0xfaff5e);
+    public static final SimpleFluidMaterial HyperFuelII = new SimpleFluidMaterial("hyper_fluid_ii", 0xd8db67);
+    public static final SimpleFluidMaterial HyperFuelIII = new SimpleFluidMaterial("hyper_fluid_iii", 0x8f9146);
+
     @Override
     public void onMaterialsInit() {
         initNuclearMaterial();
