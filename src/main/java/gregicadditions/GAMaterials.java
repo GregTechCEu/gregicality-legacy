@@ -559,6 +559,11 @@ public class GAMaterials implements IMaterialHandler {
     public static void naqProcess() {
         EnrichedNaquadricCompound.addOreByProducts(NaquadricCompound, NaquadriaticCompound);
         NaquadricCompound.addOreByProducts(EnrichedNaquadricCompound);
+        Naquadria.addFlag(DISABLE_REPLICATION);
+        Naquadah.addFlag(DISABLE_REPLICATION);
+        NaquadahEnriched.addFlag(DISABLE_REPLICATION);
+        NaquadahAlloy.addFlag(DISABLE_DECOMPOSITION);
+        ZPMSuperconductorBase.addFlag(DISABLE_DECOMPOSITION);
     }
 
     public static void goldProcess() {
