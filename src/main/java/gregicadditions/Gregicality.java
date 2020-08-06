@@ -18,6 +18,7 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -190,6 +191,7 @@ public class Gregicality {
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         RecipeHandler.registerGreenHouseRecipes();
+        RecipeHandler.registerLargeCentrifugeRecipes();
         VoidMinerOres.init();
     }
 

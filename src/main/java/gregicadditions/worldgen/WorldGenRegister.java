@@ -63,6 +63,7 @@ public class WorldGenRegister {
                                         || file.getFileName().toString().startsWith("olivine_vien2.json")
                                         || file.getFileName().toString().startsWith("magnetite_vein.json")
                                         || file.getFileName().toString().startsWith("pitchblende_vein.json")
+                                        || file.getFileName().toString().startsWith("naquadah_vein.json")
                         )
                         .collect(Collectors.toList());
                 for (Path config : configs) {

@@ -2010,7 +2010,9 @@ fluid.hyper_fluid_i=Hyper Fuel I
 fluid.hyper_fluid_ii=Hyper Fuel II
 fluid.hyper_fluid_iii=Hyper Fuel III
 
-
+material.naquadric_compound=Naquadric Compound
+material.enriched_naquadric_compound=Enriched Naquadric Compound
+material.naquadriatic_compound=Naquadriatic Compound
 
 
 

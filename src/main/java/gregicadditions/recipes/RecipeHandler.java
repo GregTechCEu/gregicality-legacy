@@ -491,6 +491,18 @@ public class RecipeHandler {
                         .buildAndRegister());
     }
 
+    public static void registerLargeCentrifugeRecipes(){
+        CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe ->
+                LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .buildAndRegister());
+    }
+
     public static void registerLargeForgeHammerRecipes() {
         RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder builder = GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
