@@ -1,8 +1,10 @@
 package gregicadditions.item;
 
 import gregicadditions.Gregicality;
+import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -214,6 +216,8 @@ public class GAMetaItems {
         tool.setRegistryName("ga_meta_tool");
         GAMetaArmor armor = new GAMetaArmor();
         armor.setRegistryName("ga_armor");
+        GADustItem dustItem = new GADustItem((short) 0);
+        dustItem.setRegistryName("ga_dust");
     }
 
     public static void registerOreDict() {

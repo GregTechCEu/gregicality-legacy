@@ -491,6 +491,18 @@ public class RecipeHandler {
                         .buildAndRegister());
     }
 
+    public static void registerLargeCentrifugeRecipes(){
+        CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe ->
+                LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .buildAndRegister());
+    }
+
     public static void registerLargeForgeHammerRecipes() {
         RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder builder = GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
@@ -518,6 +530,7 @@ public class RecipeHandler {
 
             GARecipeMaps.LARGE_MIXER_RECIPES.getRecipeList().stream()
                     .filter(recipe -> recipe.getOutputs().size() == 1)
+                    .filter(recipe -> recipe.getFluidOutputs().size() == 0)
                     .filter(recipe -> recipe.getOutputs().get(0).isItemEqualIgnoreDurability(OreDictUnifier.get(OrePrefix.dust, ingotMaterial)))
                     .findFirst()
                     .ifPresent(recipe -> {

@@ -1,10 +1,14 @@
 package gregicadditions.fluid;
 
 import gregicadditions.materials.RadioactiveMaterial;
+import gregicadditions.materials.SimpleFluidMaterial;
+import gregtech.api.GTValues;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.MetaFluids;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -34,6 +38,16 @@ public class GAMetaFluids {
             radioactiveMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
         });
 
+        for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS) {
+            Fluid fluid = new Fluid(fluidMat.name, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
+            if (!FluidRegistry.isFluidRegistered(fluid.getName())) {
+                FluidRegistry.registerFluid(fluid);
+                fluidMat.fluid = fluid;
+            } else if (!FluidRegistry.hasBucket(FluidRegistry.getFluid(fluid.getName()))){
+                FluidRegistry.addBucketForFluid(fluid);
+                fluidMat.fluid = FluidRegistry.getFluid(fluid.getName());
+            }
+        }
     }
 
     @Nullable
