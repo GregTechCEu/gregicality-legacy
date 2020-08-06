@@ -9,7 +9,9 @@ import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.Materials;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
+import gregicadditions.GAMaterials;
 
+import java.util.HashMap;
 import java.util.function.Supplier;
 
 import static gregtech.api.unification.material.Materials.Naquadria;
@@ -19,9 +21,18 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
 
     private boolean isUsingPotassium = false;
 
+    static final HashMap<FluidStack, Double> FUELS = new HashMap<FluidStack, Double>();
+
     public NaquadahReactorWorkableHandler(MetaTileEntity metaTileEntity, FuelRecipeMap recipeMap,
                                           Supplier<IEnergyContainer> energyContainer, Supplier<IMultipleTankHandler> fluidTank, long maxVoltage) {
         super(metaTileEntity, recipeMap, energyContainer, fluidTank, maxVoltage);
+        FUELS.put(GAMaterials.HeavyENaquadahFuel.getFluid(Integer.MAX_VALUE), 10.0);
+        FUELS.put(GAMaterials.MediumENaquadahFuel.getFluid(Integer.MAX_VALUE), 7.5);
+        FUELS.put(GAMaterials.LightENaquadahFuel.getFluid(Integer.MAX_VALUE), 5.0);
+        FUELS.put(GAMaterials.HeavyNaquadahFuel.getFluid(Integer.MAX_VALUE), 5.0);
+        FUELS.put(GAMaterials.MediumNaquadahFuel.getFluid(Integer.MAX_VALUE), 2.5);
+        FUELS.put(GAMaterials.LightNaquadahFuel.getFluid(Integer.MAX_VALUE), 1.0);
+
     }
 
     public FluidStack getFuelStack() {
@@ -46,11 +57,11 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
 
     @Override
     protected long startRecipe(FuelRecipe currentRecipe, int fuelAmountUsed, int recipeDuration) {
-        if (isUsingPotassium && currentRecipe.getRecipeFluid().isFluidEqual(Naquadria.getFluid(Integer.MAX_VALUE))) {
+        if (isUsingPotassium && FUELS.containsKey(currentRecipe.getRecipeFluid())) {
             FluidStack potassiumStack = Materials.Potassium.getPlasma(2);
             fluidTank.get().drain(potassiumStack, true);
         }
-        return maxVoltage * (isUsingPotassium && currentRecipe.getRecipeFluid().isFluidEqual(Naquadria.getFluid(Integer.MAX_VALUE)) ? 10 : 1);
+        return (long) (maxVoltage * (isUsingPotassium && FUELS.containsKey(currentRecipe.getRecipeFluid()) ? FUELS.get(currentRecipe.getRecipeFluid()) : 1));
     }
 
     public boolean isUsingPotassium() {
