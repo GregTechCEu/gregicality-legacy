@@ -326,13 +326,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735);
-    public static final SimpleDustMaterial Antimoniate = new SimpleDustMaterial("antimoniate", Antimony.materialRGB, (short) 0, Antimony.materialIconSet);
     public static final SimpleDustMaterial AntimonyTrifluoride = new SimpleDustMaterial("antimony_trifluoride", 0xc7c7c7, (short) 1, Antimony.materialIconSet);
     public static final SimpleFluidMaterial AntimonyPentafluoride = new SimpleFluidMaterial("antimony_pentafluoride", Antimony.materialRGB);
     public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5);
-    public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluroronaquadric_acid", 0x485d60);
-    public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluroronaquadric_acid", 0x485d60);
-    public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluroronaquadriatic_acid", 0x485d60);
+    public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluoronaquadric_acid", 0x485d60);
+    public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluoronaquadric_acid", 0x485d60);
+    public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluoronaquadriatic_acid", 0x485d60);
     public static final SimpleFluidMaterial NaquadahDifluoride = new SimpleFluidMaterial("naquadah_difluoride", 0x324649);
     public static final SimpleFluidMaterial EnrichedNaquadahDifluoride = new SimpleFluidMaterial("enriched_naquadah_difluoride", 0x141e1f);
     public static final SimpleFluidMaterial NaquadriaDifluoride = new SimpleFluidMaterial("naquadria_difluoride", 0x141e1f);
@@ -351,7 +350,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial RadonTrioxide = new SimpleFluidMaterial("radon_trioxide", 0x9966ff);
     public static final SimpleFluidMaterial NaquadriaCesiumXenonNonfluoride = new SimpleFluidMaterial("naquadria_cesium_xenon_nonfluoride", 0x1c1c5e);
     public static final SimpleFluidMaterial NitrosylFluoride = new SimpleFluidMaterial("nitrosyl_fluoride", NitricOxide.materialRGB);
-    public static final SimpleFluidMaterial NitrosoniumOctafluoroxenate = new SimpleFluidMaterial("nitrosonium_octaflouroxenate", 0x3f3f83);
+    public static final SimpleFluidMaterial NitrosoniumOctafluoroxenate = new SimpleFluidMaterial("nitrosonium_octafluoroxenate", 0x3f3f83);
     public static final SimpleFluidMaterial NaquadriaCesiumfluoride = new SimpleFluidMaterial("naquadria_cesiumfluoride", 0x636379);
 
     public static final SimpleFluidMaterial EnrichedNaquadahhexafluoride = new SimpleFluidMaterial("enriched_naquadahhexafluoride", 0x030330);

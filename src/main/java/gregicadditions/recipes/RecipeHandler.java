@@ -518,6 +518,7 @@ public class RecipeHandler {
 
             GARecipeMaps.LARGE_MIXER_RECIPES.getRecipeList().stream()
                     .filter(recipe -> recipe.getOutputs().size() == 1)
+                    .filter(recipe -> recipe.getFluidOutputs().size() == 0)
                     .filter(recipe -> recipe.getOutputs().get(0).isItemEqualIgnoreDurability(OreDictUnifier.get(OrePrefix.dust, ingotMaterial)))
                     .findFirst()
                     .ifPresent(recipe -> {
