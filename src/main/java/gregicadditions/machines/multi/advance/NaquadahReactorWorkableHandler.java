@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -7,31 +8,29 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.Materials;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
-import gregicadditions.GAMaterials;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
-
-import static gregtech.api.unification.material.Materials.Naquadria;
 
 public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
 
 
     private boolean isUsingPotassium = false;
 
-    static final HashMap<FluidStack, Double> FUELS = new HashMap<FluidStack, Double>();
+    static final HashMap<FluidStack, Integer> FUELS = new HashMap<>();
 
     public NaquadahReactorWorkableHandler(MetaTileEntity metaTileEntity, FuelRecipeMap recipeMap,
                                           Supplier<IEnergyContainer> energyContainer, Supplier<IMultipleTankHandler> fluidTank, long maxVoltage) {
         super(metaTileEntity, recipeMap, energyContainer, fluidTank, maxVoltage);
-        FUELS.put(GAMaterials.HeavyENaquadahFuel.getFluid(Integer.MAX_VALUE), 10.0);
-        FUELS.put(GAMaterials.MediumENaquadahFuel.getFluid(Integer.MAX_VALUE), 7.5);
-        FUELS.put(GAMaterials.LightENaquadahFuel.getFluid(Integer.MAX_VALUE), 5.0);
-        FUELS.put(GAMaterials.HeavyNaquadahFuel.getFluid(Integer.MAX_VALUE), 5.0);
-        FUELS.put(GAMaterials.MediumNaquadahFuel.getFluid(Integer.MAX_VALUE), 2.5);
-        FUELS.put(GAMaterials.LightNaquadahFuel.getFluid(Integer.MAX_VALUE), 1.0);
+        FUELS.put(GAMaterials.HyperFuelIII.getFluid(Integer.MAX_VALUE), 12);
+        FUELS.put(GAMaterials.HyperFuelII.getFluid(Integer.MAX_VALUE), 8);
+        FUELS.put(GAMaterials.HyperFuelI.getFluid(Integer.MAX_VALUE), 5);
+        FUELS.put(GAMaterials.HeavyENaquadahFuel.getFluid(Integer.MAX_VALUE), 3);
+        FUELS.put(GAMaterials.MediumENaquadahFuel.getFluid(Integer.MAX_VALUE), 2);
+        FUELS.put(GAMaterials.HeavyNaquadahFuel.getFluid(Integer.MAX_VALUE), 2);
+        FUELS.put(GAMaterials.MediumNaquadahFuel.getFluid(Integer.MAX_VALUE), 1);
+
 
     }
 
@@ -61,7 +60,7 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
             FluidStack potassiumStack = Materials.Potassium.getPlasma(2);
             fluidTank.get().drain(potassiumStack, true);
         }
-        return (long) (maxVoltage * (isUsingPotassium && FUELS.containsKey(currentRecipe.getRecipeFluid()) ? FUELS.get(currentRecipe.getRecipeFluid()) : 1));
+        return maxVoltage * (isUsingPotassium && FUELS.containsKey(currentRecipe.getRecipeFluid()) ? FUELS.get(currentRecipe.getRecipeFluid()) : 1);
     }
 
     public boolean isUsingPotassium() {

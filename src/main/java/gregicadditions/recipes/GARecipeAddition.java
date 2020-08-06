@@ -2859,7 +2859,7 @@ public class GARecipeAddition {
                 .fluidInputs(HeavyENaquadahFuel.getFluid(400))
                 .fluidInputs(NaquadriaSolution.getFluid(300))
                 .input(dust, Neutronium)
-                .fluidInputs(Californium252.getMaterial().getFluid(144))
+                .fluidInputs(Californium256.getMaterial().getFluid(144))
                 .fluidOutputs(HyperFuelIII.getFluid(2000))
                 .EUt(7680)
                 .duration(200)
