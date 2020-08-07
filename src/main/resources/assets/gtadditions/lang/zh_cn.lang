@@ -1409,7 +1409,14 @@ item.ga_essence.material.name=%s精华
 
 gtadditions.machine.large_naquadah_reactor.name=大型硅岩反应堆
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=大型硅岩反应堆没有效率损失。
-gtadditions.multiblock.large_naquadah_reactor.tooltip.2=超能硅岩与钾等离子体反应产生10UV/t。
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=一些硅岩燃料与钾等离子体反应会产生高于1UV的发电量。
+tadditions.multiblock.large_naquadah_reactor.tooltip.3=平衡硅岩燃料 => 1UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.4=重型硅岩燃料 => 2UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.5=平衡富集硅岩燃料 => 2UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.6=重型富集硅岩燃料 => 3UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.7=超级燃料 I => 5UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.8=超级燃料 II => 8UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.9=超级燃料 III => 12UV.
 gregtech.multiblock.large_forge_hammer.description=
 gregtech.multiblock.large_forge_hammer.tooltip=使用润滑油运行。每提升一个电压等级可以多处理2个物品，比相同电压的锻造锤快1.25倍节省90%%的电力.
 gregtech.multiblock.chemical_plant.description=化工厂是一个5x5具有多个等级线圈的多方块结构，不同等级的线圈决定了机器的速度。
@@ -1918,3 +1925,103 @@ gregtech.fluid.hexafluoride=六氟化%s
 item.material.oreprefix.nitrate=硝酸%s
 item.material.oreprefix.dioxide=二氧化%s
 item.material.oreprefix.hexafluoride=六氟化%s
+
+metaitem.auric_fluoride.name=氟化金粉
+metaitem.naquadria_concentrate.name=浓缩超能硅岩粉
+metaitem.enriched_naquadah_concentrate.name=浓缩富集硅岩粉
+metaitem.naquadah_concentrate.name=浓缩硅岩粉
+metaitem.indium_trioxide.name=三氧化二铟粉
+metaitem.indium_trifluoride.name=三氟化铟粉
+metaitem.antimony_trifluoride.name=三氟化锑粉
+
+fluid.naquadric_solution=硅岩混合溶液
+fluid.enriched_naquadric_solution=富集硅岩混合溶液
+fluid.naquadriatic_solution=超能硅岩混合溶液
+fluid.antimony_pentafluoride=五氟化锑
+fluid.fluoroantimonic_acid=锑氟化酸
+fluid.fluoronaquadric_acid=硅岩氟化酸
+fluid.fluoronaquadriatic_acid=超能硅岩氟化酸
+fluid.enriched_fluoronaquadric_acid=富集硅岩氟化酸
+fluid.naquadah_difluoride=二氟化硅岩
+fluid.naquadria_difluoride=二氟化超能硅岩
+fluid.enriched_naquadah_difluoride=二氟化富集硅岩
+fluid.naquadria_hexafluoride=六氟化超能硅岩
+fluid.radon_difluoride=二氟化氡
+fluid.radon_naquadriaoctafluoride=超能硅岩氟化氡
+fluid.xenon_trioxide=三氧化氙
+fluid.cesium_fluoride=氟化铯
+fluid.cesium_xenontrioxide_fluoride=氟化氙铯氧化物
+fluid.radon_trioxide=三氧化氡
+fluid.naquadria_cesium_xenon_nonfluoride=超能硅岩-铯-氙氟化混合物
+fluid.nitrosyl_fluoride=亚硝酰氟
+fluid.nitrosonium_octafluoroxenate=氟氙硝化物
+fluid.naquadria_cesiumfluoride=氟铯化超能硅岩
+fluid.enriched_naquadahhexafluoride=六氟化富集硅岩
+fluid.enriched_xenon_hexafluoronaquadate=六氟化氙富集硅岩混合物
+fluid.auric_chloride=氯化金
+fluid.bromine_trifluoride=三氟化溴
+fluid.auric_fluoride=氟化金
+fluid.xenoauric_fluoroantimonic_acid=锑氟化氙金混合物
+fluid.fluoric_acid=含氟酸
+fluid.naquadah_sulfate=硫酸硅岩
+fluid.naquadah_solution=硅岩溶液
+fluid.clear_naquadah_liquid=纯净硅岩溶液
+fluid.complicated_naquadah_gas=含杂硅岩气体
+fluid.complicated_heavy_naquadah=含杂重型硅岩
+fluid.complicated_medium_naquadah=含杂平衡硅岩
+fluid.complicated_light_naquadah=含杂轻型硅岩
+fluid.naquadah_gas=硅岩气体
+fluid.light_naquadah=轻型硅岩
+fluid.medium_naquadah=平衡硅岩
+fluid.heavy_naquadah=重型硅岩
+fluid.fl_cracked_light_naquadah=氟处理轻型硅岩
+fluid.fl_cracked_medium_naquadah=氟处理平衡硅岩
+fluid.fl_cracked_heavy_naquadah=氟处理重型硅岩
+fluid.light_naquadah_fuel=轻型硅岩燃料
+fluid.medium_naquadah_fuel=平衡硅岩燃料
+fluid.heavy_naquadah_fuel=重型硅岩燃料
+fluid.ammonia_nitrate=硝酸铵
+fluid.e_naquadah_solution=富集硅岩溶液
+fluid.clear_e_naquadah_liquid=纯净富集硅岩溶液
+fluid.complicated_heavy_e_naquadah=含杂重型富集硅岩
+fluid.complicated_medium_e_naquadah=含杂平衡富集硅岩
+fluid.complicated_light_e_naquadah=含杂轻型富集硅岩
+fluid.light_e_naquadah=轻型富集硅岩
+fluid.medium_e_naquadah=平衡富集硅岩
+fluid.heavy_e_naquadah=重型富集硅岩
+fluid.rn_cracked_light_e_naquadah=氡处理轻型富集硅岩
+fluid.rn_cracked_medium_e_naquadah=氡处理平衡富集硅岩
+fluid.rn_cracked_heavy_e_naquadah=氡处理重型富集硅岩
+fluid.light_e_naquadah_fuel=轻型富集硅岩燃料
+fluid.medium_e_naquadah_fuel=平衡富集硅岩燃料
+fluid.heavy_e_naquadah_fuel=重型富集硅岩燃料
+fluid.naquadria_solution=超能硅岩溶液
+fluid.hyper_fluid_i=超级燃料 I
+fluid.hyper_fluid_ii=超级燃料 II
+fluid.hyper_fluid_iii=超级燃料 III
+
+material.naquadric_compound=硅岩混合
+material.enriched_naquadric_compound=富集硅岩混合
+material.naquadriatic_compound=超能硅岩混合
+
+gregtech.multiblock.large_transformer.input=输入： %s EU / %s 安
+gregtech.multiblock.large_transformer.output=输出： %s EU / %s 安
+gregtech.multiblock.large_transformer.input_average=每tick电流输入： %s
+gregtech.multiblock.large_transformer.output_average=每tick电流输出： %s
+
+material.calcium_tungstate=钨酸钙
+material.sodium_tungstate=钨酸钠
+material.tungstic_acid=钨酸
+material.tungsten_trioxide=三氧化钨
+material.tungsten_hexachloride=六氯化钨
+
+gtadditions.machine.fluid_hatch.export_filtered.ulv.name=过滤型输出仓（ULV）
+gtadditions.machine.fluid_hatch.export_filtered.lv.name=过滤型输出仓（LV）
+gtadditions.machine.fluid_hatch.export_filtered.mv.name=过滤型输出仓（MV）
+gtadditions.machine.fluid_hatch.export_filtered.hv.name=过滤型输出仓（HV）
+gtadditions.machine.fluid_hatch.export_filtered.ev.name=过滤型输出仓（EV）
+gtadditions.machine.fluid_hatch.export_filtered.iv.name=过滤型输出仓（IV）
+gtadditions.machine.fluid_hatch.export_filtered.luv.name=过滤型输出仓（LuV）
+gtadditions.machine.fluid_hatch.export_filtered.zpm.name=过滤型输出仓（ZPM）
+gtadditions.machine.fluid_hatch.export_filtered.uv.name=过滤型输出仓（UV）
+gtadditions.machine.fluid_hatch.export_filtered.max.name=过滤型输出仓（MAX）
