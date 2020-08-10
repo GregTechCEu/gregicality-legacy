@@ -2562,7 +2562,7 @@ public class GARecipeAddition {
                 .duration(200)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(FluoricAcid.getFluid(1000))
+                .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .input(dust, PotassiumMetabisulfite)
                 .inputs(NaquadahConcentrate.getItemStack())
                 .fluidOutputs(Water.getFluid(1000))
