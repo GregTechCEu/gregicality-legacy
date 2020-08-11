@@ -116,8 +116,6 @@ public class TinkersMaterials {
         TinkerRegistry.registerMelting("plateGlass", gregtech.api.unification.material.Materials.Glass.getMaterialFluid(), 1000);
         TinkerRegistry.registerMelting(Items.GLASS_BOTTLE, gregtech.api.unification.material.Materials.Glass.getMaterialFluid(), 1000);
         TinkerRegistry.registerMelting("gemGlass", gregtech.api.unification.material.Materials.Glass.getMaterialFluid(), 1000);
-
-
     }
 
     private static String upperCase(Material mat) {
