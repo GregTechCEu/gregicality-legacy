@@ -341,6 +341,26 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean assemblerCanMakeComponents = true;
 
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Diesel Generators")
+        @Config.Name("Diesel Generator efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean dieselEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Steam Turbines")
+        @Config.Name("Steam Turbine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean steamEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Gas Turbines")
+        @Config.Name("Steam Turbine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean gasEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for Gregicality Rocket Engines. Does not affect the Large Rocket Engine")
+        @Config.Name("Rocket Engine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean rocketEfficiency = true;
+
     }
 
     public static Multis multis = new Multis();
