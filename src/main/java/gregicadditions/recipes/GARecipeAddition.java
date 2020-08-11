@@ -2864,6 +2864,89 @@ public class GARecipeAddition {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(block, Silicon, 16)
+                .input(ingot, Europium)
+                .notConsumable(new IntCircuitIngredient(1))
+                .EUt(7680)
+                .duration(1500)
+                .blastFurnaceTemp(7200)
+                .outputs(BOULE_EUROPIUM.getStackForm())
+                .fluidInputs(Krypton.getFluid(8000))
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .input(block, Silicon, 32)
+                .input(ingot, Americium)
+                .notConsumable(new IntCircuitIngredient(1))
+                .EUt(30720)
+                .duration(1500)
+                .blastFurnaceTemp(8600)
+                .outputs(BOULE_AMERICIUM.getStackForm())
+                .fluidInputs(Xenon.getFluid(8000))
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .input(block, Silicon, 64)
+                .input(ingot, Neutronium)
+                .notConsumable(new IntCircuitIngredient(1))
+                .EUt(122880)
+                .duration(1500)
+                .blastFurnaceTemp(9100)
+                .outputs(BOULE_NEUTRONIUM.getStackForm())
+                .fluidInputs(Radon.getFluid(8000))
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder()
+                .inputs(BOULE_EUROPIUM.getStackForm())
+                .outputs(WAFER_EUROPIUM.getStackForm(64))
+                .EUt(6144)
+                .duration(1600)
+                .buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder()
+                .inputs(BOULE_AMERICIUM.getStackForm())
+                .outputs(WAFER_AMERICIUM.getStackForm(64))
+                .EUt(24576)
+                .duration(1600)
+                .buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder()
+                .inputs(BOULE_NEUTRONIUM.getStackForm())
+                .outputs(WAFER_NEUTRONIUM.getStackForm(64))
+                .EUt(98304)
+                .duration(1600)
+                .buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(20)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(200).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Silver).outputs(MetaItems.RANDOM_ACCESS_MEMORY_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Silver).outputs(MetaItems.RANDOM_ACCESS_MEMORY_WAFER.getStackForm(16)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Silver).outputs(MetaItems.RANDOM_ACCESS_MEMORY_WAFER.getStackForm(20)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.LightBlue).outputs(MetaItems.NAND_MEMORY_CHIP_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.LightBlue).outputs(MetaItems.NAND_MEMORY_CHIP_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.LightBlue).outputs(MetaItems.NAND_MEMORY_CHIP_WAFER.getStackForm(16)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Lime).outputs(MetaItems.NOR_MEMORY_CHIP_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Lime).outputs(MetaItems.NOR_MEMORY_CHIP_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Lime).outputs(MetaItems.NOR_MEMORY_CHIP_WAFER.getStackForm(16)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(16)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(20)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Yellow).outputs(MetaItems.SYSTEM_ON_CHIP_WAFER.getStackForm(6)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Yellow).outputs(MetaItems.SYSTEM_ON_CHIP_WAFER.getStackForm(10)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Yellow).outputs(MetaItems.SYSTEM_ON_CHIP_WAFER.getStackForm(14)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Orange).outputs(MetaItems.ADVANCED_SYSTEM_ON_CHIP_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Orange).outputs(MetaItems.ADVANCED_SYSTEM_ON_CHIP_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Orange).outputs(MetaItems.ADVANCED_SYSTEM_ON_CHIP_WAFER.getStackForm(12)).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_EUROPIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
+
     }
 
     public static void forestrySupport() {
