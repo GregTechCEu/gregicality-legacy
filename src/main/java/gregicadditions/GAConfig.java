@@ -231,6 +231,10 @@ public class GAConfig {
 
         @Config.Comment("Enable Glass recipe changes")
         public boolean GregsConstructGlassProcessing = true;
+
+        @Config.Comment("Whether or not to register fluid solidification recipes for parts")
+        @Config.Name("Fluid solidification recipes for parts")
+        public boolean castingRecipes = true;
     }
 
     @Config.Comment("Config options for Energy Converter features")
