@@ -215,21 +215,33 @@ public class GAConfig {
     public static class GregsConstruct {
 
         @Config.Comment("Enable/Disable all GregsConstruct features")
+        @Config.Name("Enable Greg's Construct")
+        @Config.RequiresMcRestart
         public boolean EnableGregsConstruct = true;
 
         @Config.Comment("Add Tools with GT Metals to Tinkers")
+        @Config.Name("Tinker's metal tools")
+        @Config.RequiresMcRestart
         public boolean TinkersMetalTools = true;
 
         @Config.Comment("Add Tools with GT Gems to Tinkers")
+        @Config.Name("Tinker's gem tools")
+        @Config.RequiresMcRestart
         public boolean TinkersGemTools = true;
 
         @Config.Comment("Add Smelting for GT Materials to Tinkers Smeltery")
+        @Config.Name("Tinker's material smelting")
+        @Config.RequiresMcRestart
         public boolean TinkersMaterialsSmelting = true;
 
         @Config.Comment("Add Alloying of GT Materials to Tinkers Smeltery")
+        @Config.Name("Tinker's material alloying")
+        @Config.RequiresMcRestart
         public boolean TinkersMaterialAlloying = true;
 
         @Config.Comment("Enable Glass recipe changes")
+        @Config.Name("Greg's Construct glass processing")
+        @Config.RequiresMcRestart
         public boolean GregsConstructGlassProcessing = true;
 
         @Config.Comment("Whether or not to register fluid solidification recipes for parts")
