@@ -20,7 +20,10 @@ public class TinkersEvents {
 	@Optional.Method(modid = "tconstruct")
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct")) TinkersGtRecipes.init();
+		if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct")) {
+			TinkersGtRecipes.init();
+			TinkersGtRecipes.init2();
+		}
 	}
 
 	@Optional.Method(modid = "tconstruct")

@@ -9,8 +9,14 @@ import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.smeltery.Cast;
+import slimeknights.tconstruct.library.tinkering.MaterialItem;
+import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.shared.TinkerCommons;
+import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,6 +59,36 @@ public class TinkersGtRecipes {
 
 		RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(18).EUt(4).notConsumable(MetaItems.SHAPE_MOLD_BLOCK.getStackForm()).fluidInputs(Materials.Glass.getFluid(1000)).outputs(new ItemStack(TinkerCommons.blockClearGlass)).buildAndRegister();
 		RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(18).EUt(4).notConsumable(MetaItems.SHAPE_MOLD_PLATE.getStackForm()).fluidInputs(Materials.Glass.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.plate, Materials.Glass)).buildAndRegister();
+	}
+
+	public static void init2() {
+		if (GAConfig.GregsConstruct.castingRecipes) {
+			for (slimeknights.tconstruct.library.materials.Material material : TinkerRegistry.getAllMaterials()) {
+				Fluid fluid = material.getFluid();
+				for (IToolPart toolPart : TinkerRegistry.getToolParts()) {
+					if (!toolPart.canBeCasted()) {
+						continue;
+					}
+					if (!toolPart.canUseMaterial(material)) {
+						continue;
+					}
+					if (toolPart instanceof MaterialItem) {
+						ItemStack castItem = toolPart.getItemstackWithMaterial(material);
+						ItemStack cast = new ItemStack(TinkerSmeltery.cast);
+						Cast.setTagForPart(cast, castItem.getItem());
+						if (fluid != null) {
+							RecipeMaps.FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+									.notConsumable(cast)
+									.fluidInputs(new FluidStack(fluid, toolPart.getCost()))
+									.outputs(castItem)
+									.EUt(32)
+									.duration(Math.max(20 * toolPart.getCost() / 144, 1))
+									.buildAndRegister();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private static void removeRecipesByInputs(ItemStack... itemInputs) {
