@@ -30,7 +30,7 @@ public class TinkersMaterials {
                         GtIngotmaterials.add((IngotMaterial) mat);
                     } else TinkerRegistry.integrate(((IngotMaterial) mat).getMaterialFluid(), upperCase(mat));
                 }
-                if (((IngotMaterial) mat).blastFurnaceTemperature <= 0 && GAConfig.GregsConstruct.TinkersMaterialsSmelting) {
+                if (((IngotMaterial) mat).blastFurnaceTemperature <= 0 && GAConfig.GregsConstruct.TinkersMaterialsSmelting  && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
                     TinkerRegistry.registerMelting(new UnificationEntry(OrePrefix.oreSand, mat).toString(), ((IngotMaterial) mat).getMaterialFluid(), (int) (144 * ((IngotMaterial) mat).oreMultiplier * Config.oreToIngotRatio));
                     TinkerRegistry.registerMelting(new UnificationEntry(OrePrefix.oreRedgranite, mat).toString(), ((IngotMaterial) mat).getMaterialFluid(), (int) (144 * ((IngotMaterial) mat).oreMultiplier * Config.oreToIngotRatio));
                     TinkerRegistry.registerMelting(new UnificationEntry(OrePrefix.oreNetherrack, mat).toString(), ((IngotMaterial) mat).getMaterialFluid(), (int) (144 * ((IngotMaterial) mat).oreMultiplier * Config.oreToIngotRatio));
@@ -45,7 +45,7 @@ public class TinkersMaterials {
                 gemMaterials.add(new slimeknights.tconstruct.library.materials.Material(mat.toString(), mat.materialRGB).setCastable(false).setCraftable(true));
                 GtGemmaterials.add((GemMaterial) mat);
             }
-            if (mat instanceof DustMaterial && !(mat instanceof IngotMaterial) && GAConfig.GregsConstruct.TinkersMaterialsSmelting) {
+            if (mat instanceof DustMaterial && !(mat instanceof IngotMaterial) && GAConfig.GregsConstruct.TinkersMaterialsSmelting && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
                 DustMaterial dust = (DustMaterial) mat;
                 if (dust.directSmelting != null) {
                     TinkerRegistry.registerMelting(new UnificationEntry(OrePrefix.ore, mat).toString(), dust.directSmelting.getMaterialFluid(), (int) (144 * dust.oreMultiplier * Config.oreToIngotRatio));
