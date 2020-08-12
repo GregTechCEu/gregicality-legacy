@@ -1,6 +1,7 @@
 package gregicadditions.integrations.tconstruct;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAMaterials;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
@@ -24,7 +25,7 @@ public class TinkersMaterials {
     public static void preInit() {
         for (Material mat : Material.MATERIAL_REGISTRY) {
             if (mat instanceof IngotMaterial) {
-                if (mat != gregtech.api.unification.material.Materials.Iron && mat != gregtech.api.unification.material.Materials.Cobalt && mat != gregtech.api.unification.material.Materials.Copper && mat != gregtech.api.unification.material.Materials.Bronze && mat != gregtech.api.unification.material.Materials.Lead && mat != gregtech.api.unification.material.Materials.Electrum && mat != gregtech.api.unification.material.Materials.Silver && mat != gregtech.api.unification.material.Materials.Steel && mat != gregtech.api.unification.material.Materials.PigIron) {
+                if (mat != gregtech.api.unification.material.Materials.Iron && mat != gregtech.api.unification.material.Materials.Cobalt && mat != gregtech.api.unification.material.Materials.Copper && mat != gregtech.api.unification.material.Materials.Bronze && mat != gregtech.api.unification.material.Materials.Lead && mat != gregtech.api.unification.material.Materials.Electrum && mat != gregtech.api.unification.material.Materials.Silver && mat != gregtech.api.unification.material.Materials.Steel && mat != gregtech.api.unification.material.Materials.PigIron && mat != GAMaterials.Enderium) {
                     if (((SolidMaterial) mat).toolDurability > 0) {
                         ingotMaterials.add(new slimeknights.tconstruct.library.materials.Material(mat.toString(), mat.materialRGB).setCastable(true).setCraftable(false));
                         GtIngotmaterials.add((IngotMaterial) mat);
