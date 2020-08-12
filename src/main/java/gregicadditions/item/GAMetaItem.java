@@ -227,6 +227,6 @@ public class GAMetaItem extends MaterialMetaItem {
 
     @Override
     public boolean hasEffect(ItemStack itemStack) {
-        return super.hasEffect(itemStack) || itemStack.getItem() == UNSTABLE_STAR.getMetaItem();
+        return super.hasEffect(itemStack) || itemStack.getMetadata() == UNSTABLE_STAR.getStackForm().getMetadata();
     }
 }
