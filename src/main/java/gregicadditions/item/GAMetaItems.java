@@ -205,6 +205,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BOULE_EUROPIUM;
     public static MetaItem<?>.MetaValueItem BOULE_NEUTRONIUM;
 
+    public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
+
 
 
 

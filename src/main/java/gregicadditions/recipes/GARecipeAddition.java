@@ -1156,6 +1156,7 @@ public class GARecipeAddition {
 
         //Star Recipes
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680).inputs(new ItemStack(Items.NETHER_STAR)).fluidInputs(Americium.getFluid(288)).outputs(GRAVI_STAR.getStackForm()).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(122880).inputs(GRAVI_STAR.getStackForm()).fluidInputs(Neutronium.getFluid(288)).outputs(UNSTABLE_STAR.getStackForm()).buildAndRegister();
 
         //Fusion Recipes
         FUSION_RECIPES.recipeBuilder().fluidInputs(Deuterium.getFluid(125), Tritium.getFluid(125)).fluidOutputs(Helium.getPlasma(125)).duration(16).EUt(4096).EUToStart(40000000).buildAndRegister();
