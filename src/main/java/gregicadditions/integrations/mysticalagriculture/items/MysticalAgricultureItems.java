@@ -89,6 +89,7 @@ public class MysticalAgricultureItems {
     public static void registerOreDict() {
         CropType.SEEDS.forEach((material, itemSeeds) -> {
             OreDictUnifier.registerOre(new ItemStack(itemSeeds, 1), OrePrefix.valueOf("seed"), material);
+            OreDictUnifier.registerOre(new ItemStack(itemSeeds, 1), "seedsTier" + itemSeeds.getTier());
         });
         ESSENCES.forEach((material, item) -> {
             OreDictUnifier.registerOre(new ItemStack(item, 1), OrePrefix.valueOf("essence"), material);
