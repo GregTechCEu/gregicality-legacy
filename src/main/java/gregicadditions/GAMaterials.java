@@ -66,12 +66,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial IVSuperconductorBase = new IngotMaterial(973, "iv_superconductor_base", 0x300030, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Vanadium, 1), new MaterialStack(Indium, 3)), STD_METAL, null, 5200);
     public static final IngotMaterial LuVSuperconductorBase = new IngotMaterial(972, "luv_superconductor_base", 0x7a3c00, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Indium, 4), new MaterialStack(Bronze, 8), new MaterialStack(Barium, 2), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 14)), STD_METAL, null, 6000);
     public static final IngotMaterial ZPMSuperconductorBase = new IngotMaterial(971, "zpm_superconductor_base", 0x111111, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadah, 4), new MaterialStack(Indium, 2), new MaterialStack(Palladium, 6), new MaterialStack(Osmium, 1)), STD_METAL, null, 8100);
+    public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Europium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
     public static final IngotMaterial MVSuperconductor = new IngotMaterial(970, "mv_superconductor", 0x535353, MaterialIconSet.SHINY, 1, of(new MaterialStack(MVSuperconductorBase, 3), new MaterialStack(Nitrogen, 4)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial HVSuperconductor = new IngotMaterial(969, "hv_superconductor", 0x4a2400, MaterialIconSet.SHINY, 1, of(new MaterialStack(HVSuperconductorBase, 3), new MaterialStack(Nitrogen, 4)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial EVSuperconductor = new IngotMaterial(968, "ev_superconductor", 0x005800, MaterialIconSet.SHINY, 1, of(new MaterialStack(EVSuperconductorBase, 3), new MaterialStack(Nitrogen, 4)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial IVSuperconductor = new IngotMaterial(967, "iv_superconductor", 0x300030, MaterialIconSet.SHINY, 1, of(new MaterialStack(IVSuperconductorBase, 3), new MaterialStack(Nitrogen, 4)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial LuVSuperconductor = new IngotMaterial(966, "luv_superconductor", 0x7a3c00, MaterialIconSet.SHINY, 1, of(new MaterialStack(LuVSuperconductorBase, 2), (new MaterialStack(Nitrogen, 3))), DISABLE_DECOMPOSITION);
     public static final IngotMaterial ZPMSuperconductor = new IngotMaterial(964, "zpm_superconductor", 0x111111, MaterialIconSet.SHINY, 1, of(new MaterialStack(ZPMSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial Enderium = new IngotMaterial(963, "enderium", 0x23524a, MaterialIconSet.METALLIC, 3, ImmutableList.of(new MaterialStack(Lead, 3), new MaterialStack(Platinum, 1), new MaterialStack(EnderPearl, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 8.0F, 3.0F, 1280, 4500);
     public static final DustMaterial MicaPulp = new DustMaterial(962, "mica_based", 0x917445, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final DustMaterial AluminoSilicateWool = new DustMaterial(961, "alumino_silicate_wool", 0xbbbbbb, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION);
@@ -414,25 +416,28 @@ public class GAMaterials implements IMaterialHandler {
         Naquadah.setFluidPipeProperties(1000, 19000, true);
         NiobiumTitanium.setFluidPipeProperties(450, 2900, true);
 
-        MVSuperconductorBase.setCableProperties(128, 1, 2);
-        HVSuperconductorBase.setCableProperties(512, 1, 2);
-        EVSuperconductorBase.setCableProperties(2048, 2, 2);
-        IVSuperconductorBase.setCableProperties(8192, 2, 2);
+        MVSuperconductorBase.setCableProperties(128, 4, 2);
+        HVSuperconductorBase.setCableProperties(512, 4, 2);
+        EVSuperconductorBase.setCableProperties(2048, 4, 2);
+        IVSuperconductorBase.setCableProperties(8192, 4, 2);
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
+        UVSuperconductorBase.setCableProperties(524288, 4, 2);
 
-        MVSuperconductor.setCableProperties(128, 2, 0);
+        MVSuperconductor.setCableProperties(128, 4, 0);
         ignoreCable(MVSuperconductor);
-        HVSuperconductor.setCableProperties(512, 2, 0);
+        HVSuperconductor.setCableProperties(512, 4, 0);
         ignoreCable(HVSuperconductor);
         EVSuperconductor.setCableProperties(2048, 4, 0);
         ignoreCable(EVSuperconductor);
         IVSuperconductor.setCableProperties(8192, 4, 0);
         ignoreCable(IVSuperconductor);
-        LuVSuperconductor.setCableProperties(32768, 8, 0);
+        LuVSuperconductor.setCableProperties(32768, 4, 0);
         ignoreCable(LuVSuperconductor);
-        ZPMSuperconductor.setCableProperties(131072, 8, 0);
+        ZPMSuperconductor.setCableProperties(131072, 4, 0);
         ignoreCable(ZPMSuperconductor);
+        UVSuperconductor.setCableProperties(524288, 4, 0);
+        ignoreCable(UVSuperconductor);
 
 
         Radon.addFlag(GENERATE_PLASMA);
@@ -563,6 +568,7 @@ public class GAMaterials implements IMaterialHandler {
         NaquadahEnriched.addFlag(DISABLE_REPLICATION);
         NaquadahAlloy.addFlag(DISABLE_DECOMPOSITION);
         ZPMSuperconductorBase.addFlag(DISABLE_DECOMPOSITION);
+        UVSuperconductor.addFlag(DISABLE_DECOMPOSITION);
     }
 
     public static void goldProcess() {

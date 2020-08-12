@@ -322,6 +322,7 @@ public final class CropType {
         SEEDS.put(IVSuperconductorBase, new ItemTierSeed(CROPS.get(IVSuperconductorBase), IVSuperconductorBase, 6));
         SEEDS.put(LuVSuperconductorBase, new ItemTierSeed(CROPS.get(LuVSuperconductorBase), LuVSuperconductorBase, 7));
         SEEDS.put(ZPMSuperconductorBase, new ItemTierSeed(CROPS.get(ZPMSuperconductorBase), ZPMSuperconductorBase, 8));
+        SEEDS.put(UVSuperconductorBase, new ItemTierSeed(CROPS.get(UVSuperconductorBase), UVSuperconductorBase, 8));
         SEEDS.put(Enderium, new ItemTierSeed(CROPS.get(Enderium), Enderium, 3));
         SEEDS.put(QuartzSand, new ItemTierSeed(CROPS.get(QuartzSand), QuartzSand, 2));
         SEEDS.put(Massicot, new ItemTierSeed(CROPS.get(Massicot), Massicot, 2));
