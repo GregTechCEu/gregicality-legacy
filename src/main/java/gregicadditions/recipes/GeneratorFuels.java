@@ -125,9 +125,9 @@ public class GeneratorFuels {
         registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 20000, GTValues.LV);
         registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 60000, GTValues.LV);
         registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 40000, GTValues.LV);
-        registerNaquadahReactorFuel(HyperFuelI.getFluid(1), 100000, GTValues.LV);
-        registerNaquadahReactorFuel(HyperFuelII.getFluid(1), 150000, GTValues.LV);
-        registerNaquadahReactorFuel(HyperFuelIII.getFluid(1), 200000, GTValues.LV);
+        registerNaquadahReactorFuel(HyperFuelI.getFluid(1), 400, GTValues.IV);
+        registerNaquadahReactorFuel(HyperFuelII.getFluid(1), 600, GTValues.IV);
+        registerNaquadahReactorFuel(HyperFuelIII.getFluid(1), 800, GTValues.IV);
     }
 
     //Register Methods

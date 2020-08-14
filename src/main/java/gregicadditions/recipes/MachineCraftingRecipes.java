@@ -10,6 +10,7 @@ import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHel
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
+import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
@@ -159,6 +160,17 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_casing_luv", MetaBlocks.MACHINE_CASING.getItemVariant(LuV), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, RhodiumPlatedPalladium));
         ModHandler.addShapedRecipe("ga_casing_zpm", MetaBlocks.MACHINE_CASING.getItemVariant(ZPM), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Osmiridium));
         ModHandler.addShapedRecipe("ga_casing_uv", MetaBlocks.MACHINE_CASING.getItemVariant(UV), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, NaquadahAlloy));
+
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_ulv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.ULV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.ULV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_lv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.LV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_mv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.MV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.MV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_hv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.HV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.HV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_ev", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.EV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_iv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.IV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'G', new ItemStack(Blocks.GLASS, 1), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_luv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.LuV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.LuV].getStackForm(), 'G', new ItemStack(Blocks.GLASS), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_zpm", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.ZPM).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.ZPM].getStackForm(), 'G', new ItemStack(Blocks.GLASS), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_uv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.UV).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.UV].getStackForm(), 'G', new ItemStack(Blocks.GLASS), 'F', FLUID_FILTER);
+        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_max", GATileEntities.OUTPUT_HATCH_FILTERED.get(GTValues.MAX).getStackForm(), "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.MAX].getStackForm(), 'G', new ItemStack(Blocks.GLASS), 'F', FLUID_FILTER);
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).input(plate, WroughtIron, 8).outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV)).circuitMeta(8).duration(25).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).input(plate, Steel, 8).outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV)).circuitMeta(8).duration(50).buildAndRegister();
@@ -576,10 +588,10 @@ public class MachineCraftingRecipes {
 
     }
 
-    public static <T extends MetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
-        for (int i = 0; i < metaTileEntities.length; i++) {
-            if (metaTileEntities[i] != null)
-                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntities[i].getMetaName()), metaTileEntities[i].getStackForm(), prepareRecipe(i + 1, Arrays.copyOf(recipe, recipe.length)));
+    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
+        for (T metaTileEntity : metaTileEntities) {
+            if (metaTileEntity != null)
+                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaName()), metaTileEntity.getStackForm(), prepareRecipe(metaTileEntity.getTier(), Arrays.copyOf(recipe, recipe.length)));
         }
     }
 

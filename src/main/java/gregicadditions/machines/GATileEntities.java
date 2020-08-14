@@ -710,7 +710,7 @@ public class GATileEntities {
         }
 
         id = 3220;
-        for (int i = 0; i < GTValues.V.length - 1; i++) {
+        for (int i = 0; i < GTValues.V.length; i++) {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i)));
         }
 

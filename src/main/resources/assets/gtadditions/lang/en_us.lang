@@ -48,13 +48,9 @@ metaitem.component.resistor.name=Resistor
 metaitem.component.resistor.tooltip=Basic Electronic Component
 metaitem.component.small.coil.name=Small Coil
 metaitem.component.small.coil.tooltip=Basic Electronic Component
-metaitem.component.smd.capacitor.name=SMD Capacitor
 metaitem.component.smd.capacitor.tooltip=Electronic Component
-metaitem.component.smd.diode.name=SMD Diode
 metaitem.component.smd.diode.tooltip=Electronic Component
-metaitem.component.smd.resistor.name=SMD Resistor
 metaitem.component.smd.resistor.tooltip=Electronic Component
-metaitem.component.smd.transistor.name=SMD Transistor
 metaitem.component.smd.transistor.tooltip=Electronic Component
 metaitem.component.transistor.name=Transistor
 metaitem.component.transistor.tooltip=Basic Electronic Component
@@ -234,9 +230,23 @@ metaitem.nuclear.dust.nitrate.name=%s Nitrate Dust
 metaitem.nuclear.dust.hexafluoride.name=%s Hexafluoride Dust
 
 
-/////////////////////CIRCUIT///////////////////////////
+metaitem.plank.jungle.name=Jungle Plank
+metaitem.plank.acacia.name=Acacia Plank
+metaitem.plank.darkoak.name=Dark Oak Plank
+metaitem.plank.birch.name=Birch Plank
+metaitem.plank.spruce.name=Spruce Plank
+metaitem.plank.oak.name=Oak Plank
+metaitem.compressed.coke.clay.name=Compressed Coke Clay
+metaitem.schematic.dust.name=Schematic (Dust)
+metaitem.schematic.3by3.name=Schematic (3x3)
+metaitem.schematic.2by2.name=Schematic (2x2)
+metaitem.schematic.name=Blank Schematic
 
-//LV
+metaitem.unstable.star.name=Unstable Star
+
+#/////////////////////CIRCUIT///////////////////////////
+
+#//LV
 metaitem.circuit.basic.name=Primitive Processor
 metaitem.circuit.basic.tooltip=§b§oLV Circuit
 metaitem.circuit.processor.refined.name=Refined Processor
@@ -244,7 +254,7 @@ metaitem.circuit.processor.refined.tooltip=§b§oLV Circuit
 metaitem.circuit.basic_electronic.name=Electronic Processor
 metaitem.circuit.basic_electronic.tooltip=§b§oLV Circuit
 
-//MV
+#//MV
 metaitem.circuit.assembly.primitive.name=Primitive Assembly
 metaitem.circuit.assembly.primitive.tooltip=§b§oMV Circuit
 metaitem.circuit.assembly.electronic.name=Electronic Assembly
@@ -254,7 +264,7 @@ metaitem.circuit.assembly.refined.tooltip=§b§oMV Circuit
 metaitem.circuit.processor.micro.name=Micro Processor
 metaitem.circuit.processor.micro.tooltip=§b§oMV Circuit
 
-//HV
+#//HV
 metaitem.circuit.computer.electronic.name=Electronic Computer
 metaitem.circuit.computer.electronic.tooltip=§b§oHV Circuit
 metaitem.circuit.computer.refined.name=Refined Computer
@@ -265,7 +275,7 @@ metaitem.circuit.nano_processor.name=Nano Processor
 metaitem.circuit.nano_processor.tooltip=§b§oHV Circuit
 
 
-//EV
+#//EV
 metaitem.circuit.mainframe.refined.name=Refined Mainframe
 metaitem.circuit.mainframe.refined.tooltip=§b§oEV Circuit
 metaitem.circuit.computer.micro.name=Micro Computer
@@ -275,7 +285,7 @@ metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV Circuit
 metaitem.circuit.quantum_processor.name=Quantum Processor
 metaitem.circuit.quantum_processor.tooltip=§b§oEV Circuit
 
-//IV
+#//IV
 metaitem.circuit.mainframe.micro.name=Micro Mainframe
 metaitem.circuit.mainframe.micro.tooltip=§b§oIV Circuit
 metaitem.circuit.computer.nano.name=Nano Computer
@@ -285,7 +295,7 @@ metaitem.circuit.assembly.quantum.tooltip=§b§oIV Circuit
 metaitem.circuit.processor.crystal.name=Crystal Processor
 metaitem.circuit.processor.crystal.tooltip=§b§oIV Circuit
 
-//Luv
+#//Luv
 metaitem.circuit.mainframe.nano.name=Nano Mainframe
 metaitem.circuit.mainframe.nano.tooltip=§b§oLuV Circuit
 metaitem.circuit.computer.quantum.name=Quantum Computer
@@ -295,7 +305,7 @@ metaitem.circuit.energy_flow.tooltip=§b§oLuV Circuit
 metaitem.circuit.wetware_processor.name=Wetware Processor
 metaitem.circuit.wetware_processor.tooltip=§b§oLuV Circuit
 
-//ZPM
+#//ZPM
 metaitem.circuit.mainframe.quantum.name=Quantum Mainframe
 metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM Circuit
 metaitem.circuit.computer.crystal.name=Crystal Computer
@@ -303,18 +313,18 @@ metaitem.circuit.computer.crystal.tooltip=§b§oZPM Circuit
 metaitem.circuit.wetware_assembly.name=Wetware Assembly
 metaitem.circuit.wetware_assembly.tooltip=§b§oZPM Circuit
 
-//UV
+#//UV
 metaitem.circuit.mainframe.crystal.name=Crystal Mainframe
 metaitem.circuit.mainframe.crystal.tooltip=§b§oUV Circuit
 metaitem.circuit.wetware_super_computer.name=Wetware Computer
 metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
 
-//MAX
+#//MAX
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
 metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
 
 
-//magneto resonatic
+#//magneto resonatic
 metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
 metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
@@ -1285,6 +1295,8 @@ material.mendelevium263=Mendelevium 263
 material.hydrogen_fluoride=Hydrogen Fluoride
 material.abyssal_alloy=Abyssal Alloy
 material.organic_fertilizer=Organic Fertilizer
+material.uv_superconductor_base=UV Superconductor Base
+material.uv_superconductor=UV Superconductor
 
 
 
@@ -1499,18 +1511,6 @@ fluid.tile.lava=Lava
 gregtech.machine.assembler.iv.name=Assembler IV
 gregtech.machine.autoclave.iv.name=Autoclave IV
 gregtech.machine.laser_engraver.iv.name=Laser Engraver IV
-
-metaitem.plank.jungle.name=Jungle Plank
-metaitem.plank.acacia.name=Acacia Plank
-metaitem.plank.darkoak.name=Dark Oak Plank
-metaitem.plank.birch.name=Birch Plank
-metaitem.plank.spruce.name=Spruce Plank
-metaitem.plank.oak.name=Oak Plank
-metaitem.compressed.coke.clay.name=Compressed Coke Clay
-metaitem.schematic.dust.name=Schematic (Dust)
-metaitem.schematic.3by3.name=Schematic (3x3)
-metaitem.schematic.2by2.name=Schematic (2x2)
-metaitem.schematic.name=Blank Schematic
 
 
 item.gtadditions:comb.lignite.name=Lignite Comb
