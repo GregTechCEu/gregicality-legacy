@@ -173,6 +173,8 @@ public class GAMetaItem extends MaterialMetaItem {
         BOULE_EUROPIUM = addItem(341, "boule.europium");
         BOULE_NEUTRONIUM = addItem(342, "boule.neutronium");
 
+        UNSTABLE_STAR = addItem(343, "unstable.star");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;
@@ -221,5 +223,10 @@ public class GAMetaItem extends MaterialMetaItem {
     @Override
     public ItemStack getContainerItem(ItemStack stack) {
         return stack.copy();
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack itemStack) {
+        return super.hasEffect(itemStack) || itemStack.getMetadata() == UNSTABLE_STAR.getStackForm().getMetadata();
     }
 }
