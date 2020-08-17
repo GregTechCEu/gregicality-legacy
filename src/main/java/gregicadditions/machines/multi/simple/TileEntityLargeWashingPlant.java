@@ -2,7 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
@@ -101,7 +100,7 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
     }
 
 

@@ -14,7 +14,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
@@ -37,7 +36,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static gregicadditions.GAMaterials.Grisium;
 import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -102,7 +100,7 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
     }
 
     @Override

@@ -2,8 +2,6 @@ package gregicadditions.machines.multi.advance;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.MultiRecipesTrait;
@@ -26,15 +24,12 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,7 +39,6 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.BabbittAlloy;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
@@ -116,7 +110,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
         textList.add(new TextComponentTranslation("gregtech.multiblock.advanced_distillation_tower.multiplier", ((AdvancedDistillationRecipeLogic) (this.recipeMapWorkable)).multiplier));
     }
 

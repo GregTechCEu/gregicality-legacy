@@ -176,7 +176,7 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
                 textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.produce").setStyle(new Style().setColor(TextFormatting.GREEN)));
             }
             if (coolant != null)
-                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant", coolant.getLocalizedName(), hotCoolant.getTemperature() - 273));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant", new TextComponentTranslation(coolant.getUnlocalizedName()), hotCoolant.getTemperature() - 273));
             if (overheat) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
             }
