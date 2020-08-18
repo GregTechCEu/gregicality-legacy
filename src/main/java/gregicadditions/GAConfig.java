@@ -368,7 +368,7 @@ public class GAConfig {
         public boolean steamEfficiency = true;
 
         @Config.Comment("Whether or not to add diminishing returns for GTCE Gas Turbines")
-        @Config.Name("Steam Turbine efficiency loss")
+        @Config.Name("Gas Turbine efficiency loss")
         @Config.RequiresMcRestart
         public boolean gasEfficiency = true;
 
@@ -376,6 +376,13 @@ public class GAConfig {
         @Config.Name("Rocket Engine efficiency loss")
         @Config.RequiresMcRestart
         public boolean rocketEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for Gregicality Naquadah Reactors. Does not affect the Large Nauqadah Reactor")
+        @Config.Name("Naquadah Reactor efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean naqEfficieny = true;
+
+
 
     }
 
