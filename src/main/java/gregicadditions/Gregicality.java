@@ -2,7 +2,9 @@ package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
+import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
+import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
@@ -16,6 +18,7 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -38,7 +41,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.util.function.Function;
+
+import static gregicadditions.item.GAMetaBlocks.GA_ORES;
 
 @Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
         dependencies = "required-after:gregtech;" +
@@ -56,6 +62,7 @@ public class Gregicality {
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
             GAMetalCasingBlockFactory.init();
+            GAOreBlockFactory.init();
         }
     }
 
@@ -102,7 +109,7 @@ public class Gregicality {
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event) throws IOException {
         proxy.onLoad();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
             forestryProxy.init();
@@ -131,6 +138,7 @@ public class Gregicality {
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
         registry.register(GAMetaBlocks.CELL_CASING);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
+        GA_ORES.forEach(registry::register);
     }
 
     @SubscribeEvent
@@ -144,11 +152,16 @@ public class Gregicality {
                 .stream().distinct()
                 .map(block -> createItemBlock(block, GAMetalCasingItemBlock::new))
                 .forEach(registry::register);
+
+        GA_ORES.stream()
+                .map(block -> createItemBlock(block, GAOreItemBlock::new))
+                .forEach(registry::register);
     }
 
     @SubscribeEvent
     public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.register();
+        OreRecipeHandler.register();
         GARecipeAddition.init();
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
@@ -162,6 +175,7 @@ public class Gregicality {
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
         }
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -177,7 +191,13 @@ public class Gregicality {
         RecipeHandler.registerAlloyBlastRecipes();
         RecipeHandler.registerChemicalPlantRecipes();
         RecipeHandler.registerGreenHouseRecipes();
+        RecipeHandler.registerLargeCentrifugeRecipes();
         VoidMinerOres.init();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerLateRecipes(RegistryEvent.Register<IRecipe> event) {
+        GAMachineRecipeRemoval.init2();
     }
 
 

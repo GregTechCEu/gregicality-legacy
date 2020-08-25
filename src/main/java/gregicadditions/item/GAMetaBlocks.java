@@ -1,14 +1,19 @@
 package gregicadditions.item;
 
+import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.ore.StoneType;
+import gregtech.common.ClientProxy;
+import gregtech.common.blocks.BlockOre;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
@@ -23,16 +28,17 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregicadditions.ClientProxy.METAL_CASING_BLOCK_COLOR;
 import static gregicadditions.ClientProxy.METAL_CASING_ITEM_COLOR;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
+import static gregicadditions.ClientProxy.ORE_BLOCK_COLOR;
+import static gregicadditions.ClientProxy.ORE_ITEM_COLOR;
 
 public class GAMetaBlocks {
 
@@ -44,7 +50,15 @@ public class GAMetaBlocks {
 
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
+    public static Collection<GABlockOre> GA_ORES = new HashSet<>();
+
+
     public static void init() {
+        for (Material mat : Material.MATERIAL_REGISTRY) {
+            if (mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
+                createOreBlock((DustMaterial) mat);
+            }
+        }
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
 
@@ -71,6 +85,39 @@ public class GAMetaBlocks {
 
     }
 
+    private static void createOreBlock(DustMaterial material) {
+        StoneType[] stoneTypeBuffer = new StoneType[16];
+        int generationIndex = 0;
+        for (StoneType stoneType : StoneType.STONE_TYPE_REGISTRY) {
+            int id = StoneType.STONE_TYPE_REGISTRY.getIDForObject(stoneType), index = id / 16;
+            if (index > generationIndex) {
+                createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+                Arrays.fill(stoneTypeBuffer, null);
+            }
+            stoneTypeBuffer[id % 16] = stoneType;
+            generationIndex = index;
+        }
+        createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+    }
+
+    private static <T> T[] copyNotNull(T[] src) {
+        int nullIndex = ArrayUtils.indexOf(src, null);
+        return Arrays.copyOfRange(src, 0, nullIndex == -1 ? src.length : nullIndex);
+    }
+
+    private static void createOreBlock(DustMaterial material, StoneType[] stoneTypes, int index) {
+
+        String[] orePrefixes = {"Rich", "Poor", "Pure"};
+
+        for (String orePrefix : orePrefixes) {
+            GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.valueOf("ore" + orePrefix));
+            block.setRegistryName("gregtech:" + orePrefix.toLowerCase() + "_ore_" + material + "_" + index);
+            block.setTranslationKey(orePrefix.toLowerCase() + "_ore_block");
+            GA_ORES.add(block);
+        }
+
+    }
+
 
     public static IBlockState getCompressedFromMaterial(Material material) {
         if (MetaBlocks.COMPRESSED.get(material) == null) {
@@ -86,6 +133,7 @@ public class GAMetaBlocks {
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
+        GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }
 
     @SideOnly(Side.CLIENT)
@@ -106,6 +154,11 @@ public class GAMetaBlocks {
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler(METAL_CASING_ITEM_COLOR, block);
         });
 
+        GAMetaBlocks.GA_ORES.stream().distinct().forEach(block -> {
+            Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(ORE_BLOCK_COLOR, block);
+            Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ORE_ITEM_COLOR, block);
+        });
+
     }
 
     public static void registerOreDict() {
@@ -116,7 +169,18 @@ public class GAMetaBlocks {
             OreDictUnifier.registerOre(itemStack, OrePrefix.valueOf("gtMetalCasing"), material);
         }
 
+        for (GABlockOre blockOre : GA_ORES) {
+            DustMaterial mat = blockOre.material;
+            for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
+                ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
+                OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.getOrePrefix() :
+                        OrePrefix.valueOf(blockOre.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
+                OreDictUnifier.registerOre(normalStack, orePrefix , mat);
+            }
+        }
     }
+
+
 
     public static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {
         StringBuilder stringbuilder = new StringBuilder();

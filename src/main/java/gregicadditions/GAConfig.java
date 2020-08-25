@@ -35,7 +35,7 @@ public class GAConfig {
 
         @Config.Comment("Set this to false to disable Drums")
         @Config.Name("Should Drums be registered?")
-        public boolean registerDums = true;
+        public boolean registerDrums = true;
 
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
@@ -106,8 +106,6 @@ public class GAConfig {
         public boolean highTierChemicalBaths = true;
         @Config.Name("Should higher tier Chemical Reactors be registered?")
         public boolean highTierChemicalReactors = true;
-        @Config.Name("Should higher tier Circuit Assembling Machines be registered?")
-        public boolean highTierCircuitAssemblers = true;
         @Config.Name("Should higher tier Compressors be registered?")
         public boolean highTierCompressors = true;
         @Config.Name("Should higher tier Cutting Machines be registered?")
@@ -178,6 +176,8 @@ public class GAConfig {
         public boolean highTierDecayChamber = true;
         @Config.Name("Should higher tier Green House be registered?")
         public boolean highTierGreenHouse = true;
+        @Config.Name("Should higher tier world accelerator be registered?")
+        public boolean highTierWorldAccelerator = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
         @Config.Name("Batteries - Enable an extra ZPM and UV Battery (this also makes the Ultimate Battery harder to make)")
@@ -215,22 +215,38 @@ public class GAConfig {
     public static class GregsConstruct {
 
         @Config.Comment("Enable/Disable all GregsConstruct features")
+        @Config.Name("Enable Greg's Construct")
+        @Config.RequiresMcRestart
         public boolean EnableGregsConstruct = true;
 
         @Config.Comment("Add Tools with GT Metals to Tinkers")
+        @Config.Name("Tinker's metal tools")
+        @Config.RequiresMcRestart
         public boolean TinkersMetalTools = true;
 
         @Config.Comment("Add Tools with GT Gems to Tinkers")
+        @Config.Name("Tinker's gem tools")
+        @Config.RequiresMcRestart
         public boolean TinkersGemTools = true;
 
         @Config.Comment("Add Smelting for GT Materials to Tinkers Smeltery")
+        @Config.Name("Tinker's material smelting")
+        @Config.RequiresMcRestart
         public boolean TinkersMaterialsSmelting = true;
 
         @Config.Comment("Add Alloying of GT Materials to Tinkers Smeltery")
+        @Config.Name("Tinker's material alloying")
+        @Config.RequiresMcRestart
         public boolean TinkersMaterialAlloying = true;
 
         @Config.Comment("Enable Glass recipe changes")
+        @Config.Name("Greg's Construct glass processing")
+        @Config.RequiresMcRestart
         public boolean GregsConstructGlassProcessing = true;
+
+        @Config.Comment("Whether or not to register fluid solidification recipes for parts")
+        @Config.Name("Fluid solidification recipes for parts")
+        public boolean castingRecipes = true;
     }
 
     @Config.Comment("Config options for Energy Converter features")
@@ -324,6 +340,50 @@ public class GAConfig {
         @Config.Name("UU-Matter ore tripling")
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
+
+
+        @Config.Comment("Remove the standard electrolyzer recipes of Scheelite and Tungstate and add a more complex chemical purification process")
+        @Config.Name("Tungsten Purification Process")
+        @Config.RequiresMcRestart
+        public boolean tungstenProcess = true;
+
+        @Config.Comment("Assembly line can make LV to IV components cheaper (Motor, Pump, Conveyor, Piston, etc)")
+        @Config.Name("Assembly Line make cheaper components")
+        @Config.RequiresMcRestart
+        public boolean assemblyLineMakeCheaperComponents = true;
+
+        @Config.Comment("Assembler can make components (Motor, Pump, Conveyor, Piston, etc)")
+        @Config.Name("Assembler can make components")
+        @Config.RequiresMcRestart
+        public boolean assemblerCanMakeComponents = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Diesel Generators")
+        @Config.Name("Diesel Generator efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean dieselEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Steam Turbines")
+        @Config.Name("Steam Turbine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean steamEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for GTCE Gas Turbines")
+        @Config.Name("Gas Turbine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean gasEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for Gregicality Rocket Engines. Does not affect the Large Rocket Engine")
+        @Config.Name("Rocket Engine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean rocketEfficiency = true;
+
+        @Config.Comment("Whether or not to add diminishing returns for Gregicality Naquadah Reactors. Does not affect the Large Nauqadah Reactor")
+        @Config.Name("Naquadah Reactor efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean naqEfficieny = true;
+
+
+
     }
 
     public static Multis multis = new Multis();
@@ -350,6 +410,16 @@ public class GAConfig {
         public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
         public LargeWiremill largeWiremill = new LargeWiremill();
+        public BatteryTower batteryTower = new BatteryTower();
+
+
+        public static class BatteryTower {
+            @Config.Comment("The base amount of energy a battery cell will hold. This is the amount the HV will hold, each tier above is multiplied by 4.")
+            @Config.Name("Battery Tower cell base energy storage")
+            @Config.RangeInt(min = 1)
+            @Config.RequiresMcRestart
+            public int baseCellCapacity = 25000000;
+        }
 
         public static class DistillationTower {
             @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a Distillation Tower recipe.")
@@ -828,6 +898,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Void Miner max temperature")
             public int maxTemp = 9000;
+
+            @Config.Comment("Whether or not to add all ore variants to the Void Miner's ore table. If false only the first ore in the material's ore dictionary will be added.")
+            @Config.RequiresMcRestart
+            @Config.Name("Void miner ore variants")
+            public boolean oreVariants = true;
         }
 
         public static class LargeMiner {
@@ -874,11 +949,11 @@ public class GAConfig {
             @Config.Comment("The duration percentage of a recipe when done in the Volcanus.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
-            @Config.Name("Volcanus recipe duration decrease percentage")
+            @Config.Name("Volcanus recipe duration decrease factor")
             public int durationDecreasePercentage = 33;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
-            @Config.RangeDouble(min = 1, max = 100)
+            @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
             public int energyDecreasePercentage = 80;
@@ -895,7 +970,7 @@ public class GAConfig {
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
-            @Config.Name("Cryogenic Freezer duration decrease percentage")
+            @Config.Name("Cryogenic Freezer duration decrease factor")
             public int durationDecreasePercentage = 50;
 
         }

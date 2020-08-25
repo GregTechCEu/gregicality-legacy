@@ -29,6 +29,9 @@ metaitem.boule.glowstone.name=Glowstone doped Monocrystalline Silicon Boule
 metaitem.boule.glowstone.tooltip=Raw Circuit
 metaitem.boule.naquadah.name=Naquadah doped Monocrystalline Silicon Boule
 metaitem.boule.naquadah.tooltip=Raw Circuit
+metaitem.boule.europium.name=Europium doped Monocrystalline Silicon Boule
+metaitem.boule.americium.name=Americium doped Monocrystalline Silicon Boule
+metaitem.boule.neutronium.name=Neutronium doped Monocrystalline Silicon Boule
 metaitem.brick.coke.name=Coke Oven Brick
 metaitem.brick.fireclay.name=Firebrick
 metaitem.credit.darmstadtium.name=Neutronium Credit
@@ -45,13 +48,9 @@ metaitem.component.resistor.name=Resistor
 metaitem.component.resistor.tooltip=Basic Electronic Component
 metaitem.component.small.coil.name=Small Coil
 metaitem.component.small.coil.tooltip=Basic Electronic Component
-metaitem.component.smd.capacitor.name=SMD Capacitor
 metaitem.component.smd.capacitor.tooltip=Electronic Component
-metaitem.component.smd.diode.name=SMD Diode
 metaitem.component.smd.diode.tooltip=Electronic Component
-metaitem.component.smd.resistor.name=SMD Resistor
 metaitem.component.smd.resistor.tooltip=Electronic Component
-metaitem.component.smd.transistor.name=SMD Transistor
 metaitem.component.smd.transistor.tooltip=Electronic Component
 metaitem.component.transistor.name=Transistor
 metaitem.component.transistor.tooltip=Basic Electronic Component
@@ -80,6 +79,9 @@ metaitem.plate.ram.name=Random Access Memory Chip
 metaitem.plate.ram.tooltip=Integrated Circuit
 metaitem.plate.soc.name=SoC
 metaitem.plate.soc.tooltip=System on a Chip
+metaitem.wafer.americium.name=Americium doped Wafer
+metaitem.wafer.neutronium.name=Neutronium doped Wafer
+metaitem.wafer.europium.name=Europium doped Wafer
 metaitem.wafer.asoc.name=ASoC Wafer
 metaitem.wafer.asoc.tooltip=Raw Circuit
 metaitem.wafer.circuit.name=Integrated Logic Circuit (Wafer)
@@ -208,6 +210,7 @@ metaitem.component.smd.capacitor.name=Micro SMD Capacitor
 metaitem.component.smd.transistor.name=Micro SMD Transistor
 metaitem.component.smd.resistor.name=Micro SMD Resistor
 
+
 metaitem.hand_pump.name=Hand Pump
 
 metaitem.waste.nuclear.name=%s Waste
@@ -227,9 +230,23 @@ metaitem.nuclear.dust.nitrate.name=%s Nitrate Dust
 metaitem.nuclear.dust.hexafluoride.name=%s Hexafluoride Dust
 
 
-/////////////////////CIRCUIT///////////////////////////
+metaitem.plank.jungle.name=Jungle Plank
+metaitem.plank.acacia.name=Acacia Plank
+metaitem.plank.darkoak.name=Dark Oak Plank
+metaitem.plank.birch.name=Birch Plank
+metaitem.plank.spruce.name=Spruce Plank
+metaitem.plank.oak.name=Oak Plank
+metaitem.compressed.coke.clay.name=Compressed Coke Clay
+metaitem.schematic.dust.name=Schematic (Dust)
+metaitem.schematic.3by3.name=Schematic (3x3)
+metaitem.schematic.2by2.name=Schematic (2x2)
+metaitem.schematic.name=Blank Schematic
 
-//LV
+metaitem.unstable.star.name=Unstable Star
+
+#/////////////////////CIRCUIT///////////////////////////
+
+#//LV
 metaitem.circuit.basic.name=Primitive Processor
 metaitem.circuit.basic.tooltip=§b§oLV Circuit
 metaitem.circuit.processor.refined.name=Refined Processor
@@ -237,7 +254,7 @@ metaitem.circuit.processor.refined.tooltip=§b§oLV Circuit
 metaitem.circuit.basic_electronic.name=Electronic Processor
 metaitem.circuit.basic_electronic.tooltip=§b§oLV Circuit
 
-//MV
+#//MV
 metaitem.circuit.assembly.primitive.name=Primitive Assembly
 metaitem.circuit.assembly.primitive.tooltip=§b§oMV Circuit
 metaitem.circuit.assembly.electronic.name=Electronic Assembly
@@ -247,7 +264,7 @@ metaitem.circuit.assembly.refined.tooltip=§b§oMV Circuit
 metaitem.circuit.processor.micro.name=Micro Processor
 metaitem.circuit.processor.micro.tooltip=§b§oMV Circuit
 
-//HV
+#//HV
 metaitem.circuit.computer.electronic.name=Electronic Computer
 metaitem.circuit.computer.electronic.tooltip=§b§oHV Circuit
 metaitem.circuit.computer.refined.name=Refined Computer
@@ -258,7 +275,7 @@ metaitem.circuit.nano_processor.name=Nano Processor
 metaitem.circuit.nano_processor.tooltip=§b§oHV Circuit
 
 
-//EV
+#//EV
 metaitem.circuit.mainframe.refined.name=Refined Mainframe
 metaitem.circuit.mainframe.refined.tooltip=§b§oEV Circuit
 metaitem.circuit.computer.micro.name=Micro Computer
@@ -268,7 +285,7 @@ metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV Circuit
 metaitem.circuit.quantum_processor.name=Quantum Processor
 metaitem.circuit.quantum_processor.tooltip=§b§oEV Circuit
 
-//IV
+#//IV
 metaitem.circuit.mainframe.micro.name=Micro Mainframe
 metaitem.circuit.mainframe.micro.tooltip=§b§oIV Circuit
 metaitem.circuit.computer.nano.name=Nano Computer
@@ -278,7 +295,7 @@ metaitem.circuit.assembly.quantum.tooltip=§b§oIV Circuit
 metaitem.circuit.processor.crystal.name=Crystal Processor
 metaitem.circuit.processor.crystal.tooltip=§b§oIV Circuit
 
-//Luv
+#//Luv
 metaitem.circuit.mainframe.nano.name=Nano Mainframe
 metaitem.circuit.mainframe.nano.tooltip=§b§oLuV Circuit
 metaitem.circuit.computer.quantum.name=Quantum Computer
@@ -288,7 +305,7 @@ metaitem.circuit.energy_flow.tooltip=§b§oLuV Circuit
 metaitem.circuit.wetware_processor.name=Wetware Processor
 metaitem.circuit.wetware_processor.tooltip=§b§oLuV Circuit
 
-//ZPM
+#//ZPM
 metaitem.circuit.mainframe.quantum.name=Quantum Mainframe
 metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM Circuit
 metaitem.circuit.computer.crystal.name=Crystal Computer
@@ -296,18 +313,18 @@ metaitem.circuit.computer.crystal.tooltip=§b§oZPM Circuit
 metaitem.circuit.wetware_assembly.name=Wetware Assembly
 metaitem.circuit.wetware_assembly.tooltip=§b§oZPM Circuit
 
-//UV
+#//UV
 metaitem.circuit.mainframe.crystal.name=Crystal Mainframe
 metaitem.circuit.mainframe.crystal.tooltip=§b§oUV Circuit
 metaitem.circuit.wetware_super_computer.name=Wetware Computer
 metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
 
-//MAX
+#//MAX
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
 metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
 
 
-//magneto resonatic
+#//magneto resonatic
 metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
 metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
@@ -329,7 +346,13 @@ metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
 metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
 
-///////////////////////////////////////////////////////
+##cosmic
+metaitem.circuit.circuit.cosmic.name=Cosmic Circuit
+metaitem.circuit.processor.cosmic.name=Cosmic Processor
+metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
+metaitem.circuit.mainframe.cosmic.name=Cosmic Computer
+
+####################################################################
 
 
 metaarmor.nms.nightvision.enabled=NanoMuscle™ Suite: NightVision enabled
@@ -715,6 +738,17 @@ gtadditions.machine.rotor_holder.luv.name=Hot Coolant Rotor Holder (LuV)
 gtadditions.machine.rotor_holder.zpm.name=Hot Coolant Rotor Holder (ZPM)
 gtadditions.machine.rotor_holder.uv.name=Hot Coolant Rotor Holder (UV)
 gtadditions.machine.rotor_holder.max.name=Hot Coolant Rotor Holder (MAX)
+
+gtadditions.machine.fluid_hatch.export_filtered.ulv.name=Filtered Output Hatch (ULV)
+gtadditions.machine.fluid_hatch.export_filtered.lv.name=Filtered Output Hatch (LV)
+gtadditions.machine.fluid_hatch.export_filtered.mv.name=Filtered Output Hatch (MV)
+gtadditions.machine.fluid_hatch.export_filtered.hv.name=Filtered Output Hatch (HV)
+gtadditions.machine.fluid_hatch.export_filtered.ev.name=Filtered Output Hatch (EV)
+gtadditions.machine.fluid_hatch.export_filtered.iv.name=Filtered Output Hatch (IV)
+gtadditions.machine.fluid_hatch.export_filtered.luv.name=Filtered Output Hatch (LuV)
+gtadditions.machine.fluid_hatch.export_filtered.zpm.name=Filtered Output Hatch (ZPM)
+gtadditions.machine.fluid_hatch.export_filtered.uv.name=Filtered Output Hatch (UV)
+gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
@@ -1261,6 +1295,8 @@ material.mendelevium263=Mendelevium 263
 material.hydrogen_fluoride=Hydrogen Fluoride
 material.abyssal_alloy=Abyssal Alloy
 material.organic_fertilizer=Organic Fertilizer
+material.uv_superconductor_base=UV Superconductor Base
+material.uv_superconductor=UV Superconductor
 
 
 
@@ -1387,7 +1423,15 @@ gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Naquadria react with Potassium Plasma and Produce 10UV/t.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Some Naquadah fuels react with Potassium Plasma and Produce more than 1UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.3=Medium Naquadah Fuel => 1UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.4=Heavy Naquadah Fuel => 2UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.5=Medium Enriched Naquadah Fuel => 2UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.6=Heavy Enriched Naquadah Fuel => 3UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.7=Hyper Fuel I => 5UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.8=Hyper Fuel II => 8UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.9=Hyper Fuel III => 12UV.
+
 gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
 gtadditions.multiblock.battery_tower.tooltip.2=All the cells in the tower need to be of the same tier and the tower will drain 10%% of the cells voltage per tick.
 gtadditions.multiblock.battery_tower.tooltip.3=The input/output hatches can not be of a higher tier than the tier of the cells.
@@ -1422,6 +1466,11 @@ gregtech.multiblock.nuclear_reactor.coolant=Coolant: %s Min Temp: %dC
 gregtech.multiblock.nuclear_reactor.base_heat=Heat Produce: %d C/sec
 gregtech.multiblock.nuclear_reactor.rod_type=Rod Heat Factor: %d%%
 gregtech.multiblock.nuclear_reactor.produce=Produce Hot Coolant !
+gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
+gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
+gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
+gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
+
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot
@@ -1462,18 +1511,6 @@ fluid.tile.lava=Lava
 gregtech.machine.assembler.iv.name=Assembler IV
 gregtech.machine.autoclave.iv.name=Autoclave IV
 gregtech.machine.laser_engraver.iv.name=Laser Engraver IV
-
-metaitem.plank.jungle.name=Jungle Plank
-metaitem.plank.acacia.name=Acacia Plank
-metaitem.plank.darkoak.name=Dark Oak Plank
-metaitem.plank.birch.name=Birch Plank
-metaitem.plank.spruce.name=Spruce Plank
-metaitem.plank.oak.name=Oak Plank
-metaitem.compressed.coke.clay.name=Compressed Coke Clay
-metaitem.schematic.dust.name=Schematic (Dust)
-metaitem.schematic.3by3.name=Schematic (3x3)
-metaitem.schematic.2by2.name=Schematic (2x2)
-metaitem.schematic.name=Blank Schematic
 
 
 item.gtadditions:comb.lignite.name=Lignite Comb
@@ -1610,6 +1647,11 @@ material.bismuth_tellurite=Bismuth Tellurite
 material.circuit_compound_mkc=Circuit Compound MK3
 material.yttrium_oxide=Yttrium Oxide
 material.enderium=Enderium
+material.calcium_tungstate=Calcium Tungstate
+material.sodium_tungstate=Sodium Tungstate
+material.tungstic_acid=Tungstic Acid
+material.tungsten_trioxide=Tungsten Trioxide
+material.tungsten_hexachloride=Tungsten Hexachloride
 
 
 
@@ -1730,6 +1772,35 @@ item.material.oreprefix.oreChunk=%s Ore Chunk
 item.material.oreprefix.oreNetherChunk=%s Ore Chunk
 item.material.oreprefix.oreEnderChunk=%s Ore Chunk
 item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
+item.material.oreprefix.oreDense=Dense %s Ore
+
+item.material.oreprefix.oreRich=Rich %s Ore
+item.material.oreprefix.oreRichBlackgranite=Rich Granite %s Ore
+item.material.oreprefix.oreRichRedgranite=Rich Granite %s Ore
+item.material.oreprefix.oreRichMarble=Rich Marble %s Ore
+item.material.oreprefix.oreRichBasalt=Rich Basalt %s Ore
+item.material.oreprefix.oreRichSand=Rich Sand %s Ore
+item.material.oreprefix.oreRichGravel=Rich Gravel %s Ore
+item.material.oreprefix.oreRichNetherrack=Rich Nether %s Ore
+item.material.oreprefix.oreRichEndstone=Rich End %s Ore
+item.material.oreprefix.orePoor=Poor %s Ore
+item.material.oreprefix.orePoorBlackgranite=Poor Granite %s Ore
+item.material.oreprefix.orePoorRedgranite=Poor Granite %s Ore
+item.material.oreprefix.orePoorMarble=Poor Marble %s Ore
+item.material.oreprefix.orePoorBasalt=Poor Basalt %s Ore
+item.material.oreprefix.orePoorSand=Poor Sand %s Ore
+item.material.oreprefix.orePoorGravel=Poor Gravel %s Ore
+item.material.oreprefix.orePoorNetherrack=Poor Nether %s Ore
+item.material.oreprefix.orePoorEndstone=Poor End %s Ore
+item.material.oreprefix.orePure=Pure %s Ore
+item.material.oreprefix.orePureBlackgranite=Pure Granite %s Ore
+item.material.oreprefix.orePureRedgranite=Pure Granite %s Ore
+item.material.oreprefix.orePureMarble=Pure Marble %s Ore
+item.material.oreprefix.orePureBasalt=Pure Basalt %s Ore
+item.material.oreprefix.orePureSand=Pure Sand %s Ore
+item.material.oreprefix.orePureGravel=Pure Gravel %s Ore
+item.material.oreprefix.orePureNetherrack=Pure Nether %s Ore
+item.material.oreprefix.orePureEndstone=Pure End %s Ore
 
 item.material.oreprefix.seed=%s Seed
 item.material.oreprefix.essence=%s Essence
@@ -1884,7 +1955,84 @@ gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (
 gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
 
+metaitem.auric_fluoride.name=Auric Fluoride Dust
+metaitem.naquadria_concentrate.name=Naquadria Concentrate Dust
+metaitem.enriched_naquadah_concentrate.name=Enriched Naquadah Concentrate Dust
+metaitem.naquadah_concentrate.name=Naquadah Concentrate Dust
+metaitem.indium_trioxide.name=Indium Trioxide Dust
+metaitem.indium_trifluoride.name=Indium Trifluoride Dust
+metaitem.antimony_trifluoride.name=Antimony Trifluoride Dust
 
+fluid.naquadric_solution=Naquadric Solution
+fluid.enriched_naquadric_solution=Enriched Naquadric Solution
+fluid.naquadriatic_solution=Naquadriatic Solution
+fluid.antimony_pentafluoride=Antimony Pentafluoride
+fluid.fluoroantimonic_acid=Fluoroantimonic Acid
+fluid.fluoronaquadric_acid=Fluoronaquadric Acid
+fluid.fluoronaquadriatic_acid=Fluoronaquadriatic Acid
+fluid.enriched_fluoronaquadric_acid=Enriched Fluoronaquadric Acid
+fluid.naquadah_difluoride=Naquadah Difluoride
+fluid.naquadria_difluoride=Naquadria Difluoride
+fluid.enriched_naquadah_difluoride=Enriched Naquadah Difluoride
+fluid.naquadria_hexafluoride=Naquadria Hexafluoride
+fluid.radon_difluoride=Radon Difluoride
+fluid.radon_naquadriaoctafluoride=Radon Naquadriaoctafluoride
+fluid.xenon_trioxide=Xenon Trioxide
+fluid.cesium_fluoride=Cesium Fluoride
+fluid.cesium_xenontrioxide_fluoride=Cesium Xenontrioxide Fluoride
+fluid.radon_trioxide=Radon Trioxide
+fluid.naquadria_cesium_xenon_nonfluoride=Naqudria-Cesium-Xenonnonfluoride
+fluid.nitrosyl_fluoride=Nitrosyl Fluoride
+fluid.nitrosonium_octafluoroxenate=Nitrosonium Octafluoroxenate
+fluid.naquadria_cesiumfluoride=Naquadria Cesiumfluoride
+fluid.enriched_naquadahhexafluoride=Enriched Naquadahhexafluoride
+fluid.enriched_xenon_hexafluoronaquadate=Enriched Xenon Hexafluoronaquadate
+fluid.auric_chloride=Auric Chloride
+fluid.bromine_trifluoride=Bromine Trifluoride
+fluid.auric_fluoride=Auric Fluoride
+fluid.xenoauric_fluoroantimonic_acid=Xenoauric Fluoroantimonic Acid
+fluid.naquadah_sulfate=Naquadah Sulfate
+fluid.naquadah_solution= Naquadah Solution
+fluid.clear_naquadah_liquid=Clear Naquadah Liquid
+fluid.complicated_naquadah_gas=Complicated Naquadah Gas
+fluid.complicated_heavy_naquadah=Complicated Heavy Naquadah
+fluid.complicated_medium_naquadah=Complicated Medium Naquadah
+fluid.complicated_light_naquadah=Complicated Light Naquadah
+fluid.naquadah_gas=Naquadah Gas
+fluid.light_naquadah=Light Naquadah
+fluid.medium_naquadah=Medium Naquadah
+fluid.heavy_naquadah=Heavy Naquadah
+fluid.fl_cracked_light_naquadah=Fluorine-Cracked Light Naquadah
+fluid.fl_cracked_medium_naquadah=Fluorine-Cracked Medium Naquadah
+fluid.fl_cracked_heavy_naquadah=Fluorine-Cracked Heavy Naquadah
+fluid.light_naquadah_fuel=Light Naquadah Fuel
+fluid.medium_naquadah_fuel=Medium Naquadah Fuel
+fluid.heavy_naquadah_fuel=Heavy Naquadah Fuel
+fluid.ammonia_nitrate=Ammonia Nitrate
+fluid.e_naquadah_solution=Enriched Naquadah Solution
+fluid.clear_e_naquadah_liquid=Clear Enriched Naquadah Liquid
+fluid.complicated_heavy_e_naquadah=Complicated Heavy Enriched Naquadah
+fluid.complicated_medium_e_naquadah=Complicated Medium Enriched Naquadah
+fluid.complicated_light_e_naquadah=Complicated Light Enriched Naquadah
+fluid.light_e_naquadah=Light Enriched Naquadah
+fluid.medium_e_naquadah=Medium Enriched Naquadah
+fluid.heavy_e_naquadah=Heavy Enriched Naquadah
+fluid.rn_cracked_light_e_naquadah=Radon-Cracked Light Enriched Naquadah
+fluid.rn_cracked_medium_e_naquadah=Radon-Cracked Medium Enriched Naquadah
+fluid.rn_cracked_heavy_e_naquadah=Radon-Cracked Heavy Enriched Naquadah
+fluid.light_e_naquadah_fuel=Light Enriched Naquadah Fuel
+fluid.medium_e_naquadah_fuel=Medium Enriched Naquadah Fuel
+fluid.heavy_e_naquadah_fuel=Heavy Enriched Naquadah Fuel
+fluid.naquadria_solution= Naquadria Solution
+fluid.hyper_fluid_i=Hyper Fuel I
+fluid.hyper_fluid_ii=Hyper Fuel II
+fluid.hyper_fluid_iii=Hyper Fuel III
+
+material.naquadric_compound=Naquadric Compound
+material.enriched_naquadric_compound=Enriched Naquadric Compound
+material.naquadriatic_compound=Naquadriatic Compound
+
+metiatem.unstable.star.name=Unstable Star
 
 
 

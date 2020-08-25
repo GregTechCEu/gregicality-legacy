@@ -29,7 +29,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -211,12 +210,12 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
 
     @Override
     public boolean isWorkingEnabled() {
-        return isPaused;
+        return !isPaused;
     }
 
     @Override
     public void setWorkingEnabled(boolean b) {
-        isPaused = b;
+        isPaused = !b;
         getHolder().notifyBlockUpdate();
     }
 

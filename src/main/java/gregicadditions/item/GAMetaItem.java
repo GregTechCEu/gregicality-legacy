@@ -20,9 +20,8 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class GAMetaItem extends MaterialMetaItem {
-
     public GAMetaItem() {
-        super(OrePrefix.valueOf("plateCurved"), OrePrefix.valueOf("ingotDouble"), OrePrefix.valueOf("round"), OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        super(GAConfig.GT6.addCurvedPlates ? OrePrefix.valueOf("plateCurved") : null, GAConfig.GT6.addDoubleIngots ? OrePrefix.valueOf("ingotDouble") : null, GAConfig.GT6.addRounds ? OrePrefix.valueOf("round") : null, OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
@@ -161,6 +160,21 @@ public class GAMetaItem extends MaterialMetaItem {
         NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
 
 
+        WAFER_AMERICIUM = addItem(333, "wafer.americium");
+        WAFER_EUROPIUM = addItem(334, "wafer.europium");
+        WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
+
+        COSMIC_CIRCUIT = addItem(336, "circuit.circuit.cosmic");
+        COSMIC_PROCESSOR = addItem(337, "circuit.processor.cosmic");
+        COSMIC_PROCESSOR_ARRAY = addItem(338, "circuit.assembly.cosmic");
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic");
+
+        BOULE_AMERICIUM = addItem(340, "boule.americium");
+        BOULE_EUROPIUM = addItem(341, "boule.europium");
+        BOULE_NEUTRONIUM = addItem(342, "boule.neutronium");
+
+        UNSTABLE_STAR = addItem(343, "unstable.star");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;
@@ -201,10 +215,18 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
 
+
+
+
     }
 
     @Override
     public ItemStack getContainerItem(ItemStack stack) {
         return stack.copy();
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack itemStack) {
+        return super.hasEffect(itemStack) || itemStack.getMetadata() == UNSTABLE_STAR.getStackForm().getMetadata();
     }
 }

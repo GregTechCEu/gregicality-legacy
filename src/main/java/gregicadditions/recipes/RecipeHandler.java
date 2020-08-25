@@ -8,14 +8,16 @@ import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.*;
+import gregtech.api.recipes.CountableIngredient;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
@@ -56,30 +58,13 @@ public class RecipeHandler {
     };
 
     public static void register() {
-        //ore tripling
-        if (GAConfig.Misc.uuMatterOreProcessing) {
-            OrePrefix.ore.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreBasalt.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreBlackgranite.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreEndstone.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreGravel.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreNetherrack.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreMarble.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreRedgranite.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-            OrePrefix.oreSand.addProcessingHandler(DustMaterial.class, RecipeHandler::processOre);
-        }
-        //ore quad and sextupling
-        if (GAConfig.Misc.thermalCentrifugeOreProcessing) {
-            OrePrefix.crushedPurified.addProcessingHandler(DustMaterial.class, RecipeHandler::processCrushedPurified);
-        }
 
         OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
-        OrePrefix.dustImpure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
-        OrePrefix.dustPure.addProcessingHandler(DustMaterial.class, RecipeHandler::processDirtyDust);
+
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             OrePrefix.valueOf("plateCurved").addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
-        if (GAConfig.GT6.PlateDoubleIngot) {
+        if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots) {
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
         }
         valueOf("round").addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
@@ -107,21 +92,21 @@ public class RecipeHandler {
 
     }
 
-    public static void processGem(OrePrefix gemPrefix, GemMaterial material) {
-        ItemStack gemStack = OreDictUnifier.get(gemPrefix, material);
+    public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
+        ItemStack gemStack = OreDictUnifier.get(OrePrefix.gem, material);
         ItemStack tinyDarkAshStack = OreDictUnifier.get(OrePrefix.dustTiny, Materials.DarkAsh);
 
         if (!material.hasFlag(GemMaterial.MatFlags.CRYSTALLISABLE) && !material.hasFlag(Material.MatFlags.EXPLOSIVE) && !material.hasFlag(Material.MatFlags.FLAMMABLE)) {
-            removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dust, material, 4), new ItemStack(Blocks.TNT, 2));
+            removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
             ValidationResult<Recipe> result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dust, material, 4)
+                    .input(dustPrefix, material, 4)
                     .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
                     .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
                     .build();
             RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
 
             result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dust, material, 4)
+                    .input(dustPrefix, material, 4)
                     .inputs(MetaItems.DYNAMITE.getStackForm(12))
                     .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
                     .build();
@@ -145,45 +130,6 @@ public class RecipeHandler {
                         .EUt(16)
                         .buildAndRegister();
             }
-        }
-    }
-
-    public static void processCrushedPurified(OrePrefix purifiedPrefix, DustMaterial material) {
-        ItemStack crushedCentrifugedStack = OreDictUnifier.get(OrePrefix.crushedCentrifuged, material);
-        Material byproductMaterial = GTUtility.selectItemInList(1, material, material.oreByProducts, DustMaterial.class);
-        if (!crushedCentrifugedStack.isEmpty()) {
-            removeRecipesByInputs(THERMAL_CENTRIFUGE_RECIPES, OreDictUnifier.get(purifiedPrefix, material));
-            RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder()
-                    .input(purifiedPrefix, material)
-                    .outputs(GTUtility.copyAmount(2, crushedCentrifugedStack))
-                    .chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, byproductMaterial, 6), 5000, 500)
-                    .duration((int) (material.getAverageMass() * 24))
-                    .EUt(60)
-                    .buildAndRegister();
-        }
-    }
-
-    public static void processOre(OrePrefix orePrefix, DustMaterial material) {
-        DustMaterial byproductMaterial = GTUtility.selectItemInList(0, material, material.oreByProducts, DustMaterial.class);
-        ItemStack byproductStack = OreDictUnifier.get(OrePrefix.dust, byproductMaterial, 2);
-        ItemStack crushedStack = OreDictUnifier.get(OrePrefix.crushed, material.crushedInto);
-        DustMaterial smeltingMaterial = material.directSmelting == null ? material : material.directSmelting;
-        double amountOfCrushedOre = material.oreMultiplier / getPercentOfComponentInMaterial(material, smeltingMaterial);
-        crushedStack.setCount(crushedStack.getCount() * material.oreMultiplier);
-        if (!crushedStack.isEmpty()) {
-            RecipeBuilder<?> builder = CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .fluidInputs(UUMatter.getFluid((int) material.getAverageMass()))
-                    .input(orePrefix, material)
-                    .outputs(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre) * 3, crushedStack))
-                    .chancedOutput(byproductStack, 1400, 850)
-                    .duration(800).EUt(24);
-            for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials) {
-                if (secondaryMaterial.material instanceof DustMaterial) {
-                    ItemStack dustStack = OreDictUnifier.getDust(secondaryMaterial);
-                    builder.chancedOutput(dustStack, 6700, 800);
-                }
-            }
-            builder.buildAndRegister();
         }
     }
 
@@ -237,7 +183,7 @@ public class RecipeHandler {
 
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .fluidInputs(radioactiveMaterial.getFluidHexachloride(2000))
-                    .fluidInputs(HydrogenFluoride.getFluid(10000))
+                    .fluidInputs(HydrofluoricAcid.getFluid(10000))
                     .fluidOutputs(HydrochloricAcid.getFluid(10000))
                     .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
                     .buildAndRegister();
@@ -351,9 +297,6 @@ public class RecipeHandler {
                 case 8:
                 case 9:
                     RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                default:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-
             }
         }
         switch (tier) {
@@ -372,9 +315,6 @@ public class RecipeHandler {
             case 8:
             case 9:
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            default:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-
         }
 
     }
@@ -450,12 +390,6 @@ public class RecipeHandler {
         }
     }
 
-    public static void processDirtyDust(OrePrefix dustPureAndImpurePrefix, DustMaterial dustMaterial) {
-        GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES.recipeBuilder().input(dustPureAndImpurePrefix, dustMaterial)
-                .fluidInputs(Water.getFluid(100))
-                .outputs(OreDictUnifier.get(OrePrefix.dust, dustMaterial)).buildAndRegister();
-    }
-
     public static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, material, 5), OreDictUnifier.get(screw, material, 2), IntCircuitIngredient.getIntegratedCircuit(10));
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(stickLong, Titanium), OreDictUnifier.get(turbineBlade, material, 8));
@@ -515,13 +449,13 @@ public class RecipeHandler {
             return;
         }
 
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 200)).EUt(32)
+        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 1000)).EUt(32)
                 .notConsumable(OreDictUnifier.get(dustPrefix, material))
                 .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .outputs(OreDictUnifier.get(dustPrefix, material))
                 .buildAndRegister();
 
-        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 100)).EUt(32)
+        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 500)).EUt(32)
                 .inputs(OreDictUnifier.get(dustPrefix, material))
                 .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .buildAndRegister();
@@ -557,16 +491,37 @@ public class RecipeHandler {
                         .buildAndRegister());
     }
 
+    public static void registerLargeCentrifugeRecipes(){
+        CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe -> {
+            LargeRecipeBuilder builder = LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs());
+            recipe.getChancedOutputs().forEach(chanceEntry -> {
+                builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
+            });
+            builder.buildAndRegister();
+        });
+    }
+
     public static void registerLargeForgeHammerRecipes() {
-        RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe ->
-                GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
-                        .EUt(recipe.getEUt())
-                        .duration(recipe.getDuration())
-                        .fluidInputs(Lubricant.getFluid(2))
-                        .inputsIngredients(recipe.getInputs())
-                        .outputs(recipe.getOutputs())
-                        .fluidOutputs(recipe.getFluidOutputs())
-                        .buildAndRegister());
+        RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
+            LargeRecipeBuilder builder = GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(Lubricant.getFluid(2))
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs());
+            recipe.getChancedOutputs().forEach(chanceEntry -> {
+                builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
+            });
+            builder.buildAndRegister();
+        });
+        ;
     }
 
     public static void registerAlloyBlastRecipes() {
@@ -579,6 +534,7 @@ public class RecipeHandler {
 
             GARecipeMaps.LARGE_MIXER_RECIPES.getRecipeList().stream()
                     .filter(recipe -> recipe.getOutputs().size() == 1)
+                    .filter(recipe -> recipe.getFluidOutputs().size() == 0)
                     .filter(recipe -> recipe.getOutputs().get(0).isItemEqualIgnoreDurability(OreDictUnifier.get(OrePrefix.dust, ingotMaterial)))
                     .findFirst()
                     .ifPresent(recipe -> {
@@ -638,7 +594,12 @@ public class RecipeHandler {
 
 
         Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
+
             String oreName = name.substring(4);
+
+            if (oreName.length() <= 0) {
+                return;
+            }
             String seedName = "seed" + titleCase(oreName);
             String cropName = "essence" + titleCase(oreName);
 
@@ -665,17 +626,6 @@ public class RecipeHandler {
 
     public static String titleCase(String input) {
         return input.substring(0, 1).toUpperCase(Locale.US) + input.substring(1);
-    }
-
-    private static double getPercentOfComponentInMaterial(Material material, Material materialToFind) {
-        if (material == materialToFind) {
-            return 1.0;
-        }
-        double amountOfComponents = material.materialComponents.stream()
-                .mapToLong(it -> it.amount).sum();
-        return material.materialComponents.stream()
-                .mapToDouble(it -> getPercentOfComponentInMaterial(it.material, materialToFind) *
-                        (it.amount / amountOfComponents)).sum();
     }
 
 

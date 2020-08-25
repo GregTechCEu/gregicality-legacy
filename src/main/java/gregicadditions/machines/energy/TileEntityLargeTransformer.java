@@ -4,9 +4,9 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.capabilities.EnergyContainerListWithAmps;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -20,7 +20,10 @@ import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +36,9 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     private IEnergyContainer input;
     private IEnergyContainer output;
     private boolean isActive = false;
+    private int currentDrain = 0;
+    private int drain = 0;
+    DecimalFormat formatter = new DecimalFormat("#0.0");
 
     public TileEntityLargeTransformer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -54,13 +60,13 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     }
 
     private void initializeAbilities() {
-        this.input = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        this.output = new EnergyContainerList(getAbilities(MultiblockAbility.OUTPUT_ENERGY));
+        this.input = new EnergyContainerListWithAmps(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        this.output = new EnergyContainerListWithAmps(getAbilities(MultiblockAbility.OUTPUT_ENERGY));
     }
 
     private void resetTileAbilities() {
-        this.input = new EnergyContainerList(Lists.newArrayList());
-        this.output = new EnergyContainerList(Lists.newArrayList());
+        this.input = new EnergyContainerListWithAmps(Lists.newArrayList());
+        this.output = new EnergyContainerListWithAmps(Lists.newArrayList());
     }
 
 
@@ -73,11 +79,17 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
                 if (input.getEnergyStored() < output.getEnergyCapacity() - output.getEnergyStored()) {
                     output.addEnergy(input.getEnergyStored());
                     input.removeEnergy(input.getEnergyStored());
+                    currentDrain += input.getEnergyStored();
                 } else {
                     long left = output.getEnergyCapacity() - output.getEnergyStored();
                     output.addEnergy(left);
                     input.removeEnergy(left);
+                    currentDrain += left;
                 }
+            }
+            if (getTimer() % 20 == 0) {
+                drain = currentDrain / 20;
+                currentDrain = 0;
             }
         }
     }
@@ -130,6 +142,28 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
         if (dataId == 1) {
             this.isActive = buf.readBoolean();
             getHolder().scheduleChunkForRenderUpdate();
+        }
+    }
+
+    @Override
+    public void writeInitialSyncData(PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
+        buf.writeBoolean(isActive);
+    }
+
+    @Override
+    public void receiveInitialSyncData(PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
+        this.isActive = buf.readBoolean();
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        if (this.isStructureFormed()) {
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.input", input.getInputVoltage() / input.getInputAmperage(), input.getInputAmperage()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.output", output.getOutputVoltage() / output.getOutputAmperage(), output.getOutputAmperage()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.input_average", formatter.format(drain * 1.0 / (input.getInputVoltage() * 1.0 / input.getInputAmperage()))));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.output_average", formatter.format(drain * 1.0 / (output.getOutputVoltage() * 1.0 / output.getOutputAmperage()))));
         }
     }
 }

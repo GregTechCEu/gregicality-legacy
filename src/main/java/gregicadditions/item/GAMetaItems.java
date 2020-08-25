@@ -1,8 +1,10 @@
 package gregicadditions.item;
 
 import gregicadditions.Gregicality;
+import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -190,6 +192,24 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
+    public static MetaItem<?>.MetaValueItem COSMIC_CIRCUIT;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem WAFER_AMERICIUM;
+    public static MetaItem<?>.MetaValueItem WAFER_EUROPIUM;
+    public static MetaItem<?>.MetaValueItem WAFER_NEUTRONIUM;
+
+    public static MetaItem<?>.MetaValueItem BOULE_AMERICIUM;
+    public static MetaItem<?>.MetaValueItem BOULE_EUROPIUM;
+    public static MetaItem<?>.MetaValueItem BOULE_NEUTRONIUM;
+
+    public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
+
+
+
+
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
@@ -198,6 +218,8 @@ public class GAMetaItems {
         tool.setRegistryName("ga_meta_tool");
         GAMetaArmor armor = new GAMetaArmor();
         armor.setRegistryName("ga_armor");
+        GADustItem dustItem = new GADustItem((short) 0);
+        dustItem.setRegistryName("ga_dust");
     }
 
     public static void registerOreDict() {

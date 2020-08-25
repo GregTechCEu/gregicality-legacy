@@ -5,8 +5,12 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.Gregicality;
+
+import gregicadditions.materials.SimpleDustMaterial;
+import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.MaterialIconSet;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
@@ -18,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @ZenClass("mods.gtadditions.recipe.Utils")
 @ZenRegister
@@ -76,5 +81,16 @@ public class CTUtils {
         }
     }
 
+    @ZenMethod("registerDust")
+    @Optional.Method(modid = Gregicality.MODID)
+    public static void registerDust(String name, short id, int rgb, String materialIconSet) {
+        new SimpleDustMaterial(name, rgb, id, MaterialIconSet.valueOf(materialIconSet));
+    }
 
+    @ZenMethod("registerFluid")
+    @Optional.Method(modid = Gregicality.MODID)
+    public static void registerFluid(String name, int rgb) {
+        new SimpleFluidMaterial(name, rgb);
+    }
+    
 }

@@ -2,7 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
@@ -38,7 +37,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Staballoy;
 
 public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -110,7 +108,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
     }
 
     @Override

@@ -3,6 +3,7 @@ package gregicadditions.worldgen;
 
 import gregtech.api.GTValues;
 import gregtech.api.util.GTLog;
+import gregtech.api.worldgen.config.WorldGenRegistry;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;
 
@@ -15,9 +16,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WorldGenRegister {
-    public static void init() {
+
+    public static void preInit() {
+        GTLog.logger.info("Adding Gregicality block filler to the ore generation registry");
+        WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
+    }
+
+    public static void init() throws IOException {
         long time = System.currentTimeMillis();
         GTLog.logger.info("WorldGen init started");
+
         try {
             WorldGenRegister.removeGTConfigs();
         } catch (IOException e) {
@@ -30,7 +38,8 @@ public class WorldGenRegister {
             GTLog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
-
+//        GTLog.logger.info("Reloading ore vein definitions to use our block filler");
+//        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
         GTLog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
     }
@@ -54,6 +63,7 @@ public class WorldGenRegister {
                                         || file.getFileName().toString().startsWith("olivine_vien2.json")
                                         || file.getFileName().toString().startsWith("magnetite_vein.json")
                                         || file.getFileName().toString().startsWith("pitchblende_vein.json")
+                                        || file.getFileName().toString().startsWith("naquadah_vein.json")
                         )
                         .collect(Collectors.toList());
                 for (Path config : configs) {
