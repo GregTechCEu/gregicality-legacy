@@ -2023,7 +2023,7 @@ fluid.rn_cracked_heavy_e_naquadah=Radon-Cracked Heavy Enriched Naquadah
 fluid.light_e_naquadah_fuel=Light Enriched Naquadah Fuel
 fluid.medium_e_naquadah_fuel=Medium Enriched Naquadah Fuel
 fluid.heavy_e_naquadah_fuel=Heavy Enriched Naquadah Fuel
-fluid.naquadria_solution= Naquadria Solution
+fluid.naquadria_solution=Naquadria Solution
 fluid.hyper_fluid_i=Hyper Fuel I
 fluid.hyper_fluid_ii=Hyper Fuel II
 fluid.hyper_fluid_iii=Hyper Fuel III
@@ -2033,6 +2033,11 @@ material.enriched_naquadric_compound=Enriched Naquadric Compound
 material.naquadriatic_compound=Naquadriatic Compound
 
 metiatem.unstable.star.name=Unstable Star
+
+gtadditions.machine.buffer.lv.name=Basic Buffer
+gtadditions.machine.buffer.mv.name=Advanced Buffer
+gtadditions.machine.buffer.hv.name=Advanced Buffer II
+
 
 
 

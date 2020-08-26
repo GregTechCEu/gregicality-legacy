@@ -94,7 +94,7 @@ public class GATileEntities {
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
     public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[3];
-
+    public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3];
     //multiblock
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
     public static TileEntityProcessingArray PROCESSING_ARRAY;
@@ -720,7 +720,9 @@ public class GATileEntities {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i)));
         }
 
-
+        BUFFER[0] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.lv"), 3));
+        BUFFER[1] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.mv"), 4));
+        BUFFER[2] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.hv"), 5));
     }
 
 
