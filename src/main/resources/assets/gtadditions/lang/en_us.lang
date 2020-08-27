@@ -2038,6 +2038,13 @@ gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
 gtadditions.machine.buffer.hv.name=Advanced Buffer II
 
+metaitem.hyperium_essence.name=Hyperium Essence
+metaitem.ludicium_essence.name=Ludicium Essence
+metaitem.hyperium_crafting_seed.name=Tier 7 Crafting Seed
+metaitem.hyperium_crafting_seed.tooltip=Used for crafting, not planting.
+metaitem.ludicium_crafting_seed.name=Tier 8 Crafting Seed
+metaitem.ludicium_crafting_seed.tooltip=Used for crafting, not planting.
+
 
 
 

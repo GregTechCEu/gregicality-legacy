@@ -175,6 +175,12 @@ public class GAMetaItem extends MaterialMetaItem {
 
         UNSTABLE_STAR = addItem(343, "unstable.star");
 
+        HYPERIUM_ESSENCE = addItem(344, "hyperium_essence");
+        LUDICIUM_ESSENCE = addItem(345, "ludicium_essence");
+
+        HYPERIUM_SEED = addItem(346, "hyperium_crafting_seed");
+        LUDICIUM_SEED = addItem(347, "ludicium_crafting_seed");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;

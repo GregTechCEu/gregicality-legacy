@@ -11,6 +11,8 @@ import gregicadditions.integrations.mysticalagriculture.CropType;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.block.MaterialBlockCrop;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMetaItem;
+import gregicadditions.item.GAMetaItems;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -216,6 +218,14 @@ public class MysticalAgricultureItems {
                     'M', OreDictUnifier.get(OrePrefix.block, dustMaterial));
         });
 
+        ModHandler.addShapedRecipe("hyperium_essence", GAMetaItems.HYPERIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(6), 'C', ModItems.itemInfusionCrystal);
+        ModHandler.addShapedRecipe("ludicium_essence", GAMetaItems.LUDICIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(7), 'C', ModItems.itemInfusionCrystal);
+        ModHandler.addShapedRecipe("hyperium_essence_m", GAMetaItems.HYPERIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(6), 'C', ModItems.itemInfusionCrystalMaster);
+        ModHandler.addShapedRecipe("ludicium_essence_m", GAMetaItems.LUDICIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(7), 'C', ModItems.itemInfusionCrystalMaster);
+        ModHandler.addShapedRecipe("hyperium_seed", GAMetaItems.HYPERIUM_SEED.getStackForm(), " E ", "ESE", " E ", 'E', getEssence(7), 'S', getCraftingSeed(6));
+        ModHandler.addShapedRecipe("ludicium_seed", GAMetaItems.LUDICIUM_SEED.getStackForm(), " E ", "ESE", " E ", 'E', getEssence(8), 'S', getCraftingSeed(7));
+        ModHandler.addShapelessRecipe("hyperium_down", new ItemStack(com.blakebr0.mysticalagradditions.items.ModItems.itemInsanium, 4, 0), GAMetaItems.HYPERIUM_ESSENCE.getStackForm());
+        ModHandler.addShapelessRecipe("ludicium_down", GAMetaItems.HYPERIUM_ESSENCE.getStackForm(4), GAMetaItems.LUDICIUM_ESSENCE.getStackForm());
     }
 
     @SideOnly(Side.CLIENT)
@@ -281,8 +291,14 @@ public class MysticalAgricultureItems {
             case 5:
                 essence = new ItemStack(com.blakebr0.mysticalagradditions.items.ModItems.itemInsanium, 1, 0);
                 break;
+            case 6:
+                essence = GAMetaItems.HYPERIUM_ESSENCE.getStackForm();
+                break;
+            case 7:
+                essence = GAMetaItems.LUDICIUM_ESSENCE.getStackForm();
+                break;
             default:
-                essence = new ItemStack(com.blakebr0.mysticalagradditions.items.ModItems.itemInsanium, 1, 0);
+                essence = GAMetaItems.LUDICIUM_ESSENCE.getStackForm();
         }
         return essence;
     }
@@ -308,8 +324,14 @@ public class MysticalAgricultureItems {
             case 5:
                 craftingSeed = new ItemStack(com.blakebr0.mysticalagradditions.items.ModItems.itemInsanium, 1, 1);
                 break;
+            case 6:
+                craftingSeed = GAMetaItems.HYPERIUM_SEED.getStackForm();
+                break;
+            case 7:
+                craftingSeed = GAMetaItems.LUDICIUM_SEED.getStackForm();
+                break;
             default:
-                craftingSeed = new ItemStack(com.blakebr0.mysticalagradditions.items.ModItems.itemInsanium, 1, 1);
+                craftingSeed = GAMetaItems.LUDICIUM_ESSENCE.getStackForm();
         }
         return craftingSeed;
     }
