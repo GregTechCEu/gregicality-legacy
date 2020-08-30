@@ -327,8 +327,8 @@ public class RecipeHandler {
     }
 
     private static void processRound(OrePrefix round, IngotMaterial material) {
-        ModHandler.addShapedRecipe("round" + material.toString(), OreDictUnifier.get(round, material), "fN", "N ", 'N', OreDictUnifier.get(nugget, material));
-        LATHE_RECIPES.recipeBuilder().EUt(8).duration(100).inputs(OreDictUnifier.get(nugget, material)).outputs(OreDictUnifier.get(round, material)).buildAndRegister();
+        ModHandler.addShapedRecipe("round" + material.toString(), OreDictUnifier.get(round, material), "fN", "N ", 'N', new UnificationEntry(nugget, material));
+        LATHE_RECIPES.recipeBuilder().EUt(8).duration(100).input(nugget, material).outputs(OreDictUnifier.get(round, material)).buildAndRegister();
     }
 
     private static void processDoubleIngot(OrePrefix plate, IngotMaterial material) {
