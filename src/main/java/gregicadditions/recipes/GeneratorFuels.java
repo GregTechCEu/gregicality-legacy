@@ -114,9 +114,9 @@ public class GeneratorFuels {
 
         //rocket fuel
         registerRocketFuel(RocketFuelH8N4C2O4.getFluid(6), 10, GTValues.EV);
-        registerRocketFuel(RocketFuelCN3H7O3.getFluid(12), 10, GTValues.EV);
+        registerRocketFuel(RocketFuelCN3H7O3.getFluid(10), 10, GTValues.EV);
         registerRocketFuel(DenseHydrazineFuelMixture.getFluid(18), 10, GTValues.EV);
-        registerRocketFuel(RP1RocketFuel.getFluid(24), 10, GTValues.EV);
+        registerRocketFuel(RP1RocketFuel.getFluid(12), 10, GTValues.EV);
 
         FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 24000, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 10000, GTValues.LV);
