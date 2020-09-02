@@ -2447,7 +2447,7 @@ public class GARecipeAddition {
                 .duration(500)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Caesium.getFluid(1000))
+                .input(dust, Caesium)
                 .fluidInputs(Fluorine.getFluid(1000))
                 .fluidOutputs(CesiumFluoride.getFluid(2000))
                 .EUt(7680)
@@ -2555,7 +2555,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(29000))
-                .fluidOutputs(Gold.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Gold))
                 .fluidOutputs(Xenon.getFluid(2000))
                 .fluidOutputs(Antimony.getFluid(4000))
                 .fluidOutputs(Fluorine.getFluid(22000))
