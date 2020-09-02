@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.miner;
 
+import exnihilocreatio.items.ore.Ore;
 import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
@@ -8,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
+import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +52,8 @@ public interface Miner {
         return 1L;
     }
 
+    List orePrefixes = Arrays.asList(new OrePrefix[]{OrePrefix.ore, OrePrefix.valueOf("oreRich"), OrePrefix.valueOf("orePoor"), OrePrefix.valueOf("orePure")});
+
     static List<BlockPos> getBlockToMinePerChunk(Miner miner, AtomicLong x, AtomicLong y, AtomicLong z, ChunkPos chunkPos) {
         List<BlockPos> blocks = new ArrayList<>();
         for (int i = 0; i < miner.getNbBlock(); i++) {
@@ -60,7 +64,7 @@ public interface Miner {
                         Block block = miner.getWorld().getBlockState(blockPos).getBlock();
                         if (miner.getWorld().getTileEntity(blockPos) == null) {
                             OrePrefix orePrefix = OreDictUnifier.getPrefix(Item.getItemFromBlock(block).getDefaultInstance());
-                            if (orePrefix == OrePrefix.ore) {
+                            if (orePrefixes.contains(orePrefix)) {
                                 blocks.add(blockPos);
                             }
                         }
