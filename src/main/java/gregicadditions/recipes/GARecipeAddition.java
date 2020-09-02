@@ -2266,10 +2266,10 @@ public class GARecipeAddition {
 
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, TungstenTrioxide)
-                    .fluidInputs(Hydrogen.getFluid(216))
+                    .fluidInputs(Hydrogen.getFluid(1500))
                     .outputs(OreDictUnifier.get(dust, Tungsten))
-                    .fluidOutputs(Water.getFluid(324))
-                    .EUt(1980)
+                    .fluidOutputs(Water.getFluid(2250))
+                    .EUt(1920)
                     .duration(100)
                     .buildAndRegister();
 
