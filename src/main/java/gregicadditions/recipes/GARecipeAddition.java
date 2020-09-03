@@ -2948,10 +2948,6 @@ public class GARecipeAddition {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
 
-        ModHandler.addShapedRecipe("buffer_lv", GATileEntities.BUFFER[0].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'C', OreDictNames.chestWood);
-        ModHandler.addShapedRecipe("buffer_mv", GATileEntities.BUFFER[1].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.MV].getStackForm(), 'C', OreDictNames.chestWood);
-        ModHandler.addShapedRecipe("buffer_hv", GATileEntities.BUFFER[2].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.HV].getStackForm(), 'C', OreDictNames.chestWood);
-
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120).fluidInputs(HydrochloricAcid.getFluid(2000)).input(dust, Calcite).fluidOutputs(Water.getFluid(1000)).fluidOutputs(CarbonDioxide.getFluid(1000)).outputs(OreDictUnifier.get(dust, CalciumChloride)).buildAndRegister();
     }
 
