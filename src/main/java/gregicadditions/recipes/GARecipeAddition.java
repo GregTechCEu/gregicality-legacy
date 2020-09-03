@@ -2557,7 +2557,7 @@ public class GARecipeAddition {
                 .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(29000))
                 .outputs(OreDictUnifier.get(dust, Gold))
                 .fluidOutputs(Xenon.getFluid(2000))
-                .fluidOutputs(Antimony.getFluid(4000))
+                .outputs(OreDictUnifier.get(dust, Antimony, 4))
                 .fluidOutputs(Fluorine.getFluid(22000))
                 .EUt(1920)
                 .duration(200)
