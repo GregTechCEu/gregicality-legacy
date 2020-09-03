@@ -725,9 +725,9 @@ public class GATileEntities {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i)));
         }
 
-        BUFFER[0] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.lv"), 3));
-        BUFFER[1] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.mv"), 4));
-        BUFFER[2] = GregTechAPI.registerMetaTileEntity(id++, new TileEntityBuffer(location("buffer.hv"), 5));
+        BUFFER[0] = GregTechAPI.registerMetaTileEntity(3230, new TileEntityBuffer(location("buffer.lv"), 3));
+        BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));
+        BUFFER[2] = GregTechAPI.registerMetaTileEntity(3232, new TileEntityBuffer(location("buffer.hv"), 5));
     }
 
 
