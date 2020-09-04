@@ -118,7 +118,8 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        return GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.HV;
+        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.EV;
+        return (long) Math.floor(Math.pow(2, tierDifference));
     }
 
     @Override

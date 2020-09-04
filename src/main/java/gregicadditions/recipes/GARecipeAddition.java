@@ -10,6 +10,7 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
+import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
@@ -2265,10 +2266,10 @@ public class GARecipeAddition {
 
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, TungstenTrioxide)
-                    .fluidInputs(Hydrogen.getFluid(216))
+                    .fluidInputs(Hydrogen.getFluid(1500))
                     .outputs(OreDictUnifier.get(dust, Tungsten))
-                    .fluidOutputs(Water.getFluid(324))
-                    .EUt(1980)
+                    .fluidOutputs(Water.getFluid(2250))
+                    .EUt(1920)
                     .duration(100)
                     .buildAndRegister();
 
@@ -2446,7 +2447,7 @@ public class GARecipeAddition {
                 .duration(500)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Caesium.getFluid(1000))
+                .input(dust, Caesium)
                 .fluidInputs(Fluorine.getFluid(1000))
                 .fluidOutputs(CesiumFluoride.getFluid(2000))
                 .EUt(7680)
@@ -2554,9 +2555,9 @@ public class GARecipeAddition {
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(29000))
-                .fluidOutputs(Gold.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Gold))
                 .fluidOutputs(Xenon.getFluid(2000))
-                .fluidOutputs(Antimony.getFluid(4000))
+                .outputs(OreDictUnifier.get(dust, Antimony, 4))
                 .fluidOutputs(Fluorine.getFluid(22000))
                 .EUt(1920)
                 .duration(200)
@@ -2947,6 +2948,7 @@ public class GARecipeAddition {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_AMERICIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120).fluidInputs(HydrochloricAcid.getFluid(2000)).input(dust, Calcite).fluidOutputs(Water.getFluid(1000)).fluidOutputs(CarbonDioxide.getFluid(1000)).outputs(OreDictUnifier.get(dust, CalciumChloride)).buildAndRegister();
     }
 
     public static void forestrySupport() {

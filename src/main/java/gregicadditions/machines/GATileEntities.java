@@ -3,6 +3,7 @@ package gregicadditions.machines;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
+import gregicadditions.GAMaterials;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
@@ -35,6 +36,7 @@ import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
@@ -94,7 +96,7 @@ public class GATileEntities {
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
     public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[3];
-
+    public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3];
     //multiblock
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
     public static TileEntityProcessingArray PROCESSING_ARRAY;
@@ -555,9 +557,12 @@ public class GATileEntities {
 
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
         NUCLEAR_BREEDER = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("nuclear_breeder"), GARecipeMaps.NUCLEAR_BREEDER_RECIPES));
-        LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, Materials.BlackSteel));
-        LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, Materials.HSSG));
-        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, Materials.HSSS));
+        Material basicMat = Material.MATERIAL_REGISTRY.getObject(GAConfig.multis.largeMiner.basicMinerCasingMaterial);
+        LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, basicMat != null && basicMat.hasFlag(GAMaterials.GENERATE_METAL_CASING) ? basicMat : Materials.BlackSteel));
+        Material largeMat = Material.MATERIAL_REGISTRY.getObject(GAConfig.multis.largeMiner.largeMinerCasingMaterial);
+        LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, largeMat != null && largeMat.hasFlag(GAMaterials.GENERATE_METAL_CASING) ? largeMat : Materials.HSSG));
+        Material advancedMat = Material.MATERIAL_REGISTRY.getObject(GAConfig.multis.largeMiner.advancedMinerCasingMaterial);
+        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, advancedMat != null && advancedMat.hasFlag(GAMaterials.GENERATE_METAL_CASING) ? advancedMat : Materials.HSSS));
         VOID_MINER = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner")));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));
         INDUSTRIAL_PRIMITIVE_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2553, new MetaTileEntityIndustrialPrimitiveBlastFurnace(location("industrial_primitive_blast_furnace")));
@@ -720,7 +725,9 @@ public class GATileEntities {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i)));
         }
 
-
+        BUFFER[0] = GregTechAPI.registerMetaTileEntity(3230, new TileEntityBuffer(location("buffer.lv"), 3));
+        BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));
+        BUFFER[2] = GregTechAPI.registerMetaTileEntity(3232, new TileEntityBuffer(location("buffer.hv"), 5));
     }
 
 

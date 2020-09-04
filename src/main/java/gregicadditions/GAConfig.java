@@ -919,6 +919,11 @@ public class GAConfig {
             @Config.Name("Basic Large Miner fortune level")
             public int basicMinerFortune = 3;
 
+            @Config.Comment("The name of the material to use as casing.")
+            @Config.RequiresMcRestart
+            @Config.Name("Basic Miner casing material")
+            public String basicMinerCasingMaterial = "black_steel";
+
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
@@ -931,6 +936,11 @@ public class GAConfig {
             @Config.Name("Large Miner fortune level")
             public int largeMinerFortune = 6;
 
+            @Config.Comment("The name of the material to use as casing.")
+            @Config.RequiresMcRestart
+            @Config.Name("Large Miner casing material")
+            public String largeMinerCasingMaterial = "hssg";
+
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
@@ -942,6 +952,11 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Advanced Large Miner fortune level")
             public int advancedMinerFortune = 9;
+
+            @Config.Comment("The name of the material to use as casing.")
+            @Config.RequiresMcRestart
+            @Config.Name("Advanced Miner casing material")
+            public String advancedMinerCasingMaterial = "hsss";
 
         }
 
