@@ -206,7 +206,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             super.setupRecipe(recipe);
             int duration = getMaxProgress();
             int multiplier;
-            switch (heatingCoilDiscount * (heatingCoilLevel + 2)) {
+            switch (heatingCoilLevel * (heatingCoilDiscount + 2)) {
                 case 3:
                     multiplier = 50;
                     break;
