@@ -207,6 +207,10 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
 
+    public static MetaItem<?>.MetaValueItem HYPERIUM_ESSENCE;
+    public static MetaItem<?>.MetaValueItem HYPERIUM_SEED;
+    public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
+    public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
 
 
 
