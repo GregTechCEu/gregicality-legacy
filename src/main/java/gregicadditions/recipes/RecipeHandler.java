@@ -449,13 +449,13 @@ public class RecipeHandler {
             return;
         }
 
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 1000)).EUt(32)
+        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * GAConfig.Misc.replicationTimeFactor * 2)).EUt(32)
                 .notConsumable(OreDictUnifier.get(dustPrefix, material))
                 .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .outputs(OreDictUnifier.get(dustPrefix, material))
                 .buildAndRegister();
 
-        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 500)).EUt(32)
+        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * GAConfig.Misc.replicationTimeFactor)).EUt(32)
                 .inputs(OreDictUnifier.get(dustPrefix, material))
                 .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
                 .buildAndRegister();
@@ -491,7 +491,7 @@ public class RecipeHandler {
                         .buildAndRegister());
     }
 
-    public static void registerLargeCentrifugeRecipes(){
+    public static void registerLargeCentrifugeRecipes() {
         CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder builder = LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())

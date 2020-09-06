@@ -382,7 +382,11 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean naqEfficieny = true;
 
-
+        @Config.Comment("Change replication to be quicker or longer")
+        @Config.Name("Replication time factor")
+        @Config.RangeInt(min = 1)
+        @Config.RequiresMcRestart
+        public int replicationTimeFactor = 500;
 
     }
 
