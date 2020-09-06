@@ -93,13 +93,26 @@ public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockP
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         data.setTag("ContainerInventory", containerInventory.serializeNBT());
+        data.setTag("FilterInventory", filterInventory.serializeNBT());
+        data.setBoolean("IsBlacklist", isBlacklistFilter);
+        if (currentFluidFilter != null) {
+            NBTTagCompound filterInventory = new NBTTagCompound();
+            currentFluidFilter.writeToNBT(filterInventory);
+            data.setTag("Filter", filterInventory);
+        }
         return data;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        this.containerInventory.deserializeNBT(data.getCompoundTag("ContainerInventory"));
+        containerInventory.deserializeNBT(data.getCompoundTag("ContainerInventory"));
+        filterInventory.deserializeNBT(data.getCompoundTag("FilterInventory"));
+        isBlacklistFilter = data.getBoolean("IsBlacklist");
+        if (currentFluidFilter != null) {
+            NBTTagCompound filterInventory = data.getCompoundTag("Filter");
+            currentFluidFilter.readFromNBT(filterInventory);
+        }
     }
 
     @Override
