@@ -11,6 +11,7 @@ import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
+import gregtech.api.util.GTLog;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
@@ -30,10 +31,8 @@ public class CTUtils {
 
 
     @ZenMethod("removeRecipeByOutput")
-    @Optional.Method(modid = Gregicality.MODID)
     public static void removeRecipeByOutput(RecipeMap<?> recipeMap, IItemStack[] outputs, ILiquidStack[] fluidOutputs, boolean useAmounts) {
         List<Recipe> recipesToRemove = new ArrayList<>();
-        boolean matches;
         List<ItemStack> mcItemOutputs = outputs == null ? Collections.emptyList() :
                 Arrays.stream(outputs)
                         .map(CraftTweakerMC::getItemStack)
@@ -45,34 +44,38 @@ public class CTUtils {
                         .collect(Collectors.toList());
 
         for (Object recipe : recipeMap.getRecipeList()) {
-            matches = true;
             if (recipe instanceof Recipe) {
-                for (ItemStack output : ((Recipe) recipe).getOutputs()) {
-                    for (ItemStack itemStack : mcItemOutputs) {
-                        if (!output.isItemEqual(itemStack)) {
-                            if (useAmounts && output.getCount() != itemStack.getCount()) {
-                                matches = false;
-                                break;
-                            } else if (!useAmounts) {
-                                matches = false;
-                                break;
+                if (!mcItemOutputs.isEmpty()) {
+                    for (ItemStack output : ((Recipe) recipe).getOutputs()) {
+                        for (ItemStack itemStack : mcItemOutputs) {
+                            if (output.isItemEqual(itemStack) && output.getMetadata() == itemStack.getMetadata()) {
+                                if (useAmounts) {
+                                    if (output.getCount() == itemStack.getCount()) {
+                                        recipesToRemove.add((Recipe) recipe);
+                                        GTLog.logger.info(output.getDisplayName());
+                                    }
+                                } else {
+                                    recipesToRemove.add((Recipe) recipe);
+                                    GTLog.logger.info(output.getDisplayName());
+                                }
                             }
                         }
                     }
                 }
-                for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
-                    for (FluidStack fluidStack : mcFluidOutputs) {
-                        if (useAmounts && !fluidOutput.isFluidStackIdentical(fluidStack)) {
-                            matches = false;
-                            break;
-                        } else if (!useAmounts && !fluidOutput.isFluidEqual(fluidStack)) {
-                            matches = false;
-                            break;
+                if (!mcFluidOutputs.isEmpty()) {
+                    for (FluidStack fluidOutput : ((Recipe) recipe).getFluidOutputs()) {
+                        for (FluidStack fluidStack : mcFluidOutputs) {
+                            if (fluidOutput.isFluidEqual(fluidStack)) {
+                                if (useAmounts) {
+                                    if (fluidOutput.amount == fluidStack.amount) {
+                                        recipesToRemove.add((Recipe) recipe);
+                                    }
+                                } else {
+                                    recipesToRemove.add((Recipe) recipe);
+                                }
+                            }
                         }
                     }
-                }
-                if (matches) {
-                    recipesToRemove.add((Recipe) recipe);
                 }
             }
         }
@@ -82,13 +85,11 @@ public class CTUtils {
     }
 
     @ZenMethod("registerDust")
-    @Optional.Method(modid = Gregicality.MODID)
     public static void registerDust(String name, short id, int rgb, String materialIconSet) {
         new SimpleDustMaterial(name, rgb, id, MaterialIconSet.valueOf(materialIconSet));
     }
 
     @ZenMethod("registerFluid")
-    @Optional.Method(modid = Gregicality.MODID)
     public static void registerFluid(String name, int rgb) {
         new SimpleFluidMaterial(name, rgb);
     }
