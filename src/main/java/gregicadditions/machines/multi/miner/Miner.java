@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.miner;
 
-import exnihilocreatio.items.ore.Ore;
 import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
@@ -9,9 +8,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
-import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -52,7 +51,7 @@ public interface Miner {
         return 1L;
     }
 
-    List orePrefixes = Arrays.asList(new OrePrefix[]{OrePrefix.ore, OrePrefix.valueOf("oreRich"), OrePrefix.valueOf("orePoor"), OrePrefix.valueOf("orePure")});
+    List orePrefixes = Arrays.asList(OrePrefix.ore, OrePrefix.valueOf("oreRich"), OrePrefix.valueOf("orePoor"), OrePrefix.valueOf("orePure"));
 
     static List<BlockPos> getBlockToMinePerChunk(Miner miner, AtomicLong x, AtomicLong y, AtomicLong z, ChunkPos chunkPos) {
         List<BlockPos> blocks = new ArrayList<>();
