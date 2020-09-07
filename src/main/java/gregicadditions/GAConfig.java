@@ -386,7 +386,7 @@ public class GAConfig {
         @Config.Name("Replication time factor")
         @Config.RangeInt(min = 1)
         @Config.RequiresMcRestart
-        public int replicationTimeFactor = 500;
+        public int replicationTimeFactor = 750;
 
     }
 
