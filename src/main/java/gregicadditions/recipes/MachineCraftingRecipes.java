@@ -338,6 +338,46 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.LARGE_NAQUADAH_REACTOR.getStackForm()).buildAndRegister();
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(30000)
+                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        OreDictUnifier.get(plate, PlutoniumRadioactive.getMaterial(), 4),
+                        OreDictUnifier.get(plate, NetherStar, 4),
+                        FIELD_GENERATOR_IV.getStackForm(2),
+                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32),
+                        OreDictUnifier.get(wireGtSingle, ZPMSuperconductor, 32))
+                .input(circuit, Tier.Ultimate)
+                .input(circuit, Tier.Ultimate)
+                .input(circuit, Tier.Ultimate)
+                .input(circuit, Tier.Ultimate)
+                .fluidInputs(SolderingAlloy.getFluid(2880))
+                .outputs(GATileEntities.FUSION_REACTOR[0].getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(60000)
+                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        OreDictUnifier.get(plate, Europium, 4),
+                        OreDictUnifier.get(plate, Curium.getMaterial(), 4),
+                        FIELD_GENERATOR_LUV.getStackForm(2),
+                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(48),
+                        OreDictUnifier.get(wireGtDouble, UVSuperconductor, 32))
+                .input(circuit, Tier.Superconductor)
+                .input(circuit, Tier.Superconductor)
+                .input(circuit, Tier.Superconductor)
+                .input(circuit, Tier.Superconductor)
+                .fluidInputs(SolderingAlloy.getFluid(2880))
+                .outputs(GATileEntities.FUSION_REACTOR[1].getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
+                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                        OreDictUnifier.get(plate, Americium, 4),
+                        OreDictUnifier.get(plate, Californium.getMaterial(), 4),
+                        FIELD_GENERATOR_ZPM.getStackForm(2),
+                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
+                        OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor, 32))
+                .input(circuit, Tier.Infinite)
+                .input(circuit, Tier.Infinite)
+                .input(circuit, Tier.Infinite)
+                .input(circuit, Tier.Infinite)
+                .fluidInputs(SolderingAlloy.getFluid(2880))
+                .outputs(GATileEntities.FUSION_REACTOR[2].getStackForm()).buildAndRegister();
+
 
         List<Recipe> removals = new ArrayList<>();
 
