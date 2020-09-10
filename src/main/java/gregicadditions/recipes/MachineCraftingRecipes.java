@@ -344,7 +344,7 @@ public class MachineCraftingRecipes {
                         OreDictUnifier.get(plate, NetherStar, 4),
                         FIELD_GENERATOR_IV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32),
-                        OreDictUnifier.get(wireGtSingle, ZPMSuperconductor, 32))
+                        OreDictUnifier.get(wireGtSingle, LuVSuperconductor, 32))
                 .input(circuit, Tier.Ultimate)
                 .input(circuit, Tier.Ultimate)
                 .input(circuit, Tier.Ultimate)
@@ -357,7 +357,7 @@ public class MachineCraftingRecipes {
                         OreDictUnifier.get(plate, Curium.getMaterial(), 4),
                         FIELD_GENERATOR_LUV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(48),
-                        OreDictUnifier.get(wireGtDouble, UVSuperconductor, 32))
+                        OreDictUnifier.get(wireGtDouble, ZPMSuperconductor, 32))
                 .input(circuit, Tier.Superconductor)
                 .input(circuit, Tier.Superconductor)
                 .input(circuit, Tier.Superconductor)
@@ -370,7 +370,7 @@ public class MachineCraftingRecipes {
                         OreDictUnifier.get(plate, Californium.getMaterial(), 4),
                         FIELD_GENERATOR_ZPM.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
-                        OreDictUnifier.get(wireGtQuadruple, Tier.Superconductor, 32))
+                        OreDictUnifier.get(wireGtQuadruple, UVSuperconductor, 32))
                 .input(circuit, Tier.Infinite)
                 .input(circuit, Tier.Infinite)
                 .input(circuit, Tier.Infinite)
