@@ -4,17 +4,22 @@ import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.components.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockController {
 
@@ -35,11 +40,12 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 		return FactoryBlockPattern.start()
 				.aisle("XXX", "XXX", "XXX")
 				.aisle("XXX", "X#X", "XXX")
-				.aisle("XXX", "XSX", "XXX")
+				.aisle("XRX", "CSC", "XRX")
 				.where('S', selfPredicate())
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('#', isAirPredicate())
+				.where('R', robotArmPredicate())
+				.where('C', conveyorPredicate())
 				.build();
 	}
 
@@ -50,6 +56,15 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
 		return ClientHandler.LARGE_ASSEMBLER;
+	}
+
+	@Override
+	protected void formStructure(PatternMatchContext context) {
+		super.formStructure(context);
+		ConveyorCasing.CasingType conveyor = context.getOrDefault("Conveyor", ConveyorCasing.CasingType.CONVEYOR_LV);
+		RobotArmCasing.CasingType robotArm = context.getOrDefault("RobotArm", RobotArmCasing.CasingType.ROBOT_ARM_LV);
+		int min = Collections.min(Arrays.asList(conveyor.getTier(), robotArm.getTier()));
+		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
 }

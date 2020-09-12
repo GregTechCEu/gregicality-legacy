@@ -3,18 +3,23 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import static gregicadditions.GAMaterials.EglinSteel;
 import static gregicadditions.GAMaterials.Grisium;
@@ -40,13 +45,14 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 				.aisle("XXXXX", "X###X", "XXXXX")
 				.aisle("XXXXX", "X###X", "XXXXX")
 				.aisle("XXXXX", "X###X", "XXXXX")
-				.aisle("XXXXX", "XXSXX", "XXXXX")
+				.aisle("XXXXX", "XPSPX", "XXXXX")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('#', isAirPredicate())
+				.where('P', pistonPredicate())
 				.build();
 	}
 	private static final Material defaultMaterial = EglinSteel;
@@ -60,6 +66,14 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
 		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+	}
+
+	@Override
+	protected void formStructure(PatternMatchContext context) {
+		super.formStructure(context);
+		PistonCasing.CasingType piston = context.getOrDefault("Piston", PistonCasing.CasingType.PISTON_LV);
+		int min = piston.getTier();
+		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
 

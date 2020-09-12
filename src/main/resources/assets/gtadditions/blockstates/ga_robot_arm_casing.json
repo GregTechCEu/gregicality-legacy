@@ -1,0 +1,53 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "robot_arm_lv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+        }
+      },
+      "robot_arm_mv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+        }
+      },
+      "robot_arm_hv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+        }
+      },
+      "robot_arm_ev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+        }
+      },
+      "robot_arm_iv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+        }
+      },
+      "robot_arm_luv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+        }
+      },
+      "robot_arm_zpm": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+        }
+      },
+      "robot_arm_uv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+        }
+      }
+    }
+  }
+}

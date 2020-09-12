@@ -5,12 +5,14 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -34,6 +36,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -69,13 +73,14 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
                 .aisle("XXXXX", "X###X", "X###X")
                 .aisle("XXXXX", "X###X", "X###X")
                 .aisle("XXXXX", "X###X", "X###X")
-                .aisle("XXXXX", "XXSXX", "XXXXX")
+                .aisle("XXMXX", "XXSXX", "XXXXX")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
                 .where('#', statePredicate(Blocks.WATER.getDefaultState()))
+                .where('M', motorPredicate())
                 .build();
     }
 
@@ -152,5 +157,13 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
     @Override
     public int getCurrentRecipe() {
         return pos;
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
+        int min = motor.getTier();
+        maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 }

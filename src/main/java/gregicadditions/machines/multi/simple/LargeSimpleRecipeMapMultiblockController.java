@@ -1,10 +1,16 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.components.*;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.multiblock.BlockWorldState;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
@@ -12,6 +18,9 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
+import gregtech.common.blocks.VariantBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -25,6 +34,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMapMultiblockController {
@@ -33,6 +43,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
     private int durationPercentage = 100;
     private int chancePercentage = 100;
     private int stack = 1;
+    public long maxVoltage = 0;
 
     DecimalFormat formatter = new DecimalFormat("#0.0");
 
@@ -76,6 +87,124 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
             return mat;
         }
         return defaultMaterial;
+    }
+
+    public static Predicate<BlockWorldState> motorPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof MotorCasing)) {
+                return false;
+            } else {
+                MotorCasing motorCasing = (MotorCasing) blockState.getBlock();
+                MotorCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                MotorCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Motor", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> emitterPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof EmitterCasing)) {
+                return false;
+            } else {
+                EmitterCasing motorCasing = (EmitterCasing) blockState.getBlock();
+                EmitterCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                EmitterCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Emitter", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> conveyorPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof ConveyorCasing)) {
+                return false;
+            } else {
+                ConveyorCasing motorCasing = (ConveyorCasing) blockState.getBlock();
+                ConveyorCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                ConveyorCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Conveyor", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> fieldGenPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof FieldGenCasing)) {
+                return false;
+            } else {
+                FieldGenCasing motorCasing = (FieldGenCasing) blockState.getBlock();
+                FieldGenCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                FieldGenCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("FieldGen", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> pistonPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof PistonCasing)) {
+                return false;
+            } else {
+                PistonCasing motorCasing = (PistonCasing) blockState.getBlock();
+                PistonCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                PistonCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Piston", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> pumpPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof PumpCasing)) {
+                return false;
+            } else {
+                PumpCasing motorCasing = (PumpCasing) blockState.getBlock();
+                PumpCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                PumpCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Pump", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> robotArmPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof RobotArmCasing)) {
+                return false;
+            } else {
+                RobotArmCasing motorCasing = (RobotArmCasing) blockState.getBlock();
+                RobotArmCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                RobotArmCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("RobotArm", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    public static Predicate<BlockWorldState> sensorPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof SensorCasing)) {
+                return false;
+            } else {
+                SensorCasing motorCasing = (SensorCasing) blockState.getBlock();
+                SensorCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                SensorCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Sensor", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+
+    @Override
+    public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
+        return recipe.getEUt() < maxVoltage;
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {

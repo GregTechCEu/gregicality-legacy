@@ -1,0 +1,53 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "emitter_lv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+        }
+      },
+      "emitter_mv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+        }
+      },
+      "emitter_hv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+        }
+      },
+      "emitter_ev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+        }
+      },
+      "emitter_iv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+        }
+      },
+      "emitter_luv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+        }
+      },
+      "emitter_zpm": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+        }
+      },
+      "emitter_uv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+        }
+      }
+    }
+  }
+}

@@ -5,12 +5,14 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -33,6 +35,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -66,13 +70,14 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "X#X", "XXX")
-                .aisle("XXX", "XSX", "XXX")
+                .aisle("PXP", "MSM", "PXP")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
                 .where('#', isAirPredicate())
+                .where('M', motorPredicate())
+                .where('P', pistonPredicate())
                 .build();
     }
 
@@ -151,5 +156,14 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
     @Override
     public int getCurrentRecipe() {
         return pos;
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
+        PistonCasing.CasingType piston = context.getOrDefault("Piston", PistonCasing.CasingType.PISTON_LV);
+        int min = Collections.min(Arrays.asList(motor.getTier(), piston.getTier()));
+        maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 }
