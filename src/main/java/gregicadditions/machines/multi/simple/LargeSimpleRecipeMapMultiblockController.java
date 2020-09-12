@@ -24,6 +24,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
@@ -205,6 +207,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
         return recipe.getEUt() < maxVoltage;
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {
