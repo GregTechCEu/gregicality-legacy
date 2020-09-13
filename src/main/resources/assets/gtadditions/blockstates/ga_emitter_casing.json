@@ -10,42 +10,42 @@
     "variant": {
       "emitter_lv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+          "all": "gregtech:blocks/casings/solid/component_block_lv"
         }
       },
       "emitter_mv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+          "all": "gregtech:blocks/casings/solid/component_block_mv"
         }
       },
       "emitter_hv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+          "all": "gregtech:blocks/casings/solid/component_block_hv"
         }
       },
       "emitter_ev": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+          "all": "gregtech:blocks/casings/solid/component_block_ev"
         }
       },
       "emitter_iv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+          "all": "gregtech:blocks/casings/solid/component_block_iv"
         }
       },
       "emitter_luv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+          "all": "gregtech:blocks/casings/solid/component_block_luv"
         }
       },
       "emitter_zpm": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+          "all": "gregtech:blocks/casings/solid/component_block_zpm"
         }
       },
       "emitter_uv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+          "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
       }
     }

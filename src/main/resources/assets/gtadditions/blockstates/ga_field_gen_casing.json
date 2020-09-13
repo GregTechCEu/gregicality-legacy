@@ -10,42 +10,42 @@
     "variant": {
       "field_generator_lv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+          "all": "gregtech:blocks/casings/solid/component_block_lv"
         }
       },
       "field_generator_mv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+          "all": "gregtech:blocks/casings/solid/component_block_mv"
         }
       },
       "field_generator_hv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+          "all": "gregtech:blocks/casings/solid/component_block_hv"
         }
       },
       "field_generator_ev": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+          "all": "gregtech:blocks/casings/solid/component_block_ev"
         }
       },
       "field_generator_iv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+          "all": "gregtech:blocks/casings/solid/component_block_iv"
         }
       },
       "field_generator_luv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+          "all": "gregtech:blocks/casings/solid/component_block_luv"
         }
       },
       "field_generator_zpm": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+          "all": "gregtech:blocks/casings/solid/component_block_zpm"
         }
       },
       "field_generator_uv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+          "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
       }
     }

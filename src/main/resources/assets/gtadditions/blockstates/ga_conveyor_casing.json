@@ -10,42 +10,42 @@
     "variant": {
       "conveyor_lv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+          "all": "gregtech:blocks/casings/solid/component_block_lv"
         }
       },
       "conveyor_mv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+          "all": "gregtech:blocks/casings/solid/component_block_mv"
         }
       },
       "conveyor_hv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+          "all": "gregtech:blocks/casings/solid/component_block_hv"
         }
       },
       "conveyor_ev": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+          "all": "gregtech:blocks/casings/solid/component_block_ev"
         }
       },
       "conveyor_iv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+          "all": "gregtech:blocks/casings/solid/component_block_iv"
         }
       },
       "conveyor_luv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+          "all": "gregtech:blocks/casings/solid/component_block_luv"
         }
       },
       "conveyor_zpm": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+          "all": "gregtech:blocks/casings/solid/component_block_zpm"
         }
       },
       "conveyor_uv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+          "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
       }
     }

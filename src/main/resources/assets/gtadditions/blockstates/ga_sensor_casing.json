@@ -10,42 +10,42 @@
     "variant": {
       "sensor_lv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_lv"
+          "all": "gregtech:blocks/casings/solid/component_block_lv"
         }
       },
       "sensor_mv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_mv"
+          "all": "gregtech:blocks/casings/solid/component_block_mv"
         }
       },
       "sensor_hv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_hv"
+          "all": "gregtech:blocks/casings/solid/component_block_hv"
         }
       },
       "sensor_ev": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_ev"
+          "all": "gregtech:blocks/casings/solid/component_block_ev"
         }
       },
       "sensor_iv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_iv"
+          "all": "gregtech:blocks/casings/solid/component_block_iv"
         }
       },
       "sensor_luv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_luv"
+          "all": "gregtech:blocks/casings/solid/component_block_luv"
         }
       },
       "sensor_zpm": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_zpm"
+          "all": "gregtech:blocks/casings/solid/component_block_zpm"
         }
       },
       "sensor_uv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_uv"
+          "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
       }
     }
