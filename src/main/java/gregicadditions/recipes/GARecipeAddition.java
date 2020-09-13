@@ -8,7 +8,10 @@ import gregicadditions.GAMaterials;
 import gregicadditions.Gregicality;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
+import gregicadditions.item.components.*;
 import gregtech.api.GTValues;
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
@@ -34,6 +37,7 @@ import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.common.metatileentities.electric.MetaTileEntityHull;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -2947,6 +2951,120 @@ public class GARecipeAddition {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Blue).outputs(MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120).fluidInputs(HydrochloricAcid.getFluid(2000)).input(dust, Calcite).fluidOutputs(Water.getFluid(1000)).fluidOutputs(CarbonDioxide.getFluid(1000)).outputs(OreDictUnifier.get(dust, CalciumChloride)).buildAndRegister();
+
+
+        for (EmitterCasing.CasingType emitter : EmitterCasing.CasingType.values()) {
+            ItemStack emitterStack = ((MetaItem.MetaValueItem) GACraftingComponents.EMITTER.getIngredient(emitter.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(emitter.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(emitter.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(emitterStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, emitter.getTier() - 1)))
+                    .outputs(GAMetaBlocks.EMITTER_CASING.getItemVariant(emitter))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (MotorCasing.CasingType motor : MotorCasing.CasingType.values()) {
+            ItemStack motorStack = ((MetaItem.MetaValueItem) GACraftingComponents.MOTOR.getIngredient(motor.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(motor.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(motor.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(motorStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, motor.getTier() - 1)))
+                    .outputs(GAMetaBlocks.MOTOR_CASING.getItemVariant(motor))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (PistonCasing.CasingType piston : PistonCasing.CasingType.values()) {
+            ItemStack pistonStack = ((MetaItem.MetaValueItem) GACraftingComponents.PISTON.getIngredient(piston.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(piston.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(piston.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(pistonStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, piston.getTier() - 1)))
+                    .outputs(GAMetaBlocks.PISTON_CASING.getItemVariant(piston))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (SensorCasing.CasingType sensor : SensorCasing.CasingType.values()) {
+            ItemStack sensorStack = ((MetaItem.MetaValueItem) GACraftingComponents.SENSOR.getIngredient(sensor.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(sensor.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(sensor.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(sensorStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, sensor.getTier() - 1)))
+                    .outputs(GAMetaBlocks.SENSOR_CASING.getItemVariant(sensor))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (FieldGenCasing.CasingType fieldgen : FieldGenCasing.CasingType.values()) {
+            ItemStack fieldgenStack = ((MetaItem.MetaValueItem) GACraftingComponents.FIELD_GENERATOR.getIngredient(fieldgen.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(fieldgen.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(fieldgen.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(fieldgenStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, fieldgen.getTier() - 1)))
+                    .outputs(GAMetaBlocks.FIELD_GEN_CASING.getItemVariant(fieldgen))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (PumpCasing.CasingType pump : PumpCasing.CasingType.values()) {
+            ItemStack pumpStack = ((MetaItem.MetaValueItem) GACraftingComponents.PUMP.getIngredient(pump.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(pump.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(pump.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(pumpStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, pump.getTier() - 1)))
+                    .outputs(GAMetaBlocks.PUMP_CASING.getItemVariant(pump))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (ConveyorCasing.CasingType conveyor : ConveyorCasing.CasingType.values()) {
+            ItemStack conveyorStack = ((MetaItem.MetaValueItem) GACraftingComponents.CONVEYOR.getIngredient(conveyor.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(conveyor.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(conveyor.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(conveyorStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, conveyor.getTier() - 1)))
+                    .outputs(GAMetaBlocks.CONVEYOR_CASING.getItemVariant(conveyor))
+                    .duration(200)
+                    .buildAndRegister();
+        }
+        for (RobotArmCasing.CasingType robotarm : RobotArmCasing.CasingType.values()) {
+            ItemStack robotarmStack = ((MetaItem.MetaValueItem) GACraftingComponents.ROBOT_ARM.getIngredient(robotarm.getTier())).getStackForm(2);
+            ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(robotarm.getTier());
+            UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(robotarm.getTier());
+            ASSEMBLER_RECIPES.recipeBuilder()
+                    .inputs(robotarmStack)
+                    .inputs(hull)
+                    .input(cableGtSingle, cable.material, 8)
+                    .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, robotarm.getTier() - 1)))
+                    .outputs(GAMetaBlocks.ROBOT_ARM_CASING.getItemVariant(robotarm))
+                    .duration(200)
+                    .buildAndRegister();
+        }
     }
 
     public static void forestrySupport() {
