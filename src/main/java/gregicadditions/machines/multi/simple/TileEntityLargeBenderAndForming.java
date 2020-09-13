@@ -70,7 +70,7 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "X#X", "XXX")
-                .aisle("PXP", "MSM", "PXP")
+                .aisle("XPX", "MSM", "PPP")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))

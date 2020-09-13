@@ -26,20 +26,19 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-        for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
             shapeInfo.add(MultiblockShapeInfo.builder()
-                    .aisle("XXX", "XXX")
-                    .aisle("IXX", "X#X")
-                    .aisle("OEX", "XSX")
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
+                    .aisle("XEX", "XXX")
+                    .aisle("IMX", "X#X")
+                    .aisle("OMX", "XSX")
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.SOUTH)
-                    .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                     .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeThermalCentrifuge.casingMaterial))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+                    .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
                     .build());
-        }
+
 
         return Lists.newArrayList(shapeInfo);
     }

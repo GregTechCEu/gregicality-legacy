@@ -26,20 +26,17 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XXX", "XXX")
 					.aisle("IXX", "X#X", "XXX")
 					.aisle("OEX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
-					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeElectrolyzer.casingMaterial))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.build());
-		}
 
 		return Lists.newArrayList(shapeInfo);
 	}

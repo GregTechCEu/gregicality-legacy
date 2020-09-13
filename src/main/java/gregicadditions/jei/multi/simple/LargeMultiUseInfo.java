@@ -26,20 +26,27 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
 			shapeInfo.add(MultiblockShapeInfo.builder()
-					.aisle("XXX", "XXX", "XXX")
-					.aisle("IXX", "X#X", "XXX")
-					.aisle("OEX", "XSX", "XXX")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
+					.aisle("XXX", "CMP", "XXX")
+					.aisle("IXX", "p#s", "XXX")
+					.aisle("OEX", "eSR", "XXX")
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MULTI_USE, EnumFacing.SOUTH)
-					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeMultiUse.casingMaterial))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
+					.where('P', GAMetaBlocks.PISTON_CASING.getDefaultState())
+					.where('p', GAMetaBlocks.PUMP_CASING.getDefaultState())
+					.where('C', GAMetaBlocks.CONVEYOR_CASING.getDefaultState())
+					.where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())
+					.where('e', GAMetaBlocks.EMITTER_CASING.getDefaultState())
+					.where('R', GAMetaBlocks.ROBOT_ARM_CASING.getDefaultState())
+
+
 					.build());
-		}
+
 
 		return Lists.newArrayList(shapeInfo);
 	}
