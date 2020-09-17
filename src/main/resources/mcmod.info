@@ -1,16 +1,25 @@
 [
-{
-  "modid": "gtadditions",
-  "name": "Gregicality",
-  "description": "The big spook takes your lunch money.  Who reads these?",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["Shadows_of_Fire", "TheEmosewaPixel","Bartz24", "rhuneau", "bartimaeusnek"],
-  "credits": "The creators of GTCE, GT5U and most importantly, GregoriusT.",
-  "logoFile": "assets/gtadditions/logo.png",
-  "screenshots": [],
-  "dependencies": ["gregtech"]
-}
+  {
+    "modid": "gtadditions",
+    "name": "Gregicality",
+    "description": "The big spook takes your lunch money.  Who reads these?",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "rhuneau",
+      "hjae78",
+      "Shadows_of_Fire",
+      "TheEmosewaPixel",
+      "Bartz24",
+      "bartimaeusnek"
+    ],
+    "credits": "The creators of GTCE, GT5U and most importantly, GregoriusT.",
+    "logoFile": "assets/gtadditions/logo.png",
+    "screenshots": [],
+    "dependencies": [
+      "gregtech"
+    ]
+  }
 ]
