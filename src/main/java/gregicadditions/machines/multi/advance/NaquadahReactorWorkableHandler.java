@@ -31,7 +31,6 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
         FUELS.put(GAMaterials.HeavyNaquadahFuel.getFluid(Integer.MAX_VALUE), 2);
         FUELS.put(GAMaterials.MediumNaquadahFuel.getFluid(Integer.MAX_VALUE), 1);
 
-
     }
 
     public FluidStack getFuelStack() {
@@ -48,7 +47,7 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
 
     @Override
     protected int calculateFuelAmount(FuelRecipe currentRecipe) {
-        FluidStack potassiumStack = Materials.Potassium.getFluid(2);
+        FluidStack potassiumStack = Materials.Potassium.getPlasma(2);
         FluidStack drainPotassiumStack = fluidTank.get().drain(potassiumStack, false);
         this.isUsingPotassium = drainPotassiumStack != null && drainPotassiumStack.amount >= 2;
         return super.calculateFuelAmount(currentRecipe) * (isUsingPotassium ? 2 : 1);
