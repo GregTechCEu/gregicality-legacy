@@ -1,0 +1,53 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "pump_lv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_lv"
+        }
+      },
+      "pump_mv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_mv"
+        }
+      },
+      "pump_hv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_hv"
+        }
+      },
+      "pump_ev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_ev"
+        }
+      },
+      "pump_iv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_iv"
+        }
+      },
+      "pump_luv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_luv"
+        }
+      },
+      "pump_zpm": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_zpm"
+        }
+      },
+      "pump_uv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uv"
+        }
+      }
+    }
+  }
+}

@@ -26,20 +26,19 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
 			shapeInfo.add(MultiblockShapeInfo.builder()
-					.aisle("XXX", "XXX", "XXX")
+					.aisle("XXX", "XEX", "XXX")
 					.aisle("IXX", "X#X", "XXX")
-					.aisle("OEX", "XSX", "XXX")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
+					.aisle("OPX", "MSM", "PPP")
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
-					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeBenderAndForming.casingMaterial))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
+					.where('P', GAMetaBlocks.PISTON_CASING.getDefaultState())
 					.build());
-		}
 
 		return Lists.newArrayList(shapeInfo);
 	}

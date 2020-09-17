@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.components.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -11,10 +12,14 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblockController {
 
@@ -35,13 +40,14 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 		return FactoryBlockPattern.start()
 				.aisle("XXX", "XXX", "XXX")
 				.aisle("XXX", "X#X", "XXX")
-				.aisle("XXX", "XSX", "XXX")
+				.aisle("XMX", "XSX", "XXX")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('#', isAirPredicate())
+				.where('M', motorPredicate())
 				.build();
 	}
 
@@ -52,5 +58,13 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
 		return ClientHandler.CHEMICALLY_INERT;
+	}
+
+	@Override
+	protected void formStructure(PatternMatchContext context) {
+		super.formStructure(context);
+		MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
+		int min = motor.getTier();
+		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 }

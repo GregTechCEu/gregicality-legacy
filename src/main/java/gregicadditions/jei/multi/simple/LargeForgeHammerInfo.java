@@ -26,7 +26,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("SBO", "E#X", "IPX", "FXX")
+                .aisle("SBO", "E#X", "IPX", "FpX")
                 .where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeForgeHammer.casingMaterial))
                 .where('B', Blocks.IRON_BLOCK.getDefaultState())
@@ -36,6 +36,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.EAST)
+                .where('p', GAMetaBlocks.PISTON_CASING.getDefaultState())
                 .build();
         return Lists.newArrayList(shapeInfo);
     }

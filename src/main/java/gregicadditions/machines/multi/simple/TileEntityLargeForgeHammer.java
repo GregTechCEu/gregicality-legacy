@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -9,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,6 +24,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.Grisium;
@@ -40,13 +44,14 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("SBX", "X#X", "XPX", "XXX")
+                .aisle("SBX", "X#X", "XPX", "XpX")
                 .setAmountAtLeast('X', 4)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('B', blockPredicate(Blocks.IRON_BLOCK))
                 .where('P', statePredicate(Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN)))
                 .where('#', isAirPredicate())
+                .where('p', pistonPredicate())
                 .build();
     }
 
@@ -72,5 +77,13 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
         return new TileEntityLargeForgeHammer(metaTileEntityId);
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        PistonCasing.CasingType piston = context.getOrDefault("Piston", PistonCasing.CasingType.PISTON_LV);
+        int min = piston.getTier();
+        maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 }

@@ -2,6 +2,7 @@ package gregicadditions.item;
 
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
+import gregicadditions.item.components.*;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -48,6 +49,22 @@ public class GAMetaBlocks {
 
     public static CellCasing CELL_CASING;
 
+    public static MotorCasing MOTOR_CASING;
+
+    public static ConveyorCasing CONVEYOR_CASING;
+
+    public static EmitterCasing EMITTER_CASING;
+
+    public static FieldGenCasing FIELD_GEN_CASING;
+
+    public static PistonCasing PISTON_CASING;
+
+    public static PumpCasing PUMP_CASING;
+
+    public static RobotArmCasing ROBOT_ARM_CASING;
+
+    public static SensorCasing SENSOR_CASING;
+
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
@@ -67,6 +84,30 @@ public class GAMetaBlocks {
 
         CELL_CASING = new CellCasing();
         CELL_CASING.setRegistryName("ga_cell_casing");
+
+        MOTOR_CASING = new MotorCasing();
+        MOTOR_CASING.setRegistryName("ga_motor_casing");
+
+        CONVEYOR_CASING = new ConveyorCasing();
+        CONVEYOR_CASING.setRegistryName("ga_conveyor_casing");
+
+        FIELD_GEN_CASING = new FieldGenCasing();
+        FIELD_GEN_CASING.setRegistryName("ga_field_gen_casing");
+
+        PISTON_CASING = new PistonCasing();
+        PISTON_CASING.setRegistryName("ga_piston_casing");
+
+        PUMP_CASING = new PumpCasing();
+        PUMP_CASING.setRegistryName("ga_pump_casing");
+
+        ROBOT_ARM_CASING = new RobotArmCasing();
+        ROBOT_ARM_CASING.setRegistryName("ga_robot_arm_casing");
+
+        SENSOR_CASING = new SensorCasing();
+        SENSOR_CASING.setRegistryName("ga_sensor_casing");
+
+        EMITTER_CASING = new EmitterCasing();
+        EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
@@ -132,6 +173,14 @@ public class GAMetaBlocks {
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
+        registerItemModel(CONVEYOR_CASING);
+        registerItemModel(EMITTER_CASING);
+        registerItemModel(FIELD_GEN_CASING);
+        registerItemModel(MOTOR_CASING);
+        registerItemModel(PISTON_CASING);
+        registerItemModel(PUMP_CASING);
+        registerItemModel(ROBOT_ARM_CASING);
+        registerItemModel(SENSOR_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
         GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }

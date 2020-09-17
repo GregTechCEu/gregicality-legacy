@@ -26,22 +26,22 @@ public class LargeCuttingInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XXX", "XXX")
+					.aisle("XXX", "XMX", "XXX")
 					.aisle("XXX", "X#X", "XXX")
-					.aisle("XXX", "X#X", "XXX")
-					.aisle("IXX", "X#X", "XXX")
+					.aisle("IXX", "XCX", "XXX")
 					.aisle("OEX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_CUTTING, EnumFacing.SOUTH)
-					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeCutting.casingMaterial))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
+					.where('C', GAMetaBlocks.CONVEYOR_CASING.getDefaultState())
 					.build());
-		}
+
 
 		return Lists.newArrayList(shapeInfo);
 	}

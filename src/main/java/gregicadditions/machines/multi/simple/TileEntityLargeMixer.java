@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -10,6 +11,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -17,6 +19,9 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Staballoy;
@@ -41,7 +46,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "XYX", "XXX")
                 .aisle("XXX", "XYX", "XXX")
-                .aisle("XXX", "XSX", "XXX")
+                .aisle("XMX", "XSX", "XXX")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
@@ -49,6 +54,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
                 .where('#', isAirPredicate())
+                .where('M', motorPredicate())
                 .build();
     }
 
@@ -63,6 +69,14 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
+        int min = motor.getTier();
+        maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 
 }

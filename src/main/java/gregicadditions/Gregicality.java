@@ -137,6 +137,14 @@ public class Gregicality {
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
         registry.register(GAMetaBlocks.CELL_CASING);
+        registry.register(GAMetaBlocks.CONVEYOR_CASING);
+        registry.register(GAMetaBlocks.FIELD_GEN_CASING);
+        registry.register(GAMetaBlocks.MOTOR_CASING);
+        registry.register(GAMetaBlocks.PISTON_CASING);
+        registry.register(GAMetaBlocks.PUMP_CASING);
+        registry.register(GAMetaBlocks.ROBOT_ARM_CASING);
+        registry.register(GAMetaBlocks.SENSOR_CASING);
+        registry.register(GAMetaBlocks.EMITTER_CASING);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
         GA_ORES.forEach(registry::register);
     }
@@ -147,6 +155,14 @@ public class Gregicality {
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.CONVEYOR_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.FIELD_GEN_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.MOTOR_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.PISTON_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.PUMP_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.ROBOT_ARM_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.SENSOR_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.EMITTER_CASING, VariantItemBlock::new));
 
         GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()
