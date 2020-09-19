@@ -440,9 +440,9 @@ public class MachineCraftingRecipes {
 
         ModHandler.addShapedRecipe("ga_simple_ore_washer", GATileEntities.SIMPLE_ORE_WASHER.getStackForm(), "PIP", "PTP", "PCP", 'C', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'T', MetaItems.ELECTRIC_PUMP_LV, 'I', new UnificationEntry(plate, Steel), 'P', new UnificationEntry(pipeLarge, Bronze));
 
-        ModHandler.addShapedRecipe("buffer_lv", GATileEntities.BUFFER[0].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'C', OreDictNames.chestWood);
-        ModHandler.addShapedRecipe("buffer_mv", GATileEntities.BUFFER[1].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.MV].getStackForm(), 'C', OreDictNames.chestWood);
-        ModHandler.addShapedRecipe("buffer_hv", GATileEntities.BUFFER[2].getStackForm(), " G ", " H ", " C ", 'G', GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.REINFORCED_GLASS, 1), 'H', MetaTileEntities.HULL[GTValues.HV].getStackForm(), 'C', OreDictNames.chestWood);
+        ModHandler.addShapedRecipe("buffer_lv", GATileEntities.BUFFER[0].getStackForm(), " G ", " H ", " C ", 'G', GLASS.getIngredient(1), 'H', HULL.getIngredient(1), 'C', OreDictNames.chestWood);
+        ModHandler.addShapedRecipe("buffer_mv", GATileEntities.BUFFER[1].getStackForm(), " G ", " H ", " C ", 'G', GLASS.getIngredient(2), 'H', HULL.getIngredient(2), 'C', OreDictNames.chestWood);
+        ModHandler.addShapedRecipe("buffer_hv", GATileEntities.BUFFER[2].getStackForm(), " G ", " H ", " C ", 'G', GLASS.getIngredient(3), 'H', HULL.getIngredient(3), 'C', OreDictNames.chestWood);
 
         //Machines
         registerMachineRecipe(GATileEntities.CIRCUITASSEMBLER, "ACE", "VMV", "WCW", 'M', HULL, 'V', CONVEYOR, 'A', ROBOT_ARM, 'C', BETTER_CIRCUIT, 'W', CABLE_SINGLE, 'E', EMITTER);
