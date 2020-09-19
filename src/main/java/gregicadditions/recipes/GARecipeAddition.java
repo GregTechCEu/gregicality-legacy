@@ -3065,6 +3065,47 @@ public class GARecipeAddition {
                     .duration(200)
                     .buildAndRegister();
         }
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(SaltWater.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(100))
+                .fluidInputs(SulfuricAcid.getFluid(100))
+                .fluidOutputs(AcidicSaltWater.getFluid(1200))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(AcidicSaltWater.getFluid(1000))
+                .fluidInputs(SulfurDioxide.getFluid(500))
+                .fluidInputs(Water.getFluid(500))
+                .fluidOutputs(SulfuricBromineSolution.getFluid(2000))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(SulfuricBromineSolution.getFluid(1000))
+                .fluidInputs(Steam.getFluid(500))
+                .fluidOutputs(HotVapourMixture.getFluid(1500))
+                .EUt(480)
+                .duration(150)
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(HotVapourMixture.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                .fluidOutputs(DampBromine.getFluid(500))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
+                .fluidInputs(DampBromine.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(500))
+                .EUt(480)
+                .duration(500)
+                .buildAndRegister();
+
     }
 
     public static void forestrySupport() {
