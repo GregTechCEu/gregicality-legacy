@@ -130,7 +130,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Dibismusthydroborat = new DustMaterial(909, "dibismuthhydroborat", 0x00B749, MaterialIconSet.SAND, 2, of(new MaterialStack(Bismuth, 2), new MaterialStack(Hydrogen, 1), new MaterialStack(Boron, 1)), 0);
     public static final DustMaterial BismuthTellurite = new DustMaterial(908, "bismuth_tellurite", 0x006B38, MaterialIconSet.SAND, 2, of(new MaterialStack(Bismuth, 2), new MaterialStack(Tellurium, 3)), 0);
     public static final DustMaterial CircuitCompoundMK3 = new DustMaterial(907, "circuit_compound_mkc", 0x003316, MaterialIconSet.SAND, 2, of(new MaterialStack(IndiumGalliumPhosphide, 1), new MaterialStack(Dibismusthydroborat, 3), new MaterialStack(BismuthTellurite, 2)), 0);
-    public static final DustMaterial YttriumOxide = new DustMaterial(906, "yttrium_oxide", 0xC6EBB3, MaterialIconSet.SAND, 2, of(new MaterialStack(Yttrium, 2), new MaterialStack(Oxygen, 3)), 0);
+    public static final DustMaterial YttriumOxide = new DustMaterial(906, "yttrium_oxide", 0xC6EBB3, MaterialIconSet.SAND, 2, of(new MaterialStack(Yttrium, 2), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
     public static final GemMaterial MagnetoResonatic = new GemMaterial(913, "magneto_resonatic", 0xFF97FF, MaterialIconSet.MAGNETIC, 2, of(new MaterialStack(Prasiolite, 3), new MaterialStack(BismuthTellurite, 6), new MaterialStack(CubicZirconia, 1), new MaterialStack(SteelMagnetic, 1)), NO_RECYCLING | DISABLE_DECOMPOSITION | FLAMMABLE | HIGH_SIFTER_OUTPUT | NO_SMELTING);
     public static final IngotMaterial ZirconiumCarbide = new IngotMaterial(905, "zirconium_carbide", 0xFFDACD, MaterialIconSet.SHINY, 2, of(new MaterialStack(Zirconium, 1), new MaterialStack(Carbon, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 0);
     public static final DustMaterial Zirkelite = new DustMaterial(904, "zirkelite", 0x6B5E6A, MaterialIconSet.DULL, 4, of(new MaterialStack(Calcium, 1), new MaterialStack(Thorium, 1), new MaterialStack(Cerium, 1), new MaterialStack(Zirconium, 1), new MaterialStack(Rutile, 2), new MaterialStack(Niobium, 2), new MaterialStack(Oxygen, 7)), GENERATE_ORE);
@@ -411,9 +411,9 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial Butyraldehyde = new SimpleFluidMaterial("butyraldehyde", 0xe7cf6e);
     public static final SimpleFluidMaterial Ethylhexanol = new SimpleFluidMaterial("ethylhexanol", 0xfeea9a);
-    public static final SimpleFluidMaterial DiethylhexylPhosphoricAcid = new SimpleFluidMaterial("di_ethylhexyl_phosphoric_acid", 0xffff99);
+    public static final SimpleFluidMaterial DiethylhexylPhosphoricAcid = new SimpleFluidMaterial("diethylhexyl_phosphoric_acid", 0xffff99);
     public static final SimpleFluidMaterial SodiumHydroxideSolution = new SimpleFluidMaterial("sodium_hydroxide_solution", 0x6699ff);
-    public static final SimpleFluidMaterial TrisodiumPhosphate = new SimpleFluidMaterial("trisodium_phosphate", 0x70ffc8);
+    public static final SimpleFluidMaterial TriSodiumPhosphate = new SimpleFluidMaterial("trisodium_phosphate", 0x70ffc8);
     public static final SimpleFluidMaterial RareEarthHydroxidesSolution = new SimpleFluidMaterial("rare_earth_hydroxides_solution", 0xcfb37d);
     public static final SimpleFluidMaterial RareEarthChloridesSolution = new SimpleFluidMaterial("rare_earth_chlorides_solution", 0x164b45);
     public static final SimpleDustMaterial ThUSludge = new SimpleDustMaterial("thorium_uranium_sludge",0x002908, (short) 7, MaterialIconSet.DULL);
@@ -428,7 +428,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial EuropiumOxide = new SimpleDustMaterial("europium_oxide",Europium.materialRGB, (short) 12, Europium.materialIconSet);
     public static final SimpleDustMaterial GadoliniumOxide = new SimpleDustMaterial("gadolinium_oxide",Gadolinium.materialRGB, (short) 13, Gadolinium.materialIconSet);
     public static final SimpleDustMaterial SamariumOxide = new SimpleDustMaterial("samarium_oxide",Samarium.materialRGB, (short) 14, Samarium.materialIconSet);
-    //public static final SimpleDustMaterial YttriumOxide = new SimpleDustMaterial("Yttrium_oxide",Yttrium.materialRGB, (short) 7, Yttrium.materialIconSet);
     public static final SimpleDustMaterial TerbiumOxide = new SimpleDustMaterial("terbium_oxide",Terbium.materialRGB, (short) 15, Terbium.materialIconSet);
     public static final SimpleDustMaterial DysprosiumOxide = new SimpleDustMaterial("dysprosium_oxide",Dysprosium.materialRGB, (short) 16, Dysprosium.materialIconSet);
     public static final SimpleDustMaterial HolmiumOxide = new SimpleDustMaterial("holmium_oxide",Holmium.materialRGB, (short) 17, Holmium.materialIconSet);
@@ -436,6 +435,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide",Thulium.materialRGB, (short) 19, Thulium.materialIconSet);
     public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide",Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet);
     public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide",Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
+    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide",Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
 
 
 
