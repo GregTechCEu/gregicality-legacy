@@ -1396,6 +1396,7 @@ gtadditions.multiblock.universal.tooltip.2=EUt Multiplier: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.3=Duration Multiplier: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.4=Max Parallel: §e%d§7 Per Overclocking Tier
 gtadditions.multiblock.universal.tooltip.5=Boost Chance: §e%d%%§r
+gtadditions.multiblock.fusion_reactor.heat=Heat: %d
 
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternatively each sec.
