@@ -18,7 +18,6 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -183,6 +182,7 @@ public class Gregicality {
         GAMetaBlocks.registerOreDict();
         GAMetaItems.registerRecipes();
         GARecipeAddition.init2();
+        GARecipeAddition.init3();
         GARecipeAddition.forestrySupport();
         MatterReplication.init();
         MachineCraftingRecipes.init();

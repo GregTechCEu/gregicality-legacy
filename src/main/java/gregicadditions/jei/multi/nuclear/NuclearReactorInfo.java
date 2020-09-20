@@ -1,11 +1,13 @@
 package gregicadditions.jei.multi.nuclear;
 
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.StoneBlock;
+import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
@@ -34,20 +36,27 @@ public class NuclearReactorInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         return Arrays.stream(MetaTileEntityNuclearReactor.RodType.values()).map(rodType -> MultiblockShapeInfo.builder()
-                .aisle("YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY")
-                .aisle("YYY", "YRY", "YRY", "YRY", "YRY", "YRY", "YRY", "YRY", "YYY")
-                .aisle("YSY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY")
+                .aisle("YEY", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "YYY")
+                .aisle("YYY", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "YYY")
+                .aisle("ISO", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "FYG")
                 .where('S', reactor, EnumFacing.SOUTH)
                 .where('R', rodType.casingState)
                 .where('Y', GAMetaBlocks.getMetalCasingBlockState(Lead))
+                .where('Z', GAMetaBlocks.getMetalCasingBlockState(Lead))
+                .where('Z', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
+                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
+                .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.SOUTH)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
+                .where('G', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.SOUTH)
+                .where('G', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.NORTH)
                 .where('#', Blocks.AIR.getDefaultState())
                 .build()).collect(Collectors.toList());
     }
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gregtech.multiblock.reactor.description")};
+        return new String[]{I18n.format("gtadditions.multiblock.reactor.description")};
     }
 
 }

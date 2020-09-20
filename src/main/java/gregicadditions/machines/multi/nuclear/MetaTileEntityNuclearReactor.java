@@ -2,6 +2,8 @@ package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GATransparentCasing;
+import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -30,6 +32,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -46,33 +49,33 @@ import static gregtech.api.unification.material.Materials.*;
 public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
-        THORIUM(110,
+        THORIUM(0,
                 MetaBlocks.COMPRESSED.get(Thorium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Thorium).variantProperty, Thorium)),
-        URANIUM(115,
+        URANIUM(2,
                 MetaBlocks.COMPRESSED.get(Uranium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Uranium).variantProperty, Uranium)),
-        PLUTONIUM(120,
+        PLUTONIUM(10,
                 MetaBlocks.COMPRESSED.get(Plutonium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Plutonium).variantProperty, Plutonium)),
-        AMERICIUM(127,
+        AMERICIUM(15,
                 MetaBlocks.COMPRESSED.get(Americium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Americium).variantProperty, Americium)),
-        CURIUM(135,
+        CURIUM(25,
                 MetaBlocks.COMPRESSED.get(Curium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Curium.getMaterial()).variantProperty, Curium.getMaterial())),
-        BERKELIUM(145,
+        BERKELIUM(35,
                 MetaBlocks.COMPRESSED.get(Berkelium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Berkelium.getMaterial()).variantProperty, Berkelium.getMaterial())),
-        CALIFORNIUM(155,
+        CALIFORNIUM(50,
                 MetaBlocks.COMPRESSED.get(Californium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Californium.getMaterial()).variantProperty, Californium.getMaterial())),
-        EINSTEINIUM(170,
+        EINSTEINIUM(75,
                 MetaBlocks.COMPRESSED.get(Einsteinium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Einsteinium.getMaterial()).variantProperty, Einsteinium.getMaterial())),
-        FERMIUM(185,
+        FERMIUM(100,
                 MetaBlocks.COMPRESSED.get(Fermium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Fermium.getMaterial()).variantProperty, Fermium.getMaterial())),
         MENDELEVIUM(200,
                 MetaBlocks.COMPRESSED.get(Mendelevium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Mendelevium.getMaterial()).variantProperty, Mendelevium.getMaterial()));
 
 
-        public final int maxTemperature;
+        public final int additionalTemperature;
         public final IBlockState casingState;
 
-        RodType(int maxTemperature, IBlockState casingState) {
-            this.maxTemperature = maxTemperature;
+        RodType(int additionalTemperature, IBlockState casingState) {
+            this.additionalTemperature = additionalTemperature;
             this.casingState = casingState;
         }
 
@@ -85,6 +88,7 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
 
     public MetaTileEntityNuclearReactor(ResourceLocation metaTileEntityId, RecipeMap<?> recipe) {
         super(metaTileEntityId, recipe);
+        recipeMapWorkable.setAllowOverclocking(false);
         reinitializeStructurePattern();
     }
 
@@ -98,11 +102,13 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY")
-                .aisle("YYY", "YRY", "YRY", "YRY", "YRY", "YRY", "YRY", "YRY", "YYY")
-                .aisle("YSY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY", "YYY")
+                .aisle("YYY", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "YYY")
+                .aisle("YYY", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "YYY")
+                .aisle("YSY", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "YYY")
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('Z', statePredicate(getCasingState()))
+                .where('X', statePredicate(getGlassCasing()).or(statePredicate(getCasingState())))
                 .where('R', heatingCoilPredicate())
                 .build();
     }
@@ -114,8 +120,8 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
             if (!optionalRodType.isPresent()) {
                 return false;
             }
-            RodType rodType = blockWorldState.getMatchContext().getOrPut("rodType", optionalRodType.get());
-            return rodType.getName().equals(optionalRodType.get().getName());
+            blockWorldState.getMatchContext().increment("rodAdditionalTemperature", optionalRodType.get().additionalTemperature);
+            return true;
 
         };
     }
@@ -123,18 +129,22 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.1"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.2"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.3"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.4"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.5"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.6"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.7"));
-        tooltip.add(I18n.format("gregtech.multiblock.reactor.tooltip.8"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.4"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.5"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.6"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.7"));
+        tooltip.add(I18n.format("gtadditions.multiblock.reactor.tooltip.8"));
     }
 
     public IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(Lead);
+    }
+
+    public IBlockState getGlassCasing() {
+        return GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS);
     }
 
     @Override
@@ -142,43 +152,36 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
         return GAMetaBlocks.METAL_CASING.get(Lead);
     }
 
-
-    private int currentTemperature = 300;
     private boolean notEnoughCoolant = true;
     private FluidMaterial coolant;
     private Fluid hotCoolant;
     private int recipeBaseHeat;
-    private boolean overheat = false;
-    private RodType rodType;
+    private int rodAdditionalTemperature;
+    private int euPerTick;
 
 
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
-        this.currentTemperature = 300; //reset temperature
     }
 
 
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        this.rodType = context.getOrDefault("rodType", RodType.THORIUM);
+        rodAdditionalTemperature = context.getOrDefault("rodAdditionalTemperature", 0);
 
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", this.currentTemperature - 273, hotCoolant != null ? hotCoolant.getTemperature() * rodType.maxTemperature / 100 - 273 : 100));
             textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.base_heat", recipeBaseHeat));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.rod_type", rodType.maxTemperature - 100));
-            if (hotCoolant != null && currentTemperature > hotCoolant.getTemperature() && currentTemperature < hotCoolant.getTemperature() * rodType.maxTemperature / 100) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.produce").setStyle(new Style().setColor(TextFormatting.GREEN)));
-            }
-            if (coolant != null)
-                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant", new TextComponentTranslation(coolant.getUnlocalizedName()), hotCoolant.getTemperature() - 273));
-            if (overheat) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.additional_temperature", rodAdditionalTemperature));
+            if (hotCoolant != null)
+                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant_needed", coolantNeeded()));
+            if (notEnoughCoolant) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.not_enough_coolant").setStyle(new Style().setColor(TextFormatting.RED)));
             }
         }
 
@@ -188,70 +191,65 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
         recipeBaseHeat = recipe.getIntegerProperty("base_heat_production");
+        euPerTick = recipe.getEUt();
         return true;
+    }
+
+    public int coolantNeeded() {
+        return (recipeBaseHeat + rodAdditionalTemperature) * coolantRatio();
+    }
+
+    public int coolantRatio() {
+        return (15000 / (hotCoolant.getTemperature() - 273));
     }
 
     @Override
     protected void updateFormedValid() {
-        super.updateFormedValid();
-
-
-        if (!recipeMapWorkable.isActive() || recipeMapWorkable.isHasNotEnoughEnergy() || overheat || !recipeMapWorkable.isWorkingEnabled()) {
-            if (currentTemperature > 300)
-                --currentTemperature;
-            else
-                overheat = false;
-
-            if (!recipeMapWorkable.isActive()) {
-                recipeBaseHeat = 0;
+        if (!getWorld().isRemote) {
+            recipeMapWorkable.updateWorkable();
+            if (recipeMapWorkable.isHasNotEnoughEnergy() || !recipeMapWorkable.isWorkingEnabled()) {
+                return;
             }
-            return;
-        }
+            if (getTimer() % 20 == 0) {
 
-        if (getTimer() % 20 == 0) {
-            this.currentTemperature += recipeBaseHeat;
-
-            FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
-            if (fluidStack != null) {
-                coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());
-                hotCoolant = GAMetaFluids.HOT_FLUIDS.get(coolant);
-                if (hotCoolant != null) {
-                    fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, true);
-                    int extraHeat = currentTemperature - hotCoolant.getTemperature();
-
-                    if (extraHeat > 0) {
-                        if (extraHeat >= fluidStack.amount / 1000) {
-                            outputFluidInventory.fill(GAMetaFluids.getHotFluid(coolant, fluidStack.amount), true);
-                        } else {
-                            outputFluidInventory.fill(GAMetaFluids.getHotFluid(coolant, extraHeat * 1000), true);
-                            outputFluidInventory.fill(coolant.getFluid(fluidStack.amount - extraHeat * 1000), true);
+                FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
+                if (fluidStack != null) {
+                    coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());
+                    hotCoolant = GAMetaFluids.HOT_FLUIDS.get(coolant);
+                    if (hotCoolant != null) {
+                        fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantNeeded()), true);
+                        if (fluidStack.amount < coolantNeeded()) {
+                            notEnoughCoolant = true;
+                            inputFluidInventory.fill(fluidStack, true);
+                            return;
                         }
-                    } else {
-                        outputFluidInventory.fill(coolant.getFluid(fluidStack.amount), true);
-                    }
-
-                    currentTemperature = Math.max(300, currentTemperature - fluidStack.amount / 1000);
-                    if (currentTemperature > hotCoolant.getTemperature() * rodType.maxTemperature / 100) {
-                        overheat = true;
                         notEnoughCoolant = false;
-                        recipeMapWorkable.setWorkingEnabled(false);
-                        return;
+                        outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
+
+                        boolean overclock = true;
+                        do {
+                            fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantRatio()), true);
+                            if (fluidStack == null || fluidStack.amount < coolantRatio()) {
+                                overclock = false;
+                                if (fluidStack != null)
+                                    inputFluidInventory.fill(fluidStack, true);
+                            } else {
+                                int progressTime = ObfuscationReflectionHelper.getPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, "progressTime");
+                                ObfuscationReflectionHelper.setPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, progressTime + 20, "progressTime");
+                                outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
+                            }
+
+                        } while (overclock);
+
                     }
+                } else {
+                    hotCoolant = null;
+                    coolant = null;
                 }
-            } else {
-                coolant = null;
-                hotCoolant = null;
-                if (currentTemperature > 373) {
-                    overheat = true;
-                    notEnoughCoolant = false;
-                    recipeMapWorkable.setWorkingEnabled(false);
-                    return;
-                }
+
+
             }
-
-
         }
-
 
     }
 
@@ -259,18 +257,14 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
-        data.setInteger("CurrentTemperature", currentTemperature);
         data.setInteger("recipeBaseHeat", recipeBaseHeat);
-        data.setBoolean("overheat", overheat);
         return data;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        this.currentTemperature = data.getInteger("CurrentTemperature");
         this.recipeBaseHeat = data.getInteger("recipeBaseHeat");
-        this.overheat = data.getBoolean("overheat");
     }
 
 

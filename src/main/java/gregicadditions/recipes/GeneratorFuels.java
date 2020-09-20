@@ -37,13 +37,13 @@ public class GeneratorFuels {
         FuelRecipes.registerSteamGeneratorFuel(Steam.getFluid(640), 10, GTValues.LV);
 
         //reactor turbine
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Steam, 50), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Deuterium, 45), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(SodiumPotassiumAlloy, 40), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Sodium, 47), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiNaK, 25), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiBe, 30), 1, GTValues.V[GTValues.LV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(LeadBismuthEutectic, 35), 1, GTValues.V[GTValues.LV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Steam, 570), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Deuterium, 240), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(SodiumPotassiumAlloy, 120), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Sodium, 100), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiNaK, 50), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiBe, 55), 1, GTValues.V[GTValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(LeadBismuthEutectic, 60), 1, GTValues.V[GTValues.EV]));
 
         //Gas Turbine Fuels
         FuelRecipes.registerGasGeneratorFuel(NaturalGas.getFluid(20), 13, GTValues.LV);
