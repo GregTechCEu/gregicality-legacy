@@ -9,7 +9,6 @@ import gregicadditions.Gregicality;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
-import gregicadditions.recipes.chain.*;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.CountableIngredient;
@@ -1354,6 +1353,200 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, UVSuperconductor, 16), MICA_INSULATOR_FOIL.getStackForm(16)).fluidInputs(NaquadahAlloy.getFluid(144 * 2)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(wireGtDouble, Tier.Superconductor, 8), MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
 
+        //Platinum Process
+
+        BLAST_RECIPES.recipeBuilder()
+                .blastFurnaceTemp(775)
+                .input(dust, IrLeachResidue)
+                .outputs(OreDictUnifier.get(dust, IridiumDioxide))
+                .outputs(OreDictUnifier.get(dust, PGSDResidue))
+                .EUt(120)
+                .duration(200)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, IridiumDioxide)
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(AcidicIridiumSolution.getFluid(1000))
+                .duration(300)
+                .EUt(30)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(AcidicIridiumSolution.getFluid(1000))
+                .fluidInputs(AmmoniumChloride.getFluid(3000))
+                .fluidOutputs(Ammonia.getFluid(3000))
+                .outputs(OreDictUnifier.get(dust, IridiumChloride))
+                .duration(300)
+                .EUt(30)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, IridiumChloride)
+                .input(dust, Calcium, 3)
+                .fluidOutputs(CalciumChloride.getFluid(3000))
+                .outputs(OreDictUnifier.get(dust, PGSDResidue2))
+                .outputs(OreDictUnifier.get(dust, Iridium))
+                .duration(300)
+                .EUt(1920)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, PlatinumMetallicPowder)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(PlatinumConcentrate.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumResidue))
+                .EUt(30)
+                .duration(250)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(AquaRegia.getFluid(1000))
+                .EUt(30)
+                .duration(30)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+                .input(dust, PotassiumDisulfate)
+                .fluidOutputs(PotassiumDisulfate.getFluid(144)).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(0))
+                .input(dust, Potassium, 2)
+                .input(dust, Sulfur, 2)
+                .fluidInputs(Oxygen.getFluid(7000))
+                .outputs(OreDictUnifier.get(dust, PotassiumDisulfate, 11))
+                .EUt(90)
+                .duration(42)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, PlatinumResidue)
+                .fluidInputs(PotassiumDisulfate.getFluid(360))
+                .outputs(OreDictUnifier.get(dust, LeachResidue))
+                .fluidOutputs(RhodiumSulfate.getFluid(360))
+                .blastFurnaceTemp(775)
+                .EUt(120)
+                .duration(200)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, Saltpeter, 10)
+                .input(dust, LeachResidue, 10)
+                .fluidInputs(SaltWater.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, IrOsLeachResidue, 6))
+                .outputs(OreDictUnifier.get(dust, SodiumRuthenate, 3))
+                .fluidOutputs(Steam.getFluid(1000))
+                .blastFurnaceTemp(775)
+                .EUt(120)
+                .duration(200)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .input(dust, IrOsLeachResidue, 2)
+                .fluidOutputs(AcidicOsmiumSolution.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, IrLeachResidue))
+                .blastFurnaceTemp(775)
+                .EUt(120)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidOutputs(AmmoniumChloride.getFluid(1000))
+                .EUt(30)
+                .duration(15)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(PlatinumConcentrate.getFluid(2000))
+                .fluidInputs(AmmoniumChloride.getFluid(200))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumSaltCrude, 12))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 6))
+                .fluidOutputs(PalladiumAmmonia.getFluid(200))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .EUt(30)
+                .duration(1200)
+                .buildAndRegister();
+
+        //PTSalt
+
+        SIFTER_RECIPES.recipeBuilder()
+                .input(dust, PlatinumSaltCrude)
+                .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined), 9500, 0)
+                .EUt(2)
+                .duration(400)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, PlatinumSaltRefined)
+                .outputs(OreDictUnifier.get(dust, PlatinumMetallicPowder))
+                .fluidOutputs(Chlorine.getFluid(87))
+                .EUt(120)
+                .blastFurnaceTemp(775)
+                .duration(200)
+                .buildAndRegister();
+
+        //Platinum
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, PlatinumRawPowder, 2)
+                .input(dust, Calcium)
+                .outputs(OreDictUnifier.get(dust, Platinum, 2))
+                .outputs(OreDictUnifier.get(dust, CalciumChloride))
+                .EUt(30)
+                .duration(250)
+                .buildAndRegister();
+
+        //Palldium
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Ammonia.getFluid(1000))
+                .input(dust, PalladiumMetallicPowder)
+                .fluidOutputs(PalladiumAmmonia.getFluid(1000))
+                .EUt(30)
+                .duration(250)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidInputs(PalladiumAmmonia.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PalladiumSalt))
+                .EUt(30)
+                .duration(250)
+                .buildAndRegister();
+
+        SIFTER_RECIPES.recipeBuilder()
+                .input(dust, PalladiumSalt)
+                .chancedOutput(OreDictUnifier.get(dust, PalladiumMetallicPowder), 9500, 0)
+                .EUt(2)
+                .duration(400)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(PalladiumAmmonia.getFluid(1000))
+                .input(dust, PalladiumMetallicPowder)
+                .outputs(OreDictUnifier.get(dustTiny, PalladiumSalt, 12))
+                .outputs(OreDictUnifier.get(dustTiny, PalladiumRawPowder, 6))
+                .EUt(30)
+                .duration(250)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, PalladiumRawPowder, 2)
+                .fluidInputs(FormicAcid.getFluid(4000))
+                .fluidOutputs(Ammonia.getFluid(2000))
+                .fluidOutputs(Ethylene.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Palladium, 2))
+                .EUt(1920)
+                .duration(300)
+                .buildAndRegister();
 
         //Formic acid
         CHEMICAL_RECIPES.recipeBuilder()
@@ -1373,6 +1566,638 @@ public class GARecipeAddition {
                 .duration(15)
                 .buildAndRegister();
 
+        //Rhodium
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(RhodiumSulfate.getFluid(11000))
+                .fluidInputs(Water.getFluid(10000))
+                .fluidOutputs(Potassium.getFluid(2000))
+                .fluidOutputs(RhodiumSulfateSolution.getFluid(11000))
+                .outputs(OreDictUnifier.get(dustTiny, LeachResidue, 10))
+                .EUt(30)
+                .duration(1200)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(RhodiumSulfateSolution.getFluid(1000))
+                .input(dust, Zinc)
+                .outputs(OreDictUnifier.get(dust, ZincSulfate, 6))
+                .outputs(OreDictUnifier.get(dust, CrudeRhodiumMetall))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, CrudeRhodiumMetall)
+                .input(dust, Salt)
+                .fluidInputs(Chlorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, RhodiumSalt))
+                .blastFurnaceTemp(775)
+                .EUt(120)
+                .duration(300)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, RhodiumSalt)
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidOutputs(RhodiumSaltSolution.getFluid(200))
+                .EUt(30)
+                .duration(30)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Sodium)
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, SodiumNitrate, 2))
+                .EUt(60)
+                .duration(8)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(RhodiumSaltSolution.getFluid(1000))
+                .input(dust, SodiumNitrate)
+                .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(OreDictUnifier.get(dust, RhodiumNitrate))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        SIFTER_RECIPES.recipeBuilder()
+                .input(dust, RhodiumNitrate)
+                .chancedOutput(OreDictUnifier.get(dust, RhodiumFilterCake), 9500, 0)
+                .EUt(30)
+                .duration(600)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, RhodiumFilterCake)
+                .fluidInputs(Water.getFluid(1000))
+                .fluidOutputs(RhodiumFilterCakeSolution.getFluid(1000))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(RhodiumFilterCakeSolution.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, ReRhodium))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, ReRhodium)
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Rhodium))
+                .fluidOutputs(Ammonia.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        //Ruthenium
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, SodiumRuthenate, 2)
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidOutputs(RutheniumTetroxideSolution.getFluid(3000))
+                .EUt(30)
+                .duration(100)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(Steam.getFluid(1000))
+                .fluidInputs(RutheniumTetroxideSolution.getFluid(1000))
+                .fluidOutputs(HotRutheniumTetroxideSolution.getFluid(2000))
+                .EUt(480)
+                .duration(150)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(HotRutheniumTetroxideSolution.getFluid(9000))
+                .outputs(OreDictUnifier.get(dust, Salt))
+                .fluidOutputs(RutheniumTetroxide.getFluid(7200))
+                .fluidOutputs(Water.getFluid(1800))
+                .duration(1500)
+                .EUt(480)
+                .buildAndRegister();
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidInputs(RutheniumTetroxide.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, RutheniumTetroxide))
+                .EUt(8)
+                .duration(16)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, RutheniumTetroxide)
+                .fluidInputs(HydrochloricAcid.getFluid(6000))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Chlorine.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, Ruthenium))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        //Osmium
+        ValidationResult<Recipe> result = DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(AcidicOsmiumSolution.getFluid(1000))
+                .fluidOutputs(OsmiumSolution.getFluid(500))
+                .fluidOutputs(Water.getFluid(500))
+                .EUt(7680)
+                .duration(150).build();
+        DISTILLATION_RECIPES.addRecipe(result);
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(OsmiumSolution.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, Osmium))
+                .fluidOutputs(Chlorine.getFluid(7000))
+                .fluidOutputs(Water.getFluid(2000))
+                .EUt(30)
+                .duration(300)
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, PGSDResidue, 5)
+                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 3))
+                .outputs(OreDictUnifier.get(dust, Gold, 2))
+                .EUt(10)
+                .duration(226)
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, PGSDResidue2, 2)
+                .outputs(OreDictUnifier.get(dust, Nickel))
+                .outputs(OreDictUnifier.get(dust, Copper))
+                .EUt(10)
+                .duration(60)
+                .buildAndRegister();
+
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .input(ingot, Palladium, 3)
+                .fluidInputs(Rhodium.getFluid(144))
+                .outputs(OreDictUnifier.get(ingotHot, RhodiumPlatedPalladium, 4))
+                .EUt(7980)
+                .duration(200)
+                .buildAndRegister();
+
+        //platics Polybenzimidazole
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Diaminobenzidine.getFluid(1000))
+                .fluidInputs(Diphenylisophtalate.getFluid(1000))
+                .fluidOutputs(Phenol.getFluid(1000))
+                .fluidOutputs(Polybenzimidazole.getFluid(1000))
+                .EUt(7500)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Phenol.getFluid(2000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(PhthalicAcid.getFluid(1000))
+                .fluidOutputs(Diphenylisophtalate.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
+                .EUt(7500)
+                .duration(1000)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Methane.getFluid(2000))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidOutputs(Dimethylbenzene.getFluid(3000))
+                .EUt(120)
+                .duration(4000)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dustTiny, Potassiumdichromate)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(PhthalicAcid.getFluid(1000))
+                .EUt(1920)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Zinc)
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidInputs(Dichlorobenzidine.getFluid(1000))
+                .fluidOutputs(Diaminobenzidine.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .EUt(7500)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dustTiny, Copper)
+                .fluidInputs(Nitrochlorobenzene.getFluid(1000))
+                .fluidOutputs(Dichlorobenzidine.getFluid(1000))
+                .EUt(1920)
+                .duration(200)
+                .buildAndRegister();
+
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .input(dust, ZincSulfate, 6)
+                .outputs(OreDictUnifier.get(dust, Zinc))
+                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .fluidInputs(Oxygen.getFluid(4000))
+                .EUt(90)
+                .duration(26)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Chrome)
+                .fluidInputs(Oxygen.getFluid(3000))
+                .outputs(OreDictUnifier.get(dust, ChromiumTrioxide, 1))
+                .EUt(60)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, ChromiumTrioxide, 2)
+                .input(dust, PotassiumNitrade, 2)
+                .outputs(OreDictUnifier.get(dust, Potassiumdichromate))
+                .EUt(480)
+                .duration(100)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PotassiumNitrade))
+                .EUt(30)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(Chlorobenzene.getFluid(1000))
+                .fluidOutputs(Nitrochlorobenzene.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .EUt(480)
+                .duration(100)
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(2000))
+                .fluidOutputs(Chlorobenzene.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .EUt(30)
+                .duration(240)
+                .buildAndRegister();
+
+        //GOLD process
+
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, PreciousMetal), OreDictUnifier.get(nugget, Gold));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(dust, GoldLeach), OreDictUnifier.get(nugget, Gold, 2));
+
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(800).blastFurnaceTemp(750)
+                .input(dust, PreciousMetal)
+                .input(dust, Copper, 3)
+                .outputs(OreDictUnifier.get(ingot, GoldAlloy, 4))
+                .buildAndRegister();
+
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(ingot, GoldAlloy, 4)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, GoldLeach))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(PreciousLeachNitrate.getFluid(3000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, GoldLeach)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .chancedOutput(OreDictUnifier.get(dustTiny, LeadNitrate), 1000, 0)
+                .fluidOutputs(ChloroauricAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .notConsumable(new IntCircuitIngredient(1))
+                .input(dust, Potassium, 2)
+                .input(dust, Sulfur, 2)
+                .fluidInputs(Oxygen.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, PotassiumMetabisulfite, 9))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(3000)
+                .input(dust, PotassiumMetabisulfite)
+                .fluidInputs(ChloroauricAcid.getFluid(10000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Gold, 9))
+                .fluidOutputs(SulfurDioxide.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(3000)
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(PreciousLeachNitrate.getFluid(10000))
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SilverChloride, 3))
+                .fluidOutputs(CopperLeach.getFluid(7000))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, SilverChloride, 2)
+                .input(dust, SodiumHydroxide)
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SilverOxide, 2))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
+                .input(dust, SilverOxide, 2)
+                .input(dust, Carbon)
+                .outputs(OreDictUnifier.get(ingot, Silver, 3))
+                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .buildAndRegister();
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(3000)
+                .fluidInputs(CopperLeach.getFluid(10000))
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
+                .buildAndRegister();
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .input(dust, CopperLeach, 9)
+                .outputs(OreDictUnifier.get(dustTiny, Copper, 8))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 5000, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Nickel), 5000, 0)
+                .buildAndRegister();
+
+
+        //NUCLEAR PROCESSING
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(THORIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(URANIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(NEPTUNIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(PLUTONIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(AMERICIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(CURIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(BERKELIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(CALIFORNIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(EINSTEINIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(FERMIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(120)
+                .inputs(MENDELEVIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(300).EUt(120)
+                .input(dust, Potassium, 3)
+                .input(dust, Sodium, 7)
+                .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 10))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(2000).EUt(240)
+                .input(dust, Lithium)
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, LithiumHydroxide))
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, LithiumHydroxide)
+                .fluidInputs(HydrofluoricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, LithiumFluoride))
+                .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Sodium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SodiumFluoride))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Potassium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PotassiumFluoride))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().EUt(64).duration(600)
+                .input(dust, LithiumFluoride)
+                .input(dust, SodiumFluoride)
+                .input(dust, PotassiumFluoride)
+                .outputs(OreDictUnifier.get(dust, FLiNaK, 3))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .input(dust, Beryllium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, BerylliumFluoride))
+                .buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(600).EUt(64)
+                .input(dust, LithiumFluoride)
+                .input(dust, BerylliumFluoride)
+                .outputs(OreDictUnifier.get(dust, FLiBe, 2))
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(dust, Lead, 3)
+                .input(dust, Bismuth, 7)
+                .outputs(OreDictUnifier.get(dust, LeadBismuthEutectic, 10))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(560).duration(2000).input(dust, LeadBismuthEutectic).fluidOutputs(LeadBismuthEutectic.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(2000).input(dust, FLiBe).fluidOutputs(FLiBe.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(1000).input(dust, FLiNaK).fluidOutputs(FLiNaK.getFluid(GTValues.L)).buildAndRegister();
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60).input(dust, SodiumPotassiumAlloy).fluidOutputs(SodiumPotassiumAlloy.getFluid(GTValues.L)).buildAndRegister();
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
+
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE_LANTHANIDE_A.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_LANTHANIDE_B.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_ALKALINE.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_HEAVY_METAL.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_A.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_B.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METAL_C.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_REACTIVE_NONMETAL.getStackForm(), 2500, 1500)
+                .chancedOutput(NUCLEAR_WASTE_METALOID.getStackForm(), 2500, 1500).buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_HEAVY_METAL.getStackForm())
+                .fluidOutputs(Mercury.getFluid(36))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Zinc, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gallium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cadmium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Indium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tin, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thallium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lead, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Bismuth, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Polonium, 2), 2500, 1500)
+                .buildAndRegister();
+
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_LANTHANIDE_A.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Dysprosium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Holmium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Erbium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thulium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Ytterbium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lutetium, 2), 2500, 1500)
+                .buildAndRegister();
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_LANTHANIDE_B.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Lanthanum, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cerium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Praseodymium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neodymium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Promethium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Samarium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Europium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gadolinium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Terbium, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_A.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Hafnium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tantalum, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tungsten, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Osmium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iridium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Platinum, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Gold, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_B.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Yttrium, 2), 1700, 700)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Zirconium, 2), 1800, 800)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Niobium, 2), 1900, 900)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Molybdenum, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Technetium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Ruthenium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhodium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Palladium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Silver, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METAL_C.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iron, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Cobalt, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Nickel, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Copper, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_METALOID.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Germanium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Arsenic, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Antimony, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Tellurium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Astatine, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Actinium, 2), 2500, 1500)
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_ALKALINE.getStackForm())
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rubidium, 2), 2000, 1000)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Strontium, 2), 2100, 1100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Caesium, 2), 2200, 1200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Barium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Francium, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Radium, 2), 2500, 1500)
+                .buildAndRegister();
+
+
+        CENTRIFUGE_RECIPES.recipeBuilder().EUt(32).duration(3000)
+                .inputs(NUCLEAR_WASTE_REACTIVE_NONMETAL.getStackForm())
+                .fluidOutputs(Krypton.getFluid(36))
+                .fluidOutputs(Xenon.getFluid(72))
+                .fluidOutputs(Radon.getFluid(144))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Selenium, 2), 2300, 1300)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 2400, 1400)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 2500, 1500)
+                .buildAndRegister();
+
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .EUt(60)
+                .duration((int) Uraninite.getAverageProtons() * 3 * 8)
+                .input(dust, Uraninite, 3)
+                .outputs(OreDictUnifier.get(dust, UraniumRadioactive.getMaterial()))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .buildAndRegister();
+
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Calcium, 5)
@@ -1382,6 +2207,655 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, OrganicFertilizer, 10))
                 .buildAndRegister();
 
+        //Tungsten process
+        if (GAConfig.Misc.tungstenProcess) {
+            MIXER_RECIPES.recipeBuilder()
+                    .input(dust, Scheelite, 7)
+                    .input(dust, SodiumHydroxide, 4)
+                    .fluidInputs(Water.getFluid(4000))
+                    .outputs(OreDictUnifier.get(dust, Calcium, 2))
+                    .fluidOutputs(SodiumTungstate.getFluid(4000))
+                    .EUt(480)
+                    .duration(150)
+                    .buildAndRegister();
+
+            MIXER_RECIPES.recipeBuilder()
+                    .input(dust, Tungstate, 7)
+                    .input(dust, SodiumHydroxide, 4)
+                    .fluidInputs(Water.getFluid(4000))
+                    .outputs(OreDictUnifier.get(dust, Lithium, 2))
+                    .fluidOutputs(SodiumTungstate.getFluid(4000))
+                    .EUt(480)
+                    .duration(150)
+                    .buildAndRegister();
+
+            CHEMICAL_RECIPES.recipeBuilder()
+                    .input(dust, CalciumChloride)
+                    .fluidInputs(SodiumTungstate.getFluid(4000))
+                    .outputs(OreDictUnifier.get(dust, CalciumTungstate))
+                    .fluidOutputs(SaltWater.getFluid(3000))
+                    .EUt(480)
+                    .duration(150)
+                    .buildAndRegister();
+
+            CHEMICAL_RECIPES.recipeBuilder()
+                    .input(dust, CalciumTungstate)
+                    .fluidInputs(Water.getFluid(2000))
+                    .fluidInputs(HydrochloricAcid.getFluid(1000))
+                    .outputs(OreDictUnifier.get(dust, TungsticAcid))
+                    .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                    .EUt(960)
+                    .duration(500)
+                    .buildAndRegister();
+
+            CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
+                    .input(dust, TungsticAcid)
+                    .outputs(OreDictUnifier.get(dust, TungstenTrioxide))
+                    .EUt(120)
+                    .duration(500)
+                    .buildAndRegister();
+
+            CHEMICAL_RECIPES.recipeBuilder()
+                    .input(dust, TungstenTrioxide)
+                    .fluidInputs(Hydrogen.getFluid(1500))
+                    .outputs(OreDictUnifier.get(dust, Tungsten))
+                    .fluidOutputs(Water.getFluid(2250))
+                    .EUt(1920)
+                    .duration(100)
+                    .buildAndRegister();
+
+            CHEMICAL_RECIPES.recipeBuilder()
+                    .input(dust, Tungsten)
+                    .fluidInputs(Chlorine.getFluid(6000))
+                    .outputs(OreDictUnifier.get(dust, TungstenHexachloride))
+                    .duration(600)
+                    .EUt(480)
+                    .buildAndRegister();
+
+            CHEMICAL_RECIPES.recipeBuilder()
+                    .input(dust, TungstenHexachloride)
+                    .fluidInputs(Methane.getFluid(1000))
+                    .fluidInputs(Hydrogen.getFluid(6000))
+                    .outputs(OreDictUnifier.get(dust, TungstenCarbide))
+                    .fluidOutputs(DilutedHydrochloricAcid.getFluid(8000))
+                    .EUt(480)
+                    .duration(600)
+                    .buildAndRegister();
+        }
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, NaquadricCompound)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(NaquadricSolution.getFluid(1000))
+                .EUt(7680)
+                .duration(100)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, EnrichedNaquadricCompound)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(EnrichedNaquadricSolution.getFluid(1000))
+                .EUt(7680)
+                .duration(100)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, NaquadriaticCompound)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(NaquadriaticSolution.getFluid(1000))
+                .EUt(7680)
+                .duration(100)
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(Oxygen.getFluid(3000))
+                .input(dust, Antimony, 2)
+                .outputs(OreDictUnifier.get(dust, AntimonyTrioxide))
+                .EUt(1980)
+                .duration(300)
+                .blastFurnaceTemp(4500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, AntimonyTrioxide)
+                .fluidInputs(HydrofluoricAcid.getFluid(6000))
+                .outputs(AntimonyTrifluoride.getItemStack(2))
+                .fluidOutputs(Water.getFluid(3000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(AntimonyTrifluoride.getItemStack())
+                .fluidInputs(Fluorine.getFluid(2000))
+                .fluidOutputs(AntimonyPentafluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(100)
+                .buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(AntimonyPentafluoride.getFluid(1000))
+                .fluidInputs(HydrofluoricAcid.getFluid(2000))
+                .fluidOutputs(FluoroantimonicAcid.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(Fluorine.getFluid(1000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadricSolution.getFluid(1000))
+                .fluidInputs(FluoroantimonicAcid.getFluid(1000))
+                .outputs(AntimonyTrifluoride.getItemStack())
+                .fluidOutputs(FluoronaquadricAcid.getFluid(2000))
+                .EUt(7680)
+                .duration(300)
+                .buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(EnrichedNaquadricSolution.getFluid(1000))
+                .fluidInputs(FluoroantimonicAcid.getFluid(1000))
+                .outputs(AntimonyTrifluoride.getItemStack())
+                .fluidOutputs(EnrichedFluoronaquadricAcid.getFluid(1000))
+                .EUt(7680)
+                .duration(300)
+                .buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadriaticSolution.getFluid(1000))
+                .fluidInputs(FluoroantimonicAcid.getFluid(1000))
+                .outputs(AntimonyTrifluoride.getItemStack())
+                .fluidOutputs(FluoronaquadriaticAcid.getFluid(1000))
+                .EUt(7680)
+                .duration(300)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(FluoronaquadricAcid.getFluid(2000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(NaquadahDifluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(EnrichedFluoronaquadricAcid.getFluid(2000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(EnrichedNaquadahDifluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(FluoronaquadriaticAcid.getFluid(2000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(NaquadriaDifluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadahDifluoride.getFluid(1000))
+                .input(dust, Indium)
+                .outputs(IndiumTrifluoride.getItemStack())
+                .outputs(NaquadahConcentrate.getItemStack())
+                .EUt(30720)
+                .duration(1000)
+                .blastFurnaceTemp(4500)
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(EnrichedNaquadahDifluoride.getFluid(1000))
+                .input(dust, Indium)
+                .outputs(IndiumTrifluoride.getItemStack())
+                .outputs(EnrichedNaquadahConcentrate.getItemStack())
+                .EUt(30720)
+                .duration(1000)
+                .blastFurnaceTemp(4500)
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadriaDifluoride.getFluid(1000))
+                .input(dust, Indium)
+                .outputs(IndiumTrifluoride.getItemStack())
+                .outputs(NaquadriaConcentrate.getItemStack())
+                .EUt(30720)
+                .duration(1000)
+                .blastFurnaceTemp(4500)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Fluorine.getFluid(6000))
+                .inputs(NaquadriaConcentrate.getItemStack())
+                .fluidOutputs(NaquadriaHexafluoride.getFluid(6000))
+                .EUt(7680)
+                .duration(1000)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Radon.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(2000))
+                .fluidOutputs(RadonDifluoride.getFluid(3000))
+                .EUt(7680)
+                .duration(800)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(RadonDifluoride.getFluid(1000))
+                .fluidInputs(NaquadriaHexafluoride.getFluid(1000))
+                .fluidOutputs(RadonNaquadriaoctafluoride.getFluid(2000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Xenon.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(3000))
+                .fluidOutputs(XenonTrioxide.getFluid(4000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Caesium)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .fluidOutputs(CesiumFluoride.getFluid(2000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(CesiumFluoride.getFluid(1000))
+                .fluidInputs(XenonTrioxide.getFluid(1000))
+                .fluidOutputs(CesiumXenontrioxideFluoride.getFluid(2000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(CesiumXenontrioxideFluoride.getFluid(1000))
+                .fluidInputs(RadonNaquadriaoctafluoride.getFluid(1000))
+                .fluidOutputs(RadonTrioxide.getFluid(1000))
+                .fluidOutputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(1200)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitricOxide.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(1000))
+                .fluidOutputs(NitrosylFluoride.getFluid(2000))
+                .EUt(1920)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitrosylFluoride.getFluid(1000))
+                .fluidInputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
+                .fluidOutputs(NitrosoniumOctafluoroxenate.getFluid(1000))
+                .fluidOutputs(NaquadriaCesiumfluoride.getFluid(1000))
+                .EUt(7680)
+                .duration(750)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadriaCesiumfluoride.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, Naquadria))
+                .fluidOutputs(Fluorine.getFluid(2500))
+                .fluidOutputs(Caesium.getFluid(2500))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(RadonTrioxide.getFluid(4000))
+                .fluidOutputs(Radon.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(3000))
+                .EUt(1920)
+                .duration(400)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(13000))
+                .fluidOutputs(Fluorine.getFluid(8000))
+                .fluidOutputs(Xenon.getFluid(1000))
+                .fluidOutputs(NitricOxide.getFluid(2000))
+                .EUt(1920)
+                .duration(500)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(EnrichedNaquadahConcentrate.getItemStack())
+                .fluidInputs(Fluorine.getFluid(6000))
+                .fluidOutputs(EnrichedNaquadahhexafluoride.getFluid(6000))
+                .EUt(7680)
+                .duration(650)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(EnrichedNaquadahhexafluoride.getFluid(1000))
+                .fluidInputs(Xenon.getFluid(1000))
+                .fluidOutputs(EnrichedXenonHexafluoronaquadate.getFluid(2000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(ChloroauricAcid.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidOutputs(AuricChloride.getFluid(2000))
+                .EUt(1920)
+                .duration(800)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Bromine.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(3000))
+                .fluidOutputs(BromineTrifluoride.getFluid(4000))
+                .EUt(1920)
+                .duration(250)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(BromineTrifluoride.getFluid(1000))
+                .fluidInputs(AuricChloride.getFluid(1000))
+                .outputs(AuricFluoride.getItemStack())
+                .fluidOutputs(Bromine.getFluid(500))
+                .fluidOutputs(Chlorine.getFluid(1500))
+                .EUt(1920)
+                .duration(300)
+                .buildAndRegister();
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(FluoroantimonicAcid.getFluid(6000))
+                .inputs(AuricFluoride.getItemStack(6))
+                .fluidInputs(EnrichedXenonHexafluoronaquadate.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, NaquadahEnriched))
+                .fluidOutputs(XenoauricFluoroantimonicAcid.getFluid(12000))
+                .EUt(7680)
+                .duration(650)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(29000))
+                .outputs(OreDictUnifier.get(dust, Gold))
+                .fluidOutputs(Xenon.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Antimony, 4))
+                .fluidOutputs(Fluorine.getFluid(22000))
+                .EUt(1920)
+                .duration(200)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(HydrofluoricAcid.getFluid(1000))
+                .input(dust, PotassiumMetabisulfite)
+                .inputs(NaquadahConcentrate.getItemStack())
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, PotassiumFluoride))
+                .fluidOutputs(NaquadahSulfate.getFluid(1000))
+                .EUt(7980)
+                .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadahSulfate.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidOutputs(SulfuricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Naquadah))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(IndiumTrifluoride.getItemStack())
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .outputs(IndiumTrioxide.getItemStack())
+                .fluidOutputs(Oxygen.getFluid(500))
+                .fluidOutputs(Nitrogen.getFluid(500))
+                .EUt(1920)
+                .duration(200)
+                .buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .inputs(IndiumTrioxide.getItemStack())
+                .input(dust, Carbon)
+                .outputs(OreDictUnifier.get(dust, Indium))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .EUt(480)
+                .duration(800)
+                .blastFurnaceTemp(4500)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(AmmoniaNitrate.getFluid(2000))
+                .EUt(480)
+                .duration(250)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Naquadah)
+                .fluidInputs(AmmoniaNitrate.getFluid(1000))
+                .EUt(7680)
+                .duration(200)
+                .fluidOutputs(NaquadahSolution.getFluid(1000))
+                .buildAndRegister();
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(NaquadahSolution.getFluid(2000))
+                .fluidOutputs(ClearNaquadahLiquid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 5))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride, 3))
+                .outputs(OreDictUnifier.get(dustTiny, Naquadah, 1))
+                .EUt(7680)
+                .duration(150)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(ClearNaquadahLiquid.getFluid(1000))
+                .fluidOutputs(ComplicatedNaquadahGas.getFluid(60))
+                .fluidOutputs(ComplicatedLightNaquadah.getFluid(180))
+                .fluidOutputs(ComplicatedMediumNaquadah.getFluid(320))
+                .fluidOutputs(ComplicatedHeavyNaquadah.getFluid(440))
+                .EUt(7680)
+                .duration(1200)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedNaquadahGas.getFluid(2000))
+                .fluidOutputs(NaquadahGas.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedHeavyNaquadah.getFluid(2000))
+                .fluidOutputs(HeavyNaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedLightNaquadah.getFluid(2000))
+                .fluidOutputs(LightNaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedMediumNaquadah.getFluid(2000))
+                .fluidOutputs(MediumNaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(MediumNaquadah.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(200))
+                .fluidOutputs(FlCrackedMediumNaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(LightNaquadah.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(400))
+                .fluidOutputs(FlCrackedLightNaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(HeavyNaquadah.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(600))
+                .fluidOutputs(FlCrackedHeavyNaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(FlCrackedLightNaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(350))
+                .fluidOutputs(LightNaquadahFuel.getFluid(400))
+                .fluidOutputs(MediumNaquadahFuel.getFluid(150))
+                .fluidOutputs(HeavyNaquadahFuel.getFluid(50))
+                .fluidOutputs(Fluorine.getFluid(50))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(FlCrackedMediumNaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(150))
+                .fluidOutputs(LightNaquadahFuel.getFluid(200))
+                .fluidOutputs(MediumNaquadahFuel.getFluid(400))
+                .fluidOutputs(HeavyNaquadahFuel.getFluid(100))
+                .fluidOutputs(Fluorine.getFluid(150))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(FlCrackedHeavyNaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(50))
+                .fluidOutputs(LightNaquadahFuel.getFluid(100))
+                .fluidOutputs(MediumNaquadahFuel.getFluid(200))
+                .fluidOutputs(HeavyNaquadahFuel.getFluid(400))
+                .fluidOutputs(Fluorine.getFluid(250))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Copper)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(CopperSulfateSolution.getFluid(1000))
+                .EUt(480)
+                .duration(300)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(CopperSulfateSolution.getFluid(900))
+                .fluidInputs(NaquadahGas.getFluid(100))
+                .input(dust, NaquadahEnriched)
+                .fluidOutputs(ENaquadahSolution.getFluid(1000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ENaquadahSolution.getFluid(2000))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder))
+                .fluidOutputs(OsmiumSolution.getFluid(350))
+                .outputs(OreDictUnifier.get(dustTiny, NaquadahEnriched))
+                .fluidOutputs(ClearENaquadahLiquid.getFluid(1000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(ClearENaquadahLiquid.getFluid(1000))
+                .fluidOutputs(ComplicatedNaquadahGas.getFluid(60))
+                .fluidOutputs(ComplicatedLightENaquadah.getFluid(180))
+                .fluidOutputs(ComplicatedMediumENaquadah.getFluid(320))
+                .fluidOutputs(ComplicatedHeavyENaquadah.getFluid(440))
+                .EUt(7680)
+                .duration(1200)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedHeavyENaquadah.getFluid(2000))
+                .fluidOutputs(HeavyENaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, Naquadria))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride, 2))
+                .fluidOutputs(OsmiumSolution.getFluid(350))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedLightENaquadah.getFluid(2000))
+                .fluidOutputs(LightENaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, Naquadria))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride, 2))
+                .fluidOutputs(OsmiumSolution.getFluid(350))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(ComplicatedMediumENaquadah.getFluid(2000))
+                .fluidOutputs(MediumENaquadah.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, Naquadria))
+                .outputs(OreDictUnifier.get(dustTiny, IridiumChloride, 2))
+                .fluidOutputs(OsmiumSolution.getFluid(350))
+                .EUt(7680)
+                .duration(400)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(MediumENaquadah.getFluid(1000))
+                .fluidInputs(Radon.getFluid(200))
+                .fluidOutputs(RnCrackedMediumENaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(LightENaquadah.getFluid(1000))
+                .fluidInputs(Radon.getFluid(400))
+                .fluidOutputs(RnCrackedLighteNaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        CRACKING_RECIPES.recipeBuilder()
+                .fluidInputs(HeavyENaquadah.getFluid(1000))
+                .fluidInputs(Radon.getFluid(600))
+                .fluidOutputs(RnCrackedHeavyENaquadah.getFluid(1000))
+                .EUt(7680)
+                .duration(500)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(RnCrackedLighteNaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(350))
+                .fluidOutputs(LightENaquadahFuel.getFluid(400))
+                .fluidOutputs(MediumENaquadahFuel.getFluid(150))
+                .fluidOutputs(HeavyENaquadahFuel.getFluid(50))
+                .fluidOutputs(Radon.getFluid(50))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(RnCrackedMediumENaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(150))
+                .fluidOutputs(LightENaquadahFuel.getFluid(200))
+                .fluidOutputs(MediumENaquadahFuel.getFluid(400))
+                .fluidOutputs(HeavyENaquadahFuel.getFluid(100))
+                .fluidOutputs(Radon.getFluid(150))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+        DISTILLATION_RECIPES.recipeBuilder()
+                .fluidInputs(RnCrackedHeavyENaquadah.getFluid(1000))
+                .fluidOutputs(NaquadahGas.getFluid(50))
+                .fluidOutputs(LightENaquadahFuel.getFluid(100))
+                .fluidOutputs(MediumENaquadahFuel.getFluid(200))
+                .fluidOutputs(HeavyENaquadahFuel.getFluid(400))
+                .fluidOutputs(Radon.getFluid(250))
+                .EUt(7680)
+                .duration(600)
+                .buildAndRegister();
+
+        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Naquadria)
+                .fluidInputs(NitrogenDioxide.getFluid(500))
+                .fluidInputs(SulfuricAcid.getFluid(500))
+                .fluidOutputs(NaquadriaSolution.getFluid(1000))
+                .outputs(OreDictUnifier.get(dustTiny, Lutetium))
+                .outputs(OreDictUnifier.get(dustTiny, Uranium))
+                .outputs(OreDictUnifier.get(dustTiny, NaquadahEnriched))
+                .outputs(OreDictUnifier.get(dustTiny, Plutonium))
+                .EUt(7680)
+                .duration(300)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(LightNaquadahFuel.getFluid(500))
+                .fluidInputs(LightENaquadahFuel.getFluid(300))
+                .fluidInputs(NaquadriaSolution.getFluid(200))
+                .input(dust, Europium)
+                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(144))
+                .fluidOutputs(HyperFuelI.getFluid(2000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(MediumNaquadahFuel.getFluid(400))
+                .fluidInputs(MediumENaquadahFuel.getFluid(350))
+                .fluidInputs(NaquadriaSolution.getFluid(250))
+                .input(dust, Americium)
+                .fluidInputs(Curium250.getMaterial().getFluid(144))
+                .fluidOutputs(HyperFuelII.getFluid(2000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(HeavyNaquadahFuel.getFluid(300))
+                .fluidInputs(HeavyENaquadahFuel.getFluid(400))
+                .fluidInputs(NaquadriaSolution.getFluid(300))
+                .input(dust, Neutronium)
+                .fluidInputs(Californium256.getMaterial().getFluid(144))
+                .fluidOutputs(HyperFuelIII.getFluid(2000))
+                .EUt(7680)
+                .duration(200)
+                .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .input(block, Silicon, 16)
@@ -1875,15 +3349,6 @@ public class GARecipeAddition {
                 .duration(500)
                 .buildAndRegister();
 
-    }
-
-    public static void init3() {
-        GoldChain.init();
-        NaquadahChain.init();
-        NuclearChain.init();
-        PlasticChain.init();
-        PlatinumSludgeGroupChain.init();
-        TungstenChain.init();
     }
 
     public static void forestrySupport() {
