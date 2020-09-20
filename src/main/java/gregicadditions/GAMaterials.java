@@ -437,12 +437,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide",Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
     public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide",Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
 
-
-
-
-
-
-
     @Override
     public void onMaterialsInit() {
         initNuclearMaterial();
