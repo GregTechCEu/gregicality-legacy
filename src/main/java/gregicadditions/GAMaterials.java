@@ -325,6 +325,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial EnrichedNaquadricCompound = new DustMaterial(747, "enriched_naquadric_compound", NaquadahEnriched.materialRGB, NaquadahEnriched.materialIconSet, NaquadahEnriched.harvestLevel, NaquadahEnriched.materialComponents, GENERATE_ORE);
     public static final DustMaterial NaquadriaticCompound = new DustMaterial(746, "naquadriatic_compound", Naquadria.materialRGB, Naquadria.materialIconSet, Naquadria.harvestLevel, Naquadria.materialComponents, GENERATE_ORE);
 
+    public static final IngotMaterial Rutherfordium = new IngotMaterial(743, "rutherfordium", 0xFFF6A1, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Rf);
+    public static final IngotMaterial Dubnium = new IngotMaterial(742, "dubnium", 0xD3FDFF, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Db);
+
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735);

@@ -366,7 +366,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.FUSION_REACTOR[1].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
-                        OreDictUnifier.get(plate, Americium, 4),
+                        OreDictUnifier.get(plate, Dubnium, 4),
                         OreDictUnifier.get(plate, Californium.getMaterial(), 4),
                         FIELD_GENERATOR_ZPM.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
