@@ -42,6 +42,7 @@ public class GAMetaFluids {
             Fluid fluid = new Fluid(fluidMat.name, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
             if (!FluidRegistry.isFluidRegistered(fluid.getName())) {
                 FluidRegistry.registerFluid(fluid);
+                FluidRegistry.addBucketForFluid(fluid);
                 fluidMat.fluid = fluid;
             } else if (!FluidRegistry.hasBucket(FluidRegistry.getFluid(fluid.getName()))){
                 FluidRegistry.addBucketForFluid(fluid);
