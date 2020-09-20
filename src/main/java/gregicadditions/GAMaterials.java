@@ -436,6 +436,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide",Thulium.materialRGB, (short) 19, Thulium.materialIconSet);
     public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide",Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet);
     public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide",Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
+    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide",Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
 
     @Override
     public void onMaterialsInit() {
