@@ -415,7 +415,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Butyraldehyde = new SimpleFluidMaterial("butyraldehyde", 0xe7cf6e);
     public static final SimpleFluidMaterial Ethylhexanol = new SimpleFluidMaterial("ethylhexanol", 0xfeea9a);
     public static final SimpleFluidMaterial DiethylhexylPhosphoricAcid = new SimpleFluidMaterial("di_ethylhexyl_phosphoric_acid", 0xffff99);
-    public static final SimpleFluidMaterial SodiumHydroxideSolution = new SimpleFluidMaterial("sodium_hydroxide_solution", 0x6699ff);
     public static final SimpleFluidMaterial TrisodiumPhosphate = new SimpleFluidMaterial("trisodium_phosphate", 0x70ffc8);
     public static final SimpleFluidMaterial RareEarthHydroxidesSolution = new SimpleFluidMaterial("rare_earth_hydroxides_solution", 0xcfb37d);
     public static final SimpleFluidMaterial RareEarthChloridesSolution = new SimpleFluidMaterial("rare_earth_chlorides_solution", 0x164b45);
