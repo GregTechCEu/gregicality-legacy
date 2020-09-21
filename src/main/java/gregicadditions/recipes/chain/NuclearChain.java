@@ -158,15 +158,6 @@ public class NuclearChain {
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
 
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(64).EUt(20)
-                .input(OrePrefix.dust, Materials.RareEarth, 1)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Cadmium, 1), 2500, 400)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Neodymium, 1), 2500, 400)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Caesium, 1), 2500, 400)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Scandium, 1), 2500, 400)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Yttrium, 1), 2500, 400)
-                .chancedOutput(OreDictUnifier.get(OrePrefix.dustSmall, Materials.Lanthanum, 1), 2500, 400)
-                .buildAndRegister();
 
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)

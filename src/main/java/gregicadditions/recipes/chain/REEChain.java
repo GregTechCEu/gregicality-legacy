@@ -78,17 +78,10 @@ public class REEChain {
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, RareEarth)
-                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
+                .input(dust, SodiumHydroxide)
                 .fluidOutputs(RareEarthHydroxidesSolution.getFluid(1000))
                 .EUt(480)
                 .duration(200)
-                .buildAndRegister();
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, SodiumHydroxide)
-                .fluidInputs(Water.getFluid(1000))
-                .fluidOutputs(SodiumHydroxideSolution.getFluid(2000))
-                .EUt(120)
-                .duration(400)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
