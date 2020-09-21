@@ -1298,7 +1298,7 @@ public class GARecipeAddition {
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(480).input(dust, Vanadium).input(dust, Indium, 3).outputs(OreDictUnifier.get(dust, IVSuperconductorBase, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(2400).EUt(1920).input(dust, Indium, 4).input(dust, Bronze, 8).input(dust, Barium, 2).input(dust, Titanium).fluidInputs(Oxygen.getFluid(14000)).outputs(OreDictUnifier.get(dust, LuVSuperconductorBase, 29)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(1200).EUt(1920).input(dust, Naquadah, 4).input(dust, Indium, 2).input(dust, Palladium, 6).input(dust, Osmium).outputs(OreDictUnifier.get(dust, ZPMSuperconductorBase, 13)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(1200).EUt(7680).input(dust, Naquadria, 4).input(dust, Osmiridium, 3).input(dust, Europium).input(dust, Samarium).outputs(OreDictUnifier.get(dust, UVSuperconductorBase, 9)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(1200).EUt(7680).input(dust, Naquadria, 4).input(dust, Osmiridium, 3).input(dust, Rutherfordium).input(dust, Samarium).outputs(OreDictUnifier.get(dust, UVSuperconductorBase, 9)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(8).input(dust, Lead, 3).input(dust, Platinum).input(dust, EnderPearl, 4).outputs(OreDictUnifier.get(dust, Enderium, 4)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(120).inputs(OreDictUnifier.get(wireGtSingle, MVSuperconductorBase, 3), OreDictUnifier.get(pipeTiny, StainlessSteel, 2), ELECTRIC_PUMP_MV.getStackForm(2)).fluidInputs(Nitrogen.getFluid(2000)).outputs(OreDictUnifier.get(wireGtSingle, MVSuperconductor, 3)).buildAndRegister();
