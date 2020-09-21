@@ -87,7 +87,6 @@ public class GeneratorFuels {
         FuelRecipes.registerDieselGeneratorFuel(Octane.getFluid(20), 45, GTValues.LV);
 
 
-
         //Plasma Generator
         registerPlasmaFuel(Helium.getPlasma(1), 2560, GTValues.LV);
         registerPlasmaFuel(Nitrogen.getPlasma(1), 4032, GTValues.LV);
@@ -113,10 +112,10 @@ public class GeneratorFuels {
         FuelRecipes.registerSemiFluidGeneratorFuel(SulfuricCoalTarOil.getFluid(120), 10, GTValues.LV);
 
         //rocket fuel
-        registerRocketFuel(RocketFuelH8N4C2O4.getFluid(3), 10, GTValues.EV);
-        registerRocketFuel(RocketFuelCN3H7O3.getFluid(6), 10, GTValues.EV);
-        registerRocketFuel(DenseHydrazineFuelMixture.getFluid(9), 10, GTValues.EV);
-        registerRocketFuel(RP1RocketFuel.getFluid(12), 10, GTValues.EV);
+        registerRocketFuel(RocketFuelH8N4C2O4.getFluid(3), 160, GTValues.EV);
+        registerRocketFuel(RocketFuelCN3H7O3.getFluid(6), 120, GTValues.EV);
+        registerRocketFuel(DenseHydrazineFuelMixture.getFluid(9), 80, GTValues.EV);
+        registerRocketFuel(RP1RocketFuel.getFluid(12), 40, GTValues.EV);
 
         FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 24000, GTValues.LV);
         FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 10000, GTValues.LV);
