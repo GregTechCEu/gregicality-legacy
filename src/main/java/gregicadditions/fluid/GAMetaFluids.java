@@ -44,9 +44,12 @@ public class GAMetaFluids {
                 FluidRegistry.registerFluid(fluid);
                 FluidRegistry.addBucketForFluid(fluid);
                 fluidMat.fluid = fluid;
-            } else if (!FluidRegistry.hasBucket(FluidRegistry.getFluid(fluid.getName()))){
-                FluidRegistry.addBucketForFluid(fluid);
+            } else {
+                if (!FluidRegistry.hasBucket(FluidRegistry.getFluid(fluid.getName()))) {
+                    FluidRegistry.addBucketForFluid(fluid);
+                }
                 fluidMat.fluid = FluidRegistry.getFluid(fluid.getName());
+
             }
         }
     }
