@@ -157,7 +157,6 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     private Fluid hotCoolant;
     private int recipeBaseHeat;
     private int rodAdditionalTemperature;
-    private int euPerTick;
 
 
     @Override
@@ -178,8 +177,10 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
         if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.base_heat", recipeBaseHeat));
             textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.additional_temperature", rodAdditionalTemperature));
-            if (hotCoolant != null)
+            if (hotCoolant != null) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant_needed", coolantNeeded()));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.coolant_ratio", coolantRatio()));
+            }
             if (notEnoughCoolant) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.nuclear_reactor.not_enough_coolant").setStyle(new Style().setColor(TextFormatting.RED)));
             }
@@ -191,7 +192,6 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
         recipeBaseHeat = recipe.getIntegerProperty("base_heat_production");
-        euPerTick = recipe.getEUt();
         return true;
     }
 
@@ -205,13 +205,13 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
 
     @Override
     protected void updateFormedValid() {
+        recipeMapWorkable.updateWorkable();
         if (!getWorld().isRemote) {
-            recipeMapWorkable.updateWorkable();
-            if (recipeMapWorkable.isHasNotEnoughEnergy() || !recipeMapWorkable.isWorkingEnabled()) {
+            if (recipeMapWorkable.isHasNotEnoughEnergy() || !recipeMapWorkable.isWorkingEnabled() || !recipeMapWorkable.isActive()) {
+                notEnoughCoolant = false;
                 return;
             }
             if (getTimer() % 20 == 0) {
-
                 FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
                 if (fluidStack != null) {
                     coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());

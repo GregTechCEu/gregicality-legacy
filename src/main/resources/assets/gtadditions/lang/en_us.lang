@@ -1466,6 +1466,7 @@ gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
 gregtech.multiblock.large_miner.done=Done !
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
 gregtech.multiblock.nuclear_reactor.coolant_needed=Coolant Needed: %d mb/s
+gregtech.multiblock.nuclear_reactor.coolant_ratio=Coolant Ratio: %d
 gregtech.multiblock.nuclear_reactor.not_enough_coolant=Not Enough Coolant
 gregtech.multiblock.nuclear_reactor.base_heat=Heat Produce: %d C/sec
 gregtech.multiblock.nuclear_reactor.additional_temperature=Additional Temperature: %d
