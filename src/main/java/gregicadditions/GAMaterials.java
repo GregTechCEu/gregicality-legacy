@@ -328,6 +328,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Rutherfordium = new IngotMaterial(743, "rutherfordium", 0xFFF6A1, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Rf);
     public static final IngotMaterial Dubnium = new IngotMaterial(742, "dubnium", 0xD3FDFF, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Db);
 
+    public static final IngotMaterial ReactorSteel = new IngotMaterial(741, "reactor_steel", 0xB4B3B0, MaterialIconSet.SHINY, 2, of(new MaterialStack(Iron, 15), new MaterialStack(Niobium, 1), new MaterialStack(Vanadium, 4), new MaterialStack(Carbon, 2)), DISABLE_DECOMPOSITION | GENERATE_DENSE);
+
+
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735);
@@ -418,27 +421,27 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial TrisodiumPhosphate = new SimpleFluidMaterial("trisodium_phosphate", 0x70ffc8);
     public static final SimpleFluidMaterial RareEarthHydroxidesSolution = new SimpleFluidMaterial("rare_earth_hydroxides_solution", 0xcfb37d);
     public static final SimpleFluidMaterial RareEarthChloridesSolution = new SimpleFluidMaterial("rare_earth_chlorides_solution", 0x164b45);
-    public static final SimpleDustMaterial ThUSludge = new SimpleDustMaterial("thorium_uranium_sludge",0x002908, (short) 7, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ThUSludge = new SimpleDustMaterial("thorium_uranium_sludge", 0x002908, (short) 7, MaterialIconSet.DULL);
     public static final SimpleFluidMaterial LaNdOxidesSolution = new SimpleFluidMaterial("la_nd_oxides_solution", 0x9ce3db);
     public static final SimpleFluidMaterial SmGdOxidesSolution = new SimpleFluidMaterial("sm_gd_oxides_solution", 0xffff99);
     public static final SimpleFluidMaterial TbHoOxidesSolution = new SimpleFluidMaterial("tb_ho_oxides_solution", 0x99ff99);
     public static final SimpleFluidMaterial ErLuOxidesSolution = new SimpleFluidMaterial("er_lu_oxides_solution", 0xffb3ff);
-    public static final SimpleDustMaterial LanthanumOxide = new SimpleDustMaterial("lanthanum_oxide",Lanthanum.materialRGB, (short) 8, Lanthanum.materialIconSet);
-    public static final SimpleDustMaterial PraseodymiumOxide = new SimpleDustMaterial("praseodymium_oxide",Praseodymium.materialRGB, (short) 9, Praseodymium.materialIconSet);
-    public static final SimpleDustMaterial NeodymiumOxide = new SimpleDustMaterial("neodymium_oxide",Neodymium.materialRGB, (short) 10, Neodymium.materialIconSet);
-    public static final SimpleDustMaterial CeriumOxide = new SimpleDustMaterial("cerium_oxide",Cerium.materialRGB, (short) 11, Cerium.materialIconSet);
-    public static final SimpleDustMaterial EuropiumOxide = new SimpleDustMaterial("europium_oxide",Europium.materialRGB, (short) 12, Europium.materialIconSet);
-    public static final SimpleDustMaterial GadoliniumOxide = new SimpleDustMaterial("gadolinium_oxide",Gadolinium.materialRGB, (short) 13, Gadolinium.materialIconSet);
-    public static final SimpleDustMaterial SamariumOxide = new SimpleDustMaterial("samarium_oxide",Samarium.materialRGB, (short) 14, Samarium.materialIconSet);
+    public static final SimpleDustMaterial LanthanumOxide = new SimpleDustMaterial("lanthanum_oxide", Lanthanum.materialRGB, (short) 8, Lanthanum.materialIconSet);
+    public static final SimpleDustMaterial PraseodymiumOxide = new SimpleDustMaterial("praseodymium_oxide", Praseodymium.materialRGB, (short) 9, Praseodymium.materialIconSet);
+    public static final SimpleDustMaterial NeodymiumOxide = new SimpleDustMaterial("neodymium_oxide", Neodymium.materialRGB, (short) 10, Neodymium.materialIconSet);
+    public static final SimpleDustMaterial CeriumOxide = new SimpleDustMaterial("cerium_oxide", Cerium.materialRGB, (short) 11, Cerium.materialIconSet);
+    public static final SimpleDustMaterial EuropiumOxide = new SimpleDustMaterial("europium_oxide", Europium.materialRGB, (short) 12, Europium.materialIconSet);
+    public static final SimpleDustMaterial GadoliniumOxide = new SimpleDustMaterial("gadolinium_oxide", Gadolinium.materialRGB, (short) 13, Gadolinium.materialIconSet);
+    public static final SimpleDustMaterial SamariumOxide = new SimpleDustMaterial("samarium_oxide", Samarium.materialRGB, (short) 14, Samarium.materialIconSet);
     //public static final SimpleDustMaterial YttriumOxide = new SimpleDustMaterial("Yttrium_oxide",Yttrium.materialRGB, (short) 7, Yttrium.materialIconSet);
-    public static final SimpleDustMaterial TerbiumOxide = new SimpleDustMaterial("terbium_oxide",Terbium.materialRGB, (short) 15, Terbium.materialIconSet);
-    public static final SimpleDustMaterial DysprosiumOxide = new SimpleDustMaterial("dysprosium_oxide",Dysprosium.materialRGB, (short) 16, Dysprosium.materialIconSet);
-    public static final SimpleDustMaterial HolmiumOxide = new SimpleDustMaterial("holmium_oxide",Holmium.materialRGB, (short) 17, Holmium.materialIconSet);
-    public static final SimpleDustMaterial ErbiumOxide = new SimpleDustMaterial("erbium_oxide",Erbium.materialRGB, (short) 18, Erbium.materialIconSet);
-    public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide",Thulium.materialRGB, (short) 19, Thulium.materialIconSet);
-    public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide",Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet);
-    public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide",Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
-    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide",Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
+    public static final SimpleDustMaterial TerbiumOxide = new SimpleDustMaterial("terbium_oxide", Terbium.materialRGB, (short) 15, Terbium.materialIconSet);
+    public static final SimpleDustMaterial DysprosiumOxide = new SimpleDustMaterial("dysprosium_oxide", Dysprosium.materialRGB, (short) 16, Dysprosium.materialIconSet);
+    public static final SimpleDustMaterial HolmiumOxide = new SimpleDustMaterial("holmium_oxide", Holmium.materialRGB, (short) 17, Holmium.materialIconSet);
+    public static final SimpleDustMaterial ErbiumOxide = new SimpleDustMaterial("erbium_oxide", Erbium.materialRGB, (short) 18, Erbium.materialIconSet);
+    public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide", Thulium.materialRGB, (short) 19, Thulium.materialIconSet);
+    public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide", Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet);
+    public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide", Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
+    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide", Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
 
     @Override
     public void onMaterialsInit() {
@@ -551,6 +554,8 @@ public class GAMaterials implements IMaterialHandler {
         HSSG.addFlag(GENERATE_METAL_CASING);
         HSSS.addFlag(GENERATE_METAL_CASING);
         Naquadria.addFlag(GENERATE_METAL_CASING | GENERATE_DENSE | GENERATE_GEAR);
+        Lead.addFlag(GENERATE_DENSE);
+        StainlessSteel.addFlag(GENERATE_DENSE);
 
         Apatite.addFlag(GENERATE_ROD);
         Iron.addFlag(GENERATE_LONG_ROD);

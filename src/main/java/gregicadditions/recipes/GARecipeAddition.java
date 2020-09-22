@@ -636,6 +636,23 @@ public class GARecipeAddition {
                 .input(dust, Carbon)
                 .outputs(OreDictUnifier.get(dust, ZirconiumCarbide, 2)).buildAndRegister();
 
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(12000).EUt(120)
+                .notConsumable(new IntCircuitIngredient(5))
+                .input(dust, Iron, 15)
+                .input(dust, Niobium, 1)
+                .input(dust, Vanadium, 4)
+                .input(dust, Carbon, 2)
+                .fluidInputs(Argon.getFluid(1000))
+                .fluidOutputs(ReactorSteel.getFluid(GTValues.L * 22))
+                .buildAndRegister();
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(1500).EUt(500)
+                .input(plateDense, Lead, 9)
+                .input(plateDense, Lead, 9)
+                .input(plateDense, ReactorSteel, 4)
+                .input(plateDense, StainlessSteel, 2)
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING, 4))
+                .buildAndRegister();
+
         //Pyrotheum
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)

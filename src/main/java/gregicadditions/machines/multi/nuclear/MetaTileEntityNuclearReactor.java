@@ -1,7 +1,9 @@
 package gregicadditions.machines.multi.nuclear;
 
+import gregicadditions.client.ClientHandler;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -140,7 +142,7 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Lead);
+        return GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING);
     }
 
     public IBlockState getGlassCasing() {
@@ -149,7 +151,7 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Lead);
+        return ClientHandler.CLADDED_REACTOR_CASING;
     }
 
     private boolean notEnoughCoolant = true;
