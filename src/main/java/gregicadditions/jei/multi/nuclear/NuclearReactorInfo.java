@@ -43,13 +43,13 @@ public class NuclearReactorInfo extends MultiblockInfoPage {
                 .where('R', rodType.casingState)
                 .where('Y', GAMetaBlocks.getMetalCasingBlockState(Lead))
                 .where('Z', GAMetaBlocks.getMetalCasingBlockState(Lead))
-                .where('Z', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
+                .where('X', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.SOUTH)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
                 .where('G', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.SOUTH)
-                .where('G', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.NORTH)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.NORTH)
                 .where('#', Blocks.AIR.getDefaultState())
                 .build()).collect(Collectors.toList());
     }
