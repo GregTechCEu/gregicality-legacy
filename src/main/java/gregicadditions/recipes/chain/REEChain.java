@@ -9,6 +9,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 
 public class REEChain {
     public static void init() {
@@ -79,6 +80,7 @@ public class REEChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, RareEarth)
                 .input(dust, SodiumHydroxide)
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(RareEarthHydroxidesSolution.getFluid(1000))
                 .EUt(480)
                 .duration(200)
@@ -102,38 +104,38 @@ public class REEChain {
                 .duration(600)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(LaNdOxidesSolution.getFluid(1000))
-                .outputs(LanthanumOxide.getItemStack())
-                .outputs(PraseodymiumOxide.getItemStack())
-                .outputs(NeodymiumOxide.getItemStack())
-                .outputs(CeriumOxide.getItemStack())
+                .fluidInputs(LaNdOxidesSolution.getFluid(4000))
+                .chancedOutput(LanthanumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(PraseodymiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(NeodymiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(CeriumOxide.getItemStack(), 2150, 150)
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(SmGdOxidesSolution.getFluid(1000))
-                .outputs(ScandiumOxide.getItemStack())
-                .outputs(EuropiumOxide.getItemStack())
-                .outputs(GadoliniumOxide.getItemStack())
-                .outputs(SamariumOxide.getItemStack())
+                .fluidInputs(SmGdOxidesSolution.getFluid(4000))
+                .chancedOutput(ScandiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(EuropiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(GadoliniumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(SamariumOxide.getItemStack(), 2150, 150)
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(TbHoOxidesSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, YttriumOxide))
-                .outputs(TerbiumOxide.getItemStack())
-                .outputs(DysprosiumOxide.getItemStack())
-                .outputs(HolmiumOxide.getItemStack())
+                .fluidInputs(TbHoOxidesSolution.getFluid(4000))
+                .chancedOutput(OreDictUnifier.get(dust, YttriumOxide), 2150, 150)
+                .chancedOutput(TerbiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(DysprosiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(HolmiumOxide.getItemStack(), 2150, 150)
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(ErLuOxidesSolution.getFluid(1000))
-                .outputs(ErbiumOxide.getItemStack())
-                .outputs(ThuliumOxide.getItemStack())
-                .outputs(YtterbiumOxide.getItemStack())
-                .outputs(LutetiumOxide.getItemStack())
+                .fluidInputs(ErLuOxidesSolution.getFluid(4000))
+                .chancedOutput(ErbiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(ThuliumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(YtterbiumOxide.getItemStack(), 2150, 150)
+                .chancedOutput(LutetiumOxide.getItemStack(), 2150, 150)
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
@@ -292,10 +294,10 @@ public class REEChain {
                 .EUt(120)
                 .duration(400)
                 .buildAndRegister();
-        ELECTROLYZER_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(ThUSludge.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, Thorium))
-                .outputs(OreDictUnifier.get(dust, Uranium))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thorium), 2000, 150)
+                .chancedOutput(OreDictUnifier.get(dustTiny, UraniumRadioactive.getMaterial()), 2000, 150)
                 .EUt(480)
                 .duration(500)
                 .buildAndRegister();
