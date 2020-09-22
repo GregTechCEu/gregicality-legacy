@@ -30,8 +30,8 @@ metaitem.boule.glowstone.name=荧石硅棒
 metaitem.boule.glowstone.tooltip=电路元件
 metaitem.boule.naquadah.name=硅岩硅棒
 metaitem.boule.naquadah.tooltip=电路元件
-metaitem.boule.europium.name=𬬻硅棒
-metaitem.boule.americium.name=𬭊硅棒
+metaitem.boule.europium.name=钅卢硅棒
+metaitem.boule.americium.name=钅杜硅棒
 metaitem.boule.neutronium.name=中子素硅棒
 metaitem.brick.coke.name=焦炉砖块
 metaitem.brick.fireclay.name=耐火砖
@@ -80,9 +80,9 @@ metaitem.plate.ram.name=RAM芯片
 metaitem.plate.ram.tooltip=集成电路
 metaitem.plate.soc.name=SoC
 metaitem.plate.soc.tooltip=芯片级的系统
-metaitem.wafer.americium.name=𬭊掺杂的晶圆
+metaitem.wafer.americium.name=钅杜掺杂的晶圆
 metaitem.wafer.neutronium.name=中子素掺杂的晶圆
-metaitem.wafer.europium.name=𬬻掺杂的晶圆
+metaitem.wafer.europium.name=钅卢掺杂的晶圆
 metaitem.wafer.asoc.name=ASoC晶圆
 metaitem.wafer.asoc.tooltip=电路元件
 metaitem.wafer.circuit.name=集成逻辑电路(晶圆)
@@ -1296,8 +1296,8 @@ material.abyssal_alloy=深渊合金
 material.organic_fertilizer=有机肥料
 material.uv_superconductor_base=UV超导基
 material.uv_superconductor=UV超导
-material.rutherfordium=𬬻
-material.dubnium=𬭊
+material.rutherfordium=钅卢
+material.dubnium=钅杜
 
 
 
