@@ -348,10 +348,10 @@ metaitem.circuit.resonatic.max.name=终极磁共振电路
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX级电路
 
 ##cosmic
-metaitem.circuit.circuit.cosmic.name=寰宇电路
-metaitem.circuit.processor.cosmic.name=寰宇处理器
-metaitem.circuit.assembly.cosmic.name=寰宇处理器集群
-metaitem.circuit.mainframe.cosmic.name=寰宇处理器主机
+metaitem.circuit.circuit.cosmic.name=寰宇处理器
+metaitem.circuit.processor.cosmic.name=寰宇处理器集群
+metaitem.circuit.assembly.cosmic.name=寰宇处理器主机
+metaitem.circuit.mainframe.cosmic.name=寰宇主机
 
 ####################################################################
 
