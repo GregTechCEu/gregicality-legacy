@@ -9,6 +9,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 
 public class REEChain {
     public static void init() {
@@ -292,10 +293,10 @@ public class REEChain {
                 .EUt(120)
                 .duration(400)
                 .buildAndRegister();
-        ELECTROLYZER_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(ThUSludge.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, Thorium))
-                .outputs(OreDictUnifier.get(dust, Uranium))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thorium), 2000, 150)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium), 2000, 150)
                 .EUt(480)
                 .duration(500)
                 .buildAndRegister();
