@@ -26,14 +26,14 @@ metaitem.circuit.board.elite.name=神经元处理器
 metaitem.circuit.board.elite.tooltip=神经元CPU
 metaitem.boule.silicon.name=单晶硅
 metaitem.boule.silicon.tooltip=电路元件
-metaitem.boule.glowstone.name=荧石掺杂的单晶硅
+metaitem.boule.glowstone.name=荧石硅棒
 metaitem.boule.glowstone.tooltip=电路元件
-metaitem.boule.naquadah.name=硅岩掺杂的单晶硅
+metaitem.boule.naquadah.name=硅岩硅棒
 metaitem.boule.naquadah.tooltip=电路元件
-metaitem.boule.europium.name=铕掺杂的单晶硅
-metaitem.boule.americium.name=镅掺杂的单晶硅
-metaitem.boule.neutronium.name=中子素掺杂的单晶硅
-metaitem.brick.coke.name=焦炉砖块	
+metaitem.boule.europium.name=钅卢硅棒
+metaitem.boule.americium.name=钅杜硅棒
+metaitem.boule.neutronium.name=中子素硅棒
+metaitem.brick.coke.name=焦炉砖块
 metaitem.brick.fireclay.name=耐火砖
 metaitem.credit.darmstadtium.name=中子素硬币
 metaitem.component.diode.name=二极管
@@ -49,13 +49,9 @@ metaitem.component.resistor.name=电阻
 metaitem.component.resistor.tooltip=基础电子元件
 metaitem.component.small.coil.name=小型线圈
 metaitem.component.small.coil.tooltip=基础电子元件
-metaitem.component.smd.capacitor.name=贴片电容
 metaitem.component.smd.capacitor.tooltip=电子元件
-metaitem.component.smd.diode.name=贴片二极管
 metaitem.component.smd.diode.tooltip=电子元件
-metaitem.component.smd.resistor.name=贴片电阻
 metaitem.component.smd.resistor.tooltip=电子元件
-metaitem.component.smd.transistor.name=贴片晶体管
 metaitem.component.smd.transistor.tooltip=电子元件
 metaitem.component.transistor.name=晶体管
 metaitem.component.transistor.tooltip=基础电子元件
@@ -84,9 +80,9 @@ metaitem.plate.ram.name=RAM芯片
 metaitem.plate.ram.tooltip=集成电路
 metaitem.plate.soc.name=SoC
 metaitem.plate.soc.tooltip=芯片级的系统
-metaitem.wafer.americium.name=镅掺杂的晶圆
+metaitem.wafer.americium.name=钅杜掺杂的晶圆
 metaitem.wafer.neutronium.name=中子素掺杂的晶圆
-metaitem.wafer.europium.name=铕掺杂的晶圆
+metaitem.wafer.europium.name=钅卢掺杂的晶圆
 metaitem.wafer.asoc.name=ASoC晶圆
 metaitem.wafer.asoc.tooltip=电路元件
 metaitem.wafer.circuit.name=集成逻辑电路(晶圆)
@@ -235,9 +231,23 @@ metaitem.nuclear.dust.nitrate.name=硝酸%s粉
 metaitem.nuclear.dust.hexafluoride.name=六氟化%s粉
 
 
-/////////////////////CIRCUIT///////////////////////////
+metaitem.plank.jungle.name=丛林木板
+metaitem.plank.acacia.name=金合欢木板
+metaitem.plank.darkoak.name=深色橡木木板
+metaitem.plank.birch.name=白桦木板
+metaitem.plank.spruce.name=云杉木板
+metaitem.plank.oak.name=橡木木板
+metaitem.compressed.coke.clay.name=压缩焦炉粘土砖
+metaitem.schematic.dust.name=设计图（粉）
+metaitem.schematic.3by3.name=设计图（3x3）
+metaitem.schematic.2by2.name=设计图（2x2）
+metaitem.schematic.name=空设计图
 
-//LV
+metaitem.unstable.star.name=易变之星
+
+#/////////////////////CIRCUIT///////////////////////////
+
+#//LV
 metaitem.circuit.basic.name=原始处理器
 metaitem.circuit.basic.tooltip=§b§oLV级电路
 metaitem.circuit.processor.refined.name=精制处理器
@@ -245,7 +255,7 @@ metaitem.circuit.processor.refined.tooltip=§b§oLV级电路
 metaitem.circuit.basic_electronic.name=电子处理器
 metaitem.circuit.basic_electronic.tooltip=§b§oLV级电路
 
-//MV
+#//MV
 metaitem.circuit.assembly.primitive.name=原始处理器集群
 metaitem.circuit.assembly.primitive.tooltip=§b§oMV级电路
 metaitem.circuit.assembly.electronic.name=电子处理器集群
@@ -255,7 +265,7 @@ metaitem.circuit.assembly.refined.tooltip=§b§oMV级电路
 metaitem.circuit.processor.micro.name=微型处理器
 metaitem.circuit.processor.micro.tooltip=§b§oMV级电路
 
-//HV
+#//HV
 metaitem.circuit.computer.electronic.name=电子处理器主机
 metaitem.circuit.computer.electronic.tooltip=§b§oHV级电路
 metaitem.circuit.computer.refined.name=精制处理器主机
@@ -266,7 +276,7 @@ metaitem.circuit.nano_processor.name=纳米处理器
 metaitem.circuit.nano_processor.tooltip=§b§oHV级电路
 
 
-//EV
+#//EV
 metaitem.circuit.mainframe.refined.name=精制主机
 metaitem.circuit.mainframe.refined.tooltip=§b§oEV级电路
 metaitem.circuit.computer.micro.name=微型处理器主机
@@ -276,7 +286,7 @@ metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV级电路
 metaitem.circuit.quantum_processor.name=量子处理器
 metaitem.circuit.quantum_processor.tooltip=§b§oEV级电路
 
-//IV
+#//IV
 metaitem.circuit.mainframe.micro.name=微型主机
 metaitem.circuit.mainframe.micro.tooltip=§b§oIV级电路
 metaitem.circuit.computer.nano.name=纳米处理器主机
@@ -286,7 +296,7 @@ metaitem.circuit.assembly.quantum.tooltip=§b§oIV级电路
 metaitem.circuit.processor.crystal.name=晶体处理器
 metaitem.circuit.processor.crystal.tooltip=§b§oIV级电路
 
-//Luv
+#//Luv
 metaitem.circuit.mainframe.nano.name=纳米主机
 metaitem.circuit.mainframe.nano.tooltip=§b§oLuV级电路
 metaitem.circuit.computer.quantum.name=量子处理器主机
@@ -296,7 +306,7 @@ metaitem.circuit.energy_flow.tooltip=§b§oLuV级电路
 metaitem.circuit.wetware_processor.name=湿件处理器
 metaitem.circuit.wetware_processor.tooltip=§b§oLuV级电路
 
-//ZPM
+#//ZPM
 metaitem.circuit.mainframe.quantum.name=量子主机
 metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM级电路
 metaitem.circuit.computer.crystal.name=晶体处理器主机
@@ -304,18 +314,18 @@ metaitem.circuit.computer.crystal.tooltip=§b§oZPM级电路
 metaitem.circuit.wetware_assembly.name=湿件处理器集群
 metaitem.circuit.wetware_assembly.tooltip=§b§oZPM级电路
 
-//UV
+#//UV
 metaitem.circuit.mainframe.crystal.name=晶体主机
 metaitem.circuit.mainframe.crystal.tooltip=§b§oUV级电路
 metaitem.circuit.wetware_super_computer.name=湿件处理器主机
 metaitem.circuit.wetware_super_computer.tooltip=§b§oUV级电路
 
-//MAX
+#//MAX
 metaitem.circuit.wetware_mainframe.name=湿件主机
 metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX级电路
 
 
-//magneto resonatic
+#//magneto resonatic
 metaitem.circuit.resonatic.ulv.name=原始磁共振电路
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV级电路
 metaitem.circuit.resonatic.lv.name=基础磁共振电路
@@ -338,10 +348,10 @@ metaitem.circuit.resonatic.max.name=终极磁共振电路
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX级电路
 
 ##cosmic
-metaitem.circuit.circuit.cosmic.name=寰宇电路
-metaitem.circuit.processor.cosmic.name=寰宇处理器
-metaitem.circuit.assembly.cosmic.name=寰宇处理器集群
-metaitem.circuit.mainframe.cosmic.namne=寰宇处理器主机
+metaitem.circuit.circuit.cosmic.name=寰宇处理器
+metaitem.circuit.processor.cosmic.name=寰宇处理器集群
+metaitem.circuit.assembly.cosmic.name=寰宇处理器主机
+metaitem.circuit.mainframe.cosmic.name=寰宇主机
 
 ####################################################################
 
@@ -922,7 +932,7 @@ material.butane=丁烷
 material.calcium_acetate=乙酸钙溶液
 material.cumene=异丙苯
 material.indium_gallium_phosphide=磷化铟镓
-material.platinum_group_sludge=铂系矿泥
+material.platinum_group_sludge=铂系矿泥渣
 material.ferrite_mixture=铁氧体混合物
 material.nickel_zinc_ferrite=镍锌铁氧体
 material.indium_concentrate=铟富集溶液
@@ -1284,6 +1294,10 @@ material.mendelevium263=钔-263
 material.hydrogen_fluoride=氟化氢
 material.abyssal_alloy=深渊合金
 material.organic_fertilizer=有机肥料
+material.uv_superconductor_base=UV超导基
+material.uv_superconductor=UV超导
+material.rutherfordium=钅卢
+material.dubnium=钅杜
 
 
 
@@ -1369,20 +1383,21 @@ gregtech.multiblock.distill_tower.description=蒸馏塔是一个2-12层的多方
 gregtech.multiblock.fusion_reactor_mk1.description=核聚变反应堆Mk.I是一个用于将元素聚变为更重元素的多方块结构.Mk.I核聚变反应堆可以使用LuV,ZPM或UV能源仓.每个能源仓会给反应堆增加10w的能量缓存.
 gregtech.multiblock.fusion_reactor_mk2.description=核聚变反应堆Mk.II是一个用于将元素聚变为更重元素的多方块结构.Mk.II核聚变反应堆可以使用ZPM或UV能源仓.每个能源仓会给反应堆增加20w的能量缓存.
 gregtech.multiblock.fusion_reactor_mk3.description=核聚变反应堆Mk.III是一个用于将元素聚变为更重元素的多方块结构.Mk.III核聚变反应堆只能使用UV能源仓.每个能源仓会给反应堆增加40w的能量缓存.
-gregtech.multiblock.reactor.tooltip.1=核反应堆和增殖核反应堆使用核能产生热冷却液.
-gregtech.multiblock.reactor.tooltip.2=冷却液是液体并且只能是蒸汽(150C), 氘(450C), 钠(800C), 钠钾合金(900C), 氟锂钠钾盐(1800C), 氟锂铍盐(1700C) and 共晶铅铋(1900C).
-gregtech.multiblock.reactor.tooltip.3=核反应堆会消耗输入仓内所有的冷却液并且每1桶冷却液可以降低1°C的堆温.
-gregtech.multiblock.reactor.tooltip.4=如果堆温比热冷却液温度低则输出冷却液,比热冷却液温度高则输出热冷却液,如果加入冷却液太多两种都会输出.
-gregtech.multiblock.reactor.tooltip.5=每种冷却液都有他们的最高温度,如果堆温高于最高温度,反应堆会自动停机冷却.
-gregtech.multiblock.reactor.tooltip.6=反应堆堆芯必须是核材料并且更高级的核材料产出更高热量.
-gregtech.multiblock.reactor.tooltip.7=提示1:必须用泵管理冷却液,否则堆温无法上升.
-gregtech.multiblock.reactor.tooltip.8=提示2:冷却液可以无损循环.热冷却液涡轮会产出冷却液.
-gregtech.multiblock.reactor.description=仓室可以放置在任意位置.
+gtadditions.multiblock.reactor.tooltip.1=核反应堆和增殖核反应堆使用核能产生热冷却液.
+gtadditions.multiblock.reactor.tooltip.2=冷却液是液体并且只能是蒸汽(150C), 氘(450C), 钠(800C), 钠钾合金(900C), 氟锂钠钾盐(1800C), 氟锂铍盐(1700C) and 共晶铅铋(1900C).
+gtadditions.multiblock.reactor.tooltip.3=核反应堆会消耗输入仓内所有的冷却液，当前所处理的配方温度越高，消耗的冷却液越多。
+gtadditions.multiblock.reactor.tooltip.4=若冷却液不足，反应堆将停止工作。
+gtadditions.multiblock.reactor.tooltip.5=若冷却液过剩，反应堆将超频处理当前配方。
+gtadditions.multiblock.reactor.tooltip.6=核材料可以充当反应堆堆芯以提供更多温度：钍=0，铀=2，钚=10, 镅=15, 锔=25, 锫=35, 锎=50, 锿=75, 镄=100, 钔=200
+gtadditions.multiblock.reactor.tooltip.7=提示1:必须用泵管理冷却液,否则堆温无法上升.
+gtadditions.multiblock.reactor.tooltip.8=提示2:冷却液可以无损循环.热冷却液涡轮会产出冷却液.
+gtadditions.multiblock.reactor.description=仓（流体）和总线（物品）可以布置在第一层或最底层中，替代铅机械方块。
 gtadditions.multiblock.universal.tooltip.1=多方块配方: §e%s§r
 gtadditions.multiblock.universal.tooltip.2=耗能倍数: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.3=速率倍数: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.4=最多同时处理配方数: §e%d§7份每电压等级差
 gtadditions.multiblock.universal.tooltip.5=产出概率加成: §e%d%%§r
+gtadditions.multiblock.fusion_reactor.heat=热量：%d
 
 gtadditions.multiblock.void_miner.description.1=虚空采矿场会给你成吨的矿石.
 gtadditions.multiblock.void_miner.description.2=它每秒都会交替消耗烈焰之炽焱和极寒之凛冰.
@@ -1449,8 +1464,11 @@ gregtech.multiblock.large_miner.nb_chunk=待挖掘区块: %d
 gregtech.multiblock.large_miner.block_per_tick=速度: %d 个方块/t
 gregtech.multiblock.large_miner.done=挖掘完毕!
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
-gregtech.multiblock.nuclear_reactor.coolant=冷却液: %s 最低温度: %dC
+gregtech.multiblock.nuclear_reactor.coolant_needed=需要冷却液：%d mb/s
+gregtech.multiblock.nuclear_reactor.coolant_ratio=冷却液比率：%d
+gregtech.multiblock.nuclear_reactor.not_enough_coolant=冷却液不足
 gregtech.multiblock.nuclear_reactor.base_heat=产热: %d C/秒
+gregtech.multiblock.nuclear_reactor.additional_temperature=额外温度：%d
 gregtech.multiblock.nuclear_reactor.rod_type=堆芯热因数 %d%%
 gregtech.multiblock.nuclear_reactor.produce=产出热冷却液!
 gregtech.multiblock.large_transformer.input=输入: %s EU / %s 安
@@ -1498,19 +1516,6 @@ fluid.tile.lava=岩浆
 gregtech.machine.assembler.iv.name=组装机 IV
 gregtech.machine.autoclave.iv.name=高压釜 IV
 gregtech.machine.laser_engraver.iv.name=精密激光蚀刻机 IV
-
-metaitem.plank.jungle.name=丛林木木板
-metaitem.plank.acacia.name=金合欢木木板
-metaitem.plank.darkoak.name=深色橡木木板
-metaitem.plank.birch.name=白桦木木板
-metaitem.plank.spruce.name=云杉木木板
-metaitem.plank.oak.name=橡木木板
-metaitem.compressed.coke.clay.name=压缩焦炉粘土砖
-metaitem.schematic.dust.name=设计图(粉)
-metaitem.schematic.3by3.name=设计图(3x3)
-metaitem.schematic.2by2.name=设计图(2x2)
-metaitem.schematic.name=空设计图
-
 
 item.gtadditions:comb.lignite.name=褐煤蜂巢
 item.gtadditions:comb.coal.name=煤蜂巢
@@ -1959,6 +1964,22 @@ metaitem.naquadah_concentrate.name=浓缩硅岩粉
 metaitem.indium_trioxide.name=三氧化二铟粉
 metaitem.indium_trifluoride.name=三氟化铟粉
 metaitem.antimony_trifluoride.name=三氟化锑粉
+metaitem.thorium_uranium_sludge.name=钍铀泥渣
+metaitem.lanthanum_oxide.name=氧化镧
+metaitem.praseodymium_oxide.name=氧化镨
+metaitem.neodymium_oxide.name=氧化钕
+metaitem.cerium_oxide.name=氧化铈
+metaitem.scandium_oxide.name=氧化钪
+metaitem.europium_oxide.name=氧化铕
+metaitem.gadolinium_oxide.name=氧化钆
+metaitem.samarium_oxide.name=氧化钐
+metaitem.terbium_oxide.name=氧化铽
+metaitem.dysprosium_oxide.name=氧化镝
+metaitem.holmium_oxide.name=氧化钬
+metaitem.erbium_oxide.name=氧化铒
+metaitem.thulium_oxide.name=氧化铥
+metaitem.ytterbium_oxide.name=氧化铥
+metaitem.lutetium_oxide.name=氧化镥
 
 fluid.naquadric_solution=硅岩溶液
 fluid.enriched_naquadric_solution=富集硅岩溶液
@@ -1988,7 +2009,6 @@ fluid.auric_chloride=氯化金
 fluid.bromine_trifluoride=三氟化溴
 fluid.auric_fluoride=氟化金
 fluid.xenoauric_fluoroantimonic_acid=氟锑酸二氙合金
-fluid.fluoric_acid=氟酸
 fluid.naquadah_sulfate=硫酸硅岩
 fluid.naquadah_solution=硅岩溶液
 fluid.clear_naquadah_liquid=清澈硅岩液体
@@ -2025,7 +2045,105 @@ fluid.naquadria_solution=超能硅岩溶液
 fluid.hyper_fluid_i=超能燃料 I
 fluid.hyper_fluid_ii=超能燃料 II
 fluid.hyper_fluid_iii=超能燃料 III
+fluid.acidic_salt_water=酸性盐水
+fluid.sulfuric_bromine_solution=硫酸溴溶液
+fluid.hot_vapour_mixture=热蒸汽混合物
+fluid.damp_bromine=湿溴
+fluid.butyraldehyde=丁醛
+fluid.ethylhexanol=2-乙基己醇
+fluid.di_ethylhexyl_phosphoric_acid=二-(2-乙基己基)磷酸
+fluid.sodium_hydroxide_solution=氢氧化钠溶液
+fluid.trisodium_phosphate=磷酸三钠
+fluid.rare_earth_hydroxides_solution=稀土氢氧化物溶液
+fluid.rare_earth_chlorides_solution=稀土氯化物溶液
+fluid.la_nd_oxides_solution=镧-钕氧化物溶液
+fluid.sm_gd_oxides_solution=钐-钆氧化物溶液
+fluid.tb_ho_oxides_solution=铽-钬氧化物溶液
+fluid.er_lu_oxides_solution=铒-镥氧化物溶液
+
 
 material.naquadric_compound=硅岩化合物
 material.enriched_naquadric_compound=富集硅岩化合物
 material.naquadriatic_compound=超能硅岩化合物
+
+metaitem.unstable.star.name=易变之星
+
+gtadditions.machine.buffer.lv.name=基础缓存器
+gtadditions.machine.buffer.mv.name=进阶缓存器
+gtadditions.machine.buffer.hv.name=进阶缓存器 II
+
+metaitem.hyperium_essence.name=超级精华
+metaitem.ludicium_essence.name=洞察精华
+metaitem.hyperium_crafting_seed.name=七级合成种子
+metaitem.hyperium_crafting_seed.tooltip=合成材料，无法种植。
+metaitem.ludicium_crafting_seed.name=八级合成种子
+metaitem.ludicium_crafting_seed.tooltip=合成材料，无法种植。
+
+tile.ga_motor_casing.motor_lv.name=电动马达方块 (LV)
+
+tile.ga_motor_casing.motor_mv.name=电动马达方块 (MV)
+
+tile.ga_motor_casing.motor_hv.name=电动马达方块(HV)
+tile.ga_motor_casing.motor_ev.name=电动马达方块(EV)
+tile.ga_motor_casing.motor_iv.name=电动马达方块(IV)
+tile.ga_motor_casing.motor_luv.name=电动马达方块(LUV)
+tile.ga_motor_casing.motor_zpm.name=电动马达方块(ZPM)
+tile.ga_motor_casing.motor_uv.name=电动马达方块(UV)
+tile.ga_piston_casing.piston_lv.name=电力活塞方块(LV)
+tile.ga_piston_casing.piston_mv.name=电力活塞方块(MV)
+tile.ga_piston_casing.piston_hv.name=电力活塞方块(HV)
+tile.ga_piston_casing.piston_ev.name=电力活塞方块(EV)
+tile.ga_piston_casing.piston_iv.name=电力活塞方块(IV)
+tile.ga_piston_casing.piston_luv.name=电力活塞方块(LUV)
+tile.ga_piston_casing.piston_zpm.name=电力活塞方块(ZPM)
+tile.ga_piston_casing.piston_uv.name=电力活塞方块(UV)
+tile.ga_emitter_casing.emitter_lv.name=发射器方块(LV)
+tile.ga_emitter_casing.emitter_mv.name=发射器方块(MV)
+tile.ga_emitter_casing.emitter_hv.name=发射器方块(HV)
+tile.ga_emitter_casing.emitter_ev.name=发射器方块(EV)
+tile.ga_emitter_casing.emitter_iv.name=发射器方块(IV)
+tile.ga_emitter_casing.emitter_luv.name=发射器方块(LUV)
+tile.ga_emitter_casing.emitter_zpm.name=发射器方块(ZPM)
+tile.ga_emitter_casing.emitter_uv.name=发射器方块(UV)
+tile.ga_sensor_casing.sensor_lv.name=传感器方块(LV)
+tile.ga_sensor_casing.sensor_mv.name=传感器方块(MV)
+tile.ga_sensor_casing.sensor_hv.name=传感器方块(HV)
+tile.ga_sensor_casing.sensor_ev.name=传感器方块(EV)
+tile.ga_sensor_casing.sensor_iv.name=传感器方块(IV)
+tile.ga_sensor_casing.sensor_luv.name=传感器方块(LUV)
+tile.ga_sensor_casing.sensor_zpm.name=传感器方块(ZPM)
+tile.ga_sensor_casing.sensor_uv.name=传感器方块(UV)
+tile.ga_field_gen_casing.field_generator_lv.name=力场发生器方块(LV)
+tile.ga_field_gen_casing.field_generator_mv.name=力场发生器方块(MV)
+tile.ga_field_gen_casing.field_generator_hv.name=力场发生器方块(HV)
+tile.ga_field_gen_casing.field_generator_ev.name=力场发生器方块(EV)
+tile.ga_field_gen_casing.field_generator_iv.name=力场发生器方块(IV)
+tile.ga_field_gen_casing.field_generator_luv.name=力场发生器方块(LUV)
+tile.ga_field_gen_casing.field_generator_zpm.name=力场发生器方块(ZPM)
+tile.ga_field_gen_casing.field_generator_uv.name=力场发生器方块(UV)
+tile.ga_pump_casing.pump_lv.name=电动泵方块(LV)
+tile.ga_pump_casing.pump_mv.name=电动泵方块(MV)
+tile.ga_pump_casing.pump_hv.name=电动泵方块(HV)
+tile.ga_pump_casing.pump_ev.name=电动泵方块(EV)
+tile.ga_pump_casing.pump_iv.name=电动泵方块(IV)
+tile.ga_pump_casing.pump_luv.name=电动泵方块(LUV)
+tile.ga_pump_casing.pump_zpm.name=电动泵方块(ZPM)
+tile.ga_pump_casing.pump_uv.name=电动泵方块(UV)
+tile.ga_conveyor_casing.conveyor_lv.name=传送带方块(LV)
+tile.ga_conveyor_casing.conveyor_mv.name=传送带方块(MV)
+tile.ga_conveyor_casing.conveyor_hv.name=传送带方块(HV)
+tile.ga_conveyor_casing.conveyor_ev.name=传送带方块(EV)
+tile.ga_conveyor_casing.conveyor_iv.name=传送带方块(IV)
+tile.ga_conveyor_casing.conveyor_luv.name=传送带方块(LUV)
+tile.ga_conveyor_casing.conveyor_zpm.name=传送带方块(ZPM)
+tile.ga_conveyor_casing.conveyor_uv.name=传送带方块(UV)
+tile.ga_robot_arm_casing.robot_arm_lv.name=机械臂方块(LV)
+tile.ga_robot_arm_casing.robot_arm_mv.name=机械臂方块(MV)
+tile.ga_robot_arm_casing.robot_arm_hv.name=机械臂方块(HV)
+tile.ga_robot_arm_casing.robot_arm_ev.name=机械臂方块(EV)
+tile.ga_robot_arm_casing.robot_arm_iv.name=机械臂方块(IV)
+tile.ga_robot_arm_casing.robot_arm_luv.name=机械臂方块(LUV)
+tile.ga_robot_arm_casing.robot_arm_zpm.name=机械臂方块(ZPM)
+tile.ga_robot_arm_casing.robot_arm_uv.name=机械臂方块(UV)
+
+

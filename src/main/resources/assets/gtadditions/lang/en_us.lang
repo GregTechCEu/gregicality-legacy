@@ -1389,7 +1389,7 @@ gtadditions.multiblock.reactor.tooltip.2=Coolant is fluid and can be Steam(150C)
 gtadditions.multiblock.reactor.tooltip.3=The Nuclear Reactor will drain all coolant store in Hatches, more temperature is the recipe, more coolant will be drained.
 gtadditions.multiblock.reactor.tooltip.4=If there is not enough coolant, the reator will stop running.
 gtadditions.multiblock.reactor.tooltip.5=If there is too many coolant, the reactor will overclock the recipe.
-gtadditions.multiblock.reactor.tooltip.6=The Core of the reactor can be Nuclear Materials which will add more Temperature. Th=0, U=2, P=10, Am=15, Cm=25, Bk=35, Cf=50, Es=75, Fm=100, Md=200
+gtadditions.multiblock.reactor.tooltip.6=The Core of the reactor can be Nuclear Materials which will add more Temperature. Th=0, U=2, Pu=10, Am=15, Cm=25, Bk=35, Cf=50, Es=75, Fm=100, Md=200
 gtadditions.multiblock.reactor.tooltip.7=Tips 1: Pump is a must have in this build to regulate coolant otherwise the core will stay cool and never produce hot coolant.
 gtadditions.multiblock.reactor.tooltip.8=Tips 2: Coolant is in a closed loop, Hot Coolant turbine output Coolant.
 gtadditions.multiblock.reactor.description=Hatches and Buses can be placed on the first or last layer of lead casing.
@@ -1970,7 +1970,6 @@ metaitem.indium_trifluoride.name=Indium Trifluoride Dust
 metaitem.antimony_trifluoride.name=Antimony Trifluoride Dust
 metaitem.thorium_uranium_sludge.name=Thorium-Uranium Sludge
 metaitem.lanthanum_oxide.name=Lanthanum Oxide
-metaitem.lanthanum_oxide.name=Lanthanum Oxide
 metaitem.praseodymium_oxide.name=Praseodymium Oxide
 metaitem.neodymium_oxide.name=Neodymium Oxide
 metaitem.cerium_oxide.name=Cerium Oxide
@@ -2056,7 +2055,7 @@ fluid.hot_vapour_mixture=Hot Vapour Mixture
 fluid.damp_bromine=Damp Bromine
 fluid.butyraldehyde=Butyraldehyde
 fluid.ethylhexanol=2-Ethylhexanol
-fluid.diethylhexyl_phosphoric_acid=Di-(2-ethylhexyl)phosphoric Acid
+fluid.di_ethylhexyl_phosphoric_acid=Di-(2-ethylhexyl)phosphoric Acid
 fluid.sodium_hydroxide_solution=Sodium Hydroxide Solution
 fluid.trisodium_phosphate=Trisodium Phosphate
 fluid.rare_earth_hydroxides_solution=Rare Earth Hydroxides Solution
@@ -2071,7 +2070,7 @@ material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
 material.naquadriatic_compound=Naquadriatic Compound
 
-metiatem.unstable.star.name=Unstable Star
+metaitem.unstable.star.name=Unstable Star
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
