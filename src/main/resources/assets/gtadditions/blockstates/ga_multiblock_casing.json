@@ -77,6 +77,11 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
         }
+      },
+      "cladded_reactor_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/cladded_reactor_casing"
+        }
       }
     }
   }

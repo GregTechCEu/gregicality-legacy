@@ -1,6 +1,7 @@
 package gregicadditions.jei.multi.nuclear;
 
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -41,8 +42,8 @@ public class NuclearReactorInfo extends MultiblockInfoPage {
                 .aisle("ISO", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "FYG")
                 .where('S', reactor, EnumFacing.SOUTH)
                 .where('R', rodType.casingState)
-                .where('Y', GAMetaBlocks.getMetalCasingBlockState(Lead))
-                .where('Z', GAMetaBlocks.getMetalCasingBlockState(Lead))
+                .where('Y', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))
+                .where('Z', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))
                 .where('X', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)

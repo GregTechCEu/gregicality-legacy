@@ -340,7 +340,7 @@ public class MachineCraftingRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(30000)
                 .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
-                        OreDictUnifier.get(plate, PlutoniumRadioactive.getMaterial(), 4),
+                        OreDictUnifier.get(plate, Americium, 4),
                         OreDictUnifier.get(plate, NetherStar, 4),
                         FIELD_GENERATOR_IV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32),
@@ -353,7 +353,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.FUSION_REACTOR[0].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(60000)
                 .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
-                        OreDictUnifier.get(plate, Europium, 4),
+                        OreDictUnifier.get(plate, Rutherfordium, 4),
                         OreDictUnifier.get(plate, Curium.getMaterial(), 4),
                         FIELD_GENERATOR_LUV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(48),
