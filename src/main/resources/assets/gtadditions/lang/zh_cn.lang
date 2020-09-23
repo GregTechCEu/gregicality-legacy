@@ -34,7 +34,7 @@ metaitem.boule.europium.name=钅卢硅棒
 metaitem.boule.americium.name=钅杜硅棒
 metaitem.boule.neutronium.name=中子素硅棒
 metaitem.brick.coke.name=焦炉砖块
-metaitem.brick.fireclay.name=耐火粘土锭
+metaitem.brick.fireclay.name=耐火砖块
 metaitem.credit.darmstadtium.name=中子素硬币
 metaitem.component.diode.name=二极管
 metaitem.component.diode.tooltip=基础电子元件
@@ -703,7 +703,7 @@ gtadditions.machine.world_accelerator.luv.name=进阶世界加速器 V
 gtadditions.machine.world_accelerator.zpm.name=进阶世界加速器 VI
 gtadditions.machine.world_accelerator.uv.name=进阶世界加速器 VII
 gtadditions.machine.world_accelerator.description=加快游戏刻更新速度。共两种模式：方块实体模式和随机刻模式。使用螺丝刀切换模式。
-gtadditions.machine.world_accelerator.area=在方块实体模式下，只有相邻方块会被加速。在随机刻模式下,以加速器为中心%dx%d的区域内所有方块实体均会被加速。
+gtadditions.machine.world_accelerator.area=在方块实体模式下，只有相邻方块会被加速。在随机刻模式下，以加速器为中心%dx%d的区域内所有方块实体均会被加速。
 
 gtadditions.machine.nuclear_reactor.name=核反应堆
 gtadditions.machine.nuclear_breeder.name=增殖核反应堆
@@ -777,6 +777,7 @@ tile.ga_multiblock_casing.tiered_hull_uv.name=整体框架 IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§e最大电压: UV
 tile.ga_multiblock_casing.tiered_hull_max.name=整体框架 X
 tile.ga_multiblock_casing.tiered_hull_max.tooltip=§e最大电压: MAX
+tile.ga_multiblock_casing.cladded_reactor_casing.name=覆层反应堆外壳
 tile.ga_transparent_casing.reinforced_glass.name=强化玻璃
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=硼硅强化玻璃
 tile.ga_transparent_casing.nickel_reinforced_glass.name=镍强化玻璃
@@ -1298,6 +1299,7 @@ material.uv_superconductor_base=UV超导基
 material.uv_superconductor=UV超导
 material.rutherfordium=钅卢
 material.dubnium=钅杜
+material.reactor_steel=反应堆专用钒钢
 
 
 
@@ -1367,30 +1369,30 @@ item.meat.dust=肉末
 item.ga_seed.material.name=%s种子
 item.ga_essence.material.name=%s精华
 
-gtadditions.multiblock.battery_tower.description=储能塔可搭建为4-16格高. 你可以任意摆放能源仓. 但放置位置不能高于能量单元.
+gtadditions.multiblock.battery_tower.description=储能塔可搭建为4-16格高。你可以任意摆放能源仓。但放置位置不能高于能量单元。
 gregtech.multiblock.large_forge_hammer.description=
-gregtech.multiblock.large_forge_hammer.tooltip=需要润滑油才能运行. 和工作配方电压每差一级可以多处理2个物品, 比同等级单方块锻造锤快1.25倍且EU消耗节省90%%.
-gregtech.multiblock.chemical_plant.description=化工厂是一个由不同等级外壳构成的5x5结构,框架等级决定多方块等级.
-gregtech.multiblock.coke_oven.description=焦炉是一个用于将煤烧成焦煤、将褐煤烧成焦褐煤和将原木烧成木头,并产出杂酚油的3x3多方块结构.
-gregtech.multiblock.assembly_line.description=装配线是一个由5-16片重复结构组成的多方块结构. 按理说,它是个用于生产高级元件的大组装机.
-gregtech.multiblock.large_circuit_assembly.description=大型电路组装机是一个用于制造高阶电路的多方块结构.
-gregtech.multiblock.processing_array.description=处理阵列将最多16个多方块机器集成在一个处理阵列里,实现更高效的自动化.
-gregtech.multiblock.volcanus.description=炽焱高炉可以胜任电力高炉. 它每秒消耗40mB的烈焰之炽焱并且比同等的电力高炉快3倍.
-gregtech.multiblock.large_bender_and_forming.description=大型辊压机比同等电压的机器快6倍,且和工作配方电压每差一级可以多处理4个物品.
-gregtech.multiblock.large_multi_use.description=大型加工厂比同等电压的机器快3.5倍,和工作配方电压每差一级可以多处理2个物品且消耗的EU节省80%%.
-gregtech.multiblock.large_washing_plant.description=大型洗矿厂比同等电压的机器快5倍且和工作配方电压每差一级可以多处理4个物品.
-gregtech.multiblock.distill_tower.description=蒸馏塔是一个2-12层的多方块结构,但与蒸馏室不同,蒸馏塔会输出多种流体/物品,每层都会输出不同流体.
-gregtech.multiblock.fusion_reactor_mk1.description=核聚变反应堆Mk.I是一个用于将元素聚变为更重元素的多方块结构.Mk.I核聚变反应堆可以使用LuV,ZPM或UV能源仓.每个能源仓会给反应堆增加10w的能量缓存.
-gregtech.multiblock.fusion_reactor_mk2.description=核聚变反应堆Mk.II是一个用于将元素聚变为更重元素的多方块结构.Mk.II核聚变反应堆可以使用ZPM或UV能源仓.每个能源仓会给反应堆增加20w的能量缓存.
-gregtech.multiblock.fusion_reactor_mk3.description=核聚变反应堆Mk.III是一个用于将元素聚变为更重元素的多方块结构.Mk.III核聚变反应堆只能使用UV能源仓.每个能源仓会给反应堆增加40w的能量缓存.
-gtadditions.multiblock.reactor.tooltip.1=核反应堆和增殖核反应堆使用核能产生热冷却液.
-gtadditions.multiblock.reactor.tooltip.2=冷却液是液体并且只能是蒸汽(150C), 氘(450C), 钠(800C), 钠钾合金(900C), 氟锂钠钾混合物(1800C), 氟锂铍混合物(1700C) and 共晶铅铋(1900C).
+gregtech.multiblock.large_forge_hammer.tooltip=需要润滑油才能运行。和工作配方电压每差一级可以多处理2个物品，比同等级单方块锻造锤快1.25倍且EU消耗节省90%%。
+gregtech.multiblock.chemical_plant.description=化工厂是一个由不同等级外壳构成的5x5结构，框架等级决定多方块等级。
+gregtech.multiblock.coke_oven.description=焦炉是一个用于将煤烧成焦煤、将褐煤烧成焦褐煤和将原木烧成木头，并产出杂酚油的3x3多方块结构。
+gregtech.multiblock.assembly_line.description=装配线是一个由5-16片重复结构组成的多方块结构。按理说，它是个用于生产高级元件的大组装机。
+gregtech.multiblock.large_circuit_assembly.description=大型电路组装机是一个用于制造高阶电路的多方块结构。
+gregtech.multiblock.processing_array.description=处理阵列将最多16个多方块机器集成在一个处理阵列里，实现更高效的自动化。
+gregtech.multiblock.volcanus.description=炽焱高炉可以胜任电力高炉。它每秒消耗40mB的烈焰之炽焱并且比同等的电力高炉快3倍。
+gregtech.multiblock.large_bender_and_forming.description=大型辊压机比同等电压的机器快6倍，且和工作配方电压每差一级可以多处理4个物品。
+gregtech.multiblock.large_multi_use.description=大型加工厂比同等电压的机器快3.5倍，和工作配方电压每差一级可以多处理2个物品且消耗的EU节省80%%。
+gregtech.multiblock.large_washing_plant.description=大型洗矿厂比同等电压的机器快5倍且和工作配方电压每差一级可以多处理4个物品。
+gregtech.multiblock.distill_tower.description=蒸馏塔是一个2-12层的多方块结构，但与蒸馏室不同，蒸馏塔会输出多种流体/物品，每层都会输出不同流体。
+gregtech.multiblock.fusion_reactor_mk1.description=核聚变反应堆Mk.I是一个用于将元素聚变为更重元素的多方块结构.Mk.I核聚变反应堆可以使用LuV，ZPM或UV能源仓.每个能源仓会给反应堆增加10w的能量缓存。
+gregtech.multiblock.fusion_reactor_mk2.description=核聚变反应堆Mk.II是一个用于将元素聚变为更重元素的多方块结构.Mk.II核聚变反应堆可以使用ZPM或UV能源仓.每个能源仓会给反应堆增加20w的能量缓存。
+gregtech.multiblock.fusion_reactor_mk3.description=核聚变反应堆Mk.III是一个用于将元素聚变为更重元素的多方块结构.Mk.III核聚变反应堆只能使用UV能源仓.每个能源仓会给反应堆增加40w的能量缓存。
+gtadditions.multiblock.reactor.tooltip.1=核反应堆和增殖核反应堆使用核能产生热冷却液。
+gtadditions.multiblock.reactor.tooltip.2=冷却液是液体并且只能是蒸汽(150C)，氘(450C)，钠(800C)，钠钾合金(900C)，氟锂钠钾混合物(1800C)，氟锂铍混合物(1700C)以及共晶铅铋(1900C)。
 gtadditions.multiblock.reactor.tooltip.3=核反应堆会消耗输入仓内所有的冷却液，当前所处理的配方温度越高，消耗的冷却液越多。
 gtadditions.multiblock.reactor.tooltip.4=若冷却液不足，反应堆将停止工作。
 gtadditions.multiblock.reactor.tooltip.5=若冷却液过剩，反应堆将超频处理当前配方。
-gtadditions.multiblock.reactor.tooltip.6=核材料可以充当反应堆堆芯以提供更多温度：钍=0，铀=2，钚=10, 镅=15, 锔=25, 锫=35, 锎=50, 锿=75, 镄=100, 钔=200
-gtadditions.multiblock.reactor.tooltip.7=提示1:必须用泵管理冷却液,否则堆温无法上升.
-gtadditions.multiblock.reactor.tooltip.8=提示2:冷却液可以无损循环.热冷却液涡轮会产出冷却液.
+gtadditions.multiblock.reactor.tooltip.6=核材料可以充当反应堆堆芯以提供更多温度：钍=0，铀=2，钚=10，镅=15，锔=25，锫=35，锎=50，锿=75，镄=100，钔=200
+gtadditions.multiblock.reactor.tooltip.7=提示1:必须用泵管理冷却液，否则堆温无法上升。
+gtadditions.multiblock.reactor.tooltip.8=提示2:冷却液可以无损循环.热冷却液涡轮会产出冷却液。
 gtadditions.multiblock.reactor.description=仓（流体）和总线（物品）可以布置在第一层或最底层中，替代铅机械方块。
 gtadditions.multiblock.universal.tooltip.1=多方块配方: §e%s§r
 gtadditions.multiblock.universal.tooltip.2=耗能倍数: §e%.1f§r
@@ -1399,44 +1401,44 @@ gtadditions.multiblock.universal.tooltip.4=最多同时处理配方数: §e%d§7
 gtadditions.multiblock.universal.tooltip.5=产出概率加成: §e%d%%§r
 gtadditions.multiblock.fusion_reactor.heat=热量：%d
 
-gtadditions.multiblock.void_miner.description.1=虚空采矿场会给你成吨的矿石.
-gtadditions.multiblock.void_miner.description.2=它每秒都会交替消耗烈焰之炽焱和极寒之凛冰.
-gtadditions.multiblock.void_miner.description.3=如果只有烈焰之炽焱温度会升高,只有极寒之凛冰则温度会降低.
-gtadditions.multiblock.void_miner.description.4=首先先只供应烈焰之炽焱来升温,当温度差不多高时再慢慢加入极寒之凛冰.
-gtadditions.multiblock.void_miner.description.5=如果温度高于最大温度,虚空采矿场会停机降温.
-gtadditions.multiblock.large_transformer.description=大型变压器可以将任意安的电压互相转换.
-gtadditions.multiblock.industrial_primitive_blast_furnace.description=工业土高炉是一个由1-64片重复结构组成的多方块结构.
-gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=土高炉的升级版本.
-gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=工业土高炉可以自动化并且速度更快.
-gtadditions.machine.rock_breaker.description=会产出圆石、安山岩、闪长岩和花岗岩.必须接触水和岩浆.
-gregtech.multiblock.cryogenic_freezer.description=凛冰冷冻机可以胜任真空冷冻机.它每秒消耗20mB极寒之凛冰,比同等电压的真空冷冻机快2倍且可同时处理4个物品.
-gregtech.multiblock.advanced_distillation_tower.description1=进阶蒸馏塔可以胜任蒸馏塔,并且能搭建到26格.
+gtadditions.multiblock.void_miner.description.1=虚空采矿场会给你成吨的矿石。
+gtadditions.multiblock.void_miner.description.2=它每秒都会交替消耗烈焰之炽焱和极寒之凛冰。
+gtadditions.multiblock.void_miner.description.3=如果只有烈焰之炽焱温度会升高，只有极寒之凛冰则温度会降低。
+gtadditions.multiblock.void_miner.description.4=首先先只供应烈焰之炽焱来升温，当温度差不多高时再慢慢加入极寒之凛冰。
+gtadditions.multiblock.void_miner.description.5=如果温度高于最大温度，虚空采矿场会停机降温。
+gtadditions.multiblock.large_transformer.description=大型变压器可以将任意安的电压互相转换。
+gtadditions.multiblock.industrial_primitive_blast_furnace.description=工业土高炉是一个由1-64片重复结构组成的多方块结构。
+gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=土高炉的升级版本。
+gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=工业土高炉可以自动化并且速度更快。
+gtadditions.machine.rock_breaker.description=会产出圆石、安山岩、闪长岩和花岗岩.必须接触水和岩浆。
+gregtech.multiblock.cryogenic_freezer.description=凛冰冷冻机可以胜任真空冷冻机.它每秒消耗20mB极寒之凛冰，比同等电压的真空冷冻机快2倍且可同时处理4个物品。
+gregtech.multiblock.advanced_distillation_tower.description1=进阶蒸馏塔可以胜任蒸馏塔，并且能搭建到26格。
 gregtech.multiblock.advanced_distillation_tower.description2=它有两种模式:
 gregtech.multiblock.advanced_distillation_tower.description3=    蒸馏塔 => 处理4份配方 
 gregtech.multiblock.advanced_distillation_tower.description4=    蒸馏室 => 处理12份配方
-gtadditions.multiblock.chemical_plant.tooltip=处理速度与线圈等级相关.
-gtadditions.multiblock.large_rocket_engine.tooltip.1=大型火箭引擎会产出成吨的能量.
-gtadditions.multiblock.large_rocket_engine.tooltip.2=它会消耗你提供的所有火箭燃料.
-gtadditions.multiblock.large_rocket_engine.tooltip.3=每秒还消耗37500mB的空气和10mB的二氧化碳.
+gtadditions.multiblock.chemical_plant.tooltip=处理速度与线圈等级相关。
+gtadditions.multiblock.large_rocket_engine.tooltip.1=大型火箭引擎会产出成吨的能量。
+gtadditions.multiblock.large_rocket_engine.tooltip.2=它会消耗你提供的所有火箭燃料。
+gtadditions.multiblock.large_rocket_engine.tooltip.3=每秒还消耗37500mB的空气和10mB的二氧化碳。
 gtadditions.multiblock.large_rocket_engine.tooltip.4=提供液氢会提供3倍的能量产出(4mB/s /2048 EU/t)
-gtadditions.multiblock.large_rocket_engine.tooltip.5=默认燃料效率为60%%.
+gtadditions.multiblock.large_rocket_engine.tooltip.5=默认燃料效率为60%%。
 gtadditions.multiblock.large_rocket_engine.tooltip.6=LuV输出以上则燃料效率为40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=ZPM输出以上则燃料效率为20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=UV输出以上则燃料效率为10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=比炽焱高炉更快
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=大型硅岩反应堆没有燃料效率损失
-gtadditions.multiblock.large_naquadah_reactor.tooltip.2=有些硅岩燃料会和钾等离子体反应并输出高于1UV的电压.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.3=中硅岩燃料 => 1UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.4=重硅岩燃料 => 2UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.5=中富集硅岩燃料 => 2UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.6=重富集硅岩燃料 => 3UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.7=超能燃料 I => 5UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.8=超能燃料 II => 8UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.9=超能燃料 III => 12UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=有些硅岩燃料会和钾等离子体反应并输出高于1UV的电压。
+gtadditions.multiblock.large_naquadah_reactor.tooltip.3=中硅岩燃料 => 1UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.4=重硅岩燃料 => 2UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.5=中富集硅岩燃料 => 2UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.6=重富集硅岩燃料 => 3UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.7=超能燃料 I => 5UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.8=超能燃料 II => 8UV
+gtadditions.multiblock.large_naquadah_reactor.tooltip.9=超能燃料 III => 12UV
 
-gtadditions.multiblock.battery_tower.tooltip.1=储能塔是一个可以储存大量EU的多方块电池.
-gtadditions.multiblock.battery_tower.tooltip.2=所有能量单元都必须是同等级的.储能塔每t都会消耗能量单元电压等级10%%的电力.
-gtadditions.multiblock.battery_tower.tooltip.3=能源仓和动力仓的等级不能比能量单元等级高.
+gtadditions.multiblock.battery_tower.tooltip.1=储能塔是一个可以储存大量EU的多方块电池。
+gtadditions.multiblock.battery_tower.tooltip.2=所有能量单元都必须是同等级的.储能塔每t都会消耗能量单元电压等级10%%的电力。
+gtadditions.multiblock.battery_tower.tooltip.3=能源仓和动力仓的等级不能比能量单元等级高。
 
 
 
@@ -1448,7 +1450,7 @@ gregtech.multiblock.universal.overheat=过热!
 gregtech.machine.world_accelerator.mode.tile=方块实体模式
 gregtech.machine.world_accelerator.mode.entity=随机刻模式
 gregtech.multiblock.universal.framework=当前最大电压: %d EU/t
-gregtech.multiblock.universal.framework.tooltip=整体框架的等级决定了多方块的最高运行等级.
+gregtech.multiblock.universal.framework.tooltip=整体框架的等级决定了多方块的最高运行等级。
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=当前堆叠片数: %d
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=剩余单位燃料: %d 单位
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=燃料效率: %d %%
@@ -1490,10 +1492,10 @@ item.material.oreprefix.hexafluoride=六氟化%s
 
 metaitem.rubber_drop.name=粘性树脂
 
-tile.metal_casing.primitive_bricks.name=耐火砖块
+tile.metal_casing.primitive_bricks.name=耐火砖
 tile.ga_metal_casing.material.name=%s金属外壳
-gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构: 3x3x4(WxLxH) 整个多方块结构一共需要32个耐火砖块/n第一层是3x3的正方形./n第二三四层是中空的正方形./n土高炉的控制器在第二层每面的中间./n土高炉可以共享耐火砖块./n
-gregtech.machine.primitive_blast_furnace.industrial.tooltip=土高炉的升级版本.
+gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构: 3x3x4（宽、长、高）/n整个多方块结构一共需要32个耐火砖块：/n第一层是3x3的正方形，/n第二三四层是中空的正方形。/n土高炉的控制器在第二层每面的中间。/n土高炉可以共享方块。/n
+gregtech.machine.primitive_blast_furnace.industrial.tooltip=土高炉的升级版本
 
 
 gtadditions.machine.drum.wood.name=木桶
