@@ -28,7 +28,7 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XXX", "XXX")
-					.aisle("IXX", "X#X", "XXX")
+					.aisle("IMX", "X#X", "XPX")
 					.aisle("OEX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
@@ -36,6 +36,8 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
+					.where('P', GAMetaBlocks.PUMP_CASING.getDefaultState())
 					.build());
 
 		return Lists.newArrayList(shapeInfo);

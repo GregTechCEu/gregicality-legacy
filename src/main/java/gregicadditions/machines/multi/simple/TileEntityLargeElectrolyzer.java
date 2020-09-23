@@ -3,12 +3,16 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.components.PistonCasing;
+import gregicadditions.item.components.PumpCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.Material;
@@ -37,15 +41,26 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
 				.aisle("XXX", "XXX", "XXX")
-				.aisle("XXX", "X#X", "XXX")
+				.aisle("XMX", "X#X", "XPX")
 				.aisle("XXX", "XSX", "XXX")
-				.setAmountAtLeast('L', 9)
+				.setAmountAtLeast('L', 7)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('#', isAirPredicate())
+				.where('M', motorPredicate())
+				.where('P', pumpPredicate())
 				.build();
+	}
+
+	@Override
+	protected void formStructure(PatternMatchContext context) {
+		super.formStructure(context);
+		MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
+		PumpCasing.CasingType pump = context.getOrDefault("Pump", PumpCasing.CasingType.PUMP_LV);
+		int min = Math.min(motor.getTier(), pump.getTier());
+		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
 	private static final Material defaultMaterial = Potin;
