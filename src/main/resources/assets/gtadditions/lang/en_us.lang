@@ -599,7 +599,13 @@ gtadditions.machine.wiremill.luv.name=Advanced Wiremill V
 gtadditions.machine.wiremill.zpm.name=Advanced Wiremill VI
 gtadditions.machine.wiremill.uv.name=Advanced Wiremill VII
 
-gtadditions.machine.distill_tower.name=[Deprecated] Distillation Tower
+gtadditions.machine.electric_blast_furnace.name=Electric Blast Furnace
+gtadditions.machine.vacuum_freezer.name=Vacuum Freezer
+gtadditions.machine.implosion_compressor.name=Implosion Compressor
+gtadditions.machine.pyrolyse_oven.name=Pyrolyse Oven
+gtadditions.machine.distillation_tower.name=Distillation Tower
+gtadditions.machine.multi_furnace.name=Multi Smelter
+gtadditions.machine.cracker.name=Cracker Unit
 gtadditions.machine.assembly_line.name=Assembly Line
 gtadditions.machine.large_circuit_assembly.name=Large Circuit Assembly Line
 gtadditions.machine.processing_array.name=Processing Array
