@@ -165,9 +165,9 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                 case "replicator":
                     return GARecipeMaps.REPLICATOR_RECIPES;
                 case "sifter":
-                    return GARecipeMaps.SIFTER_RECIPES;EXTRUDER
+                    return RecipeMaps.SIFTER_RECIPES;
                 case "extruder":
-                    return GARecipeMaps.EXTRUDER_RECIPES;
+                    return RecipeMaps.EXTRUDER_RECIPES;
                 default:
                     return null;
             }
