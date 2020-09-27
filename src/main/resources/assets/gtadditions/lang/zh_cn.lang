@@ -598,7 +598,13 @@ gtadditions.machine.wiremill.luv.name=进阶线材轧机 V
 gtadditions.machine.wiremill.zpm.name=进阶线材轧机 VI
 gtadditions.machine.wiremill.uv.name=进阶线材轧机 VII
 
-gtadditions.machine.distill_tower.name=[弃用]蒸馏塔
+gtadditions.machine.electric_blast_furnace.name=电力高炉
+gtadditions.machine.vacuum_freezer.name=真空冷冻机
+gtadditions.machine.implosion_compressor.name=聚爆压缩机
+gtadditions.machine.pyrolyse_oven.name=热解炉
+gtadditions.machine.distillation_tower.name=蒸馏塔
+gtadditions.machine.multi_furnace.name=工业熔炉
+gtadditions.machine.cracker.name=石油裂化机
 gtadditions.machine.assembly_line.name=装配线
 gtadditions.machine.large_circuit_assembly.name=大型电路装配线
 gtadditions.machine.processing_array.name=处理阵列
@@ -1411,7 +1417,7 @@ gtadditions.multiblock.industrial_primitive_blast_furnace.description=工业土�
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=土高炉的升级版本。
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=工业土高炉可以自动化并且速度更快。
 gtadditions.machine.rock_breaker.description=会产出圆石、安山岩、闪长岩和花岗岩.必须接触水和岩浆。
-gregtech.multiblock.cryogenic_freezer.description=凛冰冷冻机可以胜任真空冷冻机.它每秒消耗20mB极寒之凛冰，比同等电压的真空冷冻机快2倍且可同时处理4个物品。
+gregtech.multiblock.cryogenic_freezer.description=凛冰冷冻机可以胜任真空冷冻机的工作。它每秒消耗20mB极寒之凛冰，处理速度双倍于同等电压的真空冷冻机且可同时处理4个物品。
 gregtech.multiblock.advanced_distillation_tower.description1=进阶蒸馏塔可以胜任蒸馏塔，并且能搭建到26格。
 gregtech.multiblock.advanced_distillation_tower.description2=它有两种模式:
 gregtech.multiblock.advanced_distillation_tower.description3=    蒸馏塔 => 处理4份配方 
