@@ -599,6 +599,10 @@ gtadditions.machine.wiremill.luv.name=Advanced Wiremill V
 gtadditions.machine.wiremill.zpm.name=Advanced Wiremill VI
 gtadditions.machine.wiremill.uv.name=Advanced Wiremill VII
 
+gtadditions.machine.diesel_engine.name=Diesel Engine
+gtadditions.machine.large_turbine.steam.name=Large Steam Turbine
+gtadditions.machine.large_turbine.gas.name=Large Gas Turbine
+gtadditions.machine.large_turbine.plasma.name=Large Plasma Turbine
 gtadditions.machine.electric_blast_furnace.name=Electric Blast Furnace
 gtadditions.machine.vacuum_freezer.name=Vacuum Freezer
 gtadditions.machine.implosion_compressor.name=Implosion Compressor
