@@ -535,24 +535,17 @@ public class GATileEntities {
         VOLCANUS = GregTechAPI.registerMetaTileEntity(2532, new TileEntityVolcanus(location("volcanus")));
         LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeAssembler(location("large_assembler")));
 
-        MetaTileEntities.ELECTRIC_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityElectricBlastFurnace(gregtechId("electric_blast_furnace")));
-        ELECTRIC_BLAST_FURNACE = (MetaTileEntityElectricBlastFurnace) MetaTileEntities.ELECTRIC_BLAST_FURNACE;
-        MetaTileEntities.VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(2535, new MetaTileEntityVacuumFreezer(gregtechId("vacuum_freezer")));
-        VACUUM_FREEZER = (MetaTileEntityVacuumFreezer) MetaTileEntities.VACUUM_FREEZER;
-        MetaTileEntities.IMPLOSION_COMPRESSOR = GregTechAPI.registerMetaTileEntity(2536, new MetaTileEntityImplosionCompressor(gregtechId("implosion_compressor")));
-        IMPLOSION_COMPRESSOR = (MetaTileEntityImplosionCompressor) MetaTileEntities.IMPLOSION_COMPRESSOR;
-        MetaTileEntities.DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2537, new MetaTileEntityDistillationTower(gregtechId("distillation_tower")));
-        DISTILLATION_TOWER = (MetaTileEntityDistillationTower) MetaTileEntities.DISTILLATION_TOWER;
-        MetaTileEntities.CRACKER = GregTechAPI.registerMetaTileEntity(2538, new MetaTileEntityCrackingUnit(gregtechId("cracker")));
-        CRACKER = (MetaTileEntityCrackingUnit) MetaTileEntities.CRACKER;
-        MetaTileEntities.MULTI_FURNACE = GregTechAPI.registerMetaTileEntity(2539, new MetaTileEntityMultiFurnace(gregtechId("multi_furnace")));
-        MULTI_FURNACE = (MetaTileEntityMultiFurnace) MetaTileEntities.MULTI_FURNACE;
-        MetaTileEntities.DIESEL_ENGINE = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityDieselEngine(gregtechId("diesel_engine")));
-        DIESEL_ENGINE = (MetaTileEntityDieselEngine) MetaTileEntities.DIESEL_ENGINE;
+        ELECTRIC_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityElectricBlastFurnace(location("electric_blast_furnace")));
+        VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(2535, new MetaTileEntityVacuumFreezer(location("vacuum_freezer")));
+        IMPLOSION_COMPRESSOR = GregTechAPI.registerMetaTileEntity(2536, new MetaTileEntityImplosionCompressor(location("implosion_compressor")));
+        DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2537, new MetaTileEntityDistillationTower(location("distillation_tower")));
+        CRACKER = GregTechAPI.registerMetaTileEntity(2538, new MetaTileEntityCrackingUnit(location("cracker")));
+        MULTI_FURNACE = GregTechAPI.registerMetaTileEntity(2539, new MetaTileEntityMultiFurnace(location("multi_furnace")));
+        DIESEL_ENGINE = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityDieselEngine(location("diesel_engine")));
 
-        MetaTileEntities.LARGE_STEAM_TURBINE = LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
-        MetaTileEntities.LARGE_GAS_TURBINE = LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
-        MetaTileEntities.LARGE_PLASMA_TURBINE = LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
+        LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
+        LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
+        LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(gregtechId("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
         HOT_COOLANT_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityHotCoolantTurbine(location("large_turbine.hot_coolant"), MetaTileEntityHotCoolantTurbine.TurbineType.HOT_COOLANT));
 
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));

@@ -7,18 +7,11 @@ import gregicadditions.jei.multi.miner.LargeMinerInfo;
 import gregicadditions.jei.multi.miner.VoidMinerInfo;
 import gregicadditions.jei.multi.nuclear.HotCoolantTurbineInfo;
 import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
-import gregicadditions.jei.multi.override.CrackerUnitInfo;
-import gregicadditions.jei.multi.override.DieselEngineInfo;
-import gregicadditions.jei.multi.override.DistillationTowerInfo;
-import gregicadditions.jei.multi.override.ElectricBlastFurnaceInfo;
-import gregicadditions.jei.multi.override.ImplosionCompressorInfo;
-import gregicadditions.jei.multi.override.MultiSmelterInfo;
-import gregicadditions.jei.multi.override.VacuumFreezerInfo;
+import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
-import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
-import gregtech.integration.jei.multiblock.infos.*;
+import gregtech.integration.jei.multiblock.infos.LargeTurbineInfo;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawable;
@@ -37,6 +30,13 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     public static void registerRecipes(IModRegistry registry) {
         registry.addRecipes(Lists.newArrayList(
+                new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
+                new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
+                new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
+                new MultiblockInfoRecipeWrapper(new DistillationTowerInfo()),
+                new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
+                new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
+                new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
                 new MultiblockInfoRecipeWrapper(new AssemblyLineInfo()),
                 new MultiblockInfoRecipeWrapper(new FusionReactor1Info()),
                 new MultiblockInfoRecipeWrapper(new FusionReactor2Info()),
@@ -57,20 +57,6 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new VolcanusInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()),
-                new MultiblockInfoRecipeWrapper(new PrimitiveBlastFurnaceInfo()),
-                new MultiblockInfoRecipeWrapper(new PyrolyzeOvenInfo()),
-                new MultiblockInfoRecipeWrapper(new CokeOvenInfo()),
-                new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
-                new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),
-                new MultiblockInfoRecipeWrapper(new DistillationTowerInfo()),
-                new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
-                new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
-                new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
-                new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
-                new MultiblockInfoRecipeWrapper(new LargeBoilerInfo(MetaTileEntities.LARGE_BRONZE_BOILER)),
-                new MultiblockInfoRecipeWrapper(new LargeBoilerInfo(MetaTileEntities.LARGE_STEEL_BOILER)),
-                new MultiblockInfoRecipeWrapper(new LargeBoilerInfo(MetaTileEntities.LARGE_TITANIUM_BOILER)),
-                new MultiblockInfoRecipeWrapper(new LargeBoilerInfo(MetaTileEntities.LARGE_TUNGSTENSTEEL_BOILER)),
                 new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[0])),
                 new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[1])),
                 new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[2])),
@@ -92,7 +78,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new LargeForgeHammerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeNaquadahReactorInfo()),
                 new MultiblockInfoRecipeWrapper(new BatteryTowerInfo())
-        ), "gtadditions:multiblock_info2");
+        ), "gregtech:multiblock_info");
     }
 
     @Override
