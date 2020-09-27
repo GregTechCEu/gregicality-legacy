@@ -106,7 +106,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                     return RecipeMaps.CENTRIFUGE_RECIPES;
                 case "electrolyzer":
                     return RecipeMaps.ELECTROLYZER_RECIPES;
-                case "furnace":
+                case "electric_furnace":
                     return RecipeMaps.FURNACE_RECIPES;
                 case "bender":
                     return RecipeMaps.BENDER_RECIPES;
@@ -164,6 +164,10 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                     return GARecipeMaps.MASS_FAB_RECIPES;
                 case "replicator":
                     return GARecipeMaps.REPLICATOR_RECIPES;
+                case "sifter":
+                    return GARecipeMaps.SIFTER_RECIPES;EXTRUDER
+                case "extruder":
+                    return GARecipeMaps.EXTRUDER_RECIPES;
                 default:
                     return null;
             }
