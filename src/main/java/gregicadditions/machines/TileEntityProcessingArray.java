@@ -168,9 +168,9 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                     return GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
                 case "cluster_mill":
                     return GARecipeMaps.CLUSTER_MIL_RECIPES;
-                case "electric_sieve":
+                case "sieve":
                     return GARecipeMaps.SIEVE_RECIPES;
-                case "chemical_dehydrator":
+                case "dehydrator":
                     return GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
                 case "simple_ore_washer":
                     return GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES;
@@ -398,6 +398,9 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                     String trimmedName = "";
                     String voltage = unlocalizedName.substring(unlocalizedName.lastIndexOf(".") + 1);
                     trimmedName = unlocalizedName.substring(0, unlocalizedName.lastIndexOf("."));
+                    if(!GAEnums.voltageMap.containsValue(voltage)) {
+                    	continue;
+                    }
                     this.machineName = trimmedName.substring(trimmedName.lastIndexOf(".") + 1);
                     this.machineTierVoltage = GAEnums.voltageMap.get(voltage) == null ? 0 : GAEnums.voltageMap.get(voltage);
                     this.machineItemStack = wholeItemStack;
