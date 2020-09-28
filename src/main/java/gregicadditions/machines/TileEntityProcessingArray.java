@@ -160,10 +160,12 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
                     return RecipeMaps.LASER_ENGRAVER_RECIPES;
                 case "wiremill":
                     return RecipeMaps.WIREMILL_RECIPES;
-                case "mass_fab":
-                    return GARecipeMaps.MASS_FAB_RECIPES;
-                case "replicator":
-                    return GARecipeMaps.REPLICATOR_RECIPES;
+//                case "mass_fab":              too easy
+//                    return GARecipeMaps.MASS_FAB_RECIPES;
+//                case "replicator":            too easy
+//                    return GARecipeMaps.REPLICATOR_RECIPES;
+//                case "circuit_assembler":     too easy
+//                    return GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
                 case "sieve":
                     return GARecipeMaps.SIEVE_RECIPES;
                 case "dehydrator":
