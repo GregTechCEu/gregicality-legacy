@@ -298,8 +298,7 @@ public class MachineCraftingRecipes {
                 .inputs(CountableIngredient.from(circuit, Tier.Master),
                         CountableIngredient.from(circuit, Tier.Master),
                         CountableIngredient.from(circuit, Tier.Master),
-                        CountableIngredient.from(circuit, Tier.Master)
-                )
+                        CountableIngredient.from(circuit, Tier.Master))
                 .input(wireGtQuadruple, IVSuperconductor, 64)
                 .input(wireGtQuadruple, IVSuperconductor, 64)
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LUV, 2),
@@ -312,7 +311,7 @@ public class MachineCraftingRecipes {
                 .input(plate, Zirconium, 32)
                 .input(gear, Staballoy, 4)
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_EV))
-                .outputs(GATileEntities.ALLOY_BLAST_FURNACE.getStackForm()).duration(2400).EUt(5000).buildAndRegister();
+                .outputs(GATileEntities.ALLOY_BLAST_FURNACE.getStackForm()).duration(2400).EUt(1920).buildAndRegister();
 
 
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(130000)
