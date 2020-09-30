@@ -156,6 +156,7 @@ public class GATileEntities {
     public static MetaTileEntityCrackingUnit CRACKER;
     public static MetaTileEntityMultiFurnace MULTI_FURNACE;
     public static MetaTileEntityDieselEngine DIESEL_ENGINE;
+    public static MetaTileEntityPyrolyseOven PYROLYSE_OVEN;
 
     public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
     public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
@@ -721,6 +722,8 @@ public class GATileEntities {
         BUFFER[0] = GregTechAPI.registerMetaTileEntity(3230, new TileEntityBuffer(location("buffer.lv"), 3));
         BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));
         BUFFER[2] = GregTechAPI.registerMetaTileEntity(3232, new TileEntityBuffer(location("buffer.hv"), 5));
+
+        PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
     }
 
 
