@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 
 public class MultiRecipeProvider implements IProbeInfoProvider {
     @Override
@@ -24,21 +23,19 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
             EnumFacing sideHit = data.getSideHit();
             TileEntity tileEntity = world.getTileEntity(data.getPos());
             if (tileEntity == null) return;
-            Capability<IMultiRecipe> capability = getCapability();
             try {
-                IMultiRecipe resultCapability = tileEntity.getCapability(capability, null);
-                if (resultCapability != null && allowDisplaying(resultCapability)) {
+                IMultiRecipe resultCapability = tileEntity.getCapability(GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY, null);
+                if (resultCapability != null) {
                     addProbeInfo(resultCapability, probeInfo, tileEntity, sideHit);
                 }
+            } catch (ClassCastException ignored) {
+
             } catch (Throwable e) {
-                GTLog.logger.error("Bad One probe Implem: {}", e.getStackTrace()[0].getClassName());
+                GTLog.logger.error("Bad One probe Implem: {} {} {}", e.getClass().toGenericString(), e.getMessage(), e.getStackTrace()[0].getClassName());
             }
         }
     }
 
-    protected Capability<IMultiRecipe> getCapability() {
-        return GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY;
-    }
 
     protected void addProbeInfo(IMultiRecipe iMultiRecipe, IProbeInfo iProbeInfo, TileEntity tileEntity, EnumFacing enumFacing) {
 
@@ -51,10 +48,6 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
             }
 
         }
-    }
-
-    protected boolean allowDisplaying(IMultiRecipe capability) {
-        return true;
     }
 
 }
