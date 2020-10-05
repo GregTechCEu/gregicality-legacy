@@ -45,6 +45,8 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
 
+    public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
+
     public static GATransparentCasing TRANSPARENT_CASING;
 
     public static CellCasing CELL_CASING;
@@ -78,6 +80,9 @@ public class GAMetaBlocks {
         }
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
+
+        MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
+        MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
 
         TRANSPARENT_CASING = new GATransparentCasing();
         TRANSPARENT_CASING.setRegistryName("ga_transparent_casing");
@@ -171,6 +176,7 @@ public class GAMetaBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(MUTLIBLOCK_CASING);
+        registerItemModel(MUTLIBLOCK_CASING2);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
         registerItemModel(CONVEYOR_CASING);

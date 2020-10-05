@@ -1,0 +1,58 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "hyper_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_casing"
+        }
+      },
+      "hyper_casing_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_casing_2"
+        }
+      },
+      "fusion_casing_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_3"
+        }
+      },
+      "fusion_casing_4": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_4"
+        }
+      },
+      "fusion_coil_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
+        }
+      },
+      "fusion_coil_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_3"
+        }
+      },
+      "hyper_core": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core"
+        }
+      },
+      "hyper_core_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core_2"
+        }
+      },
+      "hyper_core_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core_3"
+        }
+      }
+    }
+  }
+}

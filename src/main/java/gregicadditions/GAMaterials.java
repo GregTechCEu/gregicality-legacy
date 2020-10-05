@@ -444,6 +444,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
     public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
 
+    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UHVSuperconductor = new IngotMaterial(739, "uhv_superconductor", 0x359ffc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+
+    public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB);
 
     @Override
     public void onMaterialsInit() {
@@ -464,6 +470,8 @@ public class GAMaterials implements IMaterialHandler {
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
         UVSuperconductorBase.setCableProperties(524288, 4, 2);
+        UHVSuperconductorBase.setCableProperties(524288 * 4, 4, 2);
+        UEVSuperconductorBase.setCableProperties(524288 * 16, 4, 2);
 
         MVSuperconductor.setCableProperties(128, 4, 0);
         ignoreCable(MVSuperconductor);
@@ -479,6 +487,10 @@ public class GAMaterials implements IMaterialHandler {
         ignoreCable(ZPMSuperconductor);
         UVSuperconductor.setCableProperties(524288, 4, 0);
         ignoreCable(UVSuperconductor);
+        UHVSuperconductor.setCableProperties(524288 * 4, 4, 0);
+        ignoreCable(UHVSuperconductor);
+        UEVSuperconductor.setCableProperties(524288 * 16, 4, 0);
+        ignoreCable(UEVSuperconductor);
 
 
         Radon.addFlag(GENERATE_PLASMA);

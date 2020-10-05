@@ -3,6 +3,7 @@ package gregicadditions.machines.multi;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAValues;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
@@ -105,7 +106,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
             long energyAddedFromInput = this.addEnergy(inputEnergyStore);
             input.changeEnergy(-energyAddedFromInput);
 
-            this.changeEnergy(-GTValues.V[cell.getTier()] * 10 / 100);
+            this.changeEnergy(-GAValues.V[cell.getTier()] * 10 / 100);
 
             long bankEnergyStore = this.getEnergyStored();
             long energyAddedFromBank = output.addEnergy(bankEnergyStore);

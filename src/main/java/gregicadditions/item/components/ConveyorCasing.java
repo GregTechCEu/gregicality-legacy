@@ -25,7 +25,9 @@ public class ConveyorCasing extends VariantBlock<ConveyorCasing.CasingType> {
         CONVEYOR_IV("conveyor_iv", 5),
         CONVEYOR_LUV("conveyor_luv", 6),
         CONVEYOR_ZPM("conveyor_zpm", 7),
-        CONVEYOR_UV("conveyor_uv", 8);
+        CONVEYOR_UV("conveyor_uv", 8),
+        CONVEYOR_UHV("conveyor_uhv", 9),
+        CONVEYOR_UEV("conveyor_uev", 10);
 
         private final String name;
         private final int tier;

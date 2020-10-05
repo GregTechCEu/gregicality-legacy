@@ -212,6 +212,22 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
     public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
 
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UHV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UEV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UHV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UEV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UHV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UEV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UHV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UEV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UHV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
 
 
 

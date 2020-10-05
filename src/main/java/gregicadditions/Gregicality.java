@@ -5,6 +5,7 @@ import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
+import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
@@ -123,6 +124,7 @@ public class Gregicality {
             GTLog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
+        CoverBehaviors.init();
     }
 
     @EventHandler
@@ -134,6 +136,7 @@ public class Gregicality {
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
+        registry.register(GAMetaBlocks.MUTLIBLOCK_CASING2);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
         registry.register(GAMetaBlocks.CELL_CASING);
         registry.register(GAMetaBlocks.CONVEYOR_CASING);
@@ -152,6 +155,7 @@ public class Gregicality {
     public void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING2, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CONVEYOR_CASING, VariantItemBlock::new));

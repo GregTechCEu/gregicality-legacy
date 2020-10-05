@@ -41,7 +41,9 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
         TIERED_HULL_ZPM("tiered_hull_zpm"),
         TIERED_HULL_UV("tiered_hull_uv"),
         TIERED_HULL_MAX("tiered_hull_max"),
-        CLADDED_REACTOR_CASING("cladded_reactor_casing");
+        CLADDED_REACTOR_CASING("cladded_reactor_casing"),
+        CASING_UHV("casing_uhv"),
+        CASING_UEV("casing_uev");
 
         private final String name;
 

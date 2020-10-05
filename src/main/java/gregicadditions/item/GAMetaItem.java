@@ -19,6 +19,7 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
 
+
 public class GAMetaItem extends MaterialMetaItem {
     public GAMetaItem() {
         super(GAConfig.GT6.addCurvedPlates ? OrePrefix.valueOf("plateCurved") : null, GAConfig.GT6.addDoubleIngots ? OrePrefix.valueOf("ingotDouble") : null, GAConfig.GT6.addRounds ? OrePrefix.valueOf("round") : null, OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -180,6 +181,30 @@ public class GAMetaItem extends MaterialMetaItem {
 
         HYPERIUM_SEED = addItem(346, "hyperium_crafting_seed");
         LUDICIUM_SEED = addItem(347, "ludicium_crafting_seed");
+
+        ELECTRIC_MOTOR_UHV = addItem(348, "electric.motor.uhv");
+        ELECTRIC_MOTOR_UEV = addItem(349, "electric.motor.uev");
+
+        ELECTRIC_PUMP_UHV = addItem(350, "electric.pump.uhv");
+        ELECTRIC_PUMP_UEV = addItem(351, "electric.pump.uev");
+
+        CONVEYOR_MODULE_UHV = addItem(352, "conveyor.module.uhv");
+        CONVEYOR_MODULE_UEV = addItem(353, "conveyor.module.uev");
+
+        ELECTRIC_PISTON_UHV = addItem(354, "electric.piston.uhv");
+        ELECTRIC_PISTON_UEV = addItem(355, "electric.piston.uev");
+
+        ROBOT_ARM_UHV = addItem(356, "robot.arm.uhv");
+        ROBOT_ARM_UEV = addItem(357, "robot.arm.uev");
+
+        FIELD_GENERATOR_UHV = addItem(358, "field.generator.uhv");
+        FIELD_GENERATOR_UEV = addItem(359, "field.generator.uev");
+
+        EMITTER_UHV = addItem(360, "emitter.uhv");
+        EMITTER_UEV = addItem(361, "emitter.uev");
+
+        SENSOR_UHV = addItem(362, "sensor.uhv");
+        SENSOR_UEV = addItem(363, "sensor.uev");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;

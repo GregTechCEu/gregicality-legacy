@@ -25,7 +25,9 @@ public class PumpCasing extends VariantBlock<PumpCasing.CasingType> {
         PUMP_IV("pump_iv", 5),
         PUMP_LUV("pump_luv", 6),
         PUMP_ZPM("pump_zpm", 7),
-        PUMP_UV("pump_uv", 8);
+        PUMP_UV("pump_uv", 8),
+        PUMP_UHV("pump_uhv", 9),
+        PUMP_UEV("pump_uev", 10);
 
         private final String name;
         private final int tier;
