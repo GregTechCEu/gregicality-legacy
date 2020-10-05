@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.advance;
 
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
+import gregicadditions.item.GAReactorCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -42,10 +42,10 @@ public class HyperReactor2Info extends MultiblockInfoPage {
                 .aisle("####CCCCCCC####", "###CC#####CC###", "####CCCCCCC####")
                 .aisle("#######C#######", "#####CfSCC#####", "#######C#######")
                 .where('S', GATileEntities.HYPER_REACTOR_UHV, EnumFacing.SOUTH)
-                .where('C', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CASING))
+                .where('C', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING))
                 .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
-                .where('H', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CORE_2))
+                .where('H', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE_2))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('F', MetaBlocks.FRAMES.get(Naquadria).getDefaultState());
         return Collections.singletonList(builder.build());

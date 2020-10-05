@@ -1,13 +1,10 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.item.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
@@ -44,8 +41,8 @@ public class FusionReactor4Info extends MultiblockInfoPage {
                 .aisle("#################","#################","########C########","########C########","#################","#################")
                 .where('S', GATileEntities.FUSION_REACTOR_UHV, EnumFacing.SOUTH)
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('C', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_COIL_2))
-                .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_3))
+                .where('C', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2))
+                .where('X', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_3))
                 .build();
         return Lists.newArrayList(shapeInfo);
     }

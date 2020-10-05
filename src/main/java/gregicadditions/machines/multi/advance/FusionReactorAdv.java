@@ -1,8 +1,8 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.client.ClientHandler;
+import gregicadditions.item.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -64,18 +64,18 @@ public class FusionReactorAdv extends RecipeMapMultiblockController {
     private IBlockState getCasingState() {
         switch (tier) {
             case 9:
-                return GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_3);
+                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_3);
             default:
-                return GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_4);
+                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_4);
         }
     }
 
     private IBlockState getCoilState() {
         switch (tier) {
             case 9:
-                return GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_COIL_2);
+                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2);
             default:
-                return GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.FUSION_COIL_3);
+                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_3);
         }
     }
 

@@ -1,10 +1,7 @@
 package gregicadditions.machines.multi.advance.hyper;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.item.GAMultiblockCasing2;
-import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -90,7 +87,7 @@ public class HyperReactor extends FueledMultiblockController {
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
                 .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_UV)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIUM_GLASS)))
-                .where('H', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CORE)))
+                .where('H', statePredicate(GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE)))
                 .where('#', isAirPredicate())
                 .setAmountAtLeast('c', 55)
                 .where('c', statePredicate(getCasingState()))

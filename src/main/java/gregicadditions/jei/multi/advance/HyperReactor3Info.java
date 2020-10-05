@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.advance;
 
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
+import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
@@ -39,11 +39,11 @@ public class HyperReactor3Info extends MultiblockInfoPage {
                   .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###CCCCC###", "##CC###CC##", "##C#####C##", "##C#####C##", "##C#####C##", "##CC###CC##", "###CCCCC###", "###########", "###########")
                   .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###########", "####CCC####", "###CCCCC###", "###CfSCC###", "###CCCCC###", "####CCC####", "###########", "###########", "###########")
                   .where('S', GATileEntities.HYPER_REACTOR_UEV, EnumFacing.SOUTH)
-                  .where('C', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CASING_2))
+                  .where('C', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING_2))
                   .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
                   .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
                   .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIUM_GLASS))
-                  .where('H', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CORE_3))
+                  .where('H', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE_3))
                   .where('#', Blocks.AIR.getDefaultState())
                   .where('F', MetaBlocks.FRAMES.get(Naquadria).getDefaultState());
         return Collections.singletonList(builder.build());

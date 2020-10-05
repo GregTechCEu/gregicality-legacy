@@ -1,0 +1,50 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_bottom_top",
+    "textures": {
+      "bottom": "gregtech:blocks/rendering_error",
+      "top": "gregtech:blocks/rendering_error",
+      "side": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+    "casing_uhv": {
+      "textures": {
+        "bottom": "gregtech:blocks/casings/voltage/uhv/bottom",
+        "top": "gregtech:blocks/casings/voltage/uhv/top",
+        "side": "gregtech:blocks/casings/voltage/uhv/side"
+      }
+    },
+    "casing_uev": {
+      "textures": {
+        "bottom": "gregtech:blocks/casings/voltage/uev/bottom",
+        "top": "gregtech:blocks/casings/voltage/uev/top",
+        "side": "gregtech:blocks/casings/voltage/uev/side"
+      }
+    },
+      "casing_uiv": {
+        "textures": {
+          "bottom": "gregtech:blocks/casings/voltage/uiv/bottom",
+          "top": "gregtech:blocks/casings/voltage/uiv/top",
+          "side": "gregtech:blocks/casings/voltage/uiv/side"
+        }
+      },
+      "casing_umv": {
+        "textures": {
+          "bottom": "gregtech:blocks/casings/voltage/umv/bottom",
+          "top": "gregtech:blocks/casings/voltage/umv/top",
+          "side": "gregtech:blocks/casings/voltage/umv/side"
+        }
+      },
+      "casing_uxv": {
+        "textures": {
+          "bottom": "gregtech:blocks/casings/voltage/uxv/bottom",
+          "top": "gregtech:blocks/casings/voltage/uxv/top",
+          "side": "gregtech:blocks/casings/voltage/uxv/side"
+        }
+      }
+    }
+  }
+}

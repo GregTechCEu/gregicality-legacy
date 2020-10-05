@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.advance.hyper;
 import gregicadditions.GAMaterials;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
+import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
@@ -97,7 +97,7 @@ public class HyperReactorUEV extends FueledMultiblockController {
                 .where('#', (tile) -> true)
                 .where('S', selfPredicate())
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))
-                .where('H', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CORE_3)))
+                .where('H', statePredicate(GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE_3)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIUM_GLASS)))
                 .setAmountAtLeast('c', 250)
                 .where('c', statePredicate(getCasingState()))
@@ -110,7 +110,7 @@ public class HyperReactorUEV extends FueledMultiblockController {
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.HYPER_CASING_2);
+        return GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING_2);
     }
 
     static class WorkableHandler extends FuelRecipeLogic {

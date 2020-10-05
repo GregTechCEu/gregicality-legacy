@@ -82,20 +82,6 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/cladded_reactor_casing"
         }
-      },
-      "casing_uhv": {
-        "textures": {
-          "bottom": "gregtech:blocks/casings/voltage/max/bottom",
-          "top": "gregtech:blocks/casings/voltage/max/top",
-          "side": "gregtech:blocks/casings/voltage/max/side"
-        }
-      },
-      "casing_uev": {
-        "textures": {
-          "bottom": "gregtech:blocks/casings/voltage/max/bottom",
-          "top": "gregtech:blocks/casings/voltage/max/top",
-          "side": "gregtech:blocks/casings/voltage/max/side"
-        }
       }
     }
   }

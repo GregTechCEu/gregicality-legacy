@@ -13,8 +13,6 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
-import gregtech.common.ClientProxy;
-import gregtech.common.blocks.BlockOre;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
@@ -29,7 +27,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
@@ -45,7 +42,11 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
 
-    public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
+    public static GAReactorCasing REACTOR_CASING;
+
+    public static GAFusionCasing FUSION_CASING;
+
+    public static GAMachineCasing MACHINE_CASING;
 
     public static GATransparentCasing TRANSPARENT_CASING;
 
@@ -81,8 +82,14 @@ public class GAMetaBlocks {
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
 
-        MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
-        MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
+        REACTOR_CASING = new GAReactorCasing();
+        REACTOR_CASING.setRegistryName("ga_reactor_casing");
+
+        FUSION_CASING = new GAFusionCasing();
+        FUSION_CASING.setRegistryName("ga_fusion_casing");
+
+        MACHINE_CASING = new GAMachineCasing();
+        MACHINE_CASING.setRegistryName("ga_machine_casing");
 
         TRANSPARENT_CASING = new GATransparentCasing();
         TRANSPARENT_CASING.setRegistryName("ga_transparent_casing");
@@ -176,7 +183,9 @@ public class GAMetaBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(MUTLIBLOCK_CASING);
-        registerItemModel(MUTLIBLOCK_CASING2);
+        registerItemModel(REACTOR_CASING);
+        registerItemModel(FUSION_CASING);
+        registerItemModel(MACHINE_CASING);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
         registerItemModel(CONVEYOR_CASING);
