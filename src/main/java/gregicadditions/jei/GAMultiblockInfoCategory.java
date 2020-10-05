@@ -37,6 +37,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()),
                 new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()),
                 new MultiblockInfoRecipeWrapper(new VacuumFreezerInfo()),
+                new MultiblockInfoRecipeWrapper(new PyrolyseOvenInfo()),
                 new MultiblockInfoRecipeWrapper(new AssemblyLineInfo()),
                 new MultiblockInfoRecipeWrapper(new FusionReactor1Info()),
                 new MultiblockInfoRecipeWrapper(new FusionReactor2Info()),

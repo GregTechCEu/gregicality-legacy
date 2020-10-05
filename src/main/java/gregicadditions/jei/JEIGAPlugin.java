@@ -82,6 +82,7 @@ public class JEIGAPlugin implements IModPlugin {
         itemBlacklist.addIngredientToBlacklist(MetaTileEntities.MULTI_FURNACE.getStackForm());
         itemBlacklist.addIngredientToBlacklist(MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm());
         itemBlacklist.addIngredientToBlacklist(MetaTileEntities.VACUUM_FREEZER.getStackForm());
+        itemBlacklist.addIngredientToBlacklist(MetaTileEntities.PYROLYSE_OVEN.getStackForm());
 
 
         recipeRegistry.getRecipeWrappers(recipeCategory, recipeRegistry.createFocus(IFocus.Mode.OUTPUT, MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm())).forEach(iRecipeWrapper -> recipeRegistry.hideRecipe((IRecipeWrapper) iRecipeWrapper, "gregtech:multiblock_info"));
@@ -94,6 +95,7 @@ public class JEIGAPlugin implements IModPlugin {
         recipeRegistry.getRecipeWrappers(recipeCategory, recipeRegistry.createFocus(IFocus.Mode.OUTPUT, MetaTileEntities.MULTI_FURNACE.getStackForm())).forEach(iRecipeWrapper -> recipeRegistry.hideRecipe((IRecipeWrapper) iRecipeWrapper, "gregtech:multiblock_info"));
         recipeRegistry.getRecipeWrappers(recipeCategory, recipeRegistry.createFocus(IFocus.Mode.OUTPUT, MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm())).forEach(iRecipeWrapper -> recipeRegistry.hideRecipe((IRecipeWrapper) iRecipeWrapper, "gregtech:multiblock_info"));
         recipeRegistry.getRecipeWrappers(recipeCategory, recipeRegistry.createFocus(IFocus.Mode.OUTPUT, MetaTileEntities.VACUUM_FREEZER.getStackForm())).forEach(iRecipeWrapper -> recipeRegistry.hideRecipe((IRecipeWrapper) iRecipeWrapper, "gregtech:multiblock_info"));
+        recipeRegistry.getRecipeWrappers(recipeCategory, recipeRegistry.createFocus(IFocus.Mode.OUTPUT, MetaTileEntities.PYROLYSE_OVEN.getStackForm())).forEach(iRecipeWrapper -> recipeRegistry.hideRecipe((IRecipeWrapper) iRecipeWrapper, "gregtech:multiblock_info"));
 
     }
 }

@@ -1,45 +1,40 @@
 package gregicadditions.machines.multi.override;
 
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
-
-public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities.multi.electric.MetaTileEntityCrackingUnit {
+public class MetaTileEntityPyrolyseOven extends gregtech.common.metatileentities.multi.electric.MetaTileEntityPyrolyseOven {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY
     };
 
     protected int heatingCoilLevel = 1;
     protected int heatingCoilDiscount = 1;
 
-    public MetaTileEntityCrackingUnit(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityPyrolyseOven(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
-        this.recipeMapWorkable = new CrackingUnitWorkable(this);
+        this.recipeMapWorkable = new PyrolyzeOvenWorkable(this);
     }
 
+    @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityCrackingUnit(this.metaTileEntityId);
+        return new MetaTileEntityPyrolyseOven(metaTileEntityId);
     }
 
     @Override
@@ -69,33 +64,24 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("HCHCH", "HCHCH", "HCHCH")
-                .aisle("HCHCH", "H###H", "HCHCH")
-                .aisle("HCHCH", "HCOCH", "HCHCH")
-                .setAmountAtLeast('L', 20)
-                .where('O', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('H', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', isAirPredicate())
+                .aisle("XXX", "XXX", "XXX")
+                .aisle("CCC", "C#C", "CCC")
+                .aisle("CCC", "C#C", "CCC")
+                .aisle("XXX", "XSX", "XXX")
+                .where('S', selfPredicate())
+                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+                .where('#', isAirPredicate())
                 .build();
     }
 
-    @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel);
-    }
+    protected class PyrolyzeOvenWorkable extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
-    @Override
-    public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
-    }
-
-    protected class CrackingUnitWorkable extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
-
-        public CrackingUnitWorkable(RecipeMapMultiblockController tileEntity) {
+        public PyrolyzeOvenWorkable(RecipeMapMultiblockController tileEntity) {
             super(tileEntity, 100 / heatingCoilDiscount, 100, 100, heatingCoilLevel);
         }
 
     }
+
+
 }
