@@ -27,7 +27,11 @@ public class PistonCasing extends VariantBlock<PistonCasing.CasingType> {
         PISTON_ZPM("piston_zpm", 7),
         PISTON_UV("piston_uv", 8),
         PISTON_UHV("piston_uhv", 9),
-        PISTON_UEV("piston_uev", 10);
+        PISTON_UEV("piston_uev", 10),
+        PISTON_UIV("piston_uiv", 11),
+        PISTON_UMV("piston_umv", 12),
+        PISTON_UXV("piston_uxv", 13),
+        PISTON_MAX("piston_max", 14);
 
         private final String name;
         private final int tier;
