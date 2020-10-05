@@ -27,7 +27,11 @@ public class MotorCasing extends VariantBlock<MotorCasing.CasingType> {
         MOTOR_ZPM("motor_zpm", 7),
         MOTOR_UV("motor_uv", 8),
         MOTOR_UHV("motor_uhv", 9),
-        MOTOR_UEV("motor_uev", 10);
+        MOTOR_UEV("motor_uev", 10),
+        MOTOR_UIV("motor_uiv", 11),
+        MOTOR_UMV("motor_umv", 12),
+        MOTOR_UXV("motor_uxv", 13),
+        MOTOR_MAX("motor_max", 14);
 
         private final String name;
         private final int tier;

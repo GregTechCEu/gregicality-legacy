@@ -4,6 +4,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItem;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -150,8 +151,16 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_PUMP_UV;
                 case 9:
                     return GAMetaItems.ELECTRIC_PUMP_UHV;
-                default:
+                case 10:
                     return GAMetaItems.ELECTRIC_PUMP_UEV;
+                case 11:
+                    return GAMetaItems.ELECTRIC_PUMP_UIV;
+                case 12:
+                    return GAMetaItems.ELECTRIC_PUMP_UMV;
+                case 13:
+                    return GAMetaItems.ELECTRIC_PUMP_UXV;
+                default:
+                    return GAMetaItems.ELECTRIC_PUMP_MAX;
             }
         }
     },
@@ -309,7 +318,16 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 9:
+                    return GATileEntities.GA_HULLS[0].getStackForm();
                 case 10:
+                    return GATileEntities.GA_HULLS[1].getStackForm();
+                case 11:
+                    return GATileEntities.GA_HULLS[2].getStackForm();
+                case 12:
+                    return GATileEntities.GA_HULLS[3].getStackForm();
+                case 13:
+                    return GATileEntities.GA_HULLS[4].getStackForm();
+                case 14:
                     return MetaTileEntities.HULL[GTValues.MAX].getStackForm();
                 default:
                     return MetaTileEntities.HULL[tier].getStackForm();
@@ -419,8 +437,16 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_MOTOR_UV;
                 case 9:
                     return GAMetaItems.ELECTRIC_MOTOR_UHV;
-                default:
+                case 10:
                     return GAMetaItems.ELECTRIC_MOTOR_UEV;
+                case 11:
+                    return GAMetaItems.ELECTRIC_MOTOR_UIV;
+                case 12:
+                    return GAMetaItems.ELECTRIC_MOTOR_UMV;
+                case 13:
+                    return GAMetaItems.ELECTRIC_MOTOR_UXV; 
+                default:
+                    return GAMetaItems.ELECTRIC_MOTOR_MAX;
 
             }
         }
@@ -472,8 +498,16 @@ public enum GACraftingComponents {
                     return MetaItems.SENSOR_UV;
                 case 9:
                     return GAMetaItems.SENSOR_UHV;
-                default:
+                case 10:
                     return GAMetaItems.SENSOR_UEV;
+                case 11:
+                    return GAMetaItems.SENSOR_UIV;
+                case 12:
+                    return GAMetaItems.SENSOR_UMV;
+                case 13:
+                    return GAMetaItems.SENSOR_UXV;
+                default:
+                    return GAMetaItems.SENSOR_MAX;
             }
         }
     },
@@ -519,8 +553,16 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_PISTON_UV;
                 case 9:
                     return GAMetaItems.ELECTRIC_PISTON_UHV;
-                default:
+                case 10:
                     return GAMetaItems.ELECTRIC_PISTON_UEV;
+                case 11:
+                    return GAMetaItems.ELECTRIC_PISTON_UIV;
+                case 12:
+                    return GAMetaItems.ELECTRIC_PISTON_UMV;
+                case 13:
+                    return GAMetaItems.ELECTRIC_PISTON_UXV;
+                default:
+                    return GAMetaItems.ELECTRIC_PISTON_MAX;
 
             }
         }
@@ -548,8 +590,16 @@ public enum GACraftingComponents {
                     return MetaItems.EMITTER_UV;
                 case 9:
                     return GAMetaItems.EMITTER_UHV;
-                default:
+                case 10:
                     return GAMetaItems.EMITTER_UEV;
+                case 11:
+                    return GAMetaItems.EMITTER_UIV;
+                case 12:
+                    return GAMetaItems.EMITTER_UMV;
+                case 13:
+                    return GAMetaItems.EMITTER_UXV;
+                default:
+                    return GAMetaItems.EMITTER_MAX;
             }
         }
     },
@@ -576,8 +626,16 @@ public enum GACraftingComponents {
                     return MetaItems.CONVEYOR_MODULE_UV;
                 case 9:
                     return GAMetaItems.CONVEYOR_MODULE_UHV;
-                default:
+                case 10:
                     return GAMetaItems.CONVEYOR_MODULE_UEV;
+                case 11:
+                    return GAMetaItems.CONVEYOR_MODULE_UIV;
+                case 12:
+                    return GAMetaItems.CONVEYOR_MODULE_UMV;
+                case 13:
+                    return GAMetaItems.CONVEYOR_MODULE_UXV;
+                default:
+                    return GAMetaItems.CONVEYOR_MODULE_MAX;
             }
         }
     },
@@ -604,8 +662,16 @@ public enum GACraftingComponents {
                     return MetaItems.ROBOT_ARM_UV;
                 case 9:
                     return GAMetaItems.ROBOT_ARM_UHV;
-                default:
+                case 10:
                     return GAMetaItems.ROBOT_ARM_UEV;
+                case 11:
+                    return GAMetaItems.ROBOT_ARM_UIV;
+                case 12:
+                    return GAMetaItems.ROBOT_ARM_UMV;
+                case 13:
+                    return GAMetaItems.ROBOT_ARM_UXV;
+                default:
+                    return GAMetaItems.ROBOT_ARM_MAX;
             }
         }
     },
@@ -709,8 +775,16 @@ public enum GACraftingComponents {
                     return MetaItems.FIELD_GENERATOR_UV;
                 case 9:
                     return GAMetaItems.FIELD_GENERATOR_UHV;
-                default:
+                case 10:
                     return GAMetaItems.FIELD_GENERATOR_UEV;
+                case 11:
+                    return GAMetaItems.FIELD_GENERATOR_UIV;
+                case 12:
+                    return GAMetaItems.FIELD_GENERATOR_UMV;
+                case 13:
+                    return GAMetaItems.FIELD_GENERATOR_UXV;
+                default:
+                    return GAMetaItems.FIELD_GENERATOR_MAX;
             }
         }
     },
