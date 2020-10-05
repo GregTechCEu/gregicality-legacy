@@ -137,7 +137,7 @@ public class GATileEntities {
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
     public static FusionReactorAdv FUSION_REACTOR_UHV;
     public static FusionReactorAdv FUSION_REACTOR_UEV;
-    public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[2];
+    public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -740,6 +740,9 @@ public class GATileEntities {
         FUSION_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3238, new FusionReactorAdv(location("fusion_reactor.uev"), RecipeMaps.FUSION_RECIPES, 10));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
+        GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
+        GA_HULLS[3] = GregTechAPI.registerMetaTileEntity(3242, new GAMetaTileEntityHull(location("hull.umv"), 12));
+        GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
 
         PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
 

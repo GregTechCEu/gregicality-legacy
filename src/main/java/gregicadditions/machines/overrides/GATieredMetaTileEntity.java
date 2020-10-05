@@ -6,14 +6,13 @@ import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
-import gregtech.api.GTValues;
+import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.capability.impl.EnergyContainerHandler.IEnergyChangeListener;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.render.SimpleSidedCubeRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
@@ -57,7 +56,7 @@ public abstract class GATieredMetaTileEntity extends MetaTileEntity implements I
 
     @SideOnly(Side.CLIENT)
     private SimpleSidedCubeRenderer getBaseRenderer() {
-        return Textures.VOLTAGE_CASINGS[GTValues.MAX];
+        return ClientHandler.VOLTAGE_CASINGS[tier];
     }
 
     @Override

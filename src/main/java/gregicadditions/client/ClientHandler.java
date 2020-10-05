@@ -1,16 +1,19 @@
 package gregicadditions.client;
 
+import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.blocks.PowderBarrelRenderer;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.CrateRenderer;
 import gregicadditions.machines.DrumRenderer;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregtech.api.GTValues;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
 import gregtech.api.render.SimpleCubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
+import gregtech.api.render.SimpleSidedCubeRenderer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -38,6 +41,7 @@ public class ClientHandler {
     public static SimpleCubeRenderer HYPER_CASING = new SimpleCubeRenderer("casings/solid/hyper_casing");
     public static SimpleCubeRenderer HYPER_CASING_2 = new SimpleCubeRenderer("casings/solid/hyper_casing_2");
     public static SimpleCubeRenderer FUSION_TEXTURE = new SimpleCubeRenderer("casings/fusion/machine_casing_fusion_glass");
+    public static SimpleSidedCubeRenderer[] VOLTAGE_CASINGS = new SimpleSidedCubeRenderer[15];
     public static SimpleCubeRenderer ACTIVE_FUSION_TEXTURE = new SimpleCubeRenderer("gregtech:casings/fusion/machine_casing_fusion_glass_yellow");
     public static OrientedOverlayRenderer NAQADAH_OVERLAY = new OrientedOverlayRenderer("machines/naquadah_reactor", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
     public static OrientedOverlayRenderer ROCKET_OVERLAY = new OrientedOverlayRenderer("machines/rocket_generator", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
@@ -64,6 +68,10 @@ public class ClientHandler {
     static {
         for (final EnergyConverterType t : EnergyConverterType.values()) {
             CONVERTER_FACES.put(t, new SimpleOverlayRenderer("overlay/machine/converter/" + t.toString().toLowerCase()));
+        }
+        for (int i = 0; i < VOLTAGE_CASINGS.length; i++) {
+            String voltageName = GAValues.VN[i].toLowerCase();
+            VOLTAGE_CASINGS[i] = new SimpleSidedCubeRenderer("casings/voltage/" + voltageName);
         }
     }
 
