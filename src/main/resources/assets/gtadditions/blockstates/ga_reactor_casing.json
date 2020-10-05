@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "hyper_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_casing"
+        }
+      },
+      "hyper_casing_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_casing_2"
+        }
+      },
+      "hyper_core": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core"
+        }
+      },
+      "hyper_core_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core_2"
+        }
+      },
+      "hyper_core_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/hyper_core_3"
+        }
+      }
+    }
+  }
+}

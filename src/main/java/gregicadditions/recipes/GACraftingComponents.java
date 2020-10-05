@@ -1,7 +1,10 @@
 package gregicadditions.recipes;
 
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMetaItem;
+import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
+import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -143,8 +146,12 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_PUMP_LUV;
                 case 7:
                     return MetaItems.ELECTRIC_PUMP_ZPM;
-                default:
+                case 8:
                     return MetaItems.ELECTRIC_PUMP_UV;
+                case 9:
+                    return GAMetaItems.ELECTRIC_PUMP_UHV;
+                default:
+                    return GAMetaItems.ELECTRIC_PUMP_UEV;
             }
         }
     },
@@ -300,7 +307,13 @@ public enum GACraftingComponents {
     HULL {
         @Override
         public Object getIngredient(int tier) {
-            return MetaTileEntities.HULL[tier].getStackForm();
+            switch (tier) {
+                case 9:
+                case 10:
+                    return MetaTileEntities.HULL[GTValues.MAX].getStackForm();
+                default:
+                    return MetaTileEntities.HULL[tier].getStackForm();
+            }
         }
     },
     WORSE_HULL {
@@ -402,8 +415,13 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_MOTOR_LUV;
                 case 7:
                     return MetaItems.ELECTRIC_MOTOR_ZPM;
-                default:
+                case 8:
                     return MetaItems.ELECTRIC_MOTOR_UV;
+                case 9:
+                    return GAMetaItems.ELECTRIC_MOTOR_UHV;
+                default:
+                    return GAMetaItems.ELECTRIC_MOTOR_UEV;
+
             }
         }
     },
@@ -450,8 +468,12 @@ public enum GACraftingComponents {
                     return MetaItems.SENSOR_LUV;
                 case 7:
                     return MetaItems.SENSOR_ZPM;
-                default:
+                case 8:
                     return MetaItems.SENSOR_UV;
+                case 9:
+                    return GAMetaItems.SENSOR_UHV;
+                default:
+                    return GAMetaItems.SENSOR_UEV;
             }
         }
     },
@@ -493,8 +515,13 @@ public enum GACraftingComponents {
                     return MetaItems.ELECTRIC_PISTON_LUV;
                 case 7:
                     return MetaItems.ELECTRIC_PISTON_ZPM;
-                default:
+                case 8:
                     return MetaItems.ELECTRIC_PISTON_UV;
+                case 9:
+                    return GAMetaItems.ELECTRIC_PISTON_UHV;
+                default:
+                    return GAMetaItems.ELECTRIC_PISTON_UEV;
+
             }
         }
     },
@@ -517,8 +544,12 @@ public enum GACraftingComponents {
                     return MetaItems.EMITTER_LUV;
                 case 7:
                     return MetaItems.EMITTER_ZPM;
-                default:
+                case 8:
                     return MetaItems.EMITTER_UV;
+                case 9:
+                    return GAMetaItems.EMITTER_UHV;
+                default:
+                    return GAMetaItems.EMITTER_UEV;
             }
         }
     },
@@ -541,8 +572,12 @@ public enum GACraftingComponents {
                     return MetaItems.CONVEYOR_MODULE_LUV;
                 case 7:
                     return MetaItems.CONVEYOR_MODULE_ZPM;
-                default:
+                case 8:
                     return MetaItems.CONVEYOR_MODULE_UV;
+                case 9:
+                    return GAMetaItems.CONVEYOR_MODULE_UHV;
+                default:
+                    return GAMetaItems.CONVEYOR_MODULE_UEV;
             }
         }
     },
@@ -565,8 +600,12 @@ public enum GACraftingComponents {
                     return MetaItems.ROBOT_ARM_LUV;
                 case 7:
                     return MetaItems.ROBOT_ARM_ZPM;
-                default:
+                case 8:
                     return MetaItems.ROBOT_ARM_UV;
+                case 9:
+                    return GAMetaItems.ROBOT_ARM_UHV;
+                default:
+                    return GAMetaItems.ROBOT_ARM_UEV;
             }
         }
     },
@@ -666,8 +705,12 @@ public enum GACraftingComponents {
                     return MetaItems.FIELD_GENERATOR_LUV;
                 case 7:
                     return MetaItems.FIELD_GENERATOR_ZPM;
-                default:
+                case 8:
                     return MetaItems.FIELD_GENERATOR_UV;
+                case 9:
+                    return GAMetaItems.FIELD_GENERATOR_UHV;
+                default:
+                    return GAMetaItems.FIELD_GENERATOR_UEV;
             }
         }
     },

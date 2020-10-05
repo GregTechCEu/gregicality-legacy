@@ -124,9 +124,9 @@ public class GeneratorFuels {
         registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 20000, GTValues.LV);
         registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 60000, GTValues.LV);
         registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 40000, GTValues.LV);
-        registerNaquadahReactorFuel(HyperFuelI.getFluid(1), 400, GTValues.IV);
-        registerNaquadahReactorFuel(HyperFuelII.getFluid(1), 600, GTValues.IV);
-        registerNaquadahReactorFuel(HyperFuelIII.getFluid(1), 800, GTValues.IV);
+        registerHyperReactorFuel(HyperFuelI.getFluid(1), 400, GTValues.IV);
+        registerHyperReactorFuel(HyperFuelII.getFluid(1), 600, GTValues.IV);
+        registerHyperReactorFuel(HyperFuelIII.getFluid(1), 800, GTValues.IV);
     }
 
     //Register Methods
@@ -137,6 +137,10 @@ public class GeneratorFuels {
     //Register Methods
     public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
         GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
+    }
+    
+    public static void registerHyperReactorFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {

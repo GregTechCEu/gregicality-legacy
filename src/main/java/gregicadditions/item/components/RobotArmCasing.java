@@ -25,7 +25,9 @@ public class RobotArmCasing extends VariantBlock<RobotArmCasing.CasingType> {
         ROBOT_ARM_IV("robot_arm_iv", 5),
         ROBOT_ARM_LUV("robot_arm_luv", 6),
         ROBOT_ARM_ZPM("robot_arm_zpm", 7),
-        ROBOT_ARM_UV("robot_arm_uv", 8);
+        ROBOT_ARM_UV("robot_arm_uv", 8),
+        ROBOT_ARM_UHV("robot_arm_uhv", 9),
+        ROBOT_ARM_UEV("robot_arm_uev", 10);
 
         private final String name;
         private final int tier;

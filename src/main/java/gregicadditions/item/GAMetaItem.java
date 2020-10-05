@@ -19,6 +19,7 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
 
+
 public class GAMetaItem extends MaterialMetaItem {
     public GAMetaItem() {
         super(GAConfig.GT6.addCurvedPlates ? OrePrefix.valueOf("plateCurved") : null, GAConfig.GT6.addDoubleIngots ? OrePrefix.valueOf("ingotDouble") : null, GAConfig.GT6.addRounds ? OrePrefix.valueOf("round") : null, OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -180,6 +181,62 @@ public class GAMetaItem extends MaterialMetaItem {
 
         HYPERIUM_SEED = addItem(346, "hyperium_crafting_seed");
         LUDICIUM_SEED = addItem(347, "ludicium_crafting_seed");
+
+        CONVEYOR_MODULE_UHV = addItem(348, "conveyor.module.uhv");
+        CONVEYOR_MODULE_UEV = addItem(349, "conveyor.module.uev");
+        CONVEYOR_MODULE_UIV = addItem(350, "conveyor.module.uiv");
+        CONVEYOR_MODULE_UMV = addItem(351, "conveyor.module.umv");
+        CONVEYOR_MODULE_UXV = addItem(352, "conveyor.module.uxv");
+        CONVEYOR_MODULE_MAX = addItem(353, "conveyor.module.max");
+
+        ELECTRIC_MOTOR_UHV = addItem(354, "electric.motor.uhv");
+        ELECTRIC_MOTOR_UEV = addItem(355, "electric.motor.uev");
+        ELECTRIC_MOTOR_UIV = addItem(356, "electric.motor.uiv");
+        ELECTRIC_MOTOR_UMV = addItem(357, "electric.motor.umv");
+        ELECTRIC_MOTOR_UXV = addItem(358, "electric.motor.uxv");
+        ELECTRIC_MOTOR_MAX = addItem(359, "electric.motor.max");
+
+        ELECTRIC_PISTON_UHV = addItem(360, "electric.piston.uhv");
+        ELECTRIC_PISTON_UEV = addItem(361, "electric.piston.uev");
+        ELECTRIC_PISTON_UIV = addItem(362, "electric.piston.uiv");
+        ELECTRIC_PISTON_UMV = addItem(363, "electric.piston.umv");
+        ELECTRIC_PISTON_UXV = addItem(364, "electric.piston.uxv");
+        ELECTRIC_PISTON_MAX = addItem(365, "electric.piston.max");
+
+        ELECTRIC_PUMP_UHV = addItem(366, "electric.pump.uhv");
+        ELECTRIC_PUMP_UEV = addItem(367, "electric.pump.uev");
+        ELECTRIC_PUMP_UIV = addItem(368, "electric.pump.uiv");
+        ELECTRIC_PUMP_UMV = addItem(369, "electric.pump.umv");
+        ELECTRIC_PUMP_UXV = addItem(370, "electric.pump.uxv");
+        ELECTRIC_PUMP_MAX = addItem(371, "electric.pump.max");
+
+        EMITTER_UHV = addItem(372, "emitter.uhv");
+        EMITTER_UEV = addItem(373, "emitter.uev");
+        EMITTER_UIV = addItem(374, "emitter.uiv");
+        EMITTER_UMV = addItem(375, "emitter.umv");
+        EMITTER_UXV = addItem(376, "emitter.uxv");
+        EMITTER_MAX = addItem(377, "emitter.max");
+
+        FIELD_GENERATOR_UHV = addItem(378, "field.generator.uhv");
+        FIELD_GENERATOR_UEV = addItem(379, "field.generator.uev");
+        FIELD_GENERATOR_UIV = addItem(380, "field.generator.uiv");
+        FIELD_GENERATOR_UMV = addItem(381, "field.generator.umv");
+        FIELD_GENERATOR_UXV = addItem(382, "field.generator.uxv");
+        FIELD_GENERATOR_MAX = addItem(383, "field.generator.max");
+
+        ROBOT_ARM_UHV = addItem(384, "robot.arm.uhv");
+        ROBOT_ARM_UEV = addItem(385, "robot.arm.uev");
+        ROBOT_ARM_UIV = addItem(386, "robot.arm.uiv");
+        ROBOT_ARM_UMV = addItem(387, "robot.arm.umv");
+        ROBOT_ARM_UXV = addItem(388, "robot.arm.uxv");
+        ROBOT_ARM_MAX = addItem(389, "robot.arm.max");
+
+        SENSOR_UHV = addItem(390, "sensor.uhv");
+        SENSOR_UEV = addItem(391, "sensor.uev");
+        SENSOR_UIV = addItem(392, "sensor.uiv");
+        SENSOR_UMV = addItem(393, "sensor.umv");
+        SENSOR_UXV = addItem(394, "sensor.uxv");
+        SENSOR_MAX = addItem(395, "sensor.max");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;

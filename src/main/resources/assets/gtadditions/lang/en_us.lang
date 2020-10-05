@@ -812,6 +812,8 @@ tile.cell_casing.cell_iv.name=IV Power Cell
 tile.cell_casing.cell_luv.name=LUV Power Cell
 tile.cell_casing.cell_zpm.name=ZPM Power Cell
 tile.cell_casing.cell_uv.name=UV Power Cell
+tile.cell_casing.cell_uhv.name=UHV Power Cell
+tile.cell_casing.cell_uev.name=UEV Power Cell
 tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
 tile.cell_casing.tooltip.2=    Capacity: §e%d
 tile.cell_casing.tooltip.3=    Max Tier: §e%s
@@ -1467,6 +1469,8 @@ gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fue
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
 gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
 gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %dmb
+gregtech.multiblock.universal.oxygen_plasma_amount=Oxygen Plasma: %dmb
+gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %dmb
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
 gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen needed to boost: %dmB
@@ -2076,6 +2080,7 @@ fluid.la_nd_oxides_solution=La-Nd Oxides Solution
 fluid.sm_gd_oxides_solution=Sm-Gd Oxides Solution
 fluid.tb_ho_oxides_solution=Tb-Ho Oxides Solution
 fluid.er_lu_oxides_solution=Er-Lu Oxides Solution
+fluid.supercooled_cryotheum=Supercooled Cryotheum
 
 
 material.naquadric_compound=Naquadric Compound

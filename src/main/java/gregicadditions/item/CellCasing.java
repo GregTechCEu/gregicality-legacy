@@ -1,6 +1,7 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregtech.api.GTValues;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.VariantBlock;
@@ -41,19 +42,21 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
 
         lines.add(I18n.format("tile.cell_casing.tooltip.1"));
         lines.add(I18n.format("tile.cell_casing.tooltip.2", coilType.getStorage()));
-        lines.add(I18n.format("tile.cell_casing.tooltip.3", GTValues.VN[coilType.getTier()]));
+        lines.add(I18n.format("tile.cell_casing.tooltip.3", GAValues.VN[coilType.getTier()]));
 
     }
 
 
     public enum CellType implements IStringSerializable {
 
-        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
-        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
-        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GTValues.LuV),
-        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GTValues.IV),
+        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GTValues.HV),
         CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GTValues.EV),
-        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GTValues.HV);
+        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GTValues.IV),
+        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GTValues.LuV),
+        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
+        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
+        CELL_UHV("cell_uhv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 6)), GAValues.UHV),
+        CELL_UEV("cell_uev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 7)), GAValues.UEV);
 
         private final String name;
         private final long storage;

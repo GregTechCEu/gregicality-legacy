@@ -78,7 +78,11 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new AlloyBlastFurnaceInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeForgeHammerInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeNaquadahReactorInfo()),
-                new MultiblockInfoRecipeWrapper(new BatteryTowerInfo())
+                new MultiblockInfoRecipeWrapper(new BatteryTowerInfo()),
+                new MultiblockInfoRecipeWrapper(new HyperReactor1Info()),
+                new MultiblockInfoRecipeWrapper(new HyperReactor2Info()),
+                new MultiblockInfoRecipeWrapper(new HyperReactor3Info()),
+                new MultiblockInfoRecipeWrapper(new FusionReactor4Info())
         ), "gregtech:multiblock_info");
     }
 

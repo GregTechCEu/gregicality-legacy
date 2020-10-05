@@ -25,7 +25,9 @@ public class FieldGenCasing extends VariantBlock<FieldGenCasing.CasingType> {
         FIELD_GENERATOR_IV("field_generator_iv", 5),
         FIELD_GENERATOR_LUV("field_generator_luv", 6),
         FIELD_GENERATOR_ZPM("field_generator_zpm", 7),
-        FIELD_GENERATOR_UV("field_generator_uv", 8);
+        FIELD_GENERATOR_UV("field_generator_uv", 8),
+        FIELD_GENERATOR_UHV("field_generator_uhv", 9),
+        FIELD_GENERATOR_UEV("field_generator_uev", 10);
 
         private final String name;
         private final int tier;

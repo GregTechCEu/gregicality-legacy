@@ -18,6 +18,9 @@ import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
 import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
 import gregicadditions.machines.multi.TileEntityAlloyBlastFurnace;
 import gregicadditions.machines.multi.advance.*;
+import gregicadditions.machines.multi.advance.hyper.HyperReactor;
+import gregicadditions.machines.multi.advance.hyper.HyperReactorUEV;
+import gregicadditions.machines.multi.advance.hyper.HyperReactorUHV;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
@@ -28,6 +31,7 @@ import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
+import gregicadditions.machines.overrides.GAMetaTileEntityHull;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -127,8 +131,13 @@ public class GATileEntities {
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
     public static MetaTileEntityLargeNaquadahReactor LARGE_NAQUADAH_REACTOR;
+    public static HyperReactor HYPER_REACTOR;
+    public static HyperReactorUHV HYPER_REACTOR_UHV;
+    public static HyperReactorUEV HYPER_REACTOR_UEV;
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
-
+    public static FusionReactorAdv FUSION_REACTOR_UHV;
+    public static FusionReactorAdv FUSION_REACTOR_UEV;
+    public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -723,7 +732,20 @@ public class GATileEntities {
         BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));
         BUFFER[2] = GregTechAPI.registerMetaTileEntity(3232, new TileEntityBuffer(location("buffer.hv"), 5));
 
+
+        HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new HyperReactor(location("hyper_reactor.uv"), GTValues.V[GTValues.UV]));
+        HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GTValues.V[GTValues.UV] * 4));
+        HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new HyperReactorUEV(location("hyper_reactor.uev"), GTValues.V[GTValues.UV] * 16));
+        FUSION_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3237, new FusionReactorAdv(location("fusion_reactor.uhv"), RecipeMaps.FUSION_RECIPES, 9));
+        FUSION_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3238, new FusionReactorAdv(location("fusion_reactor.uev"), RecipeMaps.FUSION_RECIPES, 10));
+        GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
+        GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
+        GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
+        GA_HULLS[3] = GregTechAPI.registerMetaTileEntity(3242, new GAMetaTileEntityHull(location("hull.umv"), 12));
+        GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
+
         PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
+
     }
 
 
