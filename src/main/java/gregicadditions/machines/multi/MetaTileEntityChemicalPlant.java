@@ -3,9 +3,9 @@ package gregicadditions.machines.multi;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -55,8 +55,8 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     };
 
     private long maxVolatage = 0;
-    protected int heatingCoilLevel;
-    protected int heatingCoilDiscount;
+    protected int heatingCoilLevel = 1;
+    protected int heatingCoilDiscount = 1;
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CHEMICAL_PLANT_RECIPES);
@@ -171,6 +171,10 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
+        if (isStructureFormed()) {
+            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_level", heatingCoilLevel));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_discount", heatingCoilDiscount));
+        }
         textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVolatage));
     }
 
@@ -194,51 +198,11 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
         return new MetaTileEntityChemicalPlant(metaTileEntityId);
     }
 
-    public class ChemicalPlantRecipeLogic extends MultiblockRecipeLogic {
-
+    public class ChemicalPlantRecipeLogic extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
         public ChemicalPlantRecipeLogic(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity);
+            super(tileEntity, 100 / heatingCoilDiscount, 100, 100, heatingCoilLevel);
         }
 
-        @Override
-        protected void setupRecipe(Recipe recipe) {
-            super.setupRecipe(recipe);
-            int duration = getMaxProgress();
-            int multiplier;
-            switch (heatingCoilLevel * (heatingCoilDiscount + 2)) {
-                case 3:
-                    multiplier = 50;
-                    break;
-                case 6:
-                    multiplier = 150;
-                    break;
-                case 12:
-                    multiplier = 200;
-                    break;
-                case 24:
-                    multiplier = 250;
-                    break;
-                case 32:
-                    multiplier = 300;
-                    break;
-                case 48:
-                    multiplier = 350;
-                    break;
-                case 64:
-                    multiplier = 400;
-                    break;
-                case 96:
-                    multiplier = 450;
-                    break;
-                case 160:
-                    multiplier = 500;
-                    break;
-                default:
-                    multiplier = 100;
-                    break;
-            }
-            setMaxProgress(duration * 100 / multiplier);
-        }
     }
 }

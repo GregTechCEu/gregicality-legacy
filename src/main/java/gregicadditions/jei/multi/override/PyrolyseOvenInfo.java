@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi.override;
 
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -17,34 +17,35 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
-
-public class CrackerUnitInfo extends MultiblockInfoPage {
+public class PyrolyseOvenInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.CRACKER;
+        return GATileEntities.PYROLYSE_OVEN;
     }
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         return Arrays.stream(BlockWireCoil.CoilType.values()).map(coilType -> MultiblockShapeInfo.builder()
-                .aisle("XCXCX", "XCSCF", "XCXCX")
-                .aisle("XCXCX", "H###X", "XCXCX")
-                .aisle("XCXCX", "XCECF", "XCXCX")
-                .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
+                .aisle("XXX", "ISF", "XXX")
+                .aisle("CCC", "C#C", "CCC")
+                .aisle("CCC", "C#C", "CCC")
+                .aisle("XXX", "BEH", "XXX")
+                .where('S', GATileEntities.PYROLYSE_OVEN, EnumFacing.NORTH)
+                .where('X', MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.ULV))
                 .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.EAST)
+                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.NORTH)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.NORTH)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-                .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
+                .where('B', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
+                .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .build()).collect(Collectors.toList());
     }
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gregtech.multiblock.cracker.description")};
+        return new String[]{I18n.format("gregtech.multiblock.pyrolyze_oven.description")};
     }
 
 }

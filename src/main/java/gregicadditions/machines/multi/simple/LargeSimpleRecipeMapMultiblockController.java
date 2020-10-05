@@ -1,16 +1,12 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.components.*;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
-import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
@@ -18,8 +14,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -224,8 +218,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         public RecipeMap<?> recipeMap;
 
 
-
-
         public LargeSimpleMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
             super(tileEntity);
             this.EUtPercentage = EUtPercentage;
@@ -268,7 +260,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            List<IItemHandlerModifiable> itemInputs = ((LargeSimpleRecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
+            List<IItemHandlerModifiable> itemInputs = ((RecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
 
             Tuple recipePerInput = itemInputs.stream()
                     .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
