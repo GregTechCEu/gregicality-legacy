@@ -681,7 +681,7 @@ public class GARecipeAddition {
                 .duration(1)
                 .EUt(491520)
                 .fluidInputs(Cryotheum.getFluid(10000))
-                .fluidOutputs(Cryotheum.getFluid(10000))
+                .fluidOutputs(SupercooledCryotheum.getFluid(10000))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
