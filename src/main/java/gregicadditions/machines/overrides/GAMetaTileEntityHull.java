@@ -1,18 +1,37 @@
 package gregicadditions.machines.overrides;
 
+import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
+import gregtech.api.GTValues;
 import gregtech.api.capability.impl.EnergyContainerHandler;
+import gregtech.api.gui.ModularUI;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.render.Textures;
 import gregtech.api.util.PipelineUtil;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
-public class GAMetaTileEntityHull extends gregtech.common.metatileentities.electric.MetaTileEntityHull {
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class GAMetaTileEntityHull extends GATieredMetaTileEntity {
 
     public GAMetaTileEntityHull(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
+    }
+
+    @Override
+    public gregtech.api.metatileentity.MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
+        return new gregtech.common.metatileentities.electric.MetaTileEntityHull(metaTileEntityId, getTier());
     }
 
     @Override
@@ -27,4 +46,29 @@ public class GAMetaTileEntityHull extends gregtech.common.metatileentities.elect
         super.renderMetaTileEntity(renderState, translation, pipeline);
         Textures.ENERGY_OUT.renderSided(getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier()]));
     }
+
+    @Override
+    public boolean isValidFrontFacing(EnumFacing facing) {
+        return true;
+    }
+
+    @Override
+    public boolean onRightClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
+        return false;
+    }
+
+    @Override
+    protected ModularUI createUI(EntityPlayer entityPlayer) {
+        return null;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        String tierName = GAValues.VN[getTier()];
+
+        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), tierName));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", energyContainer.getOutputVoltage(), tierName));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
+    }
 }
+
