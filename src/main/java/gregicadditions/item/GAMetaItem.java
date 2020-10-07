@@ -244,6 +244,19 @@ public class GAMetaItem extends MaterialMetaItem {
         CLEAN_CULTURE = addItem(399, "clean.culture");
         PIEZOELECTRIC_CRYSTAL = addItem(400, "piezoelectric.crystal");
 
+        BIOWARE_CIRCUIT = addItem(401, "circuit.circuit.bioware");
+        BIOWARE_PROCESSOR = addItem(402, "circuit.processor.bioware");
+        BIOWARE_PROCESSOR_ARRAY = addItem(403, "circuit.assembly.bioware");
+        BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware");
+        SMD_TRANSISTOR_BIOWARE = addItem(405, "component.smd.transistor.bioware");
+        SMD_CAPACITOR_BIOWARE = addItem(406, "component.smd.capacitor.bioware");
+        SMD_RESISTOR_BIOWARE = addItem(407, "component.smd.resistor.bioware");
+        SMD_DIODE_BIOWARE = addItem(408, "component.smd.diode.bioware");
+
+        ELECTRICALLY_WIRED_PETRI_DISH = addItem(409, "electrically.wired.petri.dish");
+        NEURO_SUPPORT_UNIT = addItem(410, "neuro.support.unit");
+        CYBER_PROCESSING_UNIT = addItem(411, "cyber.processing.unit");
+
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;

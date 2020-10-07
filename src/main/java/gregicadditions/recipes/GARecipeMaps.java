@@ -121,8 +121,8 @@ public class GARecipeMaps {
                 .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL);
 
-        BIO_REACTOR_RECIPES = new RecipeMap<>("bio_reactor", 0, 4, 0,
-                2, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
+        BIO_REACTOR_RECIPES = new RecipeMap<>("bio_reactor", 0, 3, 0,
+                3, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);;
 
     }
