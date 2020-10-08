@@ -11,7 +11,7 @@ import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
-import gregtech.api.util.GTLog;
+import gregicadditions.utils.GregicalityLogger;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
@@ -52,11 +52,11 @@ public class CTUtils {
                                 if (useAmounts) {
                                     if (output.getCount() == itemStack.getCount()) {
                                         recipesToRemove.add((Recipe) recipe);
-                                        GTLog.logger.info(output.getDisplayName());
+                                        GregicalityLogger.logger.info(output.getDisplayName());
                                     }
                                 } else {
                                     recipesToRemove.add((Recipe) recipe);
-                                    GTLog.logger.info(output.getDisplayName());
+                                    GregicalityLogger.logger.info(output.getDisplayName());
                                 }
                             }
                         }

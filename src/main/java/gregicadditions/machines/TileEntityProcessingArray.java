@@ -17,7 +17,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.util.GTLog;
+import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -240,7 +240,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
-                GTLog.logger.error("Cannot calculate ratio of items for processing array");
+                GregicalityLogger.logger.error("Cannot calculate ratio of items for processing array");
                 return null;
             }
 

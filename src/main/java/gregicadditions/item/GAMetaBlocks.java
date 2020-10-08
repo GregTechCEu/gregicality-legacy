@@ -1,8 +1,16 @@
 package gregicadditions.item;
 
+import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.item.components.*;
+import gregicadditions.pipelike.cable.BlockCable;
+import gregicadditions.pipelike.cable.Insulation;
+import gregicadditions.pipelike.cable.WireProperties;
+import gregicadditions.pipelike.cable.tile.TileEntityCable;
+import gregicadditions.pipelike.cable.tile.TileEntityCableTickable;
+import gregicadditions.renderer.CableRenderer;
+import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -21,10 +29,13 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.ArrayUtils;
@@ -32,11 +43,9 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static gregicadditions.ClientProxy.METAL_CASING_BLOCK_COLOR;
-import static gregicadditions.ClientProxy.METAL_CASING_ITEM_COLOR;
+import static gregicadditions.ClientProxy.*;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
-import static gregicadditions.ClientProxy.ORE_BLOCK_COLOR;
-import static gregicadditions.ClientProxy.ORE_ITEM_COLOR;
+import static gregtech.api.unification.material.Materials.Plastic;
 
 public class GAMetaBlocks {
 
@@ -71,6 +80,9 @@ public class GAMetaBlocks {
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
+
+
+    public static BlockCable CABLE;
 
 
     public static void init() {
@@ -121,11 +133,16 @@ public class GAMetaBlocks {
         EMITTER_CASING = new EmitterCasing();
         EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
+        CABLE = new BlockCable();
+        CABLE.setRegistryName("ga_cable");
+
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
+        CABLE.addCableMaterial(Plastic, new WireProperties(1, 1));
 
         createMachineCasing();
+        registerTileEntity();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.Steel), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
@@ -182,6 +199,8 @@ public class GAMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
+
+        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(CABLE), stack -> CableRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
@@ -198,6 +217,21 @@ public class GAMetaBlocks {
         registerItemModel(SENSOR_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
         GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
+    }
+
+    public static void registerTileEntity() {
+        GameRegistry.registerTileEntity(TileEntityCable.class, new ResourceLocation(Gregicality.MODID, "cable"));
+        GameRegistry.registerTileEntity(TileEntityCableTickable.class, new ResourceLocation(Gregicality.MODID, "cable_tickable"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void registerStateMappers() {
+        ModelLoader.setCustomStateMapper(CABLE, new DefaultStateMapper() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return CableRenderer.MODEL_LOCATION;
+            }
+        });
     }
 
     @SideOnly(Side.CLIENT)
@@ -239,11 +273,18 @@ public class GAMetaBlocks {
                 ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
                 OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.getOrePrefix() :
                         OrePrefix.valueOf(blockOre.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
-                OreDictUnifier.registerOre(normalStack, orePrefix , mat);
+                OreDictUnifier.registerOre(normalStack, orePrefix, mat);
+            }
+        }
+
+        for (Material pipeMaterial : CABLE.getEnabledMaterials()) {
+            for (Insulation insulation : Insulation.values()) {
+                ItemStack itemStack = CABLE.getItem(insulation, pipeMaterial);
+                GregicalityLogger.logger.info("cable creation {}", itemStack.getDisplayName());
+                OreDictUnifier.registerOre(itemStack, insulation.getOrePrefix(), pipeMaterial);
             }
         }
     }
-
 
 
     public static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {
