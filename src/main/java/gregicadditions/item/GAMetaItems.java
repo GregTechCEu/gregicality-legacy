@@ -260,6 +260,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SENSOR_UMV;
     public static MetaItem<?>.MetaValueItem SENSOR_UXV;
     public static MetaItem<?>.MetaValueItem SENSOR_MAX;
+    public static MetaItem<?>.MetaValueItem ULTRASONIC_HOMOGENIZER;
+    public static MetaItem<?>.MetaValueItem STERILIZED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem CONTAMINATED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem CLEAN_CULTURE;
+    public static MetaItem<?>.MetaValueItem PIEZOELECTRIC_CRYSTAL;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

@@ -468,6 +468,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PreFreezeAgar = new SimpleDustMaterial("pre_freeze_agar", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
     public static final SimpleDustMaterial FrozenAgarCrystals = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Agar = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BrevibacteriumFlavium = new SimpleDustMaterial("brevibacterium_flavium", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
 
     public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0xffb3ff);
     public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0xffb3ff);
@@ -481,7 +488,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Ethanolamine = new SimpleFluidMaterial("ethanolamine", 0xffb3ff);
     public static final SimpleFluidMaterial Biotin = new SimpleFluidMaterial("biotin", 0xffb3ff);
     public static final SimpleFluidMaterial B27Supplement = new SimpleFluidMaterial("b27_supplement", 0xffb3ff);
-    public static final SimpleFluidMaterial ClearAmmoniaSolution = new SimpleFluidMaterial("clear_ammonia_solution", 0xffb3ff);
+    public static final SimpleFluidMaterial CleanAmmoniaSolution = new SimpleFluidMaterial("clear_ammonia_solution", 0xffb3ff);
     public static final SimpleFluidMaterial Catalase = new SimpleFluidMaterial("catalase", 0xffb3ff);
     public static final SimpleFluidMaterial Blood = new SimpleFluidMaterial("blood", 0xffb3ff);
     public static final SimpleFluidMaterial BloodCells = new SimpleFluidMaterial("blood_cells", 0xffb3ff);
@@ -511,6 +518,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Chitin = new SimpleFluidMaterial("chitin", 0xffb3ff);
     public static final SimpleFluidMaterial Chitosan = new SimpleFluidMaterial("chitosan", 0xffb3ff);
     public static final SimpleFluidMaterial GeneTherapyFluid = new SimpleFluidMaterial("pluripotency_induction_gene_therapy_fluid", 0xffb3ff);
+    public static final SimpleFluidMaterial Resin = new SimpleFluidMaterial("resin", 0xffb3ff);
+    public static final SimpleFluidMaterial LinoleicAcid = new SimpleFluidMaterial("linoleic_acid", 0xffb3ff);
 
 
     @Override

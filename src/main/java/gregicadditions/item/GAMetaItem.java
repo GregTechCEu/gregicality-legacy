@@ -238,6 +238,13 @@ public class GAMetaItem extends MaterialMetaItem {
         SENSOR_UXV = addItem(394, "sensor.uxv");
         SENSOR_MAX = addItem(395, "sensor.max");
 
+        ULTRASONIC_HOMOGENIZER = addItem(396, "ultrasonic.homogenizer");
+        STERILIZED_PETRI_DISH = addItem(397, "sterilized.petri.dish");
+        CONTAMINATED_PETRI_DISH = addItem(398, "contaminated.petri.dish");
+        CLEAN_CULTURE = addItem(399, "clean.culture");
+        PIEZOELECTRIC_CRYSTAL = addItem(400, "piezoelectric.crystal");
+
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;

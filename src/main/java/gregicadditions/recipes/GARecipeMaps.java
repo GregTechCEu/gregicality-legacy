@@ -72,6 +72,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> GREEN_HOUSE_RECIPES;
     @ZenProperty
     public static final LargeRecipeMap LARGE_CENTRIFUGE_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> BIO_REACTOR_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -118,5 +120,10 @@ public class GARecipeMaps {
                 .setSlotOverlay(false, false, true, GuiTextures.EXTRACTOR_OVERLAY)
                 .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL);
+
+        BIO_REACTOR_RECIPES = new RecipeMap<>("bio_reactor", 0, 4, 0,
+                2, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
+                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);;
+
     }
 }
