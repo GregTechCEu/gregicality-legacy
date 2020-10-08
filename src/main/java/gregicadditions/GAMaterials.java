@@ -451,6 +451,68 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB);
 
+    public static final SimpleDustMaterial CalciumCarbide = new SimpleDustMaterial("calcium_carbide", Scandium.materialRGB, (short) 23, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial CalciumHydroxide = new SimpleDustMaterial("calcium_hydroxide", Scandium.materialRGB, (short) 24, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", Scandium.materialRGB, (short) 25, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", Scandium.materialRGB, (short) 26, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SilicaAluminaGel = new SimpleDustMaterial("silica_alumina_gel", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZeoliteSievingPellets = new SimpleDustMaterial("zeolite_sieving_pellets", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial WetZeoliteSievingPellets = new SimpleDustMaterial("wet_zeolite_sieving_pellets", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial GreenAlgae = new SimpleDustMaterial("green_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BrownAlgae = new SimpleDustMaterial("brown_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RedAlgae = new SimpleDustMaterial("red_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial DryRedAlgae = new SimpleDustMaterial("dry_red_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RedAlgaePowder = new SimpleDustMaterial("red_algae_powder", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PreFreezeAgar = new SimpleDustMaterial("pre_freeze_agar", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial FrozenAgarCrystals = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Agar = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+
+    public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0xffb3ff);
+    public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0xffb3ff);
+    public static final SimpleFluidMaterial Formaldehyde = new SimpleFluidMaterial("formaldehyde", 0xffb3ff);
+    public static final SimpleFluidMaterial PropargylAlcohol = new SimpleFluidMaterial("propargyl_alcohol", 0xffb3ff);
+    public static final SimpleFluidMaterial PropargylChloride = new SimpleFluidMaterial("propargyl_chloride", 0xffb3ff);
+    public static final SimpleFluidMaterial Citral = new SimpleFluidMaterial("citral", 0xffb3ff);
+    public static final SimpleFluidMaterial BetaIonone = new SimpleFluidMaterial("beta_ionone", 0xffb3ff);
+    public static final SimpleFluidMaterial VitaminA = new SimpleFluidMaterial("vitamin_a", 0xffb3ff);
+    public static final SimpleFluidMaterial EthyleneOxide = new SimpleFluidMaterial("ethylene_oxide", 0xffb3ff);
+    public static final SimpleFluidMaterial Ethanolamine = new SimpleFluidMaterial("ethanolamine", 0xffb3ff);
+    public static final SimpleFluidMaterial Biotin = new SimpleFluidMaterial("biotin", 0xffb3ff);
+    public static final SimpleFluidMaterial B27Supplement = new SimpleFluidMaterial("b27_supplement", 0xffb3ff);
+    public static final SimpleFluidMaterial ClearAmmoniaSolution = new SimpleFluidMaterial("clear_ammonia_solution", 0xffb3ff);
+    public static final SimpleFluidMaterial Catalase = new SimpleFluidMaterial("catalase", 0xffb3ff);
+    public static final SimpleFluidMaterial Blood = new SimpleFluidMaterial("blood", 0xffb3ff);
+    public static final SimpleFluidMaterial BloodCells = new SimpleFluidMaterial("blood_cells", 0xffb3ff);
+    public static final SimpleFluidMaterial BloodPlasma = new SimpleFluidMaterial("blood_plasma", 0xffb3ff);
+    public static final SimpleFluidMaterial BFGF = new SimpleFluidMaterial("bfgf", 0xffb3ff);
+    public static final SimpleFluidMaterial EGF = new SimpleFluidMaterial("egf", 0xffb3ff);
+    public static final SimpleFluidMaterial NitroBenzene = new SimpleFluidMaterial("nitro_benzene", 0xffb3ff);
+    public static final SimpleFluidMaterial Aniline = new SimpleFluidMaterial("aniline", 0xffb3ff);
+    public static final SimpleFluidMaterial ChlorosulfuricAcid = new SimpleFluidMaterial("chlorosulfuric_acid", 0xffb3ff);
+    public static final SimpleFluidMaterial AcidicMixture = new SimpleFluidMaterial("acidic_mixture", 0xffb3ff);
+    public static final SimpleFluidMaterial BenzenesulfonylChloride = new SimpleFluidMaterial("benzenesulfonyl_chloride", 0xffb3ff);
+    public static final SimpleFluidMaterial Sulfanilamide = new SimpleFluidMaterial("sulfanilamide", 0xffb3ff);
+    public static final SimpleFluidMaterial SilicaGelBase = new SimpleFluidMaterial("silica_gel_base", 0xffb3ff);
+    public static final SimpleFluidMaterial Ethanol100 = new SimpleFluidMaterial("ethanol_100", 0xffb3ff);
+    public static final SimpleFluidMaterial PiranhaSolution = new SimpleFluidMaterial("piranha_solution", 0xffb3ff);
+    public static final SimpleFluidMaterial WaterAgarMix = new SimpleFluidMaterial("water_agar_mix", 0xffb3ff);
+    public static final SimpleFluidMaterial BacterialGrowthMedium = new SimpleFluidMaterial("bacterial_growth_medium", 0xffb3ff);
+    public static final SimpleFluidMaterial DepletedGrowthMedium = new SimpleFluidMaterial("depleted_growth_medium", 0xffb3ff);
+    public static final SimpleFluidMaterial AnimalCells = new SimpleFluidMaterial("animal_cells", 0xffb3ff);
+    public static final SimpleFluidMaterial RapidlyReplicatingAnimalCells = new SimpleFluidMaterial("rapidly_replicating_animal_cells", 0xffb3ff);
+    public static final SimpleFluidMaterial MycGene = new SimpleFluidMaterial("myc_gene", 0xffb3ff);
+    public static final SimpleFluidMaterial Oct4Gene = new SimpleFluidMaterial("oct_4_gene", 0xffb3ff);
+    public static final SimpleFluidMaterial SOX2Gene = new SimpleFluidMaterial("sox_2_gene", 0xffb3ff);
+    public static final SimpleFluidMaterial KFL4Gene = new SimpleFluidMaterial("kfl_4_gene", 0xffb3ff);
+    public static final SimpleFluidMaterial Cas9 = new SimpleFluidMaterial("cas_9", 0xffb3ff);
+    public static final SimpleFluidMaterial GenePlasmids = new SimpleFluidMaterial("pluripotency_induction_gene_plasmids", 0xffb3ff);
+    public static final SimpleFluidMaterial Chitin = new SimpleFluidMaterial("chitin", 0xffb3ff);
+    public static final SimpleFluidMaterial Chitosan = new SimpleFluidMaterial("chitosan", 0xffb3ff);
+    public static final SimpleFluidMaterial GeneTherapyFluid = new SimpleFluidMaterial("pluripotency_induction_gene_therapy_fluid", 0xffb3ff);
+
+
     @Override
     public void onMaterialsInit() {
         initNuclearMaterial();
