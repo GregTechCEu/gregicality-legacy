@@ -75,8 +75,5 @@ public class ClientHandler {
         }
     }
 
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
-        GAMetaBlocks.registerItemModels();
-    }
+
 }

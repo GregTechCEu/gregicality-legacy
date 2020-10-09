@@ -1,5 +1,6 @@
 package gregicadditions.machines;
 
+import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -10,7 +11,6 @@ import gregtech.api.metatileentity.SimpleGeneratorMetaTileEntity;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.util.GTLog;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -39,7 +39,7 @@ public class SimpleGeneratorWithLossMetaTileEntity extends SimpleGeneratorMetaTi
             workableHandler.set(this, new FuelRecipeWithLossLogic(this, recipeMap,
                     () -> energyContainer, () -> importFluids, GTValues.V[tier], efficiency));
         } catch (IllegalAccessException e) {
-            GTLog.logger.error("Something is wrong with generator with loss", e);
+            GregicalityLogger.logger.error("Something is wrong with generator with loss", e);
         }
     }
 

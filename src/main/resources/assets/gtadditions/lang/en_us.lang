@@ -1502,6 +1502,12 @@ item.material.oreprefix.pipeGaLarge=Large %s Pipe
 item.material.oreprefix.nitrate=%s Nitrate
 item.material.oreprefix.dioxide=%s Dioxide
 item.material.oreprefix.hexafluoride=%s Hexafluoride
+item.material.oreprefix.opticalFiberHex=16x %s Optical Fiber
+item.material.oreprefix.opticalFiberTwelve=12x %s Optical Fiber
+item.material.oreprefix.opticalFiberOctal=8x %s Optical Fiber
+item.material.oreprefix.opticalFiberQuadruple=4x %s Optical Fiber
+item.material.oreprefix.opticalFiberDouble=2x %s Optical Fiber
+item.material.oreprefix.opticalFiberSingle=1x %s Optical Fiber
 
 
 
