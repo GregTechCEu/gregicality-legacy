@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GARecipeLogicEnergy;
 import gregtech.api.capability.impl.RecipeLogicEnergy;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
@@ -39,7 +40,7 @@ public abstract class GAWorkableTieredMetaTileEntity extends GATieredMetaTileEnt
     }
 
     protected RecipeLogicEnergy createWorkable(RecipeMap<?> recipeMap) {
-        return new RecipeLogicEnergy(this, recipeMap, () -> energyContainer);
+        return new GARecipeLogicEnergy(this, recipeMap, () -> energyContainer);
     }
 
     @Override
