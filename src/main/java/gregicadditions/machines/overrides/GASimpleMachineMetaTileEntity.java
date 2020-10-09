@@ -68,7 +68,7 @@ public class GASimpleMachineMetaTileEntity extends GAWorkableTieredMetaTileEntit
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new gregtech.api.metatileentity.SimpleMachineMetaTileEntity(metaTileEntityId, workable.recipeMap, renderer, getTier(), hasFrontFacing);
+        return new GASimpleMachineMetaTileEntity(metaTileEntityId, workable.recipeMap, renderer, getTier(), hasFrontFacing);
     }
 
     @Override

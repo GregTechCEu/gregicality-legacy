@@ -545,6 +545,8 @@ public class GAMaterials implements IMaterialHandler {
         UVSuperconductorBase.setCableProperties(524288, 4, 2);
         UHVSuperconductorBase.setCableProperties(524288 * 4, 4, 2);
         UEVSuperconductorBase.setCableProperties(524288 * 16, 4, 2);
+        Seaborgium.setCableProperties(524288 * 4, 2, 8);
+        Bohrium.setCableProperties(524288 * 16, 2, 8);
 
         MVSuperconductor.setCableProperties(128, 4, 0);
         ignoreCable(MVSuperconductor);
