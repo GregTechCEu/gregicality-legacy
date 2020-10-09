@@ -1,6 +1,6 @@
 package gregicadditions.recipes.chain.wetware;
 
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.common.items.MetaItems;
 
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -32,10 +32,9 @@ public class BacteriaCultures {
                 .EUt(7680)
                 .duration(75)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
                 .input(dust, Sodium)
                 .input(dust, Carbon)
-                .notConsumable(new IntCircuitIngredient(2))
                 .outputs(SodiumCarbonate.getItemStack(2))
                 .EUt(120)
                 .duration(50)
@@ -62,6 +61,7 @@ public class BacteriaCultures {
                 .buildAndRegister();
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .fluidInputs(WaterAgarMix.getFluid(1000))
+                .notConsumable(MetaItems.SHAPE_MOLD_BALL)
                 .outputs(Agar.getItemStack())
                 .EUt(7680)
                 .duration(50)
@@ -85,6 +85,7 @@ public class BacteriaCultures {
         ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
                 .input(stick, RhodiumPlatedPalladium)
+                .outputs(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .EUt(30720)
                 .duration(500)
                 .buildAndRegister();

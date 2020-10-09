@@ -40,24 +40,28 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
 
 
     //circuits
@@ -197,6 +201,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR_ARRAY;
     public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
 
+    public static MetaItem<?>.MetaValueItem BIOWARE_CIRCUIT;
+    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
+
     public static MetaItem<?>.MetaValueItem WAFER_AMERICIUM;
     public static MetaItem<?>.MetaValueItem WAFER_EUROPIUM;
     public static MetaItem<?>.MetaValueItem WAFER_NEUTRONIUM;
@@ -260,11 +269,15 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SENSOR_UMV;
     public static MetaItem<?>.MetaValueItem SENSOR_UXV;
     public static MetaItem<?>.MetaValueItem SENSOR_MAX;
+
     public static MetaItem<?>.MetaValueItem ULTRASONIC_HOMOGENIZER;
     public static MetaItem<?>.MetaValueItem STERILIZED_PETRI_DISH;
     public static MetaItem<?>.MetaValueItem CONTAMINATED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem ELECTRICALLY_WIRED_PETRI_DISH;
     public static MetaItem<?>.MetaValueItem CLEAN_CULTURE;
     public static MetaItem<?>.MetaValueItem PIEZOELECTRIC_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
+    public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

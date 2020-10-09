@@ -10,6 +10,7 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
 import gregicadditions.recipes.chain.*;
+import gregicadditions.recipes.chain.wetware.*;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.CountableIngredient;
@@ -801,18 +802,92 @@ public class GARecipeAddition {
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(30000).outputs(CRYSTAL_MAINFRAME.getStackForm()).inputs(CRYSTAL_COMPUTER.getStackForm(2), SMD_RESISTOR_CRYSTAL.getStackForm(48), SMD_TRANSISTOR_CRYSTAL.getStackForm(36), SMD_CAPACITOR_CRYSTAL.getStackForm(32), SMD_DIODE_CRYSTAL.getStackForm(24), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(4), QUANTUM_STAR.getStackForm(4)).input(frameGt, HSSE, 4).input(wireGtSingle, LuVSuperconductor, 32).fluidInputs(fluidStack).buildAndRegister();
 
             //WETWARE      //PROCESSOR
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), NEURO_PROCESSOR.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), NEURO_PROCESSOR.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
-            //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(NEURO_PROCESSOR.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
+            //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
+            fluidStack.amount = Math.max(64000, fluidStack.amount * 4);
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
+                    .outputs(BIOWARE_CIRCUIT.getStackForm(1))
+                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
+                            SMD_TRANSISTOR_BIOWARE.getStackForm(8),
+                            SMD_CAPACITOR_BIOWARE.getStackForm(4),
+                            NEURO_PROCESSOR.getStackForm(),
+                            CRYSTAL_SYSTEM_ON_CHIP.getStackForm(1))
+                    .input(wireFine, NaquadahAlloy, 4)
+                    .fluidInputs(fluidStack).buildAndRegister();
         }
         //ASSEMBLY
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(120000).outputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm()).inputs(WETWARE_PROCESSOR_LUV.getStackForm(3), SMD_RESISTOR_CRYSTAL.getStackForm(32), SMD_TRANSISTOR_CRYSTAL.getStackForm(32), SMD_CAPACITOR_CRYSTAL.getStackForm(32), SMD_DIODE_CRYSTAL.getStackForm(32), RANDOM_ACCESS_MEMORY.getStackForm(1), QUANTUM_EYE.getStackForm(4), NEURO_PROCESSOR.getStackForm()).input(wireGtSingle, ZPMSuperconductor, 4).input(foil, SiliconeRubber, 16).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(120000).outputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm()).inputs(WETWARE_PROCESSOR_LUV.getStackForm(3), SMD_RESISTOR_WETWARE.getStackForm(16), SMD_TRANSISTOR_WETWARE.getStackForm(16), SMD_CAPACITOR_WETWARE.getStackForm(16), SMD_DIODE_WETWARE.getStackForm(16), RANDOM_ACCESS_MEMORY.getStackForm(1), QUANTUM_EYE.getStackForm(4), NEURO_PROCESSOR.getStackForm()).input(wireGtSingle, ZPMSuperconductor, 4).input(foil, SiliconeRubber, 16).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(120000).outputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm()).inputs(WETWARE_PROCESSOR_LUV.getStackForm(3), SMD_RESISTOR_CRYSTAL.getStackForm(32), SMD_TRANSISTOR_CRYSTAL.getStackForm(32), SMD_CAPACITOR_CRYSTAL.getStackForm(32), SMD_DIODE_CRYSTAL.getStackForm(32), RANDOM_ACCESS_MEMORY.getStackForm(1), QUANTUM_EYE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm()).input(wireGtSingle, ZPMSuperconductor, 4).input(foil, SiliconeRubber, 16).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(120000).outputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm()).inputs(WETWARE_PROCESSOR_LUV.getStackForm(3), SMD_RESISTOR_WETWARE.getStackForm(16), SMD_TRANSISTOR_WETWARE.getStackForm(16), SMD_CAPACITOR_WETWARE.getStackForm(16), SMD_DIODE_WETWARE.getStackForm(16), RANDOM_ACCESS_MEMORY.getStackForm(1), QUANTUM_EYE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm()).input(wireGtSingle, ZPMSuperconductor, 4).input(foil, SiliconeRubber, 16).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
         //COMPUTER
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(122880).outputs(WETWARE_SUPER_COMPUTER_UV.getStackForm()).inputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm(4), SMD_RESISTOR_CRYSTAL.getStackForm(64), SMD_TRANSISTOR_CRYSTAL.getStackForm(64), SMD_CAPACITOR_CRYSTAL.getStackForm(64), SMD_DIODE_CRYSTAL.getStackForm(64), QUANTUM_STAR.getStackForm(4), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), NEURO_PROCESSOR.getStackForm()).input(plate, Rutherfordium, 2).input(wireGtSingle, ZPMSuperconductor, 16).input(foil, SiliconeRubber, 32).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(122880).outputs(WETWARE_SUPER_COMPUTER_UV.getStackForm()).inputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm(4), SMD_RESISTOR_WETWARE.getStackForm(32), SMD_TRANSISTOR_WETWARE.getStackForm(32), SMD_CAPACITOR_WETWARE.getStackForm(32), SMD_DIODE_WETWARE.getStackForm(32), QUANTUM_STAR.getStackForm(4), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), NEURO_PROCESSOR.getStackForm()).input(plate, Rutherfordium, 2).input(wireGtSingle, ZPMSuperconductor, 16).input(foil, SiliconeRubber, 32).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(122880).outputs(WETWARE_SUPER_COMPUTER_UV.getStackForm()).inputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm(4), SMD_RESISTOR_CRYSTAL.getStackForm(64), SMD_TRANSISTOR_CRYSTAL.getStackForm(64), SMD_CAPACITOR_CRYSTAL.getStackForm(64), SMD_DIODE_CRYSTAL.getStackForm(64), QUANTUM_STAR.getStackForm(4), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm()).input(plate, Rutherfordium, 2).input(wireGtSingle, ZPMSuperconductor, 16).input(foil, SiliconeRubber, 32).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(122880).outputs(WETWARE_SUPER_COMPUTER_UV.getStackForm()).inputs(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm(4), SMD_RESISTOR_WETWARE.getStackForm(32), SMD_TRANSISTOR_WETWARE.getStackForm(32), SMD_CAPACITOR_WETWARE.getStackForm(32), SMD_DIODE_WETWARE.getStackForm(32), QUANTUM_STAR.getStackForm(4), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm()).input(plate, Rutherfordium, 2).input(wireGtSingle, ZPMSuperconductor, 16).input(foil, SiliconeRubber, 32).fluidInputs(SterileGrowthMedium.getFluid(2000)).buildAndRegister();
         //MAINFRAME
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2000).EUt(300000).outputs(WETWARE_MAINFRAME_MAX.getStackForm()).inputs(WETWARE_SUPER_COMPUTER_UV.getStackForm(2), SMD_RESISTOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_DIODE_WETWARE.getStackForm(64), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), GRAVI_STAR.getStackForm(4)).input(frameGt, Tritanium, 4).input(plate, Duranium, 32).input(wireGtSingle, UVSuperconductor, 64).input(foil, Polytetrafluoroethylene, 64).fluidInputs(SterileGrowthMedium.getFluid(2000), UUMatter.getFluid(1000)).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(BIOWARE_CIRCUIT.getStackForm(3))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(16))
+                .inputs(NEURO_PROCESSOR.getStackForm())
+                .input(wireGtSingle, UVSuperconductor, 4)
+                .inputs(RANDOM_ACCESS_MEMORY.getStackForm(64))
+                .input(plate, Duranium, 2)
+                .input(foil, Polybenzimidazole, 16)
+                .outputs(BIOWARE_PROCESSOR.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(1000))
+                .fluidInputs(Titanium.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(2500))
+                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .EUt(240000)
+                .duration(400)
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(BIOWARE_PROCESSOR.getStackForm(4))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(32))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(32))
+                .inputs(NEURO_PROCESSOR.getStackForm())
+                .input(wireGtSingle, UHVSuperconductor, 2)
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(16))
+                .input(plate, Tritanium, 2)
+                .input(foil, Polybenzimidazole, 16)
+                .inputs(GRAVI_STAR.getStackForm(2))
+                .outputs(BIOWARE_PROCESSOR_ARRAY.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(1000))
+                .fluidInputs(Tritanium.getFluid(288))
+                .fluidInputs(Polybenzimidazole.getFluid(1500))
+                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .EUt(480000)
+                .duration(600)
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(BIOWARE_PROCESSOR_ARRAY.getStackForm(2))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(2))
+                .input(wireGtSingle, UHVSuperconductor, 6)
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
+                .input(plate, Neutronium, 2)
+                .input(frameGt, Neutronium, 1)
+                .input(plate, Naquadria, 8)
+                .input(foil, Polybenzimidazole, 64)
+                .inputs(UNSTABLE_STAR.getStackForm())
+                .outputs(BIOWARE_MAINFRAME.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(1000))
+                .fluidInputs(Tritanium.getFluid(1000))
+                .fluidInputs(Polybenzimidazole.getFluid(2500))
+                .fluidInputs(Naquadria.getFluid(1000))
+                .EUt(1500000)
+                .duration(800)
+                .buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 2
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(480).inputs(ELITE_BOARD.getStackForm(), PETRI_DISH.getStackForm(), ELECTRIC_PUMP_LV.getStackForm(), SENSOR_LV.getStackForm()).input(circuit, Tier.Good).fluidInputs(SterileGrowthMedium.getFluid(250)).outputs(WETWARE_BOARD.getStackForm()).buildAndRegister();
@@ -967,7 +1042,7 @@ public class GARecipeAddition {
 
 
         //Circuit resonatic Magneto
-        CHEMICAL_RECIPES.recipeBuilder().duration(4000).EUt(30).input(dust, Yttrium, 2).fluidInputs(Oxygen.getFluid(3000)).outputs(OreDictUnifier.get(dust, YttriumOxide, 5)).buildAndRegister();
+        //CHEMICAL_RECIPES.recipeBuilder().duration(4000).EUt(30).input(dust, Yttrium, 2).fluidInputs(Oxygen.getFluid(3000)).outputs(OreDictUnifier.get(dust, YttriumOxide, 5)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(56000).EUt(480).blastFurnaceTemp(2953).input(dust, Zirconium, 10).input(dust, YttriumOxide, 1).fluidInputs(Oxygen.getFluid(10000)).outputs(OreDictUnifier.get(gemFlawed, CubicZirconia, 40)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(1080).EUt(20).input(dust, Prasiolite, 3).input(dust, BismuthTellurite, 4).input(dust, CubicZirconia, 1).input(dust, SteelMagnetic).outputs(OreDictUnifier.get(dust, MagnetoResonatic, 9)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(570).EUt(90).input(dust, Bismuth, 2).input(dust, Boron).fluidInputs(Hydrogen.getFluid(1000)).outputs(OreDictUnifier.get(dust, Dibismusthydroborat, 4)).buildAndRegister();
@@ -1217,6 +1292,8 @@ public class GARecipeAddition {
         FUSION_RECIPES.recipeBuilder().fluidInputs(NaquadahEnriched.getFluid(15), Radon.getFluid(125)).fluidOutputs(Naquadria.getFluid(3)).duration(64).EUt(49152).EUToStart(400000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Lithium.getFluid(16), Tungsten.getFluid(16)).fluidOutputs(Iridium.getFluid(16)).duration(32).EUt(32768).EUToStart(300000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Lanthanum.getFluid(16), Silicon.getFluid(16)).fluidOutputs(Lutetium.getFluid(16)).duration(16).EUt(8192).EUToStart(80000000).buildAndRegister();
+        FUSION_RECIPES.recipeBuilder().fluidInputs(Curium247.getMaterial().getFluid(144), Sodium.getFluid(144)).fluidOutputs(Bohrium.getFluid(288)).duration(50).EUt(1000000).EUToStart(2000000000).buildAndRegister();
+        FUSION_RECIPES.recipeBuilder().fluidInputs(Plutonium.getFluid(144), Calcium.getFluid(144)).fluidOutputs(Seaborgium.getFluid(288)).duration(100).EUt(500000).EUToStart(1000000000).buildAndRegister();
 
         //FUsion Casing Recipes
         ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING), "PhP", "PHP", "PwP", 'P', "plateTungstenSteel", 'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
@@ -1625,6 +1702,11 @@ public class GARecipeAddition {
         PlatinumSludgeGroupChain.init();
         TungstenChain.init();
         REEChain.init();
+        BacteriaCultures.init();
+        GrowthMedium.init();
+        StemCells.init();
+        SterilizedGrowthMedium.init();
+        ProcessingUnits.init();
     }
 
     public static void forestrySupport() {

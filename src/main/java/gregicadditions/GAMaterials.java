@@ -328,6 +328,15 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final IngotMaterial ReactorSteel = new IngotMaterial(741, "reactor_steel", 0xB4B3B0, MaterialIconSet.SHINY, 2, of(new MaterialStack(Iron, 15), new MaterialStack(Niobium, 1), new MaterialStack(Vanadium, 4), new MaterialStack(Carbon, 2)), DISABLE_DECOMPOSITION | GENERATE_DENSE);
 
+    public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
+    public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UHVSuperconductor = new IngotMaterial(739, "uhv_superconductor", 0x359ffc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+
+    public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Sg);
+    public static final IngotMaterial Bohrium = new IngotMaterial(735, "bohrium", 0xdc57ff, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Bh);
 
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
@@ -387,7 +396,6 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial AmmoniaNitrate = new SimpleFluidMaterial("ammonia_nitrate", Ammonia.materialRGB);
 
-
     public static final SimpleFluidMaterial ENaquadahSolution = new SimpleFluidMaterial("e_naquadah_solution", 0x523b3a);
     public static final SimpleFluidMaterial ClearENaquadahLiquid = new SimpleFluidMaterial("clear_e_naquadah_liquid", 0xa89f9e);
     public static final SimpleFluidMaterial ComplicatedHeavyENaquadah = new SimpleFluidMaterial("complicated_heavy_e_naquadah", 0x403d3d);
@@ -441,14 +449,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide", Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
     public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide", Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
 
-    public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
-    public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
-
-    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
-    public static final IngotMaterial UHVSuperconductor = new IngotMaterial(739, "uhv_superconductor", 0x359ffc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
-    public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
-    public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
-
     public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB);
 
     public static final SimpleDustMaterial CalciumCarbide = new SimpleDustMaterial("calcium_carbide", Scandium.materialRGB, (short) 23, MaterialIconSet.DULL);
@@ -456,25 +456,26 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", Scandium.materialRGB, (short) 25, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", Scandium.materialRGB, (short) 26, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SilicaAluminaGel = new SimpleDustMaterial("silica_alumina_gel", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZeoliteSievingPellets = new SimpleDustMaterial("zeolite_sieving_pellets", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial WetZeoliteSievingPellets = new SimpleDustMaterial("wet_zeolite_sieving_pellets", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial GreenAlgae = new SimpleDustMaterial("green_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial BrownAlgae = new SimpleDustMaterial("brown_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial RedAlgae = new SimpleDustMaterial("red_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial DryRedAlgae = new SimpleDustMaterial("dry_red_algae", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial RedAlgaePowder = new SimpleDustMaterial("red_algae_powder", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PreFreezeAgar = new SimpleDustMaterial("pre_freeze_agar", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial FrozenAgarCrystals = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Agar = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial BrevibacteriumFlavium = new SimpleDustMaterial("brevibacterium_flavium", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", Scandium.materialRGB, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", Scandium.materialRGB, (short) 28, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SilicaAluminaGel = new SimpleDustMaterial("silica_alumina_gel", Scandium.materialRGB, (short) 29, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZeoliteSievingPellets = new SimpleDustMaterial("zeolite_sieving_pellets", Scandium.materialRGB, (short) 30, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial WetZeoliteSievingPellets = new SimpleDustMaterial("wet_zeolite_sieving_pellets", Scandium.materialRGB, (short) 31, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial GreenAlgae = new SimpleDustMaterial("green_algae", Scandium.materialRGB, (short) 32, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BrownAlgae = new SimpleDustMaterial("brown_algae", Scandium.materialRGB, (short) 33, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RedAlgae = new SimpleDustMaterial("red_algae", Scandium.materialRGB, (short) 34, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial DryRedAlgae = new SimpleDustMaterial("dry_red_algae", Scandium.materialRGB, (short) 35, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RedAlgaePowder = new SimpleDustMaterial("red_algae_powder", Scandium.materialRGB, (short) 36, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PreFreezeAgar = new SimpleDustMaterial("pre_freeze_agar", Scandium.materialRGB, (short) 37, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial FrozenAgarCrystals = new SimpleDustMaterial("frozen_agar_crystals", Scandium.materialRGB, (short) 38, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Agar = new SimpleDustMaterial("agar", Scandium.materialRGB, (short) 39, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BrevibacteriumFlavium = new SimpleDustMaterial("brevibacterium_flavium", Scandium.materialRGB, (short) 40, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", Scandium.materialRGB, (short) 41, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", Scandium.materialRGB, (short) 42, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", Scandium.materialRGB, (short) 43, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", Scandium.materialRGB, (short) 44, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", Scandium.materialRGB, (short) 45, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", Scandium.materialRGB, (short) 46, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", Scandium.materialRGB, (short) 47, MaterialIconSet.DULL);
 
     public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0xffb3ff);
     public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0xffb3ff);
@@ -533,6 +534,7 @@ public class GAMaterials implements IMaterialHandler {
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
         NiobiumTitanium.setFluidPipeProperties(450, 2900, true);
+        Polybenzimidazole.setFluidPipeProperties(450, 900, true);
 
         MVSuperconductorBase.setCableProperties(128, 4, 2);
         HVSuperconductorBase.setCableProperties(512, 4, 2);
@@ -543,6 +545,8 @@ public class GAMaterials implements IMaterialHandler {
         UVSuperconductorBase.setCableProperties(524288, 4, 2);
         UHVSuperconductorBase.setCableProperties(524288 * 4, 4, 2);
         UEVSuperconductorBase.setCableProperties(524288 * 16, 4, 2);
+        Seaborgium.setCableProperties(524288 * 4, 2, 8);
+        Bohrium.setCableProperties(524288 * 16, 2, 8);
 
         MVSuperconductor.setCableProperties(128, 4, 0);
         ignoreCable(MVSuperconductor);
