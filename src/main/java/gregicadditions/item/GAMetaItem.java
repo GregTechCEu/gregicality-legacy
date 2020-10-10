@@ -257,6 +257,23 @@ public class GAMetaItem extends MaterialMetaItem {
         NEURO_SUPPORT_UNIT = addItem(410, "neuro.support.unit");
         CYBER_PROCESSING_UNIT = addItem(411, "cyber.processing.unit");
 
+        BATTERY_SMALL_VANADIUM_EMPTY = addItem(412, "small.vanadium.battery.empty");
+        BATTERY_SMALL_NEUTRONIUM_EMPTY = addItem(413, "small.neutronium.battery.empty");
+        BATTERY_MEDIUM_VANADIUM_EMPTY = addItem(414, "medium.vanadium.battery.empty");
+        BATTERY_MEDIUM_NAQUADRIA_EMPTY = addItem(415, "medium.naquadria.battery.empty");
+        BATTERY_MEDIUM_NEUTRONIUM_EMPTY = addItem(416, "medium.neutronium.battery.empty");
+        BATTERY_LARGE_VANADIUM_EMPTY = addItem(417, "large.vanadium.battery.empty");
+        BATTERY_LARGE_NAQUADRIA_EMPTY = addItem(418, "large.naquadria.battery.empty");
+        BATTERY_LARGE_NEUTRONIUM_EMPTY = addItem(418, "large.neutronium.battery.empty");
+
+        HASOC = addItem(419, "hasoc");
+        HASOC_WAFER = addItem(420, "hasoc.wafer");
+        UHASOC = addItem(421, "uhasoc");
+        UHASOC_WAFER = addItem(422, "uhasoc.wafer");
+        UHPIC = addItem(423, "uhpic");
+        UHPIC_WAFER = addItem(424, "uhpic.wafer");
+        ARAM = addItem(425, "plate.aram");
+        ARAM = addItem(426, "wafer.aram");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
