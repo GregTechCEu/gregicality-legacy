@@ -1368,6 +1368,7 @@ public class GARecipeAddition {
         StemCells.init();
         SterilizedGrowthMedium.init();
         ProcessingUnits.init();
+        Circuits.init();
     }
 
     public static void forestrySupport() {
