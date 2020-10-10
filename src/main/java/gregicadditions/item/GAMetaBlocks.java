@@ -4,12 +4,12 @@ import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.item.components.*;
-import gregicadditions.pipelike.cable.BlockCable;
-import gregicadditions.pipelike.cable.Insulation;
-import gregicadditions.pipelike.cable.WireProperties;
-import gregicadditions.pipelike.cable.tile.TileEntityCable;
-import gregicadditions.pipelike.cable.tile.TileEntityCableTickable;
-import gregicadditions.renderer.CableRenderer;
+import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
+import gregicadditions.renderer.OpticalFiberRenderer;
 import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -82,7 +82,7 @@ public class GAMetaBlocks {
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
 
 
-    public static BlockCable CABLE;
+    public static BlockOpticalFiber CABLE;
 
 
     public static void init() {
@@ -133,13 +133,13 @@ public class GAMetaBlocks {
         EMITTER_CASING = new EmitterCasing();
         EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
-        CABLE = new BlockCable();
+        CABLE = new BlockOpticalFiber();
         CABLE.setRegistryName("ga_cable");
 
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
-        CABLE.addCableMaterial(Plastic, new WireProperties(1, 1));
+        CABLE.addCableMaterial(Plastic, new OpticalFiberProperties(1, 1));
 
         createMachineCasing();
         registerTileEntity();
@@ -200,7 +200,7 @@ public class GAMetaBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
 
-        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(CABLE), stack -> CableRenderer.MODEL_LOCATION);
+        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(CABLE), stack -> OpticalFiberRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
@@ -220,8 +220,8 @@ public class GAMetaBlocks {
     }
 
     public static void registerTileEntity() {
-        GameRegistry.registerTileEntity(TileEntityCable.class, new ResourceLocation(Gregicality.MODID, "cable"));
-        GameRegistry.registerTileEntity(TileEntityCableTickable.class, new ResourceLocation(Gregicality.MODID, "cable_tickable"));
+        GameRegistry.registerTileEntity(TileEntityOpticalFiber.class, new ResourceLocation(Gregicality.MODID, "cable"));
+        GameRegistry.registerTileEntity(TileEntityOpticalFiberTickable.class, new ResourceLocation(Gregicality.MODID, "cable_tickable"));
     }
 
     @SideOnly(Side.CLIENT)
@@ -229,7 +229,7 @@ public class GAMetaBlocks {
         ModelLoader.setCustomStateMapper(CABLE, new DefaultStateMapper() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return CableRenderer.MODEL_LOCATION;
+                return OpticalFiberRenderer.MODEL_LOCATION;
             }
         });
     }
@@ -278,10 +278,10 @@ public class GAMetaBlocks {
         }
 
         for (Material pipeMaterial : CABLE.getEnabledMaterials()) {
-            for (Insulation insulation : Insulation.values()) {
-                ItemStack itemStack = CABLE.getItem(insulation, pipeMaterial);
+            for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
+                ItemStack itemStack = CABLE.getItem(opticalFiberSize, pipeMaterial);
                 GregicalityLogger.logger.info("cable creation {}", itemStack.getDisplayName());
-                OreDictUnifier.registerOre(itemStack, insulation.getOrePrefix(), pipeMaterial);
+                OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix(), pipeMaterial);
             }
         }
     }

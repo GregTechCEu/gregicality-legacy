@@ -16,11 +16,11 @@ import codechicken.lib.vec.Translation;
 import codechicken.lib.vec.Vector3;
 import codechicken.lib.vec.uv.IconTransformation;
 import gregicadditions.Gregicality;
-import gregicadditions.pipelike.cable.BlockCable;
-import gregicadditions.pipelike.cable.Insulation;
-import gregicadditions.pipelike.cable.ItemBlockCable;
-import gregicadditions.pipelike.cable.WireProperties;
-import gregicadditions.pipelike.cable.tile.TileEntityCable;
+import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
+import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.pipenet.tile.IPipeTile;
@@ -52,10 +52,10 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.opengl.GL11;
 
-public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
+public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
 
     public static ModelResourceLocation MODEL_LOCATION = new ModelResourceLocation(new ResourceLocation(Gregicality.MODID, "cable"), "normal");
-    public static CableRenderer INSTANCE = new CableRenderer();
+    public static OpticalFiberRenderer INSTANCE = new OpticalFiberRenderer();
     public static EnumBlockRenderType BLOCK_RENDER_TYPE;
     private static ThreadLocal<BlockFace> blockFaces = ThreadLocal.withInitial(BlockFace::new);
 
@@ -84,18 +84,18 @@ public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
     @Override
     public void renderItem(ItemStack rawItemStack, TransformType transformType) {
         ItemStack stack = ModCompatibility.getRealItemStack(rawItemStack);
-        if (!(stack.getItem() instanceof ItemBlockCable)) {
+        if (!(stack.getItem() instanceof ItemBlockOpticalFiber)) {
             return;
         }
         GlStateManager.enableBlend();
         CCRenderState renderState = CCRenderState.instance();
         renderState.reset();
         renderState.startDrawing(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
-        BlockCable blockCable = (BlockCable) ((ItemBlockCable) stack.getItem()).getBlock();
-        Insulation insulation = blockCable.getItemPipeType(stack);
-        Material material = blockCable.getItemMaterial(stack);
-        if (insulation != null && material != null) {
-            renderCableBlock(material, insulation, renderState, new IVertexOperation[0],
+        BlockOpticalFiber blockOpticalFiber = (BlockOpticalFiber) ((ItemBlockOpticalFiber) stack.getItem()).getBlock();
+        OpticalFiberSize opticalFiberSize = blockOpticalFiber.getItemPipeType(stack);
+        Material material = blockOpticalFiber.getItemMaterial(stack);
+        if (opticalFiberSize != null && material != null) {
+            renderCableBlock(material, opticalFiberSize, renderState, new IVertexOperation[0],
                     1 << EnumFacing.SOUTH.getIndex() | 1 << EnumFacing.NORTH.getIndex() |
                             1 << (6 + EnumFacing.SOUTH.getIndex()) | 1 << (6 + EnumFacing.NORTH.getIndex()));
         }
@@ -111,30 +111,30 @@ public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
         renderState.setBrightness(world, pos);
         IVertexOperation[] pipeline = {new Translation(pos)};
 
-        BlockCable blockCable = (BlockCable) state.getBlock();
-        TileEntityCable tileEntityCable = (TileEntityCable) blockCable.getPipeTileEntity(world, pos);
-        if (tileEntityCable == null) return false;
-        int connectedSidesMask = blockCable.getActualConnections(tileEntityCable, world);
-        Insulation insulation = tileEntityCable.getPipeType();
-        Material material = tileEntityCable.getPipeMaterial();
-        if (insulation != null && material != null) {
+        BlockOpticalFiber blockOpticalFiber = (BlockOpticalFiber) state.getBlock();
+        TileEntityOpticalFiber tileEntityOpticalFiber = (TileEntityOpticalFiber) blockOpticalFiber.getPipeTileEntity(world, pos);
+        if (tileEntityOpticalFiber == null) return false;
+        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityOpticalFiber, world);
+        OpticalFiberSize opticalFiberSize = tileEntityOpticalFiber.getPipeType();
+        Material material = tileEntityOpticalFiber.getPipeMaterial();
+        if (opticalFiberSize != null && material != null) {
             BlockRenderLayer renderLayer = MinecraftForgeClient.getRenderLayer();
             if (renderLayer == BlockRenderLayer.CUTOUT) {
-                renderCableBlock(material, insulation, renderState, pipeline, connectedSidesMask);
+                renderCableBlock(material, opticalFiberSize, renderState, pipeline, connectedSidesMask);
             }
-            ICoverable coverable = tileEntityCable.getCoverableImplementation();
+            ICoverable coverable = tileEntityOpticalFiber.getCoverableImplementation();
             coverable.renderCovers(renderState, new Matrix4().translate(pos.getX(), pos.getY(), pos.getZ()), renderLayer);
         }
         return true;
     }
 
-    public void renderCableBlock(Material material, Insulation insulation1, CCRenderState state, IVertexOperation[] pipeline, int connectMask) {
+    public void renderCableBlock(Material material, OpticalFiberSize opticalFiberSize1, CCRenderState state, IVertexOperation[] pipeline, int connectMask) {
         int wireColor = GTUtility.convertRGBtoOpaqueRGBA_CL(material.materialRGB);
-        float thickness = insulation1.thickness;
+        float thickness = opticalFiberSize1.thickness;
 
         IVertexOperation[] wire = ArrayUtils.addAll(pipeline, new IconTransformation(wireTexture), new ColourMultiplier(wireColor));
 
-        Cuboid6 cuboid6 = BlockCable.getSideBox(null, thickness);
+        Cuboid6 cuboid6 = BlockOpticalFiber.getSideBox(null, thickness);
         for (EnumFacing renderedSide : EnumFacing.VALUES) {
             if ((connectMask & 1 << renderedSide.getIndex()) == 0) {
                 int oppositeIndex = renderedSide.getOpposite().getIndex();
@@ -159,7 +159,7 @@ public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
     private static void renderCableCube(int connections, CCRenderState renderState, IVertexOperation[] pipeline, IVertexOperation[] wire, IVertexOperation[] overlays, EnumFacing side, float thickness) {
         if ((connections & 1 << side.getIndex()) > 0) {
             boolean renderFrontSide = (connections & 1 << (6 + side.getIndex())) > 0;
-            Cuboid6 cuboid6 = BlockCable.getSideBox(side, thickness);
+            Cuboid6 cuboid6 = BlockOpticalFiber.getSideBox(side, thickness);
             for (EnumFacing renderedSide : EnumFacing.VALUES) {
                 if (renderedSide == side) {
                     if (renderFrontSide) {
@@ -190,22 +190,22 @@ public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
         renderState.reset();
         renderState.bind(buffer);
         renderState.setPipeline(new Vector3(new Vec3d(pos)).translation(), new IconTransformation(sprite));
-        BlockCable blockCable = (BlockCable) state.getBlock();
-        IPipeTile<Insulation, WireProperties> tileEntityCable = blockCable.getPipeTileEntity(world, pos);
+        BlockOpticalFiber blockOpticalFiber = (BlockOpticalFiber) state.getBlock();
+        IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable = blockOpticalFiber.getPipeTileEntity(world, pos);
         if (tileEntityCable == null) {
             return;
         }
-        Insulation insulation = tileEntityCable.getPipeType();
-        if (insulation == null) {
+        OpticalFiberSize opticalFiberSize = tileEntityCable.getPipeType();
+        if (opticalFiberSize == null) {
             return;
         }
-        float thickness = insulation.getThickness();
-        int connectedSidesMask = blockCable.getActualConnections(tileEntityCable, world);
-        Cuboid6 baseBox = BlockCable.getSideBox(null, thickness);
+        float thickness = opticalFiberSize.getThickness();
+        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityCable, world);
+        Cuboid6 baseBox = BlockOpticalFiber.getSideBox(null, thickness);
         BlockRenderer.renderCuboid(renderState, baseBox, 0);
         for (EnumFacing renderSide : EnumFacing.VALUES) {
             if ((connectedSidesMask & (1 << renderSide.getIndex())) > 0) {
-                Cuboid6 sideBox = BlockCable.getSideBox(renderSide, thickness);
+                Cuboid6 sideBox = BlockOpticalFiber.getSideBox(renderSide, thickness);
                 BlockRenderer.renderCuboid(renderState, sideBox, 0);
             }
         }
@@ -240,13 +240,13 @@ public class CableRenderer implements ICCBlockRenderer, IItemRenderer {
         return true;
     }
 
-    public Pair<TextureAtlasSprite, Integer> getParticleTexture(IPipeTile<Insulation, WireProperties> tileEntity) {
+    public Pair<TextureAtlasSprite, Integer> getParticleTexture(IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntity) {
         if (tileEntity == null) {
             return Pair.of(TextureUtils.getMissingSprite(), 0xFFFFFF);
         }
-        Material material = ((TileEntityCable) tileEntity).getPipeMaterial();
-        Insulation insulation = tileEntity.getPipeType();
-        if (material == null || insulation == null) {
+        Material material = ((TileEntityOpticalFiber) tileEntity).getPipeMaterial();
+        OpticalFiberSize opticalFiberSize = tileEntity.getPipeType();
+        if (material == null || opticalFiberSize == null) {
             return Pair.of(TextureUtils.getMissingSprite(), 0xFFFFFF);
         }
         TextureAtlasSprite atlasSprite;

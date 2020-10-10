@@ -1,10 +1,10 @@
-package gregicadditions.pipelike.cable.tile;
+package gregicadditions.pipelike.opticalfiber.tile;
 
 import net.minecraft.util.ITickable;
 
-public class TileEntityCableTickable extends TileEntityCable implements ITickable {
+public class TileEntityOpticalFiberTickable extends TileEntityOpticalFiber implements ITickable {
 
-    public TileEntityCableTickable() {
+    public TileEntityOpticalFiberTickable() {
     }
 
     @Override

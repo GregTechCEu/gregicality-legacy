@@ -9,4 +9,7 @@ public class GregicAdditionsCapabilities {
     @CapabilityInject(IMultiRecipe.class)
     public static Capability<IMultiRecipe> MULTI_RECIPE_CAPABILITY = null;
 
+    @CapabilityInject(IOpticalFiberContainer.class)
+    public static Capability<IOpticalFiberContainer> OPTICAL_FIBER_CAPABILITY;
+
 }
