@@ -33,6 +33,7 @@ import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.overrides.GAMetaTileEntityHull;
 import gregicadditions.machines.overrides.GASimpleMachineMetaTileEntity;
+import gregicadditions.machines.overrides.SimpleGeneratorWithLossMetaTileEntity;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;

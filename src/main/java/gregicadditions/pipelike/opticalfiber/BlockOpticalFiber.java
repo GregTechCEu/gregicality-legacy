@@ -1,12 +1,12 @@
-package gregicadditions.pipelike.cable;
+package gregicadditions.pipelike.opticalfiber;
 
 import com.google.common.base.Preconditions;
-import gregicadditions.pipelike.cable.net.WorldENet;
-import gregicadditions.pipelike.cable.tile.TileEntityCable;
-import gregicadditions.pipelike.cable.tile.TileEntityCableTickable;
-import gregicadditions.renderer.CableRenderer;
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IEnergyContainer;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.IOpticalFiberContainer;
+import gregicadditions.pipelike.opticalfiber.net.WorldOpticalFiberNet;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
+import gregicadditions.renderer.OpticalFiberRenderer;
 import gregtech.api.pipenet.block.material.BlockMaterialPipe;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.pipenet.tile.TileEntityPipeBase;
@@ -32,19 +32,19 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class BlockCable extends BlockMaterialPipe<Insulation, WireProperties, WorldENet> implements ITileEntityProvider {
+public class BlockOpticalFiber extends BlockMaterialPipe<OpticalFiberSize, OpticalFiberProperties, WorldOpticalFiberNet> implements ITileEntityProvider {
 
-    private final Map<Material, WireProperties> enabledMaterials = new TreeMap<>();
+    private final Map<Material, OpticalFiberProperties> enabledMaterials = new TreeMap<>();
 
-    public BlockCable() {
+    public BlockOpticalFiber() {
         setHarvestLevel("cutter", 1);
     }
 
-    public void addCableMaterial(Material material, WireProperties wireProperties) {
+    public void addCableMaterial(Material material, OpticalFiberProperties opticalFiberProperties) {
         Preconditions.checkNotNull(material, "material");
-        Preconditions.checkNotNull(wireProperties, "wireProperties");
+        Preconditions.checkNotNull(opticalFiberProperties, "wireProperties");
         Preconditions.checkArgument(Material.MATERIAL_REGISTRY.getNameForObject(material) != null, "material is not registered");
-        this.enabledMaterials.put(material, wireProperties);
+        this.enabledMaterials.put(material, opticalFiberProperties);
     }
 
     public Collection<Material> getEnabledMaterials() {
@@ -52,36 +52,36 @@ public class BlockCable extends BlockMaterialPipe<Insulation, WireProperties, Wo
     }
 
     @Override
-    public Class<Insulation> getPipeTypeClass() {
-        return Insulation.class;
+    public Class<OpticalFiberSize> getPipeTypeClass() {
+        return OpticalFiberSize.class;
     }
 
     @Override
-    protected WireProperties createProperties(Insulation insulation, Material material) {
-        return insulation.modifyProperties(enabledMaterials.getOrDefault(material, getFallbackType()));
+    protected OpticalFiberProperties createProperties(OpticalFiberSize opticalFiberSize, Material material) {
+        return opticalFiberSize.modifyProperties(enabledMaterials.getOrDefault(material, getFallbackType()));
     }
 
     @Override
-    protected WireProperties getFallbackType() {
+    protected OpticalFiberProperties getFallbackType() {
         return enabledMaterials.values().iterator().next();
     }
 
     @Override
-    public WorldENet getWorldPipeNet(World world) {
-        return WorldENet.getWorldENet(world);
+    public WorldOpticalFiberNet getWorldPipeNet(World world) {
+        return WorldOpticalFiberNet.getWorldENet(world);
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
         for (Material material : enabledMaterials.keySet()) {
-            for (Insulation insulation : Insulation.values()) {
-                items.add(getItem(insulation, material));
+            for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
+                items.add(getItem(opticalFiberSize, material));
             }
         }
     }
 
     @Override
-    public int getActiveNodeConnections(IBlockAccess world, BlockPos nodePos, IPipeTile<Insulation, WireProperties> selfTileEntity) {
+    public int getActiveNodeConnections(IBlockAccess world, BlockPos nodePos, IPipeTile<OpticalFiberSize, OpticalFiberProperties> selfTileEntity) {
         int activeNodeConnections = 0;
         for (EnumFacing side : EnumFacing.VALUES) {
             BlockPos offsetPos = nodePos.offset(side);
@@ -89,7 +89,7 @@ public class BlockCable extends BlockMaterialPipe<Insulation, WireProperties, Wo
             //do not connect to null cables and ignore cables
             if (tileEntity == null || getPipeTileEntity(tileEntity) != null) continue;
             EnumFacing opposite = side.getOpposite();
-            IEnergyContainer energyContainer = tileEntity.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, opposite);
+            IOpticalFiberContainer energyContainer = tileEntity.getCapability(GregicAdditionsCapabilities.OPTICAL_FIBER_CAPABILITY, opposite);
             if (energyContainer != null) {
                 activeNodeConnections |= 1 << side.getIndex();
             }
@@ -101,17 +101,17 @@ public class BlockCable extends BlockMaterialPipe<Insulation, WireProperties, Wo
     @Override
     @SideOnly(Side.CLIENT)
     public EnumBlockRenderType getRenderType(IBlockState state) {
-        return CableRenderer.BLOCK_RENDER_TYPE;
+        return OpticalFiberRenderer.BLOCK_RENDER_TYPE;
     }
 
     @Override
-    public TileEntityPipeBase<Insulation, WireProperties> createNewTileEntity(boolean supportsTicking) {
-        return supportsTicking ? new TileEntityCableTickable() : new TileEntityCable();
+    public TileEntityPipeBase<OpticalFiberSize, OpticalFiberProperties> createNewTileEntity(boolean supportsTicking) {
+        return supportsTicking ? new TileEntityOpticalFiberTickable() : new TileEntityOpticalFiber();
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     protected Pair<TextureAtlasSprite, Integer> getParticleTexture(World world, BlockPos blockPos) {
-        return CableRenderer.INSTANCE.getParticleTexture((TileEntityCable) world.getTileEntity(blockPos));
+        return OpticalFiberRenderer.INSTANCE.getParticleTexture((TileEntityOpticalFiber) world.getTileEntity(blockPos));
     }
 }

@@ -1,4 +1,4 @@
-package gregicadditions.machines;
+package gregicadditions.machines.overrides;
 
 import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.GTValues;

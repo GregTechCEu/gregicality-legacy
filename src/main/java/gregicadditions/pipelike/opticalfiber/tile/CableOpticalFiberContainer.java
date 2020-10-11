@@ -1,12 +1,12 @@
-package gregicadditions.pipelike.cable.tile;
+package gregicadditions.pipelike.opticalfiber.tile;
 
-import gregicadditions.pipelike.cable.Insulation;
-import gregicadditions.pipelike.cable.WireProperties;
-import gregicadditions.pipelike.cable.net.EnergyNet;
-import gregicadditions.pipelike.cable.net.RoutePath;
-import gregicadditions.pipelike.cable.net.WorldENet;
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IEnergyContainer;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.IOpticalFiberContainer;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
+import gregicadditions.pipelike.opticalfiber.net.OpticalFiberNet;
+import gregicadditions.pipelike.opticalfiber.net.RoutePath;
+import gregicadditions.pipelike.opticalfiber.net.WorldOpticalFiberNet;
 import gregtech.api.pipenet.tile.IPipeTile;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -18,35 +18,35 @@ import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.List;
 
-public class CableEnergyContainer implements IEnergyContainer {
+public class CableOpticalFiberContainer implements IOpticalFiberContainer {
 
-    private final IPipeTile<Insulation, WireProperties> tileEntityCable;
-    private WeakReference<EnergyNet> currentEnergyNet = new WeakReference<>(null);
+    private final IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable;
+    private WeakReference<OpticalFiberNet> currentEnergyNet = new WeakReference<>(null);
     private long lastCachedUpdate;
     private List<RoutePath> pathsCache;
 
-    public CableEnergyContainer(IPipeTile<Insulation, WireProperties> tileEntityCable) {
+    public CableOpticalFiberContainer(IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable) {
         this.tileEntityCable = tileEntityCable;
     }
 
     @Override
     public long acceptEnergyFromNetwork(EnumFacing side, long voltage, long amperage) {
-        EnergyNet energyNet = getEnergyNet();
-        if (energyNet == null) {
+        OpticalFiberNet opticalFiberNet = getEnergyNet();
+        if (opticalFiberNet == null) {
             return 0L;
         }
         List<RoutePath> paths = getPaths();
         long amperesUsed = 0;
         for (RoutePath routePath : paths) {
             BlockPos destinationPos = routePath.destination;
-            int blockedConnections = energyNet.getAllNodes().get(destinationPos).blockedConnections;
+            int blockedConnections = opticalFiberNet.getAllNodes().get(destinationPos).blockedConnections;
             amperesUsed += dispatchEnergyToNode(destinationPos, blockedConnections, voltage, amperage - amperesUsed);
 
             if (amperesUsed == amperage) {
                 break; //do not continue if all amperes are exhausted
             }
         }
-        energyNet.incrementCurrentAmperage(amperage, voltage);
+        opticalFiberNet.incrementCurrentAmperage(amperage, voltage);
         return amperesUsed;
     }
 
@@ -68,7 +68,7 @@ public class CableEnergyContainer implements IEnergyContainer {
             if (tileEntity == null || tileEntityCable.getPipeBlock().getPipeTileEntity(tileEntity) != null) {
                 continue; //do not emit into other cable tile entities
             }
-            IEnergyContainer energyContainer = tileEntity.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, facing.getOpposite());
+            IOpticalFiberContainer energyContainer = tileEntity.getCapability(GregicAdditionsCapabilities.OPTICAL_FIBER_CAPABILITY, facing.getOpposite());
             if (energyContainer == null) continue;
             amperesUsed += energyContainer.acceptEnergyFromNetwork(facing.getOpposite(), voltage, amperage - amperesUsed);
             if (amperesUsed == amperage)
@@ -116,33 +116,33 @@ public class CableEnergyContainer implements IEnergyContainer {
         return 0;
     }
 
-    private void recomputePaths(EnergyNet energyNet) {
-        this.lastCachedUpdate = energyNet.getLastUpdate();
-        this.pathsCache = energyNet.computePatches(tileEntityCable.getPipePos());
+    private void recomputePaths(OpticalFiberNet opticalFiberNet) {
+        this.lastCachedUpdate = opticalFiberNet.getLastUpdate();
+        this.pathsCache = opticalFiberNet.computePatches(tileEntityCable.getPipePos());
     }
 
     private List<RoutePath> getPaths() {
-        EnergyNet energyNet = getEnergyNet();
-        if (energyNet == null) {
+        OpticalFiberNet opticalFiberNet = getEnergyNet();
+        if (opticalFiberNet == null) {
             return Collections.emptyList();
         }
-        if (pathsCache == null || energyNet.getLastUpdate() > lastCachedUpdate) {
-            recomputePaths(energyNet);
+        if (pathsCache == null || opticalFiberNet.getLastUpdate() > lastCachedUpdate) {
+            recomputePaths(opticalFiberNet);
         }
         return pathsCache;
     }
 
-    private EnergyNet getEnergyNet() {
-        EnergyNet currentEnergyNet = this.currentEnergyNet.get();
-        if (currentEnergyNet != null && currentEnergyNet.isValid() &&
-                currentEnergyNet.containsNode(tileEntityCable.getPipePos()))
-            return currentEnergyNet; //return current net if it is still valid
-        WorldENet worldENet = (WorldENet) tileEntityCable.getPipeBlock().getWorldPipeNet(tileEntityCable.getPipeWorld());
-        currentEnergyNet = worldENet.getNetFromPos(tileEntityCable.getPipePos());
-        if (currentEnergyNet != null) {
-            this.currentEnergyNet = new WeakReference<>(currentEnergyNet);
+    private OpticalFiberNet getEnergyNet() {
+        OpticalFiberNet currentOpticalFiberNet = this.currentEnergyNet.get();
+        if (currentOpticalFiberNet != null && currentOpticalFiberNet.isValid() &&
+                currentOpticalFiberNet.containsNode(tileEntityCable.getPipePos()))
+            return currentOpticalFiberNet; //return current net if it is still valid
+        WorldOpticalFiberNet worldOpticalFiberNet = (WorldOpticalFiberNet) tileEntityCable.getPipeBlock().getWorldPipeNet(tileEntityCable.getPipeWorld());
+        currentOpticalFiberNet = worldOpticalFiberNet.getNetFromPos(tileEntityCable.getPipePos());
+        if (currentOpticalFiberNet != null) {
+            this.currentEnergyNet = new WeakReference<>(currentOpticalFiberNet);
         }
-        return currentEnergyNet;
+        return currentOpticalFiberNet;
     }
 
     @Override

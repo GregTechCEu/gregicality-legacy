@@ -1,4 +1,4 @@
-package gregicadditions.pipelike.cable;
+package gregicadditions.pipelike.opticalfiber;
 
 import gregtech.api.GTValues;
 import gregtech.api.pipenet.block.material.ItemBlockMaterialPipe;
@@ -13,18 +13,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBlockCable extends ItemBlockMaterialPipe<Insulation, WireProperties> {
+public class ItemBlockOpticalFiber extends ItemBlockMaterialPipe<OpticalFiberSize, OpticalFiberProperties> {
 
-    public ItemBlockCable(BlockCable block) {
+    public ItemBlockOpticalFiber(BlockOpticalFiber block) {
         super(block);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        WireProperties wireProperties = blockPipe.createItemProperties(stack);
-        String voltageName = GTValues.VN[GTUtility.getTierByVoltage(wireProperties.voltage)];
-        tooltip.add(I18n.format("gregtech.cable.voltage", wireProperties.voltage, voltageName));
-        tooltip.add(I18n.format("gregtech.cable.amperage", wireProperties.amperage));
+        OpticalFiberProperties opticalFiberProperties = blockPipe.createItemProperties(stack);
+        String voltageName = GTValues.VN[GTUtility.getTierByVoltage(opticalFiberProperties.voltage)];
+        tooltip.add(I18n.format("gregtech.cable.voltage", opticalFiberProperties.voltage, voltageName));
+        tooltip.add(I18n.format("gregtech.cable.amperage", opticalFiberProperties.amperage));
     }
 }

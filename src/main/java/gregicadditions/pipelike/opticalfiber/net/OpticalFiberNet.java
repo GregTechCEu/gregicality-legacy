@@ -1,6 +1,6 @@
-package gregicadditions.pipelike.cable.net;
+package gregicadditions.pipelike.opticalfiber.net;
 
-import gregicadditions.pipelike.cable.WireProperties;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregtech.api.pipenet.Node;
 import gregtech.api.pipenet.PipeNet;
 import gregtech.api.pipenet.WorldPipeNet;
@@ -15,12 +15,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
 
-public class EnergyNet extends PipeNet<WireProperties> {
+public class OpticalFiberNet extends PipeNet<OpticalFiberProperties> {
 
     private final PerTickLongCounter currentAmperageCounter = new PerTickLongCounter(0L);
     private final PerTickLongCounter currentMaxVoltageCounter = new PerTickLongCounter(0L);
 
-    protected EnergyNet(WorldPipeNet<WireProperties, EnergyNet> world) {
+    protected OpticalFiberNet(WorldPipeNet<OpticalFiberProperties, OpticalFiberNet> world) {
         super(world);
     }
 
@@ -35,7 +35,7 @@ public class EnergyNet extends PipeNet<WireProperties> {
     public List<RoutePath> computePatches(BlockPos startPos) {
         ArrayList<RoutePath> readyPaths = new ArrayList<>();
         RoutePath currentPath = new RoutePath();
-        Node<WireProperties> firstNode = getNodeAt(startPos);
+        Node<OpticalFiberProperties> firstNode = getNodeAt(startPos);
         currentPath.path.put(startPos, firstNode.data);
         readyPaths.add(currentPath.cloneAndCompute(startPos));
         HashSet<BlockPos> observedSet = new HashSet<>();
@@ -46,7 +46,7 @@ public class EnergyNet extends PipeNet<WireProperties> {
         while (true) {
             for (EnumFacing facing : EnumFacing.VALUES) {
                 currentPos.move(facing);
-                Node<WireProperties> secondNode = getNodeAt(currentPos);
+                Node<OpticalFiberProperties> secondNode = getNodeAt(currentPos);
                 if (secondNode != null && canNodesConnect(firstNode, facing, secondNode, this) && !observedSet.contains(currentPos)) {
                     BlockPos immutablePos = currentPos.toImmutable();
                     observedSet.add(immutablePos);
@@ -74,15 +74,15 @@ public class EnergyNet extends PipeNet<WireProperties> {
 
 
     @Override
-    protected void writeNodeData(WireProperties nodeData, NBTTagCompound tagCompound) {
+    protected void writeNodeData(OpticalFiberProperties nodeData, NBTTagCompound tagCompound) {
         tagCompound.setInteger("voltage", nodeData.voltage);
         tagCompound.setInteger("amperage", nodeData.amperage);
     }
 
     @Override
-    protected WireProperties readNodeData(NBTTagCompound tagCompound) {
+    protected OpticalFiberProperties readNodeData(NBTTagCompound tagCompound) {
         int voltage = tagCompound.getInteger("voltage");
         int amperage = tagCompound.getInteger("amperage");
-        return new WireProperties(voltage, amperage);
+        return new OpticalFiberProperties(voltage, amperage);
     }
 }
