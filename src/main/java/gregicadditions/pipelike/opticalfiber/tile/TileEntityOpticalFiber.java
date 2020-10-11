@@ -4,14 +4,14 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IOpticalFiberContainer;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
-import gregtech.api.pipenet.block.material.TileEntityMaterialPipeBase;
+import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
 
-public class TileEntityOpticalFiber extends TileEntityMaterialPipeBase<OpticalFiberSize, OpticalFiberProperties> {
+public class TileEntityOpticalFiber extends TileEntityPipeBase<OpticalFiberSize, OpticalFiberProperties> {
 
     private IOpticalFiberContainer energyContainer;
 

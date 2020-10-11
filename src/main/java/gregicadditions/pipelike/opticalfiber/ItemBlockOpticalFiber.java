@@ -1,7 +1,8 @@
 package gregicadditions.pipelike.opticalfiber;
 
 import gregtech.api.GTValues;
-import gregtech.api.pipenet.block.material.ItemBlockMaterialPipe;
+import gregtech.api.pipenet.block.ItemBlockPipe;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,10 +14,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBlockOpticalFiber extends ItemBlockMaterialPipe<OpticalFiberSize, OpticalFiberProperties> {
+public class ItemBlockOpticalFiber extends ItemBlockPipe<OpticalFiberSize, OpticalFiberProperties> {
 
     public ItemBlockOpticalFiber(BlockOpticalFiber block) {
         super(block);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getItemStackDisplayName(ItemStack stack) {
+        OpticalFiberSize pipeType = blockPipe.getItemPipeType(stack);
+        OrePrefix orePrefix = pipeType.getOrePrefix();
+        String specfiedUnlocalized = "item.oreprefix." + orePrefix.name();
+        return I18n.format(specfiedUnlocalized);
     }
 
     @Override

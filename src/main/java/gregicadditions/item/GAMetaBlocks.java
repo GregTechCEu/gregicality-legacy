@@ -6,7 +6,6 @@ import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.item.components.*;
 import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
-import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
 import gregicadditions.renderer.OpticalFiberRenderer;
@@ -45,7 +44,6 @@ import java.util.stream.Collectors;
 
 import static gregicadditions.ClientProxy.*;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
-import static gregtech.api.unification.material.Materials.Plastic;
 
 public class GAMetaBlocks {
 
@@ -82,7 +80,7 @@ public class GAMetaBlocks {
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
 
 
-    public static BlockOpticalFiber CABLE;
+    public static BlockOpticalFiber OPTICAL_FIBER;
 
 
     public static void init() {
@@ -133,13 +131,12 @@ public class GAMetaBlocks {
         EMITTER_CASING = new EmitterCasing();
         EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
-        CABLE = new BlockOpticalFiber();
-        CABLE.setRegistryName("ga_cable");
+        OPTICAL_FIBER = new BlockOpticalFiber();
+        OPTICAL_FIBER.setRegistryName("ga_cable");
 
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
-        CABLE.addCableMaterial(Plastic, new OpticalFiberProperties(1, 1));
 
         createMachineCasing();
         registerTileEntity();
@@ -200,7 +197,7 @@ public class GAMetaBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
 
-        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(CABLE), stack -> OpticalFiberRenderer.MODEL_LOCATION);
+        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPTICAL_FIBER), stack -> OpticalFiberRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
@@ -226,7 +223,7 @@ public class GAMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerStateMappers() {
-        ModelLoader.setCustomStateMapper(CABLE, new DefaultStateMapper() {
+        ModelLoader.setCustomStateMapper(OPTICAL_FIBER, new DefaultStateMapper() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
                 return OpticalFiberRenderer.MODEL_LOCATION;
@@ -277,13 +274,12 @@ public class GAMetaBlocks {
             }
         }
 
-        for (Material pipeMaterial : CABLE.getEnabledMaterials()) {
-            for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
-                ItemStack itemStack = CABLE.getItem(opticalFiberSize, pipeMaterial);
-                GregicalityLogger.logger.info("cable creation {}", itemStack.getDisplayName());
-                OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix(), pipeMaterial);
-            }
+        for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
+            ItemStack itemStack = OPTICAL_FIBER.getItem(opticalFiberSize);
+            GregicalityLogger.logger.info("cable creation {}", itemStack.getDisplayName());
+            OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix().name());
         }
+
     }
 
 
