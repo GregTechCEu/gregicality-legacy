@@ -264,16 +264,16 @@ public class GAMetaItem extends MaterialMetaItem {
         BATTERY_MEDIUM_NEUTRONIUM_EMPTY = addItem(416, "medium.neutronium.battery.empty");
         BATTERY_LARGE_VANADIUM_EMPTY = addItem(417, "large.vanadium.battery.empty");
         BATTERY_LARGE_NAQUADRIA_EMPTY = addItem(418, "large.naquadria.battery.empty");
-        BATTERY_LARGE_NEUTRONIUM_EMPTY = addItem(418, "large.neutronium.battery.empty");
+        BATTERY_LARGE_NEUTRONIUM_EMPTY = addItem(419, "large.neutronium.battery.empty");
 
-        HASOC = addItem(419, "hasoc");
-        HASOC_WAFER = addItem(420, "hasoc.wafer");
-        UHASOC = addItem(421, "uhasoc");
-        UHASOC_WAFER = addItem(422, "uhasoc.wafer");
-        UHPIC = addItem(423, "uhpic");
-        UHPIC_WAFER = addItem(424, "uhpic.wafer");
-        ARAM = addItem(425, "plate.aram");
-        ARAM = addItem(426, "wafer.aram");
+        HASOC = addItem(420, "hasoc");
+        HASOC_WAFER = addItem(421, "hasoc.wafer");
+        UHASOC = addItem(422, "uhasoc");
+        UHASOC_WAFER = addItem(423, "uhasoc.wafer");
+        UHPIC = addItem(424, "uhpic");
+        UHPIC_WAFER = addItem(425, "uhpic.wafer");
+        ARAM = addItem(426, "plate.aram");
+        ARAM_WAFER = addItem(427, "wafer.aram");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;

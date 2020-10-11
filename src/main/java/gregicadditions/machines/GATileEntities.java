@@ -197,6 +197,51 @@ public class GATileEntities {
     public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
     public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3];
 
+    public static GASimpleMachineMetaTileEntity[] CLUSTERMILL_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ELECTRIC_FURNACE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] MACERATOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ALLOY_SMELTER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ARC_FURNACE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ASSEMBLER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] AUTOCLAVE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] BENDER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] BREWERY_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] CANNER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] CENTRIFUGE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] CHEMICAL_BATH_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] CHEMICAL_REACTOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] COMPRESSOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] CUTTER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] DISTILLERY_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ELECTROLYZER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ELECTROMAGNETIC_SEPARATOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] EXTRACTOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] EXTRUDER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FERMENTER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FLUID_CANNER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FLUID_EXTRACTOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FLUID_HEATER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FLUID_SOLIDIFIER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FORGE_HAMMER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] FORMING_PRESS_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] LATHE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] MICROWAVE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] MIXER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] ORE_WASHER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] PACKER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] UNPACKER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] PLASMA_ARC_FURNACE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] POLARIZER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] LASER_ENGRAVER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] SIFTER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] THERMAL_CENTRIFUGE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] WIREMILL_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] DEHYDRATOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] REPLICATOR_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] MASS_FAB_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] DECAY_CHAMBER_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+    public static GASimpleMachineMetaTileEntity[] GREEN_HOUSE_HIGHTIER = new GASimpleMachineMetaTileEntity[6];
+
     public static void init() {
 
         CIRCUITASSEMBLER[0] = GregTechAPI.registerMetaTileEntity(2000, new SimpleMachineMetaTileEntity(location("circuit_assembler.lv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 1));
@@ -214,6 +259,12 @@ public class GATileEntities {
             CLUSTERMILL[5] = GregTechAPI.registerMetaTileEntity(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
             CLUSTERMILL[6] = GregTechAPI.registerMetaTileEntity(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
             CLUSTERMILL[7] = GregTechAPI.registerMetaTileEntity(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
+            CLUSTERMILL_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3244, new GASimpleMachineMetaTileEntity(location("clustermill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+            CLUSTERMILL_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3245, new GASimpleMachineMetaTileEntity(location("clustermill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+            CLUSTERMILL_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3246, new GASimpleMachineMetaTileEntity(location("clustermill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+            CLUSTERMILL_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3247, new GASimpleMachineMetaTileEntity(location("clustermill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+            CLUSTERMILL_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3248, new GASimpleMachineMetaTileEntity(location("clustermill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierElectricFurnace) {
@@ -221,6 +272,12 @@ public class GATileEntities {
             ELECTRIC_FURNACE[5] = GregTechAPI.registerMetaTileEntity(2017, new SimpleMachineMetaTileEntity(location("electric_furnace.luv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 6));
             ELECTRIC_FURNACE[6] = GregTechAPI.registerMetaTileEntity(2018, new SimpleMachineMetaTileEntity(location("electric_furnace.zpm"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 7));
             ELECTRIC_FURNACE[7] = GregTechAPI.registerMetaTileEntity(2019, new SimpleMachineMetaTileEntity(location("electric_furnace.uv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 8));
+            ELECTRIC_FURNACE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3249, new GASimpleMachineMetaTileEntity(location("electric_furnace.uhv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 9));
+            ELECTRIC_FURNACE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3250, new GASimpleMachineMetaTileEntity(location("electric_furnace.uev"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 10));
+            ELECTRIC_FURNACE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3251, new GASimpleMachineMetaTileEntity(location("electric_furnace.uiv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 11));
+            ELECTRIC_FURNACE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3252, new GASimpleMachineMetaTileEntity(location("electric_furnace.umv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 12));
+            ELECTRIC_FURNACE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3253, new GASimpleMachineMetaTileEntity(location("electric_furnace.uxv"), RecipeMaps.FURNACE_RECIPES, Textures.FURNACE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierMacerators) {
@@ -228,6 +285,12 @@ public class GATileEntities {
             MACERATOR[5] = GregTechAPI.registerMetaTileEntity(2021, new SimpleMachineMetaTileEntity(location("macerator.luv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 6));
             MACERATOR[6] = GregTechAPI.registerMetaTileEntity(2022, new SimpleMachineMetaTileEntity(location("macerator.zpm"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 7));
             MACERATOR[7] = GregTechAPI.registerMetaTileEntity(2023, new SimpleMachineMetaTileEntity(location("macerator.uv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 8));
+            MACERATOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3254, new GASimpleMachineMetaTileEntity(location("macerator.uhv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 9));
+            MACERATOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3255, new GASimpleMachineMetaTileEntity(location("macerator.uev"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 10));
+            MACERATOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3256, new GASimpleMachineMetaTileEntity(location("macerator.uiv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 11));
+            MACERATOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3257, new GASimpleMachineMetaTileEntity(location("macerator.umv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 12));
+            MACERATOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3258, new GASimpleMachineMetaTileEntity(location("macerator.uxv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierAlloySmelter) {
@@ -235,6 +298,12 @@ public class GATileEntities {
             ALLOY_SMELTER[5] = GregTechAPI.registerMetaTileEntity(2025, new SimpleMachineMetaTileEntity(location("alloy_smelter.luv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 6));
             ALLOY_SMELTER[6] = GregTechAPI.registerMetaTileEntity(2026, new SimpleMachineMetaTileEntity(location("alloy_smelter.zpm"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 7));
             ALLOY_SMELTER[7] = GregTechAPI.registerMetaTileEntity(2027, new SimpleMachineMetaTileEntity(location("alloy_smelter.uv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 8));
+            ALLOY_SMELTER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3259, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uhv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 9));
+            ALLOY_SMELTER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3260, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uev"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 10));
+            ALLOY_SMELTER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3261, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uiv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 11));
+            ALLOY_SMELTER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3262, new GASimpleMachineMetaTileEntity(location("alloy_smelter.umv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 12));
+            ALLOY_SMELTER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3263, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uxv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierArcFurnaces) {
@@ -242,18 +311,34 @@ public class GATileEntities {
             ARC_FURNACE[5] = GregTechAPI.registerMetaTileEntity(2033, new SimpleMachineMetaTileEntity(location("arc_furnace.luv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 6));
             ARC_FURNACE[6] = GregTechAPI.registerMetaTileEntity(2034, new SimpleMachineMetaTileEntity(location("arc_furnace.zpm"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 7));
             ARC_FURNACE[7] = GregTechAPI.registerMetaTileEntity(2035, new SimpleMachineMetaTileEntity(location("arc_furnace.uv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 8));
+            ARC_FURNACE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3264, new GASimpleMachineMetaTileEntity(location("arc_furnace.uhv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 9));
+            ARC_FURNACE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3265, new GASimpleMachineMetaTileEntity(location("arc_furnace.uev"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 10));
+            ARC_FURNACE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3266, new GASimpleMachineMetaTileEntity(location("arc_furnace.uiv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 12));
+            ARC_FURNACE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3268, new GASimpleMachineMetaTileEntity(location("arc_furnace.uxv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 13));
         }
 
         if (GAConfig.GT5U.highTierAssemblers) {
             ASSEMBLER[5] = GregTechAPI.registerMetaTileEntity(2037, new SimpleMachineMetaTileEntity(location("assembler.luv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 6));
             ASSEMBLER[6] = GregTechAPI.registerMetaTileEntity(2038, new SimpleMachineMetaTileEntity(location("assembler.zpm"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 7));
             ASSEMBLER[7] = GregTechAPI.registerMetaTileEntity(2039, new SimpleMachineMetaTileEntity(location("assembler.uv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 8));
+            ASSEMBLER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3269, new GASimpleMachineMetaTileEntity(location("assembler.uhv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 9));
+            ASSEMBLER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3270, new GASimpleMachineMetaTileEntity(location("assembler.uev"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 10));
+            ASSEMBLER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3271, new GASimpleMachineMetaTileEntity(location("assembler.uiv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 11));
+            ASSEMBLER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3272, new GASimpleMachineMetaTileEntity(location("assembler.umv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 12));
+            ASSEMBLER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3273, new GASimpleMachineMetaTileEntity(location("assembler.uxv"), RecipeMaps.ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierAutoclaves) {
             AUTOCLAVE[5] = GregTechAPI.registerMetaTileEntity(2041, new SimpleMachineMetaTileEntity(location("autoclave.luv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 6));
             AUTOCLAVE[6] = GregTechAPI.registerMetaTileEntity(2042, new SimpleMachineMetaTileEntity(location("autoclave.zpm"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 7));
             AUTOCLAVE[7] = GregTechAPI.registerMetaTileEntity(2043, new SimpleMachineMetaTileEntity(location("autoclave.uv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 8));
+            AUTOCLAVE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3274, new GASimpleMachineMetaTileEntity(location("autoclave.uhv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 9));
+            AUTOCLAVE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3275, new GASimpleMachineMetaTileEntity(location("autoclave.uev"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 10));
+            AUTOCLAVE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3276, new GASimpleMachineMetaTileEntity(location("autoclave.uiv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 11));
+            AUTOCLAVE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3277, new GASimpleMachineMetaTileEntity(location("autoclave.umv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 12));
+            AUTOCLAVE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3278, new GASimpleMachineMetaTileEntity(location("autoclave.uxv"), RecipeMaps.AUTOCLAVE_RECIPES, Textures.AUTOCLAVE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierBenders) {
@@ -261,6 +346,12 @@ public class GATileEntities {
             BENDER[5] = GregTechAPI.registerMetaTileEntity(2045, new SimpleMachineMetaTileEntity(location("bender.luv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 6));
             BENDER[6] = GregTechAPI.registerMetaTileEntity(2046, new SimpleMachineMetaTileEntity(location("bender.zpm"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 7));
             BENDER[7] = GregTechAPI.registerMetaTileEntity(2047, new SimpleMachineMetaTileEntity(location("bender.uv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 8));
+            BENDER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3279, new GASimpleMachineMetaTileEntity(location("bender.uhv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 9));
+            BENDER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3280, new GASimpleMachineMetaTileEntity(location("bender.uev"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 10));
+            BENDER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3281, new GASimpleMachineMetaTileEntity(location("bender.uiv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 11));
+            BENDER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3282, new GASimpleMachineMetaTileEntity(location("bender.umv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 12));
+            BENDER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3283, new GASimpleMachineMetaTileEntity(location("bender.uxv"), RecipeMaps.BENDER_RECIPES, Textures.BENDER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierBreweries) {
@@ -268,6 +359,12 @@ public class GATileEntities {
             BREWERY[5] = GregTechAPI.registerMetaTileEntity(2049, new SimpleMachineMetaTileEntity(location("brewery.luv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 6));
             BREWERY[6] = GregTechAPI.registerMetaTileEntity(2050, new SimpleMachineMetaTileEntity(location("brewery.zpm"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 7));
             BREWERY[7] = GregTechAPI.registerMetaTileEntity(2051, new SimpleMachineMetaTileEntity(location("brewery.uv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 8));
+            BREWERY_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3284, new GASimpleMachineMetaTileEntity(location("brewery.uhv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 9));
+            BREWERY_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3285, new GASimpleMachineMetaTileEntity(location("brewery.uev"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 10));
+            BREWERY_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3286, new GASimpleMachineMetaTileEntity(location("brewery.uiv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 11));
+            BREWERY_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3287, new GASimpleMachineMetaTileEntity(location("brewery.umv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 12));
+            BREWERY_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3288, new GASimpleMachineMetaTileEntity(location("brewery.uxv"), RecipeMaps.BREWING_RECIPES, Textures.BREWERY_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierCanners) {
@@ -275,6 +372,12 @@ public class GATileEntities {
             CANNER[5] = GregTechAPI.registerMetaTileEntity(2053, new SimpleMachineMetaTileEntity(location("canner.luv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 6));
             CANNER[6] = GregTechAPI.registerMetaTileEntity(2054, new SimpleMachineMetaTileEntity(location("canner.zpm"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 7));
             CANNER[7] = GregTechAPI.registerMetaTileEntity(2055, new SimpleMachineMetaTileEntity(location("canner.uv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 8));
+            CANNER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3289, new GASimpleMachineMetaTileEntity(location("canner.uhv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 9));
+            CANNER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3290, new GASimpleMachineMetaTileEntity(location("canner.uev"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 10));
+            CANNER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3291, new GASimpleMachineMetaTileEntity(location("canner.uiv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 11));
+            CANNER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3292, new GASimpleMachineMetaTileEntity(location("canner.umv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 12));
+            CANNER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3293, new GASimpleMachineMetaTileEntity(location("canner.uxv"), RecipeMaps.CANNER_RECIPES, Textures.CANNER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierCentrifuges) {
@@ -282,6 +385,12 @@ public class GATileEntities {
             CENTRIFUGE[5] = GregTechAPI.registerMetaTileEntity(2057, new SimpleMachineMetaTileEntity(location("centrifuge.luv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 6));
             CENTRIFUGE[6] = GregTechAPI.registerMetaTileEntity(2058, new SimpleMachineMetaTileEntity(location("centrifuge.zpm"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 7));
             CENTRIFUGE[7] = GregTechAPI.registerMetaTileEntity(2059, new SimpleMachineMetaTileEntity(location("centrifuge.uv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 8));
+            CENTRIFUGE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3294, new GASimpleMachineMetaTileEntity(location("centrifuge.uhv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 9));
+            CENTRIFUGE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3295, new GASimpleMachineMetaTileEntity(location("centrifuge.uev"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 10));
+            CENTRIFUGE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3296, new GASimpleMachineMetaTileEntity(location("centrifuge.uiv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 11));
+            CENTRIFUGE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3297, new GASimpleMachineMetaTileEntity(location("centrifuge.umv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 12));
+            CENTRIFUGE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3298, new GASimpleMachineMetaTileEntity(location("centrifuge.uxv"), RecipeMaps.CENTRIFUGE_RECIPES, Textures.CENTRIFUGE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierChemicalBaths) {
@@ -289,6 +398,12 @@ public class GATileEntities {
             CHEMICAL_BATH[5] = GregTechAPI.registerMetaTileEntity(2061, new SimpleMachineMetaTileEntity(location("chemical_bath.luv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 6));
             CHEMICAL_BATH[6] = GregTechAPI.registerMetaTileEntity(2062, new SimpleMachineMetaTileEntity(location("chemical_bath.zpm"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 7));
             CHEMICAL_BATH[7] = GregTechAPI.registerMetaTileEntity(2063, new SimpleMachineMetaTileEntity(location("chemical_bath.uv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 8));
+            CHEMICAL_BATH_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3299, new GASimpleMachineMetaTileEntity(location("chemical_bath.uhv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 9));
+            CHEMICAL_BATH_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3300, new GASimpleMachineMetaTileEntity(location("chemical_bath.uev"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 10));
+            CHEMICAL_BATH_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3301, new GASimpleMachineMetaTileEntity(location("chemical_bath.uiv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 11));
+            CHEMICAL_BATH_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3302, new GASimpleMachineMetaTileEntity(location("chemical_bath.umv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 12));
+            CHEMICAL_BATH_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3303, new GASimpleMachineMetaTileEntity(location("chemical_bath.uxv"), RecipeMaps.CHEMICAL_BATH_RECIPES, Textures.CHEMICAL_BATH_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierChemicalReactors) {
@@ -296,6 +411,12 @@ public class GATileEntities {
             CHEMICAL_REACTOR[5] = GregTechAPI.registerMetaTileEntity(2065, new SimpleMachineMetaTileEntity(location("chemical_reactor.luv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 6));
             CHEMICAL_REACTOR[6] = GregTechAPI.registerMetaTileEntity(2066, new SimpleMachineMetaTileEntity(location("chemical_reactor.zpm"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 7));
             CHEMICAL_REACTOR[7] = GregTechAPI.registerMetaTileEntity(2067, new SimpleMachineMetaTileEntity(location("chemical_reactor.uv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 8));
+            CHEMICAL_REACTOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3304, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uhv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 9));
+            CHEMICAL_REACTOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3305, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uev"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 10));
+            CHEMICAL_REACTOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3306, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uiv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 11));
+            CHEMICAL_REACTOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3307, new GASimpleMachineMetaTileEntity(location("chemical_reactor.umv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 12));
+            CHEMICAL_REACTOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3308, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uxv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierCompressors) {
@@ -303,6 +424,12 @@ public class GATileEntities {
             COMPRESSOR[5] = GregTechAPI.registerMetaTileEntity(2069, new SimpleMachineMetaTileEntity(location("compressor.luv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 6));
             COMPRESSOR[6] = GregTechAPI.registerMetaTileEntity(2070, new SimpleMachineMetaTileEntity(location("compressor.zpm"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 7));
             COMPRESSOR[7] = GregTechAPI.registerMetaTileEntity(2071, new SimpleMachineMetaTileEntity(location("compressor.uv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 8));
+            COMPRESSOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3309, new GASimpleMachineMetaTileEntity(location("compressor.uhv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 9));
+            COMPRESSOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3310, new GASimpleMachineMetaTileEntity(location("compressor.uev"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 10));
+            COMPRESSOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3311, new GASimpleMachineMetaTileEntity(location("compressor.uiv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 11));
+            COMPRESSOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3312, new GASimpleMachineMetaTileEntity(location("compressor.umv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 12));
+            COMPRESSOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3313, new GASimpleMachineMetaTileEntity(location("compressor.uxv"), RecipeMaps.COMPRESSOR_RECIPES, Textures.COMPRESSOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierCutters) {
@@ -310,6 +437,12 @@ public class GATileEntities {
             CUTTER[5] = GregTechAPI.registerMetaTileEntity(2073, new SimpleMachineMetaTileEntity(location("cutter.luv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 6));
             CUTTER[6] = GregTechAPI.registerMetaTileEntity(2074, new SimpleMachineMetaTileEntity(location("cutter.zpm"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 7));
             CUTTER[7] = GregTechAPI.registerMetaTileEntity(2075, new SimpleMachineMetaTileEntity(location("cutter.uv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 8));
+            CUTTER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3314, new GASimpleMachineMetaTileEntity(location("cutter.uhv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 9));
+            CUTTER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3315, new GASimpleMachineMetaTileEntity(location("cutter.uev"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 10));
+            CUTTER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3316, new GASimpleMachineMetaTileEntity(location("cutter.uiv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 11));
+            CUTTER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3317, new GASimpleMachineMetaTileEntity(location("cutter.umv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 12));
+            CUTTER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3318, new GASimpleMachineMetaTileEntity(location("cutter.uxv"), RecipeMaps.CUTTER_RECIPES, Textures.CUTTER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierDistilleries) {
@@ -317,6 +450,12 @@ public class GATileEntities {
             DISTILLERY[5] = GregTechAPI.registerMetaTileEntity(2077, new SimpleMachineMetaTileEntity(location("distillery.luv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 6));
             DISTILLERY[6] = GregTechAPI.registerMetaTileEntity(2078, new SimpleMachineMetaTileEntity(location("distillery.zpm"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 7));
             DISTILLERY[7] = GregTechAPI.registerMetaTileEntity(2079, new SimpleMachineMetaTileEntity(location("distillery.uv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 8));
+            DISTILLERY_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3319, new GASimpleMachineMetaTileEntity(location("distillery.uhv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 9));
+            DISTILLERY_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3320, new GASimpleMachineMetaTileEntity(location("distillery.uev"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 10));
+            DISTILLERY_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3321, new GASimpleMachineMetaTileEntity(location("distillery.uiv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 11));
+            DISTILLERY_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3322, new GASimpleMachineMetaTileEntity(location("distillery.umv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 12));
+            DISTILLERY_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3323, new GASimpleMachineMetaTileEntity(location("distillery.uxv"), RecipeMaps.DISTILLERY_RECIPES, Textures.DISTILLERY_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierElectrolyzers) {
@@ -324,6 +463,12 @@ public class GATileEntities {
             ELECTROLYZER[5] = GregTechAPI.registerMetaTileEntity(2081, new SimpleMachineMetaTileEntity(location("electrolyzer.luv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 6));
             ELECTROLYZER[6] = GregTechAPI.registerMetaTileEntity(2082, new SimpleMachineMetaTileEntity(location("electrolyzer.zpm"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 7));
             ELECTROLYZER[7] = GregTechAPI.registerMetaTileEntity(2083, new SimpleMachineMetaTileEntity(location("electrolyzer.uv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 8));
+            ELECTROLYZER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3324, new GASimpleMachineMetaTileEntity(location("electrolyzer.uhv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 9));
+            ELECTROLYZER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3325, new GASimpleMachineMetaTileEntity(location("electrolyzer.uev"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 10));
+            ELECTROLYZER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3326, new GASimpleMachineMetaTileEntity(location("electrolyzer.uiv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 11));
+            ELECTROLYZER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3327, new GASimpleMachineMetaTileEntity(location("electrolyzer.umv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 12));
+            ELECTROLYZER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3328, new GASimpleMachineMetaTileEntity(location("electrolyzer.uxv"), RecipeMaps.ELECTROLYZER_RECIPES, Textures.ELECTROLYZER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierElectromagneticSeparators) {
@@ -331,6 +476,12 @@ public class GATileEntities {
             ELECTROMAGNETIC_SEPARATOR[5] = GregTechAPI.registerMetaTileEntity(2085, new SimpleMachineMetaTileEntity(location("electromagnetic_separator.luv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 6));
             ELECTROMAGNETIC_SEPARATOR[6] = GregTechAPI.registerMetaTileEntity(2086, new SimpleMachineMetaTileEntity(location("electromagnetic_separator.zpm"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 7));
             ELECTROMAGNETIC_SEPARATOR[7] = GregTechAPI.registerMetaTileEntity(2087, new SimpleMachineMetaTileEntity(location("electromagnetic_separator.uv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 8));
+            ELECTROMAGNETIC_SEPARATOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3329, new GASimpleMachineMetaTileEntity(location("electromagnetic_separator.uhv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 9));
+            ELECTROMAGNETIC_SEPARATOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3330, new GASimpleMachineMetaTileEntity(location("electromagnetic_separator.uev"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 10));
+            ELECTROMAGNETIC_SEPARATOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3331, new GASimpleMachineMetaTileEntity(location("electromagnetic_separator.uiv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 11));
+            ELECTROMAGNETIC_SEPARATOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3332, new GASimpleMachineMetaTileEntity(location("electromagnetic_separator.umv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 12));
+            ELECTROMAGNETIC_SEPARATOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3333, new GASimpleMachineMetaTileEntity(location("electromagnetic_separator.uxv"), RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES, Textures.ELECTROMAGNETIC_SEPARATOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierExtractors) {
@@ -338,6 +489,12 @@ public class GATileEntities {
             EXTRACTOR[5] = GregTechAPI.registerMetaTileEntity(2089, new SimpleMachineMetaTileEntity(location("extractor.luv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 6));
             EXTRACTOR[6] = GregTechAPI.registerMetaTileEntity(2090, new SimpleMachineMetaTileEntity(location("extractor.zpm"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 7));
             EXTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2091, new SimpleMachineMetaTileEntity(location("extractor.uv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 8));
+            EXTRACTOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3334, new GASimpleMachineMetaTileEntity(location("extractor.uhv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 9));
+            EXTRACTOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3335, new GASimpleMachineMetaTileEntity(location("extractor.uev"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 10));
+            EXTRACTOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3336, new GASimpleMachineMetaTileEntity(location("extractor.uiv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 11));
+            EXTRACTOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3337, new GASimpleMachineMetaTileEntity(location("extractor.umv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 12));
+            EXTRACTOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3338, new GASimpleMachineMetaTileEntity(location("extractor.uxv"), RecipeMaps.EXTRACTOR_RECIPES, Textures.EXTRACTOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierExtruders) {
@@ -345,6 +502,12 @@ public class GATileEntities {
             EXTRUDER[5] = GregTechAPI.registerMetaTileEntity(2093, new SimpleMachineMetaTileEntity(location("extruder.luv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 6));
             EXTRUDER[6] = GregTechAPI.registerMetaTileEntity(2094, new SimpleMachineMetaTileEntity(location("extruder.zpm"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 7));
             EXTRUDER[7] = GregTechAPI.registerMetaTileEntity(2095, new SimpleMachineMetaTileEntity(location("extruder.uv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 8));
+            EXTRUDER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3339, new GASimpleMachineMetaTileEntity(location("extruder.uhv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 9));
+            EXTRUDER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3340, new GASimpleMachineMetaTileEntity(location("extruder.uev"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 10));
+            EXTRUDER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3341, new GASimpleMachineMetaTileEntity(location("extruder.uiv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 11));
+            EXTRUDER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3342, new GASimpleMachineMetaTileEntity(location("extruder.umv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 12));
+            EXTRUDER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3343, new GASimpleMachineMetaTileEntity(location("extruder.uxv"), RecipeMaps.EXTRUDER_RECIPES, Textures.EXTRUDER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFermenters) {
@@ -352,6 +515,12 @@ public class GATileEntities {
             FERMENTER[5] = GregTechAPI.registerMetaTileEntity(2097, new SimpleMachineMetaTileEntity(location("fermenter.luv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 6));
             FERMENTER[6] = GregTechAPI.registerMetaTileEntity(2098, new SimpleMachineMetaTileEntity(location("fermenter.zpm"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 7));
             FERMENTER[7] = GregTechAPI.registerMetaTileEntity(2099, new SimpleMachineMetaTileEntity(location("fermenter.uv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 8));
+            FERMENTER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3344, new GASimpleMachineMetaTileEntity(location("fermenter.uhv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 9));
+            FERMENTER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3345, new GASimpleMachineMetaTileEntity(location("fermenter.uev"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 10));
+            FERMENTER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3346, new GASimpleMachineMetaTileEntity(location("fermenter.uiv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 11));
+            FERMENTER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3347, new GASimpleMachineMetaTileEntity(location("fermenter.umv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 12));
+            FERMENTER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3348, new GASimpleMachineMetaTileEntity(location("fermenter.uxv"), RecipeMaps.FERMENTING_RECIPES, Textures.FERMENTER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFluidCanners) {
@@ -359,6 +528,12 @@ public class GATileEntities {
             FLUID_CANNER[5] = GregTechAPI.registerMetaTileEntity(2101, new SimpleMachineMetaTileEntity(location("fluid_canner.luv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 6));
             FLUID_CANNER[6] = GregTechAPI.registerMetaTileEntity(2102, new SimpleMachineMetaTileEntity(location("fluid_canner.zpm"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 7));
             FLUID_CANNER[7] = GregTechAPI.registerMetaTileEntity(2103, new SimpleMachineMetaTileEntity(location("fluid_canner.uv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 8));
+            FLUID_CANNER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3349, new GASimpleMachineMetaTileEntity(location("fluid_canner.uhv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 9));
+            FLUID_CANNER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3350, new GASimpleMachineMetaTileEntity(location("fluid_canner.uev"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 10));
+            FLUID_CANNER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3351, new GASimpleMachineMetaTileEntity(location("fluid_canner.uiv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 11));
+            FLUID_CANNER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3352, new GASimpleMachineMetaTileEntity(location("fluid_canner.umv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 12));
+            FLUID_CANNER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3353, new GASimpleMachineMetaTileEntity(location("fluid_canner.uxv"), RecipeMaps.FLUID_CANNER_RECIPES, Textures.FLUID_CANNER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFluidExtractors) {
@@ -366,6 +541,12 @@ public class GATileEntities {
             FLUID_EXTRACTOR[5] = GregTechAPI.registerMetaTileEntity(2105, new SimpleMachineMetaTileEntity(location("fluid_extractor.luv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 6));
             FLUID_EXTRACTOR[6] = GregTechAPI.registerMetaTileEntity(2106, new SimpleMachineMetaTileEntity(location("fluid_extractor.zpm"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 7));
             FLUID_EXTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2107, new SimpleMachineMetaTileEntity(location("fluid_extractor.uv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 8));
+            FLUID_EXTRACTOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3354, new GASimpleMachineMetaTileEntity(location("fluid_extractor.uhv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 9));
+            FLUID_EXTRACTOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3355, new GASimpleMachineMetaTileEntity(location("fluid_extractor.uev"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 10));
+            FLUID_EXTRACTOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3356, new GASimpleMachineMetaTileEntity(location("fluid_extractor.uiv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 11));
+            FLUID_EXTRACTOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3357, new GASimpleMachineMetaTileEntity(location("fluid_extractor.umv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 12));
+            FLUID_EXTRACTOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3358, new GASimpleMachineMetaTileEntity(location("fluid_extractor.uxv"), RecipeMaps.FLUID_EXTRACTION_RECIPES, Textures.FLUID_EXTRACTOR_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFluidHeaters) {
@@ -373,6 +554,12 @@ public class GATileEntities {
             FLUID_HEATER[5] = GregTechAPI.registerMetaTileEntity(2109, new SimpleMachineMetaTileEntity(location("fluid_heater.luv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 6));
             FLUID_HEATER[6] = GregTechAPI.registerMetaTileEntity(2110, new SimpleMachineMetaTileEntity(location("fluid_heater.zpm"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 7));
             FLUID_HEATER[7] = GregTechAPI.registerMetaTileEntity(2111, new SimpleMachineMetaTileEntity(location("fluid_heater.uv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 8));
+            FLUID_HEATER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3359, new GASimpleMachineMetaTileEntity(location("fluid_heater.uhv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 9));
+            FLUID_HEATER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3360, new GASimpleMachineMetaTileEntity(location("fluid_heater.uev"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 10));
+            FLUID_HEATER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3361, new GASimpleMachineMetaTileEntity(location("fluid_heater.uiv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 11));
+            FLUID_HEATER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3362, new GASimpleMachineMetaTileEntity(location("fluid_heater.umv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 12));
+            FLUID_HEATER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3363, new GASimpleMachineMetaTileEntity(location("fluid_heater.uxv"), RecipeMaps.FLUID_HEATER_RECIPES, Textures.FLUID_HEATER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFluidSolidifiers) {
@@ -380,6 +567,12 @@ public class GATileEntities {
             FLUID_SOLIDIFIER[5] = GregTechAPI.registerMetaTileEntity(2113, new SimpleMachineMetaTileEntity(location("fluid_solidifier.luv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 6));
             FLUID_SOLIDIFIER[6] = GregTechAPI.registerMetaTileEntity(2114, new SimpleMachineMetaTileEntity(location("fluid_solidifier.zpm"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 7));
             FLUID_SOLIDIFIER[7] = GregTechAPI.registerMetaTileEntity(2115, new SimpleMachineMetaTileEntity(location("fluid_solidifier.uv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 8));
+            FLUID_SOLIDIFIER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3364, new GASimpleMachineMetaTileEntity(location("fluid_solidifier.uhv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 9));
+            FLUID_SOLIDIFIER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3365, new GASimpleMachineMetaTileEntity(location("fluid_solidifier.uev"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 10));
+            FLUID_SOLIDIFIER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3366, new GASimpleMachineMetaTileEntity(location("fluid_solidifier.uiv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 11));
+            FLUID_SOLIDIFIER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3367, new GASimpleMachineMetaTileEntity(location("fluid_solidifier.umv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 12));
+            FLUID_SOLIDIFIER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3368, new GASimpleMachineMetaTileEntity(location("fluid_solidifier.uxv"), RecipeMaps.FLUID_SOLIDFICATION_RECIPES, Textures.FLUID_SOLIDIFIER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierForgeHammers) {
@@ -387,6 +580,12 @@ public class GATileEntities {
             FORGE_HAMMER[5] = GregTechAPI.registerMetaTileEntity(2117, new SimpleMachineMetaTileEntity(location("forge_hammer.luv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 6));
             FORGE_HAMMER[6] = GregTechAPI.registerMetaTileEntity(2118, new SimpleMachineMetaTileEntity(location("forge_hammer.zpm"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 7));
             FORGE_HAMMER[7] = GregTechAPI.registerMetaTileEntity(2119, new SimpleMachineMetaTileEntity(location("forge_hammer.uv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 8));
+            FORGE_HAMMER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3369, new GASimpleMachineMetaTileEntity(location("forge_hammer.uhv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 9));
+            FORGE_HAMMER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3370, new GASimpleMachineMetaTileEntity(location("forge_hammer.uev"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 10));
+            FORGE_HAMMER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3371, new GASimpleMachineMetaTileEntity(location("forge_hammer.uiv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 11));
+            FORGE_HAMMER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3372, new GASimpleMachineMetaTileEntity(location("forge_hammer.umv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 12));
+            FORGE_HAMMER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3373, new GASimpleMachineMetaTileEntity(location("forge_hammer.uxv"), RecipeMaps.FORGE_HAMMER_RECIPES, Textures.FORGE_HAMMER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierFormingPresses) {
@@ -394,6 +593,12 @@ public class GATileEntities {
             FORMING_PRESS[5] = GregTechAPI.registerMetaTileEntity(2121, new SimpleMachineMetaTileEntity(location("forming_press.luv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 6));
             FORMING_PRESS[6] = GregTechAPI.registerMetaTileEntity(2122, new SimpleMachineMetaTileEntity(location("forming_press.zpm"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 7));
             FORMING_PRESS[7] = GregTechAPI.registerMetaTileEntity(2123, new SimpleMachineMetaTileEntity(location("forming_press.uv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 8));
+            FORMING_PRESS_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3374, new GASimpleMachineMetaTileEntity(location("forming_press.uhv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 9));
+            FORMING_PRESS_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3375, new GASimpleMachineMetaTileEntity(location("forming_press.uev"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 10));
+            FORMING_PRESS_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3376, new GASimpleMachineMetaTileEntity(location("forming_press.uiv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 11));
+            FORMING_PRESS_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3377, new GASimpleMachineMetaTileEntity(location("forming_press.umv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 12));
+            FORMING_PRESS_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3378, new GASimpleMachineMetaTileEntity(location("forming_press.uxv"), RecipeMaps.FORMING_PRESS_RECIPES, Textures.FORMING_PRESS_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierLathes) {
@@ -401,6 +606,12 @@ public class GATileEntities {
             LATHE[5] = GregTechAPI.registerMetaTileEntity(2125, new SimpleMachineMetaTileEntity(location("lathe.luv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 6));
             LATHE[6] = GregTechAPI.registerMetaTileEntity(2126, new SimpleMachineMetaTileEntity(location("lathe.zpm"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 7));
             LATHE[7] = GregTechAPI.registerMetaTileEntity(2127, new SimpleMachineMetaTileEntity(location("lathe.uv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 8));
+            LATHE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3379, new GASimpleMachineMetaTileEntity(location("lathe.uhv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 9));
+            LATHE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3380, new GASimpleMachineMetaTileEntity(location("lathe.uev"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 10));
+            LATHE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3381, new GASimpleMachineMetaTileEntity(location("lathe.uiv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 11));
+            LATHE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3382, new GASimpleMachineMetaTileEntity(location("lathe.umv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 12));
+            LATHE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3383, new GASimpleMachineMetaTileEntity(location("lathe.uxv"), RecipeMaps.LATHE_RECIPES, Textures.LATHE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierMicrowaves) {
@@ -408,6 +619,12 @@ public class GATileEntities {
             MICROWAVE[5] = GregTechAPI.registerMetaTileEntity(2129, new SimpleMachineMetaTileEntity(location("microwave.luv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 6));
             MICROWAVE[6] = GregTechAPI.registerMetaTileEntity(2130, new SimpleMachineMetaTileEntity(location("microwave.zpm"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 7));
             MICROWAVE[7] = GregTechAPI.registerMetaTileEntity(2131, new SimpleMachineMetaTileEntity(location("microwave.uv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 8));
+            MICROWAVE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3384, new GASimpleMachineMetaTileEntity(location("microwave.uhv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 9));
+            MICROWAVE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3385, new GASimpleMachineMetaTileEntity(location("microwave.uev"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 10));
+            MICROWAVE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3386, new GASimpleMachineMetaTileEntity(location("microwave.uiv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 11));
+            MICROWAVE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3387, new GASimpleMachineMetaTileEntity(location("microwave.umv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 12));
+            MICROWAVE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3388, new GASimpleMachineMetaTileEntity(location("microwave.uxv"), RecipeMaps.MICROWAVE_RECIPES, Textures.MICROWAVE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierMixers) {
@@ -415,6 +632,12 @@ public class GATileEntities {
             MIXER[5] = GregTechAPI.registerMetaTileEntity(2133, new SimpleMachineMetaTileEntity(location("mixer.luv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 6));
             MIXER[6] = GregTechAPI.registerMetaTileEntity(2134, new SimpleMachineMetaTileEntity(location("mixer.zpm"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 7));
             MIXER[7] = GregTechAPI.registerMetaTileEntity(2135, new SimpleMachineMetaTileEntity(location("mixer.uv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 8));
+            MIXER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3389, new GASimpleMachineMetaTileEntity(location("mixer.uhv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 9));
+            MIXER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3390, new GASimpleMachineMetaTileEntity(location("mixer.uev"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 10));
+            MIXER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3391, new GASimpleMachineMetaTileEntity(location("mixer.uiv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 11));
+            MIXER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3392, new GASimpleMachineMetaTileEntity(location("mixer.umv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 12));
+            MIXER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3393, new GASimpleMachineMetaTileEntity(location("mixer.uxv"), RecipeMaps.MIXER_RECIPES, Textures.MIXER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierOreWashers) {
@@ -422,6 +645,12 @@ public class GATileEntities {
             ORE_WASHER[5] = GregTechAPI.registerMetaTileEntity(2137, new SimpleMachineMetaTileEntity(location("ore_washer.luv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 6));
             ORE_WASHER[6] = GregTechAPI.registerMetaTileEntity(2138, new SimpleMachineMetaTileEntity(location("ore_washer.zpm"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 7));
             ORE_WASHER[7] = GregTechAPI.registerMetaTileEntity(2139, new SimpleMachineMetaTileEntity(location("ore_washer.uv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 8));
+            ORE_WASHER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3394, new GASimpleMachineMetaTileEntity(location("ore_washer.uhv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 9));
+            ORE_WASHER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3395, new GASimpleMachineMetaTileEntity(location("ore_washer.uev"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 10));
+            ORE_WASHER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3396, new GASimpleMachineMetaTileEntity(location("ore_washer.uiv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 11));
+            ORE_WASHER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3397, new GASimpleMachineMetaTileEntity(location("ore_washer.umv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 12));
+            ORE_WASHER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3398, new GASimpleMachineMetaTileEntity(location("ore_washer.uxv"), RecipeMaps.ORE_WASHER_RECIPES, Textures.ORE_WASHER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierPackers) {
@@ -429,6 +658,12 @@ public class GATileEntities {
             PACKER[5] = GregTechAPI.registerMetaTileEntity(2141, new SimpleMachineMetaTileEntity(location("packer.luv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 6));
             PACKER[6] = GregTechAPI.registerMetaTileEntity(2142, new SimpleMachineMetaTileEntity(location("packer.zpm"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 7));
             PACKER[7] = GregTechAPI.registerMetaTileEntity(2143, new SimpleMachineMetaTileEntity(location("packer.uv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 8));
+            PACKER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3399, new GASimpleMachineMetaTileEntity(location("packer.uhv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 9));
+            PACKER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3400, new GASimpleMachineMetaTileEntity(location("packer.uev"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 10));
+            PACKER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3401, new GASimpleMachineMetaTileEntity(location("packer.uiv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 11));
+            PACKER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3402, new GASimpleMachineMetaTileEntity(location("packer.umv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 12));
+            PACKER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3403, new GASimpleMachineMetaTileEntity(location("packer.uxv"), RecipeMaps.PACKER_RECIPES, Textures.PACKER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierUnpackers) {
@@ -436,6 +671,12 @@ public class GATileEntities {
             UNPACKER[5] = GregTechAPI.registerMetaTileEntity(2145, new SimpleMachineMetaTileEntity(location("unpacker.luv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 6));
             UNPACKER[6] = GregTechAPI.registerMetaTileEntity(2146, new SimpleMachineMetaTileEntity(location("unpacker.zpm"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 7));
             UNPACKER[7] = GregTechAPI.registerMetaTileEntity(2147, new SimpleMachineMetaTileEntity(location("unpacker.uv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 8));
+            UNPACKER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3404, new GASimpleMachineMetaTileEntity(location("unpacker.uhv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 9));
+            UNPACKER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3405, new GASimpleMachineMetaTileEntity(location("unpacker.uev"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 10));
+            UNPACKER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3406, new GASimpleMachineMetaTileEntity(location("unpacker.uiv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 11));
+            UNPACKER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3407, new GASimpleMachineMetaTileEntity(location("unpacker.umv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 12));
+            UNPACKER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3408, new GASimpleMachineMetaTileEntity(location("unpacker.uxv"), RecipeMaps.UNPACKER_RECIPES, Textures.UNPACKER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierPlasmaArcFurnaces) {
@@ -443,6 +684,12 @@ public class GATileEntities {
             PLASMA_ARC_FURNACE[5] = GregTechAPI.registerMetaTileEntity(2149, new SimpleMachineMetaTileEntity(location("plasma_arc_furnace.luv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 6));
             PLASMA_ARC_FURNACE[6] = GregTechAPI.registerMetaTileEntity(2150, new SimpleMachineMetaTileEntity(location("plasma_arc_furnace.zpm"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 7));
             PLASMA_ARC_FURNACE[7] = GregTechAPI.registerMetaTileEntity(2151, new SimpleMachineMetaTileEntity(location("plasma_arc_furnace.uv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 8));
+            PLASMA_ARC_FURNACE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3409, new GASimpleMachineMetaTileEntity(location("plasma_arc_furnace.uhv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 9));
+            PLASMA_ARC_FURNACE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3410, new GASimpleMachineMetaTileEntity(location("plasma_arc_furnace.uev"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 10));
+            PLASMA_ARC_FURNACE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3411, new GASimpleMachineMetaTileEntity(location("plasma_arc_furnace.uiv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 11));
+            PLASMA_ARC_FURNACE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3412, new GASimpleMachineMetaTileEntity(location("plasma_arc_furnace.umv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 12));
+            PLASMA_ARC_FURNACE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3413, new GASimpleMachineMetaTileEntity(location("plasma_arc_furnace.uxv"), RecipeMaps.PLASMA_ARC_FURNACE_RECIPES, Textures.PLASMA_ARC_FURNACE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierPolarizers) {
@@ -450,12 +697,24 @@ public class GATileEntities {
             POLARIZER[5] = GregTechAPI.registerMetaTileEntity(2153, new SimpleMachineMetaTileEntity(location("polarizer.luv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 6));
             POLARIZER[6] = GregTechAPI.registerMetaTileEntity(2154, new SimpleMachineMetaTileEntity(location("polarizer.zpm"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 7));
             POLARIZER[7] = GregTechAPI.registerMetaTileEntity(2155, new SimpleMachineMetaTileEntity(location("polarizer.uv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 8));
+            POLARIZER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3414, new GASimpleMachineMetaTileEntity(location("polarizer.uhv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 9));
+            POLARIZER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3415, new GASimpleMachineMetaTileEntity(location("polarizer.uev"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 10));
+            POLARIZER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3416, new GASimpleMachineMetaTileEntity(location("polarizer.uiv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 11));
+            POLARIZER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3417, new GASimpleMachineMetaTileEntity(location("polarizer.umv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 12));
+            POLARIZER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3418, new GASimpleMachineMetaTileEntity(location("polarizer.uxv"), RecipeMaps.POLARIZER_RECIPES, Textures.POLARIZER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierLaserEngravers) {
             LASER_ENGRAVER[5] = GregTechAPI.registerMetaTileEntity(2157, new SimpleMachineMetaTileEntity(location("laser_engraver.luv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 6));
             LASER_ENGRAVER[6] = GregTechAPI.registerMetaTileEntity(2158, new SimpleMachineMetaTileEntity(location("laser_engraver.zpm"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 7));
             LASER_ENGRAVER[7] = GregTechAPI.registerMetaTileEntity(2159, new SimpleMachineMetaTileEntity(location("laser_engraver.uv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 8));
+            LASER_ENGRAVER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3419, new GASimpleMachineMetaTileEntity(location("laser_engraver.uhv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 9));
+            LASER_ENGRAVER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3420, new GASimpleMachineMetaTileEntity(location("laser_engraver.uev"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 10));
+            LASER_ENGRAVER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3421, new GASimpleMachineMetaTileEntity(location("laser_engraver.uiv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 11));
+            LASER_ENGRAVER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3422, new GASimpleMachineMetaTileEntity(location("laser_engraver.umv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 12));
+            LASER_ENGRAVER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3423, new GASimpleMachineMetaTileEntity(location("laser_engraver.uxv"), RecipeMaps.LASER_ENGRAVER_RECIPES, Textures.LASER_ENGRAVER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierSifters) {
@@ -463,6 +722,12 @@ public class GATileEntities {
             SIFTER[5] = GregTechAPI.registerMetaTileEntity(2161, new SimpleMachineMetaTileEntity(location("sifter.luv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 6));
             SIFTER[6] = GregTechAPI.registerMetaTileEntity(2162, new SimpleMachineMetaTileEntity(location("sifter.zpm"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 7));
             SIFTER[7] = GregTechAPI.registerMetaTileEntity(2163, new SimpleMachineMetaTileEntity(location("sifter.uv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 8));
+            SIFTER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3424, new GASimpleMachineMetaTileEntity(location("sifter.uhv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 9));
+            SIFTER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3425, new GASimpleMachineMetaTileEntity(location("sifter.uev"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 10));
+            SIFTER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3426, new GASimpleMachineMetaTileEntity(location("sifter.uiv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 11));
+            SIFTER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3427, new GASimpleMachineMetaTileEntity(location("sifter.umv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 12));
+            SIFTER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3428, new GASimpleMachineMetaTileEntity(location("sifter.uxv"), RecipeMaps.SIFTER_RECIPES, Textures.SIFTER_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierThermalCentrifuges) {
@@ -470,6 +735,12 @@ public class GATileEntities {
             THERMAL_CENTRIFUGE[5] = GregTechAPI.registerMetaTileEntity(2165, new SimpleMachineMetaTileEntity(location("thermal_centrifuge.luv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 6));
             THERMAL_CENTRIFUGE[6] = GregTechAPI.registerMetaTileEntity(2166, new SimpleMachineMetaTileEntity(location("thermal_centrifuge.zpm"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 7));
             THERMAL_CENTRIFUGE[7] = GregTechAPI.registerMetaTileEntity(2167, new SimpleMachineMetaTileEntity(location("thermal_centrifuge.uv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 8));
+            THERMAL_CENTRIFUGE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3429, new GASimpleMachineMetaTileEntity(location("thermal_centrifuge.uhv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 9));
+            THERMAL_CENTRIFUGE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3430, new GASimpleMachineMetaTileEntity(location("thermal_centrifuge.uev"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 10));
+            THERMAL_CENTRIFUGE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3431, new GASimpleMachineMetaTileEntity(location("thermal_centrifuge.uiv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 11));
+            THERMAL_CENTRIFUGE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3432, new GASimpleMachineMetaTileEntity(location("thermal_centrifuge.umv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 12));
+            THERMAL_CENTRIFUGE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3433, new GASimpleMachineMetaTileEntity(location("thermal_centrifuge.uxv"), RecipeMaps.THERMAL_CENTRIFUGE_RECIPES, Textures.THERMAL_CENTRIFUGE_OVERLAY, 13));
+
         }
 
         if (GAConfig.GT5U.highTierWiremills) {
@@ -477,6 +748,12 @@ public class GATileEntities {
             WIREMILL[5] = GregTechAPI.registerMetaTileEntity(2169, new SimpleMachineMetaTileEntity(location("wiremill.luv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
             WIREMILL[6] = GregTechAPI.registerMetaTileEntity(2170, new SimpleMachineMetaTileEntity(location("wiremill.zpm"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
             WIREMILL[7] = GregTechAPI.registerMetaTileEntity(2171, new SimpleMachineMetaTileEntity(location("wiremill.uv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
+            WIREMILL_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3434, new GASimpleMachineMetaTileEntity(location("wiremill.uhv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+            WIREMILL_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3435, new GASimpleMachineMetaTileEntity(location("wiremill.uev"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+            WIREMILL_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3436, new GASimpleMachineMetaTileEntity(location("wiremill.uiv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+            WIREMILL_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3437, new GASimpleMachineMetaTileEntity(location("wiremill.umv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+            WIREMILL_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3438, new GASimpleMachineMetaTileEntity(location("wiremill.uxv"), RecipeMaps.WIREMILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+
         }
 
         if (GAConfig.Misc.naqEfficieny) {
@@ -499,6 +776,12 @@ public class GATileEntities {
             MASS_FAB[5] = GregTechAPI.registerMetaTileEntity(2180, new SimpleMachineMetaTileEntity(location("mass_fab.luv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 6));
             MASS_FAB[6] = GregTechAPI.registerMetaTileEntity(2181, new SimpleMachineMetaTileEntity(location("mass_fab.zpm"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 7));
             MASS_FAB[7] = GregTechAPI.registerMetaTileEntity(2182, new SimpleMachineMetaTileEntity(location("mass_fab.uv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 8));
+            MASS_FAB_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3449, new GASimpleMachineMetaTileEntity(location("mass_fab.uhv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 9));
+            MASS_FAB_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3450, new GASimpleMachineMetaTileEntity(location("mass_fab.uev"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 10));
+            MASS_FAB_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3451, new GASimpleMachineMetaTileEntity(location("mass_fab.uiv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 11));
+            MASS_FAB_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3452, new GASimpleMachineMetaTileEntity(location("mass_fab.umv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 12));
+            MASS_FAB_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3453, new GASimpleMachineMetaTileEntity(location("mass_fab.uxv"), GARecipeMaps.MASS_FAB_RECIPES, ClientHandler.MASS_FAB_OVERLAY, 13));
+
         }
 
         REPLICATOR[0] = GregTechAPI.registerMetaTileEntity(2183, new SimpleMachineMetaTileEntity(location("replicator.lv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 1));
@@ -510,6 +793,12 @@ public class GATileEntities {
             REPLICATOR[5] = GregTechAPI.registerMetaTileEntity(2188, new SimpleMachineMetaTileEntity(location("replicator.luv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 6));
             REPLICATOR[6] = GregTechAPI.registerMetaTileEntity(2189, new SimpleMachineMetaTileEntity(location("replicator.zpm"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 7));
             REPLICATOR[7] = GregTechAPI.registerMetaTileEntity(2190, new SimpleMachineMetaTileEntity(location("replicator.uv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 8));
+            REPLICATOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3444, new GASimpleMachineMetaTileEntity(location("replicator.uhv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 9));
+            REPLICATOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3445, new GASimpleMachineMetaTileEntity(location("replicator.uev"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 10));
+            REPLICATOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3446, new GASimpleMachineMetaTileEntity(location("replicator.uiv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 11));
+            REPLICATOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3447, new GASimpleMachineMetaTileEntity(location("replicator.umv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 12));
+            REPLICATOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3448, new GASimpleMachineMetaTileEntity(location("replicator.uxv"), GARecipeMaps.REPLICATOR_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 13));
+
         }
 
         ASSEMBLY_LINE = GregTechAPI.registerMetaTileEntity(2502, new TileEntityAssemblyLine(location("assembly_line")));
@@ -663,6 +952,11 @@ public class GATileEntities {
             DEHYDRATOR[5] = GregTechAPI.registerMetaTileEntity(2253, new SimpleMachineMetaTileEntity(location("dehydrator.luv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 6));
             DEHYDRATOR[6] = GregTechAPI.registerMetaTileEntity(2254, new SimpleMachineMetaTileEntity(location("dehydrator.zpm"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 7));
             DEHYDRATOR[7] = GregTechAPI.registerMetaTileEntity(2255, new SimpleMachineMetaTileEntity(location("dehydrator.uv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 8));
+            DEHYDRATOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3439, new GASimpleMachineMetaTileEntity(location("dehydrator.uhv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 9));
+            DEHYDRATOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3440, new GASimpleMachineMetaTileEntity(location("dehydrator.uev"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 10));
+            DEHYDRATOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3441, new GASimpleMachineMetaTileEntity(location("dehydrator.uiv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 11));
+            DEHYDRATOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3442, new GASimpleMachineMetaTileEntity(location("dehydrator.umv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 12));
+            DEHYDRATOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3443, new GASimpleMachineMetaTileEntity(location("dehydrator.uxv"), GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, 13));
 
         }
 
@@ -708,6 +1002,11 @@ public class GATileEntities {
             DECAY_CHAMBER[5] = GregTechAPI.registerMetaTileEntity(3205, new SimpleMachineMetaTileEntity(location("decay_chamber.luv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 6));
             DECAY_CHAMBER[6] = GregTechAPI.registerMetaTileEntity(3206, new SimpleMachineMetaTileEntity(location("decay_chamber.zpm"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 7));
             DECAY_CHAMBER[7] = GregTechAPI.registerMetaTileEntity(3207, new SimpleMachineMetaTileEntity(location("decay_chamber.uv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 8));
+            DECAY_CHAMBER_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3454, new GASimpleMachineMetaTileEntity(location("decay_chamber.uhv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 9));
+            DECAY_CHAMBER_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3455, new GASimpleMachineMetaTileEntity(location("decay_chamber.uev"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 10));
+            DECAY_CHAMBER_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3456, new GASimpleMachineMetaTileEntity(location("decay_chamber.uiv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 11));
+            DECAY_CHAMBER_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3457, new GASimpleMachineMetaTileEntity(location("decay_chamber.umv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 12));
+            DECAY_CHAMBER_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3458, new GASimpleMachineMetaTileEntity(location("decay_chamber.uxv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 13));
         }
 
         ROTOR_HOLDER[0] = GregTechAPI.registerMetaTileEntity(3208, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.hv"), GTValues.HV, 1.1f));
@@ -723,6 +1022,12 @@ public class GATileEntities {
             GREEN_HOUSE[5] = GregTechAPI.registerMetaTileEntity(3216, new SimpleMachineMetaTileEntity(location("green_house.luv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 6));
             GREEN_HOUSE[6] = GregTechAPI.registerMetaTileEntity(3217, new SimpleMachineMetaTileEntity(location("green_house.zpm"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 7));
             GREEN_HOUSE[7] = GregTechAPI.registerMetaTileEntity(3218, new SimpleMachineMetaTileEntity(location("green_house.uv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 8));
+            GREEN_HOUSE_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3459, new GASimpleMachineMetaTileEntity(location("green_house.uhv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 9));
+            GREEN_HOUSE_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3460, new GASimpleMachineMetaTileEntity(location("green_house.uev"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 10));
+            GREEN_HOUSE_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3461, new GASimpleMachineMetaTileEntity(location("green_house.uiv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 11));
+            GREEN_HOUSE_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3462, new GASimpleMachineMetaTileEntity(location("green_house.umv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 12));
+            GREEN_HOUSE_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3463, new GASimpleMachineMetaTileEntity(location("green_house.uxv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 13));
+
         }
 
         id = 3220;
@@ -745,7 +1050,6 @@ public class GATileEntities {
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
         GA_HULLS[3] = GregTechAPI.registerMetaTileEntity(3242, new GAMetaTileEntityHull(location("hull.umv"), 12));
         GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
-        GH = GregTechAPI.registerMetaTileEntity(3244, new GASimpleMachineMetaTileEntity(location("gh.uhv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 9));
 
         PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
 
