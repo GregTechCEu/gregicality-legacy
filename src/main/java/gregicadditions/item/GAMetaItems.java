@@ -314,6 +314,8 @@ public class GAMetaItems {
         armor.setRegistryName("ga_armor");
         GADustItem dustItem = new GADustItem((short) 0);
         dustItem.setRegistryName("ga_dust");
+        GAMetaItem2 item2 = new GAMetaItem2((short) 0);
+        item2.setRegistryName("ga_meta_item2");
     }
 
     public static void registerOreDict() {
