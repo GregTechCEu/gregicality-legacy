@@ -275,6 +275,17 @@ public class GAMetaItem extends MaterialMetaItem {
         ARAM = addItem(426, "plate.aram");
         ARAM_WAFER = addItem(427, "wafer.aram");
 
+/*
+        BATTERY_SMALL_VANADIUM = addItem(428, "small.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 4)).setModelAmount(8);
+        BATTERY_SMALL_NEUTRONIUM = addItem(429, "small.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 5)).setModelAmount(8);
+        BATTERY_MEDIUM_VANADIUM = addItem(430, "medium.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 6)).setModelAmount(8);
+        BATTERY_MEDIUM_NAQUADRIA = addItem(431, "medium.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 7)).setModelAmount(8);
+        BATTERY_MEDIUM_NEUTRONIUM = addItem(432, "medium.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 8)).setModelAmount(8);
+        BATTERY_LARGE_VANADIUM = addItem(433, "large.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 9)).setModelAmount(8);
+        BATTERY_LARGE_NAQUADRIA = addItem(434, "large.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 10)).setModelAmount(8);
+        BATTERY_LARGE_NEUTRONIUM = addItem(435, "large.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 11)).setModelAmount(8);
+*/
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;
