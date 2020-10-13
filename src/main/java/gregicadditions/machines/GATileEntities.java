@@ -762,9 +762,6 @@ public class GATileEntities {
     }
 
 
-
-
-
     public static ResourceLocation location(String name) {
         return new ResourceLocation(Gregicality.MODID, name);
     }
