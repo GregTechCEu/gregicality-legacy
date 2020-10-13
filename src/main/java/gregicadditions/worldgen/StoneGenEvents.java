@@ -1,4 +1,4 @@
-package gregicadditions.integrations.exnihilocreatio;
+package gregicadditions.worldgen;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;

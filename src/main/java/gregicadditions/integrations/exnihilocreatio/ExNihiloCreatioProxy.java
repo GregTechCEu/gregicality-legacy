@@ -10,7 +10,6 @@ import gregicadditions.integrations.exnihilocreatio.items.ExNihiloEnums;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloItems;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloMetaItems;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloPebble;
-import gregicadditions.integrations.exnihilocreatio.machines.MetaTileEntityRockBreaker;
 import gregicadditions.integrations.exnihilocreatio.machines.MetaTileEntitySieve;
 import gregicadditions.integrations.exnihilocreatio.machines.SteamRockBreaker;
 import gregicadditions.integrations.exnihilocreatio.machines.SteamSieve;
@@ -32,7 +31,6 @@ import gregtech.common.blocks.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -48,7 +46,6 @@ import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineReci
 public class ExNihiloCreatioProxy {
 
     public static SimpleMachineMetaTileEntity[] SIEVES = new SimpleMachineMetaTileEntity[8];
-    public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8];
 
     public static SteamSieve STEAM_SIEVE;
     public static SteamRockBreaker STEAM_BREAKER;
@@ -74,17 +71,6 @@ public class ExNihiloCreatioProxy {
                 SIEVES[7] = GregTechAPI.registerMetaTileEntity(2231, new MetaTileEntitySieve(location("sieve.uv"), 8));
             }
 
-            ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(4000, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
-            ROCK_BREAKER[1] = GregTechAPI.registerMetaTileEntity(4001, new MetaTileEntityRockBreaker(location("rock_breaker.mv"), 2));
-            ROCK_BREAKER[2] = GregTechAPI.registerMetaTileEntity(4002, new MetaTileEntityRockBreaker(location("rock_breaker.hv"), 3));
-            ROCK_BREAKER[3] = GregTechAPI.registerMetaTileEntity(4003, new MetaTileEntityRockBreaker(location("rock_breaker.ev"), 4));
-            if (GAConfig.exNihilo.highTierSieve) {
-                ROCK_BREAKER[4] = GregTechAPI.registerMetaTileEntity(4004, new MetaTileEntityRockBreaker(location("rock_breaker.iv"), 5));
-                ROCK_BREAKER[5] = GregTechAPI.registerMetaTileEntity(4005, new MetaTileEntityRockBreaker(location("rock_breaker.luv"), 6));
-                ROCK_BREAKER[6] = GregTechAPI.registerMetaTileEntity(4006, new MetaTileEntityRockBreaker(location("rock_breaker.zpm"), 7));
-                ROCK_BREAKER[7] = GregTechAPI.registerMetaTileEntity(4007, new MetaTileEntityRockBreaker(location("rock_breaker.uv"), 8));
-            }
-
             STEAM_BREAKER = GregTechAPI.registerMetaTileEntity(2767, new SteamRockBreaker(location("rock_breaker.steam")));
             STEAM_SIEVE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam"), false));
 
@@ -96,9 +82,7 @@ public class ExNihiloCreatioProxy {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
-            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
             registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE_SINGLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
-            registerMachineRecipe(ROCK_BREAKER, "CPC", "CMC", "GGG", 'M', HULL, 'C', PIPE, 'G', GLASS, 'P', PISTON);
             ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
             ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
             for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {

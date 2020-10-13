@@ -13,10 +13,7 @@ import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.ConverterType;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
-import gregicadditions.machines.multi.MetaTileEntityBatteryTower;
-import gregicadditions.machines.multi.MetaTileEntityChemicalPlant;
-import gregicadditions.machines.multi.MetaTileEntityIndustrialPrimitiveBlastFurnace;
-import gregicadditions.machines.multi.TileEntityAlloyBlastFurnace;
+import gregicadditions.machines.multi.*;
 import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.advance.hyper.HyperReactor;
 import gregicadditions.machines.multi.advance.hyper.HyperReactorUEV;
@@ -99,6 +96,7 @@ public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] MASS_FAB = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] DECAY_CHAMBER = new SimpleMachineMetaTileEntity[8];
     public static SimpleMachineMetaTileEntity[] GREEN_HOUSE = new SimpleMachineMetaTileEntity[8];
+    public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8];
     public static TileEntityFusionReactor[] FUSION_REACTOR = new TileEntityFusionReactor[3];
     public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[3];
@@ -735,6 +733,7 @@ public class GATileEntities {
         BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));
         BUFFER[2] = GregTechAPI.registerMetaTileEntity(3232, new TileEntityBuffer(location("buffer.hv"), 5));
 
+        PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
 
         HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new HyperReactor(location("hyper_reactor.uv"), GTValues.V[GTValues.UV]));
         HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GTValues.V[GTValues.UV] * 4));
@@ -748,9 +747,21 @@ public class GATileEntities {
         GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
         GH = GregTechAPI.registerMetaTileEntity(3244, new GASimpleMachineMetaTileEntity(location("gh.uhv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 9));
 
-        PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
-
+        if (GAConfig.Misc.enableRockBreaker)
+            ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(4000, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
+        ROCK_BREAKER[1] = GregTechAPI.registerMetaTileEntity(4001, new MetaTileEntityRockBreaker(location("rock_breaker.mv"), 2));
+        ROCK_BREAKER[2] = GregTechAPI.registerMetaTileEntity(4002, new MetaTileEntityRockBreaker(location("rock_breaker.hv"), 3));
+        ROCK_BREAKER[3] = GregTechAPI.registerMetaTileEntity(4003, new MetaTileEntityRockBreaker(location("rock_breaker.ev"), 4));
+        if (GAConfig.Misc.enableRockBreakerHighTier) {
+            ROCK_BREAKER[4] = GregTechAPI.registerMetaTileEntity(4004, new MetaTileEntityRockBreaker(location("rock_breaker.iv"), 5));
+            ROCK_BREAKER[5] = GregTechAPI.registerMetaTileEntity(4005, new MetaTileEntityRockBreaker(location("rock_breaker.luv"), 6));
+            ROCK_BREAKER[6] = GregTechAPI.registerMetaTileEntity(4006, new MetaTileEntityRockBreaker(location("rock_breaker.zpm"), 7));
+            ROCK_BREAKER[7] = GregTechAPI.registerMetaTileEntity(4007, new MetaTileEntityRockBreaker(location("rock_breaker.uv"), 8));
+        }
     }
+
+
+
 
 
     public static ResourceLocation location(String name) {

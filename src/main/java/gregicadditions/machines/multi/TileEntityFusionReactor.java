@@ -1,4 +1,4 @@
-package gregicadditions.machines;
+package gregicadditions.machines.multi;
 
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;

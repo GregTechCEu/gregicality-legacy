@@ -1,4 +1,4 @@
-package gregicadditions.machines;
+package gregicadditions.machines.multi;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
@@ -35,7 +35,7 @@ public class TileEntityAssemblyLine extends RecipeMapMultiblockController {
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start(LEFT, DOWN, BACK)
 				.aisle("#Y#", "GAG", "RTR", "COC")
-				.aisle("#Y#", "GAG", "RTR", "FIF").setRepeatable(3, 14)
+				.aisle("#Y#", "GAG", "RTR", "FIF").setRepeatable(3, 15)
 				.aisle("#Y#", "GSG", "RTR", "FIF")
 				.where('S', selfPredicate())
 				.where('C', statePredicate(getCasingState()))
