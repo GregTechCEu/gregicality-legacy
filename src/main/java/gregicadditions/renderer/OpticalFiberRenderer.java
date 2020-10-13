@@ -246,7 +246,6 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
             return Pair.of(TextureUtils.getMissingSprite(), 0xFFFFFF);
         }
         TextureAtlasSprite atlasSprite;
-        int particleColor;
         atlasSprite = wireTexture;
 
         return Pair.of(atlasSprite, 0xFFFFFF);
