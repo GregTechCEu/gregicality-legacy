@@ -506,6 +506,7 @@ public class MachineCraftingRecipes {
         registerMachineRecipe(GATileEntities.DEHYDRATOR, "WCW", "MHM", "GAG", 'C', CIRCUIT, 'M', CABLE_QUAD, 'H', HULL, 'G', GEAR, 'A', ROBOT_ARM, 'W', COIL_HEATING_DOUBLE);
         registerMachineRecipe(GATileEntities.DECAY_CHAMBER, "RCR", "FMF", "QCQ", 'M', HULL, 'Q', CABLE_DOUBLE, 'C', CIRCUIT, 'F', FIELD_GENERATOR, 'R', STICK_RADIOACTIVE);
         registerMachineRecipe(GATileEntities.GREEN_HOUSE, "GGG", "AMA", "CQC", 'M', HULL, 'Q', CABLE_SINGLE, 'C', CIRCUIT, 'G', GLASS, 'A', ROBOT_ARM);
+        registerMachineRecipe(GATileEntities.ROCK_BREAKER, "CPC", "CMC", "GGG", 'M', HULL, 'C', PIPE, 'G', GLASS, 'P', PISTON);
         if (GAConfig.GT5U.highTierPumps)
             registerMachineRecipe(GATileEntities.PUMP, "WGW", "GMG", "TGT", 'M', HULL, 'W', CIRCUIT, 'G', PUMP, 'T', PIPE);
         if (GAConfig.GT5U.highTierAlloySmelter)

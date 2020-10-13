@@ -1,8 +1,10 @@
 package gregicadditions;
 
 import gregicadditions.fluid.GAMetaFluids;
+import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.worldgen.WorldGenRegister;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -24,6 +26,9 @@ public class CommonProxy {
 
     public void onLoad() throws IOException {
         WorldGenRegister.init();
+        if (GAConfig.Misc.multiStoneGen) {
+            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
+        }
     }
 
     @SubscribeEvent
