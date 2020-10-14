@@ -4,6 +4,7 @@ import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.fluid.GAMetaFluids;
+import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
@@ -11,6 +12,7 @@ import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.utils.GregicalityLogger;
 import gregicadditions.worldgen.WorldGenRegister;
+import net.minecraftforge.common.MinecraftForge;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -44,6 +46,9 @@ public class CommonProxy {
 
     public void onLoad() throws IOException {
         WorldGenRegister.init();
+        if (GAConfig.Misc.multiStoneGen) {
+            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
+        }
     }
 
     @SubscribeEvent
@@ -81,7 +86,7 @@ public class CommonProxy {
         GregicalityLogger.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
-        registry.register(createItemBlock(GAMetaBlocks.CABLE, ItemBlockOpticalFiber::new));
+        registry.register(createItemBlock(GAMetaBlocks.OPTICAL_FIBER, ItemBlockOpticalFiber::new));
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.REACTOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.MACHINE_CASING, VariantItemBlock::new));

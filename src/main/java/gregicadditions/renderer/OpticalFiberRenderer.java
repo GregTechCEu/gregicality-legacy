@@ -17,14 +17,13 @@ import codechicken.lib.vec.Vector3;
 import codechicken.lib.vec.uv.IconTransformation;
 import gregicadditions.Gregicality;
 import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
-import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.pipenet.tile.IPipeTile;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ModCompatibility;
 import net.minecraft.block.state.IBlockState;
@@ -93,9 +92,8 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
         renderState.startDrawing(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
         BlockOpticalFiber blockOpticalFiber = (BlockOpticalFiber) ((ItemBlockOpticalFiber) stack.getItem()).getBlock();
         OpticalFiberSize opticalFiberSize = blockOpticalFiber.getItemPipeType(stack);
-        Material material = blockOpticalFiber.getItemMaterial(stack);
-        if (opticalFiberSize != null && material != null) {
-            renderCableBlock(material, opticalFiberSize, renderState, new IVertexOperation[0],
+        if (opticalFiberSize != null) {
+            renderCableBlock(opticalFiberSize, renderState, new IVertexOperation[0],
                     1 << EnumFacing.SOUTH.getIndex() | 1 << EnumFacing.NORTH.getIndex() |
                             1 << (6 + EnumFacing.SOUTH.getIndex()) | 1 << (6 + EnumFacing.NORTH.getIndex()));
         }
@@ -116,11 +114,10 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
         if (tileEntityOpticalFiber == null) return false;
         int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityOpticalFiber, world);
         OpticalFiberSize opticalFiberSize = tileEntityOpticalFiber.getPipeType();
-        Material material = tileEntityOpticalFiber.getPipeMaterial();
-        if (opticalFiberSize != null && material != null) {
+        if (opticalFiberSize != null) {
             BlockRenderLayer renderLayer = MinecraftForgeClient.getRenderLayer();
             if (renderLayer == BlockRenderLayer.CUTOUT) {
-                renderCableBlock(material, opticalFiberSize, renderState, pipeline, connectedSidesMask);
+                renderCableBlock(opticalFiberSize, renderState, pipeline, connectedSidesMask);
             }
             ICoverable coverable = tileEntityOpticalFiber.getCoverableImplementation();
             coverable.renderCovers(renderState, new Matrix4().translate(pos.getX(), pos.getY(), pos.getZ()), renderLayer);
@@ -128,8 +125,8 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
         return true;
     }
 
-    public void renderCableBlock(Material material, OpticalFiberSize opticalFiberSize1, CCRenderState state, IVertexOperation[] pipeline, int connectMask) {
-        int wireColor = GTUtility.convertRGBtoOpaqueRGBA_CL(material.materialRGB);
+    public void renderCableBlock(OpticalFiberSize opticalFiberSize1, CCRenderState state, IVertexOperation[] pipeline, int connectMask) {
+        int wireColor = GTUtility.convertRGBtoOpaqueRGBA_CL(0xFFFFFF);
         float thickness = opticalFiberSize1.thickness;
 
         IVertexOperation[] wire = ArrayUtils.addAll(pipeline, new IconTransformation(wireTexture), new ColourMultiplier(wireColor));
@@ -244,16 +241,13 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
         if (tileEntity == null) {
             return Pair.of(TextureUtils.getMissingSprite(), 0xFFFFFF);
         }
-        Material material = ((TileEntityOpticalFiber) tileEntity).getPipeMaterial();
         OpticalFiberSize opticalFiberSize = tileEntity.getPipeType();
-        if (material == null || opticalFiberSize == null) {
+        if (opticalFiberSize == null) {
             return Pair.of(TextureUtils.getMissingSprite(), 0xFFFFFF);
         }
         TextureAtlasSprite atlasSprite;
-        int particleColor;
         atlasSprite = wireTexture;
-        particleColor = material.materialRGB;
 
-        return Pair.of(atlasSprite, particleColor);
+        return Pair.of(atlasSprite, 0xFFFFFF);
     }
 }

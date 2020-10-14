@@ -1,4 +1,4 @@
-package gregicadditions.machines;
+package gregicadditions.machines.multi;
 
 import gregicadditions.GAEnums;
 import gregicadditions.item.GAMetaBlocks;

@@ -1,16 +1,14 @@
 package gregicadditions.pipelike.opticalfiber;
 
-import com.google.common.base.Preconditions;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IOpticalFiberContainer;
 import gregicadditions.pipelike.opticalfiber.net.WorldOpticalFiberNet;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
 import gregicadditions.renderer.OpticalFiberRenderer;
-import gregtech.api.pipenet.block.material.BlockMaterialPipe;
+import gregtech.api.pipenet.block.simple.BlockSimplePipe;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.pipenet.tile.TileEntityPipeBase;
-import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -27,44 +25,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
+public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, OpticalFiberProperties, WorldOpticalFiberNet> implements ITileEntityProvider {
 
-public class BlockOpticalFiber extends BlockMaterialPipe<OpticalFiberSize, OpticalFiberProperties, WorldOpticalFiberNet> implements ITileEntityProvider {
-
-    private final Map<Material, OpticalFiberProperties> enabledMaterials = new TreeMap<>();
 
     public BlockOpticalFiber() {
         setHarvestLevel("cutter", 1);
     }
 
-    public void addCableMaterial(Material material, OpticalFiberProperties opticalFiberProperties) {
-        Preconditions.checkNotNull(material, "material");
-        Preconditions.checkNotNull(opticalFiberProperties, "wireProperties");
-        Preconditions.checkArgument(Material.MATERIAL_REGISTRY.getNameForObject(material) != null, "material is not registered");
-        this.enabledMaterials.put(material, opticalFiberProperties);
-    }
-
-    public Collection<Material> getEnabledMaterials() {
-        return Collections.unmodifiableSet(enabledMaterials.keySet());
-    }
 
     @Override
     public Class<OpticalFiberSize> getPipeTypeClass() {
         return OpticalFiberSize.class;
     }
 
-    @Override
-    protected OpticalFiberProperties createProperties(OpticalFiberSize opticalFiberSize, Material material) {
-        return opticalFiberSize.modifyProperties(enabledMaterials.getOrDefault(material, getFallbackType()));
-    }
-
-    @Override
-    protected OpticalFiberProperties getFallbackType() {
-        return enabledMaterials.values().iterator().next();
-    }
 
     @Override
     public WorldOpticalFiberNet getWorldPipeNet(World world) {
@@ -73,11 +46,16 @@ public class BlockOpticalFiber extends BlockMaterialPipe<OpticalFiberSize, Optic
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-        for (Material material : enabledMaterials.keySet()) {
-            for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
-                items.add(getItem(opticalFiberSize, material));
-            }
+        for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
+            items.add(getItem(opticalFiberSize));
         }
+    }
+
+    public ItemStack getItem(OpticalFiberSize pipeType) {
+        if (pipeType == null) {
+            return ItemStack.EMPTY;
+        }
+        return new ItemStack(this, 1, pipeType.ordinal());
     }
 
     @Override
@@ -107,6 +85,15 @@ public class BlockOpticalFiber extends BlockMaterialPipe<OpticalFiberSize, Optic
     @Override
     public TileEntityPipeBase<OpticalFiberSize, OpticalFiberProperties> createNewTileEntity(boolean supportsTicking) {
         return supportsTicking ? new TileEntityOpticalFiberTickable() : new TileEntityOpticalFiber();
+    }
+
+    protected OpticalFiberProperties createProperties(OpticalFiberSize insulation) {
+        return insulation.modifyProperties(getFallbackType());
+    }
+
+    @Override
+    protected OpticalFiberProperties getFallbackType() {
+        return new OpticalFiberProperties(1, 1);
     }
 
     @Override

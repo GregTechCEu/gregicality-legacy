@@ -5,7 +5,7 @@ import gregtech.api.unification.ore.OrePrefix;
 
 public enum OpticalFiberSize implements IMaterialPipeType<OpticalFiberProperties> {
 
-    WIRE_SINGLE("optical_fiber_single", 0.75f, 1, OrePrefix.valueOf("opticalFiberSingle")),
+    WIRE_SINGLE("optical_fiber_single", 0.075f, 1, OrePrefix.valueOf("opticalFiberSingle")),
     WIRE_DOUBLE("optical_fiber_double", 0.1f, 2, OrePrefix.valueOf("opticalFiberDouble")),
     WIRE_QUADRUPLE("optical_fiber_quadruple", 0.15f, 4, OrePrefix.valueOf("opticalFiberQuadruple")),
     WIRE_OCTAL("optical_fiber_octal", 0.2f, 8, OrePrefix.valueOf("opticalFiberOctal")),
