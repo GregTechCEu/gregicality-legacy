@@ -279,6 +279,32 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
     public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
 
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM;
+
+    public static MetaItem<?>.MetaValueItem HASOC;
+    public static MetaItem<?>.MetaValueItem HASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHASOC;
+    public static MetaItem<?>.MetaValueItem UHASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHPIC;
+    public static MetaItem<?>.MetaValueItem UHPIC_WAFER;
+    public static MetaItem<?>.MetaValueItem ARAM;
+    public static MetaItem<?>.MetaValueItem ARAM_WAFER;
+
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");
@@ -288,6 +314,8 @@ public class GAMetaItems {
         armor.setRegistryName("ga_armor");
         GADustItem dustItem = new GADustItem((short) 0);
         dustItem.setRegistryName("ga_dust");
+        GAMetaItem2 item2 = new GAMetaItem2((short) 0);
+        item2.setRegistryName("ga_meta_item2");
     }
 
     public static void registerOreDict() {

@@ -4,8 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
@@ -57,8 +57,9 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
-    private static final int MAX_TEMPERATURE = GAConfig.multis.voidMiner.maxTemp;
+    private final int maxTemperature;
     private static final int CONSUME_START = 100;
+    private final int tier;
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
     protected IItemHandlerModifiable outputInventory;
@@ -67,11 +68,14 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     private boolean usingPyrotheum = true;
     private int temperature = 0;
     private double currentDrillingFluid = CONSUME_START;
-    private final long energyDrain = GTValues.V[GTValues.UV];
+    private final long energyDrain;
 
 
-    public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId, int tier, int temp) {
         super(metaTileEntityId);
+        this.tier = tier;
+        this.energyDrain = GAValues.V[tier];
+        this.maxTemperature = temp;
     }
 
     @Override
@@ -157,7 +161,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 if (currentDrillingFluid < CONSUME_START) {
                     currentDrillingFluid = CONSUME_START;
                 }
-                if (temperature > MAX_TEMPERATURE) {
+                if (temperature > maxTemperature) {
                     overheat = true;
                     currentDrillingFluid = CONSUME_START;
                     return;
@@ -165,7 +169,6 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 usingPyrotheum = !usingPyrotheum;
 
                 //mine
-
 
                 int nbOres = temperature / 1000;
 
@@ -229,7 +232,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, MAX_TEMPERATURE));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, maxTemperature));
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.drilling_fluid_amount", currentDrillingFluid));
             if (overheat) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
@@ -250,7 +253,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityVoidMiner(metaTileEntityId);
+        return new MetaTileEntityVoidMiner(metaTileEntityId, this.tier, this.maxTemperature);
     }
 
     @Override

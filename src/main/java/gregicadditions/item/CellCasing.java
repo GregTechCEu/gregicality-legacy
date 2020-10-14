@@ -56,7 +56,11 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
         CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
         CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
         CELL_UHV("cell_uhv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 6)), GAValues.UHV),
-        CELL_UEV("cell_uev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 7)), GAValues.UEV);
+        CELL_UEV("cell_uev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 7)), GAValues.UEV),
+        CELL_UIV("cell_uiv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 8)), GAValues.UIV),
+        CELL_UMV("cell_umv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 9)), GAValues.UMV),
+        CELL_UXV("cell_uxv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 10)), GAValues.UXV),
+        CELL_MAX("cell_max", Math.min((long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 11)), Long.MAX_VALUE), GAValues.MAX);
 
         private final String name;
         private final long storage;
