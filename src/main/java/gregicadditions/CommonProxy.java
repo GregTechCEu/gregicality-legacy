@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import static gregicadditions.item.GAMetaBlocks.GA_ORES;
+import static gregicadditions.item.GAMetaBlocks.OPTICAL_FIBER;
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class CommonProxy {
@@ -76,6 +77,7 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.ROBOT_ARM_CASING);
         registry.register(GAMetaBlocks.SENSOR_CASING);
         registry.register(GAMetaBlocks.EMITTER_CASING);
+        registry.register(OPTICAL_FIBER);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
         GA_ORES.forEach(registry::register);
     }
