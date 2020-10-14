@@ -388,6 +388,18 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public int replicationTimeFactor = 750;
 
+        @Config.Name("Enable RockBreaker")
+        @Config.RequiresMcRestart
+        public boolean enableRockBreaker = true;
+        @Config.Name("Enable RockBreaker high tier")
+        @Config.RequiresMcRestart
+        public boolean enableRockBreakerHighTier = true;
+
+        @Config.Comment("Whether or not to generate all minecraft stones with lava flooding")
+        @Config.Name("Generate minecraft stones with lava flow")
+        @Config.RequiresMcRestart
+        public boolean multiStoneGen = true;
+
     }
 
     public static Multis multis = new Multis();
