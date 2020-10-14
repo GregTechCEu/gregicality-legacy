@@ -2,16 +2,16 @@ package gregicadditions.capabilities;
 
 import net.minecraft.util.EnumFacing;
 
-public interface IOpticalFiberContainer {
+public interface IQubitContainer {
 
     /**
      * @return amount of used amperes. 0 if not accepted anything.
      */
-    long acceptEnergyFromNetwork(EnumFacing side, long voltage, long amperage);
+    long acceptQubitFromNetwork(EnumFacing side, long voltage, long parallel);
 
-    boolean inputsEnergy(EnumFacing side);
+    boolean inputsQubit(EnumFacing side);
 
-    default boolean outputsEnergy(EnumFacing side) {
+    default boolean outputsQubit(EnumFacing side) {
         return false;
     }
 
@@ -19,66 +19,66 @@ public interface IOpticalFiberContainer {
      * @param differenceAmount amount of energy to add (>0) or remove (<0)
      * @return amount of energy added or removed
      */
-    long changeEnergy(long differenceAmount);
+    long changeQubit(long differenceAmount);
 
     /**
      * Adds specified amount of energy to this energy container
      *
-     * @param energyToAdd amount of energy to add
+     * @param qubitToAdd amount of energy to add
      * @return amount of energy added
      */
-    default long addEnergy(long energyToAdd) {
-        return changeEnergy(energyToAdd);
+    default long addQubit(long qubitToAdd) {
+        return changeQubit(qubitToAdd);
     }
 
     /**
      * Removes specified amount of energy from this energy container
      *
-     * @param energyToRemove amount of energy to remove
+     * @param qubitToRemove amount of energy to remove
      * @return amount of energy removed
      */
-    default long removeEnergy(long energyToRemove) {
-        return changeEnergy(-energyToRemove);
+    default long removeQubit(long qubitToRemove) {
+        return changeQubit(-qubitToRemove);
     }
 
-    default long getEnergyCanBeInserted() {
-        return getEnergyCapacity() - getEnergyStored();
+    default long getQubitCanBeInserted() {
+        return getQubitCapacity() - getQubitStored();
     }
 
     /**
      * Gets the stored electric energy
      */
-    long getEnergyStored();
+    long getQubitStored();
 
     /**
      * Gets the largest electric energy capacity
      */
-    long getEnergyCapacity();
+    long getQubitCapacity();
 
     /**
      * Gets the amount of energy packets per tick.
      */
-    default long getOutputAmperage() {
+    default long getOutputParallel() {
         return 0L;
     }
 
     /**
      * Gets the output in energy units per energy packet.
      */
-    default long getOutputVoltage() {
+    default long getOutputQubit() {
         return 0L;
     }
 
     /**
      * Gets the amount of energy packets this machine can receive
      */
-    long getInputAmperage();
+    long getInputParallel();
 
     /**
      * Gets the maximum voltage this machine can receive in one energy packet.
      * Overflowing this value will explode machine.
      */
-    long getInputVoltage();
+    long getInputQubit();
 
     default boolean isOneProbeHidden() {
         return false;

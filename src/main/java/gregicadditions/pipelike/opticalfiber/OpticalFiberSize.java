@@ -13,13 +13,13 @@ public enum OpticalFiberSize implements IMaterialPipeType<OpticalFiberProperties
 
     public final String name;
     public final float thickness;
-    public final int amperage;
+    public final int parallel;
     public final OrePrefix orePrefix;
 
-    OpticalFiberSize(String name, float thickness, int amperage, OrePrefix orePrefix) {
+    OpticalFiberSize(String name, float thickness, int parallel, OrePrefix orePrefix) {
         this.name = name;
         this.thickness = thickness;
-        this.amperage = amperage;
+        this.parallel = parallel;
         this.orePrefix = orePrefix;
     }
 
@@ -41,8 +41,8 @@ public enum OpticalFiberSize implements IMaterialPipeType<OpticalFiberProperties
 
     @Override
     public OpticalFiberProperties modifyProperties(OpticalFiberProperties baseProperties) {
-        return new OpticalFiberProperties(baseProperties.voltage,
-                baseProperties.amperage * amperage);
+        return new OpticalFiberProperties(baseProperties.qubit,
+                baseProperties.parallel * parallel);
     }
 
     @Override

@@ -17,18 +17,18 @@ import java.util.Stack;
 
 public class OpticalFiberNet extends PipeNet<OpticalFiberProperties> {
 
-    private final PerTickLongCounter currentAmperageCounter = new PerTickLongCounter(0L);
-    private final PerTickLongCounter currentMaxVoltageCounter = new PerTickLongCounter(0L);
+    private final PerTickLongCounter currentParallelCounter = new PerTickLongCounter(0L);
+    private final PerTickLongCounter currentMaxQubitCounter = new PerTickLongCounter(0L);
 
     protected OpticalFiberNet(WorldPipeNet<OpticalFiberProperties, OpticalFiberNet> world) {
         super(world);
     }
 
-    public void incrementCurrentAmperage(long amperage, long voltage) {
-        currentAmperageCounter.increment(worldData.getWorld(), amperage);
-        long currentMaxVoltage = currentMaxVoltageCounter.get(worldData.getWorld());
-        if (voltage > currentMaxVoltage) {
-            currentMaxVoltageCounter.set(worldData.getWorld(), voltage);
+    public void incrementCurrentAmperage(long parallel, long voltage) {
+        currentParallelCounter.increment(worldData.getWorld(), parallel);
+        long currentMaxQubit = currentMaxQubitCounter.get(worldData.getWorld());
+        if (voltage > currentMaxQubit) {
+            currentMaxQubitCounter.set(worldData.getWorld(), voltage);
         }
     }
 
@@ -75,14 +75,14 @@ public class OpticalFiberNet extends PipeNet<OpticalFiberProperties> {
 
     @Override
     protected void writeNodeData(OpticalFiberProperties nodeData, NBTTagCompound tagCompound) {
-        tagCompound.setInteger("voltage", nodeData.voltage);
-        tagCompound.setInteger("amperage", nodeData.amperage);
+        tagCompound.setInteger("qubit", nodeData.qubit);
+        tagCompound.setInteger("parallel", nodeData.parallel);
     }
 
     @Override
     protected OpticalFiberProperties readNodeData(NBTTagCompound tagCompound) {
-        int voltage = tagCompound.getInteger("voltage");
-        int amperage = tagCompound.getInteger("amperage");
-        return new OpticalFiberProperties(voltage, amperage);
+        int qubit = tagCompound.getInteger("qubit");
+        int parallel = tagCompound.getInteger("parallel");
+        return new OpticalFiberProperties(qubit, parallel);
     }
 }

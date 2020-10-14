@@ -32,8 +32,8 @@ public class ItemBlockOpticalFiber extends ItemBlockPipe<OpticalFiberSize, Optic
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         OpticalFiberProperties opticalFiberProperties = blockPipe.createItemProperties(stack);
-        String voltageName = GTValues.VN[GTUtility.getTierByVoltage(opticalFiberProperties.voltage)];
-        tooltip.add(I18n.format("gregtech.cable.voltage", opticalFiberProperties.voltage, voltageName));
-        tooltip.add(I18n.format("gregtech.cable.amperage", opticalFiberProperties.amperage));
+        String voltageName = GTValues.VN[GTUtility.getTierByVoltage(opticalFiberProperties.qubit)];
+        tooltip.add(I18n.format("gtaddition.optical_fiber.qubit", opticalFiberProperties.qubit, voltageName));
+        tooltip.add(I18n.format("gtaddition.optical_fiber.parallel", opticalFiberProperties.parallel));
     }
 }
