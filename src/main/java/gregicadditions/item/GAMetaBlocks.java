@@ -38,6 +38,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.ArrayUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -225,7 +226,7 @@ public class GAMetaBlocks {
     public static void registerStateMappers() {
         ModelLoader.setCustomStateMapper(OPTICAL_FIBER, new DefaultStateMapper() {
             @Override
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+            protected @NotNull ModelResourceLocation getModelResourceLocation(IBlockState state) {
                 return OpticalFiberRenderer.MODEL_LOCATION;
             }
         });
