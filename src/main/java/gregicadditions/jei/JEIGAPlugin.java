@@ -2,9 +2,13 @@ package gregicadditions.jei;
 
 import gregicadditions.Gregicality;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
+import gregicadditions.machines.multi.qubit.QubitRecipeLogic;
 import gregicadditions.recipes.nuclear.GTHotCoolantRecipeWrapper;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMapCategory;
+import gregicadditions.recipes.qubit.GTQubitRecipeWrapper;
+import gregicadditions.recipes.qubit.QubitRecipeMap;
+import gregicadditions.recipes.qubit.QubitRecipeMapCategory;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
@@ -36,6 +40,10 @@ public class JEIGAPlugin implements IModPlugin {
         for (HotCoolantRecipeMap hotCoolantRecipeMap : HotCoolantRecipeMap.getRecipeMaps()) {
             registry.addRecipeCategories(new HotCoolantRecipeMapCategory(hotCoolantRecipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
+
+        for (QubitRecipeMap qubitRecipeMap : QubitRecipeMap.getRecipeMaps()) {
+            registry.addRecipeCategories(new QubitRecipeMapCategory(qubitRecipeMap, registry.getJeiHelpers().getGuiHelper()));
+        }
     }
 
 
@@ -53,6 +61,14 @@ public class JEIGAPlugin implements IModPlugin {
             registry.addRecipes(recipeList, Gregicality.MODID + ":" + hotCoolantRecipeMap.unlocalizedName);
         }
 
+        for (QubitRecipeMap recipeMap : QubitRecipeMap.getRecipeMaps()) {
+            List<GTQubitRecipeWrapper> recipesList = recipeMap.getRecipeList()
+                    .stream().filter(recipe -> !recipe.isHidden() && recipe.hasValidInputsForDisplay())
+                    .map(r -> new GTQubitRecipeWrapper(recipeMap, r))
+                    .collect(Collectors.toList());
+            registry.addRecipes(recipesList, Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+        }
+
         for (ResourceLocation metaTileEntityId : GregTechAPI.META_TILE_ENTITY_REGISTRY.getKeys()) {
             MetaTileEntity metaTileEntity = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObject(metaTileEntityId);
             //noinspection ConstantConditions
@@ -62,8 +78,14 @@ public class JEIGAPlugin implements IModPlugin {
                     HotCoolantRecipeMap recipeMap = ((HotCoolantRecipeLogic) workableCapability).recipeMap;
                     registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
                 }
+                if (workableCapability instanceof QubitRecipeLogic) {
+                    QubitRecipeMap recipeMap = ((QubitRecipeLogic) workableCapability).recipeMap;
+                    registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                }
             }
         }
+
+
     }
 
     @Override

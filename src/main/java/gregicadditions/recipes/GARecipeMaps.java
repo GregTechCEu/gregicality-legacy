@@ -6,6 +6,8 @@ import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregicadditions.recipes.map.RecipeMapAssemblyLine;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
+import gregicadditions.recipes.qubit.QubitRecipeBuilder;
+import gregicadditions.recipes.qubit.QubitRecipeMap;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -14,7 +16,6 @@ import gregtech.api.recipes.builders.AssemblerRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
-import net.minecraft.client.gui.Gui;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -74,6 +75,8 @@ public class GARecipeMaps {
     public static final LargeRecipeMap LARGE_CENTRIFUGE_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> BIO_REACTOR_RECIPES;
+    @ZenProperty
+    public static final QubitRecipeMap SIMPLE_QUBIT_GENERATOT;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -123,7 +126,9 @@ public class GARecipeMaps {
 
         BIO_REACTOR_RECIPES = new RecipeMap<>("bio_reactor", 0, 3, 0,
                 3, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
-                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);;
+                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+
+        SIMPLE_QUBIT_GENERATOT = new QubitRecipeMap("simple_qubit_generator", 1, 1, 0, 0, new QubitRecipeBuilder());
 
     }
 }
