@@ -143,8 +143,22 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
             fluidStack.amount = Math.max(64000, fluidStack.amount * 4);
+
+            //BIOWARE     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
                     .outputs(BIOWARE_CIRCUIT.getStackForm(1))
+                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
+                            SMD_TRANSISTOR_BIOWARE.getStackForm(8),
+                            SMD_CAPACITOR_BIOWARE.getStackForm(4),
+                            NEURO_PROCESSOR.getStackForm(),
+                            UHASOC.getStackForm(1))
+                    .input(wireFine, NaquadahAlloy, 4)
+                    .fluidInputs(fluidStack).buildAndRegister();
+
+            //COSMIC     //PROCESSOR
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
+                    .outputs(COSMIC_CIRCUIT.getStackForm(1))
+                    .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
                             SMD_CAPACITOR_BIOWARE.getStackForm(4),
@@ -178,6 +192,9 @@ public class Circuits {
         //MAINFRAME
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2000).EUt(300000).outputs(WETWARE_MAINFRAME_MAX.getStackForm()).inputs(WETWARE_SUPER_COMPUTER_UV.getStackForm(2), SMD_RESISTOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_DIODE_WETWARE.getStackForm(64), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), GRAVI_STAR.getStackForm(4)).input(frameGt, Tritanium, 4).input(plate, Duranium, 32).input(wireGtSingle, UVSuperconductor, 64).input(foil, Polytetrafluoroethylene, 64).fluidInputs(SterileGrowthMedium.getFluid(2000), UUMatter.getFluid(1000)).buildAndRegister();
 
+
+        //BIOWARE
+        //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(BIOWARE_CIRCUIT.getStackForm(3))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
@@ -198,6 +215,7 @@ public class Circuits {
                 .duration(400)
                 .buildAndRegister();
 
+        //COMPUTER
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(BIOWARE_PROCESSOR.getStackForm(4))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
@@ -220,6 +238,7 @@ public class Circuits {
                 .duration(600)
                 .buildAndRegister();
 
+        //MAINFRAME
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(BIOWARE_PROCESSOR_ARRAY.getStackForm(2))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
@@ -241,6 +260,29 @@ public class Circuits {
                 .fluidInputs(Naquadria.getFluid(1000))
                 .EUt(1500000)
                 .duration(800)
+                .buildAndRegister();
+
+        //COSMIC ASSEMBLY
+        //PROCESSOR
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(COSMIC_CIRCUIT.getStackForm(3))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(16))
+                .inputs(NEURO_PROCESSOR.getStackForm())
+                .input(wireGtSingle, UVSuperconductor, 4)
+                .inputs(ARAM.getStackForm(32))
+                .input(plate, Duranium, 2)
+                .input(foil, Polybenzimidazole, 16)
+                .outputs(COSMIC_PROCESSOR.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(1000))
+                .fluidInputs(Titanium.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(2500))
+                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .qubit(16)
+                .EUt(240000)
+                .duration(400)
                 .buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 2
