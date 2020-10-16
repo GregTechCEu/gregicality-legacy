@@ -347,10 +347,16 @@ metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
 metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
 
 ##cosmic
-metaitem.circuit.circuit.cosmic.name=Cosmic Circuit
 metaitem.circuit.processor.cosmic.name=Cosmic Processor
 metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
-metaitem.circuit.mainframe.cosmic.name=Cosmic Computer
+metaitem.circuit.computer.cosmic.name=Cosmic Computer
+metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
+
+#bioware
+metaitem.circuit.processor.bioware.name=Bioware Processor
+metaitem.circuit.assembly.bioware.name=Bioware Assembly
+metaitem.circuit.computer.bioware.name=Bioware Computer
+metaitem.circuit.mainframe.bioware.name=Bioware Mainframe
 
 ####################################################################
 
