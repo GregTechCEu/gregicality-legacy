@@ -144,7 +144,7 @@ public class Circuits {
             //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
             fluidStack.amount = Math.max(64000, fluidStack.amount * 4);
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
-                    .outputs(BIOWARE_CIRCUIT.getStackForm(1))
+                    .outputs(BIOWARE_PROCESSOR.getStackForm(1))
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
                             SMD_CAPACITOR_BIOWARE.getStackForm(4),
@@ -179,7 +179,7 @@ public class Circuits {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2000).EUt(300000).outputs(WETWARE_MAINFRAME_MAX.getStackForm()).inputs(WETWARE_SUPER_COMPUTER_UV.getStackForm(2), SMD_RESISTOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_DIODE_WETWARE.getStackForm(64), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(8), GRAVI_STAR.getStackForm(4)).input(frameGt, Tritanium, 4).input(plate, Duranium, 32).input(wireGtSingle, UVSuperconductor, 64).input(foil, Polytetrafluoroethylene, 64).fluidInputs(SterileGrowthMedium.getFluid(2000), UUMatter.getFluid(1000)).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_CIRCUIT.getStackForm(3))
+                .inputs(BIOWARE_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
@@ -189,7 +189,7 @@ public class Circuits {
                 .inputs(ARAM.getStackForm(32))
                 .input(plate, Duranium, 2)
                 .input(foil, Polybenzimidazole, 16)
-                .outputs(BIOWARE_PROCESSOR.getStackForm())
+                .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1000))
                 .fluidInputs(Plastic.getFluid(2500))
@@ -199,7 +199,7 @@ public class Circuits {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_PROCESSOR.getStackForm(4))
+                .inputs(BIOWARE_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(32))
@@ -211,7 +211,7 @@ public class Circuits {
                 .input(plate, Tritanium, 2)
                 .input(foil, Polybenzimidazole, 16)
                 .inputs(GRAVI_STAR.getStackForm(2))
-                .outputs(BIOWARE_PROCESSOR_ARRAY.getStackForm())
+                .outputs(BIOWARE_COMPUTER.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Tritanium.getFluid(288))
                 .fluidInputs(Polybenzimidazole.getFluid(1500))
@@ -221,7 +221,7 @@ public class Circuits {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_PROCESSOR_ARRAY.getStackForm(2))
+                .inputs(BIOWARE_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(64))

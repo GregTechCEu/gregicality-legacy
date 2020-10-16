@@ -196,14 +196,14 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
-    public static MetaItem<?>.MetaValueItem COSMIC_CIRCUIT;
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem COSMIC_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem COSMIC_COMPUTER;
     public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
 
-    public static MetaItem<?>.MetaValueItem BIOWARE_CIRCUIT;
     public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem BIOWARE_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem BIOWARE_COMPUTER;
     public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
 
     public static MetaItem<?>.MetaValueItem WAFER_AMERICIUM;

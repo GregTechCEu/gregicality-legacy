@@ -165,9 +165,9 @@ public class GAMetaItem extends MaterialMetaItem {
         WAFER_EUROPIUM = addItem(334, "wafer.europium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
-        COSMIC_CIRCUIT = addItem(336, "circuit.circuit.cosmic");
-        COSMIC_PROCESSOR = addItem(337, "circuit.processor.cosmic");
-        COSMIC_PROCESSOR_ARRAY = addItem(338, "circuit.assembly.cosmic");
+        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic");
+        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic");
+        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic");
         COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic");
 
         BOULE_AMERICIUM = addItem(340, "boule.americium");
@@ -244,10 +244,11 @@ public class GAMetaItem extends MaterialMetaItem {
         CLEAN_CULTURE = addItem(399, "clean.culture");
         PIEZOELECTRIC_CRYSTAL = addItem(400, "piezoelectric.crystal");
 
-        BIOWARE_CIRCUIT = addItem(401, "circuit.circuit.bioware");
-        BIOWARE_PROCESSOR = addItem(402, "circuit.processor.bioware");
-        BIOWARE_PROCESSOR_ARRAY = addItem(403, "circuit.assembly.bioware");
+        BIOWARE_PROCESSOR = addItem(401, "circuit.processor.bioware");
+        BIOWARE_ASSEMBLY = addItem(402, "circuit.assembly.bioware");
+        BIOWARE_COMPUTER = addItem(403, "circuit.computer.bioware");
         BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware");
+
         SMD_TRANSISTOR_BIOWARE = addItem(405, "component.smd.transistor.bioware");
         SMD_CAPACITOR_BIOWARE = addItem(406, "component.smd.capacitor.bioware");
         SMD_RESISTOR_BIOWARE = addItem(407, "component.smd.resistor.bioware");
