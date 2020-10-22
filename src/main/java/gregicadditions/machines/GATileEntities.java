@@ -7,8 +7,6 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.energy.MetaTileEntityEnergyInputHatch;
-import gregicadditions.machines.energy.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.energy.MetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
@@ -24,7 +22,10 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyInputHatch;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
@@ -168,6 +169,10 @@ public class GATileEntities {
     public static MetaTileEntityMultiFurnace MULTI_FURNACE;
     public static MetaTileEntityDieselEngine DIESEL_ENGINE;
     public static MetaTileEntityPyrolyseOven PYROLYSE_OVEN;
+
+    //optical fiber
+    public static MetaTileEntityQubitHatch[] QBIT_INPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
+    public static MetaTileEntityQubitHatch[] QBIT_OUTPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
 
     public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
     public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
@@ -411,11 +416,11 @@ public class GATileEntities {
             CHEMICAL_REACTOR[5] = GregTechAPI.registerMetaTileEntity(2065, new SimpleMachineMetaTileEntity(location("chemical_reactor.luv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 6));
             CHEMICAL_REACTOR[6] = GregTechAPI.registerMetaTileEntity(2066, new SimpleMachineMetaTileEntity(location("chemical_reactor.zpm"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 7));
             CHEMICAL_REACTOR[7] = GregTechAPI.registerMetaTileEntity(2067, new SimpleMachineMetaTileEntity(location("chemical_reactor.uv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 8));
-            CHEMICAL_REACTOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3304, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uhv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 9));
-            CHEMICAL_REACTOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3305, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uev"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 10));
-            CHEMICAL_REACTOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3306, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uiv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 11));
-            CHEMICAL_REACTOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3307, new GASimpleMachineMetaTileEntity(location("chemical_reactor.umv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 12));
-            CHEMICAL_REACTOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3308, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uxv"), RecipeMaps.CHEMICAL_RECIPES,  Textures.CHEMICAL_REACTOR_OVERLAY, 13));
+            CHEMICAL_REACTOR_HIGHTIER[0] = GregTechAPI.registerMetaTileEntity(3304, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uhv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 9));
+            CHEMICAL_REACTOR_HIGHTIER[1] = GregTechAPI.registerMetaTileEntity(3305, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uev"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 10));
+            CHEMICAL_REACTOR_HIGHTIER[2] = GregTechAPI.registerMetaTileEntity(3306, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uiv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 11));
+            CHEMICAL_REACTOR_HIGHTIER[3] = GregTechAPI.registerMetaTileEntity(3307, new GASimpleMachineMetaTileEntity(location("chemical_reactor.umv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 12));
+            CHEMICAL_REACTOR_HIGHTIER[4] = GregTechAPI.registerMetaTileEntity(3308, new GASimpleMachineMetaTileEntity(location("chemical_reactor.uxv"), RecipeMaps.CHEMICAL_RECIPES, Textures.CHEMICAL_REACTOR_OVERLAY, 13));
 
         }
 
@@ -1064,6 +1069,10 @@ public class GATileEntities {
             ROCK_BREAKER[6] = GregTechAPI.registerMetaTileEntity(4006, new MetaTileEntityRockBreaker(location("rock_breaker.zpm"), 7));
             ROCK_BREAKER[7] = GregTechAPI.registerMetaTileEntity(4007, new MetaTileEntityRockBreaker(location("rock_breaker.uv"), 8));
         }
+
+        QBIT_INPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4016, new MetaTileEntityQubitHatch(location("qubit_hatch.input.16"), 0, 16, false));
+        QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4017, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
+
     }
 
 

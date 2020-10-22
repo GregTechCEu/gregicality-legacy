@@ -53,6 +53,7 @@ public class JEIGAPlugin implements IModPlugin {
             registry.addRecipes(recipeList, Gregicality.MODID + ":" + hotCoolantRecipeMap.unlocalizedName);
         }
 
+
         for (ResourceLocation metaTileEntityId : GregTechAPI.META_TILE_ENTITY_REGISTRY.getKeys()) {
             MetaTileEntity metaTileEntity = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObject(metaTileEntityId);
             //noinspection ConstantConditions
@@ -64,6 +65,8 @@ public class JEIGAPlugin implements IModPlugin {
                 }
             }
         }
+
+
     }
 
     @Override

@@ -1,7 +1,7 @@
 package gregicadditions.pipelike.opticalfiber.tile;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.IOpticalFiberContainer;
+import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.net.OpticalFiberNet;
@@ -18,41 +18,41 @@ import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.List;
 
-public class CableOpticalFiberContainer implements IOpticalFiberContainer {
+public class CableQubitContainer implements IQubitContainer {
 
     private final IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable;
-    private WeakReference<OpticalFiberNet> currentEnergyNet = new WeakReference<>(null);
+    private WeakReference<OpticalFiberNet> currentOpticalFiberNet = new WeakReference<>(null);
     private long lastCachedUpdate;
     private List<RoutePath> pathsCache;
 
-    public CableOpticalFiberContainer(IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable) {
+    public CableQubitContainer(IPipeTile<OpticalFiberSize, OpticalFiberProperties> tileEntityCable) {
         this.tileEntityCable = tileEntityCable;
     }
 
     @Override
-    public long acceptEnergyFromNetwork(EnumFacing side, long voltage, long amperage) {
-        OpticalFiberNet opticalFiberNet = getEnergyNet();
+    public long acceptQubitFromNetwork(EnumFacing side, long qubit, long parallel) {
+        OpticalFiberNet opticalFiberNet = getQubitNet();
         if (opticalFiberNet == null) {
             return 0L;
         }
         List<RoutePath> paths = getPaths();
-        long amperesUsed = 0;
+        long currentParallel = 0;
         for (RoutePath routePath : paths) {
             BlockPos destinationPos = routePath.destination;
             int blockedConnections = opticalFiberNet.getAllNodes().get(destinationPos).blockedConnections;
-            amperesUsed += dispatchEnergyToNode(destinationPos, blockedConnections, voltage, amperage - amperesUsed);
+            currentParallel += dispatchQubitToNode(destinationPos, blockedConnections, qubit, parallel - currentParallel);
 
-            if (amperesUsed == amperage) {
+            if (currentParallel == parallel) {
                 break; //do not continue if all amperes are exhausted
             }
         }
-        opticalFiberNet.incrementCurrentAmperage(amperage, voltage);
-        return amperesUsed;
+        opticalFiberNet.incrementCurrentAmperage(parallel, qubit);
+        return currentParallel;
     }
 
 
-    private long dispatchEnergyToNode(BlockPos nodePos, int nodeBlockedConnections, long voltage, long amperage) {
-        long amperesUsed = 0L;
+    private long dispatchQubitToNode(BlockPos nodePos, int nodeBlockedConnections, long voltage, long amperage) {
+        long currentParallel = 0L;
         //use pooled mutable to avoid creating new objects every tick
         World world = tileEntityCable.getPipeWorld();
         PooledMutableBlockPos blockPos = PooledMutableBlockPos.retain();
@@ -68,51 +68,51 @@ public class CableOpticalFiberContainer implements IOpticalFiberContainer {
             if (tileEntity == null || tileEntityCable.getPipeBlock().getPipeTileEntity(tileEntity) != null) {
                 continue; //do not emit into other cable tile entities
             }
-            IOpticalFiberContainer energyContainer = tileEntity.getCapability(GregicAdditionsCapabilities.OPTICAL_FIBER_CAPABILITY, facing.getOpposite());
-            if (energyContainer == null) continue;
-            amperesUsed += energyContainer.acceptEnergyFromNetwork(facing.getOpposite(), voltage, amperage - amperesUsed);
-            if (amperesUsed == amperage)
+            IQubitContainer qubitContainer = tileEntity.getCapability(GregicAdditionsCapabilities.QBIT_CAPABILITY, facing.getOpposite());
+            if (qubitContainer == null) continue;
+            currentParallel += qubitContainer.acceptQubitFromNetwork(facing.getOpposite(), voltage, amperage - currentParallel);
+            if (currentParallel == amperage)
                 break;
         }
         blockPos.release();
-        return amperesUsed;
+        return currentParallel;
     }
 
     @Override
-    public long getInputAmperage() {
-        return tileEntityCable.getNodeData().amperage;
+    public long getInputParallel() {
+        return tileEntityCable.getNodeData().parallel;
     }
 
     @Override
-    public long getInputVoltage() {
-        return tileEntityCable.getNodeData().voltage;
+    public long getInputQubit() {
+        return tileEntityCable.getNodeData().qubit;
     }
 
     @Override
-    public long getEnergyCapacity() {
-        return getInputVoltage() * getInputAmperage();
+    public long getQubitCapacity() {
+        return getInputQubit() * getInputParallel();
     }
 
     @Override
-    public long changeEnergy(long energyToAdd) {
+    public long changeQubit(long energyToAdd) {
         //just a fallback case if somebody will call this method
-        return acceptEnergyFromNetwork(EnumFacing.UP,
-                energyToAdd / getInputVoltage(),
-                energyToAdd / getInputAmperage()) * getInputVoltage();
+        return acceptQubitFromNetwork(EnumFacing.UP,
+                energyToAdd / getInputQubit(),
+                energyToAdd / getInputParallel()) * getInputQubit();
     }
 
     @Override
-    public boolean outputsEnergy(EnumFacing side) {
+    public boolean outputsQubit(EnumFacing side) {
         return true;
     }
 
     @Override
-    public boolean inputsEnergy(EnumFacing side) {
+    public boolean inputsQubit(EnumFacing side) {
         return true;
     }
 
     @Override
-    public long getEnergyStored() {
+    public long getQubitStored() {
         return 0;
     }
 
@@ -122,7 +122,7 @@ public class CableOpticalFiberContainer implements IOpticalFiberContainer {
     }
 
     private List<RoutePath> getPaths() {
-        OpticalFiberNet opticalFiberNet = getEnergyNet();
+        OpticalFiberNet opticalFiberNet = getQubitNet();
         if (opticalFiberNet == null) {
             return Collections.emptyList();
         }
@@ -132,17 +132,17 @@ public class CableOpticalFiberContainer implements IOpticalFiberContainer {
         return pathsCache;
     }
 
-    private OpticalFiberNet getEnergyNet() {
-        OpticalFiberNet currentOpticalFiberNet = this.currentEnergyNet.get();
-        if (currentOpticalFiberNet != null && currentOpticalFiberNet.isValid() &&
-                currentOpticalFiberNet.containsNode(tileEntityCable.getPipePos()))
-            return currentOpticalFiberNet; //return current net if it is still valid
+    private OpticalFiberNet getQubitNet() {
+        OpticalFiberNet opticalFiberNet = this.currentOpticalFiberNet.get();
+        if (opticalFiberNet != null && opticalFiberNet.isValid() &&
+                opticalFiberNet.containsNode(tileEntityCable.getPipePos()))
+            return opticalFiberNet; //return current net if it is still valid
         WorldOpticalFiberNet worldOpticalFiberNet = (WorldOpticalFiberNet) tileEntityCable.getPipeBlock().getWorldPipeNet(tileEntityCable.getPipeWorld());
-        currentOpticalFiberNet = worldOpticalFiberNet.getNetFromPos(tileEntityCable.getPipePos());
-        if (currentOpticalFiberNet != null) {
-            this.currentEnergyNet = new WeakReference<>(currentOpticalFiberNet);
+        opticalFiberNet = worldOpticalFiberNet.getNetFromPos(tileEntityCable.getPipePos());
+        if (opticalFiberNet != null) {
+            this.currentOpticalFiberNet = new WeakReference<>(opticalFiberNet);
         }
-        return currentOpticalFiberNet;
+        return opticalFiberNet;
     }
 
     @Override

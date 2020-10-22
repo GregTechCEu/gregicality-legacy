@@ -3,13 +3,13 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
@@ -35,7 +35,7 @@ import java.util.function.Predicate;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Steel;
 
-public class TileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
+public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblockController {
 
     public static final List<GAMultiblockCasing.CasingType> CASING_ALLOWED = Arrays.asList(GAMultiblockCasing.CasingType.TIERED_HULL_IV, GAMultiblockCasing.CasingType.TIERED_HULL_LUV, GAMultiblockCasing.CasingType.TIERED_HULL_ZPM, GAMultiblockCasing.CasingType.TIERED_HULL_UV, GAMultiblockCasing.CasingType.TIERED_HULL_MAX);
 

@@ -2177,6 +2177,10 @@ tile.ga_robot_arm_casing.robot_arm_luv.name=Robot Arm Block (LUV)
 tile.ga_robot_arm_casing.robot_arm_zpm.name=Robot Arm Block (ZPM)
 tile.ga_robot_arm_casing.robot_arm_uv.name=Robot Arm Block (UV)
 
-
+gtaddition.optical_fiber.qbit=Qubit: §a%d §7(§a%s§7)
+gtaddition.optical_fiber.parallel=Parallel Signal: §e%d
+gtaddition.top.qubit_stored=Qubit:
+gregtech.recipe.qubitProduce=Generation: %d qbit/t
+gregtech.recipe.qubitConsume=Usage: %d qbit/t
 
 
