@@ -10,7 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class QubitConsumeRecipeLogic extends MultiblockRecipeLogic {
 
 
-    private long recipeOutputQubit;
+    private long recipeQubit;
 
     public QubitConsumeRecipeLogic(RecipeMapMultiblockController metaTileEntity) {
         super(metaTileEntity);
@@ -27,7 +27,7 @@ public class QubitConsumeRecipeLogic extends MultiblockRecipeLogic {
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = super.serializeNBT();
         if (progressTime > 0) {
-            compound.setLong("RecipeQubit", this.recipeOutputQubit);
+            compound.setLong("RecipeQubit", this.recipeQubit);
         }
         return compound;
     }
@@ -38,7 +38,7 @@ public class QubitConsumeRecipeLogic extends MultiblockRecipeLogic {
         this.isActive = false;
         if (progressTime > 0) {
             this.isActive = true;
-            this.recipeOutputQubit = compound.getLong("RecipeQubit");
+            this.recipeQubit = compound.getLong("RecipeQubit");
         }
     }
 
