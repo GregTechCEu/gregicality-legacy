@@ -62,7 +62,8 @@ public class MetaTileEntityRockBreaker extends TieredMetaTileEntity {
             for (int i = 12; i < 16; i++) {
                 andesite = exportItems.insertItem(i, andesite, false);
             }
-            energyContainer.removeEnergy(getEnergyPerBlockBreak());
+            if (cobble.getCount() != stack || diorite.getCount() != stack || granite.getCount() != stack || andesite.getCount() != stack)
+                energyContainer.removeEnergy(getEnergyPerBlockBreak());
         }
     }
 
