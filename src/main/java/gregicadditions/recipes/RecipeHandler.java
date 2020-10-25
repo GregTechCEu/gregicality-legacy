@@ -430,7 +430,7 @@ public class RecipeHandler {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(3)
                 .input(OrePrefix.turbineBlade, material, 32)
-                .input(OrePrefix.stickLong, Europium)
+                .input(OrePrefix.stickLong, Rutherfordium)
                 .outputs(hugeTurbineRotorStackForm)
                 .duration(1600).EUt(3200)
                 .buildAndRegister();
