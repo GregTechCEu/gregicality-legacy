@@ -157,8 +157,8 @@ public class GARecipeAddition {
         ModHandler.removeFurnaceSmelting(MetaItems.FIRECLAY_BRICK.getStackForm());
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_to_dust"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_block_to_dust"));
-        ModHandler.addSmeltingRecipe(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm(), GAMetaItems.FIRECLAY_BRICK.getStackForm());
-        COMPRESSOR_RECIPES.recipeBuilder().input(dust, Fireclay).outputs(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm()).duration(100).EUt(2).buildAndRegister();
+//        ModHandler.addSmeltingRecipe(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm(), GAMetaItems.FIRECLAY_BRICK.getStackForm());
+//        COMPRESSOR_RECIPES.recipeBuilder().input(dust, Fireclay).outputs(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm()).duration(100).EUt(2).buildAndRegister();
         ModHandler.addShapedRecipe("quartz_sand", OreDictUnifier.get(dust, GAMaterials.QuartzSand), "S", "m", 'S', "sand");
         MACERATOR_RECIPES.recipeBuilder().duration(200).EUt(8).input("sand", 1).outputs(OreDictUnifier.get(dust, GAMaterials.QuartzSand)).chancedOutput(OreDictUnifier.get(dust, GAMaterials.QuartzSand), 2500, 500).chancedOutput(OreDictUnifier.get(dust, GAMaterials.QuartzSand), 2000, 500).buildAndRegister();
         ModHandler.addShapelessRecipe("glass_dust_ga", OreDictUnifier.get(dust, Glass), "dustSand", "dustFlint");

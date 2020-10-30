@@ -302,11 +302,11 @@ public class GAMetaItem extends MaterialMetaItem {
         ELITE_BOARD = addItem(34, "board.elite");
         MASTER_BOARD = addItem(35, "board.master");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
-        COMPRESSED_FIRECLAY = addItem(37, "compressed.fireclay");
-        FIRECLAY_BRICK = addItem(38, "brick.fireclay").setUnificationData(OrePrefix.ingot, Materials.Fireclay);
+//        COMPRESSED_FIRECLAY = addItem(37, "compressed.fireclay");
+//        FIRECLAY_BRICK = addItem(38, "brick.fireclay").setUnificationData(OrePrefix.ingot, Materials.Fireclay);
 
         MetaItems.COMPRESSED_CLAY.setInvisible();
-        MetaItems.COMPRESSED_FIRECLAY.setInvisible();
+//        MetaItems.COMPRESSED_FIRECLAY.setInvisible();
 
 
         MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
