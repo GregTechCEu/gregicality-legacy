@@ -1,7 +1,6 @@
 package gregicadditions.recipes;
 
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItem;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.GATileEntities;
