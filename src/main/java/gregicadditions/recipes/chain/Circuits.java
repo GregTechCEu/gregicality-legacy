@@ -146,7 +146,7 @@ public class Circuits {
 
             //BIOWARE     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
-                    .outputs(BIOWARE_CIRCUIT.getStackForm(1))
+                    .outputs(BIOWARE_PROCESSOR.getStackForm(1))
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
                             SMD_CAPACITOR_BIOWARE.getStackForm(4),
@@ -157,7 +157,7 @@ public class Circuits {
 
             //COSMIC     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
-                    .outputs(COSMIC_CIRCUIT.getStackForm(1))
+                    .outputs(COSMIC_PROCESSOR.getStackForm(1))
                     .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
@@ -196,7 +196,7 @@ public class Circuits {
         //BIOWARE
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_CIRCUIT.getStackForm(3))
+                .inputs(BIOWARE_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
@@ -206,7 +206,7 @@ public class Circuits {
                 .inputs(ARAM.getStackForm(32))
                 .input(plate, Duranium, 2)
                 .input(foil, Polybenzimidazole, 16)
-                .outputs(BIOWARE_PROCESSOR.getStackForm())
+                .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1000))
                 .fluidInputs(Plastic.getFluid(2500))
@@ -217,7 +217,7 @@ public class Circuits {
 
         //COMPUTER
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_PROCESSOR.getStackForm(4))
+                .inputs(BIOWARE_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(32))
@@ -229,7 +229,7 @@ public class Circuits {
                 .input(plate, Tritanium, 2)
                 .input(foil, Polybenzimidazole, 16)
                 .inputs(GRAVI_STAR.getStackForm(2))
-                .outputs(BIOWARE_PROCESSOR_ARRAY.getStackForm())
+                .outputs(BIOWARE_COMPUTER.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Tritanium.getFluid(288))
                 .fluidInputs(Polybenzimidazole.getFluid(1500))
@@ -240,7 +240,7 @@ public class Circuits {
 
         //MAINFRAME
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(BIOWARE_PROCESSOR_ARRAY.getStackForm(2))
+                .inputs(BIOWARE_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
@@ -265,7 +265,7 @@ public class Circuits {
         //COSMIC ASSEMBLY
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(COSMIC_CIRCUIT.getStackForm(3))
+                .inputs(COSMIC_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
@@ -275,7 +275,7 @@ public class Circuits {
                 .inputs(ARAM.getStackForm(32))
                 .input(plate, Duranium, 2)
                 .input(foil, Polybenzimidazole, 16)
-                .outputs(COSMIC_PROCESSOR.getStackForm())
+                .outputs(COSMIC_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1000))
                 .fluidInputs(Plastic.getFluid(2500))
