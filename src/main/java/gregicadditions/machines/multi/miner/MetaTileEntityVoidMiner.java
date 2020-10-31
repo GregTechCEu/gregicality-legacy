@@ -228,7 +228,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         if (this.isStructureFormed()) {
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
+                String voltageName = GAValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));
@@ -243,7 +243,27 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+        switch (tier) {
+            case 8:
+            default:
+            return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+        }
+    }
+
+    public IBlockState getSecondaryCasingState() {
+        switch (tier) {
+            case 8:
+            default:
+                return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+        }
+    }
+
+    public IBlockState getFrameState() {
+        switch (tier) {
+            case 8:
+            default:
+            return MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState();
+        }
     }
 
     @Override

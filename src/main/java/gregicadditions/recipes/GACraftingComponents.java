@@ -1,7 +1,6 @@
 package gregicadditions.recipes;
 
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItem;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.GATileEntities;
@@ -408,6 +407,12 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, RhodiumPlatedPalladium);
                 case 7:
                     return new UnificationEntry(plate, HSSS);
+                case 8:
+                    return new UnificationEntry(plate, Tritanium);
+                case 9:
+                    return new UnificationEntry(plate, Seaborgium);
+                case 10:
+                    return new UnificationEntry(plate, Bohrium);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
