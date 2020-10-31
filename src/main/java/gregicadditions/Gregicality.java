@@ -24,8 +24,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -61,9 +59,8 @@ public class Gregicality {
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
     public static CommonProxy proxy;
 
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
-
     public Gregicality() {
+
         GAEnums.preInit();
 
     }
