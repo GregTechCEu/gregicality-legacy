@@ -1,6 +1,6 @@
 package gregicadditions.item;
 
-import gregicadditions.Gregicality;
+import gregicadditions.utils.GALog;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.common.items.MetaItems;
@@ -245,8 +245,8 @@ public class GAMetaItems {
             fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
 
         } catch (Exception e) {
-            Gregicality.LOGGER.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
-            Gregicality.LOGGER.error(e);
+            GALog.logger.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
+            GALog.logger.error(e);
             fluidHandlerItem.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
         }
         fluidCell = fluidHandlerItem.getContainer();
