@@ -5,7 +5,7 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
-import gregtech.api.util.GTLog;
+import gregicadditions.utils.GALog;
 import gregtech.api.util.ValidationResult;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -41,7 +41,7 @@ public class NuclearReactorBuilder extends RecipeBuilder<NuclearReactorBuilder> 
 
     public NuclearReactorBuilder baseHeatProduction(int baseHeatProduction) {
         if (baseHeatProduction <= 0) {
-            GTLog.logger.error("Base heat production cannot be less than or equal to 0", new IllegalArgumentException());
+            GALog.logger.error("Base heat production cannot be less than or equal to 0", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
         this.baseHeatProduction = baseHeatProduction;

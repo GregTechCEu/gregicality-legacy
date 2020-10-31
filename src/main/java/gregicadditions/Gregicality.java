@@ -17,8 +17,8 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
-import gregtech.api.util.GTLog;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -38,7 +38,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.function.Function;
@@ -77,9 +76,8 @@ public class Gregicality {
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
     public static CommonProxy proxy;
 
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
-
     public Gregicality() {
+        GALog.init(LogManager.getLogger(MODID));
         GAEnums.preInit();
 
     }
@@ -120,7 +118,7 @@ public class Gregicality {
             mysticalCommonProxy.init();
         }
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
-            GTLog.logger.info("TheOneProbe found. Enabling integration...");
+            GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
     }

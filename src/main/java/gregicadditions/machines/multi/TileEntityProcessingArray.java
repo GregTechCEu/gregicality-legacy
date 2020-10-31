@@ -4,6 +4,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
@@ -17,7 +18,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -240,7 +240,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
-                GTLog.logger.error("Cannot calculate ratio of items for processing array");
+                GALog.logger.error("Cannot calculate ratio of items for processing array");
                 return null;
             }
 

@@ -1,11 +1,9 @@
 package gregicadditions.blocks;
 
 
-import gregicadditions.Gregicality;
 import gregtech.api.GTValues;
 import gregtech.api.model.ResourcePackHook;
 import gregtech.api.util.FileUtility;
-import gregtech.api.util.GTLog;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.SimpleReloadableResourceManager;
 import net.minecraft.init.Blocks;

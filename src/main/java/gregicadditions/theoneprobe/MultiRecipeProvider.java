@@ -3,7 +3,7 @@ package gregicadditions.theoneprobe;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.GTLog;
+import gregicadditions.utils.GALog;
 import mcjty.theoneprobe.api.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +31,7 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
             } catch (ClassCastException ignored) {
 
             } catch (Throwable e) {
-                GTLog.logger.error("Bad One probe Implem: {} {} {}", e.getClass().toGenericString(), e.getMessage(), e.getStackTrace()[0].getClassName());
+                GALog.logger.error("Bad One probe Implem: {} {} {}", e.getClass().toGenericString(), e.getMessage(), e.getStackTrace()[0].getClassName());
             }
         }
     }
