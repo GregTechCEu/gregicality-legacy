@@ -10,7 +10,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.WorldGenRegister;
 import net.minecraftforge.common.MinecraftForge;
 import gregtech.common.blocks.VariantItemBlock;
@@ -61,7 +61,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        GregicalityLogger.logger.info("Registering blocks...");
+        GALog.logger.info("Registering blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
         registry.register(GAMetaBlocks.REACTOR_CASING);
@@ -85,7 +85,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        GregicalityLogger.logger.info("Registering Items...");
+        GALog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
         registry.register(createItemBlock(GAMetaBlocks.OPTICAL_FIBER, ItemBlockOpticalFiber::new));
@@ -116,7 +116,7 @@ public class CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GregicalityLogger.logger.info("Registering recipe low...");
+        GALog.logger.info("Registering recipe low...");
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
@@ -134,13 +134,13 @@ public class CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerLateRecipes(RegistryEvent.Register<IRecipe> event) {
-        GregicalityLogger.logger.info("Registering recipe lowest...");
+        GALog.logger.info("Registering recipe lowest...");
         GAMachineRecipeRemoval.init2();
     }
 
     @SubscribeEvent
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
-        GregicalityLogger.logger.info("Registering ore prefix...");
+        GALog.logger.info("Registering ore prefix...");
         RecipeHandler.register();
         OreRecipeHandler.register();
         GARecipeAddition.init();

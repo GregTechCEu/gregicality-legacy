@@ -13,7 +13,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -70,7 +70,7 @@ public class Gregicality {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        GregicalityLogger.init(event.getModLog());
+        GALog.init(event.getModLog());
         NetworkHandler.init();
         proxy.preLoad();
         Keybinds.register();
@@ -105,7 +105,7 @@ public class Gregicality {
             mysticalCommonProxy.init();
         }
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
-            GregicalityLogger.logger.info("TheOneProbe found. Enabling integration...");
+            GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
         CoverBehaviors.init();

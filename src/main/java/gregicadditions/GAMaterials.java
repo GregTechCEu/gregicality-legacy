@@ -11,7 +11,7 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -955,7 +955,7 @@ public class GAMaterials implements IMaterialHandler {
 
             blastFurnaceTemperature.setInt(material, temperature);
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            GregicalityLogger.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
+            GALog.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
         }
     }
 
@@ -967,7 +967,7 @@ public class GAMaterials implements IMaterialHandler {
             Field materialGenerationFlags = ObfuscationReflectionHelper.findField(Material.class, "materialGenerationFlags");
             materialGenerationFlags.setLong(material, materialGenerationFlags.getLong(material) ^ flags);
         } catch (IllegalAccessException e) {
-            GregicalityLogger.logger.error("Remove flags doesnt seems to works", e);
+            GALog.logger.error("Remove flags doesnt seems to works", e);
         }
     }
 

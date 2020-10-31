@@ -12,7 +12,7 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.type.Material;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -304,7 +304,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
-                GregicalityLogger.logger.error("Cannot calculate ratio of items for processing array");
+                GALog.logger.error("Cannot calculate ratio of items for processing array");
                 return null;
             }
 
