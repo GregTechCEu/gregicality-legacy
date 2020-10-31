@@ -37,6 +37,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final long DISABLE_REPLICATION = createFlag(47);
 
     public static final long GENERATE_NUCLEAR_COMPOUND = createFlag(48);
+    public static final long GENERATE_ISOTOPES_COMPOUND = createFlag(49);
 
     public static long STD_METAL = GENERATE_PLATE;
     static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | GENERATE_ROD | GENERATE_BOLT_SCREW | GENERATE_GEAR | GENERATE_FOIL | GENERATE_FINE_WIRE | GENERATE_LONG_ROD;
@@ -476,6 +477,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", Scandium.materialRGB, (short) 45, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", Scandium.materialRGB, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", Scandium.materialRGB, (short) 47, MaterialIconSet.DULL);
+
+    //
 
     public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0xffb3ff);
     public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0xffb3ff);
