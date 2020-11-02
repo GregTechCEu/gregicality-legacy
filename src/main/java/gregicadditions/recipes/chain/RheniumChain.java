@@ -102,7 +102,7 @@ public class RheniumChain {
                 .duration(200)
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(MolybdenumFlue.getFluid(11000))
+                .fluidInputs(MolybdenumFlue.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(RheniumSulfuricSolution.getFluid(2000))
                 .EUt(491520)
