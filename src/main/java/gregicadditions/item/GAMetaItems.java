@@ -303,6 +303,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ARAM;
     public static MetaItem<?>.MetaValueItem ARAM_WAFER;
 
+    public static MetaItem<?>.MetaValueItem PYROLITIC_CARBON;
+
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");

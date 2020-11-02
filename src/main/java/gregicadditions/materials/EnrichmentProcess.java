@@ -13,6 +13,7 @@ public class EnrichmentProcess {
 
     public Fluid fluidHexachloride;
     public Fluid fluidHexafluoride;
+    public Fluid depletedFuelNitrateSolution;
 
     protected IngotMaterial material;
 
@@ -21,16 +22,13 @@ public class EnrichmentProcess {
     }
 
 
-    public ItemStack getDustNitrate(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("nitrate"), material, amount);
+    public ItemStack getItemStack(OrePrefix orePrefix, int amount) {
+        return OreDictUnifier.get(orePrefix, material, amount);
     }
 
-    public ItemStack getDustDioxide(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("dioxide"), material, amount);
-    }
-
-    public ItemStack getDustHexafluoride(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("hexafluoride"), material, amount);
+    @Nullable
+    public FluidStack getFluidDepletedFuelNitrateSolution(int amount) {
+        return depletedFuelNitrateSolution != null ? new FluidStack(depletedFuelNitrateSolution, amount) : null;
     }
 
 

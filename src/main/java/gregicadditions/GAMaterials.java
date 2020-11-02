@@ -474,9 +474,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", 0x2d4228, (short) 42, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", 0x377528, (short) 43, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate",0x5d5db3, (short) 45, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", 0x5d5db3, (short) 45, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 48, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SiliconCarbide = new SimpleDustMaterial("silicon_carbide", 0x0f0f0f, (short) 49, MaterialIconSet.SHINY);
+
 
     //
 
@@ -524,6 +527,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial GeneTherapyFluid = new SimpleFluidMaterial("pluripotency_induction_gene_therapy_fluid", 0x6b2f66);
     public static final SimpleFluidMaterial Resin = new SimpleFluidMaterial("resin", 0x3d2f11);
     public static final SimpleFluidMaterial LinoleicAcid = new SimpleFluidMaterial("linoleic_acid", 0x755f30);
+    public static final SimpleFluidMaterial SiliconFluoride = new SimpleFluidMaterial("silicon_fluoride", 0x755f30);
+    public static final SimpleFluidMaterial CarbonFluoride = new SimpleFluidMaterial("carbone_fluoride", 0x755f30);
+    public static final SimpleFluidMaterial PhosphorusTrichloride = new SimpleFluidMaterial("phosphorus_trichloride", 0x755f30);
+    public static final SimpleFluidMaterial PhosphorylChloride = new SimpleFluidMaterial("phosphoryl_chloride", 0x755f30);
+    public static final SimpleFluidMaterial TributylPhosphate = new SimpleFluidMaterial("tributyl_phosphate", 0x755f30);
+    public static final SimpleFluidMaterial Butanol = new SimpleFluidMaterial("butanol", 0x755f30);
+    public static final SimpleFluidMaterial RedOil = new SimpleFluidMaterial("red_oil", 0x755f30);
 
 
     @Override

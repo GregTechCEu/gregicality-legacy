@@ -3,16 +3,12 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.materials.IsotopeMaterial;
-import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
-import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
@@ -35,7 +31,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
@@ -76,7 +71,6 @@ public class RecipeHandler {
                 wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
             }
         }
-        OrePrefix.ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNuclearMaterial);
         OrePrefix.dust.addProcessingHandler(DustMaterial.class, RecipeHandler::processReplication);
 
         if (GAConfig.Misc.PackagerDustRecipes) {
@@ -152,112 +146,6 @@ public class RecipeHandler {
         UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(4).input(ingot, material, 1).notConsumable(SCHEMATIC_3X3.getStackForm()).outputs(OreDictUnifier.get(nugget, material, 9)).buildAndRegister();
     }
 
-
-    private static void processNuclearMaterial(OrePrefix ingot, IngotMaterial material) {
-        RadioactiveMaterial radioactiveMaterial = RadioactiveMaterial.REGISTRY.get(material);
-        IsotopeMaterial isotopeMaterial = IsotopeMaterial.REGISTRY.get(material);
-        if (radioactiveMaterial != null && radioactiveMaterial.composition.size() > 0) {
-            int complexity = radioactiveMaterial.complexity;
-
-
-            CHEMICAL_RECIPES.recipeBuilder().duration(2000 * complexity / 100)
-                    .input(dust, radioactiveMaterial.getMaterial())
-                    .fluidInputs(NitricAcid.getFluid(2000))
-                    .outputs(radioactiveMaterial.getDustNitrate(3))
-                    .buildAndRegister();
-
-            BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(100 * complexity / 100).EUt(120 * complexity / 100)
-                    .inputs(radioactiveMaterial.getDustNitrate(1))
-                    .fluidInputs(Water.getFluid(6000))
-                    .outputs(radioactiveMaterial.getDustDioxide(1))
-                    .fluidOutputs(NitrogenTetroxide.getFluid(1000))
-                    .buildAndRegister();
-
-
-            CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
-                    .inputs(radioactiveMaterial.getDustDioxide(1))
-                    .fluidInputs(Chlorine.getFluid(6000))
-                    .fluidOutputs(radioactiveMaterial.getFluidHexachloride(6000))
-                    .fluidOutputs(Oxygen.getFluid(2000))
-                    .buildAndRegister();
-
-            CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
-                    .fluidInputs(radioactiveMaterial.getFluidHexachloride(2000))
-                    .fluidInputs(HydrofluoricAcid.getFluid(10000))
-                    .fluidOutputs(HydrochloricAcid.getFluid(10000))
-                    .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
-                    .buildAndRegister();
-
-
-            CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(100 * complexity / 100).EUt(120)
-                    .fluidInputs(radioactiveMaterial.getFluidHexafluoride(1000))
-                    .outputs(radioactiveMaterial.getDustHexafluoride(1))
-                    .buildAndRegister();
-
-
-            SimpleRecipeBuilder builder = THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000 * complexity / 100).EUt(60 * complexity / 100)
-                    .inputs(radioactiveMaterial.getDustHexafluoride(1));
-            radioactiveMaterial.composition.forEach((key, value) -> builder.chancedOutput(key.getDustHexafluoride(1), value, 100));
-            builder.buildAndRegister();
-
-
-            radioactiveMaterial.composition.forEach((key, value) -> {
-                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(600 * complexity / 100).EUt(120 * complexity / 100)
-                        .fluidInputs(Steam.getFluid(6000))
-                        .inputs(key.getDustHexafluoride(1))
-                        .outputs(key.getDustDioxide(1))
-                        .fluidOutputs(Fluorine.getFluid(6000))
-                        .buildAndRegister();
-
-                BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1000 * complexity / 100).EUt(120 * complexity / 100)
-                        .inputs(key.getDustDioxide(1))
-                        .outputs(OreDictUnifier.get(ingot, key.getMaterial()))
-                        .fluidOutputs(Oxygen.getFluid(2000))
-                        .buildAndRegister();
-            });
-        } else if (isotopeMaterial != null && isotopeMaterial.fissile) {
-            IntStream.range(1, 10).forEach(operand ->
-                    NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand * 2)
-                            .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand * 2)
-                            .notConsumable(new IntCircuitIngredient(operand + 10))
-                            .input(stickLong, isotopeMaterial.getMaterial(), operand)
-                            .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand))
-                            .buildAndRegister());
-            IntStream.range(1, 10).forEach(operand ->
-                    IsotopeMaterial.REGISTRY.entrySet().stream()
-                            .filter(isotopeMaterialEntry -> isotopeMaterialEntry.getValue().fertile)
-                            .forEach(isotopeMaterialEntry -> {
-                                        NUCLEAR_REACTOR_RECIPES.recipeBuilder().duration(20000).EUt((isotopeMaterial.baseHeat + operand) * operand / 2)
-                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand)
-                                                .notConsumable(new IntCircuitIngredient(operand))
-                                                .input(stickLong, isotopeMaterial.getMaterial(), operand)
-                                                .input(stickLong, isotopeMaterialEntry.getKey(), 9)
-                                                .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand))
-                                                .outputs(isotopeMaterialEntry.getValue().getRadioactiveMaterial().waste.getStackForm(9))
-                                                .buildAndRegister();
-
-                                        NuclearReactorBuilder builder = NUCLEAR_BREEDER_RECIPES.recipeBuilder().duration(10000).EUt((isotopeMaterial.baseHeat + operand) * operand)
-                                                .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5)
-                                                .notConsumable(new IntCircuitIngredient(operand))
-                                                .input(stickLong, isotopeMaterial.getMaterial(), operand)
-                                                .input(stickLong, isotopeMaterialEntry.getKey(), 9)
-                                                .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm(operand));
-
-                                        isotopeMaterialEntry.getValue().isotopeDecay.forEach((key, value) ->
-                                                builder.chancedOutput(OreDictUnifier.get(stickLong, key.getMaterial(), 9), value, 100));
-                                        builder.buildAndRegister();
-                                    }
-                            ));
-        } else if (isotopeMaterial != null && !isotopeMaterial.fertile && isotopeMaterial.isotopeDecay.size() > 0) {
-            isotopeMaterial.isotopeDecay.keySet().forEach(isotopeMaterialDecay -> {
-                DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
-                        .input(stickLong, isotopeMaterial.getMaterial())
-                        .chancedOutput(OreDictUnifier.get(stickLong, isotopeMaterialDecay.getMaterial()), 9000, 100)
-                        .buildAndRegister();
-            });
-        }
-
-    }
 
     private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
         if (material.cableProperties == null) return;

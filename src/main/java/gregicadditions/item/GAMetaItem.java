@@ -1,6 +1,7 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAEnums;
 import gregicadditions.item.behavior.*;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
@@ -22,7 +23,7 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class GAMetaItem extends MaterialMetaItem {
     public GAMetaItem() {
-        super(GAConfig.GT6.addCurvedPlates ? OrePrefix.valueOf("plateCurved") : null, GAConfig.GT6.addDoubleIngots ? OrePrefix.valueOf("ingotDouble") : null, GAConfig.GT6.addRounds ? OrePrefix.valueOf("round") : null, OrePrefix.valueOf("dioxide"), OrePrefix.valueOf("nitrate"), OrePrefix.valueOf("hexafluoride"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        super(GAConfig.GT6.addCurvedPlates ? GAEnums.GAOrePrefix.plateCurved : null, GAConfig.GT6.addDoubleIngots ? GAEnums.GAOrePrefix.ingotDouble : null, GAConfig.GT6.addRounds ? GAEnums.GAOrePrefix.round : null, GAEnums.GAOrePrefix.dioxide, GAEnums.GAOrePrefix.nitrite, GAEnums.GAOrePrefix.hexafluoride, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
@@ -289,6 +290,7 @@ public class GAMetaItem extends MaterialMetaItem {
         Mendelevium.waste = MENDELEVIUM_WASTE;
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
+        PYROLITIC_CARBON = addItem(16, "pyrolitic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
         STEM_CELLS = addItem(18, "stemcells");
         MICA_SHEET = addItem(26, "mica_sheet");
