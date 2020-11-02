@@ -2,10 +2,10 @@ package gregicadditions.utils;
 
 import org.apache.logging.log4j.Logger;
 
-public class GregicalityLogger {
+public class GALog {
     public static Logger logger;
 
-    public GregicalityLogger() {
+    public GALog() {
     }
 
     public static void init(Logger modLogger) {

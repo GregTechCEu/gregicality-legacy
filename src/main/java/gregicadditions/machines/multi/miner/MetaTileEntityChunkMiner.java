@@ -17,7 +17,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregicadditions.utils.GregicalityLogger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;

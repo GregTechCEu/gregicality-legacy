@@ -9,7 +9,7 @@ import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
 import gregicadditions.renderer.OpticalFiberRenderer;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -277,7 +277,7 @@ public class GAMetaBlocks {
 
         for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
             ItemStack itemStack = OPTICAL_FIBER.getItem(opticalFiberSize);
-            GregicalityLogger.logger.info("cable creation {}", itemStack.getDisplayName());
+            GALog.logger.info("cable creation {}", itemStack.getDisplayName());
             OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix().name());
         }
 

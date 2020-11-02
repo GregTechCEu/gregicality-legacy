@@ -11,7 +11,7 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -37,6 +37,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final long DISABLE_REPLICATION = createFlag(47);
 
     public static final long GENERATE_NUCLEAR_COMPOUND = createFlag(48);
+    public static final long GENERATE_ISOTOPES_COMPOUND = createFlag(49);
 
     public static long STD_METAL = GENERATE_PLATE;
     static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | GENERATE_ROD | GENERATE_BOLT_SCREW | GENERATE_GEAR | GENERATE_FOIL | GENERATE_FINE_WIRE | GENERATE_LONG_ROD;
@@ -476,6 +477,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate",0x5d5db3, (short) 45, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
+
+    //
 
     public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0x93bd46);
     public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0x959c60);
@@ -970,7 +973,7 @@ public class GAMaterials implements IMaterialHandler {
 
             blastFurnaceTemperature.setInt(material, temperature);
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            GregicalityLogger.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
+            GALog.logger.error("setBlastFurnaceTemperature doesnt seems to works", e);
         }
     }
 
@@ -982,7 +985,7 @@ public class GAMaterials implements IMaterialHandler {
             Field materialGenerationFlags = ObfuscationReflectionHelper.findField(Material.class, "materialGenerationFlags");
             materialGenerationFlags.setLong(material, materialGenerationFlags.getLong(material) ^ flags);
         } catch (IllegalAccessException e) {
-            GregicalityLogger.logger.error("Remove flags doesnt seems to works", e);
+            GALog.logger.error("Remove flags doesnt seems to works", e);
         }
     }
 

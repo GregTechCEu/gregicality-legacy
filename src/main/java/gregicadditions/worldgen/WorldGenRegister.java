@@ -2,7 +2,7 @@ package gregicadditions.worldgen;
 
 
 import gregtech.api.GTValues;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregtech.api.worldgen.config.WorldGenRegistry;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;
@@ -18,30 +18,30 @@ import java.util.stream.Collectors;
 public class WorldGenRegister {
 
     public static void preInit() {
-        GregicalityLogger.logger.info("Adding Gregicality block filler to the ore generation registry");
+        GALog.logger.info("Adding Gregicality block filler to the ore generation registry");
         WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
     }
 
     public static void init() throws IOException {
         long time = System.currentTimeMillis();
-        GregicalityLogger.logger.info("WorldGen init started");
+        GALog.logger.info("WorldGen init started");
 
         try {
             WorldGenRegister.removeGTConfigs();
         } catch (IOException e) {
-            GregicalityLogger.logger.fatal("Failed to replace GT worldgen configs", e);
+            GALog.logger.fatal("Failed to replace GT worldgen configs", e);
         }
 
         try {
             WorldGenRegister.copyCustomConfigs();
         } catch (IOException exception) {
-            GregicalityLogger.logger.fatal("Failed to add GA worldgen", exception);
+            GALog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
 //        GregicalityLogger.logger.info("Reloading ore vein definitions to use our block filler");
 //        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
-        GregicalityLogger.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
+        GALog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
     }
 
     private static void removeGTConfigs() throws IOException {
@@ -68,7 +68,7 @@ public class WorldGenRegister {
                         )
                         .collect(Collectors.toList());
                 for (Path config : configs) {
-                    GregicalityLogger.logger.info(String.format("Removing GT worldgen config %s", config.getFileName().toString()));
+                    GALog.logger.info(String.format("Removing GT worldgen config %s", config.getFileName().toString()));
                     Files.delete(config);
                 }
             }
@@ -84,7 +84,7 @@ public class WorldGenRegister {
         }
 
 
-        if (!Files.exists(jarFileExtractLock) || !Files.list(worldgenRootPath).peek(path -> GregicalityLogger.logger.info(path)).findFirst().isPresent()) {
+        if (!Files.exists(jarFileExtractLock) || !Files.list(worldgenRootPath).peek(path -> GALog.logger.info(path)).findFirst().isPresent()) {
             if (!Files.exists(jarFileExtractLock)) {
                 Files.createFile(jarFileExtractLock);
             }
@@ -106,7 +106,7 @@ public class WorldGenRegister {
             } else {
                 throw new IllegalStateException("Unable to locate absolute path to worldgen root directory: " + sampleUri);
             }
-            GregicalityLogger.logger.info(String.format("Attempting extraction of worldgen definitions from %s to %s",
+            GALog.logger.info(String.format("Attempting extraction of worldgen definitions from %s to %s",
                     worldgenJarRootPath, worldgenRootPath));
             List<Path> jarFiles = Files.walk(worldgenJarRootPath)
                     .filter(jarFile -> Files.isRegularFile(jarFile))
@@ -116,7 +116,7 @@ public class WorldGenRegister {
                 Files.createDirectories(worldgenPath.getParent());
                 Files.copy(jarFile, worldgenPath, StandardCopyOption.REPLACE_EXISTING);
             }
-            GregicalityLogger.logger.info(String.format("Extracted %s builtin worldgen definitions into worldgen folder", jarFiles.size()));
+            GALog.logger.info(String.format("Extracted %s builtin worldgen definitions into worldgen folder", jarFiles.size()));
         } catch (URISyntaxException impossible) {
             throw new RuntimeException(impossible);
         } finally {

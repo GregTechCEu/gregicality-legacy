@@ -7,7 +7,6 @@ import gregicadditions.GAValues;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
-import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -22,7 +21,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregicadditions.utils.GregicalityLogger;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -32,9 +30,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
@@ -43,7 +39,6 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.IncoloyMA956;
 import static gregicadditions.GAMaterials.Talonite;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 

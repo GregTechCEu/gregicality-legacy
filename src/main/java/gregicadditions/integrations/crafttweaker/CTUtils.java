@@ -4,17 +4,15 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import gregicadditions.Gregicality;
 
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -52,11 +50,11 @@ public class CTUtils {
                                 if (useAmounts) {
                                     if (output.getCount() == itemStack.getCount()) {
                                         recipesToRemove.add((Recipe) recipe);
-                                        GregicalityLogger.logger.info(output.getDisplayName());
+                                        GALog.logger.info(output.getDisplayName());
                                     }
                                 } else {
                                     recipesToRemove.add((Recipe) recipe);
-                                    GregicalityLogger.logger.info(output.getDisplayName());
+                                    GALog.logger.info(output.getDisplayName());
                                 }
                             }
                         }

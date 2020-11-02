@@ -21,7 +21,7 @@ import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
-import gregicadditions.utils.GregicalityLogger;
+import gregicadditions.utils.GALog;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.util.GTUtility;
@@ -68,7 +68,7 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
     }
 
     public void registerIcons(TextureMap map) {
-        GregicalityLogger.logger.info("Registering cable textures.");
+        GALog.logger.info("Registering cable textures.");
         ResourceLocation wireLocation = new ResourceLocation(Gregicality.MODID, "blocks/cable/wire");
         this.wireTexture = map.registerSprite(wireLocation);
 
@@ -76,7 +76,7 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
 
     @SubscribeEvent
     public void onModelsBake(ModelBakeEvent event) {
-        GregicalityLogger.logger.info("Injected cable render model");
+        GALog.logger.info("Injected cable render model");
         event.getModelRegistry().putObject(MODEL_LOCATION, this);
     }
 
