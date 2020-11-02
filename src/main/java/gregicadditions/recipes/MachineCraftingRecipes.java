@@ -333,7 +333,7 @@ public class MachineCraftingRecipes {
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
                 .inputs(CountableIngredient.from(circuit, Tier.Superconductor))
-                .outputs(GATileEntities.VOID_MINER.getStackForm()).buildAndRegister();
+                .outputs(GATileEntities.VOID_MINER[0].getStackForm()).buildAndRegister();
         ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(), 'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .inputs(

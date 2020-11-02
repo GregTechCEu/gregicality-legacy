@@ -50,6 +50,8 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
 
+    public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
+
     public static GAReactorCasing REACTOR_CASING;
 
     public static GAFusionCasing FUSION_CASING;

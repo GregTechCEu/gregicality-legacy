@@ -214,7 +214,7 @@ public class NuclearChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Hafnium, 2), 6250, 300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tantalum, 2), 6250, 400)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tungsten, 2), 6250, 500)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)
+                //.chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Osmium, 2), 6250, 700)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iridium, 2), 6250, 800)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Platinum, 2), 6250, 900)

@@ -303,7 +303,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Radium = new IngotMaterial(766, "radium", 0xFFC840, MaterialIconSet.SHINY, 2, of(), 0, Ra);
     public static final IngotMaterial Actinium = new IngotMaterial(765, "actinium", 0xC3D1FF, MaterialIconSet.SHINY, 2, of(), 0, Ac);
     public static final IngotMaterial Hafnium = new IngotMaterial(764, "hafnium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Hf);
-    public static final IngotMaterial Rhenium = new IngotMaterial(763, "rhenium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Re);
+    public static final IngotMaterial Rhenium = new IngotMaterial(763, "rhenium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), EXT2_METAL, Re);
     public static final IngotMaterial Technetium = new IngotMaterial(762, "technetium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tc);
     public static final IngotMaterial Thallium = new IngotMaterial(761, "thalium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tl);
     public static final IngotMaterial Germanium = new IngotMaterial(760, "germanium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Ge);
@@ -338,6 +338,11 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Sg);
     public static final IngotMaterial Bohrium = new IngotMaterial(735, "bohrium", 0xdc57ff, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Bh);
+
+    public static final IngotMaterial Incoloy813 = new IngotMaterial(734, "incoloy813", 0x37bf7e, MaterialIconSet.SHINY, 2, of(new MaterialStack(VanadiumSteel, 4), new MaterialStack(Osmiridium, 2), new MaterialStack(Technetium, 3), new MaterialStack(Germanium, 4), new MaterialStack(Iridium, 7), new MaterialStack(Duranium, 5), new MaterialStack(Californium252.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null);
+    public static final IngotMaterial EnrichedNaquadahAlloy = new IngotMaterial(733, "enriched_naquadah_alloy", 0x403f3d, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Rhodium, 2), new MaterialStack(Ruthenium, 2), new MaterialStack(Dubnium, 1), new MaterialStack(Rubidium, 2), new MaterialStack(Einsteinium255.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null);
+    public static final IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Aluminium, 4), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null);
+    public static final IngotMaterial HatelloyK243 = new IngotMaterial(731, "hastelloy_k243", 0xa5f564, MaterialIconSet.SHINY, 2, of(new MaterialStack(HastelloyX78, 5), new MaterialStack(NiobiumNitride, 2), new MaterialStack(Tritanium, 4), new MaterialStack(TungstenCarbide, 4), new MaterialStack(Promethium, 4), new MaterialStack(Mendelevium261.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null);
 
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
@@ -535,6 +540,23 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Butanol = new SimpleFluidMaterial("butanol", 0x755f30);
     public static final SimpleFluidMaterial RedOil = new SimpleFluidMaterial("red_oil", 0x755f30);
 
+    public static final SimpleFluidMaterial HydrogenCyanide = new SimpleFluidMaterial("hydrogen_cyanide", 0xb6d1ae);
+    public static final SimpleFluidMaterial SodiumCyanide = new SimpleFluidMaterial("sodium_cyanide", 0x5f7c8c);
+    public static final SimpleFluidMaterial GoldCyanide = new SimpleFluidMaterial("gold_cyanide", 0x8c8761);
+    public static final SimpleFluidMaterial ChlorideLeachedSolution = new SimpleFluidMaterial("chloride_leached_solution", 0x41472e);
+    public static final SimpleFluidMaterial MolybdenumFlue = new SimpleFluidMaterial("molybdenum_flue_gas", 0x333338);
+    public static final SimpleFluidMaterial RheniumSulfuricSolution = new SimpleFluidMaterial("rhenium_sulfuric_solution", 0xbabaff);
+    public static final SimpleFluidMaterial AmmoniumSulfate = new SimpleFluidMaterial("ammonium_sulfate", 0x6464f5);
+    public static final SimpleFluidMaterial AmmoniumPerrhenate = new SimpleFluidMaterial("ammonium_perrhenate", 0x1c1c45);
+    public static final SimpleDustMaterial GoldDepleteMolybdenite = new SimpleDustMaterial("gold_deplete_molybdenite", 0x7c7c8f, (short) 48, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial MolybdenumConcentrate = new SimpleDustMaterial("molybdenum_concentrate", 0x565666, (short) 49, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial MolybdenumTrioxide = new SimpleDustMaterial("molybdenum_trioxide", 0x666685, (short) 50, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial CopperChloride = new SimpleDustMaterial("copper_chloride", 0xf5b35d, (short) 51, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial BismuthChloride = new SimpleDustMaterial("bismuth_chloride", 0x95f5d7, (short) 52, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0xbf95f5, (short) 53, MaterialIconSet.SHINY);
+
+    public static Material Epic = new MarkerMaterial("epic");
+    public static Material Legendary = new MarkerMaterial("legendary");
 
     @Override
     public void onMaterialsInit() {

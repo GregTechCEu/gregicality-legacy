@@ -27,7 +27,7 @@ public class IsotopeMaterial extends EnrichmentProcess {
 
     public IsotopeMaterial(IngotMaterial from, RadioactiveMaterial material, int nuclide) {
         this.material = from;
-        this.material.addFlag(GENERATE_LONG_ROD | GENERATE_ISOTOPES_COMPOUND | DISABLE_REPLICATION);
+        this.material.addFlag(GENERATE_LONG_ROD | GENERATE_ISOTOPES_COMPOUND | DISABLE_REPLICATION | GENERATE_NUCLEAR_COMPOUND);
         this.radioactiveMaterial = material;
         this.nuclide = nuclide;
         REGISTRY.put(from, this);

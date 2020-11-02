@@ -123,7 +123,7 @@ public class GATileEntities {
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
-    public static MetaTileEntityVoidMiner VOID_MINER;
+    public static MetaTileEntityVoidMiner[] VOID_MINER = new MetaTileEntityVoidMiner[3];
     public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityIndustrialPrimitiveBlastFurnace INDUSTRIAL_PRIMITIVE_BLAST_FURNACE;
     public static TileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
@@ -862,7 +862,7 @@ public class GATileEntities {
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, largeMat != null && largeMat.hasFlag(GAMaterials.GENERATE_METAL_CASING) ? largeMat : Materials.HSSG));
         Material advancedMat = Material.MATERIAL_REGISTRY.getObject(GAConfig.multis.largeMiner.advancedMinerCasingMaterial);
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, advancedMat != null && advancedMat.hasFlag(GAMaterials.GENERATE_METAL_CASING) ? advancedMat : Materials.HSSS));
-        VOID_MINER = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner"), GAValues.UV, GAConfig.multis.voidMiner.maxTemp));
+        VOID_MINER[0] = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner"), GAValues.UV, GAConfig.multis.voidMiner.maxTemp));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));
         INDUSTRIAL_PRIMITIVE_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2553, new MetaTileEntityIndustrialPrimitiveBlastFurnace(location("industrial_primitive_blast_furnace")));
         ADVANCED_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2554, new TileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLERY_RECIPES));
@@ -1056,6 +1056,8 @@ public class GATileEntities {
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
         GA_HULLS[3] = GregTechAPI.registerMetaTileEntity(3242, new GAMetaTileEntityHull(location("hull.umv"), 12));
         GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
+        VOID_MINER[1] = GregTechAPI.registerMetaTileEntity(4018, new MetaTileEntityVoidMiner(location("void_miner.uhv"), GAValues.UHV, GAConfig.multis.voidMiner.maxTempUHV));
+        VOID_MINER[2] = GregTechAPI.registerMetaTileEntity(4019, new MetaTileEntityVoidMiner(location("void_miner.uev"), GAValues.UEV, GAConfig.multis.voidMiner.maxTempUEV));
 
         if (GAConfig.Misc.enableRockBreaker) {
             ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(4000, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
