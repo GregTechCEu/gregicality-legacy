@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import static gregicadditions.GAEnums.GAOrePrefix.*;
+
 import javax.annotation.Nullable;
 
 public class EnrichmentProcess {
@@ -22,15 +24,15 @@ public class EnrichmentProcess {
 
 
     public ItemStack getDustNitrate(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("nitrate"), material, amount);
+        return OreDictUnifier.get(nitride, material, amount);
     }
 
     public ItemStack getDustDioxide(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("dioxide"), material, amount);
+        return OreDictUnifier.get(dioxide, material, amount);
     }
 
     public ItemStack getDustHexafluoride(int amount) {
-        return OreDictUnifier.get(OrePrefix.valueOf("hexafluoride"), material, amount);
+        return OreDictUnifier.get(hexafluoride, material, amount);
     }
 
 
