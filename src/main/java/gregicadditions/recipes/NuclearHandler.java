@@ -4,6 +4,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
@@ -32,6 +33,7 @@ public class NuclearHandler {
         if (isotopeMaterial == null) {
             return;
         }
+        GALog.logger.info(isotopeMaterial.toString());
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelTRISO, 1))
                 .fluidInputs(Fluorine.getFluid(2000))
@@ -63,6 +65,7 @@ public class NuclearHandler {
                 .fluidOutputs(isotopeMaterial.getFluidDepletedFuelNitrateSolution(1000))
                 .buildAndRegister();
 
+
         LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(1900).duration(3000)
                 .fluidInputs(isotopeMaterial.getFluidDepletedFuelNitrateSolution(1000))
                 .fluidInputs(Hydrazine.getFluid(1000))
@@ -88,7 +91,7 @@ public class NuclearHandler {
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
                 .fluidInputs(Chlorine.getFluid(3000))
                 .outputs(OreDictUnifier.get(ingot, isotopeMaterial.getMaterial()))

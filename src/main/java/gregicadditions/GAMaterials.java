@@ -482,8 +482,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", 0x5d5db3, (short) 45, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 48, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SiliconCarbide = new SimpleDustMaterial("silicon_carbide", 0x0f0f0f, (short) 49, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 54, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SiliconCarbide = new SimpleDustMaterial("silicon_carbide", 0x0f0f0f, (short) 55, MaterialIconSet.SHINY);
 
 
     //

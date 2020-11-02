@@ -1,5 +1,6 @@
 package gregicadditions.fluid;
 
+import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
@@ -34,7 +35,10 @@ public class GAMetaFluids {
         RadioactiveMaterial.REGISTRY.forEach((ingotMaterial, radioactiveMaterial) -> {
             radioactiveMaterial.fluidHexachloride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXACHLORIDE"), 300);
             radioactiveMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
-            radioactiveMaterial.depletedFuelNitrateSolution = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"), 300);
+        });
+
+        IsotopeMaterial.REGISTRY.forEach((ingotMaterial, isotopeMaterial) -> {
+            isotopeMaterial.depletedFuelNitrateSolution = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"), 300);
         });
 
         for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS) {
