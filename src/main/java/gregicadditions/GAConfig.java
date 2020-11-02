@@ -910,10 +910,22 @@ public class GAConfig {
 
         public static class VoidMiner {
             @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
-            @Config.RangeInt(min = 1000, max = 9000)
+            @Config.RangeInt(min = 1000)
             @Config.RequiresMcRestart
-            @Config.Name("Void Miner max temperature")
+            @Config.Name("Void Miner I max temperature")
             public int maxTemp = 9000;
+
+            @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
+            @Config.RangeInt(min = 1000)
+            @Config.RequiresMcRestart
+            @Config.Name("Void Miner II max temperature")
+            public int maxTempUHV = 16000;
+
+            @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
+            @Config.RangeInt(min = 1000)
+            @Config.RequiresMcRestart
+            @Config.Name("Void Miner III max temperature")
+            public int maxTempUEV = 25000;
 
             @Config.Comment("Whether or not to add all ore variants to the Void Miner's ore table. If false only the first ore in the material's ore dictionary will be added.")
             @Config.RequiresMcRestart

@@ -7,7 +7,6 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -19,7 +18,6 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
@@ -39,14 +37,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.HastelloyN;
 import static gregicadditions.GAMaterials.Staballoy;
@@ -200,9 +196,9 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCSCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', selfPredicate())
-                .where('C', ((Predicate<BlockWorldState>) blockWorldState -> ArrayUtils.contains(Collections.singletonList(getCasingState()).toArray(), blockWorldState.getBlockState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('D', blockWorldState -> GAMetaBlocks.getMetalCasingBlockState(Staballoy).equals(blockWorldState.getBlockState()))
-                .where('F', blockWorldState -> MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState().equals(blockWorldState.getBlockState()))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('D', statePredicate(getSecondaryCasingState()))
+                .where('F', statePredicate(getFrameState()))
                 .where('#', blockWorldState -> true)
                 .build();
     }
@@ -268,7 +264,11 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+        switch (tier) {
+            case 8:
+            default:
+                return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+        }
     }
 
     @Override

@@ -74,7 +74,7 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> BIO_REACTOR_RECIPES;
     @ZenProperty
-    public static final RecipeMap<QubitProducerRecipeBuilder> SIMPLE_QUBIT_GENERATOT;
+    public static final RecipeMap<QubitProducerRecipeBuilder> SIMPLE_QUBIT_GENERATOR;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -126,7 +126,7 @@ public class GARecipeMaps {
                 3, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
-        SIMPLE_QUBIT_GENERATOT = new RecipeMap<>("simple_qubit_generator", 1, 1, 0, 0, 0, 0, 0, 0, new QubitProducerRecipeBuilder());
+        SIMPLE_QUBIT_GENERATOR = new RecipeMap<>("simple_qubit_generator", 1, 1, 0, 0, 0, 0, 0, 0, new QubitProducerRecipeBuilder());
 
     }
 }

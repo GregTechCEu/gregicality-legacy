@@ -21,7 +21,7 @@ public class VoidMinerInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.VOID_MINER;
+        return GATileEntities.VOID_MINER[0];
     }
 
     @Override
@@ -36,7 +36,7 @@ public class VoidMinerInfo extends MultiblockInfoPage {
                 .aisle("C#######C", "C#######C", "#########", "####D####", "###DDD###", "C##DDD##C", "F#DD#DD#F", "F#D###D#F", "##D###D##", "#########")
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
-                .where('S', GATileEntities.VOID_MINER, EnumFacing.WEST)
+                .where('S', GATileEntities.VOID_MINER[0], EnumFacing.WEST)
                 .where('C', GAMetaBlocks.getMetalCasingBlockState(HastelloyN))
                 .where('D', GAMetaBlocks.getMetalCasingBlockState(Staballoy))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[8], EnumFacing.WEST)

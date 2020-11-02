@@ -522,6 +522,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Resin = new SimpleFluidMaterial("resin", 0x3d2f11);
     public static final SimpleFluidMaterial LinoleicAcid = new SimpleFluidMaterial("linoleic_acid", 0x755f30);
 
+    public static Material Epic = new MarkerMaterial("epic");
+    public static Material Legendary = new MarkerMaterial("legendary");
 
     @Override
     public void onMaterialsInit() {
