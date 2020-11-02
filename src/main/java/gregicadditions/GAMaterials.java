@@ -302,7 +302,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Radium = new IngotMaterial(766, "radium", 0xFFC840, MaterialIconSet.SHINY, 2, of(), 0, Ra);
     public static final IngotMaterial Actinium = new IngotMaterial(765, "actinium", 0xC3D1FF, MaterialIconSet.SHINY, 2, of(), 0, Ac);
     public static final IngotMaterial Hafnium = new IngotMaterial(764, "hafnium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Hf);
-    public static final IngotMaterial Rhenium = new IngotMaterial(763, "rhenium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Re);
+    public static final IngotMaterial Rhenium = new IngotMaterial(763, "rhenium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), EXT2_METAL, Re);
     public static final IngotMaterial Technetium = new IngotMaterial(762, "technetium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tc);
     public static final IngotMaterial Thallium = new IngotMaterial(761, "thalium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Tl);
     public static final IngotMaterial Germanium = new IngotMaterial(760, "germanium", 0xB6BAB4, MaterialIconSet.SHINY, 2, of(), 0, Ge);
@@ -521,6 +521,21 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial GeneTherapyFluid = new SimpleFluidMaterial("pluripotency_induction_gene_therapy_fluid", 0x6b2f66);
     public static final SimpleFluidMaterial Resin = new SimpleFluidMaterial("resin", 0x3d2f11);
     public static final SimpleFluidMaterial LinoleicAcid = new SimpleFluidMaterial("linoleic_acid", 0x755f30);
+
+    public static final SimpleFluidMaterial HydrogenCyanide = new SimpleFluidMaterial("hydrogen_cyanide", 0x755f30);
+    public static final SimpleFluidMaterial SodiumCyanide = new SimpleFluidMaterial("sodium_cyanide", 0x755f30);
+    public static final SimpleFluidMaterial GoldCyanide = new SimpleFluidMaterial("gold_cyanide", 0x755f30);
+    public static final SimpleFluidMaterial ChlorideLeachedSolution = new SimpleFluidMaterial("chloride_leached_solution", 0x755f30);
+    public static final SimpleFluidMaterial MolybdenumFlue = new SimpleFluidMaterial("molybdenum_flue_gas", 0x755f30);
+    public static final SimpleFluidMaterial RheniumSulfuricSolution = new SimpleFluidMaterial("rhenium_sulfuric_solution", 0x755f30);
+    public static final SimpleFluidMaterial AmmoniumSulfate = new SimpleFluidMaterial("ammonium_sulfate", 0x755f30);
+    public static final SimpleFluidMaterial AmmoniumPerrhenate = new SimpleFluidMaterial("ammonium_perrhenate", 0x755f30);
+    public static final SimpleDustMaterial GoldDepleteMolybdenite = new SimpleDustMaterial("gold_deplete_molybdenite", 0x8752ab, (short) 48, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial MolybdenumConcentrate = new SimpleDustMaterial("molybdenum_concentrate", 0x8752ab, (short) 49, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial MolybdenumTrioxide = new SimpleDustMaterial("molybdenum_trioxide", 0x8752ab, (short) 50, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial CopperChloride = new SimpleDustMaterial("copper_chloride", 0x8752ab, (short) 51, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial BismuthChloride = new SimpleDustMaterial("bismuth_chloride", 0x8752ab, (short) 52, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0x8752ab, (short) 53, MaterialIconSet.SHINY);
 
     public static Material Epic = new MarkerMaterial("epic");
     public static Material Legendary = new MarkerMaterial("legendary");
