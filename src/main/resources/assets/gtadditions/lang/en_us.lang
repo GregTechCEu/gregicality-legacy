@@ -2259,7 +2259,12 @@ metaitem.alumina.name=Alumina
 metaitem.sodium_carbonate.name=Sodium Carbonate
 metaitem.cupriavidus_necator.name=Cupriavidus Necator
 metaitem.shewanella.name=Shewanella
-
+metaitem.gold_deplete_molybdenite.name=Gold Depleted Molybdenite
+metaitem.molybdenum_concentrate.name=Molybdenum Concentrate
+metaitem.molybdenum_trioxide.name=Molybdenum Trioxide
+metaitem.copper_chloride.name=Copper Chloride
+metaitem.bismuth_chloride.name=Bismuth Chloride
+metaitem.lead_chloride.name=Lead Chloride
 
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
@@ -2386,6 +2391,14 @@ fluid.chitosan=Chitosan
 fluid.pluripotency_induction_gene_therapy_fluid=Gene Therapy Fluid
 fluid.resin=Resin
 fluid.linoleic_acid=Linoleic Acid
+fluid.hydrogen_cyanide=Hydrogen Cyanide
+fluid.sodium_cyanide=Sodium Cyanide
+fluid.gold_cyanide=Gold Cyanide
+fluid.chloride_leached_solution=Chloride Leached Solution
+fluid.molybdenum_flue_gas=Molybdenum Flue
+fluid.rhenium_sulfuric_solution=Rhenium Sulfuric Solution
+fluid.ammonium_sulfate=Ammonium Sulfate
+fluid.ammonium_perrhenate=Ammonium Perrhenate
 
 material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
