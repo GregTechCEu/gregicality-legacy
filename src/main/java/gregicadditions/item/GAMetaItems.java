@@ -183,6 +183,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
     public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PROTACTINIUM_WASTE;
     public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
     public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
     public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
@@ -309,6 +310,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
 
 
+
+    public static MetaItem<?>.MetaValueItem PYROLITIC_CARBON;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

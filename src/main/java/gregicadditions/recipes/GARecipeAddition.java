@@ -5,7 +5,6 @@ import forestry.core.fluids.Fluids;
 import forestry.core.items.EnumElectronTube;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
-import gregicadditions.Gregicality;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
@@ -23,7 +22,9 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.*;
+import gregtech.api.unification.material.type.GemMaterial;
+import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -42,7 +43,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
@@ -697,9 +697,6 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).notConsumable(new IntCircuitIngredient(30)).input(plate, StainlessSteel, 6).input(frameGt, StainlessSteel, 1).outputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN, 3)).duration(50).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).notConsumable(new IntCircuitIngredient(30)).input(plate, Titanium, 6).input(frameGt, Titanium, 1).outputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE, 3)).duration(50).buildAndRegister();
 
-        //distillery and new brewing
-        DISTILLERY_RECIPES.recipeBuilder().duration(64).EUt(100).circuitMeta(0).fluidInputs(FermentationBase.getFluid(1000)).fluidOutputs(Ethanol.getFluid(500)).buildAndRegister();
-
         removeAllRecipes(BREWING_RECIPES);
         BREWING_RECIPES.recipeBuilder().duration(1440).EUt(3).inputs(MetaItems.PLANT_BALL.getStackForm()).fluidInputs(Honey.getFluid(180)).fluidOutputs(Biomass.getFluid(270)).buildAndRegister();
         BREWING_RECIPES.recipeBuilder().duration(600).EUt(3).input("treeSapling", 1).fluidInputs(Honey.getFluid(100)).fluidOutputs(Biomass.getFluid(150)).buildAndRegister();
@@ -773,6 +770,9 @@ public class GARecipeAddition {
             cont.fill(fluid, true);
             ModHandler.addShapelessRecipe("gtadditions:clean_jetpack_" + fluid.getUnlocalizedName(), SEMIFLUID_JETPACK.getStackForm(), jetpack);
         }
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(120).duration(300).input(ingot, Graphite).outputs(PYROLITIC_CARBON.getStackForm()).buildAndRegister();
+        BLAST_RECIPES.recipeBuilder().EUt(480).duration(3000).input(dust, Silicon).input(dust, Carbon).notConsumable(new IntCircuitIngredient(2)).fluidInputs(Argon.getFluid(1000)).outputs(SiliconCarbide.getItemStack(2)).buildAndRegister();
     }
 
 
@@ -830,6 +830,62 @@ public class GARecipeAddition {
         DISTILLERY_RECIPES.recipeBuilder().duration(25).EUt(30).notConsumable(new IntCircuitIngredient(0)).fluidInputs(SulfuricCoalTarOil.getFluid(20)).fluidOutputs(Naphtalene.getFluid(20)).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(SulfuricAcid.getFluid(8000), CoalTarOil.getFluid(8000)).fluidOutputs(SulfuricCoalTarOil.getFluid(16000)).buildAndRegister();
+
+
+        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, FermentedBiomass.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+
+        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180).fluidInputs(FermentedBiomass.getFluid(2000))
+                .fluidOutputs(AceticAcid.getFluid(25),
+                        Water.getFluid(375),
+                        Ethanol.getFluid(250),
+                        Methanol.getFluid(150),
+                        Ammonia.getFluid(100),
+                        CarbonDioxide.getFluid(400),
+                        Methane.getFluid(600),
+                        Butanol.getFluid(100))
+                .buildAndRegister();
+
+        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180).fluidInputs(FermentationBase.getFluid(2000))
+                .fluidOutputs(AceticAcid.getFluid(50),
+                        Ethanol.getFluid(600),
+                        Methanol.getFluid(150),
+                        Ammonia.getFluid(100),
+                        CarbonDioxide.getFluid(400),
+                        Methane.getFluid(600),
+                        Butanol.getFluid(100))
+                .buildAndRegister();
+
+        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180).fluidInputs(RedOil.getFluid(4000))
+                .outputs(OreDictUnifier.get(dust, FerriteMixture))
+                .fluidOutputs(Hydrazine.getFluid(1000),
+                        RP1.getFluid(1000),
+                        TributylPhosphate.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(20)
+                .fluidInputs(Chlorine.getFluid(3000))
+                .input(dust, Phosphorus)
+                .fluidOutputs(PhosphorusTrichloride.getFluid(4000))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .fluidInputs(PhosphorusTrichloride.getFluid(4000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidOutputs(PhosphorylChloride.getFluid(5000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+                .fluidInputs(PhosphorylChloride.getFluid(5000))
+                .fluidInputs(Butanol.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                .fluidOutputs(TributylPhosphate.getFluid(5000))
+                .buildAndRegister();
 
 
         //Assline Recipes

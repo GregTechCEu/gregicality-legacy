@@ -23,7 +23,15 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class GAMetaItem extends MaterialMetaItem {
     public GAMetaItem() {
-        super(GAConfig.GT6.addCurvedPlates ? GAEnums.GAOrePrefix.plateCurved : null, GAConfig.GT6.addDoubleIngots ? GAEnums.GAOrePrefix.ingotDouble : null, GAConfig.GT6.addRounds ? GAEnums.GAOrePrefix.round : null, GAEnums.GAOrePrefix.dioxide, GAEnums.GAOrePrefix.nitride, GAEnums.GAOrePrefix.hexafluoride, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        super(GAConfig.GT6.addCurvedPlates ? GAEnums.GAOrePrefix.plateCurved : null,
+                GAConfig.GT6.addDoubleIngots ? GAEnums.GAOrePrefix.ingotDouble : null,
+                GAConfig.GT6.addRounds ? GAEnums.GAOrePrefix.round : null,
+                GAEnums.GAOrePrefix.dioxide, GAEnums.GAOrePrefix.nitride, GAEnums.GAOrePrefix.hexafluoride,
+                GAEnums.GAOrePrefix.carbide, GAEnums.GAOrePrefix.nitrite, GAEnums.GAOrePrefix.oxide,
+                GAEnums.GAOrePrefix.depletedFuel, GAEnums.GAOrePrefix.depletedFuelNitride, GAEnums.GAOrePrefix.depletedFuelOxide,
+                GAEnums.GAOrePrefix.depletedFuelTRISO, GAEnums.GAOrePrefix.depletedFuelZirconiumAlloy, GAEnums.GAOrePrefix.fuelCarbide,
+                GAEnums.GAOrePrefix.fuelNitride, GAEnums.GAOrePrefix.fuelOxide, GAEnums.GAOrePrefix.fuelPure, GAEnums.GAOrePrefix.fuelTRISO,
+                GAEnums.GAOrePrefix.fuelZirconiumAlloy, GAEnums.GAOrePrefix.zirconiumAlloy, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
@@ -139,6 +147,7 @@ public class GAMetaItem extends MaterialMetaItem {
                 .addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true))
                 .addComponents(new HandPumpBehavior());
 
+        PROTACTINIUM_WASTE = addItem(311, "waste.nuclear").addComponents(new WasteBehavior(Protactinium.getMaterial()));
         NUCLEAR_WASTE = addItem(312, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.global", 0xDEDEDE));
         THORIUM_WASTE = addItem(313, "waste.nuclear").addComponents(new WasteBehavior(Thorium));
         URANIUM_WASTE = addItem(314, "waste.nuclear").addComponents(new WasteBehavior(UraniumRadioactive.getMaterial()));
@@ -283,6 +292,7 @@ public class GAMetaItem extends MaterialMetaItem {
         PLATE_FIELD_SHAPE = addItem(431, "plate.field.shape");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
+        Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;
         PlutoniumRadioactive.waste = PLUTONIUM_WASTE;
@@ -295,6 +305,7 @@ public class GAMetaItem extends MaterialMetaItem {
         Mendelevium.waste = MENDELEVIUM_WASTE;
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
+        PYROLITIC_CARBON = addItem(16, "pyrolitic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
         STEM_CELLS = addItem(18, "stemcells");
         MICA_SHEET = addItem(26, "mica_sheet");

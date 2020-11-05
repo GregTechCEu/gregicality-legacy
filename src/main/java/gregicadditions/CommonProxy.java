@@ -144,6 +144,7 @@ public class CommonProxy {
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering ore prefix...");
         RecipeHandler.register();
+        NuclearHandler.register();
         OreRecipeHandler.register();
         GARecipeAddition.init();
         GAMetaItems.registerOreDict();
