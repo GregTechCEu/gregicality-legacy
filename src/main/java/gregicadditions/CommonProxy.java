@@ -64,6 +64,7 @@ public class CommonProxy {
         GALog.logger.info("Registering blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
         registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
+        registry.register(GAMetaBlocks.MUTLIBLOCK_CASING2);
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
         registry.register(GAMetaBlocks.MACHINE_CASING);
@@ -90,6 +91,7 @@ public class CommonProxy {
 
         registry.register(createItemBlock(GAMetaBlocks.OPTICAL_FIBER, ItemBlockOpticalFiber::new));
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING2, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.REACTOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.MACHINE_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.FUSION_CASING, VariantItemBlock::new));

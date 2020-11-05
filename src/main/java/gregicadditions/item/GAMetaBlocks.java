@@ -95,6 +95,9 @@ public class GAMetaBlocks {
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
 
+        MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
+        MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
+
         REACTOR_CASING = new GAReactorCasing();
         REACTOR_CASING.setRegistryName("ga_reactor_casing");
 
@@ -202,6 +205,7 @@ public class GAMetaBlocks {
 
         ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPTICAL_FIBER), stack -> OpticalFiberRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
+        registerItemModel(MUTLIBLOCK_CASING2);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
         registerItemModel(MACHINE_CASING);

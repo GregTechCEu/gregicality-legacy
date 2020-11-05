@@ -277,6 +277,11 @@ public class GAMetaItem extends MaterialMetaItem {
         ARAM = addItem(426, "plate.aram");
         ARAM_WAFER = addItem(427, "wafer.aram");
 
+        PLASMA_CONTAINMENT_CELL = addItem(428, "plasma.containment.cell");
+        RHENIUM_PLASMA_CONTAINMENT_CELL = addItem(429, "rhenium.plasma.containment.cell");
+        DEGENERATE_RHENIUM_PLATE = addItem(430, "degenerate.rhenium.plate");
+        PLATE_FIELD_SHAPE = addItem(431, "plate.field.shape");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
         Neptunium.waste = NEPTUNIUM_WASTE;

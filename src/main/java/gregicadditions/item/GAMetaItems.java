@@ -303,6 +303,13 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ARAM;
     public static MetaItem<?>.MetaValueItem ARAM_WAFER;
 
+    public static MetaItem<?>.MetaValueItem PLATE_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
+
+
+
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");

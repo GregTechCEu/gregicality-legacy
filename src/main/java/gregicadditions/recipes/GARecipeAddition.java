@@ -1361,6 +1361,7 @@ public class GARecipeAddition {
         Circuits.init();
         Batteries.init();
         RheniumChain.init();
+        UHVMaterials.init();
     }
 
     public static void forestrySupport() {
