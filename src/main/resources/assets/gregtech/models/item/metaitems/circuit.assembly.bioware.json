@@ -2,6 +2,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gregtech:items/metaitems/circuit.bioware_processor_array"
+    "layer0": "gregtech:items/metaitems/circuit.bioware.assembly"
   }
 }

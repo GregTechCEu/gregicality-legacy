@@ -2,6 +2,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gregtech:items/metaitems/circuit.bioware_processor_mainframe"
+    "layer0": "gregtech:items/metaitems/circuit.bioware.mainframe"
   }
 }
