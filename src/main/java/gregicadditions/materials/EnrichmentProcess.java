@@ -14,6 +14,7 @@ public class EnrichmentProcess {
     public Fluid fluidHexachloride;
     public Fluid fluidHexafluoride;
     public Fluid depletedFuelNitrateSolution;
+    public Fluid hexafluorideSteamCracked;
 
     protected IngotMaterial material;
 
@@ -40,5 +41,10 @@ public class EnrichmentProcess {
     @Nullable
     public FluidStack getFluidHexafluoride(int amount) {
         return fluidHexafluoride != null ? new FluidStack(fluidHexafluoride, amount) : null;
+    }
+
+    @Nullable
+    public FluidStack getFluidHexafluorideSteamCracked(int amount) {
+        return hexafluorideSteamCracked != null ? new FluidStack(hexafluorideSteamCracked, amount) : null;
     }
 }

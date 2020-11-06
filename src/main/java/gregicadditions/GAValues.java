@@ -3,7 +3,7 @@ package gregicadditions;
 public class GAValues {
 
     public static final long[] QUBIT = new long[]{1L, 16L, 256L, 4096L, 65536L, 1048576L, 16777216L, 268435456L};
-    public static final long[] V = new long[]{8, 32, 128, 512, 2048, 8192, 32768, 131072, 524288, 2097152, 8388608, 33554432, 134217728, 536870912, Integer.MAX_VALUE};
+    public static final int[] V = new int[]{8, 32, 128, 512, 2048, 8192, 32768, 131072, 524288, 2097152, 8388608, 33554432, 134217728, 536870912, Integer.MAX_VALUE};
     public static final int ULV = 0;
     public static final int LV = 1;
     public static final int MV = 2;
