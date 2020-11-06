@@ -987,6 +987,8 @@ gtadditions.machine.fluid_hatch.export_filtered.zpm.name=Filtered Output Hatch (
 gtadditions.machine.fluid_hatch.export_filtered.uv.name=Filtered Output Hatch (UV)
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
+gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
+
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet
@@ -1547,6 +1549,8 @@ material.reactor_steel=Reactor Steel
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
 gregtech.fluid.hexafluoride=%s Hexafluoride
+gregtech.fluid.depleted_fuel_nitrate_solution=%s Depleted Fuel Nitrate Solution
+gregtech.fluid.hexafluoride_steam_cracked=%s Hexafluoride Steam Cracked
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp

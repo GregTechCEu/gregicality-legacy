@@ -637,7 +637,7 @@ public class GAMaterials implements IMaterialHandler {
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
 
-
+        Boron.addFlag(GENERATE_ROD);
         YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
         Manganese.addFlag(GENERATE_FOIL);
         Naquadah.addFlag(GENERATE_FOIL);

@@ -38,7 +38,9 @@ public class GAMetaFluids {
         });
 
         IsotopeMaterial.REGISTRY.forEach((ingotMaterial, isotopeMaterial) -> {
+            isotopeMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
             isotopeMaterial.depletedFuelNitrateSolution = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"), 300);
+            isotopeMaterial.hexafluorideSteamCracked = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE_STEAM_CRACKED"), 300);
         });
 
         for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS) {

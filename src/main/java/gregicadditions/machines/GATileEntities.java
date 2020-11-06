@@ -26,6 +26,7 @@ import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyInputHa
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyOutputHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
+import gregicadditions.machines.multi.nuclear.MetaTileEntityGasCentrifuge;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
@@ -141,9 +142,11 @@ public class GATileEntities {
     public static FusionReactorAdv FUSION_REACTOR_UEV;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static GASimpleMachineMetaTileEntity GH;
+
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
+    public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
@@ -1074,7 +1077,7 @@ public class GATileEntities {
 
         QBIT_INPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4016, new MetaTileEntityQubitHatch(location("qubit_hatch.input.16"), 0, 16, false));
         QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4017, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
-
+        GAS_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(4020, new MetaTileEntityGasCentrifuge(location("gas_centrifuge")));
     }
 
 

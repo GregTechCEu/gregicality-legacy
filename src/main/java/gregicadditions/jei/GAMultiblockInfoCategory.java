@@ -3,10 +3,8 @@ package gregicadditions.jei;
 import com.google.common.collect.Lists;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
-import gregicadditions.jei.multi.miner.LargeMinerInfo;
-import gregicadditions.jei.multi.miner.VoidMinerInfo;
-import gregicadditions.jei.multi.nuclear.HotCoolantTurbineInfo;
-import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
+import gregicadditions.jei.multi.miner.*;
+import gregicadditions.jei.multi.nuclear.*;
 import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
@@ -82,7 +80,8 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new HyperReactor1Info()),
                 new MultiblockInfoRecipeWrapper(new HyperReactor2Info()),
                 new MultiblockInfoRecipeWrapper(new HyperReactor3Info()),
-                new MultiblockInfoRecipeWrapper(new FusionReactor4Info())
+                new MultiblockInfoRecipeWrapper(new FusionReactor4Info()),
+                new MultiblockInfoRecipeWrapper(new GasCentrifugeInfo())
         ), "gregtech:multiblock_info");
     }
 
