@@ -1,25 +1,24 @@
 package gregicadditions.machines;
 
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.function.Predicate;
 
-import static gregtech.api.unification.material.Materials.Steel;
 
 public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
 
@@ -29,8 +28,8 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
             MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityStellarForge(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap);
+    public MetaTileEntityStellarForge(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, GARecipeMaps.STELLAR_FORGE_RECIPES);
     }
 
     @Override
@@ -43,7 +42,7 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
                 .aisle("######C#C######", "##F#########F##", "####F#XXX#F####", "######XXX######", "######XXX######", "######XXX######", "####F#XXX#F####", "##F#########F##", "######C#C######")
                 .aisle("######C#C######", "#F###########F#", "###F#X###X#F###", "#####X###X#####", "#####X###X#####", "#####X###X#####", "###F#X###X#F###", "#F###########F#", "######C#C######")
                 .aisle("#CCCCCCMCCCCCC#", "CF####XXX####FC", "C##FX#####XF##C", "C###X#####X###C", "C###X#####X###C", "C###X#####X###C", "C##FX#####XF##C", "CF####XXX####FC", "#CCCCCCMCCCCCC#")
-                .aisle("######MMM######", "CF####XXX####FC", "###FX##M##XF###", "####X##M##X####", "####X##M##X####", "####X##M##X####", "###FX##M##XF###", "CF####XXX####FC", "######MMM######")
+                .aisle("######MMM######", "CF####XXX####FC", "###FX#####XF###", "####X#####X####", "####X#####X####", "####X#####X####", "###FX#####XF###", "CF####XXX####FC", "######MMM######")
                 .aisle("#CCCCCCMCCCCCC#", "CF####XXX####FC", "C##FX#####XF##C", "C###X#####X###C", "C###X#####X###C", "C###X#####X###C", "C##FX#####XF##C", "CF####XXX####FC", "#CCCCCCMCCCCCC#")
                 .aisle("######C#C######", "#F###########F#", "###F#X###X#F###", "#####X###X#####", "#####X###X#####", "#####X###X#####", "###F#X###X#F###", "#F###########F#", "######C#C######")
                 .aisle("######C#C######", "##F#########F##", "####F#XXX#F####", "######XXX######", "######XXX######", "######XXX######", "####F#XXX#F####", "##F#########F##", "######C#C######")
@@ -56,22 +55,22 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
                 .where('X', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.STELLAR_CONTAINMENT)))
                 .where('F', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2)))
                 .where('S', selfPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return null;
+        return GAMetaBlocks.METAL_CASING.get(GAMaterials.EnrichedNaquadahAlloy);
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return GAMetaBlocks.getMetalCasingBlockState(GAMaterials.EnrichedNaquadahAlloy);
     }
-
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return null;
+        return new MetaTileEntityStellarForge(metaTileEntityId);
     }
 }

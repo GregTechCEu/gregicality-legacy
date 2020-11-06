@@ -140,7 +140,7 @@ public class GATileEntities {
     public static FusionReactorAdv FUSION_REACTOR_UHV;
     public static FusionReactorAdv FUSION_REACTOR_UEV;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
-    public static GASimpleMachineMetaTileEntity GH;
+    public static MetaTileEntityStellarForge STELLAR_FORGE;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -1058,7 +1058,7 @@ public class GATileEntities {
         GA_HULLS[4] = GregTechAPI.registerMetaTileEntity(3243, new GAMetaTileEntityHull(location("hull.uxv"), 13));
         VOID_MINER[1] = GregTechAPI.registerMetaTileEntity(4018, new MetaTileEntityVoidMiner(location("void_miner.uhv"), GAValues.UHV, GAConfig.multis.voidMiner.maxTempUHV));
         VOID_MINER[2] = GregTechAPI.registerMetaTileEntity(4019, new MetaTileEntityVoidMiner(location("void_miner.uev"), GAValues.UEV, GAConfig.multis.voidMiner.maxTempUEV));
-
+        STELLAR_FORGE = GregTechAPI.registerMetaTileEntity(4020, new MetaTileEntityStellarForge(location("stellar_forge")));
         if (GAConfig.Misc.enableRockBreaker) {
             ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(4000, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
             ROCK_BREAKER[1] = GregTechAPI.registerMetaTileEntity(4001, new MetaTileEntityRockBreaker(location("rock_breaker.mv"), 2));
