@@ -558,6 +558,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
     public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
 
+    public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LanthanumTrifluoride = new SimpleDustMaterial("lanthanum_trifluoride", 0xeeeeee, (short) 58, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumTrifluoride = new SimpleDustMaterial("aluminium_trifluoride", 0xeeeeee, (short) 59, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ErbiumTrifluoride = new SimpleDustMaterial("erbium_trifluoride", 0xF3E1E5, (short) 60, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZBLANDust = new SimpleDustMaterial("zblan_dust", 0xFFFFFF, (short) 61, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", 0xFFF0F0, (short) 62, MaterialIconSet.DULL);
+
 
     public static Material Epic = new MarkerMaterial("epic");
     public static Material Legendary = new MarkerMaterial("legendary");

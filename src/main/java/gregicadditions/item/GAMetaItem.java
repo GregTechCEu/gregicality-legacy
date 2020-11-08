@@ -18,7 +18,8 @@ import net.minecraftforge.fml.common.Loader;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Thorium;
 
 
 public class GAMetaItem extends MaterialMetaItem {
@@ -290,6 +291,13 @@ public class GAMetaItem extends MaterialMetaItem {
         RHENIUM_PLASMA_CONTAINMENT_CELL = addItem(429, "rhenium.plasma.containment.cell");
         DEGENERATE_RHENIUM_PLATE = addItem(430, "degenerate.rhenium.plate");
         PLATE_FIELD_SHAPE = addItem(431, "plate.field.shape");
+
+        ZBLAN = addItem(432, "zblan");
+        ZBLAN_INGOT = addItem(433, "zblan_ingot");
+        HOT_ANNEALED_ZBLAN_INGOT = addItem(434, "hot_annealed_zblan_ingot");
+        ZBLAN_FIBER = addItem(435, "zblan_fiber");
+        ERBIUM_DOPED_ZBLAN = addItem(436, "erbium_doped_zblan");
+        CLADDED_OPTICAL_FIBER_CORE = addItem(437, "cladded_optical_fiber_core");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;

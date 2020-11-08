@@ -2286,6 +2286,20 @@ metaitem.copper_chloride.name=Copper Chloride
 metaitem.bismuth_chloride.name=Bismuth Chloride
 metaitem.lead_chloride.name=Lead Chloride
 
+metaitem.zirconium_tetrafluoride.name=Zirconium Tetrafluoride
+metaitem.barium_difluoride.name=Barium Difluoride
+metaitem.lanthanum_trifluoride.name=Lanthanum Trifluoride
+metaitem.aluminium_trifluoride.name=Aluminium Trifluoride
+metaitem.erbium_trifluoride.name=Erbium Trifluoride
+metaitem.zblan_dust.name=ZBLAN Dust
+metaitem.erbium_doped_zblan_dust.name=Erbium Doped ZBLAN
+metaitem.zblan.name=ZBLAN
+metaitem.zblan_ingot.name=ZBLAN Ingot
+metaitem.hot_annealed_zblan_ingot.name=Hot Annealed ZBLAN Ingot
+metaitem.zblan_fiber.name=ZBLAN Fiber
+metaitem.erbium_doped_zblan.name=Erbium Doped ZBLAN
+metaitem.cladded_optical_fiber_core.name=Cladded Optical Fiber Core
+
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
 fluid.naquadriatic_solution=Naquadriatic Solution

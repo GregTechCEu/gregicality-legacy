@@ -309,6 +309,12 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
     public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
 
+    public static MetaItem<?>.MetaValueItem ZBLAN;
+    public static MetaItem<?>.MetaValueItem ZBLAN_INGOT;
+    public static MetaItem<?>.MetaValueItem HOT_ANNEALED_ZBLAN_INGOT;
+    public static MetaItem<?>.MetaValueItem ZBLAN_FIBER;
+    public static MetaItem<?>.MetaValueItem ERBIUM_DOPED_ZBLAN;
+    public static MetaItem<?>.MetaValueItem CLADDED_OPTICAL_FIBER_CORE;
 
 
     public static MetaItem<?>.MetaValueItem PYROLITIC_CARBON;
