@@ -134,12 +134,6 @@ public class CommonProxy {
         VoidMinerOres.init();
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void registerLateRecipes(RegistryEvent.Register<IRecipe> event) {
-        GALog.logger.info("Registering recipe lowest...");
-        GAMachineRecipeRemoval.init2();
-    }
-
     @SubscribeEvent
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering ore prefix...");

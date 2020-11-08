@@ -577,6 +577,11 @@ public class GAMaterials implements IMaterialHandler {
         goldProcess();
         naqProcess();
 
+        if (GAConfig.Misc.tungstenProcess) {
+            Scheelite.addFlag(DISABLE_DECOMPOSITION);
+            Tungstate.addFlag(DISABLE_DECOMPOSITION);
+        }
+
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
         Naquadah.setFluidPipeProperties(1000, 19000, true);
