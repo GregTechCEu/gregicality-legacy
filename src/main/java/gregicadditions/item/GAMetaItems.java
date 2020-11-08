@@ -308,6 +308,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
     public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
     public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
+    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_DUST;
 
     public static MetaItem<?>.MetaValueItem ZBLAN;
     public static MetaItem<?>.MetaValueItem ZBLAN_INGOT;

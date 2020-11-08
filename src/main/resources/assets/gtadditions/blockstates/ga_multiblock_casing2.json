@@ -1,0 +1,48 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "tiered_hull_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
+      },
+	  "tiered_hull_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
+      },
+	  "tiered_hull_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
+      },
+	  "tiered_hull_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
+      },
+	  "tiered_hull_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+        }
+      },
+      "stellar_containment": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/stellar_containment_casing"
+        }
+      },
+	  "naquadria_charge": {
+		"textures": {
+			"all": "gregtech:blocks/casings/solid/naquadria_charge"
+		}
+	  }
+    }
+  }
+}

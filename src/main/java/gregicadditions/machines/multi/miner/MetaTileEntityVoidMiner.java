@@ -44,8 +44,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static gregicadditions.GAMaterials.HastelloyN;
-import static gregicadditions.GAMaterials.Staballoy;
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.VoidMinerOres.ORES;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
@@ -240,6 +239,8 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     public IBlockState getCasingState() {
         switch (tier) {
+            case 9:
+                return GAMetaBlocks.getMetalCasingBlockState(EnrichedNaquadahAlloy);
             case 8:
             default:
             return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
@@ -256,6 +257,8 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     public IBlockState getFrameState() {
         switch (tier) {
+            case 9:
+                return MetaBlocks.FRAMES.get(Incoloy813).getDefaultState();
             case 8:
             default:
             return MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState();
@@ -265,6 +268,8 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         switch (tier) {
+            case 9:
+                return GAMetaBlocks.METAL_CASING.get(EnrichedNaquadahAlloy);
             case 8:
             default:
                 return GAMetaBlocks.METAL_CASING.get(HastelloyN);

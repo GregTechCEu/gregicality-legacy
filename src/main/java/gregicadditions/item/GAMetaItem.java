@@ -290,6 +290,7 @@ public class GAMetaItem extends MaterialMetaItem {
         PLASMA_CONTAINMENT_CELL = addItem(428, "plasma.containment.cell");
         RHENIUM_PLASMA_CONTAINMENT_CELL = addItem(429, "rhenium.plasma.containment.cell");
         DEGENERATE_RHENIUM_PLATE = addItem(430, "degenerate.rhenium.plate");
+        DEGENERATE_RHENIUM_PLATE = addItem(432, "degenerate.rhenium.dust");
         PLATE_FIELD_SHAPE = addItem(431, "plate.field.shape");
 
         ZBLAN = addItem(432, "zblan");
