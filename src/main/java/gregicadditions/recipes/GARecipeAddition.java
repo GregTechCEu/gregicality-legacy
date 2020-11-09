@@ -1418,6 +1418,8 @@ public class GARecipeAddition {
         Batteries.init();
         RheniumChain.init();
         UHVMaterials.init();
+        PEEKChain.init();
+        ZylonChain.init();
     }
 
     public static void forestrySupport() {

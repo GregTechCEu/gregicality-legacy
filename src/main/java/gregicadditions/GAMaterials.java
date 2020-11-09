@@ -344,6 +344,10 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Aluminium, 4), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_FRAME, null);
     public static final IngotMaterial HatelloyK243 = new IngotMaterial(731, "hastelloy_k243", 0xa5f564, MaterialIconSet.SHINY, 2, of(new MaterialStack(HastelloyX78, 5), new MaterialStack(NiobiumNitride, 2), new MaterialStack(Tritanium, 4), new MaterialStack(TungstenCarbide, 4), new MaterialStack(Promethium, 4), new MaterialStack(Mendelevium261.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null);
 
+    public static final IngotMaterial Polyetheretherketone = new IngotMaterial(730, "polyetheretherketone", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
+    public static final IngotMaterial Zylon = new IngotMaterial(729, "zylon", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
+    public static final IngotMaterial FullerenePolymerMatrix = new IngotMaterial(728, "fullerene_polymer_matrix", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
+
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735);
@@ -558,6 +562,64 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
     public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
 
+    public static final SimpleFluidMaterial BoricAcid = new SimpleFluidMaterial("boric_acid", 0x755f30);
+    public static final SimpleFluidMaterial FluoroBoricAcid = new SimpleFluidMaterial("fluoroboric_acid", 0x755f30);
+    public static final SimpleFluidMaterial BenzenediazoniumTetrafluoroborate = new SimpleFluidMaterial("benzenediazonium_tetrafluoroborate", 0x755f30);
+    public static final SimpleFluidMaterial BoronFluoride = new SimpleFluidMaterial("boron_fluoride", 0x755f30);
+    public static final SimpleFluidMaterial FluoroBenzene = new SimpleFluidMaterial("fluoro_benzene", 0x755f30);
+    public static final SimpleFluidMaterial SodiumNitrateSolution = new SimpleFluidMaterial("sodium_nitrate_solution", 0x755f30);
+    public static final SimpleFluidMaterial Fluorotoluene = new SimpleFluidMaterial("fluorotoluene", 0x755f30);
+    public static final SimpleFluidMaterial Xylene = new SimpleFluidMaterial("xylene", 0x755f30);
+    public static final SimpleFluidMaterial XyleneZeoliteMixture = new SimpleFluidMaterial("xylene_zeolite", 0x755f30);
+    public static final SimpleFluidMaterial PXylene = new SimpleFluidMaterial("p_xylene", 0x755f30);
+    public static final SimpleFluidMaterial Dibromomethylbenzene = new SimpleFluidMaterial("dibromomethylbenzene", 0x755f30);
+    public static final SimpleFluidMaterial AceticAnhydride = new SimpleFluidMaterial("acetic_anhydride", 0x755f30);
+    public static final SimpleFluidMaterial Isochloropropane = new SimpleFluidMaterial("isochloropropane", 0x755f30);
+    public static final SimpleFluidMaterial Resorcinol = new SimpleFluidMaterial("resorcinol", 0x755f30);
+    public static final SimpleFluidMaterial Dinitrodipropanyloxybenzene = new SimpleFluidMaterial("dinitrodipropanyloxybenzene", 0x755f30);
+    public static final SimpleFluidMaterial Napthaldehyde = new SimpleFluidMaterial("napthaldehyde", 0x755f30);
+    public static final SimpleFluidMaterial HydrobromicAcid = new SimpleFluidMaterial("hydrobromic_acid", 0x755f30);
+    public static final SimpleFluidMaterial PhosphorusChloride = new SimpleFluidMaterial("phosphorus_chloride", 0x755f30);
+    public static final SimpleFluidMaterial ThionylChloride = new SimpleFluidMaterial("thionyl_chloride", 0x755f30);
+    public static final SimpleFluidMaterial TriphenylPhosphine = new SimpleFluidMaterial("triphenyl_phosphine", 0x755f30);
+    public static final SimpleFluidMaterial Diisopropylcarbodiimide = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
+    public static final SimpleFluidMaterial Pyridine = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
+    public static final SimpleFluidMaterial Phenylpentanoicacid = new SimpleFluidMaterial("phenylpentanoicacid", 0x755f30);
+    public static final SimpleFluidMaterial Dimethylsulfide = new SimpleFluidMaterial("dimethylsulfide", 0x755f30);
+    public static final SimpleFluidMaterial BenzoylChloride = new SimpleFluidMaterial("benzoyl_chloride", 0x755f30);
+    public static final SimpleFluidMaterial Silvertetrafluoroborate = new SimpleFluidMaterial("silvertetrafluoroborate", 0x755f30);
+    public static final SimpleFluidMaterial PCBA = new SimpleFluidMaterial("pcba", 0x755f30);
+    public static final SimpleFluidMaterial PCBS = new SimpleFluidMaterial("pcbs", 0x755f30);
+    public static final SimpleFluidMaterial Ferrocene = new SimpleFluidMaterial("ferrocene", 0x755f30);
+    public static final SimpleFluidMaterial Ferrocenylfulleropyrddolidine = new SimpleFluidMaterial("ferrocenylfulleropyrddolidine", 0x755f30);
+    public static final SimpleFluidMaterial CoCABCatalyst = new SimpleFluidMaterial("cocab_catalyst", 0x755f30);
+    public static final SimpleFluidMaterial Hydroquinone = new SimpleFluidMaterial("hydroquinone", 0x755f30);
+    public static final SimpleFluidMaterial Propylene = new SimpleFluidMaterial("propylene", 0x755f30);
+    public static final SimpleFluidMaterial SodiumAcetate = new SimpleFluidMaterial("sodium_acetate", 0x755f30);
+
+    public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 56, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 57, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 58, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Cyanonaphtalene = new SimpleDustMaterial("cyanonaphtalene", 0xbf95f5, (short) 59, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 60, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 61, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 62, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", 0xbf95f5, (short) 64, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", 0xbf95f5, (short) 65, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Bromosuccinimide = new SimpleDustMaterial("bromo_succinimide", 0xbf95f5, (short) 66, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Benzophenanthrenylacetonitrile = new SimpleDustMaterial("benzophenanthrenylacetonitrile", 0xbf95f5, (short) 67, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial UnfoldedFullerene = new SimpleDustMaterial("unfolded_fullerene", 0xbf95f5, (short) 68, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Fullerene = new SimpleDustMaterial("fullerene", 0xbf95f5, (short) 69, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TiAlChloride = new SimpleDustMaterial("tial_chloride", 0xbf95f5, (short) 70, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Dimethylaminopyridine = new SimpleDustMaterial("dimethylaminopyridine", 0xbf95f5, (short) 71, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PdIrReOCeOS = new SimpleDustMaterial("pdirreoceos", 0xbf95f5, (short) 72, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", 0xbf95f5, (short) 73, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial MgClBrominide = new SimpleDustMaterial("mgcl_brominide", 0xbf95f5, (short) 74, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial NMethylglicine = new SimpleDustMaterial("n_methylglicine", 0xbf95f5, (short) 75, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", 0xbf95f5, (short) 78, MaterialIconSet.SHINY);
 
     public static Material Epic = new MarkerMaterial("epic");
     public static Material Legendary = new MarkerMaterial("legendary");
