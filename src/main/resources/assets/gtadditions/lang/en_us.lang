@@ -988,6 +988,7 @@ gtadditions.machine.fluid_hatch.export_filtered.uv.name=Filtered Output Hatch (U
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
+gtadditions.machine.qubit_computer.name=Quantum Computer
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
@@ -2230,6 +2231,10 @@ gtadditions.machine.energy_hatch.output.uv.16.name=Energy Output Hatch 16 Amps (
 gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
+
+
+gtadditions.machine.qubit_hatch.output.1.name=Qubit Output Hatch
+gtadditions.machine.qubit_hatch.input.16.name=Qubit Input Hatch
 
 metaitem.auric_fluoride.name=Auric Fluoride Dust
 metaitem.naquadria_concentrate.name=Naquadria Concentrate Dust

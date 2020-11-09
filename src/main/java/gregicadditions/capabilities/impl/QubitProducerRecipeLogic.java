@@ -3,8 +3,10 @@ package gregicadditions.capabilities.impl;
 
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.recipes.Recipe;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
@@ -21,17 +23,34 @@ public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
         return controller.getOutputQubitContainer();
     }
 
+    @Override
+    protected void completeRecipe() {
+        super.completeRecipe();
+        this.recipeOutputQubit = 0;
+    }
+
+    @Override
+    protected void setupRecipe(Recipe recipe) {
+        super.setupRecipe(recipe);
+        this.recipeOutputQubit = recipe.getIntegerProperty("qubitProduce");
+    }
 
     @Override
     protected void updateRecipeProgress() {
+        GALog.logger.info("ici1 " + recipeOutputQubit);
         if (getOutputQubitContainer().getQubitCanBeInserted() < recipeOutputQubit) {
+            GALog.logger.info("ici2");
             return;
         }
 
+        GALog.logger.info("ici3");
         boolean drawEnergy = drawEnergy(recipeEUt);
+        GALog.logger.info("ici4 " + drawEnergy);
         if (drawEnergy || (recipeEUt < 0)) {
+            GALog.logger.info("ic5");
             getOutputQubitContainer().addQubit(recipeOutputQubit);
             if (++progressTime >= maxProgressTime) {
+                GALog.logger.info("ici6 " + previousRecipe);
                 completeRecipe();
             }
         } else if (recipeEUt > 0) {
