@@ -70,7 +70,7 @@ public class FullereneChain {
                 .duration(150)
                 .buildAndRegister();
         LARGE_ENGRAVER_RECIPES.recipeBuilder()
-                .notConsumable(craftingLens, MarkerMaterials.Color.Purple)
+                .notConsumable(craftingLens, MarkerMaterials.Color.Magenta)
                 .inputs(UnfoldedFullerene.getItemStack())
                 .outputs(Fullerene.getItemStack())
                 .EUt(8000000)
