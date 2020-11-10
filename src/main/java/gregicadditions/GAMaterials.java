@@ -577,11 +577,10 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Isochloropropane = new SimpleFluidMaterial("isochloropropane", 0x755f30);
     public static final SimpleFluidMaterial Resorcinol = new SimpleFluidMaterial("resorcinol", 0x755f30);
     public static final SimpleFluidMaterial Dinitrodipropanyloxybenzene = new SimpleFluidMaterial("dinitrodipropanyloxybenzene", 0x755f30);
-    public static final SimpleFluidMaterial Napthaldehyde = new SimpleFluidMaterial("napthaldehyde", 0x755f30);
+    public static final SimpleFluidMaterial Naphthaldehyde = new SimpleFluidMaterial("napthaldehyde", 0x755f30);
     public static final SimpleFluidMaterial HydrobromicAcid = new SimpleFluidMaterial("hydrobromic_acid", 0x755f30);
     public static final SimpleFluidMaterial PhosphorusChloride = new SimpleFluidMaterial("phosphorus_chloride", 0x755f30);
     public static final SimpleFluidMaterial ThionylChloride = new SimpleFluidMaterial("thionyl_chloride", 0x755f30);
-    public static final SimpleFluidMaterial TriphenylPhosphine = new SimpleFluidMaterial("triphenyl_phosphine", 0x755f30);
     public static final SimpleFluidMaterial Diisopropylcarbodiimide = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
     public static final SimpleFluidMaterial Pyridine = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
     public static final SimpleFluidMaterial Phenylpentanoicacid = new SimpleFluidMaterial("phenylpentanoicacid", 0x755f30);
@@ -591,11 +590,16 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial PCBA = new SimpleFluidMaterial("pcba", 0x755f30);
     public static final SimpleFluidMaterial PCBS = new SimpleFluidMaterial("pcbs", 0x755f30);
     public static final SimpleFluidMaterial Ferrocene = new SimpleFluidMaterial("ferrocene", 0x755f30);
-    public static final SimpleFluidMaterial Ferrocenylfulleropyrddolidine = new SimpleFluidMaterial("ferrocenylfulleropyrddolidine", 0x755f30);
+    public static final SimpleFluidMaterial Ferrocenylfulleropyrrolidine = new SimpleFluidMaterial("ferrocenylfulleropyrddolidine", 0x755f30);
     public static final SimpleFluidMaterial CoCABCatalyst = new SimpleFluidMaterial("cocab_catalyst", 0x755f30);
     public static final SimpleFluidMaterial Hydroquinone = new SimpleFluidMaterial("hydroquinone", 0x755f30);
     public static final SimpleFluidMaterial Propylene = new SimpleFluidMaterial("propylene", 0x755f30);
     public static final SimpleFluidMaterial SodiumAcetate = new SimpleFluidMaterial("sodium_acetate", 0x755f30);
+    public static final SimpleFluidMaterial PotassiumHydroxide = new SimpleFluidMaterial("potassium_hydroxide", 0x755f30);
+    public static final SimpleFluidMaterial PotassiumChloride = new SimpleFluidMaterial("potassium_chloride", 0x755f30);
+    public static final SimpleFluidMaterial Methylamine = new SimpleFluidMaterial("methylamine", 0x755f30);
+    public static final SimpleFluidMaterial Phosgene = new SimpleFluidMaterial("phosgene", 0x755f30);
+    public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);
 
     public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 56, MaterialIconSet.DULL);
     public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 57, MaterialIconSet.DULL);
@@ -620,6 +624,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", 0xbf95f5, (short) 78, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", 0xbf95f5, (short) 80, MaterialIconSet.SHINY);
 
     public static Material Epic = new MarkerMaterial("epic");
     public static Material Legendary = new MarkerMaterial("legendary");

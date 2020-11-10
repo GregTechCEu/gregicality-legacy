@@ -1420,6 +1420,7 @@ public class GARecipeAddition {
         UHVMaterials.init();
         PEEKChain.init();
         ZylonChain.init();
+        FullereneChain.init();
     }
 
     public static void forestrySupport() {

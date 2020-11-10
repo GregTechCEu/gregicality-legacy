@@ -82,6 +82,8 @@ public class GARecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES;
     @ZenProperty
     public static final RecipeMap<IntCircuitRecipeBuilder> GAS_CENTRIFUGE_RECIPES;
+    @ZenProperty
+    public static final LargeRecipeMap LARGE_ENGRAVER_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -101,7 +103,7 @@ public class GARecipeMaps {
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
-        CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 0, 0, 4, 0, 2, (new SimpleRecipeBuilder()))
+        CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 2, 0, 4, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
         LARGE_MIXER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_mixer", 0, 9, 0, 1, 0, 4, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
@@ -146,6 +148,9 @@ public class GARecipeMaps {
         GAS_CENTRIFUGE_RECIPES = new RecipeMap<>("gas_centrifuge", 1, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
                 .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.VERTICAL_INVERTED);
-        ;
+        LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 0, 0, 0, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
+                .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
+                .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
+
     }
 }
