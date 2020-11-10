@@ -13,7 +13,7 @@ public class GregicAdditionsCapabilities {
     @CapabilityInject(IQubitContainer.class)
     public static Capability<IQubitContainer> QBIT_CAPABILITY;
 
-    public static MultiblockAbility<IQubitContainer> INPUT_QBIT = new MultiblockAbility<>();
-    public static MultiblockAbility<IQubitContainer> OUTPUT_QBIT = new MultiblockAbility<>();
+    public static MultiblockAbility<IQubitContainer> INPUT_QBIT = new MultiblockAbility();
+    public static MultiblockAbility<IQubitContainer> OUTPUT_QBIT = new MultiblockAbility();
 
 }

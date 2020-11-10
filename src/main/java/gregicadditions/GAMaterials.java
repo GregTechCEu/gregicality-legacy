@@ -562,6 +562,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
     public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
 
+    public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LanthanumTrifluoride = new SimpleDustMaterial("lanthanum_trifluoride", 0xeeeeee, (short) 58, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumTrifluoride = new SimpleDustMaterial("aluminium_trifluoride", 0xeeeeee, (short) 59, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ErbiumTrifluoride = new SimpleDustMaterial("erbium_trifluoride", 0xF3E1E5, (short) 60, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZBLANDust = new SimpleDustMaterial("zblan_dust", 0xFFFFFF, (short) 61, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", 0xFFF0F0, (short) 62, MaterialIconSet.DULL);
+
     public static final SimpleFluidMaterial BoricAcid = new SimpleFluidMaterial("boric_acid", 0x755f30);
     public static final SimpleFluidMaterial FluoroBoricAcid = new SimpleFluidMaterial("fluoroboric_acid", 0x755f30);
     public static final SimpleFluidMaterial BenzenediazoniumTetrafluoroborate = new SimpleFluidMaterial("benzenediazonium_tetrafluoroborate", 0x755f30);
@@ -601,13 +609,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Phosgene = new SimpleFluidMaterial("phosgene", 0x755f30);
     public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);
 
-    public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 56, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 57, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 58, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Cyanonaphtalene = new SimpleDustMaterial("cyanonaphtalene", 0xbf95f5, (short) 59, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 60, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 61, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 62, MaterialIconSet.DULL);
+
     public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL);
     public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", 0xbf95f5, (short) 64, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", 0xbf95f5, (short) 65, MaterialIconSet.DULL);
@@ -627,6 +629,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", 0xbf95f5, (short) 80, MaterialIconSet.SHINY);
 
+    public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 81, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 82, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 83, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Cyanonaphtalene = new SimpleDustMaterial("cyanonaphtalene", 0xbf95f5, (short) 84, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 85, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 86, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 87, MaterialIconSet.DULL);
+
     public static Material Epic = new MarkerMaterial("epic");
     public static Material Legendary = new MarkerMaterial("legendary");
 
@@ -636,6 +646,11 @@ public class GAMaterials implements IMaterialHandler {
         platinumProcess();
         goldProcess();
         naqProcess();
+
+        if (GAConfig.Misc.tungstenProcess) {
+            Scheelite.addFlag(DISABLE_DECOMPOSITION);
+            Tungstate.addFlag(DISABLE_DECOMPOSITION);
+        }
 
         Enderium.setFluidPipeProperties(650, 1500, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);

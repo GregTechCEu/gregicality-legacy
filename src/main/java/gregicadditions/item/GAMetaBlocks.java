@@ -78,6 +78,8 @@ public class GAMetaBlocks {
 
     public static SensorCasing SENSOR_CASING;
 
+    public static GAQuantumCasing QUANTUM_CASING;
+
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
@@ -92,6 +94,9 @@ public class GAMetaBlocks {
                 createOreBlock((DustMaterial) mat);
             }
         }
+        QUANTUM_CASING = new GAQuantumCasing();
+        QUANTUM_CASING.setRegistryName("ga_quantum_casing");
+
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
 
@@ -205,6 +210,7 @@ public class GAMetaBlocks {
 
         ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPTICAL_FIBER), stack -> OpticalFiberRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
+        registerItemModel(QUANTUM_CASING);
         registerItemModel(MUTLIBLOCK_CASING2);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);

@@ -988,6 +988,7 @@ gtadditions.machine.fluid_hatch.export_filtered.uv.name=Filtered Output Hatch (U
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
+gtadditions.machine.qubit_computer.name=Quantum Computer
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
@@ -2231,6 +2232,10 @@ gtadditions.machine.energy_hatch.output.uv.32.name=Energy Output Hatch 32 Amps (
 gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (UV)
 gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
 
+
+gtadditions.machine.qubit_hatch.output.1.name=Qubit Output Hatch
+gtadditions.machine.qubit_hatch.input.16.name=Qubit Input Hatch
+
 metaitem.auric_fluoride.name=Auric Fluoride Dust
 metaitem.naquadria_concentrate.name=Naquadria Concentrate Dust
 metaitem.enriched_naquadah_concentrate.name=Enriched Naquadah Concentrate Dust
@@ -2285,6 +2290,20 @@ metaitem.molybdenum_trioxide.name=Molybdenum Trioxide
 metaitem.copper_chloride.name=Copper Chloride
 metaitem.bismuth_chloride.name=Bismuth Chloride
 metaitem.lead_chloride.name=Lead Chloride
+
+metaitem.zirconium_tetrafluoride.name=Zirconium Tetrafluoride
+metaitem.barium_difluoride.name=Barium Difluoride
+metaitem.lanthanum_trifluoride.name=Lanthanum Trifluoride
+metaitem.aluminium_trifluoride.name=Aluminium Trifluoride
+metaitem.erbium_trifluoride.name=Erbium Trifluoride
+metaitem.zblan_dust.name=ZBLAN Dust
+metaitem.erbium_doped_zblan_dust.name=Erbium Doped ZBLAN
+metaitem.zblan.name=ZBLAN
+metaitem.zblan_ingot.name=ZBLAN Ingot
+metaitem.hot_annealed_zblan_ingot.name=Hot Annealed ZBLAN Ingot
+metaitem.zblan_fiber.name=ZBLAN Fiber
+metaitem.erbium_doped_zblan.name=Erbium Doped ZBLAN
+metaitem.cladded_optical_fiber_core.name=Cladded Optical Fiber Core
 
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution

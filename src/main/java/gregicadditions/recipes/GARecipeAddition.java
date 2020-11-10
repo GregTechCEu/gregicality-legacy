@@ -1404,6 +1404,7 @@ public class GARecipeAddition {
     public static void init3() {
         GoldChain.init();
         NaquadahChain.init();
+        OpticalFiber.init();
         NuclearChain.init();
         PlasticChain.init();
         PlatinumSludgeGroupChain.init();
