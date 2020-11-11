@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
@@ -24,6 +25,7 @@ import static gregtech.api.unification.material.Materials.Steel;
 public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
     public TileEntityAssemblyLine(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.ASSEMBLY_LINE_RECIPES);
+        this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 
     @Override

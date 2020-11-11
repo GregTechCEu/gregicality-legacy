@@ -3,6 +3,7 @@ package gregicadditions.recipes.chain;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -44,8 +45,11 @@ public class Circuits {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
         ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
+        GALog.logger.info("soldering fluid");
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
+            GALog.logger.info(fluid);
+            GALog.logger.info(fluidSplit[1]);
             int amount = Integer.parseInt(fluidSplit[1]);
             if (amount > 64000) {
                 amount = 64000;
@@ -160,8 +164,8 @@ public class Circuits {
                     .outputs(COSMIC_PROCESSOR.getStackForm(1))
                     .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
-                            SMD_TRANSISTOR_BIOWARE.getStackForm(8),
-                            SMD_CAPACITOR_BIOWARE.getStackForm(4),
+                            SMD_TRANSISTOR.getStackForm(8),
+                            SMD_CAPACITOR.getStackForm(4),
                             NEURO_PROCESSOR.getStackForm(),
                             UHASOC.getStackForm(1))
                     .input(wireFine, NaquadahAlloy, 4)
@@ -266,10 +270,10 @@ public class Circuits {
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
-                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_CAPACITOR.getStackForm(16))
+                .inputs(SMD_TRANSISTOR.getStackForm(16))
+                .inputs(SMD_DIODE.getStackForm(16))
+                .inputs(SMD_RESISTOR.getStackForm(16))
                 .inputs(NEURO_PROCESSOR.getStackForm())
                 .input(wireGtSingle, UVSuperconductor, 4)
                 .inputs(ARAM.getStackForm(32))

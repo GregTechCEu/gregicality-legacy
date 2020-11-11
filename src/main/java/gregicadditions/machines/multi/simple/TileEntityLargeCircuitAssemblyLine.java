@@ -1,5 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
@@ -43,6 +45,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
+        this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 
     @Override
@@ -62,7 +65,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS)))
                 .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[0].metaTileEntityId)))
                 .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-                .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
+                .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)).or(abilityPartPredicate(GregicAdditionsCapabilities.INPUT_QBIT)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
                 .where('T', tieredCasingPredicate())
                 .build();
