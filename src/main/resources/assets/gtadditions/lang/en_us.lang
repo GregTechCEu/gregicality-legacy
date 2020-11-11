@@ -1579,6 +1579,18 @@ material.uv_superconductor=UV Superconductor
 material.rutherfordium=Rutherfordium
 material.dubnium=Dubnium
 material.reactor_steel=Reactor Steel
+material.zylon=Zylon
+material.polyetheretherkenone=Polyetheretherkenone
+material.hastelloy_k243=Hastelloy K243
+material.hastelloy_x78=Hastelloy X78
+material.enriched_naquadah_alloy=Enriched Naquadah Alloy
+material.incoloy813=Incoloy 813
+material.bohrium=Bohrium
+material.seabohrium=Seabohrium
+material.uev_superconductor=UEV Superconductor
+material.uev_superconductor_base=UEV Superconductor Base
+material.uhv_superconductor_base=UHV Superconductor Base
+material.uhv_superconductor=UHV Superconductor
 
 
 
@@ -2340,6 +2352,11 @@ metaitem.hot_annealed_zblan_ingot.name=Hot Annealed ZBLAN Ingot
 metaitem.zblan_fiber.name=ZBLAN Fiber
 metaitem.erbium_doped_zblan.name=Erbium Doped ZBLAN
 metaitem.cladded_optical_fiber_core.name=Cladded Optical Fiber Core
+metaitem.degenerate.rhenium.dust.name=Degenerate Rhenium Dust
+metaitem.degenerate.rhenium.plate.name=Degenerate Rhenium Plate
+metaitem.rhenium.plasma.containment.cell.name=Renium Plasma Containment Cell
+metaitem.plasma.containment.cell.name=Plasma Containment Cell
+
 
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
