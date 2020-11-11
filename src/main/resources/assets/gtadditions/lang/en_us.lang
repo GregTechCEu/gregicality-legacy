@@ -321,42 +321,53 @@ metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
 
 #//MAX
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
-metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
+metaitem.circuit.wetware_mainframe.tooltip=§b§oUHV Circuit
 
 
 #//magneto resonatic
-metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ulv.name=ULV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
-metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
+metaitem.circuit.resonatic.lv.name=LV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.lv.tooltip=§b§oLV Circuit
-metaitem.circuit.resonatic.mv.name=Good Magneto Resonatic Circuit
+metaitem.circuit.resonatic.mv.name=MV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.mv.tooltip=§b§oMV Circuit
-metaitem.circuit.resonatic.hv.name=Advanced Magneto Resonatic Circuit
+metaitem.circuit.resonatic.hv.name=HV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.hv.tooltip=§b§oHV Circuit
-metaitem.circuit.resonatic.ev.name=Extreme Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ev.name=EV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ev.tooltip=§b§oEV Circuit
-metaitem.circuit.resonatic.iv.name=Elite Magneto Resonatic Circuit
+metaitem.circuit.resonatic.iv.name=IV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.iv.tooltip=§b§oIV Circuit
-metaitem.circuit.resonatic.luv.name=Master Magneto Resonatic Circuit
+metaitem.circuit.resonatic.luv.name=LuV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.luv.tooltip=§b§oLuV Circuit
-metaitem.circuit.resonatic.zpm.name=Ultimate Magneto Resonatic Circuit
+metaitem.circuit.resonatic.zpm.name=ZPM Magneto Resonatic Circuit
 metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM Circuit
-metaitem.circuit.resonatic.uv.name=Superconductor Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uv.name=UV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
-metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
-metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
-
-##cosmic
-metaitem.circuit.processor.cosmic.name=Cosmic Processor
-metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
-metaitem.circuit.computer.cosmic.name=Cosmic Computer
-metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
+metaitem.circuit.resonatic.uhv.name=UHV Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV Circuit
+metaitem.circuit.resonatic.uev.name=UEV Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uev.tooltip=§b§oUEV Circuit
 
 #bioware
 metaitem.circuit.processor.bioware.name=Bioware Processor
+metaitem.circuit.processor.bioware.tooltip=§b§oZPM Circuit
 metaitem.circuit.assembly.bioware.name=Bioware Assembly
+metaitem.circuit.assembly.bioware.tooltip=§b§oUV Circuit
 metaitem.circuit.computer.bioware.name=Bioware Computer
+metaitem.circuit.computer.bioware.tooltip=§b§oUHV Circuit
 metaitem.circuit.mainframe.bioware.name=Bioware Mainframe
+metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV Circuit
+
+##cosmic
+metaitem.circuit.processor.cosmic.name=Cosmic Processor
+metaitem.circuit.processor.cosmic.tooltip=§b§oUHV Circuit
+metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
+metaitem.circuit.assembly.cosmic.tooltip=§b§oUEV Circuit
+metaitem.circuit.computer.cosmic.name=Cosmic Computer
+metaitem.circuit.computer.cosmic.tooltip=§b§oUIV Circuit
+metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
+metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV Circuit
+
 
 ####################################################################
 
