@@ -1,7 +1,7 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
-import gregicadditions.item.GAFusionCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;

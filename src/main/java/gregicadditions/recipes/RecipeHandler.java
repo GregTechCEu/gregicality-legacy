@@ -366,6 +366,23 @@ public class RecipeHandler {
         });
     }
 
+    public static void registerLaserEngraverRecipes() {
+        LASER_ENGRAVER_RECIPES.getRecipeList().forEach(recipe -> {
+            LargeRecipeBuilder largeRecipeMap = LARGE_ENGRAVER_RECIPES.recipeBuilder()
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(recipe.getInputs())
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs());
+
+            recipe.getChancedOutputs().forEach(chanceEntry -> {
+                largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
+            });
+            largeRecipeMap.buildAndRegister();
+        });
+    }
+
     public static void registerLargeMixerRecipes() {
         RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe ->
                 GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()

@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.advance;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.item.GAFusionCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;

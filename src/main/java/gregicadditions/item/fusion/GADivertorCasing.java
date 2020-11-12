@@ -1,4 +1,4 @@
-package gregicadditions.item;
+package gregicadditions.item.fusion;
 
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.block.SoundType;
@@ -9,16 +9,16 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class GAFusionCasing extends VariantBlock<GAFusionCasing.CasingType> {
+public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> {
 
-    public GAFusionCasing() {
+    public GADivertorCasing() {
         super(Material.IRON);
-        setTranslationKey("ga_fusion_casing");
+        setTranslationKey("ga_divertor_casing");
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CasingType.FUSION_3));
+        setDefaultState(getState(GADivertorCasing.CasingType.FUSION_3));
     }
 
     @Override

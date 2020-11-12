@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAFusionCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
