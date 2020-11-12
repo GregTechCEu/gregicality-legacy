@@ -21,7 +21,6 @@ metaitem.board.elite.name=精英电路基板
 metaitem.board.master.name=大师电路基板
 metaitem.board.raw.magnetic.name=压印磁共振电路基板原料
 metaitem.board.magnetic.name=压印磁共振电路基板
-
 metaitem.circuit.board.elite.name=神经元处理器
 metaitem.circuit.board.elite.tooltip=神经元CPU
 metaitem.boule.silicon.name=单晶硅
@@ -322,69 +321,81 @@ metaitem.circuit.wetware_super_computer.tooltip=§b§oUV级电路
 
 #//MAX
 metaitem.circuit.wetware_mainframe.name=湿件主机
-metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX级电路
+metaitem.circuit.wetware_mainframe.tooltip=§b§oUHV级电路
 
 
 #//magneto resonatic
-metaitem.circuit.resonatic.ulv.name=原始磁共振电路
+metaitem.circuit.resonatic.ulv.name=超低压磁共振电路
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV级电路
-metaitem.circuit.resonatic.lv.name=基础磁共振电路
+metaitem.circuit.resonatic.lv.name=低压磁共振电路
 metaitem.circuit.resonatic.lv.tooltip=§b§oLV级电路
-metaitem.circuit.resonatic.mv.name=进阶磁共振电路
+metaitem.circuit.resonatic.mv.name=中压磁共振电路
 metaitem.circuit.resonatic.mv.tooltip=§b§oMV级电路
-metaitem.circuit.resonatic.hv.name=先进磁共振电路
+metaitem.circuit.resonatic.hv.name=高压磁共振电路
 metaitem.circuit.resonatic.hv.tooltip=§b§oHV级电路
-metaitem.circuit.resonatic.ev.name=数据磁共振电路
+metaitem.circuit.resonatic.ev.name=超高压磁共振电路
 metaitem.circuit.resonatic.ev.tooltip=§b§oEV级电路
-metaitem.circuit.resonatic.iv.name=精英磁共振电路
+metaitem.circuit.resonatic.iv.name=强导压磁共振电路
 metaitem.circuit.resonatic.iv.tooltip=§b§oIV级电路
-metaitem.circuit.resonatic.luv.name=大师磁共振电路
+metaitem.circuit.resonatic.luv.name=剧差压磁共振电路
 metaitem.circuit.resonatic.luv.tooltip=§b§oLuV级电路
-metaitem.circuit.resonatic.zpm.name=顶级磁共振电路
+metaitem.circuit.resonatic.zpm.name=零点压磁共振电路
 metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM级电路
-metaitem.circuit.resonatic.uv.name=超导磁共振电路
+metaitem.circuit.resonatic.uv.name=极限压磁共振电路
 metaitem.circuit.resonatic.uv.tooltip=§b§oUV级电路
-metaitem.circuit.resonatic.max.name=终极磁共振电路
-metaitem.circuit.resonatic.max.tooltip=§b§oMAX级电路
+metaitem.circuit.resonatic.uhv.name=高极限压磁共振电路
+metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV级电路
+metaitem.circuit.resonatic.uev.name=超极限压磁共振电路
+metaitem.circuit.resonatic.uev.tooltip=§b§oUEV级电路
+
+#bioware
+metaitem.circuit.processor.bioware.name=生物活性处理器集群
+metaitem.circuit.processor.bioware.tooltip=§b§oZPM级电路
+metaitem.circuit.assembly.bioware.name=生物活性处理器主机
+metaitem.circuit.assembly.bioware.tooltip=§b§oUV级电路
+metaitem.circuit.computer.bioware.name=生物活性主机
+metaitem.circuit.computer.bioware.tooltip=§b§oUHV级电路
+metaitem.circuit.mainframe.bioware.name=生物活性大型计算机
+metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV级电路
 
 ##cosmic
-metaitem.circuit.circuit.cosmic.name=寰宇处理器
 metaitem.circuit.processor.cosmic.name=寰宇处理器集群
+metaitem.circuit.processor.cosmic.tooltip=§b§oUHV级电路
 metaitem.circuit.assembly.cosmic.name=寰宇处理器主机
+metaitem.circuit.assembly.cosmic.tooltip=§b§oUEV级电路
 metaitem.circuit.computer.cosmic.name=寰宇主机
+metaitem.circuit.computer.cosmic.tooltip=§b§oUIV级电路
 metaitem.circuit.mainframe.cosmic.name=寰宇大型计算机
+metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV级电路
 
-metaitem.circuit.processor.bioware.name=生物活性处理器集群
-metaitem.circuit.assembly.bioware.name=生物活性处理器主机
-metaitem.circuit.computer.bioware.name=生物活性主机
-metaitem.circuit.mainframe.bioware.name=生物活性大型计算机
+
 ####################################################################
 
 
-metaarmor.nms.nightvision.enabled=纳米科技™套装: 夜视开启
-metaarmor.nms.nightvision.disabled=纳米科技™套装: 夜视关闭
+metaarmor.nms.nightvision.enabled=纳米科技™套装：夜视开启
+metaarmor.nms.nightvision.disabled=纳米科技™套装：夜视关闭
 
-metaarmor.qts.nightvision.enabled=量子科技™套装: 夜视开启
-metaarmor.qts.nightvision.disabled=量子科技™套装: 夜视关闭
+metaarmor.qts.nightvision.enabled=量子科技™套装：夜视开启
+metaarmor.qts.nightvision.disabled=量子科技™套装：夜视关闭
 
-metaarmor.jetpack.hover.enable=喷气背包: 悬停模式开启
-metaarmor.jetpack.hover.disable=喷气背包: 悬停模式关闭
+metaarmor.jetpack.hover.enable=喷气背包：悬停模式开启
+metaarmor.jetpack.hover.disable=喷气背包：悬停模式关闭
 
 metaarmor.hud.status.enabled=§a开启
 metaarmor.hud.status.disabled=§c关闭
-metaarmor.hud.energy_lvl=剩余能量: %s
-metaarmor.hud.fuel_lvl=剩余燃料: %s
-metaarmor.hud.hover_mode=悬停模式: %s
-mataarmor.hud.supply_mode=充能模式: %s
-metaarmor.hud.fly_mode=飞行模式: %s
-metaarmor.hud.gravi_engine=重力引擎: %s
+metaarmor.hud.energy_lvl=剩余能量：%s
+metaarmor.hud.fuel_lvl=剩余燃料：%s
+metaarmor.hud.hover_mode=悬停模式：%s
+mataarmor.hud.supply_mode=充能模式：%s
+metaarmor.hud.fly_mode=飞行模式：%s
+metaarmor.hud.gravi_engine=重力引擎：%s
 
-metaarmor.energy_share.enable=充能模式: 工具充能已启用
-metaarmor.energy_share.disable=充能模式: 工具充能已禁用
-metaarmor.energy_share.tooltip=充能模式: %s
+metaarmor.energy_share.enable=充能模式：工具充能已启用
+metaarmor.energy_share.disable=充能模式：工具充能已禁用
+metaarmor.energy_share.tooltip=充能模式：%s
 metaarmor.energy_share.tooltip.guide=手持物品Shift右键以更改模式
 
-gtadditions.universal.tooltip.amperage_in=电流: §a%d §7
+gtadditions.universal.tooltip.amperage_in=电流：§a%d §7
 
 gtadditions.machine.circuit_assembler.lv.name=基础电路组装机
 gtadditions.machine.circuit_assembler.mv.name=进阶电路组装机
@@ -773,25 +784,35 @@ tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=装配线方块
 tile.ga_multiblock_casing.chemically_inert_casing.name=化学惰性机械方块
 tile.ga_multiblock_casing.large_assembler_casing.name=大型组装机外壳
 tile.ga_multiblock_casing.tiered_hull_ulv.name=整体框架 I
-tile.ga_multiblock_casing.tiered_hull_ulv.tooltip=§e最大电压: ULV
+tile.ga_multiblock_casing.tiered_hull_ulv.tooltip=§e最大电压：ULV
 tile.ga_multiblock_casing.tiered_hull_lv.name=整体框架 II
-tile.ga_multiblock_casing.tiered_hull_lv.tooltip=§e最大电压: LV
+tile.ga_multiblock_casing.tiered_hull_lv.tooltip=§e最大电压：LV
 tile.ga_multiblock_casing.tiered_hull_mv.name=整体框架 III
-tile.ga_multiblock_casing.tiered_hull_mv.tooltip=§e最大电压: MV
+tile.ga_multiblock_casing.tiered_hull_mv.tooltip=§e最大电压：MV
 tile.ga_multiblock_casing.tiered_hull_hv.name=整体框架 IV
-tile.ga_multiblock_casing.tiered_hull_hv.tooltip=§e最大电压: HV
+tile.ga_multiblock_casing.tiered_hull_hv.tooltip=§e最大电压：HV
 tile.ga_multiblock_casing.tiered_hull_ev.name=整体框架 V
-tile.ga_multiblock_casing.tiered_hull_ev.tooltip=§e最大电压: EV
+tile.ga_multiblock_casing.tiered_hull_ev.tooltip=§e最大电压：EV
 tile.ga_multiblock_casing.tiered_hull_iv.name=整体框架 VI
-tile.ga_multiblock_casing.tiered_hull_iv.tooltip=§e最大电压: IV
+tile.ga_multiblock_casing.tiered_hull_iv.tooltip=§e最大电压：IV
 tile.ga_multiblock_casing.tiered_hull_luv.name=整体框架 VII
-tile.ga_multiblock_casing.tiered_hull_luv.tooltip=§e最大电压: LuV
+tile.ga_multiblock_casing.tiered_hull_luv.tooltip=§e最大电压：LuV
 tile.ga_multiblock_casing.tiered_hull_zpm.name=整体框架 VIII
-tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§e最大电压: ZPM
+tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§e最大电压：ZPM
 tile.ga_multiblock_casing.tiered_hull_uv.name=整体框架 IX
-tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§e最大电压: UV
-tile.ga_multiblock_casing.tiered_hull_max.name=整体框架 X
-tile.ga_multiblock_casing.tiered_hull_max.tooltip=§e最大电压: MAX
+tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§e最大电压：UV
+tile.ga_multiblock_casing2.tiered_hull_uhv.name=整体框架 X
+tile.ga_multiblock_casing2.tiered_hull_uhv.tooltip=§e最大电压：UHV
+tile.ga_multiblock_casing2.tiered_hull_uev.name=整体框架 XI
+tile.ga_multiblock_casing2.tiered_hull_uev.tooltip=§e最大电压：UEV
+tile.ga_multiblock_casing2.tiered_hull_uiv.name=整体框架 XII
+tile.ga_multiblock_casing2.tiered_hull_uiv.tooltip=§e最大电压：UIV
+tile.ga_multiblock_casing2.tiered_hull_umv.name=整体框架 XIII
+tile.ga_multiblock_casing2.tiered_hull_umv.tooltip=§e最大电压：UMV
+tile.ga_multiblock_casing2.tiered_hull_uxv.name=整体框架 XIV
+tile.ga_multiblock_casing2.tiered_hull_uxv.tooltip=§e最大电压：UXV
+tile.ga_multiblock_casing.tiered_hull_max.name=整体框架 XV
+tile.ga_multiblock_casing.tiered_hull_max.tooltip=§e最大电压：MAX
 tile.ga_multiblock_casing.cladded_reactor_casing.name=覆层反应堆外壳
 tile.ga_transparent_casing.reinforced_glass.name=强化玻璃
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=硼硅强化玻璃
@@ -800,16 +821,23 @@ tile.ga_transparent_casing.chrome_reinforced_glass.name=铬强化玻璃
 tile.ga_transparent_casing.tungsten_reinforced_glass.name=钨强化玻璃
 tile.ga_transparent_casing.iridium_reinforced_glass.name=铱强化玻璃
 tile.ga_transparent_casing.osmium_reinforced_glass.name=锇强化玻璃
-tile.ga_metal_casing.material.red_steel.name=红钢外壳
-tile.ga_metal_casing.material.tumbaga.name=铜金合金外壳
-tile.ga_metal_casing.material.potin.name=粗青铜合金外壳
-tile.ga_metal_casing.material.stellite_talonite.name=铬钴锰钛合金和铬钴磷酸盐合金外壳
-tile.ga_metal_casing.material.staballoy.name=贫铀合金外壳
-tile.ga_metal_casing.material.eglin_steel.name=埃格林钢外壳
-tile.ga_metal_casing.material.grisium.name=灰钛合金外壳
-tile.ga_metal_casing.material.maraging_steel.name=马氏体时效钢-250外壳
-tile.ga_metal_casing.material.inconel.name=镍铬基合金-625外壳
-tile.ga_metal_casing.material.hastelloy_n.name=哈斯特洛依合金-N外壳
+tile.ga_quantum_casing.computer.name=量子计算机外壳
+tile.ga_quantum_casing.generator.name=量子位发生器外壳
+tile.ga_multiblock_casing2.naquadria_charge.name=超能硅岩爆弹
+tile.ga_multiblock_casing2.stellar_containment.name=恒星热力容器
+tile.ga_reactor_casing.hyper_core.name=超能核心 I
+tile.ga_reactor_casing.hyper_core_2.name=超能核心 II
+tile.ga_reactor_casing.hyper_core_3.name=超能核心 III
+tile.ga_reactor_casing.hyper_casing.name=超能外壳 I
+tile.ga_reactor_casing.hyper_casing_2.name=超能外壳 II
+tile.ga_machine_casing.casing_uhv.name=UHV机器外壳
+tile.ga_machine_casing.casing_uev.name=UEV机器外壳
+tile.ga_machine_casing.casing_uiv.name=UIV机器外壳
+tile.ga_machine_casing.casing_umv.name=UMV机器外壳
+tile.ga_machine_casing.casing_uxv.name=UXV机器外壳
+
+
+
 tile.cell_casing.cell_hv.name=HV能量单元
 tile.cell_casing.cell_ev.name=EV能量单元
 tile.cell_casing.cell_iv.name=IV能量单元
@@ -818,9 +846,13 @@ tile.cell_casing.cell_zpm.name=ZPM能量单元
 tile.cell_casing.cell_uv.name=UV能量单元
 tile.cell_casing.cell_uhv.name=UHV能量单元
 tile.cell_casing.cell_uev.name=UEV能量单元
+tile.cell_casing.cell_uiv.name=UIV能量单元
+tile.cell_casing.cell_umv.name=UMV能量单元
+tile.cell_casing.cell_uxv.name=UXV能量单元
+tile.cell_casing.cell_max.name=MAX能量单元
 tile.cell_casing.tooltip.1=在§a储能塔§7中使用
-tile.cell_casing.tooltip.2=    储能: §e%d
-tile.cell_casing.tooltip.3=    电压等级: §e%s
+tile.cell_casing.tooltip.2=    储能：§e%d
+tile.cell_casing.tooltip.3=    电压等级：§e%s
 
 
 metaitem.tool.bending_cylinder.name=%s弯曲绕筒
@@ -870,8 +902,8 @@ recipemap.decay_chamber.name=衰变室
 recipemap.green_house.name=温室
 recipemap.bio_reactor.name=生物反应器
 
-gregtech.recipe.base_heat_production=堆温: %dC
-gregtech.recipe.hot_coolant=热冷却液温度: %dC
+gregtech.recipe.base_heat_production=堆温：%dC
+gregtech.recipe.hot_coolant=热冷却液温度：%dC
 
 material.brick=砖
 material.fireclay=耐火粘土
@@ -1317,6 +1349,18 @@ material.uv_superconductor=UV超导
 material.rutherfordium=钅卢
 material.dubnium=钅杜
 material.reactor_steel=反应堆专用钒钢
+material.zylon=柴隆纤维
+material.polyetheretherkenone=聚醚醚酮
+material.hastelloy_k243=哈斯特洛依合金-K243
+material.hastelloy_x78=哈斯特洛依合金-X78
+material.enriched_naquadah_alloy=富集硅岩合金
+material.incoloy813=耐热铬铁合金-813
+material.bohrium=钅波
+material.seabohrium=钅喜
+material.uev_superconductor=UEV超导
+material.uev_superconductor_base=UEV超导基
+material.uhv_superconductor_base=UHV超导基
+material.uhv_superconductor=UHV超导
 
 
 
@@ -1413,11 +1457,11 @@ gtadditions.multiblock.reactor.tooltip.6=核材料可以充当反应堆堆芯以
 gtadditions.multiblock.reactor.tooltip.7=提示1:必须用泵管理冷却液，否则堆温无法上升。
 gtadditions.multiblock.reactor.tooltip.8=提示2:冷却液可以无损循环.热冷却液涡轮会产出冷却液。
 gtadditions.multiblock.reactor.description=输入/出仓和输入/出总线可以放置在机械外壳的最底层或最高层。
-gtadditions.multiblock.universal.tooltip.1=多方块配方: §e%s§r
-gtadditions.multiblock.universal.tooltip.2=耗能倍数: §e%.1f§r
-gtadditions.multiblock.universal.tooltip.3=速率倍数: §e%.1f§r
-gtadditions.multiblock.universal.tooltip.4=最多同时处理配方数: §e%d§7份每电压等级差
-gtadditions.multiblock.universal.tooltip.5=产出概率加成: §e%d%%§r
+gtadditions.multiblock.universal.tooltip.1=多方块配方：§e%s§r
+gtadditions.multiblock.universal.tooltip.2=耗能倍数：§e%.1f§r
+gtadditions.multiblock.universal.tooltip.3=速率倍数：§e%.1f§r
+gtadditions.multiblock.universal.tooltip.4=最多同时处理配方数：§e%d§7份每电压等级差
+gtadditions.multiblock.universal.tooltip.5=产出概率加成：§e%d%%§r
 gtadditions.multiblock.fusion_reactor.heat=热量：%d
 
 gtadditions.multiblock.void_miner.description.1=虚空采矿场会给你成吨的矿石。
@@ -1461,43 +1505,43 @@ gtadditions.multiblock.battery_tower.tooltip.3=能源仓和动力仓的等级不
 
 
 
-gregtech.multiblock.recipe=使用螺丝刀以更改配方.当前配方: %s
-gregtech.universal.tooltip.efficiency=效率: %s %%
-gregtech.multiblock.universal.energy_used=能量使用: %d EU
-gregtech.multiblock.universal.drilling_fluid_amount=当前挖掘流体: %.2fmB
+gregtech.multiblock.recipe=使用螺丝刀以更改配方.当前配方：%s
+gregtech.universal.tooltip.efficiency=效率：%s %%
+gregtech.multiblock.universal.energy_used=能量使用：%d EU
+gregtech.multiblock.universal.drilling_fluid_amount=当前挖掘流体：%.2fmB
 gregtech.multiblock.universal.overheat=过热!
 gregtech.machine.world_accelerator.mode.tile=方块实体模式
 gregtech.machine.world_accelerator.mode.entity=随机刻模式
-gregtech.multiblock.universal.framework=当前最大电压: %d EU/t
+gregtech.multiblock.universal.framework=当前最大电压：%d EU/t
 gregtech.multiblock.universal.framework.tooltip=整体框架的等级决定了多方块的最高运行等级。
-gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=当前堆叠片数: %d
-gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=剩余单位燃料: %d 单位
-gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=燃料效率: %d %%
-gregtech.multiblock.universal.carbon_dioxide_amount=二氧化碳: %dmB
-gregtech.multiblock.universal.potassium_plasma_amount=钾等离子体: %dmb
-gregtech.multiblock.universal.oxygen_plasma_amount=氧等离子体: %dmb
-gregtech.multiblock.universal.cryotheum_amount=极寒之凛冰: %dmb
-gregtech.multiblock.universal.liquid_hydrogen_amount=液氢: %dmB
-gregtech.multiblock.universal.air_amount=空气: %dmB
-gregtech.multiblock.large_rocket_engine.hydrogen_need=超频所耗液氢: %dmB
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=当前堆叠片数：%d
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=剩余单位燃料：%d 单位
+gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=燃料效率：%d %%
+gregtech.multiblock.universal.carbon_dioxide_amount=二氧化碳：%dmB
+gregtech.multiblock.universal.potassium_plasma_amount=钾等离子体：%dmB
+gregtech.multiblock.universal.oxygen_plasma_amount=氧等离子体：%dmB
+gregtech.multiblock.universal.cryotheum_amount=极寒之凛冰：%dmB
+gregtech.multiblock.universal.liquid_hydrogen_amount=液氢：%dmB
+gregtech.multiblock.universal.air_amount=空气：%dmB
+gregtech.multiblock.large_rocket_engine.hydrogen_need=超频所耗液氢：%dmB
 gregtech.multiblock.large_rocket_engine.boost=超频中!
-gregtech.multiblock.advanced_distillation_tower.multiplier=当前单次同时处理配方数: %d
-gregtech.multiblock.large_miner.chunk=已挖掘区块: %d
-gregtech.multiblock.large_miner.nb_chunk=待挖掘区块: %d
-gregtech.multiblock.large_miner.block_per_tick=速度: %d 个方块/t
+gregtech.multiblock.advanced_distillation_tower.multiplier=当前单次同时处理配方数：%d
+gregtech.multiblock.large_miner.chunk=已挖掘区块：%d
+gregtech.multiblock.large_miner.nb_chunk=待挖掘区块：%d
+gregtech.multiblock.large_miner.block_per_tick=速度：%d 个方块/t
 gregtech.multiblock.large_miner.done=挖掘完毕!
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
 gregtech.multiblock.nuclear_reactor.coolant_needed=需要冷却液：%d mb/s
 gregtech.multiblock.nuclear_reactor.coolant_ratio=冷却液比率：%d
 gregtech.multiblock.nuclear_reactor.not_enough_coolant=冷却液不足
-gregtech.multiblock.nuclear_reactor.base_heat=产热: %d C/秒
+gregtech.multiblock.nuclear_reactor.base_heat=产热：%d C/秒
 gregtech.multiblock.nuclear_reactor.additional_temperature=额外温度：%d
 gregtech.multiblock.nuclear_reactor.rod_type=堆芯热因数 %d%%
 gregtech.multiblock.nuclear_reactor.produce=产出热冷却液!
-gregtech.multiblock.large_transformer.input=输入: %s EU / %s 安
-gregtech.multiblock.large_transformer.output=输出: %s EU / %s 安
-gregtech.multiblock.large_transformer.input_average=输入电流/t: %s
-gregtech.multiblock.large_transformer.output_average=输出电流/t: %s
+gregtech.multiblock.large_transformer.input=输入：%s EU / %s 安
+gregtech.multiblock.large_transformer.output=输出：%s EU / %s 安
+gregtech.multiblock.large_transformer.input_average=输入电流/t：%s
+gregtech.multiblock.large_transformer.output_average=输出电流/t：%s
 
 gtadditions.multiblock.not_enough_qubit=量子位不足，配方已停止处理。
 
@@ -1538,7 +1582,7 @@ metaitem.rubber_drop.name=粘性树脂
 
 tile.metal_casing.primitive_bricks.name=耐火砖
 tile.ga_metal_casing.material.name=%s金属外壳
-gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构: 3x3x4（宽、长、高）/n整个多方块结构一共需要32个耐火砖块：/n第一层是3x3的正方形，/n第二三四层是中空的正方形。/n土高炉的控制器在第二层每面的中间。/n土高炉可以共享方块。/n
+gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构：3x3x4（宽、长、高）/n整个多方块结构一共需要32个耐火砖块：/n第一层是3x3的正方形，/n第二三四层是中空的正方形。/n土高炉的控制器在第二层每面的中间。/n土高炉可以共享方块。/n
 gregtech.machine.primitive_blast_furnace.industrial.tooltip=土高炉的升级版本
 
 
@@ -1811,8 +1855,8 @@ gtadditions.converter.energy.gteu=GTEU
 gtadditions.converter.energy.simple.fe=FE
 gtadditions.converter.energy.simple.gteu=EU
 
-gtadditions.converter.energy_out=最大%s输出: §e%d FE§7/t
-gtadditions.converter.energy_in=最大%s输入: §e%d FE§7/t
+gtadditions.converter.energy_out=最大%s输出：§e%d FE§7/t
+gtadditions.converter.energy_in=最大%s输入：§e%d FE§7/t
 gtadditions.converter.description=将%s转换为%s
 gtadditions.convert_gteu=将EU转换为FE
 gtadditions.convert_forge=将FE转换为EU
@@ -2073,6 +2117,11 @@ metaitem.hot_annealed_zblan_ingot.name=热加工氟化晶体玻璃锭
 metaitem.zblan_fiber.name=氟化光导纤维
 metaitem.erbium_doped_zblan.name=掺铒氟化晶体玻璃
 metaitem.cladded_optical_fiber_core.name=包层光导纤维内芯
+metaitem.degenerate.rhenium.dust.name=简并态铼粉
+metaitem.degenerate.rhenium.plate.name=简并态铼板
+metaitem.rhenium.plasma.containment.cell.name=铼等离子体密闭壳
+metaitem.plasma.containment.cell.name=等离子体密闭壳
+
 
 fluid.naquadric_solution=硅岩溶液
 fluid.enriched_naquadric_solution=富集硅岩溶液
@@ -2236,6 +2285,12 @@ tile.ga_motor_casing.motor_iv.name=电动马达方块(IV)
 tile.ga_motor_casing.motor_luv.name=电动马达方块(LuV)
 tile.ga_motor_casing.motor_zpm.name=电动马达方块(ZPM)
 tile.ga_motor_casing.motor_uv.name=电动马达方块(UV)
+tile.ga_motor_casing.motor_uhv.name=电动马达方块(UHV)
+tile.ga_motor_casing.motor_uev.name=电动马达方块(UEV)
+tile.ga_motor_casing.motor_uiv.name=电动马达方块(UIV)
+tile.ga_motor_casing.motor_umv.name=电动马达方块(UMV)
+tile.ga_motor_casing.motor_uxv.name=电动马达方块(UXV)
+tile.ga_motor_casing.motor_max.name=电动马达方块(MAX)
 tile.ga_piston_casing.piston_lv.name=电力活塞方块(LV)
 tile.ga_piston_casing.piston_mv.name=电力活塞方块(MV)
 tile.ga_piston_casing.piston_hv.name=电力活塞方块(HV)
@@ -2244,6 +2299,12 @@ tile.ga_piston_casing.piston_iv.name=电力活塞方块(IV)
 tile.ga_piston_casing.piston_luv.name=电力活塞方块(LuV)
 tile.ga_piston_casing.piston_zpm.name=电力活塞方块(ZPM)
 tile.ga_piston_casing.piston_uv.name=电力活塞方块(UV)
+tile.ga_piston_casing.piston_uhv.name=电力活塞方块(UHV)
+tile.ga_piston_casing.piston_uev.name=电力活塞方块(UEV)
+tile.ga_piston_casing.piston_uiv.name=电力活塞方块(UIV)
+tile.ga_piston_casing.piston_umv.name=电力活塞方块(UMV)
+tile.ga_piston_casing.piston_uxv.name=电力活塞方块(UXV)
+tile.ga_piston_casing.piston_max.name=电力活塞方块(MAX)
 tile.ga_emitter_casing.emitter_lv.name=发射器方块(LV)
 tile.ga_emitter_casing.emitter_mv.name=发射器方块(MV)
 tile.ga_emitter_casing.emitter_hv.name=发射器方块(HV)
@@ -2252,6 +2313,12 @@ tile.ga_emitter_casing.emitter_iv.name=发射器方块(IV)
 tile.ga_emitter_casing.emitter_luv.name=发射器方块(LuV)
 tile.ga_emitter_casing.emitter_zpm.name=发射器方块(ZPM)
 tile.ga_emitter_casing.emitter_uv.name=发射器方块(UV)
+tile.ga_emitter_casing.emitter_uhv.name=发射器方块(UHV)
+tile.ga_emitter_casing.emitter_uev.name=发射器方块(UEV)
+tile.ga_emitter_casing.emitter_uiv.name=发射器方块(UIV)
+tile.ga_emitter_casing.emitter_umv.name=发射器方块(UMV)
+tile.ga_emitter_casing.emitter_uxv.name=发射器方块(UXV)
+tile.ga_emitter_casing.emitter_max.name=发射器方块(MAX)
 tile.ga_sensor_casing.sensor_lv.name=传感器方块(LV)
 tile.ga_sensor_casing.sensor_mv.name=传感器方块(MV)
 tile.ga_sensor_casing.sensor_hv.name=传感器方块(HV)
@@ -2260,6 +2327,12 @@ tile.ga_sensor_casing.sensor_iv.name=传感器方块(IV)
 tile.ga_sensor_casing.sensor_luv.name=传感器方块(LuV)
 tile.ga_sensor_casing.sensor_zpm.name=传感器方块(ZPM)
 tile.ga_sensor_casing.sensor_uv.name=传感器方块(UV)
+tile.ga_sensor_casing.sensor_uhv.name=传感器方块(UHV)
+tile.ga_sensor_casing.sensor_uev.name=传感器方块(UEV)
+tile.ga_sensor_casing.sensor_uiv.name=传感器方块(UIV)
+tile.ga_sensor_casing.sensor_umv.name=传感器方块(UMV)
+tile.ga_sensor_casing.sensor_uxv.name=传感器方块(UXV)
+tile.ga_sensor_casing.sensor_max.name=传感器方块(MAX)
 tile.ga_field_gen_casing.field_generator_lv.name=力场发生器方块(LV)
 tile.ga_field_gen_casing.field_generator_mv.name=力场发生器方块(MV)
 tile.ga_field_gen_casing.field_generator_hv.name=力场发生器方块(HV)
@@ -2268,6 +2341,12 @@ tile.ga_field_gen_casing.field_generator_iv.name=力场发生器方块(IV)
 tile.ga_field_gen_casing.field_generator_luv.name=力场发生器方块(LuV)
 tile.ga_field_gen_casing.field_generator_zpm.name=力场发生器方块(ZPM)
 tile.ga_field_gen_casing.field_generator_uv.name=力场发生器方块(UV)
+tile.ga_field_gen_casing.field_generator_uhv.name=力场发生器方块(UHV)
+tile.ga_field_gen_casing.field_generator_uev.name=力场发生器方块(UEV)
+tile.ga_field_gen_casing.field_generator_uiv.name=力场发生器方块(UIV)
+tile.ga_field_gen_casing.field_generator_umv.name=力场发生器方块(UMV)
+tile.ga_field_gen_casing.field_generator_uxv.name=力场发生器方块(UXV)
+tile.ga_field_gen_casing.field_generator_max.name=力场发生器方块(MAX)
 tile.ga_pump_casing.pump_lv.name=电动泵方块(LV)
 tile.ga_pump_casing.pump_mv.name=电动泵方块(MV)
 tile.ga_pump_casing.pump_hv.name=电动泵方块(HV)
@@ -2276,6 +2355,12 @@ tile.ga_pump_casing.pump_iv.name=电动泵方块(IV)
 tile.ga_pump_casing.pump_luv.name=电动泵方块(LuV)
 tile.ga_pump_casing.pump_zpm.name=电动泵方块(ZPM)
 tile.ga_pump_casing.pump_uv.name=电动泵方块(UV)
+tile.ga_pump_casing.pump_uhv.name=电动泵方块(UHV)
+tile.ga_pump_casing.pump_uev.name=电动泵方块(UEV)
+tile.ga_pump_casing.pump_uiv.name=电动泵方块(UIV)
+tile.ga_pump_casing.pump_umv.name=电动泵方块(UMV)
+tile.ga_pump_casing.pump_uxv.name=电动泵方块(UXV)
+tile.ga_pump_casing.pump_max.name=电动泵方块(MAX)
 tile.ga_conveyor_casing.conveyor_lv.name=传送带方块(LV)
 tile.ga_conveyor_casing.conveyor_mv.name=传送带方块(MV)
 tile.ga_conveyor_casing.conveyor_hv.name=传送带方块(HV)
@@ -2284,6 +2369,12 @@ tile.ga_conveyor_casing.conveyor_iv.name=传送带方块(IV)
 tile.ga_conveyor_casing.conveyor_luv.name=传送带方块(LuV)
 tile.ga_conveyor_casing.conveyor_zpm.name=传送带方块(ZPM)
 tile.ga_conveyor_casing.conveyor_uv.name=传送带方块(UV)
+tile.ga_conveyor_casing.conveyor_uhv.name=传送带方块(UHV)
+tile.ga_conveyor_casing.conveyor_uev.name=传送带方块(UEV)
+tile.ga_conveyor_casing.conveyor_uiv.name=传送带方块(UIV)
+tile.ga_conveyor_casing.conveyor_umv.name=传送带方块(UMV)
+tile.ga_conveyor_casing.conveyor_uxv.name=传送带方块(UXV)
+tile.ga_conveyor_casing.conveyor_max.name=传送带方块(MAX)
 tile.ga_robot_arm_casing.robot_arm_lv.name=机械臂方块(LV)
 tile.ga_robot_arm_casing.robot_arm_mv.name=机械臂方块(MV)
 tile.ga_robot_arm_casing.robot_arm_hv.name=机械臂方块(HV)
@@ -2292,6 +2383,12 @@ tile.ga_robot_arm_casing.robot_arm_iv.name=机械臂方块(IV)
 tile.ga_robot_arm_casing.robot_arm_luv.name=机械臂方块(LuV)
 tile.ga_robot_arm_casing.robot_arm_zpm.name=机械臂方块(ZPM)
 tile.ga_robot_arm_casing.robot_arm_uv.name=机械臂方块(UV)
+tile.ga_robot_arm_casing.robot_arm_uhv.name=机械臂方块(UHV)
+tile.ga_robot_arm_casing.robot_arm_uev.name=机械臂方块(UEV)
+tile.ga_robot_arm_casing.robot_arm_uiv.name=机械臂方块(UIV)
+tile.ga_robot_arm_casing.robot_arm_umv.name=机械臂方块(UMV)
+tile.ga_robot_arm_casing.robot_arm_uxv.name=机械臂方块(UXV)
+tile.ga_robot_arm_casing.robot_arm_max.name=机械臂方块(MAX)
 
 gtadditions.machine.clustermill.uhv.name=次世代多辊式轧机 VIII
 gtadditions.machine.clustermill.uev.name=次世代多辊式轧机 IX
@@ -2516,12 +2613,91 @@ gtadditions.machine.green_house.uxv.name=次世代温室 XII
 
 gtadditions.machine.gas_centrifuge.name=气体离心机
 gtadditions.machine.qubit_computer.name=量子计算机
+gtadditions.machine.stellar_forge.name=恒星炎炀锻炉
+gtadditions.machine.void_miner.uhv.name=进阶虚空采矿机
+gtadditions.machine.void_miner.uev.name=次时代虚空采矿机
 
 gtadditions.machine.qubit_hatch.output.1.name=量子位输出仓
 gtadditions.machine.qubit_hatch.input.16.name=量子位输入仓
 
 gtaddition.optical_fiber.qubit=量子位：§a%d §7（§a%s§7）
-gtaddition.optical_fiber.parallel=并行信号: §e%d
+gtaddition.optical_fiber.parallel=并行信号：§e%d
 gtaddition.top.qubit_stored=量子位：
-gregtech.recipe.qubitProduce=产生量子位: %d Qubit/t
-gregtech.recipe.qubitConsume=消耗量子位: %d Qubit/t
+gregtech.recipe.qubitProduce=产生量子位：%d Qubit/t
+gregtech.recipe.qubitConsume=消耗量子位：%d Qubit/t
+
+
+metaitem.robot.arm.uhv.name=机械臂（UHV）
+metaitem.robot.arm.uev.name=机械臂（UEV）
+metaitem.robot.arm.uiv.name=机械臂（UIV）
+metaitem.robot.arm.umv.name=机械臂（UMV）
+metaitem.robot.arm.uxv.name=机械臂（UXV）
+metaitem.robot.arm.max.name=机械臂（MAX）
+metaitem.robot.arm.uhv.tooltip=按指定速率抽取物品（作覆盖板时）
+metaitem.robot.arm.uev.tooltip=按指定速率抽取物品（作覆盖板时）
+metaitem.robot.arm.uiv.tooltip=按指定速率抽取物品（作覆盖板时）
+metaitem.robot.arm.umv.tooltip=按指定速率抽取物品（作覆盖板时）
+metaitem.robot.arm.uxv.tooltip=按指定速率抽取物品（作覆盖板时）
+metaitem.robot.arm.max.tooltip=按指定速率抽取物品（作覆盖板时）
+
+metaitem.electric.piston.uhv.name=电力活塞（UHV）
+metaitem.electric.piston.uev.name=电力活塞（UEV）
+metaitem.electric.piston.uiv.name=电力活塞（UIV）
+metaitem.electric.piston.umv.name=电力活塞（UMV）
+metaitem.electric.piston.uxv.name=电力活塞（UXV）
+metaitem.electric.piston.max.name=电力活塞（MAX）
+
+metaitem.electric.pump.uhv.name=电动泵（UHV）
+metaitem.electric.pump.uev.name=电动泵（UEV）
+metaitem.electric.pump.uiv.name=电动泵（UIV）
+metaitem.electric.pump.umv.name=电动泵（UMV）
+metaitem.electric.pump.uxv.name=电动泵（UXV）
+metaitem.electric.pump.max.name=电动泵（MAX）
+metaitem.electric.pump.uhv.tooltip=20,971,520 mB/sec（作覆盖板时）
+metaitem.electric.pump.uev.tooltip=20,971,520 mB/sec（作覆盖板时）
+metaitem.electric.pump.uiv.tooltip=20,971,520 mB/sec（作覆盖板时）
+metaitem.electric.pump.umv.tooltip=20,971,520 mB/sec（作覆盖板时）
+metaitem.electric.pump.uxv.tooltip=20,971,520 mB/sec（作覆盖板时）
+metaitem.electric.pump.max.tooltip=20,971,520 mB/sec（作覆盖板时）
+
+metaitem.conveyor.module.uhv.name=传送带（UHV）
+metaitem.conveyor.module.uev.name=传送带（UEV）
+metaitem.conveyor.module.uiv.name=传送带（UIV）
+metaitem.conveyor.module.umv.name=传送带（UMV）
+metaitem.conveyor.module.uxv.name=传送带（UXV）
+metaitem.conveyor.module.max.name=传送带（MAX）
+metaitem.conveyor.module.uhv.tooltip=每秒传输16组物品（作覆盖板时）
+metaitem.conveyor.module.uev.tooltip=每秒传输16组物品（作覆盖板时）
+metaitem.conveyor.module.uiv.tooltip=每秒传输16组物品（作覆盖板时）
+metaitem.conveyor.module.umv.tooltip=每秒传输16组物品（作覆盖板时）
+metaitem.conveyor.module.uxv.tooltip=每秒传输16组物品（作覆盖板时）
+metaitem.conveyor.module.max.tooltip=每秒传输16组物品（作覆盖板时）
+
+metaitem.electric.motor.uhv.name=电动马达（UHV）
+metaitem.electric.motor.uev.name=电动马达（UEV）
+metaitem.electric.motor.uiv.name=电动马达（UIV）
+metaitem.electric.motor.umv.name=电动马达（UMV）
+metaitem.electric.motor.uxv.name=电动马达（UXV）
+metaitem.electric.motor.max.name=电动马达（MAX）
+
+metaitem.field.generator.uhv.name=力场发生器（UHV）
+metaitem.field.generator.uev.name=力场发生器（UEV）
+metaitem.field.generator.uiv.name=力场发生器（UIV）
+metaitem.field.generator.umv.name=力场发生器（UMV）
+metaitem.field.generator.uxv.name=力场发生器（UXV）
+metaitem.field.generator.max.name=力场发生器（MAX）
+
+metaitem.sensor.uhv.name=传感器（UHV）
+metaitem.sensor.uev.name=传感器（UEV）
+metaitem.sensor.uiv.name=传感器（UIV）
+metaitem.sensor.umv.name=传感器（UMV）
+metaitem.sensor.uxv.name=传感器（UXV）
+metaitem.sensor.max.name=传感器（MAX）
+
+metaitem.emitter.uhv.name=发射器（UHV）
+metaitem.emitter.uev.name=发射器（UEV）
+metaitem.emitter.uiv.name=发射器（UIV）
+metaitem.emitter.umv.name=发射器（UMV）
+metaitem.emitter.uxv.name=发射器（UXV）
+metaitem.emitter.max.name=发射器（MAX）
+
