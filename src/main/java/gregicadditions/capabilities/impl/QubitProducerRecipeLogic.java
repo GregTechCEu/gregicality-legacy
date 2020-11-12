@@ -3,7 +3,6 @@ package gregicadditions.capabilities.impl;
 
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
-import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.Recipe;
@@ -11,7 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
 
-    private long recipeOutputQubit;
+    private int recipeOutputQubit;
 
     public QubitProducerRecipeLogic(RecipeMapMultiblockController metaTileEntity) {
         super(metaTileEntity);
@@ -37,20 +36,13 @@ public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
 
     @Override
     protected void updateRecipeProgress() {
-        GALog.logger.info("ici1 " + recipeOutputQubit);
         if (getOutputQubitContainer().getQubitCanBeInserted() < recipeOutputQubit) {
-            GALog.logger.info("ici2");
             return;
         }
-
-        GALog.logger.info("ici3");
         boolean drawEnergy = drawEnergy(recipeEUt);
-        GALog.logger.info("ici4 " + drawEnergy);
         if (drawEnergy || (recipeEUt < 0)) {
-            GALog.logger.info("ic5");
             getOutputQubitContainer().addQubit(recipeOutputQubit);
             if (++progressTime >= maxProgressTime) {
-                GALog.logger.info("ici6 " + previousRecipe);
                 completeRecipe();
             }
         } else if (recipeEUt > 0) {
@@ -66,7 +58,7 @@ public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
     public NBTTagCompound serializeNBT() {
         NBTTagCompound compound = super.serializeNBT();
         if (progressTime > 0) {
-            compound.setLong("RecipeQubit", this.recipeOutputQubit);
+            compound.setInteger("RecipeQubit", this.recipeOutputQubit);
         }
         return compound;
     }
@@ -77,7 +69,7 @@ public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
         this.isActive = false;
         if (progressTime > 0) {
             this.isActive = true;
-            this.recipeOutputQubit = compound.getLong("RecipeQubit");
+            this.recipeOutputQubit = compound.getInteger("RecipeQubit");
         }
     }
 

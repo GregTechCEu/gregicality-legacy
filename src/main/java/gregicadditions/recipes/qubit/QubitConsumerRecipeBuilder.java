@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class QubitConsumerRecipeBuilder extends RecipeBuilder<QubitConsumerRecipeBuilder> {
 
-    private long qubit;
+    private int qubit;
 
     public QubitConsumerRecipeBuilder() {
     }
@@ -37,13 +37,13 @@ public class QubitConsumerRecipeBuilder extends RecipeBuilder<QubitConsumerRecip
     @Override
     public boolean applyProperty(String key, Object value) {
         if (key.equals("qubit")) {
-            this.qubit(((Number) value).longValue());
+            this.qubit(((Number) value).intValue());
             return true;
         }
         return true;
     }
 
-    public QubitConsumerRecipeBuilder qubit(long qubit) {
+    public QubitConsumerRecipeBuilder qubit(int qubit) {
         if (qubit <= 0) {
             GTLog.logger.error("qubit cannot be less than or equal to 0", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;

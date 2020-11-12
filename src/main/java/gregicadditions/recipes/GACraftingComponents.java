@@ -41,8 +41,19 @@ public enum GACraftingComponents {
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
-                default:
+                case 9:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
+                case 10:
+                    return new UnificationEntry(circuit, UEV);
+                case 11:
+                    return new UnificationEntry(circuit, UIV);
+                case 12:
+                    return new UnificationEntry(circuit, UMV);
+                case 13:
+                    return new UnificationEntry(circuit, UXV);
+                case 14:
+                default:
+                    return new UnificationEntry(circuit, MAX);
             }
         }
     },
@@ -68,8 +79,19 @@ public enum GACraftingComponents {
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate);
                 case 8:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Superconductor);
-                default:
+                case 9:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
+                case 10:
+                    return new UnificationEntry(circuit, UEV);
+                case 11:
+                    return new UnificationEntry(circuit, UIV);
+                case 12:
+                    return new UnificationEntry(circuit, UMV);
+                case 13:
+                    return new UnificationEntry(circuit, UXV);
+                case 14:
+                default:
+                    return new UnificationEntry(circuit, MAX);
             }
         }
     },
@@ -118,9 +140,9 @@ public enum GACraftingComponents {
                 case 6:
                     return new UnificationEntry(cableGtDouble, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(cableGtOctal, Naquadah);
+                    return new UnificationEntry(cableGtQuadruple, Naquadah);
                 case 8:
-                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                    return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
                 default:
                     return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
 
@@ -158,6 +180,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.ELECTRIC_PUMP_UMV;
                 case 13:
                     return GAMetaItems.ELECTRIC_PUMP_UXV;
+                case 14:
                 default:
                     return GAMetaItems.ELECTRIC_PUMP_MAX;
             }
@@ -237,8 +260,10 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtQuadruple, NiobiumTitanium);
                 case 7:
                     return new UnificationEntry(cableGtQuadruple, Naquadah);
-                default:
+                case 8:
                     return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -262,8 +287,10 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtOctal, NiobiumTitanium);
                 case 7:
                     return new UnificationEntry(cableGtOctal, Naquadah);
-                default:
+                case 8:
                     return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtOctal, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -288,8 +315,10 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtHex, NiobiumTitanium);
                 case 7:
                     return new UnificationEntry(cableGtHex, Naquadah);
-                default:
+                case 8:
                     return new UnificationEntry(cableGtHex, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -449,7 +478,8 @@ public enum GACraftingComponents {
                 case 12:
                     return GAMetaItems.ELECTRIC_MOTOR_UMV;
                 case 13:
-                    return GAMetaItems.ELECTRIC_MOTOR_UXV; 
+                    return GAMetaItems.ELECTRIC_MOTOR_UXV;
+                case 14:
                 default:
                     return GAMetaItems.ELECTRIC_MOTOR_MAX;
 
@@ -511,6 +541,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.SENSOR_UMV;
                 case 13:
                     return GAMetaItems.SENSOR_UXV;
+                case 14:
                 default:
                     return GAMetaItems.SENSOR_MAX;
             }
@@ -566,6 +597,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.ELECTRIC_PISTON_UMV;
                 case 13:
                     return GAMetaItems.ELECTRIC_PISTON_UXV;
+                case 14:
                 default:
                     return GAMetaItems.ELECTRIC_PISTON_MAX;
 
@@ -603,6 +635,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.EMITTER_UMV;
                 case 13:
                     return GAMetaItems.EMITTER_UXV;
+                case 14:
                 default:
                     return GAMetaItems.EMITTER_MAX;
             }
@@ -639,6 +672,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.CONVEYOR_MODULE_UMV;
                 case 13:
                     return GAMetaItems.CONVEYOR_MODULE_UXV;
+                case 14:
                 default:
                     return GAMetaItems.CONVEYOR_MODULE_MAX;
             }
@@ -675,6 +709,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.ROBOT_ARM_UMV;
                 case 13:
                     return GAMetaItems.ROBOT_ARM_UXV;
+                case 14:
                 default:
                     return GAMetaItems.ROBOT_ARM_MAX;
             }
@@ -788,6 +823,7 @@ public enum GACraftingComponents {
                     return GAMetaItems.FIELD_GENERATOR_UMV;
                 case 13:
                     return GAMetaItems.FIELD_GENERATOR_UXV;
+                case 14:
                 default:
                     return GAMetaItems.FIELD_GENERATOR_MAX;
             }
@@ -874,6 +910,12 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, RhodiumPlatedPalladium);
                 case 7:
                     return new UnificationEntry(plate, HSSS);
+                case 8:
+                    return new UnificationEntry(plate, Tritanium);
+                case 9:
+                    return new UnificationEntry(plate, Seaborgium);
+                case 10:
+                    return new UnificationEntry(plate, Bohrium);
                 default:
                     return new UnificationEntry(plate, Neutronium);
             }
@@ -898,8 +940,14 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plateDense, RhodiumPlatedPalladium);
                 case 7:
                     return new UnificationEntry(plateDense, HSSS);
+                case 8:
+                    return new UnificationEntry(plate, Tritanium);
+                case 9:
+                    return new UnificationEntry(plate, Seaborgium);
+                case 10:
+                    return new UnificationEntry(plate, Bohrium);
                 default:
-                    return new UnificationEntry(plateDense, Neutronium);
+                    return new UnificationEntry(plate, Neutronium);
 
             }
         }
