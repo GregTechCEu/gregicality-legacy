@@ -3,6 +3,7 @@ package gregicadditions.recipes.chain;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -44,8 +45,11 @@ public class Circuits {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
         ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
+        GALog.logger.info("soldering fluid");
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
+            GALog.logger.info(fluid);
+            GALog.logger.info(fluidSplit[1]);
             int amount = Integer.parseInt(fluidSplit[1]);
             if (amount > 64000) {
                 amount = 64000;
@@ -160,8 +164,8 @@ public class Circuits {
                     .outputs(COSMIC_PROCESSOR.getStackForm(1))
                     .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
-                            SMD_TRANSISTOR_BIOWARE.getStackForm(8),
-                            SMD_CAPACITOR_BIOWARE.getStackForm(4),
+                            SMD_TRANSISTOR.getStackForm(8),
+                            SMD_CAPACITOR.getStackForm(4),
                             NEURO_PROCESSOR.getStackForm(),
                             UHASOC.getStackForm(1))
                     .input(wireFine, NaquadahAlloy, 4)
@@ -266,10 +270,10 @@ public class Circuits {
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(16))
-                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(16))
+                .inputs(SMD_CAPACITOR.getStackForm(16))
+                .inputs(SMD_TRANSISTOR.getStackForm(16))
+                .inputs(SMD_DIODE.getStackForm(16))
+                .inputs(SMD_RESISTOR.getStackForm(16))
                 .inputs(NEURO_PROCESSOR.getStackForm())
                 .input(wireGtSingle, UVSuperconductor, 4)
                 .inputs(ARAM.getStackForm(32))
@@ -453,16 +457,17 @@ public class Circuits {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(1200).EUt(480).input(gem, MagnetoResonatic, 3).notConsumable(craftingLens, MarkerMaterials.Color.Magenta).outputs(OreDictUnifier.get(gemFlawless, MagnetoResonatic)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(1920).input(gemFlawless, MagnetoResonatic, 3).notConsumable(craftingLens, MarkerMaterials.Color.Magenta).outputs(OreDictUnifier.get(gemExquisite, MagnetoResonatic)).buildAndRegister();
 
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(75).EUt(30).outputs(CIRCUIT_MAGNETIC_ULV.getStackForm(4)).inputs(VACUUM_TUBE.getStackForm()).inputs(OreDictUnifier.get(gem, MagnetoResonatic), IMPRINT_SUPPORTED_BOARD.getStackForm(), SMD_DIODE_WETWARE.getStackForm(4), SMD_CAPACITOR_WETWARE.getStackForm(4), SMD_TRANSISTOR_WETWARE.getStackForm(4)).fluidInputs(SolderingAlloy.getFluid(36)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(120).outputs(CIRCUIT_MAGNETIC_LV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_ULV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(8), SMD_TRANSISTOR_WETWARE.getStackForm(8)).fluidInputs(SolderingAlloy.getFluid(72)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(225).EUt(480).outputs(CIRCUIT_MAGNETIC_MV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_LV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(12), SMD_CAPACITOR_WETWARE.getStackForm(12), SMD_TRANSISTOR_WETWARE.getStackForm(12)).fluidInputs(SolderingAlloy.getFluid(108)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920).outputs(CIRCUIT_MAGNETIC_HV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_MV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(16), SMD_CAPACITOR_WETWARE.getStackForm(16), SMD_TRANSISTOR_WETWARE.getStackForm(16)).fluidInputs(SolderingAlloy.getFluid(144)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(375).EUt(7680).outputs(CIRCUIT_MAGNETIC_EV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_HV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(20), SMD_CAPACITOR_WETWARE.getStackForm(20), SMD_TRANSISTOR_WETWARE.getStackForm(20)).fluidInputs(SolderingAlloy.getFluid(180)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(450).EUt(30720).outputs(CIRCUIT_MAGNETIC_IV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_EV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(864)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(525).EUt(122880).outputs(CIRCUIT_MAGNETIC_LUV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_IV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(1008)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(491520).outputs(CIRCUIT_MAGNETIC_ZPM.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic), CIRCUIT_MAGNETIC_LUV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(4608)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(675).EUt(1966080).outputs(CIRCUIT_MAGNETIC_UV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_ZPM.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5184)).buildAndRegister();
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(750).EUt(7864320).outputs(CIRCUIT_MAGNETIC_MAX.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_UV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(64), SMD_CAPACITOR_WETWARE.getStackForm(64), SMD_TRANSISTOR_WETWARE.getStackForm(64)).fluidInputs(SolderingAlloy.getFluid(5760)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(75).EUt(30).outputs(CIRCUIT_MAGNETIC_ULV.getStackForm(4)).inputs(VACUUM_TUBE.getStackForm()).inputs(OreDictUnifier.get(gem, MagnetoResonatic), IMPRINT_SUPPORTED_BOARD.getStackForm(), DIODE.getStackForm(4), CAPACITOR.getStackForm(4), TRANSISTOR.getStackForm(4)).fluidInputs(SolderingAlloy.getFluid(36)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(120).outputs(CIRCUIT_MAGNETIC_LV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_ULV.getStackForm(), SMD_DIODE_REFINED.getStackForm(8), SMD_CAPACITOR_REFINED.getStackForm(8), SMD_TRANSISTOR_REFINED.getStackForm(8)).fluidInputs(SolderingAlloy.getFluid(72)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(225).EUt(480).outputs(CIRCUIT_MAGNETIC_MV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_LV.getStackForm(), SMD_DIODE.getStackForm(12), SMD_CAPACITOR.getStackForm(12), SMD_TRANSISTOR.getStackForm(12)).fluidInputs(SolderingAlloy.getFluid(108)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920).outputs(CIRCUIT_MAGNETIC_HV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_MV.getStackForm(), SMD_DIODE_NANO.getStackForm(16), SMD_CAPACITOR_NANO.getStackForm(16), SMD_TRANSISTOR_NANO.getStackForm(16)).fluidInputs(SolderingAlloy.getFluid(144)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(375).EUt(7680).outputs(CIRCUIT_MAGNETIC_EV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(), OreDictUnifier.get(gem, MagnetoResonatic), CIRCUIT_MAGNETIC_HV.getStackForm(), SMD_DIODE_CRYSTAL.getStackForm(20), SMD_CAPACITOR_CRYSTAL.getStackForm(20), SMD_TRANSISTOR_CRYSTAL.getStackForm(20)).fluidInputs(SolderingAlloy.getFluid(180)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(450).EUt(30720).outputs(CIRCUIT_MAGNETIC_IV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_EV.getStackForm(), SMD_DIODE_QUANTUM.getStackForm(24), SMD_CAPACITOR_QUANTUM.getStackForm(24), SMD_TRANSISTOR_QUANTUM.getStackForm(24)).fluidInputs(SolderingAlloy.getFluid(864)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(525).EUt(122880).outputs(CIRCUIT_MAGNETIC_LUV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gem, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_IV.getStackForm(), SMD_DIODE_WETWARE.getStackForm(28), SMD_CAPACITOR_WETWARE.getStackForm(28), SMD_TRANSISTOR_WETWARE.getStackForm(28)).fluidInputs(SolderingAlloy.getFluid(1008)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(491520).outputs(CIRCUIT_MAGNETIC_ZPM.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic), CIRCUIT_MAGNETIC_LUV.getStackForm(), SMD_DIODE_BIOWARE.getStackForm(32), SMD_CAPACITOR_BIOWARE.getStackForm(32), SMD_TRANSISTOR_BIOWARE.getStackForm(32)).fluidInputs(SolderingAlloy.getFluid(4608)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(675).EUt(1966080).outputs(CIRCUIT_MAGNETIC_UV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 6), CIRCUIT_MAGNETIC_ZPM.getStackForm(), SMD_DIODE_BIOWARE.getStackForm(36), SMD_CAPACITOR_BIOWARE.getStackForm(36), SMD_TRANSISTOR_BIOWARE.getStackForm(36)).fluidInputs(SolderingAlloy.getFluid(5184)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(750).EUt(7864320).outputs(CIRCUIT_MAGNETIC_UHV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(12), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 12), CIRCUIT_MAGNETIC_UV.getStackForm(), SMD_DIODE_BIOWARE.getStackForm(40), SMD_CAPACITOR_BIOWARE.getStackForm(40), SMD_TRANSISTOR_BIOWARE.getStackForm(40)).fluidInputs(SolderingAlloy.getFluid(5760)).buildAndRegister();
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(825).EUt(31457280).outputs(CIRCUIT_MAGNETIC_UEV.getStackForm(4)).inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(12), OreDictUnifier.get(gemExquisite, MagnetoResonatic, 12), CIRCUIT_MAGNETIC_UHV.getStackForm(), SMD_DIODE_BIOWARE.getStackForm(44), SMD_CAPACITOR_BIOWARE.getStackForm(44), SMD_TRANSISTOR_BIOWARE.getStackForm(44)).fluidInputs(SolderingAlloy.getFluid(6336)).buildAndRegister();
 
 
     }

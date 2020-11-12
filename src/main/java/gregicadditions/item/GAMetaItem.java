@@ -102,7 +102,8 @@ public class GAMetaItem extends MaterialMetaItem {
         CIRCUIT_MAGNETIC_LUV = addItem(226, "circuit.resonatic.luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Master);
         CIRCUIT_MAGNETIC_ZPM = addItem(227, "circuit.resonatic.zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
         CIRCUIT_MAGNETIC_UV = addItem(228, "circuit.resonatic.uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-        CIRCUIT_MAGNETIC_MAX = addItem(229, "circuit.resonatic.max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        CIRCUIT_MAGNETIC_UHV = addItem(229, "circuit.resonatic.uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        CIRCUIT_MAGNETIC_UEV = addItem(232, "circuit.resonatic.uev").setUnificationData(OrePrefix.circuit, UEV);
         RAW_IMPRINT_SUPPORTED_BOARD = addItem(230, "board.raw.magnetic");
         IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
 
@@ -176,10 +177,10 @@ public class GAMetaItem extends MaterialMetaItem {
         WAFER_EUROPIUM = addItem(334, "wafer.europium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
-        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic");
-        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic");
-        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic");
-        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic");
+        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UEV);
+        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UIV);
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UMV);
 
         BOULE_AMERICIUM = addItem(340, "boule.americium");
         BOULE_EUROPIUM = addItem(341, "boule.europium");
@@ -255,10 +256,10 @@ public class GAMetaItem extends MaterialMetaItem {
         CLEAN_CULTURE = addItem(399, "clean.culture");
         PIEZOELECTRIC_CRYSTAL = addItem(400, "piezoelectric.crystal");
 
-        BIOWARE_PROCESSOR = addItem(401, "circuit.processor.bioware");
-        BIOWARE_ASSEMBLY = addItem(402, "circuit.assembly.bioware");
-        BIOWARE_COMPUTER = addItem(403, "circuit.computer.bioware");
-        BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware");
+        BIOWARE_PROCESSOR = addItem(401, "circuit.processor.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
+        BIOWARE_ASSEMBLY = addItem(402, "circuit.assembly.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        BIOWARE_COMPUTER = addItem(403, "circuit.computer.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware").setUnificationData(OrePrefix.circuit, UEV);
 
         SMD_TRANSISTOR_BIOWARE = addItem(405, "component.smd.transistor.bioware");
         SMD_CAPACITOR_BIOWARE = addItem(406, "component.smd.capacitor.bioware");
@@ -341,8 +342,6 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
-
-
 
 
     }

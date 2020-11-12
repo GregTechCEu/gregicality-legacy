@@ -3,11 +3,18 @@ package gregicadditions.machines.multi.qubit;
 import com.google.common.collect.Lists;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
+import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.capabilities.impl.QubitContainerList;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+
+import java.util.List;
 
 public abstract class QubitRecipeMapMultiblockController extends RecipeMapMultiblockController {
 
@@ -48,7 +55,13 @@ public abstract class QubitRecipeMapMultiblockController extends RecipeMapMultib
         this.outputQubit = new QubitContainerList(Lists.newArrayList());
     }
 
-
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+        if (recipeMapWorkable instanceof QubitConsumeRecipeLogic) {
+            textList.add((new TextComponentTranslation("gtadditions.multiblock.not_enough_qubit")).setStyle((new Style()).setColor(TextFormatting.RED)));
+        }
+    }
 }
 
 

@@ -321,42 +321,53 @@ metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
 
 #//MAX
 metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
-metaitem.circuit.wetware_mainframe.tooltip=§b§oMAX Circuit
+metaitem.circuit.wetware_mainframe.tooltip=§b§oUHV Circuit
 
 
 #//magneto resonatic
-metaitem.circuit.resonatic.ulv.name=Primitive Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ulv.name=ULV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
-metaitem.circuit.resonatic.lv.name=Basic Magneto Resonatic Circuit
+metaitem.circuit.resonatic.lv.name=LV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.lv.tooltip=§b§oLV Circuit
-metaitem.circuit.resonatic.mv.name=Good Magneto Resonatic Circuit
+metaitem.circuit.resonatic.mv.name=MV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.mv.tooltip=§b§oMV Circuit
-metaitem.circuit.resonatic.hv.name=Advanced Magneto Resonatic Circuit
+metaitem.circuit.resonatic.hv.name=HV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.hv.tooltip=§b§oHV Circuit
-metaitem.circuit.resonatic.ev.name=Extreme Magneto Resonatic Circuit
+metaitem.circuit.resonatic.ev.name=EV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.ev.tooltip=§b§oEV Circuit
-metaitem.circuit.resonatic.iv.name=Elite Magneto Resonatic Circuit
+metaitem.circuit.resonatic.iv.name=IV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.iv.tooltip=§b§oIV Circuit
-metaitem.circuit.resonatic.luv.name=Master Magneto Resonatic Circuit
+metaitem.circuit.resonatic.luv.name=LuV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.luv.tooltip=§b§oLuV Circuit
-metaitem.circuit.resonatic.zpm.name=Ultimate Magneto Resonatic Circuit
+metaitem.circuit.resonatic.zpm.name=ZPM Magneto Resonatic Circuit
 metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM Circuit
-metaitem.circuit.resonatic.uv.name=Superconductor Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uv.name=UV Magneto Resonatic Circuit
 metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
-metaitem.circuit.resonatic.max.name=Infinite Magneto Resonatic Circuit
-metaitem.circuit.resonatic.max.tooltip=§b§oMAX Circuit
-
-##cosmic
-metaitem.circuit.processor.cosmic.name=Cosmic Processor
-metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
-metaitem.circuit.computer.cosmic.name=Cosmic Computer
-metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
+metaitem.circuit.resonatic.uhv.name=UHV Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV Circuit
+metaitem.circuit.resonatic.uev.name=UEV Magneto Resonatic Circuit
+metaitem.circuit.resonatic.uev.tooltip=§b§oUEV Circuit
 
 #bioware
 metaitem.circuit.processor.bioware.name=Bioware Processor
+metaitem.circuit.processor.bioware.tooltip=§b§oZPM Circuit
 metaitem.circuit.assembly.bioware.name=Bioware Assembly
+metaitem.circuit.assembly.bioware.tooltip=§b§oUV Circuit
 metaitem.circuit.computer.bioware.name=Bioware Computer
+metaitem.circuit.computer.bioware.tooltip=§b§oUHV Circuit
 metaitem.circuit.mainframe.bioware.name=Bioware Mainframe
+metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV Circuit
+
+##cosmic
+metaitem.circuit.processor.cosmic.name=Cosmic Processor
+metaitem.circuit.processor.cosmic.tooltip=§b§oUHV Circuit
+metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
+metaitem.circuit.assembly.cosmic.tooltip=§b§oUEV Circuit
+metaitem.circuit.computer.cosmic.name=Cosmic Computer
+metaitem.circuit.computer.cosmic.tooltip=§b§oUIV Circuit
+metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
+metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV Circuit
+
 
 ####################################################################
 
@@ -989,6 +1000,9 @@ gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
 gtadditions.machine.qubit_computer.name=Quantum Computer
+gtadditions.machine.stellar_forge.name=Stellar Forge
+gtadditions.machine.void_miner.uhv.name=Void Miner Mk2
+gtadditions.machine.void_miner.uev.name=Void Miner Mk3
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
@@ -1016,7 +1030,17 @@ tile.ga_multiblock_casing.tiered_hull_zpm.name=Integral Framework VIII
 tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§eMax Voltage ZPM
 tile.ga_multiblock_casing.tiered_hull_uv.name=Integral Framework IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eMax Voltage UV
-tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework X
+tile.ga_multiblock_casing2.tiered_hull_uhv.name=Integral Framework X
+tile.ga_multiblock_casing2.tiered_hull_uhv.tooltip=§eMax Voltage UHV
+tile.ga_multiblock_casing2.tiered_hull_uev.name=Integral Framework XI
+tile.ga_multiblock_casing2.tiered_hull_uev.tooltip=§eMax Voltage UEV
+tile.ga_multiblock_casing2.tiered_hull_uiv.name=Integral Framework XII
+tile.ga_multiblock_casing2.tiered_hull_uiv.tooltip=§eMax Voltage UIV
+tile.ga_multiblock_casing2.tiered_hull_umv.name=Integral Framework XIII
+tile.ga_multiblock_casing2.tiered_hull_umv.tooltip=§eMax Voltage UMV
+tile.ga_multiblock_casing2.tiered_hull_uxv.name=Integral Framework XIV
+tile.ga_multiblock_casing2.tiered_hull_uxv.tooltip=§eMax Voltage UXV
+tile.ga_multiblock_casing.tiered_hull_max.name=Integral Framework XV
 tile.ga_multiblock_casing.tiered_hull_max.tooltip=§eMax Voltage MAX
 tile.ga_multiblock_casing.cladded_reactor_casing.name=Cladded Reactor Casing
 tile.ga_transparent_casing.reinforced_glass.name=Reinforced Glass
@@ -1026,16 +1050,23 @@ tile.ga_transparent_casing.chrome_reinforced_glass.name=Chrome Reinforced Glass
 tile.ga_transparent_casing.tungsten_reinforced_glass.name=Tungsten Reinforced Glass
 tile.ga_transparent_casing.iridium_reinforced_glass.name=Iridium Reinforced Glass
 tile.ga_transparent_casing.osmium_reinforced_glass.name=Osmium Reinforced Glass
-tile.ga_metal_casing.material.red_steel.name=Red Steel Casing
-tile.ga_metal_casing.material.tumbaga.name=Tumbaga Casing
-tile.ga_metal_casing.material.potin.name=Potin Casing
-tile.ga_metal_casing.material.stellite_talonite.name=Stellite and Talonite Casing
-tile.ga_metal_casing.material.staballoy.name=Staballoy Casing
-tile.ga_metal_casing.material.eglin_steel.name=Eglin Steel Casing
-tile.ga_metal_casing.material.grisium.name=Grisium Casing
-tile.ga_metal_casing.material.maraging_steel.name=Maraging Steel 250 Casing
-tile.ga_metal_casing.material.inconel.name=Inconel 625 Casing
-tile.ga_metal_casing.material.hastelloy_n.name=Hastelloy N Casing
+tile.ga_quantum_casing.computer.name=Qubit Computer Casing
+tile.ga_quantum_casing.generator.name=Qubit generator Casing
+tile.ga_multiblock_casing2.naquadria_charge.name=Naquadria Charge
+tile.ga_multiblock_casing2.stellar_containment.name=Stellar Containement
+tile.ga_reactor_casing.hyper_core.name=Hyper Core I
+tile.ga_reactor_casing.hyper_core_2.name=Hyper Core II
+tile.ga_reactor_casing.hyper_core_3.name=Hyper Core III
+tile.ga_reactor_casing.hyper_casing.name=Hyper Casing I
+tile.ga_reactor_casing.hyper_casing_2.name=Hyper Casing II
+tile.ga_machine_casing.casing_uhv.name=UHV Machine Casing
+tile.ga_machine_casing.casing_uev.name=UEV Machine Casing
+tile.ga_machine_casing.casing_uiv.name=UIV Machine Casing
+tile.ga_machine_casing.casing_umv.name=UMV Machine Casing
+tile.ga_machine_casing.casing_uxv.name=UXV Machine Casing
+
+
+
 tile.cell_casing.cell_hv.name=HV Power Cell
 tile.cell_casing.cell_ev.name=EV Power Cell
 tile.cell_casing.cell_iv.name=IV Power Cell
@@ -1044,6 +1075,10 @@ tile.cell_casing.cell_zpm.name=ZPM Power Cell
 tile.cell_casing.cell_uv.name=UV Power Cell
 tile.cell_casing.cell_uhv.name=UHV Power Cell
 tile.cell_casing.cell_uev.name=UEV Power Cell
+tile.cell_casing.cell_uiv.name=UIV Power Cell
+tile.cell_casing.cell_umv.name=UMV Power Cell
+tile.cell_casing.cell_uxv.name=UXV Power Cell
+tile.cell_casing.cell_max.name=MAX Power Cell
 tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
 tile.cell_casing.tooltip.2=    Capacity: §e%d
 tile.cell_casing.tooltip.3=    Max Tier: §e%s
@@ -1544,6 +1579,18 @@ material.uv_superconductor=UV Superconductor
 material.rutherfordium=Rutherfordium
 material.dubnium=Dubnium
 material.reactor_steel=Reactor Steel
+material.zylon=Zylon
+material.polyetheretherkenone=Polyetheretherkenone
+material.hastelloy_k243=Hastelloy K243
+material.hastelloy_x78=Hastelloy X78
+material.enriched_naquadah_alloy=Enriched Naquadah Alloy
+material.incoloy813=Incoloy 813
+material.bohrium=Bohrium
+material.seabohrium=Seabohrium
+material.uev_superconductor=UEV Superconductor
+material.uev_superconductor_base=UEV Superconductor Base
+material.uhv_superconductor_base=UHV Superconductor Base
+material.uhv_superconductor=UHV Superconductor
 
 
 
@@ -1725,6 +1772,7 @@ gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
 gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
 gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
 gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
+gtadditions.multiblock.not_enough_qubit=Not Enough Qubit, recipe paused.
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate
@@ -2304,6 +2352,11 @@ metaitem.hot_annealed_zblan_ingot.name=Hot Annealed ZBLAN Ingot
 metaitem.zblan_fiber.name=ZBLAN Fiber
 metaitem.erbium_doped_zblan.name=Erbium Doped ZBLAN
 metaitem.cladded_optical_fiber_core.name=Cladded Optical Fiber Core
+metaitem.degenerate.rhenium.dust.name=Degenerate Rhenium Dust
+metaitem.degenerate.rhenium.plate.name=Degenerate Rhenium Plate
+metaitem.rhenium.plasma.containment.cell.name=Renium Plasma Containment Cell
+metaitem.plasma.containment.cell.name=Plasma Containment Cell
+
 
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
@@ -2464,6 +2517,12 @@ tile.ga_motor_casing.motor_iv.name=Electric Motor Block (IV)
 tile.ga_motor_casing.motor_luv.name=Electric Motor Block (LUV)
 tile.ga_motor_casing.motor_zpm.name=Electric Motor Block (ZPM)
 tile.ga_motor_casing.motor_uv.name=Electric Motor Block (UV)
+tile.ga_motor_casing.motor_uhv.name=Electric Motor Block (UHV)
+tile.ga_motor_casing.motor_uev.name=Electric Motor Block (UEV)
+tile.ga_motor_casing.motor_uiv.name=Electric Motor Block (UIV)
+tile.ga_motor_casing.motor_umv.name=Electric Motor Block (UMV)
+tile.ga_motor_casing.motor_uxv.name=Electric Motor Block (UXV)
+tile.ga_motor_casing.motor_max.name=Electric Motor Block (MAX)
 tile.ga_piston_casing.piston_lv.name=Electric Piston Block (LV)
 tile.ga_piston_casing.piston_mv.name=Electric Piston Block (MV)
 tile.ga_piston_casing.piston_hv.name=Electric Piston Block (HV)
@@ -2472,6 +2531,12 @@ tile.ga_piston_casing.piston_iv.name=Electric Piston Block (IV)
 tile.ga_piston_casing.piston_luv.name=Electric Piston Block (LUV)
 tile.ga_piston_casing.piston_zpm.name=Electric Piston Block (ZPM)
 tile.ga_piston_casing.piston_uv.name=Electric Piston Block (UV)
+tile.ga_piston_casing.piston_uhv.name=Electric Piston Block (UHV)
+tile.ga_piston_casing.piston_uev.name=Electric Piston Block (UEV)
+tile.ga_piston_casing.piston_uiv.name=Electric Piston Block (UIV)
+tile.ga_piston_casing.piston_umv.name=Electric Piston Block (UMV)
+tile.ga_piston_casing.piston_uxv.name=Electric Piston Block (UXV)
+tile.ga_piston_casing.piston_max.name=Electric Piston Block (MAX)
 tile.ga_emitter_casing.emitter_lv.name=Emitter Block (LV)
 tile.ga_emitter_casing.emitter_mv.name=Emitter Block (MV)
 tile.ga_emitter_casing.emitter_hv.name=Emitter Block (HV)
@@ -2480,6 +2545,12 @@ tile.ga_emitter_casing.emitter_iv.name=Emitter Block (IV)
 tile.ga_emitter_casing.emitter_luv.name=Emitter Block (LUV)
 tile.ga_emitter_casing.emitter_zpm.name=Emitter Block (ZPM)
 tile.ga_emitter_casing.emitter_uv.name=Emitter Block (UV)
+tile.ga_emitter_casing.emitter_uhv.name=Emitter Block (UHV)
+tile.ga_emitter_casing.emitter_uev.name=Emitter Block (UEV)
+tile.ga_emitter_casing.emitter_uiv.name=Emitter Block (UIV)
+tile.ga_emitter_casing.emitter_umv.name=Emitter Block (UMV)
+tile.ga_emitter_casing.emitter_uxv.name=Emitter Block (UXV)
+tile.ga_emitter_casing.emitter_max.name=Emitter Block (MAX)
 tile.ga_sensor_casing.sensor_lv.name=Sensor Block (LV)
 tile.ga_sensor_casing.sensor_mv.name=Sensor Block (MV)
 tile.ga_sensor_casing.sensor_hv.name=Sensor Block (HV)
@@ -2488,6 +2559,12 @@ tile.ga_sensor_casing.sensor_iv.name=Sensor Block (IV)
 tile.ga_sensor_casing.sensor_luv.name=Sensor Block (LUV)
 tile.ga_sensor_casing.sensor_zpm.name=Sensor Block (ZPM)
 tile.ga_sensor_casing.sensor_uv.name=Sensor Block (UV)
+tile.ga_sensor_casing.sensor_uhv.name=Sensor Block (UHV)
+tile.ga_sensor_casing.sensor_uev.name=Sensor Block (UEV)
+tile.ga_sensor_casing.sensor_uiv.name=Sensor Block (UIV)
+tile.ga_sensor_casing.sensor_umv.name=Sensor Block (UMV)
+tile.ga_sensor_casing.sensor_uxv.name=Sensor Block (UXV)
+tile.ga_sensor_casing.sensor_max.name=Sensor Block (MAX)
 tile.ga_field_gen_casing.field_generator_lv.name=Field Generator Block (LV)
 tile.ga_field_gen_casing.field_generator_mv.name=Field Generator Block (MV)
 tile.ga_field_gen_casing.field_generator_hv.name=Field Generator Block (HV)
@@ -2496,6 +2573,12 @@ tile.ga_field_gen_casing.field_generator_iv.name=Field Generator Block (IV)
 tile.ga_field_gen_casing.field_generator_luv.name=Field Generator Block (LUV)
 tile.ga_field_gen_casing.field_generator_zpm.name=Field Generator Block (ZPM)
 tile.ga_field_gen_casing.field_generator_uv.name=Field Generator Block (UV)
+tile.ga_field_gen_casing.field_generator_uhv.name=Field Generator Block (UHV)
+tile.ga_field_gen_casing.field_generator_uev.name=Field Generator Block (UEV)
+tile.ga_field_gen_casing.field_generator_uiv.name=Field Generator Block (UIV)
+tile.ga_field_gen_casing.field_generator_umv.name=Field Generator Block (UMV)
+tile.ga_field_gen_casing.field_generator_uxv.name=Field Generator Block (UXV)
+tile.ga_field_gen_casing.field_generator_max.name=Field Generator Block (MAX)
 tile.ga_pump_casing.pump_lv.name=Electric Pump Block (LV)
 tile.ga_pump_casing.pump_mv.name=Electric Pump Block (MV)
 tile.ga_pump_casing.pump_hv.name=Electric Pump Block (HV)
@@ -2504,6 +2587,12 @@ tile.ga_pump_casing.pump_iv.name=Electric Pump Block (IV)
 tile.ga_pump_casing.pump_luv.name=Electric Pump Block (LUV)
 tile.ga_pump_casing.pump_zpm.name=Electric Pump Block (ZPM)
 tile.ga_pump_casing.pump_uv.name=Electric Pump Block (UV)
+tile.ga_pump_casing.pump_uhv.name=Electric Pump Block (UHV)
+tile.ga_pump_casing.pump_uev.name=Electric Pump Block (UEV)
+tile.ga_pump_casing.pump_uiv.name=Electric Pump Block (UIV)
+tile.ga_pump_casing.pump_umv.name=Electric Pump Block (UMV)
+tile.ga_pump_casing.pump_uxv.name=Electric Pump Block (UXV)
+tile.ga_pump_casing.pump_max.name=Electric Pump Block (MAX)
 tile.ga_conveyor_casing.conveyor_lv.name=Conveyor Module Block (LV)
 tile.ga_conveyor_casing.conveyor_mv.name=Conveyor Module Block (MV)
 tile.ga_conveyor_casing.conveyor_hv.name=Conveyor Module Block (HV)
@@ -2512,6 +2601,12 @@ tile.ga_conveyor_casing.conveyor_iv.name=Conveyor Module Block (IV)
 tile.ga_conveyor_casing.conveyor_luv.name=Conveyor Module Block (LUV)
 tile.ga_conveyor_casing.conveyor_zpm.name=Conveyor Module Block (ZPM)
 tile.ga_conveyor_casing.conveyor_uv.name=Conveyor Module Block (UV)
+tile.ga_conveyor_casing.conveyor_uhv.name=Conveyor Module Block (UHV)
+tile.ga_conveyor_casing.conveyor_uev.name=Conveyor Module Block (UEV)
+tile.ga_conveyor_casing.conveyor_uiv.name=Conveyor Module Block (UIV)
+tile.ga_conveyor_casing.conveyor_umv.name=Conveyor Module Block (UMV)
+tile.ga_conveyor_casing.conveyor_uxv.name=Conveyor Module Block (UXV)
+tile.ga_conveyor_casing.conveyor_max.name=Conveyor Module Block (MAX)
 tile.ga_robot_arm_casing.robot_arm_lv.name=Robot Arm Block (LV)
 tile.ga_robot_arm_casing.robot_arm_mv.name=Robot Arm Block (MV)
 tile.ga_robot_arm_casing.robot_arm_hv.name=Robot Arm Block (HV)
@@ -2520,11 +2615,92 @@ tile.ga_robot_arm_casing.robot_arm_iv.name=Robot Arm Block (IV)
 tile.ga_robot_arm_casing.robot_arm_luv.name=Robot Arm Block (LUV)
 tile.ga_robot_arm_casing.robot_arm_zpm.name=Robot Arm Block (ZPM)
 tile.ga_robot_arm_casing.robot_arm_uv.name=Robot Arm Block (UV)
+tile.ga_robot_arm_casing.robot_arm_uhv.name=Robot Arm Block (UHV)
+tile.ga_robot_arm_casing.robot_arm_uev.name=Robot Arm Block (UEV)
+tile.ga_robot_arm_casing.robot_arm_uiv.name=Robot Arm Block (UIV)
+tile.ga_robot_arm_casing.robot_arm_umv.name=Robot Arm Block (UMV)
+tile.ga_robot_arm_casing.robot_arm_uxv.name=Robot Arm Block (UXV)
+tile.ga_robot_arm_casing.robot_arm_max.name=Robot Arm Block (MAX)
 
 gtaddition.optical_fiber.qubit=Qubit: §a%d §7(§a%s§7)
 gtaddition.optical_fiber.parallel=Parallel Signal: §e%d
 gtaddition.top.qubit_stored=Qubit:
 gregtech.recipe.qubitProduce=Generation: %d qubit/t
 gregtech.recipe.qubitConsume=Usage: %d qubit/t
+
+
+metaitem.robot.arm.uhv.name=Robot Arm (UHV)
+metaitem.robot.arm.uev.name=Robot Arm (UEV)
+metaitem.robot.arm.uiv.name=Robot Arm (UIV)
+metaitem.robot.arm.umv.name=Robot Arm (UMV)
+metaitem.robot.arm.uxv.name=Robot Arm (UXV)
+metaitem.robot.arm.max.name=Robot Arm (MAX)
+metaitem.robot.arm.uhv.tooltip=Inserts at specified rates (as Cover)
+metaitem.robot.arm.uev.tooltip=Inserts at specified rates (as Cover)
+metaitem.robot.arm.uiv.tooltip=Inserts at specified rates (as Cover)
+metaitem.robot.arm.umv.tooltip=Inserts at specified rates (as Cover)
+metaitem.robot.arm.uxv.tooltip=Inserts at specified rates (as Cover)
+metaitem.robot.arm.max.tooltip=Inserts at specified rates (as Cover)
+
+metaitem.electric.piston.uhv.name=Electric Piston (UHV)
+metaitem.electric.piston.uev.name=Electric Piston (UEV)
+metaitem.electric.piston.uiv.name=Electric Piston (UIV)
+metaitem.electric.piston.umv.name=Electric Piston (UMV)
+metaitem.electric.piston.uxv.name=Electric Piston (UXV)
+metaitem.electric.piston.max.name=Electric Piston (MAX)
+
+metaitem.electric.pump.uhv.name=Electric Pump (UHV)
+metaitem.electric.pump.uev.name=Electric Pump (UEV)
+metaitem.electric.pump.uiv.name=Electric Pump (UIV)
+metaitem.electric.pump.umv.name=Electric Pump (UMV)
+metaitem.electric.pump.uxv.name=Electric Pump (UXV)
+metaitem.electric.pump.max.name=Electric Pump (MAX)
+metaitem.electric.pump.uhv.tooltip=20,971,520 mb/sec (as Cover)
+metaitem.electric.pump.uev.tooltip=20,971,520 mb/sec (as Cover)
+metaitem.electric.pump.uiv.tooltip=20,971,520 mb/sec (as Cover)
+metaitem.electric.pump.umv.tooltip=20,971,520 mb/sec (as Cover)
+metaitem.electric.pump.uxv.tooltip=20,971,520 mb/sec (as Cover)
+metaitem.electric.pump.max.tooltip=20,971,520 mb/sec (as Cover)
+
+metaitem.conveyor.module.uhv.name=Conveyor Module (UHV)
+metaitem.conveyor.module.uev.name=Conveyor Module (UEV)
+metaitem.conveyor.module.uiv.name=Conveyor Module (UIV)
+metaitem.conveyor.module.umv.name=Conveyor Module (UMV)
+metaitem.conveyor.module.uxv.name=Conveyor Module (UXV)
+metaitem.conveyor.module.max.name=Conveyor Module (MAX)
+metaitem.conveyor.module.uhv.tooltip=16 Stacks every second (as Cover)
+metaitem.conveyor.module.uev.tooltip=16 Stacks every second (as Cover)
+metaitem.conveyor.module.uiv.tooltip=16 Stacks every second (as Cover)
+metaitem.conveyor.module.umv.tooltip=16 Stacks every second (as Cover)
+metaitem.conveyor.module.uxv.tooltip=16 Stacks every second (as Cover)
+metaitem.conveyor.module.max.tooltip=16 Stacks every second (as Cover)
+
+metaitem.electric.motor.uhv.name=Electric Motor (UHV)
+metaitem.electric.motor.uev.name=Electric Motor (UEV)
+metaitem.electric.motor.uiv.name=Electric Motor (UIV)
+metaitem.electric.motor.umv.name=Electric Motor (UMV)
+metaitem.electric.motor.uxv.name=Electric Motor (UXV)
+metaitem.electric.motor.max.name=Electric Motor (MAX)
+
+metaitem.field.generator.uhv.name=Field Generator (UHV)
+metaitem.field.generator.uev.name=Field Generator (UEV)
+metaitem.field.generator.uiv.name=Field Generator (UIV)
+metaitem.field.generator.umv.name=Field Generator (UMV)
+metaitem.field.generator.uxv.name=Field Generator (UXV)
+metaitem.field.generator.max.name=Field Generator (MAX)
+
+metaitem.sensor.uhv.name=Sensor (UHV)
+metaitem.sensor.uev.name=Sensor (UEV)
+metaitem.sensor.uiv.name=Sensor (UIV)
+metaitem.sensor.umv.name=Sensor (UMV)
+metaitem.sensor.uxv.name=Sensor (UXV)
+metaitem.sensor.max.name=Sensor (MAX)
+
+metaitem.emitter.uhv.name=Emitter (UHV)
+metaitem.emitter.uev.name=Emitter (UEV)
+metaitem.emitter.uiv.name=Emitter (UIV)
+metaitem.emitter.umv.name=Emitter (UMV)
+metaitem.emitter.uxv.name=Emitter (UXV)
+metaitem.emitter.max.name=Emitter (MAX)
 
 

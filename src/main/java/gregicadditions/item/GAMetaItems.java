@@ -94,7 +94,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LUV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ZPM;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_MAX;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UHV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UEV;
 
 
     public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
