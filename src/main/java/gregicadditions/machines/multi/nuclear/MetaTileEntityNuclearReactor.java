@@ -220,6 +220,11 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
                     hotCoolant = GAMetaFluids.HOT_FLUIDS.get(coolant);
                     if (hotCoolant != null) {
                         fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantNeeded()), true);
+                        if (fluidStack == null) {
+                            hotCoolant = null;
+                            coolant = null;
+                            return;
+                        }
                         if (fluidStack.amount < coolantNeeded()) {
                             notEnoughCoolant = true;
                             inputFluidInventory.fill(fluidStack, true);
