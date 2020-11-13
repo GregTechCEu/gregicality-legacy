@@ -590,7 +590,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial PhosphorusChloride = new SimpleFluidMaterial("phosphorus_chloride", 0x755f30);
     public static final SimpleFluidMaterial ThionylChloride = new SimpleFluidMaterial("thionyl_chloride", 0x755f30);
     public static final SimpleFluidMaterial Diisopropylcarbodiimide = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
-    public static final SimpleFluidMaterial Pyridine = new SimpleFluidMaterial("diisopropylcarbodiimide", 0x755f30);
+    public static final SimpleFluidMaterial Pyridine = new SimpleFluidMaterial("pyridine", 0x755f30);
     public static final SimpleFluidMaterial Phenylpentanoicacid = new SimpleFluidMaterial("phenylpentanoicacid", 0x755f30);
     public static final SimpleFluidMaterial Dimethylsulfide = new SimpleFluidMaterial("dimethylsulfide", 0x755f30);
     public static final SimpleFluidMaterial BenzoylChloride = new SimpleFluidMaterial("benzoyl_chloride", 0x755f30);
