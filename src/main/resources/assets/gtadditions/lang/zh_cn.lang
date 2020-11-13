@@ -132,6 +132,90 @@ metaitem.plate.iridium.alloy.name=铱合金板
 metaitem.plate.iridium.alloy.uncompressed.name=铱合金锭
 metaitem.neutron.reflector.name=中子反射板
 metaitem.processor.neuro.name=神经元CPU
+metaitem.hot_iron_ingot.name=热铁锭
+metaitem.plate.field.shape.name=形态力场
+metaitem.wafer.aram.name=ARAM晶圆
+metaitem.plate.aram.name=ARAM
+metaitem.uhpic.wafer.name=UHPIC晶圆
+metaitem.uhasoc.wafer.name=UHASoC晶圆
+metaitem.hasoc.wafer.name=HASoC晶圆
+metaitem.uhpic.name=UHPIC
+metaitem.uhasoc.name=UHASoC
+metaitem.hasoc.name=HASoC
+
+metaitem.potassium_cyanide.name=氰化钾
+metaitem.succinic_acid.name=琥珀酸
+metaitem.succinimide.name=琥珀酰亚胺
+metaitem.bromo_succinimide.name=N-溴代琥珀酰亚胺
+metaitem.benzophenanthrenylacetonitrile.name=苯并菲乙腈
+metaitem.unfolded_fullerene.name=展开结构富勒烯
+metaitem.fullerene.name=富勒烯
+metaitem.tial_chloride.name=氯化钛铝合金
+metaitem.dimethylaminopyridine.name=二甲氨基吡啶
+metaitem.pdirreoceos.name=钯-铱-氧化铼-氧化铈-二氧化硅混合催化剂
+metaitem.sodium_ethoxide.name=乙醇钠
+metaitem.mgcl_brominide.name=溴氯化镁
+metaitem.n_methylglicine.name=肌氨酸
+metaitem.sodium_nitrite.name=亚硝酸钠
+metaitem.znfealcl_catalyst.name=锌-铁-铝-氯混合催化剂
+metaitem.difluorobenzophenone.name=二氟二苯甲酮
+metaitem.aluminium_chloride.name=氯化铝
+metaitem.pd_fullerene_matrix.name=钯-富勒烯矩阵
+metaitem.terephthalaldehyde.name=对苯二甲醛
+metaitem.pre_zylon.name=预处理柴隆纤维
+metaitem.aupdc_catalyst.name=金-钯-碳混合催化剂
+metaitem.cyanonaphtalene.name=氰基萘
+metaitem.tin_chloride.name=氯化锡
+metaitem.triphenylphosphine.name=三苯基膦
+metaitem.methylbenzophenanthrene.name=甲苯菲
+
+metaitem.large.neutronium.battery.empty.name=大型中子素电池外壳
+metaitem.large.naquadria.battery.empty.name=大型超能硅岩电池外壳
+metaitem.large.vanadium.battery.empty.name=大型钒电池外壳
+metaitem.medium.neutronium.battery.empty.name=中型中子素电池外壳
+metaitem.medium.naquadria.battery.empty.name=中型超能硅岩电池外壳
+metaitem.medium.vanadium.battery.empty.name=中型钒电池外壳
+metaitem.small.neutronium.battery.empty.name=小型中子素电池外壳
+metaitem.small.vanadium.battery.empty.name=小型超能硅岩电池外壳
+
+metaitem.large.neutronium.battery.empty.tooltip=空的UIV级电池外壳
+metaitem.large.naquadria.battery.empty.tooltip=空的UV级电池外壳
+metaitem.large.vanadium.battery.empty.tooltip=空的LuV级电池外壳
+metaitem.medium.neutronium.battery.empty.tooltip=空的UEV级电池外壳
+metaitem.medium.naquadria.battery.empty.tooltip=空的ZPM级电池外壳
+metaitem.medium.vanadium.battery.empty.tooltip=空的IV级电池外壳
+metaitem.small.neutronium.battery.empty.tooltip=空的UHV级电池外壳
+metaitem.small.vanadium.battery.empty.tooltip=空的EV级电池外壳
+
+metaitem.large.neutronium.battery.name=大型中子素电池外壳
+metaitem.large.naquadria.battery.name=大型超能硅岩电池外壳
+metaitem.large.vanadium.battery.name=大型钒电池外壳
+metaitem.medium.neutronium.battery.name=中型中子素电池外壳
+metaitem.medium.naquadria.battery.name=中型超能硅岩电池外壳
+metaitem.medium.vanadium.battery.name=中型钒电池外壳
+metaitem.small.neutronium.battery.name=小型中子素电池外壳
+metaitem.small.vanadium.battery.name=小型超能硅岩电池外壳
+
+metaitem.large.neutronium.battery.tooltip=可充电电池
+metaitem.large.naquadria.battery.tooltip=可充电电池
+metaitem.large.vanadium.battery.tooltip=可充电电池
+metaitem.medium.neutronium.battery.tooltip=可充电电池
+metaitem.medium.naquadria.battery.tooltip=可充电电池
+metaitem.medium.vanadium.battery.tooltip=可充电电池
+metaitem.small.neutronium.battery.tooltip=可充电电池
+metaitem.small.vanadium.battery.tooltip=可充电电池
+
+
+metaitem.electrically.wired.petri.dish.name=电信号培养皿
+metaitem.neuro.support.unit.name=神经支撑单元
+metaitem.cyber.processing.unit.name=网络处理单元
+metaitem.ultrasonic.homogenizer.name=超声波均质机
+metaitem.sterilized.petri.dish.name=无菌培养皿
+metaitem.contaminated.petri.dish.name=被污染的培养皿
+metaitem.clean.culture.name=预备培养皿
+metaitem.piezoelectric.crystal.name=压电晶体
+metaitem.pyrolitic_carbon.name=热解碳
+
 
 metaitem.electrode.apatite.name=磷灰石电子管元件
 metaitem.electrode.blaze.name=烈焰电子管元件
@@ -189,16 +273,19 @@ metaitem.component.smd.capacitor.wetware.name=湿件贴片电容
 metaitem.component.smd.capacitor.quantum.name=量子贴片电容
 metaitem.component.smd.capacitor.crystal.name=晶体贴片电容
 metaitem.component.smd.capacitor.refined.name=精制贴片电容
+metaitem.component.smd.capacitor.bioware.name=生物活性贴片电容
 metaitem.component.smd.resistor.nano.name=纳米贴片电阻
 metaitem.component.smd.resistor.wetware.name=湿件贴片电阻
 metaitem.component.smd.resistor.quantum.name=量子贴片电阻
 metaitem.component.smd.resistor.crystal.name=晶体贴片电阻
 metaitem.component.smd.resistor.refined.name=精制贴片电阻
+metaitem.component.smd.resistor.bioware.name=生物活性贴片电阻
 metaitem.component.smd.diode.nano.name=纳米贴片二极管
 metaitem.component.smd.diode.wetware.name=湿件贴片二极管
 metaitem.component.smd.diode.quantum.name=量子贴片二极管
 metaitem.component.smd.diode.crystal.name=晶体贴片二极管
 metaitem.component.smd.diode.refined.name=精制贴片二极管
+metaitem.component.smd.diode.bioware.name=生物活性贴片二极管
 metaitem.component.smd.transistor.nano.name=纳米贴片晶体管
 metaitem.component.smd.transistor.wetware.name=湿件贴片晶体管
 metaitem.component.smd.transistor.quantum.name=量子贴片晶体管
@@ -762,7 +849,7 @@ gtadditions.machine.rotor_holder.iv.name=热冷却液转子支架(IV)
 gtadditions.machine.rotor_holder.luv.name=热冷却液转子支架(LuV)
 gtadditions.machine.rotor_holder.zpm.name=热冷却液转子支架(ZPM)
 gtadditions.machine.rotor_holder.uv.name=热冷却液转子支架(UV)
-gtadditions.machine.rotor_holder.max.name=热冷却液转子支架(MAX)
+gtadditions.machine.rotor_holder.uhv.name=热冷却液转子支架(UHV)
 
 gtadditions.machine.fluid_hatch.export_filtered.ulv.name=过滤输出仓(ULV)
 gtadditions.machine.fluid_hatch.export_filtered.lv.name=过滤输出仓(LV)
@@ -835,6 +922,11 @@ tile.ga_machine_casing.casing_uev.name=UEV机器外壳
 tile.ga_machine_casing.casing_uiv.name=UIV机器外壳
 tile.ga_machine_casing.casing_umv.name=UMV机器外壳
 tile.ga_machine_casing.casing_uxv.name=UXV机器外壳
+
+tile.ga_fusion_casing.fusion_casing_3.name=聚变机械方块MK III
+tile.ga_fusion_casing.fusion_casing_4.name=聚变机械方块MK IV
+tile.ga_fusion_casing.fusion_coil_2.name=聚变线圈方块MK II
+tile.ga_fusion_casing.fusion_coil_3.name=聚变线圈方块MK III
 
 
 
@@ -1543,7 +1635,7 @@ gregtech.multiblock.large_transformer.output=输出：%s EU / %s 安
 gregtech.multiblock.large_transformer.input_average=输入电流/t：%s
 gregtech.multiblock.large_transformer.output_average=输出电流/t：%s
 
-gtadditions.multiblock.not_enough_qubit=量子位不足，配方已停止处理。
+gtadditions.multiblock.not_enough_qubit=量子位不足，配方已减缓处理进程。
 
 item.material.oreprefix.plateCurved=弯曲%s板
 item.material.oreprefix.ingotDouble=双重%s锭
@@ -2103,6 +2195,8 @@ metaitem.molybdenum_trioxide.name=三氧化钼
 metaitem.copper_chloride.name=氯化铜
 metaitem.bismuth_chloride.name=氯化铋
 metaitem.lead_chloride.name=氯化铅
+metaitem.zirconium_tetrachloride.name=四氯化锆
+metaitem.silicon_carbide.name=碳化硅
 
 metaitem.zirconium_tetrafluoride.name=四氟化锆
 metaitem.barium_difluoride.name=二氟化钡
@@ -2256,6 +2350,53 @@ fluid.molybdenum_flue_gas=钼烟道
 fluid.rhenium_sulfuric_solution=铼硫酸溶液
 fluid.ammonium_sulfate=硫酸铵
 fluid.ammonium_perrhenate=高铼酸铵
+fluid.silicon_fluoride=Silicon Fluoride
+fluid.carbone_fluoride=Carbone Fluoride
+fluid.phosphorus_trichloride=Phosphorus Trichloride
+fluid.phosphoryl_chloride=Phosphoryl Chloride
+fluid.tributyl_phosphate=Tributyl Phosphate
+fluid.butanol=Butanol
+fluid.red_oil=Red Oil
+fluid.boric_acid=Boric Acid
+fluid.fluoroboric_acid=Fluoroboric Acid
+fluid.benzenediazonium_tetrafluoroborate=Benzenediazonium Tetrafluoroborate
+fluid.boron_fluoride=Boron Fluoride
+fluid.fluoro_benzene=Fluoro Benzene
+fluid.sodium_nitrate_solution=Sodium Nitrate Solution
+fluid.fluorotoluene=Fluorotoluene
+fluid.xylene=Xylene
+fluid.xylene_zeolite=Xylene Zeolite
+fluid.p_xylene=P Xylene
+fluid.dibromomethylbenzene=Dibromomethylbenzene
+fluid.acetic_anhydride=Acetic Anhydride
+fluid.isochloropropane=Isochloropropane
+fluid.resorcinol=Resorcinol
+fluid.dinitrodipropanyloxybenzene=Dinitrodipropanyloxybenzene
+fluid.napthaldehyde=Napthaldehyde
+fluid.hydrobromic_acid=Hydrobromic_acid
+fluid.phosphorus_chloride=Phosphorus_chloride
+fluid.thionyl_chloride=Thionyl Chloride
+fluid.diisopropylcarbodiimide=Diisopropylcarbodiimide
+fluid.pyridine=Pyridine
+fluid.phenylpentanoicacid=Phenylpentanoicacid
+fluid.dimethylsulfide=Dimethylsulfide
+fluid.benzoyl_chloride=Benzoyl Chloride
+fluid.silvertetrafluoroborate=Silvertetrafluoroborate
+fluid.pcba=PCBA
+fluid.pcbs=PCBS
+fluid.ferrocene=Ferrocene
+fluid.ferrocenylfulleropyrddolidine=Ferrocenylfulleropyrddolidine
+fluid.cocab_catalyst=COCaB Catalyst
+fluid.hydroquinone=Hydroquinone
+fluid.propylene=Propylene
+fluid.sodium_acetate=Sodium Acetate
+fluid.potassium_hydroxide=Potassium Hydroxide
+fluid.potassium_chloride=Potassium Chloride
+fluid.methylamine=Methylamine
+fluid.phosgene=Phosgene
+fluid.isopropyl_alcohol=Isopropyl Alcohol
+fluid.degenerate_rhenium_plasma=Degenerate Rhenium Plama
+fluid.liquid_helium=Liquid Helium
 
 
 material.naquadric_compound=硅岩化合物
@@ -2616,6 +2757,20 @@ gtadditions.machine.qubit_computer.name=量子计算机
 gtadditions.machine.stellar_forge.name=恒星炎炀锻炉
 gtadditions.machine.void_miner.uhv.name=进阶虚空采矿机
 gtadditions.machine.void_miner.uev.name=次时代虚空采矿机
+gtadditions.machine.hyper_reactor.uv.name=超能反应堆 I
+gtadditions.machine.hyper_reactor.uhv.name=超能反应堆 II
+gtadditions.machine.hyper_reactor.uev.name=超能反应堆 III
+gtadditions.machine.fusion_reactor.uhv.name=核聚变反应堆主机Mk.IV
+gtadditions.machine.fusion_reactor.uev.name=核聚变反应堆主机Mk.V
+gtadditions.machine.fusion_casing_3.name=聚变机械方块MK III
+gtadditions.machine.fusion_casing_4.name=聚变机械方块MK IV
+gtadditions.machine.hull.uhv.name=UHV机器外壳
+gtadditions.machine.hull.uev.name=UEV机器外壳
+gtadditions.machine.hull.uiv.name=UIV机器外壳
+gtadditions.machine.hull.umv.name=UMV机器外壳
+gtadditions.machine.hull.uxv.name=UXV机器外壳
+
+
 
 gtadditions.machine.qubit_hatch.output.1.name=量子位输出仓
 gtadditions.machine.qubit_hatch.input.16.name=量子位输入仓
