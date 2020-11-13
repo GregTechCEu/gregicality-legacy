@@ -2762,13 +2762,11 @@ gtadditions.machine.hyper_reactor.uhv.name=超能反应堆 II
 gtadditions.machine.hyper_reactor.uev.name=超能反应堆 III
 gtadditions.machine.fusion_reactor.uhv.name=核聚变反应堆主机Mk.IV
 gtadditions.machine.fusion_reactor.uev.name=核聚变反应堆主机Mk.V
-gtadditions.machine.fusion_casing_3.name=聚变机械方块MK III
-gtadditions.machine.fusion_casing_4.name=聚变机械方块MK IV
-gtadditions.machine.hull.uhv.name=UHV机器外壳
-gtadditions.machine.hull.uev.name=UEV机器外壳
-gtadditions.machine.hull.uiv.name=UIV机器外壳
-gtadditions.machine.hull.umv.name=UMV机器外壳
-gtadditions.machine.hull.uxv.name=UXV机器外壳
+gtadditions.machine.hull.uhv.name=UHV机械方块
+gtadditions.machine.hull.uev.name=UEV机械方块
+gtadditions.machine.hull.uiv.name=UIV机械方块
+gtadditions.machine.hull.umv.name=UMV机械方块
+gtadditions.machine.hull.uxv.name=UXV机械方块
 
 
 
