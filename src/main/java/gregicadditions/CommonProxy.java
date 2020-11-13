@@ -11,7 +11,10 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.utils.GALog;
+import gregicadditions.recipes.RecipeHandler;
+import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -33,6 +36,7 @@ import java.util.function.Function;
 
 import static gregicadditions.item.GAMetaBlocks.GA_ORES;
 import static gregicadditions.item.GAMetaBlocks.OPTICAL_FIBER;
+
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class CommonProxy {
@@ -163,5 +167,10 @@ public class CommonProxy {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
         return itemBlock;
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
+        RecipeHandler.runRecipeGeneration();
     }
 }
