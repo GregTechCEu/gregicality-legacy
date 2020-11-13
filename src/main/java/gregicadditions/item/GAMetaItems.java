@@ -318,8 +318,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ERBIUM_DOPED_ZBLAN;
     public static MetaItem<?>.MetaValueItem CLADDED_OPTICAL_FIBER_CORE;
 
-
     public static MetaItem<?>.MetaValueItem PYROLITIC_CARBON;
+    public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
