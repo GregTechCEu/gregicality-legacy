@@ -144,23 +144,23 @@ metaitem.uhasoc.name=UHASoC
 metaitem.hasoc.name=HASoC
 
 metaitem.potassium_cyanide.name=Potassium Cyanide
-metaitem.succinic_acid.name=Auccinic Acid
+metaitem.succinic_acid.name=Succinic Acid
 metaitem.succinimide.name=Succinimide
 metaitem.bromo_succinimide.name=Bromo Succinimide
 metaitem.benzophenanthrenylacetonitrile.name=Benzophenanthrenylacetonitrile
 metaitem.unfolded_fullerene.name=Unfolded Fullerene
 metaitem.fullerene.name=Fullerene
-metaitem.tial_chloride.name=Tial Chloride
+metaitem.tial_chloride.name=TiAl Chloride
 metaitem.dimethylaminopyridine.name=Dimethylaminopyridine
-metaitem.pdirreoceos.name=Pdirreoceos
+metaitem.pdirreoceos.name=PdIrReOCeOs Catalyst
 metaitem.sodium_ethoxide.name=Sodium Ethoxide
-metaitem.mgcl_brominide.name=MGCL Brominide
+metaitem.mgcl_brominide.name=MgCl Brominide
 metaitem.n_methylglicine.name=N Methylglicine
-metaitem.sodium_nitrite.name=Sodium nitrite
+metaitem.sodium_nitrite.name=Sodium Nitrite
 metaitem.znfealcl_catalyst.name=ZnFeAlCl Catalyst
 metaitem.difluorobenzophenone.name=Difluorobenzophenone
 metaitem.aluminium_chloride.name=Aluminium Chloride
-metaitem.pd_fullerene_matrix.name=PD Fullerene Matrix
+metaitem.pd_fullerene_matrix.name=Palladium Fullerene Matrix
 metaitem.terephthalaldehyde.name=Terephthalaldehyde
 metaitem.pre_zylon.name=Pre Zylon
 metaitem.aupdc_catalyst.name=AuPdC Catalyst
@@ -1073,7 +1073,7 @@ gtadditions.machine.rotor_holder.iv.name=Hot Coolant Rotor Holder (IV)
 gtadditions.machine.rotor_holder.luv.name=Hot Coolant Rotor Holder (LuV)
 gtadditions.machine.rotor_holder.zpm.name=Hot Coolant Rotor Holder (ZPM)
 gtadditions.machine.rotor_holder.uv.name=Hot Coolant Rotor Holder (UV)
-gtadditions.machine.rotor_holder.max.name=Hot Coolant Rotor Holder (MAX)
+gtadditions.machine.rotor_holder.uhv.name=Hot Coolant Rotor Holder (UHV)
 
 gtadditions.machine.fluid_hatch.export_filtered.ulv.name=Filtered Output Hatch (ULV)
 gtadditions.machine.fluid_hatch.export_filtered.lv.name=Filtered Output Hatch (LV)
@@ -1091,6 +1091,19 @@ gtadditions.machine.qubit_computer.name=Quantum Computer
 gtadditions.machine.stellar_forge.name=Stellar Forge
 gtadditions.machine.void_miner.uhv.name=Void Miner Mk2
 gtadditions.machine.void_miner.uev.name=Void Miner Mk3
+gtadditions.machine.hyper_reactor.uv.name=Hyper Reactor I
+gtadditions.machine.hyper_reactor.uhv.name=Hyper Reactor II
+gtadditions.machine.hyper_reactor.uev.name=Hyper Reactor III
+gtadditions.machine.fusion_reactor.uhv.name=Fusion Reactor Mark 4
+gtadditions.machine.fusion_reactor.uev.name=Fusion Reactor Mark 5
+gtadditions.machine.fusion_casing_3.name=Fusion Casing MK3
+gtadditions.machine.fusion_casing_4.name=Fusion Casing MK4
+gtadditions.machine.hull.uhv.name=UHV Machine Hull
+gtadditions.machine.hull.uev.name=UEV Machine Hull
+gtadditions.machine.hull.uiv.name=UIV Machine Hull
+gtadditions.machine.hull.umv.name=UMV Machine Hull
+gtadditions.machine.hull.uxv.name=UXV Machine Hull
+
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
@@ -1152,6 +1165,11 @@ tile.ga_machine_casing.casing_uev.name=UEV Machine Casing
 tile.ga_machine_casing.casing_uiv.name=UIV Machine Casing
 tile.ga_machine_casing.casing_umv.name=UMV Machine Casing
 tile.ga_machine_casing.casing_uxv.name=UXV Machine Casing
+
+tile.ga_fusion_casing.fusion_casing_3.name=Fusion Casing MK3
+tile.ga_fusion_casing.fusion_casing_4.name=Fusion Casing MK4
+tile.ga_fusion_casing.fusion_coil_2.name=Fusion Coil Block MK2
+tile.ga_fusion_casing.fusion_coil_3.name=Fusion Coil Block MK3
 
 
 
@@ -1860,7 +1878,7 @@ gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
 gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
 gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
 gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
-gtadditions.multiblock.not_enough_qubit=Not Enough Qubit, recipe paused.
+gtadditions.multiblock.not_enough_qubit=Not Enough Qubit, recipe slowed.
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate
