@@ -123,6 +123,11 @@ public class GARecipeAddition {
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
 
+        ModHandler.addSmeltingRecipe(new UnificationEntry(ingot, Iron), HOT_IRON_INGOT.getStackForm());
+        ModHandler.addShapelessRecipe("ga_wrought", OreDictUnifier.get(ingot, WroughtIron), 'h', HOT_IRON_INGOT.getStackForm());
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(16).inputs(HOT_IRON_INGOT.getStackForm()).outputs(OreDictUnifier.get(ingot, WroughtIron)).buildAndRegister();
+
+
         //seed oil
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2).input("listAllSeed", 1).fluidOutputs(Materials.SeedOil.getFluid(10)).buildAndRegister();
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllmushroom", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();

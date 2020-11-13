@@ -207,6 +207,7 @@ public class GAMetaItem extends MaterialMetaItem {
         ELITE_BOARD = addItem(34, "board.elite");
         MASTER_BOARD = addItem(35, "board.master");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
+        HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 //        COMPRESSED_FIRECLAY = addItem(37, "compressed.fireclay");
 //        FIRECLAY_BRICK = addItem(38, "brick.fireclay").setUnificationData(OrePrefix.ingot, Materials.Fireclay);
 

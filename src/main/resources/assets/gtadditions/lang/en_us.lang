@@ -132,6 +132,7 @@ metaitem.plate.iridium.alloy.name=Iridium Alloy Plate
 metaitem.plate.iridium.alloy.uncompressed.name=Uncompressed Iridium Alloy Plate
 metaitem.neutron.reflector.name=Neutron Reflector
 metaitem.processor.neuro.name=Neuro Processing Unit
+metaitem.hot_iron_ingot.name=Hot Iron Ingot
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode

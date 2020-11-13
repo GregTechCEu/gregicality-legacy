@@ -210,7 +210,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
     public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
 
-
+    public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
 
 
     public static void init() {
