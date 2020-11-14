@@ -1004,11 +1004,11 @@ public class GAConfig {
         }
 
         public static class CryogenicFreezer {
-            @Config.Comment("The amount of parallel recipes the Cryogenic Freezer will run.")
-            @Config.RangeInt(min = 1)
+            @Config.Comment("The amount by which the EU/t for recipes in the Cryogenic Freezer is decreased. E.g. EU/t * 0.8.")
+            @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
-            @Config.Name("Cryogenic Freezer parallel recipes")
-            public int recipeMultiplier = 4;
+            @Config.Name("Cryogenic Freezer recipe EU/t discount")
+            public int energyDecreasePercentage = 80;
 
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeInt(min = 1)

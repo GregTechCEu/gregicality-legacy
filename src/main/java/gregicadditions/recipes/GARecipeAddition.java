@@ -681,8 +681,9 @@ public class GARecipeAddition {
                 .fluidOutputs(Cryotheum.getFluid(250)).buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
-                .duration(1)
+                .duration(200)
                 .EUt(491520)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Cryotheum.getFluid(10000))
                 .fluidOutputs(SupercooledCryotheum.getFluid(10000))
                 .buildAndRegister();
