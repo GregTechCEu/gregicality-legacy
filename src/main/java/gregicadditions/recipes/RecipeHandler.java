@@ -9,11 +9,14 @@ import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.*;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
@@ -31,6 +34,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.*;
+import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
@@ -41,6 +46,8 @@ import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
+import static gregtech.api.unification.material.type.Material.MatFlags.DECOMPOSITION_REQUIRES_HYDROGEN;
+import static gregtech.api.unification.material.type.Material.MatFlags.DISABLE_DECOMPOSITION;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class RecipeHandler {
@@ -534,6 +541,62 @@ public class RecipeHandler {
 
     public static String titleCase(String input) {
         return input.substring(0, 1).toUpperCase(Locale.US) + input.substring(1);
+    }
+
+
+    public static void runRecipeGeneration() {
+        for (Material material : Material.MATERIAL_REGISTRY) {
+            if (material instanceof FluidMaterial) {
+                OrePrefix prefix = material instanceof DustMaterial ? OrePrefix.dust : null;
+                processDecomposition(prefix, (FluidMaterial) material);
+            }
+        }
+    }
+
+    public static void processDecomposition(OrePrefix decomposePrefix, FluidMaterial material) {
+        if (material.materialComponents.isEmpty() || !material.hasFlag(Material.MatFlags.DECOMPOSITION_BY_CENTRIFUGING) ||
+                //disable decomposition if explicitly disabled for this material or for one of it's components
+                material.hasFlag(DISABLE_DECOMPOSITION)) return;
+
+        ArrayList<ItemStack> outputs = new ArrayList<>();
+        ArrayList<FluidStack> fluidOutputs = new ArrayList<>();
+        int totalInputAmount = 0;
+
+        //compute outputs
+        for (MaterialStack component : material.materialComponents) {
+            totalInputAmount += component.amount;
+            if (component.material instanceof DustMaterial) {
+                outputs.add(OreDictUnifier.get(OrePrefix.dust, component.material, (int) component.amount));
+            } else if (component.material instanceof FluidMaterial) {
+                FluidMaterial componentMaterial = (FluidMaterial) component.material;
+                fluidOutputs.add(componentMaterial.getFluid((int) (1000 * component.amount)));
+            }
+        }
+
+        //generate builder
+        RecipeBuilder<?> builder;
+        if (!material.hasFlag(Material.MatFlags.DECOMPOSITION_BY_ELECTROLYZING)) {
+            builder = LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+                    .duration((int) Math.ceil(material.getAverageMass() * totalInputAmount * 1.5))
+                    .EUt(30);
+        } else {
+            return;
+        }
+        builder.outputs(outputs);
+        builder.fluidOutputs(fluidOutputs);
+
+        //finish builder
+        if (decomposePrefix != null) {
+            builder.input(decomposePrefix, material, totalInputAmount);
+        } else {
+            builder.fluidInputs(material.getFluid(1000 * totalInputAmount));
+        }
+        if (material.hasFlag(DECOMPOSITION_REQUIRES_HYDROGEN)) {
+            builder.fluidInputs(Materials.Hydrogen.getFluid(1000 * totalInputAmount));
+        }
+
+        //register recipe
+        builder.buildAndRegister();
     }
 
 
