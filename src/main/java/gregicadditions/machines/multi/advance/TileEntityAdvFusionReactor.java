@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.components.RobotArmCasing;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
@@ -22,7 +21,6 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -31,7 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class FusionReactorAdv extends RecipeMapMultiblockController {
+public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY
@@ -44,7 +42,7 @@ public class FusionReactorAdv extends RecipeMapMultiblockController {
     private int divertorTier;
     private boolean canWork;
 
-    public FusionReactorAdv(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int tier) {
+    public TileEntityAdvFusionReactor(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int tier) {
         super(metaTileEntityId, recipeMap);
         this.tier = tier;
     }
@@ -178,7 +176,7 @@ public class FusionReactorAdv extends RecipeMapMultiblockController {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new FusionReactorAdv(metaTileEntityId, recipeMap, this.tier);
+        return new TileEntityAdvFusionReactor(metaTileEntityId, recipeMap, this.tier);
     }
 
     @Override
