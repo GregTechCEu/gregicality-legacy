@@ -59,8 +59,6 @@ public class GAMetaBlocks {
 
     public static GAVacuumCasing VACUUM_CASING;
 
-    public static GABlanketCasing BLANKET_CASING;
-
     public static GADivertorCasing DIVERTOR_CASING;
 
     public static GACryostatCasing CRYOSTAT_CASING;
@@ -120,9 +118,6 @@ public class GAMetaBlocks {
 
         VACUUM_CASING = new GAVacuumCasing();
         VACUUM_CASING.setRegistryName("ga_vacuum_casing");
-
-        BLANKET_CASING = new GABlanketCasing();
-        BLANKET_CASING.setRegistryName("ga_blanket_casing");
 
         DIVERTOR_CASING = new GADivertorCasing();
         DIVERTOR_CASING.setRegistryName("ga_divertor_casing");
@@ -236,7 +231,6 @@ public class GAMetaBlocks {
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
         registerItemModel(VACUUM_CASING);
-        registerItemModel(BLANKET_CASING);
         registerItemModel(DIVERTOR_CASING);
         registerItemModel(CRYOSTAT_CASING);
         registerItemModel(MACHINE_CASING);

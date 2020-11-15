@@ -69,7 +69,6 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
         registry.register(GAMetaBlocks.VACUUM_CASING);
-        registry.register(GAMetaBlocks.BLANKET_CASING);
         registry.register(GAMetaBlocks.DIVERTOR_CASING);
         registry.register(GAMetaBlocks.CRYOSTAT_CASING);
         registry.register(GAMetaBlocks.MACHINE_CASING);
@@ -102,7 +101,6 @@ public class CommonProxy {
         registry.register(createItemBlock(GAMetaBlocks.MACHINE_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.FUSION_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.VACUUM_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.BLANKET_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.DIVERTOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CRYOSTAT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));

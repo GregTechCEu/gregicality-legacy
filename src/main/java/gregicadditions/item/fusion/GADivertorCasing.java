@@ -18,7 +18,7 @@ public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> 
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(GADivertorCasing.CasingType.FUSION_3));
+        setDefaultState(getState(CasingType.DIVERTOR_1));
     }
 
     @Override
@@ -28,16 +28,21 @@ public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> 
 
     public enum CasingType implements IStringSerializable {
 
-        FUSION_3("fusion_casing_3"),
-        FUSION_4("fusion_casing_4"),
-        FUSION_COIL_2("fusion_coil_2"),
-        FUSION_COIL_3("fusion_coil_3");
+        DIVERTOR_1("divertor_1", 1),
+        DIVERTOR_2("divertor_2", 2),
+        DIVERTOR_3("divertor_3", 3),
+        DIVERTOR_4("divertor_4", 4),
+        DIVERTOR_5("divertor_5", 5),
+        DIVERTOR_6("divertor_6", 6);
+
 
 
         private final String name;
+        private final int tier;
 
-        CasingType(String name) {
+        CasingType(String name, int tier) {
             this.name = name;
+            this.tier = tier;
         }
 
         @Override
@@ -45,5 +50,8 @@ public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> 
             return this.name;
         }
 
+        public int getTier() {
+            return tier;
+        }
     }
 }

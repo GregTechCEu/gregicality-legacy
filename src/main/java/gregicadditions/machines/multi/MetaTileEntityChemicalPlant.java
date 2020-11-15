@@ -54,7 +54,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             MultiblockAbility.INPUT_ENERGY
     };
 
-    private long maxVolatage = 0;
+    private long maxVoltage = 0;
     protected int heatingCoilLevel = 1;
     protected int heatingCoilDiscount = 1;
 
@@ -128,31 +128,31 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
         GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
         switch (currentTier) {
             case TIERED_HULL_LV:
-                maxVolatage = GTValues.V[GTValues.LV];
+                maxVoltage = GTValues.V[GTValues.LV];
                 break;
             case TIERED_HULL_MV:
-                maxVolatage = GTValues.V[GTValues.MV];
+                maxVoltage = GTValues.V[GTValues.MV];
                 break;
             case TIERED_HULL_HV:
-                maxVolatage = GTValues.V[GTValues.HV];
+                maxVoltage = GTValues.V[GTValues.HV];
                 break;
             case TIERED_HULL_EV:
-                maxVolatage = GTValues.V[GTValues.EV];
+                maxVoltage = GTValues.V[GTValues.EV];
                 break;
             case TIERED_HULL_IV:
-                maxVolatage = GTValues.V[GTValues.IV];
+                maxVoltage = GTValues.V[GTValues.IV];
                 break;
             case TIERED_HULL_LUV:
-                maxVolatage = GTValues.V[GTValues.LuV];
+                maxVoltage = GTValues.V[GTValues.LuV];
                 break;
             case TIERED_HULL_ZPM:
-                maxVolatage = GTValues.V[GTValues.ZPM];
+                maxVoltage = GTValues.V[GTValues.ZPM];
                 break;
             case TIERED_HULL_UV:
-                maxVolatage = GTValues.V[GTValues.UV];
+                maxVoltage = GTValues.V[GTValues.UV];
                 break;
             default:
-                maxVolatage = 0;
+                maxVoltage = 0;
                 break;
         }
         BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
@@ -175,7 +175,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_level", heatingCoilLevel));
             textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_discount", heatingCoilDiscount));
         }
-        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVolatage));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
 
@@ -190,7 +190,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVolatage;
+        return recipe.getEUt() < maxVoltage;
     }
 
     @Override

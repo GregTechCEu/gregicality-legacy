@@ -18,7 +18,7 @@ public class GACryostatCasing extends VariantBlock<GACryostatCasing.CasingType> 
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(GACryostatCasing.CasingType.FUSION_3));
+        setDefaultState(getState(CasingType.CRYOSTAT_1));
     }
 
     @Override
@@ -28,16 +28,24 @@ public class GACryostatCasing extends VariantBlock<GACryostatCasing.CasingType> 
 
     public enum CasingType implements IStringSerializable {
 
-        FUSION_3("fusion_casing_3"),
-        FUSION_4("fusion_casing_4"),
-        FUSION_COIL_2("fusion_coil_2"),
-        FUSION_COIL_3("fusion_coil_3");
+        CRYOSTAT_1("cryostat_1", 1),
+        CRYOSTAT_2("cryostat_2", 2),
+        CRYOSTAT_3("cryostat_3", 3),
+        CRYOSTAT_4("cryostat_4", 4),
+        CRYOSTAT_5("cryostat_5", 5),
+        CRYOSTAT_6("cryostat_6", 6);
 
 
         private final String name;
+        private final int tier;
 
-        CasingType(String name) {
+        CasingType(String name, int tier) {
             this.name = name;
+            this.tier = tier;
+        }
+
+        public int getTier() {
+            return tier;
         }
 
         @Override

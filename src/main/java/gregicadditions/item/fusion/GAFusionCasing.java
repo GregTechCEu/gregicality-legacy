@@ -29,9 +29,17 @@ public class GAFusionCasing extends VariantBlock<GAFusionCasing.CasingType> {
     public enum CasingType implements IStringSerializable {
 
         FUSION_3("fusion_casing_3"),
-        FUSION_4("fusion_casing_4"),
+        ADV_FUSION_CASING("adv_fusion_casing"),
         FUSION_COIL_2("fusion_coil_2"),
-        FUSION_COIL_3("fusion_coil_3");
+        FUSION_COIL_3("fusion_coil_3"),
+        ADV_FUSION_COIL_1("adv_fusion_coil_1"),
+        ADV_FUSION_COIL_2("adv_fusion_coil_2"),
+        ADV_FUSION_COIL_3("adv_fusion_coil_3"),
+        ADV_FUSION_COIL_4("adv_fusion_coil_4"),
+        ADV_FUSION_COIL_5("adv_fusion_coil_5"),
+        BLANKET_BASE("blanket_base"),
+        FUSION_BLANKET("fusion_blanket"),
+        BREEDING_BLANKET("breeding_blanket");
 
 
         private final String name;

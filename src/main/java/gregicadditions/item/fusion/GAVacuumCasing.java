@@ -18,7 +18,7 @@ public class GAVacuumCasing extends VariantBlock<GAVacuumCasing.CasingType> {
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(GAVacuumCasing.CasingType.FUSION_3));
+        setDefaultState(getState(CasingType.VACUUM_1));
     }
 
     @Override
@@ -28,16 +28,21 @@ public class GAVacuumCasing extends VariantBlock<GAVacuumCasing.CasingType> {
 
     public enum CasingType implements IStringSerializable {
 
-        FUSION_3("fusion_casing_3"),
-        FUSION_4("fusion_casing_4"),
-        FUSION_COIL_2("fusion_coil_2"),
-        FUSION_COIL_3("fusion_coil_3");
+        VACUUM_1("vacuum_1", 1),
+        VACUUM_2("vacuum_2", 2),
+        VACUUM_3("vacuum_3", 3),
+        VACUUM_4("vacuum_4", 4),
+        VACUUM_5("vacuum_5", 5),
+        VACUUM_6("vacuum_6", 6);
+
 
 
         private final String name;
+        private final int tier;
 
-        CasingType(String name) {
+        CasingType(String name, int tier) {
             this.name = name;
+            this.tier = tier;
         }
 
         @Override
@@ -45,5 +50,8 @@ public class GAVacuumCasing extends VariantBlock<GAVacuumCasing.CasingType> {
             return this.name;
         }
 
+        public int getTier() {
+            return tier;
+        }
     }
 }
