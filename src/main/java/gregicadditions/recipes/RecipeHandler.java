@@ -1,16 +1,12 @@
 package gregicadditions.recipes;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.*;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
@@ -30,12 +26,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
 import java.util.*;
-import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
@@ -61,15 +52,15 @@ public class RecipeHandler {
 
     public static void register() {
 
-        OrePrefix.valueOf("gtMetalCasing").addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
+        GAEnums.GAOrePrefix.gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
 
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
-            OrePrefix.valueOf("plateCurved").addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
+            GAEnums.GAOrePrefix.plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
         if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots) {
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
         }
-        valueOf("round").addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
+        GAEnums.GAOrePrefix.round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders) {
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
         }
