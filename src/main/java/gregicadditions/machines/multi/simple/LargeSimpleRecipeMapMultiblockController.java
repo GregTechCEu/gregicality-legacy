@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.item.components.*;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -12,7 +13,6 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.type.Material;
-import gregicadditions.utils.GALog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -279,8 +279,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
         protected Recipe createRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs, Recipe matchingRecipe) {
             int maxItemsLimit = this.stack;
-            int EUt = 0;
-            int duration = 0;
+            int EUt;
+            int duration;
             int currentTier = getOverclockingTier(maxVoltage);
             int tierNeeded;
             int minMultiplier = Integer.MAX_VALUE;
@@ -322,7 +322,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) Math.max(1, EUt * this.EUtPercentage / 100))
-                    .duration((int) Math.max(1.0, duration * (this.durationPercentage / 100.0)));
+                    .duration((int) Math.max(3, duration * (this.durationPercentage / 100.0)));
 
             copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
 
