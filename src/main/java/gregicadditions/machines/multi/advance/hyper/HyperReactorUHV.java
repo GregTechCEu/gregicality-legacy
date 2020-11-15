@@ -139,21 +139,17 @@ public class HyperReactorUHV extends FueledMultiblockController {
 
         @Override
         protected int calculateFuelAmount(FuelRecipe currentRecipe) {
-            FluidStack oxygenStack = Materials.Oxygen.getPlasma(4);
-            FluidStack drainOxygenStack = fluidTank.get().drain(oxygenStack, false);
-            FluidStack cryotheumStack = GAMaterials.SupercooledCryotheum.getFluid(50);
-            FluidStack drainCryotheumStack = fluidTank.get().drain(cryotheumStack, false);
-            this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 4 && drainCryotheumStack != null && drainCryotheumStack.amount >= 50;
+            FluidStack plasmaStack = Materials.Radon.getPlasma(15);
+            FluidStack drainPlasmaStack = fluidTank.get().drain(plasmaStack, false);
+            this.boosted = drainPlasmaStack != null && drainPlasmaStack.amount >= 15;
             return super.calculateFuelAmount(currentRecipe) * (boosted ? 2 : 1);
         }
 
         @Override
         protected long startRecipe(FuelRecipe currentRecipe, int fuelAmountUsed, int recipeDuration) {
             if (boosted) {
-                FluidStack oxygenStack = Materials.Oxygen.getPlasma(4);
-                FluidStack cryotheumStack = GAMaterials.SupercooledCryotheum.getFluid(50);
-                fluidTank.get().drain(oxygenStack, true);
-                fluidTank.get().drain(cryotheumStack, true);
+                FluidStack plasmaStack = Materials.Radon.getPlasma(15);
+                fluidTank.get().drain(plasmaStack, true);
             }
             return maxVoltage * (boosted ? 3 : 1);
         }

@@ -137,21 +137,17 @@ public class HyperReactorUEV extends FueledMultiblockController {
 
         @Override
         protected int calculateFuelAmount(FuelRecipe currentRecipe) {
-            FluidStack oxygenStack = Materials.Oxygen.getPlasma(6);
-            FluidStack drainOxygenStack = fluidTank.get().drain(oxygenStack, false);
-            FluidStack cryotheumStack = GAMaterials.SupercooledCryotheum.getFluid(100);
-            FluidStack drainCryotheumStack = fluidTank.get().drain(cryotheumStack, false);
-            this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 6 && drainCryotheumStack != null && drainCryotheumStack.amount >= 100;
+            FluidStack plasmaStack = GAMaterials.ElectronDegenerateRheniumPlasma.getFluid(2);
+            FluidStack drainPlasmaStack = fluidTank.get().drain(plasmaStack, false);
+            this.boosted = drainPlasmaStack != null && drainPlasmaStack.amount >= 2;
             return super.calculateFuelAmount(currentRecipe) * (boosted ? 2 : 1);
         }
 
         @Override
         protected long startRecipe(FuelRecipe currentRecipe, int fuelAmountUsed, int recipeDuration) {
             if (boosted) {
-                FluidStack oxygenStack = Materials.Oxygen.getPlasma(6);
-                FluidStack cryotheumStack = GAMaterials.SupercooledCryotheum.getFluid(100);
-                fluidTank.get().drain(oxygenStack, true);
-                fluidTank.get().drain(cryotheumStack, true);
+                FluidStack plasmaStack = GAMaterials.ElectronDegenerateRheniumPlasma.getFluid(2);
+                fluidTank.get().drain(plasmaStack, true);
             }
             return maxVoltage * (boosted ? 3 : 1);
         }
