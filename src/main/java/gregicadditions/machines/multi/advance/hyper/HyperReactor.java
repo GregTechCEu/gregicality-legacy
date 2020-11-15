@@ -129,7 +129,7 @@ public class HyperReactor extends FueledMultiblockController {
         protected int calculateFuelAmount(FuelRecipe currentRecipe) {
             FluidStack oxygenStack = Materials.Oxygen.getPlasma(2);
             FluidStack drainOxygenStack = fluidTank.get().drain(oxygenStack, false);
-            FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(100);
+            FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(250);
             FluidStack drainCryotheumStack = fluidTank.get().drain(cryotheumStack, false);
             this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 2 && drainCryotheumStack != null && drainCryotheumStack.amount >= 250;
             return super.calculateFuelAmount(currentRecipe) * (boosted ? 2 : 1);
@@ -139,7 +139,7 @@ public class HyperReactor extends FueledMultiblockController {
         protected long startRecipe(FuelRecipe currentRecipe, int fuelAmountUsed, int recipeDuration) {
             if (boosted) {
                 FluidStack oxygenStack = Materials.Oxygen.getPlasma(2);
-                FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(100);
+                FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(250);
                 fluidTank.get().drain(oxygenStack, true);
                 fluidTank.get().drain(cryotheumStack, true);
             }

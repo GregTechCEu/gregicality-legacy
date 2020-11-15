@@ -143,7 +143,7 @@ public class HyperReactorUHV extends FueledMultiblockController {
             FluidStack drainOxygenStack = fluidTank.get().drain(oxygenStack, false);
             FluidStack cryotheumStack = GAMaterials.SupercooledCryotheum.getFluid(50);
             FluidStack drainCryotheumStack = fluidTank.get().drain(cryotheumStack, false);
-            this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 2 && drainCryotheumStack != null && drainCryotheumStack.amount >= 250;
+            this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 4 && drainCryotheumStack != null && drainCryotheumStack.amount >= 50;
             return super.calculateFuelAmount(currentRecipe) * (boosted ? 2 : 1);
         }
 
