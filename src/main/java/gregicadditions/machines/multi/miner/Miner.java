@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
@@ -62,7 +62,7 @@ public interface Miner {
                         BlockPos blockPos = new BlockPos(x.get(), y.get(), z.get());
                         Block block = miner.getWorld().getBlockState(blockPos).getBlock();
                         if (miner.getWorld().getTileEntity(blockPos) == null) {
-                            OrePrefix orePrefix = OreDictUnifier.getPrefix(Item.getItemFromBlock(block).getDefaultInstance());
+                            OrePrefix orePrefix = OreDictUnifier.getPrefix(new ItemStack(block));
                             if (orePrefixes.contains(orePrefix)) {
                                 blocks.add(blockPos);
                             }
