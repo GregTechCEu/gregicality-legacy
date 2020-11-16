@@ -72,6 +72,9 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.QUANTUM_CASING);
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
+        registry.register(GAMetaBlocks.VACUUM_CASING);
+        registry.register(GAMetaBlocks.DIVERTOR_CASING);
+        registry.register(GAMetaBlocks.CRYOSTAT_CASING);
         registry.register(GAMetaBlocks.MACHINE_CASING);
         registry.register(GAMetaBlocks.TRANSPARENT_CASING);
         registry.register(GAMetaBlocks.CELL_CASING);
@@ -101,6 +104,9 @@ public class CommonProxy {
         registry.register(createItemBlock(GAMetaBlocks.REACTOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.MACHINE_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.FUSION_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.VACUUM_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.DIVERTOR_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.CRYOSTAT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CONVEYOR_CASING, VariantItemBlock::new));
@@ -137,6 +143,7 @@ public class CommonProxy {
         RecipeHandler.registerChemicalPlantRecipes();
         RecipeHandler.registerGreenHouseRecipes();
         RecipeHandler.registerLargeCentrifugeRecipes();
+        RecipeHandler.registerLaserEngraverRecipes();
         VoidMinerOres.init();
     }
 

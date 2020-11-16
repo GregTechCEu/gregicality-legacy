@@ -53,16 +53,13 @@ public class HyperReactor extends FueledMultiblockController {
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (isStructureFormed()) {
-            FluidStack oxygenPlasma = importFluidHandler.drain(Materials.Oxygen.getPlasma(Integer.MAX_VALUE), false);
-            FluidStack cryotheum = importFluidHandler.drain(GAMaterials.Cryotheum.getFluid(Integer.MAX_VALUE), false);
+            FluidStack heliumPlasma = importFluidHandler.drain(Materials.Helium.getPlasma(Integer.MAX_VALUE), false);
             FluidStack fuelStack = ((WorkableHandler) workableHandler).getFuelStack();
             boolean isBoosted = ((WorkableHandler) workableHandler).isBoosted();
-            int oxygenPlasmaAmount = oxygenPlasma == null ? 0 : oxygenPlasma.amount;
-            int cryotheumAmount = cryotheum == null ? 0 : cryotheum.amount;
+            int heliumPlasmaAmount = heliumPlasma == null ? 0 : heliumPlasma.amount;
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.oxygen_plasma_amount", oxygenPlasmaAmount));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.cryotheum_amount", cryotheumAmount));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.helium_plasma_amount", heliumPlasmaAmount));
             textList.add(new TextComponentString(fuelStack != null ? String.format("%dmb %s", fuelAmount, fuelStack.getLocalizedName()) : ""));
             textList.add(new TextComponentTranslation(isBoosted ? "gregtech.multiblock.large_rocket_engine.boost" : "").setStyle(new Style().setColor(TextFormatting.GREEN)));
         }
@@ -127,21 +124,17 @@ public class HyperReactor extends FueledMultiblockController {
 
         @Override
         protected int calculateFuelAmount(FuelRecipe currentRecipe) {
-            FluidStack oxygenStack = Materials.Oxygen.getPlasma(2);
-            FluidStack drainOxygenStack = fluidTank.get().drain(oxygenStack, false);
-            FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(100);
-            FluidStack drainCryotheumStack = fluidTank.get().drain(cryotheumStack, false);
-            this.boosted = drainOxygenStack != null && drainOxygenStack.amount >= 2 && drainCryotheumStack != null && drainCryotheumStack.amount >= 250;
+            FluidStack plasmaStack = Materials.Helium.getPlasma(10);
+            FluidStack drainPlasmaStack = fluidTank.get().drain(plasmaStack, false);
+            this.boosted = drainPlasmaStack != null && drainPlasmaStack.amount >= 10;
             return super.calculateFuelAmount(currentRecipe) * (boosted ? 2 : 1);
         }
 
         @Override
         protected long startRecipe(FuelRecipe currentRecipe, int fuelAmountUsed, int recipeDuration) {
             if (boosted) {
-                FluidStack oxygenStack = Materials.Oxygen.getPlasma(2);
-                FluidStack cryotheumStack = GAMaterials.Cryotheum.getFluid(100);
-                fluidTank.get().drain(oxygenStack, true);
-                fluidTank.get().drain(cryotheumStack, true);
+                FluidStack plasmaStack = Materials.Helium.getPlasma(10);
+                fluidTank.get().drain(plasmaStack, true);
             }
             return maxVoltage * (boosted ? 3 : 1);
         }

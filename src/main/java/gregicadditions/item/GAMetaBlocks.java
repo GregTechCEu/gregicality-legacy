@@ -4,6 +4,7 @@ import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.item.components.*;
+import gregicadditions.item.fusion.*;
 import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
@@ -55,6 +56,12 @@ public class GAMetaBlocks {
     public static GAReactorCasing REACTOR_CASING;
 
     public static GAFusionCasing FUSION_CASING;
+
+    public static GAVacuumCasing VACUUM_CASING;
+
+    public static GADivertorCasing DIVERTOR_CASING;
+
+    public static GACryostatCasing CRYOSTAT_CASING;
 
     public static GAMachineCasing MACHINE_CASING;
 
@@ -108,6 +115,15 @@ public class GAMetaBlocks {
 
         FUSION_CASING = new GAFusionCasing();
         FUSION_CASING.setRegistryName("ga_fusion_casing");
+
+        VACUUM_CASING = new GAVacuumCasing();
+        VACUUM_CASING.setRegistryName("ga_vacuum_casing");
+
+        DIVERTOR_CASING = new GADivertorCasing();
+        DIVERTOR_CASING.setRegistryName("ga_divertor_casing");
+
+        CRYOSTAT_CASING = new GACryostatCasing();
+        CRYOSTAT_CASING.setRegistryName("ga_cryostat_casing");
 
         MACHINE_CASING = new GAMachineCasing();
         MACHINE_CASING.setRegistryName("ga_machine_casing");
@@ -214,6 +230,9 @@ public class GAMetaBlocks {
         registerItemModel(MUTLIBLOCK_CASING2);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
+        registerItemModel(VACUUM_CASING);
+        registerItemModel(DIVERTOR_CASING);
+        registerItemModel(CRYOSTAT_CASING);
         registerItemModel(MACHINE_CASING);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);

@@ -142,8 +142,8 @@ public class GATileEntities {
     public static HyperReactorUHV HYPER_REACTOR_UHV;
     public static HyperReactorUEV HYPER_REACTOR_UEV;
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
-    public static FusionReactorAdv FUSION_REACTOR_UHV;
-    public static FusionReactorAdv FUSION_REACTOR_UEV;
+    public static TileEntityAdvFusionReactor FUSION_REACTOR_UHV;
+    public static TileEntityAdvFusionReactor FUSION_REACTOR_UEV;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
@@ -1011,8 +1011,8 @@ public class GATileEntities {
         HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new HyperReactor(location("hyper_reactor.uv"), GTValues.V[GTValues.UV]));
         HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GTValues.V[GTValues.UV] * 4));
         HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new HyperReactorUEV(location("hyper_reactor.uev"), GTValues.V[GTValues.UV] * 16));
-        FUSION_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3237, new FusionReactorAdv(location("fusion_reactor.uhv"), RecipeMaps.FUSION_RECIPES, 9));
-        FUSION_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3238, new FusionReactorAdv(location("fusion_reactor.uev"), RecipeMaps.FUSION_RECIPES, 10));
+        FUSION_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3237, new TileEntityAdvFusionReactor(location("fusion_reactor.uhv"), RecipeMaps.FUSION_RECIPES, 9));
+        FUSION_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3238, new TileEntityAdvFusionReactor(location("fusion_reactor.uev"), RecipeMaps.FUSION_RECIPES, 10));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
