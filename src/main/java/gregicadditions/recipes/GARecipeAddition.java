@@ -555,7 +555,7 @@ public class GARecipeAddition {
                 .input(dust, Silicon, 1)
                 .input(dust, Carbon, 1)
                 .outputs(OreDictUnifier.get(dust, EglinSteel, 13)).buildAndRegister();
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .notConsumable(new IntCircuitIngredient(6))
                 .input(dust, Titanium, 9)
                 .input(dust, Carbon, 9)
@@ -564,7 +564,7 @@ public class GARecipeAddition {
                 .input(dust, Potassium, 9)
                 .fluidInputs(Hydrogen.getFluid(500))
                 .outputs(OreDictUnifier.get(dust, Grisium, 48)).buildAndRegister();
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Chrome, 7)
                 .input(dust, Molybdenum, 10)
@@ -572,7 +572,7 @@ public class GARecipeAddition {
                 .input(dust, Nichrome, 13)
                 .input(dust, Nickel, 3)
                 .outputs(OreDictUnifier.get(dust, Inconel625, 43)).buildAndRegister();
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Steel, 16)
                 .input(dust, Molybdenum, 1)
@@ -580,16 +580,17 @@ public class GARecipeAddition {
                 .input(dust, Cobalt, 2)
                 .input(dust, Nickel, 4)
                 .outputs(OreDictUnifier.get(dust, MaragingSteel250, 24)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        ModHandler.addShapelessRecipe("ga_potin_dust", OreDictUnifier.get(dust, Potin, 5), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Tin));
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Lead, 2)
                 .input(dust, Bronze, 2)
                 .input(dust, Tin, 1)
                 .outputs(OreDictUnifier.get(dust, Potin, 5)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, UraniumRadioactive.getMaterial(), 9)
                 .input(dust, Titanium, 1)
                 .outputs(OreDictUnifier.get(dust, Staballoy, 10)).buildAndRegister();
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Yttrium, 2)
                 .input(dust, Molybdenum, 4)
@@ -597,46 +598,46 @@ public class GARecipeAddition {
                 .input(dust, Titanium, 2)
                 .input(dust, Nickel, 15)
                 .outputs(OreDictUnifier.get(dust, HastelloyN, 25)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Gold, 7)
                 .input(dust, Bronze, 3)
                 .outputs(OreDictUnifier.get(dust, Tumbaga, 10)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Cobalt, 9)
                 .input(dust, Chrome, 9)
                 .input(dust, Manganese, 5)
                 .input(dust, Titanium, 2)
                 .outputs(OreDictUnifier.get(dust, Stellite, 25)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Cobalt, 4)
                 .input(dust, Chrome, 3)
                 .input(dust, Phosphorus, 2)
                 .input(dust, Molybdenum, 1)
                 .outputs(OreDictUnifier.get(dust, Talonite, 10)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Titanium, 3)
                 .input(dust, Nickel, 2)
                 .outputs(OreDictUnifier.get(dust, Nitinol60, 5)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Tin, 5)
                 .input(dust, Lead, 36)
                 .input(dust, Antimony, 8)
                 .input(dust, Arsenic, 1)
                 .outputs(OreDictUnifier.get(dust, BabbittAlloy, 50)).buildAndRegister();
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(1000).EUt(1920)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(1000).EUt(16)
                 .notConsumable(new IntCircuitIngredient(4))
                 .input(dust, Iron, 16)
                 .input(dust, Aluminium, 3)
                 .input(dust, Chrome, 5)
                 .input(dust, Yttrium, 1)
                 .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(240).EUt(30720)
+        MIXER_RECIPES.recipeBuilder().duration(240).EUt(16)
                 .fluidInputs(Mercury.getFluid(1000), Oxygen.getFluid(8000))
                 .input(dust, Barium, 2)
                 .input(dust, Calcium, 2)
                 .input(dust, Copper, 3)
                 .outputs(OreDictUnifier.get(dust, HG1223, 16)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, Zirconium)
                 .input(dust, Carbon)
                 .outputs(OreDictUnifier.get(dust, ZirconiumCarbide, 2)).buildAndRegister();
