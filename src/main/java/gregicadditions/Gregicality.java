@@ -10,6 +10,7 @@ import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
+import gregicadditions.integrations.opencomputers.OpenComputersCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
@@ -73,6 +74,9 @@ public class Gregicality {
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy", serverSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy")
     public static ExNihiloCreatioProxy exNihiloCreatioProxy;
 
+    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy", serverSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy")
+    public static OpenComputersCommonProxy openComputersProxy;
+
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
     public static CommonProxy proxy;
 
@@ -120,6 +124,9 @@ public class Gregicality {
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
             GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
+        }
+        if (Loader.isModLoaded("opencomputers")){
+            openComputersProxy.init();
         }
     }
 
