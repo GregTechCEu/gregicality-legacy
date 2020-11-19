@@ -38,24 +38,28 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
 
 
     //circuits
@@ -90,7 +94,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LUV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ZPM;
     public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_MAX;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UHV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UEV;
 
 
     public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
@@ -179,6 +184,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
     public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PROTACTINIUM_WASTE;
     public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
     public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
     public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
@@ -190,10 +196,15 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
     public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
-    public static MetaItem<?>.MetaValueItem COSMIC_CIRCUIT;
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR_ARRAY;
+    public static MetaItem<?>.MetaValueItem COSMIC_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem COSMIC_COMPUTER;
     public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem BIOWARE_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem BIOWARE_COMPUTER;
+    public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
 
     public static MetaItem<?>.MetaValueItem WAFER_AMERICIUM;
     public static MetaItem<?>.MetaValueItem WAFER_EUROPIUM;
@@ -210,8 +221,105 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
     public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
 
-    public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UHV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UEV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UHV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UEV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UHV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UEV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UHV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UEV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UHV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UIV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UMV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UXV;
+    public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_MAX;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_MAX;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_MAX;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_MAX;
+    public static MetaItem<?>.MetaValueItem EMITTER_UIV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UMV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UXV;
+    public static MetaItem<?>.MetaValueItem EMITTER_MAX;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UIV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UMV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UXV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_MAX;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UIV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UMV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UXV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_MAX;
+    public static MetaItem<?>.MetaValueItem SENSOR_UIV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UMV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UXV;
+    public static MetaItem<?>.MetaValueItem SENSOR_MAX;
 
+    public static MetaItem<?>.MetaValueItem ULTRASONIC_HOMOGENIZER;
+    public static MetaItem<?>.MetaValueItem STERILIZED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem CONTAMINATED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem ELECTRICALLY_WIRED_PETRI_DISH;
+    public static MetaItem<?>.MetaValueItem CLEAN_CULTURE;
+    public static MetaItem<?>.MetaValueItem PIEZOELECTRIC_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
+    public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
+
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM;
+
+    public static MetaItem<?>.MetaValueItem HASOC;
+    public static MetaItem<?>.MetaValueItem HASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHASOC;
+    public static MetaItem<?>.MetaValueItem UHASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHPIC;
+    public static MetaItem<?>.MetaValueItem UHPIC_WAFER;
+    public static MetaItem<?>.MetaValueItem ARAM;
+    public static MetaItem<?>.MetaValueItem ARAM_WAFER;
+
+    public static MetaItem<?>.MetaValueItem PLATE_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
+    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_DUST;
+
+    public static MetaItem<?>.MetaValueItem ZBLAN;
+    public static MetaItem<?>.MetaValueItem ZBLAN_INGOT;
+    public static MetaItem<?>.MetaValueItem HOT_ANNEALED_ZBLAN_INGOT;
+    public static MetaItem<?>.MetaValueItem ZBLAN_FIBER;
+    public static MetaItem<?>.MetaValueItem ERBIUM_DOPED_ZBLAN;
+    public static MetaItem<?>.MetaValueItem CLADDED_OPTICAL_FIBER_CORE;
+
+    public static MetaItem<?>.MetaValueItem PYROLITIC_CARBON;
+    public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
@@ -222,6 +330,8 @@ public class GAMetaItems {
         armor.setRegistryName("ga_armor");
         GADustItem dustItem = new GADustItem((short) 0);
         dustItem.setRegistryName("ga_dust");
+        GAMetaItem2 item2 = new GAMetaItem2((short) 0);
+        item2.setRegistryName("ga_meta_item2");
     }
 
     public static void registerOreDict() {

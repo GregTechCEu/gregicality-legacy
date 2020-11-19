@@ -442,7 +442,7 @@ public class GAConfig {
         public static class BatteryTower {
             @Config.Comment("The base amount of energy a battery cell will hold. This is the amount the HV will hold, each tier above is multiplied by 4.")
             @Config.Name("Battery Tower cell base energy storage")
-            @Config.RangeInt(min = 1)
+            @Config.RangeInt(min = 1, max = 2000000000)
             @Config.RequiresMcRestart
             public int baseCellCapacity = 25000000;
         }
@@ -920,10 +920,22 @@ public class GAConfig {
 
         public static class VoidMiner {
             @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
-            @Config.RangeInt(min = 1000, max = 9000)
+            @Config.RangeInt(min = 1000)
             @Config.RequiresMcRestart
-            @Config.Name("Void Miner max temperature")
+            @Config.Name("Void Miner I max temperature")
             public int maxTemp = 9000;
+
+            @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
+            @Config.RangeInt(min = 1000)
+            @Config.RequiresMcRestart
+            @Config.Name("Void Miner II max temperature")
+            public int maxTempUHV = 16000;
+
+            @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
+            @Config.RangeInt(min = 1000)
+            @Config.RequiresMcRestart
+            @Config.Name("Void Miner III max temperature")
+            public int maxTempUEV = 25000;
 
             @Config.Comment("Whether or not to add all ore variants to the Void Miner's ore table. If false only the first ore in the material's ore dictionary will be added.")
             @Config.RequiresMcRestart
@@ -1002,11 +1014,11 @@ public class GAConfig {
         }
 
         public static class CryogenicFreezer {
-            @Config.Comment("The amount of parallel recipes the Cryogenic Freezer will run.")
-            @Config.RangeInt(min = 1)
+            @Config.Comment("The amount by which the EU/t for recipes in the Cryogenic Freezer is decreased. E.g. EU/t * 0.8.")
+            @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
-            @Config.Name("Cryogenic Freezer parallel recipes")
-            public int recipeMultiplier = 4;
+            @Config.Name("Cryogenic Freezer recipe EU/t discount")
+            public int energyDecreasePercentage = 80;
 
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeInt(min = 1)

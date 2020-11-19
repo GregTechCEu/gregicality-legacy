@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "inventory": {
+      "model": "forge:forgebucket",
+      "textures": {
+        "base": "gregtech:items/metaitems/plasma.containment.cell/base",
+        "fluid": "gregtech:items/metaitems/plasma.containment.cell/overlay",
+        "cover": "gregtech:items/metaitems/plasma.containment.cell/base"
+      },
+      "transform": "forge:default-item"
+    }
+    }
+  }
+}
