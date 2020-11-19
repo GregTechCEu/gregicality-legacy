@@ -1,7 +1,6 @@
 package gregicadditions.integrations.opencomputers.driver.environment.cover;
 
 import gregtech.api.cover.CoverBehavior;
-import gregtech.common.covers.CoverConveyor;
 import gregtech.common.covers.CoverPump;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;

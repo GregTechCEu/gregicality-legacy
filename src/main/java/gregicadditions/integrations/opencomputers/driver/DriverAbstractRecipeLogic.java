@@ -1,9 +1,7 @@
 package gregicadditions.integrations.opencomputers.driver;
 
 import gregicadditions.integrations.opencomputers.driver.environment.EnvironmentMetaTileEntity;
-import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IWorkable;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntityHolder;

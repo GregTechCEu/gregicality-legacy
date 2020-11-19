@@ -1,8 +1,6 @@
 package gregicadditions.integrations.opencomputers.driver;
 
 import gregicadditions.integrations.opencomputers.driver.environment.EnvironmentMetaTileEntity;
-import gregtech.api.capability.GregtechTileCapabilities;
-import gregtech.api.capability.IWorkable;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import li.cil.oc.api.machine.Arguments;
@@ -10,7 +8,6 @@ import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.ManagedEnvironment;
 import li.cil.oc.api.prefab.DriverSidedTileEntity;
-import li.cil.oc.integration.ManagedTileEntityEnvironment;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -46,6 +43,11 @@ public class DriverSimpleMachineMetaTileEntity extends DriverSidedTileEntity {
 
         public EnvironmentSimpleMachineMetaTileEntity(MetaTileEntityHolder holder, SimpleMachineMetaTileEntity tileEntity) {
             super(holder, tileEntity, "gtce_simpleMachineMetaTileEntity");
+        }
+
+        @Callback(doc = "function():number --  Returns the tier of machine.")
+        public Object[] getTier(final Context context, final Arguments args) {
+            return new Object[] {tileEntity.getTier()};
         }
 
         @Callback(doc = "function():boolean --  Returns is autoOutputItems enabled.")

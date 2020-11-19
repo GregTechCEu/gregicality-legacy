@@ -1,16 +1,11 @@
 package gregicadditions.integrations.opencomputers.driver.environment.cover;
 
 import gregtech.api.cover.CoverBehavior;
-import gregtech.common.covers.CoverConveyor;
 import gregtech.common.covers.CoverRoboticArm;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class ValueCoverRoboticArm extends ValueCoverConveyor {
     public ValueCoverRoboticArm() {}

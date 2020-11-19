@@ -2,7 +2,6 @@ package gregicadditions.integrations.opencomputers.driver.environment.cover;
 
 import gregtech.api.cover.CoverBehavior;
 import gregtech.common.covers.CoverFluidFilter;
-import gregtech.common.covers.CoverItemFilter;
 import gregtech.common.covers.FluidFilterMode;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
