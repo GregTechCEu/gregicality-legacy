@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class DriverICoverable extends DriverSidedTileEntity {
     @Override
     public Class<?> getTileEntityClass() {
-        return IWorkable.class;
+        return ICoverable.class;
     }
 
     @Override

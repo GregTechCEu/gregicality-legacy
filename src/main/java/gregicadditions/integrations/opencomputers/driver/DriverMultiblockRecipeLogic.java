@@ -30,7 +30,7 @@ import java.util.Map;
 public class DriverMultiblockRecipeLogic extends DriverSidedTileEntity {
     @Override
     public Class<?> getTileEntityClass() {
-        return AbstractRecipeLogic.class;
+        return MultiblockRecipeLogic.class;
     }
 
     @Override

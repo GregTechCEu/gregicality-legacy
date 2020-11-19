@@ -5,7 +5,7 @@ import li.cil.oc.api.driver.NamedBlock;
 import li.cil.oc.integration.ManagedTileEntityEnvironment;
 
 public abstract class EnvironmentMetaTileEntity<T> extends ManagedTileEntityEnvironment<T> implements NamedBlock {
-    private String preferredName = "gtce_workable";
+    private String preferredName = "gtce_metaTileEntity";
 
     public EnvironmentMetaTileEntity(MetaTileEntityHolder holder, T capability, String name) {
         super(capability, name);
