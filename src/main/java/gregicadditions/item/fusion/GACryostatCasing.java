@@ -32,8 +32,7 @@ public class GACryostatCasing extends VariantBlock<GACryostatCasing.CasingType> 
         CRYOSTAT_2("cryostat_2", 2),
         CRYOSTAT_3("cryostat_3", 3),
         CRYOSTAT_4("cryostat_4", 4),
-        CRYOSTAT_5("cryostat_5", 5),
-        CRYOSTAT_6("cryostat_6", 6);
+        CRYOSTAT_5("cryostat_5", 5);
 
 
         private final String name;

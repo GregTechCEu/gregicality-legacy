@@ -49,6 +49,8 @@ import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
 
 public class GAMetaBlocks {
 
+    public static GAHeatingCoil HEATING_COIL;
+
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
 
     public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
@@ -118,6 +120,9 @@ public class GAMetaBlocks {
 
         VACUUM_CASING = new GAVacuumCasing();
         VACUUM_CASING.setRegistryName("ga_vacuum_casing");
+
+        HEATING_COIL = new GAHeatingCoil();
+        HEATING_COIL.setRegistryName("ga_heating_coil");
 
         DIVERTOR_CASING = new GADivertorCasing();
         DIVERTOR_CASING.setRegistryName("ga_divertor_casing");
@@ -231,6 +236,7 @@ public class GAMetaBlocks {
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
         registerItemModel(VACUUM_CASING);
+        registerItemModel(HEATING_COIL);
         registerItemModel(DIVERTOR_CASING);
         registerItemModel(CRYOSTAT_CASING);
         registerItemModel(MACHINE_CASING);

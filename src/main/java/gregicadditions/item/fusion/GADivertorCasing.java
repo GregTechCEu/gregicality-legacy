@@ -32,8 +32,7 @@ public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> 
         DIVERTOR_2("divertor_2", 2),
         DIVERTOR_3("divertor_3", 3),
         DIVERTOR_4("divertor_4", 4),
-        DIVERTOR_5("divertor_5", 5),
-        DIVERTOR_6("divertor_6", 6);
+        DIVERTOR_5("divertor_5", 5);
 
 
 

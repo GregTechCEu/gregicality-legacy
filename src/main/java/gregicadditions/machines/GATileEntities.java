@@ -22,8 +22,7 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyInputHatch;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntityEnergyOutputHatch;
+import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityGasCentrifuge;
@@ -142,7 +141,7 @@ public class GATileEntities {
     public static HyperReactorUHV HYPER_REACTOR_UHV;
     public static HyperReactorUEV HYPER_REACTOR_UEV;
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
-    public static TileEntityAdvFusionReactor FUSION_REACTOR_UHV;
+    public static TileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
     public static TileEntityAdvFusionReactor FUSION_REACTOR_UEV;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static MetaTileEntityStellarForge STELLAR_FORGE;
@@ -156,14 +155,14 @@ public class GATileEntities {
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
 
     //override from GTCE
-    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_16_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_64_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyInputHatch> ENERGY_INPUT_HATCH_128_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_16_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityEnergyOutputHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_16_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_64_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_16_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
     public static List<MetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
     public static List<MetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
     public static List<MetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
@@ -208,6 +207,9 @@ public class GATileEntities {
     public static MetaTileEntityAirCollector[] AIR_COLLECTOR = new MetaTileEntityAirCollector[8];
     public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
     public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3];
+
+    public static GAMetaTileEntityEnergyHatch[] ENERGY_INPUT = new GAMetaTileEntityEnergyHatch[5];
+    public static GAMetaTileEntityEnergyHatch[] ENERGY_OUTPUT = new GAMetaTileEntityEnergyHatch[5];
 
     public static void init() {
 
@@ -949,15 +951,15 @@ public class GATileEntities {
             }
         }
         for (int i = 0; i < GTValues.V.length - 1; i++) {
-            ENERGY_INPUT_HATCH_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".4"), i, 4)));
-            ENERGY_INPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".16"), i, 16)));
-            ENERGY_INPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".64"), i, 64)));
-            ENERGY_INPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyInputHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".128"), i, 128)));
+            ENERGY_INPUT_HATCH_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".4"), i, 4, false)));
+            ENERGY_INPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".16"), i, 16, false)));
+            ENERGY_INPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".64"), i, 64, false)));
+            ENERGY_INPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GTValues.VN[i].toLowerCase() + ".128"), i, 128, false)));
 
-            ENERGY_OUTPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".16"), i, 16)));
-            ENERGY_OUTPUT_HATCH_32_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".32"), i, 32)));
-            ENERGY_OUTPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".64"), i, 64)));
-            ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyOutputHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".128"), i, 128)));
+            ENERGY_OUTPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".16"), i, 16, true)));
+            ENERGY_OUTPUT_HATCH_32_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".32"), i, 32, true)));
+            ENERGY_OUTPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".64"), i, 64, true)));
+            ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GTValues.VN[i].toLowerCase() + ".128"), i, 128, true)));
         }
 
         //        DECAY_CHAMBER[0] = GregTechAPI.registerMetaTileEntity(3200, new SimpleMachineMetaTileEntity(location("decay_chamber.lv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, ClientHandler.REPLICATOR_OVERLAY, 1));
@@ -1011,8 +1013,7 @@ public class GATileEntities {
         HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new HyperReactor(location("hyper_reactor.uv"), GTValues.V[GTValues.UV]));
         HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GTValues.V[GTValues.UV] * 4));
         HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new HyperReactorUEV(location("hyper_reactor.uev"), GTValues.V[GTValues.UV] * 16));
-        FUSION_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3237, new TileEntityAdvFusionReactor(location("fusion_reactor.uhv"), RecipeMaps.FUSION_RECIPES, 9));
-        FUSION_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3238, new TileEntityAdvFusionReactor(location("fusion_reactor.uev"), RecipeMaps.FUSION_RECIPES, 10));
+        ADVANCED_FUSION_REACTOR = GregTechAPI.registerMetaTileEntity(3237, new TileEntityAdvFusionReactor(location("advanced_fusion_reactor")));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));
@@ -1038,6 +1039,32 @@ public class GATileEntities {
         QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4017, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
         GAS_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(4020, new MetaTileEntityGasCentrifuge(location("gas_centrifuge")));
         QUBIT_COMPUTER = GregTechAPI.registerMetaTileEntity(4022, new MetaTileEntityQubitComputer(location("qubit_computer")));
+
+        ENERGY_INPUT[0] = GregTechAPI.registerMetaTileEntity(4023, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uhv"), GAValues.UHV, 2, false));
+        ENERGY_INPUT[1] = GregTechAPI.registerMetaTileEntity(4024, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uev"), GAValues.UEV, 2, false));
+        ENERGY_INPUT[2] = GregTechAPI.registerMetaTileEntity(4025, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uiv"), GAValues.UIV, 2, false));
+        ENERGY_INPUT[3] = GregTechAPI.registerMetaTileEntity(4026, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.umv"), GAValues.UMV, 2, false));
+        ENERGY_INPUT[4] = GregTechAPI.registerMetaTileEntity(4027, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uxv"), GAValues.UXV, 2, false));
+
+        ENERGY_OUTPUT[0] = GregTechAPI.registerMetaTileEntity(4028, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output.uhv"), GAValues.UHV, 4, true));
+        ENERGY_OUTPUT[1] = GregTechAPI.registerMetaTileEntity(4029, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output.uev"), GAValues.UEV, 4, true));
+        ENERGY_OUTPUT[2] = GregTechAPI.registerMetaTileEntity(4030, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output.uiv"), GAValues.UIV, 4, true));
+        ENERGY_OUTPUT[3] = GregTechAPI.registerMetaTileEntity(4031, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output.umv"), GAValues.UMV, 4, true));
+        ENERGY_OUTPUT[4] = GregTechAPI.registerMetaTileEntity(4032, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output.uxv"), GAValues.UXV, 4, true));
+
+        id = 4033;
+        for (int i = 9; i < GAValues.V.length - 1; i++) {
+            ENERGY_INPUT_HATCH_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GAValues.VN[i].toLowerCase() + ".4"), i, 4, false)));
+            ENERGY_INPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, false)));
+            ENERGY_INPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GAValues.VN[i].toLowerCase() + ".64"), i, 64, false)));
+            ENERGY_INPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input." + GAValues.VN[i].toLowerCase() + ".128"), i, 128, false)));
+
+            ENERGY_OUTPUT_HATCH_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, true)));
+            ENERGY_OUTPUT_HATCH_32_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".32"), i, 32, true)));
+            ENERGY_OUTPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".64"), i, 64, true)));
+            ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".128"), i, 128, true)));
+        }
+        //4053
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

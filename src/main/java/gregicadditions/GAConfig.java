@@ -427,7 +427,35 @@ public class GAConfig {
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
         public LargeWiremill largeWiremill = new LargeWiremill();
         public BatteryTower batteryTower = new BatteryTower();
+        public AdvFusion advFusion = new AdvFusion();
 
+
+        public static class AdvFusion {
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the recipe duration.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double coilDurationDiscount = 0.05;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to increase the amount of coolant.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double vacuumCoolantIncrease = 0.05;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the EU/t.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double vacuumEnergyDecrease = 0.15;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the EU/t.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double divertorOutputIncrease = 0.10;
+
+        }
 
         public static class BatteryTower {
             @Config.Comment("The base amount of energy a battery cell will hold. This is the amount the HV will hold, each tier above is multiplied by 4.")
