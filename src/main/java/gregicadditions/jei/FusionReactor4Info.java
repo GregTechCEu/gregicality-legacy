@@ -1,10 +1,14 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.item.fusion.GACryostatCasing;
+import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
@@ -16,39 +20,46 @@ import java.util.List;
 public class FusionReactor4Info extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.FUSION_REACTOR_UHV;
+        return GATileEntities.ADVANCED_FUSION_REACTOR;
     }
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
+                .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
+                .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
+                .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
+                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
+                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
+                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
+                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
+                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
+                .aisle("##CC###XXX###CC##","#CddC##CCC##CddC#","Cv##vC#CCC#Cv##vC","Cv##vC#CCC#Cv##vC","#CbbC##CCC##CbbC#","##CC###XXX###CC##")
+                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
+                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
+                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
+                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
+                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
+                .aisle("########C########","####cfffvFFXc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cEEEbEEEc####","########C########")
+                .aisle("#################","########S########","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
                 .aisle("#################","#################","########C########","########C########","#################","#################")
-                .aisle("#################","#######CCC#######","######XXXXX######","######XXXXX######","########C########","#################")
-                .aisle("########C########","#####XXXXXXX#####","##C#XX#####XX#C##","##C#XX#####XX#C##","#####XXXXXXX#####","########C########")
-                .aisle("########C########","###CXXXXXXXXXC###","###X#########X###","###X#########X###","###CXXXXXXXXXC###","########C########")
-                .aisle("####C#######C####","###XXXX#C#XXXX###","##X####XXX####X##","##X####XXX####X##","###XXXX#C#XXXX###","####C#######C####")
-                .aisle("#####C#####C#####","##XXXX#####XXXX##","##X###X#C#X###X##","##X###X#C#X###X##","##XXXX#####XXXX##","#####C#####C#####")
-                .aisle("#################","##XXX#C###C#XXX##","#X###XC###CX###X#","#X###XC###CX###X#","##XXX#C###C#XXX##","#################")
-                .aisle("#######XXX#######","##XX###CCC###XX##","#X##X##CCC##X##X#","#X##X##CCC##X##X#","##XX###CCC###XX##","#######XXX#######")
-                .aisle("##CC###XXX###CC##","#CXXC##CCC##CXXC#","CX##XC#CCC#CX##XC","CX##XC#CCC#CX##XC","#CXXC##CCC##CXXC#","##CC###XXX###CC##")
-                .aisle("#######XXX#######","##XX###CCC###XX##","#X##X##CCC##X##X#","#X##X##CCC##X##X#","##XX###CCC###XX##","#######XXX#######")
-                .aisle("#################","##XXX#C###C#XXX##","#X###XC###CX###X#","#X###XC###CX###X#","##XXX#C###C#XXX##","#################")
-                .aisle("#####C#####C#####","##XXXX#####XXXX##","##X###X#C#X###X##","##X###X#C#X###X##","##XXXX#####XXXX##","#####C#####C#####")
-                .aisle("####C#######C####","###XXXX#C#XXXX###","##X####XXX####X##","##X####XXX####X##","###XXXX#C#XXXX###","####C#######C####")
-                .aisle("########C########","###CXXXXXXXXXC###","###X#########X###","###X#########X###","###CXXXXXXXXXC###","########C########")
-                .aisle("########C########","#####XXXXXXX#####","##C#XX#####XX#C##","##C#XX#####XX#C##","#####XXXXXXX#####","########C########")
-                .aisle("#################","########S########","######XXXXX######","######XXXXX######","########C########","#################")
-                .aisle("#################","#################","########C########","########C########","#################","#################")
-                .where('S', GATileEntities.FUSION_REACTOR_UHV, EnumFacing.SOUTH)
+                .where('S', GATileEntities.ADVANCED_FUSION_REACTOR, EnumFacing.SOUTH)
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('C', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2))
-                .where('X', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_3))
+                .where('C', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
+                .where('X', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING))
+                .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[8], EnumFacing.SOUTH)
+                .where('F', MetaTileEntities.FLUID_EXPORT_HATCH[8], EnumFacing.SOUTH)
+                .where('E', GATileEntities.ENERGY_INPUT[0], EnumFacing.NORTH)
+                .where('c', GAMetaBlocks.CRYOSTAT_CASING.getState(GACryostatCasing.CasingType.CRYOSTAT_1))
+                .where('v', GAMetaBlocks.VACUUM_CASING.getState(GAVacuumCasing.CasingType.VACUUM_1))
+                .where('b', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET))
+                .where('d', GAMetaBlocks.DIVERTOR_CASING.getState(GADivertorCasing.CasingType.DIVERTOR_1))
                 .build();
         return Lists.newArrayList(shapeInfo);
     }
 
     @Override
     public String[] getDescription() {
-        return new String[] { I18n.format("gregtech.multiblock.fusion_reactor_mk3.description") };
+        return new String[] {};
     }
 }
