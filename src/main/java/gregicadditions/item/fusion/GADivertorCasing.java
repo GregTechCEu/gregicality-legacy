@@ -36,7 +36,6 @@ public class GADivertorCasing extends VariantBlock<GADivertorCasing.CasingType> 
         DIVERTOR_6("divertor_6", 6);
 
 
-
         private final String name;
         private final int tier;
 

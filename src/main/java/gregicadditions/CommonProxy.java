@@ -4,17 +4,24 @@ import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.fluid.GAMetaFluids;
-import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.network.IPSaveData;
+import gregicadditions.network.MessageReservoirListSync;
+import gregicadditions.network.NetworkHandler;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.utils.GALog;
-import gregicadditions.recipes.RecipeHandler;
+import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
+import gregtech.common.blocks.VariantItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -24,14 +31,23 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-
 import java.io.IOException;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.registries.IForgeRegistry;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 
 import static gregicadditions.item.GAMetaBlocks.GA_ORES;
@@ -73,6 +89,8 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
         registry.register(GAMetaBlocks.VACUUM_CASING);
+
+        registry.register(GAMetaBlocks.HEATING_COIL);
         registry.register(GAMetaBlocks.DIVERTOR_CASING);
         registry.register(GAMetaBlocks.CRYOSTAT_CASING);
         registry.register(GAMetaBlocks.MACHINE_CASING);
@@ -105,6 +123,7 @@ public class CommonProxy {
         registry.register(createItemBlock(GAMetaBlocks.MACHINE_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.FUSION_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.VACUUM_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.HEATING_COIL, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.DIVERTOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.CRYOSTAT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
@@ -173,6 +192,7 @@ public class CommonProxy {
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
         itemBlock.setRegistryName(block.getRegistryName());
+        itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
         return itemBlock;
     }
 
@@ -180,4 +200,43 @@ public class CommonProxy {
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.runRecipeGeneration();
     }
+
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (!event.player.world.isRemote) {
+            HashMap<PumpjackHandler.ReservoirType, Integer> packetMap = new HashMap<>();
+            for (Map.Entry<PumpjackHandler.ReservoirType, Integer> e : PumpjackHandler.reservoirList.entrySet()) {
+                if (e.getKey() != null && e.getValue() != null)
+                    packetMap.put(e.getKey(), e.getValue());
+            }
+            NetworkHandler.INSTANCE.sendToAll(new MessageReservoirListSync(packetMap));
+        }
+    }
+
+    @Mod.EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+            World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
+            if (!world.isRemote) {
+                IPSaveData worldData = (IPSaveData) world.loadData(IPSaveData.class, IPSaveData.dataName);
+                if (worldData == null) {
+                    worldData = new IPSaveData(IPSaveData.dataName);
+                    world.setData(IPSaveData.dataName, worldData);
+                }
+                IPSaveData.setInstance(world.provider.getDimension(), worldData);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onSave(WorldEvent.Save event) {
+        IPSaveData.setDirty(0);
+    }
+
+    @SubscribeEvent
+    public static void onUnload(WorldEvent.Unload event) {
+        IPSaveData.setDirty(0);
+    }
+
 }

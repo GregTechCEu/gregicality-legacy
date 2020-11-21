@@ -3,6 +3,7 @@ package gregicadditions;
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
+import gregicadditions.capabilities.SimpleCapabilityManager;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
@@ -16,6 +17,7 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregicadditions.utils.GALog;
+import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -73,9 +75,10 @@ public class Gregicality {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         GALog.init(event.getModLog());
-        NetworkHandler.init();
+        NetworkHandler.preInit();
         proxy.preLoad();
         Keybinds.register();
+        SimpleCapabilityManager.init();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();
@@ -114,10 +117,13 @@ public class Gregicality {
             openComputersProxy.init();
         }
         CoverBehaviors.init();
+        GAConfig.addConfigReservoirs(GAConfig.extraction.reservoirs);
+        PumpjackHandler.oilChance = GAConfig.Extraction.reservoir_chance;
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        PumpjackHandler.recalculateChances(true);
 
     }
 

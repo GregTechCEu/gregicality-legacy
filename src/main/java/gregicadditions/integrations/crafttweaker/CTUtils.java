@@ -1,5 +1,7 @@
 package gregicadditions.integrations.crafttweaker;
 
+import com.google.common.collect.Lists;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
@@ -7,6 +9,8 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
+import gregicadditions.utils.GALog;
+import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
@@ -91,5 +95,48 @@ public class CTUtils {
     public static void registerFluid(String name, int rgb) {
         new SimpleFluidMaterial(name, rgb);
     }
-    
+
+    @ZenMethod
+    public static void registerReservoir(String name, ILiquidStack fluid, int minSize, int maxSize, int replenishRate, int weight, int[] dimBlacklist, int[] dimWhitelist, String[] biomeBlacklist, String[] biomeWhitelist) {
+        List<String> biomeBlacklistList = Lists.newArrayList();
+        List<String> biomeWhitelistList = Lists.newArrayList();
+
+        if (name.isEmpty()) {
+            CraftTweakerAPI.logError("Reservoir name can not be empty string!");
+        } else if (minSize <= 0) {
+            CraftTweakerAPI.logError("Reservoir minSize has to be at least 1mb!");
+        } else if (maxSize < minSize) {
+            CraftTweakerAPI.logError("Reservoir maxSize can not be smaller than minSize!");
+        } else if (weight <= 1) {
+            CraftTweakerAPI.logError("Reservoir weight has to be greater than or equal to 1!");
+        }
+
+        String rFluid = fluid.getName();
+
+        PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(name, rFluid, minSize, maxSize, replenishRate, weight);
+
+        for (String string : biomeBlacklist) {
+            if (string == null || string.isEmpty()) {
+                CraftTweakerAPI.logError("String '" + string + "' in biomeBlacklist is either Empty or Null");
+            } else {
+                biomeBlacklistList.add(string);
+            }
+        }
+
+        for (String string : biomeWhitelist) {
+            if (string == null || string.isEmpty()) {
+                CraftTweakerAPI.logError("String '" + string + "' in biomeBlacklist is either Empty or Null");
+            } else {
+                biomeWhitelistList.add(string);
+            }
+        }
+
+        res.dimensionBlacklist = dimBlacklist;
+        res.dimensionWhitelist = dimWhitelist;
+        res.biomeBlacklist = biomeBlacklistList.toArray(new String[0]);
+        res.biomeWhitelist = biomeWhitelistList.toArray(new String[0]);
+
+        CraftTweakerAPI.logInfo("Added Reservoir Type: " + name);
+    }
+
 }

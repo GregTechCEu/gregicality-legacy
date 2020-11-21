@@ -1,14 +1,22 @@
 package gregicadditions.machines.multi.advance;
 
+
+import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
+import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.multi.simple.Tuple;
+import gregicadditions.machines.GATileEntities;
+import gregicadditions.recipes.AdvFusionRecipeBuilder;
+import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.utils.GALog;
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
+import gregtech.api.capability.impl.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -19,59 +27,84 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMap;
+
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.*;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS
     };
 
-    int tier;
+    private int tier;
     private int coilTier;
     private int cryostatTier;
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
 
-    public TileEntityAdvFusionReactor(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int tier) {
-        super(metaTileEntityId, recipeMap);
-        this.tier = tier;
+    private EnergyContainerList inputEnergyContainers;
+    private int heat = 0;
+
+
+    public TileEntityAdvFusionReactor(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, GARecipeMaps.ADV_FUSION_RECIPES);
+        this.recipeMapWorkable = new AdvFusionRecipeLogic(this);
+        this.energyContainer = new GAEnergyContainerHandler(this, Integer.MAX_VALUE, 0, 0, 0, 0) {
+            @Override
+            public String getName() {
+                return "EnergyContainerInternal";
+            }
+        };
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#################","#################","########C########","########C########","#################","#################")
-                .aisle("#################","#######CCC#######","######XXXXX######","######XXXXX######","########C########","#################")
-                .aisle("########C########","#####XXXXXXX#####","##C#XX#####XX#C##","##C#XX#####XX#C##","#####XXXXXXX#####","########C########")
-                .aisle("########C########","###CXXXXXXXXXC###","###X#########X###","###X#########X###","###CXXXXXXXXXC###","########C########")
-                .aisle("####C#######C####","###XXXX#C#XXXX###","##X####XXX####X##","##X####XXX####X##","###XXXX#C#XXXX###","####C#######C####")
-                .aisle("#####C#####C#####","##XXXX#####XXXX##","##X###X#C#X###X##","##X###X#C#X###X##","##XXXX#####XXXX##","#####C#####C#####")
-                .aisle("#################","##XXX#C###C#XXX##","#X###XC###CX###X#","#X###XC###CX###X#","##XXX#C###C#XXX##","#################")
-                .aisle("#######XXX#######","##XX###CCC###XX##","#X##X##CCC##X##X#","#X##X##CCC##X##X#","##XX###CCC###XX##","#######XXX#######")
-                .aisle("##CC###XXX###CC##","#CXXC##CCC##CXXC#","CX##XC#CCC#CX##XC","CX##XC#CCC#CX##XC","#CXXC##CCC##CXXC#","##CC###XXX###CC##")
-                .aisle("#######XXX#######","##XX###CCC###XX##","#X##X##CCC##X##X#","#X##X##CCC##X##X#","##XX###CCC###XX##","#######XXX#######")
-                .aisle("#################","##XXX#C###C#XXX##","#X###XC###CX###X#","#X###XC###CX###X#","##XXX#C###C#XXX##","#################")
-                .aisle("#####C#####C#####","##XXXX#####XXXX##","##X###X#C#X###X##","##X###X#C#X###X##","##XXXX#####XXXX##","#####C#####C#####")
-                .aisle("####C#######C####","###XXXX#C#XXXX###","##X####XXX####X##","##X####XXX####X##","###XXXX#C#XXXX###","####C#######C####")
-                .aisle("########C########","###CXXXXXXXXXC###","###X#########X###","###X#########X###","###CXXXXXXXXXC###","########C########")
-                .aisle("########C########","#####IIIXIII#####","##C#XX#####XX#C##","##C#XX#####XX#C##","#####XXXXXXX#####","########C########")
-                .aisle("#################","########S########","######XXXXX######","######XXXXX######","########C########","#################")
+
+                .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
+                .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
+                .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
+                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
+                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
+                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
+                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
+                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
+                .aisle("##CC###XXX###CC##","#CddC##CCC##CddC#","Cv##vC#CCC#Cv##vC","Cv##vC#CCC#Cv##vC","#CbbC##CCC##CbbC#","##CC###XXX###CC##")
+                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
+                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
+                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
+                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
+                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
+                .aisle("########C########","####cIIIvIIIc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cEEEbEEEc####","########C########")
+                .aisle("#################","########S########","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
                 .aisle("#################","#################","########C########","########C########","#################","#################")
                 .where('S', selfPredicate())
                 .where('#', (tile) -> true)
-                .where('C', statePredicate(getCoilState()))
+                .where('C', coilPredicate())
                 .where('X', statePredicate(getCasingState()))
                 .where('I', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('d', divertorPredicate())
+                .where('v', vacuumPredicate())
+                .where('c', cryostatPredicate())
+                .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)))
+                .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
+                    for (int i = coilTier; i < 5; i++) {
+                        if (tile.metaTileEntityId.equals(GATileEntities.ENERGY_INPUT[i].metaTileEntityId))
+                            GALog.logger.info("coiltier: " + coilTier + ", matches with i: " + i);
+                            return true;
+                    }
+                    return false;
+                })))
                 .build();
     }
 
@@ -81,20 +114,26 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
-        switch (tier) {
-            default:
-                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING);
+
+        return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING);
+    }
+
+    @Override
+    protected void updateFormedValid() {
+        if (!getWorld().isRemote) {
+            if (this.inputEnergyContainers.getEnergyStored() > 0) {
+                long energyAdded = this.energyContainer.addEnergy(this.inputEnergyContainers.getEnergyStored());
+                if (energyAdded > 0) this.inputEnergyContainers.removeEnergy(energyAdded);
+            }
+            super.updateFormedValid();
         }
     }
 
-    private IBlockState getCoilState() {
-        switch (tier) {
-            case 9:
-                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2);
-            default:
-                return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_3);
-        }
+    @Override
+    public void update() {
+        super.update();
     }
+
 
     public static Predicate<BlockWorldState> cryostatPredicate() {
         return (blockWorldState) -> {
@@ -166,6 +205,27 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
         cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
+
+        long energyStored = this.energyContainer.getEnergyStored();
+        this.initializeAbilities();
+        ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
+        this.tier = coilTier + GAValues.UHV;
+    }
+
+    private void initializeAbilities() {
+        this.inputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.IMPORT_ITEMS));
+        this.inputFluidInventory = new FluidTankList(true, getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
+        this.outputFluidInventory = new FluidTankList(true, getAbilities(MultiblockAbility.EXPORT_FLUIDS));
+        List<IEnergyContainer> energyInputs = getAbilities(MultiblockAbility.INPUT_ENERGY);
+        this.inputEnergyContainers = new EnergyContainerList(energyInputs);
+        long euCapacity = energyInputs.size() * 10000000L * (long) Math.pow(2, tier);
+        this.energyContainer = new GAEnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
+            @Override
+            public String getName() {
+                return "EnergyContainerInternal";
+            }
+        };
     }
 
     @Override
@@ -176,7 +236,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new TileEntityAdvFusionReactor(metaTileEntityId, recipeMap, this.tier);
+        return new TileEntityAdvFusionReactor(metaTileEntityId);
     }
 
     @Override
@@ -186,30 +246,114 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     }
 
 
-    public static class AdvFusionRecipeLogic extends MultiblockRecipeLogic {
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        if (!this.isStructureFormed()) {
+            textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure").setStyle(new Style().setColor(TextFormatting.RED)));
+        }
+        if (this.isStructureFormed()) {
+            if (!this.canWork) {
+                textList.add(new TextComponentTranslation("gregicality.multiblock.invalid_configuraion.1"));
+                textList.add(new TextComponentTranslation("gregicality.multiblock.invalid_configuraion.2"));
+            } else {
+                if (!this.recipeMapWorkable.isWorkingEnabled()) {
+                    textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
+                } else if (this.recipeMapWorkable.isActive()) {
+                    textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
+                    int currentProgress;
+                    if (energyContainer.getEnergyCapacity() > 0) {
+                        currentProgress = (int) (this.recipeMapWorkable.getProgressPercent() * 100.0D);
+                        textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
+                    } else {
+                        currentProgress = -this.recipeMapWorkable.getRecipeEUt();
+                        textList.add(new TextComponentTranslation("gregtech.multiblock.generation_eu", currentProgress));
+                    }
+                } else {
+                    textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
+                }
+
+                if (this.recipeMapWorkable.isHasNotEnoughEnergy()) {
+                    textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
+                }
+            }
+        }
+
+        textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
+        textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
+    }
+
+
+    public class AdvFusionRecipeLogic extends MultiblockRecipeLogic {
+
 
         public AdvFusionRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
         }
 
         @Override
-        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            List<IItemHandlerModifiable> itemInputs = ((RecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
 
-            Tuple recipePerInput = itemInputs.stream()
-                    .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
-                    .filter(tuple -> tuple.getRecipe() != null)
-                    .findFirst().orElse(new Tuple(recipeMap.findRecipe(maxVoltage, inputs, fluidInputs, 0), inputs));
-
-            Recipe matchingRecipe = recipeMap.findRecipe(maxVoltage, (IItemHandlerModifiable) Collections.emptyList(), fluidInputs, Integer.MAX_VALUE);
-            if (recipePerInput.getRecipe() == null) {
-                return null;
+        public void updateWorkable() {
+            super.updateWorkable();
+            if (!isActive && heat > 0) {
+                heat = heat <= 10000 ? 0 : (heat - 10000);
             }
-
-            return null;
-
-
         }
 
+        @Override
+        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
+            RecipeBuilder<?> newRecipe;
+            if (recipe == null || recipe.getIntegerProperty("eu_to_start") > energyContainer.getEnergyCapacity()) {
+                return null;
+            } else {
+                int recipeTier = recipe.getIntegerProperty("coil_tier");
+                int coilTierDifference = coilTier - recipeTier;
+                int vacuumTierDifference = vacuumTier - recipeTier;
+                int divertorTierDifference = divertorTier - recipeTier;
+                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
+                newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
+                    for (FluidStack inputFluid : recipe.getFluidInputs()) {
+                        if (AdvFusionRecipeBuilder.coolants.contains(inputFluid)) {
+                            FluidStack newFluid = inputFluid.copy();
+                            newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                            newRecipe.fluidInputs(newFluid);
+                        } else {
+                            newRecipe.fluidInputs(inputFluid);
+                        }
+                    }
+                FluidStack newOutput = recipe.getFluidOutputs().get(0);
+                newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.divertorOutputIncrease));
+                newRecipe.fluidOutputs(newOutput);
+            }
+            return newRecipe.build().getResult();
+        }
+
+        @Override
+        protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
+            int heatDiff = recipe.getIntegerProperty("eu_to_start") - heat;
+            if (heatDiff <= 0) {
+                return super.setupAndConsumeRecipeInputs(recipe);
+            }
+            if (energyContainer.getEnergyStored() < heatDiff || !super.setupAndConsumeRecipeInputs(recipe)) {
+                return false;
+            }
+            energyContainer.removeEnergy(heatDiff);
+            heat += heatDiff;
+            return true;
+        }
+
+        @Override
+        public NBTTagCompound serializeNBT() {
+            NBTTagCompound tag = super.serializeNBT();
+            tag.setInteger("Heat", heat);
+            return tag;
+        }
+
+        @Override
+        public void deserializeNBT(NBTTagCompound compound) {
+            super.deserializeNBT(compound);
+            heat = compound.getInteger("Heat");
+        }
     }
+
 }

@@ -330,6 +330,12 @@ metaitem.schematic.3by3.name=Schematic (3x3)
 metaitem.schematic.2by2.name=Schematic (2x2)
 metaitem.schematic.name=Blank Schematic
 
+metaitem.data_stick.tooltip.coords=Dimension: %s| x:%d, z:%d
+metaitem.data_stick.tooltip.capacity=Capacity: %d
+metaitem.data_stick.tooltip.current=Current: %d
+metaitem.data_stick.tooltip.fluid=Fluid: %d
+
+
 metaitem.unstable.star.name=Unstable Star
 
 #/////////////////////CIRCUIT///////////////////////////
@@ -1881,7 +1887,9 @@ gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
 gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
 gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
 gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
-gtadditions.multiblock.not_enough_qubit=Not Enough Qubit, recipe slowed.
+gtadditions.multiblock.not_enough_qubit=Not enough Qubit, recipe slowed.
+gregicality.multiblock.invalid_configuraion.1=The Advanced Fusion Reactor is setup incorrectly.
+gregicality.multiblock.invalid_configuraion.2=The tier of the Cryostat, Vacuum and/or Divertor casings are lower than the tier of your coils.
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

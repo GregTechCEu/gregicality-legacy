@@ -343,7 +343,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
-
+        MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior());
 
     }
 

@@ -13,7 +13,8 @@
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_3"
         }
       },
-      "fusion_casing_4": {
+
+      "adv_fusion_casing": {
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_4"
         }
@@ -26,6 +27,47 @@
       "fusion_coil_3": {
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_3"
+
+        }     
+      },
+	  "blanket_base": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/blanket_base"
+        }
+      },
+	  "fusion_blanket": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/blanket_base"
+        }
+      },
+	  "breeding_blanket": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/blanket_base"
+        }
+      },
+	  "adv_fusion_coil_1": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
+        }
+      },
+	  "adv_fusion_coil_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
+        }
+      },
+	  "adv_fusion_coil_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
+        }
+      },
+	  "adv_fusion_coil_4": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
+        }
+      },
+	  "adv_fusion_coil_5": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_2"
         }
       }
     }
