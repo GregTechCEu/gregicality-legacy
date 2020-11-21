@@ -1040,7 +1040,7 @@ public class GATileEntities {
         QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(4017, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
         GAS_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(4020, new MetaTileEntityGasCentrifuge(location("gas_centrifuge")));
         QUBIT_COMPUTER = GregTechAPI.registerMetaTileEntity(4022, new MetaTileEntityQubitComputer(location("qubit_computer")));
-        FLUID_DRILLING = GregTechAPI.registerMetaTileEntity(4023, new MetaTileEntityFluidDrilling(location("fluid_drilling"), 1));
+        FLUID_DRILLING = GregTechAPI.registerMetaTileEntity(4023, new MetaTileEntityFluidDrilling(location("fluid_drilling")));
         SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(4024, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
     }
 
