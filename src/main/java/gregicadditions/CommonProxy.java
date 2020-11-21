@@ -23,6 +23,11 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import gregtech.common.blocks.VariantItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -34,10 +39,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
+import java.io.IOException;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -83,6 +89,7 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
         registry.register(GAMetaBlocks.VACUUM_CASING);
+
         registry.register(GAMetaBlocks.HEATING_COIL);
         registry.register(GAMetaBlocks.DIVERTOR_CASING);
         registry.register(GAMetaBlocks.CRYOSTAT_CASING);
@@ -184,6 +191,7 @@ public class CommonProxy {
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);
+        itemBlock.setRegistryName(block.getRegistryName());
         itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
         return itemBlock;
     }

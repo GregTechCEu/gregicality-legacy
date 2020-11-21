@@ -1,11 +1,13 @@
 package gregicadditions.recipes;
 
 import com.google.common.collect.ImmutableMap;
+
 import gregicadditions.GAMaterials;
 import gregicadditions.utils.GALog;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
+
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
@@ -21,6 +23,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     private long euStart = 0;
     public static List<FluidStack> coolants = new ArrayList<>();
 
+
     public AdvFusionRecipeBuilder(Recipe recipe, RecipeMap<AdvFusionRecipeBuilder> recipeMap, int coilTier) {
         super(recipe, recipeMap);
         this.coilTier = coilTier;
@@ -28,6 +31,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
     public AdvFusionRecipeBuilder() {
     }
+
 
     static {
         coolants.add(Materials.Water.getFluid(10000));
@@ -49,8 +53,10 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
         if (key.equals("coilTier")) {
             this.coilTier(((Number) value).intValue());
             return true;
+
         } else if (key.equals("euStart")) {
             this.euStart(((Number) value).intValue());
+
         }
         return false;
     }
@@ -61,6 +67,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
             recipeStatus = EnumValidationResult.INVALID;
         }
         this.coilTier = coilTier;
+
         this.euStart =  this.euStart == 0 ? (int) (16 * 10000000 * Math.pow(2, coilTier)) : this.euStart;
         return this;
     }
@@ -71,6 +78,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
             recipeStatus = EnumValidationResult.INVALID;
         }
         this.euStart = eu;
+
         return this;
     }
 
@@ -83,6 +91,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     }
 
     @Override
+
     public void buildAndRegister() {
         if (fluidInputs.size() == 2) {
             for (FluidStack fluidStack : coolants) {
