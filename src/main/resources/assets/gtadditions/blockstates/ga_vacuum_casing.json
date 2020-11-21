@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "vacuum_1": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/vacuum_uhv"
+        }
+      },
+      "vacuum_2": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/vacuum_uev"
+        }
+      },
+      "vacuum_3": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/vacuum_uiv"
+        }
+      },
+      "vacuum_4": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/vacuum_umv"
+        }
+      },
+      "vacuum_5": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/vacuum_uxv"
+        }
+      }
+    }
+  }
+}

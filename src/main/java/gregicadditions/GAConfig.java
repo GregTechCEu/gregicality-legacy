@@ -1,6 +1,13 @@
 package gregicadditions;
 
+import gregicadditions.worldgen.PumpjackHandler;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fluids.FluidRegistry;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Config(modid = Gregicality.MODID)
 public class GAConfig {
@@ -427,7 +434,35 @@ public class GAConfig {
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
         public LargeWiremill largeWiremill = new LargeWiremill();
         public BatteryTower batteryTower = new BatteryTower();
+        public AdvFusion advFusion = new AdvFusion();
 
+
+        public static class AdvFusion {
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the recipe duration.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double coilDurationDiscount = 0.05;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to increase the amount of coolant.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double vacuumCoolantIncrease = 0.05;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the EU/t.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double vacuumEnergyDecrease = 0.15;
+
+            @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the EU/t.")
+            @Config.Name("Advanced Fusion Coil duration discount")
+            @Config.RangeDouble(min = 0.0, max = 0.99)
+            @Config.RequiresMcRestart
+            public double divertorOutputIncrease = 0.10;
+
+        }
 
         public static class BatteryTower {
             @Config.Comment("The base amount of energy a battery cell will hold. This is the amount the HV will hold, each tier above is multiplied by 4.")
@@ -1019,5 +1054,213 @@ public class GAConfig {
         }
 
 
+    }
+
+    public static Extraction extraction;
+
+    public static class Extraction {
+        @Config.Comment({"List of reservoir types. Format: name, fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
+        public static String[] reservoirs = new String[]{
+                "aquifer, water, 5000000, 10000000, 6, 30, [], [0], [], []",
+                "oil, oil, 2500000, 15000000, 6, 40, [1], [], [], []",
+                "lava, lava, 250000, 1000000, 0, 30, [1], [], [], []"
+        };
+
+        @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
+        public static float reservoir_chance = 0.0F;
+
+
+        @Config.Comment({"The Flux the Pumpjack requires each tick to pump, default=1024"})
+        public static int pumpjack_consumption = 1024;
+
+        @Config.Comment({"The amount of mB of oil a Pumpjack extracts per tick, default=15"})
+        public static int pumpjack_speed = 15;
+
+        @Config.Comment({"Require a pumpjack to have pipes built down to Bedrock, default=false"})
+        public static boolean req_pipes = false;
+
+        @Config.Comment({"Number of ticks between checking for pipes below pumpjack if required, default=100 (5 secs)"})
+        public static int pipe_check_ticks = 100;
+    }
+
+    public static void addConfigReservoirs(String[] reservoirs) {
+        for (int i = 0; i < reservoirs.length; i++) {
+            String str = reservoirs[i];
+
+            if (str.isEmpty()) continue;
+
+            String name = null;
+            String fluid = null;
+            int min = 0;
+            int max = 0;
+            int replenish = 0;
+            int weight = 0;
+            List<Integer> dimBlacklist = new ArrayList<>();
+            List<Integer> dimWhitelist = new ArrayList<>();
+            List<String> biomeBlacklist = new ArrayList<>();
+            List<String> biomeWhitelist = new ArrayList<>();
+
+            String remain = str;
+
+            boolean inParens = false;
+            int index = 0;
+
+            while (remain.contains(",")) {
+                int endPos = remain.indexOf(",");
+
+                String current = remain.substring(0, endPos).trim();
+
+                if (index == 0) name = current;
+                else if (index == 1) fluid = current;
+                else if (index == 2) {
+                    try {
+                        min = Integer.parseInt(current);
+                        if (min < 0) {
+                            throw new RuntimeException("Negative value for minimum mB fluid for reservoir " + (i + 1));
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException("Invalid value for minimum mB fluid for reservoir " + (i + 1));
+                    }
+                } else if (index == 3) {
+                    try {
+                        max = Integer.parseInt(current);
+                        if (max < 0) {
+                            throw new RuntimeException("Negative value for maximum mB fluid for reservoir " + (i + 1));
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException("Invalid value for maximum mB fluid for reservoir " + (i + 1));
+                    }
+                } else if (index == 4) {
+                    try {
+                        replenish = Integer.parseInt(current);
+                        if (replenish < 0) {
+                            throw new RuntimeException("Negative value for mB replenished per tick for reservoir " + (i + 1));
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException("Invalid value for mB replenished per tick for reservoir " + (i + 1));
+                    }
+                } else if (index == 5) {
+                    try {
+                        weight = Integer.parseInt(current);
+                        if (weight < 0) {
+                            throw new RuntimeException("Negative value for weight for reservoir " + (i + 1));
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new RuntimeException("Invalid value for weight for reservoir " + (i + 1));
+                    }
+                } else if (index == 6) {
+                    if (!inParens) {
+                        current = current.substring(1);
+                        inParens = true;
+                    }
+
+                    int cI = current.indexOf(",");
+                    int bI = current.indexOf("]");
+
+                    String value = current;
+                    if (bI >= 0 && (cI == -1 || bI < cI)) {
+                        value = value.substring(0, bI);
+                        inParens = false;
+                    }
+                    if (value.length() > 0) {
+                        try {
+                            int dim = Integer.parseInt(value);
+                            dimBlacklist.add(dim);
+                        } catch (NumberFormatException e) {
+                            throw new RuntimeException(value + "Invalid blacklist dimension for reservoir " + (i + 1));
+                        }
+                    }
+                } else if (index == 7) {
+                    if (!inParens) {
+                        current = current.substring(1);
+                        inParens = true;
+                    }
+
+                    int cI = current.indexOf(",");
+                    int bI = current.indexOf("]");
+
+                    String value = current;
+                    if (bI >= 0 && (cI == -1 || bI < cI)) {
+                        value = value.substring(0, bI);
+                        inParens = false;
+                    }
+                    if (value.length() > 0) {
+                        try {
+                            int dim = Integer.parseInt(value);
+                            dimWhitelist.add(dim);
+                        } catch (NumberFormatException e) {
+                            throw new RuntimeException("Invalid whitelist dimension for reservoir " + (i + 1));
+                        }
+                    }
+                } else if (index == 8) {
+                    if (!inParens) {
+                        current = current.substring(1);
+                        inParens = true;
+                    }
+
+                    int cI = current.indexOf(",");
+                    int bI = current.indexOf("]");
+
+                    String value = current;
+                    if (bI >= 0 && (cI == -1 || bI < cI)) {
+                        value = value.substring(0, bI);
+                        inParens = false;
+                    }
+                    if (value.length() > 0) {
+                        biomeBlacklist.add(PumpjackHandler.convertConfigName(value.trim()));
+                    }
+                } else if (index == 9) {
+                    if (!inParens) {
+                        current = current.substring(1);
+                        inParens = true;
+                    }
+
+                    int cI = current.indexOf(",");
+                    int bI = current.indexOf("]");
+
+                    String value = current;
+                    if (bI >= 0 && (cI == -1 || bI < cI)) {
+                        value = value.substring(0, bI);
+                        inParens = false;
+                    }
+                    if (value.length() > 0) {
+                        biomeWhitelist.add(PumpjackHandler.convertConfigName(value.trim()));
+                    }
+                }
+
+                remain = remain.substring(endPos + 1);
+                if (!inParens) index++;
+            }
+
+            String current = remain.trim();
+
+            if (!inParens) {
+                current = current.substring(1);
+            }
+
+            int cI = current.indexOf(",");
+            int bI = current.indexOf("]");
+
+            String value = current;
+            if (cI == -1 || bI < cI) {
+                value = value.substring(0, bI);
+            }
+            if (value.length() > 0) {
+                biomeWhitelist.add(PumpjackHandler.convertConfigName(value.trim()));
+            }
+
+            fluid = fluid.toLowerCase(Locale.ENGLISH);
+            if (FluidRegistry.getFluid(fluid) == null) {
+                throw new RuntimeException("Invalid fluid name for reservoir " + (i + 1));
+            }
+
+            PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(name, fluid, min, max, replenish, weight);
+            res.dimensionWhitelist = ArrayUtils.toPrimitive(dimWhitelist.toArray(new Integer[0]));
+            res.dimensionBlacklist = ArrayUtils.toPrimitive(dimBlacklist.toArray(new Integer[0]));
+            res.biomeWhitelist = biomeWhitelist.toArray(new String[0]);
+            res.biomeBlacklist = biomeBlacklist.toArray(new String[0]);
+
+            System.out.println("Added resevoir type " + name);
+        }
     }
 }
