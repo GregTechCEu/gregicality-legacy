@@ -301,6 +301,16 @@ public class GAConfig {
         public boolean disable = false;
     }
 
+    @Config.Comment("Config options for OpenComputers features.")
+    public static OpenComputers openComputers = new OpenComputers();
+
+    public static class OpenComputers {
+        @Config.Comment("Disable all OpenComputers integration features")
+        @Config.Name("Disable OpenComputers integration")
+        @Config.RequiresMcRestart
+        public boolean disable = false;
+    }
+
     @Config.Comment("Config options of miscellaneous features")
     public static Misc Misc = new Misc();
 
