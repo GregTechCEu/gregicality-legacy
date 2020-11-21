@@ -329,6 +329,12 @@ metaitem.schematic.3by3.name=设计图（3x3）
 metaitem.schematic.2by2.name=设计图（2x2）
 metaitem.schematic.name=空设计图
 
+metaitem.data_stick.tooltip.coords=维度：%s| x:%d, z:%d
+metaitem.data_stick.tooltip.capacity=最大容量：%d
+metaitem.data_stick.tooltip.current=当前余量：%d
+metaitem.data_stick.tooltip.fluid=流体种类：%d
+
+
 metaitem.unstable.star.name=易变之星
 
 #/////////////////////CIRCUIT///////////////////////////
@@ -1532,7 +1538,7 @@ gregtech.multiblock.coke_oven.description=焦炉是一个用于将煤烧成焦�
 gregtech.multiblock.assembly_line.description=装配线是一个由5-16片重复结构组成的多方块结构。按理说，它是个用于生产高级元件的大组装机。
 gregtech.multiblock.large_circuit_assembly.description=大型电路组装机是一个用于制造高阶电路的多方块结构。
 gregtech.multiblock.processing_array.description=处理阵列将最多16个多方块机器集成在一个处理阵列里，实现更高效的自动化。
-gregtech.multiblock.volcanus.description=炽焱高炉可以胜任电力高炉。它每秒消耗40mB的烈焰之炽焱并且比同等的电力高炉快3倍。
+gregtech.multiblock.volcanus.description=炽焱高炉是电力高炉的进阶版。它需要(10mB * 电压等级)/t的烈焰之炽焱供给。相同电压等级下对同一配方的处理速度比电力高炉快3倍。
 gregtech.multiblock.large_bender_and_forming.description=大型辊压机比同等电压的机器快6倍，且和工作配方电压每差一级可以多处理4个物品。
 gregtech.multiblock.large_multi_use.description=大型加工厂比同等电压的机器快3.5倍，和工作配方电压每差一级可以多处理2个物品且消耗的EU节省80%%。
 gregtech.multiblock.large_washing_plant.description=大型洗矿厂比同等电压的机器快5倍且和工作配方电压每差一级可以多处理4个物品。
@@ -1612,6 +1618,9 @@ gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=�
 gregtech.multiblock.universal.carbon_dioxide_amount=二氧化碳：%dmB
 gregtech.multiblock.universal.potassium_plasma_amount=钾等离子体：%dmB
 gregtech.multiblock.universal.oxygen_plasma_amount=氧等离子体：%dmB
+gregtech.multiblock.universal.helium_plasma_amount=氦等离子体：%dmb
+gregtech.multiblock.universal.radon_plasma_amount=氡等离子体：%dmb
+gregtech.multiblock.universal.rhenium_plasma_amount=电子简并态铼等离子体：%dmb
 gregtech.multiblock.universal.cryotheum_amount=极寒之凛冰：%dmB
 gregtech.multiblock.universal.liquid_hydrogen_amount=液氢：%dmB
 gregtech.multiblock.universal.air_amount=空气：%dmB
@@ -1635,7 +1644,9 @@ gregtech.multiblock.large_transformer.output=输出：%s EU / %s 安
 gregtech.multiblock.large_transformer.input_average=输入电流/t：%s
 gregtech.multiblock.large_transformer.output_average=输出电流/t：%s
 
-gtadditions.multiblock.not_enough_qubit=量子位不足，配方已减缓处理进程。
+gtadditions.multiblock.not_enough_qubit=量子位不足，当前配方处理速度已被减缓。
+gregicality.multiblock.invalid_configuraion.1=进阶聚变反应堆布置错误。
+gregicality.multiblock.invalid_configuraion.2=制冷器、真空仓和/或分流器外壳的等级低于线圈等级。
 
 item.material.oreprefix.plateCurved=弯曲%s板
 item.material.oreprefix.ingotDouble=双重%s锭

@@ -154,5 +154,6 @@ public class GARecipeMaps {
                 .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0, 2, 3, 1, 1, new AdvFusionRecipeBuilder());
+
     }
 }

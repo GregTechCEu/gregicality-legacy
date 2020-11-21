@@ -83,6 +83,7 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.REACTOR_CASING);
         registry.register(GAMetaBlocks.FUSION_CASING);
         registry.register(GAMetaBlocks.VACUUM_CASING);
+
         registry.register(GAMetaBlocks.HEATING_COIL);
         registry.register(GAMetaBlocks.DIVERTOR_CASING);
         registry.register(GAMetaBlocks.CRYOSTAT_CASING);
