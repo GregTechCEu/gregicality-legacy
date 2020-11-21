@@ -58,6 +58,7 @@ public class Circuits {
                 amount = 1;
             }
             FluidStack fluidStack = FluidRegistry.getFluidStack(fluidSplit[0], amount);
+            if (fluidStack == null) continue;
 
             //ELECTRONICS   //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(16).outputs(BASIC_ELECTRONIC_CIRCUIT_LV.getStackForm()).inputs(RESISTOR.getStackForm(8), CAPACITOR.getStackForm(8), GOOD_PHENOLIC_BOARD.getStackForm(), CENTRAL_PROCESSING_UNIT.getStackForm()).input(wireFine, Copper, 4).fluidInputs(fluidStack).buildAndRegister();
@@ -212,7 +213,7 @@ public class Circuits {
                 .input(foil, Polybenzimidazole, 16)
                 .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1000))
+                .fluidInputs(Titanium.getFluid(1296))
                 .fluidInputs(Plastic.getFluid(2500))
                 .fluidInputs(NaquadahEnriched.getFluid(1000))
                 .EUt(240000)

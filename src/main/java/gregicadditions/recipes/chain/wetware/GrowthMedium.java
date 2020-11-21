@@ -135,7 +135,9 @@ public class GrowthMedium {
                 .fluidInputs(Biotin.getFluid(1000))
                 .fluidInputs(LinoleicAcid.getFluid(1000))
                 .fluidInputs(Catalase.getFluid(1000))
-                .fluidOutputs(B27Supplement.getFluid(3000))
+                .fluidInputs(VitaminA.getFluid(1000))
+                .fluidInputs(Ethanolamine.getFluid(1000))
+                .fluidOutputs(B27Supplement.getFluid(5000))
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();

@@ -42,7 +42,17 @@
 		"textures": {
 			"all": "gregtech:blocks/casings/solid/naquadria_charge"
 		}
-	  }
+	  },
+      "bio_reactor_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/bio_reactor_casing"
+        }
+      },
+      "laser_engraver_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/laser_engraver_casing"
+        }
+      }
     }
   }
 }

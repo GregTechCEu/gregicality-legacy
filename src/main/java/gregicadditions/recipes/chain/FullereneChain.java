@@ -62,7 +62,7 @@ public class FullereneChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Benzophenanthrenylacetonitrile.getItemStack())
                 .fluidInputs(PotassiumHydroxide.getFluid(1000))
-                .inputs(TiAlChloride.getItemStack())
+                .notConsumable(TiAlChloride.getItemStack())
                 .fluidInputs(ThionylChloride.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(UnfoldedFullerene.getItemStack(5))
