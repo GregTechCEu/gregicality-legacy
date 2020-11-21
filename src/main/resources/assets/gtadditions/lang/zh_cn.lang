@@ -329,6 +329,12 @@ metaitem.schematic.3by3.name=设计图（3x3）
 metaitem.schematic.2by2.name=设计图（2x2）
 metaitem.schematic.name=空设计图
 
+metaitem.data_stick.tooltip.coords=维度：%s| x:%d, z:%d
+metaitem.data_stick.tooltip.capacity=容量：%d
+metaitem.data_stick.tooltip.current=当前：%d
+metaitem.data_stick.tooltip.fluid=流体：%d
+
+
 metaitem.unstable.star.name=易变之星
 
 #/////////////////////CIRCUIT///////////////////////////
@@ -1638,7 +1644,9 @@ gregtech.multiblock.large_transformer.output=输出：%s EU / %s 安
 gregtech.multiblock.large_transformer.input_average=输入电流/t：%s
 gregtech.multiblock.large_transformer.output_average=输出电流/t：%s
 
-gtadditions.multiblock.not_enough_qubit=量子位不足，配方已减缓处理进程。
+gtadditions.multiblock.not_enough_qubit=量子位不足，当前配方处理速度已被减缓。
+gregicality.multiblock.invalid_configuraion.1=进阶聚变反应堆布置错误。
+gregicality.multiblock.invalid_configuraion.2=制冷器、真空仓和/或分流器外壳的等级低于线圈等级。
 
 item.material.oreprefix.plateCurved=弯曲%s板
 item.material.oreprefix.ingotDouble=双重%s锭
