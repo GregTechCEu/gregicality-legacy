@@ -13,6 +13,7 @@
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_3"
         }
       },
+
       "adv_fusion_casing": {
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_4"
@@ -26,6 +27,7 @@
       "fusion_coil_3": {
         "textures": {
           "all": "gregtech:blocks/casings/solid/machine_casing_fusion_coil_3"
+
         }     
       },
 	  "blanket_base": {

@@ -60,6 +60,10 @@ repositories {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
+    maven {
+        name = "OpenComputers"
+        url = "https://maven.cil.li/"
+    }
 //    maven { // TOP
 //        setUrl("https://repo.erins.net/maven")
 //    }
@@ -69,6 +73,7 @@ repositories {
 }
 
 dependencies {
+    deobfCompile "li.cil.oc:OpenComputers:MC1.12.2-1.7.5.192"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.554"
     deobfCompile "mezz.jei:jei_1.12.2:+"
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"

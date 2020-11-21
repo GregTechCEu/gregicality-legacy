@@ -1,6 +1,10 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.item.fusion.GAFusionCasing;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.machines.GATileEntities;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
@@ -20,12 +24,14 @@ import java.util.List;
 public class FusionReactor4Info extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
+
         return GATileEntities.ADVANCED_FUSION_REACTOR;
     }
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
+
                 .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
                 .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
                 .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
@@ -54,6 +60,7 @@ public class FusionReactor4Info extends MultiblockInfoPage {
                 .where('v', GAMetaBlocks.VACUUM_CASING.getState(GAVacuumCasing.CasingType.VACUUM_1))
                 .where('b', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET))
                 .where('d', GAMetaBlocks.DIVERTOR_CASING.getState(GADivertorCasing.CasingType.DIVERTOR_1))
+
                 .build();
         return Lists.newArrayList(shapeInfo);
     }

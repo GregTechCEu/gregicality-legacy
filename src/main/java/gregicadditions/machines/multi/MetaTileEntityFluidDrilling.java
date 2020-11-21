@@ -1,8 +1,6 @@
 package gregicadditions.machines.multi;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.capability.IEnergyContainer;
@@ -40,13 +38,11 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
 
     private boolean isActive = false;
     private boolean done = false;
-    private final int tier;
     private static PumpjackHandler.OilWorldInfo oilWorldInfo;
 
-    public MetaTileEntityFluidDrilling(ResourceLocation metaTileEntityId, int tier) {
+    public MetaTileEntityFluidDrilling(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
         reinitializeStructurePattern();
-        this.tier = tier;
     }
 
 
@@ -76,12 +72,16 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
         this.energyContainer = new EnergyContainerList(Lists.newArrayList());
     }
 
-    public boolean drainEnergy(int energyDrain) {
-        if (energyContainer.getEnergyStored() >= energyDrain) {
-            energyContainer.removeEnergy(energyDrain);
+    public boolean drainEnergy() {
+        if (energyContainer.getEnergyStored() >= getMaxVoltage()) {
+            energyContainer.removeEnergy(getMaxVoltage());
             return true;
         }
         return false;
+    }
+
+    public long getMaxVoltage() {
+        return energyContainer.getInputVoltage();
     }
 
     @Override
@@ -90,7 +90,7 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
         if (!getWorld().isRemote)
             return;
 
-        if (done || !drainEnergy(GAValues.V[tier])) {
+        if (done || !drainEnergy()) {
             if (isActive)
                 setActive(false);
             return;
@@ -99,15 +99,16 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
         if (!isActive)
             setActive(true);
 
-
-        int residual = getResidualOil();
-        if (availableOil() > 0 || residual > 0) {
-            int oilAmnt = availableOil() <= 0 ? residual : availableOil();
-            FluidStack out = new FluidStack(availableFluid(), Math.min(GAConfig.Extraction.pumpjack_speed, oilAmnt));
-            int drained = exportFluidHandler.fill(out, true);
-            extractOil(drained);
-        } else {
-            done = true;
+        if (getTimer() % 20 == 0) {
+            int residual = getResidualOil();
+            if (availableOil() > 0 || residual > 0) {
+                int oilAmnt = availableOil() <= 0 ? residual : availableOil();
+                FluidStack out = new FluidStack(availableFluid(), (int) Math.min(getMaxVoltage(), oilAmnt));
+                int drained = exportFluidHandler.fill(out, true);
+                extractOil(drained);
+            } else {
+                done = true;
+            }
         }
 
 
@@ -175,7 +176,7 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityFluidDrilling(metaTileEntityId, tier);
+        return new MetaTileEntityFluidDrilling(metaTileEntityId);
     }
 
     @Override

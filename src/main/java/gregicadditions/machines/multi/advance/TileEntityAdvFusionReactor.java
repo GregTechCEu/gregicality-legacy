@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
@@ -26,6 +27,7 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
@@ -49,6 +51,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
+
     private EnergyContainerList inputEnergyContainers;
     private int heat = 0;
 
@@ -67,6 +70,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
+
                 .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
                 .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
                 .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
@@ -110,6 +114,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
+
         return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING);
     }
 
@@ -200,6 +205,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
         cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
+
         long energyStored = this.energyContainer.getEnergyStored();
         this.initializeAbilities();
         ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
@@ -238,6 +244,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         int requiredCoilTier = recipe.getIntegerProperty("coil_tier");
         return canWork && this.coilTier >= requiredCoilTier;
     }
+
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
@@ -278,11 +285,13 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
     public class AdvFusionRecipeLogic extends MultiblockRecipeLogic {
 
+
         public AdvFusionRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
         }
 
         @Override
+
         public void updateWorkable() {
             super.updateWorkable();
             if (!isActive && heat > 0) {
