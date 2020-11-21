@@ -330,9 +330,9 @@ metaitem.schematic.2by2.name=设计图（2x2）
 metaitem.schematic.name=空设计图
 
 metaitem.data_stick.tooltip.coords=维度：%s| x:%d, z:%d
-metaitem.data_stick.tooltip.capacity=容量：%d
-metaitem.data_stick.tooltip.current=当前：%d
-metaitem.data_stick.tooltip.fluid=流体：%d
+metaitem.data_stick.tooltip.capacity=最大容量：%d
+metaitem.data_stick.tooltip.current=当前余量：%d
+metaitem.data_stick.tooltip.fluid=流体种类：%d
 
 
 metaitem.unstable.star.name=易变之星
