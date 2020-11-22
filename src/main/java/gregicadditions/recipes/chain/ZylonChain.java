@@ -37,7 +37,7 @@ public class ZylonChain {
                 .fluidInputs(PXylene.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Bromine.getFluid(1000))
-                .fluidInputs(Dibromomethylbenzene.getFluid(3000))
+                .fluidOutputs(Dibromomethylbenzene.getFluid(3000))
                 .EUt(2000000)
                 .duration(150)
                 .buildAndRegister();

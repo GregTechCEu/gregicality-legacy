@@ -102,8 +102,8 @@ public class PEEKChain {
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Acetone.getFluid(1000))
-                .fluidOutputs(Hydroquinone.getFluid(1000))
-                .fluidOutputs(Resorcinol.getFluid(1000))
+                .fluidOutputs(Hydroquinone.getFluid(500))
+                .fluidOutputs(Resorcinol.getFluid(500))
                 .EUt(500000)
                 .duration(200)
                 .buildAndRegister();
