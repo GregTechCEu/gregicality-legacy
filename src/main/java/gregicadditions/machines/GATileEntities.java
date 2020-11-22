@@ -1070,7 +1070,7 @@ public class GATileEntities {
             ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".128"), i, 128, true)));
         }
         //4055
-}
+    }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
         return new MTE<>(GregTechAPI.registerMetaTileEntity(id, sampleMetaTileEntity));
