@@ -145,7 +145,7 @@ public class GATileEntities {
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
-    public static MetaTileEntityFluidDrilling FLUID_DRILLING;
+    public static MetaTileEntityDrillingRig DRILLING_RIG;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
@@ -1042,7 +1042,7 @@ public class GATileEntities {
         QUBIT_COMPUTER = GregTechAPI.registerMetaTileEntity(4022, new MetaTileEntityQubitComputer(location("qubit_computer")));
 
 
-        FLUID_DRILLING = GregTechAPI.registerMetaTileEntity(4023, new MetaTileEntityFluidDrilling(location("fluid_drilling")));
+        DRILLING_RIG = GregTechAPI.registerMetaTileEntity(4023, new MetaTileEntityDrillingRig(location("drilling_rig")));
         SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(4024, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
 
         ENERGY_INPUT[0] = GregTechAPI.registerMetaTileEntity(4025, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uhv"), GAValues.UHV, 2, false));

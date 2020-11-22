@@ -62,7 +62,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             MultiblockAbility.INPUT_ENERGY
     };
 
-    private long maxVoltage = 0;
+    private int maxVoltage = 0;
     protected int heatingCoilLevel = 1;
     protected int heatingCoilDiscount = 1;
 
@@ -113,7 +113,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 if (!CASING1_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                long maxVoltage;
+                int maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_IV:
                         maxVoltage = GAValues.V[GAValues.IV];
@@ -134,7 +134,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
@@ -151,7 +151,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 if (!CASING2_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                long maxVoltage;
+                int maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_UHV:
                         maxVoltage = GAValues.V[GAValues.UHV];
@@ -172,7 +172,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };

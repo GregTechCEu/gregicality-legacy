@@ -6,7 +6,6 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.GALog;
@@ -14,7 +13,6 @@ import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
-import gregicadditions.utils.GALog;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -131,10 +129,10 @@ public class CTUtils {
             }
         }
 
-        res.dimensionBlacklist = dimBlacklist;
-        res.dimensionWhitelist = dimWhitelist;
-        res.biomeBlacklist = biomeBlacklistList.toArray(new String[0]);
-        res.biomeWhitelist = biomeWhitelistList.toArray(new String[0]);
+        res.dimensionBlacklist = Arrays.stream(dimBlacklist).boxed().collect(Collectors.toList());
+        res.dimensionWhitelist = Arrays.stream(dimWhitelist).boxed().collect(Collectors.toList());
+        res.biomeBlacklist = biomeBlacklistList;
+        res.biomeWhitelist = biomeWhitelistList;
 
         CraftTweakerAPI.logInfo("Added Reservoir Type: " + name);
     }

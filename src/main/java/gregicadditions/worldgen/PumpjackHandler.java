@@ -16,12 +16,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
+import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 
 public class PumpjackHandler {
@@ -273,11 +272,11 @@ public class PumpjackHandler {
         public int maxSize;
         public int replenishRate;
 
-        public int[] dimensionWhitelist = new int[0];
-        public int[] dimensionBlacklist = new int[0];
+        public List<Integer> dimensionWhitelist = new ArrayList<>();
+        public List<Integer> dimensionBlacklist = new ArrayList<>();
 
-        public String[] biomeWhitelist = new String[0];
-        public String[] biomeBlacklist = new String[0];
+        public List<String> biomeWhitelist = new ArrayList<>();
+        public List<String> biomeBlacklist = new ArrayList<>();
 
         private Fluid f;
 
@@ -300,13 +299,13 @@ public class PumpjackHandler {
         }
 
         public boolean validDimension(int dim) {
-            if (dimensionWhitelist != null && dimensionWhitelist.length > 0) {
+            if (dimensionWhitelist != null && dimensionWhitelist.size() > 0) {
                 for (int white : dimensionWhitelist) {
                     if (dim == white)
                         return true;
                 }
                 return false;
-            } else if (dimensionBlacklist != null && dimensionBlacklist.length > 0) {
+            } else if (dimensionBlacklist != null && dimensionBlacklist.size() > 0) {
                 for (int black : dimensionBlacklist) {
                     if (dim == black)
                         return false;
@@ -318,7 +317,7 @@ public class PumpjackHandler {
 
         public boolean validBiome(Biome biome) {
             if (biome == null) return false;
-            if (biomeWhitelist != null && biomeWhitelist.length > 0) {
+            if (biomeWhitelist != null && biomeWhitelist.size() > 0) {
                 for (String white : biomeWhitelist) {
                     for (BiomeDictionary.Type biomeType : BiomeDictionary.getTypes(biome)) {
                         if (convertConfigName(white).equals(biomeType.getName()))
@@ -326,7 +325,7 @@ public class PumpjackHandler {
                     }
                 }
                 return false;
-            } else if (biomeBlacklist != null && biomeBlacklist.length > 0) {
+            } else if (biomeBlacklist != null && biomeBlacklist.size() > 0) {
                 for (String black : biomeBlacklist) {
                     for (BiomeDictionary.Type biomeType : BiomeDictionary.getTypes(biome)) {
                         if (convertConfigName(black).equals(biomeType.getName()))
@@ -348,8 +347,8 @@ public class PumpjackHandler {
             tag.setInteger("maxSize", maxSize);
             tag.setInteger("replenishRate", replenishRate);
 
-            tag.setIntArray("dimensionWhitelist", dimensionWhitelist);
-            tag.setIntArray("dimensionBlacklist", dimensionBlacklist);
+            tag.setIntArray("dimensionWhitelist", ArrayUtils.toPrimitive(dimensionWhitelist.toArray(new Integer[0])));
+            tag.setIntArray("dimensionBlacklist", ArrayUtils.toPrimitive(dimensionBlacklist.toArray(new Integer[0])));
 
             NBTTagList wl = new NBTTagList();
             for (String s : biomeWhitelist) {
@@ -376,19 +375,19 @@ public class PumpjackHandler {
 
             ReservoirType res = new ReservoirType(name, fluid, minSize, maxSize, replenishRate);
 
-            res.dimensionWhitelist = tag.getIntArray("dimensionWhitelist");
-            res.dimensionBlacklist = tag.getIntArray("dimensionBlacklist");
+            res.dimensionWhitelist = Arrays.stream(tag.getIntArray("dimensionWhitelist")).boxed().collect(Collectors.toList());
+            res.dimensionBlacklist = Arrays.stream(tag.getIntArray("dimensionBlacklist")).boxed().collect(Collectors.toList());
 
             NBTTagList wl = (NBTTagList) tag.getTag("biomeWhitelist");
-            res.biomeWhitelist = new String[wl.tagCount()];
+            res.biomeWhitelist = new ArrayList<>(wl.tagCount());
             for (int i = 0; i < wl.tagCount(); i++) {
-                res.biomeWhitelist[i] = wl.getStringTagAt(i);
+                res.biomeWhitelist.add(i, wl.getStringTagAt(i));
             }
 
             NBTTagList bl = (NBTTagList) tag.getTag("biomeBlacklist");
-            res.biomeBlacklist = new String[bl.tagCount()];
+            res.biomeBlacklist = new ArrayList<>(bl.tagCount());
             for (int i = 0; i < bl.tagCount(); i++) {
-                res.biomeBlacklist[i] = bl.getStringTagAt(i);
+                res.biomeBlacklist.add(i, bl.getStringTagAt(i));
             }
 
 
