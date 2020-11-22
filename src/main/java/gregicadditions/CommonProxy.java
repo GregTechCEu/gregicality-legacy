@@ -21,21 +21,17 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.IOException;
@@ -204,21 +200,6 @@ public class CommonProxy {
                     packetMap.put(e.getKey(), e.getValue());
             }
             NetworkHandler.INSTANCE.sendToAll(new MessageReservoirListSync(packetMap));
-        }
-    }
-
-    @Mod.EventHandler
-    public void serverStarted(FMLServerStartedEvent event) {
-        if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-            World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
-            if (!world.isRemote) {
-                IPSaveData worldData = (IPSaveData) world.loadData(IPSaveData.class, IPSaveData.dataName);
-                if (worldData == null) {
-                    worldData = new IPSaveData(IPSaveData.dataName);
-                    world.setData(IPSaveData.dataName, worldData);
-                }
-                IPSaveData.setInstance(world.provider.getDimension(), worldData);
-            }
         }
     }
 

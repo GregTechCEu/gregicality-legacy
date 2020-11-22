@@ -1,6 +1,11 @@
 package gregicadditions.machines.multi;
 
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAUtility;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.capability.IEnergyContainer;
@@ -16,6 +21,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -39,6 +45,7 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
     private boolean isActive = false;
     private boolean done = false;
     private static PumpjackHandler.OilWorldInfo oilWorldInfo;
+
 
     public MetaTileEntityFluidDrilling(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -81,7 +88,8 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
     }
 
     public long getMaxVoltage() {
-        return energyContainer.getInputVoltage();
+        int tier = GAUtility.getTierByVoltage(energyContainer.getInputVoltage());
+        return GAValues.V[tier];
     }
 
     @Override
@@ -112,8 +120,6 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
                 done = true;
             }
         }
-
-
     }
 
     public int availableOil() {
@@ -208,5 +214,11 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
             this.isActive = buf.readBoolean();
             getHolder().scheduleChunkForRenderUpdate();
         }
+    }
+
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        super.renderMetaTileEntity(renderState, translation, pipeline);
+        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
     }
 }

@@ -5,7 +5,6 @@ import gregicadditions.GAValues;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
-import gregicadditions.utils.GALog;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
@@ -34,7 +33,6 @@ public class NuclearHandler {
         if (isotopeMaterial == null) {
             return;
         }
-        GALog.logger.info(isotopeMaterial.toString());
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelTRISO, 1))
                 .fluidInputs(Fluorine.getFluid(2000))

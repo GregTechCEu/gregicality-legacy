@@ -3,6 +3,7 @@ package gregicadditions.worldgen;
 import gregicadditions.network.IPSaveData;
 import gregicadditions.network.MessageReservoirListSync;
 import gregicadditions.network.NetworkHandler;
+import gregicadditions.utils.GALog;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
@@ -407,6 +408,7 @@ public class PumpjackHandler {
         }
 
         public NBTTagCompound writeToNBT() {
+            GALog.logger.info("write oilinfo");
             NBTTagCompound tag = new NBTTagCompound();
             tag.setInteger("capacity", capacity);
             tag.setInteger("oil", current);
@@ -420,6 +422,7 @@ public class PumpjackHandler {
         }
 
         public static OilWorldInfo readFromNBT(NBTTagCompound tag) {
+            GALog.logger.info("read oilinfo");
             OilWorldInfo info = new OilWorldInfo();
             info.capacity = tag.getInteger("capacity");
             info.current = tag.getInteger("oil");
