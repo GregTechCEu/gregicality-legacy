@@ -87,8 +87,10 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
     @Override
     protected void updateFormedValid() {
 
-        if (!getWorld().isRemote)
+
+        if (getWorld().isRemote) {
             return;
+        }
 
         if (done || !drainEnergy()) {
             if (isActive)
