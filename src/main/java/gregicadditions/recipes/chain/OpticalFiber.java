@@ -66,12 +66,14 @@ public class OpticalFiber {
                 .fluidInputs(Argon.getFluid(1000))
                 .inputs(ZBLANDust.getItemStack(1))
                 .outputs(ZBLAN.getStackForm(1))
+                .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(262000).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
                 .inputs(ErbiumDopedZBLANDust.getItemStack(1))
                 .outputs(ERBIUM_DOPED_ZBLAN.getStackForm(1))
+                .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         FORMING_PRESS_RECIPES.recipeBuilder().EUt(4000).duration(2000)
@@ -84,6 +86,7 @@ public class OpticalFiber {
                 .fluidInputs(Oxygen.getFluid(1000))
                 .inputs(ZBLAN_INGOT.getStackForm(1))
                 .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm(1))
+                .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         EXTRUDER_RECIPES.recipeBuilder().EUt(4000).duration(2000)

@@ -9,16 +9,17 @@ import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.integrations.opencomputers.OpenComputersCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.network.IPSaveData;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
@@ -28,6 +29,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
@@ -113,7 +116,7 @@ public class Gregicality {
             GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
-        if (Loader.isModLoaded("opencomputers")){
+        if (Loader.isModLoaded("opencomputers")) {
             openComputersProxy.init();
         }
         CoverBehaviors.init();
@@ -125,6 +128,21 @@ public class Gregicality {
     public void postInit(FMLPostInitializationEvent event) {
         PumpjackHandler.recalculateChances(true);
 
+    }
+
+    @Mod.EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+            World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
+            if (!world.isRemote) {
+                IPSaveData worldData = (IPSaveData) world.loadData(IPSaveData.class, IPSaveData.dataName);
+                if (worldData == null) {
+                    worldData = new IPSaveData(IPSaveData.dataName);
+                    world.setData(IPSaveData.dataName, worldData);
+                }
+                IPSaveData.setInstance(world.provider.getDimension(), worldData);
+            }
+        }
     }
 
 

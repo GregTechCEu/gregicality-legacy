@@ -32,8 +32,7 @@ public class GAVacuumCasing extends VariantBlock<GAVacuumCasing.CasingType> {
         VACUUM_2("vacuum_2", 2),
         VACUUM_3("vacuum_3", 3),
         VACUUM_4("vacuum_4", 4),
-        VACUUM_5("vacuum_5", 5),
-        VACUUM_6("vacuum_6", 6);
+        VACUUM_5("vacuum_5", 5);
 
 
         private final String name;
