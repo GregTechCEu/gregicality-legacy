@@ -214,7 +214,7 @@ metaitem.sterilized.petri.dish.name=Sterilized Petri Dish
 metaitem.contaminated.petri.dish.name=Contaminated Preti Dish
 metaitem.clean.culture.name=Clean Culture
 metaitem.piezoelectric.crystal.name=Piezoelectric Crystal
-metaitem.pyrolitic_carbon.name=Pyrolitic Carbon
+metaitem.pyrolytic_carbon.name=Pyrolytic Carbon
 
 
 metaitem.electrode.apatite.name=Apatine Electrode
@@ -1710,7 +1710,7 @@ gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
 gregtech.fluid.hexafluoride=%s Hexafluoride
 gregtech.fluid.depleted_fuel_nitrate_solution=%s Depleted Fuel Nitrate Solution
-gregtech.fluid.hexafluoride_steam_cracked=%s Hexafluoride Steam Cracked
+gregtech.fluid.hexafluoride_steam_cracked=Steam-Cracked Hexafluoride %s
 
 item.epoxid.ingot=Epoxy Resin Bar
 item.epoxid.dustTiny=Tiny Pile of Epoxy Resin Pulp

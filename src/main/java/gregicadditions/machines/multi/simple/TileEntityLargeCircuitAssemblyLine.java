@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.simple;
 
+import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
@@ -8,7 +9,6 @@ import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -95,8 +95,29 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 if (!CASING1_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                GAMultiblockCasing.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
-                return currentCoilType.getName().equals(tieredCasingType.getName());
+                long maxVoltage;
+                switch (tieredCasingType) {
+                    case TIERED_HULL_IV:
+                        maxVoltage = GAValues.V[GAValues.IV];
+                        break;
+                    case TIERED_HULL_LUV:
+                        maxVoltage = GAValues.V[GAValues.LuV];
+                        break;
+                    case TIERED_HULL_ZPM:
+                        maxVoltage = GAValues.V[GAValues.ZPM];
+                        break;
+                    case TIERED_HULL_UV:
+                        maxVoltage = GAValues.V[GAValues.UV];
+                        break;
+                    case TIERED_HULL_MAX:
+                        maxVoltage = GAValues.V[GAValues.MAX];
+                        break;
+                    default:
+                        maxVoltage = 0;
+                        break;
+                }
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                return currentMaxVoltage == maxVoltage;
             }
         };
     }
@@ -112,8 +133,29 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 if (!CASING2_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                GAMultiblockCasing2.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
-                return currentCoilType.getName().equals(tieredCasingType.getName());
+                long maxVoltage;
+                switch (tieredCasingType) {
+                    case TIERED_HULL_UHV:
+                        maxVoltage = GAValues.V[GAValues.UHV];
+                        break;
+                    case TIERED_HULL_UEV:
+                        maxVoltage = GAValues.V[GAValues.UEV];
+                        break;
+                    case TIERED_HULL_UIV:
+                        maxVoltage = GAValues.V[GAValues.UIV];
+                        break;
+                    case TIERED_HULL_UMV:
+                        maxVoltage = GAValues.V[GAValues.UMV];
+                        break;
+                    case TIERED_HULL_UXV:
+                        maxVoltage = GAValues.V[GAValues.UXV];
+                        break;
+                    default:
+                        maxVoltage = 0;
+                        break;
+                }
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                return currentMaxVoltage == maxVoltage;
             }
         };
     }
@@ -121,27 +163,8 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
-        switch (currentTier) {
-            case TIERED_HULL_IV:
-                maxVoltage = GTValues.V[GTValues.IV];
-                break;
-            case TIERED_HULL_LUV:
-                maxVoltage = GTValues.V[GTValues.LuV];
-                break;
-            case TIERED_HULL_ZPM:
-                maxVoltage = GTValues.V[GTValues.ZPM];
-                break;
-            case TIERED_HULL_UV:
-                maxVoltage = GTValues.V[GTValues.UV];
-                break;
-            case TIERED_HULL_MAX:
-                maxVoltage = GTValues.V[GTValues.MAX];
-                break;
-            default:
-                maxVoltage = 0;
-                break;
-        }
+        maxVoltage = context.getOrDefault("maxVoltage", 0);
+
     }
 
     @Override

@@ -147,7 +147,7 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
-            fluidStack.amount = Math.max(64000, fluidStack.amount * 4);
+            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
 
             //BIOWARE     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
@@ -215,7 +215,7 @@ public class Circuits {
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1296))
                 .fluidInputs(Plastic.getFluid(2500))
-                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .EUt(240000)
                 .duration(400)
                 .buildAndRegister();
@@ -238,7 +238,7 @@ public class Circuits {
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Tritanium.getFluid(288))
                 .fluidInputs(Polybenzimidazole.getFluid(1500))
-                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .EUt(480000)
                 .duration(600)
                 .buildAndRegister();
@@ -260,9 +260,9 @@ public class Circuits {
                 .inputs(UNSTABLE_STAR.getStackForm())
                 .outputs(BIOWARE_MAINFRAME.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Tritanium.getFluid(1000))
+                .fluidInputs(Tritanium.getFluid(1296))
                 .fluidInputs(Polybenzimidazole.getFluid(2500))
-                .fluidInputs(Naquadria.getFluid(1000))
+                .fluidInputs(Naquadria.getFluid(1296))
                 .EUt(1500000)
                 .duration(800)
                 .buildAndRegister();
@@ -282,9 +282,9 @@ public class Circuits {
                 .input(foil, Polybenzimidazole, 16)
                 .outputs(COSMIC_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1000))
+                .fluidInputs(Titanium.getFluid(1296))
                 .fluidInputs(Plastic.getFluid(2500))
-                .fluidInputs(NaquadahEnriched.getFluid(1000))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .qubit(16)
                 .EUt(240000)
                 .duration(400)
