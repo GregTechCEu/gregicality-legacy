@@ -6,6 +6,7 @@ import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -36,9 +37,9 @@ public abstract class GATieredMetaTileEntity extends MetaTileEntity implements I
     protected void reinitializeEnergyContainer() {
         long tierVoltage = GAValues.V[tier];
         if (isEnergyEmitter()) {
-            this.energyContainer = EnergyContainerHandler.emitterContainer(this,
+            this.energyContainer = GAEnergyContainerHandler.emitterContainer(this,
                     tierVoltage * 32L, tierVoltage, getMaxInputOutputAmperage());
-        } else this.energyContainer = EnergyContainerHandler.receiverContainer(this,
+        } else this.energyContainer = GAEnergyContainerHandler.receiverContainer(this,
                 tierVoltage * 32L, tierVoltage, getMaxInputOutputAmperage());
     }
 

@@ -7,7 +7,7 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.energy.MetaTileEntityTransformer;
+import gregicadditions.machines.energy.GAMetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.ConverterType;
@@ -35,6 +35,7 @@ import gregicadditions.machines.overrides.GAMetaTileEntityHull;
 import gregicadditions.machines.overrides.GASimpleMachineMetaTileEntity;
 import gregicadditions.machines.overrides.SimpleGeneratorWithLossMetaTileEntity;
 import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
@@ -164,10 +165,10 @@ public class GATileEntities {
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
-    public static List<MetaTileEntityTransformer> TRANSFORMER_16_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_16_AMPS = new ArrayList<>();
     public static MetaTileEntityElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
     public static MetaTileEntityVacuumFreezer VACUUM_FREEZER;
     public static MetaTileEntityImplosionCompressor IMPLOSION_COMPRESSOR;
@@ -945,10 +946,10 @@ public class GATileEntities {
 
         for (int i = 0; i < GTValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
             if (i > 0) {
-                TRANSFORMER_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".4"), i, 4, 16)));
-                TRANSFORMER_8_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".8"), i, 8, 32)));
-                TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
-                TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
+                TRANSFORMER_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".4"), i, 4, 16)));
+                TRANSFORMER_8_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".8"), i, 8, 32)));
+                TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
+                TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GTValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
             }
         }
         for (int i = 0; i < GTValues.V.length - 1; i++) {
@@ -1070,6 +1071,23 @@ public class GATileEntities {
             ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".128"), i, 128, true)));
         }
         //4055
+        for (final ConverterType t : ConverterType.values()) {
+            for (int tier = t.getMaxTier(); tier < GAValues.V.length - 1; ++tier) {
+                for (int value : GAConfig.energyConverter.values) {
+                    final String vn = GAValues.VN[tier].toLowerCase();
+                    Long voltage = ((long) GAValues.V[tier] * value * GAConfig.energyConverter.RatioEUtoRF);
+                    if (voltage.compareTo((long) Integer.MAX_VALUE) > 0) continue;
+                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
+                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
+                }
+            }
+        }
+        for (int i = 9; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
+            TRANSFORMER_4_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".4"), i, 4, 16)));
+            TRANSFORMER_8_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".8"), i, 8, 32)));
+            TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
+            TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
