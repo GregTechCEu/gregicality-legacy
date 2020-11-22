@@ -134,7 +134,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
@@ -172,7 +172,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
