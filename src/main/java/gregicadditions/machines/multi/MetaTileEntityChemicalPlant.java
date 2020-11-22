@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
@@ -128,7 +129,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 if (!CASING2_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                GAMultiblockCasing2.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
+                GAMultiblockCasing2.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing2", tieredCasingType);
                 return currentCoilType.getName().equals(tieredCasingType.getName());
             }
         };
@@ -150,6 +151,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
+        GAMultiblockCasing2.CasingType currentTier2 = context.getOrDefault("TieredCasing2", GAMultiblockCasing2.CasingType.TIERED_HULL_UHV);
         switch (currentTier) {
             case TIERED_HULL_LV:
                 maxVoltage = GTValues.V[GTValues.LV];
@@ -177,6 +179,23 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 break;
             default:
                 maxVoltage = 0;
+                break;
+        }
+        switch (currentTier2) {
+            case TIERED_HULL_UHV:
+                maxVoltage = GAValues.V[GAValues.UHV];
+                break;
+            case TIERED_HULL_UEV:
+                maxVoltage = GAValues.V[GAValues.UEV];
+                break;
+            case TIERED_HULL_UIV:
+                maxVoltage = GAValues.V[GAValues.UIV];
+                break;
+            case TIERED_HULL_UMV:
+                maxVoltage = GAValues.V[GAValues.UMV];
+                break;
+            case TIERED_HULL_UXV:
+                maxVoltage = GAValues.V[GAValues.UXV];
                 break;
         }
         BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
