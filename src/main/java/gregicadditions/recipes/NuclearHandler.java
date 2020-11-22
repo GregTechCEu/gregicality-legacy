@@ -15,7 +15,7 @@ import gregtech.api.unification.ore.OrePrefix;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.PYROLITIC_CARBON;
+import static gregicadditions.item.GAMetaItems.PYROLYTIC_CARBON;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -166,7 +166,7 @@ public class NuclearHandler {
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelCarbide, 1))
-                .inputs(PYROLITIC_CARBON.getStackForm())
+                .inputs(PYROLYTIC_CARBON.getStackForm())
                 .input(dust, Graphite)
                 .inputs(SiliconCarbide.getItemStack())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelTRISO, 1))
