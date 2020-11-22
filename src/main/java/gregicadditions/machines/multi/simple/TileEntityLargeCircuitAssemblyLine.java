@@ -116,7 +116,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
@@ -154,7 +154,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                         maxVoltage = 0;
                         break;
                 }
-                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", 0);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
@@ -163,7 +163,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        maxVoltage = context.getOrDefault("maxVoltage", 0);
+        maxVoltage = context.getOrDefault("maxVoltage", 0L);
 
     }
 
