@@ -992,11 +992,11 @@ public class GATileEntities {
             GREEN_HOUSE[5] = create(3216, new SimpleMachineMetaTileEntity(location("green_house.luv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 6));
             GREEN_HOUSE[6] = create(3217, new SimpleMachineMetaTileEntity(location("green_house.zpm"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 7));
             GREEN_HOUSE[7] = create(3218, new SimpleMachineMetaTileEntity(location("green_house.uv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 8));
-            GREEN_HOUSE[8] = create(3459, new GASimpleMachineMetaTileEntity(location("green_house.uhv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 9));
-            GREEN_HOUSE[9] = create(3460, new GASimpleMachineMetaTileEntity(location("green_house.uev"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 10));
-            GREEN_HOUSE[10] = create(3461, new GASimpleMachineMetaTileEntity(location("green_house.uiv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 11));
-            GREEN_HOUSE[11] = create(3462, new GASimpleMachineMetaTileEntity(location("green_house.umv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 12));
-            GREEN_HOUSE[12] = create(3463, new GASimpleMachineMetaTileEntity(location("green_house.uxv"), GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.FERMENTER_OVERLAY, 13));
+            GREEN_HOUSE[8] = create(3459, new GASimpleMachineMetaTileEntity(location("green_house.uhv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 9));
+            GREEN_HOUSE[9] = create(3460, new GASimpleMachineMetaTileEntity(location("green_house.uev"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 10));
+            GREEN_HOUSE[10] = create(3461, new GASimpleMachineMetaTileEntity(location("green_house.uiv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 11));
+            GREEN_HOUSE[11] = create(3462, new GASimpleMachineMetaTileEntity(location("green_house.umv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 12));
+            GREEN_HOUSE[12] = create(3463, new GASimpleMachineMetaTileEntity(location("green_house.uxv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 13));
 
         }
 
