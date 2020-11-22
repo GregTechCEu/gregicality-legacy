@@ -291,6 +291,7 @@ metaitem.component.smd.transistor.wetware.name=湿件贴片晶体管
 metaitem.component.smd.transistor.quantum.name=量子贴片晶体管
 metaitem.component.smd.transistor.crystal.name=晶体贴片晶体管
 metaitem.component.smd.transistor.refined.name=精制贴片晶体管
+metaitem.component.smd.transistor.bioware.name=生物活性贴片晶体管
 
 metaitem.component.smd.diode.name=微型贴片二极管
 metaitem.component.smd.capacitor.name=微型贴片电容
