@@ -147,7 +147,7 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
-            fluidStack.amount = Math.max(64000, fluidStack.amount * 4);
+            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
 
             //BIOWARE     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
