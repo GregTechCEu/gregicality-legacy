@@ -4,8 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -14,7 +14,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.PipelineUtil;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,9 +34,9 @@ public class GAMetaTileEntityEnergyHatch extends GAMetaTileEntityMultiblockPart 
         this.isExportHatch = isExportHatch;
         this.amps = amps;
         if (isExportHatch) {
-            this.energyContainer = EnergyContainerHandler.emitterContainer(this, GAValues.V[tier] * amps * 128L, GAValues.V[tier], amps);
+            this.energyContainer = GAEnergyContainerHandler.emitterContainer(this, GAValues.V[tier] * (long) amps * 128L, GAValues.V[tier], amps);
         } else {
-            this.energyContainer = EnergyContainerHandler.receiverContainer(this, GAValues.V[tier] * amps * 16L, GAValues.V[tier], amps);
+            this.energyContainer = GAEnergyContainerHandler.receiverContainer(this, GAValues.V[tier] * (long) amps * 16L, GAValues.V[tier], amps);
         }
     }
 
