@@ -330,6 +330,7 @@ metaitem.schematic.3by3.name=设计图（3x3）
 metaitem.schematic.2by2.name=设计图（2x2）
 metaitem.schematic.name=空设计图
 
+metaitem.data_stick.tooltip.empty=空区块
 metaitem.data_stick.tooltip.coords=%s: %d, %d
 metaitem.data_stick.tooltip.capacity=最大容量：%dmB
 metaitem.data_stick.tooltip.current=当前余量：%dmB
@@ -1001,8 +1002,18 @@ recipemap.decay_chamber.name=衰变室
 recipemap.green_house.name=温室
 recipemap.bio_reactor.name=生物反应器
 
+gtadditions.recipe.drilling_rig.fluid=%s
+gtadditions.recipe.drilling_rig.dimension_whitelist=维度白名单：%s
+gtadditions.recipe.drilling_rig.dimension_blacklist=维度黑名单%s
+gtadditions.recipe.drilling_rig.biome_whitelist=生物群系白名单：%s
+gtadditions.recipe.drilling_rig.biome_blacklist=生物群系黑名单：%s
+gtadditions.recipe.drilling_rig.min_size=最小尺寸：%d
+gtadditions.recipe.drilling_rig.max_size=最大尺寸：%d
+gtadditions.recipe.drilling_rig.replenish_rate=补充率：%d
+gtadditions.recipe.drilling_rig.weight=权重：%d
 gregtech.recipe.base_heat_production=堆温：%dC
 gregtech.recipe.hot_coolant=热冷却液温度：%dC
+
 
 material.brick=砖
 material.fireclay=耐火粘土
@@ -2779,6 +2790,7 @@ gtadditions.machine.hull.uev.name=UEV机械方块
 gtadditions.machine.hull.uiv.name=UIV机械方块
 gtadditions.machine.hull.umv.name=UMV机械方块
 gtadditions.machine.hull.uxv.name=UXV机械方块
+gtadditions.machine.drilling_rig.name=钻井平台
 
 
 
