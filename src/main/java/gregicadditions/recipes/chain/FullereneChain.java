@@ -141,15 +141,8 @@ public class FullereneChain {
                 .EUt(122880)
                 .duration(250)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Potassium, 1)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(PotassiumChloride.getFluid(2000))
-                .EUt(122880)
-                .duration(250)
-                .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(PotassiumChloride.getFluid(2000))
+                .input(dust, RockSalt, 2)
                 .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(2000))
                 .fluidOutputs(Chlorine.getFluid(1000))

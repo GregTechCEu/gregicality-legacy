@@ -53,11 +53,12 @@ public class RheniumChain {
                 .duration(10)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(ChlorideLeachedSolution.getFluid(4000))
+                .fluidInputs(ChlorideLeachedSolution.getFluid(5000))
                 .outputs(OreDictUnifier.get(dust, CalciumChloride))
                 .outputs(CopperChloride.getItemStack())
                 .outputs(LeadChloride.getItemStack())
                 .outputs(BismuthChloride.getItemStack())
+                .fluidOutputs(IronChloride.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();

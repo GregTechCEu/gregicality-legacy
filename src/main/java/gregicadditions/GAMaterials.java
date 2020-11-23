@@ -604,7 +604,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Propylene = new SimpleFluidMaterial("propylene", 0x755f30);
     public static final SimpleFluidMaterial SodiumAcetate = new SimpleFluidMaterial("sodium_acetate", 0x755f30);
     public static final SimpleFluidMaterial PotassiumHydroxide = new SimpleFluidMaterial("potassium_hydroxide", 0x755f30);
-    public static final SimpleFluidMaterial PotassiumChloride = new SimpleFluidMaterial("potassium_chloride", 0x755f30);
     public static final SimpleFluidMaterial Methylamine = new SimpleFluidMaterial("methylamine", 0x755f30);
     public static final SimpleFluidMaterial Phosgene = new SimpleFluidMaterial("phosgene", 0x755f30);
     public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);
