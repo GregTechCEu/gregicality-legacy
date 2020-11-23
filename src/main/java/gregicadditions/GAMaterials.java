@@ -484,7 +484,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", 0x2d4228, (short) 42, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", 0x377528, (short) 43, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumCarbonate = new SimpleDustMaterial("sodium_carbonate", 0x5d5db3, (short) 45, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 54, MaterialIconSet.DULL);
@@ -605,7 +604,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Propylene = new SimpleFluidMaterial("propylene", 0x755f30);
     public static final SimpleFluidMaterial SodiumAcetate = new SimpleFluidMaterial("sodium_acetate", 0x755f30);
     public static final SimpleFluidMaterial PotassiumHydroxide = new SimpleFluidMaterial("potassium_hydroxide", 0x755f30);
-    public static final SimpleFluidMaterial PotassiumChloride = new SimpleFluidMaterial("potassium_chloride", 0x755f30);
     public static final SimpleFluidMaterial Methylamine = new SimpleFluidMaterial("methylamine", 0x755f30);
     public static final SimpleFluidMaterial Phosgene = new SimpleFluidMaterial("phosgene", 0x755f30);
     public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);

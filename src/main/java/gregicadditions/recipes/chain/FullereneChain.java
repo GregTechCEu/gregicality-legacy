@@ -141,15 +141,8 @@ public class FullereneChain {
                 .EUt(122880)
                 .duration(250)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Potassium, 1)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(PotassiumChloride.getFluid(2000))
-                .EUt(122880)
-                .duration(250)
-                .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(PotassiumChloride.getFluid(2000))
+                .input(dust, RockSalt, 2)
                 .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(2000))
                 .fluidOutputs(Chlorine.getFluid(1000))
@@ -184,6 +177,14 @@ public class FullereneChain {
                 .fluidOutputs(Ferrocenylfulleropyrrolidine.getFluid(5000))
                 .EUt(8000000)
                 .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, SodiumHydroxide)
+                .fluidInputs(Ethanol.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(SodiumEthoxide.getItemStack())
+                .EUt(500000)
+                .duration(10)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methylamine.getFluid(1000))

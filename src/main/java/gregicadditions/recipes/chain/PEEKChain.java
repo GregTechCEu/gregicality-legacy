@@ -65,7 +65,8 @@ public class PEEKChain {
                 .fluidInputs(FluoroBenzene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
-                .fluidOutputs(Fluorotoluene.getFluid(3000))
+                .fluidOutputs(Fluorotoluene.getFluid(2000))
+                .outputs(AntimonyTrifluoride.getItemStack(1))
                 .EUt(500000)
                 .duration(150)
                 .buildAndRegister();
@@ -79,19 +80,20 @@ public class PEEKChain {
                 .duration(500)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(ZnFeAlClCatalyst.getItemStack())
-                .fluidInputs(Chlorine.getFluid(1000))
-                .fluidInputs(Water.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(Water.getFluid(1500))
+                .fluidInputs(Chlorine.getFluid(1500))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
-                .outputs(Difluorobenzophenone.getItemStack(4))
+                .fluidInputs(FluoroBenzene.getFluid(1000))
+                .notConsumable(ZnFeAlClCatalyst.getItemStack())
+                .outputs(Difluorobenzophenone.getItemStack(1))
+                .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .EUt(500000)
-                .duration(200)
+                .duration(100)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .inputs(Difluorobenzophenone.getItemStack())
-                .inputs(SodiumCarbonate.getItemStack())
+                .input(dust, SodaAsh)
                 .fluidOutputs(Polyetheretherketone.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride))
                 .EUt(500000)
@@ -106,6 +108,14 @@ public class PEEKChain {
                 .fluidOutputs(Resorcinol.getFluid(500))
                 .EUt(500000)
                 .duration(200)
+                .buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .inputs(MgClBrominide.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, Magnesium))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(1000))
+                .EUt(1920)
+                .duration(100)
                 .buildAndRegister();
     }
 }
