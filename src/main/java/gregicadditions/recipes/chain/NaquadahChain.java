@@ -206,12 +206,12 @@ public class NaquadahChain {
                 .duration(750)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(NaquadriaCesiumfluoride.getFluid(6000))
-                .outputs(OreDictUnifier.get(dust, Naquadria))
-                .fluidOutputs(Fluorine.getFluid(2500))
-                .fluidOutputs(Caesium.getFluid(2500))
+                .fluidInputs(NaquadriaCesiumfluoride.getFluid(12000))
+                .outputs(OreDictUnifier.get(dust, Naquadria, 2))
+                .fluidOutputs(Fluorine.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, Caesium, 5))
                 .EUt(7680)
-                .duration(500)
+                .duration(800)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(RadonTrioxide.getFluid(4000))

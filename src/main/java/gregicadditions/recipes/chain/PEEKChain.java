@@ -84,6 +84,7 @@ public class PEEKChain {
                 .fluidInputs(Chlorine.getFluid(1500))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
                 .fluidInputs(FluoroBenzene.getFluid(1000))
+                .notConsumable(ZnFeAlClCatalyst.getItemStack())
                 .outputs(Difluorobenzophenone.getItemStack(1))
                 .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .EUt(500000)
