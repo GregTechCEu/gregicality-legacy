@@ -32,6 +32,7 @@ import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -91,6 +92,12 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         this.importFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.IMPORT_FLUIDS));
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
+    }
+
+    @Override
+    public int getActualComparatorValue() {
+        float f = temperature / (maxTemperature * 1.0f);
+        return MathHelper.floor(f * 14.0f) + (temperature > 0 ? 1 : 0);
     }
 
     private void resetTileAbilities() {
