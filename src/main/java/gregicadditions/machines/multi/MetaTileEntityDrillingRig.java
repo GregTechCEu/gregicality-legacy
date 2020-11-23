@@ -34,7 +34,7 @@ import java.util.List;
 
 import static gregtech.api.unification.material.Materials.Steel;
 
-public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
+public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
@@ -47,7 +47,7 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
     private static PumpjackHandler.OilWorldInfo oilWorldInfo;
 
 
-    public MetaTileEntityFluidDrilling(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityDrillingRig(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
         reinitializeStructurePattern();
     }
@@ -184,7 +184,7 @@ public class MetaTileEntityFluidDrilling extends MultiblockWithDisplayBase {
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityFluidDrilling(metaTileEntityId);
+        return new MetaTileEntityDrillingRig(metaTileEntityId);
     }
 
     @Override

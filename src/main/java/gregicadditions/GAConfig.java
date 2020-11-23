@@ -3,7 +3,6 @@ package gregicadditions;
 import gregicadditions.worldgen.PumpjackHandler;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.fluids.FluidRegistry;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1265,10 +1264,10 @@ public class GAConfig {
             }
 
             PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(name, fluid, min, max, replenish, weight);
-            res.dimensionWhitelist = ArrayUtils.toPrimitive(dimWhitelist.toArray(new Integer[0]));
-            res.dimensionBlacklist = ArrayUtils.toPrimitive(dimBlacklist.toArray(new Integer[0]));
-            res.biomeWhitelist = biomeWhitelist.toArray(new String[0]);
-            res.biomeBlacklist = biomeBlacklist.toArray(new String[0]);
+            res.dimensionWhitelist = dimWhitelist;
+            res.dimensionBlacklist = dimBlacklist;
+            res.biomeWhitelist = biomeWhitelist;
+            res.biomeBlacklist = biomeBlacklist;
 
             System.out.println("Added resevoir type " + name);
         }

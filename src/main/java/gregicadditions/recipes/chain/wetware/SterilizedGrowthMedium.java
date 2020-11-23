@@ -20,7 +20,7 @@ public class SterilizedGrowthMedium {
                 .buildAndRegister();
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .fluidInputs(SilicaGelBase.getFluid(1000))
-                .inputs(SilicaGel.getItemStack())
+                .outputs(SilicaGel.getItemStack())
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();

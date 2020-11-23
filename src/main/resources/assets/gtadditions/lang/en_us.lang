@@ -330,6 +330,7 @@ metaitem.schematic.3by3.name=Schematic (3x3)
 metaitem.schematic.2by2.name=Schematic (2x2)
 metaitem.schematic.name=Blank Schematic
 
+metaitem.data_stick.tooltip.empty=Empty Chunk
 metaitem.data_stick.tooltip.coords=%s: %d, %d
 metaitem.data_stick.tooltip.capacity=Capacity: %dmB
 metaitem.data_stick.tooltip.current=Current: %dmB
@@ -1109,6 +1110,7 @@ gtadditions.machine.hull.uev.name=UEV Machine Hull
 gtadditions.machine.hull.uiv.name=UIV Machine Hull
 gtadditions.machine.hull.umv.name=UMV Machine Hull
 gtadditions.machine.hull.uxv.name=UXV Machine Hull
+gtadditions.machine.drilling_rig.name=Drilling Rig
 
 
 
@@ -1242,6 +1244,16 @@ recipemap.nuclear_breeder.name=Nuclear Reactor Breeder
 recipemap.decay_chamber.name=Decay Chamber
 recipemap.green_house.name=Green House
 recipemap.bio_reactor.name=Bio Reactor
+
+gtadditions.recipe.drilling_rig.fluid=%s
+gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
+gtadditions.recipe.drilling_rig.dimension_blacklist=Dimension Blacklist:%s
+gtadditions.recipe.drilling_rig.biome_whitelist=Biome Whitelist:%s
+gtadditions.recipe.drilling_rig.biome_blacklist=Biome Blacklist:%s
+gtadditions.recipe.drilling_rig.min_size=Min Size: %d
+gtadditions.recipe.drilling_rig.max_size=Max Size: %d
+gtadditions.recipe.drilling_rig.replenish_rate=Replenish Rate: %d
+gtadditions.recipe.drilling_rig.weight=Weight: %d
 
 
 gregtech.recipe.base_heat_production=Heat: %dC
