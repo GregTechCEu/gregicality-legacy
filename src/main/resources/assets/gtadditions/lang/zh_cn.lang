@@ -291,6 +291,7 @@ metaitem.component.smd.transistor.wetware.name=湿件贴片晶体管
 metaitem.component.smd.transistor.quantum.name=量子贴片晶体管
 metaitem.component.smd.transistor.crystal.name=晶体贴片晶体管
 metaitem.component.smd.transistor.refined.name=精制贴片晶体管
+metaitem.component.smd.transistor.bioware.name=生物活性贴片晶体管
 
 metaitem.component.smd.diode.name=微型贴片二极管
 metaitem.component.smd.capacitor.name=微型贴片电容
@@ -329,9 +330,10 @@ metaitem.schematic.3by3.name=设计图（3x3）
 metaitem.schematic.2by2.name=设计图（2x2）
 metaitem.schematic.name=空设计图
 
-metaitem.data_stick.tooltip.coords=维度：%s| x:%d, z:%d
-metaitem.data_stick.tooltip.capacity=最大容量：%d
-metaitem.data_stick.tooltip.current=当前余量：%d
+metaitem.data_stick.tooltip.empty=空区块
+metaitem.data_stick.tooltip.coords=%s: %d, %d
+metaitem.data_stick.tooltip.capacity=最大容量：%dmB
+metaitem.data_stick.tooltip.current=当前余量：%dmB
 metaitem.data_stick.tooltip.fluid=流体种类：%d
 
 
@@ -1000,8 +1002,18 @@ recipemap.decay_chamber.name=衰变室
 recipemap.green_house.name=温室
 recipemap.bio_reactor.name=生物反应器
 
+gtadditions.recipe.drilling_rig.fluid=%s
+gtadditions.recipe.drilling_rig.dimension_whitelist=维度白名单：%s
+gtadditions.recipe.drilling_rig.dimension_blacklist=维度黑名单%s
+gtadditions.recipe.drilling_rig.biome_whitelist=生物群系白名单：%s
+gtadditions.recipe.drilling_rig.biome_blacklist=生物群系黑名单：%s
+gtadditions.recipe.drilling_rig.min_size=最小尺寸：%d
+gtadditions.recipe.drilling_rig.max_size=最大尺寸：%d
+gtadditions.recipe.drilling_rig.replenish_rate=补充率：%d
+gtadditions.recipe.drilling_rig.weight=权重：%d
 gregtech.recipe.base_heat_production=堆温：%dC
 gregtech.recipe.hot_coolant=热冷却液温度：%dC
+
 
 material.brick=砖
 material.fireclay=耐火粘土
@@ -2341,7 +2353,7 @@ fluid.water_agar_mix=琼脂水溶液
 fluid.bacterial_growth_medium=细菌生长培养基
 fluid.depleted_growth_medium=枯竭的细菌生长培养基
 fluid.animal_cells=动物细胞
-fluid.rapidly_replicating_animal_cells=快速增值动物细胞
+fluid.rapidly_replicating_animal_cells=快速增殖动物细胞
 fluid.myc_gene=MYC基因
 fluid.oct_4_gene=Oct-4基因
 fluid.sox_2_gene=SOX-2基因
@@ -2778,6 +2790,7 @@ gtadditions.machine.hull.uev.name=UEV机械方块
 gtadditions.machine.hull.uiv.name=UIV机械方块
 gtadditions.machine.hull.umv.name=UMV机械方块
 gtadditions.machine.hull.uxv.name=UXV机械方块
+gtadditions.machine.drilling_rig.name=钻井平台
 
 
 
