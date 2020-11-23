@@ -91,7 +91,7 @@ public class PEEKChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .inputs(Difluorobenzophenone.getItemStack())
-                .inputs(SodiumCarbonate.getItemStack())
+                .input(dust, SodaAsh)
                 .fluidOutputs(Polyetheretherketone.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride))
                 .EUt(500000)

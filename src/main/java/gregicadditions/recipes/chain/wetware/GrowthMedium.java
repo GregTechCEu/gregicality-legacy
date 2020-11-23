@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain.wetware;
 
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,14 @@ public class GrowthMedium {
                 .blastFurnaceTemp(2300)
                 .EUt(30720)
                 .duration(10)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(CalciumHydroxide.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, CalciumChloride))
+                .EUt(480)
+                .duration(50)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .notConsumable(dust, Silver)

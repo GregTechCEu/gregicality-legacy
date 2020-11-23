@@ -185,6 +185,14 @@ public class FullereneChain {
                 .EUt(8000000)
                 .duration(500)
                 .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, SodiumHydroxide)
+                .fluidInputs(Ethanol.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(SodiumEthoxide.getItemStack())
+                .EUt(500000)
+                .duration(10)
+                .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methylamine.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
