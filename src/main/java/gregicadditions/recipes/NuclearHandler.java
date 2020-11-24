@@ -391,6 +391,7 @@ public class NuclearHandler {
                                         NuclearReactorBuilder builder4 = NUCLEAR_BREEDER_RECIPES.recipeBuilder().duration(7500).EUt((isotopeMaterial.baseHeat + operand) * operand * 120 / 100)
                                                 .baseHeatProduction((isotopeMaterial.baseHeat + operand) * operand / 5)
                                                 .notConsumable(new IntCircuitIngredient(operand))
+                                                .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelZirconiumAlloy, operand))
                                                 .inputs(isotopeMaterialEntry.getValue().getItemStack(GAEnums.GAOrePrefix.fuelPure, 9))
                                                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelZirconiumAlloy, operand));
 
