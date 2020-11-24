@@ -2878,3 +2878,4 @@ gtadditions.machine.rotor_holder.luv.name=Держатель ротора для
 gtadditions.machine.rotor_holder.zpm.name=Держатель ротора для турбины на горячей охлаждающей жидкости (ZPM)
 gtadditions.machine.rotor_holder.uv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (UV)
 gtadditions.machine.rotor_holder.uhv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (UHV)
+item.forge.bucketFilled.name=Ведро %s
