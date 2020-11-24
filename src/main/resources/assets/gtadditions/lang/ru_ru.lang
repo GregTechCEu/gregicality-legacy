@@ -1874,7 +1874,6 @@ fluid.tile.lava=Lavagtadditions.machine.energy_hatch.output.uv.128.name=Энер
 
 gtadditions.machine.qubit_hatch.output.1.name=Кубитный выходной разъем
 gtadditions.machine.qubit_hatch.input.16.name=Кубитный входной разъем
-
 metaitem.auric_fluoride.name=Ауриновая фторидная пыль
 metaitem.naquadria_concentrate.name=Пыль наквадриевого концентрата
 metaitem.enriched_naquadah_concentrate.name=Пыль обогащенного концентрата наквады
@@ -1931,7 +1930,6 @@ metaitem.bismuth_chloride.name=Хлорид висмута
 metaitem.lead_chloride.name=Хлорид свинца
 metaitem.zirconium_tetrachloride.name=Тетрахлорид циркония
 metaitem.silicon_carbide.name=Карбид кремния
-
 metaitem.zirconium_tetrafluoride.name=Тетрафторид циркония
 metaitem.barium_difluoride.name=Дифторид бария
 metaitem.lanthanum_trifluoride.name=Трифторид лантана
@@ -1949,7 +1947,6 @@ metaitem.degenerate.rhenium.dust.name=Вырожденная рениевая п
 metaitem.degenerate.rhenium.plate.name=Вырожденная рениевая пластина
 metaitem.rhenium.plasma.containment.cell.name=Рений в капсуле для хранения плазмы
 metaitem.plasma.containment.cell.name=Капсула для хранениея плазмы
-
 fluid.naquadric_solution=Расствор наквадрика
 fluid.enriched_naquadric_solution=Обогащенный расствор наквадрика
 fluid.naquadriatic_solution=Расствор наквадриатика
@@ -2030,25 +2027,19 @@ fluid.sm_gd_oxides_solution=Sm-Gd  Раствор оксидов
 fluid.tb_ho_oxides_solution=Tb-Ho  Раствор оксидов
 fluid.er_lu_oxides_solution=Er-Lu  Раствор оксидов
 fluid.supercooled_cryotheum=Сверхохлажденный криотеум
-
 material.naquadric_compound=Смесь наквадрика
 material.enriched_naquadric_compound=Обогащенная смесь наквадрика
 material.naquadriatic_compound=Наквадриатическая смесь
-
 metaitem.unstable.star.name=Нестабильная звезда
-
 gtadditions.machine.buffer.lv.name=Базовый буффер
 gtadditions.machine.buffer.mv.name=Улучшенный буффер
 gtadditions.machine.buffer.hv.name=Улучшенный буффер II
-
 metaitem.hyperium_essence.name=Гипериумная эссенция
 metaitem.ludicium_essence.name=Людициумная эссенция
 metaitem.hyperium_crafting_seed.name=Уровень 7 семена для крафта
 metaitem.hyperium_crafting_seed.tooltip=Используются исключительно для создания, нельзя сажать.
 metaitem.ludicium_crafting_seed.name=Уровень 8 семена для крафта
 metaitem.ludicium_crafting_seed.tooltip=Используются исключительно для создания, нельзя сажать.
-
-
 fluid.turpentine=Скипидар
 fluid.acetylene=Ацетилен
 fluid.formaldehyde=Формальдегид
@@ -2148,13 +2139,11 @@ fluid.phosgene=Фосген
 fluid.isopropyl_alcohol=Изопропиловый спирт
 fluid.degenerate_rhenium_plasma=Вырожденная плазма рения
 fluid.liquid_helium=Жидкий гелий
-
 gtaddition.optical_fiber.qubit=Кубит: §a%d §7(§a%s§7)
 gtaddition.optical_fiber.parallel=Паралелльный сигнал: §e%d
 gtaddition.top.qubit_stored=Кубит:
 gregtech.recipe.qubitProduce=Производство: %d кубит/т
 gregtech.recipe.qubitConsume=Используется: %d кубит/т
-
 tile.ga_motor_casing.motor_lv.name=Блок электрического мотора (LV)
 tile.ga_motor_casing.motor_mv.name=Блок электрического мотора (MV)
 tile.ga_motor_casing.motor_hv.name=Блок электрического мотора (HV)
@@ -2267,35 +2256,30 @@ tile.ga_robot_arm_casing.robot_arm_uiv.name=Блок роботизирован�
 tile.ga_robot_arm_casing.robot_arm_umv.name=Блок роботизированного манипулятора (UMV)
 tile.ga_robot_arm_casing.robot_arm_uxv.name=Блок роботизированного манипулятора (UXV)
 tile.ga_robot_arm_casing.robot_arm_max.name=Блок роботизированного манипулятора (MAX)
-
 metaitem.electric.motor.uhv.name=Электрический мотор (UHV)
 metaitem.electric.motor.uev.name=Электрический мотор (UEV)
 metaitem.electric.motor.uiv.name=Электрический мотор (UIV)
 metaitem.electric.motor.umv.name=Электрический мотор (UMV)
 metaitem.electric.motor.uxv.name=Электрический мотор (UXV)
-metaitem.electric.motor.max.name=Электрический мотор (MAX)
-	
+metaitem.electric.motor.max.name=Электрический мотор (MAX
 metaitem.field.generator.uhv.name=Генератор поля (UHV)
 metaitem.field.generator.uev.name=Генератор поля (UEV)
 metaitem.field.generator.uiv.name=Генератор поля (UIV)
 metaitem.field.generator.umv.name=Генератор поля (UMV)
 metaitem.field.generator.uxv.name=Генератор поля (UXV)
 metaitem.field.generator.max.name=Генератор поля (MAX)
-
 metaitem.sensor.uhv.name=Сенсор (UHV)
 metaitem.sensor.uev.name=Сенсор (UEV)
 metaitem.sensor.uiv.name=Сенсор (UIV)
 metaitem.sensor.umv.name=Сенсор (UMV)
 metaitem.sensor.uxv.name=Сенсор (UXV)
 metaitem.sensor.max.name=Сенсор (MAX)
-
 metaitem.emitter.uhv.name=Эмиттер (UHV)
 metaitem.emitter.uev.name=Эмиттер (UEV)
 metaitem.emitter.uiv.name=Эмиттер (UIV)
 metaitem.emitter.umv.name=Эмиттер (UMV)
 metaitem.emitter.uxv.name=Эмиттер (UXV)
 metaitem.emitter.max.name=Эмиттер (MAX)
-
 metaitem.conveyor.module.uhv.name=Конвейерный модуль (UHV)
 metaitem.conveyor.module.uev.name=Конвейерный модуль (UEV)
 metaitem.conveyor.module.uiv.name=Конвейерный модуль (UIV)
@@ -2308,7 +2292,6 @@ metaitem.conveyor.module.uiv.tooltip=16 стэков каждую секунду
 metaitem.conveyor.module.umv.tooltip=16 стэков каждую секунду
 metaitem.conveyor.module.uxv.tooltip=16 стэков каждую секунду
 metaitem.conveyor.module.max.tooltip=16 стэков каждую секунду
-
 metaitem.robot.arm.uhv.name=Роботизированный манипулятор (UHV)
 metaitem.robot.arm.uev.name=Роботизированный манипулятор (UEV)
 metaitem.robot.arm.uiv.name=Роботизированный манипулятор (UIV)
@@ -2321,7 +2304,6 @@ metaitem.robot.arm.uiv.tooltip=Помещает в определенный сл
 metaitem.robot.arm.umv.tooltip=Помещает в определенный слот (как улучшение)
 metaitem.robot.arm.uxv.tooltip=Помещает в определенный слот (как улучшение)
 metaitem.robot.arm.max.tooltip=Помещает в определенный слот (как улучшение)
-
 metaitem.electric.pump.uhv.name=Электрическая помпа (UHV)
 metaitem.electric.pump.uev.name=Электрическая помпа (UEV)
 metaitem.electric.pump.uiv.name=Электрическая помпа (UIV)
@@ -2334,14 +2316,12 @@ metaitem.electric.pump.uiv.tooltip=20,971,520 Л/сек (Как улучшени
 metaitem.electric.pump.umv.tooltip=20,971,520 Л/сек (Как улучшение)
 metaitem.electric.pump.uxv.tooltip=20,971,520 Л/сек (Как улучшение)
 metaitem.electric.pump.max.tooltip=20,971,520 Л/сек (Как улучшение)
-
 metaitem.electric.piston.uhv.name=Электрический поршень (UHV)
 metaitem.electric.piston.uev.name=Электрический поршень (UEV)
 metaitem.electric.piston.uiv.name=Электрический поршень (UIV)
 metaitem.electric.piston.umv.name=Электрический поршень (UMV)
 metaitem.electric.piston.uxv.name=Электрический поршень (UXV)
 metaitem.electric.piston.max.name=Электрический поршень (MAX)
-
 gtadditions.machine.clustermill.uhv.name=Улучшенный волочильный стан VIII
 gtadditions.machine.clustermill.uev.name=Улучшенный волочильный стан IX
 gtadditions.machine.clustermill.uiv.name=Улучшенный волочильный стан X
@@ -2563,7 +2543,6 @@ gtadditions.machine.green_house.uev.name=Улучшенная теплица IX
 gtadditions.machine.green_house.uiv.name=Улучшенная теплица X
 gtadditions.machine.green_house.umv.name=Улучшенная теплица XI
 gtadditions.machine.green_house.uxv.name=Улучшенная теплица XII
-
 gtadditions.machine.green_house.lv.name=Базовая теплица
 gtadditions.machine.green_house.mv.name=Улучшенная теплица
 gtadditions.machine.green_house.hv.name=Улучшенная теплица II
@@ -2572,7 +2551,6 @@ gtadditions.machine.green_house.iv.name=Улучшенная теплица IV
 gtadditions.machine.green_house.luv.name=Улучшенная теплица V
 gtadditions.machine.green_house.zpm.name=Улучшенная теплица VI
 gtadditions.machine.green_house.uv.name=Улучшенная теплица VII
-
 item.material.oreprefix.oreRich=%s (Плотная руда)
 item.material.oreprefix.oreRichBlackgranite=%s (Плотная гранитная руда)
 item.material.oreprefix.oreRichRedgranite=%s (Плотная гранитная руда)
@@ -2600,18 +2578,15 @@ item.material.oreprefix.orePureSand=%s (Чистая песчаная руда)
 item.material.oreprefix.orePureGravel=%s (Чистая гравиевая руда)
 item.material.oreprefix.orePureNetherrack=%s (Чистая адская руда)
 item.material.oreprefix.orePureEndstone=%s (Чистая руда края)
-
 gregtech.fluid.hot=Горячий %s
 gregtech.fluid.hexachloride=%s гексахлорид
 gregtech.fluid.hexafluoride=%s гексафторид
 gregtech.fluid.depleted_fuel_nitrate_solution=%s истощенная нитратно-топлиевная смесь
 gregtech.fluid.hexafluoride_steam_cracked=Парокатализированный гексафторид %s
-
 metaitem.component.smd.capacitor.bioware.name=Биологический SMD конденстатор
 metaitem.component.smd.resistor.bioware.name=Биологический SMD резистор
 metaitem.component.smd.diode.bioware.name=Биологический SMD диод
 metaitem.component.smd.transistor.bioware.name=Биологический SMD транзистор
-
 metaitem.energy.module.name=Энергетический модуль
 metaitem.energy.cluster.name=Энергетический кластер
 metaitem.max.battery.name=МАКС. батарея
@@ -2620,14 +2595,12 @@ metaitem.medium_turbine_rotor.name=%s (средний турбинный рот�
 metaitem.large_turbine_rotor.name=%s (большой турбинный ротор)
 metaitem.huge_turbine_rotor.name=%s (огромный турбинный ротор)
 metaitem.insulating_tape.name=Скотч
-
 metaitem.liquid_fuel_jetpack.name=§eЖидкотопливный джетпак
 metaitem.impeller_jetpack.name=§eТрастерный джетпак
 metaitem.advanced_impeller_jetpack.name=§bПродвинутый трастерный джетпак
 metaitem.battery_pack.lv.name=Батарейный ранец (§eLV§r)
 metaitem.battery_pack.mv.name=Батарейный ранец (§eMV§r)
 metaitem.battery_pack.hv.name=Батарейный ранец (§eHV§r)
-
 metaitem.large.neutronium.battery.empty.name=Большой нейтрониевый батарейный корпус
 metaitem.large.naquadria.battery.empty.name=Большой наквадриевый батарейный корпус
 metaitem.large.vanadium.battery.empty.name=Большой ванадиевый батарейный корпус
@@ -2636,7 +2609,6 @@ metaitem.medium.naquadria.battery.empty.name=Средний наквадриев
 metaitem.medium.vanadium.battery.empty.name=Средний ванадиевый батарейный корпус
 metaitem.small.neutronium.battery.empty.name=Малый нейтрониевый батарейный корпус
 metaitem.small.vanadium.battery.empty.name=Малый ванадиевый батарейный корпус
-
 metaitem.large.neutronium.battery.empty.tooltip=Пустая UV батарея
 metaitem.large.naquadria.battery.empty.tooltip=Пустая UV батарея
 metaitem.large.vanadium.battery.empty.tooltip=Пустая LuV батарея
@@ -2645,7 +2617,6 @@ metaitem.medium.naquadria.battery.empty.tooltip=Пустая ZPM батарея
 metaitem.medium.vanadium.battery.empty.tooltip=Пустая IV батарея
 metaitem.small.neutronium.battery.empty.tooltip=Пустая UHV батарея
 metaitem.small.vanadium.battery.empty.tooltip=Пустая EV батарея
-
 metaitem.large.neutronium.battery.name=Большая нейтрониевая батарея
 metaitem.large.naquadria.battery.name=Большая наквадриевая батарея
 metaitem.large.vanadium.battery.name=Большая ванадиевая батарея
@@ -2654,7 +2625,6 @@ metaitem.medium.naquadria.battery.name=Средняя наквадриевая �
 metaitem.medium.vanadium.battery.name=Средняя ванадиевая батарея
 metaitem.small.neutronium.battery.name=Малая нейтрониевая батарея
 metaitem.small.vanadium.battery.name=Малая наквадриевая батарея
-
 metaitem.large.neutronium.battery.tooltip=Повторно-используемая
 metaitem.large.naquadria.battery.tooltip=Повторно-используемая
 metaitem.large.vanadium.battery.tooltip=Повторно-используемая
@@ -2663,7 +2633,6 @@ metaitem.medium.naquadria.battery.tooltip=Повторно-используем�
 metaitem.medium.vanadium.battery.tooltip=Повторно-используемая
 metaitem.small.neutronium.battery.tooltip=Повторно-используемая
 metaitem.small.vanadium.battery.tooltip=Повторно-используемая
-
 metaitem.circuit.processor.bioware.name=Биологический процессор
 metaitem.circuit.processor.bioware.tooltip=§b§oZPM микросхема
 metaitem.circuit.assembly.bioware.name=Биологический вычислительный блок
@@ -2672,7 +2641,6 @@ metaitem.circuit.computer.bioware.name=Биологический компьют
 metaitem.circuit.computer.bioware.tooltip=§b§oUHV миркосхема
 metaitem.circuit.mainframe.bioware.name=Биологический мейнфрейм
 metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV микросхема
-
 metaitem.circuit.processor.cosmic.name=Космический процессор
 metaitem.circuit.processor.cosmic.tooltip=§b§oUHV микросхема
 metaitem.circuit.assembly.cosmic.name=Космический вычислительный блок
@@ -2681,7 +2649,6 @@ metaitem.circuit.computer.cosmic.name=Космический компьютер
 metaitem.circuit.computer.cosmic.tooltip=§b§oUIV микросхема
 metaitem.circuit.mainframe.cosmic.name=Космический мейнфрейм
 metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV микросхема
-
 metaitem.crystal.lapotron.name=Лапотронный кристалл
 metaitem.neutron.reflector.name=Нейтронный отражатель
 metaitem.hot_iron_ingot.name=Горячий слиток железа
@@ -2694,7 +2661,6 @@ metaitem.hasoc.wafer.name=Вафля HASoC
 metaitem.uhpic.name=UHPIC
 metaitem.uhasoc.name=UHASoC
 metaitem.hasoc.name=HASoC
-
 metaitem.electrically.wired.petri.dish.name=Чашка петри с электрической проводкой
 metaitem.neuro.support.unit.name=Нейромодуль поддержки
 metaitem.cyber.processing.unit.name=Кибер процессор
@@ -2704,7 +2670,6 @@ metaitem.contaminated.petri.dish.name=Грязная чашка петри
 metaitem.clean.culture.name=Чистая культура
 metaitem.piezoelectric.crystal.name=Пьезоэлектрический кристалл
 metaitem.pyrolytic_carbon.name=Пиролитический углерод
-
 metaitem.boule.glowstone.name=Светокаменный монокристалл
 metaitem.boule.glowstone.tooltip=Необработанная микросхема
 metaitem.boule.naquadah.name=Наквадиевый монокристалл
@@ -2715,7 +2680,6 @@ metaitem.boule.neutronium.name=Нейтрониевый монокристалл
 metaitem.wafer.americium.name=Дубниевый лист
 metaitem.wafer.neutronium.name=Нейтрониевый лист
 metaitem.wafer.europium.name=Рутерфодовый лист
-
 metaitem.circuit.resonatic.uhv.name=UHV магнето-резонирующая микросхема
 metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV Микросхема
 metaitem.circuit.resonatic.uev.name=UEV магнето-резонирующая микросхема
@@ -2743,14 +2707,12 @@ item.material.oreprefix.depletedFuelZirconiumAlloy=%s израсходованн
 item.material.oreprefix.depletedFuelOxide=%s израсходованное оксидное топливо
 item.material.oreprefix.depletedFuelTRISO=%s израсходованное топливо TRISO
 item.material.oreprefix.depletedFuel=%s израсходованное топливо
-
 item.oreprefix.opticalFiberHex=16x оптоволокно
 item.oreprefix.opticalFiberTwelve=12x оптоволокно
 item.oreprefix.opticalFiberOctal=8x оптоволокно
 item.oreprefix.opticalFiberQuadruple=4x оптоволокно
 item.oreprefix.opticalFiberDouble=2x оптоволокно
 item.oreprefix.opticalFiberSingle=1x оптоволокно
-
 gtadditions.machine.diesel_engine.name=Дизельный двигатель
 gtadditions.machine.large_turbine.steam.name=Большая паровая турбина
 gtadditions.machine.large_turbine.gas.name=Большая газовая турбина
@@ -2794,7 +2756,6 @@ gtadditions.machine.alloy_blast_furnace.name=Доменная печь для с
 gtadditions.machine.large_forge_hammer.name=Большой кузнечный молот
 gtadditions.machine.large_naquadah_reactor.name=Большой наквада реактор
 gtadditions.machine.battery_tower.name=Батарейная башня
-
 gtadditions.machine.gas_centrifuge.name=Газовая центрифуга
 gtadditions.machine.qubit_computer.name=Квантовый компьютер
 gtadditions.machine.stellar_forge.name=Звездная кузня
@@ -2813,7 +2774,6 @@ gtadditions.machine.hull.uiv.name=UIV Машинный корпус
 gtadditions.machine.hull.umv.name=UMV Машинный корпус
 gtadditions.machine.hull.uxv.name=UXV Машинный корпус
 gtadditions.machine.drilling_rig.name=Буровая установка
-
 tile.ga_transparent_casing.reinforced_glass.name=Укрепленное стекло
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=Боросиликатное укрепленное стекло
 tile.ga_transparent_casing.nickel_reinforced_glass.name=Никелевое укрепленное стекло
@@ -2836,12 +2796,10 @@ tile.ga_machine_casing.casing_uev.name=Корпус машины (UEV)
 tile.ga_machine_casing.casing_uiv.name=Корпус машины (UIV)
 tile.ga_machine_casing.casing_umv.name=Корпус машины (UMV)
 tile.ga_machine_casing.casing_uxv.name=Корпус машины (UXV)
-
 tile.ga_fusion_casing.fusion_casing_3.name=Корпус термоядерного агрегата MK3
 tile.ga_fusion_casing.fusion_casing_4.name=Корпус термоядерного агрегата MK4
 tile.ga_fusion_casing.fusion_coil_2.name=Катушка термоядерного реактора MK2
 tile.ga_fusion_casing.fusion_coil_3.name=Катушка термоядерного реактора MK3
-
 material.mv_superconductor_base=MV сверхроводниковое основание
 material.hv_superconductor_base=HV сверхроводниковое основание
 material.ev_superconductor_base=EV сверхроводниковое основание
@@ -2854,7 +2812,6 @@ material.ev_superconductor=EV сверхпроводник
 material.iv_superconductor=IV сверхпроводник
 material.luv_superconductor=LuV сверхпроводник
 material.zpm_superconductor=ZPM сверхпроводник
-
 tile.cell_casing.cell_uhv.name=UHV энергетическая ячейка
 tile.cell_casing.cell_uev.name=UEV энергетическая ячейка
 tile.cell_casing.cell_uiv.name=UIV энергетическая ячейка
@@ -2864,7 +2821,6 @@ tile.cell_casing.cell_max.name=MAX энергетическая ячейка
 tile.cell_casing.tooltip.1=Используется в §aБатарейной башне§7
 tile.cell_casing.tooltip.2=    Вместительность: §e%d
 tile.cell_casing.tooltip.3=    Максимальный уровень: §e%s
-
 metaitem.potassium_cyanide.name=Цианистый калий
 metaitem.succinic_acid.name=Янтарная кислота
 metaitem.succinimide.name=Сукцинимид
@@ -2890,7 +2846,6 @@ metaitem.cyanonaphtalene.name=Цианонафталин
 metaitem.tin_chloride.name=Олова хлорид
 metaitem.triphenylphosphine.name=Трифенилфосфин
 metaitem.methylbenzophenanthrene.name=Метилбензофенантрен
-
 material.uv_superconductor_base=UV сверхпроводниковое основание
 material.uv_superconductor=UV сверхпроводник
 material.uev_superconductor=UEV сверхпроводник
@@ -2898,7 +2853,6 @@ material.uev_superconductor_base=UEV сверхпроводниковое осн
 material.uev_superconductor=UV сверхпроводник
 material.uhv_superconductor_base=UHV сверхпроводниковое основание
 material.uhv_superconductor=UHV сверхпроводник
-
 material.enriched_naquadah_alloy=Обогащенный наквадовый сплав
 material.hastelloy_k243=Хастеллой K243
 material.hastelloy_x78=Хастеллой X78
@@ -2910,12 +2864,10 @@ material.zylon=Зилой
 material.dubnium=Дубний
 material.rutherfordium=Рутерфодий
 material.organic_fertilizer=Органическое удобрение
-
 tile.hellrock.name=Адский камень
 tile.netherStalk.name=Адский нарост
 item.blazeRod.name=Стержень ифрита
 entity.Blaze.name=Ифрит
-
 gtadditions.machine.rotor_holder.ulv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (ULV)
 gtadditions.machine.rotor_holder.lv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (LV)
 gtadditions.machine.rotor_holder.mv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (MV)
