@@ -19,6 +19,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_BALL;
 
 public class NuclearHandler {
 
@@ -139,31 +140,37 @@ public class NuclearHandler {
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.carbide, 1))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelCarbide, 1))
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelZirconiumAlloy, 1))
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.nitride, 1))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelNitride, 1))
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelOxide, 1))
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .input(ingot, isotopeMaterial.getMaterial())
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelPure, 1))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(480).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelCarbide, 1))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .inputs(PYROLYTIC_CARBON.getStackForm())
                 .input(dust, Graphite)
                 .inputs(SiliconCarbide.getItemStack())
@@ -395,9 +402,25 @@ public class NuclearHandler {
         } else if (isotopeMaterial != null && !isotopeMaterial.fertile && isotopeMaterial.isotopeDecay.size() > 0) {
             isotopeMaterial.isotopeDecay.keySet().forEach(isotopeMaterialDecay -> {
                 DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
-                        .input(stickLong, isotopeMaterial.getMaterial())
-                        .chancedOutput(OreDictUnifier.get(stickLong, isotopeMaterialDecay.getMaterial()), 9000, 100)
+                        .input(GAEnums.GAOrePrefix.fuelOxide, isotopeMaterial.getMaterial())
+                        .chancedOutput(OreDictUnifier.get(GAEnums.GAOrePrefix.fuelOxide, isotopeMaterialDecay.getMaterial()), 9000, 100)
                         .buildAndRegister();
+
+                DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
+                        .input(GAEnums.GAOrePrefix.fuelNitride, isotopeMaterial.getMaterial())
+                        .chancedOutput(OreDictUnifier.get(GAEnums.GAOrePrefix.fuelNitride, isotopeMaterialDecay.getMaterial()), 9000, 100)
+                        .buildAndRegister();
+
+                DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
+                        .input(GAEnums.GAOrePrefix.fuelTRISO, isotopeMaterial.getMaterial())
+                        .chancedOutput(OreDictUnifier.get(GAEnums.GAOrePrefix.fuelTRISO, isotopeMaterialDecay.getMaterial()), 9000, 100)
+                        .buildAndRegister();
+
+                DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(6000).EUt(32)
+                        .input(GAEnums.GAOrePrefix.fuelZirconiumAlloy, isotopeMaterial.getMaterial())
+                        .chancedOutput(OreDictUnifier.get(GAEnums.GAOrePrefix.fuelZirconiumAlloy, isotopeMaterialDecay.getMaterial()), 9000, 100)
+                        .buildAndRegister();
+
             });
         }
 

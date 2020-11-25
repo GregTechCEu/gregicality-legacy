@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain.wetware;
 
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 
 import static gregicadditions.item.GAMetaItems.*;
@@ -35,13 +36,13 @@ public class BacteriaCultures {
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Sodium)
                 .input(dust, Carbon)
-                .outputs(SodiumCarbonate.getItemStack(2))
+                .outputs(OreDictUnifier.get(dust, SodaAsh))
                 .EUt(120)
                 .duration(50)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(RedAlgaePowder.getItemStack())
-                .inputs(SodiumCarbonate.getItemStack())
+                .input(dust, SodaAsh)
                 .outputs(PreFreezeAgar.getItemStack())
                 .EUt(30720)
                 .duration(150)
