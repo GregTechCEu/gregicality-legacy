@@ -5,6 +5,9 @@ import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.recipes.nuclear.GTHotCoolantRecipeWrapper;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMapCategory;
+import gregicadditions.recipes.wrapper.GADrillingRigCategory;
+import gregicadditions.recipes.wrapper.GADrillingRigRecipeWrapper;
+import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
@@ -23,6 +26,8 @@ import net.minecraft.util.ResourceLocation;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static gregicadditions.machines.GATileEntities.DRILLING_RIG;
+
 @JEIPlugin
 public class JEIGAPlugin implements IModPlugin {
 
@@ -36,6 +41,9 @@ public class JEIGAPlugin implements IModPlugin {
         for (HotCoolantRecipeMap hotCoolantRecipeMap : HotCoolantRecipeMap.getRecipeMaps()) {
             registry.addRecipeCategories(new HotCoolantRecipeMapCategory(hotCoolantRecipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
+
+        registry.addRecipeCategories(new GADrillingRigCategory(registry.getJeiHelpers().getGuiHelper()));
+
     }
 
 
@@ -53,6 +61,12 @@ public class JEIGAPlugin implements IModPlugin {
             registry.addRecipes(recipeList, Gregicality.MODID + ":" + hotCoolantRecipeMap.unlocalizedName);
         }
 
+        List<IRecipeWrapper> fluidRecipe = PumpjackHandler.reservoirList.entrySet().stream()
+                .map(reservoirTypeIntegerEntry -> new GADrillingRigRecipeWrapper(reservoirTypeIntegerEntry.getKey(), reservoirTypeIntegerEntry.getValue()))
+                .collect(Collectors.toList());
+        registry.addRecipes(fluidRecipe, Gregicality.MODID + ":drilling_rig");
+        registry.addRecipeCatalyst(DRILLING_RIG.getStackForm(), Gregicality.MODID + ":drilling_rig");
+
         for (ResourceLocation metaTileEntityId : GregTechAPI.META_TILE_ENTITY_REGISTRY.getKeys()) {
             MetaTileEntity metaTileEntity = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObject(metaTileEntityId);
             //noinspection ConstantConditions
@@ -64,6 +78,8 @@ public class JEIGAPlugin implements IModPlugin {
                 }
             }
         }
+
+
     }
 
     @Override

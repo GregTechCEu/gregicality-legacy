@@ -3,10 +3,10 @@ package gregicadditions.machines.multi;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAValues;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
-import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -35,6 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -82,7 +83,9 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
 
         input = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
         output = new EnergyContainerList(getAbilities(MultiblockAbility.OUTPUT_ENERGY));
-        maxCapacity = this.cell.getStorage() * size;
+        BigInteger capacity = BigInteger.valueOf(this.cell.getStorage()).multiply(BigInteger.valueOf(size));
+        maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
+
     }
 
     @Override
@@ -101,7 +104,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
             long energyAddedFromInput = this.addEnergy(inputEnergyStore);
             input.changeEnergy(-energyAddedFromInput);
 
-            this.changeEnergy(-GTValues.V[cell.getTier()] * 10 / 100);
+            this.changeEnergy(-GAValues.V[cell.getTier()] * 10 / 100);
 
             long bankEnergyStore = this.getEnergyStored();
             long energyAddedFromBank = output.addEnergy(bankEnergyStore);

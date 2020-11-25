@@ -25,7 +25,13 @@ public class SensorCasing extends VariantBlock<SensorCasing.CasingType> {
         SENSOR_IV("sensor_iv", 5),
         SENSOR_LUV("sensor_luv", 6),
         SENSOR_ZPM("sensor_zpm", 7),
-        SENSOR_UV("sensor_uv", 8);
+        SENSOR_UV("sensor_uv", 8),
+        SENSOR_UHV("sensor_uhv", 9),
+        SENSOR_UEV("sensor_uev", 10),
+        SENSOR_UIV("sensor_uiv", 11),
+        SENSOR_UMV("sensor_umv", 12),
+        SENSOR_UXV("sensor_uxv", 13),
+        SENSOR_MAX("sensor_max", 14);
 
         private final String name;
         private final int tier;

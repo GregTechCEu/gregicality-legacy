@@ -37,7 +37,7 @@ public class NoEURecipeBuilder extends RecipeBuilder<NoEURecipeBuilder> {
 		if (this.recipeMap == null) {
 			GALog.logger.error("RecipeMap cannot be null", new IllegalArgumentException());
 			this.recipeStatus = EnumValidationResult.INVALID;
-		}
+        }
 
 		if (!GTUtility.isBetweenInclusive(this.recipeMap.getMinInputs(), this.recipeMap.getMaxInputs(), this.inputs.size())) {
 			GALog.logger.error("Invalid amount of recipe inputs. Actual: {}. Should be between {} and {} inclusive.", this.inputs.size(), this.recipeMap.getMinInputs(), this.recipeMap.getMaxInputs());
@@ -66,11 +66,11 @@ public class NoEURecipeBuilder extends RecipeBuilder<NoEURecipeBuilder> {
 		if (this.duration <= 0) {
 			GALog.logger.error("Duration cannot be less or equal to 0", new IllegalArgumentException());
 			this.recipeStatus = EnumValidationResult.INVALID;
-		}
+        }
 
 		if (this.recipeStatus == EnumValidationResult.INVALID) {
 			GALog.logger.error("Invalid recipe, read the errors above: {}", this);
-		}
+        }
 
 		return this.recipeStatus;
 	}

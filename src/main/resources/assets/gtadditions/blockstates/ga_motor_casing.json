@@ -47,6 +47,36 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
+      },
+      "motor_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uhv"
+        }
+      },
+      "motor_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uev"
+        }
+      },
+      "motor_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uiv"
+        }
+      },
+      "motor_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_umv"
+        }
+      },
+      "motor_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uxv"
+        }
+      },
+      "motor_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_max"
+        }
       }
     }
   }

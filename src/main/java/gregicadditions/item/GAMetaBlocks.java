@@ -1,8 +1,16 @@
 package gregicadditions.item;
 
+import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.item.components.*;
+import gregicadditions.item.fusion.*;
+import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
+import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
+import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
@@ -13,8 +21,6 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
-import gregtech.common.ClientProxy;
-import gregtech.common.blocks.BlockOre;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
@@ -23,27 +29,43 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static gregicadditions.ClientProxy.METAL_CASING_BLOCK_COLOR;
-import static gregicadditions.ClientProxy.METAL_CASING_ITEM_COLOR;
+import static gregicadditions.ClientProxy.*;
 import static gregicadditions.GAMaterials.GENERATE_METAL_CASING;
-import static gregicadditions.ClientProxy.ORE_BLOCK_COLOR;
-import static gregicadditions.ClientProxy.ORE_ITEM_COLOR;
 
 public class GAMetaBlocks {
 
+    public static GAHeatingCoil HEATING_COIL;
+
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
+
+    public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
+
+    public static GAReactorCasing REACTOR_CASING;
+
+    public static GAFusionCasing FUSION_CASING;
+
+    public static GAVacuumCasing VACUUM_CASING;
+
+    public static GADivertorCasing DIVERTOR_CASING;
+
+    public static GACryostatCasing CRYOSTAT_CASING;
+
+    public static GAMachineCasing MACHINE_CASING;
 
     public static GATransparentCasing TRANSPARENT_CASING;
 
@@ -65,9 +87,14 @@ public class GAMetaBlocks {
 
     public static SensorCasing SENSOR_CASING;
 
+    public static GAQuantumCasing QUANTUM_CASING;
+
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
+
+
+    public static BlockOpticalFiber OPTICAL_FIBER;
 
 
     public static void init() {
@@ -76,8 +103,35 @@ public class GAMetaBlocks {
                 createOreBlock((DustMaterial) mat);
             }
         }
+        QUANTUM_CASING = new GAQuantumCasing();
+        QUANTUM_CASING.setRegistryName("ga_quantum_casing");
+
         MUTLIBLOCK_CASING = new GAMultiblockCasing();
         MUTLIBLOCK_CASING.setRegistryName("ga_multiblock_casing");
+
+        MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
+        MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
+
+        REACTOR_CASING = new GAReactorCasing();
+        REACTOR_CASING.setRegistryName("ga_reactor_casing");
+
+        FUSION_CASING = new GAFusionCasing();
+        FUSION_CASING.setRegistryName("ga_fusion_casing");
+
+        VACUUM_CASING = new GAVacuumCasing();
+        VACUUM_CASING.setRegistryName("ga_vacuum_casing");
+
+        HEATING_COIL = new GAHeatingCoil();
+        HEATING_COIL.setRegistryName("ga_heating_coil");
+
+        DIVERTOR_CASING = new GADivertorCasing();
+        DIVERTOR_CASING.setRegistryName("ga_divertor_casing");
+
+        CRYOSTAT_CASING = new GACryostatCasing();
+        CRYOSTAT_CASING.setRegistryName("ga_cryostat_casing");
+
+        MACHINE_CASING = new GAMachineCasing();
+        MACHINE_CASING.setRegistryName("ga_machine_casing");
 
         TRANSPARENT_CASING = new GATransparentCasing();
         TRANSPARENT_CASING.setRegistryName("ga_transparent_casing");
@@ -109,11 +163,15 @@ public class GAMetaBlocks {
         EMITTER_CASING = new EmitterCasing();
         EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
+        OPTICAL_FIBER = new BlockOpticalFiber();
+        OPTICAL_FIBER.setRegistryName("ga_cable");
+
         MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
         //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
 
         createMachineCasing();
+        registerTileEntity();
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.Steel), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
@@ -170,7 +228,18 @@ public class GAMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
+
+        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPTICAL_FIBER), stack -> OpticalFiberRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
+        registerItemModel(QUANTUM_CASING);
+        registerItemModel(MUTLIBLOCK_CASING2);
+        registerItemModel(REACTOR_CASING);
+        registerItemModel(FUSION_CASING);
+        registerItemModel(VACUUM_CASING);
+        registerItemModel(HEATING_COIL);
+        registerItemModel(DIVERTOR_CASING);
+        registerItemModel(CRYOSTAT_CASING);
+        registerItemModel(MACHINE_CASING);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
         registerItemModel(CONVEYOR_CASING);
@@ -183,6 +252,21 @@ public class GAMetaBlocks {
         registerItemModel(SENSOR_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
         GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
+    }
+
+    public static void registerTileEntity() {
+        GameRegistry.registerTileEntity(TileEntityOpticalFiber.class, new ResourceLocation(Gregicality.MODID, "cable"));
+        GameRegistry.registerTileEntity(TileEntityOpticalFiberTickable.class, new ResourceLocation(Gregicality.MODID, "cable_tickable"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void registerStateMappers() {
+        ModelLoader.setCustomStateMapper(OPTICAL_FIBER, new DefaultStateMapper() {
+            @Override
+            protected @NotNull ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return OpticalFiberRenderer.MODEL_LOCATION;
+            }
+        });
     }
 
     @SideOnly(Side.CLIENT)
@@ -224,11 +308,17 @@ public class GAMetaBlocks {
                 ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
                 OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.getOrePrefix() :
                         OrePrefix.valueOf(blockOre.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
-                OreDictUnifier.registerOre(normalStack, orePrefix , mat);
+                OreDictUnifier.registerOre(normalStack, orePrefix, mat);
             }
         }
-    }
 
+        for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
+            ItemStack itemStack = OPTICAL_FIBER.getItem(opticalFiberSize);
+            GALog.logger.info("cable creation {}", itemStack.getDisplayName());
+            OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix().name());
+        }
+
+    }
 
 
     public static String statePropertiesToString(Map<IProperty<?>, Comparable<?>> properties) {

@@ -1,11 +1,12 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -35,11 +36,12 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace.heatingCoilPredicate;
 
 
 public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
-    public static final List<GAMultiblockCasing.CasingType> CASING_ALLOYED = Arrays.asList(
+    public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
             GAMultiblockCasing.CasingType.TIERED_HULL_LV,
             GAMultiblockCasing.CasingType.TIERED_HULL_MV,
             GAMultiblockCasing.CasingType.TIERED_HULL_HV,
@@ -48,13 +50,19 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             GAMultiblockCasing.CasingType.TIERED_HULL_LUV,
             GAMultiblockCasing.CasingType.TIERED_HULL_ZPM,
             GAMultiblockCasing.CasingType.TIERED_HULL_UV);
+    public static final List<GAMultiblockCasing2.CasingType> CASING2_ALLOWED = Arrays.asList(
+            GAMultiblockCasing2.CasingType.TIERED_HULL_UHV,
+            GAMultiblockCasing2.CasingType.TIERED_HULL_UEV,
+            GAMultiblockCasing2.CasingType.TIERED_HULL_UIV,
+            GAMultiblockCasing2.CasingType.TIERED_HULL_UMV,
+            GAMultiblockCasing2.CasingType.TIERED_HULL_UXV);
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY
     };
 
-    private long maxVolatage = 0;
+    private int maxVoltage = 0;
     protected int heatingCoilLevel = 1;
     protected int heatingCoilDiscount = 1;
 
@@ -87,13 +95,14 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
-                .where('T', tieredCasingPredicate())
+                .where('T', tieredCasing1Predicate().or(tieredCasing2Predicate()))
                 .where('C', heatingCoilPredicate())
                 .build();
 
     }
 
-    public static Predicate<BlockWorldState> tieredCasingPredicate() {
+
+    public static Predicate<BlockWorldState> tieredCasing1Predicate() {
         return (blockWorldState) -> {
             IBlockState blockState = blockWorldState.getBlockState();
             if (!(blockState.getBlock() instanceof GAMultiblockCasing)) {
@@ -101,60 +110,78 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             } else {
                 GAMultiblockCasing blockWireCoil = (GAMultiblockCasing) blockState.getBlock();
                 GAMultiblockCasing.CasingType tieredCasingType = blockWireCoil.getState(blockState);
-                if (!CASING_ALLOYED.contains(tieredCasingType)) {
+                if (!CASING1_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                GAMultiblockCasing.CasingType currentCoilType = blockWorldState.getMatchContext().getOrPut("TieredCasing", tieredCasingType);
-                return currentCoilType.getName().equals(tieredCasingType.getName());
+                int maxVoltage;
+                switch (tieredCasingType) {
+                    case TIERED_HULL_IV:
+                        maxVoltage = GAValues.V[GAValues.IV];
+                        break;
+                    case TIERED_HULL_LUV:
+                        maxVoltage = GAValues.V[GAValues.LuV];
+                        break;
+                    case TIERED_HULL_ZPM:
+                        maxVoltage = GAValues.V[GAValues.ZPM];
+                        break;
+                    case TIERED_HULL_UV:
+                        maxVoltage = GAValues.V[GAValues.UV];
+                        break;
+                    case TIERED_HULL_MAX:
+                        maxVoltage = GAValues.V[GAValues.MAX];
+                        break;
+                    default:
+                        maxVoltage = 0;
+                        break;
+                }
+                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                return currentMaxVoltage == maxVoltage;
             }
         };
     }
 
-    public static Predicate<BlockWorldState> heatingCoilPredicate() {
-        return blockWorldState -> {
+    public static Predicate<BlockWorldState> tieredCasing2Predicate() {
+        return (blockWorldState) -> {
             IBlockState blockState = blockWorldState.getBlockState();
-            if (!(blockState.getBlock() instanceof BlockWireCoil))
+            if (!(blockState.getBlock() instanceof GAMultiblockCasing2)) {
                 return false;
-            BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
-            BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
-            BlockWireCoil.CoilType currentCoilType = blockWorldState.getMatchContext().getOrPut("CoilType", coilType);
-            return currentCoilType.getName().equals(coilType.getName());
+            } else {
+                GAMultiblockCasing2 blockWireCoil = (GAMultiblockCasing2) blockState.getBlock();
+                GAMultiblockCasing2.CasingType tieredCasingType = blockWireCoil.getState(blockState);
+                if (!CASING2_ALLOWED.contains(tieredCasingType)) {
+                    return false;
+                }
+                int maxVoltage;
+                switch (tieredCasingType) {
+                    case TIERED_HULL_UHV:
+                        maxVoltage = GAValues.V[GAValues.UHV];
+                        break;
+                    case TIERED_HULL_UEV:
+                        maxVoltage = GAValues.V[GAValues.UEV];
+                        break;
+                    case TIERED_HULL_UIV:
+                        maxVoltage = GAValues.V[GAValues.UIV];
+                        break;
+                    case TIERED_HULL_UMV:
+                        maxVoltage = GAValues.V[GAValues.UMV];
+                        break;
+                    case TIERED_HULL_UXV:
+                        maxVoltage = GAValues.V[GAValues.UXV];
+                        break;
+                    default:
+                        maxVoltage = 0;
+                        break;
+                }
+                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                return currentMaxVoltage == maxVoltage;
+            }
         };
     }
 
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        GAMultiblockCasing.CasingType currentTier = context.getOrDefault("TieredCasing", GAMultiblockCasing.CasingType.TIERED_HULL_ULV);
-        switch (currentTier) {
-            case TIERED_HULL_LV:
-                maxVolatage = GTValues.V[GTValues.LV];
-                break;
-            case TIERED_HULL_MV:
-                maxVolatage = GTValues.V[GTValues.MV];
-                break;
-            case TIERED_HULL_HV:
-                maxVolatage = GTValues.V[GTValues.HV];
-                break;
-            case TIERED_HULL_EV:
-                maxVolatage = GTValues.V[GTValues.EV];
-                break;
-            case TIERED_HULL_IV:
-                maxVolatage = GTValues.V[GTValues.IV];
-                break;
-            case TIERED_HULL_LUV:
-                maxVolatage = GTValues.V[GTValues.LuV];
-                break;
-            case TIERED_HULL_ZPM:
-                maxVolatage = GTValues.V[GTValues.ZPM];
-                break;
-            case TIERED_HULL_UV:
-                maxVolatage = GTValues.V[GTValues.UV];
-                break;
-            default:
-                maxVolatage = 0;
-                break;
-        }
+        maxVoltage = context.getOrDefault("maxVoltage", 0);
         BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
         heatingCoilLevel = coilType.getLevel();
         heatingCoilDiscount = coilType.getEnergyDiscount();
@@ -175,7 +202,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
             textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_level", heatingCoilLevel));
             textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_discount", heatingCoilDiscount));
         }
-        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVolatage));
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
 
@@ -190,7 +217,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVolatage;
+        return recipe.getEUt() < maxVoltage;
     }
 
     @Override

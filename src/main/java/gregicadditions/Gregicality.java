@@ -1,31 +1,26 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import gregicadditions.blocks.GAMetalCasingItemBlock;
-import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
+import gregicadditions.capabilities.SimpleCapabilityManager;
+import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
+import gregicadditions.integrations.opencomputers.OpenComputersCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.network.IPSaveData;
 import gregicadditions.network.NetworkHandler;
-import gregicadditions.recipes.*;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregicadditions.utils.GALog;
+import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
-import gregtech.common.blocks.VariantItemBlock;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -34,15 +29,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.logging.log4j.LogManager;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
-import java.util.function.Function;
-
-import static gregicadditions.item.GAMetaBlocks.GA_ORES;
 
 @Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
         dependencies = "required-after:gregtech;" +
@@ -73,20 +63,25 @@ public class Gregicality {
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy", serverSide = "gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy")
     public static ExNihiloCreatioProxy exNihiloCreatioProxy;
 
+    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy", serverSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy")
+    public static OpenComputersCommonProxy openComputersProxy;
+
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
     public static CommonProxy proxy;
 
     public Gregicality() {
-        GALog.init(LogManager.getLogger(MODID));
+
         GAEnums.preInit();
 
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        NetworkHandler.init();
+        GALog.init(event.getModLog());
+        NetworkHandler.preInit();
         proxy.preLoad();
         Keybinds.register();
+        SimpleCapabilityManager.init();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();
@@ -121,103 +116,34 @@ public class Gregicality {
             GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
+        if (Loader.isModLoaded("opencomputers")) {
+            openComputersProxy.init();
+        }
+        CoverBehaviors.init();
+        GAConfig.addConfigReservoirs(GAConfig.extraction.reservoirs);
+        PumpjackHandler.oilChance = GAConfig.Extraction.reservoir_chance;
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        PumpjackHandler.recalculateChances(true);
 
     }
 
-    @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
-        IForgeRegistry<Block> registry = event.getRegistry();
-        registry.register(GAMetaBlocks.MUTLIBLOCK_CASING);
-        registry.register(GAMetaBlocks.TRANSPARENT_CASING);
-        registry.register(GAMetaBlocks.CELL_CASING);
-        registry.register(GAMetaBlocks.CONVEYOR_CASING);
-        registry.register(GAMetaBlocks.FIELD_GEN_CASING);
-        registry.register(GAMetaBlocks.MOTOR_CASING);
-        registry.register(GAMetaBlocks.PISTON_CASING);
-        registry.register(GAMetaBlocks.PUMP_CASING);
-        registry.register(GAMetaBlocks.ROBOT_ARM_CASING);
-        registry.register(GAMetaBlocks.SENSOR_CASING);
-        registry.register(GAMetaBlocks.EMITTER_CASING);
-        GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
-        GA_ORES.forEach(registry::register);
-    }
-
-    @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> event) {
-        IForgeRegistry<Item> registry = event.getRegistry();
-        registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.CELL_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.CONVEYOR_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.FIELD_GEN_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.MOTOR_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.PISTON_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.PUMP_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.ROBOT_ARM_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.SENSOR_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GAMetaBlocks.EMITTER_CASING, VariantItemBlock::new));
-
-        GAMetaBlocks.METAL_CASING.values()
-                .stream().distinct()
-                .map(block -> createItemBlock(block, GAMetalCasingItemBlock::new))
-                .forEach(registry::register);
-
-        GA_ORES.stream()
-                .map(block -> createItemBlock(block, GAOreItemBlock::new))
-                .forEach(registry::register);
-    }
-
-    @SubscribeEvent
-    public void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
-        RecipeHandler.register();
-        OreRecipeHandler.register();
-        GARecipeAddition.init();
-        GAMetaItems.registerOreDict();
-        GAMetaBlocks.registerOreDict();
-        GAMetaItems.registerRecipes();
-        GARecipeAddition.init2();
-        GARecipeAddition.init3();
-        GARecipeAddition.forestrySupport();
-        MatterReplication.init();
-        MachineCraftingRecipes.init();
-        GeneratorFuels.init();
-
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
-            MysticalAgricultureItems.registerOreDict();
+    @Mod.EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+            World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
+            if (!world.isRemote) {
+                IPSaveData worldData = (IPSaveData) world.loadData(IPSaveData.class, IPSaveData.dataName);
+                if (worldData == null) {
+                    worldData = new IPSaveData(IPSaveData.dataName);
+                    world.setData(IPSaveData.dataName, worldData);
+                }
+                IPSaveData.setInstance(world.provider.getDimension(), worldData);
+            }
         }
-
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOW)
-    public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
-            MysticalAgricultureItems.removeMARecipe();
-        }
-        GAMachineRecipeRemoval.init();
-        GARecipeAddition.generatedRecipes();
-        RecipeHandler.registerLargeChemicalRecipes();
-        RecipeHandler.registerLargeMixerRecipes();
-        RecipeHandler.registerLargeForgeHammerRecipes();
-        RecipeHandler.registerAlloyBlastRecipes();
-        RecipeHandler.registerChemicalPlantRecipes();
-        RecipeHandler.registerGreenHouseRecipes();
-        RecipeHandler.registerLargeCentrifugeRecipes();
-        VoidMinerOres.init();
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void registerLateRecipes(RegistryEvent.Register<IRecipe> event) {
-        GAMachineRecipeRemoval.init2();
     }
 
 
-    private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
-        ItemBlock itemBlock = producer.apply(block);
-        itemBlock.setRegistryName(block.getRegistryName());
-        return itemBlock;
-    }
 }

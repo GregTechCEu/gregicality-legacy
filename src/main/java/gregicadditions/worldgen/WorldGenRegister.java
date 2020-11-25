@@ -38,7 +38,7 @@ public class WorldGenRegister {
             GALog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
-//        GALog.logger.info("Reloading ore vein definitions to use our block filler");
+//        GregicalityLogger.logger.info("Reloading ore vein definitions to use our block filler");
 //        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
         GALog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));

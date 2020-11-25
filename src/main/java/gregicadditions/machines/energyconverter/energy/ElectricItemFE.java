@@ -1,5 +1,6 @@
 package gregicadditions.machines.energyconverter.energy;
 
+import gregicadditions.GAValues;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.Energy;
 import gregicadditions.machines.energyconverter.utils.Ratio;
@@ -53,6 +54,6 @@ public class ElectricItemFE implements IElectricItem {
     }
 
     public long getTransferLimit() {
-        return GTValues.V[this.getTier()];
+        return GAValues.V[this.getTier()];
     }
 }

@@ -13,6 +13,36 @@
           "all": "gregtech:blocks/casings/cell/cell.uv"
         }
       },
+      "cell_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.uhv"
+        }
+      },
+      "cell_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.uev"
+        }
+      },
+      "cell_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.uiv"
+        }
+      },
+      "cell_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.umv"
+        }
+      },
+      "cell_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.uxv"
+        }
+      },
+      "cell_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/cell/cell.max"
+        }
+      },
       "cell_zpm": {
         "textures": {
           "all": "gregtech:blocks/casings/cell/cell.zpm"

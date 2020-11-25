@@ -4,10 +4,9 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -19,7 +18,6 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
@@ -39,17 +37,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.HastelloyN;
-import static gregicadditions.GAMaterials.Staballoy;
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.VoidMinerOres.ORES;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
@@ -57,8 +52,9 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
-    private static final int MAX_TEMPERATURE = GAConfig.multis.voidMiner.maxTemp;
+    private final int maxTemperature;
     private static final int CONSUME_START = 100;
+    private final int tier;
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
     protected IItemHandlerModifiable outputInventory;
@@ -67,11 +63,14 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     private boolean usingPyrotheum = true;
     private int temperature = 0;
     private double currentDrillingFluid = CONSUME_START;
-    private final long energyDrain = GTValues.V[GTValues.UV];
+    private final long energyDrain;
 
 
-    public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId, int tier, int temp) {
         super(metaTileEntityId);
+        this.tier = tier;
+        this.energyDrain = GAValues.V[tier];
+        this.maxTemperature = temp;
     }
 
     @Override
@@ -157,7 +156,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 if (currentDrillingFluid < CONSUME_START) {
                     currentDrillingFluid = CONSUME_START;
                 }
-                if (temperature > MAX_TEMPERATURE) {
+                if (temperature > maxTemperature) {
                     overheat = true;
                     currentDrillingFluid = CONSUME_START;
                     return;
@@ -165,7 +164,6 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 usingPyrotheum = !usingPyrotheum;
 
                 //mine
-
 
                 int nbOres = temperature / 1000;
 
@@ -197,9 +195,9 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCSCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', selfPredicate())
-                .where('C', ((Predicate<BlockWorldState>) blockWorldState -> ArrayUtils.contains(Collections.singletonList(getCasingState()).toArray(), blockWorldState.getBlockState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('D', blockWorldState -> GAMetaBlocks.getMetalCasingBlockState(Staballoy).equals(blockWorldState.getBlockState()))
-                .where('F', blockWorldState -> MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState().equals(blockWorldState.getBlockState()))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('D', statePredicate(getSecondaryCasingState()))
+                .where('F', statePredicate(getFrameState()))
                 .where('#', blockWorldState -> true)
                 .build();
     }
@@ -225,11 +223,11 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         if (this.isStructureFormed()) {
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
+                String voltageName = GAValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, MAX_TEMPERATURE));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, maxTemperature));
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.drilling_fluid_amount", currentDrillingFluid));
             if (overheat) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
@@ -240,17 +238,47 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+        switch (tier) {
+            case 9:
+                return GAMetaBlocks.getMetalCasingBlockState(EnrichedNaquadahAlloy);
+            case 8:
+            default:
+            return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+        }
+    }
+
+    public IBlockState getSecondaryCasingState() {
+        switch (tier) {
+            case 8:
+            default:
+                return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+        }
+    }
+
+    public IBlockState getFrameState() {
+        switch (tier) {
+            case 9:
+                return MetaBlocks.FRAMES.get(Incoloy813).getDefaultState();
+            case 8:
+            default:
+            return MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState();
+        }
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+        switch (tier) {
+            case 9:
+                return GAMetaBlocks.METAL_CASING.get(EnrichedNaquadahAlloy);
+            case 8:
+            default:
+                return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+        }
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityVoidMiner(metaTileEntityId);
+        return new MetaTileEntityVoidMiner(metaTileEntityId, this.tier, this.maxTemperature);
     }
 
     @Override

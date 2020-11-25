@@ -5,7 +5,8 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.components.PistonCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,7 +18,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.Material;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -117,9 +117,16 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
             return false;
         }
 
-        pos = ++pos % possibleRecipe.length;
-        ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-        this.recipeMap = possibleRecipe[pos];
+        if (playerIn.isSneaking()) {
+            pos = (--pos < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
+            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
+            this.recipeMap = possibleRecipe[pos];
+
+        } else {
+            pos = ++pos % possibleRecipe.length;
+            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
+            this.recipeMap = possibleRecipe[pos];
+        }
 
         return true;
     }

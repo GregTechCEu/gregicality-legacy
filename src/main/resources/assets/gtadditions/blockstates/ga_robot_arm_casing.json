@@ -47,6 +47,36 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
+      },
+      "robot_arm_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uhv"
+        }
+      },
+      "robot_arm_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uev"
+        }
+      },
+      "robot_arm_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uiv"
+        }
+      },
+      "robot_arm_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_umv"
+        }
+      },
+      "robot_arm_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uxv"
+        }
+      },
+      "robot_arm_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_max"
+        }
       }
     }
   }

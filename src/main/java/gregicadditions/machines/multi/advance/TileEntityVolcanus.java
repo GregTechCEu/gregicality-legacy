@@ -3,8 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
+import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -12,9 +11,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
@@ -22,14 +18,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +38,7 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
     public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
-        this.recipeMapWorkable = new VolcanusRecipeLogic(this);
+        this.recipeMapWorkable = new VolcanusRecipeLogic(this, ENERGY_DECREASE_FACTOR, DURATION_DECREASE_FACTOR, 100, 1);
         reinitializeStructurePattern();
     }
 
@@ -86,73 +79,35 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
     }
 
 
-    public class VolcanusRecipeLogic extends MultiblockRecipeLogic {
+    public class VolcanusRecipeLogic extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
-        public VolcanusRecipeLogic(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity);
-        }
-
-        @Override
-        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
-            if (recipe == null) {
-                return null;
-            }
-            List<CountableIngredient> newRecipeInputs = new ArrayList<>();
-            List<FluidStack> newFluidInputs = new ArrayList<>();
-            List<ItemStack> outputI = new ArrayList<>();
-            List<FluidStack> outputF = new ArrayList<>();
-            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipe, 1);
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
-                    .fluidInputs(newFluidInputs)
-                    .outputs(outputI)
-                    .fluidOutputs(outputF)
-                    .EUt((int) (recipe.getEUt() * ENERGY_DECREASE_FACTOR / 100))
-                    .duration((int) (recipe.getDuration() *  DURATION_DECREASE_FACTOR / 100));
-            return newRecipe.build().getResult();
+        public VolcanusRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
+            super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, stack);
         }
 
         @Override
         protected boolean drawEnergy(int recipeEUt) {
-            boolean enoughEnergy = super.drawEnergy(recipeEUt);
+            int drain = 10 * getOverclockingTier(getMaxVoltage());
+            long resultEnergy = this.getEnergyStored() - (long) recipeEUt;
             Optional<IFluidTank> fluidTank =
                     getInputFluidInventory().getFluidTanks().stream()
                             .filter(iFluidTank -> iFluidTank.getFluid() != null)
-                            .filter(iFluidTank -> iFluidTank.getFluid().isFluidEqual(GAMaterials.Pyrotheum.getFluid(2)))
+                            .filter(iFluidTank -> iFluidTank.getFluid().isFluidEqual(GAMaterials.Pyrotheum.getFluid(drain)))
                             .findFirst();
             if (fluidTank.isPresent()) {
                 IFluidTank tank = fluidTank.get();
-                if (tank.getCapacity() > 1 && enoughEnergy) {
-                    tank.drain(1, true);
+                if (resultEnergy >= 0L && resultEnergy <= this.getEnergyCapacity() && tank.getCapacity() > 1) {
+                    tank.drain(drain, true);
+                    this.getEnergyContainer().changeEnergy(-recipeEUt);
                     return true;
+                } else {
+                    return false;
                 }
             }
             return false;
         }
 
-        protected void multiplyInputsAndOutputs(List<CountableIngredient> newRecipeInputs, List<FluidStack> newFluidInputs, List<ItemStack> outputI, List<FluidStack> outputF, Recipe r, int multiplier) {
-            for (CountableIngredient ci : r.getInputs()) {
-                CountableIngredient newIngredient = new CountableIngredient(ci.getIngredient(), ci.getCount() * multiplier);
-                newRecipeInputs.add(newIngredient);
-            }
-            for (FluidStack fs : r.getFluidInputs()) {
-                FluidStack newFluid = new FluidStack(fs.getFluid(), fs.amount * multiplier);
-                newFluidInputs.add(newFluid);
-            }
-            for (ItemStack s : r.getOutputs()) {
-                int num = s.getCount() * multiplier;
-                ItemStack itemCopy = s.copy();
-                itemCopy.setCount(num);
-                outputI.add(itemCopy);
-            }
-            for (FluidStack f : r.getFluidOutputs()) {
-                int fluidNum = f.amount * multiplier;
-                FluidStack fluidCopy = f.copy();
-                fluidCopy.amount = fluidNum;
-                outputF.add(fluidCopy);
-            }
-        }
+
     }
 
 }
