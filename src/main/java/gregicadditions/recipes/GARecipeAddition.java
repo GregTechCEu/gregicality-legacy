@@ -1426,6 +1426,11 @@ public class GARecipeAddition {
                     .duration(200)
                     .buildAndRegister();
         }
+
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).inputs(ZirconiumTetrachloride.getItemStack(4)).outputs(OreDictUnifier.get(dust, Zirconium)).fluidOutputs(Chlorine.getFluid(3000)).buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).fluidInputs(SiliconFluoride.getFluid(2000)).outputs(OreDictUnifier.get(dust, Silicon)).fluidOutputs(Fluorine.getFluid(1000)).buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).fluidInputs(SiliconFluoride.getFluid(2000)).outputs(OreDictUnifier.get(dust, Silicon)).fluidOutputs(Fluorine.getFluid(1000)).buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).fluidInputs(CarbonFluoride.getFluid(2000)).outputs(OreDictUnifier.get(dust, Carbon)).fluidOutputs(Fluorine.getFluid(1000)).buildAndRegister();
     }
 
     public static void init3() {
