@@ -1,27 +1,28 @@
 package gregicadditions.recipes;
 
-import crafttweaker.annotations.ZenRegister;
-import gregicadditions.Gregicality;
 import gregicadditions.recipes.crafttweaker.CTLargeRecipeBuilder;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.crafttweaker.CTRecipeBuilder;
-import net.minecraftforge.fml.common.Optional.Method;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenClass("mods.gtadditions.recipe.LargeRecipeMap")
-@ZenRegister
+import java.util.ArrayList;
+import java.util.List;
+
 public class LargeRecipeMap extends RecipeMap<LargeRecipeBuilder> {
+
+    private static final List<LargeRecipeMap> LARGE_RECIPE_MAPS = new ArrayList();
 
     public LargeRecipeMap(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, LargeRecipeBuilder defaultRecipe) {
         super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe);
+        LARGE_RECIPE_MAPS.add(this);
     }
 
-    @ZenMethod("recipeBuilder")
-    @Method(modid = Gregicality.MODID)
-    public CTRecipeBuilder ctRecipeBuilder() {
+    public CTLargeRecipeBuilder ctLargeRecipeBuilder() {
         return new CTLargeRecipeBuilder(recipeBuilder());
     }
 
+    public static LargeRecipeMap getLargeMapByName(String unlocalizedName) {
+        return (LargeRecipeMap)LARGE_RECIPE_MAPS.stream().filter((map) -> {
+            return map.unlocalizedName.equals(unlocalizedName);
+        }).findFirst().orElse((LargeRecipeMap) null);
+    }
 }
