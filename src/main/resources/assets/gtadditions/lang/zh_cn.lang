@@ -511,9 +511,9 @@ gtadditions.machine.cluster_mill.zpm.name=高科技多辊式轧机 VI
 gtadditions.machine.cluster_mill.uv.name=高科技多辊式轧机 VII
 
 gtadditions.machine.electric_furnace.iv.name=热应激发生器
-gtadditions.machine.electric_furnace.luv.name=热应激发生器
-gtadditions.machine.electric_furnace.zpm.name=热应激发生器
-gtadditions.machine.electric_furnace.uv.name=热应激发生器
+gtadditions.machine.electric_furnace.luv.name=热应激发生器 II
+gtadditions.machine.electric_furnace.zpm.name=热应激发生器 III
+gtadditions.machine.electric_furnace.uv.name=热应激发生器 IV
 
 gtadditions.machine.macerator.iv.name=矿石粉碎者 9001
 gtadditions.machine.macerator.luv.name=矿石粉碎者 9002
