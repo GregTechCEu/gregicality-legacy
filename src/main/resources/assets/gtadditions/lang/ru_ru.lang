@@ -1438,7 +1438,7 @@ gtadditions.multiblock.large_rocket_engine.tooltip.7=Свыше ZPM - 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Свыше UV - 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Быстрее доменной печи
 gtadditions.multiblock.large_naquadah_reactor.tooltip.1=КПД реактора равняется 100%%.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Наквадрия вступает в реакцию с калиевой плазмой и производит 1UV/т.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Наквадрия вступает в реакцию с калиевой плазмой и производит более 1UV/т.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.3=Среднее наквадовое топливо => 1UV.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.4=Тяжелое наквадовое топливо => 2UV.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.5=Среднее обогащенное наквадовое топливо => 2UV.
