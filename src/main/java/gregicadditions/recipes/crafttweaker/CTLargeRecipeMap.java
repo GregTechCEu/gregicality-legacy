@@ -3,27 +3,19 @@ package gregicadditions.recipes.crafttweaker;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
-import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.Gregicality;
 import gregicadditions.recipes.LargeRecipeMap;
-import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.crafttweaker.CTRecipe;
-import gregtech.api.recipes.crafttweaker.CTRecipeBuilder;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @ZenClass("mods.gtadditions.recipe.LargeRecipeMap")
 @ZenRegister
@@ -44,6 +36,11 @@ public class CTLargeRecipeMap {
     @ZenMethod("getByName")
     public static CTLargeRecipeMap ctGetByName(String unlocalizedName) {
         return new CTLargeRecipeMap(LargeRecipeMap.getLargeMapByName(unlocalizedName));
+    }
+
+    @ZenMethod("of")
+    public static CTLargeRecipeMap ctGetByLargeMap(LargeRecipeMap lrm) {
+        return new CTLargeRecipeMap(lrm);
     }
 
     @ZenMethod("findRecipe")
