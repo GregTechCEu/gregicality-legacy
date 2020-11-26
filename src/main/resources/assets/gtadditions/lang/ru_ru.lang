@@ -526,7 +526,6 @@ recipemap.replicator.name=Репликация
 recipemap.mass_fab.name=Фабрикация Материи
 recipemap.disassembling_machine.name=Разборка
 recipemap.processing_array.name=Массив обработки
-gtadditiorecipemap.green_house.name=Теплица
 
 recipemap.plasma_generator.name=Топливо для плазменной турбины
 
@@ -2550,6 +2549,7 @@ gtadditions.machine.decay_chamber.uhv.name=Высокотехнологична�
 gtadditions.machine.decay_chamber.uev.name=Высокотехнологичная камера распада II
 gtadditions.machine.decay_chamber.uiv.name=Высокотехнологичная камера распада III
 gtadditions.machine.decay_chamber.umv.name=Высокотехнологичная камера распада IV
+gtadditiorecipemap.green_house.name=Теплица
 gtadditions.machine.decay_chamber.uxv.name=Совершенная камера распада
 gtadditions.machine.green_house.uhv.name=Высокотехнологичная теплица
 gtadditions.machine.green_house.uev.name=Высокотехнологичная теплица II
