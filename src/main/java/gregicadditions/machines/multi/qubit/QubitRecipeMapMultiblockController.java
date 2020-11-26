@@ -58,7 +58,7 @@ public abstract class QubitRecipeMapMultiblockController extends RecipeMapMultib
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (recipeMapWorkable instanceof QubitConsumeRecipeLogic) {
+        if (recipeMapWorkable instanceof QubitConsumeRecipeLogic && !((QubitConsumeRecipeLogic) recipeMapWorkable).isHasEnoughQubit()) {
             textList.add((new TextComponentTranslation("gtadditions.multiblock.not_enough_qubit")).setStyle((new Style()).setColor(TextFormatting.RED)));
         }
     }
