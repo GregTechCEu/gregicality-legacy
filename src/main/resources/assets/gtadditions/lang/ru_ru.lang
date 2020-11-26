@@ -526,6 +526,7 @@ recipemap.replicator.name=Репликация
 recipemap.mass_fab.name=Фабрикация Материи
 recipemap.disassembling_machine.name=Разборка
 recipemap.processing_array.name=Массив обработки
+gtadditiorecipemap.green_house.name=Теплица
 
 recipemap.plasma_generator.name=Топливо для плазменной турбины
 
