@@ -671,15 +671,15 @@ gtadditions.machine.ore_washer.luv.name=Elite Ore Washing Plant II
 gtadditions.machine.ore_washer.zpm.name=Elite Ore Washing Plant III
 gtadditions.machine.ore_washer.uv.name=Elite Ore Washing Plant IV
 
-gtadditions.machine.packer.iv.name=Boxinator
-gtadditions.machine.packer.luv.name=Boxinator
-gtadditions.machine.packer.zpm.name=Boxinator
-gtadditions.machine.packer.uv.name=Boxinator
+gtadditions.machine.packer.iv.name=Elite Packager
+gtadditions.machine.packer.luv.name=Elite Packager II
+gtadditions.machine.packer.zpm.name=Elite Packager III
+gtadditions.machine.packer.uv.name=Elite Packager IV
 
-gtadditions.machine.unpacker.iv.name=Unboxinator
-gtadditions.machine.unpacker.luv.name=Unboxinator
-gtadditions.machine.unpacker.zpm.name=Unboxinator
-gtadditions.machine.unpacker.uv.name=Unboxinator
+gtadditions.machine.unpacker.iv.name=Elite Unpackager
+gtadditions.machine.unpacker.luv.name=Elite Unpackager II
+gtadditions.machine.unpacker.zpm.name=Elite Unpackager III
+gtadditions.machine.unpacker.uv.name=Elite Unpackager IV
 
 gtadditions.machine.plasma_arc_furnace.iv.name=Elite Plasma Arc Furnace
 gtadditions.machine.plasma_arc_furnace.luv.name=Elite Plasma Arc Furnace II
@@ -711,11 +711,11 @@ gtadditions.machine.wiremill.luv.name=Elite Wiremill II
 gtadditions.machine.wiremill.zpm.name=Elite Wiremill III
 gtadditions.machine.wiremill.uv.name=Elite Wiremill IV
 
-gtadditions.machine.clustermill.uhv.name=High-Tech Clustermill
-gtadditions.machine.clustermill.uev.name=High-Tech Clustermill I
-gtadditions.machine.clustermill.uiv.name=High-Tech Clustermill II
-gtadditions.machine.clustermill.umv.name=High-Tech Clustermill IV
-gtadditions.machine.clustermill.uxv.name=Ultimate Clustermill
+gtadditions.machine.clustermill.uhv.name=High-Tech Cluster Mill
+gtadditions.machine.clustermill.uev.name=High-Tech Cluster Mill I
+gtadditions.machine.clustermill.uiv.name=High-Tech Cluster Mill II
+gtadditions.machine.clustermill.umv.name=High-Tech Cluster Mill IV
+gtadditions.machine.clustermill.uxv.name=Ultimate Cluster Mill
 gtadditions.machine.electric_furnace.uhv.name=High-Tech Electric Furnace
 gtadditions.machine.electric_furnace.uev.name=High-Tech Electric Furnace II
 gtadditions.machine.electric_furnace.uiv.name=High-Tech Electric Furnace III
