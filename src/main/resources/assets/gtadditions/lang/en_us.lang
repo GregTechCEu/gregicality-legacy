@@ -671,15 +671,15 @@ gtadditions.machine.ore_washer.luv.name=Elite Ore Washing Plant II
 gtadditions.machine.ore_washer.zpm.name=Elite Ore Washing Plant III
 gtadditions.machine.ore_washer.uv.name=Elite Ore Washing Plant IV
 
-gtadditions.machine.packer.iv.name=Boxinator
-gtadditions.machine.packer.luv.name=Boxinator
-gtadditions.machine.packer.zpm.name=Boxinator
-gtadditions.machine.packer.uv.name=Boxinator
+gtadditions.machine.packer.iv.name=Elite Packager
+gtadditions.machine.packer.luv.name=Elite Packager II
+gtadditions.machine.packer.zpm.name=Elite Packager III
+gtadditions.machine.packer.uv.name=Elite Packager IV
 
-gtadditions.machine.unpacker.iv.name=Unboxinator
-gtadditions.machine.unpacker.luv.name=Unboxinator
-gtadditions.machine.unpacker.zpm.name=Unboxinator
-gtadditions.machine.unpacker.uv.name=Unboxinator
+gtadditions.machine.unpacker.iv.name=Elite Unpackager
+gtadditions.machine.unpacker.luv.name=Elite Unpackager II
+gtadditions.machine.unpacker.zpm.name=Elite Unpackager III
+gtadditions.machine.unpacker.uv.name=Elite Unpackager IV
 
 gtadditions.machine.plasma_arc_furnace.iv.name=Elite Plasma Arc Furnace
 gtadditions.machine.plasma_arc_furnace.luv.name=Elite Plasma Arc Furnace II
