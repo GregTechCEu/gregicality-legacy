@@ -1004,7 +1004,7 @@ recipemap.bio_reactor.name=生物反应器
 
 gtadditions.recipe.drilling_rig.fluid=%s
 gtadditions.recipe.drilling_rig.dimension_whitelist=维度白名单：%s
-gtadditions.recipe.drilling_rig.dimension_blacklist=维度黑名单%s
+gtadditions.recipe.drilling_rig.dimension_blacklist=维度黑名单：%s
 gtadditions.recipe.drilling_rig.biome_whitelist=生物群系白名单：%s
 gtadditions.recipe.drilling_rig.biome_blacklist=生物群系黑名单：%s
 gtadditions.recipe.drilling_rig.min_size=最小尺寸：%d
