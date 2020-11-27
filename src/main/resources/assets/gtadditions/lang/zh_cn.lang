@@ -1678,11 +1678,11 @@ item.material.oreprefix.fuelCarbide=%s碳化燃料
 item.material.oreprefix.fuelZirconiumAlloy=%s锆合金燃料
 item.material.oreprefix.fuelOxide=%s氧化燃料
 item.material.oreprefix.fuelPure=%s纯净燃料
-item.material.oreprefix.fuelTRISO=%sTRISO燃料
+item.material.oreprefix.fuelTRISO=%s TRISO燃料
 item.material.oreprefix.depletedFuelNitride=枯竭%s硝化燃料
 item.material.oreprefix.depletedFuelZirconiumAlloy=枯竭%s锆合金燃料
 item.material.oreprefix.depletedFuelOxide=枯竭%s氧化燃料
-item.material.oreprefix.depletedFuelTRISO=枯竭%sTRISO燃料
+item.material.oreprefix.depletedFuelTRISO=枯竭%s TRISO燃料
 item.material.oreprefix.depletedFuel=枯竭%s燃料
 
 item.oreprefix.opticalFiberHex=16x光导纤维
