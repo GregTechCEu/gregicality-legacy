@@ -14,7 +14,6 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Iron;
 import static net.minecraft.block.BlockDirectional.FACING;
 
 public class LargeForgeHammerInfo extends MultiblockInfoPage {

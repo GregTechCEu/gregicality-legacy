@@ -1,5 +1,6 @@
 package gregicadditions.jei.multi;
 
+import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
@@ -16,6 +17,7 @@ import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumFacing;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,9 +30,10 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
-        return Arrays.stream(BlockWireCoil.CoilType.values()).map(coilType -> {
-            GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
-            builder.aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
+        ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+        for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
+            shapeInfo.add(GAMultiblockShapeInfo.builder()
+                    .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
                     .aisle("FXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
                     .aisle("FXXXX", "RCTCR", "RCTCR", "RCTCR", "YYYYY")
                     .aisle("FXXXE", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
@@ -44,9 +47,27 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                     .where('R', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS))
                     .where('T', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_HV))
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.EAST);
-            return builder.build();
-        }).collect(Collectors.toList());
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.EAST).build());
+        }
+        for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
+            shapeInfo.add(GAMultiblockShapeInfo.builder()
+                    .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
+                    .aisle("FXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
+                    .aisle("FXXXX", "RCTCR", "RCTCR", "RCTCR", "YYYYY")
+                    .aisle("FXXXE", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
+                    .aisle("FISOO", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
+                    .where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
+                    .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
+                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
+                    .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.SOUTH)
+                    .where('Y', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
+                    .where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
+                    .where('R', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS))
+                    .where('T', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_HV))
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.EAST).build());
+        }
+        return shapeInfo;
     }
 
     @Override
