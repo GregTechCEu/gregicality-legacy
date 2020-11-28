@@ -151,6 +151,7 @@ public class GATileEntities {
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
+    public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
