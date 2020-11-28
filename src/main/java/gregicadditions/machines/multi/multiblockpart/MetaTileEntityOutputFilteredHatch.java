@@ -17,7 +17,6 @@ import gregtech.api.render.Textures;
 import gregtech.common.covers.filter.FilterTypeRegistry;
 import gregtech.common.covers.filter.FluidFilter;
 import gregtech.common.covers.filter.SimpleFluidFilter;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,7 +34,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityOutputFilteredHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
+public class MetaTileEntityOutputFilteredHatch extends GAMetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
 
     private static final int INITIAL_INVENTORY_SIZE = 1000;
     private final ItemStackHandler containerInventory;
