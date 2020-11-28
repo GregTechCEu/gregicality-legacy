@@ -1,5 +1,6 @@
 package gregicadditions;
 
+import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -1068,28 +1069,20 @@ public class GAConfig {
     public static Extraction extraction;
 
     public static class Extraction {
-        @Config.Comment({"List of reservoir types. Format: name, fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
+        @Config.Comment({"List of reservoir types. Format: fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
+        @Config.RequiresMcRestart
         public static String[] reservoirs = new String[]{
-                "aquifer, water, 5000000, 10000000, 6, 30, [], [0], [], []",
-                "oil, oil, 2500000, 15000000, 6, 40, [1], [], [], []",
-                "lava, lava, 250000, 1000000, 0, 30, [1], [], [], []"
+                "water, 5000000, 10000000, 10, 30, [], [0], [], []",
+                "oil, 2500000, 15000000, 6, 40, [1], [], [], []",
+                "lava, 250000, 1000000, 1, 30, [1], [], [], []"
         };
 
         @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
-        public static float reservoir_chance = 0.0F;
+        public static float reservoirChance = 0.5F;
 
-
-        @Config.Comment({"The Flux the Pumpjack requires each tick to pump, default=1024"})
-        public static int pumpjack_consumption = 1024;
-
-        @Config.Comment({"The amount of mB of oil a Pumpjack extracts per tick, default=15"})
-        public static int pumpjack_speed = 15;
-
-        @Config.Comment({"Require a pumpjack to have pipes built down to Bedrock, default=false"})
-        public static boolean req_pipes = false;
-
-        @Config.Comment({"Number of ticks between checking for pipes below pumpjack if required, default=100 (5 secs)"})
-        public static int pipe_check_ticks = 100;
+        @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
+        @Config.RangeInt(min = 1, max = 1000)
+        public static int timeToScanFactor = 100;
     }
 
     public static void addConfigReservoirs(String[] reservoirs) {
@@ -1098,7 +1091,6 @@ public class GAConfig {
 
             if (str.isEmpty()) continue;
 
-            String name = null;
             String fluid = null;
             int min = 0;
             int max = 0;
@@ -1118,19 +1110,20 @@ public class GAConfig {
                 int endPos = remain.indexOf(",");
 
                 String current = remain.substring(0, endPos).trim();
+                GALog.logger.info(current);
+                GALog.logger.info(endPos);
 
-                if (index == 0) name = current;
-                else if (index == 1) fluid = current;
-                else if (index == 2) {
+                if (index == 0) fluid = current;
+                else if (index == 1) {
                     try {
                         min = Integer.parseInt(current);
                         if (min < 0) {
-                            throw new RuntimeException("Negative value for minimum mB fluid for reservoir " + (i + 1));
+                            throw new RuntimeException("Negative value for minimum mB fluid for reservoir " + current + " " + (i + 1));
                         }
                     } catch (NumberFormatException e) {
-                        throw new RuntimeException("Invalid value for minimum mB fluid for reservoir " + (i + 1));
+                        throw new RuntimeException("Invalid value for minimum mB fluid for reservoir  " + current + " " + (i + 1));
                     }
-                } else if (index == 3) {
+                } else if (index == 2) {
                     try {
                         max = Integer.parseInt(current);
                         if (max < 0) {
@@ -1139,7 +1132,7 @@ public class GAConfig {
                     } catch (NumberFormatException e) {
                         throw new RuntimeException("Invalid value for maximum mB fluid for reservoir " + (i + 1));
                     }
-                } else if (index == 4) {
+                } else if (index == 3) {
                     try {
                         replenish = Integer.parseInt(current);
                         if (replenish < 0) {
@@ -1148,7 +1141,7 @@ public class GAConfig {
                     } catch (NumberFormatException e) {
                         throw new RuntimeException("Invalid value for mB replenished per tick for reservoir " + (i + 1));
                     }
-                } else if (index == 5) {
+                } else if (index == 4) {
                     try {
                         weight = Integer.parseInt(current);
                         if (weight < 0) {
@@ -1157,7 +1150,7 @@ public class GAConfig {
                     } catch (NumberFormatException e) {
                         throw new RuntimeException("Invalid value for weight for reservoir " + (i + 1));
                     }
-                } else if (index == 6) {
+                } else if (index == 5) {
                     if (!inParens) {
                         current = current.substring(1);
                         inParens = true;
@@ -1179,7 +1172,7 @@ public class GAConfig {
                             throw new RuntimeException(value + "Invalid blacklist dimension for reservoir " + (i + 1));
                         }
                     }
-                } else if (index == 7) {
+                } else if (index == 6) {
                     if (!inParens) {
                         current = current.substring(1);
                         inParens = true;
@@ -1201,7 +1194,7 @@ public class GAConfig {
                             throw new RuntimeException("Invalid whitelist dimension for reservoir " + (i + 1));
                         }
                     }
-                } else if (index == 8) {
+                } else if (index == 7) {
                     if (!inParens) {
                         current = current.substring(1);
                         inParens = true;
@@ -1218,7 +1211,7 @@ public class GAConfig {
                     if (value.length() > 0) {
                         biomeBlacklist.add(PumpjackHandler.convertConfigName(value.trim()));
                     }
-                } else if (index == 9) {
+                } else if (index == 8) {
                     if (!inParens) {
                         current = current.substring(1);
                         inParens = true;
@@ -1263,13 +1256,13 @@ public class GAConfig {
                 throw new RuntimeException("Invalid fluid name for reservoir " + (i + 1));
             }
 
-            PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(name, fluid, min, max, replenish, weight);
+            PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(fluid, min, max, replenish, weight);
             res.dimensionWhitelist = dimWhitelist;
             res.dimensionBlacklist = dimBlacklist;
             res.biomeWhitelist = biomeWhitelist;
             res.biomeBlacklist = biomeBlacklist;
 
-            System.out.println("Added resevoir type " + name);
+            GALog.logger.info("Added resevoir type " + fluid);
         }
     }
 }

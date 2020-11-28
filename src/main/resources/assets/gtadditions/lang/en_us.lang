@@ -1111,11 +1111,14 @@ gtadditions.machine.hull.uiv.name=UIV Machine Hull
 gtadditions.machine.hull.umv.name=UMV Machine Hull
 gtadditions.machine.hull.uxv.name=UXV Machine Hull
 gtadditions.machine.drilling_rig.name=Drilling Rig
+gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
 
 
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet
+gtadditions.machine.solar_fluid_sampler.missing_solar=Need solar pannel on top
+
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
@@ -1902,6 +1905,12 @@ gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
 gtadditions.multiblock.not_enough_qubit=Not enough Qubit, recipe slowed.
 gregicality.multiblock.invalid_configuraion.1=The Advanced Fusion Reactor is setup incorrectly.
 gregicality.multiblock.invalid_configuraion.2=The tier of the Cryostat, Vacuum and/or Divertor casings are lower than the tier of your coils.
+gtadditions.multiblock.drilling_rig.no_fluid=Chumk is Empty
+gtadditions.multiblock.drilling_rig.fluid_drain=Fluid Drain: %dmB/sec
+gtadditions.multiblock.drilling_rig.chunk_capacity=Chunk Capacity: %dB
+gtadditions.multiblock.drilling_rig.chunk_remaining=Chunk Remaning: %dB
+gtadditions.multiblock.drilling_rig.fluid=Current Fluid: %s
+gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

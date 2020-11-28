@@ -13,7 +13,6 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -200,7 +199,6 @@ public class PumpjackHandler {
     /**
      * Adds a reservoir type to the pool of valid reservoirs
      *
-     * @param name          The name of the reservoir type
      * @param fluid         The String fluidid of the fluid for this reservoir
      * @param minSize       The minimum reservoir size, in mB
      * @param maxSize       The maximum reservoir size, in mB
@@ -208,8 +206,8 @@ public class PumpjackHandler {
      * @param weight        The weight for this reservoir to spawn
      * @return The created ReservoirType
      */
-    public static ReservoirType addReservoir(String name, String fluid, int minSize, int maxSize, int replenishRate, int weight) {
-        ReservoirType mix = new ReservoirType(name, fluid, minSize, maxSize, replenishRate);
+    public static ReservoirType addReservoir(String fluid, int minSize, int maxSize, int replenishRate, int weight) {
+        ReservoirType mix = new ReservoirType(fluid, minSize, maxSize, replenishRate);
         reservoirList.put(mix, weight);
         return mix;
     }
@@ -236,7 +234,7 @@ public class PumpjackHandler {
      */
     public static String getBiomeName(Biome biome) {
         if (!biomeNames.containsKey(biome)) {
-            String biomeName = ObfuscationReflectionHelper.getPrivateValue(Biome.class, biome, "biomeName");
+            String biomeName = biome.getBiomeName();
             biomeNames.put(biome, biomeName.replace(" ", "").replace("_", "").toLowerCase());
         }
         return biomeNames.get(biome);
@@ -264,7 +262,6 @@ public class PumpjackHandler {
     }
 
     public static class ReservoirType {
-        public String name;
         public String fluid;
 
         public int minSize;
@@ -279,8 +276,7 @@ public class PumpjackHandler {
 
         private Fluid f;
 
-        public ReservoirType(String name, String fluid, int minSize, int maxSize, int replenishRate) {
-            this.name = name;
+        public ReservoirType(String fluid, int minSize, int maxSize, int replenishRate) {
             this.fluid = fluid;
             this.minSize = minSize;
             this.maxSize = maxSize;
@@ -338,7 +334,6 @@ public class PumpjackHandler {
 
         public NBTTagCompound writeToNBT() {
             NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("name", this.name);
 
             tag.setString("fluid", fluid);
 
@@ -372,7 +367,7 @@ public class PumpjackHandler {
             int maxSize = tag.getInteger("maxSize");
             int replenishRate = tag.getInteger("replenishRate");
 
-            ReservoirType res = new ReservoirType(name, fluid, minSize, maxSize, replenishRate);
+            ReservoirType res = new ReservoirType(fluid, minSize, maxSize, replenishRate);
 
             res.dimensionWhitelist = Arrays.stream(tag.getIntArray("dimensionWhitelist")).boxed().collect(Collectors.toList());
             res.dimensionBlacklist = Arrays.stream(tag.getIntArray("dimensionBlacklist")).boxed().collect(Collectors.toList());
@@ -410,10 +405,10 @@ public class PumpjackHandler {
             tag.setInteger("capacity", capacity);
             tag.setInteger("oil", current);
             if (type != null) {
-                tag.setString("type", type.name);
+                tag.setString("type", type.fluid);
             }
             if (overrideType != null) {
-                tag.setString("overrideType", overrideType.name);
+                tag.setString("overrideType", overrideType.fluid);
             }
             return tag;
         }
@@ -426,12 +421,12 @@ public class PumpjackHandler {
             if (tag.hasKey("type")) {
                 String s = tag.getString("type");
                 for (ReservoirType res : reservoirList.keySet()) {
-                    if (s.equalsIgnoreCase(res.name))
+                    if (s.equalsIgnoreCase(res.fluid))
                         info.type = res;
                 }
             } else if (info.current > 0) {
                 for (ReservoirType res : reservoirList.keySet()) {
-                    if (res.name.equalsIgnoreCase("oil"))
+                    if (res.fluid.equalsIgnoreCase("oil"))
                         info.type = res;
                 }
 
@@ -443,7 +438,7 @@ public class PumpjackHandler {
             if (tag.hasKey("overrideType")) {
                 String s = tag.getString("overrideType");
                 for (ReservoirType res : reservoirList.keySet()) {
-                    if (s.equalsIgnoreCase(res.name))
+                    if (s.equalsIgnoreCase(res.fluid))
                         info.overrideType = res;
                 }
             }

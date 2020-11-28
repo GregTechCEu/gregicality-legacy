@@ -207,9 +207,16 @@ public enum GACraftingComponents {
                 case 7:
                     return new UnificationEntry(cableGtSingle, Naquadah);
                 case 8:
-                    return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
+                    return new UnificationEntry(cableGtSingle, NaquadahAlloy);
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    return new UnificationEntry(cableGtSingle, Duranium);
+                case 14:
                 default:
-                    return new UnificationEntry(wireGtSingle, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -234,9 +241,16 @@ public enum GACraftingComponents {
                 case 7:
                     return new UnificationEntry(cableGtDouble, Naquadah);
                 case 8:
-                    return new UnificationEntry(wireGtDouble, NaquadahAlloy);
+                    return new UnificationEntry(cableGtDouble, NaquadahAlloy);
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    return new UnificationEntry(cableGtDouble, Duranium);
+                case 14:
                 default:
-                    return new UnificationEntry(wireGtDouble, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -262,6 +276,13 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtQuadruple, Naquadah);
                 case 8:
                     return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    return new UnificationEntry(cableGtQuadruple, Duranium);
+                case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -289,8 +310,15 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtOctal, Naquadah);
                 case 8:
                     return new UnificationEntry(cableGtOctal, NaquadahAlloy);
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    return new UnificationEntry(cableGtOctal, Duranium);
+                case 14:
                 default:
-                    return new UnificationEntry(wireGtOctal, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
@@ -317,8 +345,15 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtHex, Naquadah);
                 case 8:
                     return new UnificationEntry(cableGtHex, NaquadahAlloy);
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    return new UnificationEntry(cableGtHex, Duranium);
+                case 14:
                 default:
-                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
         }
     },
