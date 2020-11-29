@@ -669,15 +669,15 @@ gtadditions.machine.ore_washer.luv.name=波轮洗矿厂 I-720
 gtadditions.machine.ore_washer.zpm.name=波轮洗矿厂 I-1080
 gtadditions.machine.ore_washer.uv.name=波轮洗矿厂 I-1440
 
-gtadditions.machine.packer.iv.name=装箱者
-gtadditions.machine.packer.luv.name=装箱者
-gtadditions.machine.packer.zpm.name=装箱者
-gtadditions.machine.packer.uv.name=装箱者
+gtadditions.machine.packer.iv.name=高科技装箱者
+gtadditions.machine.packer.luv.name=高科技装箱者 II
+gtadditions.machine.packer.zpm.name=高科技装箱者 III
+gtadditions.machine.packer.uv.name=高科技装箱者 IV
 
-gtadditions.machine.unpacker.iv.name=拆箱者
-gtadditions.machine.unpacker.luv.name=拆箱者
-gtadditions.machine.unpacker.zpm.name=拆箱者
-gtadditions.machine.unpacker.uv.name=拆箱者
+gtadditions.machine.unpacker.iv.name=高科技拆箱者
+gtadditions.machine.unpacker.luv.name=高科技拆箱者 II
+gtadditions.machine.unpacker.zpm.name=高科技拆箱者 III
+gtadditions.machine.unpacker.uv.name=高科技拆箱者 IV
 
 gtadditions.machine.plasma_arc_furnace.iv.name=高科技等离子电弧炉 IV
 gtadditions.machine.plasma_arc_furnace.luv.name=高科技等离子电弧炉 V
@@ -752,6 +752,7 @@ gtadditions.machine.alloy_blast_furnace.name=工业合金炉
 gtadditions.machine.large_forge_hammer.name=大型锻造锤
 gtadditions.machine.large_naquadah_reactor.name=大型硅岩反应堆
 gtadditions.machine.battery_tower.name=储能塔
+gtadditions.machine.large_laser_engraver.name=大型激光蚀刻机
 
 gtadditions.machine.naquadah_reactor.mk1.name=硅岩反应堆Mk.I
 gtadditions.machine.naquadah_reactor.mk2.name=硅岩反应堆Mk.II
@@ -873,6 +874,7 @@ gtadditions.machine.fluid_hatch.export_filtered.max.name=过滤输出仓(MAX)
 
 gtadditions.machine.coke_item_bus.name=[弃用]焦炉输出总线
 gtadditions.machine.coke_fluid_hatch.name=[弃用]焦炉输出仓
+gtadditions.machine.solar_fluid_sampler.missing_solar=需要在顶部放置太阳能板
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=焦炉砖块
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=装配线方块
@@ -920,6 +922,8 @@ tile.ga_quantum_casing.computer.name=量子计算机外壳
 tile.ga_quantum_casing.generator.name=量子位发生器外壳
 tile.ga_multiblock_casing2.naquadria_charge.name=超能硅岩爆弹
 tile.ga_multiblock_casing2.stellar_containment.name=恒星热力容器
+tile.ga_multiblock_casing2.bio_reactor_casing.name=生物反应器外壳
+tile.ga_multiblock_casing2.laser_reactor_casing.name=激光蚀刻机外壳
 tile.ga_reactor_casing.hyper_core.name=超能核心 I
 tile.ga_reactor_casing.hyper_core_2.name=超能核心 II
 tile.ga_reactor_casing.hyper_core_3.name=超能核心 III
@@ -1659,6 +1663,12 @@ gregtech.multiblock.large_transformer.output_average=输出电流/t：%s
 gtadditions.multiblock.not_enough_qubit=量子位不足，当前配方处理速度已被减缓。
 gregicality.multiblock.invalid_configuraion.1=进阶聚变反应堆布置错误。
 gregicality.multiblock.invalid_configuraion.2=制冷器、真空仓和/或分流器外壳的等级低于线圈等级。
+gtadditions.multiblock.drilling_rig.no_fluid=区块为空
+gtadditions.multiblock.drilling_rig.fluid_drain=流体抽取速率：%dmB/sec
+gtadditions.multiblock.drilling_rig.chunk_capacity=区块流体总量：%dB
+gtadditions.multiblock.drilling_rig.chunk_remaining=区块流体余量：%dB
+gtadditions.multiblock.drilling_rig.fluid=当前抽取流体：%s
+gtadditions.multiblock.drilling_rig.replenish=补充率：%dmB/sec
 
 item.material.oreprefix.plateCurved=弯曲%s板
 item.material.oreprefix.ingotDouble=双重%s锭
@@ -2791,6 +2801,7 @@ gtadditions.machine.hull.uiv.name=UIV机械方块
 gtadditions.machine.hull.umv.name=UMV机械方块
 gtadditions.machine.hull.uxv.name=UXV机械方块
 gtadditions.machine.drilling_rig.name=钻井平台
+gtadditions.machine.solar_fluid_sampler.name=太阳能流体取样机
 
 
 
