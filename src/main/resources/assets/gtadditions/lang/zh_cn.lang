@@ -1014,7 +1014,7 @@ gtadditions.recipe.drilling_rig.biome_blacklist=生物群系黑名单：%s
 gtadditions.recipe.drilling_rig.min_size=最小尺寸：%d
 gtadditions.recipe.drilling_rig.max_size=最大尺寸：%d
 gtadditions.recipe.drilling_rig.replenish_rate=补充率：%d
-gtadditions.recipe.drilling_rig.weight=权重：%d
+gtadditions.recipe.drilling_rig.weight=抽取权重：%d
 gregtech.recipe.base_heat_production=堆温：%dC
 gregtech.recipe.hot_coolant=热冷却液温度：%dC
 
@@ -1589,7 +1589,7 @@ gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=土高炉的升级
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=工业土高炉可以自动化并且速度更快。
 gtadditions.machine.rock_breaker.description=会产出圆石、安山岩、闪长岩和花岗岩。必须接触水和岩浆。
 gregtech.multiblock.cryogenic_freezer.description=凛冰冷冻机可以胜任真空冷冻机的工作。它每秒消耗20mB极寒之凛冰，处理速度双倍于同等电压的真空冷冻机且可同时处理4个物品。
-gregtech.multiblock.advanced_distillation_tower.description1=进阶蒸馏塔可以胜任蒸馏塔，并且能搭建到26格。
+gregtech.multiblock.advanced_distillation_tower.description1=进阶蒸馏塔可以胜任蒸馏塔的工作，并且能搭建到26格。
 gregtech.multiblock.advanced_distillation_tower.description2=它有两种模式:
 gregtech.multiblock.advanced_distillation_tower.description3=    蒸馏塔 => 处理4份配方 
 gregtech.multiblock.advanced_distillation_tower.description4=    蒸馏室 => 处理12份配方
@@ -1597,7 +1597,7 @@ gtadditions.multiblock.chemical_plant.tooltip=处理速度与线圈等级相关�
 gtadditions.multiblock.large_rocket_engine.tooltip.1=大型火箭引擎会产出成吨的能量。
 gtadditions.multiblock.large_rocket_engine.tooltip.2=它会消耗你提供的所有火箭燃料。
 gtadditions.multiblock.large_rocket_engine.tooltip.3=每秒还消耗37500mB的空气和10mB的二氧化碳。
-gtadditions.multiblock.large_rocket_engine.tooltip.4=提供液氢会提供3倍的能量产出(4mB/s /2048 EU/t)
+gtadditions.multiblock.large_rocket_engine.tooltip.4=提供液氢会提供3倍的能量产出（4mB/s，2048EU/t）
 gtadditions.multiblock.large_rocket_engine.tooltip.5=默认燃料效率为60%%。
 gtadditions.multiblock.large_rocket_engine.tooltip.6=LuV输出以上则燃料效率为40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=ZPM输出以上则燃料效率为20%%
@@ -1613,7 +1613,7 @@ gtadditions.multiblock.large_naquadah_reactor.tooltip.7=超能燃料 I => 5UV
 gtadditions.multiblock.large_naquadah_reactor.tooltip.8=超能燃料 II => 8UV
 gtadditions.multiblock.large_naquadah_reactor.tooltip.9=超能燃料 III => 12UV
 
-gtadditions.multiblock.battery_tower.tooltip.1=储能塔是一个可以储存大量EU的多方块电池。
+gtadditions.multiblock.battery_tower.tooltip.1=储能塔是一个可以储存大量EU能量的多方块电池。
 gtadditions.multiblock.battery_tower.tooltip.2=所有能量单元都必须是同等级的.储能塔每t都会消耗能量单元电压等级10%%的电力。
 gtadditions.multiblock.battery_tower.tooltip.3=能源仓和动力仓的等级不能比能量单元等级高。
 
@@ -1623,7 +1623,7 @@ gregtech.multiblock.recipe=使用螺丝刀以更改配方.当前配方：%s
 gregtech.universal.tooltip.efficiency=效率：%s %%
 gregtech.multiblock.universal.energy_used=能量使用：%d EU
 gregtech.multiblock.universal.drilling_fluid_amount=当前挖掘流体：%.2fmB
-gregtech.multiblock.universal.overheat=过热!
+gregtech.multiblock.universal.overheat=过热！
 gregtech.machine.world_accelerator.mode.tile=方块实体模式
 gregtech.machine.world_accelerator.mode.entity=随机刻模式
 gregtech.multiblock.universal.framework=当前最大电压：%d EU/t
@@ -1641,12 +1641,12 @@ gregtech.multiblock.universal.cryotheum_amount=极寒之凛冰：%dmB
 gregtech.multiblock.universal.liquid_hydrogen_amount=液氢：%dmB
 gregtech.multiblock.universal.air_amount=空气：%dmB
 gregtech.multiblock.large_rocket_engine.hydrogen_need=超频所耗液氢：%dmB
-gregtech.multiblock.large_rocket_engine.boost=超频中!
+gregtech.multiblock.large_rocket_engine.boost=超频中！
 gregtech.multiblock.advanced_distillation_tower.multiplier=当前单次同时处理配方数：%d
 gregtech.multiblock.large_miner.chunk=已挖掘区块：%d
 gregtech.multiblock.large_miner.nb_chunk=待挖掘区块：%d
 gregtech.multiblock.large_miner.block_per_tick=速度：%d 个方块/t
-gregtech.multiblock.large_miner.done=挖掘完毕!
+gregtech.multiblock.large_miner.done=挖掘完毕！
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
 gregtech.multiblock.nuclear_reactor.coolant_needed=需要冷却液：%d mb/s
 gregtech.multiblock.nuclear_reactor.coolant_ratio=冷却液比率：%d
@@ -1654,7 +1654,7 @@ gregtech.multiblock.nuclear_reactor.not_enough_coolant=冷却液不足
 gregtech.multiblock.nuclear_reactor.base_heat=产热：%d C/秒
 gregtech.multiblock.nuclear_reactor.additional_temperature=额外温度：%d
 gregtech.multiblock.nuclear_reactor.rod_type=堆芯热因数 %d%%
-gregtech.multiblock.nuclear_reactor.produce=产出热冷却液!
+gregtech.multiblock.nuclear_reactor.produce=产出热冷却液！
 gregtech.multiblock.large_transformer.input=输入：%s EU / %s 安
 gregtech.multiblock.large_transformer.output=输出：%s EU / %s 安
 gregtech.multiblock.large_transformer.input_average=输入电流/t：%s
@@ -1707,7 +1707,7 @@ metaitem.rubber_drop.name=粘性树脂
 
 tile.metal_casing.primitive_bricks.name=耐火砖
 tile.ga_metal_casing.material.name=%s金属外壳
-gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构：3x3x4（宽、长、高）/n整个多方块结构一共需要32个耐火砖块：/n第一层是3x3的正方形，/n第二三四层是中空的正方形。/n土高炉的控制器在第二层每面的中间。/n土高炉可以共享方块。/n
+gregtech.machine.primitive_blast_furnace.bronze.tooltip=结构：3x3x4（宽、长、高）/n整个多方块结构一共需要32个耐火砖块：/n第一层是3x3的正方形，/n第二三四层是中空的正方形。/n土高炉的控制器在第二层每面的中间。/n每台土高炉可以共用方块。/n
 gregtech.machine.primitive_blast_furnace.industrial.tooltip=土高炉的升级版本
 
 
