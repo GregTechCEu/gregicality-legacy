@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.override;
 
+import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -8,6 +9,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
@@ -20,6 +22,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
@@ -45,9 +48,38 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
-        this.heatingCoilLevel = coilType.getLevel();
-        this.heatingCoilDiscount = coilType.getEnergyDiscount();
+        this.heatingCoilLevel = context.getOrDefault("heatingCoilLevel", 0);
+        this.heatingCoilDiscount = context.getOrDefault("heatingCoilDiscount", 0);
+    }
+
+    public static Predicate<BlockWorldState> heatingCoilPredicate() {
+        return blockWorldState -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof BlockWireCoil))
+                return false;
+            BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
+            BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            int heatingCoilDiscount = coilType.getEnergyDiscount();
+            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
+            int heatingCoilLevel = coilType.getLevel();
+            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
+            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+        };
+    }
+
+    public static Predicate<BlockWorldState> heatingCoilPredicate2() {
+        return blockWorldState -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof GAHeatingCoil))
+                return false;
+            GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
+            GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            int heatingCoilDiscount = coilType.getEnergyDiscount();
+            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
+            int heatingCoilLevel = coilType.getLevel();
+            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
+            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+        };
     }
 
     @Override
@@ -77,7 +109,7 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
                 .where('L', statePredicate(getCasingState()))
                 .where('H', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('#', isAirPredicate())
-                .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+                .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .build();
     }
 

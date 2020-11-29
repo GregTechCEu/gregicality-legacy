@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.machines.multi.override.MetaTileEntityElectricBlastFurnace;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -12,7 +13,6 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -55,14 +55,13 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
                 .aisle("XSX", "CCC", "CCC", "XXX")
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', heatingCoilPredicate())
+                .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .where('#', isAirPredicate())
                 .build();
     }
 
-
     @Override
-    protected IBlockState getCasingState() {
+    public IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
     }
 
@@ -77,7 +76,6 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.volcanus.description"));
     }
-
 
     public class VolcanusRecipeLogic extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
@@ -106,8 +104,5 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
             }
             return false;
         }
-
-
     }
-
 }

@@ -975,6 +975,7 @@ gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
 gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 gtadditions.machine.battery_tower.name=Battery Tower
+gtadditions.machine.large_laser_engraver.name=Large Laser Engraver
 
 gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
@@ -1166,6 +1167,8 @@ tile.ga_quantum_casing.computer.name=Qubit Computer Casing
 tile.ga_quantum_casing.generator.name=Qubit generator Casing
 tile.ga_multiblock_casing2.naquadria_charge.name=Naquadria Charge
 tile.ga_multiblock_casing2.stellar_containment.name=Stellar Containment
+tile.ga_multiblock_casing2.bio_reactor_casing.name=Bio Reactor Casing
+tile.ga_multiblock_casing2.laser_reactor_casing.name=Laser Engraver Casing
 tile.ga_reactor_casing.hyper_core.name=Hyper Core I
 tile.ga_reactor_casing.hyper_core_2.name=Hyper Core II
 tile.ga_reactor_casing.hyper_core_3.name=Hyper Core III

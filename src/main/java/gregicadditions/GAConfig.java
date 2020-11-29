@@ -445,6 +445,33 @@ public class GAConfig {
         public LargeWiremill largeWiremill = new LargeWiremill();
         public BatteryTower batteryTower = new BatteryTower();
         public AdvFusion advFusion = new AdvFusion();
+        public LargeEngraver largeEngraver = new LargeEngraver();
+
+        public static class LargeEngraver {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Engraver.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Engraver EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 90;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 1;
+
+            @Config.Comment("The duration percentage of a recipe when done in the Large Macerator.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 100;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Macerator.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Macerator chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+        }
 
 
         public static class AdvFusion {

@@ -151,6 +151,7 @@ public class GATileEntities {
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
+    public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
@@ -1093,6 +1094,7 @@ public class GATileEntities {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GAValues.VN[i].toLowerCase()), i)));
         }
         //4130
+        LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4130, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

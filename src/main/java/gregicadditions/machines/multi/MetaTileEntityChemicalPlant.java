@@ -1,10 +1,7 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.item.GAMultiblockCasing2;
-import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.*;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -96,11 +93,40 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
                 .where('T', tieredCasing1Predicate().or(tieredCasing2Predicate()))
-                .where('C', heatingCoilPredicate())
+                .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .build();
 
     }
 
+    public static Predicate<BlockWorldState> heatingCoilPredicate() {
+        return blockWorldState -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof BlockWireCoil))
+                return false;
+            BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
+            BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            int heatingCoilDiscount = coilType.getEnergyDiscount();
+            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
+            int heatingCoilLevel = coilType.getLevel();
+            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
+            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+        };
+    }
+
+    public static Predicate<BlockWorldState> heatingCoilPredicate2() {
+        return blockWorldState -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof GAHeatingCoil))
+                return false;
+            GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
+            GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            int heatingCoilDiscount = coilType.getEnergyDiscount();
+            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
+            int heatingCoilLevel = coilType.getLevel();
+            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
+            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+        };
+    }
 
     public static Predicate<BlockWorldState> tieredCasing1Predicate() {
         return (blockWorldState) -> {
@@ -182,9 +208,8 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         maxVoltage = context.getOrDefault("maxVoltage", 0);
-        BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
-        heatingCoilLevel = coilType.getLevel();
-        heatingCoilDiscount = coilType.getEnergyDiscount();
+        this.heatingCoilLevel = context.getOrDefault("heatingCoilLevel", 0);
+        this.heatingCoilDiscount = context.getOrDefault("heatingCoilDiscount", 0);
     }
 
 
