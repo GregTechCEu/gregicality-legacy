@@ -1974,10 +1974,6 @@ gtadditions.machine.crate.tungstensteel.name=Tungstensteel Crate
 fluid.tile.water=Water
 fluid.tile.lava=Lava
 
-gregtech.machine.assembler.iv.name=Assembler IV
-gregtech.machine.autoclave.iv.name=Autoclave IV
-gregtech.machine.laser_engraver.iv.name=Laser Engraver IV
-
 
 item.gtadditions:comb.lignite.name=Lignite Comb
 item.gtadditions:comb.coal.name=Coal Comb

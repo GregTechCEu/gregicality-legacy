@@ -1728,9 +1728,6 @@ gtadditions.machine.crate.tungstensteel.name=钨钢板条箱
 fluid.tile.water=水
 fluid.tile.lava=岩浆
 
-gregtech.machine.assembler.iv.name=组装机 IV
-gregtech.machine.autoclave.iv.name=高压釜 IV
-gregtech.machine.laser_engraver.iv.name=精密激光蚀刻机 IV
 
 item.gtadditions:comb.lignite.name=褐煤蜂巢
 item.gtadditions:comb.coal.name=煤蜂巢
