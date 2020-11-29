@@ -22,17 +22,22 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockConcrete;
+import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.StoneBlock;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
 
@@ -88,8 +93,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public long getMaxVoltage() {
-        int tier = GAUtility.getTierByVoltage(energyContainer.getInputVoltage());
+        int tier = getTier();
         return GAValues.V[tier];
+    }
+
+    public int getTier() {
+        return Math.max(1, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()));
     }
 
     @Override
@@ -112,14 +121,19 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
         if (getTimer() % 20 == 0) {
             int residual = getResidualOil();
             if (availableOil() > 0 || residual > 0) {
-                int oilAmnt = availableOil() <= 0 ? residual : availableOil();
-                FluidStack out = new FluidStack(availableFluid(), (int) Math.min(getMaxVoltage(), oilAmnt));
+                int oilAmnt = availableOil() <= 0 ? residual * getTier() : availableOil();
+                FluidStack out = new FluidStack(availableFluid(), (int) Math.min(fluidDrain(), oilAmnt));
                 int drained = exportFluidHandler.fill(out, true);
                 extractOil(drained);
             } else {
                 done = true;
             }
         }
+    }
+
+    public int fluidDrain() {
+        int tier = getTier();
+        return Math.min(100000, GAValues.V[tier] / tier);
     }
 
     public int availableOil() {
@@ -144,42 +158,58 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
         oilWorldInfo = PumpjackHandler.getOilWorldInfo(getWorld(), getWorld().getChunk(getPos()).x, getWorld().getChunk(getPos()).z);
 
 
-        textList.add(new TextComponentString(oilWorldInfo.capacity + ""));
-        textList.add(new TextComponentString(oilWorldInfo.current + ""));
-
-        textList.add(new TextComponentString(oilWorldInfo.type.name));
-        textList.add(new TextComponentString(oilWorldInfo.type.fluid));
-        textList.add(new TextComponentString(oilWorldInfo.type.replenishRate + ""));
-
-        if (oilWorldInfo.overrideType != null) {
-            textList.add(new TextComponentString(oilWorldInfo.overrideType.name));
-            textList.add(new TextComponentString(oilWorldInfo.overrideType.fluid));
+        if (isStructureFormed()) {
+            if (oilWorldInfo.getType() == null) {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.no_fluid"));
+            } else {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid_drain", fluidDrain()));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid", I18n.format(oilWorldInfo.getType().getFluid().getUnlocalizedName())));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_capacity", oilWorldInfo.capacity / 1000));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_remaining", oilWorldInfo.current / 1000));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.replenish", oilWorldInfo.type.replenishRate * getTier()));
+            }
         }
+
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "X#X", "XXX")
-                .aisle("XXX", "XSX", "XXX")
-                .setAmountAtLeast('L', 14)
-                .where('S', this.selfPredicate())
-                .where('L', statePredicate(this.getCasingState()))
-                .where('X', statePredicate(new IBlockState[]{this.getCasingState()})
-                        .or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', isAirPredicate())
-                .where('C', statePredicate(this.getCasingState()))
+                .aisle("F#####F", "F#####F", "CCCCCCC", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                .aisle("#######", "#######", "CCCCCCC", "#BBBBB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##", "#######", "#######", "#######", "#######", "#######")
+                .aisle("#######", "#######", "CCCCCCC", "#BBBBB#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#BB#BB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##")
+                .aisle("###P###", "###P###", "CCCPCCC", "#BBPBB#", "###P###", "###P###", "###P###", "###P###", "###P###", "#B#P#B#", "###P###", "###P###", "###P###", "###P###", "##BPB##")
+                .aisle("#######", "#######", "CCCCCCC", "#BBBBB#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#BB#BB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##")
+                .aisle("#######", "#######", "CCCCCCC", "#BBSBB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##", "#######", "#######", "#######", "#######", "#######")
+                .aisle("F#####F", "F#####F", "CCCCCCC", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                .where('S', selfPredicate())
+                .where('B', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('F', statePredicate(getFrameState()))
+                .where('#', blockWorldState -> true)
+                .where('C', statePredicate(getConcrete()))
+                .where('P', statePredicate(getPipe()))
                 .build();
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return GAMetaBlocks.METAL_CASING.get(StainlessSteel);
+    }
+
+    public IBlockState getFrameState() {
+        return MetaBlocks.FRAMES.get(StainlessSteel).getDefaultState();
+    }
+
+    public IBlockState getConcrete() {
+        return MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL);
+    }
+
+    public IBlockState getPipe() {
+        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE);
     }
 
     @Override

@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.item.behavior.DataStickFluidSamplerBehavior;
 import gregicadditions.utils.GALog;
@@ -47,7 +48,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
 
     private boolean isPaused = false;
     private boolean isActive = false;
-    private final int maxProgress = 600;
+    private final int maxProgress = 6000 * GAConfig.Extraction.timeToScanFactor / 100;
     private int progressTime = 0;
 
     public MetaTileEntitySolarSampler(ResourceLocation metaTileEntityId) {
@@ -74,6 +75,12 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
             return;
         }
 
+        if (!drainEnergy()) {
+            if (isActive)
+                setActive(false);
+            return;
+        }
+
         if (progressTime == 0) {
             ItemStack dataStick = importItems.extractItem(0, 1, false);
             if (dataStick.isEmpty()) {
@@ -81,11 +88,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
             }
         }
 
-        if (!drainEnergy()) {
-            if (isActive)
-                setActive(false);
-            return;
-        }
+
         if (!isActive)
             setActive(true);
 

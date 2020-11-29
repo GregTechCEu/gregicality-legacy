@@ -35,7 +35,6 @@ import gregicadditions.machines.overrides.GAMetaTileEntityHull;
 import gregicadditions.machines.overrides.GASimpleMachineMetaTileEntity;
 import gregicadditions.machines.overrides.SimpleGeneratorWithLossMetaTileEntity;
 import gregicadditions.recipes.GARecipeMaps;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
@@ -152,6 +151,7 @@ public class GATileEntities {
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
+    public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
@@ -1088,6 +1088,13 @@ public class GATileEntities {
             TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
             TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
         }
+        //4118
+        id = 4120;
+        for (int i = 9; i < GAValues.V.length - 1; i++) {
+            OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GAValues.VN[i].toLowerCase()), i)));
+        }
+        //4130
+        LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4130, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

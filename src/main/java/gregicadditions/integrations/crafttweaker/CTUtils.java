@@ -95,13 +95,11 @@ public class CTUtils {
     }
 
     @ZenMethod
-    public static void registerReservoir(String name, ILiquidStack fluid, int minSize, int maxSize, int replenishRate, int weight, int[] dimBlacklist, int[] dimWhitelist, String[] biomeBlacklist, String[] biomeWhitelist) {
+    public static void registerReservoir(ILiquidStack fluid, int minSize, int maxSize, int replenishRate, int weight, int[] dimBlacklist, int[] dimWhitelist, String[] biomeBlacklist, String[] biomeWhitelist) {
         List<String> biomeBlacklistList = Lists.newArrayList();
         List<String> biomeWhitelistList = Lists.newArrayList();
 
-        if (name.isEmpty()) {
-            CraftTweakerAPI.logError("Reservoir name can not be empty string!");
-        } else if (minSize <= 0) {
+        if (minSize <= 0) {
             CraftTweakerAPI.logError("Reservoir minSize has to be at least 1mb!");
         } else if (maxSize < minSize) {
             CraftTweakerAPI.logError("Reservoir maxSize can not be smaller than minSize!");
@@ -111,7 +109,7 @@ public class CTUtils {
 
         String rFluid = fluid.getName();
 
-        PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(name, rFluid, minSize, maxSize, replenishRate, weight);
+        PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(rFluid, minSize, maxSize, replenishRate, weight);
 
         for (String string : biomeBlacklist) {
             if (string == null || string.isEmpty()) {
@@ -134,7 +132,7 @@ public class CTUtils {
         res.biomeBlacklist = biomeBlacklistList;
         res.biomeWhitelist = biomeWhitelistList;
 
-        CraftTweakerAPI.logInfo("Added Reservoir Type: " + name);
+        CraftTweakerAPI.logInfo("Added Reservoir Type: " + rFluid);
     }
 
 }

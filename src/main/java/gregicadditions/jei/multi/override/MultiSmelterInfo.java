@@ -1,5 +1,6 @@
 package gregicadditions.jei.multi.override;
 
+import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
@@ -35,6 +36,20 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 					.aisle("OXX", "CCC", "XXX")
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
+					.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.EAST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('#', Blocks.AIR.getDefaultState())
+					.build());
+		}
+		for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
+			shapeInfo.add(MultiblockShapeInfo.builder()
+					.aisle("IXX", "CCC", "XXX")
+					.aisle("SXE", "C#C", "XXX")
+					.aisle("OXX", "CCC", "XXX")
+					.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
+					.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 					.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.EAST)
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
