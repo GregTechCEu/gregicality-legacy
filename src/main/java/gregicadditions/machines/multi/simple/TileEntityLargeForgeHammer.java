@@ -2,7 +2,7 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.PistonCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -24,11 +24,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Grisium;
 import static gregtech.api.unification.material.Materials.Iron;
 import static net.minecraft.block.BlockDirectional.FACING;
 

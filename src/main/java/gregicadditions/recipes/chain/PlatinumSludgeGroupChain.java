@@ -6,7 +6,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.util.ValidationResult;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.RhodiumPlatedPalladium;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;

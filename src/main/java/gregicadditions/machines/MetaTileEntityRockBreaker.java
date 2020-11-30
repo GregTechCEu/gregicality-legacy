@@ -3,7 +3,7 @@ package gregicadditions.machines;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -78,7 +78,7 @@ public class MetaTileEntityRockBreaker extends TieredMetaTileEntity {
     }
 
     private int getEnergyPerBlockBreak() {
-        return (int) GTValues.V[getTier()];
+        return (int) GAValues.V[getTier()];
     }
 
     @Override

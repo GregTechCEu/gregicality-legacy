@@ -18,7 +18,8 @@ import static gregicadditions.item.GAMetaItems.PYROLYTIC_CARBON;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_BALL;
 
 public class NuclearHandler {

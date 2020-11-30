@@ -1,10 +1,10 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
@@ -209,7 +209,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
-    public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {
+    public static class LargeSimpleMultiblockRecipeLogic extends GAMultiblockRecipeLogic {
 
         private int EUtPercentage = 100;
         private int durationPercentage = 100;

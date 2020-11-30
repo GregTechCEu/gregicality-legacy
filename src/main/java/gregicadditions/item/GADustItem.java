@@ -1,6 +1,5 @@
 package gregicadditions.item;
 
-import com.google.common.base.CaseFormat;
 import gnu.trove.map.hash.TShortObjectHashMap;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.metaitem.StandardMetaItem;
@@ -14,8 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
 import static gregicadditions.materials.SimpleDustMaterial.GA_DUSTS;
 
 public class GADustItem extends StandardMetaItem {

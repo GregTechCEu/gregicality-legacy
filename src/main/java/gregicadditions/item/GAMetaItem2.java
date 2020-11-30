@@ -18,10 +18,12 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
-import static gregicadditions.item.GAMetaItems.*;
+
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
+
+import static gregicadditions.item.GAMetaItems.*;
 
 public class GAMetaItem2 extends StandardMetaItem {
 

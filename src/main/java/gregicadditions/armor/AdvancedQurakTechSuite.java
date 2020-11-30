@@ -1,8 +1,8 @@
 package gregicadditions.armor;
 
+import gregicadditions.GAValues;
 import gregicadditions.input.EnumKey;
 import gregicadditions.item.GAMetaItems;
-import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.armor.ArmorMetaItem;
@@ -32,7 +32,7 @@ public class AdvancedQurakTechSuite extends QuarkTechSuite {
     private int cachedSlotId = -1;
 
     public AdvancedQurakTechSuite() {
-        super(EntityEquipmentSlot.CHEST, 10000, 100000000, GTValues.IV);
+        super(EntityEquipmentSlot.CHEST, 10000, 100000000, GAValues.IV);
     }
 
     @Override

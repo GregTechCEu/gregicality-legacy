@@ -2,8 +2,8 @@ package gregicadditions.theoneprobe;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
-import gregtech.api.recipes.RecipeMap;
 import gregicadditions.utils.GALog;
+import gregtech.api.recipes.RecipeMap;
 import mcjty.theoneprobe.api.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi.override;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -32,9 +32,9 @@ public class ImplosionCompressorInfo extends MultiblockInfoPage {
 				.where('C', GATileEntities.IMPLOSION_COMPRESSOR, EnumFacing.WEST)
 				.where('X', GAMetaBlocks.getMetalCasingBlockState(Steel))
 				.where('#', Blocks.AIR.getDefaultState())
-				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
-				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.EAST)
-				.where('B', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.NORTH)
+				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)
+				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.EAST)
+				.where('B', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.HV], EnumFacing.NORTH)
 				.build();
 		return Lists.newArrayList(shapeInfo);
 	}

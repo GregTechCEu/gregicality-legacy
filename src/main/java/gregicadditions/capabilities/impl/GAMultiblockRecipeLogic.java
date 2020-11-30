@@ -1,34 +1,18 @@
-package gregicadditions.capabilities;
+package gregicadditions.capabilities.impl;
 
 import gregicadditions.GAValues;
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.RecipeLogicEnergy;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 
-import java.util.function.Supplier;
-
-
-public class GARecipeLogicEnergy extends RecipeLogicEnergy {
-    public GARecipeLogicEnergy(MetaTileEntity tileEntity, RecipeMap<?> recipeMap, Supplier<IEnergyContainer> energyContainer) {
-        super(tileEntity, recipeMap, energyContainer);
+public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
+    public GAMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity) {
+        super(tileEntity);
     }
 
-    private static byte getTierByVoltage(long voltage) {
-        byte tier = 0;
-        while (++tier < GAValues.V.length) {
-            if (voltage == GAValues.V[tier]) {
-                return tier;
-            } else if (voltage < GAValues.V[tier]) {
-                return (byte) Math.max(0, tier - 1);
-            }
-        }
-        return (byte) Math.min(GAValues.V.length -1, tier);
-    }
     @Override
     protected int[] calculateOverclock(int EUt, long voltage, int duration) {
-        if(!allowOverclocking) {
-            return new int[] {EUt, duration};
+        if (!allowOverclocking) {
+            return new int[]{EUt, duration};
         }
         boolean negativeEU = EUt < 0;
         int tier = getOverclockingTier(voltage);
@@ -52,8 +36,4 @@ public class GARecipeLogicEnergy extends RecipeLogicEnergy {
             return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
         }
     }
-    protected int getOverclockingTier(long voltage) {
-        return getTierByVoltage(voltage);
-    }
-
 }

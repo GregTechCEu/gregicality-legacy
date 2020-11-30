@@ -1,11 +1,11 @@
 package gregicadditions.recipes.map;
 
 import com.google.common.collect.ImmutableMap;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
-import gregicadditions.utils.GALog;
 import gregtech.api.util.ValidationResult;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

@@ -1,12 +1,13 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAEnums;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,7 +18,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.render.ICubeRenderer;
-import gregicadditions.utils.GALog;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -73,7 +73,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
         return new TileEntityProcessingArray(metaTileEntityId);
     }
 
-    protected static class ProcessingArrayWorkable extends MultiblockRecipeLogic {
+    protected static class ProcessingArrayWorkable extends GAMultiblockRecipeLogic {
 
         int machineTierVoltage = 0;
         int numberOfMachines = 0;

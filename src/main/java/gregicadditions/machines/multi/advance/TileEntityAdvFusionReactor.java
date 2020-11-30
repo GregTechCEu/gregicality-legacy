@@ -4,6 +4,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GACryostatCasing;
@@ -16,7 +17,10 @@ import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.*;
+import gregtech.api.capability.impl.EnergyContainerHandler;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -27,7 +31,6 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
-
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
@@ -283,7 +286,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     }
 
 
-    public class AdvFusionRecipeLogic extends MultiblockRecipeLogic {
+    public class AdvFusionRecipeLogic extends GAMultiblockRecipeLogic {
 
 
         public AdvFusionRecipeLogic(RecipeMapMultiblockController tileEntity) {

@@ -4,8 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.util.ValidationResult;
 import net.minecraftforge.fluids.FluidStack;
 

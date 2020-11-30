@@ -1,7 +1,5 @@
 package gregicadditions.recipes;
 
-import javax.annotation.Nullable;
-
 import gregicadditions.item.GAMetaItems;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.unification.material.type.FluidMaterial;
@@ -13,6 +11,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStackSimple;
+
+import javax.annotation.Nullable;
 
 public class FluidCellIngredient extends Ingredient {
 

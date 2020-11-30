@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi.override;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -37,9 +37,9 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
 					.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 					.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.EAST)
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('#', Blocks.AIR.getDefaultState())
 					.build());
 		}
@@ -51,9 +51,9 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
 					.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 					.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.MV], EnumFacing.EAST)
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('#', Blocks.AIR.getDefaultState())
 					.build());
 		}

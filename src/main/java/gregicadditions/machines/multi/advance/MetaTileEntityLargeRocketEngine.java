@@ -1,9 +1,9 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -34,7 +34,7 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
 
 
     public MetaTileEntityLargeRocketEngine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.ROCKET_FUEL_RECIPES, GTValues.V[GTValues.EV]);
+        super(metaTileEntityId, GARecipeMaps.ROCKET_FUEL_RECIPES, GAValues.V[GAValues.EV]);
     }
 
     @Override
