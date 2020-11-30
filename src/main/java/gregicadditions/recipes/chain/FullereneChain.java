@@ -165,6 +165,18 @@ public class FullereneChain {
                 .EUt(8000000)
                 .duration(200)
                 .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .input(dust, Palladium)
+                .input(dust, Iridium)
+                .input(dust, Rhenium)
+                .input(dust, Cerium)
+                .input(dust, Osmium)
+                .input(dust, Silicon)
+                .fluidInputs(Oxygen.getFluid(4000))
+                .outputs(PdIrReOCeOS.getItemStack(5))
+                .EUt(2000000)
+                .duration(5)
+                .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .fluidInputs(Ferrocene.getFluid(1000))
                 .fluidInputs(Chloroform.getFluid(1000))
