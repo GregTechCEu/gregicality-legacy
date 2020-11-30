@@ -2897,4 +2897,33 @@ metaitem.emitter.umv.name=Emitter (UMV)
 metaitem.emitter.uxv.name=Emitter (UXV)
 metaitem.emitter.max.name=Emitter (MAX)
 
+gtadditions.machine.charger.uhv.name=UHV Voltage Battery Charger
+gtadditions.machine.charger.uev.name=UEV Voltage Battery Charger
+gtadditions.machine.charger.uiv.name=UIV Voltage Battery Charger
+gtadditions.machine.charger.umv.name=UMV Voltage Battery Charger
+gtadditions.machine.charger.uxv.name=UXV Voltage Battery Charger
 
+gtadditions.machine.battery_buffer.uhv.1.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.4.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.9.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.16.name=UHV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uev.1.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.4.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.9.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.16.name=UEV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uiv.1.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.4.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.9.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.16.name=UIV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.umv.1.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.4.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.9.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.16.name=UMV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uxv.1.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.4.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.9.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.16.name=UXV Voltage Battery Buffer

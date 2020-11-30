@@ -31,9 +31,7 @@ import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
 import gregicadditions.machines.multi.simple.*;
-import gregicadditions.machines.overrides.GAMetaTileEntityHull;
-import gregicadditions.machines.overrides.GASimpleMachineMetaTileEntity;
-import gregicadditions.machines.overrides.SimpleGeneratorWithLossMetaTileEntity;
+import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -177,6 +175,8 @@ public class GATileEntities {
     public static MetaTileEntityMultiFurnace MULTI_FURNACE;
     public static MetaTileEntityDieselEngine DIESEL_ENGINE;
     public static MetaTileEntityPyrolyseOven PYROLYSE_OVEN;
+    public static GAMetaTileEntityBatteryBuffer[][] BATTERY_BUFFERS = new GAMetaTileEntityBatteryBuffer[6][4];
+    public static GAMetaTileEntityCharger[] CHARGER = new GAMetaTileEntityCharger[6];
 
     //optical fiber
     public static MetaTileEntityQubitHatch[] QBIT_INPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
@@ -1070,7 +1070,6 @@ public class GATileEntities {
             ENERGY_OUTPUT_HATCH_64_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".64"), i, 64, true)));
             ENERGY_OUTPUT_HATCH_128_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityEnergyHatch(location("energy_hatch.output." + GAValues.VN[i].toLowerCase() + ".128"), i, 128, true)));
         }
-        //4055
         for (final ConverterType t : ConverterType.values()) {
             for (int tier = t.getMaxTier(); tier < GAValues.V.length - 1; ++tier) {
                 for (int value : GAConfig.energyConverter.values) {
@@ -1088,13 +1087,24 @@ public class GATileEntities {
             TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
             TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
         }
-        //4118
         id = 4120;
         for (int i = 9; i < GAValues.V.length - 1; i++) {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GAValues.VN[i].toLowerCase()), i)));
         }
-        //4130
         LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4130, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
+        BATTERY_BUFFERS[5][0] = GregTechAPI.registerMetaTileEntity(4131, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.1"), GAValues.MAX, 1));
+        BATTERY_BUFFERS[5][1] = GregTechAPI.registerMetaTileEntity(4132, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.4"), GAValues.MAX, 4));
+        BATTERY_BUFFERS[5][2] = GregTechAPI.registerMetaTileEntity(4133, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.9"), GAValues.MAX, 9));
+        BATTERY_BUFFERS[5][3] = GregTechAPI.registerMetaTileEntity(4134, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.16"), GAValues.MAX, 16));
+        CHARGER[5] = GregTechAPI.registerMetaTileEntity(4135, new GAMetaTileEntityCharger(gregtechId("charger.max"), GAValues.MAX, 4));
+        id = 4136;
+        for (int i = 0; i < BATTERY_BUFFERS.length - 1; i++) {
+            for (int j = 0; j < BATTERY_BUFFERS[i].length; j++) {
+                BATTERY_BUFFERS[i][j] = GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityBatteryBuffer(location("battery_buffer." + GAValues.VN[i + 9].toLowerCase() + "." + (int) Math.pow(j + 1, 2)), i + 9, (int) Math.pow(j + 1, 2)));
+            }
+            CHARGER[i] = GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityCharger(location("charger." + GAValues.VN[i + 9].toLowerCase()), i + 9, 4));
+        }
+        //4160
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
