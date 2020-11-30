@@ -152,7 +152,7 @@ metaitem.unfolded_fullerene.name=Unfolded Fullerene
 metaitem.fullerene.name=Fullerene
 metaitem.tial_chloride.name=TiAl Chloride
 metaitem.dimethylaminopyridine.name=Dimethylaminopyridine
-metaitem.pdirreoceos.name=PdIrReOCeOs Catalyst
+metaitem.pdirreoceos.name=PdIrReOCeOsSi Catalyst
 metaitem.sodium_ethoxide.name=Sodium Ethoxide
 metaitem.mgcl_brominide.name=MgCl Bromide
 metaitem.n_methylglicine.name=N Methylglicine
@@ -1717,12 +1717,16 @@ material.enriched_naquadah_alloy=Enriched Naquadah Alloy
 material.incoloy813=Incoloy 813
 material.bohrium=Bohrium
 material.seaborgium=Seaborgium
+material.uhv_superconductor=UHV Superconductor
+material.uhv_superconductor_base=UHV Superconductor Base
 material.uev_superconductor=UEV Superconductor
 material.uev_superconductor_base=UEV Superconductor Base
-material.uhv_superconductor_base=UHV Superconductor Base
-material.uhv_superconductor=UHV Superconductor
-
-
+material.uiv_superconductor=UIV Superconductor
+material.uiv_superconductor_base=UIV Superconductor Base
+material.umv_superconductor=UMV Superconductor
+material.umv_superconductor_base=UMV Superconductor Base
+material.uxv_superconductor=UXV Superconductor
+material.uxv_superconductor_base=UXV Superconductor Base
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
