@@ -4,7 +4,6 @@ import gregicadditions.GAValues;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.Energy;
 import gregicadditions.machines.energyconverter.utils.Ratio;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IElectricItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.energy.IEnergyStorage;

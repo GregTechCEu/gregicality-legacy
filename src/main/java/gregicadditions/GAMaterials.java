@@ -5,13 +5,13 @@ import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
+import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
-import gregicadditions.utils.GALog;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -332,9 +332,9 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
     public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
-    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 10000);
     public static final IngotMaterial UHVSuperconductor = new IngotMaterial(739, "uhv_superconductor", 0x359ffc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
-    public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 8900);
+    public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 25000);
     public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
 
     public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Sg);
@@ -348,6 +348,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Polyetheretherketone = new IngotMaterial(730, "polyetheretherketone", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
     public static final IngotMaterial Zylon = new IngotMaterial(729, "zylon", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
     public static final IngotMaterial FullerenePolymerMatrix = new IngotMaterial(728, "fullerene_polymer_matrix", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
+
+    public static final IngotMaterial UIVSuperconductorBase = new IngotMaterial(727, "uiv_superconductor_base", 0x8bf743, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 50000);
+    public static final IngotMaterial UIVSuperconductor = new IngotMaterial(726, "uiv_superconductor", 0x8bf743, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UMVSuperconductorBase = new IngotMaterial(725, "umv_superconductor_base", 0x883afc, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 75000);
+    public static final IngotMaterial UMVSuperconductor = new IngotMaterial(724, "umv_superconductor", 0x883afc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+    public static final IngotMaterial UXVSuperconductorBase = new IngotMaterial(723, "uxv_superconductor_base", 0xe34b5a, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 100000);
+    public static final IngotMaterial UXVSuperconductor = new IngotMaterial(722, "uxv_superconductor", 0xe34b5a, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
 
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
@@ -667,8 +674,11 @@ public class GAMaterials implements IMaterialHandler {
         LuVSuperconductorBase.setCableProperties(32768, 4, 2);
         ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
         UVSuperconductorBase.setCableProperties(524288, 4, 2);
-        UHVSuperconductorBase.setCableProperties(524288 * 4, 4, 2);
-        UEVSuperconductorBase.setCableProperties(524288 * 16, 4, 2);
+        UHVSuperconductorBase.setCableProperties(GAValues.V[GAValues.UHV], 4, 2);
+        UEVSuperconductorBase.setCableProperties(GAValues.V[GAValues.UEV], 4, 2);
+        UIVSuperconductorBase.setCableProperties(GAValues.V[GAValues.UIV], 4, 2);
+        UMVSuperconductorBase.setCableProperties(GAValues.V[GAValues.UMV], 4, 2);
+        UXVSuperconductorBase.setCableProperties(GAValues.V[GAValues.UXV], 4, 2);
         Seaborgium.setCableProperties(524288 * 4, 2, 8);
         Bohrium.setCableProperties(524288 * 16, 2, 16);
         Neutronium.setCableProperties(524288 * 64, 2, 32);
@@ -687,10 +697,16 @@ public class GAMaterials implements IMaterialHandler {
         ignoreCable(ZPMSuperconductor);
         UVSuperconductor.setCableProperties(524288, 4, 0);
         ignoreCable(UVSuperconductor);
-        UHVSuperconductor.setCableProperties(524288 * 4, 4, 0);
+        UHVSuperconductor.setCableProperties(GAValues.V[GAValues.UHV], 4, 0);
         ignoreCable(UHVSuperconductor);
-        UEVSuperconductor.setCableProperties(524288 * 16, 4, 0);
+        UEVSuperconductor.setCableProperties(GAValues.V[GAValues.UEV], 4, 0);
         ignoreCable(UEVSuperconductor);
+        UIVSuperconductor.setCableProperties(GAValues.V[GAValues.UIV], 4, 0);
+        ignoreCable(UIVSuperconductor);
+        UMVSuperconductor.setCableProperties(GAValues.V[GAValues.UMV], 4, 0);
+        ignoreCable(UMVSuperconductor);
+        UXVSuperconductor.setCableProperties(GAValues.V[GAValues.UXV], 4, 0);
+        ignoreCable(UXVSuperconductor);
 
 
         Radon.addFlag(GENERATE_PLASMA);

@@ -1,7 +1,5 @@
 package gregicadditions.machines;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
@@ -16,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class CrateRenderer implements TextureUtils.IIconRegister {
 	private final String basePath;

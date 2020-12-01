@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockConcrete;
@@ -43,7 +43,7 @@ public class DrillingRigInfo extends MultiblockInfoPage {
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
                 .where('S', GATileEntities.DRILLING_RIG, EnumFacing.NORTH)
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.NORTH)
-                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.NORTH);
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.NORTH);
 
         return Collections.singletonList(builder.build());
     }

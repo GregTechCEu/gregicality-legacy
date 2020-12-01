@@ -2,11 +2,11 @@ package gregicadditions.machines.multi.advance;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.MultiRecipesTrait;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -134,7 +134,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     }
 
 
-    public static class AdvancedDistillationRecipeLogic extends MultiblockRecipeLogic {
+    public static class AdvancedDistillationRecipeLogic extends GAMultiblockRecipeLogic {
 
         public RecipeMap<?> recipeMap;
         public int multiplier;

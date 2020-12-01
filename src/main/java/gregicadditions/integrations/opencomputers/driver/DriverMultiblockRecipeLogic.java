@@ -4,7 +4,6 @@ import gregicadditions.integrations.opencomputers.driver.environment.Environment
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.IWorkable;
-import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;

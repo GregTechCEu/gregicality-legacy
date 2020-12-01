@@ -1,6 +1,6 @@
 package gregicadditions.machines.multi.multiblockpart;
 
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -19,7 +19,7 @@ public class MetaTileEntityEnergyInputHatch extends MetaTileEntityEnergyHatch {
         this.amps = amps;
         Field energyContainer = ObfuscationReflectionHelper.findField(MetaTileEntityEnergyHatch.class, "energyContainer");
         try {
-            energyContainer.set(this, EnergyContainerHandler.receiverContainer(this, GTValues.V[tier] * amps * 16, GTValues.V[tier], amps));
+            energyContainer.set(this, EnergyContainerHandler.receiverContainer(this, GAValues.V[tier] * amps * 16, GAValues.V[tier], amps));
         } catch (IllegalAccessException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

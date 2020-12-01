@@ -79,7 +79,7 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        String tierName = GTValues.VN[getTier()];
+        String tierName = GAValues.VN[getTier()];
 
         if (isExportHatch) {
             tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", qubitContainer.getOutputQubit(), tierName));

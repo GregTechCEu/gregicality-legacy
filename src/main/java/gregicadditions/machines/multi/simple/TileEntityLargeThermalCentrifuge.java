@@ -2,7 +2,7 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.MotorCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,10 +17,6 @@ import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBla
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
-import java.util.Collections;
-
-import static gregicadditions.GAMaterials.Grisium;
 import static gregtech.api.unification.material.Materials.RedSteel;
 
 public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultiblockController {

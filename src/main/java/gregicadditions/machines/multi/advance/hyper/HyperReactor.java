@@ -1,7 +1,9 @@
 package gregicadditions.machines.multi.advance.hyper;
 
-import gregicadditions.GAMaterials;
-import gregicadditions.item.*;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.GAReactorCasing;
+import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;

@@ -3,11 +3,12 @@ package gregicadditions.recipes.chain.wetware;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.recipes.GARecipeMaps.BIO_REACTOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class BacteriaCultures {

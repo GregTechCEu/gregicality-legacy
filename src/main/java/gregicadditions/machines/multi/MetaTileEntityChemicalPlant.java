@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.Steel;
-import static gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace.heatingCoilPredicate;
 
 
 public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {

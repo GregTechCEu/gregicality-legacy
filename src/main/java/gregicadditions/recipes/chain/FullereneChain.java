@@ -3,14 +3,13 @@ package gregicadditions.recipes.chain;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.craftingLens;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class FullereneChain {
     public static void init() {
@@ -164,6 +163,18 @@ public class FullereneChain {
                 .outputs(WetZeoliteSievingPellets.getItemStack())
                 .EUt(8000000)
                 .duration(200)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .input(dust, Palladium)
+                .input(dust, Iridium)
+                .input(dust, Rhenium)
+                .input(dust, Cerium)
+                .input(dust, Osmium)
+                .input(dust, Silicon)
+                .fluidInputs(Oxygen.getFluid(4000))
+                .outputs(PdIrReOCeOS.getItemStack(5))
+                .EUt(2000000)
+                .duration(5)
                 .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .fluidInputs(Ferrocene.getFluid(1000))

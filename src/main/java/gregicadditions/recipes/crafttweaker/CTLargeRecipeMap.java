@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
-import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 import javax.annotation.Nullable;
 import java.util.List;

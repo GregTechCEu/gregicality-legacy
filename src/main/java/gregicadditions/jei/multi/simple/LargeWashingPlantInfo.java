@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeWashingPlant;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -32,12 +32,12 @@ public class LargeWashingPlantInfo extends MultiblockInfoPage {
 					.aisle("XXXXX", "X###X", "X###X")
 					.aisle("XXXXX", "X###X", "X###X")
 					.aisle("IOMEX", "XXSXX", "XXXXX")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WASHING_PLANT, EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeWashingPlant.casingMaterial))
 					.where('#', Blocks.WATER.getDefaultState())
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
 
 					.build());

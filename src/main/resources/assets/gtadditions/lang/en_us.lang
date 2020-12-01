@@ -152,7 +152,7 @@ metaitem.unfolded_fullerene.name=Unfolded Fullerene
 metaitem.fullerene.name=Fullerene
 metaitem.tial_chloride.name=TiAl Chloride
 metaitem.dimethylaminopyridine.name=Dimethylaminopyridine
-metaitem.pdirreoceos.name=PdIrReOCeOs Catalyst
+metaitem.pdirreoceos.name=PdIrReOCeOsSi Catalyst
 metaitem.sodium_ethoxide.name=Sodium Ethoxide
 metaitem.mgcl_brominide.name=MgCl Bromide
 metaitem.n_methylglicine.name=N Methylglicine
@@ -1717,12 +1717,16 @@ material.enriched_naquadah_alloy=Enriched Naquadah Alloy
 material.incoloy813=Incoloy 813
 material.bohrium=Bohrium
 material.seaborgium=Seaborgium
+material.uhv_superconductor=UHV Superconductor
+material.uhv_superconductor_base=UHV Superconductor Base
 material.uev_superconductor=UEV Superconductor
 material.uev_superconductor_base=UEV Superconductor Base
-material.uhv_superconductor_base=UHV Superconductor Base
-material.uhv_superconductor=UHV Superconductor
-
-
+material.uiv_superconductor=UIV Superconductor
+material.uiv_superconductor_base=UIV Superconductor Base
+material.umv_superconductor=UMV Superconductor
+material.umv_superconductor_base=UMV Superconductor Base
+material.uxv_superconductor=UXV Superconductor
+material.uxv_superconductor_base=UXV Superconductor Base
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
@@ -2889,4 +2893,33 @@ metaitem.emitter.umv.name=Emitter (UMV)
 metaitem.emitter.uxv.name=Emitter (UXV)
 metaitem.emitter.max.name=Emitter (MAX)
 
+gtadditions.machine.charger.uhv.name=UHV Voltage Battery Charger
+gtadditions.machine.charger.uev.name=UEV Voltage Battery Charger
+gtadditions.machine.charger.uiv.name=UIV Voltage Battery Charger
+gtadditions.machine.charger.umv.name=UMV Voltage Battery Charger
+gtadditions.machine.charger.uxv.name=UXV Voltage Battery Charger
 
+gtadditions.machine.battery_buffer.uhv.1.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.4.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.9.name=UHV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uhv.16.name=UHV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uev.1.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.4.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.9.name=UEV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uev.16.name=UEV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uiv.1.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.4.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.9.name=UIV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uiv.16.name=UIV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.umv.1.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.4.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.9.name=UMV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.umv.16.name=UMV Voltage Battery Buffer
+
+gtadditions.machine.battery_buffer.uxv.1.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.4.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.9.name=UXV Voltage Battery Buffer
+gtadditions.machine.battery_buffer.uxv.16.name=UXV Voltage Battery Buffer

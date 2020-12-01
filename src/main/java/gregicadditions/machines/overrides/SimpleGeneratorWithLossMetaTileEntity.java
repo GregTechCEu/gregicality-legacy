@@ -1,7 +1,7 @@
 package gregicadditions.machines.overrides;
 
+import gregicadditions.GAValues;
 import gregicadditions.utils.GALog;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -37,7 +37,7 @@ public class SimpleGeneratorWithLossMetaTileEntity extends SimpleGeneratorMetaTi
         workableHandler = ObfuscationReflectionHelper.findField(SimpleGeneratorMetaTileEntity.class, "workableHandler");
         try {
             workableHandler.set(this, new FuelRecipeWithLossLogic(this, recipeMap,
-                    () -> energyContainer, () -> importFluids, GTValues.V[tier], efficiency));
+                    () -> energyContainer, () -> importFluids, GAValues.V[tier], efficiency));
         } catch (IllegalAccessException e) {
             GALog.logger.error("Something is wrong with generator with loss", e);
         }

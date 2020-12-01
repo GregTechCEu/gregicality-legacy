@@ -4,9 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.dustTiny;

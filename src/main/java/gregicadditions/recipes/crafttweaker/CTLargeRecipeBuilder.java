@@ -8,7 +8,8 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.crafttweaker.CTRecipeBuilder;
-import stanhebben.zenscript.annotations.*;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
 import java.util.Collection;

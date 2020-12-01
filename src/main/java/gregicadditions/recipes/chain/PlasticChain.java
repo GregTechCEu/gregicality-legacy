@@ -4,7 +4,6 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.Chlorobenzene;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;

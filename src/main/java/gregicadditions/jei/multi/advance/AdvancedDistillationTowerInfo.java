@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.advance;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -27,17 +27,17 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("CXX", "XXX", "XXX", "XXX", "XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX","XXX", "XXX")
-                .aisle("SFX", "X#X", "X#X", "X#X", "X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X","X#X", "XXX")
-                .aisle("IEX", "HXX", "HXX", "HXX", "HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX","HXX", "HXX")
+                .aisle("CXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
+                .aisle("SFX", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "XXX")
+                .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', GAMetaBlocks.getMetalCasingBlockState(BabbittAlloy))
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
-                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.SOUTH)
-                .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.EV], EnumFacing.WEST)
-                .where('I', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.EV], EnumFacing.WEST)
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.EV], EnumFacing.DOWN)
-                .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.EV], EnumFacing.WEST)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)
+                .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.EV], EnumFacing.WEST)
+                .where('I', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.EV], EnumFacing.WEST)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.EV], EnumFacing.DOWN)
+                .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.EV], EnumFacing.WEST)
                 .build();
         return Lists.newArrayList(shapeInfo);
     }

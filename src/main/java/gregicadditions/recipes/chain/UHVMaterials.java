@@ -1,18 +1,17 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAEnums;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
-import net.minecraft.item.ItemStack;
 
+import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.FLUID_CANNER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregicadditions.GAEnums.GAOrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 
 
 public class UHVMaterials {

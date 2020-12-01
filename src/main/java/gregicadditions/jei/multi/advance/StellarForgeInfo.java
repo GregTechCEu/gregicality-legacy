@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.advance;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;

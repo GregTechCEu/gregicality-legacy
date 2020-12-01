@@ -9,7 +9,6 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.capability.impl.EnergyContainerHandler.IEnergyChangeListener;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;

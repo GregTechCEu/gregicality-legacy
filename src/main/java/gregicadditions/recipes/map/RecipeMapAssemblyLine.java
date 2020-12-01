@@ -1,7 +1,5 @@
 package gregicadditions.recipes.map;
 
-import java.util.function.DoubleSupplier;
-
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -11,6 +9,8 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraftforge.items.IItemHandlerModifiable;
+
+import java.util.function.DoubleSupplier;
 
 public class RecipeMapAssemblyLine<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 	private TextureArea progressBarTexture;

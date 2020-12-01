@@ -6,7 +6,6 @@ import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.Numbers;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

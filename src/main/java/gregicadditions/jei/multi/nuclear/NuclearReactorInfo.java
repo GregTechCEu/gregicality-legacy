@@ -19,8 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.unification.material.Materials.Lead;
-
 public class NuclearReactorInfo extends MultiblockInfoPage {
 
     public final MetaTileEntityNuclearReactor reactor;

@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -28,12 +28,12 @@ public class LargeChemicalReactorInfo extends MultiblockInfoPage {
 					.aisle("XXX", "XEX", "XXX")
 					.aisle("IXX", "X#X", "XXX")
 					.aisle("OMX", "XSX", "XXX")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.LARGE_CHEMICAL_REACTOR, EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT))
 					.where('#', Blocks.AIR.getDefaultState())
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
 					.build());
 

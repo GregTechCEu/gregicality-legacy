@@ -1,21 +1,16 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
-import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.GATileEntities;
-import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 

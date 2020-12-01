@@ -79,7 +79,13 @@ public class DataStickFluidSamplerBehavior implements IItemBehaviour {
         if (oilWorldInfo.getType() == null) {
             lines.add(I18n.format("metaitem.data_stick.tooltip.empty"));
         } else {
-            lines.add(I18n.format("metaitem.data_stick.tooltip.coords", DimensionType.getById(coords.dimension).getName(), coords.getXStart(), coords.getZStart()));
+            String dimName;
+            try {
+                dimName = DimensionType.getById(coords.dimension).getName();
+            } catch (IllegalArgumentException e) {
+                dimName = "id" + coords.dimension;
+            }
+            lines.add(I18n.format("metaitem.data_stick.tooltip.coords", dimName, coords.getXStart(), coords.getZStart()));
             lines.add(I18n.format("metaitem.data_stick.tooltip.capacity", oilWorldInfo.capacity));
             lines.add(I18n.format("metaitem.data_stick.tooltip.current", oilWorldInfo.current));
             lines.add(I18n.format("metaitem.data_stick.tooltip.fluid", I18n.format(oilWorldInfo.getType().getFluid().getUnlocalizedName())));

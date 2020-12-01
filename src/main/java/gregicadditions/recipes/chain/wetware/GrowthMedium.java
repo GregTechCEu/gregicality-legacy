@@ -5,11 +5,12 @@ import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.ULTRASONIC_HOMOGENIZER;
+import static gregicadditions.recipes.GARecipeMaps.BIO_REACTOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class GrowthMedium {

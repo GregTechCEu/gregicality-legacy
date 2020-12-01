@@ -1,9 +1,9 @@
 package gregicadditions.integrations.bees;
 
-import java.awt.Color;
-import java.util.Locale;
-
 import net.minecraft.util.IStringSerializable;
+
+import java.awt.*;
+import java.util.Locale;
 
 public enum GTCombs implements IStringSerializable {
 	LIGNITE(new Color(0x58300b), new Color(0x906237)),
