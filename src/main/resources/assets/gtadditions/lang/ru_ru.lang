@@ -2927,3 +2927,45 @@ gtadditions.machine.rotor_holder.zpm.name=Держатель ротора для
 gtadditions.machine.rotor_holder.uv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (UV)
 gtadditions.machine.rotor_holder.uhv.name=Держатель ротора для турбины на горячей охлаждающей жидкости (UHV)
 item.forge.bucketFilled.name=Ведро %s
+
+material.uhv_superconductor=UHV Сверхпроводник
+material.uhv_superconductor_base=UHV основа сверхпроводника
+material.uev_superconductor=UEV Сверхпроводник
+material.uev_superconductor_base=UEV основа сверхпроводника
+material.uiv_superconductor=UIV Сверхпроводник
+material.uiv_superconductor_base=UIV основа сверхпроводника
+material.umv_superconductor=UMV Сверхпроводник
+material.umv_superconductor_base=UMV основа сверхпроводника
+material.uxv_superconductor=UXV Сверхпроводник
+material.uxv_superconductor_base=UXV основа сверхпроводника
+
+gtadditions.machine.charger.uhv.name=Зарядное устройство UHV напряжения 
+gtadditions.machine.charger.uev.name=Зарядное устройство UEV напряжения 
+gtadditions.machine.charger.uiv.name=Зарядное устройство UIV напряжения 
+gtadditions.machine.charger.umv.name=Зарядное устройство UMV напряжения 
+gtadditions.machine.charger.uxv.name=Зарядное устройство UXV напряжения 
+
+gtadditions.machine.battery_buffer.uhv.1.name=Батарейный буфер (1 ячейка UHV)
+gtadditions.machine.battery_buffer.uhv.4.name=Батарейный буфер (4 ячейки UHV)
+gtadditions.machine.battery_buffer.uhv.9.name=Батарейный буфер (9 ячеек UHV)
+gtadditions.machine.battery_buffer.uhv.16.name=Батарейный буфер (16 ячеек UHV)
+
+gtadditions.machine.battery_buffer.uev.1.name=Батарейный буфер (1 ячейка UEV)
+gtadditions.machine.battery_buffer.uev.4.name=Батарейный буфер (4 ячейки UEV)
+gtadditions.machine.battery_buffer.uev.9.name=Батарейный буфер (9 ячеек UEV)
+gtadditions.machine.battery_buffer.uev.16.name=Батарейный буфер (16 ячеек UEV)
+
+gtadditions.machine.battery_buffer.uiv.1.name=Батарейный буфер (1 ячейка UIV)
+gtadditions.machine.battery_buffer.uiv.4.name=Батарейный буфер (4 ячейки UIV)
+gtadditions.machine.battery_buffer.uiv.9.name=Батарейный буфер (9 ячеек UIV)
+gtadditions.machine.battery_buffer.uiv.16.name=Батарейный буфер (16 ячеек UIV)
+
+gtadditions.machine.battery_buffer.umv.1.name=Батарейный буфер (1 ячейка UMV)
+gtadditions.machine.battery_buffer.umv.4.name=Батарейный буфер (4 ячейки UMV)
+gtadditions.machine.battery_buffer.umv.9.name=Батарейный буфер (9 ячеек UMV)
+gtadditions.machine.battery_buffer.umv.16.name=Батарейный буфер (16 ячеек UMV)
+
+gtadditions.machine.battery_buffer.uxv.1.name=Батарейный буфер (1 ячейка UXV)
+gtadditions.machine.battery_buffer.uxv.4.name=Батарейный буфер (4 ячейки UXV)
+gtadditions.machine.battery_buffer.uxv.9.name=Батарейный буфер (9 ячеек UXV)
+gtadditions.machine.battery_buffer.uxv.16.name=Батарейный буфер (16 ячеек UXV)
