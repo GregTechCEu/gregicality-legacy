@@ -1,10 +1,11 @@
 package gregicadditions.recipes.chain.wetware;
 
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class SterilizedGrowthMedium {

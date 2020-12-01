@@ -2,8 +2,6 @@ package gregicadditions.item;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregtech.api.GTValues;
-import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.VariantBlock;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.SoundType;
@@ -49,12 +47,12 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
 
     public enum CellType implements IStringSerializable {
 
-        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GTValues.HV),
-        CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GTValues.EV),
-        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GTValues.IV),
-        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GTValues.LuV),
-        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
-        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
+        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GAValues.HV),
+        CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GAValues.EV),
+        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GAValues.IV),
+        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GAValues.LuV),
+        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GAValues.ZPM),
+        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GAValues.UV),
         CELL_UHV("cell_uhv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 6)), GAValues.UHV),
         CELL_UEV("cell_uev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 7)), GAValues.UEV),
         CELL_UIV("cell_uiv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 8)), GAValues.UIV),

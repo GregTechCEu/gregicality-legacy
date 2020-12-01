@@ -1,7 +1,5 @@
 package gregicadditions.item.behavior;
 
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.items.metaitem.stats.IItemDurabilityManager;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;

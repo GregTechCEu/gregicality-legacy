@@ -1,9 +1,6 @@
 package gregicadditions.item;
 
-import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.VariantBlock;
-import gregtech.common.blocks.VariantItemBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

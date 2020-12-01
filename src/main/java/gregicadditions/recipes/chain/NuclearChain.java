@@ -3,18 +3,13 @@ package gregicadditions.recipes.chain;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.UraniumRadioactive;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.NUCLEAR_WASTE_REACTIVE_NONMETAL;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class NuclearChain {
 

@@ -4,8 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -105,7 +105,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GTValues.V[Math.max(GTValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GAValues.V[Math.max(GAValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
@@ -118,7 +118,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.EV;
+        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.EV;
         return (long) Math.floor(Math.pow(2, tierDifference));
     }
 
@@ -206,7 +206,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS)))
                 .where('P', statePredicate(getCasingState()))
                 .where('E', tilePredicate((state, tile) -> {
-                    for (int i = GTValues.EV; i < GTValues.V.length; i++) {
+                    for (int i = GAValues.EV; i < GAValues.V.length; i++) {
                         if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId))
                             return true;
                     }

@@ -7,7 +7,6 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerBatteryBuffer;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
-import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;

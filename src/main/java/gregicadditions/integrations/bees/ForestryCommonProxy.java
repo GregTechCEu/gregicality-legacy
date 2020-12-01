@@ -12,7 +12,6 @@ import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
-import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;

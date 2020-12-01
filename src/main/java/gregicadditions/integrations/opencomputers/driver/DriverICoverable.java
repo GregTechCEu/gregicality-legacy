@@ -3,7 +3,6 @@ package gregicadditions.integrations.opencomputers.driver;
 import gregicadditions.integrations.opencomputers.driver.environment.EnvironmentMetaTileEntity;
 import gregicadditions.integrations.opencomputers.driver.environment.cover.*;
 import gregtech.api.capability.GregtechTileCapabilities;
-import gregtech.api.capability.IWorkable;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.metatileentity.MetaTileEntityHolder;

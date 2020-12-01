@@ -3,12 +3,11 @@ package gregicadditions.capabilities.impl;
 
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.Recipe;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class QubitProducerRecipeLogic extends MultiblockRecipeLogic {
+public class QubitProducerRecipeLogic extends GAMultiblockRecipeLogic {
 
     private int recipeOutputQubit;
 

@@ -3,14 +3,13 @@ package gregicadditions.recipes.chain;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.craftingLens;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class FullereneChain {
     public static void init() {

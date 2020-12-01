@@ -1,8 +1,8 @@
 package gregicadditions.worldgen;
 
 
-import gregtech.api.GTValues;
 import gregicadditions.utils.GALog;
+import gregtech.api.GTValues;
 import gregtech.api.worldgen.config.WorldGenRegistry;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;

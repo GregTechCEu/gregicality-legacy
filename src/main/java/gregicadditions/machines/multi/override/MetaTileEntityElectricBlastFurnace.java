@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.override;
 
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -29,6 +30,7 @@ import static gregtech.api.unification.material.Materials.Invar;
 public class MetaTileEntityElectricBlastFurnace extends RecipeMapMultiblockController {
 	public MetaTileEntityElectricBlastFurnace(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES);
+		this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {

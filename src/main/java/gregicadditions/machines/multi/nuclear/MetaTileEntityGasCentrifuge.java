@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.nuclear;
 
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -25,7 +25,7 @@ public class MetaTileEntityGasCentrifuge extends RecipeMapMultiblockController {
 
     public MetaTileEntityGasCentrifuge(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GAS_CENTRIFUGE_RECIPES);
-        this.recipeMapWorkable = new MultiblockRecipeLogic(this) {
+        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this) {
             @Override
             public boolean isAllowOverclocking() {
                 return false;

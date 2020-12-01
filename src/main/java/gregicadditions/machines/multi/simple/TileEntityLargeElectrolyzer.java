@@ -1,10 +1,8 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
-import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -20,7 +18,6 @@ import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBla
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Potin;
 
 public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockController {

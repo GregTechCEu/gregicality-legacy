@@ -1,14 +1,14 @@
 package gregicadditions.recipes.chain.wetware;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
-import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.STEM_CELLS;
+import static gregicadditions.item.GAMetaItems.ULTRASONIC_HOMOGENIZER;
+import static gregicadditions.recipes.GARecipeMaps.BIO_REACTOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FERMENTING_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class StemCells {

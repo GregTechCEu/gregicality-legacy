@@ -1,8 +1,8 @@
 package gregicadditions.armor;
 
+import gregicadditions.GAValues;
 import gregicadditions.input.EnumKey;
 import gregicadditions.item.GAMetaItems;
-import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.util.GTUtility;
@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 public class NanoMuscleSuite extends ArmorLogicSuite {
 
     public NanoMuscleSuite(EntityEquipmentSlot slot, int energyPerUse, int capacity) {
-        super(energyPerUse, capacity, GTValues.HV, slot);
+        super(energyPerUse, capacity, GAValues.HV, slot);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class NanoMuscleSuite extends ArmorLogicSuite {
                     player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, true));
                 }
                 ret = true;
-                item.discharge((energyPerUse / 100), GTValues.HV, true, false, false);
+                item.discharge((energyPerUse / 100), GAValues.HV, true, false, false);
             }
 
             if (!nightvision && !world.isRemote) {

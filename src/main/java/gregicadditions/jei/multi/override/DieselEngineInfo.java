@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi.override;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -37,8 +37,8 @@ public class DieselEngineInfo extends MultiblockInfoPage {
 				.where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
 				.where('A', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING))
 				.where('C', GATileEntities.DIESEL_ENGINE, EnumFacing.NORTH)
-				.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.EV], EnumFacing.WEST)
-				.where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[GTValues.EV], EnumFacing.SOUTH)
+				.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.EV], EnumFacing.WEST)
+				.where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)
 				.where('#', Blocks.AIR.getDefaultState())
 				.build();
 		return Lists.newArrayList(shapeInfo);

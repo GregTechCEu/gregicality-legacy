@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.advance.hyper;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;

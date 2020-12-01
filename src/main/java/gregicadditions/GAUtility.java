@@ -3,7 +3,6 @@ package gregicadditions;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.common.ConfigHolder;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
