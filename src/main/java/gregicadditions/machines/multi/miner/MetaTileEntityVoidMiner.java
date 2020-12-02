@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.Map;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.VoidMinerOres.ORES;
+import static gregicadditions.recipes.VoidMinerOres.*;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
@@ -182,7 +182,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
                     return;
                 }
 
-                List<ItemStack> ores = new ArrayList<>(ORES);
+                List<ItemStack> ores = getOres();
                 Collections.shuffle(ores);
                 ores.stream().limit(10).peek(itemStack -> itemStack.setCount(getWorld().rand.nextInt(nbOres * nbOres) + 1)).forEach(itemStack -> {
                     addItemsToItemHandler(outputInventory, false, Collections.singletonList(itemStack));
@@ -190,6 +190,18 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
 
             }
+        }
+    }
+
+    List<ItemStack> getOres() {
+        switch(tier) {
+            case 8:
+                return ORES;
+            case 9:
+                return ORES_2;
+            case 10:
+            default:
+                return ORES_3;
         }
     }
 
