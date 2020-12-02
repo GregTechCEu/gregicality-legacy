@@ -41,6 +41,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
+import scala.tools.cmd.Meta;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -249,29 +250,37 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
     public IBlockState getCasingState() {
         switch (tier) {
+            case 8:
+                return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
             case 9:
                 return GAMetaBlocks.getMetalCasingBlockState(EnrichedNaquadahAlloy);
-            case 8:
+            case 10:
             default:
-            return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+                return GAMetaBlocks.getMetalCasingBlockState(HastelloyK243);
         }
     }
 
     public IBlockState getSecondaryCasingState() {
         switch (tier) {
             case 8:
-            default:
                 return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+            case 9:
+                return GAMetaBlocks.getMetalCasingBlockState(Incoloy813);
+            case 10:
+            default:
+                return GAMetaBlocks.getMetalCasingBlockState(HastelloyX78);
         }
     }
 
     public IBlockState getFrameState() {
         switch (tier) {
-            case 9:
-                return MetaBlocks.FRAMES.get(Incoloy813).getDefaultState();
             case 8:
+                return MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState();
+            case 9:
+                return MetaBlocks.FRAMES.get(Seaborgium).getDefaultState();
+            case 10:
             default:
-            return MetaBlocks.FRAMES.get(TungstenSteel).getDefaultState();
+                return MetaBlocks.FRAMES.get(Bohrium).getDefaultState();
         }
     }
 
@@ -280,6 +289,8 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         switch (tier) {
             case 9:
                 return GAMetaBlocks.METAL_CASING.get(EnrichedNaquadahAlloy);
+            case 10:
+                return GAMetaBlocks.METAL_CASING.get(HastelloyK243);
             case 8:
             default:
                 return GAMetaBlocks.METAL_CASING.get(HastelloyN);

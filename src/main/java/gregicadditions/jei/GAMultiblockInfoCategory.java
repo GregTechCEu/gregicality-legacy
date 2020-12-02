@@ -1,10 +1,13 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAMaterials;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
 import gregicadditions.jei.multi.miner.LargeMinerInfo;
 import gregicadditions.jei.multi.miner.VoidMinerInfo;
+import gregicadditions.jei.multi.miner.VoidMinerInfo2;
+import gregicadditions.jei.multi.miner.VoidMinerInfo3;
 import gregicadditions.jei.multi.nuclear.GasCentrifugeInfo;
 import gregicadditions.jei.multi.nuclear.HotCoolantTurbineInfo;
 import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
@@ -12,6 +15,7 @@ import gregicadditions.jei.multi.override.*;
 import gregicadditions.jei.multi.quantum.QubitComputerInfo;
 import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.unification.material.Materials;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import gregtech.integration.jei.multiblock.infos.LargeTurbineInfo;
 import mezz.jei.api.IJeiHelpers;
@@ -89,8 +93,10 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new QubitComputerInfo()),
                 new MultiblockInfoRecipeWrapper(new DrillingRigInfo()),
                 new MultiblockInfoRecipeWrapper(new StellarForgeInfo()),
-                new MultiblockInfoRecipeWrapper(new LargeEngraverInfo())
-        ), "gregtech:multiblock_info");
+                new MultiblockInfoRecipeWrapper(new LargeEngraverInfo()),
+                new MultiblockInfoRecipeWrapper(new VoidMinerInfo2()),
+                new MultiblockInfoRecipeWrapper(new VoidMinerInfo3())
+                ), "gregtech:multiblock_info");
     }
 
     @Override
