@@ -1003,6 +1003,21 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Void miner ore variants")
             public boolean oreVariants = true;
+
+            @Config.Comment("The name of the ores to blacklist for the MK1 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK1 Void Miner Blacklist")
+            public String[] oreBlacklist = new String[]{};
+
+            @Config.Comment("The name of the ores to blacklist for the MK2 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK2 Void Miner Blacklist")
+            public String[] oreBlacklistUHV = new String[]{};
+
+            @Config.Comment("The name of the ores to blacklist for the MK3 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK3 Void Miner Blacklist")
+            public String[] oreBlacklistUEV = new String[]{};
         }
 
         public static class LargeMiner {

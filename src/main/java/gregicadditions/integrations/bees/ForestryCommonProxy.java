@@ -1,5 +1,6 @@
 package gregicadditions.integrations.bees;
 
+import binnie.extrabees.ExtraBees;
 import binnie.extrabees.genetics.ExtraBeeDefinition;
 import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
@@ -156,7 +157,7 @@ public class ForestryCommonProxy {
                 .chancedOutput(BeeManager.beeRoot.getMemberStack(BeeDefinition.VALIANT.getIndividual(), EnumBeeType.DRONE), 300, 500)
                 .EUt(26).duration(200).buildAndRegister();
 
-        if (Loader.isModLoaded("extrabees")) {
+        if (Loader.isModLoaded("extrabees") && ExtraBeeDefinition.WATER.getGenome() != null) {
             GARecipeMaps.ATTRACTOR_RECIPES.recipeBuilder().notConsumable(new ItemStack(Blocks.WATERLILY)).fluidInputs(Fluids.SEED_OIL.getFluid(100))
                     .chancedOutput(BeeManager.beeRoot.getMemberStack(ExtraBeeDefinition.WATER.getIndividual(), EnumBeeType.PRINCESS), 1000, 500)
                     .chancedOutput(BeeManager.beeRoot.getMemberStack(ExtraBeeDefinition.WATER.getIndividual(), EnumBeeType.DRONE), 3000, 500)

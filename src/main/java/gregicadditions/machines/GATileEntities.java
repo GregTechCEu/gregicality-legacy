@@ -43,6 +43,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
@@ -1087,17 +1088,19 @@ public class GATileEntities {
             TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
             TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
         }
-        id = 4120;
+        GTLog.logger.info(id);
+        id = 4127;
         for (int i = 9; i < GAValues.V.length - 1; i++) {
             OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GAValues.VN[i].toLowerCase()), i)));
         }
-        LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4130, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
-        BATTERY_BUFFERS[5][0] = GregTechAPI.registerMetaTileEntity(4131, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.1"), GAValues.MAX, 1));
-        BATTERY_BUFFERS[5][1] = GregTechAPI.registerMetaTileEntity(4132, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.4"), GAValues.MAX, 4));
-        BATTERY_BUFFERS[5][2] = GregTechAPI.registerMetaTileEntity(4133, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.9"), GAValues.MAX, 9));
-        BATTERY_BUFFERS[5][3] = GregTechAPI.registerMetaTileEntity(4134, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.16"), GAValues.MAX, 16));
-        CHARGER[5] = GregTechAPI.registerMetaTileEntity(4135, new GAMetaTileEntityCharger(gregtechId("charger.max"), GAValues.MAX, 4));
-        id = 4136;
+
+        LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4137, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
+        BATTERY_BUFFERS[5][0] = GregTechAPI.registerMetaTileEntity(4138, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.1"), GAValues.MAX, 1));
+        BATTERY_BUFFERS[5][1] = GregTechAPI.registerMetaTileEntity(4139, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.4"), GAValues.MAX, 4));
+        BATTERY_BUFFERS[5][2] = GregTechAPI.registerMetaTileEntity(4140, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.9"), GAValues.MAX, 9));
+        BATTERY_BUFFERS[5][3] = GregTechAPI.registerMetaTileEntity(4141, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.16"), GAValues.MAX, 16));
+        CHARGER[5] = GregTechAPI.registerMetaTileEntity(4142, new GAMetaTileEntityCharger(gregtechId("charger.max"), GAValues.MAX, 4));
+        id = 4145;
         for (int i = 0; i < BATTERY_BUFFERS.length - 1; i++) {
             for (int j = 0; j < BATTERY_BUFFERS[i].length; j++) {
                 BATTERY_BUFFERS[i][j] = GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityBatteryBuffer(location("battery_buffer." + GAValues.VN[i + 9].toLowerCase() + "." + (int) Math.pow(j + 1, 2)), i + 9, (int) Math.pow(j + 1, 2)));

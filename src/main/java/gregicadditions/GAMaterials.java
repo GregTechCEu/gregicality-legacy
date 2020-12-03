@@ -179,15 +179,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial RhodiumFilterCakeSolution = new FluidMaterial(861, "rhodium_filter_cake_solution", 0x667788, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial ReRhodium = new DustMaterial(860, "reprecipitated_rhodium", 0x776649, MaterialIconSet.QUARTZ, 2, of(), 0);
     public static final IngotMaterial RhodiumPlatedPalladium = new IngotMaterial(859, "rhodium_plated_palladium", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(new MaterialStack(Palladium, 3), new MaterialStack(Rhodium, 1)), EXT2_METAL | DISABLE_DECOMPOSITION, null, 4500);
-    public static final DustMaterial Tiberium = new DustMaterial(858, "tiberium", 0x22EE22, MaterialIconSet.DIAMOND, 2, of(), 0);
-    public static final IngotMaterial Ruridit = new IngotMaterial(857, "ruridit", 0xA4A4A4, MaterialIconSet.METALLIC, 2, of(), 0);
-    public static final GemMaterial Fluorspar = new GemMaterial(856, "fluorspar", 0xB945FB, MaterialIconSet.GEM_VERTICAL, 2, of(), 0);
-    public static final DustMaterial HDCS = new DustMaterial(855, "high_durability_compound_steel", 0x334433, MaterialIconSet.SHINY, 2, of(), 0);
-    public static final DustMaterial Atheneite = new DustMaterial(854, "atheneite", 0xAFAFAF, MaterialIconSet.SHINY, 2, of(), 0);
-    public static final DustMaterial Temagamite = new DustMaterial(853, "temagamite", 0xF5F5F5, MaterialIconSet.ROUGH, 2, of(), 0);
-    public static final GemMaterial Terlinguaite = new GemMaterial(852, "terlinguaite", 0xF5F5F5, MaterialIconSet.GEM_HORIZONTAL, 2, of(), 0);
-    public static final DustMaterial AdemicSteel = new DustMaterial(851, "ademic_steel", 0xCCCCCC, MaterialIconSet.METALLIC, 2, of(), 0);
-    public static final DustMaterial RawAdemicSteel = new DustMaterial(850, "raw_ademic_steel", 0xEDEDED, MaterialIconSet.ROUGH, 2, of(), 0);
+    public static final IngotMaterial Ruridit = new IngotMaterial(857, "ruridit", 0xA4A4A4, MaterialIconSet.METALLIC, 2, of(new MaterialStack(Ruthenium, 2), new MaterialStack(Iridium, 1)), CORE_METAL, null, 9950);
     public static final DustMaterial PotassiumNitrade = new DustMaterial(849, "potassium_nitrade", 0x81228D, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final FluidMaterial Nitrochlorobenzene = new FluidMaterial(847, "nitrochlorobenzene", 0x8FB51A, MaterialIconSet.DULL, of(), 0);
@@ -337,13 +329,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 25000);
     public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
 
-    public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Sg);
-    public static final IngotMaterial Bohrium = new IngotMaterial(735, "bohrium", 0xdc57ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Bh);
+    public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_FRAME, Sg);
+    public static final IngotMaterial Bohrium = new IngotMaterial(735, "bohrium", 0xdc57ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_FRAME, Bh);
 
-    public static final IngotMaterial Incoloy813 = new IngotMaterial(734, "incoloy813", 0x37bf7e, MaterialIconSet.SHINY, 2, of(new MaterialStack(VanadiumSteel, 4), new MaterialStack(Osmiridium, 2), new MaterialStack(Technetium, 3), new MaterialStack(Germanium, 4), new MaterialStack(Iridium, 7), new MaterialStack(Duranium, 5), new MaterialStack(Californium252.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_FRAME, null);
-    public static final IngotMaterial EnrichedNaquadahAlloy = new IngotMaterial(733, "enriched_naquadah_alloy", 0x403f3d, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Rhodium, 2), new MaterialStack(Ruthenium, 2), new MaterialStack(Dubnium, 1), new MaterialStack(Rubidium, 2), new MaterialStack(Einsteinium255.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null);
-    public static final IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Aluminium, 4), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_FRAME, null);
-    public static final IngotMaterial HatelloyK243 = new IngotMaterial(731, "hastelloy_k243", 0xa5f564, MaterialIconSet.SHINY, 2, of(new MaterialStack(HastelloyX78, 5), new MaterialStack(NiobiumNitride, 2), new MaterialStack(Tritanium, 4), new MaterialStack(TungstenCarbide, 4), new MaterialStack(Promethium, 4), new MaterialStack(Mendelevium261.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null);
+    public static final IngotMaterial Incoloy813 = new IngotMaterial(734, "incoloy813", 0x37bf7e, MaterialIconSet.SHINY, 2, of(new MaterialStack(VanadiumSteel, 4), new MaterialStack(Osmiridium, 2), new MaterialStack(Technetium, 3), new MaterialStack(Germanium, 4), new MaterialStack(Iridium, 7), new MaterialStack(Duranium, 5), new MaterialStack(Californium252.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 10000);
+    public static final IngotMaterial EnrichedNaquadahAlloy = new IngotMaterial(733, "enriched_naquadah_alloy", 0x403f3d, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Rhodium, 2), new MaterialStack(Ruthenium, 2), new MaterialStack(Dubnium, 1), new MaterialStack(Rubidium, 2), new MaterialStack(Einsteinium255.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 10000);
+    public static final IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Aluminium, 4), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 25000);
+    public static final IngotMaterial HastelloyK243 = new IngotMaterial(731, "hastelloy_k243", 0xa5f564, MaterialIconSet.SHINY, 2, of(new MaterialStack(HastelloyX78, 5), new MaterialStack(NiobiumNitride, 2), new MaterialStack(Tritanium, 4), new MaterialStack(TungstenCarbide, 4), new MaterialStack(Promethium, 4), new MaterialStack(Mendelevium261.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 25000);
 
     public static final IngotMaterial Polyetheretherketone = new IngotMaterial(730, "polyetheretherketone", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
     public static final IngotMaterial Zylon = new IngotMaterial(729, "zylon", 0x403e37, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
@@ -355,6 +347,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial UMVSuperconductor = new IngotMaterial(724, "umv_superconductor", 0x883afc, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
     public static final IngotMaterial UXVSuperconductorBase = new IngotMaterial(723, "uxv_superconductor_base", 0xe34b5a, MaterialIconSet.SHINY, 1, of(), STD_METAL, null, 100000);
     public static final IngotMaterial UXVSuperconductor = new IngotMaterial(722, "uxv_superconductor", 0xe34b5a, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
+
+    //free ids 858, 856-850
 
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);

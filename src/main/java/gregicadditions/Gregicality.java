@@ -39,7 +39,14 @@ import java.io.IOException;
                 "after:forestry;" +
                 "after:tconstruct;" +
                 "after:exnihilocreatio;" +
-                "after:mysticalagradditions"
+                "after:mysticalagradditions;" +
+                "after:binniecore;" +
+                "after:extrabees;" +
+                "after:botany;" +
+                "after:binniedesign;" +
+                "after:extratrees;" +
+                "after:botany;" +
+                "after:genetics"
 )
 public class Gregicality {
     public static final String MODID = "gtadditions";
