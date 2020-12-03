@@ -18,6 +18,6 @@ public class VanadiumChain {
             .output(OreDictUnifier(ingot, Iron))
             .output(VanadiumSlag.getItemStack())
             .fluidOutputs(CarbonDioxide.getFluid(1000))
-        
+            .buildAndRegister();
     }
 }
