@@ -29,7 +29,6 @@ public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities
 
 	public MetaTileEntityMultiFurnace(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
-		this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
 	}
 
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
