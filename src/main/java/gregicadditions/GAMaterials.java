@@ -636,6 +636,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 85, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 86, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 87, MaterialIconSet.DULL);
+    
+    public static final SimpleDustMaterial VanadiumSlag = new SimpleDustMaterial("vanadium_slag", 0xbf95f5,(short) 88, materialIconSet.DULL)
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
