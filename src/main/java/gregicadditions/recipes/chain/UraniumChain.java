@@ -146,12 +146,13 @@ public chain UraniumChain {
             .input(UraniumOxideThoriumNitrate.getItemStack())
             .fluidInputs(DistilledWater.getFluid(1000))
             .output(dust, UraniumDioxide)
-            .fluidOutputs(ThoriumNitrateSoluiton.getFluid(1000))
+            .fluidOutputs(ThoriumNitrateSoluiton.getFluid(500))
             .buildAndRegister();
             
-        BLAST_RECIPES.recipeBuilder().duration(250).EUt(500)
+        BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(800)
             .fluidInputs(ThoriumNitrateSoluiton.getFluid(1000))
             .output(dust, ThoriumDioxide)
+            .fluidOutputs(NitrogenDioxide.getFluid(1000)
             .buildAndRegister();
    
     }
