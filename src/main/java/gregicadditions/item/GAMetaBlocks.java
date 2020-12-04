@@ -1,5 +1,6 @@
 package gregicadditions.item;
 
+import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
@@ -101,9 +102,11 @@ public class GAMetaBlocks {
 
 
     public static void init() {
-        for (Material mat : Material.MATERIAL_REGISTRY) {
-            if (mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
-                createOreBlock((DustMaterial) mat);
+        if (GAConfig.Misc.oreVariants) {
+            for (Material mat : Material.MATERIAL_REGISTRY) {
+                if (mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
+                    createOreBlock((DustMaterial) mat);
+                }
             }
         }
         QUANTUM_CASING = new GAQuantumCasing();

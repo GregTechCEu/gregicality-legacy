@@ -234,6 +234,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
          */
         protected void trySearchNewRecipe() {
             long maxVoltage = getMaxVoltage();
+            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController)
+                maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
             Recipe currentRecipe = null;
             IItemHandlerModifiable importInventory = getInputInventory();
             IMultipleTankHandler importFluids = getInputTank();
@@ -432,7 +434,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         }
 
         protected void setupRecipe(Recipe recipe) {
-            int[] resultOverclock = calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration());
+            int[] resultOverclock = calculateOverclock(recipe.getEUt(), ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage, recipe.getDuration());
             this.progressTime = 1;
             setMaxProgress(resultOverclock[1]);
             this.recipeEUt = resultOverclock[0];

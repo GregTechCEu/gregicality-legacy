@@ -12,6 +12,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -45,7 +46,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
-                .where('Y', statePredicate(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)))
+                .where('Y', statePredicate(GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
                 .where('#', isAirPredicate())

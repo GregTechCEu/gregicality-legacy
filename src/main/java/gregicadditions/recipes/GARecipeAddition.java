@@ -563,8 +563,8 @@ public class GARecipeAddition {
                 .input(dust, Lithium, 9)
                 .input(dust, Sulfur, 9)
                 .input(dust, Potassium, 9)
-                .fluidInputs(Hydrogen.getFluid(500))
-                .outputs(OreDictUnifier.get(dust, Grisium, 48)).buildAndRegister();
+                .fluidInputs(Hydrogen.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, Grisium, 50)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .notConsumable(new IntCircuitIngredient(5))
                 .input(dust, Chrome, 7)

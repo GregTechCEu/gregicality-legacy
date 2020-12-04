@@ -477,6 +477,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
@@ -951,6 +953,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
             }
@@ -981,6 +985,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
