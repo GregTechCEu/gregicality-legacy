@@ -56,7 +56,7 @@ public class VanadiumChain {
         BLAST_RECIPES.recipeBuilder().duration(600).EUt(125).blastFurnaceTemp(1200)
             .input(VanadiumOxide.getItemStack())
             .input(dust, Aluminium)
-            .outputs(AluminiumOxide.getItemStack())
+            .outputs(Alumina.getItemStack())
             .outputs(OreDictUnifier(dust, Vanadium))
             .buildAndRegister();
     }
