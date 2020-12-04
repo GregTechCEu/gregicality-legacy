@@ -649,7 +649,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate",0xfcfcfa,(short) 94,materialIconSet.DULL)
     public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide",0xfcfcfa,(short) 95,materialIconSet.DULL)
     public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate",0xfcfcfa,(short) 96,materialIconSet.DULL)
-    public static final SimpleDustMaterial AluminiumOxide = new SimpleDustMaterial("aluminium_oxide",0x7c9ea3, (short) 107,materialIconSet.DULL)
     
     public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture",0xb8c319,(short) 97,materialIconSet.DULL)
     public static final SimpleFluidMaterial UranylChlorideSolution = new SimpleFluidMaterial("uranyl_chloride_solution",0xdfe018)
