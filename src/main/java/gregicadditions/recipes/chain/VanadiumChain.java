@@ -4,7 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
+impott static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -19,9 +19,9 @@ public class VanadiumChain {
             .output(VanadiumSlag.getItemStack())
             .fluidOutputs(CarbonDioxide.getFluid(1000))
             .buildAndRegister();
-        MACERATOR.recipeBuilder().duration(2400).EU(125)
+        MACERATOR_RECIPES.recipeBuilder().duration(2400).EU(125)
             .input(sVanadiumSlag.getItemStack())
-            .outputs(OreDictUnifier(dust, Iron))
+            .outputs(tiny_dust, DarkAshes))
             .outputs(tiny_dust, Rutile)
             .outputs(VanadiumSlagDust.getItemStack());
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(125).blastFurnaceTemp(700)
@@ -43,7 +43,7 @@ public class VanadiumChain {
             .chancedOutputs(OreDictUnifier.get(dust, SodiumSulfate),9000,0)
             .chancedOutputs(OreDictUnifier.get(dust, SilconDioxide),5000,0)
             .chancedOutputs(AluminiumHydroxide.getItemStack(),5000,0);
-        CHEMICAL_DEHYDRATOR.recipeBuilder().duration(480).EUt(125)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(480).EUt(125)
             .input(AmmoniumVanadate.getItemStack())
             .outputs(VanadiumOxide.getItemStack(2))
             .fluidOutputs(Ammonium.getFluid(1000))
