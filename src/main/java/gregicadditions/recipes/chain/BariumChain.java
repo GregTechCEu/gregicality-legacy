@@ -36,7 +36,7 @@ public class BariumChain {
          CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(500)
             .input(BariumAluminate.getItemStack(2))
             .output(BariumOxide.getItemStack())
-            .output(AluminiumOxide.getItemStack(2))
+            .output(Alumina.getItemStack(2))
             .buildAndRegister();
     }
         
