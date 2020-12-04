@@ -14,7 +14,6 @@ import gregtech.api.recipes.builders.AssemblerRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
-import net.minecraft.client.gui.Gui;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -109,7 +108,7 @@ public class GARecipeMaps {
 
         NUCLEAR_BREEDER_RECIPES = new RecipeMap<>("nuclear_breeder", 2, 3, 1, 4, 0, 0, 0, 0, new NuclearReactorBuilder().EUt(480));
 
-        GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house", 1, 2, 1, 2, 1, 1, 0, 0, new SimpleRecipeBuilder().EUt(16))
+        GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house", 2, 3, 1, 2, 1, 1, 0, 0, new SimpleRecipeBuilder().EUt(16))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
         LARGE_CENTRIFUGE_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_centrifuge", 0, 1, 0, 6, 0, 2, 0, 6, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
                 .setSlotOverlay(false, false, true, GuiTextures.EXTRACTOR_OVERLAY)
