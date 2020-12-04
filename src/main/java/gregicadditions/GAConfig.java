@@ -417,6 +417,12 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean multiStoneGen = true;
 
+        @Config.Comment("Whether or not to generate different ore variants. E.g. rich ores, pure ores and poor ores. If you disable this some of your worldgen will break! You will also break any previously created worlds!")
+        @Config.Name("Add ore variants")
+        @Config.RequiresMcRestart
+        @Config.RequiresWorldRestart
+        public boolean oreVariants = true;
+
     }
 
     public static Multis multis = new Multis();
