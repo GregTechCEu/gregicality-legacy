@@ -637,42 +637,39 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 86, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 87, MaterialIconSet.DULL);
     
-    public static final SimpleDustMaterial VanadiumSlag = new SimpleDustMaterial("vanadium_slag", 0xbf95f5,(short) 88, materialIconSet.DULL)
-    public static final SimpleDustMaterial VanadiumSlagDust = new SimpleDustMaterial("vanadium_slag_dust", 0xf2ef1b,(short) 89, materialIconSet.DULL)
-    public static final SimpleDustMaterial SodiumVanadate = new SimpleDustMaterial("sodium_vanadate", 0xf2ef1b,(short) 90, materialIconSet.DULL)
-    public static final SimpleDustMaterial AmmoniumVanadate = new SimpleDustMaterial("ammonium_vanadate", 0xf2ef1b,(short) 91, materialIconSet.DULL)
-    public static final SimpleDustMaterial VanadiumOxide = new SimpleDustMaterial("vanadium_oxide", 0xbf95f5,(short) 92, materialIconSet.SHINY)
+    public static final SimpleDustMaterial VanadiumSlag = new SimpleDustMaterial("vanadium_slag", 0xbf95f5,(short) 88, materialIconSet.DULL);
+    public static final SimpleDustMaterial VanadiumSlagDust = new SimpleDustMaterial("vanadium_slag_dust", 0xf2ef1b,(short) 89, materialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumVanadate = new SimpleDustMaterial("sodium_vanadate", 0xf2ef1b,(short) 90, materialIconSet.DULL);
+    public static final SimpleDustMaterial AmmoniumVanadate = new SimpleDustMaterial("ammonium_vanadate", 0xf2ef1b,(short) 91, materialIconSet.DULL);
+    public static final SimpleDustMaterial VanadiumOxide = new SimpleDustMaterial("vanadium_oxide", 0xbf95f5,(short) 92, materialIconSet.SHINY);
     
-    public static final SimpleFluidMaterial VanadiumWasteSolution = new SimpleFluidMaterial("vanadium_waste_solution", 0xbf95f5)
+    public static final SimpleFluidMaterial VanadiumWasteSolution = new SimpleFluidMaterial("vanadium_waste_solution", 0xbf95f5);
     
-    public static final SimpleDustMaterial BariumSulfide = new SimpleDustMaterial("barium_sulfide",0xc2c2be,(short) 93,materialIconSet.DULL)
-    public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate",0xfcfcfa,(short) 94,materialIconSet.DULL)
-    public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide",0xfcfcfa,(short) 95,materialIconSet.DULL)
-    public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate",0xfcfcfa,(short) 96,materialIconSet.DULL)
+    public static final SimpleDustMaterial BariumSulfide = new SimpleDustMaterial("barium_sulfide",0xc2c2be,(short) 93,materialIconSet.DULL);
+    public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate",0xfcfcfa,(short) 94,materialIconSet.DULL);
+    public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide",0xfcfcfa,(short) 95,materialIconSet.DULL);
+    public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate",0xfcfcfa,(short) 96,materialIconSet.DULL);
     
-    public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture",0xb8c319,(short) 97,materialIconSet.DULL)
-    public static final SimpleFluidMaterial UranylChlorideSolution = new SimpleFluidMaterial("uranyl_chloride_solution",0xdfe018)
-    public static final SimpleFluidMaterial UranylNitrateSolution = new SimpleFluidMaterial("uranyl_nitrate_solution",0xdfe018)
-    public static final SimpleFluidMaterial UraniumSulfateWasteSolution = new SimpleFluidMaterial("uranium_sulfate_waste_solution",)
-    public static final SimpleFluidMaterial PurifiedUranylNitrate = new SimpleFluidMaterial("purified_uranyl_chloride_solution",0xeff028)
-    public static final SimpleFluidMaterial UranimDiuranate = new SimpleFluidMaterial("uranium_diuranate",0xeff028)
-    public static final SimpleFluidMaterial HotUraniumDiuranate = new SimpleFluidMaterial("hot_uranium_diuranate",0xeff028)
-    public static final SimpleFluidMaterial HotPotassiumUranylTricarbonate = new SimpleFluidMaterial("hot_potassium_uranyl_carbonate",0xeff028)
-    public static final SimpleDustMaterial PotassiumUranylTricarbonate = new SimpleDustMaterial("potassium_uranyl_carbonate",0xeff028,(short) 98,materialIconSet.DULL)
-    public static final SimpleFluidMaterial UraniumRefinementWasteSolution = new SimpleFluidMaterial("uranium_refinement_waste_solution",)
-    public static final SimpleDustMaterial UraniumPeroxideThoriumOxide = new SimpleDustMaterial("uranium_peroxide_thorium_oxide",0x202020,(short) 99,materialIconSet.SHINY)
-    public static final SimpleDustMaterial UraniumThoriumOxide = new SimpleDustMaterial("uranium_thorium_oxide",0x202020,(short) 100,materialIconSet.SHINY)
-    public static final SimpleDustMaterial UranylThoriumSulfate = new SimpleDustMaterial("uranium_thorium_sulfate",0xe7e848,(short) 101,materialIconSet.SHINY)
-    public static final SimpleDustMaterial UranylThoriumNitrate = new SimpleDustMaterial("uranium_thorium_nitrate",0xe7e848,(short) 102,materialIconSet.SHINY)
-    public static final SimpleDustMaterial UraniumOxideThoriumNitrate = new SimpleDustMaterial("uranium_oxide_thorium_nitrate",0x33bd45,(short) 103,materialIconSet.SHINY)
+    public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture",0xb8c319,(short) 97,materialIconSet.DULL);
+    public static final SimpleFluidMaterial UranylChlorideSolution = new SimpleFluidMaterial("uranyl_chloride_solution",0xdfe018);
+    public static final SimpleFluidMaterial UranylNitrateSolution = new SimpleFluidMaterial("uranyl_nitrate_solution",0xdfe018);
+    public static final SimpleFluidMaterial UraniumSulfateWasteSolution = new SimpleFluidMaterial("uranium_sulfate_waste_solution",0xdfe018);
+    public static final SimpleFluidMaterial PurifiedUranylNitrate = new SimpleFluidMaterial("purified_uranyl_chloride_solution",0xeff028);
+    public static final SimpleFluidMaterial UranimDiuranate = new SimpleFluidMaterial("uranium_diuranate",0xeff028);
+    public static final SimpleFluidMaterial HotUraniumDiuranate = new SimpleFluidMaterial("hot_uranium_diuranate",0xeff028);
+    public static final SimpleFluidMaterial HotPotassiumUranylTricarbonate = new SimpleFluidMaterial("hot_potassium_uranyl_carbonate",0xeff028);
+    public static final SimpleDustMaterial PotassiumUranylTricarbonate = new SimpleDustMaterial("potassium_uranyl_carbonate",0xeff028,(short) 98,materialIconSet.DULL);
+    public static final SimpleFluidMaterial UraniumRefinementWasteSolution = new SimpleFluidMaterial("uranium_refinement_waste_solution",0xeff028);
+    public static final SimpleDustMaterial UraniumPeroxideThoriumOxide = new SimpleDustMaterial("uranium_peroxide_thorium_oxide",0x202020,(short) 99,materialIconSet.SHINY);
+    public static final SimpleDustMaterial UraniumThoriumOxide = new SimpleDustMaterial("uranium_thorium_oxide",0x202020,(short) 100,materialIconSet.SHINY);
+    public static final SimpleDustMaterial UranylThoriumSulfate = new SimpleDustMaterial("uranium_thorium_sulfate",0xe7e848,(short) 101,materialIconSet.SHINY);
+    public static final SimpleDustMaterial UranylThoriumNitrate = new SimpleDustMaterial("uranium_thorium_nitrate",0xe7e848,(short) 102,materialIconSet.SHINY);
+    public static final SimpleDustMaterial UraniumOxideThoriumNitrate = new SimpleDustMaterial("uranium_oxide_thorium_nitrate",0x33bd45,(short) 103,materialIconSet.SHINY);
     
-    public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide",0x202020,(short) 104,materialIconSet.DULL)
-    public static final SimpleDustMaterial PotassiumHydroxide = new SimpleDustMaterial("potassium_hydroxide",0x202020,(short) 105,materialIconSet.DULL)
-    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,materialIconSet.DULL)
-    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 108,materialIconSet.DULL)
-    
-    
-    
+    public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide",0x202020,(short) 104,materialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumHydroxide = new SimpleDustMaterial("potassium_hydroxide",0x202020,(short) 105,materialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,materialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 108,materialIconSet.DULL);
     
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
