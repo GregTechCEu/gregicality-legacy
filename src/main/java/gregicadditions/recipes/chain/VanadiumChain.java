@@ -4,7 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 
 import static gregicadditions.GAMaterials.*;
-impott static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -21,7 +21,7 @@ public class VanadiumChain {
             .buildAndRegister();
         MACERATOR_RECIPES.recipeBuilder().duration(2400).EU(125)
             .input(sVanadiumSlag.getItemStack())
-            .outputs(tiny_dust, DarkAshes))
+            .outputs(tiny_dust, DarkAshes)
             .outputs(tiny_dust, Rutile)
             .outputs(VanadiumSlagDust.getItemStack())
             .buildAndRegister();
@@ -36,7 +36,7 @@ public class VanadiumChain {
             .input(SodiumVanadate.getItemStack())
             .fluidInputs(AmmoniumChloride.getFluid(1000))
             .outputs(AmmoniumVanadate.getItemStack())
-            .fluidOutputs(VanadiumWasteSolution.getFluid(1000);
+            .fluidOutputs(VanadiumWasteSolution.getFluid(1000))
             .buildAndRegister();
         CHEMICAL_DEHYDRATOR.recipeBuilder().duration(720).EUt(125)
             .fluidInputs(VanadiumWasteSolution.getFluid(4000))
