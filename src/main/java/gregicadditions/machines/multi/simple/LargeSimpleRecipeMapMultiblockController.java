@@ -233,7 +233,9 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
          *
          */
         protected void trySearchNewRecipe() {
-            long maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
+            long maxVoltage = getMaxVoltage();
+            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController)
+                maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
             Recipe currentRecipe = null;
             IItemHandlerModifiable importInventory = getInputInventory();
             IMultipleTankHandler importFluids = getInputTank();
