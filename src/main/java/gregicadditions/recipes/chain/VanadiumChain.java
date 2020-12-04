@@ -23,18 +23,21 @@ public class VanadiumChain {
             .input(sVanadiumSlag.getItemStack())
             .outputs(tiny_dust, DarkAshes))
             .outputs(tiny_dust, Rutile)
-            .outputs(VanadiumSlagDust.getItemStack());
+            .outputs(VanadiumSlagDust.getItemStack())
+            .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(125).blastFurnaceTemp(700)
             .inputs(VanadiumSlagDust.getItemStack())
             .input(dust, Salt)
             .input(dust, SodaAsh)
-            .output(SodiumVanadate.getItemStack());
+            .output(SodiumVanadate.getItemStack())
+            .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(500).EUt(125)
             .fluidInputs(SulfuricAcid.getFluid(1000))
             .input(SodiumVanadate.getItemStack())
             .fluidInputs(AmmoniumChloride.getFluid(1000))
             .outputs(AmmoniumVanadate.getItemStack())
-            .fluidOutputs(VanadiumWasteSolution.getFluid(1000));
+            .fluidOutputs(VanadiumWasteSolution.getFluid(1000);
+            .buildAndRegister();
         CHEMICAL_DEHYDRATOR.recipeBuilder().duration(720).EUt(125)
             .fluidInputs(VanadiumWasteSolution.getFluid(4000))
             .chancedOutputs(OreDictUnifier.get(dust, Salt),9000,0)
@@ -42,17 +45,19 @@ public class VanadiumChain {
             .chancedOutputs(OreDictUnifier.get(dust, SodiumSulfate),9000,0)
             .chancedOutputs(OreDictUnifier.get(dust, SodiumSulfate),9000,0)
             .chancedOutputs(OreDictUnifier.get(dust, SilconDioxide),5000,0)
-            .chancedOutputs(AluminiumHydroxide.getItemStack(),5000,0);
+            .chancedOutputs(AluminiumHydroxide.getItemStack(),5000,0)
+            .buildAndRegister();
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(480).EUt(125)
             .input(AmmoniumVanadate.getItemStack())
             .outputs(VanadiumOxide.getItemStack(2))
             .fluidOutputs(Ammonium.getFluid(1000))
-            .fluidOutputs(Water.getFluid(1000));
+            .fluidOutputs(Water.getFluid(1000))
+            .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(600).EUt(125).blastFurnaceTemp(1200)
             .input(VanadiumOxide.getItemStack())
             .input(dust, Aluminium)
             .outputs(AluminiumOxide.getItemStack())
-            .outputs(OreDictUnifier(dust, Vanadium));
-        
+            .outputs(OreDictUnifier(dust, Vanadium))
+            .buildAndRegister();
     }
 }
