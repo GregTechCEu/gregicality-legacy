@@ -197,6 +197,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         };
     }
 
+    @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.maxVoltage = 0;
+    }
+
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {

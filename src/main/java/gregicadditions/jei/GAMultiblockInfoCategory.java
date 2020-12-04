@@ -95,7 +95,8 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new MultiblockInfoRecipeWrapper(new StellarForgeInfo()),
                 new MultiblockInfoRecipeWrapper(new LargeEngraverInfo()),
                 new MultiblockInfoRecipeWrapper(new VoidMinerInfo2()),
-                new MultiblockInfoRecipeWrapper(new VoidMinerInfo3())
+                new MultiblockInfoRecipeWrapper(new VoidMinerInfo3()),
+                new MultiblockInfoRecipeWrapper(new BioReactorInfo())
                 ), "gregtech:multiblock_info");
     }
 

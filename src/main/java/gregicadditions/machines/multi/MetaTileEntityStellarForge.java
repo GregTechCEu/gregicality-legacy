@@ -1,9 +1,13 @@
-package gregicadditions.machines;
+package gregicadditions.machines.multi;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.item.components.FieldGenCasing;
+import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -12,11 +16,19 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 
 
 public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
@@ -27,8 +39,16 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
             MultiblockAbility.INPUT_ENERGY
     };
 
+    private long maxVoltage;
+
     public MetaTileEntityStellarForge(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.STELLAR_FORGE_RECIPES);
+        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this) {
+            @Override
+            protected long getMaxVoltage() {
+                return maxVoltage;
+            }
+        };
     }
 
     @Override
@@ -49,7 +69,7 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
                 .aisle("######C#C######", "###FF#####FF###", "###############", "###############", "###############", "###############", "###############", "###FF#####FF###", "######C#C######")
                 .aisle("######C#C######", "#####FFFFF#####", "###############", "###############", "###############", "###############", "###############", "#####FFFFF#####", "######C#C######")
                 .aisle("###############", "######CSC######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######CCC######", "###############")
-                .where('M', statePredicate(GAMetaBlocks.EMITTER_CASING.getState(EmitterCasing.CasingType.EMITTER_UV)))
+                .where('M', emitterPredicate())
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('X', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.STELLAR_CONTAINMENT)))
                 .where('F', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2)))
@@ -58,6 +78,38 @@ public class MetaTileEntityStellarForge extends RecipeMapMultiblockController {
                 .build();
     }
 
+    public static Predicate<BlockWorldState> emitterPredicate() {
+        return (blockWorldState) -> {
+            IBlockState blockState = blockWorldState.getBlockState();
+            if (!(blockState.getBlock() instanceof EmitterCasing)) {
+                return false;
+            } else {
+                EmitterCasing motorCasing = (EmitterCasing) blockState.getBlock();
+                EmitterCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
+                EmitterCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Emitter", tieredCasingType);
+                return currentCasing.getName().equals(tieredCasingType.getName());
+            }
+        };
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        EmitterCasing.CasingType emitter = context.getOrDefault("Emitter", EmitterCasing.CasingType.EMITTER_LV);
+        maxVoltage = (long) (Math.pow(4, emitter.getTier()) * 8);
+    }
+
+    @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.maxVoltage = 0;
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
+    }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
