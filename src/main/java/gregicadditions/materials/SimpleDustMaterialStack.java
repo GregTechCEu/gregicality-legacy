@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregtech.api.unification.material.type.MarkerMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.util.SmallDigits;
 
@@ -8,7 +9,7 @@ public class SimpleDustMaterialStack extends MaterialStack {
     private final SimpleDustMaterial simpleDustMaterial;
 
     public SimpleDustMaterialStack(SimpleDustMaterial material, long amount) {
-        super(null, amount);
+        super(new MarkerMaterial(material.name), amount);
         this.simpleDustMaterial = material;
     }
 
