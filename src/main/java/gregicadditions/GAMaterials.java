@@ -649,14 +649,15 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate",0xfcfcfa,(short) 94,materialIconSet.DULL)
     public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide",0xfcfcfa,(short) 95,materialIconSet.DULL)
     public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate",0xfcfcfa,(short) 96,materialIconSet.DULL)
+    public static final SimpleDustMaterial AluminiumOxide = new SimpleDustMaterial("aluminium_oxide",0x7c9ea3, (short) 107,materialIconSet.DULL)
     
     public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture",0xb8c319,(short) 97,materialIconSet.DULL)
     public static final SimpleFluidMaterial UranylChlorideSolution = new SimpleFluidMaterial("uranyl_chloride_solution",0xdfe018)
     public static final SimpleFluidMaterial UranylNitrateSolution = new SimpleFluidMaterial("uranyl_nitrate_solution",0xdfe018)
     public static final SimpleFluidMaterial UraniumSulfateWasteSolution = new SimpleFluidMaterial("uranium_sulfate_waste_solution",)
     public static final SimpleFluidMaterial PurifiedUranylNitrate = new SimpleFluidMaterial("purified_uranyl_chloride_solution",0xeff028)
-    public static final SimpleFluidMaterial SodiumDiuranate = new SimpleFluidMaterial("sodium_diuranate",0xeff028)
-    public static final SimpleFluidMaterial HotSodiumDiuranate = new SimpleFluidMaterial("hot_sodium_diuranate",0xeff028)
+    public static final SimpleFluidMaterial UranimDiuranate = new SimpleFluidMaterial("uranium_diuranate",0xeff028)
+    public static final SimpleFluidMaterial HotUraniumDiuranate = new SimpleFluidMaterial("hot_uranium_diuranate",0xeff028)
     public static final SimpleFluidMaterial HotPotassiumUranylTricarbonate = new SimpleFluidMaterial("hot_potassium_uranyl_carbonate",0xeff028)
     public static final SimpleDustMaterial PotassiumUranylTricarbonate = new SimpleDustMaterial("potassium_uranyl_carbonate",0xeff028,(short) 98,materialIconSet.DULL)
     public static final SimpleFluidMaterial UraniumRefinementWasteSolution = new SimpleFluidMaterial("uranium_refinement_waste_solution",)
@@ -667,8 +668,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial UraniumOxideThoriumNitrate = new SimpleDustMaterial("uranium_oxide_thorium_nitrate",0x33bd45,(short) 103,materialIconSet.SHINY)
     
     public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide",0x202020,(short) 104,materialIconSet.DULL)
-    public static final SimpleDustMaterial PotassiumHydroxide = new SimpleDustMaterial("potassium_hydroxide",0x202020,(short) 105,materialIconSet.SHINY)
-    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,materialIconSet.SHINY)
+    public static final SimpleDustMaterial PotassiumHydroxide = new SimpleDustMaterial("potassium_hydroxide",0x202020,(short) 105,materialIconSet.DULL)
+    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,materialIconSet.DULL)
+    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 108,materialIconSet.DULL)
+    
+    
     
     
     public static Material UEV = new MarkerMaterial("UEV");
