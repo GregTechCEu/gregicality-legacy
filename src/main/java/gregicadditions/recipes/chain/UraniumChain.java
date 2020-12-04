@@ -1,6 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -9,7 +8,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
-public chain UraniumChain {
+public class UraniumChain {
     public static void init() {
         MIXER_RECIPES.recipeBuilder().duration(150).EUt(500)
             .input(dust, Pitchbende)
