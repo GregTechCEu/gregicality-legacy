@@ -3,7 +3,10 @@ package gregicadditions.recipes.chain;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.ELECTROLYSER_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.VACUUM_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.PYROLYSE_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.CRACKER_UNIT_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -17,7 +20,7 @@ public class UraniumChain {
             .buildAndRegister();
             
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(500)
-            .input(PitchblendeBaCOmix.getItemStack())
+            .inputs(PitchblendeBaCOmix.getItemStack())
             .fluidInputs(HydrochloricAcid.getFluid(3000))
             .fluidOutputs(UranylChlorideSolution.getFluid(3000))
             .fluidOutputs(CarbonDioxide.getFluid(1000))
@@ -47,10 +50,10 @@ public class UraniumChain {
         ELECTROLYSER_RECIPES.recipeBuilder().duration(600).EUt(500)
             .fluidInputs(UraniumSulfateWasteSolution.getFluid(5000))
             .fluidOutputs(DiluteSulfuricAcid.getFluid(8000))
-            .output(OreDictUnifier(dust, Lead))
-            .output(OreDictUnifier(tiny_dust, Radium))
-            .output(OreDictUnifier(tiny_dust, Strontium))
-            .output(OreDictUnifier(tiny_dust, Barium))
+            .output(dust, Lead)
+            .output(tiny_dust, Radium)
+            .output(tiny_dust, Strontium)
+            .output(tiny_dust, Barium)
             .buildAndRegister();
             
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(500)
@@ -69,14 +72,15 @@ public class UraniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(500)
             .fluidInputs(PotassiumHydroxide.getFluid(2000))
             .fluidInputs(CarbonDioxide.getFluid(1000))
-            .input(PotassiumCarbonate.getItemStack())
+            .inputs(PotassiumCarbonate.getItemStack())
+			.buildAndRegister();
         
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(500)
             .fluidInputs(HotUraniumDiuranate.getFluid(1000))
             .inputs(PotassiumCarbonate.getItemStack())
-            .fluidOutput(HotPotassiumUranylTricarbonate.getFluid(1000))
+            .fluidOutputs(HotPotassiumUranylTricarbonate.getFluid(1000))
             .output(dust, Potash)
-            .output(OreDictUnifier(dust, Iron))
+            .output(dust, Iron)
             .fluidOutput(Ammonia.getFluid(1000))
             .buildAndRegister();
             
@@ -86,8 +90,8 @@ public class UraniumChain {
             .buildAndRegister();
             
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1000)
-            .input(PotassiumUranylTricarbonate.getItemStack())
-            .fluidInput(HydrogenPeroxide.getFluid(1000))
+            .inputs(PotassiumUranylTricarbonate.getItemStack())
+            .fluidInputs(HydrogenPeroxide.getFluid(1000))
             .fluidInput(SulfuricAcid.getFluid(1000))
             .fluidOutput(UraniumRefinementWasteSolution.getFluid(1000))
             .output(UraniumPeroxideThoriumOxide.getItemStack())
@@ -98,51 +102,51 @@ public class UraniumChain {
             .fluidOutputs(DiluteSulfuricAcid.getFluid(32000))
             .fluidOutputs(Ammonia.getFluid(4000))
             .fluidOutputs(PotassiumHydroxide.getFluid(4000))
-            .output(CesiumHydroxide.getItemStack())
-            .output(MolybdenumTrioxide.getItemStack())
-            .output(VandiumOxide.getItemStak())
+            .outputs(CesiumHydroxide.getItemStack())
+            .outputs(MolybdenumTrioxide.getItemStack())
+            .outputs(VanadiumOxide.getItemStack())
             .buildAndRegister();
             
         ELECTROLYSER_RECIPES.recipeBuider().duration(600).EUt(500)
             .fluidInputs(PotassiumHydroxide.getFluid(1000))
-            .output(OreDictUnifier(dust, Potassium))
+            .output(dust, Potassium)
             .fluidOutputs(Hydrogen.getFluid(1000))
-            .fluidOutputs(Oxygem.getFluid(1000))
+            .fluidOutputs(Oxygen.getFluid(1000))
             .buildAndRegister();
             
         ELECTROLYSER_RECIPES.recipeBuider().duration(600).EUt(500)
-            .fluidInputs(CesiumHydroxide.getFluid(1000))
-            .output(OreDictUnifier(dust, Caesium))
+            .inputs(CesiumHydroxide.getItemStack())
+            .output(dust,Caesium)
             .fluidOutputs(Hydrogen.getFluid(1000))
-            .fluidOutputs(Oxygem.getFluid(1000))
+            .fluidOutputs(Oxygen.getFluid(1000))
             .buildAndRegister();
           
         PYROLYSE_RECIPES.recipeBuiler().duration(500).EUt(500)
-            .input(UraniumPeroxideThoriumOxide.getItemStack())
-            .output(UraniumThoriumOxide.getItemStack())
+            .inputs(UraniumPeroxideThoriumOxide.getItemStack())
+            .outputs(UraniumThoriumOxide.getItemStack())
             .buildAndRegister();
             
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(500)
-            .input(UraniumThoriumOxide.getItemStack())
+            .inputs(UraniumThoriumOxide.getItemStack())
             .fluidInputs(SulfuricAcid.getFluid(1000))
-            .output(UranylThoriumSulfate.getItemStack())
+            .outputs(UranylThoriumSulfate.getItemStack())
             .buildAndRegister();
             
         CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(500)
-            .input(UranylThoriumSulfate.getItemStack())
+            .inputs(UranylThoriumSulfate.getItemStack())
             .fluidInputs(NitricAcid.getFluid(1000))
-            .output(UranylThoriumNitrate.getItemStack())
-            .fluidOutputs(DiluteSulfuricAcid(1800))
+            .outputs(UranylThoriumNitrate.getItemStack())
+            .fluidOutputs(DiluteSulfuricAcid.getFluid(1800))
             .buildAndRegister();
             
         BLAST_RECIPES.recipeBuilder().duration(400).EUt(500).blastFurnaceTemp(500)
-            .input(UranylThoriumNitrate.getItemStack())
-            .output(UraniumOxideThoriumNitrate.getItemStack())
+            .inputs(UranylThoriumNitrate.getItemStack())
+            .outputs(UraniumOxideThoriumNitrate.getItemStack())
             .fluidOutputs(NitrogenDioxide.getFluid(700))
             .buildAndRegister();
             
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(500)
-            .input(UraniumOxideThoriumNitrate.getItemStack())
+            .inputs(UraniumOxideThoriumNitrate.getItemStack())
             .fluidInputs(DistilledWater.getFluid(1000))
             .output(dust, UraniumDioxide)
             .fluidOutputs(ThoriumNitrateSoluiton.getFluid(500))
@@ -150,7 +154,7 @@ public class UraniumChain {
             
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(800)
             .fluidInputs(ThoriumNitrateSoluiton.getFluid(1000))
-            .output(dust, ThoriumDioxide)
+            .outputs(ThoriumDioxide.getItemStack())
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
             .buildAndRegister();
    
