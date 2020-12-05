@@ -70,7 +70,7 @@ public class UraniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(500)
             .fluidInputs(PotassiumHydroxide.getFluid(2000))
             .fluidInputs(CarbonDioxide.getFluid(1000))
-            .inputs(PotassiumCarbonate.getItemStack())
+            .outputs(PotassiumCarbonate.getItemStack())
 			.buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(160).EUt(500)
