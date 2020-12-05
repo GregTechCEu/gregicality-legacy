@@ -154,7 +154,6 @@ public class NuclearChain {
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
 
 
-
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
                 .inputs(NUCLEAR_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE_LANTHANIDE_A.getStackForm(), 1111, 111)
@@ -209,7 +208,7 @@ public class NuclearChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Hafnium, 2), 6250, 300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tantalum, 2), 6250, 400)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tungsten, 2), 6250, 500)
-                //.chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)// can stay here, the change to get infinite rhenium is really small
                 .chancedOutput(OreDictUnifier.get(dustTiny, Osmium, 2), 6250, 700)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iridium, 2), 6250, 800)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Platinum, 2), 6250, 900)
