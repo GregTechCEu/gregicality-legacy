@@ -159,7 +159,7 @@ public class FullereneChain {
                 .inputs(ZeoliteSievingPellets.getItemStack())
                 .fluidOutputs(Ferrocene.getFluid(3000))
                 .fluidOutputs(Water.getFluid(1000))
-                .outputs(MgClBrominide.getItemStack())
+                .outputs(MgClBromide.getItemStack())
                 .outputs(WetZeoliteSievingPellets.getItemStack())
                 .EUt(8000000)
                 .duration(200)
