@@ -10,33 +10,33 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class BariumChain {
     public static void init() {
          BLAST_RECIPES.recipeBuilder().duration(480).EUt(500).blastFurnaceTemp(1200)
-            .input(Barite.getItemStack())
+            .input(dust, Barite)
             .input(dust, Carbon)
-            .output(BariumSulfide.getItemStack())
+            .outputs(BariumSulfide.getItemStack())
             .fluidOutputs(CarbonDioxide.getFluid(1000))
             .buildAndRegister();
          CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(500)
-            .input(BariumSulfide.getItemStack())
+            .inputs(BariumSulfide.getItemStack())
             .fluidInputs(Water.getFluid(1000))
             .fluidInputs(CarbonDioxide.getFluid(1000))
-            .output(BariumCarbonate.getItemStack())
+            .outputs(BariumCarbonate.getItemStack())
             .fluidOutputs(HydrogenSulfide.getFluid(1000))
             .buildAndRegister();
          CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
-            .input(BariumCarbonate.getItemStack())
-            .output(BariumOxide.getItemStack())
-            .fluidOutputs(CarbonDioxide.getItemStacK())
+            .inputs(BariumCarbonate.getItemStack())
+            .outputs(BariumOxide.getItemStack())
+            .fluidOutputs(CarbonDioxide.getFluid(1000))
             .buildAndRegister();
          BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
-            .input(BariumOxide.getItemStack(2))
+            .inputs(BariumOxide.getItemStack(2))
             .input(dust, Aluminium, 2)
-            .output(OreDictUnifier(dust, Barium))
-            .output(BariumAluminate.getItemStack(2))
+            .output(Barium.getItemStack())
+            .outputs(BariumAluminate.getItemStack(2))
             .buildAndRegister();
          CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(500)
-            .input(BariumAluminate.getItemStack(2))
-            .output(BariumOxide.getItemStack())
-            .output(Alumina.getItemStack(2))
+            .inputs(BariumAluminate.getItemStack(2))
+            .outputs(BariumOxide.getItemStack())
+            .outputs(Alumina.getItemStack(2))
             .buildAndRegister();
     }
         
