@@ -12,28 +12,28 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class VanadiumChain {
     public static void init() {
         BLAST_RECIPES.recipeBuilder().duration(480).EUt(125).blastFurnaceTemp(1500)
-            .inputs(VanadiumMagnetite.getItemStack(2))
+            .input(dust, VanadiumMagnetite, 2)
             .input(dust, Carbon)
             .fluidInputs(Oxygen.getFluid(1000))
-            .output(OreDictUnifier(ingot, Iron))
+            .output(ingot, Iron, 2)
             .output(VanadiumSlag.getItemStack())
             .fluidOutputs(CarbonDioxide.getFluid(1000))
             .buildAndRegister();
-        MACERATOR_RECIPES.recipeBuilder().duration(2400).EU(125)
-            .input(sVanadiumSlag.getItemStack())
-            .outputs(tiny_dust, DarkAshes)
-            .outputs(tiny_dust, Rutile)
+        MACERATOR_RECIPES.recipeBuilder().duration(2400).EUt(125)
+            .inputs(VanadiumSlag.getItemStack())
+            .output(tiny_pile, DarkAsh)
+            .output(tiny_pile, Rutile)
             .outputs(VanadiumSlagDust.getItemStack())
             .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(125).blastFurnaceTemp(700)
             .inputs(VanadiumSlagDust.getItemStack())
             .input(dust, Salt)
             .input(dust, SodaAsh)
-            .output(SodiumVanadate.getItemStack())
+            .outputs(SodiumVanadate.getItemStack())
             .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(500).EUt(125)
             .fluidInputs(SulfuricAcid.getFluid(1000))
-            .input(SodiumVanadate.getItemStack())
+            .inputs(SodiumVanadate.getItemStack())
             .fluidInputs(AmmoniumChloride.getFluid(1000))
             .outputs(AmmoniumVanadate.getItemStack())
             .fluidOutputs(VanadiumWasteSolution.getFluid(1000))
@@ -44,20 +44,21 @@ public class VanadiumChain {
             .chancedOutputs(OreDictUnifier.get(dust, Salt),9000,0)
             .chancedOutputs(OreDictUnifier.get(dust, SodiumSulfate),9000,0)
             .chancedOutputs(OreDictUnifier.get(dust, SodiumSulfate),9000,0)
-            .chancedOutputs(OreDictUnifier.get(dust, SilconDioxide),5000,0)
+            .chancedOutputs(OreDictUnifier.get(dust, SiliconDioxide),5000,0)
             .chancedOutputs(AluminiumHydroxide.getItemStack(),5000,0)
             .buildAndRegister();
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(480).EUt(125)
-            .input(AmmoniumVanadate.getItemStack())
+            .inputs(AmmoniumVanadate.getItemStack())
             .outputs(VanadiumOxide.getItemStack(2))
-            .fluidOutputs(Ammonium.getFluid(1000))
+            .fluidOutputs(Ammonia.getFluid(1000))
             .fluidOutputs(Water.getFluid(1000))
             .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(600).EUt(125).blastFurnaceTemp(1200)
-            .input(VanadiumOxide.getItemStack())
+            .inputs(VanadiumOxide.getItemStack())
             .input(dust, Aluminium)
             .outputs(Alumina.getItemStack())
-            .outputs(OreDictUnifier(dust, Vanadium))
+            .output(dust, Vanadium)
             .buildAndRegister();
     }
 }
+
