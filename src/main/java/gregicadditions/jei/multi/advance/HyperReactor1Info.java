@@ -35,7 +35,7 @@ public class HyperReactor1Info extends MultiblockInfoPage {
                 .where('C', GAMetaBlocks.getMetalCasingBlockState(Naquadria))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
-                .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIUM_GLASS))
+                .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS))
                 .where('H', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE))
                 .where('#', Blocks.AIR.getDefaultState());
 

@@ -146,6 +146,7 @@ public class GATileEntities {
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
     public static MetaTileEntityDrillingRig DRILLING_RIG;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
+    public static MetaTileEntityBioReactor BIO_REACTOR;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -1107,7 +1108,7 @@ public class GATileEntities {
             }
             CHARGER[i] = GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityCharger(location("charger." + GAValues.VN[i + 9].toLowerCase()), i + 9, 4));
         }
-        //4160
+        BIO_REACTOR = GregTechAPI.registerMetaTileEntity(4170, new MetaTileEntityBioReactor(location("bio_reactor")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

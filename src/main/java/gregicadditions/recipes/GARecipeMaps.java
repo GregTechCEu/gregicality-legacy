@@ -135,7 +135,7 @@ public class GARecipeMaps {
 
         BIO_REACTOR_RECIPES = new RecipeMap<>("bio_reactor", 0, 3, 0,
                 3, 0, 5, 0, 2, (new SimpleRecipeBuilder()))
-                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+                .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
 
         STELLAR_FORGE_RECIPES = new RecipeMap<>("stellar_forge", 0, 3, 0,
                 0, 0, 3, 0, 2, (new SimpleRecipeBuilder()))
