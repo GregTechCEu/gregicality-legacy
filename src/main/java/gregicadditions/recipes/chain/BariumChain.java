@@ -30,7 +30,7 @@ public class BariumChain {
          BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
             .inputs(BariumOxide.getItemStack(2))
             .input(dust, Aluminium, 2)
-            .output(Barium.getItemStack())
+            .outputs(OreDictUnifier.get(ingot, Barium))
             .outputs(BariumAluminate.getItemStack(2))
             .buildAndRegister();
          CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(500)

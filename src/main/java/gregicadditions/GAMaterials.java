@@ -667,8 +667,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ThoriumNitrateSolution = new SimpleFluidMaterial("thorium_nitrate_solution",0x33bd45);
 
     public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide",0x202020,(short) 104,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 108,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 105,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("aluminium_hydroxide",0x202020,(short) 106,MaterialIconSet.DULL);
     public static final SimpleDustMaterial UraniumDioxide = new SimpleDustMaterial("uranium_dioxide", 0x202020, (short) 107, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ThoriumDioxide = new SimpleDustMaterial("thorium_dioxide", 0x202020, (short) 108, MaterialIconSet.DULL);
 
