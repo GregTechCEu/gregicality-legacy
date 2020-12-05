@@ -214,7 +214,7 @@ metaitem.sterilized.petri.dish.name=无菌培养皿
 metaitem.contaminated.petri.dish.name=被污染的培养皿
 metaitem.clean.culture.name=预备培养皿
 metaitem.piezoelectric.crystal.name=压电晶体
-metaitem.pyrolitic_carbon.name=热解碳
+metaitem.pyrolytic_carbon.name=热解碳
 
 
 metaitem.electrode.apatite.name=磷灰石电子管元件
