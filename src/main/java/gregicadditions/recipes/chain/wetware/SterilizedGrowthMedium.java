@@ -57,7 +57,7 @@ public class SterilizedGrowthMedium {
                 .buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .inputs(PETRI_DISH.getStackForm())
-                .fluidInputs(Ethanol100.getFluid(1000))
+                .fluidInputs(Ethanol100.getFluid(100))
                 .outputs(STERILIZED_PETRI_DISH.getStackForm())
                 .EUt(30720)
                 .duration(25)
@@ -70,7 +70,7 @@ public class SterilizedGrowthMedium {
                 .duration(50)
                 .buildAndRegister();
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .fluidInputs(PiranhaSolution.getFluid(1000))
+                .fluidInputs(PiranhaSolution.getFluid(100))
                 .inputs(CONTAMINATED_PETRI_DISH.getStackForm())
                 .outputs(PETRI_DISH.getStackForm())
                 .EUt(30720)
