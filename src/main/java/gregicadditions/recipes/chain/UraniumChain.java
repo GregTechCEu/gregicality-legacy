@@ -156,6 +156,21 @@ public class UraniumChain {
             .output(OreDictUnifier.get(oxide,Thorium))
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
             .buildAndRegister();
-   
+	
+	BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
+	    .input(dioxide,UraniumRadioactive)
+	    .input(dust,Carbon)
+	    .output(dust,UraniumRadioactive)
+	    .output(CarbonDioxide.getFluid(1000))
+	    .buildAndRegister();
+	
+	BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
+	    .input(oxide,Thorium)
+	    .input(dust,Calcium)
+	    .input(dust,CalciumChloride)
+	    .output(dust,Thorium)
+	    .output(dust,Quicklime,2)
+	    .fluidOutputs(Chlorine.getFluid(2000))
+	    .buildAndRegister();
     }
 }
