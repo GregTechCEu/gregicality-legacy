@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
-import gregicadditions.recipes.GACraftingComponents;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
@@ -40,8 +39,8 @@ public class Circuits {
         //Circuit Rabbit Hole - Layer 1
         ModHandler.removeRecipes(BASIC_CIRCUIT_LV.getStackForm());
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
-        ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
-        ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', GACraftingComponents.CIRCUIT_PLATE.getIngredient(0), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
+        ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', new UnificationEntry(plate, WroughtIron), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
+        ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', new UnificationEntry(plate, WroughtIron), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
         GALog.logger.info("soldering fluid");
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");

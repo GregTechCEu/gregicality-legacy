@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-0.21.0-alpha.6"
+version = "1.12.2-0.21.0-alpha.7"
 group = "gregicadditions"
 archivesBaseName = "Gregicality"
 
