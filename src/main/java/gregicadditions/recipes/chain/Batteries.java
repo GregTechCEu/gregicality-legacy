@@ -69,7 +69,7 @@ public class Batteries {
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Neutronium, 4)
                 .input(cableGtSingle, BlackTitanium, 8)
-                .EUt(1920 * 64 * 64)
+                .EUt(1920 * 64 * 64 * 4)
                 .duration(150)
                 .outputs(BATTERY_LARGE_NEUTRONIUM_EMPTY.getStackForm())
                 .buildAndRegister();
