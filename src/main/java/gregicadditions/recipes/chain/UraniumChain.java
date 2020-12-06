@@ -4,6 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CRACKER_UNIT_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -119,7 +120,7 @@ public class UraniumChain {
             .fluidOutputs(Oxygen.getFluid(1000))
             .buildAndRegister();
           
-        ELECTROLYSER_RECIPES.recipeBuilder().duration(500).EUt(500)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(500).EUt(500)
             .inputs(UraniumPeroxideThoriumOxide.getItemStack())
             .outputs(UraniumThoriumOxide.getItemStack())
             .buildAndRegister();
@@ -149,8 +150,8 @@ public class UraniumChain {
             .outputs(UraniumDioxide.getItemStack())
             .fluidOutputs(ThoriumNitrateSolution.getFluid(500))
             .buildAndRegister();
-            
-        ELECTROLYSER_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(800)
+
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
             .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
             .outputs(ThoriumDioxide.getItemStack())
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
