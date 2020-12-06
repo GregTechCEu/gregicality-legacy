@@ -37,7 +37,6 @@ import java.util.List;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.FIELD_GENERATOR_UEV;
 import static gregicadditions.item.GAMetaItems.ROBOT_ARM_UEV;
-import static gregicadditions.machines.GATileEntities.THERMAL_CENTRIFUGE;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.GTValues.L;
@@ -367,6 +366,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.VOID_MINER[0].getStackForm()).buildAndRegister();
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(500000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 27))
+                .fluidInputs(Polyetheretherketone.getFluid(2500))
                 .inputs(GAMetaItems.SENSOR_UHV.getStackForm(2))
                 .inputs(GAMetaItems.ELECTRIC_MOTOR_UHV.getStackForm(8))
                 .inputs(OreDictUnifier.get(wireGtSingle, UHVSuperconductor, 64))
@@ -384,6 +384,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.VOID_MINER[1].getStackForm()).buildAndRegister();
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 27 * 2))
+                .fluidInputs(Zylon.getFluid(2500))
                 .inputs(GAMetaItems.SENSOR_UEV.getStackForm(2))
                 .inputs(GAMetaItems.ELECTRIC_MOTOR_UEV.getStackForm(8))
                 .inputs(OreDictUnifier.get(wireGtSingle, UEVSuperconductor, 64))
@@ -398,6 +399,39 @@ public class MachineCraftingRecipes {
                 .input(plate, HastelloyK243, 8)
                 .input(stick, HastelloyK243, 16)
                 .outputs(GATileEntities.VOID_MINER[2].getStackForm()).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .fluidInputs(SolderingAlloy.getFluid(144 * 9))
+                .inputs(SENSOR_ZPM.getStackForm(2))
+                .inputs(ELECTRIC_PUMP_ZPM.getStackForm(2))
+                .inputs(ROBOT_ARM_ZPM.getStackForm(2))
+                .inputs(EMITTER_ZPM.getStackForm(2))
+                .input(plate, HSSS, 8)
+                .input(screw, NaquadahEnriched, 16)
+                .input(circuit, Tier.Ultimate, 8)
+                .input(gear, HastelloyN, 8)
+                .input(bolt, Enderium, 32)
+                .input(screw, IncoloyMA956, 32)
+                .input(plate, Nitinol60, 16)
+                .outputs(GATileEntities.BIO_REACTOR.getStackForm())
+                .EUt(122880)
+                .duration(500)
+                .buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SENSOR_LUV.getStackForm(2))
+                .inputs(CONVEYOR_MODULE_LUV.getStackForm(2))
+                .inputs(ROBOT_ARM_LUV.getStackForm(2))
+                .inputs(EMITTER_LUV.getStackForm(2))
+                .fluidInputs(SolderingAlloy.getFluid(9*144))
+                .input(plate, Naquadah, 16)
+                .input(gear, RhodiumPlatedPalladium, 8)
+                .input(screw, ZirconiumCarbide, 32)
+                .input(gear, Staballoy, 8)
+                .input(screw, Grisium, 32)
+                .input(circuit, Tier.Master, 4)
+                .outputs(GATileEntities.LARGE_LASER_ENGRAVER.getStackForm())
+                .EUt(30720)
+                .duration(500)
+                .buildAndRegister();
         ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(), 'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .inputs(
@@ -627,7 +661,7 @@ public class MachineCraftingRecipes {
         if (GAConfig.GT5U.highTierElectrolyzers)
             registerMachineRecipe(GATileEntities.ELECTROLYZER, "IGI", "IMI", "CWC", 'M', HULL, 'C', CIRCUIT, 'W', CABLE_SINGLE, 'I', WIRE, 'G', GLASS);
         if (GAConfig.GT5U.highTierThermalCentrifuges)
-            registerMachineRecipe(THERMAL_CENTRIFUGE, "CEC", "OMO", "WEW", 'M', HULL, 'E', MOTOR, 'C', CIRCUIT, 'W', CABLE_SINGLE, 'O', COIL_HEATING_DOUBLE);
+            registerMachineRecipe(GATileEntities.THERMAL_CENTRIFUGE, "CEC", "OMO", "WEW", 'M', HULL, 'E', MOTOR, 'C', CIRCUIT, 'W', CABLE_SINGLE, 'O', COIL_HEATING_DOUBLE);
         if (GAConfig.GT5U.highTierOreWashers)
             registerMachineRecipe(GATileEntities.ORE_WASHER, "RGR", "CEC", "WMW", 'M', HULL, 'R', ROTOR, 'E', MOTOR, 'C', CIRCUIT, 'W', CABLE_SINGLE, 'G', GLASS);
         if (GAConfig.GT5U.highTierPackers)
