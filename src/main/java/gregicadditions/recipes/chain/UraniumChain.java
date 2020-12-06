@@ -147,13 +147,13 @@ public class UraniumChain {
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(500)
             .inputs(UraniumOxideThoriumNitrate.getItemStack())
             .fluidInputs(DistilledWater.getFluid(1000))
-            .outputs(UraniumDioxide.getItemStack())
-            .fluidOutputs(ThoriumNitrateSolution.getFluid(500))
+            .output(OreDictUnifier.get(dioxide,UraniumRadioactive))
+            .fluidOutputs(ThoriumNitrateSolution.getFluid(300))
             .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
             .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
-            .outputs(ThoriumDioxide.getItemStack())
+            .output(OreDictUnifier.get(oxide,Thorium))
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
             .buildAndRegister();
    
