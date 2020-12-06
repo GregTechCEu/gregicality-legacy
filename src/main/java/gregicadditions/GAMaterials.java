@@ -666,8 +666,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide",0xfcfcfa,(short) 104,MaterialIconSet.DULL);
     public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide",0xfcfcfa,(short) 105,MaterialIconSet.DULL);
     public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("potassium_carbonate",0xfcfcfa,(short) 106,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial UraniumDioxide = new SimpleDustMaterial("uranium_dioxide", 0x202020, (short) 107, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ThoriumDioxide = new SimpleDustMaterial("thorium_dioxide", 0x202020, (short) 108, MaterialIconSet.DULL);
 
     //free ids  857-850
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION, null, 25000);
