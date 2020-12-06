@@ -5,8 +5,10 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.*;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
@@ -27,6 +29,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
@@ -47,13 +50,14 @@ public class RecipeHandler {
 
 
     private static final OrePrefix[] WIRE_DOUBLING_ORDER = new OrePrefix[]{
-            OrePrefix.wireGtSingle, OrePrefix.wireGtDouble, OrePrefix.wireGtQuadruple, OrePrefix.wireGtOctal, OrePrefix.wireGtHex
+            wireGtSingle, wireGtDouble, wireGtQuadruple, wireGtOctal, wireGtHex
     };
 
     public static void register() {
 
         GAEnums.GAOrePrefix.gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
-        OrePrefix.turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
+        turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
+        ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngotComposition);
 
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             GAEnums.GAOrePrefix.plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
@@ -69,24 +73,62 @@ public class RecipeHandler {
                 wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
             }
         }
-        OrePrefix.dust.addProcessingHandler(DustMaterial.class, RecipeHandler::processReplication);
+        dust.addProcessingHandler(DustMaterial.class, RecipeHandler::processReplication);
 
         if (GAConfig.Misc.PackagerDustRecipes) {
-            OrePrefix.dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
-            OrePrefix.dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
-            OrePrefix.nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
+            dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
+            dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
+            nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
         }
 
         if (GAConfig.GT5U.stickGT5U) {
-            OrePrefix.stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
+            stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
         }
-        OrePrefix.dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
+        dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
+
+    }
+
+    public static void processIngotComposition(OrePrefix ingot, IngotMaterial material) {
+        if (material.materialComponents.size() <= 1 || material.blastFurnaceTemperature == 0)
+            return;
+        GALog.logger.info(material.toString() + " " + material.blastFurnaceTemperature + " " + (material.materialComponents.size() <= 1 && material.blastFurnaceTemperature == 0));
+
+
+        if (material.materialComponents.size() <= 4) {
+            AtomicInteger totalMaterial = new AtomicInteger(0);
+            SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            material.materialComponents.forEach(materialStack -> {
+                GALog.logger.info(material.toString() + ":" + materialStack.material.toString());
+                if (materialStack.material instanceof DustMaterial) {
+                    builder.input(dust, materialStack.material, (int) materialStack.amount);
+                } else if (materialStack.material instanceof FluidMaterial) {
+                    builder.fluidInputs(((FluidMaterial) materialStack.material).getFluid((int) (1000 * materialStack.amount)));
+                }
+                totalMaterial.addAndGet((int) materialStack.amount);
+            });
+            builder.outputs(OreDictUnifier.get(dust, material, totalMaterial.get()));
+            builder.buildAndRegister();
+        } else {
+            AtomicInteger totalMaterial = new AtomicInteger(0);
+            LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            builder.notConsumable(new IntCircuitIngredient((material.materialComponents.size())));
+            material.materialComponents.forEach(materialStack -> {
+                if (materialStack.material instanceof DustMaterial) {
+                    builder.input(dust, materialStack.material, (int) materialStack.amount);
+                } else if (materialStack.material instanceof FluidMaterial) {
+                    builder.fluidInputs(((FluidMaterial) materialStack.material).getFluid((int) (1000 * materialStack.amount)));
+                }
+                totalMaterial.addAndGet((int) materialStack.amount);
+            });
+            builder.outputs(OreDictUnifier.get(dust, material, totalMaterial.get()));
+            builder.buildAndRegister();
+        }
 
     }
 
     public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
-        ItemStack gemStack = OreDictUnifier.get(OrePrefix.gem, material);
-        ItemStack tinyDarkAshStack = OreDictUnifier.get(OrePrefix.dustTiny, Materials.DarkAsh);
+        ItemStack gemStack = OreDictUnifier.get(gem, material);
+        ItemStack tinyDarkAshStack = OreDictUnifier.get(dustTiny, Materials.DarkAsh);
 
         if (!material.hasFlag(GemMaterial.MatFlags.CRYSTALLISABLE) && !material.hasFlag(Material.MatFlags.EXPLOSIVE) && !material.hasFlag(Material.MatFlags.FLAMMABLE)) {
             removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
@@ -148,7 +190,7 @@ public class RecipeHandler {
     private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
         if (material.cableProperties == null) return;
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
-        OrePrefix cablePrefix = OrePrefix.valueOf("cable" + wireGt.name().substring(4));
+        OrePrefix cablePrefix = valueOf("cable" + wireGt.name().substring(4));
         ItemStack cableStack = OreDictUnifier.get(cablePrefix, material);
 
 
@@ -166,31 +208,31 @@ public class RecipeHandler {
 
         int tier = GTUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);
-        if (wireGt != OrePrefix.wireGtSingle) {
+        if (wireGt != wireGtSingle) {
             switch (tier) {
                 case 0:
                 case 1:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 2:
                 case 3:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 4:
                 case 5:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 6:
                 case 7:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 8:
                 case 9:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 10:
                 case 11:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 12:
                 case 13:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 default:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(OrePrefix.wireGtSingle, material, cableAmount).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
 
 
             }
@@ -283,13 +325,13 @@ public class RecipeHandler {
             ItemStack metalCasingStack = OreDictUnifier.get(prefix, material, 3);
             ModHandler.addShapedRecipe(String.format("metal_casing_%s", material), metalCasingStack,
                     "PhP", "PBP", "PwP",
-                    'P', new UnificationEntry(OrePrefix.plate, material),
-                    'B', new UnificationEntry(OrePrefix.frameGt, material));
+                    'P', new UnificationEntry(plate, material),
+                    'B', new UnificationEntry(frameGt, material));
 
 
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                    .input(OrePrefix.plate, material, 6)
-                    .input(OrePrefix.frameGt, material, 1)
+                    .input(plate, material, 6)
+                    .input(frameGt, material, 1)
                     .outputs(metalCasingStack)
                     .EUt(8).duration(200)
                     .buildAndRegister();
@@ -313,37 +355,37 @@ public class RecipeHandler {
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(0)
-                .input(OrePrefix.turbineBlade, material, 4)
-                .input(OrePrefix.stickLong, Titanium)
+                .input(turbineBlade, material, 4)
+                .input(stickLong, Titanium)
                 .outputs(smallTurbineRotorStackForm)
                 .duration(200).EUt(400)
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(1)
-                .input(OrePrefix.turbineBlade, material, 8)
-                .input(OrePrefix.stickLong, Tungsten)
+                .input(turbineBlade, material, 8)
+                .input(stickLong, Tungsten)
                 .outputs(mediumTurbineRotorStackForm)
                 .duration(400).EUt(800)
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(2)
-                .input(OrePrefix.turbineBlade, material, 16)
-                .input(OrePrefix.stickLong, Osmium)
+                .input(turbineBlade, material, 16)
+                .input(stickLong, Osmium)
                 .outputs(largeTurbineRotorStackForm)
                 .duration(800).EUt(1600)
                 .buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .circuitMeta(3)
-                .input(OrePrefix.turbineBlade, material, 32)
-                .input(OrePrefix.stickLong, Rutherfordium)
+                .input(turbineBlade, material, 32)
+                .input(stickLong, Rutherfordium)
                 .outputs(hugeTurbineRotorStackForm)
                 .duration(1600).EUt(3200)
                 .buildAndRegister();
 
         RecipeMaps.FORMING_PRESS_RECIPES.recipeBuilder()
-                .input(OrePrefix.plateDense, material, 5)
-                .input(OrePrefix.screw, material, 2)
+                .input(plateDense, material, 5)
+                .input(screw, material, 2)
                 .outputs(OreDictUnifier.get(toolPrefix, material))
                 .duration(20).EUt(256)
                 .buildAndRegister();
@@ -458,7 +500,7 @@ public class RecipeHandler {
             GARecipeMaps.LARGE_MIXER_RECIPES.getRecipeList().stream()
                     .filter(recipe -> recipe.getOutputs().size() == 1)
                     .filter(recipe -> recipe.getFluidOutputs().size() == 0)
-                    .filter(recipe -> recipe.getOutputs().get(0).isItemEqualIgnoreDurability(OreDictUnifier.get(OrePrefix.dust, ingotMaterial)))
+                    .filter(recipe -> recipe.getOutputs().get(0).isItemEqualIgnoreDurability(OreDictUnifier.get(dust, ingotMaterial)))
                     .findFirst()
                     .ifPresent(recipe -> {
                         ItemStack itemStack = recipe.getOutputs().get(0);
@@ -494,26 +536,36 @@ public class RecipeHandler {
 
     public static void registerGreenHouseRecipes() {
 
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 1)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 1)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 1)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 1)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 1)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 1)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
+
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 2)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 2)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 2)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(900).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(Items.DYE, 1, 15)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN, 2)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
 
 
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 3)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 3)).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 3)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
-        GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN, 3)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 3)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.CACTUS)).outputs(new ItemStack(Blocks.CACTUS, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.REEDS)).outputs(new ItemStack(Items.REEDS, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.BROWN_MUSHROOM)).outputs(new ItemStack(Blocks.BROWN_MUSHROOM, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Blocks.RED_MUSHROOM)).outputs(new ItemStack(Blocks.RED_MUSHROOM, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.BEETROOT)).outputs(new ItemStack(Items.BEETROOT, 3)).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.MELON_SEEDS)).outputs(new ItemStack(Items.MELON, 3)).chancedOutput(new ItemStack(Items.MELON_SEEDS), 100, 50).buildAndRegister();
+        GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).notConsumable(new IntCircuitIngredient(2)).input(dust, OrganicFertilizer).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.PUMPKIN_SEEDS)).outputs(new ItemStack(Blocks.PUMPKIN, 3)).chancedOutput(new ItemStack(Items.PUMPKIN_SEEDS), 100, 50).buildAndRegister();
 
 
         Arrays.stream(OreDictionary.getOreNames()).filter(name -> name.startsWith("seed")).forEach(name -> {
@@ -537,11 +589,11 @@ public class RecipeHandler {
             ItemStack essence = registeredCrops.get(0).copy();
 
 
-            GREEN_HOUSE_RECIPES.recipeBuilder().duration(4000).fluidInputs(Water.getFluid(2000)).notConsumable(seed).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
+            GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).fluidInputs(Water.getFluid(2000)).notConsumable(new IntCircuitIngredient(0)).notConsumable(seed).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
 
             essence = registeredCrops.get(0).copy();
             essence.setCount(3);
-            GREEN_HOUSE_RECIPES.recipeBuilder().duration(3000).fluidInputs(Water.getFluid(2000)).notConsumable(seed).input(dust, OrganicFertilizer).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
+            GREEN_HOUSE_RECIPES.recipeBuilder().duration(600).fluidInputs(Water.getFluid(2000)).notConsumable(new IntCircuitIngredient(2)).notConsumable(seed).input(dust, OrganicFertilizer).outputs(essence).chancedOutput(seed, 100, 50).buildAndRegister();
 
         });
 
@@ -555,7 +607,7 @@ public class RecipeHandler {
     public static void runRecipeGeneration() {
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (material instanceof FluidMaterial) {
-                OrePrefix prefix = material instanceof DustMaterial ? OrePrefix.dust : null;
+                OrePrefix prefix = material instanceof DustMaterial ? dust : null;
                 processDecomposition(prefix, (FluidMaterial) material);
             }
         }
@@ -574,7 +626,7 @@ public class RecipeHandler {
         for (MaterialStack component : material.materialComponents) {
             totalInputAmount += component.amount;
             if (component.material instanceof DustMaterial) {
-                outputs.add(OreDictUnifier.get(OrePrefix.dust, component.material, (int) component.amount));
+                outputs.add(OreDictUnifier.get(dust, component.material, (int) component.amount));
             } else if (component.material instanceof FluidMaterial) {
                 FluidMaterial componentMaterial = (FluidMaterial) component.material;
                 fluidOutputs.add(componentMaterial.getFluid((int) (1000 * component.amount)));

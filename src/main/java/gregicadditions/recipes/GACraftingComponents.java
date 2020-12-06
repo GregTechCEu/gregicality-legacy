@@ -95,60 +95,6 @@ public enum GACraftingComponents {
             }
         }
     },
-    CIRCUIT_PLATE {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                    return new UnificationEntry(plate, WroughtIron);
-                case 1:
-                    return new UnificationEntry(plate, Steel);
-                case 2:
-                    return new UnificationEntry(plate, Aluminium);
-                case 3:
-                    return new UnificationEntry(plate, StainlessSteel);
-                case 4:
-                    return new UnificationEntry(plate, Titanium);
-                case 5:
-                    return new UnificationEntry(plate, TungstenSteel);
-                case 6:
-                    return new UnificationEntry(plateDense, HSSG);
-                case 7:
-                    return new UnificationEntry(plateDense, HSSE);
-                default:
-                    return new UnificationEntry(plateDense, Neutronium);
-
-            }
-        }
-    },
-    CIRCUIT_WIRE {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                    return new UnificationEntry(wireFine, Lead);
-                case 1:
-                    return new UnificationEntry(wireFine, Tin);
-                case 2:
-                    return new UnificationEntry(wireGtSingle, Copper);
-                case 3:
-                    return new UnificationEntry(wireGtSingle, Gold);
-                case 4:
-                    return new UnificationEntry(wireGtDouble, Aluminium);
-                case 5:
-                    return new UnificationEntry(cableGtDouble, Platinum);
-                case 6:
-                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
-                case 7:
-                    return new UnificationEntry(cableGtQuadruple, Naquadah);
-                case 8:
-                    return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
-                default:
-                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
-
-            }
-        }
-    },
     PUMP {
         @Override
         public Object getIngredient(int tier) {
@@ -209,8 +155,11 @@ public enum GACraftingComponents {
                 case 8:
                     return new UnificationEntry(cableGtSingle, NaquadahAlloy);
                 case 9:
+                    return new UnificationEntry(cableGtSingle, AbyssalAlloy);
                 case 10:
+                    return new UnificationEntry(cableGtSingle, TitanSteel);
                 case 11:
+                    return new UnificationEntry(cableGtSingle, BlackTitanium);
                 case 12:
                 case 13:
                     return new UnificationEntry(cableGtSingle, Duranium);
@@ -243,8 +192,11 @@ public enum GACraftingComponents {
                 case 8:
                     return new UnificationEntry(cableGtDouble, NaquadahAlloy);
                 case 9:
+                    return new UnificationEntry(cableGtDouble, AbyssalAlloy);
                 case 10:
+                    return new UnificationEntry(cableGtDouble, TitanSteel);
                 case 11:
+                    return new UnificationEntry(cableGtDouble, BlackTitanium);
                 case 12:
                 case 13:
                     return new UnificationEntry(cableGtDouble, Duranium);
@@ -277,8 +229,11 @@ public enum GACraftingComponents {
                 case 8:
                     return new UnificationEntry(cableGtQuadruple, NaquadahAlloy);
                 case 9:
+                    return new UnificationEntry(cableGtQuadruple, AbyssalAlloy);
                 case 10:
+                    return new UnificationEntry(cableGtQuadruple, TitanSteel);
                 case 11:
+                    return new UnificationEntry(cableGtQuadruple, BlackTitanium);
                 case 12:
                 case 13:
                     return new UnificationEntry(cableGtQuadruple, Duranium);
@@ -311,8 +266,11 @@ public enum GACraftingComponents {
                 case 8:
                     return new UnificationEntry(cableGtOctal, NaquadahAlloy);
                 case 9:
+                    return new UnificationEntry(cableGtOctal, AbyssalAlloy);
                 case 10:
+                    return new UnificationEntry(cableGtOctal, TitanSteel);
                 case 11:
+                    return new UnificationEntry(cableGtOctal, BlackTitanium);
                 case 12:
                 case 13:
                     return new UnificationEntry(cableGtOctal, Duranium);
@@ -346,8 +304,11 @@ public enum GACraftingComponents {
                 case 8:
                     return new UnificationEntry(cableGtHex, NaquadahAlloy);
                 case 9:
+                    return new UnificationEntry(cableGtHex, AbyssalAlloy);
                 case 10:
+                    return new UnificationEntry(cableGtHex, TitanSteel);
                 case 11:
+                    return new UnificationEntry(cableGtHex, BlackTitanium);
                 case 12:
                 case 13:
                     return new UnificationEntry(cableGtHex, Duranium);
@@ -422,6 +383,14 @@ public enum GACraftingComponents {
                     return new UnificationEntry(pipeMedium, Enderium);
                 case 7:
                     return new UnificationEntry(pipeMedium, Naquadah);
+                case 8:
+                    return new UnificationEntry(pipeMedium, Ultimet);
+                case 9:
+                    return new UnificationEntry(pipeMedium, Zeron100);
+                case 10:
+                    return new UnificationEntry(pipeMedium, Lafium);
+                case 11:
+                    return new UnificationEntry(pipeMedium, Neutronium);
                 default:
                     return new UnificationEntry(pipeMedium, Neutronium);
 
@@ -448,7 +417,7 @@ public enum GACraftingComponents {
                 case 7:
                     return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.IRIDIUM_GLASS);
                 default:
-                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.OSMIUM_GLASS);
+                    return GAMetaBlocks.TRANSPARENT_CASING.getItemVariant(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS);
             }
         }
     },
@@ -477,6 +446,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
@@ -540,8 +511,12 @@ public enum GACraftingComponents {
                     return new UnificationEntry(rotor, Chrome);
                 case 7:
                     return new UnificationEntry(rotor, Iridium);
-                default:
+                case 8:
                     return new UnificationEntry(rotor, Osmium);
+                case 9:
+                    return new UnificationEntry(rotor, Ruridit);
+                default:
+                    return new UnificationEntry(rotor, Neutronium);
             }
         }
     },
@@ -769,8 +744,10 @@ public enum GACraftingComponents {
                     return new UnificationEntry(wireGtDouble, HSSG);
                 case 7:
                     return new UnificationEntry(wireGtDouble, Naquadah);
-                default:
+                case 8:
                     return new UnificationEntry(wireGtDouble, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtDouble, EnrichedNaquadahAlloy);
 
             }
         }
@@ -883,8 +860,10 @@ public enum GACraftingComponents {
                     return new UnificationEntry(wireGtQuadruple, HSSG);
                 case 7:
                     return new UnificationEntry(wireGtQuadruple, Naquadah);
-                default:
+                case 8:
                     return new UnificationEntry(wireGtQuadruple, NaquadahAlloy);
+                default:
+                    return new UnificationEntry(wireGtQuadruple, EnrichedNaquadahAlloy);
             }
         }
     },
@@ -951,6 +930,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
             }
@@ -981,6 +962,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Seaborgium);
                 case 10:
                     return new UnificationEntry(plate, Bohrium);
+                case 11:
+                    return new UnificationEntry(plate, Quantum);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
