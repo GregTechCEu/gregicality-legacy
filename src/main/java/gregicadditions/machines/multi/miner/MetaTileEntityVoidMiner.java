@@ -76,6 +76,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         this.tier = tier;
         this.energyDrain = GAValues.V[tier];
         this.maxTemperature = temp;
+        this.reinitializeStructurePattern();
     }
 
     @Override
