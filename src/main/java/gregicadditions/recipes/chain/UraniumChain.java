@@ -62,7 +62,7 @@ public class UraniumChain {
             .fluidOutputs(UraniumDiuranate.getFluid(1000))
             .buildAndRegister();
             
-        CRACKER_UNIT_RECIPES.recipeBuilder().duration(240).EUt(500)
+        CRACKING_RECIPES.recipeBuilder().duration(240).EUt(500)
             .fluidInputs(UraniumDiuranate.getFluid(1000))
             .fluidInputs(Steam.getFluid(1000))
             .fluidOutputs(HotUraniumDiuranate.getFluid(1000))
@@ -144,33 +144,34 @@ public class UraniumChain {
             .fluidOutputs(NitrogenDioxide.getFluid(700))
             .buildAndRegister();
             
+            
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(500)
             .inputs(UraniumOxideThoriumNitrate.getItemStack())
             .fluidInputs(DistilledWater.getFluid(1000))
-            .output(OreDictUnifier.get(dioxide,UraniumRadioactive))
+            .outputs(OreDictUnifier.get(dioxide,UraniumRadioactive.getMaterial()))
             .fluidOutputs(ThoriumNitrateSolution.getFluid(300))
             .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
             .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
-            .output(OreDictUnifier.get(oxide,Thorium))
+            .outputs(OreDictUnifier.get(oxide,Thorium))
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
             .buildAndRegister();
-	
-	BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
-	    .input(dioxide,UraniumRadioactive)
-	    .input(dust,Carbon)
-	    .output(dust,UraniumRadioactive)
-	    .output(CarbonDioxide.getFluid(1000))
+
+        BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
+            .input(dioxide,UraniumRadioactive.getMaterial())
+            .input(dust,Carbon)
+            .outputs(OreDictUnifier.get(dust,UraniumRadioactive.getMaterial()))
+	    .fluidOutputs(CarbonDioxide.getFluid(1000))
 	    .buildAndRegister();
-	
-	BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
+
+	    BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
 	    .input(oxide,Thorium)
 	    .input(dust,Calcium)
 	    .input(dust,CalciumChloride)
-	    .output(dust,Thorium)
-	    .output(dust,Quicklime,2)
-	    .fluidOutputs(Chlorine.getFluid(2000))
-	    .buildAndRegister();
+	    .outputs(OreDictUnifier.get(dust,ThoriumRadioactive.getMaterial()))
+            .outputs(OreDictUnifier.get(dust,Quicklime,2))
+            .fluidOutputs(Chlorine.getFluid(2000))
+            .buildAndRegister();
     }
 }
