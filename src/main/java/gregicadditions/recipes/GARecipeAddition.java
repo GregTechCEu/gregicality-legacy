@@ -1071,7 +1071,7 @@ public class GARecipeAddition {
                 .fluidInputs(Sodiumformate.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(FormicAcid.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Sodiumsulfate, 7))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();
@@ -1347,6 +1347,9 @@ public class GARecipeAddition {
         PEEKChain.init();
         ZylonChain.init();
         FullereneChain.init();
+        BariumChain.init();
+        UraniumChain.init();
+        VanadiumChain.init();
     }
 
     public static void forestrySupport() {
