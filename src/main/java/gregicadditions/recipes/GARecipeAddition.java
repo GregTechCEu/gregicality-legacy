@@ -529,8 +529,6 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192).input(circuit, Tier.Infinite, 2).inputs(OreDictUnifier.get(gear, AbyssalAlloy, 8), OreDictUnifier.get(plate, AbyssalAlloy, 8), OreDictUnifier.get(cableGtHex, MarkerMaterials.Tier.Superconductor), MetaTileEntities.HULL[GTValues.MAX].getStackForm()).fluidInputs(Naquadria.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_MAX, 1)).buildAndRegister();
 
 
-        MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
-
 
         ModHandler.addShapelessRecipe("ga_potin_dust", OreDictUnifier.get(dust, Potin, 5), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Tin));
 
