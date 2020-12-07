@@ -889,7 +889,8 @@ public class GARecipeAddition {
         FUSION_RECIPES.recipeBuilder().fluidInputs(Lanthanum.getFluid(16), Silicon.getFluid(16)).fluidOutputs(Lutetium.getFluid(16)).duration(16).EUt(8192).EUToStart(80000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Curium247.getMaterial().getFluid(144), Sodium.getFluid(144)).fluidOutputs(Bohrium.getFluid(288)).duration(50).EUt(1000000).EUToStart(2000000000).buildAndRegister();
         FUSION_RECIPES.recipeBuilder().fluidInputs(Plutonium.getFluid(144), Calcium.getFluid(144)).fluidOutputs(Seaborgium.getFluid(288)).duration(100).EUt(500000).EUToStart(1000000000).buildAndRegister();
-
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Trinium.getFluid(125), Tritanium.getFluid(125)).fluidOutputs(Adamantium.getFluid(125)).duration(100).EUt(2000000).coilTier(1).euStart(1000000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Adamantium.getFluid(125), Neutronium.getFluid(125)).fluidOutputs(Vibranium.getFluid(125)).duration(100).EUt(8000000).coilTier(2).euStart(2500000000L).buildAndRegister();
         //FUsion Casing Recipes
         ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING), "PhP", "PHP", "PwP", 'P', "plateTungstenSteel", 'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
         ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2), "PhP", "PHP", "PwP", 'P', "plateDubnium", 'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING));

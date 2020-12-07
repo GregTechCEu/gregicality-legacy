@@ -634,7 +634,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 86, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 87, MaterialIconSet.DULL);
 
-    //free ids  857-850
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION, null, 25000);
     public static final IngotMaterial BlackTitanium = new IngotMaterial(856, "black_titaniun", 0x6C003B, MaterialIconSet.SHINY, 7, of(new MaterialStack(Titanium, 26), new MaterialStack(Lanthanum, 6), new MaterialStack(Tungsten, 4), new MaterialStack(Cobalt, 3), new MaterialStack(Manganese, 2), new MaterialStack(Phosphorus, 2), new MaterialStack(Palladium, 2), new MaterialStack(Niobium, 1), new MaterialStack(Argon, 5)), CORE_METAL | DISABLE_DECOMPOSITION, null, Titanium.blastFurnaceTemperature * 16);
     public static final IngotMaterial TungstenTitaniumCarbide = new IngotMaterial(855, "tungsten_titanium_carbide", 0x800d0d, MaterialIconSet.SHINY, 7, of(new MaterialStack(TungstenCarbide, 7), new MaterialStack(Titanium, 3)), CORE_METAL | DISABLE_DECOMPOSITION, null, 4422);
@@ -645,6 +644,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Zeron100 = new IngotMaterial(850, "zeron", 0xB4B414, MaterialIconSet.SHINY, 5, of(new MaterialStack(Chrome, 13), new MaterialStack(Nickel, 3), new MaterialStack(Molybdenum, 2), new MaterialStack(Copper, 10), new MaterialStack(Tungsten, 2), new MaterialStack(Steel, 20)), CORE_METAL | DISABLE_DECOMPOSITION, null, 6100);
     public static final IngotMaterial Cinobite = new IngotMaterial(721, "cinobite", 0x010101, MaterialIconSet.SHINY, 5, of(new MaterialStack(Zeron100, 8), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Mercury, 1), new MaterialStack(Tin, 1), new MaterialStack(Titanium, 6), new MaterialStack(Osmiridium, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 12565);
     public static final IngotMaterial HDCS = new IngotMaterial(720, "hdcs", 0x334433, MaterialIconSet.SHINY, 5, of(new MaterialStack(TungstenSteel, 12), new MaterialStack(HSSS, 9), new MaterialStack(HSSG, 6), new MaterialStack(Ruridit, 3), new MaterialStack(MagnetoResonatic, 2), new MaterialStack(Plutonium, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 9000);
+    public static final IngotMaterial Trinium = new IngotMaterial(719, "trinium", 0x9aa19c, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_ORE, Element.valueOf("Ke"), 35000);
+    public static final IngotMaterial Adamantium = new IngotMaterial(718, "adamantium", 0x2d365c, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Ad"), 17500);
+    public static final IngotMaterial Vibranium = new IngotMaterial(717, "vibranium", 0x828aad, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Vb"), 55000);
+    public static final IngotMaterial ProtoAdamantium = new IngotMaterial(716, "proto_adamantium", 0x4662d4, MaterialIconSet.SHINY, 7, of(new MaterialStack(Adamantium, 3), new MaterialStack(Promethium, 2)), CORE_METAL, null, 35000);
+    public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 12500);
+    public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
 
 
     public static Material UEV = new MarkerMaterial("UEV");
