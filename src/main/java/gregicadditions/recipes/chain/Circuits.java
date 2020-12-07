@@ -41,11 +41,9 @@ public class Circuits {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', new UnificationEntry(plate, WroughtIron), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
         ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', new UnificationEntry(plate, WroughtIron), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
-        GALog.logger.info("soldering fluid");
+
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
-            GALog.logger.info(fluid);
-            GALog.logger.info(fluidSplit[1]);
             int amount = Integer.parseInt(fluidSplit[1]);
             if (amount > 64000) {
                 amount = 64000;
