@@ -1013,7 +1013,7 @@ public class GAConfig {
             @Config.Comment("The name of the ores to blacklist for the MK1 Void Miner")
             @Config.RequiresMcRestart
             @Config.Name("MK1 Void Miner Blacklist")
-            public String[] oreBlacklist = new String[]{};
+            public String[] oreBlacklist = new String[]{"trinium"};
 
             @Config.Comment("The name of the ores to blacklist for the MK2 Void Miner")
             @Config.RequiresMcRestart

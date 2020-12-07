@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.impl;
 
 
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.recipes.nuclear.HotCoolantRecipe;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
@@ -170,7 +171,7 @@ public class HotCoolantRecipeLogic extends MTETrait implements IControllable {
     }
 
     public static long getTieredVoltage(long voltage) {
-        return GAValues.V[GTUtility.getTierByVoltage(voltage)];
+        return GAValues.V[GAUtility.getTierByVoltage(voltage)];
     }
 
     private void setActive(boolean active) {

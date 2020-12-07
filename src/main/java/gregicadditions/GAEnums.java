@@ -85,6 +85,18 @@ public class GAEnums {
         EnumHelper.addEnum(Element.class, "Nt",
                 new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
                 0L, 5000L, -1L, null, "NEUTRONIUM", false);
+        EnumHelper.addEnum(Element.class, "Ke",
+                new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
+                0L, 5000L, -1L, null, "TRINIUM", false);//TODO calculate correct protons, electrons and neutrons
+        EnumHelper.addEnum(Element.class, "Ad",
+                new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
+                0L, 5000L, -1L, null, "ADAMANTIUM", false);
+        EnumHelper.addEnum(Element.class, "Vb",
+                new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
+                0L, 5000L, -1L, null, "VIBRANIUM", false);
+        EnumHelper.addEnum(Element.class, "Tn",
+                new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
+                0L, 5000L, -1L, null, "TARANIUM", false);
 
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HOT", new Class[]{String.class}, "gregtech.fluid.hot");
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HEXAFLUORIDE", new Class[]{String.class}, "gregtech.fluid.hexafluoride");

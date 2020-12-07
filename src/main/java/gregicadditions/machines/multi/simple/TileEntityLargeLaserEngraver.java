@@ -6,6 +6,10 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.components.ConveyorCasing;
+import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.components.PistonCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -13,9 +17,13 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblockController {
 
@@ -40,18 +48,25 @@ public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblock
                 .aisle("XCX", "G#G","XEX","#T#")
                 .aisle("XCX", "G#G","XEX","#T#")
                 .aisle("XXX", "XSX","XXX","#T#")
-                .setAmountAtLeast('L', 30)
+                .setAmountAtLeast('L', 22)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('#', isAirPredicate())
-                .where('M', motorPredicate())
-                .where('P', pistonPredicate())
                 .where('C', conveyorPredicate())
                 .where('E', emitterPredicate())
                 .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.IRIDIUM_GLASS)))
                 .build();
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        ConveyorCasing.CasingType conveyor = context.getOrDefault("Conveyor", ConveyorCasing.CasingType.CONVEYOR_LV);
+        EmitterCasing.CasingType emitter = context.getOrDefault("Emitter", EmitterCasing.CasingType.EMITTER_LV);
+        int min = Collections.min(Arrays.asList(conveyor.getTier(), emitter.getTier()));
+        maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 
     private IBlockState getCasingState() {

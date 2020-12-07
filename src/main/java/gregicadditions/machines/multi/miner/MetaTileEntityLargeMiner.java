@@ -4,6 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
@@ -23,7 +24,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.tools.ToolUtility;
@@ -105,7 +105,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GAValues.V[Math.max(GAValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
@@ -118,7 +118,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.EV;
+        int tierDifference = GAUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.EV;
         return (long) Math.floor(Math.pow(2, tierDifference));
     }
 
