@@ -488,7 +488,7 @@ metaarmor.hud.gravi_engine=重力引擎：%s
 metaarmor.energy_share.enable=充能模式：工具充能已启用
 metaarmor.energy_share.disable=充能模式：工具充能已禁用
 metaarmor.energy_share.tooltip=充能模式：%s
-metaarmor.energy_share.tooltip.guide=手持物品Shift右键以更改模式
+metaarmor.energy_share.tooltip.guide=手持物品潜行右键以更改模式
 
 
 
@@ -1055,7 +1055,7 @@ gtadditions.machine.nuclear_breeder.name=增殖核反应堆
 gtadditions.machine.boiling_water_reactor.uranium.name=铀热核反应堆
 gtadditions.machine.boiling_water_reactor.plutonium.name=钚热核反应堆
 gtadditions.machine.simple_ore_washer.name=简易洗矿机
-gtadditions.machine.simple_ore_washer.tooltip=坩埚的替代品......
+gtadditions.machine.simple_ore_washer.tooltip=总比坩埚好点......
 
 gtadditions.machine.replicator.tooltip=产出最纯净的元素
 
@@ -1097,7 +1097,7 @@ gtadditions.machine.fluid_hatch.export_filtered.max.name=过滤输出仓(MAX)
 gtadditions.machine.gas_centrifuge.name=气体离心机
 gtadditions.machine.qubit_computer.name=量子计算机
 gtadditions.machine.stellar_forge.name=恒星炎炀锻炉
-gtadditions.machine.void_miner.uhv.name=次时代虚空采矿机
+gtadditions.machine.void_miner.uhv.name=次世代虚空采矿机
 gtadditions.machine.void_miner.uev.name=终焉虚空采矿机
 gtadditions.machine.hyper_reactor.uv.name=超能反应堆 I
 gtadditions.machine.hyper_reactor.uhv.name=超能反应堆 II
