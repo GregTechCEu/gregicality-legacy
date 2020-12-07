@@ -131,7 +131,15 @@ public class GeneratorFuels {
         registerHyperReactorFuel(HyperFuelIII.getFluid(1), 800, GAValues.IV);
 
         //Qubit generator
-        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt((int) GAValues.V[GAValues.UV]).duration(200).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Infinite).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(1).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Elite).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(4).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Master).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(15).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(50).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(200).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Infinite).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(800).qubit(1).input(OrePrefix.circuit, UEV).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(3200).qubit(1).input(OrePrefix.circuit, UIV).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(12800).qubit(1).input(OrePrefix.circuit, UMV).buildAndRegister();
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(51200).qubit(1).input(OrePrefix.circuit, UXV).buildAndRegister();
     }
 
     //Register Methods
