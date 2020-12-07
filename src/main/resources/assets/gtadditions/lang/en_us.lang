@@ -1727,6 +1727,24 @@ material.umv_superconductor=UMV Superconductor
 material.umv_superconductor_base=UMV Superconductor Base
 material.uxv_superconductor=UXV Superconductor
 material.uxv_superconductor_base=UXV Superconductor Base
+material.quantum=Quantum
+material.black_titaniun=Black Titanium
+material.tungsten_titanium_carbide=Tungsten Titanium Carbide
+material.titan_steel=Titan Steel
+material.inconel_b=Inconel 792
+material.pikyonium=Pikyonium
+material.lafium=Lafium
+material.zeron=Zeron 100
+material.cinobite=Cinobite
+material.hdcs=High Durability Compound Steel
+material.trinium=Trinium
+material.adamantium=Adamantium
+material.vibranium=Vibranium
+material.proto_adamantium=Proto Adamantium
+material.trinium_titanium=Trinium Titanium
+material.taranium=Taranium
+
+
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
