@@ -2523,6 +2523,17 @@ metaitem.cesium_hydroxide.name=Caesium Hydroxide
 metaitem.aluminium_hydroxide.name=Aluminium Hydroxide
 metaitem.potassium_carbonate.name=Potassium Carbonate
 
+metaitem.chromium_oxide.name=Chromium Oxide
+metaitem.nialo_catalyst.name=Nickel Oxide Alumina Catalyst
+metaitem.fecro_catalyst.name=Iron Chromium Oxide Catalyst
+metaitem.roasted_spodumene.name=Roasted Spodumene
+metaitem.roasted_lepidolite.name=Roasted Lepidolite
+metaitem.lithium_chloride.name=Lithium Chloride
+metaitem.lik_chloride_eutetic.name=Lithium Potassium Chloride Eutetic Mixture
+metaitem.calcium_fluoride.name=Calcium Fluoride
+metaitem.potassium_sulfate.name=Potassium Sulfate
+metaitem.aluminium_sulfate.name=Aluminium Sulfate
+
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
 fluid.naquadriatic_solution=Naquadriatic Solution
@@ -2714,6 +2725,23 @@ fluid.hot_uranium_diuranate=Hot Uranium Diuranate Solution
 fluid.hot_potassium_uranyl_carbonate=Hot Potassium Uranyl Tricarbonate Solution
 fluid.uranium_refinement_waste_solution=Uranium Refinement Waste Solution
 fluid.thorium_nitrate_solution=Thorium Nitrate Solution
+
+fluid.sodium_hexafluoroaluminate=Sodium Hexafluoroaluminate
+fluid.sodium_carbonate_solution=Sodium Carbonate Solution
+fluid.sodium_sulfate_solution=Sodium Sulfate Solution
+fluid.sodium_chromate_solution=Sodium Chromate Solution
+fluid.sodium_dichromate_solution=Sodium Dichromate Solution
+fluid.poor_nitrogen_mix=Poor Nitrogen Mixture
+fluid.rich_nitrogen_mix=Rich Nitrogen Mixture
+fluid.oxidised_nitrogen_mix=Oxidised Rich Nitrogen Mixture
+fluid.purified_nitrogen_mix=Purified Rich Nitrogen Mixture
+fluid.hot_purified_nitrogen_mix=Hot Purified Rich Nitrogen Mixture
+fluid.carbonated_ethanolamine=Carbonated Ethanolamine
+fluid.ammonia_rich_mix=Ammonia Rich Mixture
+fluid.dissolved_lithium_ores=Dissolved Lithium Ores
+fluid.lithium_carbonate_solution=Lithium Carbonate Solution
+fluid.lithium_chloride_solution=Lithium Chloride Solution
+fluid.molten_lik_chloride_eutetic=Molten Lithium Potassium Chloride Eutetic Mixture
 
 material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
