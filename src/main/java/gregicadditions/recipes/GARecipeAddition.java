@@ -1350,6 +1350,10 @@ public class GARecipeAddition {
         BariumChain.init();
         UraniumChain.init();
         VanadiumChain.init();
+        AluminiumChain.init();
+        AmmoniaChain.init();
+        ChromiumChain.init();
+        LithiumChain.init();
     }
 
     public static void forestrySupport() {

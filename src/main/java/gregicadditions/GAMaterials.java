@@ -824,6 +824,10 @@ public class GAMaterials implements IMaterialHandler {
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
 
+
+        Spodumene.addFlag(DISABLE_DECOMPOSITION);
+        Lepidolite.addFlag(DISABLE_DECOMPOSITION);
+        Chromite.addFlag(DISABLE_DECOMPOSITION);
         Barite.addFlag(DISABLE_DECOMPOSITION);
         VanadiumMagnetite.addFlag(DISABLE_DECOMPOSITION);
         Tritanium.addFlag(CORE_METAL);
