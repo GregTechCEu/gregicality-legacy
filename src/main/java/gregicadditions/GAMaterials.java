@@ -144,7 +144,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial PalladiumRawPowder = new DustMaterial(893, "reprecipitated_palladium", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final DustMaterial PalladiumSalt = new DustMaterial(892, "palladium_salt", Palladium.materialRGB, MaterialIconSet.METALLIC, 2, of(), 0);
     public static final FluidMaterial Sodiumformate = new FluidMaterial(891, "sodium_formate", 0xFFAAAA, MaterialIconSet.FLUID, of(), 0);
-    public static final FluidMaterial Sodiumsulfate = new FluidMaterial(890, "sodium_sulfate", 0xFFFFFF, MaterialIconSet.FLUID, of(), 0);
+    public static final DustMaterial SodiumSulfate = new DustMaterial(890, "sodium_sulfate", 0xFFFFFF, MaterialIconSet.ROUGH, 2, of(), 0);
     public static final FluidMaterial FormicAcid = new FluidMaterial(889, "formic_acid", 0xFFAA77, MaterialIconSet.FLUID, of(), 0);
     public static final DustMaterial PotassiumDisulfate = new DustMaterial(888, "potassium_disulfate", 0xFBBB66, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 7)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial LeachResidue = new DustMaterial(887, "leach_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(), 0);
@@ -350,7 +350,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225);
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735);
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735);
-    public static final SimpleDustMaterial AntimonyTrifluoride = new SimpleDustMaterial("antimony_trifluoride", 0xc7c7c7, (short) 0, Antimony.materialIconSet);
+    public static final SimpleDustMaterial AntimonyTrifluoride = new SimpleDustMaterial("antimony_trifluoride", 0xc7c7c7, (short) 0, Antimony.materialIconSet, of(new MaterialStack(Antimony, 1), new MaterialStack(Fluorine, 3)));
     public static final SimpleFluidMaterial AntimonyPentafluoride = new SimpleFluidMaterial("antimony_pentafluoride", Antimony.materialRGB);
     public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5);
     public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluoronaquadric_acid", 0x485d60);
@@ -359,8 +359,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NaquadahDifluoride = new SimpleFluidMaterial("naquadah_difluoride", 0x324649);
     public static final SimpleFluidMaterial EnrichedNaquadahDifluoride = new SimpleFluidMaterial("enriched_naquadah_difluoride", 0x141e1f);
     public static final SimpleFluidMaterial NaquadriaDifluoride = new SimpleFluidMaterial("naquadria_difluoride", 0x141e1f);
-    public static final SimpleDustMaterial IndiumTrifluoride = new SimpleDustMaterial("indium_trifluoride", 0x2b0f48, (short) 1, Indium.materialIconSet);
-    public static final SimpleDustMaterial IndiumTrioxide = new SimpleDustMaterial("indium_trioxide", 0x2b0f48, (short) 2, Indium.materialIconSet);
+    public static final SimpleDustMaterial IndiumTrifluoride = new SimpleDustMaterial("indium_trifluoride", 0x2b0f48, (short) 1, Indium.materialIconSet, of(new MaterialStack(Indium, 1), new MaterialStack(Fluorine, 3)));
+    public static final SimpleDustMaterial IndiumTrioxide = new SimpleDustMaterial("indium_trioxide", 0x2b0f48, (short) 2, Indium.materialIconSet, of(new MaterialStack(Indium, 1), new MaterialStack(Oxygen, 3)));
     public static final SimpleDustMaterial NaquadahConcentrate = new SimpleDustMaterial("naquadah_concentrate", Naquadah.materialRGB, (short) 3, Naquadah.materialIconSet);
     public static final SimpleDustMaterial EnrichedNaquadahConcentrate = new SimpleDustMaterial("enriched_naquadah_concentrate", NaquadahEnriched.materialRGB, (short) 4, NaquadahEnriched.materialIconSet);
     public static final SimpleDustMaterial NaquadriaConcentrate = new SimpleDustMaterial("naquadria_concentrate", Naquadria.materialRGB, (short) 5, Naquadria.materialIconSet);
@@ -381,7 +381,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial EnrichedXenonHexafluoronaquadate = new SimpleFluidMaterial("enriched_xenon_hexafluoronaquadate", 0x1e1ec2);
     public static final SimpleFluidMaterial AuricChloride = new SimpleFluidMaterial("auric_chloride", 0xdffb50);
     public static final SimpleFluidMaterial BromineTrifluoride = new SimpleFluidMaterial("bromine_trifluoride", 0xfcde1d);
-    public static final SimpleDustMaterial AuricFluoride = new SimpleDustMaterial("auric_fluoride", 0xdffb50, (short) 6, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial AuricFluoride = new SimpleDustMaterial("auric_fluoride", 0xdffb50, (short) 6, MaterialIconSet.SHINY, of(new MaterialStack(Gold, 1), new MaterialStack(Fluorine, 3)));
     public static final SimpleFluidMaterial XenoauricFluoroantimonicAcid = new SimpleFluidMaterial("xenoauric_fluoroantimonic_acid", 0x685b08);
 
     public static final SimpleFluidMaterial NaquadahSulfate = new SimpleFluidMaterial("naquadah_sulfate", 0x38330f);
@@ -441,31 +441,31 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SmGdOxidesSolution = new SimpleFluidMaterial("sm_gd_oxides_solution", 0xffff99);
     public static final SimpleFluidMaterial TbHoOxidesSolution = new SimpleFluidMaterial("tb_ho_oxides_solution", 0x99ff99);
     public static final SimpleFluidMaterial ErLuOxidesSolution = new SimpleFluidMaterial("er_lu_oxides_solution", 0xffb3ff);
-    public static final SimpleDustMaterial LanthanumOxide = new SimpleDustMaterial("lanthanum_oxide", Lanthanum.materialRGB, (short) 8, Lanthanum.materialIconSet);
-    public static final SimpleDustMaterial PraseodymiumOxide = new SimpleDustMaterial("praseodymium_oxide", Praseodymium.materialRGB, (short) 9, Praseodymium.materialIconSet);
-    public static final SimpleDustMaterial NeodymiumOxide = new SimpleDustMaterial("neodymium_oxide", Neodymium.materialRGB, (short) 10, Neodymium.materialIconSet);
-    public static final SimpleDustMaterial CeriumOxide = new SimpleDustMaterial("cerium_oxide", Cerium.materialRGB, (short) 11, Cerium.materialIconSet);
-    public static final SimpleDustMaterial EuropiumOxide = new SimpleDustMaterial("europium_oxide", Europium.materialRGB, (short) 12, Europium.materialIconSet);
-    public static final SimpleDustMaterial GadoliniumOxide = new SimpleDustMaterial("gadolinium_oxide", Gadolinium.materialRGB, (short) 13, Gadolinium.materialIconSet);
-    public static final SimpleDustMaterial SamariumOxide = new SimpleDustMaterial("samarium_oxide", Samarium.materialRGB, (short) 14, Samarium.materialIconSet);
-    //public static final SimpleDustMaterial YttriumOxide = new SimpleDustMaterial("Yttrium_oxide",Yttrium.materialRGB, (short) 7, Yttrium.materialIconSet);
-    public static final SimpleDustMaterial TerbiumOxide = new SimpleDustMaterial("terbium_oxide", Terbium.materialRGB, (short) 15, Terbium.materialIconSet);
-    public static final SimpleDustMaterial DysprosiumOxide = new SimpleDustMaterial("dysprosium_oxide", Dysprosium.materialRGB, (short) 16, Dysprosium.materialIconSet);
-    public static final SimpleDustMaterial HolmiumOxide = new SimpleDustMaterial("holmium_oxide", Holmium.materialRGB, (short) 17, Holmium.materialIconSet);
-    public static final SimpleDustMaterial ErbiumOxide = new SimpleDustMaterial("erbium_oxide", Erbium.materialRGB, (short) 18, Erbium.materialIconSet);
-    public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide", Thulium.materialRGB, (short) 19, Thulium.materialIconSet);
-    public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide", Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet);
-    public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide", Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet);
-    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide", Scandium.materialRGB, (short) 22, Scandium.materialIconSet);
+    public static final SimpleDustMaterial LanthanumOxide = new SimpleDustMaterial("lanthanum_oxide", Lanthanum.materialRGB, (short) 8, Lanthanum.materialIconSet, of(new MaterialStack(Lanthanum, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial PraseodymiumOxide = new SimpleDustMaterial("praseodymium_oxide", Praseodymium.materialRGB, (short) 9, Praseodymium.materialIconSet, of(new MaterialStack(Praseodymium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial NeodymiumOxide = new SimpleDustMaterial("neodymium_oxide", Neodymium.materialRGB, (short) 10, Neodymium.materialIconSet, of(new MaterialStack(Neodymium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial CeriumOxide = new SimpleDustMaterial("cerium_oxide", Cerium.materialRGB, (short) 11, Cerium.materialIconSet, of(new MaterialStack(Cerium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial EuropiumOxide = new SimpleDustMaterial("europium_oxide", Europium.materialRGB, (short) 12, Europium.materialIconSet, of(new MaterialStack(Europium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial GadoliniumOxide = new SimpleDustMaterial("gadolinium_oxide", Gadolinium.materialRGB, (short) 13, Gadolinium.materialIconSet, of(new MaterialStack(Gadolinium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial SamariumOxide = new SimpleDustMaterial("samarium_oxide", Samarium.materialRGB, (short) 14, Samarium.materialIconSet, of(new MaterialStack(Samarium, 1), new MaterialStack(Oxygen, 1)));
+    //public static final SimpleDustMaterial YttriumOxide = new SimpleDustMaterial("Yttrium_oxide",Yttrium.materialRGB, (short) 7, Yttrium.materialIconSet, of(new MaterialStack(Yttrium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial TerbiumOxide = new SimpleDustMaterial("terbium_oxide", Terbium.materialRGB, (short) 15, Terbium.materialIconSet, of(new MaterialStack(Terbium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial DysprosiumOxide = new SimpleDustMaterial("dysprosium_oxide", Dysprosium.materialRGB, (short) 16, Dysprosium.materialIconSet, of(new MaterialStack(Dysprosium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial HolmiumOxide = new SimpleDustMaterial("holmium_oxide", Holmium.materialRGB, (short) 17, Holmium.materialIconSet, of(new MaterialStack(Holmium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial ErbiumOxide = new SimpleDustMaterial("erbium_oxide", Erbium.materialRGB, (short) 18, Erbium.materialIconSet, of(new MaterialStack(Erbium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial ThuliumOxide = new SimpleDustMaterial("thulium_oxide", Thulium.materialRGB, (short) 19, Thulium.materialIconSet, of(new MaterialStack(Thulium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial YtterbiumOxide = new SimpleDustMaterial("ytterbium_oxide", Ytterbium.materialRGB, (short) 20, Ytterbium.materialIconSet, of(new MaterialStack(Ytterbium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial LutetiumOxide = new SimpleDustMaterial("lutetium_oxide", Lutetium.materialRGB, (short) 21, Lutetium.materialIconSet, of(new MaterialStack(Lutetium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial ScandiumOxide = new SimpleDustMaterial("scandium_oxide", Scandium.materialRGB, (short) 22, Scandium.materialIconSet, of(new MaterialStack(Scandium, 1), new MaterialStack(Oxygen, 1)));
 
     public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB);
 
-    public static final SimpleDustMaterial CalciumCarbide = new SimpleDustMaterial("calcium_carbide", 0x807b70, (short) 23, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial CalciumHydroxide = new SimpleDustMaterial("calcium_hydroxide", 0x5f8764, (short) 24, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial CalciumCarbide = new SimpleDustMaterial("calcium_carbide", 0x807b70, (short) 23, MaterialIconSet.DULL, of(new MaterialStack(Calcium, 1), new MaterialStack(Carbon, 1)));
+    public static final SimpleDustMaterial CalciumHydroxide = new SimpleDustMaterial("calcium_hydroxide", 0x5f8764, (short) 24, MaterialIconSet.DULL, of(new MaterialStack(Calcium, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 1)));
     public static final SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", 0x61ad6b, (short) 25, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", 0xf0e660, (short) 26, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", 0xede9b4, (short) 27, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", 0x61daff, (short) 28, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", 0x61daff, (short) 28, MaterialIconSet.DULL, of(new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 2)));
     public static final SimpleDustMaterial SilicaAluminaGel = new SimpleDustMaterial("silica_alumina_gel", 0x558d9e, (short) 29, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZeoliteSievingPellets = new SimpleDustMaterial("zeolite_sieving_pellets", 0xa17bd1, (short) 30, MaterialIconSet.DULL);
     public static final SimpleDustMaterial WetZeoliteSievingPellets = new SimpleDustMaterial("wet_zeolite_sieving_pellets", 0x392f45, (short) 31, MaterialIconSet.DULL);
@@ -481,10 +481,10 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", 0x1c3b15, (short) 41, MaterialIconSet.DULL);
     public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", 0x2d4228, (short) 42, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", 0x377528, (short) 43, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 6)));
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 54, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xEFEFDA, (short) 54, MaterialIconSet.DULL, of(new MaterialStack(Zirconium, 1), new MaterialStack(Chlorine, 3)));
     public static final SimpleDustMaterial SiliconCarbide = new SimpleDustMaterial("silicon_carbide", 0x0f0f0f, (short) 55, MaterialIconSet.SHINY, of(new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)));
 
 
@@ -552,19 +552,19 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial AmmoniumPerrhenate = new SimpleFluidMaterial("ammonium_perrhenate", 0x1c1c45);
     public static final SimpleDustMaterial GoldDepleteMolybdenite = new SimpleDustMaterial("gold_deplete_molybdenite", 0x7c7c8f, (short) 48, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial MolybdenumConcentrate = new SimpleDustMaterial("molybdenum_concentrate", 0x565666, (short) 49, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial MolybdenumTrioxide = new SimpleDustMaterial("molybdenum_trioxide", 0x666685, (short) 50, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial CopperChloride = new SimpleDustMaterial("copper_chloride", 0xf5b35d, (short) 51, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial BismuthChloride = new SimpleDustMaterial("bismuth_chloride", 0x95f5d7, (short) 52, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0xbf95f5, (short) 53, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial MolybdenumTrioxide = new SimpleDustMaterial("molybdenum_trioxide", 0x666685, (short) 50, MaterialIconSet.SHINY, of(new MaterialStack(Molybdenum, 1), new MaterialStack(Oxygen, 3)));
+    public static final SimpleDustMaterial CopperChloride = new SimpleDustMaterial("copper_chloride", 0xf5b35d, (short) 51, MaterialIconSet.SHINY, of(new MaterialStack(Copper, 1), new MaterialStack(Chlorine, 1)));
+    public static final SimpleDustMaterial BismuthChloride = new SimpleDustMaterial("bismuth_chloride", 0x95f5d7, (short) 52, MaterialIconSet.SHINY, of(new MaterialStack(Bismuth, 1), new MaterialStack(Chlorine, 1)));
+    public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0xbf95f5, (short) 53, MaterialIconSet.SHINY, of(new MaterialStack(Lead, 1), new MaterialStack(Chlorine, 1)));
 
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
     public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
 
-    public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial LanthanumTrifluoride = new SimpleDustMaterial("lanthanum_trifluoride", 0xeeeeee, (short) 58, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AluminiumTrifluoride = new SimpleDustMaterial("aluminium_trifluoride", 0xeeeeee, (short) 59, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ErbiumTrifluoride = new SimpleDustMaterial("erbium_trifluoride", 0xF3E1E5, (short) 60, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL, of(new MaterialStack(Zirconium, 1), new MaterialStack(Fluorine, 6)));
+    public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Fluorine, 2)));
+    public static final SimpleDustMaterial LanthanumTrifluoride = new SimpleDustMaterial("lanthanum_trifluoride", 0xeeeeee, (short) 58, MaterialIconSet.DULL, of(new MaterialStack(Lanthanum, 1), new MaterialStack(Fluorine, 3)));
+    public static final SimpleDustMaterial AluminiumTrifluoride = new SimpleDustMaterial("aluminium_trifluoride", 0xeeeeee, (short) 59, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 1), new MaterialStack(Fluorine, 3)));
+    public static final SimpleDustMaterial ErbiumTrifluoride = new SimpleDustMaterial("erbium_trifluoride", 0xF3E1E5, (short) 60, MaterialIconSet.DULL, of(new MaterialStack(Erbium, 1), new MaterialStack(Fluorine, 3)));
     public static final SimpleDustMaterial ZBLANDust = new SimpleDustMaterial("zblan_dust", 0xFFFFFF, (short) 61, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", 0xFFF0F0, (short) 62, MaterialIconSet.DULL);
 
@@ -607,32 +607,95 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);
 
 
-    public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1)));
     public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", 0xbf95f5, (short) 64, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", 0xbf95f5, (short) 65, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Bromosuccinimide = new SimpleDustMaterial("bromo_succinimide", 0xbf95f5, (short) 66, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Benzophenanthrenylacetonitrile = new SimpleDustMaterial("benzophenanthrenylacetonitrile", 0xbf95f5, (short) 67, MaterialIconSet.DULL);
     public static final SimpleDustMaterial UnfoldedFullerene = new SimpleDustMaterial("unfolded_fullerene", 0xbf95f5, (short) 68, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Fullerene = new SimpleDustMaterial("fullerene", 0xbf95f5, (short) 69, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial TiAlChloride = new SimpleDustMaterial("tial_chloride", 0xbf95f5, (short) 70, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TiAlChloride = new SimpleDustMaterial("tial_chloride", 0xbf95f5, (short) 70, MaterialIconSet.DULL, of(new MaterialStack(Titanium, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Chlorine, 1)));
     public static final SimpleDustMaterial Dimethylaminopyridine = new SimpleDustMaterial("dimethylaminopyridine", 0xbf95f5, (short) 71, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PdIrReOCeOS = new SimpleDustMaterial("pdirreoceos", 0xbf95f5, (short) 72, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", 0xbf95f5, (short) 73, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial MgClBrominide = new SimpleDustMaterial("mgcl_brominide", 0xbf95f5, (short) 74, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PdIrReOCeOS = new SimpleDustMaterial("pdirreoceos", 0xbf95f5, (short) 72, MaterialIconSet.DULL, of(new MaterialStack(Palladium, 1), new MaterialStack(Iridium, 1), new MaterialStack(Rhenium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Cerium, 1), new MaterialStack(Osmium, 1)));
+    public static final SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", 0xbf95f5, (short) 73, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 5), new MaterialStack(Oxygen, 1), new MaterialStack(Sodium, 1)));
+    public static final SimpleDustMaterial MgClBrominide = new SimpleDustMaterial("mgcl_bromide", 0xbf95f5, (short) 74, MaterialIconSet.DULL);
     public static final SimpleDustMaterial NMethylglicine = new SimpleDustMaterial("n_methylglicine", 0xbf95f5, (short) 75, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL, of(new MaterialStack(Sodium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 2)));
+    public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY, of(new MaterialStack(Zinc, 1), new MaterialStack(Iron, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Chlorine, 1)));
     public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", 0xbf95f5, (short) 78, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY, of(new MaterialStack(Aluminium, 1), new MaterialStack(Chlorine, 1)));
     public static final SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", 0xbf95f5, (short) 80, MaterialIconSet.SHINY);
 
     public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 81, MaterialIconSet.DULL);
     public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 82, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 83, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 83, MaterialIconSet.DULL, of(new MaterialStack(Gold, 1), new MaterialStack(Palladium, 1), new MaterialStack(Carbon, 1)));
     public static final SimpleDustMaterial Cyanonaphtalene = new SimpleDustMaterial("cyanonaphtalene", 0xbf95f5, (short) 84, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 85, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 85, MaterialIconSet.DULL, of(new MaterialStack(Tin, 1), new MaterialStack(Chlorine, 1)));
     public static final SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", 0xbf95f5, (short) 86, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", 0xbf95f5, (short) 87, MaterialIconSet.DULL);
+
+    public static final SimpleDustMaterial VanadiumSlag = new SimpleDustMaterial("vanadium_slag", 0xbf95f5, (short) 88, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial VanadiumSlagDust = new SimpleDustMaterial("vanadium_slag_dust", 0xf2ef1b, (short) 89, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial SodiumVanadate = new SimpleDustMaterial("sodium_vanadate", 0xf2ef1b, (short) 90, MaterialIconSet.DULL, of(new MaterialStack(Sodium, 3), new MaterialStack(Vanadium, 1), new MaterialStack(Oxygen, 4)));
+    public static final SimpleDustMaterial AmmoniumVanadate = new SimpleDustMaterial("ammonium_vanadate", 0xf2ef1b, (short) 91, MaterialIconSet.DULL, of(new MaterialStack(Ammonia, 1), new MaterialStack(Vanadium, 1), new MaterialStack(Oxygen, 4)));
+    public static final SimpleDustMaterial VanadiumOxide = new SimpleDustMaterial("vanadium_oxide", 0xbf95f5, (short) 92, MaterialIconSet.SHINY, of(new MaterialStack(Vanadium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleFluidMaterial VanadiumWasteSolution = new SimpleFluidMaterial("vanadium_waste_solution", 0xbf95f5);
+
+    public static final SimpleDustMaterial BariumSulfide = new SimpleDustMaterial("barium_sulfide", 0xc2c2be, (short) 93, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Sulfur, 1)));
+    public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate", 0xfcfcfa, (short) 94, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Carbon, 1)));
+    public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide", 0xfcfcfa, (short) 95, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate", 0xfcfcfa, (short) 96, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new SimpleDustMaterialStack(Alumina, 1)));
+
+    public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture", 0xb8c319, (short) 97, MaterialIconSet.DULL, of(new MaterialStack(Pitchblende, 1), new MaterialStack(Barium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleFluidMaterial UranylChlorideSolution = new SimpleFluidMaterial("uranyl_chloride_solution", 0xdfe018);
+    public static final SimpleFluidMaterial UranylNitrateSolution = new SimpleFluidMaterial("uranyl_nitrate_solution", 0xdfe018);
+    public static final SimpleFluidMaterial UraniumSulfateWasteSolution = new SimpleFluidMaterial("uranium_sulfate_waste_solution", 0xdfe018);
+    public static final SimpleFluidMaterial PurifiedUranylNitrate = new SimpleFluidMaterial("purified_uranyl_nitrate_solution", 0xeff028);
+    public static final SimpleFluidMaterial UraniumDiuranate = new SimpleFluidMaterial("uranium_diuranate", 0xeff028);
+    public static final SimpleFluidMaterial HotUraniumDiuranate = new SimpleFluidMaterial("hot_uranium_diuranate", 0xeff028);
+    public static final SimpleFluidMaterial HotPotassiumUranylTricarbonate = new SimpleFluidMaterial("hot_potassium_uranyl_carbonate", 0xeff028);
+    public static final SimpleDustMaterial PotassiumUranylTricarbonate = new SimpleDustMaterial("potassium_uranyl_carbonate", 0xeff028, (short) 98, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 1), new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 2), new MaterialStack(Carbon, 3)));
+    public static final SimpleFluidMaterial UraniumRefinementWasteSolution = new SimpleFluidMaterial("uranium_refinement_waste_solution", 0xeff028);
+    public static final SimpleDustMaterial UraniumPeroxideThoriumOxide = new SimpleDustMaterial("uranium_peroxide_thorium_oxide", 0x202020, (short) 99, MaterialIconSet.SHINY, of(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 5), new MaterialStack(Thorium, 1)));
+    public static final SimpleDustMaterial UraniumThoriumOxide = new SimpleDustMaterial("uranium_thorium_oxide", 0x202020, (short) 100, MaterialIconSet.SHINY, of(new MaterialStack(Uranium, 1), new MaterialStack(Thorium, 1), new MaterialStack(Oxygen, 1)));
+    public static final SimpleDustMaterial UranylThoriumSulfate = new SimpleDustMaterial("uranium_thorium_sulfate", 0xe7e848, (short) 101, MaterialIconSet.SHINY, of(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 10), new MaterialStack(Thorium, 1), new MaterialStack(Sulfur, 2)));
+    public static final SimpleDustMaterial UranylThoriumNitrate = new SimpleDustMaterial("uranium_thorium_nitrate", 0xe7e848, (short) 102, MaterialIconSet.SHINY, of(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 8), new MaterialStack(Thorium, 1), new MaterialStack(Nitrogen, 2)));
+    public static final SimpleDustMaterial UraniumOxideThoriumNitrate = new SimpleDustMaterial("uranium_oxide_thorium_nitrate", 0x33bd45, (short) 103, MaterialIconSet.SHINY, of(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 8), new MaterialStack(Thorium, 1), new MaterialStack(Nitrogen, 2)));
+    public static final SimpleFluidMaterial ThoriumNitrateSolution = new SimpleFluidMaterial("thorium_nitrate_solution", 0x33bd45);
+
+    public static final SimpleDustMaterial CesiumHydroxide = new SimpleDustMaterial("cesium_hydroxide", 0xfcfcfa, (short) 104, MaterialIconSet.DULL, of(new MaterialStack(Caesium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1)));
+    public static final SimpleDustMaterial AluminiumHydroxide = new SimpleDustMaterial("aluminium_hydroxide", 0xfcfcfa, (short) 105, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1)));
+    public static final SimpleDustMaterial PotassiumCarbonate = new SimpleDustMaterial("potassium_carbonate", 0xfcfcfa, (short) 106, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 2), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3)));
+
+    public static final SimpleFluidMaterial SodiumHexafluoroaluminate = new SimpleFluidMaterial("sodium_hexafluoroaluminate", 0xfcfcfa);
+
+    public static final SimpleDustMaterial ChromiumOxide = new SimpleDustMaterial("chromium_oxide", 0x61eb49, (short) 107, MaterialIconSet.DULL);
+    public static final SimpleFluidMaterial SodiumCarbonateSolution = new SimpleFluidMaterial("sodium_carbonate_solution", 0xfcfcfa);
+    public static final SimpleFluidMaterial SodiumSulfateSolution = new SimpleFluidMaterial("sodium_sulfate_solution", 0xfcfcfa);
+    public static final SimpleFluidMaterial SodiumChromateSolution = new SimpleFluidMaterial("sodium_chromate_solution", 0xf2e70f);
+    public static final SimpleFluidMaterial SodiumDichromateSolution = new SimpleFluidMaterial("sodium_dichromate_solution", 0xf2750f);
+
+    public static final SimpleDustMaterial NiAlOCatalyst = new SimpleDustMaterial("nialo_catalyst", 0x0af0af, (short) 108, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial FeCrOCatalyst = new SimpleDustMaterial("fecro_catalyst", 0x8C4517, (short) 109, MaterialIconSet.DULL);
+    public static final SimpleFluidMaterial PoorNitrogenMix = new SimpleFluidMaterial("poor_nitrogen_mix", 0xa0c3de);
+    public static final SimpleFluidMaterial RichNitrogenMix = new SimpleFluidMaterial("rich_nitrogen_mix", 0x6891d8);
+    public static final SimpleFluidMaterial OxidisedNitrogenMix = new SimpleFluidMaterial("oxidised_nitrogen_mix", 0x708ACD);
+    public static final SimpleFluidMaterial PurifiedNitrogenMix = new SimpleFluidMaterial("purified_nitrogen_mix", 0x6891d8);
+    public static final SimpleFluidMaterial HotPurifiedNitrogenMix = new SimpleFluidMaterial("hot_purified_nitrogen_mix", 0x6891d8);
+    public static final SimpleFluidMaterial CarbonatedEthanolamine = new SimpleFluidMaterial("carbonated_ethanolamine", 0x6f7d87);
+    public static final SimpleFluidMaterial AmmoniaRichMix = new SimpleFluidMaterial("ammonia_rich_mix", 0x2f5d99);
+
+    public static final SimpleDustMaterial RoastedSpodumene = new SimpleDustMaterial("roasted_spodumene", 0x3d3d29, (short) 110, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LithiumChloride = new SimpleDustMaterial("lithium_chloride", 0xfcfcfa, (short) 112, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LiKChlorideEutetic = new SimpleDustMaterial("lik_chloride_eutetic", 0xcac0c1, (short) 113, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial CalciumFluoride = new SimpleDustMaterial("calcium_fluoride", 0x04c464, (short) 114, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumSulfate = new SimpleDustMaterial("potassium_sulfate", 0xfcfcfa, (short) 115, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumSulfate = new SimpleDustMaterial("aluminium_sulfate", 0xfcfcfa, (short) 116, MaterialIconSet.DULL);
+    public static final SimpleFluidMaterial DissolvedLithiumOre = new SimpleFluidMaterial("dissolved_lithium_ores", 0x664850);
+    public static final SimpleFluidMaterial LithiumCarbonateSolution = new SimpleFluidMaterial("lithium_carbonate_solution", 0xfcfcfa);
+    public static final SimpleFluidMaterial LithiumChlorideSolution = new SimpleFluidMaterial("lithium_chloride_solution", 0xfcfcfa);
+    public static final SimpleFluidMaterial MoltenLiKChlorideEutetic = new SimpleFluidMaterial("molten_lik_chloride_eutetic", 0xcac0c1);
 
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION, null, 25000);
     public static final IngotMaterial BlackTitanium = new IngotMaterial(856, "black_titaniun", 0x6C003B, MaterialIconSet.SHINY, 7, of(new MaterialStack(Titanium, 26), new MaterialStack(Lanthanum, 6), new MaterialStack(Tungsten, 4), new MaterialStack(Cobalt, 3), new MaterialStack(Manganese, 2), new MaterialStack(Phosphorus, 2), new MaterialStack(Palladium, 2), new MaterialStack(Niobium, 1), new MaterialStack(Argon, 5)), CORE_METAL | DISABLE_DECOMPOSITION, null, Titanium.blastFurnaceTemperature * 16);
@@ -738,6 +801,7 @@ public class GAMaterials implements IMaterialHandler {
         Iron.addFlag(GENERATE_PLASMA);
         Nickel.addFlag(GENERATE_PLASMA);
 
+
         Tellurium.addFlag(GENERATE_ORE);
         Diatomite.addFlag(GENERATE_ORE);
         GarnetSand.addFlag(GENERATE_ORE);
@@ -760,6 +824,12 @@ public class GAMaterials implements IMaterialHandler {
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
 
+
+        Spodumene.addFlag(DISABLE_DECOMPOSITION);
+        Lepidolite.addFlag(DISABLE_DECOMPOSITION);
+        Chromite.addFlag(DISABLE_DECOMPOSITION);
+        Barite.addFlag(DISABLE_DECOMPOSITION);
+        VanadiumMagnetite.addFlag(DISABLE_DECOMPOSITION);
         Tritanium.addFlag(CORE_METAL);
         Boron.addFlag(GENERATE_ROD);
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);
@@ -907,6 +977,9 @@ public class GAMaterials implements IMaterialHandler {
 
 
     public static void initNuclearMaterial() {
+        Pitchblende.addFlag(DISABLE_DECOMPOSITION);
+        Pitchblende.oreByProducts.clear();
+        Pitchblende.addOreByProducts(Thorium, UraniumRadioactive.getMaterial(), Lead);
         OrePrefix.block.setIgnored(SodiumPotassiumAlloy);
         OrePrefix.block.setIgnored(FLiNaK);
         OrePrefix.block.setIgnored(FLiBe);

@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -20,6 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.item.GAMetaItems.COSMIC_COMPUTER;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -41,11 +41,9 @@ public class Circuits {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', new UnificationEntry(plate, WroughtIron), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
         ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', new UnificationEntry(plate, WroughtIron), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
-        GALog.logger.info("soldering fluid");
+
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
-            GALog.logger.info(fluid);
-            GALog.logger.info(fluidSplit[1]);
             int amount = Integer.parseInt(fluidSplit[1]);
             if (amount > 64000) {
                 amount = 64000;
@@ -152,20 +150,20 @@ public class Circuits {
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
                             SMD_CAPACITOR_BIOWARE.getStackForm(4),
                             NEURO_PROCESSOR.getStackForm(),
-                            UHASOC.getStackForm(1))
+                            HASOC.getStackForm(1))
                     .input(wireFine, NaquadahAlloy, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
 
             //COSMIC     //PROCESSOR
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(1920000)
                     .outputs(COSMIC_PROCESSOR.getStackForm(1))
                     .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
-                            SMD_TRANSISTOR.getStackForm(8),
-                            SMD_CAPACITOR.getStackForm(4),
+                            SMD_TRANSISTOR_BIOWARE.getStackForm(32),
+                            SMD_CAPACITOR_BIOWARE.getStackForm(16),
                             NEURO_PROCESSOR.getStackForm(),
                             UHASOC.getStackForm(1))
-                    .input(wireFine, NaquadahAlloy, 4)
+                    .input(wireFine, Cinobite, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
         }
 
@@ -267,23 +265,75 @@ public class Circuits {
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
-                .inputs(SMD_CAPACITOR.getStackForm(16))
-                .inputs(SMD_TRANSISTOR.getStackForm(16))
-                .inputs(SMD_DIODE.getStackForm(16))
-                .inputs(SMD_RESISTOR.getStackForm(16))
-                .inputs(NEURO_PROCESSOR.getStackForm())
-                .input(wireGtSingle, UVSuperconductor, 4)
-                .inputs(ARAM.getStackForm(32))
-                .input(plate, Duranium, 2)
-                .input(foil, Polybenzimidazole, 16)
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(4))
+                .input(wireGtSingle, Cinobite, 4)
+                .inputs(ARAM.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .input(plate, Quantum, 2)
+                .input(foil, Zylon, 16)
                 .outputs(COSMIC_ASSEMBLY.getStackForm())
-                .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1296))
+                .fluidInputs(SterileGrowthMedium.getFluid(4000))
+                .fluidInputs(Tritanium.getFluid(1296))
                 .fluidInputs(Plastic.getFluid(2500))
                 .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .qubit(16)
-                .EUt(240000)
+                .EUt(3840000)
                 .duration(400)
+                .buildAndRegister();
+
+        //COMPUTER
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(COSMIC_ASSEMBLY.getStackForm(4))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(16))
+                .input(wireGtDouble, Cinobite, 2)
+                .inputs(UHPIC.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .input(plate, Quantum, 16)
+                .input(foil, Zylon, 16)
+                .inputs(GRAVI_STAR.getStackForm(32))
+                .outputs(COSMIC_COMPUTER.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(16000))
+                .fluidInputs(Tritanium.getFluid(288))
+                .fluidInputs(Polyetheretherketone.getFluid(1500))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
+                .qubit(16)
+                .EUt(7680000)
+                .duration(600)
+                .buildAndRegister();
+
+        //MAINFRAME
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(COSMIC_COMPUTER.getStackForm(2))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(2))
+                .input(wireGtQuadruple, Cinobite, 6)
+                .inputs(UHASOC.getStackForm(64))
+                .inputs(UHPIC.getStackForm(64))
+                .input(plate, Quantum, 2)
+                .input(frameGt, Quantum, 1)
+                .input(plate, Quantum, 8)
+                .input(foil, Zylon, 64)
+                .inputs(UNSTABLE_STAR.getStackForm(4))
+                .outputs(COSMIC_MAINFRAME.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(64000))
+                .fluidInputs(Tritanium.getFluid(1296))
+                .fluidInputs(Zylon.getFluid(2500))
+                .fluidInputs(Naquadria.getFluid(1296))
+                .qubit(32)
+                .EUt(24000000)
+                .duration(800)
                 .buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 2
@@ -364,7 +414,6 @@ public class Circuits {
         AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).inputs(OreDictUnifier.get(gemFlawless, Emerald)).fluidInputs(Helium.getFluid(1000)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 250, 50).buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder().duration(150).EUt(6).input(dust, Carbon).fluidInputs(Cerium.getFluid(1)).chancedOutput(CARBON_FIBERS.getStackForm(2), 1250, 250).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(10000).inputs(ENGRAVED_CRYSTAL_CHIP.getStackForm()).notConsumable(craftingLens, MarkerMaterials.Color.Lime).outputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm()).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(9000).EUt(120).blastFurnaceTemp(1784).input(dust, Silicon, 32).input(dustSmall, GalliumArsenide).outputs(SILICON_BOULE.getStackForm()).buildAndRegister();
 
         //SMD REFINED
