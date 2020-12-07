@@ -1,5 +1,7 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -58,6 +60,7 @@ public class AmmoniaChain {
 
         FLUID_HEATER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .fluidInputs(PurifiedNitrogenMix.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(HotPurifiedNitrogenMix.getFluid(1000))
                 .buildAndRegister();
 
