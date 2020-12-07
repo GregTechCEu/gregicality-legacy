@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
+import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
@@ -206,7 +207,7 @@ public class RecipeHandler {
             removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(2304)});
         }
 
-        int tier = GTUtility.getTierByVoltage(material.cableProperties.voltage);
+        int tier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);
         if (wireGt != wireGtSingle) {
             switch (tier) {
