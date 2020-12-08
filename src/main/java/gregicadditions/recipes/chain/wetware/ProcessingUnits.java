@@ -32,7 +32,7 @@ public class ProcessingUnits {
                 .inputs(NEURO_SUPPORT_UNIT.getStackForm())
                 .fluidInputs(Polybenzimidazole.getFluid(1000))
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1000))
+                .fluidInputs(Titanium.getFluid(1296))
                 .outputs(CYBER_PROCESSING_UNIT.getStackForm(8))
                 .EUt(30720 * 4)
                 .duration(250)
@@ -51,7 +51,7 @@ public class ProcessingUnits {
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
-                .fluidInputs(Plastic.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(1296))
                 .input(plate, NaquadahEnriched)
                 .outputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
                 .EUt(30720 * 4)
@@ -59,7 +59,7 @@ public class ProcessingUnits {
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
-                .fluidInputs(Plastic.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(1296))
                 .input(foil, NaquadahEnriched, 4)
                 .input(foil, Polybenzimidazole, 4)
                 .outputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
@@ -68,7 +68,7 @@ public class ProcessingUnits {
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
-                .fluidInputs(Plastic.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(1296))
                 .input(dust, Naquadria)
                 .input(dust, Tritanium)
                 .outputs(SMD_DIODE_BIOWARE.getStackForm(32))
@@ -77,7 +77,7 @@ public class ProcessingUnits {
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
-                .fluidInputs(Plastic.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(1296))
                 .input(plate, Naquadria)
                 .input(plate, Tritanium)
                 .outputs(SMD_RESISTOR_BIOWARE.getStackForm(32))
