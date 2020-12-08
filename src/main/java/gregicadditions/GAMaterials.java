@@ -892,7 +892,7 @@ public class GAMaterials implements IMaterialHandler {
         Rubber.addFlag(GENERATE_BOLT_SCREW);
 
         Plastic.addFlag(GENERATE_ROTOR);
-
+        Apatite.addFlag(GENERATE_BOLT_SCREW);
         Salt.addOreByProducts(Borax);
         RockSalt.addOreByProducts(Borax);
         Lepidolite.addOreByProducts(Boron);
