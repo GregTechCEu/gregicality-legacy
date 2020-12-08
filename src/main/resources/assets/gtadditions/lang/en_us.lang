@@ -1251,6 +1251,7 @@ recipemap.decay_chamber.name=Decay Chamber
 recipemap.green_house.name=Green House
 recipemap.bio_reactor.name=Bio Reactor
 recipemap.gas_centrifuge.name=Gas Centrifuge
+recipemap.large_engraver.name=Large Engraver
 
 gtadditions.recipe.drilling_rig.fluid=%s
 gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
