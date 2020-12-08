@@ -5,13 +5,14 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import gregicadditions.Gregicality;
 import gregicadditions.recipes.LargeRecipeMap;
+import gregicadditions.recipes.map.LargeRecipeBuilder;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.crafttweaker.CTRecipe;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.*;
+
 
 import javax.annotation.Nullable;
 import java.util.List;
