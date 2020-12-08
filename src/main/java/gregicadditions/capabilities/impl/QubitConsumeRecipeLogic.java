@@ -3,7 +3,6 @@ package gregicadditions.capabilities.impl;
 
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
-import gregicadditions.utils.GALog;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.Recipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,8 +31,6 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
     @Override
     protected void setupRecipe(Recipe recipe) {
         super.setupRecipe(recipe);
-
-        GALog.logger.info(recipe.getPropertyKeys());
         recipeQubit = recipe.getIntegerProperty("qubitConsume");
     }
 

@@ -529,8 +529,6 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192).input(circuit, Tier.Infinite, 2).inputs(OreDictUnifier.get(gear, AbyssalAlloy, 8), OreDictUnifier.get(plate, AbyssalAlloy, 8), OreDictUnifier.get(cableGtHex, MarkerMaterials.Tier.Superconductor), MetaTileEntities.HULL[GTValues.MAX].getStackForm()).fluidInputs(Naquadria.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_MAX, 1)).buildAndRegister();
 
 
-        MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
-
 
         ModHandler.addShapelessRecipe("ga_potin_dust", OreDictUnifier.get(dust, Potin, 5), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Lead), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Bronze), new UnificationEntry(dust, Tin));
 
@@ -593,7 +591,7 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(3840).duration(4800).input(plateDense, TungstenSteel, 4).fluidInputs(Helium.getFluid(8000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_EV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_IV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(15360).duration(9600).input(plateDense, Iridium, 4).fluidInputs(Argon.getFluid(4000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_IV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_LUV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(61440).duration(18200).input(plateDense, NaquadahAlloy, 4).fluidInputs(Radon.getFluid(4000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_LUV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_ZPM)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(245760).duration(36400).input(plateDense, Neutronium, 4).fluidInputs(Xenon.getFluid(4000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_ZPM)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_UV)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(245760).duration(36400).input(plateDense, Tritanium, 4).fluidInputs(Xenon.getFluid(4000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_ZPM)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_UV)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).notConsumable(new IntCircuitIngredient(30)).input(plate, Invar, 6).input(frameGt, Invar, 1).outputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF, 3)).duration(50).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).notConsumable(new IntCircuitIngredient(30)).input(plate, Steel, 6).input(frameGt, Steel, 1).outputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID, 3)).duration(50).buildAndRegister();
@@ -1071,7 +1069,7 @@ public class GARecipeAddition {
                 .fluidInputs(Sodiumformate.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(FormicAcid.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Sodiumsulfate, 7))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();
@@ -1347,6 +1345,13 @@ public class GARecipeAddition {
         PEEKChain.init();
         ZylonChain.init();
         FullereneChain.init();
+        BariumChain.init();
+        UraniumChain.init();
+        VanadiumChain.init();
+        AluminiumChain.init();
+        AmmoniaChain.init();
+        ChromiumChain.init();
+        LithiumChain.init();
     }
 
     public static void forestrySupport() {

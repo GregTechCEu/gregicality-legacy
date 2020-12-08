@@ -6,7 +6,6 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
@@ -92,14 +91,12 @@ public class RecipeHandler {
     public static void processIngotComposition(OrePrefix ingot, IngotMaterial material) {
         if (material.materialComponents.size() <= 1 || material.blastFurnaceTemperature == 0)
             return;
-        GALog.logger.info(material.toString() + " " + material.blastFurnaceTemperature + " " + (material.materialComponents.size() <= 1 && material.blastFurnaceTemperature == 0));
 
 
         if (material.materialComponents.size() <= 4) {
             AtomicInteger totalMaterial = new AtomicInteger(0);
             SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
             material.materialComponents.forEach(materialStack -> {
-                GALog.logger.info(material.toString() + ":" + materialStack.material.toString());
                 if (materialStack.material instanceof DustMaterial) {
                     builder.input(dust, materialStack.material, (int) materialStack.amount);
                 } else if (materialStack.material instanceof FluidMaterial) {

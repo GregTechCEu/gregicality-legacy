@@ -1158,8 +1158,6 @@ public class GAConfig {
                 int endPos = remain.indexOf(",");
 
                 String current = remain.substring(0, endPos).trim();
-                GALog.logger.info(current);
-                GALog.logger.info(endPos);
 
                 if (index == 0) fluid = current;
                 else if (index == 1) {

@@ -8,14 +8,23 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static gregicadditions.materials.SimpleDustMaterial.GA_DUSTS;
 
 public class GADustItem extends StandardMetaItem {
+
+    public final static Map<String, SimpleDustMaterial> oreDictToSimpleDust = new HashMap<>();
 
 
     public GADustItem(short metaItemOffset) {
@@ -26,7 +35,9 @@ public class GADustItem extends StandardMetaItem {
     public void registerSubItems() {
         for (SimpleDustMaterial material : GA_DUSTS) {
             addItem(material.id, material.name);
+            String ore = material.getOre();
             OreDictUnifier.registerOre(new ItemStack(this, 1, material.id), material.getOre());
+            oreDictToSimpleDust.put(ore, material);
         }
     }
 
@@ -60,5 +71,13 @@ public class GADustItem extends StandardMetaItem {
         }
     }
 
-
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, @Nullable World worldIn, List<String> lines, ITooltipFlag tooltipFlag) {
+        super.addInformation(itemStack, worldIn, lines, tooltipFlag);
+        String oreDict = OreDictUnifier.getOreDictionaryNames(itemStack).stream().filter(oreDictToSimpleDust::containsKey).findFirst().orElse("");
+        if (!oreDict.isEmpty() && !oreDictToSimpleDust.get(oreDict).chemicalFormula.isEmpty()) {
+            lines.add(oreDictToSimpleDust.get(oreDict).chemicalFormula);
+        }
+    }
 }
