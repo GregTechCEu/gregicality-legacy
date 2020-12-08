@@ -26,6 +26,12 @@ public class CTLargeRecipeMap {
         this.largeRecipeMap = largeRecipeMap;
     }
 
+    @ZenCaster
+    @ZenMethod
+    public RecipeMap<LargeRecipeBuilder> asRecipeMap() {
+        return this.largeRecipeMap;
+    }
+
     @ZenMethod("recipeBuilder")
     @Optional.Method(modid = Gregicality.MODID)
     public CTLargeRecipeBuilder ctLargeRecipeBuilder() {
