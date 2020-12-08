@@ -1060,13 +1060,13 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
                 .input(dust, SodiumHydroxide)
-                .fluidOutputs(Sodiumformate.getFluid(1000))
+                .fluidOutputs(SodiumFormate.getFluid(1000))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Sodiumformate.getFluid(2000))
+                .fluidInputs(SodiumFormate.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(FormicAcid.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
