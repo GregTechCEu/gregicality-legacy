@@ -1728,7 +1728,7 @@ material.umv_superconductor_base=UMV Superconductor Base
 material.uxv_superconductor=UXV Superconductor
 material.uxv_superconductor_base=UXV Superconductor Base
 material.quantum=Quantum
-material.black_titaniun=Black Titanium
+material.black_titanium=Black Titanium
 material.tungsten_titanium_carbide=Tungsten Titanium Carbide
 material.titan_steel=Titan Steel
 material.inconel_b=Inconel 792
@@ -2735,7 +2735,7 @@ fluid.liquid_helium=Liquid Helium
 
 fluid.vanadium_waste_solution=Vanadium Waste Solution
 fluid.uranyl_chloride_solution=Uranyl Chloride Solution
-fluid.uranyl_nitrate_solution=Uranyl Nitrate Soluiton
+fluid.uranyl_nitrate_solution=Uranyl Nitrate Solution
 fluid.uranium_sulfate_waste_solution=Uranium Sulfate Waste Solution
 fluid.purified_uranyl_nitrate_solution=Purified Uranyl Nitrate Solution
 fluid.uranium_diuranate=Uranium Diuranate Solution
