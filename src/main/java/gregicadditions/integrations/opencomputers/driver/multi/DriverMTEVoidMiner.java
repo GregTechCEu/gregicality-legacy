@@ -49,17 +49,22 @@ public class DriverMTEVoidMiner extends DriverSidedTileEntity {
 
         @Callback(doc = "function():boolean --  Returns is over heat.")
         public Object[] isOverHeat(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityVoidMiner.class, tileEntity,"overheat")};
+            return new Object[] {tileEntity.isOverheat()};
         }
 
         @Callback(doc = "function():number --  Returns the temperature of machine.")
         public Object[] getTemperature(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityVoidMiner.class, tileEntity,"temperature")};
+            return new Object[] {tileEntity.getTemperature()};
         }
 
         @Callback(doc = "function():number --  Returns the max temperature of machine.")
         public Object[] getMaxTemperature(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityVoidMiner.class, tileEntity,"maxTemperature")};
+            return new Object[] {tileEntity.getMaxTemperature()};
+        }
+
+        @Callback(doc = "function():number --  Returns the drilling fluid amount of machine.")
+        public Object[] getDrillingFluidAmount(final Context context, final Arguments args) {
+            return new Object[] {tileEntity.getCurrentDrillingFluid()};
         }
 
     }

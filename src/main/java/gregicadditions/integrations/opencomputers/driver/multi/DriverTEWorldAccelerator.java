@@ -48,14 +48,14 @@ public class DriverTEWorldAccelerator extends DriverSidedTileEntity {
             super(holder, tileEntity, "gtce_tileEntityWorldAccelerator");
         }
 
-        @Callback(doc = "function():number --  Returns the tile mode of machine.")
-        public Object[] getTileMode(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(TileEntityWorldAccelerator.class, tileEntity,"tileMode")};
+        @Callback(doc = "function():boolean --  Returns the mode of machine.")
+        public Object[] isTileMode(final Context context, final Arguments args) {
+            return new Object[] {tileEntity.isTileMode()};
         }
 
-        @Callback(doc = "function(isTile:boolean) --  Sets the tile mode of machine.")
+        @Callback(doc = "function(isTile:boolean) --  Sets the mode of machine.")
         public Object[] setTileMode(final Context context, final Arguments args) {
-            ObfuscationReflectionHelper.setPrivateValue(TileEntityWorldAccelerator.class, tileEntity, args.checkBoolean(0),"tileMode");
+            tileEntity.setTileMode(args.checkBoolean(0));
             return new Object[] {};
         }
 

@@ -51,7 +51,7 @@ public class DriverTEFusionReactor extends DriverSidedTileEntity {
 
         @Callback(doc = "function():number --  Returns the heat of machine.")
         public Object[] getHeat(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(TileEntityFusionReactor.class, tileEntity,"heat")};
+            return new Object[] {tileEntity.getHeat()};
         }
 
     }

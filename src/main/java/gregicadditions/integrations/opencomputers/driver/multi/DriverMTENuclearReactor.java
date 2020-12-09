@@ -62,12 +62,12 @@ public class DriverMTENuclearReactor extends DriverSidedTileEntity {
 
         @Callback(doc = "function():number --  Returns the recipe base heat of machine.")
         public Object[] getRecipeBaseHeat(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityNuclearReactor.class, tileEntity,"recipeBaseHeat")};
+            return new Object[] {tileEntity.getRecipeBaseHeat()};
         }
 
         @Callback(doc = "function():number --  Returns the rod additional temperature of machine.")
         public Object[] getRodAdditionalTemperature(final Context context, final Arguments args) {
-            return new Object[] {ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityNuclearReactor.class, tileEntity,"rodAdditionalTemperature")};
+            return new Object[] {tileEntity.getRodAdditionalTemperature()};
         }
 
     }
