@@ -226,4 +226,12 @@ public class TileEntityWorldAccelerator extends GATieredMetaTileEntity implement
         }
         return super.getCapability(capability, side);
     }
+
+    public boolean isTileMode() {
+        return tileMode;
+    }
+
+    public void setTileMode(boolean tileMode) {
+        this.tileMode = tileMode;
+    }
 }
