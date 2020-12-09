@@ -1250,6 +1250,13 @@ recipemap.nuclear_breeder.name=增殖核反应堆
 recipemap.decay_chamber.name=衰变室
 recipemap.green_house.name=温室
 recipemap.bio_reactor.name=生物反应器
+recipemap.gas_centrifuge.name=气体离心机
+recipemap.large_engraver.name=大型激光蚀刻机
+recipemap.adv_fusion.name=进阶聚变反应堆
+recipemap.simple_qubit_generator.name=量子计算机
+recipemap.stellar_forge.name=恒星炎炀锻炉
+recipemap.plasma_condenser.name=等离子冷凝器
+recipemap.drilling_rig.name=钻井平台流体产出
 
 gtadditions.recipe.drilling_rig.fluid=%s
 gtadditions.recipe.drilling_rig.dimension_whitelist=维度白名单：%s
@@ -1264,6 +1271,7 @@ gtadditions.recipe.drilling_rig.weight=抽取权重：%d
 
 gregtech.recipe.base_heat_production=堆温：%dC
 gregtech.recipe.hot_coolant=热冷却液温度：%dC
+gregtech.recipe.coil_tier=线圈等级：%d
 
 material.brick=砖
 material.fireclay=耐火粘土
