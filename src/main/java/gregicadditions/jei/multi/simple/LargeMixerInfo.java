@@ -6,6 +6,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeMixer;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -34,7 +35,7 @@ public class LargeMixerInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.LARGE_MIXER, EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeMixer.casingMaterial))
-					.where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+					.where('Y', GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
