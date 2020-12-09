@@ -321,7 +321,6 @@ public class Circuits {
                 .input(wireGtQuadruple, Cinobite, 6)
                 .inputs(UHASOC.getStackForm(64))
                 .inputs(UHPIC.getStackForm(64))
-                .input(plate, Quantum, 2)
                 .input(frameGt, Quantum, 1)
                 .input(plate, Quantum, 8)
                 .input(foil, Zylon, 64)

@@ -6,6 +6,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.client.resources.I18n;
 
 public class GADrillingRigCategory implements IRecipeCategory<GADrillingRigRecipeWrapper> {
 
@@ -22,7 +23,7 @@ public class GADrillingRigCategory implements IRecipeCategory<GADrillingRigRecip
 
     @Override
     public String getTitle() {
-        return "drilling_rig";
+        return I18n.format("recipemap.drilling_rig.name");
     }
 
     @Override

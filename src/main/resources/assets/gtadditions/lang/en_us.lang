@@ -1250,6 +1250,13 @@ recipemap.nuclear_breeder.name=Nuclear Reactor Breeder
 recipemap.decay_chamber.name=Decay Chamber
 recipemap.green_house.name=Green House
 recipemap.bio_reactor.name=Bio Reactor
+recipemap.gas_centrifuge.name=Gas Centrifuge
+recipemap.large_engraver.name=Large Engraver
+recipemap.adv_fusion.name=Advanced Fusion
+recipemap.simple_qubit_generator.name=Qubit Generator
+recipemap.stellar_forge.name=Stellar Forge
+recipemap.plasma_condenser.name=Plasma Condenser
+recipemap.drilling_rig.name=Drilling Fluid
 
 gtadditions.recipe.drilling_rig.fluid=%s
 gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
@@ -1264,6 +1271,7 @@ gtadditions.recipe.drilling_rig.weight=Weight: %d
 
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
+gregtech.recipe.coil_tier=Coil Tier: %d
 
 material.brick=Brick
 material.fireclay=Fireclay
