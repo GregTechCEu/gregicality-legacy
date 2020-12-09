@@ -154,7 +154,7 @@ metaitem.tial_chloride.name=氯化钛铝合金
 metaitem.dimethylaminopyridine.name=二甲氨基吡啶
 metaitem.pdirreoceos.name=钯-铱-氧化铼-铈-锇-硅混合催化剂
 metaitem.sodium_ethoxide.name=乙醇钠
-metaitem.mgcl_brominide.name=溴氯化镁
+metaitem.mgcl_bromide.name=溴氯化镁
 metaitem.n_methylglicine.name=肌氨酸
 metaitem.sodium_nitrite.name=亚硝酸钠
 metaitem.znfealcl_catalyst.name=锌-铁-铝-氯混合催化剂
@@ -214,7 +214,7 @@ metaitem.sterilized.petri.dish.name=无菌培养皿
 metaitem.contaminated.petri.dish.name=被污染的培养皿
 metaitem.clean.culture.name=预备培养皿
 metaitem.piezoelectric.crystal.name=压电晶体
-metaitem.pyrolitic_carbon.name=热解碳
+metaitem.pyrolytic_carbon.name=热解碳
 
 
 metaitem.electrode.apatite.name=磷灰石电子管元件
@@ -488,7 +488,7 @@ metaarmor.hud.gravi_engine=重力引擎：%s
 metaarmor.energy_share.enable=充能模式：工具充能已启用
 metaarmor.energy_share.disable=充能模式：工具充能已禁用
 metaarmor.energy_share.tooltip=充能模式：%s
-metaarmor.energy_share.tooltip.guide=手持物品Shift右键以更改模式
+metaarmor.energy_share.tooltip.guide=手持物品潜行右键以更改模式
 
 
 
@@ -1055,7 +1055,7 @@ gtadditions.machine.nuclear_breeder.name=增殖核反应堆
 gtadditions.machine.boiling_water_reactor.uranium.name=铀热核反应堆
 gtadditions.machine.boiling_water_reactor.plutonium.name=钚热核反应堆
 gtadditions.machine.simple_ore_washer.name=简易洗矿机
-gtadditions.machine.simple_ore_washer.tooltip=坩埚的替代品......
+gtadditions.machine.simple_ore_washer.tooltip=总比坩埚好点......
 
 gtadditions.machine.replicator.tooltip=产出最纯净的元素
 
@@ -1097,7 +1097,7 @@ gtadditions.machine.fluid_hatch.export_filtered.max.name=过滤输出仓(MAX)
 gtadditions.machine.gas_centrifuge.name=气体离心机
 gtadditions.machine.qubit_computer.name=量子计算机
 gtadditions.machine.stellar_forge.name=恒星炎炀锻炉
-gtadditions.machine.void_miner.uhv.name=次时代虚空采矿机
+gtadditions.machine.void_miner.uhv.name=次世代虚空采矿机
 gtadditions.machine.void_miner.uev.name=终焉虚空采矿机
 gtadditions.machine.hyper_reactor.uv.name=超能反应堆 I
 gtadditions.machine.hyper_reactor.uhv.name=超能反应堆 II
@@ -1162,7 +1162,7 @@ tile.ga_transparent_casing.nickel_reinforced_glass.name=镍强化玻璃
 tile.ga_transparent_casing.chrome_reinforced_glass.name=铬强化玻璃
 tile.ga_transparent_casing.tungsten_reinforced_glass.name=钨强化玻璃
 tile.ga_transparent_casing.iridium_reinforced_glass.name=铱强化玻璃
-tile.ga_transparent_casing.osmium_reinforced_glass.name=锇强化玻璃
+tile.ga_transparent_casing.osmium_reinforced_glass.name=铱锇合金强化玻璃
 tile.ga_quantum_casing.computer.name=量子计算机外壳
 tile.ga_quantum_casing.generator.name=量子位发生器外壳
 tile.ga_multiblock_casing2.naquadria_charge.name=超能硅岩爆弹
@@ -1727,6 +1727,24 @@ material.umv_superconductor=UMV超导
 material.umv_superconductor_base=UMV超导基
 material.uxv_superconductor=UXV超导
 material.uxv_superconductor_base=UXV超导基
+material.quantum=量子合金
+material.black_titanium=黑钛合金
+material.tungsten_titanium_carbide=碳化钨钛合金
+material.titan_steel=泰坦钢
+material.inconel_b=因康镍合金-792
+material.pikyonium=皮寇合金
+material.lafium=拉孚合金
+material.zeron=赛龙-100
+material.cinobite=希诺合金
+material.hdcs=高强度复合钢
+material.trinium=三元金属
+material.adamantium=艾德曼合金
+material.vibranium=振金
+material.proto_adamantium=原始艾德曼合金
+material.trinium_titanium=三元钛合金
+material.taranium=塔兰金属
+
+
 
 gregtech.fluid.hot=热%s
 gregtech.fluid.hexachloride=六氯化%s
@@ -2500,6 +2518,39 @@ metaitem.degenerate.rhenium.plate.name=简并态铼板
 metaitem.rhenium.plasma.containment.cell.name=铼等离子体密闭壳
 metaitem.plasma.containment.cell.name=等离子体密闭壳
 
+metaitem.vanadium_slag.name=含钒炉渣
+metaitem.vanadium_slag_dust.name=含钒炉渣粉
+metaitem.sodium_vanadate.name=钒酸钠
+metaitem.ammonium_vanadate.name=钒酸铵
+metaitem.vanadium_oxide.name=五氧化二钒
+metaitem.barium_sulfide.name=硫化钡
+metaitem.barium_carbonate.name=碳酸钡
+metaitem.barium_oxide.name=氧化钡
+metaitem.barium_aluminate.name=铝酸钡
+
+metaitem.pitchblende_barium_mixture.name=沥青铀-碳酸钡混合物
+metaitem.potassium_uranyl_carbonate.name=三碳酸铀酰钾
+metaitem.uranium_peroxide_thorium_oxide.name=四氧化铀-氧化钍混合物
+metaitem.uranium_thorium_oxide.name=二氧化铀-氧化钍混合物
+metaitem.uranium_thorium_sulfate.name=硫酸铀酰-硫酸钍混合物
+metaitem.uranium_thorium_nitrate.name=硝酸铀酰-硝酸钍混合物
+metaitem.uranium_oxide_thorium_nitrate.name=氧化铀-硝酸钍混合物
+metaitem.uranium_dioxide=二氧化铀
+metaitem.thorium_dioxide=二氧化钍
+metaitem.cesium_hydroxide.name=氢氧化铯
+metaitem.aluminium_hydroxide.name=氢氧化铝
+metaitem.potassium_carbonate.name=碳酸钾
+
+metaitem.chromium_oxide.name=氧化铬
+metaitem.nialo_catalyst.name=氧化镍-氧化铝催化剂
+metaitem.fecro_catalyst.name=氧化铁-氧化铬催化剂
+metaitem.roasted_spodumene.name=烘制锂辉石
+metaitem.roasted_lepidolite.name=烘制锂云母
+metaitem.lithium_chloride.name=氯化锂
+metaitem.lik_chloride_eutetic.name=共晶氯化锂-氯化钾混合物
+metaitem.calcium_fluoride.name=氟化钙
+metaitem.potassium_sulfate.name=硫酸钾
+metaitem.aluminium_sulfate.name=硫酸铝
 
 fluid.naquadric_solution=硅岩溶液
 fluid.enriched_naquadric_solution=富集硅岩溶液
@@ -2681,6 +2732,34 @@ fluid.phosgene=碳酰氯
 fluid.isopropyl_alcohol=异丙醇
 fluid.degenerate_rhenium_plasma=简并态铼等离子体
 fluid.liquid_helium=液氦
+
+fluid.vanadium_waste_solution=钒废液
+fluid.uranyl_chloride_solution=氯化铀酰溶液
+fluid.uranyl_nitrate_solution=硝酸铀酰溶液
+fluid.uranium_sulfate_waste_solution=硫酸铀废液
+fluid.purified_uranyl_nitrate_solution=纯化硝酸铀酰溶液
+fluid.uranium_diuranate=重铀酸铀溶液
+fluid.hot_uranium_diuranate=热重铀酸铀溶液
+fluid.hot_potassium_uranyl_carbonate=热三碳酸铀酰钾溶液
+fluid.uranium_refinement_waste_solution=精纯铀废液
+fluid.thorium_nitrate_solution=硝酸钍溶液
+
+fluid.sodium_hexafluoroaluminate=六氟铝酸钠
+fluid.sodium_carbonate_solution=碳酸钠溶液
+fluid.sodium_sulfate_solution=硫酸钠溶液
+fluid.sodium_chromate_solution=铬酸钠溶液
+fluid.sodium_dichromate_solution=重铬酸钠溶液
+fluid.poor_nitrogen_mix=贫氮混合物
+fluid.rich_nitrogen_mix=富氮混合物
+fluid.oxidised_nitrogen_mix=氧化富氮混合物
+fluid.purified_nitrogen_mix=纯化富氮混合物
+fluid.hot_purified_nitrogen_mix=热纯化富氮混合物
+fluid.carbonated_ethanolamine=碳酸乙醇胺
+fluid.ammonia_rich_mix=富氨混合物
+fluid.dissolved_lithium_ores=溶解态锂矿物质
+fluid.lithium_carbonate_solution=碳酸锂溶液
+fluid.lithium_chloride_solution=氯化锂溶液
+fluid.molten_lik_chloride_eutetic=熔融共晶氯化锂-氯化钾混合物
 
 material.naquadric_compound=硅岩化合物
 material.enriched_naquadric_compound=富集硅岩化合物

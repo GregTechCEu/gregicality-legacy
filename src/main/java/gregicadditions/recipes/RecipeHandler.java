@@ -92,10 +92,17 @@ public class RecipeHandler {
         if (material.materialComponents.size() <= 1 || material.blastFurnaceTemperature == 0)
             return;
 
+        int totalInputAmount = 0;
+
+        //compute outputs
+        for (MaterialStack component : material.materialComponents) {
+            totalInputAmount += component.amount;
+        }
+
 
         if (material.materialComponents.size() <= 4) {
             AtomicInteger totalMaterial = new AtomicInteger(0);
-            SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount));
             material.materialComponents.forEach(materialStack -> {
                 if (materialStack.material instanceof DustMaterial) {
                     builder.input(dust, materialStack.material, (int) materialStack.amount);
@@ -108,7 +115,7 @@ public class RecipeHandler {
             builder.buildAndRegister();
         } else {
             AtomicInteger totalMaterial = new AtomicInteger(0);
-            LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount * 2));
             builder.notConsumable(new IntCircuitIngredient((material.materialComponents.size())));
             material.materialComponents.forEach(materialStack -> {
                 if (materialStack.material instanceof DustMaterial) {
