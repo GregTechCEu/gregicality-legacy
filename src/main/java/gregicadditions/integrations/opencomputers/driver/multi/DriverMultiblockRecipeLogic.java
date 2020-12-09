@@ -1,4 +1,4 @@
-package gregicadditions.integrations.opencomputers.driver;
+package gregicadditions.integrations.opencomputers.driver.multi;
 
 import gregicadditions.integrations.opencomputers.driver.environment.EnvironmentMetaTileEntity;
 import gregtech.api.capability.GregtechTileCapabilities;
