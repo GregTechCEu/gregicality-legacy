@@ -712,7 +712,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Vibranium = new IngotMaterial(717, "vibranium", 0x828aad, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Vb"), 55000);
     public static final IngotMaterial ProtoAdamantium = new IngotMaterial(716, "proto_adamantium", 0x4662d4, MaterialIconSet.SHINY, 7, of(new MaterialStack(Adamantium, 3), new MaterialStack(Promethium, 2)), CORE_METAL, null, 35000);
     public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 12500);
-    public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
+    public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0x0c0c0d, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
 
 
     public static Material UEV = new MarkerMaterial("UEV");
