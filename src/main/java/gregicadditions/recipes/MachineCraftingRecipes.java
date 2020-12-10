@@ -492,20 +492,6 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.FUSION_REACTOR[2].getStackForm()).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(60000)
-                .inputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.LASER_ENGRAVER, 4),
-                        OreDictUnifier.get(plate, Americium, 4),
-                        OreDictUnifier.get(plate, NetherStar, 4),
-                        EMITTER_ZPM.getStackForm(4),
-                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32),
-                        OreDictUnifier.get(cableGtQuadruple, Naquadah, 32))
-                .input(circuit, Tier.Ultimate)
-                .input(circuit, Tier.Ultimate)
-                .input(circuit, Tier.Ultimate)
-                .input(circuit, Tier.Ultimate)
-                .fluidInputs(SolderingAlloy.getFluid(1440))
-                .outputs(GATileEntities.LARGE_LASER_ENGRAVER.getStackForm()).buildAndRegister();
-
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(3000).EUt(480).fluidInputs(SolderingAlloy.getFluid(GTValues.L * 10)).inputs(ELECTRIC_PUMP_HV.getStackForm(2), MetaTileEntities.PUMP[2].getStackForm()).input(circuit, Tier.Advanced, 2).input(GAEnums.GAOrePrefix.gtMetalCasing, StainlessSteel, 5).outputs(GATileEntities.DRILLING_RIG.getStackForm()).buildAndRegister();
         ModHandler.addShapedRecipe("ga_solar_sampler", GATileEntities.SOLAR_FLUID_SAMPLER.getStackForm(), "GGG", "PCP", "EDE", 'G', new ItemStack(Blocks.GLASS, 1), 'P', new UnificationEntry(plate, StainlessSteel), 'C', MetaTileEntities.HULL[GTValues.HV].getStackForm(), 'D', DRILL_HV.getStackForm(StainlessSteel), 'E', new UnificationEntry(cableGtSingle, Gold));
 
