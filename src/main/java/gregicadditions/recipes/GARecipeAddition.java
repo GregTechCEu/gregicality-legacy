@@ -712,7 +712,7 @@ public class GARecipeAddition {
         //rocket fuel tier 1
         MIXER_RECIPES.recipeBuilder().duration(16).EUt(240).fluidInputs(LiquidOxygen.getFluid(100), RP1.getFluid(25)).fluidOutputs(RP1RocketFuel.getFluid(25)).buildAndRegister();
 
-        //Rocket fuel chemical
+        //Rocket fuel chemicalcha
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(Ammonia.getFluid(1000), HydrogenPeroxide.getFluid(1000)).fluidOutputs(Hydrazine.getFluid(1000), Water.getFluid(100)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240).fluidInputs(Air.getFluid(15000), EthylAnthraHydroQuinone.getFluid(5000), Anthracene.getFluid(1000)).fluidOutputs(HydrogenPeroxide.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(800).EUt(120).fluidInputs(Hydrogen.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000)).buildAndRegister();
@@ -1350,6 +1350,9 @@ public class GARecipeAddition {
         BariumChain.init();
         UraniumChain.init();
         VanadiumChain.init();
+        IodineChain.init();
+        ZirconChain.init();
+        ZincChain.init();
     }
 
     public static void forestrySupport() {
