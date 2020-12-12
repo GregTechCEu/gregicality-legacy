@@ -755,6 +755,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial GermaniumChloride = new SimpleFluidMaterial("germanium_chloride",0xfcfcfa);
     public static final SimpleFluidMaterial SodiumHydroxideSolution = new SimpleFluidMaterial("sodium_hydroxide_solution",0xfcfcfa);
     public static final SimpleFluidMaterial IronSulfate = new SimpleFluidMaterial("iron_sulfate",0xfcfcfa);
+    
+    public static final SimpleDustMaterial TitaniumNitrate = new SimpleDustMaterial("titanium_nitrate",0xFF0066,(short) 154,MaterialIconSet.DULL);
+    public static final SimpleFluidMaterial LithiumHydroxideSolution = new SimpleFluidMaterial("lithium_hydroxide_solution",0xfcfcfa);
+    public static final SimpleFluidMaterial LithiumPeroxideSolution = new SimpleFluidMaterial("lithium_peroxide",0xfcfcfa);
+    public static final SimpleFluidMaterial LithiumCarbonatePureSolution = new SimpleFluidMaterial("lithium_carbonate_pure_solution",0xfcfcfa);
+    public static final SimpleFluidMaterial Ozone = new SimpleFluidMaterial("ozone",0x0099FF);
+    public static final SimpleFluidMaterial NitrogenPentoxide = new SimpleFluidMaterial("nitrogen_pentoxide",0x0033C0);
 
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION, null, 25000);
     public static final IngotMaterial BlackTitanium = new IngotMaterial(856, "black_titanium", 0x6C003B, MaterialIconSet.SHINY, 7, of(new MaterialStack(Titanium, 26), new MaterialStack(Lanthanum, 6), new MaterialStack(Tungsten, 4), new MaterialStack(Cobalt, 3), new MaterialStack(Manganese, 2), new MaterialStack(Phosphorus, 2), new MaterialStack(Palladium, 2), new MaterialStack(Niobium, 1), new MaterialStack(Argon, 5)), CORE_METAL | DISABLE_DECOMPOSITION, null, Titanium.blastFurnaceTemperature * 16);
@@ -772,6 +779,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial ProtoAdamantium = new IngotMaterial(716, "proto_adamantium", 0x4662d4, MaterialIconSet.SHINY, 7, of(new MaterialStack(Adamantium, 3), new MaterialStack(Promethium, 2)), CORE_METAL, null, 35000);
     public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 12500);
     public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
+    public static final IngotMaterial LithiumTitanate = new IngotMaterial(713,"lithium_titanate",0xe3568e,MaterialIconSet.SHINY,5,of(new MaterialStack(Lithium, 2),new MaterialStack(Titanium,2),new MaterialStack(Oxygen,3)),DISABLE_DECOMPOSITION,null,2800);
+
 
 
     public static Material UEV = new MarkerMaterial("UEV");
@@ -920,6 +929,7 @@ public class GAMaterials implements IMaterialHandler {
         Neodymium.addFlag(GENERATE_BOLT_SCREW);
 
 
+        LithiumTitanate.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);
         Iron.addFlag(GENERATE_METAL_CASING);
