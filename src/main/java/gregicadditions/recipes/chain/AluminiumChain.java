@@ -17,7 +17,7 @@ public class AluminiumChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(125)
-                .input(dust,SodiumHydroxide,3)
+                .input(dust, SodiumHydroxide, 3)
                 .inputs(Alumina.getItemStack())
                 .fluidInputs(HydrofluoricAcid.getFluid(6000))
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
@@ -28,12 +28,12 @@ public class AluminiumChain {
                 .inputs(Alumina.getItemStack())
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Aluminium, 2))
-                .outputs(OreDictUnifier.get(dust,SodiumFluoride,3))
+                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 3))
                 .outputs(AluminiumTrifluoride.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(125)
-                .input(dust,SodiumFluoride,3)
+                .input(dust, SodiumFluoride, 3)
                 .inputs(AluminiumTrifluoride.getItemStack())
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .buildAndRegister();

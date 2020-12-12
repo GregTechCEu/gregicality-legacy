@@ -12,7 +12,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class ZirconChain {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(500)
-                .input(dust,Barium)
+                .input(dust, Barium)
                 .fluidInputs(Water.getFluid(2000))
                 .outputs(BariumHydroxide.getItemStack())
                 .fluidOutputs(Hydrogen.getFluid(2000))
@@ -25,14 +25,14 @@ public class ZirconChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(650)
-                .notConsumable(dust,Palladium)
+                .notConsumable(dust, Palladium)
                 .fluidInputs(MesitylOxide.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(MethylIsobutylKetone.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(500)
-                .input(dust,Sulfur)
+                .input(dust, Sulfur)
                 .fluidInputs(HydrogenCyanide.getFluid(1000))
                 .fluidOutputs(ThiocyanicAcid.getFluid(1000))
                 .buildAndRegister();
@@ -44,7 +44,7 @@ public class ZirconChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .input(dust,Zircon)
+                .input(dust, Zircon)
                 .fluidInputs(Chlorine.getFluid(4000))
                 .fluidOutputs(ZrHfChloride.getFluid(1000))
                 .fluidOutputs(ZirconChlorinatingResidue.getFluid(1000))
@@ -53,13 +53,13 @@ public class ZirconChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(ZirconChlorinatingResidue.getFluid(2000))
                 .outputs(SiliconChloride.getItemStack())
-                .chancedOutput(OreDictUnifier.get(dust,Cobalt),7500,450)
-                .chancedOutput(OreDictUnifier.get(dust,RareEarth),200,20)
+                .chancedOutput(OreDictUnifier.get(dust, Cobalt), 7500, 450)
+                .chancedOutput(OreDictUnifier.get(dust, RareEarth), 200, 20)
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(125)
                 .inputs(SiliconChloride.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust,Silicon))
+                .outputs(OreDictUnifier.get(dust, Silicon))
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .buildAndRegister();
 
@@ -77,27 +77,27 @@ public class ZirconChain {
                 .fluidInputs(ZrHfSeparationMix.getFluid(200))
                 .fluidOutputs(AmmoniumChloride.getFluid(6000))
                 .fluidOutputs(AmmoniumSulfate.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust,CubicZirconia,3))
-                .chancedOutput(HafniumOxide.getItemStack(3),1000,0)
+                .outputs(OreDictUnifier.get(dust, CubicZirconia, 3))
+                .chancedOutput(HafniumOxide.getItemStack(3), 1000, 0)
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(550)
-                .input(dust,Carbon)
+                .input(dust, Carbon)
                 .fluidInputs(Chlorine.getFluid(4000))
-                .input(dust,CubicZirconia)
+                .input(dust, CubicZirconia)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(ZirconiumTetrachloride.getItemStack())
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(600).blastFurnaceTemp(2500)
                 .inputs(ZirconiumTetrachloride.getItemStack())
-                .input(dust,Magnesium,2)
-                .outputs(OreDictUnifier.get(dust,Zirconium))
-                .outputs(OreDictUnifier.get(dust,MagnesiumChloride,2))
+                .input(dust, Magnesium, 2)
+                .outputs(OreDictUnifier.get(dust, Zirconium))
+                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 2))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(550)
-                .input(dust,Carbon)
+                .input(dust, Carbon)
                 .fluidInputs(Chlorine.getFluid(4000))
                 .inputs(HafniumOxide.getItemStack())
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
@@ -106,16 +106,10 @@ public class ZirconChain {
 
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(600).blastFurnaceTemp(2500)
                 .inputs(HafniumChloride.getItemStack())
-                .input(dust,Magnesium,2)
-                .outputs(OreDictUnifier.get(dust,Hafnium))
-                .outputs(OreDictUnifier.get(dust,MagnesiumChloride,2))
+                .input(dust, Magnesium, 2)
+                .outputs(OreDictUnifier.get(dust, Hafnium))
+                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 2))
                 .buildAndRegister();
-
-
-
-
-
-
 
 
     }
