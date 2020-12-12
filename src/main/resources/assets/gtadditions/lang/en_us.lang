@@ -1751,6 +1751,7 @@ material.vibranium=Vibranium
 material.proto_adamantium=Proto Adamantium
 material.trinium_titanium=Trinium Titanium
 material.taranium=Taranium
+material.lithium_titanate=Lithium Titanate
 
 
 
@@ -2575,6 +2576,8 @@ metaitem.cellulose.name=Cellulose
 metaitem.germanium_oxide.name=Germanium Oxide
 metaitem.sodium_phosphate.name=SodiumDiphosphate
 
+metaitem.titanium_nitrate=Titanium Nitrate
+
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
 fluid.naquadriatic_solution=Naquadriatic Solution
@@ -2805,6 +2808,12 @@ fluid.germanic_acid_solution=Germanic Acid Solution
 fluid.grmanium_chloride=Germanium Chloride
 fluid.sodium_hydroxide_solution=Sodium Hydroxide Solution
 fluid.iron_sulfate=Iron Sulfate
+
+fluid.lithium_hydroxide_solution=Lithium Hydroxide Solution
+fluid.lithium_peroxide_solution=Lithium Hydroxide Solution
+fluid.lithium_carbonate_pure_solution=Pure Lithium Carbonate Solution
+fluid.ozone=Ozone
+fluid_nitrogen_pentoxide=Dinitrogen Pentoxide
 
 material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
