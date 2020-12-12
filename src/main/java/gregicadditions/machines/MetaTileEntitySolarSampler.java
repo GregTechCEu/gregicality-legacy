@@ -124,6 +124,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
         return false;
     }
 
+    @Override
     protected IItemHandlerModifiable createImportItemHandler() {
         return new ItemStackHandler(1) {
             @Override
@@ -133,9 +134,15 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
         };
     }
 
+
     @Override
     protected IItemHandlerModifiable createExportItemHandler() {
-        return new ItemStackHandler(1);
+        return new ItemStackHandler(1) {
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return false;
+            }
+        };
     }
 
     @Override

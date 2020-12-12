@@ -243,4 +243,8 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
             heat = compound.getInteger("Heat");
         }
     }
+
+    public int getHeat() {
+        return heat;
+    }
 }

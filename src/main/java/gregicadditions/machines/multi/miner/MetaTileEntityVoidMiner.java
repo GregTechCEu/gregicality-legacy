@@ -368,4 +368,20 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
         }
     }
 
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public boolean isOverheat() {
+        return overheat;
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public double getCurrentDrillingFluid() {
+        return currentDrillingFluid;
+    }
+
 }
