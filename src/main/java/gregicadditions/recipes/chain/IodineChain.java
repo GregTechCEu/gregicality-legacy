@@ -12,7 +12,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class IodineChain {
     public static void init() {
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(1250)
-                .input(dust,Caliche)
+                .input(dust, Caliche)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(CalicheIodateBrine.getFluid(1000))
                 .buildAndRegister();
@@ -21,7 +21,7 @@ public class IodineChain {
                 .fluidInputs(CalicheIodateBrine.getFluid(1000))
                 .fluidInputs(SulfurDioxide.getFluid(1000))
                 .fluidOutputs(IodideSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,SodiumSulfate))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(1250)
@@ -40,13 +40,13 @@ public class IodineChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(90).EUt(600)
                 .fluidInputs(KeroseneIodineSolution.getFluid(1000))
                 .fluidOutputs(Kerosene.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Iodine))
+                .outputs(OreDictUnifier.get(dust, Iodine))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(750)
                 .fluidInputs(CalicheNitrateSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Niter))
-                .outputs(OreDictUnifier.get(dust,RockSalt))
+                .outputs(OreDictUnifier.get(dust, Niter))
+                .outputs(OreDictUnifier.get(dust, RockSalt))
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(30)
@@ -69,7 +69,7 @@ public class IodineChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(230).EUt(600)
                 .fluidInputs(IodineSlurry.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Iodine))
+                .outputs(OreDictUnifier.get(dust, Iodine))
                 .buildAndRegister();
 
     }

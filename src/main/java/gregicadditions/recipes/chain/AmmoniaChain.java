@@ -1,22 +1,23 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 
-
 public class AmmoniaChain {
     public static void init() {
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust,Garnierite)
+                .input(dust, Garnierite)
                 .inputs(Alumina.getItemStack())
                 .outputs(NiAlOCatalyst.getItemStack())
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust,BandedIron)
+                .input(dust, BandedIron)
                 .inputs(ChromiumOxide.getItemStack())
                 .outputs(FeCrOCatalyst.getItemStack())
                 .buildAndRegister();
@@ -57,13 +58,14 @@ public class AmmoniaChain {
                 .buildAndRegister();
 
         FLUID_HEATER_RECIPES.recipeBuilder().duration(180).EUt(120)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(PurifiedNitrogenMix.getFluid(1000))
                 .fluidOutputs(HotPurifiedNitrogenMix.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(HotPurifiedNitrogenMix.getFluid(1000))
-                .notConsumable(dust,Magnetite)
+                .notConsumable(dust, Magnetite)
                 .fluidOutputs(AmmoniaRichMix.getFluid(1000))
                 .buildAndRegister();
 

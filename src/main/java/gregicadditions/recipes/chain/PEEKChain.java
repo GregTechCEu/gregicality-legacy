@@ -28,7 +28,7 @@ public class PEEKChain {
                 .duration(10)
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
-            .fluidInputs(Water.getFluid(10000))
+                .fluidInputs(Water.getFluid(10000))
                 .input(dust, SodiumNitrate, 10)
                 .fluidOutputs(SodiumNitrateSolution.getFluid(20000))
                 .EUt(122880)
