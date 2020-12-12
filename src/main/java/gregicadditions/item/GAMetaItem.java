@@ -173,8 +173,8 @@ public class GAMetaItem extends MaterialMetaItem {
         NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
 
 
-        WAFER_AMERICIUM = addItem(333, "wafer.americium");
-        WAFER_EUROPIUM = addItem(334, "wafer.europium");
+        WAFER_DUBNIUM = addItem(333, "wafer.dubnium");
+        WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
         COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
@@ -182,8 +182,8 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UIV);
         COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UMV);
 
-        BOULE_AMERICIUM = addItem(340, "boule.americium");
-        BOULE_EUROPIUM = addItem(341, "boule.europium");
+        BOULE_DUBNIUM = addItem(340, "boule.dubnium");
+        BOULE_RUTHERFORDIUM = addItem(341, "boule.rutherfordium");
         BOULE_NEUTRONIUM = addItem(342, "boule.neutronium");
 
         UNSTABLE_STAR = addItem(343, "unstable.star");
