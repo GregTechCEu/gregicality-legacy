@@ -210,7 +210,8 @@ public class ZincChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(150).EUt(500)
-                .fluidInputs(IronSulfate.getFluid(2000))
+                .fluidInputs(IronSulfate.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust,Iron))
                 .outputs(OreDictUnifier.get(dust,Sulfur))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
