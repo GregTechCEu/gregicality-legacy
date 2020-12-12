@@ -1,9 +1,9 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAEnums;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.CRACKER_UNIT_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -143,30 +143,30 @@ public class UraniumChain {
             .outputs(UraniumOxideThoriumNitrate.getItemStack())
             .fluidOutputs(NitrogenDioxide.getFluid(700))
             .buildAndRegister();
-            
-            
+
+
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(500)
-            .inputs(UraniumOxideThoriumNitrate.getItemStack())
-            .fluidInputs(DistilledWater.getFluid(1000))
-            .outputs(OreDictUnifier.get(dioxide,UraniumRadioactive.getMaterial()))
+                .inputs(UraniumOxideThoriumNitrate.getItemStack())
+                .fluidInputs(DistilledWater.getFluid(1000))
+                .outputs(OreDictUnifier.get(GAEnums.GAOrePrefix.dioxide, UraniumRadioactive.getMaterial()))
             .fluidOutputs(ThoriumNitrateSolution.getFluid(300))
             .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
-            .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
-            .outputs(OreDictUnifier.get(oxide,Thorium))
+                .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
+                .outputs(OreDictUnifier.get(GAEnums.GAOrePrefix.oxide, Thorium))
             .fluidOutputs(NitrogenDioxide.getFluid(1000))
             .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
-            .input(dioxide,UraniumRadioactive.getMaterial())
+                .input(GAEnums.GAOrePrefix.dioxide, UraniumRadioactive.getMaterial())
             .input(dust,Carbon)
             .outputs(OreDictUnifier.get(dust,UraniumRadioactive.getMaterial()))
 	    .fluidOutputs(CarbonDioxide.getFluid(1000))
 	    .buildAndRegister();
 
-	    BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
-	    .input(oxide,Thorium)
+        BLAST_RECIPES.recipeBuilder().duration(250).EUt(500).blastFurnaceTemp(1000)
+                .input(GAEnums.GAOrePrefix.oxide, Thorium)
 	    .input(dust,Calcium)
 	    .input(dust,CalciumChloride)
 	    .outputs(OreDictUnifier.get(dust,ThoriumRadioactive.getMaterial()))

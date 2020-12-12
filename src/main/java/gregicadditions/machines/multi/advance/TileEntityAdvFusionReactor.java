@@ -14,7 +14,6 @@ import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.AdvFusionRecipeBuilder;
 import gregicadditions.recipes.GARecipeMaps;
-import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -103,7 +102,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
                     for (int i = coilTier; i < 5; i++) {
                         if (tile.metaTileEntityId.equals(GATileEntities.ENERGY_INPUT[i].metaTileEntityId))
-                            GALog.logger.info("coiltier: " + coilTier + ", matches with i: " + i);
                             return true;
                     }
                     return false;

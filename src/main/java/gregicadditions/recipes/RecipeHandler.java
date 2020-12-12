@@ -6,7 +6,6 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
@@ -92,14 +91,19 @@ public class RecipeHandler {
     public static void processIngotComposition(OrePrefix ingot, IngotMaterial material) {
         if (material.materialComponents.size() <= 1 || material.blastFurnaceTemperature == 0)
             return;
-        GALog.logger.info(material.toString() + " " + material.blastFurnaceTemperature + " " + (material.materialComponents.size() <= 1 && material.blastFurnaceTemperature == 0));
+
+        int totalInputAmount = 0;
+
+        //compute outputs
+        for (MaterialStack component : material.materialComponents) {
+            totalInputAmount += component.amount;
+        }
 
 
         if (material.materialComponents.size() <= 4) {
             AtomicInteger totalMaterial = new AtomicInteger(0);
-            SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount));
             material.materialComponents.forEach(materialStack -> {
-                GALog.logger.info(material.toString() + ":" + materialStack.material.toString());
                 if (materialStack.material instanceof DustMaterial) {
                     builder.input(dust, materialStack.material, (int) materialStack.amount);
                 } else if (materialStack.material instanceof FluidMaterial) {
@@ -111,7 +115,7 @@ public class RecipeHandler {
             builder.buildAndRegister();
         } else {
             AtomicInteger totalMaterial = new AtomicInteger(0);
-            LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration(120);
+            LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount * 2));
             builder.notConsumable(new IntCircuitIngredient((material.materialComponents.size())));
             material.materialComponents.forEach(materialStack -> {
                 if (materialStack.material instanceof DustMaterial) {

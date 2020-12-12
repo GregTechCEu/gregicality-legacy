@@ -274,5 +274,12 @@ public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController 
         this.recipeBaseHeat = data.getInteger("recipeBaseHeat");
     }
 
+    public int getRecipeBaseHeat() {
+        return recipeBaseHeat;
+    }
+
+    public int getRodAdditionalTemperature() {
+        return rodAdditionalTemperature;
+    }
 
 }

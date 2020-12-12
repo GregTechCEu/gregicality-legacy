@@ -128,7 +128,7 @@ public class NuclearHandler {
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.carbide, 1))
                 .fluidInputs(Nitrogen.getFluid(3000))
-                .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.nitride, 1))
+                .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.nitride, 2))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 

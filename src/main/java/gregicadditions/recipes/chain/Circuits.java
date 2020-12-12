@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -20,6 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.item.GAMetaItems.COSMIC_COMPUTER;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -41,11 +41,9 @@ public class Circuits {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:good_circuit"));
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(), "RPR", "TBT", "CCC", 'R', RESISTOR, 'P', new UnificationEntry(plate, WroughtIron), 'T', VACUUM_TUBE, 'B', BASIC_BOARD, 'C', new UnificationEntry(cableGtSingle, RedAlloy));
         ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(), "PCT", "CDC", "TCP", 'C', BASIC_CIRCUIT_LV, 'P', new UnificationEntry(plate, WroughtIron), 'D', DIODE, 'T', new UnificationEntry(cableGtSingle, RedAlloy));
-        GALog.logger.info("soldering fluid");
+
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
-            GALog.logger.info(fluid);
-            GALog.logger.info(fluidSplit[1]);
             int amount = Integer.parseInt(fluidSplit[1]);
             if (amount > 64000) {
                 amount = 64000;
@@ -130,8 +128,8 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(10000).outputs(CRYSTAL_PROCESSOR.getStackForm(4)).inputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(8), SMD_CAPACITOR_CRYSTAL.getStackForm(4), MASTER_BOARD.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, NiobiumTitanium, 2).fluidInputs(fluidStack).buildAndRegister();
             // CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(86000).outputs(CRYSTAL_PROCESSOR.getStackForm(4)).inputs(MASTER_BOARD.getStackForm(), CRYSTAL_SYSTEM_ON_CHIP.getStackForm()).input(wireFine, NiobiumTitanium, 2).fluidInputs(fluidStack).buildAndRegister();
             //ASSEMBLY
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(20000).outputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm()).inputs(CRYSTAL_PROCESSOR.getStackForm(3), CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_RESISTOR_QUANTUM.getStackForm(8), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(wireGtSingle, LuVSuperconductor, 4).fluidInputs(fluidStack).buildAndRegister();
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(20000).outputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm()).inputs(CRYSTAL_PROCESSOR.getStackForm(3), CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_RESISTOR_CRYSTAL.getStackForm(4), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(wireGtSingle, LuVSuperconductor, 4).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(20000).outputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm()).inputs(CRYSTAL_PROCESSOR.getStackForm(3), CENTRAL_PROCESSING_UNIT.getStackForm(64), SMD_RESISTOR_QUANTUM.getStackForm(8), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(wireGtSingle, LuVSuperconductor, 4).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(20000).outputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm()).inputs(CRYSTAL_PROCESSOR.getStackForm(3), CENTRAL_PROCESSING_UNIT.getStackForm(64), SMD_RESISTOR_CRYSTAL.getStackForm(4), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(wireGtSingle, LuVSuperconductor, 4).fluidInputs(fluidStack).buildAndRegister();
             //COMPUTER
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(300).EUt(30000).outputs(CRYSTAL_COMPUTER.getStackForm()).inputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm(4), SMD_DIODE_QUANTUM.getStackForm(16), SMD_RESISTOR_QUANTUM.getStackForm(16), QUANTUM_EYE.getStackForm(1), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(plate, RhodiumPlatedPalladium, 2).input(wireGtSingle, LuVSuperconductor, 16).fluidInputs(fluidStack).buildAndRegister();
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(300).EUt(30000).outputs(CRYSTAL_COMPUTER.getStackForm()).inputs(ENERGY_FLOW_CIRCUIT_LUV.getStackForm(4), SMD_DIODE_CRYSTAL.getStackForm(8), SMD_RESISTOR_CRYSTAL.getStackForm(8), QUANTUM_EYE.getStackForm(1), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(1), MASTER_BOARD.getStackForm()).input(plate, RhodiumPlatedPalladium, 2).input(wireGtSingle, LuVSuperconductor, 16).fluidInputs(fluidStack).buildAndRegister();
@@ -140,8 +138,8 @@ public class Circuits {
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(30000).outputs(CRYSTAL_MAINFRAME.getStackForm()).inputs(CRYSTAL_COMPUTER.getStackForm(2), SMD_RESISTOR_CRYSTAL.getStackForm(48), SMD_TRANSISTOR_CRYSTAL.getStackForm(36), SMD_CAPACITOR_CRYSTAL.getStackForm(32), SMD_DIODE_CRYSTAL.getStackForm(24), HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(4), QUANTUM_STAR.getStackForm(4)).input(frameGt, HSSE, 4).input(wireGtSingle, LuVSuperconductor, 32).fluidInputs(fluidStack).buildAndRegister();
 
             //WETWARE      //PROCESSOR
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CENTRAL_PROCESSING_UNIT.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), NANO_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CRYSTAL_SYSTEM_ON_CHIP.getStackForm(1), SMD_TRANSISTOR_CRYSTAL.getStackForm(16), SMD_CAPACITOR_CRYSTAL.getStackForm(8), CYBER_PROCESSING_UNIT.getStackForm(), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(1)).inputs(CRYSTAL_SYSTEM_ON_CHIP.getStackForm(1), SMD_TRANSISTOR_WETWARE.getStackForm(8), SMD_CAPACITOR_WETWARE.getStackForm(4), CYBER_PROCESSING_UNIT.getStackForm(), QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(1)).input(wireFine, YttriumBariumCuprate, 2).fluidInputs(fluidStack).buildAndRegister();
             //CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000).outputs(WETWARE_PROCESSOR_LUV.getStackForm(4)).inputs(CYBER_PROCESSING_UNIT.getStackForm(), ADVANCED_SYSTEM_ON_CHIP.getStackForm(4)).input(wireFine, NaquadahAlloy, 2).fluidInputs(fluidStack).buildAndRegister();
             fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
 
@@ -152,20 +150,20 @@ public class Circuits {
                             SMD_TRANSISTOR_BIOWARE.getStackForm(8),
                             SMD_CAPACITOR_BIOWARE.getStackForm(4),
                             NEURO_PROCESSOR.getStackForm(),
-                            UHASOC.getStackForm(1))
+                            HASOC.getStackForm(1))
                     .input(wireFine, NaquadahAlloy, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
 
             //COSMIC     //PROCESSOR
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(1920000)
                     .outputs(COSMIC_PROCESSOR.getStackForm(1))
                     .qubit(16)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
-                            SMD_TRANSISTOR.getStackForm(8),
-                            SMD_CAPACITOR.getStackForm(4),
+                            SMD_TRANSISTOR_BIOWARE.getStackForm(32),
+                            SMD_CAPACITOR_BIOWARE.getStackForm(16),
                             NEURO_PROCESSOR.getStackForm(),
                             UHASOC.getStackForm(1))
-                    .input(wireFine, NaquadahAlloy, 4)
+                    .input(wireFine, Cinobite, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
         }
 
@@ -267,23 +265,74 @@ public class Circuits {
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
-                .inputs(SMD_CAPACITOR.getStackForm(16))
-                .inputs(SMD_TRANSISTOR.getStackForm(16))
-                .inputs(SMD_DIODE.getStackForm(16))
-                .inputs(SMD_RESISTOR.getStackForm(16))
-                .inputs(NEURO_PROCESSOR.getStackForm())
-                .input(wireGtSingle, UVSuperconductor, 4)
-                .inputs(ARAM.getStackForm(32))
-                .input(plate, Duranium, 2)
-                .input(foil, Polybenzimidazole, 16)
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(4))
+                .input(wireGtSingle, Cinobite, 4)
+                .inputs(ARAM.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .input(plate, Quantum, 2)
+                .input(foil, Zylon, 16)
                 .outputs(COSMIC_ASSEMBLY.getStackForm())
-                .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1296))
+                .fluidInputs(SterileGrowthMedium.getFluid(4000))
+                .fluidInputs(Tritanium.getFluid(1296))
                 .fluidInputs(Plastic.getFluid(2500))
                 .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .qubit(16)
-                .EUt(240000)
+                .EUt(3840000)
                 .duration(400)
+                .buildAndRegister();
+
+        //COMPUTER
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(COSMIC_ASSEMBLY.getStackForm(4))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(16))
+                .input(wireGtDouble, Cinobite, 2)
+                .inputs(UHPIC.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .input(plate, Quantum, 16)
+                .input(foil, Zylon, 16)
+                .inputs(GRAVI_STAR.getStackForm(32))
+                .outputs(COSMIC_COMPUTER.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(16000))
+                .fluidInputs(Tritanium.getFluid(288))
+                .fluidInputs(Polyetheretherketone.getFluid(1500))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
+                .qubit(16)
+                .EUt(7680000)
+                .duration(600)
+                .buildAndRegister();
+
+        //MAINFRAME
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(COSMIC_COMPUTER.getStackForm(2))
+                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
+                .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(2))
+                .input(wireGtQuadruple, Cinobite, 6)
+                .inputs(UHASOC.getStackForm(64))
+                .inputs(UHPIC.getStackForm(64))
+                .input(frameGt, Quantum, 1)
+                .input(plate, Quantum, 8)
+                .input(foil, Zylon, 64)
+                .inputs(UNSTABLE_STAR.getStackForm(4))
+                .outputs(COSMIC_MAINFRAME.getStackForm())
+                .fluidInputs(SterileGrowthMedium.getFluid(64000))
+                .fluidInputs(Tritanium.getFluid(1296))
+                .fluidInputs(Zylon.getFluid(2500))
+                .fluidInputs(Naquadria.getFluid(1296))
+                .qubit(32)
+                .EUt(24000000)
+                .duration(800)
                 .buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 2
@@ -337,7 +386,7 @@ public class Circuits {
             FluidMaterial material = (FluidMaterial) stack.material;
             int multiplier = (int) stack.amount;
             int time = multiplier == 1L ? 4 : 1;
-            CUTTER_RECIPES.recipeBuilder().duration(960 / time).EUt(60000).inputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm()).fluidInputs(material.getFluid(2 * multiplier)).outputs(RAW_CRYSTAL_CHIP.getStackForm(2)).buildAndRegister();
+            CUTTER_RECIPES.recipeBuilder().duration(960 / time).EUt(60).inputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm()).fluidInputs(material.getFluid(2 * multiplier)).outputs(RAW_CRYSTAL_CHIP.getStackForm(2)).buildAndRegister();
         }
 
         //Circuit Rabbit Hole - Layer 3
@@ -364,7 +413,6 @@ public class Circuits {
         AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).inputs(OreDictUnifier.get(gemFlawless, Emerald)).fluidInputs(Helium.getFluid(1000)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 250, 50).buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder().duration(150).EUt(6).input(dust, Carbon).fluidInputs(Cerium.getFluid(1)).chancedOutput(CARBON_FIBERS.getStackForm(2), 1250, 250).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(10000).inputs(ENGRAVED_CRYSTAL_CHIP.getStackForm()).notConsumable(craftingLens, MarkerMaterials.Color.Lime).outputs(CRYSTAL_CENTRAL_PROCESSING_UNIT.getStackForm()).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(160).EUt(16).inputs(new ItemStack(Items.SUGAR, 4), OreDictUnifier.get(dust, Meat), OreDictUnifier.get(dustTiny, Salt)).fluidInputs(DistilledWater.getFluid(4000)).fluidOutputs(RawGrowthMedium.getFluid(4000)).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(9000).EUt(120).blastFurnaceTemp(1784).input(dust, Silicon, 32).input(dustSmall, GalliumArsenide).outputs(SILICON_BOULE.getStackForm()).buildAndRegister();
 
         //SMD REFINED
@@ -416,8 +464,8 @@ public class Circuits {
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(480).input(wireFine, HSSG, 8).input(dust, Polonium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_QUANTUM.getStackForm(32)).buildAndRegister();
 
         //SMD CRYSTAL
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Europium, 12).inputs(SMD_TRANSISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(16)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Europium, 12).input(plate, NetherStar).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(32)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Rutherfordium, 12).inputs(SMD_TRANSISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Rutherfordium, 12).input(plate, NetherStar).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(32)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).inputs(SMD_RESISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_CRYSTAL.getStackForm(12)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).input(plate, Graphene).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_CRYSTAL.getStackForm(24)).buildAndRegister();
