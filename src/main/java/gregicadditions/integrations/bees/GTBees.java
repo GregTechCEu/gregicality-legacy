@@ -14,19 +14,58 @@ import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.alleles.EnumAllele;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.items.MetaItems;
 import mezz.jei.config.Constants;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.commons.lang3.text.WordUtils;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.awt.*;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public enum GTBees implements IBeeDefinition {
+	//FLUIDISs
+	HYDROGEN(Materials.Hydrogen) {
+		@Override
+		protected void setAlleles(IAllele[] template) {
+		}
+
+		@Override
+		protected void registerMutations() {
+
+		}
+	},
+	OXYGEN(Materials.Oxygen) {
+		@Override
+		protected void setAlleles(IAllele[] template) {
+		}
+
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	CHLORINE(Materials.Chlorine) {
+		@Override
+		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
+
+		}
+
+		@Override
+		protected void setAlleles(IAllele[] template) {
+		}
+
+		@Override
+		protected void registerMutations() {
+		}
+	},
 	//FUELISs
 	CLAY(GTBranches.FUELIS, "clay", true, new Color(0x19d0ec), new Color(0xe0c113)) {
 		@Override
@@ -562,6 +601,9 @@ public enum GTBees implements IBeeDefinition {
 	};
 	private final GTBranches branch;
 	private final IAlleleBeeSpecies species;
+	private static final class Fluids {
+		static Map<String,FluidMaterial> fluidMap = new HashMap<>();
+	}
 
 	@Nullable
 	private IAllele[] template;
@@ -586,11 +628,30 @@ public enum GTBees implements IBeeDefinition {
 		this.species = speciesBuilder.build();
 	}
 
-	protected abstract void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies);
+	GTBees(FluidMaterial fluid) {
+		String lowercaseName = this.toString().toLowerCase(Locale.ENGLISH);
+		String species = "species" + WordUtils.capitalize(lowercaseName);
+
+		String modId = Constants.MOD_ID;
+		String uid = modId + '.' + species;
+		String description = "for.description." + species;
+		String name = fluid.getUnlocalizedName();
+		Fluids.fluidMap.put(uid, fluid);
+		this.branch = GTBranches.FLUIDIS;
+		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory
+				.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(),
+						fluid.toString().toLowerCase(), fluid.materialRGB, new Color(
+								0xD5D5D5).getRGB());
+		speciesBuilder.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
+		setSpeciesProperties(speciesBuilder);
+		this.species = speciesBuilder.build();
+	}
+
+	protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies){};
 
 	protected abstract void setAlleles(IAllele[] template);
 
-	protected abstract void registerMutations();
+	protected abstract void registerMutations(); 
 
 	protected boolean isSecret() {
 		return false;
@@ -609,6 +670,11 @@ public enum GTBees implements IBeeDefinition {
 		MinecraftForge.EVENT_BUS.post(new AlleleSpeciesRegisterEvent<>(BeeManager.beeRoot, IAlleleBeeSpecies.class));
 	}
 
+	@Nullable
+	public static FluidMaterial getFluid(@NotNull String uid){
+		return Fluids.fluidMap.get(uid);
+	}
+
 	private void init() {
 		template = branch.getTemplate();
 		AlleleHelper.getInstance().set(template, EnumBeeChromosome.SPECIES, species);
@@ -619,21 +685,21 @@ public enum GTBees implements IBeeDefinition {
 		BeeManager.beeRoot.registerTemplate(template);
 	}
 
-	protected final IBeeMutationBuilder registerMutation(GTBees parent1, GTBees parent2, int chance) {
-		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.species, getTemplate(), chance);
-	}
+//	protected final IBeeMutationBuilder registerMutation(GTBees parent1, GTBees parent2, int chance) {
+//		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.species, getTemplate(), chance);
+//	}
 
-	protected final IBeeMutationBuilder registerMutation(BeeDefinition parent1, BeeDefinition parent2, int chance) {
+	protected final IBeeMutationBuilder registerMutation(IBeeDefinition parent1, IBeeDefinition parent2, int chance) {
 		return BeeManager.beeMutationFactory.createMutation(parent1.getGenome().getPrimary(), parent2.getGenome().getPrimary(), getTemplate(), chance);
 	}
 
-	protected final IBeeMutationBuilder registerMutation(BeeDefinition parent1, GTBees parent2, int chance) {
-		return BeeManager.beeMutationFactory.createMutation(parent1.getGenome().getPrimary(), parent2.species, getTemplate(), chance);
-	}
-
-	protected final IBeeMutationBuilder registerMutation(GTBees parent1, BeeDefinition parent2, int chance) {
-		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.getGenome().getPrimary(), getTemplate(), chance);
-	}
+//	protected final IBeeMutationBuilder registerMutation(IBeeDefinition parent1, GTBees parent2, int chance) {
+//		return BeeManager.beeMutationFactory.createMutation(parent1.getGenome().getPrimary(), parent2.species, getTemplate(), chance);
+//	}
+//
+//	protected final IBeeMutationBuilder registerMutation(GTBees parent1, BeeDefinition parent2, int chance) {
+//		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.getGenome().getPrimary(), getTemplate(), chance);
+//	}
 
 	@Override
 	public final IAllele[] getTemplate() {
