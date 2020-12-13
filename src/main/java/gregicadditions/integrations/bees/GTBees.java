@@ -11,7 +11,9 @@ import forestry.apiculture.genetics.BeeDefinition;
 import forestry.apiculture.genetics.IBeeDefinition;
 import forestry.apiculture.items.EnumHoneyComb;
 import forestry.core.genetics.alleles.AlleleHelper;
+import forestry.core.genetics.alleles.EnumAllele;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
+import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregtech.common.items.MetaItems;
 import mezz.jei.config.Constants;
 import net.minecraft.init.Items;
@@ -499,6 +501,7 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTEST);
 		}
 
 		@Override
@@ -515,6 +518,7 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FIX);
 		}
 
 		@Override
@@ -531,6 +535,7 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ENERGY);
 		}
 
 		@Override
@@ -547,6 +552,7 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ACCELERATE);
 		}
 
 		@Override

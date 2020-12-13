@@ -2070,6 +2070,9 @@ for.bees.species.iridium=Iridium
 for.bees.species.uranium=Uranium
 for.bees.species.plutonium=Plutonium
 for.bees.species.naquadah=Naquadah
+for.bees.effects.gt_accelerate=Chrono
+for.bees.effects.gt_fix=Treasure
+for.bees.effects.gt_energy=Quantum
 
 material.aluminium.name=Aluminium
 material.chrome.name=Chrome

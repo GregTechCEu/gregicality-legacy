@@ -1,6 +1,5 @@
 package gregicadditions.integrations.bees;
 
-import binnie.extrabees.ExtraBees;
 import binnie.extrabees.genetics.ExtraBeeDefinition;
 import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
@@ -13,6 +12,7 @@ import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
@@ -69,6 +69,7 @@ public class ForestryCommonProxy {
     @Mod.EventHandler
     public void init() {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        GTBeesEffects.initEffects();
         GTBees.initBees();
         registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
