@@ -13,6 +13,7 @@ import forestry.apiculture.items.EnumHoneyComb;
 import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.alleles.EnumAllele;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
+import gregicadditions.GAMaterials;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregtech.api.unification.material.Materials;
@@ -33,27 +34,112 @@ import java.util.Map;
 
 public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
-	HYDROGEN(Materials.Hydrogen) {
+	WATER(Materials.Water, 0.05f){
 		@Override
 		protected void registerMutations() {
 		}
 	},
-	OXYGEN(Materials.Oxygen) {
+	LAVA(Materials.Lava, 0.05f){
 		@Override
 		protected void registerMutations() {
 		}
 	},
-	CHLORINE(Materials.Chlorine) {
+	NITROGEN(Materials.Nitrogen, 0.05f) {
 		@Override
 		protected void registerMutations() {
 		}
 	},
-	NITROGEN(Materials.Nitrogen) {
+	HYDROGEN(Materials.Hydrogen, 0.05f) {
 		@Override
 		protected void registerMutations() {
 		}
 	},
-	SULFURICACID(Materials.SulfuricAcid) {
+	OXYGEN(Materials.Oxygen, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	AIR(Materials.Air, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	STEAM(Materials.Steam, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	CarbonDioxide(Materials.CarbonDioxide, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	SALTWATER(Materials.SaltWater, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	AMMONIA(Materials.Ammonia, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	CHLORINE(Materials.Chlorine, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	SULFURICACID(Materials.SulfuricAcid, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	METHANE(Materials.Methane, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	ETHYLENE(Materials.Ethylene, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	ETHANOL(Materials.Ethanol, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	RADON(Materials.Radon, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	BENZENE(Materials.Benzene, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	FLUORINE(Materials.Fluorine, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.05f) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	UUMATTER(Materials.UUMatter, 0.05f) {
 		@Override
 		protected void registerMutations() {
 		}
@@ -515,7 +601,7 @@ public enum GTBees implements IBeeDefinition {
 		Fluids.fluidMap.put(getUid(this.toString()), fluidMaterial);
 	}
 
-	GTBees(FluidMaterial fluidMaterial) {
+	GTBees(FluidMaterial fluidMaterial, float chance) {
 		String lowercaseName = this.toString().toLowerCase(Locale.ENGLISH);
 		String species = "species" + WordUtils.capitalize(lowercaseName);
 
@@ -528,7 +614,7 @@ public enum GTBees implements IBeeDefinition {
 		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, new Color(0xD5D5D5).getRGB());
 		speciesBuilder.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
 		if (GTCombs.hasCombs(this.toString())) {
-			speciesBuilder.addProduct(GTCombItem.getComb(GTCombs.get(this.toString()), 1), 0.05f);
+			speciesBuilder.addProduct(GTCombItem.getComb(GTCombs.get(this.toString()), 1), chance);
 		}
 		setSpeciesProperties(speciesBuilder);
 		this.species = speciesBuilder.build();

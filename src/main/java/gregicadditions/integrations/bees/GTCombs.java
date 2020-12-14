@@ -1,5 +1,6 @@
 package gregicadditions.integrations.bees;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.util.IStringSerializable;
@@ -42,11 +43,28 @@ public enum GTCombs implements IStringSerializable {
 	PLUTONIUM(new Color(0x6b8f00), new Color(0x2c4f2c)),
 	STARGATIUM(new Color(0x002400), new Color(0x002c00)),
 	//fluid combs
+	WATER(Materials.Water),
+	LAVA(Materials.Lava),
+	NITROGEN(Materials.Nitrogen),
 	HYDROGEN(Materials.Hydrogen),
 	OXYGEN(Materials.Oxygen),
+	AIR(Materials.Air),
+	STEAM(Materials.Steam),
+	CarbonDioxide(Materials.CarbonDioxide),
+	SALTWATER(Materials.SaltWater),
+	AMMONIA(Materials.Ammonia),
 	CHLORINE(Materials.Chlorine),
-	NITROGEN(Materials.Nitrogen),
-	SULFURICACID(Materials.SulfuricAcid)
+	SULFURICACID(Materials.SulfuricAcid),
+	METHANE(Materials.Methane),
+	ETHYLENE(Materials.Ethylene),
+	ETHANOL(Materials.Ethanol),
+	RADON(Materials.Radon),
+	BENZENE(Materials.Benzene),
+	FLUORINE(Materials.Fluorine),
+	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber),
+	NEUTRALMATTER(GAMaterials.NeutralMatter),
+	POSITIVEMATTER(GAMaterials.PositiveMatter),
+	UUMATTER(Materials.UUMatter)
 	;
 
 	public static final GTCombs[] VALUES = values();
