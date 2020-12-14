@@ -174,7 +174,7 @@ public class GTMachineRecipes {
         }
 
         //Comb centrifuge recipes
-        if(GAConfig.GTBees.CentrifugeRecipes){
+        if(GAConfig.GTBees.GenerateCentrifugeRecipes){
             for (GTCombs comb : GTCombs.VALUES){
                 FluidMaterial fluidMaterial = GTBees.getFluidMaterial(GTBees.getUid(comb.name));
                 if (fluidMaterial != null){

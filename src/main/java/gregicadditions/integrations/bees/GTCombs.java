@@ -60,7 +60,7 @@ public enum GTCombs implements IStringSerializable {
 	ETHANOL(Materials.Ethanol),
 	RUBBERF(Materials.Rubber),
 	LUBRICANT(Materials.Lubricant),
-	RADON(Materials.Radon),
+	MERCURY(Materials.Mercury),
 	BENZENE(Materials.Benzene),
 	FLUORINE(Materials.Fluorine),
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber),

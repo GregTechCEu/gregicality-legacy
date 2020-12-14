@@ -136,7 +136,7 @@ public enum GTBees implements IBeeDefinition {
 			registerMutation(OIL, ETHANOL, 5);
 		}
 	},
-	RADON(Materials.Radon, 0.05f) {
+	MERCURY(Materials.Mercury, 0.05f) {
 		@Override
 		protected void registerMutations() {
 			registerMutation(CHLORINE, BENZENE, 5);
@@ -163,7 +163,7 @@ public enum GTBees implements IBeeDefinition {
 	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.05f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RADON, URANIUM, 5);
+			registerMutation(MERCURY, URANIUM, 5);
 		}
 	},
 	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.05f) {
