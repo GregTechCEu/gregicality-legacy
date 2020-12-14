@@ -1120,9 +1120,11 @@ public class GAConfig {
         @Config.Comment({"List of reservoir types. Format: fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
         @Config.RequiresMcRestart
         public static String[] reservoirs = new String[]{
-                "water, 5000000, 10000000, 10, 30, [], [0], [], []",
-                "oil, 2500000, 15000000, 6, 40, [1], [], [], []",
-                "lava, 250000, 1000000, 1, 30, [1], [], [], []"
+                "water, 5000000, 10000000, 10, 30, [], [0], [2,17,24,0,10], []",
+                "oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
+                "iodized_oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
+                "lava, 250000, 1000000, 1, 10, [1], [], [], []",
+                "salt_water, 50000000, 100000000, 100, 30, [], [0], [], [24,0,10]"
         };
 
         @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})

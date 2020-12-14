@@ -11,20 +11,20 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class LithiumChain {
     public static void init() {
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1400)
-                .input(dust,Spodumene)
+                .input(dust, Spodumene)
                 .outputs(RoastedSpodumene.getItemStack())
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(120).blastFurnaceTemp(1400)
-                .input(dust,Lepidolite)
-                .input(dust,Quicklime)
+                .input(dust, Lepidolite)
+                .input(dust, Quicklime)
                 .outputs(RoastedLepidolite.getItemStack())
                 .outputs(CalciumFluoride.getItemStack())
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(160).EUt(120)
                 .inputs(CalciumFluoride.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust,Calcium))
+                .outputs(OreDictUnifier.get(dust, Calcium))
                 .fluidOutputs(Fluorine.getFluid(2000))
                 .buildAndRegister();
 
@@ -32,7 +32,7 @@ public class LithiumChain {
                 .inputs(RoastedSpodumene.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,SiliconDioxide,6))
+                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 6))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(120)
@@ -44,22 +44,22 @@ public class LithiumChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .fluidInputs(DissolvedLithiumOre.getFluid(3000))
-                .input(dust,SodaAsh,3)
+                .input(dust, SodaAsh, 3)
                 .outputs(AluminiumSulfate.getItemStack(4))
                 .fluidOutputs(LithiumCarbonateSolution.getFluid(3000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(PotassiumSulfate.getItemStack())
-                .outputs(OreDictUnifier.get(dust,Potassium))
-                .outputs(OreDictUnifier.get(dust,Sulfur))
+                .outputs(OreDictUnifier.get(dust, Potassium))
+                .outputs(OreDictUnifier.get(dust, Sulfur))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(AluminiumSulfate.getItemStack(4))
-                .outputs(OreDictUnifier.get(dust,Aluminium,3))
-                .outputs(OreDictUnifier.get(dust,Sulfur,3))
+                .outputs(OreDictUnifier.get(dust, Aluminium, 3))
+                .outputs(OreDictUnifier.get(dust, Sulfur, 3))
                 .fluidOutputs(Oxygen.getFluid(12000))
                 .buildAndRegister();
 
@@ -78,7 +78,7 @@ public class LithiumChain {
 
         MIXER_RECIPES.recipeBuilder().duration(90).EUt(120)
                 .inputs(LithiumChloride.getItemStack())
-                .input(dust,RockSalt)
+                .input(dust, RockSalt)
                 .outputs(LiKChlorideEutetic.getItemStack(2))
                 .buildAndRegister();
 
