@@ -2038,6 +2038,9 @@ item.gtadditions:comb.quantaria.name=Quantaria Comb
 item.gtadditions:comb.urania.name=Urania Comb
 item.gtadditions:comb.plutonium.name=Plutonium Comb
 item.gtadditions:comb.stargatium.name=Stargatium Comb
+item.gtadditions:comb.urania.hydrogen=Hydrogen Comb
+item.gtadditions:comb.plutonium.oxygen=Oxygen Comb
+item.gtadditions:comb.stargatium.chlorine=Chlorine Comb
 for.bees.species.slime=Slime
 for.bees.species.lignite=Lignite
 for.bees.species.rubber=Rubbery
@@ -2073,6 +2076,7 @@ for.bees.species.naquadah=Naquadah
 for.bees.effects.gt_accelerate=Chrono
 for.bees.effects.gt_fix=Treasure
 for.bees.effects.gt_energy=Quantum
+for.bees.effects.gt_fluid=Mellifluous
 
 material.aluminium.name=Aluminium
 material.chrome.name=Chrome

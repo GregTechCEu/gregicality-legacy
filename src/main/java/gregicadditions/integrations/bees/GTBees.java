@@ -13,14 +13,16 @@ import forestry.apiculture.items.EnumHoneyComb;
 import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.alleles.EnumAllele;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
+import gregicadditions.Gregicality;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.items.MetaItems;
-import mezz.jei.config.Constants;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import org.apache.commons.lang3.text.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,47 +37,31 @@ public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
 	HYDROGEN(Materials.Hydrogen) {
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
-
 		}
 	},
 	OXYGEN(Materials.Oxygen) {
 		@Override
-		protected void setAlleles(IAllele[] template) {
+		protected void registerMutations() {
 		}
 
 		@Override
-		protected void registerMutations() {
+		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FLUID);
 		}
 	},
 	CHLORINE(Materials.Chlorine) {
 		@Override
-		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
-
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 		}
 	},
+
 	//FUELISs
 	CLAY(GTBranches.FUELIS, "clay", true, new Color(0x19d0ec), new Color(0xe0c113)) {
 		@Override
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
 			beeSpecies.addProduct(new ItemStack(Items.CLAY_BALL), 0.45f).setHumidity(EnumHumidity.DAMP);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -91,10 +77,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(BeeDefinition.MARSHY, CLAY, 15);
 		}
@@ -104,10 +86,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.15f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.LIGNITE, 1), 0.3f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -123,10 +101,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(SLIME, LIGNITE, 25);
 		}
@@ -136,10 +110,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.LIGNITE, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.COAL, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -155,10 +125,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(COAL, RUBBER, 8);
 		}
@@ -168,10 +134,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.STONE, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.REDSTONE, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -187,10 +149,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(BeeDefinition.DEMONIC, BeeDefinition.IMPERIAL, 20);
 		}
@@ -200,10 +158,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.STONE, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.CERTUS, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -219,10 +173,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(REDSTONE, DIAMOND, 10);
 		}
@@ -232,10 +182,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.STONE, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SAPPHIRE, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -251,10 +197,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(CERTUS, COAL, 6);
 		}
@@ -264,10 +206,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.STONE, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.OLIVINE, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -283,10 +221,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(OLIVINE, DIAMOND, 8);
 		}
@@ -296,10 +230,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.COPPON, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -315,10 +245,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(CLAY, BeeDefinition.DILIGENT, 25);
 		}
@@ -328,10 +254,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.PLUMBIA, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -347,10 +269,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(TIN, COPPER, 25);
 		}
@@ -360,10 +278,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.STEELDUST, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -379,10 +293,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(IRON, COPPER, 25);
 		}
@@ -392,10 +302,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.GALVANIA, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -411,10 +317,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(LEAD, TIN, 20);
 		}
@@ -424,10 +326,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.AURELIA, 1), 0.15f);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -443,10 +341,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(NICKEL, ZINC, 18);
 		}
@@ -456,10 +350,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.TITANIUM, 1), 0.15f).setHumidity(EnumHumidity.ARID).setTemperature(EnumTemperature.HOT);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -475,10 +365,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(TITANIUM, RUBY, 5).addMutationCondition(new MutationConditionRequiresResource("blockChrome"));
 		}
@@ -488,10 +374,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.PYROLUSIUM, 1), 0.15f).setHumidity(EnumHumidity.ARID).setTemperature(EnumTemperature.HOT);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -507,10 +389,6 @@ public enum GTBees implements IBeeDefinition {
 		}
 
 		@Override
-		protected void setAlleles(IAllele[] template) {
-		}
-
-		@Override
 		protected void registerMutations() {
 			registerMutation(BeeDefinition.HEROIC, MANGANESE, 5).addMutationCondition(new MutationConditionRequiresResource("blockTungsten"));
 		}
@@ -520,10 +398,6 @@ public enum GTBees implements IBeeDefinition {
 		protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.SLAG, 1), 0.3f);
 			beeSpecies.addProduct(GTCombItem.getComb(GTCombs.PLATINA, 1), 0.15f).setHumidity(EnumHumidity.ARID).setTemperature(EnumTemperature.HOT);
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
 		}
 
 		@Override
@@ -602,7 +476,10 @@ public enum GTBees implements IBeeDefinition {
 	private final GTBranches branch;
 	private final IAlleleBeeSpecies species;
 	private static final class Fluids {
-		static Map<String,FluidMaterial> fluidMap = new HashMap<>();
+		static Map<String, Fluid> fluidMap = new HashMap<>();
+		static {
+			fluidMap.put("extrabees.species.water", FluidRegistry.WATER);
+		}
 	}
 
 	@Nullable
@@ -614,7 +491,7 @@ public enum GTBees implements IBeeDefinition {
 		String lowercaseName = this.toString().toLowerCase(Locale.ENGLISH);
 		String species = "species" + WordUtils.capitalize(lowercaseName);
 
-		String modId = Constants.MOD_ID;
+		String modId = Gregicality.MODID;
 		String uid = modId + '.' + species;
 		String description = "for.description." + species;
 		String name = "for.bees.species." + lowercaseName;
@@ -628,30 +505,30 @@ public enum GTBees implements IBeeDefinition {
 		this.species = speciesBuilder.build();
 	}
 
-	GTBees(FluidMaterial fluid) {
+	GTBees(FluidMaterial fluidMaterial) {
 		String lowercaseName = this.toString().toLowerCase(Locale.ENGLISH);
 		String species = "species" + WordUtils.capitalize(lowercaseName);
 
-		String modId = Constants.MOD_ID;
+		String modId = Gregicality.MODID;
 		String uid = modId + '.' + species;
 		String description = "for.description." + species;
-		String name = fluid.getUnlocalizedName();
-		Fluids.fluidMap.put(uid, fluid);
+		String name = fluidMaterial.getUnlocalizedName();
+		Fluids.fluidMap.put(uid, fluidMaterial.getMaterialFluid());
 		this.branch = GTBranches.FLUIDIS;
-		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory
-				.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(),
-						fluid.toString().toLowerCase(), fluid.materialRGB, new Color(
-								0xD5D5D5).getRGB());
+		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, new Color(0xD5D5D5).getRGB());
 		speciesBuilder.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
+		if (GTCombs.hasCombs(this.toString())) {
+			speciesBuilder.addProduct(GTCombItem.getComb(GTCombs.get(this.toString()), 1), 0.05f);
+		}
 		setSpeciesProperties(speciesBuilder);
 		this.species = speciesBuilder.build();
 	}
 
 	protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies){};
 
-	protected abstract void setAlleles(IAllele[] template);
+	protected void setAlleles(IAllele[] template) {};
 
-	protected abstract void registerMutations(); 
+	protected abstract void registerMutations();
 
 	protected boolean isSecret() {
 		return false;
@@ -671,7 +548,7 @@ public enum GTBees implements IBeeDefinition {
 	}
 
 	@Nullable
-	public static FluidMaterial getFluid(@NotNull String uid){
+	public static Fluid getFluid(@NotNull String uid){
 		return Fluids.fluidMap.get(uid);
 	}
 

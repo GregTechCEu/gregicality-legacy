@@ -7,6 +7,7 @@ import forestry.api.apiculture.IBeekeepingLogic;
 import forestry.api.genetics.AlleleManager;
 import forestry.api.genetics.IEffectData;
 import forestry.core.render.ParticleRender;
+import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.machines.TileEntityWorldAccelerator;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -16,9 +17,14 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import java.util.List;
@@ -106,7 +112,40 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
             }
             return new TickEffectData();
         }
-    };
+    },
+    GT_FLUID {
+        @Override
+        public IEffectData doEffect(IBeeGenome genome, IEffectData storedData, IBeeHousing housing) {
+            if (!housing.getWorldObj().isRemote && storedData.getInteger(0) != FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter()) {
+                Fluid fluid = GTBees.getFluid(genome.getPrimary().getUID());
+                if (fluid == null) return storedData;
+                storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
+                BlockPos coordinates = housing.getCoordinates();
+                int fluidFill = (int) (genome.getSpeed() * genome.getLifespan());
+                for(EnumFacing facing: EnumFacing.VALUES){
+                    BlockPos neighbour = new BlockPos.MutableBlockPos(coordinates).move(facing);
+                    TileEntity te = housing.getWorldObj().getTileEntity(neighbour);
+                    if (te == null) continue;
+                    IFluidHandler fluidHandler = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing.getOpposite());
+                    if (fluidHandler != null){
+                        fluidFill -= fluidHandler.fill(new FluidStack(fluid, fluidFill), true);
+                        if(fluidFill == 0)
+                            break;
+                    }
+                }
+            }
+            return storedData;
+        }
+
+        @Override
+        public IEffectData validateStorage(IEffectData storedData) {
+            if (storedData instanceof TickEffectData){
+                return storedData;
+            }
+            return new TickEffectData();
+        }
+    }
+    ;
 
     public static void initEffects() {
         for (final GTBeesEffects effect : values()) {

@@ -3,10 +3,14 @@ package gregicadditions.integrations.bees;
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
+import gregicadditions.Gregicality;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import org.apache.commons.lang3.text.WordUtils;
 
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
@@ -167,6 +171,23 @@ public class GTMachineRecipes {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.Naquadah)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.Naquadah, 4)).fluidOutputs(Materials.NaquadahEnriched.getFluid(144)).buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.NaquadahEnriched)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.NaquadahEnriched, 4)).fluidOutputs(Materials.Naquadah.getFluid(144)).buildAndRegister();
         }
+
+        //Comb centrifuge recipes
+        if(GAConfig.GTBees.CentrifugeRecipes){
+            for (GTCombs comb : GTCombs.VALUES){
+                String species = "species" + WordUtils.capitalize(comb.name);
+                String modId = Gregicality.MODID;
+                String uid = modId + '.' + species;
+                Fluid fluidOutput = GTBees.getFluid(uid);
+                if (fluidOutput != null){
+                    RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder().EUt(24).duration(96)
+                            .inputs(GTCombItem.getComb(comb, 1))
+                            .fluidOutputs(new FluidStack(fluidOutput, 100))
+                            .buildAndRegister();
+                }
+            }
+        }
+
         registerMachineRecipe(ForestryCommonProxy.BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
     }

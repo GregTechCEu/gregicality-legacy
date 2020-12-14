@@ -212,6 +212,9 @@ public class GAConfig {
         @Config.Comment("Add Chemical Reactor recipes for the Combs")
         public boolean ReactorRecipes = true;
 
+        @Config.Comment("Add Centrifuge recipes for the Combs")
+        public boolean CentrifugeRecipes = true;
+
         @Config.Comment("Add Assembling Machine recipes for Impregnated items")
         public boolean AssemblerRecipes = true;
     }

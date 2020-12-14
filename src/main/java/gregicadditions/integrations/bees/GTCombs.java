@@ -1,5 +1,7 @@
 package gregicadditions.integrations.bees;
 
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.util.IStringSerializable;
 
 import java.awt.*;
@@ -38,7 +40,12 @@ public enum GTCombs implements IStringSerializable {
 	QUANTARIA(new Color(0xd1d1e0), new Color(0xbbbbbb)),
 	URANIA(new Color(0x169e16), new Color(0x159615)),
 	PLUTONIUM(new Color(0x6b8f00), new Color(0x2c4f2c)),
-	STARGATIUM(new Color(0x002400), new Color(0x002c00));
+	STARGATIUM(new Color(0x002400), new Color(0x002c00)),
+	//fluid combs
+	HYDROGEN(Materials.Hydrogen),
+	OXYGEN(Materials.Oxygen),
+	CHLORINE(Materials.Chlorine)
+	;
 
 	public static final GTCombs[] VALUES = values();
 
@@ -54,6 +61,12 @@ public enum GTCombs implements IStringSerializable {
 		this.secondaryColor = secondary.getRGB();
 	}
 
+	GTCombs(FluidMaterial fluidMaterial) {
+		this.name = toString().toLowerCase(Locale.ENGLISH);
+		this.primaryColor = fluidMaterial.materialRGB;
+		this.secondaryColor = new Color(0xD5D5D5).getRGB();
+	}
+
 	@Override
 	public String getName() {
 		return name;
@@ -64,5 +77,13 @@ public enum GTCombs implements IStringSerializable {
 			meta = 0;
 		}
 		return VALUES[meta];
+	}
+
+	public static GTCombs get(String name) {
+		return GTCombs.valueOf(name);
+	}
+
+	public static boolean hasCombs(String name) {
+		try {GTCombs.valueOf(name);} catch (IllegalArgumentException e) {return false;} return true;
 	}
 }
