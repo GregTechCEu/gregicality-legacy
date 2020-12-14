@@ -44,7 +44,9 @@ public enum GTCombs implements IStringSerializable {
 	//fluid combs
 	HYDROGEN(Materials.Hydrogen),
 	OXYGEN(Materials.Oxygen),
-	CHLORINE(Materials.Chlorine)
+	CHLORINE(Materials.Chlorine),
+	NITROGEN(Materials.Nitrogen),
+	SULFURICACID(Materials.SulfuricAcid)
 	;
 
 	public static final GTCombs[] VALUES = values();

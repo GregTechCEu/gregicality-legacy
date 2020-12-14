@@ -175,10 +175,7 @@ public class GTMachineRecipes {
         //Comb centrifuge recipes
         if(GAConfig.GTBees.CentrifugeRecipes){
             for (GTCombs comb : GTCombs.VALUES){
-                String species = "species" + WordUtils.capitalize(comb.name);
-                String modId = Gregicality.MODID;
-                String uid = modId + '.' + species;
-                Fluid fluidOutput = GTBees.getFluid(uid);
+                Fluid fluidOutput = GTBees.getFluid(GTBees.getUid(comb.name));
                 if (fluidOutput != null){
                     RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder().EUt(24).duration(96)
                             .inputs(GTCombItem.getComb(comb, 1))

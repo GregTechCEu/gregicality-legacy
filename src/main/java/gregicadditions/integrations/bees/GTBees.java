@@ -50,6 +50,16 @@ public enum GTBees implements IBeeDefinition {
 		protected void registerMutations() {
 		}
 	},
+	NITROGEN(Materials.Nitrogen) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
+	SULFURICACID(Materials.SulfuricAcid) {
+		@Override
+		protected void registerMutations() {
+		}
+	},
 
 	//FUELISs
 	CLAY(GTBranches.FUELIS, "clay", true, new Color(0x19d0ec), new Color(0xe0c113)) {
@@ -540,6 +550,10 @@ public enum GTBees implements IBeeDefinition {
 
 	public static void preInit() {
 		MinecraftForge.EVENT_BUS.post(new AlleleSpeciesRegisterEvent<>(BeeManager.beeRoot, IAlleleBeeSpecies.class));
+	}
+
+	public static String getUid(String name){
+		return Gregicality.MODID + ".species" + WordUtils.capitalize(name.toLowerCase());
 	}
 
 	@Nullable
