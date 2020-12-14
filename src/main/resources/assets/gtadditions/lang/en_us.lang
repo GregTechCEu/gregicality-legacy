@@ -2076,6 +2076,10 @@ for.bees.effects.gt_accelerate=Chrono
 for.bees.effects.gt_fix=Treasure
 for.bees.effects.gt_energy=Quantum
 for.bees.effects.gt_fluid=Mellifluous
+for.description.uranium=Uranium bees were born with the Treasure to (fix GT tools)
+for.description.plutonium=Plutonium bees were born with the Quantum (power GT machines)
+for.description.naquadah=Naquadah bees were born with the Chrono (accelerate GT machines)
+for.description.uumatter=UU-Matter bees were born with the Mellifluous (produce fluid)
 
 material.aluminium.name=Aluminium
 material.chrome.name=Chrome

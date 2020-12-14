@@ -623,7 +623,7 @@ public enum GTBees implements IBeeDefinition {
 
 		String modId = Gregicality.MODID;
 		String uid = modId + '.' + species;
-		String description = "for.description." + species;
+		String description = "for.description." + lowercaseName;
 		String name = "for.bees.species." + lowercaseName;
 
 		this.branch = branch;
@@ -646,7 +646,7 @@ public enum GTBees implements IBeeDefinition {
 
 		String modId = Gregicality.MODID;
 		String uid = modId + '.' + species;
-		String description = "for.description." + species;
+		String description = "for.description." + lowercaseName;
 		String name = fluidMaterial.getUnlocalizedName();
 		Fluids.fluidMap.put(uid, fluidMaterial);
 		this.branch = GTBranches.FLUIDIS;
