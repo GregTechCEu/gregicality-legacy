@@ -7,6 +7,7 @@ import gregicadditions.Gregicality;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -175,11 +176,11 @@ public class GTMachineRecipes {
         //Comb centrifuge recipes
         if(GAConfig.GTBees.CentrifugeRecipes){
             for (GTCombs comb : GTCombs.VALUES){
-                Fluid fluidOutput = GTBees.getFluid(GTBees.getUid(comb.name));
-                if (fluidOutput != null){
+                FluidMaterial fluidMaterial = GTBees.getFluidMaterial(GTBees.getUid(comb.name));
+                if (fluidMaterial != null){
                     RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder().EUt(24).duration(96)
                             .inputs(GTCombItem.getComb(comb, 1))
-                            .fluidOutputs(new FluidStack(fluidOutput, 100))
+                            .fluidOutputs(fluidMaterial.getFluid(100))
                             .buildAndRegister();
                 }
             }
