@@ -47,101 +47,133 @@ public enum GTBees implements IBeeDefinition {
 	NITROGEN(Materials.Nitrogen, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(WATER, LAVA, 5);
 		}
 	},
 	HYDROGEN(Materials.Hydrogen, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(WATER, LAVA, 5);
 		}
 	},
 	OXYGEN(Materials.Oxygen, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(WATER, LAVA, 5);
 		}
 	},
 	AIR(Materials.Air, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(OXYGEN, NITROGEN, 5);
 		}
 	},
 	STEAM(Materials.Steam, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(COAL, WATER, 5);
 		}
 	},
-	CarbonDioxide(Materials.CarbonDioxide, 0.05f) {
+	CARBONDIOXIDE(Materials.CarbonDioxide, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(COAL, OXYGEN, 5);
 		}
 	},
 	SALTWATER(Materials.SaltWater, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(WATER, HYDROGEN, 5);
 		}
 	},
 	AMMONIA(Materials.Ammonia, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(SALTWATER, NITROGEN, 5);
 		}
 	},
 	CHLORINE(Materials.Chlorine, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(SALTWATER, LAVA, 5);
 		}
 	},
 	SULFURICACID(Materials.SulfuricAcid, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(DIAMOND, AIR, 5);
 		}
 	},
 	METHANE(Materials.Methane, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(STEAM, AMMONIA, 5);
 		}
 	},
 	ETHYLENE(Materials.Ethylene, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(SULFURICACID, ETHANOL, 5);
 		}
 	},
 	ETHANOL(Materials.Ethanol, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(ETHANOL, CARBONDIOXIDE, 5);
+		}
+	},
+	RUBBERF(Materials.Rubber, 0.05f) {
+		@Override
+		protected void registerMutations() {
+			registerMutation(RUBBER, ETHYLENE, 5);
+		}
+	},
+	LUBRICANT(Materials.Lubricant, 0.05f) {
+		@Override
+		protected void registerMutations() {
+			registerMutation(OIL, ETHANOL, 5);
 		}
 	},
 	RADON(Materials.Radon, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(CHLORINE, BENZENE, 5);
 		}
 	},
 	BENZENE(Materials.Benzene, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(RUBBERF, OIL, 5);
 		}
 	},
 	FLUORINE(Materials.Fluorine, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(LUBRICANT, EMERALD, 5);
 		}
 	},
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(RUBBERF, FLUORINE, 5);
 		}
 	},
 	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(RADON, URANIUM, 5);
 		}
 	},
 	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(FLUORINE, PLUTONIUM, 5);
 		}
 	},
 	UUMATTER(Materials.UUMatter, 0.05f) {
 		@Override
 		protected void registerMutations() {
+			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 5);
 		}
 	},
 
