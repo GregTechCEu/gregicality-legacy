@@ -44,11 +44,6 @@ public enum GTBees implements IBeeDefinition {
 		@Override
 		protected void registerMutations() {
 		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
-			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FLUID);
-		}
 	},
 	CHLORINE(Materials.Chlorine) {
 		@Override
@@ -562,21 +557,9 @@ public enum GTBees implements IBeeDefinition {
 		BeeManager.beeRoot.registerTemplate(template);
 	}
 
-//	protected final IBeeMutationBuilder registerMutation(GTBees parent1, GTBees parent2, int chance) {
-//		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.species, getTemplate(), chance);
-//	}
-
 	protected final IBeeMutationBuilder registerMutation(IBeeDefinition parent1, IBeeDefinition parent2, int chance) {
 		return BeeManager.beeMutationFactory.createMutation(parent1.getGenome().getPrimary(), parent2.getGenome().getPrimary(), getTemplate(), chance);
 	}
-
-//	protected final IBeeMutationBuilder registerMutation(IBeeDefinition parent1, GTBees parent2, int chance) {
-//		return BeeManager.beeMutationFactory.createMutation(parent1.getGenome().getPrimary(), parent2.species, getTemplate(), chance);
-//	}
-//
-//	protected final IBeeMutationBuilder registerMutation(GTBees parent1, BeeDefinition parent2, int chance) {
-//		return BeeManager.beeMutationFactory.createMutation(parent1.species, parent2.getGenome().getPrimary(), getTemplate(), chance);
-//	}
 
 	@Override
 	public final IAllele[] getTemplate() {
