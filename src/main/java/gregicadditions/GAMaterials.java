@@ -766,11 +766,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Zeron100 = new IngotMaterial(850, "zeron", 0xB4B414, MaterialIconSet.SHINY, 5, of(new MaterialStack(Chrome, 13), new MaterialStack(Nickel, 3), new MaterialStack(Molybdenum, 2), new MaterialStack(Copper, 10), new MaterialStack(Tungsten, 2), new MaterialStack(Steel, 20)), CORE_METAL | DISABLE_DECOMPOSITION, null, 6100);
     public static final IngotMaterial Cinobite = new IngotMaterial(721, "cinobite", 0x010101, MaterialIconSet.SHINY, 5, of(new MaterialStack(Zeron100, 8), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Mercury, 1), new MaterialStack(Tin, 1), new MaterialStack(Titanium, 6), new MaterialStack(Osmiridium, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 12565);
     public static final IngotMaterial HDCS = new IngotMaterial(720, "hdcs", 0x334433, MaterialIconSet.SHINY, 5, of(new MaterialStack(TungstenSteel, 12), new MaterialStack(HSSS, 9), new MaterialStack(HSSG, 6), new MaterialStack(Ruridit, 3), new MaterialStack(MagnetoResonatic, 2), new MaterialStack(Plutonium, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 9000);
-    public static final IngotMaterial Trinium = new IngotMaterial(719, "trinium", 0x9aa19c, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_ORE, Element.valueOf("Ke"), 35000);
-    public static final IngotMaterial Adamantium = new IngotMaterial(718, "adamantium", 0x2d365c, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Ad"), 17500);
+    public static final IngotMaterial Trinium = new IngotMaterial(719, "trinium", 0x9aa19c, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_ORE, Element.valueOf("Ke"), 12500);
+    public static final IngotMaterial Adamantium = new IngotMaterial(718, "adamantium", 0x2d365c, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Ad"), 27500);
     public static final IngotMaterial Vibranium = new IngotMaterial(717, "vibranium", 0x828aad, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Vb"), 55000);
     public static final IngotMaterial ProtoAdamantium = new IngotMaterial(716, "proto_adamantium", 0x4662d4, MaterialIconSet.SHINY, 7, of(new MaterialStack(Adamantium, 3), new MaterialStack(Promethium, 2)), CORE_METAL, null, 35000);
-    public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 12500);
+    public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 24000);
     public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0x0c0c0d, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
     public static final GemMaterial Zircon = new GemMaterial(713, "zircon", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_ORE);
     public static final DustMaterial Caliche = new DustMaterial(712, "calich", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_ORE);
@@ -828,7 +828,7 @@ public class GAMaterials implements IMaterialHandler {
         BlackTitanium.setCableProperties(GAValues.V[GAValues.UIV], 2, 32);
 
 
-        Neutronium.setCableProperties(524288 * 64, 2, 32);
+        Neutronium.setCableProperties(GAValues.V[GAValues.UMV], 2, 32);
 
         MVSuperconductor.setCableProperties(128, 4, 0);
         ignoreCable(MVSuperconductor);
