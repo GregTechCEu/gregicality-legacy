@@ -120,7 +120,7 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
                 if (fluidMaterial == null) return storedData;
                 storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
                 BlockPos coordinates = housing.getCoordinates();
-                int fluidFill = (int) (genome.getSpeed() * genome.getLifespan());
+                int fluidFill = (int) (genome.getSpeed() * genome.getLifespan() / 2);
                 for(EnumFacing facing: EnumFacing.VALUES){
                     BlockPos neighbour = new BlockPos.MutableBlockPos(coordinates).move(facing);
                     TileEntity te = housing.getWorldObj().getTileEntity(neighbour);

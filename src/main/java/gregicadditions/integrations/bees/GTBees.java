@@ -34,148 +34,153 @@ import java.util.Map;
 
 public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
-	WATER(Materials.Water, 0.05f){
+	WATER(Materials.Water, 0.20f){
 		@Override
 		protected void registerMutations() {
-			registerMutation(BeeDefinition.INDUSTRIOUS, BeeDefinition.ICY, 5);
+			registerMutation(BeeDefinition.INDUSTRIOUS, BeeDefinition.ICY, 30).addMutationCondition(new MutationConditionFluid(Materials.Water));
 		}
 	},
-	LAVA(Materials.Lava, 0.05f){
+	LAVA(Materials.Lava, 0.20f){
 		@Override
 		protected void registerMutations() {
-			registerMutation(BeeDefinition.IMPERIAL, BeeDefinition.SINISTER, 5);
+			registerMutation(BeeDefinition.IMPERIAL, BeeDefinition.SINISTER, 30).addMutationCondition(new MutationConditionFluid(Materials.Lava));
 		}
 	},
-	NITROGEN(Materials.Nitrogen, 0.05f) {
+	NITROGEN(Materials.Nitrogen, 0.35f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, LAVA, 5);
+			registerMutation(WATER, LAVA, 20).addMutationCondition(new MutationConditionFluid(Materials.Nitrogen));
 		}
 	},
-	HYDROGEN(Materials.Hydrogen, 0.05f) {
+	HYDROGEN(Materials.Hydrogen, 0.35f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, LAVA, 5);
+			registerMutation(WATER, LAVA, 20).addMutationCondition(new MutationConditionFluid(Materials.Hydrogen));
 		}
 	},
-	OXYGEN(Materials.Oxygen, 0.05f) {
+	OXYGEN(Materials.Oxygen, 0.35f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, LAVA, 5);
+			registerMutation(WATER, LAVA, 20).addMutationCondition(new MutationConditionFluid(Materials.Oxygen));
 		}
 	},
-	AIR(Materials.Air, 0.05f) {
+	AIR(Materials.Air, 0.10f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(OXYGEN, NITROGEN, 5);
+			registerMutation(OXYGEN, NITROGEN, 10).addMutationCondition(new MutationConditionFluid(Materials.Air));
 		}
 	},
-	STEAM(Materials.Steam, 0.05f) {
+	STEAM(Materials.Steam, 0.80f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(COAL, WATER, 5);
+			registerMutation(COAL, WATER, 5).addMutationCondition(new MutationConditionFluid(Materials.Steam));
 		}
 	},
-	CARBONDIOXIDE(Materials.CarbonDioxide, 0.05f) {
+	CARBONDIOXIDE(Materials.CarbonDioxide, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(COAL, OXYGEN, 5);
+			registerMutation(COAL, OXYGEN, 10).addMutationCondition(new MutationConditionFluid(Materials.CarbonDioxide));
 		}
 	},
-	SALTWATER(Materials.SaltWater, 0.05f) {
+	SALTWATER(Materials.SaltWater, 0.50f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, HYDROGEN, 5);
+			registerMutation(WATER, HYDROGEN, 10).addMutationCondition(new MutationConditionFluid(Materials.SaltWater));
 		}
 	},
-	AMMONIA(Materials.Ammonia, 0.05f) {
+	AMMONIA(Materials.Ammonia, 0.10f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(SALTWATER, NITROGEN, 5);
+			registerMutation(SALTWATER, NITROGEN, 5).addMutationCondition(new MutationConditionFluid(Materials.Ammonia));
 		}
 	},
-	CHLORINE(Materials.Chlorine, 0.05f) {
+	CHLORINE(Materials.Chlorine, 0.35f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(SALTWATER, LAVA, 5);
+			registerMutation(SALTWATER, LAVA, 3).addMutationCondition(new MutationConditionFluid(Materials.Chlorine));
 		}
 	},
-	SULFURICACID(Materials.SulfuricAcid, 0.05f) {
+	SULFURICACID(Materials.SulfuricAcid, 0.35f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(DIAMOND, AIR, 5);
+			registerMutation(DIAMOND, AIR, 3).addMutationCondition(new MutationConditionFluid(Materials.SulfuricAcid));
 		}
 	},
-	METHANE(Materials.Methane, 0.05f) {
+	METHANE(Materials.Methane, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(STEAM, AMMONIA, 5);
+			registerMutation(STEAM, AMMONIA, 5).addMutationCondition(new MutationConditionFluid(Materials.Methane));
 		}
 	},
-	ETHYLENE(Materials.Ethylene, 0.05f) {
+	ETHYLENE(Materials.Ethylene, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(SULFURICACID, ETHANOL, 5);
+			registerMutation(SULFURICACID, ETHANOL, 2).addMutationCondition(new MutationConditionFluid(Materials.Ethylene));
 		}
 	},
-	ETHANOL(Materials.Ethanol, 0.05f) {
+	ETHANOL(Materials.Ethanol, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(ETHANOL, CARBONDIOXIDE, 5);
+			registerMutation(ETHANOL, CARBONDIOXIDE, 5).addMutationCondition(new MutationConditionFluid(Materials.Ethanol));
 		}
 	},
-	RUBBERF(Materials.Rubber, 0.05f) {
+	RUBBERF(Materials.Rubber, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBER, ETHYLENE, 5);
+			registerMutation(RUBBER, ETHYLENE, 5).addMutationCondition(new MutationConditionFluid(Materials.Rubber));
 		}
 	},
-	LUBRICANT(Materials.Lubricant, 0.05f) {
+	LUBRICANT(Materials.Lubricant, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(OIL, ETHANOL, 5);
+			registerMutation(OIL, ETHANOL, 3).addMutationCondition(new MutationConditionFluid(Materials.Lubricant));
 		}
 	},
-	MERCURY(Materials.Mercury, 0.05f) {
+	MERCURY(Materials.Mercury, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(CHLORINE, BENZENE, 5);
+			registerMutation(CHLORINE, BENZENE, 5).addMutationCondition(new MutationConditionFluid(Materials.Mercury));
 		}
 	},
-	BENZENE(Materials.Benzene, 0.05f) {
+	BENZENE(Materials.Benzene, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBERF, OIL, 5);
+			registerMutation(RUBBERF, OIL, 1).addMutationCondition(new MutationConditionFluid(Materials.Benzene));
 		}
 	},
-	FLUORINE(Materials.Fluorine, 0.05f) {
+	FLUORINE(Materials.Fluorine, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(LUBRICANT, EMERALD, 5);
+			registerMutation(LUBRICANT, EMERALD, 1).addMutationCondition(new MutationConditionFluid(Materials.Fluorine));
 		}
 	},
-	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.05f) {
+	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBERF, FLUORINE, 5);
+			registerMutation(RUBBERF, FLUORINE, 1).addMutationCondition(new MutationConditionFluid(Materials.StyreneButadieneRubber));
 		}
 	},
-	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.05f) {
+	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(MERCURY, URANIUM, 5);
+			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(7, GAMaterials.NeutralMatter));
 		}
 	},
-	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.05f) {
+	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(FLUORINE, PLUTONIUM, 5);
+			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(7, GAMaterials.PositiveMatter));
 		}
 	},
-	UUMATTER(Materials.UUMatter, 0.05f) {
+	UUMATTER(Materials.UUMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 5);
+			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(5, Materials.UUMatter));
+		}
+
+		@Override
+		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FLUID);
 		}
 	},
 
@@ -645,8 +650,7 @@ public enum GTBees implements IBeeDefinition {
 		String name = fluidMaterial.getUnlocalizedName();
 		Fluids.fluidMap.put(uid, fluidMaterial);
 		this.branch = GTBranches.FLUIDIS;
-		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, new Color(0xD5D5D5).getRGB());
-		speciesBuilder.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
+		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, new Color(fluidMaterial.materialRGB).darker().getRGB());
 		if (GTCombs.hasCombs(this.toString())) {
 			speciesBuilder.addProduct(GTCombItem.getComb(GTCombs.get(this.toString()), 1), chance);
 		}
