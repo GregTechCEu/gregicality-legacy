@@ -37,11 +37,13 @@ public enum GTBees implements IBeeDefinition {
 	WATER(Materials.Water, 0.05f){
 		@Override
 		protected void registerMutations() {
+			registerMutation(BeeDefinition.INDUSTRIOUS, BeeDefinition.ICY, 5);
 		}
 	},
 	LAVA(Materials.Lava, 0.05f){
 		@Override
 		protected void registerMutations() {
+			registerMutation(BeeDefinition.IMPERIAL, BeeDefinition.SINISTER, 5);
 		}
 	},
 	NITROGEN(Materials.Nitrogen, 0.05f) {
