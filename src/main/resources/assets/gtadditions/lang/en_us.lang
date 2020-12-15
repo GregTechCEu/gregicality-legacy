@@ -215,7 +215,15 @@ metaitem.contaminated.petri.dish.name=Contaminated Preti Dish
 metaitem.clean.culture.name=Clean Culture
 metaitem.piezoelectric.crystal.name=Piezoelectric Crystal
 metaitem.pyrolytic_carbon.name=Pyrolytic Carbon
-
+metaitem.acrylic_yarn.name=Acrylic Yarn
+metaitem.nanotome.name=Nanotome
+metaitem.rapidly_rotating_crucible.name=Rapidly Rotating Crucible
+metaitem.heavy_metal_absorbing_yarn.name=Heavy Metal Absorbing Yarn
+metaitem.uranium_saturated_yarn.name=Uranium Saturated Yarn
+metaitem.boron_retaining_yarn.name=Boron Retaining Yarn
+metaitem.boron_saturated_yarn.name=Boron Saturated Yarn
+metaitem.lithium_sieve.name=Lithium Sieve
+metaitem.lithium_saturated_lithium_sieve=Lithium Saturated Lithium Sieve
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
