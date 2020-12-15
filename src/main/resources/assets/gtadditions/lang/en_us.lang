@@ -2790,17 +2790,18 @@ metaitem.magnesium_hydroxide.name=Magnesium Hydroxide
 metaitem.strontium_sulfate.name=Strontium Sulfate
 metaitem.strontium_oxide.name=Strontium Oxide
 
-metaitem.biphenyl.item=Biphenyl
-metaitem.diiodobiphenyl.item=Diiodobiphenyl
-metaitem.bipiridine.item=Bipyridine
-metaitem.palladium_chloride.item=Palladium Chloride
-metaitem.palladium_bisdibenzylidieneacetone.item=Palladium Bisdibenzylidieneacetone
-metaitem.potassium_tetrachloroplatinate.item=Potassium Tetrachloroplatinate
-metaitem.nickel_triphenyl_phosphite.item=Nickel Triphenylphosphite
-metaitem.dichlorocycloctadieneplatinium.item=Dichlorocycloctadieneplatinium
-metaitem.graphene_nanotube_mix.item=Graphene-Nanotube Mixture
-metaitem.graphene_aligned_cnt.item=Graphene-Aligned CNT
-metaitem.nial_catalyst.item=Nickel Aluminium Catalyst
+metaitem.titanium_nitrate.name=Titanium Nitrate
+metaitem.biphenyl.name=Biphenyl
+metaitem.diiodobiphenyl.name=Diiodobiphenyl
+metaitem.bipiridine.name=Bipyridine
+metaitem.palladium_chloride.name=Palladium Chloride
+metaitem.palladium_bisdibenzylidieneacetone.name=Palladium Bisdibenzylidieneacetone
+metaitem.potassium_tetrachloroplatinate.name=Potassium Tetrachloroplatinate
+metaitem.nickel_triphenyl_phosphite.name=Nickel Triphenylphosphite
+metaitem.dichlorocycloctadieneplatinium.name=Dichlorocycloctadieneplatinium
+metaitem.graphene_nanotube_mix.name=Graphene-Nanotube Mixture
+metaitem.graphene_aligned_cnt.name=Graphene-Aligned CNT
+metaitem.nial_catalyst.name=Nickel Aluminium Catalyst
 
 fluid.vanadium_waste_solution=Vanadium Waste Solution
 fluid.uranyl_chloride_solution=Uranyl Chloride Solution
@@ -2851,6 +2852,12 @@ fluid.germanic_acid_solution=Germanic Acid Solution
 fluid.grmanium_chloride=Germanium Chloride
 fluid.sodium_hydroxide_solution=Sodium Hydroxide Solution
 fluid.iron_sulfate=Iron Sulfate
+
+fluid.lithium_hydroxide_solution=Lithium Hydroxide Solution
+fluid.lithium_peroxide=Lithium Peroxide Solution
+fluid.lithium_carbonate_pure_solution=Pure Lithium Carbonate Solution
+fluid.ozone=Ozone
+fluid.nitrogen_pentoxide=Nitrogen Pentoxide
 
 fluid.nitrous_oxide=Nitrous Oxide
 fluid.acrylonitrile=Acrylonitrile
