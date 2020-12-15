@@ -115,10 +115,6 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(RecipeMaps.AUTOCLAVE_RECIPES, new ItemStack[]{new ItemStack(Items.NETHER_STAR)}, new FluidStack[]{Darmstadtium.getFluid(288)});
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, OreDictUnifier.get(ingot, Plutonium, 6));
 
-        //Remove The Bad Nitric Acid Recipe
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Water.getFluid(1000), NitrogenDioxide.getFluid(4000), Oxygen.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{IntCircuitIngredient.getIntegratedCircuit(4)}, new FluidStack[]{Water.getFluid(1000), NitrogenDioxide.getFluid(2000), Oxygen.getFluid(1000)});
-
         //Remove Simple Copper Cable Recipes
         removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES, OreDictUnifier.get(ingot, Rubber, 2), OreDictUnifier.get(wireGtSingle, Copper));
 
