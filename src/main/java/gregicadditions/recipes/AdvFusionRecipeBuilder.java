@@ -52,9 +52,9 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
             this.coilTier(((Number) value).intValue());
             return true;
 
-        } else if (key.equals("euStart")) {
+        } else if (key.equals("eu_to_start")) {
             this.euStart(((Number) value).intValue());
-
+            return true;
         }
         return false;
     }
