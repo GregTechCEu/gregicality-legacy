@@ -1246,6 +1246,9 @@ public class GARecipeAddition {
         ChromiumChain.init();
         LithiumChain.init();
         WaferChain.init();
+        Brine.init();
+        FusionElementsChain.init();
+        NanotubeChain.init();
     }
 
     public static void forestrySupport() {
