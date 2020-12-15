@@ -756,6 +756,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SodiumHydroxideSolution = new SimpleFluidMaterial("sodium_hydroxide_solution", 0xfcfcfa);
     public static final SimpleFluidMaterial IronSulfate = new SimpleFluidMaterial("iron_sulfate", 0xfcfcfa);
 
+    public static final SimpleDustMaterial TitaniumNitrate = new SimpleDustMaterial("titanium_nitrate",0xFF0066,(short) 154,MaterialIconSet.DULL);
+    public static final SimpleFluidMaterial LithiumHydroxideSolution = new SimpleFluidMaterial("lithium_hydroxide_solution",0xfcfcfa);
+    public static final SimpleFluidMaterial LithiumPeroxideSolution = new SimpleFluidMaterial("lithium_peroxide",0xfcfcfa);
+    public static final SimpleFluidMaterial LithiumCarbonatePureSolution = new SimpleFluidMaterial("lithium_carbonate_pure_solution",0xfcfcfa);
+    public static final SimpleFluidMaterial Ozone = new SimpleFluidMaterial("ozone",0x0099FF);
+    public static final SimpleFluidMaterial NitrogenPentoxide = new SimpleFluidMaterial("nitrogen_pentoxide",0x0033C0);
+
+
     public static final SimpleDustMaterial AcrylicFibers = new SimpleDustMaterial("acrylic_fibers",0xfcfcfa,(short) 135,MaterialIconSet.FINE);
     public static final SimpleDustMaterial UranylNitrate = new SimpleDustMaterial("uranyl_nitrate",0x33bd45,(short) 136,MaterialIconSet.DULL);
     public static final SimpleDustMaterial CalciumSalts = new SimpleDustMaterial("calcium_salts",0xcacac8,(short) 137,MaterialIconSet.DULL);
