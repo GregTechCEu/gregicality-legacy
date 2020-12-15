@@ -163,19 +163,19 @@ public enum GTBees implements IBeeDefinition {
 	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(7, GAMaterials.NeutralMatter));
+			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.NeutralMatter));
 		}
 	},
 	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(7, GAMaterials.PositiveMatter));
+			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.PositiveMatter));
 		}
 	},
 	UUMATTER(Materials.UUMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(5, Materials.UUMatter));
+			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(50, Materials.UUMatter));
 		}
 
 		@Override
