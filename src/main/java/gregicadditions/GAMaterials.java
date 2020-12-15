@@ -783,7 +783,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumMolybdate = new SimpleDustMaterial("sodium_molybdate",0xfcfc00,(short) 151,MaterialIconSet.DULL);
     public static final SimpleDustMaterial SodiumPhosphomolybdate = new SimpleDustMaterial("sodium_phosphomolybdate",0xfcfc00,(short) 152,MaterialIconSet.SHINY);
     public static final SimpleDustMaterial SodiumPhosphotungstate = new SimpleDustMaterial("sodium_phosphotungstate",0x7a7777,(short) 153,MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial PrecipitatedAmmoniumSulfate = new SimpleDustMaterial("solid_ammonium_sulfate",0x6464f5,(short) 154,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PrecipitatedAmmoniumSulfate = new SimpleDustMaterial("solid_ammonium_sulfate",0x6464f5,(short) 170,MaterialIconSet.DULL);
     public static final SimpleDustMaterial Fructose = new SimpleDustMaterial("fructose",0xfcfcfa,(short) 165,MaterialIconSet.DULL);
     public static final SimpleDustMaterial Glucose = new SimpleDustMaterial("glucose",0xfcfcfa,(short) 166,MaterialIconSet.DULL);
     public static final SimpleDustMaterial MagnesiumHydroxide = new SimpleDustMaterial("magnesium_hydroxide",0xcacac8,(short) 167,MaterialIconSet.DULL);
