@@ -69,7 +69,7 @@ public class NaquadahChain {
                 .fluidInputs(NaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(AntimonyTrifluoride.getItemStack())
-                .fluidOutputs(FluoronaquadricAcid.getFluid(2000))
+                .fluidOutputs(FluoronaquadricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(300)
                 .buildAndRegister();
