@@ -321,6 +321,16 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem PYROLYTIC_CARBON;
     public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
+    
+    public static MetaItem<?>.MetaValueItem ACRYLIC_YARN;
+    public static MetaItem<?>.MetaValueItem RAPIDLY_ROTATING_CRUCIBLE;
+    public static MetaItem<?>.MetaValueItem HEAVY_METAL_ABSORBING_YARN;
+    public static MetaItem<?>.MetaValueItem URANIUM_SATURATED_YARN;
+    public static MetaItem<?>.MetaValueItem BORON_RETAINING_YARN;
+    public static MetaItem<?>.MetaValueItem BORON_SATURATED_YARN;
+    public static MetaItem<?>.MetaValueItem LITHIUM_SIEVE;
+    public static MetaItem<?>.MetaValueItem LITHIUM_SATURATED_LITHIUM_SIEVE;
+    public static MetaItem<?>.MetaValueItem NANOTOME;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
