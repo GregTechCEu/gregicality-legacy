@@ -1246,7 +1246,7 @@ public class GARecipeAddition {
         ChromiumChain.init();
         LithiumChain.init();
         WaferChain.init();
-        Brine.init();
+        BrineChain.init();
         FusionElementsChain.init();
         NanotubeChain.init();
     }
