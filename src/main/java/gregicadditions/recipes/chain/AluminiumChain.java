@@ -6,8 +6,7 @@ import gregtech.api.unification.OreDictUnifier;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class AluminiumChain {
     public static void init() {
@@ -28,7 +27,7 @@ public class AluminiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(600).EUt(125)
                 .inputs(Alumina.getItemStack())
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Aluminium, 2))
+                .outputs(OreDictUnifier.get(nugget, Aluminium, 25))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 3))
                 .outputs(AluminiumTrifluoride.getItemStack())
                 .buildAndRegister();

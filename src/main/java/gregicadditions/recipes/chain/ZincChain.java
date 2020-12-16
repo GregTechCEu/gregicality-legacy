@@ -80,21 +80,21 @@ public class ZincChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(130).EUt(850)
                 .fluidInputs(MetalHydroxideMix.getFluid(1000))
                 .input(wireFine, Zinc)
-                .outputs(OreDictUnifier.get(wireFine, Zinc))
+                .outputs(OreDictUnifier.get(wireFine, Zinc, 3))
                 .fluidOutputs(ZincPoorMix.getFluid(1000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(130).EUt(850)
                 .fluidInputs(ZincPoorMix.getFluid(1000))
                 .input(wireFine, Iron)
-                .outputs(OreDictUnifier.get(wireFine, Iron))
+                .outputs(OreDictUnifier.get(wireFine, Iron, 3))
                 .fluidOutputs(IronPoorMix.getFluid(1000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(130).EUt(850)
                 .fluidInputs(IronPoorMix.getFluid(1000))
                 .input(wireFine, Copper)
-                .outputs(OreDictUnifier.get(wireFine, Copper))
+                .outputs(OreDictUnifier.get(wireFine, Copper, 3))
                 .fluidOutputs(IndiumHydroxideConcentrate.getFluid(1000))
                 .buildAndRegister();
 
