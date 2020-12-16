@@ -7,11 +7,18 @@ import forestry.api.recipes.ICentrifugeRecipe;
 import forestry.api.recipes.ISqueezerRecipe;
 import forestry.api.recipes.RecipeManagers;
 import forestry.apiculture.genetics.BeeDefinition;
+import forestry.apiculture.multiblock.TileAlvearyHeater;
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
+import forestry.core.items.ItemBlockForestry;
 import forestry.core.items.ItemFluidContainerForestry;
+import forestry.core.items.ItemForestry;
+import forestry.core.tiles.TileUtil;
 import gregicadditions.GAConfig;
+import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.integrations.bees.alveary.GTAlvearyBlock;
+import gregicadditions.integrations.bees.alveary.TileGTAlveary;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;
@@ -30,12 +37,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -210,13 +219,18 @@ public class ForestryCommonProxy {
 
     }
 
+    public static GTAlvearyBlock GT_ALVEARY;
+
 
     @Optional.Method(modid = "forestry")
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
         IForgeRegistry<Block> registry = event.getRegistry();
-
-
+        GT_ALVEARY = new GTAlvearyBlock();
+        GT_ALVEARY.setRegistryName(Gregicality.MODID, "forestry/gt_alveary");
+        registry.register(GT_ALVEARY);
+        GameRegistry.registerTileEntity(TileGTAlveary.class, new ResourceLocation(Gregicality.MODID, "forestry/gt_alveary"));
     }
 
     @Optional.Method(modid = "forestry")
@@ -225,6 +239,7 @@ public class ForestryCommonProxy {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(GTCombs.combItem);
+        registry.register(new ItemBlockForestry<>(GT_ALVEARY).setRegistryName(GT_ALVEARY.getRegistryName()));
     }
 
     @Optional.Method(modid = "forestry")

@@ -53,7 +53,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 	public void registerModel(Item item, IModelManager manager) {
 		manager.registerItemModel(item, 0);
 		for (int i = 0; i < GTCombs.VALUES.length; i++) {
-			manager.registerItemModel(item, i, Gregicality.MODID, "comb");
+			manager.registerItemModel(item, i, Gregicality.MODID, "forestry/comb");
 		}
 	}
 

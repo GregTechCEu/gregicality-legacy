@@ -2,7 +2,9 @@ package gregicadditions.integrations.bees;
 
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;
+import forestry.core.items.ItemBlockForestry;
 import gregicadditions.GAConfig;
+import gregicadditions.integrations.bees.alveary.GTAlvearyBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
@@ -37,7 +39,10 @@ public class ForestryClientProxy extends ForestryCommonProxy {
 	@Optional.Method(modid = "forestry")
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
-		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
+		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+			GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
+			ForestryCommonProxy.GT_ALVEARY.registerModel(Item.getItemFromBlock(ForestryCommonProxy.GT_ALVEARY), ForestryAPI.modelManager);
+		}
 	}
 
 

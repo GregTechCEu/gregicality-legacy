@@ -2005,6 +2005,9 @@ fluid.tile.water=Water
 fluid.tile.lava=Lava
 
 
+tile.gtadditions:gt_alveary.name=GT Alveary
+tile.for.gt_alveary.tooltip=GT Alveary is used to obtain the fluid and energy produced by gt bees. Adding nuclear wastes can increase the rate of mutation and reduces the lifespan. Some bees need nuclear wastes to mutate.
+item.gtadditions:gt_alveary.name=GT Alveary
 item.gtadditions:comb.lignite.name=Lignite Comb
 item.gtadditions:comb.coal.name=Coal Comb
 item.gtadditions:comb.rubbery.name=Sticky Comb

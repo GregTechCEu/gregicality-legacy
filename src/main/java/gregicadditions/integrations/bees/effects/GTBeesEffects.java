@@ -12,7 +12,6 @@ import gregicadditions.machines.TileEntityWorldAccelerator;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.items.MetaTool;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
