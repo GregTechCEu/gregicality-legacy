@@ -3,16 +3,23 @@ package gregicadditions.integrations.bees.alveary;
 import forestry.api.multiblock.IAlvearyComponent;
 import forestry.apiculture.multiblock.TileAlveary;
 import forestry.core.tiles.IActivatable;
+import gregicadditions.integrations.bees.alveary.gui.ContainerGTAlveary;
+import gregicadditions.integrations.bees.alveary.gui.GuiGTAlveary;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,6 +82,10 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         return super.getCapability(capability, facing);
     }
 
+    public IItemHandler getItemHandler() {
+        return itemStackHandler;
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
@@ -94,6 +105,17 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
     @Override
     public boolean allowsAutomation() {
         return true;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public GuiContainer getGui(EntityPlayer player, int data) {
+        return new GuiGTAlveary(player.inventory, this);
+    }
+
+    @Override
+    public Container getContainer(EntityPlayer player, int data) {
+        return new ContainerGTAlveary(player.inventory, this);
     }
 
     @Override
