@@ -22,8 +22,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -118,8 +116,8 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
         @Override
         public IEffectData doEffect(IBeeGenome genome, IEffectData storedData, IBeeHousing housing) {
             if (!housing.getWorldObj().isRemote && storedData.getInteger(0) != FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter()) {
-                Fluid fluid = GTBees.getFluidMaterial(genome.getPrimary().getUID());
-                if (fluid == null) return storedData;
+                FluidMaterial fluidMaterial = GTBees.getFluidMaterial(genome.getPrimary().getUID());
+                if (fluidMaterial == null) return storedData;
                 storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
                 BlockPos coordinates = housing.getCoordinates();
                 int fluidFill = (int) (genome.getSpeed() * genome.getLifespan() / 2);
@@ -129,7 +127,7 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
                     if (te == null) continue;
                     IFluidHandler fluidHandler = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing.getOpposite());
                     if (fluidHandler != null){
-                        fluidFill -= fluidHandler.fill(new FluidStack(fluid, fluidFill), true);
+                        fluidFill -= fluidHandler.fill(fluidMaterial.getFluid(fluidFill), true);
                         if(fluidFill == 0)
                             break;
                     }

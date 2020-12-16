@@ -1,14 +1,12 @@
 package gregicadditions.integrations.bees;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.util.IStringSerializable;
 
 import java.awt.*;
 import java.util.Locale;
-import java.util.SimpleTimeZone;
 
 public enum GTCombs implements IStringSerializable {
 	LIGNITE(new Color(0x58300b), new Color(0x906237)),
@@ -57,17 +55,14 @@ public enum GTCombs implements IStringSerializable {
 	AMMONIA(Materials.Ammonia),
 	CHLORINE(Materials.Chlorine),
 	SULFURICACID(Materials.SulfuricAcid),
-	CRYOTHEUM(GAMaterials.Cryotheum),
 	METHANE(Materials.Methane),
 	ETHYLENE(Materials.Ethylene),
 	ETHANOL(Materials.Ethanol),
-	PYROTHEUM(GAMaterials.Pyrotheum),
 	RUBBERF(Materials.Rubber),
 	LUBRICANT(Materials.Lubricant),
 	MERCURY(Materials.Mercury),
 	BENZENE(Materials.Benzene),
 	FLUORINE(Materials.Fluorine),
-	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum),
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber),
 	NEUTRALMATTER(GAMaterials.NeutralMatter),
 	POSITIVEMATTER(GAMaterials.PositiveMatter),
@@ -91,13 +86,7 @@ public enum GTCombs implements IStringSerializable {
 	GTCombs(FluidMaterial fluidMaterial) {
 		this.name = toString().toLowerCase(Locale.ENGLISH);
 		this.primaryColor = fluidMaterial.materialRGB;
-		this.secondaryColor = new Color(primaryColor).darker().darker().getRGB();
-	}
-
-	GTCombs(SimpleFluidMaterial simpleFluidMaterial) {
-		this.name = toString().toLowerCase(Locale.ENGLISH);
-		this.primaryColor = simpleFluidMaterial.rgb;
-		this.secondaryColor = new Color(primaryColor).darker().darker().getRGB();
+		this.secondaryColor = new Color(0xD5D5D5).getRGB();
 	}
 
 	@Override

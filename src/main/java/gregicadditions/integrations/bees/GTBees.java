@@ -16,20 +16,21 @@ import forestry.core.genetics.mutations.MutationConditionRequiresResource;
 import gregicadditions.GAMaterials;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
-import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
 import org.apache.commons.lang3.text.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.awt.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
@@ -105,12 +106,6 @@ public enum GTBees implements IBeeDefinition {
 			registerMutation(DIAMOND, AIR, 3).addMutationCondition(new MutationConditionFluid(Materials.SulfuricAcid));
 		}
 	},
-	CRYOTHEUM(GAMaterials.Cryotheum, 0.25f) {
-		@Override
-		protected void registerMutations() {
-			registerMutation(WATER, AMMONIA, 2).addMutationCondition(new MutationConditionFluid(Materials.Methane));
-		}
-	},
 	METHANE(Materials.Methane, 0.15f) {
 		@Override
 		protected void registerMutations() {
@@ -126,13 +121,7 @@ public enum GTBees implements IBeeDefinition {
 	ETHANOL(Materials.Ethanol, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(REDSTONE, CARBONDIOXIDE, 5).addMutationCondition(new MutationConditionFluid(Materials.Ethanol));
-		}
-	},
-	PYROTHEUM(GAMaterials.Pyrotheum, 0.25f) {
-		@Override
-		protected void registerMutations() {
-			registerMutation(LAVA, SULFURICACID, 2).addMutationCondition(new MutationConditionFluid(Materials.Methane));
+			registerMutation(ETHANOL, CARBONDIOXIDE, 5).addMutationCondition(new MutationConditionFluid(Materials.Ethanol));
 		}
 	},
 	RUBBERF(Materials.Rubber, 0.25f) {
@@ -163,12 +152,6 @@ public enum GTBees implements IBeeDefinition {
 		@Override
 		protected void registerMutations() {
 			registerMutation(LUBRICANT, EMERALD, 1).addMutationCondition(new MutationConditionFluid(Materials.Fluorine));
-		}
-	},
-	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum, 0.15f) {
-		@Override
-		protected void registerMutations() {
-			registerMutation(CRYOTHEUM, MERCURY, 1).addMutationCondition(new MutationConditionFluid(Materials.Fluorine));
 		}
 	},
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.15f) {
@@ -623,9 +606,9 @@ public enum GTBees implements IBeeDefinition {
 	private final GTBranches branch;
 	private final IAlleleBeeSpecies species;
 	private static final class Fluids {
-		static Map<String, Fluid> fluidMap = new HashMap<>();
+		static Map<String, FluidMaterial> fluidMap = new HashMap<>();
 		static {
-			fluidMap.put("extrabees.species.water", Materials.Water.getMaterialFluid());
+			fluidMap.put("extrabees.species.water", Materials.Water);
 		}
 	}
 
@@ -654,33 +637,25 @@ public enum GTBees implements IBeeDefinition {
 
 	GTBees(GTBranches branch, String binomial, boolean dominant, Color primary, Color secondary, FluidMaterial fluidMaterial) {
 		this(branch, binomial, dominant, primary, secondary);
-		Fluids.fluidMap.put(getUid(this.toString()), fluidMaterial.getMaterialFluid());
+		Fluids.fluidMap.put(getUid(this.toString()), fluidMaterial);
 	}
 
-	GTBees(Fluid fluid, String binomial, int color, float chance) {
+	GTBees(FluidMaterial fluidMaterial, float chance) {
 		String lowercaseName = this.toString().toLowerCase(Locale.ENGLISH);
 		String species = "species" + WordUtils.capitalize(lowercaseName);
 
 		String modId = Gregicality.MODID;
 		String uid = modId + '.' + species;
 		String description = "for.description." + lowercaseName;
-		String name = fluid.getUnlocalizedName();
-		Fluids.fluidMap.put(uid, fluid);
+		String name = fluidMaterial.getUnlocalizedName();
+		Fluids.fluidMap.put(uid, fluidMaterial);
 		this.branch = GTBranches.FLUIDIS;
-		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), binomial, color, new Color(color).darker().darker().getRGB());
+		IAlleleBeeSpeciesBuilder speciesBuilder = BeeManager.beeFactory.createSpecies(modId, uid, true, "Sengir", name, description, branch.getBranch(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, new Color(fluidMaterial.materialRGB).darker().getRGB());
 		if (GTCombs.hasCombs(this.toString())) {
 			speciesBuilder.addProduct(GTCombItem.getComb(GTCombs.get(this.toString()), 1), chance);
 		}
 		setSpeciesProperties(speciesBuilder);
 		this.species = speciesBuilder.build();
-	}
-
-	GTBees(FluidMaterial fluidMaterial, float chance) {
-		this(fluidMaterial.getMaterialFluid(), fluidMaterial.toString().toLowerCase(), fluidMaterial.materialRGB, chance);
-	}
-
-	GTBees(SimpleFluidMaterial simpleFluidMaterial, float chance) {
-		this(simpleFluidMaterial.fluid, simpleFluidMaterial.name.toLowerCase(), simpleFluidMaterial.rgb, chance);
 	}
 
 	protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies){};
@@ -711,7 +686,7 @@ public enum GTBees implements IBeeDefinition {
 	}
 
 	@Nullable
-	public static Fluid getFluidMaterial(@NotNull String uid){
+	public static FluidMaterial getFluidMaterial(@NotNull String uid){
 		return Fluids.fluidMap.get(uid);
 	}
 

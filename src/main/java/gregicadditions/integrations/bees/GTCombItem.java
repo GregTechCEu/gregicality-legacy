@@ -69,9 +69,9 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		GTCombs honeyComb = GTCombs.get(stack.getItemDamage());
 		//automatic name for fluid combs, avoiding localized stuff.
 		if (honeyComb.ordinal() >= GTCombs.WATER.ordinal()){
-			Fluid fluid = GTBees.getFluidMaterial(GTBees.getUid(honeyComb.name));
-			if (fluid != null){
-				return I18n.format(fluid.getUnlocalizedName()) + " " + I18n.format("item.gtadditions:comb.name");
+			FluidMaterial fluidMaterial = GTBees.getFluidMaterial(GTBees.getUid(honeyComb.name));
+			if (fluidMaterial != null){
+				return I18n.format(fluidMaterial.getUnlocalizedName()) + " " + I18n.format("item.gtadditions:comb.name");
 			}
 		}
 		return super.getItemStackDisplayName(stack);
