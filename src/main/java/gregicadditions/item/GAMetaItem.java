@@ -302,6 +302,16 @@ public class GAMetaItem extends MaterialMetaItem {
         ERBIUM_DOPED_ZBLAN = addItem(437, "erbium_doped_zblan");
         CLADDED_OPTICAL_FIBER_CORE = addItem(438, "cladded_optical_fiber_core");
 
+        RAPIDLY_ROTATING_CRUCIBLE = addItem(440, "rapidly_rotating_crucible");
+        HEAVY_METAL_ABSORBING_YARN = addItem(441, "heavy_metal_absorbing_yarn");
+        URANIUM_SATURATED_YARN = addItem(442, "uranium_saturated_yarn");
+        BORON_RETAINING_YARN = addItem(443, "boron_retaining_yarn");
+        BORON_SATURATED_YARN = addItem(444, "boron_saturated_yarn");
+        LITHIUM_SIEVE = addItem(445, "lithium_sieve");
+        LITHIUM_SATURATED_LITHIUM_SIEVE = addItem(446, "lithium_saturated_lithium_sieve");
+        NANOTOME = addItem(447, "nanotome");
+        ACRYLIC_YARN = addItem(448, "acrylic_yarn");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
