@@ -176,11 +176,11 @@ public class GTMachineRecipes {
         //Comb centrifuge recipes
         if(GAConfig.GTBees.GenerateCentrifugeRecipes){
             for (GTCombs comb : GTCombs.VALUES){
-                FluidMaterial fluidMaterial = GTBees.getFluidMaterial(GTBees.getUid(comb.name));
-                if (fluidMaterial != null){
+                Fluid fluid = GTBees.getFluidMaterial(GTBees.getUid(comb.name));
+                if (fluid != null){
                     RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder().EUt(24).duration(96)
                             .inputs(GTCombItem.getComb(comb, 1))
-                            .fluidOutputs(fluidMaterial.getFluid(100))
+                            .fluidOutputs(new FluidStack(fluid, 100))
                             .buildAndRegister();
                 }
             }
