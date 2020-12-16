@@ -985,10 +985,9 @@ gtadditions.machine.large_naquadah_reactor.name=大型硅岩反应堆
 gtadditions.machine.battery_tower.name=储能塔
 gtadditions.machine.large_laser_engraver.name=大型激光蚀刻机
 
-gtadditions.machine.naquadah_reactor.mk1.name=硅岩反应堆 MK1
-gtadditions.machine.naquadah_reactor.mk2.name=硅岩反应堆 MK2
-gtadditions.machine.naquadah_reactor.mk3.name=硅岩反应堆 MK3
-gtadditions.machine.naquadah_reactor.mk4.name=硅岩反应堆 MK4
+gtadditions.machine.naquadah_reactor.mk2.name=硅岩反应堆 MK I
+gtadditions.machine.naquadah_reactor.mk3.name=硅岩反应堆 MK II
+gtadditions.machine.naquadah_reactor.mk4.name=硅岩反应堆 MK III
 
 gtadditions.machine.rocket_generator.mk1.name=基础火箭引擎
 gtadditions.machine.rocket_generator.mk2.name=进阶火箭引擎
@@ -1112,8 +1111,8 @@ gtadditions.machine.hyper_reactor.uhv.name=超能反应堆 II
 gtadditions.machine.hyper_reactor.uev.name=超能反应堆 III
 gtadditions.machine.fusion_reactor.uhv.name=核聚变反应堆主机 MK4
 gtadditions.machine.fusion_reactor.uev.name=核聚变反应堆主机 MK5
-gtadditions.machine.fusion_casing_3.name=聚变机械方块 MK3
-gtadditions.machine.fusion_casing_4.name=聚变机械方块 MK4
+gtadditions.machine.fusion_casing_3.name=聚变机械方块 MK III
+gtadditions.machine.fusion_casing_4.name=聚变机械方块 MK IV
 gtadditions.machine.hull.uhv.name=UHV机械方块
 gtadditions.machine.hull.uev.name=UEV机械方块
 gtadditions.machine.hull.uiv.name=UIV机械方块
@@ -1188,10 +1187,10 @@ tile.ga_machine_casing.casing_uiv.name=UIV机器外壳
 tile.ga_machine_casing.casing_umv.name=UMV机器外壳
 tile.ga_machine_casing.casing_uxv.name=UXV机器外壳
 
-tile.ga_fusion_casing.fusion_casing_3.name=聚变机械方块 MK3
-tile.ga_fusion_casing.fusion_casing_4.name=聚变机械方块 MK4
-tile.ga_fusion_casing.fusion_coil_2.name=聚变线圈方块 MK2
-tile.ga_fusion_casing.fusion_coil_3.name=聚变线圈方块 MK3
+tile.ga_fusion_casing.fusion_casing_3.name=聚变机械方块 MK III
+tile.ga_fusion_casing.fusion_casing_4.name=聚变机械方块 MK IV
+tile.ga_fusion_casing.fusion_coil_2.name=聚变线圈方块 MK II
+tile.ga_fusion_casing.fusion_coil_3.name=聚变线圈方块 MK III
 
 
 
@@ -1261,6 +1260,7 @@ recipemap.bio_reactor.name=生物反应器
 recipemap.gas_centrifuge.name=气体离心机
 recipemap.large_engraver.name=大型激光蚀刻机
 recipemap.adv_fusion.name=进阶聚变反应堆
+recipemap.adv_fusion.value=启动耗能：%s EU
 recipemap.simple_qubit_generator.name=量子计算机
 recipemap.stellar_forge.name=恒星炎炀锻炉
 recipemap.plasma_condenser.name=等离子冷凝器
@@ -2144,7 +2144,7 @@ material.prasiolite=堇云石
 material.magneto_resonatic=磁共振石
 material.dibismuthhydroborat=硼氢二铋
 material.bismuth_tellurite=碲化铋
-material.circuit_compound_mkc=电路化合物 MK3
+material.circuit_compound_mkc=电路化合物 MK III
 material.yttrium_oxide=氧化钇
 material.enderium=Enderium
 material.calcium_tungstate=钨酸钙
@@ -3027,6 +3027,11 @@ tile.ga_robot_arm_casing.robot_arm_uiv.name=机械臂方块(UIV)
 tile.ga_robot_arm_casing.robot_arm_umv.name=机械臂方块(UMV)
 tile.ga_robot_arm_casing.robot_arm_uxv.name=机械臂方块(UXV)
 tile.ga_robot_arm_casing.robot_arm_max.name=机械臂方块(MAX)
+tile.ga_heating_coil.heating_coil_1.name=进阶热导线圈 MK I
+tile.ga_heating_coil.heating_coil_2.name=进阶热导线圈 MK II
+tile.ga_heating_coil.heating_coil_3.name=进阶热导线圈 MK III
+tile.ga_heating_coil.heating_coil_4.name=进阶热导线圈 MK IV
+tile.ga_heating_coil.heating_coil_5.name=进阶热导线圈 MK V
 
 gtaddition.optical_fiber.qubit=量子位：§a%d §7（§a%s§7）
 gtaddition.optical_fiber.parallel=并行信号：§e%d
