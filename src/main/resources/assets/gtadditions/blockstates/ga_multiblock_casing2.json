@@ -1,56 +1,80 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "minecraft:cube_all",
+    "model": "minecraft:cube_bottom_top",
     "textures": {
-      "all": "gregtech:blocks/rendering_error"
+      "bottom": "gregtech:blocks/rendering_error",
+      "top": "gregtech:blocks/rendering_error",
+      "side": "gregtech:blocks/rendering_error"
     }
   },
   "variants": {
     "variant": {
       "tiered_hull_uhv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
-        }
+          "side": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "bottom": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "top": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"        }
       },
 	  "tiered_hull_uev": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
-        }
+          "side": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "bottom": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "top": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"        }
       },
 	  "tiered_hull_uiv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
-        }
+          "side": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "bottom": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "top": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"        }
       },
 	  "tiered_hull_umv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+          "side": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "bottom": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "top": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
         }
       },
 	  "tiered_hull_uxv": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
+          "side": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "bottom": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max",
+          "top": "gregtech:blocks/casings/solid/machine_casing_tiered_hull_max"
         }
       },
       "stellar_containment": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/stellar_containment_casing"
+          "side": "gregtech:blocks/casings/solid/stellar_containment_casing",
+          "bottom": "gregtech:blocks/casings/solid/stellar_containment_casing",
+          "top": "gregtech:blocks/casings/solid/stellar_containment_casing"
         }
       },
 	  "naquadria_charge": {
 		"textures": {
-			"all": "gregtech:blocks/casings/solid/naquadria_charge"
+			"side": "gregtech:blocks/casings/solid/naquadria_charge",
+			"bottom": "gregtech:blocks/casings/solid/naquadria_charge_top_bottom",
+			"top": "gregtech:blocks/casings/solid/naquadria_charge_top_bottom"
 		}
 	  },
+      "taranium_charge": {
+        "textures": {
+          "side": "gregtech:blocks/casings/solid/taranium_charge",
+          "bottom": "gregtech:blocks/casings/solid/taranium_charge_top_bottom",
+          "top": "gregtech:blocks/casings/solid/taranium_charge_top_bottom"
+        }
+      },
       "bio_reactor_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/bio_reactor_casing"
+          "side": "gregtech:blocks/casings/solid/bio_reactor_casing",
+          "bottom": "gregtech:blocks/casings/solid/bio_reactor_casing",
+          "top": "gregtech:blocks/casings/solid/bio_reactor_casing"
         }
       },
       "laser_engraver_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/solid/laser_engraver_casing"
+          "side": "gregtech:blocks/casings/solid/laser_engraver_casing",
+          "bottom": "gregtech:blocks/casings/solid/laser_engraver_casing",
+          "top": "gregtech:blocks/casings/solid/laser_engraver_casing"
         }
       }
     }

@@ -36,7 +36,8 @@ public class GAMultiblockCasing2 extends VariantBlock<GAMultiblockCasing2.Casing
         NAQUADRIA_CHARGE("naquadria_charge"),
         STELLAR_CONTAINMENT("stellar_containment"),
         BIO_REACTOR("bio_reactor_casing"),
-        LASER_ENGRAVER("laser_engraver_casing");
+        LASER_ENGRAVER("laser_engraver_casing"),
+        TARANIUM_CHARGE("taranium_charge");
 
         private final String name;
 

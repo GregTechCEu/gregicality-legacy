@@ -69,5 +69,26 @@ public class UHVMaterials {
                 .EUt(1500000)
                 .duration(50)
                 .buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(plateDense, Mendelevium.getMaterial())
+                .inputs(GELLED_TOLUENE.getStackForm(16))
+                .input(block, Naquadria, 8)
+                .input(block, Taranium)
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
+                .fluidInputs(Tritanium.getFluid(1296))
+                .fluidInputs(Glyceryl.getFluid(5000))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.TARANIUM_CHARGE))
+                .EUt(125000000)
+                .duration(5)
+                .buildAndRegister();
+        BLAST_ALLOY_RECIPES.recipeBuilder()
+                .input(dust, Seaborgium)
+                .input(dust, Bohrium)
+                .input(dust, Rutherfordium)
+                .input(dust, Dubnium)
+                .fluidOutputs(SuperheavyMix.getFluid(4000))
+                .EUt(100000000)
+                .duration(40)
+                .buildAndRegister();
     }
 }
