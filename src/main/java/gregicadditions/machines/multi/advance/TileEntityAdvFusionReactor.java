@@ -1,6 +1,9 @@
 package gregicadditions.machines.multi.advance;
 
 
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
@@ -281,6 +284,12 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
         textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
         textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
+    }
+
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        this.getBaseTexture(null).render(renderState, translation, pipeline);
+        ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
     }
 
 
