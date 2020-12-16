@@ -982,7 +982,7 @@ public class GAMaterials implements IMaterialHandler {
         Alunite.addFlag(GENERATE_ORE);
         GlauconiteSand.addFlag(GENERATE_ORE);
         Niter.addFlag(GENERATE_ORE);
-
+        Duranium.addFlag(GENERATE_FINE_WIRE);
 
         Spodumene.addFlag(DISABLE_DECOMPOSITION);
         Lepidolite.addFlag(DISABLE_DECOMPOSITION);

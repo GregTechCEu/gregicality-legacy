@@ -985,10 +985,9 @@ gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 gtadditions.machine.battery_tower.name=Battery Tower
 gtadditions.machine.large_laser_engraver.name=Large Laser Engraver
 
-gtadditions.machine.naquadah_reactor.mk1.name=Naquadah Reactor Mk. 1
-gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor Mk. 2
-gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor Mk. 3
-gtadditions.machine.naquadah_reactor.mk4.name=Naquadah Reactor Mk. 4
+gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
+gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
+gtadditions.machine.naquadah_reactor.mk4.name=Naquadah Reactor MK III
 
 gtadditions.machine.rocket_generator.mk1.name=Basic Rocket Engine
 gtadditions.machine.rocket_generator.mk2.name=Advanced Rocket Engine
@@ -1105,15 +1104,15 @@ gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
 gtadditions.machine.qubit_computer.name=Quantum Computer
 gtadditions.machine.stellar_forge.name=Stellar Forge
-gtadditions.machine.void_miner.uhv.name=Void Miner Mk2
-gtadditions.machine.void_miner.uev.name=Void Miner Mk3
+gtadditions.machine.void_miner.uhv.name=Void Miner MK II
+gtadditions.machine.void_miner.uev.name=Void Miner MK III
 gtadditions.machine.hyper_reactor.uv.name=Hyper Reactor I
 gtadditions.machine.hyper_reactor.uhv.name=Hyper Reactor II
 gtadditions.machine.hyper_reactor.uev.name=Hyper Reactor III
 gtadditions.machine.fusion_reactor.uhv.name=Fusion Reactor Mark 4
 gtadditions.machine.fusion_reactor.uev.name=Fusion Reactor Mark 5
-gtadditions.machine.fusion_casing_3.name=Fusion Casing MK3
-gtadditions.machine.fusion_casing_4.name=Fusion Casing MK4
+gtadditions.machine.fusion_casing_3.name=Fusion Casing MK III
+gtadditions.machine.fusion_casing_4.name=Fusion Casing MK IV
 gtadditions.machine.hull.uhv.name=UHV Machine Hull
 gtadditions.machine.hull.uev.name=UEV Machine Hull
 gtadditions.machine.hull.uiv.name=UIV Machine Hull
@@ -1188,10 +1187,10 @@ tile.ga_machine_casing.casing_uiv.name=UIV Machine Casing
 tile.ga_machine_casing.casing_umv.name=UMV Machine Casing
 tile.ga_machine_casing.casing_uxv.name=UXV Machine Casing
 
-tile.ga_fusion_casing.fusion_casing_3.name=Fusion Casing MK3
-tile.ga_fusion_casing.fusion_casing_4.name=Fusion Casing MK4
-tile.ga_fusion_casing.fusion_coil_2.name=Fusion Coil Block MK2
-tile.ga_fusion_casing.fusion_coil_3.name=Fusion Coil Block MK3
+tile.ga_fusion_casing.fusion_casing_3.name=Fusion Casing MK III
+tile.ga_fusion_casing.fusion_casing_4.name=Fusion Casing MK IV
+tile.ga_fusion_casing.fusion_coil_2.name=Fusion Coil Block MK II
+tile.ga_fusion_casing.fusion_coil_3.name=Fusion Coil Block MK III
 
 
 
@@ -1261,6 +1260,7 @@ recipemap.bio_reactor.name=Bio Reactor
 recipemap.gas_centrifuge.name=Gas Centrifuge
 recipemap.large_engraver.name=Large Engraver
 recipemap.adv_fusion.name=Advanced Fusion
+recipemap.adv_fusion.value=Start: %s EU
 recipemap.simple_qubit_generator.name=Qubit Generator
 recipemap.stellar_forge.name=Stellar Forge
 recipemap.plasma_condenser.name=Plasma Condenser
@@ -2144,7 +2144,7 @@ material.prasiolite=Prasiolite
 material.magneto_resonatic=Magneto Resonatic
 material.dibismuthhydroborat=Dibismuthhydroborat
 material.bismuth_tellurite=Bismuth Tellurite
-material.circuit_compound_mkc=Circuit Compound MK3
+material.circuit_compound_mkc=Circuit Compound MK III
 material.yttrium_oxide=Yttrium Oxide
 material.enderium=Enderium
 material.calcium_tungstate=Calcium Tungstate
@@ -3027,6 +3027,11 @@ tile.ga_robot_arm_casing.robot_arm_uiv.name=Robot Arm Block (UIV)
 tile.ga_robot_arm_casing.robot_arm_umv.name=Robot Arm Block (UMV)
 tile.ga_robot_arm_casing.robot_arm_uxv.name=Robot Arm Block (UXV)
 tile.ga_robot_arm_casing.robot_arm_max.name=Robot Arm Block (MAX)
+tile.ga_heating_coil.heating_coil_1.name=Advanced Heating Coil MK I
+tile.ga_heating_coil.heating_coil_2.name=Advanced Heating Coil MK II
+tile.ga_heating_coil.heating_coil_3.name=Advanced Heating Coil MK III
+tile.ga_heating_coil.heating_coil_4.name=Advanced Heating Coil MK IV
+tile.ga_heating_coil.heating_coil_5.name=Advanced Heating Coil MK V
 
 gtaddition.optical_fiber.qubit=Qubit: §a%d §7(§a%s§7)
 gtaddition.optical_fiber.parallel=Parallel Signal: §e%d
