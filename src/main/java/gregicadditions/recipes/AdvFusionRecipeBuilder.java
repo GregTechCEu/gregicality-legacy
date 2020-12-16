@@ -18,13 +18,14 @@ import java.util.List;
 public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder> {
 
     private int coilTier;
-    private long euStart = 0;
+    private long euStart;
     public static List<FluidStack> coolants = new ArrayList<>();
 
 
-    public AdvFusionRecipeBuilder(Recipe recipe, RecipeMap<AdvFusionRecipeBuilder> recipeMap, int coilTier) {
+    public AdvFusionRecipeBuilder(Recipe recipe, RecipeMap<AdvFusionRecipeBuilder> recipeMap) {
         super(recipe, recipeMap);
-        this.coilTier = coilTier;
+        this.coilTier = recipe.getIntegerProperty("coil_tier");
+        this.euStart = recipe.getProperty("eu_to_start");
     }
 
     public AdvFusionRecipeBuilder() {
@@ -41,9 +42,15 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
         super(recipeBuilder);
     }
 
+    public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder, int coilTier, long euStart) {
+        super(recipeBuilder);
+        this.coilTier = coilTier;
+        this.euStart = euStart;
+    }
+
     @Override
     public AdvFusionRecipeBuilder copy() {
-        return new AdvFusionRecipeBuilder(this);
+        return new AdvFusionRecipeBuilder(this, this.coilTier, this.euStart);
     }
 
     @Override
@@ -84,12 +91,11 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of("coil_tier", coilTier, "eu_to_start", euStart),
+                        ImmutableMap.of("coil_tier", this.coilTier, "eu_to_start", this.euStart),
                         duration, EUt, hidden));
     }
 
     @Override
-
     public void buildAndRegister() {
         if (fluidInputs.size() == 2) {
             for (FluidStack fluidStack : coolants) {
