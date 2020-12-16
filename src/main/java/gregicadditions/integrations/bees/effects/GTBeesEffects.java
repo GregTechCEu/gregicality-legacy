@@ -117,7 +117,8 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
     GT_FLUID {
         @Override
         public IEffectData doEffect(IBeeGenome genome, IEffectData storedData, IBeeHousing housing) {
-            if (!housing.getWorldObj().isRemote && storedData.getInteger(0) != FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter()) {
+            int tick = FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter();
+            if (!housing.getWorldObj().isRemote && storedData.getInteger(0) != tick && tick % 20 == 0) {
                 storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
                 Fluid fluid = GTBees.getFluidMaterial(genome.getPrimary().getUID());
                 if (fluid == null) return storedData;
