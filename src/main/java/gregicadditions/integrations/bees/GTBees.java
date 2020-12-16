@@ -108,7 +108,7 @@ public enum GTBees implements IBeeDefinition {
 	CRYOTHEUM(GAMaterials.Cryotheum, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, AMMONIA, 2).addMutationCondition(new MutationConditionFluid(Materials.Methane));
+			registerMutation(WATER, AMMONIA, 2).addMutationCondition(new MutationConditionFluid(GAMaterials.Cryotheum));
 		}
 	},
 	METHANE(Materials.Methane, 0.15f) {
@@ -132,7 +132,7 @@ public enum GTBees implements IBeeDefinition {
 	PYROTHEUM(GAMaterials.Pyrotheum, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(LAVA, SULFURICACID, 2).addMutationCondition(new MutationConditionFluid(Materials.Methane));
+			registerMutation(LAVA, SULFURICACID, 2).addMutationCondition(new MutationConditionFluid(GAMaterials.Pyrotheum));
 		}
 	},
 	RUBBERF(Materials.Rubber, 0.25f) {
@@ -168,7 +168,7 @@ public enum GTBees implements IBeeDefinition {
 	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(CRYOTHEUM, MERCURY, 1).addMutationCondition(new MutationConditionFluid(Materials.Fluorine));
+			registerMutation(CRYOTHEUM, MERCURY, 1).addMutationCondition(new MutationConditionFluid(GAMaterials.SupercooledCryotheum));
 		}
 	},
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.15f) {
