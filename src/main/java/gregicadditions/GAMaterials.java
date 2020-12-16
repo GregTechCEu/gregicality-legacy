@@ -867,8 +867,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial ProtoAdamantium = new IngotMaterial(716, "proto_adamantium", 0x4662d4, MaterialIconSet.SHINY, 7, of(new MaterialStack(Adamantium, 3), new MaterialStack(Promethium, 2)), CORE_METAL, null, 35000);
     public static final IngotMaterial TriniumTitanium = new IngotMaterial(715, "trinium_titanium", 0x9986a3, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 2), new MaterialStack(Titanium, 1)), CORE_METAL, null, 24000);
     public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0x0c0c0d, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 15000);
-    public static final GemMaterial Zircon = new GemMaterial(713, "zircon", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_ORE);
-    public static final DustMaterial Caliche = new DustMaterial(712, "calich", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_ORE);
+    public static final GemMaterial Zircon = new GemMaterial(713, "zircon", 0xeb9e3f, MaterialIconSet.GEM_VERTICAL, 7, of(), GENERATE_ORE);
+    public static final DustMaterial Caliche = new DustMaterial(712, "caliche", 0xeb9e3f, MaterialIconSet.DULL, 7, of(), GENERATE_ORE);
     public static final FluidMaterial IodizedOil = new FluidMaterial(711, "iodized_oil", 0x666666, MaterialIconSet.FLUID, of(), 0);
     public static final IngotMaterial LithiumTitanate = new IngotMaterial(710, "lithium_titanate", 0xfe71a9, MaterialIconSet.SHINY, 5, of(new MaterialStack(Lithium, 2), new MaterialStack(Titanium, 2), new MaterialStack(Oxygen, 3)), GENERATE_PLATE | DISABLE_DECOMPOSITION, null);
     public static final IngotMaterial CarbonNanotubes = new IngotMaterial(709, "carbon_nanotubes", 0x2c2c2c, MaterialIconSet.SHINY, 5, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
@@ -1055,6 +1055,7 @@ public class GAMaterials implements IMaterialHandler {
         RockSalt.addOreByProducts(Borax);
         Lepidolite.addOreByProducts(Boron);
         Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
+        Caliche.addOreByProducts(Niter, Saltpeter, Lepidolite);
 
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);

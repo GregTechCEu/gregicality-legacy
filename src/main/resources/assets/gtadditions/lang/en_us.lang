@@ -2802,6 +2802,19 @@ metaitem.graphene_nanotube_mix.item=Graphene-Nanotube Mixture
 metaitem.graphene_aligned_cnt.item=Graphene-Aligned CNT
 metaitem.nial_catalyst.item=Nickel Aluminium Catalyst
 
+metaitem.titanium_nitrate.name=Titanium Nitrate
+metaitem.biphenyl.name=Biphenyl
+metaitem.diiodobiphenyl.name=Diiodobiphenyl
+metaitem.bipiridine.name=Bipyridine
+metaitem.palladium_chloride.name=Palladium Chloride
+metaitem.palladium_bisdibenzylidieneacetone.name=Palladium Bisdibenzylidieneacetone
+metaitem.potassium_tetrachloroplatinate.name=Potassium Tetrachloroplatinate
+metaitem.nickel_triphenyl_phosphite.name=Nickel Triphenylphosphite
+metaitem.dichlorocycloctadieneplatinium.name=Dichlorocycloctadieneplatinium
+metaitem.graphene_nanotube_mix.name=Graphene-Nanotube Mixture
+metaitem.graphene_aligned_cnt.name=Graphene-Aligned CNT
+metaitem.nial_catalyst.name=Nickel Aluminium Catalyst
+
 fluid.vanadium_waste_solution=Vanadium Waste Solution
 fluid.uranyl_chloride_solution=Uranyl Chloride Solution
 fluid.uranyl_nitrate_solution=Uranyl Nitrate Solution
@@ -2898,11 +2911,16 @@ fluid.chloroplatinic_acid=Chloroplatinic Acid
 fluid.cyclooctadiene=Cyclooctadiene
 fluid.cycloparaphenylene=Cycloparaphenylene
 
+fluid.lithium_hydroxide_solution=Lithium Hydroxide Solution
+fluid.lithium_peroxide=Lithium Peroxide Solution
+fluid.lithium_carbonate_pure_solution=Pure Lithium Carbonate Solution
+fluid.ozone=Ozone
+fluid.nitrogen_pentoxide=Nitrogen Pentoxide
+
 material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
 material.naquadriatic_compound=Naquadriatic Compound
 
-metaitem.unstable.star.name=Unstable Star
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
