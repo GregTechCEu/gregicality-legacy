@@ -63,7 +63,7 @@ public class IodineChain {
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(150).EUt(1250)
                 .fluidInputs(IodineBrineMix.getFluid(1300))
-                .fluidOutputs(Brine.getFluid(1000))
+                .fluidOutputs(BrominatedBrine.getFluid(1000))
                 .fluidOutputs(IodineSlurry.getFluid(300))
                 .buildAndRegister();
 

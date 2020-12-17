@@ -2581,7 +2581,7 @@ metaitem.zinc_chloride.name=Zinc Chloride
 metaitem.sodium_sulfite.name=Sodium Sulfite
 metaitem.cellulose.name=Cellulose
 metaitem.germanium_oxide.name=Germanium Oxide
-metaitem.sodium_phosphate.name=SodiumDiphosphate
+metaitem.sodium_phosphate.name=Sodium Diphosphate
 
 fluid.naquadric_solution=Naquadric Solution
 fluid.enriched_naquadric_solution=Enriched Naquadric Solution
@@ -2777,8 +2777,8 @@ metaitem.sodium_azide.name=Sodium Azide
 metaitem.glucosamine.name=Glucosamine
 metaitem.aluminium_hydride.name=Aluminium Hydride
 metaitem.sodium_hydride.name=Sodium Hydride
-metaitem.dehydrogenation_catalyst.name=DehydrogenationCatalyst
-metaitem.polystryrene_nanoparticles.name=Polystyrene NanoParticles
+metaitem.dehydrogenation_catalyst.name=Dehydrogenation Catalyst
+metaitem.polystryrene_nanoparticles.name=Polystyrene Nano Particles
 metaitem.magnesium_sulfate.name=Magnesium Sulfate
 metaitem.sodium_molybdate.name=Sodium Molybdate
 metaitem.sodium_phosphomolybdate.name=Sodium Phosphomolybdate
@@ -2801,6 +2801,19 @@ metaitem.dichlorocycloctadieneplatinium.item=Dichlorocycloctadieneplatinium
 metaitem.graphene_nanotube_mix.item=Graphene-Nanotube Mixture
 metaitem.graphene_aligned_cnt.item=Graphene-Aligned CNT
 metaitem.nial_catalyst.item=Nickel Aluminium Catalyst
+
+metaitem.titanium_nitrate.name=Titanium Nitrate
+metaitem.biphenyl.name=Biphenyl
+metaitem.diiodobiphenyl.name=Diiodobiphenyl
+metaitem.bipiridine.name=Bipyridine
+metaitem.palladium_chloride.name=Palladium Chloride
+metaitem.palladium_bisdibenzylidieneacetone.name=Palladium Bisdibenzylidieneacetone
+metaitem.potassium_tetrachloroplatinate.name=Potassium Tetrachloroplatinate
+metaitem.nickel_triphenyl_phosphite.name=Nickel Triphenylphosphite
+metaitem.dichlorocycloctadieneplatinium.name=Dichlorocycloctadieneplatinium
+metaitem.graphene_nanotube_mix.name=Graphene-Nanotube Mixture
+metaitem.graphene_aligned_cnt.name=Graphene-Aligned CNT
+metaitem.nial_catalyst.name=Nickel Aluminium Catalyst
 
 fluid.vanadium_waste_solution=Vanadium Waste Solution
 fluid.uranyl_chloride_solution=Uranyl Chloride Solution
@@ -2866,7 +2879,7 @@ fluid.amidoxime=Amidoxime
 fluid.pure_uranyl_nitrate=Pure Uranyl Nitrate Solution
 fluid.acetate_solution=Acetate Solution
 fluid.carbon_sulfide=Carbon Sulfide
-fluid.amine_mixture=Amine Mixtyre
+fluid.amine_mixture=Amine Mixture
 fluid.dimethylthiocarbamoil_chloride=Dimethylthiocarbamoil Chloride
 fluid.trimetylamine=Trimethylamine
 fluid.mercaphenol=Mercaphenol
@@ -2898,11 +2911,16 @@ fluid.chloroplatinic_acid=Chloroplatinic Acid
 fluid.cyclooctadiene=Cyclooctadiene
 fluid.cycloparaphenylene=Cycloparaphenylene
 
+fluid.lithium_hydroxide_solution=Lithium Hydroxide Solution
+fluid.lithium_peroxide=Lithium Peroxide Solution
+fluid.lithium_carbonate_pure_solution=Pure Lithium Carbonate Solution
+fluid.ozone=Ozone
+fluid.nitrogen_pentoxide=Nitrogen Pentoxide
+
 material.naquadric_compound=Naquadric Compound
 material.enriched_naquadric_compound=Enriched Naquadric Compound
 material.naquadriatic_compound=Naquadriatic Compound
 
-metaitem.unstable.star.name=Unstable Star
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

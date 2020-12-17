@@ -184,8 +184,9 @@ public class BrineChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicBrominatedBrine.getFluid(1000))
                 .fluidInputs(SulfurDioxide.getFluid(500))
-                .fluidInputs(Brine.getFluid(900))
-                .fluidOutputs(SulfuricBromineSolution.getFluid(2000))
+                .fluidInputs(Water.getFluid(500))
+                .fluidOutputs(Brine.getFluid(900))
+                .fluidOutputs(SulfuricBromineSolution.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
