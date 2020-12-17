@@ -2802,6 +2802,19 @@ metaitem.graphene_nanotube_mix.item=石墨烯-纳米管混合物
 metaitem.graphene_aligned_cnt.item=石墨烯排列纳米管
 metaitem.nial_catalyst.item=镍-铝催化剂
 
+metaitem.titanium_nitrate.name=硝酸钛
+metaitem.biphenyl.name=联二苯
+metaitem.diiodobiphenyl.name=二碘联二苯
+metaitem.bipiridine.name=联吡啶
+metaitem.palladium_chloride.name=氯化钯
+metaitem.palladium_bisdibenzylidieneacetone.name=双二苄基二丙酮钯
+metaitem.potassium_tetrachloroplatinate.name=四氯铂酸钾
+metaitem.nickel_triphenyl_phosphite.name=三苯基亚磷酸镍
+metaitem.dichlorocycloctadieneplatinium.name=环辛二烯二氯化铂
+metaitem.graphene_nanotube_mix.name=石墨烯-纳米管混合物
+metaitem.graphene_aligned_cnt.name=石墨烯排列纳米管
+metaitem.nial_catalyst.name=镍-铝催化剂
+
 fluid.vanadium_waste_solution=钒废液
 fluid.uranyl_chloride_solution=氯化铀酰溶液
 fluid.uranyl_nitrate_solution=硝酸铀酰溶液
@@ -2852,7 +2865,7 @@ fluid.grmanium_chloride=氯化锗
 fluid.sodium_hydroxide_solution=氢氧化钠溶液
 fluid.iron_sulfate=硫酸铁
 
-fluid.nitrous_oxide=氧化亚氮
+fluid.nitrous_oxide=五氧化二氮
 fluid.acrylonitrile=丙烯腈
 fluid.sodium_thiocyanate=硫氰酸钠
 fluid.polyacrylonitrile_solution=聚丙烯腈溶液
@@ -2897,6 +2910,12 @@ fluid.tetramethyltin_chloride=氯化四甲锡
 fluid.chloroplatinic_acid=氯铂酸
 fluid.cyclooctadiene=环辛二烯
 fluid.cycloparaphenylene=环芳苯
+
+fluid.lithium_hydroxide_solution=氢氧化锂溶液
+fluid.lithium_peroxide=过氧化锂溶液
+fluid.lithium_carbonate_pure_solution=纯碳酸锂溶液
+fluid.ozone=臭氧
+fluid.nitrogen_pentoxide=五氧化二氮
 
 material.naquadric_compound=硅岩化合物
 material.enriched_naquadric_compound=富集硅岩化合物
