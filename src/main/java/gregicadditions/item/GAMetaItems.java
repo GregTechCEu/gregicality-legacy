@@ -307,8 +307,10 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem PLATE_FIELD_SHAPE;
     public static MetaItem<?>.MetaValueItem DUST_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem INGOT_FIELD_SHAPE;
     public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
     public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem NEUTRON_PLASMA_CONTAINMENT_CELL;
     public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
     public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_DUST;
 

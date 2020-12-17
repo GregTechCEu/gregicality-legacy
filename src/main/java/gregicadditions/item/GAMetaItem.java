@@ -311,6 +311,9 @@ public class GAMetaItem extends MaterialMetaItem {
         LITHIUM_SATURATED_LITHIUM_SIEVE = addItem(446, "lithium_saturated_lithium_sieve");
         NANOTOME = addItem(447, "nanotome");
         ACRYLIC_YARN = addItem(448, "acrylic_yarn");
+        NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(449, "neutron.plasma.containment.cell");
+        INGOT_FIELD_SHAPE = addItem(450, "ingot.field.shape");
+
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
