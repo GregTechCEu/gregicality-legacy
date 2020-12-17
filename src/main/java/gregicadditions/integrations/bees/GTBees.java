@@ -32,9 +32,10 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.awt.*;
-import java.util.*;
-
-import static gregicadditions.item.GAMetaItems.PROTACTINIUM_WASTE;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
@@ -89,8 +90,7 @@ public enum GTBees implements IBeeDefinition {
 	SALTWATER(Materials.SaltWater, 0.50f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, HYDROGEN, 10).addMutationCondition(new MutationConditionMetaValueItem(10, 100,
-					GAMetaItems.PROTACTINIUM_WASTE, GAMetaItems.NUCLEAR_WASTE, GAMetaItems.PLUTONIUM_WASTE));
+			registerMutation(WATER, HYDROGEN, 10).addMutationCondition(new MutationConditionFluid(Materials.SaltWater));
 		}
 	},
 	AMMONIA(Materials.Ammonia, 0.10f) {
@@ -144,43 +144,43 @@ public enum GTBees implements IBeeDefinition {
 	RUBBERF(Materials.Rubber, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBER, ETHYLENE, 5).addMutationCondition(new MutationConditionFluid(Materials.Rubber));
+			registerMutation(RUBBER, ETHYLENE, 5).addMutationCondition(new MutationConditionFluid(5,100,Materials.Rubber));
 		}
 	},
 	LUBRICANT(Materials.Lubricant, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(OIL, ETHANOL, 3).addMutationCondition(new MutationConditionFluid(Materials.Lubricant));
+			registerMutation(OIL, ETHANOL, 3).addMutationCondition(new MutationConditionFluid(5,100,Materials.Lubricant));
 		}
 	},
 	MERCURY(Materials.Mercury, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(CHLORINE, BENZENE, 5).addMutationCondition(new MutationConditionFluid(Materials.Mercury));
+			registerMutation(CHLORINE, BENZENE, 5).addMutationCondition(new MutationConditionFluid(5,100,Materials.Mercury));
 		}
 	},
 	BENZENE(Materials.Benzene, 0.25f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBERF, OIL, 1).addMutationCondition(new MutationConditionFluid(Materials.Benzene));
+			registerMutation(RUBBERF, OIL, 1).addMutationCondition(new MutationConditionFluid(5,100,Materials.Benzene));
 		}
 	},
 	FLUORINE(Materials.Fluorine, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(LUBRICANT, EMERALD, 1).addMutationCondition(new MutationConditionFluid(Materials.Fluorine));
+			registerMutation(LUBRICANT, EMERALD, 1).addMutationCondition(new MutationConditionFluid(5,100,Materials.Fluorine));
 		}
 	},
 	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(CRYOTHEUM, MERCURY, 1).addMutationCondition(new MutationConditionFluid(GAMaterials.SupercooledCryotheum));
+			registerMutation(CRYOTHEUM, MERCURY, 1).addMutationCondition(new MutationConditionFluid(5,100,GAMaterials.SupercooledCryotheum));
 		}
 	},
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber, 0.15f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(RUBBERF, FLUORINE, 1).addMutationCondition(new MutationConditionFluid(Materials.StyreneButadieneRubber));
+			registerMutation(RUBBERF, FLUORINE, 1).addMutationCondition(new MutationConditionFluid(5,100,Materials.StyreneButadieneRubber));
 		}
 
 		@Override
@@ -191,7 +191,7 @@ public enum GTBees implements IBeeDefinition {
 	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.NeutralMatter));
+			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, GAMaterials.NeutralMatter));
 		}
 
 		@Override
@@ -202,7 +202,7 @@ public enum GTBees implements IBeeDefinition {
 	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.PositiveMatter));
+			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, GAMaterials.PositiveMatter));
 		}
 
 		@Override
@@ -213,7 +213,7 @@ public enum GTBees implements IBeeDefinition {
 	UUMATTER(Materials.UUMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(10,50, Materials.UUMatter));
+			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(20,50, Materials.UUMatter));
 		}
 
 		@Override
@@ -534,7 +534,10 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(TITANIUM, RUBY, 5).addMutationCondition(new MutationConditionRequiresResource("blockChrome"));
+			registerMutation(TITANIUM, RUBY, 5).addMutationCondition(new MutationConditionRequiresResource("blockChrome")).addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+					GAMetaItems.PROTACTINIUM_WASTE,
+					GAMetaItems.NUCLEAR_WASTE,
+					GAMetaItems.THORIUM_WASTE));
 		}
 	},
 	MANGANESE(GTBranches.MINERALLIS, "manganese", true, new Color(0xd5d5d5), new Color(0x999999)) {
@@ -546,7 +549,10 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(TITANIUM, ALUMINIUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockManganese"));
+			registerMutation(TITANIUM, ALUMINIUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockManganese")).addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+					GAMetaItems.PROTACTINIUM_WASTE,
+					GAMetaItems.NUCLEAR_WASTE,
+					GAMetaItems.THORIUM_WASTE));
 		}
 	},
 	TUNGSTEN(GTBranches.MINERALLIS, "tungsten", true, new Color(0x5c5c8a), new Color(0x717191)) {
@@ -558,7 +564,11 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(BeeDefinition.HEROIC, MANGANESE, 5).addMutationCondition(new MutationConditionRequiresResource("blockTungsten"));
+			registerMutation(BeeDefinition.HEROIC, MANGANESE, 5).addMutationCondition(new MutationConditionRequiresResource("blockTungsten"))
+					.addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+							GAMetaItems.URANIUM_WASTE,
+							GAMetaItems.NEPTUNIUM_WASTE,
+							GAMetaItems.PLUTONIUM_WASTE));
 		}
 	},
 	PLATINUM(GTBranches.MINERALLIS, "platinum", true, new Color(0xe6e6e6), new Color(0xededbe)) {
@@ -570,7 +580,10 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(DIAMOND, CHROME, 5);
+			registerMutation(DIAMOND, CHROME, 5).addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+					GAMetaItems.AMERICIUM_WASTE,
+					GAMetaItems.CURIUM_WASTE,
+					GAMetaItems.BERKELIUM_WASTE));
 		}
 	},
 	IRIDIUM(GTBranches.MINERALLIS, "iridium", true, new Color(0xdadada), new Color(0xbcbcca)) {
@@ -587,7 +600,11 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(TUNGSTEN, PLATINUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockIridium"));
+			registerMutation(TUNGSTEN, PLATINUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockIridium"))
+					.addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+							GAMetaItems.CALIFORNIUM_WASTE,
+							GAMetaItems.EINSTEINIUM_WASTE,
+							GAMetaItems.FERMIUM_WASTE));
 		}
 	},
 	URANIUM(GTBranches.CRITICALIS, "uranium", true, new Color(0x19af19), new Color(0x149314)) {
@@ -604,7 +621,11 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(BeeDefinition.AVENGING, PLATINUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockUranium"));
+			registerMutation(BeeDefinition.AVENGING, PLATINUM, 5).addMutationCondition(new MutationConditionRequiresResource("blockUranium"))
+					.addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+							GAMetaItems.MENDELEVIUM_WASTE,
+							GAMetaItems.NUCLEAR_WASTE_LANTHANIDE_A,
+							GAMetaItems.NUCLEAR_WASTE_LANTHANIDE_B));
 		}
 	},
 	PLUTONIUM(GTBranches.CRITICALIS, "platinum", true, new Color(0x335c33), new Color(0x638500)) {
@@ -621,7 +642,11 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(URANIUM, EMERALD, 5).addMutationCondition(new MutationConditionRequiresResource("blockPlutonium"));
+			registerMutation(URANIUM, EMERALD, 5).addMutationCondition(new MutationConditionRequiresResource("blockPlutonium"))
+					.addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+							GAMetaItems.NUCLEAR_WASTE_METAL_A,
+							GAMetaItems.NUCLEAR_WASTE_METAL_B,
+							GAMetaItems.NUCLEAR_WASTE_METAL_C));
 		}
 	},
 	NAQUADAH(GTBranches.CRITICALIS, "naquadah", true, new Color(0x003300), new Color(0x002000)) {
@@ -638,7 +663,11 @@ public enum GTBees implements IBeeDefinition {
 
 		@Override
 		protected void registerMutations() {
-			registerMutation(PLUTONIUM, IRIDIUM, 3).addMutationCondition(new MutationConditionRequiresResource("blockNaquadah"));
+			registerMutation(PLUTONIUM, IRIDIUM, 3).addMutationCondition(new MutationConditionRequiresResource("blockNaquadah"))
+					.addMutationCondition(new MutationConditionMetaValueItem(1, 100,
+							GAMetaItems.NUCLEAR_WASTE_REACTIVE_NONMETAL,
+							GAMetaItems.NUCLEAR_WASTE_METALOID,
+							GAMetaItems.NUCLEAR_WASTE_HEAVY_METAL));
 		}
 	};
 	private final GTBranches branch;
