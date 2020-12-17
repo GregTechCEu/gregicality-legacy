@@ -26,6 +26,7 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
+import gregtech.api.unification.ore.StoneTypes;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.cable.BlockCable;
@@ -61,6 +62,7 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
     public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
+    public static GASimpleBlock SIMPLE_BLOCK;
     public static GATransparentCasing TRANSPARENT_CASING;
     public static GAQuantumCasing QUANTUM_CASING;
     public static GAMachineCasing MACHINE_CASING;
@@ -114,6 +116,9 @@ public class GAMetaBlocks {
 
         MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
         MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
+
+        SIMPLE_BLOCK = new GASimpleBlock();
+        SIMPLE_BLOCK.setRegistryName("ga_simple_block");
 
         REACTOR_CASING = new GAReactorCasing();
         REACTOR_CASING.setRegistryName("ga_reactor_casing");
@@ -229,18 +234,22 @@ public class GAMetaBlocks {
     }
 
     private static void createOreBlock(DustMaterial material) {
-        StoneType[] stoneTypeBuffer = new StoneType[16];
-        int generationIndex = 0;
-        for (StoneType stoneType : StoneType.STONE_TYPE_REGISTRY) {
-            int id = StoneType.STONE_TYPE_REGISTRY.getIDForObject(stoneType), index = id / 16;
-            if (index > generationIndex) {
-                createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
-                Arrays.fill(stoneTypeBuffer, null);
+        if (GAConfig.Misc.oreVariantsStoneTypes) {
+            StoneType[] stoneTypeBuffer = new StoneType[16];
+            int generationIndex = 0;
+            for (StoneType stoneType : StoneType.STONE_TYPE_REGISTRY) {
+                int id = StoneType.STONE_TYPE_REGISTRY.getIDForObject(stoneType), index = id / 16;
+                if (index > generationIndex) {
+                    createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+                    Arrays.fill(stoneTypeBuffer, null);
+                }
+                stoneTypeBuffer[id % 16] = stoneType;
+                generationIndex = index;
             }
-            stoneTypeBuffer[id % 16] = stoneType;
-            generationIndex = index;
+            createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
+        } else {
+            createOreBlock(material, new StoneType[] {StoneTypes.STONE}, 0);
         }
-        createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
     }
 
     private static <T> T[] copyNotNull(T[] src) {
@@ -249,9 +258,7 @@ public class GAMetaBlocks {
     }
 
     private static void createOreBlock(DustMaterial material, StoneType[] stoneTypes, int index) {
-
         String[] orePrefixes = {"Rich", "Poor", "Pure"};
-
         for (String orePrefix : orePrefixes) {
             GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.valueOf("ore" + orePrefix));
             block.setRegistryName("gregtech:" + orePrefix.toLowerCase() + "_ore_" + material + "_" + index);
@@ -278,6 +285,7 @@ public class GAMetaBlocks {
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(QUANTUM_CASING);
         registerItemModel(MUTLIBLOCK_CASING2);
+        registerItemModel(SIMPLE_BLOCK);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
         registerItemModel(VACUUM_CASING);
