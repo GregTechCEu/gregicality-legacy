@@ -423,6 +423,12 @@ public class GAConfig {
         @Config.RequiresWorldRestart
         public boolean oreVariants = true;
 
+        @Config.Comment("Whether or not to generate all stone types for ore variants. E.g. basalt rich ores, nether pure ores, etc. This will break existing worlds!")
+        @Config.Name("Add ore variant stone types")
+        @Config.RequiresMcRestart
+        @Config.RequiresWorldRestart
+        public boolean oreVariantsStoneTypes = true;
+
     }
 
     public static Multis multis = new Multis();
