@@ -702,7 +702,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial IodideSolution = new SimpleFluidMaterial("iodide_solution", 0x08081c);
     public static final SimpleFluidMaterial CalicheNitrateSolution = new SimpleFluidMaterial("caliche_nitrate_solution", 0xffe6660);
     public static final SimpleFluidMaterial CalicheIodineBrine = new SimpleFluidMaterial("caliche_iodine_brine", 0xffe6660);
-    public static final SimpleFluidMaterial KeroseneIodineSolution = new SimpleFluidMaterial("", 0x08081c);
+    public static final SimpleFluidMaterial KeroseneIodineSolution = new SimpleFluidMaterial("kerosene_iodine_solution", 0x08081c);
     public static final SimpleFluidMaterial IodizedBrine = new SimpleFluidMaterial("iodized_brine", 0x525242);
     public static final SimpleFluidMaterial IodineBrineMix = new SimpleFluidMaterial("iodine_brine_mix", 0x525242);
     public static final SimpleFluidMaterial IodineSlurry = new SimpleFluidMaterial("iodine_slurry", 0x08081c);
