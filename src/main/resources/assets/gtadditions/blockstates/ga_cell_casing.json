@@ -1,71 +1,97 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "minecraft:cube_all",
+    "model": "minecraft:cube_bottom_top",
     "textures": {
-      "all": "gregtech:blocks/rendering_error"
+      "bottom": "gregtech:blocks/rendering_error",
+      "top": "gregtech:blocks/rendering_error",
+      "side": "gregtech:blocks/rendering_error"
     }
   },
   "variants": {
     "variant": {
       "cell_uv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.uv"
+          "side": "gregtech:blocks/casings/cell/cell.uv",
+          "bottom": "gregtech:blocks/casings/cell/cell.uv",
+          "top": "gregtech:blocks/casings/cell/cell.uv_top"
         }
       },
       "cell_uhv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.uhv"
+          "side": "gregtech:blocks/casings/cell/cell.uhv",
+          "bottom": "gregtech:blocks/casings/cell/cell.uhv",
+          "top": "gregtech:blocks/casings/cell/cell.uhv_top"
         }
       },
       "cell_uev": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.uev"
+          "side": "gregtech:blocks/casings/cell/cell.uev",
+          "bottom": "gregtech:blocks/casings/cell/cell.uev",
+          "top": "gregtech:blocks/casings/cell/cell.uev_top"
         }
       },
       "cell_uiv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.uiv"
+          "side": "gregtech:blocks/casings/cell/cell.uiv",
+          "bottom": "gregtech:blocks/casings/cell/cell.uiv",
+          "top": "gregtech:blocks/casings/cell/cell.uiv_top"
         }
       },
       "cell_umv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.umv"
+          "side": "gregtech:blocks/casings/cell/cell.umv",
+          "bottom": "gregtech:blocks/casings/cell/cell.umv",
+          "top": "gregtech:blocks/casings/cell/cell.umv_top"
         }
       },
       "cell_uxv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.uxv"
+          "side": "gregtech:blocks/casings/cell/cell.uxv",
+          "bottom": "gregtech:blocks/casings/cell/cell.uxv",
+          "top": "gregtech:blocks/casings/cell/cell.uxv_top"
         }
       },
       "cell_max": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.max"
+          "side": "gregtech:blocks/casings/cell/cell.max",
+          "bottom": "gregtech:blocks/casings/cell/cell.max",
+          "top": "gregtech:blocks/casings/cell/cell.max_top"
         }
       },
       "cell_zpm": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.zpm"
+          "side": "gregtech:blocks/casings/cell/cell.zpm",
+          "bottom": "gregtech:blocks/casings/cell/cell.zpm",
+          "top": "gregtech:blocks/casings/cell/cell.zpm_top"
         }
       },
       "cell_luv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.luv"
+          "side": "gregtech:blocks/casings/cell/cell.luv",
+          "bottom": "gregtech:blocks/casings/cell/cell.luv",
+          "top": "gregtech:blocks/casings/cell/cell.luv_top"
         }
       },
       "cell_iv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.iv"
+          "side": "gregtech:blocks/casings/cell/cell.iv",
+          "bottom": "gregtech:blocks/casings/cell/cell.iv",
+          "top": "gregtech:blocks/casings/cell/cell.iv_top"
         }
       },
       "cell_ev": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.ev"
+          "side": "gregtech:blocks/casings/cell/cell.ev",
+          "bottom": "gregtech:blocks/casings/cell/cell.ev",
+          "top": "gregtech:blocks/casings/cell/cell.ev_top"
         }
       },
       "cell_hv": {
         "textures": {
-          "all": "gregtech:blocks/casings/cell/cell.hv"
+          "side": "gregtech:blocks/casings/cell/cell.hv",
+          "bottom": "gregtech:blocks/casings/cell/cell.hv",
+          "top": "gregtech:blocks/casings/cell/cell.hv_top"
         }
       }
     }
