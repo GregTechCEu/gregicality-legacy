@@ -1,14 +1,22 @@
 package gregicadditions.integrations.bees;
 
+import forestry.apiculture.ModuleApiculture;
+import forestry.apiculture.blocks.BlockAlvearyType;
+import forestry.apiculture.blocks.BlockRegistryApiculture;
 import forestry.core.ModuleCore;
+import forestry.core.blocks.BlockRegistry;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
 import gregicadditions.Gregicality;
+import gregicadditions.integrations.bees.alveary.BlockGTAlveary;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.MetaItems;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.text.WordUtils;
@@ -22,6 +30,7 @@ public class GTMachineRecipes {
         if (GAConfig.GTBees.AssemblerRecipes) {
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(8).duration(16).circuitMeta(1).input(OrePrefix.log, Materials.Wood, 8).fluidInputs(Fluids.SEED_OIL.getFluid(250)).outputs(ModuleCore.getItems().impregnatedCasing.getItemStack()).buildAndRegister();
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(64).circuitMeta(8).input(OrePrefix.log, Materials.Wood).fluidInputs(Fluids.SEED_OIL.getFluid(50)).outputs(ModuleCore.getItems().stickImpregnated.getItemStack()).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(256).duration(64).circuitMeta(2).inputs(new ItemStack(Item.getItemFromBlock(ModuleApiculture.getBlocks().getAlvearyBlock(BlockAlvearyType.PLAIN)), 1)).fluidInputs(Fluids.SEED_OIL.getFluid(50)).outputs(new ItemStack(Item.getItemFromBlock(ForestryCommonProxy.GT_ALVEARY), 1)).buildAndRegister();
         }
 
         //Non-generated Fluid Extractor Recipes
