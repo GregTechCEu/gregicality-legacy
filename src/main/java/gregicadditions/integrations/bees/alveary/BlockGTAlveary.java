@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Locale;
 
-public class GTAlvearyBlock extends BlockStructure {
+public class BlockGTAlveary extends BlockStructure {
     private static final PropertyEnum<State> STATE = PropertyEnum.create("state", State.class);
 
     private enum State implements IStringSerializable {
@@ -42,7 +42,7 @@ public class GTAlvearyBlock extends BlockStructure {
         }
     }
 
-    public GTAlvearyBlock() {
+    public BlockGTAlveary() {
         super(new MaterialBeehive(false));
         IBlockState defaultState = this.blockState.getBaseState();
         this.setDefaultState(defaultState);

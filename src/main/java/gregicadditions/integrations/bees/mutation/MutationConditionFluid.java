@@ -8,7 +8,6 @@ import forestry.api.genetics.IMutationCondition;
 import forestry.core.tiles.TileUtil;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -65,10 +64,15 @@ public class MutationConditionFluid implements IMutationCondition {
             return 0;
         }
         if (cost > 0) {
-            return conditions.stream().anyMatch(condition ->
-                    fluidHandler.drain(new FluidStack(condition, cost), false).amount >= cost &&
-                            fluidHandler.drain(new FluidStack(condition, cost), true).amount == cost)
-                    ? world.rand.nextInt(100) < chance ? 1 : 0 : 0;
+            return conditions.stream().anyMatch(condition -> {
+                FluidStack fluidStack = fluidHandler.drain(new FluidStack(condition, cost), false);
+                if (fluidStack == null || fluidStack.amount < cost) {
+                    return false;
+                }
+                fluidHandler.drain(new FluidStack(condition, cost), true);
+                return true;
+            }) ? world.rand.nextInt(100) < chance ? 1 : 0 : 0;
+
         }
         return conditions.isEmpty()? 1 : Arrays.stream(fluidHandler.getTankProperties()).anyMatch(iFluidTankProperty ->
                 iFluidTankProperty.getContents() != null && conditions.stream().anyMatch(fluid ->
@@ -83,6 +87,6 @@ public class MutationConditionFluid implements IMutationCondition {
             displayName.append(I18n.format(fluid.getUnlocalizedName())).append("/");
         }
         displayName.setCharAt(displayName.length() - 1, ']');
-        return I18n.format("for.mutation.condition.fluid", displayName.toString(), cost);
+        return I18n.format("for.mutation.condition.fluid", displayName.toString(), 2 * cost);
     }
 }

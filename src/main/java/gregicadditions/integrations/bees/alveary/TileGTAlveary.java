@@ -1,10 +1,17 @@
 package gregicadditions.integrations.bees.alveary;
 
+import forestry.api.apiculture.BeeManager;
+import forestry.api.apiculture.DefaultBeeModifier;
+import forestry.api.apiculture.IBeeGenome;
+import forestry.api.apiculture.IBeeModifier;
 import forestry.api.multiblock.IAlvearyComponent;
 import forestry.apiculture.multiblock.TileAlveary;
+import forestry.core.network.packets.PacketActiveUpdate;
 import forestry.core.tiles.IActivatable;
+import forestry.core.utils.NetworkUtil;
 import gregicadditions.integrations.bees.alveary.gui.ContainerGTAlveary;
 import gregicadditions.integrations.bees.alveary.gui.GuiGTAlveary;
+import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.items.metaitem.MetaItem;
@@ -28,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyContainer, IAlvearyComponent.Active {
+public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyContainer, IAlvearyComponent.Active, IAlvearyComponent.BeeModifier {
     private long energyStored;
     private final FluidTank fluidTank;
     private final ItemStackHandler itemStackHandler;
@@ -74,8 +81,40 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
 
     @Override
     public void setActive(boolean active) {
+        if (this.active == active) {
+            return;
+        }
+
         this.active = active;
-        this.markDirty();
+        if (world != null && !world.isRemote) {
+            NetworkUtil.sendNetworkPacket(new PacketActiveUpdate(this), pos, world);
+        }
+        world.notifyBlockUpdate(this.pos, world.getBlockState(this.pos), world.getBlockState(this.pos),3);
+    }
+
+    @Override
+    public IBeeModifier getBeeModifier() {
+        return new DefaultBeeModifier(){
+            @Override
+            public float getLifespanModifier(IBeeGenome genome, IBeeGenome mate, float currentModifier) {
+                return checkNuclearWaste() == -1? super.getMutationModifier(genome, mate, currentModifier) : 0.5F;
+            }
+
+            @Override
+            public float getProductionModifier(IBeeGenome genome, float currentModifier) {
+                return checkNuclearWaste() == -1? super.getProductionModifier(genome, currentModifier) : 0.1F;
+            }
+
+            @Override
+            public float getMutationModifier(IBeeGenome genome, IBeeGenome mate, float currentModifier) {
+                int slot = checkNuclearWaste();
+                if (slot == -1) {
+                    return super.getMutationModifier(genome, mate, currentModifier);
+                }
+                itemStackHandler.extractItem(slot, 1, false);
+                return 2F;
+            }
+        };
     }
 
     @Override
@@ -133,7 +172,7 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
-        super.writeToNBT(data);
+        data = super.writeToNBT(data);
         data.setLong("energyStored", energyStored);
         data.setTag("fluidTank", fluidTank.writeToNBT(new NBTTagCompound()));
         data.setTag("itemStackHandler", itemStackHandler.serializeNBT());
@@ -158,6 +197,17 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
 
     @Override
     public void updateServer(int tickCount) {
+        if (getBeekeepingLogic().canWork()) {
+            ItemStack princessStack = getPrincessStack();
+            setActive(
+                    princessStack != null && BeeManager.beeRoot.getMember(princessStack).getGenome()
+                            .getEffect() instanceof GTBeesEffects || checkNuclearWaste() != -1
+            );
+        } else {
+            setActive(false);
+        }
+        if (this.getEnergyStored() <= 0)
+            return;
         for (EnumFacing side : EnumFacing.values()) {
             TileEntity tileEntity = this.getWorld().getTileEntity(this.getPos().offset(side));
             EnumFacing oppositeSide = side.getOpposite();
@@ -171,6 +221,29 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
                 }
             }
         }
+    }
+
+    private ItemStack getPrincessStack() {
+        ItemStack princessStack = getMultiblockLogic().getController().getBeeInventory().getQueen();
+
+        if (BeeManager.beeRoot.isMated(princessStack)) {
+            return princessStack;
+        }
+
+        return null;
+    }
+
+    private int checkNuclearWaste() {
+        for (int slot = 0; slot < itemStackHandler.getSlots(); slot++) {
+            ItemStack itemStack = itemStackHandler.getStackInSlot(slot);
+            if (itemStack.getItem() instanceof MetaItem && itemStack.getCount() > 0){
+                MetaItem<?> metaItem = (MetaItem<?>) itemStack.getItem();
+                if (311 <= metaItem.getItem(itemStack).getMetaValue() && metaItem.getItem(itemStack).getMetaValue() <= 332) { //nuclear waste
+                    return slot;
+                }
+            }
+        }
+        return -1;
     }
 
     @Override

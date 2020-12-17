@@ -2,9 +2,7 @@ package gregicadditions.integrations.bees;
 
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;
-import forestry.core.items.ItemBlockForestry;
 import gregicadditions.GAConfig;
-import gregicadditions.integrations.bees.alveary.GTAlvearyBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
