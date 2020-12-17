@@ -1,5 +1,5 @@
 {
-  "parent": "gtadditions:block/forestry/gt_alveary_off",
+  "parent": "forestry:block/gt_alveary_off",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

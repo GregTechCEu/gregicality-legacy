@@ -9,6 +9,7 @@ import forestry.api.recipes.RecipeManagers;
 import forestry.apiculture.genetics.BeeDefinition;
 import forestry.apiculture.multiblock.TileAlvearyHeater;
 import forestry.core.ModuleCore;
+import forestry.core.config.Constants;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemBlockForestry;
 import forestry.core.items.ItemFluidContainerForestry;
@@ -228,9 +229,9 @@ public class ForestryCommonProxy {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
         IForgeRegistry<Block> registry = event.getRegistry();
         GT_ALVEARY = new GTAlvearyBlock();
-        GT_ALVEARY.setRegistryName(Gregicality.MODID, "forestry/gt_alveary");
+        GT_ALVEARY.setRegistryName(Constants.MOD_ID, "gt_alveary");
         registry.register(GT_ALVEARY);
-        GameRegistry.registerTileEntity(TileGTAlveary.class, new ResourceLocation(Gregicality.MODID, "forestry/gt_alveary"));
+        GameRegistry.registerTileEntity(TileGTAlveary.class, new ResourceLocation(Constants.MOD_ID, "gt_alveary"));
     }
 
     @Optional.Method(modid = "forestry")

@@ -4,6 +4,7 @@ import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
 import forestry.apiculture.MaterialBeehive;
 import forestry.core.blocks.BlockStructure;
+import forestry.core.config.Constants;
 import forestry.core.tiles.TileUtil;
 import forestry.core.utils.ItemTooltipUtil;
 import forestry.core.utils.Translator;
@@ -72,7 +73,7 @@ public class GTAlvearyBlock extends BlockStructure {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(Item item, IModelManager manager) {
-        manager.registerItemModel(item, 0, Gregicality.MODID,"forestry/gt_alveary");
+        manager.registerItemModel(item, 0, Constants.MOD_ID,"gt_alveary");
     }
 
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {

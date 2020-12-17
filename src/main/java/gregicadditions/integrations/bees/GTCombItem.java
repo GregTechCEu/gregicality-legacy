@@ -3,6 +3,7 @@ package gregicadditions.integrations.bees;
 import forestry.api.core.IItemModelRegister;
 import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
+import forestry.core.config.Constants;
 import forestry.core.items.IColoredItem;
 import forestry.core.utils.ItemTooltipUtil;
 import gregicadditions.Gregicality;
@@ -53,7 +54,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 	public void registerModel(Item item, IModelManager manager) {
 		manager.registerItemModel(item, 0);
 		for (int i = 0; i < GTCombs.VALUES.length; i++) {
-			manager.registerItemModel(item, i, Gregicality.MODID, "forestry/comb");
+			manager.registerItemModel(item, i, Constants.MOD_ID, "comb");
 		}
 	}
 
