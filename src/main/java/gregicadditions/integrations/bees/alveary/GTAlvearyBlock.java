@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -100,4 +101,13 @@ public class GTAlvearyBlock extends BlockStructure {
         }
     }
 
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
+                         int fortune) {
+        super.getDrops(drops, world, pos, state, fortune);
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileGTAlveary) {
+            drops.addAll(((TileGTAlveary) te).getDrops());
+        }
+    }
 }

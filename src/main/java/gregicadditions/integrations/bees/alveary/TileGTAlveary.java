@@ -7,9 +7,11 @@ import gregicadditions.integrations.bees.alveary.gui.ContainerGTAlveary;
 import gregicadditions.integrations.bees.alveary.gui.GuiGTAlveary;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -19,9 +21,12 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyContainer, IAlvearyComponent.Active {
     private long energyStored;
@@ -42,7 +47,26 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
                 return false;
             }
         };
-        itemStackHandler = new ItemStackHandler(1) {
+        itemStackHandler = new ItemStackHandler(4) {
+            @NotNull
+            @Override
+            public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+                return isItemValid(slot, stack)? super.insertItem(slot, stack, simulate) : stack;
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return stack.getItem() instanceof MetaItem;
+            }
+
+            @NotNull
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                if (slot >= 0)
+                    return ItemStack.EMPTY;
+                return super.extractItem(-slot - 1, amount, simulate);
+            }
+
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
@@ -60,6 +84,11 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
     public void setActive(boolean active) {
         this.active = active;
         this.markDirty();
+    }
+
+    @Override
+    public String getUnlocalizedTitle() {
+        return "tile.gtadditions:gt_alveary.name";
     }
 
     @Override
@@ -82,8 +111,22 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         return super.getCapability(capability, facing);
     }
 
-    public IItemHandler getItemHandler() {
+    public ItemStackHandler getItemHandler() {
         return itemStackHandler;
+    }
+
+    public FluidTank getFluidTank() {
+        return fluidTank;
+    }
+
+    public List<ItemStack> getDrops() {
+        List<ItemStack> drops = new ArrayList<>();
+        for (int i = 0; i < itemStackHandler.getSlots(); i++) {
+            if (!itemStackHandler.getStackInSlot(i).isEmpty()) {
+                drops.add(itemStackHandler.getStackInSlot(i));
+            }
+        }
+        return drops;
     }
 
     @Override

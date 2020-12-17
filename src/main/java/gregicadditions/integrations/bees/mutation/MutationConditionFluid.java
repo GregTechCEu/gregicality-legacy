@@ -1,4 +1,4 @@
-package gregicadditions.integrations.bees;
+package gregicadditions.integrations.bees.mutation;
 
 import forestry.api.apiculture.IBeeHousing;
 import forestry.api.climate.IClimateProvider;
@@ -11,6 +11,7 @@ import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -25,8 +26,9 @@ import java.util.List;
 public class MutationConditionFluid implements IMutationCondition {
     private final List<Fluid> conditions;
     private final int chance;
+    private final int cost;
 
-    public MutationConditionFluid(Integer chance, Object... objects) {
+    public MutationConditionFluid(Integer cost, Integer chance, Object... objects) {
         conditions = new ArrayList<>();
         for (Object obj : objects){
             if (obj instanceof Fluid)
@@ -39,6 +41,11 @@ public class MutationConditionFluid implements IMutationCondition {
                 conditions.add(((FluidStack) obj).getFluid());
         }
         this.chance = chance;
+        this.cost = cost;
+    }
+
+    public MutationConditionFluid(Integer chance, Object... objects) {
+        this(0, chance, objects);
     }
 
     public MutationConditionFluid(Object... objects) {
@@ -53,9 +60,15 @@ public class MutationConditionFluid implements IMutationCondition {
             tile = TileUtil.getTile(world, pos);
         } while (tile instanceof IBeeHousing);
         if (tile == null) return 0;
-        IFluidHandler fluidHandler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+        IFluidHandler fluidHandler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
         if (fluidHandler == null) {
             return 0;
+        }
+        if (cost > 0) {
+            return conditions.stream().anyMatch(condition ->
+                    fluidHandler.drain(new FluidStack(condition, cost), false).amount >= cost &&
+                            fluidHandler.drain(new FluidStack(condition, cost), true).amount == cost)
+                    ? world.rand.nextInt(100) < chance ? 1 : 0 : 0;
         }
         return conditions.isEmpty()? 1 : Arrays.stream(fluidHandler.getTankProperties()).anyMatch(iFluidTankProperty ->
                 iFluidTankProperty.getContents() != null && conditions.stream().anyMatch(fluid ->
@@ -70,6 +83,6 @@ public class MutationConditionFluid implements IMutationCondition {
             displayName.append(I18n.format(fluid.getUnlocalizedName())).append("/");
         }
         displayName.setCharAt(displayName.length() - 1, ']');
-        return I18n.format("for.mutation.condition.fluid", displayName.toString());
+        return I18n.format("for.mutation.condition.fluid", displayName.toString(), cost);
     }
 }

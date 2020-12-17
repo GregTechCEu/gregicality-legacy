@@ -16,6 +16,9 @@ import forestry.core.genetics.mutations.MutationConditionRequiresResource;
 import gregicadditions.GAMaterials;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
+import gregicadditions.integrations.bees.mutation.MutationConditionFluid;
+import gregicadditions.integrations.bees.mutation.MutationConditionMetaValueItem;
+import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
@@ -30,6 +33,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.awt.*;
 import java.util.*;
+
+import static gregicadditions.item.GAMetaItems.PROTACTINIUM_WASTE;
 
 public enum GTBees implements IBeeDefinition {
 	//FLUIDISs
@@ -84,7 +89,8 @@ public enum GTBees implements IBeeDefinition {
 	SALTWATER(Materials.SaltWater, 0.50f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(WATER, HYDROGEN, 10).addMutationCondition(new MutationConditionFluid(Materials.SaltWater));
+			registerMutation(WATER, HYDROGEN, 10).addMutationCondition(new MutationConditionMetaValueItem(10, 100,
+					GAMetaItems.PROTACTINIUM_WASTE, GAMetaItems.NUCLEAR_WASTE, GAMetaItems.PLUTONIUM_WASTE));
 		}
 	},
 	AMMONIA(Materials.Ammonia, 0.10f) {
@@ -176,11 +182,21 @@ public enum GTBees implements IBeeDefinition {
 		protected void registerMutations() {
 			registerMutation(RUBBERF, FLUORINE, 1).addMutationCondition(new MutationConditionFluid(Materials.StyreneButadieneRubber));
 		}
+
+		@Override
+		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ACCELERATE);
+		}
 	},
 	NEUTRALMATTER(GAMaterials.NeutralMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
 			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.NeutralMatter));
+		}
+
+		@Override
+		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FIX);
 		}
 	},
 	POSITIVEMATTER(GAMaterials.PositiveMatter, 0.01f) {
@@ -188,11 +204,16 @@ public enum GTBees implements IBeeDefinition {
 		protected void registerMutations() {
 			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(70, GAMaterials.PositiveMatter));
 		}
+
+		@Override
+		protected void setAlleles(IAllele[] template) {
+			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ENERGY);
+		}
 	},
 	UUMATTER(Materials.UUMatter, 0.01f) {
 		@Override
 		protected void registerMutations() {
-			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(50, Materials.UUMatter));
+			registerMutation(NEUTRALMATTER, POSITIVEMATTER, 1).addMutationCondition(new MutationConditionFluid(10,50, Materials.UUMatter));
 		}
 
 		@Override

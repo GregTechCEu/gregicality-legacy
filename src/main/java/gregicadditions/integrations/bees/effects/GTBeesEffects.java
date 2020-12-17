@@ -6,8 +6,11 @@ import forestry.api.apiculture.IBeeHousing;
 import forestry.api.apiculture.IBeekeepingLogic;
 import forestry.api.genetics.AlleleManager;
 import forestry.api.genetics.IEffectData;
+import forestry.api.multiblock.IMultiblockComponent;
+import forestry.apiculture.multiblock.AlvearyController;
 import forestry.core.render.ParticleRender;
 import gregicadditions.integrations.bees.GTBees;
+import gregicadditions.integrations.bees.alveary.TileGTAlveary;
 import gregicadditions.machines.TileEntityWorldAccelerator;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -85,19 +88,13 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
         public IEffectData doEffect(IBeeGenome genome, IEffectData storedData, IBeeHousing housing) {
             if (!housing.getWorldObj().isRemote && storedData.getInteger(0) != FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter()) {
                 storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
-                BlockPos coordinates = housing.getCoordinates();
-                BlockPos[] neighbours =
-                        new BlockPos[] {coordinates.down(), coordinates.up(), coordinates.north(), coordinates.south(),
-                                coordinates.east(), coordinates.west()};
                 long chargeE = (long) (genome.getSpeed() * genome.getLifespan() * 10);
-                for (BlockPos neighbour : neighbours) {
-                    TileEntity te = housing.getWorldObj().getTileEntity(neighbour);
-                    if (te instanceof MetaTileEntityHolder) {
-                        IEnergyContainer container = te.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, null);
-                        if (container != null){
-                            chargeE -= container.changeEnergy(chargeE);
-                            if (chargeE == 0)
-                                break;
+                if (housing instanceof AlvearyController){
+                    for(IMultiblockComponent component : ((AlvearyController) housing).getComponents()) {
+                        if (component instanceof TileGTAlveary){
+                            chargeE -= ((TileGTAlveary) component).changeEnergy(chargeE);
+                            if (chargeE <= 0)
+                                return storedData;
                         }
                     }
                 }
@@ -121,17 +118,14 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
                 storedData.setInteger(0, FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter());
                 Fluid fluid = GTBees.getFluidMaterial(genome.getPrimary().getUID());
                 if (fluid == null) return storedData;
-                BlockPos coordinates = housing.getCoordinates();
                 int fluidFill = (int) (genome.getSpeed() * genome.getLifespan() / 2);
-                for(EnumFacing facing: EnumFacing.VALUES){
-                    BlockPos neighbour = new BlockPos.MutableBlockPos(coordinates).move(facing);
-                    TileEntity te = housing.getWorldObj().getTileEntity(neighbour);
-                    if (te == null) continue;
-                    IFluidHandler fluidHandler = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing.getOpposite());
-                    if (fluidHandler != null){
-                        fluidFill -= fluidHandler.fill(new FluidStack(fluid, fluidFill), true);
-                        if(fluidFill == 0)
-                            break;
+                if (housing instanceof AlvearyController){
+                    for(IMultiblockComponent component : ((AlvearyController) housing).getComponents()) {
+                        if (component instanceof TileGTAlveary){
+                            fluidFill -= ((TileGTAlveary) component).getFluidTank().fillInternal(new FluidStack(fluid, fluidFill), true);
+                            if (fluidFill <= 0)
+                                return storedData;
+                        }
                     }
                 }
             }
