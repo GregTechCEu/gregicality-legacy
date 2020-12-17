@@ -66,7 +66,7 @@ public class MutationConditionMetaValueItem implements IMutationCondition {
                             }
                             return conditions.stream().anyMatch(condition -> metaItem.getItem(itemStack) == condition &&
                                     itemStack.getCount() >= cost)
-                                    ? itemStackHandler.extractItem(- slot - 1, cost, true).getCount() == cost
+                                    ? itemStackHandler.extractItem(slot, cost, true).getCount() == cost
                                     ? world.rand.nextInt(100) < chance ? 1 : 0 : 0 : 0;
                         }
                     }

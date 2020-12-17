@@ -59,14 +59,6 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
                 return stack.getItem() instanceof MetaItem;
             }
 
-            @NotNull
-            @Override
-            public ItemStack extractItem(int slot, int amount, boolean simulate) {
-                if (slot >= 0)
-                    return ItemStack.EMPTY;
-                return super.extractItem(-slot - 1, amount, simulate);
-            }
-
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
@@ -132,14 +124,17 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        energyStored = data.getLong("energyStored");
-        fluidTank.readFromNBT((NBTTagCompound) data.getTag("fluidTank"));
-        itemStackHandler.deserializeNBT((NBTTagCompound) data.getTag("itemStackHandler"));
+        if (data.hasKey("energyStored") && data.hasKey("fluidTank") && data.hasKey("itemStackHandler")) {
+            energyStored = data.getLong("energyStored");
+            fluidTank.readFromNBT((NBTTagCompound) data.getTag("fluidTank"));
+            itemStackHandler.deserializeNBT((NBTTagCompound) data.getTag("itemStackHandler"));
+        }
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
+        data.setLong("energyStored", energyStored);
         data.setTag("fluidTank", fluidTank.writeToNBT(new NBTTagCompound()));
         data.setTag("itemStackHandler", itemStackHandler.serializeNBT());
         return data;
