@@ -1086,6 +1086,7 @@ public class GAMaterials implements IMaterialHandler {
         Lepidolite.addOreByProducts(Boron);
         Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
         Caliche.addOreByProducts(Niter, Saltpeter, Lepidolite);
+        Zircon.addOreByProducts(Cobalt,Lead,UraniumRadioactive.getMaterial()):
 
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
