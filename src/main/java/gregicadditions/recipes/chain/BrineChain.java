@@ -526,9 +526,15 @@ public class BrineChain {
                 .input(dust, SodaAsh)
                 .input(dust, Carbon)
                 .fluidInputs(Water.getFluid(1000))
-                .outputs(StrontiumOxide.getItemStack())
+                .outputs(StrontiumCarbonate.getItemStack())
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfide))
+                .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
+                .inputs(StrontiumCarbonate.getItemStack())
+                .outputs(StrontiumOxide.getItemStack())
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(300).EUt(260)
