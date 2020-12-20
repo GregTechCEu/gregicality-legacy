@@ -192,7 +192,7 @@ public class BrineChain {
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder().duration(150).EUt(5000)
-                .fluidInputs(Brine.getFluid(1000))
+                .fluidInputs(ConcentratedBrine.getFluid(1000))
                 .fluidOutputs(CalciumFreeBrine.getFluid(1000))
                 .outputs(CalciumSalts.getItemStack(2))
                 .buildAndRegister();
