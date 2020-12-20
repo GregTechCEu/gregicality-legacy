@@ -121,7 +121,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial LiquidHydrogen = new FluidMaterial(917, "liquid_hydrogen", 0x3AFFC6, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(14);
     public static final FluidMaterial Xenon = new FluidMaterial(916, "xenon", 0x270095, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Xe);
     public static final FluidMaterial Neon = new FluidMaterial(915, "neon", 0xFF422A, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Ne);
-    public static final FluidMaterial Krypton = new FluidMaterial(914, "krypton", 0x31C42F, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Kr);
+    public static final FluidMaterial Krypton = new FluidMaterial(914, "krypton", 0x31C42F, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_PLASMA | DISABLE_DECOMPOSITION, Kr);
     public static final IngotMaterial Zirconium = new IngotMaterial(912, "zirconium", 0xE0E1E1, MaterialIconSet.METALLIC, 6, of(), EXT2_METAL, Zr);
     public static final GemMaterial CubicZirconia = new GemMaterial(911, "cubic_zirconia", 0xFFDFE2, MaterialIconSet.DIAMOND, 6, of(new MaterialStack(Zirconium, 1), new MaterialStack(Oxygen, 2)), NO_RECYCLING | NO_SMELTING | GENERATE_LENSE);
     public static final GemMaterial Prasiolite = new GemMaterial(910, "prasiolite", 0x9EB749, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Silicon, 5), new MaterialStack(Oxygen, 10), new MaterialStack(Iron, 1)), GENERATE_ORE | GENERATE_LENSE);
@@ -1040,7 +1040,14 @@ public class GAMaterials implements IMaterialHandler {
         Oxygen.addFlag(GENERATE_PLASMA);
         Iron.addFlag(GENERATE_PLASMA);
         Nickel.addFlag(GENERATE_PLASMA);
-
+        Carbon.addFlag(GENERATE_PLASMA);
+        Magnesium.addFlag(GENERATE_PLASMA);
+        Silicon.addFlag(GENERATE_PLASMA);
+        Sulfur.addFlag(GENERATE_PLASMA);
+        Argon.addFlag(GENERATE_PLASMA);
+        Calcium.addFlag(GENERATE_PLASMA);
+        Titanium.addFlag(GENERATE_PLASMA);
+        Sulfur.addFlag(SMELT_INTO_FLUID);
 
         Tellurium.addFlag(GENERATE_ORE);
         Diatomite.addFlag(GENERATE_ORE);
