@@ -46,6 +46,7 @@ public class AluminiumChain {
                 .buildAndRegister();
 
         FLUID_HEATER_RECIPES.recipeBuilder().duration(230).EUt(125)
+                .circuitMeta(0)
                 .fluidInputs(SodiumHydroxideBauxite.getFluid(1000))
                 .fluidOutputs(ImpureAluminiumHydroxideSolution.getFluid(1000))
                 .buildAndRegister();
