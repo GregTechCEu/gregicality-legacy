@@ -370,7 +370,7 @@ public class BrineChain {
                 .fluidOutputs(Dimethylformamide.getFluid(2000))
                 .buildAndRegister();
 
-        CRACKER_UNIT_RECIPES.recipeBuilder().duration(230).EUt(1200)
+        CRACKING_RECIPES.recipeBuilder().duration(230).EUt(1200)
                 .fluidInputs(Hydrogen.getFluid(250))
                 .fluidInputs(Dimethylformamide.getFluid(750))
                 .fluidOutputs(HydrogenCrackedDMF.getFluid(1000))
@@ -496,7 +496,7 @@ public class BrineChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(CalciumMagnesiumSalts.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, Calcite))
-                .chancedOutput(StrontiumSulfate.getItemStack(), 40, 0)
+                .chancedOutput(StrontiumCarbonate.getItemStack(), 40, 0)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(MagnesiumHydroxide.getItemStack())
                 .buildAndRegister();
