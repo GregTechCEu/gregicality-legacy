@@ -7,6 +7,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_INGOT;
 
 public class FusionElementsChain {
     public static void init() {
@@ -56,12 +57,14 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(180000)
+                .circuitMeta(0)
                 .fluidInputs(Carbon.getFluid(10000))
                 .fluidOutputs(Carbon12.getFluid(9893))
                 .fluidOutputs(Carbon13.getFluid(107))
                 .buildAndRegister();
 
         GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(3400).EUt(180000)
+                .circuitMeta(0)
                 .fluidInputs(Nitrogen.getFluid(100000))
                 .fluidOutputs(Nitrogen14.getFluid(99636))
                 .fluidOutputs(NItrogen15.getFluid(364))
@@ -126,6 +129,7 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(420).EUt(59000)
+                .circuitMeta(0)
                 .fluidInputs(MoltenTitaniumTetrafluoride.getFluid(10000))
                 .fluidOutputs(MoltenTitanium50Tetrafluoride.getFluid(518))
                 .fluidOutputs(Fluorine.getFluid(9482))
@@ -147,6 +151,7 @@ public class FusionElementsChain {
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Curium250.getMaterial().getFluid(125),OgannesonBreedingBase.getFluid(125)).fluidOutputs(HotMetastableOganesson.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000).buildAndRegister();
 
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(380).EUt(1200000)
+                .notConsumable(SHAPE_MOLD_INGOT)
                 .fluidInputs(HotMetastableOganesson.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingotHot,MetastableOganesson))
                 .buildAndRegister();
