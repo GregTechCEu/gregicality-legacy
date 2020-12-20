@@ -46,7 +46,7 @@ public class SeleniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1450)
                 .fluidInputs(SelenateTellurateMix.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidInputs(SelenateSolution.getFluid(1000))
+                .fluidOutputs(SelenateSolution.getFluid(1000))
                 .outputs(TelluriumOxide.getItemStack())
                 .outputs(OreDictUnifier.get(dust,Sodium))
                 .fluidOutputs(Hydrogen.getFluid(1000))
