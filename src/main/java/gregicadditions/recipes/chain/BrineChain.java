@@ -192,7 +192,7 @@ public class BrineChain {
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder().duration(150).EUt(5000)
-                .fluidInputs(Brine.getFluid(1000))
+                .fluidInputs(ConcentratedBrine.getFluid(1000))
                 .fluidOutputs(CalciumFreeBrine.getFluid(1000))
                 .outputs(CalciumSalts.getItemStack(2))
                 .buildAndRegister();
@@ -370,7 +370,7 @@ public class BrineChain {
                 .fluidOutputs(Dimethylformamide.getFluid(2000))
                 .buildAndRegister();
 
-        CRACKER_UNIT_RECIPES.recipeBuilder().duration(230).EUt(1200)
+        CRACKING_RECIPES.recipeBuilder().duration(230).EUt(1200)
                 .fluidInputs(Hydrogen.getFluid(250))
                 .fluidInputs(Dimethylformamide.getFluid(750))
                 .fluidOutputs(HydrogenCrackedDMF.getFluid(1000))
@@ -496,7 +496,7 @@ public class BrineChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(CalciumMagnesiumSalts.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, Calcite))
-                .chancedOutput(StrontiumSulfate.getItemStack(), 40, 0)
+                .chancedOutput(StrontiumCarbonate.getItemStack(), 40, 0)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(MagnesiumHydroxide.getItemStack())
                 .buildAndRegister();
@@ -526,9 +526,15 @@ public class BrineChain {
                 .input(dust, SodaAsh)
                 .input(dust, Carbon)
                 .fluidInputs(Water.getFluid(1000))
-                .outputs(StrontiumOxide.getItemStack())
+                .outputs(StrontiumCarbonate.getItemStack())
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfide))
+                .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
+                .inputs(StrontiumCarbonate.getItemStack())
+                .outputs(StrontiumOxide.getItemStack())
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(300).EUt(260)
