@@ -1,9 +1,14 @@
 package gregicadditions.integrations.bees;
 
+import gregicadditions.GAMaterials;
+import gregicadditions.materials.SimpleFluidMaterial;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.util.IStringSerializable;
 
 import java.awt.*;
 import java.util.Locale;
+import java.util.SimpleTimeZone;
 
 public enum GTCombs implements IStringSerializable {
 	LIGNITE(new Color(0x58300b), new Color(0x906237)),
@@ -38,7 +43,36 @@ public enum GTCombs implements IStringSerializable {
 	QUANTARIA(new Color(0xd1d1e0), new Color(0xbbbbbb)),
 	URANIA(new Color(0x169e16), new Color(0x159615)),
 	PLUTONIUM(new Color(0x6b8f00), new Color(0x2c4f2c)),
-	STARGATIUM(new Color(0x002400), new Color(0x002c00));
+	STARGATIUM(new Color(0x002400), new Color(0x002c00)),
+	//fluid combs
+	WATER(Materials.Water),
+	LAVA(Materials.Lava),
+	NITROGEN(Materials.Nitrogen),
+	HYDROGEN(Materials.Hydrogen),
+	OXYGEN(Materials.Oxygen),
+	AIR(Materials.Air),
+	STEAM(Materials.Steam),
+	CARBONDIOXIDE(Materials.CarbonDioxide),
+	SALTWATER(Materials.SaltWater),
+	AMMONIA(Materials.Ammonia),
+	CHLORINE(Materials.Chlorine),
+	SULFURICACID(Materials.SulfuricAcid),
+	CRYOTHEUM(GAMaterials.Cryotheum),
+	METHANE(Materials.Methane),
+	ETHYLENE(Materials.Ethylene),
+	ETHANOL(Materials.Ethanol),
+	PYROTHEUM(GAMaterials.Pyrotheum),
+	RUBBERF(Materials.Rubber),
+	LUBRICANT(Materials.Lubricant),
+	MERCURY(Materials.Mercury),
+	BENZENE(Materials.Benzene),
+	FLUORINE(Materials.Fluorine),
+	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum),
+	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber),
+	NEUTRALMATTER(GAMaterials.NeutralMatter),
+	POSITIVEMATTER(GAMaterials.PositiveMatter),
+	UUMATTER(Materials.UUMatter)
+	;
 
 	public static final GTCombs[] VALUES = values();
 
@@ -54,6 +88,18 @@ public enum GTCombs implements IStringSerializable {
 		this.secondaryColor = secondary.getRGB();
 	}
 
+	GTCombs(FluidMaterial fluidMaterial) {
+		this.name = toString().toLowerCase(Locale.ENGLISH);
+		this.primaryColor = fluidMaterial.materialRGB;
+		this.secondaryColor = new Color(primaryColor).darker().darker().getRGB();
+	}
+
+	GTCombs(SimpleFluidMaterial simpleFluidMaterial) {
+		this.name = toString().toLowerCase(Locale.ENGLISH);
+		this.primaryColor = simpleFluidMaterial.rgb;
+		this.secondaryColor = new Color(primaryColor).darker().darker().getRGB();
+	}
+
 	@Override
 	public String getName() {
 		return name;
@@ -64,5 +110,13 @@ public enum GTCombs implements IStringSerializable {
 			meta = 0;
 		}
 		return VALUES[meta];
+	}
+
+	public static GTCombs get(String name) {
+		return GTCombs.valueOf(name);
+	}
+
+	public static boolean hasCombs(String name) {
+		try {GTCombs.valueOf(name);} catch (IllegalArgumentException e) {return false;} return true;
 	}
 }
