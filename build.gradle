@@ -28,6 +28,13 @@ minecraft {
     replaceIn("Gregicality.java")
 }
 
+jar {
+    manifest {
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+        attributes 'FMLCorePlugin': 'gregicadditions.coremod.GACoreMod'
+    }
+}
+
 repositories {
     maven {
         url = "http://dvs1.progwml6.com/files/maven/"
@@ -86,6 +93,7 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.115"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
     deobfCompile "team.chisel.ctm:CTM:MC1.12.2-1.0.2.31"
+    provided 'appeng:appliedenergistics2:rv6-stable-7'
     provided "binnie:binnie-mods-1.12.2:2.5.1.184"
     provided "exnihilocreatio:exnihilocreatio:1.12.2-0.3.7.31"
     compileOnly files("libs/Cucumber-1.12.2-1.1.3.jar")
