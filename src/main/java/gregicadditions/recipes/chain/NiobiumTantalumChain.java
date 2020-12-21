@@ -17,18 +17,18 @@ public class NiobiumTantalumChain {
                 .input(dustTiny,Sugar)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(111))
-                .outputs(ManganeseSulfate.getItemStack())
+                .outputs(ManganeseSulfate.getItemStack(2))
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(1500)
                 .input(dust,Rhodocrosite)
                 .input(dustTiny,Sugar)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1111))
-                .outputs(ManganeseSulfate.getItemStack())
+                .outputs(ManganeseSulfate.getItemStack(2))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(500)
-                .inputs(ManganeseSulfate.getItemStack())
+                .inputs(ManganeseSulfate.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust,Manganese))
                 .outputs(OreDictUnifier.get(dust,Sulfur))
                 .fluidOutputs(Oxygen.getFluid(4000))
@@ -79,30 +79,30 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(1000).blastFurnaceTemp(3400)
-                .input(dust,Columbite)
+                .input(dust,Columbite,2)
                 .inputs(BariumPeroxide.getItemStack())
                 .input(dust,SodiumHydroxide)
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(FusedColumbite.getItemStack(2))
-                .outputs(ColumbiteMinorOxideResidue.getItemStack(2))
+                .outputs(ColumbiteMinorOxideResidue.getItemStack(3))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(1200)
-                .inputs(FusedColumbite.getItemStack(2))
+                .inputs(FusedColumbite.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(LeachedColumbite.getItemStack(2))
-                .outputs(IronSulfateDust.getItemStack())
+                .outputs(IronSulfateDust.getItemStack(2))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(500)
-                .inputs(IronSulfateDust.getItemStack())
+                .inputs(IronSulfateDust.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust,Iron))
                 .outputs(OreDictUnifier.get(dust,Sulfur))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(260).EUt(850)
-                .inputs(ColumbiteMinorOxideResidue.getItemStack(2))
+                .inputs(ColumbiteMinorOxideResidue.getItemStack(3))
                 .outputs(BariumOxide.getItemStack(1))
                 .chancedOutput(OreDictUnifier.get(dust,Cassiterite),3500,200)
                 .chancedOutput(OreDictUnifier.get(dust,TungstenTrioxide),3500,200)
@@ -116,24 +116,23 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(1000).blastFurnaceTemp(3400)
-                .input(dust,Tantalite)
+                .input(dust,Tantalite,2)
                 .inputs(BariumPeroxide.getItemStack())
                 .input(dust,SodiumHydroxide)
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(FusedTantalite.getItemStack(2))
-                .outputs(TantaliteMinorOxideResidue.getItemStack(2))
+                .outputs(TantaliteMinorOxideResidue.getItemStack(3))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(1200)
-                .inputs(FusedTantalite.getItemStack(2))
+                .inputs(FusedTantalite.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(LeachedTantalite.getItemStack(2))
-                .outputs(ManganeseSulfate.getItemStack())
+                .outputs(ManganeseSulfate.getItemStack(2))
                 .buildAndRegister();
 
-
         CENTRIFUGE_RECIPES.recipeBuilder().duration(260).EUt(850)
-                .inputs(TantaliteMinorOxideResidue.getItemStack(2))
+                .inputs(TantaliteMinorOxideResidue.getItemStack(3))
                 .outputs(BariumOxide.getItemStack(1))
                 .chancedOutput(OreDictUnifier.get(dust,CubicZirconia),3500,200)
                 .chancedOutput(OreDictUnifier.get(dust,Rutile),3500,200)
@@ -153,18 +152,18 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(1850).blastFurnaceTemp(2700)
-                .input(dust,Pyrochlore)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(AcidicLeachedPyrochlore.getItemStack())
-                .fluidOutputs(REEThUSulfateSolution.getFluid(500))
+                .input(dust,Pyrochlore,3)
+                .fluidInputs(SulfuricAcid.getFluid(2000))
+                .outputs(AcidicLeachedPyrochlore.getItemStack(2))
+                .fluidOutputs(REEThUSulfateSolution.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1200)
-                .inputs(AcidicLeachedPyrochlore.getItemStack())
+                .inputs(AcidicLeachedPyrochlore.getItemStack(2))
                 .fluidInputs(Water.getFluid(3000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(3000))
-                .fluidOutputs(AlkalineEarthSulfateSolution.getFluid(500))
+                .fluidOutputs(AlkalineEarthSulfateSolution.getFluid(2000))
                 .outputs(LeachedPyrochlore.getItemStack())
                 .buildAndRegister();
 
@@ -220,7 +219,7 @@ public class NiobiumTantalumChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1400)
                 .fluidInputs(OxypentafluoroNiobate.getFluid(1000))
-                .input(dust,PotassiumFluoride,1)
+                .input(dust,PotassiumFluoride,2)
                 .outputs(PotasssiumFluoroNiobate.getItemStack(1))
                 .buildAndRegister();
 
