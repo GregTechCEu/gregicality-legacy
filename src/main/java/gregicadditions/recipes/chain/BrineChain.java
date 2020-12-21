@@ -530,7 +530,7 @@ public class BrineChain {
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfide))
                 .buildAndRegister();
-        
+
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
                 .inputs(StrontiumCarbonate.getItemStack())
                 .outputs(StrontiumOxide.getItemStack())

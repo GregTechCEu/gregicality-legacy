@@ -2,10 +2,7 @@ package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
 
-import static gregicadditions.GAEnums.GAOrePrefix.dioxide;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.CRACKER_UNIT_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -13,33 +10,33 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class SeleniumChain {
     public static void init() {
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(1000).blastFurnaceTemp(1500)
-                .input(crushedCentrifuged,Chalcopyrite)
-                .input(dust,SiliconDioxide)
+                .input(crushedCentrifuged, Chalcopyrite)
+                .input(dust, SiliconDioxide)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,ElectricallyImpureCopper))
-                .outputs(OreDictUnifier.get(dust,Ferrosilite))
+                .outputs(OreDictUnifier.get(dust, ElectricallyImpureCopper))
+                .outputs(OreDictUnifier.get(dust, Ferrosilite))
                 .fluidOutputs(SulfurDioxide.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1000)
-                .input(dust,ElectricallyImpureCopper)
+                .input(dust, ElectricallyImpureCopper)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(CopperRefiningSolution.getFluid(1000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(450).EUt(1900)
-                .input(plate,ElectricallyImpureCopper,2)
+                .input(plate, ElectricallyImpureCopper, 2)
                 .fluidInputs(CopperRefiningSolution.getFluid(1000))
                 .fluidOutputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot,Copper,4))
-                .chancedOutput(AnodicSlime.getItemStack(),7500,0)
+                .outputs(OreDictUnifier.get(ingot, Copper, 4))
+                .chancedOutput(AnodicSlime.getItemStack(), 7500, 0)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1750).blastFurnaceTemp(2100)
                 .inputs(AnodicSlime.getItemStack())
-                .input(dust,SodaAsh)
+                .input(dust, SodaAsh)
                 .fluidInputs(Air.getFluid(1000))
-                .outputs(OreDictUnifier.get(dustTiny,PreciousMetal,5))
+                .outputs(OreDictUnifier.get(dustTiny, PreciousMetal, 5))
                 .fluidOutputs(SelenateTellurateMix.getFluid(750))
                 .buildAndRegister();
 
@@ -48,7 +45,7 @@ public class SeleniumChain {
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(SelenateSolution.getFluid(1000))
                 .outputs(TelluriumOxide.getItemStack())
-                .outputs(OreDictUnifier.get(dust,Sodium))
+                .outputs(OreDictUnifier.get(dust, Sodium))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .buildAndRegister();
 
@@ -62,14 +59,14 @@ public class SeleniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1200)
                 .inputs(SeleniumOxide.getItemStack())
                 .fluidInputs(SulfurDioxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust,Selenium))
+                .outputs(OreDictUnifier.get(dust, Selenium))
                 .fluidOutputs(SulfurTrioxide.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1200)
                 .inputs(TelluriumOxide.getItemStack())
                 .fluidInputs(SulfurDioxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust,Tellurium))
+                .outputs(OreDictUnifier.get(dust, Tellurium))
                 .fluidOutputs(SulfurTrioxide.getFluid(2000))
                 .buildAndRegister();
 
