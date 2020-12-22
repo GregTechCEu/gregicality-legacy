@@ -96,6 +96,20 @@ public class GeneratorFuels {
         registerPlasmaFuel(Oxygen.getPlasma(1), 4096, GAValues.LV);
         registerPlasmaFuel(Iron.getPlasma(16), 103219, GAValues.LV);
         registerPlasmaFuel(Nickel.getPlasma(16), 106905, GAValues.LV);
+        registerPlasmaFuel(Carbon.getPlasma(1), 6144, GAValues.LV);
+        registerPlasmaFuel(Neon.getPlasma(1), 3072, GAValues.LV);
+        registerPlasmaFuel(Magnesium.getPlasma(1), 3072, GAValues.LV);
+        registerPlasmaFuel(Silicon.getPlasma(1), 2731, GAValues.LV);
+        registerPlasmaFuel(Sulfur.getPlasma(1), 2731, GAValues.LV);
+        registerPlasmaFuel(Argon.getPlasma(1), 2731, GAValues.LV);
+        registerPlasmaFuel(Calcium.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(PlasmaTitanium44.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(PlasmaChromium48.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Titanium.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(PlasmaIron52.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(PlasmaNickel56.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(PlasmaHeliumCNO.getFluid(1), 3840, GAValues.LV);
+
 
         //Smefuels
         FuelRecipes.registerSemiFluidGeneratorFuel(GAMaterials.FishOil.getFluid(640), 10, GAValues.LV);

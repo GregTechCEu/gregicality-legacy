@@ -33,6 +33,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -44,11 +45,13 @@ public class TileEntityWorldAccelerator extends GATieredMetaTileEntity implement
     private boolean tileMode = true;
     private boolean isActive = false;
     private boolean isPaused = false;
+    private int lastTick;
 
     public TileEntityWorldAccelerator(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         //consume 8 amps
         this.energyPerTick = GAValues.V[tier] * getMaxInputOutputAmperage();
+        this.lastTick = 0;
         initializeInventory();
     }
 
@@ -91,7 +94,8 @@ public class TileEntityWorldAccelerator extends GATieredMetaTileEntity implement
     @Override
     public void update() {
         super.update();
-        if (!getWorld().isRemote) {
+        if (!getWorld().isRemote && lastTick != FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter()) {
+            lastTick = FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter();
             if (isPaused) {
                 if (isActive)
                     setActive(false);
