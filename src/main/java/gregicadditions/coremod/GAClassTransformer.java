@@ -1,5 +1,6 @@
 package gregicadditions.coremod;
 
+import gregicadditions.coremod.transform.NetworkNodeGridTransformer;
 import gregicadditions.coremod.transform.PacketJEIRecipeTransformer;
 import net.minecraft.launchwrapper.IClassTransformer;
 import org.objectweb.asm.ClassReader;
@@ -13,6 +14,9 @@ public class GAClassTransformer implements IClassTransformer {
         switch (transformedName) {
             case "appeng.core.sync.packets.PacketJEIRecipe":
                 tform = PacketJEIRecipeTransformer.INSTANCE;
+                break;
+            case "com.raoulvdberge.refinedstorage.apiimpl.network.node.NetworkNodeGrid":
+                tform = NetworkNodeGridTransformer.INSTANCE;
                 break;
             default:
                 return basicClass;
