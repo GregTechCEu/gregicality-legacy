@@ -1,11 +1,10 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAEnums;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -32,7 +31,7 @@ public class VariousChains {
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(500)
                 .fluidInputs(Chlorine.getFluid(1000))
                 .input(dust,SodiumHydroxide,2)
                 .fluidOutputs(Water.getFluid(1000))
@@ -139,17 +138,18 @@ public class VariousChains {
                 .outputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
-                .input(stick,Wood,3)
-                .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
-                .outputs(new ItemStack(Blocks.BED))
-                .buildAndRegister();
+        //not working
+//        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
+//                .input(stick,Wood,3)
+//                .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
+//                .outputs(new ItemStack(Blocks.BED))
+//                .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
                 .fluidInputs(SolderingAlloy.getFluid(576))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm())
                 .input(craftingLens, MarkerMaterials.Color.Magenta)
-                .input(wireFine,Gold,3)
+                .input(wireFine, Gold, 3)
                 .outputs(LASER_DIODE.getStackForm())
                 .buildAndRegister();
 
@@ -170,7 +170,10 @@ public class VariousChains {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(plate,Steel,22)
+                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
+                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
+                .input(plate, Steel, 64)
+                .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())
                 .inputs(MAGNETIC_TRAP.getStackForm())
                 .fluidInputs(SolderingAlloy.getFluid(720))
