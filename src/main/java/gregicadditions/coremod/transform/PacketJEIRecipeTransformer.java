@@ -1,9 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.*;
 
 public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
 
@@ -27,16 +25,16 @@ public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
         @Override
         public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
             if (name.equals("serverPacketData")) {
-                return new TransformPoweredExtraction(api, super.visitMethod(access, name, desc, signature, exceptions));
+                return new TransformServerPacketData(api, super.visitMethod(access, name, desc, signature, exceptions));
             }
             return super.visitMethod(access, name, desc, signature, exceptions);
         }
 
     }
 
-    private static class TransformPoweredExtraction extends MethodVisitor {
+    private static class TransformServerPacketData extends MethodVisitor {
 
-        TransformPoweredExtraction(int api, MethodVisitor mv) {
+        TransformServerPacketData(int api, MethodVisitor mv) {
             super(api, mv);
         }
 
@@ -47,6 +45,12 @@ public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
                         "gregicadditions/coremod/hooks/CoreModHooks",
                         "poweredExtraction",
                         "(Lappeng/api/networking/energy/IEnergySource;Lappeng/api/storage/IMEMonitor;Lappeng/api/storage/data/IAEItemStack;Lappeng/api/networking/security/IActionSource;)Lappeng/api/storage/data/IAEItemStack;",
+                        false);
+            } else if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("appeng/util/inv/AdaptorItemHandler") && name.equals("removeItems")) {
+                super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                        "gregicadditions/coremod/hooks/CoreModHooks",
+                        "removeItems",
+                        "(Lappeng/util/inv/AdaptorItemHandler;ILnet/minecraft/item/ItemStack;Lappeng/util/inv/IInventoryDestination;)Lnet/minecraft/item/ItemStack;",
                         false);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
