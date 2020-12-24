@@ -1,25 +1,29 @@
 package gregicadditions.recipes;
 
 import com.google.common.collect.ImmutableMap;
-import gregicadditions.GAMaterials;
+import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.utils.GALog;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
-import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+import static gregicadditions.GAMaterials.*;
+import static gregtech.api.unification.material.Materials.*;
+
 
 public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder> {
 
     private int coilTier;
     private long euStart;
-    public static List<FluidStack> coolants = new ArrayList<>();
+    public static Map<FluidMaterial, Integer> coolants = new HashMap<>();
+    private int euReturn;
 
 
     public AdvFusionRecipeBuilder(Recipe recipe, RecipeMap<AdvFusionRecipeBuilder> recipeMap) {
@@ -33,24 +37,29 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
 
     static {
-        coolants.add(Materials.Water.getFluid(10000));
-        coolants.add(GAMaterials.Cryotheum.getFluid(1000));
-        coolants.add(GAMaterials.SupercooledCryotheum.getFluid(100));
+        coolants.put(Steam, 570);
+        coolants.put(Deuterium, 240);
+        coolants.put(SodiumPotassiumAlloy, 120);
+        coolants.put(Sodium, 100);
+        coolants.put(FLiNaK, 50);
+        coolants.put(FLiBe, 55);
+        coolants.put(LeadBismuthEutectic, 60);
     }
 
     public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder) {
         super(recipeBuilder);
     }
 
-    public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder, int coilTier, long euStart) {
+    public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder, int coilTier, long euStart, int euReturn) {
         super(recipeBuilder);
         this.coilTier = coilTier;
         this.euStart = euStart;
+        this.euReturn = euReturn;
     }
 
     @Override
     public AdvFusionRecipeBuilder copy() {
-        return new AdvFusionRecipeBuilder(this, this.coilTier, this.euStart);
+        return new AdvFusionRecipeBuilder(this, this.coilTier, this.euStart, this.euReturn);
     }
 
     @Override
@@ -72,7 +81,6 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
             recipeStatus = EnumValidationResult.INVALID;
         }
         this.coilTier = coilTier;
-
         this.euStart =  this.euStart == 0 ? (int) (16 * 10000000 * Math.pow(2, coilTier)) : this.euStart;
         return this;
     }
@@ -83,7 +91,15 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
             recipeStatus = EnumValidationResult.INVALID;
         }
         this.euStart = eu;
+        return this;
+    }
 
+    public AdvFusionRecipeBuilder euReturn(int percentage) {
+        if (percentage < 0) {
+            GALog.logger.error("Advanced Fusion EU return cannot be less than 0", new IllegalArgumentException());
+            recipeStatus = EnumValidationResult.INVALID;
+        }
+        this.euReturn = percentage;
         return this;
     }
 
@@ -98,8 +114,12 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     @Override
     public void buildAndRegister() {
         if (fluidInputs.size() == 2) {
-            for (FluidStack fluidStack : coolants) {
-                recipeMap.addRecipe(this.copy().fluidInputs(fluidStack).build());
+            if (euReturn > 0) {
+                long eu = (euStart + ((long) EUt) * duration) * euReturn / 100;
+                for (FluidMaterial fluidMaterial : coolants.keySet()) {
+                    recipeMap.addRecipe(this.copy().fluidInputs(fluidMaterial.getFluid((int) (coolants.get(fluidMaterial) * eu / 2048)))
+                                        .fluidOutputs(GAMetaFluids.getHotFluid(fluidMaterial, (int) (coolants.get(fluidMaterial) * eu / 2048))).build());
+                }
             }
         } else {
             recipeMap.addRecipe(build());
