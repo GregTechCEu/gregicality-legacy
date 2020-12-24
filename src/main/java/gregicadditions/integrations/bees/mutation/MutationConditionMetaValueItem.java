@@ -7,6 +7,7 @@ import forestry.api.genetics.IMutationCondition;
 import forestry.api.multiblock.IMultiblockComponent;
 import forestry.apiculture.multiblock.TileAlveary;
 import forestry.core.tiles.TileUtil;
+import forestry.core.utils.Translator;
 import gregicadditions.integrations.bees.alveary.TileGTAlveary;
 import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.client.resources.I18n;
@@ -75,9 +76,9 @@ public class MutationConditionMetaValueItem implements IMutationCondition {
     public String getDescription() {
         StringBuilder displayName = new StringBuilder("[");
         for (MetaItem<?>.MetaValueItem item : conditions){
-            displayName.append(I18n.format(item.getStackForm().getDisplayName())).append("/");
+            displayName.append(Translator.translateToLocalFormatted(item.getStackForm().getDisplayName())).append("/");
         }
         displayName.setCharAt(displayName.length() - 1, ']');
-        return I18n.format("for.mutation.condition.metavalueitem", displayName.toString(), 2 * cost);
+        return Translator.translateToLocalFormatted("for.mutation.condition.metavalueitem", displayName.toString(), 2 * cost);
     }
 }

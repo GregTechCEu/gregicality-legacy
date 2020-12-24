@@ -9,16 +9,10 @@ import appeng.util.Platform;
 import appeng.util.inv.AdaptorItemHandler;
 import appeng.util.inv.IInventoryDestination;
 import appeng.util.inv.ItemSlot;
-import com.raoulvdberge.refinedstorage.api.network.INetwork;
-import com.raoulvdberge.refinedstorage.api.util.Action;
-import com.raoulvdberge.refinedstorage.api.util.IComparer;
-import com.raoulvdberge.refinedstorage.apiimpl.util.Comparer;
 import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.item.ItemStack;
 
-import java.util.Iterator;
-
-public class CoreModHooks {
+public class AppliedEnergistics2Hooks {
 
     //origin: appeng.util.Platform.poweredExtraction()
     public static IAEItemStack poweredExtraction(IEnergySource energy, IMEMonitor<IAEItemStack> cell, IAEItemStack request, IActionSource src ) {
@@ -46,27 +40,6 @@ public class CoreModHooks {
             }
         }
         return ad.removeItems(amount, request, destination);
-    }
-
-    //origin: com.raoulvdberge.refinedstorage.api.network.INetwork.extractItem()
-    public static ItemStack extractItem(INetwork network, ItemStack request, int size, int flag, Action action) {
-        if (request != null && request.getItem() instanceof MetaItem) {
-            for (ItemStack itemStack : network.getItemStorageCache().getList().getStacks()) {
-                if (itemStack.getItem() == request.getItem() && itemStack.getItemDamage() == request.getItemDamage() && itemStack.getCount() >= request.getCount()) {
-                    request.setTagCompound(itemStack.getTagCompound());
-                    break;
-                }
-            }
-        }
-        return network.extractItem(request, size, flag, action);
-    }
-
-    //origin: com.raoulvdberge.refinedstorage.api.util.IComparer.isEqual()
-    public static boolean isEqual(IComparer comparer, ItemStack request, ItemStack itemStack, int flags) {
-        if (request != null && itemStack != null && request.getItem() instanceof MetaItem && itemStack.getItem() == request.getItem() && itemStack.getItemDamage() == request.getItemDamage() && itemStack.getCount() >= request.getCount()) {
-            request.setTagCompound(itemStack.getTagCompound());
-        }
-        return comparer.isEqual(request, itemStack, flags);
     }
 
 }

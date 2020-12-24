@@ -9,6 +9,7 @@ import forestry.api.genetics.IEffectData;
 import forestry.api.multiblock.IMultiblockComponent;
 import forestry.apiculture.multiblock.AlvearyController;
 import forestry.core.render.ParticleRender;
+import forestry.core.utils.Translator;
 import gregicadditions.integrations.bees.GTBees;
 import gregicadditions.integrations.bees.alveary.TileGTAlveary;
 import gregicadditions.machines.TileEntityWorldAccelerator;
@@ -178,7 +179,7 @@ public enum GTBeesEffects implements IAlleleBeeEffect {
 
     @Override
     public String getName() {
-        return I18n.format("for.bees.effects." + toString().toLowerCase());
+        return Translator.translateToLocal("for.bees.effects." + toString().toLowerCase());
     }
 
     @Override

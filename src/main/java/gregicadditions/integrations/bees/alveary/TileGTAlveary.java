@@ -84,12 +84,14 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         if (this.active == active) {
             return;
         }
-
         this.active = active;
-        if (world != null && !world.isRemote) {
-            NetworkUtil.sendNetworkPacket(new PacketActiveUpdate(this), pos, world);
+        if (world != null) {
+            if (world.isRemote) {
+                world.markBlockRangeForRenderUpdate(getPos(), getPos());
+            } else {
+                NetworkUtil.sendNetworkPacket(new PacketActiveUpdate(this), pos, world);
+            }
         }
-        world.notifyBlockUpdate(this.pos, world.getBlockState(this.pos), world.getBlockState(this.pos),3);
     }
 
     @Override
@@ -160,13 +162,27 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         return drops;
     }
 
+    /* Network */
+    @Override
+    protected void encodeDescriptionPacket(NBTTagCompound packetData) {
+        super.encodeDescriptionPacket(packetData);
+        packetData.setBoolean("Active", active);
+    }
+
+    @Override
+    protected void decodeDescriptionPacket(NBTTagCompound packetData) {
+        super.decodeDescriptionPacket(packetData);
+        setActive(packetData.getBoolean("Active"));
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        if (data.hasKey("energyStored") && data.hasKey("fluidTank") && data.hasKey("itemStackHandler")) {
+        if (data.hasKey("energyStored") && data.hasKey("fluidTank") && data.hasKey("itemStackHandler") && data.hasKey("active")) {
             energyStored = data.getLong("energyStored");
             fluidTank.readFromNBT((NBTTagCompound) data.getTag("fluidTank"));
             itemStackHandler.deserializeNBT((NBTTagCompound) data.getTag("itemStackHandler"));
+            setActive(data.getBoolean("active"));
         }
     }
 
@@ -176,6 +192,7 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         data.setLong("energyStored", energyStored);
         data.setTag("fluidTank", fluidTank.writeToNBT(new NBTTagCompound()));
         data.setTag("itemStackHandler", itemStackHandler.serializeNBT());
+        data.setBoolean("active", active);
         return data;
     }
 

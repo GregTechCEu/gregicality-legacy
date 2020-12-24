@@ -42,13 +42,13 @@ public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKESTATIC && owner.equals("appeng/util/Platform") && name.equals("poweredExtraction")) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/CoreModHooks",
+                        "gregicadditions/coremod/hooks/AppliedEnergistics2Hooks",
                         "poweredExtraction",
                         "(Lappeng/api/networking/energy/IEnergySource;Lappeng/api/storage/IMEMonitor;Lappeng/api/storage/data/IAEItemStack;Lappeng/api/networking/security/IActionSource;)Lappeng/api/storage/data/IAEItemStack;",
                         false);
             } else if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("appeng/util/inv/AdaptorItemHandler") && name.equals("removeItems")) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/CoreModHooks",
+                        "gregicadditions/coremod/hooks/AppliedEnergistics2Hooks",
                         "removeItems",
                         "(Lappeng/util/inv/AdaptorItemHandler;ILnet/minecraft/item/ItemStack;Lappeng/util/inv/IInventoryDestination;)Lnet/minecraft/item/ItemStack;",
                         false);

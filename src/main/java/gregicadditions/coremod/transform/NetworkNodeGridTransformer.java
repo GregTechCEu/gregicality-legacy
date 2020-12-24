@@ -44,13 +44,13 @@ public class NetworkNodeGridTransformer extends GAClassTransformer.ClassMapper {
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("com/raoulvdberge/refinedstorage/api/network/INetwork") && name.equals("extractItem")) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/CoreModHooks",
+                        "gregicadditions/coremod/hooks/RefinedStorageHooks",
                         "extractItem",
                         "(Lcom/raoulvdberge/refinedstorage/api/network/INetwork;Lnet/minecraft/item/ItemStack;IILcom/raoulvdberge/refinedstorage/api/util/Action;)Lnet/minecraft/item/ItemStack;",
                         false);
             } else if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("com/raoulvdberge/refinedstorage/api/util/IComparer") && name.equals("isEqual")) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/CoreModHooks",
+                        "gregicadditions/coremod/hooks/RefinedStorageHooks",
                         "isEqual",
                         "(Lcom/raoulvdberge/refinedstorage/api/util/IComparer;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;I)Z",
                         false);
