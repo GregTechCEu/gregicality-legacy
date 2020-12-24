@@ -6,6 +6,7 @@ import forestry.api.core.Tabs;
 import forestry.core.config.Constants;
 import forestry.core.items.IColoredItem;
 import forestry.core.utils.ItemTooltipUtil;
+import forestry.core.utils.Translator;
 import gregicadditions.Gregicality;
 import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.client.resources.I18n;
@@ -72,7 +73,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		if (honeyComb.ordinal() >= GTCombs.WATER.ordinal()){
 			Fluid fluid = GTBees.getFluidMaterial(GTBees.getUid(honeyComb.name));
 			if (fluid != null){
-				return I18n.format(fluid.getUnlocalizedName()) + " " + I18n.format("item.gtadditions:comb.name");
+				return Translator.translateToLocal(fluid.getUnlocalizedName()) + " " + Translator.translateToLocal("item.gtadditions:comb.name");
 			}
 		}
 		return super.getItemStackDisplayName(stack);
