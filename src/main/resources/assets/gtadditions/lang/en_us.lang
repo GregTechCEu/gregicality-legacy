@@ -1433,6 +1433,8 @@ recipemap.simple_qubit_generator.name=Qubit Generator
 recipemap.stellar_forge.name=Stellar Forge
 recipemap.plasma_condenser.name=Plasma Condenser
 recipemap.drilling_rig.name=Drilling Fluid
+recipemap.hyper_reactor=Hyper Reactor
+
 
 gtadditions.recipe.drilling_rig.fluid=%s
 gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
@@ -2061,9 +2063,6 @@ gtadditions.multiblock.large_naquadah_reactor.tooltip.3=Medium Naquadah Fuel => 
 gtadditions.multiblock.large_naquadah_reactor.tooltip.4=Heavy Naquadah Fuel => 2UV.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.5=Medium Enriched Naquadah Fuel => 2UV.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.6=Heavy Enriched Naquadah Fuel => 3UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.7=Hyper Fuel I => 5UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.8=Hyper Fuel II => 8UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.9=Hyper Fuel III => 12UV.
 
 gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
 gtadditions.multiblock.battery_tower.tooltip.2=All the cells in the tower need to be of the same tier and the tower will drain 10%% of the cells voltage per tick.
