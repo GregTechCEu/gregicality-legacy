@@ -6,6 +6,7 @@ import forestry.api.genetics.IAllele;
 import forestry.api.genetics.IGenome;
 import forestry.api.genetics.IMutationCondition;
 import forestry.core.tiles.TileUtil;
+import forestry.core.utils.Translator;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import net.minecraft.client.resources.I18n;
@@ -84,9 +85,9 @@ public class MutationConditionFluid implements IMutationCondition {
     public String getDescription() {
         StringBuilder displayName = new StringBuilder("[");
         for (Fluid fluid : conditions){
-            displayName.append(I18n.format(fluid.getUnlocalizedName())).append("/");
+            displayName.append(Translator.translateToLocalFormatted(fluid.getUnlocalizedName())).append("/");
         }
         displayName.setCharAt(displayName.length() - 1, ']');
-        return I18n.format("for.mutation.condition.fluid", displayName.toString(), 2 * cost);
+        return Translator.translateToLocalFormatted("for.mutation.condition.fluid", displayName.toString(), 2 * cost);
     }
 }
