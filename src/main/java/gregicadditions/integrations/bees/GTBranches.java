@@ -14,6 +14,23 @@ import java.util.Arrays;
 import java.util.Locale;
 
 public enum GTBranches implements IBranchDefinition {
+	FLUIDIS("Fluidis") {
+		@Override
+		protected void setBranchProperties(IAllele[] alleles) {
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.SHORTER);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.SPEED, EnumAllele.Speed.SLOWEST);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.FLOWERING, EnumAllele.Flowering.SLOWEST);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.FLOWER_PROVIDER, EnumAllele.Flowers.SNOW);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.FERTILITY, EnumAllele.Fertility.LOW);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.TERRITORY, EnumAllele.Territory.AVERAGE);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.EFFECT, AlleleEffects.effectNone);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.TEMPERATURE_TOLERANCE, EnumAllele.Tolerance.NONE);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.TEMPERATURE_TOLERANCE, EnumAllele.Tolerance.NONE);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.HUMIDITY_TOLERANCE, EnumAllele.Tolerance.NONE);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.TOLERATES_RAIN, true);
+			AlleleHelper.getInstance().set(alleles, EnumBeeChromosome.CAVE_DWELLING, false);
+		}
+	},
 	FUELIS("Fuelis") {
 		@Override
 		protected void setBranchProperties(IAllele[] alleles) {

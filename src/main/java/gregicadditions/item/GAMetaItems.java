@@ -333,6 +333,16 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem LITHIUM_SIEVE;
     public static MetaItem<?>.MetaValueItem LITHIUM_SATURATED_LITHIUM_SIEVE;
     public static MetaItem<?>.MetaValueItem NANOTOME;
+    public static MetaItem<?>.MetaValueItem WELL_PIPE;
+    public static MetaItem<?>.MetaValueItem RIG_DRILL;
+    public static MetaItem<?>.MetaValueItem WELL_CONNECTOR_PIECE;
+    public static MetaItem<?>.MetaValueItem MEMORY_FOAM_BLOCK;
+    public static MetaItem<?>.MetaValueItem LASER_DIODE;
+    public static MetaItem<?>.MetaValueItem LASER_COOLING_UNIT;
+    public static MetaItem<?>.MetaValueItem MAGNETIC_TRAP;
+    public static MetaItem<?>.MetaValueItem EMPTY_LASER_COOLING_CONTAINER;
+    public static MetaItem<?>.MetaValueItem BOSE_EINSTEIN_COOLING_CONTAINER;
+
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

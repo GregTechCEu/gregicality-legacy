@@ -313,6 +313,15 @@ public class GAMetaItem extends MaterialMetaItem {
         ACRYLIC_YARN = addItem(448, "acrylic_yarn");
         NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(449, "neutron.plasma.containment.cell");
         INGOT_FIELD_SHAPE = addItem(450, "ingot.field.shape");
+        WELL_PIPE = addItem(451,"well_pipe");
+        WELL_CONNECTOR_PIECE = addItem(452,"well_connector_pipe");
+        RIG_DRILL = addItem(453,"rig_drill");
+        MEMORY_FOAM_BLOCK = addItem(454,"memory_foam_block");
+        LASER_DIODE = addItem(455,"laser_diode");
+        LASER_COOLING_UNIT = addItem(456,"laser_cooling_unit");
+        MAGNETIC_TRAP = addItem(457,"magnetic_trap");
+        EMPTY_LASER_COOLING_CONTAINER = addItem(458,"empty_laser_cooling_container");
+        BOSE_EINSTEIN_COOLING_CONTAINER = addItem(459,"bose_einstein_cooling_container");
 
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
