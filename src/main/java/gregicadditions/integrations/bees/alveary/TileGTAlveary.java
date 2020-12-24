@@ -86,6 +86,7 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         }
 
         this.active = active;
+        this.markDirty();
         if (world != null && !world.isRemote) {
             NetworkUtil.sendNetworkPacket(new PacketActiveUpdate(this), pos, world);
         }
@@ -163,10 +164,11 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        if (data.hasKey("energyStored") && data.hasKey("fluidTank") && data.hasKey("itemStackHandler")) {
+        if (data.hasKey("energyStored") && data.hasKey("fluidTank") && data.hasKey("itemStackHandler") && data.hasKey("active")) {
             energyStored = data.getLong("energyStored");
             fluidTank.readFromNBT((NBTTagCompound) data.getTag("fluidTank"));
             itemStackHandler.deserializeNBT((NBTTagCompound) data.getTag("itemStackHandler"));
+            active = data.getBoolean("active");
         }
     }
 
@@ -176,6 +178,7 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
         data.setLong("energyStored", energyStored);
         data.setTag("fluidTank", fluidTank.writeToNBT(new NBTTagCompound()));
         data.setTag("itemStackHandler", itemStackHandler.serializeNBT());
+        data.setBoolean("active", active);
         return data;
     }
 
