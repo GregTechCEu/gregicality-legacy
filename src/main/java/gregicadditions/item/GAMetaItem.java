@@ -322,7 +322,21 @@ public class GAMetaItem extends MaterialMetaItem {
         MAGNETIC_TRAP = addItem(457,"magnetic_trap");
         EMPTY_LASER_COOLING_CONTAINER = addItem(458,"empty_laser_cooling_container");
         BOSE_EINSTEIN_COOLING_CONTAINER = addItem(459,"bose_einstein_cooling_container");
-
+        
+        ALUMINO_SILICATE_GLASS_TUBE = addItem(460,"alumino_silicate_glass_tube");
+        INDUCTOR = addItem(461,"inductor");
+        BALLAST = addItem(462,"ballast");
+        UVA_HALIDE_LAMP = addItem(463,"uva_halide_lamp");
+        WHITE_HALIDE_LAMP = addItem(464,"white_halide_lamp");
+        RED_HALIDE_LAMP = addItem(465,"red_halide_lamp");
+        BLUE_HALIDE_LAMP = addItem(466,"blue_halide_lamp");
+        GREEN_HALIDE_LAMP = addItem(467,"green_halide_lamp");
+        UVA_LAMP_CORE = addItem(468,"uva_lamp_core");
+        WHITE_LAMP_CORE = addItem(469,"white_lamp_core");
+        RED_LAMP_CORE = addItem(470,"red_lamp_core");
+        BLUE_LAMP_CORE = addItem(471,"blue_lamp_core");
+        GREEN_LAMP_CORE = addItem(472,"green_lamp_core");
+        ACTINIUM_PLASMA_CONTAINMENT_CELL = addItem(473, "actinium.plasma.containment.cell");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;

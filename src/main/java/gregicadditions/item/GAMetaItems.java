@@ -343,6 +343,20 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem EMPTY_LASER_COOLING_CONTAINER;
     public static MetaItem<?>.MetaValueItem BOSE_EINSTEIN_COOLING_CONTAINER;
 
+    public static MetaItem<?>.MetaValueItem ALUMINO_SILICATE_GLASS_TUBE;
+    public static MetaItem<?>.MetaValueItem INDUCTOR;
+    public static MetaItem<?>.MetaValueItem BALLAST;
+    public static MetaItem<?>.MetaValueItem UVA_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem BLUE_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem GREEN_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem RED_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem WHITE_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem UVA_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem BLUE_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem GREEN_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem RED_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem WHITE_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem ACTINIUM_PLASMA_CONTAINMENT_CELL;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

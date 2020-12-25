@@ -91,7 +91,7 @@ public class NanotubeChain {
                 .notConsumable(dust, Palladium)
                 .fluidInputs(BenzoylChloride.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidInputs(Benzaldehyde.getFluid(1000))
+                .fluidOutputs(Benzaldehyde.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
