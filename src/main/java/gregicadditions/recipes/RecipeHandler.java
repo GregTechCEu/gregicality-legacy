@@ -5,6 +5,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.*;
@@ -108,6 +109,9 @@ public class RecipeHandler {
                     builder.input(dust, materialStack.material, (int) materialStack.amount);
                 } else if (materialStack.material instanceof FluidMaterial) {
                     builder.fluidInputs(((FluidMaterial) materialStack.material).getFluid((int) (1000 * materialStack.amount)));
+                } else if (materialStack instanceof SimpleDustMaterialStack) {
+                    SimpleDustMaterialStack simpleDustMaterialStack = (SimpleDustMaterialStack) materialStack;
+                    builder.inputs(simpleDustMaterialStack.simpleDustMaterial.getItemStack((int) simpleDustMaterialStack.amount));
                 }
                 totalMaterial.addAndGet((int) materialStack.amount);
             });
@@ -122,6 +126,9 @@ public class RecipeHandler {
                     builder.input(dust, materialStack.material, (int) materialStack.amount);
                 } else if (materialStack.material instanceof FluidMaterial) {
                     builder.fluidInputs(((FluidMaterial) materialStack.material).getFluid((int) (1000 * materialStack.amount)));
+                } else if (materialStack instanceof SimpleDustMaterialStack) {
+                    SimpleDustMaterialStack simpleDustMaterialStack = (SimpleDustMaterialStack) materialStack;
+                    builder.inputs(simpleDustMaterialStack.simpleDustMaterial.getItemStack((int) simpleDustMaterialStack.amount));
                 }
                 totalMaterial.addAndGet((int) materialStack.amount);
             });
