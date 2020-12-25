@@ -90,8 +90,8 @@ public class LithiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(900).EUt(125)
                 .fluidInputs(MoltenLiKChlorideEutetic.getFluid(4000))
                 .fluidOutputs(Chlorine.getFluid(2000))
-                .fluidOutputs(Lithium.getFluid(1000))
-                .fluidOutputs(Potassium.getFluid(1000))
+                .fluidOutputs(Lithium.getFluid(144))
+                .fluidOutputs(Potassium.getFluid(144))
                 .buildAndRegister();
 
     }
