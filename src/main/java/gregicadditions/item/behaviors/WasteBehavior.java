@@ -1,4 +1,4 @@
-package gregicadditions.item.behavior;
+package gregicadditions.item.behaviors;
 
 import gregtech.api.items.metaitem.stats.IItemColorProvider;
 import gregtech.api.items.metaitem.stats.IItemNameProvider;

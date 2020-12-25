@@ -6,7 +6,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.item.behavior.DataStickFluidSamplerBehavior;
+import gregicadditions.item.behaviors.DataStickFluidSamplerBehavior;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.DimensionChunkCoords;
 import gregicadditions.worldgen.PumpjackHandler;

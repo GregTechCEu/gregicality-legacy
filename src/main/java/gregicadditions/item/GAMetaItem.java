@@ -2,7 +2,7 @@ package gregicadditions.item;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
-import gregicadditions.item.behavior.*;
+import gregicadditions.item.behaviors.*;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.FluidStats;

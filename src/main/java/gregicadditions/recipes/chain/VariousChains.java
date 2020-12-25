@@ -16,6 +16,7 @@ import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
 
 
 public class VariousChains {
+
     public static void init(){
         //lignite
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
