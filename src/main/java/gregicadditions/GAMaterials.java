@@ -978,6 +978,14 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Pyrochlore = new DustMaterial(701, "pyrochlore", 0x996633, MaterialIconSet.SHINY, 2, of(), GENERATE_ORE);
     public static final IngotMaterial Polyurethane = new IngotMaterial(700,"polyurethane",0xeffcef,MaterialIconSet.DULL,2,of(),EXCLUDE_BLOCK_CRAFTING_RECIPES);
 
+    public static final SimpleFluidMaterial SupercriticalSteam = new SimpleFluidMaterial("supercritical_steam", Steam.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalDeuterium = new SimpleFluidMaterial("supercritical_deuterium", Deuterium.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalSodiumPotassiumAlloy = new SimpleFluidMaterial("supercritical_sodium_potassium_alloy", SodiumPotassiumAlloy.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalSodium = new SimpleFluidMaterial("supercritical_sodium", Sodium.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalFLiNaK = new SimpleFluidMaterial("supercritical_flinak", FLiNaK.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalFLiBe = new SimpleFluidMaterial("supercritical_flibe", FLiBe.materialRGB);
+    public static final SimpleFluidMaterial SupercriticalLeadBismuthEutectic = new SimpleFluidMaterial("supercritical_lead_bismuth_eutectic", LeadBismuthEutectic.materialRGB);
+
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
     public static Material UMV = new MarkerMaterial("UMV");

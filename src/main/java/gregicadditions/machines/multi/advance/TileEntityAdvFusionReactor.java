@@ -10,17 +10,14 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.recipes.AdvFusionRecipeBuilder;
 import gregicadditions.recipes.GARecipeMaps;
-import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -44,11 +41,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+
+import static gregicadditions.GAMaterials.*;
 
 public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
@@ -60,6 +61,10 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
+
+    private static List<Fluid> HOT = Arrays.asList(SupercriticalSteam.fluid, SupercriticalDeuterium.fluid,
+            SupercriticalSodiumPotassiumAlloy.fluid, SupercriticalSodium.fluid,
+            SupercriticalFLiNaK.fluid, SupercriticalFLiBe.fluid, SupercriticalLeadBismuthEutectic.fluid);
 
     private EnergyContainerList inputEnergyContainers;
     private int heat = 0;
@@ -318,7 +323,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
                 newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
                     for (FluidStack inputFluid : recipe.getFluidInputs()) {
-                        if (AdvFusionRecipeBuilder.coolants.containsKey(MetaFluids.getMaterialFromFluid(inputFluid.getFluid()))) {
+                        if (AdvFusionRecipeBuilder.COOLANTS.containsKey(MetaFluids.getMaterialFromFluid(inputFluid.getFluid()))) {
                             FluidStack newFluid = inputFluid.copy();
                             newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
                             newRecipe.fluidInputs(newFluid);
@@ -327,7 +332,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                         }
                     }
                     for (FluidStack outputFluid : recipe.getFluidOutputs()) {
-                        if (GAMetaFluids.HOT_FLUIDS.values().contains(outputFluid.getFluid())) {
+                        if (AdvFusionRecipeBuilder.COOLANTS.containsValue(outputFluid.getFluid())) {
                             FluidStack newFluid = outputFluid.copy();
                             newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
                             newRecipe.fluidOutputs(newFluid);

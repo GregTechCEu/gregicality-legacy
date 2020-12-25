@@ -1,14 +1,15 @@
 package gregicadditions.recipes;
 
 import com.google.common.collect.ImmutableMap;
-import gregicadditions.fluid.GAMetaFluids;
+import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.GALog;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
     private int coilTier;
     private long euStart;
-    public static Map<FluidMaterial, Integer> coolants = new HashMap<>();
+    public static Map<FluidStack, Fluid> COOLANTS = new HashMap<>();
     private int euReturn;
 
 
@@ -37,13 +38,13 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
 
     static {
-        coolants.put(Steam, 570);
-        coolants.put(Deuterium, 240);
-        coolants.put(SodiumPotassiumAlloy, 120);
-        coolants.put(Sodium, 100);
-        coolants.put(FLiNaK, 50);
-        coolants.put(FLiBe, 55);
-        coolants.put(LeadBismuthEutectic, 60);
+        COOLANTS.put(Steam.getFluid(570), SupercriticalSteam.fluid);
+        COOLANTS.put(Deuterium.getFluid(240), SupercriticalDeuterium.fluid);
+        COOLANTS.put(SodiumPotassiumAlloy.getFluid(120), SupercriticalSodiumPotassiumAlloy.fluid);
+        COOLANTS.put(Sodium.getFluid(100), SupercriticalSodium.fluid);
+        COOLANTS.put(FLiNaK.getFluid(50), SupercriticalFLiNaK.fluid);
+        COOLANTS.put(FLiBe.getFluid(55), SupercriticalFLiBe.fluid);
+        COOLANTS.put(LeadBismuthEutectic.getFluid(60), SupercriticalLeadBismuthEutectic.fluid);
     }
 
     public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder) {
@@ -116,9 +117,15 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
         if (fluidInputs.size() == 2) {
             if (euReturn > 0) {
                 long eu = (euStart + ((long) EUt) * duration) * euReturn / 100;
-                for (FluidMaterial fluidMaterial : coolants.keySet()) {
-                    recipeMap.addRecipe(this.copy().fluidInputs(fluidMaterial.getFluid((int) (coolants.get(fluidMaterial) * eu / 2048)))
-                                        .fluidOutputs(GAMetaFluids.getHotFluid(fluidMaterial, (int) (coolants.get(fluidMaterial) * eu / 2048))).build());
+                for (FluidStack fluidStack : COOLANTS.keySet()) {
+                    FluidStack fluidInput = fluidStack.copy();
+                    int amount = Math.max((int) ((eu / (2048 * 10000)) * fluidInput.amount), 0);
+                    fluidInput.amount = amount;
+                    FluidStack fluidOutput = new FluidStack(COOLANTS.get(fluidStack), amount);
+                    recipeMap.addRecipe(this.copy()
+                            .fluidInputs(fluidInput)
+                            .fluidOutputs(fluidOutput)
+                            .build());
                 }
             }
         } else {
