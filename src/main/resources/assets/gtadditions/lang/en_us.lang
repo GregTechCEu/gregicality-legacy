@@ -1152,6 +1152,8 @@ gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
 gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 gtadditions.machine.battery_tower.name=Battery Tower
 gtadditions.machine.large_laser_engraver.name=Large Laser Engraver
+gtadditions.machine.bio_reactor.name=Bio Reactor
+gtadditions.machine.plasma_condenser.name=Plasma Condenser
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
