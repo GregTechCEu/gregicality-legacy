@@ -6,7 +6,7 @@ import gregtech.api.util.SmallDigits;
 
 public class SimpleDustMaterialStack extends MaterialStack {
 
-    private final SimpleDustMaterial simpleDustMaterial;
+    public final SimpleDustMaterial simpleDustMaterial;
 
     public SimpleDustMaterialStack(SimpleDustMaterial material, long amount) {
         super(new MarkerMaterial(material.name), amount);

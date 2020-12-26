@@ -39,13 +39,20 @@ public class GeneratorFuels {
         FuelRecipes.registerSteamGeneratorFuel(Steam.getFluid(640), 10, GAValues.LV);
 
         //reactor turbine
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Steam, 570), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Deuterium, 240), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(SodiumPotassiumAlloy, 120), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Sodium, 100), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiNaK, 50), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiBe, 55), 1, GAValues.V[GAValues.EV]));
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(LeadBismuthEutectic, 60), 1, GAValues.V[GAValues.EV]));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Steam, 570), 1, GAValues.V[GAValues.EV], Steam.getFluid(570)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Deuterium, 240), 1, GAValues.V[GAValues.EV], Deuterium.getFluid(240)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(SodiumPotassiumAlloy, 120), 1, GAValues.V[GAValues.EV], SodiumPotassiumAlloy.getFluid(120)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(Sodium, 100), 1, GAValues.V[GAValues.EV], Sodium.getFluid(100)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiNaK, 50), 1, GAValues.V[GAValues.EV], FLiNaK.getFluid(50)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(FLiBe, 55), 1, GAValues.V[GAValues.EV], FLiBe.getFluid(55)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(GAMetaFluids.getHotFluid(LeadBismuthEutectic, 60), 1, GAValues.V[GAValues.EV], LeadBismuthEutectic.getFluid(60)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalSteam.getFluid(570), 10000, GAValues.V[GAValues.EV], Steam.getFluid(570)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalDeuterium.getFluid(240), 10000, GAValues.V[GAValues.EV], Deuterium.getFluid(240)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalSodiumPotassiumAlloy.getFluid(120), 10000, GAValues.V[GAValues.EV], SodiumPotassiumAlloy.getFluid(120)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalSodium.getFluid(100), 10000, GAValues.V[GAValues.EV], Sodium.getFluid(100)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalFLiNaK.getFluid(50), 10000, GAValues.V[GAValues.EV], FLiNaK.getFluid(50)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalFLiBe.getFluid(55), 10000, GAValues.V[GAValues.EV], FLiBe.getFluid(55)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(SupercriticalLeadBismuthEutectic.getFluid(60), 10000, GAValues.V[GAValues.EV], LeadBismuthEutectic.getFluid(60)));
 
         //Gas Turbine Fuels
         FuelRecipes.registerGasGeneratorFuel(NaturalGas.getFluid(20), 13, GAValues.LV);

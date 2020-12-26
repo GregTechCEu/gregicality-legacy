@@ -5,6 +5,8 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -139,12 +141,12 @@ public class VariousChains {
                 .outputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .buildAndRegister();
 
-        //not working
-//        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
-//                .input(stick,Wood,3)
-//                .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
-//                .outputs(new ItemStack(Blocks.BED))
-//                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
+                .input(stick, Wood, 3)
+                .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
+                .outputs(new ItemStack(Items.BED))
+               .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
                 .fluidInputs(SolderingAlloy.getFluid(576))

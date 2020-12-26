@@ -153,7 +153,8 @@ public class GARecipeMaps {
         LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 0, 0, 0, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
                 .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
-        ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0, 2, 3, 1, 1, new AdvFusionRecipeBuilder());
+        ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,
+                2, 3, 1, 2, new AdvFusionRecipeBuilder());
 
     }
 }
