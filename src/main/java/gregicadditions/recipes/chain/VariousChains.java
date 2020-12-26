@@ -142,9 +142,9 @@ public class VariousChains {
 
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
-               .input(stick,Wood,3)
-               .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
-               .outputs(new ItemStack(Item.BED))
+                .input(stick, Wood, 3)
+                .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
+                .outputs(new ItemStack(Items.BED))
                .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
