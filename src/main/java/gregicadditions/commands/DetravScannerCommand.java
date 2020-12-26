@@ -1,14 +1,12 @@
 package gregicadditions.commands;
 
-import gregtech.api.GregTech_API;
-import gregtech.api.enums.Materials;
-import gregtech.api.util.GT_LanguageManager;
-import gregtech.common.blocks.GT_TileEntity_Ores;
+import gregicadditions.machines.multi.miner.Miner;
+import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.Block;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.chunk.Chunk;
@@ -94,23 +92,18 @@ public class DetravScannerCommand implements ICommand {
             for (int z = 0; z < 16; z++) {
                 int ySize = c.getHeightValue(x, z);
                 for (int y = 1; y < ySize; y++) {
-                    Block b = c.getBlockState(x, y, z).getBlock();
-                    if (b == GregTech_API.sBlockOres1) {
-                        TileEntity entity = c.getTileEntity(new BlockPos(x, y, z), Chunk.EnumCreateEntityType.CHECK);
-                        if (entity != null) {
-                            GT_TileEntity_Ores gt_entity = (GT_TileEntity_Ores) entity;
-                            short meta = gt_entity.getMetaData();
-                            String name = Materials.getLocalizedNameForItem(
-                                    GT_LanguageManager.getTranslation(b.getUnlocalizedName() + "." + meta + ".name"), meta % 1000);
-                            if (name.startsWith("Small")) continue;
-                            if (fName == null || name.toLowerCase().contains(fName)) {
-                                if (!ores.containsKey(name))
-                                    ores.put(name, 1);
-                                else {
-                                    int val = ores.get(name);
-                                    ores.put(name, val + 1);
-                                }
+                    Block block = c.getBlockState(x, y, z).getBlock();
+                    if (Miner.isOre(block)) {
+                        String name = OreDictUnifier.getOreDictionaryNames(new ItemStack(block)).stream().findFirst().get();
+                        if (name.startsWith("Small")) continue;
+                        if (fName == null || name.toLowerCase().contains(fName)) {
+                            if (!ores.containsKey(name))
+                                ores.put(name, 1);
+                            else {
+                                int val = ores.get(name);
+                                ores.put(name, val + 1);
                             }
+
                         }
                     }
                 }

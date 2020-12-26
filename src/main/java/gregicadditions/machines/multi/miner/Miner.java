@@ -62,8 +62,7 @@ public interface Miner {
                         BlockPos blockPos = new BlockPos(x.get(), y.get(), z.get());
                         Block block = miner.getWorld().getBlockState(blockPos).getBlock();
                         if (miner.getWorld().getTileEntity(blockPos) == null) {
-                            OrePrefix orePrefix = OreDictUnifier.getPrefix(new ItemStack(block));
-                            if (orePrefixes.contains(orePrefix)) {
+                            if (isOre(block)) {
                                 blocks.add(blockPos);
                             }
                         }
@@ -81,15 +80,20 @@ public interface Miner {
         return blocks;
     }
 
+    static boolean isOre(Block block) {
+        OrePrefix orePrefix = OreDictUnifier.getPrefix(new ItemStack(block));
+        return orePrefixes.contains(orePrefix);
+    }
+
 
     static String fortuneString(int fortuneLevel) {
 
         final TreeMap<Integer, String> map = new TreeMap<Integer, String>();
 
-            map.put(1000, "M");
-            map.put(900, "CM");
-            map.put(500, "D");
-            map.put(400, "CD");
+        map.put(1000, "M");
+        map.put(900, "CM");
+        map.put(500, "D");
+        map.put(400, "CD");
             map.put(100, "C");
             map.put(90, "XC");
             map.put(50, "L");

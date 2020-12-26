@@ -5,9 +5,6 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.common.tools.ToolBase;
 import net.minecraft.item.ItemStack;
 
-/**
- * Created by wital_000 on 19.03.2016.
- */
 public class DetravToolElectricProPick extends ToolBase {
 
     private int tier;
