@@ -281,7 +281,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 }
             }
         }
-
         textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
         textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
     }
@@ -291,7 +290,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         this.getBaseTexture(null).render(renderState, translation, pipeline);
         ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
     }
-
 
     public class AdvFusionRecipeLogic extends GAMultiblockRecipeLogic {
 
@@ -323,7 +321,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
                 newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
                     for (FluidStack inputFluid : recipe.getFluidInputs()) {
-                        if (AdvFusionRecipeBuilder.COOLANTS.containsKey(MetaFluids.getMaterialFromFluid(inputFluid.getFluid()))) {
+                        if (AdvFusionRecipeBuilder.COOLANTS.containsKey(inputFluid)) {
                             FluidStack newFluid = inputFluid.copy();
                             newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
                             newRecipe.fluidInputs(newFluid);

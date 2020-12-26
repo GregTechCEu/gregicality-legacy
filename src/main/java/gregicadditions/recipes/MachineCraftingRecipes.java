@@ -548,6 +548,17 @@ public class MachineCraftingRecipes {
                 .inputs(FIELD_GENERATOR_UHV.getStackForm(2))
                 .outputs(GATileEntities.STELLAR_FORGE.getStackForm())
                 .buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(250).EUt(2000000)
+                .fluidInputs(SolderingAlloy.getFluid(1440))
+                .inputs(SENSOR_UHV.getStackForm())
+                .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
+                .inputs(ELECTRIC_PUMP_UHV.getStackForm(2))
+                .input(plate, TriniumTitanium, 8)
+                .input(gear, TungstenTitaniumCarbide, 4)
+                .input(screw, TungstenTitaniumCarbide, 16)
+                .input(circuit, Tier.Superconductor, 2)
+                .outputs(GATileEntities.PLASMA_CONDENSER.getStackForm())
+                .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(500000)
                 .input(frameGt, Trinium)
                 .input(plate, HDCS, 6)
