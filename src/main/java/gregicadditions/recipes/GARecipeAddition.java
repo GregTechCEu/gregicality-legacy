@@ -170,8 +170,6 @@ public class GARecipeAddition {
         ModHandler.addShapelessRecipe("glass_dust_ga", OreDictUnifier.get(dust, Glass), "dustSand", "dustFlint");
         MIXER_RECIPES.recipeBuilder().duration(200).EUt(8).input(dust, Flint).input(dust, GAMaterials.QuartzSand, 4).outputs(OreDictUnifier.get(dust, Glass, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(160).EUt(8).input(dust, Flint).input(dust, Quartzite, 4).outputs(OreDictUnifier.get(dust, Glass, 4)).buildAndRegister();
-        STEAM_MIXER_RECIPES.recipeBuilder().duration(200).EUt(8).input(dust, Flint).input(dust, GAMaterials.QuartzSand, 4).outputs(OreDictUnifier.get(dust, Glass, 4)).buildAndRegister();
-        STEAM_MIXER_RECIPES.recipeBuilder().duration(160).EUt(8).input(dust, Flint).input(dust, Quartzite, 4).outputs(OreDictUnifier.get(dust, Glass, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(16).input(dust, Calcite, 2).input(dust, Stone).input(dust, Clay).input(dust, GAMaterials.QuartzSand).fluidInputs(Water.getFluid(2000)).fluidOutputs(Concrete.getFluid(2304)).buildAndRegister();
 
 
@@ -1012,8 +1010,6 @@ public class GARecipeAddition {
         //GTNH Coils
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(8).input(dust, Mica, 3).input(dust, RawRubber, 2).outputs(OreDictUnifier.get(dust, MicaPulp, 4)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(8).input(dust, Mica, 3).inputs(RUBBER_DROP.getStackForm()).outputs(OreDictUnifier.get(dust, MicaPulp, 4)).buildAndRegister();
-        STEAM_MIXER_RECIPES.recipeBuilder().duration(400).EUt(8).input(dust, Mica, 3).input(dust, RawRubber, 2).outputs(OreDictUnifier.get(dust, MicaPulp, 4)).buildAndRegister();
-        STEAM_MIXER_RECIPES.recipeBuilder().duration(400).EUt(8).input(dust, Mica, 3).inputs(RUBBER_DROP.getStackForm()).outputs(OreDictUnifier.get(dust, MicaPulp, 4)).buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1200).EUt(30).input(dust, Sapphire).input(dust, SiliconDioxide).outputs(OreDictUnifier.get(dust, AluminoSilicateWool, 2)).buildAndRegister();
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1200).EUt(30).input(dust, GreenSapphire).input(dust, SiliconDioxide).outputs(OreDictUnifier.get(dust, AluminoSilicateWool, 2)).buildAndRegister();
