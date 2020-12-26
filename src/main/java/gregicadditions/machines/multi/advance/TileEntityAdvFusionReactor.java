@@ -5,6 +5,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
@@ -14,7 +15,7 @@ import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.recipes.AdvFusionRecipeBuilder;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
@@ -35,20 +36,24 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.common.MetaFluids;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static gregicadditions.GAMaterials.*;
+
 public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS
-    };
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS};
 
     private int tier;
     private int coilTier;
@@ -56,6 +61,10 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
+
+    private static List<Fluid> HOT = Arrays.asList(SupercriticalSteam.fluid, SupercriticalDeuterium.fluid,
+            SupercriticalSodiumPotassiumAlloy.fluid, SupercriticalSodium.fluid,
+            SupercriticalFLiNaK.fluid, SupercriticalFLiBe.fluid, SupercriticalLeadBismuthEutectic.fluid);
 
     private EnergyContainerList inputEnergyContainers;
     private int heat = 0;
@@ -75,7 +84,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-
                 .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
                 .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
                 .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
@@ -102,13 +110,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 .where('v', vacuumPredicate())
                 .where('c', cryostatPredicate())
                 .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)))
-                .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
-                    for (int i = coilTier; i < 5; i++) {
-                        if (tile.metaTileEntityId.equals(GATileEntities.ENERGY_INPUT[i].metaTileEntityId))
-                            return true;
-                    }
-                    return false;
-                })))
+                .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)))
                 .build();
     }
 
@@ -118,7 +120,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
-
         return GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING);
     }
 
@@ -133,10 +134,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         }
     }
 
-    @Override
-    public void update() {
-        super.update();
-    }
 
 
     public static Predicate<BlockWorldState> cryostatPredicate() {
@@ -209,11 +206,11 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
         cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
-
         long energyStored = this.energyContainer.getEnergyStored();
         this.initializeAbilities();
         ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
-        this.tier = coilTier + GAValues.UHV;
+        this.tier = coilTier + GAValues.UHV - 1;
+        this.reinitializeStructurePattern();
     }
 
     private void initializeAbilities() {
@@ -223,7 +220,10 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         this.outputFluidInventory = new FluidTankList(true, getAbilities(MultiblockAbility.EXPORT_FLUIDS));
         List<IEnergyContainer> energyInputs = getAbilities(MultiblockAbility.INPUT_ENERGY);
         this.inputEnergyContainers = new EnergyContainerList(energyInputs);
-        long euCapacity = energyInputs.size() * 10000000L * (long) Math.pow(2, tier);
+        long euCapacity = 0;
+        for (IEnergyContainer energyContainer : energyInputs) {
+            euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier));
+        }
         this.energyContainer = new GAEnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
             @Override
             public String getName() {
@@ -320,15 +320,24 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 int coilTierDifference = coilTier - recipeTier;
                 int vacuumTierDifference = vacuumTier - recipeTier;
                 int divertorTierDifference = divertorTier - recipeTier;
-                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
+                newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
                 newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
                     for (FluidStack inputFluid : recipe.getFluidInputs()) {
-                        if (AdvFusionRecipeBuilder.coolants.contains(inputFluid)) {
+                        if (AdvFusionRecipeBuilder.COOLANTS.containsKey(MetaFluids.getMaterialFromFluid(inputFluid.getFluid()))) {
                             FluidStack newFluid = inputFluid.copy();
                             newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
                             newRecipe.fluidInputs(newFluid);
                         } else {
                             newRecipe.fluidInputs(inputFluid);
+                        }
+                    }
+                    for (FluidStack outputFluid : recipe.getFluidOutputs()) {
+                        if (AdvFusionRecipeBuilder.COOLANTS.containsValue(outputFluid.getFluid())) {
+                            FluidStack newFluid = outputFluid.copy();
+                            newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                            newRecipe.fluidOutputs(newFluid);
+                        } else {
+                            newRecipe.fluidOutputs(outputFluid);
                         }
                     }
                 FluidStack newOutput = recipe.getFluidOutputs().get(0);

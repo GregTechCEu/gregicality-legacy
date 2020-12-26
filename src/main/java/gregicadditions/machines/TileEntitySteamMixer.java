@@ -1,6 +1,7 @@
 package gregicadditions.machines;
 
 import gregicadditions.client.ClientHandler;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.ModularUI;
@@ -11,7 +12,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidTank;
@@ -20,7 +20,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntitySteamMixer extends SteamMetaTileEntity {
     public TileEntitySteamMixer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.MIXER_RECIPES, ClientHandler.STEAM_MIXER_OVERLAY, false);
+        super(metaTileEntityId, GARecipeMaps.STEAM_MIXER_RECIPES, ClientHandler.STEAM_MIXER_OVERLAY, false);
     }
 
     @Override

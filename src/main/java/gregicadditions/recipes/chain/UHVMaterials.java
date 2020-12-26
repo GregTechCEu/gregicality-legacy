@@ -123,5 +123,11 @@ public class UHVMaterials {
                 .EUt(10000000)
                 .duration(500)
                 .buildAndRegister();
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Stone)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
+                .EUt(524288)
+                .duration(2)
+                .buildAndRegister();
     }
 }
