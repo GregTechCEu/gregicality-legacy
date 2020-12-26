@@ -5,9 +5,6 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockConcrete;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.blocks.StoneBlock;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -43,7 +40,6 @@ public class NuclearReactorInfo extends MultiblockInfoPage {
                 .where('Y', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))
                 .where('Z', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))
                 .where('X', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
-                .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.SOUTH)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
