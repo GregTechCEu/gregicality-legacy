@@ -209,7 +209,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getPipe() {
-        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE);
+        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE);
     }
 
     @Override
