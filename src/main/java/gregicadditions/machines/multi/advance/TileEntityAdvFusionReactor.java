@@ -203,10 +203,10 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
         int cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
+        this.tier = coilTier + GAValues.UHV - 1;
         long energyStored = this.energyContainer.getEnergyStored();
         this.initializeAbilities();
         ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
-        this.tier = coilTier + GAValues.UHV - 1;
     }
 
     private void initializeAbilities() {
@@ -218,7 +218,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         this.inputEnergyContainers = new EnergyContainerList(energyInputs);
         long euCapacity = 0;
         for (IEnergyContainer energyContainer : energyInputs) {
-            euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier));
+            euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier) - GAValues.LuV);
         }
         this.energyContainer = new GAEnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
             @Override
