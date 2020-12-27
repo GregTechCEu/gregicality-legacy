@@ -77,14 +77,6 @@ public class BacteriaCultures {
                 .duration(100)
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(gemExquisite, Quartzite)
-                .input(wireFine, Gold)
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .outputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
-                .EUt(30720)
-                .duration(500)
-                .buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
                 .input(stick, RhodiumPlatedPalladium)
                 .outputs(ULTRASONIC_HOMOGENIZER.getStackForm())
