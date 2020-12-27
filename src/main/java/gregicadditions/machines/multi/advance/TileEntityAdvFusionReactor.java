@@ -83,7 +83,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("###############", "###############","#####ccCcc#####","#####ccCcc#####","###############","###############")
-                .aisle("###############", "#######C#######","###ccvEvEvcc###","###ccvEvEvcc###","#######C#######","###############")
+                .aisle("###############", "#######C#######","###ccvevevcc###","###ccvevevcc###","#######C#######","###############")
                 .aisle("#######C#######", "##C##EEdEE##C##","##Cvv#####vvC##","##Cvv#####vvC##","##C##bbbbb##C##","#######C#######")
                 .aisle("###C###C###C###", "###EEdddddEE###","#cv#########vc#","#cv#########vc#","###bbbbbbbbb###","###C###C###C###")
                 .aisle("####C#####C####", "###Edd#C#ddE###","#cv###vvv###vc#","#cv###vvv###vc#","###bbb#C#bbb###","####C#####C####")
@@ -107,6 +107,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 .where('c', cryostatPredicate())
                 .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)))
                 .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)))
+                .where('e', vacuumPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)))
                 .build();
     }
 
