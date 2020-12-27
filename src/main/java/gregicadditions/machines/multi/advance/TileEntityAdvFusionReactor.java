@@ -36,7 +36,6 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.MetaFluids;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -57,7 +56,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
     private int tier;
     private int coilTier;
-    private int cryostatTier;
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
@@ -84,23 +82,21 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
-                .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
-                .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
-                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
-                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
-                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
-                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
-                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
-                .aisle("##CC###XXX###CC##","#CddC##CCC##CddC#","Cv##vC#CCC#Cv##vC","Cv##vC#CCC#Cv##vC","#CbbC##CCC##CbbC#","##CC###XXX###CC##")
-                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
-                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
-                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
-                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
-                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
-                .aisle("########C########","####cIIIvIIIc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cEEEbEEEc####","########C########")
-                .aisle("#################","########S########","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
-                .aisle("#################","#################","########C########","########C########","#################","#################")
+                .aisle("###############", "###############","#####ccCcc#####","#####ccCcc#####","###############","###############")
+                .aisle("###############", "#######C#######","###ccvEvEvcc###","###ccvEvEvcc###","#######C#######","###############")
+                .aisle("#######C#######", "##C##EEdEE##C##","##Cvv#####vvCc#","##Cvv#####vvCc#","##C##bbbbb##C##","#######C#######")
+                .aisle("###C###C###C###", "###EEdddddEE###","#cv#########vc#","#cv#########vc#","###bbbbbbbbb###","###C###C###C###")
+                .aisle("####C#####C####", "###Edd#C#ddE###","#cv###vvv###vc#","#cv###vvv###vc#","###bbb#C#bbb###","####C#####C####")
+                .aisle("###############", "##EddC###CddE##","cv###v#C#v###vc","cv###v#C#v###vc","##bbbC###Cbbb##","###############")
+                .aisle("######XXX######", "##Ed##CCC##dE##","cv##v#CCC#v##vc","cv##v#CCC#v##vc","##bb##CCC##bb##","######XXX######")
+                .aisle("##CC##XXX##CC##", "#CddC#CCC#CddC#","Cv##vCCCCCv##vC","Cv##vCCCCCv##vC","#CbbC#CCC#CbbC#","##CC##XXX##CC##")
+                .aisle("######XXX######", "##dd##CCC##dd##","cv##v#CCC#v##vc","cv##v#CCC#v##vc","##bb##CCC##bb##","######XXX######")
+                .aisle("###############", "##dddC###Cddd##","cv###v#C#v###vc","cv###v#C#v###vc","##bbbC###Cbbb##","###############")
+                .aisle("####C#####C####", "###ddd#C#ddd###","#cv###vvv###vc#","#cv###vvv###vc#","###bbb#C#bbb###","####C#####C####")
+                .aisle("###C###C###C###", "###dIddddddd###","#cv#########vc#","#cv#########vc#","###bbbbbbbbb###","###C###C###C###")
+                .aisle("#######C#######", "##C##IIdII##C##","##Cvv#####vvC##","##Cvv#####vvC##","##C##bbbbb##C##","#######C#######")
+                .aisle("###############", "#######S#######","###ccvvvvvcc###","###ccvvvvvcc###","#######C#######","###############")
+                .aisle("###############", "###############","#####ccCcc#####","#####ccCcc#####","###############","###############")
                 .where('S', selfPredicate())
                 .where('#', (tile) -> true)
                 .where('C', coilPredicate())
@@ -204,13 +200,12 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         coilTier = Integer.parseInt(coil.getName().substring(coil.getName().length() - 1));
         vacuumTier = context.getOrDefault("Vacuum", GAVacuumCasing.CasingType.VACUUM_1).getTier();
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
-        cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
+        int cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
         long energyStored = this.energyContainer.getEnergyStored();
         this.initializeAbilities();
         ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
         this.tier = coilTier + GAValues.UHV - 1;
-        this.reinitializeStructurePattern();
     }
 
     private void initializeAbilities() {
