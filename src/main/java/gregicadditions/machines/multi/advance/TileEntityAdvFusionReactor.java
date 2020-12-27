@@ -84,7 +84,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         return FactoryBlockPattern.start()
                 .aisle("###############", "###############","#####ccCcc#####","#####ccCcc#####","###############","###############")
                 .aisle("###############", "#######C#######","###ccvEvEvcc###","###ccvEvEvcc###","#######C#######","###############")
-                .aisle("#######C#######", "##C##EEdEE##C##","##Cvv#####vvCc#","##Cvv#####vvCc#","##C##bbbbb##C##","#######C#######")
+                .aisle("#######C#######", "##C##EEdEE##C##","##Cvv#####vvC##","##Cvv#####vvC##","##C##bbbbb##C##","#######C#######")
                 .aisle("###C###C###C###", "###EEdddddEE###","#cv#########vc#","#cv#########vc#","###bbbbbbbbb###","###C###C###C###")
                 .aisle("####C#####C####", "###Edd#C#ddE###","#cv###vvv###vc#","#cv###vvv###vc#","###bbb#C#bbb###","####C#####C####")
                 .aisle("###############", "##EddC###CddE##","cv###v#C#v###vc","cv###v#C#v###vc","##bbbC###Cbbb##","###############")
