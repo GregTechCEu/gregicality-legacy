@@ -995,6 +995,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LeadScandiumTantalate = new SimpleDustMaterial("lead_scandium_tantalate", 0xfcfcfa, (short) 251, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial MagnetorestrictiveAlloy = new SimpleDustMaterial("magnetorestrictive_alloy", 0xafefef, (short) 252, MaterialIconSet.DULL, of(new MaterialStack(Terbium, 4), new MaterialStack(Dysprosium, 7), new MaterialStack(Iron, 10), new MaterialStack(Cobalt, 5), new MaterialStack(Boron, 2), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)));
+    public static final SimpleDustMaterial BoronOxide = new SimpleDustMaterial("boron_oxide",0xfcfcfa,(short) 256,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LithiumAluminiumFluoride = new SimpleDustMaterial("lithium_aluminium_fluoride",0xfcfcfa,(short) 263,MaterialIconSet.DULL);
 
     public static final SimpleFluidMaterial HydroselenicAcid = new SimpleFluidMaterial("hydroselenic_acid", Selenium.materialRGB);
     public static final SimpleFluidMaterial Aminophenol = new SimpleFluidMaterial("aminophenol", 0xafca3a);
@@ -1025,6 +1027,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Chloroethane = new SimpleFluidMaterial("chloroethane", 0x33aa33);
     public static final SimpleFluidMaterial FranciumAstatideSolution = new SimpleFluidMaterial("francium_astatide_solution", SeaWater.rgb);
     public static final SimpleFluidMaterial ActiniumSuperhydridePlasma = new SimpleFluidMaterial("actinium_superhydride_plasma", Actinium.materialRGB * 9 / 8);
+    public static final SimpleFluidMaterial Diborane = new SimpleFluidMaterial("diborane",Boron.materialRGB);
 
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION, null, 25000);
     public static final IngotMaterial BlackTitanium = new IngotMaterial(856, "black_titanium", 0x6C003B, MaterialIconSet.SHINY, 7, of(new MaterialStack(Titanium, 26), new MaterialStack(Lanthanum, 6), new MaterialStack(Tungsten, 4), new MaterialStack(Cobalt, 3), new MaterialStack(Manganese, 2), new MaterialStack(Phosphorus, 2), new MaterialStack(Palladium, 2), new MaterialStack(Niobium, 1), new MaterialStack(Argon, 5)), CORE_METAL | DISABLE_DECOMPOSITION, null, Titanium.blastFurnaceTemperature * 16);
