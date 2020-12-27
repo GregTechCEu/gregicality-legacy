@@ -33,7 +33,7 @@ public class GADustItem extends StandardMetaItem {
 
     @Override
     public void registerSubItems() {
-        for (SimpleDustMaterial material : GA_DUSTS) {
+        for (SimpleDustMaterial material : GA_DUSTS.values()) {
             addItem(material.id, material.name);
             String ore = material.getOre();
             OreDictUnifier.registerOre(new ItemStack(this, 1, material.id), material.getOre());
@@ -45,7 +45,7 @@ public class GADustItem extends StandardMetaItem {
     @SideOnly(Side.CLIENT)
     protected int getColorForItemStack(ItemStack stack, int tintIndex) {
         if (tintIndex == 0) {
-            SimpleDustMaterial mat = GA_DUSTS.get(stack.getItemDamage());
+            SimpleDustMaterial mat = GA_DUSTS.get((short) stack.getItemDamage());
             if (mat == null) return 0xFFFFFF;
             return mat.rgb;
         }
@@ -57,9 +57,9 @@ public class GADustItem extends StandardMetaItem {
     public void registerModels() {
         super.registerModels();
         TShortObjectHashMap<ModelResourceLocation> alreadyRegistered = new TShortObjectHashMap<>();
-        for (SimpleDustMaterial metaItem : GA_DUSTS) {
+        for (Map.Entry<Short, SimpleDustMaterial> metaItem : GA_DUSTS.entrySet()) {
             OrePrefix prefix = OrePrefix.dust;
-            MaterialIconSet materialIconSet = metaItem.materialIconSet;
+            MaterialIconSet materialIconSet = metaItem.getValue().materialIconSet;
             short registrationKey = (short) materialIconSet.ordinal();
             if (!alreadyRegistered.containsKey(registrationKey)) {
                 ResourceLocation resourceLocation = prefix.materialIconType.getItemModelPath(materialIconSet);
@@ -67,7 +67,7 @@ public class GADustItem extends StandardMetaItem {
                 alreadyRegistered.put(registrationKey, new ModelResourceLocation(resourceLocation, "inventory"));
             }
             ModelResourceLocation resourceLocation = alreadyRegistered.get(registrationKey);
-            metaItemsModels.put((short) GA_DUSTS.indexOf(metaItem), resourceLocation);
+            metaItemsModels.put(metaItem.getKey(), resourceLocation);
         }
     }
 
