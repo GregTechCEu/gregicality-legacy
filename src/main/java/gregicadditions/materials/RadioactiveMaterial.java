@@ -10,8 +10,7 @@ import gregtech.api.unification.stack.MaterialStack;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gregicadditions.GAMaterials.DISABLE_REPLICATION;
-import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
+import static gregicadditions.GAMaterials.*;
 
 public class RadioactiveMaterial extends EnrichmentProcess {
 
@@ -30,7 +29,7 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     public RadioactiveMaterial(IngotMaterial from) {
         this.material = from;
-        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION);
+        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION | GENERATE_METAL_CASING);
         REGISTRY.put(from, this);
     }
 

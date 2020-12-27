@@ -20,7 +20,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.MetaFluids;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -45,32 +44,21 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.*;
-import static gregtech.api.unification.material.Materials.*;
 
 
 public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
-        THORIUM(0,
-                MetaBlocks.COMPRESSED.get(Thorium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Thorium).variantProperty, Thorium)),
-        URANIUM(2,
-                MetaBlocks.COMPRESSED.get(Uranium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Uranium).variantProperty, Uranium)),
-        PLUTONIUM(10,
-                MetaBlocks.COMPRESSED.get(Plutonium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Plutonium).variantProperty, Plutonium)),
-        AMERICIUM(15,
-                MetaBlocks.COMPRESSED.get(Americium).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Americium).variantProperty, Americium)),
-        CURIUM(25,
-                MetaBlocks.COMPRESSED.get(Curium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Curium.getMaterial()).variantProperty, Curium.getMaterial())),
-        BERKELIUM(35,
-                MetaBlocks.COMPRESSED.get(Berkelium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Berkelium.getMaterial()).variantProperty, Berkelium.getMaterial())),
-        CALIFORNIUM(50,
-                MetaBlocks.COMPRESSED.get(Californium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Californium.getMaterial()).variantProperty, Californium.getMaterial())),
-        EINSTEINIUM(75,
-                MetaBlocks.COMPRESSED.get(Einsteinium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Einsteinium.getMaterial()).variantProperty, Einsteinium.getMaterial())),
-        FERMIUM(100,
-                MetaBlocks.COMPRESSED.get(Fermium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Fermium.getMaterial()).variantProperty, Fermium.getMaterial())),
-        MENDELEVIUM(200,
-                MetaBlocks.COMPRESSED.get(Mendelevium.getMaterial()).getDefaultState().withProperty(MetaBlocks.COMPRESSED.get(Mendelevium.getMaterial()).variantProperty, Mendelevium.getMaterial()));
+        THORIUM(0, GAMetaBlocks.getMetalCasingBlockState(ThoriumRadioactive.getMaterial())),
+        URANIUM(2, GAMetaBlocks.getMetalCasingBlockState(UraniumRadioactive.getMaterial())),
+        PLUTONIUM(10, GAMetaBlocks.getMetalCasingBlockState(PlutoniumRadioactive.getMaterial())),
+        AMERICIUM(15, GAMetaBlocks.getMetalCasingBlockState(AmericiumRadioactive.getMaterial())),
+        CURIUM(25, GAMetaBlocks.getMetalCasingBlockState(Curium.getMaterial())),
+        BERKELIUM(35, GAMetaBlocks.getMetalCasingBlockState(Berkelium.getMaterial())),
+        CALIFORNIUM(50, GAMetaBlocks.getMetalCasingBlockState(Californium.getMaterial())),
+        EINSTEINIUM(75, GAMetaBlocks.getMetalCasingBlockState(Einsteinium.getMaterial())),
+        FERMIUM(100, GAMetaBlocks.getMetalCasingBlockState(Fermium.getMaterial())),
+        MENDELEVIUM(200, GAMetaBlocks.getMetalCasingBlockState(Mendelevium.getMaterial()));
 
 
         public final int additionalTemperature;
