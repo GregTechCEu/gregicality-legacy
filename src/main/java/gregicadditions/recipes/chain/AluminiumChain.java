@@ -42,8 +42,8 @@ public class AluminiumChain {
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(32)
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, SodiumHydroxide)
-                .input(dust, Bauxite)
-                .fluidOutputs(SodiumHydroxideBauxite.getFluid(3000))
+                .input(dust, Bauxite,2)
+                .fluidOutputs(SodiumHydroxideBauxite.getFluid(4000))
                 .buildAndRegister();
 
         FLUID_HEATER_RECIPES.recipeBuilder().duration(230).EUt(125)
