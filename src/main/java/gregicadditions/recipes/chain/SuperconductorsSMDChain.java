@@ -645,6 +645,7 @@ public class SuperconductorsSMDChain {
                 .inputs(ACTINIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(LiquidHelium.getFluid(24000))
                 .outputs(ActiniumSuperhydride.getItemStack())
+                .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidOutputs(Helium.getFluid(24000))
                 .buildAndRegister();
 
