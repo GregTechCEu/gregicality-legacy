@@ -23,7 +23,7 @@ public class GAEnergyContainerHandler extends EnergyContainerHandler {
             if (electricItem != null && electricItem.canProvideChargeExternally()) {
                 int machineTier = GAUtility.getTierByVoltage(Math.max(this.getInputVoltage(), this.getOutputVoltage()));
                 if (this.getEnergyCanBeInserted() > 0L) {
-                    double chargePercent = (double) this.getEnergyStored() / ((double) this.getEnergyCapacity() * 1.0D);
+                    double chargePercent = (double) this.getEnergyStored() / ((double) this.getEnergyCapacity());
                     long chargedBy;
                     if (chargePercent <= 0.5D) {
                         chargedBy = electricItem.discharge(this.getEnergyCanBeInserted(), machineTier, false, true, false);
