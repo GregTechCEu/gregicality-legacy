@@ -1259,6 +1259,7 @@ public class GARecipeAddition {
         VariousChains.init();
         SuperconductorsSMDChain.init();
         FusionComponents.init();
+        NiobiumTantalumChain.init();
     }
 
     public static void forestrySupport() {

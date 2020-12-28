@@ -21,7 +21,7 @@ public class FusionElementsChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(1800)
                 .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .fluidOutputs(LithiumPeroxideSolution.getFluid(1000))
+                .fluidOutputs(LithiumPeroxideSolution.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1500)
