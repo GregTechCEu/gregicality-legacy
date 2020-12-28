@@ -177,7 +177,29 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .duration(50)
                 .buildAndRegister();
-
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
+                .fluidInputs(SolderingAlloy.getFluid(566))
+                .input(plate, TungstenTitaniumCarbide, 4)
+                .input(frameGt, TungstenTitaniumCarbide)
+                .input(pipeSmall, Zeron100, 4)
+                .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
+                .buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
+                .fluidInputs(SolderingAlloy.getFluid(288))
+                .input(plate, Beryllium, 16)
+                .input(plateDense, Copper, 2)
+                .input(plateDense, StainlessSteel, 2)
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
+                .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_BLANKET))
+                .buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
+                .fluidInputs(SolderingAlloy.getFluid(288))
+                .input(plate, LithiumTitanate, 4)
+                .input(plateDense, Copper, 2)
+                .input(plateDense, StainlessSteel, 2)
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
+                .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BREEDING_BLANKET))
+                .buildAndRegister();
 
     }
 }

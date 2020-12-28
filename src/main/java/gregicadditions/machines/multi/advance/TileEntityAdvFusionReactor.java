@@ -36,11 +36,13 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.MetaFluids;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -57,7 +59,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
 
     private int tier;
     private int coilTier;
-    private int cryostatTier;
     private int vacuumTier;
     private int divertorTier;
     private boolean canWork;
@@ -84,33 +85,35 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#################","#################","######ccCcc######","######ccCcc######","#################","#################")
-                .aisle("#################","######ccCcc######","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
-                .aisle("########C########","####cdddddddc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cbEEbEEbc####","########C########")
-                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
-                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
-                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
-                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
-                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
-                .aisle("##CC###XXX###CC##","#CddC##CCC##CddC#","Cv##vC#CCC#Cv##vC","Cv##vC#CCC#Cv##vC","#CbbC##CCC##CbbC#","##CC###XXX###CC##")
-                .aisle("#######XXX#######","#cddc##CCC##cddc#","cv##vc#CCC#cv##vc","cv##vc#CCC#cv##vc","#cbbc##CCC##cbbc#","#######XXX#######")
-                .aisle("#################","#cddvcC###Ccvddc#","cv###vC###Cv###vc","cv###vC###Cv###vc","#cbbbcC###Ccbbbc#","#################")
-                .aisle("#####C#####C#####","#cvddvc###cvddvc#","#cv###vcCcv###vc#","#cv###vcCcv###vc#","#cbbbbc###cbbbbc#","#####C#####C#####")
-                .aisle("####C#######C####","##cvddvcCcvddvc##","#cv####vvv####vc#","#cv####vvv####vc#","##cbbbbcCcbbbbc##","####C#######C####")
-                .aisle("########C########","###CvdddddddvC###","##cv#########vc##","##cv#########vc##","###CbbbbbbbbbC###","########C########")
-                .aisle("########C########","####cIIIvIIIc####","##Ccvv#####vvcC##","##Ccvv#####vvcC##","####cEEEbEEEc####","########C########")
-                .aisle("#################","########S########","####ccvvvvvcc####","####ccvvvvvcc####","########C########","#################")
-                .aisle("#################","#################","########C########","########C########","#################","#################")
+                .aisle("###############", "###############", "#####ccCcc#####", "#####ccCcc#####", "###############", "###############")
+                .aisle("###############", "#######C#######", "###ccvvvvvcc###", "###ccvvvvvcc###", "#######C#######", "###############")
+                .aisle("#######C#######", "##C##ddddd##C##", "##Cvv#####vvC##", "##Cvv#####vvC##", "##C##bbbbb##C##", "#######C#######")
+                .aisle("###C###C###C###", "###ddddddddd###", "#cv#########vc#", "#cv#########vc#", "###bbbbbbbbb###", "###C###C###C###")
+                .aisle("####C#####C####", "###ddd#C#ddd###", "#cv###vvv###vc#", "#cv###vvv###vc#", "###bbb#C#bbb###", "####C#####C####")
+                .aisle("###############", "##dddC###Cddd##", "cv###v#C#v###vc", "cv###v#C#v###vc", "##bbbC###Cbbb##", "###############")
+                .aisle("######XXX######", "##dd##CCC##dd##", "cv##v#CCC#v##vc", "cv##v#CCC#v##vc", "##bb##CCC##bb##", "######XXX######")
+                .aisle("##CC##XXX##CC##", "#CddC#CCC#CddC#", "Cv##vCCCCCv##vC", "Cv##vCCCCCv##vC", "#CbbC#CCC#CbbC#", "##CC##XXX##CC##")
+                .aisle("######XXX######", "##dd##CCC##dd##", "cv##v#CCC#v##vc", "cv##v#CCC#v##vc", "##bb##CCC##bb##", "######XXX######")
+                .aisle("###############", "##dddC###Cddd##", "cv###v#C#v###vc", "cv###v#C#v###vc", "##bbbC###Cbbb##", "###############")
+                .aisle("####C#####C####", "###ddd#C#ddd###", "#cv###vvv###vc#", "#cv###vvv###vc#", "###bbb#C#bbb###", "####C#####C####")
+                .aisle("###C###C###C###", "###ddddddddd###", "#cv#########vc#", "#cv#########vc#", "###bbbbbbbbb###", "###C###C###C###")
+                .aisle("#######C#######", "##C##ddddd##C##", "##Cvv#####vvC##", "##Cvv#####vvC##", "##C##bbbbb##C##", "#######C#######")
+                .aisle("###############", "#######S#######", "###ccvvvvvcc###", "###ccvvvvvcc###", "#######C#######", "###############")
+                .aisle("###############", "###############", "#####ccCcc#####", "#####ccCcc#####", "###############", "###############")
                 .where('S', selfPredicate())
                 .where('#', (tile) -> true)
                 .where('C', coilPredicate())
                 .where('X', statePredicate(getCasingState()))
-                .where('I', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('d', divertorPredicate())
-                .where('v', vacuumPredicate())
-                .where('c', cryostatPredicate())
-                .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)))
-                .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)))
+                .where('d', divertorPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('v', vacuumPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('c', cryostatPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .setAmountAtMost('E', 16)
+                .where('E', tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch))
+                .setAmountAtMost('I', 3)
+                .where('I', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
+                .setAmountAtMost('i', 2)
+                .where('i', abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS))
                 .build();
     }
 
@@ -133,7 +136,6 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
             super.updateFormedValid();
         }
     }
-
 
 
     public static Predicate<BlockWorldState> cryostatPredicate() {
@@ -204,13 +206,12 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         coilTier = Integer.parseInt(coil.getName().substring(coil.getName().length() - 1));
         vacuumTier = context.getOrDefault("Vacuum", GAVacuumCasing.CasingType.VACUUM_1).getTier();
         divertorTier = context.getOrDefault("Divertor", GADivertorCasing.CasingType.DIVERTOR_1).getTier();
-        cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
+        int cryostatTier = context.getOrDefault("Cryostat", GACryostatCasing.CasingType.CRYOSTAT_1).getTier();
         canWork = Math.min(Math.min(vacuumTier, divertorTier), cryostatTier) >= coilTier;
+        this.tier = coilTier + GAValues.UHV - 1;
         long energyStored = this.energyContainer.getEnergyStored();
         this.initializeAbilities();
         ((EnergyContainerHandler) this.energyContainer).setEnergyStored(energyStored);
-        this.tier = coilTier + GAValues.UHV - 1;
-        this.reinitializeStructurePattern();
     }
 
     private void initializeAbilities() {
@@ -222,7 +223,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
         this.inputEnergyContainers = new EnergyContainerList(energyInputs);
         long euCapacity = 0;
         for (IEnergyContainer energyContainer : energyInputs) {
-            euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier));
+            euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier) - GAValues.LuV);
         }
         this.energyContainer = new GAEnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
             @Override
@@ -281,8 +282,7 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 }
             }
         }
-        textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
-        textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
+        textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", this.energyContainer.getEnergyStored()));
     }
 
     @Override
@@ -320,24 +320,24 @@ public class TileEntityAdvFusionReactor extends RecipeMapMultiblockController {
                 int divertorTierDifference = divertorTier - recipeTier;
                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
                 newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
-                    for (FluidStack inputFluid : recipe.getFluidInputs()) {
-                        if (AdvFusionRecipeBuilder.COOLANTS.containsKey(inputFluid)) {
-                            FluidStack newFluid = inputFluid.copy();
-                            newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                            newRecipe.fluidInputs(newFluid);
-                        } else {
-                            newRecipe.fluidInputs(inputFluid);
-                        }
+                for (FluidStack inputFluid : recipe.getFluidInputs()) {
+                    if (AdvFusionRecipeBuilder.COOLANTS.containsKey(inputFluid)) {
+                        FluidStack newFluid = inputFluid.copy();
+                        newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                        newRecipe.fluidInputs(newFluid);
+                    } else {
+                        newRecipe.fluidInputs(inputFluid);
                     }
-                    for (FluidStack outputFluid : recipe.getFluidOutputs()) {
-                        if (AdvFusionRecipeBuilder.COOLANTS.containsValue(outputFluid.getFluid())) {
-                            FluidStack newFluid = outputFluid.copy();
-                            newFluid.amount =  (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                            newRecipe.fluidOutputs(newFluid);
-                        } else {
-                            newRecipe.fluidOutputs(outputFluid);
-                        }
+                }
+                for (FluidStack outputFluid : recipe.getFluidOutputs()) {
+                    if (AdvFusionRecipeBuilder.COOLANTS.containsValue(outputFluid.getFluid())) {
+                        FluidStack newFluid = outputFluid.copy();
+                        newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                        newRecipe.fluidOutputs(newFluid);
+                    } else {
+                        newRecipe.fluidOutputs(outputFluid);
                     }
+                }
                 FluidStack newOutput = recipe.getFluidOutputs().get(0);
                 newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.divertorOutputIncrease));
                 newRecipe.fluidOutputs(newOutput);

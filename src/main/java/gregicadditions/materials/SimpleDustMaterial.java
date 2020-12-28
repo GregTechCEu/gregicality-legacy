@@ -8,12 +8,14 @@ import gregtech.api.unification.stack.MaterialStack;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class SimpleDustMaterial {
     //TODO convert GA_DUSTS into GTControlledRegistry
-    public static List<SimpleDustMaterial> GA_DUSTS = new ArrayList<>();
+    public static Map<Short, SimpleDustMaterial> GA_DUSTS = new HashMap<>();
     public String name;
     public int rgb;
     public MaterialIconSet materialIconSet;
@@ -28,7 +30,7 @@ public class SimpleDustMaterial {
         this.id = id;
         this.materialComponents = materialComponents;
         this.chemicalFormula = calculateChemicalFormula();
-        GA_DUSTS.add(this);
+        GA_DUSTS.put(id, this);
     }
 
     public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet) {
@@ -38,7 +40,7 @@ public class SimpleDustMaterial {
         this.id = id;
         this.materialComponents = null;
         this.chemicalFormula = "";
-        GA_DUSTS.add(this);
+        GA_DUSTS.put(id, this);
     }
 
     public String getOre() {
