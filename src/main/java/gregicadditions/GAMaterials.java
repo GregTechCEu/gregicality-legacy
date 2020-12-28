@@ -63,7 +63,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial MVSuperconductorBase = new IngotMaterial(976, "mv_superconductor_base", 0x535353, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Cadmium, 5), new MaterialStack(Magnesium, 1), new MaterialStack(Oxygen, 6)), STD_METAL, null, 1200);
     public static final IngotMaterial HVSuperconductorBase = new IngotMaterial(975, "hv_superconductor_base", 0x4a2400, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Titanium, 1), new MaterialStack(Barium, 9), new MaterialStack(Copper, 10), new MaterialStack(Oxygen, 20)), STD_METAL, null, 3300);
     public static final IngotMaterial EVSuperconductorBase = new IngotMaterial(974, "ev_superconductor_base", 0x005800, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Uranium, 1), new MaterialStack(Platinum, 3)), STD_METAL, null, 4400);
-    public static final IngotMaterial IVSuperconductorBase = new IngotMaterial(973, "iv_superconductor_base", 0x300030, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Vanadium, 1), new MaterialStack(Indium, 3)), STD_METAL, null, 5200);
     public static final IngotMaterial LuVSuperconductorBase = new IngotMaterial(972, "luv_superconductor_base", 0x7a3c00, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Indium, 4), new MaterialStack(Bronze, 8), new MaterialStack(Barium, 2), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 14)), STD_METAL, null, 6000);
     public static final IngotMaterial ZPMSuperconductorBase = new IngotMaterial(971, "zpm_superconductor_base", 0x111111, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadah, 4), new MaterialStack(Indium, 2), new MaterialStack(Palladium, 6), new MaterialStack(Osmium, 1)), STD_METAL, null, 8100);
     public static final IngotMaterial MVSuperconductor = new IngotMaterial(970, "mv_superconductor", 0x535353, MaterialIconSet.SHINY, 1, of(), DISABLE_DECOMPOSITION);
@@ -476,7 +475,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 6)));
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xF0F0F0, (short) 54, MaterialIconSet.SHINY, of(new MaterialStack(Zirconium, 1), new MaterialStack(Chlorine, 3)));
+    public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xF0F0F0, (short) 54, MaterialIconSet.SHINY, of(new MaterialStack(Zirconium, 1), new MaterialStack(Chlorine, 4)));
     public static final SimpleDustMaterial SiliconCarbide = new SimpleDustMaterial("silicon_carbide", 0x0f0f0f, (short) 55, MaterialIconSet.SHINY, of(new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)));
 
 
@@ -1048,7 +1047,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final GemMaterial Zircon = new GemMaterial(713, "zircon", 0xeb9e3f, MaterialIconSet.GEM_VERTICAL, 7, of(), GENERATE_ORE);
     public static final DustMaterial Caliche = new DustMaterial(712, "caliche", 0xeb9e3f, MaterialIconSet.DULL, 7, of(), GENERATE_ORE);
     public static final FluidMaterial IodizedOil = new FluidMaterial(711, "iodized_oil", 0x666666, MaterialIconSet.FLUID, of(), 0);
-    public static final IngotMaterial LithiumTitanate = new IngotMaterial(710, "lithium_titanate", 0xfe71a9, MaterialIconSet.SHINY, 5, of(new MaterialStack(Lithium, 2), new MaterialStack(Titanium, 2), new MaterialStack(Oxygen, 3)), GENERATE_PLATE | DISABLE_DECOMPOSITION | CORE_METAL, null);
+    public static final IngotMaterial LithiumTitanate = new IngotMaterial(710, "lithium_titanate", 0xfe71a9, MaterialIconSet.SHINY, 5, of(new MaterialStack(Lithium, 2), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 3)), GENERATE_PLATE | DISABLE_DECOMPOSITION | CORE_METAL, null);
     public static final IngotMaterial CarbonNanotubes = new IngotMaterial(709, "carbon_nanotubes", 0x2c2c2c, MaterialIconSet.SHINY, 5, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
     public static final IngotMaterial Titanium50 = new IngotMaterial(708, "titanium50", Titanium.materialRGB, MaterialIconSet.SHINY, 5, of(), 0);
     public static final IngotMaterial MetastableOganesson = new IngotMaterial(707, "metastable_oganesson", 0xE61C24, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Og"), 38000);
