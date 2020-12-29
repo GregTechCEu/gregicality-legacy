@@ -416,6 +416,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial HyperFuelI = new SimpleFluidMaterial("hyper_fluid_i", 0xfaff5e);
     public static final SimpleFluidMaterial HyperFuelII = new SimpleFluidMaterial("hyper_fluid_ii", 0xd8db67);
     public static final SimpleFluidMaterial HyperFuelIII = new SimpleFluidMaterial("hyper_fluid_iii", 0x8f9146);
+    public static final SimpleFluidMaterial HyperFuelIV = new SimpleFluidMaterial("hyper_fluid_iv", 0x4d4e31);
 
     public static final SimpleFluidMaterial AcidicSaltWater = new SimpleFluidMaterial("acidic_salt_water", 0x006960);
     public static final SimpleFluidMaterial SulfuricBromineSolution = new SimpleFluidMaterial("sulfuric_bromine_solution", 0xff5100);
