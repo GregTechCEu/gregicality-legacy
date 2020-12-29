@@ -150,7 +150,7 @@ public class GeneratorFuels {
         registerHyperReactorFuel(HyperFuelI.getFluid(1), 400, GAValues.IV);
         registerHyperReactorFuel(HyperFuelII.getFluid(1), 600, GAValues.IV);
         registerHyperReactorFuel(HyperFuelIII.getFluid(1), 800, GAValues.IV);
-        registerHyperReactorFuel(HyperFuelIV.getFluid(1), 2500, GAValues.UV);
+        registerHyperReactorFuel(HyperFuelIV.getFluid(1), 7500, GAValues.UV);
 
         //Qubit generator
         GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(1).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Elite).buildAndRegister();
