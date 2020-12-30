@@ -182,7 +182,7 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
         return ModularUI.builder(
                 GuiTextures.BOXED_BACKGROUND, 400, 300).label(9, 8, "Prospecting Tool (Unlocalized)")
-                .widget(new WidgetGroupProspectingMap(10, 10, 200, 100))
+                .widget(new WidgetGroupProspectingMap(10, 10, 5))
                 .build(playerInventoryHolder, entityPlayer);
     }
 }

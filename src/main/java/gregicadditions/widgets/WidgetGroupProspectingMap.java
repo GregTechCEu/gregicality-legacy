@@ -16,21 +16,21 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 public class WidgetGroupProspectingMap extends Widget {
-    public WidgetGroupProspectingMap(int xPosition, int yPosition, int width, int height) {
-        super(new Position(xPosition, yPosition), new Size(width, height));
+    private final int chunkRadio;
+
+    public WidgetGroupProspectingMap(int xPosition, int yPosition, int chunkRadio) {
+        super(new Position(xPosition, yPosition), new Size(17 * (chunkRadio * 2 + 1) + 1, 17 * (chunkRadio * 2 + 1) + 1));
+        this.chunkRadio = chunkRadio;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void drawInBackground(int mouseX, int mouseY, IRenderContext context) {
-        super.drawInBackground(mouseX, mouseY, context);
-//        Position position = this.getPosition();
-//        Size size = this.getSize();
-//        FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
-//
-//        String text = "asdf";
-//        fontRenderer.drawString(text, position.x + size.width / 2 - fontRenderer.getStringWidth(text) / 2, position.y + size.height / 2 - fontRenderer.FONT_HEIGHT / 2, 16777215);
-//        GlStateManager.color(1.0F, 1.0F, 1.0F);
+        drawRect(0, 0, this.getSize().width, this.getSize().height, new Color(0xFFFFFF));
+        for (int i = 0; i <= this.getSize().width; i += 17) {
+            drawHorizontalLine(0, i, this.getSize().width, Color.RED);
+            drawVerticalLine(i, 0, this.getSize().height, Color.BLUE);
+        }
     }
 
     @Override
@@ -38,33 +38,31 @@ public class WidgetGroupProspectingMap extends Widget {
 
     }
 
-    /**
-     * Draws a thin horizontal line between two points.
-     */
-    protected void drawHorizontalLine(int startX, int endX, int y, Color color)
-    {
-        if (endX < startX)
-        {
-            int i = startX;
-            startX = endX;
-            endX = i;
-        }
-
-        Gui.drawRect(startX, y, endX + 1, y + 1, color.getRGB());
+    protected void drawRect(int x, int y, int width, int height, Color color) {
+        if (x < 0 || y < 0)
+            return;
+        Position position = this.getPosition();
+        Size size = this.getSize();
+        x = position.x + x;
+        y = position.y + y;
+        if (x > position.add(size).x || y > position.add(size).y)
+            return;
+        width = Math.min(width + x, size.width + position.x);
+        height = Math.min(height + y, size.height + position.y);
+        Gui.drawRect(x, y, width, height, color.getRGB());
     }
 
-    /**
-     * Draw a 1 pixel wide vertical line. Args : x, y1, y2, color
-     */
-    protected void drawVerticalLine(int x, int startY, int endY, Color color)
+    protected void drawHorizontalLine(int x, int y, int length, Color color)
     {
-        if (endY < startY)
-        {
-            int i = startY;
-            startY = endY;
-            endY = i;
-        }
+        if (length < 0)
+            return;
+        drawRect(x, y, x + length, 1, color);
+    }
 
-        Gui.drawRect(x, startY + 1, x + 1, endY, color.getRGB());
+    protected void drawVerticalLine(int x, int y, int length, Color color)
+    {
+        if (length < 0)
+            return;
+        drawRect(x, y, 1, y + length, color);
     }
 }
