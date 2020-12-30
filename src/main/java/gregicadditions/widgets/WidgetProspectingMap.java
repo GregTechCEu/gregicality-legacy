@@ -15,10 +15,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.awt.*;
 import java.util.function.Consumer;
 
-public class WidgetGroupProspectingMap extends Widget {
+public class WidgetProspectingMap extends Widget {
     private final int chunkRadio;
 
-    public WidgetGroupProspectingMap(int xPosition, int yPosition, int chunkRadio) {
+    public WidgetProspectingMap(int xPosition, int yPosition, int chunkRadio) {
         super(new Position(xPosition, yPosition), new Size(17 * (chunkRadio * 2 + 1) + 1, 17 * (chunkRadio * 2 + 1) + 1));
         this.chunkRadio = chunkRadio;
     }

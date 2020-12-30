@@ -2,17 +2,14 @@ package gregicadditions.item.behaviors;
 
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.network.DetravProPickPacket00;
-import gregicadditions.widgets.WidgetGroupProspectingMap;
+import gregicadditions.widgets.WidgetProspectingMap;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.widgets.ClickButtonWidget;
-import gregtech.api.gui.widgets.DynamicLabelWidget;
 import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -182,7 +179,7 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
         return ModularUI.builder(
                 GuiTextures.BOXED_BACKGROUND, 400, 300).label(9, 8, "Prospecting Tool (Unlocalized)")
-                .widget(new WidgetGroupProspectingMap(10, 10, 5))
+                .widget(new WidgetProspectingMap(10, 10, 5))
                 .build(playerInventoryHolder, entityPlayer);
     }
 }
