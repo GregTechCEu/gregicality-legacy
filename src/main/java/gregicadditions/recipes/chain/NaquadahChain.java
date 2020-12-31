@@ -579,11 +579,19 @@ public class NaquadahChain {
                 .fluidInputs(HeavyNaquadahFuel.getFluid(300))
                 .fluidInputs(HeavyENaquadahFuel.getFluid(400))
                 .fluidInputs(NaquadriaSolution.getFluid(300))
-                .input(dust, Neutronium)
+                .input(dust, Adamantium)
                 .fluidInputs(Californium256.getMaterial().getFluid(144))
                 .fluidOutputs(HyperFuelIII.getFluid(2000))
                 .EUt(7680)
                 .duration(200)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(HyperFuelIII.getFluid(1000))
+                .input(dust, Neutronium)
+                .input(dust, Taranium)
+                .fluidOutputs(HyperFuelIV.getFluid(3000))
+                .EUt(8000000)
+                .duration(1)
                 .buildAndRegister();
     }
 }
