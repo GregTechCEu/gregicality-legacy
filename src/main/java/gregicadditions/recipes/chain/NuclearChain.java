@@ -97,15 +97,9 @@ public class NuclearChain {
                 .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 10))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(2000).EUt(240)
-                .input(dust, Lithium)
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, LithiumHydroxide))
-                .fluidOutputs(Oxygen.getFluid(1000))
-                .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
-                .input(dust, LithiumHydroxide)
+                .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, LithiumFluoride))
                 .fluidOutputs(Water.getFluid(1000))

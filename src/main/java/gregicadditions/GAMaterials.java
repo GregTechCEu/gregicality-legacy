@@ -284,7 +284,6 @@ public class GAMaterials implements IMaterialHandler {
 
 
     public static final DustMaterial SodiumPotassiumAlloy = new DustMaterial(776, "sodium_potassium_alloy", 0x252525, MaterialIconSet.SHINY, 2, of(new MaterialStack(Sodium, 7), new MaterialStack(Potassium, 3)), SMELT_INTO_FLUID);
-    public static final DustMaterial LithiumHydroxide = new DustMaterial(775, "lithium_hydroxide", 0xFDFDFD, MaterialIconSet.DULL, 2, of(new MaterialStack(Lithium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1)), 0); // Lithium + water = LithiumHydroxide
     public static final IngotMaterial LithiumFluoride = new IngotMaterial(774, "lithium_fluoride", 0x757575, MaterialIconSet.SHINY, 2, of(new MaterialStack(Lithium, 1), new MaterialStack(Fluorine, 1)), 0); //LithiumHydroxide + Hydrogen = LithiumFluoride
     public static final DustMaterial SodiumFluoride = new DustMaterial(773, "sodium_fluoride", 0xFDFDFD, MaterialIconSet.DULL, 2, of(new MaterialStack(Sodium, 1), new MaterialStack(Fluorine, 1)), 0);
     public static final DustMaterial PotassiumFluoride = new DustMaterial(772, "potassium_fluoride", 0xFDFDFD, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 1), new MaterialStack(Fluorine, 1)), 0);
@@ -1094,6 +1093,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material UMV = new MarkerMaterial("UMV");
     public static Material UXV = new MarkerMaterial("UXV");
     public static Material MAX = new MarkerMaterial("MAX");
+
+    //free id 775
 
     @Override
     public void onMaterialsInit() {
