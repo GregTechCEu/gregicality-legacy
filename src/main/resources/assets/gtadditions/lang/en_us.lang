@@ -1395,6 +1395,7 @@ gtadditions.machine.fluid_hatch.export_filtered.uhv.name=Filtered Output Hatch (
 gtadditions.machine.fluid_hatch.export_filtered.uev.name=Filtered Output Hatch (UEV)
 gtadditions.machine.fluid_hatch.export_filtered.uiv.name=Filtered Output Hatch (UIV)
 gtadditions.machine.fluid_hatch.export_filtered.umv.name=Filtered Output Hatch (UMV)
+gtadditions.machine.fluid_hatch.export_filtered.uxv.name=Filtered Output Hatch (UXV)
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
@@ -2768,6 +2769,9 @@ gtadditions.machine.convert_gteu.umv.1.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.4.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.9.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.16.name=GTEU Energy Converter (UMV)
+
+gtadditions.machine.convert_gteu.uxv.1.name=GTEU Energy Converter (UXV)
+gtadditions.machine.convert_forge.uxv.1.name=Forge Energy Converter (UXV)
 
 
 gtadditions.converter.energy.fe=FE
