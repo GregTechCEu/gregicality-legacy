@@ -627,7 +627,7 @@ metaitem.boron_oxide.name=Boron Oxide
 metaitem.lithium_aluminium_fluoride.name=Lithium Aluminium Fluoride
 metaitem.bets_perrhenate.name=Bisethylenedithiotetraselenafulvalene Perrhenate
 metaitem.tbcco_dust.name=Tbcco Dust
-metaitem.borocarbide_dust.name=Dorocarbide Dust
+metaitem.borocarbide_dust.name=Borocarbide Dust
 metaitem.actinium_superhydride.name=Actinium Superhydride
 metaitem.strontium_superconductor_dust.name=Strontium Superconductor Dust
 metaitem.fullerene_superconductor_dust.name=Fullerene Superconductor Dust
@@ -1395,6 +1395,7 @@ gtadditions.machine.fluid_hatch.export_filtered.uhv.name=Filtered Output Hatch (
 gtadditions.machine.fluid_hatch.export_filtered.uev.name=Filtered Output Hatch (UEV)
 gtadditions.machine.fluid_hatch.export_filtered.uiv.name=Filtered Output Hatch (UIV)
 gtadditions.machine.fluid_hatch.export_filtered.umv.name=Filtered Output Hatch (UMV)
+gtadditions.machine.fluid_hatch.export_filtered.uxv.name=Filtered Output Hatch (UXV)
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
@@ -2170,7 +2171,7 @@ material.rutherfordium=Rutherfordium
 material.dubnium=Dubnium
 material.reactor_steel=Reactor Steel
 material.zylon=Zylon
-material.polyetheretherketone=Polyetheretherkenone
+material.polyetheretherketone=Polyetheretherketone
 material.hastelloy_k243=Hastelloy K243
 material.hastelloy_x78=Hastelloy X78
 material.enriched_naquadah_alloy=Enriched Naquadah Alloy
@@ -2767,6 +2768,9 @@ gtadditions.machine.convert_gteu.umv.1.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.4.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.9.name=GTEU Energy Converter (UMV)
 gtadditions.machine.convert_gteu.umv.16.name=GTEU Energy Converter (UMV)
+
+gtadditions.machine.convert_gteu.uxv.1.name=GTEU Energy Converter (UXV)
+gtadditions.machine.convert_forge.uxv.1.name=Forge Energy Converter (UXV)
 
 
 gtadditions.converter.energy.fe=FE
