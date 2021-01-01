@@ -1049,7 +1049,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial IodizedOil = new FluidMaterial(711, "iodized_oil", 0x666666, MaterialIconSet.FLUID, of(), 0);
     public static final IngotMaterial LithiumTitanate = new IngotMaterial(710, "lithium_titanate", 0xfe71a9, MaterialIconSet.SHINY, 5, of(new MaterialStack(Lithium, 2), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 3)), GENERATE_PLATE | DISABLE_DECOMPOSITION | CORE_METAL, null, 2500);
     public static final IngotMaterial CarbonNanotubes = new IngotMaterial(709, "carbon_nanotubes", 0x2c2c2c, MaterialIconSet.SHINY, 5, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL, null);
-    public static final IngotMaterial Titanium50 = new IngotMaterial(708, "titanium50", Titanium.materialRGB, MaterialIconSet.SHINY, 5, of(), 0);
+    public static final IngotMaterial Titanium50 = new IngotMaterial(708, "titanium50", Titanium.materialRGB, MaterialIconSet.SHINY, 5, of(), 0, null, 2000);
     public static final IngotMaterial MetastableOganesson = new IngotMaterial(707, "metastable_oganesson", 0xE61C24, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Og"), 38000);
     public static final IngotMaterial MetastableFlerovium = new IngotMaterial(706, "metastable_flerovium", 0x521973, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Fl"), 65000);
     public static final IngotMaterial ElectricallyImpureCopper = new IngotMaterial(705, "electrically_impure_copper", 0x765A30, MaterialIconSet.DULL, 2, of(), GENERATE_PLATE);
