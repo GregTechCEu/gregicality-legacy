@@ -1,16 +1,10 @@
-package gregicadditions.machines.multi.override;
+package gregicadditions.capabilities.impl;
 
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
-import net.minecraft.block.state.IBlockState;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.recipes.RecipeMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -19,31 +13,15 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
+public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController {
 
-public class MetaTileEntityDistillationTower extends gregtech.common.metatileentities.multi.electric.MetaTileEntityDistillationTower {
-    public MetaTileEntityDistillationTower(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId);
-        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
-    }
 
-    public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityDistillationTower(this.metaTileEntityId);
-    }
-
-    @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel);
-    }
-
-    @Override
-    public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
+        super(metaTileEntityId, recipeMap);
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
         if (isStructureFormed()) {
             IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {

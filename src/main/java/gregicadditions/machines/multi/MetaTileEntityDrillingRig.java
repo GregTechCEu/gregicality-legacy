@@ -159,6 +159,13 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
 
 
         if (isStructureFormed()) {
+            if (this.isStructureFormed()) {
+                if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
+                    long maxVoltage = energyContainer.getInputVoltage();
+                    String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
+                    textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
+                }
+            }
             if (oilWorldInfo.getType() == null) {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.no_fluid"));
             } else {
