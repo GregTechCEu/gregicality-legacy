@@ -1060,7 +1060,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Polyurethane = new IngotMaterial(700, "polyurethane", 0xeffcef, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES);
     public static final IngotMaterial ThoriumDopedTungsten = new IngotMaterial(699, "thoria_doped_tungsten", Tungsten.materialRGB, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD | GENERATE_FINE_WIRE);
     public static final IngotMaterial WoodsGlass = new IngotMaterial(698, "woods_glass", 0x730099, MaterialIconSet.SHINY, 2, of(), GENERATE_PLATE);
-    public static final IngotMaterial BariumTitanate = new IngotMaterial(697, "barium_titanate", 0x99FF99, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD);
+    public static final IngotMaterial BariumTitanate = new IngotMaterial(697, "barium_titanate", 0x99FF99, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD | GENERATE_FOIL);
     public static final GemMaterial LeadZirconateTitanate = new GemMaterial(696, "lead_zirconate_titanate", 0x359ade, MaterialIconSet.OPAL, 3, of(), GENERATE_PLATE | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION);
     public static final IngotMaterial TantalumHafniumSeaborgiumCarbide = new IngotMaterial(695,"tantalum_hafnium_seaborgium_carbide",0x2c2c2c,MaterialIconSet.SHINY,6,of(new MaterialStack(Tantalum, 12), new MaterialStack(Hafnium, 3), new MaterialStack(Seaborgium, 1), new MaterialStack(Carbon, 16)),GENERATE_PLATE | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION,null,5200);
     public static final IngotMaterial BismuthRuthenate = new IngotMaterial(694,"bismuth_ruthenate", 0x94cf5c, MaterialIconSet.DULL,2,of(),GENERATE_PLATE);
@@ -1218,6 +1218,7 @@ public class GAMaterials implements IMaterialHandler {
         Boron.addFlag(GENERATE_ROD);
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);
         YttriumBariumCuprate.addFlag(GENERATE_FINE_WIRE);
+        Molybdenum.addFlag(GENERATE_FOIL);
         Manganese.addFlag(GENERATE_FOIL);
         Naquadah.addFlag(GENERATE_FOIL);
         NaquadahEnriched.addFlag(GENERATE_FOIL);
@@ -1229,6 +1230,7 @@ public class GAMaterials implements IMaterialHandler {
         Polycaprolactam.addFlag(GENERATE_FOIL);
         Polystyrene.addFlag(GENERATE_FOIL);
         Plastic.addFlag(GENERATE_FOIL);
+        Cupronickel.addFlag(GENERATE_FINE_WIRE)
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
         Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
