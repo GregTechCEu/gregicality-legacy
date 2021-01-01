@@ -184,7 +184,7 @@ public class ZincChain {
         
         FORMING_PRESS_RECIPES.recipeBuilder().duration(250).EUt(750)
                 .inputs(Cellulose.getItemStack())
-                .outputs(OreDictUnifier.get(plate,Paper,3))
+                .outputs(new ItemStack(Items.Paper))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1250)
