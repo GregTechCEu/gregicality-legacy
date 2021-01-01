@@ -1707,8 +1707,7 @@ recipemap.simple_qubit_generator.name=Qubit Generator
 recipemap.stellar_forge.name=Stellar Forge
 recipemap.plasma_condenser.name=Plasma Condenser
 recipemap.drilling_rig.name=Drilling Fluid
-recipemap.hyper_reactor=Hyper Reactor
-recipemap.steam_mixer=Steam Mixer
+recipemap.hyper_reactor.name=Hyper Reactor
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
