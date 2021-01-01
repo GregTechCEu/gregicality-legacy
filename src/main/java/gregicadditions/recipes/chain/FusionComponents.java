@@ -24,7 +24,7 @@ public class FusionComponents {
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1, 4),
-                        OreDictUnifier.get(plate, Seaborgium, 8),
+                        OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8),
                         OreDictUnifier.get(plate, Einsteinium.getMaterial(), 8),
                         FIELD_GENERATOR_UV.getStackForm(2),
                         HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
@@ -35,7 +35,7 @@ public class FusionComponents {
                 .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(cableGtOctal, UVSuperconductor, 4)
-                .input(plate, Seaborgium, 2)
+                .input(plate, TantalumHafniumSeaborgiumCarbide, 2)
                 .input(plate, Einsteinium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(4))
                 .input(circuit, MarkerMaterials.Tier.Infinite)
@@ -174,7 +174,7 @@ public class FusionComponents {
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).
                 inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2))
-                .input(plate, Seaborgium, 6)
+                .input(plate, TantalumHafniumSeaborgiumCarbide, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .duration(50)
                 .buildAndRegister();
