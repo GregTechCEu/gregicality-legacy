@@ -1246,7 +1246,7 @@ public class GAMaterials implements IMaterialHandler {
         Molybdenum.addFlag(GENERATE_BOLT_SCREW);
         Neodymium.addFlag(GENERATE_BOLT_SCREW);
 
-
+        BorosiilicateGlass.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);
         Iron.addFlag(GENERATE_METAL_CASING);
