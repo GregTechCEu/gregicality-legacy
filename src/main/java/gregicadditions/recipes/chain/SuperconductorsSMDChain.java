@@ -87,21 +87,28 @@ public class SuperconductorsSMDChain {
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(1500).blastFurnaceTemp(1250)
                 .input(dust, SodiumRuthenate)
                 .fluidInputs(Hydrogen.getFluid(1000))
-                .outputs(RutheniumDioxide.getItemStack())
+                .outputs(OreDictUnifier.get(dust, RutheniumDioxide))
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide))
                 .buildAndRegister();
 
+       CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(3200)
+                .input(dust, Bismuth)
+                .fluidInputs(NitricAcid.getFluid(6000))
+                .fluidOutputs(BismuthNitrateSoluton.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(3000))
+                .buildAndRegister();
+        
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1500).blastFurnaceTemp(1250)
                 .input(dust, SodiumRuthenate)
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
-                .outputs(BismuthRuthenate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, BismuthRuthenate))
                 .outputs(OreDictUnifier.get(dust, SodiumNitrate))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(3500).blastFurnaceTemp(1900)
                 .input(dust, IridiumDioxide)
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
-                .outputs(BismuthIridiate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, BismuthIridiate)
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
@@ -163,7 +170,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(EDOT.getFluid(1000))
                 .fluidInputs(SodiumPersulfate.getFluid(10))
                 .notConsumable(IronSulfateDust.getItemStack())
-                .outputs(PEDOT.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, PEDOT, 3))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(420).EUt(720)
@@ -780,7 +787,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(AstatideSolution.getFluid(4000))
                 .input(dust, Holmium)
                 .input(dust, Thulium)
-                .input(dust, Platinum)
+                .input(dust, Copernicium)
                 .input(dust, MetastableFlerovium)
                 .fluidOutputs(SulfuricAcid.getFluid(4000))
                 .outputs(MixedAstatideSalts.getItemStack())
