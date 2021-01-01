@@ -39,7 +39,7 @@ public class DrillingRigInfo extends MultiblockInfoPage {
                 .aisle("F#####F", "F#####F", "CCCCCCC", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
                 .where('B', GAMetaBlocks.METAL_CASING.get(StainlessSteel).getDefaultState())
                 .where('F', MetaBlocks.FRAMES.get(StainlessSteel).getDefaultState())
-                .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
+                .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))
                 .where('S', GATileEntities.DRILLING_RIG, EnumFacing.NORTH)
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.NORTH)
