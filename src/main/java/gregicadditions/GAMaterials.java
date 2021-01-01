@@ -997,6 +997,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial MagnetorestrictiveAlloy = new SimpleDustMaterial("magnetorestrictive_alloy", 0xafefef, (short) 252, MaterialIconSet.DULL, of(new MaterialStack(Terbium, 4), new MaterialStack(Dysprosium, 7), new MaterialStack(Iron, 10), new MaterialStack(Cobalt, 5), new MaterialStack(Boron, 2), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)));
     public static final SimpleDustMaterial BoronOxide = new SimpleDustMaterial("boron_oxide",0xfcfcfa,(short) 256,MaterialIconSet.DULL);
     public static final SimpleDustMaterial LithiumAluminiumFluoride = new SimpleDustMaterial("lithium_aluminium_fluoride",0xfcfcfa,(short) 263,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HafniumCarbide = new SimpleDustMaterial("hafnium_carbide",0x2c2c2c,(short) 264,MaterialIconSet.SHINY,of(new MaterialStack(Hafnium,1),new MaterialStack(Carbon,1)));
+    public static final SimpleDustMaterial TantalumCarbide = new SimpleDustMaterial("tantalum_carbide",0x2c2c2c,(short) 265,MaterialIconSet.SHINY,of(new MaterialStack(Tantalum,1),new MaterialStack(Carbon,1)));
+    public static final SimpleDustMaterial SeaborgiumCarbide = new SimpleDustMaterial("seaborgnium_carbide",0x2c2c2c,(short) 266,MaterialIconSet.SHINY,of(new MaterialStack(Seaborgium,1),new MaterialStack(Carbon,1)));
 
     public static final SimpleFluidMaterial HydroselenicAcid = new SimpleFluidMaterial("hydroselenic_acid", Selenium.materialRGB);
     public static final SimpleFluidMaterial Aminophenol = new SimpleFluidMaterial("aminophenol", 0xafca3a);
@@ -1063,6 +1066,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial WoodsGlass = new IngotMaterial(698, "woods_glass", 0x730099, MaterialIconSet.SHINY, 2, of(), GENERATE_PLATE);
     public static final IngotMaterial BariumTitanate = new IngotMaterial(697, "barium_titanate", 0x99FF99, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD);
     public static final GemMaterial LeadZirconateTitanate = new GemMaterial(696, "lead_zirconate_titanate", 0x359ade, MaterialIconSet.OPAL, 3, of(), GENERATE_PLATE | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION);
+    public static final IngotMaterial TantalumHafniumSeaborgiumCarbide = new IngotMaterial(695,"tantalum_hafnium_seaborgium_carbide",0x2c2c2c,MaterialIconSet.SHINY,6,of(new MaterialStack(Tantalum, 12), new MaterialStack(Hafnium, 3), new MaterialStack(Seaborgium, 1), new MaterialStack(Carbon, 16)),GENERATE_PLATE | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION,null,5200);
 
     public static final SimpleDustMaterial BETSPerrhenate = new SimpleDustMaterial("bets_perrhenate", 0x7ada00, (short) 255, MaterialIconSet.SHINY, of(new MaterialStack(Rhenium, 1), new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 8), new MaterialStack(Sulfur, 4), new MaterialStack(Selenium, 4), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial TBCCODust = new SimpleDustMaterial("tbcco_dust", 0x669900, (short) 257, MaterialIconSet.SHINY, of(new MaterialStack(Thallium, 2), new MaterialStack(Barium, 2), new MaterialStack(Calcium, 2), new MaterialStack(Copper, 3), new MaterialStack(Oxygen, 10)));
