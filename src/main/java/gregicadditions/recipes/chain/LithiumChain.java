@@ -23,7 +23,7 @@ public class LithiumChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(160).EUt(120)
-                .inputs(CalciumFluoride.getItemStack(2))
+                .inputs(CalciumFluoride.getItemStack(3))
                 .outputs(OreDictUnifier.get(dust, Calcium))
                 .fluidOutputs(Fluorine.getFluid(2000))
                 .buildAndRegister();
@@ -45,7 +45,7 @@ public class LithiumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .fluidInputs(DissolvedLithiumOre.getFluid(3000))
                 .input(dust, SodaAsh, 3)
-                .outputs(AluminiumSulfate.getItemStack(4))
+                .outputs(AluminiumSulfate.getItemStack(3))
                 .fluidOutputs(LithiumCarbonateSolution.getFluid(3000))
                 .buildAndRegister();
 
@@ -57,7 +57,7 @@ public class LithiumChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
-                .inputs(AluminiumSulfate.getItemStack(4))
+                .inputs(AluminiumSulfate.getItemStack(18))
                 .outputs(OreDictUnifier.get(dust, Aluminium, 3))
                 .outputs(OreDictUnifier.get(dust, Sulfur, 3))
                 .fluidOutputs(Oxygen.getFluid(12000))

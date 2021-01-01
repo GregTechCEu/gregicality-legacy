@@ -29,7 +29,7 @@ public class GAMetaTileEntityHull extends GATieredMetaTileEntity {
 
     @Override
     public gregtech.api.metatileentity.MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new gregtech.common.metatileentities.electric.MetaTileEntityHull(metaTileEntityId, getTier());
+        return new GAMetaTileEntityHull(metaTileEntityId, getTier());
     }
 
     @Override
@@ -63,7 +63,6 @@ public class GAMetaTileEntityHull extends GATieredMetaTileEntity {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         String tierName = GAValues.VN[getTier()];
-
         tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), tierName));
         tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", energyContainer.getOutputVoltage(), tierName));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));

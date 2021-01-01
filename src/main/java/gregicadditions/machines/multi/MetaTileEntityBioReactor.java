@@ -1,17 +1,20 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.item.components.FieldGenCasing;
+import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.components.SensorCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
@@ -28,7 +31,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class MetaTileEntityBioReactor extends RecipeMapMultiblockController {
+public class MetaTileEntityBioReactor extends GARecipeMapMultiblockController {
 
     public MetaTileEntityBioReactor(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.BIO_REACTOR_RECIPES);

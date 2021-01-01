@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.nuclear;
 
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
@@ -10,7 +11,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
@@ -46,7 +46,7 @@ import java.util.function.Predicate;
 import static gregicadditions.GAMaterials.*;
 
 
-public class MetaTileEntityNuclearReactor extends RecipeMapMultiblockController {
+public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
         THORIUM(0, GAMetaBlocks.getMetalCasingBlockState(ThoriumRadioactive.getMaterial())),

@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -33,7 +34,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMapMultiblockController {
+abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
     private int EUtPercentage = 100;
     private int durationPercentage = 100;
