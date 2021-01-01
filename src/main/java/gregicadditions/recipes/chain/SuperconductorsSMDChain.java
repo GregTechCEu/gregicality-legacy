@@ -108,7 +108,7 @@ public class SuperconductorsSMDChain {
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(3500).blastFurnaceTemp(1900)
                 .input(dust, IridiumDioxide)
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, BismuthIridiate)
+                .outputs(OreDictUnifier.get(dust, BismuthIridiate))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
