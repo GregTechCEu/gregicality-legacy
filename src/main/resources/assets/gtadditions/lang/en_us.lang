@@ -570,11 +570,14 @@ metaitem.copper_gallium_indium_mix.name=Copper Gallium Indium Mix
 metaitem.copper_gallium_indium_selenide.name=Copper Gallium Indium Selenide
 metaitem.lanthanum_gallium_manganate.name=Lanthanum Gallium Manganate
 metaitem.aluminium_complex.name=Aluminium Complex
+metaitem.bismuth_ruthenate.name=Bismuth Ruthenate
+metaitem.bismuth_iridiate.name=Bismuth Iridiate
+metaitem.pedot.name=Pedot
 metaitem.iron_platinum_catalyst.name=Iron Platinum Catalyst
 metaitem.yttrium_nitrate.name=Yttrium Nitrate
 metaitem.copper_nitrate.name=Copper Nitrate
 metaitem.barium_nitrate.name=Barium Nitrate
-metaitem.well_mixed_ybc_oxides.name=Well Mixed YBC Oxides
+metaitem.well_mixed_ybc_oxides.name=Well Mixed Ybc Oxides
 metaitem.piled_tbcc.name=Piled TBCC
 metaitem.actinium_oxalate.name=Actinium Oxalate
 metaitem.actinium_hydride.name=Actinium Hydride
@@ -611,6 +614,7 @@ metaitem.strontium_chloride.name=Strontium Chloride
 metaitem.yttrium_europium_vanadate.name=Yttrium Europium Vanadate
 metaitem.strontium_europium_aluminate.name=Strontium Europium Aluminate
 metaitem.barium_strontium_titanate.name=Barium Strontium Titanate
+metaitem.ruthenium_dioxide.name=Ruthenium Dioxide
 metaitem.potassium_manganate.name=Potassium Manganate
 metaitem.barium_chloride.name=Barium Chloride
 metaitem.tantalum_oxide.name=Tantalum Oxide
@@ -2219,11 +2223,9 @@ material.woods_glass=Woods Glass
 material.barium_titanate=Barium Titanate
 material.lead_zirconate_titanate=Lead Zirconate Titanate
 material.tantalum_hafnium_seaborgium_carbide=Tantalum Hafnium Seaborgium Carbide
-material.ruthenium_dioxide=Ruthenium Dioxide
-material.bismuth_ruthenate=Bismuth Ruthenate
-material.bismuth_iridiate=Bismuth Iridiate
-material.pedot=PEDOT
-material.germanium_tungsten_nitride=Germanium Tungsten Nitride
+
+
+
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
