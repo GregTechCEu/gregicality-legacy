@@ -631,9 +631,8 @@ metaitem.borocarbide_dust.name=Dorocarbide Dust
 metaitem.actinium_superhydride.name=Actinium Superhydride
 metaitem.strontium_superconductor_dust.name=Strontium Superconductor Dust
 metaitem.fullerene_superconductor_dust.name=Fullerene Superconductor Dust
-metaitem.tantalum_carbide.name=Tantalum Carbide
-metaitem.hafnium_carbide.name=Hafnium Carbide
-metaitem.seaborgium_carbide.name=Seaborgium Carbide
+
+
 
 metaitem.unstable.star.name=Unstable Star
 
@@ -2222,8 +2221,6 @@ material.thoria_doped_tungsten=Thoria Doped Tungsten
 material.woods_glass=Woods Glass
 material.barium_titanate=Barium Titanate
 material.lead_zirconate_titanate=Lead Zirconate Titanate
-material.tantalum_hafnium_seaborgium_carbide=Tantalum Hafnium Seaborgium Carbide
-
 
 
 
