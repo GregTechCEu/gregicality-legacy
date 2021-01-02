@@ -119,7 +119,7 @@ public class BacteriaCultures {
                 .duration(2400)
                 .buildAndRegister();
         BIO_REACTOR_RECIPES.recipeBuilder()
-                .fluidInputs(Air.getFluid(1000))
+                .inputs(new ItemStack(Items.ROTTEN_FLESH))
                 .inputs(CLEAN_CULTURE.getStackForm())
                 .fluidInputs(BacterialGrowthMedium.getFluid(1000))
                 .outputs(STREPTOCOCCUS_CULTURE.getStackForm())
