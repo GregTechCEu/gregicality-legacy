@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.miner;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
@@ -51,7 +51,7 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
     public MetaTileEntityChunkMiner(ResourceLocation metaTileEntityId, Miner.Type type, int tier) {
         super(metaTileEntityId, tier);
         this.inventorySize = (tier + 1) * (tier + 1);
-        this.energyPerTick = GTValues.V[tier];
+        this.energyPerTick = GAValues.V[tier];
         this.type = type;
         this.containerInventory = new ItemStackHandler(2);
         initializeInventory();
@@ -137,7 +137,7 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GAValues.VN[getTier()]));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
         tooltip.add(I18n.format("gtadditions.machine.miner.description"));
         tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));

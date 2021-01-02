@@ -5,19 +5,16 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.Collections;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Nitinol60;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
 public class LargeNaquadahReactorInfo extends MultiblockInfoPage {

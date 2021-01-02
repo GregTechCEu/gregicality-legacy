@@ -5,13 +5,10 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.CopperLeach;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.THERMAL_CENTRIFUGE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 
 public class GoldChain {
 

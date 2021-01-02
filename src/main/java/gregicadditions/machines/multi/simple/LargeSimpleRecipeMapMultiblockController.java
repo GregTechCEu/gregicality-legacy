@@ -1,10 +1,11 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
@@ -33,7 +34,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMapMultiblockController {
+abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
     private int EUtPercentage = 100;
     private int durationPercentage = 100;
@@ -197,6 +198,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         };
     }
 
+    @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.maxVoltage = 0;
+    }
+
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
@@ -209,7 +216,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
-    public static class LargeSimpleMultiblockRecipeLogic extends MultiblockRecipeLogic {
+    public static class LargeSimpleMultiblockRecipeLogic extends GAMultiblockRecipeLogic {
 
         private int EUtPercentage = 100;
         private int durationPercentage = 100;
@@ -234,6 +241,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
          */
         protected void trySearchNewRecipe() {
             long maxVoltage = getMaxVoltage();
+            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController)
+                maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
             Recipe currentRecipe = null;
             IItemHandlerModifiable importInventory = getInputInventory();
             IMultipleTankHandler importFluids = getInputTank();
@@ -279,8 +288,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
 
         protected Recipe createRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs, Recipe matchingRecipe) {
             int maxItemsLimit = this.stack;
-            int EUt = 0;
-            int duration = 0;
+            int EUt;
+            int duration;
             int currentTier = getOverclockingTier(maxVoltage);
             int tierNeeded;
             int minMultiplier = Integer.MAX_VALUE;
@@ -322,7 +331,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) Math.max(1, EUt * this.EUtPercentage / 100))
-                    .duration((int) Math.max(1.0, duration * (this.durationPercentage / 100.0)));
+                    .duration((int) Math.max(3, duration * (this.durationPercentage / 100.0)));
 
             copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
 
@@ -432,7 +441,10 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends RecipeMap
         }
 
         protected void setupRecipe(Recipe recipe) {
-            int[] resultOverclock = calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration());
+            long maxVoltage = getMaxVoltage();
+            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController)
+                maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
+            int[] resultOverclock = calculateOverclock(recipe.getEUt(), maxVoltage, recipe.getDuration());
             this.progressTime = 1;
             setMaxProgress(resultOverclock[1]);
             this.recipeEUt = resultOverclock[0];

@@ -60,7 +60,7 @@ public class GATransparentCasing extends VariantBlock<GATransparentCasing.Casing
 		CHROME_GLASS("chrome_reinforced_glass"),
 		TUNGSTEN_GLASS("tungsten_reinforced_glass"),
 		IRIDIUM_GLASS("iridium_reinforced_glass"),
-		OSMIUM_GLASS("osmium_reinforced_glass");
+		OSMIRIDIUM_GLASS("osmium_reinforced_glass");
 
 		private final String name;
 

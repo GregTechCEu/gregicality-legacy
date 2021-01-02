@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "computer": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/quantum/computer"
+        }
+      },
+      "generator": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/quantum/generator"
+        }
+      }
+    }
+  }
+}

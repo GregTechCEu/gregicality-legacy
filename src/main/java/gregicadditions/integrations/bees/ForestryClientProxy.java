@@ -37,7 +37,10 @@ public class ForestryClientProxy extends ForestryCommonProxy {
 	@Optional.Method(modid = "forestry")
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
-		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
+		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+			GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
+			ForestryCommonProxy.GT_ALVEARY.registerModel(Item.getItemFromBlock(ForestryCommonProxy.GT_ALVEARY), ForestryAPI.modelManager);
+		}
 	}
 
 

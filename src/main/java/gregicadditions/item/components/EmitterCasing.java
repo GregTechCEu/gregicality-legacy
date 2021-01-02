@@ -25,7 +25,13 @@ public class EmitterCasing extends VariantBlock<EmitterCasing.CasingType> {
         EMITTER_IV("emitter_iv", 5),
         EMITTER_LUV("emitter_luv", 6),
         EMITTER_ZPM("emitter_zpm", 7),
-        EMITTER_UV("emitter_uv", 8);
+        EMITTER_UV("emitter_uv", 8),
+        EMITTER_UHV("emitter_uhv", 9),
+        EMITTER_UEV("emitter_uev", 10),
+        EMITTER_UIV("emitter_uiv", 11),
+        EMITTER_UMV("emitter_umv", 12),
+        EMITTER_UXV("emitter_uxv", 13),
+        EMITTER_MAX("emitter_max", 14);
 
         private final String name;
         private final int tier;

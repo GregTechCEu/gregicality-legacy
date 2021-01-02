@@ -47,6 +47,36 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
+      },
+      "conveyor_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uhv"
+        }
+      },
+      "conveyor_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uev"
+        }
+      },
+      "conveyor_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uiv"
+        }
+      },
+      "conveyor_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_umv"
+        }
+      },
+      "conveyor_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uxv"
+        }
+      },
+      "conveyor_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_max"
+        }
       }
     }
   }

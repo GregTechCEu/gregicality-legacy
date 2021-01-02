@@ -1,6 +1,7 @@
 package gregicadditions.machines;
 
 import gregicadditions.client.ClientHandler;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.ModularUI;

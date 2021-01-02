@@ -3,18 +3,13 @@ package gregicadditions.recipes.chain;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.UraniumRadioactive;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.NUCLEAR_WASTE_REACTIVE_NONMETAL;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class NuclearChain {
 
@@ -102,15 +97,9 @@ public class NuclearChain {
                 .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 10))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(2000).EUt(240)
-                .input(dust, Lithium)
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, LithiumHydroxide))
-                .fluidOutputs(Oxygen.getFluid(1000))
-                .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
-                .input(dust, LithiumHydroxide)
+                .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, LithiumFluoride))
                 .fluidOutputs(Water.getFluid(1000))
@@ -157,7 +146,6 @@ public class NuclearChain {
         FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60).input(dust, SodiumPotassiumAlloy).fluidOutputs(SodiumPotassiumAlloy.getFluid(GTValues.L)).buildAndRegister();
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
-
 
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
@@ -214,7 +202,7 @@ public class NuclearChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Hafnium, 2), 6250, 300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tantalum, 2), 6250, 400)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Tungsten, 2), 6250, 500)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Rhenium, 2), 6250, 600)// can stay here, the change to get infinite rhenium is really small
                 .chancedOutput(OreDictUnifier.get(dustTiny, Osmium, 2), 6250, 700)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iridium, 2), 6250, 800)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Platinum, 2), 6250, 900)

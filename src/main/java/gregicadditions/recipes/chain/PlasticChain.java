@@ -4,7 +4,6 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.Chlorobenzene;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
@@ -79,7 +78,7 @@ public class PlasticChain {
                 .input(dust, ZincSulfate, 6)
                 .outputs(OreDictUnifier.get(dust, Zinc))
                 .outputs(OreDictUnifier.get(dust, Sulfur))
-                .fluidInputs(Oxygen.getFluid(4000))
+                .fluidOutputs(Oxygen.getFluid(4000))
                 .EUt(90)
                 .duration(26)
                 .buildAndRegister();

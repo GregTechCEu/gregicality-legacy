@@ -7,9 +7,11 @@ import net.minecraftforge.fml.relauncher.Side;
 public class NetworkHandler {
     public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("gtadditions");
 
-    public static void init(){
+    public static void preInit() {
 
-	    INSTANCE.registerMessage(KeysUpdateHandler.class, KeysPacket.class, 0, Side.SERVER);
+        INSTANCE.registerMessage(KeysUpdateHandler.class, KeysPacket.class, 0, Side.SERVER);
+        INSTANCE.registerMessage(MessageReservoirListSync.Handler.class, MessageReservoirListSync.class, 1, Side.CLIENT);
+
 
     }
 

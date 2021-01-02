@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
@@ -8,7 +9,6 @@ import gregicadditions.machines.multi.impl.HotCoolantTurbineWorkableHandler;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
-import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -56,7 +56,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     public IFluidHandler exportFluidHandler;
 
     public MetaTileEntityHotCoolantTurbine(ResourceLocation metaTileEntityId, TurbineType turbineType) {
-        super(metaTileEntityId, turbineType.recipeMap, GTValues.V[GTValues.EV]);
+        super(metaTileEntityId, turbineType.recipeMap, GAValues.V[GAValues.EV]);
         this.turbineType = turbineType;
         reinitializeStructurePattern();
     }

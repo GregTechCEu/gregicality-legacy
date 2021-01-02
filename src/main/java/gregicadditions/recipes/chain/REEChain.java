@@ -6,7 +6,6 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CENTRIFUGE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.dustTiny;
@@ -26,7 +25,8 @@ public class REEChain {
                 .fluidInputs(AcidicSaltWater.getFluid(1000))
                 .fluidInputs(SulfurDioxide.getFluid(500))
                 .fluidInputs(Water.getFluid(500))
-                .fluidOutputs(SulfuricBromineSolution.getFluid(2000))
+                .fluidOutputs(SulfuricBromineSolution.getFluid(1000))
+                .fluidOutputs(DebrominatedWater.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();

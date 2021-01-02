@@ -2,8 +2,8 @@ package gregicadditions.theoneprobe;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
-import gregtech.api.recipes.RecipeMap;
 import gregicadditions.utils.GALog;
+import gregtech.api.recipes.RecipeMap;
 import mcjty.theoneprobe.api.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +42,7 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
         RecipeMap<?>[] recipes = iMultiRecipe.getRecipes();
         for (int i = 0; i < recipes.length; i++) {
             if (iMultiRecipe.getCurrentRecipe() == i) {
-                iProbeInfo.text(TextStyleClass.INFOIMP + "{*recipemap." + recipes[i].getUnlocalizedName() + ".name*}");
+                iProbeInfo.text(TextStyleClass.INFOIMP + "{*recipemap." + recipes[i].getUnlocalizedName() + ".name*} {*<*}");
             } else {
                 iProbeInfo.text(TextStyleClass.INFO + recipes[i].getLocalizedName());
             }

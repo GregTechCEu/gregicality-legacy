@@ -1,7 +1,6 @@
 package gregicadditions.integrations.bees;
 
 import com.google.common.collect.ImmutableMap;
-
 import forestry.api.recipes.RecipeManagers;
 import forestry.apiculture.ModuleApiculture;
 import forestry.core.ModuleCore;

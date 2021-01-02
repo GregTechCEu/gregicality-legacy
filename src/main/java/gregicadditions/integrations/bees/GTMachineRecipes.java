@@ -1,12 +1,25 @@
 package gregicadditions.integrations.bees;
 
+import forestry.apiculture.ModuleApiculture;
+import forestry.apiculture.blocks.BlockAlvearyType;
+import forestry.apiculture.blocks.BlockRegistryApiculture;
 import forestry.core.ModuleCore;
+import forestry.core.blocks.BlockRegistry;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
+import gregicadditions.Gregicality;
+import gregicadditions.integrations.bees.alveary.BlockGTAlveary;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.MetaItems;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import org.apache.commons.lang3.text.WordUtils;
 
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
@@ -17,6 +30,7 @@ public class GTMachineRecipes {
         if (GAConfig.GTBees.AssemblerRecipes) {
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(8).duration(16).circuitMeta(1).input(OrePrefix.log, Materials.Wood, 8).fluidInputs(Fluids.SEED_OIL.getFluid(250)).outputs(ModuleCore.getItems().impregnatedCasing.getItemStack()).buildAndRegister();
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(64).circuitMeta(8).input(OrePrefix.log, Materials.Wood).fluidInputs(Fluids.SEED_OIL.getFluid(50)).outputs(ModuleCore.getItems().stickImpregnated.getItemStack()).buildAndRegister();
+            RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(256).duration(64).circuitMeta(2).inputs(new ItemStack(Item.getItemFromBlock(ModuleApiculture.getBlocks().getAlvearyBlock(BlockAlvearyType.PLAIN)), 1)).fluidInputs(Fluids.SEED_OIL.getFluid(50)).outputs(new ItemStack(Item.getItemFromBlock(ForestryCommonProxy.GT_ALVEARY), 1)).buildAndRegister();
         }
 
         //Non-generated Fluid Extractor Recipes
@@ -167,6 +181,20 @@ public class GTMachineRecipes {
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.Naquadah)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.Naquadah, 4)).fluidOutputs(Materials.NaquadahEnriched.getFluid(144)).buildAndRegister();
             RecipeMaps.CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(96).inputs(GTCombItem.getComb(GTCombs.STARGATIUM, 9), OreDictUnifier.get(OrePrefix.crushed, Materials.NaquadahEnriched)).fluidInputs(Materials.Water.getFluid(1000)).outputs(OreDictUnifier.get(OrePrefix.crushedPurified, Materials.NaquadahEnriched, 4)).fluidOutputs(Materials.Naquadah.getFluid(144)).buildAndRegister();
         }
+
+        //Comb centrifuge recipes
+        if(GAConfig.GTBees.GenerateCentrifugeRecipes){
+            for (GTCombs comb : GTCombs.VALUES){
+                Fluid fluid = GTBees.getFluidMaterial(GTBees.getUid(comb.name));
+                if (fluid != null){
+                    RecipeMaps.CENTRIFUGE_RECIPES.recipeBuilder().EUt(24).duration(96)
+                            .inputs(GTCombItem.getComb(comb, 1))
+                            .fluidOutputs(new FluidStack(fluid, 100))
+                            .buildAndRegister();
+                }
+            }
+        }
+
         registerMachineRecipe(ForestryCommonProxy.BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
     }
