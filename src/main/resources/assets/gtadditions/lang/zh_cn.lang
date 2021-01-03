@@ -250,6 +250,11 @@ metaitem.green_lamp_core.name=绿光卤素灯核心
 metaitem.blue_lamp_core.name=蓝光卤素灯核心
 metaitem.red_lamp_core.name=红光卤素灯核心
 metaitem.actinium.plasma.containment.cell.name=超氢化锕等离子体密闭容器
+metaitem.brevibacterium.culture.name=黄色短杆菌培养皿
+metaitem.bifidobacterium.culture.name=短双歧杆菌培养皿
+metaitem.eschericia.culture.name=大肠杆菌培养皿
+metaitem.streptococcus.culture.name=酿脓链球菌培养皿
+metaitem.shewanella.culture.name=希瓦氏菌培养皿
 
 
 metaitem.electrode.apatite.name=磷灰石电子管元件
