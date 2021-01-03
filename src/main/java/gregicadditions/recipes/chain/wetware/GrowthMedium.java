@@ -167,6 +167,12 @@ public class GrowthMedium {
                 .duration(500)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Meat)
+                .fluidOutputs(Blood.getFluid(250))
+                .EUt(32)
+                .duration(50)
+                .buildAndRegister();
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(Blood.getFluid(1000))
                 .fluidOutputs(BloodCells.getFluid(450))
                 .fluidOutputs(BloodPlasma.getFluid(550))

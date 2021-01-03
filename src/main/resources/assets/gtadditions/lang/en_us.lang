@@ -250,6 +250,11 @@ metaitem.green_lamp_core.name=Green Halide Lamp Core
 metaitem.blue_lamp_core.name=Blue Halide Lamp Core
 metaitem.red_lamp_core.name=Red Halide Lamp Core
 metaitem.actinium.plasma.containment.cell.name=Actinium Superhydride Plasma Containment Cell
+metaitem.brevibacterium.culture.name=Brevibacterium Flavum Culture
+metaitem.bifidobacterium.culture.name=Bifidobacterium Breve Culture
+metaitem.eschericia.culture.name=Eschericia Coli Culture
+metaitem.streptococcus.culture.name=Streptococcus Pyogenes Culture
+metaitem.shewanella.culture.name=Shewanella Culture
 
 
 metaitem.electrode.apatite.name=Apatine Electrode

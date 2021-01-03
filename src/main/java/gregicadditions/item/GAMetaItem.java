@@ -338,6 +338,12 @@ public class GAMetaItem extends MaterialMetaItem {
         GREEN_LAMP_CORE = addItem(472,"green_lamp_core");
         ACTINIUM_PLASMA_CONTAINMENT_CELL = addItem(473, "actinium.plasma.containment.cell");
 
+        SHEWANELLA_CULTURE = addItem(475, "shewanella.culture");
+        STREPTOCOCCUS_CULTURE = addItem(476, "streptococcus.culture");
+        ESCHERICHIA_CULTURE = addItem(477, "eschericia.culture");
+        BIFIDOBACTERIUM_CULTURE = addItem(478, "bifidobacterium.culture");
+        BREVIBACTERIUM_CULTURE = addItem(479, "brevibacterium.culture");
+
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
