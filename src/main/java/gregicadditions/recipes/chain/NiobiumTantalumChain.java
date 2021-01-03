@@ -209,7 +209,7 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1900)
-                .fluidInputs(FluoroniobicAcid.getFluid(3000))
+                .fluidInputs(FluorotantalicAcid.getFluid(3000))
                 .fluidInputs(NbTaSeparationMixture.getFluid(400))
                 .fluidOutputs(OxypentafluoroNiobate.getFluid(300))
                 .fluidOutputs(HeptafluoroTantalate.getFluid(2700))
