@@ -582,7 +582,7 @@ metaitem.iron_platinum_catalyst.name=Iron Platinum Catalyst
 metaitem.yttrium_nitrate.name=Yttrium Nitrate
 metaitem.copper_nitrate.name=Copper Nitrate
 metaitem.barium_nitrate.name=Barium Nitrate
-metaitem.well_mixed_ybc_oxides.name=Well Mixed Ybc Oxides
+metaitem.well_mixed_ybc_oxides.name=Well Mixed YBC Oxides
 metaitem.piled_tbcc.name=Piled TBCC
 metaitem.actinium_oxalate.name=Actinium Oxalate
 metaitem.actinium_hydride.name=Actinium Hydride
@@ -636,7 +636,9 @@ metaitem.borocarbide_dust.name=Borocarbide Dust
 metaitem.actinium_superhydride.name=Actinium Superhydride
 metaitem.strontium_superconductor_dust.name=Strontium Superconductor Dust
 metaitem.fullerene_superconductor_dust.name=Fullerene Superconductor Dust
-
+metaitem.tantalum_carbide.name=Tantalum Carbide
+metaitem.hafnium_carbide.name=Hafnium Carbide
+metaitem.seaborgium_carbide.name=Seaborgium Carbide
 
 
 metaitem.unstable.star.name=Unstable Star
@@ -2303,8 +2305,13 @@ material.sodium_tungstate=Sodium Tungstate
 material.tungstic_acid=Tungstic Acid
 material.tungsten_trioxide=Tungsten Trioxide
 material.tungsten_hexachloride=Tungsten Hexachloride
-
-
+material.bismuth_ruthenate=Bismuth Ruthenate
+material.bismuth_iridiate=Bismuth Iridiate
+material.ruthenium_dioxide=Ruthenium Dioxide
+material.pedot=PEDOT
+material.germanium_tungsten_nitride=Germanium Tungsten Nitride
+material.fullerene_polymer_matrix=Fullerene Polymer Matrix
+material.tantalum_hafnium_seaborgium_carbide=Tantalum Hafnium Seaborgium Carbide
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
