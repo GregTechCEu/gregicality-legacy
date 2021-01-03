@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GASimpleBlock;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;

@@ -1,4 +1,3 @@
-
 package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
@@ -7,7 +6,8 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
 
 public class AluminiumChain {
     public static void init() {
@@ -42,7 +42,7 @@ public class AluminiumChain {
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(32)
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, SodiumHydroxide)
-                .input(dust, Bauxite,2)
+                .input(dust, Bauxite, 2)
                 .fluidOutputs(SodiumHydroxideBauxite.getFluid(4000))
                 .buildAndRegister();
 

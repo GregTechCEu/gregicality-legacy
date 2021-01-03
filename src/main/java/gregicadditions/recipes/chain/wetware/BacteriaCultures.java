@@ -12,7 +12,8 @@ import static gregicadditions.recipes.GARecipeMaps.BIO_REACTOR_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.stick;
 
 public class BacteriaCultures {
     public static void init() {

@@ -18,11 +18,11 @@ import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
 
 
 public class VariousChains {
-    public static void init(){
+    public static void init() {
         //lignite
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
-                .fluidInputs(Water.getFluid(1000),Chlorine.getFluid(1000))
-                .input(dust,SodaAsh)
+                .fluidInputs(Water.getFluid(1000), Chlorine.getFluid(1000))
+                .input(dust, SodaAsh)
                 .outputs(SodiumBicarbonate.getItemStack())
                 .fluidOutputs(DichlorineMonoxide.getFluid(1000))
                 .buildAndRegister();
@@ -35,15 +35,15 @@ public class VariousChains {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(500)
                 .fluidInputs(Chlorine.getFluid(1000))
-                .input(dust,SodiumHydroxide,2)
+                .input(dust, SodiumHydroxide, 2)
                 .fluidOutputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Salt))
+                .outputs(OreDictUnifier.get(dust, Salt))
                 .outputs(SodiumHypochlorite.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(250)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .input(dust,SodiumHydroxide)
+                .input(dust, SodiumHydroxide)
                 .fluidOutputs(Water.getFluid(1000))
                 .outputs(SodiumHypochlorite.getItemStack())
                 .buildAndRegister();
@@ -51,7 +51,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(250)
                 .inputs(SodiumHypochlorite.getItemStack())
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Salt))
+                .outputs(OreDictUnifier.get(dust, Salt))
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
 
@@ -68,7 +68,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(230)
-                .input(dust,Lignite)
+                .input(dust, Lignite)
                 .fluidInputs(Choline.getFluid(1000))
                 .fluidOutputs(ATL.getFluid(1000))
                 .buildAndRegister();
@@ -80,7 +80,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(125)
-                .input(dust,Lignite,2)
+                .input(dust, Lignite, 2)
                 .fluidInputs(HotNitrogen.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .outputs(DehydratedLignite.getItemStack())
@@ -124,7 +124,7 @@ public class VariousChains {
         MIXER_RECIPES.recipeBuilder().duration(230).EUt(750)
                 .fluidInputs(Polyurethane.getFluid(1000))
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
-                .input(dust,Calcite)
+                .input(dust, Calcite)
                 .fluidOutputs(ViscoelasticPolyurethane.getFluid(2000))
                 .buildAndRegister();
 
@@ -145,7 +145,7 @@ public class VariousChains {
                 .input(stick, Wood, 3)
                 .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
                 .outputs(new ItemStack(Items.BED))
-               .buildAndRegister();
+                .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
                 .fluidInputs(SolderingAlloy.getFluid(576))
@@ -157,16 +157,16 @@ public class VariousChains {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
                 .fluidInputs(SolderingAlloy.getFluid(288))
-                .input(wireFine,Gold,4)
+                .input(wireFine, Gold, 4)
                 .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .inputs(LASER_DIODE.getStackForm())
-                .input(circuit,MarkerMaterials.Tier.Infinite)
+                .input(circuit, MarkerMaterials.Tier.Infinite)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(432))
-                .input(wireGtDouble,UVSuperconductor,2)
+                .input(wireGtDouble, UVSuperconductor, 2)
                 .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
