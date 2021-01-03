@@ -181,6 +181,11 @@ public class ZincChain {
                 .outputs(Cellulose.getItemStack(2))
                 .fluidOutputs(PolyphenolMix.getFluid(1000))
                 .buildAndRegister();
+        
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(250).EUt(750)
+                .inputs(Cellulose.getItemStack())
+                .outputs(new ItemStack(Items.Paper))
+                .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1250)
                 .fluidInputs(PolyphenolMix.getFluid(1000))
