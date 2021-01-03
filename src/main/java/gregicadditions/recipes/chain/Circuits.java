@@ -464,22 +464,22 @@ public class Circuits {
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, Rutherfordium, 12).input(plate, NetherStar).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(32)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).inputs(SMD_RESISTOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_CRYSTAL.getStackForm(12)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).input(plate, Graphene).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_CRYSTAL.getStackForm(24)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904).input(wireFine, NaquadahAlloy, 8).input(plate, Graphene).input(plate, RutheniumDioxide).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_CRYSTAL.getStackForm(24)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680).input(foil, Polybenzimidazole, 4).inputs(SMD_CAPACITOR_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_CAPACITOR_CRYSTAL.getStackForm(8)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680).input(foil, Polybenzimidazole, 4).input(foil, NaquadahAlloy).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_CAPACITOR_CRYSTAL.getStackForm(16)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).inputs(SMD_DIODE_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(16)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).input(dust, Copernicium).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(32)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).input(dust, Copernicium).inputs(LanthanumCalciumManganate.getItemStack()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(32)).buildAndRegister();
 
         //SMD WETWARE
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616).inputs(CAPACITOR.getStackForm(), SMD_CAPACITOR_REFINED.getStackForm(), SMD_CAPACITOR.getStackForm(), SMD_CAPACITOR_NANO.getStackForm(), SMD_CAPACITOR_QUANTUM.getStackForm(), SMD_CAPACITOR_CRYSTAL.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_CAPACITOR_WETWARE.getStackForm(8)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616).input(wireFine, PEDOT,8).input(foil, Polybenzimidazole,4).input(foil, BariumTitanate,4).fluidInputs(Polytetrafluoroethylene.getFluid(576)).outputs(SMD_CAPACITOR_WETWARE.getStackForm(32)).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616).inputs(RESISTOR.getStackForm(), SMD_RESISTOR_REFINED.getStackForm(), SMD_RESISTOR.getStackForm(), SMD_RESISTOR_NANO.getStackForm(), SMD_RESISTOR_QUANTUM.getStackForm(), SMD_RESISTOR_CRYSTAL.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_RESISTOR_WETWARE.getStackForm(12)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616).input(wireFine, NaquadahAlloy,6).input(plate,BismuthRuthenate).input(plate,BismuthIridiate).fluidInputs(Polytetrafluoroethylene.getFluid(576)).outputs(SMD_RESISTOR_WETWARE.getStackForm(24)).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720).inputs(TRANSISTOR.getStackForm(), SMD_TRANSISTOR_REFINED.getStackForm(), SMD_TRANSISTOR.getStackForm(), SMD_TRANSISTOR_NANO.getStackForm(), SMD_TRANSISTOR_QUANTUM.getStackForm(), SMD_TRANSISTOR_CRYSTAL.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_TRANSISTOR_WETWARE.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720).input(wireFine, Dubnium,8).input(plate, GermaniumTungstenNitride,4).fluidInputs(Polytetrafluoroethylene.getFluid(576)).outputs(SMD_TRANSISTOR_WETWARE.getStackForm(32)).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7680).inputs(DIODE.getStackForm(), SMD_DIODE_REFINED.getStackForm(), SMD_DIODE.getStackForm(), SMD_DIODE_NANO.getStackForm(), SMD_DIODE_QUANTUM.getStackForm(), SMD_DIODE_CRYSTAL.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_WETWARE.getStackForm(16)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7680).input(wireFine, Osmiridium,8).inputs(AluminiumComplex.getItemStack()).inputs(CopperGalliumIndiumSelenide.getItemStack()).fluidInputs(Polytetrafluoroethylene.getFluid(576)).outputs(SMD_DIODE_WETWARE.getStackForm(32)).buildAndRegister();
 
         //Circuit resonatic Magneto
         //CHEMICAL_RECIPES.recipeBuilder().duration(4000).EUt(30).input(dust, Yttrium, 2).fluidInputs(Oxygen.getFluid(3000)).outputs(OreDictUnifier.get(dust, YttriumOxide, 5)).buildAndRegister();

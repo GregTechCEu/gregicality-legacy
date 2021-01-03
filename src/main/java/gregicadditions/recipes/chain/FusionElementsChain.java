@@ -151,5 +151,33 @@ public class FusionElementsChain {
                 .fluidInputs(HotMetastableOganesson.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingotHot, MetastableOganesson))
                 .buildAndRegister();
+        
+                BLAST_RECIPES.recipeBuilder().duration(350).EUt(320000).blastFurnaceTemp(3000)
+                .input(dust,Hafnium)
+                .input(dust,Graphite)
+                .outputs(HafniumCarbide.getItemStack(2))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(260).EUt(470000).blastFurnaceTemp(2500)
+                .input(dust,Tantalum)
+                .input(dust,Graphite)
+                .outputs(TantalumCarbide.getItemStack(2))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(280).EUt(135000).blastFurnaceTemp(3000)
+                .inputs(SodiumSeaborgate.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .input(dust,Carbon)
+                .outputs(SeaborgiumCarbide.getItemStack())
+                .outputs(OreDictUnifier.get(dust,Salt,2))
+                .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(340).EUt(118000).blastFurnaceTemp(6200)
+                .inputs(TantalumCarbide.getItemStack(12))
+                .inputs(HafniumCarbide.getItemStack(3))
+                .inputs(SeaborgiumCarbide.getItemStack())
+                .outputs(OreDictUnifier.get(ingotHot,TantalumHafniumSeaborgiumCarbide,16))
+                .buildAndRegister();
     }
 }
