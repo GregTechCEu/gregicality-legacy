@@ -8,7 +8,6 @@ import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
-import gregtech.common.items.MetaItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -85,9 +84,11 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     int badluck;
 
     protected final int costs;
+    protected final int chunkRaduis;
 
-    public BehaviourDetravToolElectricProPick(int costs) {
+    public BehaviourDetravToolElectricProPick(int costs, int chunkRaduis) {
         this.costs = costs;
+        this.chunkRaduis = chunkRaduis;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -120,10 +121,10 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
 
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
-        WidgetOreList widgetItemFluidList = new WidgetOreList(280, 32, 100, 13);
+        WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRaduis + 30, 32, 100, Math.max(((32 * chunkRaduis) / 18) - 1, 1));
         return ModularUI.builder(
-                GuiTextures.BOXED_BACKGROUND, 450, 300).label(15, 15, "Prospecting Tool (Unlocalized)", Color.WHITE.getRGB())
-                .widget(new WidgetProspectingMap(30, 30, 8, playerInventoryHolder, widgetItemFluidList))
+                GuiTextures.BOXED_BACKGROUND, 32 * chunkRaduis + 220, 32 * chunkRaduis + 30).label(15, 15, "Prospecting Tool (Unlocalized)", Color.WHITE.getRGB())
+                .widget(new WidgetProspectingMap(30, 32, chunkRaduis, playerInventoryHolder, widgetItemFluidList))
                 .widget(widgetItemFluidList)
                 .build(playerInventoryHolder, entityPlayer);
     }

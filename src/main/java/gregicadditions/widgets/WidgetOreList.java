@@ -1,6 +1,5 @@
 package gregicadditions.widgets;
 
-import gregicadditions.gui.textures.ProspectingTexture;
 import gregicadditions.network.ProspectingPacket;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.IRenderContext;
@@ -9,7 +8,6 @@ import gregtech.api.gui.widgets.*;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.util.RenderUtil;
 import gregtech.api.util.Size;
-import gregtech.common.MetaFluids;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -39,10 +37,10 @@ public class WidgetOreList extends ScrollableListWidget {
         if (packet.ores != null) {
             switch (packet.pType) {
                 case 0:
-                    packet.ores.forEach(orePrefix-> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
+                    packet.ores.forEach(orePrefix -> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
                     break;
                 case 1:
-                    packet.ores.forEach(orePrefix-> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix),1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
+                    packet.ores.forEach(orePrefix -> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix), 1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
                     break;
                 default:
                     break;
@@ -121,7 +119,7 @@ public class WidgetOreList extends ScrollableListWidget {
 
             });
             super.drawInBackground(mouseX, mouseY, context);
-            Gui.drawRect(selected.getPosition().x, selected.getPosition().y, selected.getPosition().x + this.getSize().width-this.scrollPaneWidth, selected.getPosition().y + selected.getSize().height, new Color(0x4BFFFFFF, true).getRGB());
+            Gui.drawRect(selected.getPosition().x, selected.getPosition().y, selected.getPosition().x + this.getSize().width - this.scrollPaneWidth, selected.getPosition().y + selected.getSize().height, new Color(0x4BFFFFFF, true).getRGB());
         });
     }
 

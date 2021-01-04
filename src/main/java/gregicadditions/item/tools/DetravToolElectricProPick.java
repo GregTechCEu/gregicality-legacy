@@ -28,7 +28,7 @@ public class DetravToolElectricProPick extends ToolBase {
 
     @Override
     public void onStatsAddedToTool(MetaItem.MetaValueItem metaValueItem) {
-        metaValueItem.addComponents(new BehaviourDetravToolElectricProPick(1));
+        metaValueItem.addComponents(new BehaviourDetravToolElectricProPick(1, tier));
     }
 
 }
