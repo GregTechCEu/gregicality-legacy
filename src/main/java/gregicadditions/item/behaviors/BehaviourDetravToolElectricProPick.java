@@ -18,11 +18,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 import java.awt.*;
-import java.util.HashMap;
 
-/**
- * Created by wital_000 on 19.03.2016.
- */
 public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemUIFactory {
 
     public static BehaviourDetravToolElectricProPick getInstanceFor(ItemStack itemStack) {
@@ -53,35 +49,6 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     protected NBTTagCompound getOrCreatePartStatsTag(ItemStack itemStack) {
         return itemStack.getOrCreateSubCompound("GT.Detrav");
     }
-
-    static final String[] foundTexts = new String[]{
-            "Found nothing of interest",        //0
-            " traces.",                 //1-9
-            " small sample.",         //10-29
-            " medium sample.",        //30-59
-            " large sample.",         //60-99
-            " very large sample.",    //100-**
-            "Found "
-    };
-
-    static final String[] DISTANCETEXTS = new String[]{
-            " next to you,",     // 0 chunks away
-            " close to you,",    // 1-2 chunks aways
-            " at medium range,", // 3 - 5 chunks away
-            " at long range,",   // 6 -8 chunks away
-            " far away,",        // 9 + chunks away
-    };
-
-    static final int[] DISTANCEINTS = new int[]{
-            0,
-            4,
-            25,
-            64,
-    };
-    int distTextIndex;
-
-    HashMap<String, Integer> ores;
-    int badluck;
 
     protected final int costs;
     protected final int chunkRaduis;

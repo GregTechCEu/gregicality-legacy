@@ -1,15 +1,9 @@
 package gregicadditions.gui.textures;
 
-import forestry.core.fluids.BlockForestryFluid;
 import gregicadditions.network.ProspectingPacket;
 import gregtech.api.gui.resources.RenderUtil;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
-import gregtech.common.MetaFluids;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.AbstractTexture;
@@ -19,16 +13,13 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.tconstruct.library.fluid.FluidColored;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.Objects;
 
-/**
- * Created by wital_000 on 21.03.2016.
- */
+
 public class ProspectingTexture extends AbstractTexture {
 
     private final ProspectingPacket packet;
