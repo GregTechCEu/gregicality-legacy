@@ -1,17 +1,14 @@
 package gregicadditions.item.behaviors;
 
-import gregicadditions.machines.multi.miner.Miner;
-import gregicadditions.network.DetravProPickPacket00;
+import gregicadditions.widgets.WidgetOreList;
 import gregicadditions.widgets.WidgetProspectingMap;
-import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
-import gregtech.api.unification.OreDictUnifier;
-import net.minecraft.block.Block;
+import gregtech.common.items.MetaItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,11 +17,9 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
-import java.util.ArrayList;
+import java.awt.*;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by wital_000 on 19.03.2016.
@@ -117,58 +112,6 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
                 behavior.setToolGTDetravData(itemStack, data);
                 return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
             }
-
-
-            //aPlayer.openGui();
-            //aWorld.getChunkFromBlockCoords()
-            int cX = ((int) player.posX) >> 4;
-            int cZ = ((int) player.posZ) >> 4;
-//            int size = aItem.getHarvestLevel(aStack, "") + 1;
-            int size = 4;
-            List<Chunk> chunks = new ArrayList<Chunk>();
-            //aPlayer.addChatMessage(new ChatComponentText("Scanning Begin, wait!"));
-            //DetravProPickPacket00 packet = new DetravProPickPacket00();
-            for (int i = -size; i <= size; i++)
-                for (int j = -size; j <= size; j++)
-                    if (i != -size && i != size && j != -size && j != size)
-                        chunks.add(world.getChunk(cX + i, cZ + j));
-            size = size - 1;
-            //c.gene
-            DetravProPickPacket00 packet = new DetravProPickPacket00();
-            packet.ptype = (int) data;
-            packet.chunkX = cX;
-            packet.chunkZ = cZ;
-            packet.size = size;
-            for (Chunk c : chunks) {
-                for (int x = 0; x < 16; x++)
-                    for (int z = 0; z < 16; z++) {
-                        int ySize = c.getHeightValue(x, z);//(int)aPlayer.posY;//c.getHeightValue(x, z);
-                        for (int y = 1; y < ySize; y++) {
-                            switch (data) {
-                                case 0:
-                                    Block block = c.getBlockState(x, y, z).getBlock();
-                                    if (Miner.isOre(block)) {
-                                        packet.addBlock(c.x * 16 + x, y, c.z * 16 + z, OreDictUnifier.getOreDictionaryNames(new ItemStack(block)).stream().findFirst().get());
-                                    }
-                                    break;
-                                case 1:
-                                    if ((x == 0) || (z == 0)) { //Skip doing the locations with the grid on them.
-                                        break;
-                                    }
-                                    PumpjackHandler.OilWorldInfo fStack = PumpjackHandler.getOilWorldInfo(world, c.x * 16 + x, c.z * 16 + z);
-                                    if (fStack != null) {
-                                        packet.addBlock(c.x * 16 + x, 2, c.z * 16 + z, fStack.current + "");
-                                        packet.addBlock(c.x * 16 + x, 1, c.z * 16 + z, fStack.getType().fluid);
-                                    }
-                                    break;
-
-                            }
-                            if (data > 1)
-                                break;
-                        }
-                    }
-            }
-
             PlayerInventoryHolder holder = new PlayerInventoryHolder(player, hand);
             holder.openUI();
         }
@@ -177,9 +120,11 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
 
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
+        WidgetOreList widgetItemFluidList = new WidgetOreList(280, 32, 100, 13);
         return ModularUI.builder(
-                GuiTextures.BOXED_BACKGROUND, 400, 300).label(9, 8, "Prospecting Tool (Unlocalized)")
-                .widget(new WidgetProspectingMap(10, 10, 5))
+                GuiTextures.BOXED_BACKGROUND, 450, 300).label(15, 15, "Prospecting Tool (Unlocalized)", Color.WHITE.getRGB())
+                .widget(new WidgetProspectingMap(30, 30, 8, playerInventoryHolder, widgetItemFluidList))
+                .widget(widgetItemFluidList)
                 .build(playerInventoryHolder, entityPlayer);
     }
 }

@@ -13,7 +13,6 @@ import gregicadditions.integrations.opencomputers.OpenComputersCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.network.DetravNetwork;
 import gregicadditions.network.IPSaveData;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
@@ -80,7 +79,6 @@ public class Gregicality {
     public Gregicality() {
 
         GAEnums.preInit();
-        new DetravNetwork();
 
     }
 
