@@ -6,10 +6,12 @@ import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.util.Position;
 import gregtech.api.util.RenderUtil;
 import gregtech.api.util.Size;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -37,10 +39,10 @@ public class WidgetOreList extends ScrollableListWidget {
         if (packet.ores != null) {
             switch (packet.pType) {
                 case 0:
-                    packet.ores.forEach(orePrefix -> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
+                    packet.ores.stream().sorted().forEach(orePrefix -> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
                     break;
                 case 1:
-                    packet.ores.forEach(orePrefix -> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix), 1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
+                    packet.ores.stream().sorted().forEach(orePrefix -> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix), 1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
                     break;
                 default:
                     break;
@@ -89,7 +91,14 @@ public class WidgetOreList extends ScrollableListWidget {
 
     @Override
     public boolean mouseWheelMove(int mouseX, int mouseY, int wheelDelta) {
-        return super.mouseWheelMove(mouseX - this.getPosition().x + this.gui.getGuiLeft(), mouseY, wheelDelta);
+        if (this.isMouseOverElement(mouseX - this.getPosition().x + this.gui.getGuiLeft(), mouseY, true)) {
+            int direction = -MathHelper.clamp(wheelDelta, -2, 2);
+            int moveDelta = direction * (this.slotHeight / 2);
+            addScrollOffset(moveDelta);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -105,6 +114,36 @@ public class WidgetOreList extends ScrollableListWidget {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean mouseDragged(int mouseX, int mouseY, int button, long timeDragged) {
+        int mouseDelta = (mouseY - lastMouseY) * 5;
+        this.lastMouseX = mouseX;
+        this.lastMouseY = mouseY;
+        if (draggedOnScrollBar) {
+            addScrollOffset(mouseDelta);
+            return true;
+        }
+        if (isPositionInsideScissor(mouseX, mouseY)) {
+            return super.mouseDragged(mouseX, mouseY, button, timeDragged);
+        }
+        return false;
+    }
+
+    private void addScrollOffset(int offset) {
+        this.scrollOffset = MathHelper.clamp(scrollOffset + offset, 0, totalListHeight - getSize().height);
+        onPositionUpdate();
+    }
+
+    private boolean isPositionInsideScissor(int mouseX, int mouseY) {
+        return isMouseOverElement(mouseX, mouseY) && !isOnScrollPane(mouseX, mouseY);
+    }
+
+    private boolean isOnScrollPane(int mouseX, int mouseY) {
+        Position pos = getPosition();
+        Size size = getSize();
+        return isMouseOver(pos.x + size.width - scrollPaneWidth, pos.y, scrollPaneWidth, size.height, mouseX, mouseY);
     }
 
     @Override

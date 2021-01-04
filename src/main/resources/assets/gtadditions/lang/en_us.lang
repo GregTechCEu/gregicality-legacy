@@ -515,6 +515,11 @@ metaitem.hafnium_chloride.name=Hafnium Chloride
 
 metaitem.unstable.star.name=Unstable Star
 
+metaitem.tool.prospect.mv.name=Prospecting Tool MV
+metaitem.tool.prospect.hv.name=Prospecting Tool HV
+metaitem.tool.prospect.luv.name=Prospecting Tool LuV
+metaitem.tool.prospect.zpm.name=Prospecting Tool ZPM
+
 #/////////////////////CIRCUIT///////////////////////////
 
 #//LV

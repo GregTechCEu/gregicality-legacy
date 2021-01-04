@@ -1,7 +1,6 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.tools.DetravToolElectricProPick;
 import gregicadditions.tools.BendingCylinder;
 import gregicadditions.tools.SmallBendingCylinder;
 import gregtech.api.items.toolitem.ToolMetaItem;
@@ -22,10 +21,6 @@ public class GAMetaTool extends ToolMetaItem<ToolMetaItem<?>.MetaToolValueItem> 
 	public void registerSubItems() {
 		GAMetaItems.BENDING_CYLINDER = addItem(0, "tool.bending_cylinder").setToolStats(new BendingCylinder()).addOreDict("craftingToolBendingCylinder");
 		GAMetaItems.SMALL_BENDING_CYLINDER = addItem(1, "tool.bending_cylinder_small").setToolStats(new SmallBendingCylinder()).addOreDict("craftingToolBendingCylinderSmall");
-		GAMetaItems.PROSPECT_TOOL_MV = addItem(2, "tool.prospect").setToolStats(new DetravToolElectricProPick(2));
-		GAMetaItems.PROSPECT_TOOL_HV = addItem(3, "tool.prospect").setToolStats(new DetravToolElectricProPick(3));
-		GAMetaItems.PROSPECT_TOOL_LuV = addItem(4, "tool.prospect").setToolStats(new DetravToolElectricProPick(6));
-		GAMetaItems.PROSPECT_TOOL_ZPM = addItem(5, "tool.prospect").setToolStats(new DetravToolElectricProPick(7));
 	}
 
 	public void registerRecipes() {

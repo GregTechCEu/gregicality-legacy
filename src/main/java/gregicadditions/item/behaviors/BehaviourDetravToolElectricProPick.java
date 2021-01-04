@@ -86,9 +86,9 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     protected final int costs;
     protected final int chunkRaduis;
 
-    public BehaviourDetravToolElectricProPick(int costs, int chunkRaduis) {
-        this.costs = costs;
-        this.chunkRaduis = chunkRaduis;
+    public BehaviourDetravToolElectricProPick(int tier) {
+        this.costs = tier * 2;
+        this.chunkRaduis = tier;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
