@@ -12,13 +12,12 @@ import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.common.items.MetaItems.*;
-import static gregicadditions.item.GAMetaItems.*;
 
 public class FusionComponents {
     public static void init() {

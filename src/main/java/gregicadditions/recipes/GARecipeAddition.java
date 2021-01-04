@@ -12,7 +12,6 @@ import gregicadditions.item.components.*;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.chain.*;
 import gregicadditions.recipes.chain.wetware.*;
-import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.CountableIngredient;
@@ -1217,13 +1216,18 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(230).EUt(480).input(pipeLarge, Steel).input(ring, Steel).fluidInputs(SolderingAlloy.getFluid(288)).outputs(WELL_PIPE.getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(480).inputs(ELECTRIC_MOTOR_EV.getStackForm()).inputs(ELECTRIC_PUMP_EV.getStackForm()).input(stickLong, Steel, 6).input(plate, Steel, 2).input(toolHeadDrill, Steel).outputs(RIG_DRILL.getStackForm()).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(220).EUt(64).input(dust, Barite).fluidInputs(Water.getFluid(1000)).fluidOutputs(BariumSulfateSolution.getFluid(1000)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64).input(dust,Calcite).fluidInputs(Water.getFluid(1000)).fluidOutputs(CalciumCarbonateSolution.getFluid(1000)).buildAndRegister();
-        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64).input(dust,Bentonite).input(dust,Clay).fluidInputs(Water.getFluid(2000)).fluidOutputs(BariumSulfateSolution.getFluid(2000)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64).input(dust, Calcite).fluidInputs(Water.getFluid(1000)).fluidOutputs(CalciumCarbonateSolution.getFluid(1000)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64).input(dust, Bentonite).input(dust, Clay).fluidInputs(Water.getFluid(2000)).fluidOutputs(BariumSulfateSolution.getFluid(2000)).buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480).fluidInputs(BariumSulfateSolution.getFluid(1000)).fluidInputs(CalciumCarbonateSolution.getFluid(1000)).fluidInputs(BentoniteClaySlurry.getFluid(1000)).fluidInputs(Lubricant.getFluid(1000)).fluidInputs(ATL.getFluid(1000)).fluidInputs(EthyleneGlycol.getFluid(1000)).fluidOutputs(DrillingMud.getFluid(6000)).buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder().duration(240).EUt(480).fluidInputs(UsedDrillingMud.getFluid(1000)).fluidOutputs(DrillingMud.getFluid(950)).outputs(new ItemStack(Blocks.GRAVEL)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192).input(circuit, Tier.Infinite, 2).inputs(OreDictUnifier.get(gear, AbyssalAlloy, 8), OreDictUnifier.get(plate, AbyssalAlloy, 8), OreDictUnifier.get(cableGtSingle, TungstenTitaniumCarbide, 16), GATileEntities.GA_HULLS[0].getStackForm()).fluidInputs(Naquadria.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.TIERED_HULL_UHV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192).input(circuit, UEV, 2).inputs(OreDictUnifier.get(gear, TitanSteel, 8), OreDictUnifier.get(plate, TitanSteel, 8), OreDictUnifier.get(cableGtSingle, Pikyonium, 16), GATileEntities.GA_HULLS[1].getStackForm()).fluidInputs(Naquadria.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.TIERED_HULL_UEV, 1)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192).input(circuit, UIV, 2).inputs(OreDictUnifier.get(gear, BlackTitanium, 8), OreDictUnifier.get(plate, BlackTitanium, 8), OreDictUnifier.get(cableGtSingle, Cinobite, 16)).inputs(GATileEntities.GA_HULLS[2].getStackForm()).fluidInputs(Naquadria.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.TIERED_HULL_UIV, 1)).buildAndRegister();
+
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Ethylene.getFluid(1000), Benzene.getFluid(1000)).fluidOutputs(Hydrogen.getFluid(2000), Styrene.getFluid(1000)).buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Materials.Ammonia.getFluid(1000), Materials.Methanol.getFluid(2000)).fluidOutputs(Materials.Water.getFluid(2000), Materials.Dimethylamine.getFluid(1000)).buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Materials.HypochlorousAcid.getFluid(1000), Materials.Ammonia.getFluid(1000)).fluidOutputs(Materials.Water.getFluid(1000), Materials.Chloramine.getFluid(1000)).buildAndRegister();
 
 
     }

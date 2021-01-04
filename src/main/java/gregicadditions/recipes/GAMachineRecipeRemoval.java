@@ -6,6 +6,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.MarkerMaterials.Color;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
@@ -97,6 +98,11 @@ public class GAMachineRecipeRemoval {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:primitive_circuit"));
             removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(plate, Plastic, 2), MetaItems.DATA_CONTROL_CIRCUIT_IV.getStackForm()}, new FluidStack[]{material.getFluid(72 * multiplier)});
         }
+
+
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Materials.HypochlorousAcid.getFluid(1000), Materials.Ammonia.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Materials.Ammonia.getFluid(1000), Materials.Methanol.getFluid(2000));
+        removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, Materials.Ethylene.getFluid(1000), Materials.Benzene.getFluid(1000));
         //Circuit Rabbit Hole-Related Recipe Removal
         removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Silicon)}, new FluidStack[]{Epichlorhydrin.getFluid(144)});
 

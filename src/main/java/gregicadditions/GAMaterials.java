@@ -1230,7 +1230,7 @@ public class GAMaterials implements IMaterialHandler {
         Polycaprolactam.addFlag(GENERATE_FOIL);
         Polystyrene.addFlag(GENERATE_FOIL);
         Plastic.addFlag(GENERATE_FOIL);
-        Cupronickel.addFlag(GENERATE_FINE_WIRE)
+        Cupronickel.addFlag(GENERATE_FINE_WIRE);
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
         Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
@@ -1246,7 +1246,7 @@ public class GAMaterials implements IMaterialHandler {
         Molybdenum.addFlag(GENERATE_BOLT_SCREW);
         Neodymium.addFlag(GENERATE_BOLT_SCREW);
 
-        BorosiilicateGlass.addFlag(GENERATE_PLATE);
+        BorosilicateGlass.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);
         Iron.addFlag(GENERATE_METAL_CASING);
