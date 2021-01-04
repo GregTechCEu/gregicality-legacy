@@ -14,21 +14,32 @@ public class ProspectingPacket {
     public int radius;
     public int pType;
     public int level = -1;
-    public HashMap<Byte, String>[][] map = null;
-    public Set<String> ores = null;
+    public HashMap<Byte, String>[][] map;
+    public Set<String> ores;
+
+    public ProspectingPacket(int chunkX, int chunkZ, int posX, int posZ, int radius, int pType) {
+        this.chunkX = chunkX;
+        this.chunkZ = chunkZ;
+        this.posX = posX;
+        this.posZ = posZ;
+        this.radius = radius;
+        this.pType = pType;
+        if (pType == 1)
+            map = new HashMap[(radius * 2 + 1)][(radius * 2 + 1)];
+        else
+            map = new HashMap[(radius * 2 + 1) * 16][(radius * 2 + 1) * 16];
+
+        ores = new HashSet<>();
+    }
 
     public static ProspectingPacket readPacketData(PacketBuffer buffer) {
-        ProspectingPacket packet = new ProspectingPacket();
-        packet.pType = buffer.readInt();
+        ProspectingPacket packet = new ProspectingPacket(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt());
         packet.level = buffer.readInt();
-        packet.chunkX = buffer.readInt();
-        packet.chunkZ = buffer.readInt();
-        packet.posX = buffer.readInt();
-        packet.posZ = buffer.readInt();
-        packet.radius = buffer.readInt();
-        packet.map = new HashMap[(packet.radius * 2 + 1) * 16][(packet.radius * 2 + 1) * 16];
-        packet.ores = new HashSet<>();
-        int aSize = (packet.radius * 2 + 1) * 16;
+        int aSize = 0;
+        if (packet.pType == 0)
+            aSize = (packet.radius * 2 + 1) * 16;
+        else if (packet.pType == 1)
+            aSize = (packet.radius * 2 + 1);
         int checkOut = 0;
         for (int i = 0; i < aSize; i++)
             for (int j = 0; j < aSize; j++) {
@@ -45,19 +56,25 @@ public class ProspectingPacket {
                 }
             }
         int checkOut2 = buffer.readInt();
-        if (checkOut != checkOut2) return new ProspectingPacket();
+        if (checkOut != checkOut2) {
+            return null;
+        }
         return packet;
     }
 
     public void writePacketData(PacketBuffer buffer) {
-        buffer.writeInt(pType);
-        buffer.writeInt(level);
         buffer.writeInt(chunkX);
         buffer.writeInt(chunkZ);
         buffer.writeInt(posX);
         buffer.writeInt(posZ);
         buffer.writeInt(radius);
-        int aSize = (radius * 2 + 1) * 16;
+        buffer.writeInt(pType);
+        buffer.writeInt(level);
+        int aSize = 0;
+        if (pType == 0)
+            aSize = (radius * 2 + 1) * 16;
+        else if (pType == 1)
+            aSize = (radius * 2 + 1);
         int checkOut = 0;
         for (int i = 0; i < aSize; i++)
             for (int j = 0; j < aSize; j++) {
@@ -76,17 +93,23 @@ public class ProspectingPacket {
     }
 
     public void addBlock(int x, int y, int z, String orePrefix) {
-        if (map == null)
-            map = new HashMap[(radius * 2 + 1) * 16][(radius * 2 + 1) * 16];
-        if (ores == null)
-            ores = new HashSet<>();
-        int aX = x - (chunkX - radius) * 16;
-        int aZ = z - (chunkZ - radius) * 16;
-        if (map[aX][aZ] == null)
-            map[aX][aZ] = new HashMap<>();
-        map[aX][aZ].put((byte) y, orePrefix);
-        if (pType != 1 || y == 1)
+        if (pType == 0) {
+            int aX = x - (chunkX - radius) * 16;
+            int aZ = z - (chunkZ - radius) * 16;
+            if (map[aX][aZ] == null)
+                map[aX][aZ] = new HashMap<>();
+            map[aX][aZ].put((byte) y, orePrefix);
             ores.add(orePrefix);
+        } else if (pType == 1) {
+            int aX = x - (chunkX - radius);
+            int aZ = z - (chunkZ - radius);
+            if (map[aX][aZ] == null)
+                map[aX][aZ] = new HashMap<>();
+            map[aX][aZ].put((byte) y, orePrefix);
+            if (y == 1) {
+                ores.add(orePrefix);
+            }
+        }
     }
 
     public int getSize() {

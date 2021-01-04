@@ -12,6 +12,7 @@ import gregtech.api.util.Size;
 import gregtech.common.MetaFluids;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
@@ -41,9 +42,7 @@ public class WidgetOreList extends ScrollableListWidget {
                     packet.ores.forEach(orePrefix-> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
                     break;
                 case 1:
-                    packet.ores.forEach(orePrefix-> {
-                            addOil(new FluidStack(FluidRegistry.getFluid(orePrefix),1000), ProspectingTexture.getFluidColor(FluidRegistry.getFluid(orePrefix)));
-                    });
+                    packet.ores.forEach(orePrefix-> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix),1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
                     break;
                 default:
                     break;
@@ -64,13 +63,13 @@ public class WidgetOreList extends ScrollableListWidget {
     }
 
     private void addOil(FluidStack fluidStack, int color) {
-        FluidTank fluidTank = new FluidTank(1000);
+        FluidTank fluidTank = new FluidTank(1);
         fluidTank.setCanFill(false);
         fluidTank.fillInternal(fluidStack, true);
         WidgetGroup widgetGroup = new WidgetGroup();
         widgetGroup.addWidget(new TankWidget(fluidTank, 0, 0, 18, 18)
                 .setAlwaysShowFull(true)
-                //.setHideTooltip(true)
+                .setHideTooltip(true)
                 .setContainerClicking(false, false));
         widgetGroup.addWidget(new LabelWidget(20, 5, fluidStack.getLocalizedName(), color));
         widgetMap.put(widgetGroup, fluidStack.getLocalizedName());
@@ -84,16 +83,21 @@ public class WidgetOreList extends ScrollableListWidget {
         widgetMap.clear();
         WidgetGroup widgetGroup = new WidgetGroup();
         widgetGroup.addWidget(new ImageWidget(0, 0, 18, 18, GuiTextures.LOCK));
-        widgetGroup.addWidget(new LabelWidget(20, 9, "All Ore / Oil"));
+        widgetGroup.addWidget(new LabelWidget(20, 9, "All Resources"));
         selected = widgetGroup;
         widgetMap.put(widgetGroup, "all");
         this.addWidget(widgetGroup);
     }
 
     @Override
+    public boolean mouseWheelMove(int mouseX, int mouseY, int wheelDelta) {
+        return super.mouseWheelMove(mouseX - this.getPosition().x + this.gui.getGuiLeft(), mouseY, wheelDelta);
+    }
+
+    @Override
     public boolean mouseClicked(int mouseX, int mouseY, int button) {
         boolean result = super.mouseClicked(mouseX, mouseY, button);
-        if (!result && mouseY >= this.getPosition().y - 9 && mouseY <= this.getPosition().y + this.getSize().height - 9) {
+        if (!result && mouseY >= this.getPosition().y && mouseY <= this.getPosition().y + this.getSize().height) {
             Widget widget = this.widgets.stream().filter(it -> it.isMouseOverElement(mouseX, mouseY)).findFirst().orElse(null);
             if (widget instanceof WidgetGroup) {
                 this.selected = (WidgetGroup) widget;
@@ -121,5 +125,12 @@ public class WidgetOreList extends ScrollableListWidget {
         });
     }
 
+    public static int getFluidColor(Fluid fluid) {
+        if (fluid == FluidRegistry.WATER) {
+            return 3183823;
+        } else {
+            return fluid == FluidRegistry.LAVA ? 16766720 : fluid.getColor();
+        }
+    }
 
 }

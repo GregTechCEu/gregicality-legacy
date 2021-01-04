@@ -62,41 +62,35 @@ public class WidgetProspectingMap extends Widget {
                 for (int j = -chunkRadius; j <= chunkRadius; j++)
                     if (i != -chunkRadius && i != chunkRadius && j != -chunkRadius && j != chunkRadius)
                         chunks.add(world.getChunk(cX + i, cZ + j));
-            ProspectingPacket packet = new ProspectingPacket();
-            packet.pType = data;
-            packet.chunkX = cX;
-            packet.chunkZ = cZ;
-            packet.posX = (int) player.posX;
-            packet.posZ = (int) player.posZ;
-            packet.radius = chunkRadius - 1;
+            ProspectingPacket packet = new ProspectingPacket(cX, cZ, (int) player.posX, (int) player.posZ, chunkRadius - 1, data);
             if (data > 1) return;
             for (Chunk c : chunks) {
-                for (int x = 0; x < 16; x++)
-                    for (int z = 0; z < 16; z++) {
-                        switch (data) {
-                            case 0:
+                switch (data) {
+                    case 0:
+                        for (int x = 0; x < 16; x++) {
+                            for (int z = 0; z < 16; z++) {
                                 int ySize = c.getHeightValue(x, z);
                                 for (int y = 1; y < ySize; y++) {
                                     Block block = c.getBlockState(x, y, z).getBlock();
                                     if (Miner.isOre(block)) {
-                                        packet.addBlock(c.x * 16 + x, y, c.z * 16 + z, OreDictUnifier.getOreDictionaryNames(new ItemStack(block)).stream().findFirst().get());
+                                        packet.addBlock(c.x * 16 + x, y, c.z * 16 + z,
+                                                OreDictUnifier.getOreDictionaryNames(new ItemStack(block)).stream()
+                                                        .findFirst().get());
                                     }
                                 }
-                                break;
-                            case 1:
-                                if ((x == 0) || (z == 0)) { //Skip doing the locations with the grid on them.
-                                    break;
-                                }
-                                PumpjackHandler.OilWorldInfo fStack = PumpjackHandler.getOilWorldInfo(world, c.x, c.z);
-                                if (fStack != null && fStack.getType() != null) {
-                                    packet.addBlock(c.x * 16 + x, 2, c.z * 16 + z, fStack.current + "");
-                                    packet.addBlock(c.x * 16 + x, 1, c.z * 16 + z, fStack.getType().fluid);
-                                }
-                                break;
-                            default:
-                                break;
+                            }
                         }
-                    }
+                        break;
+                    case 1:
+                        PumpjackHandler.OilWorldInfo fStack = PumpjackHandler.getOilWorldInfo(world, c.x, c.z);
+                        if (fStack != null && fStack.getType() != null) {
+                            packet.addBlock(c.x, 2, c.z, fStack.current + "");
+                            packet.addBlock(c.x, 1, c.z, fStack.getType().fluid);
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             writeUpdateInfo(2, packet::writePacketData);
             if (oreList != null) {

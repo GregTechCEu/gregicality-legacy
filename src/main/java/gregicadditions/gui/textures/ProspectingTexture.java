@@ -2,6 +2,7 @@ package gregicadditions.gui.textures;
 
 import forestry.core.fluids.BlockForestryFluid;
 import gregicadditions.network.ProspectingPacket;
+import gregtech.api.gui.resources.RenderUtil;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
@@ -47,33 +48,19 @@ public class ProspectingTexture extends AbstractTexture {
         int playerI = packet.posX - (packet.chunkX - packet.radius) * 16 - 1; // Correct player offset
         int playerJ = packet.posZ - (packet.chunkZ - packet.radius) * 16 - 1;
 
-        for (int i = 0; i < wh; i++)
+        for (int i = 0; i < wh; i++){
             for (int j = 0; j < wh; j++) {
                 // draw bg
                 image.setRGB(i, j, Color.WHITE.getRGB());
                 //draw ore
-                if (packet.map[i][j] != null) {
-                    switch (packet.pType) {
-                        case 0:
-                            for (String orePrefix : packet.map[i][j].values()) {
-                                Material material = Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material;
-                                String name = OreDictUnifier.get(orePrefix).getDisplayName();
-                                if (selected.equals("all") || selected.equals(name)) {
-                                    image.setRGB(i, j, material.materialRGB | 0XFF000000);
-                                }
-                            }
-                            break;
-                        case 1:
-                            Fluid fluid = FluidRegistry.getFluid(packet.map[i][j].get((byte) 1));
-                            String name = fluid.getLocalizedName(new FluidStack(fluid, 0));
-                            if (selected.equals("all") || selected.equals(name)) {
-                                if ((((i % 16) + (j % 16) * 16) * 3) < (Integer.parseInt(packet.map[i][j].get((byte) 2)) + 48)) { // draw an indicator in the chunk about how large the field is at this chunk.
-                                    image.setRGB(i, j, getFluidColor(fluid) | 0XFF000000);
-                                }
-                            }
-                            break;
-                        default:
-                            break;
+                if (packet.pType == 0 && packet.map[i][j] != null) {
+                    for (String orePrefix : packet.map[i][j].values()) {
+                        Material material = Objects.requireNonNull(
+                                OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material;
+                        String name = OreDictUnifier.get(orePrefix).getDisplayName();
+                        if (selected.equals("all") || selected.equals(name)) {
+                            image.setRGB(i, j, material.materialRGB | 0XFF000000);
+                        }
                     }
                 }
                 // draw player pos
@@ -89,6 +76,7 @@ public class ProspectingTexture extends AbstractTexture {
                     raster.setSample(i, j, 2, raster.getSample(i, j, 2) / 2);
                 }
             }
+        }
         return image;
     }
 
@@ -110,24 +98,25 @@ public class ProspectingTexture extends AbstractTexture {
     }
 
     public void draw(int x, int y) {
-        GlStateManager.bindTexture(this.getGlTextureId());
-        Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
-    }
-
-    public static int getFluidColor(Fluid fluid){
-        if (fluid.getName().equals("water"))
-            return Materials.Water.materialRGB;
-        if (fluid.getName().equals("lava"))
-            return Materials.Lava.materialRGB;
-        if (MetaFluids.getMaterialFromFluid(fluid) != null)
-            return MetaFluids.getMaterialFromFluid(fluid).materialRGB;
-        if (fluid instanceof FluidColored)
-            return ((FluidColored) fluid).color;
-        if (fluid.getBlock() instanceof BlockForestryFluid)
-            return ((BlockForestryFluid) fluid.getBlock()).getColor().getRGB();
-        if (fluid.getColor() == -1)
-            return fluid.hashCode() | 0XFF000000;
-        return fluid.getColor();
+        if (packet != null) {
+            GlStateManager.bindTexture(this.getGlTextureId());
+            Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            if(packet.pType == 1) { // draw fluids in grid
+                for (int cx = 0; cx < packet.radius * 2 + 1; cx++){
+                    for (int cz = 0; cz < packet.radius * 2 + 1; cz++){
+                        if (packet.map[cx][cz] != null) {
+                            Fluid fluid = FluidRegistry.getFluid(packet.map[cx][cz].get((byte) 1));
+                            String name = fluid.getLocalizedName(new FluidStack(fluid, 0));
+                            if (selected.equals("all") || selected.equals(name)) {
+                                //if ((cx + cz * 3) < (Integer.parseInt(packet.map[cx][cz].get((byte) 2)) + 48)) { // draw an indicator in the chunk about how large the field is at this chunk.
+                                RenderUtil.drawFluidForGui(new FluidStack(fluid, 1), 1, x + cx * 16 + 1, y + cz * 16 + 1, 16, 16);
+                                //}
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
