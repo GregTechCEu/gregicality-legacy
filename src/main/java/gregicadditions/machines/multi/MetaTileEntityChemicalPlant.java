@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.*;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
@@ -35,7 +36,7 @@ import java.util.function.Predicate;
 import static gregtech.api.unification.material.Materials.Steel;
 
 
-public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
+public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController {
 
     public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
             GAMultiblockCasing.CasingType.TIERED_HULL_LV,

@@ -2,9 +2,11 @@ package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
 
-import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.item.GAMetaItems.NANOTOME;
+import static gregicadditions.item.GAMetaItems.PIEZOELECTRIC_CRYSTAL;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;

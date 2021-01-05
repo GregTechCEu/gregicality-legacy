@@ -1,12 +1,12 @@
 package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
@@ -19,7 +19,7 @@ import static gregicadditions.recipes.GARecipeMaps.GAS_CENTRIFUGE_RECIPES;
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 import static gregtech.api.unification.material.Materials.Steel;
 
-public class MetaTileEntityGasCentrifuge extends RecipeMapMultiblockController {
+public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS};
 

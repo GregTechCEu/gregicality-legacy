@@ -1,12 +1,12 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
@@ -22,7 +22,7 @@ import java.util.List;
 import static gregicadditions.GAMaterials.Staballoy;
 import static gregicadditions.GAMaterials.ZirconiumCarbide;
 
-public class TileEntityAlloyBlastFurnace extends RecipeMapMultiblockController {
+public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,

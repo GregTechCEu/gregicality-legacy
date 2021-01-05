@@ -100,7 +100,7 @@ public class PEEKChain {
                 .duration(250)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Propylene.getFluid(1000))
+                .fluidInputs(Propene.getFluid(1000))
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Acetone.getFluid(1000))

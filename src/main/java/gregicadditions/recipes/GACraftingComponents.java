@@ -162,7 +162,7 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtSingle, BlackTitanium);
                 case 12:
                 case 13:
-                    return new UnificationEntry(cableGtSingle, Duranium);
+                    return new UnificationEntry(cableGtSingle, Neutronium);
                 case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
@@ -199,7 +199,7 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtDouble, BlackTitanium);
                 case 12:
                 case 13:
-                    return new UnificationEntry(cableGtDouble, Duranium);
+                    return new UnificationEntry(cableGtDouble, Neutronium);
                 case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
@@ -236,7 +236,7 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtQuadruple, BlackTitanium);
                 case 12:
                 case 13:
-                    return new UnificationEntry(cableGtQuadruple, Duranium);
+                    return new UnificationEntry(cableGtQuadruple, Neutronium);
                 case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
@@ -273,7 +273,7 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtOctal, BlackTitanium);
                 case 12:
                 case 13:
-                    return new UnificationEntry(cableGtOctal, Duranium);
+                    return new UnificationEntry(cableGtOctal, Neutronium);
                 case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
@@ -311,7 +311,7 @@ public enum GACraftingComponents {
                     return new UnificationEntry(cableGtHex, BlackTitanium);
                 case 12:
                 case 13:
-                    return new UnificationEntry(cableGtHex, Duranium);
+                    return new UnificationEntry(cableGtHex, Neutronium);
                 case 14:
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);

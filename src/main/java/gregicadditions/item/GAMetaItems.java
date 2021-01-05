@@ -282,6 +282,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem PIEZOELECTRIC_CRYSTAL;
     public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
     public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
+    public static MetaItem<?>.MetaValueItem SHEWANELLA_CULTURE;
+    public static MetaItem<?>.MetaValueItem STREPTOCOCCUS_CULTURE;
+    public static MetaItem<?>.MetaValueItem ESCHERICHIA_CULTURE;
+    public static MetaItem<?>.MetaValueItem BIFIDOBACTERIUM_CULTURE;
+    public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
 
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;

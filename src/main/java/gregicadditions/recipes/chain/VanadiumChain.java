@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
 
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;

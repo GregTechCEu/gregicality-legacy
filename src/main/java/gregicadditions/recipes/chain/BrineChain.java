@@ -3,8 +3,8 @@ package gregicadditions.recipes.chain;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAEnums.GAOrePrefix.dioxide;
-import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -145,22 +145,22 @@ public class BrineChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(DebrominatedWater.getFluid(1000))
-                .fluidOutputs(Brine.getFluid(60))
+                .fluidOutputs(Brine.getFluid(85))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(SaltWater.getFluid(1000))
-                .fluidOutputs(Brine.getFluid(60))
+                .fluidOutputs(Brine.getFluid(85))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(SeaWater.getFluid(1000))
-                .fluidOutputs(Brine.getFluid(60))
+                .fluidOutputs(Brine.getFluid(85))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(80).EUt(400)
                 .fluidInputs(Brine.getFluid(1000))
-                .fluidOutputs(ConcentratedBrine.getFluid(900))
+                .fluidOutputs(ConcentratedBrine.getFluid(945))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
@@ -337,6 +337,53 @@ public class BrineChain {
                 .fluidOutputs(BoricAcid.getFluid(1000))
                 .fluidOutputs(SodiumSulfateSolution.getFluid(1000))
                 .chancedOutput(BORON_RETAINING_YARN.getStackForm(), 9000, 0)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(500)
+                .input(dust, SodiumHydroxide, 1)
+                .fluidInputs(BoricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Borax, 11))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(340).EUt(1800).blastFurnaceTemp(750)
+                .notConsumable(dust, Boron)
+                .fluidInputs(BoricAcid.getFluid(2000))
+                .fluidOutputs(Water.getFluid(3000))
+                .outputs(BoronOxide.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1600)
+                .inputs(BoronOxide.getItemStack())
+                .fluidInputs(HydrofluoricAcid.getFluid(6000))
+                .fluidOutputs(Water.getFluid(3000))
+                .fluidOutputs(BoronFluoride.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(1300)
+                .fluidInputs(BoronFluoride.getFluid(4000))
+                .inputs(LithiumAluminiumHydride.getItemStack(3))
+                .fluidOutputs(Diborane.getFluid(2000))
+                .outputs(LithiumAluminiumFluoride.getItemStack(3))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(250).EUt(1200).blastFurnaceTemp(3400)
+                .inputs(LithiumAluminiumFluoride.getItemStack())
+                .outputs(AluminiumTrifluoride.getItemStack())
+                .outputs(OreDictUnifier.get(dust, LithiumFluoride))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(1750)
+                .inputs(AluminiumTrifluoride.getItemStack(2))
+                .fluidInputs(Water.getFluid(3000))
+                .outputs(Alumina.getItemStack())
+                .fluidOutputs(HydrofluoricAcid.getFluid(6000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(250).EUt(2000).blastFurnaceTemp(600)
+                .input(dust, Boron)
+                .fluidInputs(Diborane.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Boron, 3))
+                .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(300)
@@ -545,7 +592,7 @@ public class BrineChain {
 
         VACUUM_RECIPES.recipeBuilder().duration(280).EUt(500)
                 .fluidInputs(Brine.getFluid(1000))
-                .fluidOutputs(ChilledBrine.getFluid(750))
+                .fluidOutputs(ChilledBrine.getFluid(550))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(500)

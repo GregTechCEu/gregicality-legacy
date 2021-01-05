@@ -2,14 +2,15 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.components.PumpCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
@@ -21,11 +22,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
-
 import java.util.List;
 import java.util.function.Predicate;
 
-public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController {
+public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
 
     public MetaTileEntityPlasmaCondenser(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PLASMA_CONDENSER_RECIPES);

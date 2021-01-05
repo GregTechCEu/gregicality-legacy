@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.machines.multi.override.MetaTileEntityVacuumFreezer;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -12,7 +13,6 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityVacuumFreezer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -63,7 +63,7 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
 
     @Override
-    protected IBlockState getCasingState() {
+    public IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(IncoloyMA956);
     }
 

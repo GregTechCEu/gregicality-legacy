@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain.wetware;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
@@ -119,6 +120,7 @@ public class GrowthMedium {
                 .duration(200)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(EthyleneOxide.getFluid(2000))
@@ -165,6 +167,12 @@ public class GrowthMedium {
                 .outputs(Glutamine.getItemStack(2))
                 .EUt(30720)
                 .duration(500)
+                .buildAndRegister();
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, Meat)
+                .fluidOutputs(Blood.getFluid(250))
+                .EUt(32)
+                .duration(50)
                 .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(Blood.getFluid(1000))
