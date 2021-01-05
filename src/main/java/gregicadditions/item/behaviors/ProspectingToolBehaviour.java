@@ -15,13 +15,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import java.awt.*;
 
-public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemUIFactory {
+public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
 
-    public static BehaviourDetravToolElectricProPick getInstanceFor(ItemStack itemStack) {
+    public static ProspectingToolBehaviour getInstanceFor(ItemStack itemStack) {
         if (!(itemStack.getItem() instanceof MetaItem)) {
             return null;
         } else {
@@ -31,7 +32,7 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
                 return null;
             } else {
                 ItemUIFactory itemUIFactory = valueItem.getUIManager();
-                return !(itemUIFactory instanceof BehaviourDetravToolElectricProPick) ? null : (BehaviourDetravToolElectricProPick) itemUIFactory;
+                return !(itemUIFactory instanceof ProspectingToolBehaviour) ? null : (ProspectingToolBehaviour) itemUIFactory;
             }
         }
     }
@@ -53,14 +54,14 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     protected final int costs;
     protected final int chunkRaduis;
 
-    public BehaviourDetravToolElectricProPick(int tier) {
+    public ProspectingToolBehaviour(int tier) {
         this.costs = tier * 2;
         this.chunkRaduis = tier;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack itemStack = player.getHeldItem(hand);
-        BehaviourDetravToolElectricProPick behavior = getInstanceFor(itemStack);
+        ProspectingToolBehaviour behavior = getInstanceFor(itemStack);
         if (!world.isRemote) {
             int data = behavior.getToolGTDetravData(itemStack);
             if (player.isSneaking()) {
@@ -68,13 +69,13 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
                 if (data > 1) data = 0;
                 switch (data) {
                     case 0:
-                        player.sendMessage(new TextComponentString("Set Mode: Ore, Any Rock Block"));
+                        player.sendMessage(new TextComponentTranslation("metaitem.tool.prospect.mode.0"));
                         break;
                     case 1:
-                        player.sendMessage(new TextComponentString("Set Mode: Oil, Any Block"));
+                        player.sendMessage(new TextComponentTranslation("metaitem.tool.prospect.mode.1"));
                         break;
                     default:
-                        player.sendMessage(new TextComponentString("Set Mode: ERROR"));
+                        player.sendMessage(new TextComponentTranslation("metaitem.tool.prospect.mode.default"));
                         break;
                 }
                 behavior.setToolGTDetravData(itemStack, data);
@@ -90,7 +91,7 @@ public class BehaviourDetravToolElectricProPick implements IItemBehaviour, ItemU
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
         WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRaduis + 30, 32, 100, Math.max(((32 * chunkRaduis) / 18) - 1, 1));
         return ModularUI.builder(
-                GuiTextures.BOXED_BACKGROUND, 32 * chunkRaduis + 220, 32 * chunkRaduis + 30).label(15, 15, "Prospecting Tool (Unlocalized)", Color.WHITE.getRGB())
+                GuiTextures.BOXED_BACKGROUND, 32 * chunkRaduis + 220, 32 * chunkRaduis + 30).label(15, 15, "metaitem.tool.prospect.gui.title", Color.WHITE.getRGB())
                 .widget(new WidgetProspectingMap(30, 32, chunkRaduis, playerInventoryHolder, widgetItemFluidList))
                 .widget(widgetItemFluidList)
                 .build(playerInventoryHolder, entityPlayer);

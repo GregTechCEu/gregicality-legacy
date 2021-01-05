@@ -645,6 +645,13 @@ metaitem.tool.prospect.mv.name=Prospecting Tool MV
 metaitem.tool.prospect.hv.name=Prospecting Tool HV
 metaitem.tool.prospect.luv.name=Prospecting Tool LuV
 metaitem.tool.prospect.zpm.name=Prospecting Tool ZPM
+metaitem.tool.prospect.mode.0=Set Mode: Ore
+metaitem.tool.prospect.mode.1=Set Mode: Underground Oil
+metaitem.tool.prospect.mode.default=Set Mode: ERROR
+metaitem.tool.prospect.gui.title=Prospecting Tool
+metaitem.tool.prospect.gui.list=All Resources
+metaitem.tool.prospect.tooltips.ore=Ore statistics
+metaitem.tool.prospect.tooltips.fluid=Fluid statistics
 
 #/////////////////////CIRCUIT///////////////////////////
 

@@ -88,6 +88,10 @@ public class ProspectingTexture extends AbstractTexture {
         loadTexture(resourceManager);
     }
 
+    public String getSelected() {
+        return selected;
+    }
+
     public void draw(int x, int y) {
         if (packet != null) {
             GlStateManager.bindTexture(this.getGlTextureId());

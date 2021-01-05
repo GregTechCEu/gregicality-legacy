@@ -83,7 +83,7 @@ public class WidgetOreList extends ScrollableListWidget {
         widgetMap.clear();
         WidgetGroup widgetGroup = new WidgetGroup();
         widgetGroup.addWidget(new ImageWidget(0, 0, 18, 18, GuiTextures.LOCK));
-        widgetGroup.addWidget(new LabelWidget(20, 9, "All Resources"));
+        widgetGroup.addWidget(new LabelWidget(20, 9, "metaitem.tool.prospect.gui.list"));
         selected = widgetGroup;
         widgetMap.put(widgetGroup, "all");
         this.addWidget(widgetGroup);
