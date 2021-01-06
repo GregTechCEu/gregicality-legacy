@@ -40,6 +40,10 @@ public class GAMetaTileEntityEnergyHatch extends GAMetaTileEntityMultiblockPart 
         }
     }
 
+    public boolean isExportHatch() {
+        return isExportHatch;
+    }
+
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
         return new GAMetaTileEntityEnergyHatch(metaTileEntityId, getTier(), amps, isExportHatch);
