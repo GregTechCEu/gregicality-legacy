@@ -1,6 +1,6 @@
 package gregicadditions.widgets;
 
-import gregicadditions.gui.textures.ProspectingTexture;
+import gregicadditions.renderer.ProspectingTexture;
 import gregicadditions.item.behaviors.ProspectingToolBehaviour;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.network.ProspectingPacket;
@@ -146,7 +146,7 @@ public class WidgetProspectingMap extends Widget {
                     cZ * 16 + this.getPosition().y,
                     (cX + 1) * 16 + this.getPosition().x,
                     (cZ + 1) * 16 + this.getPosition().y,
-                    new Color(0x4BFFFFFF, true).getRGB());
+                    new Color(0x4B6C6C6C, true).getRGB());
             if (packet.pType == 0) { // draw ore
                 tooltips.add(I18n.format("metaitem.tool.prospect.tooltips.ore"));
                 HashMap<String, Integer> oreInfo = new HashMap<>();
@@ -155,7 +155,7 @@ public class WidgetProspectingMap extends Widget {
                         if (packet.map[cX * 16 + i][cZ * 16 + j] != null) {
                             packet.map[cX * 16 + i][cZ * 16 + j].values().forEach(dict -> {
                                 String name = OreDictUnifier.get(dict).getDisplayName();
-                                if (map.getSelected().equals("all") || map.getSelected().equals(name)) {
+                                if (map.getSelected().equals("all") || map.getSelected().equals(dict)) {
                                     oreInfo.put(name, oreInfo.getOrDefault(name, 0) + 1);
                                 }
                             });
@@ -167,7 +167,7 @@ public class WidgetProspectingMap extends Widget {
                 tooltips.add(I18n.format("metaitem.tool.prospect.tooltips.fluid"));
                 if (packet.map[cX][cZ] != null) {
                     String name = FluidRegistry.getFluidStack(packet.map[cX][cZ].get((byte) 1),1).getLocalizedName();
-                    if (map.getSelected().equals("all") || map.getSelected().equals(name)) {
+                    if (map.getSelected().equals("all") || map.getSelected().equals(packet.map[cX][cZ].get((byte) 1))) {
                         tooltips.add(name + " --- " + packet.map[cX][cZ].get((byte) 2));
                     }
                 }

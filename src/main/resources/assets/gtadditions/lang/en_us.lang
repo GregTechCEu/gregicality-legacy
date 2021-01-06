@@ -641,17 +641,18 @@ metaitem.fullerene_superconductor_dust.name=Fullerene Superconductor Dust
 
 metaitem.unstable.star.name=Unstable Star
 
-metaitem.tool.prospect.mv.name=Prospecting Tool MV
-metaitem.tool.prospect.hv.name=Prospecting Tool HV
-metaitem.tool.prospect.luv.name=Prospecting Tool LuV
-metaitem.tool.prospect.zpm.name=Prospecting Tool ZPM
+metaitem.tool.prospect.mv.name=Prospector MV
+metaitem.tool.prospect.hv.name=Prospector HV
+metaitem.tool.prospect.luv.name=Prospector LuV
+metaitem.tool.prospect.zpm.name=Prospector ZPM
 metaitem.tool.prospect.mode.0=Set Mode: Ore
 metaitem.tool.prospect.mode.1=Set Mode: Underground Oil
 metaitem.tool.prospect.mode.default=Set Mode: ERROR
-metaitem.tool.prospect.gui.title=Prospecting Tool
+metaitem.tool.prospect.gui.title=Prospector
 metaitem.tool.prospect.gui.list=All Resources
 metaitem.tool.prospect.tooltips.ore=Ore statistics
 metaitem.tool.prospect.tooltips.fluid=Fluid statistics
+metaitem.tool.prospect.low_power=Low power!
 
 #/////////////////////CIRCUIT///////////////////////////
 

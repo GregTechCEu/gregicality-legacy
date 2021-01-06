@@ -1,9 +1,9 @@
-package gregicadditions.gui.textures;
+package gregicadditions.renderer;
 
 import gregicadditions.network.ProspectingPacket;
 import gregtech.api.gui.resources.RenderUtil;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.stack.MaterialStack;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.AbstractTexture;
@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
-import java.util.Objects;
 
 
 public class ProspectingTexture extends AbstractTexture {
@@ -46,12 +45,10 @@ public class ProspectingTexture extends AbstractTexture {
                 //draw ore
                 if (packet.pType == 0 && packet.map[i][j] != null) {
                     for (String orePrefix : packet.map[i][j].values()) {
-                        Material material = Objects.requireNonNull(
-                                OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material;
-                        String name = OreDictUnifier.get(orePrefix).getDisplayName();
-                        if (selected.equals("all") || selected.equals(name)) {
-                            image.setRGB(i, j, material.materialRGB | 0XFF000000);
-                        }
+                        if (!selected.equals("all") && !selected.equals(orePrefix)) continue;
+                        MaterialStack mterialStack = OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix));
+                        image.setRGB(i, j, mterialStack==null? orePrefix.hashCode():mterialStack.material.materialRGB | 0XFF000000);
+                        break;
                     }
                 }
                 // draw player pos
@@ -101,11 +98,8 @@ public class ProspectingTexture extends AbstractTexture {
                     for (int cz = 0; cz < packet.radius * 2 + 1; cz++){
                         if (packet.map[cx][cz] != null) {
                             Fluid fluid = FluidRegistry.getFluid(packet.map[cx][cz].get((byte) 1));
-                            String name = fluid.getLocalizedName(new FluidStack(fluid, 0));
-                            if (selected.equals("all") || selected.equals(name)) {
-                                //if ((cx + cz * 3) < (Integer.parseInt(packet.map[cx][cz].get((byte) 2)) + 48)) { // draw an indicator in the chunk about how large the field is at this chunk.
+                            if (selected.equals("all") || selected.equals(fluid.getName())) {
                                 RenderUtil.drawFluidForGui(new FluidStack(fluid, 1), 1, x + cx * 16 + 1, y + cz * 16 + 1, 16, 16);
-                                //}
                             }
                         }
                     }

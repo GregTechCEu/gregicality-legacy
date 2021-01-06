@@ -652,6 +652,7 @@ metaitem.tool.prospect.gui.title=勘探仪
 metaitem.tool.prospect.gui.list=所有资源
 metaitem.tool.prospect.tooltips.ore=矿石统计
 metaitem.tool.prospect.tooltips.fluid=流体统计
+metaitem.tool.prospect.low_power=电量低！
 
 #/////////////////////CIRCUIT///////////////////////////
 

@@ -6,9 +6,11 @@ import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.util.Position;
 import gregtech.api.util.RenderUtil;
 import gregtech.api.util.Size;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
@@ -20,8 +22,8 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class WidgetOreList extends ScrollableListWidget {
@@ -39,10 +41,10 @@ public class WidgetOreList extends ScrollableListWidget {
         if (packet.ores != null) {
             switch (packet.pType) {
                 case 0:
-                    packet.ores.stream().sorted().forEach(orePrefix -> addOre(OreDictUnifier.get(orePrefix), Objects.requireNonNull(OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix))).material.materialRGB));
+                    packet.ores.stream().sorted().forEach(this::addOre);
                     break;
                 case 1:
-                    packet.ores.stream().sorted().forEach(orePrefix -> addOil(new FluidStack(FluidRegistry.getFluid(orePrefix), 1), getFluidColor(FluidRegistry.getFluid(orePrefix))));
+                    packet.ores.stream().sorted().forEach(this::addOil);
                     break;
                 default:
                     break;
@@ -50,19 +52,23 @@ public class WidgetOreList extends ScrollableListWidget {
         }
     }
 
-    private void addOre(ItemStack itemStack, int color) {
+    private void addOre(String orePrefix) {
+        ItemStack itemStack = OreDictUnifier.get(orePrefix);
+        MaterialStack mterialStack = OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix));
         ItemStackHandler itemStackHandler = new ItemStackHandler(1);
         itemStackHandler.insertItem(0, itemStack, false);
         WidgetGroup widgetGroup = new WidgetGroup();
         widgetGroup.addWidget(new SlotWidget(itemStackHandler, 0, 0, 0, false, false));
-        widgetGroup.addWidget(new LabelWidget(20, 5, itemStack.getDisplayName(), color));
-        widgetMap.put(widgetGroup, itemStack.getDisplayName());
+        widgetGroup.addWidget(new LabelWidget(20, 5, itemStack.getDisplayName(), mterialStack==null? orePrefix.hashCode():mterialStack.material.materialRGB | 0XFF000000));
+        widgetMap.put(widgetGroup, orePrefix);
         if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
             this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
         this.addWidget(widgetGroup);
     }
 
-    private void addOil(FluidStack fluidStack, int color) {
+    private void addOil(String orePrefix) {
+        FluidStack fluidStack = FluidRegistry.getFluidStack(orePrefix, 1);
+        if (fluidStack == null) return;
         FluidTank fluidTank = new FluidTank(1);
         fluidTank.setCanFill(false);
         fluidTank.fillInternal(fluidStack, true);
@@ -71,8 +77,8 @@ public class WidgetOreList extends ScrollableListWidget {
                 .setAlwaysShowFull(true)
                 .setHideTooltip(true)
                 .setContainerClicking(false, false));
-        widgetGroup.addWidget(new LabelWidget(20, 5, fluidStack.getLocalizedName(), color));
-        widgetMap.put(widgetGroup, fluidStack.getLocalizedName());
+        widgetGroup.addWidget(new LabelWidget(20, 5, fluidStack.getLocalizedName(), getFluidColor(fluidStack.getFluid())));
+        widgetMap.put(widgetGroup, orePrefix);
         if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
             this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
         this.addWidget(widgetGroup);
@@ -152,8 +158,16 @@ public class WidgetOreList extends ScrollableListWidget {
             widgets.forEach(widget -> {
                 if (widget instanceof WidgetGroup) {
                     Widget widget1 = ((WidgetGroup) widget).getContainedWidgets(true).get(0);
-                    if (widget1 instanceof SlotWidget)
-                        ((SlotWidget) widget1).setEnabled(widget.getPosition().y >= this.getPosition().y - 9 && widget.getPosition().y <= this.getPosition().y + this.getSize().height - 9);
+                    if (widget1 instanceof SlotWidget){
+                        SlotWidget slotWidget = (SlotWidget) widget1;
+                        int tick = (int) Minecraft.getSystemTime() / 50;
+                        if (tick % 20 == 0) {
+                            List<ItemStack> list = OreDictUnifier.getAllWithOreDictionaryName(widgetMap.get(widget));
+                            slotWidget.getHandle().getItemHandler().extractItem(0,64, false);
+                            slotWidget.getHandle().getItemHandler().insertItem(0, list.get((tick / 20) % list.size()), false);
+                        }
+                        slotWidget.setEnabled(widget.getPosition().y >= this.getPosition().y - 9 && widget.getPosition().y <= this.getPosition().y + this.getSize().height - 9);
+                    }
                 }
 
             });
