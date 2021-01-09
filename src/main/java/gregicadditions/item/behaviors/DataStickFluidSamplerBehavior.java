@@ -1,4 +1,4 @@
-package gregicadditions.item.behavior;
+package gregicadditions.item.behaviors;
 
 import gregicadditions.worldgen.DimensionChunkCoords;
 import gregicadditions.worldgen.PumpjackHandler;

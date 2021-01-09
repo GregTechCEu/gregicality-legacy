@@ -2,8 +2,10 @@ package gregicadditions.item;
 
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAElectricStats;
+import gregicadditions.item.behaviors.ProspectingToolBehaviour;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
+import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
@@ -41,6 +43,10 @@ public class GAMetaItem2 extends StandardMetaItem {
         BATTERY_LARGE_VANADIUM = addItem(6, "large.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(115200000, 6)).setModelAmount(8);
         BATTERY_LARGE_NAQUADRIA = addItem(7, "large.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(1843200000, 8)).setModelAmount(8);
         BATTERY_LARGE_NEUTRONIUM = addItem(8, "large.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, 11)).setModelAmount(8);
+        GAMetaItems.PROSPECT_TOOL_MV = addItem(100, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2)).addComponents(ElectricStats.createElectricItem(18000, 2)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_HV = addItem(101, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3)).addComponents(ElectricStats.createElectricItem(27000, 3)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_LuV = addItem(102, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6)).addComponents(ElectricStats.createElectricItem(63000, 6)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_ZPM = addItem(103, "tool.prospect.zpm").addComponents(new ProspectingToolBehaviour(7)).addComponents(ElectricStats.createElectricItem(72000, 7)).setMaxStackSize(1);
     }
 
     @Override

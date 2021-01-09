@@ -130,6 +130,10 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem BENDING_CYLINDER;
     public static MetaItem<?>.MetaValueItem SMALL_BENDING_CYLINDER;
+    public static MetaItem<?>.MetaValueItem PROSPECT_TOOL_MV;
+    public static MetaItem<?>.MetaValueItem PROSPECT_TOOL_HV;
+    public static MetaItem<?>.MetaValueItem PROSPECT_TOOL_LuV;
+    public static MetaItem<?>.MetaValueItem PROSPECT_TOOL_ZPM;
 
     public static MetaItem<?>.MetaValueItem SCHEMATIC;
     public static MetaItem<?>.MetaValueItem SCHEMATIC_2X2;
