@@ -1,4 +1,4 @@
-package gregicadditions.item.behavior;
+package gregicadditions.item.behaviors;
 
 import gregicadditions.machines.MetaTileEntityDrum;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
