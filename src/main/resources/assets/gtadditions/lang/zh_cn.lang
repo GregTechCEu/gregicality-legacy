@@ -2484,6 +2484,7 @@ gregtech.multiblock.advanced_distillation_tower.multiplier=当前单次同时处
 gregtech.multiblock.large_miner.chunk=已挖掘区块：%d
 gregtech.multiblock.large_miner.nb_chunk=待挖掘区块：%d
 gregtech.multiblock.large_miner.block_per_tick=速度：%d 个方块/t
+gregtech.multiblock.large_miner.silktouch=精准采集模式：%s
 gregtech.multiblock.large_miner.done=挖掘完毕！
 gregtech.multiblock.universal.energy_store=%d EU / %d EU
 gregtech.multiblock.nuclear_reactor.coolant_needed=需要冷却液：%d mb/s
