@@ -94,9 +94,9 @@ public class PlatinumSludgeGroupChain {
 
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, PlatinumResidue)
-                .fluidInputs(PotassiumDisulfate.getFluid(720))
+                .fluidInputs(PotassiumDisulfate.getFluid(360))
                 .outputs(OreDictUnifier.get(dust, LeachResidue))
-                .fluidOutputs(RhodiumSulfate.getFluid(720))
+                .fluidOutputs(RhodiumSulfate.getFluid(360))
                 .blastFurnaceTemp(775)
                 .EUt(120)
                 .duration(200)
@@ -279,7 +279,7 @@ public class PlatinumSludgeGroupChain {
 
         SIFTER_RECIPES.recipeBuilder()
                 .input(dust, RhodiumNitrate)
-                .chancedOutput(OreDictUnifier.get(dust, RhodiumFilterCake), 9500, 500)
+                .chancedOutput(OreDictUnifier.get(dust, RhodiumFilterCake), 9500, 0)
                 .EUt(30)
                 .duration(600)
                 .buildAndRegister();
