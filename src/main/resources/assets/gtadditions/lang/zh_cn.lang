@@ -641,6 +641,19 @@ metaitem.fullerene_superconductor_dust.name=富勒烯超导体粉
 
 metaitem.unstable.star.name=易变之星
 
+metaitem.tool.prospect.mv.name=勘探仪 MV
+metaitem.tool.prospect.hv.name=勘探仪 HV
+metaitem.tool.prospect.luv.name=勘探仪 LuV
+metaitem.tool.prospect.zpm.name=勘探仪 ZPM
+metaitem.tool.prospect.mode.0=模式设置：矿石
+metaitem.tool.prospect.mode.1=模式设置：地下油田
+metaitem.tool.prospect.mode.default=模式设置：错误
+metaitem.tool.prospect.gui.title=勘探仪
+metaitem.tool.prospect.gui.list=所有资源
+metaitem.tool.prospect.tooltips.ore=矿石统计
+metaitem.tool.prospect.tooltips.fluid=流体统计
+metaitem.tool.prospect.low_power=电量低！
+
 #/////////////////////CIRCUIT///////////////////////////
 
 #//LV

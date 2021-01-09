@@ -13,6 +13,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -234,7 +235,7 @@ public class PumpjackHandler {
      */
     public static String getBiomeName(Biome biome) {
         if (!biomeNames.containsKey(biome)) {
-            String biomeName = biome.getBiomeName();
+            String biomeName = ObfuscationReflectionHelper.getPrivateValue(Biome.class, biome, "biomeName");
             biomeNames.put(biome, biomeName.replace(" ", "").replace("_", "").toLowerCase());
         }
         return biomeNames.get(biome);
