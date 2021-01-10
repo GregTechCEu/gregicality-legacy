@@ -96,8 +96,8 @@ public class CTUtils {
 
     @ZenMethod
     public static void registerReservoir(ILiquidStack fluid, int minSize, int maxSize, int replenishRate, int weight, int[] dimBlacklist, int[] dimWhitelist, String[] biomeBlacklist, String[] biomeWhitelist) {
-        List<String> biomeBlacklistList = Lists.newArrayList();
-        List<String> biomeWhitelistList = Lists.newArrayList();
+        List<Integer> biomeBlacklistList = Lists.newArrayList();
+        List<Integer> biomeWhitelistList = Lists.newArrayList();
 
         if (minSize <= 0) {
             CraftTweakerAPI.logError("Reservoir minSize has to be at least 1mb!");
@@ -111,19 +111,19 @@ public class CTUtils {
 
         PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(rFluid, minSize, maxSize, replenishRate, weight);
 
-        for (String string : biomeBlacklist) {
-            if (string == null || string.isEmpty()) {
-                CraftTweakerAPI.logError("String '" + string + "' in biomeBlacklist is either Empty or Null");
+        for (String black : biomeBlacklist) {
+            if (black == null || black.isEmpty()) {
+                CraftTweakerAPI.logError("String '" + black + "' in biomeBlacklist is either Empty or Null");
             } else {
-                biomeBlacklistList.add(string);
+                biomeBlacklistList.add(Integer.valueOf(black));
             }
         }
 
-        for (String string : biomeWhitelist) {
-            if (string == null || string.isEmpty()) {
-                CraftTweakerAPI.logError("String '" + string + "' in biomeBlacklist is either Empty or Null");
+        for (String white : biomeWhitelist) {
+            if (white == null || white.isEmpty()) {
+                CraftTweakerAPI.logError("String '" + white + "' in biomeBlacklist is either Empty or Null");
             } else {
-                biomeWhitelistList.add(string);
+                biomeWhitelistList.add(Integer.valueOf(white));
             }
         }
 
