@@ -112,7 +112,7 @@ public class BacteriaCultures {
                 .duration(2400)
                 .buildAndRegister();
         BIO_REACTOR_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Items.MILK_BUCKET))
+                .fluidInputs(Milk.getFluid(1000))
                 .inputs(CLEAN_CULTURE.getStackForm())
                 .fluidInputs(BacterialGrowthMedium.getFluid(1000))
                 .outputs(BIFIDOBACTERIUM_CULTURE.getStackForm())
