@@ -636,15 +636,17 @@ metaitem.borocarbide_dust.name=碳化硼混合材料粉
 metaitem.actinium_superhydride.name=超氢化锕
 metaitem.strontium_superconductor_dust.name=锶超导体粉
 metaitem.fullerene_superconductor_dust.name=富勒烯超导体粉
-
+metaitem.tantalum_carbide.name=碳化钽
+metaitem.hafnium_carbide.name=碳化铪
+metaitem.seaborgium_carbide.name=碳化钅喜
 
 
 metaitem.unstable.star.name=易变之星
 
-metaitem.tool.prospect.mv.name=勘探仪 MV
-metaitem.tool.prospect.hv.name=勘探仪 HV
-metaitem.tool.prospect.luv.name=勘探仪 LuV
-metaitem.tool.prospect.zpm.name=勘探仪 ZPM
+metaitem.tool.prospect.mv.name=勘探仪（MV）
+metaitem.tool.prospect.hv.name=勘探仪（HV）
+metaitem.tool.prospect.luv.name=勘探仪（LuV）
+metaitem.tool.prospect.zpm.name=勘探仪（ZPM）
 metaitem.tool.prospect.mode.0=模式设置：矿石
 metaitem.tool.prospect.mode.1=模式设置：地下油田
 metaitem.tool.prospect.mode.default=模式设置：错误
@@ -652,7 +654,7 @@ metaitem.tool.prospect.gui.title=勘探仪
 metaitem.tool.prospect.gui.list=所有资源
 metaitem.tool.prospect.tooltips.ore=矿石统计
 metaitem.tool.prospect.tooltips.fluid=流体统计
-metaitem.tool.prospect.low_power=电量低！
+metaitem.tool.prospect.low_power=电量不足！
 
 #/////////////////////CIRCUIT///////////////////////////
 
@@ -2316,8 +2318,13 @@ material.sodium_tungstate=钨酸钠
 material.tungstic_acid=钨酸
 material.tungsten_trioxide=三氧化钨
 material.tungsten_hexachloride=六氯化钨
-
-
+material.bismuth_ruthenate=钌酸铋
+material.bismuth_iridiate=铱酸铋
+material.ruthenium_dioxide=二氧化钌
+material.pedot=PEDOT
+material.germanium_tungsten_nitride=锗-钨氮化物
+material.fullerene_polymer_matrix=富勒烯聚合物基体
+material.tantalum_hafnium_seaborgium_carbide=钽-铪-钅喜碳化物
 
 gregtech.fluid.hot=热%s
 gregtech.fluid.hexachloride=六氯化%s
