@@ -519,6 +519,12 @@ public class GAConfig {
             @Config.RangeInt(min = 1, max = 2000000000)
             @Config.RequiresMcRestart
             public int baseCellCapacity = 25000000;
+
+            @Config.Name("Battery Tower energy loss percentage")
+            @Config.RangeInt(min = 0, max = 10000)
+            @Config.RequiresMcRestart
+            @Config.Comment("The percentage of EU of the Battery Tower's tier of voltage to loss every tick. E.g. if we are using MV cells, we lose 10% of 128, 12.8 rounded down to 12, every tick.")
+            public int lossPercentage = 10;
         }
 
         public static class DistillationTower {
