@@ -250,10 +250,10 @@ public class SuperconductorsSMDChain {
                 .outputs(LeadSenenide.getItemStack(2))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(250).EUt(1900).blastFurnaceTemp(2400)
+        BLAST_RECIPES.recipeBuilder().duration(500).EUt(1900).blastFurnaceTemp(2400)
                 .input(dust, Tungsten, 9)
                 .input(GAEnums.GAOrePrefix.oxide, Thorium)
-                .outputs(OreDictUnifier.get(ingot, ThoriumDopedTungsten))
+                .outputs(OreDictUnifier.get(ingot, ThoriumDopedTungsten, 10))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(800).blastFurnaceTemp(1800)
@@ -583,10 +583,10 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(NitrogenDioxide.getFluid(4500))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(320).EUt(8000).blastFurnaceTemp(1100)
+        BLAST_RECIPES.recipeBuilder().duration(750).EUt(8000).blastFurnaceTemp(4500)
                 .inputs(WellMixedYBCOxides.getItemStack(6))
                 .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingotHot, YttriumBariumCuprate))
+                .outputs(OreDictUnifier.get(ingotHot, YttriumBariumCuprate, 7))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(360).EUt(128000)
