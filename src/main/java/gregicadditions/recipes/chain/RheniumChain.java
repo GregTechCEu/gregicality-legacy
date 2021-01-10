@@ -16,8 +16,8 @@ public class RheniumChain {
                 .fluidInputs(Oxygen.getFluid(24000))
                 .fluidOutputs(HydrogenCyanide.getFluid(8000))
                 .fluidOutputs(Water.getFluid(24000))
-                .EUt(491520)
-                .duration(50)
+                .EUt(7680)
+                .duration(400)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrogenCyanide.getFluid(8000))

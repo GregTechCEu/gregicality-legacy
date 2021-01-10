@@ -27,7 +27,7 @@ public class PlatinumSludgeGroupChain {
 
         BLAST_RECIPES.recipeBuilder()
                 .blastFurnaceTemp(775)
-                .input(dust, IrLeachResidue)
+                .input(dust, IrLeachResidue, 2)
                 .outputs(OreDictUnifier.get(dust, IridiumDioxide))
                 .outputs(OreDictUnifier.get(dust, PGSDResidue))
                 .EUt(120)
@@ -37,7 +37,7 @@ public class PlatinumSludgeGroupChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, IridiumDioxide)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(AcidicIridiumSolution.getFluid(1000))
+                .fluidOutputs(AcidicIridiumSolution.getFluid(2000))
                 .duration(300)
                 .EUt(30)
                 .buildAndRegister();
@@ -52,7 +52,7 @@ public class PlatinumSludgeGroupChain {
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, IridiumChloride)
+                .input(dust, IridiumChloride, 2)
                 .input(dust, Calcium, 3)
                 .fluidOutputs(CalciumChloride.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, PGSDResidue2))
@@ -73,7 +73,7 @@ public class PlatinumSludgeGroupChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(AquaRegia.getFluid(2000))
                 .EUt(30)
                 .duration(30)
                 .buildAndRegister();
@@ -127,7 +127,7 @@ public class PlatinumSludgeGroupChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .fluidOutputs(AmmoniumChloride.getFluid(1000))
+                .fluidOutputs(AmmoniumChloride.getFluid(2000))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();
@@ -139,7 +139,7 @@ public class PlatinumSludgeGroupChain {
                 .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 6))
                 .fluidOutputs(PalladiumAmmonia.getFluid(200))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
                 .EUt(30)
                 .duration(1200)
                 .buildAndRegister();
@@ -255,7 +255,7 @@ public class PlatinumSludgeGroupChain {
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, RhodiumSalt)
                 .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(RhodiumSaltSolution.getFluid(200))
+                .fluidOutputs(RhodiumSaltSolution.getFluid(2000))
                 .EUt(30)
                 .duration(30)
                 .buildAndRegister();
