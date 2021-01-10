@@ -1069,7 +1069,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial BismuthIridiate = new IngotMaterial(693,"bismuth_iridiate", 0x478a6b, MaterialIconSet.DULL,22,of(),GENERATE_PLATE);
     public static final IngotMaterial PEDOT = new IngotMaterial(692,"pedot", 0x5cef20, MaterialIconSet.DULL,22,of(),GENERATE_FINE_WIRE);
     public static final IngotMaterial RutheniumDioxide = new IngotMaterial(691,"ruthenium_dioxide", RutheniumTetroxide.materialRGB, MaterialIconSet.DULL,2,of(),GENERATE_PLATE);
-    public static final IngotMaterial GermaniumTungstenNitride = new IngotMaterial(690,"germanium_tungsten_nitride", 0x8f8fcf, MaterialIconSet.DULL,2,of(new MaterialStack(Germanium,3), new MaterialStack(Tungsten,3),new MaterialStack(Nitrogen,10)),GENERATE_PLATE);
+    public static final IngotMaterial GermaniumTungstenNitride = new IngotMaterial(690,"germanium_tungsten_nitride", 0x8f8fcf, MaterialIconSet.DULL,2,of(new MaterialStack(Germanium,3), new MaterialStack(Tungsten,3),new MaterialStack(Nitrogen,10)),GENERATE_PLATE, null, 5400);
 
     public static final SimpleDustMaterial BETSPerrhenate = new SimpleDustMaterial("bets_perrhenate", 0x7ada00, (short) 255, MaterialIconSet.SHINY, of(new MaterialStack(Rhenium, 1), new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 8), new MaterialStack(Sulfur, 4), new MaterialStack(Selenium, 4), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial TBCCODust = new SimpleDustMaterial("tbcco_dust", 0x669900, (short) 257, MaterialIconSet.SHINY, of(new MaterialStack(Thallium, 2), new MaterialStack(Barium, 2), new MaterialStack(Calcium, 2), new MaterialStack(Copper, 3), new MaterialStack(Oxygen, 10)));
