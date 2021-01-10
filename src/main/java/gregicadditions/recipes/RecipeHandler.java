@@ -7,6 +7,7 @@ import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
+import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
@@ -104,7 +105,8 @@ public class RecipeHandler {
 
 
         AtomicInteger totalMaterial = new AtomicInteger(0);
-        if (material.materialComponents.size() <= 4) {
+        int fluidComponents = (int) material.materialComponents.stream().filter(mat -> mat.material instanceof FluidMaterial).count();
+        if ((material.materialComponents.size() - fluidComponents) <= MIXER_RECIPES.getMaxInputs() && fluidComponents <= MIXER_RECIPES.getMaxFluidInputs()) {
             SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount));
             material.materialComponents.forEach(materialStack -> {
                 if (materialStack.material instanceof DustMaterial) {
@@ -119,7 +121,7 @@ public class RecipeHandler {
             });
             builder.outputs(OreDictUnifier.get(dust, material, totalMaterial.get()));
             builder.buildAndRegister();
-        } else {
+        } else if ((material.materialComponents.size() - fluidComponents) <= LARGE_MIXER_RECIPES.getMaxInputs() && fluidComponents <= LARGE_MIXER_RECIPES.getMaxFluidInputs()) {
             LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount * 2));
             builder.notConsumable(new IntCircuitIngredient((material.materialComponents.size())));
             material.materialComponents.forEach(materialStack -> {
@@ -135,6 +137,8 @@ public class RecipeHandler {
             });
             builder.outputs(OreDictUnifier.get(dust, material, totalMaterial.get()));
             builder.buildAndRegister();
+        } else {
+            GALog.logger.warn("Material " + material.getUnlocalizedName() + " has too many material components to generate a recipe in either normal or large mixer.");
         }
 
     }
