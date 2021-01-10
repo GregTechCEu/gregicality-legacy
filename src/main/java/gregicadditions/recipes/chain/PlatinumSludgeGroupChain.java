@@ -139,7 +139,7 @@ public class PlatinumSludgeGroupChain {
                 .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 6))
                 .fluidOutputs(PalladiumAmmonia.getFluid(200))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
                 .EUt(30)
                 .duration(1200)
                 .buildAndRegister();
