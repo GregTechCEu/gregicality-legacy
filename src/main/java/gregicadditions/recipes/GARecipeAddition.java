@@ -1024,8 +1024,7 @@ public class GARecipeAddition {
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(400).EUt(30).inputs(MICA_SHEET.getStackForm(4)).input(dust, SiliconDioxide).outputs(MICA_INSULATOR_SHEET.getStackForm(4)).buildAndRegister();
         if (GAConfig.GT6.BendingFoilsAutomatic && GAConfig.GT6.BendingCylinders)
             CLUSTER_MILL_RECIPES.recipeBuilder().duration(100).EUt(30).inputs(MICA_INSULATOR_SHEET.getStackForm()).outputs(MICA_INSULATOR_FOIL.getStackForm(4)).buildAndRegister();
-        else if (!GAConfig.GT6.BendingFoilsAutomatic || !GAConfig.GT6.BendingCylinders)
-            BENDER_RECIPES.recipeBuilder().duration(100).EUt(30).inputs(MICA_INSULATOR_SHEET.getStackForm()).circuitMeta(1).outputs(MICA_INSULATOR_FOIL.getStackForm(4)).buildAndRegister();
+        else BENDER_RECIPES.recipeBuilder().duration(100).EUt(30).inputs(MICA_INSULATOR_SHEET.getStackForm()).circuitMeta(1).outputs(MICA_INSULATOR_FOIL.getStackForm(4)).buildAndRegister();
 
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_cupronickel"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_kanthal"));
