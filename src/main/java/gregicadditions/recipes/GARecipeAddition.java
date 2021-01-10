@@ -161,9 +161,7 @@ public class GARecipeAddition {
         ModHandler.addSmeltingRecipe(COMPRESSED_COKE_CLAY.getStackForm(), COKE_OVEN_BRICK.getStackForm());
 
         //GT5U Old Primitive Brick Processing
-        ModHandler.removeFurnaceSmelting(MetaItems.FIRECLAY_BRICK.getStackForm());
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_to_dust"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_block_to_dust"));
+
 //        ModHandler.addSmeltingRecipe(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm(), GAMetaItems.FIRECLAY_BRICK.getStackForm());
 //        COMPRESSOR_RECIPES.recipeBuilder().input(dust, Fireclay).outputs(GAMetaItems.COMPRESSED_FIRECLAY.getStackForm()).duration(100).EUt(2).buildAndRegister();
         ModHandler.addShapedRecipe("quartz_sand", OreDictUnifier.get(dust, GAMaterials.QuartzSand), "S", "m", 'S', "sand");
@@ -176,15 +174,8 @@ public class GARecipeAddition {
 
         //GT5U Misc Recipes
         ModHandler.addSmeltingRecipe(new ItemStack(Items.SLIME_BALL), RUBBER_DROP.getStackForm());
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft:bone_meal_from_bone"));
         FORGE_HAMMER_RECIPES.recipeBuilder().inputs(new ItemStack(Items.BONE)).outputs(new ItemStack(Items.DYE, 4, 15)).duration(16).EUt(10).buildAndRegister();
 
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST, 3));
 
 
         //GT6 Bending
@@ -229,7 +220,6 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(256).inputs(OreDictUnifier.get(pipeLarge, TungstenSteel), ELECTRIC_PUMP_IV.getStackForm(2)).outputs(OreDictUnifier.get(pipeLarge, Ultimet)).buildAndRegister();
 
         //Reinforced Glass
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:ingot_mixed_metal"));
         int multiplier2;
         for (MaterialStack metal1 : firstMetal) {
             IngotMaterial material1 = (IngotMaterial) metal1.material;
@@ -257,35 +247,7 @@ public class GARecipeAddition {
 
 
         //Machine Components
-        ModHandler.removeRecipes(EMITTER_LV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_MV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_HV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_EV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_IV.getStackForm());
 
-        ModHandler.removeRecipes(SENSOR_LV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_MV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_HV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_EV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_IV.getStackForm());
-
-        ModHandler.removeRecipes(ROBOT_ARM_LV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_MV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_HV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_EV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_IV.getStackForm());
-
-        ModHandler.removeRecipes(FIELD_GENERATOR_LV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_MV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_HV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_EV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_IV.getStackForm());
-
-        ModHandler.removeRecipes(ELECTRIC_PUMP_LV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_MV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_HV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_EV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_IV.getStackForm());
 
         ModHandler.addShapedRecipe("ga_lv_emitter", EMITTER_LV.getStackForm(), "RRS", "CGR", "SCR", 'R', OreDictUnifier.get(stick, Brass), 'S', "circuitBasic", 'C', OreDictUnifier.get(cableGtSingle, Tin), 'G', OreDictUnifier.get(gem, Quartzite));
         ModHandler.addShapedRecipe("ga_mv_emitter", EMITTER_MV.getStackForm(), "RRS", "CGR", "SCR", 'R', OreDictUnifier.get(stick, Electrum), 'S', "circuitGood", 'C', OreDictUnifier.get(cableGtSingle, Copper), 'G', OreDictUnifier.get(gem, NetherQuartz));
@@ -320,12 +282,6 @@ public class GARecipeAddition {
             ModHandler.addShapedRecipe("ev_electric_pump_" + m.toString(), ELECTRIC_PUMP_EV.getStackForm(), "SRH", "dPw", "HMC", 'S', OreDictUnifier.get(screw, StainlessSteel), 'R', OreDictUnifier.get(rotor, StainlessSteel), 'H', OreDictUnifier.get(ring, m), 'P', OreDictUnifier.get(pipeMedium, Titanium), 'M', ELECTRIC_MOTOR_EV.getStackForm(), 'C', OreDictUnifier.get(cableGtSingle, Aluminium));
             ModHandler.addShapedRecipe("iv_electric_pump_" + m.toString(), ELECTRIC_PUMP_IV.getStackForm(), "SRH", "dPw", "HMC", 'S', OreDictUnifier.get(screw, TungstenSteel), 'R', OreDictUnifier.get(rotor, TungstenSteel), 'H', OreDictUnifier.get(ring, m), 'P', OreDictUnifier.get(pipeMedium, TungstenSteel), 'M', ELECTRIC_MOTOR_IV.getStackForm(), 'C', OreDictUnifier.get(cableGtSingle, Tungsten));
         }
-
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Tier.Basic, 4), OreDictUnifier.get(dust, EnderPearl)}, new FluidStack[]{Osmium.getFluid(288)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Tier.Good, 4), OreDictUnifier.get(dust, EnderPearl)}, new FluidStack[]{Osmium.getFluid(576)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Tier.Advanced, 4), QUANTUM_EYE.getStackForm()}, new FluidStack[]{Osmium.getFluid(1152)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Tier.Extreme, 4), OreDictUnifier.get(dust, NetherStar)}, new FluidStack[]{Osmium.getFluid(2304)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Tier.Elite, 4), QUANTUM_STAR.getStackForm()}, new FluidStack[]{Osmium.getFluid(4608)});
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(90).input(circuit, Tier.Good).inputs(MetaItems.PLASTIC_BOARD.getStackForm(), MetaItems.NAND_MEMORY_CHIP.getStackForm(32), MetaItems.RANDOM_ACCESS_MEMORY.getStackForm(4)).input(OrePrefix.wireFine, Materials.RedAlloy, 8).input(OrePrefix.plate, Materials.Plastic, 4).fluidInputs(SolderingAlloy.getFluid(144)).outputs(MetaItems.TOOL_DATA_STICK.getStackForm()).buildAndRegister();
 
@@ -514,8 +470,7 @@ public class GARecipeAddition {
 
         //GAMetaBlocks.MUTLIBLOCK_CASING recipe
         ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING, 2), "PhP", "AFA", "PwP", 'P', "plateSteel", 'A', ROBOT_ARM_IV.getStackForm(), 'F', OreDictUnifier.get(frameGt, TungstenSteel));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_assembler_casing"));
-        ModHandler.addShapedRecipe("ga_assmbler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.ASSEMBLER_CASING, 3), "CCC", "CFC", "CMC", 'C', "circuitElite", 'F', "frameGtTungstenSteel", 'M', ELECTRIC_MOTOR_IV.getStackForm());
+        ModHandler.addShapedRecipe("ga_assembler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.ASSEMBLER_CASING, 3), "CCC", "CFC", "CMC", 'C', "circuitElite", 'F', "frameGtTungstenSteel", 'M', ELECTRIC_MOTOR_IV.getStackForm());
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(2000).input(valueOf("gtMetalCasing"), Steel, 1).fluidInputs(Polytetrafluoroethylene.getFluid(216)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CHEMICALLY_INERT, 1)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(16).input(circuit, Tier.Primitive, 2).inputs(OreDictUnifier.get(gear, Potin, 8), OreDictUnifier.get(plate, Potin, 8), OreDictUnifier.get(cableGtOctal, Tin), MetaTileEntities.HULL[GTValues.ULV].getStackForm()).fluidInputs(Steel.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_ULV, 1)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(32).input(circuit, Tier.Basic, 2).inputs(OreDictUnifier.get(gear, Tumbaga, 8), OreDictUnifier.get(plate, Tumbaga, 8), OreDictUnifier.get(cableGtOctal, Cobalt), MetaTileEntities.HULL[GTValues.LV].getStackForm()).fluidInputs(Silicon.getFluid(1440)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TIERED_HULL_LV, 1)).buildAndRegister();
@@ -682,13 +637,6 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(10).EUt(480).fluidInputs(RawGasoline.getFluid(10000), Toluene.getFluid(1000)).fluidOutputs(Gasoline.getFluid(11000)).buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480).fluidInputs(Naphtha.getFluid(16000), Gas.getFluid(2000), Methanol.getFluid(1000), Acetone.getFluid(1000)).fluidOutputs(RawGasoline.getFluid(20000)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(480).fluidInputs(Ethanol.getFluid(1000), Butane.getFluid(1000)).fluidOutputs(EthylTertButylEther.getFluid(2000)).buildAndRegister();
-        //remove old hydrocracked light fuel to add a better one
-        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, HydroCrackedLightFuel.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
         DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120).fluidInputs(HydroCrackedLightFuel.getFluid(1000))
                 .fluidOutputs(Naphtha.getFluid(750), Propane.getFluid(200), Butane.getFluid(150), Ethane.getFluid(125), Methane.getFluid(125), Octane.getFluid(50))
                 .buildAndRegister();
@@ -727,16 +675,6 @@ public class GARecipeAddition {
         DISTILLERY_RECIPES.recipeBuilder().duration(25).EUt(30).notConsumable(new IntCircuitIngredient(0)).fluidInputs(SulfuricCoalTarOil.getFluid(20)).fluidOutputs(Naphtalene.getFluid(20)).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(SulfuricAcid.getFluid(8000), CoalTarOil.getFluid(8000)).fluidOutputs(SulfuricCoalTarOil.getFluid(16000)).buildAndRegister();
-
-
-        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, FermentedBiomass.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
 
         DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180).fluidInputs(FermentedBiomass.getFluid(2000))
                 .fluidOutputs(AceticAcid.getFluid(25),
@@ -837,14 +775,6 @@ public class GARecipeAddition {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().inputs(MASTER_BOARD.getStackForm(), STEM_CELLS.getStackForm(8), GLASS_TUBE.getStackForm(8), OreDictUnifier.get(foil, SiliconeRubber, 64)).input(plate, Gold, 8).input(plate, StainlessSteel, 4).fluidInputs(SterileGrowthMedium.getFluid(100), UUMatter.getFluid(20), DistilledWater.getFluid(4000)).outputs(NEURO_PROCESSOR.getStackForm(8)).duration(200).EUt(20000).buildAndRegister();
 
-        List<Recipe> recipes = new ArrayList<Recipe>();
-        for (Recipe recipe : ASSEMBLER_RECIPES.getRecipeList()) {
-            if (recipe.getOutputs().get(0).isItemEqual(WETWARE_PROCESSOR_LUV.getStackForm()) || recipe.getOutputs().get(0).isItemEqual(WETWARE_PROCESSOR_ASSEMBLY_ZPM.getStackForm())) {
-                recipes.add(recipe);
-            }
-        }
-        recipes.forEach(recipe -> ASSEMBLER_RECIPES.removeRecipe(recipe));
-
         //Star Recipes
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680).inputs(new ItemStack(Items.NETHER_STAR)).fluidInputs(Dubnium.getFluid(288)).outputs(GRAVI_STAR.getStackForm()).buildAndRegister();
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(122880).inputs(GRAVI_STAR.getStackForm()).fluidInputs(Neutronium.getFluid(288)).outputs(UNSTABLE_STAR.getStackForm()).buildAndRegister();
@@ -899,8 +829,6 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         //Explosive Recipes
-        ModHandler.removeRecipes(new ItemStack(Blocks.TNT));
-        ModHandler.removeRecipes(DYNAMITE.getStackForm());
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(4).inputs(new ItemStack(Items.PAPER), new ItemStack(Items.STRING)).fluidInputs(Glyceryl.getFluid(500)).outputs(DYNAMITE.getStackForm()).buildAndRegister();
 
         //Lapotron Crystal Recipes
@@ -933,17 +861,11 @@ public class GARecipeAddition {
 
         //Schematic Recipes
         ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4).input(circuit, Tier.Good, 4).input(plate, StainlessSteel, 2).outputs(SCHEMATIC.getStackForm()).buildAndRegister();
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:schematic/schematic_1"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:schematic/schematic_c"));
 
         //Configuration Circuit
-        //ModHandler.removeRecipes(MetaItems.BASIC_CIRCUIT_LV.getStackForm());
-        ModHandler.removeRecipes(INTEGRATED_CIRCUIT.getStackForm());
         ModHandler.addShapelessRecipe("basic_to_configurable_circuit", INTEGRATED_CIRCUIT.getStackForm(), "circuitBasic");
 
         //MAX Machine Hull
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_max"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_max"));
         ModHandler.addShapedRecipe("ga_casing_max", MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Neutronium));
         ModHandler.addShapedRecipe("ga_hull_max", MetaTileEntities.HULL[GTValues.MAX].getStackForm(), "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), 'C', new UnificationEntry(wireGtSingle, Tier.Superconductor), 'H', new UnificationEntry(plate, Neutronium), 'P', new UnificationEntry(plate, Polytetrafluoroethylene));
         ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).input(plate, Neutronium, 8).outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX)).circuitMeta(8).duration(50).buildAndRegister();
@@ -1025,23 +947,6 @@ public class GARecipeAddition {
         if (GAConfig.GT6.BendingFoilsAutomatic && GAConfig.GT6.BendingCylinders)
             CLUSTER_MILL_RECIPES.recipeBuilder().duration(100).EUt(30).inputs(MICA_INSULATOR_SHEET.getStackForm()).outputs(MICA_INSULATOR_FOIL.getStackForm(4)).buildAndRegister();
         else BENDER_RECIPES.recipeBuilder().duration(100).EUt(30).inputs(MICA_INSULATOR_SHEET.getStackForm()).circuitMeta(1).outputs(MICA_INSULATOR_FOIL.getStackForm(4)).buildAndRegister();
-
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_cupronickel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_kanthal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_nichrome"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_tungstensteel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_hss_g"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_naquadah"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_naquadah_alloy"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_superconductor"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_cupronickel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_kanthal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_nichrome"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_tungstensteel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_hss_g"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah_alloy"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_superconductor"));
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8).input(wireGtDouble, Cupronickel, 8).inputs(OreDictUnifier.get(dust, AluminoSilicateWool, 12)).fluidInputs(Tin.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.CUPRONICKEL)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(8).input(wireGtDouble, Cupronickel, 8).inputs(MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(Tin.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.CUPRONICKEL)).buildAndRegister();

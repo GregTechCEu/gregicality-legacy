@@ -168,6 +168,7 @@ public class CommonProxy {
         RecipeHandler.register();
         NuclearHandler.register();
         OreRecipeHandler.register();
+        GARecipeRemoval.init();
         GARecipeAddition.init();
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
