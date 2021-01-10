@@ -1130,7 +1130,7 @@ public class GAConfig {
                 "oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
                 "iodized_oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
                 "lava, 250000, 1000000, 1, 10, [1], [], [], []",
-                "sea_water, 50000000, 100000000, 100, 30, [], [0], [], [24,0,10]"
+                "sea_water, 50000000, 100000000, 100, 30, [], [0], [2,10,24], []"
         };
 
         @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
@@ -1154,8 +1154,8 @@ public class GAConfig {
             int weight = 0;
             List<Integer> dimBlacklist = new ArrayList<>();
             List<Integer> dimWhitelist = new ArrayList<>();
-            List<String> biomeBlacklist = new ArrayList<>();
-            List<String> biomeWhitelist = new ArrayList<>();
+            List<Integer> biomeBlacklist = new ArrayList<>();
+            List<Integer> biomeWhitelist = new ArrayList<>();
 
             String remain = str;
 
@@ -1263,7 +1263,8 @@ public class GAConfig {
                         inParens = false;
                     }
                     if (value.length() > 0) {
-                        biomeBlacklist.add(PumpjackHandler.convertConfigName(value.trim()));
+                        GALog.logger.info("biomeBlacklist value {}", value);
+                        biomeBlacklist.add(Integer.valueOf(value.trim()));
                     }
                 } else if (index == 8) {
                     if (!inParens) {
@@ -1280,7 +1281,8 @@ public class GAConfig {
                         inParens = false;
                     }
                     if (value.length() > 0) {
-                        biomeWhitelist.add(PumpjackHandler.convertConfigName(value.trim()));
+                        GALog.logger.info("biomeWhitelist value {}", value);
+                        biomeWhitelist.add(Integer.valueOf((value.trim())));
                     }
                 }
 
@@ -1302,7 +1304,8 @@ public class GAConfig {
                 value = value.substring(0, bI);
             }
             if (value.length() > 0) {
-                biomeWhitelist.add(PumpjackHandler.convertConfigName(value.trim()));
+                GALog.logger.info("value {}", value);
+                biomeWhitelist.add(Integer.valueOf(value.trim()));
             }
 
             fluid = fluid.toLowerCase(Locale.ENGLISH);
@@ -1315,6 +1318,9 @@ public class GAConfig {
             res.dimensionBlacklist = dimBlacklist;
             res.biomeWhitelist = biomeWhitelist;
             res.biomeBlacklist = biomeBlacklist;
+
+            GALog.logger.info("biomeWhitelist {}", biomeWhitelist);
+            GALog.logger.info("biomeBlacklist {}", biomeBlacklist);
 
             GALog.logger.info("Added resevoir type " + fluid);
         }
