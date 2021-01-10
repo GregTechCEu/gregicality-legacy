@@ -73,9 +73,6 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.4"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.5"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.6"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.7"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.8"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.9"));
     }
 
     @Override
