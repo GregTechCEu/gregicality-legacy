@@ -4,6 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAConfig;
+import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
@@ -22,26 +24,34 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockConcrete;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.blocks.StoneBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.items.IItemHandler;
 
+import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
@@ -85,8 +95,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public boolean drainEnergy() {
-        if (energyContainer.getEnergyStored() >= getMaxVoltage()) {
+        FluidStack drillingMud = GAMaterials.DrillingMud.getFluid(GAConfig.extraction.drillingMud);
+        FluidStack canDrain = importFluidHandler.drain(drillingMud, false);
+        if (energyContainer.getEnergyStored() >= getMaxVoltage() && canDrain != null && canDrain.amount == GAConfig.extraction.drillingMud) {
             energyContainer.removeEnergy(getMaxVoltage());
+            importFluidHandler.drain(drillingMud, true);
+            exportFluidHandler.fill(GAMaterials.UsedDrillingMud.getFluid(GAConfig.extraction.drillingMud), true);
             return true;
         }
         return false;
@@ -100,6 +114,8 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     public int getTier() {
         return Math.max(1, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()));
     }
+
+
 
     @Override
     protected void updateFormedValid() {
@@ -122,7 +138,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
             int residual = getResidualOil();
             if (availableOil() > 0 || residual > 0) {
                 int oilAmnt = availableOil() <= 0 ? residual * getTier() : availableOil();
-                FluidStack out = new FluidStack(availableFluid(), (int) Math.min(fluidDrain(), oilAmnt));
+                FluidStack out = new FluidStack(availableFluid(), Math.min(fluidDrain(), oilAmnt));
                 int drained = exportFluidHandler.fill(out, true);
                 extractOil(drained);
             } else {
@@ -151,6 +167,17 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     public void extractOil(int amount) {
         PumpjackHandler.depleteFluid(getWorld(), getWorld().getChunk(getPos()).x, getWorld().getChunk(getPos()).z, amount);
     }
+
+    @Override
+    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
+        //basically check minimal requirements for inputs count
+        int fluidOutputsCount = abilities.getOrDefault(MultiblockAbility.EXPORT_FLUIDS, Collections.emptyList()).size();
+        int fluidInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_FLUIDS, Collections.emptyList()).size();
+        return fluidOutputsCount >= 2 &&
+                fluidInputsCount >= 1 &&
+                abilities.containsKey(MultiblockAbility.INPUT_ENERGY);
+    }
+
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
@@ -222,6 +249,11 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
         return new MetaTileEntityDrillingRig(metaTileEntityId);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", GAConfig.Extraction.drillingMud, I18n.format(GAMaterials.DrillingMud.getFluid(0).getUnlocalizedName())));
     }
 
     @Override

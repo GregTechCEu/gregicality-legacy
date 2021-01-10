@@ -1142,6 +1142,12 @@ public class GAConfig {
         @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
         public static float reservoirChance = 0.5F;
 
+        @Config.Name("Drilling mud per tick")
+        @Config.Comment("The amount of drilling mud the Drilling Rig consumes every tick.")
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public static int drillingMud = 5;
+
         @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
         @Config.RangeInt(min = 1, max = 1000)
         public static int timeToScanFactor = 100;
