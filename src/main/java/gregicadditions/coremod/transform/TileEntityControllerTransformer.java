@@ -42,7 +42,7 @@ public class TileEntityControllerTransformer extends GAClassTransformer.ClassMap
 
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-            if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("net/minecraft/block/Block") && name.equals("getItem")) {
+            if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("net/minecraft/block/Block") && (name.equals("getItem") || name.equals("func_185473_a"))) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
                         "gregicadditions/coremod/hooks/XNetHooks",
                         "getItem",
