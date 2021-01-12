@@ -173,49 +173,6 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, PEDOT, 3))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(420).EUt(720)
-                .input(dust, Strontium)
-                .input(dust, Barium)
-                .fluidInputs(AceticAcid.getFluid(2000))
-                .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(2000))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1200)
-                .input(dust, Titanium)
-                .fluidInputs(IsopropylAlcohol.getFluid(1000))
-                .fluidOutputs(TitaniumIsopropoxide.getFluid(1000))
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(280).EUt(600)
-                .fluidInputs(BariumStrontiumAcetateSolution.getFluid(2000))
-                .fluidInputs(TitaniumIsopropoxide.getFluid(1000))
-                .fluidOutputs(BariumStrontiumTitanatePreparation.getFluid(3000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(250).EUt(1500).blastFurnaceTemp(1200)
-                .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(2000))
-                .input(dust, Calcite)
-                .outputs(BariumStrontiumTitanate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Quicklime))
-                .fluidOutputs(Oxygen.getFluid(1000))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1300)
-                .fluidInputs(Water.getFluid(7000))
-                .inputs(PotasssiumFluoroTantalate.getItemStack())
-                .outputs(TantalumOxide.getItemStack())
-                .fluidOutputs(HydrofluoricAcid.getFluid(5000))
-                .fluidOutputs(PotassiumHydroxide.getFluid(2000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(350).EUt(1200).blastFurnaceTemp(1350)
-                .input(dust, LeadNitrate)
-                .inputs(TantalumOxide.getItemStack())
-                .inputs(ScandiumOxide.getItemStack())
-                .outputs(LeadScandiumTantalate.getItemStack(3))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .buildAndRegister();
-
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1000)
                 .inputs(ZirconiumTetrachloride.getItemStack())
                 .fluidInputs(Water.getFluid(2000))
@@ -242,12 +199,6 @@ public class SuperconductorsSMDChain {
                 .input(wireFine, Gold)
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .outputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(750)
-                .input(dust, Lead)
-                .input(dust, Selenium)
-                .outputs(LeadSenenide.getItemStack(2))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(500).EUt(1900).blastFurnaceTemp(2400)
@@ -878,15 +829,5 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();
 
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(940).EUt(30)
-                .input(dust, Terbium, 4)
-                .input(dust, Dysprosium, 7)
-                .input(dust, Iron, 10)
-                .input(dust, Cobalt, 5)
-                .input(dust, Boron, 2)
-                .input(dust, Silicon)
-                .input(dust, Carbon)
-                .outputs(MagnetorestrictiveAlloy.getItemStack(30))
-                .buildAndRegister();
     }
 }
