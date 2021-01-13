@@ -366,10 +366,10 @@ public class GAMetaItem extends MaterialMetaItem {
         OPTICAL_SOC_WAFER = addItem(498,"optical_soc_wafer");
         OPTICAL_SOC = addItem(499,"optical_soc");
         OPTICAL_PROCESSING_CORE = addItem(500,"optical_processing_core");
-        OPTICAL_PROCESSOR = addItem(501,"optical_processor");
-        OPTICAL_ASSEMBLY = addItem(502,"optical_assembly");
-        OPTICAL_COMPUTER = addItem(503,"optical_computer");
-        OPTICAL_MAINFRAME = addItem(504,"optical_mainframe");
+        OPTICAL_PROCESSOR = addItem(501,"circuit.processor.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        OPTICAL_ASSEMBLY = addItem(502,"circuit.assembly.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        OPTICAL_COMPUTER = addItem(503,"circuit.computer.optical").setUnificationData(OrePrefix.circuit, UEV);
+        OPTICAL_MAINFRAME = addItem(504,"circuit.mainframe.optical").setUnificationData(OrePrefix.circuit, UIV);
 
         PEEK_POLYAMIDE_FOIL = addItem(505,"peek_polyamide_foil");
         HIGHLY_INSULATING_FOIL = addItem(506,"highly_insulating_foil");
