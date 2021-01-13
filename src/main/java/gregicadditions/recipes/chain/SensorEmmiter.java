@@ -245,7 +245,7 @@ public class SensorEmmiter {
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
                 .outputs(PotassiumBromide.getItemStack(2))
-                .outputs(IDX.getItemStack(3))
+                .outputs(IBX.getItemStack(3))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
@@ -264,7 +264,7 @@ public class SensorEmmiter {
                 .fluidInputs(Trimethylsilane.getFluid(1000))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
-                .inputs(IDX.getItemStack())
+                .inputs(IBX.getItemStack())
                 .notConsumable(dust, CobaltOxide)
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(1000))
@@ -384,6 +384,16 @@ public class SensorEmmiter {
                 .outputs(Tetracene.getItemStack())
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .notConsumable(PalladiumLoadedRutileNanoparticles.getItemStack())
+                .buildAndRegister();
+        
+        BLAST_RECIPES.recipeBuilder().duration(290).EUt(4900).blastFurnaceTemp(2400)
+                .fluidInputs(CopperSulfateSolution.getFluid(3000))
+                .inputs(SodiumIodide.getItemStack())
+                .input(dust, SodiumHydroxide, 6)
+                .outputs(SodiumIodate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Copper, 3))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 3))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
     }
