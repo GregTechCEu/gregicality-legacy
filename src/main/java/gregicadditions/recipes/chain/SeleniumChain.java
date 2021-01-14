@@ -40,7 +40,7 @@ public class SeleniumChain {
                 .fluidOutputs(SelenateTellurateMix.getFluid(750))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1450)
+        LARGE_CHEMICAL_REACTOR.recipeBuilder().duration(350).EUt(1450)
                 .fluidInputs(SelenateTellurateMix.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(SelenateSolution.getFluid(1000))
