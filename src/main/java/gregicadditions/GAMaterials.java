@@ -1066,7 +1066,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial PhosphorousArsenicSolution = new SimpleFluidMaterial("phosphorous_arsenic_solution", PhosphoricAcid.materialRGB);
     public static final SimpleFluidMaterial FluorosilicicAcid = new SimpleFluidMaterial("fluorosilicic_acid",0x2ccf2a);
     public static final SimpleFluidMaterial AmmoniumFluoride = new SimpleFluidMaterial("ammonium_fluoride",AmmoniumChloride.materialRGB);
-    public static final SimpleFluidMaterial AmmoniumBifluorideSolution = new SimpleFluidMaterial("ammonium_bifluoride",AmmoniumBifluoride.rgb);
+    public static final SimpleFluidMaterial AmmoniumBifluorideSolution = new SimpleFluidMaterial("ammonium_bifluoride_solution",AmmoniumBifluoride.rgb);
     public static final SimpleFluidMaterial LuTmYChlorideSolution = new SimpleFluidMaterial("lutmy_chloride_solution",0x00f2b2);
 
     public static final SimpleDustMaterial RawSienna = new SimpleDustMaterial("raw_siena",0x663300,(short) 284,MaterialIconSet.DULL);
@@ -1113,7 +1113,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Diaminoanthraquinone = new SimpleFluidMaterial("diaminoanthraquinone",0x3c5a2c0);
     public static final SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00);
     public static final SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680);
-    public static final SimpleFluidMaterial MaleicAcid = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad);
+    public static final SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad);
     public static final SimpleFluidMaterial Benzonitrile = new SimpleFluidMaterial("benzonitrile",0x2c2c9c);
 
     public static final SimpleDustMaterial LithiumHydride = new SimpleDustMaterial("lithium_hydride",0xfcfcfa,(short) 321,MaterialIconSet.DULL);
@@ -1150,7 +1150,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PalladiumLoadedRutileNanoparticles = new SimpleDustMaterial("palladium_loaded_rutile_nanoparticles",0xfcfcfa,(short) 345,MaterialIconSet.DULL);
     public static final SimpleDustMaterial SaccharicAcid = new SimpleDustMaterial("saccharic_acid",Glucose.rgb,(short) 346,MaterialIconSet.DULL);
     public static final SimpleDustMaterial AdipicAcid = new SimpleDustMaterial("adipic_acid",0xda9288,(short) 347,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial TetraethylammoniumNonahydridides = new SimpleDustMaterial("tetraethylmmonium_nonahydrides",0xbee8b9,(short) 348,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial TetraethylammoniumNonahydridides = new SimpleDustMaterial("tetraethylammonium_nonahydrides",0xbee8b9,(short) 348,MaterialIconSet.DULL);
 
     public static final SimpleFluidMaterial Iodobenzene = new SimpleFluidMaterial("iodobenzene",0x2c2c6c0);
     public static final SimpleFluidMaterial Amino3phenol = new SimpleFluidMaterial("3_aminophenol",Aminophenol.rgb);
@@ -1393,6 +1393,7 @@ public class GAMaterials implements IMaterialHandler {
         Plutonium.addFlag(GENERATE_FINE_WIRE);
         Europium.addFlag(GENERATE_FINE_WIRE | GENERATE_LONG_ROD);
         Cerium.addFlag(GENERATE_FINE_WIRE);
+        Zinc.addFlag(GENERATE_FINE_WIRE);
         Arsenic.addFlag(SMELT_INTO_FLUID);
         Polonium.addFlag(SMELT_INTO_FLUID);
         Copernicium.addFlag(GENERATE_FLUID_BLOCK);
