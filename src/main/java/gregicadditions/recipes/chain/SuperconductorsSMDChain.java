@@ -767,6 +767,16 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(4900)
+                .fluidInputs(CopperSulfateSolution.getFluid(3000))
+                .inputs(SodiumIodide.getItemStack())
+                .input(dust, SodiumHydroxide, 6)
+                .outputs(SodiumIodate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Copper, 3))
+                .fluidOutputs(SodiumSulfateSolution.getFluid(3000))
+                .fluidOutputs(Water.getFluid(3000))
+                .buildAndRegister();
+        
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(3400)
                 .inputs(SodiumIodate.getItemStack())
                 .inputs(SodiumHypochlorite.getItemStack())
