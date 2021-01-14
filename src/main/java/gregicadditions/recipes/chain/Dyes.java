@@ -389,11 +389,11 @@ public class Dyes {
                 .fluidInputs(Benzene.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
-                .fluidOutputs(MaleicAcid.getFluid(1000))
+                .fluidOutputs(MaleicAnhydride.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(440).EUt(1320)
-                .fluidInputs(MaleicAcid.getFluid(1000))
+                .fluidInputs(MaleicAnhydride.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .inputs(SuccinicAcid.getItemStack())
                 .buildAndRegister();
