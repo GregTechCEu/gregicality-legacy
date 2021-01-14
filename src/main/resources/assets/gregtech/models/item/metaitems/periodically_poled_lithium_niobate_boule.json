@@ -2,6 +2,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gregtech:items/metaitems/periodicaly_poled_lithium_niobate_boule"
+    "layer0": "gregtech:items/metaitems/periodically_poled_lithium_niobate_boule"
   }
 }
