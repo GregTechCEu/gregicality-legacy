@@ -226,7 +226,7 @@ public class SensorEmmiter {
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(980000)
                 .input(dust, PhthalicAnhydride)
-                .inputs(PotassiumIodide.getItemStack())
+                .inputs(SodiumIodide.getItemStack())
                 .inputs(SodiumNitrite.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
@@ -236,7 +236,6 @@ public class SensorEmmiter {
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Salt))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate))
-                .outputs(PotassiumSulfate.getItemStack())
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(345000)
@@ -260,7 +259,7 @@ public class SensorEmmiter {
                 .fluidOutputs(Bromine.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(250).EUt(845000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(845000)
                 .fluidInputs(Trimethylsilane.getFluid(1000))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
@@ -320,7 +319,7 @@ public class SensorEmmiter {
                 .fluidOutputs(AcetylatingReagent.getFluid(2000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(250000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(250000)
                 .fluidInputs(Naphtalene.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(2000))
@@ -338,8 +337,6 @@ public class SensorEmmiter {
                 .inputs(CopperIodide.getItemStack())
                 .inputs(SodiumIodide.getItemStack())
                 .notConsumable(RhReNqCatalyst.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Iodine, 2))
-                .fluidOutputs(Bromine.getFluid(1000))
                 .outputs(CopperChloride.getItemStack())
                 .outputs(MgClBrominide.getItemStack())
                 .fluidOutputs(Dihydroiodotetracene.getFluid(1000))
@@ -363,7 +360,7 @@ public class SensorEmmiter {
                 .notConsumable(VanadiumOxide.getItemStack())
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1300000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(1300000)
                 .inputs(PalladiumAcetate.getItemStack())
                 .input(wireFine, LithiumTitanate)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
