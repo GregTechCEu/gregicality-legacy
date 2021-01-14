@@ -234,6 +234,22 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             this.recipeMap = tileEntity.recipeMap;
         }
 
+        public int getEUtPercentage() {
+            return EUtPercentage;
+        }
+
+        public int getDurationPercentage() {
+            return durationPercentage;
+        }
+
+        public int getChancePercentage() {
+            return chancePercentage;
+        }
+
+        public int getStack() {
+            return stack;
+        }
+
         @Override
         /**
          * From multi-smelter.
