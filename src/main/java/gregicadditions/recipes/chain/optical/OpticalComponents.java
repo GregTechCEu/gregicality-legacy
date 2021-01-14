@@ -136,7 +136,7 @@ public class OpticalComponents {
                 .fluidOutputs(DielectricMirrorFormationMix.getFluid(5000))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder()
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(260000)
                 .inputs(ZBLANDust.getItemStack())
                 .fluidOutputs(LiquidZBLAN.getFluid(144))
                 .buildAndRegister();
