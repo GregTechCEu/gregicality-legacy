@@ -268,7 +268,7 @@ public class VariousChains {
                 .outputs(PEEK_POLYAMIDE_FOIL.getStackForm(3))
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(450000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(450000)
                 .input(dust, Potassium,2)
                 .inputs(SodiumAzide.getItemStack(2))
                 .inputs(DitertbutylCarbonate.getItemStack())
