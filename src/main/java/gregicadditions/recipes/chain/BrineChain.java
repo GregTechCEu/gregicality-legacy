@@ -25,7 +25,7 @@ public class BrineChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(2700)
                 .input(dust, Sulfur)
                 .fluidInputs(SodiumCyanide.getFluid(1000))
-                .fluidInputs(SodiumThiocyanate.getFluid(1000))
+                .fluidOutputs(SodiumThiocyanate.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(230).EUt(2300)
