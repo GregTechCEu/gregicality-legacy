@@ -121,7 +121,7 @@ public class RecipeHandler {
             });
             builder.outputs(OreDictUnifier.get(dust, material, totalMaterial.get()));
             builder.buildAndRegister();
-        } else if ((material.materialComponents.size() - fluidComponents) <= LARGE_MIXER_RECIPES.getMaxInputs() && fluidComponents <= LARGE_MIXER_RECIPES.getMaxFluidInputs()) {
+        } else if ((material.materialComponents.size() + 1 - fluidComponents) <= LARGE_MIXER_RECIPES.getMaxInputs() && fluidComponents <= LARGE_MIXER_RECIPES.getMaxFluidInputs()) {
             LargeRecipeBuilder builder = LARGE_MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount * 2));
             builder.notConsumable(new IntCircuitIngredient((material.materialComponents.size())));
             material.materialComponents.forEach(materialStack -> {
