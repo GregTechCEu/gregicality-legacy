@@ -71,6 +71,7 @@ public class OpticalCircuits {
                 .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(2))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
+                .input(plate,Graphene,4)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(864))
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(432))
                 .fluidInputs(SolderingAlloy.getFluid(1296))
