@@ -838,7 +838,16 @@ public class GARecipeAddition {
                 .EUt(32)
                 .duration(100)
                 .buildAndRegister();
-
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(4))
+                .input(dust, Iron, 16)
+                .input(dust, Aluminium, 3)
+                .input(dust, Chrome, 5)
+                .input(dust, Yttrium, 1)
+                .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25))
+                .EUt(500)
+                .duration(100)
+                .buildAndRegister();
         //Explosive Recipes
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(4).inputs(new ItemStack(Items.PAPER), new ItemStack(Items.STRING)).fluidInputs(Glyceryl.getFluid(500)).outputs(DYNAMITE.getStackForm()).buildAndRegister();
 
