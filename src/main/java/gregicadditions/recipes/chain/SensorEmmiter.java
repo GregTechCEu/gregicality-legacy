@@ -382,16 +382,6 @@ public class SensorEmmiter {
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .notConsumable(PalladiumLoadedRutileNanoparticles.getItemStack())
                 .buildAndRegister();
-        
-        BLAST_RECIPES.recipeBuilder().duration(290).EUt(4900).blastFurnaceTemp(2400)
-                .fluidInputs(CopperSulfateSolution.getFluid(3000))
-                .inputs(SodiumIodide.getItemStack())
-                .input(dust, SodiumHydroxide, 6)
-                .outputs(SodiumIodate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Copper, 3))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 3))
-                .fluidOutputs(Water.getFluid(3000))
-                .buildAndRegister();
-
+       
     }
 }
