@@ -17,11 +17,11 @@ public class ZincChain {
                 .input(dust, Sphalerite)
                 .input(dust, Coke)
                 .fluidInputs(DistilledWater.getFluid(1000))
-                .outputs(ZincCokePellets.getItemStack())
+                .outputs(ZincCokePellets.getItemStack(3))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(60).EUt(16000).blastFurnaceTemp(1500)
-                .inputs(ZincCokePellets.getItemStack())
+                .inputs(ZincCokePellets.getItemStack(2))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Zincite))
                 .outputs(ZincResidualSlag.getItemStack())
