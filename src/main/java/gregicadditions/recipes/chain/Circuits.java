@@ -333,7 +333,6 @@ public class Circuits {
                 .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
                 .input(wireGtSingle, UEVSuperconductor, 6)
                 .inputs(UHPIC.getStackForm(64))
-                .inputs(UHPIC.getStackForm(64))
                 .inputs(UHASOC.getStackForm(64))
                 .input(plate, EnrichedNaquadahAlloy, 4)
                 .input(frameGt, Bohrium, 1)
