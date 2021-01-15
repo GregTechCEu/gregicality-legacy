@@ -45,7 +45,7 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
                 .where('Y', statePredicate(getBaseState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('Z', statePredicate(getCasingState()))
                 .where('C', statePredicate(getVentCasing()))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 
