@@ -94,9 +94,9 @@ public class FullereneChain {
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .inputs(EschericiaColi.getItemStack())
                 .input(dust, Sugar)
-                .EUt(8000000)
+                .EUt(125000)
                 .outputs(SuccinicAcid.getItemStack())
-                .duration(150)
+                .duration(500)
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder()
                 .inputs(SuccinicAcid.getItemStack())
