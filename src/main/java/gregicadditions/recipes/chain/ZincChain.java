@@ -76,7 +76,7 @@ public class ZincChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1900)
                 .fluidInputs(SeparatedMetalSlurry.getFluid(1000))
                 .input(dust, SodiumHydroxide)
-                .fluidInputs(MetalHydroxideMix.getFluid(1000))
+                .fluidOutputs(MetalHydroxideMix.getFluid(1000))
                 .outputs(SodiumPhosphate.getItemStack())
                 .buildAndRegister();
 
