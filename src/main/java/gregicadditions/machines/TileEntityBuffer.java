@@ -110,4 +110,9 @@ public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileE
         this.fluids.deserializeNBT(data.getCompoundTag("FluidInventory"));
     }
 
+    @Override
+    protected boolean shouldSerializeInventories() {
+        return false;
+    }
+
 }
