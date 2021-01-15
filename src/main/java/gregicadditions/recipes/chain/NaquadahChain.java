@@ -259,8 +259,8 @@ public class NaquadahChain {
                 .fluidInputs(BromineTrifluoride.getFluid(1000))
                 .fluidInputs(AuricChloride.getFluid(1000))
                 .outputs(AuricFluoride.getItemStack())
-                .fluidOutputs(Bromine.getFluid(500))
-                .fluidOutputs(Chlorine.getFluid(1500))
+                .fluidOutputs(Bromine.getFluid(250))
+                .fluidOutputs(Chlorine.getFluid(750))
                 .EUt(1920)
                 .duration(300)
                 .buildAndRegister();
