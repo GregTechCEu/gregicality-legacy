@@ -153,7 +153,7 @@ public class FullereneChain {
                 .fluidInputs(IronChloride.getFluid(1000))
                 .input(dust, SodiumHydroxide)
                 .input(dust, Sugar)//Fructose?
-                .fluidInputs(Magnesium.getFluid(1000))
+                .fluidInputs(Magnesium.getFluid(144))
                 .fluidInputs(Bromine.getFluid(1000))
                 .notConsumable(PdIrReOCeOS.getItemStack())
                 .inputs(ZeoliteSievingPellets.getItemStack())
