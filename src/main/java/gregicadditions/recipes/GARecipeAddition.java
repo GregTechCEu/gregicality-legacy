@@ -828,7 +828,7 @@ public class GARecipeAddition {
         ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2), "PhP", "PHP", "PwP", 'P', "plateDubnium", 'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING));
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING)).input(plate, Dubnium, 6).outputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2)).duration(50).buildAndRegister();
 
-        ModHandler.addShapedRecipe("fusion_coil", MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), "CRC", "FSF", "CRC", 'C', "circuitMaster", 'R', NEUTRON_REFLECTOR.getStackForm(), 'F', FIELD_GENERATOR_ZPM.getStackForm(), 'S', OreDictUnifier.get(cableGtOctal, UVSuperconductor));
+        ModHandler.addShapedRecipe("fusion_coil", MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), "CRC", "FSF", "CRC", 'C', "circuitMaster", 'R', NEUTRON_REFLECTOR.getStackForm(), 'F', FIELD_GENERATOR_ZPM.getStackForm(), 'S', OreDictUnifier.get(cableGtOctal, ZPMSuperconductor));
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Iron, 4)
