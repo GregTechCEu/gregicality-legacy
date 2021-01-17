@@ -8,6 +8,7 @@ import gregicadditions.fluid.GAMetaFluids;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.type.FluidMaterial;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional.Method;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -23,11 +24,13 @@ public class HotCoolantRecipe {
     private final FluidStack recipeFluid;
     private final int duration;
     private final long minVoltage;
+    private final FluidStack fluidOutput;
 
-    public HotCoolantRecipe(FluidStack recipeFluid, int duration, long minVoltage) {
+    public HotCoolantRecipe(FluidStack recipeFluid, int duration, long minVoltage, FluidStack fluidOutput) {
         this.recipeFluid = recipeFluid.copy();
         this.duration = duration;
         this.minVoltage = minVoltage;
+        this.fluidOutput = fluidOutput;
     }
 
     @ZenMethod("create")
@@ -41,12 +44,7 @@ public class HotCoolantRecipe {
     }
 
     public FluidStack getOutputFluid() {
-        FluidMaterial coolant = GAMetaFluids.HOT_FLUIDS.entrySet().stream()
-                .filter(materialFluidEntry -> materialFluidEntry.getValue().equals(recipeFluid.getFluid()))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElseThrow(RuntimeException::new);
-        return coolant.getFluid(recipeFluid.amount);
+        return fluidOutput.copy();
     }
 
     @ZenGetter("duration")

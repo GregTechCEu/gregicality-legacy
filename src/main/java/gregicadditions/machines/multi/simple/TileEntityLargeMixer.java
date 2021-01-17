@@ -1,9 +1,8 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.MotorCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -13,6 +12,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -20,10 +20,6 @@ import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBla
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
-import java.util.Collections;
-
-import static gregicadditions.GAMaterials.Grisium;
 import static gregicadditions.GAMaterials.Staballoy;
 
 public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockController {
@@ -50,7 +46,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
-                .where('Y', statePredicate(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)))
+                .where('Y', statePredicate(GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
                 .where('#', isAirPredicate())

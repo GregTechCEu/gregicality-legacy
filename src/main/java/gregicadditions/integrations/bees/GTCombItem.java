@@ -3,19 +3,25 @@ package gregicadditions.integrations.bees;
 import forestry.api.core.IItemModelRegister;
 import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
+import forestry.core.config.Constants;
 import forestry.core.items.IColoredItem;
 import forestry.core.utils.ItemTooltipUtil;
+import forestry.core.utils.Translator;
 import gregicadditions.Gregicality;
+import gregtech.api.unification.material.type.FluidMaterial;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.text.WordUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -49,7 +55,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 	public void registerModel(Item item, IModelManager manager) {
 		manager.registerItemModel(item, 0);
 		for (int i = 0; i < GTCombs.VALUES.length; i++) {
-			manager.registerItemModel(item, i, Gregicality.MODID, "comb");
+			manager.registerItemModel(item, i, Constants.MOD_ID, "comb");
 		}
 	}
 
@@ -58,6 +64,19 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 	public String getTranslationKey(ItemStack stack) {
 		GTCombs honeyComb = GTCombs.get(stack.getItemDamage());
 		return super.getTranslationKey(stack) + "." + honeyComb.name;
+	}
+
+	@Override
+	public String getItemStackDisplayName(ItemStack stack) {
+		GTCombs honeyComb = GTCombs.get(stack.getItemDamage());
+		//automatic name for fluid combs, avoiding localized stuff.
+		if (honeyComb.ordinal() >= GTCombs.WATER.ordinal()){
+			Fluid fluid = GTBees.getFluidMaterial(GTBees.getUid(honeyComb.name));
+			if (fluid != null){
+				return Translator.translateToLocal(fluid.getUnlocalizedName()) + " " + Translator.translateToLocal("item.gtadditions:comb.name");
+			}
+		}
+		return super.getItemStackDisplayName(stack);
 	}
 
 	@Optional.Method(modid = "forestry")

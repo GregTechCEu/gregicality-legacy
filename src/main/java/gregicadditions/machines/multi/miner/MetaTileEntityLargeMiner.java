@@ -1,10 +1,15 @@
 package gregicadditions.machines.multi.miner;
 
+import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAUtility;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
+import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -23,17 +28,20 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagLong;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -53,6 +61,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.IntStream;
 
 
 public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner {
@@ -68,6 +77,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     private List<Chunk> chunks = new ArrayList<>();
     private boolean isActive = false;
     private boolean done = false;
+    private boolean silktouch = false;
     protected boolean wasActiveAndNeedsUpdate;
 
 
@@ -105,7 +115,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GTValues.V[Math.max(GTValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
@@ -118,7 +128,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     @Override
     public long getNbBlock() {
-        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.EV;
+        int tierDifference = GAUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.EV;
         return (long) Math.floor(Math.pow(2, tierDifference));
     }
 
@@ -168,7 +178,11 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             blockPos.forEach(blockPos1 -> {
                 NonNullList<ItemStack> itemStacks = NonNullList.create();
                 IBlockState blockState = this.getWorld().getBlockState(blockPos1);
-                ToolUtility.applyHammerDrops(world.rand, blockState, itemStacks, type.fortune, null);
+                if (!silktouch) {
+                    ToolUtility.applyHammerDrops(world.rand, blockState, itemStacks, type.fortune, null);
+                } else {
+                    itemStacks.add(new ItemStack(blockState.getBlock(), 1, blockState.getBlock().getMetaFromState(blockState)));
+                }
                 if (addItemsToItemHandler(outputInventory, true, itemStacks)) {
                     addItemsToItemHandler(outputInventory, false, itemStacks);
                     world.destroyBlock(blockPos1, false);
@@ -211,7 +225,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
                             return true;
                     }
                     return false;
-                }))
+                }).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch && !((GAMetaTileEntityEnergyHatch) tile).isExportHatch())))
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(material).getDefaultState()))
                 .where('#', blockWorldState -> true)
                 .build();
@@ -244,6 +258,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.chunk", currentChunk.get()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.nb_chunk", chunks.size()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.block_per_tick", getNbBlock()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.silktouch", silktouch));
             if (done)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.done", getNbBlock()).setStyle(new Style().setColor(TextFormatting.GREEN)));
 
@@ -268,6 +283,12 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     }
 
     @Override
+    public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
+        this.silktouch = !silktouch;
+        return true;
+    }
+
+    @Override
     public Type getType() {
         return type;
     }
@@ -280,6 +301,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
         data.setTag("zPos", new NBTTagLong(z.get()));
         data.setTag("chunk", new NBTTagInt(currentChunk.get()));
         data.setTag("done", new NBTTagInt(done ? 1 : 0));
+        data.setTag("silktouch", new NBTTagInt(silktouch ? 1 : 0));
         return data;
     }
 
@@ -291,6 +313,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
         z.set(data.getLong("zPos"));
         currentChunk.set(data.getInteger("chunk"));
         done = data.getInteger("done") != 0;
+        silktouch = data.getInteger("silktouch") != 0;
     }
 
     @Override

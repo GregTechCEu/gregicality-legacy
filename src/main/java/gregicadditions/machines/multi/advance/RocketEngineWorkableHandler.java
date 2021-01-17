@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAMaterials;
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -72,7 +72,7 @@ public class RocketEngineWorkableHandler extends FuelRecipeLogic {
         }
 
         if (isUsingHydrogen) {
-            hydrogenNeededToBoost = (int) (HYDROGEN_PER_SEC * EUt / GTValues.V[GTValues.EV]);
+            hydrogenNeededToBoost = (int) (HYDROGEN_PER_SEC * EUt / GAValues.V[GAValues.EV]);
             FluidStack hydrogenFluid = fluidTank.get().drain(GAMaterials.LiquidHydrogen.getFluid(hydrogenNeededToBoost), true);
             if (hydrogenFluid != null && hydrogenFluid.amount == hydrogenNeededToBoost)
                 EUt *= 3;
@@ -81,14 +81,14 @@ public class RocketEngineWorkableHandler extends FuelRecipeLogic {
         //apply 60% efficiency
         EUt = EUt * 60 / 100;
 
-        if (EUt > GTValues.V[GTValues.LuV]) {
-            EUt = GTValues.V[GTValues.LuV] + ((EUt - GTValues.V[GTValues.LuV]) * 40 / 100);
+        if (EUt > GAValues.V[GAValues.LuV]) {
+            EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
         }
-        if (EUt > GTValues.V[GTValues.ZPM]) {
-            EUt = GTValues.V[GTValues.ZPM] + ((EUt - GTValues.V[GTValues.ZPM]) * 50 / 100);
+        if (EUt > GAValues.V[GAValues.ZPM]) {
+            EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 50 / 100);
         }
-        if (EUt > GTValues.V[GTValues.UV]) {
-            EUt = GTValues.V[GTValues.UV] + ((EUt - GTValues.V[GTValues.UV]) * 50 / 100);
+        if (EUt > GAValues.V[GAValues.UV]) {
+            EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 50 / 100);
         }
         return EUt;
     }

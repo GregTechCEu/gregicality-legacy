@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.item.components.*;
+import gregicadditions.item.components.MotorCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -17,9 +17,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblockController {
 

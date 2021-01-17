@@ -16,23 +16,12 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileEntity {
 
@@ -56,9 +45,10 @@ public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileE
             fluidsHandlers[i] = new FilteredFluidHandler(16000);
         }
         this.fluids = new FluidTankList(false, fluidsHandlers);
-        this.importFluids = new FluidTankList(false, fluids);
-        this.exportFluids = new FluidTankList(false, fluids);
-        this.fluidInventory = new FluidHandlerProxy(importFluids, exportFluids);
+        //this.importFluids = new FluidTankList(false, fluids);
+        //this.exportFluids = new FluidTankList(false, fluids);
+        //this.fluidInventory = new FluidHandlerProxy(fluids, fluids);
+        this.fluidInventory = fluids;
         this.inventory = new ItemStackHandler(tier * tier);
         this.itemInventory = inventory;
     }
@@ -109,6 +99,7 @@ public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileE
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         data.setTag("Inventory", inventory.serializeNBT());
+        data.setTag("FluidInventory", fluids.serializeNBT());
         return data;
     }
 
@@ -116,6 +107,12 @@ public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileE
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         this.inventory.deserializeNBT(data.getCompoundTag("Inventory"));
+        this.fluids.deserializeNBT(data.getCompoundTag("FluidInventory"));
+    }
+
+    @Override
+    protected boolean shouldSerializeInventories() {
+        return false;
     }
 
 }

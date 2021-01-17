@@ -1,6 +1,6 @@
 package gregicadditions.armor;
 
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.armor.ArmorMetaItem;
@@ -135,6 +135,6 @@ public class BatteryPack extends ArmorLogicSuite {
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return String.format("gtadditions:textures/armor/battery_pack_%s.png", GTValues.VN[tier].toLowerCase());
+        return String.format("gtadditions:textures/armor/battery_pack_%s.png", GAValues.VN[tier].toLowerCase());
     }
 }

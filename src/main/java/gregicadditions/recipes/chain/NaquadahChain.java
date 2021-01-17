@@ -4,9 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.dustTiny;
@@ -71,7 +69,7 @@ public class NaquadahChain {
                 .fluidInputs(NaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(AntimonyTrifluoride.getItemStack())
-                .fluidOutputs(FluoronaquadricAcid.getFluid(2000))
+                .fluidOutputs(FluoronaquadricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(300)
                 .buildAndRegister();
@@ -206,12 +204,12 @@ public class NaquadahChain {
                 .duration(750)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(NaquadriaCesiumfluoride.getFluid(6000))
-                .outputs(OreDictUnifier.get(dust, Naquadria))
-                .fluidOutputs(Fluorine.getFluid(2500))
-                .fluidOutputs(Caesium.getFluid(2500))
+                .fluidInputs(NaquadriaCesiumfluoride.getFluid(12000))
+                .outputs(OreDictUnifier.get(dust, Naquadria, 2))
+                .fluidOutputs(Fluorine.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, Caesium, 5))
                 .EUt(7680)
-                .duration(500)
+                .duration(800)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(RadonTrioxide.getFluid(4000))
@@ -261,8 +259,8 @@ public class NaquadahChain {
                 .fluidInputs(BromineTrifluoride.getFluid(1000))
                 .fluidInputs(AuricChloride.getFluid(1000))
                 .outputs(AuricFluoride.getItemStack())
-                .fluidOutputs(Bromine.getFluid(500))
-                .fluidOutputs(Chlorine.getFluid(1500))
+                .fluidOutputs(Bromine.getFluid(250))
+                .fluidOutputs(Chlorine.getFluid(750))
                 .EUt(1920)
                 .duration(300)
                 .buildAndRegister();
@@ -581,11 +579,19 @@ public class NaquadahChain {
                 .fluidInputs(HeavyNaquadahFuel.getFluid(300))
                 .fluidInputs(HeavyENaquadahFuel.getFluid(400))
                 .fluidInputs(NaquadriaSolution.getFluid(300))
-                .input(dust, Neutronium)
+                .input(dust, Adamantium)
                 .fluidInputs(Californium256.getMaterial().getFluid(144))
                 .fluidOutputs(HyperFuelIII.getFluid(2000))
                 .EUt(7680)
                 .duration(200)
+                .buildAndRegister();
+        LARGE_MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(HyperFuelIII.getFluid(1000))
+                .input(dust, Neutronium)
+                .input(dust, Taranium)
+                .fluidOutputs(HyperFuelIV.getFluid(3000))
+                .EUt(8000000)
+                .duration(1)
                 .buildAndRegister();
     }
 }

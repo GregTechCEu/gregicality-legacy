@@ -5,8 +5,7 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gregicadditions.GAMaterials.DISABLE_REPLICATION;
-import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
+import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENERATE_LONG_ROD;
 
 public class IsotopeMaterial extends EnrichmentProcess {
@@ -28,7 +27,7 @@ public class IsotopeMaterial extends EnrichmentProcess {
 
     public IsotopeMaterial(IngotMaterial from, RadioactiveMaterial material, int nuclide) {
         this.material = from;
-        this.material.addFlag(GENERATE_LONG_ROD | GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION);
+        this.material.addFlag(GENERATE_LONG_ROD | GENERATE_ISOTOPES_COMPOUND | DISABLE_REPLICATION | GENERATE_NUCLEAR_COMPOUND);
         this.radioactiveMaterial = material;
         this.nuclide = nuclide;
         REGISTRY.put(from, this);

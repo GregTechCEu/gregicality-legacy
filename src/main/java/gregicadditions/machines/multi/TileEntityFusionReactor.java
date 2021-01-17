@@ -3,16 +3,20 @@ package gregicadditions.machines.multi;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAValues;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.*;
+import gregtech.api.capability.impl.EnergyContainerHandler;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
@@ -34,7 +38,7 @@ import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityFusionReactor extends RecipeMapMultiblockController {
+public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
     private final int tier;
     private EnergyContainerList inputEnergyContainers;
     private int heat = 0; // defined in TileEntityFusionReactor but serialized in FusionRecipeLogic
@@ -81,7 +85,7 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
                 .where('c', statePredicate(getCoilState()))
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS)))
                 .where('E', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> {
-                    for (int i = tier; i < GTValues.V.length; i++) {
+                    for (int i = tier; i < GAValues.V.length; i++) {
                         if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId))
                             return true;
                     }
@@ -136,7 +140,7 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
         List<IEnergyContainer> energyInputs = getAbilities(MultiblockAbility.INPUT_ENERGY);
         this.inputEnergyContainers = new EnergyContainerList(energyInputs);
         long euCapacity = energyInputs.size() * 10000000L * (long) Math.pow(2, tier - 6);
-        this.energyContainer = new EnergyContainerHandler(this, euCapacity, GTValues.V[tier], 0, 0, 0) {
+        this.energyContainer = new EnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
             @Override
             public String getName() {
                 return "EnergyContainerInternal";
@@ -192,7 +196,7 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
         ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
     }
 
-    private class FusionRecipeLogic extends MultiblockRecipeLogic {
+    private class FusionRecipeLogic extends GAMultiblockRecipeLogic {
         public FusionRecipeLogic(TileEntityFusionReactor tileEntity) {
             super(tileEntity);
             this.allowOverclocking = false;
@@ -238,5 +242,9 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
             super.deserializeNBT(compound);
             heat = compound.getInteger("Heat");
         }
+    }
+
+    public int getHeat() {
+        return heat;
     }
 }

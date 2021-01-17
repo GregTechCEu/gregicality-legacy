@@ -119,9 +119,16 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
             return false;
         }
 
-        pos = ++pos % possibleRecipe.length;
-        ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-        this.recipeMap = possibleRecipe[pos];
+        if (playerIn.isSneaking()) {
+            pos = (--pos < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
+            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
+            this.recipeMap = possibleRecipe[pos];
+
+        } else {
+            pos = ++pos % possibleRecipe.length;
+            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
+            this.recipeMap = possibleRecipe[pos];
+        }
 
         return true;
     }

@@ -1,9 +1,9 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -35,7 +35,7 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
 
 
     public MetaTileEntityLargeNaquadahReactor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.NAQUADAH_REACTOR_FUELS, GTValues.V[GTValues.UV]);
+        super(metaTileEntityId, GARecipeMaps.NAQUADAH_REACTOR_FUELS, GAValues.V[GAValues.UV]);
     }
 
     @Override
@@ -73,9 +73,6 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.4"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.5"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.6"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.7"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.8"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.9"));
     }
 
     @Override

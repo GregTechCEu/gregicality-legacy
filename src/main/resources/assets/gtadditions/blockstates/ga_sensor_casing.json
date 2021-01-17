@@ -47,6 +47,36 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/component_block_uv"
         }
+      },
+      "sensor_uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uhv"
+        }
+      },
+      "sensor_uev": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uev"
+        }
+      },
+      "sensor_uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uiv"
+        }
+      },
+      "sensor_umv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_umv"
+        }
+      },
+      "sensor_uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_uxv"
+        }
+      },
+      "sensor_max": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/component_block_max"
+        }
       }
     }
   }

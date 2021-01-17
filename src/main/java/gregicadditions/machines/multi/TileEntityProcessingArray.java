@@ -1,13 +1,14 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAEnums;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -32,7 +33,7 @@ import java.util.*;
 
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
-public class TileEntityProcessingArray extends RecipeMapMultiblockController {
+public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
@@ -73,7 +74,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockController {
         return new TileEntityProcessingArray(metaTileEntityId);
     }
 
-    protected static class ProcessingArrayWorkable extends MultiblockRecipeLogic {
+    protected static class ProcessingArrayWorkable extends GAMultiblockRecipeLogic {
 
         int machineTierVoltage = 0;
         int numberOfMachines = 0;

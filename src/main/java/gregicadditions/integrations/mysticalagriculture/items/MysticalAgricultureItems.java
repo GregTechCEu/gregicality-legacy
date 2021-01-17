@@ -11,7 +11,6 @@ import gregicadditions.integrations.mysticalagriculture.CropType;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.block.MaterialBlockCrop;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItem;
 import gregicadditions.item.GAMetaItems;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;

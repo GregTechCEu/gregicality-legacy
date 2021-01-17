@@ -1,8 +1,7 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
-import gregtech.api.GTValues;
-import gregtech.common.blocks.BlockWireCoil;
+import gregicadditions.GAValues;
 import gregtech.common.blocks.VariantBlock;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.SoundType;
@@ -41,19 +40,25 @@ public class CellCasing extends VariantBlock<CellCasing.CellType> {
 
         lines.add(I18n.format("tile.cell_casing.tooltip.1"));
         lines.add(I18n.format("tile.cell_casing.tooltip.2", coilType.getStorage()));
-        lines.add(I18n.format("tile.cell_casing.tooltip.3", GTValues.VN[coilType.getTier()]));
+        lines.add(I18n.format("tile.cell_casing.tooltip.3", GAValues.VN[coilType.getTier()]));
 
     }
 
 
     public enum CellType implements IStringSerializable {
 
-        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GTValues.UV),
-        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GTValues.ZPM),
-        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GTValues.LuV),
-        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GTValues.IV),
-        CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GTValues.EV),
-        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GTValues.HV);
+        CELL_HV("cell_hv", GAConfig.multis.batteryTower.baseCellCapacity, GAValues.HV),
+        CELL_EV("cell_ev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 1)), GAValues.EV),
+        CELL_IV("cell_iv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 2)), GAValues.IV),
+        CELL_LUV("cell_luv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 3)), GAValues.LuV),
+        CELL_ZPM("cell_zpm", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 4)), GAValues.ZPM),
+        CELL_UV("cell_uv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 5)), GAValues.UV),
+        CELL_UHV("cell_uhv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 6)), GAValues.UHV),
+        CELL_UEV("cell_uev", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 7)), GAValues.UEV),
+        CELL_UIV("cell_uiv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 8)), GAValues.UIV),
+        CELL_UMV("cell_umv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 9)), GAValues.UMV),
+        CELL_UXV("cell_uxv", (long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 10)), GAValues.UXV),
+        CELL_MAX("cell_max", Math.min((long) (GAConfig.multis.batteryTower.baseCellCapacity * Math.pow(4, 11)), Long.MAX_VALUE), GAValues.MAX);
 
         private final String name;
         private final long storage;

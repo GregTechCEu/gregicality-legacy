@@ -3,10 +3,12 @@ package gregicadditions.machines.multi;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
+import gregicadditions.GAValues;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
-import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -35,6 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -51,6 +54,8 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     private EnergyContainerList input;
     private EnergyContainerList output;
     private CellCasing.CellType cell;
+    private long energyInputPerTick;
+    private long energyOutputPerTick;
 
     public MetaTileEntityBatteryTower(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -72,8 +77,8 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         this.cell = context.getOrDefault("CellType", CellCasing.CellType.CELL_HV);
         int size = context.getOrDefault("nbCell", 0);
 
-        long inputAboveTier = getAbilities(MultiblockAbility.INPUT_ENERGY).stream().map(iEnergyContainer -> GTUtility.getTierByVoltage(iEnergyContainer.getInputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
-        long outputAboveTier = getAbilities(MultiblockAbility.OUTPUT_ENERGY).stream().map(iEnergyContainer -> GTUtility.getTierByVoltage(iEnergyContainer.getOutputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
+        long inputAboveTier = getAbilities(MultiblockAbility.INPUT_ENERGY).stream().map(iEnergyContainer -> GAUtility.getTierByVoltage(iEnergyContainer.getInputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
+        long outputAboveTier = getAbilities(MultiblockAbility.OUTPUT_ENERGY).stream().map(iEnergyContainer -> GAUtility.getTierByVoltage(iEnergyContainer.getOutputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
 
         if (inputAboveTier > 0 || outputAboveTier > 0) {
             this.invalidateStructure();
@@ -82,7 +87,11 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
 
         input = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
         output = new EnergyContainerList(getAbilities(MultiblockAbility.OUTPUT_ENERGY));
-        maxCapacity = this.cell.getStorage() * size;
+        BigInteger capacity = BigInteger.valueOf(this.cell.getStorage()).multiply(BigInteger.valueOf(size));
+        maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
+        energyInputPerTick = 0;
+        energyOutputPerTick = 0;
+
     }
 
     @Override
@@ -99,13 +108,13 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         if (!getWorld().isRemote) {
             long inputEnergyStore = input.getEnergyStored();
             long energyAddedFromInput = this.addEnergy(inputEnergyStore);
-            input.changeEnergy(-energyAddedFromInput);
+            energyInputPerTick = input.changeEnergy(-energyAddedFromInput);
 
-            this.changeEnergy(-GTValues.V[cell.getTier()] * 10 / 100);
+            this.changeEnergy(-GAValues.V[cell.getTier()] * GAConfig.multis.batteryTower.lossPercentage / 100);
 
             long bankEnergyStore = this.getEnergyStored();
             long energyAddedFromBank = output.addEnergy(bankEnergyStore);
-            this.changeEnergy(-energyAddedFromBank);
+            energyOutputPerTick = this.changeEnergy(-energyAddedFromBank);
         }
     }
 
@@ -230,6 +239,14 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         }
         this.setEnergyStored(newEnergyStored);
         return newEnergyStored - oldEnergyStored;
+    }
+
+    public long getEnergyInputPerTick() {
+        return energyInputPerTick;
+    }
+
+    public long getEnergyOutputPerTick() {
+        return energyOutputPerTick;
     }
 
     @Override
