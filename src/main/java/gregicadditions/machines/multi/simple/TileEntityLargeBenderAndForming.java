@@ -51,8 +51,7 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
 
     private static RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
             RecipeMaps.BENDER_RECIPES,
-            RecipeMaps.FORMING_PRESS_RECIPES,
-            GARecipeMaps.CLUSTER_MILL_RECIPES
+            RecipeMaps.FORMING_PRESS_RECIPES
     };
     private int pos = 0;
 
