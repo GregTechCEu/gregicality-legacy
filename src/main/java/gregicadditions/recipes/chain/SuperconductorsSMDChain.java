@@ -550,7 +550,7 @@ public class SuperconductorsSMDChain {
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(104000).blastFurnaceTemp(1800)
                 .inputs(PiledTBCC.getItemStack())
-                .fluidOutputs(Oxygen.getFluid(10000))
+                .fluidInputs(Oxygen.getFluid(10000))
                 .outputs(TBCCODust.getItemStack())
                 .buildAndRegister();
 
@@ -838,6 +838,40 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Bromobutane.getFluid(1000))
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();
+        
+                BLAST_RECIPES.recipeBuilder().duration(280).EUt(5000).blastFurnaceTemp(700)
+                .notConsumable(dust, Salt)
+                .input(dust, Iridium)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, IridiumDioxide))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(7200)
+                .notConsumable(UVA_HALIDE_LAMP.getStackForm())
+                .fluidInputs(Krypton.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(2000))
+                .fluidOutputs(KryptonDifluoride.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(4900)
+                .input(dust, Manganese)
+                .fluidInputs(KryptonDifluoride.getFluid(2000))
+                .outputs(ManganeseFluoride.getItemStack())
+                .fluidOutputs(Krypton.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(5200)
+                .inputs(ManganeseFluoride.getItemStack())
+                .fluidInputs(Water.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Pyrolusite))
+                .fluidOutputs(HydrofluoricAcid.getFluid(4000))
+                .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(4400)
+                .input(dust, Lanthanum)
+                .fluidInputs(Oxygen.getFluid(1500))
+                .outputs(LanthanumOxide.getItemStack())
+
 
     }
 }
