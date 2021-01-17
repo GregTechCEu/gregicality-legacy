@@ -552,7 +552,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0xbf95f5, (short) 53, MaterialIconSet.SHINY, of(new MaterialStack(Lead, 1), new MaterialStack(Chlorine, 1)));
 
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
-    public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
+    public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB, 4);
 
     public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL, of(new MaterialStack(Zirconium, 1), new MaterialStack(Fluorine, 6)));
     public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Fluorine, 2)));
@@ -1233,7 +1233,7 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
     public static final IngotMaterial UVSuperconductor = new IngotMaterial(744, "uv_superconductor", 0xe0d207, MaterialIconSet.SHINY, 1, of(new MaterialStack(UVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
-    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(new SimpleDustMaterialStack(TBCCODust, 1), new SimpleDustMaterialStack(StrontiumSuperconductorDust, 1), new MaterialStack(Taranium, 2)), STD_METAL, null, 10000);
+    public static final IngotMaterial UHVSuperconductorBase = new IngotMaterial(740, "uhv_superconductor_base", 0x359ffc, MaterialIconSet.SHINY, 1, of(new SimpleDustMaterialStack(TBCCODust, 4), new SimpleDustMaterialStack(StrontiumSuperconductorDust, 4), new MaterialStack(Taranium, 1)), STD_METAL, null, 10000);
     public static final IngotMaterial UHVSuperconductor = new IngotMaterial(739, "uhv_superconductor", 0x359ffc, MaterialIconSet.SHINY, 1, of(new MaterialStack(UHVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
     public static final IngotMaterial UEVSuperconductorBase = new IngotMaterial(738, "uev_superconductor_base", 0x954fe0, MaterialIconSet.SHINY, 1, of(new SimpleDustMaterialStack(ActiniumSuperhydride, 1), new SimpleDustMaterialStack(BETSPerrhenate, 1), new MaterialStack(Vibranium, 2), new MaterialStack(Quantum, 1)), STD_METAL, null, 25000);
     public static final IngotMaterial UEVSuperconductor = new IngotMaterial(737, "uev_superconductor", 0x954fe0, MaterialIconSet.SHINY, 1, of(new MaterialStack(UEVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION);
