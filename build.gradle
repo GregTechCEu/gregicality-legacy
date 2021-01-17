@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-0.21.1"
+version = "1.12.2-0.21.2"
 group = "gregicadditions"
 archivesBaseName = "Gregicality"
 
@@ -71,6 +71,9 @@ repositories {
         name = "OpenComputers"
         url = "https://maven.cil.li/"
     }
+    maven {
+        url "http://maven.k-4u.nl"
+    }
 //    maven { // TOP
 //        setUrl("https://repo.erins.net/maven")
 //    }
@@ -92,6 +95,8 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.115"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
     deobfCompile "team.chisel.ctm:CTM:MC1.12.2-1.0.2.31"
+    provided "com.github.mcjty:xnet:1.12-1.8.2"
+    provided "com.github.mcjty:mcjtylib:1.12-3.5.4"
     provided "li.cil.oc:OpenComputers:MC1.12.2-1.7.5.192"
     provided "appeng:appliedenergistics2:rv6-stable-7"
     provided "binnie:binnie-mods-1.12.2:2.5.1.184"

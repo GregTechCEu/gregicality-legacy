@@ -35,7 +35,8 @@ public class NiobiumTantalumChain {
         MIXER_RECIPES.recipeBuilder().duration(340).EUt(420)
                 .input(dust, Cassiterite)
                 .input(dust, Coke)
-                .outputs(CassiteriteCokePellets.getItemStack(2))
+                .fluidInputs(DistilledWater.getFluid(1000))
+                .outputs(CassiteriteCokePellets.getItemStack(3))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(1300).blastFurnaceTemp(1600)

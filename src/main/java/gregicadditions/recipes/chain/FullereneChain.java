@@ -94,9 +94,9 @@ public class FullereneChain {
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .inputs(EschericiaColi.getItemStack())
                 .input(dust, Sugar)
-                .EUt(8000000)
+                .EUt(125000)
                 .outputs(SuccinicAcid.getItemStack())
-                .duration(150)
+                .duration(500)
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder()
                 .inputs(SuccinicAcid.getItemStack())
@@ -153,7 +153,7 @@ public class FullereneChain {
                 .fluidInputs(IronChloride.getFluid(1000))
                 .input(dust, SodiumHydroxide)
                 .input(dust, Sugar)//Fructose?
-                .fluidInputs(Magnesium.getFluid(1000))
+                .fluidInputs(Magnesium.getFluid(144))
                 .fluidInputs(Bromine.getFluid(1000))
                 .notConsumable(PdIrReOCeOS.getItemStack())
                 .inputs(ZeoliteSievingPellets.getItemStack())
