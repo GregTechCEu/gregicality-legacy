@@ -11,7 +11,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.wireFine;
 
-public class SensoEmmiter {
+public class SensorEmitter {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder().duration(420).EUt(720)
                 .input(dust, Strontium)
