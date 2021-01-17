@@ -11,7 +11,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.wireFine;
 
-public class SensorEmmiter {
+public class SensoEmmiter {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder().duration(420).EUt(720)
                 .input(dust, Strontium)
@@ -23,7 +23,7 @@ public class SensorEmmiter {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1200)
                 .input(dust, Titanium)
                 .fluidInputs(IsopropylAlcohol.getFluid(1000))
-                .fluidOutputs(TitaniumIsopropoxide.getFluid(1000))
+                .fluidOutputs(TitaniumIsopropoxide.getFluid(2000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(600)
@@ -33,8 +33,8 @@ public class SensorEmmiter {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(1500).blastFurnaceTemp(1200)
-                .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(2000))
-                .input(dust, Calcite)
+                .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(1000))
+                .input(dust, Calcite, 2)
                 .outputs(BariumStrontiumTitanate.getItemStack())
                 .outputs(OreDictUnifier.get(dust, Quicklime))
                 .fluidOutputs(Oxygen.getFluid(1000))
@@ -52,7 +52,7 @@ public class SensorEmmiter {
                 .input(dust, LeadNitrate)
                 .inputs(TantalumOxide.getItemStack())
                 .inputs(ScandiumOxide.getItemStack())
-                .outputs(LeadScandiumTantalate.getItemStack(3))
+                .outputs(LeadScandiumTantalate.getItemStack(2))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
@@ -90,10 +90,10 @@ public class SensorEmmiter {
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(9000)
                 .fluidInputs(Aniline.getFluid(1000))
                 .inputs(SodiumNitrite.getItemStack())
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .inputs(SodiumIodide.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt))
-                .fluidOutputs(Nitrogen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .fluidOutputs(Nitrogen.getFluid(2000))
                 .fluidOutputs(Iodobenzene.getFluid(1000))
                 .buildAndRegister();
 
@@ -118,7 +118,7 @@ public class SensorEmmiter {
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(64500)
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .fluidOutputs(Ethylamine.getFluid(1000))
+                .fluidOutputs(Ethylamine.getFluid(2000))
                 .notConsumable(SodiumAzanide.getItemStack())
                 .buildAndRegister();
 
@@ -201,7 +201,7 @@ public class SensorEmmiter {
                 .fluidInputs(Aminophenol.getFluid(1000))
                 .fluidInputs(ButhylLithium.getFluid(1000))
                 .fluidOutputs(Butylaniline.getFluid(1000))
-                .outputs(LithiumIodide.getItemStack())
+                .outputs(LithiumIodide.getItemStack(2))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(650000)
@@ -233,9 +233,9 @@ public class SensorEmmiter {
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidOutputs(IodobenzoicAcid.getFluid(1000))
-                .fluidOutputs(Nitrogen.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate))
+                .fluidOutputs(Nitrogen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(345000)
@@ -275,7 +275,7 @@ public class SensorEmmiter {
                 .fluidInputs(Metoxybenzaldehyde.getFluid(1000))
                 .fluidInputs(Butylaniline.getFluid(1000))
                 .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
-                .fluidOutputs(MBBA.getFluid(1000))
+                .fluidOutputs(MBBA.getFluid(2000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(680000)
@@ -348,8 +348,8 @@ public class SensorEmmiter {
                 .fluidInputs(Chlorine.getFluid(5000))
                 .fluidInputs(HydrogenCyanide.getFluid(2000))
                 .fluidInputs(Water.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(3000))
-                .fluidOutputs(Dichlorodicyanobenzoquinone.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(5000))
+                .fluidOutputs(Dichlorodicyanobenzoquinone.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(135000)
