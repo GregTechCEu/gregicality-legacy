@@ -1392,6 +1392,7 @@ gtadditions.machine.large_macerator.name=Large Macerator
 gtadditions.machine.large_mixer.name=Large Mixer
 gtadditions.machine.large_sifter.name=Large Sifter
 gtadditions.machine.large_bender_and_forming.name=Large Bending and Forming Machine
+gtadditions.machine.large_packager.name=Large Packaging Machine
 gtadditions.machine.large_multi_use.name=Large Multi Use Machine
 gtadditions.machine.large_wiremill.name=Large Wiremill
 gtadditions.machine.large_washing_plant.name=Large Washing Plant
