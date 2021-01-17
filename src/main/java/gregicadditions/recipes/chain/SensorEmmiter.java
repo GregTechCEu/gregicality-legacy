@@ -17,7 +17,7 @@ public class SensorEmmiter {
                 .input(dust, Strontium)
                 .input(dust, Barium)
                 .fluidInputs(AceticAcid.getFluid(2000))
-                .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(2000))
+                .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1200)
