@@ -1194,7 +1194,7 @@ public class GARecipeAddition {
         NiobiumTantalumChain.init();
         Lasers.init();
         Dyes.init();
-        SensorEmmiter.init();
+        SensoEmmiter.init();
         SeleniumChain.init();
         OpticalComponents.init();
         OpticalCircuits.init();
