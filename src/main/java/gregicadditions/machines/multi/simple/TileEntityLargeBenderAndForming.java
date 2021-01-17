@@ -7,6 +7,7 @@ import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -50,7 +51,8 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
 
     private static RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
             RecipeMaps.BENDER_RECIPES,
-            RecipeMaps.FORMING_PRESS_RECIPES
+            RecipeMaps.FORMING_PRESS_RECIPES,
+            GARecipeMaps.CLUSTER_MILL_RECIPES
     };
     private int pos = 0;
 
