@@ -42,6 +42,7 @@ public class GAMaterials implements IMaterialHandler {
     public static long STD_METAL = GENERATE_PLATE;
     static long EXT2_METAL = GENERATE_PLATE | GENERATE_DENSE | GENERATE_ROD | GENERATE_BOLT_SCREW | GENERATE_GEAR | GENERATE_FOIL | GENERATE_FINE_WIRE | GENERATE_LONG_ROD;
     static long CORE_METAL = EXT2_METAL | GENERATE_RING | GENERATE_FRAME | GENERATE_ROTOR | GENERATE_SMALL_GEAR | GENERATE_DENSE;
+    public static final FluidMaterial LiquidHelium = new FluidMaterial(1000, "liquid_helium", Helium.materialRGB, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(4);
     public static final FluidMaterial FishOil = new FluidMaterial(999, "fish_oil", 14467421, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial RawGrowthMedium = new FluidMaterial(998, "raw_growth_medium", 10777425, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial SterileGrowthMedium = new FluidMaterial(997, "sterilized_growth_medium", 11306862, MaterialIconSet.FLUID, ImmutableList.of(), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
@@ -552,7 +553,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LeadChloride = new SimpleDustMaterial("lead_chloride", 0xbf95f5, (short) 53, MaterialIconSet.SHINY, of(new MaterialStack(Lead, 1), new MaterialStack(Chlorine, 1)));
 
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF);
-    public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB);
 
     public static final SimpleDustMaterial ZirconiumTetrafluoride = new SimpleDustMaterial("zirconium_tetrafluoride", 0xeeeeee, (short) 56, MaterialIconSet.DULL, of(new MaterialStack(Zirconium, 1), new MaterialStack(Fluorine, 6)));
     public static final SimpleDustMaterial BariumDifluoride = new SimpleDustMaterial("barium_difluoride", 0xdddddd, (short) 57, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Fluorine, 2)));
