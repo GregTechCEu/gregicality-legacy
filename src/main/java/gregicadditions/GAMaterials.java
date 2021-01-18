@@ -1209,7 +1209,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Fluorite = new DustMaterial(703, "fluorite", 0x009933, MaterialIconSet.SHINY, 2, of(new MaterialStack(Calcium, 1), new MaterialStack(Fluorine, 2)), GENERATE_ORE);
     public static final DustMaterial Columbite = new DustMaterial(702, "columbite", 0xCCCC00, MaterialIconSet.SHINY, 2, of(new MaterialStack(Iron, 1), new MaterialStack(Niobium, 2), new MaterialStack(Oxygen, 6)), GENERATE_ORE);
     public static final DustMaterial Pyrochlore = new DustMaterial(701, "pyrochlore", 0x996633, MaterialIconSet.SHINY, 2, of(), GENERATE_ORE);
-    public static final IngotMaterial Polyurethane = new IngotMaterial(700, "polyurethane", 0xeffcef, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES);
+    public static final IngotMaterial Polyurethane = new IngotMaterial(700, "polyurethane", 0xeffcef, MaterialIconSet.DULL, 2, of(), EXCLUDE_BLOCK_CRAFTING_RECIPES | GENERATE_ROD);
     public static final IngotMaterial ThoriumDopedTungsten = new IngotMaterial(699, "thoria_doped_tungsten", Tungsten.materialRGB, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD | GENERATE_FINE_WIRE);
     public static final IngotMaterial WoodsGlass = new IngotMaterial(698, "woods_glass", 0x730099, MaterialIconSet.SHINY, 2, of(), GENERATE_PLATE);
     public static final IngotMaterial BariumTitanate = new IngotMaterial(697, "barium_titanate", 0x99FF99, MaterialIconSet.SHINY, 2, of(), GENERATE_ROD | GENERATE_FOIL);

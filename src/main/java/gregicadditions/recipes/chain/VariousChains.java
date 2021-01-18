@@ -159,7 +159,7 @@ public class VariousChains {
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .input(wireFine, Gold, 4)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
+                .input(valueOf("gtMetalCasing"), Aluminium)
                 .inputs(LASER_DIODE.getStackForm())
                 .input(circuit, MarkerMaterials.Tier.Infinite)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
@@ -168,7 +168,7 @@ public class VariousChains {
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(432))
                 .input(wireGtDouble, UVSuperconductor, 2)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
+                .input(valueOf("gtMetalCasing"), Aluminium)
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
@@ -302,8 +302,8 @@ public class VariousChains {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(210).EUt(425000)
                 .input(stick, Polyurethane)
-                .input(stick, Epoxid)
-                .inputs(CARBON_FIBERS.getStackForm())
+                .input(stick, ReinforcedEpoxyResin)
+                .inputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .inputs(HIGHLY_INSULATING_FOIL.getStackForm())
                 .fluidInputs(Argon.getFluid(1000))
                 .outputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2))
