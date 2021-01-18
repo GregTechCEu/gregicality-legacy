@@ -98,7 +98,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.2", GAConfig.multis.batteryTower.lossPercentage));
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.3"));
 
     }
