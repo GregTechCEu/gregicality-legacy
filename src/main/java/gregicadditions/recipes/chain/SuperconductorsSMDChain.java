@@ -804,14 +804,14 @@ public class SuperconductorsSMDChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(84500)
                 .input(dust, Strontium)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .outputs(StrontiumChloride.getItemStack())
+                .fluidInputs(Chlorine.getFluid(2000))
+                .outputs(StrontiumChloride.getItemStack(3))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(360).EUt(810000).blastFurnaceTemp(4500)
                 .input(dust, SodiumRuthenate)
                 .inputs(SodiumSeaborgate.getItemStack())
-                .inputs(StrontiumChloride.getItemStack(2))
+                .inputs(StrontiumChloride.getItemStack(3))
                 .outputs(OreDictUnifier.get(dust, Salt, 4))
                 .outputs(StrontiumSuperconductorDust.getItemStack())
                 .buildAndRegister();
