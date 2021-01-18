@@ -302,8 +302,8 @@ public class VariousChains {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(210).EUt(425000)
                 .input(stick, Polyurethane)
-                .input(stick, Epoxid)
-                .inputs(CARBON_FIBERS.getStackForm())
+                .input(stick, ReinforcedEpoxyResin)
+                .inputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .inputs(HIGHLY_INSULATING_FOIL.getStackForm())
                 .fluidInputs(Argon.getFluid(1000))
                 .outputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2))
