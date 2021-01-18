@@ -871,6 +871,7 @@ public class SuperconductorsSMDChain {
                 .input(dust, Lanthanum)
                 .fluidInputs(Oxygen.getFluid(1500))
                 .outputs(LanthanumOxide.getItemStack())
+                .buildAndRegister();
 
 
     }
