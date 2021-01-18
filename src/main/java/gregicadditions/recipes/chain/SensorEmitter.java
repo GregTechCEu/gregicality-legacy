@@ -124,7 +124,7 @@ public class SensorEmitter {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(490000)
                 .fluidInputs(Ethylamine.getFluid(2000))
-                .fluidInputs(Aminophenol.getFluid(1000))
+                .fluidInputs(Amino3phenol.getFluid(1000))
                 .input(dust, PhthalicAnhydride)
                 .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
                 .fluidOutputs(Ammonia.getFluid(2000))
