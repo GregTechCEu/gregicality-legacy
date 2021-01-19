@@ -55,7 +55,6 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
             RecipeMaps.FERMENTING_RECIPES,
             RecipeMaps.FLUID_EXTRACTION_RECIPES,
             RecipeMaps.EXTRACTOR_RECIPES,
-            RecipeMaps.LASER_ENGRAVER_RECIPES,
             RecipeMaps.AUTOCLAVE_RECIPES,
             GARecipeMaps.REPLICATOR_RECIPES
     };

@@ -39,6 +39,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
 
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
@@ -46,13 +47,15 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
-
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
+    
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
@@ -60,7 +63,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
-
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
 
     //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
@@ -210,6 +213,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BIOWARE_COMPUTER;
     public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
 
+    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
+    public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
+    
     public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
     public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
     public static MetaItem<?>.MetaValueItem WAFER_NEUTRONIUM;
@@ -367,6 +375,29 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem WHITE_HALIDE_LAMP;
     public static MetaItem<?>.MetaValueItem ACTINIUM_PLASMA_CONTAINMENT_CELL;
 
+    public static MetaItem<?>.MetaValueItem NDYAG_BOULE;
+    public static MetaItem<?>.MetaValueItem PRHOYLF_BOULE;
+    public static MetaItem<?>.MetaValueItem LUTMYVO_BOULE;
+    public static MetaItem<?>.MetaValueItem NDYAG_ROD;
+    public static MetaItem<?>.MetaValueItem PRHOYLF_ROD;
+    public static MetaItem<?>.MetaValueItem LUTMYVO_ROD;
+    public static MetaItem<?>.MetaValueItem LOW_FREQUENCY_LASER;
+    public static MetaItem<?>.MetaValueItem MEDIUM_FREQUENCY_LASER;
+    public static MetaItem<?>.MetaValueItem HIGH_FREQUENCY_LASER;
+    public static MetaItem<?>.MetaValueItem PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE;
+    public static MetaItem<?>.MetaValueItem NON_LINEAR_OPTICAL_LENS;
+    public static MetaItem<?>.MetaValueItem HIGHLY_REFLECTIVE_MIRROR;
+    public static MetaItem<?>.MetaValueItem ROTATING_TRANSPARENT_SURFACE;
+    public static MetaItem<?>.MetaValueItem ELECTRON_SOURCE;
+    public static MetaItem<?>.MetaValueItem OPTICAL_SOC;
+    public static MetaItem<?>.MetaValueItem OPTICAL_SOC_WAFER;
+    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSING_CORE;
+
+    public static MetaItem<?>.MetaValueItem PEEK_POLYAMIDE_FOIL;
+    public static MetaItem<?>.MetaValueItem HIGHLY_INSULATING_FOIL;
+    public static MetaItem<?>.MetaValueItem INSULATION_WIRE_ASSEMBLY;
+
+    
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");

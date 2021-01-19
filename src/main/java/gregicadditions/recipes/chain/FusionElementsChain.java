@@ -163,6 +163,16 @@ public class FusionElementsChain {
                 .input(dust, Graphite)
                 .outputs(TantalumCarbide.getItemStack(2))
                 .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(345000)
+                .fluidInputs(HeptafluoroTantalate.getFluid(6000))
+                .input(dust, Graphite,6)
+                .input(dust, SiliconDioxide, 7)
+                .fluidInputs(Hydrogen.getFluid(8000))
+                .fluidOutputs(Water.getFluid(14000))
+                .outputs(TantalumCarbide.getItemStack(6))
+                .fluidOutputs(FluorosilicicAcid.getFluid(7000))
+                .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(135000).blastFurnaceTemp(3000)
                 .inputs(SodiumSeaborgate.getItemStack())

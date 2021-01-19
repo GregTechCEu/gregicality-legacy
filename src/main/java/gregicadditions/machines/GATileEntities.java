@@ -147,6 +147,7 @@ public class GATileEntities {
     public static MetaTileEntityDrillingRig DRILLING_RIG;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     public static MetaTileEntityBioReactor BIO_REACTOR;
+    public static TileEntityLargePackager LARGE_PACKAGER;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -1112,7 +1113,8 @@ public class GATileEntities {
         }
         BIO_REACTOR = GregTechAPI.registerMetaTileEntity(4170, new MetaTileEntityBioReactor(location("bio_reactor")));
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(4171, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
-
+        LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
+        GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

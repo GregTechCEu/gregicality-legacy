@@ -1,0 +1,8 @@
+
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gregtech:items/metaitems/non_linear_optical_lens",
+    "layer1": "gregtech:items/metaitems/non_linear_optical_lens_overlay"
+  }
+}

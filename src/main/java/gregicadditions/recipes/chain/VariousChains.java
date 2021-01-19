@@ -14,7 +14,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
+import static gregtech.common.items.MetaItems.*;
 
 
 public class VariousChains {
@@ -159,7 +159,7 @@ public class VariousChains {
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .input(wireFine, Gold, 4)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
+                .input(valueOf("gtMetalCasing"), Aluminium)
                 .inputs(LASER_DIODE.getStackForm())
                 .input(circuit, MarkerMaterials.Tier.Infinite)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
@@ -168,7 +168,7 @@ public class VariousChains {
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(432))
                 .input(wireGtDouble, UVSuperconductor, 2)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
+                .input(valueOf("gtMetalCasing"), Aluminium)
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
@@ -188,6 +188,125 @@ public class VariousChains {
                 .fluidInputs(Rubidium.getFluid(288))
                 .outputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .buildAndRegister();
+        
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(45000)
+                .fluidInputs(Ethanol.getFluid(3000))
+                .fluidInputs(Ethylene.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(HydrobromicAcid.getFluid(1000))
+                .fluidOutputs(TetraethylammoniumBromide.getFluid(3000))
+                .fluidOutputs(Water.getFluid(3000))
+                .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(330000)
+                .notConsumable(PdIrReOCeOS.getItemStack())
+                .fluidInputs(Water.getFluid(2000))
+                .inputs(Fructose.getItemStack())
+                .fluidInputs(TetraethylammoniumBromide.getFluid(10))
+                .fluidOutputs(Hexanediol.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(250000)
+                .fluidInputs(Hexanediol.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Hexamethylenediamine.getFluid(1000))
+                .notConsumable(dust, Ruthenium)
+                .notConsumable(Alumina.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(74500)
+                .inputs(Glucose.getItemStack())
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .fluidOutputs(DiluteNitricAcid.getFluid(2000))
+                .outputs(SaccharicAcid.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(260).EUt(120000)
+                .inputs(SaccharicAcid.getItemStack())
+                .notConsumable(AuPdCCatalyst.getItemStack())
+                .notConsumable(ScandiumTriflate.getItemStack())
+                .fluidInputs(Hydrogen.getFluid(4000))
+                .outputs(AdipicAcid.getItemStack())
+                .fluidOutputs(Water.getFluid(4000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(230000)
+                .notConsumable(dust, MagnesiumChloride)
+                .inputs(ZeoliteSievingPellets.getItemStack())
+                .fluidInputs(Acetone.getFluid(1000))
+                .fluidInputs(Methane.getFluid(1000))
+                .fluidOutputs(Tertbutanol.getFluid(2000))
+                .outputs(WetZeoliteSievingPellets.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(320000)
+                .input(dust, SodiumHydroxide)
+                .fluidInputs(Tertbutanol.getFluid(2000))
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidInputs(Toluenesulfonate.getFluid(15))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(DitertbutylCarbonate.getItemStack())
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(370).EUt(200000)
+                .inputs(DitertbutylCarbonate.getItemStack())
+                .fluidInputs(Ethanolamine.getFluid(3000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(Trimethylchlorosilane.getFluid(10))
+                .fluidOutputs(Tertbutanol.getFluid(2000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(Triaminoethaneamine.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(420000)
+                .input(foil, Polyetheretherketone)
+                .input(foil, SiliconeRubber)
+                .inputs(AdipicAcid.getItemStack())
+                .fluidInputs(Hexamethylenediamine.getFluid(1000))
+                .fluidInputs(Triaminoethaneamine.getFluid(500))
+                .outputs(PEEK_POLYAMIDE_FOIL.getStackForm(3))
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(450000)
+                .input(dust, Potassium,2)
+                .inputs(SodiumAzide.getItemStack(2))
+                .inputs(DitertbutylCarbonate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Sodium, 2))
+                .outputs(OreDictUnifier.get(dust, Potash, 2))
+                .fluidOutputs(Tertbutylcarbonylazide.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(745000)
+                .inputs(Fullerene.getItemStack())
+                .inputs(Alumina.getItemStack(6))
+                .fluidInputs(Tertbutylcarbonylazide.getFluid(12000))
+                .fluidInputs(Water.getFluid(12000))
+                .fluidOutputs(AminatedFullerene.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(12000))
+                .fluidOutputs(CarbonDioxide.getFluid(12000))
+                .outputs(AluminiumHydroxide.getItemStack(12))
+                .buildAndRegister();
+
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(120).EUt(480000)
+                .fluidInputs(AminatedFullerene.getFluid(1000))
+                .fluidOutputs(Azafullerene.getFluid(1000))
+                .notConsumable(wireFine, Rhenium)
+                .buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(230).EUt(475000)
+                .inputs(PEEK_POLYAMIDE_FOIL.getStackForm())
+                .fluidInputs(Azafullerene.getFluid(10))
+                .outputs(HIGHLY_INSULATING_FOIL.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(210).EUt(425000)
+                .input(stick, Polyurethane)
+                .input(stick, ReinforcedEpoxyResin)
+                .inputs(MEMORY_FOAM_BLOCK.getStackForm())
+                .inputs(HIGHLY_INSULATING_FOIL.getStackForm())
+                .fluidInputs(Argon.getFluid(1000))
+                .outputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2))
+                .buildAndRegister();
     }
 }

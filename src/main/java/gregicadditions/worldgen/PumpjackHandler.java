@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 public class PumpjackHandler {
     public final static LinkedHashMap<ReservoirType, Integer> reservoirList = new LinkedHashMap<>();
-    private final static Map<Integer, HashMap<String, Integer>> totalWeightMap = new HashMap<>();
+    private final static Map<Integer, HashMap<Integer, Integer>> totalWeightMap = new HashMap<>();
 
     public static HashMap<DimensionChunkCoords, Long> timeCache = new HashMap<>();
     public static HashMap<DimensionChunkCoords, OilWorldInfo> oilCache = new HashMap<>();
@@ -181,11 +181,11 @@ public class PumpjackHandler {
             totalWeightMap.put(dim, new HashMap<>());
         }
 
-        Map<String, Integer> dimMap = totalWeightMap.get(dim);
-        String biomeName = getBiomeName(biome);
+        Map<Integer, Integer> dimMap = totalWeightMap.get(dim);
+        int biomeID = Biome.getIdForBiome(biome);
 
-        if (dimMap.containsKey(biomeName)) {
-            return dimMap.get(biomeName);
+        if (dimMap.containsKey(biomeID)) {
+            return dimMap.get(biomeID);
         }
 
         int totalWeight = 0;
@@ -193,7 +193,7 @@ public class PumpjackHandler {
             if (e.getKey().validDimension(dim) && e.getKey().validBiome(biome))
                 totalWeight += e.getValue();
         }
-        dimMap.put(biomeName, totalWeight);
+        dimMap.put(biomeID, totalWeight);
         return totalWeight;
     }
 
@@ -228,14 +228,14 @@ public class PumpjackHandler {
     private static final HashMap<Biome, String> biomeNames = new HashMap<>();
 
     /**
-     * Get the biome name associated with a given biome
+     * Get the biome name associated with a given biome (it's not a recommended method)
      *
      * @param biome The biome to get the name
      * @return The biome's name
      */
     public static String getBiomeName(Biome biome) {
         if (!biomeNames.containsKey(biome)) {
-            String biomeName = ObfuscationReflectionHelper.getPrivateValue(Biome.class, biome, "biomeName");
+            String biomeName = ObfuscationReflectionHelper.getPrivateValue(Biome.class, biome, "field_76791_y"); // field_76791_y -> Biome.biomeName
             biomeNames.put(biome, biomeName.replace(" ", "").replace("_", "").toLowerCase());
         }
         return biomeNames.get(biome);
