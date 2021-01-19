@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -178,6 +179,7 @@ public class NanotubeChain {
                 .fluidInputs(Cycloparaphenylene.getFluid(200))
                 .fluidInputs(Methane.getFluid(800))
                 .notConsumable(plate, Rhenium)
+                .notConsumable(new IntCircuitIngredient(0))
                 .outputs(OreDictUnifier.get(ingot, CarbonNanotubes))
                 .buildAndRegister();
         
