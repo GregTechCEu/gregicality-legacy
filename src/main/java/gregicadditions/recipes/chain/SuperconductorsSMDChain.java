@@ -572,6 +572,7 @@ public class SuperconductorsSMDChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .input(dust, Carbon)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Chlorine.getFluid(4000))
                 .fluidOutputs(CarbonTetrachloride.getFluid(1000))
                 .buildAndRegister();
