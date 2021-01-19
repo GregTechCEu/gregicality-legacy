@@ -79,9 +79,9 @@ public class WaferChain {
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Lime).outputs(MetaItems.NOR_MEMORY_CHIP_WAFER.getStackForm(8)).buildAndRegister();
 
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(12)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(16)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(20)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, NetherStar).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(lens, NetherStar).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(16)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(lens, NetherStar).outputs(MetaItems.CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(20)).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Yellow).outputs(MetaItems.SYSTEM_ON_CHIP_WAFER.getStackForm(8)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Yellow).outputs(MetaItems.SYSTEM_ON_CHIP_WAFER.getStackForm(16)).buildAndRegister();
