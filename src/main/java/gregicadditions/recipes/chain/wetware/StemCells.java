@@ -1,6 +1,8 @@
 package gregicadditions.recipes.chain.wetware;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.STEM_CELLS;
@@ -99,6 +101,20 @@ public class StemCells {
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .input("listAllmushroom", 1)
+                .fluidOutputs(Chitin.getFluid(100))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+        MIXER_RECIPES.recipeBuilder()
+                .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
+                .inputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1))
+                .fluidOutputs(Chitin.getFluid(100))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+        MIXER_RECIPES.recipeBuilder()
+                .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
+                .inputs(new ItemStack(Blocks.RED_MUSHROOM, 1))
                 .fluidOutputs(Chitin.getFluid(100))
                 .EUt(480)
                 .duration(200)
