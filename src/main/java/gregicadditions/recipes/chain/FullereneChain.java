@@ -135,6 +135,7 @@ public class FullereneChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrogenCyanide.getFluid(1000))
                 .fluidInputs(PotassiumHydroxide.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .outputs(PotassiumCyanide.getItemStack())
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(122880)
