@@ -140,6 +140,9 @@ public class GARecipeAddition {
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllpepper", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllherb", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).input("listAllfiber", 8).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).inputs(BrownAlgae.getItemStack(8)).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).inputs(RedAlgae.getItemStack(8)).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).inputs(GreenAlgae.getItemStack(8)).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
 
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(32).fluidInputs(Redstone.getFluid(144 * 3), Copper.getFluid(144)).fluidOutputs(RedAlloy.getFluid(144)).buildAndRegister();
