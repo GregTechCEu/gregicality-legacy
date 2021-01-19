@@ -127,9 +127,11 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
                             .fluidOutputs(fluidOutput)
                             .build());
                 }
+            } else {
+                recipeMap.addRecipe(this.build());
             }
         } else {
-            recipeMap.addRecipe(build());
+            recipeMap.addRecipe(this.build());
             GALog.logger.info("Potentially incorrect Advanced Fusion Recipe with fluid inputs not equal to 2 added.");
         }
     }
