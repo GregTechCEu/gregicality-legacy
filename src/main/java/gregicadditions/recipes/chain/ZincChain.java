@@ -80,6 +80,13 @@ public class ZincChain {
                 .outputs(SodiumPhosphate.getItemStack())
                 .buildAndRegister();
 
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(50).EUt(500)
+                .inputs(SodiumPhosphate.getItemStack(6))
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Phosphorus))
+                .fluidOutputs(Oxygen.getFluid(4000))
+                .buildAndRegister();
+
         ELECTROLYZER_RECIPES.recipeBuilder().duration(130).EUt(850)
                 .fluidInputs(MetalHydroxideMix.getFluid(1000))
                 .input(wireFine, Zinc)
