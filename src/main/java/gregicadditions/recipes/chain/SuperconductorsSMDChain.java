@@ -5,6 +5,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import net.minecraft.item.ItemStack;
@@ -147,9 +148,10 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Perbromothiophene.getFluid(2000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
                 .notConsumable(dust, Zinc)
                 .notConsumable(dust, SodiumHydroxide)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Perbromothiophene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
