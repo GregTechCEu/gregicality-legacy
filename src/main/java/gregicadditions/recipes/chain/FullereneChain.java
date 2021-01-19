@@ -283,8 +283,8 @@ public class FullereneChain {
                 .fluidInputs(Chlorine.getFluid(1000))
                 .notConsumable(dust, Carbon)
                 .fluidOutputs(Phosgene.getFluid(2000))
-                .EUt(8000000)
-                .duration(50)
+                .EUt(2000)
+                .duration(800)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dimethylamine.getFluid(1000))
