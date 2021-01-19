@@ -997,7 +997,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LithiumAluminiumFluoride = new SimpleDustMaterial("lithium_aluminium_fluoride",0xfcfcfa,(short) 263,MaterialIconSet.DULL);
     public static final SimpleDustMaterial HafniumCarbide = new SimpleDustMaterial("hafnium_carbide",0x2c2c2c,(short) 264,MaterialIconSet.SHINY,of(new MaterialStack(Hafnium,1),new MaterialStack(Carbon,1)));
     public static final SimpleDustMaterial TantalumCarbide = new SimpleDustMaterial("tantalum_carbide",0x2c2c2c,(short) 265,MaterialIconSet.SHINY,of(new MaterialStack(Tantalum,1),new MaterialStack(Carbon,1)));
-    public static final SimpleDustMaterial SeaborgiumCarbide = new SimpleDustMaterial("seaborgnium_carbide",0x2c2c2c,(short) 266,MaterialIconSet.SHINY,of(new MaterialStack(Seaborgium,1),new MaterialStack(Carbon,1)));
+    public static final SimpleDustMaterial SeaborgiumCarbide = new SimpleDustMaterial("seaborgium_carbide",0x2c2c2c,(short) 266,MaterialIconSet.SHINY,of(new MaterialStack(Seaborgium,1),new MaterialStack(Carbon,1)));
 
     public static final SimpleFluidMaterial HydroselenicAcid = new SimpleFluidMaterial("hydroselenic_acid", Selenium.materialRGB);
     public static final SimpleFluidMaterial Aminophenol = new SimpleFluidMaterial("aminophenol", 0xafca3a);
