@@ -1210,6 +1210,7 @@ public class GARecipeAddition {
         SeleniumChain.init();
         OpticalComponents.init();
         OpticalCircuits.init();
+        WormholeGeneratorChain.init();
     }
 
     public static void forestrySupport() {

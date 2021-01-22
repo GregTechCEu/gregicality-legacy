@@ -375,6 +375,21 @@ public class GAMetaItem extends MaterialMetaItem {
         HIGHLY_INSULATING_FOIL = addItem(506,"highly_insulating_foil");
         INSULATION_WIRE_ASSEMBLY = addItem(507,"insulation_wire_assembly");
 
+        NEUTRONIUM_SPHERE = addItem(508, "neutronium.sphere");
+        TRIPLET_NEUTRONIUM_SPHERE = addItem(509, "triplet.neutronium.sphere");
+        CHARGED_TRIPLET_NEUTRONIUM_SPHERE = addItem(510, "charged.triplet.neutronium.sphere");
+        CONTAINED_REISSNER_NORDSTROM_SINGULARITY = addItem(511, "contained.reissner.nordstrom.singularity");
+        CONTAINED_KERR_NEWMANN_SINGULARITY = addItem(512, "contained.kerr.newmann.singularity");
+        CONTAINED_KERR_SINGULARITY = addItem(513, "contained.kerr.singularity");
+        CONTAINED_HIGH_DENSITY_PROTONIC_MATTER = addItem(514, "contained.high.density.protonic.matter");
+        TIME_DILATION_CONTAINMENT_UNIT = addItem(515, "time.dilation.containment.unit");
+        MICROWORMHOLE_GENERATOR = addItem(516, "microwormhole.generator");
+        MACROWORMHOLE_GENERATOR = addItem(517, "macrowormhole.generator");
+        STABILIZED_WORMHOLE_GENERATOR = addItem(518, "stabilized.wormhole.generator");
+        CONTAINED_EXOTIC_MATTER = addItem(519, "contained.exotic.matter");
+        SEPARATION_ELECTROMAGNET = addItem(521, "separation.electromagnet");
+        SPHERE_FIELD_SHAPE = addItem(522, "sphere.field.shape");
+
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;

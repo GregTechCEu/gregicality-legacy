@@ -1257,6 +1257,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SupercriticalFLiBe = new SimpleFluidMaterial("supercritical_flibe", FLiBe.materialRGB);
     public static final SimpleFluidMaterial SupercriticalLeadBismuthEutectic = new SimpleFluidMaterial("supercritical_lead_bismuth_eutectic", LeadBismuthEutectic.materialRGB);
 
+    public static final SimpleFluidMaterial FreeAlphaGas = new SimpleFluidMaterial("free_alpha_gas", 0xe0d407);
+    public static final SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c);
+
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
     public static Material UMV = new MarkerMaterial("UMV");
