@@ -409,7 +409,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem MACROWORMHOLE_GENERATOR;
     public static MetaItem<?>.MetaValueItem STABILIZED_WORMHOLE_GENERATOR;
     public static MetaItem<?>.MetaValueItem CONTAINED_EXOTIC_MATTER;
-    public static MetaItem<?>.MetaValueItem LEPTONIC_CHARGE;
     public static MetaItem<?>.MetaValueItem SEPARATION_ELECTROMAGNET;
 
     
