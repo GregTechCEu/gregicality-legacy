@@ -16,6 +16,14 @@ import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
 
 public class WormholeGeneratorChain {
     public static void init(){
+        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(500).EUt(400000)
+                .inputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
+                .notConsumable(SPHERE_FIELD_SHAPE.getStackForm())
+                .fluidInputs(LiquidHelium.getFluid(32000))
+                .outputs(NEUTRONIUM_SPHERE.getStackForm())
+                .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
+                .fluidOutputs(Helium.getFluid(32000))
+                .buildAndRegister();
         POLARIZER_RECIPES.recipeBuilder().duration(200).EUt(500000)
                 .inputs(NEUTRONIUM_SPHERE.getStackForm())
                 .outputs(TRIPLET_NEUTRONIUM_SPHERE.getStackForm())
@@ -97,10 +105,10 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_EXOTIC_MATTER.getStackForm())
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(6000000)
-                .fluidInputs(Naquadria.getFluid(1000))
-                .fluidInputs(EnrichedNaquadahAlloy.getFluid(1000))
-                .fluidInputs(Neutronium.getFluid(1000))
-                .fluidInputs(Taranium.getFluid(1000))
+                .fluidInputs(Naquadria.getFluid(1296))
+                .fluidInputs(EnrichedNaquadahAlloy.getFluid(1296))
+                .fluidInputs(Neutronium.getFluid(1296))
+                .fluidInputs(Taranium.getFluid(1296))
                 .input(circuit, UEV, 16)
                 .inputs(EMITTER_UEV.getStackForm(32))
                 .inputs(FIELD_GENERATOR_UEV.getStackForm(32))

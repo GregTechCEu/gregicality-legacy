@@ -410,6 +410,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem STABILIZED_WORMHOLE_GENERATOR;
     public static MetaItem<?>.MetaValueItem CONTAINED_EXOTIC_MATTER;
     public static MetaItem<?>.MetaValueItem SEPARATION_ELECTROMAGNET;
+    public static MetaItem<?>.MetaValueItem SPHERE_FIELD_SHAPE;
 
     
     public static void init() {

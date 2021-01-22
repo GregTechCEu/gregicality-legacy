@@ -388,6 +388,7 @@ public class GAMetaItem extends MaterialMetaItem {
         STABILIZED_WORMHOLE_GENERATOR = addItem(518, "stabilized.wormhole.generator");
         CONTAINED_EXOTIC_MATTER = addItem(519, "contained.exotic.matter");
         SEPARATION_ELECTROMAGNET = addItem(521, "separation.electromagnet");
+        SPHERE_FIELD_SHAPE = addItem(522, "sphere.field.shape");
 
 
         ThoriumRadioactive.waste = THORIUM_WASTE;

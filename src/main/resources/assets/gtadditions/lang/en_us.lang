@@ -3806,6 +3806,7 @@ metaitem.macrowormhole.generator.name=Macrowormhole Generator
 metaitem.stabilized.wormhole.generator.name=Stabilized Wormhole Generator
 metaitem.contained.exotic.matter.name=Contained Exotic Matter
 metaitem.separation.electromagnet.name=Separation Electromagnet
+metaitem.sphere.field.shape.name=Sphere Field Shape
 
 fluid.free_electron_gas.name=Free Electron Gas
 fluid.free_alpha_gas.name=Free Alpha Gas
