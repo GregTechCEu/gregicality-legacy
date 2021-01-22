@@ -458,6 +458,7 @@ public class GAConfig {
         public BatteryTower batteryTower = new BatteryTower();
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
+        public HeatingCoils heatingCoils = new HeatingCoils();
 
         public static class LargeEngraver {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Engraver.")
@@ -1123,7 +1124,23 @@ public class GAConfig {
 
         }
 
+        public static class HeatingCoils {
 
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Default=\"superconductor\", \"fusion_coil\"")
+            @Config.Name("GTCEHeatingCoilBlacklist")
+            @Config.RequiresMcRestart
+            public String [] gtceHeatingCoilsBlacklist = new String[] {
+                    "superconductor",
+                    "fusion_coil"
+            };
+
+            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines. Default=\"\"")
+            @Config.Name("GregicalityHeatingCoilBlacklist")
+            @Config.RequiresMcRestart
+            public String [] gregicalityheatingCoilsBlacklist = new String[] {
+                    ""
+            };
+        }
     }
 
     public static Extraction extraction;
