@@ -20,6 +20,7 @@ public class GASimpleBlock extends VariantBlock<GASimpleBlock.CasingType> {
     public enum CasingType implements IStringSerializable {
 
         SUPERHEAVY_BLOCK("superheavy_block"),
+        LEPTONIC_CHARGE("leptonic_charge"),
         TARANIUM_CHARGE("taranium_charge"),
         NAQUADRIA_CHARGE("naquadria_charge");
 

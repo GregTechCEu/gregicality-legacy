@@ -138,7 +138,7 @@ public class GARecipeMaps {
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
 
         STELLAR_FORGE_RECIPES = new RecipeMap<>("stellar_forge", 0, 3, 0,
-                0, 0, 3, 0, 2, (new SimpleRecipeBuilder()))
+                2, 0, 3, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
         PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser", 1, 2, 1,

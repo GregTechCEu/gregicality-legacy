@@ -3792,3 +3792,20 @@ gtadditions.machine.battery_buffer.uxv.1.name=UXV Voltage Battery Buffer
 gtadditions.machine.battery_buffer.uxv.4.name=UXV Voltage Battery Buffer
 gtadditions.machine.battery_buffer.uxv.9.name=UXV Voltage Battery Buffer
 gtadditions.machine.battery_buffer.uxv.16.name=UXV Voltage Battery Buffer
+
+metaitem.neutronium.sphere.name=Neutronium Sphere
+metaitem.triplet.neutronium.sphere.name=Triplet Neutronium Sphere
+metaitem.charged.triplet.neutronium.sphere.name=Charged Triplet Neutronium Sphere
+metaitem.contained.reissner.nordstrom.singularity.name=Contained Reissner-Nordstrom Singularity
+metaitem.contained.kerr.newmann.singularity.name=Contained Kerr-Newmann Singularity
+metaitem.contained.kerr.singularity.name=Contained Kerr Singularity
+metaitem.contained.high.density.protonic.matter.name=Contained High Density Protonic Matter
+metaitem.time.dilation.containment.unit.name=Time Dilation Containment Unit
+metaitem.microwormhole.generator.name=Microwormhole Generator
+metaitem.macrowormhole.generator.name=Macrowormhole Generator
+metaitem.stabilized.wormhole.generator.name=Stabilized Wormhole Generator
+metaitem.contained.exotic.matter.name=Contained Exotic Matter
+metaitem.separation.electromagnet.name=Separation Electromagnet
+
+fluid.free_electron_gas.name=Free Electron Gas
+fluid.free_alpha_gas.name=Free Alpha Gas
