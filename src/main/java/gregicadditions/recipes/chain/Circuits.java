@@ -151,6 +151,19 @@ public class Circuits {
                     .input(wireFine, NaquadahAlloy, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
 
+            //OPTICAL    //PROCESSOR
+
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(480000)
+                    .outputs(OPTICAL_PROCESSOR.getStackForm(1))
+                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
+                            SMD_TRANSISTOR_OPTICAL.getStackForm(8),
+                            SMD_CAPACITOR_OPTICAL.getStackForm(4),
+                            OPTICAL_PROCESSING_CORE.getStackForm(),
+                            HASOC.getStackForm(1))
+                    .input(wireFine, Pikyonium, 4)
+                    .fluidInputs(fluidStack).buildAndRegister();
+
+            
             //COSMIC     //PROCESSOR
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(1920000)
                     .outputs(COSMIC_PROCESSOR.getStackForm(1))
@@ -258,6 +271,85 @@ public class Circuits {
                 .duration(800)
                 .buildAndRegister();
 
+        
+        //OPTICAL ASSEMBLY
+        //PROCESSOR
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(OPTICAL_PROCESSOR.getStackForm(3))
+                .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))
+                .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
+                .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
+                .inputs(NEURO_PROCESSOR.getStackForm(2))
+                .input(wireGtSingle, UVSuperconductor, 4)
+                .inputs(ARAM.getStackForm(32))
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
+                .input(plate, HDCS, 2)
+                .input(foil, Polyetheretherketone, 16)
+                .outputs(OPTICAL_ASSEMBLY.getStackForm())
+                .fluidInputs(Duranium.getFluid(1296))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(2500))
+                .fluidInputs(NaquadahEnriched.getFluid(1296))
+                .qubit(4)
+                .EUt(960000)
+                .duration(400)
+                .buildAndRegister();
+
+        //COMPUTER
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(OPTICAL_ASSEMBLY.getStackForm(4))
+                .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(32))
+                .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(32))
+                .inputs(SMD_DIODE_OPTICAL.getStackForm(32))
+                .inputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
+                .inputs(OPTICAL_SOC.getStackForm())
+                .input(wireGtSingle, UHVSuperconductor, 2)
+                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(16))
+                .inputs(UHPIC.getStackForm(32))
+                .inputs(ARAM.getStackForm(64))
+                .inputs(ARAM.getStackForm(64))
+                .input(plate, Quantum, 2)
+                .input(foil, Polybenzimidazole, 16)
+                .inputs(GRAVI_STAR.getStackForm(4))
+                .outputs(OPTICAL_COMPUTER.getStackForm())
+                .fluidInputs(Tritanium.getFluid(288))
+                .fluidInputs(Polyetheretherketone.getFluid(1500))
+                .fluidInputs(Adamantium.getFluid(1296))
+                .qubit(4)
+                .EUt(1920000)
+                .duration(600)
+                .buildAndRegister();
+
+        //MAINFRAME
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(OPTICAL_COMPUTER.getStackForm(2))
+                .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))
+                .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
+                .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
+                .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
+                .input(wireGtSingle, UEVSuperconductor, 6)
+                .inputs(UHPIC.getStackForm(64))
+                .inputs(UHASOC.getStackForm(64))
+                .input(plate, EnrichedNaquadahAlloy, 4)
+                .input(frameGt, Bohrium, 1)
+                .input(foil, Zylon, 64)
+                .inputs(GRAVI_STAR.getStackForm(8))
+                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(48))
+                .outputs(OPTICAL_MAINFRAME.getStackForm())
+                .fluidInputs(Cinobite.getFluid(384))
+                .fluidInputs(Vibranium.getFluid(1296))
+                .fluidInputs(Polyetheretherketone.getFluid(2592))
+                .fluidInputs(Naquadria.getFluid(1296))
+                .qubit(8)
+                .EUt(6000000)
+                .duration(800)
+                .buildAndRegister();
+
+        
         //COSMIC ASSEMBLY
         //PROCESSOR
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -394,7 +486,6 @@ public class Circuits {
         BLAST_RECIPES.recipeBuilder().duration(900).EUt(480).blastFurnaceTemp(5000).inputs(RAW_CRYSTAL_CHIP.getStackForm()).input(block, Emerald).fluidInputs(Helium.getFluid(1000)).outputs(ENGRAVED_CRYSTAL_CHIP.getStackForm()).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(900).EUt(480).blastFurnaceTemp(5000).inputs(RAW_CRYSTAL_CHIP.getStackForm()).input(block, Olivine).fluidInputs(Helium.getFluid(1000)).outputs(ENGRAVED_CRYSTAL_CHIP.getStackForm()).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(30).input(dust, Iron).fluidInputs(HydrochloricAcid.getFluid(2000)).fluidOutputs(IronChloride.getFluid(3000), Hydrogen.getFluid(3000)).buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(1920).inputs(CENTRAL_PROCESSING_UNIT_WAFER.getStackForm(), CARBON_FIBERS.getStackForm(16)).fluidInputs(Glowstone.getFluid(576)).outputs(NANO_CENTRAL_PROCESSING_UNIT_WAFER.getStackForm()).buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 4
         ModHandler.removeRecipes(OreDictUnifier.get(dust, Materials.ReinforcedEpoxyResin));
