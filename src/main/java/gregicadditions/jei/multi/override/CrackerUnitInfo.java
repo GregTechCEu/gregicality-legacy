@@ -30,18 +30,23 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-            shapeInfo.add(MultiblockShapeInfo.builder()
-                    .aisle("XCXCX", "XCSCF", "XCXCX")
-                    .aisle("XCXCX", "H###X", "XCXCX")
-                    .aisle("XCXCX", "XCECF", "XCXCX")
-                    .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-                    .where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
-                    .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-                    .where('#', Blocks.AIR.getDefaultState())
-                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.EAST)
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
-                    .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.WEST)
-                    .build());
+            if (!coilType.getName().equals("superconductor")) {
+                if (!coilType.getName().equals("fusion_coil")) {
+
+                    shapeInfo.add(MultiblockShapeInfo.builder()
+                            .aisle("XCXCX", "XCSCF", "XCXCX")
+                            .aisle("XCXCX", "H###X", "XCXCX")
+                            .aisle("XCXCX", "XCECF", "XCXCX")
+                            .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
+                            .where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
+                            .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
+                            .where('#', Blocks.AIR.getDefaultState())
+                            .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.EAST)
+                            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
+                            .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.WEST)
+                            .build());
+                }
+            }
         }
         for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
             shapeInfo.add(MultiblockShapeInfo.builder()

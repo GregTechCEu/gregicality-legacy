@@ -29,21 +29,26 @@ public class PyrolyseOvenInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-            shapeInfo.add(MultiblockShapeInfo.builder()
-                    .aisle("XXX", "ISF", "XXX")
-                    .aisle("CCC", "C#C", "CCC")
-                    .aisle("CCC", "C#C", "CCC")
-                    .aisle("XXX", "BEH", "XXX")
-                    .where('S', GATileEntities.PYROLYSE_OVEN, EnumFacing.NORTH)
-                    .where('X', MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.ULV))
-                    .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-                    .where('#', Blocks.AIR.getDefaultState())
-                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.NORTH)
-                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.NORTH)
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
-                    .where('B', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.HV], EnumFacing.SOUTH)
-                    .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.SOUTH)
-                    .build());
+            if (!coilType.getName().equals("superconductor")) {
+                if (!coilType.getName().equals("fusion_coil")) {
+
+                    shapeInfo.add(MultiblockShapeInfo.builder()
+                            .aisle("XXX", "ISF", "XXX")
+                            .aisle("CCC", "C#C", "CCC")
+                            .aisle("CCC", "C#C", "CCC")
+                            .aisle("XXX", "BEH", "XXX")
+                            .where('S', GATileEntities.PYROLYSE_OVEN, EnumFacing.NORTH)
+                            .where('X', MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.ULV))
+                            .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
+                            .where('#', Blocks.AIR.getDefaultState())
+                            .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.NORTH)
+                            .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.NORTH)
+                            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
+                            .where('B', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.HV], EnumFacing.SOUTH)
+                            .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.SOUTH)
+                            .build());
+                }
+            }
         }
 
         for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {

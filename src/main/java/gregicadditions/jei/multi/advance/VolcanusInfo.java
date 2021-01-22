@@ -29,20 +29,24 @@ public class VolcanusInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-			shapeInfo.add(MultiblockShapeInfo.builder()
-                    .aisle("IFX", "CCC", "CCC", "XXX")
-                    .aisle("SXE", "C#C", "C#C", "XXX")
-                    .aisle("ODX", "CCC", "CCC", "XXX")
-                    .where('X', GAMetaBlocks.getMetalCasingBlockState(GAMaterials.HastelloyN))
-                    .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-                    .where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
-                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
-                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.NORTH)
-                    .where('D', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
-					.where('#', Blocks.AIR.getDefaultState())
-					.build());
+			if (coilType.getName().equals("superconductor") || coilType.getName().equals("fusion_coil")) {
+
+			} else {
+				shapeInfo.add(MultiblockShapeInfo.builder()
+						.aisle("IFX", "CCC", "CCC", "XXX")
+						.aisle("SXE", "C#C", "C#C", "XXX")
+						.aisle("ODX", "CCC", "CCC", "XXX")
+						.where('X', GAMetaBlocks.getMetalCasingBlockState(GAMaterials.HastelloyN))
+						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
+						.where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
+						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
+						.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+						.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
+						.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.NORTH)
+						.where('D', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
+						.where('#', Blocks.AIR.getDefaultState())
+						.build());
+			}
 		}
 		for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
 			shapeInfo.add(MultiblockShapeInfo.builder()

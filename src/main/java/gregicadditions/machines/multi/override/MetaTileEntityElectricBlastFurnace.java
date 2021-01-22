@@ -78,6 +78,8 @@ public class MetaTileEntityElectricBlastFurnace extends RecipeMapMultiblockContr
 				return false;
 			BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
 			BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+			if (coilType.getName().equals("superconductor") || coilType.getName().equals("fusion_coil"))
+				return false;
 			int blastFurnaceTemperature = coilType.getCoilTemperature();
 			int currentTemperature = blockWorldState.getMatchContext().getOrPut("blastFurnaceTemperature", blastFurnaceTemperature);
 			return currentTemperature == blastFurnaceTemperature;

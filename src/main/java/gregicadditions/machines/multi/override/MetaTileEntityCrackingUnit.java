@@ -64,6 +64,8 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
                 return false;
             BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (coilType.getName().equals("superconductor") || coilType.getName().equals("fusion_coil"))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
