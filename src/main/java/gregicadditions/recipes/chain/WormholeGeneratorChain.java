@@ -54,7 +54,7 @@ public class WormholeGeneratorChain {
                 .inputs(CHARGED_TRIPLET_NEUTRONIUM_SPHERE.getStackForm(64))
                 .outputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm(64))
                 .buildAndRegister();
-        STELLAR_FORGE_RECIPES.recipeBuilder().duration(4000).EUt(500000)
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(6000).EUt(6000000)
                 .inputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm(64))
                 .outputs(CONTAINED_KERR_NEWMANN_SINGULARITY.getStackForm())
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(63))
@@ -65,10 +65,10 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_KERR_SINGULARITY.getStackForm())
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
-                .fluidInputs(Tritanium.getFluid(576))
+                .fluidInputs(Trinium.getFluid(576))
                 .fluidInputs(FreeElectronGas.getFluid(1000))
                 .input(plate, MetastableOganesson, 6)
-                .input(plate, Uranium, 6)
+                .input(plate, Vibranium, 6)
                 .input(plate, Mendelevium.getMaterial(), 6)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.TARANIUM_CHARGE))
                 .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.LEPTONIC_CHARGE))
