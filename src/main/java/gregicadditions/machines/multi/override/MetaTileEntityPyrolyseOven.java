@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.override;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAHeatingCoil;
@@ -22,6 +23,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -48,6 +50,8 @@ public class MetaTileEntityPyrolyseOven extends gregtech.common.metatileentities
                 return false;
             BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
@@ -63,6 +67,8 @@ public class MetaTileEntityPyrolyseOven extends gregtech.common.metatileentities
                 return false;
             GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
             GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();

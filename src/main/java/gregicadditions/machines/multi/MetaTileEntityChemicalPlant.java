@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.*;
@@ -105,6 +106,8 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 return false;
             BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
@@ -120,6 +123,8 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 return false;
             GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
             GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
