@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -178,7 +179,24 @@ public class NanotubeChain {
                 .fluidInputs(Cycloparaphenylene.getFluid(200))
                 .fluidInputs(Methane.getFluid(800))
                 .notConsumable(plate, Rhenium)
+                .notConsumable(new IntCircuitIngredient(0))
                 .outputs(OreDictUnifier.get(ingot, CarbonNanotubes))
+                .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)
+                .fluidInputs(Cycloparaphenylene.getFluid(200))
+                .fluidInputs(Methane.getFluid(800))
+                .input(dust, Seaborgium)
+                .notConsumable(plate, Rhenium)
+                .fluidOutputs(SeaborgiumDopedNanotubes.getFluid(1000))
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)
+                .fluidInputs(Cycloparaphenylene.getFluid(3600))
+                .fluidInputs(Methane.getFluid(14400))
+                .inputs(Fullerene.getItemStack())
+                .notConsumable(plate, Rhenium)
+                .fluidOutputs(FullereneDopedNanotubes.getFluid(18000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(250000)

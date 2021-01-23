@@ -129,12 +129,6 @@ public class Batteries {
                 .duration(60)
                 .outputs(BATTERY_LARGE_NEUTRONIUM.getStackForm())
                 .buildAndRegister();
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, Iron)
-                .outputs(OreDictUnifier.get(dust, Iron, 128))
-                .EUt(1)
-                .duration(1)
-                .buildAndRegister();
 
 
         ItemStack last_bat = (GAConfig.GT5U.replaceUVwithMAXBat ? MAX_BATTERY : ZPM2).getStackForm();

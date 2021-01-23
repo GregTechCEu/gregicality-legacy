@@ -343,6 +343,53 @@ public class GAMetaItem extends MaterialMetaItem {
         ESCHERICHIA_CULTURE = addItem(477, "eschericia.culture");
         BIFIDOBACTERIUM_CULTURE = addItem(478, "bifidobacterium.culture");
         BREVIBACTERIUM_CULTURE = addItem(479, "brevibacterium.culture");
+        
+        NDYAG_BOULE = addItem(480,"ndyag_boule");
+        PRHOYLF_BOULE = addItem(481,"prhoylf_boule");
+        LUTMYVO_BOULE = addItem(482,"lutmyvo_boule");
+        NDYAG_ROD = addItem(483,"ndyag_rod");
+        PRHOYLF_ROD = addItem(484,"prhoylf_rod");
+        LUTMYVO_ROD = addItem(485,"lutmyvo_rod");
+        LOW_FREQUENCY_LASER = addItem(486,"low_frequency_laser");
+        MEDIUM_FREQUENCY_LASER = addItem(487,"medium_frequency_laser");
+        HIGH_FREQUENCY_LASER = addItem(488,"high_frequency_laser");
+        PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE = addItem(489,"periodically_poled_lithium_niobate_boule");
+        HIGHLY_REFLECTIVE_MIRROR = addItem(490,"highly_reflective_mirror");
+        NON_LINEAR_OPTICAL_LENS = addItem(491,"non_linear_optical_lens");
+        ROTATING_TRANSPARENT_SURFACE = addItem(492,"rotating_transparent_surface");
+        ELECTRON_SOURCE = addItem(493,"electron_source");
+
+        SMD_CAPACITOR_OPTICAL = addItem(494,"smd_capacitor_optical");
+        SMD_DIODE_OPTICAL = addItem(495,"smd_diode_optical");
+        SMD_RESISTOR_OPTICAL = addItem(496,"smd_resistor_optical");
+        SMD_TRANSISTOR_OPTICAL = addItem(497,"smd_transistor_optical");
+        OPTICAL_SOC_WAFER = addItem(498,"optical_soc_wafer");
+        OPTICAL_SOC = addItem(499,"optical_soc");
+        OPTICAL_PROCESSING_CORE = addItem(500,"optical_processing_core");
+        OPTICAL_PROCESSOR = addItem(501,"circuit.processor.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        OPTICAL_ASSEMBLY = addItem(502,"circuit.assembly.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        OPTICAL_COMPUTER = addItem(503,"circuit.computer.optical").setUnificationData(OrePrefix.circuit, UEV);
+        OPTICAL_MAINFRAME = addItem(504,"circuit.mainframe.optical").setUnificationData(OrePrefix.circuit, UIV);
+
+        PEEK_POLYAMIDE_FOIL = addItem(505,"peek_polyamide_foil");
+        HIGHLY_INSULATING_FOIL = addItem(506,"highly_insulating_foil");
+        INSULATION_WIRE_ASSEMBLY = addItem(507,"insulation_wire_assembly");
+
+        NEUTRONIUM_SPHERE = addItem(508, "neutronium.sphere");
+        TRIPLET_NEUTRONIUM_SPHERE = addItem(509, "triplet.neutronium.sphere");
+        CHARGED_TRIPLET_NEUTRONIUM_SPHERE = addItem(510, "charged.triplet.neutronium.sphere");
+        CONTAINED_REISSNER_NORDSTROM_SINGULARITY = addItem(511, "contained.reissner.nordstrom.singularity");
+        CONTAINED_KERR_NEWMANN_SINGULARITY = addItem(512, "contained.kerr.newmann.singularity");
+        CONTAINED_KERR_SINGULARITY = addItem(513, "contained.kerr.singularity");
+        CONTAINED_HIGH_DENSITY_PROTONIC_MATTER = addItem(514, "contained.high.density.protonic.matter");
+        TIME_DILATION_CONTAINMENT_UNIT = addItem(515, "time.dilation.containment.unit");
+        MICROWORMHOLE_GENERATOR = addItem(516, "microwormhole.generator");
+        MACROWORMHOLE_GENERATOR = addItem(517, "macrowormhole.generator");
+        STABILIZED_WORMHOLE_GENERATOR = addItem(518, "stabilized.wormhole.generator");
+        CONTAINED_EXOTIC_MATTER = addItem(519, "contained.exotic.matter");
+        SEPARATION_ELECTROMAGNET = addItem(521, "separation.electromagnet");
+        SPHERE_FIELD_SHAPE = addItem(522, "sphere.field.shape");
+
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;

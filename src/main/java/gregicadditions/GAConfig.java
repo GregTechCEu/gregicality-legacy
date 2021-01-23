@@ -451,6 +451,7 @@ public class GAConfig {
         public LargeMacerator largeMacerator = new LargeMacerator();
         public LargeMixer largeMixer = new LargeMixer();
         public LargeMultiUse largeMultiUse = new LargeMultiUse();
+        public LargePackager largePackager = new LargePackager();
         public LargeSifter largeSifter = new LargeSifter();
         public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
@@ -1123,6 +1124,36 @@ public class GAConfig {
             public int durationDecreasePercentage = 50;
 
         }
+
+        public static class LargePackager {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Packager.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Packager EU/t percentage cost")
+            @Config.RequiresMcRestart
+            public int euPercentage = 75;
+
+            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Packager parallel recipes per voltage tier difference")
+            @Config.RequiresMcRestart
+            public int stack = 4;
+
+            @Config.Comment("The duration percentage of a recipe when done in the Large Packager.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Packager duration decrease percentage")
+            @Config.RequiresMcRestart
+            public int durationPercentage = 90;
+
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Packager.")
+            @Config.RangeInt(min = 1)
+            @Config.Name("Large Packager chanced output boost percentage")
+            @Config.RequiresMcRestart
+            public int chancedBoostPercentage = 100;
+
+            @Config.Comment("The casing material to use for the Large Packager.")
+            @Config.Name("Large Packager casing material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "hg_alloy";
 
         public static class HeatingCoils {
 

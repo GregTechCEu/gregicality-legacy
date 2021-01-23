@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -60,6 +61,7 @@ public class AluminiumChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(125)
                 .fluidInputs(PureAluminiumHydroxideSolution.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .outputs(AluminiumHydroxide.getItemStack())
                 .buildAndRegister();
 

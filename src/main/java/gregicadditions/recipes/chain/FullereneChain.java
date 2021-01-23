@@ -135,6 +135,7 @@ public class FullereneChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrogenCyanide.getFluid(1000))
                 .fluidInputs(PotassiumHydroxide.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .outputs(PotassiumCyanide.getItemStack())
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(122880)
@@ -283,8 +284,8 @@ public class FullereneChain {
                 .fluidInputs(Chlorine.getFluid(1000))
                 .notConsumable(dust, Carbon)
                 .fluidOutputs(Phosgene.getFluid(2000))
-                .EUt(8000000)
-                .duration(50)
+                .EUt(2000)
+                .duration(800)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dimethylamine.getFluid(1000))

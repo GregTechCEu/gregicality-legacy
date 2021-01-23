@@ -105,7 +105,7 @@ public class RecipeHandler {
 
 
         AtomicInteger totalMaterial = new AtomicInteger(0);
-        int fluidComponents = (int) material.materialComponents.stream().filter(mat -> mat.material instanceof FluidMaterial).count();
+        int fluidComponents = (int) material.materialComponents.stream().filter(mat -> mat.material instanceof FluidMaterial && !(mat.material instanceof DustMaterial)).count();
         if ((material.materialComponents.size() - fluidComponents) <= MIXER_RECIPES.getMaxInputs() && fluidComponents <= MIXER_RECIPES.getMaxFluidInputs()) {
             SimpleRecipeBuilder builder = MIXER_RECIPES.recipeBuilder().EUt(30).duration((int) (material.getAverageMass() * totalInputAmount));
             material.materialComponents.forEach(materialStack -> {
