@@ -35,14 +35,17 @@ public class GAMetaItem2 extends StandardMetaItem {
 
     @Override
     public void registerSubItems() {
-        BATTERY_SMALL_VANADIUM = addItem(1, "small.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, 4)).setModelAmount(8);
-        BATTERY_SMALL_NEUTRONIUM = addItem(2, "small.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(7372800000L, 9)).setModelAmount(8);
-        BATTERY_MEDIUM_VANADIUM = addItem(3, "medium.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(28800000, 5)).setModelAmount(8);
-        BATTERY_MEDIUM_NAQUADRIA = addItem(4, "medium.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(460800000, 7)).setModelAmount(8);
-        BATTERY_MEDIUM_NEUTRONIUM = addItem(5, "medium.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(29491200000L, 10)).setModelAmount(8);
-        BATTERY_LARGE_VANADIUM = addItem(6, "large.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(115200000, 6)).setModelAmount(8);
-        BATTERY_LARGE_NAQUADRIA = addItem(7, "large.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(1843200000, 8)).setModelAmount(8);
-        BATTERY_LARGE_NEUTRONIUM = addItem(8, "large.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, 11)).setModelAmount(8);
+        BATTERY_SMALL_VANADIUM = addItem(1, "small.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, GAValues.EV)).setModelAmount(8);
+        BATTERY_MEDIUM_VANADIUM = addItem(3, "medium.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(28800000, GAValues.IV)).setModelAmount(8);
+        BATTERY_LARGE_VANADIUM = addItem(6, "large.vanadium.battery").addComponents(GAElectricStats.createRechargeableBattery(115200000, GAValues.LuV)).setModelAmount(8);
+
+        BATTERY_MEDIUM_NAQUADRIA = addItem(4, "medium.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(460800000, GAValues.ZPM)).setModelAmount(8);
+        BATTERY_LARGE_NAQUADRIA = addItem(7, "large.naquadria.battery").addComponents(GAElectricStats.createRechargeableBattery(1843200000, GAValues.UV)).setModelAmount(8);
+
+        BATTERY_SMALL_NEUTRONIUM = addItem(2, "small.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(7372800000L, GAValues.UHV)).setModelAmount(8);
+        BATTERY_MEDIUM_NEUTRONIUM = addItem(5, "medium.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(29491200000L, GAValues.UEV)).setModelAmount(8);
+        BATTERY_LARGE_NEUTRONIUM = addItem(8, "large.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, GAValues.UIV)).setModelAmount(8);
+
         GAMetaItems.PROSPECT_TOOL_MV = addItem(100, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2)).addComponents(ElectricStats.createElectricItem(18000, 2)).setMaxStackSize(1);
         GAMetaItems.PROSPECT_TOOL_HV = addItem(101, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3)).addComponents(ElectricStats.createElectricItem(27000, 3)).setMaxStackSize(1);
         GAMetaItems.PROSPECT_TOOL_LuV = addItem(102, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6)).addComponents(ElectricStats.createElectricItem(63000, 6)).setMaxStackSize(1);
