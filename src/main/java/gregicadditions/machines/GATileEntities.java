@@ -290,8 +290,8 @@ public class GATileEntities {
             ARC_FURNACE[8] = create(3264, new GASimpleMachineMetaTileEntity(location("arc_furnace.uhv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 9));
             ARC_FURNACE[9] = create(3265, new GASimpleMachineMetaTileEntity(location("arc_furnace.uev"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 10));
             ARC_FURNACE[10] = create(3266, new GASimpleMachineMetaTileEntity(location("arc_furnace.uiv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 11));
-            ARC_FURNACE[9] = create(3267, new GASimpleMachineMetaTileEntity(location("arc_furnace.umv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 12));
-            ARC_FURNACE[11] = create(3268, new GASimpleMachineMetaTileEntity(location("arc_furnace.uxv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 13));
+            ARC_FURNACE[11] = create(3267, new GASimpleMachineMetaTileEntity(location("arc_furnace.umv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 12));
+            ARC_FURNACE[12] = create(3268, new GASimpleMachineMetaTileEntity(location("arc_furnace.uxv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 13));
         }
 
         if (GAConfig.GT5U.highTierAssemblers) {
