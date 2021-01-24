@@ -7,12 +7,15 @@ import gregtech.api.capability.IElectricItem;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.resources.TextureArea;
+import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.ProgressWidget;
+import gregtech.api.gui.widgets.ToggleButtonWidget;
 import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,6 +27,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import java.awt.*;
+import java.util.List;
 
 public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
 
@@ -122,6 +126,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
         WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRaduis + 30, 32, 150, Math.max(((32 * chunkRaduis) / 18) - 1, 1));
+        WidgetProspectingMap widgetProspectingMap = new WidgetProspectingMap(30, 32, chunkRaduis, playerInventoryHolder, widgetItemFluidList);
         return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 32 * chunkRaduis + 220, 32 * chunkRaduis + 30)
                 .bindOpenListener(() -> setToolGTDetravOpen(playerInventoryHolder.getCurrentItem(), true))
                 .bindCloseListener(() -> setToolGTDetravOpen(playerInventoryHolder.getCurrentItem(), false))
@@ -129,9 +134,29 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
                 .widget(new ProgressWidget(() -> getEuStored(playerInventoryHolder.getCurrentItem()), 32 * chunkRaduis + 30, 13, 150, 18,
                         TextureArea.fullImage("textures/gui/progress_bar/progress_bar_energy.png"),
                         ProgressWidget.MoveType.HORIZONTAL))
-                .widget(new WidgetProspectingMap(30, 32, chunkRaduis, playerInventoryHolder, widgetItemFluidList))
+                .widget(widgetProspectingMap)
                 .widget(widgetItemFluidList)
+                .widget(new ToggleButtonWidget(0, -18, 18, 18,
+                        GuiTextures.BUTTON_BLACKLIST, ()->false, (pressed)->{}) {
+                    @Override
+                    public boolean mouseClicked(int mouseX, int mouseY, int button) {
+                        if (this.isMouseOverElement(mouseX, mouseY)) {
+                            this.isPressed = !this.isPressed;
+                            widgetProspectingMap.setDarkMode(isPressed);
+                            this.playButtonClickSound();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                })
                 .build(playerInventoryHolder, entityPlayer);
+    }
+
+    @Override
+    public void addInformation(ItemStack itemStack, List<String> lines) {
+        if (chunkRaduis >= 6)
+            lines.add(I18n.format("metaarmor.energy_share.tooltip.guide"));
     }
 
     private double getEuStored(ItemStack itemStack) {

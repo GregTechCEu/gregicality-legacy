@@ -35,6 +35,7 @@ public class WidgetProspectingMap extends Widget {
     private static ProspectingTexture map;
     private WidgetOreList oreList = null;
     private ProspectingPacket packet = null;
+    private boolean darkMode = false;
 
     public WidgetProspectingMap(int xPosition, int yPosition, int chunkRadius, PlayerInventoryHolder playerInventoryHolder) {
         super(new Position(xPosition, yPosition), new Size(16 * (chunkRadius * 2 - 1), 16 * (chunkRadius * 2 - 1)));
@@ -50,6 +51,19 @@ public class WidgetProspectingMap extends Widget {
                 map.loadTexture(null, name);
             }
         };
+    }
+
+    public void setDarkMode(boolean mode) {
+        if (darkMode != mode) {
+            darkMode = mode;
+            if (map != null) {
+                map.loadTexture(null, darkMode? Color.darkGray.getRGB(): Color.WHITE.getRGB());
+            }
+        }
+    }
+
+    public boolean getDarkMode() {
+        return darkMode;
     }
 
     @Override
