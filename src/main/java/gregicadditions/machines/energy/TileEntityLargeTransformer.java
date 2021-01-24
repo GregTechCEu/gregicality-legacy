@@ -36,8 +36,8 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     private IEnergyContainer input;
     private IEnergyContainer output;
     private boolean isActive = false;
-    private int currentDrain = 0;
-    private int drain = 0;
+    private long currentDrain = 0;
+    private long drain = 0;
     DecimalFormat formatter = new DecimalFormat("#0.0");
 
     public TileEntityLargeTransformer(ResourceLocation metaTileEntityId) {
@@ -77,9 +77,10 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
                 setActive(true);
             if (output.getEnergyStored() < output.getEnergyCapacity()) {
                 if (input.getEnergyStored() < output.getEnergyCapacity() - output.getEnergyStored()) {
-                    output.addEnergy(input.getEnergyStored());
-                    input.removeEnergy(input.getEnergyStored());
-                    currentDrain += input.getEnergyStored();
+                    long drain = input.getEnergyStored();
+                    output.addEnergy(drain);
+                    input.removeEnergy(drain);
+                    currentDrain += drain;
                 } else {
                     long left = output.getEnergyCapacity() - output.getEnergyStored();
                     output.addEnergy(left);
@@ -162,8 +163,8 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
         if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.input", input.getInputVoltage() / input.getInputAmperage(), input.getInputAmperage()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.output", output.getOutputVoltage() / output.getOutputAmperage(), output.getOutputAmperage()));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.input_average", formatter.format(drain * 1.0 / (input.getInputVoltage() * 1.0 / input.getInputAmperage()))));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.output_average", formatter.format(drain * 1.0 / (output.getOutputVoltage() * 1.0 / output.getOutputAmperage()))));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.input_average", formatter.format(drain * 1.0 / (input.getInputVoltage() * 1.0 ))));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_transformer.output_average", formatter.format(drain * 1.0 / (output.getOutputVoltage() * 1.0))));
         }
     }
 }

@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -26,6 +27,7 @@ public class BariumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
                 .inputs(BariumCarbonate.getItemStack())
                 .outputs(BariumOxide.getItemStack())
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)

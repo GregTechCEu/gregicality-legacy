@@ -5,6 +5,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import net.minecraft.item.ItemStack;
@@ -147,9 +148,10 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Perbromothiophene.getFluid(2000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
                 .notConsumable(dust, Zinc)
                 .notConsumable(dust, SodiumHydroxide)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Perbromothiophene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
@@ -550,7 +552,7 @@ public class SuperconductorsSMDChain {
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(104000).blastFurnaceTemp(1800)
                 .inputs(PiledTBCC.getItemStack())
-                .fluidOutputs(Oxygen.getFluid(10000))
+                .fluidInputs(Oxygen.getFluid(10000))
                 .outputs(TBCCODust.getItemStack())
                 .buildAndRegister();
 
@@ -570,6 +572,7 @@ public class SuperconductorsSMDChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .input(dust, Carbon)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Chlorine.getFluid(4000))
                 .fluidOutputs(CarbonTetrachloride.getFluid(1000))
                 .buildAndRegister();
@@ -804,14 +807,14 @@ public class SuperconductorsSMDChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(84500)
                 .input(dust, Strontium)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .outputs(StrontiumChloride.getItemStack())
+                .fluidInputs(Chlorine.getFluid(2000))
+                .outputs(StrontiumChloride.getItemStack(3))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(360).EUt(810000).blastFurnaceTemp(4500)
                 .input(dust, SodiumRuthenate)
                 .inputs(SodiumSeaborgate.getItemStack())
-                .inputs(StrontiumChloride.getItemStack(2))
+                .inputs(StrontiumChloride.getItemStack(3))
                 .outputs(OreDictUnifier.get(dust, Salt, 4))
                 .outputs(StrontiumSuperconductorDust.getItemStack())
                 .buildAndRegister();
@@ -838,6 +841,41 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Bromobutane.getFluid(1000))
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();
+        
+                BLAST_RECIPES.recipeBuilder().duration(280).EUt(5000).blastFurnaceTemp(700)
+                .notConsumable(dust, Salt)
+                .input(dust, Iridium)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, IridiumDioxide))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(7200)
+                .notConsumable(UVA_HALIDE_LAMP.getStackForm())
+                .fluidInputs(Krypton.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(2000))
+                .fluidOutputs(KryptonDifluoride.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(4900)
+                .input(dust, Manganese)
+                .fluidInputs(KryptonDifluoride.getFluid(2000))
+                .outputs(ManganeseFluoride.getItemStack())
+                .fluidOutputs(Krypton.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(5200)
+                .inputs(ManganeseFluoride.getItemStack())
+                .fluidInputs(Water.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Pyrolusite))
+                .fluidOutputs(HydrofluoricAcid.getFluid(4000))
+                .buildAndRegister();
+        
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(4400)
+                .input(dust, Lanthanum)
+                .fluidInputs(Oxygen.getFluid(1500))
+                .outputs(LanthanumOxide.getItemStack())
+                .buildAndRegister();
+
 
     }
 }

@@ -459,6 +459,8 @@ public class GAConfig {
         public BatteryTower batteryTower = new BatteryTower();
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
+        public HeatingCoils heatingCoils = new HeatingCoils();
+    }
 
         public static class LargeEngraver {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Engraver.")
@@ -1155,217 +1157,231 @@ public class GAConfig {
             public String casingMaterial = "hg_alloy";
 
         }
-    }
 
-    public static Extraction extraction;
+        public static class HeatingCoils {
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Default=\"superconductor\", \"fusion_coil\"")
+            @Config.Name("GTCE Heating Coil Blacklist")
+            @Config.RequiresMcRestart
+            public String[] gtceHeatingCoilsBlacklist = new String[]{
+                    ""
+            };
+            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines. Default=\"\"")
+            @Config.Name("Gregicality Heating Coil Blacklist")
+            @Config.RequiresMcRestart
+            public String[] gregicalityheatingCoilsBlacklist = new String[]{
+                    ""
+            };
+        }
 
-    public static class Extraction {
-        @Config.Comment({"List of reservoir types. Format: fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
-        @Config.RequiresMcRestart
-        public static String[] reservoirs = new String[]{
-                "water, 5000000, 10000000, 10, 30, [], [0], [2,17,24,0,10], []",
-                "oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
-                "iodized_oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
-                "lava, 250000, 1000000, 1, 10, [1], [], [], []",
-                "sea_water, 50000000, 100000000, 100, 30, [], [0], [2,10,24], []"
-        };
+        public static Extraction extraction;
 
-        @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
-        public static float reservoirChance = 0.5F;
+        public static class Extraction {
+            @Config.Comment({"List of reservoir types. Format: fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
+            @Config.RequiresMcRestart
+            public static String[] reservoirs = new String[]{
+                    "water, 5000000, 10000000, 10, 30, [], [0], [2,17,24,0,10], []",
+                    "oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
+                    "iodized_oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
+                    "lava, 250000, 1000000, 1, 10, [1], [], [], []",
+                    "sea_water, 50000000, 100000000, 100, 30, [], [0], [2,10,24], []"
+            };
 
-        @Config.Name("Drilling mud per tick")
-        @Config.Comment("The amount of drilling mud the Drilling Rig consumes every tick.")
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public static int drillingMud = 5;
+            @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
+            public static float reservoirChance = 0.5F;
 
-        @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
-        @Config.RangeInt(min = 1, max = 1000)
-        public static int timeToScanFactor = 100;
-    }
+            @Config.Name("Drilling mud per tick")
+            @Config.Comment("The amount of drilling mud the Drilling Rig consumes every tick.")
+            @Config.RangeInt(min = 0)
+            @Config.RequiresMcRestart
+            public static int drillingMud = 5;
 
-    public static void addConfigReservoirs(String[] reservoirs) {
-        for (int i = 0; i < reservoirs.length; i++) {
-            String str = reservoirs[i];
+            @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
+            @Config.RangeInt(min = 1, max = 1000)
+            public static int timeToScanFactor = 100;
+        }
 
-            if (str.isEmpty()) continue;
+        public static void addConfigReservoirs(String[] reservoirs) {
+            for (int i = 0; i < reservoirs.length; i++) {
+                String str = reservoirs[i];
 
-            String fluid = null;
-            int min = 0;
-            int max = 0;
-            int replenish = 0;
-            int weight = 0;
-            List<Integer> dimBlacklist = new ArrayList<>();
-            List<Integer> dimWhitelist = new ArrayList<>();
-            List<Integer> biomeBlacklist = new ArrayList<>();
-            List<Integer> biomeWhitelist = new ArrayList<>();
+                if (str.isEmpty()) continue;
 
-            String remain = str;
+                String fluid = null;
+                int min = 0;
+                int max = 0;
+                int replenish = 0;
+                int weight = 0;
+                List<Integer> dimBlacklist = new ArrayList<>();
+                List<Integer> dimWhitelist = new ArrayList<>();
+                List<Integer> biomeBlacklist = new ArrayList<>();
+                List<Integer> biomeWhitelist = new ArrayList<>();
 
-            boolean inParens = false;
-            int index = 0;
+                String remain = str;
 
-            while (remain.contains(",")) {
-                int endPos = remain.indexOf(",");
+                boolean inParens = false;
+                int index = 0;
 
-                String current = remain.substring(0, endPos).trim();
+                while (remain.contains(",")) {
+                    int endPos = remain.indexOf(",");
 
-                if (index == 0) fluid = current;
-                else if (index == 1) {
-                    try {
-                        min = Integer.parseInt(current);
-                        if (min < 0) {
-                            throw new RuntimeException("Negative value for minimum mB fluid for reservoir " + current + " " + (i + 1));
-                        }
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException("Invalid value for minimum mB fluid for reservoir  " + current + " " + (i + 1));
-                    }
-                } else if (index == 2) {
-                    try {
-                        max = Integer.parseInt(current);
-                        if (max < 0) {
-                            throw new RuntimeException("Negative value for maximum mB fluid for reservoir " + (i + 1));
-                        }
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException("Invalid value for maximum mB fluid for reservoir " + (i + 1));
-                    }
-                } else if (index == 3) {
-                    try {
-                        replenish = Integer.parseInt(current);
-                        if (replenish < 0) {
-                            throw new RuntimeException("Negative value for mB replenished per tick for reservoir " + (i + 1));
-                        }
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException("Invalid value for mB replenished per tick for reservoir " + (i + 1));
-                    }
-                } else if (index == 4) {
-                    try {
-                        weight = Integer.parseInt(current);
-                        if (weight < 0) {
-                            throw new RuntimeException("Negative value for weight for reservoir " + (i + 1));
-                        }
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException("Invalid value for weight for reservoir " + (i + 1));
-                    }
-                } else if (index == 5) {
-                    if (!inParens) {
-                        current = current.substring(1);
-                        inParens = true;
-                    }
+                    String current = remain.substring(0, endPos).trim();
 
-                    int cI = current.indexOf(",");
-                    int bI = current.indexOf("]");
-
-                    String value = current;
-                    if (bI >= 0 && (cI == -1 || bI < cI)) {
-                        value = value.substring(0, bI);
-                        inParens = false;
-                    }
-                    if (value.length() > 0) {
+                    if (index == 0) fluid = current;
+                    else if (index == 1) {
                         try {
-                            int dim = Integer.parseInt(value);
-                            dimBlacklist.add(dim);
+                            min = Integer.parseInt(current);
+                            if (min < 0) {
+                                throw new RuntimeException("Negative value for minimum mB fluid for reservoir " + current + " " + (i + 1));
+                            }
                         } catch (NumberFormatException e) {
-                            throw new RuntimeException(value + "Invalid blacklist dimension for reservoir " + (i + 1));
+                            throw new RuntimeException("Invalid value for minimum mB fluid for reservoir  " + current + " " + (i + 1));
                         }
-                    }
-                } else if (index == 6) {
-                    if (!inParens) {
-                        current = current.substring(1);
-                        inParens = true;
-                    }
-
-                    int cI = current.indexOf(",");
-                    int bI = current.indexOf("]");
-
-                    String value = current;
-                    if (bI >= 0 && (cI == -1 || bI < cI)) {
-                        value = value.substring(0, bI);
-                        inParens = false;
-                    }
-                    if (value.length() > 0) {
+                    } else if (index == 2) {
                         try {
-                            int dim = Integer.parseInt(value);
-                            dimWhitelist.add(dim);
+                            max = Integer.parseInt(current);
+                            if (max < 0) {
+                                throw new RuntimeException("Negative value for maximum mB fluid for reservoir " + (i + 1));
+                            }
                         } catch (NumberFormatException e) {
-                            throw new RuntimeException("Invalid whitelist dimension for reservoir " + (i + 1));
+                            throw new RuntimeException("Invalid value for maximum mB fluid for reservoir " + (i + 1));
+                        }
+                    } else if (index == 3) {
+                        try {
+                            replenish = Integer.parseInt(current);
+                            if (replenish < 0) {
+                                throw new RuntimeException("Negative value for mB replenished per tick for reservoir " + (i + 1));
+                            }
+                        } catch (NumberFormatException e) {
+                            throw new RuntimeException("Invalid value for mB replenished per tick for reservoir " + (i + 1));
+                        }
+                    } else if (index == 4) {
+                        try {
+                            weight = Integer.parseInt(current);
+                            if (weight < 0) {
+                                throw new RuntimeException("Negative value for weight for reservoir " + (i + 1));
+                            }
+                        } catch (NumberFormatException e) {
+                            throw new RuntimeException("Invalid value for weight for reservoir " + (i + 1));
+                        }
+                    } else if (index == 5) {
+                        if (!inParens) {
+                            current = current.substring(1);
+                            inParens = true;
+                        }
+
+                        int cI = current.indexOf(",");
+                        int bI = current.indexOf("]");
+
+                        String value = current;
+                        if (bI >= 0 && (cI == -1 || bI < cI)) {
+                            value = value.substring(0, bI);
+                            inParens = false;
+                        }
+                        if (value.length() > 0) {
+                            try {
+                                int dim = Integer.parseInt(value);
+                                dimBlacklist.add(dim);
+                            } catch (NumberFormatException e) {
+                                throw new RuntimeException(value + "Invalid blacklist dimension for reservoir " + (i + 1));
+                            }
+                        }
+                    } else if (index == 6) {
+                        if (!inParens) {
+                            current = current.substring(1);
+                            inParens = true;
+                        }
+
+                        int cI = current.indexOf(",");
+                        int bI = current.indexOf("]");
+
+                        String value = current;
+                        if (bI >= 0 && (cI == -1 || bI < cI)) {
+                            value = value.substring(0, bI);
+                            inParens = false;
+                        }
+                        if (value.length() > 0) {
+                            try {
+                                int dim = Integer.parseInt(value);
+                                dimWhitelist.add(dim);
+                            } catch (NumberFormatException e) {
+                                throw new RuntimeException("Invalid whitelist dimension for reservoir " + (i + 1));
+                            }
+                        }
+                    } else if (index == 7) {
+                        if (!inParens) {
+                            current = current.substring(1);
+                            inParens = true;
+                        }
+
+                        int cI = current.indexOf(",");
+                        int bI = current.indexOf("]");
+
+                        String value = current;
+                        if (bI >= 0 && (cI == -1 || bI < cI)) {
+                            value = value.substring(0, bI);
+                            inParens = false;
+                        }
+                        if (value.length() > 0) {
+                            GALog.logger.info("biomeBlacklist value {}", value);
+                            biomeBlacklist.add(Integer.valueOf(value.trim()));
+                        }
+                    } else if (index == 8) {
+                        if (!inParens) {
+                            current = current.substring(1);
+                            inParens = true;
+                        }
+
+                        int cI = current.indexOf(",");
+                        int bI = current.indexOf("]");
+
+                        String value = current;
+                        if (bI >= 0 && (cI == -1 || bI < cI)) {
+                            value = value.substring(0, bI);
+                            inParens = false;
+                        }
+                        if (value.length() > 0) {
+                            GALog.logger.info("biomeWhitelist value {}", value);
+                            biomeWhitelist.add(Integer.valueOf((value.trim())));
                         }
                     }
-                } else if (index == 7) {
-                    if (!inParens) {
-                        current = current.substring(1);
-                        inParens = true;
-                    }
 
-                    int cI = current.indexOf(",");
-                    int bI = current.indexOf("]");
-
-                    String value = current;
-                    if (bI >= 0 && (cI == -1 || bI < cI)) {
-                        value = value.substring(0, bI);
-                        inParens = false;
-                    }
-                    if (value.length() > 0) {
-                        GALog.logger.info("biomeBlacklist value {}", value);
-                        biomeBlacklist.add(Integer.valueOf(value.trim()));
-                    }
-                } else if (index == 8) {
-                    if (!inParens) {
-                        current = current.substring(1);
-                        inParens = true;
-                    }
-
-                    int cI = current.indexOf(",");
-                    int bI = current.indexOf("]");
-
-                    String value = current;
-                    if (bI >= 0 && (cI == -1 || bI < cI)) {
-                        value = value.substring(0, bI);
-                        inParens = false;
-                    }
-                    if (value.length() > 0) {
-                        GALog.logger.info("biomeWhitelist value {}", value);
-                        biomeWhitelist.add(Integer.valueOf((value.trim())));
-                    }
+                    remain = remain.substring(endPos + 1);
+                    if (!inParens) index++;
                 }
 
-                remain = remain.substring(endPos + 1);
-                if (!inParens) index++;
+                String current = remain.trim();
+
+                if (!inParens) {
+                    current = current.substring(1);
+                }
+
+                int cI = current.indexOf(",");
+                int bI = current.indexOf("]");
+
+                String value = current;
+                if (cI == -1 || bI < cI) {
+                    value = value.substring(0, bI);
+                }
+                if (value.length() > 0) {
+                    GALog.logger.info("value {}", value);
+                    biomeWhitelist.add(Integer.valueOf(value.trim()));
+                }
+
+                fluid = fluid.toLowerCase(Locale.ENGLISH);
+                if (FluidRegistry.getFluid(fluid) == null) {
+                    throw new RuntimeException("Invalid fluid name for reservoir " + (i + 1));
+                }
+
+                PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(fluid, min, max, replenish, weight);
+                res.dimensionWhitelist = dimWhitelist;
+                res.dimensionBlacklist = dimBlacklist;
+                res.biomeWhitelist = biomeWhitelist;
+                res.biomeBlacklist = biomeBlacklist;
+
+                GALog.logger.info("biomeWhitelist {}", biomeWhitelist);
+                GALog.logger.info("biomeBlacklist {}", biomeBlacklist);
+
+                GALog.logger.info("Added resevoir type " + fluid);
             }
-
-            String current = remain.trim();
-
-            if (!inParens) {
-                current = current.substring(1);
-            }
-
-            int cI = current.indexOf(",");
-            int bI = current.indexOf("]");
-
-            String value = current;
-            if (cI == -1 || bI < cI) {
-                value = value.substring(0, bI);
-            }
-            if (value.length() > 0) {
-                GALog.logger.info("value {}", value);
-                biomeWhitelist.add(Integer.valueOf(value.trim()));
-            }
-
-            fluid = fluid.toLowerCase(Locale.ENGLISH);
-            if (FluidRegistry.getFluid(fluid) == null) {
-                throw new RuntimeException("Invalid fluid name for reservoir " + (i + 1));
-            }
-
-            PumpjackHandler.ReservoirType res = PumpjackHandler.addReservoir(fluid, min, max, replenish, weight);
-            res.dimensionWhitelist = dimWhitelist;
-            res.dimensionBlacklist = dimBlacklist;
-            res.biomeWhitelist = biomeWhitelist;
-            res.biomeBlacklist = biomeBlacklist;
-
-            GALog.logger.info("biomeWhitelist {}", biomeWhitelist);
-            GALog.logger.info("biomeBlacklist {}", biomeBlacklist);
-
-            GALog.logger.info("Added resevoir type " + fluid);
         }
     }
-}

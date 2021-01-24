@@ -397,6 +397,21 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem HIGHLY_INSULATING_FOIL;
     public static MetaItem<?>.MetaValueItem INSULATION_WIRE_ASSEMBLY;
 
+    public static MetaItem<?>.MetaValueItem NEUTRONIUM_SPHERE;
+    public static MetaItem<?>.MetaValueItem TRIPLET_NEUTRONIUM_SPHERE;
+    public static MetaItem<?>.MetaValueItem CHARGED_TRIPLET_NEUTRONIUM_SPHERE;
+    public static MetaItem<?>.MetaValueItem CONTAINED_REISSNER_NORDSTROM_SINGULARITY;
+    public static MetaItem<?>.MetaValueItem CONTAINED_KERR_NEWMANN_SINGULARITY;
+    public static MetaItem<?>.MetaValueItem CONTAINED_KERR_SINGULARITY;
+    public static MetaItem<?>.MetaValueItem CONTAINED_HIGH_DENSITY_PROTONIC_MATTER;
+    public static MetaItem<?>.MetaValueItem TIME_DILATION_CONTAINMENT_UNIT;
+    public static MetaItem<?>.MetaValueItem MICROWORMHOLE_GENERATOR;
+    public static MetaItem<?>.MetaValueItem MACROWORMHOLE_GENERATOR;
+    public static MetaItem<?>.MetaValueItem STABILIZED_WORMHOLE_GENERATOR;
+    public static MetaItem<?>.MetaValueItem CONTAINED_EXOTIC_MATTER;
+    public static MetaItem<?>.MetaValueItem SEPARATION_ELECTROMAGNET;
+    public static MetaItem<?>.MetaValueItem SPHERE_FIELD_SHAPE;
+
     
     public static void init() {
         GAMetaItem item = new GAMetaItem();

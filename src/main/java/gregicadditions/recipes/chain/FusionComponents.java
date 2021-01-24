@@ -33,7 +33,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(2880 * 2))
                 .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
-                .input(cableGtOctal, UVSuperconductor, 4)
+                .input(wireGtOctal, UVSuperconductor, 4)
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 2)
                 .input(plate, Einsteinium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(4))
@@ -43,7 +43,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1, 4))
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
-                .input(cableGtOctal, UHVSuperconductor, 4)
+                .input(wireGtOctal, UHVSuperconductor, 4)
                 .input(plate, Bohrium, 2)
                 .input(plate, Fermium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(16))
@@ -53,7 +53,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_2, 4))
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
-                .input(cableGtOctal, UEVSuperconductor, 4)
+                .input(wireGtOctal, UEVSuperconductor, 4)
                 .input(plate, Vibranium, 2)
                 .input(plate, Mendelevium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(64))
