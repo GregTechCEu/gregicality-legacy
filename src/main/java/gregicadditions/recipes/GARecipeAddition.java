@@ -412,8 +412,6 @@ public class GARecipeAddition {
         DISTILLATION_RECIPES.addRecipe(result);
 
         //Fluid Heater Recipes
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(16).EUt(30).circuitMeta(1).fluidInputs(Acetone.getFluid(100)).fluidOutputs(Ethenone.getFluid(100)).buildAndRegister();
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(16).EUt(30).circuitMeta(1).fluidInputs(CalciumAcetate.getFluid(200)).fluidOutputs(Acetone.getFluid(200)).buildAndRegister();
 
         //Fermenter Recipe
         FERMENTING_RECIPES.recipeBuilder().duration(150).EUt(2).fluidInputs(Biomass.getFluid(100)).fluidOutputs(FermentedBiomass.getFluid(100)).buildAndRegister();
@@ -787,8 +785,6 @@ public class GARecipeAddition {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(491520).outputs(FIELD_GENERATOR_UV.getStackForm()).inputs(OreDictUnifier.get(frameGt, Tritanium, 1), GRAVI_STAR.getStackForm(), EMITTER_UV.getStackForm(4), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(cableGtOctal, Duranium, 4)).input(circuit, Tier.Superconductor, 16).fluidInputs(SolderingAlloy.getFluid(2304)).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(1966080).outputs(FIELD_GENERATOR_UHV.getStackForm()).inputs(OreDictUnifier.get(frameGt, Seaborgium, 1), GRAVI_STAR.getStackForm(), EMITTER_UHV.getStackForm(4), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64)).input(cableGtSingle, TungstenTitaniumCarbide, 4).input(circuit, Tier.Infinite, 16).fluidInputs(SolderingAlloy.getFluid(2304)).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320).outputs(FIELD_GENERATOR_UEV.getStackForm()).inputs(OreDictUnifier.get(frameGt, Bohrium, 1), GRAVI_STAR.getStackForm(), EMITTER_UEV.getStackForm(4), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64), OreDictUnifier.get(wireFine, Osmium, 64)).input(cableGtSingle, Pikyonium, 4).input(circuit, UEV, 16).fluidInputs(SolderingAlloy.getFluid(2304)).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().inputs(MASTER_BOARD.getStackForm(), STEM_CELLS.getStackForm(8), GLASS_TUBE.getStackForm(8), OreDictUnifier.get(foil, SiliconeRubber, 64)).input(plate, Gold, 8).input(plate, StainlessSteel, 4).fluidInputs(SterileGrowthMedium.getFluid(100), UUMatter.getFluid(20), DistilledWater.getFluid(4000)).outputs(NEURO_PROCESSOR.getStackForm(8)).duration(200).EUt(20000).buildAndRegister();
 
         //Star Recipes
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680).inputs(new ItemStack(Items.NETHER_STAR)).fluidInputs(Dubnium.getFluid(288)).outputs(GRAVI_STAR.getStackForm()).buildAndRegister();
