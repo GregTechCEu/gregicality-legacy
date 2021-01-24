@@ -102,6 +102,15 @@ public class FusionElementsChain {
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Chromium48.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaIron52.getFluid(125)).duration(128).EUt(7000).euStart(380000000L).coilTier(2).buildAndRegister();
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Iron52.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaNickel56.getFluid(125)).duration(128).EUt(7000).euStart(400000000L).coilTier(2).buildAndRegister();
 
+        ADV_FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(CNOcatalyst.getFluid(160), Hydrogen.getFluid(640))
+                .fluidOutputs(PlasmaHeliumCNO.getFluid(800))
+                .duration(128)
+                .EUt(8192)
+                .euStart(100000000)
+                .coilTier(1)
+                .buildAndRegister();
+
 
         DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaTitanium44.getFluid(144)).fluidOutputs(Calcium44.getFluid(144)).buildAndRegister();
         DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaChromium48.getFluid(144)).fluidOutputs(Titanium.getFluid(144)).buildAndRegister();
