@@ -1135,7 +1135,7 @@ public class GARecipeAddition {
         }
 
         //ZirconiumTetrachloride should be remove later
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).inputs(ZirconiumTetrachloride.getItemStack(4)).outputs(OreDictUnifier.get(dust, Zirconium)).fluidOutputs(Chlorine.getFluid(3000)).buildAndRegister();
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).inputs(ZirconiumTetrachloride.getItemStack(5)).outputs(OreDictUnifier.get(dust, Zirconium)).fluidOutputs(Chlorine.getFluid(4000)).buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).fluidInputs(SiliconFluoride.getFluid(2000)).outputs(OreDictUnifier.get(dust, Silicon)).fluidOutputs(Fluorine.getFluid(1000)).buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120).fluidInputs(SiliconFluoride.getFluid(2000)).outputs(OreDictUnifier.get(dust, Silicon)).fluidOutputs(Fluorine.getFluid(1000)).buildAndRegister();
