@@ -182,6 +182,12 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().EUt(8000).duration(250)
+                .input(dust, Lead)
+                .fluidInputs(NitrogenTetroxide.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, LeadNitrate, 3))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1700).blastFurnaceTemp(1600)
                 .inputs(ZirconylChloride.getItemStack())
                 .input(dust, Rutile)
