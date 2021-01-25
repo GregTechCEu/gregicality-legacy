@@ -93,19 +93,14 @@ public class PlasticChain {
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, ChromiumTrioxide, 2)
-                .input(dust, PotassiumNitrade, 2)
+                .input(dust, Saltpeter, 2)
                 .outputs(OreDictUnifier.get(dust, Potassiumdichromate))
+                .fluidOutputs(NitrogenDioxide.getFluid(2000))
+                .fluidOutputs(Oxygen.getFluid(1000))
                 .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Potassium)
-                .fluidInputs(NitricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, PotassiumNitrade))
-                .EUt(30)
-                .duration(100)
-                .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitrationMixture.getFluid(1000))
