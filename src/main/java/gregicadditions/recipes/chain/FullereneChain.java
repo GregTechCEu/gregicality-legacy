@@ -138,8 +138,8 @@ public class FullereneChain {
                 .notConsumable(new IntCircuitIngredient(0))
                 .outputs(PotassiumCyanide.getItemStack())
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(122880)
-                .duration(250)
+                .EUt(30720)
+                .duration(500)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, RockSalt, 2)
