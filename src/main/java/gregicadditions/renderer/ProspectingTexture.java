@@ -23,6 +23,7 @@ public class ProspectingTexture extends AbstractTexture {
 
     private final ProspectingPacket packet;
     private String selected = "all";
+    private int bgColor = Color.WHITE.getRGB();
     private int imageWidth = -1;
     private int imageHeight = -1;
 
@@ -41,7 +42,7 @@ public class ProspectingTexture extends AbstractTexture {
         for (int i = 0; i < wh; i++){
             for (int j = 0; j < wh; j++) {
                 // draw bg
-                image.setRGB(i, j, Color.WHITE.getRGB());
+                image.setRGB(i, j, bgColor);
                 //draw ore
                 if (packet.pType == 0 && packet.map[i][j] != null) {
                     for (String orePrefix : packet.map[i][j].values()) {
@@ -82,6 +83,11 @@ public class ProspectingTexture extends AbstractTexture {
 
     public void loadTexture(@Nullable IResourceManager resourceManager, String selected){
         this.selected = selected;
+        loadTexture(resourceManager);
+    }
+
+    public void loadTexture(@Nullable IResourceManager resourceManager, int backGroundColor){
+        this.bgColor = backGroundColor;
         loadTexture(resourceManager);
     }
 
