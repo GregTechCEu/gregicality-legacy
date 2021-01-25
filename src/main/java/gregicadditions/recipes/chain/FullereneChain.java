@@ -147,8 +147,8 @@ public class FullereneChain {
                 .fluidOutputs(PotassiumHydroxide.getFluid(2000))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(1000))
-                .EUt(122880)
-                .duration(150)
+                .EUt(7680)
+                .duration(600)
                 .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .fluidInputs(IronChloride.getFluid(1000))
