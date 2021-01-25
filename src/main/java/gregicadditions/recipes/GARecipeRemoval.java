@@ -99,5 +99,6 @@ public class GARecipeRemoval {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_superconductor"));
 
         ModHandler.removeRecipes(OreDictUnifier.get(dust, YttriumBariumCuprate, 6));
+        ModHandler.removeRecipes(OreDictUnifier.get(dustTiny, YttriumBariumCuprate, 6));
     }
 }
