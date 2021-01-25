@@ -146,6 +146,18 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 }
                 int maxVoltage;
                 switch (tieredCasingType) {
+                    case TIERED_HULL_LV:
+                        maxVoltage = GAValues.V[GAValues.LV];
+                        break;
+                    case TIERED_HULL_MV:
+                        maxVoltage = GAValues.V[GAValues.MV];
+                        break;
+                    case TIERED_HULL_HV:
+                        maxVoltage = GAValues.V[GAValues.HV];
+                        break;
+                    case TIERED_HULL_EV:
+                        maxVoltage = GAValues.V[GAValues.EV];
+                        break;
                     case TIERED_HULL_IV:
                         maxVoltage = GAValues.V[GAValues.IV];
                         break;
