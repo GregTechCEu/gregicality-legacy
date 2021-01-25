@@ -162,7 +162,7 @@ public class NuclearChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
                 .inputs(NUCLEAR_WASTE_HEAVY_METAL.getStackForm())
-                .fluidOutputs(Mercury.getFluid(36))
+                .fluidOutputs(Mercury.getFluid(250))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Zinc, 2), 5555, 200)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Gallium, 2), 5555, 300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Cadmium, 2), 5555, 400)
