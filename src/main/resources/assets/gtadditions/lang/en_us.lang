@@ -3808,5 +3808,5 @@ metaitem.contained.exotic.matter.name=Contained Exotic Matter
 metaitem.separation.electromagnet.name=Separation Electromagnet
 metaitem.sphere.field.shape.name=Sphere Field Shape
 
-fluid.free_electron_gas.name=Free Electron Gas
-fluid.free_alpha_gas.name=Free Alpha Gas
+fluid.free_electron_gas=Free Electron Gas
+fluid.free_alpha_gas=Free Alpha Gas
