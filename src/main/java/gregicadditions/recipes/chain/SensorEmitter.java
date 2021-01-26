@@ -158,7 +158,7 @@ public class SensorEmitter {
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(750000).blastFurnaceTemp(6500)
                 .input(dust, Potassium)
                 .inputs(SodiumPertechnate.getItemStack())
-                .outputs(PotassiumPerrhenate.getItemStack())
+                .outputs(PotassiumPertechnate.getItemStack())
                 .outputs(OreDictUnifier.get(dust, Sodium))
                 .buildAndRegister();
 
