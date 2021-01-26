@@ -52,7 +52,7 @@ public class OpticalCircuits {
                 .outputs(OPTICAL_SOC_WAFER.getStackForm())
                 .buildAndRegister();
 
-        LATHE_RECIPES.recipeBuilder().duration(280).EUt(850000)
+        CUTTER_RECIPES.recipeBuilder().duration(280).EUt(850000)
                 .inputs(OPTICAL_SOC_WAFER.getStackForm())
                 .outputs(OPTICAL_SOC.getStackForm(4))
                 .buildAndRegister();
