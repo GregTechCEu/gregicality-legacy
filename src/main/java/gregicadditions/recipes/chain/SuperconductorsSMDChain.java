@@ -175,6 +175,13 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, PEDOT, 3))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(500)
+                .input(dust, Iron)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(IronSulfateDust.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1000)
                 .inputs(ZirconiumTetrachloride.getItemStack())
                 .fluidInputs(Water.getFluid(2000))
