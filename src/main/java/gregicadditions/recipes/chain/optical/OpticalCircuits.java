@@ -57,7 +57,7 @@ public class OpticalCircuits {
                 .outputs(OPTICAL_SOC.getStackForm(4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(1474560).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(1474560)
                 .inputs(OPTICAL_SOC.getStackForm())
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(2))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(2))
