@@ -1115,7 +1115,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial BismuthVanadateSolution = new SimpleFluidMaterial("bismuth_vanadate_solution",0xffff00);
     public static final SimpleFluidMaterial Nitrotoluene = new SimpleFluidMaterial("nitrotoluene",0xfcca00);
     public static final SimpleFluidMaterial Naphtaleneamine = new SimpleFluidMaterial("naphtaleneamine",0xe3e81c);
-    public static final SimpleFluidMaterial Acetoacetanilide = new SimpleFluidMaterial("acetoacetanilide ",0xffffc2);
+    public static final SimpleFluidMaterial Acetoacetanilide = new SimpleFluidMaterial("acetoacetanilide",0xffffc2);
     public static final SimpleFluidMaterial Diaminoanthraquinone = new SimpleFluidMaterial("diaminoanthraquinone",0x3c5a2c0);
     public static final SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00);
     public static final SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680);
