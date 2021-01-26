@@ -62,12 +62,12 @@ public class CosmicComponents {
                 .fluidOutputs(MetastableHassium.getFluid(144))
                 .buildAndRegister();
 
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Americium.getFluid(144), Titanium.getFluid(144)).fluidOutputs(Tennessine.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Plutonium.getFluid(144), Titanium.getFluid(144)).fluidOutputs(Livermorium.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Neptunium.getMaterial().getFluid(144), Titanium.getFluid(144)).fluidOutputs(Moscovium.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Astatine.getFluid(144), Nickel.getFluid(144)).fluidOutputs(Nihonium.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Radium.getFluid(144), Vanadium.getFluid(144)).fluidOutputs(Roentgenium.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
-        FUSION_RECIPES.recipeBuilder().fluidInputs(Polonium.getFluid(144), Chrome.getFluid(144)).fluidOutputs(Meitnerium.getFluid(288)).duration(100).EUt(75000).EUToStart(520000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Americium.getFluid(144), Titanium.getFluid(144)).fluidOutputs(Tennessine.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Plutonium.getFluid(144), Titanium.getFluid(144)).fluidOutputs(Livermorium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Neptunium.getMaterial().getFluid(144), Titanium.getFluid(144)).fluidOutputs(Moscovium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Astatine.getFluid(144), Nickel.getFluid(144)).fluidOutputs(Nihonium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Radium.getFluid(144), Vanadium.getFluid(144)).fluidOutputs(Roentgenium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Polonium.getFluid(144), Chrome.getFluid(144)).fluidOutputs(Meitnerium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(340).EUt(4500000)
                 .fluidInputs(Deuterium.getFluid(2000))
