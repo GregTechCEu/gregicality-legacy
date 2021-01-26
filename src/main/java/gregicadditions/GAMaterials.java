@@ -1145,7 +1145,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Tetracene = new SimpleDustMaterial("tetracene",0x99801a,(short) 334,MaterialIconSet.SHINY);
     public static final SimpleDustMaterial DitertbutylCarbonate = new SimpleDustMaterial("ditertbutyl_carbonate",0xccccf6,(short) 335, MaterialIconSet.DULL);
     public static final SimpleDustMaterial PotassiumBromide = new SimpleDustMaterial("potassium_bromide",0xe066a3,(short) 336,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PotassiumBromate = new SimpleDustMaterial("potassium_bromide",0x8a4cd1,(short) 337,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumBromate = new SimpleDustMaterial("potassium_bromate",0x8a4cd1,(short) 337,MaterialIconSet.DULL);
     public static final SimpleDustMaterial IBX = new SimpleDustMaterial("ibx",0x20208c,(short) 338,MaterialIconSet.DULL);
     public static final SimpleDustMaterial SodiumPertechnate = new SimpleDustMaterial("sodium_pertechnate",0x6162c4,(short) 339,MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PotassiumPertechnate = new SimpleDustMaterial("potassium_pertechnate",0xdec451,(short) 340,MaterialIconSet.SHINY);
