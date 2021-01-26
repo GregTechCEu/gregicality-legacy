@@ -1203,6 +1203,7 @@ public class GARecipeAddition {
         OpticalComponents.init();
         OpticalCircuits.init();
         WormholeGeneratorChain.init();
+        CosmicComponents.init();
     }
 
     public static void forestrySupport() {
