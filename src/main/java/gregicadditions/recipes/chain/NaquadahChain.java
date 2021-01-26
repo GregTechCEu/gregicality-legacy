@@ -219,7 +219,7 @@ public class NaquadahChain {
                 .duration(400)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(13000))
+                .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(11000))
                 .fluidOutputs(Fluorine.getFluid(8000))
                 .fluidOutputs(Xenon.getFluid(1000))
                 .fluidOutputs(NitricOxide.getFluid(2000))
