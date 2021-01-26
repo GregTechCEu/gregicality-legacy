@@ -281,7 +281,7 @@ public class Circuits {
                 .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
-                .inputs(NEURO_PROCESSOR.getStackForm(2))
+                .inputs(OPTICAL_PROCESSING_CORE.getStackForm(2))
                 .input(wireGtSingle, UVSuperconductor, 4)
                 .inputs(ARAM.getStackForm(32))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
