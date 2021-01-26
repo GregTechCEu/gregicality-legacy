@@ -242,6 +242,13 @@ public class NaquadahChain {
                 .duration(500)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
+                .EUt(8000)
+                .duration(50)
+                .input(dust, Gold)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(ChloroauricAcid.getFluid(2000))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(ChloroauricAcid.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
                 .fluidOutputs(AuricChloride.getFluid(2000))
