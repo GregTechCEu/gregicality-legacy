@@ -109,8 +109,8 @@ public class UHVMaterials {
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(NeutronPlasma.getFluid(1000))
                 .outputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
-                .EUt(100000000)
-                .duration(20)
+                .EUt(25000000)
+                .duration(80)
                 .buildAndRegister();
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .inputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
