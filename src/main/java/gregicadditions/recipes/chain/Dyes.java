@@ -395,6 +395,7 @@ public class Dyes {
         CHEMICAL_RECIPES.recipeBuilder().duration(440).EUt(1320)
                 .fluidInputs(MaleicAnhydride.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
                 .outputs(SuccinicAcid.getItemStack())
                 .buildAndRegister();
 
