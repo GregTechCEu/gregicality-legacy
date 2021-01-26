@@ -744,7 +744,8 @@ metaitem.lithium_iodide.name=Lithium Iodide
 metaitem.palladium_loaded_rutile_nanoparticles.name=Palladium Loaded Rutile Nanoparticles
 metaitem.saccharic_acid.name=Saccharic Acid
 metaitem.adipic_acid.name=Adipic Acid
-metaitem.tetraethylammonium_nonahydrides=Tetraethylammonium Nonahydrides
+metaitem.tetraethylammonium_nonahydrides.name=Tetraethylammonium Nonahydrides
+metaitem.manganese_fluoride.name=Manganese Fluoride
 
 
 
