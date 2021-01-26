@@ -151,7 +151,7 @@ public class SuperconductorsSMDChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
                 .notConsumable(dust, Zinc)
                 .notConsumable(dust, SodiumHydroxide)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(10))
                 .fluidInputs(Perbromothiophene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
