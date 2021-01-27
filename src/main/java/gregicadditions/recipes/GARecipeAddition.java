@@ -830,7 +830,11 @@ public class GARecipeAddition {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING)).input(plate, Rutherfordium, 6).outputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2)).duration(50).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2)).input(plate, Dubnium, 6).outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3)).duration(50).buildAndRegister();
 
-        ModHandler.addShapedRecipe("fusion_coil", MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), "CRC", "FSF", "CRC", 'C', "circuitMaster", 'R', NEUTRON_REFLECTOR.getStackForm(), 'F', FIELD_GENERATOR_ZPM.getStackForm(), 'S', OreDictUnifier.get(cableGtOctal, ZPMSuperconductor));
+        // Fusion Coil Recipes
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(30720).inputs(NEUTRON_REFLECTOR.getStackForm(2), FIELD_GENERATOR_LUV.getStackForm(), OreDictUnifier.get(cableGtQuadruple, LuVSuperconductor, 4), OreDictUnifier.get(plate, Osmiridium, 2)).input(circuit, Tier.Master, 1).fluidInputs(Helium.getFluid(4000)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL)).duration(400).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(122880).inputs(NEUTRON_REFLECTOR.getStackForm(4), FIELD_GENERATOR_ZPM.getStackForm(), OreDictUnifier.get(cableGtQuadruple, ZPMSuperconductor, 4), OreDictUnifier.get(plate, Rutherfordium, 2)).input(circuit, Tier.Ultimate, 1).fluidInputs(Helium.getFluid(4000)).outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_2)).duration(400).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).inputs(NEUTRON_REFLECTOR.getStackForm(6), FIELD_GENERATOR_ZPM.getStackForm(2), OreDictUnifier.get(cableGtQuadruple, UVSuperconductor, 4), OreDictUnifier.get(plate, Tritanium, 2)).input(circuit, Tier.Superconductor, 1).fluidInputs(Helium.getFluid(4000)).outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_3)).duration(400).buildAndRegister();
+
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Iron, 4)
