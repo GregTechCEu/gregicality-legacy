@@ -1,7 +1,6 @@
 package gregicadditions.recipes;
 
 import com.google.common.collect.ImmutableMap;
-import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.GALog;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
@@ -31,6 +30,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
         super(recipe, recipeMap);
         this.coilTier = recipe.getIntegerProperty("coil_tier");
         this.euStart = recipe.getProperty("eu_to_start");
+        this.euReturn = recipe.getIntegerProperty("eu_return");
     }
 
     public AdvFusionRecipeBuilder() {
@@ -65,16 +65,16 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
     @Override
     public boolean applyProperty(String key, Object value) {
-        if (key.equals("coilTier")) {
-            this.coilTier(((Number) value).intValue());
-            return true;
-
-        } else if (key.equals("eu_to_start")) {
-            this.euStart(((Number) value).intValue());
-            return true;
-        } else if (key.equals("euReturn")) {
-            this.euReturn(((Number) value).intValue());
-            return true;
+        switch (key) {
+            case "coilTier":
+                this.coilTier(((Number) value).intValue());
+                return true;
+            case "eu_to_start":
+                this.euStart(((Number) value).longValue());
+                return true;
+            case "euReturn":
+                this.euReturn(((Number) value).intValue());
+                return true;
         }
         return false;
     }
@@ -111,7 +111,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of("coil_tier", this.coilTier, "eu_to_start", this.euStart),
+                        ImmutableMap.of("coil_tier", this.coilTier, "eu_to_start", this.euStart, "eu_return", this.euReturn),
                         duration, EUt, hidden));
     }
 
@@ -145,6 +145,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
                 .appendSuper(super.toString())
                 .append("coil_tier", coilTier)
                 .append("eu_to_start", euStart)
+                .append("eu_return", euReturn)
                 .toString();
     }
 }
