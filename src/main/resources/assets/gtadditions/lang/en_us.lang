@@ -744,7 +744,8 @@ metaitem.lithium_iodide.name=Lithium Iodide
 metaitem.palladium_loaded_rutile_nanoparticles.name=Palladium Loaded Rutile Nanoparticles
 metaitem.saccharic_acid.name=Saccharic Acid
 metaitem.adipic_acid.name=Adipic Acid
-metaitem.tetraethylammonium_nonahydrides=Tetraethylammonium Nonahydrides
+metaitem.tetraethylammonium_nonahydrides.name=Tetraethylammonium Nonahydrides
+metaitem.manganese_fluoride.name=Manganese Fluoride
 
 
 
@@ -3625,7 +3626,7 @@ fluid.edta=Ethylenediaminetetraacetic Acid
 fluid.glycine=Glycine
 fluid.pryho_nitrate_solution=Praseodymium Yttrium Holmium Nitrate Solution
 fluid.phosphorous_arsenic_solution=Phosphorous Arsenic Solution
-fluid.fluorosilicic_acid=FLuorosilicic Acid
+fluid.fluorosilicic_acid=Fluorosilicic Acid
 fluid.ammonium_fluoride=Ammonium Fluoride
 fluid.ammonium_bifluoride_solution=Ammonium Bifluoride Solution
 fluid.lutmy_chloride_solution=Lutetium Thulium Yttrium Chloride Solution
@@ -3808,5 +3809,6 @@ metaitem.contained.exotic.matter.name=Contained Exotic Matter
 metaitem.separation.electromagnet.name=Separation Electromagnet
 metaitem.sphere.field.shape.name=Sphere Field Shape
 
-fluid.free_electron_gas.name=Free Electron Gas
-fluid.free_alpha_gas.name=Free Alpha Gas
+fluid.free_electron_gas=Free Electron Gas
+fluid.free_alpha_gas=Free Alpha Gas
+fluid.krypton_difluoride=Krypton Difluoride

@@ -5,6 +5,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.*;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
@@ -328,7 +329,7 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_large_forge_hammer", GATileEntities.LARGE_FORGE_HAMMER.getStackForm(), "PCP", "CHC", "PCP", 'H', MetaTileEntities.FORGE_HAMMER[0].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Basic), 'P', MetaItems.ELECTRIC_PISTON_MV);
         ModHandler.addShapedRecipe("ga_battery_tower", GATileEntities.BATTERY_TOWER.getStackForm(), "PCP", "CHC", "PCP", 'H', MetaTileEntities.HULL[GAValues.HV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Extreme), 'P', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Talonite));
         ModHandler.addShapedRecipe("ga_gas_centrifuge", GATileEntities.GAS_CENTRIFUGE.getStackForm(), "PCP", "CHC", "PDP", 'H', MetaTileEntities.HULL[GAValues.HV].getStackForm(), 'C', MetaTileEntities.THERMAL_CENTRIFUGE[GAValues.HV].getStackForm(), 'D', MetaTileEntities.CENTRIFUGE[GAValues.HV].getStackForm(), 'P', GAMetaBlocks.MOTOR_CASING.getItemVariant(MotorCasing.CasingType.MOTOR_HV));
-        ModHandler.addShapedRecipe("ga_large_packager", GATileEntities.LARGE_PACKAGER.getStackForm(), "BCR", "PHU", "CMC", 'H', MetaTileEntities.HULL[GAValues.LuV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Master), 'P', GATileEntities.PACKER[GAValues.EV].getMetaTileEntity().getStackForm(), 'U', GATileEntities.UNPACKER[GAValues.EV].getMetaTileEntity().getStackForm(), 'B' , MetaItems.CONVEYOR_MODULE_LUV, 'R', MetaItems.ROBOT_ARM_LUV, 'M', new UnificationEntry(plate, GAMaterials.HG1223));
+        ModHandler.addShapedRecipe("ga_large_packager", GATileEntities.LARGE_PACKAGER.getStackForm(), "BCR", "PHU", "CMC", 'H', MetaTileEntities.HULL[GAValues.LuV].getStackForm(), 'C', new UnificationEntry(circuit, Tier.Master), 'P', GAConfig.GT5U.highTierPackers ? GATileEntities.PACKER[GAValues.EV].getMetaTileEntity().getStackForm() : MetaTileEntities.PACKER[GAValues.EV - 1].getStackForm(), 'U', GAConfig.GT5U.highTierUnpackers ? GATileEntities.UNPACKER[GAValues.EV].getMetaTileEntity().getStackForm() : MetaTileEntities.UNPACKER[GAValues.EV - 1].getStackForm(), 'B' , MetaItems.CONVEYOR_MODULE_LUV, 'R', MetaItems.ROBOT_ARM_LUV, 'M', new UnificationEntry(plate, GAMaterials.HG1223));
 
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720)
                 .fluidInputs(Lubricant.getFluid(2304),
@@ -434,6 +435,19 @@ public class MachineCraftingRecipes {
                 .EUt(30720)
                 .duration(500)
                 .buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(410).EUt(24000000)
+                .input(gear, Quantum, 12)
+                .input(plateDense, TitanSteel, 9)
+                .input(plate, Adamantium, 24)
+                .input(foil, FullerenePolymerMatrix, 6)
+                .inputs(SENSOR_UIV.getStackForm(4))
+                .inputs(SCINTILLATOR.getStackForm(2))
+                .inputs(LEPTON_TRAP_CRYSTAL.getStackForm(4))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3, 2))
+                .fluidInputs(Cinobite.getFluid(864))
+                .fluidInputs(SolderingAlloy.getFluid(1296))
+                .outputs(GATileEntities.COSMIC_RAY_DETECTOR.getStackForm())
+                .buildAndRegister();        
         ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(), 'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .inputs(

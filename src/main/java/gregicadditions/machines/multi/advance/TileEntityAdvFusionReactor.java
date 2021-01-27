@@ -17,7 +17,6 @@ import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
-import gregicadditions.recipes.AdvFusionRecipeBuilder;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -40,10 +39,7 @@ import gregtech.api.render.ICubeRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.*;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -281,9 +277,10 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
                 if (this.recipeMapWorkable.isHasNotEnoughEnergy()) {
                     textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
                 }
+                textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", this.heat));
             }
         }
-        textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", this.energyContainer.getEnergyStored()));
     }
 
     @Override
@@ -312,7 +309,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
             RecipeBuilder<?> newRecipe;
-            if (recipe == null || recipe.getIntegerProperty("eu_to_start") > energyContainer.getEnergyCapacity()) {
+            if (recipe == null || (long) recipe.getProperty("eu_to_start") > energyContainer.getEnergyCapacity()) {
                 return null;
             } else {
                 int recipeTier = recipe.getIntegerProperty("coil_tier");
@@ -321,34 +318,29 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
                 int divertorTierDifference = divertorTier - recipeTier;
                 newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
                 newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
-                for (FluidStack inputFluid : recipe.getFluidInputs()) {
-                    if (AdvFusionRecipeBuilder.COOLANTS.containsKey(inputFluid)) {
-                        FluidStack newFluid = inputFluid.copy();
-                        newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                        newRecipe.fluidInputs(newFluid);
-                    } else {
-                        newRecipe.fluidInputs(inputFluid);
-                    }
-                }
-                for (FluidStack outputFluid : recipe.getFluidOutputs()) {
-                    if (AdvFusionRecipeBuilder.COOLANTS.containsValue(outputFluid.getFluid())) {
-                        FluidStack newFluid = outputFluid.copy();
-                        newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                        newRecipe.fluidOutputs(newFluid);
-                    } else {
-                        newRecipe.fluidOutputs(outputFluid);
-                    }
-                }
+
+                newRecipe.fluidInputs(recipe.getFluidInputs().get(0), recipe.getFluidInputs().get(1));
                 FluidStack newOutput = recipe.getFluidOutputs().get(0);
                 newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.divertorOutputIncrease));
                 newRecipe.fluidOutputs(newOutput);
+
+                if (recipe.getFluidInputs().size() == 3) {
+
+                    FluidStack newFluid = recipe.getFluidInputs().get(2).copy();
+                    newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                    newRecipe.fluidInputs(newFluid);
+
+                    newOutput = recipe.getFluidOutputs().get(1).copy();
+                    newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+                    newRecipe.fluidOutputs(newOutput);
+                }
             }
             return newRecipe.build().getResult();
         }
 
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
-            int heatDiff = recipe.getIntegerProperty("eu_to_start") - heat;
+            long heatDiff = ((long) recipe.getProperty("eu_to_start")) - (long) heat;
             if (heatDiff <= 0) {
                 return super.setupAndConsumeRecipeInputs(recipe);
             }

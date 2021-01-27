@@ -151,7 +151,7 @@ public class SuperconductorsSMDChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
                 .notConsumable(dust, Zinc)
                 .notConsumable(dust, SodiumHydroxide)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(10))
                 .fluidInputs(Perbromothiophene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
@@ -175,11 +175,24 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, PEDOT, 3))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(500)
+                .input(dust, Iron)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(IronSulfateDust.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1000)
                 .inputs(ZirconiumTetrachloride.getItemStack())
                 .fluidInputs(Water.getFluid(2000))
                 .outputs(ZirconylChloride.getItemStack())
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().EUt(8000).duration(250)
+                .input(dust, Lead)
+                .fluidInputs(NitrogenTetroxide.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, LeadNitrate, 3))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1700).blastFurnaceTemp(1600)
@@ -513,6 +526,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Glycerol.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(4000))
                 .notConsumable(dust, Potassiumdichromate)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(CitricAcid.getFluid(4000))
                 .fluidOutputs(AmmoniumChloride.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, RockSalt))

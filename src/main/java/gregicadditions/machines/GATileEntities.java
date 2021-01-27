@@ -148,6 +148,7 @@ public class GATileEntities {
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
+    public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -289,8 +290,9 @@ public class GATileEntities {
             ARC_FURNACE[7] = create(2035, new SimpleMachineMetaTileEntity(location("arc_furnace.uv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 8));
             ARC_FURNACE[8] = create(3264, new GASimpleMachineMetaTileEntity(location("arc_furnace.uhv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 9));
             ARC_FURNACE[9] = create(3265, new GASimpleMachineMetaTileEntity(location("arc_furnace.uev"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 10));
-            ARC_FURNACE[10] = create(3266, new GASimpleMachineMetaTileEntity(location("arc_furnace.uiv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 12));
-            ARC_FURNACE[11] = create(3268, new GASimpleMachineMetaTileEntity(location("arc_furnace.uxv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 13));
+            ARC_FURNACE[10] = create(3266, new GASimpleMachineMetaTileEntity(location("arc_furnace.uiv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 11));
+            ARC_FURNACE[11] = create(3267, new GASimpleMachineMetaTileEntity(location("arc_furnace.umv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 12));
+            ARC_FURNACE[12] = create(3268, new GASimpleMachineMetaTileEntity(location("arc_furnace.uxv"), RecipeMaps.ARC_FURNACE_RECIPES, Textures.ARC_FURNACE_OVERLAY, 13));
         }
 
         if (GAConfig.GT5U.highTierAssemblers) {
@@ -1115,6 +1117,7 @@ public class GATileEntities {
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(4171, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
         GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
+        COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

@@ -15,21 +15,21 @@ public class ZylonChain {
                 .fluidInputs(Methanol.getFluid(1000))
                 .fluidOutputs(Xylene.getFluid(2000))
                 .EUt(2000000)
-                .duration(100)
+                .duration(50)
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Xylene.getFluid(1000))
                 .input(dust, Zeolite)
                 .fluidOutputs(XyleneZeoliteMixture.getFluid(2000))
                 .EUt(2000000)
-                .duration(200)
+                .duration(50)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(XyleneZeoliteMixture.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, Zeolite))
                 .fluidOutputs(PXylene.getFluid(1000))
                 .EUt(2000000)
-                .duration(200)
+                .duration(100)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(PXylene.getFluid(1000))
@@ -45,7 +45,7 @@ public class ZylonChain {
                 .fluidOutputs(Bromine.getFluid(1000))
                 .outputs(Terephthalaldehyde.getItemStack())
                 .EUt(2000000)
-                .duration(100)
+                .duration(50)
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold)
@@ -82,7 +82,7 @@ public class ZylonChain {
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Salt))
                 .EUt(2000000)
-                .duration(400)
+                .duration(50)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dinitrodipropanyloxybenzene.getFluid(1000))
@@ -90,14 +90,14 @@ public class ZylonChain {
                 .notConsumable(AuPdCCatalyst.getItemStack())
                 .outputs(PreZylon.getItemStack())
                 .EUt(2000000)
-                .duration(200)
+                .duration(50)
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder()
                 .inputs(PreZylon.getItemStack(2))
                 .fluidOutputs(Propane.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Zylon))
                 .EUt(2000000)
-                .duration(250)
+                .duration(100)
                 .blastFurnaceTemp(10000)
                 .buildAndRegister();
     }

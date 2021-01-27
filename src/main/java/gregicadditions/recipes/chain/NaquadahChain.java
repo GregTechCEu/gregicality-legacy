@@ -219,7 +219,7 @@ public class NaquadahChain {
                 .duration(400)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(13000))
+                .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(11000))
                 .fluidOutputs(Fluorine.getFluid(8000))
                 .fluidOutputs(Xenon.getFluid(1000))
                 .fluidOutputs(NitricOxide.getFluid(2000))
@@ -240,6 +240,13 @@ public class NaquadahChain {
                 .fluidOutputs(EnrichedXenonHexafluoronaquadate.getFluid(2000))
                 .EUt(7680)
                 .duration(500)
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder()
+                .EUt(8000)
+                .duration(50)
+                .input(dust, Gold)
+                .fluidInputs(AquaRegia.getFluid(1000))
+                .fluidOutputs(ChloroauricAcid.getFluid(2000))
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(ChloroauricAcid.getFluid(1000))

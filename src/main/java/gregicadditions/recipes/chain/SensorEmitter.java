@@ -1,10 +1,9 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.item.GAMetaItems.UVA_HALIDE_LAMP;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -159,7 +158,7 @@ public class SensorEmitter {
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(750000).blastFurnaceTemp(6500)
                 .input(dust, Potassium)
                 .inputs(SodiumPertechnate.getItemStack())
-                .outputs(PotassiumPerrhenate.getItemStack())
+                .outputs(PotassiumPertechnate.getItemStack())
                 .outputs(OreDictUnifier.get(dust, Sodium))
                 .buildAndRegister();
 

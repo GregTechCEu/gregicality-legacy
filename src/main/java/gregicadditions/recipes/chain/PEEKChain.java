@@ -106,8 +106,8 @@ public class PEEKChain {
                 .fluidOutputs(Acetone.getFluid(1000))
                 .fluidOutputs(Hydroquinone.getFluid(500))
                 .fluidOutputs(Resorcinol.getFluid(500))
-                .EUt(500000)
-                .duration(200)
+                .EUt(30000)
+                .duration(800)
                 .buildAndRegister();
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .inputs(MgClBrominide.getItemStack(3))
