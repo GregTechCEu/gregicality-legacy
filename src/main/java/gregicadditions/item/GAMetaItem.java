@@ -390,6 +390,25 @@ public class GAMetaItem extends MaterialMetaItem {
         SEPARATION_ELECTROMAGNET = addItem(521, "separation.electromagnet");
         SPHERE_FIELD_SHAPE = addItem(522, "sphere.field.shape");
 
+        AEROGRAPHENE = addItem(523,"aerographene");
+        SCINTILLATOR_CRYSTAL = addItem(524,"scintillator_crystal");
+        SCINTILLATOR = addItem(525,"scintillator");
+        LEPTON_TRAP_CRYSTAL =  addItem(526,"lepton_trap_crystal");
+        HASSIUM_SEED_CRYSTAL = addItem(527, "hassium_seed_crystal");
+        HASSIUM_BOULE = addItem(520,"hassium_boule");
+        HASSIUM_WAFER = addItem(528,"hassium_wafer");
+        COATED_HASSIUM_WAFER = addItem(529, "coated_hassium_wafer");
+        PHOTOCOATED_HASSIUM_WAFER = addItem(530,"photocoated_hassium_wafer");
+        GRATING_LITHOGRAPHY_MASK = addItem(531, "grating_lithography_mask");
+        DIFFRACTOR_GRATING_MIRROR = addItem(532,"diffractor_grating_medium");
+        ULTRASHORT_PULSE_LASER = addItem(533,"ultrashort_pulse_laser");
+        SMD_CAPACITOR_COSMIC = addItem(534,"smd_capacitor_cosmic");
+        SMD_DIODE_COSMIC = addItem(535,"smd_diode_cosmic");
+        SMD_RESISTOR_COSMIC = addItem(536,"smd_resistor_cosmic");
+        SMD_TRANSISTOR_COSMIC = addItem(537,"smd_transistor_cosmic");
+        COSMIC_PROCESSING_UNIT_CORE = addItem(538,"cosmic_processing_unit_core");
+        COSMIC_PROCESSING_CORE = addItem(539,"cosmic_processing_core");
+        GRAPHENE_IRON_PLATE = addItem(540,"graphene_iron_plate");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
