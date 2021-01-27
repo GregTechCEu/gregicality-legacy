@@ -103,6 +103,7 @@ public class NanotubeChain {
                 .fluidInputs(Acetone.getFluid(1000))
                 .fluidInputs(Ethanol.getFluid(200))
                 .input(dust, SodiumHydroxide, 2)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(Dibenzyldieneacetone.getFluid(2000))
                 .buildAndRegister();
 
