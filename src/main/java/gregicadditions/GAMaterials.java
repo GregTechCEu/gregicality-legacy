@@ -1473,6 +1473,7 @@ public class GAMaterials implements IMaterialHandler {
         RedSteel.addFlag(GENERATE_METAL_CASING);
         Titanium.addFlag(GENERATE_METAL_CASING);
         StainlessSteel.addFlag(GENERATE_METAL_CASING);
+        Tritanium.addFlag(GENERATE_METAL_CASING);
         Steel.addFlag(GENERATE_METAL_CASING);
         TungstenSteel.addFlag(GENERATE_METAL_CASING);
         Aluminium.addFlag(GENERATE_METAL_CASING);
