@@ -866,16 +866,16 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial QuassifissioningPlasma = new SimpleFluidMaterial("quasifissioning_plasma", 0xD5CB54);
     public static final SimpleFluidMaterial Ytterbium178 = new SimpleFluidMaterial("ytterbium_178", Ytterbium.materialRGB);
     public static final SimpleFluidMaterial FlYbPlasma = new SimpleFluidMaterial("flyb_plasma", (Ytterbium.materialRGB + 0x521973) / 2);
-    public static final SimpleFluidMaterial Chromium48 = new SimpleFluidMaterial("chromium48", Chrome.materialRGB);
-    public static final SimpleFluidMaterial Iron52 = new SimpleFluidMaterial("iron52", Iron.materialRGB);
-    public static final SimpleFluidMaterial Nickel56 = new SimpleFluidMaterial("nickel56", Nickel.materialRGB);
-    public static final SimpleFluidMaterial Titanium44 = new SimpleFluidMaterial("titanium44", Titanium.materialRGB);
-    public static final SimpleFluidMaterial HeliumCNO = new SimpleFluidMaterial("helium_rich_cno", 0x59ffa6);
-    public static final SimpleFluidMaterial PlasmaChromium48 = new SimpleFluidMaterial("chromium48_plasma", Chrome.materialRGB);
-    public static final SimpleFluidMaterial PlasmaIron52 = new SimpleFluidMaterial("iron52_plasma", Iron.materialRGB);
-    public static final SimpleFluidMaterial PlasmaNickel56 = new SimpleFluidMaterial("nickel56_plasma", Nickel.materialRGB);
-    public static final SimpleFluidMaterial PlasmaTitanium44 = new SimpleFluidMaterial("titanium44_plasma", Titanium.materialRGB);
-    public static final SimpleFluidMaterial PlasmaHeliumCNO = new SimpleFluidMaterial("helium_rich_cno_plasma", 0x59ffa6);
+    public static final SimpleFluidMaterial Chromium48 = new SimpleFluidMaterial("chromium48", Chrome.materialRGB, true);
+    public static final SimpleFluidMaterial Iron52 = new SimpleFluidMaterial("iron52", Iron.materialRGB, true);
+    public static final SimpleFluidMaterial Nickel56 = new SimpleFluidMaterial("nickel56", Nickel.materialRGB, true);
+    public static final SimpleFluidMaterial Titanium44 = new SimpleFluidMaterial("titanium44", Titanium.materialRGB, true);
+    public static final SimpleFluidMaterial HeliumCNO = new SimpleFluidMaterial("helium_rich_cno", 0x59ffa6, true);
+    //public static final SimpleFluidMaterial PlasmaChromium48 = new SimpleFluidMaterial("chromium48_plasma", Chrome.materialRGB);
+    //public static final SimpleFluidMaterial PlasmaIron52 = new SimpleFluidMaterial("iron52_plasma", Iron.materialRGB);
+    //public static final SimpleFluidMaterial PlasmaNickel56 = new SimpleFluidMaterial("nickel56_plasma", Nickel.materialRGB);
+    //public static final SimpleFluidMaterial PlasmaTitanium44 = new SimpleFluidMaterial("titanium44_plasma", Titanium.materialRGB);
+    //public static final SimpleFluidMaterial PlasmaHeliumCNO = new SimpleFluidMaterial("helium_rich_cno_plasma", 0x59ffa6);
 
     public static final SimpleDustMaterial AnodicSlime = new SimpleDustMaterial("anodic_slime", CopperLeach.materialRGB, (short) 173, MaterialIconSet.DULL);
     public static final SimpleDustMaterial TelluriumOxide = new SimpleDustMaterial("tellurium_oxide", 0xFFFF66, (short) 174, MaterialIconSet.SHINY);

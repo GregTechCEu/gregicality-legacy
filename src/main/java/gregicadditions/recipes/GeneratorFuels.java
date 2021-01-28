@@ -110,12 +110,12 @@ public class GeneratorFuels {
         registerPlasmaFuel(Sulfur.getPlasma(1), 2731, GAValues.LV);
         registerPlasmaFuel(Argon.getPlasma(1), 2731, GAValues.LV);
         registerPlasmaFuel(Calcium.getPlasma(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaTitanium44.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaChromium48.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Titanium44.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Chromium48.getPlasma(1), 2560, GAValues.LV);
         registerPlasmaFuel(Titanium.getPlasma(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaIron52.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaNickel56.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaHeliumCNO.getFluid(1), 3840, GAValues.LV);
+        registerPlasmaFuel(Iron52.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Nickel56.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(HeliumCNO.getPlasma(1), 3840, GAValues.LV);
 
 
         //Smefuels

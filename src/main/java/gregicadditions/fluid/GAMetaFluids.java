@@ -21,6 +21,8 @@ public class GAMetaFluids {
 
 
     public static final Map<FluidMaterial, Fluid> HOT_FLUIDS = new HashMap<>();
+    private static final Map<String, SimpleFluidMaterial> fluidToMaterialMappings = new HashMap<>();
+
 
     public static void init() {
         HOT_FLUIDS.put(Steam, MetaFluids.registerFluid(Steam, MetaFluids.FluidType.valueOf("HOT"), 423));
@@ -55,13 +57,29 @@ public class GAMetaFluids {
                     FluidRegistry.addBucketForFluid(fluid);
                 }
                 fluidMat.fluid = FluidRegistry.getFluid(fluid.getName());
-
             }
+            if (fluidMat.hasPlasma) {
+                Fluid plasma = new Fluid(fluidMat.name + "_plasma", MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
+                plasma.setTemperature(fluidMat.temperature + 10000);
+                if (!FluidRegistry.isFluidRegistered(plasma.getName())) {
+                    FluidRegistry.registerFluid(plasma);
+                    FluidRegistry.addBucketForFluid(plasma);
+                    fluidMat.plasma = plasma;
+                } else {
+                    fluidMat.plasma = FluidRegistry.getFluid(plasma.getName());
+                }
+                fluidToMaterialMappings.put(fluidMat.plasma.getName(), fluidMat);
+            }
+            fluidToMaterialMappings.put(fluidMat.fluid.getName(), fluidMat);
         }
     }
 
     @Nullable
     public static FluidStack getHotFluid(Material material, int amount) {
         return new FluidStack(HOT_FLUIDS.get(material), amount);
+    }
+    
+    public static SimpleFluidMaterial getMaterialFromFluid(Fluid fluid) {
+        return fluidToMaterialMappings.get(fluid.getName());
     }
 }
