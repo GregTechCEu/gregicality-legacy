@@ -41,6 +41,9 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             GAMultiblockAbility.STEAM_IMPORT_ITEMS, GAMultiblockAbility.STEAM_EXPORT_ITEMS, GAMultiblockAbility.STEAM
     };
+    //private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+    //        MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS
+    //};
 
     public MetaTileEntitySteamGrinder(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.MACERATOR_RECIPES, CONVERSION_RATE);
@@ -76,7 +79,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "X#X", "XXX")
                 .aisle("XXX", "XSX", "XXX")
-                .setAmountAtLeast('L', 14)
+                .setAmountAtLeast('L', 0) // TODO Change to 14
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))

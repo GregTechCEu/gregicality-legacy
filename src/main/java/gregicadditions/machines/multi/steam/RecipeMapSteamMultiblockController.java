@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.steam;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -14,7 +16,6 @@ import gregtech.api.render.Textures;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -31,7 +32,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
 
     protected IItemHandlerModifiable inputInventory;
     protected IItemHandlerModifiable outputInventory;
-    protected IFluidTank steamFluidTank;
+    protected IMultipleTankHandler steamFluidTank;
 
     public RecipeMapSteamMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, double conversionRate) {
         super(metaTileEntityId);
@@ -48,7 +49,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
         return outputInventory;
     }
 
-    public IFluidTank getSteamTank() {
+    public IMultipleTankHandler getInputFluidInventory() {
         return steamFluidTank;
     }
 
@@ -80,20 +81,20 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
     private void initializeAbilities() {
         this.inputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_IMPORT_ITEMS));
         this.outputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_EXPORT_ITEMS));
-        this.steamFluidTank = new FluidTank(getAbilities(GAMultiblockAbility.STEAM).indexOf(0)); // may be problematic
+        this.steamFluidTank = new FluidTankList(false, getAbilities(GAMultiblockAbility.STEAM)); // may be problematic
     }
 
     private void resetTileAbilities() {
         this.inputInventory = new ItemStackHandler(0);
         this.outputInventory = new ItemStackHandler(0);
-        this.steamFluidTank = new FluidTank(0);
+        this.steamFluidTank = new FluidTankList(true);
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed()) {
-            IFluidTank steamFluidTank = recipeMapWorkable.getSteamFluidTank();
+            IFluidTank steamFluidTank = recipeMapWorkable.getSteamFluidTankCombined();
             if (steamFluidTank != null && steamFluidTank.getCapacity() > 0) {
                 int steamStored = steamFluidTank.getFluidAmount();
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.steam.steam_stored", steamStored, steamFluidTank.getCapacity()));
@@ -120,7 +121,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
     @Override
     protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
         //basically check minimal requirements for inputs count
-        int itemInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_ITEMS, Collections.emptyList())
+        int itemInputsCount = abilities.getOrDefault(GAMultiblockAbility.STEAM_IMPORT_ITEMS, Collections.emptyList())
                 .stream().map(it -> (IItemHandler) it).mapToInt(IItemHandler::getSlots).sum();
         return itemInputsCount >= recipeMap.getMinInputs() &&
                 abilities.containsKey(GAMultiblockAbility.STEAM);
