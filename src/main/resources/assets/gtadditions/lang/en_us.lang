@@ -3812,3 +3812,11 @@ metaitem.sphere.field.shape.name=Sphere Field Shape
 fluid.free_electron_gas=Free Electron Gas
 fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
+
+gtadditions.machine.steam_grinder.name=Steam Grinder
+gtadditions.multiblock.steam.steam_stored=Steam: %s / %s mb
+gtadditions.machine.steam_hatch.name=Steam Hatch
+gtadditions.machine.steam.steam_hatch.tooltip=Accepted Fluid: §eSteam
+gtadditions.machine.steam_input_bus.name=Input Bus (Steam)
+gtadditions.machine.steam_output_bus.name=Output Bus (Steam)
+gtadditions.machine.steam_bus.tooltip=Does not work with non-steam multiblocks

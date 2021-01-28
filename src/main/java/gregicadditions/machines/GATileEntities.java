@@ -31,6 +31,9 @@ import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
 import gregicadditions.machines.multi.simple.*;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamHatch;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamItemBus;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
@@ -156,6 +159,12 @@ public class GATileEntities {
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
+
+    // Steam Grinder
+    public static MetaTileEntitySteamHatch STEAM_HATCH;
+    public static MetaTileEntitySteamItemBus STEAM_INPUT_BUS;
+    public static MetaTileEntitySteamItemBus STEAM_OUTPUT_BUS;
+    public static MetaTileEntitySteamGrinder STEAM_GRINDER;
 
     //override from GTCE
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
@@ -1116,6 +1125,11 @@ public class GATileEntities {
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(4171, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
         GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
+
+        STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4200, new MetaTileEntitySteamHatch(location("steam_hatch")));
+        STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4201, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
+        STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4202, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
+        STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4203, new MetaTileEntitySteamGrinder(location("steam_grinder")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
