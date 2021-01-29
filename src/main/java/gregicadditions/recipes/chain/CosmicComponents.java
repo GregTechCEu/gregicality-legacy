@@ -31,10 +31,10 @@ public class CosmicComponents {
                 .fluidOutputs(LightQuarks.getFluid(600))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(320).EUt(2400000)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(320).EUt(2400000)
                 .fluidInputs(HeavyLeptonMix.getFluid(1000))
                 .fluidInputs(HeavyQuarks.getFluid(1000))
-                .fluidOutputs(Gluons.getFluid(1000))
+                .fluidInputs(Gluons.getFluid(1000))
                 .fluidOutputs(CosmicComputingMix.getFluid(3000))
                 .buildAndRegister();
 
@@ -69,7 +69,7 @@ public class CosmicComponents {
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Radium.getFluid(144), Vanadium.getFluid(144)).fluidOutputs(Roentgenium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Polonium.getFluid(144), Chrome.getFluid(144)).fluidOutputs(Meitnerium.getFluid(288)).duration(100).EUt(75000).coilTier(2).euStart(2080000000).buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(340).EUt(4500000)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(340).EUt(4500000)
                 .fluidInputs(Deuterium.getFluid(2000))
                 .fluidInputs(MetastableHassium.getFluid(144))
                 .fluidInputs(MetastableFlerovium.getFluid(144))

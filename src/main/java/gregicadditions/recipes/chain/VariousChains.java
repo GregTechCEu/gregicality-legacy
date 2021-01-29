@@ -384,7 +384,7 @@ public class VariousChains {
                 .circuitMeta(0)
                 .buildAndRegister();
 
-        PYROLYSE_RECIPES.recipeBuilder().duration(400).EUt(22000)
+        BLAST_RECIPES.recipeBuilder().duration(400).EUt(22000).blastFurnaceTemp(5000)
                 .inputs(DryGrapheneGel.getItemStack())
                 .fluidInputs(SupercriticalCO2.getFluid(1000))
                 .outputs(AEROGRAPHENE.getStackForm())

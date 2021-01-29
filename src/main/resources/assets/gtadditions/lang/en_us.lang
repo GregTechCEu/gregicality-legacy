@@ -2586,6 +2586,11 @@ gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large mult
 gtadditions.multiblock.battery_tower.tooltip.2=All the cells in the tower need to be of the same tier and the tower will drain %d%% of the cells voltage per tick.
 gtadditions.multiblock.battery_tower.tooltip.3=The input/output hatches can not be of a higher tier than the tier of the cells.
 
+gtadditions.multiblock.cosmic_ray_detector.tooltip.1=The Cosmic Ray Detector can't see the sky!
+gtadditions.multiblock.cosmic_ray_detector.tooltip.2=Produces Heavy Lepton Mix based on the Y-level it is built at.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.3=At bedrock it will produce 5 mb/t and at build limit it will produce 40 mb/t.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.4=Requires a minimum of 2097152 EU/t to function.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.5=Generating %d mb/t Heavy Lepton Mix.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s

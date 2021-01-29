@@ -552,7 +552,7 @@ public class MachineCraftingRecipes {
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 9 * 16))
-                .input(plate, TriniumTitanium, 32)
+                .input(plate, Trinium, 32)
                 .input(stick, HDCS, 16)
                 .input(gear, TungstenTitaniumCarbide, 16)
                 .input(screw, Incoloy813,32)
@@ -568,7 +568,7 @@ public class MachineCraftingRecipes {
                 .inputs(SENSOR_UHV.getStackForm())
                 .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
                 .inputs(ELECTRIC_PUMP_UHV.getStackForm(2))
-                .input(plate, TriniumTitanium, 8)
+                .input(plate, Trinium, 8)
                 .input(gear, TungstenTitaniumCarbide, 4)
                 .input(screw, TungstenTitaniumCarbide, 16)
                 .input(circuit, Tier.Superconductor, 2)
