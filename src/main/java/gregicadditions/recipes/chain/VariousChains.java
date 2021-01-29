@@ -299,12 +299,104 @@ public class VariousChains {
                 .fluidInputs(Azafullerene.getFluid(10))
                 .outputs(HIGHLY_INSULATING_FOIL.getStackForm())
                 .buildAndRegister();
+       
+        MIXER_RECIPES.recipeBuilder().duration(250).EUt(32000)
+                .fluidInputs(IronChloride.getFluid(1000))
+                .inputs(Glucose.getItemStack())
+                .fluidOutputs(GlucoseIronSolution.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(260).EUt(18000)
+                .fluidInputs(GlucoseIronSolution.getFluid(1000))
+                .outputs(GlucoseIronMixture.getItemStack())
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(270).EUt(19000).blastFurnaceTemp(1800)
+                .inputs(GlucoseIronMixture.getItemStack())
+                .outputs(GRAPHENE_IRON_PLATE.getStackForm())
+                .fluidOutputs(Chlorine.getFluid(1500))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
+                .fluidInputs(HydrochloricAcid.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(1000))
+                .outputs(OreDictUnifier.get(plate, Graphene))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
+                .fluidInputs(AquaRegia.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(1000))
+                .outputs(GrapheneOxide.getItemStack())
+                .fluidOutputs(NitrogenDioxide.getFluid(1500))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(260).EUt(19500)
+                .inputs(PotassiumPermanganate.getItemStack())
+                .input(dust, SodiumNitrate)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(GrapheneOxidationSolution.getFluid(2000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(31500)
+                .input(dust, Graphite, 3)
+                .notConsumable(dust, Osmium)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .outputs(GrapheneOxide.getItemStack(3))
+                .buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(29000)
+                .input(dust, Graphene, 3)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .outputs(GrapheneOxide.getItemStack(3))
+                .buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(26500)
+                .inputs(GraphiteOxide.getItemStack())
+                .fluidInputs(Water.getFluid(1000))
+                .outputs(GrapheneOxide.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(32000)
+                .inputs(GrapheneOxide.getItemStack())
+                .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
+                .fluidInputs(Hydrazine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Graphene))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(200).EUt(15000)
+                .fluidInputs(Resorcinol.getFluid(500))
+                .fluidInputs(Formaldehyde.getFluid(1000))
+                .inputs(GrapheneOxide.getItemStack())
+                .outputs(GrapheneGelSuspension.getItemStack())
+                .buildAndRegister();
+
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(260).EUt(19500)
+                .inputs(GrapheneGelSuspension.getItemStack())
+                .fluidInputs(Acetone.getFluid(500))
+                .outputs(DryGrapheneGel.getItemStack())
+                .buildAndRegister();
+
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(320).EUt(29500)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(SupercriticalCO2.getFluid(1000))
+                .circuitMeta(0)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(400).EUt(22000).blastFurnaceTemp(5000)
+                .inputs(DryGrapheneGel.getItemStack())
+                .fluidInputs(SupercriticalCO2.getFluid(1000))
+                .outputs(AEROGRAPHENE.getStackForm())
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(210).EUt(425000)
                 .input(stick, Polyurethane)
                 .input(stick, ReinforcedEpoxyResin)
                 .inputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .inputs(HIGHLY_INSULATING_FOIL.getStackForm())
+                .inputs(AEROGRAPHENE.getStackForm())
                 .fluidInputs(Argon.getFluid(1000))
                 .outputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2))
                 .buildAndRegister();

@@ -96,15 +96,15 @@ public class FusionElementsChain {
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Silicon.getFluid(125), Helium.getFluid(125)).fluidOutputs(Sulfur.getPlasma(125)).duration(128).EUt(7000).euStart(260000000L).coilTier(1).buildAndRegister();
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Sulfur.getFluid(125), Helium.getFluid(125)).fluidOutputs(Argon.getPlasma(125)).duration(128).EUt(7000).euStart(280000000L).coilTier(2).buildAndRegister();
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Argon.getFluid(125), Helium.getFluid(125)).fluidOutputs(Calcium.getPlasma(125)).duration(128).EUt(7000).euStart(70000000L).coilTier(2).buildAndRegister();
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Calcium.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaTitanium44.getFluid(125)).duration(128).EUt(7000).euStart(320000000L).coilTier(2).buildAndRegister();
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Titanium44.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaChromium48.getFluid(125)).duration(128).EUt(7000).euStart(340000000L).coilTier(2).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Calcium.getFluid(125), Helium.getFluid(125)).fluidOutputs(Titanium44.getPlasma(125)).duration(128).EUt(7000).euStart(320000000L).coilTier(2).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Titanium44.getFluid(125), Helium.getFluid(125)).fluidOutputs(Chromium48.getPlasma(125)).duration(128).EUt(7000).euStart(340000000L).coilTier(2).buildAndRegister();
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Calcium44.getFluid(125), Helium.getFluid(125)).fluidOutputs(Titanium.getPlasma(125)).duration(128).EUt(7000).euStart(360000000L).coilTier(2).buildAndRegister();
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Chromium48.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaIron52.getFluid(125)).duration(128).EUt(7000).euStart(380000000L).coilTier(2).buildAndRegister();
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Iron52.getFluid(125), Helium.getFluid(125)).fluidOutputs(PlasmaNickel56.getFluid(125)).duration(128).EUt(7000).euStart(400000000L).coilTier(2).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Chromium48.getFluid(125), Helium.getFluid(125)).fluidOutputs(Iron52.getPlasma(125)).duration(128).EUt(7000).euStart(380000000L).coilTier(2).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Iron52.getFluid(125), Helium.getFluid(125)).fluidOutputs(Nickel56.getPlasma(125)).duration(128).EUt(7000).euStart(400000000L).coilTier(2).buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(CNOcatalyst.getFluid(160), Hydrogen.getFluid(640))
-                .fluidOutputs(PlasmaHeliumCNO.getFluid(800))
+                .fluidOutputs(HeliumCNO.getPlasma(800))
                 .duration(128)
                 .EUt(8192)
                 .euStart(100000000)
@@ -112,10 +112,10 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
 
-        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaTitanium44.getFluid(144)).fluidOutputs(Calcium44.getFluid(144)).buildAndRegister();
-        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaChromium48.getFluid(144)).fluidOutputs(Titanium.getFluid(144)).buildAndRegister();
-        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaIron52.getFluid(144)).fluidOutputs(Chrome.getFluid(144)).buildAndRegister();
-        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(PlasmaNickel56.getFluid(144)).fluidOutputs(Iron.getFluid(144)).buildAndRegister();
+        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(Titanium44.getPlasma(144)).fluidOutputs(Calcium44.getFluid(144)).buildAndRegister();
+        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(Chromium48.getPlasma(144)).fluidOutputs(Titanium.getFluid(144)).buildAndRegister();
+        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(Iron52.getPlasma(144)).fluidOutputs(Chrome.getFluid(144)).buildAndRegister();
+        DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(180).EUt(10000).fluidInputs(Nickel56.getPlasma(144)).fluidOutputs(Iron.getFluid(144)).buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Uranium.getFluid(125), Uranium.getFluid(125)).fluidOutputs(QuassifissioningPlasma.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000L).buildAndRegister();
         DECAY_CHAMBERS_RECIPES.recipeBuilder().duration(320).EUt(750000).fluidInputs(QuassifissioningPlasma.getFluid(1000)).fluidOutputs(FlYbPlasma.getFluid(1000)).buildAndRegister();

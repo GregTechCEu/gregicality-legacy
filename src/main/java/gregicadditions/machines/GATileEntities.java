@@ -151,6 +151,7 @@ public class GATileEntities {
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
+    public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -1125,11 +1126,13 @@ public class GATileEntities {
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(4171, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
         GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
+        COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
 
         STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4200, new MetaTileEntitySteamHatch(location("steam_hatch")));
         STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4201, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
         STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4202, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
         STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4203, new MetaTileEntitySteamGrinder(location("steam_grinder")));
+        
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

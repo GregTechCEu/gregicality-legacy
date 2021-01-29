@@ -5,6 +5,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.*;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
@@ -435,6 +436,19 @@ public class MachineCraftingRecipes {
                 .EUt(30720)
                 .duration(500)
                 .buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(410).EUt(24000000)
+                .input(gear, Quantum, 12)
+                .input(plateDense, TitanSteel, 9)
+                .input(plate, Adamantium, 24)
+                .input(foil, FullerenePolymerMatrix, 6)
+                .inputs(SENSOR_UIV.getStackForm(4))
+                .inputs(SCINTILLATOR.getStackForm(2))
+                .inputs(LEPTON_TRAP_CRYSTAL.getStackForm(4))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3, 2))
+                .fluidInputs(Cinobite.getFluid(864))
+                .fluidInputs(SolderingAlloy.getFluid(1296))
+                .outputs(GATileEntities.COSMIC_RAY_DETECTOR.getStackForm())
+                .buildAndRegister();        
         ModHandler.addShapedRecipe("ga_large_transformer", GATileEntities.LARGE_TRANSFORMER.getStackForm(), "PPP", "IHO", "PPP", 'H', MetaTileEntities.HULL[GTValues.LV].getStackForm(), 'P', new UnificationEntry(plate, Aluminium), 'I', GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.get(GTValues.MV).getStackForm(), 'O', GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.get(GTValues.MV).getStackForm());
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .inputs(
@@ -539,7 +553,7 @@ public class MachineCraftingRecipes {
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 9 * 16))
-                .input(plate, TriniumTitanium, 32)
+                .input(plate, Trinium, 32)
                 .input(stick, HDCS, 16)
                 .input(gear, TungstenTitaniumCarbide, 16)
                 .input(screw, Incoloy813,32)
@@ -555,7 +569,7 @@ public class MachineCraftingRecipes {
                 .inputs(SENSOR_UHV.getStackForm())
                 .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
                 .inputs(ELECTRIC_PUMP_UHV.getStackForm(2))
-                .input(plate, TriniumTitanium, 8)
+                .input(plate, Trinium, 8)
                 .input(gear, TungstenTitaniumCarbide, 4)
                 .input(screw, TungstenTitaniumCarbide, 16)
                 .input(circuit, Tier.Superconductor, 2)

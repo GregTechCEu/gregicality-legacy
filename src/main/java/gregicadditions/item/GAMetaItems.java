@@ -40,7 +40,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
-
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
+    
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
@@ -48,6 +49,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
     
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
@@ -56,6 +58,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
@@ -64,6 +67,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
 
     //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
@@ -412,6 +416,21 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SEPARATION_ELECTROMAGNET;
     public static MetaItem<?>.MetaValueItem SPHERE_FIELD_SHAPE;
 
+    public static MetaItem<?>.MetaValueItem AEROGRAPHENE;
+    public static MetaItem<?>.MetaValueItem SCINTILLATOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SCINTILLATOR;
+    public static MetaItem<?>.MetaValueItem LEPTON_TRAP_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem HASSIUM_SEED_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem HASSIUM_BOULE;
+    public static MetaItem<?>.MetaValueItem HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem COATED_HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem PHOTOCOATED_HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem GRATING_LITHOGRAPHY_MASK;
+    public static MetaItem<?>.MetaValueItem DIFFRACTOR_GRATING_MIRROR;
+    public static MetaItem<?>.MetaValueItem ULTRASHORT_PULSE_LASER;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_UNIT_CORE;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
     
     public static void init() {
         GAMetaItem item = new GAMetaItem();
