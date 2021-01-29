@@ -1,5 +1,7 @@
 package gregicadditions.machines.multi.steam;
 
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -22,6 +24,11 @@ public class MetaTileEntitySteamItemBus extends MetaTileEntityItemBus implements
     public MetaTileEntitySteamItemBus(ResourceLocation metaTileEntityId, boolean isExportHatch) {
         super(metaTileEntityId, 1, isExportHatch);
         this.isExportHatch = isExportHatch;
+    }
+
+    @Override
+    public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
+        return new MetaTileEntitySteamItemBus(metaTileEntityId, isExportHatch);
     }
 
     @Override

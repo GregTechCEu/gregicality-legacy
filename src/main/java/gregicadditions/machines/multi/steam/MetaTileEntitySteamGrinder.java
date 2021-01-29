@@ -5,6 +5,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.renderer.GATextures;
 import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -19,6 +20,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTLog;
 import gregtech.api.util.InventoryUtils;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -27,7 +29,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import org.lwjgl.openal.AL;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -97,6 +101,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
     }
 
     // TODO Decouple Macerator top overlay to use as front texture
+    // Look into GTCE Block Breaker
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
@@ -123,12 +128,14 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 if (currentRecipe != null) {
                     this.previousRecipe = currentRecipe;
                 }
-            } else if (previousRecipe != null && previousRecipe.matches(false, importInventory, null)) {
+            } else if (previousRecipe != null && previousRecipe.matches(false, importInventory, new FluidTankList(false))) {
                 currentRecipe = previousRecipe;
             }
             if (currentRecipe != null && setupAndConsumeRecipeInputs(currentRecipe)) {
+                GTLog.logger.info("recipe found");
                 setupRecipe(currentRecipe);
             }
+            GTLog.logger.info("recipe not found, or finished");
         }
 
         @Override
@@ -206,7 +213,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                     .inputsIngredients(recipeInputs)
                     .outputs(recipeOutputs)
                     .EUt(recipeEUt)
-                    .duration(0)
+                    .duration(20)
                     .build().getResult();
         }
 

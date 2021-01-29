@@ -1,8 +1,5 @@
 package gregicadditions.machines.multi.steam;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.ItemHandlerList;
@@ -12,7 +9,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.render.Textures;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -81,7 +77,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
     private void initializeAbilities() {
         this.inputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_IMPORT_ITEMS));
         this.outputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_EXPORT_ITEMS));
-        this.steamFluidTank = new FluidTankList(false, getAbilities(GAMultiblockAbility.STEAM)); // may be problematic
+        this.steamFluidTank = new FluidTankList(true, getAbilities(GAMultiblockAbility.STEAM));
     }
 
     private void resetTileAbilities() {
