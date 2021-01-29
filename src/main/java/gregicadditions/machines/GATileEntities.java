@@ -1128,10 +1128,10 @@ public class GATileEntities {
         GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
         COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
 
-        STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4200, new MetaTileEntitySteamHatch(location("steam_hatch")));
-        STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4201, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
-        STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4202, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
-        STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4203, new MetaTileEntitySteamGrinder(location("steam_grinder")));
+        STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4175, new MetaTileEntitySteamHatch(location("steam_hatch")));
+        STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4176, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
+        STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4177, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
+        STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4178, new MetaTileEntitySteamGrinder(location("steam_grinder")));
         
     }
 

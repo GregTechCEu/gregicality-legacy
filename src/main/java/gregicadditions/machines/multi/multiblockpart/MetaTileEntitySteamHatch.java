@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.multiblockpart;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.machines.multi.impl.GAMultiblockAbility;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
@@ -150,7 +150,7 @@ public class MetaTileEntitySteamHatch extends MetaTileEntityMultiblockPart imple
 
     @Override
     public MultiblockAbility<IFluidTank> getAbility() {
-        return GAMultiblockAbility.STEAM;
+        return GregicAdditionsCapabilities.STEAM;
     }
 
     @Override

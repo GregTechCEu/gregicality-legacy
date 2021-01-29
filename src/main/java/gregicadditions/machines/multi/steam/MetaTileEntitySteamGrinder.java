@@ -3,9 +3,9 @@ package gregicadditions.machines.multi.steam;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.machines.multi.impl.GAMultiblockAbility;
-import gregicadditions.machines.multi.impl.RecipeMapSteamMultiblockController;
-import gregicadditions.machines.multi.impl.SteamMultiblockRecipeLogic;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.RecipeMapSteamMultiblockController;
+import gregicadditions.capabilities.impl.SteamMultiblockRecipeLogic;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -37,7 +37,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                                                        // Currently is doing (1mb Steam -> 2EU) to be generous.
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            GAMultiblockAbility.STEAM_IMPORT_ITEMS, GAMultiblockAbility.STEAM_EXPORT_ITEMS, GAMultiblockAbility.STEAM
+            GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS, GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS, GregicAdditionsCapabilities.STEAM
     };
 
     public MetaTileEntitySteamGrinder(ResourceLocation metaTileEntityId) {

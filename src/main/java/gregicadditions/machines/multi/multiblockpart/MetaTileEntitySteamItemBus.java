@@ -1,6 +1,6 @@
 package gregicadditions.machines.multi.multiblockpart;
 
-import gregicadditions.machines.multi.impl.GAMultiblockAbility;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
@@ -34,7 +34,7 @@ public class MetaTileEntitySteamItemBus extends MetaTileEntityItemBus implements
 
     @Override
     public MultiblockAbility<IItemHandlerModifiable> getAbility() {
-        return isExportHatch ? GAMultiblockAbility.STEAM_EXPORT_ITEMS : GAMultiblockAbility.STEAM_IMPORT_ITEMS;
+        return isExportHatch ? GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS : GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS;
     }
 
     @Override

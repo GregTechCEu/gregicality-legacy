@@ -1,4 +1,4 @@
-package gregicadditions.machines.multi.impl;
+package gregicadditions.capabilities.impl;
 
 import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -49,14 +49,13 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
         return controller.steamFluidTank;
     }
 
-    // TODO Optimize this
     private void combineSteamTanks() {
         steamFluidTank = getSteamFluidTank();
         if (steamFluidTank == null)
             steamFluidTankCombined = new FluidTank(0);
         else {
             int capacity = steamFluidTank.getTanks() * 64000;
-            steamFluidTankCombined = new FluidTank(steamFluidTank.getTanks() * 64000);
+            steamFluidTankCombined = new FluidTank(capacity);
             steamFluidTankCombined.fill(steamFluidTank.drain(capacity, false), true);
         }
     }

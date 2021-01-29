@@ -1,7 +1,6 @@
-package gregicadditions.machines.multi.impl;
+package gregicadditions.capabilities.impl;
 
-import gregicadditions.machines.multi.impl.GAMultiblockAbility;
-import gregicadditions.machines.multi.impl.SteamMultiblockRecipeLogic;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.ItemHandlerList;
@@ -79,9 +78,9 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
     }
 
     private void initializeAbilities() {
-        this.inputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_IMPORT_ITEMS));
-        this.outputInventory = new ItemHandlerList(getAbilities(GAMultiblockAbility.STEAM_EXPORT_ITEMS));
-        this.steamFluidTank = new FluidTankList(true, getAbilities(GAMultiblockAbility.STEAM));
+        this.inputInventory = new ItemHandlerList(getAbilities(GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS));
+        this.outputInventory = new ItemHandlerList(getAbilities(GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS));
+        this.steamFluidTank = new FluidTankList(true, getAbilities(GregicAdditionsCapabilities.STEAM));
     }
 
     private void resetTileAbilities() {
@@ -120,9 +119,9 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
     @Override
     protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
         //basically check minimal requirements for inputs count
-        int itemInputsCount = abilities.getOrDefault(GAMultiblockAbility.STEAM_IMPORT_ITEMS, Collections.emptyList())
+        int itemInputsCount = abilities.getOrDefault(GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS, Collections.emptyList())
                 .stream().map(it -> (IItemHandler) it).mapToInt(IItemHandler::getSlots).sum();
         return itemInputsCount >= recipeMap.getMinInputs() &&
-                abilities.containsKey(GAMultiblockAbility.STEAM);
+                abilities.containsKey(GregicAdditionsCapabilities.STEAM);
     }
 }
