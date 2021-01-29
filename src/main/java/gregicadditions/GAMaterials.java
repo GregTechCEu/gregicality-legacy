@@ -1268,7 +1268,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material UXV = new MarkerMaterial("UXV");
     public static Material MAX = new MarkerMaterial("MAX");
 
-    //free id 775
+    public static DustMaterial TumbagaMix = new DustMaterial(775, "tumbaga_mix", 0xFFB20F, MaterialIconSet.DULL, 2, of(new MaterialStack(Gold, 2), new MaterialStack(Bronze, 1)), 0);
 
     @Override
     public void onMaterialsInit() {

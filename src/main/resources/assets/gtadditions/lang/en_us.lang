@@ -3823,3 +3823,4 @@ gtadditions.machine.steam.steam_hatch.tooltip=Accepted Fluid: §eSteam
 gtadditions.machine.steam_input_bus.name=Input Bus (Steam)
 gtadditions.machine.steam_output_bus.name=Output Bus (Steam)
 gtadditions.machine.steam_bus.tooltip=Does not work with non-steam multiblocks
+material.tumbaga_mix=Tumbaga Mix
