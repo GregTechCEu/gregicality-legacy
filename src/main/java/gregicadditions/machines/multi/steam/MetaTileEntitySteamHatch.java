@@ -163,7 +163,6 @@ public class MetaTileEntitySteamHatch extends MetaTileEntityMultiblockPart imple
                 .build(getHolder(), entityPlayer);
     }
 
-    // TODO Change design here maybe
     public ModularUI.Builder createTankUI(IFluidTank fluidTank, IItemHandlerModifiable containerInventory, String title, EntityPlayer entityPlayer) {
         ModularUI.Builder builder = ModularUI.defaultBuilder();
         builder.image(7, 16, 81, 55, GuiTextures.DISPLAY);

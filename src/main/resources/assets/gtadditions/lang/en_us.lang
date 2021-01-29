@@ -3814,6 +3814,7 @@ fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
+gtadditions.machine.steam_grinder.tooltip=Processes up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Busses
 gtadditions.multiblock.steam.steam_stored=Steam: %s / %s mb
 gtadditions.machine.steam_hatch.name=Steam Hatch
 gtadditions.machine.steam.steam_hatch.tooltip=Accepted Fluid: §eSteam

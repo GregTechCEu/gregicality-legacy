@@ -122,11 +122,4 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
         return itemInputsCount >= recipeMap.getMinInputs() &&
                 abilities.containsKey(GAMultiblockAbility.STEAM);
     }
-
-    /*
-    @Override
-    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-        super.renderMetaTileEntity(renderState, translation, pipeline);
-        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), recipeMapWorkable.isActive());
-    }*/
 }

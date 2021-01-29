@@ -3,7 +3,6 @@ package gregicadditions.machines.multi.steam;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.renderer.GATextures;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -12,42 +11,30 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
-import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.InventoryUtils;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import org.lwjgl.openal.AL;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockController {
 
-    private static final double CONVERSION_RATE = 1.0; // TODO Adjust this value
+    private static final double CONVERSION_RATE = 1.2; // TODO Add config for this (maybe)
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             GAMultiblockAbility.STEAM_IMPORT_ITEMS, GAMultiblockAbility.STEAM_EXPORT_ITEMS, GAMultiblockAbility.STEAM
     };
-    //private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-    //        MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS
-    //};
 
     public MetaTileEntitySteamGrinder(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.MACERATOR_RECIPES, CONVERSION_RATE);
@@ -59,19 +46,6 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
         return new MetaTileEntitySteamGrinder(metaTileEntityId);
     }
 
-    // TODO Populate this if needed
-    @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-    }
-
-    // TODO Populate this if needed
-    @Override
-    protected void formStructure(PatternMatchContext context) {
-        super.formStructure(context);
-    }
-
-    // TODO Populate this if needed
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
@@ -83,7 +57,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "X#X", "XXX")
                 .aisle("XXX", "XSX", "XXX")
-                .setAmountAtLeast('L', 0) // TODO Change to 14
+                .setAmountAtLeast('L', 14) // TODO Change to 14
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
@@ -100,12 +74,12 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
         return Textures.BRONZE_PLATED_BRICKS;
     }
 
-    // TODO Decouple Macerator top overlay to use as front texture
-    // Look into GTCE Block Breaker
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-        GATextures.MACERATOR_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), recipeMapWorkable.isActive());
+        Textures.ROCK_CRUSHER_OVERLAY.renderSided(getFrontFacing(), renderState, translation, pipeline);
+        if (recipeMapWorkable.isActive())
+            Textures.ROCK_CRUSHER_ACTIVE_OVERLAY.renderSided(getFrontFacing(), renderState, translation, pipeline);
     }
 
     protected class SteamGrinderWorkable extends SteamMultiblockRecipeLogic {
@@ -120,7 +94,6 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             Recipe currentRecipe = null;
             IItemHandlerModifiable importInventory = getInputInventory();
             boolean dirty = checkRecipeInputsDirty(importInventory, null);
-            //GTLog.logger.info("dirty? " + dirty);
 
             if(dirty || forceRecipeRecheck) {
                 this.forceRecipeRecheck = false;
@@ -133,12 +106,9 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 currentRecipe = previousRecipe;
             }
 
-            GTLog.logger.info("currentRecipe null? " + (currentRecipe == null));
             if (currentRecipe != null && setupAndConsumeRecipeInputs(currentRecipe)) {
-                GTLog.logger.info("recipe found");
                 setupRecipe(currentRecipe);
             }
-            //GTLog.logger.info("recipe not found, or finished, input: " + inputInventory.getSlots() + " steam: " +steamFluidTank.getTanks());
         }
 
         @Override
@@ -213,12 +183,10 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 return null;
             }
 
-            // TODO Determine math for EUt and duration
-            // EUt is currently just the regular recipe's EUt
             return recipeMap.recipeBuilder()
                     .inputsIngredients(recipeInputs)
                     .outputs(recipeOutputs)
-                    .EUt((int)Math.ceil(recipeEUt * ((32/recipeEUt) - 1) * 1.33))
+                    .EUt(Math.min(32, (int)Math.ceil(recipeEUt * 1.33)))
                     .duration(Math.max(recipeDuration, (int)(recipeDuration * (100.0F / (100.0F + speedBonusPercent)) * 1.5)))
                     .build().getResult();
         }

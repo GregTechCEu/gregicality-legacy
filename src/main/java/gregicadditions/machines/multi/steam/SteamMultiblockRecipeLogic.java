@@ -6,7 +6,6 @@ import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.GTLog;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandler;
@@ -14,7 +13,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
 
-    private IMultipleTankHandler steamFluidTank; // TODO Why was this final elsewhere? Or did I misread?
+    private IMultipleTankHandler steamFluidTank;
     private IFluidTank steamFluidTankCombined; // TODO Try to remove this
 
     // EU per mB
@@ -64,6 +63,13 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
 
     @Override
     public void update() {
+
+        // Fixes an annoying GTCE bug in AbstractRecipeLogic
+        RecipeMapSteamMultiblockController controller = (RecipeMapSteamMultiblockController) metaTileEntity;
+        if (isActive && !controller.isStructureFormed()) {
+            progressTime = 0;
+            wasActiveAndNeedsUpdate = true;
+        }
         combineSteamTanks();
         super.update();
     }
@@ -71,7 +77,6 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
     @Override
     protected long getEnergyStored() {
         combineSteamTanks();
-        GTLog.logger.info("steamcombined: " + steamFluidTankCombined.getFluidAmount());
         return (long) Math.ceil(steamFluidTankCombined.getFluidAmount() * conversionRate);
     }
 
@@ -81,7 +86,6 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
         return (long) Math.floor(steamFluidTankCombined.getCapacity() * conversionRate);
     }
 
-    // TODO check if steam is persisting in steamFluidTankCombined
     @Override
     protected boolean drawEnergy(int recipeEUt) {
         combineSteamTanks();
