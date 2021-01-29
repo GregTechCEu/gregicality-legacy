@@ -1,4 +1,4 @@
-package gregicadditions.machines.multi.steam;
+package gregicadditions.machines.multi.impl;
 
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraftforge.fluids.IFluidTank;

@@ -1,5 +1,7 @@
-package gregicadditions.machines.multi.steam;
+package gregicadditions.machines.multi.impl;
 
+import gregicadditions.machines.multi.impl.GAMultiblockAbility;
+import gregicadditions.machines.multi.impl.SteamMultiblockRecipeLogic;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.ItemHandlerList;
@@ -11,7 +13,9 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -45,7 +49,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
         return outputInventory;
     }
 
-    public IMultipleTankHandler getInputFluidInventory() {
+    public IMultipleTankHandler getSteamFluidTank() {
         return steamFluidTank;
     }
 
@@ -107,10 +111,9 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
                 textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
             }
 
-            // TODO Consider adding this when multi doesn't have enough steam
-            //if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-            //    textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-            //}
+            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.steam_grinder.low_steam").setStyle(new Style().setColor(TextFormatting.RED)));
+            }
         }
     }
 

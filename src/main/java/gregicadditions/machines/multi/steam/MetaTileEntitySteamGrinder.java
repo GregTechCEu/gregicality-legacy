@@ -3,6 +3,9 @@ package gregicadditions.machines.multi.steam;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.machines.multi.impl.GAMultiblockAbility;
+import gregicadditions.machines.multi.impl.RecipeMapSteamMultiblockController;
+import gregicadditions.machines.multi.impl.SteamMultiblockRecipeLogic;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,7 +33,8 @@ import java.util.Collections;
 
 public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockController {
 
-    private static final double CONVERSION_RATE = 1.2; // TODO Add config for this (maybe)
+    private static final double CONVERSION_RATE = 2.0; // Can add Config value for this if needed.
+                                                       // Currently is doing (1mb Steam -> 2EU) to be generous.
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             GAMultiblockAbility.STEAM_IMPORT_ITEMS, GAMultiblockAbility.STEAM_EXPORT_ITEMS, GAMultiblockAbility.STEAM
@@ -57,7 +61,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "X#X", "XXX")
                 .aisle("XXX", "XSX", "XXX")
-                .setAmountAtLeast('L', 14) // TODO Change to 14
+                .setAmountAtLeast('L', 14)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
@@ -85,7 +89,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
     protected class SteamGrinderWorkable extends SteamMultiblockRecipeLogic {
 
         public SteamGrinderWorkable(RecipeMapSteamMultiblockController tileEntity, double conversionRate) {
-            super(tileEntity, tileEntity.recipeMap, tileEntity.steamFluidTank, conversionRate);
+            super(tileEntity, tileEntity.recipeMap, tileEntity.getSteamFluidTank(), conversionRate);
         }
 
         @Override
@@ -119,7 +123,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             final ArrayList<ItemStack> recipeOutputs = new ArrayList<>();
             int recipeEUt = 0;
             int recipeDuration = 1;
-            float speedBonusPercent = 0.0F; // TODO Find use for this, or remove
+            float speedBonusPercent = 0.0F; // Currently unused
 
             /* Iterate over input items looking for more items to process until we
              * have touched every item, or are at maximum item capacity

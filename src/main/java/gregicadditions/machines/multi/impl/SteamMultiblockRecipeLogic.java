@@ -1,4 +1,4 @@
-package gregicadditions.machines.multi.steam;
+package gregicadditions.machines.multi.impl;
 
 import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -14,7 +14,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
 
     private IMultipleTankHandler steamFluidTank;
-    private IFluidTank steamFluidTankCombined; // TODO Try to remove this
+    private IFluidTank steamFluidTankCombined;
 
     // EU per mB
     private final double conversionRate;
@@ -70,6 +70,7 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
             progressTime = 0;
             wasActiveAndNeedsUpdate = true;
         }
+
         combineSteamTanks();
         super.update();
     }

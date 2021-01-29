@@ -1,5 +1,6 @@
-package gregicadditions.machines.multi.steam;
+package gregicadditions.machines.multi.multiblockpart;
 
+import gregicadditions.machines.multi.impl.GAMultiblockAbility;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;

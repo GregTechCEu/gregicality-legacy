@@ -1,8 +1,9 @@
-package gregicadditions.machines.multi.steam;
+package gregicadditions.machines.multi.multiblockpart;
 
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.machines.multi.impl.GAMultiblockAbility;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
