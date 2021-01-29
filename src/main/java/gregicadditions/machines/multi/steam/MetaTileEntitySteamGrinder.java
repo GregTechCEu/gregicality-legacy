@@ -148,6 +148,8 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             final ArrayList<CountableIngredient> recipeInputs = new ArrayList<>();
             final ArrayList<ItemStack> recipeOutputs = new ArrayList<>();
             int recipeEUt = 0;
+            int recipeDuration = 1;
+            float speedBonusPercent = 0.0F; // TODO Find use for this, or remove
 
             /* Iterate over input items looking for more items to process until we
              * have touched every item, or are at maximum item capacity
@@ -167,6 +169,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
                 if (matchingRecipe != null) {
                     inputIngredient = matchingRecipe.getInputs().get(0);
                     recipeEUt = matchingRecipe.getEUt();
+                    recipeDuration = matchingRecipe.getDuration();
                 } else
                     continue;
 
@@ -215,8 +218,8 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             return recipeMap.recipeBuilder()
                     .inputsIngredients(recipeInputs)
                     .outputs(recipeOutputs)
-                    .EUt(recipeEUt)
-                    .duration(20)
+                    .EUt((int)Math.ceil(recipeEUt * ((32/recipeEUt) - 1) * 1.33))
+                    .duration(Math.max(recipeDuration, (int)(recipeDuration * (100.0F / (100.0F + speedBonusPercent)) * 1.5)))
                     .build().getResult();
         }
 
