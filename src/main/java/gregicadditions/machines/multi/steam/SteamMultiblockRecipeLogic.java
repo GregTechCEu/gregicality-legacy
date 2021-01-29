@@ -6,6 +6,7 @@ import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.util.GTLog;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandler;
@@ -13,8 +14,8 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
 
-    private final IMultipleTankHandler steamFluidTank;
-    private IFluidTank steamFluidTankCombined;
+    private IMultipleTankHandler steamFluidTank; // TODO Why was this final elsewhere? Or did I misread?
+    private IFluidTank steamFluidTankCombined; // TODO Try to remove this
 
     // EU per mB
     private final double conversionRate;
@@ -23,10 +24,12 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
         super(tileEntity, recipeMap);
         this.steamFluidTank = steamFluidTank;
         this.conversionRate = conversionRate;
+        allowOverclocking = false;
         combineSteamTanks();
     }
 
     public IFluidTank getSteamFluidTankCombined() {
+        combineSteamTanks();
         return steamFluidTankCombined;
     }
 
@@ -42,17 +45,20 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
         return controller.getOutputInventory();
     }
 
+    protected IMultipleTankHandler getSteamFluidTank() {
+        RecipeMapSteamMultiblockController controller = (RecipeMapSteamMultiblockController) metaTileEntity;
+        return controller.steamFluidTank;
+    }
+
     // TODO Optimize this
     private void combineSteamTanks() {
-        int capacity = 0;
+        steamFluidTank = getSteamFluidTank();
         if (steamFluidTank == null)
             steamFluidTankCombined = new FluidTank(0);
         else {
-            for (IFluidTank tank : steamFluidTank)
-                capacity += tank.getCapacity();
-            steamFluidTankCombined = new FluidTank(capacity);
-            for (IFluidTank tank : steamFluidTank)
-                steamFluidTankCombined.fill(tank.drain(Integer.MAX_VALUE, false), true);
+            int capacity = steamFluidTank.getTanks() * 64000;
+            steamFluidTankCombined = new FluidTank(steamFluidTank.getTanks() * 64000);
+            steamFluidTankCombined.fill(steamFluidTank.drain(capacity, false), true);
         }
     }
 
@@ -64,16 +70,21 @@ public class SteamMultiblockRecipeLogic extends AbstractRecipeLogic {
 
     @Override
     protected long getEnergyStored() {
+        combineSteamTanks();
+        GTLog.logger.info("steamcombined: " + steamFluidTankCombined.getFluidAmount());
         return (long) Math.ceil(steamFluidTankCombined.getFluidAmount() * conversionRate);
     }
 
     @Override
     protected long getEnergyCapacity() {
+        combineSteamTanks();
         return (long) Math.floor(steamFluidTankCombined.getCapacity() * conversionRate);
     }
 
+    // TODO check if steam is persisting in steamFluidTankCombined
     @Override
     protected boolean drawEnergy(int recipeEUt) {
+        combineSteamTanks();
         int resultDraw = (int) Math.ceil(recipeEUt / conversionRate);
         return resultDraw >= 0 && steamFluidTankCombined.getFluidAmount() >= resultDraw &&
                 steamFluidTank.drain(resultDraw, true) != null;

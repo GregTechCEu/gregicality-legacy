@@ -120,6 +120,7 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             Recipe currentRecipe = null;
             IItemHandlerModifiable importInventory = getInputInventory();
             boolean dirty = checkRecipeInputsDirty(importInventory, null);
+            //GTLog.logger.info("dirty? " + dirty);
 
             if(dirty || forceRecipeRecheck) {
                 this.forceRecipeRecheck = false;
@@ -131,11 +132,13 @@ public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockControll
             } else if (previousRecipe != null && previousRecipe.matches(false, importInventory, new FluidTankList(false))) {
                 currentRecipe = previousRecipe;
             }
+
+            GTLog.logger.info("currentRecipe null? " + (currentRecipe == null));
             if (currentRecipe != null && setupAndConsumeRecipeInputs(currentRecipe)) {
                 GTLog.logger.info("recipe found");
                 setupRecipe(currentRecipe);
             }
-            GTLog.logger.info("recipe not found, or finished");
+            //GTLog.logger.info("recipe not found, or finished, input: " + inputInventory.getSlots() + " steam: " +steamFluidTank.getTanks());
         }
 
         @Override
