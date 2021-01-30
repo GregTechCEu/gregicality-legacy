@@ -3842,4 +3842,4 @@ material.qcd_confined_matter=Quantumchromodynamically Confined Matter
 fluid.free_electron_gas=Free Electron Gas
 fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
-fluid.high_energy_qgp.name=High Energy Quark-Gluon Plasma
+fluid.HighEnergyQGP.name=High Energy Quark-Gluon Plasma

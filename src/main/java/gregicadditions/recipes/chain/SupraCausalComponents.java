@@ -144,7 +144,7 @@ public class SupraCausalComponents {
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
                 .input(block, HeavyQuarkDegenerateMatter, 16)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
-                .fluidOutputs(high_energy_qgp.getFluid(144))
+                .fluidOutputs(HighEnergyQGP.getFluid(144))
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(2000).EUt(134217728)
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(16))
@@ -169,7 +169,7 @@ public class SupraCausalComponents {
                 .outputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .buildAndRegister();
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(200).EUt(134217728)
-                .fluidInputs(high_energy_qgp.getFluid(144))
+                .fluidInputs(HighEnergyQGP.getFluid(144))
                 .fluidInputs(LiquidHelium.getFluid(10000))
                 .fluidOutputs(Helium.getFluid(10000))
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())

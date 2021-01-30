@@ -1305,7 +1305,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial FreeAlphaGas = new SimpleFluidMaterial("free_alpha_gas", 0xe0d407);
     public static final SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c);
 
-    public static final SimpleFluidMaterial high_energy_qgp = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff);
+    public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff);
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
