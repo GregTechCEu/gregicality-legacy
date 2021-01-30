@@ -299,6 +299,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ESCHERICHIA_CULTURE;
     public static MetaItem<?>.MetaValueItem BIFIDOBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
+    public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
