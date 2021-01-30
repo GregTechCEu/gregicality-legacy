@@ -1448,6 +1448,9 @@ public class GAMaterials implements IMaterialHandler {
         Polycaprolactam.addFlag(GENERATE_FOIL);
         Polystyrene.addFlag(GENERATE_FOIL);
         Plastic.addFlag(GENERATE_FOIL);
+        Thallium.addFlag(GENERATE_FOIL);
+        Barium.addFlag(GENERATE_FOIL);
+        Calcium.addFlag(GENERATE_FOIL);
         Cupronickel.addFlag(GENERATE_FINE_WIRE);
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
