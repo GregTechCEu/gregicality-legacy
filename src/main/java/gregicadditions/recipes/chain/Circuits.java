@@ -425,7 +425,7 @@ public class Circuits {
                 .inputs(UHPIC.getStackForm(64))
                 .input(frameGt, Quantum, 1)
                 .input(plate, Quantum, 8)
-                .input(foil, Zylon, 64)
+                .input(foil, FullerenePolymerMatrix, 64)
                 .inputs(UNSTABLE_STAR.getStackForm(4))
                 .outputs(COSMIC_MAINFRAME.getStackForm())
                 .fluidInputs(Taranium.getFluid(864))

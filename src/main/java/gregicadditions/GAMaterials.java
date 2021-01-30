@@ -1203,7 +1203,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial LightQuarks = new SimpleFluidMaterial("light_quarks",0x0000ff);
     public static final SimpleFluidMaterial Gluons = new SimpleFluidMaterial("gluons",0xfcfcfa);
     public static final SimpleFluidMaterial HeavyLeptonMix = new SimpleFluidMaterial("heavy_lepton_mix",0x5adf52);
-    public static final SimpleFluidMaterial CosmicComputingMix = new SimpleFluidMaterial("cosmic_computer_mix",0xafad2f);
+    public static final SimpleFluidMaterial CosmicComputingMix = new SimpleFluidMaterial("cosmic_computing_mix",0xafad2f);
     public static final SimpleFluidMaterial HeavyQuarkEnrichedMix = new SimpleFluidMaterial("heavy_quark_enriched_mix",0xefefef);
     public static final SimpleFluidMaterial DeuteriumSuperheavyMix = new SimpleFluidMaterial("deuterium_superheavy_mix",0xa2d2a4);
     public static final SimpleFluidMaterial ScandiumTitanium50Mix = new SimpleFluidMaterial("scandium_titanium50_mix", (Scandium.materialRGB+Titanium.materialRGB)/2);
@@ -1211,7 +1211,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Phenylsodium = new SimpleFluidMaterial("phenylsodium",0x2c2cc8);
     public static final SimpleFluidMaterial Difluoroaniline = new SimpleFluidMaterial("difluoroaniline",0x3fac4a);
     public static final SimpleFluidMaterial Succinaldehyde = new SimpleFluidMaterial("succinaldehyde",SuccinicAcid.rgb);
-    public static final SimpleFluidMaterial NDifluorophenylpyrrole = new SimpleFluidMaterial("n-difluorophenylpyrrole",0x3a9aa9);
+    public static final SimpleFluidMaterial NDifluorophenylpyrrole = new SimpleFluidMaterial("n_difluorophenylpyrrole",0x3a9aa9);
     public static final SimpleFluidMaterial PhotopolymerSolution = new SimpleFluidMaterial("photopolymer_solution",0x8a526d);
     public static final SimpleFluidMaterial Trichloroferane = new SimpleFluidMaterial("trichloroferane",0x521973);
     public static final SimpleFluidMaterial GlucoseIronSolution = new SimpleFluidMaterial("glucose_iron_solution",GlucoseIronMixture.rgb);
@@ -1272,8 +1272,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Nihonium = new IngotMaterial(678, "nihonium" , 0x08269e, MaterialIconSet.SHINY, 2, of(), 0, Nh);
     public static final IngotMaterial Roentgenium = new IngotMaterial(677, "roentgenium" , 0xe3fdec, MaterialIconSet.SHINY, 2, of(), 0, Rg);
     public static final IngotMaterial Meitnerium = new IngotMaterial(676, "meitnerium" , 0x2246be, MaterialIconSet.SHINY, 2, of(), 0, Mt);
-    public static final IngotMaterial SuperheavyHAlloy = new IngotMaterial(675,"superheavy_h_alloy",0xE84B36,MaterialIconSet.SHINY,6,of(new MaterialStack(Copernicium, 1), new MaterialStack(Nihonium, 1), new MaterialStack(MetastableFlerovium, 1), new MaterialStack(Moscovium, 1), new MaterialStack(Livermorium, 1), new MaterialStack(Tennessine,1), new MaterialStack(MetastableOganesson, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,75000);
-    public static final IngotMaterial SuperheavyLAlloy = new IngotMaterial(674,"superheavy_l_alloy",0x2B45DF,MaterialIconSet.SHINY,6,of(new MaterialStack(Rutherfordium, 1), new MaterialStack(Dubnium, 1), new MaterialStack(Seaborgium, 1), new MaterialStack(Bohrium, 1), new MaterialStack(MetastableHassium, 1), new MaterialStack(Meitnerium,1), new MaterialStack(Roentgenium, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,75000);
+    public static final IngotMaterial SuperheavyHAlloy = new IngotMaterial(675,"superheavy_h_alloy",0xE84B36,MaterialIconSet.SHINY,6,of(new MaterialStack(Copernicium, 1), new MaterialStack(Nihonium, 1), new MaterialStack(MetastableFlerovium, 1), new MaterialStack(Moscovium, 1), new MaterialStack(Livermorium, 1), new MaterialStack(Tennessine,1), new MaterialStack(MetastableOganesson, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,50000);
+    public static final IngotMaterial SuperheavyLAlloy = new IngotMaterial(674,"superheavy_l_alloy",0x2B45DF,MaterialIconSet.SHINY,6,of(new MaterialStack(Rutherfordium, 1), new MaterialStack(Dubnium, 1), new MaterialStack(Seaborgium, 1), new MaterialStack(Bohrium, 1), new MaterialStack(MetastableHassium, 1), new MaterialStack(Meitnerium,1), new MaterialStack(Roentgenium, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,50000);
     public static final IngotMaterial QCDMatter = new IngotMaterial(673, "qcd_confined_matter", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_PLATE | DISABLE_REPLICATION | NO_WORKING | NO_SMELTING | NO_SMASHING, null, 35000);
 
     public static final SimpleDustMaterial BETSPerrhenate = new SimpleDustMaterial("bets_perrhenate", 0x7ada00, (short) 255, MaterialIconSet.SHINY, of(new MaterialStack(Rhenium, 1), new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 8), new MaterialStack(Sulfur, 4), new MaterialStack(Selenium, 4), new MaterialStack(Oxygen, 4)));
@@ -1390,6 +1390,7 @@ public class GAMaterials implements IMaterialHandler {
         GalliumArsenide.addFlag(DISABLE_AUTOGENERATED_MIXER_RECIPE);
         Plastic.addFlag(DISABLE_AUTOGENERATED_MIXER_RECIPE);
         Polytetrafluoroethylene.addFlag(DISABLE_AUTOGENERATED_MIXER_RECIPE);
+        TantalumHafniumSeaborgiumCarbide.addFlag(DISABLE_AUTOGENERATED_MIXER_RECIPE);
 
         Radon.addFlag(GENERATE_PLASMA);
         Potassium.addFlag(GENERATE_PLASMA);
@@ -1450,6 +1451,9 @@ public class GAMaterials implements IMaterialHandler {
         Polycaprolactam.addFlag(GENERATE_FOIL);
         Polystyrene.addFlag(GENERATE_FOIL);
         Plastic.addFlag(GENERATE_FOIL);
+        Thallium.addFlag(GENERATE_FOIL);
+        Barium.addFlag(GENERATE_FOIL);
+        Calcium.addFlag(GENERATE_FOIL);
         Cupronickel.addFlag(GENERATE_FINE_WIRE);
         ReinforcedEpoxyResin.addFlag(GENERATE_FINE_WIRE);
         Plutonium.addFlag(GENERATE_FINE_WIRE);
@@ -1459,6 +1463,8 @@ public class GAMaterials implements IMaterialHandler {
         Arsenic.addFlag(SMELT_INTO_FLUID);
         Polonium.addFlag(SMELT_INTO_FLUID);
         Copernicium.addFlag(GENERATE_FLUID_BLOCK);
+        ReinforcedEpoxyResin.addFlag(GENERATE_ROD);
+
 
         //turbine component
         Cobalt.addFlag(GENERATE_BOLT_SCREW);
