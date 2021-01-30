@@ -145,6 +145,8 @@ metaitem.uhasoc.name=UHASoC
 metaitem.hasoc.name=HASoC
 metaitem.optical_soc.name=Optical SoC
 metaitem.optical_processing_core.name=Optical Processing Core
+metaitem.cosmic_processing_unit_core.name=Cosmic Processing Unit Core
+metaitem.cosmic_processing_core.name=Cosmic Processing Core
 
 metaitem.potassium_cyanide.name=Potassium Cyanide
 metaitem.succinic_acid.name=Succinic Acid
@@ -275,7 +277,19 @@ metaitem.electron_source.name=Electron Source
 metaitem.peek_polyamide_foil.name=PEEK Polyamide Foil
 metaitem.highly_insulating_foil.name=Highly Insulating Foil
 metatiem.insulation_wire_assembly.name=Insulation Wire Assembly
-
+metaitem.aerographene.name=Aerographene
+metaitem.graphene_iron_plate.name=Graphene Iron Plate
+metaitem.scintillator_crystal.name=Scintillator Crystal
+metaitem.scintillator.name=Scintillator
+metaitem.lepton_trap_crystal.name=Lepton Trap Crystal
+metaitem.hassium_seed_crystal.name=Hassium Seed Crystal
+metaitem.hassium_boule.name=Hassium Boule
+metaitem.hassium_wafer.name=Hassium Wafer
+metaitem.coated_hassium_wafer.name=Coated Hassium Wafer
+metaitem.photocoated_hassium_wafer.name=Photocoated Hassium Wafer
+metaitem.grating_lithography_mask.name=Grating Lithography Mask
+metaitem.diffractor_grating_medium.name=Diffractor Grating Medium
+metaitem.ultrashort_pulse_laser=Ultrashort Pulse Laser
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
@@ -746,6 +760,18 @@ metaitem.saccharic_acid.name=Saccharic Acid
 metaitem.adipic_acid.name=Adipic Acid
 metaitem.tetraethylammonium_nonahydrides.name=Tetraethylammonium Nonahydrides
 metaitem.manganese_fluoride.name=Manganese Fluoride
+metaitem.germanium_sulfide.name=Germanium Sulfide
+metaitem.bismuth_germanate.name=Bismuth Germanate
+metaitem.cesium_iodide.name=Caesium Iodide
+metaitem.tl_tm_cesium_iodide.name=Thallium Thulium Doped Caesium Iodide
+metaitem.cadmium_tungstate.name=Cadmium Tungstate
+metaitem.polycyclic_aromatic_mix.name=Polycyclic Aromatic Mixture
+metaitem.silver_fluoride.name=Silver Fluoride
+metaitem.graphite_oxide.name=Graphite Oxide
+metaitem.graphene_oxide.name=Graphene Oxide
+metaitem.glucose_iron_mix.name=Glucose Iron Mix
+metaitem.graphene_gel_suspension.name=Graphene Gel Suspension
+metaitem.dry_graphene_gel.name=Dry Graphene Gel
 
 
 
@@ -2449,6 +2475,16 @@ material.prho_ylf=Praseodymium Holmium Yttrium Lithium Fluoride
 material.lutm_yvo=Lutetium Thulium Yttrium Vanadate
 material.lithium_niobate=Lithium Niobate
 material.indium_phosphide=Indium Phosphide
+material.metastable_hassium=Metastable Hassium
+material.heavy_quark_degenerate_matter=Heavy Quark Degenerate Matter
+material.tennessine=Tennessine
+material.livermorium=Livermorium
+material.moscovium=Moscovium
+material.nihonium=Nihonium
+material.roentgenium=Roentgenium
+material.meitnerium=Meitnerium
+material.superheavy_l_alloy=Superheavy-L Alloy
+material.superheavy_h_alloy=Superheavy-H Alloy
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
@@ -3675,6 +3711,25 @@ fluid.azafullerene=Azafullerene
 fluid.ethylamine=Ethylamine
 fluid.trimethylsilane=Trimethylsilane
 
+fluid.quark_gluon_plasma=Quark Gluon Plasma
+fluid.heavy_quarks=Heavy Quarks
+fluid.light_quarks=Light Quarks
+fluid.gluons=Gluons
+fluid.heavy_lepton_mix=Heavy Lepton Mixture
+fluid.cosmic_computing_mix=Cosmic Computing Mixture
+fluid.heavy_quark_enriched_mix=Heavy Quark Enriched Mixture
+fluid.deuterium_superheavy_mix=Deuterium Superheavy Mixture
+fluid.scandium_titanium50_mix=Scandiu Titanium-50 Mixture
+fluid.radon_radium_mix=Radium Radon Mixture
+fluid.phenylsodium=Phenylsodium
+fluid.difluoroaniline=Difluoroaniline
+fluid.succinaldehyde=Succinaldehyde
+fluid.n-difluorophenylpyrrole=N-Difluorophenylpyrrole
+fluid.photopolymer_solution=Photopolymer Solution
+fluid.trichloroferane=Trichloroferane
+fluid.glucose_iron_solution=Glucose Iron Solution
+fluid.graphene_oxidation_solution=Graphene Oxidation Solution
+fluid.supercritical_co2=Supercritical Carbon Dioxide
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
