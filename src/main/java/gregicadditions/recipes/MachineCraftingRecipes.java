@@ -911,6 +911,11 @@ public class MachineCraftingRecipes {
             ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(), " MC", 'M', HULL.getIngredient(tier), 'C', CABLE_HEX.getIngredient(tier));
         });
 
+        ModHandler.addShapedRecipe("ga_steam_grinder", GATileEntities.STEAM_GRINDER.getStackForm(), "CGC", "CFC", "CGC", 'G', new UnificationEntry(gear, Potin), 'F', new UnificationEntry(frameGt, Potin), 'C', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS));
+        ModHandler.addShapedRecipe("ga_steam_hatch", GATileEntities.STEAM_HATCH.getStackForm(), "BPB", "BTB", "BPB", 'B', new UnificationEntry(plate, Bronze), 'P', new UnificationEntry(pipeMedium, Bronze), 'T', MetaTileEntities.BRONZE_TANK.getStackForm());
+        ModHandler.addShapedRecipe("ga_steam_input_bus", GATileEntities.STEAM_INPUT_BUS.getStackForm(), "BMB", "THT", "BMB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
+        ModHandler.addShapedRecipe("ga_steam_output_bus", GATileEntities.STEAM_OUTPUT_BUS.getStackForm(), "BTB", "MHM", "BTB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
+
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {

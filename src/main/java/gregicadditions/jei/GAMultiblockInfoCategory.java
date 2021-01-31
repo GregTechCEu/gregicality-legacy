@@ -97,6 +97,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 new LargeMultiblockInfoRecipeWrapper(new BioReactorInfo()),
                 new MultiblockInfoRecipeWrapper(new PlasmaCondenserInfo()),
                 new MultiblockInfoRecipeWrapper(new LargePackagerInfo()),
+                new MultiblockInfoRecipeWrapper(new SteamGrinderInfo()),
                 new MultiblockInfoRecipeWrapper(new CosmicRayDetectorInfo())
         ), "gregtech:multiblock_info");
     }

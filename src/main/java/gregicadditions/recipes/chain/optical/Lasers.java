@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain.optical;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -14,6 +15,7 @@ public class Lasers {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(2500))
+                .notConsumable(new IntCircuitIngredient(4))
                 .fluidOutputs(ChlorinatedSolvents.getFluid(3500))
                 .buildAndRegister();
 
