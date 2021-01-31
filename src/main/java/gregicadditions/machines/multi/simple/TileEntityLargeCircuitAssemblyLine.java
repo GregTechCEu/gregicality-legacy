@@ -69,7 +69,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(LEFT, DOWN, BACK)
                 .aisle("GAG", "RTR", "COC")
-                .aisle("GAG", "RTR", "FIF").setRepeatable(5)
+                .aisle("GAG", "RTR", "FIF").setRepeatable(3, 15)
                 .aisle("GSG", "RTR", "FIF")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))

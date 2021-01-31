@@ -30,7 +30,7 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
         return TileEntityLargeCircuitAssemblyLine.CASING1_ALLOWED.stream().map(casingType -> {
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             builder.aisle("COC", "RTR", "GYG");
-            for (int num = 0; num < 5; num++) {
+            for (int num = 0; num < 15; num++) {
                 if (num == 1) builder.aisle("CIC", "RTR", "GAG");
                 else builder.aisle("CIC", "RTR", "GAG");
             }
