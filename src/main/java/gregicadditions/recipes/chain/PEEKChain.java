@@ -94,7 +94,7 @@ public class PEEKChain {
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .inputs(Difluorobenzophenone.getItemStack())
                 .input(dust, SodaAsh)
-                .fluidOutputs(Polyetheretherketone.getFluid(2000))
+                .fluidOutputs(Polyetheretherketone.getFluid(2592))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride))
                 .EUt(500000)
                 .duration(250)
