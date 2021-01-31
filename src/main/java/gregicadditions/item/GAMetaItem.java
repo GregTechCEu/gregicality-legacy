@@ -409,7 +409,6 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_PROCESSING_UNIT_CORE = addItem(538,"cosmic_processing_unit_core");
         COSMIC_PROCESSING_CORE = addItem(539,"cosmic_processing_core");
         GRAPHENE_IRON_PLATE = addItem(540,"graphene_iron_plate");
-        CUPRIVADUS_CULTURE = addItem(541, "cupriavidus.culture");
 
         SMD_CAPACITOR_SUPRACAUSAL = addItem(541, "smd.capacitor.supracausal");
         SMD_RESISTOR_SUPRACAUSAL = addItem(542, "smd.resistor.supracausal");
@@ -433,6 +432,7 @@ public class GAMetaItem extends MaterialMetaItem {
         EIGENFOLDED_KERR_MANIFOLD = addItem(558, "eigenfolded.kerr.manifold");
         CTC_COMPUTATIONAL_UNIT = addItem(559, "ctc.computational.unit");
         RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(560, "recursively.folded.negative.space");
+        CUPRIAVIDUS_CULTURE = addItem(561, "cupriavidus.culture");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
