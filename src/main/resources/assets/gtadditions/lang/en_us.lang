@@ -3874,9 +3874,35 @@ metaitem.contained.exotic.matter.name=Contained Exotic Matter
 metaitem.separation.electromagnet.name=Separation Electromagnet
 metaitem.sphere.field.shape.name=Sphere Field Shape
 
+metaitem.smd.capacitor.supracausal.name=Supra-Causal Capacitor
+metaitem.smd.resistor.supracausal.name=Supra-Causal Resistor
+metaitem.smd.diode.supracausal.name=Supra-Causal Diode
+metaitem.smd.transistor.supracausal.name=Supra-Causal Transistor
+
+metaitem.circuit.processor.supracausal.name=Supra-Causal Processor
+metaitem.circuit.assembly.supracausal.name=Supra-Causal Assembly
+metaitem.circuit.computer.supracausal.name=Supra-Causal Computer
+metaitem.circuit.mainframe.supracausal.name=Supra-Causal Mainframe
+
+metaitem.topological.manipulator.unit.name=Topological Manipulator Unit
+metaitem.relativistic.spinorial.memory.system.name=Relativistic Spinorial Memory
+metaitem.graviton.transducer.name=Graviton Transducer
+metaitem.nuclear.clock.name=Nuclear Clock
+metaitem.supracausal.processing.core.name=Supra-Causal Processing Core
+metaitem.manifold.oscillatory.power.cell.name=Manifold Oscillatory Power Cell
+metaitem.qcd.protective.plating.name=Quantumchromodynamic Protective Plating
+metaitem.ctc.guidance.unit.name=Closed Timelike Curve Guidance Unit
+metaitem.ctc.computational.unit.container.name=Closed Timelike Curve Computational Unit Container
+metaitem.eigenfolded.kerr.manifold.name=Eigenfolded Kerr Manifold
+metaitem.ctc.computational.unit.name=Closed Timelike Curve Computational Unit
+metaitem.recursively.folded.negative.space.name=Recursively Folded Negative Space
+
+material.qcd_confined_matter=Quantumchromodynamically Confined Matter
+
 fluid.free_electron_gas=Free Electron Gas
 fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
+fluid.high_energy_qgp.name=High Energy Quark-Gluon Plasma
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Processes up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Busses
