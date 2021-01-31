@@ -56,7 +56,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     private long maxVoltage = 0;
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_LARGE_RECIPES);
         this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 

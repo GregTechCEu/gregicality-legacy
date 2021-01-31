@@ -39,7 +39,9 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> PROCESSING_ARRAY_RECIPES;
     @ZenProperty
-    public static final RecipeMap<QubitConsumerRecipeBuilder> CIRCUIT_ASSEMBLER_RECIPES;
+    public static final RecipeMap<SimpleRecipeBuilder> CIRCUIT_ASSEMBLER_RECIPES;
+    @ZenProperty
+    public static final RecipeMapAssemblyLine<QubitConsumerRecipeBuilder> CIRCUIT_ASSEMBLER_LARGE_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES;
     @ZenProperty
@@ -97,7 +99,9 @@ public class GARecipeMaps {
         REPLICATOR_RECIPES = new RecipeMap<>("replicator", 0, 1, 0, 1, 1, 2, 0, 1, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
         CRACKER_UNIT_RECIPES = new RecipeMap<>("cracker_unit", 0, 0, 0, 0, 2, 2, 1, 1, new SimpleRecipeBuilder());
         PROCESSING_ARRAY_RECIPES = new RecipeMap<>("processing_array", 0, 9, 0, 6, 0, 3, 0, 2, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
-        CIRCUIT_ASSEMBLER_RECIPES = (new RecipeMap<>("circuit_assembler", 1, 6, 1, 1, 0, 1, 0, 0, new QubitConsumerRecipeBuilder())).setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL);
+        CIRCUIT_ASSEMBLER_RECIPES = (new RecipeMap<>("circuit_assembler", 1, 6, 1, 1, 0, 1, 0, 0, new SimpleRecipeBuilder())).setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL);
+        CIRCUIT_ASSEMBLER_LARGE_RECIPES = new RecipeMapAssemblyLine<>("circuit_assembly_line", 1, 16, 1, 1, 0, 4, 0, 0, new QubitConsumerRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT, ProgressWidget.MoveType.HORIZONTAL);
+        CIRCUIT_ASSEMBLER_LARGE_RECIPES.setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY);
         SIEVE_RECIPES = (new SieveRecipeMap("electric_sieve", 2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL));
         ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         HOT_COOLANT_TURBINE_FUELS = new HotCoolantRecipeMap("hot_coolant_turbine");

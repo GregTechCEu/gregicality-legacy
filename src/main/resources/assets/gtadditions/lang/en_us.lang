@@ -1833,6 +1833,7 @@ recipemap.circuit_assembler.name=Circuit Assembler
 recipemap.coke_oven.name=[Deprecated] Coke Oven
 recipemap.distill_tower.name=[Deprecated] Distillation Tower
 recipemap.assembly_line.name=Assembly Line
+recipemap.circuit_assembly_line.name=Circuit Assembly Line
 recipemap.processing_array.name=Processing Array
 recipemap.volcanus.name=Volcanus
 recipemap.large_thermal_centifuge.name=Large Thermal Centrifuge
