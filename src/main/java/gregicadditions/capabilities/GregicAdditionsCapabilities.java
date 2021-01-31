@@ -3,6 +3,8 @@ package gregicadditions.capabilities;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class GregicAdditionsCapabilities {
 
@@ -15,5 +17,9 @@ public class GregicAdditionsCapabilities {
 
     public static MultiblockAbility<IQubitContainer> INPUT_QBIT = new MultiblockAbility();
     public static MultiblockAbility<IQubitContainer> OUTPUT_QBIT = new MultiblockAbility();
+
+    public static final MultiblockAbility<IFluidTank> STEAM = new MultiblockAbility();
+    public static final MultiblockAbility<IItemHandlerModifiable> STEAM_IMPORT_ITEMS = new MultiblockAbility<>();
+    public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
 }
