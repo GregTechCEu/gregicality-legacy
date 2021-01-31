@@ -411,28 +411,28 @@ public class GAMetaItem extends MaterialMetaItem {
         GRAPHENE_IRON_PLATE = addItem(540,"graphene_iron_plate");
         CUPRIVADUS_CULTURE = addItem(541, "cupriavidus.culture");
 
-        SMD_CAPACITOR_SUPRACAUSAL = addItem(541, "smd.capacitor.supracausal");
-        SMD_RESISTOR_SUPRACAUSAL = addItem(542, "smd.resistor.supracausal");
-        SMD_DIODE_SUPRACAUSAL = addItem(543, "smd.diode.supracausal");
-        SMD_TRANSISTOR_SUPRACAUSAL = addItem(544, "smd.transistor.supracausal");
+        SMD_CAPACITOR_SUPRACAUSAL = addItem(542, "smd.capacitor.supracausal");
+        SMD_RESISTOR_SUPRACAUSAL = addItem(543, "smd.resistor.supracausal");
+        SMD_DIODE_SUPRACAUSAL = addItem(544, "smd.diode.supracausal");
+        SMD_TRANSISTOR_SUPRACAUSAL = addItem(545, "smd.transistor.supracausal");
 
-        SUPRACAUSAL_PROCESSOR = addItem(545, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UEV);
-        SUPRACAUSAL_ASSEMBLY = addItem(546, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UIV);
-        SUPRACAUSAL_COMPUTER = addItem(547, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UMV);
-        SUPRACAUSAL_MAINFRAME = addItem(548, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UEV);
+        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UIV);
+        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UMV);
+        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, UXV);
 
-        TOPOLOGICAL_MANIPULATOR_UNIT = addItem(549, "topological.manipulator.unit");
-        RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(550, "relativistic.spinorial.memory.system");
-        GRAVITON_TRANSDUCER = addItem(551, "graviton.transducer");
-        NUCLEAR_CLOCK = addItem(552, "nuclear.clock");
-        SUPRACAUSAL_PROCESSING_CORE = addItem(553, "supracausal.processing.core");
-        MANIFOLD_OSCILLATORY_POWER_CELL = addItem(554, "manifold.oscillatory.power.cell");
-        QCD_PROTECTIVE_PLATING = addItem(555, "qcd.protective.plating");
-        CTC_GUIDANCE_UNIT = addItem(556, "ctc.guidance.unit");
-        CTC_COMPUTATIONAL_UNIT_CONTAINER = addItem(557, "ctc.computational.unit.container");
-        EIGENFOLDED_KERR_MANIFOLD = addItem(558, "eigenfolded.kerr.manifold");
-        CTC_COMPUTATIONAL_UNIT = addItem(559, "ctc.computational.unit");
-        RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(560, "recursively.folded.negative.space");
+        TOPOLOGICAL_MANIPULATOR_UNIT = addItem(550, "topological.manipulator.unit");
+        RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(551, "relativistic.spinorial.memory.system");
+        GRAVITON_TRANSDUCER = addItem(552, "graviton.transducer");
+        NUCLEAR_CLOCK = addItem(553, "nuclear.clock");
+        SUPRACAUSAL_PROCESSING_CORE = addItem(554, "supracausal.processing.core");
+        MANIFOLD_OSCILLATORY_POWER_CELL = addItem(555, "manifold.oscillatory.power.cell");
+        QCD_PROTECTIVE_PLATING = addItem(556, "qcd.protective.plating");
+        CTC_GUIDANCE_UNIT = addItem(557, "ctc.guidance.unit");
+        CTC_COMPUTATIONAL_UNIT_CONTAINER = addItem(558, "ctc.computational.unit.container");
+        EIGENFOLDED_KERR_MANIFOLD = addItem(559, "eigenfolded.kerr.manifold");
+        CTC_COMPUTATIONAL_UNIT = addItem(560, "ctc.computational.unit");
+        RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(561, "recursively.folded.negative.space");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
