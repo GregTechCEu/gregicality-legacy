@@ -400,7 +400,7 @@ public class GAMetaItem extends MaterialMetaItem {
         COATED_HASSIUM_WAFER = addItem(529, "coated_hassium_wafer");
         PHOTOCOATED_HASSIUM_WAFER = addItem(530,"photocoated_hassium_wafer");
         GRATING_LITHOGRAPHY_MASK = addItem(531, "grating_lithography_mask");
-        DIFFRACTOR_GRATING_MIRROR = addItem(532,"diffractor_grating_medium");
+        DIFFRACTOR_GRATING_MIRROR = addItem(532,"diffractor_grating_mirror");
         ULTRASHORT_PULSE_LASER = addItem(533,"ultrashort_pulse_laser");
         SMD_CAPACITOR_COSMIC = addItem(534,"smd_capacitor_cosmic");
         SMD_DIODE_COSMIC = addItem(535,"smd_diode_cosmic");
@@ -409,6 +409,7 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_PROCESSING_UNIT_CORE = addItem(538,"cosmic_processing_unit_core");
         COSMIC_PROCESSING_CORE = addItem(539,"cosmic_processing_core");
         GRAPHENE_IRON_PLATE = addItem(540,"graphene_iron_plate");
+        CUPRIVADUS_CULTURE = addItem(541, "cupriavidus.culture");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
