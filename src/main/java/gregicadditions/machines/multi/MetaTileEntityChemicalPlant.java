@@ -84,13 +84,12 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
-                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
-                .aisle("XXXXX", "RCTCR", "RCTCR", "RCTCR", "YYYYY")
-                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
-                .aisle("XXSXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
+                .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
+                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
+                .aisle("XXXXX", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
+                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
+                .aisle("XXSXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                 .where('S', selfPredicate())
-                .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
                 .where('T', tieredCasing1Predicate().or(tieredCasing2Predicate()))
