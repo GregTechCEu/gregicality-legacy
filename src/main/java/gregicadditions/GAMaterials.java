@@ -924,7 +924,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial HeptafluoroTantalate = new SimpleFluidMaterial("heptafluorotantalate", 0x73ff00);
     public static final SimpleFluidMaterial REEThUSulfateSolution = new SimpleFluidMaterial("reethu_sulfate_solution", 0x89be5c);
     public static final SimpleFluidMaterial RareEarthNitrateSolution = new SimpleFluidMaterial("rare_earth_nitrate_solution", 0xcfb37d);
-    public static final SimpleFluidMaterial AlkalineEarthSulfateSolution = new SimpleFluidMaterial("alkalineearth_sulphate", 0xe6ebff);
+    public static final SimpleFluidMaterial AlkalineEarthSulfateSolution = new SimpleFluidMaterial("alkalineearth_sulfate", 0xe6ebff);
 
     public static final SimpleFluidMaterial WetEthyleneOxide = new SimpleFluidMaterial("wet_etylene_oxide", 0x90b3ff);
     public static final SimpleFluidMaterial EthyleneGlycol = new SimpleFluidMaterial("ethylene_glycol", 0x8080fa);
@@ -1274,6 +1274,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial Meitnerium = new IngotMaterial(676, "meitnerium" , 0x2246be, MaterialIconSet.SHINY, 2, of(), 0, Mt);
     public static final IngotMaterial SuperheavyHAlloy = new IngotMaterial(675,"superheavy_h_alloy",0xE84B36,MaterialIconSet.SHINY,6,of(new MaterialStack(Copernicium, 1), new MaterialStack(Nihonium, 1), new MaterialStack(MetastableFlerovium, 1), new MaterialStack(Moscovium, 1), new MaterialStack(Livermorium, 1), new MaterialStack(Tennessine,1), new MaterialStack(MetastableOganesson, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,50000);
     public static final IngotMaterial SuperheavyLAlloy = new IngotMaterial(674,"superheavy_l_alloy",0x2B45DF,MaterialIconSet.SHINY,6,of(new MaterialStack(Rutherfordium, 1), new MaterialStack(Dubnium, 1), new MaterialStack(Seaborgium, 1), new MaterialStack(Bohrium, 1), new MaterialStack(MetastableHassium, 1), new MaterialStack(Meitnerium,1), new MaterialStack(Roentgenium, 1)), GENERATE_PLATE | DISABLE_DECOMPOSITION,null,50000);
+    public static final IngotMaterial QCDMatter = new IngotMaterial(673, "qcd_confined_matter", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_PLATE | DISABLE_REPLICATION | NO_WORKING | NO_SMELTING | NO_SMASHING, null, 35000);
 
     public static final SimpleDustMaterial BETSPerrhenate = new SimpleDustMaterial("bets_perrhenate", 0x7ada00, (short) 255, MaterialIconSet.SHINY, of(new MaterialStack(Rhenium, 1), new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 8), new MaterialStack(Sulfur, 4), new MaterialStack(Selenium, 4), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial TBCCODust = new SimpleDustMaterial("tbcco_dust", 0x669900, (short) 257, MaterialIconSet.SHINY, of(new MaterialStack(Thallium, 2), new MaterialStack(Barium, 2), new MaterialStack(Calcium, 2), new MaterialStack(Copper, 3), new MaterialStack(Oxygen, 10)));
@@ -1303,6 +1304,8 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial FreeAlphaGas = new SimpleFluidMaterial("free_alpha_gas", 0xe0d407);
     public static final SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c);
+
+    public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff);
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
