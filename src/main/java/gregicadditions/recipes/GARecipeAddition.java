@@ -1155,6 +1155,7 @@ public class GARecipeAddition {
         ModHandler.addShapedRecipe("ga_prospect_tool_luv", PROSPECT_TOOL_LuV.getStackForm(), "EDS", "CTC", "PBP", 'E', EMITTER_LUV.getStackForm(), 'D', new UnificationEntry(toolHeadDrill, RhodiumPlatedPalladium), 'S', SENSOR_LUV.getStackForm(), 'C', new UnificationEntry(circuit, Tier.Master), 'T', COVER_MACHINE_CONTROLLER.getStackForm(), 'P', new UnificationEntry(plate, RhodiumPlatedPalladium), 'B', ENERGY_LAPOTRONIC_ORB2.getStackForm());
         ModHandler.addShapedRecipe("ga_prospect_tool_zpm", PROSPECT_TOOL_ZPM.getStackForm(), "EDS", "CTC", "PBP", 'E', EMITTER_ZPM.getStackForm(), 'D', new UnificationEntry(toolHeadDrill, HSSS), 'S', SENSOR_ZPM.getStackForm(), 'C', new UnificationEntry(circuit, Tier.Ultimate), 'T', COVER_MACHINE_CONTROLLER.getStackForm(), 'P', new UnificationEntry(plate, HSSS), 'B', GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_MODULE.getStackForm() : BATTERY_MEDIUM_NAQUADRIA.getStackForm());
 
+        removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(480)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
