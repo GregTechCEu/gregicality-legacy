@@ -433,6 +433,15 @@ public class GAMetaItem extends MaterialMetaItem {
         EIGENFOLDED_KERR_MANIFOLD = addItem(559, "eigenfolded.kerr.manifold");
         CTC_COMPUTATIONAL_UNIT = addItem(560, "ctc.computational.unit");
         RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(561, "recursively.folded.negative.space");
+        
+        WIRE_FIELD_SHAPE = addItem(562,"wire.field.shape");
+        EXTREMELY_DURABLE_PLASMA_CELL = addItem(563,"extremely.durable.plasma.cell");
+        DENSE_NEUTRON_PLASMA_CELL = addItem(564,"dense.neutron.plasma.cell");
+        COSMIC_NEUTRON_PLASMA_CELL = addItem(565,"cosmic.neutron.plasma.cell");
+        HIGHLY_DENSE_POLYMER_PLATE = addItem(566,"highly.dense.polymer.plate");
+        COSMIC_MESH_CONTAINMENT_UNIT = addItem(567,"cosmic.mesh.containment.unit");
+        COSMIC_MESH = addItem(568,"cosmic.mesh");
+        COSMIC_FABRIC = addItem(569,"cosmic.fabric");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
