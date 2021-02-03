@@ -1221,6 +1221,7 @@ public class GARecipeAddition {
         WormholeGeneratorChain.init();
         CosmicComponents.init();
         SupraCausalComponents.init();
+        UltimateMaterials.init();
     }
 
     public static void forestrySupport() {
