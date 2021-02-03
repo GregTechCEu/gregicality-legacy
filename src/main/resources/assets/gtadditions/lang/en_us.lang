@@ -1587,6 +1587,7 @@ gtadditions.machine.hull.umv.name=UMV Machine Hull
 gtadditions.machine.hull.uxv.name=UXV Machine Hull
 gtadditions.machine.drilling_rig.name=Drilling Rig
 gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
+gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 
 
 
@@ -1639,7 +1640,6 @@ tile.ga_transparent_casing.iridium_reinforced_glass.name=Iridium Reinforced Glas
 tile.ga_transparent_casing.osmium_reinforced_glass.name=Osmiridium Reinforced Glass
 tile.ga_quantum_casing.computer.name=Qubit Computer Casing
 tile.ga_quantum_casing.generator.name=Qubit generator Casing
-tile.ga_multiblock_casing2.naquadria_charge.name=Naquadria Charge
 tile.ga_multiblock_casing2.stellar_containment.name=Stellar Containment
 tile.ga_multiblock_casing2.bio_reactor_casing.name=Bio Reactor Casing
 tile.ga_multiblock_casing2.laser_reactor_casing.name=Laser Engraver Casing
@@ -1804,6 +1804,8 @@ tile.ga_multiblock_casing2.laser_engraver_casing.name=Laser Engraver Casing
 tile.ga_simple_block.superheavy_block.name=Super Heavy Block
 tile.ga_simple_block.taranium_charge.name=Taranium Charge
 tile.ga_simple_block.naquadria_charge.name=Naquadria Charge
+tile.ga_simple_block.leptonic_charge.name=Leptonic Charge
+tile.ga_simple_block.qcd_charge.name=Quantum Chromodynamic Charge
 
 
 
@@ -3098,22 +3100,27 @@ gtadditions.machine.transformer.uv.4.name=Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uv.8.name=Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uv.12.name=Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uv.16.name=Ultimate Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uhv.name=Ultimately High Voltage Transformer
 gtadditions.machine.transformer.uhv.4.name=Ultimately High Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uhv.8.name=Ultimately High Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uhv.12.name=Ultimately High Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uhv.16.name=Ultimately High Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uev.name=Ultimately Extreme Voltage Transformer
 gtadditions.machine.transformer.uev.4.name=Ultimately Extreme Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uev.8.name=Ultimately Extreme Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uev.12.name=Ultimately Extreme Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uev.16.name=Ultimately Extreme Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uiv.name=Ultimately Insane Voltage Transformer
 gtadditions.machine.transformer.uiv.4.name=Ultimately Insane Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uiv.8.name=Ultimately Insane Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uiv.12.name=Ultimately Insane Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uiv.16.name=Ultimately Insane Voltage Transformer 16 Amps
+gtadditions.machine.transformer.umv.name=Mega Ultimate Voltage Transformer
 gtadditions.machine.transformer.umv.4.name=Mega Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.umv.8.name=Mega Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.umv.12.name=Mega Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.umv.16.name=Mega Ultimate Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uxv.name=Extended Mega Ultimate Voltage Transformer
 gtadditions.machine.transformer.uxv.4.name=Extended Mega Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uxv.8.name=Extended Mega Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uxv.12.name=Extended Mega Ultimate Voltage Transformer 12 Amps
@@ -3896,13 +3903,14 @@ metaitem.ctc.computational.unit.container.name=Closed Timelike Curve Computation
 metaitem.eigenfolded.kerr.manifold.name=Eigenfolded Kerr Manifold
 metaitem.ctc.computational.unit.name=Closed Timelike Curve Computational Unit
 metaitem.recursively.folded.negative.space.name=Recursively Folded Negative Space
+metaitem.insulation_wire_assembly.name=Insulation Wire Assembly
 
 material.qcd_confined_matter=Quantumchromodynamically Confined Matter
 
 fluid.free_electron_gas=Free Electron Gas
 fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
-fluid.high_energy_qgp.name=High Energy Quark-Gluon Plasma
+fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Processes up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Busses
