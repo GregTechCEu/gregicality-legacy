@@ -32,6 +32,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -59,17 +61,26 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
             return;
         }
 
-        if (getTimer() % 100 == 13) {
-            canSeeSky = this.getWorld().canSeeSky(this.getPos().up(5));
+        if (getTimer() % 20 == 4) {
+            canSeeSky = canSeeSky();
         }
-
-        if (getTimer() % 20 == 8) {
-            hasEnoughEnergy = drainEnergy();
+        if (canSeeSky && !hasEnoughEnergy) {
+            if (getTimer() % 20 == 8) {
+                hasEnoughEnergy = drainEnergy();
+            }
         }
 
         if (canSeeSky && hasEnoughEnergy) {
             drainEnergy();
         }
+    }
+
+    private boolean canSeeSky() {
+        BlockPos result = this.getPos().up(5);
+        Vec3i dirVec = this.getFrontFacing().getOpposite().getDirectionVec();
+        Vec3i resVec = new Vec3i(dirVec.getX() * 3, 0, dirVec.getZ() * 3);
+        result = result.add(resVec);
+        return this.getWorld().canSeeSky(result);
     }
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
@@ -184,6 +195,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.2"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.4"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.6"));
     }
 
     @Override
@@ -267,7 +279,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() & hasEnoughEnergy);
+        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() && hasEnoughEnergy && canSeeSky);
     }
 
     @Override
