@@ -862,19 +862,19 @@ public class MachineCraftingRecipes {
 
         GATileEntities.TRANSFORMER_4_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
         });
         GATileEntities.TRANSFORMER_8_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_QUAD.getIngredient(tier), 'B', CABLE_QUAD.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_QUAD.getIngredient(tier), 'B', CABLE_QUAD.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
         });
         GATileEntities.TRANSFORMER_12_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_OCTAL.getIngredient(tier), 'B', CABLE_OCTAL.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_OCTAL.getIngredient(tier), 'B', CABLE_OCTAL.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
         });
         GATileEntities.TRANSFORMER_16_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_HEX.getIngredient(tier), 'B', CABLE_HEX.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_HEX.getIngredient(tier), 'B', CABLE_HEX.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
         });
 
         GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.forEach(energyInputHatch -> {
