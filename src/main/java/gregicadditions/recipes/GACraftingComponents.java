@@ -361,7 +361,7 @@ public enum GACraftingComponents {
     WORSE_HULL {
         @Override
         public Object getIngredient(int tier) {
-            return MetaTileEntities.HULL[tier - 1].getStackForm();
+            return tier == 0 ? MetaTileEntities.HULL[0] : HULL.getIngredient(tier - 1);
         }
     },
     PIPE {
@@ -389,8 +389,6 @@ public enum GACraftingComponents {
                     return new UnificationEntry(pipeMedium, Zeron100);
                 case 10:
                     return new UnificationEntry(pipeMedium, Lafium);
-                case 11:
-                    return new UnificationEntry(pipeMedium, Neutronium);
                 default:
                     return new UnificationEntry(pipeMedium, Neutronium);
 
