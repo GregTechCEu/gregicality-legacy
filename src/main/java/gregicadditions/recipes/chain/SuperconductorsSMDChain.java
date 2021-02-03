@@ -659,6 +659,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(210).EUt(6400)
+                .blastFurnaceTemp(4500)
                 .input(dust, SodiumHydroxide, 3)
                 .input(dust, Sulfur, 3)
                 .outputs(OreDictUnifier.get(dust, SodiumSulfide))
