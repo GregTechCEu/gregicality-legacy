@@ -141,6 +141,7 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(7200).EUt(10000)
+                .blastFurnaceTemp(Titanium.blastFurnaceTemperature)
                 .fluidInputs(MoltenTitanium50Tetrafluoride.getFluid(1000))
                 .input(dust, Sodium, 4)
                 .outputs(OreDictUnifier.get(ingotHot, Titanium50))

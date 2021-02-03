@@ -592,6 +592,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(230).EUt(6000000)
+                .blastFurnaceTemp(10000)
                 .inputs(ActiniumOxalate.getItemStack())
                 .inputs(SodiumHydride.getItemStack(2))
                 .input(dust, Sodium, 2)
