@@ -42,7 +42,7 @@ public class OpticalCircuits {
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(3200000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(390).EUt(1600000)
                 .inputs(UHASOC_WAFER.getStackForm())
                 .fluidInputs(LiquidZBLAN.getFluid(144))
                 .fluidInputs(CarbonNanotubes.getFluid(144))
