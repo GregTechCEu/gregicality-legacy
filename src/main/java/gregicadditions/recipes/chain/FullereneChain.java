@@ -22,13 +22,6 @@ public class FullereneChain {
                 .EUt(2000000)
                 .duration(20)
                 .buildAndRegister();
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Tin)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .outputs(TinChloride.getItemStack(2))
-                .EUt(50000)
-                .duration(10)
-                .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Cyanonaphtalene.getItemStack())
                 .fluidInputs(Water.getFluid(1000))
