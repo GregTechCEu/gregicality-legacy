@@ -860,6 +860,10 @@ public class MachineCraftingRecipes {
             }
         }
 
+        GATileEntities.TRANSFORMER_1_AMPS.forEach(transformer -> {
+            int tier = transformer.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+        });
         GATileEntities.TRANSFORMER_4_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
             ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
