@@ -400,7 +400,7 @@ public class GAMetaItem extends MaterialMetaItem {
         COATED_HASSIUM_WAFER = addItem(529, "coated_hassium_wafer");
         PHOTOCOATED_HASSIUM_WAFER = addItem(530,"photocoated_hassium_wafer");
         GRATING_LITHOGRAPHY_MASK = addItem(531, "grating_lithography_mask");
-        DIFFRACTOR_GRATING_MIRROR = addItem(532,"diffractor_grating_medium");
+        DIFFRACTOR_GRATING_MIRROR = addItem(532,"diffractor_grating_mirror");
         ULTRASHORT_PULSE_LASER = addItem(533,"ultrashort_pulse_laser");
         SMD_CAPACITOR_COSMIC = addItem(534,"smd_capacitor_cosmic");
         SMD_DIODE_COSMIC = addItem(535,"smd_diode_cosmic");
@@ -409,6 +409,30 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_PROCESSING_UNIT_CORE = addItem(538,"cosmic_processing_unit_core");
         COSMIC_PROCESSING_CORE = addItem(539,"cosmic_processing_core");
         GRAPHENE_IRON_PLATE = addItem(540,"graphene_iron_plate");
+        CUPRIVADUS_CULTURE = addItem(541, "cupriavidus.culture");
+
+        SMD_CAPACITOR_SUPRACAUSAL = addItem(542, "smd.capacitor.supracausal");
+        SMD_RESISTOR_SUPRACAUSAL = addItem(543, "smd.resistor.supracausal");
+        SMD_DIODE_SUPRACAUSAL = addItem(544, "smd.diode.supracausal");
+        SMD_TRANSISTOR_SUPRACAUSAL = addItem(545, "smd.transistor.supracausal");
+
+        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UEV);
+        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UIV);
+        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UMV);
+        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+
+        TOPOLOGICAL_MANIPULATOR_UNIT = addItem(550, "topological.manipulator.unit");
+        RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(551, "relativistic.spinorial.memory.system");
+        GRAVITON_TRANSDUCER = addItem(552, "graviton.transducer");
+        NUCLEAR_CLOCK = addItem(553, "nuclear.clock");
+        SUPRACAUSAL_PROCESSING_CORE = addItem(554, "supracausal.processing.core");
+        MANIFOLD_OSCILLATORY_POWER_CELL = addItem(555, "manifold.oscillatory.power.cell");
+        QCD_PROTECTIVE_PLATING = addItem(556, "qcd.protective.plating");
+        CTC_GUIDANCE_UNIT = addItem(557, "ctc.guidance.unit");
+        CTC_COMPUTATIONAL_UNIT_CONTAINER = addItem(558, "ctc.computational.unit.container");
+        EIGENFOLDED_KERR_MANIFOLD = addItem(559, "eigenfolded.kerr.manifold");
+        CTC_COMPUTATIONAL_UNIT = addItem(560, "ctc.computational.unit");
+        RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(561, "recursively.folded.negative.space");
 
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;

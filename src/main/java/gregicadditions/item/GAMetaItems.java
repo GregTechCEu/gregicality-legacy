@@ -41,6 +41,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
     
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
@@ -50,6 +51,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
     
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
@@ -59,6 +61,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
@@ -68,6 +71,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
 
     //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
@@ -221,6 +225,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
     public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_COMPUTER;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_MAINFRAME;
     
     public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
     public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
@@ -299,6 +308,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ESCHERICHIA_CULTURE;
     public static MetaItem<?>.MetaValueItem BIFIDOBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
+    public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
@@ -431,6 +441,20 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_UNIT_CORE;
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_CORE;
     public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
+
+    public static MetaItem<?>.MetaValueItem TOPOLOGICAL_MANIPULATOR_UNIT;
+    public static MetaItem<?>.MetaValueItem RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM;
+    public static MetaItem<?>.MetaValueItem GRAVITON_TRANSDUCER;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_CLOCK;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem MANIFOLD_OSCILLATORY_POWER_CELL;
+    public static MetaItem<?>.MetaValueItem QCD_PROTECTIVE_PLATING;
+    public static MetaItem<?>.MetaValueItem CTC_GUIDANCE_UNIT;
+    public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT_CONTAINER;
+    public static MetaItem<?>.MetaValueItem EIGENFOLDED_KERR_MANIFOLD;
+    public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT;
+    public static MetaItem<?>.MetaValueItem RECURSIVELY_FOLDED_NEGATIVE_SPACE;
+
     
     public static void init() {
         GAMetaItem item = new GAMetaItem();

@@ -1,6 +1,8 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -41,8 +43,8 @@ public class FusionReactor3Info extends MultiblockInfoPage {
 				.aisle("######DCD######", "####CCcccCC####", "######UCU######")
 				.aisle("###############", "######NMN######", "###############")
 				.where('M', GATileEntities.FUSION_REACTOR[2], EnumFacing.SOUTH)
-				.where('C', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2))
-				.where('c', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL))
+				.where('C', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_3))
+				.where('c', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_3))
 				.where('W', MetaTileEntities.FLUID_EXPORT_HATCH[8], EnumFacing.WEST)
 				.where('E', MetaTileEntities.FLUID_EXPORT_HATCH[8], EnumFacing.EAST)
 				.where('S', MetaTileEntities.FLUID_EXPORT_HATCH[8], EnumFacing.SOUTH)

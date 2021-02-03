@@ -124,8 +124,8 @@ public class GrowthMedium {
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(EthyleneOxide.getFluid(2000))
-                .EUt(30720)
-                .duration(100)
+                .EUt(500)
+                .duration(400)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
