@@ -277,7 +277,6 @@ metaitem.rotating_transparent_surface.name=Rotating Transparent Surface
 metaitem.electron_source.name=Electron Source
 metaitem.peek_polyamide_foil.name=PEEK Polyamide Foil
 metaitem.highly_insulating_foil.name=Highly Insulating Foil
-metatiem.insulation_wire_assembly.name=Insulation Wire Assembly
 metaitem.aerographene.name=Aerographene
 metaitem.graphene_iron_plate.name=Graphene Iron Plate
 metaitem.scintillator_crystal.name=Scintillator Crystal
