@@ -7,6 +7,7 @@ import gregicadditions.GAValues;
 import gregicadditions.item.*;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
@@ -480,7 +481,7 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.FUSION_REACTOR[0].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(60000)
-                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_2),
                         OreDictUnifier.get(plate, Rutherfordium, 4),
                         OreDictUnifier.get(plate, Curium.getMaterial(), 4),
                         FIELD_GENERATOR_LUV.getStackForm(2),
@@ -493,7 +494,7 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.FUSION_REACTOR[1].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
-                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_3),
                         OreDictUnifier.get(plate, Dubnium, 4),
                         OreDictUnifier.get(plate, Californium.getMaterial(), 4),
                         FIELD_GENERATOR_ZPM.getStackForm(2),

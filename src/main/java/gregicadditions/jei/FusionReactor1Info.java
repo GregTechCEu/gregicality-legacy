@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -41,8 +42,8 @@ public class FusionReactor1Info extends MultiblockInfoPage {
 				.aisle("######DCD######", "####CCcccCC####", "######UCU######")
 				.aisle("###############", "######NMN######", "###############")
 				.where('M', GATileEntities.FUSION_REACTOR[0], EnumFacing.SOUTH)
-				.where('C', MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.LuV))
-				.where('c', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR))
+				.where('C', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING))
+				.where('c', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL))
 				.where('W', MetaTileEntities.FLUID_EXPORT_HATCH[6], EnumFacing.WEST)
 				.where('E', MetaTileEntities.FLUID_EXPORT_HATCH[6], EnumFacing.EAST)
 				.where('S', MetaTileEntities.FLUID_EXPORT_HATCH[6], EnumFacing.SOUTH)
