@@ -290,6 +290,14 @@ metaitem.photocoated_hassium_wafer.name=Photocoated Hassium Wafer
 metaitem.grating_lithography_mask.name=Grating Lithography Mask
 metaitem.diffractor_grating_mirror.name=Diffractor Grating Mirror
 metaitem.ultrashort_pulse_laser.name=Ultrashort Pulse Laser
+metaitem.wire.field.shape.name=Wire Field Shape
+metaitem.extremely.durable.plasma.cell.name=Extremely Durable Plasma Cell
+metaitem.dense.neutron.plasma.cell.name=Dense Neutron Plasma Cell
+metaitem.cosmic.neutron.plasma.cell.name=Cosmic Neutron Plasma Cell
+metaitem.highly.dense.polymer.plate.name=Highly Dense Polymer Plate
+metaitem.cosmic.mesh.containment.unit.name=Cosmic Mesh Containment Unit
+metaitem.cosmic.mesh.name=Cosmic Mesh
+metaitem.cosmic.fabric.name=Cosmic Fabric
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
@@ -776,7 +784,13 @@ metaitem.graphene_oxide.name=Graphene Oxide
 metaitem.glucose_iron_mix.name=Glucose Iron Mix
 metaitem.graphene_gel_suspension.name=Graphene Gel Suspension
 metaitem.dry_graphene_gel.name=Dry Graphene Gel
-
+metaitem.lanthanoids.name=Lanthanoids
+metaitem.actinoids.name=Actinoids
+metaitem.alkalis.name=Alkaline and Alkaline Earth Metals
+metaitem.precious_metals.name=Precious Metals
+metaitem.refractory_metals.name=Refractory Metals
+metaitem.light_transition_metals.name=Light Transition Metals
+metaitem.post_transition_metals.name=Post Transition Metals
 
 
 metaitem.unstable.star.name=Unstable Star
@@ -2491,6 +2505,8 @@ material.roentgenium=Roentgenium
 material.meitnerium=Meitnerium
 material.superheavy_l_alloy=Superheavy-L Alloy
 material.superheavy_h_alloy=Superheavy-H Alloy
+material.periodicium=Periodicium
+material.cosmic_neutronium=Cosmic Neutronium
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
@@ -3742,6 +3758,15 @@ fluid.trichloroferane=Trichloroferane
 fluid.glucose_iron_solution=Glucose Iron Solution
 fluid.graphene_oxidation_solution=Graphene Oxidation Solution
 fluid.supercritcal_co2=Supercritical Carbon Dioxide
+
+fluid.noble_gas_mixture=Noble Gas Mixture
+fluid.non_metals=Non Metals
+fluid.dense_neutron_plasma=Dense Neutronium Plasma
+fluid.cosmic_mesh_plasma=Cosmic Mesh Plasma
+fluid.superfluid_helium=Superfluid Helium
+fluid.liquid_helium_3=Liquid Helium-3
+fluid.liquid_enriched_helium=Liquid Enriched Helium
+fluid.liquid_nitrogen=Liquid Nitrogen
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
