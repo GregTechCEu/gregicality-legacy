@@ -2649,7 +2649,7 @@ gtadditions.multiblock.cosmic_ray_detector.tooltip.2=Produces Heavy Lepton Mix b
 gtadditions.multiblock.cosmic_ray_detector.tooltip.3=At Bedrock it will produce 5 mb/t and at build limit it will produce 40 mb/t.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.4=Requires a minimum of 2097152 EU/t to function.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.5=Generating %d mb/t Heavy Lepton Mix.
-gtadditions.multiblock.cosmic_ray_detector.tooltip.5=The top Sensor Block needs to be able to see the sky.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.6=The top Sensor Block needs to be able to see the sky.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
