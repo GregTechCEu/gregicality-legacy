@@ -9,5 +9,6 @@ public class TheOneProbeCompatibility {
         ITheOneProbe oneProbe = TheOneProbe.theOneProbeImp;
         oneProbe.registerProvider(new MultiRecipeProvider());
         oneProbe.registerProvider(new QubitContainerInfoProvider());
+        oneProbe.registerProvider(new GATransformerProvider());
     }
 }
