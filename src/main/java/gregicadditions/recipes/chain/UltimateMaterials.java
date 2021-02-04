@@ -246,7 +246,7 @@ public class UltimateMaterials {
                 .fluidInputs(Methane.getFluid(800))
                 .input(dust, Neutronium)
                 .notConsumable(plate, Rhenium)
-                .fluidOutputs(Neutronium.getFluid(1000))
+                .fluidOutputs(NeutroniumDopedNanotubes.getFluid(1000))
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(84500000)
                 .input(plate, CarbonNanotubes, 3)
