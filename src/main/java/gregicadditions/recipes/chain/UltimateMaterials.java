@@ -214,7 +214,7 @@ public class UltimateMaterials {
                 .fluidInputs(Taranium.getFluid(1584))
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
-        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(400000000)
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .input(block, Neutronium, 5)
                 .input(block, HeavyQuarkDegenerateMatter, 5)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
@@ -223,12 +223,12 @@ public class UltimateMaterials {
                 .fluidInputs(Periodicium.getFluid(2736))
                 .fluidOutputs(DenseNeutronPlasma.getFluid(1000))
                 .buildAndRegister();
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(125000000)
+        FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
                 .inputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
-                .fluidInputs(NeutronPlasma.getFluid(1000))
+                .fluidInputs(DenseNeutronPlasma.getFluid(1000))
                 .outputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
-        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(800000000)
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .inputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE,2))
                 .outputs(COSMIC_NEUTRON_PLASMA_CELL.getStackForm())
