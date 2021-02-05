@@ -1,8 +1,6 @@
 package gregicadditions.coremod;
 
-import gregicadditions.coremod.transform.NetworkNodeGridTransformer;
-import gregicadditions.coremod.transform.PacketJEIRecipeTransformer;
-import gregicadditions.coremod.transform.TileEntityControllerTransformer;
+import gregicadditions.coremod.transform.*;
 import net.minecraft.launchwrapper.IClassTransformer;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -21,6 +19,12 @@ public class GAClassTransformer implements IClassTransformer {
                 break;
             case "mcjty.xnet.blocks.controller.TileEntityController":
                 tform = TileEntityControllerTransformer.INSTANCE;
+                break;
+            case "gregtech.api.metatileentity.MetaTileEntityHolder":
+                tform = MetaTileEntityHolderTransformer.INSTANCE;
+                break;
+            case "gregtech.api.render.MetaTileEntityTESR":
+                tform = MetaTileEntityTESRTransformer.INSTANCE;
                 break;
             default:
                 return basicClass;
