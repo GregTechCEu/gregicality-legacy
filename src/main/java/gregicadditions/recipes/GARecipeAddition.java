@@ -507,6 +507,16 @@ public class GARecipeAddition {
 
         //Pyrotheum
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Coal)
+                .input(dust, Sulfur)
+                .fluidInputs(Lava.getFluid(100))
+                .outputs(OreDictUnifier.get(dust, Blaze, 2)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Charcoal)
+                .input(dust, Sulfur)
+                .fluidInputs(Lava.getFluid(100))
+                .outputs(OreDictUnifier.get(dust, Blaze, 2)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
                 .input(dust, Sulfur)
                 .input(dust, Blaze, 2)
