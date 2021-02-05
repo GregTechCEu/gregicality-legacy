@@ -547,6 +547,13 @@ public class GARecipeAddition {
                 .fluidOutputs(SupercooledCryotheum.getFluid(10000))
                 .buildAndRegister();
 
+        MIXER_RECIPES.recipeBuilder().EUt(60).duration(880)
+                .input(dust, Beryllium)
+                .input(dust, Potassium, 4)
+                .fluidInputs(Nitrogen.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, EnderPearl, 10))
+                .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200).input(plateDense, Lead, 4).fluidInputs(Oxygen.getFluid(16000)).input(OrePrefix.valueOf("gtMetalCasing"), StainlessSteel).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(960).duration(2400).input(plateDense, Titanium, 4).fluidInputs(Nitrogen.getFluid(16000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_EV)).buildAndRegister();
