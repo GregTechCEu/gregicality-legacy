@@ -518,7 +518,7 @@ public class GARecipeAddition {
         //Cryotheum
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Snow)
-                .fluidInputs(Redstone.getFluid(250))
+                .fluidInputs(Redstone.getFluid(144))
                 .outputs(OreDictUnifier.get(dust, Blizz, 2)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
