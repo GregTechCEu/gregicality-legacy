@@ -43,9 +43,8 @@ public class WormholeGeneratorChain {
                 .fluidInputs(Tritanium.getFluid(288))
                 .input(stick, NaquadahAlloy, 16)
                 .input(wireGtSingle, UVSuperconductor, 64)
-                .input(plateDense, Neutronium, 8)
-                .inputs(EMITTER_UV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(32))
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(8))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(288566)
