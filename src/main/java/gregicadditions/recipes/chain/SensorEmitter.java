@@ -47,6 +47,15 @@ public class SensorEmitter {
                 .fluidOutputs(PotassiumHydroxide.getFluid(2000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Tantalum, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(TantalumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(1200).blastFurnaceTemp(1350)
                 .input(dust, LeadNitrate)
                 .inputs(TantalumOxide.getItemStack())
