@@ -8,6 +8,7 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -306,6 +307,29 @@ public class SuperconductorsSMDChain {
                 .inputs(INDUCTOR.getStackForm())
                 .input(wireFine, Cupronickel, 2)
                 .outputs(BALLAST.getStackForm())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
+                .input(dust, Vanadium)
+                .input(dust, SodaAsh)
+                .outputs(SodiumMetavanadate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Carbon))
+                .outputs(OreDictUnifier.get(dust, Sodium))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1920)
+                .inputs(SodiumMetavanadate.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .outputs(SodiumHexavanadate.getItemStack())
+                .fluidOutputs(SaltWater.getFluid(1000))
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
+                .inputs(SodiumHexavanadate.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(4000))
+                .outputs(VanadiumOxide.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Salt, 4))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
