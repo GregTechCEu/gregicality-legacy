@@ -720,6 +720,7 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(20)
                 .fluidInputs(Chlorine.getFluid(3000))
                 .input(dust, Phosphorus)
+                .notConsumable(new IntCircuitIngredient(3))
                 .fluidOutputs(PhosphorusTrichloride.getFluid(4000))
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
