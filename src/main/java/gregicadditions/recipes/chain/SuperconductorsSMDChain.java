@@ -853,7 +853,7 @@ public class SuperconductorsSMDChain {
                 .outputs(SodiumSeaborgate.getItemStack())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(84500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(1920)
                 .input(dust, Strontium)
                 .fluidInputs(Chlorine.getFluid(2000))
                 .outputs(StrontiumChloride.getItemStack(3))
