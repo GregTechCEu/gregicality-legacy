@@ -2,6 +2,7 @@ package gregicadditions.recipes.chain.optical;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -194,6 +195,13 @@ public class Lasers {
                 .input(dust, Neodymium, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(NeodymiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Yttrium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, YttriumOxide))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
                 .buildAndRegister();
 
