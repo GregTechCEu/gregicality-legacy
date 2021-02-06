@@ -231,7 +231,7 @@ public class Lasers {
                 .fluidOutputs(PrHoYLF.getFluid(18))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(280).EUt(4000)
+        BLAST_RECIPES.recipeBuilder().duration(280).EUt(4000).blastFurnaceTemp(700)
                 .inputs(AmmoniumVanadate.getItemStack())
                 .input(dust,Salt)
                 .outputs(PureSodiumVanadate.getItemStack())
@@ -250,7 +250,7 @@ public class Lasers {
                 .fluidInputs(LuTmYChlorideSolution.getFluid(1000))
                 .inputs(PureSodiumVanadate.getItemStack())
                 .inputs(Urea.getItemStack())
-                .outputs(LuTmYVONanoparticles.getItemStack())
+                .outputs(LuTmYVOPrecipitate.getItemStack())
                 .buildAndRegister();
 
         ORE_WASHER_RECIPES.recipeBuilder().duration(200).EUt(13500)
