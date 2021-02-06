@@ -6,6 +6,7 @@ import gregicadditions.item.GASimpleBlock;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -226,6 +227,13 @@ public class CosmicComponents {
                 .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
                 .outputs(BismuthGermanate.getItemStack(3))
                 .fluidOutputs(NitrogenDioxide.getFluid(4000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(8192)
+                .input(dust, TungstenCarbide)
+                .fluidInputs(Oxygen.getFluid(4000))
+                .outputs(OreDictUnifier.get(dust, TungstenTrioxide))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(845000).blastFurnaceTemp(2800)
