@@ -317,6 +317,13 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, Sodium))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
+                .inputs(StrontiumChloride.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(StrontiumSulfate.getItemStack())
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
                 .inputs(StrontiumOxide.getItemStack())
                 .inputs(EuropiumOxide.getItemStack())
