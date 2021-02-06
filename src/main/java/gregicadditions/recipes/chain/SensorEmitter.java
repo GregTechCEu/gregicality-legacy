@@ -309,6 +309,12 @@ public class SensorEmitter {
                 .outputs(RhReNqCatalyst.getItemStack(3))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(128)
+                .input(dust, Magnesium, 2)
+                .fluidInputs(Chlorine.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, MagnesiumChloride))
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(350000)
                 .fluidInputs(Acetylene.getFluid(2000))
                 .input(dust, MagnesiumChloride)
