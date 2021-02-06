@@ -176,6 +176,20 @@ public class Lasers {
                 .outputs(OreDictUnifier.get(dust,Caesium))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Praseodymium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(PraseodymiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Holmium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(HolmiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(280).EUt(18000)
                 .input(dust,YttriumOxide,14)
                 .inputs(PraseodymiumOxide.getItemStack())
