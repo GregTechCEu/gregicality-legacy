@@ -333,8 +333,6 @@ public class CosmicComponents {
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(2))
                 .input(foil, FullerenePolymerMatrix, 2)
                 .inputs(ULTRASHORT_PULSE_LASER.getStackForm())
-                .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
-                .inputs(NEURO_PROCESSOR.getStackForm())
                 .input(wireGtSingle, Cinobite, 8)
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(8))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(4))

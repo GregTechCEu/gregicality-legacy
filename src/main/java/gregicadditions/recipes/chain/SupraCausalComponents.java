@@ -97,7 +97,6 @@ public class SupraCausalComponents {
                 .outputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
-                .inputs(COSMIC_PROCESSING_CORE.getStackForm(16))
                 .inputs(NUCLEAR_CLOCK.getStackForm())
                 .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(8))
                 .inputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm(8))

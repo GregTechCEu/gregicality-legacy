@@ -68,7 +68,6 @@ public class OpticalCircuits {
                 .inputs(MEDIUM_FREQUENCY_LASER.getStackForm())
                 .inputs(HIGH_FREQUENCY_LASER.getStackForm())
                 .inputs(NON_LINEAR_OPTICAL_LENS.getStackForm(2))
-                .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(2))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .input(plate,Graphene,4)
