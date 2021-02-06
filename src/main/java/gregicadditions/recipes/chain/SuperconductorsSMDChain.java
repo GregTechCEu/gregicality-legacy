@@ -309,12 +309,13 @@ public class SuperconductorsSMDChain {
                 .outputs(BALLAST.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
-                .input(dust, Vanadium)
-                .input(dust, SodaAsh)
-                .outputs(SodiumMetavanadate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Carbon))
-                .outputs(OreDictUnifier.get(dust, Sodium))
+        BLAST_RECIPES.recipeBuilder().duration(100).EUt(1920).blastFurnaceTemp(650)
+                .input(dust, Vanadium, 2)
+                .input(dust, SodaAsh, 5)
+                .fluidInputs(Water.getFluid(4000))
+                .fluidOutputs(CarbonMonoxde.getFluid(5000))
+                .outputs(SodiumMetavanadate.getItemStack(2))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 8))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1920)
