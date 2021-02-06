@@ -35,6 +35,7 @@ import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamItemBus;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamOven;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
@@ -162,11 +163,12 @@ public class GATileEntities {
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
 
-    // Steam Grinder
+    // Steam Multis
     public static MetaTileEntitySteamHatch STEAM_HATCH;
     public static MetaTileEntitySteamItemBus STEAM_INPUT_BUS;
     public static MetaTileEntitySteamItemBus STEAM_OUTPUT_BUS;
     public static MetaTileEntitySteamGrinder STEAM_GRINDER;
+    public static MetaTileEntitySteamOven STEAM_OVEN;
 
     //override from GTCE
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
@@ -1144,6 +1146,7 @@ public class GATileEntities {
         for (int i = 1; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier, plus one because we dont want ULV
             DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
         }
+        STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

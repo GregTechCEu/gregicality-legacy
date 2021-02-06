@@ -460,6 +460,7 @@ public class GAConfig {
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
         public HeatingCoils heatingCoils = new HeatingCoils();
+        public SteamMultis steamMultis = new SteamMultis();
     }
 
         public static class LargeEngraver {
@@ -1384,4 +1385,10 @@ public class GAConfig {
                 GALog.logger.info("Added resevoir type " + fluid);
             }
         }
+
+    public static class SteamMultis {
+        @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
+        @Config.RequiresMcRestart
+        public static double steamToEU = 0.5;
     }
+}

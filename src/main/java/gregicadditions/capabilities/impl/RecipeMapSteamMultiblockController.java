@@ -111,7 +111,7 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
             }
 
             if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gtadditions.multiblock.steam_grinder.low_steam").setStyle(new Style().setColor(TextFormatting.RED)));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.steam.low_steam").setStyle(new Style().setColor(TextFormatting.RED)));
             }
         }
     }
