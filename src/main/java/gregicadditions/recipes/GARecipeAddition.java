@@ -1380,6 +1380,9 @@ public class GARecipeAddition {
 
         }
 
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_compress_clay"));
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_decompress_clay"));
+
         for (ResourceLocation r : recipesToRemove)
             ModHandler.removeRecipeByName(r);
         recipesToRemove.clear();

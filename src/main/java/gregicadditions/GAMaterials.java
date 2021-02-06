@@ -758,7 +758,6 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial LithiumHydroxideSolution = new SimpleFluidMaterial("lithium_hydroxide_solution", 0xfcfcfa);
     public static final SimpleFluidMaterial LithiumPeroxideSolution = new SimpleFluidMaterial("lithium_peroxide", 0xfcfcfa);
-    public static final SimpleFluidMaterial LithiumCarbonatePureSolution = new SimpleFluidMaterial("lithium_carbonate_pure_solution", 0xfcfcfa);
     public static final SimpleFluidMaterial Ozone = new SimpleFluidMaterial("ozone", 0x0099FF);
     public static final SimpleFluidMaterial NitrogenPentoxide = new SimpleFluidMaterial("nitrogen_pentoxide", 0x0033C0);
 
