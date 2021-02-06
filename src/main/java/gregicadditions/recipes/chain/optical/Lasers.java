@@ -246,6 +246,12 @@ public class Lasers {
                 .fluidOutputs(LuTmYChlorideSolution.getFluid(16000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(1920)
+                .inputs(SodiumMetavanadate.getItemStack())
+                .fluidInputs(AmmoniumChloride.getFluid(1000))
+                .outputs(AmmoniumVanadate.getItemStack())
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(32000)
                 .fluidInputs(LuTmYChlorideSolution.getFluid(1000))
                 .inputs(PureSodiumVanadate.getItemStack())

@@ -318,21 +318,6 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 8))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1920)
-                .inputs(SodiumMetavanadate.getItemStack())
-                .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .outputs(SodiumHexavanadate.getItemStack())
-                .fluidOutputs(SaltWater.getFluid(1000))
-                .buildAndRegister();
-
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
-                .inputs(SodiumHexavanadate.getItemStack())
-                .fluidInputs(HydrochloricAcid.getFluid(4000))
-                .outputs(VanadiumOxide.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt, 4))
-                .fluidOutputs(Water.getFluid(3000))
-                .buildAndRegister();
-
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
                 .input(dust, YttriumOxide)
                 .inputs(EuropiumOxide.getItemStack())
