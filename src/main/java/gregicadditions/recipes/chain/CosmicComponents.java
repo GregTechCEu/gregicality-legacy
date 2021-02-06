@@ -322,7 +322,7 @@ public class CosmicComponents {
                 .input(plate, SuperheavyLAlloy, 4)
                 .input(plate, TriniumTitanium, 4)
                 .fluidInputs(Zylon.getFluid(1296))
-                .outputs(SMD_RESISTOR_COSMIC.getStackForm())
+                .outputs(SMD_RESISTOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(11796480).qubit(32)
