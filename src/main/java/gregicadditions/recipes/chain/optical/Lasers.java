@@ -190,6 +190,13 @@ public class Lasers {
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Neodymium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(NeodymiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(280).EUt(18000)
                 .input(dust,YttriumOxide,14)
                 .inputs(PraseodymiumOxide.getItemStack())
