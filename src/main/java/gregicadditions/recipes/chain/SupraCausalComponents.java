@@ -27,7 +27,7 @@ public class SupraCausalComponents {
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(33550000)
                 .inputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
-                .inputs(SENSOR_UMV.getStackForm(4))
+                .inputs(SENSOR_UIV.getStackForm(1))
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(6))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(GRAVITON_TRANSDUCER.getStackForm())
