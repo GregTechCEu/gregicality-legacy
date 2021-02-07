@@ -67,9 +67,9 @@ public class WormholeGeneratorChain {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(Trinium.getFluid(576))
                 .fluidInputs(FreeElectronGas.getFluid(1000))
-                .input(plate, MetastableOganesson, 6)
-                .input(plate, Vibranium, 6)
-                .input(plate, Mendelevium.getMaterial(), 6)
+                .input(plate, MetastableOganesson, 1)
+                .input(plate, Vibranium, 1)
+                .input(dustSmall, Mendelevium.getMaterial(), 1)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.TARANIUM_CHARGE))
                 .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.LEPTONIC_CHARGE))
                 .buildAndRegister();
