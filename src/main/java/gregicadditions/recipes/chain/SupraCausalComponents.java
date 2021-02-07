@@ -33,12 +33,12 @@ public class SupraCausalComponents {
                 .outputs(GRAVITON_TRANSDUCER.getStackForm())
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(800).EUt(33550000)
-                .inputs(FIELD_GENERATOR_UMV.getStackForm(2))
-                .inputs(SENSOR_UMV.getStackForm(4))
-                .inputs(NEUTRON_REFLECTOR.getStackForm(8))
+                .inputs(FIELD_GENERATOR_UIV.getStackForm(1))
+                .inputs(SENSOR_UIV.getStackForm(1))
+                .inputs(NEUTRON_REFLECTOR.getStackForm(2))
                 .inputs(BATTERY_SMALL_NEUTRONIUM.getStackForm())
                 .input(wireGtSingle, UMVSuperconductor, 16)
-                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm())
                 .buildAndRegister();
