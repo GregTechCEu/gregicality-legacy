@@ -54,14 +54,6 @@ public class WormholeGeneratorChain {
                 .inputs(EMITTER_UHV.getStackForm(2))
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(4))
                 .buildAndRegister();
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(6400000)
-                .fluidInputs(Tritanium.getFluid(144))
-                .input(stick, NaquadahAlloy, 4)
-                .input(wireGtSingle, UEVSuperconductor, 2)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
-                .inputs(EMITTER_UEV.getStackForm(2))
-                .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(8))
-                .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(288566)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.TARANIUM_CHARGE))
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(64))
