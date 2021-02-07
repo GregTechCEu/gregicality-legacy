@@ -74,7 +74,7 @@ public class CosmicComponents {
                 .fluidInputs(MetastableHassium.getFluid(144))
                 .fluidInputs(MetastableFlerovium.getFluid(144))
                 .fluidInputs(MetastableOganesson.getFluid(144))
-                .fluidOutputs(DeuteriumSuperheavyMix.getFluid(576))
+                .fluidOutputs(DeuteriumSuperheavyMix.getFluid(2592))
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(1100000).coilTier(3).euStart(18000000000L).euReturn(50)
