@@ -161,7 +161,7 @@ public class VariousChains {
                 .input(wireFine, Gold, 4)
                 .input(valueOf("gtMetalCasing"), Aluminium)
                 .inputs(LASER_DIODE.getStackForm())
-                .input(circuit, MarkerMaterials.Tier.Infinite)
+                .input(circuit, MarkerMaterials.Tier.Ultimate)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
                 .buildAndRegister();
 
