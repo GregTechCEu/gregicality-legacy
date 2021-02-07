@@ -146,7 +146,7 @@ public class SupraCausalComponents {
                 .fluidOutputs(HighEnergyQGP.getFluid(144))
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(2000).EUt(134217728)
-                .inputs(QCD_PROTECTIVE_PLATING.getStackForm(16))
+                .inputs(QCD_PROTECTIVE_PLATING.getStackForm(4))
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant((GASimpleBlock.CasingType.QCD_CHARGE)))
                 .fluidOutputs(QCDMatter.getFluid(1296))
                 .buildAndRegister();
