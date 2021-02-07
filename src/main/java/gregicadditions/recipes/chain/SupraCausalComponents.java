@@ -77,7 +77,7 @@ public class SupraCausalComponents {
                 .outputs(CTC_GUIDANCE_UNIT.getStackForm())
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1600).EUt(33550000)
-                .inputs(SENSOR_UMV.getStackForm(8))
+                .inputs(SENSOR_UIV.getStackForm(2))
                 .inputs(SCINTILLATOR.getStackForm())
                 .fluidInputs(Thorium.getFluid(144))
                 .inputs(ULTRASHORT_PULSE_LASER.getStackForm(2))
