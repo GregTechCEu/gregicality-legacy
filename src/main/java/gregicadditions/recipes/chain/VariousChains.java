@@ -179,7 +179,7 @@ public class VariousChains {
                 .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())
                 .inputs(MAGNETIC_TRAP.getStackForm())
-                .fluidInputs(SolderingAlloy.getFluid(720))
+                .fluidInputs(SolderingAlloy.getFluid(144))
                 .outputs(EMPTY_LASER_COOLING_CONTAINER.getStackForm())
                 .buildAndRegister();
 
