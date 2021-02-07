@@ -18,13 +18,12 @@ import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 public class UHVMaterials {
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(block, Naquadria)
-                .inputs(GELLED_TOLUENE.getStackForm(4))
-                .input(plateDense, Uranium238Isotope.getMaterial(), 4)
-                .input(plateDense, Osmium, 4)
-                .input(plateDense, Titanium, 4)
+                .input(dust, Naquadria)
+                .inputs(GELLED_TOLUENE.getStackForm(2))
+                .input(plate, Uranium238Isotope.getMaterial(), 1)
+                .input(bolt, Osmium, 1)
+                .input(bolt, Titanium, 4)
                 .fluidInputs(Glyceryl.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1296))
                 .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
                 .EUt(2000000)
                 .duration(100)
