@@ -89,11 +89,11 @@ public class WormholeGeneratorChain {
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(576))
-                .inputs(EMITTER_UV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(32))
+                .inputs(EMITTER_ZPM.getStackForm(2))
+                .inputs(FIELD_GENERATOR_ZPM.getStackForm(1))
                 .inputs(CONTAINED_KERR_SINGULARITY.getStackForm())
-                .input(wireGtSingle, UVSuperconductor, 64)
-                .input(plate, Neutronium, 64)
+                .input(wireGtSingle, UVSuperconductor, 2)
+                .input(plate, Neutronium, 2)
                 .outputs(MICROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(400).EUt(1000000)
