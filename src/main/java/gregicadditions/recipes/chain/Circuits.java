@@ -489,7 +489,6 @@ public class Circuits {
                 .inputs(SUPRACAUSAL_COMPUTER.getStackForm(2))
                 .inputs(UHPIC.getStackForm(8))
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm(2))
-                .inputs(COSMIC_PROCESSING_CORE.getStackForm(4))
                 .inputs(ARAM.getStackForm(16))
                 .inputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .input(foil, FullerenePolymerMatrix, 48)
