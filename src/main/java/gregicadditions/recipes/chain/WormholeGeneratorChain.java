@@ -11,8 +11,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.EMITTER_UV;
-import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
+import static gregtech.common.items.MetaItems.*;
 
 public class WormholeGeneratorChain {
     public static void init(){
@@ -91,10 +90,10 @@ public class WormholeGeneratorChain {
                 .fluidInputs(NaquadahAlloy.getFluid(576))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
-                .input(circuit, MarkerMaterials.Tier.Infinite, 16)
-                .inputs(EMITTER_UHV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UHV.getStackForm(32))
-                .inputs(SENSOR_UHV.getStackForm(32))
+                .inputs(CONTAINED_KERR_SINGULARITY.getStackForm())
+                .inputs(EMITTER_UV.getStackForm(4))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
+                .inputs(SENSOR_UV.getStackForm(4))
                 .inputs(BATTERY_LARGE_NAQUADRIA.getStackForm())
                 .outputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
