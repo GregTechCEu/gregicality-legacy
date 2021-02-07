@@ -19,7 +19,7 @@ public class SupraCausalComponents {
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(33550000)
                 .inputs(CONTAINED_KERR_NEWMANN_SINGULARITY.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
-                .inputs(FIELD_GENERATOR_UMV.getStackForm(2))
+                .inputs(FIELD_GENERATOR_UIV.getStackForm(1))
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(6))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm())
