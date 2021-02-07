@@ -181,11 +181,11 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2097152).qubit(32)
                     .outputs(SUPRACAUSAL_PROCESSOR.getStackForm())
                     .inputs(UHASOC.getStackForm(16),
-                            MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm(2),
+                            MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm(1),
                             MICROWORMHOLE_GENERATOR.getStackForm(),
                             SUPRACAUSAL_PROCESSING_CORE.getStackForm())
-                    .input(plate, SuperheavyHAlloy, 16)
-                    .input(wireGtSingle, UHVSuperconductor, 64)
+                    .input(plate, SuperheavyHAlloy, 4)
+                    .input(wireGtSingle, UHVSuperconductor, 8)
                     .fluidInputs(fluidStack).buildAndRegister();
         }
 
