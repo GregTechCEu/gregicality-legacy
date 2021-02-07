@@ -19,7 +19,7 @@ public class WormholeGeneratorChain {
                 .inputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .notConsumable(SPHERE_FIELD_SHAPE.getStackForm())
                 .fluidInputs(LiquidHelium.getFluid(32000))
-                .outputs(NEUTRONIUM_SPHERE.getStackForm())
+                .outputs(NEUTRONIUM_SPHERE.getStackForm(4))
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidOutputs(Helium.getFluid(32000))
                 .buildAndRegister();
