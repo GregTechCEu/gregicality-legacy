@@ -30,7 +30,7 @@ public class UHVMaterials {
                 .duration(100)
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder()
-                .input(block, Rhenium)
+                .input(ingot, Rhenium)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
                 .fluidOutputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
                 .EUt(2000000)
