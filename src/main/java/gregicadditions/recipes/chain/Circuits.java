@@ -450,7 +450,7 @@ public class Circuits {
                 .inputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
                 .input(plate, TriniumTitanium, 16)
                 .input(foil, FullerenePolymerMatrix, 24)
-                .input(wireGtSingle, UEVSuperconductor, 64)
+                .input(wireGtSingle, UEVSuperconductor, 8)
                 .fluidInputs(Taranium.getFluid(1296))
                 .fluidInputs(TriniumTitanium.getFluid(1296))
                 .fluidInputs(ProtoAdamantium.getFluid(1296))
