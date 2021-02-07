@@ -154,7 +154,7 @@ public class FusionElementsChain {
                 .fluidOutputs(OgannesonBreedingBase.getFluid(2000))
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Curium250.getMaterial().getFluid(144), OgannesonBreedingBase.getFluid(125)).fluidOutputs(HotMetastableOganesson.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000L).euReturn(50).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Curium250.getMaterial().getFluid(36), OgannesonBreedingBase.getFluid(125)).fluidOutputs(HotMetastableOganesson.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000L).euReturn(50).buildAndRegister();
 
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(380).EUt(1200000)
                 .notConsumable(SHAPE_MOLD_INGOT)
