@@ -115,7 +115,6 @@ public class WormholeGeneratorChain {
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(144))
                 .fluidInputs(Neutronium.getFluid(144))
                 .fluidInputs(Taranium.getFluid(72))
-                .input(circuit, UEV, 16)
                 .inputs(EMITTER_UHV.getStackForm(2))
                 .inputs(FIELD_GENERATOR_UHV.getStackForm(2))
                 .inputs(SENSOR_UHV.getStackForm(2))
