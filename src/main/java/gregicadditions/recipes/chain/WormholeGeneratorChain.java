@@ -113,7 +113,7 @@ public class WormholeGeneratorChain {
                 .outputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(600).EUt(5000000)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(64))
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.LEPTONIC_CHARGE))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .outputs(CONTAINED_EXOTIC_MATTER.getStackForm())
