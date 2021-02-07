@@ -547,7 +547,7 @@ public class GARecipeAddition {
                 .fluidOutputs(SupercooledCryotheum.getFluid(10000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().EUt(60).duration(880)
+        MIXER_RECIPES.recipeBuilder().EUt(300).duration(880)
                 .input(dust, Beryllium)
                 .input(dust, Potassium, 4)
                 .fluidInputs(Nitrogen.getFluid(5000))
