@@ -141,7 +141,7 @@ public class SupraCausalComponents {
                 .outputs(CTC_COMPUTATIONAL_UNIT_CONTAINER.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
-                .input(block, HeavyQuarkDegenerateMatter, 16)
+                .input(ingot, HeavyQuarkDegenerateMatter, 1)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
                 .fluidOutputs(HighEnergyQGP.getFluid(144))
                 .buildAndRegister();
