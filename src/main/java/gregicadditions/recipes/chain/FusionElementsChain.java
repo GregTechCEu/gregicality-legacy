@@ -149,8 +149,8 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(125000)
-                .fluidInputs(Titanium50.getFluid(1296))
-                .fluidInputs(Californium252.getMaterial().getFluid(1296))
+                .fluidInputs(Titanium50.getFluid(288))
+                .fluidInputs(Californium252.getMaterial().getFluid(288))
                 .fluidOutputs(OgannesonBreedingBase.getFluid(2000))
                 .buildAndRegister();
 
