@@ -20,7 +20,7 @@ public class CosmicComponents {
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(140).EUt(14000000)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.LEPTONIC_CHARGE))
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
-                .fluidOutputs(QuarkGluonPlasma.getFluid(1000))
+                .fluidOutputs(QuarkGluonPlasma.getFluid(2000))
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder().duration(260).EUt(1200000)
