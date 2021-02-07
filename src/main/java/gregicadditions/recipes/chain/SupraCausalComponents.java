@@ -28,8 +28,8 @@ public class SupraCausalComponents {
                 .inputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
                 .inputs(SENSOR_UIV.getStackForm(1))
-                .inputs(QCD_PROTECTIVE_PLATING.getStackForm(6))
-                .fluidInputs(Neutronium.getFluid(1296))
+                .inputs(QCD_PROTECTIVE_PLATING.getStackForm(2))
+                .fluidInputs(Neutronium.getFluid(144))
                 .outputs(GRAVITON_TRANSDUCER.getStackForm())
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().duration(800).EUt(33550000)
