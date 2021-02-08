@@ -82,7 +82,7 @@ public class WormholeGeneratorChain {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(576))
                 .inputs(EMITTER_ZPM.getStackForm(2))
-                .inputs(FIELD_GENERATOR_ZPM.getStackForm(1))
+                .inputs(FIELD_GENERATOR_ZPM.getStackForm())
                 .inputs(CONTAINED_KERR_SINGULARITY.getStackForm())
                 .input(wireGtSingle, UVSuperconductor, 2)
                 .input(plate, Neutronium, 2)

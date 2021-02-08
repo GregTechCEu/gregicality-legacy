@@ -791,6 +791,8 @@ metaitem.precious_metals.name=Precious Metals
 metaitem.refractory_metals.name=Refractory Metals
 metaitem.light_transition_metals.name=Light Transition Metals
 metaitem.post_transition_metals.name=Post Transition Metals
+metaitem.sodium_metavanadate.name=Sodium Metavanadate
+metaitem.sodium_hexavanadate.name=Sodium Hexavanadate
 
 
 metaitem.unstable.star.name=Unstable Star
@@ -3760,7 +3762,7 @@ fluid.heavy_lepton_mix=Heavy Lepton Mixture
 fluid.cosmic_computing_mix=Cosmic Computing Mixture
 fluid.heavy_quark_enriched_mix=Heavy Quark Enriched Mixture
 fluid.deuterium_superheavy_mix=Deuterium Superheavy Mixture
-fluid.scandium_titanium50_mix=Scandiu Titanium-50 Mixture
+fluid.scandium_titanium50_mix=Scandium Titanium-50 Mixture
 fluid.radon_radium_mix=Radium Radon Mixture
 fluid.phenylsodium=Phenylsodium
 fluid.difluoroaniline=Difluoroaniline

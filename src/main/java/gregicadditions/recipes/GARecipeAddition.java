@@ -507,6 +507,16 @@ public class GARecipeAddition {
 
         //Pyrotheum
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Coal)
+                .input(dust, Sulfur)
+                .fluidInputs(Lava.getFluid(100))
+                .outputs(OreDictUnifier.get(dust, Blaze, 2)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Charcoal)
+                .input(dust, Sulfur)
+                .fluidInputs(Lava.getFluid(100))
+                .outputs(OreDictUnifier.get(dust, Blaze, 2)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
                 .input(dust, Sulfur)
                 .input(dust, Blaze, 2)
@@ -518,7 +528,7 @@ public class GARecipeAddition {
         //Cryotheum
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Snow)
-                .fluidInputs(Redstone.getFluid(250))
+                .fluidInputs(Redstone.getFluid(144))
                 .outputs(OreDictUnifier.get(dust, Blizz, 2)).buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Redstone)
@@ -535,6 +545,13 @@ public class GARecipeAddition {
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Cryotheum.getFluid(10000))
                 .fluidOutputs(SupercooledCryotheum.getFluid(10000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().EUt(300).duration(880)
+                .input(dust, Beryllium)
+                .input(dust, Potassium, 4)
+                .fluidInputs(Nitrogen.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, EnderPearl, 10))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
@@ -1364,6 +1381,9 @@ public class GARecipeAddition {
 
         }
 
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_compress_clay"));
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_decompress_clay"));
+
         for (ResourceLocation r : recipesToRemove)
             ModHandler.removeRecipeByName(r);
         recipesToRemove.clear();
@@ -1374,6 +1394,7 @@ public class GARecipeAddition {
             ModHandler.removeRecipeByName(new ResourceLocation("minecraft:quartz_block"));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_compress_nether_quartz"));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_decompress_nether_quartz"));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:nether_quartz_block_to_nether_quartz"));
             FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24).inputs(OreDictUnifier.get(block, NetherQuartz)).outputs(OreDictUnifier.get(gem, NetherQuartz, 4)).buildAndRegister();
             COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2).input(gem, Materials.NetherQuartz, 4).outputs(new ItemStack(Blocks.QUARTZ_BLOCK)).buildAndRegister();
         }
