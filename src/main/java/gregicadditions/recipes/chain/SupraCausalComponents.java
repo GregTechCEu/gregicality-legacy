@@ -38,7 +38,7 @@ public class SupraCausalComponents {
                 .inputs(NEUTRON_REFLECTOR.getStackForm(8))
                 .inputs(BATTERY_SMALL_NEUTRONIUM.getStackForm())
                 .input(wireGtSingle, UMVSuperconductor, 16)
-                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm())
                 .buildAndRegister();
@@ -97,7 +97,6 @@ public class SupraCausalComponents {
                 .outputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
-                .inputs(COSMIC_PROCESSING_CORE.getStackForm(16))
                 .inputs(NUCLEAR_CLOCK.getStackForm())
                 .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(8))
                 .inputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm(8))

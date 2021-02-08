@@ -11,8 +11,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.EMITTER_UV;
-import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
+import static gregtech.common.items.MetaItems.*;
 
 public class WormholeGeneratorChain {
     public static void init(){
@@ -43,9 +42,8 @@ public class WormholeGeneratorChain {
                 .fluidInputs(Tritanium.getFluid(288))
                 .input(stick, NaquadahAlloy, 16)
                 .input(wireGtSingle, UVSuperconductor, 64)
-                .input(plateDense, Neutronium, 8)
-                .inputs(EMITTER_UV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(32))
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(8))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(288566)
@@ -75,8 +73,8 @@ public class WormholeGeneratorChain {
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(576))
-                .inputs(EMITTER_UV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(32))
+                .inputs(EMITTER_ZPM.getStackForm(8))
+                .inputs(FIELD_GENERATOR_ZPM.getStackForm(8))
                 .inputs(CONTAINED_KERR_SINGULARITY.getStackForm())
                 .input(wireGtSingle, UVSuperconductor, 64)
                 .input(plate, Neutronium, 64)
@@ -91,10 +89,9 @@ public class WormholeGeneratorChain {
                 .fluidInputs(NaquadahAlloy.getFluid(576))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
-                .input(circuit, MarkerMaterials.Tier.Infinite, 16)
-                .inputs(EMITTER_UHV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UHV.getStackForm(32))
-                .inputs(SENSOR_UHV.getStackForm(32))
+                .inputs(EMITTER_UV.getStackForm(8))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(8))
+                .inputs(SENSOR_UV.getStackForm(8))
                 .inputs(BATTERY_LARGE_NAQUADRIA.getStackForm())
                 .outputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
@@ -109,10 +106,9 @@ public class WormholeGeneratorChain {
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(1296))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .fluidInputs(Taranium.getFluid(1296))
-                .input(circuit, UEV, 16)
-                .inputs(EMITTER_UEV.getStackForm(32))
-                .inputs(FIELD_GENERATOR_UEV.getStackForm(32))
-                .inputs(SENSOR_UEV.getStackForm(32))
+                .inputs(EMITTER_UHV.getStackForm(8))
+                .inputs(FIELD_GENERATOR_UHV.getStackForm(8))
+                .inputs(SENSOR_UHV.getStackForm(8))
                 .inputs(BATTERY_LARGE_NEUTRONIUM.getStackForm())
                 .inputs(CONTAINED_EXOTIC_MATTER.getStackForm())
                 .inputs(MACROWORMHOLE_GENERATOR.getStackForm())

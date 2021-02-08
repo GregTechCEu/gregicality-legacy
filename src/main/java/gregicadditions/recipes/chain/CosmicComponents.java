@@ -6,6 +6,7 @@ import gregicadditions.item.GASimpleBlock;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -228,6 +229,13 @@ public class CosmicComponents {
                 .fluidOutputs(NitrogenDioxide.getFluid(4000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(8192)
+                .input(dust, TungstenCarbide)
+                .fluidInputs(Oxygen.getFluid(4000))
+                .outputs(OreDictUnifier.get(dust, TungstenTrioxide))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(845000).blastFurnaceTemp(2800)
                 .inputs(CadmiumSulfide.getItemStack())
                 .input(dust, TungstenTrioxide)
@@ -314,7 +322,7 @@ public class CosmicComponents {
                 .input(plate, SuperheavyLAlloy, 4)
                 .input(plate, TriniumTitanium, 4)
                 .fluidInputs(Zylon.getFluid(1296))
-                .outputs(SMD_RESISTOR_COSMIC.getStackForm())
+                .outputs(SMD_RESISTOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(11796480).qubit(32)
@@ -325,8 +333,6 @@ public class CosmicComponents {
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(2))
                 .input(foil, FullerenePolymerMatrix, 2)
                 .inputs(ULTRASHORT_PULSE_LASER.getStackForm())
-                .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
-                .inputs(NEURO_PROCESSOR.getStackForm())
                 .input(wireGtSingle, Cinobite, 8)
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(8))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(4))

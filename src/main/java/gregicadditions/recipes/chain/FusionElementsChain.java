@@ -27,7 +27,7 @@ public class FusionElementsChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1500)
                 .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidInputs(LithiumPeroxideSolution.getFluid(1000))
-                .fluidOutputs(LithiumCarbonatePureSolution.getFluid(1000))
+                .fluidOutputs(LithiumCarbonateSolution.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
@@ -52,7 +52,7 @@ public class FusionElementsChain {
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1950).blastFurnaceTemp(3100)
                 .inputs(TitaniumNitrate.getItemStack())
-                .fluidInputs(LithiumCarbonatePureSolution.getFluid(1000))
+                .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingot, LithiumTitanate))
                 .buildAndRegister();
 
