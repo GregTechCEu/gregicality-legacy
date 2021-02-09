@@ -2509,6 +2509,7 @@ material.superheavy_l_alloy=Superheavy-L Alloy
 material.superheavy_h_alloy=Superheavy-H Alloy
 material.periodicium=Periodicium
 material.cosmic_neutronium=Cosmic Neutronium
+material.naquadriatic_taranium=Naquadriatic Taranium
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride

@@ -21,7 +21,7 @@ public class CosmicComponents {
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(140).EUt(14000000)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.LEPTONIC_CHARGE))
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
-                .fluidOutputs(QuarkGluonPlasma.getFluid(1000))
+                .fluidOutputs(QuarkGluonPlasma.getFluid(2000))
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder().duration(260).EUt(1200000)
@@ -58,7 +58,7 @@ public class CosmicComponents {
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(900000).coilTier(3).euStart(10000000000L).euReturn(50)
-                .fluidInputs(ScandiumTitanium50Mix.getFluid(144))
+                .fluidInputs(ScandiumTitanium50Mix.getFluid(36))
                 .fluidInputs(RadonRadiumMix.getFluid(144))
                 .fluidOutputs(MetastableHassium.getFluid(144))
                 .buildAndRegister();
@@ -75,7 +75,7 @@ public class CosmicComponents {
                 .fluidInputs(MetastableHassium.getFluid(144))
                 .fluidInputs(MetastableFlerovium.getFluid(144))
                 .fluidInputs(MetastableOganesson.getFluid(144))
-                .fluidOutputs(DeuteriumSuperheavyMix.getFluid(576))
+                .fluidOutputs(DeuteriumSuperheavyMix.getFluid(2592))
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(1100000).coilTier(3).euStart(18000000000L).euReturn(50)

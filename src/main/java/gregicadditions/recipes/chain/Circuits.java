@@ -181,11 +181,11 @@ public class Circuits {
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2097152).qubit(32)
                     .outputs(SUPRACAUSAL_PROCESSOR.getStackForm())
                     .inputs(UHASOC.getStackForm(16),
-                            MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm(2),
+                            MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm(1),
                             MICROWORMHOLE_GENERATOR.getStackForm(),
                             SUPRACAUSAL_PROCESSING_CORE.getStackForm())
-                    .input(plate, SuperheavyHAlloy, 16)
-                    .input(wireGtSingle, UHVSuperconductor, 64)
+                    .input(plate, SuperheavyHAlloy, 4)
+                    .input(wireGtSingle, UHVSuperconductor, 8)
                     .fluidInputs(fluidStack).buildAndRegister();
         }
 
@@ -450,7 +450,7 @@ public class Circuits {
                 .inputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
                 .input(plate, TriniumTitanium, 16)
                 .input(foil, FullerenePolymerMatrix, 24)
-                .input(wireGtSingle, UEVSuperconductor, 64)
+                .input(wireGtSingle, UEVSuperconductor, 8)
                 .fluidInputs(Taranium.getFluid(1296))
                 .fluidInputs(TriniumTitanium.getFluid(1296))
                 .fluidInputs(ProtoAdamantium.getFluid(1296))
@@ -468,8 +468,8 @@ public class Circuits {
                 .inputs(ARAM.getStackForm(12))
                 .inputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
                 .input(plate, TriniumTitanium, 32)
-                .input(plate, MetastableFlerovium, 32)
-                .input(plate, Neutronium, 16)
+                .input(plate, MetastableFlerovium, 16)
+                .input(plate, Neutronium, 4)
                 .input(wireGtSingle, UIVSuperconductor, 64)
                 .inputs(UHPIC.getStackForm(2))
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
@@ -488,12 +488,13 @@ public class Circuits {
                 .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(64))
                 .inputs(SUPRACAUSAL_COMPUTER.getStackForm(2))
                 .inputs(UHPIC.getStackForm(8))
+                .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm(2))
                 .inputs(ARAM.getStackForm(16))
                 .inputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .input(foil, FullerenePolymerMatrix, 48)
-                .input(frameGt, Neutronium, 12)
-                .input(wireGtSingle, UMVSuperconductor, 64)
-                .input(plate, MetastableOganesson, 32)
+                .input(frameGt, Neutronium, 1)
+                .input(wireGtSingle, UMVSuperconductor, 16)
+                .input(plate, MetastableOganesson, 4)
                 .input(plate, QCDMatter, 8)
                 .fluidInputs(Taranium.getFluid(1296))
                 .fluidInputs(TriniumTitanium.getFluid(1296))
