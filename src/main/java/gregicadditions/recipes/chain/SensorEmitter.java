@@ -47,6 +47,51 @@ public class SensorEmitter {
                 .fluidOutputs(PotassiumHydroxide.getFluid(2000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Tantalum, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(TantalumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Scandium, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(ScandiumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Lutetium, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(LutetiumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Thulium, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(ThuliumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
+                .input(dust, Europium, 2)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Water.getFluid(5000))
+                .outputs(EuropiumOxide.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(5000))
+                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(1200).blastFurnaceTemp(1350)
                 .input(dust, LeadNitrate)
                 .inputs(TantalumOxide.getItemStack())
@@ -307,6 +352,12 @@ public class SensorEmitter {
                 .input(dust, Rhodium)
                 .input(dust, Naquadah)
                 .outputs(RhReNqCatalyst.getItemStack(3))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(128)
+                .input(dust, Magnesium, 2)
+                .fluidInputs(Chlorine.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, MagnesiumChloride))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(350000)

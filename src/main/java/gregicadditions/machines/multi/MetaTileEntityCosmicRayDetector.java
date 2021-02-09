@@ -12,6 +12,7 @@ import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
+import gregicadditions.machines.GATileEntities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -28,10 +29,17 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -59,17 +67,26 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
             return;
         }
 
-        if (getTimer() % 100 == 13) {
-            canSeeSky = this.getWorld().canSeeSky(this.getPos().up(5));
+        if (getTimer() % 20 == 4) {
+            canSeeSky = canSeeSky();
         }
-
-        if (getTimer() % 20 == 8) {
-            hasEnoughEnergy = drainEnergy();
+        if (canSeeSky && !hasEnoughEnergy) {
+            if (getTimer() % 20 == 8) {
+                hasEnoughEnergy = drainEnergy();
+            }
         }
 
         if (canSeeSky && hasEnoughEnergy) {
             drainEnergy();
         }
+    }
+
+    private boolean canSeeSky() {
+        BlockPos result = this.getPos().up(5);
+        Vec3i dirVec = this.getFrontFacing().getOpposite().getDirectionVec();
+        Vec3i resVec = new Vec3i(dirVec.getX() * 3, 0, dirVec.getZ() * 3);
+        result = result.add(resVec);
+        return this.getWorld().canSeeSky(result);
     }
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
@@ -87,21 +104,30 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("##XXX##", "##XXX##", "#######", "#######", "##xxx##")
-                .aisle("#XXXXX#", "#XXXXX#", "###X###", "##XXX##", "#xx#xx#")
-                .aisle("XXXXXXX", "XXXFXXX", "##XXX##", "#XXXXX#", "xx###xx")
-                .aisle("XXXXXXX", "XXFPFXX", "#XXFXX#", "#XXEXX#", "x##s##x")
-                .aisle("XXXXXXX", "XXXFXXX", "##XXX##", "#XXXXX#", "xx###xx")
-                .aisle("#XXXXX#", "#XXXXX#", "###X###", "##XXX##", "#xx#xx#")
-                .aisle("##XSX##", "##XXX##", "#######", "#######", "##xxx##")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "###############")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "####xx###xx####", "###############")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "#######x#######", "####xxx#xxx####", "###x#######x###", "###############")
+                .aisle("######XXX######", "######XXX######", "######XXX######", "###############", "###############", "#######X#######", "#####xxxxx#####", "###xx#####xx###", "##x#########x##", "###############")
+                .aisle("#####XXXXX#####", "#####X###X#####", "#####X###X#####", "######XXX######", "######XXX######", "#####XXXXX#####", "####xxxxxxx####", "##xx#######xx##", "#x###########x#", "###############")
+                .aisle("####XXXXXXX####", "####X#####X####", "####X#####X####", "#####X###X#####", "#####X###X#####", "####XXxxxXX####", "###xxx###xxx###", "##x#########x##", "#x###########x#", "###############")
+                .aisle("###XXXXXXXXX###", "###X###E###X###", "###X#######X###", "####X#####X####", "####X##F##X####", "####XxxxxxX####", "###xx#####xx###", "#xx#########xx#", "x#############x", "###############")
+                .aisle("###XXXXXXXXX###", "###X##EcE##X###", "###X###c###X###", "####X##c##X####", "####X#FcF#X####", "###XXxxExxXX###", "##xxx##C##xxx##", "#x#####C#####x#", "x######C######x", "#######s#######")
+                .aisle("###XXXXXXXXX###", "###X###E###X###", "###X#######X###", "####X#####X####", "####X##F##X####", "####XxxxxxX####", "###xx#####xx###", "#xx#########xx#", "x#############x", "###############")
+                .aisle("####XXXXXXX####", "####X#####X####", "####X#####X####", "#####X###X#####", "#####X###X#####", "####XXxxxXX####", "###xxx###xxx###", "##x#########x##", "#x###########x#", "###############")
+                .aisle("#####XXXXX#####", "#####X###X#####", "#####X###X#####", "######XXX######", "######XXX######", "#####XXXXX#####", "####xxxxxxx####", "##xx#######xx##", "#x###########x#", "###############")
+                .aisle("######XXX######", "######XSX######", "######XXX######", "###############", "###############", "#######X#######", "#####xxxxx#####", "###xx#####xx###", "##x#########x##", "###############")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "#######x#######", "####xxx#xxx####", "###x#######x###", "###############")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "####xx###xx####", "###############")
+                .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "###############")
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('x', statePredicate(getSecondaryCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', (tile) -> true)
+                .where('x', statePredicate(getSecondaryCasingState()))
+                .where('C', statePredicate(MetaBlocks.FRAMES.get(GAMaterials.BlackTitanium).getDefaultState()))
+                .where('c', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
                 .where('F', fieldGenPredicate())
                 .where('E', emitterPredicate())
                 .where('s', sensorPredicate())
-                .where('P', pumpPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 
@@ -114,20 +140,6 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
                 FieldGenCasing motorCasing = (FieldGenCasing) blockState.getBlock();
                 FieldGenCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
                 FieldGenCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("FieldGen", tieredCasingType);
-                return currentCasing.getName().equals(tieredCasingType.getName());
-            }
-        };
-    }
-
-    public static Predicate<BlockWorldState> pumpPredicate() {
-        return (blockWorldState) -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if (!(blockState.getBlock() instanceof PumpCasing)) {
-                return false;
-            } else {
-                PumpCasing motorCasing = (PumpCasing) blockState.getBlock();
-                PumpCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
-                PumpCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Pump", tieredCasingType);
                 return currentCasing.getName().equals(tieredCasingType.getName());
             }
         };
@@ -184,6 +196,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.2"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.4"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.6"));
     }
 
     @Override
@@ -191,9 +204,8 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
         super.formStructure(context);
         EmitterCasing.CasingType emitter = context.getOrDefault("Emitter", EmitterCasing.CasingType.EMITTER_LV);
         SensorCasing.CasingType sensor = context.getOrDefault("Sensor", SensorCasing.CasingType.SENSOR_LV);
-        PumpCasing.CasingType pump = context.getOrDefault("Pump", PumpCasing.CasingType.PUMP_LV);
         FieldGenCasing.CasingType fieldGen = context.getOrDefault("FieldGen", FieldGenCasing.CasingType.FIELD_GENERATOR_LV);
-        int min = Collections.min(Arrays.asList(emitter.getTier(), sensor.getTier(), pump.getTier(), fieldGen.getTier()));
+        int min = Collections.min(Arrays.asList(emitter.getTier(), sensor.getTier(), fieldGen.getTier()));
         maxVoltage = (long) (Math.pow(4, min) * 8);
         this.initializeAbilities();
         amount = getAmount();
@@ -267,7 +279,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() & hasEnoughEnergy);
+        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() && hasEnoughEnergy && canSeeSky);
     }
 
     @Override

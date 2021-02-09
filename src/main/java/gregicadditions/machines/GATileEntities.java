@@ -7,6 +7,7 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.machines.energy.GAMetaTileEntityDiode;
 import gregicadditions.machines.energy.GAMetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
@@ -176,6 +177,7 @@ public class GATileEntities {
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_1_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
@@ -225,6 +227,8 @@ public class GATileEntities {
 
     public static GAMetaTileEntityEnergyHatch[] ENERGY_INPUT = new GAMetaTileEntityEnergyHatch[5];
     public static GAMetaTileEntityEnergyHatch[] ENERGY_OUTPUT = new GAMetaTileEntityEnergyHatch[5];
+
+    public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>();
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
@@ -1132,7 +1136,14 @@ public class GATileEntities {
         STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4176, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
         STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4177, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
         STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4178, new MetaTileEntitySteamGrinder(location("steam_grinder")));
-        
+        id = 4179;
+        for (int i = 9; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
+            TRANSFORMER_1_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase()), i, 1, 4)));
+        }
+        id = 4184;
+        for (int i = 1; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier, plus one because we dont want ULV
+            DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

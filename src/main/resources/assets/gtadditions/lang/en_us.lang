@@ -134,12 +134,12 @@ metaitem.neutron.reflector.name=Neutron Reflector
 metaitem.processor.neuro.name=Neuro Processing Unit
 metaitem.hot_iron_ingot.name=Hot Iron Ingot
 metaitem.plate.field.shape.name=Plate Field Shape
-metaitem.wafer.aram.name=Wafer ARAM
+metaitem.wafer.aram.name=ARAM Wafer
 metaitem.plate.aram.name=ARAM
-metaitem.uhpic.wafer.name=Wafer UHPIC
-metaitem.uhasoc.wafer.name=Wafer UHASoC
-metaitem.hasoc.wafer.name=Wafer HASoC
-metaitem.optical_soc_wafer.name=Wafer Optical SoC
+metaitem.uhpic.wafer.name=UHPIC Wafer
+metaitem.uhasoc.wafer.name=UHASoC Wafer
+metaitem.hasoc.wafer.name=HASoC Wafer
+metaitem.optical_soc_wafer.name=Optical SoC Wafer
 metaitem.uhpic.name=UHPIC
 metaitem.uhasoc.name=UHASoC
 metaitem.hasoc.name=HASoC
@@ -277,7 +277,6 @@ metaitem.rotating_transparent_surface.name=Rotating Transparent Surface
 metaitem.electron_source.name=Electron Source
 metaitem.peek_polyamide_foil.name=PEEK Polyamide Foil
 metaitem.highly_insulating_foil.name=Highly Insulating Foil
-metatiem.insulation_wire_assembly.name=Insulation Wire Assembly
 metaitem.aerographene.name=Aerographene
 metaitem.graphene_iron_plate.name=Graphene Iron Plate
 metaitem.scintillator_crystal.name=Scintillator Crystal
@@ -291,6 +290,14 @@ metaitem.photocoated_hassium_wafer.name=Photocoated Hassium Wafer
 metaitem.grating_lithography_mask.name=Grating Lithography Mask
 metaitem.diffractor_grating_mirror.name=Diffractor Grating Mirror
 metaitem.ultrashort_pulse_laser.name=Ultrashort Pulse Laser
+metaitem.wire.field.shape.name=Wire Field Shape
+metaitem.extremely.durable.plasma.cell.name=Extremely Durable Plasma Cell
+metaitem.dense.neutron.plasma.cell.name=Dense Neutron Plasma Cell
+metaitem.cosmic.neutron.plasma.cell.name=Cosmic Neutron Plasma Cell
+metaitem.highly.dense.polymer.plate.name=Highly Dense Polymer Plate
+metaitem.cosmic.mesh.containment.unit.name=Cosmic Mesh Containment Unit
+metaitem.cosmic.mesh.name=Cosmic Mesh
+metaitem.cosmic.fabric.name=Cosmic Fabric
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
@@ -674,7 +681,7 @@ metaitem.magnetorestrictive_alloy.name=Magnetorestrictive Alloy
 metaitem.boron_oxide.name=Boron Oxide
 metaitem.lithium_aluminium_fluoride.name=Lithium Aluminium Fluoride
 metaitem.bets_perrhenate.name=Bisethylenedithiotetraselenafulvalene Perrhenate
-metaitem.tbcco_dust.name=Tbcco Dust
+metaitem.tbcco_dust.name=TBCCO Dust
 metaitem.borocarbide_dust.name=Borocarbide Dust
 metaitem.actinium_superhydride.name=Actinium Superhydride
 metaitem.strontium_superconductor_dust.name=Strontium Superconductor Dust
@@ -777,7 +784,15 @@ metaitem.graphene_oxide.name=Graphene Oxide
 metaitem.glucose_iron_mix.name=Glucose Iron Mix
 metaitem.graphene_gel_suspension.name=Graphene Gel Suspension
 metaitem.dry_graphene_gel.name=Dry Graphene Gel
-
+metaitem.lanthanoids.name=Lanthanoids
+metaitem.actinoids.name=Actinoids
+metaitem.alkalis.name=Alkaline and Alkaline Earth Metals
+metaitem.precious_metals.name=Precious Metals
+metaitem.refractory_metals.name=Refractory Metals
+metaitem.light_transition_metals.name=Light Transition Metals
+metaitem.post_transition_metals.name=Post Transition Metals
+metaitem.sodium_metavanadate.name=Sodium Metavanadate
+metaitem.sodium_hexavanadate.name=Sodium Hexavanadate
 
 
 metaitem.unstable.star.name=Unstable Star
@@ -1587,6 +1602,7 @@ gtadditions.machine.hull.umv.name=UMV Machine Hull
 gtadditions.machine.hull.uxv.name=UXV Machine Hull
 gtadditions.machine.drilling_rig.name=Drilling Rig
 gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
+gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 
 
 
@@ -1639,7 +1655,6 @@ tile.ga_transparent_casing.iridium_reinforced_glass.name=Iridium Reinforced Glas
 tile.ga_transparent_casing.osmium_reinforced_glass.name=Osmiridium Reinforced Glass
 tile.ga_quantum_casing.computer.name=Qubit Computer Casing
 tile.ga_quantum_casing.generator.name=Qubit generator Casing
-tile.ga_multiblock_casing2.naquadria_charge.name=Naquadria Charge
 tile.ga_multiblock_casing2.stellar_containment.name=Stellar Containment
 tile.ga_multiblock_casing2.bio_reactor_casing.name=Bio Reactor Casing
 tile.ga_multiblock_casing2.laser_reactor_casing.name=Laser Engraver Casing
@@ -1804,6 +1819,8 @@ tile.ga_multiblock_casing2.laser_engraver_casing.name=Laser Engraver Casing
 tile.ga_simple_block.superheavy_block.name=Super Heavy Block
 tile.ga_simple_block.taranium_charge.name=Taranium Charge
 tile.ga_simple_block.naquadria_charge.name=Naquadria Charge
+tile.ga_simple_block.leptonic_charge.name=Leptonic Charge
+tile.ga_simple_block.qcd_charge.name=Quantum Chromodynamic Charge
 
 
 
@@ -2490,6 +2507,9 @@ material.roentgenium=Roentgenium
 material.meitnerium=Meitnerium
 material.superheavy_l_alloy=Superheavy-L Alloy
 material.superheavy_h_alloy=Superheavy-H Alloy
+material.periodicium=Periodicium
+material.cosmic_neutronium=Cosmic Neutronium
+material.naquadriatic_taranium=Naquadriatic Taranium
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
@@ -2629,9 +2649,10 @@ gtadditions.multiblock.battery_tower.tooltip.3=The input/output hatches can not 
 
 gtadditions.multiblock.cosmic_ray_detector.tooltip.1=The Cosmic Ray Detector can't see the sky!
 gtadditions.multiblock.cosmic_ray_detector.tooltip.2=Produces Heavy Lepton Mix based on the Y-level it is built at.
-gtadditions.multiblock.cosmic_ray_detector.tooltip.3=At bedrock it will produce 5 mb/t and at build limit it will produce 40 mb/t.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.3=At Bedrock it will produce 5 mb/t and at build limit it will produce 40 mb/t.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.4=Requires a minimum of 2097152 EU/t to function.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.5=Generating %d mb/t Heavy Lepton Mix.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.6=The top Sensor Block needs to be able to see the sky.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
@@ -3098,27 +3119,45 @@ gtadditions.machine.transformer.uv.4.name=Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uv.8.name=Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uv.12.name=Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uv.16.name=Ultimate Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uhv.name=Ultimately High Voltage Transformer
 gtadditions.machine.transformer.uhv.4.name=Ultimately High Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uhv.8.name=Ultimately High Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uhv.12.name=Ultimately High Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uhv.16.name=Ultimately High Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uev.name=Ultimately Extreme Voltage Transformer
 gtadditions.machine.transformer.uev.4.name=Ultimately Extreme Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uev.8.name=Ultimately Extreme Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uev.12.name=Ultimately Extreme Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uev.16.name=Ultimately Extreme Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uiv.name=Ultimately Insane Voltage Transformer
 gtadditions.machine.transformer.uiv.4.name=Ultimately Insane Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uiv.8.name=Ultimately Insane Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uiv.12.name=Ultimately Insane Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uiv.16.name=Ultimately Insane Voltage Transformer 16 Amps
+gtadditions.machine.transformer.umv.name=Mega Ultimate Voltage Transformer
 gtadditions.machine.transformer.umv.4.name=Mega Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.umv.8.name=Mega Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.umv.12.name=Mega Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.umv.16.name=Mega Ultimate Voltage Transformer 16 Amps
+gtadditions.machine.transformer.uxv.name=Extended Mega Ultimate Voltage Transformer
 gtadditions.machine.transformer.uxv.4.name=Extended Mega Ultimate Voltage Transformer 4 Amps
 gtadditions.machine.transformer.uxv.8.name=Extended Mega Ultimate Voltage Transformer 8 Amps
 gtadditions.machine.transformer.uxv.12.name=Extended Mega Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uxv.16.name=Extended Mega Ultimate Voltage Transformer 16 Amps
 
+gtadditions.machine.diode.lv.name=Low Voltage Diode
+gtadditions.machine.diode.mv.name=Medium Voltage Diode
+gtadditions.machine.diode.hv.name=High Voltage Diode
+gtadditions.machine.diode.ev.name=Extreme Voltage Diode
+gtadditions.machine.diode.iv.name=Insane Voltage Diode
+gtadditions.machine.diode.luv.name=Ludicrous Voltage Diode
+gtadditions.machine.diode.zpm.name=ZPM Voltage Diode
+gtadditions.machine.diode.uv.name=Ultimate Voltage Diode
+gtadditions.machine.diode.uhv.name=Ultimately High Voltage Diode
+gtadditions.machine.diode.uev.name=Ultimately Extreme Voltage Diode
+gtadditions.machine.diode.uiv.name=Ultimately Insane Voltage Diode
+gtadditions.machine.diode.umv.name=Mega Ultimate Voltage Diode
+gtadditions.machine.diode.uxv.name=Extended Mega Ultimate Voltage Diode
 
 gtadditions.machine.energy_hatch.input.ulv.4.name=Energy Input Hatch 4 Amps (ULV)
 gtadditions.machine.energy_hatch.input.ulv.16.name=Energy Input Hatch 16 Amps (ULV)
@@ -3724,7 +3763,7 @@ fluid.heavy_lepton_mix=Heavy Lepton Mixture
 fluid.cosmic_computing_mix=Cosmic Computing Mixture
 fluid.heavy_quark_enriched_mix=Heavy Quark Enriched Mixture
 fluid.deuterium_superheavy_mix=Deuterium Superheavy Mixture
-fluid.scandium_titanium50_mix=Scandiu Titanium-50 Mixture
+fluid.scandium_titanium50_mix=Scandium Titanium-50 Mixture
 fluid.radon_radium_mix=Radium Radon Mixture
 fluid.phenylsodium=Phenylsodium
 fluid.difluoroaniline=Difluoroaniline
@@ -3735,6 +3774,16 @@ fluid.trichloroferane=Trichloroferane
 fluid.glucose_iron_solution=Glucose Iron Solution
 fluid.graphene_oxidation_solution=Graphene Oxidation Solution
 fluid.supercritcal_co2=Supercritical Carbon Dioxide
+
+fluid.noble_gases_mixture=Noble Gas Mixture
+fluid.non_metals=Non Metals
+fluid.dense_neutron_plasma=Dense Neutronium Plasma
+fluid.cosmic_mesh_plasma=Cosmic Mesh Plasma
+fluid.superfluid_helium=Superfluid Helium
+fluid.liquid_helium_3=Liquid Helium-3
+fluid.liquid_enriched_helium=Liquid Enriched Helium
+fluid.liquid_nitrogen=Liquid Nitrogen
+fluid.neutronium_doped_nanotubes=Neutronium Doped Nanotubes
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
@@ -3896,13 +3945,14 @@ metaitem.ctc.computational.unit.container.name=Closed Timelike Curve Computation
 metaitem.eigenfolded.kerr.manifold.name=Eigenfolded Kerr Manifold
 metaitem.ctc.computational.unit.name=Closed Timelike Curve Computational Unit
 metaitem.recursively.folded.negative.space.name=Recursively Folded Negative Space
+metaitem.insulation_wire_assembly.name=Insulation Wire Assembly
 
 material.qcd_confined_matter=Quantumchromodynamically Confined Matter
 
 fluid.free_electron_gas=Free Electron Gas
 fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
-fluid.high_energy_qgp.name=High Energy Quark-Gluon Plasma
+fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Processes up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Busses
@@ -3914,3 +3964,9 @@ gtadditions.machine.steam.steam_hatch.tooltip=Accepted Fluid: §eSteam
 gtadditions.machine.steam_input_bus.name=Input Bus (Steam)
 gtadditions.machine.steam_output_bus.name=Output Bus (Steam)
 gtadditions.machine.steam_bus.tooltip=Does not work with non-steam multiblocks
+
+gtadditions.machine.diode.message=Max Amperage throughput: %s
+gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy Flow in only one direction.
+gtadditions.machine.diode.tooltip_tool_usage=Hit with a Soft Hammer to toggle Amperage flow.
+gtadditions.top.diode_input=§6Input:§r %dA
+gtadditions.top.diode_output=§9Output:§r %dA

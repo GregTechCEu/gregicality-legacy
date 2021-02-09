@@ -27,7 +27,7 @@ public class FusionElementsChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1500)
                 .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidInputs(LithiumPeroxideSolution.getFluid(1000))
-                .fluidOutputs(LithiumCarbonatePureSolution.getFluid(1000))
+                .fluidOutputs(LithiumCarbonateSolution.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
@@ -52,7 +52,7 @@ public class FusionElementsChain {
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1950).blastFurnaceTemp(3100)
                 .inputs(TitaniumNitrate.getItemStack())
-                .fluidInputs(LithiumCarbonatePureSolution.getFluid(1000))
+                .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingot, LithiumTitanate))
                 .buildAndRegister();
 
@@ -141,6 +141,7 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(7200).EUt(10000)
+                .blastFurnaceTemp(Titanium.blastFurnaceTemperature)
                 .fluidInputs(MoltenTitanium50Tetrafluoride.getFluid(1000))
                 .input(dust, Sodium, 4)
                 .outputs(OreDictUnifier.get(ingotHot, Titanium50))
@@ -148,12 +149,12 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(125000)
-                .fluidInputs(Titanium50.getFluid(1000))
-                .fluidInputs(Californium252.getMaterial().getFluid(1000))
+                .fluidInputs(Titanium50.getFluid(288))
+                .fluidInputs(Californium252.getMaterial().getFluid(288))
                 .fluidOutputs(OgannesonBreedingBase.getFluid(2000))
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Curium250.getMaterial().getFluid(125), OgannesonBreedingBase.getFluid(125)).fluidOutputs(HotMetastableOganesson.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000L).euReturn(50).buildAndRegister();
+        ADV_FUSION_RECIPES.recipeBuilder().fluidInputs(Curium250.getMaterial().getFluid(36), OgannesonBreedingBase.getFluid(125)).fluidOutputs(HotMetastableOganesson.getFluid(125)).duration(100).EUt(600000).coilTier(2).euStart(4000000000L).euReturn(50).buildAndRegister();
 
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(380).EUt(1200000)
                 .notConsumable(SHAPE_MOLD_INGOT)

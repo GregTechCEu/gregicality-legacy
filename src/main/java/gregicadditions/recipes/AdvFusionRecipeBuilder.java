@@ -145,7 +145,6 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
                 .appendSuper(super.toString())
                 .append("coil_tier", coilTier)
                 .append("eu_to_start", euStart)
-                .append("eu_return", euReturn)
                 .toString();
     }
 }

@@ -861,6 +861,10 @@ public class MachineCraftingRecipes {
             }
         }
 
+        GATileEntities.TRANSFORMER_1_AMPS.forEach(transformer -> {
+            int tier = transformer.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+        });
         GATileEntities.TRANSFORMER_4_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
             ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
@@ -910,6 +914,10 @@ public class MachineCraftingRecipes {
         GATileEntities.ENERGY_OUTPUT_HATCH_128_AMPS.forEach(energyOutputHatch -> {
             int tier = energyOutputHatch.getTier();
             ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(), " MC", 'M', HULL.getIngredient(tier), 'C', CABLE_HEX.getIngredient(tier));
+        });
+        GATileEntities.DIODES.forEach(diode -> {
+            int tier = diode.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", diode.getMetaName()), diode.getStackForm(), "CCC", "XMX", "CCC", 'M', HULL.getIngredient(tier), 'C', CABLE_SINGLE.getIngredient(tier), 'X', SMALL_COIL);
         });
 
         ModHandler.addShapedRecipe("ga_steam_grinder", GATileEntities.STEAM_GRINDER.getStackForm(), "CGC", "CFC", "CGC", 'G', new UnificationEntry(gear, Potin), 'F', new UnificationEntry(frameGt, Potin), 'C', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS));

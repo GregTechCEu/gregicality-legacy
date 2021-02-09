@@ -454,6 +454,16 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem EIGENFOLDED_KERR_MANIFOLD;
     public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT;
     public static MetaItem<?>.MetaValueItem RECURSIVELY_FOLDED_NEGATIVE_SPACE;
+    
+    public static MetaItem<?>.MetaValueItem WIRE_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem EXTREMELY_DURABLE_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem DENSE_NEUTRON_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem COSMIC_NEUTRON_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem HIGHLY_DENSE_POLYMER_PLATE;
+    public static MetaItem<?>.MetaValueItem COSMIC_MESH_CONTAINMENT_UNIT;
+    public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
+    public static MetaItem<?>.MetaValueItem COSMIC_MESH;
+
 
     
     public static void init() {

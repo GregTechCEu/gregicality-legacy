@@ -2,6 +2,7 @@ package gregicadditions.recipes.chain.optical;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -176,6 +177,34 @@ public class Lasers {
                 .outputs(OreDictUnifier.get(dust,Caesium))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Praseodymium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(PraseodymiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Holmium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(HolmiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Neodymium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(NeodymiumOxide.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Yttrium, 2)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, YttriumOxide))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(280).EUt(18000)
                 .input(dust,YttriumOxide,14)
                 .inputs(PraseodymiumOxide.getItemStack())
@@ -217,7 +246,7 @@ public class Lasers {
                 .fluidOutputs(PrHoYLF.getFluid(18))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(280).EUt(4000)
+        BLAST_RECIPES.recipeBuilder().duration(280).EUt(4000).blastFurnaceTemp(700)
                 .inputs(AmmoniumVanadate.getItemStack())
                 .input(dust,Salt)
                 .outputs(PureSodiumVanadate.getItemStack())
@@ -232,11 +261,17 @@ public class Lasers {
                 .fluidOutputs(LuTmYChlorideSolution.getFluid(16000))
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(1920)
+                .inputs(SodiumMetavanadate.getItemStack())
+                .fluidInputs(AmmoniumChloride.getFluid(1000))
+                .outputs(AmmoniumVanadate.getItemStack())
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(32000)
                 .fluidInputs(LuTmYChlorideSolution.getFluid(1000))
                 .inputs(PureSodiumVanadate.getItemStack())
                 .inputs(Urea.getItemStack())
-                .outputs(LuTmYVONanoparticles.getItemStack())
+                .outputs(LuTmYVOPrecipitate.getItemStack())
                 .buildAndRegister();
 
         ORE_WASHER_RECIPES.recipeBuilder().duration(200).EUt(13500)
