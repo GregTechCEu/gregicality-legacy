@@ -32,6 +32,12 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.capability.impl.EnergyContainerBatteryBuffer":
                 tform = EnergyContainerBatteryBufferTransformer.INSTANCE;
                 break;
+            case "gregtech.common.items.behaviors.CoverPlaceBehavior":
+                tform = CoverPlaceBehaviorTransformer.INSTANCE;
+                break;
+            case "gregtech.api.metatileentity.MetaTileEntity":
+                tform = MetaTileEntityTransformer.INSTANCE;
+                break;
             default:
                 return basicClass;
         }

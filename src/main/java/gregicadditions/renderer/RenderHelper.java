@@ -1,6 +1,5 @@
 package gregicadditions.renderer;
 
-import appeng.client.render.TesrRenderHelper;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
@@ -13,7 +12,10 @@ import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
@@ -25,7 +27,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
@@ -88,7 +89,12 @@ public class RenderHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void renderGradientRect(float x, float y, float width, float height, float z, int startColor, int endColor) {
+    public static void renderRect(float x, float y, float width, float height, float z, int color) {
+        renderGradientRect(x, y, width, height, z, color, color, false);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void renderGradientRect(float x, float y, float width, float height, float z, int startColor, int endColor, boolean horizontal) {
         float startAlpha = (float) (startColor >> 24 & 255) / 255.0F;
         float startRed = (float) (startColor >> 16 & 255) / 255.0F;
         float startGreen = (float) (startColor >> 8 & 255) / 255.0F;
@@ -105,11 +111,19 @@ public class RenderHelper {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder buffer = tessellator.getBuffer();
         buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
-        buffer.pos(x + width, y, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
-        buffer.pos(x, y, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
-        buffer.pos(x, y + height, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
-        buffer.pos(x + width, y + height, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
-        tessellator.draw();
+        if (horizontal) {
+            buffer.pos(x + width, y, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
+            buffer.pos(x, y, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
+            buffer.pos(x, y + height, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
+            buffer.pos(x + width, y + height, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
+            tessellator.draw();
+        } else {
+            buffer.pos(x + width, y, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
+            buffer.pos(x, y, z).color(startRed, startGreen, startBlue, startAlpha).endVertex();
+            buffer.pos(x, y + height, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
+            buffer.pos(x + width, y + height, z).color(endRed, endGreen, endBlue, endAlpha).endVertex();
+            tessellator.draw();
+        }
         GlStateManager.shadeModel(GL11.GL_FLAT);
         GlStateManager.disableBlend();
         GlStateManager.enableAlpha();

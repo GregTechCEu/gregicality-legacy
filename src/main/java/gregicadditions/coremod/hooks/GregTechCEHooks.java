@@ -6,9 +6,11 @@ import gregicadditions.covers.CoverDigitalInterface;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
+import gregtech.api.cover.ICoverable;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -86,5 +88,21 @@ public class GregTechCEHooks {
         if (amperageUsed != 0) {
             updateCoverDigitalInterface(batteryBuffer.getMetaTileEntity(), -V * amperageUsed);
         }
+    }
+
+    //origin: gregtech/api/cover/ICoverable.canPlaceCoverOnSide()
+    public static boolean canPlaceCoverOnSide(ICoverable coverable, EnumFacing side, CoverPlaceBehavior coverPlaceBehavior) {
+        if (coverPlaceBehavior.coverDefinition.getCoverId().getPath().equals("cover.digital")) {
+            return true;
+        }
+        return coverable.canPlaceCoverOnSide(side);
+    }
+
+    //origin: gregtech/api/metatileentity/MetaTileEntity.canPlaceCoverOnSide()
+    public static boolean canPlaceCoverOnSide2(MetaTileEntity coverable, EnumFacing side, CoverBehavior coverBehavior) {
+        if (coverBehavior instanceof CoverDigitalInterface) {
+            return true;
+        }
+        return coverable.canPlaceCoverOnSide(side);
     }
 }

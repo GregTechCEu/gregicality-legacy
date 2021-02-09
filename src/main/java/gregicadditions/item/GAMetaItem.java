@@ -69,7 +69,7 @@ public class GAMetaItem extends MaterialMetaItem {
             MetaItems.ZPM2.setInvisible();
         }
 
-        COVER_DIGITAL_VIS = addItem(130, "cover.digital");
+        COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
         SCHEMATIC = addItem(131, "schematic").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
         SCHEMATIC_2X2 = addItem(132, "schematic.2by2").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
