@@ -26,6 +26,12 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.render.MetaTileEntityTESR":
                 tform = MetaTileEntityTESRTransformer.INSTANCE;
                 break;
+            case "gregtech.api.capability.impl.EnergyContainerHandler":
+                tform = EnergyContainerHandlerTransformer.INSTANCE;
+                break;
+            case "gregtech.api.capability.impl.EnergyContainerBatteryBuffer":
+                tform = EnergyContainerBatteryBufferTransformer.INSTANCE;
+                break;
             default:
                 return basicClass;
         }

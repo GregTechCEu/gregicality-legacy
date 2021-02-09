@@ -4,6 +4,7 @@ import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.renderer.GATextures;
 import gregicadditions.renderer.OpticalFiberRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -42,6 +43,7 @@ public class ClientProxy extends CommonProxy {
         super.preLoad();
         Keybinds.initBinds();
         OpticalFiberRenderer.preInit();
+        GATextures.initTextures();
     }
 
 
