@@ -19,11 +19,12 @@ public class PlasticChain {
 
     public static void polybenzimidazoleInit() {
         //platics Polybenzimidazole
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Diaminobenzidine.getFluid(1000))
                 .fluidInputs(Diphenylisophtalate.getFluid(1000))
-                .fluidOutputs(Phenol.getFluid(1000))
+                .fluidOutputs(Phenol.getFluid(2000))
                 .fluidOutputs(Polybenzimidazole.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .EUt(7500)
                 .duration(100)
                 .buildAndRegister();
@@ -41,14 +42,14 @@ public class PlasticChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methane.getFluid(2000))
                 .fluidInputs(Benzene.getFluid(1000))
-                .fluidOutputs(Dimethylbenzene.getFluid(3000))
+                .fluidOutputs(Dimethylbenzene.getFluid(1000))
                 .EUt(120)
                 .duration(4000)
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dustTiny, Potassiumdichromate)
-                .fluidInputs(Oxygen.getFluid(2000))
+        CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(dustTiny, Potassiumdichromate)
+                .fluidInputs(Oxygen.getFluid(6000))
                 .fluidInputs(Dimethylbenzene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(PhthalicAcid.getFluid(1000))
@@ -56,8 +57,8 @@ public class PlasticChain {
                 .duration(100)
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Zinc)
+        CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(dust, Zinc)
                 .fluidInputs(Ammonia.getFluid(2000))
                 .fluidInputs(Dichlorobenzidine.getFluid(1000))
                 .fluidOutputs(Diaminobenzidine.getFluid(1000))
@@ -67,9 +68,11 @@ public class PlasticChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dustTiny, Copper)
-                .fluidInputs(Nitrochlorobenzene.getFluid(1000))
+                .notConsumable(dustTiny, Copper)
+                .fluidInputs(Nitrochlorobenzene.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(Dichlorobenzidine.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(4000))
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
@@ -102,7 +105,7 @@ public class PlasticChain {
                 .buildAndRegister();
 
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitrationMixture.getFluid(1000))
                 .fluidInputs(Chlorobenzene.getFluid(1000))
                 .fluidOutputs(Nitrochlorobenzene.getFluid(1000))
