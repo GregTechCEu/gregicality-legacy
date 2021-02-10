@@ -792,7 +792,7 @@ metaitem.refractory_metals.name=Refractory Metals
 metaitem.light_transition_metals.name=Light Transition Metals
 metaitem.post_transition_metals.name=Post Transition Metals
 metaitem.sodium_metavanadate.name=Sodium Metavanadate
-metaitem.sodium_hexavanadate.name=Sodium Hexavanadate
+metaitem.potassium_peroxymonosulfate=Potassium Peroxymonosulfate
 
 
 metaitem.unstable.star.name=Unstable Star
