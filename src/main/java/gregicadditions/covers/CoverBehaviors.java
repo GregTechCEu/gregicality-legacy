@@ -37,10 +37,7 @@ public class CoverBehaviors {
         registerBehavior(116, new ResourceLocation(Gregicality.MODID, "pump.uxv"), GAMetaItems.ELECTRIC_PUMP_UXV, (tile, side) -> new CoverPump(tile, side, 9, Integer.MAX_VALUE));
         registerBehavior(117, new ResourceLocation(Gregicality.MODID, "pump.max"), GAMetaItems.ELECTRIC_PUMP_MAX, (tile, side) -> new CoverPump(tile, side, 9, Integer.MAX_VALUE));
 
-        /** notice. if modify the path "cover.digital", please also modify the path in
-         * {@link gregicadditions.coremod.hooks.GregTechCEHooks#canPlaceCoverOnSide}
-         */
-        registerBehavior(118, new ResourceLocation(Gregicality.MODID, "cover.digital"), GAMetaItems.COVER_DIGITAL_INTERFACE, CoverDigitalInterface::new);
+        registerBehavior(118, new ResourceLocation(Gregicality.MODID, CoverDigitalInterface.path), GAMetaItems.COVER_DIGITAL_INTERFACE, CoverDigitalInterface::new);
     }
     public static void registerBehavior(int coverNetworkId, ResourceLocation coverId, MetaItem<?>.MetaValueItem placerItem, BiFunction<ICoverable, EnumFacing, CoverBehavior> behaviorCreator) {
         CoverDefinition coverDefinition = new CoverDefinition(coverId, behaviorCreator, placerItem.getStackForm());

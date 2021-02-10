@@ -6,8 +6,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
-import codechicken.lib.vec.Translation;
-import gregicadditions.renderer.GATextures;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.renderer.RenderHelper;
 import gregicadditions.widgets.WidgetOreList;
 import gregtech.api.capability.GregtechCapabilities;
@@ -23,9 +22,12 @@ import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.common.metatileentities.storage.MetaTileEntityQuantumChest;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -34,6 +36,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -48,7 +52,6 @@ import net.minecraftforge.items.IItemHandler;
 import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,12 +60,51 @@ import java.util.stream.Stream;
 
 public class CoverDigitalInterface extends CoverBehavior implements IFastRenderMetaTileEntity, ITickable, CoverWithUI {
 
+    public static String path = "cover.digital";
+    private static boolean flag = false; // sneaking clicking triggers right-clicking twice
+    private static IEnergyContainer proxyCapability = new IEnergyContainer() {
+        @Override
+        public long acceptEnergyFromNetwork(EnumFacing enumFacing, long l, long l1) {
+            return 0;
+        }
+
+        @Override
+        public boolean inputsEnergy(EnumFacing enumFacing) {
+            return false;
+        }
+
+        @Override
+        public long changeEnergy(long l) {
+            return 0;
+        }
+
+        @Override
+        public long getEnergyStored() {
+            return 0;
+        }
+
+        @Override
+        public long getEnergyCapacity() {
+            return 0;
+        }
+
+        @Override
+        public long getInputAmperage() {
+            return 0;
+        }
+
+        @Override
+        public long getInputVoltage() {
+            return 0;
+        }
+    };
+
     public enum MODE {
         FLUID,
         ITEM,
         ENERGY,
         MACHINE,
-        COMPUTER;
+        PROXY;
         public static MODE[] VALUES;
         static {
             VALUES = MODE.values();
@@ -97,7 +139,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     public void setMode(MODE mode, int slot, EnumFacing spin) {
-        if (this.mode == mode && this.slot == slot && this.spin == spin && slot < 0) return;
+        if ((this.mode == mode && this.slot == slot && this.spin == spin) || slot < 0) return;
         this.markAsDirty();
         if (!isRemote()) {
             writeUpdateData(1, packetBuffer -> {
@@ -234,6 +276,35 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     @Override
     public EnumActionResult onRightClick(EntityPlayer playerIn, EnumHand hand, CuboidRayTraceResult hitResult) {
         if (!isRemote()) {
+            if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
+                RayTraceResult rayTraceResult = playerIn.rayTrace(3, 1);
+                if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
+                    double x = 0;
+                    double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
+                    if (this.attachedSide == EnumFacing.EAST) {
+                        x = 1 - rayTraceResult.hitVec.z + rayTraceResult.getBlockPos().getZ();
+                    } else if (this.attachedSide == EnumFacing.SOUTH) {
+                        x = rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
+                    } else if (this.attachedSide == EnumFacing.WEST) {
+                        x = rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ();
+                    } else if (this.attachedSide == EnumFacing.NORTH) {
+                        x = 1 - rayTraceResult.hitVec.x + rayTraceResult.getBlockPos().getX();
+                    }
+                    if (1f / 16 < x && x < 4f / 16 && 1f / 16 < y && y < 4f / 16) {
+                        flag = !flag;
+                        if (flag) {
+                            this.setMode(this.slot - 1);
+                        }
+                        return EnumActionResult.SUCCESS;
+                    } else if (12f / 16 < x && x < 15f / 16 && 1f / 16 < y && y < 4f / 16) {
+                        flag = !flag;
+                        if (flag) {
+                            this.setMode(this.slot + 1);
+                        }
+                        return EnumActionResult.SUCCESS;
+                    }
+                }
+            }
             IFluidHandler fluidHandler = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
             if (this.mode == MODE.FLUID &&  fluidHandler!= null) {
                 if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler) && fluidHandler instanceof FluidHandlerProxy) {
@@ -321,31 +392,31 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         WidgetGroup primaryGroup = new WidgetGroup();
         primaryGroup.addWidget(new LabelWidget(10, 5, "Digital Interface", 0));
         ToggleButtonWidget[] buttons = new ToggleButtonWidget[5];
-        buttons[0] = new ToggleButtonWidget(40, 20, 20, 20, GATextures.BUTTON_FLUID, () -> this.mode != MODE.FLUID, (pressed) -> {
+        buttons[0] = new ToggleButtonWidget(40, 20, 20, 20, ClientHandler.BUTTON_FLUID, () -> this.mode != MODE.FLUID, (pressed) -> {
             setMode(MODE.FLUID);
             if (!pressed) return;
             Stream.of(buttons).forEach(button -> { if (button != buttons[0]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
         }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.FLUID) return false;return super.mouseClicked(mouseX, mouseY, button); }};
-        buttons[1] = new ToggleButtonWidget(60, 20, 20, 20, GATextures.BUTTON_ITEM, () -> this.mode != MODE.ITEM, (pressed) -> {
+        buttons[1] = new ToggleButtonWidget(60, 20, 20, 20, ClientHandler.BUTTON_ITEM, () -> this.mode != MODE.ITEM, (pressed) -> {
             setMode(MODE.ITEM);
             if (!pressed) return;
             Stream.of(buttons).forEach(button -> { if (button != buttons[1]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
         }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.ITEM) return false;return super.mouseClicked(mouseX, mouseY, button); }};
-        buttons[2] = new ToggleButtonWidget(80, 20, 20, 20, GATextures.BUTTON_ENERGY, () -> this.mode != MODE.ENERGY, (pressed) -> {
+        buttons[2] = new ToggleButtonWidget(80, 20, 20, 20, ClientHandler.BUTTON_ENERGY, () -> this.mode != MODE.ENERGY, (pressed) -> {
             setMode(MODE.ENERGY);
             if (!pressed) return;
             Stream.of(buttons).forEach(button -> { if (button != buttons[2]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
         }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.ENERGY) return false;return super.mouseClicked(mouseX, mouseY, button); }};
-        buttons[3] = new ToggleButtonWidget(100, 20, 20, 20, GATextures.BUTTON_MACHINE, () -> this.mode != MODE.MACHINE, (pressed) -> {
+        buttons[3] = new ToggleButtonWidget(100, 20, 20, 20, ClientHandler.BUTTON_MACHINE, () -> this.mode != MODE.MACHINE, (pressed) -> {
             setMode(MODE.MACHINE);
             if (!pressed) return;
             Stream.of(buttons).forEach(button -> { if (button != buttons[3]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
         }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.MACHINE) return false;return super.mouseClicked(mouseX, mouseY, button); }};
-        buttons[4] = new ToggleButtonWidget(120, 20, 20, 20, GATextures.BUTTON_INTERFACE, () -> this.mode != MODE.COMPUTER, (pressed) -> {
-            setMode(MODE.COMPUTER);
+        buttons[4] = new ToggleButtonWidget(120, 20, 20, 20, ClientHandler.BUTTON_INTERFACE, () -> this.mode != MODE.PROXY, (pressed) -> {
+            setMode(MODE.PROXY);
             if (!pressed) return;
             Stream.of(buttons).forEach(button -> { if (button != buttons[4]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.COMPUTER) return false;return super.mouseClicked(mouseX, mouseY, button); }};
+        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.PROXY) return false;return super.mouseClicked(mouseX, mouseY, button); }};
         primaryGroup.addWidget(buttons[0]);
         primaryGroup.addWidget(buttons[1]);
         primaryGroup.addWidget(buttons[2]);
@@ -590,6 +661,16 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @Override
+    public <T> T getCapability(Capability<T> capability, T defaultValue) {
+        if (this.mode == MODE.PROXY) {
+            if (capability == GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER && defaultValue == null) {
+                return GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER.cast(proxyCapability);
+            }
+        }
+        return defaultValue;
+    }
+
+    @Override
     public void renderCoverPlate(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline, Cuboid6 plateBox, BlockRenderLayer layer) {
     }
 
@@ -610,19 +691,24 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             translation.apply(rotation);
         }
         if (mode == MODE.FLUID) {
-            GATextures.COVER_INTERFACE_FLUID.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
-            GATextures.COVER_INTERFACE_FLUID_GLASS.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 3));
+            ClientHandler.COVER_INTERFACE_FLUID.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
+            ClientHandler.COVER_INTERFACE_FLUID_GLASS.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 3));
         } else if (mode == MODE.ITEM) {
-            GATextures.COVER_INTERFACE_ITEM.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
+            ClientHandler.COVER_INTERFACE_ITEM.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
         } else if (mode == MODE.ENERGY) {
-            GATextures.COVER_INTERFACE_ENERGY.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
+            ClientHandler.COVER_INTERFACE_ENERGY.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
         } else if (mode == MODE.MACHINE) {
             if (isWorkingEnable) {
-                GATextures.COVER_INTERFACE_MACHINE_ON.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
+                ClientHandler.COVER_INTERFACE_MACHINE_ON.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
             } else {
-                GATextures.COVER_INTERFACE_MACHINE_OFF.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
+                ClientHandler.COVER_INTERFACE_MACHINE_OFF.renderSided(this.attachedSide, cuboid6, ccRenderState, ArrayUtils.addAll(ops, rotation), RenderHelper.adjustTrans(translation, this.attachedSide, 1));
             }
         }
+    }
+
+    @Override
+    public boolean shouldRenderInPass(int pass) {
+        return pass == 0 && this.mode != MODE.PROXY;
     }
 
     @Override
@@ -638,17 +724,18 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         RenderHelper.moveToFace(translation.m03, translation.m13, translation.m23, this.attachedSide);
         RenderHelper.rotateToFace(this.attachedSide, this.spin);
 
-        if (mode == MODE.FLUID && fluids.length > slot && slot >= 0 && fluids[slot].getContents() != null) {
-            renderFluidMode(ccRenderState, translation);
-            // renderIO(translation, partialTicks);
-        } else if (mode == MODE.ITEM && items.length > slot && slot >= 0) {
-            renderItemMode();
-            // renderIO(translation, partialTicks);
-        } else if (mode == MODE.ENERGY) {
-            renderEnergyMode();
-        } else if (mode == MODE.MACHINE) {
-            renderMachineMode(partialTicks);
+        if (!renderSneakingLookAt(partialTicks)) {
+            if (mode == MODE.FLUID && fluids.length > slot && slot >= 0 && fluids[slot].getContents() != null) {
+                renderFluidMode(ccRenderState, translation);
+            } else if (mode == MODE.ITEM && items.length > slot && slot >= 0) {
+                renderItemMode();
+            } else if (mode == MODE.ENERGY) {
+                renderEnergyMode();
+            } else if (mode == MODE.MACHINE) {
+                renderMachineMode(partialTicks);
+            }
         }
+
 
         /* restore the lightmap  */
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
@@ -660,6 +747,31 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
         return null;
+    }
+
+    @SideOnly(Side.CLIENT)
+    private boolean renderSneakingLookAt(float partialTicks) {
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        if (player != null && player.isSneaking()) {
+            RayTraceResult rayTraceResult = player.rayTrace(3, partialTicks);
+            if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && rayTraceResult.sideHit == this.attachedSide && rayTraceResult.getBlockPos().equals(this.coverHolder.getPos())) {
+                if ((this.mode != MODE.ITEM && this.mode != MODE.FLUID) || player.getHeldItemMainhand().isEmpty()) {
+                    RenderHelper.renderRect(-7f / 16, -7f / 16, 3f / 16, 3f / 16, 0.0002f, 0XFF838583);
+                    RenderHelper.renderRect(4f / 16, -7f / 16, 3f / 16, 3f / 16, 0.0002f, 0XFF838583);
+                    RenderHelper.renderText(-5.5f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
+                    RenderHelper.renderText(5.7f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
+                    RenderHelper.renderText(0, -0.37f, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
+                    if (this.coverHolder instanceof MetaTileEntity){
+                        RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.0002f, 0XFF000000);
+                        RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
+                    }
+                    RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0.002f, 1f/32, this.coverHolder.getStackForm());
+                    return true;
+                }
+                return false;
+            }
+        }
+        return false;
     }
 
     @SideOnly(Side.CLIENT)
@@ -698,7 +810,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     private void renderItemMode() {
         ItemStack itemStack = items[slot];
         if (!itemStack.isEmpty()) {
-           RenderHelper.renderItemOverLay(new Translation(-8f/16, -5f/16, 0), 1f/32, itemStack);
+           RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0, 1f/32, itemStack);
            if(quantumChestCapability != 0) {
                RenderHelper.renderRect(-7f / 16, -7f / 16, Math.max(itemStack.getCount() * 14f / (quantumChestCapability * 16), 0.001f), 3f / 16, 0.0002f, 0XFF25B9FF);
            }

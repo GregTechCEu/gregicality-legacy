@@ -148,10 +148,10 @@ public class RenderHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void renderItemOverLay(Translation translate, float scale, ItemStack itemStack) {
+    public static void renderItemOverLay(float x, float y, float z, float scale, ItemStack itemStack) {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 0.0001f);
-        GlStateManager.translate(translate.vec.x * 16, translate.vec.y * 16, translate.vec.z * 16);
+        GlStateManager.translate(x * 16, y * 16, z * 16);
         RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
         renderItem.renderItemAndEffectIntoGUI(itemStack, 0, 0 );
         GlStateManager.popMatrix();

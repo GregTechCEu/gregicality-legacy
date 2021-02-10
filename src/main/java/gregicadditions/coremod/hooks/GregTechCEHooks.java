@@ -35,13 +35,13 @@ public class GregTechCEHooks {
         if(te instanceof MetaTileEntityHolder){
             MetaTileEntity metaTE = ((MetaTileEntityHolder) te).getMetaTileEntity();
             if (metaTE != null){
-                CCRenderState renderState = CCRenderState.instance();
-                renderState.reset();
-                renderState.bind(buffer);
                 Matrix4 translation = (new Matrix4()).translate(x, y, z);
                 for (EnumFacing side: EnumFacing.VALUES){
                     CoverBehavior cover = metaTE.getCoverAtSide(side);
                     if (cover instanceof IFastRenderMetaTileEntity) {
+                        CCRenderState renderState = CCRenderState.instance();
+                        renderState.reset();
+                        renderState.bind(buffer);
                         renderState.setBrightness(te.getWorld(), te.getPos().offset(side));
                         ((IFastRenderMetaTileEntity)cover).renderMetaTileEntityFast(renderState, translation, partialTicks);
                     }
@@ -92,7 +92,7 @@ public class GregTechCEHooks {
 
     //origin: gregtech/api/cover/ICoverable.canPlaceCoverOnSide()
     public static boolean canPlaceCoverOnSide(ICoverable coverable, EnumFacing side, CoverPlaceBehavior coverPlaceBehavior) {
-        if (coverPlaceBehavior.coverDefinition.getCoverId().getPath().equals("cover.digital")) {
+        if (coverPlaceBehavior.coverDefinition.getCoverId().getPath().equals(CoverDigitalInterface.path)) {
             return true;
         }
         return coverable.canPlaceCoverOnSide(side);
