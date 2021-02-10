@@ -792,8 +792,11 @@ metaitem.refractory_metals.name=Refractory Metals
 metaitem.light_transition_metals.name=Light Transition Metals
 metaitem.post_transition_metals.name=Post Transition Metals
 metaitem.sodium_metavanadate.name=Sodium Metavanadate
-metaitem.sodium_hexavanadate.name=Sodium Hexavanadate
-
+metaitem.mercury_acetate.name=Mercury Acetate
+metaitem.calcium_cyanamide.name=Calcium Cyanamide
+metaitem.purified_pyrochlore.name=Purified Pyrochlore
+metaitem.purified_columbite.name=Purified Columbite
+metaitem.selectively_mutated_cupravidius_necator.name=Selectively Mutated Cupravidius Necator
 
 metaitem.unstable.star.name=Unstable Star
 
@@ -3784,6 +3787,14 @@ fluid.liquid_helium_3=Liquid Helium-3
 fluid.liquid_enriched_helium=Liquid Enriched Helium
 fluid.liquid_nitrogen=Liquid Nitrogen
 fluid.neutronium_doped_nanotubes=Neutronium Doped Nanotubes
+fluid.methylethanolamine=Methylethanolamine
+fluid.methylguanidine=Methylguanidine
+fluid.methylnitronitrosoguanidine=Methylnitronitrosoguanidine
+fluid.isoamyl_alcohol=Isoamyl Alcohol
+fluid.octanol=Octanol
+fluid.trioctylamine=Trioctylamine
+fluid.rhenium_scrubbed_solution=Rhenium Scrubbed Solution
+fluid.rhenium_separation_mixture=Rhenium Separation Mixture
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
