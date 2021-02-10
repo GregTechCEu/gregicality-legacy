@@ -206,7 +206,7 @@ public class RheniumChain {
                 .EUt(125000)
                 .duration(90)
                 .buildAndRegister();
-        MIXER_RECIPES.recipeBuilder()
+        LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Kerosene.getFluid(2000))
                 .fluidInputs(Trioctylamine.getFluid(500))
                 .fluidInputs(Octanol.getFluid(250))
@@ -237,7 +237,7 @@ public class RheniumChain {
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(LeachedPyrochlore.getItemStack())
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
-                .inputs(PurifiedPyrochlore.getItemStack())
+                .outputs(PurifiedPyrochlore.getItemStack())
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
                 .EUt(50000)
                 .duration(50)
