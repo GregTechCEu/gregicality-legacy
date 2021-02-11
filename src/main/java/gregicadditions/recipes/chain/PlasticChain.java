@@ -31,10 +31,9 @@ public class PlasticChain {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Phenol.getFluid(2000))
-                .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(PhthalicAcid.getFluid(1000))
                 .fluidOutputs(Diphenylisophtalate.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
+                .fluidOutputs(Water.getFluid(2000))
                 .EUt(7500)
                 .duration(1000)
                 .buildAndRegister();
