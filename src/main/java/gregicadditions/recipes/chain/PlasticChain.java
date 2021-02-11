@@ -113,7 +113,7 @@ public class PlasticChain {
                 .duration(100)
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(2000))
