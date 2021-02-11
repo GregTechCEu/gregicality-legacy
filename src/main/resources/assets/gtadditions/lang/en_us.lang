@@ -3966,15 +3966,18 @@ fluid.krypton_difluoride=Krypton Difluoride
 fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
-gtadditions.machine.steam_grinder.tooltip=Processes up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Busses
+gtadditions.machine.steam_grinder.tooltip=Macerates up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Buses
 gtadditions.multiblock.steam_grinder.description=A Multiblock Macerator at the Steam Age. Requires at least 14 Bronze Casings to form. Cannot use normal Input/Output busses, nor Fluid Hatches other than the Steam Hatch.
-gtadditions.multiblock.steam_grinder.low_steam=Not enough Steam to run!
+gtadditions.multiblock.steam.low_steam=Not enough Steam to run!
 gtadditions.multiblock.steam.steam_stored=Steam: %s / %s mb
 gtadditions.machine.steam_hatch.name=Steam Hatch
 gtadditions.machine.steam.steam_hatch.tooltip=Accepted Fluid: §eSteam
 gtadditions.machine.steam_input_bus.name=Input Bus (Steam)
 gtadditions.machine.steam_output_bus.name=Output Bus (Steam)
 gtadditions.machine.steam_bus.tooltip=Does not work with non-steam multiblocks
+gtadditions.machine.steam_oven.name=Steam Oven
+gtadditions.machine.steam_oven.tooltip=Smelts up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Buses
+gtadditions.multiblock.steam_oven.description=A Multi Smelter at the Steam Age. Requires at least 6 Bronze Casings to form. Cannot use normal Input/Output busses, nor Fluid Hatches other than the Steam Hatch. Steam Hatch must be on the bottom layer, no more than one.
 
 gtadditions.machine.diode.message=Max Amperage throughput: %s
 gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy Flow in only one direction.
