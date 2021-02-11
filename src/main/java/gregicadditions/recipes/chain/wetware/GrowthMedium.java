@@ -18,7 +18,7 @@ public class GrowthMedium {
     public static void init() {
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, Quicklime, 10)
-                .input(dust, Carbon, 10)
+                .input(dust, Carbon, 20)
                 .fluidOutputs(CarbonMonoxde.getFluid(10000))
                 .outputs(CalciumCarbide.getItemStack(10))
                 .blastFurnaceTemp(2500)
@@ -26,9 +26,9 @@ public class GrowthMedium {
                 .duration(100)
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder()
-                .inputs(CalciumCarbide.getItemStack())
-                .fluidInputs(Steam.getFluid(1000))
-                .outputs(CalciumHydroxide.getItemStack())
+                .inputs(CalciumCarbide.getItemStack(2))
+                .fluidInputs(Steam.getFluid(2000))
+                .outputs(CalciumHydroxide.getItemStack(2))
                 .fluidOutputs(Acetylene.getFluid(1000))
                 .blastFurnaceTemp(2300)
                 .EUt(30720)

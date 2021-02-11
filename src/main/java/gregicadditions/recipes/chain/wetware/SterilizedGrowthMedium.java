@@ -2,8 +2,7 @@ package gregicadditions.recipes.chain.wetware;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -76,18 +75,20 @@ public class SterilizedGrowthMedium {
                 .EUt(30720)
                 .duration(25)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitrationMixture.getFluid(1000))
                 .fluidInputs(Benzene.getFluid(1000))
-                .fluidOutputs(NitroBenzene.getFluid(2000))
+                .fluidOutputs(NitroBenzene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(SulfuricAcid.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(6000))
                 .fluidInputs(NitroBenzene.getFluid(1000))
                 .notConsumable(dust, Platinum)
-                .fluidOutputs(Aniline.getFluid(2000))
+                .fluidOutputs(Aniline.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();

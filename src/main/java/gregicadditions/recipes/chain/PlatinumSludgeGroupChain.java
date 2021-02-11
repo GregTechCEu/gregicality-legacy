@@ -261,9 +261,11 @@ public class PlatinumSludgeGroupChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Sodium)
+                .input(dust, Sodium, 2)
                 .fluidInputs(NitricAcid.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodiumNitrate, 2))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(60)
                 .duration(8)
                 .buildAndRegister();
