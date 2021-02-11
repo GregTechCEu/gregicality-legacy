@@ -341,12 +341,6 @@ public class BrineChain {
                 .chancedOutput(BORON_RETAINING_YARN.getStackForm(), 9000, 0)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(500)
-                .input(dust, SodiumHydroxide, 1)
-                .fluidInputs(BoricAcid.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Borax, 11))
-                .buildAndRegister();
-
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(1800).blastFurnaceTemp(750)
                 .notConsumable(dust, Boron)
                 .fluidInputs(BoricAcid.getFluid(2000))
