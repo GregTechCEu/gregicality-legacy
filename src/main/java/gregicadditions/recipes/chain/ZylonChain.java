@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.stack.UnificationEntry;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
@@ -13,37 +14,41 @@ public class ZylonChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
-                .fluidOutputs(Xylene.getFluid(2000))
+                .fluidOutputs(Xylene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Xylene.getFluid(1000))
                 .input(dust, Zeolite)
-                .fluidOutputs(XyleneZeoliteMixture.getFluid(2000))
+                .fluidOutputs(XyleneZeoliteMixture.getFluid(1000))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(XyleneZeoliteMixture.getFluid(2000))
+                .fluidInputs(XyleneZeoliteMixture.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Zeolite))
                 .fluidOutputs(PXylene.getFluid(1000))
                 .EUt(2000000)
                 .duration(100)
                 .buildAndRegister();
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(PXylene.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidInputs(Bromine.getFluid(1000))
-                .fluidOutputs(Dibromomethylbenzene.getFluid(3000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(2000))
+                .fluidOutputs(Dibromomethylbenzene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(2000000)
                 .duration(150)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dibromomethylbenzene.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(Bromine.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
                 .outputs(Terephthalaldehyde.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Sulfur))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
@@ -65,7 +70,7 @@ public class ZylonChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ethenone.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
-                .fluidOutputs(AceticAnhydride.getFluid(2000))
+                .fluidOutputs(AceticAnhydride.getFluid(1000))
                 .EUt(2000000)
                 .duration(20)
                 .buildAndRegister();
@@ -73,14 +78,14 @@ public class ZylonChain {
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .fluidInputs(Isochloropropane.getFluid(1000))
                 .fluidInputs(AceticAnhydride.getFluid(1000))
-                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(NitricAcid.getFluid(2000))
                 .input(dust, SodiumHydroxide)
                 .input(dust, Sodium)
                 .fluidOutputs(Dinitrodipropanyloxybenzene.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(SodiumAcetate.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(Water.getFluid(4000))
+                .fluidOutputs(AceticAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(OreDictUnifier.get(dust, Carbon, 8))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();

@@ -111,7 +111,7 @@ public class PEEKChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Propene.getFluid(1000))
                 .fluidInputs(Benzene.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Acetone.getFluid(1000))
                 .fluidOutputs(Hydroquinone.getFluid(500))
                 .fluidOutputs(Resorcinol.getFluid(500))
