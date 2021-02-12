@@ -1,5 +1,7 @@
 package gregicadditions.recipes.chain.wetware;
 
+import gregtech.api.unification.OreDictUnifier;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -92,33 +94,34 @@ public class SterilizedGrowthMedium {
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(SulfurTrioxide.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(ChlorosulfuricAcid.getFluid(3000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidOutputs(ChlorosulfuricAcid.getFluid(2000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
+                .fluidInputs(Aniline.getFluid(1000))
+                .fluidInputs(AceticAnhydride.getFluid(1000))
                 .fluidInputs(ChlorosulfuricAcid.getFluid(1000))
-                .fluidInputs(Benzene.getFluid(1000))
-                .fluidOutputs(BenzenesulfonylChloride.getFluid(1000))
-                .fluidOutputs(AcidicMixture.getFluid(1000))
+                .fluidOutputs(AcetylsulfanilideChloride.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(AceticAcid.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
-        CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(AcidicMixture.getFluid(1000))
-                .fluidOutputs(SulfuricAcid.getFluid(300))
-                .fluidOutputs(HydrochloricAcid.getFluid(300))
-                .EUt(480)
-                .duration(100)
-                .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Aniline.getFluid(1000))
-                .fluidInputs(BenzenesulfonylChloride.getFluid(1000))
-                .fluidOutputs(Sulfanilamide.getFluid(2000))
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(SodiumBicarbonate.getItemStack())
+                .fluidInputs(AcetylsulfanilideChloride.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Salt))
+                .fluidOutputs(Sulfanilamide.getFluid(1000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(AceticAcid.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
@@ -129,7 +132,5 @@ public class SterilizedGrowthMedium {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
-
-
     }
 }

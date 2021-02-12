@@ -353,7 +353,7 @@ public class NaquadahChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidOutputs(AmmoniaNitrate.getFluid(2000))
+                .fluidOutputs(AmmoniaNitrate.getFluid(1000))
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();

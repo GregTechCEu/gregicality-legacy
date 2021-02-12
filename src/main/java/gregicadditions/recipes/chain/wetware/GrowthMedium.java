@@ -8,8 +8,7 @@ import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.ULTRASONIC_HOMOGENIZER;
-import static gregicadditions.recipes.GARecipeMaps.BIO_REACTOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -46,7 +45,8 @@ public class GrowthMedium {
                 .notConsumable(dust, Silver)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
-                .fluidOutputs(Formaldehyde.getFluid(2000))
+                .fluidOutputs(Formaldehyde.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
@@ -54,14 +54,15 @@ public class GrowthMedium {
                 .notConsumable(dust, Copper)
                 .fluidInputs(Formaldehyde.getFluid(1000))
                 .fluidInputs(Acetylene.getFluid(1000))
-                .fluidOutputs(PropargylAlcohol.getFluid(2000))
+                .fluidOutputs(PropargylAlcohol.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(PropargylAlcohol.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(PropargylChloride.getFluid(2000))
+                .fluidOutputs(PropargylChloride.getFluid(1000))
+                .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
@@ -80,13 +81,15 @@ public class GrowthMedium {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Turpentine.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(BetaPinene.getItemStack(2))
+                .outputs(BetaPinene.getItemStack())
+                .fluidOutputs(SulfuricAcid.getFluid(1000))
                 .EUt(30720)
                 .duration(50)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(BetaPinene.getItemStack())
-                .fluidInputs(Isoprene.getFluid(1000))
+                .fluidInputs(Isoprene.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Citral.getFluid(2000))
                 .EUt(30720)
                 .duration(100)
@@ -94,14 +97,17 @@ public class GrowthMedium {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Citral.getFluid(1000))
                 .fluidInputs(Acetone.getFluid(1000))
-                .fluidOutputs(BetaIonone.getFluid(2000))
+                .fluidOutputs(BetaIonone.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(BetaIonone.getFluid(1000))
-                .fluidInputs(PropargylChloride.getFluid(1000))
-                .fluidOutputs(VitaminA.getFluid(2000))
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(BetaIonone.getFluid(25000))
+                .fluidInputs(PropargylChloride.getFluid(5000))
+                .fluidOutputs(VitaminA.getFluid(17000))
+                .fluidOutputs(Oxygen.getFluid(8000))
+                .fluidOutputs(HydrochloricAcid.getFluid(5000))
                 .EUt(30720)
                 .duration(200)
                 .buildAndRegister();
@@ -123,14 +129,14 @@ public class GrowthMedium {
                 .notConsumable(new IntCircuitIngredient(10))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
-                .fluidOutputs(EthyleneOxide.getFluid(2000))
+                .fluidOutputs(EthyleneOxide.getFluid(1000))
                 .EUt(500)
                 .duration(400)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(EthyleneOxide.getFluid(1000))
-                .fluidOutputs(Ethanolamine.getFluid(2000))
+                .fluidOutputs(Ethanolamine.getFluid(1000))
                 .EUt(30720)
                 .duration(150)
                 .buildAndRegister();

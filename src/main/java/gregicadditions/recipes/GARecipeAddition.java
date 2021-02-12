@@ -705,7 +705,7 @@ public class GARecipeAddition {
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240).fluidInputs(Air.getFluid(15000), EthylAnthraHydroQuinone.getFluid(5000), Anthracene.getFluid(50)).fluidOutputs(HydrogenPeroxide.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(800).EUt(120).fluidInputs(Hydrogen.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(300).EUt(120).input(dust, PhthalicAnhydride, 4).fluidInputs(EthylBenzene.getFluid(2000)).fluidOutputs(EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30).notConsumable(new IntCircuitIngredient(1)).fluidInputs(Ethylene.getFluid(2000), Benzene.getFluid(2000)).fluidOutputs(EthylBenzene.getFluid(4000)).buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30).notConsumable(new IntCircuitIngredient(1)).fluidInputs(Ethylene.getFluid(1000), Benzene.getFluid(1000)).fluidOutputs(EthylBenzene.getFluid(1000)).buildAndRegister();
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(1200).EUt(120).fluidInputs(PhthalicAcid.getFluid(144)).outputs(OreDictUnifier.get(dust, PhthalicAnhydride)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).input(dust, Lithium, 5).fluidInputs(Naphtalene.getFluid(2000)).fluidOutputs(PhthalicAcid.getFluid(2500)).buildAndRegister();
         VACUUM_RECIPES.recipeBuilder().duration(30).EUt(480).fluidInputs(Oxygen.getFluid(1000)).fluidOutputs(LiquidOxygen.getFluid(1000)).buildAndRegister();

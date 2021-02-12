@@ -870,7 +870,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(5600)
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidInputs(Butane.getFluid(1000))
-                .fluidInputs(Bromine.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(2000))
                 .fluidOutputs(Bromobutane.getFluid(1000))
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();

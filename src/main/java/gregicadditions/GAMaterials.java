@@ -507,8 +507,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NitroBenzene = new SimpleFluidMaterial("nitro_benzene", 0x81c951);
     public static final SimpleFluidMaterial Aniline = new SimpleFluidMaterial("aniline", 0x4c911d);
     public static final SimpleFluidMaterial ChlorosulfuricAcid = new SimpleFluidMaterial("chlorosulfuric_acid", 0x916c1d);
-    public static final SimpleFluidMaterial AcidicMixture = new SimpleFluidMaterial("acidic_mixture", 0xedb53e);
-    public static final SimpleFluidMaterial BenzenesulfonylChloride = new SimpleFluidMaterial("benzenesulfonyl_chloride", 0xa67a1c);
     public static final SimpleFluidMaterial Sulfanilamide = new SimpleFluidMaterial("sulfanilamide", 0x523b0a);
     public static final SimpleFluidMaterial SilicaGelBase = new SimpleFluidMaterial("silica_gel_base", 0x27a176);
     public static final SimpleFluidMaterial Ethanol100 = new SimpleFluidMaterial("ethanol_100", Ethanol.materialRGB);
@@ -1373,6 +1371,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c);
 
     public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff);
+    public static final SimpleFluidMaterial AcetylsulfanilideChloride = new SimpleFluidMaterial("acetylsulfanilide_chloride", (Aniline.rgb + AceticAnhydride.rgb + ChlorosulfuricAcid.rgb)/3);
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");

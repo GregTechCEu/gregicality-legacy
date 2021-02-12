@@ -71,7 +71,7 @@ public class ZylonChain {
                 .fluidInputs(Ethenone.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidOutputs(AceticAnhydride.getFluid(1000))
-                .EUt(2000000)
+                .EUt(30720)
                 .duration(20)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
