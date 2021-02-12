@@ -8,6 +8,7 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -308,6 +309,15 @@ public class SuperconductorsSMDChain {
                 .outputs(BALLAST.getStackForm())
                 .buildAndRegister();
 
+        BLAST_RECIPES.recipeBuilder().duration(100).EUt(1920).blastFurnaceTemp(650)
+                .input(dust, Vanadium, 2)
+                .input(dust, SodaAsh, 5)
+                .fluidInputs(Water.getFluid(4000))
+                .fluidOutputs(CarbonMonoxde.getFluid(5000))
+                .outputs(SodiumMetavanadate.getItemStack(2))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 8))
+                .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
                 .input(dust, YttriumOxide)
                 .inputs(EuropiumOxide.getItemStack())
@@ -315,6 +325,13 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .outputs(YttriumEuropiumVanadate.getItemStack(3))
                 .outputs(OreDictUnifier.get(dust, Sodium))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
+                .inputs(StrontiumChloride.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(StrontiumSulfate.getItemStack())
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
@@ -821,7 +838,7 @@ public class SuperconductorsSMDChain {
                 .outputs(SodiumSeaborgate.getItemStack())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(84500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(1920)
                 .input(dust, Strontium)
                 .fluidInputs(Chlorine.getFluid(2000))
                 .outputs(StrontiumChloride.getItemStack(3))

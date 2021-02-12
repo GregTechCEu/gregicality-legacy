@@ -39,7 +39,7 @@ public class OpticalCircuits {
                 .inputs(SodiumSeaborgate.getItemStack(4))
                 .input(dust, TriniumTitanium, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(1296))
-                .outputs(SMD_RESISTOR_OPTICAL.getStackForm())
+                .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(390).EUt(1600000)
@@ -68,7 +68,6 @@ public class OpticalCircuits {
                 .inputs(MEDIUM_FREQUENCY_LASER.getStackForm())
                 .inputs(HIGH_FREQUENCY_LASER.getStackForm())
                 .inputs(NON_LINEAR_OPTICAL_LENS.getStackForm(2))
-                .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(2))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .input(plate,Graphene,4)
