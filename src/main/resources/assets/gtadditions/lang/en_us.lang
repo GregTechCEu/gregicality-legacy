@@ -181,7 +181,7 @@ metaitem.medium.neutronium.battery.empty.name=Medium Neutronium Battery Hull
 metaitem.medium.naquadria.battery.empty.name=Medium Naquadria Battery Hull
 metaitem.medium.vanadium.battery.empty.name=Medium Vanadium Battery Hull
 metaitem.small.neutronium.battery.empty.name=Small Neutronium Battery Hull
-metaitem.small.vanadium.battery.empty.name=Small Naquadria Battery Hull
+metaitem.small.vanadium.battery.empty.name=Small Vanadium Battery Hull
 
 metaitem.large.neutronium.battery.empty.tooltip=An Empty UIV Battery
 metaitem.large.naquadria.battery.empty.tooltip=An Empty UV Battery
@@ -199,7 +199,7 @@ metaitem.medium.neutronium.battery.name=Medium Neutronium Battery
 metaitem.medium.naquadria.battery.name=Medium Naquadria Battery
 metaitem.medium.vanadium.battery.name=Medium Vanadium Battery
 metaitem.small.neutronium.battery.name=Small Neutronium Battery
-metaitem.small.vanadium.battery.name=Small Naquadria Battery
+metaitem.small.vanadium.battery.name=Small Vanadium Battery
 
 metaitem.large.neutronium.battery.tooltip=Reusable
 metaitem.large.naquadria.battery.tooltip=Reusable
