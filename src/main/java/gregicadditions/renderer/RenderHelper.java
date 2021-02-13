@@ -1,15 +1,8 @@
 package gregicadditions.renderer;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.ColourMultiplier;
-import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.texture.TextureUtils;
-import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
-import codechicken.lib.vec.Translation;
 import gregtech.api.gui.resources.TextureArea;
-import gregtech.api.render.Textures;
-import gregtech.api.util.GTUtility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -17,74 +10,49 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class RenderHelper {
 
     @SideOnly(Side.CLIENT)
-    public static void renderFluidOverLay(CCRenderState renderState, Matrix4 translation, IVertexOperation[] ops, EnumFacing side, double fillPercent, FluidStack fluidStack, @Nullable EnumFacing yAxis) {
+    public static void renderFluidOverLay(float x, float y, float width, float height, float z, FluidStack fluidStack, float alpha) {
         if (fluidStack != null) {
-            Cuboid6 resultFluidCuboid = Cuboid6.full.copy();
-            double fluidLevel = fillPercent * 10D/16;
-            if ((side != EnumFacing.UP && side != EnumFacing.DOWN) || yAxis == null) {
-                resultFluidCuboid.min.y = 1D/16;
-                resultFluidCuboid.max.y = resultFluidCuboid.min.y + fluidLevel;
-                switch(side.getIndex()) {
-                    case 2:
-                    case 3:
-                        resultFluidCuboid.max.x = 15D/16;
-                        resultFluidCuboid.min.x = 1D/16;
-                        break;
-                    case 4:
-                    case 5:
-                        resultFluidCuboid.max.z = 15D/16;
-                        resultFluidCuboid.min.z = 1D/16;
-                        break;
-                }
-            } else {
-                switch(yAxis.getIndex()) {
-                    case 2: //north
-                        resultFluidCuboid.max.z = 15D/16;
-                        resultFluidCuboid.min.z = resultFluidCuboid.max.z - fluidLevel;
-                        resultFluidCuboid.max.x = 15D/16;
-                        resultFluidCuboid.min.x = 1D/16;
-                        break;
-                    case 3: //south
-                        resultFluidCuboid.min.z = 1D/16;
-                        resultFluidCuboid.max.z = resultFluidCuboid.min.x + fluidLevel;
-                        resultFluidCuboid.max.x = 15D/16;
-                        resultFluidCuboid.min.x = 1D/16;
-                        break;
-                    case 4: //west
-                        resultFluidCuboid.max.x = 15D/16;
-                        resultFluidCuboid.min.x = resultFluidCuboid.max.x - fluidLevel;
-                        resultFluidCuboid.max.z = 15D/16;
-                        resultFluidCuboid.min.z = 1D/16;
-                        break;
-                    case 5: //east
-                        resultFluidCuboid.min.x = 1D/16;
-                        resultFluidCuboid.max.x = resultFluidCuboid.min.x + fluidLevel;
-                        resultFluidCuboid.max.z = 15D/16;
-                        resultFluidCuboid.min.z = 1D/16;
-                        break;
-                }
-            }
-            int opacity = 200;
-            int resultFluidColor = GTUtility.convertRGBtoRGBA_CL(fluidStack.getFluid().getColor(fluidStack), opacity);
-            ColourMultiplier multiplier = new ColourMultiplier(resultFluidColor);
-            TextureAtlasSprite fluidSprite = TextureUtils.getTexture(fluidStack.getFluid().getStill(fluidStack));
-            Textures.renderFace(renderState, adjustTrans(translation, side, 2), ArrayUtils.addAll(ops, multiplier), side, resultFluidCuboid, fluidSprite);
+            int color = fluidStack.getFluid().getColor(fluidStack);
+            float r = (color >> 16 & 255) / 255.0f;
+            float g = (color >> 8 & 255) / 255.0f;
+            float b = (color & 255) / 255.0f;
+            TextureAtlasSprite sprite = TextureUtils.getTexture(fluidStack.getFluid().getStill(fluidStack));
+            GlStateManager.enableBlend();
+            GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+            GlStateManager.disableAlpha();
+            //GlStateManager.disableLighting();
+            Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+            Tessellator tess = Tessellator.getInstance();
+            BufferBuilder buf = tess.getBuffer();
+
+            buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
+            double uMin = sprite.getInterpolatedU(16D - width * 16D), uMax = sprite.getInterpolatedU(width * 16D);
+            double vMin = sprite.getMinV(), vMax = sprite.getInterpolatedV(height * 16D);
+            buf.pos(x, y, z).tex(uMin, vMin).color(r, g, b, alpha).endVertex();
+            buf.pos(x, y + height, z).tex(uMin, vMax).color(r, g, b, alpha).endVertex();
+            buf.pos(x + width, y + height, z).tex(uMax, vMax).color(r, g, b, alpha).endVertex();
+            buf.pos(x + width, y, z).tex(uMax, vMin).color(r, g, b, alpha).endVertex();
+            tess.draw();
+
+            //GlStateManager.enableLighting();
+            GlStateManager.enableAlpha();
+            GlStateManager.disableBlend();
+            GlStateManager.color(1F, 1F, 1F, 1F);
         }
     }
 
@@ -149,12 +117,14 @@ public class RenderHelper {
 
     @SideOnly(Side.CLIENT)
     public static void renderItemOverLay(float x, float y, float z, float scale, ItemStack itemStack) {
+        net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 0.0001f);
         GlStateManager.translate(x * 16, y * 16, z * 16);
         RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
         renderItem.renderItemAndEffectIntoGUI(itemStack, 0, 0 );
         GlStateManager.popMatrix();
+        net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
     }
 
     @SideOnly(Side.CLIENT)
@@ -219,22 +189,22 @@ public class RenderHelper {
         Matrix4 trans = translation.copy();
         switch (side){
             case DOWN:
-                trans.translate(0 , -0.0001D * layer,0);
+                trans.translate(0 , -0.001D * layer,0);
                 break;
             case UP:
-                trans.translate(0 , 0.0001D * layer,0);
+                trans.translate(0 , 0.001D * layer,0);
                 break;
             case NORTH:
-                trans.translate(0 , 0,-0.0001D * layer);
+                trans.translate(0 , 0,-0.001D * layer);
                 break;
             case SOUTH:
-                trans.translate(0 , 0,0.0001D * layer);
+                trans.translate(0 , 0,0.001D * layer);
                 break;
             case EAST:
-                trans.translate(0.0001D * layer, 0,0);
+                trans.translate(0.001D * layer, 0,0);
                 break;
             case WEST:
-                trans.translate(-0.0001D * layer, 0,0);
+                trans.translate(-0.001D * layer, 0,0);
                 break;
         }
         return trans;

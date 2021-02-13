@@ -6,6 +6,7 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.input.Key;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.network.KeysPacket;
 import gregicadditions.network.NetworkHandler;
 import gregtech.api.capability.GregtechCapabilities;
@@ -16,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -112,13 +114,19 @@ public class GAEventHandler {
         if (resync) NetworkHandler.INSTANCE.sendToServer(new KeysPacket(Keybinds.REGISTERY));
     }
 
-    static boolean flag = false;
     @SubscribeEvent
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getWorld().getTileEntity(event.getPos()) instanceof MetaTileEntityHolder) {
-            flag = !flag;
-            if (flag) {
-                event.setUseBlock(Event.Result.ALLOW);
+            event.setUseBlock(Event.Result.ALLOW);
+        }
+    }
+
+    @SubscribeEvent
+    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+        if (event.getEntityPlayer().isCreative()) {
+            TileEntity holder = event.getWorld().getTileEntity(event.getPos());
+            if (holder instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) holder).getMetaTileEntity() instanceof MetaTileEntityCentralMonitor) {
+                ((MetaTileEntityCentralMonitor) ((MetaTileEntityHolder) holder).getMetaTileEntity()).invalidateStructure();
             }
         }
     }

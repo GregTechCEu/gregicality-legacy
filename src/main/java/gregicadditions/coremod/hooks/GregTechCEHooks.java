@@ -8,6 +8,7 @@ import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
+import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
@@ -16,6 +17,18 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
 public class GregTechCEHooks {
+
+    //origin: gregtech/api/metatileentity/MetaTileEntityHolder/hasFastRenderer
+    public static boolean hasFastRenderer(MetaTileEntityHolder metaTileEntityHolder) {
+        MetaTileEntity metaTE = metaTileEntityHolder.getMetaTileEntity();
+        for (EnumFacing side: EnumFacing.VALUES){
+            CoverBehavior cover = metaTE.getCoverAtSide(side);
+            if (cover instanceof IFastRenderMetaTileEntity && !(cover instanceof IRenderMetaTileEntity)) {
+                return true;
+            }
+        }
+        return metaTE instanceof IFastRenderMetaTileEntity && !(metaTE instanceof IRenderMetaTileEntity);
+    }
 
     //origin: gregtech/api/metatileentity/MetaTileEntityHolder/shouldCoverRenderPass
     public static boolean shouldCoverRenderPass(MetaTileEntityHolder holder, int pass) {
