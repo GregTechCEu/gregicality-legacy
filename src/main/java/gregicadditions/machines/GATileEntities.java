@@ -19,6 +19,7 @@ import gregicadditions.machines.multi.advance.hyper.HyperReactor;
 import gregicadditions.machines.multi.advance.hyper.HyperReactorUEV;
 import gregicadditions.machines.multi.advance.hyper.HyperReactorUHV;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
+import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
@@ -113,7 +114,8 @@ public class GATileEntities {
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[4];
     public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3];
     //multiblock
-    public static MetaTileEntityCentralMonitor[] CENTRAL_MONITOR = new MetaTileEntityCentralMonitor[3];
+    public static MetaTileEntityMonitorScreen MONITOR_SCREEN;
+    public static MetaTileEntityCentralMonitor CENTRAL_MONITOR;
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
     public static TileEntityProcessingArray PROCESSING_ARRAY;
     public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
@@ -237,6 +239,8 @@ public class GATileEntities {
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
     public static void init() {
+
+        MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(1999, new MetaTileEntityMonitorScreen(location("monitor_screen")));
 
         CIRCUITASSEMBLER[0] = GregTechAPI.registerMetaTileEntity(2000, new SimpleMachineMetaTileEntity(location("circuit_assembler.lv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 1));
         CIRCUITASSEMBLER[1] = GregTechAPI.registerMetaTileEntity(2001, new SimpleMachineMetaTileEntity(location("circuit_assembler.mv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 2));
@@ -796,9 +800,7 @@ public class GATileEntities {
 
         }
 
-        CENTRAL_MONITOR[0] = GregTechAPI.registerMetaTileEntity(2497, new MetaTileEntityCentralMonitor(location("central_monitor"), 3));
-        CENTRAL_MONITOR[1] = GregTechAPI.registerMetaTileEntity(2498, new MetaTileEntityCentralMonitor(location("central_monitor"), 4));
-        CENTRAL_MONITOR[2] = GregTechAPI.registerMetaTileEntity(2499, new MetaTileEntityCentralMonitor(location("central_monitor"), 5));
+        CENTRAL_MONITOR = GregTechAPI.registerMetaTileEntity(2499, new MetaTileEntityCentralMonitor(location("central_monitor")));
 
         ASSEMBLY_LINE = GregTechAPI.registerMetaTileEntity(2502, new TileEntityAssemblyLine(location("assembly_line")));
 

@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
@@ -215,6 +216,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     }
 
     public void setEnergyStored(long energyStored) {
+        GregTechCEHooks.updateCoverDigitalInterface(this, this.energyStored - energyStored);
         this.energyStored = energyStored;
         markDirty();
         if (!getWorld().isRemote) {

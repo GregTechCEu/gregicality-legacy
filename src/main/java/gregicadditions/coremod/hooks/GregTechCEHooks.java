@@ -63,7 +63,7 @@ public class GregTechCEHooks {
         }
     }
 
-    private static void updateCoverDigitalInterface(MetaTileEntity metaTileEntity, long energyAdded) {
+    public static void updateCoverDigitalInterface(MetaTileEntity metaTileEntity, long energyAdded) {
         if (metaTileEntity != null ) {
             for (EnumFacing side : EnumFacing.VALUES) {
                 CoverBehavior cover = metaTileEntity.getCoverAtSide(side);
