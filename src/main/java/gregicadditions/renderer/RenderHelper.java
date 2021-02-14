@@ -141,15 +141,9 @@ public class RenderHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void renderLineChart(List<Long> data, float x, float y, float width, float height, float lineWidth, int color) {
-        if (data.isEmpty()) return;
-        long max = Long.MIN_VALUE;
-        long min = 0;
-        for (long d : data) {
-            max = Math.max(max, d);
-        }
+    public static void renderLineChart(List<Long> data, long max, float x, float y, float width, float height, float lineWidth, int color) {
         float durX = data.size() > 1 ? width / (data.size() - 1) : 0;
-        float hY = max - min > 0 ? height / (max - min) : 0;
+        float hY = max > 0 ? height / max : 0;
 
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
@@ -159,10 +153,10 @@ public class RenderHelper {
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
         float last_x = x + 0 * durX;
-        float last_y = y - (data.get(0) - min) * hY;
+        float last_y = y - data.get(0) * hY;
         for (int i = 0; i < data.size(); i++) {
             float _x = x + i * durX;
-            float _y = y - (data.get(i) - min) * hY;
+            float _y = y - data.get(i) * hY;
             // draw lines
             if (i != 0) {
                 bufferbuilder.pos(last_x, last_y - lineWidth, 0.01D).endVertex();

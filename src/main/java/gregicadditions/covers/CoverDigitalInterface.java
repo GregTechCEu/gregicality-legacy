@@ -872,8 +872,16 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
 
     @SideOnly(Side.CLIENT)
     private void renderEnergyMode() {
-        RenderHelper.renderLineChart(inputEnergyList,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFF03FF00);
-        RenderHelper.renderLineChart(outputEnergyList,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFFFF2F39);
+        if (inputEnergyList.isEmpty()) return;
+        long max = Long.MIN_VALUE;
+        for (long d : inputEnergyList) {
+            max = Math.max(max, d);
+        }
+        for (long d : outputEnergyList) {
+            max = Math.max(max, d);
+        }
+        RenderHelper.renderLineChart(inputEnergyList, max,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFF03FF00);
+        RenderHelper.renderLineChart(outputEnergyList, max,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFFFF2F39);
         RenderHelper.renderText(-5.7f/16, -2.8f/16, 0, 1.0f / 270, 0XFF03FF00, "EU I: " + energyInputPerDur + "EU/s", false);
         RenderHelper.renderText(-5.7f/16, -2.1f/16, 0, 1.0f / 270, 0XFFFF0000, "EU O: " + energyOutputPerDur + "EU/s", false);
         RenderHelper.renderRect(-7f / 16, -7f / 16, energyStored * 14f / (energyCapability * 16), 3f / 16, 0.002f, 0XFFFFD817);
