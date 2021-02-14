@@ -353,7 +353,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         GlStateManager.popMatrix();
         parts.forEach(_part->{
             MetaTileEntity part = _part.getMetaTileEntity();
-            if (part instanceof MetaTileEntityMonitorScreen && ((MetaTileEntityMonitorScreen) part).shouldRender()) {
+            if (part instanceof MetaTileEntityMonitorScreen && ((MetaTileEntityMonitorScreen) part).isActive()) {
                 BlockPos pos = part.getPos();
                 BlockPos pos2 = this.getPos();
                 GlStateManager.pushMatrix();

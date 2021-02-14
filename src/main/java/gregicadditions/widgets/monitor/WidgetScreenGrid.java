@@ -27,7 +27,7 @@ public class WidgetScreenGrid extends Widget {
 
     public void setScreen(MetaTileEntityMonitorScreen monitorScreen) {
         this.monitorScreen = monitorScreen;
-        color = (monitorScreen != null && monitorScreen.shouldRender())? 0XFF4F66FF : 0XFF000000;
+        color = (monitorScreen != null && monitorScreen.isActive())? 0XFF4F66FF : 0XFF000000;
     }
 
     @SideOnly(Side.CLIENT)
@@ -37,7 +37,16 @@ public class WidgetScreenGrid extends Widget {
         int y = this.getPosition().y;
         int width = this.getSize().width;
         int height = this.getSize().height;
-        Gui.drawRect(x + 1, y + 1, x + width - 2, y + height - 2, (monitorScreen != null && monitorScreen.shouldRender())? monitorScreen.frameColor:color);
+        int color = (monitorScreen != null && monitorScreen.isActive())? monitorScreen.frameColor:this.color;
+        Gui.drawRect(x + 1, y + 1, x + width - 2, y + height - 2, color);
+        if (monitorScreen.scale > 1) {
+            width = monitorScreen.scale * width;
+            height = monitorScreen.scale * height;
+            Gui.drawRect(x, y, x + width - 1, y + 1, color);
+            Gui.drawRect(x, y + height - 1, x + width - 1, y + height, color);
+            Gui.drawRect(x, y, x + 1, y + height, color);
+            Gui.drawRect(x + width - 1, y, x + width, y + height, color);
+        }
         if (this.isMouseOverElement(mouseX, mouseY)) {
             Gui.drawRect(x, y, x + width, y + height, 0x4B6C6C6C);
         }

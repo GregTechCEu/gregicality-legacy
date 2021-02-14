@@ -29,6 +29,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -38,15 +39,19 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     // run-time data
     public CoverDigitalInterface coverTMP;
+    private long lastClickTime;
+    private UUID lastClickUUID;
     // persistent data
     public Pair<BlockPos, EnumFacing> coverPos;
     public CoverDigitalInterface.MODE mode = CoverDigitalInterface.MODE.FLUID;
+    public int slot = 0;
     public int scale = 1;
     public int frameColor = 0XFF00FF00;
 
@@ -82,8 +87,9 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.setMode(this.coverPos, mode);
     }
 
-    public void setConfig(int scale, int color) {
-        if ((this.scale == scale || scale <= 0 || scale > 3) && this.frameColor == color) return;
+    public void setConfig(int slot, int scale, int color) {
+        if ((this.scale == scale || scale <= 0 || scale > 3) && (this.slot == slot || slot < 0) && this.frameColor == color) return;
+        this.slot = slot;
         this.scale = scale;
         this.frameColor = color;
         writeCustomData(1, this::writeSync);
@@ -123,6 +129,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             buf.writeByte(coverPos.getValue().getIndex());
         }
         buf.writeByte(this.mode.ordinal());
+        buf.writeInt(this.slot);
         buf.writeInt(this.scale);
         buf.writeInt(this.frameColor);
     }
@@ -141,6 +148,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             this.coverTMP = null;
         }
         this.mode = CoverDigitalInterface.MODE.VALUES[buf.readByte()];
+        this.slot = buf.readInt();
         this.scale = buf.readInt();
         this.frameColor = buf.readInt();
     }
@@ -163,8 +171,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return -1;
     }
 
-    @SideOnly(Side.CLIENT)
-    public boolean shouldRender() {
+    public boolean isActive() {
         if (this.coverPos != null) {
             CoverDigitalInterface cover = coverTMP != null? coverTMP : this.getCoverFromPosSide(this.coverPos);
             if (cover != null) {
@@ -184,8 +191,19 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         GlStateManager.translate((scale - 1) * 0.5, (scale - 1) * 0.5, 0);
         GlStateManager.scale(this.scale,this.scale,this.scale);
 
-        if (!coverTMP.renderSneakingLookAt(this.getPos(), side, partialTicks)) {
-            coverTMP.renderMode(this.mode, partialTicks);
+        boolean flag = true;
+        for (int i = 0; i < scale; i++) {
+            for (int j = 0; j < scale; j++) {
+                if(coverTMP.renderSneakingLookAt(this.getPos().offset(side.rotateY(), -i).offset(EnumFacing.DOWN, j), side, partialTicks)) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+
+        if (flag) {
+            coverTMP.renderMode(this.mode, this.slot, partialTicks);
             // render machine
             RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
 
@@ -234,6 +252,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         data.setByte("mode", (byte) this.mode.ordinal());
         data.setInteger("scale", this.scale);
         data.setInteger("color", this.frameColor);
+        data.setInteger("slot", this.slot);
         return super.writeToNBT(data);
     }
 
@@ -242,6 +261,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         super.readFromNBT(data);
         this.frameColor = data.hasKey("color")? data.getInteger("color") : 0XFF00Ff00;
         this.scale = data.hasKey("scale")? data.getInteger("scale") : 1;
+        this.slot = data.hasKey("slot")? data.getInteger("slot") : 0;
         this.mode = CoverDigitalInterface.MODE.VALUES[data.hasKey("mode")? data.getByte("mode") : 0];
         if (data.hasKey("coverPos") && data.hasKey("coverSide")) {
             BlockPos pos = NBTUtil.getPosFromTag(data.getCompoundTag("coverPos"));
@@ -309,16 +329,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             try { int num = Integer.parseInt(data, 16); if (num > 255 || num < 0) return false; } catch (Exception e) { return false; } return true;
         };
         ARGB[0] = new TextFieldWidget(50, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 24 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 24 | (frameColor & 0X00FFFFFF));
+            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 24 | (frameColor & 0X00FFFFFF));
         }).setValidator(validator);
         ARGB[1] = new TextFieldWidget(75, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 16 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 16 | (frameColor & 0XFF00FFFF));
+            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 16 | (frameColor & 0XFF00FFFF));
         }).setValidator(validator);
         ARGB[2] = new TextFieldWidget(100, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 8 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 8 | (frameColor & 0X00FF00FF));
+            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 8 | (frameColor & 0X00FF00FF));
         }).setValidator(validator);
         ARGB[3] = new TextFieldWidget(125, 80, 25, 20, true, ()->Integer.toHexString(frameColor & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) | (frameColor & 0XFFFFFF00));
+            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) | (frameColor & 0XFFFFFF00));
         }).setValidator(validator);
         if (controller.isStructureFormed() && controller instanceof MetaTileEntityCentralMonitor) {
             List<CoverDigitalInterface> covers = new ArrayList<>();
@@ -345,8 +365,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     }.setControllerBase(this.getController()))
 
                     .widget(new LabelWidget(15, 55, "Scale:", 0xFFFFFFFF))
-                    .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(scale - 1, this.frameColor)))
-                    .widget(new ClickButtonWidget(130, 50, 20, 20, "+1", (data) -> setConfig(scale + 1, this.frameColor)))
+                    .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(this.slot, scale - 1, this.frameColor)))
+                    .widget(new ClickButtonWidget(130, 50, 20, 20, "+1", (data) -> setConfig(this.slot, scale + 1, this.frameColor)))
                     .widget(new ImageWidget(70, 50, 60, 20, GuiTextures.DISPLAY))
                     .widget(new SimpleTextWidget(100, 60, "", 16777215, () -> Integer.toString(scale)))
 
@@ -356,10 +376,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(ARGB[2])
                     .widget(ARGB[3])
 
-                    .widget(new LabelWidget(15,110, "(Scale only modifies images,", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,120, "not supports interact.)", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,150, "(Upcoming features.....", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,160, "User Plug-in)", 0XFFFFFFFF))
+                    .widget(new LabelWidget(15, 110, "Slot:", 0xFFFFFFFF))
+                    .widget(new ClickButtonWidget(50, 105, 20, 20, "-1", (data) -> setConfig(this.slot - 1, this.scale, this.frameColor)))
+                    .widget(new ClickButtonWidget(130, 105, 20, 20, "+1", (data) -> setConfig(this.slot + 1, this.scale, this.frameColor)))
+                    .widget(new ImageWidget(70, 105, 60, 20, GuiTextures.DISPLAY))
+                    .widget(new SimpleTextWidget(100, 115, "", 16777215, () -> Integer.toString(slot)))
+
+                    .widget(new LabelWidget(15,130, "(Scale only modifies images,", 0XFFFFFFFF))
+                    .widget(new LabelWidget(15,140, "not supports interact.)", 0XFFFFFFFF))
+                    .widget(new LabelWidget(15,170, "(Upcoming features.....", 0XFFFFFFFF))
+                    .widget(new LabelWidget(15,180, "User Plug-in)", 0XFFFFFFFF))
                     .widget(new WidgetCoverList(width - 135, 50, 120, 13, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
                         if (coverPos == null) {
                             this.setMode(null, this.mode);
@@ -377,19 +403,77 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return null;
     }
 
+    // adaptive click, supports scaling. x and y is the pos of the origin (scale = 1). this func must be called when screen is active.
+    public void onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
+        CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
+        if (isRight) {
+            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
+                if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
+                    if (1f / 16 < x && x < 4f / 16 && 1f / 16 < y && y < 4f / 16) {
+                        this.setConfig(this.slot - 1, this.scale, this.frameColor);
+                        return ;
+                    } else if (12f / 16 < x && x < 15f / 16 && 1f / 16 < y && y < 4f / 16) {
+                        this.setConfig(this.slot + 1, this.scale, this.frameColor);
+                        return ;
+                    }
+                }
+                if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null)) {
+                    ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null);
+                }
+            }
+        } else {
+            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
+                coverBehavior.modeLeftClick(playerIn, this.mode, this.slot);
+            }
+        }
+    }
+
+    private void handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight) {
+        RayTraceResult rayTraceResult = playerIn.rayTrace(5, 1);
+        if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
+            double x = 0;
+            double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
+            if (rayTraceResult.sideHit == EnumFacing.EAST) {
+                x = 1 - rayTraceResult.hitVec.z + rayTraceResult.getBlockPos().getZ();
+            } else if (rayTraceResult.sideHit == EnumFacing.SOUTH) {
+                x = rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
+            } else if (rayTraceResult.sideHit == EnumFacing.WEST) {
+                x = rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ();
+            } else if (rayTraceResult.sideHit == EnumFacing.NORTH) {
+                x = 1 - rayTraceResult.hitVec.x + rayTraceResult.getBlockPos().getX();
+            }
+            BlockPos pos = this.getPos();
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    TileEntity te = this.getWorld().getTileEntity(pos.offset(facing.rotateY(), i).offset(EnumFacing.UP, j));
+                    if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
+                        MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) te).getMetaTileEntity();
+                        if ((screen.scale > i && screen.scale > j) && screen.isActive()) {
+                            x = (x + i) / screen.scale;
+                            y = (y + j) / screen.scale;
+                            screen.onClickLogic(playerIn, hand, facing, isRight, x, y);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public boolean onRightClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
         if (!this.getWorld().isRemote) {
-            CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
-            MultiblockControllerBase controller = this.getController();
-            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null && controller!= null && controller.isStructureFormed() && controller.getFrontFacing() == facing) {
-                if(coverBehavior.modeRightClick(playerIn, hand, hitResult, this.mode) == EnumActionResult.PASS && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null)) {
-                    ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, hitResult);
-                }
+            if (this.getWorld().getTotalWorldTime() - lastClickTime < 2 && playerIn.getPersistentID().equals(lastClickUUID)) {
                 return true;
             }
+            lastClickTime = this.getWorld().getTotalWorldTime();
+            lastClickUUID = playerIn.getPersistentID();
+
+            MultiblockControllerBase controller = this.getController();
+            if (controller != null && controller.isStructureFormed() && controller.getFrontFacing() == facing) {
+                handleHitResultWithScale(playerIn, hand, facing, true);
+            }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -403,12 +487,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @Override
-    public void onLeftClick(EntityPlayer player, EnumFacing facing, CuboidRayTraceResult hitResult) {
+    public void onLeftClick(EntityPlayer playerIn, EnumFacing facing, CuboidRayTraceResult hitResult) {
         if (!this.getWorld().isRemote) {
-            CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
+            if (this.getWorld().getTotalWorldTime() - lastClickTime < 2 && playerIn.getPersistentID().equals(lastClickUUID)) {
+                return;
+            }
+            lastClickTime = this.getWorld().getTotalWorldTime();
+            lastClickUUID = playerIn.getPersistentID();
             MultiblockControllerBase controller = this.getController();
-            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null && controller!= null && controller.isStructureFormed() && controller.getFrontFacing() == facing) {
-                coverBehavior.modeLeftClick(player, hitResult, this.mode);
+            if (controller != null && controller.getFrontFacing() == facing) {
+                handleHitResultWithScale(playerIn, null, facing, false);
             }
         }
     }

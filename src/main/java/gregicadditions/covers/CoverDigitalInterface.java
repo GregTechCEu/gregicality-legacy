@@ -322,15 +322,6 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
 
     @Override
     public EnumActionResult onRightClick(EntityPlayer playerIn, EnumHand hand, CuboidRayTraceResult hitResult) {
-        return modeRightClick(playerIn, hand, hitResult, this.mode);
-    }
-
-    @Override
-    public boolean onLeftClick(EntityPlayer entityPlayer, CuboidRayTraceResult hitResult) {
-        return modeLeftClick(entityPlayer, hitResult, this.mode);
-    }
-
-    public EnumActionResult modeRightClick(EntityPlayer playerIn, EnumHand hand, CuboidRayTraceResult hitResult, MODE mode) {
         if (!isRemote()) {
             if (this.coverHolder.getWorld().getTotalWorldTime() - lastClickTime < 2 && playerIn.getPersistentID().equals(lastClickUUID)) {
                 return EnumActionResult.SUCCESS;
@@ -338,7 +329,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             lastClickTime = this.coverHolder.getWorld().getTotalWorldTime();
             lastClickUUID = playerIn.getPersistentID();
             if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
-                RayTraceResult rayTraceResult = playerIn.rayTrace(3, 1);
+                RayTraceResult rayTraceResult = playerIn.rayTrace(5, 1);
                 if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
                     double x = 0;
                     double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
@@ -360,88 +351,99 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                     }
                 }
             }
-            IFluidHandler fluidHandler = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
-            if (mode == MODE.FLUID &&  fluidHandler!= null) {
-                if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler) && fluidHandler instanceof FluidHandlerProxy) {
-                    if(!FluidUtil.interactWithFluidHandler(playerIn, hand, ((FluidHandlerProxy) fluidHandler).input)) {
-                        return super.onRightClick(playerIn, hand, hitResult);
-                    }
-                }
-                return EnumActionResult.SUCCESS;
-            }
-            IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
-            if (mode == MODE.ITEM && itemHandler != null) {
-                if (itemHandler.getSlots() > slot && slot >= 0) {
-                    ItemStack hold = playerIn.getHeldItemMainhand();
-                    if (!hold.isEmpty()) {
-                        ItemStack origin = hold.copy();
-                        if (playerIn.isSneaking()) {
-                            playerIn.setHeldItem(EnumHand.MAIN_HAND, itemHandler.insertItem(slot, hold, false));
-                        } else {
-                            ItemStack itemStack = hold.copy();
-                            itemStack.setCount(1);
-                            if (itemHandler.insertItem(slot, itemStack, false).isEmpty()){
-                                hold.setCount(hold.getCount() - 1);
-                            }
-                        }
-                        if (playerIn.getHeldItemMainhand().isEmpty()) {
-                            for (ItemStack itemStack : playerIn.inventory.mainInventory) {
-                                if (origin.isItemEqual(itemStack)) {
-                                    playerIn.setHeldItem(EnumHand.MAIN_HAND, itemStack.copy());
-                                    itemStack.setCount(0);
-                                    break;
-                                }
-                            }
-                        }
-                        return EnumActionResult.SUCCESS;
-                    }
-                }
-            }
-            IWorkable workable = this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
-            if (mode == MODE.MACHINE && workable != null) {
-                if (playerIn.isSneaking()) {
-                    workable.setWorkingEnabled(!isWorkingEnable);
-                    return EnumActionResult.SUCCESS;
-                }
-            }
+            return modeRightClick(playerIn, hand, this.mode, this.slot);
         }
         return EnumActionResult.PASS;
     }
 
-    public boolean modeLeftClick(EntityPlayer entityPlayer, CuboidRayTraceResult hitResult, MODE mode) {
+    @Override
+    public boolean onLeftClick(EntityPlayer entityPlayer, CuboidRayTraceResult hitResult) {
         if (!isRemote()) {
             if (this.coverHolder.getWorld().getTotalWorldTime() - lastClickTime < 2 && entityPlayer.getPersistentID().equals(lastClickUUID)) {
                 return true;
             }
             lastClickTime = this.coverHolder.getWorld().getTotalWorldTime();
             lastClickUUID = entityPlayer.getPersistentID();
-            IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
-            if (mode == MODE.ITEM && itemHandler != null) {
-                if (itemHandler.getSlots() > slot && slot >= 0) {
-                    ItemStack itemStack;
-                    if (entityPlayer.isSneaking()) {
-                        itemStack = itemHandler.extractItem(slot, 64, false);
+            return modeLeftClick(entityPlayer, this.mode, this.slot);
+        }
+        return false;
+    }
+
+    public EnumActionResult modeRightClick(EntityPlayer playerIn, EnumHand hand, MODE mode, int slot) {
+        IFluidHandler fluidHandler = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
+        if (mode == MODE.FLUID &&  fluidHandler!= null) {
+            if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler) && fluidHandler instanceof FluidHandlerProxy) {
+                if(!FluidUtil.interactWithFluidHandler(playerIn, hand, ((FluidHandlerProxy) fluidHandler).input)) {
+                    return EnumActionResult.PASS;
+                }
+            }
+            return EnumActionResult.SUCCESS;
+        }
+        IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+        if (mode == MODE.ITEM && itemHandler != null) {
+            if (itemHandler.getSlots() > slot && slot >= 0) {
+                ItemStack hold = playerIn.getHeldItemMainhand();
+                if (!hold.isEmpty()) {
+                    ItemStack origin = hold.copy();
+                    if (playerIn.isSneaking()) {
+                        playerIn.setHeldItem(EnumHand.MAIN_HAND, itemHandler.insertItem(slot, hold, false));
                     } else {
-                        itemStack = itemHandler.extractItem(slot, 1, false);
+                        ItemStack itemStack = hold.copy();
+                        itemStack.setCount(1);
+                        if (itemHandler.insertItem(slot, itemStack, false).isEmpty()){
+                            hold.setCount(hold.getCount() - 1);
+                        }
                     }
-                    if (itemStack.isEmpty() && itemHandler instanceof ItemHandlerProxy) {
-                        IItemHandler insertHandler = ObfuscationReflectionHelper.getPrivateValue(ItemHandlerProxy.class, (ItemHandlerProxy)itemHandler, "insertHandler");
-                        if (slot < insertHandler.getSlots()) {
-                            if (entityPlayer.isSneaking()) {
-                                itemStack = insertHandler.extractItem(slot, 64, false);
-                            } else {
-                                itemStack = insertHandler.extractItem(slot, 1, false);
+                    if (playerIn.getHeldItemMainhand().isEmpty()) {
+                        for (ItemStack itemStack : playerIn.inventory.mainInventory) {
+                            if (origin.isItemEqual(itemStack)) {
+                                playerIn.setHeldItem(EnumHand.MAIN_HAND, itemStack.copy());
+                                itemStack.setCount(0);
+                                break;
                             }
                         }
                     }
-                    if (!itemStack.isEmpty()) {
-                        EntityItem entity = new EntityItem(entityPlayer.world, entityPlayer.posX + .5f, entityPlayer.posY + .3f, entityPlayer.posZ + .5f, itemStack);
-                        entity.addVelocity(-entity.motionX, -entity.motionY, -entity.motionZ);
-                        entityPlayer.world.spawnEntity(entity);
+                    return EnumActionResult.SUCCESS;
+                }
+            }
+        }
+        IWorkable workable = this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
+        if (mode == MODE.MACHINE && workable != null) {
+            if (playerIn.isSneaking()) {
+                workable.setWorkingEnabled(!isWorkingEnable);
+                return EnumActionResult.SUCCESS;
+            }
+        }
+        return EnumActionResult.PASS;
+    }
+
+    public boolean modeLeftClick(EntityPlayer entityPlayer, MODE mode, int slot) {
+        IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+        if (mode == MODE.ITEM && itemHandler != null) {
+            if (itemHandler.getSlots() > slot && slot >= 0) {
+                ItemStack itemStack;
+                if (entityPlayer.isSneaking()) {
+                    itemStack = itemHandler.extractItem(slot, 64, false);
+                } else {
+                    itemStack = itemHandler.extractItem(slot, 1, false);
+                }
+                if (itemStack.isEmpty() && itemHandler instanceof ItemHandlerProxy) {
+                    IItemHandler insertHandler = ObfuscationReflectionHelper.getPrivateValue(ItemHandlerProxy.class, (ItemHandlerProxy)itemHandler, "insertHandler");
+                    if (slot < insertHandler.getSlots()) {
+                        if (entityPlayer.isSneaking()) {
+                            itemStack = insertHandler.extractItem(slot, 64, false);
+                        } else {
+                            itemStack = insertHandler.extractItem(slot, 1, false);
+                        }
                     }
                 }
-                return true;
+                if (!itemStack.isEmpty()) {
+                    EntityItem entity = new EntityItem(entityPlayer.world, entityPlayer.posX + .5f, entityPlayer.posY + .3f, entityPlayer.posZ + .5f, itemStack);
+                    entity.addVelocity(-entity.motionX, -entity.motionY, -entity.motionZ);
+                    entityPlayer.world.spawnEntity(entity);
+                }
             }
+            return true;
         }
         return false;
     }
@@ -787,7 +789,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         RenderHelper.rotateToFace(this.attachedSide, this.spin);
 
         if (!renderSneakingLookAt(this.coverHolder.getPos(), this.attachedSide, partialTicks)) {
-            renderMode(this.mode, partialTicks);
+            renderMode(this.mode, this.slot, partialTicks);
         }
 
         /* restore the lightmap  */
@@ -806,7 +808,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     public boolean renderSneakingLookAt(BlockPos blockPos, EnumFacing side, float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player != null && player.isSneaking() && player.getHeldItemMainhand().isEmpty()) {
-            RayTraceResult rayTraceResult = player.rayTrace(3, partialTicks);
+            RayTraceResult rayTraceResult = player.rayTrace(5, partialTicks);
             if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && rayTraceResult.sideHit == side && rayTraceResult.getBlockPos().equals(blockPos)) {
                 if ((this.mode != MODE.ITEM && this.mode != MODE.FLUID) || player.getHeldItemMainhand().isEmpty()) {
                     RenderHelper.renderRect(-7f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
@@ -821,18 +823,17 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                     RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0.002f, 1f/32, this.coverHolder.getStackForm());
                     return true;
                 }
-                return false;
             }
         }
         return false;
     }
 
     @SideOnly(Side.CLIENT)
-    public void renderMode(MODE mode, float partialTicks) {
+    public void renderMode(MODE mode, int slot, float partialTicks) {
         if (mode == MODE.FLUID && fluids.length > slot && slot >= 0 && fluids[slot].getContents() != null) {
-            renderFluidMode();
+            renderFluidMode(slot);
         } else if (mode == MODE.ITEM && items.length > slot && slot >= 0) {
-            renderItemMode();
+            renderItemMode(slot);
         } else if (mode == MODE.ENERGY) {
             renderEnergyMode();
         } else if (mode == MODE.MACHINE) {
@@ -880,7 +881,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @SideOnly(Side.CLIENT)
-    private void renderItemMode() {
+    private void renderItemMode(int slot) {
         ItemStack itemStack = items[slot];
         if (!itemStack.isEmpty()) {
            RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0, 1f/32, itemStack);
@@ -895,7 +896,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @SideOnly(Side.CLIENT)
-    private void renderFluidMode() {
+    private void renderFluidMode(int slot) {
         FluidStack fluidStack = fluids[slot].getContents();
         assert fluidStack != null;
         float height =  10f / 16 * Math.max(fluidStack.amount * 1.0f / fluids[slot].getCapacity(), 0.001f);
