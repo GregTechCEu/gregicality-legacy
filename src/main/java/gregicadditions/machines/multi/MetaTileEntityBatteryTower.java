@@ -11,6 +11,7 @@ import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerList;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -189,6 +190,8 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     public <T> T getCapability(Capability<T> capability, EnumFacing side) {
         if (capability == GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER) {
             return (T) this;
+        } else if (capability == GregtechTileCapabilities.CAPABILITY_COVERABLE) {
+            return GregtechTileCapabilities.CAPABILITY_COVERABLE.cast(this);
         }
         return null;
     }
@@ -216,7 +219,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     }
 
     public void setEnergyStored(long energyStored) {
-        GregTechCEHooks.updateCoverDigitalInterface(this, this.energyStored - energyStored);
+        GregTechCEHooks.updateCoverDigitalInterface(this, energyStored - this.energyStored);
         this.energyStored = energyStored;
         markDirty();
         if (!getWorld().isRemote) {
