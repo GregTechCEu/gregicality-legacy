@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.centralmonitor;
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.covers.CoverDigitalInterface;
+import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
 import gregicadditions.renderer.RenderHelper;
 import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregtech.api.capability.GregtechCapabilities;
@@ -20,6 +21,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.PacketBuffer;
@@ -36,7 +38,9 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -48,12 +52,14 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     public CoverDigitalInterface coverTMP;
     private long lastClickTime;
     private UUID lastClickUUID;
+    public MonitorPluginBaseBehavior plugin;
     // persistent data
     public Pair<BlockPos, EnumFacing> coverPos;
     public CoverDigitalInterface.MODE mode = CoverDigitalInterface.MODE.FLUID;
     public int slot = 0;
     public int scale = 1;
     public int frameColor = 0XFF00FF00;
+    private ItemStackHandler inventory;
 
     public MetaTileEntityMonitorScreen(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, 1);
@@ -172,6 +178,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     public boolean isActive() {
+        if(plugin != null) return true;
         if (this.coverPos != null) {
             CoverDigitalInterface cover = coverTMP != null? coverTMP : this.getCoverFromPosSide(this.coverPos);
             if (cover != null) {
@@ -185,42 +192,71 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return false;
     }
 
+    public void pluginDirty() {
+        plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+    }
+
+    private void loadPlugin(MonitorPluginBaseBehavior plugin) {
+//        if (!this.getWorld().isRemote) {
+//            this.plugin = plugin.createPlugin();
+//            plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+//        }
+    }
+
+    private void unloadPlugin() {
+//        if (!this.getWorld().isRemote) {
+//            plugin.writeToNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+//        }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if(plugin != null && plugin.shouldUpdate()) {
+            plugin.update();
+        }
+    }
+
     @SideOnly(Side.CLIENT)
     public void renderScreen(float partialTicks) {
         EnumFacing side = getController().getFrontFacing();
         GlStateManager.translate((scale - 1) * 0.5, (scale - 1) * 0.5, 0);
         GlStateManager.scale(this.scale,this.scale,this.scale);
 
-        boolean flag = true;
-        for (int i = 0; i < scale; i++) {
-            for (int j = 0; j < scale; j++) {
-                if(coverTMP.renderSneakingLookAt(this.getPos().offset(side.rotateY(), -i).offset(EnumFacing.DOWN, j), side, partialTicks)) {
-                    flag = false;
-                    break;
+        if (plugin != null) {
+            plugin.renderPlugin(partialTicks);
+        }
+
+        if (coverTMP != null) {
+            boolean flag = true;
+            for (int i = 0; i < scale; i++) {
+                for (int j = 0; j < scale; j++) {
+                    if(coverTMP.renderSneakingLookAt(this.getPos().offset(side.rotateY(), -i).offset(EnumFacing.DOWN, j), side, slot, partialTicks)) {
+                        flag = false;
+                        break;
+                    }
                 }
             }
+
+            if (flag) {
+                coverTMP.renderMode(this.mode, this.slot, partialTicks);
+                // render machine
+                RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
+
+                // render name
+                RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
+            }
+            // render frame
+            RenderHelper.renderRect(-7f/16, -7f/16, 14f/16, 0.01f,0.003f, frameColor);
+            RenderHelper.renderRect(-7f/16, -4f/16 - 0.01f, 14f/16, 0.01f,0.003f, frameColor);
+            RenderHelper.renderRect(-7f/16, -7f/16 + 0.01f, 0.01f, 3f/16 - 0.02f,0.003f, frameColor);
+            RenderHelper.renderRect(7f/16 - 0.01f, -7f/16 + 0.01f, 0.01f, 3f/16 - 0.02f,0.003f, frameColor);
+
+            RenderHelper.renderRect(-7f/16, -3f/16, 14f/16, 0.01f,0.003f, frameColor);
+            RenderHelper.renderRect(-7f/16, 7f/16 - 0.01f, 14f/16, 0.01f,0.003f, frameColor);
+            RenderHelper.renderRect(-7f/16, -3f/16 + 0.01f, 0.01f, 10f/16 - 0.02f,0.003f, frameColor);
+            RenderHelper.renderRect(7f/16 - 0.01f, -3f/16 + 0.01f, 0.01f, 10f/16 - 0.02f,0.003f, frameColor);
         }
-
-
-        if (flag) {
-            coverTMP.renderMode(this.mode, this.slot, partialTicks);
-            // render machine
-            RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
-
-            // render name
-            RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
-        }
-        // render frame
-        RenderHelper.renderRect(-7f/16, -7f/16, 14f/16, 0.01f,0.003f, frameColor);
-        RenderHelper.renderRect(-7f/16, -4f/16 - 0.01f, 14f/16, 0.01f,0.003f, frameColor);
-        RenderHelper.renderRect(-7f/16, -7f/16 + 0.01f, 0.01f, 3f/16 - 0.02f,0.003f, frameColor);
-        RenderHelper.renderRect(7f/16 - 0.01f, -7f/16 + 0.01f, 0.01f, 3f/16 - 0.02f,0.003f, frameColor);
-
-        RenderHelper.renderRect(-7f/16, -3f/16, 14f/16, 0.01f,0.003f, frameColor);
-        RenderHelper.renderRect(-7f/16, 7f/16 - 0.01f, 14f/16, 0.01f,0.003f, frameColor);
-        RenderHelper.renderRect(-7f/16, -3f/16 + 0.01f, 0.01f, 10f/16 - 0.02f,0.003f, frameColor);
-        RenderHelper.renderRect(7f/16 - 0.01f, -3f/16 + 0.01f, 0.01f, 10f/16 - 0.02f,0.003f, frameColor);
-
     }
 
     @Override
@@ -253,6 +289,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         data.setInteger("scale", this.scale);
         data.setInteger("color", this.frameColor);
         data.setInteger("slot", this.slot);
+        data.setTag("Inventory", this.inventory.serializeNBT());
         return super.writeToNBT(data);
     }
 
@@ -263,6 +300,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.scale = data.hasKey("scale")? data.getInteger("scale") : 1;
         this.slot = data.hasKey("slot")? data.getInteger("slot") : 0;
         this.mode = CoverDigitalInterface.MODE.VALUES[data.hasKey("mode")? data.getByte("mode") : 0];
+        this.inventory.deserializeNBT(data.getCompoundTag("Inventory"));
         if (data.hasKey("coverPos") && data.hasKey("coverSide")) {
             BlockPos pos = NBTUtil.getPosFromTag(data.getCompoundTag("coverPos"));
             EnumFacing side = EnumFacing.byIndex(data.getByte("coverSide"));
@@ -270,6 +308,13 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         } else {
             this.coverPos = null;
         }
+    }
+
+    @Override
+    protected void initializeInventory() {
+        super.initializeInventory();
+        this.inventory = new pluginItemHandler();
+        this.itemInventory = this.inventory;
     }
 
     @Override
@@ -382,10 +427,11 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(new ImageWidget(70, 105, 60, 20, GuiTextures.DISPLAY))
                     .widget(new SimpleTextWidget(100, 115, "", 16777215, () -> Integer.toString(slot)))
 
-                    .widget(new LabelWidget(15,130, "(Scale only modifies images,", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,140, "not supports interact.)", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,170, "(Upcoming features.....", 0XFFFFFFFF))
-                    .widget(new LabelWidget(15,180, "User Plug-in)", 0XFFFFFFFF))
+                    .widget(new SlotWidget(inventory, 0, 15, 130, true, true).setBackgroundTexture(GuiTextures.SLOT))
+                    .widget(new ClickButtonWidget(15, 160, 20, 20, "T", (data)-> {
+
+                    }))
+
                     .widget(new WidgetCoverList(width - 135, 50, 120, 13, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
                         if (coverPos == null) {
                             this.setMode(null, this.mode);
@@ -403,32 +449,35 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return null;
     }
 
-    // adaptive click, supports scaling. x and y is the pos of the origin (scale = 1). this func must be called when screen is active.
-    public void onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
+    // adaptive click, supports scaling. x and y is the pos of the origin screen (scale = 1). this func must be called when screen is active.
+    public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
         CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
         if (isRight) {
             if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
                 if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
                     if (1f / 16 < x && x < 4f / 16 && 1f / 16 < y && y < 4f / 16) {
                         this.setConfig(this.slot - 1, this.scale, this.frameColor);
-                        return ;
+                        return true;
                     } else if (12f / 16 < x && x < 15f / 16 && 1f / 16 < y && y < 4f / 16) {
                         this.setConfig(this.slot + 1, this.scale, this.frameColor);
-                        return ;
+                        return true;
                     }
                 }
                 if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null)) {
-                    ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null);
+                    return ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null);
                 }
+                return true;
             }
         } else {
             if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
-                coverBehavior.modeLeftClick(playerIn, this.mode, this.slot);
+                return coverBehavior.modeLeftClick(playerIn, this.mode, this.slot);
             }
         }
+        return false;
     }
 
-    private void handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight) {
+    private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight) {
+        boolean flag = false;
         RayTraceResult rayTraceResult = playerIn.rayTrace(5, 1);
         if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
             double x = 0;
@@ -451,12 +500,15 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                         if ((screen.scale > i && screen.scale > j) && screen.isActive()) {
                             x = (x + i) / screen.scale;
                             y = (y + j) / screen.scale;
-                            screen.onClickLogic(playerIn, hand, facing, isRight, x, y);
+                            if (screen.onClickLogic(playerIn, hand, facing, isRight, x, y)) {
+                                flag = true;
+                            }
                         }
                     }
                 }
             }
         }
+        return flag;
     }
 
     @Override
@@ -470,10 +522,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
             MultiblockControllerBase controller = this.getController();
             if (controller != null && controller.isStructureFormed() && controller.getFrontFacing() == facing) {
-                handleHitResultWithScale(playerIn, hand, facing, true);
+                return handleHitResultWithScale(playerIn, hand, facing, true);
             }
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -501,4 +553,37 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         }
     }
 
+    private class pluginItemHandler extends ItemStackHandler {
+        public pluginItemHandler(){
+            super(1);
+        }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            return 1;
+        }
+
+        @Nonnull
+        @Override
+        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+            MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(stack);
+            if (behavior != null) {
+                ItemStack itemStack =  super.insertItem(slot, stack, simulate);
+                if (itemStack.getCount() != stack.getCount() && !simulate) {
+                    loadPlugin(behavior);
+                }
+                return itemStack;
+            }
+            return super.insertItem(slot, stack, simulate);
+        }
+
+        @Nonnull
+        @Override
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            if (!simulate && !getStackInSlot(slot).isEmpty() && amount > 0) {
+                unloadPlugin();
+            }
+            return super.extractItem(slot, amount, simulate);
+        }
+    }
 }

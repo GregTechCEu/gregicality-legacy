@@ -3,6 +3,7 @@ package gregicadditions.item;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.item.behaviors.*;
+import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.FluidStats;
@@ -69,6 +70,7 @@ public class GAMetaItem extends MaterialMetaItem {
             MetaItems.ZPM2.setInvisible();
         }
 
+        PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
         COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
         SCHEMATIC = addItem(131, "schematic").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));

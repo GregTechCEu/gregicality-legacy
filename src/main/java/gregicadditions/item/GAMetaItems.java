@@ -464,8 +464,9 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
     public static MetaItem<?>.MetaValueItem COSMIC_MESH;
 
-
+    // monitor
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
+    public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
 
     
     public static void init() {

@@ -788,7 +788,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         RenderHelper.moveToFace(translation.m03, translation.m13, translation.m23, this.attachedSide);
         RenderHelper.rotateToFace(this.attachedSide, this.spin);
 
-        if (!renderSneakingLookAt(this.coverHolder.getPos(), this.attachedSide, partialTicks)) {
+        if (!renderSneakingLookAt(this.coverHolder.getPos(), this.attachedSide, this.slot, partialTicks)) {
             renderMode(this.mode, this.slot, partialTicks);
         }
 
@@ -805,24 +805,22 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @SideOnly(Side.CLIENT)
-    public boolean renderSneakingLookAt(BlockPos blockPos, EnumFacing side, float partialTicks) {
+    public boolean renderSneakingLookAt(BlockPos blockPos, EnumFacing side, int slot, float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player != null && player.isSneaking() && player.getHeldItemMainhand().isEmpty()) {
             RayTraceResult rayTraceResult = player.rayTrace(5, partialTicks);
             if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && rayTraceResult.sideHit == side && rayTraceResult.getBlockPos().equals(blockPos)) {
-                if ((this.mode != MODE.ITEM && this.mode != MODE.FLUID) || player.getHeldItemMainhand().isEmpty()) {
-                    RenderHelper.renderRect(-7f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
-                    RenderHelper.renderRect(4f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
-                    RenderHelper.renderText(-5.5f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
-                    RenderHelper.renderText(5.7f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
-                    RenderHelper.renderText(0, -0.37f, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
-                    if (this.coverHolder instanceof MetaTileEntity){
-                        RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
-                        RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
-                    }
-                    RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0.002f, 1f/32, this.coverHolder.getStackForm());
-                    return true;
+                RenderHelper.renderRect(-7f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
+                RenderHelper.renderRect(4f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
+                RenderHelper.renderText(-5.5f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
+                RenderHelper.renderText(5.7f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
+                RenderHelper.renderText(0, -0.37f, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
+                if (this.coverHolder instanceof MetaTileEntity){
+                    RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
+                    RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
                 }
+                RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0.002f, 1f/32, this.coverHolder.getStackForm());
+                return true;
             }
         }
         return false;
