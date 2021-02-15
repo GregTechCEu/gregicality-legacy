@@ -3583,7 +3583,6 @@ fluid.sodium_carbonate_solution=Sodium Carbonate Solution
 fluid.sodium_sulfate_solution=Sodium Sulfate Solution
 fluid.sodium_chromate_solution=Sodium Chromate Solution
 fluid.sodium_dichromate_solution=Sodium Dichromate Solution
-fluid.poor_nitrogen_mix=Poor Nitrogen Mixture
 fluid.rich_nitrogen_mix=Rich Nitrogen Mixture
 fluid.oxidised_nitrogen_mix=Oxidised Rich Nitrogen Mixture
 fluid.purified_nitrogen_mix=Purified Rich Nitrogen Mixture

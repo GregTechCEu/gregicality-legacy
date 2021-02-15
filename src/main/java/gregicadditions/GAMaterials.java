@@ -669,7 +669,6 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleDustMaterial NiAlOCatalyst = new SimpleDustMaterial("nialo_catalyst", 0x0af0af, (short) 108, MaterialIconSet.DULL);
     public static final SimpleDustMaterial FeCrOCatalyst = new SimpleDustMaterial("fecro_catalyst", 0x8C4517, (short) 109, MaterialIconSet.DULL);
-    public static final SimpleFluidMaterial PoorNitrogenMix = new SimpleFluidMaterial("poor_nitrogen_mix", 0xa0c3de);
     public static final SimpleFluidMaterial RichNitrogenMix = new SimpleFluidMaterial("rich_nitrogen_mix", 0x6891d8);
     public static final SimpleFluidMaterial OxidisedNitrogenMix = new SimpleFluidMaterial("oxidised_nitrogen_mix", 0x708ACD);
     public static final SimpleFluidMaterial PurifiedNitrogenMix = new SimpleFluidMaterial("purified_nitrogen_mix", 0x6891d8);

@@ -13,26 +13,29 @@ public class AmmoniaChain {
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Garnierite)
                 .inputs(Alumina.getItemStack())
-                .outputs(NiAlOCatalyst.getItemStack())
+                .outputs(NiAlOCatalyst.getItemStack(2))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust, BandedIron)
+                .input(dust, Iron)
                 .inputs(ChromiumOxide.getItemStack())
-                .outputs(FeCrOCatalyst.getItemStack())
+                .outputs(FeCrOCatalyst.getItemStack(2))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(60).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .notConsumable(NiAlOCatalyst.getItemStack())
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(Steam.getFluid(1000))
-                .fluidOutputs(PoorNitrogenMix.getFluid(2000))
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .fluidInputs(PoorNitrogenMix.getFluid(2000))
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(RichNitrogenMix.getFluid(3000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
+                .notConsumable(NiAlOCatalyst.getItemStack())
+                .fluidInputs(Methane.getFluid(1000))
+                .fluidInputs(Steam.getFluid(1000))
+                .fluidInputs(Nitrogen.getFluid(1000))
+                .fluidOutputs(RichNitrogenMix.getFluid(5000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(120)
