@@ -4,6 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -19,30 +20,30 @@ public class ChromiumChain {
 
         BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(500)
                 .input(dust, Calcite)
-                .input(dust, Salt)
-                .fluidInputs(Ammonia.getFluid(5))
+                .input(dust, Salt, 2)
                 .outputs(OreDictUnifier.get(dust, SodaAsh))
                 .outputs(OreDictUnifier.get(dust, CalciumChloride))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(125)
-                .input(dust, Chromite)
-                .fluidInputs(SodiumCarbonateSolution.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(1000))
+                .input(dust, Chromite, 2)
+                .fluidInputs(SodiumCarbonateSolution.getFluid(4000))
+                .fluidInputs(Oxygen.getFluid(7000))
                 .outputs(OreDictUnifier.get(dust, BandedIron))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .fluidOutputs(SodiumChromateSolution.getFluid(1000))
+                .fluidOutputs(CarbonDioxide.getFluid(4000))
+                .fluidOutputs(SodiumChromateSolution.getFluid(4000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(125)
-                .fluidInputs(SodiumChromateSolution.getFluid(1000))
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(125)
+                .fluidInputs(SodiumChromateSolution.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(SodiumDichromateSolution.getFluid(1000))
                 .fluidOutputs(SodiumSulfateSolution.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
-                .input(dust, Carbon)
+                .input(dust, Carbon, 2)
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodaAsh))
@@ -51,8 +52,8 @@ public class ChromiumChain {
 
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
                 .inputs(ChromiumOxide.getItemStack())
-                .input(dust, Aluminium)
-                .outputs(OreDictUnifier.get(dust, Chrome))
+                .input(dust, Aluminium, 2)
+                .outputs(OreDictUnifier.get(dust, Chrome, 2))
                 .outputs(Alumina.getItemStack())
                 .buildAndRegister();
 
