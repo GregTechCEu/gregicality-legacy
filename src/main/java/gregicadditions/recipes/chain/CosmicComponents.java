@@ -137,18 +137,17 @@ public class CosmicComponents {
                 .fluidOutputs(Succinaldehyde.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Lithium, 4))
                 .fluidOutputs(Water.getFluid(2000))
-                .outputs(AluminiumHydride.getItemStack(4))
+                .outputs(OreDictUnifier.get(dust, Aluminium, 4))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(840000)
-                .input(dust, PotassiumFluoride, 4)
-                .fluidInputs(Hydrogen.getFluid(6000))
-                .fluidInputs(NitrationMixture.getFluid(1000))
+                .input(dust, PotassiumFluoride, 2)
+                .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Dichlorobenzene.getFluid(1000))
+                .fluidInputs(Nitrogen.getFluid(1000))
                 .notConsumable(AluminiumChloride.getItemStack())
-                .outputs(OreDictUnifier.get(dust, RockSalt, 4))
+                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
                 .fluidOutputs(Difluoroaniline.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1500))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(780000)
@@ -156,6 +155,7 @@ public class CosmicComponents {
                 .fluidInputs(Succinaldehyde.getFluid(1000))
                 .notConsumable(dust, PhosphorousPentoxide)
                 .fluidOutputs(NDifluorophenylpyrrole.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(3400000)
@@ -172,11 +172,11 @@ public class CosmicComponents {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(8750).blastFurnaceTemp(3200)
-                .inputs(SilverFluoride.getItemStack())
+                .inputs(SilverFluoride.getItemStack(2))
                 .input(dust, SodiumHydroxide, 2)
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 2))
                 .outputs(OreDictUnifier.get(dust, SilverOxide))
-                .fluidOutputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(695000)
@@ -216,17 +216,19 @@ public class CosmicComponents {
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(9750).blastFurnaceTemp(2500)
                 .inputs(GermaniumSulfide.getItemStack())
-                .fluidInputs(Oxygen.getFluid(4000))
+                .fluidInputs(Oxygen.getFluid(6000))
                 .outputs(GermaniumOxide.getItemStack())
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(380).EUt(500000)
                 .fluidInputs(BismuthNitrateSoluton.getFluid(4000))
-                .inputs(GermaniumOxide.getItemStack(3))
+                .inputs(GermaniumOxide.getItemStack(3   ))
                 .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
-                .outputs(BismuthGermanate.getItemStack(3))
-                .fluidOutputs(NitrogenDioxide.getFluid(4000))
+                .outputs(BismuthGermanate.getItemStack(1))
+                .outputs(OreDictUnifier.get(dust, Potash, 18))
+                .fluidOutputs(NitrogenDioxide.getFluid(12000))
+                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(8192)
@@ -256,7 +258,7 @@ public class CosmicComponents {
                 .outputs(CesiumIodide.getItemStack())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(260).EUt(845000)
+        BLAST_RECIPES.recipeBuilder().duration(260).EUt(845000).blastFurnaceTemp(2853)
                 .inputs(CesiumIodide.getItemStack(5))
                 .input(dustSmall, Thulium, 2)
                 .input(dustSmall, Thallium, 2)

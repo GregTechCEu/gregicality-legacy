@@ -93,11 +93,12 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(3200)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(3200)
                 .input(dust, Bismuth)
                 .fluidInputs(NitricAcid.getFluid(6000))
                 .fluidOutputs(BismuthNitrateSoluton.getFluid(1000))
                 .fluidOutputs(NitrogenDioxide.getFluid(3000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1500).blastFurnaceTemp(1250)
