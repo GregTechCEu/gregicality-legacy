@@ -1055,7 +1055,7 @@ public class GARecipeAddition {
                 .fluidInputs(SodiumFormate.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(FormicAcid.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 1))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();

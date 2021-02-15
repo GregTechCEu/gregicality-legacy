@@ -775,7 +775,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PrecipitatedAmmoniumSulfate = new SimpleDustMaterial("solid_ammonium_sulfate", 0x6464f5, (short) 154, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Fructose = new SimpleDustMaterial("fructose", 0xfcfcfa, (short) 165, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Glucose = new SimpleDustMaterial("glucose", 0xfcfcfa, (short) 166, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial MagnesiumHydroxide = new SimpleDustMaterial("magnesium_hydroxide", 0xcacac8, (short) 167, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial MagnesiumOxide = new SimpleDustMaterial("magnesium_oxide", 0xcacac8, (short) 167, MaterialIconSet.DULL);
     public static final SimpleDustMaterial StrontiumSulfate = new SimpleDustMaterial("strontium_sulfate", 0xcacac8, (short) 168, MaterialIconSet.DULL);
     public static final SimpleDustMaterial StrontiumOxide = new SimpleDustMaterial("strontium_oxide", 0xcacac8, (short) 169, MaterialIconSet.DULL);
 
@@ -788,7 +788,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Formamide = new SimpleFluidMaterial("formamide", 0x33CCFF);
     public static final SimpleFluidMaterial HydroxilamineDisulfate = new SimpleFluidMaterial("hydroxilamine_disulfate", 0x99add6);
     public static final SimpleFluidMaterial Hydroxilamine = new SimpleFluidMaterial("hydroxilamine", 0x99cc99);
-    public static final SimpleFluidMaterial DilutedAmmonia = new SimpleFluidMaterial("diluted_ammonia", 0x1c38d1);
     public static final SimpleFluidMaterial Amidoxime = new SimpleFluidMaterial("amidoxime", 0x66ff33);
     public static final SimpleFluidMaterial PureUranylNitrateSolution = new SimpleFluidMaterial("pure_uranyl_nitrate", 0x33bd45);
     public static final SimpleFluidMaterial AcetateSolution = new SimpleFluidMaterial("acetate_solution", 0xffc78f);
