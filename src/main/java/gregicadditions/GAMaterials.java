@@ -476,7 +476,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", 0x1c3b15, (short) 41, MaterialIconSet.DULL);
     public static final SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", 0x2d4228, (short) 42, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", 0x377528, (short) 43, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 6)));
+    public static final SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3)));
     public static final SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.DULL);
     public static final SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZirconiumTetrachloride = new SimpleDustMaterial("zirconium_tetrachloride", 0xF0F0F0, (short) 54, MaterialIconSet.SHINY, of(new MaterialStack(Zirconium, 1), new MaterialStack(Chlorine, 4)));
