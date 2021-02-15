@@ -13,8 +13,7 @@ import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IWorkable;
-import gregtech.api.capability.impl.FluidHandlerProxy;
-import gregtech.api.capability.impl.ItemHandlerProxy;
+import gregtech.api.capability.impl.*;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.cover.CoverWithUI;
 import gregtech.api.cover.ICoverable;
@@ -23,6 +22,8 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.storage.MetaTileEntityQuantumChest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -41,6 +42,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -50,12 +52,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -217,6 +221,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         return false;
     }
 
+
+
     @Override
     public void writeToNBT(NBTTagCompound tagCompound) {
         super.writeToNBT(tagCompound);
@@ -245,15 +251,15 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     @Override
     public void onAttached(ItemStack itemStack) { // called when cover placed.
         super.onAttached(itemStack);
-        if (this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide) != null) {
-            fluids = new FluidTankProperties[this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide).getTankProperties().length];
+        if (getFluidCapability() != null) {
+            fluids = new FluidTankProperties[getFluidCapability().getTankProperties().length];
             this.mode = MODE.FLUID;
-        } else if (this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide) != null) {
-            items = new ItemStack[this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide).getSlots()];
+        } else if (getItemCapability() != null) {
+            items = new ItemStack[getItemCapability().getSlots()];
             this.mode = MODE.ITEM;
-        } else if (this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide) != null) {
+        } else if (getEnergyCapability() != null) {
             this.mode = MODE.ENERGY;
-        } else if (this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide) != null) {
+        } else if (getMachineCapability() != null) {
             this.mode = MODE.MACHINE;
         }
     }
@@ -370,7 +376,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     public EnumActionResult modeRightClick(EntityPlayer playerIn, EnumHand hand, MODE mode, int slot) {
-        IFluidHandler fluidHandler = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
+        IFluidHandler fluidHandler = this.getFluidCapability();
         if (mode == MODE.FLUID &&  fluidHandler!= null) {
             if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler) && fluidHandler instanceof FluidHandlerProxy) {
                 if(!FluidUtil.interactWithFluidHandler(playerIn, hand, ((FluidHandlerProxy) fluidHandler).input)) {
@@ -379,7 +385,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             }
             return EnumActionResult.SUCCESS;
         }
-        IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+        IItemHandler itemHandler = this.getItemCapability();
         if (mode == MODE.ITEM && itemHandler != null) {
             if (itemHandler.getSlots() > slot && slot >= 0) {
                 ItemStack hold = playerIn.getHeldItemMainhand();
@@ -407,7 +413,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                 }
             }
         }
-        IWorkable workable = this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
+        IWorkable workable = this.getMachineCapability();
         if (mode == MODE.MACHINE && workable != null) {
             if (playerIn.isSneaking()) {
                 workable.setWorkingEnabled(!isWorkingEnable);
@@ -418,7 +424,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     public boolean modeLeftClick(EntityPlayer entityPlayer, MODE mode, int slot) {
-        IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+        IItemHandler itemHandler = this.getItemCapability();
         if (mode == MODE.ITEM && itemHandler != null) {
             if (itemHandler.getSlots() > slot && slot >= 0) {
                 ItemStack itemStack;
@@ -502,7 +508,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     private void syncAllInfo() {
         if (mode == MODE.FLUID || (mode == MODE.PROXY && proxyMode[0] > 0)) {
             boolean syncFlag = false;
-            IFluidHandler fluidHandler = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
+            IFluidHandler fluidHandler = this.getFluidCapability();
             if (fluidHandler != null) {
                 IFluidTankProperties[] fluidTankProperties = fluidHandler.getTankProperties();
                 if (fluidTankProperties.length != fluids.length) {
@@ -527,7 +533,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         }
         if(mode == MODE.ITEM || (mode == MODE.PROXY && proxyMode[1] > 0)) {
             boolean syncFlag = false;
-            IItemHandler itemHandler = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+            IItemHandler itemHandler = this.getItemCapability();
             if (this.coverHolder instanceof MetaTileEntityQuantumChest) {
                 long maxStoredItems = ObfuscationReflectionHelper.getPrivateValue(MetaTileEntityQuantumChest.class, (MetaTileEntityQuantumChest)this.coverHolder, "maxStoredItems");
                 if (maxStoredItems != quantumChestCapability) {
@@ -560,7 +566,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             if (syncFlag) writeUpdateData(3, this::writeItems);
         }
         if (this.mode == MODE.ENERGY || (mode == MODE.PROXY && proxyMode[2] > 0)) {
-            IEnergyContainer energyContainer = this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide);
+            IEnergyContainer energyContainer = this.getEnergyCapability();
             if (energyContainer != null) {
                 if (energyStored != energyContainer.getEnergyStored() || energyCapability != energyContainer.getEnergyCapacity()) {
                     energyStored = energyContainer.getEnergyStored();
@@ -587,7 +593,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             }
         }
         if (this.mode == MODE.MACHINE || (mode == MODE.PROXY && proxyMode[3] > 0)) {
-            IWorkable workable = this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
+            IWorkable workable = this.getMachineCapability();
             if (workable != null) {
                 int progress = workable.getProgress();
                 int maxProgress = workable.getMaxProgress();
@@ -606,7 +612,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                     });
                 }
                 if (this.coverHolder.getTimer() % 20 == 0) {
-                    IEnergyContainer energyContainer = this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide);
+                    IEnergyContainer energyContainer = this.getEnergyCapability();
                     if (energyContainer != null) {
                         if (energyStored != energyContainer.getEnergyStored() || energyCapability != energyContainer.getEnergyCapacity()) {
                             energyStored = energyContainer.getEnergyStored();
@@ -680,6 +686,62 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         return nbt;
     }
 
+    public IFluidHandler getFluidCapability() {
+        IFluidHandler capability = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
+        if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
+            List<IFluidTank> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.IMPORT_FLUIDS);
+            List<IFluidTank> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.EXPORT_FLUIDS);
+            List<IFluidTank> list = new ArrayList<>();
+            if (input.size() > 0) {
+                list.addAll(input);
+            }
+            if (output.size() > 0) {
+                list.addAll(output);
+            }
+            capability = new FluidTankList(true, list);
+        }
+        return capability;
+    }
+
+    public IItemHandler getItemCapability() {
+        IItemHandler capability = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
+        if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
+            List<IItemHandlerModifiable> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.IMPORT_ITEMS);
+            List<IItemHandlerModifiable> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.EXPORT_ITEMS);
+            List<IItemHandlerModifiable> list = new ArrayList<>();
+            if (input.size() > 0) {
+                list.addAll(input);
+            }
+            if (output.size() > 0) {
+                list.addAll(output);
+            }
+            capability = new ItemHandlerList(list);
+        }
+        return capability;
+    }
+
+    public IEnergyContainer getEnergyCapability() {
+        IEnergyContainer capability = this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide);
+        if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
+            List<IEnergyContainer> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.INPUT_ENERGY);
+            List<IEnergyContainer> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.OUTPUT_ENERGY);
+            List<IEnergyContainer> list = new ArrayList<>();
+            if (input.size() > 0) {
+                list.addAll(input);
+            }
+            if (output.size() > 0) {
+                list.addAll(output);
+            }
+            capability = new EnergyContainerList(list);
+        }
+        return capability;
+    }
+
+    public IWorkable getMachineCapability() {
+        return this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
+    }
+
+
     @Override
     public void readUpdateData(int id, PacketBuffer packetBuffer) {
         super.readUpdateData(id, packetBuffer);
@@ -716,10 +778,10 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
 
     @Override
     public boolean canAttach() {
-        return this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide) != null ||
-                this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide) != null ||
-                this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide) != null ||
-                this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide) != null;
+        return getFluidCapability() != null ||
+                getItemCapability() != null ||
+                getEnergyCapability() != null ||
+                getMachineCapability() != null;
     }
 
     @Override

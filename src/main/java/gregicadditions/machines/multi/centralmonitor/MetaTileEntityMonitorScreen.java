@@ -364,7 +364,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     @Override
     public boolean shouldRenderOverlay() {
         MultiblockControllerBase controller = this.getController();
-        return controller != null && controller.isStructureFormed();
+        return controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive();
     }
 
     @Override
@@ -412,7 +412,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         buttons[3] = new ToggleButtonWidget(width - 75, 25, 20, 20, ClientHandler.BUTTON_MACHINE, ()->this.mode != CoverDigitalInterface.MODE.MACHINE, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.MACHINE);
         });
-        if (controller.isStructureFormed() && controller instanceof MetaTileEntityCentralMonitor) {
+        if (controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive()) {
             List<CoverDigitalInterface> covers = new ArrayList<>();
             ((MetaTileEntityCentralMonitor) controller).covers.forEach(coverPos->{
                 covers.add(getCoverFromPosSide(coverPos));
@@ -430,7 +430,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                         public void handleClientAction(int id, PacketBuffer buffer) {
                             if (id == 1) {
                                 ClickData clickData = ClickData.readFromBuf(buffer);
-                                if (controllerBase != null && controllerBase.isStructureFormed() && controllerBase.isValid())
+                                if (((MetaTileEntityCentralMonitor) controller).isActive() && controllerBase.isValid())
                                 MetaTileEntityUIFactory.INSTANCE.openUI(controllerBase.getHolder(), (EntityPlayerMP) this.gui.entityPlayer);
                             }
                         }
@@ -463,7 +463,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                                 }
 
                             }))
-                    .widget(new DynamicLabelWidget(80,130, () ->
+                    .widget(new DynamicLabelWidget(80,135, () ->
                             this.inventory.getStackInSlot(0).isEmpty()? "" : this.inventory.getStackInSlot(0).getDisplayName(), 0Xff17FF66))
 
                     .widget(new WidgetCoverList(width - 140, 50, 120, 11, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
@@ -561,7 +561,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             lastClickUUID = playerIn.getPersistentID();
 
             MultiblockControllerBase controller = this.getController();
-            if (controller != null && controller.isStructureFormed() && controller.getFrontFacing() == facing) {
+            if (controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive() && controller.getFrontFacing() == facing) {
                 return handleHitResultWithScale(playerIn, hand, facing, true);
             }
         }

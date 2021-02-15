@@ -8,6 +8,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.renderer.RenderHelper;
 import gregicadditions.widgets.monitor.WidgetScreenGrid;
 import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.impl.EnergyContainerList;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -55,13 +56,16 @@ import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Steel;
 
 public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase implements IFastRenderMetaTileEntity {
+    private final static long energyCost = -50;
     // run-time data
     public int width;
     private long lastUpdate;
-    private WeakReference<EnergyNet> currentEnergyNet = new WeakReference<>(null);;
-    private final List<BlockPos> activeNodes = new ArrayList<>();
-    public List<Pair<BlockPos, EnumFacing>> covers = new ArrayList<>();
-    public List<MetaTileEntityHolder> parts = new ArrayList<>();
+    private WeakReference<EnergyNet> currentEnergyNet;
+    private List<BlockPos> activeNodes;
+    public List<Pair<BlockPos, EnumFacing>> covers;
+    public List<MetaTileEntityHolder> parts;
+    private boolean isActive;
+    private EnergyContainerList inputEnergy;
     // persistent data
     public int height = 3;
 
@@ -138,6 +142,10 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void writeCovers(PacketBuffer buf) {
+        if(covers == null) {
+            buf.writeInt(0);
+            return;
+        }
         buf.writeInt(covers.size());
         for (Pair<BlockPos, EnumFacing> cover : covers){
             buf.writeBlockPos(cover.getKey());
@@ -146,7 +154,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void readCovers(PacketBuffer buf) {
-        covers.clear();
+        covers = new ArrayList<>();
         int size = buf.readInt();
         for (int i = 0; i < size; i++) {
             covers.add(new Pair<>(buf.readBlockPos(), EnumFacing.byIndex(buf.readByte())));
@@ -163,7 +171,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void readParts(PacketBuffer buf) {
-        parts.clear();
+        parts = new ArrayList<>();
         int size = buf.readInt();
         for (int i = 0; i < size; i++) {
             parts.add((MetaTileEntityHolder) this.getWorld().getTileEntity(buf.readBlockPos()));
@@ -180,6 +188,16 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         });
     }
 
+    private void setActive(boolean isActive) {
+        if(isActive == this.isActive) return;
+        this.isActive = isActive;
+        writeCustomData(4, buf -> buf.writeBoolean(this.isActive));
+    }
+
+    public boolean isActive() {
+        return isStructureFormed() && isActive;
+    }
+
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
@@ -190,13 +208,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         textList.add(new TextComponentTranslation("gtadditions.multiblock.central_monitor.height", this.height));
-        textList.add(new TextComponentTranslation("gtadditions.multiblock.central_monitor.width", this.width));
-        ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.central_monitor.height_modify", new Object[0]);
-        buttonText.appendText(" ");
-        buttonText.appendSibling(AdvancedTextWidget.withButton(new TextComponentString("[-]"), "sub"));
-        buttonText.appendText(" ");
-        buttonText.appendSibling(AdvancedTextWidget.withButton(new TextComponentString("[+]"), "add"));
-        textList.add(buttonText);
+        if (!isStructureFormed()) {
+            ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.central_monitor.height_modify", new Object[0]);
+            buttonText.appendText(" ");
+            buttonText.appendSibling(AdvancedTextWidget.withButton(new TextComponentString("[-]"), "sub"));
+            buttonText.appendText(" ");
+            buttonText.appendSibling(AdvancedTextWidget.withButton(new TextComponentString("[+]"), "add"));
+            textList.add(buttonText);
+        } else {
+            textList.add(new TextComponentTranslation("gtadditions.multiblock.central_monitor.width", this.width));
+            textList.add(new TextComponentTranslation("metaitem.tool.prospect.low_power"));
+        }
     }
 
     @Override
@@ -211,7 +233,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         super.writeInitialSyncData(buf);
         buf.writeInt(width);
         buf.writeInt(height);
-        checkCovers();
+        buf.writeBoolean(isActive);
         writeCovers(buf);
         writeParts(buf);
     }
@@ -221,6 +243,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         super.receiveInitialSyncData(buf);
         this.width = buf.readInt();
         this.height = buf.readInt();
+        this.isActive = buf.readBoolean();
         readCovers(buf);
         readParts(buf);
     }
@@ -237,6 +260,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             readCovers(buf);
         } else if (id == 3) {
             this.height = buf.readInt();
+        } else if (id == 4) {
+            this.isActive = buf.readBoolean();
         }
     }
 
@@ -266,6 +291,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @Override
     protected void updateFormedValid() {
         if (this.getTimer() % 20 ==0) {
+            setActive(inputEnergy.changeEnergy(energyCost * this.getMultiblockParts().size()) == energyCost * this.getMultiblockParts().size());
             if (checkCovers()) {
                 this.getMultiblockParts().forEach(part -> {
                     if (part instanceof MetaTileEntityMonitorScreen) {
@@ -303,7 +329,9 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         super.formStructure(context);
         lastUpdate = 0;
         currentEnergyNet = new WeakReference<>(null);
-        activeNodes.clear();
+        activeNodes = new ArrayList<>();
+        covers = new ArrayList<>();
+        inputEnergy = new EnergyContainerList(this.getAbilities(MultiblockAbility.INPUT_ENERGY));
         width = (this.getMultiblockParts().size() - 1) / height;
         checkCovers();
         writeCustomData(1, packetBuffer -> {
@@ -337,7 +365,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     public void renderMetaTileEntityFast(CCRenderState ccRenderState, Matrix4 matrix4, float partialTicks) {
-        if (!this.isStructureFormed()) return;
+        if (!this.isActive()) return;
         GlStateManager.pushMatrix();
         /* hack the lightmap */
         GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
@@ -380,7 +408,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        if (!isStructureFormed()) {
+        if (!isActive()) {
             return super.createUI(entityPlayer);
         } else {
             WidgetScreenGrid[][] screenGrids = new WidgetScreenGrid[width][height];
