@@ -4,12 +4,15 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
+import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregicadditions.renderer.RenderHelper;
+import gregicadditions.widgets.WidgetARGB;
 import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
+import gregtech.api.gui.UIFactory;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -41,6 +44,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -178,7 +182,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     public boolean isActive() {
-        if(plugin != null) return true;
         if (this.coverPos != null) {
             CoverDigitalInterface cover = coverTMP != null? coverTMP : this.getCoverFromPosSide(this.coverPos);
             if (cover != null) {
@@ -189,30 +192,34 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             }
             this.coverPos = null;
         }
-        return false;
+        return plugin != null;
     }
 
     public void pluginDirty() {
-        plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+        if (plugin != null) {
+            plugin.writeToNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+        }
     }
 
     private void loadPlugin(MonitorPluginBaseBehavior plugin) {
-//        if (!this.getWorld().isRemote) {
-//            this.plugin = plugin.createPlugin();
-//            plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
-//        }
+        if (this.plugin == null) {
+            this.plugin = plugin.createPlugin();
+            this.plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
+            this.plugin.onMonitorValid(this, true);
+        }
     }
 
     private void unloadPlugin() {
-//        if (!this.getWorld().isRemote) {
-//            plugin.writeToNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
-//        }
+        if (plugin != null) {
+            this.plugin.onMonitorValid(null, false);
+        }
+        this.plugin = null;
     }
 
     @Override
     public void update() {
         super.update();
-        if(plugin != null && plugin.shouldUpdate()) {
+        if(plugin != null) {
             plugin.update();
         }
     }
@@ -263,12 +270,25 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     public void writeInitialSyncData(PacketBuffer buf) {
         super.writeInitialSyncData(buf);
         writeSync(buf);
+        buf.writeItemStack(this.inventory.getStackInSlot(0));
     }
 
     @Override
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         readSync(buf);
+        try {
+            ItemStack itemStack = buf.readItemStack();
+            MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(itemStack);
+            if (behavior == null) {
+                unloadPlugin();
+            } else {
+                this.inventory.setStackInSlot(0, itemStack);
+                loadPlugin(behavior);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -276,6 +296,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         super.receiveCustomData(dataId, buf);
         if(dataId == 1) {
             readSync(buf);
+        } else if(dataId == 2) { //plugin
+            if (plugin != null) {
+                plugin.readPluginData(buf.readInt(), buf);
+            }
         }
     }
 
@@ -313,7 +337,27 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     @Override
     protected void initializeInventory() {
         super.initializeInventory();
-        this.inventory = new pluginItemHandler();
+        this.inventory = new ItemStackHandler(){
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+                MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(stack);
+                return behavior != null;
+            }
+
+            @Nonnull
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                if(!getStackInSlot(slot).isEmpty() && !simulate) {
+                    unloadPlugin();
+                }
+                return super.extractItem(slot, amount, simulate);
+            }
+        };
         this.itemInventory = this.inventory;
     }
 
@@ -352,8 +396,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        int width = 300;
-        int height = 300;
+        int width = 330;
+        int height = 260;
         MultiblockControllerBase controller = this.getController();
         ToggleButtonWidget[] buttons = new ToggleButtonWidget[4];
         buttons[0] = new ToggleButtonWidget(width - 135, 25, 20, 20, ClientHandler.BUTTON_FLUID, ()->this.mode != CoverDigitalInterface.MODE.FLUID, (isPressed)->{
@@ -368,23 +412,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         buttons[3] = new ToggleButtonWidget(width - 75, 25, 20, 20, ClientHandler.BUTTON_MACHINE, ()->this.mode != CoverDigitalInterface.MODE.MACHINE, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.MACHINE);
         });
-        TextFieldWidget[] ARGB = new TextFieldWidget[4];
-        Predicate<String> validator = (data)->{
-            if (data.equals("")) return true;
-            try { int num = Integer.parseInt(data, 16); if (num > 255 || num < 0) return false; } catch (Exception e) { return false; } return true;
-        };
-        ARGB[0] = new TextFieldWidget(50, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 24 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 24 | (frameColor & 0X00FFFFFF));
-        }).setValidator(validator);
-        ARGB[1] = new TextFieldWidget(75, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 16 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 16 | (frameColor & 0XFF00FFFF));
-        }).setValidator(validator);
-        ARGB[2] = new TextFieldWidget(100, 80, 25, 20, true, ()->Integer.toHexString(frameColor >> 8 & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) << 8 | (frameColor & 0X00FF00FF));
-        }).setValidator(validator);
-        ARGB[3] = new TextFieldWidget(125, 80, 25, 20, true, ()->Integer.toHexString(frameColor & 0XFF).toUpperCase(), (data)->{
-            setConfig(this.slot, this.scale, (data.equals("")? 0 : Integer.parseInt(data, 16)) | (frameColor & 0XFFFFFF00));
-        }).setValidator(validator);
         if (controller.isStructureFormed() && controller instanceof MetaTileEntityCentralMonitor) {
             List<CoverDigitalInterface> covers = new ArrayList<>();
             ((MetaTileEntityCentralMonitor) controller).covers.forEach(coverPos->{
@@ -416,10 +443,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(new SimpleTextWidget(100, 60, "", 16777215, () -> Integer.toString(scale)))
 
                     .widget(new LabelWidget(15, 85, "ARGB:", 0xFFFFFFFF))
-                    .widget(ARGB[0])
-                    .widget(ARGB[1])
-                    .widget(ARGB[2])
-                    .widget(ARGB[3])
+                    .widget(new WidgetARGB(50, 80, 20, this.frameColor, (color)->setConfig(this.slot, this.scale, color)))
 
                     .widget(new LabelWidget(15, 110, "Slot:", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 105, 20, 20, "-1", (data) -> setConfig(this.slot - 1, this.scale, this.frameColor)))
@@ -427,12 +451,22 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(new ImageWidget(70, 105, 60, 20, GuiTextures.DISPLAY))
                     .widget(new SimpleTextWidget(100, 115, "", 16777215, () -> Integer.toString(slot)))
 
-                    .widget(new SlotWidget(inventory, 0, 15, 130, true, true).setBackgroundTexture(GuiTextures.SLOT))
-                    .widget(new ClickButtonWidget(15, 160, 20, 20, "T", (data)-> {
+                    .widget(new LabelWidget(15, 135, "Plugin:", 0xFFFFFFFF))
+                    .widget(new SlotWidget(inventory, 0, 50, 130, true, true)
+                            .setBackgroundTexture(GuiTextures.SLOT)
+                            .setChangeListener(()->{
+                                MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(inventory.getStackInSlot(0));
+                                if(behavior == null) {
+                                    unloadPlugin();
+                                } else {
+                                    loadPlugin(behavior);
+                                }
 
-                    }))
+                            }))
+                    .widget(new DynamicLabelWidget(80,130, () ->
+                            this.inventory.getStackInSlot(0).isEmpty()? "" : this.inventory.getStackInSlot(0).getDisplayName(), 0Xff17FF66))
 
-                    .widget(new WidgetCoverList(width - 135, 50, 120, 13, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
+                    .widget(new WidgetCoverList(width - 140, 50, 120, 11, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
                         if (coverPos == null) {
                             this.setMode(null, this.mode);
                         } else {
@@ -444,6 +478,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(buttons[1])
                     .widget(buttons[2])
                     .widget(buttons[3])
+
+                    .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170)
                     .build(this.getHolder(), entityPlayer);
         }
         return null;
@@ -451,6 +487,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     // adaptive click, supports scaling. x and y is the pos of the origin screen (scale = 1). this func must be called when screen is active.
     public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
+        boolean flag = false;
+        if (this.plugin != null) {
+            flag = this.plugin.onClickLogic(playerIn, hand, facing, isRight, x, y);
+        }
         CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
         if (isRight) {
             if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
@@ -464,16 +504,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     }
                 }
                 if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null)) {
-                    return ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null);
+                    return ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null) || flag;
                 }
                 return true;
             }
         } else {
             if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
-                return coverBehavior.modeLeftClick(playerIn, this.mode, this.slot);
+                return coverBehavior.modeLeftClick(playerIn, this.mode, this.slot) || flag;
             }
         }
-        return false;
+        return flag;
     }
 
     private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight) {
@@ -550,40 +590,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             if (controller != null && controller.getFrontFacing() == facing) {
                 handleHitResultWithScale(playerIn, null, facing, false);
             }
-        }
-    }
-
-    private class pluginItemHandler extends ItemStackHandler {
-        public pluginItemHandler(){
-            super(1);
-        }
-
-        @Override
-        public int getSlotLimit(int slot) {
-            return 1;
-        }
-
-        @Nonnull
-        @Override
-        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-            MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(stack);
-            if (behavior != null) {
-                ItemStack itemStack =  super.insertItem(slot, stack, simulate);
-                if (itemStack.getCount() != stack.getCount() && !simulate) {
-                    loadPlugin(behavior);
-                }
-                return itemStack;
-            }
-            return super.insertItem(slot, stack, simulate);
-        }
-
-        @Nonnull
-        @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            if (!simulate && !getStackInSlot(slot).isEmpty() && amount > 0) {
-                unloadPlugin();
-            }
-            return super.extractItem(slot, amount, simulate);
         }
     }
 }

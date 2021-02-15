@@ -813,6 +813,10 @@ metaitem.tool.prospect.tooltips.ore=Ore statistics
 metaitem.tool.prospect.tooltips.fluid=Fluid statistics
 metaitem.tool.prospect.low_power=Low power!
 
+#/////////////////MONITOR + PLUGIN///////////////////////
+metaitem.plugin.text.name=Text Plugin
+
+
 #/////////////////////CIRCUIT///////////////////////////
 
 #//LV
