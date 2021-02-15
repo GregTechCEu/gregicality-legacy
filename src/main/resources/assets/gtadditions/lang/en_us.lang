@@ -298,6 +298,7 @@ metaitem.highly.dense.polymer.plate.name=Highly Dense Polymer Plate
 metaitem.cosmic.mesh.containment.unit.name=Cosmic Mesh Containment Unit
 metaitem.cosmic.mesh.name=Cosmic Mesh
 metaitem.cosmic.fabric.name=Cosmic Fabric
+metaitem.rod.field.shape.name=Rod Field Shape
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
