@@ -19,17 +19,17 @@ public class AluminiumChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(125)
-                .input(dust, SodiumHydroxide, 3)
+                .input(dust, SodiumHydroxide, 6)
                 .inputs(Alumina.getItemStack())
-                .fluidInputs(HydrofluoricAcid.getFluid(6000))
-                .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
-                .fluidOutputs(Water.getFluid(4500))
+                .fluidInputs(HydrofluoricAcid.getFluid(12000))
+                .fluidOutputs(SodiumHexafluoroaluminate.getFluid(2000))
+                .fluidOutputs(Water.getFluid(9000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(600).EUt(125)
-                .inputs(Alumina.getItemStack())
+                .inputs(Alumina.getItemStack(2))
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
-                .fluidOutputs(Aluminium.getFluid(288))
+                .fluidOutputs(Aluminium.getFluid(576))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 3))
                 .outputs(AluminiumTrifluoride.getItemStack())
                 .buildAndRegister();
@@ -98,9 +98,9 @@ public class AluminiumChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(950)
                 .fluidInputs(TitaniumSulfate.getFluid(1000))
-                .fluidOutputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(4000))
-                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(TitaniumTetrachloride.getFluid(1000))
+                .fluidOutputs(SulfuricAcid.getFluid(2000))
                 .buildAndRegister();
     }
 }
