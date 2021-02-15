@@ -463,7 +463,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_MESH_CONTAINMENT_UNIT;
     public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
     public static MetaItem<?>.MetaValueItem COSMIC_MESH;
-
+    public static MetaItem<?>.MetaValueItem ROD_FIELD_SHAPE;
 
     
     public static void init() {
