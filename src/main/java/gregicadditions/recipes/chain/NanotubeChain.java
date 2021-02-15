@@ -64,8 +64,16 @@ public class NanotubeChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2400)
                 .notConsumable(dust, Copper)
                 .fluidInputs(Acetylene.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(Acetaldehyde.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(30720)
+                .input(dust, Thallium, 2)
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .outputs(ThalliumChloride.getItemStack(2))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(75000)

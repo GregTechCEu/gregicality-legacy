@@ -240,6 +240,8 @@ public class FullereneChain {
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();
+        // BenzylPeroxide
+        int a = BenzylPeroxide.rgb;
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Bromine.getFluid(1000))
@@ -256,7 +258,7 @@ public class FullereneChain {
                 .fluidInputs(Phenylpentanoicacid.getFluid(1000))
                 .inputs(Bromosuccinimide.getItemStack(1))
                 .fluidInputs(Dimethylsulfide.getFluid(1000))
-                .fluidInputs(BenzoylChloride.getFluid(1000))
+                .fluidInputs(BenzylPeroxide.getFluid(1000))
                 .fluidInputs(Silvertetrafluoroborate.getFluid(10))
                 .fluidOutputs(PCBA.getFluid(4000))
                 .EUt(2000000)
@@ -281,19 +283,18 @@ public class FullereneChain {
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(2000))
                 .notConsumable(dust, Carbon)
-                .fluidOutputs(Phosgene.getFluid(2000))
+                .fluidOutputs(Phosgene.getFluid(1000))
                 .EUt(2000)
                 .duration(800)
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dimethylamine.getFluid(1000))
                 .fluidInputs(Pyridine.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(1000))
-                .input(dust, SodiumHydroxide)
-                .outputs(OreDictUnifier.get(dust, Salt))
-                .outputs(Dimethylaminopyridine.getItemStack(3))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(Dimethylaminopyridine.getItemStack())
                 .EUt(2000000)
                 .duration(400)
                 .buildAndRegister();

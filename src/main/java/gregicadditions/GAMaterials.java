@@ -1372,6 +1372,7 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff);
     public static final SimpleFluidMaterial AcetylsulfanilideChloride = new SimpleFluidMaterial("acetylsulfanilide_chloride", (Aniline.rgb + AceticAnhydride.rgb + ChlorosulfuricAcid.rgb)/3);
+    public static final SimpleFluidMaterial BenzylPeroxide = new SimpleFluidMaterial("benzyl_peroxide", (BariumPeroxide.rgb + BenzoylChloride.rgb)/2);
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");

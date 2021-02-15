@@ -470,7 +470,7 @@ public class BrineChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(500)
                 .fluidInputs(Propene.getFluid(3000))
                 .fluidInputs(Water.getFluid(3000))
-                .fluidOutputs(IsopropylAlcohol.getFluid(6000))
+                .fluidOutputs(IsopropylAlcohol.getFluid(3000))
                 .notConsumable(SodiumPhosphomolybdate.getItemStack())
                 .notConsumable(SodiumPhosphotungstate.getItemStack())
                 .buildAndRegister();

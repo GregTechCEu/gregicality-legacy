@@ -10,6 +10,18 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class BariumChain {
     public static void init() {
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Barium)
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .outputs(BariumChloride.getItemStack())
+                .fluidOutputs(Hydrogen.getFluid(2000))
+                .buildAndRegister();
+        CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(480)
+                .inputs(BariumChloride.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Barite))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(480).EUt(500).blastFurnaceTemp(1200)
                 .input(dust, Barite)
                 .input(dust, Carbon)

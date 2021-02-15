@@ -114,12 +114,6 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(500)
-                .input(dust, Barium)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .outputs(BariumChloride.getItemStack())
-                .buildAndRegister();
-
         MIXER_RECIPES.recipeBuilder().duration(230).EUt(250)
                 .inputs(BariumChloride.getItemStack())
                 .fluidInputs(DistilledWater.getFluid(1000))
@@ -862,7 +856,7 @@ public class SuperconductorsSMDChain {
                 .notConsumable(OsmiumTetroxide.getItemStack())
                 .inputs(SodiumPeriodate.getItemStack(1))
                 .outputs(SodiumIodate.getItemStack(1))
-                .fluidInputs(Propene.getFluid(1000))
+                .fluidInputs(Acetone.getFluid(1000))
                 .fluidOutputs(Formaldehyde.getFluid(1000))
                 .fluidOutputs(Acetaldehyde.getFluid(1000))
                 .buildAndRegister();
