@@ -792,6 +792,8 @@ metaitem.refractory_metals.name=Refractory Metals
 metaitem.light_transition_metals.name=Light Transition Metals
 metaitem.post_transition_metals.name=Post Transition Metals
 metaitem.sodium_metavanadate.name=Sodium Metavanadate
+metaitem.potassium_peroxymonosulfate=Potassium Peroxymonosulfate
+
 metaitem.mercury_acetate.name=Mercury Acetate
 metaitem.calcium_cyanamide.name=Calcium Cyanamide
 metaitem.purified_pyrochlore.name=Purified Pyrochlore
