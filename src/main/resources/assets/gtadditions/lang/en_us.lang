@@ -791,7 +791,7 @@ metaitem.cesium_iodide.name=Caesium Iodide
 metaitem.tl_tm_cesium_iodide.name=Thallium Thulium Doped Caesium Iodide
 metaitem.cadmium_tungstate.name=Cadmium Tungstate
 metaitem.polycyclic_aromatic_mix.name=Polycyclic Aromatic Mixture
-metaitem.silver_fluoride.name=Silver Fluoride
+metaitem.sodium_perchlorate.name=Sodium Perchlorate
 metaitem.graphite_oxide.name=Graphite Oxide
 metaitem.graphene_oxide.name=Graphene Oxide
 metaitem.glucose_iron_mix.name=Glucose Iron Mix
@@ -808,6 +808,8 @@ metaitem.sodium_metavanadate.name=Sodium Metavanadate
 metaitem.potassium_peroxymonosulfate.name=Potassium Peroxymonosulfate
 metaitem.sodium_hexavanadate.name=Sodium Hexavanadate
 metaitem.coacab_catalyst.name=Co/AC-AB Catalyst
+metaitem.silver_perchlorate.name=Silver Perchlorate
+metaitem.sodium_chlorate.name=Sodium Chlorate
 
 metaitem.mercury_acetate.name=Mercury Acetate
 metaitem.calcium_cyanamide.name=Calcium Cyanamide

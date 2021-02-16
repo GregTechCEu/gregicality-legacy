@@ -159,24 +159,40 @@ public class CosmicComponents {
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(3400000)
+                .fluidInputs(Water.getFluid(2000))
                 .fluidInputs(Silvertetrafluoroborate.getFluid(2000))
                 .fluidInputs(Phenylsodium.getFluid(8000))
                 .fluidInputs(TetraethylammoniumBromide.getFluid(2000))
-                .inputs(TitaniumCyclopentanyl.getItemStack(3))
-                .fluidInputs(NDifluorophenylpyrrole.getFluid(6000))
-                .outputs(SilverFluoride.getItemStack(2))
+                .inputs(SilverPerchlorate.getItemStack())
+                .inputs(TitaniumCyclopentanyl.getItemStack(4))
+                .fluidInputs(NDifluorophenylpyrrole.getFluid(8000))
+                .outputs(OreDictUnifier.get(dust, SilverChloride, 2))
                 .outputs(SodiumBromide.getItemStack(2))
                 .fluidOutputs(SodiumChlorideSolution.getFluid(6000))
-                .fluidOutputs(Fluorine.getFluid(6000))
-                .fluidOutputs(PhotopolymerSolution.getFluid(5000))
+                .fluidOutputs(PhotopolymerSolution.getFluid(6000))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(350).EUt(8750).blastFurnaceTemp(3200)
-                .inputs(SilverFluoride.getItemStack(2))
-                .input(dust, SodiumHydroxide, 2)
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 2))
-                .outputs(OreDictUnifier.get(dust, SilverOxide))
+        BLAST_RECIPES.recipeBuilder().duration(210).EUt(4000).blastFurnaceTemp(1100)
+                .inputs(SodiumHypochlorite.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .outputs(SodiumChlorate.getItemStack())
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(8750)
+                .inputs(SodiumChlorate.getItemStack())
+                .fluidInputs(HydrogenPeroxide.getFluid(1000))
+                .outputs(SodiumPerchlorate.getItemStack())
                 .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(8750)
+                .input(dust, SilverOxide)
+                .inputs(SodiumPerchlorate.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .outputs(SilverPerchlorate.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Salt))
+                .fluidOutputs(DiluteNitricAcid.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(695000)
