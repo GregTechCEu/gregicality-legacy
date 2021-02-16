@@ -1186,7 +1186,7 @@ public class GARecipeAddition {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .fluidInputs(Epichlorhydrin.getFluid(1000))
+                .fluidOutputs(Epichlorhydrin.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
     }
