@@ -7,21 +7,22 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_INGOT;
+import static gregtech.common.items.MetaItems.*;
 
 public class FusionElementsChain {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(500)
                 .input(dust, Lithium)
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(LithiumHydroxideSolution.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(1800)
-                .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
+                .fluidInputs(LithiumHydroxideSolution.getFluid(2000))
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .fluidOutputs(LithiumPeroxideSolution.getFluid(2000))
+                .fluidOutputs(LithiumPeroxideSolution.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1500)
@@ -32,28 +33,31 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(120).EUt(2000)
-                .fluidInputs(Oxygen.getFluid(3000))
+                .fluidInputs(Oxygen.getFluid(6000))
                 .fluidOutputs(Ozone.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1500)
-                .fluidInputs(NitrogenDioxide.getFluid(2000))
+                .fluidInputs(NitrogenDioxide.getFluid(6000))
                 .fluidInputs(Ozone.getFluid(1000))
-                .fluidOutputs(NitrogenPentoxide.getFluid(1000))
-                .fluidOutputs(Oxygen.getFluid(1000))
+                .fluidOutputs(NitrogenPentoxide.getFluid(3000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1400)
                 .fluidInputs(NitrogenPentoxide.getFluid(2000))
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(2000))
+                .fluidOutputs(Chlorine.getFluid(4000))
                 .outputs(TitaniumNitrate.getItemStack())
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1950).blastFurnaceTemp(3100)
                 .inputs(TitaniumNitrate.getItemStack())
+                .input(dust, SodiumHydroxide, 2)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
+                .fluidOutputs(NitricAcid.getFluid(4000))
                 .outputs(OreDictUnifier.get(ingot, LithiumTitanate))
+                .outputs(OreDictUnifier.get(dust, SodaAsh))
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(180000)
@@ -178,19 +182,19 @@ public class FusionElementsChain {
                 .fluidInputs(HeptafluoroTantalate.getFluid(6000))
                 .input(dust, Graphite,6)
                 .input(dust, SiliconDioxide, 7)
-                .fluidInputs(Hydrogen.getFluid(8000))
+                .fluidInputs(Hydrogen.getFluid(42000))
                 .fluidOutputs(Water.getFluid(14000))
                 .outputs(TantalumCarbide.getItemStack(6))
                 .fluidOutputs(FluorosilicicAcid.getFluid(7000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(135000).blastFurnaceTemp(3000)
-                .inputs(SodiumSeaborgate.getItemStack())
-                .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .input(dust, Carbon)
-                .outputs(SeaborgiumCarbide.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
-                .fluidOutputs(Water.getFluid(1000))
+                .inputs(SodiumSeaborgate.getItemStack(1))
+                .fluidInputs(Chlorine.getFluid(2000))
+                .input(dust, Carbon, 1)
+                .outputs(SeaborgiumCarbide.getItemStack(1))
+                .outputs(SodiumHypochlorite.getItemStack(2))
+                .fluidOutputs(Oxygen.getFluid(2000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(118000).blastFurnaceTemp(6200)

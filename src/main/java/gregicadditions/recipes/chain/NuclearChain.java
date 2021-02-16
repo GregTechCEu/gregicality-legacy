@@ -102,7 +102,7 @@ public class NuclearChain {
                 .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, LithiumFluoride))
-                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
