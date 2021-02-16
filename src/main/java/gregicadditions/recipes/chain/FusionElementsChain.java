@@ -191,10 +191,10 @@ public class FusionElementsChain {
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(135000).blastFurnaceTemp(3000)
                 .inputs(SodiumSeaborgate.getItemStack(1))
                 .fluidInputs(Chlorine.getFluid(2000))
-                .input(dust, Carbon, 1)
+                .input(dust, Carbon, 3)
                 .outputs(SeaborgiumCarbide.getItemStack(1))
-                .outputs(SodiumHypochlorite.getItemStack(2))
-                .fluidOutputs(Oxygen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(118000).blastFurnaceTemp(6200)
