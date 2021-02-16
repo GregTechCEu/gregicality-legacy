@@ -813,8 +813,12 @@ metaitem.tool.prospect.tooltips.ore=Ore statistics
 metaitem.tool.prospect.tooltips.fluid=Fluid statistics
 metaitem.tool.prospect.low_power=Low power!
 
-#/////////////////MONITOR + PLUGIN///////////////////////
+#//////////////COVER + MONITOR + PLUGIN/////////////////
+metaitem.plugin.tooltips.1=Plugins can be added to the screen for more functionality.
 metaitem.plugin.text.name=Text Plugin
+metaitem.cover.digital.name=Cover Digital Interface
+#metaitem.cover.digital.tooltips.1=Cover Digital Interface have 5 modes: Fluid, Item, Energy, Machine and Proxy.
+#metaitem.cover.digital.tooltips.2=The proxy mode needs to be used with Central Monitor.
 
 
 #/////////////////////CIRCUIT///////////////////////////
@@ -2622,6 +2626,13 @@ gtadditions.multiblock.fusion_reactor.heat=Heat: %d
 gtadditions.multiblock.central_monitor.height=Screen Height: %d
 gtadditions.multiblock.central_monitor.width=Screen Width: %d
 gtadditions.multiblock.central_monitor.height_modify=Modify Height: %d
+gtadditions.multiblock.central_monitor.tooltip.1=This is a monitor support that monitors machines proxied by the Cover Digital Interface. You can easily monitor the Fluid, Items, Energy, and State of machines proxied in Energy Net.
+gtadditions.multiblock.central_monitor.tooltip.2=You can build the central monitor screen from 3X3 to 11X7.
+gtadditions.multiblock.central_monitor.tooltip.3=The default build height is 3, and you can adjust the screen height in the GUI before the structure formed.
+gtadditions.multiblock.central_monitor.tooltip.4=Energy consumption: %d EU/s for each screen.
+gtadditions.multiblock.monitor_screen.tooltip.1=GUI can be opened with a right-click of a screwdriver.
+gtadditions.multiblock.monitor_screen.tooltip.2=The proxy mode of Cover digital interface can delegate machines' capabilities and GUI. (Yeah, you can connect pipes directly on the screen.)
+gtadditions.multiblock.monitor_screen.tooltip.3=The screen also supports plugins.
 
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternating each second.

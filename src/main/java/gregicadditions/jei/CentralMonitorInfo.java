@@ -1,5 +1,6 @@
 package gregicadditions.jei;
 
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
@@ -8,6 +9,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         List<MultiblockShapeInfo> shapes = new ArrayList<>();
         for (int i = 3; i <= 14; i++) {
-            int height = 4;
+            int height = 3;
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             String[] start = new String[height];
             String[] slice = new String[height];
@@ -44,10 +46,10 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
                 builder.aisle(slice);
             }
             builder.aisle(end)
-            .where('S', GATileEntities.CENTRAL_MONITOR, EnumFacing.SOUTH)
-            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[1], EnumFacing.EAST)
+            .where('S', GATileEntities.CENTRAL_MONITOR, EnumFacing.WEST)
+            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
             .where('A', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
-            .where('B', GATileEntities.MONITOR_SCREEN, EnumFacing.SOUTH);
+            .where('B', GATileEntities.MONITOR_SCREEN, EnumFacing.WEST);
             shapes.add(builder.build());
         }
         return shapes;
@@ -55,6 +57,6 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[0];
+        return new String[]{I18n.format("gtadditions.multiblock.central_monitor.tooltip.2"), I18n.format("gtadditions.multiblock.central_monitor.tooltip.3")};
     }
 }

@@ -6,6 +6,7 @@ import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,12 +20,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemUIFactory {
     MetaTileEntityMonitorScreen screen;
 
     abstract public MonitorPluginBaseBehavior createPlugin();
+
+    abstract public ModularUI customUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer, NBTTagCompound nbtTagCompound);
+
+    public boolean hasUI() {
+        return false;
+    }
 
     // server. nbt will be synced to client when init so.... yeah you don't need to write init
     public void writeToNBT(NBTTagCompound data) {
@@ -34,6 +42,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     public void readFromNBT(NBTTagCompound data) {
     }
 
+    // server
     public void writePluginData(int id, @NotNull Consumer<PacketBuffer> buf) {
         if (screen != null) {
             screen.writeCustomData(2, packetBuffer->{
@@ -43,6 +52,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         }
     }
 
+    // client
     public void readPluginData(int id, PacketBuffer buf) {
 
     }
@@ -52,6 +62,20 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
             screen.pluginDirty();
         }
     }
+
+    // server
+    public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y){
+        return false;
+    }
+
+    // server update logic
+    public void update() {
+
+    }
+
+    // client render
+    @SideOnly(Side.CLIENT)
+    abstract public void renderPlugin(float partialTicks);
 
     public static MonitorPluginBaseBehavior getBehavior(ItemStack itemStack) {
         if (itemStack.getItem() instanceof MetaItem<?>){
@@ -65,16 +89,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         return null;
     }
 
-    // update logic
-    public void update() {
-
-    }
-
-    // render
-    @SideOnly(Side.CLIENT)
-    abstract public void renderPlugin(float partialTicks);
-
-    // trigger when monitor valid modified
+    // server do not override
     public void onMonitorValid(MetaTileEntityMonitorScreen screen, boolean valid) {
         if (valid) {
            this.screen = screen;
@@ -83,14 +98,13 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         }
     }
 
-    abstract public ModularUI customUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer, NBTTagCompound nbtTagCompound);
-
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if(!world.isRemote) {
             if(hand != EnumHand.MAIN_HAND) return ActionResult.newResult(EnumActionResult.PASS, player.getHeldItem(hand));
             ItemStack itemStack = player.getHeldItem(hand);
-            if (getBehavior(itemStack) != null) {
+            MonitorPluginBaseBehavior behavior = getBehavior(itemStack);
+            if (behavior != null && behavior.hasUI()) {
                 PlayerInventoryHolder holder = new PlayerInventoryHolder(player, hand);
                 holder.openUI();
                 return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
@@ -112,7 +126,8 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         return null;
     }
 
-    public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y){
-        return false;
+    @Override
+    public void addInformation(ItemStack itemStack, List<String> lines) {
+        lines.add(I18n.format("metaitem.plugin.tooltips.1"));
     }
 }

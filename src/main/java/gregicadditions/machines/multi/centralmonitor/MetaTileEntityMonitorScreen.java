@@ -44,6 +44,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -251,7 +252,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
 
                 // render name
-                RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
+                RenderHelper.renderText(0, -3.5f/16, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
             }
             // render frame
             RenderHelper.renderRect(-7f/16, -7f/16, 14f/16, 0.01f,0.003f, frameColor);
@@ -516,9 +517,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return flag;
     }
 
-    private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight) {
+    private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, CuboidRayTraceResult rayTraceResult) {
         boolean flag = false;
-        RayTraceResult rayTraceResult = playerIn.rayTrace(5, 1);
         if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
             double x = 0;
             double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
@@ -562,8 +562,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
             MultiblockControllerBase controller = this.getController();
             if (controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive() && controller.getFrontFacing() == facing) {
-                return handleHitResultWithScale(playerIn, hand, facing, true);
+                return handleHitResultWithScale(playerIn, hand, facing, true, hitResult);
             }
+        } else {
+            return true;
         }
         return false;
     }
@@ -588,8 +590,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             lastClickUUID = playerIn.getPersistentID();
             MultiblockControllerBase controller = this.getController();
             if (controller != null && controller.getFrontFacing() == facing) {
-                handleHitResultWithScale(playerIn, null, facing, false);
+                handleHitResultWithScale(playerIn, null, facing, false, hitResult);
             }
         }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.multiblock.monitor_screen.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.monitor_screen.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.monitor_screen.tooltip.3"));
     }
 }

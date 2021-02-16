@@ -59,7 +59,6 @@ import org.lwjgl.opengl.GL11;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -327,7 +326,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @Override
-    public EnumActionResult onRightClick(EntityPlayer playerIn, EnumHand hand, CuboidRayTraceResult hitResult) {
+    public EnumActionResult onRightClick(EntityPlayer playerIn, EnumHand hand, CuboidRayTraceResult rayTraceResult) {
         if (!isRemote()) {
             if (this.coverHolder.getWorld().getTotalWorldTime() - lastClickTime < 2 && playerIn.getPersistentID().equals(lastClickUUID)) {
                 return EnumActionResult.SUCCESS;
@@ -335,7 +334,6 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
             lastClickTime = this.coverHolder.getWorld().getTotalWorldTime();
             lastClickUUID = playerIn.getPersistentID();
             if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
-                RayTraceResult rayTraceResult = playerIn.rayTrace(5, 1);
                 if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
                     double x = 0;
                     double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
@@ -378,10 +376,11 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     public EnumActionResult modeRightClick(EntityPlayer playerIn, EnumHand hand, MODE mode, int slot) {
         IFluidHandler fluidHandler = this.getFluidCapability();
         if (mode == MODE.FLUID &&  fluidHandler!= null) {
-            if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler) && fluidHandler instanceof FluidHandlerProxy) {
-                if(!FluidUtil.interactWithFluidHandler(playerIn, hand, ((FluidHandlerProxy) fluidHandler).input)) {
-                    return EnumActionResult.PASS;
+            if (!FluidUtil.interactWithFluidHandler(playerIn, hand, fluidHandler)) {
+                if(fluidHandler instanceof FluidHandlerProxy && FluidUtil.interactWithFluidHandler(playerIn, hand, ((FluidHandlerProxy) fluidHandler).input)) {
+                    return EnumActionResult.SUCCESS;
                 }
+                return EnumActionResult.PASS;
             }
             return EnumActionResult.SUCCESS;
         }
@@ -391,13 +390,17 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                 ItemStack hold = playerIn.getHeldItemMainhand();
                 if (!hold.isEmpty()) {
                     ItemStack origin = hold.copy();
+                    boolean flag = false;
                     if (playerIn.isSneaking()) {
+                        int size = playerIn.getHeldItemMainhand().getCount();
                         playerIn.setHeldItem(EnumHand.MAIN_HAND, itemHandler.insertItem(slot, hold, false));
+                        flag = playerIn.getHeldItemMainhand().getCount() != size;
                     } else {
                         ItemStack itemStack = hold.copy();
                         itemStack.setCount(1);
                         if (itemHandler.insertItem(slot, itemStack, false).isEmpty()){
                             hold.setCount(hold.getCount() - 1);
+                            flag = true;
                         }
                     }
                     if (playerIn.getHeldItemMainhand().isEmpty()) {
@@ -409,9 +412,10 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                             }
                         }
                     }
-                    return EnumActionResult.SUCCESS;
+                    return flag? EnumActionResult.SUCCESS: EnumActionResult.PASS;
                 }
             }
+            return EnumActionResult.PASS;
         }
         IWorkable workable = this.getMachineCapability();
         if (mode == MODE.MACHINE && workable != null) {
@@ -870,16 +874,16 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     public boolean renderSneakingLookAt(BlockPos blockPos, EnumFacing side, int slot, float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player != null && player.isSneaking() && player.getHeldItemMainhand().isEmpty()) {
-            RayTraceResult rayTraceResult = player.rayTrace(5, partialTicks);
+            RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
             if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && rayTraceResult.sideHit == side && rayTraceResult.getBlockPos().equals(blockPos)) {
                 RenderHelper.renderRect(-7f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
                 RenderHelper.renderRect(4f / 16, -7f / 16, 3f / 16, 3f / 16, 0.002f, 0XFF838583);
-                RenderHelper.renderText(-5.5f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
-                RenderHelper.renderText(5.7f / 16, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
-                RenderHelper.renderText(0, -0.37f, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
+                RenderHelper.renderText(-5.5f / 16, -5.5F/16, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
+                RenderHelper.renderText(5.7f / 16, -5.5F/16, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
+                RenderHelper.renderText(0, -5.5F/16, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
                 if (this.coverHolder instanceof MetaTileEntity){
                     RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
-                    RenderHelper.renderText(0, -0.24f, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
+                    RenderHelper.renderText(0, -3.5F/16, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
                 }
                 RenderHelper.renderItemOverLay(-8f/16, -5f/16, 0.002f, 1f/32, this.coverHolder.getStackForm());
                 return true;
@@ -916,7 +920,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
                 endAlpha = (int) (510 - 255 / 0.4375 * offset);
             }
             RenderHelper.renderRect(-7f / 16, -7f / 16, progress * 14f / (maxProgress * 16), 3f / 16, 0.002f, 0XFFFF5F44);
-            RenderHelper.renderText(0, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, readAmountOrCountOrEnergy(progress * 100 / maxProgress, MODE.MACHINE), true);
+            RenderHelper.renderText(0, -5.5F/16, 0, 1.0f / (isProxy()? 110 : 70), 0XFFFFFFFF, readAmountOrCountOrEnergy(progress * 100 / maxProgress, MODE.MACHINE), true);
             RenderHelper.renderGradientRect(start, -4f / 16, width, 1f / 16, 0.002f, (color & 0X00FFFFFF) | (startAlpha << 24), (color & 0X00FFFFFF) | (endAlpha << 24), true);
         } else {
             RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, color);
@@ -942,10 +946,10 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         }
         RenderHelper.renderLineChart(inputEnergyList, max,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFF03FF00);
         RenderHelper.renderLineChart(outputEnergyList, max,-5.5f/16, 5.5f/16, 12f/16,6f/16,0.005f,0XFFFF2F39);
-        RenderHelper.renderText(-5.7f/16, -2.8f/16, 0, 1.0f / 270, 0XFF03FF00, "EU I: " + energyInputPerDur + "EU/s", false);
-        RenderHelper.renderText(-5.7f/16, -2.1f/16, 0, 1.0f / 270, 0XFFFF0000, "EU O: " + energyOutputPerDur + "EU/s", false);
+        RenderHelper.renderText(-5.7f/16, -2.3f/16, 0, 1.0f / 270, 0XFF03FF00, "EU I: " + energyInputPerDur + "EU/s", false);
+        RenderHelper.renderText(-5.7f/16, -1.6f/16, 0, 1.0f / 270, 0XFFFF0000, "EU O: " + energyOutputPerDur + "EU/s", false);
         RenderHelper.renderRect(-7f / 16, -7f / 16, energyStored * 14f / (energyCapability * 16), 3f / 16, 0.002f, 0XFFFFD817);
-        RenderHelper.renderText(0, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, readAmountOrCountOrEnergy(energyStored, MODE.ENERGY), true);
+        RenderHelper.renderText(0, -5.5F/16, 0, 1.0f / (isProxy()? 110 : 70), 0XFFFFFFFF, readAmountOrCountOrEnergy(energyStored, MODE.ENERGY), true);
     }
 
     @SideOnly(Side.CLIENT)
@@ -958,7 +962,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
            } else {
                RenderHelper.renderRect(-7f / 16, -7f / 16, Math.max(itemStack.getCount() * 14f / (itemStack.getMaxStackSize() * 16), 0.001f), 3f / 16, 0.002f, 0XFF25B9FF);
            }
-           RenderHelper.renderText(0, -0.4f, 0, 1.0f / 70, 0XFFFFFFFF, readAmountOrCountOrEnergy(itemStack.getCount(), MODE.ITEM), true);
+           RenderHelper.renderText(0, -5.5F/16, 0, 1.0f / (isProxy()? 110 : 70), 0XFFFFFFFF, readAmountOrCountOrEnergy(itemStack.getCount(), MODE.ITEM), true);
 
         }
     }
@@ -972,7 +976,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         int fluidColor = WidgetOreList.getFluidColor(fluidStack.getFluid());
         int textColor = ((fluidColor & 0xff) + ((fluidColor >> 8) & 0xff) + ((fluidColor >> 16) & 0xff)) / 3 > (255 / 2) ? 0X0 : 0XFFFFFFFF;
         RenderHelper.renderRect(-7f / 16, -7f / 16, 14f / 16, 3f / 16, 0.002f, fluidColor | (255 << 24));
-        RenderHelper.renderText(0, -0.4f, 0, 1.0f / 70, textColor, readAmountOrCountOrEnergy(fluidStack.amount, MODE.FLUID), true);
+        RenderHelper.renderText(0, -5.5F/16, 0, 1.0f / (isProxy()? 110 : 70), textColor, readAmountOrCountOrEnergy(fluidStack.amount, MODE.FLUID), true);
     }
 
     static String[][] units = {
@@ -993,5 +997,4 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         }
         return new DecimalFormat("#.#").format(number * 1.0f / 1000000) + units[2][unit];
     }
-
 }

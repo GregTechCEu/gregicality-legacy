@@ -33,7 +33,9 @@ import gregtech.common.pipelike.cable.tile.TileEntityCable;
 import javafx.util.Pair;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
@@ -48,6 +50,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -305,7 +308,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     protected BlockPattern createStructurePattern() {
-        StringBuilder start = new StringBuilder("ES");
+        StringBuilder start = new StringBuilder("AS");
         StringBuilder slice = new StringBuilder("BB");
         StringBuilder end = new StringBuilder("AA");
         for (int i = 0; i < height - 2; i++) {
@@ -318,8 +321,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 .aisle(slice.toString()).setRepeatable(3, 14)
                 .aisle(end.toString())
                 .where('S', selfPredicate())
-                .where('A', statePredicate(GAMetaBlocks.getMetalCasingBlockState(Steel)))
-                .where('E', abilityPartPredicate(MultiblockAbility.INPUT_ENERGY))
+                .where('A', statePredicate(GAMetaBlocks.getMetalCasingBlockState(Steel)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
                 .where('B', tilePredicate((state, tile) -> tile instanceof MetaTileEntityMonitorScreen))
                 .build();
     }
@@ -365,38 +367,41 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     public void renderMetaTileEntityFast(CCRenderState ccRenderState, Matrix4 matrix4, float partialTicks) {
-        if (!this.isActive()) return;
-        GlStateManager.pushMatrix();
-        /* hack the lightmap */
-        GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
-        net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
-        float lastBrightnessX = OpenGlHelper.lastBrightnessX;
-        float lastBrightnessY = OpenGlHelper.lastBrightnessY;
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
-
+        if (!this.isStructureFormed()) return;
         GlStateManager.pushMatrix();
         RenderHelper.moveToFace(matrix4.m03 - this.frontFacing.rotateY().getXOffset() * 0.5, matrix4.m13 + height - 1.5, matrix4.m23 - this.frontFacing.rotateY().getZOffset() * 0.5, this.frontFacing);
         RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-        RenderHelper.renderRect(0,0,width, height,0.001f,0xFF000000);
+        RenderHelper.renderRect(0, 0, width, height, 0.001f, 0xFF000000);
         GlStateManager.popMatrix();
-        parts.forEach(_part->{
-            MetaTileEntity part = _part.getMetaTileEntity();
-            if (part instanceof MetaTileEntityMonitorScreen && ((MetaTileEntityMonitorScreen) part).isActive()) {
-                BlockPos pos = part.getPos();
-                BlockPos pos2 = this.getPos();
-                GlStateManager.pushMatrix();
-                RenderHelper.moveToFace(matrix4.m03 + pos.getX() - pos2.getX(), matrix4.m13 + pos.getY() - pos2.getY(), matrix4.m23 + pos.getZ() - pos2.getZ(), this.frontFacing);
-                RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-                ((MetaTileEntityMonitorScreen) part).renderScreen(partialTicks);
-                GlStateManager.popMatrix();
-            }
-        });
+        if (isActive) {
+            GlStateManager.pushMatrix();
+            /* hack the lightmap */
+            GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
+            net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+            float lastBrightnessX = OpenGlHelper.lastBrightnessX;
+            float lastBrightnessY = OpenGlHelper.lastBrightnessY;
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
 
-        /* restore the lightmap  */
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
-        net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
-        GL11.glPopAttrib();
-        GlStateManager.popMatrix();
+
+            parts.forEach(_part -> {
+                MetaTileEntity part = _part.getMetaTileEntity();
+                if (part instanceof MetaTileEntityMonitorScreen && ((MetaTileEntityMonitorScreen) part).isActive()) {
+                    BlockPos pos = part.getPos();
+                    BlockPos pos2 = this.getPos();
+                    GlStateManager.pushMatrix();
+                    RenderHelper.moveToFace(matrix4.m03 + pos.getX() - pos2.getX(), matrix4.m13 + pos.getY() - pos2.getY(), matrix4.m23 + pos.getZ() - pos2.getZ(), this.frontFacing);
+                    RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
+                    ((MetaTileEntityMonitorScreen) part).renderScreen(partialTicks);
+                    GlStateManager.popMatrix();
+                }
+            });
+
+            /* restore the lightmap  */
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
+            net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
+            GL11.glPopAttrib();
+            GlStateManager.popMatrix();
+        }
     }
 
     @Override
@@ -439,5 +444,14 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                     .widget(group)
                     .build(this.getHolder(), entityPlayer);
         }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.4", -energyCost));
     }
 }

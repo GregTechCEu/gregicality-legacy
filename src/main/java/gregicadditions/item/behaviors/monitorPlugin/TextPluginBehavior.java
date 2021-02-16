@@ -80,9 +80,13 @@ public class TextPluginBehavior extends MonitorPluginBaseBehavior {
     @Override
     public void renderPlugin(float partialTicks) {
         for (int i = 0; i < texts.length; i++) {
-            RenderHelper.renderText(-0.5f, -0.5f + i / 16f, 0.002f, 1/128f, colors[i], texts[i], false);
+            RenderHelper.renderText(-0.5f, -0.4625f + i / 16f, 0.002f, 1/128f, colors[i], texts[i], false);
         }
+    }
 
+    @Override
+    public boolean hasUI() {
+        return true;
     }
 
     @Override

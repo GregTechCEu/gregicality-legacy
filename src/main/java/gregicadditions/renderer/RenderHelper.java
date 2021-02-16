@@ -132,7 +132,7 @@ public class RenderHelper {
         GlStateManager.pushMatrix();
         final FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
         final int width = fr.getStringWidth( renderedText );
-        GlStateManager.translate(x, y, z);
+        GlStateManager.translate(x, y - scale * 4, z);
         GlStateManager.scale(scale, scale, scale);
         GlStateManager.translate(-0.5f * (centered? 1:0)*width, 0.0f, 0.5f );
 
