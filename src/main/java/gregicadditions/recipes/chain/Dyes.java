@@ -26,7 +26,7 @@ public class Dyes {
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust,SodaAsh)
                 .inputs(ApatiteAcidicLeach.getItemStack())
-                .notConsumable(dust,Bentonite)
+                .notConsumable(dust, Bentonite)
                 .input(dust,SiliconDioxide)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
@@ -85,8 +85,8 @@ public class Dyes {
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(240).EUt(300)
-                .input(dust,Cadmium)
-                .input(dust,Sulfur)
+                .input(dust, Cadmium)
+                .input(dust, Sulfur)
                 .outputs(CadmiumSulfide.getItemStack(2))
                 .buildAndRegister();
 
@@ -97,23 +97,23 @@ public class Dyes {
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(32)
-                .input(dust,BrownLimonite,2)
-                .input(dustTiny,SiliconDioxide)
-                .input(dustTiny,Pyrolusite)
+                .input(dust, BrownLimonite,2)
+                .input(dustTiny, SiliconDioxide)
+                .input(dustTiny, Pyrolusite)
                 .outputs(RawSienna.getItemStack(2))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(32)
-                .input(dust,YellowLimonite,2)
-                .input(dustTiny,SiliconDioxide)
-                .input(dustTiny,Pyrolusite)
+                .input(dust, YellowLimonite,2)
+                .input(dustTiny, SiliconDioxide)
+                .input(dustTiny, Pyrolusite)
                 .outputs(RawSienna.getItemStack(2))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(32)
-                .input(dust,BandedIron,2)
-                .input(dustTiny,SiliconDioxide)
-                .input(dustTiny,Pyrolusite)
+                .input(dust, BandedIron,2)
+                .input(dustTiny, SiliconDioxide)
+                .input(dustTiny, Pyrolusite)
                 .outputs(RawSienna.getItemStack(2))
                 .buildAndRegister();
 
@@ -122,32 +122,33 @@ public class Dyes {
         CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(500)
                 .fluidInputs(Mercury.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(2000))
-                .fluidInputs(Water.getFluid(1000))
-                .fluidOutputs(DiluteNitricAcid.getFluid(2000))
-                .fluidOutputs(MercuryNitrate.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(MercuryNitrate.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(500)
-                .fluidInputs(MercuryNitrate.getFluid(2000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(MercuryNitrate.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .outputs(MercuryChloride.getItemStack())
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(NitricAcid.getFluid(2000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(720).blastFurnaceTemp(700)
                 .inputs(MercuryChloride.getItemStack())
-                .input(dust,Iodine)
-                .fluidInputs(PotassiumHydroxide.getFluid(1000))
-                .outputs(MercuryIodide.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, RockSalt))
+                .input(dust, Iodine, 2)
+                .input(dust, Potassium, 2)
+                .outputs(MercuryIodide.getItemStack())
+                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
                 .inputs(AmmoniumVanadate.getItemStack())
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(8000))
                 .fluidOutputs(AmmoniaNitrate.getFluid(1000))
                 .fluidOutputs(BismuthVanadateSolution.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(190).EUt(600)
@@ -160,10 +161,10 @@ public class Dyes {
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, ArsenicTrioxide)
                 .input(dust, SodaAsh)
-                .outputs(CopperArsenite.getItemStack(3))
+                .outputs(CopperArsenite.getItemStack(2))
                 .buildAndRegister();
 
-        ModHandler.addSmeltingRecipe(CopperArsenite.getItemStack(),ScheelesGreen.getItemStack());
+        ModHandler.addSmeltingRecipe(CopperArsenite.getItemStack(), ScheelesGreen.getItemStack());
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
                 .input(dust, Zincite,4)
@@ -172,16 +173,18 @@ public class Dyes {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
-                .input(dust, CobaltOxide)
+                .input(dust, CobaltOxide, 2)
                 .inputs(Alumina.getItemStack())
                 .outputs(CobaltAluminate.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(640)
-                .fluidInputs(HydrogenCyanide.getFluid(6000))
-                .fluidInputs(IronChloride.getFluid(1000))
-                .fluidInputs(PotassiumHydroxide.getFluid(4000))
-                .outputs(PotassiumFerrocyanate.getItemStack())
+                .fluidInputs(HydrogenCyanide.getFluid(12000))
+                .fluidInputs(IronChloride.getFluid(2000))
+                .fluidInputs(PotassiumHydroxide.getFluid(8000))
+                .outputs(PotassiumFerrocyanate.getItemStack(2))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(6000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(300).EUt(720)
@@ -199,7 +202,7 @@ public class Dyes {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(600)
-                .input(dust, Pyrolusite)
+                .input(dust, Pyrolusite, 2)
                 .input(dust, Zinc)
                 .outputs(OreDictUnifier.get(dust, Zincite))
                 .outputs(ManganeseIIIOxide.getItemStack())
@@ -207,9 +210,10 @@ public class Dyes {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
                 .inputs(ManganeseIIIOxide.getItemStack())
-                .fluidInputs(Ammonia.getFluid(1000))
-                .fluidInputs(PhosphoricAcid.getFluid(2000))
-                .outputs(AmmoniaManganesePhosphate.getItemStack())
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidInputs(PhosphoricAcid.getFluid(4000))
+                .outputs(AmmoniaManganesePhosphate.getItemStack(2))
+                .fluidOutputs(Water.getFluid(5000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(500).blastFurnaceTemp(1000)
