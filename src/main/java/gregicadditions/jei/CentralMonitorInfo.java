@@ -28,7 +28,7 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         List<MultiblockShapeInfo> shapes = new ArrayList<>();
-        for (int i = 3; i <= 14; i++) {
+        for (int i = 3; i <= MetaTileEntityCentralMonitor.MAX_WIDTH; i++) {
             int height = 3;
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             String[] start = new String[height];
@@ -57,6 +57,6 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gtadditions.multiblock.central_monitor.tooltip.2"), I18n.format("gtadditions.multiblock.central_monitor.tooltip.3")};
+        return new String[]{I18n.format("gtadditions.multiblock.central_monitor.tooltip.2", MetaTileEntityCentralMonitor.MAX_WIDTH, MetaTileEntityCentralMonitor.MAX_HEIGHT), I18n.format("gtadditions.multiblock.central_monitor.tooltip.3")};
     }
 }

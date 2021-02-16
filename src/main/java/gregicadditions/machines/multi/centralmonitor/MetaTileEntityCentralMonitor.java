@@ -59,7 +59,9 @@ import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Steel;
 
 public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase implements IFastRenderMetaTileEntity {
-    private final static long energyCost = -50;
+    private final static long ENERGY_COST = -50;
+    public final static int MAX_HEIGHT = 9;
+    public final static int MAX_WIDTH = 14;
     // run-time data
     public int width;
     private long lastUpdate;
@@ -182,7 +184,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     public void setHeight(int height) {
-        if(this.height == height || height < 2 || height > 7) return;
+        if(this.height == height || height < 2 || height > MAX_HEIGHT) return;
         this.height = height;
         reinitializeStructurePattern();
         checkStructurePattern();
@@ -294,7 +296,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @Override
     protected void updateFormedValid() {
         if (this.getTimer() % 20 ==0) {
-            setActive(inputEnergy.changeEnergy(energyCost * this.getMultiblockParts().size()) == energyCost * this.getMultiblockParts().size());
+            setActive(inputEnergy.changeEnergy(ENERGY_COST * this.getMultiblockParts().size()) == ENERGY_COST * this.getMultiblockParts().size());
             if (checkCovers()) {
                 this.getMultiblockParts().forEach(part -> {
                     if (part instanceof MetaTileEntityMonitorScreen) {
@@ -318,7 +320,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         }
         return FactoryBlockPattern.start(UP, BACK, RIGHT)
                 .aisle(start.toString())
-                .aisle(slice.toString()).setRepeatable(3, 14)
+                .aisle(slice.toString()).setRepeatable(3, MAX_WIDTH)
                 .aisle(end.toString())
                 .where('S', selfPredicate())
                 .where('A', statePredicate(GAMetaBlocks.getMetalCasingBlockState(Steel)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
@@ -450,8 +452,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.2", MAX_WIDTH, MAX_HEIGHT));
         tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.3"));
-        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.4", -energyCost));
+        tooltip.add(I18n.format("gtadditions.multiblock.central_monitor.tooltip.4", -ENERGY_COST));
     }
 }
