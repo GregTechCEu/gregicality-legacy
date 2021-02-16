@@ -127,7 +127,7 @@ public class PlatinumSludgeGroupChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .fluidOutputs(AmmoniumChloride.getFluid(2000))
+                .fluidOutputs(AmmoniumChloride.getFluid(1000))
                 .EUt(30)
                 .duration(15)
                 .buildAndRegister();
