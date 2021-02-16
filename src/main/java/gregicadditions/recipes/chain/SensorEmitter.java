@@ -410,7 +410,7 @@ public class SensorEmitter {
                 .notConsumable(VanadiumOxide.getItemStack())
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(1300000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(491520)
                 .inputs(PalladiumAcetate.getItemStack())
                 .input(wireFine, LithiumTitanate)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
