@@ -792,7 +792,7 @@ metaitem.refractory_metals.name=Refractory Metals
 metaitem.light_transition_metals.name=Light Transition Metals
 metaitem.post_transition_metals.name=Post Transition Metals
 metaitem.sodium_metavanadate.name=Sodium Metavanadate
-metaitem.potassium_peroxymonosulfate=Potassium Peroxymonosulfate
+metaitem.potassium_peroxymonosulfate.name=Potassium Peroxymonosulfate
 
 metaitem.mercury_acetate.name=Mercury Acetate
 metaitem.calcium_cyanamide.name=Calcium Cyanamide
@@ -3326,7 +3326,7 @@ fluid.bromine_trifluoride=Bromine Trifluoride
 fluid.auric_fluoride=Auric Fluoride
 fluid.xenoauric_fluoroantimonic_acid=Xenoauric Fluoroantimonic Acid
 fluid.naquadah_sulfate=Naquadah Sulfate
-fluid.naquadah_solution= Naquadah Solution
+fluid.naquadah_solution=Naquadah Solution
 fluid.clear_naquadah_liquid=Clear Naquadah Liquid
 fluid.complicated_naquadah_gas=Complicated Naquadah Gas
 fluid.complicated_heavy_naquadah=Complicated Heavy Naquadah
