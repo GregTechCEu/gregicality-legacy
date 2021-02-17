@@ -20,7 +20,9 @@ public class IodineChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(1250)
                 .fluidInputs(CalicheIodateBrine.getFluid(1000))
                 .fluidInputs(SulfurDioxide.getFluid(1000))
+                .input(dust, Carbon)
                 .fluidOutputs(IodideSolution.getFluid(1000))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate))
                 .buildAndRegister();
 
@@ -55,7 +57,7 @@ public class IodineChain {
                 .fluidOutputs(IodizedBrine.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1250)
+        MIXER_RECIPES.recipeBuilder().duration(240).EUt(1250)
                 .fluidInputs(IodizedBrine.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(300))
                 .fluidOutputs(IodineBrineMix.getFluid(1300))
