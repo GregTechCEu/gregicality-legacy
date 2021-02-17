@@ -1,11 +1,14 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.recipes.GAMachineRecipeRemoval;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -35,6 +38,7 @@ public class GoldChain {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
                 .input(dust, GoldLeach, 4)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(AquaRegia.getFluid(3000))
                 .chancedOutput(LeadSulfate.getItemStack(), 1000, 0)
@@ -42,7 +46,25 @@ public class GoldChain {
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(80).EUt(30)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, GoldLeach, 4)
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(AquaRegia.getFluid(3000))
+                .chancedOutput(LeadSulfate.getItemStack(), 1000, 0)
+                .fluidOutputs(ChloroauricAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(360).EUt(30)
+                .inputs(LeadSulfate.getItemStack(6))
+                .outputs(OreDictUnifier.get(dust, Lead))
+                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .fluidOutputs(Oxygen.getFluid(4000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .notConsumable(new IntCircuitIngredient(1))
                 .input(dust, Potassium, 2)
                 .input(dust, Sulfur, 2)
