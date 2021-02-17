@@ -341,7 +341,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder()
-                .inputs(IndiumTrioxide.getItemStack(2))
+                .inputs(IndiumTrioxide.getItemStack())
                 .input(dust, Carbon, 3)
                 .outputs(OreDictUnifier.get(dust, Indium, 2))
                 .fluidOutputs(CarbonDioxide.getFluid(3000))
