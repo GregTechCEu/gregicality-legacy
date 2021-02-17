@@ -76,13 +76,14 @@ public class NanotubeChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(75000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(75000)
                 .notConsumable(ThalliumChloride.getItemStack())
                 .fluidInputs(Formaldehyde.getFluid(1000))
-                .fluidInputs(Acetaldehyde.getFluid(1000))
+                .fluidInputs(Acetaldehyde.getFluid(2000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Pyridine.getFluid(1000))
-                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Water.getFluid(3000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(150).EUt(400)
