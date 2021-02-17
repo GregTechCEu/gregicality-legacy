@@ -140,13 +140,13 @@ public class GeneratorFuels {
         registerRocketFuel(DenseHydrazineFuelMixture.getFluid(9), 80, GAValues.EV);
         registerRocketFuel(RP1RocketFuel.getFluid(12), 40, GAValues.EV);
 
-        FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 12000, GAValues.LV);
-        FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 5000, GAValues.LV);
-        FuelRecipes.registerGasGeneratorFuel(LightENaquadahFuel.getFluid(1), 12500, GAValues.LV);
-        registerNaquadahReactorFuel(HeavyNaquadahFuel.getFluid(1), 20000, GAValues.LV);
-        registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 10000, GAValues.LV);
-        registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 30000, GAValues.LV);
-        registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 20000, GAValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 8000, GAValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 4000, GAValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(LightENaquadahFuel.getFluid(1), 10000, GAValues.LV);
+        registerNaquadahReactorFuel(HeavyNaquadahFuel.getFluid(1), 17500, GAValues.LV);
+        registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 7500, GAValues.LV);
+        registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 25000, GAValues.LV);
+        registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 17500, GAValues.LV);
         registerHyperReactorFuel(HyperFuelI.getFluid(1), 300, GAValues.IV);
         registerHyperReactorFuel(HyperFuelII.getFluid(1), 500, GAValues.IV);
         registerHyperReactorFuel(HyperFuelIII.getFluid(1), 700, GAValues.IV);
