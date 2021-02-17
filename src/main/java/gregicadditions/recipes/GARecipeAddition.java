@@ -685,7 +685,7 @@ public class GARecipeAddition {
 
         //Rocket fuel chemicalcha
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30).fluidInputs(Ammonia.getFluid(1000), HydrogenPeroxide.getFluid(1000)).fluidOutputs(Hydrazine.getFluid(1000), Water.getFluid(100)).buildAndRegister();
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240).fluidInputs(Air.getFluid(15000), EthylAnthraHydroQuinone.getFluid(5000), Anthracene.getFluid(1000)).fluidOutputs(HydrogenPeroxide.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240).fluidInputs(Air.getFluid(15000), EthylAnthraHydroQuinone.getFluid(5000), Anthracene.getFluid(50)).fluidOutputs(HydrogenPeroxide.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(800).EUt(120).fluidInputs(Hydrogen.getFluid(2000), EthylAnthraQuinone.getFluid(4000)).fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000)).buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(300).EUt(120).input(dust, PhthalicAnhydride, 4).fluidInputs(EthylBenzene.getFluid(2000)).fluidOutputs(EthylAnthraQuinone.getFluid(4000)).buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30).notConsumable(new IntCircuitIngredient(1)).fluidInputs(Ethylene.getFluid(2000), Benzene.getFluid(2000)).fluidOutputs(EthylBenzene.getFluid(4000)).buildAndRegister();
