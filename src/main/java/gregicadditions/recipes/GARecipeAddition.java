@@ -1250,6 +1250,7 @@ public class GARecipeAddition {
         CosmicComponents.init();
         SupraCausalComponents.init();
         UltimateMaterials.init();
+        DigitalInterfaces.init();
     }
 
     public static void forestrySupport() {

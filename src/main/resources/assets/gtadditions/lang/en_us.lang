@@ -3981,6 +3981,9 @@ metaitem.ctc.computational.unit.name=Closed Timelike Curve Computational Unit
 metaitem.recursively.folded.negative.space.name=Recursively Folded Negative Space
 metaitem.insulation_wire_assembly.name=Insulation Wire Assembly
 
+metaitem.coloured.leds.name=Coloured LEDs
+metaitem.display.name=Display
+
 material.qcd_confined_matter=Quantumchromodynamically Confined Matter
 
 fluid.free_electron_gas=Free Electron Gas
