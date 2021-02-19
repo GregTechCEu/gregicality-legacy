@@ -34,6 +34,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     public static void registerRecipes(IModRegistry registry) {
         registry.addRecipes(Lists.newArrayList(
+                new MultiblockInfoRecipeWrapper(new CentralMonitorInfo()),
                 new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()),
                 new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()),
                 new MultiblockInfoRecipeWrapper(new DieselEngineInfo()),

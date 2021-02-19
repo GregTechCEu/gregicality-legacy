@@ -16,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.function.BiFunction;
 
 public class CoverBehaviors {
+
     public static void init() {
         registerBehavior(100, new ResourceLocation(Gregicality.MODID, "conveyor.uhv"), GAMetaItems.CONVEYOR_MODULE_UHV, (tile, side) -> new CoverConveyor(tile, side, 9, 16 * 64));
         registerBehavior(101, new ResourceLocation(Gregicality.MODID, "conveyor.uev"), GAMetaItems.CONVEYOR_MODULE_UEV, (tile, side) -> new CoverConveyor(tile, side, 9, 16 * 64));
@@ -36,8 +37,9 @@ public class CoverBehaviors {
         registerBehavior(116, new ResourceLocation(Gregicality.MODID, "pump.uxv"), GAMetaItems.ELECTRIC_PUMP_UXV, (tile, side) -> new CoverPump(tile, side, 9, Integer.MAX_VALUE));
         registerBehavior(117, new ResourceLocation(Gregicality.MODID, "pump.max"), GAMetaItems.ELECTRIC_PUMP_MAX, (tile, side) -> new CoverPump(tile, side, 9, Integer.MAX_VALUE));
 
+        registerBehavior(118, new ResourceLocation(Gregicality.MODID, CoverDigitalInterface.path), GAMetaItems.COVER_DIGITAL_INTERFACE, CoverDigitalInterface::new);
     }
-    public static void registerBehavior(int coverNetworkId, ResourceLocation coverId, MetaItem.MetaValueItem placerItem, BiFunction<ICoverable, EnumFacing, CoverBehavior> behaviorCreator) {
+    public static void registerBehavior(int coverNetworkId, ResourceLocation coverId, MetaItem<?>.MetaValueItem placerItem, BiFunction<ICoverable, EnumFacing, CoverBehavior> behaviorCreator) {
         CoverDefinition coverDefinition = new CoverDefinition(coverId, behaviorCreator, placerItem.getStackForm());
         CoverDefinition.registerCover(coverNetworkId, coverDefinition);
         placerItem.addComponents(new CoverPlaceBehavior(coverDefinition));
