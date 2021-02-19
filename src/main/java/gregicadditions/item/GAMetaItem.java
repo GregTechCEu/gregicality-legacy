@@ -461,6 +461,14 @@ public class GAMetaItem extends MaterialMetaItem {
         Fermium.waste = FERMIUM_WASTE;
         Mendelevium.waste = MENDELEVIUM_WASTE;
 
+        MV_INFINITE_WATER_SOURCE = addItem(571, "infinite.water.mv");
+        HV_INFINITE_WATER_SOURCE = addItem(572, "infinite.water.hv");
+        EV_INFINITE_WATER_SOURCE = addItem(573, "infinite.water.ev");
+        IV_INFINITE_WATER_SOURCE = addItem(574, "infinite.water.iv");
+        LuV_INFINITE_WATER_SOURCE = addItem(575, "infinite.water.luv");
+        ZPM_INFINITE_WATER_SOURCE = addItem(576, "infinite.water.zpm");
+        UV_INFINITE_WATER_SOURCE = addItem(577, "infinite.water.uv");
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");

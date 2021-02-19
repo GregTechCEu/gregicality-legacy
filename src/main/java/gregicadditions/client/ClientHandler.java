@@ -78,6 +78,7 @@ public class ClientHandler {
     public static TextureArea BUTTON_INTERFACE = TextureArea.fullImage("textures/blocks/cover/cover_interface_computer_button.png");
     public static TextureArea COVER_INTERFACE_MACHINE_ON_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_on_proxy.png");
     public static TextureArea COVER_INTERFACE_MACHINE_OFF_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_off_proxy.png");
+    public static SimpleOverlayRenderer COVER_INFINITE_WATER = new SimpleOverlayRenderer("cover/cover_water_overlay");
 
 
     static {
