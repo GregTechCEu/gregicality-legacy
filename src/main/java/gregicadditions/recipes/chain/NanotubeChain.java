@@ -27,7 +27,8 @@ public class NanotubeChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(3200)
                 .inputs(PrecipitatedAmmoniumSulfate.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(AmmoniumPersulfate.getFluid(2000))
+                .fluidOutputs(AmmoniumPersulfate.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(280000)
