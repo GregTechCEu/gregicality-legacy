@@ -466,9 +466,9 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_MESH_CONTAINMENT_UNIT;
     public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
     public static MetaItem<?>.MetaValueItem COSMIC_MESH;
+    public static MetaItem<?>.MetaValueItem ROD_FIELD_SHAPE;
 
     public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
-
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();

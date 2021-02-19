@@ -181,5 +181,12 @@ public class SupraCausalComponents {
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(OreDictUnifier.get(plate, QCDMatter))
                 .buildAndRegister();
+        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
+                .fluidInputs(QCDMatter.getFluid(144))
+                .fluidInputs(LiquidHelium.getFluid(20000))
+                .fluidOutputs(Helium.getFluid(20000))
+                .notConsumable(ROD_FIELD_SHAPE.getStackForm())
+                .outputs(OreDictUnifier.get(stick, QCDMatter))
+                .buildAndRegister();
     }
 }
