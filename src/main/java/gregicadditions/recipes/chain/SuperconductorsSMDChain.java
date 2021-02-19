@@ -634,7 +634,7 @@ public class SuperconductorsSMDChain {
                 .duration(20)
                 .buildAndRegister();
 
-        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(340).EUt(8740000)
+        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(340).EUt(8380000)
                 .inputs(ACTINIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(LiquidHelium.getFluid(24000))
                 .outputs(ActiniumSuperhydride.getItemStack())

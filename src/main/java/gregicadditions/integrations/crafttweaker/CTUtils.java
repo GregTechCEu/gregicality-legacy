@@ -6,6 +6,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import gregicadditions.item.GAOredictItem;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.GALog;
@@ -13,6 +14,7 @@ import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.MaterialIconSet;
+import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -87,6 +89,11 @@ public class CTUtils {
     @ZenMethod("registerDust")
     public static void registerDust(String name, short id, int rgb, String materialIconSet) {
         new SimpleDustMaterial(name, rgb, id, MaterialIconSet.valueOf(materialIconSet));
+    }
+
+    @ZenMethod("registerItem")
+    public static void registerItem(String name, short id, int rgb, String materialIconSet, String orePrefix) {
+        new GAOredictItem.OreDictItem(id, name, rgb, MaterialIconSet.valueOf(materialIconSet), OrePrefix.valueOf(orePrefix));
     }
 
     @ZenMethod("registerFluid")

@@ -446,7 +446,8 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_MESH_CONTAINMENT_UNIT = addItem(567,"cosmic.mesh.containment.unit");
         COSMIC_MESH = addItem(568,"cosmic.mesh");
         COSMIC_FABRIC = addItem(569,"cosmic.fabric");
-
+        ROD_FIELD_SHAPE = addItem(570, "rod.field.shape");
+        
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
