@@ -179,7 +179,6 @@ public class NanotubeChain {
                 .fluidOutputs(BoronFluoride.getFluid(4000))
                 .fluidOutputs(Oct1ene.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, Platinum, 2))
-                .outputs(OreDictUnifier.get(dust , Silver, 4))
                 .outputs(OreDictUnifier.get(dust, Iodine, 8))
                 .buildAndRegister();
 
