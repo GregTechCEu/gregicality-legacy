@@ -84,6 +84,7 @@ public class ZylonChain {
                 .fluidOutputs(Dinitrodipropanyloxybenzene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(4000))
                 .fluidOutputs(AceticAcid.getFluid(1000))
+                .fluidOutputs(SodiumAcetate.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Salt))
                 .outputs(OreDictUnifier.get(dust, Carbon, 8))
                 .EUt(2000000)

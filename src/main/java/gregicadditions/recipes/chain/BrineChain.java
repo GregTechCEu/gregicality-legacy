@@ -88,18 +88,7 @@ public class BrineChain {
                 .fluidInputs(Ammonia.getFluid(4000))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(Hydroxilamine.getFluid(1000))
-                .outputs(PrecipitatedAmmoniumSulfate.getItemStack(2))
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(100).EUt(125)
-                .fluidInputs(Water.getFluid(1000))
-                .inputs(PrecipitatedAmmoniumSulfate.getItemStack())
-                .fluidOutputs(AmmoniumSulfate.getFluid(1000))
-                .buildAndRegister();
-
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(250).EUt(125)
-                .fluidInputs(AmmoniumSulfate.getFluid(1000))
-                .outputs(PrecipitatedAmmoniumSulfate.getItemStack())
+                .fluidOutputs(AmmoniumSulfate.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(3000)
