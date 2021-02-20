@@ -27,17 +27,17 @@ public class PlatinumSludgeGroupChain {
 
         BLAST_RECIPES.recipeBuilder()
                 .blastFurnaceTemp(775)
-                .input(dust, IrLeachResidue, 2)
-                .outputs(OreDictUnifier.get(dust, IridiumDioxide))
-                .outputs(OreDictUnifier.get(dust, PGSDResidue))
+                .input(dust, IrLeachResidue)
+                .outputs(OreDictUnifier.get(dust, IridiumDioxide, 2))
+                .outputs(OreDictUnifier.get(dust, PGSDResidue, 5))
                 .EUt(120)
                 .duration(200)
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, IridiumDioxide)
+                .input(dust, IridiumDioxide, 6)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(AcidicIridiumSolution.getFluid(2000))
+                .fluidOutputs(AcidicIridiumSolution.getFluid(1000))
                 .duration(300)
                 .EUt(30)
                 .buildAndRegister();
@@ -46,15 +46,15 @@ public class PlatinumSludgeGroupChain {
                 .fluidInputs(AcidicIridiumSolution.getFluid(1000))
                 .fluidInputs(AmmoniumChloride.getFluid(3000))
                 .fluidOutputs(Ammonia.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, IridiumChloride))
+                .outputs(OreDictUnifier.get(dust, IridiumChloride, 4))
                 .duration(300)
                 .EUt(30)
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, IridiumChloride, 2)
-                .input(dust, Calcium, 3)
-                .fluidOutputs(CalciumChloride.getFluid(3000))
+                .input(dust, IridiumChloride, 4)
+                .fluidOutputs(Hydrogen.getFluid(3000))
+                .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, PGSDResidue2))
                 .outputs(OreDictUnifier.get(dust, Iridium))
                 .duration(300)
@@ -65,7 +65,7 @@ public class PlatinumSludgeGroupChain {
                 .input(dust, PlatinumMetallicPowder)
                 .fluidInputs(AquaRegia.getFluid(1000))
                 .fluidOutputs(PlatinumConcentrate.getFluid(1000))
-                .outputs(OreDictUnifier.get(dustTiny, PlatinumResidue))
+                .outputs(OreDictUnifier.get(dustTiny, PlatinumResidue, 4))
                 .EUt(30)
                 .duration(250)
                 .buildAndRegister();
@@ -93,22 +93,24 @@ public class PlatinumSludgeGroupChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
-                .input(dust, PlatinumResidue)
-                .fluidInputs(PotassiumDisulfate.getFluid(360))
+                .input(dust, PlatinumResidue, 4)
+                .input(dust, PotassiumDisulfate, 33)
+                .fluidInputs(Oxygen.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, LeachResidue))
-                .fluidOutputs(RhodiumSulfate.getFluid(360))
+                .outputs(OreDictUnifier.get(dust, Potassium, 6))
+                .fluidOutputs(RhodiumSulfate.getFluid(288))
                 .blastFurnaceTemp(775)
                 .EUt(120)
                 .duration(200)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
-                .input(dust, Saltpeter, 10)
+                .input(dust, SodaAsh, 18)
                 .input(dust, LeachResidue, 10)
-                .fluidInputs(SaltWater.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, IrOsLeachResidue, 6))
                 .outputs(OreDictUnifier.get(dust, SodiumRuthenate, 3))
-                .fluidOutputs(Steam.getFluid(1000))
+                .fluidOutputs(CarbonMonoxde.getFluid(3000))
                 .blastFurnaceTemp(775)
                 .EUt(120)
                 .duration(200)
@@ -118,7 +120,7 @@ public class PlatinumSludgeGroupChain {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .input(dust, IrOsLeachResidue, 2)
                 .fluidOutputs(AcidicOsmiumSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, IrLeachResidue))
+                .outputs(OreDictUnifier.get(dust, IrLeachResidue, 2))
                 .blastFurnaceTemp(775)
                 .EUt(120)
                 .duration(100)
@@ -138,8 +140,8 @@ public class PlatinumSludgeGroupChain {
                 .outputs(OreDictUnifier.get(dustTiny, PlatinumSaltCrude, 12))
                 .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 6))
                 .fluidOutputs(PalladiumAmmonia.getFluid(200))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                .fluidOutputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1200))
                 .EUt(30)
                 .duration(1200)
                 .buildAndRegister();
@@ -363,7 +365,7 @@ public class PlatinumSludgeGroupChain {
         ValidationResult<Recipe> result = DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicOsmiumSolution.getFluid(1000))
                 .fluidOutputs(OsmiumSolution.getFluid(500))
-                .fluidOutputs(Water.getFluid(500))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(150).build();
         DISTILLATION_RECIPES.addRecipe(result);
@@ -376,22 +378,6 @@ public class PlatinumSludgeGroupChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .EUt(30)
                 .duration(300)
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, PGSDResidue, 5)
-                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 3))
-                .outputs(OreDictUnifier.get(dust, Gold, 2))
-                .EUt(10)
-                .duration(226)
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, PGSDResidue2, 2)
-                .outputs(OreDictUnifier.get(dust, Nickel))
-                .outputs(OreDictUnifier.get(dust, Copper))
-                .EUt(10)
-                .duration(60)
                 .buildAndRegister();
 
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
