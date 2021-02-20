@@ -191,7 +191,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final FluidMaterial Nitrochlorobenzene = new FluidMaterial(847, "nitrochlorobenzene", 0x8FB51A, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Dimethylbenzene = new FluidMaterial(846, "dimethylbenzene", 0x669C40, MaterialIconSet.DULL, of(), 0);
-    public static final DustMaterial Potassiumdichromate = new DustMaterial(845, "potassiumdichromate", 0xFF087F, MaterialIconSet.DULL, 0, of(), 0);
+    public static final DustMaterial Potassiumdichromate = new DustMaterial(845, "potassiumdichromate", 0xFF087F, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 2), new MaterialStack(Chrome, 2), new MaterialStack(Oxygen, 7)), 0);
     public static final FluidMaterial Dichlorobenzidine = new FluidMaterial(843, "dichlorobenzidine", 0xA1DEA6, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Diaminobenzidine = new FluidMaterial(842, "diaminobenzidine", 0x337D59, MaterialIconSet.DULL, of(), 0);
     public static final FluidMaterial Diphenylisophtalate = new FluidMaterial(841, "diphenylisophtalate", 0x246E57, MaterialIconSet.DULL, of(), 0);
