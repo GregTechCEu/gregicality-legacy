@@ -11,25 +11,23 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class NiobiumTantalumChain {
     public static void init() {
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(1500)
-                .input(dust, Pyrolusite)
-                .input(dustTiny, Sugar)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(CarbonDioxide.getFluid(111))
-                .outputs(ManganeseSulfate.getItemStack(2))
+                .input(dust, Pyrolusite, 3)
+                .fluidInputs(SulfurDioxide.getFluid(1000))
+                .outputs(ManganeseSulfate.getItemStack(4))
                 .buildAndRegister();
+
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(1500)
-                .input(dust, Rhodocrosite)
-                .input(dustTiny, Sugar)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(CarbonDioxide.getFluid(1111))
-                .outputs(ManganeseSulfate.getItemStack(2))
+                .input(dust, Rhodocrosite, 5)
+                .fluidInputs(SulfurDioxide.getFluid(1000))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .outputs(ManganeseSulfate.getItemStack(4))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(500)
-                .inputs(ManganeseSulfate.getItemStack(2))
+                .inputs(ManganeseSulfate.getItemStack(4))
                 .outputs(OreDictUnifier.get(dust, Manganese))
                 .outputs(OreDictUnifier.get(dust, Sulfur))
-                .fluidOutputs(Oxygen.getFluid(4000))
+                .fluidOutputs(Oxygen.getFluid(2000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(340).EUt(420)
@@ -40,7 +38,7 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(1300).blastFurnaceTemp(1600)
-                .inputs(CassiteriteCokePellets.getItemStack(2))
+                .inputs(CassiteriteCokePellets.getItemStack(3))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingot, Tin))
@@ -54,21 +52,19 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(1300).blastFurnaceTemp(1600)
-                .inputs(NbTaContainingDust.getItemStack())
-                .input(dust, Carbon)
-                .input(dust, SiliconDioxide, 2)
-                .fluidInputs(Oxygen.getFluid(1000))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Ferrosilite, 2))
+                .inputs(NbTaContainingDust.getItemStack(2))
+                .input(dust, SiliconDioxide)
+                .fluidInputs(Oxygen.getFluid(13000))
+                .outputs(OreDictUnifier.get(dust, Ferrosilite))
                 .outputs(NiobiumTantalumOxide.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(2400)
-                .fluidInputs(HydrofluoricAcid.getFluid(12000))
+                .fluidInputs(HydrofluoricAcid.getFluid(20000))
                 .inputs(NiobiumTantalumOxide.getItemStack())
-                .fluidOutputs(SiliconFluoride.getFluid(1000))
-                .outputs(AluminiumTrifluoride.getItemStack())
-                .fluidOutputs(NbTaFluorideMix.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Aluminium))
+                .fluidOutputs(NbTaFluorideMix.getFluid(2000))
+                .fluidOutputs(Water.getFluid(10000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(230).EUt(1300).blastFurnaceTemp(2300)

@@ -634,7 +634,7 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleDustMaterial BariumSulfide = new SimpleDustMaterial("barium_sulfide", 0xc2c2be, (short) 93, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate", 0xfcfcfa, (short) 94, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide", 0xfcfcfa, (short) 95, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide", 0xfcfcfa, (short) 95, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Oxygen, 1)));
     public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate", 0xfcfcfa, (short) 96, MaterialIconSet.DULL);
 
     public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture", 0xb8c319, (short) 97, MaterialIconSet.DULL);
@@ -884,23 +884,23 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial GreenSapphireSlurry = new SimpleFluidMaterial("green_sapphire_slurry", GreenSapphire.materialRGB);
     public static final SimpleFluidMaterial DiluteNitricAcid = new SimpleFluidMaterial("dilute_nitric_acid", (NitricAcid.materialRGB + Water.materialRGB) / 2);
 
-    public static final SimpleDustMaterial ManganeseSulfate = new SimpleDustMaterial("manganese_sulfate", 0xfcfcfa, (short) 176, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial TinSlag = new SimpleDustMaterial("tin_slag", 0xc8b9a9, (short) 177, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial NbTaContainingDust = new SimpleDustMaterial("nbta_containing_dust", 0xc8b9a9, (short) 178, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial NiobiumTantalumOxide = new SimpleDustMaterial("niobium_tantalum_oxide", 0xfcfcfa, (short) 179, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial ManganeseSulfate = new SimpleDustMaterial("manganese_sulfate", 0xfcfcfa, (short) 176, MaterialIconSet.DULL, of(new MaterialStack(Manganese, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)));
+    public static final SimpleDustMaterial TinSlag = new SimpleDustMaterial("tin_slag", 0xc8b9a9, (short) 177, MaterialIconSet.DULL, of(new MaterialStack(DarkAsh, 1), new MaterialStack(Niobium, 1), new MaterialStack(Tantalum, 1)));
+    public static final SimpleDustMaterial NbTaContainingDust = new SimpleDustMaterial("nbta_containing_dust", 0xc8b9a9, (short) 178, MaterialIconSet.DULL, of(new MaterialStack(Niobium, 1), new MaterialStack(Tantalum, 1)));
+    public static final SimpleDustMaterial NiobiumTantalumOxide = new SimpleDustMaterial("niobium_tantalum_oxide", 0xfcfcfa, (short) 179, MaterialIconSet.SHINY, of(new MaterialStack(Niobium, 2), new MaterialStack(Oxygen, 5), new MaterialStack(Tantalum, 2), new MaterialStack(Oxygen, 5)));
     public static final SimpleDustMaterial FusedColumbite = new SimpleDustMaterial("fused_columbite", 0xCCCC00, (short) 180, MaterialIconSet.DULL);
     public static final SimpleDustMaterial LeachedColumbite = new SimpleDustMaterial("leached_columbite", 0xCCCC00, (short) 181, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial FusedTantalite = new SimpleDustMaterial("fused_tantalite", 0x915028, (short) 182, MaterialIconSet.DULL);
     public static final SimpleDustMaterial LeachedTantalite = new SimpleDustMaterial("leached_tantalite", 0x915028, (short) 183, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial ColumbiteMinorOxideResidue = new SimpleDustMaterial("columbite_minor_oxide_residue", 0x915028, (short) 184, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ColumbiteMinorOxideResidue = new SimpleDustMaterial("columbite_minor_oxide_residue", 0x915028, (short) 184, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Cassiterite, 1), new MaterialStack(TungstenTrioxide, 1), new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3)));
     public static final SimpleDustMaterial TantaliteMinorOxideResidue = new SimpleDustMaterial("tantalite_minor_oxide_residue", 0xCCCC00, (short) 185, MaterialIconSet.DULL);
     public static final SimpleDustMaterial LeachedPyrochlore = new SimpleDustMaterial("leached_pyrochlore", 0x996633, (short) 186, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial AcidicLeachedPyrochlore = new SimpleDustMaterial("acidic_leached_pyrochlore", 0x996633, (short) 187, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PotasssiumFluoroNiobate = new SimpleDustMaterial("potassium_fluoroniobate", 0x73ff00, (short) 188, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PotasssiumFluoroTantalate = new SimpleDustMaterial("potassium_fluorotantalate", 0x73ff00, (short) 189, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial BariumPeroxide = new SimpleDustMaterial("barium_peroxide", 0xfcfcfa, (short) 190, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial CassiteriteCokePellets = new SimpleDustMaterial("cassiterite_coke_pellets", 0x8f8f8f, (short) 191, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial IronSulfateDust = new SimpleDustMaterial("iron_sulfate_dust", IronSulfate.rgb, (short) 192, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BariumPeroxide = new SimpleDustMaterial("barium_peroxide", 0xfcfcfa, (short) 190, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Oxygen, 2)));
+    public static final SimpleDustMaterial CassiteriteCokePellets = new SimpleDustMaterial("cassiterite_coke_pellets", 0x8f8f8f, (short) 191, MaterialIconSet.DULL, of(new MaterialStack(Cassiterite, 1), new MaterialStack(RareEarth, 1)));
+    public static final SimpleDustMaterial IronSulfateDust = new SimpleDustMaterial("iron_sulfate_dust", IronSulfate.rgb, (short) 192, MaterialIconSet.DULL, of(new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial StrontiumCarbonate = new SimpleDustMaterial("strontium_carbonate", StrontiumSulfate.rgb, (short) 193, MaterialIconSet.DULL);
 
     public static final SimpleFluidMaterial NbTaSeparationMixture = new SimpleFluidMaterial("nbta_separation_mixture", 0xbcac93);
