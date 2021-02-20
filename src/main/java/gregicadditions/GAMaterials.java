@@ -178,7 +178,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial CrudeRhodiumMetall = new DustMaterial(868, "crude_rhodium_metal", 0x666666, MaterialIconSet.DULL, 2, of(), 0);
     public static final GemMaterial RhodiumSalt = new GemMaterial(867, "rhodium_salt", 0x848484, MaterialIconSet.GEM_VERTICAL, 2, of(), 0);
     public static final FluidMaterial RhodiumSaltSolution = new FluidMaterial(866, "rhodium_salt_solution", 0x667788, MaterialIconSet.FLUID, of(), 0);
-    public static final DustMaterial SodiumNitrate = new DustMaterial(865, "sodium_nitrate", 0x846684, MaterialIconSet.ROUGH, 2, of(), 0);
+    public static final DustMaterial SodiumNitrate = new DustMaterial(865, "sodium_nitrate", 0x846684, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Sodium, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial RhodiumNitrate = new DustMaterial(864, "rhodium_nitrate", 0x776649, MaterialIconSet.QUARTZ, 2, of(), 0);
     public static final DustMaterial ZincSulfate = new DustMaterial(863, "zinc_sulfate", 0x846649, MaterialIconSet.QUARTZ, 2, of(), 0);
     public static final DustMaterial RhodiumFilterCake = new DustMaterial(862, "rhodium_filter_cake", 0x776649, MaterialIconSet.QUARTZ, 2, of(), 0);
@@ -611,9 +611,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", 0xbf95f5, (short) 73, MaterialIconSet.DULL);
     public static final SimpleDustMaterial MgClBrominide = new SimpleDustMaterial("mgcl_bromide", 0xbf95f5, (short) 74, MaterialIconSet.DULL);
     public static final SimpleDustMaterial NMethylglicine = new SimpleDustMaterial("n_methylglicine", 0xbf95f5, (short) 75, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", 0xbf95f5, (short) 78, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", 0xbf95f5, (short) 76, MaterialIconSet.DULL, of(new MaterialStack(Sodium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 2)));
+    public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", 0xbf95f5, (short) 77, MaterialIconSet.SHINY, of(new MaterialStack(Zinc, 1), new MaterialStack(Iron, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Chlorine, 1)));
+    public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", 0xbf95f5, (short) 78, MaterialIconSet.SHINY, of(new MaterialStack(Carbon, 13), new MaterialStack(Hydrogen, 8), new MaterialStack(Oxygen, 1), new MaterialStack(Fluorine, 2)));
     public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", 0xbf95f5, (short) 80, MaterialIconSet.SHINY);
 
