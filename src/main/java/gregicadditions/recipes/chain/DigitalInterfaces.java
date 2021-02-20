@@ -85,6 +85,13 @@ public class DigitalInterfaces {
                     .fluidInputs(fluidStack)
                     .outputs(COVER_DIGITAL_INTERFACE.getStackForm())
                     .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(400)
+                    .inputs(DISPLAY.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.Basic)
+                    .input(wireFine, Copper, 2)
+                    .fluidInputs(fluidStack)
+                    .outputs(PLUGIN_TEXT.getStackForm())
+                    .buildAndRegister();
         }
     }
 }
