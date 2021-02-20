@@ -101,7 +101,7 @@ public class NuclearChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, LithiumFluoride))
+                .outputs(OreDictUnifier.get(dust, LithiumFluoride, 2))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
@@ -125,8 +125,8 @@ public class NuclearChain {
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Beryllium)
-                .fluidInputs(Fluorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, BerylliumFluoride))
+                .fluidInputs(Fluorine.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, BerylliumFluoride, 3))
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder().duration(600).EUt(64)
                 .input(dust, LithiumFluoride)
