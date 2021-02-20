@@ -38,7 +38,16 @@ public class CoverBehaviors {
         registerBehavior(117, new ResourceLocation(Gregicality.MODID, "pump.max"), GAMetaItems.ELECTRIC_PUMP_MAX, (tile, side) -> new CoverPump(tile, side, 9, Integer.MAX_VALUE));
 
         registerBehavior(118, new ResourceLocation(Gregicality.MODID, CoverDigitalInterface.path), GAMetaItems.COVER_DIGITAL_INTERFACE, CoverDigitalInterface::new);
+
+        registerBehavior(119, new ResourceLocation(Gregicality.MODID, "infinite.water.mv"), GAMetaItems.MV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 2));
+        registerBehavior(120, new ResourceLocation(Gregicality.MODID, "infinite.water.hv"), GAMetaItems.HV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 3));
+        registerBehavior(121, new ResourceLocation(Gregicality.MODID, "infinite.water.ev"), GAMetaItems.EV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 4));
+        registerBehavior(122, new ResourceLocation(Gregicality.MODID, "infinite.water.iv"), GAMetaItems.IV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 5));
+        registerBehavior(123, new ResourceLocation(Gregicality.MODID, "infinite.water.luv"), GAMetaItems.LuV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 6));
+        registerBehavior(124, new ResourceLocation(Gregicality.MODID, "infinite.water.zpm"), GAMetaItems.ZPM_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 7));
+        registerBehavior(125, new ResourceLocation(Gregicality.MODID, "infinite.water.uv"), GAMetaItems.UV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 8));
     }
+
     public static void registerBehavior(int coverNetworkId, ResourceLocation coverId, MetaItem<?>.MetaValueItem placerItem, BiFunction<ICoverable, EnumFacing, CoverBehavior> behaviorCreator) {
         CoverDefinition coverDefinition = new CoverDefinition(coverId, behaviorCreator, placerItem.getStackForm());
         CoverDefinition.registerCover(coverNetworkId, coverDefinition);

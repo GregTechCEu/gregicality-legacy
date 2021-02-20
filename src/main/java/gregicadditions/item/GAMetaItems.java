@@ -471,9 +471,21 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
 
+
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
     public static MetaItem<?>.MetaValueItem DISPLAY;
   
+    //infinite water source cover
+//    public static MetaItem<?>.MetaValueItem LV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem MV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem HV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem EV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem IV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem LuV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
+
+
     // GA oredict items
     public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
 
