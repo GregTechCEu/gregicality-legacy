@@ -821,7 +821,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PalladiumBisDibenzylidieneacetone = new SimpleDustMaterial("palladium_bisdibenzylidieneacetone", 0Xbe81a0, (short) 158, MaterialIconSet.DULL);
     public static final SimpleDustMaterial PotassiumTetrachloroplatinate = new SimpleDustMaterial("potassium_tetrachloroplatinate", 0xffba54, (short) 159, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 2), new MaterialStack(Platinum, 1), new MaterialStack(Chlorine, 4)));
     public static final SimpleDustMaterial NickelTriphenylPhosphite = new SimpleDustMaterial("nickel_triphenyl_phosphite", 0xd9d973, (short) 160, MaterialIconSet.SHINY);
-    public static final SimpleDustMaterial Dichlorocycloctadieneplatinium = new SimpleDustMaterial("dichlorocycloctadieneplatinium", 0xe0f78a, (short) 161, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial Dichlorocycloctadieneplatinium = new SimpleDustMaterial("dichlorocyclooctadieneplatinium", 0xe0f78a, (short) 161, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial GrapheneNanotubeMix = new SimpleDustMaterial("graphene_nanotube_mix", 0x2c2c2c, (short) 162, MaterialIconSet.DULL);
     public static final SimpleDustMaterial GrapheneAlignedCNT = new SimpleDustMaterial("graphene_aligned_cnt", 0x2c2c2c, (short) 163, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial NiAlCatalyst = new SimpleDustMaterial("nial_catalyst", 0x6ea2ff, (short) 164, MaterialIconSet.DULL);
@@ -832,7 +832,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Acetaldehyde = new SimpleFluidMaterial("acetaldehyde", 0xFF9933);
     public static final SimpleFluidMaterial Benzaldehyde = new SimpleFluidMaterial("benzaldehyde", 0xb26f22);
     public static final SimpleFluidMaterial Dibenzyldieneacetone = new SimpleFluidMaterial("dibenzylidieneacetone", 0Xcc6699);
-    public static final SimpleFluidMaterial TetramethyltinChloride = new SimpleFluidMaterial("tetramethyltin_chloride", 0x8c8075);
+    public static final SimpleFluidMaterial TetramethyltinChloride = new SimpleFluidMaterial("trimethyltin_chloride", 0x8c8075);
     public static final SimpleFluidMaterial ChloroPlatinicAcid = new SimpleFluidMaterial("chloroplatinic_acid", 0xffba54);
     public static final SimpleFluidMaterial Cyclooctadiene = new SimpleFluidMaterial("cyclooctadiene", 0x33CC33);
     public static final SimpleFluidMaterial Cycloparaphenylene = new SimpleFluidMaterial("cycloparaphenylene", 0x333333);
