@@ -3,8 +3,7 @@ package gregicadditions.recipes.chain;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CENTRIFUGE_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -13,43 +12,43 @@ import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 public class REEChain {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(SaltWater.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(100))
-                .fluidInputs(SulfuricAcid.getFluid(100))
-                .fluidOutputs(AcidicSaltWater.getFluid(1200))
+                .fluidInputs(SaltWater.getFluid(1500))
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(500))
+                .fluidOutputs(AcidicSaltWater.getFluid(3000))
+                .EUt(480)
+                .duration(200)
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .fluidInputs(AcidicSaltWater.getFluid(6000))
+                .outputs(OreDictUnifier.get(dust, Salt, 4))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate))
+                .fluidOutputs(SulfuricBromineSolution.getFluid(3000))
+                .fluidOutputs(DebrominatedWater.getFluid(3000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(AcidicSaltWater.getFluid(1000))
-                .fluidInputs(SulfurDioxide.getFluid(500))
-                .fluidInputs(Water.getFluid(500))
-                .fluidOutputs(SulfuricBromineSolution.getFluid(1000))
-                .fluidOutputs(DebrominatedWater.getFluid(1000))
-                .EUt(480)
-                .duration(200)
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(SulfuricBromineSolution.getFluid(1000))
-                .fluidInputs(Steam.getFluid(500))
-                .fluidOutputs(HotVapourMixture.getFluid(1500))
+                .fluidInputs(SulfuricBromineSolution.getFluid(1500))
+                .fluidInputs(Steam.getFluid(1500))
+                .fluidOutputs(HotVapourMixture.getFluid(3000))
                 .EUt(480)
                 .duration(150)
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(HotVapourMixture.getFluid(1000))
-                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
-                .fluidOutputs(DampBromine.getFluid(500))
+                .fluidInputs(HotVapourMixture.getFluid(3000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
+                .fluidOutputs(DampBromine.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
-                .fluidInputs(DampBromine.getFluid(1000))
-                .fluidOutputs(Bromine.getFluid(500))
+                .fluidInputs(DampBromine.getFluid(2000))
+                .fluidOutputs(Bromine.getFluid(1000))
                 .EUt(480)
                 .duration(500)
                 .buildAndRegister();
@@ -57,27 +56,29 @@ public class REEChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
                 .fluidInputs(Propene.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidOutputs(Butyraldehyde.getFluid(3000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(Butyraldehyde.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Butyraldehyde.getFluid(1000))
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Butyraldehyde.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(4000))
                 .fluidOutputs(Ethylhexanol.getFluid(3000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Ethylhexanol.getFluid(1000))
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Ethylhexanol.getFluid(6000))
                 .input(dust, PhosphorousPentoxide)
-                .fluidOutputs(DiethylhexylPhosphoricAcid.getFluid(1000))
+                .fluidOutputs(DiethylhexylPhosphoricAcid.getFluid(2000))
+                .fluidOutputs(Butene.getFluid(4000))
+                .fluidOutputs(Water.getFluid(1000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
                 .input(dust, RareEarth)
                 .input(dust, SodiumHydroxide)
                 .fluidInputs(Water.getFluid(1000))
@@ -96,10 +97,12 @@ public class REEChain {
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(RareEarthChloridesSolution.getFluid(1000))
                 .fluidInputs(DiethylhexylPhosphoricAcid.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide))
                 .fluidOutputs(LaNdOxidesSolution.getFluid(250))
                 .fluidOutputs(SmGdOxidesSolution.getFluid(250))
                 .fluidOutputs(TbHoOxidesSolution.getFluid(250))
                 .fluidOutputs(ErLuOxidesSolution.getFluid(250))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
                 .EUt(480)
                 .duration(600)
                 .buildAndRegister();
@@ -287,13 +290,6 @@ public class REEChain {
                 .duration(100)
                 .buildAndRegister();
 
-        ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(TrisodiumPhosphate.getFluid(4000))
-                .outputs(OreDictUnifier.get(dust, Sodium, 3))
-                .outputs(OreDictUnifier.get(dust, Phosphate))
-                .EUt(120)
-                .duration(400)
-                .buildAndRegister();
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(ThUSludge.getItemStack(2))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Thorium), 2000, 150)
