@@ -76,15 +76,6 @@ public class PlasticChain {
                 .duration(200)
                 .buildAndRegister();
 
-        ELECTROLYZER_RECIPES.recipeBuilder()
-                .input(dust, ZincSulfate, 6)
-                .outputs(OreDictUnifier.get(dust, Zinc))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
-                .fluidOutputs(Oxygen.getFluid(4000))
-                .EUt(90)
-                .duration(26)
-                .buildAndRegister();
-
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Chrome)
                 .fluidInputs(Oxygen.getFluid(3000))
