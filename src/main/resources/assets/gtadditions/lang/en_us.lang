@@ -3894,6 +3894,7 @@ fluid.cacbas_mixture=CaCBaS Mixture
 fluid.lubricant_clay_slurry=Lubricant Clay Slurry
 fluid.atl_ethylene_mixture=ATL Ethylene Mixture
 fluid.drilling_mud_mixture=Drilling Mud Mixture
+fluid.iron_ii_chloride=Iron II Chloride
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
