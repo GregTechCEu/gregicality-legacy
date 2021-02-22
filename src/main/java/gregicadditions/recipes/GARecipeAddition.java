@@ -554,6 +554,18 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, EnderPearl, 10))
                 .buildAndRegister();
 
+        // Snow
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(24).duration(50)
+                .input(block, Snow)
+                .outputs(OreDictUnifier.get(dust, Snow, 4))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(2).duration(200)
+                .input(dust, Snow, 4)
+                .outputs(OreDictUnifier.get(block, Snow, 4))
+                .buildAndRegister();
+
+
         ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200).input(plateDense, Lead, 4).fluidInputs(Oxygen.getFluid(16000)).input(OrePrefix.valueOf("gtMetalCasing"), StainlessSteel).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(960).duration(2400).input(plateDense, Titanium, 4).fluidInputs(Nitrogen.getFluid(16000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_EV)).buildAndRegister();
