@@ -462,16 +462,30 @@ public class RecipeHandler {
     }
 
     public static void registerLargeMixerRecipes() {
-        RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe ->
-                GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
-                        .notConsumable(new IntCircuitIngredient(recipe.getInputs().size() + recipe.getFluidInputs().size()))
-                        .EUt(recipe.getEUt())
-                        .duration(recipe.getDuration())
-                        .fluidInputs(recipe.getFluidInputs())
-                        .inputsIngredients(recipe.getInputs())
-                        .outputs(recipe.getOutputs())
-                        .fluidOutputs(recipe.getFluidOutputs())
-                        .buildAndRegister());
+        RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe -> {
+            List<CountableIngredient> inputList = new ArrayList<>();
+            IntCircuitIngredient circuitIngredient = null;
+
+            for (CountableIngredient input : recipe.getInputs()) {
+                if (!(input.getIngredient() instanceof IntCircuitIngredient))
+                    inputList.add(input);
+                else
+                    circuitIngredient = (IntCircuitIngredient) input.getIngredient();
+            }
+
+            if (circuitIngredient == null)
+                circuitIngredient = new IntCircuitIngredient(inputList.size() + recipe.getFluidInputs().size());
+
+            GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
+                    .notConsumable(circuitIngredient)
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(inputList)
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .buildAndRegister();
+        });
     }
 
     public static void registerLargeCentrifugeRecipes() {
