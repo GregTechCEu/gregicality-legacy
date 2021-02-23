@@ -457,7 +457,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem EIGENFOLDED_KERR_MANIFOLD;
     public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT;
     public static MetaItem<?>.MetaValueItem RECURSIVELY_FOLDED_NEGATIVE_SPACE;
-    
+
     public static MetaItem<?>.MetaValueItem WIRE_FIELD_SHAPE;
     public static MetaItem<?>.MetaValueItem EXTREMELY_DURABLE_PLASMA_CELL;
     public static MetaItem<?>.MetaValueItem DENSE_NEUTRON_PLASMA_CELL;
@@ -471,6 +471,10 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
 
+
+    public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
+    public static MetaItem<?>.MetaValueItem DISPLAY;
+  
     //infinite water source cover
 //    public static MetaItem<?>.MetaValueItem LV_INFINITE_WATER_SOURCE;
     public static MetaItem<?>.MetaValueItem MV_INFINITE_WATER_SOURCE;
@@ -480,6 +484,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem LuV_INFINITE_WATER_SOURCE;
     public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
     public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
+
 
     // GA oredict items
     public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
