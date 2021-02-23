@@ -290,8 +290,6 @@ public class GAMachineRecipeRemoval {
             }
         }
         recipes.forEach(recipe -> ASSEMBLER_RECIPES.removeRecipe(recipe));
-
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
     }
 
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
