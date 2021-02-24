@@ -58,6 +58,7 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GATileEntities {
 
@@ -237,6 +238,8 @@ public class GATileEntities {
     public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>();
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
+
+    public static MTE<?>[] DISASSEMBLER = new MTE[14];
 
     public static void init() {
 
@@ -1155,6 +1158,12 @@ public class GATileEntities {
             DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
         }
         STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
+
+        // TODO Add new OrientedOverlayRenderer
+        id = 4198;
+        for (int i = 1; i < GAValues.V.length - 1; i++) {
+            DISASSEMBLER[i] = create(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i));
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
