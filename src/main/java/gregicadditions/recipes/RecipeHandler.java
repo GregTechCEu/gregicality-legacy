@@ -1,14 +1,17 @@
 package gregicadditions.recipes;
 
-import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
-import gregicadditions.GAMaterials;
-import gregicadditions.GAUtility;
+import crafttweaker.api.item.IIngredient;
+import gregicadditions.*;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -18,15 +21,20 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -675,6 +683,139 @@ public class RecipeHandler {
 
         //register recipe
         builder.buildAndRegister();
+    }
+
+    /**
+     * This MUST be run after all other recipe registration, except for Material
+     * decomposition handlers, as it is an unrelated category of recipes.
+     */
+    public static void buildDisassemblerRecipes() {
+        final Map<ItemStack, ItemStack> circuitToUse = createCircuitMap();
+        Map<ResourceLocation, MetaTileEntity> mteMap = new HashMap<>();
+        Map<MetaTileEntity, IRecipe> recipeMap = new HashMap<>();
+
+        // Gather ResourceLocations, exclude duplicates.
+        // Would be unnecessary if Large Multis were implemented better.
+        GregTechAPI.META_TILE_ENTITY_REGISTRY.forEach(mte -> {
+            if (!mteMap.containsKey(mte.metaTileEntityId))
+                mteMap.put(mte.metaTileEntityId, mte);
+        });
+
+        // TODO Try to optimize by checking if recipe output is is a MTE
+        // Gather the recipe for each MTE. This is the slow part of this method.
+        // O(N*M) worst-case where N=recipes, M=MTEs
+        ForgeRegistries.RECIPES.forEach(iRecipe -> {
+            
+            for (ResourceLocation rl : mteMap.keySet()) {
+                MetaTileEntity mte = mteMap.get(rl);
+                if (ItemStack.areItemsEqual(iRecipe.getRecipeOutput(), mte.getStackForm())) {
+                    recipeMap.put(mte, iRecipe);
+                    break;
+                }
+            }
+        });
+
+        // Register the Disassembler recipes
+        recipeMap.forEach((mte, recipe) -> {
+
+            // Convert input Ingredients to ItemStack
+            List<ItemStack> outputItems = new ArrayList<>();
+            recipe.getIngredients().forEach(ingredient -> {
+                ItemStack[] itemStacks = ingredient.getMatchingStacks();
+                for (ItemStack is : itemStacks) {
+                    if (is != null) {
+
+                        // TODO Logic for removing tools
+
+
+                        // Swap circuit to the "worst" of the tier
+                        if (circuitToUse.containsKey(is))
+                            is = circuitToUse.get(is);
+
+                        outputItems.add(is);
+                        break;
+                    }
+                }
+            });
+
+            // Used for EU/t
+            int tier = 1;
+            if (mte instanceof TieredMetaTileEntity) {
+                tier = ((TieredMetaTileEntity) mte).getTier();
+            } else if (mte instanceof GATieredMetaTileEntity) {
+                tier = ((GATieredMetaTileEntity) mte).getTier();
+            }
+
+            // Used for duration
+            int itemCount = recipe.getIngredients().size();
+
+            DISASSEMBLER_RECIPES.recipeBuilder()
+                    .EUt(GAValues.V[tier])
+                    .duration(itemCount * 60) // 3s per output item
+                    .inputs(mte.getStackForm())
+                    .fluidInputs(SulfuricAcid.getFluid(250)) // TODO Figure this out
+                    .outputs(outputItems)
+                    .buildAndRegister();
+
+        });
+    }
+
+    // TODO Implement this
+    private static Map<ItemStack, ItemStack> createCircuitMap() {
+        Map<ItemStack, ItemStack> circuits = new HashMap<>();
+
+
+
+
+
+        return circuits;
+    }
+
+    /**
+     * Still buggy, left here as reference. DO NOT CALL THIS!
+     */
+    private static void reverseAsmRecipes() {
+        // Assembler recipe reversal
+        Map<ItemStack, Recipe> asmChosenRecipes = new HashMap<>(); // This may not be captured by lambda
+
+        ASSEMBLER_RECIPES.getRecipeList().forEach(recipe -> {
+            ItemStack output = recipe.getOutputs().get(0);
+            output.setCount(1); // Set to 1 just for the Key
+            if (asmChosenRecipes.get(output) != null) {
+                asmChosenRecipes.put(output, null); // Remove from list if multiple formation recipes
+            } else {
+                asmChosenRecipes.put(output, recipe);
+            }
+        });
+        for (ItemStack output : asmChosenRecipes.keySet()) {
+            Recipe recipe = asmChosenRecipes.get(output);
+            if (recipe != null) {
+                List<ItemStack> outputList = new ArrayList<>();
+                recipe.getInputs().forEach(ingredient -> {
+                    int count = ingredient.getCount();
+                    ItemStack itemStack = null;
+                    int meta = 0;
+                    ItemStack[] matching = ingredient.getIngredient().getMatchingStacks();
+                    if (matching.length > 0) {
+                        for (ItemStack stack : matching) {
+                            if (stack != null) {
+                                itemStack = stack;
+                                meta = stack.getMetadata();
+                                break;
+                            }
+                        }
+                        outputList.add(new ItemStack(itemStack.getItem(), count, meta));
+                    }
+                });
+                DISASSEMBLER_RECIPES.recipeBuilder()
+                        .EUt(recipe.getEUt())
+                        .duration(recipe.getDuration())
+                        .inputs(recipe.getOutputs().get(0)) // cant use the Key since its stack size is wrong
+                        .fluidInputs(SulfuricAcid.getFluid(250)) // TODO Do I want this? Should I change it?
+                        .outputs(outputList)
+                        .buildAndRegister();
+            }
+        }
     }
 
 
