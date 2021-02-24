@@ -13,10 +13,10 @@ public class SeleniumChain {
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(1000).blastFurnaceTemp(1500)
                 .input(crushedCentrifuged, Chalcopyrite)
                 .input(dust, SiliconDioxide)
-                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(5000))
                 .outputs(OreDictUnifier.get(dust, ElectricallyImpureCopper))
                 .outputs(OreDictUnifier.get(dust, Ferrosilite))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
+                .fluidOutputs(SulfurDioxide.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1000)
@@ -29,31 +29,34 @@ public class SeleniumChain {
                 .input(plate, ElectricallyImpureCopper, 2)
                 .fluidInputs(CopperRefiningSolution.getFluid(1000))
                 .fluidOutputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Copper, 4))
+                .outputs(OreDictUnifier.get(ingot, Copper, 3))
                 .chancedOutput(AnodicSlime.getItemStack(), 7500, 0)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1750).blastFurnaceTemp(2100)
                 .inputs(AnodicSlime.getItemStack())
-                .input(dust, SodaAsh)
-                .fluidInputs(Air.getFluid(1000))
+                .input(dust, SodaAsh, 12)
+                .fluidInputs(Hydrogen.getFluid(4000))
                 .outputs(OreDictUnifier.get(dustTiny, PreciousMetal, 5))
-                .fluidOutputs(SelenateTellurateMix.getFluid(750))
+                .fluidOutputs(SelenateTellurateMix.getFluid(1000))
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1450)
                 .fluidInputs(SelenateTellurateMix.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(SelenateSolution.getFluid(1000))
                 .outputs(TelluriumOxide.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Sodium))
-                .fluidOutputs(Hydrogen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Sodium, 4))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(SulfurDioxide.getFluid(1000))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .fluidOutputs(SelenateSolution.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1000)
                 .fluidInputs(SelenateSolution.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .outputs(SeleniumOxide.getItemStack())
                 .buildAndRegister();
 
