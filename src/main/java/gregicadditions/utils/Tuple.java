@@ -1,4 +1,4 @@
-package gregicadditions.machines.multi.simple;
+package gregicadditions.utils;
 
 public class Tuple<K, V> {
     private final K key;
@@ -17,4 +17,3 @@ public class Tuple<K, V> {
         return value;
     }
 }
-// Recipe, IItemHandlerModifiable

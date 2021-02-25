@@ -6,7 +6,7 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.simple.Tuple;
+import gregicadditions.utils.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
