@@ -15,13 +15,14 @@ public class SensorEmitter {
                 .input(dust, Strontium)
                 .input(dust, Barium)
                 .fluidInputs(AceticAcid.getFluid(2000))
-                .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(4000))
+                .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1200)
                 .input(dust, Titanium)
-                .fluidInputs(IsopropylAlcohol.getFluid(1000))
-                .fluidOutputs(TitaniumIsopropoxide.getFluid(2000))
+                .fluidInputs(IsopropylAlcohol.getFluid(4000))
+                .fluidOutputs(TitaniumIsopropoxide.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(600)
@@ -34,69 +35,79 @@ public class SensorEmitter {
                 .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(1000))
                 .input(dust, Calcite, 2)
                 .outputs(BariumStrontiumTitanate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Quicklime))
-                .fluidOutputs(Oxygen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Quicklime, 2))
+                .fluidOutputs(Butyldioxidanyl.getFluid(1000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(200).EUt(1920)
+                .input(dust, Titanium)
+                .input(dust, Strontium)
+                .input(dust, Barium)
+                .fluidInputs(Butyldioxidanyl.getFluid(3000))
+                .fluidOutputs(BariumStrontiumTitanatePreparation.getFluid(3000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1300)
-                .fluidInputs(Water.getFluid(7000))
-                .inputs(PotasssiumFluoroTantalate.getItemStack())
-                .outputs(TantalumOxide.getItemStack())
-                .fluidOutputs(HydrofluoricAcid.getFluid(5000))
-                .fluidOutputs(PotassiumHydroxide.getFluid(2000))
+                .fluidInputs(Water.getFluid(9000))
+                .inputs(PotasssiumFluoroTantalate.getItemStack(20))
+                .outputs(TantalumOxide.getItemStack(7))
+                .fluidOutputs(HydrofluoricAcid.getFluid(14000))
+                .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
                 .input(dust, Tantalum, 2)
-                .fluidInputs(Chlorine.getFluid(5000))
+                .fluidInputs(Chlorine.getFluid(10000))
                 .fluidInputs(Water.getFluid(5000))
-                .outputs(TantalumOxide.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(5000))
+                .outputs(TantalumOxide.getItemStack(7))
                 .fluidOutputs(HydrochloricAcid.getFluid(10000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
                 .input(dust, Scandium, 2)
-                .fluidInputs(Chlorine.getFluid(5000))
-                .fluidInputs(Water.getFluid(5000))
-                .outputs(ScandiumOxide.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(5000))
-                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .fluidInputs(Chlorine.getFluid(6000))
+                .fluidInputs(Water.getFluid(3000))
+                .outputs(ScandiumOxide.getItemStack(5))
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
                 .input(dust, Lutetium, 2)
-                .fluidInputs(Chlorine.getFluid(5000))
-                .fluidInputs(Water.getFluid(5000))
-                .outputs(LutetiumOxide.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(5000))
-                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .fluidInputs(Chlorine.getFluid(6000))
+                .fluidInputs(Water.getFluid(3000))
+                .outputs(LutetiumOxide.getItemStack(5))
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
                 .input(dust, Thulium, 2)
-                .fluidInputs(Chlorine.getFluid(5000))
-                .fluidInputs(Water.getFluid(5000))
-                .outputs(ThuliumOxide.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(5000))
-                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .fluidInputs(Chlorine.getFluid(6000))
+                .fluidInputs(Water.getFluid(3000))
+                .outputs(ThuliumOxide.getItemStack(5))
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(8192)
                 .input(dust, Europium, 2)
-                .fluidInputs(Chlorine.getFluid(5000))
-                .fluidInputs(Water.getFluid(5000))
-                .outputs(EuropiumOxide.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(5000))
-                .fluidOutputs(HydrochloricAcid.getFluid(10000))
+                .fluidInputs(Chlorine.getFluid(6000))
+                .fluidInputs(Water.getFluid(3000))
+                .outputs(EuropiumOxide.getItemStack(5))
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(200).EUt(120)
+                .input(dust, LeadNitrate, 6)
+                .input(dust, Calcium, 9)
+                .outputs(LeadNitrateCalciumMixture.getItemStack(15))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(1200).blastFurnaceTemp(1350)
-                .input(dust, LeadNitrate)
+                .inputs(LeadNitrateCalciumMixture.getItemStack(15))
                 .inputs(TantalumOxide.getItemStack())
-                .inputs(ScandiumOxide.getItemStack())
+                .inputs(ScandiumOxide.getItemStack(2))
                 .outputs(LeadScandiumTantalate.getItemStack(2))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Quicklime, 18))
+                .fluidOutputs(NitrogenDioxide.getFluid(4000))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(940).EUt(30)
@@ -127,16 +138,17 @@ public class SensorEmitter {
                 .input(dust, Caesium)
                 .input(dust, Cadmium, 2)
                 .fluidInputs(Bromine.getFluid(6000))
-                .outputs(FranciumCaesiumCadmiumBromide.getItemStack(10))
+                .outputs(FranciumCaesiumCadmiumBromide.getItemStack(4))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(9000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(9000)
                 .fluidInputs(Aniline.getFluid(1000))
                 .inputs(SodiumNitrite.getItemStack())
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .inputs(SodiumIodide.getItemStack())
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(Nitrogen.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(Iodobenzene.getFluid(1000))
                 .buildAndRegister();
 
@@ -147,6 +159,7 @@ public class SensorEmitter {
                 .fluidInputs(Tributylamine.getFluid(200))
                 .fluidInputs(Chlorine.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(Tributylamine.getFluid(200))
                 .outputs(OreDictUnifier.get(dust, Iodine))
                 .outputs(Stibene.getItemStack())
                 .buildAndRegister();

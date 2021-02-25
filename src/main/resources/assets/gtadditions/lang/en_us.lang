@@ -461,7 +461,7 @@ metaitem.sodium_phosphotungstate.name=Sodium Phosphotungstate
 metaitem.solid_ammonium_sulfate.name=Precipitated Ammonium Sulfate
 metaitem.fructose.name=Fructose
 metaitem.glucose.name=Glucose
-metaitem.magnesium_oxide.name=Magnesium Oxide
+metaitem.lead_nitrate_calcium_mixture.name=Lead Nitrate Calcium Mixture
 metaitem.strontium_sulfate.name=Strontium Sulfate
 metaitem.strontium_oxide.name=Strontium Oxide
 
@@ -3530,6 +3530,7 @@ fluid.fluoroboric_acid=Fluoroboric Acid
 fluid.benzenediazonium_tetrafluoroborate=Benzenediazonium Tetrafluoroborate
 fluid.boron_fluoride=Boron Fluoride
 fluid.diborane=Diborane
+fluid.butyldioxidanyl=Butyldioxidanyl
 fluid.fluoro_benzene=Fluoro Benzene
 fluid.sodium_nitrate_solution=Sodium Nitrate Solution
 fluid.fluorotoluene=Fluorotoluene

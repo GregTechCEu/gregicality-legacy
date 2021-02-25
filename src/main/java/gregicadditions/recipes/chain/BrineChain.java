@@ -535,7 +535,7 @@ public class BrineChain {
                 .outputs(OreDictUnifier.get(dust, Calcite))
                 .chancedOutput(StrontiumCarbonate.getItemStack(), 40, 0)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(MagnesiumOxide.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Magnesia))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(250).EUt(300)
@@ -552,7 +552,7 @@ public class BrineChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(250)
-                .inputs(MagnesiumOxide.getItemStack())
+                .input(dust, Magnesia)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .outputs(OreDictUnifier.get(dust, MagnesiumChloride))

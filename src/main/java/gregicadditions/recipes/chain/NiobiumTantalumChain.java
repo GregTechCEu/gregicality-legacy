@@ -227,19 +227,19 @@ public class NiobiumTantalumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1400)
                 .fluidInputs(OxypentafluoroNiobate.getFluid(1000))
                 .input(dust, PotassiumFluoride, 2)
-                .outputs(PotasssiumFluoroNiobate.getItemStack(1))
+                .outputs(PotasssiumFluoroNiobate.getItemStack(10))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1400)
                 .fluidInputs(HeptafluoroTantalate.getFluid(1000))
                 .fluidInputs(PotassiumHydroxide.getFluid(2000))
-                .outputs(PotasssiumFluoroTantalate.getItemStack(1))
+                .outputs(PotasssiumFluoroTantalate.getItemStack(10))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(360).EUt(1900)
-                .inputs(PotasssiumFluoroNiobate.getItemStack())
+                .inputs(PotasssiumFluoroNiobate.getItemStack(10))
                 .fluidInputs(Sodium.getFluid(720))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 5))
                 .outputs(OreDictUnifier.get(dust, PotassiumFluoride, 2))
@@ -247,7 +247,7 @@ public class NiobiumTantalumChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(360).EUt(1900)
-                .inputs(PotasssiumFluoroTantalate.getItemStack())
+                .inputs(PotasssiumFluoroTantalate.getItemStack(10))
                 .fluidInputs(Sodium.getFluid(720))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 5))
                 .outputs(OreDictUnifier.get(dust, PotassiumFluoride, 2))
