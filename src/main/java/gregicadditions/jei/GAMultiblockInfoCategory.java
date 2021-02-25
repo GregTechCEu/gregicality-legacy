@@ -16,6 +16,7 @@ import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import gregtech.integration.jei.multiblock.infos.LargeTurbineInfo;
+import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawable;
@@ -27,9 +28,11 @@ import net.minecraft.client.resources.I18n;
 
 public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoRecipeWrapper> {
     private final IDrawable background;
+    private final IGuiHelper guiHelper;
 
     public GAMultiblockInfoCategory(IJeiHelpers helpers) {
-        this.background = helpers.getGuiHelper().createBlankDrawable(176, 166);
+        this.guiHelper = helpers.getGuiHelper();
+        this.background = guiHelper.createBlankDrawable(176, 166);
     }
 
     public static void registerRecipes(IModRegistry registry) {
@@ -126,6 +129,6 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, MultiblockInfoRecipeWrapper recipeWrapper, IIngredients ingredients) {
-        recipeWrapper.setRecipeLayout((RecipeLayout) recipeLayout);
+        recipeWrapper.setRecipeLayout((RecipeLayout) recipeLayout, guiHelper);
     }
 }
