@@ -1,22 +1,20 @@
 package gregicadditions.machines.multi.simple;
 
-import gregtech.api.recipes.Recipe;
-import net.minecraftforge.items.IItemHandlerModifiable;
+public class Tuple<K, V> {
+    private final K key;
+    private final V value;
 
-public class Tuple {
-    private final Recipe recipe;
-    private final IItemHandlerModifiable input;
-
-    public Tuple(Recipe recipe, IItemHandlerModifiable input) {
-        this.recipe = recipe;
-        this.input = input;
+    public Tuple(K key, V value) {
+        this.key = key;
+        this.value = value;
     }
 
-    public Recipe getRecipe() {
-        return recipe;
+    public K getKey() {
+        return key;
     }
 
-    public IItemHandlerModifiable getInput() {
-        return input;
+    public V getValue() {
+        return value;
     }
 }
+// Recipe, IItemHandlerModifiable

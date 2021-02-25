@@ -288,16 +288,16 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             List<IItemHandlerModifiable> itemInputs = ((RecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
 
-            Tuple recipePerInput = itemInputs.stream()
-                    .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
-                    .filter(tuple -> tuple.getRecipe() != null)
-                    .findFirst().orElse(new Tuple(recipeMap.findRecipe(maxVoltage, inputs, fluidInputs, 0), inputs));
+            Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()
+                    .map(iItemHandlerModifiable -> new Tuple<>(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
+                    .filter(tuple -> tuple.getKey() != null)
+                    .findFirst().orElse(new Tuple<>(recipeMap.findRecipe(maxVoltage, inputs, fluidInputs, 0), inputs));
 
-            if (recipePerInput.getRecipe() == null) {
+            if (recipePerInput.getKey() == null) {
                 return null;
             }
 
-            return createRecipe(maxVoltage, recipePerInput.getInput(), fluidInputs, recipePerInput.getRecipe());
+            return createRecipe(maxVoltage, recipePerInput.getValue(), fluidInputs, recipePerInput.getKey());
 
 
         }
