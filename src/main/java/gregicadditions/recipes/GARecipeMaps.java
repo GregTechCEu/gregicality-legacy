@@ -159,9 +159,9 @@ public class GARecipeMaps {
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,
                 2, 3, 1, 2, new AdvFusionRecipeBuilder());
 
-        DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler", 1, 1, 0, 9, 0, 1, 0,0, new SimpleRecipeBuilder())
-                .setSlotOverlay(false, false, GuiTextures.IN_SLOT_OVERLAY) // TODO Update this
-                .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
+        DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler", 1, 1, 0, 9, 0, 0, 0,0, new SimpleRecipeBuilder())
+                .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)
+                .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY) // TODO Update this
                 .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
     }

@@ -1,8 +1,8 @@
 package gregicadditions.recipes;
 
-import crafttweaker.api.item.IIngredient;
 import gregicadditions.*;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.item.GAMetaTool;
 import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
@@ -10,8 +10,11 @@ import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -21,17 +24,15 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.items.MetaItems;
+import gregtech.common.items.MetaTool;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
-import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -694,23 +695,29 @@ public class RecipeHandler {
         Map<ResourceLocation, MetaTileEntity> mteMap = new HashMap<>();
         Map<MetaTileEntity, IRecipe> recipeMap = new HashMap<>();
 
-        // Gather ResourceLocations, exclude duplicates.
-        // Would be unnecessary if Large Multis were implemented better.
+        // Gather ResourceLocations, exclude duplicates (looking at you, Large Multi-Use Machine)
         GregTechAPI.META_TILE_ENTITY_REGISTRY.forEach(mte -> {
-            if (!mteMap.containsKey(mte.metaTileEntityId))
-                mteMap.put(mte.metaTileEntityId, mte);
+            if (mte instanceof EnergyContainerHandler.IEnergyChangeListener
+             || mte instanceof MultiblockControllerBase
+             || mte instanceof SteamMetaTileEntity) {
+
+                if (!mteMap.containsKey(mte.metaTileEntityId))
+                    mteMap.put(mte.metaTileEntityId, mte);
+            }
         });
 
-        // TODO Try to optimize by checking if recipe output is is a MTE
         // Gather the recipe for each MTE. This is the slow part of this method.
-        // O(N*M) worst-case where N=recipes, M=MTEs
+        // O(NlogM) worst-case where N=recipes, M=MTEs
         ForgeRegistries.RECIPES.forEach(iRecipe -> {
-            
-            for (ResourceLocation rl : mteMap.keySet()) {
-                MetaTileEntity mte = mteMap.get(rl);
-                if (ItemStack.areItemsEqual(iRecipe.getRecipeOutput(), mte.getStackForm())) {
-                    recipeMap.put(mte, iRecipe);
-                    break;
+            String unlocalizedName = iRecipe.getRecipeOutput().getItem().getUnlocalizedNameInefficiently(iRecipe.getRecipeOutput());
+            if ((unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine"))
+                    && GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(iRecipe.getRecipeOutput().getItemDamage()) != null) { // Keeps us from looping 1500 times every now and then
+                for (ResourceLocation rl : mteMap.keySet()) {
+                    MetaTileEntity mte = mteMap.get(rl);
+                    if (ItemStack.areItemsEqual(iRecipe.getRecipeOutput(), mte.getStackForm())) {
+                        recipeMap.put(mte, iRecipe);
+                        break;
+                    }
                 }
             }
         });
@@ -722,52 +729,68 @@ public class RecipeHandler {
             List<ItemStack> outputItems = new ArrayList<>();
             recipe.getIngredients().forEach(ingredient -> {
                 ItemStack[] itemStacks = ingredient.getMatchingStacks();
-                for (ItemStack is : itemStacks) {
-                    if (is != null) {
-
-                        // TODO Logic for removing tools
-
-
-                        // Swap circuit to the "worst" of the tier
-                        if (circuitToUse.containsKey(is))
-                            is = circuitToUse.get(is);
-
-                        outputItems.add(is);
-                        break;
-                    }
-                }
+                if (itemStacks.length == 0 || itemStacks[0].getItem() instanceof MetaTool || itemStacks[0].getItem() instanceof GAMetaTool)
+                    outputItems.add(OreDictUnifier.get(dustTiny, Ash));
+                else
+                    outputItems.add(circuitToUse.getOrDefault(itemStacks[0], itemStacks[0]));
             });
 
+            // TODO Refactor this
             // Used for EU/t
-            int tier = 1;
+            int voltage = 0;
             if (mte instanceof TieredMetaTileEntity) {
-                tier = ((TieredMetaTileEntity) mte).getTier();
+                voltage = GAValues.V[((TieredMetaTileEntity) mte).getTier()];
             } else if (mte instanceof GATieredMetaTileEntity) {
-                tier = ((GATieredMetaTileEntity) mte).getTier();
+                voltage = GAValues.V[((GATieredMetaTileEntity) mte).getTier()];
+            } else if (mte instanceof IEnergyContainer) {
+                IEnergyContainer energy = ((IEnergyContainer) mte);
+                voltage = (int) energy.getInputVoltage();
+                if (voltage == 0)
+                    voltage = (int) energy.getOutputVoltage();
             }
+            if (voltage == 0)
+                voltage = 1;
 
             // Used for duration
             int itemCount = recipe.getIngredients().size();
 
             DISASSEMBLER_RECIPES.recipeBuilder()
-                    .EUt(GAValues.V[tier])
+                    .EUt(voltage)
                     .duration(itemCount * 60) // 3s per output item
                     .inputs(mte.getStackForm())
-                    .fluidInputs(SulfuricAcid.getFluid(250)) // TODO Figure this out
                     .outputs(outputItems)
                     .buildAndRegister();
-
         });
     }
 
-    // TODO Implement this
     private static Map<ItemStack, ItemStack> createCircuitMap() {
         Map<ItemStack, ItemStack> circuits = new HashMap<>();
 
+        // List of circuits to use for each tier
+        List<ItemStack> circuitsMasterList = Arrays.asList(
+                MetaItems.BASIC_CIRCUIT_LV.getStackForm(),
+                GAMetaItems.PRIMITIVE_ASSEMBLY.getStackForm(),
+                GAMetaItems.ELECTRONIC_COMPUTER.getStackForm(),
+                GAMetaItems.REFINED_MAINFRAME.getStackForm(),
+                GAMetaItems.MICRO_MAINFRAME.getStackForm(),
+                GAMetaItems.NANO_MAINFRAME.getStackForm(),
+                GAMetaItems.QUANTUM_MAINFRAME.getStackForm(),
+                GAMetaItems.CRYSTAL_MAINFRAME.getStackForm(),
+                MetaItems.WETWARE_MAINFRAME_MAX.getStackForm(),
+                GAMetaItems.BIOWARE_MAINFRAME.getStackForm(),
+                GAMetaItems.OPTICAL_MAINFRAME.getStackForm(),
+                GAMetaItems.COSMIC_MAINFRAME.getStackForm(),
+                GAMetaItems.SUPRACAUSAL_MAINFRAME.getStackForm()
+        );
 
-
-
-
+        // Ore dict
+        circuitsMasterList.forEach(output -> {
+            OreDictUnifier.getOreDictionaryNames(output).forEach(name -> {
+                OreDictUnifier.getAllWithOreDictionaryName(name).forEach(itemStack -> {
+                    circuits.put(itemStack, output);
+                });
+            });
+        });
         return circuits;
     }
 
@@ -776,7 +799,7 @@ public class RecipeHandler {
      */
     private static void reverseAsmRecipes() {
         // Assembler recipe reversal
-        Map<ItemStack, Recipe> asmChosenRecipes = new HashMap<>(); // This may not be captured by lambda
+        Map<ItemStack, Recipe> asmChosenRecipes = new HashMap<>();
 
         ASSEMBLER_RECIPES.getRecipeList().forEach(recipe -> {
             ItemStack output = recipe.getOutputs().get(0);
@@ -811,7 +834,7 @@ public class RecipeHandler {
                         .EUt(recipe.getEUt())
                         .duration(recipe.getDuration())
                         .inputs(recipe.getOutputs().get(0)) // cant use the Key since its stack size is wrong
-                        .fluidInputs(SulfuricAcid.getFluid(250)) // TODO Do I want this? Should I change it?
+                        .fluidInputs(SulfuricAcid.getFluid(250))
                         .outputs(outputList)
                         .buildAndRegister();
             }
