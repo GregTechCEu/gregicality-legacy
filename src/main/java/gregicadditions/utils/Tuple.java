@@ -16,4 +16,12 @@ public class Tuple<K, V> {
     public V getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Tuple))
+            return false;
+        Tuple<?, ?> tuple = (Tuple<?, ?>) obj;
+        return tuple.key.equals(key) && tuple.value.equals(value);
+    }
 }
