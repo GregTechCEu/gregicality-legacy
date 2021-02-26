@@ -4023,3 +4023,17 @@ gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy 
 gtadditions.machine.diode.tooltip_tool_usage=Hit with a Soft Hammer to toggle Amperage flow.
 gtadditions.top.diode_input=§6Input:§r %dA
 gtadditions.top.diode_output=§9Output:§r %dA
+
+gtadditions.machine.disassembler.lv.name=Basic Disassembler
+gtadditions.machine.disassembler.mv.name=Advanced Disassembler
+gtadditions.machine.disassembler.hv.name=Advanced Disassembler II
+gtadditions.machine.disassembler.ev.name=Advanced Disassembler III
+gtadditions.machine.disassembler.iv.name=Elite Disassembler
+gtadditions.machine.disassembler.luv.name=Elite Disassembler II
+gtadditions.machine.disassembler.zpm.name=Elite Disassembler III
+gtadditions.machine.disassembler.uv.name=Elite Disassembler IV
+gtadditions.machine.disassembler.uhv.name=High-Tech Disassembler
+gtadditions.machine.disassembler.uev.name=High-Tech Disassembler II
+gtadditions.machine.disassembler.uiv.name=High-Tech Disassembler III
+gtadditions.machine.disassembler.umv.name=High-Tech Disassembler IV
+gtadditions.machine.disassembler.uxv.name=Ultimate Disassembler

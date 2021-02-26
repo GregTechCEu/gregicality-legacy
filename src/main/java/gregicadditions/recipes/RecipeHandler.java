@@ -1,7 +1,6 @@
 package gregicadditions.recipes;
 
 import gregicadditions.*;
-import gregicadditions.item.GAMachineCasing;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAMetaTool;
 import gregicadditions.machines.overrides.GAMetaTileEntityHull;
@@ -27,7 +26,6 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.items.MetaItems;
