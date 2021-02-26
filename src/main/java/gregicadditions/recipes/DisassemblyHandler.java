@@ -14,7 +14,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.MetaTool;
@@ -87,6 +86,7 @@ public class DisassemblyHandler {
             });
 
             // Gather the recipe for each MTE
+            // Unfortunately, there is not a better way to do this
             ForgeRegistries.RECIPES.forEach(iRecipe -> {
 
                 MetaTileEntity mte;
@@ -109,6 +109,8 @@ public class DisassemblyHandler {
     }
 
     /**
+     * NOT YET IMPLEMENTED
+     *
      * Handles some Arc Furnace Recipe Registration.
      * Registers recipes for:
      * - instanceof BlockMetalCasing (GA as well)
@@ -183,14 +185,11 @@ public class DisassemblyHandler {
                     }
 
                     // Check if itemStack is an MTE, and set the voltage to its tier
-                    else {
-                        String unlocalizedName = itemStack.getItem().getUnlocalizedNameInefficiently(itemStack);
-                        if ((unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine"))
-                                && (tempMTE = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(itemStack.getItemDamage())) != null
-                                && (tempMTE instanceof TieredMetaTileEntity || tempMTE instanceof GATieredMetaTileEntity)) {
-                            voltage = 8 << (((ITieredMetaTileEntity) tempMTE).getTier() * 2);
-                            break;
-                        }
+                    else if ((tempMTE = testAndGetMTE(itemStack)) != null
+                          && (tempMTE instanceof TieredMetaTileEntity
+                          ||  tempMTE instanceof GATieredMetaTileEntity)) {
+                        voltage = 8 << (((ITieredMetaTileEntity) tempMTE).getTier() * 2);
+                        break;
                     }
                 }
             }

@@ -54,11 +54,14 @@ import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class GATileEntities {
 
@@ -239,7 +242,7 @@ public class GATileEntities {
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
-    public static MTE<?>[] DISASSEMBLER = new MTE[14];
+    public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
 
     public static void init() {
 
@@ -1159,10 +1162,16 @@ public class GATileEntities {
         }
         STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
 
-        // TODO Add new OrientedOverlayRenderer
         id = 4198;
         for (int i = 1; i < GAValues.V.length - 1; i++) {
-            DISASSEMBLER[i] = create(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i));
+            final int tier = i; // used for inner class
+            DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                @Override
+                public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+                    tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
+                    super.addInformation(stack, player, tooltip, advanced);
+                }
+            }));
         }
     }
 

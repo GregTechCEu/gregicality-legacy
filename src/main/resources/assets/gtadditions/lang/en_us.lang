@@ -4037,3 +4037,5 @@ gtadditions.machine.disassembler.uev.name=High-Tech Disassembler II
 gtadditions.machine.disassembler.uiv.name=High-Tech Disassembler III
 gtadditions.machine.disassembler.umv.name=High-Tech Disassembler IV
 gtadditions.machine.disassembler.uxv.name=Ultimate Disassembler
+gtadditions.machine.disassembler.tooltip=Disassembles Machines up to §b§o%s§r
+recipemap.disassembler.name=Disassembler
