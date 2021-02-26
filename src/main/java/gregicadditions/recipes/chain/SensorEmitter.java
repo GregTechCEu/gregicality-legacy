@@ -14,7 +14,7 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(420).EUt(720)
                 .input(dust, Strontium)
                 .input(dust, Barium)
-                .fluidInputs(AceticAcid.getFluid(2000))
+                .fluidInputs(AceticAcid.getFluid(4000))
                 .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(2000))
                 .buildAndRegister();
 
@@ -26,25 +26,25 @@ public class SensorEmitter {
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(600)
-                .fluidInputs(BariumStrontiumAcetateSolution.getFluid(2000))
-                .fluidInputs(TitaniumIsopropoxide.getFluid(1000))
+                .fluidInputs(BariumStrontiumAcetateSolution.getFluid(1000))
+                .fluidInputs(TitaniumIsopropoxide.getFluid(2000))
                 .fluidOutputs(BariumStrontiumTitanatePreparation.getFluid(3000))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(250).EUt(1500).blastFurnaceTemp(1200)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(250).EUt(1500)
                 .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(1000))
-                .input(dust, Calcite, 2)
                 .outputs(BariumStrontiumTitanate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Quicklime, 2))
-                .fluidOutputs(Butyldioxidanyl.getFluid(1000))
+                .fluidOutputs(IsopropylAcetate.getFluid(4000))
+                .fluidOutputs(Propene.getFluid(4000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(200).EUt(1920)
-                .input(dust, Titanium)
-                .input(dust, Strontium)
-                .input(dust, Barium)
-                .fluidInputs(Butyldioxidanyl.getFluid(3000))
-                .fluidOutputs(BariumStrontiumTitanatePreparation.getFluid(3000))
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
+                .notConsumable(dust, PhosphorousPentoxide)
+                .fluidInputs(IsopropylAcetate.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .fluidOutputs(IsopropylAlcohol.getFluid(1000))
+                .fluidOutputs(AceticAcid.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1300)
@@ -198,18 +198,19 @@ public class SensorEmitter {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(850000)
                 .input(dust, Technetium)
-                .fluidInputs(AquaRegia.getFluid(4000))
-                .input(dust, SodiumHydroxide, 4)
-                .outputs(OreDictUnifier.get(dust, Salt, 4))
-                .fluidOutputs(NitrogenDioxide.getFluid(4000))
+                .input(dust, SodiumHydroxide, 3)
+                .fluidInputs(NitricAcid.getFluid(2000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(Hydroxilamine.getFluid(1000))
                 .outputs(SodiumPertechnate.getItemStack())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(280).EUt(750000).blastFurnaceTemp(6500)
-                .input(dust, Potassium)
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(750000)
+                .fluidInputs(PotassiumHydroxide.getFluid(1000))
                 .fluidInputs(AmmoniumPerrhenate.getFluid(1000))
                 .outputs(PotassiumPerrhenate.getItemStack())
                 .fluidOutputs(Ammonia.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(750000).blastFurnaceTemp(6500)
@@ -249,14 +250,15 @@ public class SensorEmitter {
                 .inputs(PotassiumNonahydridotechnate.getItemStack())
                 .fluidInputs(TetraethylammoniumBromide.getFluid(4000))
                 .outputs(PotassiumBromide.getItemStack(4))
-                .outputs(TetraethylammoniumNonahydridides.getItemStack(2))
+                .outputs(TetraethylammoniumNonahydridides.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(870000)
-                .input(dust, Iodine)
+                .inputs(PotassiumIodide.getItemStack())
                 .fluidInputs(Aminophenol.getFluid(1000))
                 .fluidInputs(ButhylLithium.getFluid(1000))
                 .fluidOutputs(Butylaniline.getFluid(1000))
+                .fluidOutputs(PotassiumHydroxide.getFluid(1000))
                 .outputs(LithiumIodide.getItemStack(2))
                 .buildAndRegister();
 
@@ -274,33 +276,33 @@ public class SensorEmitter {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(340000)
-                .inputs(PotassiumBromide.getItemStack())
-                .fluidInputs(Ozone.getFluid(3000))
-                .fluidOutputs(Oxygen.getFluid(3000))
+                .inputs(PotassiumBromide.getItemStack(2))
+                .fluidInputs(Ozone.getFluid(1000))
                 .outputs(PotassiumBromate.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(980000)
                 .input(dust, PhthalicAnhydride)
-                .inputs(SodiumIodide.getItemStack())
-                .inputs(SodiumNitrite.getItemStack())
-                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .inputs(SodiumIodide.getItemStack(2))
+                .inputs(SodiumNitrite.getItemStack(3))
+                .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidOutputs(IodobenzoicAcid.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(2000))
+                .fluidOutputs(SodiumSulfate.getFluid(1000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .outputs(OreDictUnifier.get(block, Snow, 3))
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(345000)
-                .inputs(PotassiumBromate.getItemStack(2))
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(345000)
+                .notConsumable(PotassiumBromate.getItemStack())
                 .fluidInputs(IodobenzoicAcid.getFluid(3000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
-                .outputs(PotassiumBromide.getItemStack(2))
-                .outputs(IBX.getItemStack(3))
+                .fluidOutputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(SulfurDioxide.getFluid(1000))
+                .outputs(IBX.getItemStack())
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
@@ -319,8 +321,10 @@ public class SensorEmitter {
                 .fluidInputs(Trimethylsilane.getFluid(1000))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
+                .fluidInputs(ChlorousAcid.getFluid(1000))
                 .inputs(IBX.getItemStack())
                 .notConsumable(dust, CobaltOxide)
+                .outputs(OreDictUnifier.get(block, Snow))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(1000))
                 .fluidOutputs(Metoxybenzaldehyde.getFluid(1000))
@@ -331,13 +335,14 @@ public class SensorEmitter {
                 .fluidInputs(Metoxybenzaldehyde.getFluid(1000))
                 .fluidInputs(Butylaniline.getFluid(1000))
                 .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
-                .fluidOutputs(MBBA.getFluid(2000))
+                .fluidOutputs(MBBA.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(680000)
                 .input(dust, CarbonNanotubes)
-                .fluidInputs(MBBA.getFluid(2000))
-                .fluidOutputs(LiquidCrystalDetector.getFluid(3000))
+                .fluidInputs(MBBA.getFluid(1000))
+                .fluidOutputs(LiquidCrystalDetector.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(98000)
@@ -350,13 +355,13 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(87500)
                 .input(dust, Iodine)
                 .input(dust, Copper)
-                .outputs(CopperIodide.getItemStack(2))
+                .outputs(CopperIodide.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(87500)
                 .input(dust, Iodine)
                 .fluidInputs(Chlorine.getFluid(1000))
-                .fluidOutputs(IodineChloride.getFluid(2000))
+                .fluidOutputs(IodineChloride.getFluid(1000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(84500)
@@ -367,25 +372,23 @@ public class SensorEmitter {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(128)
-                .input(dust, Magnesium, 2)
+                .input(dust, Magnesium)
                 .fluidInputs(Chlorine.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, MagnesiumChloride))
+                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 3))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(350000)
-                .fluidInputs(Acetylene.getFluid(2000))
                 .input(dust, MagnesiumChloride)
+                .fluidInputs(Acetylene.getFluid(2000))
                 .fluidInputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidInputs(Bromine.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .fluidOutputs(AcetylatingReagent.getFluid(2000))
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(250000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(250000)
                 .fluidInputs(Naphtalene.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(2000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(Dimethylnaphtalene.getFluid(1000))
                 .buildAndRegister();
