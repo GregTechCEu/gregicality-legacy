@@ -161,7 +161,7 @@ public class GARecipeMaps {
 
         DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler", 1, 1, 0, 9, 0, 0, 0,0, new SimpleRecipeBuilder())
                 .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)
-                .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY) // TODO Update this
+                .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
     }

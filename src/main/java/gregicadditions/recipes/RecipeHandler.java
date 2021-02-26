@@ -1,6 +1,9 @@
 package gregicadditions.recipes;
 
-import gregicadditions.*;
+import gregicadditions.GAConfig;
+import gregicadditions.GAEnums;
+import gregicadditions.GAMaterials;
+import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
@@ -673,4 +676,6 @@ public class RecipeHandler {
         //register recipe
         builder.buildAndRegister();
     }
+
+
 }

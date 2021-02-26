@@ -38,7 +38,7 @@ public class DisassemblyHandler {
      * Integer = the tier of the circuit according to GAValues.V
      *
      * Passed parameter is the List of circuits to use for each tier,
-     * typically the worst of the tier.
+     * always the worst of the tier.
      */
     private static final Map<Integer, Tuple<ItemStack, Integer>> circuitToUse = createCircuitMap(Arrays.asList(
             MetaItems.BASIC_CIRCUIT_LV.getStackForm(),
@@ -138,8 +138,12 @@ public class DisassemblyHandler {
             List<ItemStack> outputItems = new ArrayList<>();
             recipe.getIngredients().forEach(ingredient -> {
                 ItemStack[] itemStacks = ingredient.getMatchingStacks();
+
+                // Add ash in empty spaces and in place of tools to preserve item order
                 if (itemStacks.length == 0 || itemStacks[0].getItem() instanceof MetaTool || itemStacks[0].getItem() instanceof GAMetaTool)
-                    outputItems.add(OreDictUnifier.get(dustTiny, Ash)); // add ash in empty space to preserve item order
+                    outputItems.add(OreDictUnifier.get(dustTiny, Ash));
+
+                // Check for if a circuit needs to be replaced, otherwise insert the ItemStack
                 else {
                     int key = itemStacks[0].getItemDamage();
                     if (circuitToUse.containsKey(key))
