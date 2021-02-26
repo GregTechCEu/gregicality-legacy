@@ -429,6 +429,11 @@ public class GAConfig {
         @Config.RequiresWorldRestart
         public boolean oreVariantsStoneTypes = true;
 
+        @Config.Comment("Whether or not to enable machine disassembly recipes")
+        @Config.Name("Enable disassembly")
+        @Config.RequiresMcRestart
+        public boolean enableDisassembly = true;
+
     }
 
     public static Multis multis = new Multis();
