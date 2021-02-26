@@ -24,7 +24,7 @@ import static gregtech.api.unification.material.Materials.Bronze;
 
 public class MetaTileEntitySteamGrinder extends RecipeMapSteamMultiblockController {
 
-    private static final double CONVERSION_RATE = GAConfig.SteamMultis.steamToEU;
+    private static final double CONVERSION_RATE = GAConfig.multis.steamMultis.steamToEU;
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS, GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS, GregicAdditionsCapabilities.STEAM
