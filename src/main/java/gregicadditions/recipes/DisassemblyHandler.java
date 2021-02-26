@@ -67,45 +67,42 @@ public class DisassemblyHandler {
      * decomposition handlers, as it is an unrelated category of recipes.
      */
     public static void buildDisassemblerRecipes() {
+        Map<ResourceLocation, MetaTileEntity> mteMap = new HashMap<>();
+        Map<MetaTileEntity, IRecipe> recipeMap = new HashMap<>();
 
-        if (GAConfig.Misc.enableDisassembly) {
-            Map<ResourceLocation, MetaTileEntity> mteMap = new HashMap<>();
-            Map<MetaTileEntity, IRecipe> recipeMap = new HashMap<>();
+        // Gather ResourceLocations, exclude duplicates (looking at you, Large Multi-Use Machine)
+        GregTechAPI.META_TILE_ENTITY_REGISTRY.forEach(mte -> {
+            if ((mte instanceof EnergyContainerHandler.IEnergyChangeListener
+                    || mte instanceof MultiblockControllerBase
+                    || mte instanceof SteamMetaTileEntity)
+                    && (!(mte instanceof MetaTileEntityHull)
+                    && !(mte instanceof GAMetaTileEntityHull))) {
 
-            // Gather ResourceLocations, exclude duplicates (looking at you, Large Multi-Use Machine)
-            GregTechAPI.META_TILE_ENTITY_REGISTRY.forEach(mte -> {
-                if ((mte instanceof EnergyContainerHandler.IEnergyChangeListener
-                        || mte instanceof MultiblockControllerBase
-                        || mte instanceof SteamMetaTileEntity)
-                        && (!(mte instanceof MetaTileEntityHull)
-                        && !(mte instanceof GAMetaTileEntityHull))) {
+                if (!mteMap.containsKey(mte.metaTileEntityId))
+                    mteMap.put(mte.metaTileEntityId, mte);
+            }
+        });
 
-                    if (!mteMap.containsKey(mte.metaTileEntityId))
-                        mteMap.put(mte.metaTileEntityId, mte);
+        // Gather the recipe for each MTE
+        // Unfortunately, there is not a better way to do this
+        ForgeRegistries.RECIPES.forEach(iRecipe -> {
+
+            MetaTileEntity mte;
+
+            // Test for if output is a MTE
+            if ((mte = testAndGetMTE(iRecipe.getRecipeOutput())) != null) {
+                if (mteMap.containsKey(GregTechAPI.META_TILE_ENTITY_REGISTRY.getNameForObject(mte))) {
+
+                    // Place a null for the MTE recipe if more than one exists to avoid exploits
+                    // Throws out GTCE->Gregicality conversion recipes from consideration
+                    if (iRecipe.getIngredients().size() != 1)
+                        recipeMap.put(mte, recipeMap.containsKey(mte) ? null : iRecipe);
                 }
-            });
+            }
+        });
 
-            // Gather the recipe for each MTE
-            // Unfortunately, there is not a better way to do this
-            ForgeRegistries.RECIPES.forEach(iRecipe -> {
-
-                MetaTileEntity mte;
-
-                // Test for if output is a MTE
-                if ((mte = testAndGetMTE(iRecipe.getRecipeOutput())) != null) {
-                    if (mteMap.containsKey(GregTechAPI.META_TILE_ENTITY_REGISTRY.getNameForObject(mte))) {
-
-                        // Place a null for the MTE recipe if more than one exists to avoid exploits
-                        // Throws out GTCE->Gregicality conversion recipes from consideration
-                        if (iRecipe.getIngredients().size() != 1)
-                            recipeMap.put(mte, recipeMap.containsKey(mte) ? null : iRecipe);
-                    }
-                }
-            });
-
-            // Register the Disassembler recipes
-            recipeMap.forEach(DisassemblyHandler::buildDisassemblerRecipe);
-        }
+        // Register the Disassembler recipes
+        recipeMap.forEach(DisassemblyHandler::buildDisassemblerRecipe);
     }
 
     /**
@@ -192,7 +189,7 @@ public class DisassemblyHandler {
                     else if ((tempMTE = testAndGetMTE(itemStack)) != null
                           && (tempMTE instanceof TieredMetaTileEntity
                           ||  tempMTE instanceof GATieredMetaTileEntity)) {
-                        voltage = 8 << (((ITieredMetaTileEntity) tempMTE).getTier() * 2);
+                        voltage = GAValues.V[((ITieredMetaTileEntity) tempMTE).getTier()];
                         break;
                     }
                 }

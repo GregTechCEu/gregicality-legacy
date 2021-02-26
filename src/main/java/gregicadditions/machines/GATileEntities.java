@@ -1162,16 +1162,18 @@ public class GATileEntities {
         }
         STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
 
-        id = 4198;
-        for (int i = 1; i < GAValues.V.length - 1; i++) {
-            final int tier = i; // used for inner class
-            DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
-                @Override
-                public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-                    tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
-                    super.addInformation(stack, player, tooltip, advanced);
-                }
-            }));
+        if (GAConfig.Misc.enableDisassembly) {
+            id = 4198;
+            for (int i = 1; i < GAValues.V.length - 1; i++) {
+                final int tier = i; // used for inner class
+                DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                    @Override
+                    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+                        tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
+                        super.addInformation(stack, player, tooltip, advanced);
+                    }
+                }));
+            }
         }
     }
 
