@@ -1179,7 +1179,7 @@ public class GAConfig {
             @Config.Comment("Number of machines the Processing Array can use at a time. Default: 16")
             @Config.Name("Processing Array Machine Limit")
             @Config.RangeInt(min=1, max=64)
-            public int processingArrayMachineLimit = 16;
+            public int processingArrayMachineLimit = 64;
 
             @Config.Comment({"Blacklist of machines for the Processing Array.",
                     "Add the unlocalized Recipe Map name to blacklist the machine."})
