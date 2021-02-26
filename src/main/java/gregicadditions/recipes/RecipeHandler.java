@@ -2,21 +2,10 @@ package gregicadditions.recipes;
 
 import gregicadditions.*;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.item.GAMetaTool;
-import gregicadditions.machines.overrides.GAMetaTileEntityHull;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerHandler;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.SteamMetaTileEntity;
-import gregtech.api.metatileentity.TieredMetaTileEntity;
-import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -29,17 +18,12 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.items.MetaItems;
-import gregtech.common.items.MetaTool;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
-import gregtech.common.metatileentities.electric.MetaTileEntityHull;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Tuple;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -688,164 +672,5 @@ public class RecipeHandler {
 
         //register recipe
         builder.buildAndRegister();
-    }
-
-    /**
-     * This MUST be run after all other recipe registration, except for Material
-     * decomposition handlers, as it is an unrelated category of recipes.
-     */
-    public static void buildDisassemblerRecipes() {
-
-        if (GAConfig.Misc.enableDisassembly) {
-
-            final Map<String, Tuple<ItemStack, Integer>> circuitToUse = createCircuitMap();
-            Map<ResourceLocation, MetaTileEntity> mteMap = new HashMap<>();
-            Map<MetaTileEntity, IRecipe> recipeMap = new HashMap<>();
-
-            // Gather ResourceLocations, exclude duplicates (looking at you, Large Multi-Use Machine)
-            GregTechAPI.META_TILE_ENTITY_REGISTRY.forEach(mte -> {
-                if ((mte instanceof EnergyContainerHandler.IEnergyChangeListener
-                        || mte instanceof MultiblockControllerBase
-                        || mte instanceof SteamMetaTileEntity)
-                        && (!(mte instanceof MetaTileEntityHull)
-                        && !(mte instanceof GAMetaTileEntityHull))) {
-
-                    if (!mteMap.containsKey(mte.metaTileEntityId))
-                        mteMap.put(mte.metaTileEntityId, mte);
-                }
-            });
-
-            // Gather the recipe for each MTE
-            ForgeRegistries.RECIPES.forEach(iRecipe -> {
-                String unlocalizedName = iRecipe.getRecipeOutput().getItem().getUnlocalizedNameInefficiently(iRecipe.getRecipeOutput());
-                MetaTileEntity tempMTE;
-
-                // Test for if output is a MTE
-                if ((unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine"))
-                        && (tempMTE = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(iRecipe.getRecipeOutput().getItemDamage())) != null) {
-                    if (mteMap.containsKey(GregTechAPI.META_TILE_ENTITY_REGISTRY.getNameForObject(tempMTE))) {
-
-                        // Place a null for the MTE recipe if more than one exists to avoid exploits
-                        // Throws out GTCE->Gregicality conversion recipes from consideration
-                        if (iRecipe.getIngredients().size() != 1)
-                            recipeMap.put(tempMTE, recipeMap.containsKey(tempMTE) ? null : iRecipe);
-                    }
-                }
-            });
-
-            // Register the Disassembler recipes
-            recipeMap.forEach((mte, recipe) -> {
-
-                if (recipe != null) {
-
-                    // Convert input Ingredients to ItemStack
-                    List<ItemStack> outputItems = new ArrayList<>();
-                    recipe.getIngredients().forEach(ingredient -> {
-                        ItemStack[] itemStacks = ingredient.getMatchingStacks();
-                        if (itemStacks.length == 0 || itemStacks[0].getItem() instanceof MetaTool || itemStacks[0].getItem() instanceof GAMetaTool)
-                            outputItems.add(OreDictUnifier.get(dustTiny, Ash));
-                        else {
-                            String key = itemStacks[0].getTranslationKey() + itemStacks[0].getItemDamage();
-                            if (circuitToUse.containsKey(key))
-                                outputItems.add(circuitToUse.get(key).getFirst());
-                            else
-                                outputItems.add(itemStacks[0]);
-                        }
-                    });
-
-                    // Used for EU/t
-                    int voltage = 0;
-                    if (mte instanceof ITieredMetaTileEntity) {
-                        voltage = GAValues.V[((ITieredMetaTileEntity) mte).getTier()];
-
-                    } else if (mte instanceof IEnergyContainer) {
-                        IEnergyContainer energy = ((IEnergyContainer) mte);
-                        voltage = (int) energy.getInputVoltage();
-                        if (voltage == 0)
-                            voltage = (int) energy.getOutputVoltage();
-
-                    }
-                    if (mte instanceof MultiblockControllerBase) {
-
-                        // Quick reset for Multis that implement IEnergyContainer (Battery Tower, for example) since
-                        // they do not always have the proper tier as an ItemStack.
-                        if (voltage != 0)
-                            voltage = 0;
-
-                        // One of the dumbest blocks of code I've ever written
-                        // At least we have proper EUt for multiblock disassembly now
-                        for (ItemStack itemStack : outputItems) {
-                            Tuple<ItemStack, Integer> tempTuple;
-                            MetaTileEntity tempMTE;
-
-                            // Check if itemStack is a circuit, and set the voltage to its tier
-                            if ((voltage = ((tempTuple = circuitToUse.get(itemStack.getTranslationKey() + itemStack.getItemDamage())) != null ? tempTuple.getSecond() : 0)) != 0) {
-                                voltage = 8 << (voltage * 2);
-                                break;
-                            }
-
-                            // Check if itemStack is an MTE, and set the voltage to its tier
-                            else {
-                                String unlocalizedName = itemStack.getItem().getUnlocalizedNameInefficiently(itemStack);
-                                if ((unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine"))
-                                        && (tempMTE = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(itemStack.getItemDamage())) != null
-                                        && (tempMTE instanceof TieredMetaTileEntity || tempMTE instanceof GATieredMetaTileEntity)) {
-                                    voltage = 8 << (((ITieredMetaTileEntity) tempMTE).getTier() * 2);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    // Catches Steam machines, PBF, IPBF, and Coke Oven
-                    // Also bumps ULV machine disassembly to 32EU/t
-                    voltage = Math.max(voltage, 32);
-
-                    // Used for duration
-                    int itemCount = recipe.getIngredients().size();
-
-                    DISASSEMBLER_RECIPES.recipeBuilder()
-                            .EUt(voltage)
-                            .duration(itemCount * 100) // 5s per output item
-                            .inputs(mte.getStackForm())
-                            .outputs(outputItems)
-                            .buildAndRegister();
-                }
-            });
-        }
-    }
-
-    private static Map<String, Tuple<ItemStack, Integer>> createCircuitMap() {
-        Map<String, Tuple<ItemStack, Integer>> circuits = new HashMap<>();
-
-        // List of circuits to use for each tier
-        List<ItemStack> circuitsMasterList = Arrays.asList(
-                MetaItems.BASIC_CIRCUIT_LV.getStackForm(),
-                GAMetaItems.PRIMITIVE_ASSEMBLY.getStackForm(),
-                GAMetaItems.ELECTRONIC_COMPUTER.getStackForm(),
-                GAMetaItems.REFINED_MAINFRAME.getStackForm(),
-                GAMetaItems.MICRO_MAINFRAME.getStackForm(),
-                GAMetaItems.NANO_MAINFRAME.getStackForm(),
-                GAMetaItems.QUANTUM_MAINFRAME.getStackForm(),
-                GAMetaItems.CRYSTAL_MAINFRAME.getStackForm(),
-                MetaItems.WETWARE_MAINFRAME_MAX.getStackForm(),
-                GAMetaItems.BIOWARE_MAINFRAME.getStackForm(),
-                GAMetaItems.OPTICAL_MAINFRAME.getStackForm(),
-                GAMetaItems.COSMIC_MAINFRAME.getStackForm(),
-                GAMetaItems.SUPRACAUSAL_MAINFRAME.getStackForm());
-
-        // Gather ore dicts
-        // Return Map is of type <String, Tuple<ItemStack, Integer>> where
-        // String = translationKey + metadata of the circuit to replace
-        // ItemStack = the circuit to use
-        // Integer = the tier of the circuit according to GAValues.V
-        circuitsMasterList.forEach(output ->
-            OreDictUnifier.getOreDictionaryNames(output).forEach(name ->
-                OreDictUnifier.getAllWithOreDictionaryName(name).forEach(itemStack ->
-                    circuits.put(itemStack.getTranslationKey() + itemStack.getItemDamage(), new Tuple<>(output, circuitsMasterList.indexOf(output) + 1))
-                )
-            )
-        );
-        return circuits;
     }
 }
