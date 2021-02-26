@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
