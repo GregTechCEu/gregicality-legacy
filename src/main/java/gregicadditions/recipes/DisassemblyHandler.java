@@ -181,7 +181,7 @@ public class DisassemblyHandler {
 
                     // Check if itemStack is a circuit, and set the voltage to its tier
                     if ((voltage = ((tempTuple = circuitToUse.get(itemStack.getItemDamage())) != null ? tempTuple.getSecond() : 0)) != 0) {
-                        voltage = 8 << (voltage * 2);
+                        voltage = GAValues.V[voltage];
                         break;
                     }
 
