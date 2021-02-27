@@ -448,8 +448,8 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_FABRIC = addItem(569,"cosmic.fabric");
         ROD_FIELD_SHAPE = addItem(570, "rod.field.shape");
 
-        COLOURED_LEDS = addItem(571, "coloured.leds");
-        DISPLAY = addItem(572, "display");
+        COLOURED_LEDS = addItem(578, "coloured.leds");
+        DISPLAY = addItem(579, "display");
         
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
