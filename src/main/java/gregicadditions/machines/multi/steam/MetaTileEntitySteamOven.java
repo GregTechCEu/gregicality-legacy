@@ -28,7 +28,7 @@ import static gregtech.api.unification.material.Materials.Bronze;
 
 public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController {
 
-    private static final double CONVERSION_RATE = GAConfig.SteamMultis.steamToEU;
+    private static final double CONVERSION_RATE = GAConfig.multis.steamMultis.steamToEU;
     private boolean isActive;
 
     public MetaTileEntitySteamOven(ResourceLocation metaTileEntityId) {

@@ -1,6 +1,7 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
@@ -45,7 +46,8 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 	@Override
 	public String[] getDescription() {
 		// TODO Auto-generated method stub
-		return new String[] { I18n.format("gregtech.multiblock.processing_array.description") };
+		return new String[] { I18n.format("gregtech.multiblock.processing_array.description",
+				GAConfig.multis.processingArray.processingArrayMachineLimit) };
 	}
 
 }

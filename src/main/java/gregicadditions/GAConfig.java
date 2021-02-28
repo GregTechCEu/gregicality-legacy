@@ -461,6 +461,7 @@ public class GAConfig {
         public LargeEngraver largeEngraver = new LargeEngraver();
         public HeatingCoils heatingCoils = new HeatingCoils();
         public SteamMultis steamMultis = new SteamMultis();
+        public ProcessingArray processingArray = new ProcessingArray();
     }
 
         public static class LargeEngraver {
@@ -1174,6 +1175,28 @@ public class GAConfig {
             };
         }
 
+        public static class ProcessingArray {
+            @Config.Comment("Number of machines the Processing Array can use at a time. Default: 16")
+            @Config.Name("Processing Array Machine Limit")
+            @Config.RangeInt(min=1, max=64)
+            public int processingArrayMachineLimit = 64;
+
+            @Config.Comment({"Blacklist of machines for the Processing Array.",
+                    "Add the unlocalized Recipe Map name to blacklist the machine."})
+            @Config.Name("Processing Array Blacklist")
+            public String[] machineBlackList = new String[]{
+                    "mass_fab",
+                    "replicator",
+                    "circuit_assembler"
+            };
+        }
+
+        public static class SteamMultis {
+            @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
+            @Config.RequiresMcRestart
+            public double steamToEU = 0.5;
+        }
+
         public static Extraction extraction;
 
         public static class Extraction {
@@ -1385,10 +1408,4 @@ public class GAConfig {
                 GALog.logger.info("Added resevoir type " + fluid);
             }
         }
-
-    public static class SteamMultis {
-        @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
-        @Config.RequiresMcRestart
-        public static double steamToEU = 0.5;
-    }
 }
