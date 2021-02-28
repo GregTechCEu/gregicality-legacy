@@ -8,15 +8,14 @@ import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.GTUtility;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
-import java.io.IOException;
 
 public abstract class RMapMultiblockWithSlotController extends GARecipeMapMultiblockController {
 
@@ -50,6 +49,11 @@ public abstract class RMapMultiblockWithSlotController extends GARecipeMapMultib
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         GTUtility.readItems(controllerSlot, "ControllerSlot", data);
+    }
+
+    @Override
+    public void onRemoval() {
+        Block.spawnAsEntity(getWorld(), getPos(), getStackInSlot());
     }
 
     // This could use more work to handle more cases
