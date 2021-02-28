@@ -70,7 +70,7 @@ public abstract class RMapMultiblockWithSlotController extends GARecipeMapMultib
         @Nonnull
         public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
             if (isItemValid(slot, stack))
-                super.insertItem(slot, stack, simulate);
+                return super.insertItem(slot, stack, simulate);
             return ItemStack.EMPTY;
         }
 
