@@ -351,7 +351,7 @@ public class VariousChains {
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(29000)
                 .input(dust, Graphene, 3)
                 .fluidInputs(GrapheneOxidationSolution.getFluid(500))
-                .outputs(GrapheneOxide.getItemStack(3))
+                .outputs(GraphiteOxide.getItemStack(3))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(26500)

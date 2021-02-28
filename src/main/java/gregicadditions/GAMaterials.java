@@ -1508,6 +1508,7 @@ public class GAMaterials implements IMaterialHandler {
         Neodymium.addFlag(GENERATE_BOLT_SCREW);
 
         BorosilicateGlass.addFlag(GENERATE_PLATE);
+        Germanium.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_PLATE);
         GreenSapphire.addFlag(GENERATE_LENSE);
         Iron.addFlag(GENERATE_METAL_CASING);

@@ -247,9 +247,11 @@ public class RecipeHandler {
                     RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 12:
                 case 13:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    cableStack = OreDictUnifier.get(cablePrefix, material,4);
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, 4*cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).input(foil, Zylon, (cableAmount == 1) ? 1 : cableAmount/2).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 default:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    cableStack = OreDictUnifier.get(cablePrefix, material,4);
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, 4*cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).input(foil, FullerenePolymerMatrix, (cableAmount == 1) ? 1 : cableAmount/2).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
 
 
             }
@@ -275,12 +277,13 @@ public class RecipeHandler {
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 12:
             case 13:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material, 4).input(foil, Zylon, (cableAmount == 1) ? 1 : cableAmount/2).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             default:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material, 4).input(foil, FullerenePolymerMatrix, (cableAmount == 1) ? 1 : cableAmount/2).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
 
 
         }
+
 
     }
 
