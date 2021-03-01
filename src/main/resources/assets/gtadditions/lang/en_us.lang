@@ -2654,7 +2654,7 @@ gregtech.multiblock.advanced_distillation_tower.description3=    Distillation To
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
 gtadditions.multiblock.chemical_plant.tooltip=Duration Depend on Coil Tier.
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
-gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it, up to §e2A UV§r.
+gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
 gtadditions.multiblock.large_rocket_engine.tooltip.3=Consume 37500mB of Air and 10mB of Carbon Dioxide per Second .
 gtadditions.multiblock.large_rocket_engine.tooltip.4=Use Liquid Hydrogen to boost by 3 the output energy (4mB/second /1B fuel)
 gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.

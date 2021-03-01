@@ -21,7 +21,6 @@ public class RocketEngineWorkableHandler extends FuelRecipeLogic {
     private static final int CO2_INTAKE_PER_SEC = 10;
     private static final int TICK_PER_SEC = 20;
     private FluidStack fuelStack;
-    private static final int MAX_EUt = GAValues.V[GAValues.UV] * 2; // Set max output to 2A UV
 
     public RocketEngineWorkableHandler(MetaTileEntity metaTileEntity, FuelRecipeMap recipeMap,
                                        Supplier<IEnergyContainer> energyContainer, Supplier<IMultipleTankHandler> fluidTank, long maxVoltage) {
@@ -115,10 +114,7 @@ public class RocketEngineWorkableHandler extends FuelRecipeLogic {
         // Refresh our internal FluidStack
         fuelStack.amount -= fuelUsed;
 
-        // Set a hard output limit at 2A UV
-        // This machine will void fuel if it is supplied too heavily,
-        // requiring regulation of the flow rate.
-        return Math.min(MAX_EUt, EUt);
+        return EUt;
     }
 
     public int getHydrogenNeededToBoost() {
