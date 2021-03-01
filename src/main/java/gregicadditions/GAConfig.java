@@ -434,6 +434,11 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean enableDisassembly = true;
 
+        @Config.Comment("Whether or not to have disassembly recipes with chanced outputs")
+        @Config.Name("Disassembly chanced outputs")
+        @Config.RequiresMcRestart
+        public boolean disassemblyChancedOutputs = true;
+
     }
 
     public static Multis multis = new Multis();

@@ -209,7 +209,10 @@ public class DisassemblyHandler {
                     .inputs(mte.getStackForm());
 
             // 50% chance at base, +7.5% up a tier
-            outputItems.forEach(outputStack -> builder.chancedOutput(outputStack, 5000, 750));
+            if (GAConfig.Misc.disassemblyChancedOutputs)
+                outputItems.forEach(outputStack -> builder.chancedOutput(outputStack, 5000, 750));
+            else
+                builder.outputs(outputItems);
             builder.buildAndRegister();
         }
     }
