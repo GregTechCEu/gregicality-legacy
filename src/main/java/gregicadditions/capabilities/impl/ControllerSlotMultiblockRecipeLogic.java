@@ -19,7 +19,7 @@ public class ControllerSlotMultiblockRecipeLogic extends GAMultiblockRecipeLogic
             lastControllerItem = ItemStack.EMPTY;
 
         ItemStack previousStack = lastControllerItem.copy();
-        lastControllerItem = ((RMapMultiblockWithSlotController) this.getMetaTileEntity()).getStackInSlot();
+        lastControllerItem = ((RecipeMapMultiblockWithSlotController) this.getMetaTileEntity()).getStackInSlot();
 
         return areItemStacksEqual(previousStack, lastControllerItem) || super.checkRecipeInputsDirty(importInventory, importFluids);
     }

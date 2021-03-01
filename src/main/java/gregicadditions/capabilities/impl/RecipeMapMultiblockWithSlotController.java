@@ -1,6 +1,6 @@
 package gregicadditions.capabilities.impl;
 
-import gregicadditions.gui.GAGuiTextures;
+import gregicadditions.client.ClientHandler;
 import gregtech.api.GregTechAPI;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -17,11 +17,11 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
-public abstract class RMapMultiblockWithSlotController extends GARecipeMapMultiblockController {
+public abstract class RecipeMapMultiblockWithSlotController extends GARecipeMapMultiblockController {
 
     private LimitedItemStackHandler controllerSlot;
 
-    public RMapMultiblockWithSlotController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, Class<?> itemsAllowed) {
+    public RecipeMapMultiblockWithSlotController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, Class<?> itemsAllowed) {
         super(metaTileEntityId, recipeMap);
         controllerSlot = new LimitedItemStackHandler(itemsAllowed);
     }
@@ -29,7 +29,7 @@ public abstract class RMapMultiblockWithSlotController extends GARecipeMapMultib
     @Override
     protected ModularUI.Builder createUITemplate(EntityPlayer player) {
         ModularUI.Builder builder = super.createUITemplate(player);
-        builder.image(148, 104, 21, 21, GAGuiTextures.CONTROLLER_SLOT);
+        builder.image(148, 104, 21, 21, ClientHandler.CONTROLLER_SLOT);
         builder.widget(new SlotWidget(controllerSlot, 0, 151, 107).setBackgroundTexture(GuiTextures.SLOT));
         return builder;
     }
