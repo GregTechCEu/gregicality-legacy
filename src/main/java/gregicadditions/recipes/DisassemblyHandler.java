@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.MetaTool;
@@ -202,12 +203,14 @@ public class DisassemblyHandler {
             // Used for duration
             int itemCount = recipe.getIngredients().size();
 
-            DISASSEMBLER_RECIPES.recipeBuilder()
+            RecipeBuilder<?> builder = DISASSEMBLER_RECIPES.recipeBuilder()
                     .EUt(voltage)
                     .duration(itemCount * 100) // 5s per output item
-                    .inputs(mte.getStackForm())
-                    .outputs(outputItems)
-                    .buildAndRegister();
+                    .inputs(mte.getStackForm());
+
+            // 50% chance at base, +7.5% up a tier
+            outputItems.forEach(outputStack -> builder.chancedOutput(outputStack, 5000, 750));
+            builder.buildAndRegister();
         }
     }
 
