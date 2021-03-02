@@ -373,7 +373,7 @@ public class SuperconductorsSMDChain {
                 .inputs(VanadiumOxide.getItemStack(5))
                 .fluidInputs(Hydrogen.getFluid(6000))
                 .outputs(YttriumEuropiumVanadate.getItemStack(2))
-                .fluidInputs(Steam.getFluid(3000))
+                .fluidOutputs(Steam.getFluid(3000))
                 .buildAndRegister();
 
         // SrCl2 + H2SO4 = SrSO4 + 2HCl

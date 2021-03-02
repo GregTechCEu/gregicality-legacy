@@ -251,19 +251,17 @@ public class BrineChain {
                 .outputs(LithiumAluminiumHydride.getItemStack(6))
                 .buildAndRegister();
 
-        // C6H10O5 + HCl(cat.) + H2O -> C6H12O6
+        // C6H10O5 + H2O -> C6H12O6
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(3000).EUt(250)
                 .inputs(Cellulose.getItemStack(21))
-                .fluidInputs(HydrochloricAcid.getFluid(50))
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(Glucose.getItemStack(24))
                 .buildAndRegister();
 
-        // C12H22O11 + HCl(cat.) + H2O -> C6H12O6 + C6H12O6
+        // C12H22O11 + H2O -> C6H12O6 + C6H12O6
         // Leaving sugar as 2 input since it would be rough to make it 45
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .input(dust, Sugar, 2)
-                .fluidInputs(HydrochloricAcid.getFluid(250))
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(Glucose.getItemStack(24))
                 .outputs(Fructose.getItemStack(24))
