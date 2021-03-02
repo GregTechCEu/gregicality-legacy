@@ -2602,7 +2602,7 @@ gregtech.multiblock.chemical_plant.description=The Chemical Plant Is a 5x5 struc
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke, Lignite into Lignite Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". In theory, it's large Assembling Machine, used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is used to create high tier circuits.
-gregtech.multiblock.processing_array.description=The Processing Array combines up to 64 single block machines in a single multiblock, effectively easing automation.
+gregtech.multiblock.processing_array.description=The Processing Array combines up to %d single block machines in a single multiblock, effectively easing automation.
 gregtech.multiblock.volcanus.description=The Volcanus is built as EBF. It consume 10L of Pyrotheum/tick/tier  and it is 3x faster.
 gregtech.multiblock.large_bender_and_forming.description=The Large Bending and Forming is 6x faster on the same voltage, processes 4 items per voltage tier difference.
 gregtech.multiblock.large_multi_use.description=The Multi Use is 3.5x faster on the same voltage, has 80%% EUt discount and processes 2 items per voltage tier difference.
@@ -3997,6 +3997,9 @@ metaitem.ctc.computational.unit.name=Closed Timelike Curve Computational Unit
 metaitem.recursively.folded.negative.space.name=Recursively Folded Negative Space
 metaitem.insulation_wire_assembly.name=Insulation Wire Assembly
 
+metaitem.coloured.leds.name=Coloured LEDs
+metaitem.display.name=Display
+
 material.qcd_confined_matter=Quantumchromodynamically Confined Matter
 
 fluid.free_electron_gas=Free Electron Gas
@@ -4039,3 +4042,6 @@ gtadditions.machine.disassembler.umv.name=High-Tech Disassembler IV
 gtadditions.machine.disassembler.uxv.name=Ultimate Disassembler
 gtadditions.machine.disassembler.tooltip=Disassembles Machines up to §b§o%s§r
 recipemap.disassembler.name=Disassembler
+
+gtadditions.machine.pa.display1=Set Recipes: §6%s
+gtadditions.machine.pa.display2=Parallel Recipes: §b%d

@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAEnums;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -45,6 +46,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(250)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .input(dust, SodiumHydroxide)
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidOutputs(Water.getFluid(1000))
                 .outputs(SodiumHypochlorite.getItemStack())
                 .buildAndRegister();
@@ -349,7 +351,7 @@ public class VariousChains {
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(29000)
                 .input(dust, Graphene, 3)
                 .fluidInputs(GrapheneOxidationSolution.getFluid(500))
-                .outputs(GrapheneOxide.getItemStack(3))
+                .outputs(GraphiteOxide.getItemStack(3))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(26500)

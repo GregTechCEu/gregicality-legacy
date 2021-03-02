@@ -565,7 +565,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 return handleHitResultWithScale(playerIn, hand, facing, true, hitResult);
             }
         } else {
-            return true;
+            return this.getController() != null;
         }
         return false;
     }

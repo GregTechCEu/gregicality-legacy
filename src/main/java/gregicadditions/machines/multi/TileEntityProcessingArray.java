@@ -1,14 +1,19 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.GAEnums;
-import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
+import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
+import gregicadditions.GAValues;
+import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
+import gregtech.api.GregTechAPI;
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
+import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,11 +23,17 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.Recipe.ChanceEntry;
+import gregtech.api.recipes.builders.*;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -33,16 +44,15 @@ import java.util.*;
 
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
-public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
+public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);
         ProcessingArrayWorkable recipeLogic = new ProcessingArrayWorkable(this);
         recipeLogic.initReflection();
         this.recipeMapWorkable = recipeLogic;
-
     }
 
     @Override
@@ -64,158 +74,88 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
-        // TODO Auto-generated method stub
         return GAMetaBlocks.METAL_CASING.get(TungstenSteel);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        // TODO Auto-generated method stub
         return new TileEntityProcessingArray(metaTileEntityId);
     }
 
-    protected static class ProcessingArrayWorkable extends GAMultiblockRecipeLogic {
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        if (isStructureFormed()) {
+            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
+            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
+                long maxVoltage = energyContainer.getInputVoltage();
+                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
+                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
+            }
 
-        int machineTierVoltage = 0;
+            String myRecipeMap = ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName;
+            if (myRecipeMap != null) {
+                textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
+                textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
+                        Math.min(getStackInSlot().getCount(), GAConfig.multis.processingArray.processingArrayMachineLimit)).setStyle(new Style().setColor(TextFormatting.AQUA)));
+            }
+
+            if (!recipeMapWorkable.isWorkingEnabled()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
+
+            } else if (recipeMapWorkable.isActive()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
+                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
+                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
+            } else {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
+            }
+
+            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
+            }
+        } else {
+            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
+            tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure")
+                    .setStyle(new Style().setColor(TextFormatting.RED)
+                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
+        }
+    }
+
+    protected static class ProcessingArrayWorkable extends ControllerSlotMultiblockRecipeLogic {
+
+        long voltageTier;
         int numberOfMachines = 0;
         int numberOfOperations = 0;
         ItemStack machineItemStack = null;
-        String machineName = "";
         Field wasActiveAndNeedsUpdateField = null;
         Field hasNotEnoughEnergyField = null;
-        // Method setActiveMethod = null;
-
-        public RecipeMap<?> getRecipeMaps(String machineName) {
-            switch (machineName) {
-                case "macerator":
-                    return RecipeMaps.MACERATOR_RECIPES;
-                case "cluster_mill":
-                    return GARecipeMaps.CLUSTER_MILL_RECIPES;
-                case "lathe":
-                    return RecipeMaps.LATHE_RECIPES;
-                case "extractor":
-                    return RecipeMaps.EXTRACTOR_RECIPES;
-                case "fluid_extractor":
-                    return RecipeMaps.FLUID_EXTRACTION_RECIPES;
-                case "alloy_smelter":
-                    return RecipeMaps.ALLOY_SMELTER_RECIPES;
-                case "ore_washer":
-                    return RecipeMaps.ORE_WASHER_RECIPES;
-                case "thermal_centrifuge":
-                    return RecipeMaps.THERMAL_CENTRIFUGE_RECIPES;
-                case "centrifuge":
-                    return RecipeMaps.CENTRIFUGE_RECIPES;
-                case "electrolyzer":
-                    return RecipeMaps.ELECTROLYZER_RECIPES;
-                case "electric_furnace":
-                    return RecipeMaps.FURNACE_RECIPES;
-                case "bender":
-                    return RecipeMaps.BENDER_RECIPES;
-                case "arc_furnace":
-                    return RecipeMaps.ARC_FURNACE_RECIPES;
-                case "autoclave":
-                    return RecipeMaps.AUTOCLAVE_RECIPES;
-                case "assembler":
-                    return RecipeMaps.ASSEMBLER_RECIPES;
-                case "brewery":
-                    return RecipeMaps.BREWING_RECIPES;
-                case "canner":
-                    return RecipeMaps.CANNER_RECIPES;
-                case "chemical_bath":
-                    return RecipeMaps.CHEMICAL_BATH_RECIPES;
-                case "chemical_reactor":
-                    return RecipeMaps.CHEMICAL_RECIPES;
-                case "compressor":
-                    return RecipeMaps.COMPRESSOR_RECIPES;
-                case "cutter":
-                    return RecipeMaps.CUTTER_RECIPES;
-                case "distillery":
-                    return RecipeMaps.DISTILLATION_RECIPES;
-                case "electromagnetic_separator":
-                    return RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
-                case "fermenter":
-                    return RecipeMaps.FERMENTING_RECIPES;
-                case "fluid_canner":
-                    return RecipeMaps.FLUID_CANNER_RECIPES;
-                case "fluid_heater":
-                    return RecipeMaps.FLUID_HEATER_RECIPES;
-                case "fluid_solidifier":
-                    return RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
-                case "forge_hammer":
-                    return RecipeMaps.FORGE_HAMMER_RECIPES;
-                case "forming_press":
-                    return RecipeMaps.FORMING_PRESS_RECIPES;
-                case "microwave":
-                    return RecipeMaps.MICROWAVE_RECIPES;
-                case "mixer":
-                    return RecipeMaps.MIXER_RECIPES;
-                case "packer":
-                    return RecipeMaps.PACKER_RECIPES;
-                case "unpacker":
-                    return RecipeMaps.UNPACKER_RECIPES;
-                case "plasma_arc_furnace":
-                    return RecipeMaps.PLASMA_ARC_FURNACE_RECIPES;
-                case "polarizer":
-                    return RecipeMaps.POLARIZER_RECIPES;
-                case "laser_engraver":
-                    return RecipeMaps.LASER_ENGRAVER_RECIPES;
-                case "wiremill":
-                    return RecipeMaps.WIREMILL_RECIPES;
-//                case "mass_fab":              too easy
-//                    return GARecipeMaps.MASS_FAB_RECIPES;
-//                case "replicator":            too easy
-//                    return GARecipeMaps.REPLICATOR_RECIPES;
-//                case "circuit_assembler":     too easy
-//                    return GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
-                case "sieve":
-                    return GARecipeMaps.SIEVE_RECIPES;
-                case "dehydrator":
-                    return GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-                case "simple_ore_washer":
-                    return GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES;
-                case "attractor":
-                    return GARecipeMaps.ATTRACTOR_RECIPES;
-                case "decay_chamber":
-                    return GARecipeMaps.DECAY_CHAMBERS_RECIPES;
-                case "green_house":
-                    return GARecipeMaps.GREEN_HOUSE_RECIPES;
-                case "sifter":
-                    return RecipeMaps.SIFTER_RECIPES;
-                case "extruder":
-                    return RecipeMaps.EXTRUDER_RECIPES;
-                default:
-                    return null;
-            }
-
-        }
+        String recipeMapName = null;
 
         public void initReflection() {
             wasActiveAndNeedsUpdateField = ObfuscationReflectionHelper.findField(AbstractRecipeLogic.class, "wasActiveAndNeedsUpdate");
-            // setActiveMethod =
-            // ObfuscationReflectionHelper.findMethod(AbstractRecipeLogic.class,
-            // "setActive", null, Boolean.class);
             hasNotEnoughEnergyField = ObfuscationReflectionHelper.findField(AbstractRecipeLogic.class, "hasNotEnoughEnergy");
         }
 
         public ProcessingArrayWorkable(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
-            // TODO Auto-generated constructor stub
         }
 
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
 
-            String machineName = findMachine(inputs, fluidInputs);
-            RecipeMap<?> recipeM = getRecipeMaps(machineName);
-
-            if (recipeM == null) {
+            RecipeMap<?> recipeMap = findRecipeMap(((TileEntityProcessingArray)this.getMetaTileEntity()).getStackInSlot());
+            if (recipeMap == null) {
+                recipeMapName = null;
                 return null;
             }
+            recipeMapName = recipeMap.getLocalizedName();
+
             List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             Tuple recipePerInput = itemInputs.stream()
                     .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
                     .filter(tuple -> tuple.getRecipe() != null)
-                    .findFirst().orElse(new Tuple(recipeM.findRecipe(machineTierVoltage, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
+                    .findFirst().orElse(new Tuple(recipeMap.findRecipe(voltageTier, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
 
 
             if (recipePerInput.getRecipe() == null) {
@@ -253,7 +193,7 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipePerInput.getRecipe(), numberOfOperations);
 
-            RecipeBuilder<?> newRecipe = recipeM.recipeBuilder()
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
@@ -262,7 +202,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                     .duration(recipePerInput.getRecipe().getDuration());
 
             copyChancedItemOutputs(newRecipe, recipePerInput.getRecipe(), numberOfOperations);
-            newRecipe.notConsumable(machineItemStack);
 
             return newRecipe.build().getResult();
         }
@@ -296,12 +235,10 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                         found = true;
                         break;
                     }
-
                 }
                 if (!found) {
                     countIngredients.add(wholeItemStack.copy());
                 }
-
             }
         }
 
@@ -310,9 +247,8 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             int minMultiplier = Integer.MAX_VALUE;
             for (CountableIngredient ci : r.getInputs()) {
 
-                if (ci.getCount() == 0) {
+                if (ci.getCount() == 0)
                     continue;
-                }
 
                 for (ItemStack wholeItemStack : countIngredients) {
 
@@ -323,7 +259,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                         }
                         break;
                     }
-
                 }
             }
             return minMultiplier;
@@ -346,7 +281,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                     }
                 }
             }
-
         }
 
         protected int getMinRatioFluid(Map<String, Integer> countFluid, Recipe r, int numberOfMachines) {
@@ -358,7 +292,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                 if (ratio < minMultiplier) {
                     minMultiplier = ratio;
                 }
-
             }
             return minMultiplier;
         }
@@ -386,27 +319,56 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             }
         }
 
-        protected String findMachine(IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+        protected RecipeMap<?> findRecipeMap(ItemStack machine) {
+            if (machine == null)
+                return null;
 
-            for (int slot = 0; slot < inputs.getSlots(); slot++) {
-                // find tileentity
-                ItemStack wholeItemStack = inputs.getStackInSlot(slot);
-                String unlocalizedName = wholeItemStack.getItem().getUnlocalizedNameInefficiently(wholeItemStack);
-                if (unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine")) {
-                    this.numberOfMachines = Math.min(64, wholeItemStack.getCount());
-                    String trimmedName = "";
-                    String voltage = unlocalizedName.substring(unlocalizedName.lastIndexOf(".") + 1);
-                    trimmedName = unlocalizedName.substring(0, unlocalizedName.lastIndexOf("."));
+            ITieredMetaTileEntity mte = (ITieredMetaTileEntity) GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(machine.getItemDamage());
+            String unlocalizedName = machine.getItem().getUnlocalizedNameInefficiently(machine); // can do this differently
 
-                    this.machineName = trimmedName.substring(trimmedName.lastIndexOf(".") + 1);
-                    this.machineTierVoltage = GAEnums.voltageMap.get(voltage) == null ? 0 : GAEnums.voltageMap.get(voltage);
-                    this.machineItemStack = wholeItemStack;
-                    break;
+            if (mte != null && !findMachineInBlacklist(unlocalizedName)) {
+                RecipeMap<?> rmap = RecipeMap.getByName(findRecipeMapName(unlocalizedName));
+                if (rmap != null && (rmap.recipeBuilder() instanceof SimpleRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof IntCircuitRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof ArcFurnaceRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof CutterRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof UniversalDistillationRecipeBuilder)) {
+                    // Find the voltage tier of the machine
+                    this.voltageTier = GAValues.V[mte.getTier()];
+                    // Find the number of machines
+                    this.numberOfMachines = Math.min(GAConfig.multis.processingArray.processingArrayMachineLimit, machine.getCount());
+                    // The machine Item Stack. Is this needed if we remove the machine from being found in the ingredients?
+                    this.machineItemStack = machine;
 
+                    return rmap;
                 }
             }
-            return machineName;
+            return null;
         }
+
+        public String findRecipeMapName(String unlocalizedName) {
+
+            String trimmedName = unlocalizedName.substring(0, unlocalizedName.lastIndexOf("."));
+            trimmedName = trimmedName.substring(trimmedName.lastIndexOf(".") + 1);
+
+            // For some reason, the Cutting saw's machine name does not match the recipe map's unlocalized name, so correct it
+            // Same with the Electric Furnace and our Chemical Dehydrator
+            switch (trimmedName) {
+                case "cutter":
+                    trimmedName = "cutting_saw"; break;
+                case "electric_furnace":
+                    trimmedName = "furnace"; break;
+                case "dehydrator":
+                    trimmedName = "chemical_dehydrator"; break;
+            }
+            return trimmedName;
+        }
+
+        public boolean findMachineInBlacklist(String unlocalizedName) {
+            String[] blacklist = GAConfig.multis.processingArray.machineBlackList;
+            return Arrays.asList(blacklist).contains(unlocalizedName);
+        }
+
 
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
@@ -416,21 +378,7 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             IMultipleTankHandler importFluids = getInputTank();
             IMultipleTankHandler exportFluids = getOutputTank();
 
-            /*
-             * this.numberOfOperations = 0;
-             *
-             * for (int i = 0; i < numberOfMachines; i++) { if
-             * (MetaTileEntity.addItemsToItemHandler(exportInventory, true,
-             * recipe.getAllItemOutputs(exportInventory.getSlots())) &&
-             * MetaTileEntity.addFluidsToFluidHandler(exportFluids, true,
-             * recipe.getFluidOutputs())) {
-             *
-             *
-             * if (recipe.matches(true, importInventory, importFluids)) {
-             * numberOfOperations++; } else { break; } } }
-             */
-
-            int[] resultOverclock = calculateOverclock(recipe.getEUt(), machineTierVoltage, recipe.getDuration());
+            int[] resultOverclock = calculateOverclock(recipe.getEUt(), voltageTier, recipe.getDuration());
             int totalEUt = resultOverclock[0] * resultOverclock[1] * this.numberOfOperations;
 
             boolean enoughPower = totalEUt >= 0 ? getEnergyStored() >= (totalEUt > getEnergyCapacity() / 2 ? resultOverclock[0] : totalEUt) : getEnergyStored() - resultOverclock[0] * this.numberOfOperations <= getEnergyCapacity();
@@ -438,7 +386,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             if (!enoughPower) {
                 return false;
             }
-
             return MetaTileEntity.addItemsToItemHandler(exportInventory, true, recipe.getAllItemOutputs(exportInventory.getSlots())) && MetaTileEntity.addFluidsToFluidHandler(exportFluids, true, recipe.getFluidOutputs()) && recipe.matches(true, importInventory, importFluids);
         }
 
@@ -465,12 +412,11 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             if (currentRecipe != null && setupAndConsumeRecipeInputs(currentRecipe)) {
                 setupRecipe(currentRecipe);
             }
-
         }
 
         @Override
         protected void setupRecipe(Recipe recipe) {
-            int[] resultOverclock = calculateOverclock(recipe.getEUt(), machineTierVoltage, recipe.getDuration());
+            int[] resultOverclock = calculateOverclock(recipe.getEUt(), voltageTier, recipe.getDuration());
             this.progressTime = 1;
             setMaxProgress(resultOverclock[1]);
             this.recipeEUt = resultOverclock[0] * this.numberOfOperations;
@@ -481,16 +427,11 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                 if (this.wasActiveAndNeedsUpdateField.getBoolean(this)) {
                     this.wasActiveAndNeedsUpdateField.set(this, false);
                 } else {
-
                     setActive(true);
-                    // this.setActiveMethod.invoke(this,true);
                 }
             } catch (IllegalAccessException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
         }
-
     }
 }

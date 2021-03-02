@@ -319,11 +319,11 @@ public class GARecipeAddition {
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(2000).inputs(OreDictUnifier.get(cableGtSingle, Aluminium), ELECTRIC_MOTOR_EV.getStackForm(1)).fluidInputs(Rubber.getFluid(432)).outputs(CONVEYOR_MODULE_EV.getStackForm()).buildAndRegister();
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(8000).inputs(OreDictUnifier.get(cableGtSingle, Tungsten), ELECTRIC_MOTOR_IV.getStackForm(1)).fluidInputs(Rubber.getFluid(432)).outputs(CONVEYOR_MODULE_IV.getStackForm()).buildAndRegister();
 
-            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).input(circuit, Tier.Basic).inputs(OreDictUnifier.get(cableGtSingle, Tin), OreDictUnifier.get(foil, Steel, 8), OreDictUnifier.get(gemFlawless, Quartzite)).fluidInputs(Brass.getFluid(72)).outputs(SENSOR_LV.getStackForm()).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(125).input(circuit, Tier.Good).inputs(OreDictUnifier.get(cableGtSingle, Copper), OreDictUnifier.get(foil, Aluminium, 8), OreDictUnifier.get(gemFlawless, NetherQuartz)).fluidInputs(Electrum.getFluid(72)).outputs(SENSOR_MV.getStackForm()).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(500).input(circuit, Tier.Advanced).inputs(OreDictUnifier.get(cableGtSingle, Gold), OreDictUnifier.get(foil, StainlessSteel, 8), OreDictUnifier.get(gemFlawless, Emerald)).fluidInputs(Chrome.getFluid(72)).outputs(SENSOR_HV.getStackForm()).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(2000).input(circuit, Tier.Extreme).inputs(OreDictUnifier.get(cableGtSingle, Aluminium), OreDictUnifier.get(foil, Titanium, 8), OreDictUnifier.get(gem, EnderPearl)).fluidInputs(Platinum.getFluid(72)).outputs(SENSOR_EV.getStackForm()).buildAndRegister();
-            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(8000).input(circuit, Tier.Elite).inputs(OreDictUnifier.get(cableGtSingle, Tungsten), OreDictUnifier.get(foil, TungstenSteel, 8), OreDictUnifier.get(gem, EnderEye)).fluidInputs(Osmium.getFluid(72)).outputs(SENSOR_IV.getStackForm()).buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).input(circuit, Tier.Basic).inputs(OreDictUnifier.get(cableGtSingle, Tin), OreDictUnifier.get(foil, Steel, 8), OreDictUnifier.get(gem, Quartzite)).fluidInputs(Brass.getFluid(72)).outputs(SENSOR_LV.getStackForm()).buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(125).input(circuit, Tier.Good).inputs(OreDictUnifier.get(cableGtSingle, Copper), OreDictUnifier.get(foil, Aluminium, 8), OreDictUnifier.get(gem, NetherQuartz)).fluidInputs(Electrum.getFluid(72)).outputs(SENSOR_MV.getStackForm()).buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(500).input(circuit, Tier.Advanced).inputs(OreDictUnifier.get(cableGtSingle, Gold), OreDictUnifier.get(foil, StainlessSteel, 8), OreDictUnifier.get(gem, Emerald)).fluidInputs(Chrome.getFluid(72)).outputs(SENSOR_HV.getStackForm()).buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(2000).input(circuit, Tier.Extreme).inputs(OreDictUnifier.get(cableGtSingle, Aluminium), OreDictUnifier.get(foil, Titanium, 8), OreDictUnifier.get(dust, EnderPearl)).fluidInputs(Platinum.getFluid(72)).outputs(SENSOR_EV.getStackForm()).buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(8000).input(circuit, Tier.Elite).inputs(OreDictUnifier.get(cableGtSingle, Tungsten), OreDictUnifier.get(foil, TungstenSteel, 8), OreDictUnifier.get(dust, EnderEye)).fluidInputs(Osmium.getFluid(72)).outputs(SENSOR_IV.getStackForm()).buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30).input(circuit, Tier.Basic).inputs(OreDictUnifier.get(cableGtSingle, Tin), OreDictUnifier.get(gemFlawless, Quartzite)).fluidInputs(Brass.getFluid(144)).outputs(EMITTER_LV.getStackForm()).buildAndRegister();
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(125).input(circuit, Tier.Good).inputs(OreDictUnifier.get(cableGtSingle, Copper), OreDictUnifier.get(gemFlawless, NetherQuartz)).fluidInputs(Electrum.getFluid(144)).outputs(EMITTER_MV.getStackForm()).buildAndRegister();
@@ -554,6 +554,18 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, EnderPearl, 10))
                 .buildAndRegister();
 
+        // Snow
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(24).duration(50)
+                .input(block, Snow)
+                .outputs(OreDictUnifier.get(dust, Snow, 4))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(2).duration(200)
+                .input(dust, Snow, 4)
+                .outputs(OreDictUnifier.get(block, Snow, 4))
+                .buildAndRegister();
+
+
         ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(HastelloyN.getFluid(144 * 4)).input(valueOf("gtMetalCasing"), Staballoy, 2).inputs(CountableIngredient.from(circuit, Tier.Extreme)).outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200).input(plateDense, Lead, 4).fluidInputs(Oxygen.getFluid(16000)).input(OrePrefix.valueOf("gtMetalCasing"), StainlessSteel).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(960).duration(2400).input(plateDense, Titanium, 4).fluidInputs(Nitrogen.getFluid(16000)).inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_HV)).outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CellCasing.CellType.CELL_EV)).buildAndRegister();
@@ -645,6 +657,11 @@ public class GARecipeAddition {
 
         COMPRESSOR_RECIPES.recipeBuilder().EUt(120).duration(300).input(ingot, Graphite).outputs(PYROLYTIC_CARBON.getStackForm()).buildAndRegister();
         BLAST_RECIPES.recipeBuilder().EUt(480).duration(3000).input(dust, Silicon).input(dust, Carbon).notConsumable(new IntCircuitIngredient(2)).fluidInputs(Argon.getFluid(1000)).outputs(SiliconCarbide.getItemStack(2)).blastFurnaceTemp(2500).buildAndRegister();
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).input(dust, Aluminium).notConsumable(new IntCircuitIngredient(1)).outputs(OreDictUnifier.get(ingot, Aluminium)).blastFurnaceTemp(1700).buildAndRegister();
+
+        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});
+        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30).input(dust, SodiumHydroxide, 3).fluidInputs(HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)).notConsumable(new IntCircuitIngredient(2)).fluidOutputs(Epichlorhydrin.getFluid(1000), SaltWater.getFluid(1000)).buildAndRegister();
     }
 
 
@@ -1250,6 +1267,7 @@ public class GARecipeAddition {
         CosmicComponents.init();
         SupraCausalComponents.init();
         UltimateMaterials.init();
+        DigitalInterfaces.init();
     }
 
     public static void forestrySupport() {

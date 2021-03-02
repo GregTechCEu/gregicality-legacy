@@ -34,8 +34,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
-import static gregicadditions.item.GAMetaItems.SCHEMATIC_DUST;
+import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.M;
@@ -247,9 +246,11 @@ public class RecipeHandler {
                     RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 12:
                 case 13:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    cableStack = OreDictUnifier.get(cablePrefix, material,4);
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, 4*cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).input(foil, Zylon, (cableAmount == 1) ? 1 : cableAmount/2).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 default:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    cableStack = OreDictUnifier.get(cablePrefix, material,4);
+                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, 4*cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).input(foil, FullerenePolymerMatrix, (cableAmount == 1) ? 1 : cableAmount/2).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
 
 
             }
@@ -275,12 +276,13 @@ public class RecipeHandler {
                 RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 12:
             case 13:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Zylon, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material, 4).input(foil, Zylon, (cableAmount == 1) ? 1 : cableAmount/2).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             default:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, FullerenePolymerMatrix, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material, 4).input(foil, FullerenePolymerMatrix, (cableAmount == 1) ? 1 : cableAmount/2).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2*cableAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
 
 
         }
+
 
     }
 
@@ -462,16 +464,30 @@ public class RecipeHandler {
     }
 
     public static void registerLargeMixerRecipes() {
-        RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe ->
-                GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
-                        .notConsumable(new IntCircuitIngredient(recipe.getInputs().size() + recipe.getFluidInputs().size()))
-                        .EUt(recipe.getEUt())
-                        .duration(recipe.getDuration())
-                        .fluidInputs(recipe.getFluidInputs())
-                        .inputsIngredients(recipe.getInputs())
-                        .outputs(recipe.getOutputs())
-                        .fluidOutputs(recipe.getFluidOutputs())
-                        .buildAndRegister());
+        RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe -> {
+            List<CountableIngredient> inputList = new ArrayList<>();
+            IntCircuitIngredient circuitIngredient = null;
+
+            for (CountableIngredient input : recipe.getInputs()) {
+                if (!(input.getIngredient() instanceof IntCircuitIngredient))
+                    inputList.add(input);
+                else
+                    circuitIngredient = (IntCircuitIngredient) input.getIngredient();
+            }
+
+            if (circuitIngredient == null)
+                circuitIngredient = new IntCircuitIngredient(inputList.size() + recipe.getFluidInputs().size());
+
+            GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
+                    .notConsumable(circuitIngredient)
+                    .EUt(recipe.getEUt())
+                    .duration(recipe.getDuration())
+                    .fluidInputs(recipe.getFluidInputs())
+                    .inputsIngredients(inputList)
+                    .outputs(recipe.getOutputs())
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .buildAndRegister();
+        });
     }
 
     public static void registerLargeCentrifugeRecipes() {

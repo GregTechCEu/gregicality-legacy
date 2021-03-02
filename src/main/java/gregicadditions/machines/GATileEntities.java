@@ -263,11 +263,11 @@ public class GATileEntities {
             CLUSTERMILL[5] = create(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
             CLUSTERMILL[6] = create(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
             CLUSTERMILL[7] = create(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
-            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("clustermill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
-            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("clustermill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
-            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("clustermill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
-            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("clustermill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
-            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("clustermill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("cluster_mill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("cluster_mill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("cluster_mill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("cluster_mill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("cluster_mill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
 
         }
 
