@@ -59,7 +59,7 @@ public class BariumChain {
                 .outputs(OreDictUnifier.get(ingot, Barium, 3))
                 .outputs(BariumAluminate.getItemStack(7))
                 .buildAndRegister();
-        
+
         // 2Al2BaO4 -> BaO + Al2O3
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(500)
                 .inputs(BariumAluminate.getItemStack(14))
