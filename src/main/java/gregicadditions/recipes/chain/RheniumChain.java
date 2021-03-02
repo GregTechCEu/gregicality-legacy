@@ -13,6 +13,24 @@ public class RheniumChain {
     public static void init() {
         // Molybdenite MUST NOT be producible from it's components!
 
+        /*
+         * Unknown compounds key: (could use some help on this)
+         * GoldCyanide: AuCN
+         * GoldDepleteMolybdenite: MoS2
+         * MolybdenumConcentrate:
+         * ChlorideLeachedSolution:
+         * MolybdenumFlue:
+         * RheniumSulfuricSolution:
+         * RheniumSeparationMixture: Does not matter, doesn't impact formulas (despite being consumed)
+         * PlatinumSaltCrude:
+         * PlatinumSaltRefined:
+         * RheniumScrubbedSolution: Re
+         * LeachedColumbite:
+         * PurifiedColumbite:
+         * LeachedPyrochlore:
+         * PurifiedPyrochlore:
+         */
+
         // CH4 + NH3 + 3O -> HCN + 3H2O
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methane.getFluid(1000))
@@ -35,7 +53,7 @@ public class RheniumChain {
                 .duration(12)
                 .buildAndRegister();
 
-        // MoS2 + NaCN -> AuCN + ?
+        // MoS2 + NaCN -> AuCN + MoS2(depl.)
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Molybdenite, 3)
                 .fluidInputs(SodiumCyanide.getFluid(1000))
@@ -45,7 +63,8 @@ public class RheniumChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // Not gonna question it, but its really weird and probably an exploit
+        // 5AuCN -> Au + 5Na + 5C + 5NaCN + 5N ??
+        // Not sure what to do about this
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(GoldCyanide.getFluid(5000))
                 .outputs(OreDictUnifier.get(dust, Gold))
@@ -57,8 +76,9 @@ public class RheniumChain {
                 .duration(150)
                 .buildAndRegister();
 
+        // MoS2 + FeCl3 ->
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(GoldDepleteMolybdenite.getItemStack())
+                .inputs(GoldDepleteMolybdenite.getItemStack(3))
                 .fluidInputs(IronChloride.getFluid(500))
                 .outputs(MolybdenumConcentrate.getItemStack())
                 .fluidOutputs(ChlorideLeachedSolution.getFluid(500))
@@ -66,7 +86,7 @@ public class RheniumChain {
                 .duration(10)
                 .buildAndRegister();
 
-        // CaCl2, CuCl2, PbCl2, BiCl3
+        // 8? -> CaCl2 + CuCl2 + PbCl2 + BiCl3 + 8FeCl2
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ChlorideLeachedSolution.getFluid(8000))
                 .outputs(OreDictUnifier.get(dust, CalciumChloride, 3))
@@ -114,7 +134,7 @@ public class RheniumChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // MoO3
+        // ? + ~7O -> 3? + MoO3
         BLAST_RECIPES.recipeBuilder()
                 .inputs(MolybdenumConcentrate.getItemStack(2))
                 .fluidInputs(Oxygen.getFluid(7250))
@@ -136,6 +156,7 @@ public class RheniumChain {
                 .duration(200)
                 .buildAndRegister();
 
+        // 3? + 0.5NH3 -> 3SO2 + 0.5NH4ReO4
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(MolybdenumFlue.getFluid(3000))
                 .fluidInputs(Water.getFluid(250))
@@ -144,6 +165,7 @@ public class RheniumChain {
                 .duration(30)
                 .buildAndRegister();
 
+        // ? + 0.5NH3 -> 3SO2 + 0.5NH4ReO4
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(RheniumSulfuricSolution.getFluid(3000))
                 .fluidInputs(Ammonia.getFluid(500))
@@ -264,7 +286,7 @@ public class RheniumChain {
                 .duration(90)
                 .buildAndRegister();
 
-        // C12H26 + C24H51N + C8H18O + C6H12O + CH3COOH + C5H12O -> ?
+        // 2C12H26 + 0.5C24H51N + 0.25C8H18O + 0.5C6H12O + 0.375CH3COOH + 0.375C5H12O -> ~4C11H24
         LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Kerosene.getFluid(2000))
                 .fluidInputs(Trioctylamine.getFluid(500))
@@ -277,6 +299,7 @@ public class RheniumChain {
                 .duration(90)
                 .buildAndRegister();
 
+        // ? + RSM -> ? + ?(20%) + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust,PlatinumSaltCrude)
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
@@ -287,6 +310,7 @@ public class RheniumChain {
                 .duration(50)
                 .buildAndRegister();
 
+        // ? + 0.2? -> ? + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(LeachedColumbite.getItemStack())
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
@@ -296,6 +320,7 @@ public class RheniumChain {
                 .duration(50)
                 .buildAndRegister();
 
+        //  + 0.2? -> ? + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(LeachedPyrochlore.getItemStack())
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
@@ -305,6 +330,7 @@ public class RheniumChain {
                 .duration(50)
                 .buildAndRegister();
 
+        // ? + 5HF -> H2NbOF5
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(PurifiedColumbite.getItemStack())
                 .fluidInputs(HydrofluoricAcid.getFluid(5000))
@@ -313,6 +339,7 @@ public class RheniumChain {
                 .duration(180)
                 .buildAndRegister();
 
+        // Nb(H2O) + 5HF -> H2NbOF5
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(PurifiedPyrochlore.getItemStack())
                 .fluidInputs(HydrofluoricAcid.getFluid(5000))
@@ -321,6 +348,7 @@ public class RheniumChain {
                 .duration(180)
                 .buildAndRegister();
 
+        // Re + 3NH3 + H2SO4 -> (NH4)2SO4 + NH4ReO4
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(RheniumScrubbedSolution.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(3000))
