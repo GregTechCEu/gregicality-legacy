@@ -8,9 +8,9 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
-
 public class IodineChain {
     public static void init() {
+
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(1250)
                 .input(dust, Caliche)
                 .fluidInputs(Water.getFluid(1000))
@@ -23,7 +23,7 @@ public class IodineChain {
                 .input(dust, Carbon)
                 .fluidOutputs(IodideSolution.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(1250)
@@ -47,8 +47,8 @@ public class IodineChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(750)
                 .fluidInputs(CalicheNitrateSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Niter))
-                .outputs(OreDictUnifier.get(dust, RockSalt))
+                .outputs(OreDictUnifier.get(dust, Niter, 5))
+                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(30)
@@ -73,6 +73,5 @@ public class IodineChain {
                 .fluidInputs(IodineSlurry.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Iodine))
                 .buildAndRegister();
-
     }
 }
