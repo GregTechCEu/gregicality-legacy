@@ -28,32 +28,39 @@ public class SuperconductorsSMDChain {
                 .outputs(CopperGalliumIndiumMix.getItemStack(3))
                 .buildAndRegister();
 
+        // 2H + Se = H2Se
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(670)
-                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(2000))
                 .input(dust, Selenium)
                 .fluidOutputs(HydroselenicAcid.getFluid(1000))
                 .buildAndRegister();
 
+        // 2H2Se + 2O + CuInGa = CuInGaSe2 + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(820)
-                .fluidInputs(HydroselenicAcid.getFluid(1300))
-                .inputs(CopperGalliumIndiumMix.getItemStack())
+                .fluidInputs(HydroselenicAcid.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(2000))
+                .inputs(CopperGalliumIndiumMix.getItemStack(3))
                 .outputs(CopperGalliumIndiumSelenide.getItemStack())
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
+        // MnO2 + 2KOH + O = K2MnO4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(740)
-                .input(dust, Pyrolusite)
+                .input(dust, Pyrolusite, 3)
                 .fluidInputs(PotassiumHydroxide.getFluid(2000))
-                .fluidInputs(Air.getFluid(1000))
-                .outputs(PotassiumManganate.getItemStack())
+                .fluidInputs(Oxygen.getFluid(1000))
+                .outputs(PotassiumManganate.getItemStack(7))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
+        // La2O3 + 2CaO + K2MnO4 = 2LaCaMnO3 + K2O + 4O
         BLAST_RECIPES.recipeBuilder().duration(380).EUt(1200).blastFurnaceTemp(900)
-                .inputs(LanthanumOxide.getItemStack())
-                .input(dust, Quicklime)
-                .inputs(PotassiumManganate.getItemStack())
-                .outputs(LanthanumCalciumManganate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Potash, 2))
+                .inputs(LanthanumOxide.getItemStack(5))
+                .input(dust, Quicklime, 4)
+                .inputs(PotassiumManganate.getItemStack(7))
+                .outputs(LanthanumCalciumManganate.getItemStack(12))
+                .outputs(OreDictUnifier.get(dust, Potash, 3))
+                .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(230).EUt(250)
@@ -62,22 +69,25 @@ public class SuperconductorsSMDChain {
                 .outputs(IronPlatinumCatalyst.getItemStack(2))
                 .buildAndRegister();
 
+        // C6H6O + HNO3 + H = H2O + C6H7NO
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(1300)
                 .fluidInputs(Phenol.getFluid(1000))
-                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(NitricAcid.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .notConsumable(IronPlatinumCatalyst.getItemStack())
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(2000))
+                .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(Aminophenol.getFluid(1000))
                 .buildAndRegister();
 
+        // C6H7NO + C3H8O3 + O = C9H7NO + 4H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(780)
                 .fluidInputs(Aminophenol.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
-                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(NitroBenzene.getFluid(10))
-                .fluidOutputs(Hydroquinoline.getFluid(1500))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1500))
+                .fluidOutputs(Hydroquinoline.getFluid(1000))
+                .fluidOutputs(Water.getFluid(400))
+                .fluidOutputs(NitroBenzene.getFluid(10))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(350).EUt(1400)
@@ -86,13 +96,15 @@ public class SuperconductorsSMDChain {
                 .outputs(AluminiumComplex.getItemStack())
                 .buildAndRegister();
 
+        // Na2O4Ru + 2H + RuO2 + 2NaOH
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(1500).blastFurnaceTemp(1250)
-                .input(dust, SodiumRuthenate)
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, RutheniumDioxide))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide))
+                .input(dust, SodiumRuthenate, 7)
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, RutheniumDioxide, 3))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 6))
                 .buildAndRegister();
 
+        // Bi + HNO3 = [Bi(NO3)3 + H2O] + 3NO2 + 2H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(3200)
                 .input(dust, Bismuth)
                 .fluidInputs(NitricAcid.getFluid(6000))
@@ -101,49 +113,67 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(320).EUt(1500).blastFurnaceTemp(1250)
-                .input(dust, SodiumRuthenate)
-                .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
+        // 2Na2O4Ru + 2[Bi(NO3)3 + H2O] = Bi2Ru2O7 + 4NaNO3 + N2H4 + 9O
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(1500)
+                .input(dust, SodiumRuthenate, 14)
+                .fluidInputs(BismuthNitrateSoluton.getFluid(2000))
+                .fluidOutputs(Hydrazine.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(9000))
                 .outputs(OreDictUnifier.get(dust, BismuthRuthenate))
-                .outputs(OreDictUnifier.get(dust, SodiumNitrate))
+                .outputs(OreDictUnifier.get(dust, SodiumNitrate, 20))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(300).EUt(3500).blastFurnaceTemp(1900)
-                .input(dust, IridiumDioxide)
-                .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
+        // NaNO3 -> Na + N + 3O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(270).EUt(120)
+                .input(dust, SodiumNitrate, 5)
+                .outputs(OreDictUnifier.get(dust, Sodium))
+                .fluidOutputs(Nitrogen.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(3000))
+                .buildAndRegister();
+
+        // 2IrO2 + 2[Bi(NO3)3 + H2O] + H = Bi2Ir2O7 + 4NO2
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(3500)
+                .input(dust, IridiumDioxide,6)
+                .fluidInputs(BismuthNitrateSoluton.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, BismuthIridiate))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(NitricAcid.getFluid(4000))
                 .buildAndRegister();
 
+        // BaCl3 + H2O = [BaCl3 + H2O]
         MIXER_RECIPES.recipeBuilder().duration(230).EUt(250)
-                .inputs(BariumChloride.getItemStack())
+                .inputs(BariumChloride.getItemStack(3))
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(BariumChlorideSolution.getFluid(1000))
                 .buildAndRegister();
 
+        // TiCl4¬ + [NaOH + H2O] + [BaCl2 + H2O] = BaTiO3 + NaCl + 4HCl + H
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(4500)
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidInputs(BariumChlorideSolution.getFluid(1000))
-                .fluidOutputs(BariumTitanatePreparation.getFluid(3000))
-                .fluidOutputs(SodiumChlorideSolution.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .fluidOutputs(BariumTitanatePreparation.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(4000))
+                .fluidOutputs(Hydrogen.getFluid(1000))
                 .buildAndRegister();
 
+        // Maintain 2:1 Ratio
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(290).EUt(2300)
-                .fluidInputs(BariumTitanatePreparation.getFluid(1500))
+                .fluidInputs(BariumTitanatePreparation.getFluid(500))
                 .outputs(OreDictUnifier.get(dust, BariumTitanate))
                 .buildAndRegister();
 
+        // H2S + C4H6O4 + 4Br = C4Br4S + 4H2O
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(230).EUt(4960)
-                .input(dust, Phosphorus)
-                .input(dust, Sulfur)
                 .inputs(SuccinicAcid.getItemStack())
-                .fluidInputs(Bromine.getFluid(1000))
-                .fluidOutputs(Perbromothiophene.getFluid(2000))
+                .fluidInputs(HydrogenSulfide.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(4000))
+                .fluidOutputs(Perbromothiophene.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
+        // C4Br4S + C2H4O2 + CH4O + CO = C6H8S + 4Br + 2CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(3200)
                 .notConsumable(dust, Zinc)
                 .notConsumable(dust, SodiumHydroxide)
@@ -151,52 +181,66 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Perbromothiophene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
-                .fluidOutputs(Dimetoxythiophene.getFluid(2000))
-                .fluidOutputs(HydrobromicAcid.getFluid(1000))
+                .fluidInputs(CarbonMonoxde.getFluid(1000))
+                .fluidOutputs(Dimetoxythiophene.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(4000))
+                .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
 
+        // C2H6O2 + C6H8S = C6H6O2S + 2CH4
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2000)
-                .fluidInputs(Toluene.getFluid(10))
+                .notConsumable(GELLED_TOLUENE)
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
                 .fluidInputs(Dimetoxythiophene.getFluid(1000))
-                .fluidOutputs(EDOT.getFluid(2000))
+                .fluidOutputs(EDOT.getFluid(1000))
+                .fluidOutputs(Methane.getFluid(2000))
                 .buildAndRegister();
 
+        // (C8H8)n + H2SO4 + C6H6O2S (aka: EDOT) = PEDOT + Dilute H2SO4
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(3200)
                 .fluidInputs(Polystyrene.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(EDOT.getFluid(1000))
                 .fluidInputs(SodiumPersulfate.getFluid(10))
                 .notConsumable(IronSulfateDust.getItemStack())
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(SodiumPersulfate.getFluid(10))
                 .outputs(OreDictUnifier.get(dust, PEDOT, 3))
                 .buildAndRegister();
 
+        // Fe + H2SO4 = FeSO4 + 2H
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(500)
                 .input(dust, Iron)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(IronSulfateDust.getItemStack())
-                .fluidOutputs(Hydrogen.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
+        // ZrCl4 + 2H2O = ZrOCl2 + 2HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1000)
-                .inputs(ZirconiumTetrachloride.getItemStack())
+                .inputs(ZirconiumTetrachloride.getItemStack(5))
                 .fluidInputs(Water.getFluid(2000))
-                .outputs(ZirconylChloride.getItemStack())
+                .outputs(ZirconylChloride.getItemStack(4))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        // Pb + N2O4 + 2O = Pb(NO3)2
         CHEMICAL_RECIPES.recipeBuilder().EUt(8000).duration(250)
                 .input(dust, Lead)
-                .fluidInputs(NitrogenTetroxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, LeadNitrate, 3))
+                .fluidInputs(NitrogenTetroxide.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, LeadNitrate, 4))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(320).EUt(1700).blastFurnaceTemp(1600)
-                .inputs(ZirconylChloride.getItemStack())
-                .input(dust, Rutile)
+        // ZrOCl2 + TiO2 + Pb(NO3)2 + 2H = PbZrTiO3 + 2HNO3 + 2Cl
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(1700)
+                .inputs(ZirconylChloride.getItemStack(4))
+                .input(dust, Rutile, 3)
                 .input(dust, LeadNitrate)
-                .fluidInputs(PotassiumHydroxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, LeadZirconateTitanate))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(NitricAcid.getFluid(2000))
+                .fluidOutputs(Chlorine.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, LeadZirconateTitanate, 6))
                 .buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder().duration(560).EUt(2000)
@@ -233,49 +277,57 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(WoodsGlass.getFluid(576))
                 .buildAndRegister();
 
+        // Fe + 2I = FeI2
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Iron)
                 .input(dust, Iodine, 2)
                 .outputs(IronIodide.getItemStack())
                 .buildAndRegister();
+        // Tl + I = TlI
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Thallium)
                 .input(dust, Iodine)
                 .outputs(ThalliumIodide.getItemStack())
                 .buildAndRegister();
+        // Rb + I = RbI
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Rubidium)
                 .input(dust, Iodine)
                 .outputs(RubidiumIodide.getItemStack())
                 .buildAndRegister();
+        // K + I = KI
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Potassium)
                 .input(dust, Iodine)
                 .outputs(PotassiumIodide.getItemStack())
                 .buildAndRegister();
+        // In + 3I = InI3
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Indium)
                 .input(dust, Iodine, 3)
                 .outputs(IndiumIodide.getItemStack())
                 .buildAndRegister();
+        // Ga + 3I = GaI3
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Gallium)
                 .input(dust, Iodine, 3)
                 .outputs(GalliumIodide.getItemStack())
                 .buildAndRegister();
+        // Sc + 3I = ScI3
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(780)
                 .input(dust, Scandium)
                 .input(dust, Iodine, 3)
                 .outputs(ScandiumIodide.getItemStack())
                 .buildAndRegister();
 
+        // FeI2 + 5CO = 2I + Fe(CO)5 (all x5)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(680)
                 .inputs(IronIodide.getItemStack(5))
-                .fluidInputs(CarbonMonoxde.getFluid(20000))
+                .fluidInputs(CarbonMonoxde.getFluid(25000))
                 .notConsumable(block, Copper)
-                .outputs(OreDictUnifier.get(dust, Iodine, 5))
+                .outputs(OreDictUnifier.get(dust, Iodine, 10))
                 .outputs(OreDictUnifier.get(dust, Iron))
-                .fluidOutputs(IronCarbonyl.getFluid(4000))
+                .fluidOutputs(IronCarbonyl.getFluid(5000))
                 .buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder().duration(300).EUt(780)
@@ -304,24 +356,27 @@ public class SuperconductorsSMDChain {
                 .outputs(BALLAST.getStackForm())
                 .buildAndRegister();
 
+        // 2V + 5Na2CO3 + 4H2O = 5CO + 2NaVO3 + 8NaOH
         BLAST_RECIPES.recipeBuilder().duration(100).EUt(1920).blastFurnaceTemp(650)
                 .input(dust, Vanadium, 2)
-                .input(dust, SodaAsh, 5)
+                .input(dust, SodaAsh, 30)
                 .fluidInputs(Water.getFluid(4000))
                 .fluidOutputs(CarbonMonoxde.getFluid(5000))
-                .outputs(SodiumMetavanadate.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 8))
+                .outputs(SodiumMetavanadate.getItemStack(10))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 24))
                 .buildAndRegister();
 
+        // Y2O3 + Eu2O3 + V2O5 + 6H = 2YEuVO4 + 3H2O
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
                 .input(dust, YttriumOxide)
-                .inputs(EuropiumOxide.getItemStack())
-                .inputs(VanadiumOxide.getItemStack())
-                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
-                .outputs(YttriumEuropiumVanadate.getItemStack(3))
-                .outputs(OreDictUnifier.get(dust, Sodium))
+                .inputs(EuropiumOxide.getItemStack(5))
+                .inputs(VanadiumOxide.getItemStack(5))
+                .fluidInputs(Hydrogen.getFluid(6000))
+                .outputs(YttriumEuropiumVanadate.getItemStack(2))
+                .fluidInputs(Steam.getFluid(3000))
                 .buildAndRegister();
 
+        // SrCl2 + H2SO4 = SrSO4 + 2HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
                 .inputs(StrontiumChloride.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
@@ -329,13 +384,14 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        // 2SrO + Eu2O3 + 2Al2O3 + 6H = 2SrEuAl2O4 + 3H2O
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
-                .inputs(StrontiumOxide.getItemStack())
-                .inputs(EuropiumOxide.getItemStack())
-                .inputs(Alumina.getItemStack())
-                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
-                .outputs(StrontiumEuropiumAluminate.getItemStack(3))
-                .outputs(OreDictUnifier.get(dust, Sodium))
+                .inputs(StrontiumOxide.getItemStack(4))
+                .inputs(EuropiumOxide.getItemStack(5))
+                .inputs(Alumina.getItemStack(2))
+                .fluidInputs(Hydrogen.getFluid(6000))
+                .outputs(StrontiumEuropiumAluminate.getItemStack(2))
+                .fluidOutputs(Steam.getFluid(3000))
                 .buildAndRegister();
 
         ItemStack[] halides = {ThalliumIodide.getItemStack(), RubidiumIodide.getItemStack(), IndiumIodide.getItemStack(), ScandiumIodide.getItemStack(), GalliumIodide.getItemStack()};
@@ -348,7 +404,7 @@ public class SuperconductorsSMDChain {
                     .inputs(halides[i])
                     .inputs(PotassiumIodide.getItemStack())
                     .fluidInputs(Mercury.getFluid(1000))
-                    .outputs(mixtures[i].getItemStack(3))
+                    .outputs(mixtures[i].getItemStack(2))
                     .buildAndRegister();
 
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(240).EUt(2000)
@@ -479,16 +535,19 @@ public class SuperconductorsSMDChain {
             }
         }
 
+        // 6F + 2CS2 = C2F6S2 + 2S
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(740)
                 .notConsumable(dust, Iodine)
-                .fluidInputs(Fluorine.getFluid(3000))
+                .fluidInputs(Fluorine.getFluid(6000))
                 .fluidInputs(CarbonSulfide.getFluid(2000))
                 .fluidOutputs(Biperfluoromethanedisulfide.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Sulfur, 2))
                 .buildAndRegister();
 
+        // Hg + 3H2O2 + C2F6S2 + BaCO3 = [C2BaF6O6S2 + 3H2O + Hg] (carbon is voided)
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(960)
                 .fluidInputs(Mercury.getFluid(1000))
-                .fluidInputs(HydrogenPeroxide.getFluid(1000))
+                .fluidInputs(Water.getFluid(3000))
                 .fluidInputs(Biperfluoromethanedisulfide.getFluid(1000))
                 .inputs(BariumCarbonate.getItemStack())
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
@@ -499,15 +558,17 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(BariumTriflateSolution.getFluid(3000))
                 .outputs(BariumTriflate.getItemStack())
                 .fluidOutputs(Mercury.getFluid(1000))
-                .fluidOutputs(Water.getFluid(10000))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
+        // 3H2SO4 + 2Sc + 3C2BaF6O6S2 = 3BaSO4 + 2C3F9O9S3Sc + 6H
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1100)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .input(dust, Scandium)
-                .inputs(BariumTriflate.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Barite))
-                .outputs(ScandiumTriflate.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .input(dust, Scandium, 2)
+                .inputs(BariumTriflate.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, Barite, 3))
+                .outputs(ScandiumTriflate.getItemStack(2))
+                .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(8000)
