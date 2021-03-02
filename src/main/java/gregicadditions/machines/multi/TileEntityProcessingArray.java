@@ -1,20 +1,21 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
+import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.simple.Tuple;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
+import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -28,6 +29,11 @@ import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -38,16 +44,15 @@ import java.util.*;
 
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
-public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
+public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);
         ProcessingArrayWorkable recipeLogic = new ProcessingArrayWorkable(this);
         recipeLogic.initReflection();
         this.recipeMapWorkable = recipeLogic;
-
     }
 
     @Override
@@ -69,17 +74,55 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
-        // TODO Auto-generated method stub
         return GAMetaBlocks.METAL_CASING.get(TungstenSteel);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        // TODO Auto-generated method stub
         return new TileEntityProcessingArray(metaTileEntityId);
     }
 
-    protected static class ProcessingArrayWorkable extends GAMultiblockRecipeLogic {
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        if (isStructureFormed()) {
+            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
+            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
+                long maxVoltage = energyContainer.getInputVoltage();
+                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
+                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
+            }
+
+            String myRecipeMap = ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName;
+            if (myRecipeMap != null) {
+                textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
+                textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
+                        Math.min(getStackInSlot().getCount(), GAConfig.multis.processingArray.processingArrayMachineLimit)).setStyle(new Style().setColor(TextFormatting.AQUA)));
+            }
+
+            if (!recipeMapWorkable.isWorkingEnabled()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
+
+            } else if (recipeMapWorkable.isActive()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
+                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
+                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
+            } else {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
+            }
+
+            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
+                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
+            }
+        } else {
+            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
+            tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure")
+                    .setStyle(new Style().setColor(TextFormatting.RED)
+                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
+        }
+    }
+
+    protected static class ProcessingArrayWorkable extends ControllerSlotMultiblockRecipeLogic {
 
         long voltageTier;
         int numberOfMachines = 0;
@@ -87,6 +130,7 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
         ItemStack machineItemStack = null;
         Field wasActiveAndNeedsUpdateField = null;
         Field hasNotEnoughEnergyField = null;
+        String recipeMapName = null;
 
         public void initReflection() {
             wasActiveAndNeedsUpdateField = ObfuscationReflectionHelper.findField(AbstractRecipeLogic.class, "wasActiveAndNeedsUpdate");
@@ -100,10 +144,12 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
 
-            RecipeMap<?> recipeMap = findRecipeMap(inputs);
+            RecipeMap<?> recipeMap = findRecipeMap(((TileEntityProcessingArray)this.getMetaTileEntity()).getStackInSlot());
             if (recipeMap == null) {
+                recipeMapName = null;
                 return null;
             }
+            recipeMapName = recipeMap.getLocalizedName();
 
             List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             Tuple recipePerInput = itemInputs.stream()
@@ -156,7 +202,6 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
                     .duration(recipePerInput.getRecipe().getDuration());
 
             copyChancedItemOutputs(newRecipe, recipePerInput.getRecipe(), numberOfOperations);
-            newRecipe.notConsumable(machineItemStack);
 
             return newRecipe.build().getResult();
         }
@@ -274,43 +319,28 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             }
         }
 
-        protected RecipeMap<?> findRecipeMap(IItemHandlerModifiable inputs) {
+        protected RecipeMap<?> findRecipeMap(ItemStack machine) {
+            if (machine == null)
+                return null;
 
-            for (int slot = 0; slot < inputs.getSlots(); slot++) {
+            ITieredMetaTileEntity mte = (ITieredMetaTileEntity) GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(machine.getItemDamage());
+            String unlocalizedName = machine.getItem().getUnlocalizedNameInefficiently(machine); // can do this differently
 
-                ItemStack wholeItemStack = inputs.getStackInSlot(slot);
-                String unlocalizedName = wholeItemStack.getItem().getUnlocalizedNameInefficiently(wholeItemStack);
-                String recipeMapName = findRecipeMapName(unlocalizedName);
+            if (mte != null && !findMachineInBlacklist(unlocalizedName)) {
+                RecipeMap<?> rmap = RecipeMap.getByName(findRecipeMapName(unlocalizedName));
+                if (rmap != null && (rmap.recipeBuilder() instanceof SimpleRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof IntCircuitRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof ArcFurnaceRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof CutterRecipeBuilder ||
+                        rmap.recipeBuilder() instanceof UniversalDistillationRecipeBuilder)) {
+                    // Find the voltage tier of the machine
+                    this.voltageTier = GAValues.V[mte.getTier()];
+                    // Find the number of machines
+                    this.numberOfMachines = Math.min(GAConfig.multis.processingArray.processingArrayMachineLimit, machine.getCount());
+                    // The machine Item Stack. Is this needed if we remove the machine from being found in the ingredients?
+                    this.machineItemStack = machine;
 
-
-                if ((unlocalizedName.contains("gregtech.machine") || unlocalizedName.contains("gtadditions.machine"))
-                        && !findMachineInBlacklist(recipeMapName)
-                        && GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(wholeItemStack.getItemDamage()) != null) {
-
-                    MetaTileEntity mte = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(wholeItemStack.getItemDamage());
-                    if (mte instanceof TieredMetaTileEntity || mte instanceof GATieredMetaTileEntity) {
-
-                        RecipeMap<?> rmap = RecipeMap.getByName(recipeMapName);
-
-                        // Find the RecipeMap of the MTE and ensure that the Processing Array only works on SimpleRecipeBuilders
-                        // For some reason GTCE has specialized recipe maps for some machines, when it does not need them
-                        if (rmap != null && (rmap.recipeBuilder() instanceof SimpleRecipeBuilder ||
-                                rmap.recipeBuilder() instanceof IntCircuitRecipeBuilder ||
-                                rmap.recipeBuilder() instanceof ArcFurnaceRecipeBuilder ||
-                                rmap.recipeBuilder() instanceof CutterRecipeBuilder ||
-                                rmap.recipeBuilder() instanceof UniversalDistillationRecipeBuilder)) {
-                            // Find the voltage tier of the machine
-                            this.voltageTier = (mte instanceof TieredMetaTileEntity) ?
-                                    GAValues.V[((TieredMetaTileEntity) mte).getTier()] :
-                                    GAValues.V[((GATieredMetaTileEntity) mte).getTier()];
-                            // Find the number of machines
-                            this.numberOfMachines = Math.min(GAConfig.multis.processingArray.processingArrayMachineLimit, wholeItemStack.getCount());
-                            // The machine Item Stack. Is this needed if we remove the machine from being found in the ingredients?
-                            this.machineItemStack = wholeItemStack;
-
-                            return rmap;
-                        }
-                    }
+                    return rmap;
                 }
             }
             return null;
@@ -322,15 +352,14 @@ public class TileEntityProcessingArray extends GARecipeMapMultiblockController {
             trimmedName = trimmedName.substring(trimmedName.lastIndexOf(".") + 1);
 
             // For some reason, the Cutting saw's machine name does not match the recipe map's unlocalized name, so correct it
-            // Same with the Electric Furnace
-            if(trimmedName.equals("cutter")) {
-                trimmedName = "cutting_saw";
-            }
-            else if(trimmedName.equals("electric_furnace")) {
-                trimmedName = "furnace";
-            }
-            else if(trimmedName.equals("dehydrator")) {
-                trimmedName = "chemical_dehydrator";
+            // Same with the Electric Furnace and our Chemical Dehydrator
+            switch (trimmedName) {
+                case "cutter":
+                    trimmedName = "cutting_saw"; break;
+                case "electric_furnace":
+                    trimmedName = "furnace"; break;
+                case "dehydrator":
+                    trimmedName = "chemical_dehydrator"; break;
             }
             return trimmedName;
         }

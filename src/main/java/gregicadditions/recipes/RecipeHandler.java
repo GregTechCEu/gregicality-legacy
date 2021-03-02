@@ -34,8 +34,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.SCHEMATIC_3X3;
-import static gregicadditions.item.GAMetaItems.SCHEMATIC_DUST;
+import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.M;

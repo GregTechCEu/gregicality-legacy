@@ -4026,3 +4026,6 @@ gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy 
 gtadditions.machine.diode.tooltip_tool_usage=Hit with a Soft Hammer to toggle Amperage flow.
 gtadditions.top.diode_input=§6Input:§r %dA
 gtadditions.top.diode_output=§9Output:§r %dA
+
+gtadditions.machine.pa.display1=Set Recipes: §6%s
+gtadditions.machine.pa.display2=Parallel Recipes: §b%d
