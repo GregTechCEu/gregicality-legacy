@@ -44,28 +44,28 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        // H2SO4(NaCl)3(H2O)3 -> 3NaCl + H2SO4Br(H2O) + 2H2O
+        // 2H2SO4(NaCl)3(H2O)3 -> 6NaCl + 2H2SO4Br(H2O) + 4H2O
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicSaltWater.getFluid(6000))
-                .outputs(OreDictUnifier.get(dust, Salt, 6))
-                .fluidOutputs(SulfuricBromineSolution.getFluid(3000))
-                .fluidOutputs(DebrominatedWater.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, Salt, 12))
+                .fluidOutputs(SulfuricBromineSolution.getFluid(2000))
+                .fluidOutputs(DebrominatedWater.getFluid(4000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
         // H2SO4Br(H2O) + H2O -> H2SO4Br(H2O)2
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(SulfuricBromineSolution.getFluid(1500))
-                .fluidInputs(Steam.getFluid(1500))
-                .fluidOutputs(HotVapourMixture.getFluid(3000))
+                .fluidInputs(SulfuricBromineSolution.getFluid(1000))
+                .fluidInputs(Steam.getFluid(1000))
+                .fluidOutputs(HotVapourMixture.getFluid(2000))
                 .EUt(480)
                 .duration(150)
                 .buildAndRegister();
 
-        // ? -> H2SO4(H2O) + Br(H2O)
+        // H2SO4Br(H2O)2 -> H2SO4(H2O) + Br(H2O)
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(HotVapourMixture.getFluid(3000))
+                .fluidInputs(HotVapourMixture.getFluid(2000))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(2000))
                 .fluidOutputs(DampBromine.getFluid(1000))
                 .EUt(480)
