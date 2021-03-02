@@ -45,9 +45,10 @@ public class AluminiumChain {
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .buildAndRegister();
 
+        // H2O + NaOH + Al2H2O4 -> ?
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(32)
                 .fluidInputs(Water.getFluid(1000))
-                .input(dust, SodiumHydroxide, 1)
+                .input(dust, SodiumHydroxide, 3)
                 .input(dust, Bauxite, 16)
                 .fluidOutputs(SodiumHydroxideBauxite.getFluid(4000))
                 .buildAndRegister();
