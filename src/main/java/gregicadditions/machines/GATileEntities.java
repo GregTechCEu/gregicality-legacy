@@ -54,8 +54,12 @@ import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -237,6 +241,8 @@ public class GATileEntities {
     public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>();
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
+
+    public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
 
     public static void init() {
 
@@ -1155,6 +1161,20 @@ public class GATileEntities {
             DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
         }
         STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
+
+        if (GAConfig.Misc.enableDisassembly) {
+            id = 4198;
+            for (int i = 1; i < GAValues.V.length - 1; i++) {
+                final int tier = i; // used for inner class
+                DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                    @Override
+                    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+                        tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
+                        super.addInformation(stack, player, tooltip, advanced);
+                    }
+                }));
+            }
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

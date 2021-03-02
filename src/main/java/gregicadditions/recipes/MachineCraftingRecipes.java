@@ -919,6 +919,13 @@ public class MachineCraftingRecipes {
             ModHandler.addShapedRecipe(String.format("ga_%s", diode.getMetaName()), diode.getStackForm(), "CCC", "XMX", "CCC", 'M', HULL.getIngredient(tier), 'C', CABLE_SINGLE.getIngredient(tier), 'X', SMALL_COIL);
         });
 
+        GATileEntities.DISASSEMBLER.forEach(disassembler -> {
+            int tier = disassembler.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", disassembler.getMetaName()), disassembler.getStackForm(), "RSV", "PMV", "ICI",
+                    'M', HULL.getIngredient(tier), 'C', CABLE_SINGLE.getIngredient(tier), 'R', ROBOT_ARM.getIngredient(tier), 'P', PUMP.getIngredient(tier),
+                    'S', SENSOR.getIngredient(tier), 'V', CONVEYOR.getIngredient(tier), 'I', CIRCUIT.getIngredient(tier));
+        });
+
         ModHandler.addShapedRecipe("ga_steam_grinder", GATileEntities.STEAM_GRINDER.getStackForm(), "CGC", "CFC", "CGC", 'G', new UnificationEntry(gear, Potin), 'F', MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(), 'C', new UnificationEntry(GAEnums.GAOrePrefix.gtMetalCasing, Bronze));
         ModHandler.addShapedRecipe("ga_steam_hatch", GATileEntities.STEAM_HATCH.getStackForm(), "BPB", "BTB", "BPB", 'B', new UnificationEntry(plate, Bronze), 'P', new UnificationEntry(pipeMedium, Bronze), 'T', MetaTileEntities.BRONZE_TANK.getStackForm());
         ModHandler.addShapedRecipe("ga_steam_input_bus", GATileEntities.STEAM_INPUT_BUS.getStackForm(), "BMB", "THT", "BMB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);

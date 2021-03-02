@@ -196,6 +196,8 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.runRecipeGeneration();
+        if (GAConfig.Misc.enableDisassembly)
+            DisassemblyHandler.buildDisassemblerRecipes();
     }
 
 
