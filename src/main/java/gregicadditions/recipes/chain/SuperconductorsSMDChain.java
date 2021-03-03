@@ -694,7 +694,7 @@ public class SuperconductorsSMDChain {
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
                 .inputs(ActiniumHydride.getItemStack(72))
                 .fluidInputs(Hydrogen.getFluid(162000))
-                .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(18000))
+                .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(72000))
                 .buildAndRegister();
 
         FLUID_CANNER_RECIPES.recipeBuilder()
