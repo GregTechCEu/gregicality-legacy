@@ -55,7 +55,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial NeutralMatter = new FluidMaterial(995, "neutral_matter", 3956968, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final FluidMaterial PositiveMatter = new FluidMaterial(994, "positive_matter", 11279131, MaterialIconSet.FLUID, ImmutableList.of(), DISABLE_DECOMPOSITION);
     public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, ImmutableList.of(), CORE_METAL | DISABLE_REPLICATION, Element.valueOf("Nt"), 24.0F, 12F, 655360);
-    public static final DustMaterial Pyrotheum = new DustMaterial(991, "pyrotheum", 0xFF9A3C, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
+    public static final DustMaterial Pyrotheum = new DustMaterial(991, "pyrotheum", 0xFF9A3C, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Redstone, 1), new MaterialStack(Blaze, 2), new MaterialStack(Sulfur, 1)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     public static final DustMaterial EglinSteelBase = new DustMaterial(990, "eglin_steel_base", 0x8B4513, MaterialIconSet.SAND, 6, ImmutableList.of(new MaterialStack(Iron, 4), new MaterialStack(Kanthal, 1), new MaterialStack(Invar, 5)), 0);
     public static final IngotMaterial EglinSteel = new IngotMaterial(989, "eglin_steel", 0x8B4513, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(GAMaterials.EglinSteelBase, 10), new MaterialStack(Sulfur, 1), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)), EXT2_METAL | GENERATE_METAL_CASING, null, 1048);
     public static final IngotMaterial Grisium = new IngotMaterial(987, "grisium", 0x355D6A, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(Titanium, 9), new MaterialStack(Carbon, 9), new MaterialStack(Potassium, 9), new MaterialStack(Lithium, 9), new MaterialStack(Sulfur, 9), new MaterialStack(Hydrogen, 5)), EXT2_METAL | GENERATE_METAL_CASING, null, 3850);
@@ -91,9 +91,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial ArsenicTrioxide = new DustMaterial(955, "arsenic_trioxide", 15856113, MaterialIconSet.ROUGH, 1, ImmutableList.of(new MaterialStack(Arsenic, 2), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial CupricOxide = new DustMaterial(954, "cupric_oxide", 526344, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Copper, 1), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial Ferrosilite = new DustMaterial(953, "ferrosilite", 5256470, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Iron, 1), new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 3)), 0);
-    public static final DustMaterial Cryotheum = new DustMaterial(952, "cryotheum", 0x01F3F6, MaterialIconSet.SAND, 1, ImmutableList.of(), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
-    public static final DustMaterial Blizz = new DustMaterial(951, "blizz", 0x01F3F6, MaterialIconSet.DULL, 1, ImmutableList.of(), NO_SMELTING | SMELT_INTO_FLUID | MORTAR_GRINDABLE | BURNING);
-    public static final DustMaterial Snow = new DustMaterial(950, "snow", 0xFFFFFF, MaterialIconSet.OPAL, 1, ImmutableList.of(), NO_SMELTING | EXCLUDE_BLOCK_CRAFTING_RECIPES);
+    public static final DustMaterial Blizz = new DustMaterial(951, "blizz", 0x01F3F6, MaterialIconSet.DULL, 1, ImmutableList.of(new MaterialStack(Redstone, 1), new MaterialStack(Water, 1)), NO_SMELTING | SMELT_INTO_FLUID | MORTAR_GRINDABLE | BURNING);
+    public static final DustMaterial Snow = new DustMaterial(950, "snow", 0xFFFFFF, MaterialIconSet.OPAL, 1, ImmutableList.of(), NO_SMELTING);
+    public static final DustMaterial Cryotheum = new DustMaterial(952, "cryotheum", 0x01F3F6, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Redstone, 1), new MaterialStack(Blizz, 2), new MaterialStack(Water, 1)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
     //    public static final FluidMaterial HighPressureSteam = new FluidMaterial(949, "high_pressure_steam", 0xFFFFFF, MaterialIconSet.GAS, of(new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(1000);
     public static final FluidMaterial HighOctaneGasoline = new FluidMaterial(948, "high_octane", 0xC7860B, MaterialIconSet.FLUID, ImmutableList.of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial Octane = new FluidMaterial(947, "octane", 0xCBCBCB, MaterialIconSet.FLUID, ImmutableList.of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
@@ -457,9 +457,9 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleDustMaterial CalciumCarbide = new SimpleDustMaterial("calcium_carbide", 0x807b70, (short) 23, MaterialIconSet.DULL, of(new MaterialStack(Calcium, 1), new MaterialStack(Carbon, 1)));
     public static final SimpleDustMaterial CalciumHydroxide = new SimpleDustMaterial("calcium_hydroxide", 0x5f8764, (short) 24, MaterialIconSet.DULL, of(new MaterialStack(Calcium, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 1)));
-    public static final SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", 0x61ad6b, (short) 25, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", 0x61ad6b, (short) 25, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 16)));
     public static final SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", 0xf0e660, (short) 26, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", 0xede9b4, (short) 27, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", 0xede9b4, (short) 27, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 5), new MaterialStack(Hydrogen, 10), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 3)));
     public static final SimpleDustMaterial SilicaGel = new SimpleDustMaterial("silica_gel", 0x61daff, (short) 28, MaterialIconSet.DULL, of(new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 2)));
     public static final SimpleDustMaterial SilicaAluminaGel = new SimpleDustMaterial("silica_alumina_gel", 0x558d9e, (short) 29, MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZeoliteSievingPellets = new SimpleDustMaterial("zeolite_sieving_pellets", 0xa17bd1, (short) 30, MaterialIconSet.DULL);
@@ -598,9 +598,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", 0x755f30);
 
 
-    public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", 0xbf95f5, (short) 64, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", 0xbf95f5, (short) 65, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", 0xbf95f5, (short) 63, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Nitrogen, 1)));
+    public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", 0xbf95f5, (short) 64, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 4), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 4)));
+    public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", 0xbf95f5, (short) 65, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 4), new MaterialStack(Hydrogen, 5), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 2)));
     public static final SimpleDustMaterial Bromosuccinimide = new SimpleDustMaterial("bromo_succinimide", 0xbf95f5, (short) 66, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 4), new MaterialStack(Hydrogen, 4), new MaterialStack(Bromine, 1), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 2)));
     public static final SimpleDustMaterial Benzophenanthrenylacetonitrile = new SimpleDustMaterial("benzophenanthrenylacetonitrile", 0xbf95f5, (short) 67, MaterialIconSet.DULL);
     public static final SimpleDustMaterial UnfoldedFullerene = new SimpleDustMaterial("unfolded_fullerene", 0xbf95f5, (short) 68, MaterialIconSet.DULL);
