@@ -37,7 +37,7 @@ public class SupraCausalComponents {
                 .inputs(SENSOR_UIV.getStackForm(1))
                 .inputs(NEUTRON_REFLECTOR.getStackForm(2))
                 .inputs(BATTERY_MEDIUM_LIS.getStackForm())
-                .input(wireGtSingle, UMVSuperconductor, 16)
+                .input(wireGtSingle, UMVSuperconductor, 2)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm())
