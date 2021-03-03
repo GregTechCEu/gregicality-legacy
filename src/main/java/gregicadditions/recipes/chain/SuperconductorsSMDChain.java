@@ -659,11 +659,13 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(OxalicAcid.getFluid(3000))
                 .buildAndRegister();
 
-        // 3C2H2O4 + 2Ac = C6H6Ac2O12
+        // 2C2H2O4 + 2O + Ac = Ac(C2O4)2 + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(5600000)
-                .fluidInputs(OxalicAcid.getFluid(3000))
-                .input(dust, Actinium, 2)
-                .outputs(ActiniumOxalate.getItemStack(26))
+                .fluidInputs(OxalicAcid.getFluid(2000))
+                .fluidInputs(Oxygen.getFluid(2000))
+                .input(dust, Actinium)
+                .fluidOutputs(Water.getFluid(2000))
+                .outputs(ActiniumOxalate.getItemStack(13))
                 .buildAndRegister();
 
         // C + 4Cl = CCl4
@@ -674,24 +676,24 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(CarbonTetrachloride.getFluid(1000))
                 .buildAndRegister();
 
-        // TODO Which Actinium Hydride Should it be
+        // Ac(C2O4)2 + 3 NaH + 13 Na + 4 CCl4 -> AcH3 + 16NaCl + 8 CO
         BLAST_RECIPES.recipeBuilder().duration(230).EUt(6000000)
                 .blastFurnaceTemp(10000)
-                .inputs(ActiniumOxalate.getItemStack())
-                .inputs(SodiumHydride.getItemStack(2))
-                .input(dust, Sodium, 2)
-                .fluidInputs(CarbonTetrachloride.getFluid(1000))
-                .outputs(ActiniumHydride.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt, 4))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .inputs(ActiniumOxalate.getItemStack(13))
+                .inputs(SodiumHydride.getItemStack(6))
+                .input(dust, Sodium, 13)
+                .fluidInputs(CarbonTetrachloride.getFluid(4000))
+                .outputs(ActiniumHydride.getItemStack(4))
+                .outputs(OreDictUnifier.get(dust, Salt, 32))
+                .fluidOutputs(CarbonDioxide.getFluid(8))
                 .buildAndRegister();
 
-        // TODO See above
+        // AcH3 + 9H = AcH12 (multiplied by 18)
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(260).EUt(7800000)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
-                .inputs(ActiniumHydride.getItemStack(18))
+                .inputs(ActiniumHydride.getItemStack(72))
                 .fluidInputs(Hydrogen.getFluid(162000))
-                .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(18000))
+                .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(72000))
                 .buildAndRegister();
 
         FLUID_CANNER_RECIPES.recipeBuilder()

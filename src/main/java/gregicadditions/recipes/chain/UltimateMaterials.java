@@ -202,6 +202,7 @@ public class UltimateMaterials {
                 .fluidInputs(LiquidNitrogen.getFluid(1000))
                 .fluidOutputs(SuperfluidHelium.getFluid(1000))
                 .fluidOutputs(LiquidHelium3.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(1000))
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(150).EUt(15000000)
                 .input(frameGt, QCDMatter)
