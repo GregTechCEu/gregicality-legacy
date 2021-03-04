@@ -114,6 +114,13 @@ public class SterilizedGrowthMedium {
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
+        // H2O + Na2CO3 = NaHCO3 + NaOH
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
+                .fluidInputs(Water.getFluid(1000))
+                .input(dust, SodaAsh, 6)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(SodiumBicarbonate.getItemStack())
                 .fluidInputs(AcetylsulfanilideChloride.getFluid(1000))

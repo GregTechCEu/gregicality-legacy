@@ -1271,6 +1271,7 @@ public class GARecipeAddition {
         SupraCausalComponents.init();
         UltimateMaterials.init();
         DigitalInterfaces.init();
+        InsulationWireAssemblyChain.init();
     }
 
     public static void forestrySupport() {

@@ -22,134 +22,139 @@ import static gregtech.common.items.MetaItems.*;
 public class VariousChains {
 
     public static void init() {
-        //lignite
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
-                .fluidInputs(Water.getFluid(1000), Chlorine.getFluid(1000))
-                .input(dust, SodaAsh)
-                .outputs(SodiumBicarbonate.getItemStack())
-                .fluidOutputs(DichlorineMonoxide.getFluid(1000))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(500)
-                .fluidInputs(DichlorineMonoxide.getFluid(1000))
-                .fluidInputs(Water.getFluid(1000))
-                .fluidOutputs(HypochlorousAcid.getFluid(1000))
-                .buildAndRegister();
-
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(500)
-                .fluidInputs(Chlorine.getFluid(1000))
-                .input(dust, SodiumHydroxide, 2)
+        // Various Sodium Hypochlorite Recipes
+        // 2 NaOH + 2 Cl = H2O + NaCl + NaClO
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(480)
+                .fluidInputs(Chlorine.getFluid(2000))
+                .input(dust, SodiumHydroxide, 6)
                 .fluidOutputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt))
-                .outputs(SodiumHypochlorite.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .outputs(SodiumHypochlorite.getItemStack(3))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(250)
+        // HClO + NaOH = H2O + NaClO
+        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(256)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .input(dust, SodiumHydroxide)
-                .notConsumable(new IntCircuitIngredient(1))
+                .input(dust, SodiumHydroxide, 3)
                 .fluidOutputs(Water.getFluid(1000))
-                .outputs(SodiumHypochlorite.getItemStack())
+                .outputs(SodiumHypochlorite.getItemStack(3))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(250)
-                .inputs(SodiumHypochlorite.getItemStack())
+        // NaClO + HCl = NaCl + HClO
+        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(256)
+                .inputs(SodiumHypochlorite.getItemStack(3))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
+        // ATL
+        // HClO + C2H4 = C2H5ClO
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(480)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidOutputs(Chloroethanol.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(500)
+        // C2H5ClO + C3H9N + Na = C5H14NO + NaCl
+        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(480)
+                .input(dust, Sodium)
                 .fluidInputs(Chloroethanol.getFluid(1000))
                 .fluidInputs(Trimethylamine.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(Choline.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(230)
+        // C2(H2O)4C + C5H14NO = ATL
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(256)
                 .input(dust, Lignite)
                 .fluidInputs(Choline.getFluid(1000))
                 .fluidOutputs(ATL.getFluid(1000))
                 .buildAndRegister();
 
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(320).EUt(125)
+        // Lignite Processing
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(320).EUt(120)
                 .circuitMeta(0)
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .fluidOutputs(HotNitrogen.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(125)
-                .input(dust, Lignite, 2)
+        // C2(H2O)4C + N (hot) = N + 3C + 4H2O
+        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(120)
+                .input(dust, Lignite)
                 .fluidInputs(HotNitrogen.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(1000))
-                .outputs(DehydratedLignite.getItemStack())
-                .fluidOutputs(Steam.getFluid(1000))
+                .outputs(DehydratedLignite.getItemStack(3))
+                .fluidOutputs(Steam.getFluid(4000))
                 .buildAndRegister();
 
-        COMPRESSOR_RECIPES.recipeBuilder().duration(230).EUt(125)
-                .inputs(DehydratedLignite.getItemStack())
+        // TODO: Make BCE Pellet a furnace fuel with same duration as coal
+        COMPRESSOR_RECIPES.recipeBuilder().duration(230).EUt(64)
+                .inputs(DehydratedLignite.getItemStack(3))
                 .outputs(BCEPellet.getItemStack())
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(240).EUt(500)
+        // Polyurethane (Memory Foam)
+        // C2H4O + H2O = [C2H4O + H2O]
+        MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
                 .fluidInputs(EthyleneOxide.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(WetEthyleneOxide.getFluid(1000))
                 .buildAndRegister();
 
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(230).EUt(125)
+        // [C2H4O + H2O] = C2H6O2
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(230).EUt(120)
                 .circuitMeta(0)
                 .fluidInputs(WetEthyleneOxide.getFluid(1000))
                 .fluidOutputs(EthyleneGlycol.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(230).EUt(850)
+        // C7H8 + 2COCl2 + 2HNO3 + C = C9H6N2O2 + 4HClO + CO2
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(230).EUt(960)
+                .input(dust, Carbon)
                 .fluidInputs(Toluene.getFluid(1000))
-                .fluidInputs(Phosgene.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(Phosgene.getFluid(2000))
+                .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidOutputs(TolueneDiisocyanate.getFluid(2000))
-                .fluidOutputs(DiluteNitricAcid.getFluid(1500))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1500))
+                .fluidOutputs(HypochlorousAcid.getFluid(400))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(850)
+        // C9H6N2O2 + 4C2H6O2 + O = C17H16N2O4 + 7H2O
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(960)
                 .fluidInputs(TolueneDiisocyanate.getFluid(1000))
-                .fluidInputs(EthyleneGlycol.getFluid(1000))
+                .fluidInputs(EthyleneGlycol.getFluid(4000))
+                .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Polyurethane.getFluid(1000))
+                .fluidOutputs(Water.getFluid(7000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(230).EUt(750)
+        MIXER_RECIPES.recipeBuilder().duration(230).EUt(720)
                 .fluidInputs(Polyurethane.getFluid(1000))
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
                 .input(dust, Calcite)
                 .fluidOutputs(ViscoelasticPolyurethane.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(250).EUt(750)
+        MIXER_RECIPES.recipeBuilder().duration(250).EUt(720)
                 .fluidInputs(ViscoelasticPolyurethane.getFluid(1000))
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(ViscoelasticPolyurethaneFoam.getFluid(2000))
                 .buildAndRegister();
 
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(200).EUt(820)
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(200).EUt(960)
                 .fluidInputs(ViscoelasticPolyurethaneFoam.getFluid(1000))
                 .notConsumable(SHAPE_MOLD_BLOCK)
                 .outputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .buildAndRegister();
-
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
                 .input(stick, Wood, 3)
                 .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
                 .outputs(new ItemStack(Items.BED))
                 .buildAndRegister();
+
+        /////////////////////////
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
                 .fluidInputs(SolderingAlloy.getFluid(576))
@@ -191,6 +196,8 @@ public class VariousChains {
                 .fluidInputs(Rubidium.getFluid(288))
                 .outputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .buildAndRegister();
+
+                // TODO Check below here if these are duplicated
         
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(45000)
                 .fluidInputs(Ethanol.getFluid(3000))
