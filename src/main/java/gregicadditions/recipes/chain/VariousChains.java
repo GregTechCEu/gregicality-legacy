@@ -456,5 +456,21 @@ public class VariousChains {
                 .fluidOutputs(DrillingMud.getFluid(950))
                 .outputs(new ItemStack(Blocks.GRAVEL))
                 .buildAndRegister();
+        // These are fine (just fixed Iron III Chloride output)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
+                .fluidInputs(HydrochloricAcid.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(2000))
+                .outputs(OreDictUnifier.get(plate, Graphene))
+                .buildAndRegister();
+
+        // These are fine (just fixed Iron III Chloride output)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
+                .fluidInputs(AquaRegia.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(2000))
+                .outputs(GrapheneOxide.getItemStack())
+                .fluidOutputs(NitrogenDioxide.getFluid(1500))
+                .buildAndRegister();
     }
 }
