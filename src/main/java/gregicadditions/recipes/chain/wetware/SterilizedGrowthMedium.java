@@ -67,7 +67,7 @@ public class SterilizedGrowthMedium {
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(PiranhaSolution.getFluid(2000))
-                .EUt(30720)
+                .EUt(480)
                 .duration(50)
                 .buildAndRegister();
         CHEMICAL_BATH_RECIPES.recipeBuilder()

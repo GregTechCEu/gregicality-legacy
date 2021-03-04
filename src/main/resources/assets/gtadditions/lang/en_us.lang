@@ -564,10 +564,10 @@ metaitem.barium_oxide.name=Barium Oxide
 metaitem.barium_aluminate.name=Barium Aluminate
 
 metaitem.pitchblende_barium_mixture.name=Pitchblende Barium Carbonate Mixture
-metaitem.potassium_uranyl_carbonate.name=Potassium Uranyl Tricarbonate
+metaitem.potassium_uranyl_carbonate.name=Uranyl Tricarbonate
 metaitem.uranium_peroxide_thorium_oxide.name=Uranium Peroxide Thorium Oxide Mixture
 metaitem.uranium_thorium_oxide.name=Uranium Dioxide Thorium Oxide Mixture
-metaitem.uranium_thorium_sulfate.name=Uranyl Sulfate Thorium Sulfate Mixture
+metaitem.uranium_thorium_sulfate.name=Uranyl Sulfate Thorium Oxide Mixture
 metaitem.uranium_thorium_nitrate.name=Uranyl Nitrate Thorium Nitrate Mixture
 metaitem.uranium_oxide_thorium_nitrate.name=Uranium Oxide Thorium Nitrate Mixture
 metaitem.uranium_dioxide=Uranium Dioxide
@@ -3576,9 +3576,9 @@ fluid.uranyl_chloride_solution=Uranyl Chloride Solution
 fluid.uranyl_nitrate_solution=Uranyl Nitrate Solution
 fluid.uranium_sulfate_waste_solution=Uranium Sulfate Waste Solution
 fluid.purified_uranyl_nitrate_solution=Purified Uranyl Nitrate Solution
-fluid.uranium_diuranate=Uranium Diuranate Solution
-fluid.hot_uranium_diuranate=Hot Uranium Diuranate Solution
-fluid.hot_potassium_uranyl_carbonate=Hot Potassium Uranyl Tricarbonate Solution
+fluid.uranium_diuranate=Ammonium Diuranate Solution
+fluid.hot_uranium_diuranate=Hot Ammonium Diuranate Solution
+fluid.hot_potassium_uranyl_carbonate=Hot Uranyl Tricarbonate Solution
 fluid.uranium_refinement_waste_solution=Uranium Refinement Waste Solution
 fluid.thorium_nitrate_solution=Thorium Nitrate Solution
 
