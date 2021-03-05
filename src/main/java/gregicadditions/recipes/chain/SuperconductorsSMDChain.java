@@ -746,12 +746,12 @@ public class SuperconductorsSMDChain {
 
         // 2CH2O2 + 2Br + 4Na + 2H2O = Bromoacrolein + 4NaOH + 2H
         //TODO CATALYST: Trimethylchlorosilane
-        CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(8000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(8000)
                 .fluidInputs(FormicAcid.getFluid(2000))
                 .fluidInputs(Bromine.getFluid(2000))
                 .fluidInputs(Water.getFluid(2000))
-                .input(dust, Sodium, 4)
                 .fluidInputs(Trimethylchlorosilane.getFluid(10))
+                .input(dust, Sodium, 4)
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 12))
                 .fluidOutputs(Bromoacrolein.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(2000))
@@ -874,14 +874,14 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(AstatideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // 3[At + H2O + SO3] + Ho + Th + Cn + Fl = 4H2SO4 + [8At + Ho + Th + Cn + Fl]
+        // 3[At + H2O + SO3] + Ho + Th + Cn + Fl = 3H2SO4 + [8At + Ho + Th + Cn + Fl]
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(380).EUt(2000000)
                 .fluidInputs(AstatideSolution.getFluid(3000))
                 .input(dust, Holmium)
                 .input(dust, Thulium)
                 .input(dust, Copernicium)
                 .input(dust, MetastableFlerovium)
-                .fluidOutputs(SulfuricAcid.getFluid(4000))
+                .fluidOutputs(SulfuricAcid.getFluid(3000))
                 .outputs(MixedAstatideSalts.getItemStack())
                 .buildAndRegister();
 
