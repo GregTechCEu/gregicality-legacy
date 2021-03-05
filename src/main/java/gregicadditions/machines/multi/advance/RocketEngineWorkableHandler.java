@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregtech.api.capability.IEnergyContainer;
@@ -103,13 +104,15 @@ public class RocketEngineWorkableHandler extends FuelRecipeLogic {
         }
 
         // Apply efficiency
-        EUt = EUt * 60 / 100;
-        if (EUt > GAValues.V[GAValues.LuV])
-            EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
-        if (EUt > GAValues.V[GAValues.ZPM])
-            EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 50 / 100);
-        if (EUt > GAValues.V[GAValues.UV])
-            EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 50 / 100);
+        if (GAConfig.Misc.largeRocketEfficiency) {
+            EUt = EUt * 60 / 100;
+            if (EUt > GAValues.V[GAValues.LuV])
+                EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
+            if (EUt > GAValues.V[GAValues.ZPM])
+                EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 50 / 100);
+            if (EUt > GAValues.V[GAValues.UV])
+                EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 50 / 100);
+        }
 
         // Refresh our internal FluidStack
         fuelStack.amount -= fuelUsed;

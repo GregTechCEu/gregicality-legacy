@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
@@ -85,10 +86,12 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.2"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.4"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.5"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.6"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.7"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.8"));
+        if (GAConfig.Misc.largeRocketEfficiency) {
+            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.5"));
+            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.6"));
+            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.7"));
+            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.8"));
+        }
     }
 
     @Override
