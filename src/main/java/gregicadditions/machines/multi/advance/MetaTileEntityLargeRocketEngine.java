@@ -21,6 +21,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -61,12 +62,18 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
             int airAmount = air == null ? 0 : air.amount;
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.carbon_dioxide_amount", carbonDioxideAmount));
-            textList.add(new TextComponentString(fuelStack != null ? String.format("%dmb %s", fuelAmount, fuelStack.getLocalizedName()) : ""));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.liquid_hydrogen_amount", hydrogenAmount));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.air_amount", airAmount));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.hydrogen_need", hydrogenNeededToBoost));
-            textList.add(new TextComponentTranslation(isBoosted ? "gregtech.multiblock.large_rocket_engine.boost" : "").setStyle(new Style().setColor(TextFormatting.GREEN)));
+            if (fuelStack == null)
+                textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.no_fuel").setStyle(new Style().setColor(TextFormatting.RED)));
+            else
+                textList.add(new TextComponentString(String.format("%s: %dmb", fuelStack.getLocalizedName(), fuelAmount)).setStyle(new Style().setColor(TextFormatting.GREEN)));
+
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.air_amount", airAmount).setStyle(new Style().setColor(TextFormatting.AQUA)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.carbon_dioxide_amount", carbonDioxideAmount).setStyle(new Style().setColor(TextFormatting.AQUA)));
+
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.liquid_hydrogen_amount", hydrogenAmount).setStyle(new Style().setColor(TextFormatting.LIGHT_PURPLE)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.hydrogen_need", hydrogenNeededToBoost).setStyle(new Style().setColor(TextFormatting.LIGHT_PURPLE)));
+            if (isBoosted)
+                textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.boost").setStyle(new Style().setColor(TextFormatting.GREEN)));
         }
         super.addDisplayText(textList);
     }
