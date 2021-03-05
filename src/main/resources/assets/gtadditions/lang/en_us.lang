@@ -3784,7 +3784,6 @@ fluid.barium_titanate_preparation=Barium Titanate Preparation
 fluid.basr_titanate_preparation=Barium-Strontium Titanate Preparation
 fluid.carbon_tetrachloride=Carbon Tetrachloride
 fluid.chloroethane=Chloroethane
-fluid.francium_astatide_solution=Francium Astatide Solution
 fluid.actinium_superhydride_plasma=Actinium Superhydride Plasma
 fluid.neutron_plasma=Neutron Plasma
 fluid.superheavy_mix=Superheavy Mix
@@ -3897,6 +3896,7 @@ fluid.lubricant_clay_slurry=Lubricant Clay Slurry
 fluid.atl_ethylene_mixture=ATL Ethylene Mixture
 fluid.drilling_mud_mixture=Drilling Mud Mixture
 fluid.iron_ii_chloride=Iron II Chloride
+fluid.propadiene=Propadiene
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
