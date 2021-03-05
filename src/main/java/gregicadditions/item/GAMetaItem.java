@@ -448,9 +448,6 @@ public class GAMetaItem extends MaterialMetaItem {
         COSMIC_FABRIC = addItem(569,"cosmic.fabric");
         ROD_FIELD_SHAPE = addItem(570, "rod.field.shape");
 
-        COLOURED_LEDS = addItem(578, "coloured.leds");
-        DISPLAY = addItem(579, "display");
-        
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
@@ -471,6 +468,9 @@ public class GAMetaItem extends MaterialMetaItem {
         LuV_INFINITE_WATER_SOURCE = addItem(575, "infinite.water.luv");
         ZPM_INFINITE_WATER_SOURCE = addItem(576, "infinite.water.zpm");
         UV_INFINITE_WATER_SOURCE = addItem(577, "infinite.water.uv");
+
+        COLOURED_LEDS = addItem(578, "coloured.leds");
+        DISPLAY = addItem(579, "display");
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
