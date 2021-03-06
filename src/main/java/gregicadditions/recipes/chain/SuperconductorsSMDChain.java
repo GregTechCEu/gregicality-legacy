@@ -1139,11 +1139,13 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // 2La + H2SO4 = La2O3 + Dilute Sulfuric
+        // 2La + H2SO4 = La2O3 + H2S + O
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .input(dust, Lanthanum, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(LanthanumOxide.getItemStack(5))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
     }
 }
