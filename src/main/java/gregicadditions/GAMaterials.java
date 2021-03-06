@@ -675,13 +675,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CarbonatedEthanolamine = new SimpleFluidMaterial("carbonated_ethanolamine", 0x6f7d87);
     public static final SimpleFluidMaterial AmmoniaRichMix = new SimpleFluidMaterial("ammonia_rich_mix", 0x2f5d99);
 
-    public static final SimpleDustMaterial RoastedSpodumene = new SimpleDustMaterial("roasted_spodumene", 0x3d3d29, (short) 110, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial RoastedSpodumene = new SimpleDustMaterial("roasted_spodumene", 0x3d3d29, (short) 110, MaterialIconSet.DULL, of(new MaterialStack(Spodumene, 1)));
+    public static final SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 1), new MaterialStack(Lithium, 3), new MaterialStack(Aluminium, 4), new MaterialStack(Oxygen, 11)));
     public static final SimpleDustMaterial LithiumChloride = new SimpleDustMaterial("lithium_chloride", 0xfcfcfa, (short) 112, MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Chlorine, 1)));
-    public static final SimpleDustMaterial LiKChlorideEutetic = new SimpleDustMaterial("lik_chloride_eutetic", 0xcac0c1, (short) 113, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial CalciumFluoride = new SimpleDustMaterial("calcium_fluoride", 0x04c464, (short) 114, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial PotassiumSulfate = new SimpleDustMaterial("potassium_sulfate", 0xfcfcfa, (short) 115, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AluminiumSulfate = new SimpleDustMaterial("aluminium_sulfate", 0xfcfcfa, (short) 116, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LiKChlorideEutetic = new SimpleDustMaterial("lik_chloride_eutetic", 0xcac0c1, (short) 113, MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Chlorine, 1), new MaterialStack(RockSalt, 1)));
+    // FREE SimpleDustMaterial ID: 114
+    public static final SimpleDustMaterial PotassiumSulfate = new SimpleDustMaterial("potassium_sulfate", 0xfcfcfa, (short) 115, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)));
+    public static final SimpleDustMaterial AluminiumSulfate = new SimpleDustMaterial("aluminium_sulfate", 0xfcfcfa, (short) 116, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Sulfur, 3), new MaterialStack(Oxygen, 12)));
     public static final SimpleFluidMaterial DissolvedLithiumOre = new SimpleFluidMaterial("dissolved_lithium_ores", 0x664850);
     public static final SimpleFluidMaterial LithiumCarbonateSolution = new SimpleFluidMaterial("lithium_carbonate_solution", 0xfcfcfa);
     public static final SimpleFluidMaterial LithiumChlorideSolution = new SimpleFluidMaterial("lithium_chloride_solution", 0xfcfcfa);
