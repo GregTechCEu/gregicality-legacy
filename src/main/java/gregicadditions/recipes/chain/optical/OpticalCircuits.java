@@ -48,7 +48,7 @@ public class OpticalCircuits {
                 .fluidInputs(CarbonNanotubes.getFluid(144))
                 .fluidInputs(SeaborgiumDopedNanotubes.getFluid(144))
                 .input(dust, IndiumPhospide)
-                .fluidInputs(DielectricMirrorFormationMix.getFluid(2000))
+                .fluidInputs(DielectricMirrorFormationMix.getFluid(400))
                 .outputs(OPTICAL_SOC_WAFER.getStackForm())
                 .buildAndRegister();
 

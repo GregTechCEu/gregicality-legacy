@@ -1113,9 +1113,9 @@ public class GAMaterials implements IMaterialHandler {
 
     public static final SimpleDustMaterial LithiumHydride = new SimpleDustMaterial("lithium_hydride",0xfcfcfa,(short) 321,MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Hydrogen, 1)));
     public static final SimpleDustMaterial NiobiumChloride = new SimpleDustMaterial("niobium_chloride",Niobium.materialRGB,(short) 322, MaterialIconSet.DULL, of(new MaterialStack(Niobium, 1), new MaterialStack(Chlorine, 5)));
-    public static final SimpleDustMaterial NiobiumHydroxide = new SimpleDustMaterial("niobium_hydroxide",0x7c7c7c,(short) 323,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial MagnesiumFluoride = new SimpleDustMaterial("magnesium_fluoride",0xcfcfcf,(short) 324,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial ZincSulfide = new SimpleDustMaterial("zinc_sulfide",0x3c3c3c,(short) 325,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial NiobiumHydroxide = new SimpleDustMaterial("niobium_hydroxide",0x7c7c7c,(short) 323,MaterialIconSet.DULL, of(new MaterialStack(Hydrogen, 5), new MaterialStack(Niobium, 1), new MaterialStack(Oxygen, 5)));
+    public static final SimpleDustMaterial MagnesiumFluoride = new SimpleDustMaterial("magnesium_fluoride",0xcfcfcf,(short) 324,MaterialIconSet.DULL, of(new MaterialStack(Magnesium, 1), new MaterialStack(Fluorine, 2)));
+    public static final SimpleDustMaterial ZincSulfide = new SimpleDustMaterial("zinc_sulfide",0x3c3c3c,(short) 325,MaterialIconSet.DULL, of(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1)));
     public static final SimpleDustMaterial LithiumNiobateNanoparticles = new SimpleDustMaterial("lithium_niobate_nanoparticles",0xcfcf3a,(short) 326,MaterialIconSet.SHINY);
 
     public static final SimpleFluidMaterial SeaborgiumDopedNanotubes = new SimpleFluidMaterial("seaborgium_doped_nanotubes",0x2c2c8c);
@@ -1309,8 +1309,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial NdYAG = new DustMaterial(688,"nd_yag",0xcf8acf,MaterialIconSet.SHINY,6,of(),SMELT_INTO_FLUID);
     public static final DustMaterial PrHoYLF = new DustMaterial(687,"prho_ylf",0x6f20af,MaterialIconSet.SHINY,6,of(),SMELT_INTO_FLUID);
     public static final DustMaterial LuTmYVO = new DustMaterial(686,"lutm_yvo",0x206faf,MaterialIconSet.SHINY,6,of(),SMELT_INTO_FLUID);
-    public static final IngotMaterial LithiumNiobate = new IngotMaterial(685,"lithium_niobate",0xcfcf3a,MaterialIconSet.SHINY,6,of(),GENERATE_PLATE, null ,6700);
-    public static final DustMaterial IndiumPhospide = new DustMaterial(684,"indium_phosphide",0x5c9c9c,MaterialIconSet.SHINY,6,of(),0);
+    public static final IngotMaterial LithiumNiobate = new IngotMaterial(685,"lithium_niobate",0xcfcf3a,MaterialIconSet.SHINY,6,of(new MaterialStack(Lithium, 1), new MaterialStack(Niobium, 1), new MaterialStack(Oxygen, 4)),GENERATE_PLATE | DISABLE_DECOMPOSITION, null ,6700);
+    public static final DustMaterial IndiumPhospide = new DustMaterial(684,"indium_phosphide",0x5c9c9c,MaterialIconSet.SHINY,6,of(new MaterialStack(Indium, 1), new MaterialStack(Phosphorus, 1)),0);
     public static final IngotMaterial MetastableHassium = new IngotMaterial(683,"metastable_hassium",0x2d3a9d,MaterialIconSet.SHINY,6,of(),CORE_METAL,Element.valueOf("Hs"),78000);
     public static final IngotMaterial HeavyQuarkDegenerateMatter = new IngotMaterial(682,"heavy_quark_degenerate_matter",0x5dbd3a,MaterialIconSet.SHINY,6,of(),CORE_METAL,null,98000);
     public static final IngotMaterial Tennessine = new IngotMaterial(681, "tennessine" , 0x977fd6, MaterialIconSet.SHINY, 2, of(), 0, Ts);

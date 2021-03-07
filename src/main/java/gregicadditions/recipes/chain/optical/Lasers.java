@@ -330,7 +330,7 @@ public class Lasers {
                 .buildAndRegister();
 
         // LuTmYVO Precipitate + C2H6O = LuTmYVO Nanoparticles + 3NaCl + (NH4)2CO3 + C3H6
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(200).EUt(13500)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(13500)
                 .inputs(LuTmYVOPrecipitate.getItemStack())
                 .fluidInputs(Ethanol100.getFluid(1000))
                 .outputs(LuTmYVONanoparticles.getItemStack())
