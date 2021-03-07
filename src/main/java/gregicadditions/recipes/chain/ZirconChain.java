@@ -11,11 +11,12 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class ZirconChain {
     public static void init() {
+
         // Ba + H2O2 = Ba(OH)2
         CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(500)
                 .input(dust, Barium)
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .outputs(BariumHydroxide.getItemStack())
+                .outputs(BariumHydroxide.getItemStack(5))
                 .buildAndRegister();
 
         // 2C3H6O = C6H10O + H2O
@@ -60,7 +61,7 @@ public class ZirconChain {
 
         // SiCl4? = SiCl4 + Co + RareEarth
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(120)
-                .fluidInputs(ZirconChlorinatingResidue.getFluid(2000))
+                .fluidInputs(ZirconChlorinatingResidue.getFluid(1000))
                 .outputs(SiliconChloride.getItemStack(5))
                 .chancedOutput(OreDictUnifier.get(dust, Cobalt), 7500, 450)
                 .chancedOutput(OreDictUnifier.get(dust, RareEarth), 200, 20)
