@@ -15,7 +15,6 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
 
     public QubitConsumeRecipeLogic(RecipeMapMultiblockController metaTileEntity) {
         super(metaTileEntity);
-        setAllowOverclocking(false);
     }
 
     public IQubitContainer getInputQubitContainer() {
@@ -24,8 +23,11 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
     }
 
     @Override
-    public boolean isAllowOverclocking() {
-        return recipeQubit == 0;
+    protected int[] calculateOverclock(int EUt, long voltage, int duration) {
+        if (recipeQubit > 0) {
+            return new int[]{EUt, duration};
+        }
+        return super.calculateOverclock(EUt, voltage, duration);
     }
 
     @Override

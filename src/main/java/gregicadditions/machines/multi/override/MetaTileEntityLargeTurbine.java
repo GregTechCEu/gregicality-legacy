@@ -1,5 +1,7 @@
 package gregicadditions.machines.multi.override;
 
+import gregicadditions.fluid.GAMetaFluids;
+import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -61,6 +63,13 @@ public class MetaTileEntityLargeTurbine extends gregtech.common.metatileentities
                 FluidMaterial material = MetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
                 if (material != null) {
                     MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
+                } else {
+                    SimpleFluidMaterial simpleFluidMaterial = GAMetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
+                    if (simpleFluidMaterial != null && simpleFluidMaterial.hasPlasma) {
+                        if (simpleFluidMaterial.plasma.getName().equals(currentRecipe.getRecipeFluid().getFluid().getName())) {
+                            MetaTileEntityLargeTurbine.this.exportFluidHandler.fill(simpleFluidMaterial.getFluid(fuelAmountUsed), true);
+                        }
+                    }
                 }
             }
         }

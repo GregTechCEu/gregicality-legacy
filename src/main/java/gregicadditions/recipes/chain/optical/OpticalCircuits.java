@@ -39,10 +39,10 @@ public class OpticalCircuits {
                 .inputs(SodiumSeaborgate.getItemStack(4))
                 .input(dust, TriniumTitanium, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(1296))
-                .outputs(SMD_RESISTOR_OPTICAL.getStackForm())
+                .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(3200000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(390).EUt(1600000)
                 .inputs(UHASOC_WAFER.getStackForm())
                 .fluidInputs(LiquidZBLAN.getFluid(144))
                 .fluidInputs(CarbonNanotubes.getFluid(144))
@@ -52,12 +52,12 @@ public class OpticalCircuits {
                 .outputs(OPTICAL_SOC_WAFER.getStackForm())
                 .buildAndRegister();
 
-        LATHE_RECIPES.recipeBuilder().duration(280).EUt(850000)
+        CUTTER_RECIPES.recipeBuilder().duration(280).EUt(850000)
                 .inputs(OPTICAL_SOC_WAFER.getStackForm())
                 .outputs(OPTICAL_SOC.getStackForm(4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(1474560).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(1474560)
                 .inputs(OPTICAL_SOC.getStackForm())
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(2))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(2))
@@ -68,7 +68,6 @@ public class OpticalCircuits {
                 .inputs(MEDIUM_FREQUENCY_LASER.getStackForm())
                 .inputs(HIGH_FREQUENCY_LASER.getStackForm())
                 .inputs(NON_LINEAR_OPTICAL_LENS.getStackForm(2))
-                .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(2))
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .input(plate,Graphene,4)

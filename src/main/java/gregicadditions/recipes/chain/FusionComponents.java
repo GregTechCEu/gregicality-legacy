@@ -22,7 +22,7 @@ import static gregtech.common.items.MetaItems.*;
 public class FusionComponents {
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
-                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1, 4),
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1),
                         OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8),
                         OreDictUnifier.get(plate, Einsteinium.getMaterial(), 8),
                         FIELD_GENERATOR_UV.getStackForm(2),
@@ -172,7 +172,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_3, 4))
                 .buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).
-                inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2))
+                inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .duration(50)

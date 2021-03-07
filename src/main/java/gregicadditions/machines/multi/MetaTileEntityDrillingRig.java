@@ -197,7 +197,8 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.no_fluid"));
             } else {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid_drain", fluidDrain()));
-                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid", I18n.format(oilWorldInfo.getType().getFluid().getUnlocalizedName())));
+                ITextComponent fluidName = new TextComponentTranslation(oilWorldInfo.getType().getFluid().getUnlocalizedName());
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid", fluidName));
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_capacity", oilWorldInfo.capacity / 1000));
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_remaining", oilWorldInfo.current / 1000));
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.replenish", oilWorldInfo.type.replenishRate * getTier()));

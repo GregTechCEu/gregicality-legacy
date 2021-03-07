@@ -110,12 +110,12 @@ public class GeneratorFuels {
         registerPlasmaFuel(Sulfur.getPlasma(1), 2731, GAValues.LV);
         registerPlasmaFuel(Argon.getPlasma(1), 2731, GAValues.LV);
         registerPlasmaFuel(Calcium.getPlasma(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaTitanium44.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaChromium48.getFluid(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Titanium44.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Chromium48.getPlasma(1), 2560, GAValues.LV);
         registerPlasmaFuel(Titanium.getPlasma(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaIron52.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaNickel56.getFluid(1), 2560, GAValues.LV);
-        registerPlasmaFuel(PlasmaHeliumCNO.getFluid(1), 3840, GAValues.LV);
+        registerPlasmaFuel(Iron52.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(Nickel56.getPlasma(1), 2560, GAValues.LV);
+        registerPlasmaFuel(HeliumCNO.getPlasma(1), 3840, GAValues.LV);
 
 
         //Smefuels
@@ -140,17 +140,17 @@ public class GeneratorFuels {
         registerRocketFuel(DenseHydrazineFuelMixture.getFluid(9), 80, GAValues.EV);
         registerRocketFuel(RP1RocketFuel.getFluid(12), 40, GAValues.EV);
 
-        FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 24000, GAValues.LV);
-        FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 10000, GAValues.LV);
-        FuelRecipes.registerGasGeneratorFuel(LightENaquadahFuel.getFluid(1), 25000, GAValues.LV);
-        registerNaquadahReactorFuel(HeavyNaquadahFuel.getFluid(1), 40000, GAValues.LV);
-        registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 20000, GAValues.LV);
-        registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 60000, GAValues.LV);
-        registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 40000, GAValues.LV);
-        registerHyperReactorFuel(HyperFuelI.getFluid(1), 400, GAValues.IV);
-        registerHyperReactorFuel(HyperFuelII.getFluid(1), 600, GAValues.IV);
-        registerHyperReactorFuel(HyperFuelIII.getFluid(1), 800, GAValues.IV);
-        registerHyperReactorFuel(HyperFuelIV.getFluid(1), 7500, GAValues.UV);
+        FuelRecipes.registerGasGeneratorFuel(NaquadahGas.getFluid(1), 8000, GAValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(LightNaquadahFuel.getFluid(1), 4000, GAValues.LV);
+        FuelRecipes.registerGasGeneratorFuel(LightENaquadahFuel.getFluid(1), 10000, GAValues.LV);
+        registerNaquadahReactorFuel(HeavyNaquadahFuel.getFluid(1), 17500, GAValues.LV);
+        registerNaquadahReactorFuel(MediumNaquadahFuel.getFluid(1), 7500, GAValues.LV);
+        registerNaquadahReactorFuel(HeavyENaquadahFuel.getFluid(1), 25000, GAValues.LV);
+        registerNaquadahReactorFuel(MediumENaquadahFuel.getFluid(1), 17500, GAValues.LV);
+        registerHyperReactorFuel(HyperFuelI.getFluid(1), 300, GAValues.IV);
+        registerHyperReactorFuel(HyperFuelII.getFluid(1), 500, GAValues.IV);
+        registerHyperReactorFuel(HyperFuelIII.getFluid(1), 700, GAValues.IV);
+        registerHyperReactorFuel(HyperFuelIV.getFluid(1), 6000, GAValues.UV);
 
         //Qubit generator
         GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder().EUt(GAValues.V[GAValues.UV]).duration(1).qubit(1).input(OrePrefix.circuit, MarkerMaterials.Tier.Elite).buildAndRegister();

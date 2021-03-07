@@ -115,13 +115,13 @@ public class OpticalComponents {
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(270).EUt(8400000).blastFurnaceTemp(4600)
+        BLAST_RECIPES.recipeBuilder().duration(270).EUt(1600000).blastFurnaceTemp(4600)
                 .input(dust, Phosphorus)
                 .input(dust, Indium)
                 .outputs(OreDictUnifier.get(dust, IndiumPhospide, 2))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(270).EUt(8400000).blastFurnaceTemp(4600)
+        BLAST_RECIPES.recipeBuilder().duration(270).EUt(491520).blastFurnaceTemp(4600)
                 .input(dust, Zinc)
                 .input(dust, Sulfur)
                 .outputs(ZincSulfide.getItemStack(2))

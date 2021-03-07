@@ -59,13 +59,6 @@ public class VanadiumChain {
                 .outputs(OreDictUnifier.get(dust, Vanadium))
                 .buildAndRegister();
 
-        //recipe from centrifuge decomposition int GTCE
-        CENTRIFUGE_RECIPES.recipeBuilder().duration((int) (SodiumSulfate.getAverageMass() * 7 * 1.5)).EUt(30)
-                .input(dust, SodiumSulfate)
-                .outputs(OreDictUnifier.get(dust, Sodium, 2))
-                .outputs(OreDictUnifier.get(dust, Sulfur, 1))
-                .fluidOutputs(Oxygen.getFluid(4000))
-                .buildAndRegister();
     }
 }
 

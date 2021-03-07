@@ -162,7 +162,7 @@ public class NuclearChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
                 .inputs(NUCLEAR_WASTE_HEAVY_METAL.getStackForm())
-                .fluidOutputs(Mercury.getFluid(36))
+                .fluidOutputs(Mercury.getFluid(250))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Zinc, 2), 5555, 200)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Gallium, 2), 5555, 300)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Cadmium, 2), 5555, 400)
@@ -253,9 +253,9 @@ public class NuclearChain {
 
         CENTRIFUGE_RECIPES.recipeBuilder().EUt(32).duration(3000)
                 .inputs(NUCLEAR_WASTE_REACTIVE_NONMETAL.getStackForm())
-                .fluidOutputs(Krypton.getFluid(36))
-                .fluidOutputs(Xenon.getFluid(72))
-                .fluidOutputs(Radon.getFluid(144))
+                .fluidOutputs(Krypton.getFluid(250))
+                .fluidOutputs(Xenon.getFluid(500))
+                .fluidOutputs(Radon.getFluid(1000))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Selenium, 2), 6250, 800)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 6250, 900)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 6250, 1000)

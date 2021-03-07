@@ -114,6 +114,7 @@ public class ZincChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(1150)
+                .blastFurnaceTemp(4500)
                 .inputs(IndiumHydroxide.getItemStack())
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Indium))

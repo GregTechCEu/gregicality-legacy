@@ -1,6 +1,8 @@
 package gregicadditions.jei;
 
 import com.google.common.collect.Lists;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -24,7 +26,37 @@ public class FusionReactor2Info extends MultiblockInfoPage {
 
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
-		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder().aisle("###############", "######NCN######", "###############").aisle("######DCD######", "####CCcccCC####", "######UCU######").aisle("####CC###CC####", "###sccNCNccs###", "####CC###CC####").aisle("###C#######C###", "##wcnC###Cnce##", "###C#######C###").aisle("##C#########C##", "#Cce#######wcC#", "##C#########C##").aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##").aisle("#D###########D#", "WcE#########WcE", "#U###########U#").aisle("#C###########C#", "CcC#########CcC", "#C###########C#").aisle("#D###########D#", "WcE#########WcE", "#U###########U#").aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##").aisle("##C#########C##", "#Cce#######wcC#", "##C#########C##").aisle("###C#######C###", "##wcsC###Csce##", "###C#######C###").aisle("####CC###CC####", "###nccSCSccn###", "####CC###CC####").aisle("######DCD######", "####CCcccCC####", "######UCU######").aisle("###############", "######NMN######", "###############").where('M', GATileEntities.FUSION_REACTOR[1], EnumFacing.SOUTH).where('C', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING)).where('c', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL)).where('W', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.WEST).where('E', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.EAST).where('S', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.SOUTH).where('N', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.NORTH).where('w', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.WEST).where('e', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.EAST).where('s', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.SOUTH).where('n', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.NORTH).where('U', MetaTileEntities.FLUID_IMPORT_HATCH[7], EnumFacing.UP).where('D', MetaTileEntities.FLUID_IMPORT_HATCH[7], EnumFacing.DOWN).where('#', Blocks.AIR.getDefaultState()).build();
+		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
+				.aisle("###############", "######NCN######", "###############")
+				.aisle("######DCD######", "####CCcccCC####", "######UCU######")
+				.aisle("####CC###CC####", "###sccNCNccs###", "####CC###CC####")
+				.aisle("###C#######C###", "##wcnC###Cnce##", "###C#######C###")
+				.aisle("##C#########C##", "#Cce#######wcC#", "##C#########C##")
+				.aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
+				.aisle("#D###########D#", "WcE#########WcE", "#U###########U#")
+				.aisle("#C###########C#", "CcC#########CcC", "#C###########C#")
+				.aisle("#D###########D#", "WcE#########WcE", "#U###########U#")
+				.aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
+				.aisle("##C#########C##", "#Cce#######wcC#", "##C#########C##")
+				.aisle("###C#######C###", "##wcsC###Csce##", "###C#######C###")
+				.aisle("####CC###CC####", "###nccSCSccn###", "####CC###CC####")
+				.aisle("######DCD######", "####CCcccCC####", "######UCU######")
+				.aisle("###############", "######NMN######", "###############")
+				.where('M', GATileEntities.FUSION_REACTOR[1], EnumFacing.SOUTH)
+				.where('C', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2))
+				.where('c', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2))
+				.where('W', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.WEST)
+				.where('E', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.EAST)
+				.where('S', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.SOUTH)
+				.where('N', MetaTileEntities.FLUID_EXPORT_HATCH[7], EnumFacing.NORTH)
+				.where('w', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.WEST)
+				.where('e', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.EAST)
+				.where('s', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.SOUTH)
+				.where('n', MetaTileEntities.ENERGY_INPUT_HATCH[7], EnumFacing.NORTH)
+				.where('U', MetaTileEntities.FLUID_IMPORT_HATCH[7], EnumFacing.UP)
+				.where('D', MetaTileEntities.FLUID_IMPORT_HATCH[7], EnumFacing.DOWN)
+				.where('#', Blocks.AIR.getDefaultState())
+				.build();
 
 		return Lists.newArrayList(shapeInfo);
 	}

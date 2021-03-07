@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.*;
@@ -83,13 +84,12 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
-                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
-                .aisle("XXXXX", "RCTCR", "RCTCR", "RCTCR", "YYYYY")
-                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "YYYYY")
-                .aisle("XXSXX", "RRRRR", "RRRRR", "RRRRR", "YYYYY")
+                .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
+                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
+                .aisle("XXXXX", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
+                .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
+                .aisle("XXSXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                 .where('S', selfPredicate())
-                .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
                 .where('T', tieredCasing1Predicate().or(tieredCasing2Predicate()))
@@ -105,6 +105,8 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 return false;
             BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
@@ -120,6 +122,8 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 return false;
             GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
             GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
+            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
+                return false;
             int heatingCoilDiscount = coilType.getEnergyDiscount();
             int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
             int heatingCoilLevel = coilType.getLevel();
@@ -141,6 +145,18 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
                 }
                 int maxVoltage;
                 switch (tieredCasingType) {
+                    case TIERED_HULL_LV:
+                        maxVoltage = GAValues.V[GAValues.LV];
+                        break;
+                    case TIERED_HULL_MV:
+                        maxVoltage = GAValues.V[GAValues.MV];
+                        break;
+                    case TIERED_HULL_HV:
+                        maxVoltage = GAValues.V[GAValues.HV];
+                        break;
+                    case TIERED_HULL_EV:
+                        maxVoltage = GAValues.V[GAValues.EV];
+                        break;
                     case TIERED_HULL_IV:
                         maxVoltage = GAValues.V[GAValues.IV];
                         break;

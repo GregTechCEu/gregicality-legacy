@@ -120,12 +120,12 @@ public class GrowthMedium {
                 .duration(200)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(new IntCircuitIngredient(1))
+                .notConsumable(new IntCircuitIngredient(10))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(EthyleneOxide.getFluid(2000))
-                .EUt(30720)
-                .duration(100)
+                .EUt(500)
+                .duration(400)
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))

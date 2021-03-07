@@ -1,5 +1,6 @@
 package gregicadditions.machines.energyconverter.utils;
 
+import gregicadditions.GAMaterials;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -10,6 +11,11 @@ import gregtech.api.unification.stack.UnificationEntry;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
+
+import static gregicadditions.GAMaterials.*;
+import static gregicadditions.GAMaterials.Neutronium;
+import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
+import static gregtech.api.unification.ore.OrePrefix.wireGtQuadruple;
 
 public class EnergyConverterCraftingHelper {
     public static final EnergyConverterCraftingHelper HELPER;
@@ -34,53 +40,49 @@ public class EnergyConverterCraftingHelper {
 
     public Material cableMaterialByTier(final int tier) {
         switch (tier) {
-            case 0: {
+            case 0:
                 return Materials.Lead;
-            }
-            case 1: {
+            case 1:
                 return Materials.Tin;
-            }
-            case 2: {
+            case 2:
                 return Materials.Copper;
-            }
-            case 3: {
+            case 3:
                 return Materials.Gold;
-            }
-            case 4: {
+            case 4:
                 return Materials.Aluminium;
-            }
-            case 5: {
+            case 5:
                 return Materials.Platinum;
-            }
-            case 6: {
+            case 6:
                 return Materials.NiobiumTitanium;
-            }
-            case 7: {
+            case 7:
                 return Materials.Naquadah;
-            }
-            case 8: {
+            case 8:
                 return Materials.NaquadahAlloy;
-            }
-            default: {
+            case 9:
+                return GAMaterials.AbyssalAlloy;
+            case 10:
+                return GAMaterials.TitanSteel;
+            case 11:
+                return GAMaterials.BlackTitanium;
+            case 12:
+            case 13:
+                return Neutronium;
+            case 14:
+            default:
                 return MarkerMaterials.Tier.Superconductor;
-            }
         }
     }
 
     public OrePrefix prefixCable(final int stack) {
         switch (stack) {
-            case 1: {
+            case 1:
                 return OrePrefix.cableGtSingle;
-            }
-            case 4: {
+            case 4:
                 return OrePrefix.cableGtQuadruple;
-            }
-            case 9: {
+            case 9:
                 return OrePrefix.cableGtOctal;
-            }
-            default: {
+            default:
                 return OrePrefix.cableGtHex;
-            }
         }
     }
 
