@@ -485,6 +485,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
     public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
 
+    public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
+
 
     // GA oredict items
     public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
