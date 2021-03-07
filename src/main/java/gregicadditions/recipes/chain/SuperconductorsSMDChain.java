@@ -1004,6 +1004,16 @@ public class SuperconductorsSMDChain {
                 .notConsumable(plate, Rhenium)
                 .outputs(LanthanumFullereneNanotubes.getItemStack())
                 .buildAndRegister();
+        
+        
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(33500000)
+                .inputs(Legendarium.getItemStack(5))
+                .input(dust, Neutronium, 4)
+                .inputs(ActiniumSuperhydride.getItemStack(5))
+                .inputs(LanthanumFullereneNanotubes.getItemStack(4))
+                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
+                .outputs(OreDictUnifier.get(dust, UXVSuperconductorBase, 30))
+                .buildAndRegister();
 
     }
 }
