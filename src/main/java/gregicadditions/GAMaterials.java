@@ -758,11 +758,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PotassiumMagnesiumSalts = new SimpleDustMaterial("kmg_salts", 0xcacac8, (short) 139, MaterialIconSet.DULL);
     public static final SimpleDustMaterial CalciumMagnesiumSalts = new SimpleDustMaterial("camg_salts", 0xcacac8, (short) 140, MaterialIconSet.DULL);
     public static final SimpleDustMaterial SodiumAluminiumHydride = new SimpleDustMaterial("sodium_aluminium_hydride", 0x98cafc, (short) 141, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial LithiumAluminiumHydride = new SimpleDustMaterial("lithium_aluminium_hydride", 0xc0defc, (short) 142, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LithiumAluminiumHydride = new SimpleDustMaterial("lithium_aluminium_hydride", 0xc0defc, (short) 142, MaterialIconSet.DULL, of( new MaterialStack(Lithium, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Hydrogen, 4)));
     public static final SimpleDustMaterial SodiumAzanide = new SimpleDustMaterial("sodium_azanide", 0xfcfcfa, (short) 143, MaterialIconSet.DULL);
     public static final SimpleDustMaterial SodiumAzide = new SimpleDustMaterial("sodium_azide", 0xfcfcfa, (short) 144, MaterialIconSet.DULL, of(new MaterialStack(Sodium, 1), new MaterialStack(Nitrogen, 3)));
     public static final SimpleDustMaterial Glucosamine = new SimpleDustMaterial("glucosamine", 0xfcfcfa, (short) 145, MaterialIconSet.DULL);
-    public static final SimpleDustMaterial AluminiumHydride = new SimpleDustMaterial("aluminium_hydride", 0x0b585c, (short) 146, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial AluminiumHydride = new SimpleDustMaterial("aluminium_hydride", 0x0b585c, (short) 146, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 1), new MaterialStack(Hydrogen, 3)));
     public static final SimpleDustMaterial SodiumHydride = new SimpleDustMaterial("sodium_hydride", 0xcacac8, (short) 147, MaterialIconSet.DULL, of(new MaterialStack(Sodium, 1), new MaterialStack(Hydrogen, 1)));
     public static final SimpleDustMaterial DehydrogenationCatalyst = new SimpleDustMaterial("dehydrogenation_catalyst", 0x6464f5, (short) 148, MaterialIconSet.SHINY);
     public static final SimpleDustMaterial PolystyreneNanoParticles = new SimpleDustMaterial("polystryrene_nanoparticles", 0x888079, (short) 149, MaterialIconSet.FINE);
@@ -1111,8 +1111,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad);
     public static final SimpleFluidMaterial Benzonitrile = new SimpleFluidMaterial("benzonitrile",0x2c2c9c);
 
-    public static final SimpleDustMaterial LithiumHydride = new SimpleDustMaterial("lithium_hydride",0xfcfcfa,(short) 321,MaterialIconSet.DULL);
-    public static final SimpleDustMaterial NiobiumChloride = new SimpleDustMaterial("niobium_chloride",Niobium.materialRGB,(short) 322, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial LithiumHydride = new SimpleDustMaterial("lithium_hydride",0xfcfcfa,(short) 321,MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Hydrogen, 1)));
+    public static final SimpleDustMaterial NiobiumChloride = new SimpleDustMaterial("niobium_chloride",Niobium.materialRGB,(short) 322, MaterialIconSet.DULL, of(new MaterialStack(Niobium, 1), new MaterialStack(Chlorine, 5)));
     public static final SimpleDustMaterial NiobiumHydroxide = new SimpleDustMaterial("niobium_hydroxide",0x7c7c7c,(short) 323,MaterialIconSet.DULL);
     public static final SimpleDustMaterial MagnesiumFluoride = new SimpleDustMaterial("magnesium_fluoride",0xcfcfcf,(short) 324,MaterialIconSet.DULL);
     public static final SimpleDustMaterial ZincSulfide = new SimpleDustMaterial("zinc_sulfide",0x3c3c3c,(short) 325,MaterialIconSet.DULL);

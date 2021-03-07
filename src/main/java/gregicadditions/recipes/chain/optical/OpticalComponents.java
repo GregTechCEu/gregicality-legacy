@@ -12,16 +12,18 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class OpticalComponents {
     public static void init() {
+        // Nb + 5Cl = NbCl5
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(670000)
                 .input(dust, Niobium)
                 .fluidInputs(Chlorine.getFluid(5000))
-                .outputs(NiobiumChloride.getItemStack())
+                .outputs(NiobiumChloride.getItemStack(6))
                 .buildAndRegister();
 
+        // LiAlH4 = LiH + AlH3
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(750000).blastFurnaceTemp(1600)
-                .inputs(LithiumAluminiumHydride.getItemStack())
-                .outputs(LithiumHydride.getItemStack())
-                .outputs(AluminiumHydride.getItemStack())
+                .inputs(LithiumAluminiumHydride.getItemStack(6))
+                .outputs(LithiumHydride.getItemStack(2))
+                .outputs(AluminiumHydride.getItemStack(4))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1200000).blastFurnaceTemp(4500)

@@ -320,16 +320,17 @@ public class Lasers {
                 .outputs(AmmoniumVanadate.getItemStack(9))
                 .buildAndRegister();
 
-        // [6YCl3 + 2LuCl3 + 2TmCl3 + 15H2O] + Na3VO4 + 2CH4N2O = LuTmYVO Precipitate
+        // [6YCl3 + 2LuCl3 + 2TmCl3 + 15H2O] + Na3VO4 + 2CH4N2O = LuTmYVO Precipitate + 0.9Cl
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(32000)
                 .fluidInputs(LuTmYChlorideSolution.getFluid(1000))
                 .inputs(PureSodiumVanadate.getItemStack(8))
                 .inputs(Urea.getItemStack(16))
+                .fluidOutputs(Chlorine.getFluid(900))
                 .outputs(LuTmYVOPrecipitate.getItemStack())
                 .buildAndRegister();
 
-        // LuTmYVO Precipitate + C2H6O = LuTmYVO Nanoparticles + 3NaCl + 27Cl + (NH4)2CO3 + C3H6
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(13500)
+        // LuTmYVO Precipitate + C2H6O = LuTmYVO Nanoparticles + 3NaCl + (NH4)2CO3 + C3H6
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(200).EUt(13500)
                 .inputs(LuTmYVOPrecipitate.getItemStack())
                 .fluidInputs(Ethanol100.getFluid(1000))
                 .outputs(LuTmYVONanoparticles.getItemStack())
