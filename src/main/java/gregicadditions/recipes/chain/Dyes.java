@@ -16,56 +16,70 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class Dyes {
     public static void init(){
+
+        /*
+         * Unknown compounds key:
+         * - ApatiteAcidicLeach: Ca4P3O102Cl TREAT AS 1
+         * - FluoroapatiteAcidicLeach: Ca4P3O10F TREAT AS 1
+         */
+
+        // Ca5(PO4)3Cl + H2SO4 -> CaS(H2O)2O4 + Ca4P3O102Cl
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(500)
-                .input(dust,Apatite)
+                .input(dust, Apatite, 9) // TODO verify this amount
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Gypsum))
+                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
                 .outputs(ApatiteAcidicLeach.getItemStack())
                 .buildAndRegister();
 
+        // Na2CO3 + Ca6(PO4)3ClO + SiO2 + H2O -> ? + ??
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
-                .input(dust,SodaAsh)
+                .input(dust, SodaAsh, 6)
                 .inputs(ApatiteAcidicLeach.getItemStack())
                 .notConsumable(dust, Bentonite)
-                .input(dust,SiliconDioxide)
+                .input(dust, SiliconDioxide, 3)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
                 .outputs(ApatiteSolidResidue.getItemStack())
                 .buildAndRegister();
 
+        // 5HCl + ?? -> SiCl4 + NaCl + 0.2FeCl3
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(HydrochloricAcid.getFluid(5000))
                 .inputs(ApatiteSolidResidue.getItemStack())
-                .outputs(SiliconChloride.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(SiliconChloride.getItemStack(5))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(IronChloride.getFluid(200))
                 .buildAndRegister();
 
+        // Ca5(PO4)3F + H2SO4 -> CaS(H2O)2O4 + Ca4P3O10F
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(500)
-                .input(dust,FluoroApatite)
+                .input(dust, FluoroApatite, 9)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust,Gypsum))
+                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
                 .outputs(FluoroapatiteAcidicLeach.getItemStack())
                 .buildAndRegister();
 
+        // Na2CO3 + Ca4P3O10F + SiO2 + H2O -> ? + ??
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
-                .input(dust,SodaAsh)
+                .input(dust, SodaAsh, 6)
                 .inputs(FluoroapatiteAcidicLeach.getItemStack())
-                .notConsumable(dust,Bentonite)
-                .input(dust,SiliconDioxide)
+                .notConsumable(dust, Bentonite)
+                .input(dust, SiliconDioxide, 3)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
                 .outputs(FluoroapatiteSolidResidue.getItemStack())
                 .buildAndRegister();
 
+        // 2HCl + ?? -> H2SiF6 + NaCl + 0.2FeCl3
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .inputs(FluoroapatiteSolidResidue.getItemStack())
                 .fluidOutputs(FluorosilicicAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(IronChloride.getFluid(200))
                 .buildAndRegister();
 
+        // 10? + 4Na2S -> TODO
         CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .fluidInputs(PhosphorousArsenicSolution.getFluid(10000))
                 .input(dust, SodiumSulfide,4)
@@ -74,22 +88,32 @@ public class Dyes {
                 .fluidOutputs(PhosphoricAcid.getFluid(10000))
                 .buildAndRegister();
 
+        // 2Na3AsO4 + 2H2SO4 -> As2O3 + 2Na2SO4(H2O) + H2O + Na2O + 4O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(1100)
-                .inputs(SodiumArsenate.getItemStack(2))
-                .inputs(SodiumIodide.getItemStack())
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, ArsenicTrioxide))
-                .outputs(OreDictUnifier.get(dust, Iodine))
-                .fluidOutputs(SodiumSulfateSolution.getFluid(1000))
+                .inputs(SodiumArsenate.getItemStack(16))
+                .fluidInputs(SulfuricAcid.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, ArsenicTrioxide, 5))
+                .outputs(SodiumOxide.getItemStack(3))
+                .fluidOutputs(SodiumSulfateSolution.getFluid(2000))
                 .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
+        // Na2O -> 2Na + O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(30)
+                .inputs(SodiumOxide.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, Sodium, 2))
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
+        // Cd + S -> CdS
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(240).EUt(300)
                 .input(dust, Cadmium)
                 .input(dust, Sulfur)
                 .outputs(CadmiumSulfide.getItemStack(2))
                 .buildAndRegister();
 
+        // CdS -> Cd + S
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .inputs(CadmiumSulfide.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, Sulfur))
@@ -119,6 +143,7 @@ public class Dyes {
 
         ModHandler.addSmeltingRecipe(RawSienna.getItemStack(), BurnedSienna.getItemStack());
 
+        // Hg + 2HNO3 + O -> H2O + Hg(NO3)2
         CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(500)
                 .fluidInputs(Mercury.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(2000))
@@ -127,21 +152,24 @@ public class Dyes {
                 .fluidOutputs(MercuryNitrate.getFluid(1000))
                 .buildAndRegister();
 
+        // Hg(NO3)2 + 2HCl -> HgCl2 + 2HNO3
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(500)
                 .fluidInputs(MercuryNitrate.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .outputs(MercuryChloride.getItemStack())
+                .outputs(MercuryChloride.getItemStack(3))
                 .fluidOutputs(NitricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        // HgCl2 + 2I + 2K -> HgI2 + 2KCl
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(720).blastFurnaceTemp(700)
-                .inputs(MercuryChloride.getItemStack())
+                .inputs(MercuryChloride.getItemStack(3))
                 .input(dust, Iodine, 2)
                 .input(dust, Potassium, 2)
-                .outputs(MercuryIodide.getItemStack())
-                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
+                .outputs(MercuryIodide.getItemStack(3))
+                .outputs(OreDictUnifier.get(dust, RockSalt, 4))
                 .buildAndRegister();
 
+        // NH4VO3 + ? + 8H -> NH4NO3 + BiVO4(H2O) + 2H2O TODO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
                 .inputs(AmmoniumVanadate.getItemStack())
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
@@ -151,11 +179,13 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
+        // BiVO4(H2O) -> BiVO4
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(190).EUt(600)
                 .fluidInputs(BismuthVanadateSolution.getFluid(1000))
-                .outputs(BismuthVanadate.getItemStack())
+                .outputs(BismuthVanadate.getItemStack(6))
                 .buildAndRegister();
 
+        // ? + H2O + As2O3 + Na2CO3 -> 2AsCuHO3 TODO
         MIXER_RECIPES.recipeBuilder().duration(220).EUt(125)
                 .fluidInputs(CopperSulfateSolution.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
@@ -166,27 +196,32 @@ public class Dyes {
 
         ModHandler.addSmeltingRecipe(CopperArsenite.getItemStack(), ScheelesGreen.getItemStack());
 
+        // 4ZnO + CoO -> Zn4CoO5
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
-                .input(dust, Zincite,4)
-                .input(dust, CobaltOxide)
-                .outputs(CobaltZincOxide.getItemStack(5))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
+                .input(dust, Zincite,8)
                 .input(dust, CobaltOxide, 2)
-                .inputs(Alumina.getItemStack())
-                .outputs(CobaltAluminate.getItemStack())
+                .outputs(CobaltZincOxide.getItemStack(10))
                 .buildAndRegister();
 
+        // 2CoO + Al2O3 -> Al2Co2O5
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
+                .input(dust, CobaltOxide, 4)
+                .inputs(Alumina.getItemStack(5))
+                .outputs(CobaltAluminate.getItemStack(9))
+                .buildAndRegister();
+
+        // 12HCN + 2Fe + 8KOH + C -> 2K4Fe(CN)6(H2O)3 + 4H2O + CO //TODO Change to Ferrocyanide
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(640)
+                .input(dust, Iron, 2)
+                .input(dust, Carbon)
                 .fluidInputs(HydrogenCyanide.getFluid(12000))
-                .fluidInputs(IronChloride.getFluid(2000))
                 .fluidInputs(PotassiumHydroxide.getFluid(8000))
-                .outputs(PotassiumFerrocyanate.getItemStack(2))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(6000))
-                .fluidOutputs(Water.getFluid(1000))
+                .outputs(PotassiumFerrocyanate.getItemStack(40))
+                .fluidOutputs(Water.getFluid(4000))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
+        // 3K4Fe(CN)6(H2O)3 + 4FeCl3 -> Fe7(CN)18 + 12KCl + 9H2O TODO
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(300).EUt(720)
                 .inputs(PotassiumFerrocyanate.getItemStack(3))
                 .fluidInputs(IronChloride.getFluid(4000))
@@ -194,42 +229,52 @@ public class Dyes {
                 .outputs(OreDictUnifier.get(dust, RockSalt, 12))
                 .buildAndRegister();
 
+        // 20TiO2 + Sb2O3 + NiO -> NiO·Sb2O3·20TiO2
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(600)
-                .input(dust, Rutile, 18)
-                .input(dust, AntimonyTrioxide)
-                .input(dust, Garnierite)
-                .outputs(TitaniumYellow.getItemStack(20))
+                .input(dust, Rutile, 60)
+                .input(dust, AntimonyTrioxide, 5)
+                .input(dust, Garnierite, 2)
+                .outputs(TitaniumYellow.getItemStack(67))
                 .buildAndRegister();
 
+        // 2MnO2 + Zn -> ZnO + Mn2O3
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(600)
-                .input(dust, Pyrolusite, 2)
+                .input(dust, Pyrolusite, 4)
                 .input(dust, Zinc)
-                .outputs(OreDictUnifier.get(dust, Zincite))
-                .outputs(ManganeseIIIOxide.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Zincite, 2))
+                .outputs(ManganeseIIIOxide.getItemStack(5))
                 .buildAndRegister();
 
+        // TODO change to AmmoniumManganesePhosphate
+        // Mn2O3 + 2NH3 + 4H3PO4 + 6C -> 2NH4MnPO4 + 5H2O + 6CO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
-                .inputs(ManganeseIIIOxide.getItemStack())
+                .inputs(ManganeseIIIOxide.getItemStack(5))
+                .input(dust, Carbon, 6)
                 .fluidInputs(Ammonia.getFluid(2000))
                 .fluidInputs(PhosphoricAcid.getFluid(4000))
-                .outputs(AmmoniaManganesePhosphate.getItemStack(2))
+                .outputs(AmmoniaManganesePhosphate.getItemStack(22))
                 .fluidOutputs(Water.getFluid(5000))
+                .fluidOutputs(CarbonMonoxde.getFluid(6000))
                 .buildAndRegister();
 
+        // Cu2CH2O5 + 2BaCO3 + 4SiO2 -> 2BaCuSi2O6 + 3CO2 + H2O(lost)
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(500).blastFurnaceTemp(1000)
-                .input(dust, Malachite)
-                .inputs(BariumCarbonate.getItemStack(2))
-                .input(dust, SiliconDioxide,8)
-                .outputs(HanPurple.getItemStack(4))
+                .input(dust, Malachite, 10)
+                .inputs(BariumCarbonate.getItemStack(10))
+                .input(dust, SiliconDioxide,12)
+                .outputs(HanPurple.getItemStack(20))
                 .fluidOutputs(CarbonDioxide.getFluid(3000))
                 .buildAndRegister();
 
+        // 2Pb(NO3)2 + K2Cr2O7 -> 2PbCrO4 // TODO Loses 3N, K, O
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(500)
                 .input(dust, LeadNitrate)
                 .input(dust, Potassiumdichromate)
                 .outputs(ChromeYellow.getItemStack(2))
                 .buildAndRegister();
 
+        // 2PbCrO4(KNO4) + H2O -> KOH + HNO3 + Pb2Cr2O5 // TODO
+        // is really Pb2CrO5, but nowhere for the chrome to go
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .inputs(ChromeYellow.getItemStack(2))
                 .fluidInputs(Water.getFluid(1000))
@@ -238,49 +283,59 @@ public class Dyes {
                 .outputs(ChromeOrange.getItemStack())
                 .buildAndRegister();
 
+        // C7H8 + [H2SO4 + HNO3] -> C7H7(NO2) + (H2SO4)2(H2O)
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(1350)
                 .fluidInputs(Toluene.getFluid(1000))
-                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(NitrationMixture.getFluid(2000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(Nitrotoluene.getFluid(1000))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
                 .buildAndRegister();
 
+        // TODO Name is Diaminostilbenedisulfonic Acid
+        // 2C7H7(NO2) + 2H2SO4 + 4NaCl -> C14H14N2O6S2 + 4HClO + 2Na2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(1240)
-                .notConsumable(dust, Iron)
+                .notConsumable(dust, Zinc)
+                .input(dust, Salt, 8)
                 .fluidInputs(Nitrotoluene.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(2000))
-                .inputs(SodiumHypochlorite.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Sodium))
-                .outputs(DiaminostibenedisulfonicAcid.getItemStack(4))
+                .outputs(DiaminostibenedisulfonicAcid.getItemStack(38))
+                .outputs(SodiumOxide.getItemStack(6))
+                .fluidOutputs(HypochlorousAcid.getFluid(4000))
                 .buildAndRegister();
 
+        // C7H7(NO2) + 2C6H5NH2 + HCl -> C30H23N5     TODO Need C11, H5, N2
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1400)
                 .fluidInputs(NitroBenzene.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(2000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .notConsumable(dust, Copper)
-                .outputs(Nigrosin.getItemStack(4))
+                .outputs(Nigrosin.getItemStack(58))
                 .buildAndRegister();
 
+        // NaOH + H2SO4 + C6H5NH2 -> 2H2O + C6H6NNaO3S
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1800)
-                .input(dust, SodiumHydroxide)
+                .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .outputs(SodiumSulfanilate.getItemStack(2))
+                .fluidOutputs(Water.getFluid(2000))
+                .outputs(SodiumSulfanilate.getItemStack(18))
                 .buildAndRegister();
 
+        // TODO Change Naphtaleneamine to Naphthylamine
+        // NaOH + H2SO4 + C10H8 + NH3 -> C10H9N + NaSO4 + 4H
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1400)
-                .input(dust, SodiumHydroxide)
+                .input(dust, SodiumHydroxide, 3)
                 .notConsumable(ZincChloride.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Naphtalene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Naphtaleneamine.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(4000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
-                .fluidOutputs(Naphtaleneamine.getFluid(2000))
                 .buildAndRegister();
 
+        // C6H6NNaO3S + C10H9N + HCl + NaNO2 -> NaCl + C26H19N6NaO3S // TODO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
                 .inputs(SodiumSulfanilate.getItemStack())
                 .fluidInputs(Naphtaleneamine.getFluid(1000))
@@ -290,29 +345,35 @@ public class Dyes {
                 .outputs(DirectBrown.getItemStack(2))
                 .buildAndRegister();
 
+        // TODO Change to Aminoterephthalic Acid
+        // 2NaOH + C4H6O4 + C2H5OH + C6H5NH2 + H2SO4 -> Na2SO4 + 3H2O + C8H7NO4 + C4H7O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1600)
-                .input(dust, SodiumHydroxide)
-                .inputs(SuccinicAcid.getItemStack())
+                .input(dust, SodiumHydroxide, 6)
+                .inputs(SuccinicAcid.getItemStack(14))
                 .fluidInputs(Ethanol.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
-                .fluidOutputs(Water.getFluid(1000))
-                .outputs(AminoterephtalicAcid.getItemStack(2))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
+                .fluidOutputs(Water.getFluid(3000))
+                .fluidOutputs(Butanol.getFluid(1000))
+                .outputs(AminoterephtalicAcid.getItemStack(20))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(1200)
-                .inputs(AminoterephtalicAcid.getItemStack())
-                .outputs(Quinacridone.getItemStack())
+                .inputs(AminoterephtalicAcid.getItemStack(20))
+                .outputs(Quinacridone.getItemStack(10))
                 .buildAndRegister();
 
+        // C3H6O + C6H5NH2 + CO2 -> C10H11NO2 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1350)
                 .fluidInputs(Acetone.getFluid(2000))
                 .fluidInputs(Aniline.getFluid(1000))
-                .fluidInputs(CarbonSulfide.getFluid(10))
+                .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(Acetoacetanilide.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
+        // C10H11NO2 + C12H10Cl2N2 + HCl + NaNO2 -> 2NaCl + C36H34Cl2N6O4
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
                 .fluidInputs(Acetoacetanilide.getFluid(1000))
                 .fluidInputs(Dichlorobenzidine.getFluid(1000))
