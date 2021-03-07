@@ -11,6 +11,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class LithiumChain {
     public static void init() {
+
         // LiAlSi2O6 = LiAlSi2O6
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1400)
                 .input(dust, Spodumene, 10)
@@ -30,7 +31,7 @@ public class LithiumChain {
                 .inputs(RoastedSpodumene.getItemStack(10))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 4))
+                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 6))
                 .buildAndRegister();
 
         // (KLi3Al4O10)O + Al + 3H2SO4 = 3[LiAlO2 + H2SO4] + Al2O3 + K2O
@@ -39,7 +40,7 @@ public class LithiumChain {
                 .input(dust, Aluminium)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, Potassium, 3))
+                .outputs(OreDictUnifier.get(dust, Potash, 3))
                 .outputs(Alumina.getItemStack(5))
                 .buildAndRegister();
 
@@ -53,6 +54,7 @@ public class LithiumChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
+        // K2SO4 -> 2K + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(PotassiumSulfate.getItemStack(7))
                 .outputs(OreDictUnifier.get(dust, Potassium, 2))
@@ -91,7 +93,7 @@ public class LithiumChain {
                 .outputs(LiKChlorideEutetic.getItemStack(4))
                 .buildAndRegister();
 
-        // [LiCl + KCl]A = 0.25[LiCl + KCl]B
+        // 0.25[LiCl + KCl]A = 0.25[LiCl + KCl]B
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(150).EUt(120)
                 .inputs(LiKChlorideEutetic.getItemStack())
                 .fluidOutputs(MoltenLiKChlorideEutetic.getFluid(250))
