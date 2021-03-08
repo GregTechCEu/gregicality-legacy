@@ -6,7 +6,7 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.simple.Tuple;
+import gregicadditions.utils.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
@@ -152,13 +152,13 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             recipeMapName = recipeMap.getLocalizedName();
 
             List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
-            Tuple recipePerInput = itemInputs.stream()
-                    .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
-                    .filter(tuple -> tuple.getRecipe() != null)
-                    .findFirst().orElse(new Tuple(recipeMap.findRecipe(voltageTier, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
+            Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()
+                    .map(iItemHandlerModifiable -> new Tuple<>(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
+                    .filter(tuple -> tuple.getKey() != null)
+                    .findFirst().orElse(new Tuple<>(recipeM.findRecipe(machineTierVoltage, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
 
 
-            if (recipePerInput.getRecipe() == null) {
+            if (recipePerInput.getKey() == null) {
                 return null;
             }
 
@@ -166,18 +166,18 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             int minMultiplier = Integer.MAX_VALUE;
 
             Set<ItemStack> countIngredients = new HashSet<>();
-            if (recipePerInput.getRecipe().getInputs().size() != 0) {
+            if (recipePerInput.getKey().getInputs().size() != 0) {
 
-                this.findIngredients(countIngredients, recipePerInput.getInput());
-                minMultiplier = Math.min(minMultiplier, this.getMinRatioItem(countIngredients, recipePerInput.getRecipe(), recipePerInput.getInput(), numberOfMachines));
+                this.findIngredients(countIngredients, recipePerInput.getValue());
+                minMultiplier = Math.min(minMultiplier, this.getMinRatioItem(countIngredients, recipePerInput.getKey(), recipePerInput.getValue(), numberOfMachines));
 
             }
 
             Map<String, Integer> countFluid = new HashMap<>();
-            if (recipePerInput.getRecipe().getFluidInputs().size() != 0) {
+            if (recipePerInput.getKey().getFluidInputs().size() != 0) {
 
                 this.findFluid(countFluid, fluidInputs);
-                minMultiplier = Math.min(minMultiplier, this.getMinRatioFluid(countFluid, recipePerInput.getRecipe(), numberOfMachines));
+                minMultiplier = Math.min(minMultiplier, this.getMinRatioFluid(countFluid, recipePerInput.getKey(), numberOfMachines));
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
@@ -191,17 +191,18 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             List<FluidStack> newFluidInputs = new ArrayList<>();
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
-            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipePerInput.getRecipe(), numberOfOperations);
+            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipePerInput.getKey(), numberOfOperations);
 
             RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt(recipePerInput.getRecipe().getEUt())
-                    .duration(recipePerInput.getRecipe().getDuration());
+                    .EUt(recipePerInput.getKey().getEUt())
+                    .duration(recipePerInput.getKey().getDuration());
 
-            copyChancedItemOutputs(newRecipe, recipePerInput.getRecipe(), numberOfOperations);
+            copyChancedItemOutputs(newRecipe, recipePerInput.getKey(), numberOfOperations);
+            newRecipe.notConsumable(machineItemStack);
 
             return newRecipe.build().getResult();
         }
