@@ -88,10 +88,6 @@ public class GAConfig {
         @Config.Name("A saw is required to get 4 Planks per Log")
         public boolean GeneratedSawingRecipes = true;
 
-        @Config.Comment("Set to false to enable GTCE's Fine Wire recipes")
-        @Config.Name("Fine Wires are made from Foils")
-        public boolean OldFineWireRecipes = true;
-
         @Config.Comment("Set these to false to disable the higher tier versions of machines")
         @Config.Name("Should higher tier Alloy Smelters be registered?")
         public boolean highTierAlloySmelter = true;
@@ -445,6 +441,12 @@ public class GAConfig {
         @Config.Name("Disassembly chanced outputs")
         @Config.RequiresMcRestart
         public boolean disassemblyChancedOutputs = true;
+
+        @Config.Comment({"Whether or not to log recipe removals",
+        "Note that this should be enabled in development only"})
+        @Config.Name("Recipe Removal Logging")
+        @Config.RequiresMcRestart
+        public boolean enableRecipeRemovalLogging = false;
 
     }
 
