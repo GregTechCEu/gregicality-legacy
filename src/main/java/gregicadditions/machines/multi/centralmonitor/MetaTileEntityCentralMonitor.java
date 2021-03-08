@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.monitor.WidgetScreenGrid;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -30,7 +31,6 @@ import gregtech.api.render.Textures;
 import gregtech.common.pipelike.cable.net.EnergyNet;
 import gregtech.common.pipelike.cable.net.WorldENet;
 import gregtech.common.pipelike.cable.tile.TileEntityCable;
-import javafx.util.Pair;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.resources.I18n;
@@ -67,7 +67,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     private long lastUpdate;
     private WeakReference<EnergyNet> currentEnergyNet;
     private List<BlockPos> activeNodes;
-    public List<Pair<BlockPos, EnumFacing>> covers;
+    public List<Tuple<BlockPos, EnumFacing>> covers;
     public List<MetaTileEntityHolder> parts;
     private boolean isActive;
     private EnergyContainerList inputEnergy;
@@ -119,7 +119,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     private boolean checkCovers() {
         updateNodes();
-        List<Pair<BlockPos, EnumFacing>> checkCovers = new ArrayList<>();
+        List<Tuple<BlockPos, EnumFacing>> checkCovers = new ArrayList<>();
         World world = this.getWorld();
         for (BlockPos pos : activeNodes) {
             TileEntity tileEntityCable = world.getTileEntity(pos);
@@ -133,7 +133,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                     if (metaTileEntity != null) {
                         CoverBehavior cover = metaTileEntity.getCoverAtSide(facing.getOpposite());
                         if (cover instanceof CoverDigitalInterface && ((CoverDigitalInterface) cover).isProxy()) {
-                            checkCovers.add(new Pair<>(metaTileEntity.getPos(), cover.attachedSide));
+                            checkCovers.add(new Tuple<>(metaTileEntity.getPos(), cover.attachedSide));
                         }
                     }
                 }
@@ -152,7 +152,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             return;
         }
         buf.writeInt(covers.size());
-        for (Pair<BlockPos, EnumFacing> cover : covers){
+        for (Tuple<BlockPos, EnumFacing> cover : covers){
             buf.writeBlockPos(cover.getKey());
             buf.writeByte(cover.getValue().getIndex());
         }
@@ -162,7 +162,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         covers = new ArrayList<>();
         int size = buf.readInt();
         for (int i = 0; i < size; i++) {
-            covers.add(new Pair<>(buf.readBlockPos(), EnumFacing.byIndex(buf.readByte())));
+            covers.add(new Tuple<>(buf.readBlockPos(), EnumFacing.byIndex(buf.readByte())));
         }
     }
 

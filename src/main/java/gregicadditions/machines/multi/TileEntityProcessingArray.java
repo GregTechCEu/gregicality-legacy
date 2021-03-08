@@ -155,7 +155,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()
                     .map(iItemHandlerModifiable -> new Tuple<>(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
                     .filter(tuple -> tuple.getKey() != null)
-                    .findFirst().orElse(new Tuple<>(recipeM.findRecipe(machineTierVoltage, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
+                    .findFirst().orElse(new Tuple<>(recipeMap.findRecipe(voltageTier, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
 
 
             if (recipePerInput.getKey() == null) {

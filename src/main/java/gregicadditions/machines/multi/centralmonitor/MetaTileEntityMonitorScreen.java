@@ -4,22 +4,20 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
-import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.WidgetARGB;
 import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.UIFactory;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
-import javafx.util.Pair;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,7 +47,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Predicate;
 
 public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
@@ -59,7 +56,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     private UUID lastClickUUID;
     public MonitorPluginBaseBehavior plugin;
     // persistent data
-    public Pair<BlockPos, EnumFacing> coverPos;
+    public Tuple<BlockPos, EnumFacing> coverPos;
     public CoverDigitalInterface.MODE mode = CoverDigitalInterface.MODE.FLUID;
     public int slot = 0;
     public int scale = 1;
@@ -70,7 +67,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         super(metaTileEntityId, 1);
     }
 
-    public void setMode(Pair<BlockPos, EnumFacing> cover, CoverDigitalInterface.MODE mode) {
+    public void setMode(Tuple<BlockPos, EnumFacing> cover, CoverDigitalInterface.MODE mode) {
         CoverDigitalInterface last_cover = this.getCoverFromPosSide(coverPos);
         CoverDigitalInterface now_cover = this.getCoverFromPosSide(cover);
         if (this.mode == mode) {
@@ -90,7 +87,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.markDirty();
     }
 
-    public void setMode(Pair<BlockPos, EnumFacing> cover) {
+    public void setMode(Tuple<BlockPos, EnumFacing> cover) {
         setMode(cover, this.mode);
     }
 
@@ -107,7 +104,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         markDirty();
     }
 
-    public CoverDigitalInterface getCoverFromPosSide(Pair<BlockPos, EnumFacing> posFacing) {
+    public CoverDigitalInterface getCoverFromPosSide(Tuple<BlockPos, EnumFacing> posFacing) {
         if (posFacing == null) {
             return null;
         }
@@ -125,7 +122,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return null;
     }
 
-    public void updateCoverValid(List<Pair<BlockPos, EnumFacing>> covers) {
+    public void updateCoverValid(List<Tuple<BlockPos, EnumFacing>> covers) {
         if (this.coverPos != null) {
             if (!covers.contains(this.coverPos)) {
                 setMode(null, this.mode);
@@ -149,7 +146,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         if (buf.readBoolean()) {
             BlockPos pos = buf.readBlockPos();
             EnumFacing side = EnumFacing.byIndex(buf.readByte());
-            Pair<BlockPos, EnumFacing> pair = new Pair<>(pos, side);
+            Tuple<BlockPos, EnumFacing> pair = new Tuple<>(pos, side);
             if (!pair.equals(this.coverPos)) {
                 this.coverTMP = null;
                 this.coverPos = pair;
@@ -329,7 +326,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         if (data.hasKey("coverPos") && data.hasKey("coverSide")) {
             BlockPos pos = NBTUtil.getPosFromTag(data.getCompoundTag("coverPos"));
             EnumFacing side = EnumFacing.byIndex(data.getByte("coverSide"));
-            this.coverPos = new Pair<>(pos, side);
+            this.coverPos = new Tuple<>(pos, side);
         } else {
             this.coverPos = null;
         }
@@ -471,7 +468,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                         if (coverPos == null) {
                             this.setMode(null, this.mode);
                         } else {
-                            this.setMode(new Pair<>(coverPos.coverHolder.getPos(), coverPos.attachedSide));
+                            this.setMode(new Tuple<>(coverPos.coverHolder.getPos(), coverPos.attachedSide));
                         }
                     }))
 
