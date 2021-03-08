@@ -909,7 +909,7 @@ public class SuperconductorsSMDChain {
                 .outputs(LanthanumOxide.getItemStack())
                 .buildAndRegister();
 
-                LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4200000)
+                LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4200000) //C6H6O + H2O2 + 1 H2O + 2 Cl2 + 2 C2H2O -> C10H10O6 + 4 HCl
                 .fluidInputs(Phenol.getFluid(1000))
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidInputs(Water.getFluid(3000))
@@ -919,7 +919,7 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(4000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(420000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(420000) //NaSCN + HCl + 2 CH3CH2NH2 -> NH3 + (CH3CH2)2NCSNH2 + NaCl
                 .fluidInputs(SodiumThiocyanate.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Ethylamine.getFluid(2000))
@@ -928,12 +928,12 @@ public class SuperconductorsSMDChain {
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(750000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(750000) //C10H10O6 + 2 (CH3CH2)2NCSNH2 + 2 SOCl2 -> 2SO2 + 4 HCl + C20H30N4O4S2
                 .fluidInputs(Diethylthiourea.getFluid(2000))
                 .fluidInputs(ThionylChloride.getFluid(2000))
                 .fluidInputs(PhenylenedioxydiaceticAcid.getFluid(1000))
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
-                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(4000))
                 .fluidOutputs(Isophtaloylbisdiethylthiourea.getFluid(1000))
                 .buildAndRegister();
 
@@ -949,7 +949,7 @@ public class SuperconductorsSMDChain {
                 .outputs(RheniumChloride.getItemStack(6))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(50000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(50000) //SbF5 + PCl3 + HF -> SbCl3 + HPF6
                 .fluidInputs(AntimonyPentafluoride.getFluid(1000))
                 .fluidInputs(PhosphorusTrichloride.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
@@ -957,14 +957,14 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(FluorophosphoricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(8400)
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(8400) //SbCl3 + 3 HF -> SbF3 + 3 HCl
                 .inputs(AntimonyTrichloride.getItemStack(4))
                 .fluidInputs(HydrofluoricAcid.getFluid(3000))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(620).EUt(845000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(620).EUt(845000) //3 C20H30N4O4S2 + ReCl5 + HsCl4 + TlCl + HPF6 -> ReHsTlC60PN12H84S6O12F6 + 7 HCl + 3 Cl
                 .inputs(RheniumChloride.getItemStack(6))
                 .inputs(HassiumChloride.getItemStack(5))
                 .inputs(ThalliumChloride.getItemStack(2))
