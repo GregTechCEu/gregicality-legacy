@@ -54,6 +54,7 @@ public class NanotubeChain {
                 .outputs(TinChloride.getItemStack(1))
                 .buildAndRegister();
 
+        // SnCl2 + 3CH4 + O -> C3H9SnCl + HCl(H2O)
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(260).EUt(180000)
                 .inputs(TinChloride.getItemStack())
                 .notConsumable(dust, Magnesium)
