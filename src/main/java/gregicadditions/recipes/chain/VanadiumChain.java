@@ -10,27 +10,28 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class VanadiumChain {
     public static void init() {
+
         // Fe3O4V + 3C = 3Fe + VO? + 3CO
         BLAST_RECIPES.recipeBuilder().duration(480).EUt(125).blastFurnaceTemp(1500)
                 .input(dust, VanadiumMagnetite, 8)
                 .input(dust, Carbon, 3)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(VanadiumSlag.getItemStack())
+                .outputs(VanadiumSlag.getItemStack(5))
                 .fluidOutputs(CarbonMonoxde.getFluid(3000))
                 .buildAndRegister();
 
         // VO? = Dark Ash + TiO2 + VO
         MACERATOR_RECIPES.recipeBuilder().duration(2400).EUt(125)
-                .inputs(VanadiumSlag.getItemStack())
+                .inputs(VanadiumSlag.getItemStack(5))
                 .outputs(OreDictUnifier.get(dustTiny, DarkAsh))
-                .outputs(OreDictUnifier.get(dustTiny, Rutile))
-                .outputs(VanadiumSlagDust.getItemStack())
+                .outputs(OreDictUnifier.get(dustTiny, Rutile, 3))
+                .outputs(VanadiumSlagDust.getItemStack(2))
                 .buildAndRegister();
 
         // 2VO + 3Na2CO3 = 2Na3VO4 + 3CO
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(125).blastFurnaceTemp(700)
-                .inputs(VanadiumSlagDust.getItemStack(2))
+                .inputs(VanadiumSlagDust.getItemStack(4))
                 .input(dust, SodaAsh, 15)
                 .outputs(SodiumVanadate.getItemStack(16))
                 .fluidOutputs(CarbonMonoxde.getFluid(3000))
@@ -74,4 +75,3 @@ public class VanadiumChain {
 
     }
 }
-
