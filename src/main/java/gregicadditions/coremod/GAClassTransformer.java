@@ -38,6 +38,9 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.metatileentity.MetaTileEntity":
                 tform = MetaTileEntityTransformer.INSTANCE;
                 break;
+            case "gregtech.api.util.GTUtility":
+                tform = GTUtilityTransformer.INSTANCE;
+                break;
             default:
                 return basicClass;
         }
@@ -58,11 +61,15 @@ public class GAClassTransformer implements IClassTransformer {
         transformClass(byte[] code) {
             ClassReader reader = new ClassReader(code);
             ClassWriter writer = new ClassWriter(reader, getWriteFlags());
-            reader.accept(getClassMapper(writer), 0);
+            reader.accept(getClassMapper(writer), getAcceptFlags());
             return writer.toByteArray();
         }
 
         protected int getWriteFlags() {
+            return 0;
+        }
+
+        protected int getAcceptFlags() {
             return 0;
         }
 

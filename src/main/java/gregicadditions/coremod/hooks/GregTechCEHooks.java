@@ -3,6 +3,7 @@ package gregicadditions.coremod.hooks;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.covers.CoverDigitalInterface;
+import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
@@ -15,6 +16,7 @@ import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fluids.FluidStack;
 
 public class GregTechCEHooks {
 
@@ -117,5 +119,18 @@ public class GregTechCEHooks {
             return true;
         }
         return coverable.canPlaceCoverOnSide(side);
+    }
+
+    //origin: gregtech/api/util/GTUtility.formulaHook(FluidStack fluidStack)
+    public static void getSimpleFluidTooltip(FluidStack fluidStack, StringBuilder formula) {
+        if (fluidStack != null) {
+            String[] materialArray = fluidStack.getUnlocalizedName().split("\\.");
+            if (materialArray.length >= 2 && materialArray[0].equals("fluid")) {
+                SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(materialArray[1]);
+                if (material != null && material.chemicalFormula != null && !material.chemicalFormula.isEmpty()) {
+                    formula.append(material.chemicalFormula);
+                }
+            }
+        }
     }
 }
