@@ -47,7 +47,7 @@ public class NanotubeChain {
                 .fluidOutputs(ButhylLithium.getFluid(2000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1200)
+        CHEMICAL_RECIPES.recipeBuilder().duration(65).EUt(19200)
                 .input(dust, Tin, 2)
                 .fluidInputs(Chlorine.getFluid(1000))
                 .outputs(TinChloride.getItemStack(2))

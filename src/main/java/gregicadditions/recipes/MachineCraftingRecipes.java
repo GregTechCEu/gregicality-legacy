@@ -5,8 +5,8 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.*;
-import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
@@ -480,7 +480,7 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.FUSION_REACTOR[0].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(60000)
-                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_2),
                         OreDictUnifier.get(plate, Rutherfordium, 4),
                         OreDictUnifier.get(plate, Curium.getMaterial(), 4),
                         FIELD_GENERATOR_LUV.getStackForm(2),
@@ -493,7 +493,7 @@ public class MachineCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GATileEntities.FUSION_REACTOR[1].getStackForm()).buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
-                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL),
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_COIL_3),
                         OreDictUnifier.get(plate, Dubnium, 4),
                         OreDictUnifier.get(plate, Californium.getMaterial(), 4),
                         FIELD_GENERATOR_ZPM.getStackForm(2),
@@ -552,7 +552,7 @@ public class MachineCraftingRecipes {
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 9 * 16))
-                .input(plate, TriniumTitanium, 32)
+                .input(plate, Trinium, 32)
                 .input(stick, HDCS, 16)
                 .input(gear, TungstenTitaniumCarbide, 16)
                 .input(screw, Incoloy813,32)
@@ -568,7 +568,7 @@ public class MachineCraftingRecipes {
                 .inputs(SENSOR_UHV.getStackForm())
                 .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
                 .inputs(ELECTRIC_PUMP_UHV.getStackForm(2))
-                .input(plate, TriniumTitanium, 8)
+                .input(plate, Trinium, 8)
                 .input(gear, TungstenTitaniumCarbide, 4)
                 .input(screw, TungstenTitaniumCarbide, 16)
                 .input(circuit, Tier.Superconductor, 2)
@@ -860,6 +860,10 @@ public class MachineCraftingRecipes {
             }
         }
 
+        GATileEntities.TRANSFORMER_1_AMPS.forEach(transformer -> {
+            int tier = transformer.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', WORSE_HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
+        });
         GATileEntities.TRANSFORMER_4_AMPS.forEach(transformer -> {
             int tier = transformer.getTier();
             ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(), "KBB", "CM ", "KBB", 'M', HULL.getIngredient(tier), 'C', CABLE_DOUBLE.getIngredient(tier), 'B', CABLE_DOUBLE.getIngredient(tier - 1), 'K', MetaItems.SMALL_COIL);
@@ -910,6 +914,23 @@ public class MachineCraftingRecipes {
             int tier = energyOutputHatch.getTier();
             ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(), " MC", 'M', HULL.getIngredient(tier), 'C', CABLE_HEX.getIngredient(tier));
         });
+        GATileEntities.DIODES.forEach(diode -> {
+            int tier = diode.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", diode.getMetaName()), diode.getStackForm(), "CCC", "XMX", "CCC", 'M', HULL.getIngredient(tier), 'C', CABLE_SINGLE.getIngredient(tier), 'X', SMALL_COIL);
+        });
+
+        GATileEntities.DISASSEMBLER.forEach(disassembler -> {
+            int tier = disassembler.getTier();
+            ModHandler.addShapedRecipe(String.format("ga_%s", disassembler.getMetaName()), disassembler.getStackForm(), "RSV", "PMV", "ICI",
+                    'M', HULL.getIngredient(tier), 'C', CABLE_SINGLE.getIngredient(tier), 'R', ROBOT_ARM.getIngredient(tier), 'P', PUMP.getIngredient(tier),
+                    'S', SENSOR.getIngredient(tier), 'V', CONVEYOR.getIngredient(tier), 'I', CIRCUIT.getIngredient(tier));
+        });
+
+        ModHandler.addShapedRecipe("ga_steam_grinder", GATileEntities.STEAM_GRINDER.getStackForm(), "CGC", "CFC", "CGC", 'G', new UnificationEntry(gear, Potin), 'F', MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(), 'C', new UnificationEntry(GAEnums.GAOrePrefix.gtMetalCasing, Bronze));
+        ModHandler.addShapedRecipe("ga_steam_hatch", GATileEntities.STEAM_HATCH.getStackForm(), "BPB", "BTB", "BPB", 'B', new UnificationEntry(plate, Bronze), 'P', new UnificationEntry(pipeMedium, Bronze), 'T', MetaTileEntities.BRONZE_TANK.getStackForm());
+        ModHandler.addShapedRecipe("ga_steam_input_bus", GATileEntities.STEAM_INPUT_BUS.getStackForm(), "BMB", "THT", "BMB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
+        ModHandler.addShapedRecipe("ga_steam_output_bus", GATileEntities.STEAM_OUTPUT_BUS.getStackForm(), "BTB", "MHM", "BTB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
+        ModHandler.addShapedRecipe("ga_steam_oven", GATileEntities.STEAM_OVEN.getStackForm(), "CGC", "FMF", "CGC", 'F', MetaBlocks.BOILER_FIREBOX_CASING.getItemVariant(BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX), 'C', new UnificationEntry(GAEnums.GAOrePrefix.gtMetalCasing, Bronze), 'M', MetaTileEntities.STEAM_FURNACE_BRONZE.getStackForm(), 'G', new UnificationEntry(gear, Invar));
 
     }
 

@@ -7,6 +7,7 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.machines.energy.GAMetaTileEntityDiode;
 import gregicadditions.machines.energy.GAMetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
@@ -17,6 +18,8 @@ import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.advance.hyper.HyperReactor;
 import gregicadditions.machines.multi.advance.hyper.HyperReactorUEV;
 import gregicadditions.machines.multi.advance.hyper.HyperReactorUHV;
+import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
+import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
@@ -31,6 +34,10 @@ import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
 import gregicadditions.machines.multi.simple.*;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamHatch;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamItemBus;
+import gregicadditions.machines.multi.steam.MetaTileEntitySteamOven;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
@@ -47,8 +54,12 @@ import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,6 +118,8 @@ public class GATileEntities {
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[4];
     public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3];
     //multiblock
+    public static MetaTileEntityMonitorScreen MONITOR_SCREEN;
+    public static MetaTileEntityCentralMonitor CENTRAL_MONITOR;
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
     public static TileEntityProcessingArray PROCESSING_ARRAY;
     public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
@@ -158,6 +171,13 @@ public class GATileEntities {
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
 
+    // Steam Multis
+    public static MetaTileEntitySteamHatch STEAM_HATCH;
+    public static MetaTileEntitySteamItemBus STEAM_INPUT_BUS;
+    public static MetaTileEntitySteamItemBus STEAM_OUTPUT_BUS;
+    public static MetaTileEntitySteamGrinder STEAM_GRINDER;
+    public static MetaTileEntitySteamOven STEAM_OVEN;
+
     //override from GTCE
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_16_AMPS = new ArrayList<>();
@@ -167,6 +187,7 @@ public class GATileEntities {
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_32_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_64_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_OUTPUT_HATCH_128_AMPS = new ArrayList<>();
+    public static List<GAMetaTileEntityTransformer> TRANSFORMER_1_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_4_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_8_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityTransformer> TRANSFORMER_12_AMPS = new ArrayList<>();
@@ -217,9 +238,15 @@ public class GATileEntities {
     public static GAMetaTileEntityEnergyHatch[] ENERGY_INPUT = new GAMetaTileEntityEnergyHatch[5];
     public static GAMetaTileEntityEnergyHatch[] ENERGY_OUTPUT = new GAMetaTileEntityEnergyHatch[5];
 
+    public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>();
+
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
+    public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
+
     public static void init() {
+
+        MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(1999, new MetaTileEntityMonitorScreen(location("monitor_screen")));
 
         CIRCUITASSEMBLER[0] = GregTechAPI.registerMetaTileEntity(2000, new SimpleMachineMetaTileEntity(location("circuit_assembler.lv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 1));
         CIRCUITASSEMBLER[1] = GregTechAPI.registerMetaTileEntity(2001, new SimpleMachineMetaTileEntity(location("circuit_assembler.mv"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 2));
@@ -236,11 +263,11 @@ public class GATileEntities {
             CLUSTERMILL[5] = create(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
             CLUSTERMILL[6] = create(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
             CLUSTERMILL[7] = create(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
-            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("clustermill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
-            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("clustermill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
-            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("clustermill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
-            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("clustermill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
-            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("clustermill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("cluster_mill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("cluster_mill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("cluster_mill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("cluster_mill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("cluster_mill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
 
         }
 
@@ -779,6 +806,8 @@ public class GATileEntities {
 
         }
 
+        CENTRAL_MONITOR = GregTechAPI.registerMetaTileEntity(2499, new MetaTileEntityCentralMonitor(location("central_monitor")));
+
         ASSEMBLY_LINE = GregTechAPI.registerMetaTileEntity(2502, new TileEntityAssemblyLine(location("assembly_line")));
 
         FUSION_REACTOR[0] = GregTechAPI.registerMetaTileEntity(2504, new TileEntityFusionReactor(location("fusion_reactor.luv"), 6));
@@ -1118,6 +1147,34 @@ public class GATileEntities {
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
         GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
         COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
+
+        STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4175, new MetaTileEntitySteamHatch(location("steam_hatch")));
+        STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4176, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
+        STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4177, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
+        STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4178, new MetaTileEntitySteamGrinder(location("steam_grinder")));
+        id = 4179;
+        for (int i = 9; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
+            TRANSFORMER_1_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase()), i, 1, 4)));
+        }
+        id = 4184;
+        for (int i = 1; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier, plus one because we dont want ULV
+            DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
+        }
+        STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
+
+        if (GAConfig.Misc.enableDisassembly) {
+            id = 4198;
+            for (int i = 1; i < GAValues.V.length - 1; i++) {
+                final int tier = i; // used for inner class
+                DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                    @Override
+                    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+                        tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
+                        super.addInformation(stack, player, tooltip, advanced);
+                    }
+                }));
+            }
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

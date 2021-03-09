@@ -29,7 +29,7 @@ public class AluminiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(600).EUt(125)
                 .inputs(Alumina.getItemStack())
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 2))
+                .fluidOutputs(Aluminium.getFluid(288))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride, 3))
                 .outputs(AluminiumTrifluoride.getItemStack())
                 .buildAndRegister();

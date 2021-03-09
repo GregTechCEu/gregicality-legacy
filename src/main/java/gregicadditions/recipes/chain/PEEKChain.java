@@ -11,6 +11,15 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class PEEKChain {
     public static void init() {
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Borax)
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(BoricAcid.getFluid(4000))
+                .fluidOutputs(Water.getFluid(5000))
+                .outputs(OreDictUnifier.get(dust, Salt))
+                .EUt(7680)
+                .duration(150)
+                .buildAndRegister();
         LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(BoricAcid.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
@@ -94,7 +103,7 @@ public class PEEKChain {
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .inputs(Difluorobenzophenone.getItemStack())
                 .input(dust, SodaAsh)
-                .fluidOutputs(Polyetheretherketone.getFluid(2000))
+                .fluidOutputs(Polyetheretherketone.getFluid(2592))
                 .outputs(OreDictUnifier.get(dust, SodiumFluoride))
                 .EUt(500000)
                 .duration(250)

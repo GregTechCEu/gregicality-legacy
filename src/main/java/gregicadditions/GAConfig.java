@@ -88,10 +88,6 @@ public class GAConfig {
         @Config.Name("A saw is required to get 4 Planks per Log")
         public boolean GeneratedSawingRecipes = true;
 
-        @Config.Comment("Set to false to enable GTCE's Fine Wire recipes")
-        @Config.Name("Fine Wires are made from Foils")
-        public boolean OldFineWireRecipes = true;
-
         @Config.Comment("Set these to false to disable the higher tier versions of machines")
         @Config.Name("Should higher tier Alloy Smelters be registered?")
         public boolean highTierAlloySmelter = true;
@@ -394,6 +390,13 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean rocketEfficiency = true;
 
+        @Config.Comment("Whether or not to add diminishing returns for the Large Rocket Engine")
+        @Config.Name("Large Rocket Engine efficiency loss")
+        @Config.RequiresMcRestart
+        public boolean largeRocketEfficiency = true;
+
+
+
         @Config.Comment("Whether or not to add diminishing returns for Gregicality Naquadah Reactors. Does not affect the Large Nauqadah Reactor")
         @Config.Name("Naquadah Reactor efficiency loss")
         @Config.RequiresMcRestart
@@ -429,6 +432,22 @@ public class GAConfig {
         @Config.RequiresWorldRestart
         public boolean oreVariantsStoneTypes = true;
 
+        @Config.Comment("Whether or not to enable machine disassembly recipes")
+        @Config.Name("Enable disassembly")
+        @Config.RequiresMcRestart
+        public boolean enableDisassembly = true;
+
+        @Config.Comment("Whether or not to have disassembly recipes with chanced outputs")
+        @Config.Name("Disassembly chanced outputs")
+        @Config.RequiresMcRestart
+        public boolean disassemblyChancedOutputs = true;
+
+        @Config.Comment({"Whether or not to log recipe removals",
+        "Note that this should be enabled in development only"})
+        @Config.Name("Recipe Removal Logging")
+        @Config.RequiresMcRestart
+        public boolean enableRecipeRemovalLogging = false;
+
     }
 
     public static Multis multis = new Multis();
@@ -460,6 +479,8 @@ public class GAConfig {
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
         public HeatingCoils heatingCoils = new HeatingCoils();
+        public SteamMultis steamMultis = new SteamMultis();
+        public ProcessingArray processingArray = new ProcessingArray();
     }
 
         public static class LargeEngraver {
@@ -1173,6 +1194,28 @@ public class GAConfig {
             };
         }
 
+        public static class ProcessingArray {
+            @Config.Comment("Number of machines the Processing Array can use at a time. Default: 16")
+            @Config.Name("Processing Array Machine Limit")
+            @Config.RangeInt(min=1, max=64)
+            public int processingArrayMachineLimit = 64;
+
+            @Config.Comment({"Blacklist of machines for the Processing Array.",
+                    "Add the unlocalized Recipe Map name to blacklist the machine."})
+            @Config.Name("Processing Array Blacklist")
+            public String[] machineBlackList = new String[]{
+                    "mass_fab",
+                    "replicator",
+                    "circuit_assembler"
+            };
+        }
+
+        public static class SteamMultis {
+            @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
+            @Config.RequiresMcRestart
+            public double steamToEU = 0.5;
+        }
+
         public static Extraction extraction;
 
         public static class Extraction {
@@ -1384,4 +1427,4 @@ public class GAConfig {
                 GALog.logger.info("Added resevoir type " + fluid);
             }
         }
-    }
+}

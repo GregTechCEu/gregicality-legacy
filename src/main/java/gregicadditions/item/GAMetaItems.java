@@ -3,6 +3,9 @@ package gregicadditions.item;
 import gregicadditions.utils.GALog;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MaterialIconSet;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -41,6 +44,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
     
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
@@ -50,6 +54,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
     
     public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
@@ -59,6 +64,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
 
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
@@ -68,6 +74,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
 
     //circuits
     public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
@@ -221,6 +228,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
     public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_COMPUTER;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_MAINFRAME;
     
     public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
     public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
@@ -299,6 +311,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ESCHERICHIA_CULTURE;
     public static MetaItem<?>.MetaValueItem BIFIDOBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
+    public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
@@ -431,7 +444,52 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_UNIT_CORE;
     public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_CORE;
     public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
-    
+
+    public static MetaItem<?>.MetaValueItem TOPOLOGICAL_MANIPULATOR_UNIT;
+    public static MetaItem<?>.MetaValueItem RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM;
+    public static MetaItem<?>.MetaValueItem GRAVITON_TRANSDUCER;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_CLOCK;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem MANIFOLD_OSCILLATORY_POWER_CELL;
+    public static MetaItem<?>.MetaValueItem QCD_PROTECTIVE_PLATING;
+    public static MetaItem<?>.MetaValueItem CTC_GUIDANCE_UNIT;
+    public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT_CONTAINER;
+    public static MetaItem<?>.MetaValueItem EIGENFOLDED_KERR_MANIFOLD;
+    public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT;
+    public static MetaItem<?>.MetaValueItem RECURSIVELY_FOLDED_NEGATIVE_SPACE;
+
+    public static MetaItem<?>.MetaValueItem WIRE_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem EXTREMELY_DURABLE_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem DENSE_NEUTRON_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem COSMIC_NEUTRON_PLASMA_CELL;
+    public static MetaItem<?>.MetaValueItem HIGHLY_DENSE_POLYMER_PLATE;
+    public static MetaItem<?>.MetaValueItem COSMIC_MESH_CONTAINMENT_UNIT;
+    public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
+    public static MetaItem<?>.MetaValueItem COSMIC_MESH;
+    public static MetaItem<?>.MetaValueItem ROD_FIELD_SHAPE;
+    // monitor
+    public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
+    public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
+
+
+    public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
+    public static MetaItem<?>.MetaValueItem DISPLAY;
+  
+    //infinite water source cover
+//    public static MetaItem<?>.MetaValueItem LV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem MV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem HV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem EV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem IV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem LuV_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
+    public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
+
+
+    // GA oredict items
+    public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
+
+
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");
@@ -443,6 +501,8 @@ public class GAMetaItems {
         dustItem.setRegistryName("ga_dust");
         GAMetaItem2 item2 = new GAMetaItem2((short) 0);
         item2.setRegistryName("ga_meta_item2");
+        GAOredictItem oreDictItem = new GAOredictItem((short) 0);
+        oreDictItem.setRegistryName("ga_oredict_item");
     }
 
     public static void registerOreDict() {

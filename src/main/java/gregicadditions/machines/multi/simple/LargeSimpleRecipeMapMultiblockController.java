@@ -5,6 +5,7 @@ import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
+import gregicadditions.utils.Tuple;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -15,6 +16,7 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTUtility;
+import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -287,16 +289,16 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             List<IItemHandlerModifiable> itemInputs = ((RecipeMapMultiblockController) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
 
-            Tuple recipePerInput = itemInputs.stream()
-                    .map(iItemHandlerModifiable -> new Tuple(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
-                    .filter(tuple -> tuple.getRecipe() != null)
-                    .findFirst().orElse(new Tuple(recipeMap.findRecipe(maxVoltage, inputs, fluidInputs, 0), inputs));
+            Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()
+                    .map(iItemHandlerModifiable -> new Tuple<>(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
+                    .filter(tuple -> tuple.getKey() != null)
+                    .findFirst().orElse(new Tuple<>(recipeMap.findRecipe(maxVoltage, inputs, fluidInputs, 0), inputs));
 
-            if (recipePerInput.getRecipe() == null) {
+            if (recipePerInput.getKey() == null) {
                 return null;
             }
 
-            return createRecipe(maxVoltage, recipePerInput.getInput(), fluidInputs, recipePerInput.getRecipe());
+            return createRecipe(maxVoltage, recipePerInput.getValue(), fluidInputs, recipePerInput.getKey());
 
 
         }
@@ -341,6 +343,14 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
+
+            // determine if there is enough room in the output to fit all of this
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
+            // if there isn't, we can't process this recipe.
+            if (!canFitOutputs)
+                return null;
+
+
             RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)

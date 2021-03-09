@@ -1,6 +1,7 @@
 package gregicadditions.recipes;
 
 import crafttweaker.annotations.ZenRegister;
+import gregicadditions.gui.GAGuiTextures;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
@@ -86,6 +87,8 @@ public class GARecipeMaps {
     public static final LargeRecipeMap LARGE_ENGRAVER_RECIPES;
     @ZenProperty
     public static final RecipeMap<AdvFusionRecipeBuilder> ADV_FUSION_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<SimpleRecipeBuilder> DISASSEMBLER_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -155,6 +158,11 @@ public class GARecipeMaps {
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,
                 2, 3, 1, 2, new AdvFusionRecipeBuilder());
+
+        DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler", 1, 1, 0, 9, 0, 0, 0,0, new SimpleRecipeBuilder())
+                .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)
+                .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
+                .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
     }
 }

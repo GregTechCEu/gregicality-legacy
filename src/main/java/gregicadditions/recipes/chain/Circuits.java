@@ -175,6 +175,18 @@ public class Circuits {
                             UHASOC.getStackForm(1))
                     .input(wireFine, Cinobite, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
+
+
+            //SUPRACAUSAL     //PROCESSOR
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2097152).qubit(32)
+                    .outputs(SUPRACAUSAL_PROCESSOR.getStackForm())
+                    .inputs(UHASOC.getStackForm(16),
+                            MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm(1),
+                            MICROWORMHOLE_GENERATOR.getStackForm(),
+                            SUPRACAUSAL_PROCESSING_CORE.getStackForm())
+                    .input(plate, SuperheavyHAlloy, 4)
+                    .input(wireGtSingle, UHVSuperconductor, 8)
+                    .fluidInputs(fluidStack).buildAndRegister();
         }
 
         //ASSEMBLY
@@ -218,7 +230,7 @@ public class Circuits {
                 .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1296))
-                .fluidInputs(Plastic.getFluid(2500))
+                .fluidInputs(Plastic.getFluid(2592))
                 .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .EUt(480000)
                 .duration(400)
@@ -241,7 +253,7 @@ public class Circuits {
                 .outputs(BIOWARE_COMPUTER.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Tritanium.getFluid(288))
-                .fluidInputs(Polybenzimidazole.getFluid(1500))
+                .fluidInputs(Polybenzimidazole.getFluid(1296))
                 .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .EUt(960000)
                 .duration(600)
@@ -265,7 +277,7 @@ public class Circuits {
                 .outputs(BIOWARE_MAINFRAME.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Tritanium.getFluid(1296))
-                .fluidInputs(Polybenzimidazole.getFluid(2500))
+                .fluidInputs(Polybenzimidazole.getFluid(2592))
                 .fluidInputs(Naquadria.getFluid(1296))
                 .EUt(1920000)
                 .duration(800)
@@ -289,7 +301,7 @@ public class Circuits {
                 .input(foil, Polyetheretherketone, 16)
                 .outputs(OPTICAL_ASSEMBLY.getStackForm())
                 .fluidInputs(Duranium.getFluid(1296))
-                .fluidInputs(Polytetrafluoroethylene.getFluid(2500))
+                .fluidInputs(Polytetrafluoroethylene.getFluid(2592))
                 .fluidInputs(NaquadahEnriched.getFluid(1296))
                 .qubit(4)
                 .EUt(960000)
@@ -315,7 +327,7 @@ public class Circuits {
                 .inputs(GRAVI_STAR.getStackForm(4))
                 .outputs(OPTICAL_COMPUTER.getStackForm())
                 .fluidInputs(Tritanium.getFluid(288))
-                .fluidInputs(Polyetheretherketone.getFluid(1500))
+                .fluidInputs(Polyetheretherketone.getFluid(1296))
                 .fluidInputs(Adamantium.getFluid(1296))
                 .qubit(4)
                 .EUt(1920000)
@@ -413,16 +425,81 @@ public class Circuits {
                 .inputs(UHPIC.getStackForm(64))
                 .input(frameGt, Quantum, 1)
                 .input(plate, Quantum, 8)
-                .input(foil, Zylon, 64)
+                .input(foil, FullerenePolymerMatrix, 64)
                 .inputs(UNSTABLE_STAR.getStackForm(4))
                 .outputs(COSMIC_MAINFRAME.getStackForm())
                 .fluidInputs(Taranium.getFluid(864))
                 .fluidInputs(TriniumTitanium.getFluid(1296))
-                .fluidInputs(Zylon.getFluid(2500))
+                .fluidInputs(Zylon.getFluid(2592))
                 .fluidInputs(Vibranium.getFluid(1296))
                 .qubit(32)
                 .EUt(24000000)
                 .duration(800)
+                .buildAndRegister();
+
+        //SUPRACAUSAL
+        //ASSEMBLY
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(8388608).qubit(8)
+                .outputs(SUPRACAUSAL_ASSEMBLY.getStackForm())
+                .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(16))
+                .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(16))
+                .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(16))
+                .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(16))
+                .inputs(UHASOC.getStackForm(4))
+                .inputs(SUPRACAUSAL_PROCESSOR.getStackForm(3))
+                .inputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
+                .input(plate, TriniumTitanium, 16)
+                .input(foil, FullerenePolymerMatrix, 24)
+                .input(wireGtSingle, UEVSuperconductor, 8)
+                .fluidInputs(Taranium.getFluid(1296))
+                .fluidInputs(TriniumTitanium.getFluid(1296))
+                .fluidInputs(ProtoAdamantium.getFluid(1296))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(1296))
+                .buildAndRegister();
+
+        //COMPUTER
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(33554432).qubit(16)
+                .outputs(SUPRACAUSAL_COMPUTER.getStackForm())
+                .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
+                .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
+                .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
+                .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(32))
+                .inputs(SUPRACAUSAL_ASSEMBLY.getStackForm(4))
+                .inputs(ARAM.getStackForm(12))
+                .inputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
+                .input(plate, TriniumTitanium, 32)
+                .input(plate, MetastableFlerovium, 16)
+                .input(plate, Neutronium, 4)
+                .input(wireGtSingle, UIVSuperconductor, 64)
+                .inputs(UHPIC.getStackForm(2))
+                .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
+                .fluidInputs(Taranium.getFluid(1296))
+                .fluidInputs(TriniumTitanium.getFluid(1296))
+                .fluidInputs(ProtoAdamantium.getFluid(1296))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(1296))
+                .buildAndRegister();
+
+        //MAINFRAME
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(134217728).qubit(32)
+                .outputs(SUPRACAUSAL_MAINFRAME.getStackForm())
+                .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(64))
+                .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(64))
+                .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(64))
+                .inputs(SUPRACAUSAL_COMPUTER.getStackForm(2))
+                .inputs(UHPIC.getStackForm(8))
+                .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm(2))
+                .inputs(ARAM.getStackForm(16))
+                .inputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
+                .input(foil, FullerenePolymerMatrix, 48)
+                .input(frameGt, Neutronium, 1)
+                .input(wireGtSingle, UMVSuperconductor, 16)
+                .input(plate, MetastableOganesson, 4)
+                .input(plate, QCDMatter, 8)
+                .fluidInputs(Taranium.getFluid(1296))
+                .fluidInputs(TriniumTitanium.getFluid(1296))
+                .fluidInputs(ProtoAdamantium.getFluid(1296))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(1296))
                 .buildAndRegister();
 
         //Circuit Rabbit Hole - Layer 2

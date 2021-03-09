@@ -82,7 +82,7 @@ public interface Miner {
 
     static boolean isOre(Block block) {
         OrePrefix orePrefix = OreDictUnifier.getPrefix(new ItemStack(block));
-        return orePrefixes.contains(orePrefix);
+        return orePrefix != null && orePrefixes.contains(orePrefix);
     }
 
 

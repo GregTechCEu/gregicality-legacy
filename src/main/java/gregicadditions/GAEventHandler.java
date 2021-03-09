@@ -6,18 +6,23 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.input.Key;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.network.KeysPacket;
 import gregicadditions.network.NetworkHandler;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.armor.ArmorMetaItem;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -109,5 +114,21 @@ public class GAEventHandler {
         if (resync) NetworkHandler.INSTANCE.sendToServer(new KeysPacket(Keybinds.REGISTERY));
     }
 
+    @SubscribeEvent
+    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (event.getWorld().getTileEntity(event.getPos()) instanceof MetaTileEntityHolder) {
+            event.setUseBlock(Event.Result.ALLOW);
+        }
+    }
+
+    @SubscribeEvent
+    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+        if (event.getEntityPlayer().isCreative()) {
+            TileEntity holder = event.getWorld().getTileEntity(event.getPos());
+            if (holder instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) holder).getMetaTileEntity() instanceof MetaTileEntityCentralMonitor) {
+                ((MetaTileEntityCentralMonitor) ((MetaTileEntityHolder) holder).getMetaTileEntity()).invalidateStructure();
+            }
+        }
+    }
 
 }
