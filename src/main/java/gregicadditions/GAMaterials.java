@@ -1124,7 +1124,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial DielectricMirrorFormationMix = new SimpleFluidMaterial("dielectric_mirror_formation_mix",0xff992c);
     public static final SimpleFluidMaterial LiquidZBLAN = new SimpleFluidMaterial("molten_zblan",ZBLANDust.rgb);
 
-    // FREE SimpleDustMaterial ID: 327
+    public static final SimpleDustMaterial LithiumHydroxide = new SimpleDustMaterial("lithium_hydroxide", 0xfcfcfa, (short) 327, MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1)));
     public static final SimpleDustMaterial RhReNqCatalyst = new SimpleDustMaterial("rhrenq_catalyst",(Rhenium.materialRGB+Rhodium.materialRGB+Naquadah.materialRGB)/3,(short) 328, MaterialIconSet.SHINY, of(new MaterialStack(Rhenium, 1), new MaterialStack(Rhodium, 1), new MaterialStack(Naquadah, 1)));
     public static final SimpleDustMaterial PalladiumAcetate = new SimpleDustMaterial("palladium_acetate",0xcc3300,(short) 329,MaterialIconSet.SHINY, of(new MaterialStack(Carbon, 4), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 4), new MaterialStack(Palladium, 1)));
     public static final SimpleDustMaterial FranciumCaesiumCadmiumBromide = new SimpleDustMaterial("francium_caesium_cadmium_bromide",0xfcfcfa,(short) 330,MaterialIconSet.DULL, of(new MaterialStack(Francium, 1), new MaterialStack(Caesium, 1), new MaterialStack(Cadmium, 2), new MaterialStack(Bromine, 6)));
