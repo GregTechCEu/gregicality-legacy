@@ -1,6 +1,7 @@
 package gregicadditions.materials;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import gregtech.api.unification.stack.MaterialStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -32,6 +33,12 @@ public class SimpleFluidMaterial extends SimpleMaterial {
     public SimpleFluidMaterial(String name, int rgb, int temperature) {
         this(name, rgb, temperature, false, null);
     }
+    // TODO Remove this once PR #398 is merged
+    public SimpleFluidMaterial(String name, int rgb, ImmutableList<MaterialStack> formula) {
+        this(name, rgb, 300, false);
+    }
+
+    public SimpleFluidMaterial(String name, int rgb, int temperature) { this(name, rgb, temperature, false); }
 
     public SimpleFluidMaterial(String name, int rgb, int temperature, ImmutableList<MaterialStack> materialComponents) {
         this(name, rgb, temperature, false, materialComponents);
