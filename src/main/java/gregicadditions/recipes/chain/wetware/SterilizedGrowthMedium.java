@@ -12,9 +12,9 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class SterilizedGrowthMedium {
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, SiliconDioxide)
+                .input(dust, SiliconDioxide, 3)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .input(dust, SodiumHydroxide)
+                .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(Steam.getFluid(1000))
                 .fluidOutputs(SilicaGelBase.getFluid(3000))
                 .EUt(30720)
@@ -28,8 +28,8 @@ public class SterilizedGrowthMedium {
                 .buildAndRegister();
         MIXER_RECIPES.recipeBuilder()
                 .inputs(SilicaGel.getItemStack())
-                .inputs(Alumina.getItemStack())
-                .outputs(SilicaAluminaGel.getItemStack())
+                .inputs(Alumina.getItemStack(5))
+                .outputs(SilicaAluminaGel.getItemStack(6))
                 .EUt(30720)
                 .duration(500)
                 .buildAndRegister();
@@ -122,10 +122,10 @@ public class SterilizedGrowthMedium {
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(SodiumBicarbonate.getItemStack())
+                .inputs(SodiumBicarbonate.getItemStack(6))
                 .fluidInputs(AcetylsulfanilideChloride.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .fluidOutputs(Sulfanilamide.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(AceticAcid.getFluid(1000))

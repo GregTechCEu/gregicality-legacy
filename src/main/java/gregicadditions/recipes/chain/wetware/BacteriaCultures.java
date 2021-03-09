@@ -38,10 +38,12 @@ public class BacteriaCultures {
                 .EUt(7680)
                 .duration(75)
                 .buildAndRegister();
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Sodium)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(dust, SodaAsh))
+        // 2Na + CO2 + O = Na2CO3
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Sodium, 2)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SodaAsh, 6))
                 .EUt(120)
                 .duration(50)
                 .buildAndRegister();
