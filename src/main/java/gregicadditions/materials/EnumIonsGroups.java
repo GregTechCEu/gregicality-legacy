@@ -63,7 +63,7 @@ public enum EnumIonsGroups {
     OXIDE5("O5"),
     OXIDE6("O6"),
     OXIDE7("O7"),
-    OSIDE8("O8"),
+    OXIDE8("O8"),
 
     // Misc
     WATER("H2O"),
