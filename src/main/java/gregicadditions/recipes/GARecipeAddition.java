@@ -2960,6 +2960,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Nuclear Process Distillation
+        // TODO: NUCLEAR REWORK: CHANGE FERRITE MIXTURE OUTPUT
         DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
                 .fluidInputs(RedOil.getFluid(4000))
                 .outputs(OreDictUnifier.get(dust, FerriteMixture))
