@@ -39,7 +39,7 @@ public class SimpleDustMaterialStack extends MaterialStack {
         String string = "";
         if (simpleDustMaterial.chemicalFormula.isEmpty()) {
             string += "?";
-        } else if (simpleDustMaterial.materialComponents.size() > 1) {
+        } else if (simpleDustMaterial.chemicalFormula.length() > 1) {
             string += '(' + simpleDustMaterial.chemicalFormula + ')';
         } else {
             string += simpleDustMaterial.chemicalFormula;

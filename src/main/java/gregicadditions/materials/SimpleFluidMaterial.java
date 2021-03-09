@@ -6,11 +6,10 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleFluidMaterial {
+public class SimpleFluidMaterial extends SimpleMaterial {
 
     public static List<SimpleFluidMaterial> GA_FLUIDS = new ArrayList<>();
-    public String name;
-    public int rgb;
+
     public int temperature;
     public Fluid fluid;
     public boolean hasPlasma;
