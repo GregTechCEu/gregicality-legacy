@@ -1010,7 +1010,7 @@ public class SuperconductorsSMDChain {
                 .input(dust, SuperheavyHAlloy, 2)
                 .inputs(ChargedCesiumCeriumCobaltIndium.getItemStack(3))
                 .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, UMVSuperconductorBase, 30))
+                .outputs(OreDictUnifier.get(dust, UMVSuperconductorBase, 14))
                 .buildAndRegister();
         
         
