@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAValues;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -295,20 +296,18 @@ public class FullereneChain {
                 .buildAndRegister();
         /*
         *
-        * C60 (fullerene) + C11H14O2 (phenylpentanoic acid) + C2H6S (dimethylsulfide) -> C72H14O2 (PCBM) + CH4 + H2S
-        * C72H14O2 (PCBM) + C6H5Cl (chlorobenzene) + HCl (catalyst) = C71H12O2 (PCBA) + C7H7Cl (benzoyl chloride)
+        * C60 (fullerene) + C11H14O2 (phenylpentanoic acid) + C2H6S (dimethylsulfide) + C6H5Cl (chlorobenzene) -> C72H14O2 (PCBA = phenyl-C61-butyric acid) + C7H8 + H2S + HCl
         *
         */
-        // TODO: Catalyst: Hydrochloric Acid
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Fullerene.getItemStack())
                 .fluidInputs(Phenylpentanoicacid.getFluid(1000))
                 .fluidInputs(Dimethylsulfide.getFluid(1000))
                 .fluidInputs(Chlorobenzene.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(10))
-                .fluidOutputs(Methane.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .fluidOutputs(Toluene.getFluid(1000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
-                .fluidOutputs(BenzoylChloride.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(PCBA.getFluid(1000))
                 .EUt(2000000)
                 .duration(450)
@@ -359,21 +358,19 @@ public class FullereneChain {
                 .buildAndRegister();
         /*
          *
-         * C71H12O2 (PCBA) + CH2Cl2 (dichloromethane) + 9Na = C80H21O2 (PCBM-S) + 9HCl + 9NaCl
-         * C80H21O2 (PCBM-S) + ENERGY = C80H21O2 (P-PCBM-S)
+         * 8C72H14O2 (PCBA) + 7C8H8 (Styrene) + 8CH2Cl2 (dichloromethane) = 8C80H21O2 (PCBS) + 16HCl
          *
          */
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Sodium, 9)
-                .fluidInputs(PCBA.getFluid(1000))
-                .fluidInputs(Dichloromethane.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 18))
-                .fluidOutputs(HydrochloricAcid.getFluid(9000))
-                .fluidOutputs(PCBS.getFluid(1000))
-                .EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(PCBA.getFluid(8000))
+                .fluidInputs(Styrene.getFluid(7000))
+                .fluidInputs(Dichloromethane.getFluid(8000))
+                .fluidOutputs(HydrochloricAcid.getFluid(16000))
+                .fluidOutputs(PCBS.getFluid(8000))
+                .EUt(524288)
                 .duration(38571)
                 .buildAndRegister();
-        // PdC60 + C80H21O2 (P-PCBM-S) = [PdC60 + C80H21O2]
+        // PdC60 + C80H21O2 (PCBS) = [PdC60 + C80H21O2]
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .fluidInputs(PCBS.getFluid(1000))
                 .inputs(PdFullereneMatrix.getItemStack())
