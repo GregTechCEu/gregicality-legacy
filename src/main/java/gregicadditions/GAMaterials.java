@@ -902,12 +902,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial IronSulfateDust = new SimpleDustMaterial("iron_sulfate_dust", (Iron.materialRGB+Sulfur.materialRGB)/2, (short) 192, MaterialIconSet.DULL, of(new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial StrontiumCarbonate = new SimpleDustMaterial("strontium_carbonate", StrontiumSulfate.rgb, (short) 193, MaterialIconSet.DULL);
 
-    public static final SimpleFluidMaterial NbTaSeparationMixture = new SimpleFluidMaterial("nbta_separation_mixture", 0xbcac93);
+    public static final SimpleFluidMaterial NbTaSeparationMixture = new SimpleFluidMaterial("nbta_separation_mixture", 0xbcac93, of(new MaterialStack(Carbon, 18), new MaterialStack(Hydrogen, 39), new MaterialStack(Oxygen, 5), new MaterialStack(Phosphorus, 1)));
     public static final SimpleFluidMaterial FluoroniobicAcid = new SimpleFluidMaterial("fluroniobic_acid", 0x73ff00);
     public static final SimpleFluidMaterial FluorotantalicAcid = new SimpleFluidMaterial("flurotantalic_acid", 0x73ff00);
     public static final SimpleFluidMaterial NbTaFluorideMix = new SimpleFluidMaterial("nbta_fluoride_mix", 0xbcac93);
-    public static final SimpleFluidMaterial OxypentafluoroNiobate = new SimpleFluidMaterial("oxypentafluoroniobate", 0x73ff00);
-    public static final SimpleFluidMaterial HeptafluoroTantalate = new SimpleFluidMaterial("heptafluorotantalate", 0x73ff00);
+    public static final SimpleFluidMaterial OxypentafluoroNiobate = new SimpleFluidMaterial("oxypentafluoroniobate", 0x73ff00, of(new MaterialStack(Hydrogen, 2), new MaterialStack(Niobium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Fluorine, 5)));
+    public static final SimpleFluidMaterial HeptafluoroTantalate = new SimpleFluidMaterial("heptafluorotantalate", 0x73ff00, of(new MaterialStack(Hydrogen, 2), new MaterialStack(Tantalum, 1), new MaterialStack(Fluorine, 7)));
     public static final SimpleFluidMaterial REEThUSulfateSolution = new SimpleFluidMaterial("reethu_sulfate_solution", 0x89be5c);
     public static final SimpleFluidMaterial RareEarthNitrateSolution = new SimpleFluidMaterial("rare_earth_nitrate_solution", 0xcfb37d);
     public static final SimpleFluidMaterial AlkalineEarthSulfateSolution = new SimpleFluidMaterial("alkalineearth_sulfate", 0xe6ebff);
