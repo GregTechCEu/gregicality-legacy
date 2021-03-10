@@ -2118,6 +2118,19 @@ public class GARecipeAddition {
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING, 4))
                 .buildAndRegister();
 
+        // Quantum Dust
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(10500).EUt(30)
+                .input(dust, Stellite, 15)
+                .input(dust, Jasper, 5)
+                .input(dust, Gallium, 5)
+                .input(dust, Americium241.getMaterial(), 5)
+                .input(dust, Palladium, 5)
+                .input(dust, Bismuth, 5)
+                .input(dust, Germanium, 5)
+                .inputs(SiliconCarbide.getItemStack(5))
+                .outputs(OreDictUnifier.get(dust, Quantum, 50))
+                .buildAndRegister();
+
         //Pyrotheum
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Coal)
