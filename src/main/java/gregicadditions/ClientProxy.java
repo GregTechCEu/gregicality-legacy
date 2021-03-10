@@ -82,9 +82,9 @@ public class ClientProxy extends CommonProxy {
             if (oreDictName.isPresent() && GADustItem.oreDictToSimpleDust.containsKey(oreDictName.get())) {
                 SimpleDustMaterial material = SimpleDustMaterial.GA_DUSTS.get((short) itemStack.getItemDamage());
                 if (material != null) {
-                    String formula = material.chemicalFormula;
+                    String formula = material.getFormula();
                     if (formula != null && !formula.isEmpty() && event.getToolTip().size() == 0) {
-                        event.getToolTip().add(1, ChatFormatting.GRAY.toString() + material.chemicalFormula);
+                        event.getToolTip().add(1, ChatFormatting.GRAY.toString() + material.getFormula());
                     }
                 }
             }

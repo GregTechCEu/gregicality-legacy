@@ -5,10 +5,14 @@ import com.google.common.collect.ImmutableList;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.stack.MaterialStack;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static net.minecraft.util.text.TextFormatting.*;
 
 
 public class SimpleDustMaterial extends SimpleMaterial {
@@ -35,6 +39,12 @@ public class SimpleDustMaterial extends SimpleMaterial {
     public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet, String formula) {
         this(name, rgb, id, materialIconSet);
         this.chemicalFormula = calculateChemicalFormula(formula);
+    }
+
+    public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet, String formula, boolean fancy) {
+        this(name, rgb, id, materialIconSet, formula);
+        this.fancy = fancy;
+
     }
 
     public String getOre() {
