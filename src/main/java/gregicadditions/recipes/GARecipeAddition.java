@@ -2131,6 +2131,34 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, Quantum, 50))
                 .buildAndRegister();
 
+        // UHV Superconductor Base Dust
+        MIXER_RECIPES.recipeBuilder().duration(2781).EUt(30)
+                .inputs(TBCCODust.getItemStack(4))
+                .inputs(StrontiumSuperconductorDust.getItemStack(4))
+                .input(dust, Taranium)
+                .outputs(OreDictUnifier.get(dust, UHVSuperconductorBase, 9))
+                .buildAndRegister();
+
+        // UEV Superconductor Base Dust
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(11292).EUt(30)
+                .inputs(ActiniumSuperhydride.getItemStack())
+                .inputs(StrontiumSuperconductorDust.getItemStack())
+                .input(dust, Vibranium, 2)
+                .input(dust, Quantum)
+                .input(dust, TriniumTitanium)
+                .outputs(OreDictUnifier.get(dust, UEVSuperconductorBase, 6))
+                .buildAndRegister();
+
+        // UIV Superconductor Base Dust
+        MIXER_RECIPES.recipeBuilder().duration(3395).EUt(30)
+                .inputs(BorocarbideDust.getItemStack(2))
+                .inputs(FullereneSuperconductiveDust.getItemStack())
+                .input(dust, MetastableOganesson, 2)
+                .input(dust, ProtoAdamantium, 2)
+                .outputs(OreDictUnifier.get(dust, UIVSuperconductorBase, 7))
+                .buildAndRegister();
+
+
         //Pyrotheum
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Coal)
