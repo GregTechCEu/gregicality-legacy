@@ -88,6 +88,7 @@ public class VariousChains {
                 .fluidOutputs(Steam.getFluid(4000))
                 .buildAndRegister();
 
+        // TODO: Make BCE Pellet a furnace fuel with same duration as coal
         COMPRESSOR_RECIPES.recipeBuilder().duration(230).EUt(64)
                 .inputs(DehydratedLignite.getItemStack(3))
                 .outputs(BCEPellet.getItemStack())
@@ -182,8 +183,6 @@ public class VariousChains {
         }
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(plateCurved, Steel, 64)
-                .input(plateCurved, Steel, 64)
                 .input(plateB, Steel, 64)
                 .input(plateB, Steel, 64)
                 .input(plate, Steel, 64)
