@@ -17,55 +17,55 @@ public class OpticalFiber {
 
     public static void init() {
 
-        // Zr + 3F = ZrF4
+        // Zr + 4F -> ZrF4
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Zirconium)
                 .fluidInputs(Fluorine.getFluid(4000))
                 .outputs(ZirconiumTetrafluoride.getItemStack(5))
                 .buildAndRegister();
 
-        // Ba + 2F = BaF2
+        // Ba + 2F -> BaF2
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Barium)
                 .fluidInputs(Fluorine.getFluid(2000))
                 .outputs(BariumDifluoride.getItemStack(3))
                 .buildAndRegister();
 
-        // La + 3F = LaF3
+        // La + 3F -> LaF3
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Lanthanum)
                 .fluidInputs(Fluorine.getFluid(3000))
                 .outputs(LanthanumTrifluoride.getItemStack(4))
                 .buildAndRegister();
 
-        // Al + 3F = AlF3
+        // Al + 3F -> AlF3
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Aluminium)
                 .fluidInputs(Fluorine.getFluid(3000))
                 .outputs(AluminiumTrifluoride.getItemStack(4))
                 .buildAndRegister();
 
-        // Er + 3F = ErF3
+        // Er + 3F -> ErF3
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Erbium)
                 .fluidInputs(Fluorine.getFluid(3000))
                 .outputs(ErbiumTrifluoride.getItemStack(4))
                 .buildAndRegister();
 
-        // 18ZrF4 + 7BaF2 + 2LaF3 + AlF3 + 7NaF = ZBLAN
+        // 18ZrF4 + 7BaF2 + 2LaF3 + AlF3 + 7NaF -> ZBLAN
         LARGE_MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
-                .inputs(ZirconiumTetrafluoride.getItemStack(18))
-                .inputs(BariumDifluoride.getItemStack(7))
-                .inputs(LanthanumTrifluoride.getItemStack(2))
-                .inputs(AluminiumTrifluoride.getItemStack(1))
-                .input(dust, SodiumFluoride, 7)
+                .inputs(ZirconiumTetrafluoride.getItemStack(90))
+                .inputs(BariumDifluoride.getItemStack(21))
+                .inputs(LanthanumTrifluoride.getItemStack(8))
+                .inputs(AluminiumTrifluoride.getItemStack(4))
+                .input(dust, SodiumFluoride, 14)
                 .outputs(ZBLANDust.getItemStack(35))
                 .buildAndRegister();
 
         // ZBLAN + ErF3 = [ZBLAN + ErF3]
         MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
                 .inputs(ZBLANDust.getItemStack(1))
-                .inputs(ErbiumTrifluoride.getItemStack(1))
+                .inputs(ErbiumTrifluoride.getItemStack(4))
                 .outputs(ErbiumDopedZBLANDust.getItemStack(2))
                 .buildAndRegister();
 
