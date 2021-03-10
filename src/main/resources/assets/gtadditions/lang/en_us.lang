@@ -586,6 +586,7 @@ metaitem.lik_chloride_eutetic.name=Lithium Potassium Chloride Eutetic Mixture
 metaitem.potassium_sulfate.name=Potassium Sulfate
 metaitem.aluminium_sulfate.name=Aluminium Sulfate
 metaitem.lithium_hydroxide.name=Lithium Hydroxide Dust
+metaitem.sodium_oxide.name=Sodium Oxide Dust
 
 metaitem.zinc_coke_pellets.name=Zinc Ore Coke Pellets
 metaitem.zinc_residual_slag.name=Zinc Residual Slag
