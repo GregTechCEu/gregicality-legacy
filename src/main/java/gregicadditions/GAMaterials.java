@@ -685,7 +685,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ChloroPlatinicAcid = new SimpleFluidMaterial("chloroplatinic_acid", 0xffba54);
     public static final SimpleFluidMaterial Cyclooctadiene = new SimpleFluidMaterial("cyclooctadiene", 0x33CC33);
     public static final SimpleFluidMaterial Cycloparaphenylene = new SimpleFluidMaterial("cycloparaphenylene", 0x333333);
-    public static final SimpleFluidMaterial SuperheavyMix = new SimpleFluidMaterial("superheavy_mix", 0x403737);
+    public static final SimpleFluidMaterial SuperheavyMix = new SimpleFluidMaterial("superheavy_mix", 0x403737, "SgBhRfDb");
     public static final SimpleFluidMaterial NeutronPlasma = new SimpleFluidMaterial("neutron_plasma", 0xf0e9e9);
     public static final SimpleFluidMaterial HotMetastableOganesson = new SimpleFluidMaterial("hot_oganesson", 0x521973);
     public static final SimpleFluidMaterial MoltenTitaniumTetrafluoride = new SimpleFluidMaterial("titanium_tetrafluoride_liquid", Titanium.materialRGB);
