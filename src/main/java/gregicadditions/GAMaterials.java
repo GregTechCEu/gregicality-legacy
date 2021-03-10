@@ -1010,7 +1010,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 1), new MaterialStack(Lithium, 3), new MaterialStack(Aluminium, 4), new MaterialStack(Oxygen, 11)));
     public static final SimpleDustMaterial LithiumChloride = new SimpleDustMaterial("lithium_chloride", 0xfcfcfa, (short) 112, MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Chlorine, 1)));
     public static final SimpleDustMaterial LiKChlorideEutetic = new SimpleDustMaterial("lik_chloride_eutetic", 0xcac0c1, (short) 113, MaterialIconSet.DULL, of(new MaterialStack(Lithium, 1), new MaterialStack(Chlorine, 1), new MaterialStack(RockSalt, 1)));
-    // FREE SimpleDustMaterial ID: 114
+    public static final SimpleDustMaterial NickelChloride = new SimpleDustMaterial("nickel_chloride", 0xb9c0c7, (short) 114, MaterialIconSet.ROUGH, "NiCl2");
     public static final SimpleDustMaterial PotassiumSulfate = new SimpleDustMaterial("potassium_sulfate", 0xfcfcfa, (short) 115, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)));
     public static final SimpleDustMaterial AluminiumSulfate = new SimpleDustMaterial("aluminium_sulfate", 0xfcfcfa, (short) 116, MaterialIconSet.DULL, of(new MaterialStack(Aluminium, 2), new MaterialStack(Sulfur, 3), new MaterialStack(Oxygen, 12)));
     public static final SimpleDustMaterial BariumHydroxide = new SimpleDustMaterial("barium_hydroxide", 0xfcfcfa, (short) 117, MaterialIconSet.DULL, of(new MaterialStack(Barium, 1), new MaterialStack(Oxygen, 2), new MaterialStack(Hydrogen, 2)));
@@ -1061,7 +1061,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PalladiumChloride = new SimpleDustMaterial("palladium_chloride", 0xb9c0c7, (short) 157, MaterialIconSet.DULL, of(new MaterialStack(Palladium, 1), new MaterialStack(Chlorine, 2)));
     public static final SimpleDustMaterial PalladiumBisDibenzylidieneacetone = new SimpleDustMaterial("palladium_bisdibenzylidieneacetone", 0Xbe81a0, (short) 158, MaterialIconSet.DULL, "C51H42O3Pd2");
     public static final SimpleDustMaterial PotassiumTetrachloroplatinate = new SimpleDustMaterial("potassium_tetrachloroplatinate", 0xffba54, (short) 159, MaterialIconSet.DULL, of(new MaterialStack(Potassium, 2), new MaterialStack(Platinum, 1), new MaterialStack(Chlorine, 4)));
-    public static final SimpleDustMaterial NickelTriphenylPhosphite = new SimpleDustMaterial("nickel_triphenyl_phosphite", 0xd9d973, (short) 160, MaterialIconSet.SHINY, "C18H15O3P");
+    public static final SimpleDustMaterial NickelTriphenylPhosphite = new SimpleDustMaterial("nickel_triphenyl_phosphite", 0xd9d973, (short) 160, MaterialIconSet.SHINY, "C36H30Cl2NiP2");
     public static final SimpleDustMaterial Dichlorocycloctadieneplatinium = new SimpleDustMaterial("dichlorocyclooctadieneplatinium", 0xe0f78a, (short) 161, MaterialIconSet.SHINY, "C8H12Cl2Pt");
     public static final SimpleDustMaterial GrapheneNanotubeMix = new SimpleDustMaterial("graphene_nanotube_mix", 0x2c2c2c, (short) 162, MaterialIconSet.DULL, "(C)C?");
     public static final SimpleDustMaterial GrapheneAlignedCNT = new SimpleDustMaterial("graphene_aligned_cnt", 0x2c2c2c, (short) 163, MaterialIconSet.SHINY, "(C)C30H20");
