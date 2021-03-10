@@ -552,11 +552,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Xylene = new SimpleFluidMaterial("xylene", 0xB9575E, of(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 10)));
     public static final SimpleFluidMaterial XyleneZeoliteMixture = new SimpleFluidMaterial("xylene_zeolite", 0xB9785E);
     public static final SimpleFluidMaterial PXylene = new SimpleFluidMaterial("p_xylene", 0xB9575E, of(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 10)));
-    public static final SimpleFluidMaterial Dibromomethylbenzene = new SimpleFluidMaterial("dibromomethylbenzene", 0x0A1D2C, of(new MaterialStack(Carbon, 7), new MaterialStack(Hydrogen, 6), new MaterialStack(Bromine, 2)));
+    public static final SimpleFluidMaterial Dibromomethylbenzene = new SimpleFluidMaterial("dibromomethylbenzene", 0x0A1D2C, of(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 8), new MaterialStack(Bromine, 2)));
     public static final SimpleFluidMaterial AceticAnhydride = new SimpleFluidMaterial("acetic_anhydride", 0xD5DDDF, of(new MaterialStack(Carbon, 4), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 3)));
     public static final SimpleFluidMaterial Isochloropropane = new SimpleFluidMaterial("isochloropropane", 0xD5DD95, of(new MaterialStack(Carbon, 3), new MaterialStack(Hydrogen, 7), new MaterialStack(Chlorine, 1)));
     public static final SimpleFluidMaterial Resorcinol = new SimpleFluidMaterial("resorcinol", 0xD5DDBE);
-    public static final SimpleFluidMaterial Dinitrodipropanyloxybenzene = new SimpleFluidMaterial("dinitrodipropanyloxybenzene", 0x83945F); // TODO GO FROM HERE UP TO VERIFY
+    public static final SimpleFluidMaterial Dinitrodipropanyloxybenzene = new SimpleFluidMaterial("dinitrodipropanyloxybenzene", 0x83945F, "C12H16O2(NO2)2");
     public static final SimpleFluidMaterial Naphthaldehyde = new SimpleFluidMaterial("napthaldehyde", 0xBCA853, of(new MaterialStack(Carbon, 10), new MaterialStack(Hydrogen, 7), new MaterialStack(Oxygen, 1), new MaterialStack(Carbon, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 1)));
     public static final SimpleFluidMaterial HydrobromicAcid = new SimpleFluidMaterial("hydrobromic_acid", 0xBC6C53, of(new MaterialStack(Hydrogen, 1), new MaterialStack(Bromine, 1)));
     public static final SimpleFluidMaterial PhosphorusChloride = new SimpleFluidMaterial("phosphorus_chloride", 0x7C9C53, of(new MaterialStack(Phosphorus, 1), new MaterialStack(Chlorine, 3)));
@@ -978,7 +978,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial AluminiumChloride = new SimpleDustMaterial("aluminium_chloride", 0xbf95f5, (short) 79, MaterialIconSet.SHINY, of(new MaterialStack(Aluminium, 1), new MaterialStack(Chlorine, 3)));
     public static final SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", 0xbf95f5, (short) 80, MaterialIconSet.SHINY, of(new MaterialStack(Palladium, 1), new MaterialStack(Carbon, 60)));
     public static final SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", 0xbf95f5, (short) 81, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 2)));
-    public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 82, MaterialIconSet.DULL, "C13H14N2O2");
+    public static final SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", 0xbf95f5, (short) 82, MaterialIconSet.DULL, "C20H22N2O2");
     public static final SimpleDustMaterial AuPdCCatalyst = new SimpleDustMaterial("aupdc_catalyst", 0xbf95f5, (short) 83, MaterialIconSet.DULL, of(new MaterialStack(Gold, 1), new MaterialStack(Palladium, 1), new MaterialStack(Carbon, 1)));
     public static final SimpleDustMaterial Cyanonaphtalene = new SimpleDustMaterial("cyanonaphtalene", 0xbf95f5, (short) 84, MaterialIconSet.DULL, of(new MaterialStack(Carbon, 11), new MaterialStack(Hydrogen, 7), new MaterialStack(Nitrogen, 1)));
     public static final SimpleDustMaterial TinChloride = new SimpleDustMaterial("tin_chloride", 0xbf95f5, (short) 85, MaterialIconSet.DULL, of(new MaterialStack(Tin, 1), new MaterialStack(Chlorine, 2)));
