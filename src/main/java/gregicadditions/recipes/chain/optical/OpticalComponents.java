@@ -12,14 +12,15 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class OpticalComponents {
     public static void init() {
-        // Nb + 5Cl = NbCl5
+
+        // Nb + 5Cl -> NbCl5
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(670000)
                 .input(dust, Niobium)
                 .fluidInputs(Chlorine.getFluid(5000))
                 .outputs(NiobiumChloride.getItemStack(6))
                 .buildAndRegister();
 
-        // LiAlH4 = LiH + AlH3
+        // LiAlH4 -> LiH + AlH3
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(750000).blastFurnaceTemp(1600)
                 .inputs(LithiumAluminiumHydride.getItemStack(6))
                 .outputs(LithiumHydride.getItemStack(2))
@@ -28,15 +29,15 @@ public class OpticalComponents {
 
         // NbCl5 + LiH + 2H2O2 -> LiNbO4 + 5HCl
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(1200000).blastFurnaceTemp(4500)
-                .inputs(NiobiumChloride.getItemStack())
-                .inputs(LithiumHydride.getItemStack())
+                .inputs(NiobiumChloride.getItemStack(6))
+                .inputs(LithiumHydride.getItemStack(2))
                 .input(dustTiny, Hafnium)
                 .fluidInputs(HydrogenPeroxide.getFluid(2000))
                 .outputs(OreDictUnifier.get(ingotHot, LithiumNiobate, 6))
                 .fluidOutputs(HydrochloricAcid.getFluid(5000))
                 .buildAndRegister();
 
-        // 5NaOH + NbCl5 = 5NaCl + H5NbO5
+        // 5NaOH + NbCl5 -> 5NaCl + H5NbO5
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(560000)
                 .input(dust, SodiumHydroxide, 15)
                 .inputs(NiobiumChloride.getItemStack(6))
@@ -44,9 +45,10 @@ public class OpticalComponents {
                 .outputs(NiobiumHydroxide.getItemStack(11))
                 .buildAndRegister();
 
-        // 2H5NbO5 + 5C2H2O4 + NH3 + Na = 9H2O + [C10Nb2O20 + NH4] + NaOH
+        // 2H5NbO5 + 5C2H2O4 + NH3 + Na -> 9H2O + [C10Nb2O20 + NH4] + NaOH
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(450000)
                 .inputs(NiobiumHydroxide.getItemStack(22))
+                .input(dust, Sodium)
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(OxalicAcid.getFluid(5000))
                 .outputs(OreDictUnifier.get(dust ,SodiumHydroxide, 3))
@@ -54,9 +56,9 @@ public class OpticalComponents {
                 .fluidOutputs(AmmoniumNiobiumOxalateSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // [C10Nb2O20 + NH4] + 2LiNbO4 = Nanparticles
+        // [C10Nb2O20 + NH4] + 2LiNbO4 -> Nanparticles
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(950000)
-                .input(dust, LithiumNiobate, 2)
+                .input(dust, LithiumNiobate, 12)
                 .fluidInputs(AmmoniumNiobiumOxalateSolution.getFluid(1000))
                 .outputs(LithiumNiobateNanoparticles.getItemStack(3))
                 .buildAndRegister();
@@ -114,30 +116,30 @@ public class OpticalComponents {
                     .buildAndRegister();
         }
 
-        // MgO + NH4HF2 = MgF2 + NH3 + H2O
+        // MgO + NH4HF2 -> MgF2 + NH3 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(150000)
                 .input(dust, Magnesia, 2)
-                .inputs(AmmoniumBifluoride.getItemStack())
+                .inputs(AmmoniumBifluoride.getItemStack(8))
                 .outputs(MagnesiumFluoride.getItemStack(3))
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        // P + I = InP
+        // P + I -> InP
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(1600000).blastFurnaceTemp(4600)
                 .input(dust, Phosphorus)
                 .input(dust, Indium)
                 .outputs(OreDictUnifier.get(dust, IndiumPhospide, 2))
                 .buildAndRegister();
 
-        // Zn + S = ZnS
+        // Zn + S -> ZnS
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(491520).blastFurnaceTemp(4600)
                 .input(dust, Zinc)
                 .input(dust, Sulfur)
                 .outputs(ZincSulfide.getItemStack(2))
                 .buildAndRegister();
 
-        // MgF2 + ZnS + Ta2O5 + TiO2 + C2H5OH = Dielectric Mirror Formation Mix
+        // MgF2 + ZnS + Ta2O5 + TiO2 + C2H5OH -> Dielectric Mirror Formation Mix
         MIXER_RECIPES.recipeBuilder().duration(270).EUt(970000)
                 .inputs(MagnesiumFluoride.getItemStack(3))
                 .inputs(ZincSulfide.getItemStack(2))
@@ -153,4 +155,3 @@ public class OpticalComponents {
                 .buildAndRegister();
     }
 }
-
