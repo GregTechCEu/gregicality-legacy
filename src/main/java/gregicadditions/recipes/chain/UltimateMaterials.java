@@ -19,6 +19,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class UltimateMaterials {
     public static void init() {
+
         LARGE_MIXER_RECIPES.recipeBuilder().duration(270).EUt(250000)
                 .inputs(OreDictUnifier.get(dust, Ruthenium),
                         OreDictUnifier.get(dust, Rhodium),
@@ -184,19 +185,23 @@ public class UltimateMaterials {
                         GAMaterials.NobleGases.getFluid(6000))
                 .fluidOutputs(Periodicium.getFluid(16560))
                 .buildAndRegister();
+
         VACUUM_RECIPES.recipeBuilder().duration(20).EUt(122880)
                 .fluidInputs(Helium3.getFluid(5000))
                 .fluidOutputs(LiquidHelium3.getFluid(5000))
                 .buildAndRegister();
+
         VACUUM_RECIPES.recipeBuilder().duration(20).EUt(61400)
                 .fluidInputs(Nitrogen.getFluid(5000))
                 .fluidOutputs(LiquidNitrogen.getFluid(5000))
                 .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder().duration(60).EUt(8000)
                 .fluidInputs(LiquidHelium.getFluid(1000))
                 .fluidInputs(LiquidHelium3.getFluid(1000))
                 .fluidOutputs(LiquidEnrichedHelium.getFluid(2000))
                 .buildAndRegister();
+
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(150).EUt(725000)
                 .fluidInputs(LiquidEnrichedHelium.getFluid(2000))
                 .fluidInputs(LiquidNitrogen.getFluid(1000))
@@ -204,6 +209,7 @@ public class UltimateMaterials {
                 .fluidOutputs(LiquidHelium3.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(150).EUt(15000000)
                 .input(frameGt, QCDMatter)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_4))
@@ -215,6 +221,7 @@ public class UltimateMaterials {
                 .fluidInputs(Taranium.getFluid(1584))
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .input(block, Neutronium, 5)
                 .input(block, HeavyQuarkDegenerateMatter, 5)
@@ -224,16 +231,19 @@ public class UltimateMaterials {
                 .fluidInputs(Periodicium.getFluid(2736))
                 .fluidOutputs(DenseNeutronPlasma.getFluid(6000))
                 .buildAndRegister();
+
         FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
                 .inputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .fluidInputs(DenseNeutronPlasma.getFluid(1000))
                 .outputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .inputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE,2))
                 .outputs(COSMIC_NEUTRON_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(500).EUt(10000000)
                 .inputs(COSMIC_NEUTRON_PLASMA_CELL.getStackForm())
                 .fluidInputs(SuperfluidHelium.getFluid(48000))
@@ -242,6 +252,7 @@ public class UltimateMaterials {
                 .outputs(OreDictUnifier.get(ingot, CosmicNeutronium))
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)
                 .fluidInputs(Cycloparaphenylene.getFluid(200))
                 .fluidInputs(Methane.getFluid(800))
@@ -249,6 +260,7 @@ public class UltimateMaterials {
                 .notConsumable(plate, Rhenium)
                 .fluidOutputs(NeutroniumDopedNanotubes.getFluid(1000))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(84500000)
                 .input(plate, CarbonNanotubes, 3)
                 .input(plate, CosmicNeutronium, 3)
@@ -256,18 +268,21 @@ public class UltimateMaterials {
                 .fluidInputs(NeutroniumDopedNanotubes.getFluid(2000))
                 .outputs(HIGHLY_DENSE_POLYMER_PLATE.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(800000000)
                 .inputs(HIGHLY_DENSE_POLYMER_PLATE.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
+
         FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(125000000)
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .fluidInputs(CosmicMeshPlasma.getFluid(1000))
                 .outputs(COSMIC_MESH_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
-        MetaItem.MetaValueItem[] fieldShapes = {PLATE_FIELD_SHAPE,INGOT_FIELD_SHAPE,WIRE_FIELD_SHAPE,SPHERE_FIELD_SHAPE,ROD_FIELD_SHAPE};
-        MetaItem.MetaValueItem[] molds = {SHAPE_MOLD_PLATE,SHAPE_MOLD_INGOT,SHAPE_EXTRUDER_WIRE,SHAPE_MOLD_BALL,SHAPE_EXTRUDER_ROD};
+
+        MetaItem.MetaValueItem[] fieldShapes = { PLATE_FIELD_SHAPE, INGOT_FIELD_SHAPE, WIRE_FIELD_SHAPE, SPHERE_FIELD_SHAPE, ROD_FIELD_SHAPE };
+        MetaItem.MetaValueItem[] molds = { SHAPE_MOLD_PLATE, SHAPE_MOLD_INGOT, SHAPE_EXTRUDER_WIRE, SHAPE_MOLD_BALL, SHAPE_EXTRUDER_ROD };
         for (int i = 0; i < fieldShapes.length; i++) {
             ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(85000)
                     .inputs(molds[i].getStackForm())
@@ -277,6 +292,7 @@ public class UltimateMaterials {
                     .outputs(fieldShapes[i].getStackForm())
                     .buildAndRegister();
         }
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(500).EUt(10000000)
                 .inputs(COSMIC_MESH_CONTAINMENT_UNIT.getStackForm())
                 .fluidInputs(SuperfluidHelium.getFluid(24000))
@@ -284,6 +300,7 @@ public class UltimateMaterials {
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(COSMIC_MESH.getStackForm())
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(500).EUt(10000000)
                 .inputs(COSMIC_MESH_CONTAINMENT_UNIT.getStackForm())
                 .fluidInputs(SuperfluidHelium.getFluid(24000))
@@ -292,11 +309,13 @@ public class UltimateMaterials {
                 .notConsumable(WIRE_FIELD_SHAPE.getStackForm())
                 .outputs(COSMIC_FABRIC.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(10000000)
                 .inputs(COSMIC_FABRIC.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(10000000)
                 .inputs(COSMIC_MESH.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
