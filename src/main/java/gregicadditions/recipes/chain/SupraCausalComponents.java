@@ -4,7 +4,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -16,6 +15,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class SupraCausalComponents {
     public static void init(){
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(33550000)
                 .inputs(CONTAINED_KERR_NEWMANN_SINGULARITY.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
@@ -24,6 +24,7 @@ public class SupraCausalComponents {
                 .fluidInputs(Neutronium.getFluid(144))
                 .outputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(33550000)
                 .inputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
@@ -32,6 +33,7 @@ public class SupraCausalComponents {
                 .fluidInputs(Neutronium.getFluid(144))
                 .outputs(GRAVITON_TRANSDUCER.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(800).EUt(33550000)
                 .inputs(FIELD_GENERATOR_UHV.getStackForm(1))
                 .inputs(SENSOR_UIV.getStackForm(1))
@@ -42,30 +44,35 @@ public class SupraCausalComponents {
                 .fluidInputs(Neutronium.getFluid(1296))
                 .outputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144))
                 .input(plate, ProtoAdamantium)
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144))
                 .input(plate, Vibranium)
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144))
                 .input(plate, Neutronium)
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144))
                 .input(foil, FullerenePolymerMatrix)
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728).qubit(32)
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .inputs(TOOL_DATA_ORB.getStackForm())
@@ -76,6 +83,7 @@ public class SupraCausalComponents {
                 .fluidInputs(Vibranium.getFluid(1296))
                 .outputs(CTC_GUIDANCE_UNIT.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1600).EUt(33550000)
                 .inputs(SENSOR_UIV.getStackForm(2))
                 .inputs(SCINTILLATOR.getStackForm())
@@ -85,6 +93,7 @@ public class SupraCausalComponents {
                 .fluidInputs(BlackTitanium.getFluid(1296))
                 .outputs(NUCLEAR_CLOCK.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1800).EUt(33550000)
                 .fluidInputs(Taranium.getFluid(72))
                 .fluidInputs(Naquadria.getFluid(144))
@@ -96,6 +105,7 @@ public class SupraCausalComponents {
                 .input(plate, Vibranium, 16)
                 .outputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
                 .inputs(NUCLEAR_CLOCK.getStackForm())
                 .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(2))
@@ -111,6 +121,7 @@ public class SupraCausalComponents {
                 .fluidInputs(FullerenePolymerMatrix.getFluid(1296))
                 .outputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
                 .fluidInputs(Taranium.getFluid(72))
                 .fluidInputs(Gluons.getFluid(1296))
@@ -122,6 +133,7 @@ public class SupraCausalComponents {
                 .input(plate, HeavyQuarkDegenerateMatter, 2)
                 .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(33550000)
                 .fluidInputs(SuperheavyHAlloy.getFluid(1296))
                 .fluidInputs(SuperheavyLAlloy.getFluid(1296))
@@ -140,33 +152,39 @@ public class SupraCausalComponents {
                 .inputs(STABILIZED_WORMHOLE_GENERATOR.getStackForm())
                 .outputs(CTC_COMPUTATIONAL_UNIT_CONTAINER.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
                 .input(ingot, HeavyQuarkDegenerateMatter, 1)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.QCD_CHARGE))
                 .fluidOutputs(HighEnergyQGP.getFluid(144))
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(2000).EUt(134217728)
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(4))
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant((GASimpleBlock.CasingType.QCD_CHARGE)))
                 .fluidOutputs(QCDMatter.getFluid(1296))
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant((GASimpleBlock.CasingType.QCD_CHARGE)))
                 .inputs(MACROWORMHOLE_GENERATOR.getStackForm(2))
                 .outputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .inputs(STABILIZED_WORMHOLE_GENERATOR.getStackForm())
                 .inputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant((GASimpleBlock.CasingType.QCD_CHARGE)))
                 .outputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(800).EUt(134217728)
                 .inputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
                 .inputs(CTC_COMPUTATIONAL_UNIT_CONTAINER.getStackForm())
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant((GASimpleBlock.CasingType.QCD_CHARGE)))
                 .outputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(200).EUt(134217728)
                 .fluidInputs(HighEnergyQGP.getFluid(144))
                 .fluidInputs(LiquidHelium.getFluid(10000))
@@ -174,6 +192,7 @@ public class SupraCausalComponents {
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(QCD_PROTECTIVE_PLATING.getStackForm())
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(QCDMatter.getFluid(144))
                 .fluidInputs(LiquidHelium.getFluid(20000))
@@ -181,6 +200,7 @@ public class SupraCausalComponents {
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(OreDictUnifier.get(plate, QCDMatter))
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(QCDMatter.getFluid(144))
                 .fluidInputs(LiquidHelium.getFluid(20000))
