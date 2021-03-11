@@ -49,7 +49,7 @@ public abstract class SimpleMaterial {
     }
 
     private static String fancyTest(String input, TextFormatting[] colors, double delay, int posstep) {
-        StringBuilder sb = new StringBuilder(input.length() * 3);
+        StringBuilder sb = new StringBuilder();
 
         int offset = (int) Math.floor(Minecraft.getSystemTime() / delay) % colors.length;
         String format = null;
@@ -63,7 +63,7 @@ public abstract class SimpleMaterial {
                 if (format != null)
                     sb.append(format);
                 sb.append(c);
-            } else { format = format == null ? "" + c + input.charAt(i + 1) : null; i++; }
+            } else format = input.charAt(++i) == 'r' ? null : format == null ? "" + c + input.charAt(i) : format + c + input.charAt(i);
         }
         return sb.toString();
     }
