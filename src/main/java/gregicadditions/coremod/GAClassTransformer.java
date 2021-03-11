@@ -61,15 +61,11 @@ public class GAClassTransformer implements IClassTransformer {
         transformClass(byte[] code) {
             ClassReader reader = new ClassReader(code);
             ClassWriter writer = new ClassWriter(reader, getWriteFlags());
-            reader.accept(getClassMapper(writer), getAcceptFlags());
+            reader.accept(getClassMapper(writer), 0);
             return writer.toByteArray();
         }
 
         protected int getWriteFlags() {
-            return 0;
-        }
-
-        protected int getAcceptFlags() {
             return 0;
         }
 
