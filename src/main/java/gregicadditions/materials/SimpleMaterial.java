@@ -45,26 +45,26 @@ public abstract class SimpleMaterial {
     private static final TextFormatting[] fanciness = new TextFormatting[] { RED, GOLD, YELLOW, GREEN, AQUA, BLUE, LIGHT_PURPLE };
 
     private static String makeFancy(String input) {
-        return fancyTest(input, fanciness, 80.0, 1, 1);
+        return fancyTest(input, fanciness, 80.0, 1);
     }
 
-    private static String fancyTest(String input, TextFormatting[] colors, double delay, int step, int posstep) {
+    private static String fancyTest(String input, TextFormatting[] colors, double delay, int posstep) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
-        if (delay <= 0) {
-            delay = 0.001;
-        }
 
         int offset = (int) Math.floor(Minecraft.getSystemTime() / delay) % colors.length;
+        String format = null;
 
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
 
-            int col = ((i * posstep) + colors.length - offset) % colors.length;
-
-            sb.append(colors[col].toString());
-            sb.append(c);
+            if (!(c == '&' || c == '\u00a7')) {
+                int col = ((i * posstep) + colors.length - offset) % colors.length;
+                sb.append(colors[col].toString());
+                if (format != null)
+                    sb.append(format);
+                sb.append(c);
+            } else { format = format == null ? "" + c + input.charAt(i + 1) : null; i++; }
         }
-
         return sb.toString();
     }
 }

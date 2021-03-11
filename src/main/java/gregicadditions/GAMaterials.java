@@ -11,6 +11,7 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.pipelike.cable.WireProperties;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -789,7 +790,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Ethylenediamine = new SimpleFluidMaterial("ethylenediamine", Ethanolamine.rgb, "C2H4(NH2)2");
     public static final SimpleFluidMaterial EDTASolution = new SimpleFluidMaterial("edta_solution",0x0026d9, "(C10H16N2O8)3(C2H8N2)O2");
     public static final SimpleFluidMaterial EDTA = new SimpleFluidMaterial("edta",0x0026d9, "C10H16N2O8");
-    public static final SimpleFluidMaterial Glycine = new SimpleFluidMaterial("glycine", (Ethylenediamine.rgb+Formaldehyde.rgb)/2, "NH2‐CH2‐COOH");
+    public static final SimpleFluidMaterial Glycine = new SimpleFluidMaterial("glycine", (Ethylenediamine.rgb+Formaldehyde.rgb)/2, "NH2-CH2-COOH");
     public static final SimpleFluidMaterial PrYHoNitrateSolution = new SimpleFluidMaterial("pryho_nitrate_solution",0x00f2b2, "(Y(NO3)3)6(Pr(NO3)3)2(Nd(NO3)3)2(H2O)15");
     public static final SimpleFluidMaterial PhosphorousArsenicSolution = new SimpleFluidMaterial("phosphorous_arsenic_solution", PhosphoricAcid.materialRGB); // TODO
     public static final SimpleFluidMaterial FluorosilicicAcid = new SimpleFluidMaterial("fluorosilicic_acid",0x2ccf2a, "H2SiF6");
