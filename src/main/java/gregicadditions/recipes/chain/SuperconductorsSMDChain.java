@@ -909,6 +909,119 @@ public class SuperconductorsSMDChain {
                 .outputs(LanthanumOxide.getItemStack())
                 .buildAndRegister();
 
+                LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4200000) //C6H6O + H2O2 + 1 H2O + 2 Cl2 + 2 C2H2O -> C10H10O6 + 4 HCl
+                .fluidInputs(Phenol.getFluid(1000))
+                .fluidInputs(HydrogenPeroxide.getFluid(1000))
+                .fluidInputs(Water.getFluid(3000))
+                .fluidInputs(Chlorine.getFluid(4000))
+                .fluidInputs(Ethenone.getFluid(2000))
+                .fluidOutputs(PhenylenedioxydiaceticAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(4000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(420000) //NaSCN + HCl + 2 CH3CH2NH2 -> NH3 + (CH3CH2)2NCSNH2 + NaCl
+                .fluidInputs(SodiumThiocyanate.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(Ethylamine.getFluid(2000))
+                .fluidOutputs(Ammonia.getFluid(1000))
+                .fluidOutputs(Diethylthiourea.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .buildAndRegister();
+
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(750000) //C10H10O6 + 2 (CH3CH2)2NCSNH2 + 2 SOCl2 -> 2SO2 + 4 HCl + C20H30N4O4S2
+                .fluidInputs(Diethylthiourea.getFluid(2000))
+                .fluidInputs(ThionylChloride.getFluid(2000))
+                .fluidInputs(PhenylenedioxydiaceticAcid.getFluid(1000))
+                .fluidOutputs(SulfurDioxide.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(4000))
+                .fluidOutputs(Isophtaloylbisdiethylthiourea.getFluid(1000))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(330).EUt(845000).blastFurnaceTemp(25000)
+                .input(dust, MetastableHassium)
+                .fluidInputs(Chlorine.getFluid(4000))
+                .outputs(HassiumChloride.getItemStack(5))
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().duration(330).EUt(845000).blastFurnaceTemp(25000)
+                .input(dust, Rhenium)
+                .fluidInputs(Chlorine.getFluid(5000))
+                .outputs(RheniumChloride.getItemStack(6))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(50000) //SbF5 + PCl3 + HF -> SbCl3 + HPF6
+                .fluidInputs(AntimonyPentafluoride.getFluid(1000))
+                .fluidInputs(PhosphorusTrichloride.getFluid(1000))
+                .fluidInputs(HydrofluoricAcid.getFluid(1000))
+                .outputs(AntimonyTrichloride.getItemStack(4))
+                .fluidOutputs(FluorophosphoricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(8400) //SbCl3 + 3 HF -> SbF3 + 3 HCl
+                .inputs(AntimonyTrichloride.getItemStack(4))
+                .fluidInputs(HydrofluoricAcid.getFluid(3000))
+                .outputs(AntimonyTrifluoride.getItemStack(4))
+                .fluidOutputs(HydrochloricAcid.getFluid(3000))
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(620).EUt(845000) //3 C20H30N4O4S2 + ReCl5 + HsCl4 + TlCl + HPF6 -> ReHsTlC60PN12H84S6O12F6 + 7 HCl + 3 Cl
+                .inputs(RheniumChloride.getItemStack(6))
+                .inputs(HassiumChloride.getItemStack(5))
+                .inputs(ThalliumChloride.getItemStack(2))
+                .fluidInputs(Isophtaloylbisdiethylthiourea.getFluid(3000))
+                .fluidInputs(FluorophosphoricAcid.getFluid(1000))
+                .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(184))
+                .fluidOutputs(HydrochloricAcid.getFluid(7000))
+                .fluidOutputs(Chlorine.getFluid(3000))
+                .buildAndRegister();
+
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(270).EUt(250000)
+                .inputs(OreDictUnifier.get(dust, Naquadah),
+                        OreDictUnifier.get(dust, NaquadahEnriched),
+                        OreDictUnifier.get(dust, Naquadria),
+                        OreDictUnifier.get(dust, Vibranium),
+                        OreDictUnifier.get(dust, Adamantium),
+                        OreDictUnifier.get(dust, Taranium),
+                        OreDictUnifier.get(dust, Trinium),
+                        OreDictUnifier.get(dust, Duranium),
+                        OreDictUnifier.get(dust, Tritanium))
+                .outputs(Legendarium.getItemStack(9))
+                .buildAndRegister();
+
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(520).EUt(845000)
+                .input(dust, Cerium)
+                .input(dust, Caesium)
+                .input(dust, Cobalt, 2)
+                .input(dust, Indium, 10)
+                .fluidInputs(CosmicComputingMix.getFluid(2000))
+                .outputs(ChargedCesiumCeriumCobaltIndium.getItemStack(16))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)
+                .fluidInputs(Cycloparaphenylene.getFluid(200))
+                .fluidInputs(Methane.getFluid(800))
+                .inputs(LanthanumEmbeddedFullerene.getItemStack())
+                .notConsumable(plate, Rhenium)
+                .outputs(LanthanumFullereneNanotubes.getItemStack())
+                .buildAndRegister();
+        
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(8500000)
+                .input(dust, BlackTitanium, 3)
+                .input(dust, SuperheavyHAlloy, 2)
+                .inputs(ChargedCesiumCeriumCobaltIndium.getItemStack(3))
+                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(6))
+                .outputs(OreDictUnifier.get(dust, UMVSuperconductorBase, 14))
+                .buildAndRegister();
+        
+        
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(33500000)
+                .inputs(Legendarium.getItemStack(5))
+                .input(dust, Neutronium, 4)
+                .inputs(ActiniumSuperhydride.getItemStack(5))
+                .inputs(LanthanumFullereneNanotubes.getItemStack(4))
+                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
+                .outputs(OreDictUnifier.get(dust, UXVSuperconductorBase, 30))
+                .buildAndRegister();
 
     }
 }
