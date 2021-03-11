@@ -245,6 +245,7 @@ public class SensorEmitter {
                 .outputs(OreDictUnifier.get(dust, RockSalt))
                 .buildAndRegister();
 
+        // K2ReH9 + K2TcH9 + 4C8H20NBr = 4KBr + [C8H20N + ReH9 + TcH9]
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(360).EUt(9400)
                 .inputs(PotassiumNonahydridorhenate.getItemStack())
                 .inputs(PotassiumNonahydridotechnate.getItemStack())

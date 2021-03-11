@@ -66,8 +66,6 @@ public class NaquadahChain {
                 .fluidInputs(AntimonyPentafluoride.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(FluoroantimonicAcid.getFluid(1000))
-                .fluidOutputs(Hydrogen.getFluid(2000))
-                .fluidOutputs(Fluorine.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
