@@ -130,8 +130,8 @@ public class GregTechCEHooks {
             String[] materialArray = fluidStack.getUnlocalizedName().split("\\.");
             if (materialArray.length >= 2 && materialArray[0].equals("fluid")) {
                 SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(materialArray[1]);
-                if (material != null && material.chemicalFormula != null && !material.chemicalFormula.isEmpty()) {
-                    formula.append(material.chemicalFormula);
+                if (material != null && material.getFormula() != null && !material.getFormula().isEmpty()) {
+                    formula.append(material.getFormula());
                 }
             }
         }

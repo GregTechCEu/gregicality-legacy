@@ -96,8 +96,8 @@ public class ClientProxy extends CommonProxy {
             String fluidName = ItemNBTUtils.getString(itemStack, "FluidName");
             if (fluidName != null) {
                 SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(fluidName);
-                if (material != null && material.chemicalFormula != null && !material.chemicalFormula.isEmpty()) {
-                    event.getToolTip().add(1, ChatFormatting.GRAY + material.chemicalFormula);
+                if (material != null && material.getFormula() != null && !material.getFormula().isEmpty()) {
+                    event.getToolTip().add(1, ChatFormatting.GRAY + material.getFormula());
                 }
             }
         }
