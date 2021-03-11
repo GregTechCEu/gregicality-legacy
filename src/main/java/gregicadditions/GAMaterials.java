@@ -755,7 +755,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Dimetoxythiophene = new SimpleFluidMaterial("dimetoxythiophene", 0x90ff43, "C4H2(CH3)2S"); // TODO Dimethylthiophene?
     public static final SimpleFluidMaterial EDOT = new SimpleFluidMaterial("ethylenedioxythiophene", 0x7a9996, "C2H4O2C4H2S");
     public static final SimpleFluidMaterial CitricAcid = new SimpleFluidMaterial("citric_acid", 0xffcc00, "CH2COOH-C(OH)COOH-CH2COOH");
-    public static final SimpleFluidMaterial GasMixture = new SimpleFluidMaterial("gas_mixture", 0x003ffa); // TODO ???? (might get removed)
+    public static final SimpleFluidMaterial GasMixture = new SimpleFluidMaterial("gas_mixture", 0x003ffa); // TODO (might get removed)
     public static final SimpleFluidMaterial OxalicAcid = new SimpleFluidMaterial("oxalic_acid", 0x4aaae2, "HOOCCOOH");
     public static final SimpleFluidMaterial Trimethylchlorosilane = new SimpleFluidMaterial("trimethylchlorosilane", Dimethyldichlorosilane.materialRGB, "(CH3)3SiCl");
     public static final SimpleFluidMaterial Bromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "?"); // TODO
