@@ -453,7 +453,7 @@ public class BrineChain {
                 .buildAndRegister();
 
         // CH3OH + NH3 -> CH3OH(NH3)
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(700)
+        MIXER_RECIPES.recipeBuilder().duration(180).EUt(700)
                 .notConsumable(dust, Nickel)
                 .fluidInputs(Methanol.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))

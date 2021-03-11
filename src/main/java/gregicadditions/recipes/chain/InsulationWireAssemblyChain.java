@@ -110,7 +110,7 @@ public class InsulationWireAssemblyChain {
                 .inputs(DitertbutylCarbonate.getItemStack(33))
                 .outputs(OreDictUnifier.get(dust, Sodium, 2))
                 .outputs(OreDictUnifier.get(dust, Potash, 6))
-                .fluidOutputs(Tertbutylcarbonylazide.getFluid(2000))
+                .fluidOutputs(TertButylAzidoformate.getFluid(2000))
                 .buildAndRegister();
 
         // Aminated Fullerene is a Secondary Amine
@@ -118,7 +118,7 @@ public class InsulationWireAssemblyChain {
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(745000)
                 .inputs(Fullerene.getItemStack())
                 .input(dust, Carbon, 16)
-                .fluidInputs(Tertbutylcarbonylazide.getFluid(4000))
+                .fluidInputs(TertButylAzidoformate.getFluid(4000))
                 .fluidInputs(Water.getFluid(13000))
                 .fluidOutputs(AminatedFullerene.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(16000))

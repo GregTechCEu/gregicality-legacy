@@ -86,20 +86,20 @@ public class LithiumChain {
                 .outputs(LithiumChloride.getItemStack(2))
                 .buildAndRegister();
 
-        // LiCl + KCl = [LiCl + KCl]A
+        // LiCl + KCl = [LiCl + KCl]X
         MIXER_RECIPES.recipeBuilder().duration(90).EUt(120)
                 .inputs(LithiumChloride.getItemStack(2))
                 .input(dust, RockSalt, 2)
                 .outputs(LiKChlorideEutetic.getItemStack(4))
                 .buildAndRegister();
 
-        // 0.25[LiCl + KCl]A = 0.25[LiCl + KCl]B
+        // 0.25[LiCl + KCl]X = 0.25[LiCl + KCl]Z
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(150).EUt(120)
                 .inputs(LiKChlorideEutetic.getItemStack())
                 .fluidOutputs(MoltenLiKChlorideEutetic.getFluid(250))
                 .buildAndRegister();
 
-        // [LiCl + KCl]B = 2Cl + Li + K
+        // [LiCl + KCl]Z = 2Cl + Li + K
         ELECTROLYZER_RECIPES.recipeBuilder().duration(900).EUt(125)
                 .fluidInputs(MoltenLiKChlorideEutetic.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(2000))

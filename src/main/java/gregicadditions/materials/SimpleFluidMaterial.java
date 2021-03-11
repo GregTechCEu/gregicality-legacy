@@ -44,6 +44,11 @@ public class SimpleFluidMaterial extends SimpleMaterial {
         chemicalFormula = calculateChemicalFormula(formula);
     }
 
+    public SimpleFluidMaterial(String name, int rgb, String formula, boolean hasPlasma, boolean fancy) {
+        this(name, rgb, 300, false);
+        chemicalFormula = calculateChemicalFormula(formula);
+    }
+
     public SimpleFluidMaterial(String name, int rgb, int temperature) { this(name, rgb, temperature, false); }
 
     public SimpleFluidMaterial(String name, int rgb, int temperature, ImmutableList<MaterialStack> materialComponents) {
@@ -59,6 +64,12 @@ public class SimpleFluidMaterial extends SimpleMaterial {
     }
 
     public SimpleFluidMaterial(String name, int rgb, int temperature, boolean hasPlasma, ImmutableList<MaterialStack> materialComponents) {
+    public SimpleFluidMaterial(String name, int rgb, boolean hasPlasma, String formula) {
+        this(name, rgb, 300, hasPlasma);
+        chemicalFormula = calculateChemicalFormula(formula);
+    }
+
+    public SimpleFluidMaterial(String name, int rgb, int temperature, boolean hasPlasma) {
         this.name = name;
         this.rgb = rgb;
         this.temperature = temperature;
@@ -66,6 +77,15 @@ public class SimpleFluidMaterial extends SimpleMaterial {
         this.materialComponents = materialComponents;
         this.chemicalFormula = calculateChemicalFormula();
         GA_FLUIDS.put(name, this);
+    }
+
+    public SimpleFluidMaterial(String name, int rgb, int temperature, boolean hasPlasma, String formula) {
+        this.name = name;
+        this.rgb = rgb;
+        this.temperature = temperature;
+        this.hasPlasma = hasPlasma;
+        GA_FLUIDS.add(this);
+        chemicalFormula = calculateChemicalFormula(formula);
     }
 
     public FluidStack getFluid(int amount) {
