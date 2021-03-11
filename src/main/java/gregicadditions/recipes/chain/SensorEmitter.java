@@ -3,12 +3,11 @@ package gregicadditions.recipes.chain;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.UVA_HALIDE_LAMP;
+import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.wireFine;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class SensorEmitter {
     public static void init() {
@@ -432,6 +431,13 @@ public class SensorEmitter {
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .notConsumable(PalladiumLoadedRutileNanoparticles.getItemStack())
                 .buildAndRegister();
-       
+        
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(850000)
+                .inputs(LEPTON_TRAP_CRYSTAL.getStackForm())
+                .input(dustSmall, Vibranium, 2)
+                .fluidInputs(HeavyLeptonMix.getFluid(500))
+                .fluidInputs(FreeElectronGas.getFluid(500))
+                .outputs(CHARGED_LEPTON_TRAP_CRYSTAL.getStackForm())
+                .buildAndRegister();
     }
 }

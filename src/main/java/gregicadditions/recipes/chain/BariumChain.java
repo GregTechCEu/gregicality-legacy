@@ -6,8 +6,7 @@ import gregtech.api.unification.OreDictUnifier;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class BariumChain {
     public static void init() {
@@ -32,7 +31,7 @@ public class BariumChain {
                 .buildAndRegister();
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(2))
-                .input(dust, Aluminium, 2)
+                .input(dustSmall, Aluminium, 8)
                 .outputs(OreDictUnifier.get(ingot, Barium))
                 .outputs(BariumAluminate.getItemStack(2))
                 .buildAndRegister();

@@ -1,5 +1,6 @@
 package gregicadditions;
 
+import codechicken.lib.util.ItemNBTUtils;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
@@ -7,6 +8,7 @@ import gregicadditions.input.Keybinds;
 import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
+import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.renderer.OpticalFiberRenderer;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.state.IBlockState;
@@ -78,6 +80,18 @@ public class ClientProxy extends CommonProxy {
                     if (formula != null && !formula.isEmpty() && event.getToolTip().size() == 0) {
                         event.getToolTip().add(1, ChatFormatting.GRAY.toString() + material.chemicalFormula);
                     }
+                }
+            }
+        }
+
+        if (ItemNBTUtils.hasTag(itemStack)) {
+
+            // Vanilla bucket
+            String fluidName = ItemNBTUtils.getString(itemStack, "FluidName");
+            if (fluidName != null) {
+                SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(fluidName);
+                if (material != null && material.chemicalFormula != null && !material.chemicalFormula.isEmpty()) {
+                    event.getToolTip().add(1, ChatFormatting.GRAY + material.chemicalFormula);
                 }
             }
         }

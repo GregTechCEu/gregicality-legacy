@@ -471,6 +471,9 @@ public class GAMetaItem extends MaterialMetaItem {
 
         COLOURED_LEDS = addItem(578, "coloured.leds");
         DISPLAY = addItem(579, "display");
+        
+        CHARGED_LEPTON_TRAP_CRYSTAL = addItem(580,"charged.lepton.trap.crystal");
+
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");

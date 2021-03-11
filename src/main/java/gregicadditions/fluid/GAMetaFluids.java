@@ -45,7 +45,7 @@ public class GAMetaFluids {
             isotopeMaterial.hexafluorideSteamCracked = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE_STEAM_CRACKED"), 300);
         });
 
-        for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS) {
+        for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS.values()) {
             Fluid fluid = new Fluid(fluidMat.name, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
             fluid.setTemperature(fluidMat.temperature);
             if (!FluidRegistry.isFluidRegistered(fluid.getName())) {
