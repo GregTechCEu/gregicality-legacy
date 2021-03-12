@@ -1,5 +1,7 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.unification.OreDictUnifier;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -104,8 +106,8 @@ public class InsulationWireAssemblyChain {
                 .input(dust, Potassium,2)
                 .inputs(SodiumAzide.getItemStack(8))
                 .inputs(DitertbutylDicarbonate.getItemStack(33))
-                .output(dust, Sodium, 2)
-                .output(dust, Potash, 3)
+                .outputs(OreDictUnifier.get(dust, Sodium, 2))
+                .outputs(OreDictUnifier.get(dust, Potash, 6))
                 .fluidOutputs(TertButylAzidoformate.getFluid(2000))
                 .buildAndRegister();
 
