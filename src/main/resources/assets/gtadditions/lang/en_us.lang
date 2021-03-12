@@ -1214,11 +1214,11 @@ gtadditions.machine.wiremill.luv.name=Elite Wiremill II
 gtadditions.machine.wiremill.zpm.name=Elite Wiremill III
 gtadditions.machine.wiremill.uv.name=Elite Wiremill IV
 
-gtadditions.machine.clustermill.uhv.name=High-Tech Cluster Mill
-gtadditions.machine.clustermill.uev.name=High-Tech Cluster Mill II
-gtadditions.machine.clustermill.uiv.name=High-Tech Cluster Mill III
-gtadditions.machine.clustermill.umv.name=High-Tech Cluster Mill IV
-gtadditions.machine.clustermill.uxv.name=Ultimate Cluster Mill
+gtadditions.machine.cluster_mill.uhv.name=High-Tech Cluster Mill
+gtadditions.machine.cluster_mill.uev.name=High-Tech Cluster Mill II
+gtadditions.machine.cluster_mill.uiv.name=High-Tech Cluster Mill III
+gtadditions.machine.cluster_mill.umv.name=High-Tech Cluster Mill IV
+gtadditions.machine.cluster_mill.uxv.name=Ultimate Cluster Mill
 gtadditions.machine.electric_furnace.uhv.name=High-Tech Electric Furnace
 gtadditions.machine.electric_furnace.uev.name=High-Tech Electric Furnace II
 gtadditions.machine.electric_furnace.uiv.name=High-Tech Electric Furnace III
