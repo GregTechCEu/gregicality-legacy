@@ -257,7 +257,7 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(870000)
                 .inputs(PotassiumIodide.getItemStack())
                 .fluidInputs(Aminophenol.getFluid(1000))
-                .fluidInputs(ButhylLithium.getFluid(1000))
+                .fluidInputs(ButylLithium.getFluid(1000))
                 .fluidOutputs(Butylaniline.getFluid(1000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(1000))
                 .outputs(LithiumIodide.getItemStack(2))

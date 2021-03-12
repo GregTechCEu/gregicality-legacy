@@ -8,7 +8,6 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -789,7 +788,7 @@ public class SuperconductorsSMDChain {
         // Bromohydrothiine + 2 Se + 2 BuLi -> Lithiumdithiineselenide + 2 C4H9Br
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(970000)
                 .fluidInputs(Bromohydrothiine.getFluid(1000))
-                .fluidInputs(ButhylLithium.getFluid(2000))
+                .fluidInputs(ButylLithium.getFluid(2000))
                 .input(dust, Selenium, 2)
                 .fluidOutputs(Bromobutane.getFluid(2000))
                 .fluidOutputs(Lithiumthiinediselenide.getFluid(1000))

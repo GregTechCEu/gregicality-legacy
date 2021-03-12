@@ -49,7 +49,7 @@ public class NanotubeChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(140000)
                 .input(dust, Lithium)
                 .fluidInputs(Butane.getFluid(1000))
-                .fluidOutputs(ButhylLithium.getFluid(1000))
+                .fluidOutputs(ButylLithium.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .buildAndRegister();
 
