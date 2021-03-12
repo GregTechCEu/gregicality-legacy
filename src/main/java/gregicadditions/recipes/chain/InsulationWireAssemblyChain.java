@@ -114,15 +114,15 @@ public class InsulationWireAssemblyChain {
                 .buildAndRegister();
 
         // Aminated Fullerene is a Secondary Amine
-        // C60 + 4C5H9N3O2 + 13H2O + 16C = C60(NH)12 + 5C4H10O + 16CO
+        // C60 + 4C5H9N3O2 + 8H2O + 4CO -> C60N12H12 + 4C4H10O + 8CO2
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(745000)
                 .inputs(Fullerene.getItemStack())
-                .input(dust, Carbon, 16)
                 .fluidInputs(TertButylAzidoformate.getFluid(4000))
-                .fluidInputs(Water.getFluid(13000))
+                .fluidInputs(Water.getFluid(8000))
+                .fluidInputs(CarbonMonoxde.getFluid(4000))
                 .fluidOutputs(AminatedFullerene.getFluid(1000))
-                .fluidOutputs(CarbonMonoxde.getFluid(16000))
-                .fluidOutputs(Tertbutanol.getFluid(5000))
+                .fluidOutputs(CarbonDioxide.getFluid(8000))
+                .fluidOutputs(Tertbutanol.getFluid(4000))
                 .buildAndRegister();
 
         FLUID_HEATER_RECIPES.recipeBuilder().duration(120).EUt(480000)

@@ -716,18 +716,18 @@ public class SuperconductorsSMDChain {
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(4800)
                 .input(dust, Lanthanum, 2)
                 .inputs(UnfoldedFullerene.getItemStack(2))
-                .outputs(LanthanumFullereneMix.getItemStack())
+                .outputs(LanthanumFullereneMix.getItemStack(4))
                 .buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(125000)
-                .inputs(LanthanumFullereneMix.getItemStack())
+                .inputs(LanthanumFullereneMix.getItemStack(4))
                 .notConsumable(craftingLens, MarkerMaterials.Color.Magenta)
-                .outputs(LanthanumEmbeddedFullerene.getItemStack())
+                .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .buildAndRegister();
 
         // 3Rb + 3Cs + La2(C60)2 = La2Cs3Rb3C120
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(1400000).blastFurnaceTemp(2400)
-                .inputs(LanthanumEmbeddedFullerene.getItemStack())
+                .inputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .input(dust, Rubidium, 3)
                 .input(dust, Caesium, 3)
                 .outputs(FullereneSuperconductiveDust.getItemStack(64))
