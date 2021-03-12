@@ -161,7 +161,7 @@ public class SensorEmitter {
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Tributylamine.getFluid(200))
                 .outputs(OreDictUnifier.get(dust, Iodine))
-                .outputs(Stibene.getItemStack())
+                .outputs(Stilbene.getItemStack())
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(600000)

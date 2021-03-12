@@ -3387,7 +3387,7 @@ public class GARecipeAddition {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
                 .outputs(EMITTER_UV.getStackForm())
                 .inputs(OreDictUnifier.get(frameGt, Tritanium, 1))
-                .inputs(Stibene.getItemStack(16))
+                .inputs(Stilbene.getItemStack(16))
                 .inputs(OreDictUnifier.get(foil, Osmiridium, 32))
                 .inputs(OreDictUnifier.get(wireGtDouble, Duranium, 8))
                 .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))

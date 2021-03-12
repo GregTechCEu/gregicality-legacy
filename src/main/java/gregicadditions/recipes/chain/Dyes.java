@@ -252,7 +252,7 @@ public class Dyes {
                 .input(dust, Carbon, 6)
                 .fluidInputs(Ammonia.getFluid(2000))
                 .fluidInputs(PhosphoricAcid.getFluid(4000))
-                .outputs(AmmoniaManganesePhosphate.getItemStack(22))
+                .outputs(AmmoniumManganesePhosphate.getItemStack(22))
                 .fluidOutputs(Water.getFluid(5000))
                 .fluidOutputs(CarbonMonoxde.getFluid(6000))
                 .buildAndRegister();
@@ -434,7 +434,7 @@ public class Dyes {
                 .inputs(Aminoanthraquinone.getItemStack())
                 .fluidInputs(PotassiumHydroxide.getFluid(1000))
                 .notConsumable(dust,RockSalt)
-                .outputs(IndathroneBlue.getItemStack())
+                .outputs(IndanthroneBlue.getItemStack())
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1340)
@@ -446,7 +446,7 @@ public class Dyes {
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(1500))
                 .fluidOutputs(Water.getFluid(2500))
-                .outputs(Mauvine.getItemStack(2))
+                .outputs(Mauveine.getItemStack(2))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(520).EUt(1340)
@@ -532,8 +532,8 @@ public class Dyes {
                 {BurnedSienna.getItemStack(),MercuryIodide.getItemStack(),OreDictUnifier.get(dust,Cinnabar),Quinacridone.getItemStack()},
                 {CadmiumSulfide.getItemStack(),BismuthVanadate.getItemStack(),TitaniumYellow.getItemStack(),ChromeYellow.getItemStack(),DiarylideYellow.getItemStack()},
                 {OreDictUnifier.get(dust,Malachite),ScheelesGreen.getItemStack(),CobaltZincOxide.getItemStack(),AlizarineCyanineGreen.getItemStack()},
-                {CobaltAluminate.getItemStack(),PrussianBlue.getItemStack(),IndathroneBlue.getItemStack(),Indigo.getItemStack()},
-                {AmmoniaManganesePhosphate.getItemStack(),HanPurple.getItemStack(),Mauvine.getItemStack()},
+                {CobaltAluminate.getItemStack(),PrussianBlue.getItemStack(),IndanthroneBlue.getItemStack(),Indigo.getItemStack()},
+                {AmmoniumManganesePhosphate.getItemStack(),HanPurple.getItemStack(),Mauveine.getItemStack()},
                 {ChromeOrange.getItemStack(),Diketopyrrolopyrrole.getItemStack()},
                 {CyanIndigoDye.getItemStack()},{Erythrosine.getItemStack()}};
         MarkerMaterial[] colors = {MarkerMaterials.Color.White,MarkerMaterials.Color.Black,MarkerMaterials.Color.Brown,MarkerMaterials.Color.Red,MarkerMaterials.Color.Yellow,
