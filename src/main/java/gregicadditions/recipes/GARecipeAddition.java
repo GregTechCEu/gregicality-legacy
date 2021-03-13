@@ -4770,6 +4770,7 @@ public class GARecipeAddition {
         UltimateMaterials.init();
         DigitalInterfaces.init();
         InsulationWireAssemblyChain.init();
+        ArcFurnaceOxidation.init();
     }
 
     public static void forestrySupport() {

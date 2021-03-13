@@ -39,14 +39,6 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Oxygen.getFluid(3000))
-                .input(dust, Antimony, 2)
-                .outputs(OreDictUnifier.get(dust, AntimonyTrioxide))
-                .EUt(1980)
-                .duration(200)
-                .blastFurnaceTemp(4500)
-                .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, AntimonyTrioxide)
                 .fluidInputs(HydrofluoricAcid.getFluid(6000))

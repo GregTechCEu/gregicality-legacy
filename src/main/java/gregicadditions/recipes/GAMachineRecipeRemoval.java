@@ -202,6 +202,9 @@ public class GAMachineRecipeRemoval {
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, MarkerMaterials.Tier.Advanced, 4), QUANTUM_EYE.getStackForm()}, new FluidStack[]{Osmium.getFluid(1152)});
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, MarkerMaterials.Tier.Elite, 4), OreDictUnifier.get(dust, NetherStar)}, new FluidStack[]{Osmium.getFluid(2304)});
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, MarkerMaterials.Tier.Master, 4), QUANTUM_STAR.getStackForm()}, new FluidStack[]{Osmium.getFluid(4608)});
+
+        //remove gtce nickel zinc ferrite
+        removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, FerriteMixture, 1)}, new FluidStack[]{Oxygen.getFluid(2000)});
     }
 
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {

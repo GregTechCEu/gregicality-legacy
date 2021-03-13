@@ -627,7 +627,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // YBa2Cu3O6 + O -> YBa2Cu3O7
-        BLAST_RECIPES.recipeBuilder().duration(5000).EUt(8000).blastFurnaceTemp(4500)
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(5000).EUt(8000)
                 .inputs(WellMixedYBCOxides.getItemStack(12))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(ingotHot, YttriumBariumCuprate, 13))
@@ -643,7 +643,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // [2Th + 2Ba + 3Cu + 2Ca] + 10O = TBCCO
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(104000).blastFurnaceTemp(1800)
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(240).EUt(104000)
                 .inputs(PiledTBCC.getItemStack())
                 .fluidInputs(Oxygen.getFluid(10000))
                 .outputs(TBCCODust.getItemStack())
@@ -964,9 +964,8 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // Os + 4O = OsO4
-        BLAST_RECIPES.recipeBuilder().duration(520).EUt(4800).blastFurnaceTemp(1000)
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(520).EUt(4800)
                 .input(dust, Osmium)
-                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Oxygen.getFluid(4000))
                 .outputs(OsmiumTetroxide.getItemStack(5))
                 .buildAndRegister();

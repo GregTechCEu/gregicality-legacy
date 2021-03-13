@@ -89,11 +89,10 @@ public class OpticalFiber {
                 .outputs(ZBLAN_INGOT.getStackForm(1))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().EUt(120).duration(10000)
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(120).duration(10000)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .inputs(ZBLAN_INGOT.getStackForm(1))
                 .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm(1))
-                .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         EXTRUDER_RECIPES.recipeBuilder().EUt(4000).duration(2000)
