@@ -4,8 +4,7 @@ import crafttweaker.annotations.ZenRegister;
 import gregicadditions.gui.GAGuiTextures;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
-import gregicadditions.recipes.map.NuclearReactorBuilder;
-import gregicadditions.recipes.map.RecipeMapAssemblyLine;
+import gregicadditions.recipes.map.*;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.qubit.QubitConsumerRecipeBuilder;
 import gregicadditions.recipes.qubit.QubitProducerRecipeBuilder;
@@ -108,9 +107,9 @@ public class GARecipeMaps {
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
-        CHEMICAL_PLANT_RECIPES = new RecipeMap<>("chemical_plant", 0, 4, 0, 2, 0, 5, 0, 3, (new SimpleRecipeBuilder()))
+        CHEMICAL_PLANT_RECIPES = new RecipeMapChemicalPlant<>("chemical_plant", 0, 4, 0, 2, 0, 5, 0, 3, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
-        LARGE_MIXER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_mixer", 0, 9, 0, 1, 0, 6, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
+        LARGE_MIXER_RECIPES = (LargeRecipeMap) new RecipeMapLargeMixer<>("large_mixer", 0, 9, 0, 1, 0, 6, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
