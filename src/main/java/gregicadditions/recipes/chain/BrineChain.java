@@ -89,21 +89,21 @@ public class BrineChain {
                 .fluidInputs(SulfurDioxide.getFluid(8000))
                 .fluidInputs(Water.getFluid(7000))
                 .fluidInputs(Ammonia.getFluid(2000))
-                .fluidOutputs(HydroxilamineDisulfate.getFluid(4000))
+                .fluidOutputs(HydroxylamineDisulfate.getFluid(4000))
                 .buildAndRegister();
 
         // (NH3OH)2SO4 + 2NH3 -> 2H3NO + (NH4)2SO4
         CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(1050)
-                .fluidInputs(HydroxilamineDisulfate.getFluid(1000))
+                .fluidInputs(HydroxylamineDisulfate.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(2000))
-                .fluidOutputs(Hydroxilamine.getFluid(2000))
+                .fluidOutputs(Hydroxylamine.getFluid(2000))
                 .fluidOutputs(AmmoniumSulfate.getFluid(1000))
                 .buildAndRegister();
 
         // CH3NO + H3NO -> H3N2O(CH) + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(3000)
                 .fluidInputs(Formamide.getFluid(1000))
-                .fluidInputs(Hydroxilamine.getFluid(1000))
+                .fluidInputs(Hydroxylamine.getFluid(1000))
                 .fluidOutputs(Amidoxime.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();

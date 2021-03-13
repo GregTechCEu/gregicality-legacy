@@ -21,23 +21,22 @@ public class TungstenChain {
             // These first two should output 1B of Na2WO4, but I am outputting 4
             // to make the process have a similar balance to pre-chem rework.
 
-            // WCa2O4 + 2NaOH + 4H2O -> 2CaOH + Na2WO4
+            // WCa2O4 + 2NaOH + H2O2 -> 2Ca(OH)2 + Na2WO4
             MIXER_RECIPES.recipeBuilder()
                     .input(dust, Scheelite, 7)
                     .input(dust, SodiumHydroxide, 6)
-                    .fluidInputs(Water.getFluid(4000))
-                    .outputs(CalciumHydroxide.getItemStack(6))
+                    .fluidInputs(HydrogenPeroxide.getFluid(1000))
+                    .outputs(CalciumHydroxide.getItemStack(10))
                     .fluidOutputs(SodiumTungstate.getFluid(4000))
                     .EUt(480)
                     .duration(100)
                     .buildAndRegister();
 
             // TODO Add lang to LiOH
-            // WLi2O4 + 2NaOH + 4H2O -> 2LiOH + Na2WO4
+            // WLi2O4 + 2NaOH -> 2LiOH + Na2WO4
             MIXER_RECIPES.recipeBuilder()
                     .input(dust, Tungstate, 7)
                     .input(dust, SodiumHydroxide, 6)
-                    .fluidInputs(Water.getFluid(4000))
                     .outputs(LithiumHydroxide.getItemStack(6))
                     .fluidOutputs(SodiumTungstate.getFluid(4000))
                     .EUt(480)
@@ -72,14 +71,12 @@ public class TungstenChain {
                     .duration(100)
                     .buildAndRegister();
 
-            // WCaO4 + HClO + 2H2O -> H2WO4 + dil.HCl + CaOH
+            // WCaO4 + 2H2O -> H2WO4 + Ca(OH)2
             LARGE_CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, CalciumTungstate, 6)
                     .fluidInputs(Water.getFluid(2000))
-                    .fluidInputs(HypochlorousAcid.getFluid(1000))
                     .outputs(OreDictUnifier.get(dust, TungsticAcid, 7))
-                    .outputs(CalciumHydroxide.getItemStack(3))
-                    .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
+                    .outputs(CalciumHydroxide.getItemStack(5))
                     .EUt(960)
                     .duration(150)
                     .buildAndRegister();

@@ -15,29 +15,32 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class GrowthMedium {
     public static void init() {
+        // 2CaO + 5C = CO2 + 2CaC2
         BLAST_RECIPES.recipeBuilder()
-                .input(dust, Quicklime, 10)
-                .input(dust, Carbon, 20)
-                .fluidOutputs(CarbonMonoxde.getFluid(10000))
-                .outputs(CalciumCarbide.getItemStack(10))
+                .input(dust, Quicklime, 4)
+                .input(dust, Carbon, 5)
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .outputs(CalciumCarbide.getItemStack(6))
                 .blastFurnaceTemp(2500)
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // CaC2 + 2H2O = Ca(OH)2 + C2H2
         BLAST_RECIPES.recipeBuilder()
-                .inputs(CalciumCarbide.getItemStack(2))
+                .inputs(CalciumCarbide.getItemStack(3))
                 .fluidInputs(Steam.getFluid(2000))
-                .outputs(CalciumHydroxide.getItemStack(2))
+                .outputs(CalciumHydroxide.getItemStack(5))
                 .fluidOutputs(Acetylene.getFluid(1000))
                 .blastFurnaceTemp(2300)
                 .EUt(30720)
                 .duration(10)
                 .buildAndRegister();
+        // Ca(OH)2 + 2HCl -> 2H2O + CaCl2
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(CalciumHydroxide.getItemStack())
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, CalciumChloride))
+                .inputs(CalciumHydroxide.getItemStack(5))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
+                .outputs(OreDictUnifier.get(dust, CalciumChloride, 3))
                 .EUt(480)
                 .duration(50)
                 .buildAndRegister();

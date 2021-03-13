@@ -31,6 +31,7 @@ public class SensorEmitter {
                 .fluidOutputs(BariumStrontiumTitanatePreparation.getFluid(3000))
                 .buildAndRegister();
 
+        // TODO: Barium Strontium Titanate production needs changing
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(250).EUt(1500)
                 .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(1000))
                 .outputs(BariumStrontiumTitanate.getItemStack())
@@ -201,7 +202,7 @@ public class SensorEmitter {
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(Hydroxilamine.getFluid(1000))
+                .fluidOutputs(Hydroxylamine.getFluid(1000))
                 .outputs(SodiumPertechnate.getItemStack())
                 .buildAndRegister();
 
@@ -330,12 +331,12 @@ public class SensorEmitter {
                 .outputs(OreDictUnifier.get(block, Snow))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(1000))
-                .fluidOutputs(Metoxybenzaldehyde.getFluid(1000))
+                .fluidOutputs(Methoxybenzaldehyde.getFluid(1000))
                 .fluidOutputs(IodobenzoicAcid.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(240000)
-                .fluidInputs(Metoxybenzaldehyde.getFluid(1000))
+                .fluidInputs(Methoxybenzaldehyde.getFluid(1000))
                 .fluidInputs(Butylaniline.getFluid(1000))
                 .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
                 .fluidOutputs(MBBA.getFluid(1000))

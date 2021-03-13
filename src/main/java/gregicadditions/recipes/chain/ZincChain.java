@@ -88,11 +88,11 @@ public class ZincChain {
                 .input(dust, SodiumHydroxide, 6)
                 .fluidOutputs(MetalHydroxideMix.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .outputs(SodiumPhosphate.getItemStack(8))
+                .outputs(SodiumDiphosphate.getItemStack(8))
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(50).EUt(500)
-                .inputs(SodiumPhosphate.getItemStack(8))
+                .inputs(SodiumDiphosphate.getItemStack(8))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .outputs(OreDictUnifier.get(dust, Phosphorus))

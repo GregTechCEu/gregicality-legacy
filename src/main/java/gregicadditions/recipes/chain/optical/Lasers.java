@@ -352,14 +352,22 @@ public class Lasers {
                 .fluidOutputs(Propene.getFluid(1000))
                 .buildAndRegister();
 
-        // (NH4)2CO3 + CaO + Na -> 2NH3 + CaOH + NaHCO
+        // (NH4)2CO3 + Ca + NaH + 2O -> 2NH3 + Ca(OH)2 + NaHCO3
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(750).blastFurnaceTemp(700)
                 .inputs(AmmoniumCarbonate.getItemStack(14))
-                .input(dust, Sodium)
-                .input(dust, Quicklime, 2)
+                .inputs(SodiumHydride.getItemStack(2))
+                .input(dust, Calcium)
+                .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Ammonia.getFluid(2000))
-                .outputs(SodiumBicarbonate.getItemStack(4))
-                .outputs(CalciumHydroxide.getItemStack(3))
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .outputs(CalciumHydroxide.getItemStack(5))
+                .buildAndRegister();
+
+        // NaH = Na + H
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(30)
+                .inputs(SodiumHydride.getItemStack(2))
+                .outputs(OreDictUnifier.get(dust, Sodium))
+                .fluidOutputs(Hydrogen.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(30000)

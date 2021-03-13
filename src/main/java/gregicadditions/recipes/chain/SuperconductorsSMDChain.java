@@ -228,7 +228,7 @@ public class SuperconductorsSMDChain {
                 .input(dust, Lead)
                 .fluidInputs(NitrogenTetroxide.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, LeadNitrate, 4))
+                .outputs(OreDictUnifier.get(dust, LeadNitrate, 9))
                 .buildAndRegister();
 
         // ZrOCl2 + TiO2 + Pb(NO3)2 + 2H = PbZrTiO3 + 2HNO3 + 2Cl
@@ -367,9 +367,9 @@ public class SuperconductorsSMDChain {
 
         // Y2O3 + Eu2O3 + V2O5 + 6H = 2YEuVO4 + 3H2O
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(3400).blastFurnaceTemp(1200)
-                .input(dust, YttriumOxide)
+                .input(dust, YttriumOxide, 5)
                 .inputs(EuropiumOxide.getItemStack(5))
-                .inputs(VanadiumOxide.getItemStack(5))
+                .inputs(VanadiumOxide.getItemStack(7))
                 .fluidInputs(Hydrogen.getFluid(6000))
                 .outputs(YttriumEuropiumVanadate.getItemStack(2))
                 .fluidOutputs(Steam.getFluid(3000))
@@ -684,7 +684,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(CarbonTetrachloride.getFluid(4000))
                 .outputs(ActiniumHydride.getItemStack(4))
                 .outputs(OreDictUnifier.get(dust, Salt, 32))
-                .fluidOutputs(CarbonDioxide.getFluid(8))
+                .fluidOutputs(CarbonDioxide.getFluid(8000))
                 .buildAndRegister();
 
         // AcH3 + 9H = AcH12 (multiplied by 18)

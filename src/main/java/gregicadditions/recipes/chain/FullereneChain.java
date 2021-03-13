@@ -81,18 +81,10 @@ public class FullereneChain {
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();
-        // 3Cl + P = PCl3
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Chlorine.getFluid(3000))
-                .input(dust, Phosphorus)
-                .fluidOutputs(PhosphorusChloride.getFluid(1000))
-                .EUt(480)
-                .duration(300)
-                .buildAndRegister();
         // 6Na + PCl3 + 3C6H5Cl = 6NaCl + C18H15P
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Sodium, 6)
-                .fluidInputs(PhosphorusChloride.getFluid(1000))
+                .fluidInputs(PhosphorusTrichloride.getFluid(1000))
                 .fluidInputs(Chlorobenzene.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, Salt, 12))
                 .outputs(Triphenylphosphine.getItemStack(34))
@@ -135,14 +127,14 @@ public class FullereneChain {
                 .EUt(2000000)
                 .duration(400)
                 .buildAndRegister();
-        //  Ti + Al + Cl = TiAlCl
+        //  Ti + Al + Cl = TiAlCl (treat as chem reactor)
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Titanium)
                 .input(dust, Aluminium)
                 .fluidInputs(Chlorine.getFluid(1000))
                 .EUt(2000000)
                 .duration(50)
-                .outputs(TiAlChloride.getItemStack(3))
+                .outputs(TiAlChloride.getItemStack())
                 .buildAndRegister();
         // HCN + KOH = KCN + H2O
         CHEMICAL_RECIPES.recipeBuilder()

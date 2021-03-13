@@ -67,9 +67,8 @@ public class BacteriaCultures {
                 .EUt(30720)
                 .duration(200)
                 .buildAndRegister();
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .fluidInputs(WaterAgarMix.getFluid(1000))
-                .notConsumable(MetaItems.SHAPE_MOLD_BALL)
                 .outputs(Agar.getItemStack())
                 .EUt(7680)
                 .duration(50)

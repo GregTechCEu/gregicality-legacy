@@ -15,31 +15,31 @@ public class ZylonChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
-                .fluidOutputs(Xylene.getFluid(1000))
+                .fluidOutputs(OrthoXylene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(Xylene.getFluid(1000))
+                .fluidInputs(OrthoXylene.getFluid(1000))
                 .input(dust, Zeolite)
-                .fluidOutputs(XyleneZeoliteMixture.getFluid(1000))
+                .fluidOutputs(OrthoXyleneZeoliteMixture.getFluid(1000))
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(XyleneZeoliteMixture.getFluid(1000))
+                .fluidInputs(OrthoXyleneZeoliteMixture.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Zeolite))
-                .fluidOutputs(PXylene.getFluid(1000))
+                .fluidOutputs(ParaXylene.getFluid(1000))
                 .EUt(2000000)
                 .duration(100)
                 .buildAndRegister();
 
         // C8H10 + O + 2Br -> C8H8Br2 + H2O
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(PXylene.getFluid(1000))
+                .fluidInputs(ParaXylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(Bromine.getFluid(2000))
                 .fluidOutputs(Dibromomethylbenzene.getFluid(1000))
