@@ -15,7 +15,7 @@ import java.util.function.DoubleSupplier;
 
 public class RecipeMapLargeExtended<R extends RecipeBuilder<LargeRecipeBuilder>> extends LargeRecipeMap {
     private TextureArea progressBarTexture = GuiTextures.PROGRESS_BAR_ARROW;
-    private ProgressWidget.MoveType moveType;
+    private ProgressWidget.MoveType moveType = ProgressWidget.MoveType.HORIZONTAL;
 
     public RecipeMapLargeExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, R defaultRecipe) {
         super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES));
@@ -85,24 +85,5 @@ public class RecipeMapLargeExtended<R extends RecipeBuilder<LargeRecipeBuilder>>
                 }
             }
         }
-    }
-
-    protected static int[] determineSlotsGrid(int itemInputsCount) {
-        int itemSlotsToLeft = 0;
-        int itemSlotsToDown = 0;
-        double sqrt = Math.sqrt(itemInputsCount);
-        if (sqrt % 1 == 0) { //check if square root is integer
-            //case for 1, 4, 9 slots - it's square inputs (the most common case)
-            itemSlotsToLeft = itemSlotsToDown = (int) sqrt;
-        } else if (itemInputsCount % 3 == 0) {
-            //case for 3 and 6 slots - 3 by horizontal and i / 3 by vertical (common case too)
-            itemSlotsToDown = itemInputsCount / 3;
-            itemSlotsToLeft = 3;
-        } else if (itemInputsCount % 2 == 0) {
-            //case for 2 inputs - 2 by horizontal and i / 3 by vertical (for 2 slots)
-            itemSlotsToDown = itemInputsCount / 2;
-            itemSlotsToLeft = 2;
-        }
-        return new int[] { itemSlotsToLeft, itemSlotsToDown };
     }
 }

@@ -112,7 +112,7 @@ public class GARecipeMaps {
         LARGE_MIXER_RECIPES = (LargeRecipeMap) new RecipeMapLargeExtended<>("large_mixer", 0, 9, 0, 1, 0, 6, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
                 .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
-                .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
+                .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.HORIZONTAL);
         BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy", 0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
         LARGE_FORGE_HAMMER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_forge_hammer", 1, 1, 1, 1, 1, 1, 0, 0, new LargeRecipeBuilder(RecipeMaps.FORGE_HAMMER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
