@@ -13,6 +13,7 @@ import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.ImplosionRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -89,6 +90,8 @@ public class GARecipeMaps {
     public static final RecipeMap<AdvFusionRecipeBuilder> ADV_FUSION_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DISASSEMBLER_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<ImplosionRecipeBuilder> ELECTRIC_IMPLOSION_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -164,5 +167,7 @@ public class GARecipeMaps {
                 .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
+        ELECTRIC_IMPLOSION_RECIPES = new RecipeMap<>("electric_implosion", 1, 2, 1, 2, 0, 0, 0, 0,
+                new ImplosionRecipeBuilder().duration(1).EUt(1000000)); // UHV-tier, 1tick processing time
     }
 }
