@@ -92,9 +92,6 @@ public class JEIGAPlugin implements IModPlugin {
                 } else if (workableCapability instanceof AbstractRecipeLogic) {
                     RecipeMap<?> recipeMap = ((AbstractRecipeLogic) workableCapability).recipeMap;
                     registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
-                    if (recipeMap instanceof RecipeMapFurnace) {
-                        registry.addRecipeCatalyst(metaTileEntity.getStackForm(), VanillaRecipeCategoryUid.SMELTING);
-                    }
                 }
             }
         }

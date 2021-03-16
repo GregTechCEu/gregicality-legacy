@@ -6,6 +6,7 @@ import gregicadditions.blocks.PowderBarrelRenderer;
 import gregicadditions.machines.CrateRenderer;
 import gregicadditions.machines.DrumRenderer;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregtech.api.gui.resources.AdoptableTextureArea;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
@@ -79,6 +80,7 @@ public class ClientHandler {
     public static TextureArea COVER_INTERFACE_MACHINE_ON_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_on_proxy.png");
     public static TextureArea COVER_INTERFACE_MACHINE_OFF_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_off_proxy.png");
     public static SimpleOverlayRenderer COVER_INFINITE_WATER = new SimpleOverlayRenderer("cover/cover_water_overlay");
+    public static final TextureArea CONTROLLER_SLOT = AdoptableTextureArea.fullImage("textures/gui/base/slot_mbc.png", 21, 21, 4, 4);
 
 
     static {

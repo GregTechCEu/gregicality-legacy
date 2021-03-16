@@ -54,8 +54,12 @@ import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -238,6 +242,8 @@ public class GATileEntities {
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
+    public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
+
     public static void init() {
 
         MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(1999, new MetaTileEntityMonitorScreen(location("monitor_screen")));
@@ -257,11 +263,11 @@ public class GATileEntities {
             CLUSTERMILL[5] = create(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
             CLUSTERMILL[6] = create(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
             CLUSTERMILL[7] = create(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
-            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("clustermill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
-            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("clustermill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
-            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("clustermill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
-            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("clustermill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
-            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("clustermill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("cluster_mill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("cluster_mill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("cluster_mill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("cluster_mill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("cluster_mill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
 
         }
 
@@ -1155,6 +1161,20 @@ public class GATileEntities {
             DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
         }
         STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
+
+        if (GAConfig.Misc.enableDisassembly) {
+            id = 4198;
+            for (int i = 1; i < GAValues.V.length - 1; i++) {
+                final int tier = i; // used for inner class
+                DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                    @Override
+                    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+                        tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
+                        super.addInformation(stack, player, tooltip, advanced);
+                    }
+                }));
+            }
+        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

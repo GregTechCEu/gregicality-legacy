@@ -1,6 +1,6 @@
 package gregicadditions.materials;
 
-import gregtech.api.unification.material.type.MarkerMaterial;
+import gregicadditions.GAMaterials;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.util.SmallDigits;
 
@@ -8,13 +8,27 @@ public class SimpleDustMaterialStack extends MaterialStack {
 
     public final SimpleDustMaterial simpleDustMaterial;
 
+    /**
+     * Cant generate a new MarkerMaterial here because if we have
+     * several SimpleDustMaterialStack of the same material
+     * it will try to create another MarkerMaterial with same name and crash.
+     * Instead use placeholder material. Technetium is used by GTCE
+     * in Material::getAverageMass() for materials with empty
+     * materialComponent lists. This material won't actually be used for anything
+     * since we overwrite every method of MaterialStack.
+     */
     public SimpleDustMaterialStack(SimpleDustMaterial material, long amount) {
-        super(new MarkerMaterial(material.name), amount);
+        super(GAMaterials.Technetium, amount);
         this.simpleDustMaterial = material;
     }
 
     @Override
     public MaterialStack copy() {
+        return new SimpleDustMaterialStack(simpleDustMaterial, amount);
+    }
+
+    @Override
+    public MaterialStack copy(long amount) {
         return new SimpleDustMaterialStack(simpleDustMaterial, amount);
     }
 
@@ -39,7 +53,7 @@ public class SimpleDustMaterialStack extends MaterialStack {
         String string = "";
         if (simpleDustMaterial.chemicalFormula.isEmpty()) {
             string += "?";
-        } else if (simpleDustMaterial.materialComponents.size() > 1) {
+        } else if (simpleDustMaterial.chemicalFormula.length() > 1) {
             string += '(' + simpleDustMaterial.chemicalFormula + ')';
         } else {
             string += simpleDustMaterial.chemicalFormula;

@@ -221,7 +221,7 @@ public class UltimateMaterials {
                 .fluidInputs(HeavyLeptonMix.getFluid(6000))
                 .fluidInputs(Gluons.getFluid(6000))
                 .fluidInputs(Periodicium.getFluid(2736))
-                .fluidOutputs(DenseNeutronPlasma.getFluid(1000))
+                .fluidOutputs(DenseNeutronPlasma.getFluid(6000))
                 .buildAndRegister();
         FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
                 .inputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
