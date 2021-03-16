@@ -243,6 +243,7 @@ public class GATileEntities {
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
     public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
+    public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
 
     public static void init() {
 
@@ -1175,6 +1176,7 @@ public class GATileEntities {
                 }));
             }
         }
+        ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
