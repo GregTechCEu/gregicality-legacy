@@ -46,6 +46,8 @@ public class CoverBehaviors {
         registerBehavior(123, new ResourceLocation(Gregicality.MODID, "infinite.water.luv"), GAMetaItems.LuV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 6));
         registerBehavior(124, new ResourceLocation(Gregicality.MODID, "infinite.water.zpm"), GAMetaItems.ZPM_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 7));
         registerBehavior(125, new ResourceLocation(Gregicality.MODID, "infinite.water.uv"), GAMetaItems.UV_INFINITE_WATER_SOURCE, (tile, side) -> new CoverInfiniteWater(tile, side, 8));
+
+        registerBehavior(126, new ResourceLocation(Gregicality.MODID, "wireless_receiver"), GAMetaItems.WIRELESS_RECEIVER, CoverWirelessReceiver::new);
     }
 
     public static void registerBehavior(int coverNetworkId, ResourceLocation coverId, MetaItem<?>.MetaValueItem placerItem, BiFunction<ICoverable, EnumFacing, CoverBehavior> behaviorCreator) {
