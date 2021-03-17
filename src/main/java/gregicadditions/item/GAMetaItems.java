@@ -485,6 +485,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
     public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
 
+    public static MetaItem<?>.MetaValueItem WIRELESS_RECEIVER;
+
     public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
 
 

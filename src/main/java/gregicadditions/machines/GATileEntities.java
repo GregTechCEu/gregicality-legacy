@@ -162,6 +162,7 @@ public class GATileEntities {
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
     public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
+    public static MetaTileEntityTeslaTower TESLA_TOWER;
     //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
@@ -1052,6 +1053,7 @@ public class GATileEntities {
         HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GTValues.V[GTValues.UV] * 4));
         HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new HyperReactorUEV(location("hyper_reactor.uev"), GTValues.V[GTValues.UV] * 16));
         ADVANCED_FUSION_REACTOR = GregTechAPI.registerMetaTileEntity(3237, new TileEntityAdvFusionReactor(location("advanced_fusion_reactor")));
+        TESLA_TOWER = GregTechAPI.registerMetaTileEntity(3238, new MetaTileEntityTeslaTower(location("tesla_tower")));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));

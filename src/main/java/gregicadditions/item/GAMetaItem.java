@@ -474,6 +474,7 @@ public class GAMetaItem extends MaterialMetaItem {
         
         CHARGED_LEPTON_TRAP_CRYSTAL = addItem(580,"charged.lepton.trap.crystal");
 
+        WIRELESS_RECEIVER = addItem(581, "wireless_receiver");
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
@@ -504,7 +505,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
-        MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior());
+        MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior(), new DataStickBehavior());
 
     }
 

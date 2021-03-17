@@ -427,6 +427,7 @@ metaitem.data_stick.tooltip.coords=%s: %d, %d
 metaitem.data_stick.tooltip.capacity=Capacity: %dmB
 metaitem.data_stick.tooltip.current=Current: %dmB
 metaitem.data_stick.tooltip.fluid=Fluid: %d
+metaitem.data_stick.tooltip.blockpos=X: %d, Y: %d, Z: %d, Dim: %s
 
 metaitem.acrylic_fibers.name=Acrylic Fibers
 metaitem.uranyl_nitrate.name=Uranyl Nitrate
@@ -831,6 +832,7 @@ metaitem.cover.digital.name=Cover Digital Interface
 #metaitem.cover.digital.tooltips.1=Cover Digital Interface have 5 modes: Fluid, Item, Energy, Machine and Proxy.
 #metaitem.cover.digital.tooltips.2=The proxy mode needs to be used with Central Monitor.
 
+metaitem.wireless_receiver.name=Wireless Receiver Cover
 
 #/////////////////////CIRCUIT///////////////////////////
 
@@ -1627,6 +1629,7 @@ gtadditions.machine.hull.uxv.name=UXV Machine Hull
 gtadditions.machine.drilling_rig.name=Drilling Rig
 gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
 gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
+gtadditions.machine.tesla_tower.name=Tesla Tower
 
 
 
@@ -2740,6 +2743,12 @@ gtadditions.multiblock.drilling_rig.chunk_capacity=Chunk Capacity: %dB
 gtadditions.multiblock.drilling_rig.chunk_remaining=Chunk Remaning: %dB
 gtadditions.multiblock.drilling_rig.fluid=Current Fluid: %s
 gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
+gtadditions.multiblock.tesla_tower.range=Range: %s
+gtadditions.multiblock.tesla_tower.voltage=Voltage: %d
+gtadditions.multiblock.tesla_tower.receivers=Receivers: %d
+gtadditions.multiblock.tesla_tower.fail=Emitting failed at:
+gtadditions.multiblock.tesla_tower.scan=Scan
+gtadditions.multiblock.tesla_tower.amps=Amps: %d/%d
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate
