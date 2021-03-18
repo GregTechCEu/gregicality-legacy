@@ -4058,3 +4058,7 @@ recipemap.disassembler.name=Disassembler
 
 gtadditions.machine.pa.display1=Set Recipes: §6%s
 gtadditions.machine.pa.display2=Parallel Recipes: §b%d
+
+gtadditions.machine.electric_implosion.name=Electric Implosion Compressor
+recipemap.electric_implosion.name=Electric Implosion Compressor
+gtadditions.multiblock.electric_implosion.description=An Implosion Compressor without the TNT. Requires UHV-tier power to run, but completes crafts nearly instantly.

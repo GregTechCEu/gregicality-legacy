@@ -34,8 +34,8 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
-                .aisle("XXX", "A#A", "A#A", "A#A", "XSX")
-                .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
+                .aisle("XXX", "A#A", "A#A", "A#A", "XXX")
+                .aisle("XSX", "AAA", "AAA", "AAA", "XXX")
                 .where('A', statePredicate(casingPredicate2()))
                 .where('S', selfPredicate())
                 .where('#', isAirPredicate())

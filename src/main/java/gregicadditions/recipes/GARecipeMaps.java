@@ -167,7 +167,8 @@ public class GARecipeMaps {
                 .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
-        ELECTRIC_IMPLOSION_RECIPES = new RecipeMap<>("electric_implosion", 1, 2, 1, 2, 0, 0, 0, 0, new SimpleRecipeBuilder()
-                .duration(1).EUt(1000000)); // UHV-tier, 1tick processing time
+        ELECTRIC_IMPLOSION_RECIPES = new RecipeMap<>("electric_implosion", 1, 2, 1,
+                2, 0, 0, 0, 0, new SimpleRecipeBuilder()
+                .duration(1).EUt(2500000)); // UHV-tier, 1tick processing time
     }
 }
