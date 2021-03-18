@@ -10,7 +10,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -34,20 +33,14 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "CCC", "CCC", "AAA", "AAA", "AAA", "CCC", "CCC", "XXX")
-                .aisle("XXX", "CFC", "CFC", "AFA", "AFA", "AFA", "CFC", "CFC", "XSX")
-                .aisle("XXX", "CCC", "CCC", "AAA", "AAA", "AAA", "CCC", "CCC", "XXX")
+                .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
+                .aisle("XXX", "A#A", "A#A", "A#A", "XSX")
+                .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
                 .where('A', statePredicate(casingPredicate2()))
                 .where('S', selfPredicate())
-                .where('F', statePredicate(ferritePredicate()))
+                .where('#', isAirPredicate())
                 .where('X', statePredicate(casingPredicate()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', statePredicate(coilPredicate()))
                 .build();
-    }
-
-    // TODO Change this
-    private static IBlockState coilPredicate() {
-        return GAMetaBlocks.getMetalCasingBlockState(Invar);
     }
 
     private static IBlockState casingPredicate() {
@@ -56,10 +49,6 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
 
     private static IBlockState casingPredicate2() {
         return GAMetaBlocks.getMetalCasingBlockState(Americium);
-    }
-
-    private static IBlockState ferritePredicate() {
-        return MetaBlocks.COMPRESSED.get(NickelZincFerrite).getStateFromMeta(0); // TODO is "0" correct?
     }
 
     @Override
