@@ -169,6 +169,6 @@ public class GARecipeMaps {
 
         ELECTRIC_IMPLOSION_RECIPES = new RecipeMap<>("electric_implosion", 1, 2, 1,
                 2, 0, 0, 0, 0, new SimpleRecipeBuilder()
-                .duration(1).EUt(2500000)); // UHV-tier, 1tick processing time
+                .duration(1).EUt(1500000)); // UHV-tier, 1tick processing time
     }
 }
