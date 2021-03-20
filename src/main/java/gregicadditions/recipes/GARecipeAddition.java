@@ -147,9 +147,6 @@ public class GARecipeAddition {
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2).inputs(GreenAlgae.getItemStack(8)).outputs(MetaItems.PLANT_BALL.getStackForm()).buildAndRegister();
 
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(32).fluidInputs(Redstone.getFluid(144 * 3), Copper.getFluid(144)).fluidOutputs(RedAlloy.getFluid(144)).buildAndRegister();
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).fluidInputs(Redstone.getFluid(144 * 2)).inputs(CountableIngredient.from(ingot, Copper)).outputs(OreDictUnifier.get(ingot, RedAlloy)).buildAndRegister();
-        BLAST_RECIPES.recipeBuilder().duration(160).EUt(240).fluidInputs(Redstone.getFluid(144)).inputs(CountableIngredient.from(ingot, AnnealedCopper)).outputs(OreDictUnifier.get(ingot, RedAlloy)).buildAndRegister();
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().fluidInputs(Glass.getFluid(144)).notConsumable(SHAPE_MOLD_BALL.getStackForm()).outputs(GLASS_TUBE.getStackForm()).EUt(16).duration(80).buildAndRegister();
         COMPRESSOR_RECIPES.recipeBuilder().inputs(new ItemStack(Items.GLOWSTONE_DUST, 4)).outputs(new ItemStack(Blocks.GLOWSTONE)).EUt(16).duration(40).buildAndRegister();
 
