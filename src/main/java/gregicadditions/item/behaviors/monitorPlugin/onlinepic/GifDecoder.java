@@ -1,4 +1,4 @@
-package gregicadditions.item.behaviors.monitorPlugin.onlinePic;
+package gregicadditions.item.behaviors.monitorPlugin.onlinepic;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

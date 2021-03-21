@@ -1,4 +1,4 @@
-package gregicadditions.item.behaviors.monitorPlugin.onlinePic;
+package gregicadditions.item.behaviors.monitorPlugin.onlinepic;
 
 import gregicadditions.Gregicality;
 import gregicadditions.renderer.onlinepictexture.AnimatedPictureTexture;

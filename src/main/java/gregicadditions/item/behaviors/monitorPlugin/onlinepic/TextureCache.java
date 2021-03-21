@@ -1,4 +1,4 @@
-package gregicadditions.item.behaviors.monitorPlugin.onlinePic;
+package gregicadditions.item.behaviors.monitorPlugin.onlinepic;
 
 import net.minecraft.client.Minecraft;
 import org.apache.commons.codec.binary.Base64;

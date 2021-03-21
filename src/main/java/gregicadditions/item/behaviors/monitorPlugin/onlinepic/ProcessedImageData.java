@@ -1,4 +1,4 @@
-package gregicadditions.item.behaviors.monitorPlugin.onlinePic;
+package gregicadditions.item.behaviors.monitorPlugin.onlinepic;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
