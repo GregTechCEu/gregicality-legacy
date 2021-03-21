@@ -3,6 +3,7 @@ package gregicadditions.item;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.item.behaviors.*;
+import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
@@ -70,6 +71,7 @@ public class GAMetaItem extends MaterialMetaItem {
             MetaItems.ZPM2.setInvisible();
         }
 
+        PLUGIN_ONLINE_PIC = addItem(128, "plugin.online_pic").addComponents(new OnlinePicPluginBehavior());
         PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
         COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
