@@ -13,6 +13,7 @@ import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
+import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
@@ -323,6 +324,12 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.slot = data.hasKey("slot")? data.getInteger("slot") : 0;
         this.mode = CoverDigitalInterface.MODE.VALUES[data.hasKey("mode")? data.getByte("mode") : 0];
         this.inventory.deserializeNBT(data.getCompoundTag("Inventory"));
+        MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(this.inventory.getStackInSlot(0));
+        if (behavior == null) {
+            unloadPlugin();
+        } else {
+            loadPlugin(behavior);
+        }
         if (data.hasKey("coverPos") && data.hasKey("coverSide")) {
             BlockPos pos = NBTUtil.getPosFromTag(data.getCompoundTag("coverPos"));
             EnumFacing side = EnumFacing.byIndex(data.getByte("coverSide"));
@@ -394,6 +401,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
+        if (plugin != null && plugin.configMode) {
+            plugin.configMode = false;
+            return plugin.customUI(this.getHolder(), entityPlayer);
+        }
         int width = 330;
         int height = 260;
         MultiblockControllerBase controller = this.getController();
@@ -418,21 +429,10 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
                     .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
 
-                    .widget(new ClickButtonWidget(15, 25, 40, 20, "back", (data)->{}) {
-                        MultiblockControllerBase controllerBase;
-                        public ClickButtonWidget setControllerBase (MultiblockControllerBase controllerBase) {
-                            this.controllerBase = controllerBase;
-                            return this;
-                        }
-                        @Override
-                        public void handleClientAction(int id, PacketBuffer buffer) {
-                            if (id == 1) {
-                                ClickData clickData = ClickData.readFromBuf(buffer);
-                                if (((MetaTileEntityCentralMonitor) controller).isActive() && controllerBase.isValid())
-                                MetaTileEntityUIFactory.INSTANCE.openUI(controllerBase.getHolder(), (EntityPlayerMP) this.gui.entityPlayer);
-                            }
-                        }
-                    }.setControllerBase(this.getController()))
+                    .widget(new ClickButtonWidget(15, 25, 40, 20, "back", data->{
+                        if (((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid())
+                            MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
+                    }))
 
                     .widget(new LabelWidget(15, 55, "Scale:", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(this.slot, scale - 1, this.frameColor)))
@@ -461,8 +461,20 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                                 }
 
                             }))
-                    .widget(new DynamicLabelWidget(80,135, () ->
-                            this.inventory.getStackInSlot(0).isEmpty()? "" : this.inventory.getStackInSlot(0).getDisplayName(), 0Xff17FF66))
+                    .widget(new ClickButtonWidget(80, 130, 40, 20, "Config", (data)->{
+                        if (plugin != null) {
+                            plugin.configMode = true;
+                        }
+                        MetaTileEntityUIFactory.INSTANCE.openUI(this.getHolder(), (EntityPlayerMP) entityPlayer);
+                    }) {
+                        @Override
+                        protected void triggerButton() {
+                            super.triggerButton();
+                            if (plugin != null) {
+                                plugin.configMode = true;
+                            }
+                        }
+                    })
 
                     .widget(new WidgetCoverList(width - 140, 50, 120, 11, covers, getCoverFromPosSide(this.coverPos), (coverPos) -> {
                         if (coverPos == null) {

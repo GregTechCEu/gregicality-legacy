@@ -1,6 +1,8 @@
 package gregicadditions.item.behaviors.monitorPlugin;
 
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
+import gregtech.api.gui.GuiTextures;
+import gregtech.api.gui.IUIHolder;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.items.gui.ItemUIFactory;
 import gregtech.api.items.gui.PlayerInventoryHolder;
@@ -25,11 +27,16 @@ import java.util.function.Consumer;
 
 public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemUIFactory {
     MetaTileEntityMonitorScreen screen;
+    public Boolean configMode = false;
+    private NBTTagCompound nbtTagCompound;
 
     abstract public MonitorPluginBaseBehavior createPlugin();
 
-    abstract public ModularUI customUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer, NBTTagCompound nbtTagCompound);
+    public ModularUI customUI(IUIHolder holder, EntityPlayer entityPlayer) {
+        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 260, 210).build(holder, entityPlayer);
+    }
 
+    // can player using item right-click open UI.
     public boolean hasUI() {
         return false;
     }
@@ -40,6 +47,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
 
     // server
     public void readFromNBT(NBTTagCompound data) {
+        this.nbtTagCompound = data;
     }
 
     // server
@@ -60,6 +68,8 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     protected void markDirty() {
         if (screen != null) {
             screen.pluginDirty();
+        } else if (nbtTagCompound != null){
+            writeToNBT(nbtTagCompound);
         }
     }
 
@@ -68,7 +78,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         return false;
     }
 
-    // server update logic
+    // server client update logic
     public void update() {
 
     }
@@ -115,13 +125,12 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
 
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
-        ItemStack itemStack = entityPlayer.getHeldItemMainhand();
+        ItemStack itemStack = playerInventoryHolder.getCurrentItem();
         MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(itemStack);
         if (behavior != null) {
             behavior = behavior.createPlugin();
-            NBTTagCompound tag = itemStack.getOrCreateSubCompound("monitor_plugin");
-            behavior.readFromNBT(tag);
-           return behavior.customUI(playerInventoryHolder, entityPlayer, tag);
+            behavior.readFromNBT(itemStack.getOrCreateSubCompound("monitor_plugin"));
+           return behavior.customUI(playerInventoryHolder, entityPlayer);
         }
         return null;
     }
