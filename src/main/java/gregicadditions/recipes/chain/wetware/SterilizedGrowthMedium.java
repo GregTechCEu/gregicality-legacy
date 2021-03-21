@@ -11,8 +11,8 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class SterilizedGrowthMedium {
     public static void init() {
-        CHEMICAL_RECIPES.recipeBuilder()
 
+        CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, SiliconDioxide, 3)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
@@ -152,7 +152,7 @@ public class SterilizedGrowthMedium {
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
-        
+
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(RawGrowthMedium.getFluid(1000))
                 .fluidInputs(Sulfanilamide.getFluid(250))

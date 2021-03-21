@@ -11,16 +11,6 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class ZylonChain {
     public static void init() {
 
-        // C7H8 + CH3OH -> C8H10 + H2O
-        CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Toluene.getFluid(1000))
-                .fluidInputs(Methanol.getFluid(1000))
-                .fluidOutputs(OrthoXylene.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .EUt(2000000)
-                .duration(50)
-                .buildAndRegister();
-
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(OrthoXylene.getFluid(1000))
                 .input(dust, Zeolite)
