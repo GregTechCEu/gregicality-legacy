@@ -1,6 +1,6 @@
 package gregicadditions.item.behaviors.monitorPlugin;
 
-import gregicadditions.item.behaviors.monitorPlugin.onlinepic.DownloadThread;
+import gregicadditions.item.behaviors.monitorPlugin.onlinePic.DownloadThread;
 import gregicadditions.renderer.onlinepictexture.PictureTexture;
 import gregicadditions.widgets.WidgetPictureTexture;
 import gregicadditions.widgets.WidgetScrollBar;

@@ -14,6 +14,7 @@ import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
+import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
@@ -446,7 +447,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             });
             return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
                     .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
-
                     .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
                         if (((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid())
                             MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
