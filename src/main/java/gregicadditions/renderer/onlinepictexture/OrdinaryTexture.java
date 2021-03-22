@@ -1,6 +1,6 @@
 package gregicadditions.renderer.onlinepictexture;
 
-import gregicadditions.item.behaviors.monitorPlugin.onlinePic.ProcessedImageData;
+import gregicadditions.item.behaviors.monitorPlugin.onlinepic.ProcessedImageData;
 
 public class OrdinaryTexture extends PictureTexture {
 

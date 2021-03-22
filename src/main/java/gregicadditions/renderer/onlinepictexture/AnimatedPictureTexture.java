@@ -1,7 +1,7 @@
 package gregicadditions.renderer.onlinepictexture;
 
 
-import gregicadditions.item.behaviors.monitorPlugin.onlinePic.ProcessedImageData;
+import gregicadditions.item.behaviors.monitorPlugin.onlinepic.ProcessedImageData;
 import net.minecraft.client.renderer.GlStateManager;
 
 import java.util.Arrays;
