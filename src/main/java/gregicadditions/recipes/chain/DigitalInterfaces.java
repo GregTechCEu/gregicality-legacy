@@ -99,6 +99,13 @@ public class DigitalInterfaces {
                     .fluidInputs(fluidStack)
                     .outputs(PLUGIN_ONLINE_PIC.getStackForm())
                     .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(400)
+                    .inputs(DISPLAY.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.Basic)
+                    .input(wireFine, Aluminium, 2)
+                    .fluidInputs(fluidStack)
+                    .outputs(PLUGIN_FAKE_GUI.getStackForm())
+                    .buildAndRegister();
         }
     }
 }

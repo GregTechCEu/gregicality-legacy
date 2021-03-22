@@ -1,5 +1,6 @@
 package gregicadditions.item.behaviors.monitorPlugin;
 
+import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.IUIHolder;
@@ -17,6 +18,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,6 +31,10 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     MetaTileEntityMonitorScreen screen;
     public Boolean configMode = false;
     private NBTTagCompound nbtTagCompound;
+
+    public MetaTileEntityMonitorScreen getScreen() {
+        return screen;
+    }
 
     abstract public MonitorPluginBaseBehavior createPlugin();
 

@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.centralmonitor;
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.covers.CoverDigitalInterface;
+import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
 import gregicadditions.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
@@ -13,7 +14,6 @@ import gregtech.api.cover.CoverBehavior;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
-import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
@@ -72,18 +73,19 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         CoverDigitalInterface last_cover = this.getCoverFromPosSide(coverPos);
         CoverDigitalInterface now_cover = this.getCoverFromPosSide(cover);
         if (this.mode == mode) {
-            if (last_cover == null && cover == null || last_cover != null && last_cover == now_cover){
+            if (Objects.equals(cover, coverPos) && last_cover == null && cover == null || last_cover != null && last_cover == now_cover){
                 return;
             }
         }
-        if (last_cover != null) {
+        if (last_cover != null && this.mode != CoverDigitalInterface.MODE.PROXY) {
             last_cover.unSubProxyMode(this.mode);
         }
-        if (cover != null) {
+        if (cover != null && mode != CoverDigitalInterface.MODE.PROXY) {
             now_cover.subProxyMode(mode);
         }
         this.coverPos = cover;
         this.mode = mode;
+        updateProxyPlugin();
         writeCustomData(1, this::writeSync);
         this.markDirty();
     }
@@ -106,19 +108,20 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     public CoverDigitalInterface getCoverFromPosSide(Tuple<BlockPos, EnumFacing> posFacing) {
-        if (posFacing == null) {
-            return null;
+        if (posFacing == null) return null;
+        MetaTileEntityHolder holder = getHolderFromPos(posFacing.getKey());
+        if (holder == null) return null;
+        CoverBehavior cover = holder.getMetaTileEntity().getCoverAtSide(posFacing.getValue());
+        if (cover instanceof CoverDigitalInterface){
+            return (CoverDigitalInterface) cover;
         }
-        World world = this.getWorld();
-        if (world == null) {
-            return null;
-        }
-        TileEntity te = world.getTileEntity(posFacing.getKey());
-        if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() != null) {
-            CoverBehavior cover = ((MetaTileEntityHolder) te).getMetaTileEntity().getCoverAtSide(posFacing.getValue());
-            if (cover instanceof CoverDigitalInterface){
-                return (CoverDigitalInterface) cover;
-            }
+        return null;
+    }
+
+    public MetaTileEntityHolder getHolderFromPos(BlockPos pos) {
+        TileEntity te = this.getWorld() == null || pos == null? null:this.getWorld().getTileEntity(pos);
+        if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).isValid()) {
+            return (MetaTileEntityHolder) te;
         }
         return null;
     }
@@ -160,6 +163,17 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.slot = buf.readInt();
         this.scale = buf.readInt();
         this.frameColor = buf.readInt();
+        updateProxyPlugin();
+    }
+
+    private void updateProxyPlugin() {
+        if (this.plugin instanceof ProxyHolderPluginBehavior) {
+            if (this.mode == CoverDigitalInterface.MODE.PROXY && coverPos != null) {
+                ((ProxyHolderPluginBehavior) this.plugin).onHolderPosUpdated(coverPos.getKey());
+            } else {
+                ((ProxyHolderPluginBehavior) this.plugin).onHolderPosUpdated(null);
+            }
+        }
     }
 
     public int getX() {
@@ -206,6 +220,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             this.plugin.readFromNBT(this.itemInventory.getStackInSlot(0).getOrCreateSubCompound("monitor_plugin"));
             this.plugin.onMonitorValid(this, true);
         }
+        updateProxyPlugin();
     }
 
     private void unloadPlugin() {
@@ -218,7 +233,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     @Override
     public void update() {
         super.update();
-        if(plugin != null) {
+        if(plugin != null && this.isAttachedToMultiBlock()) {
             plugin.update();
         }
     }
@@ -243,7 +258,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     }
                 }
             }
-
+            if (this.mode == CoverDigitalInterface.MODE.PROXY) return;
             if (flag) {
                 coverTMP.renderMode(this.mode, this.slot, partialTicks);
                 // render machine
@@ -324,18 +339,18 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.slot = data.hasKey("slot")? data.getInteger("slot") : 0;
         this.mode = CoverDigitalInterface.MODE.VALUES[data.hasKey("mode")? data.getByte("mode") : 0];
         this.inventory.deserializeNBT(data.getCompoundTag("Inventory"));
-        MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(this.inventory.getStackInSlot(0));
-        if (behavior == null) {
-            unloadPlugin();
-        } else {
-            loadPlugin(behavior);
-        }
         if (data.hasKey("coverPos") && data.hasKey("coverSide")) {
             BlockPos pos = NBTUtil.getPosFromTag(data.getCompoundTag("coverPos"));
             EnumFacing side = EnumFacing.byIndex(data.getByte("coverSide"));
             this.coverPos = new Tuple<>(pos, side);
         } else {
             this.coverPos = null;
+        }
+        MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(this.inventory.getStackInSlot(0));
+        if (behavior == null) {
+            unloadPlugin();
+        } else {
+            loadPlugin(behavior);
         }
     }
 
@@ -408,19 +423,22 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         int width = 330;
         int height = 260;
         MultiblockControllerBase controller = this.getController();
-        ToggleButtonWidget[] buttons = new ToggleButtonWidget[4];
+        ToggleButtonWidget[] buttons = new ToggleButtonWidget[5];
         buttons[0] = new ToggleButtonWidget(width - 135, 25, 20, 20, ClientHandler.BUTTON_FLUID, ()->this.mode != CoverDigitalInterface.MODE.FLUID, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.FLUID);
-        });
+        }).setTooltipText("metaitem.cover.digital.mode.fluid");
         buttons[1] = new ToggleButtonWidget(width - 115, 25, 20, 20, ClientHandler.BUTTON_ITEM, ()->this.mode != CoverDigitalInterface.MODE.ITEM, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.ITEM);
-        });
+        }).setTooltipText("metaitem.cover.digital.mode.item");
         buttons[2] = new ToggleButtonWidget(width - 95, 25, 20, 20, ClientHandler.BUTTON_ENERGY, ()->this.mode != CoverDigitalInterface.MODE.ENERGY, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.ENERGY);
-        });
+        }).setTooltipText("metaitem.cover.digital.mode.energy");
         buttons[3] = new ToggleButtonWidget(width - 75, 25, 20, 20, ClientHandler.BUTTON_MACHINE, ()->this.mode != CoverDigitalInterface.MODE.MACHINE, (isPressed)->{
             setMode(CoverDigitalInterface.MODE.MACHINE);
-        });
+        }).setTooltipText("metaitem.cover.digital.mode.machine");
+        buttons[4] = new ToggleButtonWidget(width - 35, 25, 20, 20, ClientHandler.BUTTON_INTERFACE, ()->this.mode != CoverDigitalInterface.MODE.PROXY, (isPressed)->{
+            setMode(CoverDigitalInterface.MODE.PROXY);
+        }).setTooltipText("metaitem.cover.digital.mode.proxy");
         if (controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive()) {
             List<CoverDigitalInterface> covers = new ArrayList<>();
             ((MetaTileEntityCentralMonitor) controller).covers.forEach(coverPos->{
@@ -429,27 +447,27 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
                     .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
 
-                    .widget(new ClickButtonWidget(15, 25, 40, 20, "back", data->{
+                    .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
                         if (((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid())
                             MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
                     }))
 
-                    .widget(new LabelWidget(15, 55, "Scale:", 0xFFFFFFFF))
+                    .widget(new LabelWidget(15, 55, "monitor.gui.title.scale", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(this.slot, scale - 1, this.frameColor)))
                     .widget(new ClickButtonWidget(130, 50, 20, 20, "+1", (data) -> setConfig(this.slot, scale + 1, this.frameColor)))
                     .widget(new ImageWidget(70, 50, 60, 20, GuiTextures.DISPLAY))
                     .widget(new SimpleTextWidget(100, 60, "", 16777215, () -> Integer.toString(scale)))
 
-                    .widget(new LabelWidget(15, 85, "ARGB:", 0xFFFFFFFF))
+                    .widget(new LabelWidget(15, 85, "monitor.gui.title.argb", 0xFFFFFFFF))
                     .widget(new WidgetARGB(50, 80, 20, this.frameColor, (color)->setConfig(this.slot, this.scale, color)))
 
-                    .widget(new LabelWidget(15, 110, "Slot:", 0xFFFFFFFF))
+                    .widget(new LabelWidget(15, 110, "monitor.gui.title.slot", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 105, 20, 20, "-1", (data) -> setConfig(this.slot - 1, this.scale, this.frameColor)))
                     .widget(new ClickButtonWidget(130, 105, 20, 20, "+1", (data) -> setConfig(this.slot + 1, this.scale, this.frameColor)))
                     .widget(new ImageWidget(70, 105, 60, 20, GuiTextures.DISPLAY))
                     .widget(new SimpleTextWidget(100, 115, "", 16777215, () -> Integer.toString(slot)))
 
-                    .widget(new LabelWidget(15, 135, "Plugin:", 0xFFFFFFFF))
+                    .widget(new LabelWidget(15, 135, "monitor.gui.title.plugin", 0xFFFFFFFF))
                     .widget(new SlotWidget(inventory, 0, 50, 130, true, true)
                             .setBackgroundTexture(GuiTextures.SLOT)
                             .setChangeListener(()->{
@@ -461,7 +479,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                                 }
 
                             }))
-                    .widget(new ClickButtonWidget(80, 130, 40, 20, "Config", (data)->{
+                    .widget(new ClickButtonWidget(80, 130, 40, 20, "monitor.gui.title.config", (data)->{
                         if (plugin != null) {
                             plugin.configMode = true;
                         }
@@ -488,6 +506,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(buttons[1])
                     .widget(buttons[2])
                     .widget(buttons[3])
+                    .widget(buttons[4])
 
                     .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170)
                     .build(this.getHolder(), entityPlayer);

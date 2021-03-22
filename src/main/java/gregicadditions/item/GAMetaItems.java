@@ -471,6 +471,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
     public static MetaItem<?>.MetaValueItem PLUGIN_ONLINE_PIC;
+    public static MetaItem<?>.MetaValueItem PLUGIN_FAKE_GUI;
 
 
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;

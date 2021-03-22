@@ -196,6 +196,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void setActive(boolean isActive) {
+        isActive = true;
         if(isActive == this.isActive) return;
         this.isActive = isActive;
         writeCustomData(4, buf -> buf.writeBoolean(this.isActive));

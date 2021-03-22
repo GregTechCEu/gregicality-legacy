@@ -85,8 +85,8 @@ public class WidgetScrollBar extends Widget {
         }
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
-        String text = I18n.format(this.title, new Object[0]);
-        text += ": " + new DecimalFormat(".00").format(getValue());
+        String text = I18n.format(this.title);
+        text += ": " + new DecimalFormat("#.00").format(getValue());
         fontRenderer.drawString(text, position.x + size.width / 2 - fontRenderer.getStringWidth(text) / 2, position.y - 3 + size.height / 2 - fontRenderer.FONT_HEIGHT / 2, this.titleColor);
         GlStateManager.color(1.0F, 1.0F, 1.0F);
     }
