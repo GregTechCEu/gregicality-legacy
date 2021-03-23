@@ -75,14 +75,8 @@ public class NanoMuscleSuite extends ArmorLogicSuite {
                 }
             }
 
-            if (!world.isRemote && toggleTimer > 0) {
-                --toggleTimer;
-                nbtData.setByte("toggleTimer", toggleTimer);
-            }
-        }
-        if (ret) {
-            player.inventoryContainer.detectAndSendChanges();
-        }
+    public NanoMuscleSuite(EntityEquipmentSlot slot, int energyPerUse, int capacity, int tier) {
+        super(energyPerUse, capacity, tier, slot);
     }
 
     public boolean handleUnblockableDamage(EntityLivingBase entity, @Nonnull ItemStack armor, DamageSource source, double damage, EntityEquipmentSlot equipmentSlot) {
