@@ -28,7 +28,9 @@ public class GAMetaArmor extends ArmorMetaItem<ArmorMetaItem<?>.ArmorMetaValueIt
 
         GAMetaItems.ADVANCED_QAURK_TECH_SUITE_CHESTPLATE = addItem(13, "qts.advanced_chestplate").setArmorLogic(new AdvancedQuarkTechSuite());
         GAMetaItems.ADVANCED_NANO_MUSCLE_CHESTPLATE = addItem(14, "nms.advanced_chestplate").setArmorLogic(new AdvancedNanoMuscleSuite());
-        GAMetaItems.ADVANCED_IMPELLER_JETPACK = addItem(15, "advanced_impeller_jetpack").setArmorLogic(new AdvancedJetpack(512, 11400000, GAValues.HV));
+        GAMetaItems.ADVANCED_IMPELLER_JETPACK = addItem(15, "advanced_impeller_jetpack").setArmorLogic(new AdvancedJetpack(e.advImpellerJetpack.energyPerUse, e.advImpellerJetpack.capacity, e.advImpellerJetpack.voltageTier));
+
+        GAMetaItems.NIGHTVISION_GOGGLES = addItem(16, "nightvision_goggles").setArmorLogic(new NightvisionGoggles());
 
         GAMetaItems.IMPELLER_JETPACK.setModelAmount(8);
         GAMetaItems.BATPACK_LV.setModelAmount(8);
