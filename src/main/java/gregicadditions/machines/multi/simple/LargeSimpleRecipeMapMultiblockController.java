@@ -420,10 +420,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected int getMinRatioFluid(Map<String, Integer> countFluid, Recipe r, int maxItemsLimit) {
             int minMultiplier = Integer.MAX_VALUE;
             for (FluidStack fs : r.getFluidInputs()) {
-                String name = fs.getFluid().getUnlocalizedName();
-                int ratio = Math.min(maxItemsLimit, countFluid.get(name) / fs.amount);
-                if (ratio < minMultiplier) {
-                    minMultiplier = ratio;
+                if (fs.amount != 0) { // skip notConsumable fluids
+                    String name = fs.getFluid().getUnlocalizedName();
+                    int ratio = Math.min(maxItemsLimit, countFluid.get(name) / fs.amount);
+                    if (ratio < minMultiplier) {
+                        minMultiplier = ratio;
+                    }
                 }
             }
             return minMultiplier;
