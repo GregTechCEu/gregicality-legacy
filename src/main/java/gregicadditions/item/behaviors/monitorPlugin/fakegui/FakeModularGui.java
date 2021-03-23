@@ -1,25 +1,20 @@
 package gregicadditions.item.behaviors.monitorPlugin.fakegui;
 
 import gregicadditions.renderer.RenderHelper;
-import gregicadditions.utils.Tuple;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
-import gregtech.api.net.PacketUIWidgetUpdate;
-import gregtech.api.util.Position;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderItem;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.inventory.Container;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 import java.util.List;
 
@@ -27,14 +22,15 @@ import java.util.List;
 public class FakeModularGui implements IRenderContext {
     public final ModularUI modularUI;
     public FakeModularUIContainer container;
+    protected Minecraft mc;
+    protected FontRenderer fr;
 
     public FakeModularGui(ModularUI modularUI, FakeModularUIContainer fakeModularUIContainer){
         this.modularUI = modularUI;
         this.container = fakeModularUIContainer;
-        Position leftTop = new Position(0, 0);
-        for (Widget widget : modularUI.guiWidgets.values()) {
-            widget.setParentPosition(leftTop);
-        }
+        this.modularUI.updateScreenSize(this.modularUI.getWidth(), this.modularUI.getHeight());
+        this.mc = Minecraft.getMinecraft();
+        this.fr = mc.fontRenderer;
     }
 
     public void updateScreen() {
@@ -51,10 +47,13 @@ public class FakeModularGui implements IRenderContext {
         }
     }
 
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+    public void drawScreen(double x, double y, float partialTicks) {
         float halfW = modularUI.getWidth() / 2f;
         float halfH = modularUI.getHeight() / 2f;
         float scale = 0.5f / Math.max(halfW, halfH);
+        int mouseX = (int) ((x / scale) + (halfW > halfH? 0: (halfW - halfH)));
+        int mouseY = (int) ((y / scale) + (halfH > halfW? 0: (halfH - halfW)));
+
         GlStateManager.translate(-scale * halfW, -scale * halfH, 0.01);
         GlStateManager.scale(scale, scale, 1);
         GlStateManager.depthMask(false);
@@ -62,25 +61,43 @@ public class FakeModularGui implements IRenderContext {
         drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         for (int i = 0; i < this.container.inventorySlots.size(); ++i) {
+            RenderHelper.renderSlot(this.container.inventorySlots.get(i), fr);
+        }
+
+
+        GlStateManager.scale(1, 1, 0);
+        drawGuiContainerForegroundLayer(mouseX, mouseY);
+        for (int i = 0; i < this.container.inventorySlots.size(); ++i) {
             Slot slot = this.container.inventorySlots.get(i);
-            ItemStack itemstack = slot.getStack();
-            if (!itemstack.isEmpty() && slot.isEnabled()) {
-                net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(1, 1, 0);
-                GlStateManager.translate(slot.xPos - halfW, slot.yPos - halfH, 0);
-                RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-                renderItem.renderItemAndEffectIntoGUI(itemstack, 0, 0);
-                String count = itemstack.getCount() > 1? Integer.toString(itemstack.getCount()) : null;
-                renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, itemstack, 0, 0, count);
-                GlStateManager.popMatrix();
-                net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+            if (!slot.getStack().isEmpty() && slot.xPos < mouseX && mouseX < slot.xPos + 18 && slot.yPos < mouseY && mouseY < slot.yPos + 18) {
+                RenderHelper.renderRect(slot.xPos, slot.yPos, 18, 18, 0, 0X8fffffff);
+                renderToolTip(slot.getStack(), slot.xPos, slot.yPos);
             }
         }
 
-        drawGuiContainerForegroundLayer(mouseX, mouseY);
-
         GlStateManager.depthMask(true);
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
+        GlStateManager.disableLighting();
+    }
+
+    protected void renderToolTip(ItemStack stack, int x, int y) {
+        FontRenderer font = stack.getItem().getFontRenderer(stack);
+        net.minecraftforge.fml.client.config.GuiUtils.preItemToolTip(stack);
+        GuiUtils.drawHoveringText(this.getItemToolTip(stack), x, y, modularUI.getScreenWidth(), modularUI.getScreenHeight(), -1, (font == null ? fr : font));
+        net.minecraftforge.fml.client.config.GuiUtils.postItemToolTip();
+    }
+
+    protected List<String> getItemToolTip(ItemStack itemStack) {
+        List<String> list = itemStack.getTooltip(mc.player, mc.gameSettings.advancedItemTooltips ? ITooltipFlag.TooltipFlags.ADVANCED : ITooltipFlag.TooltipFlags.NORMAL);
+        for (int i = 0; i < list.size(); ++i) {
+            if (i == 0) {
+                list.set(i, itemStack.getItem().getForgeRarity(itemStack).getColor() + list.get(i));
+            }
+            else {
+                list.set(i, TextFormatting.GRAY + list.get(i));
+            }
+        }
+        return list;
     }
 
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {

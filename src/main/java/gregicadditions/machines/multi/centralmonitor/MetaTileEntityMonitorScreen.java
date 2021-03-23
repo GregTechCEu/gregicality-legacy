@@ -20,6 +20,7 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -315,6 +316,19 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             if (plugin != null) {
                 plugin.readPluginData(buf.readInt(), buf);
             }
+        } else if (dataId == 3) {
+            try {
+                ItemStack itemStack = buf.readItemStack();
+                MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(itemStack);
+                if (behavior == null) {
+                    unloadPlugin();
+                } else {
+                    this.inventory.setStackInSlot(0, itemStack);
+                    loadPlugin(behavior);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -373,8 +387,11 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             @Nonnull
             @Override
             public ItemStack extractItem(int slot, int amount, boolean simulate) {
-                if(!getStackInSlot(slot).isEmpty() && !simulate) {
+                if(!getWorld().isRemote && !getStackInSlot(slot).isEmpty() && !simulate) {
                     unloadPlugin();
+                    writeCustomData(3, packetBuffer -> {
+                        packetBuffer.writeItemStack(ItemStack.EMPTY);
+                    });
                 }
                 return super.extractItem(slot, amount, simulate);
             }
@@ -471,13 +488,17 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(new SlotWidget(inventory, 0, 50, 130, true, true)
                             .setBackgroundTexture(GuiTextures.SLOT)
                             .setChangeListener(()->{
-                                MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(inventory.getStackInSlot(0));
-                                if(behavior == null) {
-                                    unloadPlugin();
-                                } else {
-                                    loadPlugin(behavior);
+                                if (this.getWorld() != null && !this.getWorld().isRemote) {
+                                    MonitorPluginBaseBehavior behavior = MonitorPluginBaseBehavior.getBehavior(inventory.getStackInSlot(0));
+                                    if(behavior == null) {
+                                        unloadPlugin();
+                                    } else {
+                                        loadPlugin(behavior);
+                                    }
+                                    writeCustomData(3, packetBuffer -> {
+                                        packetBuffer.writeItemStack(inventory.getStackInSlot(0));
+                                    });
                                 }
-
                             }))
                     .widget(new ClickButtonWidget(80, 130, 40, 20, "monitor.gui.title.config", (data)->{
                         if (plugin != null) {
@@ -516,13 +537,13 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     // adaptive click, supports scaling. x and y is the pos of the origin screen (scale = 1). this func must be called when screen is active.
     public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
-        boolean flag = false;
         if (this.plugin != null) {
-            flag = this.plugin.onClickLogic(playerIn, hand, facing, isRight, x, y);
+            boolean flag = this.plugin.onClickLogic(playerIn, hand, facing, isRight, x, y);
+            if (flag) return flag;
         }
         CoverDigitalInterface coverBehavior = getCoverFromPosSide(this.coverPos);
         if (isRight) {
-            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
+            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null && this.mode != CoverDigitalInterface.MODE.PROXY) {
                 if (playerIn.isSneaking() && playerIn.getHeldItemMainhand().isEmpty()) {
                     if (1f / 16 < x && x < 4f / 16 && 1f / 16 < y && y < 4f / 16) {
                         this.setConfig(this.slot - 1, this.scale, this.frameColor);
@@ -533,16 +554,16 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     }
                 }
                 if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null)) {
-                    return ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null) || flag;
+                    return ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, facing, null);
                 }
                 return true;
             }
         } else {
-            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null) {
-                return coverBehavior.modeLeftClick(playerIn, this.mode, this.slot) || flag;
+            if (coverBehavior != null && coverBehavior.isProxy() && coverBehavior.coverHolder!= null && this.mode != CoverDigitalInterface.MODE.PROXY) {
+                return coverBehavior.modeLeftClick(playerIn, this.mode, this.slot);
             }
         }
-        return flag;
+        return false;
     }
 
     private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, CuboidRayTraceResult rayTraceResult) {
@@ -566,9 +587,9 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                         MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) te).getMetaTileEntity();
                         if ((screen.scale > i && screen.scale > j) && screen.isActive()) {
-                            x = (x + i) / screen.scale;
-                            y = (y + j) / screen.scale;
-                            if (screen.onClickLogic(playerIn, hand, facing, isRight, x, y)) {
+                            double xR = (x + i) / screen.scale;
+                            double yR = (y + j) / screen.scale;
+                            if (screen.onClickLogic(playerIn, hand, facing, isRight, xR, yR)) {
                                 flag = true;
                             }
                         }
@@ -577,6 +598,43 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             }
         }
         return flag;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public net.minecraft.util.Tuple<Double, Double> checkLookingAt(float partialTicks) {
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        if (player != null) {
+            RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
+            if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && this.getController() != null && rayTraceResult.sideHit == this.getController().getFrontFacing()) {
+                double x = 0;
+                double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
+                int i = -1;
+                if (rayTraceResult.sideHit == EnumFacing.EAST) {
+                    if (rayTraceResult.getBlockPos().getX() != this.getPos().getX()) return null;
+                    x = 1 - rayTraceResult.hitVec.z + rayTraceResult.getBlockPos().getZ();
+                    i = this.getPos().getZ() - rayTraceResult.getBlockPos().getZ();
+                } else if (rayTraceResult.sideHit == EnumFacing.SOUTH) {
+                    if (rayTraceResult.getBlockPos().getZ() != this.getPos().getZ()) return null;
+                    x = rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
+                    i = rayTraceResult.getBlockPos().getX() - this.getPos().getX();
+                } else if (rayTraceResult.sideHit == EnumFacing.WEST) {
+                    if (rayTraceResult.getBlockPos().getX() != this.getPos().getX()) return null;
+                    x = rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ();
+                    i = rayTraceResult.getBlockPos().getZ() - this.getPos().getZ();
+                } else if (rayTraceResult.sideHit == EnumFacing.NORTH) {
+                    if (rayTraceResult.getBlockPos().getZ() != this.getPos().getZ()) return null;
+                    x = 1 - rayTraceResult.hitVec.x + rayTraceResult.getBlockPos().getX();
+                    i = this.getPos().getX() - rayTraceResult.getBlockPos().getX();
+                }
+                int j = this.getPos().getY() - rayTraceResult.getBlockPos().getY();
+                if ((this.scale > i && this.scale > j && i >= 0 && j >= 0)) {
+                    x = (x + i) / this.scale;
+                    y = (y + j) / this.scale;
+                    return new net.minecraft.util.Tuple<Double, Double>(x, y);
+                }
+            }
+        }
+        return null;
     }
 
     @Override

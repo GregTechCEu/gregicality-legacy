@@ -2,16 +2,12 @@ package gregicadditions.item.behaviors.monitorPlugin.fakegui;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
+import gregicadditions.network.CPacketFakeGuiSynced;
 import gregtech.api.gui.INativeWidget;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
-import gregtech.api.gui.widgets.WidgetUIAccess;
-import gregtech.api.net.PacketUIWidgetUpdate;
-import io.netty.buffer.Unpooled;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryBasic;
+import gregtech.api.gui.widgets.*;
+import gregtech.api.net.NetworkHandler;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
@@ -20,14 +16,14 @@ import net.minecraft.util.Tuple;
 
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class FakeModularUIContainer implements WidgetUIAccess {
     private final NonNullList<ItemStack> inventoryItemStacks = NonNullList.create();
     public final List<Slot> inventorySlots = Lists.newArrayList();
-    private final ModularUI modularUI;
+    public final ModularUI modularUI;
     protected int windowId;
     private final FakeGuiPluginBehavior behavior;
+    public int syncId;
 
     public FakeModularUIContainer(ModularUI modularUI, FakeGuiPluginBehavior pluginBehavior) {
         this.modularUI = modularUI;
@@ -53,6 +49,18 @@ public class FakeModularUIContainer implements WidgetUIAccess {
         } catch (Exception ignored){
 
         }
+    }
+
+    public void handleClientAction(PacketBuffer buffer) {
+        int syncId = buffer.readVarInt();
+        int windowId = buffer.readVarInt();
+        if (syncId == this.syncId && windowId == this.windowId) {
+            Widget widget = modularUI.guiWidgets.get(buffer.readVarInt());
+            if (widget != null) {
+                widget.handleClientAction(buffer.readVarInt(), buffer);
+            }
+        }
+        this.syncId = 0;
     }
 
     public void detectAndSendChanges() {
@@ -108,16 +116,23 @@ public class FakeModularUIContainer implements WidgetUIAccess {
 
     @Override
     public void writeClientAction(Widget widget, int updateId, Consumer<PacketBuffer> payloadWriter) {
+        NetworkHandler.channel.sendToServer(new CPacketFakeGuiSynced(behavior, true, buf->{
+            buf.writeVarInt(syncId);
+            buf.writeVarInt(windowId);
+            buf.writeVarInt(modularUI.guiWidgets.inverse().get(widget));
+            buf.writeVarInt(updateId);
+            payloadWriter.accept(buf);
+        }).toFMLPacket());
     }
 
     @Override
     public void writeUpdateInfo(Widget widget, int updateId, Consumer<PacketBuffer> payloadWriter) {
         if(behavior != null) {
-            behavior.writePluginData(0, packetBuffer1 -> {
-                packetBuffer1.writeVarInt(windowId);
-                packetBuffer1.writeVarInt(modularUI.guiWidgets.inverse().get(widget));
-                packetBuffer1.writeVarInt(updateId);
-                payloadWriter.accept(packetBuffer1);
+            behavior.writePluginData(0, buf -> {
+                buf.writeVarInt(windowId);
+                buf.writeVarInt(modularUI.guiWidgets.inverse().get(widget));
+                buf.writeVarInt(updateId);
+                payloadWriter.accept(buf);
             });
         }
     }

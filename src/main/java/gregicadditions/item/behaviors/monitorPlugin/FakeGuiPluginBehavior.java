@@ -5,6 +5,7 @@ import gregicadditions.item.behaviors.monitorPlugin.fakegui.FakeModularGui;
 import gregicadditions.item.behaviors.monitorPlugin.fakegui.FakeModularUIContainer;
 import gregicadditions.network.CPacketFakeGuiSynced;
 import gregicadditions.utils.GALog;
+import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -13,7 +14,9 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.net.NetworkHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.Tuple;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -36,7 +39,13 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
         method.setAccessible(true);
     }
 
-    public void CreateFakeGui() {
+    public void handleClickActionSync(PacketBuffer buffer) {
+        if (this.fakeModularUIContainer != null) {
+            fakeModularUIContainer.handleClientAction(buffer);
+        }
+    }
+
+    public void createFakeGui() {
         if (this.holder == null || this.screen == null || !this.screen.isValid()) return;
         try {
             fakePlayer = new FakeEntityPlayer(this.screen.getWorld());
@@ -79,7 +88,7 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
             fakePlayer = null;
         } else {
             if (this.screen.getWorld().isRemote) {
-                CreateFakeGui();
+                createFakeGui();
             }
         }
     }
@@ -104,19 +113,60 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
     @Override
     public void renderPlugin(float partialTicks) {
         if (fakeModularGui != null) {
-            fakeModularGui.drawScreen(0, 0, partialTicks);
+            Tuple<Double, Double> result = this.screen.checkLookingAt(partialTicks);
+            if (result == null)
+                fakeModularGui.drawScreen(0, 0, partialTicks);
+            else
+                fakeModularGui.drawScreen(result.getFirst(), result.getSecond(), partialTicks);
         }
+    }
+
+    @Override
+    public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y) {
+        if (fakeModularUIContainer != null && fakeModularUIContainer.modularUI != null && !playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, null)) {
+            int width = fakeModularUIContainer.modularUI.getWidth();
+            int height = fakeModularUIContainer.modularUI.getHeight();
+            float halfW = width / 2f;
+            float halfH = height / 2f;
+            float scale = 0.5f / Math.max(halfW, halfH);
+            int mouseX = (int) ((x / scale) + (halfW > halfH? 0: (halfW - halfH)));
+            int mouseY = (int) ((y / scale) + (halfH > halfW? 0: (halfH - halfW)));
+            if (this.holder != null && this.holder.getMetaTileEntity() != null && 0 <= mouseX && mouseX <= width && 0 <= mouseY&& mouseY <= height) {
+                if (playerIn.isSneaking()) {
+                    writePluginData(-2, buf->{
+                        buf.writeVarInt(mouseX);
+                        buf.writeVarInt(mouseY);
+                        buf.writeVarInt(isRight?1:0);
+                        buf.writeVarInt(fakeModularUIContainer.syncId);
+                    });
+                } else {
+                    return isRight && this.holder.getMetaTileEntity().onRightClick(playerIn, hand, facing, null) || super.onClickLogic(playerIn, hand, facing, isRight, x, y);
+                }
+            }
+        }
+        return super.onClickLogic(playerIn, hand, facing, isRight, x, y);
     }
 
     @Override
     public void readPluginData(int id, PacketBuffer buf) {
         super.readPluginData(id, buf);
-        if (id == 0 && fakeModularGui != null) {
+        if (id == 0) {
             int windowID = buf.readVarInt();
             int widgetID = buf.readVarInt();
-            fakeModularGui.handleWidgetUpdate(windowID, widgetID, buf);
-        } else if (id == -1 && fakeModularUIContainer != null) {
-            fakeModularUIContainer.handleSlotUpdate(buf);
+            if (fakeModularGui != null)
+                fakeModularGui.handleWidgetUpdate(windowID, widgetID, buf);
+        } else if (id == -1) {
+            if (fakeModularUIContainer != null)
+                fakeModularUIContainer.handleSlotUpdate(buf);
+        } else if (id == -2) {
+            int mouseX = buf.readVarInt();
+            int mouseY = buf.readVarInt();
+            int button = buf.readVarInt();
+            int syncID = buf.readVarInt();
+            if (fakeModularGui != null &&  fakeModularUIContainer != null) {
+                fakeModularUIContainer.syncId = syncID;
+                fakeModularGui.mouseClicked(mouseX, mouseY, button);
+            }
         }
     }
 }
