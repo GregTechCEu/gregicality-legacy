@@ -32,8 +32,8 @@ import java.util.List;
 public class AdvancedQuarkTechSuite extends QuarkTechSuite {
     private int cachedSlotId = -1;
 
-    public AdvancedQurakTechSuite() {
-        super(EntityEquipmentSlot.CHEST, 10000, 100000000, GAValues.IV);
+    public AdvancedQuarkTechSuite() {
+        super(EntityEquipmentSlot.CHEST, GAConfig.equipment.advQuarkTechSuit.energyPerUse, GAConfig.equipment.advQuarkTechSuit.capacity, GAConfig.equipment.advQuarkTechSuit.voltageTier);
     }
 
     @Override
