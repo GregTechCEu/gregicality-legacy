@@ -86,7 +86,7 @@ dependencies {
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.554"
     deobfCompile "mezz.jei:jei_1.12.2:+"
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
-    deobfCompile "gregtechce:gregtech:1.12.2:1.12.1.669"
+    deobfCompile "gregtechce:gregtech:1.12.2:1.13.0.681"
     deobfCompile "codechicken:ChickenASM:1.12-1.0.2.9"
     deobfCompile "codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal"
     deobfCompile "forge-multipart-cbe:ForgeMultipart-1.12.2:2.6.2.83:universal"
