@@ -1,5 +1,6 @@
 package gregicadditions.armor;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.input.EnumKey;
 import gregicadditions.item.GAMetaItems;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class AdvancedQurakTechSuite extends QuarkTechSuite {
+public class AdvancedQuarkTechSuite extends QuarkTechSuite {
     private int cachedSlotId = -1;
 
     public AdvancedQurakTechSuite() {
