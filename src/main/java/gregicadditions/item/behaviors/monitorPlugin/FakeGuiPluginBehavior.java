@@ -5,6 +5,7 @@ import gregicadditions.item.behaviors.monitorPlugin.fakegui.FakeModularGui;
 import gregicadditions.item.behaviors.monitorPlugin.fakegui.FakeModularUIContainer;
 import gregicadditions.network.CPacketFakeGuiSynced;
 import gregicadditions.utils.GALog;
+import gregicadditions.utils.Tuple;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
@@ -16,7 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.Tuple;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -117,7 +117,7 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
             if (result == null)
                 fakeModularGui.drawScreen(0, 0, partialTicks);
             else
-                fakeModularGui.drawScreen(result.getFirst(), result.getSecond(), partialTicks);
+                fakeModularGui.drawScreen(result.getKey(), result.getValue(), partialTicks);
         }
     }
 

@@ -442,20 +442,20 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         int height = 260;
         MultiblockControllerBase controller = this.getController();
         ToggleButtonWidget[] buttons = new ToggleButtonWidget[5];
-        buttons[0] = new ToggleButtonWidget(width - 135, 25, 20, 20, ClientHandler.BUTTON_FLUID, ()->this.mode != CoverDigitalInterface.MODE.FLUID, (isPressed)->{
-            setMode(CoverDigitalInterface.MODE.FLUID);
+        buttons[0] = new ToggleButtonWidget(width - 135, 25, 20, 20, ClientHandler.BUTTON_FLUID, ()->this.mode == CoverDigitalInterface.MODE.FLUID, (isPressed)->{
+            if (isPressed) setMode(CoverDigitalInterface.MODE.FLUID);
         }).setTooltipText("metaitem.cover.digital.mode.fluid");
-        buttons[1] = new ToggleButtonWidget(width - 115, 25, 20, 20, ClientHandler.BUTTON_ITEM, ()->this.mode != CoverDigitalInterface.MODE.ITEM, (isPressed)->{
-            setMode(CoverDigitalInterface.MODE.ITEM);
+        buttons[1] = new ToggleButtonWidget(width - 115, 25, 20, 20, ClientHandler.BUTTON_ITEM, ()->this.mode == CoverDigitalInterface.MODE.ITEM, (isPressed)->{
+            if (isPressed) setMode(CoverDigitalInterface.MODE.ITEM);
         }).setTooltipText("metaitem.cover.digital.mode.item");
-        buttons[2] = new ToggleButtonWidget(width - 95, 25, 20, 20, ClientHandler.BUTTON_ENERGY, ()->this.mode != CoverDigitalInterface.MODE.ENERGY, (isPressed)->{
-            setMode(CoverDigitalInterface.MODE.ENERGY);
+        buttons[2] = new ToggleButtonWidget(width - 95, 25, 20, 20, ClientHandler.BUTTON_ENERGY, ()->this.mode == CoverDigitalInterface.MODE.ENERGY, (isPressed)->{
+            if (isPressed) setMode(CoverDigitalInterface.MODE.ENERGY);
         }).setTooltipText("metaitem.cover.digital.mode.energy");
-        buttons[3] = new ToggleButtonWidget(width - 75, 25, 20, 20, ClientHandler.BUTTON_MACHINE, ()->this.mode != CoverDigitalInterface.MODE.MACHINE, (isPressed)->{
-            setMode(CoverDigitalInterface.MODE.MACHINE);
+        buttons[3] = new ToggleButtonWidget(width - 75, 25, 20, 20, ClientHandler.BUTTON_MACHINE, ()->this.mode == CoverDigitalInterface.MODE.MACHINE, (isPressed)->{
+            if (isPressed) setMode(CoverDigitalInterface.MODE.MACHINE);
         }).setTooltipText("metaitem.cover.digital.mode.machine");
-        buttons[4] = new ToggleButtonWidget(width - 35, 25, 20, 20, ClientHandler.BUTTON_INTERFACE, ()->this.mode != CoverDigitalInterface.MODE.PROXY, (isPressed)->{
-            setMode(CoverDigitalInterface.MODE.PROXY);
+        buttons[4] = new ToggleButtonWidget(width - 35, 25, 20, 20, ClientHandler.BUTTON_INTERFACE, ()->this.mode == CoverDigitalInterface.MODE.PROXY, (isPressed)->{
+            if (isPressed) setMode(CoverDigitalInterface.MODE.PROXY);
         }).setTooltipText("metaitem.cover.digital.mode.proxy");
         if (controller instanceof MetaTileEntityCentralMonitor && ((MetaTileEntityCentralMonitor) controller).isActive()) {
             List<CoverDigitalInterface> covers = new ArrayList<>();
@@ -601,7 +601,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @SideOnly(Side.CLIENT)
-    public net.minecraft.util.Tuple<Double, Double> checkLookingAt(float partialTicks) {
+    public Tuple<Double, Double> checkLookingAt(float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player != null) {
             RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
@@ -630,7 +630,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 if ((this.scale > i && this.scale > j && i >= 0 && j >= 0)) {
                     x = (x + i) / this.scale;
                     y = (y + j) / this.scale;
-                    return new net.minecraft.util.Tuple<Double, Double>(x, y);
+                    return new Tuple<Double, Double>(x, y);
                 }
             }
         }

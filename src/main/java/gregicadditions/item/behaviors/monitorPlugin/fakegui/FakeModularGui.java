@@ -82,7 +82,7 @@ public class FakeModularGui implements IRenderContext {
 
     protected void renderToolTip(ItemStack stack, int x, int y) {
         FontRenderer font = stack.getItem().getFontRenderer(stack);
-        net.minecraftforge.fml.client.config.GuiUtils.preItemToolTip(stack);
+        GuiUtils.preItemToolTip(stack);
         GuiUtils.drawHoveringText(this.getItemToolTip(stack), x, y, modularUI.getScreenWidth(), modularUI.getScreenHeight(), -1, (font == null ? fr : font));
         net.minecraftforge.fml.client.config.GuiUtils.postItemToolTip();
     }

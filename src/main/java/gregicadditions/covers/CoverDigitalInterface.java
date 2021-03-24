@@ -464,31 +464,21 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         WidgetGroup primaryGroup = new WidgetGroup(new Position(0, 10));
         primaryGroup.addWidget(new LabelWidget(10, 5, "metaitem.cover.digital.name", 0));
         ToggleButtonWidget[] buttons = new ToggleButtonWidget[5];
-        buttons[0] = new ToggleButtonWidget(40, 20, 20, 20, ClientHandler.BUTTON_FLUID, () -> this.mode != MODE.FLUID, (pressed) -> {
-            setMode(MODE.FLUID);
-            if (!pressed) return;
-            Stream.of(buttons).forEach(button -> { if (button != buttons[0]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.FLUID) return false;return super.mouseClicked(mouseX, mouseY, button); }}.setTooltipText("metaitem.cover.digital.mode.fluid");;
-        buttons[1] = new ToggleButtonWidget(60, 20, 20, 20, ClientHandler.BUTTON_ITEM, () -> this.mode != MODE.ITEM, (pressed) -> {
-            setMode(MODE.ITEM);
-            if (!pressed) return;
-            Stream.of(buttons).forEach(button -> { if (button != buttons[1]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.ITEM) return false;return super.mouseClicked(mouseX, mouseY, button); }}.setTooltipText("metaitem.cover.digital.mode.item");;
-        buttons[2] = new ToggleButtonWidget(80, 20, 20, 20, ClientHandler.BUTTON_ENERGY, () -> this.mode != MODE.ENERGY, (pressed) -> {
-            setMode(MODE.ENERGY);
-            if (!pressed) return;
-            Stream.of(buttons).forEach(button -> { if (button != buttons[2]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.ENERGY) return false;return super.mouseClicked(mouseX, mouseY, button); }}.setTooltipText("metaitem.cover.digital.mode.energy");;
-        buttons[3] = new ToggleButtonWidget(100, 20, 20, 20, ClientHandler.BUTTON_MACHINE, () -> this.mode != MODE.MACHINE, (pressed) -> {
-            setMode(MODE.MACHINE);
-            if (!pressed) return;
-            Stream.of(buttons).forEach(button -> { if (button != buttons[3]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.MACHINE) return false;return super.mouseClicked(mouseX, mouseY, button); }}.setTooltipText("metaitem.cover.digital.mode.machine");;
-        buttons[4] = new ToggleButtonWidget(140, 20, 20, 20, ClientHandler.BUTTON_INTERFACE, () -> this.mode != MODE.PROXY, (pressed) -> {
-            setMode(MODE.PROXY);
-            if (!pressed) return;
-            Stream.of(buttons).forEach(button -> { if (button != buttons[4]) button.handleClientAction(1, new PacketBuffer(null){@Override public boolean readBoolean() { return false; }});});
-        }){ @Override public boolean mouseClicked(int mouseX, int mouseY, int button) { if (mode == MODE.PROXY) return false;return super.mouseClicked(mouseX, mouseY, button); }}.setTooltipText("metaitem.cover.digital.mode.proxy");;
+        buttons[0] = new ToggleButtonWidget(40, 20, 20, 20, ClientHandler.BUTTON_FLUID, () -> this.mode == MODE.FLUID, (pressed) -> {
+            if (pressed) setMode(MODE.FLUID);
+        }).setTooltipText("metaitem.cover.digital.mode.fluid");;
+        buttons[1] = new ToggleButtonWidget(60, 20, 20, 20, ClientHandler.BUTTON_ITEM, () -> this.mode == MODE.ITEM, (pressed) -> {
+            if (pressed) setMode(MODE.ITEM);
+        }).setTooltipText("metaitem.cover.digital.mode.item");;
+        buttons[2] = new ToggleButtonWidget(80, 20, 20, 20, ClientHandler.BUTTON_ENERGY, () -> this.mode == MODE.ENERGY, (pressed) -> {
+            if (pressed) setMode(MODE.ENERGY);
+        }).setTooltipText("metaitem.cover.digital.mode.energy");;
+        buttons[3] = new ToggleButtonWidget(100, 20, 20, 20, ClientHandler.BUTTON_MACHINE, () -> this.mode == MODE.MACHINE, (pressed) -> {
+            if (pressed) setMode(MODE.MACHINE);
+        }).setTooltipText("metaitem.cover.digital.mode.machine");;
+        buttons[4] = new ToggleButtonWidget(140, 20, 20, 20, ClientHandler.BUTTON_INTERFACE, () -> this.mode == MODE.PROXY, (pressed) -> {
+            if (pressed) setMode(MODE.PROXY);
+        }).setTooltipText("metaitem.cover.digital.mode.proxy");;
         primaryGroup.addWidget(new LabelWidget(10, 25, "metaitem.cover.digital.title.mode", 0));
         primaryGroup.addWidget(buttons[0]);
         primaryGroup.addWidget(buttons[1]);

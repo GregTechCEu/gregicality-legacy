@@ -419,7 +419,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
         BlockPos sp = this.getPos().offset(EnumFacing.DOWN);
-        BlockPos ep = sp.offset(this.frontFacing.rotateY(), -width - 1).offset(EnumFacing.UP, height);
+        BlockPos ep = sp.offset(this.frontFacing.rotateY(), -width - 2).offset(EnumFacing.UP, height);
         return new AxisAlignedBB(sp, ep);
     }
 
