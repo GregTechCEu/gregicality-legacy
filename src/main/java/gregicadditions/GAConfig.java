@@ -450,6 +450,154 @@ public class GAConfig {
 
     }
 
+    @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})
+    public static Equipment equipment = new Equipment();
+
+    public static class Equipment {
+        @Config.Name("Nightvision Goggles")
+        public NightvisionGoggles nightvisionGoggles = new NightvisionGoggles();
+        @Config.Name("NanoMuscle Suit")
+        public NanoSuit nanoSuit = new NanoSuit();
+        @Config.Name("Advanced NanoMuscle Suit")
+        public AdvNanoSuit advNanoSuit = new AdvNanoSuit();
+        @Config.Name("QuarkTech Suit")
+        public QuarkTechSuit quarkTechSuit = new QuarkTechSuit();
+        @Config.Name("Advanced QuarkTech Suit")
+        public AdvQuarkTechSuit advQuarkTechSuit = new AdvQuarkTechSuit();
+        @Config.Name("Impeller Jetpack")
+        public ImpellerJetpack impellerJetpack = new ImpellerJetpack();
+        @Config.Name("Advanced Impeller Jetpack")
+        public AdvImpellerJetpack advImpellerJetpack = new AdvImpellerJetpack();
+        @Config.Name("Semifluid Jetpack")
+        public SemiFluidJetpack semiFluidJetpack = new SemiFluidJetpack();
+        @Config.Name("Batpack LV")
+        public BatpackLv batpackLv = new BatpackLv();
+        @Config.Name("Batpack MV")
+        public BatpackMv batpackMv = new BatpackMv();
+        @Config.Name("Batpack HV")
+        public BatpackHv batpackHv = new BatpackHv();
+    }
+
+    public static class NightvisionGoggles {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 3600;
+    }
+
+    public static class NanoSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 1600000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 5000;
+    }
+
+    public static class AdvNanoSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 6;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 11400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 5000;
+    }
+
+    public static class QuarkTechSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 5;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 8000000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 10000;
+    }
+
+    public static class AdvQuarkTechSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 6;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 100000000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 10000;
+    }
+
+    public static class ImpellerJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 2520000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 125;
+    }
+
+    public static class AdvImpellerJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 4;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 11400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 512;
+    }
+
+    public static class SemiFluidJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 12000;
+    }
+
+    public static class BatpackLv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 1;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 600000;
+    }
+
+    public static class BatpackMv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 2400000;
+    }
+
+    public static class BatpackHv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 9600000;
+    }
+
     public static Multis multis = new Multis();
 
     public static class Multis {

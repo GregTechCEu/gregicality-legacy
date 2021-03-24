@@ -353,12 +353,14 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             trimmedName = trimmedName.substring(trimmedName.lastIndexOf(".") + 1);
 
             // For some reason, the Cutting saw's machine name does not match the recipe map's unlocalized name, so correct it
-            // Same with the Electric Furnace and our Chemical Dehydrator
+            // Same with the Electric Furnace, Ore Washer, and our Chemical Dehydrator
             switch (trimmedName) {
                 case "cutter":
                     trimmedName = "cutting_saw"; break;
                 case "electric_furnace":
                     trimmedName = "furnace"; break;
+                case "ore_washer":
+                    trimmedName = "orewasher"; break;
                 case "dehydrator":
                     trimmedName = "chemical_dehydrator"; break;
             }

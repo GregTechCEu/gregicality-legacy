@@ -336,6 +336,8 @@ metaitem.battery_pack.lv.name=Battery pack (§eLV§r)
 metaitem.battery_pack.mv.name=Battery pack (§eMV§r)
 metaitem.battery_pack.hv.name=Battery pack (§eHV§r)
 
+metaitem.nightvision_goggles.name=§eNightvision Goggles
+
 metaitem.nms.chestplate.name=§eNanoMuscle™ Suite Chestplate
 metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggins
 metaitem.nms.boots.name=§eNanoMuscle™ Suite Boots
@@ -978,6 +980,10 @@ metaarmor.qts.nightvision.disabled=QuarkTech™ Suite: NightVision disabled
 
 metaarmor.jetpack.hover.enable=Jetpack: hover mode enabled
 metaarmor.jetpack.hover.disable=Jetpack: hover mode disabled
+
+metaarmor.message.nightvision.enabled=§bNightvision: §aOn
+metaarmor.message.nightvision.disabled=§bNightvision: §cOff
+metaarmor.message.nightvision.error=§cNot enough power!
 
 metaarmor.hud.status.enabled=§aON
 metaarmor.hud.status.disabled=§cOFF

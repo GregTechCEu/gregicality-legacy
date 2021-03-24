@@ -162,6 +162,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
 
+    public static ArmorMetaItem<?>.ArmorMetaValueItem NIGHTVISION_GOGGLES;
+
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_BOOTS;

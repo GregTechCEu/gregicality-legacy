@@ -1,88 +1,27 @@
 package gregicadditions.armor;
 
-import gregicadditions.GAValues;
-import gregicadditions.input.EnumKey;
+import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaItems;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
-import gregtech.api.util.GTUtility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
 import javax.annotation.Nonnull;
 
-public class NanoMuscleSuite extends ArmorLogicSuite {
+public class NanoMuscleSuite extends NightvisionGoggles {
 
     public NanoMuscleSuite(EntityEquipmentSlot slot, int energyPerUse, int capacity) {
-        super(energyPerUse, capacity, GAValues.HV, slot);
+        super(energyPerUse, capacity, GAConfig.equipment.nanoSuit.voltageTier, slot);
     }
 
-    @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        IElectricItem item = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
-        NBTTagCompound nbtData = GTUtility.getOrCreateNbtCompound(itemStack);
-        byte toggleTimer = nbtData.getByte("toggleTimer");
-        boolean ret = false;
-        if (SLOT == EntityEquipmentSlot.HEAD) {
-            boolean nightvision = nbtData.getBoolean("Nightvision");
-            if (ArmorUtils.isKeyDown(player, EnumKey.MENU) && ArmorUtils.isKeyDown(player, EnumKey.MODE_SWITCH) && toggleTimer == 0) {
-                toggleTimer = 10;
-                nightvision = !nightvision;
-                if (!world.isRemote) {
-                    nbtData.setBoolean("Nightvision", nightvision);
-                    if (nightvision) {
-                        player.sendMessage(new TextComponentTranslation("metaarmor.nms.nightvision.enabled"));
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("metaarmor.nms.nightvision.disabled"));
-                    }
-                }
-            }
-
-            if (nightvision && !world.isRemote && item.getCharge() >= (energyPerUse / 100)) {
-                BlockPos pos = new BlockPos((int) Math.floor(player.posX), (int) Math.floor(player.posY), (int) Math.floor(player.posZ));
-                int skylight = player.getEntityWorld().getLightFromNeighbors(pos);
-                if (skylight > 8) {
-                    player.removePotionEffect(MobEffects.NIGHT_VISION);
-                    player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100, 0, true, true));
-                } else {
-                    player.removePotionEffect(MobEffects.BLINDNESS);
-                    player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, true));
-                }
-                ret = true;
-                item.discharge((energyPerUse / 100), GAValues.HV, true, false, false);
-            }
-
-            if (!nightvision && !world.isRemote) {
-                PotionEffect blindness = player.getActivePotionEffect(MobEffects.BLINDNESS);
-                PotionEffect night_vision = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-                if (blindness != null) {
-                    if (blindness.getDuration() < 1) player.removePotionEffect(MobEffects.BLINDNESS);
-                }
-                if (night_vision != null) {
-                    if (night_vision.getDuration() < 1) player.removePotionEffect(MobEffects.NIGHT_VISION);
-                }
-            }
-
-            if (!world.isRemote && toggleTimer > 0) {
-                --toggleTimer;
-                nbtData.setByte("toggleTimer", toggleTimer);
-            }
-        }
-        if (ret) {
-            player.inventoryContainer.detectAndSendChanges();
-        }
+    public NanoMuscleSuite(EntityEquipmentSlot slot, int energyPerUse, int capacity, int tier) {
+        super(energyPerUse, capacity, tier, slot);
     }
 
     public boolean handleUnblockableDamage(EntityLivingBase entity, @Nonnull ItemStack armor, DamageSource source, double damage, EntityEquipmentSlot equipmentSlot) {
