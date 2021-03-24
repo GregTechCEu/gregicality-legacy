@@ -1,5 +1,6 @@
 package gregicadditions.armor;
 
+import gregicadditions.GAConfig;
 import gregicadditions.input.EnumKey;
 import gregicadditions.item.GAMetaItems;
 import gregtech.api.capability.GregtechCapabilities;
@@ -29,7 +30,7 @@ public class AdvancedNanoMuscleSuite extends NanoMuscleSuite {
 
 
     public AdvancedNanoMuscleSuite() {
-        super(EntityEquipmentSlot.CHEST, 5000, 11400000);
+        super(EntityEquipmentSlot.CHEST, GAConfig.equipment.advNanoSuit.energyPerUse, GAConfig.equipment.advNanoSuit.capacity, GAConfig.equipment.advNanoSuit.voltageTier);
     }
 
     @Override
