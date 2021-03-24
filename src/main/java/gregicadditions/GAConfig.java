@@ -1054,12 +1054,27 @@ public class GAConfig {
             @Config.Comment("The name of the ores to blacklist for the MK2 Void Miner")
             @Config.RequiresMcRestart
             @Config.Name("MK2 Void Miner Blacklist")
-            public String[] oreBlacklistUHV = new String[]{};
+            public String[] oreBlacklistUHV = new String[]{""};
 
             @Config.Comment("The name of the ores to blacklist for the MK3 Void Miner")
             @Config.RequiresMcRestart
             @Config.Name("MK3 Void Miner Blacklist")
-            public String[] oreBlacklistUEV = new String[]{};
+            public String[] oreBlacklistUEV = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK1 Void Miner. Example: \"minecraft:wool:2\"")
+            @Config.RequiresMcRestart
+            @Config.Name("MK1 Void Miner Whitelist")
+            public String[] oreWhitelist = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK2 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK2 Void Miner Whitelist")
+            public String[] oreWhitelistUHV = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK3 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK3 Void Miner Whitelist")
+            public String[] oreWhitelistUEV = new String[]{""};
         }
 
         public static class LargeMiner {
