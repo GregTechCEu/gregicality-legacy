@@ -12,7 +12,6 @@ import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -34,12 +33,11 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 import static gregtech.api.unification.material.Materials.TungstenSteel;
@@ -51,7 +49,6 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);
         ProcessingArrayWorkable recipeLogic = new ProcessingArrayWorkable(this);
-        recipeLogic.initReflection();
         this.recipeMapWorkable = recipeLogic;
     }
 
@@ -92,7 +89,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
 
-            String myRecipeMap = ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName;
+            String myRecipeMap = ((ProcessingArrayWorkable) recipeMapWorkable).currentRecipeMapName;
             if (myRecipeMap != null) {
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
@@ -128,14 +125,10 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
         int numberOfMachines = 0;
         int numberOfOperations = 0;
         ItemStack machineItemStack = null;
-        Field wasActiveAndNeedsUpdateField = null;
-        Field hasNotEnoughEnergyField = null;
-        String recipeMapName = null;
-
-        public void initReflection() {
-            wasActiveAndNeedsUpdateField = ObfuscationReflectionHelper.findField(AbstractRecipeLogic.class, "wasActiveAndNeedsUpdate");
-            hasNotEnoughEnergyField = ObfuscationReflectionHelper.findField(AbstractRecipeLogic.class, "hasNotEnoughEnergy");
-        }
+        RecipeMap<?> currentRecipeMap = null;
+        private ItemStack lastMachine;
+        private RecipeMap<?> lastRecipeMap;
+        private String currentRecipeMapName;
 
         public ProcessingArrayWorkable(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
@@ -143,19 +136,19 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
 
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+            currentRecipeMap = findRecipeMap(((TileEntityProcessingArray)this.getMetaTileEntity()).getStackInSlot());
 
-            RecipeMap<?> recipeMap = findRecipeMap(((TileEntityProcessingArray)this.getMetaTileEntity()).getStackInSlot());
-            if (recipeMap == null) {
-                recipeMapName = null;
+            if (currentRecipeMap == null) {
+                currentRecipeMapName = null;
                 return null;
             }
-            recipeMapName = recipeMap.getLocalizedName();
+            currentRecipeMapName = currentRecipeMap.getLocalizedName();
 
             List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()
-                    .map(iItemHandlerModifiable -> new Tuple<>(recipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
+                    .map(iItemHandlerModifiable -> new Tuple<>(currentRecipeMap.findRecipe(maxVoltage, iItemHandlerModifiable, fluidInputs, 0), iItemHandlerModifiable))
                     .filter(tuple -> tuple.getKey() != null)
-                    .findFirst().orElse(new Tuple<>(recipeMap.findRecipe(voltageTier, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
+                    .findFirst().orElse(new Tuple<>(currentRecipeMap.findRecipe(voltageTier, inputs, fluidInputs, this.getMinTankCapacity(this.getOutputTank())), inputs));
 
 
             if (recipePerInput.getKey() == null) {
@@ -173,7 +166,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
 
             }
 
-            Map<String, Integer> countFluid = new HashMap<>();
+            Map<Fluid, Integer> countFluid = new HashMap<>();
             if (recipePerInput.getKey().getFluidInputs().size() != 0) {
 
                 this.findFluid(countFluid, fluidInputs);
@@ -193,7 +186,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipePerInput.getKey(), numberOfOperations);
 
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
+            RecipeBuilder<?> newRecipe = currentRecipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
@@ -202,7 +195,6 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                     .duration(recipePerInput.getKey().getDuration());
 
             copyChancedItemOutputs(newRecipe, recipePerInput.getKey(), numberOfOperations);
-            newRecipe.notConsumable(machineItemStack);
 
             return newRecipe.build().getResult();
         }
@@ -225,7 +217,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                 String name = wholeItemStack.getItem().getUnlocalizedNameInefficiently(wholeItemStack);
 
                 // skip empty slots
-                if (name.equals("tile.air")) {
+                if (wholeItemStack.isEmpty()) {
                     continue;
                 }
 
@@ -265,30 +257,30 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             return minMultiplier;
         }
 
-        protected void findFluid(Map<String, Integer> countFluid, IMultipleTankHandler fluidInputs) {
+        protected void findFluid(Map<Fluid, Integer> countFluid, IMultipleTankHandler fluidInputs) {
 
             for (IFluidTank tank : fluidInputs) {
 
                 if (tank.getFluid() != null) {
 
-                    String name = tank.getFluid().getUnlocalizedName();
+                    Fluid fluid = tank.getFluid().getFluid();
 
-                    if (countFluid.containsKey(name)) {
-                        int existingValue = countFluid.get(name);
-                        countFluid.put(name, existingValue + tank.getFluidAmount());
+                    if (countFluid.containsKey(fluid)) {
+                        int existingValue = countFluid.get(fluid);
+                        countFluid.put(fluid, existingValue + tank.getFluidAmount());
 
                     } else {
-                        countFluid.put(name, tank.getFluidAmount());
+                        countFluid.put(fluid, tank.getFluidAmount());
                     }
                 }
             }
         }
 
-        protected int getMinRatioFluid(Map<String, Integer> countFluid, Recipe r, int numberOfMachines) {
+        protected int getMinRatioFluid(Map<Fluid, Integer> countFluid, Recipe r, int numberOfMachines) {
             int minMultiplier = Integer.MAX_VALUE;
             for (FluidStack fs : r.getFluidInputs()) {
-                String name = fs.getFluid().getUnlocalizedName();
-                int ratio = Math.min(numberOfMachines, countFluid.get(name) / fs.amount);
+                Fluid fluid = fs.getFluid();
+                int ratio = Math.min(numberOfMachines, countFluid.get(fluid) / fs.amount);
 
                 if (ratio < minMultiplier) {
                     minMultiplier = ratio;
@@ -321,8 +313,12 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
         }
 
         protected RecipeMap<?> findRecipeMap(ItemStack machine) {
-            if (machine == null)
+            if (machine.isEmpty())
                 return null;
+
+            if (lastMachine != null && machine.isItemEqual(lastMachine) && machine.getCount() == lastMachine.getCount())
+                return this.lastRecipeMap;
+            else this.lastMachine = machine.copy();
 
             ITieredMetaTileEntity mte = (ITieredMetaTileEntity) GregTechAPI.META_TILE_ENTITY_REGISTRY.getObjectById(machine.getItemDamage());
             String unlocalizedName = machine.getItem().getUnlocalizedNameInefficiently(machine); // can do this differently
@@ -341,6 +337,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                     // The machine Item Stack. Is this needed if we remove the machine from being found in the ingredients?
                     this.machineItemStack = machine;
 
+                    this.lastRecipeMap = rmap;
                     return rmap;
                 }
             }
@@ -426,14 +423,10 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
             this.fluidOutputs = GTUtility.copyFluidList(recipe.getFluidOutputs());
             int tier = getMachineTierForRecipe(recipe);
             this.itemOutputs = GTUtility.copyStackList(recipe.getResultItemOutputs(getOutputInventory().getSlots(), random, tier));
-            try {
-                if (this.wasActiveAndNeedsUpdateField.getBoolean(this)) {
-                    this.wasActiveAndNeedsUpdateField.set(this, false);
-                } else {
-                    setActive(true);
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+            if (this.wasActiveAndNeedsUpdate) {
+                this.wasActiveAndNeedsUpdate = false;
+            } else {
+                setActive(true);
             }
         }
     }
