@@ -832,20 +832,14 @@ metaitem.plugin.online_pic.name=Online Picture Plugin
 metaitem.plugin.fake_gui.name=Proxy Gui Plugin
 metaitem.cover.digital.name=Digital Interface Cover
 
-metaitem.cover.digital.mode.fluid.enabled=Fluid Mode - §cOFF
-metaitem.cover.digital.mode.fluid.disabled=Fluid Mode - §aON
+metaitem.cover.digital.mode.fluid=Fluid Mode - 
+metaitem.cover.digital.mode.item=Item Mode - 
+metaitem.cover.digital.mode.energy=Energy Mode - 
+metaitem.cover.digital.mode.machine=Machine Mode - 
+metaitem.cover.digital.mode.proxy=Proxy Mode - 
 
-metaitem.cover.digital.mode.item.enabled=Item Mode - §cOFF
-metaitem.cover.digital.mode.item.disabled=Item Mode - §aON
-
-metaitem.cover.digital.mode.energy.enabled=Energy Mode - §cOFF
-metaitem.cover.digital.mode.energy.disabled=Energy Mode - §aON
-
-metaitem.cover.digital.mode.machine.enabled=Machine Mode - §cOFF
-metaitem.cover.digital.mode.machine.disabled=Machine Mode - §aON
-
-metaitem.cover.digital.mode.proxy.enabled=Proxy Mode - §cOFF
-metaitem.cover.digital.mode.proxy.disabled=Proxy Mode - §aON
+universal.cover.mode.enabled=§aON
+universal.cover.mode.disabled=§cOFF
 
 metaitem.cover.digital.title.mode=Mode:
 metaitem.cover.digital.title.spin=Spin:
