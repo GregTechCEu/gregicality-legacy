@@ -20,6 +20,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
@@ -256,6 +257,14 @@ public class RenderHelper {
         GlStateManager.enableTexture2D();
     }
 
+    /***
+     * avoid z-fighting. not familiar with the CCL, its a trick.
+     * //TODO could DisableDepthMask in the CCL?
+     * @param translation origin
+     * @param side facing
+     * @param layer level
+     * @return adjust
+     */
     @SideOnly(Side.CLIENT)
     public static Matrix4 adjustTrans(Matrix4 translation, EnumFacing side, int layer) {
         Matrix4 trans = translation.copy();
@@ -319,4 +328,44 @@ public class RenderHelper {
                 break;
         }
     }
+
+    /***
+     * used to render pixels in stencil mask. (e.g. Restrict rendering results to be displayed only in Monitor Screens)
+     * if you want to do the similar things in Gui(2D) not World(3D), plz consider using the RenderUtil.useScissor from
+     * GregTech that you don't need to draw mask to build a rect mask easily.
+     * @param mask draw mask
+     * @param renderInMask render logic in the mask
+     * @param shouldRenderMask should mask be rendered too
+     */
+    @SideOnly(Side.CLIENT)
+    public static void useStencil(@NotNull Runnable mask, @NotNull Runnable renderInMask, boolean shouldRenderMask) {
+        GL11.glStencilMask(0xFF);
+        GL11.glClearStencil(0);
+        GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT) ;
+        GL11.glEnable(GL11.GL_STENCIL_TEST);
+
+        GL11.glStencilFunc(GL11.GL_ALWAYS, 1, 0xFF);
+        GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_REPLACE);
+
+        if(!shouldRenderMask) {
+            GL11.glColorMask(false, false, false, false);
+            GL11.glDepthMask(false);
+        }
+
+        mask.run();
+
+        if(!shouldRenderMask) {
+            GL11.glColorMask(true, true, true, true);
+            GL11.glDepthMask(true);
+        }
+
+        GL11.glStencilMask(0x00);
+        GL11.glStencilFunc(GL11.GL_EQUAL, 1, 0xFF);
+        GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_KEEP);
+
+        renderInMask.run();
+
+        GL11.glDisable(GL11.GL_STENCIL_TEST);
+    }
+
 }

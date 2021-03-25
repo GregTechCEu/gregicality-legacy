@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemUIFactory {
-    MetaTileEntityMonitorScreen screen;
+    protected MetaTileEntityMonitorScreen screen;
     public Boolean configMode = false;
     private NBTTagCompound nbtTagCompound;
 
@@ -38,25 +38,45 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
 
     abstract public MonitorPluginBaseBehavior createPlugin();
 
+    /***
+     * Do not override createUI below.
+     * @param holder It should be one of PlayerInventoryHolder or MetaTileEntityHolder.
+     * @param entityPlayer Player
+     * @return ModularUI
+     */
     public ModularUI customUI(IUIHolder holder, EntityPlayer entityPlayer) {
         return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 260, 210).build(holder, entityPlayer);
     }
 
-    // can player using item right-click open UI.
+
+    /***
+     * Can player using item (right-click) to open the customUI.
+     */
     public boolean hasUI() {
         return false;
     }
 
-    // server. nbt will be synced to client when init so.... yeah you don't need to write init
+    /***
+     * Server / Client. Itemstack will be synced to client when init so... yeah normally you don't need to consider initializing.
+     * this will be called when you markDirty.
+     * @param data nbtTag
+     */
     public void writeToNBT(NBTTagCompound data) {
     }
 
-    // server
+    /***
+     * Server / Client. Initialization of Server and Client.
+     * @param data nbtTag
+     */
     public void readFromNBT(NBTTagCompound data) {
         this.nbtTagCompound = data;
     }
 
-    // server
+    /***
+     * Server. Same as writeCustomData in MetaTileEntity.
+     * @param id PacketID
+     * @param buf PacketBuffer
+     */
     public void writePluginData(int id, @NotNull Consumer<PacketBuffer> buf) {
         if (screen != null) {
             screen.writeCustomData(2, packetBuffer->{
@@ -66,11 +86,18 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         }
     }
 
-    // client
+    /***
+     * Client. Same as receiveCustomData in MetaTileEntity.
+     * @param id PacketID
+     * @param buf PacketBuffer
+     */
     public void readPluginData(int id, PacketBuffer buf) {
 
     }
 
+    /***
+     * Server / Client (deprecated). Should be called when need to write persistence data to NBT
+     */
     protected void markDirty() {
         if (screen != null) {
             screen.pluginDirty();
@@ -79,17 +106,46 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         }
     }
 
-    // server
+    /***
+     * Server. It will be called when a player right/left-click the screen. It adapts to the base coordinate(0~1.0) based on scaling.
+     * Screen Sample:
+     * ╬--------x------->│
+     * ┊ ┌---------------------------------┐ ———
+     * ┊ │               ┊                 │  ↑
+     * ┊ │               ┊                 │  ┊
+     * y │               ┊                 │  ┊
+     * ┊ │               ┊                 │  ┊
+     * ↓ │               ┊                 │  ┊
+     *———│┉┉ ┉┉ ┉┉ ┉┉ ┉┉ *                 │ 1.0
+     *   │                                 │  ┊
+     *   │                                 │  ┊
+     *   │                                 │  ┊
+     *   │                                 │  ┊
+     *   │                                 │  ↓
+     *   └---------------------------------┘ ———
+     *   │<-------------1.0--------------->│
+     * @param playerIn Player
+     * @param hand Hand
+     * @param facing Facing
+     * @param isRight is Right Click
+     * @param x xPos of the screen (0 ~ 1.0)
+     * @param y yPos of the screen (0 ~ 1.0)
+     * @return trigger result
+     */
     public boolean onClickLogic(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, double x, double y){
         return false;
     }
 
-    // server client update logic
+    /***
+     * Server / Client. Called per tick when structure formed.
+     */
     public void update() {
 
     }
 
-    // client render
+    /***
+     * Client. Write rendering here
+     */
     @SideOnly(Side.CLIENT)
     abstract public void renderPlugin(float partialTicks);
 
@@ -105,7 +161,11 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         return null;
     }
 
-    // server do not override
+    /***
+     * Server / Client. Called when plugin is added or removed from the screen.
+     * @param screen
+     * @param valid
+     */
     public void onMonitorValid(MetaTileEntityMonitorScreen screen, boolean valid) {
         if (valid) {
            this.screen = screen;

@@ -10,8 +10,10 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.utils.GALog;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemBlock;
@@ -49,6 +51,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preLoad() {
         super.preLoad();
+        if (!Minecraft.getMinecraft().getFramebuffer().isStencilEnabled()) {
+            Minecraft.getMinecraft().getFramebuffer().enableStencil();
+        }
+        GALog.logger.info(Minecraft.getMinecraft().getFramebuffer().isStencilEnabled());
         Keybinds.initBinds();
         OpticalFiberRenderer.preInit();
     }
