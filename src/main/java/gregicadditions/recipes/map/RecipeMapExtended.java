@@ -13,11 +13,13 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import java.util.function.DoubleSupplier;
 
 public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap<R> {
-    private TextureArea progressBarTexture = GuiTextures.PROGRESS_BAR_ARROW;
-    private ProgressWidget.MoveType moveType = ProgressWidget.MoveType.HORIZONTAL;
+    private TextureArea progressBarTexture;
+    private ProgressWidget.MoveType moveType;
 
     public RecipeMapExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, R defaultRecipe) {
         super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe);
+        this.progressBarTexture = GuiTextures.PROGRESS_BAR_ARROW;
+        this.moveType = ProgressWidget.MoveType.HORIZONTAL;
     }
 
     @Override
@@ -42,47 +44,5 @@ public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap<R> 
         this.addInventorySlotGroup(builder, importItems, importFluids, false);
         this.addInventorySlotGroup(builder, exportItems, exportFluids, true);
         return builder;
-    }
-
-    @Override
-    protected void addInventorySlotGroup(ModularUI.Builder builder, IItemHandlerModifiable itemHandler, FluidTankList fluidHandler, boolean isOutputs) {
-        int itemInputsCount = itemHandler.getSlots();
-        int fluidInputsCount = fluidHandler.getTanks();
-        boolean invertFluids = false;
-        if (itemInputsCount == 0) {
-            int tmp = itemInputsCount;
-            itemInputsCount = fluidInputsCount;
-            fluidInputsCount = tmp;
-            invertFluids = true;
-        }
-        int[] inputSlotGrid = determineSlotsGrid(itemInputsCount);
-        int itemSlotsToLeft = inputSlotGrid[0];
-        int itemSlotsToDown = inputSlotGrid[1];
-        int startInputsX = isOutputs ? 106 : 69 - itemSlotsToLeft * 18;
-        int startInputsY = 32 - (int) (itemSlotsToDown / 2.0 * 18);
-        for (int i = 0; i < itemSlotsToDown; i++) {
-            for (int j = 0; j < itemSlotsToLeft; j++) {
-                int slotIndex = i * itemSlotsToLeft + j;
-                int x = startInputsX + 18 * j;
-                int y = startInputsY + 18 * i;
-                addSlot(builder, x, y, slotIndex, itemHandler, fluidHandler, invertFluids, isOutputs);
-            }
-        }
-        if (fluidInputsCount > 0 || invertFluids) {
-            if (itemSlotsToDown >= fluidInputsCount && itemSlotsToLeft < 3) {
-                int startSpecX = isOutputs ? startInputsX + itemSlotsToLeft * 18 : startInputsX - 18;
-                for (int i = 0; i < fluidInputsCount; i++) {
-                    int y = startInputsY + 18 * i;
-                    addSlot(builder, startSpecX, y, i, itemHandler, fluidHandler, !invertFluids, isOutputs);
-                }
-            } else {
-                int startSpecY = startInputsY + itemSlotsToDown * 18;
-                for (int i = 0; i < fluidInputsCount; i++) {
-                    int x = isOutputs ? startInputsX + 18 * (i % 3) : startInputsX + itemSlotsToLeft * 18 - 18 - 18 * (i % 3);
-                    int y = startSpecY + (i / 3) * 18;
-                    addSlot(builder, x, y, i, itemHandler, fluidHandler, !invertFluids, isOutputs);
-                }
-            }
-        }
     }
 }
