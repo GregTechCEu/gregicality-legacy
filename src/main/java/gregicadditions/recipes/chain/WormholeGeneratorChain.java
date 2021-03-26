@@ -101,7 +101,7 @@ public class WormholeGeneratorChain {
                 .inputs(EMITTER_UV.getStackForm(4))
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .inputs(SENSOR_UV.getStackForm(4))
-                .inputs(BATTERY_LARGE_NAQUADRIA.getStackForm())
+                .inputs(BATTERY_SMALL_LIS.getStackForm())
                 .outputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(600).EUt(5000000)
@@ -118,7 +118,7 @@ public class WormholeGeneratorChain {
                 .inputs(EMITTER_UHV.getStackForm(2))
                 .inputs(FIELD_GENERATOR_UHV.getStackForm(2))
                 .inputs(SENSOR_UHV.getStackForm(2))
-                .inputs(BATTERY_LARGE_NEUTRONIUM.getStackForm())
+                .inputs(BATTERY_SMALL_FLUORIDE.getStackForm())
                 .inputs(CONTAINED_EXOTIC_MATTER.getStackForm())
                 .inputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(STABILIZED_WORMHOLE_GENERATOR.getStackForm())
