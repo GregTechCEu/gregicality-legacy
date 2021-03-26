@@ -476,6 +476,7 @@ public class GAMetaItems {
     // monitor
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
+        
 
 
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
@@ -492,6 +493,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
 
     public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
 
 
     // GA oredict items
