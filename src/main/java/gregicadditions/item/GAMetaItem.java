@@ -274,14 +274,14 @@ public class GAMetaItem extends MaterialMetaItem {
         NEURO_SUPPORT_UNIT = addItem(410, "neuro.support.unit");
         CYBER_PROCESSING_UNIT = addItem(411, "cyber.processing.unit");
 
-        BATTERY_SMALL_VANADIUM_EMPTY = addItem(412, "small.vanadium.battery.empty");
-        BATTERY_SMALL_NEUTRONIUM_EMPTY = addItem(413, "small.neutronium.battery.empty");
-        BATTERY_MEDIUM_VANADIUM_EMPTY = addItem(414, "medium.vanadium.battery.empty");
-        BATTERY_MEDIUM_NAQUADRIA_EMPTY = addItem(415, "medium.naquadria.battery.empty");
-        BATTERY_MEDIUM_NEUTRONIUM_EMPTY = addItem(416, "medium.neutronium.battery.empty");
-        BATTERY_LARGE_VANADIUM_EMPTY = addItem(417, "large.vanadium.battery.empty");
-        BATTERY_LARGE_NAQUADRIA_EMPTY = addItem(418, "large.naquadria.battery.empty");
-        BATTERY_LARGE_NEUTRONIUM_EMPTY = addItem(419, "large.neutronium.battery.empty");
+        BATTERY_NIMH_EMPTY = addItem(412, "nickel.metal.hydride.battery.empty");
+        BATTERY_SMALL_LITHIUM_ION_EMPTY = addItem(414, "small.lithium.ion.battery.empty");
+        BATTERY_MEDIUM_LITHIUM_ION_EMPTY = addItem(417, "medium.lithium.ion.battery.empty");
+        BATTERY_LARGE_LITHIUM_ION_EMPTY = addItem(415, "large.lithium.ion.battery.empty");
+        BATTERY_SMALL_LIS_EMPTY = addItem(418, "small.lithium.sulfide.battery.empty");
+        BATTERY_MEDIUM_LIS_EMPTY = addItem(413, "medium.lithium.sulfide.battery.empty");
+        BATTERY_LARGE_LIS_EMPTY = addItem(416, "large.lithium.sulfide.battery.empty");
+        BATTERY_SMALL_FLUORIDE_EMPTY = addItem(419, "small.fluoride.battery.empty");
 
         HASOC = addItem(420, "hasoc");
         HASOC_WAFER = addItem(421, "hasoc.wafer");
@@ -473,6 +473,9 @@ public class GAMetaItem extends MaterialMetaItem {
         DISPLAY = addItem(579, "display");
         
         CHARGED_LEPTON_TRAP_CRYSTAL = addItem(580,"charged.lepton.trap.crystal");
+        NANOSILICON_CATHODE = addItem(581,"nanosilicon.cathode");
+        BATTERY_MEDIUM_FLUORIDE_EMPTY = addItem(582,"medium.fluoride.battery.empty");
+        BATTERY_LARGE_FLUORIDE_EMPTY = addItem(583,"large.fluoride.battery.empty");
 
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
