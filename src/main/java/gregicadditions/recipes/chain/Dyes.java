@@ -174,7 +174,7 @@ public class Dyes {
                 .inputs(AmmoniumVanadate.getItemStack())
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(8000))
-                .fluidOutputs(AmmoniaNitrate.getFluid(1000))
+                .fluidOutputs(AmmoniumNitrate.getFluid(1000))
                 .fluidOutputs(BismuthVanadateSolution.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();

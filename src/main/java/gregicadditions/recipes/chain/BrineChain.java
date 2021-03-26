@@ -85,7 +85,7 @@ public class BrineChain {
 
         // 3NH4NO3 + 8SO2 + 7H2O + 2NH3 -> 4(NH3OH)2SO4
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(240).EUt(4500)
-                .fluidInputs(AmmoniaNitrate.getFluid(3000))
+                .fluidInputs(AmmoniumNitrate.getFluid(3000))
                 .fluidInputs(SulfurDioxide.getFluid(8000))
                 .fluidInputs(Water.getFluid(7000))
                 .fluidInputs(Ammonia.getFluid(2000))
@@ -284,7 +284,7 @@ public class BrineChain {
 
         // NH4NO3 -> N2O + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1150)
-                .fluidInputs(AmmoniaNitrate.getFluid(1000))
+                .fluidInputs(AmmoniumNitrate.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(1))
                 .fluidOutputs(NitrousOxide.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))

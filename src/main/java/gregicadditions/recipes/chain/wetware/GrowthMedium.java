@@ -234,7 +234,7 @@ public class GrowthMedium {
 
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .fluidInputs(B27Supplement.getFluid(1000))
-                .fluidInputs(AmmoniaNitrate.getFluid(1000))
+                .fluidInputs(AmmoniumNitrate.getFluid(1000))
                 .inputs(Glutamine.getItemStack(20))
                 .fluidInputs(BFGF.getFluid(1000))
                 .fluidInputs(EGF.getFluid(1000))

@@ -450,7 +450,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735, "Nq+?");
     public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735, "*Nq*?");
     public static final SimpleFluidMaterial AntimonyPentafluoride = new SimpleFluidMaterial("antimony_pentafluoride", Antimony.materialRGB, "SbF5");
-    public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5, "SbH2F7");
+    public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5, "H2SbF7");
     public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluoronaquadric_acid", 0x485d60, "NqHF3");
     public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluoronaquadric_acid", 0x485d60, "Nq+HF3");
     public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluoronaquadriatic_acid", 0x485d60, "*Nq*HF3");
@@ -465,7 +465,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CesiumXenontrioxideFluoride = new SimpleFluidMaterial("cesium_xenontrioxide_fluoride", 0x3333cc, "CsXeO3F");
     public static final SimpleFluidMaterial RadonTrioxide = new SimpleFluidMaterial("radon_trioxide", 0x9966ff, "RnO3");
     public static final SimpleFluidMaterial NaquadriaCesiumXenonNonfluoride = new SimpleFluidMaterial("naquadria_cesium_xenon_nonfluoride", 0x1c1c5e, "*Nq*CsXeF9");
-    public static final SimpleFluidMaterial NitrosylFluoride = new SimpleFluidMaterial("nitrosyl_fluoride", NitricOxide.materialRGB, "NOF");
+    public static final SimpleFluidMaterial NitrylFluoride = new SimpleFluidMaterial("nitryl_fluoride", NitricOxide.materialRGB, "NOF");
     public static final SimpleFluidMaterial NitrosoniumOctafluoroxenate = new SimpleFluidMaterial("nitrosonium_octafluoroxenate", 0x3f3f83, "(NO)2XeF8");
     public static final SimpleFluidMaterial NaquadriaCesiumfluoride = new SimpleFluidMaterial("naquadria_cesiumfluoride", 0x636379, "*Nq*CsF");
     public static final SimpleFluidMaterial EnrichedNaquadahhexafluoride = new SimpleFluidMaterial("enriched_naquadahhexafluoride", 0x030330, "Nq+F6");
@@ -484,13 +484,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial LightNaquadah = new SimpleFluidMaterial("light_naquadah", 0x2e2e2e, "Nq");
     public static final SimpleFluidMaterial MediumNaquadah = new SimpleFluidMaterial("medium_naquadah", 0x2e2e2e, "Nq");
     public static final SimpleFluidMaterial HeavyNaquadah = new SimpleFluidMaterial("heavy_naquadah", 0x2e2e2e, "Nq");
-    public static final SimpleFluidMaterial FlCrackedLightNaquadah = new SimpleFluidMaterial("fl_cracked_light_naquadah", 0x505e5b, "FlNq");
-    public static final SimpleFluidMaterial FlCrackedMediumNaquadah = new SimpleFluidMaterial("fl_cracked_medium_naquadah", 0x505e5b, "FlNq");
-    public static final SimpleFluidMaterial FlCrackedHeavyNaquadah = new SimpleFluidMaterial("fl_cracked_heavy_naquadah", 0x505e5b, "FlNq");
+    public static final SimpleFluidMaterial FCrackedLightNaquadah = new SimpleFluidMaterial("fl_cracked_light_naquadah", 0x505e5b, "FlNq");
+    public static final SimpleFluidMaterial FCrackedMediumNaquadah = new SimpleFluidMaterial("fl_cracked_medium_naquadah", 0x505e5b, "FlNq");
+    public static final SimpleFluidMaterial FCrackedHeavyNaquadah = new SimpleFluidMaterial("fl_cracked_heavy_naquadah", 0x505e5b, "FlNq");
     public static final SimpleFluidMaterial LightNaquadahFuel = new SimpleFluidMaterial("light_naquadah_fuel", 0x2e2e2e, "Nq");
     public static final SimpleFluidMaterial MediumNaquadahFuel = new SimpleFluidMaterial("medium_naquadah_fuel", 0x2e2e2e, "Nq");
     public static final SimpleFluidMaterial HeavyNaquadahFuel = new SimpleFluidMaterial("heavy_naquadah_fuel", 0x2e2e2e, "Nq");
-    public static final SimpleFluidMaterial AmmoniaNitrate = new SimpleFluidMaterial("ammonia_nitrate", Ammonia.materialRGB, "NH3NO3");
+    public static final SimpleFluidMaterial AmmoniumNitrate = new SimpleFluidMaterial("ammonium_nitrate", Ammonia.materialRGB, "NH4NO3");
     public static final SimpleFluidMaterial ENaquadahSolution = new SimpleFluidMaterial("e_naquadah_solution", 0x523b3a, "Nq+?");
     public static final SimpleFluidMaterial ClearENaquadahLiquid = new SimpleFluidMaterial("clear_e_naquadah_liquid", 0xa89f9e, "Nq+?");
     public static final SimpleFluidMaterial ComplicatedHeavyENaquadah = new SimpleFluidMaterial("complicated_heavy_e_naquadah", 0x403d3d, "Nq+??");

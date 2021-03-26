@@ -1,6 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -12,6 +11,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class NaquadahChain {
 
     public static void init() {
+        // Nq + 2[HNO3 + HCl] = Naquadric Solution + [H2O + HNO3] + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, NaquadricCompound)
                 .fluidInputs(AquaRegia.getFluid(2000))
@@ -21,6 +21,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // Nq + 2[HNO3 + HCl] = Enriched Naquadric Solution + [H2O + HNO3] + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, EnrichedNaquadricCompound)
                 .fluidInputs(AquaRegia.getFluid(2000))
@@ -30,6 +31,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // Nq + 2[HNO3 + HCl] = Naquadriatic Solution + [H2O + HNO3] + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, NaquadriaticCompound)
                 .fluidInputs(AquaRegia.getFluid(2000))
@@ -39,21 +41,24 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // Sb2O3 + 6HF = 2SbF3 + 3H2O
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, AntimonyTrioxide)
                 .fluidInputs(HydrofluoricAcid.getFluid(6000))
-                .outputs(AntimonyTrifluoride.getItemStack(2))
+                .outputs(AntimonyTrifluoride.getItemStack(8))
                 .fluidOutputs(Water.getFluid(3000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // SbF3 + 2F = SbF5
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(AntimonyTrifluoride.getItemStack())
+                .inputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidInputs(Fluorine.getFluid(2000))
                 .fluidOutputs(AntimonyPentafluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // SbF5 + 2HF = H2SbF7
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(AntimonyPentafluoride.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(2000))
@@ -61,22 +66,25 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // Naquadric Solution + H2SbF7 = SbF3 + Fluoronaquadric Acid [Contains: H2 + F4 + Nq]
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
-                .outputs(AntimonyTrifluoride.getItemStack())
+                .outputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidOutputs(FluoronaquadricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // Enriched Naquadric Solution + H2SbF7 = SbF3 + Enriched Fluoronaquadric Acid [Contains: H2 + F4 + Nq]
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedNaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
-                .outputs(AntimonyTrifluoride.getItemStack())
+                .outputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidOutputs(EnrichedFluoronaquadricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // Naquadriatic Solution + H2SbF7 = SbF3 + Fluoronaquadriatic Acid [Contains: H2 + F4 + Nq]
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadriaticSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
@@ -85,55 +93,61 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // Fluoronaquadric Acid [Contains: H2 + F4 + Nq] = 2HF + Naquadah Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(FluoronaquadricAcid.getFluid(1000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(NaquadahDifluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
+        // Enriched Fluoronaquadric Acid [Contains: H2 + F4 + Nq] = 2HF + Enriched Naquadah Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedFluoronaquadricAcid.getFluid(1000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(EnrichedNaquadahDifluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
+        // Fluoronaquadriatic Acid [Contains: H2 + F4 + Nq] = 2HF + Naquadria Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(FluoronaquadriaticAcid.getFluid(1000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(NaquadriaDifluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
+        // 3 Naquadah Difluoride [NqF2] + 2In = 2InF3 + 3 Naquadah Concentrate [Nq]
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadahDifluoride.getFluid(3000))
                 .input(dust, Indium, 2)
-                .outputs(IndiumTrifluoride.getItemStack(2))
+                .outputs(IndiumTrifluoride.getItemStack(8))
                 .outputs(NaquadahConcentrate.getItemStack(3))
                 .EUt(30720)
                 .duration(100)
                 .blastFurnaceTemp(4500)
                 .buildAndRegister();
+        // 3 Enriched Naquadah Difluoride [NqF2] + 2In = 2InF3 + 3 Enriched Naquadah Concentrate [Nq]
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedNaquadahDifluoride.getFluid(3000))
                 .input(dust, Indium, 2)
-                .outputs(IndiumTrifluoride.getItemStack(2))
+                .outputs(IndiumTrifluoride.getItemStack(8))
                 .outputs(EnrichedNaquadahConcentrate.getItemStack(3))
                 .EUt(30720)
                 .duration(100)
                 .blastFurnaceTemp(4500)
                 .buildAndRegister();
+        // 3 Naquadria Difluoride [NqF2] + 2In = 2InF3 + 3 Naquadria Concentrate [Nq]
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadriaDifluoride.getFluid(3000))
                 .input(dust, Indium, 2)
-                .outputs(IndiumTrifluoride.getItemStack(2))
+                .outputs(IndiumTrifluoride.getItemStack(8))
                 .outputs(NaquadriaConcentrate.getItemStack(3))
                 .EUt(30720)
                 .duration(100)
                 .blastFurnaceTemp(4500)
                 .buildAndRegister();
-
+        // 6F + Naquadria Concentrate [Nq] = Naquadria Hexafluoride [NqF6]
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Fluorine.getFluid(6000))
                 .inputs(NaquadriaConcentrate.getItemStack())
@@ -141,6 +155,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // Rn + 2F = RnF2
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Radon.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(2000))
@@ -148,6 +163,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // RnF2 + Naquadria Hexafluoride [NqF6] = Radon Naquadriaoctafluoride [RnNqF8]
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(RadonDifluoride.getFluid(1000))
                 .fluidInputs(NaquadriaHexafluoride.getFluid(1000))
@@ -155,6 +171,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // Xe + 3O = XeO3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Xenon.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(3000))
@@ -162,6 +179,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // Cs + F = CsF
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Caesium)
                 .fluidInputs(Fluorine.getFluid(1000))
@@ -169,6 +187,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // CsF + XeO3 = CsXeO3F
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CesiumFluoride.getFluid(1000))
                 .fluidInputs(XenonTrioxide.getFluid(1000))
@@ -176,6 +195,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // CsXeO3F + Radon Naquadriaoctafluoride [RnNqF8] = RnO3 + NqCsXeF9
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CesiumXenontrioxideFluoride.getFluid(1000))
                 .fluidInputs(RadonNaquadriaoctafluoride.getFluid(1000))
@@ -184,29 +204,33 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // NO2 + F = NO2F
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(NitricOxide.getFluid(1000))
+                .fluidInputs(NitrogenDioxide.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(1000))
-                .fluidOutputs(NitrosylFluoride.getFluid(1000))
+                .fluidOutputs(NitrylFluoride.getFluid(1000))
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+        // 2NO2F + NqCsXeF9 = (NO2)2XeF8 + NqF2CsF
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(NitrosylFluoride.getFluid(1000))
+                .fluidInputs(NitrylFluoride.getFluid(1000))
                 .fluidInputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
                 .fluidOutputs(NitrosoniumOctafluoroxenate.getFluid(1000))
                 .fluidOutputs(NaquadriaCesiumfluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(250)
                 .buildAndRegister();
+        // NqF2CsF = Nq + 3F + Cs
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadriaCesiumfluoride.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Naquadria, 1))
-                .fluidOutputs(Fluorine.getFluid(2000))
+                .fluidOutputs(Fluorine.getFluid(3000))
                 .outputs(OreDictUnifier.get(dust, Caesium, 1))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+        // RnO3 = Rn + O3
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(RadonTrioxide.getFluid(4000))
                 .fluidOutputs(Radon.getFluid(1000))
@@ -214,15 +238,16 @@ public class NaquadahChain {
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
+        // (NO2)2XeF8 = 8F + Xe + 2NO2
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(NitrosoniumOctafluoroxenate.getFluid(1000))
                 .fluidOutputs(Fluorine.getFluid(8000))
                 .fluidOutputs(Xenon.getFluid(1000))
-                .fluidOutputs(NitricOxide.getFluid(2000))
+                .fluidOutputs(NitrogenDioxide.getFluid(2000))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
-
+        // Enriched Naquadah Concentrate [Nq] + 6F = NqF6
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(EnrichedNaquadahConcentrate.getItemStack())
                 .fluidInputs(Fluorine.getFluid(6000))
@@ -230,6 +255,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(175)
                 .buildAndRegister();
+        // NqF6 + Xe = XeNqF6
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedNaquadahhexafluoride.getFluid(1000))
                 .fluidInputs(Xenon.getFluid(1000))
@@ -237,47 +263,56 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder()
+        // Au + HNO3 + 4 HCl = HAuCl4 + NO + 2 H2O
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .EUt(8000)
                 .duration(50)
                 .input(dust, Gold)
-                .fluidInputs(AquaRegia.getFluid(1000))
-                .fluidOutputs(ChloroauricAcid.getFluid(2000))
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(4000))
+                .fluidOutputs(ChloroauricAcid.getFluid(1000))
+                .fluidOutputs(NitricOxide.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
+        // 2HAuCl4 = Au2Cl6 + 2HCl
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(ChloroauricAcid.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(1000))
                 .fluidOutputs(AuricChloride.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+        // Br + 3F = BrF3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Bromine.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(3000))
-                .fluidOutputs(BromineTrifluoride.getFluid(4000))
+                .fluidOutputs(BromineTrifluoride.getFluid(1000))
                 .EUt(1920)
                 .duration(250)
                 .buildAndRegister();
+        // 2BrF3 + Au2Cl6 = 2AuF3 + 2Br + 6Cl
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(BromineTrifluoride.getFluid(1000))
                 .fluidInputs(AuricChloride.getFluid(1000))
-                .outputs(AuricFluoride.getItemStack())
-                .fluidOutputs(Bromine.getFluid(250))
-                .fluidOutputs(Chlorine.getFluid(750))
+                .outputs(AuricFluoride.getItemStack(8))
+                .fluidOutputs(Bromine.getFluid(2000))
+                .fluidOutputs(Chlorine.getFluid(6000))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
+        // H2SbF7 + AuF3 + XeNqF6 + 9H = Nq + 9HF + [AuXe + H2SbF7]
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(AuricFluoride.getItemStack(4))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
-                .inputs(AuricFluoride.getItemStack(1))
                 .fluidInputs(EnrichedXenonHexafluoronaquadate.getFluid(1000))
-                .fluidOutputs(Hydrogen.getFluid(9000))
+                .fluidInputs(Hydrogen.getFluid(9000))
                 .outputs(OreDictUnifier.get(dust, NaquadahEnriched, 1))
                 .fluidOutputs(XenoauricFluoroantimonicAcid.getFluid(1000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(8000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(9000))
                 .EUt(7680)
                 .duration(250)
                 .buildAndRegister();
+        // [AuXe + H2SbF7] = Au + Xe + 2H + Sb + 7F
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Gold))
@@ -288,15 +323,17 @@ public class NaquadahChain {
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+        // 2H2SO4 + 3H2O2 + 2K = 2KHSO5 + 4H2O
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(SulfuricAcid.getFluid(2000))
                 .fluidInputs(HydrogenPeroxide.getFluid(3000))
                 .input(dust, Potassium, 2)
-                .outputs(PotassiumPeroxymonosulfate.getItemStack(2))
+                .outputs(PotassiumPeroxymonosulfate.getItemStack(14))
                 .fluidOutputs(Water.getFluid(4000))
                 .EUt(480)
                 .duration(100)
                 .buildAndRegister();
+        // [HNO3 + H2O] = HNO3 + H2O
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(DiluteNitricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(1000))
@@ -304,6 +341,7 @@ public class NaquadahChain {
                 .duration(600)
                 .EUt(60)
                 .buildAndRegister();
+        // HF + KHSO5 + Nq = H2O + KF + NqSO4
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
                 .inputs(PotassiumPeroxymonosulfate.getItemStack())
@@ -314,49 +352,56 @@ public class NaquadahChain {
                 .EUt(7980)
                 .duration(200)
                 .buildAndRegister();
+        // NqSO4 + 2H = H2SO4 + Nq
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadahSulfate.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(1000))
-                .fluidOutputs(SulfuricAcid.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(SulfuricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Naquadah))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
+        // 2InF3 + 3H2O = In2O3 + 6HF
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(IndiumTrifluoride.getItemStack(2))
+                .inputs(IndiumTrifluoride.getItemStack(8))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(IndiumTrioxide.getItemStack())
+                .outputs(IndiumTrioxide.getItemStack(5))
                 .fluidOutputs(HydrofluoricAcid.getFluid(6000))
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+        // In2O3 + 3C = 2In + 3CO
         BLAST_RECIPES.recipeBuilder()
-                .inputs(IndiumTrioxide.getItemStack())
+                .inputs(IndiumTrioxide.getItemStack(5))
                 .input(dust, Carbon, 3)
                 .outputs(OreDictUnifier.get(dust, Indium, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(3000))
+                .fluidOutputs(CarbonMonoxde.getFluid(3000))
                 .EUt(480)
                 .duration(200)
                 .blastFurnaceTemp(4500)
                 .buildAndRegister();
-
+        // NH3 + HNO3 = NH4NO3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidOutputs(AmmoniaNitrate.getFluid(1000))
+                .fluidOutputs(AmmoniumNitrate.getFluid(1000))
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
+        // Nq + NH4NO3 = Naquadah Solution [Nq + NH4NO3]
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Naquadah)
-                .fluidInputs(AmmoniaNitrate.getFluid(1000))
+                .fluidInputs(AmmoniumNitrate.getFluid(1000))
+                .fluidOutputs(NaquadahSolution.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
-                .fluidOutputs(NaquadahSolution.getFluid(1000))
                 .buildAndRegister();
+        // 2 Naquadah Solution [Nq + NH4NO3] = Clear Naquadah Liquid + NH3 + HNO3
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadahSolution.getFluid(2000))
                 .fluidOutputs(ClearNaquadahLiquid.getFluid(1000))
+                .fluidOutputs(Ammonia.getFluid(1000))
+                .fluidOutputs(NitricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dustTiny, PlatinumRawPowder, 5))
                 .outputs(OreDictUnifier.get(dustTiny, IridiumChloride, 3))
                 .outputs(OreDictUnifier.get(dustTiny, Naquadah, 1))
@@ -403,26 +448,26 @@ public class NaquadahChain {
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(MediumNaquadah.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(200))
-                .fluidOutputs(FlCrackedMediumNaquadah.getFluid(1000))
+                .fluidOutputs(FCrackedMediumNaquadah.getFluid(1200))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightNaquadah.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(400))
-                .fluidOutputs(FlCrackedLightNaquadah.getFluid(1000))
+                .fluidOutputs(FCrackedLightNaquadah.getFluid(1400))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(HeavyNaquadah.getFluid(1000))
                 .fluidInputs(Fluorine.getFluid(600))
-                .fluidOutputs(FlCrackedHeavyNaquadah.getFluid(1000))
+                .fluidOutputs(FCrackedHeavyNaquadah.getFluid(1600))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(FlCrackedLightNaquadah.getFluid(1000))
+                .fluidInputs(FCrackedLightNaquadah.getFluid(1200))
                 .fluidOutputs(NaquadahGas.getFluid(350))
                 .fluidOutputs(LightNaquadahFuel.getFluid(400))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(150))
@@ -432,7 +477,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(FlCrackedMediumNaquadah.getFluid(1000))
+                .fluidInputs(FCrackedMediumNaquadah.getFluid(1400))
                 .fluidOutputs(NaquadahGas.getFluid(150))
                 .fluidOutputs(LightNaquadahFuel.getFluid(200))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(400))
@@ -442,7 +487,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(FlCrackedHeavyNaquadah.getFluid(1000))
+                .fluidInputs(FCrackedHeavyNaquadah.getFluid(1600))
                 .fluidOutputs(NaquadahGas.getFluid(50))
                 .fluidOutputs(LightNaquadahFuel.getFluid(100))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(200))
@@ -451,9 +496,10 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-
+        // Cu + O + H2SO4 = [CuSO4 + H2O]
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Copper)
+                .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(CopperSulfateSolution.getFluid(1000))
                 .EUt(480)
@@ -515,51 +561,51 @@ public class NaquadahChain {
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(MediumENaquadah.getFluid(1000))
                 .fluidInputs(Radon.getFluid(200))
-                .fluidOutputs(RnCrackedMediumENaquadah.getFluid(1000))
+                .fluidOutputs(RnCrackedMediumENaquadah.getFluid(1200))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightENaquadah.getFluid(1000))
                 .fluidInputs(Radon.getFluid(400))
-                .fluidOutputs(RnCrackedLighteNaquadah.getFluid(1000))
+                .fluidOutputs(RnCrackedLighteNaquadah.getFluid(1400))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(HeavyENaquadah.getFluid(1000))
                 .fluidInputs(Radon.getFluid(600))
-                .fluidOutputs(RnCrackedHeavyENaquadah.getFluid(1000))
+                .fluidOutputs(RnCrackedHeavyENaquadah.getFluid(1600))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(RnCrackedLighteNaquadah.getFluid(1000))
+                .fluidInputs(RnCrackedLighteNaquadah.getFluid(1200))
                 .fluidOutputs(NaquadahGas.getFluid(350))
                 .fluidOutputs(LightENaquadahFuel.getFluid(400))
                 .fluidOutputs(MediumENaquadahFuel.getFluid(150))
                 .fluidOutputs(HeavyENaquadahFuel.getFluid(50))
-                .fluidOutputs(Radon.getFluid(50))
+                .fluidOutputs(Radon.getFluid(180))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(RnCrackedMediumENaquadah.getFluid(1000))
+                .fluidInputs(RnCrackedMediumENaquadah.getFluid(1400))
                 .fluidOutputs(NaquadahGas.getFluid(150))
                 .fluidOutputs(LightENaquadahFuel.getFluid(200))
                 .fluidOutputs(MediumENaquadahFuel.getFluid(400))
                 .fluidOutputs(HeavyENaquadahFuel.getFluid(100))
-                .fluidOutputs(Radon.getFluid(150))
+                .fluidOutputs(Radon.getFluid(380))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(RnCrackedHeavyENaquadah.getFluid(1000))
+                .fluidInputs(RnCrackedHeavyENaquadah.getFluid(1600))
                 .fluidOutputs(NaquadahGas.getFluid(50))
                 .fluidOutputs(LightENaquadahFuel.getFluid(100))
                 .fluidOutputs(MediumENaquadahFuel.getFluid(200))
                 .fluidOutputs(HeavyENaquadahFuel.getFluid(400))
-                .fluidOutputs(Radon.getFluid(250))
+                .fluidOutputs(Radon.getFluid(570))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();

@@ -263,14 +263,14 @@ public class Lasers {
                 .fluidInputs(EDTA.getFluid(10))
                 .outputs(PrHoYLFNanoparticles.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, BerylliumFluoride, 3))
-                .fluidOutputs(AmmoniaNitrate.getFluid(2000))
+                .fluidOutputs(AmmoniumNitrate.getFluid(2000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // NH4NO3 -> NH3 + HNO3
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(120)
-                .fluidInputs(AmmoniaNitrate.getFluid(1000))
+                .fluidInputs(AmmoniumNitrate.getFluid(1000))
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(NitricAcid.getFluid(1000))
                 .buildAndRegister();
