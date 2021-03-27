@@ -16,16 +16,14 @@ import static gregtech.common.items.MetaItems.*;
 
 public class Batteries {
     public static void init() {
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(120).EUt(1300)
-                .input(dust, Nickel)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidInputs(Bromine.getFluid(1000))
-                .fluidInputs(PotassiumHydroxide.getFluid(3000))
-                .outputs(PotassiumBromide.getItemStack(2))
-                .outputs(PotassiumSulfate.getItemStack(7))
-                .outputs(NickelOxideHydroxide.getItemStack(4))
-                .fluidOutputs(Hydrogen.getFluid(2000))
-                .fluidOutputs(Water.getFluid(1000))
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1300)
+                .input(dust, Nickel, 2)
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .fluidInputs(PotassiumHydroxide.getFluid(6000))
+                .outputs(PotassiumSulfate.getItemStack(21))
+                .outputs(NickelOxideHydroxide.getItemStack(8))
+                .fluidOutputs(Hydrogen.getFluid(4000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(4000)
                 .input(dust, Cobalt, 1)
@@ -46,7 +44,7 @@ public class Batteries {
                 .fluidInputs(SodiumCarbonateSolution.getFluid(6000))
                 .outputs(Cellulose.getItemStack(96))
                 .outputs(Xylose.getItemStack(20))
-                .outputs(PLANT_BALL.getStackForm(2))
+                .fluidOutputs(Biomass.getFluid(540))
                 .fluidOutputs(SodiumAlginateSolution.getFluid(6000))
                 .fluidOutputs(CarbonDioxide.getFluid(6000))
                 .fluidOutputs(Water.getFluid(6000))
