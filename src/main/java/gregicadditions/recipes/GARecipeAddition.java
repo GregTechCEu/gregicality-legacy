@@ -2139,14 +2139,30 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, UHVSuperconductorBase, 9))
                 .buildAndRegister();
 
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(3081).EUt(30)
+                .input(dust, UHVSuperconductorBase, 9)
+                .outputs(TBCCODust.getItemStack(4))
+                .outputs(StrontiumSuperconductorDust.getItemStack(4))
+                .outputs(OreDictUnifier.get(dust, Taranium))
+                .buildAndRegister();
+
         // UEV Superconductor Base Dust
         LARGE_MIXER_RECIPES.recipeBuilder().duration(11292).EUt(30)
                 .inputs(ActiniumSuperhydride.getItemStack())
-                .inputs(StrontiumSuperconductorDust.getItemStack())
+                .inputs(BETSPerrhenate.getItemStack())
                 .input(dust, Vibranium, 2)
                 .input(dust, Quantum)
                 .input(dust, TriniumTitanium)
                 .outputs(OreDictUnifier.get(dust, UEVSuperconductorBase, 6))
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(11892).EUt(30)
+                .input(dust, UEVSuperconductorBase, 6)
+                .outputs(ActiniumSuperhydride.getItemStack())
+                .outputs(StrontiumSuperconductorDust.getItemStack())
+                .outputs(OreDictUnifier.get(dust, Vibranium, 2))
+                .outputs(OreDictUnifier.get(dust, Quantum))
+                .outputs(OreDictUnifier.get(dust, TriniumTitanium))
                 .buildAndRegister();
 
         // UIV Superconductor Base Dust
@@ -2156,6 +2172,50 @@ public class GARecipeAddition {
                 .input(dust, MetastableOganesson, 2)
                 .input(dust, ProtoAdamantium, 2)
                 .outputs(OreDictUnifier.get(dust, UIVSuperconductorBase, 7))
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(3995).EUt(30)
+                .input(dust, UIVSuperconductorBase, 7)
+                .outputs(BorocarbideDust.getItemStack(2))
+                .outputs(FullereneSuperconductiveDust.getItemStack())
+                .outputs(OreDictUnifier.get(dust, MetastableOganesson, 2))
+                .outputs(OreDictUnifier.get(dust, ProtoAdamantium, 2))
+                .buildAndRegister();
+
+        // UMV Superconductor Base Dust
+        MIXER_RECIPES.recipeBuilder().duration(720).EUt(8500000)
+                .input(dust, BlackTitanium, 3)
+                .input(dust, SuperheavyHAlloy, 2)
+                .inputs(ChargedCesiumCeriumCobaltIndium.getItemStack(3))
+                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(6))
+                .outputs(OreDictUnifier.get(dust, UMVSuperconductorBase, 14))
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(1020).EUt(8500000)
+                .input(dust, UMVSuperconductorBase, 14)
+                .outputs(OreDictUnifier.get(dust, BlackTitanium, 3))
+                .outputs(OreDictUnifier.get(dust, SuperheavyHAlloy, 2))
+                .outputs(ChargedCesiumCeriumCobaltIndium.getItemStack(3))
+                .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(6))
+                .buildAndRegister();
+
+        // UXV Superconductor Base Dust
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(33500000)
+                .inputs(Legendarium.getItemStack(5))
+                .input(dust, Neutronium, 4)
+                .inputs(ActiniumSuperhydride.getItemStack(5))
+                .inputs(LanthanumFullereneNanotubes.getItemStack(4))
+                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
+                .outputs(OreDictUnifier.get(dust, UXVSuperconductorBase, 30))
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(1020).EUt(33500000)
+                .input(dust, UXVSuperconductorBase, 30)
+                .outputs(Legendarium.getItemStack(5))
+                .outputs(OreDictUnifier.get(dust, Neutronium, 4))
+                .outputs(ActiniumSuperhydride.getItemStack(5))
+                .outputs(LanthanumFullereneNanotubes.getItemStack(4))
+                .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
                 .buildAndRegister();
 
 

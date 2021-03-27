@@ -936,7 +936,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // Sg + NaOH + 5F + 2H2O = 5HF + NaSgO3
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(720000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(720000)
                 .input(dust, Seaborgium)
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(Fluorine.getFluid(5000))
@@ -1083,7 +1083,7 @@ public class SuperconductorsSMDChain {
                 .inputs(ThalliumChloride.getItemStack(2))
                 .fluidInputs(Isophtaloylbisdiethylthiourea.getFluid(3000))
                 .fluidInputs(FluorophosphoricAcid.getFluid(1000))
-                .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(184))
+                .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(125))
                 .fluidOutputs(HydrochloricAcid.getFluid(7000))
                 .fluidOutputs(Chlorine.getFluid(3000))
                 .buildAndRegister();
@@ -1116,24 +1116,6 @@ public class SuperconductorsSMDChain {
                 .inputs(LanthanumEmbeddedFullerene.getItemStack())
                 .notConsumable(plate, Rhenium)
                 .outputs(LanthanumFullereneNanotubes.getItemStack())
-                .buildAndRegister();
-        
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(8500000)
-                .input(dust, BlackTitanium, 3)
-                .input(dust, SuperheavyHAlloy, 2)
-                .inputs(ChargedCesiumCeriumCobaltIndium.getItemStack(3))
-                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, UMVSuperconductorBase, 14))
-                .buildAndRegister();
-        
-        
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(720).EUt(33500000)
-                .inputs(Legendarium.getItemStack(5))
-                .input(dust, Neutronium, 4)
-                .inputs(ActiniumSuperhydride.getItemStack(5))
-                .inputs(LanthanumFullereneNanotubes.getItemStack(4))
-                .inputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
-                .outputs(OreDictUnifier.get(dust, UXVSuperconductorBase, 30))
                 .buildAndRegister();
 
         // 2La + H2SO4 = La2O3 + Dilute Sulfuric
