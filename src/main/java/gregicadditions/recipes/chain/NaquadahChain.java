@@ -11,32 +11,35 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class NaquadahChain {
 
     public static void init() {
-        // Nq + 2[HNO3 + HCl] = Naquadric Solution + [H2O + HNO3] + Cl
+        // Nq + 2[HNO3 + HCl] = Naquadric Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, NaquadricCompound)
-                .fluidInputs(AquaRegia.getFluid(2000))
+                .fluidInputs(AquaRegia.getFluid(4000))
                 .fluidOutputs(NaquadricSolution.getFluid(1000))
                 .fluidOutputs(DiluteNitricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
-        // Nq + 2[HNO3 + HCl] = Enriched Naquadric Solution + [H2O + HNO3] + Cl
+        // Nq + 2[HNO3 + HCl] = Enriched Naquadric Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, EnrichedNaquadricCompound)
-                .fluidInputs(AquaRegia.getFluid(2000))
+                .fluidInputs(AquaRegia.getFluid(4000))
                 .fluidOutputs(EnrichedNaquadricSolution.getFluid(1000))
                 .fluidOutputs(DiluteNitricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
-        // Nq + 2[HNO3 + HCl] = Naquadriatic Solution + [H2O + HNO3] + Cl
+        // Nq + 2[HNO3 + HCl] = Naquadriatic Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, NaquadriaticCompound)
                 .fluidInputs(AquaRegia.getFluid(2000))
-                .fluidOutputs(NaquadriaticSolution.getFluid(1000))
+                .fluidOutputs(NaquadriaticSolution.getFluid(4000))
                 .fluidOutputs(DiluteNitricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
@@ -66,34 +69,37 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-        // Naquadric Solution + H2SbF7 = SbF3 + Fluoronaquadric Acid [Contains: H2 + F4 + Nq]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // Naquadric Solution [Nq + NO2] + H2SbF7 = SbF3 + Fluoronaquadric Acid [H2NqF4] + NO2
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidOutputs(FluoronaquadricAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-        // Enriched Naquadric Solution + H2SbF7 = SbF3 + Enriched Fluoronaquadric Acid [Contains: H2 + F4 + Nq]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // Enriched Naquadric Solution [Nq + NO2] + H2SbF7 = SbF3 + Enriched Fluoronaquadric Acid [H2NqF4] + NO2
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedNaquadricSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
                 .fluidOutputs(EnrichedFluoronaquadricAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-        // Naquadriatic Solution + H2SbF7 = SbF3 + Fluoronaquadriatic Acid [Contains: H2 + F4 + Nq]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // Naquadriatic Solution [Nq + NO2] + H2SbF7 = SbF3 + Fluoronaquadriatic Acid [H2NqF4] + NO2
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadriaticSolution.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(AntimonyTrifluoride.getItemStack())
                 .fluidOutputs(FluoronaquadriaticAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
-        // Fluoronaquadric Acid [Contains: H2 + F4 + Nq] = 2HF + Naquadah Difluoride [NqF2]
+        // Fluoronaquadric Acid [H2NqF4] = 2HF + Naquadah Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(FluoronaquadricAcid.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
@@ -101,7 +107,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
-        // Enriched Fluoronaquadric Acid [Contains: H2 + F4 + Nq] = 2HF + Enriched Naquadah Difluoride [NqF2]
+        // Enriched Fluoronaquadric Acid [H2NqF4] = 2HF + Enriched Naquadah Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(EnrichedFluoronaquadricAcid.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
@@ -109,7 +115,7 @@ public class NaquadahChain {
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
-        // Fluoronaquadriatic Acid [Contains: H2 + F4 + Nq] = 2HF + Naquadria Difluoride [NqF2]
+        // Fluoronaquadriatic Acid [H2NqF4] = 2HF + Naquadria Difluoride [NqF2]
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(FluoronaquadriaticAcid.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
