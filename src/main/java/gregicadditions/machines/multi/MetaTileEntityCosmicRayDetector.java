@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
@@ -279,7 +280,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-        Textures.MULTIBLOCK_WORKABLE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() && hasEnoughEnergy && canSeeSky);
+        ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isStructureFormed() && hasEnoughEnergy && canSeeSky);
     }
 
     @Override

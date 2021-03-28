@@ -6,6 +6,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.behaviors.DataStickFluidSamplerBehavior;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.DimensionChunkCoords;
@@ -154,6 +155,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         IVertexOperation[] colouredPipeline = ArrayUtils.add(pipeline, new ColourMultiplier(GTUtility.convertRGBtoOpaqueRGBA_CL(getPaintingColorForRendering())));
         getBaseRenderer().render(renderState, translation, colouredPipeline);
+        ClientHandler.PRINTER_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.isActive());
     }
 
     @SideOnly(Side.CLIENT)
