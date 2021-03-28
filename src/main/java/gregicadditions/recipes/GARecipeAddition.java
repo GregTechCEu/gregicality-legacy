@@ -3063,11 +3063,10 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // C16H12O2H2 + 2O + C14H10 (catalyst) = H2O2 + C16H12O2
-        // TODO: Catalyst: Anthracene
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidInputs(EthylAnthraHydroQuinone.getFluid(5000))
-                .fluidInputs(Anthracene.getFluid(10))
+                .notConsumable(Anthracene)
                 .fluidOutputs(HydrogenPeroxide.getFluid(2000))
                 .fluidOutputs(EthylAnthraQuinone.getFluid(4000))
                 .buildAndRegister();
@@ -5573,8 +5572,6 @@ public class GARecipeAddition {
                 'P', new UnificationEntry(plate, HSSS),
                 'B', GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_MODULE.getStackForm() : BATTERY_LARGE_LITHIUM_ION.getStackForm());
 
-
-        // TODO
         removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(480)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
