@@ -132,6 +132,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
         }
 
         if(isActive && canFillFluidExport() && !drainEnergy()) {
+            setActive(false);
             return;
         }
 
