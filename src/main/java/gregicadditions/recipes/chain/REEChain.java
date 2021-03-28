@@ -121,26 +121,33 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        // HCl + Na[REE]-OH(H2O) -> ThU + HNaOH[REE]-Cl(H2O)
+        // HCl + Na[REE]-OH(H2O) -> ThU + H[REE]-Cl+ [NaOH + H2O]
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(RareEarthHydroxidesSolution.getFluid(1000))
-                .outputs(ThUSludge.getItemStack())
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
+                .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
+                .outputs(ThUSludge.getItemStack())
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
-        // HNaOH[REE]-Cl(H2O) + C16H35O4P(cat.) -> NaOH + [REE](sep.) + HCl(H2O)
+        DISTILLATION_RECIPES.recipeBuilder().duration(100).EUt(32)
+                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .buildAndRegister();
+
+        // H[REE]-Cl + C16H35O4P(cat.) -> [REE](sep.) + HCl
+        // TODO CATALYST
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(RareEarthChloridesSolution.getFluid(1000))
-                .fluidInputs(DiethylhexylPhosphoricAcid.getFluid(10))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .notConsumable(DiethylhexylPhosphoricAcid.getFluid(10))
                 .fluidOutputs(LaNdOxidesSolution.getFluid(250))
                 .fluidOutputs(SmGdOxidesSolution.getFluid(250))
                 .fluidOutputs(TbHoOxidesSolution.getFluid(250))
                 .fluidOutputs(ErLuOxidesSolution.getFluid(250))
-                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .EUt(480)
                 .duration(600)
                 .buildAndRegister();

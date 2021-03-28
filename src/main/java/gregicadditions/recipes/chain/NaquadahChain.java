@@ -339,14 +339,6 @@ public class NaquadahChain {
                 .EUt(480)
                 .duration(100)
                 .buildAndRegister();
-        // [HNO3 + H2O] = HNO3 + H2O
-        DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(DiluteNitricAcid.getFluid(2000))
-                .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .duration(600)
-                .EUt(60)
-                .buildAndRegister();
         // HF + KHSO5 + Nq = H2O + KF + NqSO4
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))

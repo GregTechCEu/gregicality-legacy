@@ -761,7 +761,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NeutralisedRedMud = new SimpleFluidMaterial("neutralised_red_mud", 0xcc3300, "Fe??");
     public static final SimpleFluidMaterial FerricREEChloride = new SimpleFluidMaterial("ferric_ree_chloride", 0x30301a, "Fe?");
     public static final SimpleFluidMaterial RedSlurry = new SimpleFluidMaterial("red_slurry", 0xcc3300, "TiSiO2?");
-    public static final SimpleFluidMaterial TitaniumSulfate = new SimpleFluidMaterial("titanium_sulfate", 0xdc3d7c, "TiO(SO4)");
+    public static final SimpleFluidMaterial TitaniumDisulfate = new SimpleFluidMaterial("titanium_disulfate", 0xdc3d7c, "TiO(SO4)");
     public static final SimpleFluidMaterial RubySlurry = new SimpleFluidMaterial("ruby_slurry", Ruby.materialRGB, "?");
     public static final SimpleFluidMaterial SapphireSlurry = new SimpleFluidMaterial("sapphire_slurry", Sapphire.materialRGB, "?");
     public static final SimpleFluidMaterial GreenSapphireSlurry = new SimpleFluidMaterial("green_sapphire_slurry", GreenSapphire.materialRGB, "?");
