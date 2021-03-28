@@ -61,9 +61,9 @@ public class TileEntitySteamMixer extends SteamMetaTileEntity {
                         .setBackgroundTexture(BRONZE_SLOT_BACKGROUND_TEXTURE))
                 .widget(new SlotWidget(this.importItems, 3, 54, 43)
                         .setBackgroundTexture(BRONZE_SLOT_BACKGROUND_TEXTURE))
-                .widget(new TankWidget(this.importFluids.getTankAt(1), 18, 24, 18, 18)
+                .widget(new TankWidget(this.importFluids.getTankAt(1), 18, 25, 18, 18)
                         .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(false, true))
-                .widget(new TankWidget(this.importFluids.getTankAt(2), 18, 42, 18, 18)
+                .widget(new TankWidget(this.importFluids.getTankAt(2), 18, 43, 18, 18)
                         .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(false, true))
                 .widget(new ProgressWidget(workableHandler::getProgressPercent, 78, 34, 20, 16)
                         .setProgressBar(getFullGuiTexture("progress_bar_%s_furnace"),
