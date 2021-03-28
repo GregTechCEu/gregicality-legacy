@@ -147,6 +147,7 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
         this.pos = data.getInteger("Recipe");
         ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
         this.recipeMap = possibleRecipe[pos];
+        this.scheduleRenderUpdate();
     }
 
     @Override
