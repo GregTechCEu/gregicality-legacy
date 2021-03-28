@@ -25,7 +25,7 @@ public class Dyes {
 
         // Ca5(PO4)3Cl + H2SO4 -> CaS(H2O)2O4 + Ca4P3O102Cl
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(500)
-                .input(dust, Apatite, 9) // TODO verify this amount
+                .input(dust, Apatite, 9)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Gypsum, 8))
                 .outputs(ApatiteAcidicLeach.getItemStack())
@@ -210,20 +210,20 @@ public class Dyes {
                 .outputs(CobaltAluminate.getItemStack(9))
                 .buildAndRegister();
 
-        // 12HCN + 2Fe + 8KOH + C -> 2K4Fe(CN)6(H2O)3 + 4H2O + CO //TODO Change to Ferrocyanide
+        // 12HCN + 2Fe + 8KOH + C -> 2K4Fe(CN)6(H2O)3 + 4H2O + CO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(640)
                 .input(dust, Iron, 2)
                 .input(dust, Carbon)
                 .fluidInputs(HydrogenCyanide.getFluid(12000))
                 .fluidInputs(PotassiumHydroxide.getFluid(8000))
-                .outputs(PotassiumFerrocyanate.getItemStack(40))
+                .outputs(PotassiumFerrocyanide.getItemStack(40))
                 .fluidOutputs(Water.getFluid(4000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
         // 3K4Fe(CN)6(H2O)3 + 4FeCl3 -> Fe7(CN)18 + 12KCl + 9H2O TODO
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(300).EUt(720)
-                .inputs(PotassiumFerrocyanate.getItemStack(3))
+                .inputs(PotassiumFerrocyanide.getItemStack(3))
                 .fluidInputs(IronChloride.getFluid(4000))
                 .outputs(PrussianBlue.getItemStack(3))
                 .outputs(OreDictUnifier.get(dust, RockSalt, 12))
@@ -245,7 +245,6 @@ public class Dyes {
                 .outputs(ManganeseIIIOxide.getItemStack(5))
                 .buildAndRegister();
 
-        // TODO change to AmmoniumManganesePhosphate
         // Mn2O3 + 2NH3 + 4H3PO4 + 6C -> 2NH4MnPO4 + 5H2O + 6CO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
                 .inputs(ManganeseIIIOxide.getItemStack(5))
@@ -292,14 +291,13 @@ public class Dyes {
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
                 .buildAndRegister();
 
-        // TODO Name is Diaminostilbenedisulfonic Acid
         // 2C7H7(NO2) + 2H2SO4 + 4NaCl -> C14H14N2O6S2 + 4HClO + 2Na2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(1240)
                 .notConsumable(dust, Zinc)
                 .input(dust, Salt, 8)
                 .fluidInputs(Nitrotoluene.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(2000))
-                .outputs(DiaminostibenedisulfonicAcid.getItemStack(38))
+                .outputs(DiaminostilbenedisulfonicAcid.getItemStack(38))
                 .outputs(SodiumOxide.getItemStack(6))
                 .fluidOutputs(HypochlorousAcid.getFluid(4000))
                 .buildAndRegister();
@@ -322,7 +320,6 @@ public class Dyes {
                 .outputs(SodiumSulfanilate.getItemStack(18))
                 .buildAndRegister();
 
-        // TODO Change Naphtaleneamine to Naphthylamine
         // NaOH + H2SO4 + C10H8 + NH3 -> C10H9N + NaSO4 + 4H
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1400)
                 .input(dust, SodiumHydroxide, 3)
@@ -330,7 +327,7 @@ public class Dyes {
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Naphtalene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .fluidOutputs(Naphtaleneamine.getFluid(1000))
+                .fluidOutputs(Naphthylamine.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(4000))
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
                 .buildAndRegister();
@@ -338,14 +335,13 @@ public class Dyes {
         // C6H6NNaO3S + C10H9N + HCl + NaNO2 -> NaCl + C26H19N6NaO3S // TODO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
                 .inputs(SodiumSulfanilate.getItemStack())
-                .fluidInputs(Naphtaleneamine.getFluid(1000))
+                .fluidInputs(Naphthylamine.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .inputs(SodiumNitrite.getItemStack())
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .outputs(DirectBrown.getItemStack(2))
                 .buildAndRegister();
 
-        // TODO Change to Aminoterephthalic Acid
         // 2NaOH + C4H6O4 + C2H5OH + C6H5NH2 + H2SO4 -> Na2SO4 + 3H2O + C8H7NO4 + C4H7O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1600)
                 .input(dust, SodiumHydroxide, 6)
@@ -356,11 +352,11 @@ public class Dyes {
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
                 .fluidOutputs(Water.getFluid(3000))
                 .fluidOutputs(Butanol.getFluid(1000))
-                .outputs(AminoterephtalicAcid.getItemStack(20))
+                .outputs(AminoterephthalicAcid.getItemStack(20))
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(1200)
-                .inputs(AminoterephtalicAcid.getItemStack(20))
+                .inputs(AminoterephthalicAcid.getItemStack(20))
                 .outputs(Quinacridone.getItemStack(10))
                 .buildAndRegister();
 
@@ -526,7 +522,7 @@ public class Dyes {
                 .outputs(Erythrosine.getItemStack())
                 .buildAndRegister();
 
-        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),OreDictUnifier.get(dust,Rutile),OreDictUnifier.get(dust,LeadNitrate),DiaminostibenedisulfonicAcid.getItemStack()},
+        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),OreDictUnifier.get(dust,Rutile),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
                 {OreDictUnifier.get(dust,Carbon),OreDictUnifier.get(dust,Pyrolusite),Nigrosin.getItemStack()},
                 {RawSienna.getItemStack(),DirectBrown.getItemStack()},
                 {BurnedSienna.getItemStack(),MercuryIodide.getItemStack(),OreDictUnifier.get(dust,Cinnabar),Quinacridone.getItemStack()},

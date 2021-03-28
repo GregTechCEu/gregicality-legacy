@@ -186,7 +186,6 @@ public class FullereneChain {
                 .buildAndRegister();
         // 2C10H10Fe + 2C60 + C2H4 + 2C3H7NO2 + 4CO = 2[C10H10Fe + C60 + C4H9N] + 4CO2
         // C2H4 + 2C3H7NO2 = 2C4H9N + 4O
-        // TODO: Catalysts: Chloroform, Toluene
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .inputs(Fullerene.getItemStack(2))
                 .inputs(NMethylglicine.getItemStack(22))
@@ -195,8 +194,8 @@ public class FullereneChain {
                 .fluidInputs(Ferrocene.getFluid(2000))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(CarbonMonoxde.getFluid(4000))
-                .fluidInputs(Chloroform.getFluid(10))
-                .fluidInputs(Toluene.getFluid(10))
+                .notConsumable(Chloroform)
+                .notConsumable(Toluene)
                 .fluidOutputs(Ferrocenylfulleropyrrolidine.getFluid(2000))
                 .fluidOutputs(CarbonDioxide.getFluid(4000))
                 .EUt(2000000)
@@ -212,12 +211,11 @@ public class FullereneChain {
                 .duration(10)
                 .buildAndRegister();
         // CH3NH2 + 2Cl + CH3COOH = C3H7NO2 + 2HCl
-        // TODO: Catalysts: Acetic Anhydride
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methylamine.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(2000))
                 .fluidInputs(AceticAcid.getFluid(1000))
-                .fluidInputs(AceticAnhydride.getFluid(10))
+                .notConsumable(AceticAnhydride.getFluid(10))
                 .outputs(NMethylglicine.getItemStack(11))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .EUt(2000000)
@@ -236,12 +234,11 @@ public class FullereneChain {
                 .buildAndRegister();
         // [C10H10Fe + C60 + C4H9N] + Pd + CH3COOH + HNO3 = PdC60
         // Calling this fine
-        // TODO: Catalysts: Nitric Acid
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ferrocenylfulleropyrrolidine.getFluid(1000))
                 .input(dust, Palladium)
                 .fluidInputs(AceticAcid.getFluid(1000))
-                .fluidInputs(NitricAcid.getFluid(10))
+                .notConsumable(NitricAcid)
                 .outputs(PdFullereneMatrix.getItemStack())
                 .EUt(2000000)
                 .duration(200)
@@ -305,11 +302,10 @@ public class FullereneChain {
                 .duration(450)
                 .buildAndRegister();
         // 3Ag2O + 8BF3 + = 6AgBF4 + B2O3
-        // TODO: Catalyst: Benzene
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(BoronFluoride.getFluid(8000))
                 .input(dust, SilverOxide, 9)
-                .fluidInputs(Benzene.getFluid(10))
+                .notConsumable(Benzene)
                 .fluidOutputs(Silvertetrafluoroborate.getFluid(6000))
                 .outputs(BoronOxide.getItemStack(5))
                 .EUt(122880)

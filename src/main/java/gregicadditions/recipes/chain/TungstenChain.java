@@ -32,7 +32,6 @@ public class TungstenChain {
                     .duration(100)
                     .buildAndRegister();
 
-            // TODO Add lang to LiOH
             // WLi2O4 + 2NaOH -> 2LiOH + Na2WO4
             MIXER_RECIPES.recipeBuilder()
                     .input(dust, Tungstate, 7)

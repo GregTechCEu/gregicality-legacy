@@ -253,14 +253,13 @@ public class Lasers {
                 .buildAndRegister();
 
         // Be + LiF + 2NH4HF2 + CO + [6Y(NO3)3 + 2Pr(NO3)3 + 2Nd(NO3)3 + 15H2O] -> 2PrHoYLF Nanoparticles + 2NH4NO3 + 2HF + BeF2 + CO2
-        // TODO: CATALYSTS: CetaneTrimethylAmmoniumBromide and EDTA
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .input(dust, LithiumFluoride, 2)
                 .inputs(AmmoniumBifluoride.getItemStack(16))
                 .fluidInputs(PrYHoNitrateSolution.getFluid(2000))
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .fluidInputs(CetaneTrimethylAmmoniumBromide.getFluid(10))
-                .fluidInputs(EDTA.getFluid(10))
+                .notConsumable(CetaneTrimethylAmmoniumBromide.getFluid(10))
+                .notConsumable(EDTA.getFluid(10))
                 .outputs(PrHoYLFNanoparticles.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, BerylliumFluoride, 3))
                 .fluidOutputs(AmmoniumNitrate.getFluid(2000))

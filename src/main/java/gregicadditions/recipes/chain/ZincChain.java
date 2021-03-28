@@ -242,10 +242,9 @@ public class ZincChain {
                 .buildAndRegister();
 
         // 2C2H5OH + 0.05H2SO4 = (C2H5)2O + H2O
-        // TODO: CATALYST: Sulfuric Acid
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(750)
                 .fluidInputs(Ethanol.getFluid(2000))
-                .fluidInputs(SulfuricAcid.getFluid(10))
+                .notConsumable(SulfuricAcid)
                 .fluidOutputs(Diethylether.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();

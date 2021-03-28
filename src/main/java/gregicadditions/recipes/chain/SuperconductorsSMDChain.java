@@ -744,12 +744,11 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // 2CH2O2 + 2Br + 4Na + 2H2O = Bromoacrolein + 4NaOH + 2H
-        //TODO CATALYST: Trimethylchlorosilane
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(8000)
                 .fluidInputs(FormicAcid.getFluid(2000))
                 .fluidInputs(Bromine.getFluid(2000))
                 .fluidInputs(Water.getFluid(2000))
-                .fluidInputs(Trimethylchlorosilane.getFluid(10))
+                .notConsumable(Trimethylchlorosilane.getFluid(10))
                 .input(dust, Sodium, 4)
                 .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 12))
                 .fluidOutputs(Bromoacrolein.getFluid(1000))
