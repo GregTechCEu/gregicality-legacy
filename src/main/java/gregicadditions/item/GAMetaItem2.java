@@ -1,5 +1,6 @@
 package gregicadditions.item;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAElectricStats;
 import gregicadditions.item.behaviors.ProspectingToolBehaviour;
@@ -46,10 +47,10 @@ public class GAMetaItem2 extends StandardMetaItem {
         BATTERY_MEDIUM_NEUTRONIUM = addItem(5, "medium.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(29491200000L, GAValues.UEV)).setModelAmount(8);
         BATTERY_LARGE_NEUTRONIUM = addItem(8, "large.neutronium.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, GAValues.UIV)).setModelAmount(8);
 
-        GAMetaItems.PROSPECT_TOOL_MV = addItem(100, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2)).addComponents(ElectricStats.createElectricItem(18000, 2)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_HV = addItem(101, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3)).addComponents(ElectricStats.createElectricItem(27000, 3)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_LuV = addItem(102, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6)).addComponents(ElectricStats.createElectricItem(63000, 6)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_ZPM = addItem(103, "tool.prospect.zpm").addComponents(new ProspectingToolBehaviour(7)).addComponents(ElectricStats.createElectricItem(72000, 7)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_MV = addItem(100, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2, GAConfig.equipment.prospector.scanCosts[0], GAConfig.equipment.prospector.scanRadii[0])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[0], 2)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_HV = addItem(101, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3, GAConfig.equipment.prospector.scanCosts[1], GAConfig.equipment.prospector.scanRadii[1])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[1], 3)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_LuV = addItem(102, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6, GAConfig.equipment.prospector.scanCosts[2], GAConfig.equipment.prospector.scanRadii[2])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[2], 6)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_ZPM = addItem(103, "tool.prospect.zpm").addComponents(new ProspectingToolBehaviour(7, GAConfig.equipment.prospector.scanCosts[3], GAConfig.equipment.prospector.scanRadii[3])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[3], 7)).setMaxStackSize(1);
     }
 
     @Override

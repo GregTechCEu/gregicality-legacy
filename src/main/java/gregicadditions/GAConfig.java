@@ -476,6 +476,8 @@ public class GAConfig {
         public BatpackMv batpackMv = new BatpackMv();
         @Config.Name("Batpack HV")
         public BatpackHv batpackHv = new BatpackHv();
+        @Config.Name("Prospectors")
+        public Prospector prospector = new Prospector();
     }
 
     public static class NightvisionGoggles {
@@ -1377,6 +1379,23 @@ public class GAConfig {
             @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
             @Config.RequiresMcRestart
             public double steamToEU = 0.5;
+        }
+
+        public static class Prospector {
+            @Config.Comment("The EU cost to use the prospector. The values are for the MV, HV, LuV and ZPM prospectors.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan cost")
+            public int[] scanCosts = {128, 512, 32768, 131072};
+
+            @Config.Comment("The radii in chunks the prospector will scan.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan radii")
+            public int[] scanRadii = {2, 3, 6, 7};
+
+            @Config.Comment("The EU capacity of the prospectors.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector energy capacity")
+            public int[] energyCapacity = {12800, 51200, 3276800, 13107200};
         }
 
         public static Extraction extraction;
