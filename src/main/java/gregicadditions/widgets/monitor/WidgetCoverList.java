@@ -39,7 +39,7 @@ public class WidgetCoverList extends ScrollableListWidget {
             itemStackHandler.insertItem(0, itemStack, false);
             WidgetGroup widgetGroup = new WidgetGroup();
             widgetGroup.addWidget(new SlotWidget(itemStackHandler, 0, 0, 0, false, false));
-            widgetGroup.addWidget(new LabelWidget(20, 5, cover.coverHolder.getPos().toString().substring(8), 0XFFFFFFFF));
+            widgetGroup.addWidget(new LabelWidget(20, 5, String.format("(%d, %d, %d)", cover.coverHolder.getPos().getX(), cover.coverHolder.getPos().getY(), cover.coverHolder.getPos().getZ()), 0XFFFFFFFF));
             widgetMap.put(widgetGroup, cover);
             if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
                 this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));

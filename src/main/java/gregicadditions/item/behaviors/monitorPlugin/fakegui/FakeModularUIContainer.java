@@ -2,19 +2,18 @@ package gregicadditions.item.behaviors.monitorPlugin.fakegui;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
-import gregicadditions.network.CPacketFakeGuiSynced;
 import gregtech.api.gui.INativeWidget;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
-import gregtech.api.gui.widgets.*;
-import gregtech.api.net.NetworkHandler;
+import gregtech.api.gui.widgets.WidgetUIAccess;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.Tuple;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class FakeModularUIContainer implements WidgetUIAccess {
@@ -116,13 +115,15 @@ public class FakeModularUIContainer implements WidgetUIAccess {
 
     @Override
     public void writeClientAction(Widget widget, int updateId, Consumer<PacketBuffer> payloadWriter) {
-        NetworkHandler.channel.sendToServer(new CPacketFakeGuiSynced(behavior, true, buf->{
-            buf.writeVarInt(syncId);
-            buf.writeVarInt(windowId);
-            buf.writeVarInt(modularUI.guiWidgets.inverse().get(widget));
-            buf.writeVarInt(updateId);
-            payloadWriter.accept(buf);
-        }).toFMLPacket());
+        if (behavior != null) {
+            behavior.writePluginAction(1, buffer -> {
+                buffer.writeVarInt(syncId);
+                buffer.writeVarInt(windowId);
+                buffer.writeVarInt(modularUI.guiWidgets.inverse().get(widget));
+                buffer.writeVarInt(updateId);
+                payloadWriter.accept(buffer);
+            });
+        }
     }
 
     @Override

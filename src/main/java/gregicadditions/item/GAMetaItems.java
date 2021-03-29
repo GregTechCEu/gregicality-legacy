@@ -472,6 +472,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
     public static MetaItem<?>.MetaValueItem PLUGIN_ONLINE_PIC;
     public static MetaItem<?>.MetaValueItem PLUGIN_FAKE_GUI;
+    public static MetaItem<?>.MetaValueItem PLUGIN_ADVANCED_MONITOR;
 
 
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;

@@ -95,16 +95,23 @@ public class DigitalInterfaces {
             ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(400)
                     .inputs(DISPLAY.getStackForm())
                     .input(circuit, MarkerMaterials.Tier.Basic)
-                    .input(wireFine, Gold, 2)
+                    .input(wireFine, Iron, 2)
                     .fluidInputs(fluidStack)
                     .outputs(PLUGIN_ONLINE_PIC.getStackForm())
                     .buildAndRegister();
             ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(400)
                     .inputs(DISPLAY.getStackForm())
                     .input(circuit, MarkerMaterials.Tier.Basic)
-                    .input(wireFine, Aluminium, 2)
+                    .input(wireFine, Gold, 2)
                     .fluidInputs(fluidStack)
                     .outputs(PLUGIN_FAKE_GUI.getStackForm())
+                    .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(400)
+                    .inputs(DISPLAY.getStackForm())
+                    .input(circuit, MarkerMaterials.Tier.Advanced)
+                    .input(wireFine, Aluminium, 2)
+                    .fluidInputs(fluidStack)
+                    .outputs(PLUGIN_ADVANCED_MONITOR.getStackForm())
                     .buildAndRegister();
         }
     }

@@ -220,6 +220,37 @@ public class RenderHelper {
     }
 
     @SideOnly(Side.CLIENT)
+    public static void renderLine(float x1, float y1, float x2, float y2, float lineWidth, int color) {
+        float hypo = (float) Math.sqrt((y1 - y2) * (y1 - y2) + (x1 - x2) * (x1 - x2));
+        float w = (x2 - x1) / hypo * lineWidth;
+        float h = (y1 - y2) / hypo * lineWidth;
+
+        GlStateManager.disableTexture2D();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_DST_ALPHA);
+        GlStateManager.color(((color >> 16) & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, (color & 0xFF) / 255f, ((color >> 24) & 0xFF) / 255f);
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferbuilder = tessellator.getBuffer();
+        bufferbuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+        if (w * h > 0) {
+            bufferbuilder.pos(x1 - w, y1 - h, 0.01D).endVertex();
+            bufferbuilder.pos(x1 + w, y1 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 + w, y2 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 - w, y2 - h, 0.01D).endVertex();
+        } else {
+            h = (y2 - y1) / hypo * lineWidth;
+            bufferbuilder.pos(x1 + w, y1 - h, 0.01D).endVertex();
+            bufferbuilder.pos(x1 - w, y1 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 - w, y2 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 + w, y2 - h, 0.01D).endVertex();
+        }
+        tessellator.draw();
+        GlStateManager.disableBlend();
+        GlStateManager.enableTexture2D();
+        GlStateManager.color(1,1,1,1);
+    }
+
+    @SideOnly(Side.CLIENT)
     public static void renderLineChart(List<Long> data, long max, float x, float y, float width, float height, float lineWidth, int color) {
         float durX = data.size() > 1 ? width / (data.size() - 1) : 0;
         float hY = max > 0 ? height / max : 0;

@@ -2,11 +2,9 @@ package gregicadditions.item.behaviors.monitorPlugin;
 
 import gregicadditions.item.behaviors.monitorPlugin.onlinepic.DownloadThread;
 import gregicadditions.renderer.onlinepictexture.PictureTexture;
-import gregicadditions.widgets.WidgetPictureTexture;
+import gregicadditions.widgets.monitor.WidgetPluginConfig;
 import gregicadditions.widgets.WidgetScrollBar;
-import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.IUIHolder;
-import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -100,10 +98,10 @@ public class OnlinePicPluginBehavior extends MonitorPluginBaseBehavior {
     }
 
     @Override
-    public ModularUI customUI(IUIHolder holder, EntityPlayer entityPlayer) {
+    public WidgetPluginConfig customUI(WidgetPluginConfig widgetGroup, IUIHolder holder, EntityPlayer entityPlayer) {
         tmpUrl = url;
-        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 260, 230)
-                .widget(new DynamicLabelWidget(20, 20, ()->url,0XFFFFFFFF))
+        return widgetGroup.setSize(260, 150)
+                .widget(new DynamicLabelWidget(20, 20, ()->url.length() > 40?(url.substring(0, 39) + "..."):url,0XFFFFFFFF))
                 .widget(new TextFieldWidget(20, 30, 175, 10, true, ()-> tmpUrl, (text)->{
                     tmpUrl = text;
                 }).setValidator((data)->true).setMaxStringLength(200))
@@ -119,16 +117,14 @@ public class OnlinePicPluginBehavior extends MonitorPluginBaseBehavior {
                 .widget(new WidgetScrollBar(25, 80, 210, 0, 1, 0.05f, value->{
                     setConfig(this.url, this.rotation, this.scaleX, value, this.flippedX, this.flippedY);
                 }).setTitle("scaleY", 0XFFFFFFFF).setInitValue(this.scaleY))
-                .widget(new WidgetPictureTexture(25, 110, 100,100, this))
-                .widget(new LabelWidget(140, 115, "flippedX:", 0XFFFFFFFF))
-                .widget(new ToggleButtonWidget(190, 110, 20, 20, ()->this.flippedX, state->{
+                .widget(new LabelWidget(40, 115, "flippedX:", 0XFFFFFFFF))
+                .widget(new ToggleButtonWidget(90, 110, 20, 20, ()->this.flippedX, state->{
                     setConfig(this.url, this.rotation, this.scaleX, this.scaleY, state, this.flippedY);
                 }))
-                .widget(new LabelWidget(140, 145, "flippedY:", 0XFFFFFFFF))
-                .widget(new ToggleButtonWidget(190, 140, 20, 20, ()->this.flippedY, state->{
+                .widget(new LabelWidget(140, 115, "flippedY:", 0XFFFFFFFF))
+                .widget(new ToggleButtonWidget(190, 110, 20, 20, ()->this.flippedY, state->{
                     setConfig(this.url, this.rotation, this.scaleX, this.scaleY, this.flippedX, state);
-                }))
-                .build(holder, entityPlayer);
+                }));
     }
 
     @Override

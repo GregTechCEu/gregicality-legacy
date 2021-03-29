@@ -3,6 +3,7 @@ package gregicadditions.item;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.item.behaviors.*;
+import gregicadditions.item.behaviors.monitorPlugin.AdvancedMonitorPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
@@ -72,6 +73,7 @@ public class GAMetaItem extends MaterialMetaItem {
             MetaItems.ZPM2.setInvisible();
         }
 
+        PLUGIN_ADVANCED_MONITOR = addItem(126, "plugin.advanced_monitor").addComponents(new AdvancedMonitorPluginBehavior());
         PLUGIN_FAKE_GUI = addItem(127, "plugin.fake_gui").addComponents(new FakeGuiPluginBehavior());
         PLUGIN_ONLINE_PIC = addItem(128, "plugin.online_pic").addComponents(new OnlinePicPluginBehavior());
         PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
@@ -330,7 +332,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MAGNETIC_TRAP = addItem(457,"magnetic_trap");
         EMPTY_LASER_COOLING_CONTAINER = addItem(458,"empty_laser_cooling_container");
         BOSE_EINSTEIN_COOLING_CONTAINER = addItem(459,"bose_einstein_cooling_container");
-        
+
         ALUMINO_SILICATE_GLASS_TUBE = addItem(460,"alumino_silicate_glass_tube");
         INDUCTOR = addItem(461,"inductor");
         BALLAST = addItem(462,"ballast");
@@ -351,7 +353,7 @@ public class GAMetaItem extends MaterialMetaItem {
         ESCHERICHIA_CULTURE = addItem(477, "eschericia.culture");
         BIFIDOBACTERIUM_CULTURE = addItem(478, "bifidobacterium.culture");
         BREVIBACTERIUM_CULTURE = addItem(479, "brevibacterium.culture");
-        
+
         NDYAG_BOULE = addItem(480,"ndyag_boule");
         PRHOYLF_BOULE = addItem(481,"prhoylf_boule");
         LUTMYVO_BOULE = addItem(482,"lutmyvo_boule");
@@ -441,7 +443,7 @@ public class GAMetaItem extends MaterialMetaItem {
         EIGENFOLDED_KERR_MANIFOLD = addItem(559, "eigenfolded.kerr.manifold");
         CTC_COMPUTATIONAL_UNIT = addItem(560, "ctc.computational.unit");
         RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(561, "recursively.folded.negative.space");
-        
+
         WIRE_FIELD_SHAPE = addItem(562,"wire.field.shape");
         EXTREMELY_DURABLE_PLASMA_CELL = addItem(563,"extremely.durable.plasma.cell");
         DENSE_NEUTRON_PLASMA_CELL = addItem(564,"dense.neutron.plasma.cell");
@@ -475,7 +477,7 @@ public class GAMetaItem extends MaterialMetaItem {
 
         COLOURED_LEDS = addItem(578, "coloured.leds");
         DISPLAY = addItem(579, "display");
-        
+
         CHARGED_LEPTON_TRAP_CRYSTAL = addItem(580,"charged.lepton.trap.crystal");
 
 

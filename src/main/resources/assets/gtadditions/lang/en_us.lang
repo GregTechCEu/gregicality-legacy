@@ -830,6 +830,7 @@ metaitem.plugin.proxy.tooltips.1=(Please adjust to proxy mode in the screen)
 metaitem.plugin.text.name=Text Plugin
 metaitem.plugin.online_pic.name=Online Picture Plugin
 metaitem.plugin.fake_gui.name=Proxy Gui Plugin
+metaitem.plugin.advanced_monitor.name=Proxy Advanced Monitor Plugin
 metaitem.cover.digital.name=Digital Interface Cover
 
 metaitem.cover.digital.mode.fluid.enabled=Fluid Mode - §aON

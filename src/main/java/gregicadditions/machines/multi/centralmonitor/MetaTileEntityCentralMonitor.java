@@ -344,6 +344,16 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         inputEnergy = new EnergyContainerList(this.getAbilities(MultiblockAbility.INPUT_ENERGY));
         width = (this.getMultiblockParts().size() - 1) / height;
         checkCovers();
+        for (IMultiblockPart part : this.getMultiblockParts()) {
+            if (part instanceof MetaTileEntityMonitorScreen) {
+                ((MetaTileEntityMonitorScreen) part).clickRegister.clear();
+            }
+        }
+        for (IMultiblockPart part : this.getMultiblockParts()) {
+            if (part instanceof MetaTileEntityMonitorScreen) {
+                ((MetaTileEntityMonitorScreen) part).registerClick(false);
+            }
+        }
         writeCustomData(1, packetBuffer -> {
             packetBuffer.writeInt(width);
             packetBuffer.writeInt(height);
@@ -398,8 +408,16 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                     for (BlockPos pos : parts) {
                         TileEntity tileEntity = getWorld().getTileEntity(pos);
                         if(tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
-                            screens.add((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity());
+                            MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
+                            screen.addToMultiBlock(this);
+                            screens.add(screen);
                         }
+                    }
+                    for (MetaTileEntityMonitorScreen screen : screens) {
+                        screen.clickRegister.clear();
+                    }
+                    for (MetaTileEntityMonitorScreen screen : screens) {
+                        screen.registerClick(false);
                     }
                 }
 
