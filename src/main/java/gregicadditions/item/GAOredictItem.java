@@ -48,7 +48,7 @@ public class GAOredictItem extends StandardMetaItem {
     @Override
     public void registerSubItems() {
         for (OreDictItem item : ITEMS.values()) {
-            addItem(item.id, item.name);
+            addItem(item.id, item.getName());
             OreDictUnifier.registerOre(new ItemStack(this, 1, item.id), item.getOre());
         }
     }
@@ -88,14 +88,14 @@ public class GAOredictItem extends StandardMetaItem {
 
     public static class OreDictItem {
 
-        private final String name;
+        private final String materialName;
         private final int rgb;
         private final MaterialIconSet materialIconSet;
         private final short id;
         private final OrePrefix orePrefix;
 
-        public OreDictItem(short id, String name, int rgb, MaterialIconSet materialIconSet, OrePrefix orePrefix) {
-            this.name = name;
+        public OreDictItem(short id, String materialName, int rgb, MaterialIconSet materialIconSet, OrePrefix orePrefix) {
+            this.materialName = materialName;
             this.rgb = rgb;
             this.materialIconSet = materialIconSet;
             this.id = id;
@@ -103,22 +103,30 @@ public class GAOredictItem extends StandardMetaItem {
             ITEMS.put(id, this);
         }
 
-        public OreDictItem(int id, String name, int rgb, MaterialIconSet materialIconSet, OrePrefix orePrefix) {
-            this((short) id, name, rgb, materialIconSet, orePrefix);
+        public OreDictItem(int id, String materialName, int rgb, MaterialIconSet materialIconSet, OrePrefix orePrefix) {
+            this((short) id, materialName, rgb, materialIconSet, orePrefix);
         }
 
         public String getOre() {
-            return orePrefix.name() + toCamelCaseString(name);
+            return orePrefix.name() + toCamelCaseString(materialName);
         }
 
         String toCamelCaseString(String string) {
             return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, string);
         }
 
+        String toLowerUnderString(String string) {
+            return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, string);
+        }
+
         public ItemStack getItemStack(int amount) {
             ItemStack itemStack = OreDictUnifier.get(this.getOre());
             itemStack.setCount(amount);
             return itemStack;
+        }
+
+        public String getName() {
+            return materialName + '_' + toLowerUnderString(orePrefix.name());
         }
 
         public ItemStack getItemStack() {

@@ -6,6 +6,7 @@ import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,6 +29,7 @@ import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import javax.annotation.Nonnull;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class QuarkTechSuite extends ArmorLogicSuite {
@@ -96,13 +98,21 @@ public class QuarkTechSuite extends ArmorLogicSuite {
                 boolean nightvision = data.getBoolean("Nightvision");
                 if (ArmorUtils.isKeyDown(player, EnumKey.MENU) && ArmorUtils.isKeyDown(player, EnumKey.MODE_SWITCH) && toggleTimer == 0) {
                     toggleTimer = 10;
-                    nightvision = !nightvision;
-                    if (!world.isRemote) {
-                        data.setBoolean("Nightvision", nightvision);
-                        if (nightvision) {
-                            player.sendMessage(new TextComponentTranslation("metaarmor.qts.nightvision.enabled"));
-                        } else {
-                            player.sendMessage(new TextComponentTranslation("metaarmor.qts.nightvision.disabled"));
+                    if(!nightvision && item.getCharge() >= energyPerUse / 100) {
+                        nightvision = true;
+                        player.sendMessage(new TextComponentTranslation("metaarmor.message.nightvision.enabled"));
+                        data.setBoolean("Nightvision", true);
+                    } else if(nightvision){
+                        nightvision = false;
+                        if(!world.isRemote) {
+                            player.removePotionEffect(MobEffects.NIGHT_VISION);
+                            player.removePotionEffect(MobEffects.BLINDNESS);
+                            player.sendMessage(new TextComponentTranslation("metaarmor.message.nightvision.disabled"));
+                            data.setBoolean("Nightvision", false);
+                        }
+                    } else {
+                        if(!world.isRemote) {
+                            player.sendMessage(new TextComponentTranslation("metaarmor.message.nightvision.error"));
                         }
                     }
                 }
@@ -117,10 +127,10 @@ public class QuarkTechSuite extends ArmorLogicSuite {
                     int skylight = player.getEntityWorld().getLightFromNeighbors(pos);
                     if (skylight > 8) {
                         player.removePotionEffect(MobEffects.NIGHT_VISION);
-                        player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100, 0, true, true));
+                        player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 99999, 0, true, true));
                     } else {
                         player.removePotionEffect(MobEffects.BLINDNESS);
-                        player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, true, true));
+                        player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 99999, 0, true, true));
                     }
                     item.discharge(energyPerUse / 100, item.getTier(), true, false, false);
                     ret = true;
@@ -248,5 +258,19 @@ public class QuarkTechSuite extends ArmorLogicSuite {
     @Override
     public double getDamageAbsorption() {
         return SLOT == EntityEquipmentSlot.CHEST ? 1.2D : 1.0D;
+    }
+
+    @Override
+    public void addInfo(ItemStack itemStack, List<String> lines) {
+        super.addInfo(itemStack, lines);
+        if(SLOT == EntityEquipmentSlot.HEAD) {
+            NBTTagCompound nbtData = GTUtility.getOrCreateNbtCompound(itemStack);
+            boolean nv = nbtData.getBoolean("Nightvision");
+            if(nv) {
+                lines.add(I18n.format("metaarmor.message.nightvision.enabled"));
+            } else {
+                lines.add(I18n.format("metaarmor.message.nightvision.disabled"));
+            }
+        }
     }
 }

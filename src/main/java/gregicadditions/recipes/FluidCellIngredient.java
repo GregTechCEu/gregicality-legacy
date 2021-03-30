@@ -39,8 +39,10 @@ public class FluidCellIngredient extends Ingredient {
 	@Override
 	public boolean apply(@Nullable ItemStack itemStack) {
 		IFluidHandlerItem stackFluid = itemStack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		if (!MetaItems.FLUID_CELL.isItemEqual(itemStack))
+			return false;
 		FluidStack drained = stackFluid == null ? null : ((FluidHandlerItemStackSimple) stackFluid).getFluid();
-		return itemStack != null && MetaItems.FLUID_CELL.isItemEqual(itemStack) && drained != null && drained.getFluid() == fluid && drained.amount == 1000;
+		return itemStack != null && drained != null && drained.getFluid() == fluid && drained.amount == 1000;
 	}
 
 	@Override

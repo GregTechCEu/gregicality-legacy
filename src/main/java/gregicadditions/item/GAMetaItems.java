@@ -162,6 +162,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
 
+    public static ArmorMetaItem<?>.ArmorMetaValueItem NIGHTVISION_GOGGLES;
+
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
     public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_BOOTS;
@@ -313,22 +315,26 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_VANADIUM;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_VANADIUM;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_VANADIUM;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NAQUADRIA;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NAQUADRIA;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_NEUTRONIUM;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_NEUTRONIUM;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM;
+    public static MetaItem<?>.MetaValueItem BATTERY_NIMH_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_NIMH;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LITHIUM_ION_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LITHIUM_ION;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LITHIUM_ION_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LITHIUM_ION;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE;
 
     public static MetaItem<?>.MetaValueItem HASOC;
     public static MetaItem<?>.MetaValueItem HASOC_WAFER;
@@ -475,6 +481,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem PLUGIN_ADVANCED_MONITOR;
 
 
+
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
     public static MetaItem<?>.MetaValueItem DISPLAY;
   
@@ -489,6 +496,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
 
     public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
 
 
     // GA oredict items

@@ -62,11 +62,14 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
     }
 
     protected final int costs;
-    protected final int chunkRaduis;
+    protected final int chunkRadius;
+    protected final int tier;
 
-    public ProspectingToolBehaviour(int tier) {
-        this.costs = tier * 2;
-        this.chunkRaduis = tier;
+
+    public ProspectingToolBehaviour(int cost, int radius, int tier) {
+        this.costs = cost;
+        this.chunkRadius = radius;
+        this.tier = tier;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -74,7 +77,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
         ProspectingToolBehaviour behavior = getInstanceFor(itemStack);
         if (!world.isRemote && behavior!= null) {
             int data = behavior.getToolGTDetravData(itemStack);
-            if (player.isSneaking() && chunkRaduis >= 6) { // switch only luv and zpm
+            if (player.isSneaking() && tier >= 6) { // switch only luv and zpm
                 data++;
                 if (data > 1) data = 0;
                 switch (data) {
@@ -106,7 +109,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
                 if(((PlayerInventoryHolder) ((ModularUIContainer) ((EntityPlayer) entity).openContainer).getModularUI().holder).getCurrentItem() == itemStack) {
                     IElectricItem electricItem = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
                     if (electricItem != null) {
-                        electricItem.discharge(costs, chunkRaduis, false, false, false);
+                        electricItem.discharge(costs, tier, false, false, false);
                         if (electricItem.getCharge() == 0) {
                             ((EntityPlayer) entity).closeScreen();
                             entity.sendMessage(new TextComponentTranslation("metaitem.tool.prospect.low_power"));
@@ -119,11 +122,11 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
 
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
-        WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRaduis + 30, 32, 150, Math.max(((32 * chunkRaduis) / 18) - 1, 1));
-        WidgetProspectingMap widgetProspectingMap = new WidgetProspectingMap(30, 32, chunkRaduis, playerInventoryHolder, widgetItemFluidList);
-        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 32 * chunkRaduis + 220, 32 * chunkRaduis + 30)
+        WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRadius + 30, 32, 150, Math.max(((32 * chunkRadius) / 18) - 1, 1));
+        WidgetProspectingMap widgetProspectingMap = new WidgetProspectingMap(30, 32, chunkRadius, playerInventoryHolder, widgetItemFluidList);
+        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 32 * chunkRadius + 220, 32 * chunkRadius + 30)
                 .label(20, 17, "metaitem.tool.prospect.gui.title", Color.WHITE.getRGB())
-                .widget(new ProgressWidget(() -> getEuStored(playerInventoryHolder.getCurrentItem()), 32 * chunkRaduis + 30, 13, 150, 18,
+                .widget(new ProgressWidget(() -> getEuStored(playerInventoryHolder.getCurrentItem()), 32 * chunkRadius + 30, 13, 150, 18,
                         TextureArea.fullImage("textures/gui/progress_bar/progress_bar_energy.png"),
                         ProgressWidget.MoveType.HORIZONTAL))
                 .widget(widgetProspectingMap)
@@ -147,7 +150,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
 
     @Override
     public void addInformation(ItemStack itemStack, List<String> lines) {
-        if (chunkRaduis >= 6)
+        if (tier >= 6)
             lines.add(I18n.format("metaarmor.energy_share.tooltip.guide"));
     }
 
