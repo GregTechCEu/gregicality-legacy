@@ -1867,8 +1867,8 @@ tile.cell_casing.cell_umv.name=UMV Power Cell
 tile.cell_casing.cell_uxv.name=UXV Power Cell
 tile.cell_casing.cell_max.name=MAX Power Cell
 tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
-tile.cell_casing.tooltip.2=    Capacity: §e%d
-tile.cell_casing.tooltip.3=    Max Tier: §e%s
+tile.cell_casing.tooltip.2=    Internal Energy Capacity: §9%,d
+tile.cell_casing.tooltip.3=    Max Tier: §9%,s
 
 
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
