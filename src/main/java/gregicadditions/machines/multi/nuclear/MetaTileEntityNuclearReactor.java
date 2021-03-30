@@ -18,6 +18,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.MetaFluids;
 import net.minecraft.block.state.IBlockState;
@@ -36,6 +37,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -268,6 +270,12 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
 
     public int getRodAdditionalTemperature() {
         return rodAdditionalTemperature;
+    }
+
+    @NotNull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.NUCLEAR_REACTOR_OVERLAY;
     }
 
 }

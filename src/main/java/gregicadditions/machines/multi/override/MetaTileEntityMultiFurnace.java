@@ -16,6 +16,8 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
@@ -24,6 +26,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -138,6 +141,12 @@ public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities
                 textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             }
         }
+    }
+
+    @NotNull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.FURNACE_OVERLAY;
     }
 
     protected class GAMultiFurnaceWorkable extends MultiFurnaceWorkable {

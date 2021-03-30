@@ -5,6 +5,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
+import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -53,7 +54,12 @@ public class GAMetaTileEntityEnergyHatch extends GAMetaTileEntityMultiblockPart 
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
         if (shouldRenderOverlay()) {
-            SimpleOverlayRenderer renderer = isExportHatch ? Textures.ENERGY_OUT_MULTI : Textures.ENERGY_IN_MULTI;
+            SimpleOverlayRenderer renderer;
+            if (amps > 4)
+                renderer = isExportHatch ? ClientHandler.HIGH_ENERGY_OUT : ClientHandler.HIGH_ENERGY_IN;
+            else
+                renderer = isExportHatch ? Textures.ENERGY_OUT_MULTI : Textures.ENERGY_IN_MULTI;
+
             renderer.renderSided(getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier()]));
         }
     }

@@ -14,11 +14,14 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Steel;
@@ -61,6 +64,12 @@ public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
 
     protected IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(Steel);
+    }
+
+    @NotNull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.ASSEMBLER_OVERLAY;
     }
 
 }
