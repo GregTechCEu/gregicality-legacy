@@ -26,31 +26,30 @@ public class EnergyContainerHandlerTransformer extends GAClassTransformer.ClassM
 
         @Override
         public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-            if (name.equals("changeEnergy")) {
-                return new TransformChangeEnergy(api, super.visitMethod(access, name, desc, signature, exceptions));
+            if (name.equals("setEnergyStored")) {
+                return new TransformSetEnergyStored(api, super.visitMethod(access, name, desc, signature, exceptions));
             }
             return super.visitMethod(access, name, desc, signature, exceptions);
         }
 
     }
 
-    private static class TransformChangeEnergy extends MethodVisitor {
+    private static class TransformSetEnergyStored extends MethodVisitor {
 
-        TransformChangeEnergy(int api, MethodVisitor mv) {
+        TransformSetEnergyStored(int api, MethodVisitor mv) {
             super(api, mv);
         }
 
         @Override
-        public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-            if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("gregtech/api/capability/impl/EnergyContainerHandler") && name.equals("setEnergyStored")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
-                        "setEnergyStored",
-                        "(Lgregtech/api/capability/impl/EnergyContainerHandler;J)V",
-                        false);
-            } else {
-                super.visitMethodInsn(opcode, owner, name, desc, itf);
-            }
+        public void visitCode() {
+            super.visitVarInsn(Opcodes.ALOAD, 0);
+            super.visitVarInsn(Opcodes.LLOAD, 1);
+            super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                    "gregicadditions/coremod/hooks/GregTechCEHooks",
+                    "setEnergyStored",
+                    "(Lgregtech/api/capability/impl/EnergyContainerHandler;J)V",
+                    false);
+            super.visitCode();
         }
 
     }

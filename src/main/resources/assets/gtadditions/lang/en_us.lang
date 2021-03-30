@@ -850,11 +850,36 @@ metaitem.tool.prospect.low_power=Low power!
 
 #//////////////COVER + MONITOR + PLUGIN/////////////////
 metaitem.plugin.tooltips.1=Plugins can be added to the screen for more functionality.
+metaitem.plugin.proxy.tooltips.1=(Please adjust to proxy mode in the screen)
 metaitem.plugin.text.name=Text Plugin
-metaitem.cover.digital.name=Cover Digital Interface
-#metaitem.cover.digital.tooltips.1=Cover Digital Interface have 5 modes: Fluid, Item, Energy, Machine and Proxy.
-#metaitem.cover.digital.tooltips.2=The proxy mode needs to be used with Central Monitor.
+metaitem.plugin.online_pic.name=Online Picture Plugin
+metaitem.plugin.fake_gui.name=Proxy Gui Plugin
+metaitem.plugin.advanced_monitor.name=Proxy Advanced Monitor Plugin
+metaitem.cover.digital.name=Digital Interface Cover
 
+metaitem.cover.digital.mode.fluid.enabled=Fluid Mode - §aON
+metaitem.cover.digital.mode.item.enabled=Item Mode - §aON
+metaitem.cover.digital.mode.energy.enabled=Energy Mode - §aON
+metaitem.cover.digital.mode.machine.enabled=Machine Mode - §aON
+metaitem.cover.digital.mode.proxy.enabled=Proxy Mode - §aON
+
+metaitem.cover.digital.mode.fluid.disabled=Fluid Mode - §cOFF
+metaitem.cover.digital.mode.item.disabled=Item Mode - §cOFF
+metaitem.cover.digital.mode.energy.disabled=Energy Mode - §cOFF
+metaitem.cover.digital.mode.machine.disabled=Machine Mode - §cOFF
+metaitem.cover.digital.mode.proxy.disabled=Proxy Mode - §cOFF
+
+#universal.cover.mode.enabled=§aON
+#universal.cover.mode.disabled=§cOFF
+
+metaitem.cover.digital.title.mode=Mode:
+metaitem.cover.digital.title.spin=Spin:
+monitor.gui.title.back=Back
+monitor.gui.title.scale=Scale:
+monitor.gui.title.argb=ARGB:
+monitor.gui.title.slot=Slot:
+monitor.gui.title.plugin=Plugin:
+monitor.gui.title.config=Config
 
 #/////////////////////CIRCUIT///////////////////////////
 

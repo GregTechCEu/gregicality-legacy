@@ -4,6 +4,7 @@ import codechicken.lib.texture.TextureUtils;
 import codechicken.lib.vec.Matrix4;
 import gregtech.api.gui.resources.TextureArea;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,13 +13,17 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
@@ -116,6 +121,80 @@ public class RenderHelper {
     }
 
     @SideOnly(Side.CLIENT)
+    public static void renderSlot(Slot slot, FontRenderer fr) {
+        ItemStack stack = slot.getStack();
+        if (!stack.isEmpty() && slot.isEnabled()) {
+            net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(1, 1, 0);
+            GlStateManager.translate(slot.xPos, slot.yPos, 0);
+            RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+            renderItem.renderItemAndEffectIntoGUI(stack, 0, 0);
+            String text = stack.getCount() > 1? Integer.toString(stack.getCount()) : null;
+
+            if (!stack.isEmpty())
+            {
+                if (stack.getCount() != 1)
+                {
+                    String s = text == null ? String.valueOf(stack.getCount()) : text;
+                    GlStateManager.disableLighting();
+                    GlStateManager.disableBlend();
+                    fr.drawStringWithShadow(s, (float)(17 - fr.getStringWidth(s)), (float)9, 16777215);
+                    GlStateManager.enableLighting();
+                    GlStateManager.enableBlend();
+                }
+
+                if (stack.getItem().showDurabilityBar(stack))
+                {
+                    GlStateManager.disableLighting();
+                    GlStateManager.disableTexture2D();
+                    GlStateManager.disableAlpha();
+                    GlStateManager.disableBlend();
+                    Tessellator tessellator = Tessellator.getInstance();
+                    BufferBuilder bufferbuilder = tessellator.getBuffer();
+                    double health = stack.getItem().getDurabilityForDisplay(stack);
+                    int rgbfordisplay = stack.getItem().getRGBDurabilityForDisplay(stack);
+                    int i = Math.round(13.0F - (float)health * 13.0F);
+                    draw(bufferbuilder, 2, 13, 13, 2, 0, 0, 0, 255);
+                    draw(bufferbuilder, 2, 13, i, 1, rgbfordisplay >> 16 & 255, rgbfordisplay >> 8 & 255, rgbfordisplay & 255, 255);
+                    GlStateManager.enableBlend();
+                    GlStateManager.enableAlpha();
+                    GlStateManager.enableTexture2D();
+                    GlStateManager.enableLighting();
+                }
+
+                EntityPlayerSP entityplayersp = Minecraft.getMinecraft().player;
+                float f3 = entityplayersp == null ? 0.0F : entityplayersp.getCooldownTracker().getCooldown(stack.getItem(), Minecraft.getMinecraft().getRenderPartialTicks());
+
+                if (f3 > 0.0F)
+                {
+                    GlStateManager.disableLighting();
+                    GlStateManager.disableTexture2D();
+                    Tessellator tessellator = Tessellator.getInstance();
+                    BufferBuilder bufferBuilder = tessellator.getBuffer();
+                    draw(bufferBuilder, 0, MathHelper.floor(16.0F * (1.0F - f3)), 16, MathHelper.ceil(16.0F * f3), 255, 255, 255, 127);
+                    GlStateManager.enableTexture2D();
+                    GlStateManager.enableLighting();
+                }
+            }
+
+            GlStateManager.popMatrix();
+            net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static void draw(BufferBuilder renderer, int x, int y, int width, int height, int red, int green, int blue, int alpha)
+    {
+        renderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+        renderer.pos(x, y, 0.0D).color(red, green, blue, alpha).endVertex();
+        renderer.pos((x), y + height, 0.0D).color(red, green, blue, alpha).endVertex();
+        renderer.pos((x + width), y + height, 0.0D).color(red, green, blue, alpha).endVertex();
+        renderer.pos((x + width), y, 0.0D).color(red, green, blue, alpha).endVertex();
+        Tessellator.getInstance().draw();
+    }
+
+    @SideOnly(Side.CLIENT)
     public static void renderItemOverLay(float x, float y, float z, float scale, ItemStack itemStack) {
         net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
         GlStateManager.pushMatrix();
@@ -138,6 +217,37 @@ public class RenderHelper {
 
         fr.drawString(renderedText, 0, 0, color);
         GlStateManager.popMatrix();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void renderLine(float x1, float y1, float x2, float y2, float lineWidth, int color) {
+        float hypo = (float) Math.sqrt((y1 - y2) * (y1 - y2) + (x1 - x2) * (x1 - x2));
+        float w = (x2 - x1) / hypo * lineWidth;
+        float h = (y1 - y2) / hypo * lineWidth;
+
+        GlStateManager.disableTexture2D();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_DST_ALPHA);
+        GlStateManager.color(((color >> 16) & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, (color & 0xFF) / 255f, ((color >> 24) & 0xFF) / 255f);
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferbuilder = tessellator.getBuffer();
+        bufferbuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+        if (w * h > 0) {
+            bufferbuilder.pos(x1 - w, y1 - h, 0.01D).endVertex();
+            bufferbuilder.pos(x1 + w, y1 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 + w, y2 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 - w, y2 - h, 0.01D).endVertex();
+        } else {
+            h = (y2 - y1) / hypo * lineWidth;
+            bufferbuilder.pos(x1 + w, y1 - h, 0.01D).endVertex();
+            bufferbuilder.pos(x1 - w, y1 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 - w, y2 + h, 0.01D).endVertex();
+            bufferbuilder.pos(x2 + w, y2 - h, 0.01D).endVertex();
+        }
+        tessellator.draw();
+        GlStateManager.disableBlend();
+        GlStateManager.enableTexture2D();
+        GlStateManager.color(1,1,1,1);
     }
 
     @SideOnly(Side.CLIENT)
@@ -178,6 +288,14 @@ public class RenderHelper {
         GlStateManager.enableTexture2D();
     }
 
+    /***
+     * avoid z-fighting. not familiar with the CCL, its a trick.
+     * //TODO could DisableDepthMask in the CCL?
+     * @param translation origin
+     * @param side facing
+     * @param layer level
+     * @return adjust
+     */
     @SideOnly(Side.CLIENT)
     public static Matrix4 adjustTrans(Matrix4 translation, EnumFacing side, int layer) {
         Matrix4 trans = translation.copy();
@@ -241,4 +359,44 @@ public class RenderHelper {
                 break;
         }
     }
+
+    /***
+     * used to render pixels in stencil mask. (e.g. Restrict rendering results to be displayed only in Monitor Screens)
+     * if you want to do the similar things in Gui(2D) not World(3D), plz consider using the RenderUtil.useScissor from
+     * GregTech that you don't need to draw mask to build a rect mask easily.
+     * @param mask draw mask
+     * @param renderInMask render logic in the mask
+     * @param shouldRenderMask should mask be rendered too
+     */
+    @SideOnly(Side.CLIENT)
+    public static void useStencil(@NotNull Runnable mask, @NotNull Runnable renderInMask, boolean shouldRenderMask) {
+        GL11.glStencilMask(0xFF);
+        GL11.glClearStencil(0);
+        GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT) ;
+        GL11.glEnable(GL11.GL_STENCIL_TEST);
+
+        GL11.glStencilFunc(GL11.GL_ALWAYS, 1, 0xFF);
+        GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_REPLACE);
+
+        if(!shouldRenderMask) {
+            GL11.glColorMask(false, false, false, false);
+            GL11.glDepthMask(false);
+        }
+
+        mask.run();
+
+        if(!shouldRenderMask) {
+            GL11.glColorMask(true, true, true, true);
+            GL11.glDepthMask(true);
+        }
+
+        GL11.glStencilMask(0x00);
+        GL11.glStencilFunc(GL11.GL_EQUAL, 1, 0xFF);
+        GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_KEEP);
+
+        renderInMask.run();
+
+        GL11.glDisable(GL11.GL_STENCIL_TEST);
+    }
+
 }
