@@ -142,25 +142,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
         }
     }
 
-    /***
-     * Server. It will be called when a player right/left-click the screen. It adapts to the base coordinate(0~1.0) based on scaling.
-     * Screen Sample:
-     * ╬--------x------->│
-     * ┊ ┌---------------------------------┐ ———
-     * ┊ │               ┊                 │  ↑
-     * ┊ │               ┊                 │  ┊
-     * y │               ┊                 │  ┊
-     * ┊ │               ┊                 │  ┊
-     * ↓ │               ┊                 │  ┊
-     *———│┉┉ ┉┉ ┉┉ ┉┉ ┉┉ *                 │ 1.0
-     *   │                                 │  ┊
-     *   │                                 │  ┊
-     *   │                                 │  ┊
-     *   │                                 │  ┊
-     *   │                                 │  ↓
-     *   └---------------------------------┘ ———
-     *   │<-------------1.0--------------->│
-     * @param playerIn Player
+    /** @param playerIn Player
      * @param hand Hand
      * @param facing Facing
      * @param isRight is Right Click

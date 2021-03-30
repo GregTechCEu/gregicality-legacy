@@ -110,7 +110,7 @@ public class GARecipeMaps {
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
-        CHEMICAL_PLANT_RECIPES = new RecipeMapExtended<>("chemical_plant", 0, 4, 0, 2, 0, 5, 0, 3, (new SimpleRecipeBuilder()))
+        CHEMICAL_PLANT_RECIPES = new RecipeMapExtended<>("chemical_plant", 0, 4, 0, 2, 0, 5, 0, 4, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
         LARGE_MIXER_RECIPES = (LargeRecipeMap) new RecipeMapLargeExtended<>("large_mixer", 0, 9, 0, 1, 0, 6, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)

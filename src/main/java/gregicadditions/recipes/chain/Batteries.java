@@ -3,6 +3,7 @@ package gregicadditions.recipes.chain;
 import gregicadditions.GAConfig;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
@@ -36,7 +37,7 @@ public class Batteries {
                 .inputs(BariumTriflate.getItemStack(17))
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .outputs(BariumCarbonate.getItemStack(5))
-                .outputs(LithiumTriflate.getItemStack(9))
+                .outputs(LithiumTriflate.getItemStack(1))
                 .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(820).EUt(16300)
                 .inputs(BrownAlgae.getItemStack(10))
@@ -119,7 +120,7 @@ public class Batteries {
                 .inputs(BariumDifluoride.getItemStack(3))
                 .fluidInputs(Fluorotoluene.getFluid(10000))
                 .fluidInputs(Formaldehyde.getFluid(10000))
-                .outputs(FluorideBatteryElectrolyte.getItemStack(200))
+                .outputs(FluorideBatteryElectrolyte.getItemStack(2))
                 .fluidOutputs(Water.getFluid(10000))
                 .buildAndRegister();
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(420).EUt(240000)
@@ -132,8 +133,10 @@ public class Batteries {
                 .fluidOutputs(Ammonia.getFluid(4000))
                 .buildAndRegister();
         OrePrefix plateB;
-        if (GAConfig.GT6.addCurvedPlates) plateB = plateCurved;
-        else plateB = plate;
+        if (GAConfig.GT6.addCurvedPlates)
+            plateB = plateCurved;
+        else
+            plateB = plate;
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plateB, Titanium, 4)
                 .input(plateB, Vanadium, 2)
@@ -240,63 +243,63 @@ public class Batteries {
                 .outputs(BATTERY_NIMH.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(18))
+                .inputs(LithiumTriflate.getItemStack(2))
                 .inputs(BATTERY_SMALL_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 4)
                 .duration(60)
                 .outputs(BATTERY_SMALL_LITHIUM_ION.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(36))
+                .inputs(LithiumTriflate.getItemStack(4))
                 .inputs(BATTERY_MEDIUM_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 16)
                 .duration(60)
                 .outputs(BATTERY_MEDIUM_LITHIUM_ION.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(72))
+                .inputs(LithiumTriflate.getItemStack(8))
                 .inputs(BATTERY_LARGE_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 64)
                 .duration(60)
                 .outputs(BATTERY_LARGE_LITHIUM_ION.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(72))
+                .inputs(LithiumTriflate.getItemStack(8))
                 .inputs(BATTERY_SMALL_LIS_EMPTY.getStackForm())
                 .EUt(480 * 64 * 4)
                 .duration(60)
                 .outputs(BATTERY_SMALL_LIS.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(144))
+                .inputs(LithiumTriflate.getItemStack(16))
                 .inputs(BATTERY_MEDIUM_LIS_EMPTY.getStackForm())
                 .EUt(480 * 64 * 16)
                 .duration(60)
                 .outputs(BATTERY_MEDIUM_LIS.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(144))
+                .inputs(LithiumTriflate.getItemStack(16))
                 .inputs(BATTERY_LARGE_LIS_EMPTY.getStackForm())
                 .EUt(480 * 64 * 64)
                 .duration(60)
                 .outputs(BATTERY_LARGE_LIS.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(FluorideBatteryElectrolyte.getItemStack(100))
+                .inputs(FluorideBatteryElectrolyte.getItemStack(1))
                 .inputs(BATTERY_SMALL_FLUORIDE_EMPTY.getStackForm())
                 .EUt(480 * 64 * 64 * 4)
                 .duration(60)
                 .outputs(BATTERY_SMALL_FLUORIDE.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(FluorideBatteryElectrolyte.getItemStack(200))
+                .inputs(FluorideBatteryElectrolyte.getItemStack(2))
                 .inputs(BATTERY_MEDIUM_FLUORIDE_EMPTY.getStackForm())
                 .EUt(480 * 64 * 64 * 16)
                 .duration(60)
                 .outputs(BATTERY_MEDIUM_FLUORIDE.getStackForm())
                 .buildAndRegister();
         CANNER_RECIPES.recipeBuilder()
-                .inputs(FluorideBatteryElectrolyte.getItemStack(400))
+                .inputs(FluorideBatteryElectrolyte.getItemStack(4))
                 .inputs(BATTERY_LARGE_FLUORIDE_EMPTY.getStackForm())
                 .EUt(480 * 64 * 64 * 64)
                 .duration(60)
