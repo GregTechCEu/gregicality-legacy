@@ -1929,15 +1929,15 @@ recipemap.hyper_reactor.name=Hyper Reactor
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
-gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
-gtadditions.recipe.drilling_rig.dimension_blacklist=Dimension Blacklist: %s
-gtadditions.recipe.drilling_rig.biome_whitelist=Biome Whitelist: %s
-gtadditions.recipe.drilling_rig.biome_blacklist=Biome Blacklist: %s
-gtadditions.recipe.drilling_rig.min_size=Min Size: %d
-gtadditions.recipe.drilling_rig.max_size=Max Size: %d
 gtadditions.recipe.drilling_rig.replenish_rate=Replenish Rate: %d
 gtadditions.recipe.drilling_rig.weight=Weight: %d
-
+gtadditions.recipe.drilling_rig.dimension=Dimension
+gtadditions.recipe.drilling_rig.biome=Biome
+gtadditions.recipe.drilling_rig.no_dimension=Every Dimension
+gtadditions.recipe.drilling_rig.no_biome=Every Biome
+gtadditions.recipe.drilling_rig.whitelist=Whitelist
+gtadditions.recipe.drilling_rig.blacklist=Blacklist
+gtadditions.recipe.drilling_rig.size=Size: %s
 
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
