@@ -19,6 +19,8 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -29,6 +31,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -191,6 +194,12 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
 
     protected IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(Steel);
+    }
+
+    @NotNull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.ASSEMBLER_OVERLAY;
     }
 
 }
