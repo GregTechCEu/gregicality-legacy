@@ -205,7 +205,8 @@ public class CommonProxy {
     // with CraftTweaker changes, being significantly easier for modpack authors.
     private static void registerRecipesAfterCT() {
         ElectricImplosionHandler.buildElectricImplosionRecipes();
-        DisassemblyHandler.buildDisassemblerRecipes();
+        if (GAConfig.Misc.enableDisassembly)
+            DisassemblyHandler.buildDisassemblerRecipes();
     }
 
 
