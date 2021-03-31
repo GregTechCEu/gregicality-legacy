@@ -3887,6 +3887,10 @@ fluid.isophtaloylbisdiethylthiourea=Isophtaloylbis(diethylthiourea)
 fluid.sodium_alginate_solution=Sodium Alginate Solution
 fluid.ascorbic_acid=Ascorbic Acid
 fluid.dehydroascorbic_acid=Dehydroascorbic Acid
+fluid.cacbas_mixture=CaCBaS Mixture
+fluid.lubricant_clay_slurry=Lubricant Clay Slurry
+fluid.atl_ethylene_mixture=ATL Ethylene Mixture
+fluid.drilling_mud_mixture=Drilling Mud Mixture
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

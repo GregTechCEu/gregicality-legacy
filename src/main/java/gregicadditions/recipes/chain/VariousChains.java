@@ -6,6 +6,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -401,6 +402,52 @@ public class VariousChains {
                 .inputs(AEROGRAPHENE.getStackForm())
                 .fluidInputs(Argon.getFluid(1000))
                 .outputs(INSULATION_WIRE_ASSEMBLY.getStackForm(2))
+                .buildAndRegister();
+
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
+                .fluidInputs(BariumSulfateSolution.getFluid(1000))
+                .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
+                .fluidInputs(BentoniteClaySlurry.getFluid(1000))
+                .fluidInputs(Lubricant.getFluid(1000))
+                .fluidInputs(ATL.getFluid(1000))
+                .fluidInputs(EthyleneGlycol.getFluid(1000))
+                .fluidOutputs(DrillingMud.getFluid(6000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+                .fluidInputs(BariumSulfateSolution.getFluid(1000))
+                .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
+                .fluidOutputs(CaCBaSMixture.getFluid(2000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+                .fluidInputs(BentoniteClaySlurry.getFluid(1000))
+                .fluidInputs(Lubricant.getFluid(1000))
+                .fluidOutputs(LubricantClaySlurry.getFluid(2000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+                .fluidInputs(ATL.getFluid(1000))
+                .fluidInputs(EthyleneGlycol.getFluid(1000))
+                .fluidOutputs(ATLEthylene.getFluid(2000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+                .fluidInputs(CaCBaSMixture.getFluid(2000))
+                .fluidInputs(LubricantClaySlurry.getFluid(2000))
+                .fluidOutputs(DrillingMudMixture.getFluid(4000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+                .fluidInputs(DrillingMudMixture.getFluid(4000))
+                .fluidInputs(ATLEthylene.getFluid(2000))
+                .fluidOutputs(DrillingMud.getFluid(6000))
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(120).EUt(480)
+                .fluidInputs(UsedDrillingMud.getFluid(1000))
+                .fluidOutputs(DrillingMud.getFluid(950))
+                .outputs(new ItemStack(Blocks.GRAVEL))
                 .buildAndRegister();
     }
 }
