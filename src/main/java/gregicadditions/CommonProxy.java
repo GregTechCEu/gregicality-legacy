@@ -58,6 +58,8 @@ public class CommonProxy {
     }
 
     public void onLoad() throws IOException {
+        if (GAConfig.Misc.reverseAfterCT)
+            registerRecipesAfterCT();
         WorldGenRegister.init();
         if (GAConfig.Misc.multiStoneGen) {
             MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
@@ -196,6 +198,15 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.runRecipeGeneration();
+        if (!GAConfig.Misc.reverseAfterCT)
+            registerRecipesAfterCT();
+    }
+
+    // These recipes are generated at the beginning of the init() phase with the proper config set.
+    // This is not great practice, but ensures that they are run AFTER CraftTweaker,
+    // meaning they will follow the recipes in the map with CraftTweaker changes,
+    // being significantly easier for modpack authors.
+    private static void registerRecipesAfterCT() {
         ElectricImplosionHandler.buildElectricImplosionRecipes();
         if (GAConfig.Misc.enableDisassembly)
             DisassemblyHandler.buildDisassemblerRecipes();

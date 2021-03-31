@@ -13,6 +13,7 @@ import net.minecraft.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ElectricImplosionHandler {
@@ -46,8 +47,6 @@ public class ElectricImplosionHandler {
      * NOTE that this does NOT have any checking for integrated circuits
      * or other not-consumed items. If we add these to the default
      * Implosion Compressor, this code will have to be adjusted.
-     * CraftTweaker recipes do not matter for this issue, as their
-     * recipe registration is after this is run.
      */
     public static void buildElectricImplosionRecipes() {
 
@@ -62,12 +61,15 @@ public class ElectricImplosionHandler {
             }
 
             // Get the input list, converting from CountableIngredient to ItemStack
+            AtomicInteger stackCount = new AtomicInteger();
             Set<ItemStack> inputs = new ObjectOpenCustomHashSet<>(strategy);
             inputs.addAll(recipe.getInputs().stream()
+                                            .peek(ing -> stackCount.set(ing.getCount()))
                                             .map(CountableIngredient::getIngredient)
                                             .map(Ingredient::getMatchingStacks)
                                             .filter(stack -> stack.length != 0)
                                             .map(array -> array[0])
+                                            .peek(is -> is.setCount(stackCount.get()))
                                             .collect(Collectors.toSet()));
 
             // Make sure inputs were properly acquired, and remove explosive
