@@ -448,6 +448,12 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean enableRecipeRemovalLogging = false;
 
+        @Config.Comment({"Whether or not to have reverse engineered recipes (Disassembler, Electric Implosion, etc.) done before or after CT recipes.",
+        "If True, they will be done after CT, meaning the reversed recipes are not touchable by scripts. If False, it is on the pack maker to fix the recipes manually."})
+        @Config.Name("Reverse recipes after CT")
+        @Config.RequiresMcRestart
+        public boolean reverseAfterCT = true;
+
     }
 
     @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})
