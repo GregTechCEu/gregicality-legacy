@@ -4523,7 +4523,7 @@ public class GARecipeAddition {
                 'C', new UnificationEntry(circuit, Tier.Ultimate),
                 'T', COVER_MACHINE_CONTROLLER.getStackForm(),
                 'P', new UnificationEntry(plate, HSSS),
-                'B', GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_MODULE.getStackForm() : BATTERY_MEDIUM_NAQUADRIA.getStackForm());
+                'B', GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_MODULE.getStackForm() : BATTERY_LARGE_LITHIUM_ION.getStackForm());
 
         removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(480)
