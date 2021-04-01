@@ -147,7 +147,6 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
         this.pos = data.getInteger("Recipe");
         ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
         this.recipeMap = possibleRecipe[pos];
-        this.scheduleRenderUpdate();
     }
 
     @Override
