@@ -8,9 +8,9 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_ZPM;
 
-
 public class ProcessingUnits {
     public static void init() {
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, Titanium)
                 .fluidInputs(Plastic.getFluid(1000))
@@ -19,6 +19,7 @@ public class ProcessingUnits {
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
                 .input(foil, SiliconeRubber, 8)
@@ -37,6 +38,7 @@ public class ProcessingUnits {
                 .EUt(30720 * 4)
                 .duration(250)
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .fluidInputs(Polybenzimidazole.getFluid(1000))
                 .fluidInputs(UUMatter.getFluid(100))
@@ -49,6 +51,7 @@ public class ProcessingUnits {
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(1296))
@@ -57,6 +60,7 @@ public class ProcessingUnits {
                 .EUt(30720 * 4)
                 .duration(100)
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(1296))
@@ -66,6 +70,7 @@ public class ProcessingUnits {
                 .EUt(30720 * 4)
                 .duration(100)
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(1296))
@@ -75,6 +80,7 @@ public class ProcessingUnits {
                 .EUt(30720 * 4)
                 .duration(100)
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(1296))
@@ -84,6 +90,7 @@ public class ProcessingUnits {
                 .EUt(30720 * 4)
                 .duration(100)
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(foil, SiliconeRubber, 32)
                 .input(wireFine, NaquadahAlloy, 16)
@@ -98,6 +105,5 @@ public class ProcessingUnits {
                 .EUt(30720 * 16)
                 .duration(150)
                 .buildAndRegister();
-
     }
 }
