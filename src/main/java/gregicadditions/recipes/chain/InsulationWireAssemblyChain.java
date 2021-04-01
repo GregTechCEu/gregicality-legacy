@@ -1,20 +1,17 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.INSULATION_WIRE_ASSEMBLY;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.stick;
 
 public class InsulationWireAssemblyChain {
 
     public static void init() {
-        // 3C2H5OH + C2H4 + NH3 + HBr = C8H20NBr + 3H2O
+
+        // 3C2H5OH + C2H4 + NH3 + HBr -> C8H20NBr + 3H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(45000)
                 .fluidInputs(Ethanol.getFluid(3000))
                 .fluidInputs(Ethylene.getFluid(1000))
@@ -24,16 +21,17 @@ public class InsulationWireAssemblyChain {
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
-        // H2O + C6H12O6 = C6H14O2
+        // H2O + C6H12O6 -> C6H14O2 + 5O
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(330000)
                 .notConsumable(PdIrReOCeOS.getItemStack())
                 .fluidInputs(Water.getFluid(1000))
                 .inputs(Fructose.getItemStack(24))
-                .fluidInputs(TetraethylammoniumBromide.getFluid(10))
+                .notConsumable(TetraethylammoniumBromide.getFluid(0))
                 .fluidOutputs(Hexanediol.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(5000))
                 .buildAndRegister();
 
-        // 2 NH3 + C6H14O2 = 2 H2O + C6H16N2
+        // 2NH3 + C6H14O2 -> 2H2O + C6H16N2
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(250000)
                 .fluidInputs(Hexanediol.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(2000))
@@ -43,7 +41,7 @@ public class InsulationWireAssemblyChain {
                 .notConsumable(Alumina.getItemStack())
                 .buildAndRegister();
 
-        // C6H12O6 + 2CO = C6H10O8 + C2H2
+        // C6H12O6 + 2CO -> C6H10O8 + C2H2
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(74500)
                 .inputs(Glucose.getItemStack(24))
                 .fluidInputs(CarbonMonoxde.getFluid(2000))
@@ -51,7 +49,7 @@ public class InsulationWireAssemblyChain {
                 .outputs(SaccharicAcid.getItemStack(24))
                 .buildAndRegister();
 
-        // C6H10O8 + 8H = C6H10O4 + 4H2O
+        // C6H10O8 + 8H -> C6H10O4 + 4H2O
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(260).EUt(120000)
                 .inputs(SaccharicAcid.getItemStack(24))
                 .notConsumable(AuPdCCatalyst.getItemStack())
@@ -61,7 +59,7 @@ public class InsulationWireAssemblyChain {
                 .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
-        // C3H6O + CH4 = C4H10O
+        // C3H6O + CH4 -> C4H10O
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(230000)
                 .notConsumable(dust, MagnesiumChloride)
                 .inputs(ZeoliteSievingPellets.getItemStack())
@@ -71,24 +69,22 @@ public class InsulationWireAssemblyChain {
                 .outputs(WetZeoliteSievingPellets.getItemStack())
                 .buildAndRegister();
 
-        // 2 C4H10O + 2 CO2 = H2O + C10H18O5
-        // CATALYST
+        // 2C4H10O + 2CO2 -> H2O + C10H18O5
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(320000)
                 .fluidInputs(Tertbutanol.getFluid(2000))
                 .fluidInputs(CarbonDioxide.getFluid(2000))
-                .fluidInputs(Toluenesulfonate.getFluid(10))
+                .notConsumable(Toluenesulfonate.getFluid(0))
                 .fluidOutputs(Water.getFluid(1000))
                 .outputs(DitertbutylDicarbonate.getItemStack(33))
                 .buildAndRegister();
 
-        // C4H8 + C10H18O5 + 4NH3 + 3C = 2C4H10O + C6H18N4 + 3CO
-        // CATALYST
+        // C4H8 + C10H18O5 + 4NH3 + 3C -> 2C4H10O + C6H18N4 + 3CO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(370).EUt(200000)
                 .inputs(DitertbutylDicarbonate.getItemStack(33))
                 .input(dust, Carbon, 3)
                 .fluidInputs(Butene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(4000))
-                .fluidInputs(Trimethylchlorosilane.getFluid(10))
+                .notConsumable(Trimethylchlorosilane.getFluid(0))
                 .fluidOutputs(Tertbutanol.getFluid(2000))
                 .fluidOutputs(CarbonMonoxde.getFluid(3000))
                 .fluidOutputs(Triaminoethaneamine.getFluid(1000))
@@ -103,13 +99,13 @@ public class InsulationWireAssemblyChain {
                 .outputs(PEEK_POLYAMIDE_FOIL.getStackForm(3))
                 .buildAndRegister();
 
-        // 2K + 2NaN3 + C10H18O5 = 2Na + K2O + 2 C5H9N3O2
+        // 2K + 2NaN3 + C10H18O5 -> 2Na + K2O + 2C5H9N3O2
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(450000)
                 .input(dust, Potassium,2)
                 .inputs(SodiumAzide.getItemStack(8))
                 .inputs(DitertbutylDicarbonate.getItemStack(33))
-                .outputs(OreDictUnifier.get(dust, Sodium, 2))
-                .outputs(OreDictUnifier.get(dust, Potash, 6))
+                .output(dust, Sodium, 2)
+                .output(dust, Potash, 3)
                 .fluidOutputs(TertButylAzidoformate.getFluid(2000))
                 .buildAndRegister();
 
@@ -154,7 +150,7 @@ public class InsulationWireAssemblyChain {
                 .inputs(GlucoseIronMixture.getItemStack(28))
                 .input(dust, Sodium, 3)
                 .outputs(GRAPHENE_IRON_PLATE.getStackForm())
-                .outputs(OreDictUnifier.get(dust, Salt, 6))
+                .output(dust, Salt, 6)
                 .fluidOutputs(Water.getFluid(6000))
                 .buildAndRegister();
 
@@ -191,7 +187,7 @@ public class InsulationWireAssemblyChain {
                 .inputs(GrapheneOxide.getItemStack(3))
                 .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
                 .fluidInputs(Hydrazine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Graphene))
+                .output(dust, Graphene)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(200).EUt(15000)
