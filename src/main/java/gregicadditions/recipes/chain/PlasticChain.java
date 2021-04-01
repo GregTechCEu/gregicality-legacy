@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
@@ -86,7 +85,7 @@ public class PlasticChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Chrome)
                 .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, ChromiumTrioxide, 4))
+                .output(dust, ChromiumTrioxide, 4)
                 .EUt(60)
                 .duration(100)
                 .buildAndRegister();
@@ -95,7 +94,7 @@ public class PlasticChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, ChromiumTrioxide, 8)
                 .input(dust, Saltpeter, 10)
-                .outputs(OreDictUnifier.get(dust, Potassiumdichromate, 11))
+                .output(dust, Potassiumdichromate, 11)
                 .fluidOutputs(NitrogenDioxide.getFluid(2000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .EUt(480)

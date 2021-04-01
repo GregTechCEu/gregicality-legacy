@@ -1,11 +1,7 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAEnums;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -16,7 +12,8 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
+import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 
 
 public class VariousChains {
@@ -28,7 +25,7 @@ public class VariousChains {
                 .fluidInputs(Chlorine.getFluid(2000))
                 .input(dust, SodiumHydroxide, 6)
                 .fluidOutputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .outputs(SodiumHypochlorite.getItemStack(3))
                 .buildAndRegister();
 
@@ -45,7 +42,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(256)
                 .inputs(SodiumHypochlorite.getItemStack(3))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
 
@@ -62,7 +59,7 @@ public class VariousChains {
                 .input(dust, Sodium)
                 .fluidInputs(Chloroethanol.getFluid(1000))
                 .fluidInputs(Trimethylamine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .fluidOutputs(Choline.getFluid(1000))
                 .buildAndRegister();
 
@@ -155,8 +152,6 @@ public class VariousChains {
                 .outputs(new ItemStack(Items.BED))
                 .buildAndRegister();
 
-        /////////////////////////
-
         ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
                 .fluidInputs(SolderingAlloy.getFluid(576))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm())
@@ -182,8 +177,8 @@ public class VariousChains {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
-                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
+                .input(plateCurved, Steel, 64)
+                .input(plateCurved, Steel, 64)
                 .input(plate, Steel, 64)
                 .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())
@@ -197,8 +192,6 @@ public class VariousChains {
                 .fluidInputs(Rubidium.getFluid(288))
                 .outputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .buildAndRegister();
-
-                // TODO Check below here if these are duplicated
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
                 .fluidInputs(BariumSulfateSolution.getFluid(1000))
@@ -251,7 +244,7 @@ public class VariousChains {
                 .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .fluidOutputs(IronChloride.getFluid(2000))
-                .outputs(OreDictUnifier.get(plate, Graphene))
+                .output(plate, Graphene)
                 .buildAndRegister();
 
         // These are fine (just fixed Iron III Chloride output)

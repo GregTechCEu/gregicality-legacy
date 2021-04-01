@@ -34,8 +34,8 @@ public class NiobiumTantalumChain {
         // MnSO4 -> Mn + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(500)
                 .inputs(ManganeseSulfate.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, Manganese))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .output(dust, Manganese)
+                .output(dust, Sulfur)
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
@@ -51,14 +51,14 @@ public class NiobiumTantalumChain {
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(1300).blastFurnaceTemp(1600)
                 .inputs(CassiteriteCokePellets.getItemStack(5))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Tin, 2))
+                .output(ingot, Tin, 2)
                 .outputs(TinSlag.getItemStack())
                 .buildAndRegister();
 
         // 6slag -> ash + ?
         CENTRIFUGE_RECIPES.recipeBuilder().duration(180).EUt(500)
                 .inputs(TinSlag.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, DarkAsh))
+                .output(dust, DarkAsh)
                 .outputs(NbTaContainingDust.getItemStack(4))
                 .buildAndRegister();
 
@@ -68,7 +68,7 @@ public class NiobiumTantalumChain {
                 .input(dust, Carbon)
                 .input(dust, SiliconDioxide, 3)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Ferrosilite, 5))
+                .output(ingot, Ferrosilite, 5)
                 .outputs(NiobiumTantalumOxide.getItemStack(14))
                 .buildAndRegister();
 
@@ -103,14 +103,14 @@ public class NiobiumTantalumChain {
                 .fluidInputs(SulfuricAcid.getFluid(4000))
                 .outputs(LeachedColumbite.getItemStack(17))
                 .outputs(IronSulfateDust.getItemStack(12))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 14))
+                .output(dust, SodiumSulfate, 14)
                 .buildAndRegister();
 
         // FeSO4 -> Fe + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(500)
                 .inputs(IronSulfateDust.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, Iron))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .output(dust, Iron)
+                .output(dust, Sulfur)
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
@@ -143,7 +143,7 @@ public class NiobiumTantalumChain {
                 .inputs(FusedTantalite.getItemStack(9))
                 .fluidInputs(SulfuricAcid.getFluid(4000))
                 .outputs(LeachedTantalite.getItemStack(17))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 14))
+                .output(dust, SodiumSulfate, 14)
                 .outputs(ManganeseSulfate.getItemStack(12))
                 .buildAndRegister();
 
@@ -208,13 +208,14 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
                 .buildAndRegister();
 
+        // TODO This recipe may be really mean
         CENTRIFUGE_RECIPES.recipeBuilder().duration(380).EUt(1600)
                 .fluidInputs(AlkalineEarthSulfateSolution.getFluid(8000))
                 .fluidOutputs(Water.getFluid(8000))
-                .outputs(OreDictUnifier.get(dust, Barite, 3))
-                .outputs(OreDictUnifier.get(dust, Gypsum, 6))
+                .output(dust, Barite, 3)
+                .output(dust, Gypsum, 8)
                 .outputs(StrontiumSulfate.getItemStack(3))
-                .outputs(OreDictUnifier.get(dustTiny, Radium, 3))
+                .output(dustTiny, Radium, 3)
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(1900)
@@ -260,18 +261,18 @@ public class NiobiumTantalumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(360).EUt(1900)
                 .inputs(PotasssiumFluoroNiobate.getItemStack(10))
                 .fluidInputs(Sodium.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 5))
-                .outputs(OreDictUnifier.get(dust, PotassiumFluoride, 2))
-                .outputs(OreDictUnifier.get(dust, Niobium))
+                .output(dust, SodiumFluoride, 10)
+                .output(dust, PotassiumFluoride, 4)
+                .output(dust, Niobium)
                 .buildAndRegister();
 
         // K2TaF7 + 5Na -> 5NaF + 2KF + Ta
         ELECTROLYZER_RECIPES.recipeBuilder().duration(360).EUt(1900)
                 .inputs(PotasssiumFluoroTantalate.getItemStack(10))
                 .fluidInputs(Sodium.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 5))
-                .outputs(OreDictUnifier.get(dust, PotassiumFluoride, 2))
-                .outputs(OreDictUnifier.get(dust, Tantalum))
+                .output(dust, SodiumFluoride, 10)
+                .output(dust, PotassiumFluoride, 4)
+                .output(dust, Tantalum)
                 .buildAndRegister();
     }
 }

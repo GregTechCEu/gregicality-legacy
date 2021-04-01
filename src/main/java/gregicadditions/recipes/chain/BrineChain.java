@@ -138,7 +138,7 @@ public class BrineChain {
         BLAST_RECIPES.recipeBuilder().duration(400).EUt(500).blastFurnaceTemp(500)
                 .inputs(UranylNitrate.getItemStack(11))
                 .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dioxide, UraniumRadioactive.getMaterial(), 3))
+                .output(dioxide, UraniumRadioactive.getMaterial(), 3)
                 .fluidOutputs(DiluteNitricAcid.getFluid(2000))
                 .buildAndRegister();
 
@@ -224,7 +224,7 @@ public class BrineChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(16000)
                 .inputs(LITHIUM_SIEVE.getStackForm())
                 .fluidInputs(SodiumLithiumSolution.getFluid(1000))
-                .fluidOutputs(SodiumChlorideSolution.getFluid(1000))
+                .fluidOutputs(SaltWater.getFluid(1000))
                 .outputs(LITHIUM_SATURATED_LITHIUM_SIEVE.getStackForm())
                 .buildAndRegister();
 
@@ -247,7 +247,7 @@ public class BrineChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(3000)
                 .inputs(LithiumChloride.getItemStack(2))
                 .inputs(SodiumAluminiumHydride.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .outputs(LithiumAluminiumHydride.getItemStack(6))
                 .buildAndRegister();
 
@@ -295,7 +295,7 @@ public class BrineChain {
                 .inputs(SodiumAzanide.getItemStack(8))
                 .fluidInputs(NitrousOxide.getFluid(1000))
                 .fluidOutputs(Ammonia.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .output(dust, SodiumHydroxide, 3)
                 .outputs(SodiumAzide.getItemStack(4))
                 .buildAndRegister();
 
@@ -306,16 +306,17 @@ public class BrineChain {
                 .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // C6H12O6 + LiAlH4 + NaNH2 -> LiOH(H2O) + H + H2O + C6H13NO5 + Al(OH)3 TODO
+        // C6H12O6 + LiAlH4 + NaNH2 + H2SO4 + O -> LiOH(H2O) + C6H13NO5 + AlH3 + NaHSO4
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(3000)
-                .inputs(Glucose.getItemStack())
-                .inputs(LithiumAluminiumHydride.getItemStack())
-                .inputs(SodiumAzanide.getItemStack())
+                .inputs(Glucose.getItemStack(24))
+                .inputs(LithiumAluminiumHydride.getItemStack(6))
+                .inputs(SodiumAzanide.getItemStack(4))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(LithiumHydroxideSolution.getFluid(1000))
-                .fluidOutputs(Hydrogen.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .outputs(Glucosamine.getItemStack())
-                .outputs(AluminiumHydroxide.getItemStack())
+                .outputs(Glucosamine.getItemStack(25))
+                .outputs(AluminiumHydride.getItemStack(4))
+                .output(dust, SodiumBisulfate, 7)
                 .buildAndRegister();
 
         // AlH3 + 3H2O -> Al(OH)3 + 6H
@@ -377,7 +378,7 @@ public class BrineChain {
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(1200).blastFurnaceTemp(3400)
                 .inputs(LithiumAluminiumFluoride.getItemStack(6))
                 .outputs(AluminiumTrifluoride.getItemStack(4))
-                .outputs(OreDictUnifier.get(dust, LithiumFluoride, 2))
+                .output(dust, LithiumFluoride, 2)
                 .buildAndRegister();
 
         // 2AlF3 + 3H2O -> Al2O3 + 6HF
@@ -392,7 +393,7 @@ public class BrineChain {
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(2000).blastFurnaceTemp(600)
                 .input(dust, Boron)
                 .fluidInputs(Diborane.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Boron, 3))
+                .output(dust, Boron, 3)
                 .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 
@@ -407,23 +408,21 @@ public class BrineChain {
         BLAST_RECIPES.recipeBuilder().duration(220).EUt(500).blastFurnaceTemp(1000)
                 .input(dust, Carbon, 2)
                 .input(dust, Sulfur, 4)
-                .outputs(OreDictUnifier.get(dustTiny, Ash))
+                .output(dustTiny, Ash)
                 .fluidOutputs(CarbonSulfide.getFluid(2000))
                 .buildAndRegister();
 
-        // 2H + 3CO2 + 2Cl + 2CH3NH2 + CS2 -> 2C3H6ClNS + 6O
-        // TODO This recipe is not great, can maybe be changed
+        // 3C + 2HCl + 2CH3NH2 + CS2 -> 2C3H6ClNS
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(300).EUt(2200)
-                .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidInputs(CarbonDioxide.getFluid(3000))
-                .fluidInputs(Chlorine.getFluid(2000))
+                .input(dust, Carbon, 3)
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(Methylamine.getFluid(2000))
                 .fluidInputs(CarbonSulfide.getFluid(1000))
                 .fluidOutputs(DimethylthiocarbamoilChloride.getFluid(2000))
                 .fluidOutputs(Oxygen.getFluid(6000))
                 .buildAndRegister();
 
-        // C6H6O2 + C3H6ClNS + 2H -> C6H6OS + (CH3)2NCH + HCl TODO
+        // C6H6O2 + C3H6ClNS + 2H -> C6H6OS + (CH3)2NCH + HClO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(3200)
                 .notConsumable(dust, Palladium)
                 .notConsumable(SodiumHydride.getItemStack())
@@ -432,7 +431,7 @@ public class BrineChain {
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(Mercaphenol.getFluid(1000))
                 .fluidOutputs(Dimethylformamide.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder().duration(230).EUt(1200)
@@ -482,7 +481,7 @@ public class BrineChain {
                 .fluidInputs(PhosphoricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(13000))
                 .outputs(SodiumPhosphomolybdate.getItemStack(56))
-                .outputs(OreDictUnifier.get(dust, Salt, 42))
+                .output(dust, Salt, 42)
                 .fluidOutputs(Water.getFluid(12000))
                 .buildAndRegister();
 
@@ -492,7 +491,7 @@ public class BrineChain {
                 .fluidInputs(PhosphoricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(21000))
                 .outputs(SodiumPhosphotungstate.getItemStack(56))
-                .outputs(OreDictUnifier.get(dust, Salt, 42))
+                .output(dust, Salt, 42)
                 .fluidOutputs(Water.getFluid(12000))
                 .buildAndRegister();
 
@@ -552,21 +551,21 @@ public class BrineChain {
         // CaCO3, CaSO4(H2O)2
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(CalciumSalts.getItemStack(13))
-                .outputs(OreDictUnifier.get(dust, Calcite, 5))
-                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
+                .output(dust, Calcite, 5)
+                .output(dust, Gypsum, 8)
                 .buildAndRegister();
 
         // NaCl, NaF
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(SodiumSalts.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, SodiumFluoride), 400, 0)
                 .buildAndRegister();
 
         // KCl, MgSO4, K2SO4
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(PotassiumMagnesiumSalts.getItemStack(15))
-                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
+                .output(dust, RockSalt, 2)
                 .outputs(MagnesiumSulfate.getItemStack(6))
                 .outputs(PotassiumSulfate.getItemStack(7))
                 .chancedOutput(OreDictUnifier.get(dustTiny, PotassiumFluoride), 400, 0)
@@ -575,22 +574,17 @@ public class BrineChain {
         // CaCO3, CO2, MgO
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(CalciumMagnesiumSalts.getItemStack(8))
-                .outputs(OreDictUnifier.get(dust, Calcite, 5))
+                .output(dust, Calcite, 5)
                 .chancedOutput(StrontiumCarbonate.getItemStack(), 40, 0)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Magnesia, 2))
-                .buildAndRegister();
-
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(250).EUt(300)
-                .fluidInputs(SodiumChlorideSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Magnesia, 2)
                 .buildAndRegister();
 
         // MgSO4 -> Mg + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(MagnesiumSulfate.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, Magnesium))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .output(dust, Magnesium)
+                .output(dust, Sulfur)
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
@@ -599,7 +593,7 @@ public class BrineChain {
                 .input(dust, Magnesia, 2)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 3))
+                .output(dust, MagnesiumChloride, 3)
                 .buildAndRegister();
 
         // SrSO4 + Na2CO3 + 2C -> SrCO3 + 2CO2 + Na2S
@@ -609,7 +603,7 @@ public class BrineChain {
                 .input(dust, Carbon, 2)
                 .outputs(StrontiumCarbonate.getItemStack(5))
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfide, 3))
+                .output(dust, SodiumSulfide, 3)
                 .buildAndRegister();
 
         // SrCO3 -> SrO + CO2
@@ -622,7 +616,7 @@ public class BrineChain {
         // SrO -> Sr + O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(300).EUt(260)
                 .inputs(StrontiumOxide.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, Strontium))
+                .output(dust, Strontium)
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
@@ -635,16 +629,16 @@ public class BrineChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .fluidInputs(ChilledBrine.getFluid(2000))
                 .fluidOutputs(MagnesiumContainingBrine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Calcite, 5))
-                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
-                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
+                .output(dust, Calcite, 5)
+                .output(dust, Gypsum, 8)
+                .output(dust, Salt, 2)
+                .output(dust, RockSalt, 2)
                 .buildAndRegister();
 
         // MgCl2, MgSO4
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(340).EUt(500)
                 .fluidInputs(MagnesiumContainingBrine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 3))
+                .output(dust, MagnesiumChloride, 3)
                 .outputs(MagnesiumSulfate.getItemStack(6))
                 .fluidOutputs(LithiumChlorideSolution.getFluid(200))
                 .buildAndRegister();

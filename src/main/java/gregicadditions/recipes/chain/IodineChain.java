@@ -1,7 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -48,16 +46,16 @@ public class IodineChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(90).EUt(600)
                 .fluidInputs(KeroseneIodineSolution.getFluid(1000))
                 .fluidOutputs(Kerosene.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Iodine))
+                .output(dust, Iodine)
                 .buildAndRegister();
 
         // [NaNO3·KNO3·KCl·NaOH + H2O] = NaNO3 + KNO3 + KCl + NaOH + H2O (Water voided - Dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(750)
                 .fluidInputs(CalicheNitrateSolution.getFluid(1000))
                 .fluidInputs(Nitrogen.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Niter, 5))
-                .outputs(OreDictUnifier.get(dust, RockSalt, 2))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .output(dust, Niter, 5)
+                .output(dust, RockSalt, 2)
+                .output(dust, SodiumHydroxide, 3)
                 .buildAndRegister();
 
         // 2[I + Oil] = Oil + I?
@@ -84,7 +82,7 @@ public class IodineChain {
         // I? = I
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(230).EUt(600)
                 .fluidInputs(IodineSlurry.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Iodine))
+                .output(dust, Iodine)
                 .buildAndRegister();
     }
 }

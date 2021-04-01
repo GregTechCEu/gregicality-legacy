@@ -249,7 +249,7 @@ public class UltimateMaterials {
                 .fluidInputs(SuperfluidHelium.getFluid(48000))
                 .fluidOutputs(Helium.getFluid(48000))
                 .notConsumable(INGOT_FIELD_SHAPE.getStackForm())
-                .outputs(OreDictUnifier.get(ingot, CosmicNeutronium))
+                .output(ingot, CosmicNeutronium)
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
 
@@ -281,8 +281,8 @@ public class UltimateMaterials {
                 .outputs(COSMIC_MESH_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
 
-        MetaItem.MetaValueItem[] fieldShapes = { PLATE_FIELD_SHAPE, INGOT_FIELD_SHAPE, WIRE_FIELD_SHAPE, SPHERE_FIELD_SHAPE, ROD_FIELD_SHAPE };
-        MetaItem.MetaValueItem[] molds = { SHAPE_MOLD_PLATE, SHAPE_MOLD_INGOT, SHAPE_EXTRUDER_WIRE, SHAPE_MOLD_BALL, SHAPE_EXTRUDER_ROD };
+        MetaItem<?>.MetaValueItem[] fieldShapes = { PLATE_FIELD_SHAPE, INGOT_FIELD_SHAPE, WIRE_FIELD_SHAPE, SPHERE_FIELD_SHAPE, ROD_FIELD_SHAPE };
+        MetaItem<?>.MetaValueItem[] molds = { SHAPE_MOLD_PLATE, SHAPE_MOLD_INGOT, SHAPE_EXTRUDER_WIRE, SHAPE_MOLD_BALL, SHAPE_EXTRUDER_ROD };
         for (int i = 0; i < fieldShapes.length; i++) {
             ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(85000)
                     .inputs(molds[i].getStackForm())

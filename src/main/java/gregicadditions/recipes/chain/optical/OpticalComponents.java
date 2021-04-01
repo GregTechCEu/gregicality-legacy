@@ -1,6 +1,5 @@
 package gregicadditions.recipes.chain.optical;
 
-import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
@@ -33,7 +32,7 @@ public class OpticalComponents {
                 .inputs(LithiumHydride.getItemStack(2))
                 .input(dustTiny, Hafnium)
                 .fluidInputs(HydrogenPeroxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(ingotHot, LithiumNiobate, 6))
+                .output(ingotHot, LithiumNiobate, 6)
                 .fluidOutputs(HydrochloricAcid.getFluid(5000))
                 .buildAndRegister();
 
@@ -41,7 +40,7 @@ public class OpticalComponents {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(560000)
                 .input(dust, SodiumHydroxide, 15)
                 .inputs(NiobiumChloride.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, Salt, 10))
+                .output(dust, Salt, 10)
                 .outputs(NiobiumHydroxide.getItemStack(11))
                 .buildAndRegister();
 
@@ -51,7 +50,7 @@ public class OpticalComponents {
                 .input(dust, Sodium)
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(OxalicAcid.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust ,SodiumHydroxide, 3))
+                .output(dust ,SodiumHydroxide, 3)
                 .fluidOutputs(Water.getFluid(9000))
                 .fluidOutputs(AmmoniumNiobiumOxalateSolution.getFluid(1000))
                 .buildAndRegister();
@@ -129,7 +128,7 @@ public class OpticalComponents {
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(1600000).blastFurnaceTemp(4600)
                 .input(dust, Phosphorus)
                 .input(dust, Indium)
-                .outputs(OreDictUnifier.get(dust, IndiumPhospide, 2))
+                .output(dust, IndiumPhospide, 2)
                 .buildAndRegister();
 
         // Zn + S -> ZnS

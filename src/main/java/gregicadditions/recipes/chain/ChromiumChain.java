@@ -24,8 +24,8 @@ public class ChromiumChain {
         BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(500)
                 .input(dust, Calcite, 5)
                 .input(dust, Salt, 4)
-                .outputs(OreDictUnifier.get(dust, SodaAsh, 6))
-                .outputs(OreDictUnifier.get(dust, CalciumChloride, 3))
+                .output(dust, SodaAsh, 6)
+                .output(dust, CalciumChloride, 3)
                 .buildAndRegister();
 
         // 2Cr2FeO4 + 4Na2CO3(H2O) + 7O -> Fe2O3 + 4CO2 + 4Na2CrO4(H2O)
@@ -33,7 +33,7 @@ public class ChromiumChain {
                 .input(dust, Chromite, 14)
                 .fluidInputs(SodiumCarbonateSolution.getFluid(4000))
                 .fluidInputs(Oxygen.getFluid(7000))
-                .outputs(OreDictUnifier.get(dust, BandedIron, 5))
+                .output(dust, BandedIron, 5)
                 .fluidOutputs(CarbonDioxide.getFluid(4000))
                 .fluidOutputs(SodiumChromateSolution.getFluid(4000))
                 .buildAndRegister();
@@ -52,22 +52,22 @@ public class ChromiumChain {
                 .input(dust, Carbon, 2)
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodaAsh, 6))
-                .outputs(OreDictUnifier.get(dust, ChromiumTrioxide, 5))
+                .output(dust, SodaAsh, 6)
+                .output(dust, ChromiumTrioxide, 5)
                 .buildAndRegister();
 
         // Cr2O3 + 2Al -> 2Cr + Al2O3
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
                 .input(dust, ChromiumTrioxide, 5)
                 .input(dust, Aluminium, 2)
-                .outputs(OreDictUnifier.get(dust, Chrome, 2))
+                .output(dust, Chrome, 2)
                 .outputs(Alumina.getItemStack(5))
                 .buildAndRegister();
 
         // Na2SO4(H2O) -> Na2SO4
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(125)
                 .fluidInputs(SodiumSulfateSolution.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 7))
+                .output(dust, SodiumSulfate, 7)
                 .buildAndRegister();
 
         // Al2O3Cr + (HNO3 + HCl) -> Al2O3CrCl? + (H2NO3)
@@ -82,8 +82,8 @@ public class ChromiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .fluidInputs(RubySlurry.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 2))
-                .outputs(OreDictUnifier.get(dust, Chrome))
+                .output(dust, Aluminium, 2)
+                .output(dust, Chrome)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Vanadium), 2000, 0)
@@ -102,7 +102,7 @@ public class ChromiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .fluidInputs(SapphireSlurry.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 2))
+                .output(dust, Aluminium, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Vanadium), 2000, 0)
@@ -121,7 +121,7 @@ public class ChromiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .fluidInputs(GreenSapphireSlurry.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 2))
+                .output(dust, Aluminium, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Beryllium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)

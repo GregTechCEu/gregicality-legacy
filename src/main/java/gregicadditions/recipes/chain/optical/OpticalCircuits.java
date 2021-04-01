@@ -10,6 +10,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class OpticalCircuits {
     public static void init() {
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
                 .input(wireFine, Pikyonium, 8)
                 .input(plate, LithiumNiobate, 4)
@@ -77,6 +78,5 @@ public class OpticalCircuits {
                 .fluidInputs(FullereneDopedNanotubes.getFluid(144))
                 .outputs(OPTICAL_PROCESSING_CORE.getStackForm())
                 .buildAndRegister();
-
     }
 }

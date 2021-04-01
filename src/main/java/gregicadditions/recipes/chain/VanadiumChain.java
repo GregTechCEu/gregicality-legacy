@@ -16,7 +16,7 @@ public class VanadiumChain {
                 .input(dust, VanadiumMagnetite, 8)
                 .input(dust, Carbon, 3)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
+                .output(ingot, Iron, 3)
                 .outputs(VanadiumSlag.getItemStack(5))
                 .fluidOutputs(CarbonMonoxde.getFluid(3000))
                 .buildAndRegister();
@@ -24,8 +24,8 @@ public class VanadiumChain {
         // VO? = Dark Ash + TiO2 + VO
         MACERATOR_RECIPES.recipeBuilder().duration(2400).EUt(125)
                 .inputs(VanadiumSlag.getItemStack(5))
-                .outputs(OreDictUnifier.get(dustTiny, DarkAsh))
-                .outputs(OreDictUnifier.get(dustTiny, Rutile, 3))
+                .output(dustTiny, DarkAsh)
+                .output(dustTiny, Rutile, 3)
                 .outputs(VanadiumSlagDust.getItemStack(2))
                 .buildAndRegister();
 
@@ -69,7 +69,7 @@ public class VanadiumChain {
                 .input(dust, Aluminium, 2)
                 .input(dust, Carbon)
                 .outputs(Alumina.getItemStack(5))
-                .outputs(OreDictUnifier.get(dust, Vanadium, 2))
+                .output(dust, Vanadium, 2)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 

@@ -128,7 +128,7 @@ public class UHVMaterials {
                 .fluidInputs(LiquidHelium.getFluid(32000))
                 .fluidOutputs(Helium.getFluid(32000))
                 .notConsumable(INGOT_FIELD_SHAPE.getStackForm())
-                .outputs(OreDictUnifier.get(ingot, Neutronium))
+                .output(ingot, Neutronium)
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .EUt(10000000)
                 .duration(500)

@@ -1,7 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
@@ -25,8 +23,8 @@ public class SeleniumChain {
                 .input(crushedCentrifuged, Chalcopyrite)
                 .input(dust, SiliconDioxide, 3)
                 .fluidInputs(Oxygen.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust, ElectricallyImpureCopper))
-                .outputs(OreDictUnifier.get(dust, Ferrosilite, 5))
+                .output(dust, ElectricallyImpureCopper)
+                .output(dust, Ferrosilite, 5)
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
                 .buildAndRegister();
 
@@ -42,7 +40,7 @@ public class SeleniumChain {
                 .input(plate, ElectricallyImpureCopper, 2)
                 .fluidInputs(CopperRefiningSolution.getFluid(1000))
                 .fluidOutputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(ingot, Copper, 3))
+                .output(ingot, Copper, 3)
                 .chancedOutput(AnodicSlime.getItemStack(), 7500, 0)
                 .buildAndRegister();
 
@@ -51,7 +49,7 @@ public class SeleniumChain {
                 .inputs(AnodicSlime.getItemStack())
                 .input(dust, SodaAsh, 12)
                 .fluidInputs(Hydrogen.getFluid(4000))
-                .outputs(OreDictUnifier.get(dustTiny, PreciousMetal, 5))
+                .output(dustTiny, PreciousMetal, 5)
                 .fluidOutputs(SelenateTellurateMix.getFluid(1000))
                 .buildAndRegister();
 
@@ -60,7 +58,7 @@ public class SeleniumChain {
                 .fluidInputs(SelenateTellurateMix.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(TelluriumOxide.getItemStack(3))
-                .outputs(OreDictUnifier.get(dust, Sodium, 4))
+                .output(dust, Sodium, 4)
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(SulfurDioxide.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
@@ -80,7 +78,7 @@ public class SeleniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1200)
                 .inputs(SeleniumOxide.getItemStack(3))
                 .fluidInputs(SulfurDioxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Selenium))
+                .output(dust, Selenium)
                 .fluidOutputs(SulfurTrioxide.getFluid(2000))
                 .buildAndRegister();
 
@@ -88,7 +86,7 @@ public class SeleniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1200)
                 .inputs(TelluriumOxide.getItemStack(3))
                 .fluidInputs(SulfurDioxide.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Tellurium))
+                .output(dust, Tellurium)
                 .fluidOutputs(SulfurTrioxide.getFluid(2000))
                 .buildAndRegister();
     }

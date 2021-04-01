@@ -717,11 +717,10 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial MagnesiumContainingBrine = new SimpleFluidMaterial("magnesium_containing_brine", 0xfcfcbc, "Mg?");
     public static final SimpleFluidMaterial BrominatedBrine = new SimpleFluidMaterial("brominated_brine", 0xfdd48d, "Br?");
     public static final SimpleFluidMaterial AcidicBrominatedBrine = new SimpleFluidMaterial("acidic_brominated_brine", 0xfdd48d, "(H2SO4)Cl?");
-    public static final SimpleFluidMaterial SodiumChlorideSolution = new SimpleFluidMaterial("sodium_chloride_solution", (Salt.materialRGB-40), "(H2O)NaCl");
     public static final SimpleFluidMaterial ButylLithium = new SimpleFluidMaterial("butyl_lithium", (Butane.materialRGB+Lithium.materialRGB)/2, "C4H9Li");
     public static final SimpleFluidMaterial Acetaldehyde = new SimpleFluidMaterial("acetaldehyde", 0xFF9933, "C2H4O");
     public static final SimpleFluidMaterial Benzaldehyde = new SimpleFluidMaterial("benzaldehyde", 0xb26f22, "C7H6O");
-    public static final SimpleFluidMaterial Dibenzyldieneacetone = new SimpleFluidMaterial("dibenzylidieneacetone", 0Xcc6699, "C17H14O");
+    public static final SimpleFluidMaterial Dibenzylideneacetone = new SimpleFluidMaterial("dibenzylideneacetone", 0Xcc6699, "C17H14O");
     public static final SimpleFluidMaterial TetramethyltinChloride = new SimpleFluidMaterial("trimethyltin_chloride", 0x8c8075, "(CH3)3SnCl");
     public static final SimpleFluidMaterial ChloroPlatinicAcid = new SimpleFluidMaterial("chloroplatinic_acid", 0xffba54, "H2PtCl6");
     public static final SimpleFluidMaterial Cyclooctadiene = new SimpleFluidMaterial("cyclooctadiene", 0x33CC33, "C8H12");

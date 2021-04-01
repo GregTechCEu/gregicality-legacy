@@ -70,7 +70,7 @@ public class ZirconChain {
         // SiCl4 = Si + 4Cl
         ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(125)
                 .inputs(SiliconChloride.getItemStack(5))
-                .outputs(OreDictUnifier.get(dust, Silicon))
+                .output(dust, Silicon)
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .buildAndRegister();
 
@@ -82,19 +82,18 @@ public class ZirconChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
-        // 3Cl2HfOZr + 3HClO + 3H2SO4 + 15NH3 + 3H2O2 + 0.2[C6H12O + HSCN] = 9NH4Cl + 3(NH4)2SO4 + 3ZrO2 + 3HfO2 (THIS IS TOO BIG)
-        // 3Cl2HfOZr + 3H2SO4 + 6NH4Cl + 9O + 0.2[C6H12O + HSCN] = 3(NH4)2SO4 + 6HCl + 6Cl + 3ZrO2 + 3HfO2 (THIS FITS)
-        // 3Cl2HfOZr + 3SO3 + 6NH4Cl + 6H2O2 + 0.2[C6H12O + HSCN] = 3(NH4)2SO4 + 12HCl + 3ZrO2 + 3HfO2 (CURRENTLY USING)
-        // TODO: CATALYST = 0.2[C6H12O + HSCN]
+        // 3Cl2HfOZr + 3HClO + 3H2SO4 + 15NH3 + 3H2O2 = 9NH4Cl + 3(NH4)2SO4 + 3ZrO2 + 3HfO2 (THIS IS TOO BIG)
+        // 3Cl2HfOZr + 3H2SO4 + 6NH4Cl + 9O = 3(NH4)2SO4 + 6HCl + 6Cl + 3ZrO2 + 3HfO2 (THIS FITS)
+        // 3Cl2HfOZr + 3SO3 + 6NH4Cl + 6H2O2 = 3(NH4)2SO4 + 12HCl + 3ZrO2 + 3HfO2 (CURRENTLY USING)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(650)
                 .fluidInputs(ZrHfOxyChloride.getFluid(3000))
                 .fluidInputs(SulfurTrioxide.getFluid(3000))
                 .fluidInputs(AmmoniumChloride.getFluid(6000))
                 .fluidInputs(HydrogenPeroxide.getFluid(6000))
-                .fluidInputs(ZrHfSeparationMix.getFluid(10))
+                .notConsumable(ZrHfSeparationMix.getFluid(0))
                 .fluidOutputs(AmmoniumSulfate.getFluid(3000))
                 .fluidOutputs(HydrochloricAcid.getFluid(12000))
-                .outputs(OreDictUnifier.get(dust, CubicZirconia, 3))
+                .output(dust, CubicZirconia, 3)
                 .chancedOutput(HafniumOxide.getItemStack(3), 1000, 0)
                 .buildAndRegister();
 
@@ -111,8 +110,8 @@ public class ZirconChain {
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(600).blastFurnaceTemp(2500)
                 .inputs(ZirconiumTetrachloride.getItemStack(5))
                 .input(dust, Magnesium, 2)
-                .outputs(OreDictUnifier.get(dust, Zirconium))
-                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 6))
+                .output(dust, Zirconium)
+                .output(dust, MagnesiumChloride, 6)
                 .buildAndRegister();
 
         // C + 4Cl + HfO2 = CO2 + HfCl4
@@ -128,8 +127,8 @@ public class ZirconChain {
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(600).blastFurnaceTemp(2500)
                 .inputs(HafniumChloride.getItemStack(5))
                 .input(dust, Magnesium, 2)
-                .outputs(OreDictUnifier.get(dust, Hafnium))
-                .outputs(OreDictUnifier.get(dust, MagnesiumChloride, 6))
+                .output(dust, Hafnium)
+                .output(dust, MagnesiumChloride, 6)
                 .buildAndRegister();
     }
 }

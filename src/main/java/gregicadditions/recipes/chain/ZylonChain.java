@@ -1,7 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -21,7 +19,7 @@ public class ZylonChain {
 
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(OrthoXyleneZeoliteMixture.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Zeolite))
+                .output(dust, Zeolite)
                 .fluidOutputs(ParaXylene.getFluid(1000))
                 .EUt(2000000)
                 .duration(100)
@@ -45,7 +43,7 @@ public class ZylonChain {
                 .fluidOutputs(Bromine.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .outputs(Terephthalaldehyde.getItemStack(16))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .output(dust, Sulfur)
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
@@ -90,7 +88,7 @@ public class ZylonChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(AceticAcid.getFluid(1000))
                 .fluidOutputs(SodiumAcetate.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .EUt(2000000)
                 .duration(50)
                 .buildAndRegister();
@@ -110,7 +108,7 @@ public class ZylonChain {
         BLAST_RECIPES.recipeBuilder()
                 .inputs(PreZylon.getItemStack())
                 .fluidOutputs(Propane.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Zylon))
+                .output(dust, Zylon)
                 .EUt(2000000)
                 .duration(100)
                 .blastFurnaceTemp(10000)

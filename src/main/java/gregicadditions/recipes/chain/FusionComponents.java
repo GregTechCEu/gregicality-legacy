@@ -8,8 +8,6 @@ import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.MetaBlocks;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -21,6 +19,7 @@ import static gregtech.common.items.MetaItems.*;
 
 public class FusionComponents {
     public static void init() {
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1),
                         OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8),
@@ -32,6 +31,7 @@ public class FusionComponents {
                 .input(circuit, MarkerMaterials.Tier.Infinite, 4)
                 .fluidInputs(SolderingAlloy.getFluid(2880 * 2))
                 .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm()).buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(wireGtOctal, UVSuperconductor, 4)
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 2)
@@ -42,6 +42,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(1440))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(wireGtOctal, UHVSuperconductor, 4)
                 .input(plate, Bohrium, 2)
@@ -52,6 +53,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_2, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(wireGtOctal, UEVSuperconductor, 4)
                 .input(plate, Vibranium, 2)
@@ -62,6 +64,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(5660))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, TungstenSteel, 4)
                 .input(plate, TungstenSteel, 16)
@@ -73,6 +76,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(1440))
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_1, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, TungstenSteel, 8)
                 .input(plate, TungstenSteel, 32)
@@ -84,6 +88,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_2, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, TungstenSteel, 16)
                 .input(plate, TungstenSteel, 64)
@@ -95,6 +100,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(5660))
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_3, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, StainlessSteel, 8)
                 .input(plate, StainlessSteel, 32)
@@ -106,6 +112,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(1440))
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_1, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, StainlessSteel, 16)
                 .input(plate, StainlessSteel, 64)
@@ -118,6 +125,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_2, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, StainlessSteel, 32)
                 .input(plate, StainlessSteel, 64)
@@ -133,6 +141,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(5660))
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_3, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, StainlessSteel, 8)
                 .input(plate, Titanium, 32)
@@ -144,6 +153,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(1440))
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_1, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, StainlessSteel, 16)
                 .input(plate, Nitinol60, 32)
@@ -156,6 +166,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(2880))
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_2, 4))
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, StainlessSteel, 32)
                 .input(plate, TungstenTitaniumCarbide, 32)
@@ -171,12 +182,14 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(5760))
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_3, 4))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).
                 inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .duration(50)
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
                 .fluidInputs(SolderingAlloy.getFluid(576))
                 .input(plate, TungstenTitaniumCarbide, 4)
@@ -184,6 +197,7 @@ public class FusionComponents {
                 .input(pipeSmall, Zeron100, 4)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .input(plate, Beryllium, 16)
@@ -192,6 +206,7 @@ public class FusionComponents {
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_BLANKET))
                 .buildAndRegister();
+
         ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).duration(50)
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .input(plate, LithiumTitanate, 4)
@@ -200,6 +215,5 @@ public class FusionComponents {
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BREEDING_BLANKET))
                 .buildAndRegister();
-
     }
 }

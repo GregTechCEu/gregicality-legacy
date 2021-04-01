@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.NANOTOME;
@@ -124,11 +123,11 @@ public class NanotubeChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        // 2C7H6O + C3H6O -> C17H14O + 2H2O TODO Name change
+        // 2C7H6O + C3H6O -> C17H14O + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(45000)
                 .fluidInputs(Benzaldehyde.getFluid(2000))
                 .fluidInputs(Acetone.getFluid(1000))
-                .fluidOutputs(Dibenzyldieneacetone.getFluid(1000))
+                .fluidOutputs(Dibenzylideneacetone.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
@@ -141,7 +140,7 @@ public class NanotubeChain {
 
         // 3C17H14O + 2PdCl2 -> 4Cl + C51H42O3Pd2
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(140000)
-                .fluidInputs(Dibenzyldieneacetone.getFluid(3000))
+                .fluidInputs(Dibenzylideneacetone.getFluid(3000))
                 .inputs(PalladiumChloride.getItemStack(6))
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .outputs(PalladiumBisDibenzylidieneacetone.getItemStack(16))
@@ -175,7 +174,7 @@ public class NanotubeChain {
         // NiCl2 -> Ni + 2Cl
         ELECTROLYZER_RECIPES.recipeBuilder().duration(60).EUt(30)
                 .inputs(NickelChloride.getItemStack(3))
-                .outputs(OreDictUnifier.get(dust, Nickel, 1))
+                .output(dust, Nickel)
                 .fluidOutputs(Chlorine.getFluid(2000))
                 .buildAndRegister();
 
@@ -201,7 +200,7 @@ public class NanotubeChain {
                 .fluidInputs(Cyclooctadiene.getFluid(1000))
                 .inputs(PotassiumTetrachloroplatinate.getItemStack(7))
                 .outputs(Dichlorocycloctadieneplatinium.getItemStack(23))
-                .outputs(OreDictUnifier.get(dust, RockSalt, 4))
+                .output(dust, RockSalt, 4)
                 .buildAndRegister();
 
         // 4C12H8I2 + 2C8H12Cl2Pt + 4Cl + 4AgBF4 + 4C3H9SnCl -> C6H4 + 4BF3 + 2C8H16 + 2Pt + 8I
@@ -217,8 +216,8 @@ public class NanotubeChain {
                 .fluidOutputs(Cycloparaphenylene.getFluid(1000))
                 .fluidOutputs(BoronFluoride.getFluid(4000))
                 .fluidOutputs(Oct1ene.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Platinum, 2))
-                .outputs(OreDictUnifier.get(dust, Iodine, 8))
+                .output(dust, Platinum, 2)
+                .output(dust, Iodine, 8)
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(200000)
@@ -237,7 +236,7 @@ public class NanotubeChain {
                 .fluidInputs(Methane.getFluid(800))
                 .notConsumable(plate, Rhenium)
                 .notConsumable(new IntCircuitIngredient(0))
-                .outputs(OreDictUnifier.get(ingot, CarbonNanotubes))
+                .output(ingot, CarbonNanotubes)
                 .buildAndRegister();
         
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)
@@ -264,14 +263,14 @@ public class NanotubeChain {
 
         ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder().duration(310).EUt(280000)
                 .inputs(GrapheneNanotubeMix.getItemStack())
-                .outputs(OreDictUnifier.get(dustSmall, CarbonNanotubes, 3))
+                .output(dustSmall, CarbonNanotubes, 3)
                 .outputs(GrapheneAlignedCNT.getItemStack())
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(270).EUt(700000)
                 .notConsumable(NANOTOME.getStackForm())
                 .inputs(GrapheneAlignedCNT.getItemStack())
-                .outputs(OreDictUnifier.get(foil, Graphene))
+                .output(foil, Graphene)
                 .fluidOutputs(Cycloparaphenylene.getFluid(250))
                 .buildAndRegister();
     }

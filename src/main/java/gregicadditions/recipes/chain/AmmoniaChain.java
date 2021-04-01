@@ -7,9 +7,9 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
-
 public class AmmoniaChain {
     public static void init() {
+
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Garnierite)
                 .inputs(Alumina.getItemStack())
@@ -77,7 +77,6 @@ public class AmmoniaChain {
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(PurifiedNitrogenMix.getFluid(1000))
                 .buildAndRegister();
-
     }
 }
 

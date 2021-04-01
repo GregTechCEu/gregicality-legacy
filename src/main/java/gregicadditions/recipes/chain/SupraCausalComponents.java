@@ -3,7 +3,6 @@ package gregicadditions.recipes.chain;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
 import gregicadditions.item.fusion.GAFusionCasing;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -198,7 +197,7 @@ public class SupraCausalComponents {
                 .fluidInputs(LiquidHelium.getFluid(20000))
                 .fluidOutputs(Helium.getFluid(20000))
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
-                .outputs(OreDictUnifier.get(plate, QCDMatter))
+                .output(plate, QCDMatter)
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
@@ -206,7 +205,7 @@ public class SupraCausalComponents {
                 .fluidInputs(LiquidHelium.getFluid(20000))
                 .fluidOutputs(Helium.getFluid(20000))
                 .notConsumable(ROD_FIELD_SHAPE.getStackForm())
-                .outputs(OreDictUnifier.get(stick, QCDMatter))
+                .output(stick, QCDMatter)
                 .buildAndRegister();
     }
 }

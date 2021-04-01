@@ -1,13 +1,12 @@
 package gregicadditions.recipes.chain.wetware;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.common.items.MetaItems;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import static net.minecraft.init.Items.APPLE;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.ULTRASONIC_HOMOGENIZER;
+import static gregtech.common.items.MetaItems.RUBBER_DROP;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -43,7 +42,7 @@ public class GrowthMedium {
                 .inputs(CalciumHydroxide.getItemStack(5))
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, CalciumChloride, 3))
+                .output(dust, CalciumChloride, 3)
                 .EUt(480)
                 .duration(50)
                 .buildAndRegister();
@@ -80,7 +79,7 @@ public class GrowthMedium {
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder()
-                .inputs(MetaItems.RUBBER_DROP.getStackForm())
+                .inputs(RUBBER_DROP.getStackForm())
                 .fluidOutputs(Resin.getFluid(100))
                 .EUt(32)
                 .duration(100)
@@ -136,7 +135,7 @@ public class GrowthMedium {
 
         // TODO This needs to be better, Zalgo was working on something
         MACERATOR_RECIPES.recipeBuilder()
-                .inputs(new ItemStack(Items.APPLE))
+                .inputs(new ItemStack(APPLE))
                 .chancedOutput(Yeast.getItemStack(), 500, 250)
                 .EUt(120)
                 .duration(50)

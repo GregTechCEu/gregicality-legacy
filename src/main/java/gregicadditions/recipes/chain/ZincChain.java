@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.common.items.MetaItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -10,6 +9,7 @@ import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_PLATE;
 
 public class ZincChain {
     public static void init() {
@@ -233,7 +233,7 @@ public class ZincChain {
 
         FORMING_PRESS_RECIPES.recipeBuilder().duration(250).EUt(750)
                 .inputs(Cellulose.getItemStack(4)) // BUFF!
-                .notConsumable(MetaItems.SHAPE_MOLD_PLATE)
+                .notConsumable(SHAPE_MOLD_PLATE)
                 .outputs(new ItemStack(Items.PAPER))
                 .buildAndRegister();
 

@@ -1,7 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -18,7 +16,7 @@ public class PEEKChain {
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(BoricAcid.getFluid(4000))
                 .fluidOutputs(Water.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust, Salt, 4))
+                .output(dust, Salt, 4)
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
@@ -72,7 +70,7 @@ public class PEEKChain {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(1000))
                 .inputs(SodiumNitrite.getItemStack(4))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .fluidOutputs(BenzenediazoniumTetrafluoroborate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .duration(150)
@@ -104,7 +102,7 @@ public class PEEKChain {
         // SbF3 -> Sb + 3F
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .inputs(AntimonyTrifluoride.getItemStack(4))
-                .outputs(OreDictUnifier.get(dust, Antimony))
+                .output(dust, Antimony)
                 .fluidOutputs(Fluorine.getFluid(3000))
                 .EUt(48)
                 .duration(360)
@@ -143,7 +141,7 @@ public class PEEKChain {
                 .fluidOutputs(Polyetheretherketone.getFluid(2592))
                 .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 4))
+                .output(dust, SodiumFluoride, 4)
                 .EUt(500000)
                 .duration(250)
                 .buildAndRegister();
@@ -163,7 +161,7 @@ public class PEEKChain {
         // MgCl2Br -> Mg + Cl2 + Br
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .inputs(MgClBrominide.getItemStack(4))
-                .outputs(OreDictUnifier.get(dust, Magnesium))
+                .output(dust, Magnesium)
                 .fluidOutputs(Chlorine.getFluid(2000))
                 .fluidOutputs(Bromine.getFluid(1000))
                 .EUt(1920)

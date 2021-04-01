@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -23,7 +22,7 @@ public class BariumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(480)
                 .inputs(BariumChloride.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Barite, 6))
+                .output(dust, Barite, 6)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
@@ -56,7 +55,7 @@ public class BariumChain {
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(8))
                 .input(dustSmall, Aluminium, 8)
-                .outputs(OreDictUnifier.get(ingot, Barium, 3))
+                .output(ingot, Barium, 3)
                 .outputs(BariumAluminate.getItemStack(7))
                 .buildAndRegister();
 

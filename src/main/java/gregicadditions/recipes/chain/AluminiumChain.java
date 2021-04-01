@@ -1,14 +1,12 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.dustSmall;
 
 public class AluminiumChain {
     public static void init() {
@@ -34,8 +32,8 @@ public class AluminiumChain {
                 .inputs(Alumina.getItemStack(10))
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(6000))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 4))
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride, 6))
+                .output(dust, Aluminium, 4)
+                .output(dust, SodiumFluoride, 6)
                 .outputs(AluminiumTrifluoride.getItemStack(4))
                 .buildAndRegister();
 
@@ -72,7 +70,7 @@ public class AluminiumChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(125)
                 .fluidInputs(PureAluminiumHydroxideSolution.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(0))
-                .outputs(AluminiumHydroxide.getItemStack())
+                .outputs(AluminiumHydroxide.getItemStack(7))
                 .buildAndRegister();
 
         // [Al(OH)3 + H2O] = Al(OH)3 + H2O
@@ -94,7 +92,7 @@ public class AluminiumChain {
                 .fluidInputs(NeutralisedRedMud.getFluid(2000))
                 .fluidOutputs(RedSlurry.getFluid(1000))
                 .fluidOutputs(FerricREEChloride.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Sodium, 6))
+                .output(dust, Sodium, 6)
                 .buildAndRegister();
 
         // 4 Ferric REE Chloride [Contains Total: 12H + 8HCl] = 2 Rare Earth Chlorides [Contains Total: 2Cl] + 2 Iron III Chloride [Contains Total: 6Cl] + 20H (total, increased to 22 total)

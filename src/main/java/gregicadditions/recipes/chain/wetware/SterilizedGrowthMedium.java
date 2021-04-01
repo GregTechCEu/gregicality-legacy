@@ -1,9 +1,9 @@
 package gregicadditions.recipes.chain.wetware;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.item.GAMetaItems.STERILIZED_PETRI_DISH;
+import static gregicadditions.item.GAMetaItems.PETRI_DISH;
+import static gregicadditions.item.GAMetaItems.CONTAMINATED_PETRI_DISH;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -25,7 +25,7 @@ public class SterilizedGrowthMedium {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .fluidInputs(SilicaGelBase.getFluid(1000))
                 .outputs(SilicaGel.getItemStack(3))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();
@@ -137,7 +137,7 @@ public class SterilizedGrowthMedium {
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, SodaAsh, 6)
                 .outputs(SodiumBicarbonate.getItemStack(6))
-                .outputs(OreDictUnifier.get(dust, SodiumHydroxide, 3))
+                .output(dust, SodiumHydroxide, 3)
                 .buildAndRegister();
 
         // NaHCO3 + C8H8ClNO3S + NH3 -> NaCl + C6H8N2O2S + CO2 + CH3COOH
@@ -145,7 +145,7 @@ public class SterilizedGrowthMedium {
                 .inputs(SodiumBicarbonate.getItemStack(6))
                 .fluidInputs(AcetylsulfanilylChloride.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
+                .output(dust, Salt, 2)
                 .fluidOutputs(Sulfanilamide.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(AceticAcid.getFluid(1000))

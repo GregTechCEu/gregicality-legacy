@@ -54,7 +54,7 @@ public class Batteries {
                 .fluidInputs(SodiumAlginateSolution.getFluid(2000))
                 .input(dust, CalciumChloride, 3)
                 .outputs(CalciumAlginate.getItemStack(41))
-                .fluidOutputs(SodiumChlorideSolution.getFluid(2000))
+                .fluidOutputs(SaltWater.getFluid(2000))
                 .buildAndRegister();
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(820).EUt(16300)
                 .fluidInputs(Trimethylsilane.getFluid(1000))

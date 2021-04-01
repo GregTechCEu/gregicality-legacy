@@ -1,7 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.unification.OreDictUnifier;
-
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
@@ -23,7 +21,7 @@ public class LithiumChain {
                 .input(dust, Lepidolite, 20)
                 .input(dust, Quicklime, 2)
                 .outputs(RoastedLepidolite.getItemStack(19))
-                .outputs(OreDictUnifier.get(dust, Fluorite, 3))
+                .output(dust, Fluorite, 3)
                 .buildAndRegister();
 
         // LiAlSi2O6 + H2SO4 = [LiAlO2 + H2SO4] + 2SiO2
@@ -31,7 +29,7 @@ public class LithiumChain {
                 .inputs(RoastedSpodumene.getItemStack(10))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 6))
+                .output(dust, SiliconDioxide, 6)
                 .buildAndRegister();
 
         // (KLi3Al4O10)O + Al + 3H2SO4 = 3[LiAlO2 + H2SO4] + Al2O3 + K2O
@@ -40,7 +38,7 @@ public class LithiumChain {
                 .input(dust, Aluminium)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, Potash, 3))
+                .output(dust, Potash, 3)
                 .outputs(Alumina.getItemStack(5))
                 .buildAndRegister();
 
@@ -57,16 +55,16 @@ public class LithiumChain {
         // K2SO4 -> 2K + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(PotassiumSulfate.getItemStack(7))
-                .outputs(OreDictUnifier.get(dust, Potassium, 2))
-                .outputs(OreDictUnifier.get(dust, Sulfur))
+                .output(dust, Potassium, 2)
+                .output(dust, Sulfur)
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         // Al2(SO4)3 = 2Al + 3S + 12O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .inputs(AluminiumSulfate.getItemStack(17))
-                .outputs(OreDictUnifier.get(dust, Aluminium, 2))
-                .outputs(OreDictUnifier.get(dust, Sulfur, 3))
+                .output(dust, Aluminium, 2)
+                .output(dust, Sulfur, 3)
                 .fluidOutputs(Oxygen.getFluid(12000))
                 .buildAndRegister();
 
@@ -76,7 +74,7 @@ public class LithiumChain {
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodaAsh, 6))
+                .output(dust, SodaAsh, 6)
                 .fluidOutputs(LithiumChlorideSolution.getFluid(2000))
                 .buildAndRegister();
 
@@ -103,8 +101,8 @@ public class LithiumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(900).EUt(125)
                 .fluidInputs(MoltenLiKChlorideEutetic.getFluid(1000))
                 .fluidOutputs(Chlorine.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Lithium))
-                .outputs(OreDictUnifier.get(dust, Potassium))
+                .output(dust, Lithium)
+                .output(dust, Potassium)
                 .buildAndRegister();
     }
 }
