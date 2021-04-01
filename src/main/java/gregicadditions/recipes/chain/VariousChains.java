@@ -252,7 +252,7 @@ public class VariousChains {
                 .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
                 .fluidInputs(AquaRegia.getFluid(3000))
                 .fluidOutputs(IronChloride.getFluid(2000))
-                .outputs(GrapheneOxide.getItemStack())
+                .outputs(GrapheneOxide.getItemStack(3))
                 .fluidOutputs(NitrogenDioxide.getFluid(1500))
                 .buildAndRegister();
     }
