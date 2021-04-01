@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
@@ -64,7 +63,7 @@ public class TungstenChain {
                     .input(dust, CalciumChloride, 3)
                     .fluidInputs(SodiumTungstate.getFluid(1000))
                     .fluidInputs(Water.getFluid(2000))
-                    .outputs(OreDictUnifier.get(dust, CalciumTungstate, 6))
+                    .output(dust, CalciumTungstate, 6)
                     .fluidOutputs(SaltWater.getFluid(2000))
                     .EUt(480)
                     .duration(100)
@@ -74,7 +73,7 @@ public class TungstenChain {
             LARGE_CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, CalciumTungstate, 6)
                     .fluidInputs(Water.getFluid(2000))
-                    .outputs(OreDictUnifier.get(dust, TungsticAcid, 7))
+                    .output(dust, TungsticAcid, 7)
                     .outputs(CalciumHydroxide.getItemStack(5))
                     .EUt(960)
                     .duration(150)
@@ -83,7 +82,7 @@ public class TungstenChain {
             // H2WO4 -> WO3 + H2O
             CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                     .input(dust, TungsticAcid, 7)
-                    .outputs(OreDictUnifier.get(dust, TungstenTrioxide, 4))
+                    .output(dust, TungstenTrioxide, 4)
                     .fluidOutputs(Water.getFluid(1000))
                     .EUt(120)
                     .duration(150)
@@ -93,7 +92,7 @@ public class TungstenChain {
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, TungstenTrioxide, 4)
                     .fluidInputs(Hydrogen.getFluid(6000))
-                    .outputs(OreDictUnifier.get(dust, Tungsten))
+                    .output(dust, Tungsten)
                     .fluidOutputs(Water.getFluid(3000))
                     .EUt(1920)
                     .duration(75)
@@ -103,7 +102,7 @@ public class TungstenChain {
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, Tungsten)
                     .fluidInputs(Chlorine.getFluid(6000))
-                    .outputs(OreDictUnifier.get(dust, TungstenHexachloride, 7))
+                    .output(dust, TungstenHexachloride, 7)
                     .duration(150)
                     .EUt(480)
                     .buildAndRegister();
@@ -112,8 +111,8 @@ public class TungstenChain {
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, TungstenHexachloride, 7)
                     .fluidInputs(Methane.getFluid(1000))
-                    .fluidInputs(Hydrogen.getFluid(6000))
-                    .outputs(OreDictUnifier.get(dust, TungstenCarbide, 2))
+                    .fluidInputs(Hydrogen.getFluid(2000))
+                    .output(dust, TungstenCarbide, 2)
                     .fluidOutputs(HydrochloricAcid.getFluid(6000))
                     .EUt(480)
                     .duration(150)
