@@ -434,9 +434,7 @@ public class RecipeHandler {
                     .outputs(recipe.getOutputs())
                     .fluidOutputs(recipe.getFluidOutputs());
 
-            recipe.getChancedOutputs().forEach(chanceEntry -> {
-                largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
-            });
+            recipe.getChancedOutputs().forEach(chanceEntry -> largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
             largeRecipeMap.buildAndRegister();
         });
     }
@@ -451,9 +449,7 @@ public class RecipeHandler {
                     .outputs(recipe.getOutputs())
                     .fluidOutputs(recipe.getFluidOutputs());
 
-            recipe.getChancedOutputs().forEach(chanceEntry -> {
-                largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
-            });
+            recipe.getChancedOutputs().forEach(chanceEntry -> largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
             largeRecipeMap.buildAndRegister();
         });
     }
@@ -494,9 +490,7 @@ public class RecipeHandler {
                     .inputsIngredients(recipe.getInputs())
                     .outputs(recipe.getOutputs())
                     .fluidOutputs(recipe.getFluidOutputs());
-            recipe.getChancedOutputs().forEach(chanceEntry -> {
-                builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
-            });
+            recipe.getChancedOutputs().forEach(chanceEntry -> builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
             builder.buildAndRegister();
         });
     }
@@ -510,12 +504,9 @@ public class RecipeHandler {
                     .inputsIngredients(recipe.getInputs())
                     .outputs(recipe.getOutputs())
                     .fluidOutputs(recipe.getFluidOutputs());
-            recipe.getChancedOutputs().forEach(chanceEntry -> {
-                builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier());
-            });
+            recipe.getChancedOutputs().forEach(chanceEntry -> builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
             builder.buildAndRegister();
         });
-        ;
     }
 
     public static void registerAlloyBlastRecipes() {

@@ -9,26 +9,31 @@ import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.gui.widgets.TankWidget;
 import gregtech.api.recipes.RecipeMap;
+import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiFluidStackGroup;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class GARecipeMapCategory implements IRecipeCategory<GARecipeWrapper> {
 
     private final RecipeMap<?> recipeMap;
     private final ModularUI modularUI;
-    private ItemStackHandler importItems, exportItems;
-    private FluidTankList importFluids, exportFluids;
+    private final ItemStackHandler importItems, exportItems;
+    private final FluidTankList importFluids, exportFluids;
     private final IDrawable backgroundDrawable;
 
     public GARecipeMapCategory(RecipeMap<?> recipeMap, IGuiHelper guiHelper) {
@@ -93,7 +98,7 @@ public class GARecipeMapCategory implements IRecipeCategory<GARecipeWrapper> {
                 TankWidget tankWidget = (TankWidget) uiWidget;
                 if (importFluids.getFluidTanks().contains(tankWidget.fluidTank)) {
                     int importIndex = importFluids.getFluidTanks().indexOf(tankWidget.fluidTank);
-                    List<List<FluidStack>> inputsList = ingredients.getInputs(FluidStack.class);
+                    List<List<FluidStack>> inputsList = ingredients.getInputs(VanillaTypes.FLUID);
                     int fluidAmount = 0;
                     if (inputsList.size() > importIndex && !inputsList.get(importIndex).isEmpty())
                         fluidAmount = inputsList.get(importIndex).get(0).amount;
@@ -107,7 +112,7 @@ public class GARecipeMapCategory implements IRecipeCategory<GARecipeWrapper> {
 
                 } else if (exportFluids.getFluidTanks().contains(tankWidget.fluidTank)) {
                     int exportIndex = exportFluids.getFluidTanks().indexOf(tankWidget.fluidTank);
-                    List<List<FluidStack>> inputsList = ingredients.getOutputs(FluidStack.class);
+                    List<List<FluidStack>> inputsList = ingredients.getOutputs(VanillaTypes.FLUID);
                     int fluidAmount = 0;
                     if (inputsList.size() > exportIndex && !inputsList.get(exportIndex).isEmpty())
                         fluidAmount = inputsList.get(exportIndex).get(0).amount;

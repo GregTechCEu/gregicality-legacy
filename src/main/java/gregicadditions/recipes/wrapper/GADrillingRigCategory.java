@@ -1,6 +1,7 @@
 package gregicadditions.recipes.wrapper;
 
 import gregicadditions.Gregicality;
+import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -10,6 +11,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class GADrillingRigCategory implements IRecipeCategory<GADrillingRigRecipeWrapper> {
 
     private final IDrawable background;

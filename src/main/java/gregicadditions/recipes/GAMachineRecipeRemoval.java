@@ -6,7 +6,6 @@ import gregtech.api.recipes.*;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.MarkerMaterials.Color;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
@@ -278,8 +277,7 @@ public class GAMachineRecipeRemoval {
 
     public static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
 
-        List<Recipe> recipes = new ArrayList<>();
-        recipes.addAll(map.getRecipeList());
+        List<Recipe> recipes = new ArrayList<>(map.getRecipeList());
 
         for (Recipe r : recipes)
             map.removeRecipe(r);
