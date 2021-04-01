@@ -448,6 +448,162 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean enableRecipeRemovalLogging = false;
 
+        @Config.Comment({"Whether or not to have reverse engineered recipes (Disassembler, Electric Implosion, etc.) done before or after CT recipes.",
+        "If True, they will be done after CT, meaning the reversed recipes are not touchable by scripts. If False, it is on the pack maker to fix the recipes manually."})
+        @Config.Name("Reverse recipes after CT")
+        @Config.RequiresMcRestart
+        public boolean reverseAfterCT = true;
+
+    }
+
+    @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})
+    public static Equipment equipment = new Equipment();
+
+    public static class Equipment {
+        @Config.Name("Nightvision Goggles")
+        public NightvisionGoggles nightvisionGoggles = new NightvisionGoggles();
+        @Config.Name("NanoMuscle Suit")
+        public NanoSuit nanoSuit = new NanoSuit();
+        @Config.Name("Advanced NanoMuscle Suit")
+        public AdvNanoSuit advNanoSuit = new AdvNanoSuit();
+        @Config.Name("QuarkTech Suit")
+        public QuarkTechSuit quarkTechSuit = new QuarkTechSuit();
+        @Config.Name("Advanced QuarkTech Suit")
+        public AdvQuarkTechSuit advQuarkTechSuit = new AdvQuarkTechSuit();
+        @Config.Name("Impeller Jetpack")
+        public ImpellerJetpack impellerJetpack = new ImpellerJetpack();
+        @Config.Name("Advanced Impeller Jetpack")
+        public AdvImpellerJetpack advImpellerJetpack = new AdvImpellerJetpack();
+        @Config.Name("Semifluid Jetpack")
+        public SemiFluidJetpack semiFluidJetpack = new SemiFluidJetpack();
+        @Config.Name("Batpack LV")
+        public BatpackLv batpackLv = new BatpackLv();
+        @Config.Name("Batpack MV")
+        public BatpackMv batpackMv = new BatpackMv();
+        @Config.Name("Batpack HV")
+        public BatpackHv batpackHv = new BatpackHv();
+        @Config.Name("Prospectors")
+        public Prospector prospector = new Prospector();
+    }
+
+    public static class NightvisionGoggles {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 3600;
+    }
+
+    public static class NanoSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 1600000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 5000;
+    }
+
+    public static class AdvNanoSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 6;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 11400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 5000;
+    }
+
+    public static class QuarkTechSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 5;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 8000000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 10000;
+    }
+
+    public static class AdvQuarkTechSuit {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 6;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 100000000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 10000;
+    }
+
+    public static class ImpellerJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 2520000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 125;
+    }
+
+    public static class AdvImpellerJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 4;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 11400000;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int energyPerUse = 512;
+    }
+
+    public static class SemiFluidJetpack {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 12000;
+    }
+
+    public static class BatpackLv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 1;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 600000;
+    }
+
+    public static class BatpackMv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 2;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 2400000;
+    }
+
+    public static class BatpackHv {
+        @Config.RangeInt(min = 0, max = 14)
+        @Config.RequiresMcRestart
+        public int voltageTier = 3;
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int capacity = 9600000;
     }
 
     public static Multis multis = new Multis();
@@ -1054,12 +1210,27 @@ public class GAConfig {
             @Config.Comment("The name of the ores to blacklist for the MK2 Void Miner")
             @Config.RequiresMcRestart
             @Config.Name("MK2 Void Miner Blacklist")
-            public String[] oreBlacklistUHV = new String[]{};
+            public String[] oreBlacklistUHV = new String[]{""};
 
             @Config.Comment("The name of the ores to blacklist for the MK3 Void Miner")
             @Config.RequiresMcRestart
             @Config.Name("MK3 Void Miner Blacklist")
-            public String[] oreBlacklistUEV = new String[]{};
+            public String[] oreBlacklistUEV = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK1 Void Miner. Example: \"minecraft:wool:2\"")
+            @Config.RequiresMcRestart
+            @Config.Name("MK1 Void Miner Whitelist")
+            public String[] oreWhitelist = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK2 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK2 Void Miner Whitelist")
+            public String[] oreWhitelistUHV = new String[]{""};
+
+            @Config.Comment("The name of items you wish to add to the MK3 Void Miner")
+            @Config.RequiresMcRestart
+            @Config.Name("MK3 Void Miner Whitelist")
+            public String[] oreWhitelistUEV = new String[]{""};
         }
 
         public static class LargeMiner {
@@ -1214,6 +1385,23 @@ public class GAConfig {
             @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
             @Config.RequiresMcRestart
             public double steamToEU = 0.5;
+        }
+
+        public static class Prospector {
+            @Config.Comment("The EU cost to use the prospector. The values are for the MV, HV, LuV and ZPM prospectors.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan cost")
+            public int[] scanCosts = {128, 512, 32768, 131072};
+
+            @Config.Comment("The radii in chunks the prospector will scan.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan radii")
+            public int[] scanRadii = {2, 3, 6, 7};
+
+            @Config.Comment("The EU capacity of the prospectors.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector energy capacity")
+            public int[] energyCapacity = {12800, 51200, 3276800, 13107200};
         }
 
         public static Extraction extraction;

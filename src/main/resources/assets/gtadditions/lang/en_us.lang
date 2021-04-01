@@ -174,41 +174,49 @@ metaitem.tin_chloride.name=Tin Chloride
 metaitem.triphenylphosphine.name=Triphenylphosphine
 metaitem.methylbenzophenanthrene.name=Methylbenzophenanthrene
 
-metaitem.large.neutronium.battery.empty.name=Large Neutronium Battery Hull
-metaitem.large.naquadria.battery.empty.name=Large Naquadria Battery Hull
-metaitem.large.vanadium.battery.empty.name=Large Vanadium Battery Hull
-metaitem.medium.neutronium.battery.empty.name=Medium Neutronium Battery Hull
-metaitem.medium.naquadria.battery.empty.name=Medium Naquadria Battery Hull
-metaitem.medium.vanadium.battery.empty.name=Medium Vanadium Battery Hull
-metaitem.small.neutronium.battery.empty.name=Small Neutronium Battery Hull
-metaitem.small.vanadium.battery.empty.name=Small Vanadium Battery Hull
+metaitem.large.fluoride.battery.empty.name=Large Fluoride Battery Hull
+metaitem.large.lithium.sulfide.battery.empty.name=Large Lithium Sulfide Battery Hull
+metaitem.large.lithium.ion.battery.empty.name=Large Lithium Ion Battery Hull
+metaitem.medium.fluoride.battery.empty.name=Medium Fluoride Battery Hull
+metaitem.medium.lithium.sulfide.battery.empty.name=Medium Lithium Sulfide Battery Hull
+metaitem.medium.lithium.ion.battery.empty.name=Medium Lithium Ion Battery Hull
+metaitem.small.fluoride.battery.empty.name=Small Fluoride Battery Hull
+metaitem.small.lithium.sulfide.battery.empty.name=Small Lithium Sulfide Battery Hull
+metaitem.small.lithium.ion.battery.empty.name=Small Lithium Ion Battery Hull
+metaitem.nickel.metal.hydride.battery.empty.name=Nickel Metal Hydride Battery Hull
 
-metaitem.large.neutronium.battery.empty.tooltip=An Empty UIV Battery
-metaitem.large.naquadria.battery.empty.tooltip=An Empty UV Battery
-metaitem.large.vanadium.battery.empty.tooltip=An Empty LuV Battery
-metaitem.medium.neutronium.battery.empty.tooltip=An Empty UEV Battery
-metaitem.medium.naquadria.battery.empty.tooltip=An Empty ZPM Battery
-metaitem.medium.vanadium.battery.empty.tooltip=An Empty IV Battery
-metaitem.small.neutronium.battery.empty.tooltip=An Empty UHV Battery
-metaitem.small.vanadium.battery.empty.tooltip=An Empty EV Battery
+metaitem.large.fluoride.battery.empty.tooltip=An Empty UXV Battery
+metaitem.large.lithium.sulfide.battery.empty.tooltip=An Empty UEV Battery
+metaitem.large.lithium.ion.battery.empty.tooltip=An Empty ZPM Battery
+metaitem.medium.fluoride.battery.empty.tooltip=An Empty UMV Battery
+metaitem.medium.lithium.sulfide.battery.empty.tooltip=An Empty UHV Battery
+metaitem.medium.lithium.ion.battery.empty.tooltip=An Empty LuV Battery
+metaitem.small.fluoride.battery.empty.tooltip=An Empty UIV Battery
+metaitem.small.lithium.sulfide.battery.empty.tooltip=An Empty UV Battery
+metaitem.small.lithium.ion.battery.empty.tooltip=An Empty IV Battery
+metaitem.nickel.metal.hydride.battery.empty.tooltip=An Empty EV Battery
 
-metaitem.large.neutronium.battery.name=Large Neutronium Battery
-metaitem.large.naquadria.battery.name=Large Naquadria Battery
-metaitem.large.vanadium.battery.name=Large Vanadium Battery
-metaitem.medium.neutronium.battery.name=Medium Neutronium Battery
-metaitem.medium.naquadria.battery.name=Medium Naquadria Battery
-metaitem.medium.vanadium.battery.name=Medium Vanadium Battery
-metaitem.small.neutronium.battery.name=Small Neutronium Battery
-metaitem.small.vanadium.battery.name=Small Vanadium Battery
+metaitem.large.fluoride.battery.name=Large Fluoride Battery
+metaitem.large.lithium.sulfide.battery.name=Large Lithium Sulfide Battery
+metaitem.large.lithium.ion.battery.name=Large Lithium Ion Battery
+metaitem.medium.fluoride.battery.name=Medium Fluoride Battery
+metaitem.medium.lithium.sulfide.battery.name=Medium Lithium Sulfide Battery
+metaitem.medium.lithium.ion.battery.name=Medium Lithium Ion Battery
+metaitem.small.fluoride.battery.name=Small Fluoride Battery
+metaitem.small.lithium.sulfide.battery.name=Small Lithium Sulfide Battery
+metaitem.small.lithium.ion.battery.name=Small Lithium Ion Battery
+metaitem.nickel.metal.hydride.battery.name=Nickel Metal Hydride Battery
 
-metaitem.large.neutronium.battery.tooltip=Reusable
-metaitem.large.naquadria.battery.tooltip=Reusable
-metaitem.large.vanadium.battery.tooltip=Reusable
-metaitem.medium.neutronium.battery.tooltip=Reusable
-metaitem.medium.naquadria.battery.tooltip=Reusable
-metaitem.medium.vanadium.battery.tooltip=Reusable
-metaitem.small.neutronium.battery.tooltip=Reusable
-metaitem.small.vanadium.battery.tooltip=Reusable
+metaitem.large.fluoride.battery.tooltip=Reusable
+metaitem.large.lithium.sulfide.battery.tooltip=Reusable
+metaitem.large.lithium.ion.battery.tooltip=Reusable
+metaitem.medium.fluoride.battery.tooltip=Reusable
+metaitem.medium.lithium.sulfide.battery.tooltip=Reusable
+metaitem.medium.lithium.ion.battery.tooltip=Reusable
+metaitem.small.fluoride.battery.tooltip=Reusable
+metaitem.small.lithium.sulfide.battery.tooltip=Reusable
+metaitem.small.lithium.ion.battery.tooltip=Reusable
+metaitem.nickel.metal.hydride.battery.tooltip=Reusable
 
 
 metaitem.electrically.wired.petri.dish.name=Electricaly Wired Petri Dish
@@ -300,6 +308,7 @@ metaitem.cosmic.mesh.name=Cosmic Mesh
 metaitem.cosmic.fabric.name=Cosmic Fabric
 metaitem.rod.field.shape.name=Rod Field Shape
 metaitem.charged.lepton.trap.crystal.name=Charged Lepton Trap Crystal
+metaitem.nanosilicon.cathode.name=Nanosilicon Cathode
 
 metaitem.electrode.apatite.name=Apatine Electrode
 metaitem.electrode.blaze.name=Blazing Electrode
@@ -335,6 +344,8 @@ metaitem.advanced_impeller_jetpack.name=§bAdvanced Thruster Jetpack
 metaitem.battery_pack.lv.name=Battery pack (§eLV§r)
 metaitem.battery_pack.mv.name=Battery pack (§eMV§r)
 metaitem.battery_pack.hv.name=Battery pack (§eHV§r)
+
+metaitem.nightvision_goggles.name=§eNightvision Goggles
 
 metaitem.nms.chestplate.name=§eNanoMuscle™ Suite Chestplate
 metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggins
@@ -809,6 +820,19 @@ metaitem.rhenium_hassium_thallium_isophtaloylbisdiethylthiourea.name=Rhenium Has
 metaitem.lanthanum_fullerene_nanotubes.name=Lanthanum Fullerene Nanotubes
 metaitem.legendarium.name=Legendarium
 
+metaitem.lithium_cobalt_oxide.name=Lithium Cobalt Oxide
+metaitem.lithium_triflate.name=Lithium Triflate
+metaitem.xylose.name=Xylose
+metaitem.silicon_nanoparticles.name=Silicon Nanoparticles
+metaitem.halloysite.name=Halloysite
+metaitem.gallium.chloride.name=Gallium Chloride
+metaitem.sulfur_coated_halloysite.name=Sulfur Coated Halloysite
+metaitem.fluoride_battery_electrolyte.name=Fluoride Battery Electrolyte
+metaitem.lanthanum_nickel_oxide.name=Lanthanum Nickel Oxide
+metaitem.sorbose.name=Sorbose
+metaitem.calcium_alginate.name=Calcium Alginate
+metaitem.nickel_oxide_hydroxide.name=Nickel Oxide Hydroxide
+
 metaitem.unstable.star.name=Unstable Star
 
 metaitem.tool.prospect.mv.name=Prospector MV
@@ -826,11 +850,36 @@ metaitem.tool.prospect.low_power=Low power!
 
 #//////////////COVER + MONITOR + PLUGIN/////////////////
 metaitem.plugin.tooltips.1=Plugins can be added to the screen for more functionality.
+metaitem.plugin.proxy.tooltips.1=(Please adjust to proxy mode in the screen)
 metaitem.plugin.text.name=Text Plugin
-metaitem.cover.digital.name=Cover Digital Interface
-#metaitem.cover.digital.tooltips.1=Cover Digital Interface have 5 modes: Fluid, Item, Energy, Machine and Proxy.
-#metaitem.cover.digital.tooltips.2=The proxy mode needs to be used with Central Monitor.
+metaitem.plugin.online_pic.name=Online Picture Plugin
+metaitem.plugin.fake_gui.name=Proxy Gui Plugin
+metaitem.plugin.advanced_monitor.name=Proxy Advanced Monitor Plugin
+metaitem.cover.digital.name=Digital Interface Cover
 
+metaitem.cover.digital.mode.fluid.enabled=Fluid Mode - §aON
+metaitem.cover.digital.mode.item.enabled=Item Mode - §aON
+metaitem.cover.digital.mode.energy.enabled=Energy Mode - §aON
+metaitem.cover.digital.mode.machine.enabled=Machine Mode - §aON
+metaitem.cover.digital.mode.proxy.enabled=Proxy Mode - §aON
+
+metaitem.cover.digital.mode.fluid.disabled=Fluid Mode - §cOFF
+metaitem.cover.digital.mode.item.disabled=Item Mode - §cOFF
+metaitem.cover.digital.mode.energy.disabled=Energy Mode - §cOFF
+metaitem.cover.digital.mode.machine.disabled=Machine Mode - §cOFF
+metaitem.cover.digital.mode.proxy.disabled=Proxy Mode - §cOFF
+
+#universal.cover.mode.enabled=§aON
+#universal.cover.mode.disabled=§cOFF
+
+metaitem.cover.digital.title.mode=Mode:
+metaitem.cover.digital.title.spin=Spin:
+monitor.gui.title.back=Back
+monitor.gui.title.scale=Scale:
+monitor.gui.title.argb=ARGB:
+monitor.gui.title.slot=Slot:
+monitor.gui.title.plugin=Plugin:
+monitor.gui.title.config=Config
 
 #/////////////////////CIRCUIT///////////////////////////
 
@@ -978,6 +1027,10 @@ metaarmor.qts.nightvision.disabled=QuarkTech™ Suite: NightVision disabled
 
 metaarmor.jetpack.hover.enable=Jetpack: hover mode enabled
 metaarmor.jetpack.hover.disable=Jetpack: hover mode disabled
+
+metaarmor.message.nightvision.enabled=§bNightvision: §aOn
+metaarmor.message.nightvision.disabled=§bNightvision: §cOff
+metaarmor.message.nightvision.error=§cNot enough power!
 
 metaarmor.hud.status.enabled=§aON
 metaarmor.hud.status.disabled=§cOFF
@@ -1214,11 +1267,11 @@ gtadditions.machine.wiremill.luv.name=Elite Wiremill II
 gtadditions.machine.wiremill.zpm.name=Elite Wiremill III
 gtadditions.machine.wiremill.uv.name=Elite Wiremill IV
 
-gtadditions.machine.clustermill.uhv.name=High-Tech Cluster Mill
-gtadditions.machine.clustermill.uev.name=High-Tech Cluster Mill II
-gtadditions.machine.clustermill.uiv.name=High-Tech Cluster Mill III
-gtadditions.machine.clustermill.umv.name=High-Tech Cluster Mill IV
-gtadditions.machine.clustermill.uxv.name=Ultimate Cluster Mill
+gtadditions.machine.cluster_mill.uhv.name=High-Tech Cluster Mill
+gtadditions.machine.cluster_mill.uev.name=High-Tech Cluster Mill II
+gtadditions.machine.cluster_mill.uiv.name=High-Tech Cluster Mill III
+gtadditions.machine.cluster_mill.umv.name=High-Tech Cluster Mill IV
+gtadditions.machine.cluster_mill.uxv.name=Ultimate Cluster Mill
 gtadditions.machine.electric_furnace.uhv.name=High-Tech Electric Furnace
 gtadditions.machine.electric_furnace.uev.name=High-Tech Electric Furnace II
 gtadditions.machine.electric_furnace.uiv.name=High-Tech Electric Furnace III
@@ -1861,8 +1914,8 @@ tile.cell_casing.cell_umv.name=UMV Power Cell
 tile.cell_casing.cell_uxv.name=UXV Power Cell
 tile.cell_casing.cell_max.name=MAX Power Cell
 tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
-tile.cell_casing.tooltip.2=    Capacity: §e%d
-tile.cell_casing.tooltip.3=    Max Tier: §e%s
+tile.cell_casing.tooltip.2=    Internal Energy Capacity: §9%,d
+tile.cell_casing.tooltip.3=    Max Tier: §9%,s
 
 
 metaitem.tool.bending_cylinder.name=%s Bending Cylinder
@@ -1923,15 +1976,15 @@ recipemap.hyper_reactor.name=Hyper Reactor
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
-gtadditions.recipe.drilling_rig.dimension_whitelist=Dimension Whitelist: %s
-gtadditions.recipe.drilling_rig.dimension_blacklist=Dimension Blacklist: %s
-gtadditions.recipe.drilling_rig.biome_whitelist=Biome Whitelist: %s
-gtadditions.recipe.drilling_rig.biome_blacklist=Biome Blacklist: %s
-gtadditions.recipe.drilling_rig.min_size=Min Size: %d
-gtadditions.recipe.drilling_rig.max_size=Max Size: %d
 gtadditions.recipe.drilling_rig.replenish_rate=Replenish Rate: %d
 gtadditions.recipe.drilling_rig.weight=Weight: %d
-
+gtadditions.recipe.drilling_rig.dimension=Dimension
+gtadditions.recipe.drilling_rig.biome=Biome
+gtadditions.recipe.drilling_rig.no_dimension=Every Dimension
+gtadditions.recipe.drilling_rig.no_biome=Every Biome
+gtadditions.recipe.drilling_rig.whitelist=Whitelist
+gtadditions.recipe.drilling_rig.blacklist=Blacklist
+gtadditions.recipe.drilling_rig.size=Size: %s
 
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
@@ -3269,53 +3322,53 @@ gtadditions.machine.energy_hatch.output.uv.64.name=Energy Output Hatch 64 Amps (
 gtadditions.machine.energy_hatch.output.uv.128.name=Energy Output Hatch 128 Amps (UV)
 
 
-gtadditions.machine.energy_hatch.input.uhv.name=Energy Input Hatch 2 Amps (UHV)
+gtadditions.machine.energy_hatch.input.uhv.name=Energy Input Hatch (UHV)
 gtadditions.machine.energy_hatch.input.uhv.4.name=Energy Input Hatch 4 Amps (UHV)
 gtadditions.machine.energy_hatch.input.uhv.16.name=Energy Input Hatch 16 Amps (UHV)
 gtadditions.machine.energy_hatch.input.uhv.64.name=Energy Input Hatch 64 Amps (UHV)
 gtadditions.machine.energy_hatch.input.uhv.128.name=Energy Input Hatch 128 Amps (UHV)
-gtadditions.machine.energy_hatch.input.uev.name=Energy Input Hatch 2 Amps (UEV)
+gtadditions.machine.energy_hatch.input.uev.name=Energy Input Hatch (UEV)
 gtadditions.machine.energy_hatch.input.uev.4.name=Energy Input Hatch 4 Amps (UEV)
 gtadditions.machine.energy_hatch.input.uev.16.name=Energy Input Hatch 16 Amps (UEV)
 gtadditions.machine.energy_hatch.input.uev.64.name=Energy Input Hatch 64 Amps (UEV)
 gtadditions.machine.energy_hatch.input.uev.128.name=Energy Input Hatch 128 Amps (UEV)
-gtadditions.machine.energy_hatch.input.uiv.name=Energy Input Hatch 2 Amps (UIV)
+gtadditions.machine.energy_hatch.input.uiv.name=Energy Input Hatch (UIV)
 gtadditions.machine.energy_hatch.input.uiv.4.name=Energy Input Hatch 4 Amps (UIV)
 gtadditions.machine.energy_hatch.input.uiv.16.name=Energy Input Hatch 16 Amps (UIV)
 gtadditions.machine.energy_hatch.input.uiv.64.name=Energy Input Hatch 64 Amps (UIV)
 gtadditions.machine.energy_hatch.input.uiv.128.name=Energy Input Hatch 128 Amps (UIV)
-gtadditions.machine.energy_hatch.input.umv.name=Energy Input Hatch 2 Amps (UMV)
+gtadditions.machine.energy_hatch.input.umv.name=Energy Input Hatch (UMV)
 gtadditions.machine.energy_hatch.input.umv.4.name=Energy Input Hatch 4 Amps (UMV)
 gtadditions.machine.energy_hatch.input.umv.16.name=Energy Input Hatch 16 Amps (UMV)
 gtadditions.machine.energy_hatch.input.umv.64.name=Energy Input Hatch 64 Amps (UMV)
 gtadditions.machine.energy_hatch.input.umv.128.name=Energy Input Hatch 128 Amps (UMV)
-gtadditions.machine.energy_hatch.input.uxv.name=Energy Input Hatch 2 Amps (UXV)
+gtadditions.machine.energy_hatch.input.uxv.name=Energy Input Hatch (UXV)
 gtadditions.machine.energy_hatch.input.uxv.4.name=Energy Input Hatch 4 Amps (UXV)
 gtadditions.machine.energy_hatch.input.uxv.16.name=Energy Input Hatch 16 Amps (UXV)
 gtadditions.machine.energy_hatch.input.uxv.64.name=Energy Input Hatch 64 Amps (UXV)
 gtadditions.machine.energy_hatch.input.uxv.128.name=Energy Input Hatch 128 Amps (UXV)
 
-gtadditions.machine.energy_hatch.output.uhv.name=Energy Output Hatch 4 Amps (UHV)
+gtadditions.machine.energy_hatch.output.uhv.name=Energy Output Hatch (UHV)
 gtadditions.machine.energy_hatch.output.uhv.16.name=Energy Output Hatch 16 Amps (UHV)
 gtadditions.machine.energy_hatch.output.uhv.32.name=Energy Output Hatch 32 Amps (UHV)
 gtadditions.machine.energy_hatch.output.uhv.64.name=Energy Output Hatch 64 Amps (UHV)
 gtadditions.machine.energy_hatch.output.uhv.128.name=Energy Output Hatch 128 Amps (UHV)
-gtadditions.machine.energy_hatch.output.uev.name=Energy Output Hatch 4 Amps (UEV)
+gtadditions.machine.energy_hatch.output.uev.name=Energy Output Hatch (UEV)
 gtadditions.machine.energy_hatch.output.uev.16.name=Energy Output Hatch 16 Amps (UEV)
 gtadditions.machine.energy_hatch.output.uev.32.name=Energy Output Hatch 32 Amps (UEV)
 gtadditions.machine.energy_hatch.output.uev.64.name=Energy Output Hatch 64 Amps (UEV)
 gtadditions.machine.energy_hatch.output.uev.128.name=Energy Output Hatch 128 Amps (UEV)
-gtadditions.machine.energy_hatch.output.uiv.name=Energy Output Hatch 4 Amps (UIV)
+gtadditions.machine.energy_hatch.output.uiv.name=Energy Output Hatch (UIV)
 gtadditions.machine.energy_hatch.output.uiv.16.name=Energy Output Hatch 16 Amps (UIV)
 gtadditions.machine.energy_hatch.output.uiv.32.name=Energy Output Hatch 32 Amps (UIV)
 gtadditions.machine.energy_hatch.output.uiv.64.name=Energy Output Hatch 64 Amps (UIV)
 gtadditions.machine.energy_hatch.output.uiv.128.name=Energy Output Hatch 128 Amps (UIV)
-gtadditions.machine.energy_hatch.output.umv.name=Energy Output Hatch 4 Amps (UMV)
+gtadditions.machine.energy_hatch.output.umv.name=Energy Output Hatch (UMV)
 gtadditions.machine.energy_hatch.output.umv.16.name=Energy Output Hatch 16 Amps (UMV)
 gtadditions.machine.energy_hatch.output.umv.32.name=Energy Output Hatch 32 Amps (UMV)
 gtadditions.machine.energy_hatch.output.umv.64.name=Energy Output Hatch 64 Amps (UMV)
 gtadditions.machine.energy_hatch.output.umv.128.name=Energy Output Hatch 128 Amps (UMV)
-gtadditions.machine.energy_hatch.output.uxv.name=Energy Output Hatch 4 Amps (UXV)
+gtadditions.machine.energy_hatch.output.uxv.name=Energy Output Hatch (UXV)
 gtadditions.machine.energy_hatch.output.uxv.16.name=Energy Output Hatch 16 Amps (UXV)
 gtadditions.machine.energy_hatch.output.uxv.32.name=Energy Output Hatch 32 Amps (UXV)
 gtadditions.machine.energy_hatch.output.uxv.64.name=Energy Output Hatch 64 Amps (UXV)
@@ -3831,6 +3884,13 @@ fluid.fluorophosphoric_acid=Fluorophosphoric Acid
 fluid.phenylenedioxydiacetic_acid=Phenylenedioxydiacetic Acid
 fluid.diethylthiourea=Diethylthiourea
 fluid.isophtaloylbisdiethylthiourea=Isophtaloylbis(diethylthiourea)
+fluid.sodium_alginate_solution=Sodium Alginate Solution
+fluid.ascorbic_acid=Ascorbic Acid
+fluid.dehydroascorbic_acid=Dehydroascorbic Acid
+fluid.cacbas_mixture=CaCBaS Mixture
+fluid.lubricant_clay_slurry=Lubricant Clay Slurry
+fluid.atl_ethylene_mixture=ATL Ethylene Mixture
+fluid.drilling_mud_mixture=Drilling Mud Mixture
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
@@ -4058,3 +4118,7 @@ recipemap.disassembler.name=Disassembler
 
 gtadditions.machine.pa.display1=Set Recipes: §6%s
 gtadditions.machine.pa.display2=Parallel Recipes: §b%d
+
+gtadditions.machine.electric_implosion.name=Electric Implosion Compressor
+recipemap.electric_implosion.name=Electric Implosion Compressor
+gtadditions.multiblock.electric_implosion.description=An Implosion Compressor without the TNT. Requires UHV-tier power to run, but completes crafts nearly instantly.

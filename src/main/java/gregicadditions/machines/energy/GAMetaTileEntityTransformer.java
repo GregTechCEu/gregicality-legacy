@@ -7,6 +7,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.tool.ISoftHammerItem;
@@ -126,10 +127,10 @@ public class GAMetaTileEntityTransformer extends GATieredMetaTileEntity {
         super.renderMetaTileEntity(renderState, translation, pipeline);
         if (isTransformUp) {
             Textures.ENERGY_OUT_MULTI.renderSided(getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier() - 1]));
-            Textures.ENERGY_IN.renderSided(getFrontFacing().getOpposite(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier()]));
+            ClientHandler.HIGH_ENERGY_IN.renderSided(getFrontFacing().getOpposite(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier()]));
         } else {
             Textures.ENERGY_IN_MULTI.renderSided(getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier()]));
-            Textures.ENERGY_OUT.renderSided(getFrontFacing().getOpposite(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier() - 1]));
+            ClientHandler.HIGH_ENERGY_OUT.renderSided(getFrontFacing().getOpposite(), renderState, translation, PipelineUtil.color(pipeline, GAValues.VC[getTier() - 1]));
         }
     }
 

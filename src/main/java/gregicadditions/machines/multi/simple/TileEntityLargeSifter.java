@@ -12,10 +12,13 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import static gregicadditions.GAMaterials.EglinSteel;
 
@@ -71,5 +74,9 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-
+	@NotNull
+	@Override
+	protected OrientedOverlayRenderer getFrontOverlay() {
+		return Textures.SIFTER_OVERLAY;
+	}
 }

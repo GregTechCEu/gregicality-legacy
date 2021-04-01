@@ -11,7 +11,8 @@ public class NetworkHandler {
 
         INSTANCE.registerMessage(KeysUpdateHandler.class, KeysPacket.class, 0, Side.SERVER);
         INSTANCE.registerMessage(MessageReservoirListSync.Handler.class, MessageReservoirListSync.class, 1, Side.CLIENT);
-
+        CPacketPluginSynced.registerExecutor();
+        CPacketPluginSynced.registerPacket(100);
 
     }
 

@@ -13,6 +13,7 @@ import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
+import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -73,15 +74,17 @@ public class GregTechCEHooks {
                     ((CoverDigitalInterface) cover).setEnergyChanged(energyAdded);
                 }
             }
+            if (metaTileEntity instanceof MetaTileEntityEnergyHatch) {
+                updateCoverDigitalInterface(((MetaTileEntityEnergyHatch) metaTileEntity).getController(), energyAdded);
+            }
         }
     }
 
     //origin: gregtech.api.capability.impl.EnergyContainerHandler.setEnergyStored()
     public static void setEnergyStored(EnergyContainerHandler energyContainerHandler, long energyStored) {
-        if (energyStored != 0) {
+        if (energyStored - energyContainerHandler.getEnergyStored() != 0) {
             updateCoverDigitalInterface(energyContainerHandler.getMetaTileEntity(), energyStored - energyContainerHandler.getEnergyStored());
         }
-        energyContainerHandler.setEnergyStored(energyStored);
     }
 
     //origin: gregtech/api/capability/impl/EnergyContainerBatteryBuffer.changeEnergy() (though gtce not gonna use it. might be called, so hacking it too)

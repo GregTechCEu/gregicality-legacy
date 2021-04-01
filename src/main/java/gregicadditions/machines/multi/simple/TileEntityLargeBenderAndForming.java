@@ -4,6 +4,7 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
@@ -18,6 +19,8 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -34,6 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -49,22 +53,23 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
 
     public RecipeMap<?> recipeMap;
 
-    private static RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
+    private static final RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
             RecipeMaps.BENDER_RECIPES,
             RecipeMaps.FORMING_PRESS_RECIPES,
             GARecipeMaps.CLUSTER_MILL_RECIPES
     };
-    private int pos = 0;
+    private int pos;
 
 
     public TileEntityLargeBenderAndForming(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeBenderAndForming.euPercentage, GAConfig.multis.largeBenderAndForming.durationPercentage, GAConfig.multis.largeBenderAndForming.chancedBoostPercentage, GAConfig.multis.largeBenderAndForming.stack);
         this.recipeMap = recipeMap;
+        pos = Arrays.asList(possibleRecipe).indexOf(recipeMap);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityLargeBenderAndForming(metaTileEntityId, possibleRecipe[pos]);
+        return new TileEntityLargeBenderAndForming(metaTileEntityId, RecipeMaps.BENDER_RECIPES);
     }
 
     @Override
@@ -112,25 +117,25 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
 
     @Override
     public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        boolean isEmpty = IntStream.range(0, getInputInventory().getSlots())
-                .mapToObj(i -> getInputInventory().getStackInSlot(i))
-                .allMatch(ItemStack::isEmpty);
-        if (!isEmpty) {
-            return false;
-        }
+        if (!getWorld().isRemote) {
+            boolean isEmpty = IntStream.range(0, getInputInventory().getSlots())
+                    .mapToObj(i -> getInputInventory().getStackInSlot(i))
+                    .allMatch(ItemStack::isEmpty);
+            if (!isEmpty) {
+                return false;
+            }
 
-        if (playerIn.isSneaking()) {
-            pos = (--pos < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
+            if (playerIn.isSneaking())
+                this.pos = (pos - 1 < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
+            else
+                this.pos = (pos + 1) % possibleRecipe.length;
+
             ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
             this.recipeMap = possibleRecipe[pos];
-
-        } else {
-            pos = ++pos % possibleRecipe.length;
-            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-            this.recipeMap = possibleRecipe[pos];
         }
 
-        return true;
+        this.scheduleRenderUpdate();
+        return true; // return true here on the server to keep the GUI closed
     }
 
     @Override
@@ -146,6 +151,7 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
         this.pos = data.getInteger("Recipe");
         ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
         this.recipeMap = possibleRecipe[pos];
+        this.scheduleRenderUpdate();
     }
 
     @Override
@@ -174,5 +180,21 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
         PistonCasing.CasingType piston = context.getOrDefault("Piston", PistonCasing.CasingType.PISTON_LV);
         int min = Collections.min(Arrays.asList(motor.getTier(), piston.getTier()));
         maxVoltage = (long) (Math.pow(4, min) * 8);
+    }
+
+    @NotNull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        switch (pos) {
+            case 1: {
+                return Textures.FORMING_PRESS_OVERLAY;
+            }
+            case 2: {
+                return Textures.WIREMILL_OVERLAY;
+            }
+            default: {
+                return Textures.BENDER_OVERLAY;
+            }
+        }
     }
 }

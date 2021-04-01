@@ -1191,11 +1191,11 @@ gtadditions.machine.wiremill.luv.name=精英线材轧机 II
 gtadditions.machine.wiremill.zpm.name=精英线材轧机 III
 gtadditions.machine.wiremill.uv.name=精英线材轧机 IV
 
-gtadditions.machine.clustermill.uhv.name=次世代多辊式轧机
-gtadditions.machine.clustermill.uev.name=次世代多辊式轧机 II
-gtadditions.machine.clustermill.uiv.name=次世代多辊式轧机 III
-gtadditions.machine.clustermill.umv.name=次世代多辊式轧机 IV
-gtadditions.machine.clustermill.uxv.name=终焉多辊式轧机
+gtadditions.machine.cluster_mill.uhv.name=次世代多辊式轧机
+gtadditions.machine.cluster_mill.uev.name=次世代多辊式轧机 II
+gtadditions.machine.cluster_mill.uiv.name=次世代多辊式轧机 III
+gtadditions.machine.cluster_mill.umv.name=次世代多辊式轧机 IV
+gtadditions.machine.cluster_mill.uxv.name=终焉多辊式轧机
 gtadditions.machine.electric_furnace.uhv.name=次世代热应激发生器
 gtadditions.machine.electric_furnace.uev.name=次世代热应激发生器 II
 gtadditions.machine.electric_furnace.uiv.name=次世代热应激发生器 III

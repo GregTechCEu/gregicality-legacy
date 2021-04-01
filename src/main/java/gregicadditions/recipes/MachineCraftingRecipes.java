@@ -83,7 +83,7 @@ public class MachineCraftingRecipes {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fluid_solidifier." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.distillery." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.chemical_bath." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.polarizor." + tier));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.polarizer." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.electromagnetic_separator." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.autoclave." + tier));
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.mixer." + tier));
@@ -932,6 +932,20 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_steam_output_bus", GATileEntities.STEAM_OUTPUT_BUS.getStackForm(), "BTB", "MHM", "BTB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
         ModHandler.addShapedRecipe("ga_steam_oven", GATileEntities.STEAM_OVEN.getStackForm(), "CGC", "FMF", "CGC", 'F', MetaBlocks.BOILER_FIREBOX_CASING.getItemVariant(BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX), 'C', new UnificationEntry(GAEnums.GAOrePrefix.gtMetalCasing, Bronze), 'M', MetaTileEntities.STEAM_FURNACE_BRONZE.getStackForm(), 'G', new UnificationEntry(gear, Invar));
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(GATileEntities.IMPLOSION_COMPRESSOR.getStackForm())
+                .input(block, Americium, 2)
+                .input(stickLong, Osmium, 64)
+                .input(ring, Osmium, 64)
+                .input(wireGtSingle, UVSuperconductor, 16)
+                .inputs(ELECTRIC_PISTON_UV.getStackForm(16))
+                .fluidInputs(SolderingAlloy.getFluid(1440))
+                .fluidInputs(Osmium.getFluid(1440))
+                .fluidInputs(Americium.getFluid(1440))
+                .outputs(GATileEntities.ELECTRIC_IMPLOSION.getStackForm())
+                .EUt(491520)
+                .duration(48000)
+                .buildAndRegister();
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {

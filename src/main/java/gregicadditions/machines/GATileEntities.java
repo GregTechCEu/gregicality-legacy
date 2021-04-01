@@ -243,6 +243,7 @@ public class GATileEntities {
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
     public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
+    public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
 
     public static void init() {
 
@@ -285,28 +286,28 @@ public class GATileEntities {
         }
 
         if (GAConfig.GT5U.highTierMacerators) {
-            MACERATOR[4] = create(2020, new SimpleMachineMetaTileEntity(location("macerator.iv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 5));
-            MACERATOR[5] = create(2021, new SimpleMachineMetaTileEntity(location("macerator.luv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 6));
-            MACERATOR[6] = create(2022, new SimpleMachineMetaTileEntity(location("macerator.zpm"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 7));
-            MACERATOR[7] = create(2023, new SimpleMachineMetaTileEntity(location("macerator.uv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 8));
-            MACERATOR[8] = create(3254, new GASimpleMachineMetaTileEntity(location("macerator.uhv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 9));
-            MACERATOR[9] = create(3255, new GASimpleMachineMetaTileEntity(location("macerator.uev"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 10));
-            MACERATOR[10] = create(3256, new GASimpleMachineMetaTileEntity(location("macerator.uiv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 11));
-            MACERATOR[11] = create(3257, new GASimpleMachineMetaTileEntity(location("macerator.umv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 12));
-            MACERATOR[12] = create(3258, new GASimpleMachineMetaTileEntity(location("macerator.uxv"), RecipeMaps.MACERATOR_RECIPES, Textures.MACERATOR_OVERLAY, 13));
+            MACERATOR[4] = create(2020, new SimpleMachineMetaTileEntity(location("macerator.iv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 5));
+            MACERATOR[5] = create(2021, new SimpleMachineMetaTileEntity(location("macerator.luv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 6));
+            MACERATOR[6] = create(2022, new SimpleMachineMetaTileEntity(location("macerator.zpm"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 7));
+            MACERATOR[7] = create(2023, new SimpleMachineMetaTileEntity(location("macerator.uv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 8));
+            MACERATOR[8] = create(3254, new GASimpleMachineMetaTileEntity(location("macerator.uhv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 9));
+            MACERATOR[9] = create(3255, new GASimpleMachineMetaTileEntity(location("macerator.uev"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 10));
+            MACERATOR[10] = create(3256, new GASimpleMachineMetaTileEntity(location("macerator.uiv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 11));
+            MACERATOR[11] = create(3257, new GASimpleMachineMetaTileEntity(location("macerator.umv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 12));
+            MACERATOR[12] = create(3258, new GASimpleMachineMetaTileEntity(location("macerator.uxv"), RecipeMaps.MACERATOR_RECIPES, ClientHandler.PULVERIZER_OVERLAY, 13));
 
         }
 
         if (GAConfig.GT5U.highTierAlloySmelter) {
-            ALLOY_SMELTER[4] = create(2024, new SimpleMachineMetaTileEntity(location("alloy_smelter.iv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 5));
-            ALLOY_SMELTER[5] = create(2025, new SimpleMachineMetaTileEntity(location("alloy_smelter.luv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 6));
-            ALLOY_SMELTER[6] = create(2026, new SimpleMachineMetaTileEntity(location("alloy_smelter.zpm"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 7));
-            ALLOY_SMELTER[7] = create(2027, new SimpleMachineMetaTileEntity(location("alloy_smelter.uv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 8));
-            ALLOY_SMELTER[8] = create(3259, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uhv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 9));
-            ALLOY_SMELTER[9] = create(3260, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uev"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 10));
-            ALLOY_SMELTER[10] = create(3261, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uiv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 11));
-            ALLOY_SMELTER[11] = create(3262, new GASimpleMachineMetaTileEntity(location("alloy_smelter.umv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 12));
-            ALLOY_SMELTER[12] = create(3263, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uxv"), RecipeMaps.ALLOY_SMELTER_RECIPES, Textures.ALLOY_SMELTER_OVERLAY, 13));
+            ALLOY_SMELTER[4] = create(2024, new SimpleMachineMetaTileEntity(location("alloy_smelter.iv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 5));
+            ALLOY_SMELTER[5] = create(2025, new SimpleMachineMetaTileEntity(location("alloy_smelter.luv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 6));
+            ALLOY_SMELTER[6] = create(2026, new SimpleMachineMetaTileEntity(location("alloy_smelter.zpm"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 7));
+            ALLOY_SMELTER[7] = create(2027, new SimpleMachineMetaTileEntity(location("alloy_smelter.uv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 8));
+            ALLOY_SMELTER[8] = create(3259, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uhv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 9));
+            ALLOY_SMELTER[9] = create(3260, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uev"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 10));
+            ALLOY_SMELTER[10] = create(3261, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uiv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 11));
+            ALLOY_SMELTER[11] = create(3262, new GASimpleMachineMetaTileEntity(location("alloy_smelter.umv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 12));
+            ALLOY_SMELTER[12] = create(3263, new GASimpleMachineMetaTileEntity(location("alloy_smelter.uxv"), RecipeMaps.ALLOY_SMELTER_RECIPES, ClientHandler.ADVANCED_ALLOY_OVERLAY, 13));
 
         }
 
@@ -819,24 +820,13 @@ public class GATileEntities {
         LARGE_ELECTROLYZER = GregTechAPI.registerMetaTileEntity(2509, new TileEntityLargeElectrolyzer(location("large_electrolyzer")));
         //register 2 times for each recipe seems not working
         LARGE_BENDER_AND_FORMING = GregTechAPI.registerMetaTileEntity(2510, new TileEntityLargeBenderAndForming(location("large_bender_and_forming"), RecipeMaps.BENDER_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2511, new TileEntityLargeBenderAndForming(location("large_bender_and_forming"), RecipeMaps.FORMING_PRESS_RECIPES));
         LARGE_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(2512, new TileEntityLargeCentrifuge(location("large_centrifuge")));
         LARGE_CUTTING = GregTechAPI.registerMetaTileEntity(2513, new TileEntityLargeCutting(location("large_cutting")));
         LARGE_MACERATOR = GregTechAPI.registerMetaTileEntity(2514, new TileEntityLargeMacerator(location("large_macerator")));
         LARGE_MIXER = GregTechAPI.registerMetaTileEntity(2515, new TileEntityLargeMixer(location("large_mixer")));
         LARGE_MULTI_USE = GregTechAPI.registerMetaTileEntity(2516, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.COMPRESSOR_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2517, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.COMPRESSOR_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2518, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.LATHE_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2519, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.POLARIZER_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2520, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.FERMENTING_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2521, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.FLUID_EXTRACTION_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2522, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.EXTRACTOR_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2523, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.LASER_ENGRAVER_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2524, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.AUTOCLAVE_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2525, new TileEntityLargeMultiUse(location("large_multi_use"), GARecipeMaps.REPLICATOR_RECIPES));
         LARGE_SIFTER = GregTechAPI.registerMetaTileEntity(2526, new TileEntityLargeSifter(location("large_sifter")));
         LARGE_WASHING_PLANT = GregTechAPI.registerMetaTileEntity(2527, new TileEntityLargeWashingPlant(location("large_washing_plant"), RecipeMaps.ORE_WASHER_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2528, new TileEntityLargeWashingPlant(location("large_washing_plant"), RecipeMaps.CHEMICAL_BATH_RECIPES));
         LARGE_WIREMILL = GregTechAPI.registerMetaTileEntity(2529, new TileEntityLargeWiremill(location("large_wiremill")));
         LARGE_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(2530, new TileEntityLargeChemicalReactor(location("large_chemical_reactor")));
         LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(2531, new TileEntityLargeExtruder(location("large_extruder")));
@@ -1018,7 +1008,7 @@ public class GATileEntities {
 
         ROTOR_HOLDER[0] = GregTechAPI.registerMetaTileEntity(3208, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.hv"), GTValues.HV, 1.1f));
         ROTOR_HOLDER[1] = GregTechAPI.registerMetaTileEntity(3209, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.luv"), GTValues.LuV, 1.35f));
-        ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3210, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GTValues.MAX, 1.7f));
+        ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3210, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GAValues.UHV, 1.7f));
 
         GREEN_HOUSE[0] = create(3211, new SimpleMachineMetaTileEntity(location("green_house.lv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 1));
         GREEN_HOUSE[1] = create(3212, new SimpleMachineMetaTileEntity(location("green_house.mv"), GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, 2));
@@ -1145,7 +1135,6 @@ public class GATileEntities {
         BIO_REACTOR = GregTechAPI.registerMetaTileEntity(4170, new MetaTileEntityBioReactor(location("bio_reactor")));
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(4171, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
-        GregTechAPI.registerMetaTileEntity(4173, new TileEntityLargePackager(location("large_packager"), RecipeMaps.UNPACKER_RECIPES));
         COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
 
         STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4175, new MetaTileEntitySteamHatch(location("steam_hatch")));
@@ -1175,6 +1164,7 @@ public class GATileEntities {
                 }));
             }
         }
+        ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

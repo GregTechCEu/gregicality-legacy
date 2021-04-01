@@ -3,6 +3,9 @@ package gregicadditions.item;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.item.behaviors.*;
+import gregicadditions.item.behaviors.monitorPlugin.AdvancedMonitorPluginBehavior;
+import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
+import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.items.metaitem.ElectricStats;
@@ -70,6 +73,9 @@ public class GAMetaItem extends MaterialMetaItem {
             MetaItems.ZPM2.setInvisible();
         }
 
+        PLUGIN_ADVANCED_MONITOR = addItem(126, "plugin.advanced_monitor").addComponents(new AdvancedMonitorPluginBehavior());
+        PLUGIN_FAKE_GUI = addItem(127, "plugin.fake_gui").addComponents(new FakeGuiPluginBehavior());
+        PLUGIN_ONLINE_PIC = addItem(128, "plugin.online_pic").addComponents(new OnlinePicPluginBehavior());
         PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
         COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
@@ -274,14 +280,14 @@ public class GAMetaItem extends MaterialMetaItem {
         NEURO_SUPPORT_UNIT = addItem(410, "neuro.support.unit");
         CYBER_PROCESSING_UNIT = addItem(411, "cyber.processing.unit");
 
-        BATTERY_SMALL_VANADIUM_EMPTY = addItem(412, "small.vanadium.battery.empty");
-        BATTERY_SMALL_NEUTRONIUM_EMPTY = addItem(413, "small.neutronium.battery.empty");
-        BATTERY_MEDIUM_VANADIUM_EMPTY = addItem(414, "medium.vanadium.battery.empty");
-        BATTERY_MEDIUM_NAQUADRIA_EMPTY = addItem(415, "medium.naquadria.battery.empty");
-        BATTERY_MEDIUM_NEUTRONIUM_EMPTY = addItem(416, "medium.neutronium.battery.empty");
-        BATTERY_LARGE_VANADIUM_EMPTY = addItem(417, "large.vanadium.battery.empty");
-        BATTERY_LARGE_NAQUADRIA_EMPTY = addItem(418, "large.naquadria.battery.empty");
-        BATTERY_LARGE_NEUTRONIUM_EMPTY = addItem(419, "large.neutronium.battery.empty");
+        BATTERY_NIMH_EMPTY = addItem(412, "nickel.metal.hydride.battery.empty");
+        BATTERY_SMALL_LITHIUM_ION_EMPTY = addItem(414, "small.lithium.ion.battery.empty");
+        BATTERY_MEDIUM_LITHIUM_ION_EMPTY = addItem(417, "medium.lithium.ion.battery.empty");
+        BATTERY_LARGE_LITHIUM_ION_EMPTY = addItem(415, "large.lithium.ion.battery.empty");
+        BATTERY_SMALL_LIS_EMPTY = addItem(418, "small.lithium.sulfide.battery.empty");
+        BATTERY_MEDIUM_LIS_EMPTY = addItem(413, "medium.lithium.sulfide.battery.empty");
+        BATTERY_LARGE_LIS_EMPTY = addItem(416, "large.lithium.sulfide.battery.empty");
+        BATTERY_SMALL_FLUORIDE_EMPTY = addItem(419, "small.fluoride.battery.empty");
 
         HASOC = addItem(420, "hasoc");
         HASOC_WAFER = addItem(421, "hasoc.wafer");
@@ -326,7 +332,7 @@ public class GAMetaItem extends MaterialMetaItem {
         MAGNETIC_TRAP = addItem(457,"magnetic_trap");
         EMPTY_LASER_COOLING_CONTAINER = addItem(458,"empty_laser_cooling_container");
         BOSE_EINSTEIN_COOLING_CONTAINER = addItem(459,"bose_einstein_cooling_container");
-        
+
         ALUMINO_SILICATE_GLASS_TUBE = addItem(460,"alumino_silicate_glass_tube");
         INDUCTOR = addItem(461,"inductor");
         BALLAST = addItem(462,"ballast");
@@ -347,7 +353,7 @@ public class GAMetaItem extends MaterialMetaItem {
         ESCHERICHIA_CULTURE = addItem(477, "eschericia.culture");
         BIFIDOBACTERIUM_CULTURE = addItem(478, "bifidobacterium.culture");
         BREVIBACTERIUM_CULTURE = addItem(479, "brevibacterium.culture");
-        
+
         NDYAG_BOULE = addItem(480,"ndyag_boule");
         PRHOYLF_BOULE = addItem(481,"prhoylf_boule");
         LUTMYVO_BOULE = addItem(482,"lutmyvo_boule");
@@ -437,7 +443,7 @@ public class GAMetaItem extends MaterialMetaItem {
         EIGENFOLDED_KERR_MANIFOLD = addItem(559, "eigenfolded.kerr.manifold");
         CTC_COMPUTATIONAL_UNIT = addItem(560, "ctc.computational.unit");
         RECURSIVELY_FOLDED_NEGATIVE_SPACE = addItem(561, "recursively.folded.negative.space");
-        
+
         WIRE_FIELD_SHAPE = addItem(562,"wire.field.shape");
         EXTREMELY_DURABLE_PLASMA_CELL = addItem(563,"extremely.durable.plasma.cell");
         DENSE_NEUTRON_PLASMA_CELL = addItem(564,"dense.neutron.plasma.cell");
@@ -471,8 +477,11 @@ public class GAMetaItem extends MaterialMetaItem {
 
         COLOURED_LEDS = addItem(578, "coloured.leds");
         DISPLAY = addItem(579, "display");
-        
+
         CHARGED_LEPTON_TRAP_CRYSTAL = addItem(580,"charged.lepton.trap.crystal");
+        NANOSILICON_CATHODE = addItem(581,"nanosilicon.cathode");
+        BATTERY_MEDIUM_FLUORIDE_EMPTY = addItem(582,"medium.fluoride.battery.empty");
+        BATTERY_LARGE_FLUORIDE_EMPTY = addItem(583,"large.fluoride.battery.empty");
 
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");

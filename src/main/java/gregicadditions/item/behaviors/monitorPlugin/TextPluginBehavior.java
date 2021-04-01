@@ -2,12 +2,9 @@ package gregicadditions.item.behaviors.monitorPlugin;
 
 import gregicadditions.renderer.RenderHelper;
 import gregicadditions.widgets.WidgetARGB;
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.gui.ModularUI;
+import gregicadditions.widgets.monitor.WidgetPluginConfig;
+import gregtech.api.gui.IUIHolder;
 import gregtech.api.gui.widgets.TextFieldWidget;
-import gregtech.api.gui.widgets.WidgetGroup;
-import gregtech.api.items.gui.PlayerInventoryHolder;
-import gregtech.api.util.Position;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
@@ -26,9 +23,9 @@ public class TextPluginBehavior extends MonitorPluginBaseBehavior {
         this.colors[line] = color;
         writePluginData(1, packetBuffer -> {
             packetBuffer.writeInt(texts.length);
-            for (String s : texts) {
-                packetBuffer.writeString(s);
-                packetBuffer.writeInt(color);
+            for (int i = 0; i < texts.length; i++) {
+                packetBuffer.writeString(texts[i]);
+                packetBuffer.writeInt(colors[i]);
             }
         });
         markDirty();
@@ -90,22 +87,18 @@ public class TextPluginBehavior extends MonitorPluginBaseBehavior {
     }
 
     @Override
-    public ModularUI customUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer, NBTTagCompound tag) {
-        WidgetGroup widgets = new WidgetGroup(new Position(20, 20));
+    public WidgetPluginConfig customUI(WidgetPluginConfig widgets, IUIHolder holder, EntityPlayer entityPlayer) {
+        widgets.setSize(260, 210);
         for (int i = 0; i < texts.length; i++) {
             int finalI = i;
-            widgets.addWidget(new TextFieldWidget(0, i * 10, 100, 10, true, ()-> this.texts[finalI], (text)->{
-                this.texts[finalI] = text;
-                this.writeToNBT(tag);
+            widgets.addWidget(new TextFieldWidget(25, 25 + i * 10, 100, 10, true, ()-> this.texts[finalI], (text)->{
+                setText(finalI, text, this.colors[finalI]);
             }).setValidator((data)->true));
-            widgets.addWidget(new WidgetARGB(110, i * 10, 10, colors[i], color->{
-                this.colors[finalI] = color;
-                this.writeToNBT(tag);
+            widgets.addWidget(new WidgetARGB(135, 25 + i * 10, 10, colors[i], color->{
+                setText(finalI, this.texts[finalI], color);
             }));
         }
-        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 260, 210)
-                .widget(widgets)
-                .build(playerInventoryHolder, entityPlayer);
+        return widgets;
     }
 
 }

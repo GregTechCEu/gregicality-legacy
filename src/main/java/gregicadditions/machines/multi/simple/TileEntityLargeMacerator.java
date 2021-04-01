@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
@@ -13,9 +14,12 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -72,5 +76,11 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 		PistonCasing.CasingType piston = context.getOrDefault("Piston", PistonCasing.CasingType.PISTON_LV);
 		int min = Collections.min(Arrays.asList(motor.getTier(), piston.getTier()));
 		maxVoltage = (long) (Math.pow(4, min) * 8);
+	}
+
+	@NotNull
+	@Override
+	protected OrientedOverlayRenderer getFrontOverlay() {
+		return ClientHandler.PULVERIZER_OVERLAY;
 	}
 }

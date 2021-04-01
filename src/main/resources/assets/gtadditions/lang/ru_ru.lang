@@ -425,7 +425,7 @@ gtadditions.machine.mixer.zpm.name=Элитный смеситель III
 gtadditions.machine.mixer.uv.name=Элитный смеситель IV
 
 gtadditions.machine.ore_washer.iv.name=Элитный рудопромывочный агрегат
-gtadditions.machine.ore_washer.luv.nameЭлитный рудопромывочный агрегат II
+gtadditions.machine.ore_washer.luv.name=Элитный рудопромывочный агрегат II
 gtadditions.machine.ore_washer.zpm.name=Элитный рудопромывочный агрегат III
 gtadditions.machine.ore_washer.uv.name=Элитный рудопромывочный агрегат IV
 
@@ -1004,7 +1004,7 @@ tile.ga_multiblock_casing.tiered_hull_zpm.name=Интегральный фрей
 tile.ga_multiblock_casing.tiered_hull_zpm.tooltip=§eМаксимальное напряжение - ZPM
 tile.ga_multiblock_casing.tiered_hull_uv.name=Интегральный фреймворк IX
 tile.ga_multiblock_casing.tiered_hull_uv.tooltip=§eМаксимальное напряжение - UV
-tile.ga_multiblock_casing.tiered_hull_max.nameИнтегральный фреймворкk X
+tile.ga_multiblock_casing.tiered_hull_max.name=Интегральный фреймворкk X
 tile.ga_multiblock_casing.tiered_hull_max.tooltip=§eМаксимальное напряжение - MAX
 tile.ga_transparent_casing.borosilicate_reinforced_glass.name=Боросиликатное армированное стекло
 tile.ga_transparent_casing.nickel_reinforced_glass.name=Никелевое армированное стекло
@@ -2274,7 +2274,7 @@ metaitem.electric.motor.uiv.name=Электрический мотор (UIV)
 metaitem.electric.motor.umv.name=Электрический мотор (UMV)
 metaitem.electric.motor.uxv.name=Электрический мотор (UXV)
 metaitem.electric.motor.max.name=Электрический мотор (MAX)
-	
+
 metaitem.field.generator.uhv.name=Генератор поля (UHV)
 metaitem.field.generator.uev.name=Генератор поля (UEV)
 metaitem.field.generator.uiv.name=Генератор поля (UIV)
@@ -2342,11 +2342,11 @@ metaitem.electric.piston.umv.name=Электрический поршень (UMV
 metaitem.electric.piston.uxv.name=Электрический поршень (UXV)
 metaitem.electric.piston.max.name=Электрический поршень (MAX)
 
-gtadditions.machine.clustermill.uhv.name=Высокотехнологичный прокатный станок
-gtadditions.machine.clustermill.uev.name=Высокотехнологичный прокатный станок II
-gtadditions.machine.clustermill.uiv.name=Высокотехнологичный прокатный станок III
-gtadditions.machine.clustermill.umv.name=Высокотехнологичный прокатный станок IV
-gtadditions.machine.clustermill.uxv.name=Совершенный прокатный станок
+gtadditions.machine.cluster_mill.uhv.name=Высокотехнологичный прокатный станок
+gtadditions.machine.cluster_mill.uev.name=Высокотехнологичный прокатный станок II
+gtadditions.machine.cluster_mill.uiv.name=Высокотехнологичный прокатный станок III
+gtadditions.machine.cluster_mill.umv.name=Высокотехнологичный прокатный станок IV
+gtadditions.machine.cluster_mill.uxv.name=Совершенный прокатный станок
 gtadditions.machine.electric_furnace.uhv.name=Высокотехнологичная электрическая печь
 gtadditions.machine.electric_furnace.uev.name=Высокотехнологичная электрическая печь II
 gtadditions.machine.electric_furnace.uiv.name=Высокотехнологичная электрическая печь III

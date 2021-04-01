@@ -1,12 +1,14 @@
 package gregicadditions.widgets.monitor;
 
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
+import gregicadditions.renderer.RenderHelper;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
 import gregtech.api.util.Position;
 import gregtech.api.util.Size;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -39,16 +41,35 @@ public class WidgetScreenGrid extends Widget {
         int height = this.getSize().height;
         int color = (monitorScreen != null && monitorScreen.isActive())? monitorScreen.frameColor:this.color;
         Gui.drawRect(x + 1, y + 1, x + width - 2, y + height - 2, color);
-        if (monitorScreen.scale > 1) {
-            width = monitorScreen.scale * width;
-            height = monitorScreen.scale * height;
-            Gui.drawRect(x, y, x + width - 1, y + 1, color);
-            Gui.drawRect(x, y + height - 1, x + width - 1, y + height, color);
-            Gui.drawRect(x, y, x + 1, y + height, color);
-            Gui.drawRect(x + width - 1, y, x + width, y + height, color);
-        }
+//        if (monitorScreen.scale > 1) {
+//            width = (int) (monitorScreen.scale * width);
+//            height = (int) (monitorScreen.scale * height);
+//            Gui.drawRect(x, y, x + width - 1, y + 1, color);
+//            Gui.drawRect(x, y + height - 1, x + width - 1, y + height, color);
+//            Gui.drawRect(x, y, x + 1, y + height, color);
+//            Gui.drawRect(x + width - 1, y, x + width, y + height, color);
+//        }
+//        if (this.isMouseOverElement(mouseX, mouseY)) {
+//            Gui.drawRect(x, y, x + width, y + height, 0x4B6C6C6C);
+//        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void drawInForeground(int mouseX, int mouseY) {
         if (this.isMouseOverElement(mouseX, mouseY)) {
-            Gui.drawRect(x, y, x + width, y + height, 0x4B6C6C6C);
+            if (monitorScreen != null && monitorScreen.isActive()) {
+                int x = this.getPosition().x;
+                int y = this.getPosition().y;
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(x + (width / 2), y + (height / 2), 100);
+                GlStateManager.scale(width, height, 1);
+                RenderHelper.renderRect(-0.5f, -0.5f, this.monitorScreen.scale, this.monitorScreen.scale, 0, 0XFF000000);
+                monitorScreen.renderScreen(0);
+                GlStateManager.popMatrix();
+            }
         }
     }
 

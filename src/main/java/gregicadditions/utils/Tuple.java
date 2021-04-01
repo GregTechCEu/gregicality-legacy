@@ -1,11 +1,19 @@
 package gregicadditions.utils;
 
 public class Tuple<K, V> {
-    private final K key;
-    private final V value;
+    private K key;
+    private V value;
 
     public Tuple(K key, V value) {
         this.key = key;
+        this.value = value;
+    }
+
+    public void setKey(K key) {
+        this.key = key;
+    }
+
+    public void setValue(V value) {
         this.value = value;
     }
 
