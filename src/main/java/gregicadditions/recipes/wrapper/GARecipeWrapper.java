@@ -1,5 +1,6 @@
 package gregicadditions.recipes.wrapper;
 
+import codechicken.lib.util.ItemNBTUtils;
 import gregicadditions.GAValues;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
@@ -15,6 +16,7 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
