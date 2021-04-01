@@ -13,7 +13,16 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-
+/**
+ * This chain is not fully balanced. This chain is so terrible
+ * to work on, that I can't imagine any player ever actually
+ * making anything in it aside from the bare minimum to progress.
+ *
+ * Considering the name of the chain, I think that this chain
+ * deserves to die. At this point, it probably has a positive loop
+ * in it somewhere since I gave up halfway through balancing it.
+ * So let that be even further encouragement.
+ */
 public class Dyes {
     public static void init(){
 
@@ -355,6 +364,7 @@ public class Dyes {
                 .outputs(AminoterephthalicAcid.getItemStack(20))
                 .buildAndRegister();
 
+        // C8H7NO4 -> C20H12N2O2 TODO
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(1200)
                 .inputs(AminoterephthalicAcid.getItemStack(20))
                 .outputs(Quinacridone.getItemStack(10))
@@ -379,12 +389,16 @@ public class Dyes {
                 .outputs(DiarylideYellow.getItemStack(2))
                 .buildAndRegister();
 
+        // C7H8 + H2SO4 + NaCl -> C7H7SO3Na + (H2O)(HCl)
         CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(950)
+                .input(dust, Salt, 2)
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(Toluenesulfonate.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        // C6H4(OH)2 + C8H4O3 + C7H7SO3Na + NH3 + HCl -> C14H10N2O2 TODO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1400)
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .input(dust, PhthalicAnhydride)
@@ -517,9 +531,10 @@ public class Dyes {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(750)
-                .input(dust, Iodine)
-                .inputs(Fluorescein.getItemStack())
-                .outputs(Erythrosine.getItemStack())
+                .input(dust, Iodine, 4)
+                .inputs(Fluorescein.getItemStack(37))
+                .outputs(Erythrosine.getItemStack(37))
+                .fluidOutputs(Hydrogen.getFluid(4000))
                 .buildAndRegister();
 
         ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),OreDictUnifier.get(dust,Rutile),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},

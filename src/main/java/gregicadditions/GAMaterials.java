@@ -843,7 +843,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Naphthylamine = new SimpleFluidMaterial("naphthylamine",0xe3e81c, "C10H9N");
     public static final SimpleFluidMaterial Acetoacetanilide = new SimpleFluidMaterial("acetoacetanilide",0xffffc2, "C10H11NO2");
     public static final SimpleFluidMaterial Diaminoanthraquinone = new SimpleFluidMaterial("diaminoanthraquinone",0x3c5a2c0, "C14H10N2O2");
-    public static final SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00); // TODO
+    public static final SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00, "C7H7SO3Na");
     public static final SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680); // TODO
     public static final SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad, "C4H2O3");
     public static final SimpleFluidMaterial Benzonitrile = new SimpleFluidMaterial("benzonitrile",0x2c2c9c, "C7H5N");
