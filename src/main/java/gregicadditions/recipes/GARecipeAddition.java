@@ -2619,14 +2619,14 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Rocket Fuel Tier T4
-        // C2H8N2 + N2O4 = H8N4C2O4 (treat like chem reactor recipes)
+        // C2H8N2 + N2O4 -> H8N4C2O4 (treat like chem reactor recipes)
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(480)
                 .fluidInputs(Dimethylhydrazine.getFluid(1000))
                 .fluidInputs(NitrogenTetroxide.getFluid(1000))
                 .fluidOutputs(RocketFuelH8N4C2O4.getFluid(1000))
                 .buildAndRegister();
 
-        // 2NO2 = N2O4
+        // 2NO2 -> N2O4
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .notConsumable(dust, Copper)
                 .fluidInputs(NitrogenDioxide.getFluid(2000))
@@ -2634,14 +2634,14 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Rocket Fuel Tier 3
-        // HNO3 + CH3(NH)NH2 = CN3H7O3 (treat like chem reactor recipes)
+        // HNO3 + CH3(NH)NH2 -> CN3H7O3 (treat like chem reactor recipes)
         MIXER_RECIPES.recipeBuilder().duration(200).EUt(240)
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .fluidInputs(MonoMethylHydrazine.getFluid(1000))
                 .fluidOutputs(RocketFuelCN3H7O3.getFluid(1000))
                 .buildAndRegister();
 
-        // C + 2H + N2H4 = CH3(NH)NH2
+        // C + 2H + N2H4 -> CH3(NH)NH2
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(480).EUt(240)
                 .input(dust, Carbon)
                 .fluidInputs(Hydrogen.getFluid(2000))
@@ -2650,7 +2650,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Rocket Fuel Tier 2
-        // N2H4 + CH3OH = [N2H4 + CH3OH] (treat like chem reactor recipes)
+        // N2H4 + CH3OH -> [N2H4 + CH3OH] (treat like chem reactor recipes)
         MIXER_RECIPES.recipeBuilder().duration(120).EUt(240)
                 .fluidInputs(Hydrazine.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
@@ -2658,39 +2658,40 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Rocket Fuel Tier 1
-        // O + RP-1 = [O + RP-1] (treat like chem reactor recipes)
+        // O + RP-1 -> [O + RP-1] (treat like chem reactor recipes)
         MIXER_RECIPES.recipeBuilder().duration(16).EUt(240)
                 .fluidInputs(LiquidOxygen.getFluid(1000))
                 .fluidInputs(RP1.getFluid(1000))
                 .fluidOutputs(RP1RocketFuel.getFluid(1000))
                 .buildAndRegister();
 
-        //Rocket fuel chemicalcha
-        // 2NH3 + H2O2 = N2H4 + H2O
+        // Hydrazine
+        // 2NH3 + H2O2 -> N2H4 + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30)
                 .fluidInputs(Ammonia.getFluid(2000))
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidOutputs(Hydrazine.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // C16H12O2H2 + 2O + C14H10 (catalyst) = H2O2 + C16H12O2
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240)
+        // GT++ on its nonsense again, had to get rid of it
+        // C16H12O2H2 + 2O -> H2O2 + C16H12O2
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .fluidInputs(Oxygen.getFluid(2000))
-                .fluidInputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .notConsumable(Anthracene)
                 .fluidOutputs(HydrogenPeroxide.getFluid(2000))
-                .fluidOutputs(EthylAnthraQuinone.getFluid(4000))
+                .fluidOutputs(EthylAnthraQuinone.getFluid(1000))
                 .buildAndRegister();
 
         // 2H + C16H12O2 = C16H12O2H2
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(800).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(120)
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidInputs(EthylAnthraQuinone.getFluid(4000))
-                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraQuinone.getFluid(1000))
+                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .buildAndRegister();
 
-        // C8H4O3 + C8H10 = C16H12O2 + H2O
+        // C8H4O3 + C8H10 -> C16H12O2 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(120)
                 .input(dust, PhthalicAnhydride, 15)
                 .fluidInputs(EthylBenzene.getFluid(1000))
@@ -2853,7 +2854,7 @@ public class GARecipeAddition {
                 .fluidOutputs(PhosphorylChloride.getFluid(1000))
                 .buildAndRegister();
 
-        // POCl3 + 3C4H10O = C12H27O4P + 3HCl
+        // POCl3 + 3C4H10O -> C12H27O4P + 3HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .fluidInputs(PhosphorylChloride.getFluid(1000))
                 .fluidInputs(Butanol.getFluid(3000))
@@ -4243,7 +4244,7 @@ public class GARecipeAddition {
         // 3Ca + 3PO4 + H + O = [3Ca + 3PO4 + H + O]
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .input(dust, Calcium, 3)
-                .input(dust, Phosphate, 3)
+                .input(dust, Phosphate, 3) // this is probably wrong but do I really care?
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, OrganicFertilizer, 10))
@@ -4378,11 +4379,11 @@ public class GARecipeAddition {
                 .fluidOutputs(Fluorine.getFluid(4000))
                 .buildAndRegister();
 
-        // CF4 = C + F4
+        // CF4 = C + 4F
         ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
-                .fluidInputs(CarbonFluoride.getFluid(2000))
+                .fluidInputs(CarbonFluoride.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, Carbon))
-                .fluidOutputs(Fluorine.getFluid(1000))
+                .fluidOutputs(Fluorine.getFluid(4000))
                 .buildAndRegister();
 
         // Drilling Rig
@@ -4471,6 +4472,7 @@ public class GARecipeAddition {
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.TIERED_HULL_UIV, 1))
                 .buildAndRegister();
 
+        // C2H4 + C6H6 -> 2H + C8H8
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Ethylene.getFluid(1000))
@@ -4479,20 +4481,22 @@ public class GARecipeAddition {
                 .fluidOutputs(Styrene.getFluid(1000))
                 .buildAndRegister();
 
+        // NH3 + 2CH3OH -> 2H2O + (CH3)2NH
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .notConsumable(new IntCircuitIngredient(0))
-                .fluidInputs(Materials.Ammonia.getFluid(1000))
-                .fluidInputs(Materials.Methanol.getFluid(2000))
-                .fluidOutputs(Materials.Water.getFluid(2000))
-                .fluidOutputs(Materials.Dimethylamine.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidInputs(Methanol.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Dimethylamine.getFluid(1000))
                 .buildAndRegister();
 
+        // HClO + NH3 -> H2O + NH2Cl
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
-                .fluidInputs(Materials.HypochlorousAcid.getFluid(1000))
-                .fluidInputs(Materials.Ammonia.getFluid(1000))
-                .fluidOutputs(Materials.Water.getFluid(1000))
-                .fluidOutputs(Materials.Chloramine.getFluid(1000))
+                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Chloramine.getFluid(1000))
                 .buildAndRegister();
 
         // Propsectors
@@ -4545,7 +4549,7 @@ public class GARecipeAddition {
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
-        // Fix possible HSS-S and Osmiridium recipe conflict
+        // Fix potential HSS-S and Osmiridium recipe conflict
         removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
         removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
         MIXER_RECIPES.recipeBuilder()
