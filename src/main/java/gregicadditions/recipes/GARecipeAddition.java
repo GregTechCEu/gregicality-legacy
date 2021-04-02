@@ -31,6 +31,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
@@ -62,6 +63,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.blocks.BlockMachineCasing.MachineCasingType.LuV;
 import static gregtech.common.items.MetaItems.*;
 
 public class GARecipeAddition {
@@ -791,11 +793,7 @@ public class GARecipeAddition {
             // MOTORS -------------------------------------------------------------------------
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30)
                     .inputs(CountableIngredient.from(cableGtSingle, Tin))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Steel, 8))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Steel, 8))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stick, SteelMagnetic))
                     .fluidInputs(Copper.getFluid(72))
                     .outputs(ELECTRIC_MOTOR_LV.getStackForm())
@@ -803,11 +801,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(125)
                     .inputs(CountableIngredient.from(cableGtSingle, Copper))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Aluminium, 8))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Aluminium, 8))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stick, SteelMagnetic))
                     .fluidInputs(Copper.getFluid(144))
                     .outputs(ELECTRIC_MOTOR_MV.getStackForm())
@@ -815,11 +809,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(500)
                     .inputs(CountableIngredient.from(cableGtSingle, Gold))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, StainlessSteel, 8))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), StainlessSteel, 8))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stick, SteelMagnetic))
                     .fluidInputs(Copper.getFluid(288))
                     .outputs(ELECTRIC_MOTOR_HV.getStackForm())
@@ -827,11 +817,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(2000)
                     .inputs(CountableIngredient.from(cableGtSingle, Aluminium))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Titanium, 8))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Titanium, 8))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stick, NeodymiumMagnetic))
                     .fluidInputs(AnnealedCopper.getFluid(576))
                     .outputs(ELECTRIC_MOTOR_EV.getStackForm())
@@ -839,11 +825,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(8000)
                     .inputs(CountableIngredient.from(cableGtSingle, Tungsten))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, TungstenSteel, 8))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), TungstenSteel, 8))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stick, NeodymiumMagnetic))
                     .fluidInputs(AnnealedCopper.getFluid(1152))
                     .outputs(ELECTRIC_MOTOR_IV.getStackForm())
@@ -852,11 +834,7 @@ public class GARecipeAddition {
             // PISTONS -------------------------------------------------------------------------
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30)
                     .inputs(CountableIngredient.from(cableGtSingle, Tin))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Steel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Steel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, Steel))
                     .inputs(CountableIngredient.from(gearSmall, Steel))
                     .inputs(CountableIngredient.from(ELECTRIC_MOTOR_LV.getStackForm()))
@@ -866,11 +844,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(125)
                     .inputs(CountableIngredient.from(cableGtSingle, Copper))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Aluminium, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Aluminium, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, Aluminium))
                     .inputs(CountableIngredient.from(gearSmall, Aluminium))
                     .inputs(CountableIngredient.from(ELECTRIC_MOTOR_MV.getStackForm()))
@@ -880,11 +854,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(500)
                     .inputs(CountableIngredient.from(cableGtSingle, Gold))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), StainlessSteel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), StainlessSteel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, StainlessSteel))
                     .inputs(CountableIngredient.from(gearSmall, StainlessSteel))
                     .inputs(CountableIngredient.from(ELECTRIC_MOTOR_HV.getStackForm()))
@@ -894,11 +864,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(2000)
                     .inputs(CountableIngredient.from(cableGtSingle, Aluminium))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Titanium, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Titanium, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, Titanium))
                     .inputs(CountableIngredient.from(gearSmall, Titanium))
                     .inputs(CountableIngredient.from(ELECTRIC_MOTOR_EV.getStackForm()))
@@ -908,11 +874,7 @@ public class GARecipeAddition {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(8000)
                     .inputs(CountableIngredient.from(cableGtSingle, Tungsten))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), TungstenSteel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), TungstenSteel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, TungstenSteel))
                     .inputs(CountableIngredient.from(gearSmall, TungstenSteel))
                     .inputs(CountableIngredient.from(ELECTRIC_MOTOR_IV.getStackForm()))
@@ -1200,17 +1162,10 @@ public class GARecipeAddition {
                     .inputs(CountableIngredient.from(cableGtSingle, Tin, 4))
                     .inputs(CountableIngredient.from(cableGtSingle, Tin, 4))
                     .inputs(CountableIngredient.from(stickLong, Steel, 4))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Steel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Steel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Steel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Steel, 16))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Steel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Steel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Steel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Steel, 16))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, SteelMagnetic, 4))
                     .fluidInputs(Copper.getFluid(72 * 4))
                     .outputs(ELECTRIC_MOTOR_LV.getStackForm(16))
@@ -1222,17 +1177,10 @@ public class GARecipeAddition {
                     .inputs(CountableIngredient.from(cableGtSingle, Copper, 4))
                     .inputs(CountableIngredient.from(cableGtSingle, Copper, 4))
                     .inputs(CountableIngredient.from(stickLong, Aluminium, 4))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Aluminium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Aluminium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Aluminium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Aluminium, 16))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Aluminium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Aluminium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Aluminium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Aluminium, 16))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, SteelMagnetic, 4))
                     .fluidInputs(Copper.getFluid(144 * 4))
                     .outputs(ELECTRIC_MOTOR_MV.getStackForm(16))
@@ -1244,17 +1192,10 @@ public class GARecipeAddition {
                     .inputs(CountableIngredient.from(cableGtSingle, Gold, 4))
                     .inputs(CountableIngredient.from(cableGtSingle, Gold, 4))
                     .inputs(CountableIngredient.from(stickLong, StainlessSteel, 4))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, StainlessSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, StainlessSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, StainlessSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, StainlessSteel, 16))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), StainlessSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), StainlessSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), StainlessSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), StainlessSteel, 16))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, SteelMagnetic, 4))
                     .fluidInputs(Copper.getFluid(288 * 4))
                     .outputs(ELECTRIC_MOTOR_HV.getStackForm(16))
@@ -1266,17 +1207,10 @@ public class GARecipeAddition {
                     .inputs(CountableIngredient.from(cableGtSingle, Aluminium, 4))
                     .inputs( CountableIngredient.from(cableGtSingle, Aluminium, 4))
                     .inputs(CountableIngredient.from(stickLong, Titanium, 4))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, Titanium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Titanium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Titanium, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, Titanium, 16))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), Titanium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Titanium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Titanium, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), Titanium, 16))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, NeodymiumMagnetic, 4))
                     .fluidInputs(AnnealedCopper.getFluid(576 * 4))
                     .outputs(ELECTRIC_MOTOR_EV.getStackForm(16))
@@ -1288,17 +1222,10 @@ public class GARecipeAddition {
                     .inputs(CountableIngredient.from(cableGtSingle, Tungsten, 4))
                     .inputs(CountableIngredient.from(cableGtSingle, Tungsten, 4))
                     .inputs(CountableIngredient.from(stickLong, TungstenSteel, 4))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(roundOrScrew, TungstenSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, TungstenSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, TungstenSteel, 16))
                     .inputs(CountableIngredient.from(roundOrScrew, TungstenSteel, 16))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("round"), TungstenSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), TungstenSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), TungstenSteel, 16))
-                    .inputs(CountableIngredient.from(getPrefix("round"), TungstenSteel, 16))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(stickLong, NeodymiumMagnetic, 4))
                     .fluidInputs(AnnealedCopper.getFluid(1152 * 4))
                     .outputs(ELECTRIC_MOTOR_IV.getStackForm(16))
@@ -1307,11 +1234,7 @@ public class GARecipeAddition {
             // PISTONS -------------------------------------------------------------------------
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(6000).EUt(8000)
                     .inputs(CountableIngredient.from(cableGtSingle, Tin, 8))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Steel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Steel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(plate, Steel, 2))
                     .inputs(CountableIngredient.from(ingot, Steel, 2))
                     .inputs(CountableIngredient.from(stickLong, Steel, 2))
@@ -1326,11 +1249,7 @@ public class GARecipeAddition {
 
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(6000).EUt(16000)
                     .inputs(CountableIngredient.from(cableGtSingle, Copper, 8))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Aluminium, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Aluminium, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(plate, Aluminium, 2))
                     .inputs(CountableIngredient.from(ingot, Aluminium, 2))
                     .inputs(CountableIngredient.from(stickLong, Aluminium, 2))
@@ -1345,11 +1264,7 @@ public class GARecipeAddition {
 
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(6000).EUt(32000)
                     .inputs(CountableIngredient.from(cableGtSingle, Gold, 8))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), StainlessSteel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), StainlessSteel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(plate, StainlessSteel, 2))
                     .inputs(CountableIngredient.from(ingot, StainlessSteel, 2))
                     .inputs(CountableIngredient.from(stickLong, StainlessSteel, 2))
@@ -1364,11 +1279,7 @@ public class GARecipeAddition {
 
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(6000).EUt(64000)
                     .inputs(CountableIngredient.from(cableGtSingle, Aluminium, 8))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), Titanium, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), Titanium, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(plate, Titanium, 2))
                     .inputs(CountableIngredient.from(ingot, Titanium, 2))
                     .inputs(CountableIngredient.from(stickLong, Titanium, 2))
@@ -1384,11 +1295,7 @@ public class GARecipeAddition {
 
             ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(6000).EUt(128000)
                     .inputs(CountableIngredient.from(cableGtSingle, Tungsten, 8))
-<<<<<<< HEAD
                     .inputs(CountableIngredient.from(OrePrefix.getPrefix(plateB), TungstenSteel, 2))
-=======
-                    .inputs(CountableIngredient.from(getPrefix("plateCurved"), TungstenSteel, 2))
->>>>>>> e6f1fd19 (Cleanup GARecipeAddition a little)
                     .inputs(CountableIngredient.from(plate, TungstenSteel, 2))
                     .inputs(CountableIngredient.from(ingot, TungstenSteel, 2))
                     .inputs(CountableIngredient.from(stickLong, TungstenSteel, 2))
@@ -4046,7 +3953,7 @@ public class GARecipeAddition {
         ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING),
                 "PhP", "PHP", "PwP",
                 'P', "plateTungstenSteel",
-                'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
+                'H', MetaBlocks.MACHINE_CASING.getItemVariant(LuV));
 
         ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2),
                 "PhP", "PHP", "PwP",
