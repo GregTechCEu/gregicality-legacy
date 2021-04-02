@@ -190,7 +190,7 @@ public class Lasers {
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(NitricAcid.getFluid(1000))
                 .outputs(CesiumBromide.getItemStack(4))
-                .outputs(NMethylglicine.getItemStack(26))
+                .outputs(Sarcosine.getItemStack(26))
                 .buildAndRegister();
 
         // 2Cs + H2O2 -> 2CsOH

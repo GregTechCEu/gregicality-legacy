@@ -1,5 +1,6 @@
 package gregicadditions.recipes;
 
+import exnihilocreatio.items.ore.Ore;
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.EnumElectronTube;
@@ -1704,6 +1705,13 @@ public class GARecipeAddition {
                 .chancedOutput(OreDictUnifier.get(dustSmall, SodaAsh), 5000, 0)
                 .buildAndRegister();
 
+        // Ilmenite Electrolysis
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(60)
+                .input(dust, Ilmenite, 5)
+                .output(dust, Iron)
+                .output(dust, Rutile, 3)
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
 
         // Assembly Line Casings
         ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING, 2),
@@ -2578,6 +2586,36 @@ public class GARecipeAddition {
                 .fluidOutputs(Ethane.getFluid(125))
                 .fluidOutputs(Methane.getFluid(125))
                 .fluidOutputs(Octane.getFluid(50))
+                .buildAndRegister();
+
+        // Add Cyclopentadiene to Steam-cracked Naphtha
+        removeRecipesByInputs(DISTILLATION_RECIPES, SteamCrackedNaphtha.getFluid(1000));
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(7).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(8).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(9).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(10).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+
+        DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120)
+                .fluidInputs(SteamCrackedNaphtha.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(25))
+                .fluidOutputs(LightFuel.getFluid(50))
+                .fluidOutputs(Toluene.getFluid(20))
+                .fluidOutputs(Benzene.getFluid(100))
+                .fluidOutputs(Butene.getFluid(50))
+                .fluidOutputs(Butadiene.getFluid(50))
+                .fluidOutputs(Propane.getFluid(15))
+                .fluidOutputs(Propene.getFluid(300))
+                .fluidOutputs(Ethane.getFluid(65))
+                .fluidOutputs(Ethylene.getFluid(500))
+                .fluidOutputs(Methane.getFluid(500))
+                .fluidOutputs(Cyclopentadiene.getFluid(75))
                 .buildAndRegister();
 
         // Rocket Fuel Tier T4
@@ -4505,6 +4543,27 @@ public class GARecipeAddition {
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(Epichlorhydrin.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        // Fix possible HSS-S and Osmiridium recipe conflict
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Iridium, 3)
+                .input(dust, Osmium)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(dust, Osmiridium, 4)
+                .EUt(30)
+                .duration(764)
+                .buildAndRegister();
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, HSSG, 6)
+                .input(dust, Iridium, 2)
+                .input(dust, Osmium)
+                .notConsumable(new IntCircuitIngredient(1))
+                .output(dust, HSSS, 9)
+                .EUt(30)
+                .duration(1160)
                 .buildAndRegister();
     }
 

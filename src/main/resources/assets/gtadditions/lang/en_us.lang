@@ -160,7 +160,7 @@ metaitem.dimethylaminopyridine.name=Dimethylaminopyridine
 metaitem.pdirreoceos.name=PdIrReOCeOsSi Catalyst
 metaitem.sodium_ethoxide.name=Sodium Ethoxide
 metaitem.mgcl_bromide.name=Magnesium Chloride Bromide
-metaitem.n_methylglicine.name=N Methylglycine
+metaitem.sarcosine.name=Sarcosine
 metaitem.sodium_nitrite.name=Sodium Nitrite
 metaitem.znfealcl_catalyst.name=ZnFeAlCl Catalyst
 metaitem.difluorobenzophenone.name=Difluorobenzophenone
@@ -3898,6 +3898,7 @@ fluid.atl_ethylene_mixture=ATL Ethylene Mixture
 fluid.drilling_mud_mixture=Drilling Mud Mixture
 fluid.iron_ii_chloride=Iron II Chloride
 fluid.propadiene=Propadiene
+fluid.cyclopentadiene=Cyclopentadiene
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

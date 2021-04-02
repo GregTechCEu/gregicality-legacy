@@ -938,6 +938,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial LubricantClaySlurry = new SimpleFluidMaterial("lubricant_clay_slurry", (Lubricant.materialRGB + BentoniteClaySlurry.rgb) / 2);
     public static final SimpleFluidMaterial ATLEthylene = new SimpleFluidMaterial("atl_ethylene_mixture", (ATL.rgb + EthyleneGlycol.rgb) / 2);
     public static final SimpleFluidMaterial DrillingMudMixture = new SimpleFluidMaterial("drilling_mud_mixture", (CaCBaSMixture.rgb + LubricantClaySlurry.rgb) / 2);
+    public static final SimpleFluidMaterial Cyclopentadiene = new SimpleFluidMaterial("cyclopentadiene", Cyclooctadiene.rgb, "C5H6");
 
 
 
@@ -1021,7 +1022,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PdIrReOCeOS = new SimpleDustMaterial("pdirreoceos", (Palladium.materialRGB+Iridium.materialRGB+Rhenium.materialRGB+Cerium.materialRGB+Osmium.materialRGB+Silicon.materialRGB+Oxygen.materialRGB)/7, (short) 72, MaterialIconSet.DULL, "PdIrReCeOsSiO4");
     public static final SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", (Ethanol.materialRGB+ SodiumHydroxide.materialRGB)/2, (short) 73, MaterialIconSet.DULL, "C2H5ONa");
     public static final SimpleDustMaterial MgClBrominide = new SimpleDustMaterial("mgcl_bromide", (MagnesiumChloride.materialRGB+Bromine.materialRGB)/2, (short) 74, MaterialIconSet.DULL, "MgCl2Br");
-    public static final SimpleDustMaterial NMethylglicine = new SimpleDustMaterial("n_methylglicine", (Glycine.rgb+Oxygen.materialRGB)/2, (short) 75, MaterialIconSet.DULL, "NH2CH2COOH");
+    public static final SimpleDustMaterial Sarcosine = new SimpleDustMaterial("sarcosine", (Glycine.rgb+Oxygen.materialRGB)/2, (short) 75, MaterialIconSet.DULL, "C3H7NO2");
     public static final SimpleDustMaterial SodiumNitrite = new SimpleDustMaterial("sodium_nitrite", (Sodium.materialRGB+Nitrogen.materialRGB)/2, (short) 76, MaterialIconSet.DULL, "NaNO2");
     public static final SimpleDustMaterial ZnFeAlClCatalyst = new SimpleDustMaterial("znfealcl_catalyst", (Zinc.materialRGB+Iron.materialRGB+Aluminium.materialRGB+Chlorine.materialRGB)/4, (short) 77, MaterialIconSet.SHINY, "ZnFeAlCl");
     public static final SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", (FluoroBenzene.rgb+Fluorotoluene.rgb)/2, (short) 78, MaterialIconSet.SHINY, "(FC6H4)2CO");
