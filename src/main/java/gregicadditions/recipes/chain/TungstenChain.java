@@ -59,12 +59,16 @@ public class TungstenChain {
                     .buildAndRegister();
 
             // CaCl2 + Na2WO4 + 2H2O -> WCaO4 + 2NaCl(H2O)
+            // CaCl2 + Na0.5WO4 + H2O -> WCaO4 + 2Cl + 0.5Na + H2O
+            // TODO
+            // This recipe is weird, since we are trying to keep a good balance with the chain.
+            // The Na2WO4 is treated more like Na0.5WO
             CHEMICAL_RECIPES.recipeBuilder()
                     .input(dust, CalciumChloride, 3)
                     .fluidInputs(SodiumTungstate.getFluid(1000))
-                    .fluidInputs(Water.getFluid(2000))
+                    .fluidInputs(Water.getFluid(500))
                     .output(dust, CalciumTungstate, 6)
-                    .fluidOutputs(SaltWater.getFluid(2000))
+                    .fluidOutputs(SaltWater.getFluid(500))
                     .EUt(480)
                     .duration(100)
                     .buildAndRegister();
