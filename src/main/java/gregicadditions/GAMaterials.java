@@ -1145,7 +1145,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial DehydratedLignite = new SimpleDustMaterial("dehydrated_lignite", 0x5c4020, (short) 196, MaterialIconSet.DULL, "C2(H2O)4C?");
     public static final SimpleDustMaterial BCEPellet = new SimpleDustMaterial("bce_pellet", 0x3c3020, (short) 197, MaterialIconSet.LIGNITE, "C2(H2O)4C");
     public static final SimpleDustMaterial CopperGalliumIndiumMix = new SimpleDustMaterial("copper_gallium_indium_mix", (Indium.materialRGB + Copper.materialRGB + Gallium.materialRGB) / 3, (short) 198, MaterialIconSet.DULL, "CuGaIn");
-    public static final SimpleDustMaterial CopperGalliumIndiumSelenide = new SimpleDustMaterial("copper_gallium_indium_selenide", (CopperGalliumIndiumMix.rgb + Selenium.materialRGB) / 2, (short) 199, MaterialIconSet.DULL, "CuGaInSeH2");
+    public static final SimpleDustMaterial CopperGalliumIndiumSelenide = new SimpleDustMaterial("copper_gallium_indium_selenide", (CopperGalliumIndiumMix.rgb + Selenium.materialRGB) / 2, (short) 199, MaterialIconSet.DULL, "CuGaInSe2");
     public static final SimpleDustMaterial LanthanumCalciumManganate = new SimpleDustMaterial("lanthanum_gallium_manganate", 0x8aa07b, (short) 200, MaterialIconSet.DULL, "LaCaMnO3");
     public static final SimpleDustMaterial AluminiumComplex = new SimpleDustMaterial("aluminium_complex", 0x3f5a9f, (short) 201, MaterialIconSet.DULL, "AlC9H7NO");
     public static final SimpleDustMaterial IronPlatinumCatalyst = new SimpleDustMaterial("iron_platinum_catalyst", Iron.materialRGB / 2 + Platinum.materialRGB / 2, (short) 205, MaterialIconSet.SHINY, "FePt");
@@ -1179,7 +1179,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial FranciumCarbide = new SimpleDustMaterial("francium_carbide", Francium.materialRGB, (short) 232, MaterialIconSet.SHINY, "Fr2C2");
     public static final SimpleDustMaterial BoronCarbide = new SimpleDustMaterial("boron_carbide", 0x303030, (short) 233, MaterialIconSet.FINE, "B4C");
     public static final SimpleDustMaterial BoronFranciumCarbide = new SimpleDustMaterial("boron_francium_carbide", 0x808080, (short) 234, MaterialIconSet.SHINY, "F4B4C5");
-    public static final SimpleDustMaterial MixedAstatideSalts = new SimpleDustMaterial("mixed_astatide_salts", 0x6df63f, (short) 235, MaterialIconSet.SHINY); // TODO: TBD
+    public static final SimpleDustMaterial MixedAstatideSalts = new SimpleDustMaterial("mixed_astatide_salts", 0x6df63f, (short) 235, MaterialIconSet.SHINY, "(At3)(Ho)(Th)(Cn)(Fl)");
     public static final SimpleDustMaterial SodiumIodide = new SimpleDustMaterial("sodium_iodide", 0x555588, (short) 236, MaterialIconSet.DULL, "NaI");
     public static final SimpleDustMaterial SodiumIodate = new SimpleDustMaterial("sodium_iodate", 0x11116d, (short) 237, MaterialIconSet.DULL, "NaIO3");
     public static final SimpleDustMaterial SodiumPeriodate = new SimpleDustMaterial("sodium_periodate", 0x11116d, (short) 238, MaterialIconSet.DULL, "NaIO4");

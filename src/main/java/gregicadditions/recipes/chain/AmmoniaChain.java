@@ -11,15 +11,15 @@ public class AmmoniaChain {
     public static void init() {
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust, Garnierite)
-                .inputs(Alumina.getItemStack())
-                .outputs(NiAlOCatalyst.getItemStack(2))
+                .input(dust, Garnierite, 2)
+                .inputs(Alumina.getItemStack(5))
+                .outputs(NiAlOCatalyst.getItemStack(7))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Iron)
-                .inputs(ChromiumOxide.getItemStack())
-                .outputs(FeCrOCatalyst.getItemStack(2))
+                .inputs(ChromiumOxide.getItemStack(4))
+                .outputs(FeCrOCatalyst.getItemStack(5))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
