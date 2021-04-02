@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain.optical;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -20,10 +19,10 @@ public class Lasers {
                 .fluidOutputs(ChlorinatedSolvents.getFluid(7000))
                 .buildAndRegister();
 
-        // [2CH4 + 5Cl] -> 1.33CH3Cl + 2.17CH2Cl2 + 2.17CHCl3 + 1.33CCl4
-        // TODO, this is wildly imbalanced
+        // 2[2CH4 + 5Cl] -> 1.33CH3Cl + 2.17CH2Cl2 + 2.17CHCl3 + 1.33CCl4
+        // Not chemically balanced, but is a convenient, not too OP recipe
         DISTILLATION_RECIPES.recipeBuilder().duration(280).EUt(1100)
-                .fluidInputs(ChlorinatedSolvents.getFluid(7000))
+                .fluidInputs(ChlorinatedSolvents.getFluid(14000))
                 .fluidOutputs(Chloromethane.getFluid(1330))
                 .fluidOutputs(Dichloromethane.getFluid(2170))
                 .fluidOutputs(Chloroform.getFluid(2170))
@@ -75,11 +74,11 @@ public class Lasers {
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(250).EUt(6400)
                 .input(dust, YttriumOxide,45)
                 .inputs(NeodymiumOxide.getItemStack(5))
-                .outputs(NeodymiumDopedYttrium.getItemStack(50))
+                .outputs(NeodymiumDopedYttrium.getItemStack(10))
                 .buildAndRegister();
 
         // 5NH3 + 5HCN + 3H2SO4 + 2KMnO4 -> 3H2O + 2MnSO4 + K2SO4 + 5NH4CNO
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(3400)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(3400)
                 .fluidInputs(Ammonia.getFluid(5000))
                 .fluidInputs(HydrogenCyanide.getFluid(5000))
                 .fluidInputs(SulfuricAcid.getFluid(3000))
@@ -100,7 +99,7 @@ public class Lasers {
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(240).blastFurnaceTemp(720)
                 .inputs(PotassiumManganate.getItemStack(21))
                 .fluidInputs(Water.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, Pyrolusite, 3))
+                .output(dust, Pyrolusite, 3)
                 .outputs(PotassiumPermanganate.getItemStack(12))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .buildAndRegister();
@@ -108,7 +107,7 @@ public class Lasers {
         // [Al2O3  + CH2Cl2 + 2C12H27N] + Neodymium Doped Yttrium + (NH2)CO(NH2) -> 2Unprocessed Nd:YAG + 2C12H27N
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(32000)
                 .fluidInputs(AluminaSolution.getFluid(1000))
-                .inputs(NeodymiumDopedYttrium.getItemStack(5))
+                .inputs(NeodymiumDopedYttrium.getItemStack())
                 .inputs(Urea.getItemStack(8))
                 .fluidOutputs(UnprocessedNdYAGSolution.getFluid(2000))
                 .fluidOutputs(Tributylamine.getFluid(2000))
@@ -138,7 +137,7 @@ public class Lasers {
         LATHE_RECIPES.recipeBuilder().duration(340).EUt(26000)
                 .inputs(NDYAG_BOULE.getStackForm())
                 .outputs(NDYAG_ROD.getStackForm(2))
-                .outputs(OreDictUnifier.get(dustTiny, NdYAG))
+                .output(dustTiny, NdYAG)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
@@ -174,7 +173,7 @@ public class Lasers {
         // 3[C2H8N2 + 2O] -> 3C2H5NO2 + 3NH3
         DISTILLATION_RECIPES.recipeBuilder().duration(240).EUt(17500)
                 .fluidInputs(EDTASolution.getFluid(15000))
-                .outputs(OreDictUnifier.get(dust, Salt, 16))
+                .output(dust, Salt, 16)
                 .fluidOutputs(Ammonia.getFluid(3000))
                 .fluidOutputs(EDTA.getFluid(3000))
                 .fluidOutputs(Glycine.getFluid(3000))
@@ -204,7 +203,7 @@ public class Lasers {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(500)
                 .inputs(CesiumBromide.getItemStack(2))
                 .fluidOutputs(Bromine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Caesium))
+                .output(dust, Caesium)
                 .buildAndRegister();
 
         // 2Pr + H2SO4 -> Pr2O3 + H2S + O
@@ -238,16 +237,16 @@ public class Lasers {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .input(dust, Yttrium, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, YttriumOxide, 5))
+                .output(dust, YttriumOxide, 5)
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
-        // 3Y2O3 + Pr2O3 + Nd2O3 + 30HNO3 -> [6Y(NO3)3 + 2Pr(NO3)3 + 2Nd(NO3)3 + 15H2O]
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(280).EUt(18000)
+        // 3Y2O3 + Pr2O3 + Ho2O3 + 30HNO3 -> [6Y(NO3)3 + 2Pr(NO3)3 + 2Ho(NO3)3 + 15H2O]
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(18000)
                 .input(dust, YttriumOxide,15)
-                .inputs(PraseodymiumOxide.getItemStack())
-                .inputs(HolmiumOxide.getItemStack())
+                .inputs(PraseodymiumOxide.getItemStack(5))
+                .inputs(HolmiumOxide.getItemStack(5))
                 .fluidInputs(NitricAcid.getFluid(30000))
                 .fluidOutputs(PrYHoNitrateSolution.getFluid(30000))
                 .buildAndRegister();
@@ -255,13 +254,14 @@ public class Lasers {
         // Be + LiF + 2NH4HF2 + CO + [6Y(NO3)3 + 2Pr(NO3)3 + 2Nd(NO3)3 + 15H2O] -> 2PrHoYLF Nanoparticles + 2NH4NO3 + 2HF + BeF2 + CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(2000)
                 .input(dust, LithiumFluoride, 2)
+                .input(dust, Beryllium)
                 .inputs(AmmoniumBifluoride.getItemStack(16))
                 .fluidInputs(PrYHoNitrateSolution.getFluid(2000))
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .notConsumable(CetaneTrimethylAmmoniumBromide.getFluid(10))
-                .notConsumable(EDTA.getFluid(10))
+                .notConsumable(CetaneTrimethylAmmoniumBromide.getFluid(0))
+                .notConsumable(EDTA.getFluid(0))
                 .outputs(PrHoYLFNanoparticles.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, BerylliumFluoride, 3))
+                .output(dust, BerylliumFluoride, 3)
                 .fluidOutputs(AmmoniumNitrate.getFluid(2000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
@@ -284,7 +284,7 @@ public class Lasers {
         LATHE_RECIPES.recipeBuilder().duration(340).EUt(26000)
                 .inputs(PRHOYLF_BOULE.getStackForm())
                 .outputs(PRHOYLF_ROD.getStackForm(2))
-                .outputs(OreDictUnifier.get(dustTiny,PrHoYLF))
+                .output(dustTiny, PrHoYLF)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
@@ -315,7 +315,7 @@ public class Lasers {
                 .buildAndRegister();
 
         // 3Y2O3 + Lu2O3 + Tm2O3 + 30HCl -> [6YCl3 + 2LuCl3 + 2TmCl3 + 15H2O]
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(280).EUt(18000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(18000)
                 .input(dust, YttriumOxide,15)
                 .inputs(LutetiumOxide.getItemStack(5))
                 .inputs(ThuliumOxide.getItemStack(5))
@@ -346,7 +346,7 @@ public class Lasers {
                 .inputs(LuTmYVOPrecipitate.getItemStack())
                 .fluidInputs(Ethanol100.getFluid(1000))
                 .outputs(LuTmYVONanoparticles.getItemStack())
-                .outputs(OreDictUnifier.get(dust, Salt, 6))
+                .output(dust, Salt, 6)
                 .outputs(AmmoniumCarbonate.getItemStack(14))
                 .fluidOutputs(Propene.getFluid(1000))
                 .buildAndRegister();
@@ -362,10 +362,10 @@ public class Lasers {
                 .outputs(CalciumHydroxide.getItemStack(5))
                 .buildAndRegister();
 
-        // NaH = Na + H
+        // NaH -> Na + H
         ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(30)
                 .inputs(SodiumHydride.getItemStack(2))
-                .outputs(OreDictUnifier.get(dust, Sodium))
+                .output(dust, Sodium)
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .buildAndRegister();
 
@@ -379,7 +379,7 @@ public class Lasers {
         LATHE_RECIPES.recipeBuilder().duration(340).EUt(26000)
                 .inputs(LUTMYVO_BOULE.getStackForm())
                 .outputs(LUTMYVO_ROD.getStackForm(2))
-                .outputs(OreDictUnifier.get(dustTiny,LuTmYVO))
+                .output(dustTiny, LuTmYVO)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
@@ -399,7 +399,7 @@ public class Lasers {
                 .fluidOutputs(SiliconFluoride.getFluid(1000))
                 .buildAndRegister();
 
-        // SiF4 + 2HF = H2SiF6
+        // SiF4 + 2HF -> H2SiF6
         CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(1300)
                 .fluidInputs(SiliconFluoride.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(2000))
@@ -411,7 +411,7 @@ public class Lasers {
                 .fluidInputs(FluorosilicicAcid.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(6000))
                 .fluidInputs(Water.getFluid(2000))
-                .outputs(OreDictUnifier.get(dust, SiliconDioxide, 3))
+                .output(dust, SiliconDioxide, 3)
                 .fluidOutputs(AmmoniumFluoride.getFluid(6000))
                 .buildAndRegister();
 
@@ -429,7 +429,7 @@ public class Lasers {
                 .fluidOutputs(AmmoniumBifluorideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // [NH4HF2 + H2O] = NH3 + 2HF + H2O
+        // [NH4HF2 + H2O] -> NH3 + 2HF + H2O
         DISTILLATION_RECIPES.recipeBuilder().duration(260).EUt(1300)
                 .fluidInputs(AmmoniumBifluorideSolution.getFluid(2000))
                 .fluidOutputs(Ammonia.getFluid(1000))
