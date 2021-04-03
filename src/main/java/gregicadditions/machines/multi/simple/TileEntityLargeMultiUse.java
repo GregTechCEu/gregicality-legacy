@@ -142,7 +142,6 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
             this.recipeMap = possibleRecipe[pos];
         }
 
-        this.scheduleRenderUpdate();
         return true; // return true here on the server to keep the GUI closed
     }
 
