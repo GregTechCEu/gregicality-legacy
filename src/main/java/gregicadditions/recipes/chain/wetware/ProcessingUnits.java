@@ -13,7 +13,7 @@ public class ProcessingUnits {
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, Titanium)
-                .fluidInputs(Plastic.getFluid(1000))
+                .fluidInputs(Plastic.getFluid(1008))
                 .inputs(STERILIZED_PETRI_DISH.getStackForm())
                 .outputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
                 .EUt(30720)
@@ -31,7 +31,7 @@ public class ProcessingUnits {
                 .inputs(MASTER_BOARD.getStackForm())
                 .inputs(STEM_CELLS.getStackForm())
                 .inputs(NEURO_SUPPORT_UNIT.getStackForm())
-                .fluidInputs(Polybenzimidazole.getFluid(1000))
+                .fluidInputs(Polybenzimidazole.getFluid(1008))
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(Titanium.getFluid(1296))
                 .outputs(CYBER_PROCESSING_UNIT.getStackForm(8))
@@ -40,7 +40,7 @@ public class ProcessingUnits {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .fluidInputs(Polybenzimidazole.getFluid(1000))
+                .fluidInputs(Polybenzimidazole.getFluid(1008))
                 .fluidInputs(UUMatter.getFluid(100))
                 .input(wireFine, NaquadahAlloy, 16)
                 .input(plate, Tritanium, 2)
