@@ -158,11 +158,11 @@ public class PEEKChain {
                 .duration(800)
                 .buildAndRegister();
 
-        // MgCl2Br -> Mg + Cl2 + Br
+        // MgClBr -> Mg + Cl + Br
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .inputs(MgClBromide.getItemStack(4))
+                .inputs(MgClBromide.getItemStack(3))
                 .output(dust, Magnesium)
-                .fluidOutputs(Chlorine.getFluid(2000))
+                .fluidOutputs(Chlorine.getFluid(1000))
                 .fluidOutputs(Bromine.getFluid(1000))
                 .EUt(1920)
                 .duration(100)
