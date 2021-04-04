@@ -126,15 +126,14 @@ public class Batteries {
                 .outputs(GalliumChloride.getItemStack(4))
                 .buildAndRegister();
 
-        // 9AlCl3 + GaCl3 + SiO2 + 30H2O + 30NH3 -> Al9Si10O50Ga + 30NH4Cl
-        // weird recipe, but its very positive on Silicon, so it should be ok since
-        // Halloysite cannot be electrolyzed
+        // 9AlCl3 + GaCl3 + 10SiO2 + 15H2O + 30NH3 + 15O -> Al9Si10O50Ga + 30NH4Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(870).EUt(64000)
                 .inputs(AluminiumChloride.getItemStack(36))
                 .inputs(GalliumChloride.getItemStack(4))
-                .inputs(SilicaGel.getItemStack(3))
-                .fluidInputs(Water.getFluid(30000))
+                .inputs(SilicaGel.getItemStack(30))
+                .fluidInputs(Water.getFluid(15000))
                 .fluidInputs(Ammonia.getFluid(30000))
+                .fluidInputs(Oxygen.getFluid(15000))
                 .outputs(Halloysite.getItemStack(90))
                 .fluidOutputs(AmmoniumChloride.getFluid(30000))
                 .buildAndRegister();
@@ -157,13 +156,21 @@ public class Batteries {
                 .fluidOutputs(Water.getFluid(10000))
                 .buildAndRegister();
 
-        // 7La2O3 + 7NiO + 2C10H16N2O8 -> 7La2NiO4 + 15CO + 5CH4 + 4NH3
-        // loses 1 oxygen. probably ok
+        // Ni + O -> NiO
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
+                .input(dust, Nickel)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(dust, Garnierite, 2)
+                .buildAndRegister();
+
+        // 7La2O3 + 7NiO + Ca + 2C10H16N2O8 -> 7La2NiO4 + CaO + 15CO + 5CH4 + 4NH3
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(420).EUt(240000)
                 .inputs(LanthanumOxide.getItemStack(35))
                 .input(dust, Garnierite, 14)
+                .input(dust, Calcium)
                 .fluidInputs(EDTA.getFluid(2000))
                 .outputs(LanthanumNickelOxide.getItemStack(49))
+                .output(dust, Quicklime, 2)
                 .fluidOutputs(CarbonMonoxde.getFluid(15000))
                 .fluidOutputs(Methane.getFluid(5000))
                 .fluidOutputs(Ammonia.getFluid(4000))

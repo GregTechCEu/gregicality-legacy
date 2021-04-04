@@ -67,7 +67,7 @@ public class PlatinumSludgeGroupChain {
                 .buildAndRegister();
 
         // (SiO2)2Au3 -> 2SiO2 + 3Au
-        MIXER_RECIPES.recipeBuilder()
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, PGSDResidue, 5)
                 .output(dust, SiliconDioxide, 6)
                 .output(dust, Gold, 3)
@@ -414,7 +414,6 @@ public class PlatinumSludgeGroupChain {
                 .EUt(480)
                 .buildAndRegister();
 
-        // TODO Double check that this is the only fluid -> solid recipe for RutheniumTetroxide
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_BALL)
                 .fluidInputs(RutheniumTetroxide.getFluid(1000))

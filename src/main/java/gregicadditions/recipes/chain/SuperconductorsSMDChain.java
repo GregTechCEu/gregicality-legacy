@@ -255,7 +255,6 @@ public class SuperconductorsSMDChain {
                 .outputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
                 .buildAndRegister();
 
-        // TODO Tungsten needs a circuit because of this
         BLAST_RECIPES.recipeBuilder().duration(500).EUt(1900).blastFurnaceTemp(2400)
                 .input(dust, Tungsten, 9)
                 .input(GAEnums.GAOrePrefix.oxide, Thorium)

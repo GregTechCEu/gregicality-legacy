@@ -203,20 +203,19 @@ public class NanotubeChain {
                 .output(dust, RockSalt, 4)
                 .buildAndRegister();
 
-        // 4C12H8I2 + 2C8H12Cl2Pt + 4Cl + 4AgBF4 + 4C3H9SnCl -> C6H4 + 4BF3 + 2C8H16 + 2Pt + 8I
-        // TODO Very lossy, but way too much going in to make it balanced
+        // 4C12H8I2 + 2C8H12Cl2Pt + 4AgBF4 + 4C3H9SnCl + {8C}  -> 10C6H4 + 4BF3 + 3C8H16 + 2PtCl2 + 8I + {4AgCl + 4Sn + 4HF}
+        // TODO Everything within { } does not fit
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(460).EUt(450000)
                 .notConsumable(Bipyridine.getItemStack())
                 .notConsumable(PalladiumBisDibenzylidieneacetone.getItemStack())
                 .inputs(Diiodobiphenyl.getItemStack(4))
                 .inputs(Dichlorocycloctadieneplatinium.getItemStack(2))
-                .fluidInputs(Chlorine.getFluid(4000))
                 .fluidInputs(Silvertetrafluoroborate.getFluid(4000))
                 .fluidInputs(TetramethyltinChloride.getFluid(4000))
-                .fluidOutputs(Cycloparaphenylene.getFluid(1000))
+                .fluidOutputs(Cycloparaphenylene.getFluid(10000))
                 .fluidOutputs(BoronFluoride.getFluid(4000))
-                .fluidOutputs(Oct1ene.getFluid(2000))
-                .output(dust, Platinum, 2)
+                .fluidOutputs(Oct1ene.getFluid(3000))
+                .output(dust, PlatinumRawPowder, 6)
                 .output(dust, Iodine, 8)
                 .buildAndRegister();
 

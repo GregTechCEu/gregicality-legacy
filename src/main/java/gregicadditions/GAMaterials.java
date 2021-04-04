@@ -1193,7 +1193,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial ZirconylChloride = new SimpleDustMaterial("zirconyl_chloride", ZirconiumTetrachloride.rgb, (short) 249, MaterialIconSet.DULL, "ZrOCl2");
     public static final SimpleDustMaterial LeadSenenide = new SimpleDustMaterial("lead_selenide", (Lead.materialRGB+Selenium.materialRGB)/2, (short) 250, MaterialIconSet.DULL, "PbSe");
     public static final SimpleDustMaterial LeadScandiumTantalate = new SimpleDustMaterial("lead_scandium_tantalate", (Lead.materialRGB+Scandium.materialRGB+Tantalum.materialRGB)/3, (short) 251, MaterialIconSet.SHINY, "Pb(ScTa)O3");
-    public static final SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY, "BETS");
+    public static final SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY, "?"); // TODO
     public static final SimpleDustMaterial MagnetorestrictiveAlloy = new SimpleDustMaterial("magnetorestrictive_alloy", 0xafefef, (short) 252, MaterialIconSet.DULL, "Tb4Dy7Fe10Co5B2SiC");
     public static final SimpleDustMaterial BoronOxide = new SimpleDustMaterial("boron_oxide",(Boron.materialRGB+Oxygen.materialRGB)/2,(short) 256,MaterialIconSet.DULL, "B2O3");
     public static final SimpleDustMaterial LithiumAluminiumFluoride = new SimpleDustMaterial("lithium_aluminium_fluoride",(Lithium.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/3,(short) 263,MaterialIconSet.DULL, "AlF4Li");

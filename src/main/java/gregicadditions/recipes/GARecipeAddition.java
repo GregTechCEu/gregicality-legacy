@@ -2513,11 +2513,18 @@ public class GARecipeAddition {
 
         // Recipes Needing Configuration Circuits
         removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Tungsten));
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)
                 .input(dust, Aluminium)
                 .notConsumable(new IntCircuitIngredient(1))
-                .outputs(OreDictUnifier.get(ingot, Aluminium))
+                .output(ingot, Aluminium)
+                .buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(10980).blastFurnaceTemp(3000)
+                .input(dust, Tungsten)
+                .notConsumable(new IntCircuitIngredient(1))
+                .output(ingotHot, Tungsten)
                 .buildAndRegister();
 
         removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});

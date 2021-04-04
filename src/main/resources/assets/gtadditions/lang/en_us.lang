@@ -691,11 +691,11 @@ metaitem.tantalum_oxide.name=Tantalum Oxide
 metaitem.zirconyl_chloride.name=Zirconyl Chloride
 metaitem.lead_selenide.name=Lead Selenide
 metaitem.lead_scandium_tantalate.name=Lead Scandium Tantalate
-metaitem.bets.name=Bisethylenedithiotetraselenafulvalene
+metaitem.bets.name=Bisethylenedithiotetraselenafulvalene (BETS)
 metaitem.magnetorestrictive_alloy.name=Magnetorestrictive Alloy
 metaitem.boron_oxide.name=Boron Trioxide
 metaitem.lithium_aluminium_fluoride.name=Lithium Aluminium Fluoride
-metaitem.bets_perrhenate.name=Bisethylenedithiotetraselenafulvalene Perrhenate
+metaitem.bets_perrhenate.name=Bisethylenedithiotetraselenafulvalene (BETS) Perrhenate
 metaitem.tbcco_dust.name=TBCCO Dust
 metaitem.borocarbide_dust.name=Borocarbide Dust
 metaitem.actinium_superhydride.name=Actinium Superhydride
@@ -839,6 +839,7 @@ metaitem.lanthanum_nickel_oxide.name=Lanthanum Nickel Oxide
 metaitem.sorbose.name=Sorbose
 metaitem.calcium_alginate.name=Calcium Alginate
 metaitem.nickel_oxide_hydroxide.name=Nickel Oxide Hydroxide
+metaitem.gallium_chloride.name=Gallium Chloride
 
 metaitem.unstable.star.name=Unstable Star
 
