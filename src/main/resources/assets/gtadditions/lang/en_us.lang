@@ -3899,6 +3899,7 @@ fluid.drilling_mud_mixture=Drilling Mud Mixture
 fluid.iron_ii_chloride=Iron II Chloride
 fluid.propadiene=Propadiene
 fluid.cyclopentadiene=Cyclopentadiene
+fluid.leached_copper=Copper Leach
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

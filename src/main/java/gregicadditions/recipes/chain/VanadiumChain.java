@@ -22,7 +22,7 @@ public class VanadiumChain {
                 .buildAndRegister();
 
         // VO? = Dark Ash + TiO2 + VO
-        MACERATOR_RECIPES.recipeBuilder().duration(2400).EUt(125)
+        MACERATOR_RECIPES.recipeBuilder().duration(80).EUt(20)
                 .inputs(VanadiumSlag.getItemStack(5))
                 .output(dustTiny, DarkAsh)
                 .output(dustTiny, Rutile, 3)

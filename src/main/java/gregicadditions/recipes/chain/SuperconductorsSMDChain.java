@@ -81,8 +81,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // C6H7NO + C3H8O3 + O -> C9H7NO + 4H2O
-        // pogged notConsumable saving us from a LCR
-        CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(780)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(780)
                 .fluidInputs(Aminophenol.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))

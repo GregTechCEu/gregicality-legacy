@@ -225,7 +225,7 @@ public class FullereneChain {
                 .buildAndRegister();
 
         // CH3NH2 + 2Cl + CH3COOH -> C3H7NO2 + 2HCl
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Methylamine.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(2000))
                 .fluidInputs(AceticAcid.getFluid(1000))

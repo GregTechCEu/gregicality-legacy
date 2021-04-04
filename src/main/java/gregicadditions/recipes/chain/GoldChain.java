@@ -71,7 +71,7 @@ public class GoldChain {
                 .fluidInputs(HydrochloricAcid.getFluid(4000))
                 .fluidInputs(PreciousLeachNitrate.getFluid(7000))
                 .output(dust, SilverChloride, 8)
-                .fluidOutputs(CopperLeach.getFluid(3000))
+                .fluidOutputs(LeachedCopper.getFluid(3000))
                 .fluidOutputs(DiluteNitricAcid.getFluid(1000))
                 .buildAndRegister();
 
@@ -92,7 +92,7 @@ public class GoldChain {
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(3000)
-                .fluidInputs(CopperLeach.getFluid(100))
+                .fluidInputs(LeachedCopper.getFluid(3000))
                 .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 1000)
                 .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 1000)
                 .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 1000)
