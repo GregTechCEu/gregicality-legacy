@@ -264,7 +264,7 @@ public class SensorEmitter {
                 .fluidInputs(Oxygen.getFluid(4000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .outputs(PotassiumNonahydridorhenate.getItemStack(16))
-                .fluidOutputs(PotassiumEtoxide.getFluid(13000))
+                .fluidOutputs(PotassiumEthoxide.getFluid(13000))
                 .buildAndRegister();
 
         // KTcO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2TcO4 + 13C2H5KO
@@ -275,12 +275,12 @@ public class SensorEmitter {
                 .fluidInputs(Oxygen.getFluid(4000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .outputs(PotassiumNonahydridotechnetate.getItemStack(16))
-                .fluidOutputs(PotassiumEtoxide.getFluid(13000))
+                .fluidOutputs(PotassiumEthoxide.getFluid(13000))
                 .buildAndRegister();
 
         // C2H5KO + HCl -> C2H5OH + KCl
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(3450)
-                .fluidInputs(PotassiumEtoxide.getFluid(1000))
+                .fluidInputs(PotassiumEthoxide.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(Ethanol.getFluid(1000))
                 .output(dust, RockSalt, 2)
@@ -442,12 +442,12 @@ public class SensorEmitter {
                 .fluidInputs(Naphtalene.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
-                .fluidOutputs(Dimethylnaphtalene.getFluid(1000))
+                .fluidOutputs(Dimethylnaphthalene.getFluid(1000))
                 .buildAndRegister();
 
         // C12H12 + C9H12Si(MgBr)2 + ICl + 2HClO -> 2MgClBr + H2C18H11I + (CH3)3SiCl + 2H2O
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(1200000)
-                .fluidInputs(Dimethylnaphtalene.getFluid(1000))
+                .fluidInputs(Dimethylnaphthalene.getFluid(1000))
                 .fluidInputs(AcetylatingReagent.getFluid(1000))
                 .fluidInputs(IodineMonochloride.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(2000))

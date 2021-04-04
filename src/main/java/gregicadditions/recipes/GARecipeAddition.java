@@ -182,7 +182,6 @@ public class GARecipeAddition {
                 .outputs(GLASS_TUBE.getStackForm())
                 .buildAndRegister();
 
-        // TODO Check this recipe
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().fluidInputs(Glass.getFluid(144)).notConsumable(SHAPE_MOLD_BALL.getStackForm()).outputs(GLASS_TUBE.getStackForm()).EUt(16).duration(80).buildAndRegister();
 
         COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)

@@ -139,10 +139,9 @@ public class REEChain {
                 .buildAndRegister();
 
         // H[REE]-Cl + C16H35O4P(cat.) -> [REE](sep.) + HCl
-        // TODO CATALYST
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(RareEarthChloridesSolution.getFluid(1000))
-                .notConsumable(DiethylhexylPhosphoricAcid.getFluid(10))
+                .notConsumable(DiethylhexylPhosphoricAcid.getFluid(0))
                 .fluidOutputs(LaNdOxidesSolution.getFluid(250))
                 .fluidOutputs(SmGdOxidesSolution.getFluid(250))
                 .fluidOutputs(TbHoOxidesSolution.getFluid(250))

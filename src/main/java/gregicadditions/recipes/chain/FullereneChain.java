@@ -288,7 +288,7 @@ public class FullereneChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidInputs(BenzoylChloride.getFluid(2000))
-                .fluidOutputs(BenzylPeroxide.getFluid(1000))
+                .fluidOutputs(BenzoylPeroxide.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .EUt(2000000)
                 .duration(60)

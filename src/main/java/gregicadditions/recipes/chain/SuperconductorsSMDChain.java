@@ -86,12 +86,12 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Glycerol.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .notConsumable(NitroBenzene.getFluid(0))
-                .fluidOutputs(Hydroquinoline.getFluid(1000))
+                .fluidOutputs(Hydroxyquinoline.getFluid(1000))
                 .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(350).EUt(1400)
-                .fluidInputs(Hydroquinoline.getFluid(1000))
+                .fluidInputs(Hydroxyquinoline.getFluid(1000))
                 .input(dust, Aluminium)
                 .outputs(AluminiumComplex.getItemStack())
                 .buildAndRegister();
@@ -149,8 +149,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // TiCl4 + [NaOH + H2O] + [BaCl2 + H2O] -> BaTiO3 + NaCl + 5HCl
-        // TODO Could be moved to even small CR
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(4500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4500)
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(BariumChlorideSolution.getFluid(1000))
@@ -183,7 +182,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .fluidOutputs(Dimetoxythiophene.getFluid(1000))
+                .fluidOutputs(Dimethylthiophene.getFluid(1000))
                 .fluidOutputs(Bromine.getFluid(4000))
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
@@ -192,7 +191,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2000)
                 .notConsumable(GELLED_TOLUENE)
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
-                .fluidInputs(Dimetoxythiophene.getFluid(1000))
+                .fluidInputs(Dimethylthiophene.getFluid(1000))
                 .fluidOutputs(EDOT.getFluid(1000))
                 .fluidOutputs(Methane.getFluid(2000))
                 .buildAndRegister();
@@ -939,11 +938,11 @@ public class SuperconductorsSMDChain {
         // TODO?
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(680000)
                 .inputs(SodiumPeriodate.getItemStack(12))
-                .input(dust, Ruthenium, 15)
+                .input(dust, Ruthenium, 2)
                 .input(dust, SodiumHydroxide, 12)
                 .fluidInputs(CarbonMonoxde.getFluid(2000))
                 .outputs(SodiumIodide.getItemStack(4))
-                .output(dust, SodiumRuthenate, 6)
+                .output(dust, SodiumRuthenate, 14)
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();

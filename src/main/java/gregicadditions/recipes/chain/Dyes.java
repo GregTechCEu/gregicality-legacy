@@ -88,7 +88,6 @@ public class Dyes {
                 .fluidOutputs(IronChloride.getFluid(200))
                 .buildAndRegister();
 
-        // 10? + 4Na2S -> TODO
         CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .fluidInputs(PhosphorousArsenicSolution.getFluid(10000))
                 .input(dust, SodiumSulfide,4)
@@ -178,7 +177,7 @@ public class Dyes {
                 .outputs(OreDictUnifier.get(dust, RockSalt, 4))
                 .buildAndRegister();
 
-        // NH4VO3 + ? + 8H -> NH4NO3 + BiVO4(H2O) + 2H2O TODO
+        // NH4VO3 + ? + 8H -> NH4NO3 + BiVO4(H2O) + 2H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
                 .inputs(AmmoniumVanadate.getItemStack())
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
@@ -194,7 +193,7 @@ public class Dyes {
                 .outputs(BismuthVanadate.getItemStack(6))
                 .buildAndRegister();
 
-        // ? + H2O + As2O3 + Na2CO3 -> 2AsCuHO3 TODO
+        // ? + H2O + As2O3 + Na2CO3 -> 2AsCuHO3
         MIXER_RECIPES.recipeBuilder().duration(220).EUt(125)
                 .fluidInputs(CopperSulfateSolution.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
@@ -230,7 +229,7 @@ public class Dyes {
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
-        // 3K4Fe(CN)6(H2O)3 + 4FeCl3 -> Fe7(CN)18 + 12KCl + 9H2O TODO
+        // 3K4Fe(CN)6(H2O)3 + 4FeCl3 -> Fe7(CN)18 + 12KCl + 9H2O
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(300).EUt(720)
                 .inputs(PotassiumFerrocyanide.getItemStack(3))
                 .fluidInputs(IronChloride.getFluid(4000))
@@ -274,14 +273,14 @@ public class Dyes {
                 .fluidOutputs(CarbonDioxide.getFluid(3000))
                 .buildAndRegister();
 
-        // 2Pb(NO3)2 + K2Cr2O7 -> 2PbCrO4 // TODO Loses 3N, K, O
+        // 2Pb(NO3)2 + K2Cr2O7 -> 2PbCrO4 // Loses 3N, K, O
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(500)
                 .input(dust, LeadNitrate)
                 .input(dust, Potassiumdichromate)
                 .outputs(ChromeYellow.getItemStack(2))
                 .buildAndRegister();
 
-        // 2PbCrO4(KNO4) + H2O -> KOH + HNO3 + Pb2Cr2O5 // TODO
+        // 2PbCrO4(KNO4) + H2O -> KOH + HNO3 + Pb2Cr2O5
         // is really Pb2CrO5, but nowhere for the chrome to go
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(500)
                 .inputs(ChromeYellow.getItemStack(2))
@@ -311,7 +310,7 @@ public class Dyes {
                 .fluidOutputs(HypochlorousAcid.getFluid(4000))
                 .buildAndRegister();
 
-        // C7H7(NO2) + 2C6H5NH2 + HCl -> C30H23N5     TODO Need C11, H5, N2
+        // C7H7(NO2) + 2C6H5NH2 + HCl -> C30H23N5      Need C11, H5, N2
         CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(1400)
                 .fluidInputs(NitroBenzene.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(2000))
@@ -341,7 +340,7 @@ public class Dyes {
                 .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
                 .buildAndRegister();
 
-        // C6H6NNaO3S + C10H9N + HCl + NaNO2 -> NaCl + C26H19N6NaO3S // TODO
+        // C6H6NNaO3S + C10H9N + HCl + NaNO2 -> NaCl + C26H19N6NaO3S
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
                 .inputs(SodiumSulfanilate.getItemStack())
                 .fluidInputs(Naphthylamine.getFluid(1000))
@@ -364,7 +363,7 @@ public class Dyes {
                 .outputs(AminoterephthalicAcid.getItemStack(20))
                 .buildAndRegister();
 
-        // C8H7NO4 -> C20H12N2O2 TODO
+        // C8H7NO4 -> C20H12N2O2
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(1200)
                 .inputs(AminoterephthalicAcid.getItemStack(20))
                 .outputs(Quinacridone.getItemStack(10))
@@ -398,7 +397,7 @@ public class Dyes {
                 .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
-        // C6H4(OH)2 + C8H4O3 + C7H7SO3Na + NH3 + HCl -> C14H10N2O2 TODO
+        // C6H4(OH)2 + C8H4O3 + C7H7SO3Na + NH3 + HCl -> C14H10N2O2
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1400)
                 .fluidInputs(Hydroquinone.getFluid(1000))
                 .input(dust, PhthalicAnhydride)

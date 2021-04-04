@@ -24,7 +24,6 @@ public class SimpleFluidMaterial extends SimpleMaterial {
         this(name, rgb, temperature, false, "");
     }
 
-    // TODO Remove
     public SimpleFluidMaterial(String name, int rgb, ImmutableList<MaterialStack> formula) {
         this(name, rgb, 300, false);
         chemicalFormula = calculateChemicalFormula(formula);

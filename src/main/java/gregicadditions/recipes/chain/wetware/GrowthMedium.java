@@ -133,7 +133,7 @@ public class GrowthMedium {
                 .duration(200)
                 .buildAndRegister();
 
-        // TODO This needs to be better, Zalgo was working on something
+        // This needs to be better, Zalgo was working on something
         MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(APPLE))
                 .chancedOutput(Yeast.getItemStack(), 500, 250)

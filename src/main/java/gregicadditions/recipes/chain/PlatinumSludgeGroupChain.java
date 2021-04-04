@@ -414,9 +414,10 @@ public class PlatinumSludgeGroupChain {
                 .EUt(480)
                 .buildAndRegister();
 
+        // TODO Double check that this is the only fluid -> solid recipe for RutheniumTetroxide
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_BALL)
-                .fluidInputs(RutheniumTetroxide.getFluid(144))
+                .fluidInputs(RutheniumTetroxide.getFluid(1000))
                 .output(dust, RutheniumTetroxide, 5)
                 .EUt(8)
                 .duration(16)

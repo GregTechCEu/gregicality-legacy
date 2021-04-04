@@ -208,10 +208,9 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // TODO This recipe may be really mean
         CENTRIFUGE_RECIPES.recipeBuilder().duration(380).EUt(1600)
-                .fluidInputs(AlkalineEarthSulfateSolution.getFluid(8000))
-                .fluidOutputs(Water.getFluid(8000))
+                .fluidInputs(AlkalineEarthSulfateSolution.getFluid(4000))
+                .fluidOutputs(Water.getFluid(4000))
                 .output(dust, Barite, 3)
                 .output(dust, Gypsum, 8)
                 .outputs(StrontiumSulfate.getItemStack(3))
