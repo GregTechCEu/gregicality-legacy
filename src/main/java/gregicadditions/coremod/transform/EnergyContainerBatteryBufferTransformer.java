@@ -1,6 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -54,7 +55,7 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
                     this.visitVarInsn(Opcodes.LLOAD, 2);
                     this.visitVarInsn(Opcodes.LLOAD, 8);
                     this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            GregTechCEHooks.hooks,
                             "acceptEnergyFromNetwork",
                             "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
                             false);
@@ -79,7 +80,7 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
                     this.visitVarInsn(Opcodes.LLOAD, 5);
                     this.visitVarInsn(Opcodes.LLOAD, 10);
                     this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            GregTechCEHooks.hooks,
                             "update",
                             "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
                             false);
@@ -100,7 +101,7 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 this.visitVarInsn(Opcodes.LLOAD, 7);
                 this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        GregTechCEHooks.hooks,
                         "changeEnergy",
                         "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;J)V",
                         false);

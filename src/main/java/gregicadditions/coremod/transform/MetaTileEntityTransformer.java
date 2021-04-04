@@ -1,16 +1,26 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
 public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
+    public static final String owner = "gregtech/api/metatileentity/MetaTileEntity";
+    public static final String enumface_desc = "Lnet/minecraft/util/EnumFacing;";
+    public static final String spin = "spin";
 
     public static final MetaTileEntityTransformer INSTANCE = new MetaTileEntityTransformer();
 
     private MetaTileEntityTransformer() {
         // NO-OP
+    }
+
+    @Override
+    protected int getWriteFlags() {
+        return 1;
     }
 
     @Override
@@ -24,13 +34,43 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
             super(api, cv);
         }
 
+        private boolean isFieldPresent;
+
+        @Override
+        public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
+            if (name.equals(spin)) {
+                isFieldPresent = true;
+            }
+            return super.visitField(access, name, desc, signature, value);
+        }
+
+        @Override
+        public void visitEnd() {
+            if (!isFieldPresent) {
+                super.visitField(Opcodes.ACC_PUBLIC, spin, enumface_desc, null, null).visitEnd();
+            }
+            super.visitEnd();
+        }
+
+
         @Override
         public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
             if(name.equals("placeCoverOnSide")) {
                 return new TransformPlaceCoverOnSide(api, super.visitMethod(access, name, desc, signature, exceptions));
+            } else if (name.equals("<init>")) {
+                return new TransformInit(api, super.visitMethod(access, name, desc, signature, exceptions));
+            } else if (name.equals("writeInitialSyncData")){
+                return new TransformInitial(api, super.visitMethod(access, name, desc, signature, exceptions), true);
+            } else if (name.equals("receiveInitialSyncData")){
+                return new TransformInitial(api, super.visitMethod(access, name, desc, signature, exceptions), false);
+            } else if (name.equals("writeToNBT")) {
+                return new TransformNBT(api, super.visitMethod(access, name, desc, signature, exceptions), true);
+            } else if (name.equals("readFromNBT")) {
+                return new TransformNBT(api, super.visitMethod(access, name, desc, signature, exceptions), false);
             }
             return super.visitMethod(access, name, desc, signature, exceptions);
         }
+
 
     }
 
@@ -45,7 +85,7 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
             if (opcode == Opcodes.INVOKEVIRTUAL && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 4);
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        GregTechCEHooks.hooks,
                         "canPlaceCoverOnSide2",
                         "(Lgregtech/api/metatileentity/MetaTileEntity;Lnet/minecraft/util/EnumFacing;Lgregtech/api/cover/CoverBehavior;)Z",
                         false);
@@ -53,5 +93,99 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
         }
+    }
+
+    private static class TransformInit extends MethodVisitor {
+
+        TransformInit(int api, MethodVisitor mv) {
+            super(api, mv);
+        }
+
+        @Override
+        public void visitInsn(int opcode) {
+            if (opcode == Opcodes.RETURN) {
+                super.visitVarInsn(Opcodes.ALOAD, 0);
+                super.visitFieldInsn(Opcodes.GETSTATIC, "net/minecraft/util/EnumFacing", "NORTH", enumface_desc);
+                super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
+
+            }
+            super.visitInsn(opcode);
+        }
+
+    }
+
+    private static class TransformInitial extends MethodVisitor {
+
+        boolean write;
+
+        TransformInitial(int api, MethodVisitor mv, boolean isWrite) {
+            super(api, mv);
+            write = isWrite;
+        }
+
+        @Override
+        public void visitInsn(int opcode) {
+            if (opcode == Opcodes.RETURN) {
+                if (write) {
+                    super.visitVarInsn(Opcodes.ALOAD, 1);
+                    super.visitVarInsn(Opcodes.ALOAD,0);
+                    super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            GregTechCEHooks.hooks,
+                            "writeSpinBuf",
+                            "(Lnet/minecraft/network/PacketBuffer;Lnet/minecraft/util/EnumFacing;)V",
+                            false);
+                } else {
+                    super.visitVarInsn(Opcodes.ALOAD, 0);
+                    super.visitVarInsn(Opcodes.ALOAD, 1);
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            GregTechCEHooks.hooks,
+                            "readSpinBuf",
+                            "(Lnet/minecraft/network/PacketBuffer;)Lnet/minecraft/util/EnumFacing;",
+                            false);
+                    super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
+                }
+            }
+            super.visitInsn(opcode);
+        }
+
+    }
+
+    private static class TransformNBT extends MethodVisitor {
+
+        boolean write;
+
+        TransformNBT(int api, MethodVisitor mv, boolean isWrite) {
+            super(api, mv);
+            write = isWrite;
+        }
+
+        @Override
+        public void visitInsn(int opcode) {
+            if (opcode == Opcodes.RETURN) {
+                 if (!write) {
+                    super.visitVarInsn(Opcodes.ALOAD, 0);
+                    super.visitVarInsn(Opcodes.ALOAD, 1);
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            GregTechCEHooks.hooks,
+                            "readSpinNBT",
+                            "(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/util/EnumFacing;",
+                            false);
+                    super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
+                }
+            } else if (opcode == Opcodes.ARETURN){
+                if (write) {
+                    super.visitVarInsn(Opcodes.ALOAD,0);
+                    super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            GregTechCEHooks.hooks,
+                            "writeSpinNBT",
+                            "(Lnet/minecraft/nbt/NBTTagCompound;Lnet/minecraft/util/EnumFacing;)Lnet/minecraft/nbt/NBTTagCompound;",
+                            false);
+                }
+            }
+            super.visitInsn(opcode);
+        }
+
     }
 }

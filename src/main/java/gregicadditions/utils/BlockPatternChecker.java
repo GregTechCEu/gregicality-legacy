@@ -2,46 +2,48 @@ package gregicadditions.utils;
 
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.util.IntRange;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class BlockPatternChecker {
-    private static Predicate<BlockWorldState>[][][] blockMatches; //[z][y][x]
-    private static TIntObjectMap<Predicate<PatternMatchContext>> layerMatchers = new TIntObjectHashMap<>();
-    private static Predicate<PatternMatchContext>[] validators;
-    private static BlockPattern.RelativeDirection[] structureDir;
-    private static int[][] aisleRepetitions;
-    private static Pair<Predicate<BlockWorldState>, IntRange>[] countMatches;
+    private static Field SPIN_FIELD = ObfuscationReflectionHelper.findField(MetaTileEntity.class, "spin");
+    public static Predicate<BlockWorldState>[][][] blockMatches; //[z][y][x]
+    public static TIntObjectMap<Predicate<PatternMatchContext>> layerMatchers = new TIntObjectHashMap<>();
+    public static Predicate<PatternMatchContext>[] validators;
+    public static BlockPattern.RelativeDirection[] structureDir;
+    public static int[][] aisleRepetitions;
+    public static Pair<Predicate<BlockWorldState>, IntRange>[] countMatches;
 
     // x, y, z, minZ, maxZ
-    private static int[] centerOffset;
+    public static int[] centerOffset;
 
-    private static BlockWorldState worldState;
-    private static MutableBlockPos blockPos;
-    private static PatternMatchContext matchContext;
-    private static PatternMatchContext layerContext;
+    public static BlockWorldState worldState;
+    public static MutableBlockPos blockPos;
+    public static PatternMatchContext matchContext;
+    public static PatternMatchContext layerContext;
 
     private static <T> T getBlockPatternPrivateValue(BlockPattern blockPattern, String srgName) {
         return ObfuscationReflectionHelper.getPrivateValue(BlockPattern.class, blockPattern, srgName);
     }
 
-    private static boolean updateAllValue(BlockPattern blockPattern) {
+    public static boolean updateAllValue(BlockPattern blockPattern) {
         try{
             blockMatches = getBlockPatternPrivateValue(blockPattern, "blockMatches");
             layerMatchers = getBlockPatternPrivateValue(blockPattern, "layerMatchers");
@@ -66,6 +68,8 @@ public class BlockPatternChecker {
     public static PatternMatchContext checkPatternAt(BlockPattern blockPattern, World world, BlockPos centerPos, EnumFacing facing) {
         if (blockPattern == null || !updateAllValue(blockPattern)) return null;
 
+        EnumFacing spin = getSpin(world, centerPos);
+
         List<BlockPos> validPos = new ArrayList<>();
 
         int[] countMatchesCache = new int[countMatches.length];
@@ -86,7 +90,7 @@ public class BlockPatternChecker {
                 for (int b = 0, y = -centerOffset[1]; b < blockPattern.getThumbLength(); b++, y++) {
                     for (int a = 0, x = -centerOffset[0]; a < blockPattern.getPalmLength(); a++, x++) {
                         Predicate<BlockWorldState> predicate = blockMatches[c][b][a];
-                        setActualRelativeOffset(blockPos, x, y, z, facing);
+                        setActualRelativeOffset(blockPos, x, y, z, facing, spin, structureDir);
                         blockPos.setPos(blockPos.getX() + centerPos.getX(), blockPos.getY() + centerPos.getY(), blockPos.getZ() + centerPos.getZ());
                         worldState.update(world, blockPos, matchContext, layerContext);
 
@@ -147,33 +151,107 @@ public class BlockPatternChecker {
         return matchContext;
     }
 
-    private static void setActualRelativeOffset(MutableBlockPos pos, int x, int y, int z, EnumFacing facing) {
-        //if (!ArrayUtils.contains(ALLOWED_FACINGS, facing))
-        //    throw new IllegalArgumentException("Can rotate only horizontally");
+    public static EnumFacing getSpin(MetaTileEntity controllerBase) throws IllegalAccessException {
+        return (EnumFacing) SPIN_FIELD.get(controllerBase);
+    }
+
+    public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) throws IllegalAccessException {
+        SPIN_FIELD.set(controllerBase, spin);
+    }
+
+    public static EnumFacing getSpin(World world, BlockPos pos) {
+        try {
+            return getSpin(((MetaTileEntityHolder)world.getTileEntity(pos)).getMetaTileEntity());
+        } catch (Exception ignored) {
+
+        }
+        return EnumFacing.NORTH;
+    }
+
+    public static MutableBlockPos setActualRelativeOffset(MutableBlockPos pos, int x, int y, int z, EnumFacing facing, EnumFacing spin, BlockPattern.RelativeDirection[] structureDir) {
         int[] c0 = new int[]{x, y, z}, c1 = new int[3];
-        for (int i = 0; i < 3; i++) {
-            switch (structureDir[i].getActualFacing(facing)) {
-                case UP:
-                    c1[1] = c0[i];
-                    break;
-                case DOWN:
-                    c1[1] = -c0[i];
-                    break;
-                case WEST:
-                    c1[0] = -c0[i];
-                    break;
-                case EAST:
-                    c1[0] = c0[i];
-                    break;
-                case NORTH:
-                    c1[2] = -c0[i];
-                    break;
-                case SOUTH:
-                    c1[2] = c0[i];
-                    break;
+        if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
+            EnumFacing of = facing == EnumFacing.DOWN ? spin : spin.getOpposite();
+            for (int i = 0; i < 3; i++) {
+                switch (structureDir[i].getActualFacing(of)) {
+                    case UP:
+                        c1[1] = c0[i];
+                        break;
+                    case DOWN:
+                        c1[1] = -c0[i];
+                        break;
+                    case WEST:
+                        c1[0] = -c0[i];
+                        break;
+                    case EAST:
+                        c1[0] = c0[i];
+                        break;
+                    case NORTH:
+                        c1[2] = -c0[i];
+                        break;
+                    case SOUTH:
+                        c1[2] = c0[i];
+                        break;
+                }
+            }
+            int xOffset = spin.getXOffset();
+            int zOffset = spin.getZOffset();
+            int tmp;
+            if (xOffset == 0) {
+                tmp = c1[2];
+                c1[2] = zOffset > 0 ? c1[1] : -c1[1];
+                c1[1] = zOffset > 0 ? -tmp : tmp;
+            } else {
+                tmp = c1[0];
+                c1[0] = xOffset > 0 ? c1[1] : -c1[1];
+                c1[1] = xOffset > 0 ? -tmp : tmp;
+            }
+        } else {
+            for (int i = 0; i < 3; i++) {
+                switch (structureDir[i].getActualFacing(facing)) {
+                    case UP:
+                        c1[1] = c0[i];
+                        break;
+                    case DOWN:
+                        c1[1] = -c0[i];
+                        break;
+                    case WEST:
+                        c1[0] = -c0[i];
+                        break;
+                    case EAST:
+                        c1[0] = c0[i];
+                        break;
+                    case NORTH:
+                        c1[2] = -c0[i];
+                        break;
+                    case SOUTH:
+                        c1[2] = c0[i];
+                        break;
+                }
+            }
+            if(spin == EnumFacing.WEST || spin == EnumFacing.EAST) {
+                int xOffset = spin == EnumFacing.WEST ? facing.rotateY().getXOffset() : facing.rotateY().getOpposite().getXOffset();
+                int zOffset = spin == EnumFacing.WEST ? facing.rotateY().getZOffset() : facing.rotateY().getOpposite().getZOffset();
+                int tmp;
+                if(xOffset == 0) {
+                    tmp = c1[2];
+                    c1[2] = zOffset > 0 ? -c1[1] : c1[1];
+                    c1[1] = zOffset > 0 ? tmp : -tmp;
+                } else {
+                    tmp = c1[0];
+                    c1[0] = xOffset > 0 ? -c1[1] : c1[1];
+                    c1[1] = xOffset > 0 ? tmp : -tmp;
+                }
+            } else if(spin == EnumFacing.SOUTH){
+                c1[1] = -c1[1];
+                if (facing.getXOffset() == 0) {
+                    c1[0] = -c1[0];
+                } else {
+                    c1[2] = -c1[2];
+                }
             }
         }
-        pos.setPos(c1[0], c1[1], c1[2]);
+        return pos.setPos(c1[0], c1[1], c1[2]);
     }
 
 }

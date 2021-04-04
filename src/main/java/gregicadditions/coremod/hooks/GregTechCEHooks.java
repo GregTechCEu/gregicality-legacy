@@ -1,9 +1,14 @@
 package gregicadditions.coremod.hooks;
 
 import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import codechicken.lib.vec.Rotation;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.materials.SimpleFluidMaterial;
+import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
@@ -12,14 +17,18 @@ import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 
 public class GregTechCEHooks {
+    public static final String hooks = "gregicadditions/coremod/hooks/GregTechCEHooks";
 
     //origin: gregtech/api/metatileentity/MetaTileEntityHolder/hasFastRenderer
     public static boolean hasFastRenderer(MetaTileEntityHolder metaTileEntityHolder) {
@@ -135,5 +144,33 @@ public class GregTechCEHooks {
                 }
             }
         }
+    }
+
+    public static void writeSpinBuf(PacketBuffer buf, EnumFacing spin) {
+        buf.writeByte(spin.getIndex());
+    }
+
+    public static EnumFacing readSpinBuf(PacketBuffer buf) {
+        return EnumFacing.VALUES[buf.readByte()];
+    }
+
+    public static NBTTagCompound writeSpinNBT(NBTTagCompound data, EnumFacing spin) {
+        data.setByte("sPin", (byte) spin.getIndex());
+        return data;
+    }
+
+    public static EnumFacing readSpinNBT(NBTTagCompound data) {
+        return data.hasKey("sPin") ? EnumFacing.VALUES[data.getByte("sPin")]:EnumFacing.NORTH;
+    }
+
+    public static void renderFrontOverlay(OrientedOverlayRenderer overlay, CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline, EnumFacing facing, boolean isActive, EnumFacing spin) {
+        double degree = Math.PI/2 * (spin == EnumFacing.EAST? -1: spin == EnumFacing.SOUTH? 2: spin == EnumFacing.WEST? 1:0);
+        Rotation rotation = new Rotation(degree, facing.getXOffset(), facing.getYOffset(), facing.getZOffset());
+
+        translation.translate(0.5 , 0.5, 0.5);
+        translation.apply(rotation);
+        translation.translate(-0.5 , -0.5, -0.5);
+
+        overlay.render(renderState, RenderHelper.adjustTrans(translation, facing, 1), pipeline, facing, isActive);
     }
 }

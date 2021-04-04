@@ -7,6 +7,7 @@ import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.item.ItemStack;
 
 public class RefinedStorageHooks {
+    public static final String hooks = "gregicadditions/coremod/hooks/RefinedStorageHooks";
 
     //origin: com.raoulvdberge.refinedstorage.api.network.INetwork.extractItem()
     public static ItemStack extractItem(INetwork network, ItemStack request, int size, int flag, Action action) {

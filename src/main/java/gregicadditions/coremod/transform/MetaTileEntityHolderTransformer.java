@@ -1,8 +1,8 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
@@ -49,7 +49,7 @@ public class MetaTileEntityHolderTransformer extends GAClassTransformer.ClassMap
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 this.visitVarInsn(Opcodes.ILOAD, 1);
                 this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        GregTechCEHooks.hooks,
                         "shouldCoverRenderPass",
                         "(Lgregtech/api/metatileentity/MetaTileEntityHolder;I)Z",
                         false);
