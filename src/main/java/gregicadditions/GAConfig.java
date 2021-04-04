@@ -1388,19 +1388,22 @@ public class GAConfig {
         }
 
         public static class Prospector {
-            @Config.Comment("The EU cost to use the prospector. The values are for the MV, HV, LuV and ZPM prospectors.")
+            @Config.Comment("The EU drain per tick that the Prospector interface is open. The values are for the MV, HV, LuV and ZPM prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector scan cost")
-            public int[] scanCosts = {128, 512, 32768, 131072};
+            @Config.RangeInt(min = 0)
+            public int[] scanCosts = {32, 138, 8192, 32768};
 
             @Config.Comment("The radii in chunks the prospector will scan.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector scan radii")
+            @Config.RangeInt(min = 1)
             public int[] scanRadii = {2, 3, 6, 7};
 
             @Config.Comment("The EU capacity of the prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector energy capacity")
+            @Config.RangeInt(min = 1000)
             public int[] energyCapacity = {12800, 51200, 3276800, 13107200};
         }
 
