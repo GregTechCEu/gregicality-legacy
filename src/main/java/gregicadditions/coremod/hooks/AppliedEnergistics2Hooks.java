@@ -13,6 +13,7 @@ import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.item.ItemStack;
 
 public class AppliedEnergistics2Hooks {
+    public static final String hooks = "gregicadditions/coremod/hooks/AppliedEnergistics2Hooks";
 
     //origin: appeng.util.Platform.poweredExtraction()
     public static IAEItemStack poweredExtraction(IEnergySource energy, IMEMonitor<IAEItemStack> cell, IAEItemStack request, IActionSource src ) {

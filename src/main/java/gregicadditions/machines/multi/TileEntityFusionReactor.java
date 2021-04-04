@@ -3,12 +3,15 @@ package gregicadditions.machines.multi;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import codechicken.lib.vec.Rotation;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
+import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -26,6 +29,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
@@ -33,9 +37,12 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import org.apache.commons.lang3.ArrayUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -194,10 +201,10 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
         textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
     }
 
+    @NotNull
     @Override
-    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-        this.getBaseTexture(null).render(renderState, translation, pipeline);
-        ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.FUSION_REACTOR_OVERLAY;
     }
 
     private class FusionRecipeLogic extends GAMultiblockRecipeLogic {

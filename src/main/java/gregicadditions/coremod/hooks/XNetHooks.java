@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class XNetHooks {
+    public static final String hooks = "gregicadditions/coremod/hooks/XNetHooks";
 
     //origin: net.minecraft.block.Block.getItem()
     public static ItemStack getItem(Block block, World worldIn, BlockPos pos, IBlockState state) {

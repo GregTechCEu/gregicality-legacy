@@ -1,6 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -34,7 +35,6 @@ public class GTUtilityTransformer extends GAClassTransformer.ClassMapper {
 
     private static class TransformFormulaHook extends MethodVisitor implements Opcodes {
 
-        private static final String INSERT_CLASS_NAME = "gregicadditions/coremod/hooks/GregTechCEHooks";
         private static final String INSERT_METHOD_SIGNATURE = "(Lnet/minecraftforge/fluids/FluidStack;Ljava/lang/StringBuilder;)V";
         private static final String INSERT_METHOD_NAME = "getSimpleFluidTooltip";
 
@@ -49,7 +49,7 @@ public class GTUtilityTransformer extends GAClassTransformer.ClassMapper {
             mv.visitVarInsn(ALOAD, 1); // StringBuilder
 
             // statically call getSimpleFluidTooltip(FluidStack, StringBuilder)
-            mv.visitMethodInsn(INVOKESTATIC, INSERT_CLASS_NAME, INSERT_METHOD_NAME, INSERT_METHOD_SIGNATURE, false);
+            mv.visitMethodInsn(INVOKESTATIC, GregTechCEHooks.hooks, INSERT_METHOD_NAME, INSERT_METHOD_SIGNATURE, false);
 
             mv.visitCode();
         }

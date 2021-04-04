@@ -403,6 +403,7 @@ metaitem.component.smd.resistor.name=Micro SMD Resistor
 
 
 metaitem.hand_pump.name=Hand Pump
+metaitem.freedom_wrench.name=Freedom Wrench
 
 metaitem.waste.nuclear.name=%s Waste
 waste.nuclear.global=Nuclear

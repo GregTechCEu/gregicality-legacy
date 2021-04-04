@@ -1,6 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -45,7 +46,7 @@ public class EnergyContainerHandlerTransformer extends GAClassTransformer.ClassM
             super.visitVarInsn(Opcodes.ALOAD, 0);
             super.visitVarInsn(Opcodes.LLOAD, 1);
             super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                    "gregicadditions/coremod/hooks/GregTechCEHooks",
+                    GregTechCEHooks.hooks,
                     "setEnergyStored",
                     "(Lgregtech/api/capability/impl/EnergyContainerHandler;J)V",
                     false);

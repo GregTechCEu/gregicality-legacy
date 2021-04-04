@@ -191,6 +191,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
 
     public static MetaItem<?>.MetaValueItem HAND_PUMP;
+    public static MetaItem<?>.MetaValueItem FREEDOM_WRENCH;
 
 
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;

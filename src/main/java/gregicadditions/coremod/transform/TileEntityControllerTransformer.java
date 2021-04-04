@@ -1,6 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.XNetHooks;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -44,7 +45,7 @@ public class TileEntityControllerTransformer extends GAClassTransformer.ClassMap
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("net/minecraft/block/Block") && (name.equals("getItem") || name.equals("func_185473_a"))) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/XNetHooks",
+                        XNetHooks.hooks,
                         "getItem",
                         "(Lnet/minecraft/block/Block;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)Lnet/minecraft/item/ItemStack;",
                         false);

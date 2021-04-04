@@ -1,6 +1,7 @@
 package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -45,7 +46,7 @@ public class CoverPlaceBehaviorTransformer extends GAClassTransformer.ClassMappe
             if (opcode == Opcodes.INVOKEINTERFACE && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        GregTechCEHooks.hooks,
                         "canPlaceCoverOnSide",
                         "(Lgregtech/api/cover/ICoverable;Lnet/minecraft/util/EnumFacing;Lgregtech/common/items/behaviors/CoverPlaceBehavior;)Z",
                         false);
