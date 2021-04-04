@@ -347,6 +347,7 @@ public class RecipeHandler {
             RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                     .input(plate, material, 6)
                     .input(frameGt, material, 1)
+                    .notConsumable(new IntCircuitIngredient(0))
                     .outputs(metalCasingStack)
                     .EUt(8).duration(200)
                     .buildAndRegister();

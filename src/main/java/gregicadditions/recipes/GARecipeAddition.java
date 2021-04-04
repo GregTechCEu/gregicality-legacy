@@ -2512,8 +2512,6 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Recipes Needing Configuration Circuits
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Tungsten));
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)
                 .input(dust, Aluminium)
@@ -2527,8 +2525,6 @@ public class GARecipeAddition {
                 .output(ingotHot, Tungsten)
                 .buildAndRegister();
 
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});
-
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
@@ -2536,6 +2532,14 @@ public class GARecipeAddition {
                 .notConsumable(new IntCircuitIngredient(2))
                 .fluidOutputs(Epichlorhydrin.getFluid(1000))
                 .fluidOutputs(SaltWater.getFluid(1000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(4000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(Dichlorobenzene.getFluid(1000))
                 .buildAndRegister();
     }
 

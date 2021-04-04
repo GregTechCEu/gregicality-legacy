@@ -151,6 +151,7 @@ public class CommonProxy {
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
+        ConfigCircuitRecipeAddition.init();
         GAMachineRecipeRemoval.init();
         GARecipeAddition.generatedRecipes();
         RecipeHandler.registerLargeChemicalRecipes();

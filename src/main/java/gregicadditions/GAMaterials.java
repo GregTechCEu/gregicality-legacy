@@ -522,7 +522,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SmGdOxidesSolution = new SimpleFluidMaterial("sm_gd_oxides_solution", 0xffff99, "(Sc2O3)(Eu2O3)(Gd2O3)(Sm2O3)");
     public static final SimpleFluidMaterial TbHoOxidesSolution = new SimpleFluidMaterial("tb_ho_oxides_solution", 0x99ff99, "(Y2O3)(Tb2O3)(Dy2O3)(Ho2O3)");
     public static final SimpleFluidMaterial ErLuOxidesSolution = new SimpleFluidMaterial("er_lu_oxides_solution", 0xffb3ff, "(Er2O3)(Tm2O3)(Yb2O3)(Lu2O3)");
-    public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB, of(new MaterialStack(Cryotheum, 1)));
+    public static final SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB-10, of(new MaterialStack(Cryotheum, 1)));
     public static final SimpleFluidMaterial Turpentine = new SimpleFluidMaterial("turpentine", 0x93bd46, "C10H16");
     public static final SimpleFluidMaterial Acetylene = new SimpleFluidMaterial("acetylene", 0x959c60, "C2H2");
     public static final SimpleFluidMaterial Formaldehyde = new SimpleFluidMaterial("formaldehyde", 0x95a13a, "CH2O");

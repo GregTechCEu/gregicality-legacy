@@ -22,7 +22,7 @@ public class PlasticChain {
                 .fluidInputs(Diaminobenzidine.getFluid(1000))
                 .fluidInputs(Diphenylisophtalate.getFluid(1000))
                 .fluidOutputs(Phenol.getFluid(2000))
-                .fluidOutputs(Polybenzimidazole.getFluid(1000))
+                .fluidOutputs(Polybenzimidazole.getFluid(1008))
                 .fluidOutputs(Water.getFluid(2000))
                 .EUt(7500)
                 .duration(100)
