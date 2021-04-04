@@ -301,10 +301,10 @@ public class RheniumChain {
 
         // ? + RSM -> ? + ?(20%) + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust,PlatinumSaltCrude)
+                .input(dust, PlatinumSaltCrude, 2)
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
-                .output(dust, PlatinumSaltRefined)
-                .chancedOutput(OreDictUnifier.get(dust,PlatinumSaltRefined),2000,0)
+                .output(dust, PlatinumSaltRefined, 2)
+                .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined, 2), 2000, 0)
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
                 .EUt(50000)
                 .duration(50)
