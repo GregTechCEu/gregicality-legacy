@@ -4,7 +4,6 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
-import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
@@ -134,7 +133,6 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
             this.recipeMap = possibleRecipe[pos];
         }
 
-        this.scheduleRenderUpdate();
         return true; // return true here on the server to keep the GUI closed
     }
 
@@ -151,7 +149,6 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
         this.pos = data.getInteger("Recipe");
         ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
         this.recipeMap = possibleRecipe[pos];
-        this.scheduleRenderUpdate();
     }
 
     @Override
