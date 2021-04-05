@@ -1,13 +1,14 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import jdk.internal.org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class BlockPatternTransformer extends GAClassTransformer.ClassMapper {
+public class BlockPatternTransformer extends ClassMapper {
 
     public static final BlockPatternTransformer INSTANCE = new BlockPatternTransformer();
 
@@ -59,7 +60,7 @@ public class BlockPatternTransformer extends GAClassTransformer.ClassMapper {
 
     }
 
-    private static class TransformCheckPatternAt extends MethodVisitor {
+    private static class TransformCheckPatternAt extends GAMethodVisitor {
 
         TransformCheckPatternAt(int api, MethodVisitor mv) {
             super(api, mv);
