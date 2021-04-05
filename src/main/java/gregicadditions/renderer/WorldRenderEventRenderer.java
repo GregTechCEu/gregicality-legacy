@@ -12,6 +12,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.render.scene.WorldSceneRenderer;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
+import jdk.internal.org.objectweb.asm.Type;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -49,6 +50,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
@@ -158,139 +162,197 @@ public class WorldRenderEventRenderer {
     private static WorldSceneRenderer worldSceneRenderer;
     private static long mbpEndTime;
     private static int opList = -1;
+    private static int layer = -1;
+    private static byte renderMode = 0;
+    private static MultiblockControllerBase controllerBase;
 
-    public static void renderMultiBlockPreview(MultiblockControllerBase controllerBase, long durTimeMillis){
-        if(controllerBase == null) return;
-        reset();
-        mbpEndTime = System.currentTimeMillis() + durTimeMillis;
-        IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
-        IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, controllerBase.getStackForm());
-        worldSceneRenderer = rr.getRecipeCategories(focus)
-                .stream()
-                .map(c -> (IRecipeCategory<IRecipeWrapper>) c)
-                .map(c -> rr.getRecipeWrappers(c, focus))
-                .flatMap(List::stream)
-                .filter(MultiblockInfoRecipeWrapper.class::isInstance)
-                .findFirst()
-                .map(MultiblockInfoRecipeWrapper.class::cast)
-                .map(MultiblockInfoRecipeWrapper::getCurrentRenderer)
-                .orElse(null);
-
-        mbpPos = controllerBase.getPos();
-        EnumFacing frontFacing, previewFacing;
-        previewFacing = controllerBase.getFrontFacing();
-        List<BlockPos> renderedBlocks = ObfuscationReflectionHelper.getPrivateValue(WorldSceneRenderer.class, worldSceneRenderer,"renderedBlocks");
-        BlockPos controllerPos = BlockPos.ORIGIN;
-        if(renderedBlocks != null) {
-            for(BlockPos blockPos : renderedBlocks) {
-                MetaTileEntity metaTE = BlockMachine.getMetaTileEntity(worldSceneRenderer.world, blockPos);
-                if(metaTE != null && metaTE.metaTileEntityId.equals(controllerBase.metaTileEntityId)) {
-                    controllerPos = blockPos;
-                    previewFacing = metaTE.getFrontFacing();
-                    break;
-                }
-            }
-        }
-
-        EnumFacing facing = controllerBase.getFrontFacing();
-        EnumFacing spin = EnumFacing.NORTH;
-        BlockPatternChecker.updateAllValue(ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern"));
-        BlockPattern.RelativeDirection[] structureDir = BlockPatternChecker.structureDir;
-
-        if (renderedBlocks == null || structureDir == null) {
-            reset();
-            return;
-        }
-        try {
-            spin = BlockPatternChecker.getSpin(controllerBase);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        frontFacing = facing.getYOffset() == 0 ? facing : spin.getOpposite();
-
-        Rotation rotatePreviewBy = Rotation.values()[(4 + frontFacing.getHorizontalIndex() - previewFacing.getHorizontalIndex()) % 4];
-
-        opList = GLAllocation.generateDisplayLists(1); // allocate op list
-        GlStateManager.glNewList(opList, GL11.GL_COMPILE);
-
-        Minecraft mc = Minecraft.getMinecraft();
-
-        BlockRenderLayer oldLayer = MinecraftForgeClient.getRenderLayer();
-        BlockRendererDispatcher brd = mc.getBlockRendererDispatcher();
-        WorldSceneRenderer.TrackedDummyWorld world = worldSceneRenderer.world;
-
-        Tessellator tes = Tessellator.getInstance();
-        BufferBuilder buff = tes.getBuffer();
-
-        GlStateManager.pushMatrix();
-
-        GlStateManager.translate(0.5, 0, 0.5);
-        GlStateManager.rotate((facing.getYOffset() < 0 ? -1 : 1) * rotatePreviewBy.ordinal() * 90, 0, -1, 0);
-        GlStateManager.translate(-0.5, 0, -0.5);
-
-        if (facing == EnumFacing.UP) {
-            GlStateManager.translate(0.5, 0.5, 0);
-            GlStateManager.rotate(90, 0, 0, -1);
-            GlStateManager.translate(-0.5, -0.5, 0);
-        } else if (facing == EnumFacing.DOWN){
-            GlStateManager.translate(0.5, 0.5, 0);
-            GlStateManager.rotate(90, 0, 0, 1);
-            GlStateManager.translate(-0.5, -0.5, 0);
-        } else {
-            int degree = 90 * (spin == EnumFacing.EAST? -1: spin == EnumFacing.SOUTH? 2: spin == EnumFacing.WEST? 1:0);
-            GlStateManager.translate(0, 0.5, 0.5);
-            GlStateManager.rotate(degree, -1, 0, 0);
-            GlStateManager.translate(-0, -0.5, -0.5);
-        }
-
-
-        TargetBlockAccess targetBA = new TargetBlockAccess(world, BlockPos.ORIGIN);
-
-        for(BlockPos pos : renderedBlocks) {
-            targetBA.setPos(pos);
-
-            GlStateManager.pushMatrix();
-
-            BlockPos.MutableBlockPos tPos = new BlockPos.MutableBlockPos(pos.subtract(controllerPos));
-
-            GlStateManager.translate(tPos.getX(), tPos.getY(), tPos.getZ());
-            GlStateManager.translate(0.125, 0.125, 0.125);
-            GlStateManager.scale(0.75, 0.75, 0.75);
-
-            buff.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-            IBlockState state = world.getBlockState(pos);
-            for(BlockRenderLayer brl : BlockRenderLayer.values()) {
-                if(state.getBlock().canRenderInLayer(state, brl)) {
-                    ForgeHooksClient.setRenderLayer(brl);
-                    brd.renderBlock(state, BlockPos.ORIGIN, targetBA, buff);
-                }
-            }
-            tes.draw();
-
-            GlStateManager.popMatrix();
-
-            GlStateManager.disableTexture2D();
-            GlStateManager.disableDepth();
-            buff.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
-            GlStateManager.glLineWidth(1);
-            RenderHelper.renderHighLightedBlocksOutline(buff, pos.getX() - controllerPos.getX(), pos.getY() - controllerPos.getY(), pos.getZ() - controllerPos.getZ(), 1.0f, 0.0f, 0.0f, 1.0f);
-            tes.draw();
-            GlStateManager.enableDepth();
-            GlStateManager.enableTexture2D();
-        }
-
-        GlStateManager.popMatrix();
-        ForgeHooksClient.setRenderLayer(oldLayer);
-
-        GlStateManager.glEndList();
+    public static void renderMultiBlockPreview(MultiblockControllerBase controller, long durTimeMillis, byte mode){
+        controllerBase = controller;
+        mbpEndTime = durTimeMillis;
+        renderMode = mode;
     }
 
     private static void drawMultiBlockPreview(RenderWorldLastEvent evt) {
-        if (worldSceneRenderer != null) {
+        if (controllerBase != null) {
+            long durTimeMillis = mbpEndTime;
+            reset();
+            mbpEndTime = System.currentTimeMillis() + durTimeMillis;
+            if (renderMode == 2) {
+                BlockPos error = BlockPatternChecker.getPatternErrorPos(controllerBase);
+                if (error != null) {
+                    renderBlockBoxHighLight(error, durTimeMillis);
+                }
+                mbpEndTime = 0;
+                controllerBase = null;
+                return;
+            }
+            IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
+            IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, controllerBase.getStackForm());
+            worldSceneRenderer = rr.getRecipeCategories(focus)
+                    .stream()
+                    .map(c -> (IRecipeCategory<IRecipeWrapper>) c)
+                    .map(c -> rr.getRecipeWrappers(c, focus))
+                    .flatMap(List::stream)
+                    .filter(MultiblockInfoRecipeWrapper.class::isInstance)
+                    .findFirst()
+                    .map(MultiblockInfoRecipeWrapper.class::cast)
+                    .map(MultiblockInfoRecipeWrapper::getCurrentRenderer)
+                    .orElse(null);
+
+            mbpPos = controllerBase.getPos();
+            EnumFacing frontFacing, previewFacing;
+            previewFacing = controllerBase.getFrontFacing();
+            List<BlockPos> renderedBlocks = ObfuscationReflectionHelper.getPrivateValue(WorldSceneRenderer.class, worldSceneRenderer,"renderedBlocks");
+            BlockPos controllerPos = BlockPos.ORIGIN;
+            MultiblockControllerBase mte = null;
+            int maxY = (int) worldSceneRenderer.world.getMaxPos().getY();
+            int minY = (int) worldSceneRenderer.world.getMinPos().getY();
+
+            if(renderedBlocks != null) {
+                for(BlockPos blockPos : renderedBlocks) {
+                    MetaTileEntity metaTE = BlockMachine.getMetaTileEntity(worldSceneRenderer.world, blockPos);
+                    if(metaTE instanceof MultiblockControllerBase && metaTE.metaTileEntityId.equals(controllerBase.metaTileEntityId)) {
+                        controllerPos = blockPos;
+                        previewFacing = metaTE.getFrontFacing();
+                        mte = (MultiblockControllerBase) metaTE;
+                        break;
+                    }
+                }
+                if (layer >= 0) {
+                    if (layer + minY > maxY) { // shouldn't happen
+                        layer = -1;
+                    }
+                    renderedBlocks = new ArrayList<>(renderedBlocks);
+                    renderedBlocks.removeIf(pos -> pos.getY() != minY + layer);
+                    if (mte != null) {
+                        mte.invalidateStructure();
+                    }
+                    if (layer + minY == maxY){
+                        layer = -1;
+                    } else {
+                        layer++;
+                    }
+                } else {
+                    layer++;
+                }
+            } else {
+                reset();
+                controllerBase = null;
+                return;
+            }
+
+            EnumFacing facing = controllerBase.getFrontFacing();
+            EnumFacing spin = EnumFacing.NORTH;
+            BlockPatternChecker.updateAllValue(ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern"));
+            BlockPattern.RelativeDirection[] structureDir = BlockPatternChecker.structureDir;
+
+            if (structureDir == null) {
+                reset();
+                controllerBase = null;
+                if (mte != null) {
+                    mte.update();
+                }
+                return;
+            }
+            spin = BlockPatternChecker.getSpin(controllerBase);
+
+            frontFacing = facing.getYOffset() == 0 ? facing : spin.getOpposite();
+
+            Rotation rotatePreviewBy = Rotation.values()[(4 + frontFacing.getHorizontalIndex() - previewFacing.getHorizontalIndex()) % 4];
+
+            opList = GLAllocation.generateDisplayLists(1); // allocate op list
+            GlStateManager.glNewList(opList, GL11.GL_COMPILE);
+
+            Minecraft mc = Minecraft.getMinecraft();
+
+            BlockRenderLayer oldLayer = MinecraftForgeClient.getRenderLayer();
+            BlockRendererDispatcher brd = mc.getBlockRendererDispatcher();
+            WorldSceneRenderer.TrackedDummyWorld world = worldSceneRenderer.world;
+
+            Tessellator tes = Tessellator.getInstance();
+            BufferBuilder buff = tes.getBuffer();
+
+            GlStateManager.pushMatrix();
+
+            GlStateManager.translate(0.5, 0, 0.5);
+            GlStateManager.rotate((facing.getYOffset() < 0 ? -1 : 1) * rotatePreviewBy.ordinal() * 90, 0, -1, 0);
+            GlStateManager.translate(-0.5, 0, -0.5);
+
+            if (facing == EnumFacing.UP) {
+                GlStateManager.translate(0.5, 0.5, 0);
+                GlStateManager.rotate(90, 0, 0, -1);
+                GlStateManager.translate(-0.5, -0.5, 0);
+            } else if (facing == EnumFacing.DOWN){
+                GlStateManager.translate(0.5, 0.5, 0);
+                GlStateManager.rotate(90, 0, 0, 1);
+                GlStateManager.translate(-0.5, -0.5, 0);
+            } else {
+                int degree = 90 * (spin == EnumFacing.EAST? -1: spin == EnumFacing.SOUTH? 2: spin == EnumFacing.WEST? 1:0);
+                GlStateManager.translate(0, 0.5, 0.5);
+                GlStateManager.rotate(degree, -1, 0, 0);
+                GlStateManager.translate(-0, -0.5, -0.5);
+            }
+
+
+            TargetBlockAccess targetBA = new TargetBlockAccess(world, BlockPos.ORIGIN);
+
+            for(BlockPos pos : renderedBlocks) {
+                targetBA.setPos(pos);
+
+                if (renderMode == 0) {
+                    GlStateManager.pushMatrix();
+
+                    BlockPos.MutableBlockPos tPos = new BlockPos.MutableBlockPos(pos.subtract(controllerPos));
+
+                    GlStateManager.translate(tPos.getX(), tPos.getY(), tPos.getZ());
+                    GlStateManager.translate(0.125, 0.125, 0.125);
+                    GlStateManager.scale(0.75, 0.75, 0.75);
+
+                    buff.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+                    IBlockState state = world.getBlockState(pos);
+                    for(BlockRenderLayer brl : BlockRenderLayer.values()) {
+                        if(state.getBlock().canRenderInLayer(state, brl)) {
+                            ForgeHooksClient.setRenderLayer(brl);
+                            brd.renderBlock(state, BlockPos.ORIGIN, targetBA, buff);
+                        }
+                    }
+                    tes.draw();
+
+                    GlStateManager.popMatrix();
+                } else {
+                    GlStateManager.disableTexture2D();
+                    GlStateManager.disableDepth();
+                    buff.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
+                    GlStateManager.glLineWidth(1);
+                    RenderHelper.renderHighLightedBlocksOutline(buff, pos.getX() - controllerPos.getX(), pos.getY() - controllerPos.getY(), pos.getZ() - controllerPos.getZ(), 1.0f, 0.0f, 0.0f, 1.0f);
+                    tes.draw();
+                    GlStateManager.enableDepth();
+                    GlStateManager.enableTexture2D();
+                }
+            }
+
+            GlStateManager.popMatrix();
+            ForgeHooksClient.setRenderLayer(oldLayer);
+
+            GlStateManager.glEndList();
+            GlStateManager.enableLighting();
+            if (mte != null) {
+                try{
+                    ObfuscationReflectionHelper.findMethod(MultiblockControllerBase.class, "checkStructurePattern", Void.TYPE).invoke(mte);
+                } catch (Exception ignored){}
+            }
+            controllerBase = null;
+        } else if (worldSceneRenderer != null) {
             long time = System.currentTimeMillis();
             if (time > mbpEndTime) {
                 reset();
+                layer = -1;
+                controllerBase = null;
+                return;
+            }
+            if (renderMode == 2) {
+                mbpPos = BlockPatternChecker.getPatternErrorPos(controllerBase);
+                controllerBase = null;
                 return;
             }
             if (opList != -1) {

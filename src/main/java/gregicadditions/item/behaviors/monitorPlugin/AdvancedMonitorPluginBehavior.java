@@ -95,9 +95,7 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                 MetaTileEntityHolder newHolder = new MetaTileEntityHolder();
                 newHolder.setMetaTileEntity(holder.getMetaTileEntity().createMetaTileEntity(newHolder));
                 newHolder.getMetaTileEntity().setFrontFacing(holder.getMetaTileEntity().getFrontFacing());
-                try {
-                    BlockPatternChecker.setSpin(newHolder.getMetaTileEntity(), BlockPatternChecker.getSpin(holder.getMetaTileEntity()));
-                } catch (Exception ignored){}
+                BlockPatternChecker.setSpin(newHolder.getMetaTileEntity(), BlockPatternChecker.getSpin(holder.getMetaTileEntity()));
                 renderedBlocks.put(pos.subtract(minPos), new BlockInfo(MetaBlocks.MACHINE.getDefaultState(), newHolder));
             } else {
                 renderedBlocks.put(pos.subtract(minPos), new BlockInfo(world.getBlockState(pos)));
@@ -210,29 +208,22 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                     MultiblockControllerBase entity = (MultiblockControllerBase) holder.getMetaTileEntity();
                     if(entity.isStructureFormed()) {
                         if(!isValid) {
-                            try {
-                                BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, entity, "structurePattern");
-                                if(structurePattern != null) {
-                                    PatternMatchContext result = BlockPatternChecker.checkPatternAt(structurePattern, entity.getWorld(), entity.getPos(), entity.getFrontFacing().getOpposite());
-                                    if (result != null && result.get("validPos") != null) {
-                                        validPos = result.get("validPos");
-                                        writePluginData(0, buf->{
-                                            int te = 0;
-                                            buf.writeVarInt(validPos.size());
-                                            for (BlockPos pos : validPos) {
-                                                buf.writeBlockPos(pos);
-                                                if(this.screen.getWorld().getTileEntity(pos) != null)
-                                                    te ++;
-                                            }
-                                            buf.writeVarInt(te);
-                                        });
-                                        isValid = true;
-                                    } else {
-                                        validPos.clear();
+                            PatternMatchContext result = BlockPatternChecker.checkPatternAt(entity);
+                            if (result != null && result.get("validPos") != null) {
+                                validPos = result.get("validPos");
+                                writePluginData(0, buf->{
+                                    int te = 0;
+                                    buf.writeVarInt(validPos.size());
+                                    for (BlockPos pos : validPos) {
+                                        buf.writeBlockPos(pos);
+                                        if(this.screen.getWorld().getTileEntity(pos) != null)
+                                            te ++;
                                     }
-                                }
-                            } catch (Exception e){
-                                GALog.logger.error(e);
+                                    buf.writeVarInt(te);
+                                });
+                                isValid = true;
+                            } else {
+                                validPos.clear();
                             }
                         }
                     } else if(isValid){
