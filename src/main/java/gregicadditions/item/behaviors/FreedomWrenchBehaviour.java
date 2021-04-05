@@ -7,6 +7,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import scala.Int;
 
@@ -28,11 +30,10 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
     public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
         NBTTagCompound nbt = player.getHeldItem(hand).getOrCreateSubCompound("GT.Detrav");
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
-        int dur = nbt.hasKey("dur") ? nbt.getInteger("dur") : 5000;
         if (pos != null && world.getTileEntity(pos) instanceof MetaTileEntityHolder) {
             MetaTileEntity mte = ((MetaTileEntityHolder) world.getTileEntity(pos)).getMetaTileEntity();
             if (mte instanceof MultiblockControllerBase && !player.isSneaking() && world.isRemote) {
-                WorldRenderEventRenderer.renderMultiBlockPreview((MultiblockControllerBase) mte, dur, mode);
+                WorldRenderEventRenderer.renderMultiBlockPreview((MultiblockControllerBase) mte, 60000, mode);
             }
             else if (mte instanceof RecipeMapMultiblockController && player.isSneaking()) {
                 boolean rotateSpin = false;
@@ -108,19 +109,16 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         NBTTagCompound nbt = player.getHeldItem(hand).getOrCreateSubCompound("GT.Detrav");
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
-        int dur = nbt.hasKey("dur") ? nbt.getInteger("dur") : 5000;
         if (player.isSneaking()) {
             mode = (byte)((mode + 1) % 3);
             nbt.setByte("mode", mode);
             if (world.isRemote) {
-                player.sendMessage(new TextComponentString("Mode: " + mode));
+                player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.mode." + mode));
             }
         } else {
-            if (dur == 5000) dur = 10000;
-            else if (dur == 10000) dur = 30000;
-            else dur = 60000;
             if (player.world.isRemote) {
-                player.sendMessage(new TextComponentString("Duration: " + (dur / 1000) + "s"));
+                WorldRenderEventRenderer.renderMultiBlockPreview(null, 0, mode);
+                player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.clear"));
             }
         }
         return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
@@ -130,8 +128,7 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
     public void addInformation(ItemStack itemStack, List<String> lines) {
         NBTTagCompound nbt = itemStack.getOrCreateSubCompound("GT.Detrav");
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
-        int dur = nbt.hasKey("dur") ? nbt.getInteger("dur") : 5000;
-        lines.add(Byte.toString(mode));
-        lines.add(Integer.toString(dur));
+        lines.add(I18n.format("metaitem.freedom_wrench.mode." + mode));
+        lines.add(I18n.format("metaitem.freedom_wrench.info.0"));
     }
 }
