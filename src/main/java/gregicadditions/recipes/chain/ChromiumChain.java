@@ -48,7 +48,7 @@ public class ChromiumChain {
                 .buildAndRegister();
 
         // CO2 + Na2Cr2O7 -> Na2CO3 + 2CrO3
-        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(125)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(125)
                 .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .output(dust, SodaAsh, 6)

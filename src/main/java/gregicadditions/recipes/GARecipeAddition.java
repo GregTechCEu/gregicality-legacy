@@ -2511,6 +2511,18 @@ public class GARecipeAddition {
                 .outputs(SiliconCarbide.getItemStack(2))
                 .buildAndRegister();
 
+        IMPLOSION_RECIPES.recipeBuilder().EUt(30).duration(20).explosivesAmount(48)
+                .input(dust, Diamond, 4)
+                .output(gem, Diamond, 3)
+                .output(dustTiny, DarkAsh, 2)
+                .buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder().EUt(30).duration(20).explosivesAmount(24).explosivesType(DYNAMITE.getStackForm())
+                .input(dust, Diamond, 4)
+                .output(gem, Diamond, 3)
+                .output(dustTiny, DarkAsh, 2)
+                .buildAndRegister();
+
         // Recipes Needing Configuration Circuits
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)

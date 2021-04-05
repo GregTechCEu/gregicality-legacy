@@ -699,7 +699,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Mercaphenol = new SimpleFluidMaterial("mercaphenol", 0xbaaf18, "C6H6OS");
     public static final SimpleFluidMaterial Dimethylformamide = new SimpleFluidMaterial("dimethylformamide", 0x42bdff, "(CH3)2NCH");
     public static final SimpleFluidMaterial HydrogenCrackedDMF = new SimpleFluidMaterial("hydrogen_cracked_dmf", 0x42bdff, "(C6H6OS)H");
-    public static final SimpleFluidMaterial Oct1ene = new SimpleFluidMaterial("1_octene", 0xdadada, "C8H16");
+    public static final SimpleFluidMaterial Oct1ene = new SimpleFluidMaterial("1_octene", 0x7e8778, "C8H16");
     public static final SimpleFluidMaterial CetaneTrimethylAmmoniumBromide = new SimpleFluidMaterial("cetane_trimethyl_ammonium_bromide", 0xb9c1c9, "C19H42BrN");
     public static final SimpleFluidMaterial AmmoniumPersulfate = new SimpleFluidMaterial("ammonium_persulfate", 0x6464f5, "(NH4)2S2O8");
     public static final SimpleFluidMaterial DebrominatedWater = new SimpleFluidMaterial("debrominated_brine", 0x0000ff, WATER.formula());
@@ -792,10 +792,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Dimethylthiophene = new SimpleFluidMaterial("dimethylthiophene", 0x90ff43, "C4H2(CH3)2S");
     public static final SimpleFluidMaterial EDOT = new SimpleFluidMaterial("ethylenedioxythiophene", 0x7a9996, "C2H4O2C4H2S");
     public static final SimpleFluidMaterial CitricAcid = new SimpleFluidMaterial("citric_acid", 0xffcc00, "C6H8O7");
-    public static final SimpleFluidMaterial GasMixture = new SimpleFluidMaterial("gas_mixture", 0x003ffa); // TODO (might get removed)
     public static final SimpleFluidMaterial OxalicAcid = new SimpleFluidMaterial("oxalic_acid", 0x4aaae2, "HOOCCOOH");
     public static final SimpleFluidMaterial Trimethylchlorosilane = new SimpleFluidMaterial("trimethylchlorosilane", Dimethyldichlorosilane.materialRGB, "(CH3)3SiCl");
-    public static final SimpleFluidMaterial Bromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C2H2Br2O2");
+    public static final SimpleFluidMaterial Dibromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C2H2Br2O2");
     public static final SimpleFluidMaterial Bromohydrothiine = new SimpleFluidMaterial("bromodihydrothiine", 0x40ff3a, "C4H4S2Br2");
     public static final SimpleFluidMaterial Lithiumthiinediselenide = new SimpleFluidMaterial("lithiumthiinediselenide", 0x7ada00, "C4H4S2Li2Se2");
     public static final SimpleFluidMaterial Bromobutane = new SimpleFluidMaterial("bromobutane", 0xff3333, "CH3(CH2)3Br");
@@ -843,11 +842,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680); // TODO
     public static final SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad, "C4H2O3");
     public static final SimpleFluidMaterial Benzonitrile = new SimpleFluidMaterial("benzonitrile",0x2c2c9c, "C7H5N");
-    public static final SimpleFluidMaterial SeaborgiumDopedNanotubes = new SimpleFluidMaterial("seaborgium_doped_nanotubes",0x2c2c8c); // TODO
-    public static final SimpleFluidMaterial FullereneDopedNanotubes = new SimpleFluidMaterial("fullerene_doped_nanotubes",0x6c2c6c); // TODO
+    public static final SimpleFluidMaterial SeaborgiumDopedNanotubes = new SimpleFluidMaterial("seaborgium_doped_nanotubes",0x2c2c8c, "SgCNT");
+    public static final SimpleFluidMaterial FullereneDopedNanotubes = new SimpleFluidMaterial("fullerene_doped_nanotubes",0x6c2c6c, "C60CNT");
     public static final SimpleFluidMaterial AmmoniumNiobiumOxalateSolution = new SimpleFluidMaterial("ammonium_niobium_oxalate_solution",0x6c6cac, "(NH4)C10Nb2O20");
     public static final SimpleFluidMaterial DielectricMirrorFormationMix = new SimpleFluidMaterial("dielectric_mirror_formation_mix",0xff992c); // TODO
-    public static final SimpleFluidMaterial LiquidZBLAN = new SimpleFluidMaterial("molten_zblan",(Zirconium.materialRGB+Barium.materialRGB+Lanthanum.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/5, "ZBLAN"); // TODO
+    public static final SimpleFluidMaterial LiquidZBLAN = new SimpleFluidMaterial("molten_zblan",(Zirconium.materialRGB+Barium.materialRGB+Lanthanum.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/5, "(ZrF4)18(BaF2)7(NaF)7(LaF3)2(AlF3)");
     public static final SimpleFluidMaterial ChlorousAcid = new SimpleFluidMaterial("chlorous_acid", 0x2d6e8a, "HClO2");
     public static final SimpleFluidMaterial Iodobenzene = new SimpleFluidMaterial("iodobenzene",0x2c2c6c0, "C6H5I");
     public static final SimpleFluidMaterial Amino3phenol = new SimpleFluidMaterial("3_aminophenol",Aminophenol.rgb, "C6H7NO");
@@ -1148,7 +1147,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial YttriumNitrate = new SimpleDustMaterial("yttrium_nitrate", 0xdadafc, (short) 206, MaterialIconSet.SHINY, "Y(NO3)3");
     public static final SimpleDustMaterial CopperNitrate = new SimpleDustMaterial("copper_nitrate", 0xcaecec, (short) 254, MaterialIconSet.SHINY, "Cu(NO3)2");
     public static final SimpleDustMaterial BariumNitrate = new SimpleDustMaterial("barium_nitrate", (Barium.materialRGB+NitricAcid.materialRGB)/2, (short) 207, MaterialIconSet.SHINY, "Ba(NO3)2");
-    public static final SimpleDustMaterial WellMixedYBCOxides = new SimpleDustMaterial("well_mixed_ybc_oxides", 0x2c3429, (short) 208, MaterialIconSet.DULL, "YBaCu3O6");
+    public static final SimpleDustMaterial WellMixedYBCOxides = new SimpleDustMaterial("well_mixed_ybc_oxides", 0x2c3429, (short) 208, MaterialIconSet.DULL, "YBa2Cu3O6");
     public static final SimpleDustMaterial PiledTBCC = new SimpleDustMaterial("piled_tbcc", 0x669900, (short) 209, MaterialIconSet.SHINY, "Tl2Ba2Cu3Ca2");
     public static final SimpleDustMaterial ActiniumOxalate = new SimpleDustMaterial("actinium_oxalate", Actinium.materialRGB, (short) 210, MaterialIconSet.SHINY, "Ac(CO2)4");
     public static final SimpleDustMaterial ActiniumHydride = new SimpleDustMaterial("actinium_hydride", Actinium.materialRGB, (short) 211, MaterialIconSet.SHINY, "AcH3");
@@ -1201,7 +1200,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial AluminiumNitrate = new SimpleDustMaterial("aluminium_nitrate",Alumina.rgb,(short) 267,MaterialIconSet.DULL, "Al(NO3)3");
     public static final SimpleDustMaterial NeodymiumDopedYttrium = new SimpleDustMaterial("neodymium_doped_yttrium",YttriumOxide.materialRGB,(short) 268,MaterialIconSet.DULL, "Nd:Y?");
     public static final SimpleDustMaterial NdYAGNanoparticles = new SimpleDustMaterial("nd_yag_nanoparticles",0x6f20af,(short) 269,MaterialIconSet.SHINY, "Nd:YAG");
-    public static final SimpleDustMaterial PotassiumPermanganate = new SimpleDustMaterial("potassium_permanganate",0xaf20af,(short) 270,MaterialIconSet.DULL, "KMnO4");
+    public static final SimpleDustMaterial PotassiumPermanganate = new SimpleDustMaterial("potassium_permanganate",PotassiumManganate.rgb-15,(short) 270,MaterialIconSet.DULL, "KMnO4");
     public static final SimpleDustMaterial Urea = new SimpleDustMaterial("urea",0x30cf20,(short) 271,MaterialIconSet.DULL, "CH4N2O");
     public static final SimpleDustMaterial CesiumBromide = new SimpleDustMaterial("cesium_bromide", CesiumHydroxide.rgb, (short) 272,MaterialIconSet.DULL, "CsBr");
     public static final SimpleDustMaterial ApatiteAcidicLeach = new SimpleDustMaterial("apatite_acidic_leach", PhosphoricAcid.materialRGB, (short) 273,MaterialIconSet.DULL, "Ca4P3O102Cl");

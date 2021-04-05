@@ -614,23 +614,18 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(AmmoniumChloride.getFluid(8000))
                 .buildAndRegister();
 
-        // 3Cu(NO3)2 + 2Ba(NO3)2 + Y(NO3)3 + 2NH3 -> YBaCu3O6 + ???
+        // 3Cu(NO3)2 + 2Ba(NO3)2 + Y(NO3)3 + 2NH3 + C6H8O7 -> YBa2Cu3O6 + 15NO2 + 6CO + 4H2O + 6H
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(300).EUt(6400)
                 .inputs(CopperNitrate.getItemStack(27))
                 .inputs(BariumNitrate.getItemStack(18))
                 .inputs(YttriumNitrate.getItemStack(13))
                 .fluidInputs(Ammonia.getFluid(2000))
-                .fluidInputs(CitricAcid.getFluid(4000))
+                .fluidInputs(CitricAcid.getFluid(1000))
                 .outputs(WellMixedYBCOxides.getItemStack(12))
-                .fluidOutputs(GasMixture.getFluid(6000))
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(3200)
-                .fluidInputs(GasMixture.getFluid(16000))
-                .fluidOutputs(CarbonDioxide.getFluid(5500))
-                .fluidOutputs(Oxygen.getFluid(2500))
-                .fluidOutputs(Nitrogen.getFluid(3500))
-                .fluidOutputs(NitrogenDioxide.getFluid(4500))
+                .fluidOutputs(NitrogenDioxide.getFluid(15000))
+                .fluidOutputs(CarbonMonoxde.getFluid(6000))
+                .fluidOutputs(Water.getFluid(4000))
+                .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 
         // YBa2Cu3O6 + O -> YBa2Cu3O7
@@ -758,7 +753,7 @@ public class SuperconductorsSMDChain {
                 .notConsumable(Trimethylchlorosilane.getFluid(0))
                 .input(dust, Sodium, 4)
                 .output(dust, SodiumHydroxide, 12)
-                .fluidOutputs(Bromoacrolein.getFluid(1000))
+                .fluidOutputs(Dibromoacrolein.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
@@ -785,7 +780,7 @@ public class SuperconductorsSMDChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(10000)
                 .inputs(SodiumThiosulfate.getItemStack(14))
                 .fluidInputs(Chloroethane.getFluid(1000))
-                .fluidInputs(Bromoacrolein.getFluid(1000))
+                .fluidInputs(Dibromoacrolein.getFluid(1000))
                 .output(dust, Salt, 4)
                 .output(dust, SodiumBisulfate, 14)
                 .fluidOutputs(Bromohydrothiine.getFluid(1000))
