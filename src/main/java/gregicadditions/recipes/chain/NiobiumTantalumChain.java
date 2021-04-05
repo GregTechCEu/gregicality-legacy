@@ -213,7 +213,7 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(Water.getFluid(4000))
                 .output(dust, Barite, 3)
                 .output(dust, Gypsum, 8)
-                .outputs(StrontiumSulfate.getItemStack(3))
+                .outputs(StrontiumSulfate.getItemStack(6))
                 .output(dustTiny, Radium, 3)
                 .buildAndRegister();
 

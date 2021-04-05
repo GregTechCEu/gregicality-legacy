@@ -18,7 +18,7 @@ public class AmmoniaChain {
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Iron)
-                .inputs(ChromiumOxide.getItemStack(4))
+                .input(dust, ChromiumTrioxide, 4)
                 .outputs(FeCrOCatalyst.getItemStack(5))
                 .buildAndRegister();
 

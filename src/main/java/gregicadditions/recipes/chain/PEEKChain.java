@@ -136,7 +136,7 @@ public class PEEKChain {
         // Not perfectly balanced, but is probably fine
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydroquinone.getFluid(1000))
-                .inputs(Difluorobenzophenone.getItemStack())
+                .inputs(Difluorobenzophenone.getItemStack(24))
                 .input(dust, SodaAsh, 6)
                 .fluidOutputs(Polyetheretherketone.getFluid(2592))
                 .fluidOutputs(Water.getFluid(1000))

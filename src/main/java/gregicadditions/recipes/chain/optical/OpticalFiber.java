@@ -64,51 +64,51 @@ public class OpticalFiber {
 
         // ZBLAN + ErF3 = [ZBLAN + ErF3]
         MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
-                .inputs(ZBLANDust.getItemStack(1))
+                .inputs(ZBLANDust.getItemStack())
                 .inputs(ErbiumTrifluoride.getItemStack(4))
                 .outputs(ErbiumDopedZBLANDust.getItemStack(2))
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(262000).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .inputs(ZBLANDust.getItemStack(1))
-                .outputs(ZBLAN.getStackForm(1))
+                .inputs(ZBLANDust.getItemStack())
+                .outputs(ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(262000).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .inputs(ErbiumDopedZBLANDust.getItemStack(1))
-                .outputs(ERBIUM_DOPED_ZBLAN.getStackForm(1))
+                .inputs(ErbiumDopedZBLANDust.getItemStack())
+                .outputs(ERBIUM_DOPED_ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         FORMING_PRESS_RECIPES.recipeBuilder().EUt(4000).duration(2000)
                 .notConsumable(SHAPE_MOLD_INGOT)
-                .inputs(ZBLAN.getStackForm(1))
-                .outputs(ZBLAN_INGOT.getStackForm(1))
+                .inputs(ZBLAN.getStackForm())
+                .outputs(ZBLAN_INGOT.getStackForm())
                 .buildAndRegister();
 
         ARC_FURNACE_RECIPES.recipeBuilder().EUt(120).duration(10000)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .inputs(ZBLAN_INGOT.getStackForm(1))
-                .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm(1))
+                .inputs(ZBLAN_INGOT.getStackForm())
+                .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
                 .buildAndRegister();
 
         EXTRUDER_RECIPES.recipeBuilder().EUt(4000).duration(2000)
                 .notConsumable(SHAPE_EXTRUDER_WIRE)
-                .inputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm(1))
+                .inputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
                 .outputs(ZBLAN_FIBER.getStackForm(2))
                 .buildAndRegister();
 
         FORMING_PRESS_RECIPES.recipeBuilder().EUt(4000).duration(2000)
-                .inputs(ZBLAN_FIBER.getStackForm(1))
-                .inputs(ERBIUM_DOPED_ZBLAN.getStackForm(1))
-                .outputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(1))
+                .inputs(ZBLAN_FIBER.getStackForm())
+                .inputs(ERBIUM_DOPED_ZBLAN.getStackForm())
+                .outputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(8).duration(150)
-                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(1))
+                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(OreDictUnifier.get(GAEnums.GAOrePrefix.opticalFiberSingle.toString()))
                 .buildAndRegister();

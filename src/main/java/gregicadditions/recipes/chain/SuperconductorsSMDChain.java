@@ -93,7 +93,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(350).EUt(1400)
                 .fluidInputs(Hydroxyquinoline.getFluid(1000))
                 .input(dust, Aluminium)
-                .outputs(AluminiumComplex.getItemStack())
+                .outputs(AluminiumComplex.getItemStack(19))
                 .buildAndRegister();
 
         // Na2O4Ru + 2H -> RuO2 + 2NaOH
@@ -441,7 +441,7 @@ public class SuperconductorsSMDChain {
                         .inputs(BALLAST.getStackForm())
                         .input(foil, Electrum, 2)
                         .input(plate, WoodsGlass, 2)
-                        .inputs(StrontiumEuropiumAluminate.getItemStack(7))
+                        .inputs(StrontiumEuropiumAluminate.getItemStack(8))
                         .fluidInputs(Nitrogen.getFluid(1000))
                         .outputs(halide_lamp[i].getStackForm())
                         .buildAndRegister();
@@ -475,7 +475,7 @@ public class SuperconductorsSMDChain {
                         .inputs(BALLAST.getStackForm())
                         .input(foil, Electrum, 2)
                         .input(plate, WoodsGlass, 2)
-                        .inputs(StrontiumEuropiumAluminate.getItemStack(7))
+                        .inputs(StrontiumEuropiumAluminate.getItemStack(8))
                         .fluidInputs(Nitrogen.getFluid(1000))
                         .outputs(halide_lamp[i].getStackForm(2))
                         .buildAndRegister();
@@ -498,7 +498,7 @@ public class SuperconductorsSMDChain {
                         .inputs(BALLAST.getStackForm())
                         .input(foil, Electrum, 2)
                         .input(plate, BorosilicateGlass, 2)
-                        .inputs(StrontiumEuropiumAluminate.getItemStack(7))
+                        .inputs(StrontiumEuropiumAluminate.getItemStack(8))
                         .fluidInputs(Nitrogen.getFluid(1000))
                         .outputs(halide_lamp[i].getStackForm())
                         .buildAndRegister();
@@ -532,7 +532,7 @@ public class SuperconductorsSMDChain {
                         .inputs(BALLAST.getStackForm())
                         .input(foil, Electrum, 2)
                         .input(plate, BorosilicateGlass, 2)
-                        .inputs(StrontiumEuropiumAluminate.getItemStack(7))
+                        .inputs(StrontiumEuropiumAluminate.getItemStack(8))
                         .fluidInputs(Nitrogen.getFluid(1000))
                         .outputs(halide_lamp[i].getStackForm(2))
                         .buildAndRegister();
@@ -553,7 +553,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Mercury.getFluid(1000))
                 .fluidInputs(Water.getFluid(3000))
                 .fluidInputs(Biperfluoromethanedisulfide.getFluid(1000))
-                .inputs(BariumCarbonate.getItemStack())
+                .inputs(BariumCarbonate.getItemStack(5))
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(BariumTriflateSolution.getFluid(3000))
                 .output(dust, Carbon)
@@ -1125,8 +1125,8 @@ public class SuperconductorsSMDChain {
                 .input(dust, Caesium)
                 .input(dust, Cobalt, 2)
                 .input(dust, Indium, 10)
-                .fluidInputs(CosmicComputingMix.getFluid(2000))
-                .outputs(ChargedCesiumCeriumCobaltIndium.getItemStack(16))
+                .fluidInputs(CosmicComputingMix.getFluid(1000))
+                .outputs(ChargedCesiumCeriumCobaltIndium.getItemStack(14))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(320000)

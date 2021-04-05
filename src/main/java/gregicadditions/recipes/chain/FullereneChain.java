@@ -128,6 +128,18 @@ public class FullereneChain {
                 .duration(200)
                 .buildAndRegister();
 
+        // C4H4BrNO2 -> HBr + NO2 + 4C + 3H
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .inputs(Bromosuccinimide.getItemStack(12))
+                .output(dust, Carbon, 4)
+                .fluidOutputs(Hydrogen.getFluid(3000))
+                .fluidOutputs(HydrobromicAcid.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .duration(158)
+                .EUt(2000)
+                .buildAndRegister();
+
+
         // SO3 + S + 2Cl -> SO2 + SOCl2
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(SulfurTrioxide.getFluid(1000))
@@ -158,6 +170,16 @@ public class FullereneChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(7680)
                 .duration(1000)
+                .buildAndRegister();
+
+        // KCN -> K + C + N
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .inputs(PotassiumCyanide.getItemStack(3))
+                .output(dust, Potassium)
+                .output(dust, Carbon)
+                .fluidOutputs(Nitrogen.getFluid(1000))
+                .duration(150)
+                .EUt(60)
                 .buildAndRegister();
 
         // KCl + H2O -> KOH + HCl

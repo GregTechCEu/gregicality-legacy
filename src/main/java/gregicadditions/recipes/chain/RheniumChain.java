@@ -80,7 +80,7 @@ public class RheniumChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(GoldDepleteMolybdenite.getItemStack(3))
                 .fluidInputs(IronChloride.getFluid(500))
-                .outputs(MolybdenumConcentrate.getItemStack())
+                .outputs(MolybdenumConcentrate.getItemStack(4))
                 .fluidOutputs(ChlorideLeachedSolution.getFluid(500))
                 .EUt(491520)
                 .duration(10)
@@ -136,7 +136,7 @@ public class RheniumChain {
 
         // ? + ~7O -> 3? + MoO3
         BLAST_RECIPES.recipeBuilder()
-                .inputs(MolybdenumConcentrate.getItemStack(2))
+                .inputs(MolybdenumConcentrate.getItemStack(4))
                 .fluidInputs(Oxygen.getFluid(7250))
                 .blastFurnaceTemp(8550)
                 .EUt(491520)
@@ -312,7 +312,7 @@ public class RheniumChain {
 
         // ? + 0.2? -> ? + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(LeachedColumbite.getItemStack())
+                .inputs(LeachedColumbite.getItemStack(17))
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
                 .outputs(PurifiedColumbite.getItemStack())
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))

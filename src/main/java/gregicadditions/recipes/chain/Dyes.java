@@ -91,7 +91,7 @@ public class Dyes {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .fluidInputs(PhosphorousArsenicSolution.getFluid(10000))
                 .input(dust, SodiumSulfide,4)
-                .outputs(SodiumArsenate.getItemStack(2))
+                .outputs(SodiumArsenate.getItemStack(16))
                 .outputs(CadmiumSulfide.getItemStack(2))
                 .fluidOutputs(PhosphoricAcid.getFluid(10000))
                 .buildAndRegister();
@@ -179,7 +179,7 @@ public class Dyes {
 
         // NH4VO3 + ? + 8H -> NH4NO3 + BiVO4(H2O) + 2H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
-                .inputs(AmmoniumVanadate.getItemStack())
+                .inputs(AmmoniumVanadate.getItemStack(9))
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(8000))
                 .fluidOutputs(AmmoniumNitrate.getFluid(1000))
@@ -197,9 +197,9 @@ public class Dyes {
         MIXER_RECIPES.recipeBuilder().duration(220).EUt(125)
                 .fluidInputs(CopperSulfateSolution.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
-                .input(dust, ArsenicTrioxide)
+                .input(dust, ArsenicTrioxide, 5)
                 .input(dust, SodaAsh)
-                .outputs(CopperArsenite.getItemStack(2))
+                .outputs(CopperArsenite.getItemStack(5))
                 .buildAndRegister();
 
         ModHandler.addSmeltingRecipe(CopperArsenite.getItemStack(), ScheelesGreen.getItemStack());
@@ -275,8 +275,8 @@ public class Dyes {
 
         // 2Pb(NO3)2 + K2Cr2O7 -> 2PbCrO4 // Loses 3N, K, O
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(500)
-                .input(dust, LeadNitrate)
-                .input(dust, Potassiumdichromate)
+                .input(dust, LeadNitrate, 9)
+                .input(dust, Potassiumdichromate, 11)
                 .outputs(ChromeYellow.getItemStack(2))
                 .buildAndRegister();
 
@@ -337,7 +337,7 @@ public class Dyes {
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Naphthylamine.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(4000))
-                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 2))
+                .outputs(OreDictUnifier.get(dust, SodiumSulfate, 6))
                 .buildAndRegister();
 
         // C6H6NNaO3S + C10H9N + HCl + NaNO2 -> NaCl + C26H19N6NaO3S
@@ -345,7 +345,7 @@ public class Dyes {
                 .inputs(SodiumSulfanilate.getItemStack())
                 .fluidInputs(Naphthylamine.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .inputs(SodiumNitrite.getItemStack())
+                .inputs(SodiumNitrite.getItemStack(4))
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .outputs(DirectBrown.getItemStack(2))
                 .buildAndRegister();
@@ -383,7 +383,7 @@ public class Dyes {
                 .fluidInputs(Acetoacetanilide.getFluid(1000))
                 .fluidInputs(Dichlorobenzidine.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .inputs(SodiumNitrite.getItemStack())
+                .inputs(SodiumNitrite.getItemStack(4))
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .outputs(DiarylideYellow.getItemStack(2))
                 .buildAndRegister();
@@ -400,7 +400,7 @@ public class Dyes {
         // C6H4(OH)2 + C8H4O3 + C7H7SO3Na + NH3 + HCl -> C14H10N2O2
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1400)
                 .fluidInputs(Hydroquinone.getFluid(1000))
-                .input(dust, PhthalicAnhydride)
+                .input(dust, PhthalicAnhydride, 15)
                 .fluidInputs(Toluenesulfonate.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Diaminoanthraquinone.getFluid(2000))
@@ -410,13 +410,13 @@ public class Dyes {
                 .fluidInputs(Diaminoanthraquinone.getFluid(1000))
                 .fluidInputs(Toluenesulfonate.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .inputs(SodiumNitrite.getItemStack())
+                .inputs(SodiumNitrite.getItemStack(4))
                 .outputs(OreDictUnifier.get(dust, Salt, 2))
                 .outputs(AlizarineCyanineGreen.getItemStack(2))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
-                .input(dust, PhthalicAnhydride)
+                .input(dust, PhthalicAnhydride, 15)
                 .fluidInputs(Benzene.getFluid(1000))
                 .outputs(Anthraquinone.getItemStack())
                 .buildAndRegister();
@@ -424,8 +424,8 @@ public class Dyes {
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(200).EUt(1600)
                 .fluidInputs(SulfuricAcid.getFluid(10))
                 .fluidInputs(Anthracene.getFluid(1000))
-                .input(dust,Potassiumdichromate)
-                .outputs(ChromiumOxide.getItemStack())
+                .input(dust,Potassiumdichromate, 11)
+                .output(dust, ChromiumTrioxide, 4)
                 .outputs(Anthraquinone.getItemStack())
                 .buildAndRegister();
 
@@ -470,11 +470,11 @@ public class Dyes {
                 .fluidInputs(MaleicAnhydride.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
-                .outputs(SuccinicAcid.getItemStack())
+                .outputs(SuccinicAcid.getItemStack(14))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1400)
-                .inputs(SuccinicAcid.getItemStack())
+                .inputs(SuccinicAcid.getItemStack(14))
                 .fluidInputs(IsopropylAlcohol.getFluid(1000))
                 .fluidOutputs(Isopropylsuccinate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
@@ -523,7 +523,7 @@ public class Dyes {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1150)
-                .input(dust, PhthalicAnhydride)
+                .input(dust, PhthalicAnhydride, 15)
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .outputs(Fluorescein.getItemStack())
                 .notConsumable(ZincChloride.getItemStack())

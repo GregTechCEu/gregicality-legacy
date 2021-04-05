@@ -154,10 +154,10 @@ public class InsulationWireAssemblyChain {
                 .fluidOutputs(Water.getFluid(6000))
                 .buildAndRegister();
 
-        // KMnO4 + NaNO2 + H2SO4 = Graphene Oxidation Solution
+        // KMnO4 + NaNO3 + H2SO4 = Graphene Oxidation Solution
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(19500)
                 .inputs(PotassiumPermanganate.getItemStack(6))
-                .input(dust, SodiumNitrate, 4)
+                .input(dust, SodiumNitrate, 5)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(GrapheneOxidationSolution.getFluid(1000))
                 .buildAndRegister();

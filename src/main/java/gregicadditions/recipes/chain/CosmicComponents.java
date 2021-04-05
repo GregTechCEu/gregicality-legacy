@@ -276,7 +276,7 @@ public class CosmicComponents {
                 .fluidInputs(BismuthNitrateSoluton.getFluid(4000))
                 .inputs(GermaniumOxide.getItemStack(3))
                 .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
-                .outputs(BismuthGermanate.getItemStack())
+                .outputs(BismuthGermanate.getItemStack(33))
                 .output(dust, Potash, 18)
                 .fluidOutputs(NitrogenDioxide.getFluid(12000))
                 .fluidOutputs(Water.getFluid(4000))

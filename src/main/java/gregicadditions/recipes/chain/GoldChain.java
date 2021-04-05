@@ -38,7 +38,7 @@ public class GoldChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
                 .input(dust, GoldLeach, 4)
                 .fluidInputs(AquaRegia.getFluid(2000))
-                .chancedOutput(LeadSulfate.getItemStack(), 1000, 0)
+                .chancedOutput(LeadSulfate.getItemStack(6), 1000, 0)
                 .fluidOutputs(ChloroauricAcid.getFluid(1000))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
@@ -59,7 +59,7 @@ public class GoldChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
-                .input(dust, PotassiumMetabisulfite)
+                .input(dust, PotassiumMetabisulfite) // Left at 1 to make it easier
                 .fluidInputs(ChloroauricAcid.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .output(dust, Gold, 9)
@@ -75,18 +75,20 @@ public class GoldChain {
                 .fluidOutputs(DiluteNitricAcid.getFluid(1000))
                 .buildAndRegister();
 
+        // 2AgCl + H2O -> Ag2O + 2HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(800)
-                .input(dust, SilverChloride, 2)
-                .input(dust, SodiumHydroxide, 3)
+                .input(dust, SilverChloride, 4)
+                .notConsumable(dust, SodiumHydroxide)
                 .fluidInputs(Water.getFluid(1000))
-                .output(dust, SilverOxide, 2)
-                .fluidOutputs(Chlorine.getFluid(1000))
+                .output(dust, SilverOxide, 3)
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
+        // Ag2O + C -> 2Ag + CO
         BLAST_RECIPES.recipeBuilder().duration(80).EUt(120).blastFurnaceTemp(1200)
                 .input(dust, SilverOxide, 3)
                 .input(dust, Carbon)
-                .output(ingot, Silver, 3)
+                .output(ingot, Silver, 2)
                 .output(dustTiny, Ash, 2)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();

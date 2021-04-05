@@ -47,20 +47,19 @@ public class ChromiumChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // 2C + Na2Cr2O7 -> CO + Na2CO3 + Cr2O3
-        BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
-                .input(dust, Carbon, 2)
+        // CO2 + Na2Cr2O7 -> Na2CO3 + 2CrO3
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(125)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .output(dust, SodaAsh, 6)
-                .output(dust, ChromiumTrioxide, 5)
+                .output(dust, ChromiumTrioxide, 8)
                 .buildAndRegister();
 
-        // Cr2O3 + 2Al -> 2Cr + Al2O3
+        // CrO3 + 2Al -> Cr + Al2O3
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
-                .input(dust, ChromiumTrioxide, 5)
+                .input(dust, ChromiumTrioxide, 4)
                 .input(dust, Aluminium, 2)
-                .output(dust, Chrome, 2)
+                .output(dust, Chrome)
                 .outputs(Alumina.getItemStack(5))
                 .buildAndRegister();
 

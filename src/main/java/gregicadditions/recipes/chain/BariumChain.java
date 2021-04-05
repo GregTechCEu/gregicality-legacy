@@ -30,7 +30,7 @@ public class BariumChain {
         BLAST_RECIPES.recipeBuilder().duration(480).EUt(500).blastFurnaceTemp(1200)
                 .input(dust, Barite, 6)
                 .input(dust, Carbon, 2)
-                .outputs(BariumSulfide.getItemStack())
+                .outputs(BariumSulfide.getItemStack(2))
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
 

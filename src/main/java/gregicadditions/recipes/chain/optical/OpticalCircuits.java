@@ -37,7 +37,7 @@ public class OpticalCircuits {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
                 .input(wireFine, Cinobite, 8)
-                .inputs(SodiumSeaborgate.getItemStack(4))
+                .inputs(SodiumSeaborgate.getItemStack(5))
                 .input(dust, TriniumTitanium, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(1296))
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))

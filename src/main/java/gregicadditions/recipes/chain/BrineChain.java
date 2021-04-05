@@ -476,8 +476,7 @@ public class BrineChain {
 
         // 12Na2MoO4 + H3PO4 + 21HCl -> Mo12Na3O40P + 21NaCl + 12H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(1900)
-                .inputs(SodiumMolybdate.getItemStack(64))
-                .inputs(SodiumMolybdate.getItemStack(20))
+                .inputs(SodiumMolybdate.getItemStack(84))
                 .fluidInputs(PhosphoricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(13000))
                 .outputs(SodiumPhosphomolybdate.getItemStack(56))
@@ -538,7 +537,7 @@ public class BrineChain {
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .fluidInputs(AmmoniumPersulfate.getFluid(10))
                 .fluidInputs(CetaneTrimethylAmmoniumBromide.getFluid(20))
-                .outputs(PolystyreneNanoParticles.getItemStack(1))
+                .outputs(PolystyreneNanoParticles.getItemStack())
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(300).EUt(9000).blastFurnaceTemp(500)
@@ -559,7 +558,7 @@ public class BrineChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(SodiumSalts.getItemStack(2))
                 .output(dust, Salt, 2)
-                .chancedOutput(OreDictUnifier.get(dustTiny, SodiumFluoride), 400, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, SodiumFluoride, 2), 400, 0)
                 .buildAndRegister();
 
         // KCl, MgSO4, K2SO4
@@ -568,14 +567,14 @@ public class BrineChain {
                 .output(dust, RockSalt, 2)
                 .outputs(MagnesiumSulfate.getItemStack(6))
                 .outputs(PotassiumSulfate.getItemStack(7))
-                .chancedOutput(OreDictUnifier.get(dustTiny, PotassiumFluoride), 400, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PotassiumFluoride, 2), 400, 0)
                 .buildAndRegister();
 
         // CaCO3, CO2, MgO
         CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(2500)
                 .inputs(CalciumMagnesiumSalts.getItemStack(8))
                 .output(dust, Calcite, 5)
-                .chancedOutput(StrontiumCarbonate.getItemStack(), 40, 0)
+                .chancedOutput(StrontiumCarbonate.getItemStack(5), 40, 0)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .output(dust, Magnesia, 2)
                 .buildAndRegister();

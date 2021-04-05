@@ -164,7 +164,7 @@ public class PlatinumSludgeGroupChain {
         // probably the worst recipe in the chain, most needing of a rework
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, SodaAsh, 18)
-                .input(dust, LeachResidue, 10)
+                .input(dust, LeachResidue, 40)
                 .fluidInputs(Oxygen.getFluid(3000))
                 .output(dust, IrOsLeachResidue, 6)
                 .output(dust, SodiumRuthenate, 21)
