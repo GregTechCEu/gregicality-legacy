@@ -65,6 +65,22 @@ public class BlockPatternChecker {
         return true;
     }
 
+    public static BlockPos getPatternErrorPos(MultiblockControllerBase controllerBase) {
+        if (checkPatternAt(controllerBase) == null) {
+            return new BlockPos(blockPos);
+        }
+        return null;
+    }
+
+    public static PatternMatchContext checkPatternAt(MultiblockControllerBase controllerBase) {
+        try{
+            BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern");
+            return checkPatternAt(structurePattern, controllerBase.getWorld(), controllerBase.getPos(), controllerBase.getFrontFacing().getOpposite());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public static PatternMatchContext checkPatternAt(BlockPattern blockPattern, World world, BlockPos centerPos, EnumFacing facing) {
         if (blockPattern == null || !updateAllValue(blockPattern)) return null;
 
@@ -151,21 +167,25 @@ public class BlockPatternChecker {
         return matchContext;
     }
 
-    public static EnumFacing getSpin(MetaTileEntity controllerBase) throws IllegalAccessException {
-        return (EnumFacing) SPIN_FIELD.get(controllerBase);
+    public static EnumFacing getSpin(MetaTileEntity controllerBase) {
+        try {
+            return (EnumFacing) SPIN_FIELD.get(controllerBase);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return EnumFacing.NORTH;
     }
 
-    public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) throws IllegalAccessException {
-        SPIN_FIELD.set(controllerBase, spin);
+    public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) {
+        try {
+            SPIN_FIELD.set(controllerBase, spin);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public static EnumFacing getSpin(World world, BlockPos pos) {
-        try {
-            return getSpin(((MetaTileEntityHolder)world.getTileEntity(pos)).getMetaTileEntity());
-        } catch (Exception ignored) {
-
-        }
-        return EnumFacing.NORTH;
+        return getSpin(((MetaTileEntityHolder)world.getTileEntity(pos)).getMetaTileEntity());
     }
 
     public static MutableBlockPos setActualRelativeOffset(MutableBlockPos pos, int x, int y, int z, EnumFacing facing, EnumFacing spin, BlockPattern.RelativeDirection[] structureDir) {
