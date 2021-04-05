@@ -12,7 +12,6 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.render.scene.WorldSceneRenderer;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
-import jdk.internal.org.objectweb.asm.Type;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -50,9 +49,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
@@ -154,6 +151,7 @@ public class WorldRenderEventRenderer {
 
             GlStateManager.enableTexture2D();
             GlStateManager.enableDepth();
+            GlStateManager.color(1, 1, 1);
             GlStateManager.popMatrix();
         }
     }
@@ -167,6 +165,14 @@ public class WorldRenderEventRenderer {
     private static MultiblockControllerBase controllerBase;
 
     public static void renderMultiBlockPreview(MultiblockControllerBase controller, long durTimeMillis, byte mode){
+        if(controller == null) {
+            reset();
+            posHighLight = null;
+            hlEndTime = 0;
+        }
+        else if(!controller.getPos().equals(mbpPos)) {
+            layer = -1;
+        }
         controllerBase = controller;
         mbpEndTime = durTimeMillis;
         renderMode = mode;
@@ -256,7 +262,7 @@ public class WorldRenderEventRenderer {
             }
             spin = BlockPatternChecker.getSpin(controllerBase);
 
-            frontFacing = facing.getYOffset() == 0 ? facing : spin.getOpposite();
+            frontFacing = facing.getYOffset() == 0 ? facing : facing.getYOffset() < 0 ? spin : spin.getOpposite();
 
             Rotation rotatePreviewBy = Rotation.values()[(4 + frontFacing.getHorizontalIndex() - previewFacing.getHorizontalIndex()) % 4];
 
@@ -275,22 +281,22 @@ public class WorldRenderEventRenderer {
             GlStateManager.pushMatrix();
 
             GlStateManager.translate(0.5, 0, 0.5);
-            GlStateManager.rotate((facing.getYOffset() < 0 ? -1 : 1) * rotatePreviewBy.ordinal() * 90, 0, -1, 0);
+            GlStateManager.rotate(rotatePreviewBy.ordinal() * 90, 0, -1, 0);
             GlStateManager.translate(-0.5, 0, -0.5);
 
             if (facing == EnumFacing.UP) {
-                GlStateManager.translate(0.5, 0.5, 0);
-                GlStateManager.rotate(90, 0, 0, -1);
-                GlStateManager.translate(-0.5, -0.5, 0);
+                GlStateManager.translate(0.5, 0.5, 0.5);
+                GlStateManager.rotate(90, -previewFacing.getZOffset(), 0, previewFacing.getXOffset());
+                GlStateManager.translate(-0.5, -0.5, -0.5);
             } else if (facing == EnumFacing.DOWN){
-                GlStateManager.translate(0.5, 0.5, 0);
-                GlStateManager.rotate(90, 0, 0, 1);
-                GlStateManager.translate(-0.5, -0.5, 0);
+                GlStateManager.translate(0.5, 0.5, 0.5);
+                GlStateManager.rotate(90, previewFacing.getZOffset(), 0, -previewFacing.getXOffset());
+                GlStateManager.translate(-0.5, -0.5, -0.5);
             } else {
                 int degree = 90 * (spin == EnumFacing.EAST? -1: spin == EnumFacing.SOUTH? 2: spin == EnumFacing.WEST? 1:0);
-                GlStateManager.translate(0, 0.5, 0.5);
-                GlStateManager.rotate(degree, -1, 0, 0);
-                GlStateManager.translate(-0, -0.5, -0.5);
+                GlStateManager.translate(0.5, 0.5, 0.5);
+                GlStateManager.rotate(degree, previewFacing.getXOffset(), 0, previewFacing.getZOffset());
+                GlStateManager.translate(-0.5, -0.5, -0.5);
             }
 
 

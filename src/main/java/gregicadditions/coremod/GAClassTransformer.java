@@ -102,12 +102,21 @@ public class GAClassTransformer implements IClassTransformer {
             super(api, mv);
         }
 
-        protected Method findFirstMethod(Class<?> clazz, String methodName) {
-            return Arrays.stream(clazz.getMethods()).filter(method -> method.getName().equals(methodName)).findFirst().orElse(null);
+        protected Method findFirstMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+            if (parameterTypes.length == 0 || parameterTypes[0] == null) {
+                return Arrays.stream(clazz.getMethods()).filter(method -> method.getName().equals(methodName)).findFirst().orElse(null);
+            } else {
+                try {
+                    return clazz.getMethod(methodName, parameterTypes);
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
         }
 
-        protected void injectStaticMethod(Class<?> clazz, String methodName) {
-            Method method = findFirstMethod(clazz, methodName);
+        protected void injectStaticMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+            Method method = findFirstMethod(clazz, methodName, parameterTypes);
             if (method == null) {
                 throw new IllegalArgumentException("error inject method, class: " + clazz.getName() + " method: " + methodName);
             } else {
