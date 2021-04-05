@@ -750,15 +750,16 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HypochlorousAcid.getFluid(8000))
                 .buildAndRegister();
 
-        // 3CH2O2 + Br + 3Na -> C3H3BrO + 3NaOH + 2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(8000)
-                .fluidInputs(FormicAcid.getFluid(3000))
-                .fluidInputs(Bromine.getFluid(1000))
+        // 2CH2O2 + 2Br + 4Na + 2H2O -> Br2C2H2O2 + 4NaOH + 2H
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(8000)
+                .fluidInputs(FormicAcid.getFluid(2000))
+                .fluidInputs(Bromine.getFluid(2000))
+                .fluidInputs(Water.getFluid(2000))
                 .notConsumable(Trimethylchlorosilane.getFluid(0))
-                .input(dust, Sodium, 3)
-                .output(dust, SodiumHydroxide, 9)
+                .input(dust, Sodium, 4)
+                .output(dust, SodiumHydroxide, 12)
                 .fluidOutputs(Bromoacrolein.getFluid(1000))
-                .fluidOutputs(Oxygen.getFluid(2000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
         // 3NaOH + 2S + O -> NaH + Na2S2O3 + H2O
@@ -780,19 +781,17 @@ public class SuperconductorsSMDChain {
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .buildAndRegister();
 
-        // C2H4Cl2 + 2 Na2S2O3 + C3H3BrO -> Bromohydrothiine + 2 NaHSO4 + 2 NaCl
-        // TODO
+        // C2H4Cl2 + 2Na2S2O3 + C2H2Br2O2 -> C4H4S2Br2 + 2NaHSO4 + 2NaCl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(10000)
                 .inputs(SodiumThiosulfate.getItemStack(14))
                 .fluidInputs(Chloroethane.getFluid(1000))
                 .fluidInputs(Bromoacrolein.getFluid(1000))
                 .output(dust, Salt, 4)
                 .output(dust, SodiumBisulfate, 14)
-                .fluidOutputs(Bromohydrothiine.getFluid(2000))
+                .fluidOutputs(Bromohydrothiine.getFluid(1000))
                 .buildAndRegister();
 
-        // Bromohydrothiine + 2 Se + 2 BuLi -> Lithiumdithiineselenide + 2 C4H9Br
-        // TODO
+        // C4H4S2Br2 + 2Se + 2C4H9Li -> C4H4S2Li2Se2 + 2C4H9Br
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(970000)
                 .fluidInputs(Bromohydrothiine.getFluid(1000))
                 .fluidInputs(ButylLithium.getFluid(2000))
@@ -820,8 +819,7 @@ public class SuperconductorsSMDChain {
                 .outputs(TitaniumCyclopentanyl.getItemStack(14))
                 .buildAndRegister();
 
-        // C2F4 + 2 Lithiumdithiineselenide -> BETS + 4 LiF
-        // TODO
+        // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(720000).blastFurnaceTemp(3500)
                 .fluidInputs(Lithiumthiinediselenide.getFluid(2000))
                 .notConsumable(TitaniumCyclopentanyl.getItemStack())
@@ -933,8 +931,7 @@ public class SuperconductorsSMDChain {
                 .output(dust, Salt, 2)
                 .buildAndRegister();
 
-        // 2NaIO4 + 2Ru + 4NaOH + 2CO -> 2NaI + 2Na2O4Ru + 2H2O + 2CO2 (Adjusted to 15Ru and 6Na2O4Ru to prevent infinite duping)
-        // TODO?
+        // 2NaIO4 + 2Ru + 4NaOH + 2CO -> 2NaI + 2Na2O4Ru + 2H2O + 2CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(680000)
                 .inputs(SodiumPeriodate.getItemStack(12))
                 .input(dust, Ruthenium, 2)

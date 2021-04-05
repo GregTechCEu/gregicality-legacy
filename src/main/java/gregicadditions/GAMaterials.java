@@ -795,9 +795,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial GasMixture = new SimpleFluidMaterial("gas_mixture", 0x003ffa); // TODO (might get removed)
     public static final SimpleFluidMaterial OxalicAcid = new SimpleFluidMaterial("oxalic_acid", 0x4aaae2, "HOOCCOOH");
     public static final SimpleFluidMaterial Trimethylchlorosilane = new SimpleFluidMaterial("trimethylchlorosilane", Dimethyldichlorosilane.materialRGB, "(CH3)3SiCl");
-    public static final SimpleFluidMaterial Bromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C3H3BrO");
-    public static final SimpleFluidMaterial Bromohydrothiine = new SimpleFluidMaterial("bromodihydrothiine", 0x40ff3a); // TODO
-    public static final SimpleFluidMaterial Lithiumthiinediselenide = new SimpleFluidMaterial("lithiumthiinediselenide", 0x7ada00); // TODO
+    public static final SimpleFluidMaterial Bromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C2H2Br2O2");
+    public static final SimpleFluidMaterial Bromohydrothiine = new SimpleFluidMaterial("bromodihydrothiine", 0x40ff3a, "C4H4S2Br2");
+    public static final SimpleFluidMaterial Lithiumthiinediselenide = new SimpleFluidMaterial("lithiumthiinediselenide", 0x7ada00, "C4H4S2Li2Se2");
     public static final SimpleFluidMaterial Bromobutane = new SimpleFluidMaterial("bromobutane", 0xff3333, "CH3(CH2)3Br");
     public static final SimpleFluidMaterial AstatideSolution = new SimpleFluidMaterial("astatide_solution", 0x6df63f, "At(H2O)(SO3)");
     public static final SimpleFluidMaterial Biperfluoromethanedisulfide = new SimpleFluidMaterial("biperfluoromethanedisulfide", 0x3ada40, "C2F6S2");
@@ -1191,7 +1191,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial ZirconylChloride = new SimpleDustMaterial("zirconyl_chloride", ZirconiumTetrachloride.rgb, (short) 249, MaterialIconSet.DULL, "ZrOCl2");
     public static final SimpleDustMaterial LeadSenenide = new SimpleDustMaterial("lead_selenide", (Lead.materialRGB+Selenium.materialRGB)/2, (short) 250, MaterialIconSet.DULL, "PbSe");
     public static final SimpleDustMaterial LeadScandiumTantalate = new SimpleDustMaterial("lead_scandium_tantalate", (Lead.materialRGB+Scandium.materialRGB+Tantalum.materialRGB)/3, (short) 251, MaterialIconSet.SHINY, "Pb(ScTa)O3");
-    public static final SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY, "?"); // TODO
+    public static final SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY, "C10H8S4Se4");
     public static final SimpleDustMaterial MagnetorestrictiveAlloy = new SimpleDustMaterial("magnetorestrictive_alloy", 0xafefef, (short) 252, MaterialIconSet.DULL, "Tb4Dy7Fe10Co5B2SiC");
     public static final SimpleDustMaterial BoronOxide = new SimpleDustMaterial("boron_oxide",(Boron.materialRGB+Oxygen.materialRGB)/2,(short) 256,MaterialIconSet.DULL, "B2O3");
     public static final SimpleDustMaterial LithiumAluminiumFluoride = new SimpleDustMaterial("lithium_aluminium_fluoride",(Lithium.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/3,(short) 263,MaterialIconSet.DULL, "AlF4Li");
