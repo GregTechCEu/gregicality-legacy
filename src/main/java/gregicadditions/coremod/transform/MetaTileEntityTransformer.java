@@ -1,13 +1,13 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
-import gregicadditions.coremod.hooks.GregTechCEHooks;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
+public class MetaTileEntityTransformer extends ClassMapper {
     public static final String owner = "gregtech/api/metatileentity/MetaTileEntity";
     public static final String enumface_desc = "Lnet/minecraft/util/EnumFacing;";
     public static final String spin = "spin";
@@ -74,7 +74,7 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
 
     }
 
-    private static class TransformPlaceCoverOnSide extends MethodVisitor {
+    private static class TransformPlaceCoverOnSide extends GAMethodVisitor {
 
         TransformPlaceCoverOnSide(int api, MethodVisitor mv) {
             super(api, mv);
@@ -84,18 +84,14 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 4);
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        GregTechCEHooks.hooks,
-                        "canPlaceCoverOnSide2",
-                        "(Lgregtech/api/metatileentity/MetaTileEntity;Lnet/minecraft/util/EnumFacing;Lgregtech/api/cover/CoverBehavior;)Z",
-                        false);
+                super.injectStaticMethod(GTCEHooks, "canPlaceCoverOnSide2");
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
         }
     }
 
-    private static class TransformInit extends MethodVisitor {
+    private static class TransformInit extends GAMethodVisitor {
 
         TransformInit(int api, MethodVisitor mv) {
             super(api, mv);
@@ -107,14 +103,13 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
                 super.visitVarInsn(Opcodes.ALOAD, 0);
                 super.visitFieldInsn(Opcodes.GETSTATIC, "net/minecraft/util/EnumFacing", "NORTH", enumface_desc);
                 super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
-
             }
             super.visitInsn(opcode);
         }
 
     }
 
-    private static class TransformInitial extends MethodVisitor {
+    private static class TransformInitial extends GAMethodVisitor {
 
         boolean write;
 
@@ -130,19 +125,11 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
                     super.visitVarInsn(Opcodes.ALOAD, 1);
                     super.visitVarInsn(Opcodes.ALOAD,0);
                     super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
-                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            GregTechCEHooks.hooks,
-                            "writeSpinBuf",
-                            "(Lnet/minecraft/network/PacketBuffer;Lnet/minecraft/util/EnumFacing;)V",
-                            false);
+                    super.injectStaticMethod(GTCEHooks, "writeSpinBuf");
                 } else {
                     super.visitVarInsn(Opcodes.ALOAD, 0);
                     super.visitVarInsn(Opcodes.ALOAD, 1);
-                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            GregTechCEHooks.hooks,
-                            "readSpinBuf",
-                            "(Lnet/minecraft/network/PacketBuffer;)Lnet/minecraft/util/EnumFacing;",
-                            false);
+                    super.injectStaticMethod(GTCEHooks, "readSpinBuf");
                     super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
                 }
             }
@@ -151,7 +138,7 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
 
     }
 
-    private static class TransformNBT extends MethodVisitor {
+    private static class TransformNBT extends GAMethodVisitor {
 
         boolean write;
 
@@ -166,22 +153,14 @@ public class MetaTileEntityTransformer extends GAClassTransformer.ClassMapper {
                  if (!write) {
                     super.visitVarInsn(Opcodes.ALOAD, 0);
                     super.visitVarInsn(Opcodes.ALOAD, 1);
-                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            GregTechCEHooks.hooks,
-                            "readSpinNBT",
-                            "(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/util/EnumFacing;",
-                            false);
+                     super.injectStaticMethod(GTCEHooks, "readSpinNBT");
                     super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
                 }
             } else if (opcode == Opcodes.ARETURN){
                 if (write) {
                     super.visitVarInsn(Opcodes.ALOAD,0);
                     super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
-                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            GregTechCEHooks.hooks,
-                            "writeSpinNBT",
-                            "(Lnet/minecraft/nbt/NBTTagCompound;Lnet/minecraft/util/EnumFacing;)Lnet/minecraft/nbt/NBTTagCompound;",
-                            false);
+                    super.injectStaticMethod(GTCEHooks, "writeSpinNBT");
                 }
             }
             super.visitInsn(opcode);

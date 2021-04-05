@@ -1,12 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
-import gregicadditions.coremod.hooks.GregTechCEHooks;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class RecipeMapMultiblockControllerTransformer extends GAClassTransformer.ClassMapper {
+public class RecipeMapMultiblockControllerTransformer extends ClassMapper {
 
     public static final RecipeMapMultiblockControllerTransformer INSTANCE = new RecipeMapMultiblockControllerTransformer();
 
@@ -40,7 +40,7 @@ public class RecipeMapMultiblockControllerTransformer extends GAClassTransformer
 
     }
 
-    private static class TransformRenderMetaTileEntity extends MethodVisitor {
+    private static class TransformRenderMetaTileEntity extends GAMethodVisitor {
 
         TransformRenderMetaTileEntity(int api, MethodVisitor mv) {
             super(api, mv);
@@ -51,11 +51,7 @@ public class RecipeMapMultiblockControllerTransformer extends GAClassTransformer
             if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("gregtech/api/render/OrientedOverlayRenderer") && name.equals("render")) {
                 super.visitVarInsn(Opcodes.ALOAD,0);
                 super.visitFieldInsn(Opcodes.GETFIELD, MetaTileEntityTransformer.owner, MetaTileEntityTransformer.spin, MetaTileEntityTransformer.enumface_desc);
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        GregTechCEHooks.hooks,
-                        "renderFrontOverlay",
-                        "(Lgregtech/api/render/OrientedOverlayRenderer;Lcodechicken/lib/render/CCRenderState;Lcodechicken/lib/vec/Matrix4;[Lcodechicken/lib/render/pipeline/IVertexOperation;Lnet/minecraft/util/EnumFacing;ZLnet/minecraft/util/EnumFacing;)V",
-                        false);
+                super.injectStaticMethod(GTCEHooks, "renderFrontOverlay");
             }else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }

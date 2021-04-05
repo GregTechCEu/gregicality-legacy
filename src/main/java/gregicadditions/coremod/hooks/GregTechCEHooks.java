@@ -28,7 +28,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 
 public class GregTechCEHooks {
-    public static final String hooks = "gregicadditions/coremod/hooks/GregTechCEHooks";
 
     //origin: gregtech/api/metatileentity/MetaTileEntityHolder/hasFastRenderer
     public static boolean hasFastRenderer(MetaTileEntityHolder metaTileEntityHolder) {
