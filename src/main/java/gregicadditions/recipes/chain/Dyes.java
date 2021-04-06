@@ -68,7 +68,7 @@ public class Dyes {
                 .outputs(FluoroapatiteAcidicLeach.getItemStack())
                 .buildAndRegister();
 
-        // Na2CO3 + Ca4P3O10F + SiO2 + H2O -> ? + ??
+        // Na2CO3 + Ca4P3O10F + SiO2 + H2O ->
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
                 .inputs(FluoroapatiteAcidicLeach.getItemStack())
@@ -88,6 +88,7 @@ public class Dyes {
                 .fluidOutputs(IronChloride.getFluid(200))
                 .buildAndRegister();
 
+        // ? + 4Na2S -> Na3AsO4 + CdS + 10H3PO4
         CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .fluidInputs(PhosphorousArsenicSolution.getFluid(10000))
                 .input(dust, SodiumSulfide,4)
@@ -473,6 +474,7 @@ public class Dyes {
                 .outputs(SuccinicAcid.getItemStack(14))
                 .buildAndRegister();
 
+        // C4H6O4 + C3H8O -> C7H12O4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1400)
                 .inputs(SuccinicAcid.getItemStack(14))
                 .fluidInputs(IsopropylAlcohol.getFluid(1000))

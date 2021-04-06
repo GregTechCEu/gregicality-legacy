@@ -811,13 +811,13 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Acetylene.getFluid(1000))
                 .notConsumable(ScandiumTriflate.getItemStack())
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .outputs(TitaniumCyclopentanyl.getItemStack(14))
+                .outputs(TitaniumCyclopentanol.getItemStack(14))
                 .buildAndRegister();
 
         // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(720000).blastFurnaceTemp(3500)
                 .fluidInputs(Lithiumthiinediselenide.getFluid(2000))
-                .notConsumable(TitaniumCyclopentanyl.getItemStack())
+                .notConsumable(TitaniumCyclopentanol.getItemStack())
                 .output(dust, LithiumFluoride, 8)
                 .outputs(BETS.getItemStack())
                 .buildAndRegister();
