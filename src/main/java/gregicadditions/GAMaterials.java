@@ -2,7 +2,6 @@ package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.realmsclient.gui.ChatFormatting;
-import gregicadditions.item.GADustItem;
 import gregicadditions.materials.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
@@ -12,6 +11,7 @@ import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.pipelike.cable.WireProperties;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
@@ -892,8 +892,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SupercriticalCO2 = new SimpleFluidMaterial("supercritcal_co2",CarbonDioxide.materialRGB, "CO2");
     public static final SimpleFluidMaterial NobleGases = new SimpleFluidMaterial("noble_gases_mixture",(Helium.materialRGB+Neon.materialRGB+Argon.materialRGB+Krypton.materialRGB+Xenon.materialRGB+Radon.materialRGB), "HeNeArKrXeRn");
     public static final SimpleFluidMaterial NonMetals = new SimpleFluidMaterial("non_metals",(Hydrogen.materialRGB+Boron.materialRGB+Carbon.materialRGB+Nitrogen.materialRGB+Oxygen.materialRGB+Fluorine.materialRGB+Phosphorus.materialRGB+Sulfur.materialRGB+Chlorine.materialRGB+Arsenic.materialRGB+Selenium.materialRGB+Bromine.materialRGB+Tellurium.materialRGB+Iodine.materialRGB+Astatine.materialRGB), "BCPSAsSeTeIAtONHFClBr");
-    public static final SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000); // TODO
-    public static final SimpleFluidMaterial CosmicMeshPlasma = new SimpleFluidMaterial("cosmic_mesh_plasma",0x1c1c8c,1000000); // TODO
+    public static final SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000, false, TextFormatting.OBFUSCATED.toString() + "nn");
+    public static final SimpleFluidMaterial CosmicMeshPlasma = new SimpleFluidMaterial("cosmic_mesh_plasma",0x1c1c8c,1000000, false, TextFormatting.OBFUSCATED.toString() + "nn");
     public static final SimpleFluidMaterial SuperfluidHelium = new SimpleFluidMaterial("superfluid_helium",Helium.materialRGB,2, false, "He");
     public static final SimpleFluidMaterial LiquidHelium3 = new SimpleFluidMaterial("liquid_helium_3", Helium3.materialRGB,4, false, "He_3");
     public static final SimpleFluidMaterial LiquidEnrichedHelium = new SimpleFluidMaterial("liquid_enriched_helium", Helium.materialRGB, 4, false, "HeHe_3");
@@ -1203,8 +1203,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial CesiumBromide = new SimpleDustMaterial("cesium_bromide", CesiumHydroxide.rgb, (short) 272,MaterialIconSet.DULL, "CsBr");
     public static final SimpleDustMaterial ApatiteAcidicLeach = new SimpleDustMaterial("apatite_acidic_leach", PhosphoricAcid.materialRGB, (short) 273,MaterialIconSet.DULL, "Ca4P3O102Cl");
     public static final SimpleDustMaterial FluoroapatiteAcidicLeach = new SimpleDustMaterial("fluoroapatite_acidic_leach", PhosphoricAcid.materialRGB, (short) 274,MaterialIconSet.DULL, "Ca4P3O10F");
-    public static final SimpleDustMaterial FluoroapatiteSolidResidue = new SimpleDustMaterial("fluoroapatite_solid_residue",0x3cb290,(short) 275,MaterialIconSet.DULL); // TODO
-    public static final SimpleDustMaterial ApatiteSolidResidue = new SimpleDustMaterial("apatite_solid_residue",0x3cb290,(short) 319,MaterialIconSet.DULL); // TODO
+    public static final SimpleDustMaterial FluoroapatiteSolidResidue = new SimpleDustMaterial("fluoroapatite_solid_residue",0x3cb290,(short) 275,MaterialIconSet.DULL, "Ca6PO4SiO3F");
+    public static final SimpleDustMaterial ApatiteSolidResidue = new SimpleDustMaterial("apatite_solid_residue",0x3cb290,(short) 319,MaterialIconSet.DULL, "Ca6PO4SiO3");
     public static final SimpleDustMaterial AmmoniumBifluoride = new SimpleDustMaterial("ammonium_bifluoride",0x20cfcf,(short) 276,MaterialIconSet.DULL, "NH4HF2");
     public static final SimpleDustMaterial SodiumArsenate = new SimpleDustMaterial("sodium_arsenate",0xbffabf,(short) 277,MaterialIconSet.DULL, "Na3AsO4");
     public static final SimpleDustMaterial PrHoYLFNanoparticles = new SimpleDustMaterial("prho_ylf_nanoparticles",0xcf8acf,(short) 278,MaterialIconSet.SHINY, "Pr/Ho:YLF");
@@ -1242,7 +1242,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Mauveine = new SimpleDustMaterial("mauveine",0x660066,(short) 309,MaterialIconSet.DULL, "C26H23N4");
     public static final SimpleDustMaterial Indigo = new SimpleDustMaterial("indigo",0x0000ff,(short) 310,MaterialIconSet.DULL, "C16H10N2O2");
     public static final SimpleDustMaterial Tetrabromoindigo = new SimpleDustMaterial("tetrabromoindigo",0x00ff00,(short) 311,MaterialIconSet.DULL, "C16H6Br2N2O2");
-    public static final SimpleDustMaterial CyanIndigoDye = new SimpleDustMaterial("cyan_indigo_dye",0x009999,(short) 312,MaterialIconSet.DULL); // TODO
+    public static final SimpleDustMaterial CyanIndigoDye = new SimpleDustMaterial("cyan_indigo_dye",0x009999,(short) 312,MaterialIconSet.DULL, "(C16H10N2O2)2Br2");
     public static final SimpleDustMaterial Fluorescein = new SimpleDustMaterial("fluorescein",0x990000,(short) 313,MaterialIconSet.DULL, "C20H12O5");
     public static final SimpleDustMaterial Erythrosine = new SimpleDustMaterial("erythrosine",0xff00ff,(short) 314,MaterialIconSet.DULL, "C20H6I4Na2O5");
     public static final SimpleDustMaterial ManganeseIIIOxide = new SimpleDustMaterial("manganese_iii_oxide", Pyrolusite.materialRGB, (short) 315, MaterialIconSet.DULL, "Mn2O3");

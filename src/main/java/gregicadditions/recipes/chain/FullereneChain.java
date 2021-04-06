@@ -188,8 +188,8 @@ public class FullereneChain {
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .EUt(7680)
-                .duration(600)
+                .EUt(300)
+                .duration(300)
                 .buildAndRegister();
 
         // 2C5H6 + FeCl2 -> C10H10Fe + 2HCl
