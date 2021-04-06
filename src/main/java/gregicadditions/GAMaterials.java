@@ -896,7 +896,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial NonMetals = new SimpleFluidMaterial("non_metals",(Hydrogen.materialRGB+Boron.materialRGB+Carbon.materialRGB+Nitrogen.materialRGB+Oxygen.materialRGB+Fluorine.materialRGB+Phosphorus.materialRGB+Sulfur.materialRGB+Chlorine.materialRGB+Arsenic.materialRGB+Selenium.materialRGB+Bromine.materialRGB+Tellurium.materialRGB+Iodine.materialRGB+Astatine.materialRGB), "BCPSAsSeTeIAtONHFClBr");
     public static final SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000); // TODO
     public static final SimpleFluidMaterial CosmicMeshPlasma = new SimpleFluidMaterial("cosmic_mesh_plasma",0x1c1c8c,1000000); // TODO
-    public static final SimpleFluidMaterial SuperfluidHelium = new SimpleFluidMaterial("superfluid_helium",Helium.materialRGB,2); // TODO
+    public static final SimpleFluidMaterial SuperfluidHelium = new SimpleFluidMaterial("superfluid_helium",Helium.materialRGB,2, false, "He");
     public static final SimpleFluidMaterial LiquidHelium3 = new SimpleFluidMaterial("liquid_helium_3", Helium3.materialRGB,4, false, "He_3");
     public static final SimpleFluidMaterial LiquidEnrichedHelium = new SimpleFluidMaterial("liquid_enriched_helium", Helium.materialRGB, 4, false, "HeHe_3");
     public static final SimpleFluidMaterial LiquidNitrogen = new SimpleFluidMaterial("liquid_nitrogen",Nitrogen.materialRGB, 70, false, "N");
@@ -1256,7 +1256,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial NiobiumHydroxide = new SimpleDustMaterial("niobium_hydroxide",0x7c7c7c,(short) 323,MaterialIconSet.DULL, "H5NbO5");
     public static final SimpleDustMaterial MagnesiumFluoride = new SimpleDustMaterial("magnesium_fluoride",0xcfcfcf,(short) 324,MaterialIconSet.DULL, "MgF2");
     public static final SimpleDustMaterial ZincSulfide = new SimpleDustMaterial("zinc_sulfide",0x3c3c3c,(short) 325,MaterialIconSet.DULL, "ZnS");
-    public static final SimpleDustMaterial LithiumNiobateNanoparticles = new SimpleDustMaterial("lithium_niobate_nanoparticles",0xcfcf3a,(short) 326,MaterialIconSet.SHINY); // TODO
+    public static final SimpleDustMaterial LithiumNiobateNanoparticles = new SimpleDustMaterial("lithium_niobate_nanoparticles",0xcfcf3a,(short) 326,MaterialIconSet.SHINY, "LiNbO4");
     public static final SimpleDustMaterial LithiumHydroxide = new SimpleDustMaterial("lithium_hydroxide", (Lithium.materialRGB+Oxygen.materialRGB+Hydrogen.materialRGB)/3, (short) 327, MaterialIconSet.DULL, "LiOH");
     public static final SimpleDustMaterial RhReNqCatalyst = new SimpleDustMaterial("rhrenq_catalyst",(Rhenium.materialRGB+Rhodium.materialRGB+Naquadah.materialRGB)/3,(short) 328, MaterialIconSet.SHINY, "ReRhNq");
     public static final SimpleDustMaterial PalladiumAcetate = new SimpleDustMaterial("palladium_acetate",0xcc3300,(short) 329,MaterialIconSet.SHINY, "C4H6O4Pd");
