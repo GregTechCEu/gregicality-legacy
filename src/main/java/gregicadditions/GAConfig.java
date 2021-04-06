@@ -637,6 +637,7 @@ public class GAConfig {
         public HeatingCoils heatingCoils = new HeatingCoils();
         public SteamMultis steamMultis = new SteamMultis();
         public ProcessingArray processingArray = new ProcessingArray();
+        public HyperReactors hyperReactors = new HyperReactors();
     }
 
         public static class LargeEngraver {
@@ -1388,21 +1389,54 @@ public class GAConfig {
         }
 
         public static class Prospector {
-            @Config.Comment("The EU cost to use the prospector. The values are for the MV, HV, LuV and ZPM prospectors.")
+            @Config.Comment("The EU drain per tick that the Prospector interface is open. The values are for the MV, HV, LuV and ZPM prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector scan cost")
-            public int[] scanCosts = {128, 512, 32768, 131072};
+            @Config.RangeInt(min = 0)
+            public int[] scanCosts = {32, 138, 8192, 32768};
 
             @Config.Comment("The radii in chunks the prospector will scan.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector scan radii")
+            @Config.RangeInt(min = 1)
             public int[] scanRadii = {2, 3, 6, 7};
 
             @Config.Comment("The EU capacity of the prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector energy capacity")
+            @Config.RangeInt(min = 1000)
             public int[] energyCapacity = {12800, 51200, 3276800, 13107200};
         }
+
+        public static class HyperReactors {
+            @Config.Comment("The base EU/t production of the Hyper Reactor.")
+            @Config.RequiresMcRestart
+            @Config.Name("Hyper Reactor EU/t generation")
+            @Config.RangeInt(min = 1)
+            public int[] euGeneration = {GAValues.V[GAValues.UV], GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV]};
+
+            @Config.Comment("The fuel multiplier when the Reactor is boosted.")
+            @Config.RequiresMcRestart
+            @Config.Name("Hyper Reactor boosted fuel amount multiplier")
+            @Config.RangeInt(min = 1)
+            public int[] boostedFuelAmount = {2, 2, 2};
+
+            @Config.Comment("The EU/t multiplier when the Reactor is boosted.")
+            @Config.RequiresMcRestart
+            @Config.Name("Hyper Reactor boosted EU/t multiplier")
+            @Config.RangeInt(min = 1)
+            public int[] boostedEuAmount = {3, 3, 3};
+
+            @Config.Comment("The liquid that boosts the Reactor.")
+            @Config.RequiresMcRestart
+            @Config.Name("Hyper Reactor boosters")
+            public String[] boosterFluid = {"plasma.helium", "plasma.radon", "degenerate_rhenium_plasma"};
+
+            @Config.Comment("The amount of liquid that boosts the Reactor.")
+            @Config.RequiresMcRestart
+            @Config.Name("Hyper Reactor booster amount")
+            public int[] boosterFluidAmounts = {10, 15, 2};
+    }
 
         public static Extraction extraction;
 
