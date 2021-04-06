@@ -27,6 +27,7 @@ public class NanotubeChain {
 
         // (NH4)2SO4 + H2SO4 -> (NH4)2(SO4)2 + H2
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(3200)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(AmmoniumSulfate.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(AmmoniumPersulfate.getFluid(1000))

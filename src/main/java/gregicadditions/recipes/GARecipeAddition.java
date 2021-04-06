@@ -2537,6 +2537,12 @@ public class GARecipeAddition {
                 .output(ingotHot, Tungsten)
                 .buildAndRegister();
 
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(900).blastFurnaceTemp(2500)
+                .input(dust, LithiumTitanate)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(ingotHot, LithiumTitanate)
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))

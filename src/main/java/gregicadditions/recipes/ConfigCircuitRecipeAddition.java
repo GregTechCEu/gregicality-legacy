@@ -4,6 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
@@ -24,5 +25,8 @@ public class ConfigCircuitRecipeAddition {
 
         // Hot Tungsten
         removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Tungsten)});
+
+        // Hot Lithium Titanate
+        removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, LithiumTitanate)});
     }
 }
