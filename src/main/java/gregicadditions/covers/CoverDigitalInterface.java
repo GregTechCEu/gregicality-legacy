@@ -20,7 +20,7 @@ import gregtech.api.cover.ICoverable;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
-import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
+import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -62,9 +62,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
-public class CoverDigitalInterface extends CoverBehavior implements IFastRenderMetaTileEntity, ITickable, CoverWithUI {
+public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaTileEntity, ITickable, CoverWithUI {
 
     public static String path = "cover.digital";
     public static IEnergyContainer proxyCapability = new IEnergyContainer() {
@@ -833,7 +832,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
     }
 
     @Override
-    public void renderMetaTileEntityFast(CCRenderState ccRenderState, Matrix4 translation, float partialTicks) {
+    @SideOnly(Side.CLIENT)
+    public void renderMetaTileEntityDynamic(double x, double y, double z, float partialTicks) {
         GlStateManager.pushMatrix();
         /* hack the lightmap */
         GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
@@ -842,7 +842,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IFastRenderM
         float lastBrightnessY = OpenGlHelper.lastBrightnessY;
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
 
-        RenderHelper.moveToFace(translation.m03, translation.m13, translation.m23, this.attachedSide);
+        RenderHelper.moveToFace(x, y, z, this.attachedSide);
         RenderHelper.rotateToFace(this.attachedSide, this.spin);
 
         if (!renderSneakingLookAt(this.coverHolder.getPos(), this.attachedSide, this.slot, partialTicks)) {
