@@ -2938,6 +2938,7 @@ public class GARecipeAddition {
                 .fluidInputs(Materials.Water.getFluid(500))
                 .fluidOutputs(Materials.Concrete.getFluid(576))
                 .buildAndRegister();
+
         removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});
 
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
