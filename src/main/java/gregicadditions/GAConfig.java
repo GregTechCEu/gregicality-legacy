@@ -1393,7 +1393,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Prospector scan cost")
             @Config.RangeInt(min = 0)
-            public int[] scanCosts = {32, 138, 8192, 32768};
+            public int[] scanCosts = {8, 32, 512, 2048};
 
             @Config.Comment("The radii in chunks the prospector will scan.")
             @Config.RequiresMcRestart

@@ -66,7 +66,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
     protected final int tier;
 
 
-    public ProspectingToolBehaviour(int cost, int radius, int tier) {
+    public ProspectingToolBehaviour(int tier, int cost, int radius) {
         this.costs = cost;
         this.chunkRadius = radius;
         this.tier = tier;
