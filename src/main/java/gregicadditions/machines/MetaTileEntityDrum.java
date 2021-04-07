@@ -10,6 +10,7 @@ import gregicadditions.client.ClientHandler;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.api.util.GTUtility;
@@ -169,7 +170,16 @@ public class MetaTileEntityDrum extends MetaTileEntity {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Pair<TextureAtlasSprite, Integer> getParticleTexture() {
-		return Pair.of(material.toString().contains("wood") ? ClientHandler.BARREL.getParticleTexture() : ClientHandler.DRUM.getParticleTexture(), 16777215);
+		if(ModHandler.isMaterialWood(material)) {
+			return Pair.of(ClientHandler.BARREL.getParticleTexture(), getPaintingColor());
+		}
+		else {
+			int color = ColourRGBA.multiply(
+					GTUtility.convertRGBtoOpaqueRGBA_CL(material.materialRGB),
+					GTUtility.convertRGBtoOpaqueRGBA_CL(getPaintingColor()));
+			color = GTUtility.convertOpaqueRGBA_CLtoRGB(color);
+			return Pair.of(ClientHandler.DRUM.getParticleTexture(), color);
+		}
 	}
 
 	@Override
