@@ -29,6 +29,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
@@ -2558,6 +2559,14 @@ public class GARecipeAddition {
                 .fluidInputs(Chlorine.getFluid(4000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(Dichlorobenzene.getFluid(1000))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(20).EUt(16)
+                .input(OrePrefix.dust, Materials.Clay, 1)
+                .input(OrePrefix.dust, Materials.Stone, 3)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Materials.Water.getFluid(500))
+                .fluidOutputs(Materials.Concrete.getFluid(576))
                 .buildAndRegister();
     }
 
