@@ -4442,6 +4442,7 @@ public class GARecipeAddition {
         // CaCO3 + H2O = [CaCO3 + H2O]
         MIXER_RECIPES.recipeBuilder().duration(220).EUt(64)
                 .input(dust, Calcite)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(CalciumCarbonateSolution.getFluid(1000))
                 .buildAndRegister();
