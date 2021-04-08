@@ -1,5 +1,7 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -310,7 +312,7 @@ public class NaquadahChain {
                 .buildAndRegister();
 
         // HAuCl4 = AuCl3 + HCl
-        CHEMICAL_RECIPES.recipeBuilder()
+        ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(ChloroauricAcid.getFluid(1000))
                 .fluidOutputs(AuricChloride.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
