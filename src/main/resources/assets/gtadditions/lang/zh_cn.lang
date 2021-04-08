@@ -174,41 +174,49 @@ metaitem.tin_chloride.name=氯化锡
 metaitem.triphenylphosphine.name=三苯基膦
 metaitem.methylbenzophenanthrene.name=甲基苯并菲
 
-metaitem.large.neutronium.battery.empty.name=大型中子素电池外壳
-metaitem.large.naquadria.battery.empty.name=大型超能硅岩电池外壳
-metaitem.large.vanadium.battery.empty.name=大型钒电池外壳
-metaitem.medium.neutronium.battery.empty.name=中型中子素电池外壳
-metaitem.medium.naquadria.battery.empty.name=中型超能硅岩电池外壳
-metaitem.medium.vanadium.battery.empty.name=中型钒电池外壳
-metaitem.small.neutronium.battery.empty.name=小型中子素电池外壳
-metaitem.small.vanadium.battery.empty.name=小型超能硅岩电池外壳
+metaitem.large.fluoride.battery.empty.name=大型氟化物电池外壳
+metaitem.large.lithium.sulfide.battery.empty.name=大型硫化锂电池外壳
+metaitem.large.lithium.ion.battery.empty.name=大型锂离子电池外壳
+metaitem.medium.fluoride.battery.empty.name=中型氟化物电池外壳
+metaitem.medium.lithium.sulfide.battery.empty.name=中型硫化锂电池外壳
+metaitem.medium.lithium.ion.battery.empty.name=中型锂离子电池外壳
+metaitem.small.fluoride.battery.empty.name=小型氟化物电池外壳
+metaitem.small.lithium.sulfide.battery.empty.name=小型硫化锂电池外壳
+metaitem.small.lithium.ion.battery.empty.name=小型锂离子电池外壳
+metaitem.nickel.metal.hydride.battery.empty.name=镍氢电池外壳
 
-metaitem.large.neutronium.battery.empty.tooltip=空的UIV级电池外壳
-metaitem.large.naquadria.battery.empty.tooltip=空的UV级电池外壳
-metaitem.large.vanadium.battery.empty.tooltip=空的LuV级电池外壳
-metaitem.medium.neutronium.battery.empty.tooltip=空的UEV级电池外壳
-metaitem.medium.naquadria.battery.empty.tooltip=空的ZPM级电池外壳
-metaitem.medium.vanadium.battery.empty.tooltip=空的IV级电池外壳
-metaitem.small.neutronium.battery.empty.tooltip=空的UHV级电池外壳
-metaitem.small.vanadium.battery.empty.tooltip=空的EV级电池外壳
+metaitem.large.fluoride.battery.empty.tooltip=一个空的 UXV 级电池
+metaitem.large.lithium.sulfide.battery.empty.tooltip=一个空的 UEV 级电池
+metaitem.large.lithium.ion.battery.empty.tooltip=一个空的 ZPM 级电池
+metaitem.medium.fluoride.battery.empty.tooltip=一个空的 UMV 级电池
+metaitem.medium.lithium.sulfide.battery.empty.tooltip=一个空的 UHV 级电池
+metaitem.medium.lithium.ion.battery.empty.tooltip=一个空的 LuV 级电池
+metaitem.small.fluoride.battery.empty.tooltip=一个空的 UIV 级电池
+metaitem.small.lithium.sulfide.battery.empty.tooltip=一个空的 UV 级电池
+metaitem.small.lithium.ion.battery.empty.tooltip=一个空的 IV 级电池
+metaitem.nickel.metal.hydride.battery.empty.tooltip=一个空的 EV 级电池
 
-metaitem.large.neutronium.battery.name=大型中子素电池外壳
-metaitem.large.naquadria.battery.name=大型超能硅岩电池外壳
-metaitem.large.vanadium.battery.name=大型钒电池外壳
-metaitem.medium.neutronium.battery.name=中型中子素电池外壳
-metaitem.medium.naquadria.battery.name=中型超能硅岩电池外壳
-metaitem.medium.vanadium.battery.name=中型钒电池外壳
-metaitem.small.neutronium.battery.name=小型中子素电池外壳
-metaitem.small.vanadium.battery.name=小型超能硅岩电池外壳
+metaitem.large.fluoride.battery.name=大型氟化物电池
+metaitem.large.lithium.sulfide.battery.name=大型硫化锂电池
+metaitem.large.lithium.ion.battery.name=大型锂离子电池
+metaitem.medium.fluoride.battery.name=中型氟化物电池
+metaitem.medium.lithium.sulfide.battery.name=中型硫化锂电池
+metaitem.medium.lithium.ion.battery.name=中型锂离子电池
+metaitem.small.fluoride.battery.name=小型氟化物电池
+metaitem.small.lithium.sulfide.battery.name=小型硫化锂电池
+metaitem.small.lithium.ion.battery.name=小型锂离子电池
+metaitem.nickel.metal.hydride.battery.name=镍氢电池
 
-metaitem.large.neutronium.battery.tooltip=可充电电池
-metaitem.large.naquadria.battery.tooltip=可充电电池
-metaitem.large.vanadium.battery.tooltip=可充电电池
-metaitem.medium.neutronium.battery.tooltip=可充电电池
-metaitem.medium.naquadria.battery.tooltip=可充电电池
-metaitem.medium.vanadium.battery.tooltip=可充电电池
-metaitem.small.neutronium.battery.tooltip=可充电电池
-metaitem.small.vanadium.battery.tooltip=可充电电池
+metaitem.large.fluoride.battery.tooltip=可充电电池
+metaitem.large.lithium.sulfide.battery.tooltip=可充电电池
+metaitem.large.lithium.ion.battery.tooltip=可充电电池
+metaitem.medium.fluoride.battery.tooltip=可充电电池
+metaitem.medium.lithium.sulfide.battery.tooltip=可充电电池
+metaitem.medium.lithium.ion.battery.tooltip=可充电电池
+metaitem.small.fluoride.battery.tooltip=可充电电池
+metaitem.small.lithium.sulfide.battery.tooltip=可充电电池
+metaitem.small.lithium.ion.battery.tooltip=可充电电池
+metaitem.nickel.metal.hydride.battery.tooltip=可充电电池
 
 
 metaitem.electrically.wired.petri.dish.name=电信号培养皿
@@ -238,7 +246,7 @@ metaitem.rig_drill.name=钻机
 metaitem.memory_foam_block.name=记忆海绵
 metaitem.laser_diode.name=激光二极管
 metaitem.laser_cooling_unit.name=激光冷却单元
-metaitem.magnetic_trap.name=磁捕集器
+metaitem.magnetic_trap.name=磁阱
 metaitem.empty_laser_cooling_container.name=空的激光冷却容器
 metaitem.bose_einstein_cooling_container.name=玻色–爱因斯坦冷却容器
 metaitem.alumino_silicate_glass_tube.name=硅酸铝玻璃管
@@ -259,6 +267,7 @@ metaitem.brevibacterium.culture.name=黄色短杆菌培养皿
 metaitem.bifidobacterium.culture.name=短双歧杆菌培养皿
 metaitem.eschericia.culture.name=大肠杆菌培养皿
 metaitem.streptococcus.culture.name=酿脓链球菌培养皿
+metaitem.cupriavidus.culture.name=钩虫贪铜菌培养皿
 metaitem.shewanella.culture.name=希瓦氏菌培养皿
 metaitem.ndyag_boule.name=掺钕的钇铝石榴石晶体
 metaitem.prhoylf_boule.name=掺镨钬的氟化锂钇晶体
@@ -276,12 +285,11 @@ metaitem.rotating_transparent_surface.name=旋转透明层
 metaitem.electron_source.name=电子源
 metaitem.peek_polyamide_foil.name=聚醚醚酮-聚酰胺箔
 metaitem.highly_insulating_foil.name=高绝缘性箔
-metaitem.insulation_wire_assembly.name=绝缘线团
 metaitem.aerographene.name=石墨烯气凝胶
 metaitem.graphene_iron_plate.name=石墨烯-铁板
 metaitem.scintillator_crystal.name=闪烁晶体
 metaitem.scintillator.name=闪烁体
-metaitem.lepton_trap_crystal.name=轻子捕集水晶
+metaitem.lepton_trap_crystal.name=轻子阱水晶
 metaitem.hassium_seed_crystal.name=钅黑掺杂的晶种
 metaitem.hassium_boule.name=钅黑掺杂的单晶硅
 metaitem.hassium_wafer.name=钅黑掺杂的晶圆
@@ -298,6 +306,9 @@ metaitem.highly.dense.polymer.plate.name=高密度聚合物板
 metaitem.cosmic.mesh.containment.unit.name=寰宇织网密闭容器
 metaitem.cosmic.mesh.name=寰宇织网
 metaitem.cosmic.fabric.name=寰宇织料
+metaitem.rod.field.shape.name=杆状形态力场
+metaitem.charged.lepton.trap.crystal.name=带电轻子阱晶体
+metaitem.nanosilicon.cathode.name=纳米硅阴极
 
 metaitem.electrode.apatite.name=磷灰石电子管元件
 metaitem.electrode.blaze.name=烈焰电子管元件
@@ -320,7 +331,7 @@ metaitem.mica_insulator_foil.name=绝缘云母箔
 
 metaitem.energy.module.name=能量模块
 metaitem.energy.cluster.name=能量簇
-metaitem.max.battery.name=MAX级电池
+metaitem.max.battery.name=MAX 级电池
 metaitem.small_turbine_rotor.name=%s小型涡轮
 metaitem.medium_turbine_rotor.name=%s涡轮
 metaitem.large_turbine_rotor.name=%s大型涡轮
@@ -330,9 +341,11 @@ metaitem.insulating_tape.name=绝缘胶带
 metaitem.liquid_fuel_jetpack.name=§e液体燃料喷气背包
 metaitem.impeller_jetpack.name=§e推进器喷气背包
 metaitem.advanced_impeller_jetpack.name=§b进阶推进器喷气背包
-metaitem.battery_pack.lv.name=电池背包(§eLV§r)
-metaitem.battery_pack.mv.name=电池背包(§eMV§r)
-metaitem.battery_pack.hv.name=电池背包(§eHV§r)
+metaitem.battery_pack.lv.name=电池背包 (§eLV§r)
+metaitem.battery_pack.mv.name=电池背包 (§eMV§r)
+metaitem.battery_pack.hv.name=电池背包 (§eHV§r)
+
+metaitem.nightvision_goggles.name=§e夜视镜
 
 metaitem.nms.chestplate.name=§e纳米科技™套装胸甲
 metaitem.nms.leggins.name=§e纳米科技™套装护腿
@@ -609,7 +622,7 @@ metaitem.leached_tantalite.name=浸出钽铁矿
 metaitem.columbite_minor_oxide_residue.name=微氧化铌铁矿残渣
 metaitem.tantalite_minor_oxide_residue.name=微氧化钽铁矿残渣
 metaitem.leached_pyrochlore.name=浸出烧绿石
-metaitem.acidic_leached_pyrochlore.name=酸性浸出烧绿石
+metaitem.acidic_leached_pyrochlore.name=酸浸烧绿石
 metaitem.potassium_fluoroniobate.name=氟铌酸钾
 metaitem.potassium_fluorotantalate.name=氟钽酸钾
 metaitem.barium_peroxide.name=过氧化钡
@@ -695,8 +708,8 @@ metaitem.nd_yag_nanoparticles.name=掺钕的钇铝石榴石纳米粒子
 metaitem.potassium_permanganate.name=高锰酸钾
 metaitem.urea.name=尿素
 metaitem.cesium_bromide.name=溴化铯
-metaitem.apatite_acidic_leach.name=酸性浸出磷灰石
-metaitem.fluoroapatite_acidic_leach.name=酸性浸出氟磷灰石
+metaitem.apatite_acidic_leach.name=酸浸磷灰石
+metaitem.fluoroapatite_acidic_leach.name=酸浸氟磷灰石
 metaitem.apatite_solid_residue.name=磷灰石固体残渣
 metaitem.fluoroapatite_solid_residue.name=氟磷灰石固体残渣
 metaitem.ammonium_bifluoride.name=二氟化铵
@@ -792,7 +805,33 @@ metaitem.refractory_metals.name=难熔金属
 metaitem.light_transition_metals.name=轻过渡金属
 metaitem.post_transition_metals.name=后过渡金属
 metaitem.sodium_metavanadate.name=偏钒酸钠
-metaitem.sodium_hexavanadate.name=六钒酸钠
+metaitem.potassium_peroxymonosulfate.name=过一硫酸氢钾
+
+metaitem.mercury_acetate.name=乙酸汞
+metaitem.calcium_cyanamide.name=氰氨化钙
+metaitem.purified_pyrochlore.name=纯化烧绿石
+metaitem.purified_columbite.name=纯化铌铁矿
+metaitem.selectively_mutated_cupravidius_necator.name=选择性突变的钩虫贪铜菌
+metaitem.charged_cesium_cerium_cobalt_indium.name=带电的铯-铈-钴-铟
+metaitem.rhenium_chloride.name=氯化铼
+metaitem.hassium_chloride.name=氯化钅黑
+metaitem.antimony_trichloride.name=三氯化锑
+metaitem.rhenium_hassium_thallium_isophtaloylbisdiethylthiourea.name=间苯二甲酰双(二乙基硫脲基)六氟磷酸铼-钅黑-铊
+metaitem.lanthanum_fullerene_nanotubes.name=镧-富勒烯纳米管
+metaitem.legendarium.name=传奇金属
+
+metaitem.lithium_cobalt_oxide.name=钴酸锂
+metaitem.lithium_triflate.name=三氟甲磺酸锂
+metaitem.xylose.name=木糖
+metaitem.silicon_nanoparticles.name=硅纳米粒子
+metaitem.halloysite.name=埃洛石
+metaitem.gallium.chloride.name=氯化镓
+metaitem.sulfur_coated_halloysite.name=硫涂覆的埃洛石
+metaitem.fluoride_battery_electrolyte.name=氟化物电池电解质
+metaitem.lanthanum_nickel_oxide.name=镍酸镧
+metaitem.sorbose.name=山梨糖
+metaitem.calcium_alginate.name=海藻酸钙
+metaitem.nickel_oxide_hydroxide.name=羟基氧化镍
 
 metaitem.unstable.star.name=易变之星
 
@@ -808,6 +847,39 @@ metaitem.tool.prospect.gui.list=所有资源
 metaitem.tool.prospect.tooltips.ore=矿石统计
 metaitem.tool.prospect.tooltips.fluid=流体统计
 metaitem.tool.prospect.low_power=电量不足！
+
+#//////////////COVER + MONITOR + PLUGIN/////////////////
+metaitem.plugin.tooltips.1=可以安装插件来使用更多功能
+metaitem.plugin.proxy.tooltips.1=(请在屏幕上调整为代理模式)
+metaitem.plugin.text.name=文本插件
+metaitem.plugin.online_pic.name=在线图片插件
+metaitem.plugin.fake_gui.name=代理 Gui 插件
+metaitem.plugin.advanced_monitor.name=代理高级监控器插件
+metaitem.cover.digital.name=数字界面覆盖板
+
+metaitem.cover.digital.mode.fluid.enabled=流体模式 - §a开启
+metaitem.cover.digital.mode.item.enabled=物品模式 - §a开启
+metaitem.cover.digital.mode.energy.enabled=能量模式 - §a开启
+metaitem.cover.digital.mode.machine.enabled=机器模式 - §a开启
+metaitem.cover.digital.mode.proxy.enabled=代理模式 - §a开启
+
+metaitem.cover.digital.mode.fluid.disabled=流体模式 - §c关闭
+metaitem.cover.digital.mode.item.disabled=物品模式 - §c关闭
+metaitem.cover.digital.mode.energy.disabled=能量模式 - §c关闭
+metaitem.cover.digital.mode.machine.disabled=机器模式 - §c关闭
+metaitem.cover.digital.mode.proxy.disabled=代理模式 - §c关闭
+
+#universal.cover.mode.enabled=§a开启
+#universal.cover.mode.disabled=§c关闭
+
+metaitem.cover.digital.title.mode=模式：
+metaitem.cover.digital.title.spin=转向：
+monitor.gui.title.back=返回
+monitor.gui.title.scale=规格：
+monitor.gui.title.argb=ARGB：
+monitor.gui.title.slot=槽位：
+monitor.gui.title.plugin=插件：
+monitor.gui.title.config=配置
 
 #/////////////////////CIRCUIT///////////////////////////
 
@@ -955,6 +1027,10 @@ metaarmor.qts.nightvision.disabled=量子科技™套装：夜视关闭
 
 metaarmor.jetpack.hover.enable=喷气背包：悬停模式开启
 metaarmor.jetpack.hover.disable=喷气背包：悬停模式关闭
+
+metaarmor.message.nightvision.enabled=§b夜视：§a开启
+metaarmor.message.nightvision.disabled=§b夜视：§c关闭
+metaarmor.message.nightvision.error=§c能量不足！
 
 metaarmor.hud.status.enabled=§a开启
 metaarmor.hud.status.disabled=§c关闭
@@ -1460,6 +1536,8 @@ gtadditions.machine.large_laser_engraver.name=大型激光蚀刻机
 gtadditions.machine.bio_reactor.name=生物反应器
 gtadditions.machine.plasma_condenser.name=等离子冷凝器
 gtadditions.machine.advanced_fusion_reactor.name=进阶核聚变反应堆主机
+gtadditions.machine.central_monitor.name=中央监控器
+gtadditions.machine.monitor_screen.name=监控屏幕
 
 gtadditions.machine.naquadah_reactor.mk2.name=硅岩反应堆 MK I
 gtadditions.machine.naquadah_reactor.mk3.name=硅岩反应堆 MK II
@@ -1654,7 +1732,6 @@ tile.ga_transparent_casing.iridium_reinforced_glass.name=铱强化玻璃
 tile.ga_transparent_casing.osmium_reinforced_glass.name=铱锇合金强化玻璃
 tile.ga_quantum_casing.computer.name=量子计算机外壳
 tile.ga_quantum_casing.generator.name=量子位发生器外壳
-tile.ga_multiblock_casing2.naquadria_charge.name=超能硅岩爆弹
 tile.ga_multiblock_casing2.stellar_containment.name=恒星热力容器
 tile.ga_multiblock_casing2.bio_reactor_casing.name=生物反应器外壳
 tile.ga_multiblock_casing2.laser_reactor_casing.name=激光蚀刻机外壳
@@ -1823,6 +1900,7 @@ tile.ga_simple_block.leptonic_charge.name=轻子爆弹
 tile.ga_simple_block.qcd_charge.name=量子色动力学爆弹
 
 
+
 tile.cell_casing.cell_hv.name=HV能量单元
 tile.cell_casing.cell_ev.name=EV能量单元
 tile.cell_casing.cell_iv.name=IV能量单元
@@ -1898,15 +1976,15 @@ recipemap.hyper_reactor.name=超能反应堆
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
-gtadditions.recipe.drilling_rig.dimension_whitelist=维度白名单：%s
-gtadditions.recipe.drilling_rig.dimension_blacklist=维度黑名单：%s
-gtadditions.recipe.drilling_rig.biome_whitelist=生物群系白名单：%s
-gtadditions.recipe.drilling_rig.biome_blacklist=生物群系黑名单：%s
-gtadditions.recipe.drilling_rig.min_size=最小尺寸：%d
-gtadditions.recipe.drilling_rig.max_size=最大尺寸：%d
 gtadditions.recipe.drilling_rig.replenish_rate=补充率：%d
 gtadditions.recipe.drilling_rig.weight=抽取权重：%d
-
+gtadditions.recipe.drilling_rig.dimension=维度
+gtadditions.recipe.drilling_rig.biome=生物群系
+gtadditions.recipe.drilling_rig.no_dimension=一切维度
+gtadditions.recipe.drilling_rig.no_biome=一切生物群系
+gtadditions.recipe.drilling_rig.whitelist=白名单
+gtadditions.recipe.drilling_rig.blacklist=黑名单
+gtadditions.recipe.drilling_rig.size=尺寸：%s
 
 gregtech.recipe.base_heat_production=堆温：%dC
 gregtech.recipe.hot_coolant=热冷却液温度：%dC
@@ -2609,6 +2687,16 @@ gtadditions.multiblock.universal.tooltip.3=速率倍数：§e%.1f§r
 gtadditions.multiblock.universal.tooltip.4=最多同时处理配方数：§e%d§7份每电压等级差
 gtadditions.multiblock.universal.tooltip.5=产出概率加成：§e%d%%§r
 gtadditions.multiblock.fusion_reactor.heat=热量：%d
+gtadditions.multiblock.central_monitor.height=屏幕高度：%d
+gtadditions.multiblock.central_monitor.width=屏幕宽度：%d
+gtadditions.multiblock.central_monitor.height_modify=修改高度：%d
+gtadditions.multiblock.central_monitor.tooltip.1=中央监控器用于监控数字界面覆盖板所代理的机器。可以轻松地监控流体、物品、能量和能源网络中的机器状态。
+gtadditions.multiblock.central_monitor.tooltip.2=您可以从 3X2 到 %dX%d（宽度X高度）建造中央监控器屏幕。
+gtadditions.multiblock.central_monitor.tooltip.3=默认建造高度为3，您可以在结构形成前在 GUI 中调整屏幕高度。
+gtadditions.multiblock.central_monitor.tooltip.4=每屏幕能量消耗：%d EU/s 
+gtadditions.multiblock.monitor_screen.tooltip.1=右键单击螺丝刀可以打开 GUI 
+gtadditions.multiblock.monitor_screen.tooltip.2=数字界面覆盖板的代理模式能够代理机器的功能和 GUI （您可以直接在屏幕上连接管道，耶）
+gtadditions.multiblock.monitor_screen.tooltip.3=屏幕同样支持插件
 
 gtadditions.multiblock.void_miner.description.1=虚空采矿场会从虚空之力中提取出成吨的矿石。
 gtadditions.multiblock.void_miner.description.2=它每秒都会交替消耗烈焰之炽焱和极寒之凛冰。
@@ -2670,13 +2758,12 @@ gregtech.multiblock.universal.carbon_dioxide_amount=二氧化碳：%dmB
 gregtech.multiblock.universal.potassium_plasma_amount=钾等离子体：%dmB
 gregtech.multiblock.universal.oxygen_plasma_amount=氧等离子体：%dmB
 gregtech.multiblock.universal.helium_plasma_amount=氦等离子体：%dmB
-gregtech.multiblock.universal.radon_plasma_amount=氡等离子体：%dmB
-gregtech.multiblock.universal.rhenium_plasma_amount=电子简并态铼等离子体：%dmB
 gregtech.multiblock.universal.cryotheum_amount=极寒之凛冰：%dmB
 gregtech.multiblock.universal.liquid_hydrogen_amount=液氢：%dmB
 gregtech.multiblock.universal.air_amount=空气：%dmB
 gregtech.multiblock.large_rocket_engine.hydrogen_need=超频所耗液氢：%dmB
 gregtech.multiblock.large_rocket_engine.boost=超频中！
+gregtech.multiblock.large_rocket_engine.no_fuel=无燃料装载
 gregtech.multiblock.advanced_distillation_tower.multiplier=当前单次同时处理配方数：%d
 gregtech.multiblock.large_miner.chunk=已挖掘区块：%d
 gregtech.multiblock.large_miner.nb_chunk=待挖掘区块：%d
@@ -3685,7 +3772,7 @@ fluid.basr_acetate_solution=醋酸钡锶溶液
 fluid.titanium_isopropoxide=异丙醇钛
 fluid.barium_chloride_solution=氯化钡溶液
 fluid.iron_carbonyl=五羰基铁
-fluid.purified_iron_carbonyl=纯净五羰基铁
+fluid.purified_iron_carbonyl=纯化五羰基铁
 fluid.bismuth_nitrate_solution=硝酸铋溶液
 fluid.barium_titanate_preparation=钛酸钡制剂
 fluid.basr_titanate_preparation=醋酸钡锶制剂
@@ -3783,6 +3870,25 @@ fluid.liquid_helium_3=液态氦-3
 fluid.liquid_enriched_helium=液态富氦
 fluid.liquid_nitrogen=液氮
 fluid.neutronium_doped_nanotubes=中子素掺杂的纳米管
+fluid.methylethanolamine=甲基乙醇胺
+fluid.methylguanidine=甲基胍
+fluid.methylnitronitrosoguanidine=1-甲基-3-硝基-1-亚硝基胍
+fluid.isoamyl_alcohol=异戊醇
+fluid.octanol=辛醇
+fluid.trioctylamine=三辛基胺
+fluid.rhenium_scrubbed_solution=铼洗涤溶液
+fluid.rhenium_separation_mixture=铼分离混合物
+fluid.fluorophosphoric_acid=单氟磷酸
+fluid.phenylenedioxydiacetic_acid=亚苯基二氧二乙酸
+fluid.diethylthiourea=二乙基硫脲
+fluid.isophtaloylbisdiethylthiourea=间苯二甲酰双（二乙基硫脲）
+fluid.sodium_alginate_solution=海藻酸钠
+fluid.ascorbic_acid=抗坏血酸
+fluid.dehydroascorbic_acid=脱氢抗坏血酸
+fluid.cacbas_mixture=碳酸钙硫酸钡混合物
+fluid.lubricant_clay_slurry=润滑油泥浆
+fluid.atl_ethylene_mixture=胺处理褐煤乙烯混合物
+fluid.drilling_mud_mixture=钻井泥浆混合物
 
 gtadditions.machine.buffer.lv.name=基础缓存器
 gtadditions.machine.buffer.mv.name=进阶缓存器
@@ -3876,6 +3982,22 @@ metaitem.emitter.umv.name=发射器（UMV）
 metaitem.emitter.uxv.name=发射器（UXV）
 metaitem.emitter.max.name=发射器（MAX）
 
+metaitem.infinite.water.mv.name=MV 无限水源
+metaitem.infinite.water.hv.name=HV 无限水源
+metaitem.infinite.water.ev.name=EV 无限水源
+metaitem.infinite.water.iv.name=IV 无限水源
+metaitem.infinite.water.luv.name=LuV 无限水源
+metaitem.infinite.water.zpm.name=ZPM 无限水源
+metaitem.infinite.water.uv.name=UV 无限水源
+
+metaitem.infinite.water.mv.tooltip=该覆盖板每 20 刻生产 64 桶水
+metaitem.infinite.water.hv.tooltip=该覆盖板每 15 刻生产 64 桶水
+metaitem.infinite.water.ev.tooltip=该覆盖板每 10 刻生产 64 桶水
+metaitem.infinite.water.iv.tooltip=该覆盖板每 6 刻生产 64 桶水
+metaitem.infinite.water.luv.tooltip=该覆盖板每 4 刻生产 64 桶水
+metaitem.infinite.water.zpm.tooltip=该覆盖板每 2 刻生产 64 桶水
+metaitem.infinite.water.uv.tooltip=该覆盖板每 1 刻生产 64 桶水
+
 gtadditions.machine.charger.uhv.name=极高压充电箱
 gtadditions.machine.charger.uev.name=超极限压充电箱
 gtadditions.machine.charger.uiv.name=超强导压充电箱
@@ -3946,6 +4068,9 @@ metaitem.ctc.computational.unit.name=封闭类时曲线计算单元
 metaitem.recursively.folded.negative.space.name=递归折叠负空间
 metaitem.insulation_wire_assembly.name=绝缘线团
 
+metaitem.coloured.leds.name=彩色 LED
+metaitem.display.name=显示器
+
 material.qcd_confined_matter=量子色动力学封闭物质
 
 fluid.free_electron_gas=自由电子气体
@@ -3963,9 +4088,35 @@ gtadditions.machine.steam.steam_hatch.tooltip=可接受流体: §e蒸汽
 gtadditions.machine.steam_input_bus.name=输入仓(蒸汽)
 gtadditions.machine.steam_output_bus.name=输出仓(蒸汽)
 gtadditions.machine.steam_bus.tooltip=无法用于不使用蒸汽的多方块结构
+gtadditions.machine.steam_oven.name=蒸汽炉
+gtadditions.machine.steam_oven.tooltip=每次运作最多熔炼8个物品。配方耗时1.5倍，不受物品数量影响。需要使用§e蒸汽仓/总线搭建
+gtadditions.multiblock.steam_oven.description=蒸汽时代的多方块熔炉。需要至少6个青铜机器外壳以形成结构。无法使用常规输入/出仓，只能使用蒸汽仓/总线。蒸汽仓必须放置在底层，且最多只能放置一个。
 
 gtadditions.machine.diode.message=最大电流通过量: %s
 gtadditions.machine.diode.tooltip_general=一个简单的单向导电的二极管。
 gtadditions.machine.diode.tooltip_tool_usage=使用软锤敲击来转换电路方向。
 gtadditions.top.diode_input=§6输入:§r %dA
 gtadditions.top.diode_output=§9输出:§r %dA
+
+gtadditions.machine.disassembler.lv.name=基础拆解机
+gtadditions.machine.disassembler.mv.name=进阶拆解机
+gtadditions.machine.disassembler.hv.name=进阶拆解机 II
+gtadditions.machine.disassembler.ev.name=进阶拆解机 III
+gtadditions.machine.disassembler.iv.name=精英拆解机
+gtadditions.machine.disassembler.luv.name=精英拆解机 II
+gtadditions.machine.disassembler.zpm.name=精英拆解机 III
+gtadditions.machine.disassembler.uv.name=精英拆解机 IV
+gtadditions.machine.disassembler.uhv.name=次世代拆解机
+gtadditions.machine.disassembler.uev.name=次世代拆解机 II
+gtadditions.machine.disassembler.uiv.name=次世代拆解机 III
+gtadditions.machine.disassembler.umv.name=次世代拆解机 IV
+gtadditions.machine.disassembler.uxv.name=终焉拆解机
+gtadditions.machine.disassembler.tooltip=拆解机器直至 §b§o%s§r
+recipemap.disassembler.name=拆解机
+
+gtadditions.machine.pa.display1=设置配方： §6%s
+gtadditions.machine.pa.display2=并行配方： §b%d
+
+gtadditions.machine.electric_implosion.name=电力聚爆压缩机
+recipemap.electric_implosion.name=电力聚爆压缩机
+gtadditions.multiblock.electric_implosion.description=不需要 TNT 的聚爆压缩机。需要 UHV 以上等级能量才能运行，但能一瞬间完成合成配方。
