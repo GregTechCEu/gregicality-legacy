@@ -301,6 +301,7 @@ public class BrineChain {
 
         // NaOH + H2O -> NaOH(H2O)
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
