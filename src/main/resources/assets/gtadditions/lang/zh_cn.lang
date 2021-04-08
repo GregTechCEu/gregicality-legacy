@@ -3887,7 +3887,7 @@ fluid.ascorbic_acid=抗坏血酸
 fluid.dehydroascorbic_acid=脱氢抗坏血酸
 fluid.cacbas_mixture=碳酸钙硫酸钡混合物
 fluid.lubricant_clay_slurry=润滑油泥浆
-fluid.atl_ethylene_mixture=胺处理褐煤乙烯混合物
+fluid.atl_ethylene_mixture=胺处理褐煤乙二醇混合物
 fluid.drilling_mud_mixture=钻井泥浆混合物
 
 gtadditions.machine.buffer.lv.name=基础缓存器
