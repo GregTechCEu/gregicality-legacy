@@ -54,7 +54,7 @@ public class BariumChain {
         // 4BaO + 2Al -> 3Ba + Al2BaO4
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(8))
-                .input(dustSmall, Aluminium, 8)
+                .input(dust, Aluminium, 2)
                 .output(ingot, Barium, 3)
                 .outputs(BariumAluminate.getItemStack(7))
                 .buildAndRegister();
