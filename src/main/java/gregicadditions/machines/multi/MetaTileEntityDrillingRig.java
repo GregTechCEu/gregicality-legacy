@@ -120,7 +120,6 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     @Override
     protected void updateFormedValid() {
 
-
         if (getWorld().isRemote) {
             return;
         }
@@ -131,14 +130,14 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
             return;
         }
 
-        if(isActive && canFillFluidExport() && !drainEnergy()) {
-            setActive(false);
+        if(canFillFluidExport() && drainEnergy()) {
+            if(!isActive) setActive(true);
+        } else {
+            if(isActive) setActive(false);
             return;
         }
 
         if (getTimer() % 20 == 0) {
-            if (!isActive)
-                setActive(true);
             int residual = getResidualOil();
             if (availableOil() > 0 || residual > 0) {
                 int oilAmnt = availableOil() <= 0 ? residual * getTier() : availableOil();
@@ -152,8 +151,9 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public boolean canFillFluidExport() {
-        FluidStack out = new FluidStack(availableFluid(), 1);
-        return exportFluidHandler.fill(out, false) > 0;
+        Fluid available = availableFluid();
+        if(available == null) return false;
+        return exportFluidHandler.fill(new FluidStack(available, 1), false) > 0;
     }
 
     public int fluidDrain() {
