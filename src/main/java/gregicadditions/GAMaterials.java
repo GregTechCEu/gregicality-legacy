@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import gregicadditions.materials.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
@@ -551,7 +550,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial BacterialGrowthMedium = new SimpleFluidMaterial("bacterial_growth_medium", 0x0b2e12, "Bacterial Growth Medium");
     public static final SimpleFluidMaterial DepletedGrowthMedium = new SimpleFluidMaterial("depleted_growth_medium", 0x071209, "Depleted Growth Medium");
     public static final SimpleFluidMaterial AnimalCells = new SimpleFluidMaterial("animal_cells", 0xc94996, "???");
-    public static final SimpleFluidMaterial RapidlyReplicatingAnimalCells = new SimpleFluidMaterial("rapidly_replicating_animal_cells", 0x7a335e, ChatFormatting.OBFUSCATED + "????");
+    public static final SimpleFluidMaterial RapidlyReplicatingAnimalCells = new SimpleFluidMaterial("rapidly_replicating_animal_cells", 0x7a335e, TextFormatting.OBFUSCATED + "????");
     public static final SimpleFluidMaterial MycGene = new SimpleFluidMaterial("myc_gene", 0x445724, "?");
     public static final SimpleFluidMaterial Oct4Gene = new SimpleFluidMaterial("oct_4_gene", 0x374f0d, "?");
     public static final SimpleFluidMaterial SOX2Gene = new SimpleFluidMaterial("sox_2_gene", 0x5d8714, "?");
@@ -732,7 +731,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CNOcatalyst = new SimpleFluidMaterial("cno_catalyst", (Nitrogen.materialRGB + Carbon.materialRGB) / 2, "(C_12)(C_13)(N_14)(N_15)");
     public static final SimpleFluidMaterial Calcium44 = new SimpleFluidMaterial("calcium_44", Calcium.materialRGB, "Ca_44");
     public static final SimpleFluidMaterial OgannesonBreedingBase = new SimpleFluidMaterial("og_breeding_base", ((Titanium.materialRGB + 0xA85A12) / 2), "(Ti_50)Cf_252");
-    public static final SimpleFluidMaterial QuassifissioningPlasma = new SimpleFluidMaterial("quasifissioning_plasma", 0xD5CB54, ChatFormatting.OBFUSCATED + "???");
+    public static final SimpleFluidMaterial QuassifissioningPlasma = new SimpleFluidMaterial("quasifissioning_plasma", 0xD5CB54, TextFormatting.OBFUSCATED + "???");
     public static final SimpleFluidMaterial Ytterbium178 = new SimpleFluidMaterial("ytterbium_178", Ytterbium.materialRGB, "Yb_178");
     public static final SimpleFluidMaterial FlYbPlasma = new SimpleFluidMaterial("flyb_plasma", (Ytterbium.materialRGB + 0x521973) / 2, "FlYb");
     public static final SimpleFluidMaterial Chromium48 = new SimpleFluidMaterial("chromium48", Chrome.materialRGB, true, "Cr_48");
@@ -871,13 +870,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Ethylamine = new SimpleFluidMaterial("ethylamine",Ethylenediamine.rgb, "C2H5NH2");
     public static final SimpleFluidMaterial Trimethylsilane = new SimpleFluidMaterial("trimethylsilane",Trimethylchlorosilane.rgb, "C3H10Si");
     public static final SimpleFluidMaterial KryptonDifluoride = new SimpleFluidMaterial("krypton_difluoride",Krypton.materialRGB, "KrF2");
-    public static final SimpleFluidMaterial QuarkGluonPlasma = new SimpleFluidMaterial("quark_gluon_plasma",0x8f00ff, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(u2)d(c2)s(t2)bg" + ChatFormatting.OBFUSCATED + "a", false, true);
-    public static final SimpleFluidMaterial HeavyQuarks = new SimpleFluidMaterial("heavy_quarks",0x008800, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(u2)ds" + ChatFormatting.OBFUSCATED + "a", false, true);
-    public static final SimpleFluidMaterial LightQuarks = new SimpleFluidMaterial("light_quarks",0x0000ff, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(c2)(t2)b" + ChatFormatting.OBFUSCATED + "a", false, true);
-    public static final SimpleFluidMaterial Gluons = new SimpleFluidMaterial("gluons",0xfcfcfa, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "g" + ChatFormatting.OBFUSCATED + "a", false, true);
-    public static final SimpleFluidMaterial HeavyLeptonMix = new SimpleFluidMaterial("heavy_lepton_mix",0x5adf52, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(t2)u" + ChatFormatting.OBFUSCATED + "a", false, true);
-    public static final SimpleFluidMaterial CosmicComputingMix = new SimpleFluidMaterial("cosmic_computing_mix",0xafad2f, ChatFormatting.OBFUSCATED + "aaaaa", false, true);
-    public static final SimpleFluidMaterial HeavyQuarkEnrichedMix = new SimpleFluidMaterial("heavy_quark_enriched_mix",0xefefef, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(u2)d(c2)s(t2)b" + ChatFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial QuarkGluonPlasma = new SimpleFluidMaterial("quark_gluon_plasma",0x8f00ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial HeavyQuarks = new SimpleFluidMaterial("heavy_quarks",0x008800, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)ds" + TextFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial LightQuarks = new SimpleFluidMaterial("light_quarks",0x0000ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(c2)(t2)b" + TextFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial Gluons = new SimpleFluidMaterial("gluons",0xfcfcfa, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "g" + TextFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial HeavyLeptonMix = new SimpleFluidMaterial("heavy_lepton_mix",0x5adf52, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(t2)u" + TextFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial CosmicComputingMix = new SimpleFluidMaterial("cosmic_computing_mix",0xafad2f, TextFormatting.OBFUSCATED + "aaaaa", false, true);
+    public static final SimpleFluidMaterial HeavyQuarkEnrichedMix = new SimpleFluidMaterial("heavy_quark_enriched_mix",0xefefef, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)b" + TextFormatting.OBFUSCATED + "a", false, true);
     public static final SimpleFluidMaterial DeuteriumSuperheavyMix = new SimpleFluidMaterial("deuterium_superheavy_mix",0xa2d2a4, "(H_2)FlHsOg");
     public static final SimpleFluidMaterial ScandiumTitanium50Mix = new SimpleFluidMaterial("scandium_titanium50_mix", (Scandium.materialRGB+Titanium.materialRGB)/2, "ScTi_50");
     public static final SimpleFluidMaterial RadonRadiumMix = new SimpleFluidMaterial("radon_radium_mix",(Radium.materialRGB+Radon.materialRGB)/2, "RnRa");
@@ -916,7 +915,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SupercriticalLeadBismuthEutectic = new SimpleFluidMaterial("supercritical_lead_bismuth_eutectic", LeadBismuthEutectic.materialRGB, "Pb3Bi7");
     public static final SimpleFluidMaterial FreeAlphaGas = new SimpleFluidMaterial("free_alpha_gas", 0xe0d407, "a");
     public static final SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c, "e-");
-    public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff, ChatFormatting.OBFUSCATED + "a" + ChatFormatting.RESET + "(u2)d(c2)s(t2)bg" + ChatFormatting.OBFUSCATED + "a", false, true);
+    public static final SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false, true);
     public static final SimpleFluidMaterial AcetylsulfanilylChloride = new SimpleFluidMaterial("acetylsulfanilyl_chloride", (Aniline.rgb + AceticAnhydride.rgb + ChlorosulfonicAcid.rgb)/3, "C8H8ClNO3S");
     public static final SimpleFluidMaterial BenzoylPeroxide = new SimpleFluidMaterial("benzoyl_peroxide", (Barium.materialRGB + BenzoylChloride.rgb)/2, "C14H10O4");
     public static final SimpleFluidMaterial Iron2Chloride = new SimpleFluidMaterial("iron_ii_chloride", (IronChloride.materialRGB-10), "FeCl2");

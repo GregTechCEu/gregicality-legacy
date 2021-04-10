@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import codechicken.lib.util.ItemNBTUtils;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.input.Keybinds;
@@ -19,6 +18,7 @@ import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -84,7 +84,7 @@ public class ClientProxy extends CommonProxy {
                 if (material != null) {
                     String formula = material.getFormula();
                     if (formula != null && !formula.isEmpty() && event.getToolTip().size() == 0) {
-                        event.getToolTip().add(1, ChatFormatting.GRAY.toString() + material.getFormula());
+                        event.getToolTip().add(1, TextFormatting.GRAY.toString() + material.getFormula());
                     }
                 }
             }
@@ -97,7 +97,7 @@ public class ClientProxy extends CommonProxy {
             if (fluidName != null) {
                 SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(fluidName);
                 if (material != null && material.getFormula() != null && !material.getFormula().isEmpty()) {
-                    event.getToolTip().add(1, ChatFormatting.GRAY + material.getFormula());
+                    event.getToolTip().add(1, TextFormatting.GRAY + material.getFormula());
                 }
             }
         }
