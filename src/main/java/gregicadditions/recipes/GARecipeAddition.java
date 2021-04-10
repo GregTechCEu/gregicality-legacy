@@ -379,17 +379,6 @@ public class GARecipeAddition {
                     .buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-                    .input(valueOf("plateCurved"), WroughtIron, 2)
-                    .input(plate, WroughtIron)
-                    .outputs(new ItemStack(Items.BUCKET))
-                    .buildAndRegister();
-
-            ModHandler.addShapedRecipe("bucket", new ItemStack(Items.BUCKET),
-            "ChC", " P ",
-            'C', plateB + "Iron",
-            'P', "plateIron");
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
             .input(valueOf(plateB), Iron, 2)
             .input(plate, Iron)
             .outputs(new ItemStack(Items.BUCKET))
@@ -3254,12 +3243,18 @@ public class GARecipeAddition {
 
         // UHV+ Component Recipes
         // MOTORS -----------------------------------------------------------------------------
+        OrePrefix roundOrScrew;
+        if (GAConfig.GT6.addRounds)
+            roundOrScrew = GAEnums.GAOrePrefix.round;
+        else
+            roundOrScrew = screw;
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(10240)
                 .outputs(ELECTRIC_MOTOR_LUV.getStackForm())
                 .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 1))
                 .inputs(OreDictUnifier.get(stickLong, HSSG, 2))
                 .inputs(OreDictUnifier.get(ring, HSSG, 4))
-                .inputs(OreDictUnifier.get(GAEnums.GAOrePrefix.round, HSSG, 16))
+                .inputs(OreDictUnifier.get(roundOrScrew, HSSG, 16))
                 .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
                 .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
                 .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
@@ -3274,7 +3269,7 @@ public class GARecipeAddition {
                 .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 16))
                 .inputs(OreDictUnifier.get(stickLong, HSSE, 2))
                 .inputs(OreDictUnifier.get(ring, HSSE, 4))
-                .inputs(OreDictUnifier.get(GAEnums.GAOrePrefix.round, HSSE, 16))
+                .inputs(OreDictUnifier.get(roundOrScrew, HSSE, 16))
                 .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
                 .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
                 .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
@@ -3289,7 +3284,7 @@ public class GARecipeAddition {
                 .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
                 .inputs(OreDictUnifier.get(stickLong, Tritanium, 2))
                 .inputs(OreDictUnifier.get(ring, Tritanium, 4))
-                .inputs(OreDictUnifier.get(GAEnums.GAOrePrefix.round, Tritanium, 16))
+                .inputs(OreDictUnifier.get(roundOrScrew, Tritanium, 16))
                 .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
                 .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
                 .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
@@ -3305,7 +3300,7 @@ public class GARecipeAddition {
                 .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
                 .inputs(OreDictUnifier.get(stickLong, HDCS, 2))
                 .inputs(OreDictUnifier.get(ring, HDCS, 4))
-                .inputs(OreDictUnifier.get(GAEnums.GAOrePrefix.round, HDCS, 16))
+                .inputs(OreDictUnifier.get(roundOrScrew, HDCS, 16))
                 .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
                 .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
                 .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
@@ -3321,7 +3316,7 @@ public class GARecipeAddition {
                 .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
                 .inputs(OreDictUnifier.get(stickLong, HDCS, 2))
                 .inputs(OreDictUnifier.get(ring, HDCS, 4))
-                .inputs(OreDictUnifier.get(GAEnums.GAOrePrefix.round, HDCS, 16))
+                .inputs(OreDictUnifier.get(roundOrScrew, HDCS, 16))
                 .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
                 .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
                 .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
@@ -3986,179 +3981,9 @@ public class GARecipeAddition {
                 .fluidOutputs(TributylPhosphate.getFluid(1000))
                 .buildAndRegister();
 
-
 // TODO HERE+++++++++++++++++++++++++++++++++
-
-        // UHV+ Component Recipes
-        // MOTORS -----------------------------------------------------------------------------
-        OrePrefix roundOrScrew;
-        if (GAConfig.GT6.addRounds)
-            roundOrScrew = GAEnums.GAOrePrefix.round;
-        else
-            roundOrScrew = screw;
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(10240)
-                .outputs(ELECTRIC_MOTOR_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 1))
-                .inputs(OreDictUnifier.get(stickLong, HSSG, 2))
-                .inputs(OreDictUnifier.get(ring, HSSG, 4))
-                .inputs(OreDictUnifier.get(roundOrScrew, HSSG, 16))
-                .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
-                .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
-                .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
-                .inputs(OreDictUnifier.get(wireFine, AnnealedCopper, 64))
-                .inputs(OreDictUnifier.get(cableGtSingle, YttriumBariumCuprate, 2))
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .fluidInputs(Lubricant.getFluid(250))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(40960)
-                .outputs(ELECTRIC_MOTOR_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 16))
-                .inputs(OreDictUnifier.get(stickLong, HSSE, 2))
-                .inputs(OreDictUnifier.get(ring, HSSE, 4))
-                .inputs(OreDictUnifier.get(roundOrScrew, HSSE, 16))
-                .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
-                .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
-                .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
-                .inputs(OreDictUnifier.get(wireFine, Platinum, 64))
-                .inputs(OreDictUnifier.get(cableGtQuadruple, Naquadah, 2))
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .fluidInputs(Lubricant.getFluid(750))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(163840)
-                .outputs(ELECTRIC_MOTOR_UV.getStackForm())
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
-                .inputs(OreDictUnifier.get(stickLong, Tritanium, 2))
-                .inputs(OreDictUnifier.get(ring, Tritanium, 4))
-                .inputs(OreDictUnifier.get(roundOrScrew, Tritanium, 16))
-                .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Duranium, 64))
-                .inputs(OreDictUnifier.get(cableGtQuadruple, Duranium, 2))
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(655360)
-                .outputs(ELECTRIC_MOTOR_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
-                .inputs(OreDictUnifier.get(stickLong, HDCS, 2))
-                .inputs(OreDictUnifier.get(ring, HDCS, 4))
-                .inputs(OreDictUnifier.get(roundOrScrew, HDCS, 16))
-                .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
-                .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
-                .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
-                .inputs(OreDictUnifier.get(wireFine, TungstenTitaniumCarbide, 64))
-                .input(cableGtQuadruple, TungstenTitaniumCarbide, 2)
-                .fluidInputs(SolderingAlloy.getFluid(2592))
-                .fluidInputs(Lubricant.getFluid(3000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(2621440)
-                .outputs(ELECTRIC_MOTOR_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
-                .inputs(OreDictUnifier.get(stickLong, NeodymiumMagnetic, 64))
-                .inputs(OreDictUnifier.get(stickLong, HDCS, 2))
-                .inputs(OreDictUnifier.get(ring, HDCS, 4))
-                .inputs(OreDictUnifier.get(roundOrScrew, HDCS, 16))
-                .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Pikyonium, 64))
-                .input(cableGtQuadruple, Pikyonium, 2)
-                .fluidInputs(SolderingAlloy.getFluid(2592))
-                .fluidInputs(Lubricant.getFluid(3000))
-                .buildAndRegister();
-        // PUMPS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15360)
-                .outputs(ELECTRIC_PUMP_LUV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(pipeSmall, Ultimet, 2))
-                .inputs(OreDictUnifier.get(screw, HSSG, 8))
-                .inputs(OreDictUnifier.get(ring, SiliconeRubber, 16))
-                .inputs(OreDictUnifier.get(rotor, HSSG, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, YttriumBariumCuprate, 2))
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .fluidInputs(Lubricant.getFluid(250))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
-                .outputs(ELECTRIC_PUMP_ZPM.getStackForm())
-                .inputs(ELECTRIC_MOTOR_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(pipeMedium, Ultimet, 2))
-                .inputs(OreDictUnifier.get(screw, HSSE, 8))
-                .inputs(OreDictUnifier.get(ring, SiliconeRubber, 16))
-                .inputs(OreDictUnifier.get(rotor, HSSE, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Naquadah, 2))
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .fluidInputs(Lubricant.getFluid(750))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
-                .outputs(ELECTRIC_PUMP_UV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UV.getStackForm())
-                .inputs(OreDictUnifier.get(pipeLarge, Ultimet, 2))
-                .inputs(OreDictUnifier.get(screw, Tritanium, 8))
-                .inputs(OreDictUnifier.get(ring, SiliconeRubber, 16))
-                .inputs(OreDictUnifier.get(rotor, Tritanium, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Duranium, 2))
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(983040)
-                .outputs(ELECTRIC_PUMP_UHV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(pipeLarge, Zeron100, 32))
-                .inputs(OreDictUnifier.get(screw, HDCS, 8))
-                .inputs(OreDictUnifier.get(ring, SiliconeRubber, 16))
-                .inputs(OreDictUnifier.get(rotor, HDCS, 2))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
-                .outputs(ELECTRIC_PUMP_UEV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(pipeLarge, Lafium, 64))
-                .inputs(OreDictUnifier.get(pipeLarge, Lafium, 64))
-                .inputs(OreDictUnifier.get(screw, HDCS, 8))
-                .inputs(OreDictUnifier.get(ring, SiliconeRubber, 16))
-                .inputs(OreDictUnifier.get(rotor, HDCS, 2))
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        // CONVEYORS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15360)
-                .outputs(CONVEYOR_MODULE_LUV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_LUV.getStackForm(2))
-                .inputs(OreDictUnifier.get(plate, HSSG, 8))
-                .inputs(OreDictUnifier.get(gear, HSSG, 4))
-                .inputs(OreDictUnifier.get(stick, HSSG, 4))
-                .inputs(OreDictUnifier.get(ingot, HSSG, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, YttriumBariumCuprate, 2))
-                .fluidInputs(StyreneButadieneRubber.getFluid(1440))
-                .fluidInputs(Lubricant.getFluid(250))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
-                .outputs(CONVEYOR_MODULE_ZPM.getStackForm())
-                .inputs(ELECTRIC_MOTOR_ZPM.getStackForm(2))
-                .inputs(OreDictUnifier.get(plate, HSSE, 8))
-                .inputs(OreDictUnifier.get(gear, HSSE, 4))
-                .inputs(OreDictUnifier.get(stick, HSSE, 4))
-                .inputs(OreDictUnifier.get(ingot, HSSE, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Naquadah, 2))
-                .fluidInputs(StyreneButadieneRubber.getFluid(2880))
-                .fluidInputs(Lubricant.getFluid(750))
-                .buildAndRegister();
+        //Assline Recipes
+        //motor
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
                 .outputs(CONVEYOR_MODULE_UV.getStackForm())
