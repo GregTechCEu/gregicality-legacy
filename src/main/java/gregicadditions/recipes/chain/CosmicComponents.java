@@ -195,7 +195,7 @@ public class CosmicComponents {
                 .fluidInputs(Phenylsodium.getFluid(8000))
                 .fluidInputs(TetraethylammoniumBromide.getFluid(2000))
                 .inputs(SilverPerchlorate.getItemStack(6))
-                .inputs(TitaniumCyclopentanol.getItemStack(14))
+                .inputs(TitaniumCyclopentadienyl.getItemStack(14))
                 .fluidInputs(NDifluorophenylpyrrole.getFluid(8000))
                 .output(dust, SilverChloride, 4)
                 .outputs(SodiumBromide.getItemStack(4))

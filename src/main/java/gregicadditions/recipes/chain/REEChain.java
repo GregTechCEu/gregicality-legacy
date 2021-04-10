@@ -8,6 +8,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.dustTiny;
+import static gregicadditions.GAEnums.GAOrePrefix.oxide;
 
 public class REEChain {
     public static void init() {
@@ -371,11 +372,13 @@ public class REEChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // 2ThU -> Th(20%) + U(20%)
+        // 2ThU + O -> 0.5ThO + Th(20%) + U(20%)
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(ThUSludge.getItemStack(4))
+                .fluidInputs(Oxygen.getFluid(500))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Thorium), 2000, 150)
                 .chancedOutput(OreDictUnifier.get(dustTiny, UraniumRadioactive.getMaterial()), 2000, 150)
+                .output(oxide, Thorium)
                 .EUt(480)
                 .duration(500)
                 .buildAndRegister();

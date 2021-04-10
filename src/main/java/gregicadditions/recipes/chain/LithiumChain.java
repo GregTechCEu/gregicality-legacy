@@ -68,12 +68,12 @@ public class LithiumChain {
                 .fluidOutputs(Oxygen.getFluid(12000))
                 .buildAndRegister();
 
-        // [Li2CO3 + H2O] + HCl + HClO + 2Na = 2[LiCl + H2O] + Na2CO3
+        // [Li2CO3 + H2O] + 2HCl + 2Na = 2[LiCl + H2O] + Na2CO3
+        // off by 1 oxygen, which is fine since water is lost in dehydrator step
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(120)
                 .input(dust, Sodium, 2)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .output(dust, SodaAsh, 6)
                 .fluidOutputs(LithiumChlorideSolution.getFluid(2000))
                 .buildAndRegister();

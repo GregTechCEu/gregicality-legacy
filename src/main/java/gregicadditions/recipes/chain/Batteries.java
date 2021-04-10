@@ -94,21 +94,14 @@ public class Batteries {
                 .notConsumable(dust, Platinum)
                 .buildAndRegister();
 
-/* These are currently unneeded as Dehydroascorbic Acid is unused
-        // Loses 2H in dehydration
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(80).EUt(500)
-                .fluidInputs(AscorbicAcid.getFluid(1000))
-                .fluidOutputs(DehydroascorbicAcid.getFluid(1000))
-                .buildAndRegister();
-
-        // C6H6O6 + 2H -
+        // C6H6O6 + 2H -> C6H8O6
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(48000)
                 .fluidInputs(DehydroascorbicAcid.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(AscorbicAcid.getFluid(1000))
                 .notConsumable(dust, Nickel)
                 .buildAndRegister();
-*/
+
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(390).EUt(81000)
                 .inputs(GrapheneOxide.getItemStack(3))
                 .inputs(SiliconNanoparticles.getItemStack())
@@ -117,6 +110,7 @@ public class Batteries {
                 .fluidInputs(SodiumCarbonateSolution.getFluid(1000))
                 .fluidInputs(AscorbicAcid.getFluid(1000))
                 .outputs(NANOSILICON_CATHODE.getStackForm())
+                .fluidOutputs(DehydroascorbicAcid.getFluid(1000))
                 .buildAndRegister();
 
         // Ga + 3Cl -> GaCl3

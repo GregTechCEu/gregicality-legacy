@@ -79,13 +79,13 @@ public class NanotubeChain {
                 .fluidOutputs(Acetaldehyde.getFluid(1000))
                 .buildAndRegister();
 
-        // 2Tl + 2HCl + O -> 2TlCl + H2O
+        // 2Tl + 2HCl -> 2TlCl + 2H
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(30720)
                 .input(dust, Thallium, 2)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(ThalliumChloride.getItemStack(4))
-                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
         // CH2O + 2C2H4O + NH3 -> C5H5N + 3H2O + 2H

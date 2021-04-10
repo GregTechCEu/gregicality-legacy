@@ -445,17 +445,21 @@ public class SensorEmitter {
                 .fluidOutputs(Dimethylnaphthalene.getFluid(1000))
                 .buildAndRegister();
 
-        // C12H12 + C9H12Si(MgBr)2 + ICl + 2HClO -> 2MgClBr + H2C18H11I + (CH3)3SiCl + 2H2O
+        // C12H12 + C9H12Si(MgBr)2 + ICl + 2HClO + C4H4BrNO2 + 2H -> 2MgClBr + H2C18H11I + (CH3)3SiCl + 2H2O + HBr + C4H5NO2
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(1200000)
                 .fluidInputs(Dimethylnaphthalene.getFluid(1000))
                 .fluidInputs(AcetylatingReagent.getFluid(1000))
                 .fluidInputs(IodineMonochloride.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .inputs(Bromosuccinimide.getItemStack(12))
                 .notConsumable(RhReNqCatalyst.getItemStack())
                 .outputs(MgClBromide.getItemStack(6))
+                .outputs(Succinimide.getItemStack(12))
                 .fluidOutputs(Dihydroiodotetracene.getFluid(1000))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();
 
         // C6H5OH + 10Cl + 2HCN + O -> 8HCl + C8Cl2N2O2

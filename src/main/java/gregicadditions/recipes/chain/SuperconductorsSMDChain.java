@@ -757,14 +757,13 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
-        // 3NaOH + 2S + O -> NaH + Na2S2O3 + H2O
+        // 6NaOH + 4S -> 2Na2S + Na2S2O3 + 3H2O
         BLAST_RECIPES.recipeBuilder().duration(210).EUt(6400).blastFurnaceTemp(4500)
-                .input(dust, SodiumHydroxide, 9)
-                .input(dust, Sulfur, 2)
-                .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(SodiumHydride.getItemStack(2))
+                .input(dust, SodiumHydroxide, 18)
+                .input(dust, Sulfur, 4)
+                .output(dust, SodiumSulfide, 6)
                 .outputs(SodiumThiosulfate.getItemStack(7))
-                .fluidOutputs(Steam.getFluid(1000))
+                .fluidOutputs(Steam.getFluid(3000))
                 .buildAndRegister();
 
         // 2Cl + C2H6 -> C2H5Cl + HCl
@@ -811,13 +810,13 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(Acetylene.getFluid(1000))
                 .notConsumable(ScandiumTriflate.getItemStack())
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .outputs(TitaniumCyclopentanol.getItemStack(14))
+                .outputs(TitaniumCyclopentadienyl.getItemStack(14))
                 .buildAndRegister();
 
         // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(720000).blastFurnaceTemp(3500)
                 .fluidInputs(Lithiumthiinediselenide.getFluid(2000))
-                .notConsumable(TitaniumCyclopentanol.getItemStack())
+                .notConsumable(TitaniumCyclopentadienyl.getItemStack())
                 .output(dust, LithiumFluoride, 8)
                 .outputs(BETS.getItemStack())
                 .buildAndRegister();

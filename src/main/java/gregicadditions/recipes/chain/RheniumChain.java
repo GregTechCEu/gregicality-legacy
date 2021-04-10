@@ -63,15 +63,12 @@ public class RheniumChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // 5AuCN -> Au + 5Na + 5C + 5NaCN + 5N ??
-        // Not sure what to do about this
-        ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(GoldCyanide.getFluid(5000))
+        // AuCN + Na -> NaCN + Au
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(GoldCyanide.getFluid(1000))
+                .input(dust, Sodium)
+                .fluidOutputs(SodiumCyanide.getFluid(1000))
                 .output(dust, Gold)
-                .output(dust, Sodium, 5)
-                .output(dust, Carbon, 5)
-                .fluidOutputs(SodiumCyanide.getFluid(5000))
-                .fluidOutputs(Nitrogen.getFluid(5000))
                 .EUt(7680)
                 .duration(150)
                 .buildAndRegister();

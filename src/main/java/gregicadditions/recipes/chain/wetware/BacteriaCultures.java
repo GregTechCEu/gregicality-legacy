@@ -41,17 +41,6 @@ public class BacteriaCultures {
                 .duration(75)
                 .buildAndRegister();
 
-        // 2Na + CO2 + O = Na2CO3
-        // why is this recipe in here?
-        CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Sodium, 2)
-                .fluidInputs(CarbonDioxide.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(1000))
-                .output(dust, SodaAsh, 6)
-                .EUt(120)
-                .duration(50)
-                .buildAndRegister();
-
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(RedAlgaePowder.getItemStack())
                 .input(dust, SodaAsh)

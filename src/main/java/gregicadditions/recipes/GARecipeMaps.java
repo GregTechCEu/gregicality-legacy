@@ -154,7 +154,7 @@ public class GARecipeMaps {
         GAS_CENTRIFUGE_RECIPES = new RecipeMap<>("gas_centrifuge", 1, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
                 .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.VERTICAL_INVERTED);
-        LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 0, 0, 0, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
+        LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 1, 0, 1, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
                 .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,

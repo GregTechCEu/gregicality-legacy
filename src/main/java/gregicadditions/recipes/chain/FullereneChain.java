@@ -24,15 +24,15 @@ public class FullereneChain {
                 .duration(20)
                 .buildAndRegister();
 
-        // C10H7CN + 2H2O + CO -> C11H8O + NH3 + CO2
+        // C10H7CN + H2O + 3HCl -> C11H8O + NH4Cl + 2Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Cyanonaphtalene.getItemStack(19))
                 .notConsumable(TinChloride.getItemStack())
-                .fluidInputs(Water.getFluid(2000))
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .fluidOutputs(Naphthaldehyde.getFluid(1000))
-                .fluidOutputs(Ammonia.getFluid(1000))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(AmmoniumChloride.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(2000))
                 .EUt(2000000)
                 .duration(20)
                 .buildAndRegister();
@@ -59,31 +59,35 @@ public class FullereneChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // C19H14 + O -> C18H12 + CH2O
-        CHEMICAL_RECIPES.recipeBuilder()
+        // C19H14 + KCN + C4H4BrNO2 -> C20H13N + KBr + C4H5NO2
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Methylbenzophenanthrene.getItemStack(33))
-                .fluidInputs(Oxygen.getFluid(1000))
+                .inputs(PotassiumCyanide.getItemStack(3))
+                .inputs(Bromosuccinimide.getItemStack(12))
                 .outputs(Benzophenanthrenylacetonitrile.getItemStack(30))
-                .fluidOutputs(Formaldehyde.getFluid(1000))
+                .outputs(PotassiumBromide.getItemStack(2))
+                .outputs(Succinimide.getItemStack(12))
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();
 
-        // 10C18H12 + 60O -> 3C60 + 60H2O
+        // 3C20H13N -> C60H30 + 3NH3
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(Benzophenanthrenylacetonitrile.getItemStack(300))
+                .inputs(Benzophenanthrenylacetonitrile.getItemStack(102))
                 .notConsumable(TiAlChloride.getItemStack())
-                .fluidInputs(Oxygen.getFluid(60000))
-                .outputs(UnfoldedFullerene.getItemStack(3))
-                .fluidOutputs(Water.getFluid(60000))
+                .outputs(UnfoldedFullerene.getItemStack())
+                .fluidOutputs(Ammonia.getFluid(3000))
                 .EUt(2000000)
                 .duration(250)
                 .buildAndRegister();
 
+        // C60H30 + 15O -> C60 + 15H2O
         LARGE_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(craftingLens, Magenta)
                 .inputs(UnfoldedFullerene.getItemStack())
+                .fluidInputs(Oxygen.getFluid(15000))
                 .outputs(Fullerene.getItemStack())
+                .fluidOutputs(Water.getFluid(15000))
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();
@@ -151,14 +155,13 @@ public class FullereneChain {
                 .duration(400)
                 .buildAndRegister();
 
-        //  Ti + Al + Cl -> TiAlCl (treat as chem reactor)
+        // TiCl4 + AlCl3 -> TiAlCl7
         MIXER_RECIPES.recipeBuilder()
-                .input(dust, Titanium)
-                .input(dust, Aluminium)
-                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidInputs(TitaniumTetrachloride.getFluid(1000))
+                .inputs(AluminiumChloride.getItemStack(4))
                 .EUt(2000000)
                 .duration(50)
-                .outputs(TiAlChloride.getItemStack(3))
+                .outputs(TiAlChloride.getItemStack(9))
                 .buildAndRegister();
 
         // HCN + KOH -> KCN + H2O

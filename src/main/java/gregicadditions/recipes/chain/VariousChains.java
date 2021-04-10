@@ -106,15 +106,14 @@ public class VariousChains {
                 .fluidOutputs(EthyleneGlycol.getFluid(1000))
                 .buildAndRegister();
 
-        // C7H8 + 2COCl2 + 2HNO3 + C -> C9H6N2O2 + 4HClO + CO2
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(230).EUt(960)
-                .input(dust, Carbon)
+        // C7H8 + 2COCl2 + 2HNO3 -> C9H6N2O2 + 4HClO + 2O
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(960)
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(Phosgene.getFluid(2000))
                 .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidOutputs(TolueneDiisocyanate.getFluid(2000))
                 .fluidOutputs(HypochlorousAcid.getFluid(4000))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(2000))
                 .buildAndRegister();
 
         // C9H6N2O2 + 4C2H6O2 + O -> C17H16N2O4 + 7H2O
