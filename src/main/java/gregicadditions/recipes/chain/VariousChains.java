@@ -1,7 +1,9 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAConfig;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -174,9 +176,16 @@ public class VariousChains {
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
+        OrePrefix plateB = plate;
+        if (GAConfig.GT6.addCurvedPlates) {
+            plateB = plateCurved;
+        }
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
                 .input(plateCurved, Steel, 64)
                 .input(plateCurved, Steel, 64)
+                .input(plateB, Steel, 64)
+                .input(plateB, Steel, 64)
                 .input(plate, Steel, 64)
                 .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())

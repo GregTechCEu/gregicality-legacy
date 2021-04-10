@@ -34,6 +34,8 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
 import gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.Block;
@@ -272,7 +274,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         //GT6 Bending
-        if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders) {
+        if (GAConfig.GT6.BendingCylinders) {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:iron_bucket"));
             ModHandler.addShapedRecipe("bucket", new ItemStack(Items.BUCKET),
                     "ChC", " P ",
@@ -677,6 +679,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         if (GAConfig.Misc.assemblerCanMakeComponents) {
+
             //Automatic Machine Component Recipes
 
             // MOTORS -------------------------------------------------------------------------
@@ -4225,7 +4228,9 @@ public class GARecipeAddition {
                     .inputs(hull)
                     .input(cableGtSingle, cable.material, 8)
                     .fluidInputs(SolderingAlloy.getFluid(288))
+                    .EUt((int) (30 * Math.pow(4, motor.getTier() - 1)))
                     .outputs(GAMetaBlocks.MOTOR_CASING.getItemVariant(motor))
+                    .duration(200)
                     .buildAndRegister();
         }
         for (PistonCasing.CasingType piston : PistonCasing.CasingType.values()) {

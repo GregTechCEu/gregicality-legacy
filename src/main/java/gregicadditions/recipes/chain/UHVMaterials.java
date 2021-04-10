@@ -1,8 +1,10 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
@@ -64,11 +66,16 @@ public class UHVMaterials {
                 .duration(20)
                 .buildAndRegister();
 
+        OrePrefix plateB = plate;
+        if (GAConfig.GT6.addCurvedPlates) {
+            plateB = plateCurved;
+        }
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, NeodymiumMagnetic, 2)
                 .input(wireGtSingle, UVSuperconductor, 16)
                 .input(pipeLarge, Ultimet, 4)
-                .input(plateCurved, NaquadahAlloy, 8)
+                .input(plateB, NaquadahAlloy, 8)
                 .fluidInputs(Titanium.getFluid(2592))
                 .fluidInputs(NaquadahEnriched.getFluid(1584))
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
