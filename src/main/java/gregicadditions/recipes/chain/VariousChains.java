@@ -1,15 +1,18 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -175,9 +178,13 @@ public class VariousChains {
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
+        OrePrefix plateB = plate;
+        if (GAConfig.GT6.addCurvedPlates) {
+            plateB = plateCurved;
+        }
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
-                .input(GAEnums.GAOrePrefix.plateCurved, Steel, 64)
+                .input(plateB, Steel, 64)
+                .input(plateB, Steel, 64)
                 .input(plate, Steel, 64)
                 .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())

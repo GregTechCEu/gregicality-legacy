@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
@@ -7,6 +8,7 @@ import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
 
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
@@ -203,13 +205,17 @@ public class UltimateMaterials {
                 .fluidOutputs(SuperfluidHelium.getFluid(1000))
                 .fluidOutputs(LiquidHelium3.getFluid(1000))
                 .buildAndRegister();
+        OrePrefix plateB = plate;
+        if (GAConfig.GT6.addCurvedPlates) {
+            plateB = plateCurved;
+        }
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(150).EUt(15000000)
                 .input(frameGt, QCDMatter)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_4))
                 .inputs(ELECTRIC_PUMP_UMV.getStackForm(2))
                 .input(circuit, UIV)
                 .input(pipeLarge, Neutronium, 4)
-                .input(plateCurved, Neutronium, 12)
+                .input(plateB, Neutronium, 12)
                 .fluidInputs(ProtoAdamantium.getFluid(2592))
                 .fluidInputs(Taranium.getFluid(1584))
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
