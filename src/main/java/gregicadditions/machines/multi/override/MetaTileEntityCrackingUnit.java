@@ -144,7 +144,7 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
                 .aisle("HCHCH", "HCHCH", "HCHCH")
                 .aisle("HCHCH", "H###H", "HCHCH")
                 .aisle("HCHCH", "HCOCH", "HCHCH")
-                .setAmountAtLeast('L', 20)
+                .setAmountAtLeast('L', 16)
                 .where('O', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('H', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
