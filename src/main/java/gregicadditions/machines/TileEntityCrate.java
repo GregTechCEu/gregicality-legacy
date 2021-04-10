@@ -10,7 +10,7 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.ModularUI.Builder;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.render.Textures;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.api.util.GTUtility;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -88,7 +88,16 @@ public class TileEntityCrate extends MetaTileEntity {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Pair<TextureAtlasSprite, Integer> getParticleTexture() {
-		return Pair.of(material.toString().contains("wood") ? Textures.WOODEN_CHEST.getParticleTexture() : ClientHandler.METAL_CRATE.getParticleTexture(), 16777215);
+		if(ModHandler.isMaterialWood(material)) {
+			return Pair.of(ClientHandler.WOODEN_CRATE.getParticleTexture(), getPaintingColor());
+		}
+		else {
+			int color = ColourRGBA.multiply(
+					GTUtility.convertRGBtoOpaqueRGBA_CL(material.materialRGB),
+					GTUtility.convertRGBtoOpaqueRGBA_CL(getPaintingColor()));
+			color = GTUtility.convertOpaqueRGBA_CLtoRGB(color);
+			return Pair.of(ClientHandler.METAL_CRATE.getParticleTexture(), color);
+		}
 	}
 
 	@Override

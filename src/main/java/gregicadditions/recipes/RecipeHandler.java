@@ -66,7 +66,8 @@ public class RecipeHandler {
         if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots) {
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
         }
-        GAEnums.GAOrePrefix.round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
+        if (GAConfig.GT6.addRounds)
+            GAEnums.GAOrePrefix.round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders) {
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
         }

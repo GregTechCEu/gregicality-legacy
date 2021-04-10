@@ -17,6 +17,7 @@ import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.gui.widgets.WidgetGroup;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
+import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -60,7 +61,7 @@ import java.util.List;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Steel;
 
-public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase implements IFastRenderMetaTileEntity {
+public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase implements IRenderMetaTileEntity {
     private final static long ENERGY_COST = -50;
     public final static int MAX_HEIGHT = 9;
     public final static int MAX_WIDTH = 14;
@@ -271,6 +272,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             readCovers(buf);
         } else if (id == 3) {
             this.height = buf.readInt();
+            this.reinitializeStructurePattern();
         } else if (id == 4) {
             this.isActive = buf.readBoolean();
         }
@@ -342,11 +344,12 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         activeNodes = new ArrayList<>();
         covers = new ArrayList<>();
         inputEnergy = new EnergyContainerList(this.getAbilities(MultiblockAbility.INPUT_ENERGY));
-        width = (this.getMultiblockParts().size() - 1) / height;
+        width = 0;
         checkCovers();
         for (IMultiblockPart part : this.getMultiblockParts()) {
             if (part instanceof MetaTileEntityMonitorScreen) {
                 ((MetaTileEntityMonitorScreen) part).clickRegister.clear();
+                width++;
             }
         }
         for (IMultiblockPart part : this.getMultiblockParts()) {
@@ -354,6 +357,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 ((MetaTileEntityMonitorScreen) part).registerClick(false);
             }
         }
+        width = width / height;
         writeCustomData(1, packetBuffer -> {
             packetBuffer.writeInt(width);
             packetBuffer.writeInt(height);
@@ -385,11 +389,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void renderMetaTileEntityFast(CCRenderState ccRenderState, Matrix4 matrix4, float partialTicks) {
+    public boolean isGlobalRenderer() {
+        return true;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderMetaTileEntityDynamic(double x, double y, double z, float partialTicks) {
         if (!this.isStructureFormed()) return;
         RenderHelper.useStencil(()->{
             GlStateManager.pushMatrix();
-            RenderHelper.moveToFace(matrix4.m03 - this.frontFacing.rotateY().getXOffset() * 0.5, matrix4.m13 + height - 1.5, matrix4.m23 - this.frontFacing.rotateY().getZOffset() * 0.5, this.frontFacing);
+            RenderHelper.moveToFace(x - this.frontFacing.rotateY().getXOffset() * 0.5, y + height - 1.5, z - this.frontFacing.rotateY().getZOffset() * 0.5, this.frontFacing);
             RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
             RenderHelper.renderRect(0, 0, width, height, 0.001f, 0xFF000000);
             GlStateManager.popMatrix();
@@ -426,7 +436,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                         BlockPos pos = screen.getPos();
                         BlockPos pos2 = this.getPos();
                         GlStateManager.pushMatrix();
-                        RenderHelper.moveToFace(matrix4.m03 + pos.getX() - pos2.getX(), matrix4.m13 + pos.getY() - pos2.getY(), matrix4.m23 + pos.getZ() - pos2.getZ(), this.frontFacing);
+                        RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
                         RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
                         screen.renderScreen(partialTicks);
                         GlStateManager.popMatrix();

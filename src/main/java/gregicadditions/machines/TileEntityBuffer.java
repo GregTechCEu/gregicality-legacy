@@ -5,8 +5,8 @@ import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Vector3;
+import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.impl.FilteredFluidHandler;
-import gregtech.api.capability.impl.FluidHandlerProxy;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
@@ -16,12 +16,14 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileEntity {
 
@@ -58,6 +60,10 @@ public class TileEntityBuffer extends MetaTileEntity implements ITieredMetaTileE
         return new TileEntityBuffer(metaTileEntityId, tier);
     }
 
+    @Override
+    public Pair<TextureAtlasSprite, Integer> getParticleTexture() {
+        return Pair.of(ClientHandler.VOLTAGE_CASINGS[this.tier].getParticleSprite(), this.getPaintingColor());
+    }
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
