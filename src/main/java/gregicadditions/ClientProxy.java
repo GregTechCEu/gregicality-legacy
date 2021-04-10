@@ -89,17 +89,5 @@ public class ClientProxy extends CommonProxy {
                 }
             }
         }
-
-        if (ItemNBTUtils.hasTag(itemStack)) {
-
-            // Vanilla bucket
-            String fluidName = ItemNBTUtils.getString(itemStack, "FluidName");
-            if (fluidName != null) {
-                SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(fluidName);
-                if (material != null && material.getFormula() != null && !material.getFormula().isEmpty()) {
-                    event.getToolTip().add(1, TextFormatting.GRAY + material.getFormula());
-                }
-            }
-        }
     }
 }
