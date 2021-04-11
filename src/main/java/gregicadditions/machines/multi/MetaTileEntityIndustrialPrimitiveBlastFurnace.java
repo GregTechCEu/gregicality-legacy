@@ -382,12 +382,12 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("YYY", "YYY", "YYY", "YYY")
-                .aisle("YYY", "I#O", "Y#Y", "Y#Y").setRepeatable(1, MAX_SIZE)
+                .aisle("YYY", "I#O", "Y#Y", "Y#Y").setRepeatable(1, MAX_SIZE-1)
                 .aisle("YYY", "YXY", "YYY", "YYY")
                 .where('X', selfPredicate())
                 .where('#', isAirPredicate())
-                .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[1].metaTileEntityId)))
-                .where('O', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_EXPORT_BUS[1].metaTileEntityId)))
+                .where('I', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[1].metaTileEntityId))))
+                .where('O', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_EXPORT_BUS[1].metaTileEntityId))))
                 .where('Y', statePredicate(getCasingState()))
                 .build();
     }
