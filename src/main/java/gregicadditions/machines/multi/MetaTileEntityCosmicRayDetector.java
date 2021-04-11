@@ -176,7 +176,6 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
         if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
             if (!canSeeSky)

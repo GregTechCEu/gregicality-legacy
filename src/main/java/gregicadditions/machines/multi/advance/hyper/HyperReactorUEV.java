@@ -30,8 +30,7 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Helium;
-import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.*;
 
 public class HyperReactorUEV extends FueledMultiblockController {
 
@@ -89,6 +88,7 @@ public class HyperReactorUEV extends FueledMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add("Boost With: " + Helium.getMaterialPlasma().getLocalizedName(Helium.getFluid(1)));
         tooltip.add("Max Voltage: " + maxVoltage);
     }
 

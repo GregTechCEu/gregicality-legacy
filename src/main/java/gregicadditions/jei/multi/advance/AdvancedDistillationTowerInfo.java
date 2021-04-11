@@ -27,9 +27,9 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("CXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("SFX", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "X#X", "XXX")
-                .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX", "HXX")
+                .aisle("CXX", "XXX", "XXX", "XXX", "XXX", "XXX")
+                .aisle("SFX", "X#X", "X#X", "X#X", "X#X", "XXX")
+                .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', GAMetaBlocks.getMetalCasingBlockState(BabbittAlloy))
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)

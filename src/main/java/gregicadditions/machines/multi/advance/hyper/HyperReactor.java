@@ -87,7 +87,7 @@ public class HyperReactor extends FueledMultiblockController {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add("Boost With: " + Helium.getMaterialPlasma().getLocalizedName(Helium.getFluid(1)));
         tooltip.add("Max Voltage: " + maxVoltage);
     }
 

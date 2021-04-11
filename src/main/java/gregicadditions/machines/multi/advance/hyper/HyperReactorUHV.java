@@ -30,7 +30,7 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.*;
 
 public class HyperReactorUHV extends FueledMultiblockController {
 
@@ -40,7 +40,7 @@ public class HyperReactorUHV extends FueledMultiblockController {
         this.maxVoltage = maxVoltage;
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[1]);
         if (temp == null) {
-            temp = Materials.Radon.getMaterialPlasma();
+            temp = Radon.getMaterialPlasma();
             GALog.logger.warn("Incorrect fluid given to hyper reactor: " + GAConfig.multis.hyperReactors.boosterFluid[1]);
         }
         booster = new FluidStack(temp, GAConfig.multis.hyperReactors.boosterFluidAmounts[1]);
@@ -89,6 +89,7 @@ public class HyperReactorUHV extends FueledMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add("Boost With: " + Radon.getMaterialPlasma().getLocalizedName(Radon.getFluid(1)));
         tooltip.add("Max Voltage: " + maxVoltage);
     }
 
