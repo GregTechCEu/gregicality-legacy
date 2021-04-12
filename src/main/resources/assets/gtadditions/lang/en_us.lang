@@ -2686,6 +2686,7 @@ gtadditions.multiblock.universal.tooltip.3=Duration Multiplier: §e%.1f§r
 gtadditions.multiblock.universal.tooltip.4=Max Parallel: §e%d§7 Per Overclocking Tier
 gtadditions.multiblock.universal.tooltip.5=Boost Chance: §e%d%%§r
 gtadditions.multiblock.fusion_reactor.heat=Heat: %d
+gtadditions.multiblock.fusion_reactor.tooltip.1=EU To Start: %s
 gtadditions.multiblock.central_monitor.height=Screen Height: %d
 gtadditions.multiblock.central_monitor.width=Screen Width: %d
 gtadditions.multiblock.central_monitor.height_modify=Modify Height: %d
