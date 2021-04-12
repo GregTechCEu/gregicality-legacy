@@ -26,6 +26,24 @@ public class GoldChain {
                 .output(ingot, GoldAlloy, 4)
                 .buildAndRegister();
 
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(120).duration(100)
+                .input(ingot, PreciousMetal)
+                .input(dust, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(120).duration(100)
+                .input(dust, PreciousMetal)
+                .input(ingot, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(120).duration(100)
+                .input(ingot, PreciousMetal)
+                .input(ingot, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
                 .input(ingot, GoldAlloy, 4)

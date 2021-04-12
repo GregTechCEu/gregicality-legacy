@@ -149,6 +149,24 @@ public class NuclearChain {
                 .output(dust, LeadBismuthEutectic, 10)
                 .buildAndRegister();
 
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(ingot, Lead, 3)
+                .input(dust, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(dust, Lead, 3)
+                .input(ingot, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(ingot, Lead, 3)
+                .input(ingot, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
+                .buildAndRegister();
+
         FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(560).duration(2000)
                 .input(dust, LeadBismuthEutectic)
                 .fluidOutputs(LeadBismuthEutectic.getFluid(144))
