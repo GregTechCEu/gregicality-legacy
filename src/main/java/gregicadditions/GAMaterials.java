@@ -576,7 +576,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial MolybdenumFlue = new SimpleFluidMaterial("molybdenum_flue_gas", 0x333338, "H2OReS?");
     public static final SimpleFluidMaterial RheniumSulfuricSolution = new SimpleFluidMaterial("rhenium_sulfuric_solution", 0xbabaff, "ReS?");
     public static final SimpleFluidMaterial AmmoniumSulfate = new SimpleFluidMaterial("ammonium_sulfate", 0x6464f5, AMMONIUM.formulaGroup(2)+SULFATE.formula());
-    public static final SimpleFluidMaterial AmmoniumPerrhenate = new SimpleFluidMaterial("ammonium_perrhenate", 0x1c1c45, AMMONIUM.formula()+"Re"+OXIDE4);
+    public static final SimpleFluidMaterial AmmoniumPerrhenate = new SimpleFluidMaterial("ammonium_perrhenate", 0x1c1c45, AMMONIUM.formula()+"Re"+OXIDE4.formula());
     public static final SimpleFluidMaterial ElectronDegenerateRheniumPlasma = new SimpleFluidMaterial("degenerate_rhenium_plasma", 0x6666FF, "Rh", false, true);
     public static final SimpleFluidMaterial LiquidHelium = new SimpleFluidMaterial("liquid_helium", Helium.materialRGB, 4, false, "He");
     public static final SimpleFluidMaterial BoricAcid = new SimpleFluidMaterial("boric_acid", 0xD5D2D7, "H3BO3");
@@ -891,7 +891,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SupercriticalCO2 = new SimpleFluidMaterial("supercritcal_co2",CarbonDioxide.materialRGB, "CO2");
     public static final SimpleFluidMaterial NobleGases = new SimpleFluidMaterial("noble_gases_mixture",(Helium.materialRGB+Neon.materialRGB+Argon.materialRGB+Krypton.materialRGB+Xenon.materialRGB+Radon.materialRGB), "HeNeArKrXeRn");
     public static final SimpleFluidMaterial NonMetals = new SimpleFluidMaterial("non_metals",(Hydrogen.materialRGB+Boron.materialRGB+Carbon.materialRGB+Nitrogen.materialRGB+Oxygen.materialRGB+Fluorine.materialRGB+Phosphorus.materialRGB+Sulfur.materialRGB+Chlorine.materialRGB+Arsenic.materialRGB+Selenium.materialRGB+Bromine.materialRGB+Tellurium.materialRGB+Iodine.materialRGB+Astatine.materialRGB), "BCPSAsSeTeIAtONHFClBr");
-    public static final SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000, false, TextFormatting.OBFUSCATED.toString() + "nn");
+    public static final SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000, false, TextFormatting.OBFUSCATED.toString() + "a" + TextFormatting.RESET + TextFormatting.GRAY + "n" + TextFormatting.OBFUSCATED.toString() + "a");
     public static final SimpleFluidMaterial CosmicMeshPlasma = new SimpleFluidMaterial("cosmic_mesh_plasma",0x1c1c8c,1000000, false, TextFormatting.OBFUSCATED.toString() + "nn");
     public static final SimpleFluidMaterial SuperfluidHelium = new SimpleFluidMaterial("superfluid_helium",Helium.materialRGB,2, false, "He");
     public static final SimpleFluidMaterial LiquidHelium3 = new SimpleFluidMaterial("liquid_helium_3", Helium3.materialRGB,4, false, "He_3");

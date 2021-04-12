@@ -3871,7 +3871,7 @@ fluid.supercritcal_co2=Supercritical Carbon Dioxide
 
 fluid.noble_gases_mixture=Noble Gas Mixture
 fluid.non_metals=Non Metals
-fluid.dense_neutron_plasma=Dense Neutronium Plasma
+fluid.dense_neutron_plasma=Dense Neutron Plasma
 fluid.cosmic_mesh_plasma=Cosmic Mesh Plasma
 fluid.superfluid_helium=Superfluid Helium
 fluid.liquid_helium_3=Liquid Helium-3
