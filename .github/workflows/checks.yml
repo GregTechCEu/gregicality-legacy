@@ -32,9 +32,6 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
-          
-      - name: Update gradlew execution
-        run: chmod +x ./gradlew
 
       - name: Run checks and tests
         run: ./gradlew check test
