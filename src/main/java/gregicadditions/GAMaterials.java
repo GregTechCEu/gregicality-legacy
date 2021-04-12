@@ -1327,7 +1327,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial HassiumChloride = new SimpleDustMaterial("hassium_chloride", 0x5d2abc, (short) 383, MaterialIconSet.SHINY, "HsCl4");
     public static final SimpleDustMaterial RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate = new SimpleDustMaterial("rhenium_hassium_thallium_isophtaloylbisdiethylthiourea", 0xa26a8b,(short) 384, MaterialIconSet.SHINY, "ReHsTlC60PN12H84S6O12F6");
     public static final SimpleDustMaterial Legendarium = new SimpleDustMaterial("legendarium", 0xffffff, (short) 385, MaterialIconSet.SHINY, "NqNq+*Nq*DrTrKeTnAdVb");
-    public static final SimpleDustMaterial LanthanumFullereneNanotubes = new SimpleDustMaterial("lanthanum_fullerene_nanotubes", LanthanumFullereneMix.rgb*3/5, (short) 386, MaterialIconSet.SHINY, "La(C60)2");
+    public static final SimpleDustMaterial LanthanumFullereneNanotubes = new SimpleDustMaterial("lanthanum_fullerene_nanotubes", LanthanumFullereneMix.rgb*3/5, (short) 386, MaterialIconSet.SHINY, "La2(C60)2CNT");
     public static final SimpleDustMaterial SodiumMetavanadate = new SimpleDustMaterial("sodium_metavanadate", SodaAsh.materialRGB,(short) 262, MaterialIconSet.DULL, "NaVO3");
     public static final SimpleDustMaterial PotassiumPeroxymonosulfate = new SimpleDustMaterial("potassium_peroxymonosulfate", (PotassiumMetabisulfite.materialRGB + 20), (short) 374, MaterialIconSet.DULL, "KHSO5");
     public static final SimpleDustMaterial CoAcABCatalyst = new SimpleDustMaterial("coacab_catalyst", 0x755f30, (short) 900, MaterialIconSet.DULL, "Co/CA-AB");
