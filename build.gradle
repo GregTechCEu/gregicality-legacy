@@ -123,7 +123,7 @@ def run(command) {
         if (it) {
             throw new GradleException("Error executing ${command}:\n> ${it}")
         }
-    }
+    } 
 
     return outputStream.toString().trim()
 }
