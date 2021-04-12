@@ -2,6 +2,7 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -58,9 +59,6 @@ repositories {
         url = "http://chickenbones.net/maven/"
     }
     maven {
-        url = "https://mod-buildcraft.com/maven/"
-    }
-    maven {
         url "http://maven.shadowfacts.net/"
     }
     maven {
@@ -74,12 +72,6 @@ repositories {
     maven {
         url "http://maven.k-4u.nl"
     }
-//    maven { // TOP
-//        setUrl("https://repo.erins.net/maven")
-//    }
-//    maven {
-//        setUrl("https://modmaven.k-4u.nl/")
-//    }
 }
 
 dependencies {
@@ -90,7 +82,6 @@ dependencies {
     deobfCompile "codechicken:ChickenASM:1.12-1.0.2.9"
     deobfCompile "codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal"
     deobfCompile "forge-multipart-cbe:ForgeMultipart-1.12.2:2.6.2.83:universal"
-    deobfCompile "com.mod-buildcraft:buildcraft-api:+"
     deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.42"
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.115"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
@@ -120,4 +111,19 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+def run(command) {
+    def process = command.execute()
+    def outputStream = new StringBuffer();
+    def errorStream = new StringBuffer();
+    process.waitForProcessOutput(outputStream, errorStream)
+
+    errorStream.toString().with {
+        if (it) {
+            throw new GradleException("Error executing ${command}:\n> ${it}")
+        }
+    }
+
+    return outputStream.toString().trim()
 }
