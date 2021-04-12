@@ -8,6 +8,11 @@ import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
+import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -23,6 +28,7 @@ import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
@@ -39,6 +45,24 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel);
+    }
+
+    @Override
+    protected BlockPattern createStructurePattern() {
+        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
+        Predicate<PatternMatchContext> exactlyOneHatch = (context) -> {
+            return context.getInt("HatchesAmount") == 1;
+        };
+        return FactoryBlockPattern.start(BlockPattern.RelativeDirection.RIGHT, BlockPattern.RelativeDirection.FRONT, BlockPattern.RelativeDirection.UP)
+                .aisle("YSY", "YZY", "YYY")
+                .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
+                .aisle("XXX", "XXX", "XXX")
+                .where('S', this.selfPredicate())
+                .where('Z', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
+                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY)))
+                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())))
+                .where('#', isAirPredicate()).validateLayer(1, exactlyOneHatch).validateLayer(2, exactlyOneHatch)
+                .build();
     }
 
     @Override
