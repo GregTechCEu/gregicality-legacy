@@ -25,15 +25,13 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
-import gregtech.api.util.GTLog;
 import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityItemBus;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -50,7 +48,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
-import org.apache.logging.log4j.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -335,35 +332,14 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.inputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.IMPORT_ITEMS));
 
-        BlockPos pos = this.getPos();
-        for (IMultiblockPart multiblockPart : this.getMultiblockParts()) {
-            if (multiblockPart instanceof MetaTileEntityItemBus) {
-                if (((MetaTileEntityItemBus) multiblockPart).getAbility().equals(MultiblockAbility.EXPORT_ITEMS)) {
-                    pos = ((MetaTileEntityItemBus) multiblockPart).getPos();
-                    break;
-                }
-            }
-        }
+        BlockPos pos;
+        EnumFacing direction = this.getFrontFacing().getOpposite();
+        int length = 0;
+        do {
+            pos = this.getPos().offset(direction, ++length);
+        } while (getWorld().getBlockState(pos).getBlock().equals(Blocks.AIR));
 
-        switch (this.getFrontFacing().getOpposite()) {
-            case WEST: {
-                this.size = Math.min(MAX_SIZE, this.getPos().getX() - pos.getX() - 1);
-                break;
-            }
-            case EAST: {
-                this.size = Math.min(MAX_SIZE, pos.getX() - this.getPos().getX() - 1);
-                break;
-            }
-            case SOUTH: {
-                this.size = Math.min(MAX_SIZE, this.getPos().getZ() - pos.getZ() - 1);
-                break;
-            }
-            case NORTH: {
-                this.size = Math.min(MAX_SIZE, pos.getZ() - this.getPos().getZ() - 1);
-                break;
-            }
-        }
-
+        this.size = Math.min(MAX_SIZE, length - 1);
         this.efficiency = (int) ((((-Math.atan(size / 4.0 / PI - MAX_SIZE / 4.0 / PI / 2) + (PI / 2)) / PI + ((-Math.atan(MAX_SIZE / 4.0 / PI / 2) + PI / 2) / PI)/2)) * 100.0);
     }
 
