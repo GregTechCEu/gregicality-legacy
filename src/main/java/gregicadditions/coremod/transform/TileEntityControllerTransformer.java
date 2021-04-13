@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class TileEntityControllerTransformer extends GAClassTransformer.ClassMapper {
+public class TileEntityControllerTransformer extends ClassMapper {
 
     public static final TileEntityControllerTransformer INSTANCE = new TileEntityControllerTransformer();
 
@@ -34,7 +35,7 @@ public class TileEntityControllerTransformer extends GAClassTransformer.ClassMap
 
     }
 
-    private static class TransformFindConnectedBlocksForClient extends MethodVisitor {
+    private static class TransformFindConnectedBlocksForClient extends GAMethodVisitor {
 
         TransformFindConnectedBlocksForClient(int api, MethodVisitor mv) {
             super(api, mv);
@@ -43,11 +44,7 @@ public class TileEntityControllerTransformer extends GAClassTransformer.ClassMap
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("net/minecraft/block/Block") && (name.equals("getItem") || name.equals("func_185473_a"))) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/XNetHooks",
-                        "getItem",
-                        "(Lnet/minecraft/block/Block;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)Lnet/minecraft/item/ItemStack;",
-                        false);
+                super.injectStaticMethod(XNetHooks, "getItem");
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }

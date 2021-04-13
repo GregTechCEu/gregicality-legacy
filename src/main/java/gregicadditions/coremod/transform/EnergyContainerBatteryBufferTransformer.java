@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.ClassMapper {
+public class EnergyContainerBatteryBufferTransformer extends ClassMapper {
 
     public static final EnergyContainerBatteryBufferTransformer INSTANCE = new EnergyContainerBatteryBufferTransformer();
 
@@ -39,7 +40,7 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
 
     }
 
-    private static class TransformAcceptEnergyFromNetwork extends MethodVisitor {
+    private static class TransformAcceptEnergyFromNetwork extends GAMethodVisitor {
         static byte now = 0;
 
         TransformAcceptEnergyFromNetwork(int api, MethodVisitor mv) {
@@ -53,18 +54,14 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
                     this.visitVarInsn(Opcodes.ALOAD, 0);
                     this.visitVarInsn(Opcodes.LLOAD, 2);
                     this.visitVarInsn(Opcodes.LLOAD, 8);
-                    this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            "gregicadditions/coremod/hooks/GregTechCEHooks",
-                            "acceptEnergyFromNetwork",
-                            "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
-                            false);
+                    super.injectStaticMethod(GTCEHooks, "acceptEnergyFromNetwork");
                 }
             }
             super.visitInsn(opcode);
         }
     }
 
-    private static class TransformUpdate extends MethodVisitor {
+    private static class TransformUpdate extends GAMethodVisitor {
         static byte now = 0;
         TransformUpdate(int api, MethodVisitor mv) {
             super(api, mv);
@@ -78,17 +75,13 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
                     this.visitVarInsn(Opcodes.ALOAD, 0);
                     this.visitVarInsn(Opcodes.LLOAD, 5);
                     this.visitVarInsn(Opcodes.LLOAD, 10);
-                    this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                            "gregicadditions/coremod/hooks/GregTechCEHooks",
-                            "update",
-                            "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
-                            false);
+                    super.injectStaticMethod(GTCEHooks, "update");
                 }
             }
         }
     }
 
-    private static class TransformChangeEnergy extends MethodVisitor {
+    private static class TransformChangeEnergy extends GAMethodVisitor {
 
         TransformChangeEnergy(int api, MethodVisitor mv) {
             super(api, mv);
@@ -99,11 +92,7 @@ public class EnergyContainerBatteryBufferTransformer extends GAClassTransformer.
             if (opcode == Opcodes.LRETURN) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 this.visitVarInsn(Opcodes.LLOAD, 7);
-                this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
-                        "changeEnergy",
-                        "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;J)V",
-                        false);
+                super.injectStaticMethod(GTCEHooks, "changeEnergy");
             }
             super.visitInsn(opcode);
         }

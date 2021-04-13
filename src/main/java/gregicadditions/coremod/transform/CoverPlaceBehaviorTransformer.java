@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class CoverPlaceBehaviorTransformer extends GAClassTransformer.ClassMapper {
+public class CoverPlaceBehaviorTransformer extends ClassMapper {
 
     public static final CoverPlaceBehaviorTransformer INSTANCE = new CoverPlaceBehaviorTransformer();
 
@@ -34,7 +35,7 @@ public class CoverPlaceBehaviorTransformer extends GAClassTransformer.ClassMappe
 
     }
 
-    private static class TransformOnItemUseFirst extends MethodVisitor {
+    private static class TransformOnItemUseFirst extends GAMethodVisitor {
 
         TransformOnItemUseFirst(int api, MethodVisitor mv) {
             super(api, mv);
@@ -44,11 +45,7 @@ public class CoverPlaceBehaviorTransformer extends GAClassTransformer.ClassMappe
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEINTERFACE && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
-                        "canPlaceCoverOnSide",
-                        "(Lgregtech/api/cover/ICoverable;Lnet/minecraft/util/EnumFacing;Lgregtech/common/items/behaviors/CoverPlaceBehavior;)Z",
-                        false);
+                super.injectStaticMethod(GTCEHooks, "canPlaceCoverOnSide");
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
