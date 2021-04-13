@@ -311,11 +311,11 @@ public class NaquadahChain {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // HAuCl4 = AuCl3 + HCl
+        // 2Au + 3Cl2 -> Au2Cl6
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(ChloroauricAcid.getFluid(1000))
+                .input(dust, Gold, 2)
+                .fluidInputs(Chlorine.getFluid(6000))
                 .fluidOutputs(AuricChloride.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();

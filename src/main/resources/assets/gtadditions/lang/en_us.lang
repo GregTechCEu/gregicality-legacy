@@ -840,6 +840,8 @@ metaitem.sorbose.name=Sorbose
 metaitem.calcium_alginate.name=Calcium Alginate
 metaitem.nickel_oxide_hydroxide.name=Nickel Oxide Hydroxide
 metaitem.gallium_chloride.name=Gallium Chloride
+metaitem.copper_leach.name=Leached Copper
+metaitem.gold_leach.name=Gold Leach
 
 metaitem.unstable.star.name=Unstable Star
 
@@ -2255,14 +2257,11 @@ material.polybenzimidazole=Polybenzimidazole (PBI)
 material.chlorobenzene=Chlorobenzene
 material.polonium=Polonium
 material.copernicium=Copernicium
-material.copper_leach=Copper Leach
 material.silver_oxide=Silver Oxide
 material.silver_chloride=Silver Chloride
 material.precious_leach_nitrate=Precious Leach Nitrate
 material.potassium_metabisulfite=Potassium Metabisulfite
-material.chloroauric_acid=Chloroauric Acid
 material.lead_nitrate=Lead Nitrate
-material.gold_leach=Gold Leach
 material.gold_alloy=Gold Alloy
 material.precious_metal=Precious Metal
 material.uranium_radioactive=Uranium
@@ -3900,7 +3899,7 @@ fluid.drilling_mud_mixture=Drilling Mud Mixture
 fluid.iron_ii_chloride=Iron II Chloride
 fluid.propadiene=Propadiene
 fluid.cyclopentadiene=Cyclopentadiene
-fluid.leached_copper=Copper Leach
+fluid.chloroauric_acid=Chloroauric Acid
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

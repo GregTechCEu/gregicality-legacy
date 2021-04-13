@@ -228,6 +228,24 @@ public class CosmicComponents {
                 .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
+        // 2AgCl + H2O -> Ag2O + 2HCl
+        CHEMICAL_RECIPES.recipeBuilder().duration(800)
+                .input(dust, SilverChloride, 4)
+                .notConsumable(dust, SodiumHydroxide)
+                .fluidInputs(Water.getFluid(1000))
+                .output(dust, SilverOxide, 3)
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .buildAndRegister();
+
+        // Ag2O + C -> 2Ag + CO
+        BLAST_RECIPES.recipeBuilder().duration(80).EUt(120).blastFurnaceTemp(1200)
+                .input(dust, SilverOxide, 3)
+                .input(dust, Carbon)
+                .output(ingot, Silver, 2)
+                .output(dustTiny, Ash, 2)
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .buildAndRegister();
+
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(695000)
                 .inputs(COATED_HASSIUM_WAFER.getStackForm())
                 .fluidInputs(PhotopolymerSolution.getFluid(500))
