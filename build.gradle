@@ -49,9 +49,6 @@ repositories {
         url = "http://maven.ic2.player.to"
     }
     maven {
-        url "https://maven.tehnut.info/"
-    }
-    maven {
         url "https://minecraft.curseforge.com/api/maven"
     }
     maven {
@@ -100,7 +97,9 @@ dependencies {
     provided "li.cil.oc:OpenComputers:MC1.12.2-1.7.5.192"
     provided "appeng:appliedenergistics2:rv6-stable-7"
     provided "binnie:binnie-mods-1.12.2:2.5.1.184"
-    provided "exnihilocreatio:exnihilocreatio:1.12.2-0.3.7.31"
+    provided ("exnihilocreatio:exnihilocreatio:1.12.2-0.3.7.31") {
+        transitive = false
+    }
     compile files("libs/refinedstorage-1.6.15.jar")
     compileOnly files("libs/Cucumber-1.12.2-1.1.3.jar")
     compileOnly files("libs/MysticalAgradditions-1.12.2-1.3.2.jar")
