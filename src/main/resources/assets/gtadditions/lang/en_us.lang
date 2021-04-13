@@ -403,6 +403,12 @@ metaitem.component.smd.resistor.name=Micro SMD Resistor
 
 
 metaitem.hand_pump.name=Hand Pump
+metaitem.freedom_wrench.name=Freedom Wrench
+metaitem.freedom_wrench.mode.0=Mode: Projection
+metaitem.freedom_wrench.mode.1=Mode: Perspective
+metaitem.freedom_wrench.mode.2=Mode: Debug
+metaitem.freedom_wrench.clear=Remove the Projection
+metaitem.freedom_wrench.info.0=Try to (Sneaking/Not) right-click the (Air Block/Multi-Block Controller).
 
 metaitem.waste.nuclear.name=%s Waste
 waste.nuclear.global=Nuclear

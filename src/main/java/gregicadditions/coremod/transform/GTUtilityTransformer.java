@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class GTUtilityTransformer extends GAClassTransformer.ClassMapper {
+public class GTUtilityTransformer extends ClassMapper {
 
     public static final GTUtilityTransformer INSTANCE = new GTUtilityTransformer();
 
@@ -32,9 +33,8 @@ public class GTUtilityTransformer extends GAClassTransformer.ClassMapper {
         }
     }
 
-    private static class TransformFormulaHook extends MethodVisitor implements Opcodes {
+    private static class TransformFormulaHook extends GAMethodVisitor{
 
-        private static final String INSERT_CLASS_NAME = "gregicadditions/coremod/hooks/GregTechCEHooks";
         private static final String INSERT_METHOD_SIGNATURE = "(Lnet/minecraftforge/fluids/FluidStack;Ljava/lang/StringBuilder;)V";
         private static final String INSERT_METHOD_NAME = "getSimpleFluidTooltip";
 
@@ -44,14 +44,10 @@ public class GTUtilityTransformer extends GAClassTransformer.ClassMapper {
 
         @Override
         public void visitCode() {
-
-            mv.visitVarInsn(ALOAD, 0); // FluidStack
-            mv.visitVarInsn(ALOAD, 1); // StringBuilder
-
-            // statically call getSimpleFluidTooltip(FluidStack, StringBuilder)
-            mv.visitMethodInsn(INVOKESTATIC, INSERT_CLASS_NAME, INSERT_METHOD_NAME, INSERT_METHOD_SIGNATURE, false);
-
-            mv.visitCode();
+            super.visitVarInsn(Opcodes.ALOAD, 0); // FluidStack
+            super.visitVarInsn(Opcodes.ALOAD, 1); // StringBuilder
+            super.injectStaticMethod(GTCEHooks, "getSimpleFluidTooltip");
+            super.visitCode();
         }
     }
 }

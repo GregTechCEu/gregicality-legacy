@@ -158,6 +158,9 @@ public class GAMetaItem extends MaterialMetaItem {
                 .setMaxStackSize(1)
                 .addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true))
                 .addComponents(new HandPumpBehavior());
+        FREEDOM_WRENCH = addItem(309, "freedom_wrench")
+                .setMaxStackSize(1)
+                .addComponents(new FreedomWrenchBehaviour());
 
         PROTACTINIUM_WASTE = addItem(311, "waste.nuclear").addComponents(new WasteBehavior(Protactinium.getMaterial()));
         NUCLEAR_WASTE = addItem(312, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.global", 0xDEDEDE));

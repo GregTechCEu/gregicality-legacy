@@ -151,6 +151,7 @@ public class GARecipeAddition {
         COMPRESSOR_RECIPES.recipeBuilder().inputs(new ItemStack(Items.GLOWSTONE_DUST, 4)).outputs(new ItemStack(Blocks.GLOWSTONE)).EUt(16).duration(40).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(24).inputs(LARGE_FLUID_CELL_STEEL.getStackForm(), ELECTRIC_MOTOR_LV.getStackForm()).input(stick, Steel).input(ring, Rubber, 2).fluidInputs(SolderingAlloy.getFluid(1440)).outputs(HAND_PUMP.getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(512).inputs(ELECTRIC_MOTOR_HV.getStackForm()).input(circuit, Tier.Advanced, 2).input(stick, StainlessSteel).fluidInputs(SolderingAlloy.getFluid(1440)).outputs(FREEDOM_WRENCH.getStackForm()).buildAndRegister();
 
         //GTNH Bricks
         ModHandler.removeFurnaceSmelting(new ItemStack(Items.CLAY_BALL, 1, OreDictionary.WILDCARD_VALUE));

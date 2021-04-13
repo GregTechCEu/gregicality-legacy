@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class NetworkNodeGridTransformer extends GAClassTransformer.ClassMapper {
+public class NetworkNodeGridTransformer extends ClassMapper {
 
     public static final NetworkNodeGridTransformer INSTANCE = new NetworkNodeGridTransformer();
 
@@ -34,7 +35,7 @@ public class NetworkNodeGridTransformer extends GAClassTransformer.ClassMapper {
 
     }
 
-    private static class TransformOnRecipeTransfer extends MethodVisitor {
+    private static class TransformOnRecipeTransfer extends GAMethodVisitor {
 
         TransformOnRecipeTransfer(int api, MethodVisitor mv) {
             super(api, mv);
@@ -43,17 +44,9 @@ public class NetworkNodeGridTransformer extends GAClassTransformer.ClassMapper {
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("com/raoulvdberge/refinedstorage/api/network/INetwork") && name.equals("extractItem")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/RefinedStorageHooks",
-                        "extractItem",
-                        "(Lcom/raoulvdberge/refinedstorage/api/network/INetwork;Lnet/minecraft/item/ItemStack;IILcom/raoulvdberge/refinedstorage/api/util/Action;)Lnet/minecraft/item/ItemStack;",
-                        false);
+                super.injectStaticMethod(RSHooks, "extractItem");
             } else if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("com/raoulvdberge/refinedstorage/api/util/IComparer") && name.equals("isEqual")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/RefinedStorageHooks",
-                        "isEqual",
-                        "(Lcom/raoulvdberge/refinedstorage/api/util/IComparer;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;I)Z",
-                        false);
+                super.injectStaticMethod(RSHooks, "isEqual");
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
