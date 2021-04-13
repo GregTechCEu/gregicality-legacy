@@ -74,7 +74,6 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @SideOnly(Side.CLIENT)
     public List<BlockPos> parts;
     public MetaTileEntityMonitorScreen[][] screens;
-//    public List<MetaTileEntityMonitorScreen> screens;
     private boolean isActive;
     private EnergyContainerList inputEnergy;
     // persistent data
@@ -201,6 +200,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void setActive(boolean isActive) {
+        isActive = true;
         if(isActive == this.isActive) return;
         this.isActive = isActive;
         writeCustomData(4, buf -> buf.writeBoolean(this.isActive));
@@ -348,7 +348,6 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         checkCovers();
         for (IMultiblockPart part : this.getMultiblockParts()) {
             if (part instanceof MetaTileEntityMonitorScreen) {
-                ((MetaTileEntityMonitorScreen) part).clickRegister.clear();
                 width++;
             }
         }
@@ -356,7 +355,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         screens = new MetaTileEntityMonitorScreen[width][height];
         for (IMultiblockPart part : this.getMultiblockParts()) {
             if (part instanceof MetaTileEntityMonitorScreen) {
-                ((MetaTileEntityMonitorScreen) part).registerClick(false);
+                MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) part;
+                screens[screen.getX()][screen.getY()] = screen;
             }
         }
         writeCustomData(1, packetBuffer -> {
@@ -418,15 +418,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 for (int w = 0; w < width; w++) {
                     for (int h = 0; h < height; h++) {
                         MetaTileEntityMonitorScreen screen = screens[w][h];
-                        if (screen != null && screen.isActive()) {
-                            BlockPos pos = screen.getPos();
-                            BlockPos pos2 = this.getPos();
-                            GlStateManager.pushMatrix();
-                            RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
-                            RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-                            screen.renderScreen(partialTicks);
-                            GlStateManager.popMatrix();
+                        if (screen != null) {
                             size++;
+                            if (screen.isActive()) {
+                                BlockPos pos = screen.getPos();
+                                BlockPos pos2 = this.getPos();
+                                GlStateManager.pushMatrix();
+                                RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
+                                RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
+                                screen.renderScreen(partialTicks);
+                                GlStateManager.popMatrix();
+                            }
                         }
                     }
                 }
@@ -438,16 +440,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                         if(tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                             MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
                             screen.addToMultiBlock(this);
-                            screen.clickRegister.clear();
                             screens[screen.getX()][screen.getY()] = screen;
-                        }
-                    }
-                    for (int w = 0; w < width; w++) {
-                        for (int h = 0; h < height; h++) {
-                            MetaTileEntityMonitorScreen screen = screens[w][h];
-                            if (screen != null) {
-                                screen.registerClick(false);
-                            }
                         }
                     }
                 }
