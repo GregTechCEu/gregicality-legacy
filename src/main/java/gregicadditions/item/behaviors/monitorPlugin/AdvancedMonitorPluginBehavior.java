@@ -190,16 +190,14 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                 if (this.connect && worldSceneRenderer != null && this.screen.getController() instanceof MetaTileEntityCentralMonitor) {
                     if(connections == null) connections = new HashMap<>();
                     connections.clear();
-                    for (MetaTileEntityMonitorScreen[] monitorScreens : ((MetaTileEntityCentralMonitor) this.screen.getController()).screens) {
-                        for (MetaTileEntityMonitorScreen screen : monitorScreens) {
-                            if (screen != null && screen.plugin instanceof FakeGuiPluginBehavior && ((FakeGuiPluginBehavior) screen.plugin).holder == this.holder) {
-                                MetaTileEntity met = ((FakeGuiPluginBehavior) screen.plugin).getRealMTE();
-                                if(met != null) {
-                                    BlockPos pos = met.getPos().subtract(minPos);
-                                    Tuple<Vector3f, List<MetaTileEntityMonitorScreen>> tuple = connections.getOrDefault(pos, new Tuple<>(null, new ArrayList<>()));
-                                    tuple.getValue().add(screen);
-                                    connections.put(pos, tuple);
-                                }
+                    for (MetaTileEntityMonitorScreen screen : ((MetaTileEntityCentralMonitor) this.screen.getController()).screens) {
+                        if (screen.plugin instanceof FakeGuiPluginBehavior && ((FakeGuiPluginBehavior) screen.plugin).holder == this.holder) {
+                            MetaTileEntity met = ((FakeGuiPluginBehavior) screen.plugin).getRealMTE();
+                            if(met != null) {
+                                BlockPos pos = met.getPos().subtract(minPos);
+                                Tuple<Vector3f, List<MetaTileEntityMonitorScreen>> tuple = connections.getOrDefault(pos, new Tuple<>(null, new ArrayList<>()));
+                                tuple.getValue().add(screen);
+                                connections.put(pos, tuple);
                             }
                         }
                     }
