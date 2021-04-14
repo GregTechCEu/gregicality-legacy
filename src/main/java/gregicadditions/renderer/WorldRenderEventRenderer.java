@@ -81,7 +81,7 @@ public class WorldRenderEventRenderer {
             if (tileEntity instanceof MetaTileEntityHolder) {
                 if (((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                     event.setCanceled(true);
-                } else if (GAMetaItems.FREEDOM_WRENCH.isItemEqual(heldItem) && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof RecipeMapMultiblockController) {
+                } else if (GAMetaItems.FREEDOM_WRENCH.isItemEqual(heldItem) && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MultiblockControllerBase) {
                     EnumFacing facing = target.sideHit;
                     GlStateManager.enableBlend();
                     GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);

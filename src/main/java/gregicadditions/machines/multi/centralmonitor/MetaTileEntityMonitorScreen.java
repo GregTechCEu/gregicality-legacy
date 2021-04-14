@@ -625,15 +625,33 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         if (spin == EnumFacing.NORTH) {
             x = 1 - dX;
             y = 1 - dY;
+            if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
         } else if (spin == EnumFacing.SOUTH) {
             x = dX;
             y = dY;
+            if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
         } else if (spin == EnumFacing.EAST) {
             x = 1 - dY;
             y = dX;
+            if (rayTraceResult.sideHit.getXOffset() < 0 || rayTraceResult.sideHit.getZOffset() > 0) {
+                x = 1 - x;
+                y = 1 - y;
+            } else if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
         } else {
             x = dY;
             y = 1 - dX;
+            if (rayTraceResult.sideHit.getXOffset() < 0 || rayTraceResult.sideHit.getZOffset() > 0) {
+                x = 1 - x;
+                y = 1 - y;
+            }else if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
         }
         if (rayTraceResult.sideHit == EnumFacing.WEST || rayTraceResult.sideHit == EnumFacing.SOUTH) {
             x = 1- x;

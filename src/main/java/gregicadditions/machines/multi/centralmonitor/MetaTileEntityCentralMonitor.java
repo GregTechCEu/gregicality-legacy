@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.BlockPatternChecker;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.monitor.WidgetScreenGrid;
 import gregtech.api.capability.GregtechCapabilities;
@@ -56,6 +57,7 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
@@ -182,7 +184,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     private void readParts(PacketBuffer buf) {
         parts = new ArrayList<>();
-        screens = new MetaTileEntityMonitorScreen[width][height];
+        clearScreans();
         int size = buf.readInt();
         for (int i = 0; i < size; i++) {
             parts.add(buf.readBlockPos());
@@ -208,6 +210,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     public boolean isActive() {
         return isStructureFormed() && isActive;
+    }
+
+    private void clearScreans() {
+        if (screens != null) {
+            for (MetaTileEntityMonitorScreen[] screen : screens) {
+                for (MetaTileEntityMonitorScreen s : screen) {
+                    if(s != null) s.removeFromMultiBlock(this);
+                }
+            }
+        }
+        screens = new MetaTileEntityMonitorScreen[width][height];
     }
 
     @Override
@@ -275,6 +288,10 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             this.reinitializeStructurePattern();
         } else if (id == 4) {
             this.isActive = buf.readBoolean();
+        } else if (id == 400) {
+            if (!this.isStructureFormed()) {
+                clearScreans();
+            }
         }
     }
 
@@ -398,11 +415,12 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @SideOnly(Side.CLIENT)
     public void renderMetaTileEntityDynamic(double x, double y, double z, float partialTicks) {
         if (!this.isStructureFormed()) return;
+        EnumFacing spin = BlockPatternChecker.getSpin(this);
         RenderHelper.useStencil(()->{
             GlStateManager.pushMatrix();
-            RenderHelper.moveToFace(x - this.frontFacing.rotateY().getXOffset() * 0.5, y + height - 1.5, z - this.frontFacing.rotateY().getZOffset() * 0.5, this.frontFacing);
-            RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-            RenderHelper.renderRect(0, 0, width, height, 0.001f, 0xFF000000);
+            RenderHelper.moveToFace(x, y, z, this.frontFacing);
+            RenderHelper.rotateToFace(this.frontFacing, spin);
+            RenderHelper.renderRect(0.5f, -0.5f - (height - 2), width, height, 0.001f, 0xFF000000);
             GlStateManager.popMatrix();
         }, ()->{
             if (isActive) {
@@ -425,7 +443,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                                 BlockPos pos2 = this.getPos();
                                 GlStateManager.pushMatrix();
                                 RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
-                                RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
+                                RenderHelper.rotateToFace(this.frontFacing, spin);
                                 screen.renderScreen(partialTicks);
                                 GlStateManager.popMatrix();
                             }
@@ -434,13 +452,19 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 }
 
                 if (size != parts.size()) {
-                    screens = new MetaTileEntityMonitorScreen[width][height];
+                    clearScreans();
                     for (BlockPos pos : parts) {
                         TileEntity tileEntity = getWorld().getTileEntity(pos);
                         if(tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                             MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
                             screen.addToMultiBlock(this);
-                            screens[screen.getX()][screen.getY()] = screen;
+                            int sx = screen.getX(), sy = screen.getY();
+                            if (sx < 0 || sx >= width || sy < 0 || sy >= height) {
+                                parts.clear();
+                                clearScreans();
+                                break;
+                            }
+                            screens[sx][sy] = screen;
                         }
                     }
                 }
@@ -456,8 +480,27 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        BlockPos sp = this.getPos().offset(EnumFacing.DOWN);
-        BlockPos ep = sp.offset(this.frontFacing.rotateY(), -width - 2).offset(EnumFacing.UP, height);
+        BlockPos sp = null;
+        BlockPos ep = null;
+        EnumFacing spin = BlockPatternChecker.getSpin(this);
+        if (frontFacing.getAxis() == EnumFacing.Axis.Y) {
+            sp = this.getPos().offset(spin, -2);
+            ep = sp.offset(spin, height + 1).offset(spin.rotateY(), (width + 2) * frontFacing.getYOffset());
+        } else {
+            if (spin == EnumFacing.NORTH) {
+                sp = this.getPos().offset(EnumFacing.DOWN, 2);
+                ep = sp.offset(EnumFacing.UP, height + 1).offset(this.frontFacing.rotateY(),  - width - 2);
+            } else if (spin == EnumFacing.SOUTH) {
+                sp = this.getPos().offset(EnumFacing.UP, 2);
+                ep = sp.offset(EnumFacing.DOWN, height + 1).offset(this.frontFacing.rotateY(), width + 2);
+            } else if (spin == EnumFacing.WEST) {
+                sp = this.getPos().offset(frontFacing.rotateY(), -2);
+                ep = sp.offset(frontFacing.rotateY(), height + 1).offset(EnumFacing.UP, width + 2);
+            } else {
+                sp = this.getPos().offset(frontFacing.rotateY(), 2);
+                ep = sp.offset(frontFacing.rotateY(), -height - 1).offset(EnumFacing.DOWN, width + 2);
+            }
+        }
         return new AxisAlignedBB(sp, ep);
     }
 

@@ -2,6 +2,7 @@ package gregicadditions.utils;
 
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
+import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -179,6 +180,9 @@ public class BlockPatternChecker {
     public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) {
         try {
             SPIN_FIELD.set(controllerBase, spin);
+            if (controllerBase.getWorld() != null && !controllerBase.getWorld().isRemote) {
+                controllerBase.writeCustomData(GregTechCEHooks.SPIN_ID, packetBuffer -> packetBuffer.writeByte(spin.getIndex()));
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }

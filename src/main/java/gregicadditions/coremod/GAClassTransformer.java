@@ -45,8 +45,8 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.multiblock.BlockPattern":
                 tform = BlockPatternTransformer.INSTANCE;
                 break;
-            case "gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController":
-                tform = RecipeMapMultiblockControllerTransformer.INSTANCE;
+            case "gregtech.api.metatileentity.multiblock.MultiblockControllerBase":
+                tform = MultiblockControllerBaseTransformer.INSTANCE;
                 break;
             default:
                 return basicClass;

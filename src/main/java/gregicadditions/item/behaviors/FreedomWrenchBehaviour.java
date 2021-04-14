@@ -35,7 +35,7 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
             if (mte instanceof MultiblockControllerBase && !player.isSneaking() && world.isRemote) {
                 WorldRenderEventRenderer.renderMultiBlockPreview((MultiblockControllerBase) mte, 60000, mode);
             }
-            else if (mte instanceof RecipeMapMultiblockController && player.isSneaking()) {
+            else if (mte instanceof MultiblockControllerBase && player.isSneaking()) {
                 boolean rotateSpin = false;
                 EnumFacing facing = mte.getFrontFacing();
                 if (side == EnumFacing.DOWN || side == EnumFacing.UP) {
@@ -67,12 +67,16 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
                         facing = EnumFacing.DOWN;
                     } else if ((side.getXOffset() == 0 ? 0.25 < hitX && hitX < 0.75 : 0.25 < hitZ && hitZ < 0.75) && hitY > 0.75){
                         facing = EnumFacing.UP;
-                    } else if (0.25 < hitY && hitY < 0.75 && (side.getXOffset() == 0 ? 0.25 > hitX : 0.25 > hitZ)){
+                    } else if (0.25 < hitY && hitY < 0.75 && (side.getXOffset() == 0
+                            ? (side.getZOffset() < 0 ? 0.25 > hitX : 0.75 < hitX)
+                            : (side.getXOffset() > 0 ? 0.25 > hitZ : 0.75 < hitZ))){
                         facing = side.rotateY().getOpposite();
-                    } else if (0.25 < hitY && hitY < 0.75 && (side.getXOffset() == 0 ? 0.75 < hitX : 0.75 < hitZ)){
+                    } else if (0.25 < hitY && hitY < 0.75 && (side.getXOffset() == 0
+                            ? (side.getZOffset() > 0 ? 0.25 > hitX : 0.75 < hitX)
+                            : (side.getXOffset() < 0 ? 0.25 > hitZ : 0.75 < hitZ))){
                         facing = side.rotateY();
                     } else {
-                        facing = facing.getOpposite();
+                        facing = side.getOpposite();
                     }
                 }
                 if (rotateSpin) {

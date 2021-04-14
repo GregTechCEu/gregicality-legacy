@@ -6,11 +6,11 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class RecipeMapMultiblockControllerTransformer extends ClassMapper {
+public class MultiblockControllerBaseTransformer extends ClassMapper {
 
-    public static final RecipeMapMultiblockControllerTransformer INSTANCE = new RecipeMapMultiblockControllerTransformer();
+    public static final MultiblockControllerBaseTransformer INSTANCE = new MultiblockControllerBaseTransformer();
 
-    private RecipeMapMultiblockControllerTransformer() {
+    private MultiblockControllerBaseTransformer() {
         // NO-OP
     }
 
@@ -47,14 +47,11 @@ public class RecipeMapMultiblockControllerTransformer extends ClassMapper {
         }
 
         @Override
-        public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-            if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("gregtech/api/render/OrientedOverlayRenderer") && name.equals("render")) {
-                super.visitVarInsn(Opcodes.ALOAD,0);
-                super.visitFieldInsn(Opcodes.GETFIELD, MetaTileEntityTransformer.owner, MetaTileEntityTransformer.spin, MetaTileEntityTransformer.enumface_desc);
-                super.injectStaticMethod(GTCEHooks, "renderFrontOverlay");
-            }else {
-                super.visitMethodInsn(opcode, owner, name, desc, itf);
-            }
+        public void visitCode() {
+            super.visitVarInsn(Opcodes.ALOAD,0);
+            super.visitVarInsn(Opcodes.ALOAD,2);
+            super.injectStaticMethod(GTCEHooks, "renderMetaTileEntity");
+            super.visitCode();
         }
 
     }

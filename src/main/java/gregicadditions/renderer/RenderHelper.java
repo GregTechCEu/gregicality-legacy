@@ -331,17 +331,21 @@ public class RenderHelper {
             case EAST:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( -90.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case WEST:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( 90.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case NORTH:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case SOUTH:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( 180.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             default:
                 break;

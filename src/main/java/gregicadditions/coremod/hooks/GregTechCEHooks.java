@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.materials.SimpleFluidMaterial;
+import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
@@ -14,6 +15,7 @@ import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
@@ -163,20 +165,26 @@ public class GregTechCEHooks {
         return data.hasKey("sPin") ? EnumFacing.VALUES[data.getByte("sPin")]:EnumFacing.NORTH;
     }
 
-    //origin: gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController.renderMetaTileEntity()
-    public static void renderFrontOverlay(OrientedOverlayRenderer overlay, CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline, EnumFacing facing, boolean isActive, EnumFacing spin) {
+    //origin: gregtech.api.metatileentity.multiblock.MultiblockControllerBase.renderMetaTileEntity()
+    public static void renderMetaTileEntity(MultiblockControllerBase controllerBase, Matrix4 translation) {
+        EnumFacing facing = controllerBase.getFrontFacing();
+        EnumFacing spin = BlockPatternChecker.getSpin(controllerBase);
         double degree = Math.PI/2 * (spin == EnumFacing.EAST? -1: spin == EnumFacing.SOUTH? 2: spin == EnumFacing.WEST? 1:0);
         Rotation rotation = new Rotation(degree, facing.getXOffset(), facing.getYOffset(), facing.getZOffset());
         translation.translate(0.5 , 0.5, 0.5);
-        if(facing == EnumFacing.DOWN) {
-            translation.apply(new Rotation(Math.PI, 1, 0, 0));
+        if(facing == EnumFacing.DOWN && spin.getAxis() == EnumFacing.Axis.Z) {
             translation.apply(new Rotation(Math.PI, 0, 1, 0));
-            facing = EnumFacing.UP;
         }
         translation.apply(rotation);
-        translation.scale(1.0009f);
+        translation.scale(1.0000f);
         translation.translate(-0.5 , -0.5, -0.5);
+    }
 
-        overlay.render(renderState, translation, pipeline, facing, isActive);
+    //origin: gregtech.api.metatileentity.MetaTileEntity.receiveCustomData(int dataId, PacketBuffer buf)
+    public final static int SPIN_ID = -67;
+    public static void receiveCustomData(MetaTileEntity mte, int dataId, PacketBuffer buf) {
+        if (SPIN_ID == dataId) {
+            BlockPatternChecker.setSpin(mte, EnumFacing.VALUES[buf.readByte()]);
+        }
     }
 }

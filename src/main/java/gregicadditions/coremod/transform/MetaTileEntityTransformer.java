@@ -67,11 +67,29 @@ public class MetaTileEntityTransformer extends ClassMapper {
                 return new TransformNBT(api, super.visitMethod(access, name, desc, signature, exceptions), true);
             } else if (name.equals("readFromNBT")) {
                 return new TransformNBT(api, super.visitMethod(access, name, desc, signature, exceptions), false);
+            } else if (name.equals("receiveCustomData")) {
+                return new TransformReceiveCustomData(api, super.visitMethod(access, name, desc, signature, exceptions));
             }
             return super.visitMethod(access, name, desc, signature, exceptions);
         }
 
 
+    }
+
+    private static class TransformReceiveCustomData extends GAMethodVisitor {
+
+        TransformReceiveCustomData(int api, MethodVisitor mv) {
+            super(api, mv);
+        }
+
+        @Override
+        public void visitInsn(int opcode) {
+            super.visitVarInsn(Opcodes.ALOAD, 0);
+            super.visitVarInsn(Opcodes.ILOAD, 1);
+            super.visitVarInsn(Opcodes.ALOAD, 2);
+            super.injectStaticMethod(GTCEHooks, "receiveCustomData");
+            super.visitInsn(opcode);
+        }
     }
 
     private static class TransformPlaceCoverOnSide extends GAMethodVisitor {
