@@ -3,7 +3,7 @@ package gregicadditions.materials;
 import com.google.common.collect.ImmutableList;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.util.SmallDigits;
-import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextFormatting;
 
 import static net.minecraft.util.text.TextFormatting.*;
@@ -51,7 +51,7 @@ public abstract class SimpleMaterial {
     private static String fancyTest(String input, TextFormatting[] colors, double delay, int posstep) {
         StringBuilder sb = new StringBuilder();
 
-        int offset = (int) Math.floor(Minecraft.getSystemTime() / delay) % colors.length;
+        int offset = (int) Math.floor(MinecraftServer.getCurrentTimeMillis() / delay) % colors.length;
         String format = null;
 
         for (int i = 0; i < input.length(); i++) {
