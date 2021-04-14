@@ -21,24 +21,60 @@ public class GoldChain {
          * The main stages of the chain:
          *
          * - Precious Metal Ingot: Smelts to 1 nugget of gold
-         * - Gold Alloy: Smelts to 2 nuggets of gold, 8 nuggets total (almost 1 ingot) per Precious Metal
-         * - Gold Leach: Smelts to 4 nuggets of gold, 16 total (almost 2 ingots) per Precious Metal
+         * - Gold Alloy: Centrifuges to 1 nugget of gold each, 4 nuggets total per Precious Metal
+         * - Gold Leach: Electrolyzes to 2 nuggets of gold each, 8 nuggets total per Precious Metal
          * - Chloroauric Acid: The step creating this outputs the byproducts, and returns the Copper from Gold Alloy
-         * - Chloroauric Acid: Processes into 3 ingots
+         * - Chloroauric Acid: Processes into 2 ingots
          *
          * In the end, each step has a major compensation, but each step is reasonable return.
-         * STEP 1: +7 nuggets of gold
-         * STEP 2: +8 nuggets of gold
+         * STEP 1: +3 nuggets of gold
+         * STEP 2: +4 nuggets of gold
          * STEP 3: +byproducts and Copper no longer voided
          * STEP 4: +10 nuggets of gold
          *
-         * Everything else in this chain is a closed loop. However, 1 Oxygen and 1 Hydrogen in addition to
-         * the Copper will be lost if the player chooses to cut short at Gold Leach (step 2).
+         * Everything else in this chain is a fully closed loop.
          */
 
+        // RECOVERY STEPS ==============================================================================================
+
+        // Step 0 recovery (1 nugget per PM)
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, PreciousMetal), OreDictUnifier.get(nugget, Gold));
-        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, GoldAlloy), OreDictUnifier.get(nugget, Gold, 2));
-        ModHandler.addSmeltingRecipe(GoldLeach.getItemStack(), OreDictUnifier.get(nugget, Gold, 4));
+
+        // Step 1 recovery (8 nuggets per PM)
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, GoldAlloy, 4)
+                .output(dust, Copper, 3)
+                .output(dustTiny, Gold, 4)
+                .duration(500)
+                .EUt(30)
+                .buildAndRegister();
+
+        // Step 2 recovery (16 nuggets per PM)
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .inputs(GoldLeach.getItemStack(4))
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .output(dust, Copper, 3)
+                .output(dustTiny, Gold, 8)
+                .duration(300)
+                .EUt(30)
+                .buildAndRegister();
+
+        // Step 3 recovery
+        // This step does not directly process Chloroauric Acid, and instead is processing
+        // other byproducts from the chain, which are compacted from the older versions of the chain.
+        // Cu3? -> 3Cu + Fe + Ni + Ag + Pb
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(80)
+                .inputs(CopperLeach.getItemStack(4))
+                .output(dust, Copper, 3)
+                .chancedOutput(OreDictUnifier.get(dust, Lead), 1500, 500)
+                .chancedOutput(OreDictUnifier.get(dust, Iron), 1200, 400)
+                .chancedOutput(OreDictUnifier.get(dust, Nickel), 1000, 300)
+                .chancedOutput(OreDictUnifier.get(dust, Silver), 800, 200)
+                .buildAndRegister();
+
+
+        // MAIN CHAIN ==================================================================================================
 
         // STEP 1
         // Au? + 3Cu -> Cu3Au?
@@ -85,18 +121,17 @@ public class GoldChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        // STEP 3.5
-        // This step regains the Copper, and also has many other things as chanced outputs from
-        // older iterations of this Gold Process
-        // Cu3? -> 3Cu + Fe + Ni + Ag + Pb
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(80)
-                .inputs(CopperLeach.getItemStack(4))
-                .output(dust, Copper, 3)
-                .chancedOutput(OreDictUnifier.get(dust, Lead), 1500, 500)
-                .chancedOutput(OreDictUnifier.get(dust, Iron), 1200, 500)
-                .chancedOutput(OreDictUnifier.get(dust, Nickel), 1000, 500)
-                .chancedOutput(OreDictUnifier.get(dust, Silver), 800, 500)
+        // STEP 4
+        // HAuCl(OH) -> Au + H2O + Cl
+        CHEMICAL_RECIPES.recipeBuilder().duration(100)
+                .fluidInputs(ChloroauricAcid.getFluid(1000))
+                .notConsumable(dust, PotassiumMetabisulfite)
+                .output(dust, Gold, 2)
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(1000))
                 .buildAndRegister();
+
+        // SIDE INGREDIENTS ============================================================================================
 
         // NOT CONSUMED INGREDIENT
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
@@ -105,16 +140,6 @@ public class GoldChain {
                 .input(dust, Sulfur, 2)
                 .fluidInputs(Oxygen.getFluid(5000))
                 .output(dust, PotassiumMetabisulfite, 9)
-                .buildAndRegister();
-
-        // STEP 4
-        // HAuCl(OH) -> Au + H2O + Cl
-        CHEMICAL_RECIPES.recipeBuilder().duration(100)
-                .fluidInputs(ChloroauricAcid.getFluid(1000))
-                .notConsumable(dust, PotassiumMetabisulfite)
-                .output(dust, Gold, 3) // 3 per ore, maybe change
-                .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
                 .buildAndRegister();
     }
 }

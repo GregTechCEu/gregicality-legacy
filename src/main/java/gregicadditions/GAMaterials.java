@@ -1599,7 +1599,7 @@ public class GAMaterials implements IMaterialHandler {
     }
 
     public static void goldProcess() {
-        PreciousMetal.setOreMultiplier(3);
+        PreciousMetal.setOreMultiplier(2);
 
         Bornite.oreByProducts.clear();
         Bornite.addOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
