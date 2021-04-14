@@ -235,11 +235,17 @@ public class BrineChain {
                 .fluidOutputs(LithiumChlorideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // Na + Al + 4H -> NaAlH4
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(3000)
-                .input(dust, Sodium)
+        // Al + 3H -> AlH3
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(60)
                 .input(dust, Aluminium)
-                .fluidInputs(Hydrogen.getFluid(4000))
+                .fluidInputs(Hydrogen.getFluid(3000))
+                .outputs(AluminiumHydride.getItemStack(4))
+                .buildAndRegister();
+
+        // NaH + AlH3 -> NaAlH4
+        MIXER_RECIPES.recipeBuilder().duration(190).EUt(3000)
+                .inputs(SodiumHydride.getItemStack(2))
+                .inputs(AluminiumHydride.getItemStack(4))
                 .outputs(SodiumAluminiumHydride.getItemStack(6))
                 .buildAndRegister();
 
