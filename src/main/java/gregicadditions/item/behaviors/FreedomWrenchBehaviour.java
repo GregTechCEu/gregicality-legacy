@@ -30,6 +30,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import scala.Int;
 
@@ -43,7 +44,7 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
         if (pos != null && world.getTileEntity(pos) instanceof MetaTileEntityHolder) {
             MetaTileEntity mte = ((MetaTileEntityHolder) world.getTileEntity(pos)).getMetaTileEntity();
-            if (mte instanceof MultiblockControllerBase && !player.isSneaking()) {
+            if (mte instanceof MultiblockControllerBase && !player.isSneaking() && Loader.isModLoaded("jei")) {
                 if (mode == 3) {
                     IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
                     IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, mte.getStackForm());
@@ -156,12 +157,9 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
                 }
                 if (rotateSpin) {
                     EnumFacing next = BlockPatternChecker.getSpin(mte).rotateY();
-                    BlockPatternChecker.setSpin(mte, next);
                     if (!world.isRemote) {
-                        mte.notifyBlockUpdate();
-                        mte.markDirty();
+                        BlockPatternChecker.setSpin(mte, next);
                     } else {
-                        mte.scheduleRenderUpdate();
                         if (facing != EnumFacing.DOWN && facing != EnumFacing.UP) {
                             player.sendMessage(new TextComponentString("Spin: " + (next == EnumFacing.NORTH ?
                                     "up" : next == EnumFacing.EAST ?

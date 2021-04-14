@@ -16,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.MutableBlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import org.apache.commons.lang3.tuple.Pair;
@@ -182,8 +183,14 @@ public class BlockPatternChecker {
     public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) {
         try {
             SPIN_FIELD.set(controllerBase, spin);
-            if (controllerBase.getWorld() != null && !controllerBase.getWorld().isRemote) {
-                controllerBase.writeCustomData(GregTechCEHooks.SPIN_ID, packetBuffer -> packetBuffer.writeByte(spin.getIndex()));
+            if (controllerBase.getWorld() != null) {
+                if (!controllerBase.getWorld().isRemote) {
+                    controllerBase.notifyBlockUpdate();
+                    controllerBase.markDirty();
+                    controllerBase.writeCustomData(GregTechCEHooks.SPIN_ID, packetBuffer -> packetBuffer.writeByte(spin.getIndex()));
+                } else {
+                    controllerBase.scheduleRenderUpdate();
+                }
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
