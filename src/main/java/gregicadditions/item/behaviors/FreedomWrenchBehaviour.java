@@ -106,7 +106,7 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
 
                         }
                     }
-                } else if (world.isRemote $$) {
+                } else if (world.isRemote) {
                     WorldRenderEventRenderer.renderMultiBlockPreview((MultiblockControllerBase) mte, 60000, mode);
                 }
             }
