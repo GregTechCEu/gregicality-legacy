@@ -21,6 +21,7 @@ import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -245,6 +246,19 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     protected void handleDisplayClick(String componentData, Widget.ClickData clickData) {
         super.handleDisplayClick(componentData, clickData);
         isDistinct = !isDistinct;
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        super.writeToNBT(data);
+        data.setBoolean("Distinct", isDistinct);
+        return data;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        isDistinct = data.getBoolean("Distinct");
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends GAMultiblockRecipeLogic {
