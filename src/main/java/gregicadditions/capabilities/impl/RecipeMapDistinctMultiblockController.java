@@ -37,7 +37,7 @@ import java.util.*;
  * This class serves as an alternative to {@link gregicadditions.capabilities.impl.GARecipeMapMultiblockController},
  * except it treats its input buses as separate and distinct inventories for recipes.
  */
-public abstract class RecipeMapDistinctBusesMultiblockController extends MultiblockWithDisplayBase {
+public abstract class RecipeMapDistinctMultiblockController extends MultiblockWithDisplayBase {
 
     public final RecipeMap<?> recipeMap;
     protected DistinctBusesMultiblockRecipeLogic recipeMapWorkable;
@@ -48,7 +48,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
     protected IMultipleTankHandler outputFluidInventory;
     protected IEnergyContainer energyContainer;
 
-    public RecipeMapDistinctBusesMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
+    public RecipeMapDistinctMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId);
         this.recipeMap = recipeMap;
         this.recipeMapWorkable = new DistinctBusesMultiblockRecipeLogic(this); // TODO
@@ -172,10 +172,10 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
 
     public static class DistinctBusesMultiblockRecipeLogic extends AbstractRecipeLogic {
 
-        private int lastRecipeIndex = 0;
+        protected int lastRecipeIndex = 0;
         protected ItemStack[][] lastItemInputsMatrix;
 
-        public DistinctBusesMultiblockRecipeLogic(RecipeMapDistinctBusesMultiblockController tileEntity) {
+        public DistinctBusesMultiblockRecipeLogic(RecipeMapDistinctMultiblockController tileEntity) {
             super(tileEntity, tileEntity.recipeMap);
         }
 
@@ -188,30 +188,30 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
         }
 
         public IEnergyContainer getEnergyContainer() {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             return controller.getEnergyContainer();
         }
 
         protected List<IItemHandlerModifiable> getInputBuses() {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             return controller.getInputInventory();
         }
 
         @Override
         protected IItemHandlerModifiable getOutputInventory() {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             return controller.getOutputInventory();
         }
 
         @Override
         protected IMultipleTankHandler getInputTank() {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             return controller.getInputFluidInventory();
         }
 
         @Override
         protected IMultipleTankHandler getOutputTank() {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             return controller.getOutputFluidInventory();
         }
 
@@ -277,7 +277,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
         }
 
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe, int index) {
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             if (controller.checkRecipe(recipe, false)) {
 
                 int[] resultOverclock = calculateOverclock(recipe.getEUt(), recipe.getDuration());
@@ -303,7 +303,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
         // Replacing this for optimization reasons
         protected boolean checkRecipeInputsDirty(IItemHandler inputs, IMultipleTankHandler fluidInputs, int index) {
             boolean shouldRecheckRecipe = false;
-            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            RecipeMapDistinctMultiblockController controller = (RecipeMapDistinctMultiblockController) metaTileEntity;
             if (lastItemInputsMatrix == null || lastItemInputsMatrix.length != controller.inputInventory.size()) {
                 lastItemInputsMatrix = new ItemStack[controller.inputInventory.size()][];
                 GALog.logger.info("Num buses: " + controller.inputInventory.size());

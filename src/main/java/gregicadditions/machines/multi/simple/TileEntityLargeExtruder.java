@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
+import gregicadditions.capabilities.impl.LargeSimpleRecipeMapDistinctMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -23,7 +24,7 @@ import javax.annotation.Nonnull;
 
 import static gregicadditions.GAMaterials.Inconel625;
 
-public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockController {
+public class TileEntityLargeExtruder extends LargeSimpleRecipeMapDistinctMultiblockController {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
 
