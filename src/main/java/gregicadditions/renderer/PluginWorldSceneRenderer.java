@@ -19,11 +19,11 @@ import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.EXTFramebufferObject;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
+import javax.annotation.Nonnull;
 import javax.vecmath.Vector3f;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -401,7 +401,7 @@ public class PluginWorldSceneRenderer {
         public TrackedDummyWorld() {
         }
 
-        public boolean setBlockState(@NotNull BlockPos pos, IBlockState newState, int flags) {
+        public boolean setBlockState(@Nonnull BlockPos pos, IBlockState newState, int flags) {
             if (newState.getBlock() == Blocks.AIR) {
                 PluginWorldSceneRenderer.this.renderedBlocks.remove(pos);
             } else {
@@ -417,7 +417,7 @@ public class PluginWorldSceneRenderer {
             return super.setBlockState(pos, newState, flags);
         }
 
-        public @NotNull IBlockState getBlockState(@NotNull BlockPos pos) {
+        public @Nonnull IBlockState getBlockState(@Nonnull BlockPos pos) {
             return PluginWorldSceneRenderer.this.renderFilter != null && !PluginWorldSceneRenderer.this.renderFilter.test(pos) ? Blocks.AIR.getDefaultState() : super.getBlockState(pos);
         }
 

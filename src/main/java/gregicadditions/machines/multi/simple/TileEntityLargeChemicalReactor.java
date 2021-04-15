@@ -19,7 +19,8 @@ import gregtech.api.render.Textures;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblockController {
 
@@ -68,7 +69,7 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
 		return Textures.CHEMICAL_REACTOR_OVERLAY;
