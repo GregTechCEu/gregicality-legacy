@@ -4,7 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
-import gregtech.api.GTValues;
+import gregicadditions.GAUtility;
+import gregicadditions.GAValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.*;
@@ -12,13 +13,11 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.util.GTUtility;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -121,7 +120,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
             IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
+                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
 
@@ -274,7 +273,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
         }
 
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe, int index) {
-            RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
+            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
             if (controller.checkRecipe(recipe, false)) {
 
                 int[] resultOverclock = calculateOverclock(recipe.getEUt(), recipe.getDuration());
