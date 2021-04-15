@@ -13,6 +13,8 @@ public class NetworkHandler {
         INSTANCE.registerMessage(MessageReservoirListSync.Handler.class, MessageReservoirListSync.class, 1, Side.CLIENT);
         CPacketPluginSynced.registerExecutor();
         CPacketPluginSynced.registerPacket(100);
+        CPacketMultiBlockStructure.registerExecutor();
+        CPacketMultiBlockStructure.registerPacket(101);
 
     }
 

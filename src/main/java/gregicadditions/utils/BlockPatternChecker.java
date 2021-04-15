@@ -302,4 +302,11 @@ public class BlockPatternChecker {
         return new BlockPos(Math.round(vector3.x), Math.round(vector3.y), Math.round(vector3.z));
     }
 
+    public static EnumFacing getActualFrontFacing(EnumFacing ref, EnumFacing facing, EnumFacing spin, EnumFacing frontFacing) {
+        BlockPos pos = getActualPos(ref, facing, spin, frontFacing.getXOffset(), frontFacing.getYOffset(), frontFacing.getZOffset());
+        return pos.getX() < 0 ? EnumFacing.WEST : pos.getX() > 0 ? EnumFacing.EAST
+                : pos.getY() < 0 ? EnumFacing.DOWN : pos.getY() > 0 ? EnumFacing.UP
+                : pos.getZ() < 0 ? EnumFacing.NORTH : EnumFacing.SOUTH;
+    }
+
 }
