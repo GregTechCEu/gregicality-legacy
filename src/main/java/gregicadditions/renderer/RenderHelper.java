@@ -20,9 +20,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -369,7 +369,7 @@ public class RenderHelper {
      * @param shouldRenderMask should mask be rendered too
      */
     @SideOnly(Side.CLIENT)
-    public static void useStencil(@NotNull Runnable mask, @NotNull Runnable renderInMask, boolean shouldRenderMask) {
+    public static void useStencil(@Nonnull Runnable mask, @Nonnull Runnable renderInMask, boolean shouldRenderMask) {
         GL11.glStencilMask(0xFF);
         GL11.glClearStencil(0);
         GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT) ;

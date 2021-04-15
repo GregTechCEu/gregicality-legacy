@@ -23,8 +23,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -130,7 +130,7 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
         return new MetaTileEntityPlasmaCondenser(metaTileEntityId);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.PLASMA_ARC_FURNACE_OVERLAY;
