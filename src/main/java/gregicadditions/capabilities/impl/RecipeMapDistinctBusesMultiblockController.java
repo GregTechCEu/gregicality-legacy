@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.*;
@@ -18,21 +19,24 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+/**
+ * This class serves as an alternative to {@link gregicadditions.capabilities.impl.GARecipeMapMultiblockController},
+ * except it treats its input buses as separate and distinct inventories for recipes.
+ */
 public abstract class RecipeMapDistinctBusesMultiblockController extends MultiblockWithDisplayBase {
 
     public final RecipeMap<?> recipeMap;
@@ -169,6 +173,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
     public static class DistinctBusesMultiblockRecipeLogic extends AbstractRecipeLogic {
 
         private int lastRecipeIndex = 0;
+        protected ItemStack[][] lastItemInputsMatrix;
 
         public DistinctBusesMultiblockRecipeLogic(RecipeMapDistinctBusesMultiblockController tileEntity) {
             super(tileEntity, tileEntity.recipeMap);
@@ -187,12 +192,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
             return controller.getEnergyContainer();
         }
 
-        @Override
-        protected IItemHandlerModifiable getInputInventory() {
-            return null; // DO NOT USE THIS!!!
-        }
-
-        public List<IItemHandlerModifiable> getInputBuses() {
+        protected List<IItemHandlerModifiable> getInputBuses() {
             RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
             return controller.getInputInventory();
         }
@@ -247,6 +247,7 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
             IMultipleTankHandler importFluids = getInputTank();
 
             // Our caching implementation
+            // This guarantees that if we get a recipe cache hit, our efficiency is no different from other machines
             if (previousRecipe != null && previousRecipe.matches(false, importInventory.get(lastRecipeIndex), importFluids)) {
                 currentRecipe = previousRecipe;
                 if (setupAndConsumeRecipeInputs(currentRecipe, lastRecipeIndex)) {
@@ -254,9 +255,12 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
                     return;
                 }
             }
+
+            // On a cache miss, our efficiency is much worse, as it will check
+            // each bus individually instead of the combined inventory all at once.
             for (int i = 0; i < importInventory.size(); i++) {
                 IItemHandlerModifiable bus = importInventory.get(i);
-                boolean dirty = checkRecipeInputsDirty(bus, importFluids);
+                boolean dirty = checkRecipeInputsDirty(bus, importFluids, i);
                 if (dirty || forceRecipeRecheck) {
                     this.forceRecipeRecheck = false;
                     currentRecipe = findRecipe(maxVoltage, bus, importFluids);
@@ -296,9 +300,66 @@ public abstract class RecipeMapDistinctBusesMultiblockController extends Multibl
             return false;
         }
 
+        // Replacing this for optimization reasons
+        protected boolean checkRecipeInputsDirty(IItemHandler inputs, IMultipleTankHandler fluidInputs, int index) {
+            boolean shouldRecheckRecipe = false;
+            RecipeMapDistinctBusesMultiblockController controller = (RecipeMapDistinctBusesMultiblockController) metaTileEntity;
+            if (lastItemInputsMatrix == null || lastItemInputsMatrix.length != controller.inputInventory.size()) {
+                lastItemInputsMatrix = new ItemStack[controller.inputInventory.size()][];
+                GALog.logger.info("Num buses: " + controller.inputInventory.size());
+            }
+            if (lastItemInputsMatrix[index] == null || lastItemInputsMatrix[index].length != inputs.getSlots()) {
+                this.lastItemInputsMatrix[index] = new ItemStack[inputs.getSlots()];
+                Arrays.fill(lastItemInputsMatrix[index], ItemStack.EMPTY);
+            }
+            if (lastFluidInputs == null || lastFluidInputs.length != fluidInputs.getTanks()) {
+                this.lastFluidInputs = new FluidStack[fluidInputs.getTanks()];
+            }
+            for (int i = 0; i < lastItemInputsMatrix[index].length; i++) {
+                ItemStack currentStack = inputs.getStackInSlot(i);
+                ItemStack lastStack = lastItemInputsMatrix[index][i];
+                if (!areItemStacksEqual(currentStack, lastStack)) {
+                    this.lastItemInputsMatrix[index][i] = currentStack.isEmpty() ? ItemStack.EMPTY : currentStack.copy();
+                    shouldRecheckRecipe = true;
+                } else if (currentStack.getCount() != lastStack.getCount()) {
+                    lastStack.setCount(currentStack.getCount());
+                    shouldRecheckRecipe = true;
+                }
+            }
+            for (int i = 0; i < lastFluidInputs.length; i++) {
+                FluidStack currentStack = fluidInputs.getTankAt(i).getFluid();
+                FluidStack lastStack = lastFluidInputs[i];
+                if ((currentStack == null && lastStack != null) ||
+                        (currentStack != null && !currentStack.isFluidEqual(lastStack))) {
+                    this.lastFluidInputs[i] = currentStack == null ? null : currentStack.copy();
+                    shouldRecheckRecipe = true;
+                } else if (currentStack != null && lastStack != null &&
+                        currentStack.amount != lastStack.amount) {
+                    lastStack.amount = currentStack.amount;
+                    shouldRecheckRecipe = true;
+                }
+            }
+            return shouldRecheckRecipe;
+        }
+
+        // Dead methods
+
+        @Override
+        protected IItemHandlerModifiable getInputInventory() {
+            GALog.logger.error("In old getInputInventory! Please report this error!");
+            return null; // DO NOT USE!!!
+        }
+
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
+            GALog.logger.error("In old setupAndConsumeRecipeInputs! Please report this error!");
             return false; // DO NOT USE!!!
+        }
+
+        @Override
+        protected boolean checkRecipeInputsDirty(IItemHandler inputs, IMultipleTankHandler fluidInputs) {
+            GALog.logger.error("In old checkRecipeInputsDirty! Please report this error!");
+            return false;
         }
     }
 }
