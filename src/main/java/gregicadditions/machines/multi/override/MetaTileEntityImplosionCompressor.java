@@ -11,7 +11,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +18,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static gregtech.api.unification.material.Materials.Steel;
@@ -73,7 +72,7 @@ public class MetaTileEntityImplosionCompressor extends gregtech.common.metatilee
 		}
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
 		return ClientHandler.IMPLOSION_OVERLAY;

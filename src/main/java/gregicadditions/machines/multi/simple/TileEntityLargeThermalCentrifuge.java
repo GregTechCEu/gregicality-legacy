@@ -18,7 +18,8 @@ import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 import static gregtech.api.unification.material.Materials.RedSteel;
 
@@ -72,7 +73,7 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
 		return Textures.THERMAL_CENTRIFUGE_OVERLAY;
