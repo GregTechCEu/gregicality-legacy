@@ -352,7 +352,7 @@ public class GARecipeAddition {
                 .inputs(new ItemStack(Items.BONE))
                 .outputs(new ItemStack(Items.DYE, 4, 15))
                 .buildAndRegister();
-
+      
         String plateB = new String("plate");
         if (GAConfig.GT6.addCurvedPlates) {
             plateB = "plateCurved";

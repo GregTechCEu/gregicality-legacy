@@ -65,12 +65,12 @@ public class UHVMaterials {
                 .EUt(122880)
                 .duration(20)
                 .buildAndRegister();
-
+      
         OrePrefix plateB = plate;
         if (GAConfig.GT6.addCurvedPlates) {
             plateB = plateCurved;
         }
-
+      
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, NeodymiumMagnetic, 2)
                 .input(wireGtSingle, UVSuperconductor, 16)
