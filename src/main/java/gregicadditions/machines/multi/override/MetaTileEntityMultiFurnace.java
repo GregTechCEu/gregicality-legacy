@@ -27,8 +27,8 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -147,7 +147,7 @@ public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.FURNACE_OVERLAY;

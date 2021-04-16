@@ -16,7 +16,8 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public class MetaTileEntityQubitComputer extends QubitRecipeMapMultiblockController {
 
@@ -52,7 +53,7 @@ public class MetaTileEntityQubitComputer extends QubitRecipeMapMultiblockControl
         return new MetaTileEntityQubitComputer(metaTileEntityId);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return ClientHandler.QUBIT_COMPUTER_OVERLAY;

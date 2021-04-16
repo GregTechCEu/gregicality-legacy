@@ -23,8 +23,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -123,7 +123,7 @@ public class MetaTileEntityStellarForge extends GARecipeMapMultiblockController 
         return new MetaTileEntityStellarForge(metaTileEntityId);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return ClientHandler.QUBIT_COMPUTER_OVERLAY;

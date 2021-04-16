@@ -25,8 +25,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.fluids.FluidStack;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -101,7 +101,7 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.DISTILLERY_OVERLAY;
