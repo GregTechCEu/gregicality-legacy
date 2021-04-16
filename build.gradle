@@ -31,6 +31,7 @@ minecraft {
 
 jar {
     manifest {
+        attributes 'FMLAT': 'gregicality_at.cfg'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
         attributes 'FMLCorePlugin': 'gregicadditions.coremod.GACoreMod'
     }
@@ -112,6 +113,8 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+
+    rename("(.+_at.cfg)", "META-INF/\$1");
 }
 
 def run(command) {
