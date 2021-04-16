@@ -54,7 +54,7 @@ public class GrowthMedium {
                 .fluidInputs(Methanol.getFluid(1000))
                 .fluidOutputs(Formaldehyde.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(30720)
+                .EUt(4096)
                 .duration(100)
                 .buildAndRegister();
 
