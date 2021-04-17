@@ -44,7 +44,6 @@ import net.minecraft.util.text.*;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -285,7 +284,6 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
         }
     }
 
-    @NotNull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return ClientHandler.FUSION_REACTOR_OVERLAY;
