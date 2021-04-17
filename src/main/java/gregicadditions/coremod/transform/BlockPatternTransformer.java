@@ -2,7 +2,6 @@ package gregicadditions.coremod.transform;
 
 import gregicadditions.coremod.GAClassTransformer.ClassMapper;
 import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
-import jdk.internal.org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
@@ -23,7 +22,7 @@ public class BlockPatternTransformer extends ClassMapper {
 
     @Override
     protected int getWriteFlags() {
-        return ClassWriter.COMPUTE_MAXS;
+        return 1;
     }
 
     private static class TransformerBlockPattern extends ClassVisitor {
