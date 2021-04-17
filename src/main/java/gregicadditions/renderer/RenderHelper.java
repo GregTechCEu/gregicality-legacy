@@ -358,7 +358,7 @@ public class RenderHelper {
      * @param renderInMask render logic in the mask
      * @param shouldRenderMask should mask be rendered too
      */
-    public static void useStencil(@NotNull Runnable mask, @NotNull Runnable renderInMask, boolean shouldRenderMask) {
+    public static void useStencil(Runnable mask, Runnable renderInMask, boolean shouldRenderMask) {
         GL11.glStencilMask(0xFF);
         GL11.glClearStencil(0);
         GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT) ;
