@@ -18,8 +18,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static gregtech.api.unification.material.Materials.StainlessSteel;
@@ -72,7 +72,7 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.DISTILLERY_OVERLAY;
