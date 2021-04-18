@@ -259,6 +259,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.nb_chunk", chunks.size()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.block_per_tick", getNbBlock()));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.silktouch", silktouch));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.mode"));
             if (done)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.done", getNbBlock()).setStyle(new Style().setColor(TextFormatting.GREEN)));
 

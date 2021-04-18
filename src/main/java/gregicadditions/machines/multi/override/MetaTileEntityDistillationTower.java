@@ -8,6 +8,11 @@ import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
+import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -18,9 +23,11 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.HoverEvent;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
@@ -40,13 +47,30 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
     }
 
     @Override
+    protected BlockPattern createStructurePattern() {
+        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
+        Predicate<PatternMatchContext> exactlyOneHatch = (context) -> {
+            return context.getInt("HatchesAmount") == 1;
+        };
+        return FactoryBlockPattern.start(BlockPattern.RelativeDirection.RIGHT, BlockPattern.RelativeDirection.FRONT, BlockPattern.RelativeDirection.UP)
+                .aisle("YSY", "YZY", "YYY")
+                .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
+                .aisle("XXX", "XXX", "XXX")
+                .where('S', this.selfPredicate())
+                .where('Z', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
+                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY)))
+                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())))
+                .where('#', isAirPredicate()).validateLayer(1, exactlyOneHatch).validateLayer(2, exactlyOneHatch)
+                .build();
+    }
+
+    @Override
     public IBlockState getCasingState() {
         return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
         if (isStructureFormed()) {
             IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
@@ -69,6 +93,10 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
             if (recipeMapWorkable.isHasNotEnoughEnergy()) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             }
+        } else {
+            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip", new Object[0]);
+            tooltip.setStyle((new Style()).setColor(TextFormatting.GRAY));
+            textList.add((new TextComponentTranslation("gregtech.multiblock.invalid_structure", new Object[0])).setStyle((new Style()).setColor(TextFormatting.RED).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
     }
 
