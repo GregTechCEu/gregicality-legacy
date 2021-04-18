@@ -369,7 +369,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.VOID_MINER[0].getStackForm()).buildAndRegister();
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(500000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 27))
-                .fluidInputs(Polyetheretherketone.getFluid(2500))
+                .fluidInputs(Polyetheretherketone.getFluid(2592))
                 .inputs(GAMetaItems.SENSOR_UHV.getStackForm(2))
                 .inputs(GAMetaItems.ELECTRIC_MOTOR_UHV.getStackForm(8))
                 .input(wireGtSingle, UHVSuperconductor, 64)
@@ -387,7 +387,7 @@ public class MachineCraftingRecipes {
                 .outputs(GATileEntities.VOID_MINER[1].getStackForm()).buildAndRegister();
         GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(144 * 27 * 2))
-                .fluidInputs(Zylon.getFluid(2500))
+                .fluidInputs(Zylon.getFluid(2592))
                 .inputs(GAMetaItems.SENSOR_UEV.getStackForm(2))
                 .inputs(GAMetaItems.ELECTRIC_MOTOR_UEV.getStackForm(8))
                 .input(wireGtSingle, UEVSuperconductor, 64)

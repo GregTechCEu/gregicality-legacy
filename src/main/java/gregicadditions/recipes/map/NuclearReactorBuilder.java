@@ -7,8 +7,10 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+import mcp.MethodsReturnNonnullByDefault;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@MethodsReturnNonnullByDefault
 public class NuclearReactorBuilder extends RecipeBuilder<NuclearReactorBuilder> {
 
     private int baseHeatProduction;

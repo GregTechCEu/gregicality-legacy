@@ -39,6 +39,12 @@ public class SimpleDustMaterial extends SimpleMaterial {
         this.chemicalFormula = calculateChemicalFormula(formula);
     }
 
+    public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet, String formula, boolean fancy) {
+        this(name, rgb, id, materialIconSet, formula);
+        this.fancy = fancy;
+
+    }
+
     public String getOre() {
         return "dust" + toCamelCaseString(name);
     }

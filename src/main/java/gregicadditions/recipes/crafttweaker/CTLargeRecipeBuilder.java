@@ -12,11 +12,11 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.stream.Collectors;
 
 @ZenClass("mods.gtadditions.recipe.LargeRecipeBuilder")
 @ZenRegister
+@SuppressWarnings("unused")
 public class CTLargeRecipeBuilder {
 
     private final LargeRecipeBuilder largeRecipeBuilder;
@@ -52,9 +52,8 @@ public class CTLargeRecipeBuilder {
 
     @ZenMethod
     public CTLargeRecipeBuilder inputs(IIngredient... ingredients) {
-        this.largeRecipeBuilder.inputsIngredients((Collection)Arrays.stream(ingredients).map((s) -> {
-            return new CountableIngredient(new CTRecipeBuilder.CraftTweakerIngredientWrapper(s), s.getAmount());
-        }).collect(Collectors.toList()));
+        this.largeRecipeBuilder.inputsIngredients(Arrays.stream(ingredients).map((s) ->
+                new CountableIngredient(new CTRecipeBuilder.CraftTweakerIngredientWrapper(s), s.getAmount())).collect(Collectors.toList()));
         return this;
     }
 
@@ -66,13 +65,13 @@ public class CTLargeRecipeBuilder {
 
     @ZenMethod
     public CTLargeRecipeBuilder fluidInputs(ILiquidStack... ingredients) {
-        this.largeRecipeBuilder.fluidInputs((Collection)Arrays.stream(ingredients).map(CraftTweakerMC::getLiquidStack).collect(Collectors.toList()));
+        this.largeRecipeBuilder.fluidInputs(Arrays.stream(ingredients).map(CraftTweakerMC::getLiquidStack).collect(Collectors.toList()));
         return this;
     }
 
     @ZenMethod
     public CTLargeRecipeBuilder outputs(IItemStack... ingredients) {
-        this.largeRecipeBuilder.outputs((Collection)Arrays.stream(ingredients).map(CraftTweakerMC::getItemStack).collect(Collectors.toList()));
+        this.largeRecipeBuilder.outputs(Arrays.stream(ingredients).map(CraftTweakerMC::getItemStack).collect(Collectors.toList()));
         return this;
     }
 
@@ -84,7 +83,7 @@ public class CTLargeRecipeBuilder {
 
     @ZenMethod
     public CTLargeRecipeBuilder fluidOutputs(ILiquidStack... ingredients) {
-        this.largeRecipeBuilder.fluidOutputs((Collection)Arrays.stream(ingredients).map(CraftTweakerMC::getLiquidStack).collect(Collectors.toList()));
+        this.largeRecipeBuilder.fluidOutputs(Arrays.stream(ingredients).map(CraftTweakerMC::getLiquidStack).collect(Collectors.toList()));
         return this;
     }
 
@@ -102,7 +101,8 @@ public class CTLargeRecipeBuilder {
     public CTLargeRecipeBuilder property(String key, IItemStack item) {
         boolean applied = this.largeRecipeBuilder.applyProperty(key, CraftTweakerMC.getItemStack(item));
         if (!applied) {
-            throw new IllegalArgumentException("Property " + key + " cannot be applied to recipe type " + this.largeRecipeBuilder.getClass().getSimpleName() + " for Item " + CraftTweakerMC.getItemStack(item).getDisplayName());
+            throw new IllegalArgumentException("Property " + key + " cannot be applied to recipe type "
+                    + this.largeRecipeBuilder.getClass().getSimpleName() + " for Item " + CraftTweakerMC.getItemStack(item).getDisplayName());
         } else {
             return this;
         }

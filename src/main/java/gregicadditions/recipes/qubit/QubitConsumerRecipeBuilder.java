@@ -7,12 +7,14 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.ValidationResult;
+import mcp.MethodsReturnNonnullByDefault;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @see Recipe
  */
 
+@MethodsReturnNonnullByDefault
 public class QubitConsumerRecipeBuilder extends RecipeBuilder<QubitConsumerRecipeBuilder> {
 
     private int qubit;

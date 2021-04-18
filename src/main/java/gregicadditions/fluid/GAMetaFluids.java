@@ -5,6 +5,7 @@ import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.FluidTooltipUtil;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -50,6 +51,7 @@ public class GAMetaFluids {
             fluid.setTemperature(fluidMat.temperature);
             if (!FluidRegistry.isFluidRegistered(fluid.getName())) {
                 FluidRegistry.registerFluid(fluid);
+                FluidTooltipUtil.registerTooltip(fluid, fluidMat.getFormula());
                 FluidRegistry.addBucketForFluid(fluid);
                 fluidMat.fluid = fluid;
             } else {
@@ -63,6 +65,7 @@ public class GAMetaFluids {
                 plasma.setTemperature(fluidMat.temperature + 10000);
                 if (!FluidRegistry.isFluidRegistered(plasma.getName())) {
                     FluidRegistry.registerFluid(plasma);
+                    FluidTooltipUtil.registerTooltip(plasma, fluidMat.getFormula());
                     FluidRegistry.addBucketForFluid(plasma);
                     fluidMat.plasma = plasma;
                 } else {

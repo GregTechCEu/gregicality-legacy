@@ -17,7 +17,6 @@ import gregtech.api.capability.IControllable;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.machines.RecipeMapFurnace;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import mezz.jei.api.*;
@@ -76,7 +75,7 @@ public class JEIGAPlugin implements IModPlugin {
         for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
             List<GARecipeWrapper> recipesList = recipeMap.getRecipeList()
                     .stream().filter(recipe -> !recipe.isHidden() && recipe.hasValidInputsForDisplay())
-                    .map(r -> new GARecipeWrapper(recipeMap, r))
+                    .map(r -> new GARecipeWrapper(r))
                     .collect(Collectors.toList());
             registry.addRecipes(recipesList, Gregicality.MODID + ":" + recipeMap.unlocalizedName);
         }

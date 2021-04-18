@@ -18,11 +18,6 @@ public class FluidCellIngredient extends Ingredient {
 
 	Fluid fluid;
 
-	/**
-	 * @param fluid
-	 * @param count Set to 0 for non consumable
-	 * @return
-	 */
 	public static CountableIngredient getIngredient(Fluid fluid, int count) {
 		return new CountableIngredient(new FluidCellIngredient(fluid), count);
 	}
@@ -38,11 +33,13 @@ public class FluidCellIngredient extends Ingredient {
 
 	@Override
 	public boolean apply(@Nullable ItemStack itemStack) {
+	    if (itemStack == null)
+	        return false;
 		IFluidHandlerItem stackFluid = itemStack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		if (!MetaItems.FLUID_CELL.isItemEqual(itemStack))
 			return false;
 		FluidStack drained = stackFluid == null ? null : ((FluidHandlerItemStackSimple) stackFluid).getFluid();
-		return itemStack != null && drained != null && drained.getFluid() == fluid && drained.amount == 1000;
+		return drained != null && drained.getFluid() == fluid && drained.amount == 1000;
 	}
 
 	@Override
