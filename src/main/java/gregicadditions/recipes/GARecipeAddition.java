@@ -922,6 +922,7 @@ public class GARecipeAddition {
                     .outputs(ROBOT_ARM_IV.getStackForm())
                     .buildAndRegister();
 
+
             // FIELD GENERATORS -------------------------------------------------------------------------
             ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(30)
                     .inputs(CountableIngredient.from(circuit, MarkerMaterials.Tier.Basic, 2))
