@@ -7,6 +7,7 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.ValidationResult;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -17,7 +18,7 @@ import java.util.Map;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 
-
+@MethodsReturnNonnullByDefault
 public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder> {
 
     private int coilTier;

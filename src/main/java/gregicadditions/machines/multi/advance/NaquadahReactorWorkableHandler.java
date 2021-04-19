@@ -23,9 +23,6 @@ public class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
     public NaquadahReactorWorkableHandler(MetaTileEntity metaTileEntity, FuelRecipeMap recipeMap,
                                           Supplier<IEnergyContainer> energyContainer, Supplier<IMultipleTankHandler> fluidTank, long maxVoltage) {
         super(metaTileEntity, recipeMap, energyContainer, fluidTank, maxVoltage);
-        FUELS.put(GAMaterials.HyperFuelIII.getFluid(Integer.MAX_VALUE), 12);
-        FUELS.put(GAMaterials.HyperFuelII.getFluid(Integer.MAX_VALUE), 8);
-        FUELS.put(GAMaterials.HyperFuelI.getFluid(Integer.MAX_VALUE), 5);
         FUELS.put(GAMaterials.HeavyENaquadahFuel.getFluid(Integer.MAX_VALUE), 3);
         FUELS.put(GAMaterials.MediumENaquadahFuel.getFluid(Integer.MAX_VALUE), 2);
         FUELS.put(GAMaterials.HeavyNaquadahFuel.getFluid(Integer.MAX_VALUE), 2);

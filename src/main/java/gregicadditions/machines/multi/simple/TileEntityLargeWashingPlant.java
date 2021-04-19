@@ -36,8 +36,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
@@ -97,12 +97,6 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         return GAMetaBlocks.METAL_CASING.get(casingMaterial);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.multiblock.large_washing_plant.description"));
     }
 
     @Override
@@ -175,7 +169,7 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
         maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return (pos == 1) ? Textures.CHEMICAL_BATH_OVERLAY : Textures.ORE_WASHER_OVERLAY;

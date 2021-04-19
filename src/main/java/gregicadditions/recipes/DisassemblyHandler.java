@@ -119,6 +119,7 @@ public class DisassemblyHandler {
      * This MUST be run after all other recipe registration, except for Material
      * decomposition handlers, as it is an unrelated category of recipes.
      */
+    @SuppressWarnings("unused")
     public static void buildArcRecipes() {
         // WIP
     }

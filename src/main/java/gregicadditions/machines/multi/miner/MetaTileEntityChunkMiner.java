@@ -103,7 +103,7 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
         TankWidget tankWidget = new TankWidget(importFluids.getTankAt(0), 69, 52, 18, 18)
                 .setHideTooltip(true).setAlwaysShowFull(true);
         builder.widget(tankWidget);
-        builder.label(11, 18, "gregtech.gui.fluid_amount", 0xFFFFFF);
+        builder.label(11, 20, "gregtech.gui.fluid_amount", 0xFFFFFF);
         builder.dynamicLabel(11, 30, tankWidget::getFormattedFluidAmount, 0xFFFFFF);
         builder.dynamicLabel(11, 40, tankWidget::getFluidLocalizedName, 0xFFFFFF);
 

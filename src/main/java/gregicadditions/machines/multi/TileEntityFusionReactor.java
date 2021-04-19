@@ -26,17 +26,20 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
+import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
@@ -192,6 +195,24 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
 
         textList.add(new TextComponentString("EU: " + this.energyContainer.getEnergyStored() + " / " + this.energyContainer.getEnergyCapacity()));
         textList.add(new TextComponentTranslation("gtadditions.multiblock.fusion_reactor.heat", heat));
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        switch (tier) {
+            case 6: {
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "1,600,000"));
+                break;
+            }
+            case 7: {
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "3,200,000"));
+                break;
+            }
+            case 8: {
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "6,400,000"));
+                break;
+            }
+        }
     }
 
     @Override

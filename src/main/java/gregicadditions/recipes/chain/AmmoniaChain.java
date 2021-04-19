@@ -7,32 +7,35 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
-
 public class AmmoniaChain {
     public static void init() {
+
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust, Garnierite)
-                .inputs(Alumina.getItemStack())
-                .outputs(NiAlOCatalyst.getItemStack())
+                .input(dust, Garnierite, 2)
+                .inputs(Alumina.getItemStack(5))
+                .outputs(NiAlOCatalyst.getItemStack(7))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .input(dust, BandedIron)
-                .inputs(ChromiumOxide.getItemStack())
-                .outputs(FeCrOCatalyst.getItemStack())
+                .input(dust, Iron)
+                .input(dust, ChromiumTrioxide, 4)
+                .outputs(FeCrOCatalyst.getItemStack(5))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(60).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .notConsumable(NiAlOCatalyst.getItemStack())
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(Steam.getFluid(1000))
-                .fluidOutputs(PoorNitrogenMix.getFluid(2000))
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .fluidInputs(PoorNitrogenMix.getFluid(2000))
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(RichNitrogenMix.getFluid(3000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
+                .notConsumable(NiAlOCatalyst.getItemStack())
+                .fluidInputs(Methane.getFluid(1000))
+                .fluidInputs(Steam.getFluid(1000))
+                .fluidInputs(Nitrogen.getFluid(1000))
+                .fluidOutputs(RichNitrogenMix.getFluid(5000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(120)
@@ -74,7 +77,6 @@ public class AmmoniaChain {
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(PurifiedNitrogenMix.getFluid(1000))
                 .buildAndRegister();
-
     }
 }
 

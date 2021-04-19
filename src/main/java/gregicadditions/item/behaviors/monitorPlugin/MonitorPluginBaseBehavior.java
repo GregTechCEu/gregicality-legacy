@@ -24,8 +24,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -78,7 +78,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
      * @param id PacketID
      * @param buf PacketBuffer
      */
-    public void writePluginData(int id, @NotNull Consumer<PacketBuffer> buf) {
+    public void writePluginData(int id, @Nonnull Consumer<PacketBuffer> buf) {
         if (screen != null && this.screen.getWorld() != null && !this.screen.getWorld().isRemote) {
             screen.writeCustomData(2, packetBuffer->{
                 packetBuffer.writeVarInt(id);
@@ -101,7 +101,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
      * @param id PacketID
      * @param buf PacketBuffer
      */
-    public void writePluginAction(int id, @NotNull Consumer<PacketBuffer> buf) {
+    public void writePluginAction(int id, @Nonnull Consumer<PacketBuffer> buf) {
         NetworkHandler.channel.sendToServer(new CPacketPluginSynced(this, id, buf).toFMLPacket());
     }
 

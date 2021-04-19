@@ -14,8 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,8 +76,8 @@ public class GADustItem extends StandardMetaItem {
     public void addInformation(ItemStack itemStack, @Nullable World worldIn, List<String> lines, ITooltipFlag tooltipFlag) {
         super.addInformation(itemStack, worldIn, lines, tooltipFlag);
         String oreDict = OreDictUnifier.getOreDictionaryNames(itemStack).stream().filter(oreDictToSimpleDust::containsKey).findFirst().orElse("");
-        if (!oreDict.isEmpty() && !oreDictToSimpleDust.get(oreDict).chemicalFormula.isEmpty()) {
-            lines.add(oreDictToSimpleDust.get(oreDict).chemicalFormula);
+        if (!oreDict.isEmpty() && !oreDictToSimpleDust.get(oreDict).getFormula().isEmpty()) {
+            lines.add(oreDictToSimpleDust.get(oreDict).getFormula());
         }
     }
 }

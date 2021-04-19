@@ -13,96 +13,133 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class GoldChain {
 
     public static void init() {
-        //GOLD process
 
+        /* Gold Chain Attempt #4
+         *
+         * This chain has undergone a very careful re-balance to make it more rewarding and less intimidating.
+         *
+         * The main stages of the chain:
+         *
+         * - Precious Metal Ingot: Smelts to 1 nugget of gold
+         * - Gold Alloy: Centrifuges to 1 nugget of gold each, 4 nuggets total per Precious Metal
+         * - Gold Leach: Electrolyzes to 2 nuggets of gold each, 8 nuggets total per Precious Metal
+         * - Chloroauric Acid: The step creating this outputs the byproducts, and returns the Copper from Gold Alloy
+         * - Chloroauric Acid: Processes into 2 ingots
+         *
+         * In the end, each step has a major compensation, but each step is reasonable return.
+         * STEP 1: +3 nuggets of gold
+         * STEP 2: +4 nuggets of gold
+         * STEP 3: +byproducts and Copper no longer voided
+         * STEP 4: +10 nuggets of gold
+         *
+         * Everything else in this chain is a fully closed loop.
+         */
+
+        // RECOVERY STEPS ==============================================================================================
+
+        // Step 0 recovery (1 nugget per PM)
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, PreciousMetal), OreDictUnifier.get(nugget, Gold));
-        ModHandler.addSmeltingRecipe(OreDictUnifier.get(dust, GoldLeach), OreDictUnifier.get(nugget, Gold, 2));
 
-        BLAST_RECIPES.recipeBuilder().EUt(120).duration(100).blastFurnaceTemp(750)
-                .input(dust, PreciousMetal)
-                .input(dust, Copper, 3)
-                .outputs(OreDictUnifier.get(ingot, GoldAlloy, 4))
+        // Step 1 recovery (8 nuggets per PM)
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, GoldAlloy, 4)
+                .output(dust, Copper, 3)
+                .output(dustTiny, Gold, 4)
+                .duration(500)
+                .EUt(30)
+                .buildAndRegister();
+
+        // Step 2 recovery (16 nuggets per PM)
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .inputs(GoldLeach.getItemStack(4))
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .output(dust, Copper, 3)
+                .output(dustTiny, Gold, 8)
+                .duration(300)
+                .EUt(30)
+                .buildAndRegister();
+
+        // Step 3 recovery
+        // This step does not directly process Chloroauric Acid, and instead is processing
+        // other byproducts from the chain, which are compacted from the older versions of the chain.
+        // Cu3? -> 3Cu + Fe + Ni + Ag + Pb
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(80)
+                .inputs(CopperLeach.getItemStack(4))
+                .output(dust, Copper, 3)
+                .chancedOutput(OreDictUnifier.get(dust, Lead), 1500, 500)
+                .chancedOutput(OreDictUnifier.get(dust, Iron), 1200, 400)
+                .chancedOutput(OreDictUnifier.get(dust, Nickel), 1000, 300)
+                .chancedOutput(OreDictUnifier.get(dust, Silver), 800, 200)
                 .buildAndRegister();
 
 
+        // MAIN CHAIN ==================================================================================================
+
+        // STEP 1
+        // Au? + 3Cu -> Cu3Au?
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, PreciousMetal)
+                .input(dust, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(ingot, PreciousMetal)
+                .input(dust, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, PreciousMetal)
+                .input(ingot, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(ingot, PreciousMetal)
+                .input(ingot, Copper, 3)
+                .output(ingot, GoldAlloy, 4)
+                .buildAndRegister();
+
+        // STEP 2
+        // Cu3Au? + HNO3 -> Cu3Au?(OH) + NO2
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
                 .input(ingot, GoldAlloy, 4)
                 .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, GoldLeach))
+                .outputs(GoldLeach.getItemStack(4))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .fluidOutputs(PreciousLeachNitrate.getFluid(3000))
                 .buildAndRegister();
 
+        // STEP 3
+        // Cu3Au?(OH) + HCl -> HAuCl(OH) + Cu3?
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
-                .input(dust, GoldLeach)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidInputs(AquaRegia.getFluid(1000))
-                .chancedOutput(OreDictUnifier.get(dustTiny, LeadNitrate), 1000, 0)
+                .inputs(GoldLeach.getItemStack(4))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .outputs(CopperLeach.getItemStack(4))
                 .fluidOutputs(ChloroauricAcid.getFluid(1000))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(80).EUt(30)
+        // STEP 4
+        // HAuCl(OH) -> Au + H2O + Cl
+        CHEMICAL_RECIPES.recipeBuilder().duration(100)
+                .fluidInputs(ChloroauricAcid.getFluid(1000))
+                .notConsumable(dust, PotassiumMetabisulfite)
+                .output(dust, Gold, 2)
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .buildAndRegister();
+
+        // SIDE INGREDIENTS ============================================================================================
+
+        // NOT CONSUMED INGREDIENT
+        MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .notConsumable(new IntCircuitIngredient(1))
                 .input(dust, Potassium, 2)
                 .input(dust, Sulfur, 2)
                 .fluidInputs(Oxygen.getFluid(5000))
-                .outputs(OreDictUnifier.get(dust, PotassiumMetabisulfite, 9))
+                .output(dust, PotassiumMetabisulfite, 9)
                 .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(100)
-                .input(dust, PotassiumMetabisulfite)
-                .fluidInputs(ChloroauricAcid.getFluid(10000))
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Gold, 9))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(100)
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidInputs(PreciousLeachNitrate.getFluid(10000))
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SilverChloride, 3))
-                .fluidOutputs(CopperLeach.getFluid(7000))
-                .buildAndRegister();
-        CHEMICAL_RECIPES.recipeBuilder().duration(80)
-                .input(dust, SilverChloride, 2)
-                .input(dust, SodiumHydroxide)
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SilverOxide, 2))
-                .fluidOutputs(Chlorine.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(80).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, SilverOxide, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Silver, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(150)
-                .fluidInputs(CopperLeach.getFluid(10000))
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dust, CopperLeach), 9000, 0)
-                .buildAndRegister();
-        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(100).EUt(120)
-                .input(dust, CopperLeach, 9)
-                .outputs(OreDictUnifier.get(dustTiny, Copper, 8))
-                .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 5000, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Nickel), 5000, 0)
-                .buildAndRegister();
-
-
     }
 }

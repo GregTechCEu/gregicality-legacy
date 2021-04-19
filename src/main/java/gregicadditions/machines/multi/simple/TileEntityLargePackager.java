@@ -35,8 +35,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -101,7 +101,7 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        super.addInformation(stack, player, tooltip, advanced);
     }
 
 
@@ -176,7 +176,7 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
         maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return (pos == 1) ? Textures.UNPACKER_OVERLAY : Textures.PACKER_OVERLAY;

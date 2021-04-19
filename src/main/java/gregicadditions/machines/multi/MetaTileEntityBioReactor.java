@@ -26,8 +26,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -171,7 +171,7 @@ public class MetaTileEntityBioReactor extends GARecipeMapMultiblockController {
         return new MetaTileEntityBioReactor(metaTileEntityId);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return ClientHandler.ORGANIC_REPLICATOR_OVERLAY;

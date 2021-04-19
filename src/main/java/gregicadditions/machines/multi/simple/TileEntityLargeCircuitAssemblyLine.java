@@ -31,8 +31,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
@@ -196,7 +196,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
         return GAMetaBlocks.getMetalCasingBlockState(Steel);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return Textures.ASSEMBLER_OVERLAY;

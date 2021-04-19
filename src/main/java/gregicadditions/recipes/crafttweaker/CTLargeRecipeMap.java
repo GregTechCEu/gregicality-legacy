@@ -13,15 +13,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.*;
 
-
 import javax.annotation.Nullable;
 import java.util.List;
 
 @ZenClass("mods.gtadditions.recipe.LargeRecipeMap")
 @ZenRegister
+@SuppressWarnings("unused")
 public class CTLargeRecipeMap {
 
-    private LargeRecipeMap largeRecipeMap;
+    private final LargeRecipeMap largeRecipeMap;
 
     CTLargeRecipeMap(LargeRecipeMap largeRecipeMap) {
         this.largeRecipeMap = largeRecipeMap;

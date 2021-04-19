@@ -255,7 +255,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
         }
         if (this.isStructureFormed()) {
             if (!this.canWork) {
-                textList.add(new TextComponentTranslation("gregicality.multiblock.invalid_configuraion.1"));
+                textList.add(new TextComponentTranslation("gregicality.multiblock.invalid_configuraion.1").setStyle(new Style().setColor(TextFormatting.RED)));
                 textList.add(new TextComponentTranslation("gregicality.multiblock.invalid_configuraion.2"));
             } else {
                 if (!this.recipeMapWorkable.isWorkingEnabled()) {

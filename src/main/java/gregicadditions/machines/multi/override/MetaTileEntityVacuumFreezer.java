@@ -11,7 +11,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +18,9 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.util.text.event.HoverEvent;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static gregtech.api.unification.material.Materials.Aluminium;
@@ -69,10 +69,14 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
             if (recipeMapWorkable.isHasNotEnoughEnergy()) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             }
+        } else {
+            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip", new Object[0]);
+            tooltip.setStyle((new Style()).setColor(TextFormatting.GRAY));
+            textList.add((new TextComponentTranslation("gregtech.multiblock.invalid_structure", new Object[0])).setStyle((new Style()).setColor(TextFormatting.RED).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return ClientHandler.FREEZER_OVERLAY;

@@ -19,8 +19,8 @@ import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -70,7 +70,7 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
 		return Textures.ASSEMBLER_OVERLAY;

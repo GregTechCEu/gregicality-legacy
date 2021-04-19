@@ -12,7 +12,6 @@ import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.builders.ImplosionRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -106,11 +105,11 @@ public class GARecipeMaps {
         SIEVE_RECIPES = (new SieveRecipeMap("electric_sieve", 2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL));
         ATTRACTOR_RECIPES = new RecipeMap<>("attractor", 0, 1, 1, 6, 1, 1, 0, 0, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         HOT_COOLANT_TURBINE_FUELS = new HotCoolantRecipeMap("hot_coolant_turbine");
-        LARGE_CHEMICAL_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_chemical_reactor", 0, 3, 0, 2, 0, 5, 0, 4, (new LargeRecipeBuilder(RecipeMaps.CHEMICAL_RECIPES)).EUt(30)).setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2).setSlotOverlay(false, true, GuiTextures.MOLECULAR_OVERLAY_3).setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1).setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL);
+        LARGE_CHEMICAL_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_chemical_reactor", 0, 3, 0, 3, 0, 5, 0, 4, (new LargeRecipeBuilder(RecipeMaps.CHEMICAL_RECIPES)).EUt(30)).setSlotOverlay(false, false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSlotOverlay(false, false, true, GuiTextures.MOLECULAR_OVERLAY_2).setSlotOverlay(false, true, GuiTextures.MOLECULAR_OVERLAY_3).setSlotOverlay(true, false, GuiTextures.VIAL_OVERLAY_1).setSlotOverlay(true, true, GuiTextures.VIAL_OVERLAY_2).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL);
         CHEMICAL_DEHYDRATOR_RECIPES = new RecipeMap<>("chemical_dehydrator", 0, 2, 0, 9, 0, 2, 0, 2, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
         ROCKET_FUEL_RECIPES = new FuelRecipeMap("rocket_fuel");
-        CHEMICAL_PLANT_RECIPES = new RecipeMapExtended<>("chemical_plant", 0, 4, 0, 2, 0, 5, 0, 4, (new SimpleRecipeBuilder()))
+        CHEMICAL_PLANT_RECIPES = new RecipeMapExtended<>("chemical_plant", 0, 6, 0, 4, 0, 5, 0, 4, (new SimpleRecipeBuilder()))
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
         LARGE_MIXER_RECIPES = (LargeRecipeMap) new RecipeMapLargeExtended<>("large_mixer", 0, 9, 0, 1, 0, 6, 0, 1, new LargeRecipeBuilder(RecipeMaps.MIXER_RECIPES))
                 .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
@@ -155,7 +154,7 @@ public class GARecipeMaps {
         GAS_CENTRIFUGE_RECIPES = new RecipeMap<>("gas_centrifuge", 1, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
                 .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.VERTICAL_INVERTED);
-        LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 0, 0, 0, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
+        LARGE_ENGRAVER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_engraver", 2, 2, 1, 1, 0, 1, 0, 1, new LargeRecipeBuilder(RecipeMaps.LASER_ENGRAVER_RECIPES))
                 .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,

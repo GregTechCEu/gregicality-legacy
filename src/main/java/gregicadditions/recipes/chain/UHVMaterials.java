@@ -19,6 +19,7 @@ import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 
 public class UHVMaterials {
     public static void init() {
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(dust, Naquadria)
                 .inputs(GELLED_TOLUENE.getStackForm(2))
@@ -30,6 +31,7 @@ public class UHVMaterials {
                 .EUt(2000000)
                 .duration(100)
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder()
                 .input(ingot, Rhenium)
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
@@ -37,6 +39,7 @@ public class UHVMaterials {
                 .EUt(2000000)
                 .duration(20)
                 .buildAndRegister();
+
         FLUID_CANNER_RECIPES.recipeBuilder()
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
@@ -44,6 +47,7 @@ public class UHVMaterials {
                 .EUt(500000)
                 .duration(20)
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .inputs(RHENIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(LiquidHelium.getFluid(16000))
@@ -54,16 +58,19 @@ public class UHVMaterials {
                 .EUt(500000)
                 .duration(250)
                 .buildAndRegister();
+
         VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(Helium.getFluid(5000))
                 .fluidOutputs(LiquidHelium.getFluid(5000))
                 .EUt(122880)
                 .duration(20)
                 .buildAndRegister();
+      
         OrePrefix plateB = plate;
         if (GAConfig.GT6.addCurvedPlates) {
             plateB = plateCurved;
         }
+      
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, NeodymiumMagnetic, 2)
                 .input(wireGtSingle, UVSuperconductor, 16)
@@ -75,6 +82,7 @@ public class UHVMaterials {
                 .EUt(1500000)
                 .duration(50)
                 .buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plate, Mendelevium.getMaterial())
                 .inputs(GELLED_TOLUENE.getStackForm(4))
@@ -87,6 +95,7 @@ public class UHVMaterials {
                 .EUt(125000000)
                 .duration(5)
                 .buildAndRegister();
+
         BLAST_ALLOY_RECIPES.recipeBuilder()
                 .input(dust, Seaborgium)
                 .input(dust, Bohrium)
@@ -96,6 +105,7 @@ public class UHVMaterials {
                 .EUt(100000000)
                 .duration(40)
                 .buildAndRegister();
+
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_BLOCK)
                 .fluidInputs(SuperheavyMix.getFluid(1000))
@@ -103,6 +113,7 @@ public class UHVMaterials {
                 .EUt(100000000)
                 .duration(40)
                 .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder()
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.SUPERHEAVY_BLOCK))
                 .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.TARANIUM_CHARGE))
@@ -110,6 +121,7 @@ public class UHVMaterials {
                 .EUt(100000000)
                 .duration(10)
                 .buildAndRegister();
+
         FLUID_CANNER_RECIPES.recipeBuilder()
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(NeutronPlasma.getFluid(1000))
@@ -117,18 +129,25 @@ public class UHVMaterials {
                 .EUt(25000000)
                 .duration(80)
                 .buildAndRegister();
+
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .inputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(LiquidHelium.getFluid(32000))
                 .fluidOutputs(Helium.getFluid(32000))
                 .notConsumable(INGOT_FIELD_SHAPE.getStackForm())
-                .outputs(OreDictUnifier.get(ingot, Neutronium))
+                .output(ingot, Neutronium)
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .EUt(10000000)
                 .duration(500)
                 .buildAndRegister();
+
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, Stone)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
                 .EUt(524288)
                 .duration(2)

@@ -7,6 +7,8 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.ValidationResult;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
+
 public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
 
     private final RecipeMap<?> simple;
@@ -22,6 +24,7 @@ public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
     }
 
     @Override
+    @Nonnull
     public LargeRecipeBuilder copy() {
         return new LargeRecipeBuilder(this);
     }
@@ -30,7 +33,6 @@ public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
         dupeForSimple = true;
         return this;
     }
-
 
     @Override
     public void buildAndRegister() {
@@ -49,6 +51,7 @@ public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
         super.buildAndRegister();
     }
 
+    @Nonnull
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,

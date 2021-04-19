@@ -1,6 +1,5 @@
 package gregicadditions.recipes.chain;
 
-import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 
@@ -15,6 +14,7 @@ public class NuclearChain {
 
     public static void init() {
         //NUCLEAR PROCESSING
+
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(3000).EUt(30)
                 .inputs(THORIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 560, 0)
@@ -91,59 +91,102 @@ public class NuclearChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
                 .buildAndRegister();
 
+        // 3K + 7Na -> Na7K3
         MIXER_RECIPES.recipeBuilder().duration(300).EUt(120)
                 .input(dust, Potassium, 3)
                 .input(dust, Sodium, 7)
-                .outputs(OreDictUnifier.get(dust, SodiumPotassiumAlloy, 10))
+                .output(dust, SodiumPotassiumAlloy, 10)
                 .buildAndRegister();
 
-
+        // LiOH(H2O) + HF -> LiF + 2H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .fluidInputs(LithiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, LithiumFluoride))
-                .fluidOutputs(Water.getFluid(1000))
+                .output(dust, LithiumFluoride, 2)
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
+        // Na + F -> NaF
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Sodium)
                 .fluidInputs(Fluorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, SodiumFluoride))
+                .output(dust, SodiumFluoride, 2)
                 .buildAndRegister();
 
+        // K + F -> KF
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Potassium)
                 .fluidInputs(Fluorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, PotassiumFluoride))
+                .output(dust, PotassiumFluoride, 2)
                 .buildAndRegister();
 
+        // LiF + NaF + KF -> LiNaKF3
         MIXER_RECIPES.recipeBuilder().EUt(64).duration(600)
-                .input(dust, LithiumFluoride)
-                .input(dust, SodiumFluoride)
-                .input(dust, PotassiumFluoride)
-                .outputs(OreDictUnifier.get(dust, FLiNaK, 3))
+                .input(dust, LithiumFluoride, 2)
+                .input(dust, SodiumFluoride, 2)
+                .input(dust, PotassiumFluoride, 2)
+                .output(dust, FLiNaK, 6)
                 .buildAndRegister();
+
+        // Be + 2F -> BeF2
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .input(dust, Beryllium)
-                .fluidInputs(Fluorine.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, BerylliumFluoride))
+                .fluidInputs(Fluorine.getFluid(2000))
+                .output(dust, BerylliumFluoride, 3)
                 .buildAndRegister();
+
+        // LiF + BeF2 -> F3LiBe
         MIXER_RECIPES.recipeBuilder().duration(600).EUt(64)
-                .input(dust, LithiumFluoride)
-                .input(dust, BerylliumFluoride)
-                .outputs(OreDictUnifier.get(dust, FLiBe, 2))
+                .input(dust, LithiumFluoride, 2)
+                .input(dust, BerylliumFluoride, 3)
+                .output(dust, FLiBe, 5)
+                .buildAndRegister();
+
+        // 3Pb + 7Bi -> Pb3Bi7
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(dust, Lead, 3)
+                .input(dust, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(ingot, Lead, 3)
+                .input(dust, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
                 .input(dust, Lead, 3)
-                .input(dust, Bismuth, 7)
-                .outputs(OreDictUnifier.get(dust, LeadBismuthEutectic, 10))
+                .input(ingot, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(560).duration(2000).input(dust, LeadBismuthEutectic).fluidOutputs(LeadBismuthEutectic.getFluid(GTValues.L)).buildAndRegister();
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(2000).input(dust, FLiBe).fluidOutputs(FLiBe.getFluid(GTValues.L)).buildAndRegister();
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(1000).input(dust, FLiNaK).fluidOutputs(FLiNaK.getFluid(GTValues.L)).buildAndRegister();
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60).input(dust, SodiumPotassiumAlloy).fluidOutputs(SodiumPotassiumAlloy.getFluid(GTValues.L)).buildAndRegister();
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1000).EUt(16)
+                .input(ingot, Lead, 3)
+                .input(ingot, Bismuth, 7)
+                .output(dust, LeadBismuthEutectic, 10)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(560).duration(2000)
+                .input(dust, LeadBismuthEutectic)
+                .fluidOutputs(LeadBismuthEutectic.getFluid(144))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(2000)
+                .input(dust, FLiBe)
+                .fluidOutputs(FLiBe.getFluid(144))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(480).duration(1000)
+                .input(dust, FLiNaK)
+                .fluidOutputs(FLiNaK.getFluid(144))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(250).duration(60)
+                .input(dust, SodiumPotassiumAlloy)
+                .fluidOutputs(SodiumPotassiumAlloy.getFluid(144))
+                .buildAndRegister();
+
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
 
@@ -224,10 +267,10 @@ public class NuclearChain {
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
                 .inputs(NUCLEAR_WASTE_METAL_C.getStackForm())
-                .outputs(OreDictUnifier.get(dustTiny, Iron, 2))
-                .outputs(OreDictUnifier.get(dustTiny, Cobalt, 2))
-                .outputs(OreDictUnifier.get(dustTiny, Nickel, 2))
-                .outputs(OreDictUnifier.get(dustTiny, Copper, 2))
+                .output(dustTiny, Iron, 2)
+                .output(dustTiny, Cobalt, 2)
+                .output(dustTiny, Nickel, 2)
+                .output(dustTiny, Copper, 2)
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(3000)
@@ -265,10 +308,8 @@ public class NuclearChain {
                 .EUt(60)
                 .duration((int) Uraninite.getAverageProtons() * 3 * 8)
                 .input(dust, Uraninite, 3)
-                .outputs(OreDictUnifier.get(dust, UraniumRadioactive.getMaterial()))
+                .output(dust, UraniumRadioactive.getMaterial())
                 .fluidOutputs(Oxygen.getFluid(2000))
                 .buildAndRegister();
-
-
     }
 }

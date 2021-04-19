@@ -89,7 +89,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
 
-            String myRecipeMap = ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName;
+            String myRecipeMap = "recipemap." + ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName + ".name";
             if (myRecipeMap != null) {
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
@@ -141,7 +141,7 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
                 recipeMapName = null;
                 return null;
             }
-            recipeMapName = recipeMap.getLocalizedName();
+            recipeMapName = recipeMap.getUnlocalizedName();
 
             List<IItemHandlerModifiable> itemInputs = ((TileEntityProcessingArray) this.getMetaTileEntity()).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             Tuple<Recipe, IItemHandlerModifiable> recipePerInput = itemInputs.stream()

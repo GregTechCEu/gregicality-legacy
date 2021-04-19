@@ -9,7 +9,7 @@ import java.util.List;
 
 public class LargeRecipeMap extends RecipeMap<LargeRecipeBuilder> {
 
-    private static final List<LargeRecipeMap> LARGE_RECIPE_MAPS = new ArrayList();
+    private static final List<LargeRecipeMap> LARGE_RECIPE_MAPS = new ArrayList<>();
 
     public LargeRecipeMap(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, LargeRecipeBuilder defaultRecipe) {
         super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe);
@@ -21,8 +21,6 @@ public class LargeRecipeMap extends RecipeMap<LargeRecipeBuilder> {
     }
 
     public static LargeRecipeMap getLargeMapByName(String unlocalizedName) {
-        return (LargeRecipeMap)LARGE_RECIPE_MAPS.stream().filter((map) -> {
-            return map.unlocalizedName.equals(unlocalizedName);
-        }).findFirst().orElse((LargeRecipeMap) null);
+        return LARGE_RECIPE_MAPS.stream().filter((map) -> map.unlocalizedName.equals(unlocalizedName)).findFirst().orElse(null);
     }
 }

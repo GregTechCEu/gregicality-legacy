@@ -1,10 +1,10 @@
 package gregicadditions.recipes.wrapper;
 
+import codechicken.lib.util.ItemNBTUtils;
 import gregicadditions.GAValues;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.Recipe.ChanceEntry;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.util.ItemStackHashStrategy;
 import it.unimi.dsi.fastutil.Hash;
@@ -16,15 +16,16 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class GARecipeWrapper implements IRecipeWrapper {
 
     private static final int lineHeight = 10;
-    private final RecipeMap<?> recipeMap;
     private final Recipe recipe;
 
     private final Hash.Strategy<ItemStack> strategy = ItemStackHashStrategy.comparingAllButCount();
@@ -33,13 +34,12 @@ public class GARecipeWrapper implements IRecipeWrapper {
     private final Map<ItemStack, ChanceEntry> chanceOutput = new Object2ObjectOpenCustomHashMap<>(strategy);
     private final List<FluidStack> notConsumedFluidInput = new ArrayList<>();
 
-    public GARecipeWrapper(RecipeMap<?> recipeMap, Recipe recipe) {
-        this.recipeMap = recipeMap;
+    public GARecipeWrapper(Recipe recipe) {
         this.recipe = recipe;
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
         if (!recipe.getInputs().isEmpty()) {
             List<CountableIngredient> recipeInputs = recipe.getInputs();
             List<List<ItemStack>> matchingInputs = new ArrayList<>(recipeInputs.size());
@@ -98,6 +98,7 @@ public class GARecipeWrapper implements IRecipeWrapper {
         }
     }
 
+    @SuppressWarnings("unused")
     public void addTooltip(int slotIndex, boolean input, Object ingredient, List<String> tooltip) {
         boolean notConsumed = false;
         ChanceEntry entry = null;
@@ -148,6 +149,4 @@ public class GARecipeWrapper implements IRecipeWrapper {
         }
         return "";
     }
-
-
 }
