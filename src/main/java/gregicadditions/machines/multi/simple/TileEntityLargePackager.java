@@ -101,7 +101,7 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+        super.addInformation(stack, player, tooltip, advanced);
     }
 
 

@@ -35,7 +35,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -203,7 +205,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
                 }
             }
             if (oilWorldInfo.getType() == null) {
-                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.no_fluid"));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.no_fluid").setStyle(new Style().setColor(TextFormatting.RED)));
             } else {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid_drain", fluidDrain()));
                 ITextComponent fluidName = new TextComponentTranslation(oilWorldInfo.getType().getFluid().getUnlocalizedName());

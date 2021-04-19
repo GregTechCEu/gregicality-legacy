@@ -46,6 +46,7 @@ public class HotCoolantRecipeMap {
     }
 
     @ZenMethod
+    // TODO Pretty sure this doesn't work
     public boolean removeRecipe(FuelRecipe recipe) {
         if (recipeList.contains(recipe)) {
             this.recipeList.remove(recipe);
@@ -64,6 +65,7 @@ public class HotCoolantRecipeMap {
 
     @ZenMethod("findRecipe")
     @Method(modid = GTValues.MODID_CT)
+    @SuppressWarnings("unused")
     public HotCoolantRecipe ctFindRecipe(long maxVoltage, ILiquidStack inputFluid) {
         return findRecipe(maxVoltage, CraftTweakerMC.getLiquidStack(inputFluid));
     }

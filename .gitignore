@@ -22,3 +22,4 @@ run
 classes
 logs/debug.log
 logs/latest.log
+*.gz

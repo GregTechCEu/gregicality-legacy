@@ -3,6 +3,7 @@ package gregicadditions.recipes.wrapper;
 import com.google.common.collect.Lists;
 import gregicadditions.worldgen.PumpjackHandler;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -11,6 +12,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,7 +32,7 @@ public class GADrillingRigRecipeWrapper implements IRecipeWrapper {
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        ingredients.setOutput(FluidStack.class, new FluidStack(reservoirType.getFluid(), 1000));
+        ingredients.setOutput(VanillaTypes.FLUID, new FluidStack(reservoirType.getFluid(), 1000));
     }
 
     @Override
@@ -44,11 +46,11 @@ public class GADrillingRigRecipeWrapper implements IRecipeWrapper {
         if(reservoirType.dimensionWhitelist.size() > 0) {
             drawText(minecraft, "gtadditions.recipe.drilling_rig.dimension", x, y);
             drawText(minecraft, "gtadditions.recipe.drilling_rig.whitelist", x, y+9);
-            addDimensionTooltio(reservoirType.dimensionWhitelist);
+            addDimensionTooltip(reservoirType.dimensionWhitelist);
         } else if(reservoirType.dimensionBlacklist.size() > 0) {
             drawText(minecraft, "gtadditions.recipe.drilling_rig.dimension", x, y);
             drawText(minecraft, "gtadditions.recipe.drilling_rig.blacklist", x, y+9);
-            addDimensionTooltio(reservoirType.dimensionBlacklist);
+            addDimensionTooltip(reservoirType.dimensionBlacklist);
         } else {
             drawText(minecraft, "gtadditions.recipe.drilling_rig.no_dimension", x, y+4);
         }
@@ -68,6 +70,7 @@ public class GADrillingRigRecipeWrapper implements IRecipeWrapper {
     }
 
     @Override
+    @Nonnull
     public List<String> getTooltipStrings(int mouseX, int mouseY) {
         for(Map.Entry<Area, List<String>> entry : tooltips.entrySet()) {
             if(entry.getKey().isInArea(mouseX, mouseY)) {
@@ -90,7 +93,7 @@ public class GADrillingRigRecipeWrapper implements IRecipeWrapper {
         tooltips.put(new Area(WIDTH / 2 + 2, 18, WIDTH - 2, 34), getNamesFor(biomes, true));
     }
 
-    public void addDimensionTooltio(List<Integer> biomes) {
+    public void addDimensionTooltip(List<Integer> biomes) {
         if(tooltipSet) return;
         tooltips.put(new Area( 2, 18, WIDTH / 2 - 2, 34), getNamesFor(biomes, false));
     }
@@ -105,10 +108,10 @@ public class GADrillingRigRecipeWrapper implements IRecipeWrapper {
         if(!DimensionManager.isDimensionRegistered(id)) return "" + id;
         DimensionType dim = DimensionManager.getProviderType(id);
         String[] parts = dim.getName().split("_");
-        return String.join(" ", Arrays.stream(parts).map(part -> {
+        return Arrays.stream(parts).map(part -> {
             String s = Character.toString(part.charAt(0));
             return part.replaceFirst(s, s.toUpperCase());
-        }).collect(Collectors.toList()));
+        }).collect(Collectors.joining(" "));
     }
 
     public List<String> getNamesFor(List<Integer> ids, boolean isBiome) {

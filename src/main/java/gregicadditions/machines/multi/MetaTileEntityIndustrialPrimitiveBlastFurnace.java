@@ -31,6 +31,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -38,6 +39,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -329,7 +331,15 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     private void initializeAbilities() {
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.inputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.IMPORT_ITEMS));
-        this.size = getAbilities(MultiblockAbility.EXPORT_ITEMS).size();
+
+        BlockPos pos;
+        EnumFacing direction = this.getFrontFacing().getOpposite();
+        int length = 0;
+        do {
+            pos = this.getPos().offset(direction, ++length);
+        } while (getWorld().getBlockState(pos).getBlock().equals(Blocks.AIR));
+
+        this.size = Math.min(MAX_SIZE, length - 1);
         this.efficiency = (int) ((((-Math.atan(size / 4.0 / PI - MAX_SIZE / 4.0 / PI / 2) + (PI / 2)) / PI + ((-Math.atan(MAX_SIZE / 4.0 / PI / 2) + PI / 2) / PI)/2)) * 100.0);
     }
 
@@ -381,13 +391,13 @@ public class MetaTileEntityIndustrialPrimitiveBlastFurnace extends MultiblockWit
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("YYY", "YYY", "YYY", "YYY")
-                .aisle("YYY", "I#O", "Y#Y", "Y#Y").setRepeatable(1, MAX_SIZE)
+                .aisle("YYY", "YOY", "YYY", "YYY")
+                .aisle("YYY", "I#I", "Y#Y", "Y#Y").setRepeatable(1, MAX_SIZE)
                 .aisle("YYY", "YXY", "YYY", "YYY")
                 .where('X', selfPredicate())
                 .where('#', isAirPredicate())
-                .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[1].metaTileEntityId)))
-                .where('O', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_EXPORT_BUS[1].metaTileEntityId)))
+                .where('I', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[1].metaTileEntityId))))
+                .where('O', statePredicate(getCasingState()).or(tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_EXPORT_BUS[1].metaTileEntityId))))
                 .where('Y', statePredicate(getCasingState()))
                 .build();
     }

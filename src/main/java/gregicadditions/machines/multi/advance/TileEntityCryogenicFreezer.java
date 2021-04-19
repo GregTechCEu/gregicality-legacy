@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,8 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
     private static final int ENERGY_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.energyDecreasePercentage;
 
     private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreasePercentage;
+
+    private final DecimalFormat formatter = new DecimalFormat("#0.0");
 
     public TileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -77,6 +80,9 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.cryogenic_freezer.description"));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(GAConfig.multis.cryogenicFreezer.energyDecreasePercentage / 100.0)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(GAConfig.multis.cryogenicFreezer.durationDecreasePercentage / 100.0)));
     }
 
 

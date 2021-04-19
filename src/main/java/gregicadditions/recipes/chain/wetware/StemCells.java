@@ -15,6 +15,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class StemCells {
     public static void init() {
+
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Meat)
                 .fluidInputs(DistilledWater.getFluid(1000))
@@ -22,6 +23,7 @@ public class StemCells {
                 .EUt(480)
                 .duration(400)
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .notConsumable(dust, Naquadria)
                 .fluidInputs(AnimalCells.getFluid(1000))
@@ -29,6 +31,7 @@ public class StemCells {
                 .EUt(7680)
                 .duration(500)
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(1))
@@ -36,6 +39,7 @@ public class StemCells {
                 .duration(200)
                 .fluidOutputs(MycGene.getFluid(1000))
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
@@ -43,6 +47,7 @@ public class StemCells {
                 .duration(200)
                 .fluidOutputs(Oct4Gene.getFluid(1000))
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(3))
@@ -50,6 +55,7 @@ public class StemCells {
                 .duration(200)
                 .fluidOutputs(SOX2Gene.getFluid(1000))
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(4))
@@ -57,6 +63,7 @@ public class StemCells {
                 .duration(200)
                 .fluidOutputs(KFL4Gene.getFluid(1000))
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .fluidInputs(AnimalCells.getFluid(1000))
@@ -65,6 +72,7 @@ public class StemCells {
                 .duration(1000)
                 .outputs(STEM_CELLS.getStackForm())
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .inputs(STEM_CELLS.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
@@ -73,12 +81,14 @@ public class StemCells {
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
+
         FERMENTING_RECIPES.recipeBuilder()
                 .fluidInputs(DepletedGrowthMedium.getFluid(1000))
                 .fluidOutputs(FermentedBiomass.getFluid(1000))
                 .EUt(120)
                 .duration(200)
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .inputs(StreptococcusPyogenes.getItemStack())
@@ -87,6 +97,7 @@ public class StemCells {
                 .EUt(30720)
                 .duration(200)
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(Cas9.getFluid(1000))
                 .fluidInputs(MycGene.getFluid(1000))
@@ -98,6 +109,7 @@ public class StemCells {
                 .EUt(30720)
                 .duration(250)
                 .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .input("listAllmushroom", 1)
@@ -105,6 +117,7 @@ public class StemCells {
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .inputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1))
@@ -112,6 +125,7 @@ public class StemCells {
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .inputs(new ItemStack(Blocks.RED_MUSHROOM, 1))
@@ -119,6 +133,7 @@ public class StemCells {
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
+
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(Chitin.getFluid(1000))
                 .inputs(BifidobacteriumBreve.getItemStack())
@@ -126,6 +141,7 @@ public class StemCells {
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(GenePlasmids.getFluid(1000))
                 .fluidInputs(Chitosan.getFluid(1000))

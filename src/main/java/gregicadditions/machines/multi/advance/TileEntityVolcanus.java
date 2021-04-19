@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,8 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
     private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.volcanus.durationDecreasePercentage;
 
     private static final int ENERGY_DECREASE_FACTOR = GAConfig.multis.volcanus.energyDecreasePercentage;
+
+    private final DecimalFormat formatter = new DecimalFormat("#0.0");
 
     public TileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -75,6 +78,9 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.volcanus.description"));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(GAConfig.multis.volcanus.energyDecreasePercentage / 100.0)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(GAConfig.multis.volcanus.durationDecreasePercentage / 100.0)));
     }
 
     public class VolcanusRecipeLogic extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {

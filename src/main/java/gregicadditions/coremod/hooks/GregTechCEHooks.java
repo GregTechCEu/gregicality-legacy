@@ -26,6 +26,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 
+@SuppressWarnings("unused")
 public class GregTechCEHooks {
 
     //origin: gregtech/api/metatileentity/MetaTileEntityHolder/hasFastRenderer

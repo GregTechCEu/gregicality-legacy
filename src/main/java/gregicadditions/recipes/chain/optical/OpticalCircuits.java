@@ -10,6 +10,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class OpticalCircuits {
     public static void init() {
+
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
                 .input(wireFine, Pikyonium, 8)
                 .input(plate, LithiumNiobate, 4)
@@ -36,7 +37,7 @@ public class OpticalCircuits {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
                 .input(wireFine, Cinobite, 8)
-                .inputs(SodiumSeaborgate.getItemStack(4))
+                .inputs(SodiumSeaborgate.getItemStack(5))
                 .input(dust, TriniumTitanium, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(1296))
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
@@ -48,7 +49,7 @@ public class OpticalCircuits {
                 .fluidInputs(CarbonNanotubes.getFluid(144))
                 .fluidInputs(SeaborgiumDopedNanotubes.getFluid(144))
                 .input(dust, IndiumPhospide)
-                .fluidInputs(DielectricMirrorFormationMix.getFluid(2000))
+                .fluidInputs(DielectricMirrorFormationMix.getFluid(400))
                 .outputs(OPTICAL_SOC_WAFER.getStackForm())
                 .buildAndRegister();
 
@@ -77,6 +78,5 @@ public class OpticalCircuits {
                 .fluidInputs(FullereneDopedNanotubes.getFluid(144))
                 .outputs(OPTICAL_PROCESSING_CORE.getStackForm())
                 .buildAndRegister();
-
     }
 }

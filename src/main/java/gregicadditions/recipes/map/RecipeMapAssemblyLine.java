@@ -7,11 +7,13 @@ import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
 import java.util.function.DoubleSupplier;
 
+@MethodsReturnNonnullByDefault
 public class RecipeMapAssemblyLine<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 	private TextureArea progressBarTexture;
 	private ProgressWidget.MoveType moveType;

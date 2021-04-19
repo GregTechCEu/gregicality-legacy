@@ -1,8 +1,6 @@
 package gregicadditions.recipes;
 
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -10,14 +8,7 @@ import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 
-import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeAllRecipes;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
-import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;

@@ -19,7 +19,6 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.dustTiny;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_BALL;
 
 public class NuclearHandler {
@@ -35,37 +34,39 @@ public class NuclearHandler {
         if (isotopeMaterial == null) {
             return;
         }
+        // 8F + C? + C?? + Fuel TRISO = Depleted Fuel + SiF4 + CF4
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelTRISO, 1))
-                .fluidInputs(Fluorine.getFluid(2000))
+                .fluidInputs(Fluorine.getFluid(8000))
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuel, 1))
                 .fluidOutputs(SiliconFluoride.getFluid(1000))
                 .fluidOutputs(CarbonFluoride.getFluid(1000))
                 .buildAndRegister();
 
+        // FuelZr + 4Cl = ZrCl4
         LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelZirconiumAlloy, 1))
-                .fluidInputs(Chlorine.getFluid(2000))
+                .fluidInputs(Chlorine.getFluid(4000))
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuel, 1))
-                .outputs(ZirconiumTetrachloride.getItemStack(2))
+                .outputs(ZirconiumTetrachloride.getItemStack(5))
                 .buildAndRegister();
 
+        // Fuel + O = [Fuel + O]
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuel, 1))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelOxide, 1))
                 .buildAndRegister();
 
+        // HNO3 + [Fuel + O] + O = [Fuel + NO3 + H2O]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(480).duration(3000)
-                .input(dust, Boron)
+                .notConsumable(dust, Boron)
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelOxide, 1))
-                .fluidOutputs(NitrogenDioxide.getFluid(1000))
-                .outputs(OreDictUnifier.get(dustTiny, Boron, 7))
                 .fluidOutputs(isotopeMaterial.getFluidDepletedFuelNitrateSolution(1000))
                 .buildAndRegister();
 
-
+        // [Fuel + NO3 + H2O] + N2H4 + RP1 + C12H27O4P = Fuel2N3 + Red Oil [N2H4 + RP1 + C12H27O4P]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(480).duration(3000)
                 .fluidInputs(isotopeMaterial.getFluidDepletedFuelNitrateSolution(1000))
                 .fluidInputs(Hydrazine.getFluid(1000))
@@ -74,12 +75,13 @@ public class NuclearHandler {
                 .input(dust, FerriteMixture)
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelNitride, 1))
                 .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm())
-                .fluidOutputs(RedOil.getFluid(2000))
+                .fluidOutputs(RedOil.getFluid(4000))
                 .buildAndRegister();
 
+        // Fuel2N3 = Waste + 3N
         ELECTROLYZER_RECIPES.recipeBuilder().EUt(480).duration(2000)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelNitride, 1))
-                .fluidOutputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(3000))
                 .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm())
                 .buildAndRegister();
 
@@ -91,25 +93,29 @@ public class NuclearHandler {
         if (isotopeMaterial == null) {
             return;
         }
+        // Fuel + Zr = [Fuel + Zr]
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .input(ingot, isotopeMaterial.getMaterial())
                 .input(ingot, Zirconium)
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
                 .buildAndRegister();
 
+        // [Fuel + Zr] + 4Cl = Fuel + ZrCl4
         LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
                 .fluidInputs(Chlorine.getFluid(3000))
                 .outputs(OreDictUnifier.get(ingot, isotopeMaterial.getMaterial()))
-                .outputs(ZirconiumTetrachloride.getItemStack(4))
+                .outputs(ZirconiumTetrachloride.getItemStack(5))
                 .buildAndRegister();
 
+        // Fuel + O = [Fuel + O]
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .input(ingot, isotopeMaterial.getMaterial())
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .buildAndRegister();
 
+        // [Fuel + O] + 2C = [Fuel + C] + CO
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .input(dust, Carbon, 2)
@@ -117,13 +123,15 @@ public class NuclearHandler {
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
+        // [Fuel + C] + 4O = CO2 + [Fuel + 2O]
         BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(1000).EUt(120).duration(3000)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.carbide, 1))
-                .fluidInputs(Oxygen.getFluid(3000))
+                .fluidInputs(Oxygen.getFluid(4000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .buildAndRegister();
 
+        // [Fuel + O] + [Fuel + C] + 3N = Fuel2N3 + CO
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.carbide, 1))
@@ -132,11 +140,15 @@ public class NuclearHandler {
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
+        // Fuel2N3 + 4H2O + 3O = 2[Fuel + 2O] + H2O + NO2 + 2NH3
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.nitride, 1))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
-                .fluidOutputs(Ammonia.getFluid(3000))
+                .fluidInputs(Oxygen.getFluid(3000))
+                .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 2))
+                .fluidOutputs(Ammonia.getFluid(2000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(480).duration(200)
@@ -186,28 +198,29 @@ public class NuclearHandler {
         if (radioactiveMaterial != null && radioactiveMaterial.composition.size() > 0) {
             int complexity = radioactiveMaterial.complexity;
 
-
+            // Mat + 2HNO3 = [Mat + 2NO2] + H2O2
             CHEMICAL_RECIPES.recipeBuilder().duration(2000 * complexity / 100)
                     .input(dust, radioactiveMaterial.getMaterial())
                     .fluidInputs(NitricAcid.getFluid(2000))
                     .outputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.nitrite, 3))
                     .buildAndRegister();
 
+            // [Mat + 2NO2] = [Mat + 2O] + N2O4
             BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(100 * complexity / 100).EUt(120 * complexity / 100)
-                    .inputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.nitrite, 1))
-                    .fluidInputs(Water.getFluid(6000))
+                    .inputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.nitrite, 3))
                     .outputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.dioxide, 1))
                     .fluidOutputs(NitrogenTetroxide.getFluid(1000))
                     .buildAndRegister();
 
-
+            // [Mat + 2O] + 6Cl = [Mat + 6Cl] + 2O
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .inputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.dioxide, 1))
                     .fluidInputs(Chlorine.getFluid(6000))
                     .fluidOutputs(radioactiveMaterial.getFluidHexachloride(6000))
-                    .fluidOutputs(Oxygen.getFluid(1000))
+                    .fluidOutputs(Oxygen.getFluid(2000))
                     .buildAndRegister();
 
+            // [Mat + 6Cl] + 6HF = 6HCl + [Mat + 6F] (keeping two multiplier for game balance right now)
             CHEMICAL_RECIPES.recipeBuilder().duration(1000 * complexity / 100)
                     .fluidInputs(radioactiveMaterial.getFluidHexachloride(2000))
                     .fluidInputs(HydrofluoricAcid.getFluid(10000))
@@ -282,7 +295,7 @@ public class NuclearHandler {
                         .notConsumable(new IntCircuitIngredient(0))
                         .fluidInputs(key.getFluidHexafluorideSteamCracked(7000))
                         .outputs(key.getItemStack(GAEnums.GAOrePrefix.dioxide, 1))
-                        .fluidOutputs(Fluorine.getFluid(5000))
+                        .fluidOutputs(Fluorine.getFluid(6000))
                         .buildAndRegister();
 
                 BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(1000 * complexity / 100).EUt(120 * complexity / 100)

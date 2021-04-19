@@ -24,6 +24,8 @@ public class SimpleDustMaterial extends SimpleMaterial {
     }
 
     public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet) {
+        if (GA_DUSTS.containsKey(id))
+            throw new IllegalArgumentException("Tried to reassign id " + id + " to " + name + ", but it is already assigned to " + GA_DUSTS.get(id).name);
         this.name = name;
         this.rgb = rgb;
         this.materialIconSet = materialIconSet;
@@ -35,6 +37,12 @@ public class SimpleDustMaterial extends SimpleMaterial {
     public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet, String formula) {
         this(name, rgb, id, materialIconSet);
         this.chemicalFormula = calculateChemicalFormula(formula);
+    }
+
+    public SimpleDustMaterial(String name, int rgb, short id, MaterialIconSet materialIconSet, String formula, boolean fancy) {
+        this(name, rgb, id, materialIconSet, formula);
+        this.fancy = fancy;
+
     }
 
     public String getOre() {
