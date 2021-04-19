@@ -1,11 +1,9 @@
 package gregicadditions.coremod.hooks;
 
 import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.covers.CoverDigitalInterface;
-import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -16,7 +14,6 @@ import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -24,7 +21,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fluids.FluidStack;
 
 @SuppressWarnings("unused")
 public class GregTechCEHooks {
