@@ -39,9 +39,6 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.metatileentity.MetaTileEntity":
                 tform = MetaTileEntityTransformer.INSTANCE;
                 break;
-            case "gregtech.api.util.GTUtility":
-                tform = GTUtilityTransformer.INSTANCE;
-                break;
             case "gregtech.api.multiblock.BlockPattern":
                 tform = BlockPatternTransformer.INSTANCE;
                 break;

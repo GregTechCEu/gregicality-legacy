@@ -132,19 +132,6 @@ public class GregTechCEHooks {
         return coverable.canPlaceCoverOnSide(side);
     }
 
-    //origin: gregtech/api/util/GTUtility.formulaHook(FluidStack fluidStack)
-    public static void getSimpleFluidTooltip(FluidStack fluidStack, StringBuilder formula) {
-        if (fluidStack != null) {
-            String[] materialArray = fluidStack.getUnlocalizedName().split("\\.");
-            if (materialArray.length >= 2 && materialArray[0].equals("fluid")) {
-                SimpleFluidMaterial material = SimpleFluidMaterial.GA_FLUIDS.get(materialArray[1]);
-                if (material != null && material.chemicalFormula != null && !material.chemicalFormula.isEmpty()) {
-                    formula.append(material.chemicalFormula);
-                }
-            }
-        }
-    }
-
     //origin: gregtech.api.metatileentity.MetaTileEntity.writeInitialSyncData(PacketBuffer buf)
     public static void writeSpinBuf(PacketBuffer buf, EnumFacing spin) {
         buf.writeByte(spin.getIndex());
