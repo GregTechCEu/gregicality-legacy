@@ -1,8 +1,10 @@
 package gregicadditions.network;
 
 import gregtech.api.GregTechAPI;
+import gregtech.api.block.machines.MachineItemBlock;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.net.NetworkHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
@@ -67,10 +69,26 @@ public class CPacketMultiBlockStructure implements NetworkHandler.Packet {
                     if (!handler.player.isCreative()) {
                         boolean find = false;
                         for (ItemStack itemStack : handler.player.inventory.mainInventory) {
-                            if (itemStack.isItemEqual(stack) && itemStack.getCount() > 0) {
+                            if (itemStack.isItemEqual(stack) && !itemStack.isEmpty()) {
                                 itemStack.setCount(itemStack.getCount() - 1);
                                 find = true;
                                 break;
+                            }
+                        }
+                        if (!find) { // match AbilityPart
+                            for (ItemStack itemStack : handler.player.inventory.mainInventory) {
+                                if(itemStack.getItem() instanceof MachineItemBlock && stack.getItem() instanceof MachineItemBlock && !itemStack.isEmpty()) {
+                                    MetaTileEntity hold = MachineItemBlock.getMetaTileEntity(itemStack);
+                                    MetaTileEntity expect = MachineItemBlock.getMetaTileEntity(stack);
+                                    if (hold instanceof IMultiblockAbilityPart && expect instanceof IMultiblockAbilityPart){
+                                        if (((IMultiblockAbilityPart<?>) hold).getAbility() == ((IMultiblockAbilityPart<?>) expect).getAbility()) {
+                                            stack = itemStack.copy();
+                                            itemStack.setCount(itemStack.getCount() - 1);
+                                            find = true;
+                                            break;
+                                        }
+                                    }
+                                }
                             }
                         }
                         if (!find) continue;
