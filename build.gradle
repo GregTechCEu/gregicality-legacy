@@ -1,11 +1,14 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url = "http://files.minecraftforge.net/maven" }
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url = "https://jitpack.io" }
+        maven { url = "https://plugins.gradle.org/m2/" }
+        maven { url = "http://maven.minecraftforge.net/" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath('com.github.DStrand1:ForgeGradle:FG_2.3-SNAPSHOT') {
+            changing = true
+        }
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -87,7 +90,7 @@ dependencies {
     provided "com.github.mcjty:xnet:1.12-1.8.2"
     provided "com.github.mcjty:mcjtylib:1.12-3.5.4"
     provided "li.cil.oc:OpenComputers:MC1.12.2-1.7.5.192"
-    provided "appeng:appliedenergistics2:rv6-stable-7"
+    provided files("libs/appliedenergistics2-rv6-stable-7.jar")
     provided "binnie:binnie-mods-1.12.2:2.5.1.184"
     provided ("exnihilocreatio:exnihilocreatio:1.12.2-0.3.7.31") {
         transitive = false
