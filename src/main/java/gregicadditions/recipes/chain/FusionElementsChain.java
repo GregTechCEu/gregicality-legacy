@@ -96,6 +96,12 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         DECAY_CHAMBERS_RECIPES.recipeBuilder()
+                .duration(180).EUt(480)
+                .input(dust, Radium)
+                .fluidOutputs(Radon.getFluid(1000))
+                .buildAndRegister();
+
+        DECAY_CHAMBERS_RECIPES.recipeBuilder()
                 .duration(180).EUt(10000)
                 .fluidInputs(Titanium44.getFluid(144))
                 .fluidOutputs(Calcium44.getFluid(144))
@@ -443,7 +449,7 @@ public class FusionElementsChain {
                 .fluidOutputs(Uranium.getFluid(16))
                 .buildAndRegister();
 
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
+        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(120000000)
                 .fluidInputs(Uranium.getFluid(16))
                 .fluidInputs(Helium.getFluid(16))
                 .fluidOutputs(Plutonium.getFluid(16))
@@ -503,14 +509,16 @@ public class FusionElementsChain {
                 .fluidOutputs(Lutetium.getFluid(16))
                 .buildAndRegister();
 
+        // Should technically be Pu242
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
                 .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Rutherfordium.getFluid(16))
                 .buildAndRegister();
 
+        // Can also be Am243
         FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Americium241.getMaterial().getFluid(16))
+                .fluidInputs(Americium.getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Dubnium.getFluid(16))
                 .buildAndRegister();

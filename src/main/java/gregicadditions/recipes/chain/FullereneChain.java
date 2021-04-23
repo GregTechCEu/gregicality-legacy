@@ -398,6 +398,7 @@ public class FullereneChain {
 
          // 8C72H14O2 + 7C8H8 + 8CH2Cl2 -> 8C80H21O2 + 16HCl
         CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(Dimethylaminopyridine.getItemStack())
                 .fluidInputs(PCBA.getFluid(8000))
                 .fluidInputs(Styrene.getFluid(7000))
                 .fluidInputs(Dichloromethane.getFluid(8000))
