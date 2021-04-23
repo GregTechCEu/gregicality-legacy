@@ -226,7 +226,7 @@ public class SuperconductorsSMDChain {
         // Pb + N2O4 + 2O -> Pb(NO3)2
         CHEMICAL_RECIPES.recipeBuilder().EUt(8000).duration(250)
                 .input(dust, Lead)
-                .fluidInputs(NitrogenTetroxide.getFluid(1000))
+                .fluidInputs(DinitrogenTetroxide.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .output(dust, LeadNitrate, 9)
                 .buildAndRegister();
@@ -331,7 +331,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(CarbonMonoxde.getFluid(25000))
                 .notConsumable(block, Copper)
                 .output(dust, Iodine, 10)
-                .output(dust, Iron)
+                .output(dustSmall, Iron, 2)
                 .fluidOutputs(IronCarbonyl.getFluid(5000))
                 .buildAndRegister();
 
@@ -726,13 +726,12 @@ public class SuperconductorsSMDChain {
                 .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .buildAndRegister();
 
-        // 3Rb + 3Cs + La2(C60)2 -> La2Cs3Rb3C120
+        // 3Rb + 3Cs + La2(C60)2 -> La2Cs3Rb3(C60)2
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(1400000).blastFurnaceTemp(2400)
                 .inputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .input(dust, Rubidium, 3)
                 .input(dust, Caesium, 3)
-                .outputs(FullereneSuperconductiveDust.getItemStack(64))
-                .outputs(FullereneSuperconductiveDust.getItemStack(64))
+                .outputs(FullereneSuperconductiveDust.getItemStack(10))
                 .buildAndRegister();
 
         // O + Si + 3CHCl3 + 7H2O -> C3H9SiCl + 8HClO

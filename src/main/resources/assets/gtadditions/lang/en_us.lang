@@ -224,7 +224,7 @@ metaitem.neuro.support.unit.name=Neuro Support Unit
 metaitem.cyber.processing.unit.name=Cyber Processing Unit
 metaitem.ultrasonic.homogenizer.name=Ultrasonic Homogenizer
 metaitem.sterilized.petri.dish.name=Sterilized Petri Dish
-metaitem.contaminated.petri.dish.name=Contaminated Preti Dish
+metaitem.contaminated.petri.dish.name=Contaminated Petri Dish
 metaitem.clean.culture.name=Clean Culture
 metaitem.piezoelectric.crystal.name=Piezoelectric Crystal
 metaitem.pyrolytic_carbon.name=Pyrolytic Carbon
@@ -348,7 +348,7 @@ metaitem.battery_pack.hv.name=Battery pack (§eHV§r)
 metaitem.nightvision_goggles.name=§eNightvision Goggles
 
 metaitem.nms.chestplate.name=§eNanoMuscle™ Suite Chestplate
-metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggins
+metaitem.nms.leggins.name=§eNanoMuscle™ Suite Leggings
 metaitem.nms.boots.name=§eNanoMuscle™ Suite Boots
 metaitem.nms.helmet.name=§eNanoMuscle™ Suite Helmet
 metaitem.nms.advanced_chestplate.name=§bAdvanced NanoMuscle™ Suite Chestplate
@@ -1103,7 +1103,7 @@ gtadditions.machine.arc_furnace.luv.name=Elite Arc Furnace II
 gtadditions.machine.arc_furnace.zpm.name=Elite Arc Furnace III
 gtadditions.machine.arc_furnace.uv.name=Elite Arc Furnace IV
 
-gtadditions.machine.assembler.iv.name=Elite Assembling Machine
+gregtech.machine.assembler.iv.name=Elite Assembling Machine
 gtadditions.machine.assembler.luv.name=Elite Assembling Machine II
 gtadditions.machine.assembler.zpm.name=Elite Assembling Machine III
 gtadditions.machine.assembler.uv.name=Elite Assembling Machine IV
