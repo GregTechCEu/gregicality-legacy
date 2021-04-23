@@ -471,7 +471,7 @@ public class NaquadahChain {
                 .duration(500)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedNaquadahGas.getFluid(2000))
                 .fluidOutputs(NaquadahGas.getFluid(1000))
                 .output(dustTiny, IridiumChloride, 4)
@@ -479,7 +479,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedHeavyNaquadah.getFluid(2000))
                 .fluidOutputs(HeavyNaquadah.getFluid(1000))
                 .output(dustTiny, IridiumChloride, 4)
@@ -487,7 +487,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedLightNaquadah.getFluid(2000))
                 .fluidOutputs(LightNaquadah.getFluid(1000))
                 .output(dustTiny, IridiumChloride, 4)
@@ -495,7 +495,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedMediumNaquadah.getFluid(2000))
                 .fluidOutputs(MediumNaquadah.getFluid(1000))
                 .output(dustTiny, IridiumChloride, 4)
@@ -505,16 +505,16 @@ public class NaquadahChain {
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(MediumNaquadah.getFluid(1000))
-                .fluidInputs(Fluorine.getFluid(200))
-                .fluidOutputs(FCrackedMediumNaquadah.getFluid(1200))
+                .fluidInputs(Fluorine.getFluid(400))
+                .fluidOutputs(FCrackedMediumNaquadah.getFluid(1400))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightNaquadah.getFluid(1000))
-                .fluidInputs(Fluorine.getFluid(400))
-                .fluidOutputs(FCrackedLightNaquadah.getFluid(1400))
+                .fluidInputs(Fluorine.getFluid(200))
+                .fluidOutputs(FCrackedLightNaquadah.getFluid(1200))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -533,7 +533,7 @@ public class NaquadahChain {
                 .fluidOutputs(LightNaquadahFuel.getFluid(400))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(150))
                 .fluidOutputs(HeavyNaquadahFuel.getFluid(50))
-                .fluidOutputs(Fluorine.getFluid(50))
+                .fluidOutputs(Fluorine.getFluid(150))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -544,7 +544,7 @@ public class NaquadahChain {
                 .fluidOutputs(LightNaquadahFuel.getFluid(200))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(400))
                 .fluidOutputs(HeavyNaquadahFuel.getFluid(100))
-                .fluidOutputs(Fluorine.getFluid(150))
+                .fluidOutputs(Fluorine.getFluid(350))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -555,7 +555,7 @@ public class NaquadahChain {
                 .fluidOutputs(LightNaquadahFuel.getFluid(100))
                 .fluidOutputs(MediumNaquadahFuel.getFluid(200))
                 .fluidOutputs(HeavyNaquadahFuel.getFluid(400))
-                .fluidOutputs(Fluorine.getFluid(250))
+                .fluidOutputs(Fluorine.getFluid(550))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -599,7 +599,7 @@ public class NaquadahChain {
                 .duration(500)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedHeavyENaquadah.getFluid(2000))
                 .fluidOutputs(HeavyENaquadah.getFluid(1000))
                 .output(dustTiny, Naquadria)
@@ -609,7 +609,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedLightENaquadah.getFluid(2000))
                 .fluidOutputs(LightENaquadah.getFluid(1000))
                 .output(dustTiny, Naquadria)
@@ -619,7 +619,7 @@ public class NaquadahChain {
                 .duration(200)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ComplicatedMediumENaquadah.getFluid(2000))
                 .fluidOutputs(MediumENaquadah.getFluid(1000))
                 .output(dustTiny, Naquadria)
@@ -631,16 +631,16 @@ public class NaquadahChain {
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(MediumENaquadah.getFluid(1000))
-                .fluidInputs(Radon.getFluid(200))
-                .fluidOutputs(RnCrackedMediumENaquadah.getFluid(1200))
+                .fluidInputs(Radon.getFluid(400))
+                .fluidOutputs(RnCrackedMediumENaquadah.getFluid(1400))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightENaquadah.getFluid(1000))
-                .fluidInputs(Radon.getFluid(400))
-                .fluidOutputs(RnCrackedLighteNaquadah.getFluid(1400))
+                .fluidInputs(Radon.getFluid(200))
+                .fluidOutputs(RnCrackedLightNaquadah.getFluid(1200))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -654,7 +654,7 @@ public class NaquadahChain {
                 .buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(RnCrackedLighteNaquadah.getFluid(1200))
+                .fluidInputs(RnCrackedLightNaquadah.getFluid(1200))
                 .fluidOutputs(NaquadahGas.getFluid(350))
                 .fluidOutputs(LightENaquadahFuel.getFluid(400))
                 .fluidOutputs(MediumENaquadahFuel.getFluid(150))
@@ -670,7 +670,7 @@ public class NaquadahChain {
                 .fluidOutputs(LightENaquadahFuel.getFluid(200))
                 .fluidOutputs(MediumENaquadahFuel.getFluid(400))
                 .fluidOutputs(HeavyENaquadahFuel.getFluid(100))
-                .fluidOutputs(Radon.getFluid(380))
+                .fluidOutputs(Radon.getFluid(350))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();

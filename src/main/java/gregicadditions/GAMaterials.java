@@ -492,7 +492,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial LightENaquadah = new SimpleFluidMaterial("light_e_naquadah", 0x2e2e2e, "Nq+");
     public static final SimpleFluidMaterial MediumENaquadah = new SimpleFluidMaterial("medium_e_naquadah", 0x2e2e2e, "Nq+");
     public static final SimpleFluidMaterial HeavyENaquadah = new SimpleFluidMaterial("heavy_e_naquadah", 0x2e2e2e, "Nq+");
-    public static final SimpleFluidMaterial RnCrackedLighteNaquadah = new SimpleFluidMaterial("rn_cracked_light_e_naquadah", 0x505e5b, "RnNq+");
+    public static final SimpleFluidMaterial RnCrackedLightNaquadah = new SimpleFluidMaterial("rn_cracked_light_e_naquadah", 0x505e5b, "RnNq+");
     public static final SimpleFluidMaterial RnCrackedMediumENaquadah = new SimpleFluidMaterial("rn_cracked_medium_e_naquadah", 0x505e5b, "RnNq+");
     public static final SimpleFluidMaterial RnCrackedHeavyENaquadah = new SimpleFluidMaterial("rn_cracked_heavy_e_naquadah", 0x505e5b, "RnNq+");
     public static final SimpleFluidMaterial LightENaquadahFuel = new SimpleFluidMaterial("light_e_naquadah_fuel", 0x2e2e2e, "Nq+");
