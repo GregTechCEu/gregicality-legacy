@@ -863,8 +863,8 @@ metaitem.plugin.tooltips.1=Plugins can be added to the screen for more functiona
 metaitem.plugin.proxy.tooltips.1=(Please adjust to proxy mode in the screen)
 metaitem.plugin.text.name=Text Plugin
 metaitem.plugin.online_pic.name=Online Picture Plugin
-metaitem.plugin.fake_gui.name=Proxy Gui Plugin
-metaitem.plugin.advanced_monitor.name=Proxy Advanced Monitor Plugin
+metaitem.plugin.fake_gui.name=Gui Proxy Plugin
+metaitem.plugin.advanced_monitor.name=Advanced Monitor Proxy Plugin
 metaitem.cover.digital.name=Digital Interface Cover
 
 metaitem.cover.digital.mode.fluid.enabled=Fluid Mode - §aON
@@ -1083,6 +1083,7 @@ gtadditions.machine.electric_furnace.luv.name=Elite Furnace II
 gtadditions.machine.electric_furnace.zpm.name=Elite Furnace III
 gtadditions.machine.electric_furnace.uv.name=Elite Furnace IV
 
+gregtech.machine.macerator.ev.name=Advanced Macerator III
 gtadditions.machine.macerator.iv.name=Elite Macerator
 gtadditions.machine.macerator.luv.name=Elite Macerator II
 gtadditions.machine.macerator.zpm.name=Elite Macerator III
@@ -3907,6 +3908,7 @@ fluid.iron_ii_chloride=Iron II Chloride
 fluid.propadiene=Propadiene
 fluid.cyclopentadiene=Cyclopentadiene
 fluid.chloroauric_acid=Chloroauric Acid
+fluid.helium4=Helium 4
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

@@ -168,14 +168,14 @@ public class InsulationWireAssemblyChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(1920)
                 .input(dust, Graphite)
                 .notConsumable(dust, Osmium)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GraphiteOxide.getItemStack(3))
                 .buildAndRegister();
 
         // Graphene + Oxidation Solution = Graphene Oxide
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(7860)
                 .input(dust, Graphene)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GrapheneOxide.getItemStack(3))
                 .buildAndRegister();
 

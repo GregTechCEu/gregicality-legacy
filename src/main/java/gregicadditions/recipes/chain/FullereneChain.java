@@ -195,6 +195,15 @@ public class FullereneChain {
                 .duration(300)
                 .buildAndRegister();
 
+        // K + Cl -> KCl
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium)
+                .fluidInputs(Chlorine.getFluid(1000))
+                .output(dust, RockSalt, 2)
+                .EUt(240)
+                .duration(350)
+                .buildAndRegister();
+
         // 2C5H6 + FeCl2 -> C10H10Fe + 2HCl
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(ZeoliteSievingPellets.getItemStack())

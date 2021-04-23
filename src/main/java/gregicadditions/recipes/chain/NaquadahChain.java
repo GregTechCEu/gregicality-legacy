@@ -69,6 +69,7 @@ public class NaquadahChain {
 
         // SbF5 + 2HF = H2SbF7
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(AntimonyPentafluoride.getFluid(1000))
                 .fluidInputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(FluoroantimonicAcid.getFluid(1000))
@@ -201,7 +202,7 @@ public class NaquadahChain {
                 .fluidInputs(Xenon.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(3000))
                 .fluidOutputs(XenonTrioxide.getFluid(1000))
-                .EUt(7680)
+                .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
@@ -244,7 +245,7 @@ public class NaquadahChain {
 
         // 2NO2F + NqCsXeF9 = (NO2)2XeF8 + NqF2CsF
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(NitrylFluoride.getFluid(1000))
+                .fluidInputs(NitrylFluoride.getFluid(2000))
                 .fluidInputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
                 .fluidOutputs(NitrosoniumOctafluoroxenate.getFluid(1000))
                 .fluidOutputs(NaquadriaCesiumfluoride.getFluid(1000))
@@ -264,7 +265,7 @@ public class NaquadahChain {
 
         // RnO3 = Rn + O3
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .fluidInputs(RadonTrioxide.getFluid(4000))
+                .fluidInputs(RadonTrioxide.getFluid(1000))
                 .fluidOutputs(Radon.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(3000))
                 .EUt(1920)
@@ -341,7 +342,7 @@ public class NaquadahChain {
                 .buildAndRegister();
 
         // H2SbF7 + AuF3 + XeNqF6 + 9H = Nq + 9HF + [AuXe + H2SbF7]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(AuricFluoride.getItemStack(4))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .fluidInputs(EnrichedXenonHexafluoronaquadate.getFluid(1000))
@@ -358,7 +359,6 @@ public class NaquadahChain {
                 .fluidInputs(XenoauricFluoroantimonicAcid.getFluid(1000))
                 .output(dust, Gold)
                 .fluidOutputs(Xenon.getFluid(1000))
-                .output(dust, Antimony)
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(AntimonyPentafluoride.getFluid(1000))
                 .EUt(1920)
@@ -374,6 +374,17 @@ public class NaquadahChain {
                 .fluidOutputs(Water.getFluid(4000))
                 .EUt(480)
                 .duration(100)
+                .buildAndRegister();
+
+        // KOH + O + H2SO4 -> KHSO5 + H2O
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(PotassiumHydroxide.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
+                .outputs(PotassiumPeroxymonosulfate.getItemStack(8))
+                .EUt(480)
+                .duration(200)
                 .buildAndRegister();
 
         // HF + KHSO5 + Nq = H2O + KF + NqSO4

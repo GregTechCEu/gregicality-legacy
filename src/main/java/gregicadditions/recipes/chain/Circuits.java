@@ -639,7 +639,7 @@ public class Circuits {
         ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680).input(foil, Polybenzimidazole, 4).input(foil, NaquadahAlloy).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_CAPACITOR_CRYSTAL.getStackForm(16)).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).inputs(SMD_DIODE_QUANTUM.getStackForm()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(16)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).input(dust, Copernicium).inputs(LanthanumCalciumManganate.getItemStack()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(32)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920).input(wireFine, HSSS, 8).inputs(LanthanumCalciumManganate.getItemStack()).fluidInputs(Plastic.getFluid(GTValues.L)).outputs(SMD_DIODE_CRYSTAL.getStackForm(32)).buildAndRegister();
 
         //SMD WETWARE
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616).input(wireFine, PEDOT, 8).input(foil, Polybenzimidazole, 4).input(foil, BariumTitanate, 4).fluidInputs(Polytetrafluoroethylene.getFluid(576)).outputs(SMD_CAPACITOR_WETWARE.getStackForm(32)).buildAndRegister();

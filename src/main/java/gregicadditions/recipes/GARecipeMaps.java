@@ -158,7 +158,7 @@ public class GARecipeMaps {
                 .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
                 .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ADV_FUSION_RECIPES = new RecipeMap<>("adv_fusion", 0, 0, 0, 0,
-                2, 3, 1, 2, new AdvFusionRecipeBuilder());
+                2, 3, 1, 3, new AdvFusionRecipeBuilder());
 
         DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler", 1, 1, 0, 9, 0, 0, 0,0, new SimpleRecipeBuilder())
                 .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)

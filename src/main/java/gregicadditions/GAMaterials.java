@@ -194,7 +194,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final FluidMaterial Gasoline = new FluidMaterial(945, "gasoline", 0xC7860B, MaterialIconSet.FLUID, ImmutableList.of(new MaterialStack(RareEarth, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial RawGasoline = new FluidMaterial(944, "raw_gasoline", 0xC5560C, MaterialIconSet.FLUID, ImmutableList.of(new MaterialStack(RareEarth, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial RocketFuelH8N4C2O4 = new FluidMaterial(939, "rocket_fuel_a", 0x5ECB22, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 8), new MaterialStack(Nitrogen, 4), new MaterialStack(Carbon, 2), new MaterialStack(Oxygen, 4)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
-    public static final FluidMaterial NitrogenTetroxide = new FluidMaterial(938, "nitrogen_tetroxide", 0xBE6800, MaterialIconSet.FLUID, of(new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 4)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION); // TODO Remove this fluid two releases after Chem Fixes 2 PR is merged
+    public static final FluidMaterial NitrogenTetroxide = new FluidMaterial(938, "nitrogen_tetroxide", 0xBE6800, MaterialIconSet.FLUID, of(new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 4)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION); // TODO Remove this fluid one release after Chem Fixes 2 PR is merged
     public static final FluidMaterial CoalTar = new FluidMaterial(937, "coal_tar", 0x5E3122, MaterialIconSet.FLUID, of(new MaterialStack(Coal, 1), new MaterialStack(RareEarth, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial CoalTarOil = new FluidMaterial(936, "coal_tar_oil", 0xB5B553, MaterialIconSet.FLUID, of(new MaterialStack(CoalTar, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static final FluidMaterial SulfuricCoalTarOil = new FluidMaterial(935, "sulfuric_coal_tar_oil", 0xFFFFAD, MaterialIconSet.FLUID, of(new MaterialStack(CoalTarOil, 1), new MaterialStack(SulfuricAcid, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
@@ -294,13 +294,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial RutheniumTetroxide = new DustMaterial(881, "ruthenium_tetroxide", 0xC7C7C7, MaterialIconSet.DULL, 2, of(new MaterialStack(Ruthenium, 1), new MaterialStack(Oxygen, 4)), SMELT_INTO_FLUID | GENERATE_FLUID_BLOCK | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION);
     public static final DustMaterial IrOsLeachResidue = new DustMaterial(878, "rarest_metal_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 2), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3), new MaterialStack(RareEarth, 1)), GENERATE_ORE | DISABLE_DECOMPOSITION);
     public static final DustMaterial IrLeachResidue = new DustMaterial(877, "iridium_metal_residue", 0x846649, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 4), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), GENERATE_ORE | DISABLE_DECOMPOSITION);
-    public static final DustMaterial PGSDResidue = new DustMaterial(876, "sludge_dust_residue", 0x846649, MaterialIconSet.DULL, 2, of(new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial IridiumChloride = new DustMaterial(871, "iridium_chloride", 0x846649, MaterialIconSet.LAPIS, 2, of(new MaterialStack(Iridium, 1), new MaterialStack(Chlorine, 3)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial PGSDResidue2 = new DustMaterial(870, "metallic_sludge_dust_residue", 0x846649, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(Nickel, 1)), DECOMPOSITION_BY_CENTRIFUGING);
+    public static final DustMaterial PGSDResidue = new DustMaterial(876, "sludge_dust_residue", (SiliconDioxide.materialRGB + Gold.materialRGB)/2, MaterialIconSet.DULL, 2, of(new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial IridiumChloride = new DustMaterial(871, "iridium_chloride", (Iridium.materialRGB+Chlorine.materialRGB)/2, MaterialIconSet.LAPIS, 2, of(new MaterialStack(Iridium, 1), new MaterialStack(Chlorine, 3)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial PGSDResidue2 = new DustMaterial(870, "metallic_sludge_dust_residue", (Copper.materialRGB+Nickel.materialRGB)/2, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(Nickel, 1)), DECOMPOSITION_BY_CENTRIFUGING);
     public static final DustMaterial CrudeRhodiumMetal = new DustMaterial(868, "crude_rhodium_metal", 0x666666, MaterialIconSet.DULL, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial SodiumNitrate = new DustMaterial(865, "sodium_nitrate", 0x846684, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Sodium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial RhodiumNitrate = new DustMaterial(864, "rhodium_nitrate", 0x776649, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(Ammonia, 3)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial ZincSulfate = new DustMaterial(863, "zinc_sulfate", 0x846649, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)), 0);
+    public static final DustMaterial ZincSulfate = new DustMaterial(863, "zinc_sulfate", (Zinc.materialRGB+Sulfur.materialRGB)/2, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)), 0);
     public static final DustMaterial RhodiumFilterCake = new DustMaterial(862, "rhodium_filter_cake", 0x776649, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial ReRhodium = new DustMaterial(860, "reprecipitated_rhodium", 0x776649, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PotassiumNitrade = new DustMaterial(849, "potassium_nitrade", 0x81228D, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3)), 0);
@@ -439,18 +439,18 @@ public class GAMaterials implements IMaterialHandler {
 
 
     // SIMPLE FLUID MATERIALS
-    public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225, "Nq?");
-    public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735, "Nq+?");
-    public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735, "*Nq*?");
+    public static final SimpleFluidMaterial NaquadricSolution = new SimpleFluidMaterial("naquadric_solution", 0x232225, "NqNO2");
+    public static final SimpleFluidMaterial EnrichedNaquadricSolution = new SimpleFluidMaterial("enriched_naquadric_solution", 0x312735, "Nq+NO2");
+    public static final SimpleFluidMaterial NaquadriaticSolution = new SimpleFluidMaterial("naquadriatic_solution", 0x312735, "*Nq*NO2");
     public static final SimpleFluidMaterial AntimonyPentafluoride = new SimpleFluidMaterial("antimony_pentafluoride", Antimony.materialRGB, "SbF5");
     public static final SimpleFluidMaterial FluoroantimonicAcid = new SimpleFluidMaterial("fluoroantimonic_acid", 0x8da2a5, "H2SbF7");
-    public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluoronaquadric_acid", 0x485d60, "NqHF3");
-    public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluoronaquadric_acid", 0x485d60, "Nq+HF3");
-    public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluoronaquadriatic_acid", 0x485d60, "*Nq*HF3");
+    public static final SimpleFluidMaterial FluoronaquadricAcid = new SimpleFluidMaterial("fluoronaquadric_acid", 0x485d60, "H2NqF4");
+    public static final SimpleFluidMaterial EnrichedFluoronaquadricAcid = new SimpleFluidMaterial("enriched_fluoronaquadric_acid", 0x485d60, "H2Nq+F4");
+    public static final SimpleFluidMaterial FluoronaquadriaticAcid = new SimpleFluidMaterial("fluoronaquadriatic_acid", 0x485d60, "H2*Nq*F4");
     public static final SimpleFluidMaterial NaquadahDifluoride = new SimpleFluidMaterial("naquadah_difluoride", 0x324649, "NqF2");
     public static final SimpleFluidMaterial EnrichedNaquadahDifluoride = new SimpleFluidMaterial("enriched_naquadah_difluoride", 0x141e1f, "Nq+F2");
     public static final SimpleFluidMaterial NaquadriaDifluoride = new SimpleFluidMaterial("naquadria_difluoride", 0x141e1f, "*Nq*F2");
-    public static final SimpleFluidMaterial NaquadriaHexafluoride = new SimpleFluidMaterial("naquadria_hexafluoride", 0x111c27, "NqF6");
+    public static final SimpleFluidMaterial NaquadriaHexafluoride = new SimpleFluidMaterial("naquadria_hexafluoride", 0x111c27, "*Nq*F6");
     public static final SimpleFluidMaterial RadonDifluoride = new SimpleFluidMaterial("radon_difluoride", 0x9966ff, "RnF2");
     public static final SimpleFluidMaterial RadonNaquadriaoctafluoride = new SimpleFluidMaterial("radon_naquadriaoctafluoride", 0x111c27, "Rd*Nq*F8");
     public static final SimpleFluidMaterial XenonTrioxide = new SimpleFluidMaterial("xenon_trioxide", 0x432791, "XeO3");
@@ -458,16 +458,16 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CesiumXenontrioxideFluoride = new SimpleFluidMaterial("cesium_xenontrioxide_fluoride", 0x3333cc, "CsXeO3F");
     public static final SimpleFluidMaterial RadonTrioxide = new SimpleFluidMaterial("radon_trioxide", 0x9966ff, "RnO3");
     public static final SimpleFluidMaterial NaquadriaCesiumXenonNonfluoride = new SimpleFluidMaterial("naquadria_cesium_xenon_nonfluoride", 0x1c1c5e, "*Nq*CsXeF9");
-    public static final SimpleFluidMaterial NitrylFluoride = new SimpleFluidMaterial("nitryl_fluoride", NitricOxide.materialRGB, "NOF");
-    public static final SimpleFluidMaterial NitrosoniumOctafluoroxenate = new SimpleFluidMaterial("nitrosonium_octafluoroxenate", 0x3f3f83, "(NO)2XeF8");
-    public static final SimpleFluidMaterial NaquadriaCesiumfluoride = new SimpleFluidMaterial("naquadria_cesiumfluoride", 0x636379, "*Nq*CsF");
+    public static final SimpleFluidMaterial NitrylFluoride = new SimpleFluidMaterial("nitryl_fluoride", NitricOxide.materialRGB, "NO2F");
+    public static final SimpleFluidMaterial NitrosoniumOctafluoroxenate = new SimpleFluidMaterial("nitrosonium_octafluoroxenate", 0x3f3f83, "(NO2)2XeF8");
+    public static final SimpleFluidMaterial NaquadriaCesiumfluoride = new SimpleFluidMaterial("naquadria_cesiumfluoride", 0x636379, "*Nq*F2CsF");
     public static final SimpleFluidMaterial EnrichedNaquadahhexafluoride = new SimpleFluidMaterial("enriched_naquadahhexafluoride", 0x030330, "Nq+F6");
     public static final SimpleFluidMaterial EnrichedXenonHexafluoronaquadate = new SimpleFluidMaterial("enriched_xenon_hexafluoronaquadate", 0x1e1ec2, "XeNq+F6");
     public static final SimpleFluidMaterial AuricChloride = new SimpleFluidMaterial("auric_chloride", 0xdffb50, "Au2Cl6");
     public static final SimpleFluidMaterial BromineTrifluoride = new SimpleFluidMaterial("bromine_trifluoride", 0xfcde1d, "BrF3");
     public static final SimpleFluidMaterial XenoauricFluoroantimonicAcid = new SimpleFluidMaterial("xenoauric_fluoroantimonic_acid", 0x685b08, "XeAuSbF6");
     public static final SimpleFluidMaterial NaquadahSulfate = new SimpleFluidMaterial("naquadah_sulfate", 0x38330f, "NqSO4");
-    public static final SimpleFluidMaterial NaquadahSolution = new SimpleFluidMaterial("naquadah_solution", 0x523b3a, "Nq?");
+    public static final SimpleFluidMaterial NaquadahSolution = new SimpleFluidMaterial("naquadah_solution", 0x523b3a, "NqNH4NO3");
     public static final SimpleFluidMaterial ClearNaquadahLiquid = new SimpleFluidMaterial("clear_naquadah_liquid", 0xa89f9e, "Nq?");
     public static final SimpleFluidMaterial ComplicatedNaquadahGas = new SimpleFluidMaterial("complicated_naquadah_gas", 0x403d3d, "Nq??");
     public static final SimpleFluidMaterial ComplicatedHeavyNaquadah = new SimpleFluidMaterial("complicated_heavy_naquadah", 0x403d3d, "Nq??");
@@ -930,6 +930,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial DrillingMudMixture = new SimpleFluidMaterial("drilling_mud_mixture", (CaCBaSMixture.rgb + LubricantClaySlurry.rgb) / 2);
     public static final SimpleFluidMaterial Cyclopentadiene = new SimpleFluidMaterial("cyclopentadiene", Cyclooctadiene.rgb, "C5H6");
     public static final SimpleFluidMaterial ChloroauricAcid = new SimpleFluidMaterial("chloroauric_acid", 0xDFD11F, "HAuCl?");
+    public static final SimpleFluidMaterial Helium4 = new SimpleFluidMaterial("helium4", Helium.materialRGB-10, "He_4");
 
 
 
