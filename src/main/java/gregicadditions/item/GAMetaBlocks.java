@@ -14,7 +14,7 @@ import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
-import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;

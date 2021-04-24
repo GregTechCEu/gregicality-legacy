@@ -1,17 +1,12 @@
 package gregicadditions.widgets.monitor;
 
-import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
-import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
-import gregicadditions.renderer.RenderHelper;
-import gregicadditions.renderer.onlinepictexture.PictureTexture;
+import gregicadditions.client.renderer.RenderHelper;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
 import gregtech.api.util.Position;
 import gregtech.api.util.Size;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
 
 public class WidgetMonitorScreen extends Widget {
     private final MetaTileEntityMonitorScreen screen;

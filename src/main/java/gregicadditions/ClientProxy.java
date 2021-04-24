@@ -1,14 +1,12 @@
 package gregicadditions;
 
-import codechicken.lib.util.ItemNBTUtils;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
-import gregicadditions.materials.SimpleFluidMaterial;
-import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.state.IBlockState;

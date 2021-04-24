@@ -1,10 +1,10 @@
 package gregicadditions.item.behaviors.monitorPlugin.onlinepic;
 
 import gregicadditions.Gregicality;
-import gregicadditions.renderer.onlinepictexture.AnimatedPictureTexture;
-import gregicadditions.renderer.onlinepictexture.OrdinaryTexture;
-import gregicadditions.renderer.onlinepictexture.PictureTexture;
-import gregicadditions.renderer.onlinepictexture.VideoTexture;
+import gregicadditions.client.renderer.onlinepictexture.AnimatedPictureTexture;
+import gregicadditions.client.renderer.onlinepictexture.OrdinaryTexture;
+import gregicadditions.client.renderer.onlinepictexture.PictureTexture;
+import gregicadditions.client.renderer.onlinepictexture.VideoTexture;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.compress.utils.IOUtils;

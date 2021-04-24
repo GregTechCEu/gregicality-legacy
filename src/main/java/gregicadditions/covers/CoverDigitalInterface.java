@@ -7,7 +7,7 @@ import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.widgets.WidgetOreList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;

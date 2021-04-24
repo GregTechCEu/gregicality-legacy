@@ -1,4 +1,4 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import codechicken.lib.texture.TextureUtils;
 import codechicken.lib.vec.Matrix4;
@@ -23,7 +23,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)

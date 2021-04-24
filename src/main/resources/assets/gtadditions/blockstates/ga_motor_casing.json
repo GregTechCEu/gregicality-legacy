@@ -1,82 +1,51 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "minecraft:cube_all",
-    "textures": {
-      "all": "gregtech:blocks/rendering_error"
-    }
+    "model": "gtadditions:motor"
   },
   "variants": {
     "variant": {
       "motor_lv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_lv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_mv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_mv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_hv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_hv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_ev": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_ev"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_iv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_iv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_luv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_luv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_zpm": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_zpm"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_uv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_uv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_uhv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_uhv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_uev": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_uev"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_uiv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_uiv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_umv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_umv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_uxv": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_uxv"
-        }
+        "model": "gtadditions:motor"
       },
       "motor_max": {
-        "textures": {
-          "all": "gregtech:blocks/casings/solid/component_block_max"
-        }
+        "model": "gtadditions:motor"
       }
     }
   }

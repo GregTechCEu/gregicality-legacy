@@ -1,8 +1,11 @@
 package gregicadditions.item.components;
 
+import codechicken.lib.texture.IWorldBlockTextureProvider;
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 
 public class MotorCasing extends VariantBlock<MotorCasing.CasingType> {
@@ -49,5 +52,20 @@ public class MotorCasing extends VariantBlock<MotorCasing.CasingType> {
         public String getName() {
             return this.name;
         }
+    }
+
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.SOLID;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return true;
+    }
+
+    @Deprecated
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
     }
 }

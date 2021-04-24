@@ -5,7 +5,7 @@ import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.pipelike.opticalfiber.net.WorldOpticalFiberNet;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
-import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregtech.api.pipenet.block.simple.BlockSimplePipe;
 import gregtech.api.pipenet.tile.IPipeTile;
 import gregtech.api.pipenet.tile.TileEntityPipeBase;
