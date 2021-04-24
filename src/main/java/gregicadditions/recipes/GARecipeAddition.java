@@ -2769,17 +2769,17 @@ public class GARecipeAddition {
         // C16H12O2H2 + 2O + C14H10 (catalyst) = H2O2 + C16H12O2
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .fluidInputs(Oxygen.getFluid(2000))
-                .fluidInputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .notConsumable(Anthracene)
                 .fluidOutputs(HydrogenPeroxide.getFluid(2000))
-                .fluidOutputs(EthylAnthraQuinone.getFluid(4000))
+                .fluidOutputs(EthylAnthraQuinone.getFluid(1000))
                 .buildAndRegister();
 
         // 2H + C16H12O2 = C16H12O2H2
         CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(120)
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidInputs(EthylAnthraQuinone.getFluid(4000))
-                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraQuinone.getFluid(1000))
+                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .buildAndRegister();
 
         // C8H4O3 + C8H10 = C16H12O2 + H2O
