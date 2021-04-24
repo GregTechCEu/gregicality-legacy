@@ -1,4 +1,4 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import gregicadditions.network.ProspectingPacket;
 import gregtech.api.gui.resources.RenderUtil;

@@ -1,6 +1,6 @@
 package gregicadditions.widgets;
 
-import gregicadditions.renderer.ProspectingTexture;
+import gregicadditions.client.renderer.ProspectingTexture;
 import gregicadditions.item.behaviors.ProspectingToolBehaviour;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.network.ProspectingPacket;

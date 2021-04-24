@@ -1,7 +1,7 @@
 package gregicadditions.widgets.monitor;
 
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;

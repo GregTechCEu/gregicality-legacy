@@ -1,7 +1,7 @@
 package gregicadditions.item.behaviors.monitorPlugin;
 
 import gregicadditions.item.behaviors.monitorPlugin.onlinepic.DownloadThread;
-import gregicadditions.renderer.onlinepictexture.PictureTexture;
+import gregicadditions.client.renderer.onlinepictexture.PictureTexture;
 import gregicadditions.widgets.monitor.WidgetPluginConfig;
 import gregicadditions.widgets.WidgetScrollBar;
 import gregtech.api.gui.IUIHolder;

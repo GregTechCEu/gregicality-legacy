@@ -1,6 +1,6 @@
 package gregicadditions.item.behaviors.monitorPlugin.fakegui;
 
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
