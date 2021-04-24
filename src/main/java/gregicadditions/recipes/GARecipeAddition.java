@@ -112,22 +112,25 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(ingot, WroughtIron))
                 .buildAndRegister();
 
-
         // Seed Oil
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
                 .input("listAllSeed", 1)
                 .fluidOutputs(Materials.SeedOil.getFluid(10))
                 .buildAndRegister();
 
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllmushroom", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
+        // These recipes appear to be missing for unknown reasons, adding manually
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+                .input(Items.WHEAT_SEEDS)
+                .fluidOutputs(Materials.SeedOil.getFluid(10))
                 .buildAndRegister();
 
-
-        // Seed Oil
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input("listAllSeed", 1)
+                .input(Items.MELON_SEEDS)
+                .fluidOutputs(Materials.SeedOil.getFluid(10))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+                .input(Items.PUMPKIN_SEEDS)
                 .fluidOutputs(Materials.SeedOil.getFluid(10))
                 .buildAndRegister();
 
@@ -3522,7 +3525,7 @@ public class GARecipeAddition {
                 .input(dust, Sulfur)
                 .input(dust, Silicon)
                 .input(dust, Carbon)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(6))
                 .output(dust, EglinSteel, 13)
                 .buildAndRegister();
 
@@ -3536,6 +3539,43 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25))
                 .EUt(500)
                 .duration(100)
+                .buildAndRegister();
+
+        // Misc Blast Alloy Recipes
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(775).EUt(1200)
+                .input(dust, Tin, 9)
+                .input(dust, Antimony)
+                .fluidOutputs(SolderingAlloy.getFluid(1440))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(473).EUt(240)
+                .input(dust, Redstone)
+                .input(dust, Copper)
+                .fluidOutputs(RedAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(320).EUt(360)
+                .input(dust, Aluminium, 2)
+                .input(dust, Magnesium)
+                .fluidOutputs(Magnalium.getFluid(432))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+                .input(dust, Tin)
+                .input(dust, Iron)
+                .fluidOutputs(TinAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+                .input(dust, Tin)
+                .input(dust, WroughtIron)
+                .fluidOutputs(TinAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(512).EUt(600)
+                .input(dust, Lead, 4)
+                .input(dust, Antimony)
+                .fluidOutputs(BatteryAlloy.getFluid(720))
                 .buildAndRegister();
 
         // Dynamite

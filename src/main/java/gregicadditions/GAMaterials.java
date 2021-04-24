@@ -776,8 +776,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CalciumCarbonateSolution = new SimpleFluidMaterial("calcium_carbonate_solution", Calcite.materialRGB, "(H2O)CaCO3");
     public static final SimpleFluidMaterial BariumSulfateSolution = new SimpleFluidMaterial("barium_sulfate_solution", Barite.materialRGB, "(H2O)BaSO4");
     public static final SimpleFluidMaterial BentoniteClaySlurry = new SimpleFluidMaterial("bentonite_clay_solution", 0xdbc9c5, "H2O?");
-    public static final SimpleFluidMaterial DrillingMud = new SimpleFluidMaterial("drilling_mud", 0x996600, "Drilling Mud");
-    public static final SimpleFluidMaterial UsedDrillingMud = new SimpleFluidMaterial("used_drilling_mud", 0x998833, "Used Drilling Mud");
+    public static final SimpleFluidMaterial DrillingMud = new SimpleFluidMaterial("drilling_mud", 0x996600, "For the Drilling Rig");
+    public static final SimpleFluidMaterial UsedDrillingMud = new SimpleFluidMaterial("used_drilling_mud", 0x998833, "Used Mud");
     public static final SimpleFluidMaterial TolueneDiisocyanate = new SimpleFluidMaterial("toluene_diisocyanate", 0xbaf6ca, "C9H6N2O2");
     public static final SimpleFluidMaterial HydroselenicAcid = new SimpleFluidMaterial("hydroselenic_acid", Selenium.materialRGB, "H2Se");
     public static final SimpleFluidMaterial Aminophenol = new SimpleFluidMaterial("aminophenol", 0xafca3a, "C6H4(OH)(NH2)");
