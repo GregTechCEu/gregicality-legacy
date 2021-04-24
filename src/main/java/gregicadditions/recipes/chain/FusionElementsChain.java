@@ -516,9 +516,14 @@ public class FusionElementsChain {
                 .fluidOutputs(Rutherfordium.getFluid(16))
                 .buildAndRegister();
 
-        // Can also be Am243
         FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
                 .fluidInputs(Americium.getFluid(16))
+                .fluidInputs(Neon.getFluid(16))
+                .fluidOutputs(Dubnium.getFluid(16))
+                .buildAndRegister();
+
+        FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
+                .fluidInputs(Americium243.getMaterial().getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Dubnium.getFluid(16))
                 .buildAndRegister();
