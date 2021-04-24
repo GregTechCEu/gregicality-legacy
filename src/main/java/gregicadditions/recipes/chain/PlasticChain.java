@@ -29,7 +29,7 @@ public class PlasticChain {
                 .buildAndRegister();
 
         // 2C6H5OH + C8H6O4 -> C20H14O4 + 2H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Phenol.getFluid(2000))
                 .fluidInputs(PhthalicAcid.getFluid(1000))
                 .fluidOutputs(Diphenylisophtalate.getFluid(1000))

@@ -2597,15 +2597,6 @@ public class GARecipeAddition {
                 .output(ingotHot, LithiumTitanate)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
-                .input(dust, SodiumHydroxide, 3)
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .fluidInputs(AllylChloride.getFluid(1000))
-                .notConsumable(new IntCircuitIngredient(2))
-                .fluidOutputs(Epichlorhydrin.getFluid(1000))
-                .fluidOutputs(SaltWater.getFluid(1000))
-                .buildAndRegister();
-
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Benzene.getFluid(1000))
@@ -4208,22 +4199,6 @@ public class GARecipeAddition {
                 .input(dust, Clay)
                 .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(BentoniteClaySlurry.getFluid(2000))
-                .buildAndRegister();
-
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
-                .fluidInputs(BariumSulfateSolution.getFluid(1000))
-                .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
-                .fluidInputs(BentoniteClaySlurry.getFluid(1000))
-                .fluidInputs(Lubricant.getFluid(1000))
-                .fluidInputs(ATL.getFluid(1000))
-                .fluidInputs(EthyleneGlycol.getFluid(1000))
-                .fluidOutputs(DrillingMud.getFluid(6000))
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(240).EUt(480)
-                .fluidInputs(UsedDrillingMud.getFluid(1000))
-                .fluidOutputs(DrillingMud.getFluid(950))
-                .outputs(new ItemStack(Blocks.GRAVEL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192)

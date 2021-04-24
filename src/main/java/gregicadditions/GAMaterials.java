@@ -840,7 +840,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial FullereneDopedNanotubes = new SimpleFluidMaterial("fullerene_doped_nanotubes",0x6c2c6c, "C60CNT");
     public static final SimpleFluidMaterial AmmoniumNiobiumOxalateSolution = new SimpleFluidMaterial("ammonium_niobium_oxalate_solution",0x6c6cac, "(NH4)C10Nb2O20");
     public static final SimpleFluidMaterial DielectricMirrorFormationMix = new SimpleFluidMaterial("dielectric_mirror_formation_mix",0xff992c, "MgF2ZnSTa2Ti(C2H6O8)");
-    public static final SimpleFluidMaterial LiquidZBLAN = new SimpleFluidMaterial("molten_zblan",(Zirconium.materialRGB+Barium.materialRGB+Lanthanum.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/5, "(ZrF4)18(BaF2)7(NaF)7(LaF3)2(AlF3)");
+    public static final SimpleFluidMaterial LiquidZBLAN = new SimpleFluidMaterial("molten_zblan",(Zirconium.materialRGB+Barium.materialRGB+Lanthanum.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/5, "(ZrF4)18(BaF2)7(LaF3)2(AlF3)(NaF)7");
     public static final SimpleFluidMaterial ChlorousAcid = new SimpleFluidMaterial("chlorous_acid", 0x2d6e8a, "HClO2");
     public static final SimpleFluidMaterial Iodobenzene = new SimpleFluidMaterial("iodobenzene",0x2c2c6c0, "C6H5I");
     public static final SimpleFluidMaterial Amino3phenol = new SimpleFluidMaterial("3_aminophenol",Aminophenol.rgb, "C6H7NO");
@@ -999,8 +999,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial LanthanumTrifluoride = new SimpleDustMaterial("lanthanum_trifluoride", (Lanthanum.materialRGB+Fluorine.materialRGB)/2, (short) 58, MaterialIconSet.DULL, "LaF3");
     public static final SimpleDustMaterial AluminiumTrifluoride = new SimpleDustMaterial("aluminium_trifluoride", (Aluminium.materialRGB+Fluorine.materialRGB)/2, (short) 59, MaterialIconSet.DULL, "AlF3");
     public static final SimpleDustMaterial ErbiumTrifluoride = new SimpleDustMaterial("erbium_trifluoride", (Erbium.materialRGB+Fluorine.materialRGB)/2, (short) 60, MaterialIconSet.DULL, "ErF3");
-    public static final SimpleDustMaterial ZBLANDust = new SimpleDustMaterial("zblan_dust", (ZirconiumTetrafluoride.rgb+BariumDifluoride.rgb+LanthanumTrifluoride.rgb+AluminiumTrifluoride.rgb)/4, (short) 61, MaterialIconSet.DULL, "(ZrF4)18(BaF2)7(NaF)7(LaF3)2(AlF3)");
-    public static final SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", (ZBLANDust.rgb+ErbiumTrifluoride.rgb)/2, (short) 62, MaterialIconSet.DULL, "(ZrF4)18(BaF2)7(NaF)7(LaF3)2(AlF3)(ErF3)");
+    public static final SimpleDustMaterial ZBLANDust = new SimpleDustMaterial("zblan_dust", (ZirconiumTetrafluoride.rgb+BariumDifluoride.rgb+LanthanumTrifluoride.rgb+AluminiumTrifluoride.rgb)/4, (short) 61, MaterialIconSet.DULL, "(ZrF4)18(BaF2)7(LaF3)2(AlF3)(NaF)7");
+    public static final SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", (ZBLANDust.rgb+ErbiumTrifluoride.rgb)/2, (short) 62, MaterialIconSet.DULL, "(ErF3)(ZrF4)18(BaF2)7(LaF3)2(AlF3)(NaF)7");
     public static final SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", (Potassium.materialRGB+Nitrogen.materialRGB)/2, (short) 63, MaterialIconSet.DULL, "KCN");
     public static final SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", (MaleicAnhydride.rgb+Water.materialRGB+Hydrogen.materialRGB)/3, (short) 64, MaterialIconSet.DULL, "C4H6O4");
     public static final SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", (SuccinicAcid.rgb+Ammonia.materialRGB)/2, (short) 65, MaterialIconSet.DULL, "C4H5NO2");
