@@ -199,9 +199,9 @@ public class InsulationWireAssemblyChain {
                 .outputs(GrapheneGelSuspension.getItemStack())
                 .buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(260).EUt(4096)
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(260).EUt(480)
                 .inputs(GrapheneGelSuspension.getItemStack())
-                .fluidInputs(Acetone.getFluid(500))
+                .fluidInputs(Acetone.getFluid(100))
                 .outputs(DryGrapheneGel.getItemStack())
                 .buildAndRegister();
 

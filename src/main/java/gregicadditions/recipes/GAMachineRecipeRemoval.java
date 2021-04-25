@@ -92,11 +92,6 @@ public class GAMachineRecipeRemoval {
         //Remove Cheap Diesel Recipe
         removeRecipesByInputs(RecipeMaps.MIXER_RECIPES, LightFuel.getFluid(5000), HeavyFuel.getFluid(1000));
 
-        //Fix Seed Oil Recipe
-        removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
-        removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.MELON_SEEDS));
-        removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
-
         //Remove Conflicting Redstone Plate Recipe
         removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES, OreDictUnifier.get(dust, Redstone));
 

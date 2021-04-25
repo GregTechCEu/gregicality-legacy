@@ -118,22 +118,6 @@ public class GARecipeAddition {
                 .fluidOutputs(Materials.SeedOil.getFluid(10))
                 .buildAndRegister();
 
-        // These recipes appear to be missing for unknown reasons, adding manually
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input(Items.WHEAT_SEEDS)
-                .fluidOutputs(Materials.SeedOil.getFluid(10))
-                .buildAndRegister();
-
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input(Items.MELON_SEEDS)
-                .fluidOutputs(Materials.SeedOil.getFluid(10))
-                .buildAndRegister();
-
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input(Items.PUMPKIN_SEEDS)
-                .fluidOutputs(Materials.SeedOil.getFluid(10))
-                .buildAndRegister();
-
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
                 .input("listAllmushroom", 8)
                 .outputs(MetaItems.PLANT_BALL.getStackForm())

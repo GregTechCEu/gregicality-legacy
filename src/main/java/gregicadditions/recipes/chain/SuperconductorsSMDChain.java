@@ -602,6 +602,16 @@ public class SuperconductorsSMDChain {
                 .outputs(YttriumNitrate.getItemStack(26))
                 .buildAndRegister();
 
+        // C3H5ClO + 2H2O + Na2CO3 -> C3H8O3 + NaCl + NaHCO3
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(1024)
+                .fluidInputs(Epichlorhydrin.getFluid(1000))
+                .fluidInputs(Water.getFluid(2000))
+                .input(dust, SodaAsh, 6)
+                .fluidOutputs(Glycerol.getFluid(1000))
+                .output(dust, Salt, 2)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .buildAndRegister();
+
         // 6C3H8O3 + 5HCl + 3HClO + 8N -> 3C6H8O7 + 8NH4Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(6200)
                 .fluidInputs(Glycerol.getFluid(6000))
