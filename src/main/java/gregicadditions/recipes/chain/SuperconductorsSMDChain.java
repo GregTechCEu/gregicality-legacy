@@ -639,7 +639,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // YBa2Cu3O6 + O -> YBa2Cu3O7
-        ARC_FURNACE_RECIPES.recipeBuilder().duration(5000).EUt(8000)
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(2509).EUt(8000)
                 .inputs(WellMixedYBCOxides.getItemStack(12))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(ingotHot, YttriumBariumCuprate, 13)
