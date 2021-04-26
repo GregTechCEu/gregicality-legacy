@@ -863,7 +863,7 @@ metaitem.plugin.tooltips.1=Plugins can be added to the screen for more functiona
 metaitem.plugin.proxy.tooltips.1=(Please adjust to proxy mode in the screen)
 metaitem.plugin.text.name=Text Plugin
 metaitem.plugin.online_pic.name=Online Picture Plugin
-metaitem.plugin.fake_gui.name=Gui Proxy Plugin
+metaitem.plugin.fake_gui.name=GUI Proxy Plugin
 metaitem.plugin.advanced_monitor.name=Advanced Monitor Proxy Plugin
 metaitem.cover.digital.name=Digital Interface Cover
 

@@ -368,10 +368,11 @@ public class SensorEmitter {
                 .fluidOutputs(Bromine.getFluid(1000))
                 .buildAndRegister();
 
+        // Co + O -> CoO
         CHEMICAL_RECIPES.recipeBuilder().EUt(24).duration(100)
                 .input(dust, Cobalt)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .output(dust, CobaltOxide)
+                .output(dust, CobaltOxide, 2)
                 .buildAndRegister();
 
         // C3H10Si + C6H5Cl + 2CH2O + C7H5IO4 -> 2H + (CH3)3SiCl + C8H8O2 + C7H5IO4

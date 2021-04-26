@@ -4355,7 +4355,7 @@ public class GARecipeAddition {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(20)
                 .input(dust, Netherrack)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Materials.Redstone, 1), 5625, 850)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal), 625, 500)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal, 2), 625, 500)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Materials.Sulfur, 1), 9900, 100)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Materials.Coal, 1), 5625, 850)
                 .buildAndRegister();
