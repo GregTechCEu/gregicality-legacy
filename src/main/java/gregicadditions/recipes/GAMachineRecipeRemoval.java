@@ -260,6 +260,9 @@ public class GAMachineRecipeRemoval {
 
         // Yttrium Barium Cuprate Mixer
         removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Copper, 3), OreDictUnifier.get(dust, Barium, 2), OreDictUnifier.get(dust, Yttrium)}, new FluidStack[]{Oxygen.getFluid(7000)});
+
+        // Ethylene Conflict
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Ethanol.getFluid(1000), SulfuricAcid.getFluid(1000)});
     }
 
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {

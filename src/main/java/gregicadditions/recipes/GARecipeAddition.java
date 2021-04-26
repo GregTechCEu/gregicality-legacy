@@ -4350,6 +4350,14 @@ public class GARecipeAddition {
                 .duration(1160)
                 .buildAndRegister();
 
+        CHEMICAL_RECIPES.recipeBuilder().duration(1200).EUt(120)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Ethanol.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(Ethylene.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
         // Chain Fixing
         // Gold Dust Centrifuging
         CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(20)
