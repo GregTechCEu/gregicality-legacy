@@ -16,17 +16,18 @@ import java.util.List;
 public interface IReTexturedModel {
     /***
      * register model. you can also do config checking here.
+     * of course, you could register the RexTexturedModel anywhere in your way, without calling this function.
      *
      * @param state state with variant
      * @param path model path
      */
     @SideOnly(Side.CLIENT)
     default void register(IBlockState state, ResourceLocation path) {
-        ReTexturedModelLoader.register(state, path, getModel(state));
+        ReTexturedModelLoader.register(this, path, new ReTexturedModel(getModels(state)));
     }
 
     /***
-     * models. e.g. return new ReTexturedModel(m_1, m_2, m_3, ....); see {@link ReTexturedModel}.
+     * resource location of models. e.g. return new ResourceLocation[]{m_1, m_2, m_3, ....};.
      * although all models (m_1, m_2,...,m_n) will be rendered together in the end.
      * but additional config about the model (such as item camera perspective) is determined by m1.
      * all you need to be careful about is setting up such config in m1.
@@ -35,7 +36,7 @@ public interface IReTexturedModel {
      * @return
      */
     @SideOnly(Side.CLIENT)
-    ReTexturedModel getModel(IBlockState blockState);
+    ResourceLocation[] getModels(IBlockState blockState);
 
     /***
      * replacing the texture here. For example, you define textures in your model.json as follow:
@@ -50,7 +51,7 @@ public interface IReTexturedModel {
      *
      * @param blockState state with variant
      * @param side render facing
-     * @param model model you post in {@link IReTexturedModel#getModel(IBlockState)}
+     * @param model model you post in {@link IReTexturedModel#getModels(IBlockState)}
      * @return return null if no need to replace textures.
      */
     @SideOnly(Side.CLIENT)
@@ -64,7 +65,7 @@ public interface IReTexturedModel {
      *
      * @param blockState state with variant
      * @param side render facing
-     * @param model model you post in {@link IReTexturedModel#getModel(IBlockState)}
+     * @param model model you post in {@link IReTexturedModel#getModels(IBlockState)}
      * @param base origin quads
      * @return you'd better return something, even if it's an empty list.
      */
@@ -80,17 +81,17 @@ public interface IReTexturedModel {
      *
      * @param blockState state with variant
      * @param side render facing
-     * @param model model you post in {@link IReTexturedModel#getModel(IBlockState)}
+     * @param model model you post in {@link IReTexturedModel#getModels(IBlockState)}
      * @param layer layer
      * @return should Render In Layer
      */
     @SideOnly(Side.CLIENT)
     default boolean shouldRenderInLayer(IBlockState blockState, EnumFacing side, ResourceLocation model, BlockRenderLayer layer) {
-        return blockState.getBlock().canRenderInLayer(blockState, layer);
+        return blockState != null && blockState.getBlock().canRenderInLayer(blockState, layer);
     }
 
     /***
-     * you post the path of your models before {@link IReTexturedModel#getModel(IBlockState)}, but they just resourcelocation.
+     * you post the path of your models before {@link IReTexturedModel#getModels(IBlockState)}, but they just resourcelocation.
      * this function will be called when they are first  loaded as IModel.
      * For example, you can replace textures for different TIER machine based on the Variant registered.
      *
