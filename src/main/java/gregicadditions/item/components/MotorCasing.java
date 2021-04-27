@@ -1,22 +1,13 @@
 package gregicadditions.item.components;
 
-import codechicken.lib.texture.IWorldBlockTextureProvider;
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class MotorCasing extends VariantBlock<MotorCasing.CasingType> {
+public class MotorCasing extends ReTexturedCasing<MotorCasing.CasingType> {
 
     public MotorCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/motor"));
         setTranslationKey("ga_motor_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.MOTOR_LV));
     }
 
@@ -52,20 +43,5 @@ public class MotorCasing extends VariantBlock<MotorCasing.CasingType> {
         public String getName() {
             return this.name;
         }
-    }
-
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.SOLID;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return true;
-    }
-
-    @Deprecated
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
     }
 }

@@ -12,6 +12,15 @@ import java.util.Locale;
 @Config(modid = Gregicality.MODID)
 public class GAConfig {
 
+    @Config.Comment({"Configs for Client Side"})
+    public static Client client = new Client();
+
+    public static class Client {
+        @Config.Comment("Should use advanced model for casings")
+        @Config.Name("Advanced Casing Model")
+        public boolean AdvancedCasingModel = true;
+    }
+
     @Config.Comment("Config options for GT6 features")
     public static GT6 GT6 = new GT6();
 

@@ -1,0 +1,64 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "3": "gtadditions:blocks/casing/glass"
+  },
+  "elements": [
+    {
+      "from": [2, 2, 0.5],
+      "to": [14, 14, 0.5],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "east": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "west": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "up": {"uv": [0, 0, 12, 1], "texture": "#3"},
+        "down": {"uv": [0, 0, 12, 1], "texture": "#3"}
+      }
+    },
+    {
+      "from": [2, 2, 15.5],
+      "to": [14, 14, 15.5],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "east": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "west": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "up": {"uv": [0, 0, 12, 1], "texture": "#3"},
+        "down": {"uv": [0, 0, 12, 1], "texture": "#3"}
+      }
+    },
+    {
+      "from": [0.5, 2, 2],
+      "to": [0.5, 14, 14],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "east": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "up": {"uv": [0, 0, 12, 1], "texture": "#3"},
+        "down": {"uv": [0, 0, 12, 1], "texture": "#3"}
+      }
+    },
+    {
+      "from": [15.5, 2, 2],
+      "to": [15.5, 14, 14],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+        "west": {"uv": [0, 0, 1, 12], "texture": "#3"},
+        "up": {"uv": [0, 0, 12, 1], "texture": "#3"},
+        "down": {"uv": [0, 0, 12, 1], "texture": "#3"}
+      }
+    }
+  ],
+  "groups": [
+    {
+      "name": "glass",
+      "origin": [8, 8, 8],
+      "children": [0, 1, 2, 3]
+    }
+  ]
+}

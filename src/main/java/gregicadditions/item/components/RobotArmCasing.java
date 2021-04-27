@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class RobotArmCasing extends VariantBlock<RobotArmCasing.CasingType> {
+public class RobotArmCasing extends ReTexturedCasing<RobotArmCasing.CasingType> {
 
     public RobotArmCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/robot_arm"));
         setTranslationKey("ga_robot_arm_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.ROBOT_ARM_LV));
     }
 
