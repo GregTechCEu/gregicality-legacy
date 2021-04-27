@@ -1,7 +1,6 @@
 package gregicadditions.item.components;
 
 import com.google.common.collect.ImmutableMap;
-import com.sun.jna.platform.win32.WinDef;
 import gregicadditions.GAConfig;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.client.model.IReTexturedModel;
