@@ -41,7 +41,6 @@ public class GAMetaItem extends MaterialMetaItem {
 
     @Override
     public void registerSubItems() {
-        GLASS_FIBER = addItem(21, "component.glass.fiber");
         PETRI_DISH = addItem(23, "component.petri.dish");
 
         if (Loader.isModLoaded("forestry") && GAConfig.GT6.electrodes) {

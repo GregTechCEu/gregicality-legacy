@@ -182,7 +182,7 @@ public class Lasers {
         // O + 3C2H5NO2 + 2HBr + 2CsOH -> 2CsBr + 2H2O + 2C3H7NO2 + HNO3
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(8000)
                 .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
-                .inputs(CesiumHydroxide.getItemStack(6))
+                .inputs(CaesiumHydroxide.getItemStack(6))
                 .fluidInputs(Glycine.getFluid(3000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(HydrobromicAcid.getFluid(2000))
@@ -196,7 +196,7 @@ public class Lasers {
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(2000)
                 .input(dust, Caesium, 2)
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .outputs(CesiumHydroxide.getItemStack(6))
+                .outputs(CaesiumHydroxide.getItemStack(6))
                 .buildAndRegister();
 
         // CsBr -> Cs + Br

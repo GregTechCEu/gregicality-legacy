@@ -277,7 +277,7 @@ public class Dyes {
         // 2Pb(NO3)2 + K2Cr2O7 -> 2PbCrO4 // Loses 3N, K, O
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(500)
                 .input(dust, LeadNitrate, 9)
-                .input(dust, Potassiumdichromate, 11)
+                .input(dust, PotassiumDichromate, 11)
                 .outputs(ChromeYellow.getItemStack(2))
                 .buildAndRegister();
 
@@ -425,7 +425,7 @@ public class Dyes {
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(200).EUt(1600)
                 .fluidInputs(SulfuricAcid.getFluid(10))
                 .fluidInputs(Anthracene.getFluid(1000))
-                .input(dust,Potassiumdichromate, 11)
+                .input(dust, PotassiumDichromate, 11)
                 .output(dust, ChromiumTrioxide, 4)
                 .outputs(Anthraquinone.getItemStack())
                 .buildAndRegister();
@@ -449,7 +449,7 @@ public class Dyes {
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1340)
                 .notConsumable(dust,Palladium)
-                .notConsumable(dust,Potassiumdichromate)
+                .notConsumable(dust, PotassiumDichromate)
                 .fluidInputs(Aniline.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Nitrotoluene.getFluid(2000))

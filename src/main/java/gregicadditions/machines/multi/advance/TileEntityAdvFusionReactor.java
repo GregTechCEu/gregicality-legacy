@@ -109,7 +109,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
                 .where('E', tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch))
                 .setAmountAtMost('I', 3)
                 .where('I', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
-                .setAmountAtMost('i', 2)
+                .setAmountAtMost('i', 3)
                 .where('i', abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS))
                 .build();
     }

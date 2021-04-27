@@ -112,23 +112,6 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(ingot, WroughtIron))
                 .buildAndRegister();
 
-
-        // Seed Oil
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
-                .input("listAllSeed", 1)
-                .fluidOutputs(Materials.SeedOil.getFluid(10))
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllmushroom", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(16)
-                .inputs(HOT_IRON_INGOT.getStackForm())
-                .outputs(OreDictUnifier.get(ingot, WroughtIron))
-                .buildAndRegister();
-
-
         // Seed Oil
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
                 .input("listAllSeed", 1)
@@ -196,76 +179,11 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
 
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllfruit", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllveggie", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllspice", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllgrain", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllnut", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllpepper", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllherb", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .input("listAllfiber", 8)
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(BrownAlgae.getItemStack(8))
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(RedAlgae.getItemStack(8))
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(GreenAlgae.getItemStack(8))
-                .outputs(MetaItems.PLANT_BALL.getStackForm())
-                .buildAndRegister();
-
-
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder().EUt(16).duration(80)
                 .fluidInputs(Glass.getFluid(144))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(GLASS_TUBE.getStackForm())
                 .buildAndRegister();
-
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().EUt(16).duration(80)
-                .fluidInputs(Glass.getFluid(144))
-                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
-                .outputs(GLASS_TUBE.getStackForm())
-                .buildAndRegister();
-
-        // TODO Check this recipe
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().fluidInputs(Glass.getFluid(144)).notConsumable(SHAPE_MOLD_BALL.getStackForm()).outputs(GLASS_TUBE.getStackForm()).EUt(16).duration(80).buildAndRegister();
 
         COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
                 .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
@@ -369,26 +287,20 @@ public class GARecipeAddition {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:iron_bucket"));
             ModHandler.addShapedRecipe("bucket", new ItemStack(Items.BUCKET),
                     "ChC", " P ",
-                    'C', "plateCurvedIron",
+                    'C', plateB + "Iron",
                     'P', "plateIron");
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-                    .input(valueOf("plateCurved"), Iron, 2)
+                    .input(valueOf(plateB), Iron, 2)
                     .input(plate, Iron)
                     .outputs(new ItemStack(Items.BUCKET))
                     .buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-            .input(valueOf(plateB), Iron, 2)
-            .input(plate, Iron)
-            .outputs(new ItemStack(Items.BUCKET))
-            .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-            .input(valueOf(plateB), WroughtIron, 2)
-            .input(plate, WroughtIron)
-            .outputs(new ItemStack(Items.BUCKET))
-            .buildAndRegister();
+                    .input(valueOf(plateB), WroughtIron, 2)
+                    .input(plate, WroughtIron)
+                    .outputs(new ItemStack(Items.BUCKET))
+                    .buildAndRegister();
 
             ModHandler.removeRecipeByName(new ResourceLocation("minecraft:iron_helmet"));
             ModHandler.addShapedRecipe("iron_helmet", new ItemStack(Items.IRON_HELMET),
@@ -456,7 +368,7 @@ public class GARecipeAddition {
         }
 
         //wood pipe
-        if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders) {
+        if (GAConfig.GT6.BendingCylinders) {
             ModHandler.removeRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
             ModHandler.removeRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
 
@@ -1752,14 +1664,6 @@ public class GARecipeAddition {
                 .fluidOutputs(Water.getFluid(1500))
                 .buildAndRegister();
 
-        //Pyrolyse Oven Recipes
-        PYROLYSE_RECIPES.recipeBuilder().duration(640).EUt(64)
-                .inputs(new ItemStack(Items.SUGAR, 23))
-                .circuitMeta(1)
-                .outputs(OreDictUnifier.get(dust, Charcoal, 12))
-                .fluidOutputs(Water.getFluid(1500))
-                .buildAndRegister();
-
         PYROLYSE_RECIPES.recipeBuilder().duration(200).EUt(10)
                 .inputs(PLANT_BALL.getStackForm())
                 .circuitMeta(2)
@@ -1784,18 +1688,6 @@ public class GARecipeAddition {
                 .fluidOutputs(Xenon.getFluid(1))
                 .buildAndRegister();
 
-        //Fermenter Recipes
-        FERMENTING_RECIPES.recipeBuilder().duration(150).EUt(2)
-                .fluidInputs(Biomass.getFluid(100))
-                .fluidOutputs(FermentedBiomass.getFluid(100)).
-                buildAndRegister();
-
-        // Fish Oil
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(160).EUt(4)
-                .inputs(new ItemStack(Items.FISH))
-                .fluidOutputs(FishOil.getFluid(40))
-                .buildAndRegister();
-
         // Fish Oil
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(160).EUt(4)
                 .inputs(new ItemStack(Items.FISH))
@@ -1816,210 +1708,6 @@ public class GARecipeAddition {
                 .inputs(new ItemStack(Items.FISH, 1, 3))
                 .fluidOutputs(FishOil.getFluid(30))
                 .buildAndRegister();
-
-        //Misc Blast Furnace Recipes
-        // TODO: OXYGEN EBF
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Pentlandite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, Garnierite))
-                .outputs(OreDictUnifier.get(dustTiny, Ash))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Pyrite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, BandedIron))
-                .outputs(OreDictUnifier.get(dustTiny, Ash))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Galena)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, Massicot))
-                .outputs(OreDictUnifier.get(nugget, Lead, 6))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Stibnite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, AntimonyTrioxide))
-                .outputs(OreDictUnifier.get(dustTiny, Ash))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Cobaltite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, CobaltOxide))
-                .outputs(OreDictUnifier.get(dust, ArsenicTrioxide))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Tetrahedrite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, CupricOxide))
-                .outputs(OreDictUnifier.get(dustTiny, AntimonyTrioxide, 3))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Chalcopyrite)
-                .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(OreDictUnifier.get(dust, CupricOxide))
-                .outputs(OreDictUnifier.get(dust, Ferrosilite))
-                .fluidOutputs(SulfurDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        // TODO: CARBON EBF
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Massicot, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Lead, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, AntimonyTrioxide, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Antimony, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(3000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, CobaltOxide, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Cobalt, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, ArsenicTrioxide, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Arsenic, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, CupricOxide, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Copper, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Garnierite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Nickel, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, BandedIron, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Massicot, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Lead, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Massicot, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Lead, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Malachite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Copper, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(3000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Magnetite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, GraniticMineralSand, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, BrownLimonite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, YellowLimonite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, BasalticMineralSand, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Iron, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, Cassiterite, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Tin, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, CassiteriteSand, 2)
-                .input(dust, Carbon)
-                .outputs(OreDictUnifier.get(ingot, Tin, 3))
-                .outputs(OreDictUnifier.get(dustTiny, Ash, 2))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, SiliconDioxide)
-                .input(dust, Carbon, 2)
-                .outputs(OreDictUnifier.get(ingot, Silicon))
-                .outputs(OreDictUnifier.get(dustTiny, Ash))
-                .fluidOutputs(CarbonMonoxde.getFluid(2000))
-                .buildAndRegister();
-
 
         //Mince Meat Recipes
         MACERATOR_RECIPES.recipeBuilder().duration(60).EUt(16)
@@ -2070,6 +1758,13 @@ public class GARecipeAddition {
                 'P', "plateSteel", 'A', ROBOT_ARM_IV.getStackForm(),
                 'F', OreDictUnifier.get(frameGt, TungstenSteel));
 
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MetaItems.ROBOT_ARM_IV.getStackForm(2))
+                .inputs(OreDictUnifier.get(OrePrefix.plate, Materials.Steel, 4))
+                .inputs(OreDictUnifier.get(OrePrefix.frameGt, Materials.TungstenSteel))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING, 2))
+                .duration(100).EUt(8000).buildAndRegister();
+
         ModHandler.addShapedRecipe("ga_assembler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING, 3), "CCC", "CFC", "CMC",
                 'C', "circuitElite",
                 'F', "frameGtTungstenSteel",
@@ -2095,8 +1790,8 @@ public class GARecipeAddition {
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(32)
                 .input(circuit, MarkerMaterials.Tier.Basic, 2)
-                .inputs(OreDictUnifier.get(gear, Tumbaga, 8))
-                .inputs(OreDictUnifier.get(plate, Tumbaga, 8))
+                .inputs(OreDictUnifier.get(gear, Magnalium, 8))
+                .inputs(OreDictUnifier.get(plate, Magnalium, 8))
                 .inputs(OreDictUnifier.get(cableGtOctal, Cobalt))
                 .inputs(MetaTileEntities.HULL[GTValues.LV].getStackForm())
                 .fluidInputs(Silicon.getFluid(1440))
@@ -2381,8 +2076,7 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(block, Snow, 4))
                 .buildAndRegister();
 
-
-        // Battery Tower Cells
+        // Large Assembler Casing
         ASSEMBLER_RECIPES.recipeBuilder().EUt(8000).duration(600)
                 .fluidInputs(HastelloyN.getFluid(144 * 4))
                 .input(valueOf("gtMetalCasing"), Staballoy, 2)
@@ -2390,6 +2084,7 @@ public class GARecipeAddition {
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2))
                 .buildAndRegister();
 
+        // Battery Tower Cells
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200)
                 .input(plateDense, Lead, 4)
                 .fluidInputs(Oxygen.getFluid(16000))
@@ -2689,8 +2384,7 @@ public class GARecipeAddition {
                 .outputs(IMPELLER_HV.getStackForm())
                 .buildAndRegister();
 
-        ModHandler.addShapedRecipe("gtadditions:battery_pack.lv", BATPACK_LV.getStackForm(),
-                "BPB", "BCB", "B B",
+        ModHandler.addShapedRecipe("gtadditions:battery_pack.lv", BATPACK_LV.getStackForm(), "BPB", "BCB", "B B",
                 'B', MetaItems.BATTERY_RE_LV_LITHIUM.getStackForm(),
                 'C', "circuitBasic",
                 'P', OreDictUnifier.get(plate, Steel));
@@ -2855,21 +2549,12 @@ public class GARecipeAddition {
                 .outputs(PYROLYTIC_CARBON.getStackForm())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().EUt(480).duration(3000).blastFurnaceTemp(2500)
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(3000).blastFurnaceTemp(2500)
                 .input(dust, Silicon)
                 .input(dust, Carbon)
                 .notConsumable(new IntCircuitIngredient(2))
-                .fluidInputs(Argon.getFluid(1000))
+                .notConsumable(Argon.getFluid(0))
                 .outputs(SiliconCarbide.getItemStack(2))
-                .buildAndRegister();
-
-        // Recipes Needing Configuration Circuits
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
-
-        BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)
-                .input(dust, Aluminium)
-                .notConsumable(new IntCircuitIngredient(1))
-                .outputs(OreDictUnifier.get(ingot, Aluminium))
                 .buildAndRegister();
 
         IMPLOSION_RECIPES.recipeBuilder().EUt(30).duration(20).explosivesAmount(48)
@@ -2878,13 +2563,8 @@ public class GARecipeAddition {
                 .output(dustTiny, DarkAsh, 2)
                 .buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder().EUt(30).duration(20).explosivesAmount(24).explosivesType(DYNAMITE.getStackForm())
-                .input(dust, Diamond, 4)
-                .output(gem, Diamond, 3)
-                .output(dustTiny, DarkAsh, 2)
-                .buildAndRegister();
-
         // Recipes Needing Configuration Circuits
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)
                 .input(dust, Aluminium)
@@ -2902,15 +2582,6 @@ public class GARecipeAddition {
                 .input(dust, LithiumTitanate)
                 .notConsumable(new IntCircuitIngredient(0))
                 .output(ingotHot, LithiumTitanate)
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
-                .input(dust, SodiumHydroxide, 3)
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
-                .fluidInputs(AllylChloride.getFluid(1000))
-                .notConsumable(new IntCircuitIngredient(2))
-                .fluidOutputs(Epichlorhydrin.getFluid(1000))
-                .fluidOutputs(SaltWater.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
@@ -2944,7 +2615,11 @@ public class GARecipeAddition {
 
     public static void init2() {
         // Diesel
-        MIXER_RECIPES.recipeBuilder().duration(16).EUt(120).fluidInputs(LightFuel.getFluid(5000), HeavyFuel.getFluid(1000)).fluidOutputs(Fuel.getFluid(6000)).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder().duration(16).EUt(120)
+                .fluidInputs(LightFuel.getFluid(5000))
+                .fluidInputs(HeavyFuel.getFluid(1000))
+                .fluidOutputs(Fuel.getFluid(6000))
+                .buildAndRegister();
 
         // High Octane Gasoline
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(1920)
@@ -2977,15 +2652,7 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
 
-        // Old Hydro-cracked Light Fuel Recipe Removal
-        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, HydroCrackedLightFuel.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-
-        // Octane Distillation
+         // Octane Distillation
         DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .fluidInputs(HydroCrackedLightFuel.getFluid(1000))
                 .fluidOutputs(Naphtha.getFluid(750))
@@ -2996,8 +2663,33 @@ public class GARecipeAddition {
                 .fluidOutputs(Octane.getFluid(50))
                 .buildAndRegister();
 
+        // Cyclopentadiene Distillation
+        DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120)
+                .fluidInputs(SteamCrackedNaphtha.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(25))
+                .fluidOutputs(LightFuel.getFluid(50))
+                .fluidOutputs(Toluene.getFluid(20))
+                .fluidOutputs(Benzene.getFluid(100))
+                .fluidOutputs(Butene.getFluid(50))
+                .fluidOutputs(Butadiene.getFluid(50))
+                .fluidOutputs(Propane.getFluid(15))
+                .fluidOutputs(Propene.getFluid(300))
+                .fluidOutputs(Ethane.getFluid(65))
+                .fluidOutputs(Ethylene.getFluid(500))
+                .fluidOutputs(Methane.getFluid(500))
+                .fluidOutputs(Cyclopentadiene.getFluid(75))
+                .buildAndRegister();
+
         // Rocket Fuel Tier T4
         // C2H8N2 + N2O4 = H8N4C2O4 (treat like chem reactor recipes)
+        // TODO CONFLICT WITH GTCE
+        MIXER_RECIPES.recipeBuilder().duration(280).EUt(480)
+                .fluidInputs(Dimethylhydrazine.getFluid(1000))
+                .fluidInputs(DinitrogenTetroxide.getFluid(1000))
+                .fluidOutputs(RocketFuelH8N4C2O4.getFluid(1000))
+                .buildAndRegister();
+
+        // TODO Remove this recipe one release after Chem Fixes 2 PR is merged
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(480)
                 .fluidInputs(Dimethylhydrazine.getFluid(1000))
                 .fluidInputs(NitrogenTetroxide.getFluid(1000))
@@ -3008,7 +2700,7 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .notConsumable(dust, Copper)
                 .fluidInputs(NitrogenDioxide.getFluid(2000))
-                .fluidOutputs(NitrogenTetroxide.getFluid(1000))
+                .fluidOutputs(DinitrogenTetroxide.getFluid(1000))
                 .buildAndRegister();
 
         // Rocket Fuel Tier 3
@@ -3043,7 +2735,7 @@ public class GARecipeAddition {
                 .fluidOutputs(RP1RocketFuel.getFluid(1000))
                 .buildAndRegister();
 
-        //Rocket fuel chemicalcha
+        //Rocket fuel chemicals
         // 2NH3 + H2O2 = N2H4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30)
                 .fluidInputs(Ammonia.getFluid(2000))
@@ -3053,19 +2745,19 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // C16H12O2H2 + 2O + C14H10 (catalyst) = H2O2 + C16H12O2
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(600).EUt(240)
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .fluidInputs(Oxygen.getFluid(2000))
-                .fluidInputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .notConsumable(Anthracene)
                 .fluidOutputs(HydrogenPeroxide.getFluid(2000))
-                .fluidOutputs(EthylAnthraQuinone.getFluid(4000))
+                .fluidOutputs(EthylAnthraQuinone.getFluid(1000))
                 .buildAndRegister();
 
         // 2H + C16H12O2 = C16H12O2H2
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(800).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(120)
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidInputs(EthylAnthraQuinone.getFluid(4000))
-                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(5000))
+                .fluidInputs(EthylAnthraQuinone.getFluid(1000))
+                .fluidOutputs(EthylAnthraHydroQuinone.getFluid(1000))
                 .buildAndRegister();
 
         // C8H4O3 + C8H10 = C16H12O2 + H2O
@@ -3172,17 +2864,6 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
 
-        // Butanol Distillation
-        removeRecipesByInputs(RecipeMaps.DISTILLATION_RECIPES, FermentedBiomass.getFluid(1000));
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(RecipeMaps.DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-
-
         DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
                 .fluidInputs(FermentedBiomass.getFluid(2000))
                 .fluidOutputs(AceticAcid.getFluid(25))
@@ -3207,7 +2888,6 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
         // Nuclear Process Distillation
-        // Nuclear Process Distillation
         // TODO: NUCLEAR REWORK: CHANGE FERRITE MIXTURE OUTPUT
         DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
                 .fluidInputs(RedOil.getFluid(4000))
@@ -3229,7 +2909,6 @@ public class GARecipeAddition {
         CHEMICAL_RECIPES.recipeBuilder().duration(300)
                 .fluidInputs(PhosphorusTrichloride.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
-                .fluidOutputs(PhosphorylChloride.getFluid(1000))
                 .fluidOutputs(PhosphorylChloride.getFluid(1000))
                 .buildAndRegister();
 
@@ -3756,196 +3435,6 @@ public class GARecipeAddition {
                 .buildAndRegister();
 
 
-        // Fusion Recipes
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(4096).EUToStart(40000000)
-                .fluidInputs(Deuterium.getFluid(125))
-                .fluidInputs(Tritium.getFluid(125))
-                .fluidOutputs(Helium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(2048).EUToStart(60000000)
-                .fluidInputs(Deuterium.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Helium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(2048).EUToStart(60000000)
-                .fluidInputs(Fluorine.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Potassium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(4096).EUToStart(80000000)
-                .fluidInputs(Carbon.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Oxygen.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(16384).EUToStart(180000000)
-                .fluidInputs(Beryllium.getFluid(16))
-                .fluidInputs(Deuterium.getFluid(375))
-                .fluidOutputs(Nitrogen.getPlasma(175))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(8192).EUToStart(360000000)
-                .fluidInputs(Silicon.getFluid(16))
-                .fluidInputs(Magnesium.getFluid(16))
-                .fluidOutputs(Iron.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(32768).EUToStart(480000000)
-                .fluidInputs(Potassium.getFluid(16))
-                .fluidInputs(Fluorine.getFluid(125))
-                .fluidOutputs(Nickel.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(32768).EUToStart(150000000)
-                .fluidInputs(Beryllium.getFluid(16))
-                .fluidInputs(Tungsten.getFluid(16))
-                .fluidOutputs(Platinum.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Neodymium.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(48))
-                .fluidOutputs(Europium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Lutetium.getFluid(16))
-                .fluidInputs(Chrome.getFluid(16))
-                .fluidOutputs(Americium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(300000000)
-                .fluidInputs(Plutonium.getFluid(16))
-                .fluidInputs(Thorium.getFluid(16))
-                .fluidOutputs(Naquadah.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24578).EUToStart(150000000)
-                .fluidInputs(Tungsten.getFluid(16))
-                .fluidInputs(Helium.getFluid(16))
-                .fluidOutputs(Osmium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(8192).EUToStart(120000000)
-                .fluidInputs(Manganese.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(16))
-                .fluidOutputs(Iron.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
-                .fluidInputs(Mercury.getFluid(16))
-                .fluidInputs(Magnesium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
-                .fluidInputs(Gold.getFluid(16))
-                .fluidInputs(Aluminium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
-                .fluidInputs(Uranium.getFluid(16))
-                .fluidInputs(Helium.getFluid(16))
-                .fluidOutputs(Plutonium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
-                .fluidInputs(Nickel.getFluid(16))
-                .fluidInputs(Polonium.getFluid(16))
-                .fluidOutputs(Copernicium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(140000000)
-                .fluidInputs(Vanadium.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(125))
-                .fluidOutputs(Chrome.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(16384).EUToStart(180000000)
-                .fluidInputs(Gallium.getFluid(16))
-                .fluidInputs(Radon.getFluid(125))
-                .fluidOutputs(Duranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(200000000)
-                .fluidInputs(Titanium.getFluid(48))
-                .fluidInputs(Duranium.getFluid(32))
-                .fluidOutputs(Tritanium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(200000000)
-                .fluidInputs(Gold.getFluid(16))
-                .fluidInputs(Mercury.getFluid(16))
-                .fluidOutputs(Radon.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(24576).EUToStart(200000000)
-                .fluidInputs(Tantalum.getFluid(16))
-                .fluidInputs(Tritium.getFluid(16))
-                .fluidOutputs(Tungsten.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(24576).EUToStart(380000000)
-                .fluidInputs(Silver.getFluid(16))
-                .fluidInputs(Lithium.getFluid(16))
-                .fluidOutputs(Indium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(400000000)
-                .fluidInputs(NaquadahEnriched.getFluid(15))
-                .fluidInputs(Radon.getFluid(125))
-                .fluidOutputs(Naquadria.getFluid(3))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(8192).EUToStart(80000000)
-                .fluidInputs(Lanthanum.getFluid(16))
-                .fluidInputs(Silicon.getFluid(16))
-                .fluidOutputs(Lutetium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(16))
-                .fluidInputs(Neon.getFluid(16))
-                .fluidOutputs(Rutherfordium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Americium241.getMaterial().getFluid(16))
-                .fluidInputs(Neon.getFluid(16))
-                .fluidOutputs(Dubnium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).EUToStart(400000000)
-                .fluidInputs(Plutonium.getFluid(144))
-                .fluidInputs(Calcium.getFluid(144))
-                .fluidOutputs(Seaborgium.getFluid(288))
-                .buildAndRegister();
-
-
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(50).EUt(1000000).euStart(1000000000).coilTier(1).euReturn(40)
-                .fluidInputs(Curium247.getMaterial().getFluid(144))
-                .fluidInputs(Sodium.getFluid(144))
-                .fluidOutputs(Bohrium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(2000000).coilTier(1).euStart(1000000000).euReturn(40)
-                .fluidInputs(Trinium.getFluid(144))
-                .fluidInputs(Tritanium.getFluid(144))
-                .fluidOutputs(Adamantium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(8000000).coilTier(2).euStart(2500000000L).euReturn(40)
-                .fluidInputs(Adamantium.getFluid(144))
-                .fluidInputs(Seaborgium.getFluid(144))
-                .fluidOutputs(Vibranium.getFluid(288))
-                .buildAndRegister();
-
-
         // Fusion Casing Recipes
         ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING),
                 "PhP", "PHP", "PwP",
@@ -3972,586 +3461,6 @@ public class GARecipeAddition {
                 .inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2))
                 .input(plate, Dubnium, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
-                .buildAndRegister();
-
-        // POCl3 + 3C4H10O -> C12H27O4P + 3HCl
-        CHEMICAL_RECIPES.recipeBuilder().duration(300)
-                .fluidInputs(PhosphorylChloride.getFluid(1000))
-                .fluidInputs(Butanol.getFluid(3000))
-                .fluidOutputs(HydrochloricAcid.getFluid(3000))
-                .fluidOutputs(TributylPhosphate.getFluid(1000))
-                .buildAndRegister();
-
-// TODO HERE+++++++++++++++++++++++++++++++++
-        //Assline Recipes
-        //motor
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
-                .outputs(CONVEYOR_MODULE_UV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UV.getStackForm(2))
-                .inputs(OreDictUnifier.get(plate, Tritanium, 8))
-                .inputs(OreDictUnifier.get(gear, Tritanium, 4))
-                .inputs(OreDictUnifier.get(stick, Tritanium, 4))
-                .inputs(OreDictUnifier.get(ingot, Tritanium, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Duranium, 2))
-                .fluidInputs(StyreneButadieneRubber.getFluid(2880))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(983040)
-                .outputs(CONVEYOR_MODULE_UHV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
-                .inputs(OreDictUnifier.get(plate, HDCS, 8))
-                .inputs(OreDictUnifier.get(gear, HDCS, 4))
-                .inputs(OreDictUnifier.get(stick, HDCS, 4))
-                .inputs(OreDictUnifier.get(ingot, HDCS, 2))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 2)
-                .fluidInputs(StyreneButadieneRubber.getFluid(2880))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
-                .outputs(CONVEYOR_MODULE_UEV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UEV.getStackForm(2))
-                .inputs(OreDictUnifier.get(plate, HDCS, 8))
-                .inputs(OreDictUnifier.get(gear, HDCS, 4))
-                .inputs(OreDictUnifier.get(stick, HDCS, 4))
-                .inputs(OreDictUnifier.get(ingot, HDCS, 2))
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(StyreneButadieneRubber.getFluid(2880))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-        // PISTONS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15360)
-                .outputs(ELECTRIC_PISTON_LUV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(plate, HSSG, 8))
-                .inputs(OreDictUnifier.get(gearSmall, HSSG, 8))
-                .inputs(OreDictUnifier.get(stick, HSSG, 4))
-                .inputs(OreDictUnifier.get(ingot, HSSG, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, YttriumBariumCuprate, 2))
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .fluidInputs(Lubricant.getFluid(250))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
-                .outputs(ELECTRIC_PISTON_ZPM.getStackForm())
-                .inputs(ELECTRIC_MOTOR_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(plate, HSSE, 8))
-                .inputs(OreDictUnifier.get(gearSmall, HSSE, 8))
-                .inputs(OreDictUnifier.get(stick, HSSE, 4))
-                .inputs(OreDictUnifier.get(ingot, HSSE, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Naquadah, 2))
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .fluidInputs(Lubricant.getFluid(750))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
-                .outputs(ELECTRIC_PISTON_UV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UV.getStackForm())
-                .inputs(OreDictUnifier.get(plate, Tritanium, 8))
-                .inputs(OreDictUnifier.get(gearSmall, Tritanium, 8))
-                .inputs(OreDictUnifier.get(stick, Tritanium, 4))
-                .inputs(OreDictUnifier.get(ingot, Tritanium, 2))
-                .inputs(OreDictUnifier.get(cableGtSingle, Duranium, 2))
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(983040)
-                .outputs(ELECTRIC_PISTON_UHV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(plate, HDCS, 8))
-                .inputs(OreDictUnifier.get(gearSmall, HDCS, 8))
-                .inputs(OreDictUnifier.get(stick, HDCS, 4))
-                .inputs(OreDictUnifier.get(ingot, HDCS, 2))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
-                .outputs(ELECTRIC_PISTON_UEV.getStackForm())
-                .inputs(ELECTRIC_MOTOR_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(plate, HDCS, 8))
-                .inputs(OreDictUnifier.get(gearSmall, HDCS, 8))
-                .inputs(OreDictUnifier.get(stick, HDCS, 4))
-                .inputs(OreDictUnifier.get(ingot, HDCS, 2))
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        // ROBOT ARMS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(20480)
-                .outputs(ROBOT_ARM_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(cableGtDouble, YttriumBariumCuprate, 16))
-                .inputs(OreDictUnifier.get(screw, HSSG, 16))
-                .inputs(OreDictUnifier.get(stick, HSSG, 16))
-                .inputs(OreDictUnifier.get(ingot, HSSG))
-                .inputs(ELECTRIC_MOTOR_LUV.getStackForm(2))
-                .inputs(ELECTRIC_PISTON_LUV.getStackForm())
-                .input(circuit, Tier.Extreme, 8)
-                .fluidInputs(SolderingAlloy.getFluid(576))
-                .fluidInputs(Lubricant.getFluid(250))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(81920)
-                .outputs(ROBOT_ARM_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(cableGtDouble, Naquadah, 16))
-                .inputs(OreDictUnifier.get(screw, HSSE, 16))
-                .inputs(OreDictUnifier.get(stick, HSSE, 16))
-                .inputs(OreDictUnifier.get(ingot, HSSE))
-                .inputs(ELECTRIC_MOTOR_ZPM.getStackForm(2))
-                .inputs(ELECTRIC_PISTON_ZPM.getStackForm())
-                .input(circuit, Tier.Elite, 8)
-                .fluidInputs(SolderingAlloy.getFluid(1152))
-                .fluidInputs(Lubricant.getFluid(750))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(327680)
-                .outputs(ROBOT_ARM_UV.getStackForm())
-                .inputs(OreDictUnifier.get(cableGtDouble, Duranium, 16))
-                .inputs(OreDictUnifier.get(screw, Tritanium, 16))
-                .inputs(OreDictUnifier.get(stick, Tritanium, 16))
-                .inputs(OreDictUnifier.get(ingot, Tritanium))
-                .inputs(ELECTRIC_MOTOR_UV.getStackForm(2))
-                .inputs(ELECTRIC_PISTON_UV.getStackForm())
-                .input(circuit, Tier.Master, 8)
-                .fluidInputs(SolderingAlloy.getFluid(2304))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(1310720)
-                .outputs(ROBOT_ARM_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(cableGtDouble, TungstenTitaniumCarbide, 16))
-                .inputs(OreDictUnifier.get(screw, HDCS, 16))
-                .inputs(OreDictUnifier.get(stick, HDCS, 16))
-                .inputs(OreDictUnifier.get(ingot, HDCS))
-                .inputs(ELECTRIC_MOTOR_UHV.getStackForm(2))
-                .inputs(ELECTRIC_PISTON_UHV.getStackForm())
-                .input(circuit, Tier.Ultimate, 8)
-                .fluidInputs(SolderingAlloy.getFluid(2304))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(5242880)
-                .outputs(ROBOT_ARM_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(cableGtDouble, Pikyonium, 16))
-                .inputs(OreDictUnifier.get(screw, HDCS, 16))
-                .inputs(OreDictUnifier.get(stick, HDCS, 16))
-                .inputs(OreDictUnifier.get(ingot, HDCS))
-                .inputs(ELECTRIC_MOTOR_UEV.getStackForm(2))
-                .inputs(ELECTRIC_PISTON_UEV.getStackForm())
-                .input(circuit, Tier.Superconductor, 8)
-                .fluidInputs(SolderingAlloy.getFluid(2304))
-                .fluidInputs(Lubricant.getFluid(2000))
-                .buildAndRegister();
-
-        // EMITTERS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15360)
-                .outputs(EMITTER_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSG, 1))
-                .inputs(ZincSelenide.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Electrum, 64))
-                .inputs(OreDictUnifier.get(wireGtDouble, YttriumBariumCuprate, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Ruby, 2))
-                .input(circuit, MarkerMaterials.Tier.Extreme, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
-                .outputs(EMITTER_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSE, 1))
-                .inputs(Fluorescein.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Platinum, 64))
-                .inputs(OreDictUnifier.get(wireGtDouble, Naquadah, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Emerald, 2))
-                .input(circuit, Tier.Elite, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
-                .outputs(EMITTER_UV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, Tritanium, 1))
-                .inputs(Stilbene.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 32))
-                .inputs(OreDictUnifier.get(wireGtDouble, Duranium, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .input(circuit, Tier.Master, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(983040)
-                .outputs(EMITTER_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HDCS, 1))
-                .inputs(FranciumCaesiumCadmiumBromide.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 8)
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .input(circuit, Tier.Ultimate, 2)
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
-                .outputs(EMITTER_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HDCS, 1))
-                .inputs(RhodamineB.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .input(cableGtSingle, Pikyonium, 8)
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .input(circuit, Tier.Superconductor, 2)
-                .fluidInputs(SolderingAlloy.getFluid(576))
-                .buildAndRegister();
-        // SENSORS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15360)
-                .outputs(SENSOR_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSG, 1))
-                .inputs(OreDictUnifier.get(dust, Germanium, 16))
-                .inputs(OreDictUnifier.get(foil, Electrum, 64))
-                .inputs(OreDictUnifier.get(wireGtDouble, YttriumBariumCuprate, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Ruby, 2))
-                .input(circuit, MarkerMaterials.Tier.Extreme, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
-                .outputs(SENSOR_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSE, 1))
-                .inputs(LeadSenenide.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Platinum, 64))
-                .inputs(OreDictUnifier.get(wireGtDouble, Naquadah, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Emerald, 2))
-                .input(circuit, Tier.Elite, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(245760)
-                .outputs(SENSOR_UV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, Tritanium, 1))
-                .inputs(BariumStrontiumTitanate.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 32))
-                .inputs(OreDictUnifier.get(wireGtDouble, Duranium, 8))
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .input(circuit, Tier.Master, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(983040)
-                .outputs(SENSOR_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HDCS, 1))
-                .inputs(LeadScandiumTantalate.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 8)
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(4))
-                .input(circuit, Tier.Ultimate, 2)
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
-                .outputs(SENSOR_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HDCS, 1))
-                .inputs(MagnetorestrictiveAlloy.getItemStack(16))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .inputs(OreDictUnifier.get(foil, Osmiridium, 64))
-                .input(cableGtSingle, Pikyonium, 8)
-                .inputs(OreDictUnifier.get(gemExquisite, Diamond, 2))
-                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(8))
-                .input(circuit, Tier.Superconductor, 2)
-                .fluidInputs(SolderingAlloy.getFluid(576))
-                .buildAndRegister();
-
-        // FIELD GENERATORS -----------------------------------------------------------------------------
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(30720)
-                .outputs(FIELD_GENERATOR_LUV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSG, 1))
-                .inputs(QUANTUM_STAR.getStackForm())
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 16))
-                .inputs(OreDictUnifier.get(cableGtOctal, YttriumBariumCuprate, 4))
-                .input(circuit, Tier.Master, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(122880)
-                .outputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, HSSE, 1))
-                .inputs(QUANTUM_STAR.getStackForm())
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 16))
-                .inputs(OreDictUnifier.get(cableGtOctal, Naquadah, 4))
-                .input(circuit, Tier.Ultimate, 2)
-                .fluidInputs(SolderingAlloy.getFluid(144))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(491520)
-                .outputs(FIELD_GENERATOR_UV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, Tritanium, 1))
-                .inputs(GRAVI_STAR.getStackForm())
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 64))
-                .inputs(OreDictUnifier.get(cableGtOctal, Duranium, 4))
-                .input(circuit, Tier.Superconductor, 2)
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(1966080)
-                .outputs(FIELD_GENERATOR_UHV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, Seaborgium, 1))
-                .inputs(GRAVI_STAR.getStackForm())
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 64))
-                .input(cableGtSingle, TungstenTitaniumCarbide, 4)
-                .input(circuit, Tier.Infinite, 2)
-                .fluidInputs(SolderingAlloy.getFluid(576))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
-                .outputs(FIELD_GENERATOR_UEV.getStackForm())
-                .inputs(OreDictUnifier.get(frameGt, Bohrium, 1))
-                .inputs(GRAVI_STAR.getStackForm())
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 64))
-                .inputs(OreDictUnifier.get(wireFine, Osmium, 64))
-                .input(cableGtSingle, Pikyonium, 4)
-                .input(circuit, UEV, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1152))
-                .buildAndRegister();
-
-        //Star Recipes
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680)
-                .inputs(new ItemStack(Items.NETHER_STAR))
-                .fluidInputs(Dubnium.getFluid(288))
-                .outputs(GRAVI_STAR.getStackForm())
-                .buildAndRegister();
-
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(122880)
-                .inputs(GRAVI_STAR.getStackForm())
-                .fluidInputs(Adamantium.getFluid(288))
-                .outputs(UNSTABLE_STAR.getStackForm())
-                .buildAndRegister();
-
-
-        // Fusion Recipes
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(4096).EUToStart(40000000)
-                .fluidInputs(Deuterium.getFluid(125))
-                .fluidInputs(Tritium.getFluid(125))
-                .fluidOutputs(Helium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(2048).EUToStart(60000000)
-                .fluidInputs(Deuterium.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Helium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(2048).EUToStart(60000000)
-                .fluidInputs(Fluorine.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Potassium.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(4096).EUToStart(80000000)
-                .fluidInputs(Carbon.getFluid(125))
-                .fluidInputs(Helium3.getFluid(125))
-                .fluidOutputs(Oxygen.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(16384).EUToStart(180000000)
-                .fluidInputs(Beryllium.getFluid(16))
-                .fluidInputs(Deuterium.getFluid(375))
-                .fluidOutputs(Nitrogen.getPlasma(175))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(8192).EUToStart(360000000)
-                .fluidInputs(Silicon.getFluid(16))
-                .fluidInputs(Magnesium.getFluid(16))
-                .fluidOutputs(Iron.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(32768).EUToStart(480000000)
-                .fluidInputs(Potassium.getFluid(16))
-                .fluidInputs(Fluorine.getFluid(125))
-                .fluidOutputs(Nickel.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(32768).EUToStart(150000000)
-                .fluidInputs(Beryllium.getFluid(16))
-                .fluidInputs(Tungsten.getFluid(16))
-                .fluidOutputs(Platinum.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Neodymium.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(48))
-                .fluidOutputs(Europium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Lutetium.getFluid(16))
-                .fluidInputs(Chrome.getFluid(16))
-                .fluidOutputs(Americium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(300000000)
-                .fluidInputs(Plutonium.getFluid(16))
-                .fluidInputs(Thorium.getFluid(16))
-                .fluidOutputs(Naquadah.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24578).EUToStart(150000000)
-                .fluidInputs(Tungsten.getFluid(16))
-                .fluidInputs(Helium.getFluid(16))
-                .fluidOutputs(Osmium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(8192).EUToStart(120000000)
-                .fluidInputs(Manganese.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(16))
-                .fluidOutputs(Iron.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
-                .fluidInputs(Mercury.getFluid(16))
-                .fluidInputs(Magnesium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
-                .fluidInputs(Gold.getFluid(16))
-                .fluidInputs(Aluminium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
-                .fluidInputs(Uranium.getFluid(16))
-                .fluidInputs(Helium.getFluid(16))
-                .fluidOutputs(Plutonium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
-                .fluidInputs(Nickel.getFluid(16))
-                .fluidInputs(Polonium.getFluid(16))
-                .fluidOutputs(Copernicium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(140000000)
-                .fluidInputs(Vanadium.getFluid(16))
-                .fluidInputs(Hydrogen.getFluid(125))
-                .fluidOutputs(Chrome.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(16384).EUToStart(180000000)
-                .fluidInputs(Gallium.getFluid(16))
-                .fluidInputs(Radon.getFluid(125))
-                .fluidOutputs(Duranium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(200000000)
-                .fluidInputs(Titanium.getFluid(48))
-                .fluidInputs(Duranium.getFluid(32))
-                .fluidOutputs(Tritanium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(200000000)
-                .fluidInputs(Gold.getFluid(16))
-                .fluidInputs(Mercury.getFluid(16))
-                .fluidOutputs(Radon.getPlasma(125))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(24576).EUToStart(200000000)
-                .fluidInputs(Tantalum.getFluid(16))
-                .fluidInputs(Tritium.getFluid(16))
-                .fluidOutputs(Tungsten.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(32).EUt(24576).EUToStart(380000000)
-                .fluidInputs(Silver.getFluid(16))
-                .fluidInputs(Lithium.getFluid(16))
-                .fluidOutputs(Indium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(400000000)
-                .fluidInputs(NaquadahEnriched.getFluid(15))
-                .fluidInputs(Radon.getFluid(125))
-                .fluidOutputs(Naquadria.getFluid(3))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(16).EUt(8192).EUToStart(80000000)
-                .fluidInputs(Lanthanum.getFluid(16))
-                .fluidInputs(Silicon.getFluid(16))
-                .fluidOutputs(Lutetium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(16))
-                .fluidInputs(Neon.getFluid(16))
-                .fluidOutputs(Rutherfordium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Americium241.getMaterial().getFluid(16))
-                .fluidInputs(Neon.getFluid(16))
-                .fluidOutputs(Dubnium.getFluid(16))
-                .buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).EUToStart(400000000)
-                .fluidInputs(Plutonium.getFluid(144))
-                .fluidInputs(Calcium.getFluid(144))
-                .fluidOutputs(Seaborgium.getFluid(288))
-                .buildAndRegister();
-
-
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(50).EUt(1000000).euStart(1000000000).coilTier(1).euReturn(40)
-                .fluidInputs(Curium247.getMaterial().getFluid(144))
-                .fluidInputs(Sodium.getFluid(144))
-                .fluidOutputs(Bohrium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(2000000).coilTier(1).euStart(1000000000).euReturn(40)
-                .fluidInputs(Trinium.getFluid(144))
-                .fluidInputs(Tritanium.getFluid(144))
-                .fluidOutputs(Adamantium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(8000000).coilTier(2).euStart(2500000000L).euReturn(40)
-                .fluidInputs(Adamantium.getFluid(144))
-                .fluidInputs(Seaborgium.getFluid(144))
-                .fluidOutputs(Vibranium.getFluid(288))
-                .buildAndRegister();
-
-
-        // Fusion Casing Recipes
-        ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING),
-                "PhP", "PHP", "PwP",
-                'P', "plateTungstenSteel",
-                'H', MetaBlocks.MACHINE_CASING.getItemVariant(LuV));
-
-        ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2),
-                "PhP", "PHP", "PwP",
-                'P', "plateRutherfordium",
-                'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING));
-
-        ModHandler.addShapedRecipe("fusion_casing_3", GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3),
-                "PhP", "PHP", "PwP",
-                'P', "plateDubnium",
-                'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2));
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING))
-                .input(plate, Rutherfordium, 6)
-                .outputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2))
-                .input(plate, Dubnium, 6)
-                .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(300)
-                .fluidInputs(PhosphorylChloride.getFluid(5000))
-                .fluidInputs(Butanol.getFluid(1000))
-                .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
-                .fluidOutputs(TributylPhosphate.getFluid(5000))
                 .buildAndRegister();
 
         // Fusion Coil Recipes
@@ -4590,7 +3499,7 @@ public class GARecipeAddition {
                 .input(dust, Iron, 4)
                 .input(dust, Kanthal)
                 .input(dust, Invar, 5)
-                .outputs(OreDictUnifier.get(dust, EglinSteelBase, 10))
+                .output(dust, EglinSteelBase, 10)
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().EUt(128).duration(100)
@@ -4600,6 +3509,8 @@ public class GARecipeAddition {
                 .input(dust, Sulfur)
                 .input(dust, Silicon)
                 .input(dust, Carbon)
+                .notConsumable(new IntCircuitIngredient(6))
+                .output(dust, EglinSteel, 13)
                 .buildAndRegister();
 
         // Incoloy MA956
@@ -4612,6 +3523,43 @@ public class GARecipeAddition {
                 .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25))
                 .EUt(500)
                 .duration(100)
+                .buildAndRegister();
+
+        // Misc Blast Alloy Recipes
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(775).EUt(1200)
+                .input(dust, Tin, 9)
+                .input(dust, Antimony)
+                .fluidOutputs(SolderingAlloy.getFluid(1440))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(473).EUt(240)
+                .input(dust, Redstone)
+                .input(dust, Copper)
+                .fluidOutputs(RedAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(320).EUt(360)
+                .input(dust, Aluminium, 2)
+                .input(dust, Magnesium)
+                .fluidOutputs(Magnalium.getFluid(432))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+                .input(dust, Tin)
+                .input(dust, Iron)
+                .fluidOutputs(TinAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+                .input(dust, Tin)
+                .input(dust, WroughtIron)
+                .fluidOutputs(TinAlloy.getFluid(288))
+                .buildAndRegister();
+
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(512).EUt(600)
+                .input(dust, Lead, 4)
+                .input(dust, Antimony)
+                .fluidOutputs(BatteryAlloy.getFluid(720))
                 .buildAndRegister();
 
         // Dynamite
@@ -4713,9 +3661,6 @@ public class GARecipeAddition {
                 .outputs(SCHEMATIC.getStackForm())
                 .buildAndRegister();
 
-        //Configuration Circuit
-        ModHandler.addShapelessRecipe("basic_to_configurable_circuit", INTEGRATED_CIRCUIT.getStackForm(), "circuitBasic");
-
         //MAX Machine Hull
         ModHandler.addShapedRecipe("ga_casing_max", MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX),
                 "PPP", "PwP", "PPP",
@@ -4740,10 +3685,6 @@ public class GARecipeAddition {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(288))
                 .outputs(MetaTileEntities.HULL[9].getStackForm())
                 .buildAndRegister();
-
-
-        // kekw
-        // OreDictionary.getOres("treeLeaves").stream().flatMap(stack -> ModHandler.getAllSubItems(stack).stream()).collect(Collectors.toList());
 
         // Redstone and glowstone Fluid Extraction
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
@@ -4953,7 +3894,7 @@ public class GARecipeAddition {
                 .outputs(MICA_INSULATOR_SHEET.getStackForm(8))
                 .buildAndRegister();
 
-        if (GAConfig.GT6.BendingFoilsAutomatic && GAConfig.GT6.BendingCylinders) {
+        if (GAConfig.GT6.BendingFoilsAutomatic) {
             CLUSTER_MILL_RECIPES.recipeBuilder().duration(100).EUt(30)
                     .inputs(MICA_INSULATOR_SHEET.getStackForm())
                     .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
@@ -4961,7 +3902,7 @@ public class GARecipeAddition {
         } else {
             BENDER_RECIPES.recipeBuilder().duration(100).EUt(30)
                     .inputs(MICA_INSULATOR_SHEET.getStackForm())
-                    .circuitMeta(1)
+                    .circuitMeta(0)
                     .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
                     .buildAndRegister();
         }
@@ -5101,7 +4042,7 @@ public class GARecipeAddition {
         // 3Ca + 3PO4 + H + O = [3Ca + 3PO4 + H + O]
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
                 .input(dust, Calcium, 3)
-                .input(dust, Phosphate, 3) // this is probably wrong but do I really care?
+                .input(dust, Phosphate, 3) // this is probably wrong
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(OreDictUnifier.get(dust, OrganicFertilizer, 10))
@@ -5284,22 +4225,6 @@ public class GARecipeAddition {
                 .fluidOutputs(BentoniteClaySlurry.getFluid(2000))
                 .buildAndRegister();
 
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
-                .fluidInputs(BariumSulfateSolution.getFluid(1000))
-                .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
-                .fluidInputs(BentoniteClaySlurry.getFluid(1000))
-                .fluidInputs(Lubricant.getFluid(1000))
-                .fluidInputs(ATL.getFluid(1000))
-                .fluidInputs(EthyleneGlycol.getFluid(1000))
-                .fluidOutputs(DrillingMud.getFluid(6000))
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(240).EUt(480)
-                .fluidInputs(UsedDrillingMud.getFluid(1000))
-                .fluidOutputs(DrillingMud.getFluid(950))
-                .outputs(new ItemStack(Blocks.GRAVEL))
-                .buildAndRegister();
-
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8192)
                 .input(circuit, Tier.Infinite, 2)
                 .inputs(OreDictUnifier.get(gear, AbyssalAlloy, 8))
@@ -5357,7 +4282,7 @@ public class GARecipeAddition {
                 .fluidOutputs(Chloramine.getFluid(1000))
                 .buildAndRegister();
 
-        // Propsectors
+        // Prospectors
         ModHandler.addShapedRecipe("ga_prospect_tool_mv", PROSPECT_TOOL_MV.getStackForm(),
                 "EDS", "CTC", "PBP",
                 'E', EMITTER_MV.getStackForm(),
@@ -5398,7 +4323,7 @@ public class GARecipeAddition {
                 'P', new UnificationEntry(plate, HSSS),
                 'B', GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_MODULE.getStackForm() : BATTERY_LARGE_LITHIUM_ION.getStackForm());
 
-        removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
+        // Recipe Conflicts
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(480)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
@@ -5407,9 +4332,6 @@ public class GARecipeAddition {
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
-        // Fix potential HSS-S and Osmiridium recipe conflict
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Iridium, 3)
                 .input(dust, Osmium)
@@ -5426,6 +4348,24 @@ public class GARecipeAddition {
                 .output(dust, HSSS, 9)
                 .EUt(30)
                 .duration(1160)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(1200).EUt(120)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Ethanol.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(Ethylene.getFluid(1000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+        // Chain Fixing
+        // Gold Dust Centrifuging
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(20)
+                .input(dust, Netherrack)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Materials.Redstone, 1), 5625, 850)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal, 2), 625, 500)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Materials.Sulfur, 1), 9900, 100)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Materials.Coal, 1), 5625, 850)
                 .buildAndRegister();
     }
 

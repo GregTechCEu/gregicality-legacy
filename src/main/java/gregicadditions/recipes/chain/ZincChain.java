@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -248,7 +249,8 @@ public class ZincChain {
         // 2C2H5OH = (C2H5)2O + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(750)
                 .fluidInputs(Ethanol.getFluid(2000))
-                .notConsumable(SulfuricAcid)
+                .notConsumable(SulfuricAcid.getFluid(0))
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidOutputs(Diethylether.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
