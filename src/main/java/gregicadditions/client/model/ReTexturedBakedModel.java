@@ -44,31 +44,27 @@ public class ReTexturedBakedModel implements IBakedModel {
 
     @Override
     public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
-        if (state != null && state.getBlock() instanceof IReTexturedModel) {
+        if (baseModel.provider != null) {
             BlockRenderLayer layer = MinecraftForgeClient.getRenderLayer();
-            IReTexturedModel block = (IReTexturedModel) state.getBlock();
             List<BakedQuad> bakedQuads = new ArrayList<>();
             IModel[] models = baseModel.getModels();
-            if (layer != null) {
-                for (int i = 0; i < models.length; i++) {
-                    IModel toBaked = models[i];
-                    ResourceLocation resource = baseModel.resources[i];
-                    if (block.shouldRenderInLayer(state, side, resource, layer)) {
-                        ImmutableMap<String, String> map = block.reTextured(state, side, resource);
-                        if (map != null) {
-                            toBaked = toBaked.retexture(map);
-                        }
-                        List<BakedQuad> quads = toBaked.bake(TRSRTransformation.identity()
-                                , DefaultVertexFormats.ITEM
-                                , location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString())).getQuads(state, side, rand);
-                        bakedQuads.addAll(block.reBakedQuad(state, side, resource, quads));
+            for (int i = 0; i < models.length; i++) {
+                IModel toBaked = models[i];
+                ResourceLocation resource = baseModel.resources[i];
+                if (layer == null || baseModel.provider.shouldRenderInLayer(state, side, resource, layer)) {
+                    ImmutableMap<String, String> map = baseModel.provider.reTextured(state, side, resource);
+                    if (map != null) {
+                        toBaked = toBaked.retexture(map);
                     }
+                    List<BakedQuad> quads = toBaked.bake(TRSRTransformation.identity()
+                            , DefaultVertexFormats.ITEM
+                            , location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString())).getQuads(state, side, rand);
+                    bakedQuads.addAll(baseModel.provider.reBakedQuad(state, side, resource, quads));
                 }
             }
             return bakedQuads;
-        } else {
-            return getBakedModels().stream().flatMap(model -> model.getQuads(state, side, rand).stream()).collect(Collectors.toList());
         }
+        return new ArrayList<>();
     }
 
     @Override

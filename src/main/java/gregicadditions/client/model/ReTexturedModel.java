@@ -19,15 +19,15 @@ import java.util.stream.Collectors;
 
 public class ReTexturedModel implements IModel {
 
-    protected Block block;
+    protected IReTexturedModel provider;
     protected ResourceLocation variant;
-    private IModel[] models;
-    protected final ResourceLocation[] resources;
+    private IModel[] models; // loading IModels of models
+    protected final ResourceLocation[] resources; // resources of models
 
-    private ReTexturedModel(IModel[] models, ResourceLocation[] resources, Block block, ResourceLocation variant) {
+    private ReTexturedModel(IModel[] models, ResourceLocation[] resources, IReTexturedModel block, ResourceLocation variant) {
         this.models = models;
         this.resources = resources;
-        this.block = block;
+        this.provider = block;
         this.variant = variant;
     }
 
@@ -41,8 +41,8 @@ public class ReTexturedModel implements IModel {
             try {
                 for (int i = 0; i < resources.length; i++) {
                     models[i] = ModelLoaderRegistry.getModel(resources[i]);
-                    if (block instanceof IReTexturedModel) {
-                        models[i] = ((IReTexturedModel) block).loadModel(variant, resources[i], models[i]);
+                    if (provider != null) {
+                        models[i] = ((IReTexturedModel) provider).loadModel(variant, resources[i], models[i]);
                     }
                 }
             } catch (Exception e){
@@ -80,28 +80,28 @@ public class ReTexturedModel implements IModel {
 
     @Override
     public ReTexturedModel process(ImmutableMap<String, String> customData) {
-        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.process(customData)).toArray(size->new IModel[size]), resources, block, variant);
+        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.process(customData)).toArray(size->new IModel[size]), resources, provider, variant);
     }
 
     @Override
     public ReTexturedModel smoothLighting(boolean value) {
-        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.smoothLighting(value)).toArray(size->new IModel[size]), resources, block, variant);
+        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.smoothLighting(value)).toArray(size->new IModel[size]), resources, provider, variant);
     }
 
     @Override
     public ReTexturedModel gui3d(boolean value) {
-        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.gui3d(value)).toArray(size->new IModel[size]), resources, block, variant);
+        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.gui3d(value)).toArray(size->new IModel[size]), resources, provider, variant);
     }
 
     @Override
     public ReTexturedModel uvlock(boolean value) {
-        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.uvlock(value)).toArray(size->new IModel[size]), resources, block, variant);
+        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.uvlock(value)).toArray(size->new IModel[size]), resources, provider, variant);
     }
 
     @Override
     public ReTexturedModel retexture(ImmutableMap<String, String> textures) {
         if (textures == null) return this;
-        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.retexture(textures)).toArray(size->new IModel[size]), resources, block, variant);
+        return new ReTexturedModel(Arrays.stream(getModels()).map(model -> model.retexture(textures)).toArray(size->new IModel[size]), resources, provider, variant);
     }
 
     @Override

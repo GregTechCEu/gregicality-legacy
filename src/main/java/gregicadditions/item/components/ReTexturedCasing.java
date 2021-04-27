@@ -22,8 +22,6 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.tileentity.TileEntity;
@@ -33,17 +31,12 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.model.IModel;
-import net.minecraftforge.client.model.pipeline.ForgeBlockModelRenderer;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,14 +59,14 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     @Override
     public void register(IBlockState state, ResourceLocation path) {
         if (GAConfig.client.AdvancedCasingModel) {
-            ReTexturedModelLoader.register(state, path, getModel(state));
+            ReTexturedModelLoader.register(this, path, new ReTexturedModel(getModels(state)));
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public ReTexturedModel getModel(IBlockState blockState) {
-        return new ReTexturedModel(CORE_MODEL, FRAME_MODEL, GLASS_MODEL);
+    public ResourceLocation[] getModels(IBlockState blockState) {
+        return new ResourceLocation[]{CORE_MODEL, FRAME_MODEL, GLASS_MODEL};
     }
 
     private int color_casing = 0XFFFFFFFF; // aBGR
@@ -106,7 +99,7 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     @SideOnly(Side.CLIENT)
     @Override
     public List<BakedQuad> reBakedQuad(IBlockState blockState, EnumFacing side, ResourceLocation model, List<BakedQuad> base) {
-        if (FRAME_MODEL == model && color_casing != 0XFFFFFFFF) {
+        if (blockState != null && FRAME_MODEL == model && color_casing != 0XFFFFFFFF) {
             for (BakedQuad quad : base) {
                 int[] vertexData = quad.getVertexData();
                 vertexData[3] = color_casing;
@@ -121,6 +114,7 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
 
     @Override
     public boolean shouldRenderInLayer(IBlockState blockState, EnumFacing side, ResourceLocation model, BlockRenderLayer layer) {
+        if (blockState == null) return true;
         if (GLASS_MODEL == model && layer == BlockRenderLayer.TRANSLUCENT) {
             return true;
         } else if (GLASS_MODEL != model && layer == BlockRenderLayer.CUTOUT_MIPPED) {

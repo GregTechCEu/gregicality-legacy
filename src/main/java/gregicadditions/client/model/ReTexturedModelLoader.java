@@ -14,13 +14,11 @@ public class ReTexturedModelLoader implements ICustomModelLoader {
 
     private static final Map<ResourceLocation, ReTexturedModel> models = new HashMap<>();
 
-    public static void register(IBlockState state, ResourceLocation path, ReTexturedModel model) {
+    public static void register(IReTexturedModel provider, ResourceLocation path, ReTexturedModel model) {
         if (model == null) return;
         models.put(path, model);
         model.variant = path;
-        if (state != null) {
-            model.block = state.getBlock();
-        }
+        model.provider = provider;
     }
 
     @Override
