@@ -125,7 +125,7 @@ public class UraniumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(600).EUt(500)
                 .fluidInputs(UraniumRefinementWasteSolution.getFluid(20000))
                 .fluidOutputs(SulfuricAcid.getFluid(20000))
-                .outputs(CesiumHydroxide.getItemStack(3))
+                .outputs(CaesiumHydroxide.getItemStack(3))
                 .outputs(MolybdenumTrioxide.getItemStack(4))
                 .outputs(VanadiumOxide.getItemStack(7))
                 .buildAndRegister();
@@ -140,7 +140,7 @@ public class UraniumChain {
 
         // CsOH -> Cs + O + H
         ELECTROLYZER_RECIPES.recipeBuilder().duration(600).EUt(500)
-                .inputs(CesiumHydroxide.getItemStack(3))
+                .inputs(CaesiumHydroxide.getItemStack(3))
                 .output(dust, Caesium)
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
@@ -150,8 +150,8 @@ public class UraniumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(500).EUt(500)
                 .inputs(UraniumPeroxideThoriumOxide.getItemStack(8))
                 .outputs(UraniumThoriumOxide.getItemStack(6))
-                .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(Oxygen.getFluid(2000))
+                .fluidOutputs(HydrogenPeroxide.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
         // [UO2 + ThO2] + H2SO4 + S -> [UO2SO4 + ThO2] + H2S
@@ -195,6 +195,14 @@ public class UraniumChain {
                 .output(oxide, Thorium, 2)
                 .output(dust, SodiumNitrate, 10)
                 .fluidOutputs(NitricAcid.getFluid(2000))
+                .buildAndRegister();
+
+        // NaNO3 + H2O -> NaOH + HNO3
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, SodiumNitrate, 5)
+                .fluidInputs(Water.getFluid(1000))
+                .output(dust, SodiumHydroxide, 3)
+                .fluidOutputs(NitricAcid.getFluid(1000))
                 .buildAndRegister();
 
         // UO2 + C -> U + CO2

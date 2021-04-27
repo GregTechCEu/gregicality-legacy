@@ -226,7 +226,7 @@ public class SuperconductorsSMDChain {
         // Pb + N2O4 + 2O -> Pb(NO3)2
         CHEMICAL_RECIPES.recipeBuilder().EUt(8000).duration(250)
                 .input(dust, Lead)
-                .fluidInputs(NitrogenTetroxide.getFluid(1000))
+                .fluidInputs(DinitrogenTetroxide.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .output(dust, LeadNitrate, 9)
                 .buildAndRegister();
@@ -331,7 +331,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(CarbonMonoxde.getFluid(25000))
                 .notConsumable(block, Copper)
                 .output(dust, Iodine, 10)
-                .output(dust, Iron)
+                .output(dustSmall, Iron, 2)
                 .fluidOutputs(IronCarbonyl.getFluid(5000))
                 .buildAndRegister();
 
@@ -602,13 +602,23 @@ public class SuperconductorsSMDChain {
                 .outputs(YttriumNitrate.getItemStack(26))
                 .buildAndRegister();
 
+        // C3H5ClO + 2H2O + Na2CO3 -> C3H8O3 + NaCl + NaHCO3
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(1024)
+                .fluidInputs(Epichlorhydrin.getFluid(1000))
+                .fluidInputs(Water.getFluid(2000))
+                .input(dust, SodaAsh, 6)
+                .fluidOutputs(Glycerol.getFluid(1000))
+                .output(dust, Salt, 2)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .buildAndRegister();
+
         // 6C3H8O3 + 5HCl + 3HClO + 8N -> 3C6H8O7 + 8NH4Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(6200)
                 .fluidInputs(Glycerol.getFluid(6000))
                 .fluidInputs(HydrochloricAcid.getFluid(5000))
                 .fluidInputs(HypochlorousAcid.getFluid(3000))
                 .fluidInputs(Nitrogen.getFluid(8000))
-                .notConsumable(dust, Potassiumdichromate)
+                .notConsumable(dust, PotassiumDichromate)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(CitricAcid.getFluid(3000))
                 .fluidOutputs(AmmoniumChloride.getFluid(8000))
@@ -629,7 +639,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // YBa2Cu3O6 + O -> YBa2Cu3O7
-        ARC_FURNACE_RECIPES.recipeBuilder().duration(5000).EUt(8000)
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(2509).EUt(8000)
                 .inputs(WellMixedYBCOxides.getItemStack(12))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(ingotHot, YttriumBariumCuprate, 13)
@@ -726,13 +736,12 @@ public class SuperconductorsSMDChain {
                 .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .buildAndRegister();
 
-        // 3Rb + 3Cs + La2(C60)2 -> La2Cs3Rb3C120
+        // 3Rb + 3Cs + La2(C60)2 -> La2Cs3Rb3(C60)2
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(1400000).blastFurnaceTemp(2400)
                 .inputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .input(dust, Rubidium, 3)
                 .input(dust, Caesium, 3)
-                .outputs(FullereneSuperconductiveDust.getItemStack(64))
-                .outputs(FullereneSuperconductiveDust.getItemStack(64))
+                .outputs(FullereneSuperconductiveDust.getItemStack(10))
                 .buildAndRegister();
 
         // O + Si + 3CHCl3 + 7H2O -> C3H9SiCl + 8HClO

@@ -168,14 +168,14 @@ public class InsulationWireAssemblyChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(1920)
                 .input(dust, Graphite)
                 .notConsumable(dust, Osmium)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GraphiteOxide.getItemStack(3))
                 .buildAndRegister();
 
         // Graphene + Oxidation Solution = Graphene Oxide
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(7860)
                 .input(dust, Graphene)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(500))
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GrapheneOxide.getItemStack(3))
                 .buildAndRegister();
 
@@ -199,9 +199,9 @@ public class InsulationWireAssemblyChain {
                 .outputs(GrapheneGelSuspension.getItemStack())
                 .buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(260).EUt(4096)
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(260).EUt(480)
                 .inputs(GrapheneGelSuspension.getItemStack())
-                .fluidInputs(Acetone.getFluid(500))
+                .fluidInputs(Acetone.getFluid(100))
                 .outputs(DryGrapheneGel.getItemStack())
                 .buildAndRegister();
 

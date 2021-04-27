@@ -29,7 +29,7 @@ public class PlasticChain {
                 .buildAndRegister();
 
         // 2C6H5OH + C8H6O4 -> C20H14O4 + 2H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Phenol.getFluid(2000))
                 .fluidInputs(PhthalicAcid.getFluid(1000))
                 .fluidOutputs(Diphenylisophtalate.getFluid(1000))
@@ -50,7 +50,7 @@ public class PlasticChain {
 
         // 6O + C8H10 -> 2H2O + C8H6O4
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(dustTiny, Potassiumdichromate)
+                .notConsumable(dustTiny, PotassiumDichromate)
                 .fluidInputs(Oxygen.getFluid(6000))
                 .fluidInputs(OrthoXylene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
@@ -94,7 +94,7 @@ public class PlasticChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, ChromiumTrioxide, 8)
                 .input(dust, Saltpeter, 10)
-                .output(dust, Potassiumdichromate, 11)
+                .output(dust, PotassiumDichromate, 11)
                 .fluidOutputs(NitrogenDioxide.getFluid(2000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .EUt(480)

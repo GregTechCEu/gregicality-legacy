@@ -51,6 +51,7 @@ import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
+import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
 
 @Mod.EventBusSubscriber()
@@ -106,6 +107,11 @@ public class ForestryCommonProxy {
                 builder.duration(128);
                 builder.buildAndRegister();
             }
+
+            //Fix Seed Oil Recipe
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.MELON_SEEDS));
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
         }
         //Bees
         List<ItemStack> allFlowers = OreDictionary.getOres("flower").stream()

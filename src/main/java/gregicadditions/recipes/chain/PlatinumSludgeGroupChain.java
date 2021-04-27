@@ -118,7 +118,17 @@ public class PlatinumSludgeGroupChain {
                 .buildAndRegister();
 
         // HNO3 + HCl -> [HNO3 + HCl]
+        // TODO Remove this recipe one release after Chem Fixes 2 PR is merged
         CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(AquaRegia.getFluid(2000))
+                .EUt(30)
+                .duration(30)
+                .buildAndRegister();
+
+        // HNO3 + HCl -> [HNO3 + HCl]
+        MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(AquaRegia.getFluid(2000))

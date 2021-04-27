@@ -396,11 +396,11 @@ public class BrineChain {
                 .fluidOutputs(HydrofluoricAcid.getFluid(6000))
                 .buildAndRegister();
 
-        // B + B2H6 -> 3B + 6H
+        // B2H6 -> 2B + 6H
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(2000).blastFurnaceTemp(600)
-                .input(dust, Boron)
+                .notConsumable(dust, Boron)
                 .fluidInputs(Diborane.getFluid(1000))
-                .output(dust, Boron, 3)
+                .output(dust, Boron, 2)
                 .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 

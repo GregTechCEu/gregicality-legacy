@@ -245,7 +245,7 @@ public class RheniumChain {
         // C6H12O6 + bacteria -> C5H12O
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .inputs(Glucose.getItemStack(24))
-                .inputs(SelectivelyMutatedCupravidiusNecator.getItemStack())
+                .inputs(SelectivelyMutatedCupriavidiusNecator.getItemStack())
                 .fluidInputs(Ammonia.getFluid(10))
                 .fluidOutputs(IsoamylAlcohol.getFluid(1000))
                 .EUt(491520)
@@ -268,7 +268,7 @@ public class RheniumChain {
                 .inputs(CupriavidusNecator.getItemStack(2))
                 .notConsumable(UVA_HALIDE_LAMP)
                 .fluidInputs(Methylnitronitrosoguanidine.getFluid(250))
-                .outputs(SelectivelyMutatedCupravidiusNecator.getItemStack())
+                .outputs(SelectivelyMutatedCupriavidiusNecator.getItemStack())
                 .EUt(491520)
                 .duration(20)
                 .buildAndRegister();

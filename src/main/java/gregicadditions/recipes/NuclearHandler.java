@@ -209,7 +209,7 @@ public class NuclearHandler {
             BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(100 * complexity / 100).EUt(120 * complexity / 100)
                     .inputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.nitrite, 3))
                     .outputs(radioactiveMaterial.getItemStack(GAEnums.GAOrePrefix.dioxide, 1))
-                    .fluidOutputs(NitrogenTetroxide.getFluid(1000))
+                    .fluidOutputs(DinitrogenTetroxide.getFluid(1000))
                     .buildAndRegister();
 
             // [Mat + 2O] + 6Cl = [Mat + 6Cl] + 2O
