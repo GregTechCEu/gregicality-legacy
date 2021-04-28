@@ -1,4 +1,4 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.jei.JEIGAPlugin;
@@ -8,7 +8,6 @@ import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.render.scene.WorldSceneRenderer;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
