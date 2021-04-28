@@ -3910,7 +3910,7 @@ fluid.cyclopentadiene=Cyclopentadiene
 fluid.chloroauric_acid=Chloroauric Acid
 fluid.helium4=Helium 4
 fluid.fermionic_uu_matter=Fermionic UU-Matter
-fluid.bosionic_uu_matter=Bosionic UU-Matter
+fluid.bosonic_uu_matter=Bosonic UU-Matter
 fluid.free_electrons=Free Electrons
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
