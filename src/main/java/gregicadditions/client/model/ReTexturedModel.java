@@ -1,8 +1,6 @@
 package gregicadditions.client.model;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelBlock;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -13,7 +11,9 @@ import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.model.IModelState;
 import net.minecraftforge.common.model.animation.IClip;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 

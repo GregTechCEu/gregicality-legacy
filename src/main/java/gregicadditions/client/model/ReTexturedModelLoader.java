@@ -1,7 +1,6 @@
 package gregicadditions.client.model;
 
 import gregicadditions.Gregicality;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ICustomModelLoader;

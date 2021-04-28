@@ -1,8 +1,5 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
 
