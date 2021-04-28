@@ -931,9 +931,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Cyclopentadiene = new SimpleFluidMaterial("cyclopentadiene", Cyclooctadiene.rgb, "C5H6");
     public static final SimpleFluidMaterial ChloroauricAcid = new SimpleFluidMaterial("chloroauric_acid", 0xDFD11F, "HAuCl?");
     public static final SimpleFluidMaterial Helium4 = new SimpleFluidMaterial("helium4", Helium.materialRGB-10, "He_4");
-    public static final SimpleFluidMaterial FermionicUUMatter = new SimpleFluidMaterial("fermionic_uu_matter", UUMatter.materialRGB / 3, "?");
-    public static final SimpleFluidMaterial BosionicUUMatter = new SimpleFluidMaterial("bosionic_uu_matter", UUMatter.materialRGB - FermionicUUMatter.rgb, "?");
-    public static final SimpleFluidMaterial FreeElectrons = new SimpleFluidMaterial("free_electrons", UUMatter.materialRGB - FermionicUUMatter.rgb, "?");
+    public static final SimpleFluidMaterial FermionicUUMatter = new SimpleFluidMaterial("fermionic_uu_matter", UUMatter.materialRGB / 3, TextFormatting.OBFUSCATED + "???");
+    public static final SimpleFluidMaterial BosionicUUMatter = new SimpleFluidMaterial("bosionic_uu_matter", UUMatter.materialRGB - FermionicUUMatter.rgb, TextFormatting.OBFUSCATED + "???");
+    public static final SimpleFluidMaterial FreeElectrons = new SimpleFluidMaterial("free_electrons", UUMatter.materialRGB - FermionicUUMatter.rgb, TextFormatting.OBFUSCATED + "???");
 
 
 

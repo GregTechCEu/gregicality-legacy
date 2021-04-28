@@ -408,22 +408,6 @@ public class RecipeHandler {
 
     }
 
-    public static void processReplication(OrePrefix dustPrefix, DustMaterial material) {
-        if (material.hasFlag(DISABLE_REPLICATION)) {
-            return;
-        }
-
-        GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * GAConfig.Misc.replicationTimeFactor * 2)).EUt(32)
-                .notConsumable(OreDictUnifier.get(dustPrefix, material))
-                .fluidInputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
-                .outputs(OreDictUnifier.get(dustPrefix, material))
-                .buildAndRegister();
-
-        GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * GAConfig.Misc.replicationTimeFactor)).EUt(32)
-                .inputs(OreDictUnifier.get(dustPrefix, material))
-                .fluidOutputs(GAMaterials.PositiveMatter.getFluid((int) (material.getAverageProtons())), GAMaterials.NeutralMatter.getFluid((int) (material.getAverageNeutrons())))
-                .buildAndRegister();
-    }
 
     public static void registerLargeChemicalRecipes() {
         RecipeMaps.CHEMICAL_RECIPES.getRecipeList().forEach(recipe -> {
