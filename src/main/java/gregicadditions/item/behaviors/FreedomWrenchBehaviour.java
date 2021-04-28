@@ -39,9 +39,9 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
         if (pos != null && world.getTileEntity(pos) instanceof MetaTileEntityHolder) {
             MetaTileEntity mte = ((MetaTileEntityHolder) world.getTileEntity(pos)).getMetaTileEntity();
-            if (mte instanceof MultiblockControllerBase && !player.isSneaking() && Loader.isModLoaded("jei")) {
+            if (mte instanceof MultiblockControllerBase && !player.isSneaking() && Loader.isModLoaded("jei")) { // preview
                 if (world.isRemote) {
-                    if (mode == 3) {
+                    if (mode == 3) { // building
                         IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
                         IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, mte.getStackForm());
                         WorldSceneRenderer worldSceneRenderer = rr.getRecipeCategories(focus)
@@ -98,12 +98,12 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
                                 NetworkHandler.channel.sendToServer(new CPacketMultiBlockStructure(map, blockInfos, world.provider.getDimension()).toFMLPacket());
                             }
                         }
-                    } else {
+                    } else { // projection, perspective, debug
                         WorldRenderEventRenderer.renderMultiBlockPreview((MultiblockControllerBase) mte, 60000, mode);
                     }
                 }
             }
-            else if (mte instanceof MultiblockControllerBase && player.isSneaking()) {
+            else if (mte instanceof MultiblockControllerBase && player.isSneaking()) { // rotation
                 boolean rotateSpin = false;
                 EnumFacing facing = mte.getFrontFacing();
                 if (side == EnumFacing.DOWN || side == EnumFacing.UP) {
@@ -151,21 +151,19 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
                     EnumFacing next = BlockPatternChecker.getSpin(mte).rotateY();
                     if (!world.isRemote) {
                         BlockPatternChecker.setSpin(mte, next);
-                    } else {
                         if (facing != EnumFacing.DOWN && facing != EnumFacing.UP) {
-                            player.sendMessage(new TextComponentString("Spin: " + (next == EnumFacing.NORTH ?
+                            player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.spin", (next == EnumFacing.NORTH ?
                                     "up" : next == EnumFacing.EAST ?
                                     "right" : next == EnumFacing.SOUTH ?
                                     "down" : "left")));
                         } else {
-                            player.sendMessage(new TextComponentString("Spin: " + next));
+                            player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.spin", next));
                         }
                     }
                 } else if (facing != mte.getFrontFacing()) {
                     if (!world.isRemote) {
                         mte.setFrontFacing(facing);
-                    } else {
-                        player.sendMessage(new TextComponentString("Facing: " + facing));
+                        player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.facing", facing));
                     }
                 }
             }

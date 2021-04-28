@@ -410,6 +410,8 @@ metaitem.freedom_wrench.mode.2=Mode: Debug
 metaitem.freedom_wrench.mode.3=Mode: Building
 metaitem.freedom_wrench.clear=Remove the Projection
 metaitem.freedom_wrench.info.0=Try to (Sneaking/Not) right-click the (Air Block/Multi-Block Controller).
+metaitem.freedom_wrench.spin=Spin: %s
+metaitem.freedom_wrench.facing=Facing: %s
 
 metaitem.waste.nuclear.name=%s Waste
 waste.nuclear.global=Nuclear
