@@ -76,7 +76,6 @@ public class RecipeHandler {
                 wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
             }
         }
-        //dust.addProcessingHandler(DustMaterial.class, RecipeHandler::processReplication);
 
         if (GAConfig.Misc.PackagerDustRecipes) {
             dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
