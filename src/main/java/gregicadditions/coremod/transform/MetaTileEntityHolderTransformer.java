@@ -1,12 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class MetaTileEntityHolderTransformer extends GAClassTransformer.ClassMapper {
+public class MetaTileEntityHolderTransformer extends ClassMapper {
 
     public static final MetaTileEntityHolderTransformer INSTANCE = new MetaTileEntityHolderTransformer();
 
@@ -37,7 +37,7 @@ public class MetaTileEntityHolderTransformer extends GAClassTransformer.ClassMap
 
     }
 
-    private static class TransformShouldRenderInPass extends MethodVisitor {
+    private static class TransformShouldRenderInPass extends GAMethodVisitor {
 
         TransformShouldRenderInPass(int api, MethodVisitor mv) {
             super(api, mv);
@@ -48,18 +48,14 @@ public class MetaTileEntityHolderTransformer extends GAClassTransformer.ClassMap
             if (opcode == Opcodes.ICONST_0) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 this.visitVarInsn(Opcodes.ILOAD, 1);
-                this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/GregTechCEHooks",
-                        "shouldCoverRenderPass",
-                        "(Lgregtech/api/metatileentity/MetaTileEntityHolder;I)Z",
-                        false);
+                super.injectStaticMethod(GTCEHooks, "shouldCoverRenderPass");
             } else {
                 super.visitInsn(opcode);
             }
         }
     }
 
-    private static class TransformHasFastRenderer extends MethodVisitor {
+    private static class TransformHasFastRenderer extends GAMethodVisitor {
 
         TransformHasFastRenderer(int api, MethodVisitor mv) {
             super(api, mv);

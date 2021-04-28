@@ -95,6 +95,7 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                 MetaTileEntityHolder newHolder = new MetaTileEntityHolder();
                 newHolder.setMetaTileEntity(holder.getMetaTileEntity().createMetaTileEntity(newHolder));
                 newHolder.getMetaTileEntity().setFrontFacing(holder.getMetaTileEntity().getFrontFacing());
+                BlockPatternChecker.setSpin(newHolder.getMetaTileEntity(), BlockPatternChecker.getSpin(holder.getMetaTileEntity()));
                 renderedBlocks.put(pos.subtract(minPos), new BlockInfo(MetaBlocks.MACHINE.getDefaultState(), newHolder));
             } else {
                 renderedBlocks.put(pos.subtract(minPos), new BlockInfo(world.getBlockState(pos)));
@@ -189,14 +190,16 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                 if (this.connect && worldSceneRenderer != null && this.screen.getController() instanceof MetaTileEntityCentralMonitor) {
                     if(connections == null) connections = new HashMap<>();
                     connections.clear();
-                    for (MetaTileEntityMonitorScreen screen : ((MetaTileEntityCentralMonitor) this.screen.getController()).screens) {
-                        if (screen.plugin instanceof FakeGuiPluginBehavior && ((FakeGuiPluginBehavior) screen.plugin).holder == this.holder) {
-                            MetaTileEntity met = ((FakeGuiPluginBehavior) screen.plugin).getRealMTE();
-                            if(met != null) {
-                                BlockPos pos = met.getPos().subtract(minPos);
-                                Tuple<Vector3f, List<MetaTileEntityMonitorScreen>> tuple = connections.getOrDefault(pos, new Tuple<>(null, new ArrayList<>()));
-                                tuple.getValue().add(screen);
-                                connections.put(pos, tuple);
+                    for (MetaTileEntityMonitorScreen[] monitorScreens : ((MetaTileEntityCentralMonitor) this.screen.getController()).screens) {
+                        for (MetaTileEntityMonitorScreen screen : monitorScreens) {
+                            if (screen != null && screen.plugin instanceof FakeGuiPluginBehavior && ((FakeGuiPluginBehavior) screen.plugin).holder == this.holder) {
+                                MetaTileEntity met = ((FakeGuiPluginBehavior) screen.plugin).getRealMTE();
+                                if(met != null) {
+                                    BlockPos pos = met.getPos().subtract(minPos);
+                                    Tuple<Vector3f, List<MetaTileEntityMonitorScreen>> tuple = connections.getOrDefault(pos, new Tuple<>(null, new ArrayList<>()));
+                                    tuple.getValue().add(screen);
+                                    connections.put(pos, tuple);
+                                }
                             }
                         }
                     }
@@ -207,29 +210,22 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
                     MultiblockControllerBase entity = (MultiblockControllerBase) holder.getMetaTileEntity();
                     if(entity.isStructureFormed()) {
                         if(!isValid) {
-                            try {
-                                BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, entity, "structurePattern");
-                                if(structurePattern != null) {
-                                    PatternMatchContext result = BlockPatternChecker.checkPatternAt(structurePattern, entity.getWorld(), entity.getPos(), entity.getFrontFacing().getOpposite());
-                                    if (result != null && result.get("validPos") != null) {
-                                        validPos = result.get("validPos");
-                                        writePluginData(0, buf->{
-                                            int te = 0;
-                                            buf.writeVarInt(validPos.size());
-                                            for (BlockPos pos : validPos) {
-                                                buf.writeBlockPos(pos);
-                                                if(this.screen.getWorld().getTileEntity(pos) != null)
-                                                    te ++;
-                                            }
-                                            buf.writeVarInt(te);
-                                        });
-                                        isValid = true;
-                                    } else {
-                                        validPos.clear();
+                            PatternMatchContext result = BlockPatternChecker.checkPatternAt(entity);
+                            if (result != null && result.get("validPos") != null) {
+                                validPos = result.get("validPos");
+                                writePluginData(0, buf->{
+                                    int te = 0;
+                                    buf.writeVarInt(validPos.size());
+                                    for (BlockPos pos : validPos) {
+                                        buf.writeBlockPos(pos);
+                                        if(this.screen.getWorld().getTileEntity(pos) != null)
+                                            te ++;
                                     }
-                                }
-                            } catch (Exception e){
-                                GALog.logger.error(e);
+                                    buf.writeVarInt(te);
+                                });
+                                isValid = true;
+                            } else {
+                                validPos.clear();
                             }
                         }
                     } else if(isValid){

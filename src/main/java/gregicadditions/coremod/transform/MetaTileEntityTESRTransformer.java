@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class MetaTileEntityTESRTransformer extends GAClassTransformer.ClassMapper {
+public class MetaTileEntityTESRTransformer extends ClassMapper {
 
     public static final MetaTileEntityTESRTransformer INSTANCE = new MetaTileEntityTESRTransformer();
 
@@ -34,7 +35,7 @@ public class MetaTileEntityTESRTransformer extends GAClassTransformer.ClassMappe
 
     }
 
-    private static class TransformRenderTileEntityFast extends MethodVisitor {
+    private static class TransformRenderTileEntityFast extends GAMethodVisitor {
 
         TransformRenderTileEntityFast(int api, MethodVisitor mv) {
             super(api, mv);
@@ -49,11 +50,7 @@ public class MetaTileEntityTESRTransformer extends GAClassTransformer.ClassMappe
             this.visitVarInsn(Opcodes.DLOAD, 6);
             this.visitVarInsn(Opcodes.FLOAD, 8);
             this.visitVarInsn(Opcodes.ALOAD, 11);
-            this.visitMethodInsn(Opcodes.INVOKESTATIC,
-                    "gregicadditions/coremod/hooks/GregTechCEHooks",
-                    "renderTileEntityFast",
-                    "(Lnet/minecraft/tileentity/TileEntity;DDDFLnet/minecraft/client/renderer/BufferBuilder;)V",
-                    false);
+            super.injectStaticMethod(GTCEHooks, "renderTileEntityFast");
         }
     }
 }

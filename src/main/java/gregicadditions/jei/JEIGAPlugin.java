@@ -35,6 +35,7 @@ public class JEIGAPlugin implements IModPlugin {
 
     private IIngredientBlacklist itemBlacklist;
     private IIngredientRegistry iItemRegistry;
+    public static IJeiRuntime jeiRuntime;
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -100,6 +101,7 @@ public class JEIGAPlugin implements IModPlugin {
 
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+        this.jeiRuntime = jeiRuntime;
         IRecipeRegistry recipeRegistry = jeiRuntime.getRecipeRegistry();
         IRecipeCategory recipeCategory = recipeRegistry.getRecipeCategory("gregtech:multiblock_info");
 
