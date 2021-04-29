@@ -65,7 +65,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
     private int pos;
 
     public TileEntityLargeMultiUse(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, GAConfig.multis.largeMultiUse.euPercentage, GAConfig.multis.largeMultiUse.durationPercentage, GAConfig.multis.largeMultiUse.chancedBoostPercentage, GAConfig.multis.largeMultiUse.stack);
+        super(metaTileEntityId, recipeMap, GAConfig.multis.largeMultiUse.euPercentage, GAConfig.multis.largeMultiUse.durationPercentage, GAConfig.multis.largeMultiUse.chancedBoostPercentage, GAConfig.multis.largeMultiUse.stack, false);
         this.recipeMap = recipeMap;
         pos = Arrays.asList(possibleRecipe).indexOf(recipeMap);
     }

@@ -59,6 +59,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
      */
     protected boolean isDistinct = false;
 
+    protected final boolean canDistinct;
+
     DecimalFormat formatter = new DecimalFormat("#0.0");
 
     /**
@@ -75,6 +77,10 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
      * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 1
      */
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
+        this(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, true);
+    }
+
+    public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct) {
         super(metaTileEntityId, recipeMap);
         this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
 
@@ -82,6 +88,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         this.durationPercentage = durationPercentage;
         this.chancePercentage = chancePercentage;
         this.stack = stack;
+        this.canDistinct = canDistinct;
     }
 
     @Override
@@ -232,14 +239,16 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         super.addDisplayText(textList);
         textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
 
-        ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.universal.distinct");
-        buttonText.appendText(" ");
-        ITextComponent button = withButton((isDistinct ?
-                new TextComponentTranslation("gtadditions.multiblock.universal.distinct.yes") :
-                new TextComponentTranslation("gtadditions.multiblock.universal.distinct.no")), "distinct");
-        withHoverTextTranslate(button, "gtadditions.multiblock.universal.distinct.info");
-        buttonText.appendSibling(button);
-        textList.add(buttonText);
+        if (canDistinct) {
+            ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.universal.distinct");
+            buttonText.appendText(" ");
+            ITextComponent button = withButton((isDistinct ?
+                    new TextComponentTranslation("gtadditions.multiblock.universal.distinct.yes") :
+                    new TextComponentTranslation("gtadditions.multiblock.universal.distinct.no")), "distinct");
+            withHoverTextTranslate(button, "gtadditions.multiblock.universal.distinct.info");
+            buttonText.appendSibling(button);
+            textList.add(buttonText);
+        }
     }
 
     @Override
@@ -306,7 +315,9 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
 
         @Override
         protected void trySearchNewRecipe() {
-            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController && ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).isDistinct) {
+            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController) {
+                LargeSimpleRecipeMapMultiblockController controller = (LargeSimpleRecipeMapMultiblockController) metaTileEntity;
+                if (controller.canDistinct && controller.isDistinct)
                     trySearchNewRecipeDistinct();
             } else trySearchNewRecipeCombined();
         }
