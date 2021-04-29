@@ -125,6 +125,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ADVANCED_BOARD;
     public static MetaItem<?>.MetaValueItem EXTREME_BOARD;
     public static MetaItem<?>.MetaValueItem ELITE_BOARD;
+    public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
+    public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
     public static MetaItem<?>.MetaValueItem MASTER_BOARD;
 
     public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;

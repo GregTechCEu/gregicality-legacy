@@ -485,6 +485,8 @@ public class GAMetaItem extends MaterialMetaItem {
         BATTERY_MEDIUM_FLUORIDE_EMPTY = addItem(582,"medium.fluoride.battery.empty");
         BATTERY_LARGE_FLUORIDE_EMPTY = addItem(583,"large.fluoride.battery.empty");
 
+        KAPTON_BOARD = addItem(584, "board.kapton");
+        KAPTON_CIRCUIT_BOARD = addItem(585, "board_circuit.kapton");
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
