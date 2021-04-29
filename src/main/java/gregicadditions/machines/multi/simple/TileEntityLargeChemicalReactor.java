@@ -28,7 +28,7 @@ public class TileEntityLargeChemicalReactor extends LargeSimpleRecipeMapMultiblo
 
 
 	public TileEntityLargeChemicalReactor(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, GAConfig.multis.largeChemicalReactor.euPercentage, GAConfig.multis.largeChemicalReactor.durationPercentage, GAConfig.multis.largeChemicalReactor.chancedBoostPercentage, GAConfig.multis.largeChemicalReactor.stack);
+		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, GAConfig.multis.largeChemicalReactor.euPercentage, GAConfig.multis.largeChemicalReactor.durationPercentage, GAConfig.multis.largeChemicalReactor.chancedBoostPercentage, GAConfig.multis.largeChemicalReactor.stack, false);
 	}
 
 	@Override
