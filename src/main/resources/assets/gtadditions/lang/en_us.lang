@@ -4154,8 +4154,6 @@ gtadditions.multiblock.steam_oven.description=A Multi Smelter at the Steam Age. 
 gtadditions.machine.diode.message=Max Amperage throughput: %s
 gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy Flow in only one direction.
 gtadditions.machine.diode.tooltip_tool_usage=Hit with a Soft Hammer to toggle Amperage flow.
-gtadditions.top.diode_input=§6Input:§r %dA
-gtadditions.top.diode_output=§9Output:§r %dA
 
 gtadditions.machine.disassembler.lv.name=Basic Disassembler
 gtadditions.machine.disassembler.mv.name=Advanced Disassembler

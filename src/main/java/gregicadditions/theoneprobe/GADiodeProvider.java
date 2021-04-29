@@ -29,10 +29,10 @@ public class GADiodeProvider extends ElectricContainerInfoProvider {
                 IProbeInfo horizontalPane = probeInfo.vertical(probeInfo.defaultLayoutStyle().alignment(ElementAlignment.ALIGN_CENTER));
                 String transformInfo;
                 if (capability.inputsEnergy(sideHit)) {
-                    transformInfo = I18n.format("gtadditions.top.diode_input", inputAmperage);
+                    transformInfo = "{*gregtech.top.transform_input*} " + inputAmperage + "A";
                     horizontalPane.text(TextStyleClass.INFO + transformInfo);
                 } else if (capability.outputsEnergy(sideHit)) {
-                    transformInfo = I18n.format("gtadditions.top.diode_output", outputAmperage);
+                    transformInfo = "{*gregtech.top.transform_output*} " + outputAmperage + "A";
                     horizontalPane.text(TextStyleClass.INFO + transformInfo);
                 }
             }
