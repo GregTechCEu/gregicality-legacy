@@ -126,13 +126,13 @@ public class OreRecipeHandler {
         if (!crushedStack.isEmpty()) {
             RecipeMaps.FORGE_HAMMER_RECIPES.recipeBuilder()
                     .input(orePrefix, material)
-                    .chancedOutput(GTUtility.copyAmount((int) Math.ceil(amountOfCrushedOre), crushedStack), 5000, 0)
+                    .outputs(GTUtility.copyAmount((int) Math.ceil(amountOfCrushedOre), crushedStack))
                     .duration(100).EUt(6)
                     .buildAndRegister();
 
             RecipeBuilder<?> builder = RecipeMaps.MACERATOR_RECIPES.recipeBuilder()
                     .input(orePrefix, material)
-                    .chancedOutput(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre), crushedStack), 5000, 0)
+                    .outputs(GTUtility.copyAmount((int) Math.round(amountOfCrushedOre), crushedStack))
                     .chancedOutput(byproductStack, 700, 425)
                     .duration(400).EUt(12);
             for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials) {
