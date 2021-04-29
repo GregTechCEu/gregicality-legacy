@@ -21,12 +21,6 @@ public class GAClassTransformer implements IClassTransformer {
             case "mcjty.xnet.blocks.controller.TileEntityController":
                 tform = TileEntityControllerTransformer.INSTANCE;
                 break;
-            case "gregtech.api.metatileentity.MetaTileEntityHolder":
-                tform = MetaTileEntityHolderTransformer.INSTANCE;
-                break;
-            case "gregtech.api.render.MetaTileEntityTESR":
-                tform = MetaTileEntityTESRTransformer.INSTANCE;
-                break;
             case "gregtech.api.capability.impl.EnergyContainerHandler":
                 tform = EnergyContainerHandlerTransformer.INSTANCE;
                 break;
@@ -86,10 +80,11 @@ public class GAClassTransformer implements IClassTransformer {
 
         static { // register hooks
             try {
-                XNetHooks = ClassLoader.getSystemClassLoader().loadClass("gregicadditions.coremod.hooks.XNetHooks");
-                GTCEHooks = ClassLoader.getSystemClassLoader().loadClass("gregicadditions.coremod.hooks.GregTechCEHooks");
-                RSHooks = ClassLoader.getSystemClassLoader().loadClass("gregicadditions.coremod.hooks.RefinedStorageHooks");
-                AE2Hooks = ClassLoader.getSystemClassLoader().loadClass("gregicadditions.coremod.hooks.AppliedEnergistics2Hooks");
+                ClassLoader loader = ClassLoader.getSystemClassLoader();
+                XNetHooks = Class.forName("gregicadditions.coremod.hooks.XNetHooks", false, loader);
+                GTCEHooks = Class.forName("gregicadditions.coremod.hooks.GregTechCEHooks", false, loader);
+                RSHooks = Class.forName("gregicadditions.coremod.hooks.RefinedStorageHooks", false, loader);
+                AE2Hooks = Class.forName("gregicadditions.coremod.hooks.AppliedEnergistics2Hooks", false, loader);
             } catch (Exception e) {
                 e.printStackTrace();
             }
