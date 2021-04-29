@@ -933,7 +933,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Helium4 = new SimpleFluidMaterial("helium4", Helium.materialRGB-10, "He_4");
     public static final SimpleFluidMaterial FermionicUUMatter = new SimpleFluidMaterial("fermionic_uu_matter", UUMatter.materialRGB / 3, TextFormatting.OBFUSCATED + "???");
     public static final SimpleFluidMaterial BosonicUUMatter = new SimpleFluidMaterial("bosonic_uu_matter", UUMatter.materialRGB - FermionicUUMatter.rgb, TextFormatting.OBFUSCATED + "???");
-    public static final SimpleFluidMaterial FreeElectrons = new SimpleFluidMaterial("free_electrons", UUMatter.materialRGB - FermionicUUMatter.rgb, TextFormatting.OBFUSCATED + "???");
 
 
 

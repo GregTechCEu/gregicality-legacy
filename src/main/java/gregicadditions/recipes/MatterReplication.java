@@ -15,7 +15,7 @@ public class MatterReplication {
         GARecipeMaps.LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(BosonicUUMatter.getFluid(1000))
                 .fluidInputs(FermionicUUMatter.getFluid(1000))
-                .fluidInputs(FreeElectrons.getFluid(2000))
+                .fluidInputs(FreeElectronGas.getFluid(2000))
                 .fluidOutputs(Materials.UUMatter.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
@@ -30,7 +30,7 @@ public class MatterReplication {
                 GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder()
                         .fluidInputs(((FluidMaterial) material).getFluid(amount))
                         .fluidOutputs(uuFluid)
-                        .fluidOutputs(FreeElectrons.getFluid(mass))
+                        .fluidOutputs(FreeElectronGas.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
@@ -40,7 +40,7 @@ public class MatterReplication {
                         .fluidOutputs(((FluidMaterial) material).getFluid(amount))
                         .notConsumable(((FluidMaterial) material).getFluid(amount))
                         .fluidInputs(uuFluid)
-                        .fluidInputs(FreeElectrons.getFluid(mass))
+                        .fluidInputs(FreeElectronGas.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
@@ -55,7 +55,7 @@ public class MatterReplication {
                 GARecipeMaps.MASS_FAB_RECIPES.recipeBuilder()
                         .input(dust, material)
                         .fluidOutputs(uuFluid)
-                        .fluidOutputs(FreeElectrons.getFluid(mass))
+                        .fluidOutputs(FreeElectronGas.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
@@ -65,7 +65,7 @@ public class MatterReplication {
                         .output(dust, material)
                         .notConsumable(dust, material)
                         .fluidInputs(uuFluid)
-                        .fluidInputs(FreeElectrons.getFluid(mass))
+                        .fluidInputs(FreeElectronGas.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
