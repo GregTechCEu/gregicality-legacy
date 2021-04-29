@@ -87,13 +87,12 @@ public class SterilizedGrowthMedium {
                 .buildAndRegister();
 
         // [H2SO4 + HNO3] + C6H6 -> C6H5NO2 + H2O + H2SO4
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitrationMixture.getFluid(2000))
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidOutputs(NitroBenzene.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(SulfuricAcid.getFluid(1000))
-                .EUt(30720)
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(2000))
+                .EUt(30)
                 .duration(100)
                 .buildAndRegister();
 
@@ -101,10 +100,10 @@ public class SterilizedGrowthMedium {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydrogen.getFluid(6000))
                 .fluidInputs(NitroBenzene.getFluid(1000))
-                .notConsumable(dust, Platinum)
+                .notConsumable(dust, Zinc)
                 .fluidOutputs(Aniline.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .EUt(30720)
+                .EUt(30)
                 .duration(100)
                 .buildAndRegister();
 
