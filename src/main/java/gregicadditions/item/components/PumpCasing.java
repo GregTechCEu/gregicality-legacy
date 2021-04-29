@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class PumpCasing extends VariantBlock<PumpCasing.CasingType> {
+public class PumpCasing extends ReTexturedCasing<PumpCasing.CasingType> {
 
     public PumpCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/pump"));
         setTranslationKey("ga_pump_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.PUMP_LV));
     }
 

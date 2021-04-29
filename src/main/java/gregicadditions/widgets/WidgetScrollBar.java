@@ -1,6 +1,6 @@
 package gregicadditions.widgets;
 
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;

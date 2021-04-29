@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class ConveyorCasing extends VariantBlock<ConveyorCasing.CasingType> {
+public class ConveyorCasing extends ReTexturedCasing<ConveyorCasing.CasingType> {
 
     public ConveyorCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/conveyor"));
         setTranslationKey("ga_conveyor_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.CONVEYOR_LV));
     }
 

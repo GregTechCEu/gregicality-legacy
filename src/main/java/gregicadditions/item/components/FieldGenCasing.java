@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class FieldGenCasing extends VariantBlock<FieldGenCasing.CasingType> {
+public class FieldGenCasing extends ReTexturedCasing<FieldGenCasing.CasingType> {
 
     public FieldGenCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/field_gen"));
         setTranslationKey("ga_field_gen_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.FIELD_GENERATOR_LV));
     }
 

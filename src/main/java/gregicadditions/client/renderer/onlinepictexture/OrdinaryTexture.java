@@ -1,4 +1,4 @@
-package gregicadditions.renderer.onlinepictexture;
+package gregicadditions.client.renderer.onlinepictexture;
 
 import gregicadditions.item.behaviors.monitorPlugin.onlinepic.ProcessedImageData;
 

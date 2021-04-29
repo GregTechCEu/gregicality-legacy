@@ -2,7 +2,7 @@ package gregicadditions.item.behaviors;
 
 import gregicadditions.jei.JEIGAPlugin;
 import gregicadditions.network.CPacketMultiBlockStructure;
-import gregicadditions.renderer.WorldRenderEventRenderer;
+import gregicadditions.client.renderer.WorldRenderEventRenderer;
 import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
@@ -23,7 +23,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;

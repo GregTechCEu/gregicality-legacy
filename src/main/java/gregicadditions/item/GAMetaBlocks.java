@@ -5,6 +5,8 @@ import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
+import gregicadditions.client.model.IReTexturedModel;
+import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.item.components.*;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
@@ -14,7 +16,7 @@ import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
-import gregicadditions.renderer.OpticalFiberRenderer;
+import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -332,10 +334,20 @@ public class GAMetaBlocks {
     public static void registerItemModel(Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             //noinspection ConstantConditions
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
-                    block.getMetaFromState(state),
-                    new ModelResourceLocation(block.getRegistryName(),
-                            statePropertiesToString(state.getProperties())));
+            ModelResourceLocation resourceLocation = new ModelResourceLocation(block.getRegistryName(), statePropertiesToString(state.getProperties()));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), block.getMetaFromState(state), resourceLocation);
+            if (block instanceof IReTexturedModel) {
+                ((IReTexturedModel) block).register(state, resourceLocation);
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void registerItemModel(Item item) {
+        ModelResourceLocation resourceLocation = new ModelResourceLocation(item.getRegistryName(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(item, 0, resourceLocation);
+        if (item instanceof IReTexturedModel) {
+            ((IReTexturedModel) item).register(null, resourceLocation);
         }
     }
 

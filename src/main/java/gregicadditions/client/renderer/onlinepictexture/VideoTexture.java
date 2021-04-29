@@ -1,4 +1,4 @@
-package gregicadditions.renderer.onlinepictexture;
+package gregicadditions.client.renderer.onlinepictexture;
 
 public class VideoTexture extends PictureTexture {
     //TODO implementations of it in the future
