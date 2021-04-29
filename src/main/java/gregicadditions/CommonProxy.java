@@ -18,11 +18,13 @@ import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.util.FluidTooltipUtil;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -60,10 +62,18 @@ public class CommonProxy {
     public void onLoad() throws IOException {
         if (GAConfig.Misc.reverseAfterCT)
             registerRecipesAfterCT();
+        setRemovedMaterialTooltips();
         WorldGenRegister.init();
         if (GAConfig.Misc.multiStoneGen) {
             MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
         }
+    }
+
+    // This method is used to set tooltips for materials to be removed in the future.
+    // If we want to staggered-remove a material, apply a warning to it here.
+    private static final String REMOVED_MAT_TOOLTIP = TextFormatting.RED + "This Material will be removed in next release!";
+    private static void setRemovedMaterialTooltips() {
+        FluidTooltipUtil.registerTooltip(GAMaterials.NitrogenTetroxide.getMaterialFluid(), REMOVED_MAT_TOOLTIP);
     }
 
     @SubscribeEvent
