@@ -4,6 +4,7 @@ import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.util.InventoryUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -75,6 +76,8 @@ public class SteamMultiWorkable extends SteamMultiblockRecipeLogic {
                     Collections.emptyList(), 0);
             CountableIngredient inputIngredient;
             if (matchingRecipe != null) {
+                if (matchingRecipe.getOutputs().isEmpty())
+                    return doChancedOnlyRecipe(matchingRecipe, currentInputItem);
                 inputIngredient = matchingRecipe.getInputs().get(0);
                 recipeEUt = matchingRecipe.getEUt();
                 recipeDuration = matchingRecipe.getDuration();
@@ -148,5 +151,20 @@ public class SteamMultiWorkable extends SteamMultiblockRecipeLogic {
                 recipeOutputs.add(partial);
             }
         }
+    }
+
+    // This does no checking to see if outputs can fit, similar to other chanced output only recipes
+    private Recipe doChancedOnlyRecipe(Recipe matchingRecipe, ItemStack stack) {
+        RecipeBuilder<?> builder = recipeMap.recipeBuilder()
+                .inputs(new CountableIngredient(matchingRecipe.getInputs().get(0).getIngredient(), stack.getCount()))
+                .EUt(Math.min(32, (int) Math.ceil(matchingRecipe.getEUt() * 1.33)))
+                .duration((int)(matchingRecipe.getDuration() * 1.5));
+
+        Recipe.ChanceEntry entry = matchingRecipe.getChancedOutputs().get(0);
+        int maxProcesses = Math.min(MAX_PROCESSES, stack.getCount());
+        for (int i = 0; i < maxProcesses; i++)
+            builder.chancedOutput(entry.getItemStack(), entry.getChance(), entry.getBoostPerTier());
+
+        return builder.build().getResult();
     }
 }

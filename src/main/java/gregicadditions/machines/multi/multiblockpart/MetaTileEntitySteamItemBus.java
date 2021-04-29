@@ -65,7 +65,7 @@ public class MetaTileEntitySteamItemBus extends MetaTileEntityItemBus implements
         super.renderMetaTileEntity(renderState, translation, pipeline);
         if (this.shouldRenderOverlay()) {
             SimpleOverlayRenderer renderer = this.isExportHatch ? Textures.PIPE_OUT_OVERLAY : Textures.PIPE_IN_OVERLAY;
-            Textures.HATCH_OVERLAY.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
+            renderer.renderSided(this.getFrontFacing(), renderState, translation, pipeline);
         }
     }
 }
