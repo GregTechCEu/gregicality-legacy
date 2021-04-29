@@ -17,7 +17,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -73,22 +72,13 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
                     return null;
                 }
             }
-            List<IMultiblockPart> parts = new ArrayList<>();
-            try {
-                BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, (MultiblockControllerBase)target, "structurePattern");
-                if(structurePattern != null) {
-                    PatternMatchContext context = BlockPatternChecker.checkPatternAt(structurePattern, target.getWorld(), target.getPos(), target.getFrontFacing().getOpposite());
-                    if (context == null) {
-                        return null;
-                    }
-                    Set<IMultiblockPart> rawPartsSet = context.getOrCreate("MultiblockParts", HashSet::new);
-                    parts.addAll(rawPartsSet);
-                    parts.sort(Comparator.comparing((it) -> ((MetaTileEntity)it).getPos().hashCode()));
-                }
-            } catch (Exception e){
-                GALog.logger.error(e);
+            PatternMatchContext context = BlockPatternChecker.checkPatternAt((MultiblockControllerBase) target);
+            if (context == null) {
                 return null;
             }
+            Set<IMultiblockPart> rawPartsSet = context.getOrCreate("MultiblockParts", HashSet::new);
+            List<IMultiblockPart> parts = new ArrayList<>(rawPartsSet);
+            parts.sort(Comparator.comparing((it) -> ((MetaTileEntity)it).getPos().hashCode()));
             if (parts.size() > partIndex - 1 && parts.get(partIndex - 1) instanceof MetaTileEntity) {
                 target = (MetaTileEntity) parts.get(partIndex - 1);
                 partPos = target.getPos();

@@ -1,4 +1,4 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import codechicken.lib.render.BlockRenderer;
 import codechicken.lib.render.BlockRenderer.BlockFace;

@@ -198,6 +198,14 @@ public class GARecipeAddition {
                 .fluidInputs(SolderingAlloy.getFluid(1440))
                 .outputs(HAND_PUMP.getStackForm())
                 .buildAndRegister();
+      ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(512)
+                .inputs(ELECTRIC_MOTOR_HV.getStackForm())
+                .input(circuit, Tier.Advanced, 2)
+                .input(stick, StainlessSteel)
+                .fluidInputs(SolderingAlloy.getFluid(1440))
+                .outputs(FREEDOM_WRENCH.getStackForm())
+              .buildAndRegister();
+        
 
         //GTNH Bricks
         ModHandler.removeFurnaceSmelting(new ItemStack(Items.CLAY_BALL, 1, OreDictionary.WILDCARD_VALUE));

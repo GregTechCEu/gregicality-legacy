@@ -1,6 +1,6 @@
 package gregicadditions.item.behaviors.monitorPlugin;
 
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.widgets.WidgetARGB;
 import gregicadditions.widgets.monitor.WidgetPluginConfig;
 import gregtech.api.gui.IUIHolder;

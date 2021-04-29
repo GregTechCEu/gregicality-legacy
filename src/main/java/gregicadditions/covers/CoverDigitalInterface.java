@@ -7,7 +7,7 @@ import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.widgets.WidgetOreList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
@@ -134,7 +134,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     // persistent data
     private int slot = 0;
     private MODE mode = MODE.FLUID;
-    private EnumFacing spin = EnumFacing.EAST;
+    private EnumFacing spin = EnumFacing.NORTH;
     private final int[] proxyMode = new int[]{0, 0, 0, 0}; // server-only
 
 
@@ -238,7 +238,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     public void readFromNBT(NBTTagCompound tagCompound) {
         super.readFromNBT(tagCompound);
         this.mode = tagCompound.hasKey("cdiMode")? MODE.VALUES[tagCompound.getByte("cdiMode")] : MODE.FLUID;
-        this.spin = tagCompound.hasKey("cdiSpin")? EnumFacing.byIndex(tagCompound.getByte("cdiSpin")) : EnumFacing.EAST;
+        this.spin = tagCompound.hasKey("cdiSpin")? EnumFacing.byIndex(tagCompound.getByte("cdiSpin")) : EnumFacing.NORTH;
         this.slot = tagCompound.hasKey("cdiSlot")? tagCompound.getInteger("cdiSlot"): 0;
         this.proxyMode[0] = tagCompound.hasKey("cdi0")? tagCompound.getInteger("cdi0"): 0;
         this.proxyMode[1] = tagCompound.hasKey("cdi1")? tagCompound.getInteger("cdi1"): 0;

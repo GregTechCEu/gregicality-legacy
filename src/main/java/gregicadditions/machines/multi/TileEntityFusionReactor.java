@@ -1,8 +1,5 @@
 package gregicadditions.machines.multi;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
@@ -26,6 +23,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -198,6 +196,10 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
     }
 
     @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.FUSION_REACTOR_OVERLAY;
+    }
+
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         switch (tier) {
             case 6: {
@@ -213,12 +215,6 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
                 break;
             }
         }
-    }
-
-    @Override
-    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-        this.getBaseTexture(null).render(renderState, translation, pipeline);
-        ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
     }
 
     private class FusionRecipeLogic extends GAMultiblockRecipeLogic {

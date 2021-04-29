@@ -6,7 +6,8 @@ import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.BlockPatternChecker;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.WidgetARGB;
 import gregicadditions.widgets.monitor.WidgetMonitorScreen;
@@ -55,7 +56,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     private long lastClickTime;
     private UUID lastClickUUID;
     public MonitorPluginBaseBehavior plugin;
-    protected Set<MetaTileEntityMonitorScreen> clickRegister = new HashSet<>();
     // persistent data
     public Tuple<BlockPos, EnumFacing> coverPos;
     public CoverDigitalInterface.MODE mode = CoverDigitalInterface.MODE.FLUID;
@@ -100,11 +100,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     public void setConfig(int slot, float scale, int color) {
         if ((this.scale == scale || scale < 1 || scale > 8) && (this.slot == slot || slot < 0) && this.frameColor == color) return;
         this.slot = slot;
-        if (this.scale != scale) {
-            registerClick(true);
-        }
         this.scale = scale;
-        registerClick(false);
         this.frameColor = color;
         writeCustomData(1, this::writeSync);
         markDirty();
@@ -165,11 +161,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         this.mode = CoverDigitalInterface.MODE.VALUES[buf.readByte()];
         this.slot = buf.readVarInt();
         float scale = buf.readFloat();
-        if (this.scale != scale) {
-            registerClick(true);
-        }
         this.scale = scale;
-        registerClick(false);
         this.frameColor = buf.readVarInt();
         updateProxyPlugin();
     }
@@ -185,19 +177,53 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     public int getX() {
-        if (this.getController() != null) {
-            if (this.getController().getPos().getX() - this.getPos().getX() != 0) {
-                return Math.abs(this.getController().getPos().getX() - this.getPos().getX());
-            } else {
-                return Math.abs(this.getController().getPos().getZ() - this.getPos().getZ());
+        MultiblockControllerBase controller = this.getController();
+        if (controller != null) {
+            EnumFacing spin = BlockPatternChecker.getSpin(controller);
+            switch (controller.getFrontFacing().getAxis()) {
+                case Y:
+                    if (spin.getAxis() == EnumFacing.Axis.X)
+                        return Math.abs(this.getController().getPos().getZ() - this.getPos().getZ()) - 1;
+                    else
+                        return Math.abs(this.getController().getPos().getX() - this.getPos().getX()) - 1;
+                case X:
+                    if (spin.getAxis() == EnumFacing.Axis.Z)
+                        return Math.abs(this.getController().getPos().getZ() - this.getPos().getZ()) - 1;
+                    else
+                        return Math.abs(this.getController().getPos().getY() - this.getPos().getY()) - 1;
+                default:
+                    if (spin.getAxis() == EnumFacing.Axis.Z)
+                        return Math.abs(this.getController().getPos().getX() - this.getPos().getX()) - 1;
+                    else
+                        return Math.abs(this.getController().getPos().getY() - this.getPos().getY()) - 1;
             }
         }
         return -1;
     }
 
     public int getY() {
-        if (this.getController() != null) {
-            return ((MetaTileEntityCentralMonitor)this.getController()).height - (this.getPos().getY() + 1 - this.getController().getPos().getY());
+        MultiblockControllerBase controller = this.getController();
+        if (controller != null) {
+            EnumFacing spin = BlockPatternChecker.getSpin(controller);
+            EnumFacing facing = controller.getFrontFacing();
+            int height = ((MetaTileEntityCentralMonitor)this.getController()).height;
+            switch (facing.getAxis()) {
+                case Y:
+                    if (spin.getAxis() == EnumFacing.Axis.X)
+                        return height - (Math.abs(controller.getPos().getX() - spin.getXOffset() - this.getPos().getX())) - 1;
+                    else
+                        return height - (Math.abs(controller.getPos().getZ() - spin.getZOffset() - this.getPos().getZ())) - 1;
+                case X:
+                    if (spin.getAxis() == EnumFacing.Axis.Z)
+                        return height - (Math.abs(controller.getPos().getY() + spin.getZOffset() - this.getPos().getY())) - 1;
+                    else
+                        return height - (Math.abs(controller.getPos().getZ() + spin.getXOffset() * facing.rotateY().getZOffset() - this.getPos().getZ())) - 1;
+                default:
+                    if (spin.getAxis() == EnumFacing.Axis.Z)
+                        return height - (Math.abs(controller.getPos().getY() + spin.getZOffset() - this.getPos().getY())) - 1;
+                    else
+                        return height - (Math.abs(controller.getPos().getX() + spin.getXOffset() * facing.rotateY().getXOffset() - this.getPos().getX())) - 1;
+            }
         }
         return -1;
     }
@@ -236,25 +262,6 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             this.plugin.onMonitorValid(null, false);
         }
         this.plugin = null;
-    }
-
-    public boolean registerClick(boolean unregister) {
-        if (this.getController() == null || this.getWorld() == null) return false;
-        EnumFacing side = this.getController().getFrontFacing().rotateY();
-        int size = (int) Math.ceil(this.scale);
-        for(int x = 0 ; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                TileEntity tileEntity = this.getWorld().getTileEntity(this.getPos().offset(side, -x).offset(EnumFacing.DOWN, y));
-                if (tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen){
-                    if (unregister) {
-                        ((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity()).clickRegister.remove(this);
-                    } else {
-                        ((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity()).clickRegister.add(this);
-                    }
-                }
-            }
-        }
-        return true;
     }
 
     @Override
@@ -606,27 +613,68 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         return false;
     }
 
+    private double[] handleRayTraceResult(RayTraceResult rayTraceResult, EnumFacing spin) {
+        double x = 0;
+        double y = 0;
+        double dX = rayTraceResult.sideHit.getAxis() == EnumFacing.Axis.X
+                ? rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ()
+                : rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
+        double dY = rayTraceResult.sideHit.getAxis() == EnumFacing.Axis.Y
+                ? rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ()
+                : rayTraceResult.hitVec.y - rayTraceResult.getBlockPos().getY();
+        if (spin == EnumFacing.NORTH) {
+            x = 1 - dX;
+            y = 1 - dY;
+            if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
+        } else if (spin == EnumFacing.SOUTH) {
+            x = dX;
+            y = dY;
+            if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
+        } else if (spin == EnumFacing.EAST) {
+            x = 1 - dY;
+            y = dX;
+            if (rayTraceResult.sideHit.getXOffset() < 0 || rayTraceResult.sideHit.getZOffset() > 0) {
+                x = 1 - x;
+                y = 1 - y;
+            } else if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
+        } else {
+            x = dY;
+            y = 1 - dX;
+            if (rayTraceResult.sideHit.getXOffset() < 0 || rayTraceResult.sideHit.getZOffset() > 0) {
+                x = 1 - x;
+                y = 1 - y;
+            }else if(rayTraceResult.sideHit.getYOffset() < 0) {
+                y = 1 - y;
+            }
+        }
+        if (rayTraceResult.sideHit == EnumFacing.WEST || rayTraceResult.sideHit == EnumFacing.SOUTH) {
+            x = 1- x;
+        } else if (rayTraceResult.sideHit == EnumFacing.UP) {
+            x = 1 - x;
+            y = 1 - y;
+        }
+        return new double[]{x, y};
+    }
+
     private boolean handleHitResultWithScale(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, boolean isRight, CuboidRayTraceResult rayTraceResult) {
         boolean flag = false;
-        if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
-            double x = 0;
-            double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
-            if (rayTraceResult.sideHit == EnumFacing.EAST) {
-                x = 1 - rayTraceResult.hitVec.z + rayTraceResult.getBlockPos().getZ();
-            } else if (rayTraceResult.sideHit == EnumFacing.SOUTH) {
-                x = rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
-            } else if (rayTraceResult.sideHit == EnumFacing.WEST) {
-                x = rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ();
-            } else if (rayTraceResult.sideHit == EnumFacing.NORTH) {
-                x = 1 - rayTraceResult.hitVec.x + rayTraceResult.getBlockPos().getX();
-            }
-            for (MetaTileEntityMonitorScreen screen : clickRegister) {
-                if (screen != null) {
-                    int i = this.getX() - screen.getX();
-                    int j = this.getY() - screen.getY();
-                    if (screen.isActive()) {
-                        double xR = (x + i) / screen.scale;
-                        double yR = (y + j) / screen.scale;
+        if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && this.getController() != null) {
+            double[] pos = handleRayTraceResult(rayTraceResult, BlockPatternChecker.getSpin(this.getController()));
+            MetaTileEntityMonitorScreen[][] screens = ((MetaTileEntityCentralMonitor)this.getController()).screens;
+            int mX = this.getX(), mY = this.getY();
+            int max = Math.max(mX, mY);
+            for (int i = 0; i <= max && mX - i >= 0; i++) {
+                for (int j = 0; j <= max && mY - j >= 0; j++) {
+                    MetaTileEntityMonitorScreen screen = screens[mX - i][mY - j];
+                    if (screen != null && screen.isActive()) {
+                        double xR = (pos[0] + i) / screen.scale;
+                        double yR = (pos[1] + j) / screen.scale;
                         if (xR >= 0 && xR <= 1 && yR >= 0 && yR <= 1)
                             if (screen.onClickLogic(playerIn, hand, facing, isRight, xR, yR)) {
                                 flag = true;
@@ -643,33 +691,23 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (this.getWorld() != null && player != null) {
             RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
-            if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && this.getController() != null && rayTraceResult.sideHit == this.getController().getFrontFacing()) {
-                double x = 0;
-                double y =  1 - rayTraceResult.hitVec.y + rayTraceResult.getBlockPos().getY();
-                int i = -1;
+            MultiblockControllerBase controller = this.getController();
+            if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && controller != null && rayTraceResult.sideHit == controller.getFrontFacing()) {
+                int i = -1,j = -1;
                 TileEntity tileEntity = this.getWorld().getTileEntity(rayTraceResult.getBlockPos());
                 if (tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen){
-                    i = ((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity()).getX() - this.getX();
-                }
-                if (rayTraceResult.sideHit == EnumFacing.EAST) {
-                    if (rayTraceResult.getBlockPos().getX() != this.getPos().getX()) return null;
-                    x = 1 - rayTraceResult.hitVec.z + rayTraceResult.getBlockPos().getZ();
-                } else if (rayTraceResult.sideHit == EnumFacing.SOUTH) {
-                    if (rayTraceResult.getBlockPos().getZ() != this.getPos().getZ()) return null;
-                    x = rayTraceResult.hitVec.x - rayTraceResult.getBlockPos().getX();
-                } else if (rayTraceResult.sideHit == EnumFacing.WEST) {
-                    if (rayTraceResult.getBlockPos().getX() != this.getPos().getX()) return null;
-                    x = rayTraceResult.hitVec.z - rayTraceResult.getBlockPos().getZ();
-                } else if (rayTraceResult.sideHit == EnumFacing.NORTH) {
-                    if (rayTraceResult.getBlockPos().getZ() != this.getPos().getZ()) return null;
-                    x = 1 - rayTraceResult.hitVec.x + rayTraceResult.getBlockPos().getX();
-                }
-                int j = this.getPos().getY() - rayTraceResult.getBlockPos().getY();
-                if ((i >= 0 && j >= 0)) {
-                    x = (x + i) / this.scale;
-                    y = (y + j) / this.scale;
-                    if (x >= 0 && x <= 1 && y >= 0 && y <= 1)
-                        return new Tuple<Double, Double>(x, y);
+                    MetaTileEntityMonitorScreen screenHit = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
+                    if (controller == screenHit.getController()) {
+                        i = ((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity()).getX() - this.getX();
+                        j = ((MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity()).getY() - this.getY();
+                        double[] pos =  handleRayTraceResult(rayTraceResult, BlockPatternChecker.getSpin(controller));
+                        if ((i >= 0 && j >= 0)) {
+                            pos[0] = (pos[0] + i) / this.scale;
+                            pos[1] = (pos[1] + j) / this.scale;
+                            if (pos[0] >= 0 && pos[0] <= 1 && pos[1] >= 0 && pos[1] <= 1)
+                                return new Tuple<Double, Double>(pos[0], pos[1]);
+                        }
+                    }
                 }
             }
         }

@@ -36,6 +36,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -284,9 +285,8 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
     }
 
     @Override
-    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-        this.getBaseTexture(null).render(renderState, translation, pipeline);
-        ClientHandler.FUSION_REACTOR_OVERLAY.render(renderState, translation, pipeline, this.getFrontFacing(), this.recipeMapWorkable.isActive());
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.FUSION_REACTOR_OVERLAY;
     }
 
     public class AdvFusionRecipeLogic extends GAMultiblockRecipeLogic {

@@ -1,4 +1,4 @@
-package gregicadditions.renderer.onlinepictexture;
+package gregicadditions.client.renderer.onlinepictexture;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;

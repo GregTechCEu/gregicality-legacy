@@ -1,9 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
-import org.objectweb.asm.*;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
-public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
+public class PacketJEIRecipeTransformer extends ClassMapper {
 
     public static final PacketJEIRecipeTransformer INSTANCE = new PacketJEIRecipeTransformer();
 
@@ -32,7 +35,7 @@ public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
 
     }
 
-    private static class TransformServerPacketData extends MethodVisitor {
+    private static class TransformServerPacketData extends GAMethodVisitor {
 
         TransformServerPacketData(int api, MethodVisitor mv) {
             super(api, mv);
@@ -41,17 +44,9 @@ public class PacketJEIRecipeTransformer extends GAClassTransformer.ClassMapper {
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKESTATIC && owner.equals("appeng/util/Platform") && name.equals("poweredExtraction")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/AppliedEnergistics2Hooks",
-                        "poweredExtraction",
-                        "(Lappeng/api/networking/energy/IEnergySource;Lappeng/api/storage/IMEMonitor;Lappeng/api/storage/data/IAEItemStack;Lappeng/api/networking/security/IActionSource;)Lappeng/api/storage/data/IAEItemStack;",
-                        false);
+                super.injectStaticMethod(AE2Hooks, "poweredExtraction");
             } else if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("appeng/util/inv/AdaptorItemHandler") && name.equals("removeItems")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                        "gregicadditions/coremod/hooks/AppliedEnergistics2Hooks",
-                        "removeItems",
-                        "(Lappeng/util/inv/AdaptorItemHandler;ILnet/minecraft/item/ItemStack;Lappeng/util/inv/IInventoryDestination;)Lnet/minecraft/item/ItemStack;",
-                        false);
+                super.injectStaticMethod(AE2Hooks, "removeItems");
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }

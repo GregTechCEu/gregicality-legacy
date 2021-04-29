@@ -1,4 +1,4 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import gregicadditions.utils.GALog;
 import gregtech.api.gui.resources.RenderUtil;

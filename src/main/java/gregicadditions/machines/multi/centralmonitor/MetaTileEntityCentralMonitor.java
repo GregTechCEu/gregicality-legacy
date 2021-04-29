@@ -5,7 +5,8 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.renderer.RenderHelper;
+import gregicadditions.utils.BlockPatternChecker;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.monitor.WidgetScreenGrid;
 import gregtech.api.capability.GregtechCapabilities;
@@ -16,7 +17,6 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.gui.widgets.WidgetGroup;
-import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -56,6 +56,7 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
@@ -73,8 +74,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     public List<Tuple<BlockPos, EnumFacing>> covers;
     @SideOnly(Side.CLIENT)
     public List<BlockPos> parts;
-    @SideOnly(Side.CLIENT)
-    public List<MetaTileEntityMonitorScreen> screens;
+    public MetaTileEntityMonitorScreen[][] screens;
     private boolean isActive;
     private EnergyContainerList inputEnergy;
     // persistent data
@@ -183,7 +183,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     private void readParts(PacketBuffer buf) {
         parts = new ArrayList<>();
-        screens = new ArrayList<>();
+        clearScreans();
         int size = buf.readInt();
         for (int i = 0; i < size; i++) {
             parts.add(buf.readBlockPos());
@@ -201,6 +201,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     }
 
     private void setActive(boolean isActive) {
+        isActive = true;
         if(isActive == this.isActive) return;
         this.isActive = isActive;
         writeCustomData(4, buf -> buf.writeBoolean(this.isActive));
@@ -208,6 +209,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     public boolean isActive() {
         return isStructureFormed() && isActive;
+    }
+
+    private void clearScreans() {
+        if (screens != null) {
+            for (MetaTileEntityMonitorScreen[] screen : screens) {
+                for (MetaTileEntityMonitorScreen s : screen) {
+                    if(s != null) s.removeFromMultiBlock(this);
+                }
+            }
+        }
+        screens = new MetaTileEntityMonitorScreen[width][height];
     }
 
     @Override
@@ -275,6 +287,10 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             this.reinitializeStructurePattern();
         } else if (id == 4) {
             this.isActive = buf.readBoolean();
+        } else if (id == 400) {
+            if (!this.isStructureFormed()) {
+                clearScreans();
+            }
         }
     }
 
@@ -348,16 +364,17 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
         checkCovers();
         for (IMultiblockPart part : this.getMultiblockParts()) {
             if (part instanceof MetaTileEntityMonitorScreen) {
-                ((MetaTileEntityMonitorScreen) part).clickRegister.clear();
                 width++;
             }
         }
+        width = width / height;
+        screens = new MetaTileEntityMonitorScreen[width][height];
         for (IMultiblockPart part : this.getMultiblockParts()) {
             if (part instanceof MetaTileEntityMonitorScreen) {
-                ((MetaTileEntityMonitorScreen) part).registerClick(false);
+                MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) part;
+                screens[screen.getX()][screen.getY()] = screen;
             }
         }
-        width = width / height;
         writeCustomData(1, packetBuffer -> {
             packetBuffer.writeInt(width);
             packetBuffer.writeInt(height);
@@ -397,11 +414,12 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
     @SideOnly(Side.CLIENT)
     public void renderMetaTileEntityDynamic(double x, double y, double z, float partialTicks) {
         if (!this.isStructureFormed()) return;
+        EnumFacing spin = BlockPatternChecker.getSpin(this);
         RenderHelper.useStencil(()->{
             GlStateManager.pushMatrix();
-            RenderHelper.moveToFace(x - this.frontFacing.rotateY().getXOffset() * 0.5, y + height - 1.5, z - this.frontFacing.rotateY().getZOffset() * 0.5, this.frontFacing);
-            RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-            RenderHelper.renderRect(0, 0, width, height, 0.001f, 0xFF000000);
+            RenderHelper.moveToFace(x, y, z, this.frontFacing);
+            RenderHelper.rotateToFace(this.frontFacing, spin);
+            RenderHelper.renderRect(0.5f, -0.5f - (height - 2), width, height, 0.001f, 0xFF000000);
             GlStateManager.popMatrix();
         }, ()->{
             if (isActive) {
@@ -413,35 +431,42 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 float lastBrightnessY = OpenGlHelper.lastBrightnessY;
                 OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
 
-                if(screens.size() != parts.size()) {
-                    screens.clear();
+                int size = 0;
+                for (int w = 0; w < width; w++) {
+                    for (int h = 0; h < height; h++) {
+                        MetaTileEntityMonitorScreen screen = screens[w][h];
+                        if (screen != null) {
+                            size++;
+                            if (screen.isActive()) {
+                                BlockPos pos = screen.getPos();
+                                BlockPos pos2 = this.getPos();
+                                GlStateManager.pushMatrix();
+                                RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
+                                RenderHelper.rotateToFace(this.frontFacing, spin);
+                                screen.renderScreen(partialTicks);
+                                GlStateManager.popMatrix();
+                            }
+                        }
+                    }
+                }
+
+                if (size != parts.size()) {
+                    clearScreans();
                     for (BlockPos pos : parts) {
                         TileEntity tileEntity = getWorld().getTileEntity(pos);
                         if(tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                             MetaTileEntityMonitorScreen screen = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
                             screen.addToMultiBlock(this);
-                            screens.add(screen);
+                            int sx = screen.getX(), sy = screen.getY();
+                            if (sx < 0 || sx >= width || sy < 0 || sy >= height) {
+                                parts.clear();
+                                clearScreans();
+                                break;
+                            }
+                            screens[sx][sy] = screen;
                         }
                     }
-                    for (MetaTileEntityMonitorScreen screen : screens) {
-                        screen.clickRegister.clear();
-                    }
-                    for (MetaTileEntityMonitorScreen screen : screens) {
-                        screen.registerClick(false);
-                    }
                 }
-
-                screens.forEach(screen -> {
-                    if (screen != null && screen.isActive()) {
-                        BlockPos pos = screen.getPos();
-                        BlockPos pos2 = this.getPos();
-                        GlStateManager.pushMatrix();
-                        RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
-                        RenderHelper.rotateToFace(this.frontFacing, EnumFacing.EAST);
-                        screen.renderScreen(partialTicks);
-                        GlStateManager.popMatrix();
-                    }
-                });
 
                 /* restore the lightmap  */
                 OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
@@ -454,8 +479,27 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        BlockPos sp = this.getPos().offset(EnumFacing.DOWN);
-        BlockPos ep = sp.offset(this.frontFacing.rotateY(), -width - 2).offset(EnumFacing.UP, height);
+        BlockPos sp = null;
+        BlockPos ep = null;
+        EnumFacing spin = BlockPatternChecker.getSpin(this);
+        if (frontFacing.getAxis() == EnumFacing.Axis.Y) {
+            sp = this.getPos().offset(spin, -2);
+            ep = sp.offset(spin, height + 1).offset(spin.rotateY(), (width + 2) * frontFacing.getYOffset());
+        } else {
+            if (spin == EnumFacing.NORTH) {
+                sp = this.getPos().offset(EnumFacing.DOWN, 2);
+                ep = sp.offset(EnumFacing.UP, height + 1).offset(this.frontFacing.rotateY(),  - width - 2);
+            } else if (spin == EnumFacing.SOUTH) {
+                sp = this.getPos().offset(EnumFacing.UP, 2);
+                ep = sp.offset(EnumFacing.DOWN, height + 1).offset(this.frontFacing.rotateY(), width + 2);
+            } else if (spin == EnumFacing.WEST) {
+                sp = this.getPos().offset(frontFacing.rotateY(), -2);
+                ep = sp.offset(frontFacing.rotateY(), height + 1).offset(EnumFacing.UP, width + 2);
+            } else {
+                sp = this.getPos().offset(frontFacing.rotateY(), 2);
+                ep = sp.offset(frontFacing.rotateY(), -height - 1).offset(EnumFacing.DOWN, width + 2);
+            }
+        }
         return new AxisAlignedBB(sp, ep);
     }
 
@@ -475,8 +519,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             if (!this.getWorld().isRemote) {
                 this.getMultiblockParts().forEach(part->{
                     if (part instanceof MetaTileEntityMonitorScreen) {
-                        int x = ((MetaTileEntityMonitorScreen) part).getX() - 1;
-                        int y = ((MetaTileEntityMonitorScreen) part).getY() - 1;
+                        int x = ((MetaTileEntityMonitorScreen) part).getX();
+                        int y = ((MetaTileEntityMonitorScreen) part).getY();
                         screenGrids[x][y].setScreen((MetaTileEntityMonitorScreen) part);
                     }
                 });
@@ -485,8 +529,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                     TileEntity tileEntity = this.getWorld().getTileEntity(partPos);
                     if (tileEntity instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) tileEntity).getMetaTileEntity() instanceof MetaTileEntityMonitorScreen) {
                         MetaTileEntityMonitorScreen part = (MetaTileEntityMonitorScreen) ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
-                        int x = part.getX() - 1;
-                        int y = part.getY() - 1;
+                        int x = part.getX();
+                        int y = part.getY();
                         screenGrids[x][y].setScreen(part);
                     }
                 });

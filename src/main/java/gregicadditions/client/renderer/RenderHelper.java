@@ -1,7 +1,8 @@
-package gregicadditions.renderer;
+package gregicadditions.client.renderer;
 
 import codechicken.lib.texture.TextureUtils;
 import codechicken.lib.vec.Matrix4;
+import codechicken.lib.vec.Vector3;
 import gregtech.api.gui.resources.TextureArea;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -16,20 +17,18 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class RenderHelper {
 
-    @SideOnly(Side.CLIENT)
     public static void renderFluidOverLay(float x, float y, float width, float height, float z, FluidStack fluidStack, float alpha) {
         if (fluidStack != null) {
             int color = fluidStack.getFluid().getColor(fluidStack);
@@ -61,12 +60,10 @@ public class RenderHelper {
         }
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderRect(float x, float y, float width, float height, float z, int color) {
         renderGradientRect(x, y, width, height, z, color, color, false);
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderGradientRect(float x, float y, float width, float height, float z, int startColor, int endColor, boolean horizontal) {
         float startAlpha = (float) (startColor >> 24 & 255) / 255.0F;
         float startRed = (float) (startColor >> 16 & 255) / 255.0F;
@@ -103,7 +100,6 @@ public class RenderHelper {
         GlStateManager.enableTexture2D();
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderTextureArea(TextureArea textureArea, float x, float y, float width, float height, float z) {
         double imageU = textureArea.offsetX;
         double imageV = textureArea.offsetY;
@@ -120,7 +116,6 @@ public class RenderHelper {
         tessellator.draw();
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderSlot(Slot slot, FontRenderer fr) {
         ItemStack stack = slot.getStack();
         if (!stack.isEmpty() && slot.isEnabled()) {
@@ -183,7 +178,6 @@ public class RenderHelper {
         }
     }
 
-    @SideOnly(Side.CLIENT)
     private static void draw(BufferBuilder renderer, int x, int y, int width, int height, int red, int green, int blue, int alpha)
     {
         renderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
@@ -194,7 +188,6 @@ public class RenderHelper {
         Tessellator.getInstance().draw();
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderItemOverLay(float x, float y, float z, float scale, ItemStack itemStack) {
         net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
         GlStateManager.pushMatrix();
@@ -206,7 +199,6 @@ public class RenderHelper {
         net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderText(float x, float y, float z, float scale, int color, final String renderedText, boolean centered) {
         GlStateManager.pushMatrix();
         final FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
@@ -219,7 +211,6 @@ public class RenderHelper {
         GlStateManager.popMatrix();
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderLine(float x1, float y1, float x2, float y2, float lineWidth, int color) {
         float hypo = (float) Math.sqrt((y1 - y2) * (y1 - y2) + (x1 - x2) * (x1 - x2));
         float w = (x2 - x1) / hypo * lineWidth;
@@ -250,7 +241,6 @@ public class RenderHelper {
         GlStateManager.color(1,1,1,1);
     }
 
-    @SideOnly(Side.CLIENT)
     public static void renderLineChart(List<Long> data, long max, float x, float y, float width, float height, float lineWidth, int color) {
         float durX = data.size() > 1 ? width / (data.size() - 1) : 0;
         float hY = max > 0 ? height / max : 0;
@@ -296,7 +286,6 @@ public class RenderHelper {
      * @param layer level
      * @return adjust
      */
-    @SideOnly(Side.CLIENT)
     public static Matrix4 adjustTrans(Matrix4 translation, EnumFacing side, int layer) {
         Matrix4 trans = translation.copy();
         switch (side){
@@ -322,12 +311,10 @@ public class RenderHelper {
         return trans;
     }
 
-    @SideOnly(Side.CLIENT)
     public static void moveToFace(double x, double y, double z, EnumFacing face) {
         GlStateManager.translate( x + 0.5 + face.getXOffset() * 0.5, y + 0.5 + face.getYOffset() * 0.5, z + 0.5 + face.getZOffset() * 0.5);
     }
 
-    @SideOnly(Side.CLIENT)
     public static void rotateToFace(EnumFacing face, EnumFacing spin) {
         switch( face ) {
             case UP:
@@ -343,17 +330,21 @@ public class RenderHelper {
             case EAST:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( -90.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case WEST:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( 90.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case NORTH:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             case SOUTH:
                 GlStateManager.scale( -1.0f, -1.0f, -1.0f );
                 GlStateManager.rotate( 180.0f, 0.0f, 1.0f, 0.0f );
+                GlStateManager.rotate(spin == EnumFacing.EAST ? 90 : spin == EnumFacing.SOUTH ? 180 : spin == EnumFacing.WEST ? -90 : 0, 0, 0, 1);
                 break;
             default:
                 break;
@@ -368,8 +359,7 @@ public class RenderHelper {
      * @param renderInMask render logic in the mask
      * @param shouldRenderMask should mask be rendered too
      */
-    @SideOnly(Side.CLIENT)
-    public static void useStencil(@Nonnull Runnable mask, @Nonnull Runnable renderInMask, boolean shouldRenderMask) {
+    public static void useStencil(Runnable mask, Runnable renderInMask, boolean shouldRenderMask) {
         GL11.glStencilMask(0xFF);
         GL11.glClearStencil(0);
         GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT) ;
@@ -397,6 +387,136 @@ public class RenderHelper {
         renderInMask.run();
 
         GL11.glDisable(GL11.GL_STENCIL_TEST);
+    }
+
+    public static void drawOverlayLines(EnumFacing facing, AxisAlignedBB box) {
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder buffer = tessellator.getBuffer();
+        buffer.begin(3, DefaultVertexFormats.POSITION_COLOR);
+
+        Vector3 topRight = new Vector3(box.maxX, box.maxY, box.maxZ);
+        Vector3 bottomRight = new Vector3(box.maxX, box.minY, box.maxZ);
+        Vector3 bottomLeft = new Vector3(box.minX, box.minY, box.maxZ);
+        Vector3 topLeft = new Vector3(box.minX, box.maxY, box.maxZ);
+        Vector3 shift = new Vector3(0.25, 0, 0);
+        Vector3 shiftVert = new Vector3(0, 0.25, 0);
+
+        Vector3 cubeCenter = new Vector3(box.getCenter());
+
+
+        topRight.subtract(cubeCenter);
+        bottomRight.subtract(cubeCenter);
+        bottomLeft.subtract(cubeCenter);
+        topLeft.subtract(cubeCenter);
+
+        switch (facing) {
+            case WEST: {
+                topRight.rotate(Math.PI / 2, Vector3.down);
+                bottomRight.rotate(Math.PI / 2, Vector3.down);
+                bottomLeft.rotate(Math.PI / 2, Vector3.down);
+                topLeft.rotate(Math.PI / 2, Vector3.down);
+                shift.rotate(Math.PI / 2, Vector3.down);
+                shiftVert.rotate(Math.PI / 2, Vector3.down);
+                break;
+            }
+            case EAST: {
+                topRight.rotate(-Math.PI / 2, Vector3.down);
+                bottomRight.rotate(-Math.PI / 2, Vector3.down);
+                bottomLeft.rotate(-Math.PI / 2, Vector3.down);
+                topLeft.rotate(-Math.PI / 2, Vector3.down);
+                shift.rotate(-Math.PI / 2, Vector3.down);
+                shiftVert.rotate(-Math.PI / 2, Vector3.down);
+                break;
+            }
+            case NORTH: {
+                topRight.rotate(Math.PI, Vector3.down);
+                bottomRight.rotate(Math.PI, Vector3.down);
+                bottomLeft.rotate(Math.PI, Vector3.down);
+                topLeft.rotate(Math.PI, Vector3.down);
+                shift.rotate(Math.PI, Vector3.down);
+                shiftVert.rotate(Math.PI, Vector3.down);
+                break;
+            }
+            case UP: {
+                Vector3 side = new Vector3(1, 0, 0);
+                topRight.rotate(-Math.PI / 2, side);
+                bottomRight.rotate(-Math.PI / 2, side);
+                bottomLeft.rotate(-Math.PI / 2, side);
+                topLeft.rotate(-Math.PI / 2, side);
+                shift.rotate(-Math.PI / 2, side);
+                shiftVert.rotate(-Math.PI / 2, side);
+                break;
+            }
+            case DOWN: {
+                Vector3 side = new Vector3(1, 0, 0);
+                topRight.rotate(Math.PI / 2, side);
+                bottomRight.rotate(Math.PI / 2, side);
+                bottomLeft.rotate(Math.PI / 2, side);
+                topLeft.rotate(Math.PI / 2, side);
+                shift.rotate(Math.PI / 2, side);
+                shiftVert.rotate(Math.PI / 2, side);
+                break;
+            }
+        }
+
+        topRight.add(cubeCenter);
+        bottomRight.add(cubeCenter);
+        bottomLeft.add(cubeCenter);
+        topLeft.add(cubeCenter);
+
+        // straight top bottom lines
+        startLine(buffer, topRight.copy().add(shift.copy().negate()));
+        endLine(buffer, bottomRight.copy().add(shift.copy().negate()));
+
+        startLine(buffer, bottomLeft.copy().add(shift));
+        endLine(buffer, topLeft.copy().add(shift));
+
+        // straight side to side lines
+        startLine(buffer, topLeft.copy().add(shiftVert.copy().negate()));
+        endLine(buffer, topRight.copy().add(shiftVert.copy().negate()));
+
+        startLine(buffer, bottomLeft.copy().add(shiftVert));
+        endLine(buffer, bottomRight.copy().add(shiftVert));
+
+        tessellator.draw();
+    }
+
+    private static void startLine(BufferBuilder buffer, Vector3 vec) {
+        buffer.pos(vec.x, vec.y, vec.z).color(0, 0, 0, 0.0F).endVertex();
+    }
+
+    private static void endLine(BufferBuilder buffer, Vector3 vec) {
+        buffer.pos(vec.x, vec.y, vec.z).color(0, 0, 0, 0.5F).endVertex();
+    }
+
+    public static void renderHighLightedBlocksOutline(BufferBuilder buffer, float mx, float my, float mz, float r, float g, float b, float a) {
+        buffer.pos(mx, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my + 1, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my + 1, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz).color(r, g, b, a).endVertex();
+
+        buffer.pos(mx, my + 1, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my + 1, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my + 1, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz).color(r, g, b, a).endVertex();
+
+        buffer.pos(mx + 1, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my, mz).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my + 1, mz).color(r, g, b, a).endVertex();
+
+        buffer.pos(mx, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx + 1, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my, mz + 1).color(r, g, b, a).endVertex();
+        buffer.pos(mx, my + 1, mz + 1).color(r, g, b, a).endVertex();
     }
 
 }

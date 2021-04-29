@@ -1,19 +1,12 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class EmitterCasing extends VariantBlock<EmitterCasing.CasingType> {
+public class EmitterCasing extends ReTexturedCasing<EmitterCasing.CasingType> {
 
     public EmitterCasing() {
-        super(Material.IRON);
-        setTranslationKey("ga_emitter_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
+        super(new ResourceLocation("gtadditions","block/casing/emitter"));
         setDefaultState(getState(CasingType.EMITTER_LV));
     }
 

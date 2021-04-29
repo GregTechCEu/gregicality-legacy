@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class PistonCasing extends VariantBlock<PistonCasing.CasingType> {
+public class PistonCasing extends ReTexturedCasing<PistonCasing.CasingType> {
 
     public PistonCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/piston"));
         setTranslationKey("ga_piston_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.PISTON_LV));
     }
 

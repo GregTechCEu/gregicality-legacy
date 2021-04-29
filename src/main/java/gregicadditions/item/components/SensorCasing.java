@@ -1,19 +1,13 @@
 package gregicadditions.item.components;
 
-import gregtech.common.blocks.VariantBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.ResourceLocation;
 
-public class SensorCasing extends VariantBlock<SensorCasing.CasingType> {
+public class SensorCasing extends ReTexturedCasing<SensorCasing.CasingType> {
 
     public SensorCasing() {
-        super(Material.IRON);
+        super(new ResourceLocation("gtadditions","block/casing/sensor"));
         setTranslationKey("ga_sensor_casing");
-        setHardness(5.0f);
-        setResistance(10.0f);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.SENSOR_LV));
     }
 

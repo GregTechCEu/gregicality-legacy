@@ -1,11 +1,12 @@
 package gregicadditions.coremod.transform;
 
-import gregicadditions.coremod.GAClassTransformer;
+import gregicadditions.coremod.GAClassTransformer.ClassMapper;
+import gregicadditions.coremod.GAClassTransformer.GAMethodVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-public class EnergyContainerHandlerTransformer extends GAClassTransformer.ClassMapper {
+public class EnergyContainerHandlerTransformer extends ClassMapper {
 
     public static final EnergyContainerHandlerTransformer INSTANCE = new EnergyContainerHandlerTransformer();
 
@@ -34,7 +35,7 @@ public class EnergyContainerHandlerTransformer extends GAClassTransformer.ClassM
 
     }
 
-    private static class TransformSetEnergyStored extends MethodVisitor {
+    private static class TransformSetEnergyStored extends GAMethodVisitor {
 
         TransformSetEnergyStored(int api, MethodVisitor mv) {
             super(api, mv);
@@ -44,11 +45,7 @@ public class EnergyContainerHandlerTransformer extends GAClassTransformer.ClassM
         public void visitCode() {
             super.visitVarInsn(Opcodes.ALOAD, 0);
             super.visitVarInsn(Opcodes.LLOAD, 1);
-            super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                    "gregicadditions/coremod/hooks/GregTechCEHooks",
-                    "setEnergyStored",
-                    "(Lgregtech/api/capability/impl/EnergyContainerHandler;J)V",
-                    false);
+            super.injectStaticMethod(GTCEHooks, "setEnergyStored");
             super.visitCode();
         }
 
