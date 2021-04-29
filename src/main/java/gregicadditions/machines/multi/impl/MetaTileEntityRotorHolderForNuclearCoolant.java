@@ -34,7 +34,7 @@ import java.util.List;
 
 public class MetaTileEntityRotorHolderForNuclearCoolant extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<MetaTileEntityRotorHolderForNuclearCoolant> {
 
-    private static final int NORMAL_MAXIMUM_SPEED = 6000;
+    private static final int NORMAL_MAXIMUM_SPEED = 12000;
     private static final float DAMAGE_PER_INTERACT = 40.0f;
 
     private InventoryRotorHolder rotorInventory;
@@ -80,9 +80,9 @@ public class MetaTileEntityRotorHolderForNuclearCoolant extends MetaTileEntityMu
         boolean isControllerActive = controller != null && controller.isActive();
 
         if (currentRotorSpeed < maxRotorSpeed && isControllerActive) {
-            incrementSpeed(1);
+            incrementSpeed(3);
         } else if (currentRotorSpeed > 0 && !isControllerActive) {
-            incrementSpeed(-3);
+            incrementSpeed(-1);
         }
     }
 

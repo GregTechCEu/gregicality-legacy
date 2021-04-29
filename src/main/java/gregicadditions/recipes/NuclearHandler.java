@@ -228,59 +228,59 @@ public class NuclearHandler {
                     .fluidOutputs(radioactiveMaterial.getFluidHexafluoride(2000))
                     .buildAndRegister();
 
-            IntCircuitRecipeBuilder builder1 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(0).EUt(GAValues.V[GAValues.ULV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder1 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(0).EUt(GAValues.V[GAValues.ULV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder1.fluidOutputs(key.getFluidHexafluoride(value * 2)));
             builder1.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder2 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(1).EUt(GAValues.V[GAValues.LV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder2 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(1).EUt(GAValues.V[GAValues.LV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder2.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 110 / 100 : value * 2) * 2)));
             builder2.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder3 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(2).EUt(GAValues.V[GAValues.MV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder3 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(2).EUt(GAValues.V[GAValues.MV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder3.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 120 / 100 : value * 3) * 2)));
             builder3.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder4 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(3).EUt(GAValues.V[GAValues.HV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder4 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(3).EUt(GAValues.V[GAValues.HV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder4.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 130 / 100 : value * 4) * 2)));
             builder4.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder5 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(4).EUt(GAValues.V[GAValues.EV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder5 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(4).EUt(GAValues.V[GAValues.EV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder5.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 140 / 100 : value * 5) * 2)));
             builder5.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder6 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(5).EUt(GAValues.V[GAValues.IV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder6 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(5).EUt(GAValues.V[GAValues.IV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder6.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 150 / 100 : value * 6) * 2)));
             builder6.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder7 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(6).EUt(GAValues.V[GAValues.LuV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder7 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(6).EUt(GAValues.V[GAValues.LuV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder7.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 160 / 100 : value * 7) * 2)));
             builder7.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder8 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(7).EUt(GAValues.V[GAValues.ZPM]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder8 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(7).EUt(GAValues.V[GAValues.ZPM]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder8.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 170 / 100 : value * 8) * 2)));
             builder8.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder9 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(8).EUt(GAValues.V[GAValues.UV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder9 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(8).EUt(GAValues.V[GAValues.UV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder9.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 180 / 100 : value * 9) * 2)));
             builder9.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder10 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(9).EUt(GAValues.V[GAValues.UHV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder10 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(9).EUt(GAValues.V[GAValues.UHV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder10.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 190 / 100 : value * 10) * 2)));
             builder10.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder11 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(10).EUt(GAValues.V[GAValues.UEV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder11 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(10).EUt(GAValues.V[GAValues.UEV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder11.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 200 / 100 : value * 11) * 2)));
             builder11.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder12 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(11).EUt(GAValues.V[GAValues.UIV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder12 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(11).EUt(GAValues.V[GAValues.UIV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder12.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 210 / 100 : value * 12) * 2)));
             builder12.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder13 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(12).EUt(GAValues.V[GAValues.UMV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder13 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(12).EUt(GAValues.V[GAValues.UMV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder13.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 220 / 100 : value * 13) * 2)));
             builder13.buildAndRegister();
 
-            IntCircuitRecipeBuilder builder14 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(10000 * complexity / 100).circuitMeta(13).EUt(GAValues.V[GAValues.UXV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
+            IntCircuitRecipeBuilder builder14 = GAS_CENTRIFUGE_RECIPES.recipeBuilder().duration(500 * complexity / 100).circuitMeta(13).EUt(GAValues.V[GAValues.UXV]).fluidInputs(radioactiveMaterial.getFluidHexafluoride(20000));
             radioactiveMaterial.composition.forEach((key, value) -> builder14.fluidOutputs(key.getFluidHexafluoride((value >= 5000 ? value : value >= 1000 ? value * 230 / 100 : value * 14) * 2)));
             builder14.buildAndRegister();
 

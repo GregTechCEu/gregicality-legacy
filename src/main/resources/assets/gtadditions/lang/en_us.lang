@@ -448,8 +448,8 @@ metaitem.schematic.name=Blank Schematic
 
 metaitem.data_stick.tooltip.empty=Empty Chunk
 metaitem.data_stick.tooltip.coords=%s: %d, %d
-metaitem.data_stick.tooltip.capacity=Capacity: %dmB
-metaitem.data_stick.tooltip.current=Current: %dmB
+metaitem.data_stick.tooltip.capacity=Capacity: %,dmB
+metaitem.data_stick.tooltip.current=Current: %,dmB
 metaitem.data_stick.tooltip.fluid=Fluid: %d
 
 metaitem.acrylic_fibers.name=Acrylic Fibers
@@ -1657,7 +1657,7 @@ gtadditions.machine.miner.large.name=Large Miner
 gtadditions.machine.miner.advance.name=Advanced Large Miner
 gtadditions.machine.miner.multi.description=Mines all ore in an area of %dx%d Chunks. Can mine ore as if it was using a hammer with fortune %s, or with silk touch.
 gtadditions.machine.miner.description=Mines all ores in the current chunk.
-gtadditions.machine.miner.fluid_usage=Consumes %dmb of %s per tick
+gtadditions.machine.miner.fluid_usage=Consumes %,dmb of %s per tick
 
 gtadditions.machine.rotor_holder.ulv.name=Hot Coolant Rotor Holder (ULV)
 gtadditions.machine.rotor_holder.lv.name=Hot Coolant Rotor Holder (LV)
@@ -2002,7 +2002,7 @@ recipemap.hyper_reactor.name=Hyper Reactor
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
-gtadditions.recipe.drilling_rig.replenish_rate=Replenish Rate: %d
+gtadditions.recipe.drilling_rig.replenish_rate=Replenish Rate: %,d
 gtadditions.recipe.drilling_rig.weight=Weight: %d
 gtadditions.recipe.drilling_rig.dimension=Dimension
 gtadditions.recipe.drilling_rig.biome=Biome
@@ -2775,7 +2775,7 @@ gtadditions.multiblock.large_naquadah_reactor.tooltip.4=Heavy Naquadah Fuel => 2
 gtadditions.multiblock.large_naquadah_reactor.tooltip.5=Medium Enriched Naquadah Fuel => 2UV.
 gtadditions.multiblock.large_naquadah_reactor.tooltip.6=Heavy Enriched Naquadah Fuel => 3UV.
 gtadditions.multiblock.hyper_reactor.tooltip.1=Boost With: %s
-gtadditions.multiblock.hyper_reactor.tooltip.2=Max Voltage: %d
+gtadditions.multiblock.hyper_reactor.tooltip.2=Max Voltage: %,d
 
 gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
 gtadditions.multiblock.battery_tower.tooltip.2=All of the cells in the tower need to be of the same tier and the tower will drain %d%% of the cells' voltage tier per tick.
@@ -2785,30 +2785,30 @@ gtadditions.multiblock.cosmic_ray_detector.tooltip.1=The Cosmic Ray Detector can
 gtadditions.multiblock.cosmic_ray_detector.tooltip.2=Produces Heavy Lepton Mix based on the Y-level it is built at.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.3=At Bedrock it will produce 5 mb/t and at build limit it will produce 40 mb/t.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.4=Requires a minimum of 2097152 EU/t to function.
-gtadditions.multiblock.cosmic_ray_detector.tooltip.5=Generating %d mb/t of Heavy Lepton Mix.
+gtadditions.multiblock.cosmic_ray_detector.tooltip.5=Generating %,d mb/t of Heavy Lepton Mix.
 gtadditions.multiblock.cosmic_ray_detector.tooltip.6=The top Sensor Block needs to be able to see the sky.
 
 
 gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
-gregtech.multiblock.universal.energy_used=Energy using: %d EU
+gregtech.multiblock.universal.energy_used=Energy using: %,d EU
 gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.2fmB
 gregtech.multiblock.universal.overheat=Overheated!
 gregtech.machine.world_accelerator.mode.tile=Tile Entity Mode
 gregtech.machine.world_accelerator.mode.entity=Entity Mode
-gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
+gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %,d EU/t
 gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
-gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
-gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %dmb
-gregtech.multiblock.universal.oxygen_plasma_amount=Oxygen Plasma: %dmb
-gregtech.multiblock.universal.helium_plasma_amount=Helium Plasma: %dmb
-gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %dmb
-gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid Hydrogen: %dmB
-gregtech.multiblock.universal.air_amount=Air: %dmB
-gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen to Boost: %dmB
+gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %,dmB
+gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %,dmb
+gregtech.multiblock.universal.oxygen_plasma_amount=Oxygen Plasma: %,dmb
+gregtech.multiblock.universal.helium_plasma_amount=Helium Plasma: %,dmb
+gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %,dmb
+gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid Hydrogen: %,dmB
+gregtech.multiblock.universal.air_amount=Air: %,dmB
+gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen to Boost: %,dmB
 gregtech.multiblock.large_rocket_engine.boost=Boosted!
 gregtech.multiblock.large_rocket_engine.no_fuel=No Fuel Loaded
 gregtech.multiblock.advanced_distillation_tower.multiplier=Current Multiplier: %d
@@ -2818,8 +2818,8 @@ gregtech.multiblock.large_miner.mode=Screw to change mode.
 gregtech.multiblock.large_miner.block_per_tick=Speed: %d Blocks/tick
 gregtech.multiblock.large_miner.silktouch=Silktouch mode: %s
 gregtech.multiblock.large_miner.done=Done!
-gregtech.multiblock.universal.energy_store=%d EU / %d EU
-gregtech.multiblock.nuclear_reactor.coolant_needed=Coolant Needed: %d mb/s
+gregtech.multiblock.universal.energy_store=%,d EU / %,d EU
+gregtech.multiblock.nuclear_reactor.coolant_needed=Coolant Needed: %,d mb/s
 gregtech.multiblock.nuclear_reactor.coolant_ratio=Coolant Ratio: %d
 gregtech.multiblock.nuclear_reactor.not_enough_coolant=Not Enough Coolant!
 gregtech.multiblock.nuclear_reactor.base_heat=Heat Produced: %d C/sec
@@ -2834,11 +2834,11 @@ gtadditions.multiblock.not_enough_qubit=Not enough Qubits, recipe slowed.
 gregicality.multiblock.invalid_configuraion.1=The Advanced Fusion Reactor is setup incorrectly.
 gregicality.multiblock.invalid_configuraion.2=The tier of the Cryostat, Vacuum and/or Divertor casings is lower than the coil tier.
 gtadditions.multiblock.drilling_rig.no_fluid=Chunk is Empty
-gtadditions.multiblock.drilling_rig.fluid_drain=Fluid Drain: %dmB/sec
-gtadditions.multiblock.drilling_rig.chunk_capacity=Chunk Capacity: %dB
-gtadditions.multiblock.drilling_rig.chunk_remaining=Chunk Fluid Remaining: %dB
+gtadditions.multiblock.drilling_rig.fluid_drain=Fluid Drain: %,dmB/sec
+gtadditions.multiblock.drilling_rig.chunk_capacity=Chunk Capacity: %,dB
+gtadditions.multiblock.drilling_rig.chunk_remaining=Chunk Fluid Remaining: %,dB
 gtadditions.multiblock.drilling_rig.fluid=Current Fluid: %s
-gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
+gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %,dmB/sec
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate
@@ -3129,8 +3129,8 @@ gtadditions.converter.energy.gteu=GTEU
 gtadditions.converter.energy.simple.fe=FE
 gtadditions.converter.energy.simple.gteu=EU
 
-gtadditions.converter.energy_out=Maximum %s OUT: §e%d FE§7/tick
-gtadditions.converter.energy_in=Maximum %s IN: §e%d FE§7/tick
+gtadditions.converter.energy_out=Maximum %s OUT: §e%,d FE§7/tick
+gtadditions.converter.energy_in=Maximum %s IN: §e%,d FE§7/tick
 gtadditions.converter.description=Converts %s to %s
 gtadditions.convert_gteu=Converts EU to FE
 gtadditions.convert_forge=Converts FE to EU
@@ -3942,6 +3942,9 @@ fluid.propadiene=Propadiene
 fluid.cyclopentadiene=Cyclopentadiene
 fluid.chloroauric_acid=Chloroauric Acid
 fluid.helium4=Helium 4
+fluid.fermionic_uu_matter=Fermionic UU-Matter
+fluid.bosonic_uu_matter=Bosonic UU-Matter
+fluid.free_electrons=Free Electrons
 fluid.oxydianiline=Oxydianiline
 fluid.polyamic_acid=Poly(amic acid)
 fluid.hexafluoropropylene=Hexafluoropropylene
@@ -3957,11 +3960,11 @@ metaitem.hyperium_crafting_seed.tooltip=Used for crafting, not planting.
 metaitem.ludicium_crafting_seed.name=Tier 8 Crafting Seed
 metaitem.ludicium_crafting_seed.tooltip=Used for crafting, not planting.
 
-gtaddition.optical_fiber.qubit=Qubit: §a%d §7(§a%s§7)
+gtaddition.optical_fiber.qubit=Qubit: §a%,d §7(§a%s§7)
 gtaddition.optical_fiber.parallel=Parallel Signal: §e%d
 gtaddition.top.qubit_stored=Qubit:
-gregtech.recipe.qubitProduce=Generation: %d qubit/t
-gregtech.recipe.qubitConsume=Usage: %d qubit/t
+gregtech.recipe.qubitProduce=Generation: %,d qubit/t
+gregtech.recipe.qubitConsume=Usage: %,d qubit/t
 
 
 metaitem.robot.arm.uhv.name=Robot Arm (UHV)
