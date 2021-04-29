@@ -35,30 +35,25 @@ public class GATransformerProvider extends ElectricContainerInfoProvider {
                 String transformInfo;
 
                 // Step Up/Step Down line
-                String transformUpKey = "gregtech.top.transform_up";
-                String transformDownKey = "gregtech.top.transform_down";
                 if (mteTransformer.isInverted()) {
-                    transformInfo = I18n.format(transformUpKey,
-                            inputVoltageN, inputAmperage, outputVoltageN, outputAmperage);
+                    transformInfo = "{*gregtech.top.transform_up*} ";
                 } else {
-                    transformInfo = I18n.format(transformDownKey,
-                            inputVoltageN, inputAmperage, outputVoltageN, outputAmperage);
+                    transformInfo = "{*gregtech.top.transform_down*} ";
                 }
-
-                // Gets hit if our GT version is below 1.11.1
-                if (transformInfo.equals(transformUpKey)
-                        || transformInfo.equals(transformDownKey)) {
-                    return;
-                }
+                transformInfo += inputVoltageN + " (" + inputAmperage + "A) -> "
+                        + outputVoltageN + " (" + outputAmperage + "A)";
                 horizontalPane.text(TextStyleClass.INFO + transformInfo);
 
                 // Input/Output side line
                 horizontalPane = probeInfo.vertical(probeInfo.defaultLayoutStyle().alignment(ElementAlignment.ALIGN_CENTER));
                 if (capability.inputsEnergy(sideHit)) {
-                    transformInfo = I18n.format("gregtech.top.transform_input", inputVoltageN, inputAmperage);
+                    transformInfo = "{*gregtech.top.transform_input*} "
+                            + inputVoltageN + " (" + inputAmperage + "A)";
                     horizontalPane.text(TextStyleClass.INFO + transformInfo);
-                } else if (capability.outputsEnergy(sideHit)) {
-                    transformInfo = I18n.format("gregtech.top.transform_output", outputVoltageN, outputAmperage);
+
+                } else if(capability.outputsEnergy(sideHit)) {
+                    transformInfo = "{*gregtech.top.transform_output*} "
+                            + outputVoltageN + " (" + outputAmperage + "A)";
                     horizontalPane.text(TextStyleClass.INFO + transformInfo);
                 }
             }
