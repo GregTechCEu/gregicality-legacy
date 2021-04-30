@@ -3769,7 +3769,7 @@ public class GARecipeAddition {
             for (int i = GAValues.MV; i <= GAValues.IV; i++) {
                 CHEMICAL_BATH_RECIPES.recipeBuilder()
                         .duration(200)
-                        .EUt(GAValues.V[i - 1])
+                        .EUt(GAValues.V[i - 1] / 32 * 30)
                         .input(wireGtSingle, superConductorBases[i], 16)
                         .output(wireGtSingle, superConductors[i], 16)
                         .fluidInputs(Nitrogen.getFluid(2000))
@@ -3781,7 +3781,7 @@ public class GARecipeAddition {
                     UnificationEntry pipe = (UnificationEntry) GACraftingComponents.PIPE.getIngredient(j);
                     int amount = (int) (8 * Math.pow(2, j - i + 4));
                     ASSEMBLER_RECIPES.recipeBuilder()
-                            .EUt(GAValues.V[i - 1])
+                            .EUt(GAValues.V[i - 1] / 32 * 30)
                             .duration(200)
                             .input(wireGtSingle, superConductorBases[i], amount)
                             .output(wireGtSingle, superConductors[i], amount)
