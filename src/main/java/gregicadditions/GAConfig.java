@@ -463,6 +463,11 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean reverseAfterCT = true;
 
+        @Config.Comment("Whether or not to make the recipes for Superconductors harder.")
+        @Config.Name("Harder Superconductor Recipes")
+        @Config.RequiresMcRestart
+        public boolean harderSuperconductors = false;
+
     }
 
     @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})

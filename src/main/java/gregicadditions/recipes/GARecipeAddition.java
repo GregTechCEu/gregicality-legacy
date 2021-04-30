@@ -6,6 +6,7 @@ import forestry.core.items.EnumElectronTube;
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
+import gregicadditions.GAValues;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
@@ -3754,110 +3755,147 @@ public class GARecipeAddition {
         ModHandler.addShapedRecipe("3x3_schematic", SCHEMATIC_3X3.getStackForm(), "  d", " S ", "   ", 'S', SCHEMATIC.getStackForm());
         ModHandler.addShapedRecipe("2x2_schematic", SCHEMATIC_2X2.getStackForm(), " d ", " S ", "   ", 'S', SCHEMATIC.getStackForm());
         ModHandler.addShapedRecipe("dust_schematic", SCHEMATIC_DUST.getStackForm(), "   ", " S ", "  d", 'S', SCHEMATIC.getStackForm());
+        
+        Material[] superConductors = {null, null, MVSuperconductor, HVSuperconductor, EVSuperconductor, IVSuperconductor,
+                LuVSuperconductor, ZPMSuperconductor, UVSuperconductor, UHVSuperconductor, UEVSuperconductor,
+                UIVSuperconductor, UMVSuperconductor, UXVSuperconductor, Tier.Superconductor};
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(120)
-                .input(wireGtSingle, MVSuperconductorBase, 3)
-                .inputs(OreDictUnifier.get(pipeTiny, StainlessSteel, 2))
-                .inputs(ELECTRIC_PUMP_MV.getStackForm(2))
-                .fluidInputs(Nitrogen.getFluid(2000))
-                .outputs(OreDictUnifier.get(wireGtSingle, MVSuperconductor, 3))
-                .buildAndRegister();
+        Material[] superConductorBases = {null, null, MVSuperconductorBase, HVSuperconductorBase, EVSuperconductorBase,
+                IVSuperconductorBase, LuVSuperconductorBase, ZPMSuperconductorBase, UVSuperconductorBase,
+                UHVSuperconductorBase, UEVSuperconductorBase, UIVSuperconductorBase, UMVSuperconductorBase,
+                UXVSuperconductorBase, UXVSuperconductorBase};
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(256)
-                .input(wireGtSingle, HVSuperconductorBase, 3)
-                .inputs(OreDictUnifier.get(pipeTiny, Titanium, 2))
-                .inputs(ELECTRIC_PUMP_HV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(2000))
-                .outputs(OreDictUnifier.get(wireGtSingle, HVSuperconductor, 3))
-                .buildAndRegister();
+        if (!GAConfig.Misc.harderSuperconductors) {
+            for (int i = GAValues.MV; i <= GAValues.IV; i++) {
+                CHEMICAL_BATH_RECIPES.recipeBuilder()
+                        .duration(200)
+                        .EUt(GAValues.V[i - 1])
+                        .input(wireGtSingle, superConductorBases[i], 16)
+                        .output(wireGtSingle, superConductors[i], 16)
+                        .fluidInputs(Nitrogen.getFluid(2000))
+                        .buildAndRegister();
+            }
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(480)
-                .input(wireGtSingle, EVSuperconductorBase, 9)
-                .inputs(OreDictUnifier.get(pipeTiny, TungstenSteel, 6))
-                .inputs(ELECTRIC_PUMP_EV.getStackForm(2))
-                .fluidInputs(Nitrogen.getFluid(6000))
-                .outputs(OreDictUnifier.get(wireGtSingle, EVSuperconductor, 9))
-                .buildAndRegister();
+            for (int i = GAValues.LuV; i <= GAValues.MAX; i++) {
+                for (int j = i - 4; j <= i; j++) {
+                    UnificationEntry pipe = (UnificationEntry) GACraftingComponents.PIPE.getIngredient(j);
+                    int amount = (int) (8 * Math.pow(2, j - i + 4));
+                    ASSEMBLER_RECIPES.recipeBuilder()
+                            .EUt(GAValues.V[i - 1])
+                            .duration(200)
+                            .input(wireGtSingle, superConductorBases[i], amount)
+                            .output(wireGtSingle, superConductors[i], amount)
+                            .inputs(((MetaItem.MetaValueItem) GACraftingComponents.PUMP.getIngredient(j)).getStackForm())
+                            .input(pipe.orePrefix, pipe.material, 2)
+                            .fluidInputs(Nitrogen.getFluid(2000))
+                            .buildAndRegister();
+                }
+            }
+        } else {
+            ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(120)
+                    .input(wireGtSingle, MVSuperconductorBase, 3)
+                    .inputs(OreDictUnifier.get(pipeTiny, StainlessSteel, 2))
+                    .inputs(ELECTRIC_PUMP_MV.getStackForm(2))
+                    .fluidInputs(Nitrogen.getFluid(2000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, MVSuperconductor, 3))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920)
-                .input(wireGtSingle, IVSuperconductorBase, 6)
-                .inputs(OreDictUnifier.get(pipeTiny, NiobiumTitanium, 4))
-                .inputs(ELECTRIC_PUMP_IV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(4000))
-                .outputs(OreDictUnifier.get(wireGtSingle, IVSuperconductor, 6))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(256)
+                    .input(wireGtSingle, HVSuperconductorBase, 3)
+                    .inputs(OreDictUnifier.get(pipeTiny, Titanium, 2))
+                    .inputs(ELECTRIC_PUMP_HV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(2000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, HVSuperconductor, 3))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(7680)
-                .input(wireGtSingle, LuVSuperconductorBase, 8)
-                .inputs(OreDictUnifier.get(pipeTiny, Enderium, 5))
-                .inputs(ELECTRIC_PUMP_LUV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(6000))
-                .outputs(OreDictUnifier.get(wireGtSingle, LuVSuperconductor, 8))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(480)
+                    .input(wireGtSingle, EVSuperconductorBase, 9)
+                    .inputs(OreDictUnifier.get(pipeTiny, TungstenSteel, 6))
+                    .inputs(ELECTRIC_PUMP_EV.getStackForm(2))
+                    .fluidInputs(Nitrogen.getFluid(6000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, EVSuperconductor, 9))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(30720)
-                .input(wireGtSingle, ZPMSuperconductorBase, 16)
-                .inputs(OreDictUnifier.get(pipeTiny, Naquadah, 6))
-                .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(8000))
-                .outputs(OreDictUnifier.get(wireGtSingle, ZPMSuperconductor, 16))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920)
+                    .input(wireGtSingle, IVSuperconductorBase, 6)
+                    .inputs(OreDictUnifier.get(pipeTiny, NiobiumTitanium, 4))
+                    .inputs(ELECTRIC_PUMP_IV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(4000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, IVSuperconductor, 6))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(122880)
-                .input(wireGtSingle, UVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Ultimet, 7))
-                .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(10000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(7680)
+                    .input(wireGtSingle, LuVSuperconductorBase, 8)
+                    .inputs(OreDictUnifier.get(pipeTiny, Enderium, 5))
+                    .inputs(ELECTRIC_PUMP_LUV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(6000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, LuVSuperconductor, 8))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(491520)
-                .input(wireGtSingle, UHVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Zeron100, 7))
-                .inputs(ELECTRIC_PUMP_UV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(12000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UHVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(30720)
+                    .input(wireGtSingle, ZPMSuperconductorBase, 16)
+                    .inputs(OreDictUnifier.get(pipeTiny, Naquadah, 6))
+                    .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(8000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, ZPMSuperconductor, 16))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(1966080)
-                .input(wireGtSingle, UEVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Lafium, 7))
-                .inputs(ELECTRIC_PUMP_UHV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(14000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UEVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(122880)
+                    .input(wireGtSingle, UVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Ultimet, 7))
+                    .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(10000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UVSuperconductor, 32))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(7864320)
-                .input(wireGtSingle, UIVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
-                .inputs(ELECTRIC_PUMP_UHV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(16000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UIVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(491520)
+                    .input(wireGtSingle, UHVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Zeron100, 7))
+                    .inputs(ELECTRIC_PUMP_UV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(12000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UHVSuperconductor, 32))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(31457280)
-                .input(wireGtSingle, UMVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
-                .inputs(ELECTRIC_PUMP_UEV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(18000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UMVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(1966080)
+                    .input(wireGtSingle, UEVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Lafium, 7))
+                    .inputs(ELECTRIC_PUMP_UHV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(14000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UEVSuperconductor, 32))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(125829120)
-                .input(wireGtSingle, UXVSuperconductorBase, 32)
-                .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
-                .inputs(ELECTRIC_PUMP_UIV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(20000))
-                .outputs(OreDictUnifier.get(wireGtSingle, UXVSuperconductor, 32))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(7864320)
+                    .input(wireGtSingle, UIVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
+                    .inputs(ELECTRIC_PUMP_UHV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(16000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UIVSuperconductor, 32))
+                    .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(20).EUt(503316480)
-                .input(wireGtSingle, UXVSuperconductorBase, 64)
-                .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
-                .inputs(ELECTRIC_PUMP_UMV.getStackForm())
-                .fluidInputs(Nitrogen.getFluid(22000))
-                .outputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
-                .buildAndRegister();
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(31457280)
+                    .input(wireGtSingle, UMVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
+                    .inputs(ELECTRIC_PUMP_UEV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(18000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UMVSuperconductor, 32))
+                    .buildAndRegister();
+
+            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(125829120)
+                    .input(wireGtSingle, UXVSuperconductorBase, 32)
+                    .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
+                    .inputs(ELECTRIC_PUMP_UIV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(20000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, UXVSuperconductor, 32))
+                    .buildAndRegister();
+
+            ASSEMBLER_RECIPES.recipeBuilder().duration(20).EUt(503316480)
+                    .input(wireGtSingle, UXVSuperconductorBase, 64)
+                    .inputs(OreDictUnifier.get(pipeTiny, Neutronium, 7))
+                    .inputs(ELECTRIC_PUMP_UMV.getStackForm())
+                    .fluidInputs(Nitrogen.getFluid(22000))
+                    .outputs(OreDictUnifier.get(wireGtSingle, MarkerMaterials.Tier.Superconductor, 64))
+                    .buildAndRegister();
+        }
 
         //GTNH Coils
         MIXER_RECIPES.recipeBuilder().duration(400).EUt(8)
