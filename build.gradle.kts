@@ -95,7 +95,7 @@ repositories {
 
 dependencies {
 
-    // These 5 will always be in game
+    // These 8 will always be in game
     "deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-$mcVersion:${config["ccl.version"]}:universal")
     "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
