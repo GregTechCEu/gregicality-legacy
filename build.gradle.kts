@@ -101,12 +101,12 @@ dependencies {
     "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
     "deobfCompile"("mezz.jei:jei_$mcVersion:${config["jei.version"]}")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-$shortVersion:$shortVersion-${config["top.version"]}")
+    "deobfCompile"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
+    "deobfCompile"("forge-multipart-cbe:ForgeMultipart-$mcVersion:${config["fmp.version"]}:universal")
+    "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
 
     // Change to "deobfCompile" to add one of these to game
-    "deobfProvided"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
     "deobfProvided"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
-    "deobfProvided"("forge-multipart-cbe:ForgeMultipart-$mcVersion:${config["fmp.version"]}:universal")
-    "deobfProvided"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
     "provided"("slimeknights.mantle:Mantle:$shortVersion-${config["mantle.version"]}")
     "provided"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
     "provided"("com.github.mcjty:xnet:$shortVersion-${config["xnet.version"]}")
