@@ -242,7 +242,7 @@ public class GATileEntities {
 
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
 
-    public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
+    public static MTE<?>[] DISASSEMBLER = new MTE[14];
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
 
     public static void init() {
@@ -1141,13 +1141,13 @@ public class GATileEntities {
             id = 4198;
             for (int i = 1; i < GAValues.V.length - 1; i++) {
                 final int tier = i; // used for inner class
-                DISASSEMBLER.add(GregTechAPI.registerMetaTileEntity(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
+                DISASSEMBLER[i] = create(id++, new GASimpleMachineMetaTileEntity(location("disassembler." + GAValues.VN[i].toLowerCase()), GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, i) {
                     @Override
                     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
                         tooltip.add(I18n.format("gtadditions.machine.disassembler.tooltip", GAValues.VOLTAGE_NAMES[tier]));
                         super.addInformation(stack, player, tooltip, advanced);
                     }
-                }));
+                });
             }
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));

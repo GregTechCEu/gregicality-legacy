@@ -13,6 +13,7 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.pipelike.cable.GAItemBlockCable;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
+import gregicadditions.recipes.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;

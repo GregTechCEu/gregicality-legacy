@@ -52,7 +52,7 @@ import java.util.stream.Collectors;
 import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
-import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
+import static gregicadditions.recipes.machines.SimpleMachineRecipes.registerMachineRecipe;
 
 @Mod.EventBusSubscriber()
 public class ForestryCommonProxy {
