@@ -87,7 +87,11 @@ public class MetaTileEntityTransformer extends ClassMapper {
             super.visitVarInsn(Opcodes.ALOAD, 0);
             super.visitVarInsn(Opcodes.ILOAD, 1);
             super.visitVarInsn(Opcodes.ALOAD, 2);
-            super.injectStaticMethod(GTCEHooks, "receiveCustomData");
+            super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                    "gregicadditions/coremod/hooks/GregTechCEHooks",
+                    "receiveCustomData",
+                    "(Lgregtech/api/metatileentity/MetaTileEntity;ILnet/minecraft/network/PacketBuffer;)V",
+                    false);
             super.visitInsn(opcode);
         }
     }
@@ -102,7 +106,11 @@ public class MetaTileEntityTransformer extends ClassMapper {
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 4);
-                super.injectStaticMethod(GTCEHooks, "canPlaceCoverOnSide2");
+                super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        "canPlaceCoverOnSide2",
+                        "(Lgregtech/api/metatileentity/MetaTileEntity;Lnet/minecraft/util/EnumFacing;Lgregtech/api/cover/CoverBehavior;)Z",
+                        false);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
@@ -143,11 +151,19 @@ public class MetaTileEntityTransformer extends ClassMapper {
                     super.visitVarInsn(Opcodes.ALOAD, 1);
                     super.visitVarInsn(Opcodes.ALOAD,0);
                     super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
-                    super.injectStaticMethod(GTCEHooks, "writeSpinBuf");
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            "writeSpinBuf",
+                            "(Lnet/minecraft/network/PacketBuffer;Lnet/minecraft/util/EnumFacing;)V",
+                            false);
                 } else {
                     super.visitVarInsn(Opcodes.ALOAD, 0);
                     super.visitVarInsn(Opcodes.ALOAD, 1);
-                    super.injectStaticMethod(GTCEHooks, "readSpinBuf");
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            "readSpinBuf",
+                            "(Lnet/minecraft/network/PacketBuffer;)Lnet/minecraft/util/EnumFacing;",
+                            false);
                     super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
                 }
             }
@@ -171,14 +187,22 @@ public class MetaTileEntityTransformer extends ClassMapper {
                  if (!write) {
                     super.visitVarInsn(Opcodes.ALOAD, 0);
                     super.visitVarInsn(Opcodes.ALOAD, 1);
-                     super.injectStaticMethod(GTCEHooks, "readSpinNBT");
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                         "gregicadditions/coremod/hooks/GregTechCEHooks",
+                         "readSpinNBT",
+                         "(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/util/EnumFacing;",
+                         false);
                     super.visitFieldInsn(Opcodes.PUTFIELD, owner, spin, enumface_desc);
                 }
             } else if (opcode == Opcodes.ARETURN){
                 if (write) {
                     super.visitVarInsn(Opcodes.ALOAD,0);
                     super.visitFieldInsn(Opcodes.GETFIELD, owner, spin, enumface_desc);
-                    super.injectStaticMethod(GTCEHooks, "writeSpinNBT");
+                    super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            "writeSpinNBT",
+                            "(Lnet/minecraft/nbt/NBTTagCompound;Lnet/minecraft/util/EnumFacing;)Lnet/minecraft/nbt/NBTTagCompound;",
+                            false);
                 }
             }
             super.visitInsn(opcode);

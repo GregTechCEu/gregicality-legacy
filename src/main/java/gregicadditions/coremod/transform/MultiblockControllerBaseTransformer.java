@@ -50,7 +50,11 @@ public class MultiblockControllerBaseTransformer extends ClassMapper {
         public void visitCode() {
             super.visitVarInsn(Opcodes.ALOAD,0);
             super.visitVarInsn(Opcodes.ALOAD,2);
-            super.injectStaticMethod(GTCEHooks, "renderMetaTileEntity");
+            super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                    "gregicadditions/coremod/hooks/GregTechCEHooks",
+                    "renderMetaTileEntity",
+                    "(Lgregtech/api/metatileentity/multiblock/MultiblockControllerBase;Lcodechicken/lib/vec/Matrix4;)V",
+                    false);
             super.visitCode();
         }
 

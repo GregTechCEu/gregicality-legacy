@@ -45,7 +45,11 @@ public class CoverPlaceBehaviorTransformer extends ClassMapper {
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEINTERFACE && name.equals("canPlaceCoverOnSide")) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
-                super.injectStaticMethod(GTCEHooks, "canPlaceCoverOnSide");
+                super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        "canPlaceCoverOnSide",
+                        "(Lgregtech/api/cover/ICoverable;Lnet/minecraft/util/EnumFacing;Lgregtech/common/items/behaviors/CoverPlaceBehavior;)Z",
+                        false);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
