@@ -128,9 +128,9 @@ public class SupraCausalComponents {
                 .fluidInputs(SuperheavyLAlloy.getFluid(144))
                 .input(plate, ProtoAdamantium, 3)
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.LEPTONIC_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .input(plate, HeavyQuarkDegenerateMatter, 2)
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(33550000)
@@ -154,18 +154,18 @@ public class SupraCausalComponents {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
                 .input(ingot, HeavyQuarkDegenerateMatter, 1)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidOutputs(HighEnergyQGP.getFluid(144))
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(2000).EUt(134217728)
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(4))
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.CasingType.QCD_CHARGE)))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.ExplosiveType.QCD_CHARGE)))
                 .fluidOutputs(QCDMatter.getFluid(1296))
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(134217728)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.CasingType.QCD_CHARGE)))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.ExplosiveType.QCD_CHARGE)))
                 .inputs(MACROWORMHOLE_GENERATOR.getStackForm(2))
                 .outputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
                 .buildAndRegister();
@@ -173,14 +173,14 @@ public class SupraCausalComponents {
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .inputs(STABILIZED_WORMHOLE_GENERATOR.getStackForm())
                 .inputs(RECURSIVELY_FOLDED_NEGATIVE_SPACE.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.CasingType.QCD_CHARGE)))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.ExplosiveType.QCD_CHARGE)))
                 .outputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(800).EUt(134217728)
                 .inputs(EIGENFOLDED_KERR_MANIFOLD.getStackForm())
                 .inputs(CTC_COMPUTATIONAL_UNIT_CONTAINER.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.CasingType.QCD_CHARGE)))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant((GAExplosive.ExplosiveType.QCD_CHARGE)))
                 .outputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .buildAndRegister();
 

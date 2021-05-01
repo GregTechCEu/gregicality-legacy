@@ -267,14 +267,14 @@ public class VariousChains {
                 .buildAndRegister();
 
         // Explosives
-        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(24)
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .fluidInputs(NitrationMixture.getFluid(200))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.ITNT, 6))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(300))
                 .buildAndRegister();
 
-        ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.POWDER_BARREL),
+        ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL),
                 "PSP", "GGG", "PGP",
                 'P', OreDictUnifier.get(plate, Wood),
                 'S', "string",

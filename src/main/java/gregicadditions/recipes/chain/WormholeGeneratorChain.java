@@ -53,7 +53,7 @@ public class WormholeGeneratorChain {
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(4))
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(288566)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.TARANIUM_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(64))
                 .inputs(CHARGED_TRIPLET_NEUTRONIUM_SPHERE.getStackForm(64))
                 .outputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm(64))
@@ -74,8 +74,8 @@ public class WormholeGeneratorChain {
                 .input(plate, MetastableOganesson, 1)
                 .input(plate, Vibranium, 1)
                 .input(dustSmall, Mendelevium.getMaterial(), 1)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.TARANIUM_CHARGE))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.LEPTONIC_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .buildAndRegister();
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(576))
@@ -104,7 +104,7 @@ public class WormholeGeneratorChain {
                 .buildAndRegister();
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(600).EUt(5000000)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.LEPTONIC_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .outputs(CONTAINED_EXOTIC_MATTER.getStackForm())
                 .buildAndRegister();

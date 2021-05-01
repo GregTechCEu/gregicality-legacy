@@ -695,7 +695,7 @@ public class SuperconductorsSMDChain {
 
         // AcH3 + 9H -> AcH12 (multiplied by 18)
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(260).EUt(7800000)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.NAQUADRIA_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .inputs(ActiniumHydride.getItemStack(72))
                 .fluidInputs(Hydrogen.getFluid(162000))
                 .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(72000))

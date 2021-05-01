@@ -15,7 +15,7 @@ public class CosmicComponents {
     public static void init() {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(140).EUt(14000000)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.LEPTONIC_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .fluidOutputs(QuarkGluonPlasma.getFluid(2000))
                 .buildAndRegister();

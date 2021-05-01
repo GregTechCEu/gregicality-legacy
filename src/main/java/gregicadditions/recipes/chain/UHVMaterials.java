@@ -28,14 +28,14 @@ public class UHVMaterials {
                 .input(bolt, Osmium, 1)
                 .input(bolt, Titanium, 4)
                 .fluidInputs(Glyceryl.getFluid(1000))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.NAQUADRIA_CHARGE))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .EUt(2000000)
                 .duration(100)
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder()
                 .input(ingot, Rhenium)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.NAQUADRIA_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .fluidOutputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
                 .EUt(2000000)
                 .duration(20)
@@ -92,7 +92,7 @@ public class UHVMaterials {
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .fluidInputs(Tritanium.getFluid(144))
                 .fluidInputs(Glyceryl.getFluid(2500))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.TARANIUM_CHARGE))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .EUt(125000000)
                 .duration(5)
                 .buildAndRegister();
@@ -117,7 +117,7 @@ public class UHVMaterials {
 
         STELLAR_FORGE_RECIPES.recipeBuilder()
                 .inputs(GAMetaBlocks.SIMPLEBLOCK.getItemVariant(GASimpleBlock.BlockType.SUPERHEAVY_BLOCK))
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.TARANIUM_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .fluidOutputs(NeutronPlasma.getFluid(1000))
                 .EUt(100000000)
                 .duration(10)

@@ -232,7 +232,7 @@ public class UltimateMaterials {
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .input(block, Neutronium, 5)
                 .input(block, HeavyQuarkDegenerateMatter, 5)
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidInputs(HeavyLeptonMix.getFluid(6000))
                 .fluidInputs(Gluons.getFluid(6000))
                 .fluidInputs(Periodicium.getFluid(2736))
@@ -247,7 +247,7 @@ public class UltimateMaterials {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(125000000)
                 .inputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE,2))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE,2))
                 .outputs(COSMIC_NEUTRON_PLASMA_CELL.getStackForm())
                 .buildAndRegister();
 
@@ -278,7 +278,7 @@ public class UltimateMaterials {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(800000000)
                 .inputs(HIGHLY_DENSE_POLYMER_PLATE.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
 
@@ -319,13 +319,13 @@ public class UltimateMaterials {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(10000000)
                 .inputs(COSMIC_FABRIC.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(10000000)
                 .inputs(COSMIC_MESH.getStackForm())
-                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.QCD_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
     }

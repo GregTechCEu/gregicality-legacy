@@ -5,7 +5,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
 
-public class GAExplosive extends VariantBlock<GAExplosive.CasingType> {
+public class GAExplosive extends VariantBlock<GAExplosive.ExplosiveType> {
 
     public GAExplosive() {
         super(Material.IRON);
@@ -14,10 +14,10 @@ public class GAExplosive extends VariantBlock<GAExplosive.CasingType> {
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CasingType.TARANIUM_CHARGE));
+        setDefaultState(getState(ExplosiveType.TARANIUM_CHARGE));
     }
 
-    public enum CasingType implements IStringSerializable {
+    public enum ExplosiveType implements IStringSerializable {
 
         TARANIUM_CHARGE("taranium_charge"),
         NAQUADRIA_CHARGE("naquadria_charge"),
@@ -29,7 +29,7 @@ public class GAExplosive extends VariantBlock<GAExplosive.CasingType> {
 
         private final String name;
 
-        CasingType(String name) {
+        ExplosiveType(String name) {
             this.name = name;
         }
 

@@ -146,10 +146,10 @@ public class RecipeHandler {
 
     public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
         ItemStack[] explosives = new ItemStack[]{
-                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.POWDER_BARREL, 48),
+                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL, 48),
                 new ItemStack(Blocks.TNT, 24),
                 MetaItems.DYNAMITE.getStackForm(12),
-                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.ITNT, 6)
+                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6)
         };
 
         ItemStack gemStack = OreDictUnifier.get(gem, material);
