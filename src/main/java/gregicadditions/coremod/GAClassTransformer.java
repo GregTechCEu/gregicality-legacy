@@ -2,10 +2,10 @@ package gregicadditions.coremod;
 
 import gregicadditions.coremod.transform.*;
 import net.minecraft.launchwrapper.IClassTransformer;
-import org.objectweb.asm.*;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class GAClassTransformer implements IClassTransformer {
     @Override
@@ -73,48 +73,48 @@ public class GAClassTransformer implements IClassTransformer {
 
     public static abstract class GAMethodVisitor extends MethodVisitor {
 
-        protected static Class<?> XNetHooks = null;
-        protected static Class<?> GTCEHooks = null;
-        protected static Class<?> RSHooks = null;
-        protected static Class<?> AE2Hooks = null;
-
-        static { // register hooks
-            try {
-                ClassLoader loader = ClassLoader.getSystemClassLoader();
-                XNetHooks = Class.forName("gregicadditions.coremod.hooks.XNetHooks", false, loader);
-                GTCEHooks = Class.forName("gregicadditions.coremod.hooks.GregTechCEHooks", false, loader);
-                RSHooks = Class.forName("gregicadditions.coremod.hooks.RefinedStorageHooks", false, loader);
-                AE2Hooks = Class.forName("gregicadditions.coremod.hooks.AppliedEnergistics2Hooks", false, loader);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        protected static Class<?> XNetHooks = null;
+//        protected static Class<?> GTCEHooks = null;
+//        protected static Class<?> RSHooks = null;
+//        protected static Class<?> AE2Hooks = null;
+//
+//        static { // register hooks
+//            try {
+//                ClassLoader loader = ClassLoader.getSystemClassLoader();
+//                XNetHooks = Class.forName("gregicadditions.coremod.hooks.XNetHooks", false, loader);
+//                GTCEHooks = Class.forName("gregicadditions.coremod.hooks.GregTechCEHooks", false, loader);
+//                RSHooks = Class.forName("gregicadditions.coremod.hooks.RefinedStorageHooks", false, loader);
+//                AE2Hooks = Class.forName("gregicadditions.coremod.hooks.AppliedEnergistics2Hooks", false, loader);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         public GAMethodVisitor(int api, MethodVisitor mv) {
             super(api, mv);
         }
 
-        protected Method findFirstMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
-            if (parameterTypes.length == 0 || parameterTypes[0] == null) {
-                return Arrays.stream(clazz.getMethods()).filter(method -> method.getName().equals(methodName)).findFirst().orElse(null);
-            } else {
-                try {
-                    return clazz.getMethod(methodName, parameterTypes);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        protected void injectStaticMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
-            Method method = findFirstMethod(clazz, methodName, parameterTypes);
-            if (method == null) {
-                throw new IllegalArgumentException("error inject method, class: " + clazz.getName() + " method: " + methodName);
-            } else {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC, Type.getInternalName(clazz), methodName, Type.getMethodDescriptor(method), false);
-            }
-        }
+//        protected Method findFirstMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+//            if (parameterTypes.length == 0 || parameterTypes[0] == null) {
+//                return Arrays.stream(clazz.getMethods()).filter(method -> method.getName().equals(methodName)).findFirst().orElse(null);
+//            } else {
+//                try {
+//                    return clazz.getMethod(methodName, parameterTypes);
+//                } catch (NoSuchMethodException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            return null;
+//        }
+//
+//        protected void injectStaticMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+//            Method method = findFirstMethod(clazz, methodName, parameterTypes);
+//            if (method == null) {
+//                throw new IllegalArgumentException("error inject method, class: " + clazz.getName() + " method: " + methodName);
+//            } else {
+//                super.visitMethodInsn(Opcodes.INVOKESTATIC, Type.getInternalName(clazz), methodName, Type.getMethodDescriptor(method), false);
+//            }
+//        }
 
     }
 }

@@ -54,7 +54,11 @@ public class EnergyContainerBatteryBufferTransformer extends ClassMapper {
                     this.visitVarInsn(Opcodes.ALOAD, 0);
                     this.visitVarInsn(Opcodes.LLOAD, 2);
                     this.visitVarInsn(Opcodes.LLOAD, 8);
-                    super.injectStaticMethod(GTCEHooks, "acceptEnergyFromNetwork");
+                    this.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            "acceptEnergyFromNetwork",
+                            "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
+                            false);
                 }
             }
             super.visitInsn(opcode);
@@ -75,7 +79,11 @@ public class EnergyContainerBatteryBufferTransformer extends ClassMapper {
                     this.visitVarInsn(Opcodes.ALOAD, 0);
                     this.visitVarInsn(Opcodes.LLOAD, 5);
                     this.visitVarInsn(Opcodes.LLOAD, 10);
-                    super.injectStaticMethod(GTCEHooks, "update");
+                    this.visitMethodInsn(Opcodes.INVOKESTATIC,
+                            "gregicadditions/coremod/hooks/GregTechCEHooks",
+                            "update",
+                            "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;JJ)V",
+                            false);
                 }
             }
         }
@@ -92,7 +100,11 @@ public class EnergyContainerBatteryBufferTransformer extends ClassMapper {
             if (opcode == Opcodes.LRETURN) {
                 this.visitVarInsn(Opcodes.ALOAD, 0);
                 this.visitVarInsn(Opcodes.LLOAD, 7);
-                super.injectStaticMethod(GTCEHooks, "changeEnergy");
+                this.visitMethodInsn(Opcodes.INVOKESTATIC,
+                        "gregicadditions/coremod/hooks/GregTechCEHooks",
+                        "changeEnergy",
+                        "(Lgregtech/api/capability/impl/EnergyContainerBatteryBuffer;J)V",
+                        false);
             }
             super.visitInsn(opcode);
         }

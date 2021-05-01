@@ -45,7 +45,11 @@ public class EnergyContainerHandlerTransformer extends ClassMapper {
         public void visitCode() {
             super.visitVarInsn(Opcodes.ALOAD, 0);
             super.visitVarInsn(Opcodes.LLOAD, 1);
-            super.injectStaticMethod(GTCEHooks, "setEnergyStored");
+            super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                    "gregicadditions/coremod/hooks/GregTechCEHooks",
+                    "setEnergyStored",
+                    "(Lgregtech/api/capability/impl/EnergyContainerHandler;J)V",
+                    false);
             super.visitCode();
         }
 

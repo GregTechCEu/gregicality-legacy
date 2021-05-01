@@ -44,7 +44,11 @@ public class TileEntityControllerTransformer extends ClassMapper {
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("net/minecraft/block/Block") && (name.equals("getItem") || name.equals("func_185473_a"))) {
-                super.injectStaticMethod(XNetHooks, "getItem");
+                super.visitMethodInsn(Opcodes.INVOKESTATIC,
+                        "gregicadditions/coremod/hooks/XNetHooks",
+                        "getItem",
+                        "(Lnet/minecraft/block/Block;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)Lnet/minecraft/item/ItemStack;",
+                        false);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
