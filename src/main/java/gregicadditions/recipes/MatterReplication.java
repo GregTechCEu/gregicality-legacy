@@ -1,13 +1,13 @@
 package gregicadditions.recipes;
 
 import gregicadditions.GAConfig;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregtech.api.unification.material.Materials.UUMatter;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class MatterReplication {
@@ -16,7 +16,7 @@ public class MatterReplication {
                 .fluidInputs(BosonicUUMatter.getFluid(1000))
                 .fluidInputs(FermionicUUMatter.getFluid(1000))
                 .fluidInputs(FreeElectronGas.getFluid(2000))
-                .fluidOutputs(Materials.UUMatter.getFluid(1000))
+                .fluidOutputs(UUMatter.getFluid(1000))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
@@ -47,7 +47,7 @@ public class MatterReplication {
                 GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder()
                         .fluidOutputs(((FluidMaterial) material).getFluid(amount))
                         .notConsumable(((FluidMaterial) material).getFluid(amount))
-                        .fluidInputs(Materials.UUMatter.getFluid(mass))
+                        .fluidInputs(UUMatter.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
@@ -72,12 +72,11 @@ public class MatterReplication {
                 GARecipeMaps.REPLICATOR_RECIPES.recipeBuilder()
                         .output(dust, material)
                         .notConsumable(dust, material)
-                        .fluidInputs(Materials.UUMatter.getFluid(mass))
+                        .fluidInputs(UUMatter.getFluid(mass))
                         .duration(mass * GAConfig.Misc.replicationTimeFactor)
                         .EUt(32)
                         .buildAndRegister();
             }
-
         }
     }
 }
