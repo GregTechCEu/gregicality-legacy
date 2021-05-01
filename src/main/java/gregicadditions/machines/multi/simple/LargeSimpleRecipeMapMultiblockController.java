@@ -317,9 +317,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected void trySearchNewRecipe() {
             if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController) {
                 LargeSimpleRecipeMapMultiblockController controller = (LargeSimpleRecipeMapMultiblockController) metaTileEntity;
-                if (controller.canDistinct && controller.isDistinct)
+                if (controller.canDistinct && controller.isDistinct) {
                     trySearchNewRecipeDistinct();
-            } else trySearchNewRecipeCombined();
+                    return;
+                }
+            }
+            trySearchNewRecipeCombined();
         }
 
         // Combined buses code =========================================================================================
