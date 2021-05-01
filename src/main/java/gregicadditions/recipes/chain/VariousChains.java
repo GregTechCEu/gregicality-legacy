@@ -2,8 +2,10 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GASimpleBlock;
+import gregicadditions.item.GAExplosive;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.init.Blocks;
@@ -17,9 +19,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
-import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
+import static gregtech.common.items.MetaItems.*;
 
 
 public class VariousChains {
@@ -266,11 +266,18 @@ public class VariousChains {
                 .fluidOutputs(NitrogenDioxide.getFluid(1500))
                 .buildAndRegister();
 
+        // Explosives
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(24)
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .fluidInputs(NitrationMixture.getFluid(200))
-                .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.ITNT, 6))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.ITNT, 6))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(300))
                 .buildAndRegister();
+
+        ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.CasingType.POWDER_BARREL),
+                "PSP", "GGG", "PGP",
+                'P', OreDictUnifier.get(plate, Wood),
+                'S', "string",
+                'G', OreDictUnifier.get(dust, Gunpowder));
     }
 }

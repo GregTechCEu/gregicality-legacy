@@ -6,7 +6,6 @@ import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.client.model.IReTexturedModel;
-import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.item.components.*;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
@@ -64,7 +63,8 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
     public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
-    public static GASimpleBlock SIMPLE_BLOCK;
+    public static GASimpleBlock SIMPLEBLOCK;
+    public static GAExplosive EXPLOSIVE;
     public static GATransparentCasing TRANSPARENT_CASING;
     public static GAQuantumCasing QUANTUM_CASING;
     public static GAMachineCasing MACHINE_CASING;
@@ -119,8 +119,11 @@ public class GAMetaBlocks {
         MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
         MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
 
-        SIMPLE_BLOCK = new GASimpleBlock();
-        SIMPLE_BLOCK.setRegistryName("ga_simple_block");
+        SIMPLEBLOCK = new GASimpleBlock();
+        SIMPLEBLOCK.setRegistryName("ga_simple_block");
+
+        EXPLOSIVE = new GAExplosive();
+        EXPLOSIVE.setRegistryName("ga_explosive");
 
         REACTOR_CASING = new GAReactorCasing();
         REACTOR_CASING.setRegistryName("ga_reactor_casing");
@@ -287,7 +290,8 @@ public class GAMetaBlocks {
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(QUANTUM_CASING);
         registerItemModel(MUTLIBLOCK_CASING2);
-        registerItemModel(SIMPLE_BLOCK);
+        registerItemModel(SIMPLEBLOCK);
+        registerItemModel(EXPLOSIVE);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
         registerItemModel(VACUUM_CASING);
