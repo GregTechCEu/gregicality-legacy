@@ -40,7 +40,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.GACraftingComponents.*;
-import static gregicadditions.recipes.machines.SimpleMachineRecipes.registerMachineRecipe;
+import static gregicadditions.recipes.SimpleMachineRecipes.registerMachineRecipe;
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class ExNihiloCreatioProxy {

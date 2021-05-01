@@ -3,11 +3,11 @@ package gregicadditions.recipes;
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.gui.GAGuiTextures;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
-import gregicadditions.recipes.map.LargeRecipeBuilder;
-import gregicadditions.recipes.map.*;
-import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
-import gregicadditions.recipes.qubit.QubitConsumerRecipeBuilder;
-import gregicadditions.recipes.qubit.QubitProducerRecipeBuilder;
+import gregicadditions.recipes.impl.LargeRecipeBuilder;
+import gregicadditions.recipes.impl.*;
+import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
+import gregicadditions.recipes.impl.QubitConsumerRecipeBuilder;
+import gregicadditions.recipes.impl.QubitProducerRecipeBuilder;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -22,14 +22,14 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenRegister
 
 public class GARecipeMaps {
+
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> CLUSTER_MILL_RECIPES;
+    public static final RecipeMap<SimpleRecipeBuilder> CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder())
+            .setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
+
     @ZenProperty
     public static final RecipeMapAssemblyLine<QubitConsumerRecipeBuilder> ASSEMBLY_LINE_RECIPES;
-    @ZenProperty
-    public static final FuelRecipeMap NAQUADAH_REACTOR_FUELS;
-    @ZenProperty
-    public static final FuelRecipeMap HYPER_REACTOR_FUELS;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> MASS_FAB_RECIPES;
     @ZenProperty
@@ -50,8 +50,6 @@ public class GARecipeMaps {
     public static final LargeRecipeMap LARGE_CHEMICAL_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> CHEMICAL_DEHYDRATOR_RECIPES;
-    @ZenProperty
-    public static final FuelRecipeMap ROCKET_FUEL_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> CHEMICAL_PLANT_RECIPES;
     @ZenProperty
@@ -91,12 +89,17 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_RECIPES;
 
+    @ZenProperty
+    public static final FuelRecipeMap ROCKET_FUEL_RECIPES;
+    @ZenProperty
+    public static final FuelRecipeMap NAQUADAH_REACTOR_FUELS = new FuelRecipeMap("naquadah_reactor");
+    @ZenProperty
+    public static final FuelRecipeMap HYPER_REACTOR_FUELS = new FuelRecipeMap("hyper_reactor");
+
+
     static {
-        CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
         ASSEMBLY_LINE_RECIPES = new RecipeMapAssemblyLine<>("assembly_line", 4, 16, 1, 1, 0, 4, 0, 0, new QubitConsumerRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL);
         ASSEMBLY_LINE_RECIPES.setSlotOverlay(false, false, GuiTextures.MOLD_OVERLAY);
-        NAQUADAH_REACTOR_FUELS = new FuelRecipeMap("naquadah_reactor");
-        HYPER_REACTOR_FUELS = new FuelRecipeMap("hyper_reactor");
         MASS_FAB_RECIPES = new RecipeMap<>("mass_fab", 0, 1, 0, 0, 0, 1, 1, 2, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
         REPLICATOR_RECIPES = new RecipeMap<>("replicator", 0, 1, 0, 1, 1, 3, 0, 1, new SimpleRecipeBuilder()).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
         CRACKER_UNIT_RECIPES = new RecipeMap<>("cracker_unit", 0, 0, 0, 0, 2, 2, 1, 1, new SimpleRecipeBuilder());

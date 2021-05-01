@@ -13,7 +13,9 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.pipelike.cable.GAItemBlockCable;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
-import gregicadditions.recipes.machines.MachineCraftingRecipes;
+import gregicadditions.recipes.compat.ForestryCompat;
+import gregicadditions.recipes.handlers.*;
+import gregicadditions.recipes.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
@@ -175,7 +177,7 @@ public class CommonProxy {
         RecipeHandler.registerGreenHouseRecipes();
         RecipeHandler.registerLargeCentrifugeRecipes();
         RecipeHandler.registerLaserEngraverRecipes();
-        VoidMinerOres.init();
+        VoidMinerHandler.init();
     }
 
     @SubscribeEvent
@@ -191,11 +193,11 @@ public class CommonProxy {
         OrePrefix.runMaterialHandlers();
         GAMetaItems.registerRecipes();
         GARecipeAddition.init2();
-        GARecipeAddition.init3();
-        GARecipeAddition.forestrySupport();
+        GARecipeAddition.initChains();
+        ForestryCompat.init();
         MatterReplication.init();
         MachineCraftingRecipes.init();
-        GeneratorFuels.init();
+        FuelHandler.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
