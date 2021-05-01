@@ -95,18 +95,20 @@ repositories {
 
 dependencies {
 
-    "deobfCompile"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
-    "deobfCompile"("mezz.jei:jei_$mcVersion:${config["jei.version"]}")
-    "deobfCompile"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
+    // These 5 will always be in game
     "deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
-    "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-$mcVersion:${config["ccl.version"]}:universal")
-    "deobfCompile"("forge-multipart-cbe:ForgeMultipart-$mcVersion:${config["fmp.version"]}:universal")
-    "deobfCompile"("slimeknights.mantle:Mantle:$shortVersion-${config["mantle.version"]}")
-    "deobfCompile"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
+    "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
+    "deobfCompile"("mezz.jei:jei_$mcVersion:${config["jei.version"]}")
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-$shortVersion:$shortVersion-${config["top.version"]}")
-    "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
 
+    // Change to "deobfCompile" to add one of these to game
+    "deobfProvided"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
+    "deobfProvided"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
+    "deobfProvided"("forge-multipart-cbe:ForgeMultipart-$mcVersion:${config["fmp.version"]}:universal")
+    "deobfProvided"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
+    "provided"("slimeknights.mantle:Mantle:$shortVersion-${config["mantle.version"]}")
+    "provided"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
     "provided"("com.github.mcjty:xnet:$shortVersion-${config["xnet.version"]}")
     "provided"("com.github.mcjty:mcjtylib:$shortVersion-${config["mcjtylib.version"]}")
     "provided"("li.cil.oc:OpenComputers:MC$mcVersion-${config["oc.version"]}")
@@ -114,18 +116,16 @@ dependencies {
     "provided"("exnihilocreatio:exnihilocreatio:$mcVersion-${config["exnihilo.version"]}") {
         isTransitive = false
     }
-    "provided"(files("libs/appliedenergistics2-rv6-stable-7.jar"))
 
-    "compile"(files("libs/refinedstorage-1.6.15.jar"))
-    "compileOnly"(files("libs/Cucumber-1.12.2-1.1.3.jar"))
-    "compileOnly"(files("libs/MysticalAgradditions-1.12.2-1.3.2.jar"))
-    "compileOnly"(files("libs/MysticalAgriculture-1.12.2-1.7.5.jar"))
+    // Change to "compile" to add one of these to game
+    "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
+    "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))
+    "compileOnly"(files("extdeps/Cucumber-1.12.2-1.1.3.jar"))
+    "compileOnly"(files("extdeps/MysticalAgriculture-1.12.2-1.7.5.jar"))
+    "compileOnly"(files("extdeps/MysticalAgradditions-1.12.2-1.3.2.jar"))
 
-
-
+    // JUnit testing used for GitHub Actions
     "testImplementation"("junit:junit:${config["junit.version"]}")
-
-
 }
 
 val processResources: ProcessResources by tasks
@@ -144,9 +144,11 @@ processResources.apply {
         exclude("mcmod.info")
     }
 
+    // Access Transformer jar manifest info
     rename("(.+_at.cfg)", "META-INF/$1")
 }
 
+// Jar manifest for CoreMod
 val jar: Jar by tasks
 jar.apply {
     manifest {
