@@ -110,13 +110,13 @@ public class UHVMaterials {
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_BLOCK)
                 .fluidInputs(SuperheavyMix.getFluid(1000))
-                .outputs(GAMetaBlocks.SIMPLEBLOCK.getItemVariant(GASimpleBlock.BlockType.SUPERHEAVY_BLOCK))
+                .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.BlockType.SUPERHEAVY_BLOCK))
                 .EUt(100000000)
                 .duration(40)
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder()
-                .inputs(GAMetaBlocks.SIMPLEBLOCK.getItemVariant(GASimpleBlock.BlockType.SUPERHEAVY_BLOCK))
+                .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.BlockType.SUPERHEAVY_BLOCK))
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .fluidOutputs(NeutronPlasma.getFluid(1000))
                 .EUt(100000000)

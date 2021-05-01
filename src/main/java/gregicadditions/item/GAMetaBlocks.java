@@ -63,7 +63,7 @@ public class GAMetaBlocks {
 
     public static GAMultiblockCasing MUTLIBLOCK_CASING;
     public static GAMultiblockCasing2 MUTLIBLOCK_CASING2;
-    public static GASimpleBlock SIMPLEBLOCK;
+    public static GASimpleBlock SIMPLE_BLOCK;
     public static GAExplosive EXPLOSIVE;
     public static GATransparentCasing TRANSPARENT_CASING;
     public static GAQuantumCasing QUANTUM_CASING;
@@ -119,8 +119,8 @@ public class GAMetaBlocks {
         MUTLIBLOCK_CASING2 = new GAMultiblockCasing2();
         MUTLIBLOCK_CASING2.setRegistryName("ga_multiblock_casing2");
 
-        SIMPLEBLOCK = new GASimpleBlock();
-        SIMPLEBLOCK.setRegistryName("ga_simple_block");
+        SIMPLE_BLOCK = new GASimpleBlock();
+        SIMPLE_BLOCK.setRegistryName("ga_simple_block");
 
         EXPLOSIVE = new GAExplosive();
         EXPLOSIVE.setRegistryName("ga_explosive");
@@ -290,7 +290,7 @@ public class GAMetaBlocks {
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(QUANTUM_CASING);
         registerItemModel(MUTLIBLOCK_CASING2);
-        registerItemModel(SIMPLEBLOCK);
+        registerItemModel(SIMPLE_BLOCK);
         registerItemModel(EXPLOSIVE);
         registerItemModel(REACTOR_CASING);
         registerItemModel(FUSION_CASING);
