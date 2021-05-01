@@ -4,15 +4,19 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.item.GASimpleBlock;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
+import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
@@ -144,10 +148,14 @@ public class RecipeHandler {
 
     public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
         ItemStack gemStack = OreDictUnifier.get(gem, material);
+        ItemStack flawlessStack = OreDictUnifier.get(gemFlawless, material);
+        ItemStack exquisiteStack = OreDictUnifier.get(gemExquisite, material);
         ItemStack tinyDarkAshStack = OreDictUnifier.get(dustTiny, Materials.DarkAsh);
 
         if (!material.hasFlag(GemMaterial.MatFlags.CRYSTALLISABLE) && !material.hasFlag(Material.MatFlags.EXPLOSIVE) && !material.hasFlag(Material.MatFlags.FLAMMABLE)) {
             removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
+
+            // Dust -> Gem
             ValidationResult<Recipe> result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
                     .input(dustPrefix, material, 4)
                     .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
@@ -162,6 +170,73 @@ public class RecipeHandler {
                     .build();
             RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
 
+            result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                    .input(dustPrefix, material, 4)
+                    .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.ITNT, 6))
+                    .outputs(GTUtility.copyAmount(3, gemStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                    .build();
+            RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+            // Blacklist for materials without flawless+ gems
+            if (!(material.equals(EnderEye) || material.equals(EnderPearl) || material.equals(NetherStar))) {
+                // Gem -> Flawless
+                result = LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(2000)
+                        .inputs(GTUtility.copyAmount(4, gemStack))
+                        .notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White)
+                        .outputs(GTUtility.copyAmount(1, flawlessStack))
+                        .build();
+                RecipeMaps.LASER_ENGRAVER_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, gemStack))
+                        .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
+                        .outputs(GTUtility.copyAmount(1, flawlessStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, gemStack))
+                        .inputs(MetaItems.DYNAMITE.getStackForm(12))
+                        .outputs(GTUtility.copyAmount(1, flawlessStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, gemStack))
+                        .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.ITNT, 6))
+                        .outputs(GTUtility.copyAmount(1, flawlessStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+                // Flawless -> Exquisite
+                result = LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(2000)
+                        .inputs(GTUtility.copyAmount(4, flawlessStack))
+                        .notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.White)
+                        .outputs(GTUtility.copyAmount(1, exquisiteStack))
+                        .build();
+                RecipeMaps.LASER_ENGRAVER_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, flawlessStack))
+                        .inputs(new ItemStack[]{new ItemStack(Blocks.TNT, 24)})
+                        .outputs(GTUtility.copyAmount(1, exquisiteStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, flawlessStack))
+                        .inputs(MetaItems.DYNAMITE.getStackForm(12))
+                        .outputs(GTUtility.copyAmount(1, exquisiteStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+
+                result = RecipeMaps.IMPLOSION_RECIPES.recipeBuilder()
+                        .inputs(GTUtility.copyAmount(3, flawlessStack))
+                        .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.ITNT, 6))
+                        .outputs(GTUtility.copyAmount(1, exquisiteStack), GTUtility.copyAmount(2, tinyDarkAshStack))
+                        .build();
+                RecipeMaps.IMPLOSION_RECIPES.addRecipe(result);
+            }
         }
 
     }

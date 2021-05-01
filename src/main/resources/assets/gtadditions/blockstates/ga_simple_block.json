@@ -30,6 +30,13 @@
           "bottom": "gregtech:blocks/casings/solid/taranium_charge_top_bottom",
           "top": "gregtech:blocks/casings/solid/taranium_charge_top_bottom"
         }
+      },
+      "industrial_tnt": {
+        "textures": {
+          "side": "gregtech:blocks/casings/solid/industrial_tnt",
+          "bottom": "gregtech:blocks/casings/solid/industrial_tnt_bottom",
+          "top": "gregtech:blocks/casings/solid/industrial_tnt_top"
+        }
       }
     }
   }

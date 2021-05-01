@@ -242,12 +242,6 @@ public class SuperconductorsSMDChain {
                 .output(dust, LeadZirconateTitanate, 6)
                 .buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(560).EUt(2000)
-                .input(dust, LeadZirconateTitanate, 4)
-                .fluidInputs(DistilledWater.getFluid(2000))
-                .output(gemExquisite, LeadZirconateTitanate)
-                .buildAndRegister();
-
         ASSEMBLER_RECIPES.recipeBuilder().duration(430).EUt(30720)
                 .input(gemExquisite, LeadZirconateTitanate, 2)
                 .input(wireFine, Gold)

@@ -1,6 +1,8 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GASimpleBlock;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
@@ -15,6 +17,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 
@@ -261,6 +264,13 @@ public class VariousChains {
                 .fluidOutputs(IronChloride.getFluid(2000))
                 .outputs(GrapheneOxide.getItemStack(3))
                 .fluidOutputs(NitrogenDioxide.getFluid(1500))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(24)
+                .inputs(GELLED_TOLUENE.getStackForm(4))
+                .fluidInputs(NitrationMixture.getFluid(200))
+                .outputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.ITNT, 6))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(300))
                 .buildAndRegister();
     }
 }

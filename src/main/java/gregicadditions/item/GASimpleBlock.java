@@ -23,7 +23,8 @@ public class GASimpleBlock extends VariantBlock<GASimpleBlock.CasingType> {
         TARANIUM_CHARGE("taranium_charge"),
         NAQUADRIA_CHARGE("naquadria_charge"),
         LEPTONIC_CHARGE("leptonic_charge"),
-        QCD_CHARGE("qcd_charge");
+        QCD_CHARGE("qcd_charge"),
+        ITNT("industrial_tnt");
 
 
         private final String name;

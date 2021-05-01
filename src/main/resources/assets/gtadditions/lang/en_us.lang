@@ -1924,6 +1924,7 @@ tile.ga_simple_block.taranium_charge.name=Taranium Charge
 tile.ga_simple_block.naquadria_charge.name=Naquadria Charge
 tile.ga_simple_block.leptonic_charge.name=Leptonic Charge
 tile.ga_simple_block.qcd_charge.name=Quantum Chromodynamic Charge
+tile.ga_simple_block.industrial_tnt.name=Industrial TNT
 
 
 
