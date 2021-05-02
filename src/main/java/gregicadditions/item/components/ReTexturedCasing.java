@@ -148,29 +148,31 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
 
     @SideOnly(Side.CLIENT)
     protected MultiblockControllerBase findController() {
-        IBlockAccess world = lastWorld.get();
-        if (world == null) {
-            return null;
-        }
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < 10; y++) {
-                for (int z = 0; z < 10; z++) {
-                    for (BlockPos blockPos : new BlockPos[] {lastPos.add(x, y, z), lastPos.add(-x, y, z), lastPos.add(x, -y, z)
-                            , lastPos.add(x, y, -z), lastPos.add(-x, -y, z), lastPos.add(x, -y, -z)
-                            , lastPos.add(-x, y, -z), lastPos.add(-x, -y, -z)}) {
-                        TileEntity te = world.getTileEntity(blockPos);
-                        if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() instanceof MultiblockControllerBase) {
-                            MultiblockControllerBase controller = (MultiblockControllerBase) ((MetaTileEntityHolder) te).getMetaTileEntity();
-                            BlockPattern structurePattern = ObfuscationReflectionHelper
-                                    .getPrivateValue(MultiblockControllerBase.class, controller, "structurePattern");
-                            if(structurePattern != null) {
-                                PatternMatchContext result = BlockPatternChecker
-                                        .checkPatternAt(structurePattern, controller.getWorld(), controller.getPos(),
-                                                controller.getFrontFacing().getOpposite());
-                                if (result != null && result.get("validPos") != null) {
-                                    List<BlockPos> validPos = result.get("validPos");
-                                    if (validPos.contains(lastPos)) {
-                                        return controller;
+        try {
+            IBlockAccess world = lastWorld.get();
+            if (world == null) {
+                return null;
+            }
+            for (int x = 0; x < 10; x++) {
+                for (int y = 0; y < 10; y++) {
+                    for (int z = 0; z < 10; z++) {
+                        for (BlockPos blockPos : new BlockPos[] {lastPos.add(x, y, z), lastPos.add(-x, y, z), lastPos.add(x, -y, z)
+                                , lastPos.add(x, y, -z), lastPos.add(-x, -y, z), lastPos.add(x, -y, -z)
+                                , lastPos.add(-x, y, -z), lastPos.add(-x, -y, -z)}) {
+                            TileEntity te = world.getTileEntity(blockPos);
+                            if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() instanceof MultiblockControllerBase) {
+                                MultiblockControllerBase controller = (MultiblockControllerBase) ((MetaTileEntityHolder) te).getMetaTileEntity();
+                                BlockPattern structurePattern = ObfuscationReflectionHelper
+                                        .getPrivateValue(MultiblockControllerBase.class, controller, "structurePattern");
+                                if(structurePattern != null) {
+                                    PatternMatchContext result = BlockPatternChecker
+                                            .checkPatternAt(structurePattern, controller.getWorld(), controller.getPos(),
+                                                    controller.getFrontFacing().getOpposite());
+                                    if (result != null && result.get("validPos") != null) {
+                                        List<BlockPos> validPos = result.get("validPos");
+                                        if (validPos.contains(lastPos)) {
+                                            return controller;
+                                        }
                                     }
                                 }
                             }
@@ -178,6 +180,8 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
                     }
                 }
             }
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
         lastWorld = new WeakReference<>(null);
         return null;
