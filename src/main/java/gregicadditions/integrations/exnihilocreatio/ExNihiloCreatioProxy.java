@@ -5,6 +5,7 @@ import exnihilocreatio.compatibility.jei.sieve.SieveRecipe;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.types.Siftable;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloEnums;
 import gregicadditions.integrations.exnihilocreatio.items.ExNihiloItems;
@@ -51,10 +52,10 @@ public class ExNihiloCreatioProxy {
     public static SteamRockBreaker STEAM_BREAKER;
 
 
-    @Optional.Method(modid = "exnihilocreatio")
+    @Optional.Method(modid = GAValues.MODID_EXNI)
     @Mod.EventHandler
     public void preInit() {
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded(GAValues.MODID_EXNI)) {
             ExNihiloEnums.preInit();
             ExNihiloMetaItems.preInit();
             new ExNihiloItems();
@@ -78,10 +79,10 @@ public class ExNihiloCreatioProxy {
 
     }
 
-    @Optional.Method(modid = "exnihilocreatio")
+    @Optional.Method(modid = GAValues.MODID_EXNI)
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded(GAValues.MODID_EXNI)) {
             registerMachineRecipe(SIEVES, "CPC", "FMF", "OSO", 'M', HULL, 'C', CIRCUIT, 'O', CABLE_SINGLE, 'F', CONVEYOR, 'S', new ItemStack(ModBlocks.sieve), 'P', PISTON);
             ModHandler.addShapedRecipe("steam_sieve", STEAM_SIEVE.getStackForm(), "BPB", "BMB", "BSB", 'B', "pipeSmallBronze", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'S', new ItemStack(ModBlocks.sieve), 'P', new ItemStack(Blocks.PISTON));
             ModHandler.addShapedRecipe("steam_rock_breaker", STEAM_BREAKER.getStackForm(), "BPB", "BMB", "GGG", 'P', new ItemStack(Blocks.PISTON), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'B', new UnificationEntry(OrePrefix.pipeSmall, Materials.Bronze), 'G', new ItemStack(Blocks.GLASS));
@@ -109,7 +110,7 @@ public class ExNihiloCreatioProxy {
         }
     }
 
-    @Optional.Method(modid = "exnihilocreatio")
+    @Optional.Method(modid = GAValues.MODID_EXNI)
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         if (!GAConfig.exNihilo.Disable) {

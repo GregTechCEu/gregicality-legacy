@@ -4,6 +4,7 @@ import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import forestry.core.items.EnumElectronTube;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -18,8 +19,10 @@ public class ForestryCompat {
 
     public static void init() {
 
+        final boolean forestryLoaded = Loader.isModLoaded(GAValues.MODID_FR);
+
         //Making BioDiesel
-        if (Loader.isModLoaded("forestry") && GAConfig.Misc.ForestryIntegration) {
+        if (forestryLoaded && GAConfig.Misc.ForestryIntegration) {
             CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30)
                     .notConsumable(dust, SodiumHydroxide)
                     .fluidInputs(FishOil.getFluid(6000))
@@ -53,8 +56,7 @@ public class ForestryCompat {
                     .buildAndRegister();
         }
 
-
-        if (Loader.isModLoaded("forestry") && GAConfig.GT6.electrodes) {
+        if (forestryLoaded && GAConfig.GT6.electrodes) {
             ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16)
                     .inputs(GAMetaItems.ELECTRODE_APATITE.getStackForm())
                     .input(plate, Glass)
@@ -211,7 +213,7 @@ public class ForestryCompat {
                     .outputs(GAMetaItems.ELECTRODE_GOLD.getStackForm(2))
                     .buildAndRegister();
 
-            if (Loader.isModLoaded("ic2") || Loader.isModLoaded("binniecore")) {
+            if (Loader.isModLoaded(GAValues.MODID_IC2) || Loader.isModLoaded(GAValues.MODID_BINNIE)) {
                 ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16)
                         .inputs(GAMetaItems.ELECTRODE_IRON.getStackForm())
                         .input(plate, Glass)
@@ -271,7 +273,7 @@ public class ForestryCompat {
                     .outputs(GAMetaItems.ELECTRODE_OBSIDIAN.getStackForm(4))
                     .buildAndRegister();
 
-            if (Loader.isModLoaded("extrautils2")) {
+            if (Loader.isModLoaded(GAValues.MODID_XU2)) {
                 ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16)
                         .inputs(GAMetaItems.ELECTRODE_ORCHID.getStackForm())
                         .input(plate, Glass)
@@ -284,7 +286,7 @@ public class ForestryCompat {
                         .outputs(GAMetaItems.ELECTRODE_ORCHID.getStackForm(4))
                         .buildAndRegister();
             }
-            if (Loader.isModLoaded("ic2") || Loader.isModLoaded("techreborn")) {
+            if (Loader.isModLoaded(GAValues.MODID_IC2) || Loader.isModLoaded(GAValues.MODID_TR)) {
                 ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(16)
                         .inputs(GAMetaItems.ELECTRODE_RUBBER.getStackForm())
                         .input(plate, Glass)
