@@ -12,16 +12,22 @@ import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.recipes.FuelRecipe;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static gregtech.api.unification.material.Materials.Wood;
+import static gregtech.api.unification.ore.OrePrefix.pipeSmall;
 
 public class AdditionMethods {
 // TODO COMMENTS
@@ -187,6 +193,42 @@ public class AdditionMethods {
                 .duration(duration)
                 .EUt(GAValues.V[tier])
                 .buildAndRegister();
+    }
+
+    public static void removeRecipeByName(String recipeName) {
+        ResourceLocation recipe = new ResourceLocation(recipeName);
+        if (GAConfig.Misc.enableRecipeRemovalLogging) {
+            if (ForgeRegistries.RECIPES.containsKey(recipe))
+                GALog.logger.info("Successfully Removed Recipe with Name: " + recipeName);
+            else GALog.logger.warn("Failed to Remove Recipe with Name: " + recipeName);
+        }
+        ModHandler.removeRecipeByName(new ResourceLocation(recipeName));
+    }
+
+    public static void removeCraftingRecipes(ItemStack output) {
+        int removedRecipes = ModHandler.removeRecipes(output);
+
+        if (GAConfig.Misc.enableRecipeRemovalLogging) {
+            if (removedRecipes != 0)
+                GALog.logger.info("Successfully Removed " + removedRecipes + " Recipe(s) with Output: " + output.getDisplayName());
+            else GALog.logger.warn("Failed to Remove Recipe with Output: " + output.getDisplayName());
+        }
+    }
+
+    /**
+     * Wrapper method for removing Furnace Smelting Recipes.
+     * Wrapped for easy logging info.
+     *
+     * @param input The input of the Furnace Recipe to remove.
+     */
+    public static void removeFurnaceRecipe(ItemStack input) {
+        if (ModHandler.removeFurnaceSmelting(input) && GAConfig.Misc.enableRecipeRemovalLogging) {
+            GALog.logger.info("Removed Recipe for Input: " + input.getDisplayName());
+        } else {
+            if(GAConfig.Misc.enableRecipeRemovalLogging) {
+                GALog.logger.warn("Failed to Remove Smelting Recipe for Input: " + input.getDisplayName());
+            }
+        }
     }
 
     public static class GenericFluid {

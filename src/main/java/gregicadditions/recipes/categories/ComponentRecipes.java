@@ -15,6 +15,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.round;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregicadditions.recipes.helper.AdditionMethods.removeCraftingRecipes;
 import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -46,11 +47,11 @@ public class ComponentRecipes {
 
     private static void emitterInit() {
 
-        ModHandler.removeRecipes(EMITTER_LV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_MV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_HV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_EV.getStackForm());
-        ModHandler.removeRecipes(EMITTER_IV.getStackForm());
+        removeCraftingRecipes(EMITTER_LV.getStackForm());
+        removeCraftingRecipes(EMITTER_MV.getStackForm());
+        removeCraftingRecipes(EMITTER_HV.getStackForm());
+        removeCraftingRecipes(EMITTER_EV.getStackForm());
+        removeCraftingRecipes(EMITTER_IV.getStackForm());
 
         ModHandler.addShapedRecipe("ga_lv_emitter", EMITTER_LV.getStackForm(),
                 "RRS", "CGR", "SCR",
@@ -245,11 +246,11 @@ public class ComponentRecipes {
 
     private static void sensorInit() {
 
-        ModHandler.removeRecipes(SENSOR_LV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_MV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_HV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_EV.getStackForm());
-        ModHandler.removeRecipes(SENSOR_IV.getStackForm());
+        removeCraftingRecipes(SENSOR_LV.getStackForm());
+        removeCraftingRecipes(SENSOR_MV.getStackForm());
+        removeCraftingRecipes(SENSOR_HV.getStackForm());
+        removeCraftingRecipes(SENSOR_EV.getStackForm());
+        removeCraftingRecipes(SENSOR_IV.getStackForm());
 
         ModHandler.addShapedRecipe("ga_lv_sensor", SENSOR_LV.getStackForm(),
                 "P G", "PR ", "SPP",
@@ -466,11 +467,11 @@ public class ComponentRecipes {
 
     private static void fieldGenInit() {
 
-        ModHandler.removeRecipes(FIELD_GENERATOR_LV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_MV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_HV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_EV.getStackForm());
-        ModHandler.removeRecipes(FIELD_GENERATOR_IV.getStackForm());
+        removeCraftingRecipes(FIELD_GENERATOR_LV.getStackForm());
+        removeCraftingRecipes(FIELD_GENERATOR_MV.getStackForm());
+        removeCraftingRecipes(FIELD_GENERATOR_HV.getStackForm());
+        removeCraftingRecipes(FIELD_GENERATOR_EV.getStackForm());
+        removeCraftingRecipes(FIELD_GENERATOR_IV.getStackForm());
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Basic, 4), OreDictUnifier.get(dust, EnderPearl)}, new FluidStack[]{Osmium.getFluid(L * 2)});
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Good, 4), OreDictUnifier.get(dust, EnderEye)}, new FluidStack[]{Osmium.getFluid(L * 4)});
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Advanced, 4), QUANTUM_EYE.getStackForm()}, new FluidStack[]{Osmium.getFluid(L * 8)});
@@ -665,11 +666,11 @@ public class ComponentRecipes {
 
     private static void robotArmInit() {
 
-        ModHandler.removeRecipes(ROBOT_ARM_LV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_MV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_HV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_EV.getStackForm());
-        ModHandler.removeRecipes(ROBOT_ARM_IV.getStackForm());
+        removeCraftingRecipes(ROBOT_ARM_LV.getStackForm());
+        removeCraftingRecipes(ROBOT_ARM_MV.getStackForm());
+        removeCraftingRecipes(ROBOT_ARM_HV.getStackForm());
+        removeCraftingRecipes(ROBOT_ARM_EV.getStackForm());
+        removeCraftingRecipes(ROBOT_ARM_IV.getStackForm());
 
         ModHandler.addShapedRecipe("ga_lv_robot_arm", ROBOT_ARM_LV.getStackForm(),
                 "CCC", "MRM", "PSR",
@@ -1445,11 +1446,11 @@ public class ComponentRecipes {
 
     private static void pumpInit() {
 
-        ModHandler.removeRecipes(ELECTRIC_PUMP_LV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_MV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_HV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_EV.getStackForm());
-        ModHandler.removeRecipes(ELECTRIC_PUMP_IV.getStackForm());
+        removeCraftingRecipes(ELECTRIC_PUMP_LV.getStackForm());
+        removeCraftingRecipes(ELECTRIC_PUMP_MV.getStackForm());
+        removeCraftingRecipes(ELECTRIC_PUMP_HV.getStackForm());
+        removeCraftingRecipes(ELECTRIC_PUMP_EV.getStackForm());
+        removeCraftingRecipes(ELECTRIC_PUMP_IV.getStackForm());
 
         ModHandler.addShapedRecipe("lv_electric_pump_paper", ELECTRIC_PUMP_LV.getStackForm(),
                 "SRH", "dPw", "HMC",

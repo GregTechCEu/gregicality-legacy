@@ -29,7 +29,7 @@ import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.AdditionMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
@@ -239,7 +239,7 @@ public class CasingRecipes {
         };
 
         // Mixed Metal Ingots
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:ingot_mixed_metal"));
+        removeRecipeByName("gregtech:ingot_mixed_metal");
         int multiplier2;
         for (MaterialStack metal1 : firstMetal) {
             IngotMaterial material1 = (IngotMaterial) metal1.material;
@@ -360,22 +360,14 @@ public class CasingRecipes {
                 .buildAndRegister();
 
         // Standard Coils
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_cupronickel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_kanthal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_nichrome"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_tungstensteel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_hss_g"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_naquadah"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_naquadah_alloy"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:heating_coil_superconductor"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_cupronickel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_kanthal"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_nichrome"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_tungstensteel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_hss_g"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah_alloy"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_superconductor"));
+        removeRecipeByName("gregtech:heating_coil_cupronickel");
+        removeRecipeByName("gregtech:heating_coil_kanthal");
+        removeRecipeByName("gregtech:heating_coil_nichrome");
+        removeRecipeByName("gregtech:heating_coil_tungstensteel");
+        removeRecipeByName("gregtech:heating_coil_hss_g");
+        removeRecipeByName("gregtech:heating_coil_naquadah");
+        removeRecipeByName("gregtech:heating_coil_naquadah_alloy");
+        removeRecipeByName("gregtech:heating_coil_superconductor");
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Cupronickel, 8), getIntegratedCircuit(8));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Kanthal, 8), getIntegratedCircuit(8));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Nichrome, 8), getIntegratedCircuit(8));
@@ -515,7 +507,7 @@ public class CasingRecipes {
                 .buildAndRegister();
 
         // Assembly Line Casing
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_assembler_casing"));
+        removeRecipeByName("gregtech:casing_assembler_casing");
         ModHandler.addShapedRecipe("ga_assembler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING, 3),
                 "CCC", "CFC", "CMC",
                 'C', new UnificationEntry(circuit, Elite),
@@ -547,12 +539,12 @@ public class CasingRecipes {
                 .buildAndRegister();
 
         // GTCE Casings
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(INVAR_HEATPROOF, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(ALUMINIUM_FROSTPROOF, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(STAINLESS_CLEAN, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE, 3));
+        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST, 3));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Invar, 6), OreDictUnifier.get(frameGt, Invar));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 6), OreDictUnifier.get(frameGt, Steel));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 6), OreDictUnifier.get(frameGt, Aluminium));

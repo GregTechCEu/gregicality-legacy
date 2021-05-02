@@ -34,16 +34,10 @@ public class GAMetaTool extends ToolMetaItem<ToolMetaItem<?>.MetaToolValueItem> 
 
 					ModHandler.addShapedRecipe(String.format("small_cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) GAMetaItems.SMALL_BENDING_CYLINDER).getStackForm(toolMaterial, 1), "sfh", "XXX", 'X', new UnificationEntry(OrePrefix.ingot, toolMaterial));
 				}
-
-				//GT6 Wrench Recipe
-				if (GAConfig.GT6.ExpensiveWrenches && !OreDictUnifier.get(OrePrefix.plate, material).isEmpty()) {
-					ModHandler.addShapedRecipe(String.format("ga_wrench_%s", material.toString()), MetaItems.WRENCH.getStackForm(toolMaterial, 1), "XhX", "XXX", " X ", 'X', new UnificationEntry(OrePrefix.plate, toolMaterial));
-				}
 			}
 		}
 		for (Material material : Material.MATERIAL_REGISTRY) {
 			if (!OreDictUnifier.get(OrePrefix.gem, material).isEmpty() && !OreDictUnifier.get(OrePrefix.toolHeadHammer, material).isEmpty() && material != Materials.Flint) {
-				//                GemMaterial toolMaterial = (GemMaterial) material;
 				SolidMaterial toolMaterial = (SolidMaterial) material;
 				ModHandler.addMirroredShapedRecipe(String.format("gem_hammer_%s", material.toString()), MetaItems.HARD_HAMMER.getStackForm(toolMaterial, 1), "GG ", "GGS", "GG ", 'G', new UnificationEntry(OrePrefix.gem, toolMaterial), 'S', new UnificationEntry(OrePrefix.stick, Materials.Wood));
 			}

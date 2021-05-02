@@ -25,6 +25,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipeByName;
 import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -271,8 +272,6 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         //Schematic
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:schematic/schematic_1"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:schematic/schematic_c"));
         ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4)
                 .input(circuit, Good, 4)
                 .input(plate, StainlessSteel, 2)

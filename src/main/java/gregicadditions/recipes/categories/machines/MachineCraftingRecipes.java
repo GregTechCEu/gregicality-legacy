@@ -37,7 +37,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregicadditions.GAValues.*;
 
-public class MachineCraftingRecipes {
+public class MachineCraftingRecipes { // TODO
 
     public static void init() {
 
@@ -209,101 +209,101 @@ public class MachineCraftingRecipes {
 
         // Basic Machines
         for (String tier : tiers) {
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.canner." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.cutter." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.extractor." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.electrolyzer." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.ore_washer." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.chemical_reactor." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fluid_canner." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.brewery." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fermenter." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fluid_extractor." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fluid_solidifier." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.distillery." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.chemical_bath." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.autoclave." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.mixer." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.fluid_heater." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.plasma_arc_furnace." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.pump." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.air_collector." + tier));
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:hull_" + tier));
+            removeRecipeByName("gregtech:gregtech.machine.canner." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.cutter." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.extractor." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.electrolyzer." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.ore_washer." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.chemical_reactor." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.fluid_canner." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.brewery." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.fermenter." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.fluid_extractor." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.fluid_solidifier." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.distillery." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.chemical_bath." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.autoclave." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.mixer." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.fluid_heater." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.plasma_arc_furnace." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.pump." + tier);
+            removeRecipeByName("gregtech:gregtech.machine.air_collector." + tier);
+            removeRecipeByName("gregtech:hull_" + tier);
         }
 
         // Steam Machines
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_furnace_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_furnace_steel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_macerator_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_macerator_steel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_extractor_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_extractor_steel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_hammer_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_hammer_steel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_compressor_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_compressor_steel"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_alloy_smelter_bronze"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_alloy_smelter_steel"));
+        removeRecipeByName("gregtech:steam_furnace_bronze");
+        removeRecipeByName("gregtech:steam_furnace_steel");
+        removeRecipeByName("gregtech:steam_macerator_bronze");
+        removeRecipeByName("gregtech:steam_macerator_steel");
+        removeRecipeByName("gregtech:steam_extractor_bronze");
+        removeRecipeByName("gregtech:steam_extractor_steel");
+        removeRecipeByName("gregtech:steam_hammer_bronze");
+        removeRecipeByName("gregtech:steam_hammer_steel");
+        removeRecipeByName("gregtech:steam_compressor_bronze");
+        removeRecipeByName("gregtech:steam_compressor_steel");
+        removeRecipeByName("gregtech:steam_alloy_smelter_bronze");
+        removeRecipeByName("gregtech:steam_alloy_smelter_steel");
 
         // Multiblocks
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:bronze_primitive_blast_furnace"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:electric_blast_furnace"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:vacuum_freezer"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:implosion_compressor"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:distillation_tower"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:cracking_unit"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:pyrolyse_oven"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:diesel_engine"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:engine_intake_casing"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:multi_furnace"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_steam_turbine"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_gas_turbine"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_plasma_turbine"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_bronze_boiler"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_steel_boiler"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_titanium_boiler"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:large_tungstensteel_boiler"));
+        removeRecipeByName("gregtech:bronze_primitive_blast_furnace");
+        removeRecipeByName("gregtech:electric_blast_furnace");
+        removeRecipeByName("gregtech:vacuum_freezer");
+        removeRecipeByName("gregtech:implosion_compressor");
+        removeRecipeByName("gregtech:distillation_tower");
+        removeRecipeByName("gregtech:cracking_unit");
+        removeRecipeByName("gregtech:pyrolyse_oven");
+        removeRecipeByName("gregtech:diesel_engine");
+        removeRecipeByName("gregtech:engine_intake_casing");
+        removeRecipeByName("gregtech:multi_furnace");
+        removeRecipeByName("gregtech:large_steam_turbine");
+        removeRecipeByName("gregtech:large_gas_turbine");
+        removeRecipeByName("gregtech:large_plasma_turbine");
+        removeRecipeByName("gregtech:large_bronze_boiler");
+        removeRecipeByName("gregtech:large_steel_boiler");
+        removeRecipeByName("gregtech:large_titanium_boiler");
+        removeRecipeByName("gregtech:large_tungstensteel_boiler");
 
         // Generators
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:diesel_generator_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gas_turbine_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_turbine_lv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:diesel_generator_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gas_turbine_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_turbine_mv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:diesel_generator_hv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gas_turbine_hv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:steam_turbine_hv"));
+        removeRecipeByName("gregtech:diesel_generator_lv");
+        removeRecipeByName("gregtech:gas_turbine_lv");
+        removeRecipeByName("gregtech:steam_turbine_lv");
+        removeRecipeByName("gregtech:diesel_generator_mv");
+        removeRecipeByName("gregtech:gas_turbine_mv");
+        removeRecipeByName("gregtech:steam_turbine_mv");
+        removeRecipeByName("gregtech:diesel_generator_hv");
+        removeRecipeByName("gregtech:gas_turbine_hv");
+        removeRecipeByName("gregtech:steam_turbine_hv");
 
         // Transformers
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_ev"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_iv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_max"));
+        removeRecipeByName("gregtech:transformer_ev");
+        removeRecipeByName("gregtech:transformer_iv");
+        removeRecipeByName("gregtech:transformer_luv");
+        removeRecipeByName("gregtech:transformer_zpm");
+        removeRecipeByName("gregtech:transformer_uv");
+        removeRecipeByName("gregtech:transformer_max");
 
         // Chargers
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_max"));
+        removeRecipeByName("gregtech:charger_zpm");
+        removeRecipeByName("gregtech:charger_uv");
+        removeRecipeByName("gregtech:charger_max");
 
         // Casings
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_max"));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Chrome, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Iridium, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Osmium, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Darmstadtium, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(wireGtSingle, Superconductor, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(288)});
+        removeRecipeByName("gregtech:casing_luv");
+        removeRecipeByName("gregtech:casing_zpm");
+        removeRecipeByName("gregtech:casing_uv");
+        removeRecipeByName("gregtech:casing_max");
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Chrome, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Iridium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Osmium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Darmstadtium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(wireGtSingle, Superconductor, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(288)});
     }
 
     private static void highAmpMachines() {

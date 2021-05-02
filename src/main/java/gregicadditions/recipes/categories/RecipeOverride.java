@@ -9,7 +9,6 @@ import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -17,8 +16,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.removeAllRecipes;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.AdditionMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
@@ -420,11 +418,11 @@ public class RecipeOverride {
     private static void gregtechOverride() {
 
         // GTNH Bricks
-        ModHandler.removeFurnaceSmelting(new ItemStack(Items.CLAY_BALL, 1, OreDictionary.WILDCARD_VALUE));
-        ModHandler.removeFurnaceSmelting(COMPRESSED_CLAY.getStackForm());
-        ModHandler.removeFurnaceSmelting(FIRECLAY_BRICK.getStackForm());
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_to_dust"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:brick_block_to_dust"));
+        removeFurnaceRecipe(new ItemStack(Items.CLAY_BALL, 1, OreDictionary.WILDCARD_VALUE));
+        removeFurnaceRecipe(COMPRESSED_CLAY.getStackForm());
+        // removeFurnaceRecipe(FIRECLAY_BRICK.getStackForm()); TODO Dead recipe
+        removeRecipeByName("gregtech:brick_to_dust");
+        removeRecipeByName("gregtech:brick_block_to_dust");
 
         ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
 
@@ -491,7 +489,7 @@ public class RecipeOverride {
         ModHandler.addSmeltingRecipe(new ItemStack(Items.SLIME_BALL), RUBBER_DROP.getStackForm());
 
         // Bone Meal
-        ModHandler.removeRecipeByName(new ResourceLocation("minecraft:bone_meal_from_bone"));
+        removeRecipeByName("minecraft:bone_meal_from_bone");
         FORGE_HAMMER_RECIPES.recipeBuilder().duration(16).EUt(10)
                 .inputs(new ItemStack(Items.BONE))
                 .outputs(new ItemStack(Items.DYE, 4, 15))
@@ -499,8 +497,8 @@ public class RecipeOverride {
 
         //wood pipe
         if (GAConfig.GT6.BendingCylinders) {
-            ModHandler.removeRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
-            ModHandler.removeRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
+            removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
+            removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
 
             ModHandler.addShapedRecipe("pipe_ga_wood", OreDictUnifier.get(pipeMedium, Wood, 2),
                     "PPP", "sCh", "PPP",
@@ -656,7 +654,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Dynamite
-        ModHandler.removeRecipes(DYNAMITE.getStackForm());
+        removeCraftingRecipes(DYNAMITE.getStackForm());
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(4)
                 .inputs(new ItemStack(Items.PAPER))
                 .inputs(new ItemStack(Items.STRING))
@@ -670,7 +668,7 @@ public class RecipeOverride {
         if (GAConfig.GT6.BendingCylinders && GAConfig.GT6.addCurvedPlates) {
 
             // Buckets
-            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:iron_bucket"));
+            removeRecipeByName("gregtech:iron_bucket");
             ModHandler.addShapedRecipe("bucket", new ItemStack(Items.BUCKET),
                     "ChC", " P ",
                     'C', new UnificationEntry(plateCurved, Iron),
@@ -691,50 +689,50 @@ public class RecipeOverride {
                     .buildAndRegister();
 
             // Iron Armor
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:iron_helmet"));
+            removeRecipeByName("minecraft:iron_helmet");
             ModHandler.addShapedRecipe("iron_helmet", new ItemStack(Items.IRON_HELMET),
                     "PPP", "ChC",
                     'P', new UnificationEntry(plate, Iron),
                     'C', new UnificationEntry(plateCurved, Iron));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:iron_chestplate"));
+            removeRecipeByName("minecraft:iron_chestplate");
             ModHandler.addShapedRecipe("iron_chestplate", new ItemStack(Items.IRON_CHESTPLATE),
                     "PhP", "CPC", "CPC",
                     'P', new UnificationEntry(plate, Iron),
                     'C', new UnificationEntry(plateCurved, Iron));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:iron_leggings"));
+            removeRecipeByName("minecraft:iron_leggings");
             ModHandler.addShapedRecipe("iron_leggings", new ItemStack(Items.IRON_LEGGINGS),
                     "PCP", "ChC", "C C",
                     'P', new UnificationEntry(plate, Iron),
                     'C', new UnificationEntry(plateCurved, Iron));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:iron_boots"));
+            removeRecipeByName("minecraft:iron_boots");
             ModHandler.addShapedRecipe("iron_boots", new ItemStack(Items.IRON_BOOTS),
                     "P P", "ChC",
                     'P', new UnificationEntry(plate, Iron),
                     'C', new UnificationEntry(plateCurved, Iron));
 
             // Gold Armor
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:golden_helmet"));
+            removeRecipeByName("minecraft:golden_helmet");
             ModHandler.addShapedRecipe("golden_helmet", new ItemStack(Items.GOLDEN_HELMET),
                     "PPP", "ChC",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:golden_chestplate"));
+            removeRecipeByName("minecraft:golden_chestplate");
             ModHandler.addShapedRecipe("golden_chestplate", new ItemStack(Items.GOLDEN_CHESTPLATE),
                     "PhP", "CPC", "CPC",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:golden_leggings"));
+            removeRecipeByName("minecraft:golden_leggings");
             ModHandler.addShapedRecipe("golden_leggings", new ItemStack(Items.GOLDEN_LEGGINGS),
                     "PCP", "ChC", "C C",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
 
-            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:golden_boots"));
+            removeRecipeByName("minecraft:golden_boots");
             ModHandler.addShapedRecipe("golden_boots", new ItemStack(Items.GOLDEN_BOOTS),
                     "P P", "ChC",
                     'P', new UnificationEntry(plate, Gold),
@@ -802,15 +800,8 @@ public class RecipeOverride {
 
         // Remove Yttrium Barium Cuprate Recipes
         removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Copper, 3), OreDictUnifier.get(dust, Barium, 2), OreDictUnifier.get(dust, Yttrium)}, new FluidStack[]{Oxygen.getFluid(7000)});
-        // TODO Do we need these removed?
-        //ModHandler.removeRecipes(OreDictUnifier.get(dust, YttriumBariumCuprate, 6));
-        //ModHandler.removeRecipes(OreDictUnifier.get(dustTiny, YttriumBariumCuprate, 6));
 
         // Remove Vanilla TNT Recipe
-        ModHandler.removeRecipes(new ItemStack(Blocks.TNT));
-
-        // Remove Integrated Circuit Recipe
-        // Not totally sure why, but it doesn't seem to have any issues
-        ModHandler.removeRecipes(INTEGRATED_CIRCUIT.getStackForm());
+        removeCraftingRecipes(new ItemStack(Blocks.TNT));
     }
 }

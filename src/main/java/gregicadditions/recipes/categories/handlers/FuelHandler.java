@@ -13,8 +13,23 @@ import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.circuit;
 
+/**
+ * Class for Fuel Recipe additions/overrides.
+ *
+ * Fuel recipes do not have to be removed to be overridden, simply register
+ * a new Fuel recipe here and it will automatically overwrite the original.
+ */
 public class FuelHandler {
 
+    /**
+     * This effectively overrides GT Materials to use Forestry ones if the mod is loaded. By not specifying
+     * "Materials." before the material name, it will default to this one instead. For example:
+     *
+     *     registerDieselGeneratorFuel(Ethanol.getFluid(2), 12, LV);
+     *
+     * This looks like the standard material, but it will use the Forestry fluid if Forestry is loaded,
+     * and if Forestry Integration is enabled.
+     */
     private static final boolean forestry = Loader.isModLoaded(MODID_FR) && GAConfig.Misc.ForestryIntegration;
 
     private static final GenericFluid Ethanol = forestry ?
