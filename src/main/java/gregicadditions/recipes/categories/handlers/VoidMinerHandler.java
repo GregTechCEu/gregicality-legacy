@@ -1,4 +1,4 @@
-package gregicadditions.recipes.handlers;
+package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.GAConfig;
 import gregicadditions.utils.GALog;

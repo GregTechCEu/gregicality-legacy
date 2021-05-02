@@ -51,9 +51,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
-import static gregicadditions.recipes.GACraftingComponents.*;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
-import static gregicadditions.recipes.SimpleMachineRecipes.registerMachineRecipe;
+import static gregicadditions.recipes.helper.AdditionMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.GACraftingComponents.*;
 
 @Mod.EventBusSubscriber()
 public class ForestryCommonProxy {

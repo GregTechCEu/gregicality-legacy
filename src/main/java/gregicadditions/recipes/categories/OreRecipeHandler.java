@@ -1,4 +1,4 @@
-package gregicadditions.recipes.handlers;
+package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregicadditions.recipes.GARecipeMaps;
@@ -16,7 +16,7 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
 
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.THERMAL_CENTRIFUGE_RECIPES;
 import static gregtech.api.unification.material.Materials.UUMatter;

@@ -1,4 +1,4 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;

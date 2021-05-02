@@ -1,8 +1,8 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -14,7 +14,8 @@ import net.minecraft.init.Blocks;
 
 import java.util.Arrays;
 
-import static gregicadditions.recipes.GACraftingComponents.*;
+import static gregicadditions.recipes.helper.AdditionMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.GACraftingComponents.*;
 import static gregtech.api.unification.material.Materials.Graphite;
 import static gregtech.api.unification.material.Materials.Lead;
 import static gregtech.api.unification.ore.OrePrefix.ingot;
@@ -254,32 +255,5 @@ public class SimpleMachineRecipes {
 
         // Replaces the original GT Fluid Filter with a GT Item Filter
         registerMachineRecipe(MetaTileEntities.AIR_COLLECTOR, "WFW", "PHP", "WCW", 'W', Blocks.IRON_BARS, 'F', MetaItems.ITEM_FILTER, 'P', PUMP, 'H', HULL, 'C', CIRCUIT);
-    }
-
-    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
-        for (T metaTileEntity : metaTileEntities) {
-            if (metaTileEntity != null)
-                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaName()), metaTileEntity.getStackForm(),
-                        prepareRecipe(metaTileEntity.getTier(), Arrays.copyOf(recipe, recipe.length)));
-        }
-    }
-
-    public static void registerMachineRecipe(GATileEntities.MTE<?>[] metaTileEntities, Object... recipe) {
-        for (GATileEntities.MTE<?> metaTileEntity : metaTileEntities) {
-            if (metaTileEntity != null)
-                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaTileEntity().getMetaName()), metaTileEntity.getMetaTileEntity().getStackForm(),
-                        prepareRecipe(metaTileEntity.getITieredMetaTileEntity().getTier(), Arrays.copyOf(recipe, recipe.length)));
-        }
-    }
-
-
-
-    private static Object[] prepareRecipe(int tier, Object... recipe) {
-        for (int i = 3; i < recipe.length; i++) {
-            if (recipe[i] instanceof GACraftingComponents) {
-                recipe[i] = ((GACraftingComponents) recipe[i]).getIngredient(tier);
-            }
-        }
-        return recipe;
     }
 }

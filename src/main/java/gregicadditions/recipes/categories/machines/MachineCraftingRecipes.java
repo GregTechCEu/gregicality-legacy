@@ -1,4 +1,4 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
@@ -9,6 +9,8 @@ import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -19,22 +21,23 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GACraftingComponents.*;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.GACraftingComponents.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregicadditions.GAValues.*;
 
 public class MachineCraftingRecipes {
-
-    private static final String[] tiers = {"lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "max"};
 
     public static void init() {
 
@@ -203,6 +206,8 @@ public class MachineCraftingRecipes {
 
     private static void removeGTCEMachineRecipes() {
 
+        final String[] tiers = {"lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "max"};
+
         // Basic Machines
         for (String tier : tiers) {
             ModHandler.removeRecipeByName(new ResourceLocation("gregtech:gregtech.machine.canner." + tier));
@@ -279,17 +284,28 @@ public class MachineCraftingRecipes {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_uv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_max"));
 
-        // Casings
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_luv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_zpm"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_uv"));
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_max"));
-
         // Chargers
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_ev"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_zpm"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_uv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_max"));
+
+        // Casings
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_luv"));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_zpm"));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_uv"));
+        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:casing_max"));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Chrome, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Iridium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Osmium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Darmstadtium, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(wireGtSingle, Superconductor, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(288)});
     }
 
     // TODO These need to be done better than this

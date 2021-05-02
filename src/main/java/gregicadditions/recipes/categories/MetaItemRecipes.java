@@ -1,4 +1,4 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregicadditions.armor.PowerlessJetpack;
@@ -9,7 +9,9 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.type.GemMaterial;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -21,19 +23,24 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
-import static gregicadditions.GAMaterials.IVSuperconductor;
-import static gregicadditions.GAMaterials.RhodiumPlatedPalladium;
+import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
+import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
+import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.unification.material.MarkerMaterials.Color.Magenta;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Plastic;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class MetaItemRecipes {
+
+    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates && GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders ?
+            plateCurved : plate;
 
     public static void init() {
 
@@ -384,6 +391,173 @@ public class MetaItemRecipes {
                 .input(plate, Steel, 2)
                 .input(toolHeadDrill, Steel)
                 .outputs(RIG_DRILL.getStackForm())
+                .buildAndRegister();
+
+        // Cooling Containers
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
+                .input(plateB, Steel, 64)
+                .input(plateB, Steel, 64)
+                .input(plate, Steel, 64)
+                .input(plate, Steel, 64)
+                .inputs(LASER_COOLING_UNIT.getStackForm())
+                .inputs(MAGNETIC_TRAP.getStackForm())
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .outputs(EMPTY_LASER_COOLING_CONTAINER.getStackForm())
+                .buildAndRegister();
+
+        FLUID_CANNER_RECIPES.recipeBuilder().duration(280).EUt(90000)
+                .inputs(EMPTY_LASER_COOLING_CONTAINER.getStackForm())
+                .fluidInputs(Rubidium.getFluid(L * 2))
+                .outputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
+                .buildAndRegister();
+
+        // Laser Diode
+        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(980000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .inputs(SMD_DIODE_BIOWARE.getStackForm())
+                .input(craftingLens, Magenta)
+                .input(wireFine, Gold, 3)
+                .outputs(LASER_DIODE.getStackForm())
+                .buildAndRegister();
+
+        // Laser Cooling Unit
+        ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 2))
+                .input(wireFine, Gold, 4)
+                .input(gtMetalCasing, Aluminium)
+                .inputs(LASER_DIODE.getStackForm())
+                .input(circuit, MarkerMaterials.Tier.Ultimate)
+                .outputs(LASER_COOLING_UNIT.getStackForm())
+                .buildAndRegister();
+
+        // Magnetic Trap
+        ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 3))
+                .input(wireGtDouble, UVSuperconductor, 2)
+                .input(gtMetalCasing, Aluminium)
+                .outputs(MAGNETIC_TRAP.getStackForm())
+                .buildAndRegister();
+
+        // Gravi Star
+        removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[]{new ItemStack(Items.NETHER_STAR)}, new FluidStack[]{Darmstadtium.getFluid(L * 2)});
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680)
+                .inputs(new ItemStack(Items.NETHER_STAR))
+                .fluidInputs(Dubnium.getFluid(L * 2))
+                .outputs(GRAVI_STAR.getStackForm())
+                .buildAndRegister();
+
+        // Unstable Star
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(122880)
+                .inputs(GRAVI_STAR.getStackForm())
+                .fluidInputs(Adamantium.getFluid(L * 2))
+                .outputs(UNSTABLE_STAR.getStackForm())
+                .buildAndRegister();
+
+        // Hot Wrought Iron
+        ModHandler.addSmeltingRecipe(new UnificationEntry(ingot, Iron),
+                HOT_IRON_INGOT.getStackForm());
+
+        ModHandler.addShapelessRecipe("ga_wrought", OreDictUnifier.get(ingot, WroughtIron),
+                'h',
+                HOT_IRON_INGOT.getStackForm());
+
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(16)
+                .inputs(HOT_IRON_INGOT.getStackForm())
+                .output(ingot, WroughtIron)
+                .buildAndRegister();
+
+        // Plant Balls
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllmushroom", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllfruit", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllveggie", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllspice", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllgrain", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllnut", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllpepper", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllherb", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .input("listAllfiber", 8)
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .inputs(BrownAlgae.getItemStack(8))
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .inputs(RedAlgae.getItemStack(8))
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
+                .inputs(GreenAlgae.getItemStack(8))
+                .outputs(PLANT_BALL.getStackForm())
+                .buildAndRegister();
+
+        // Glass Tube
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().EUt(16).duration(80)
+                .fluidInputs(Glass.getFluid(L))
+                .notConsumable(SHAPE_MOLD_BALL.getStackForm())
+                .outputs(GLASS_TUBE.getStackForm())
+                .buildAndRegister();
+
+        // Mince Meat
+        MACERATOR_RECIPES.recipeBuilder().duration(60).EUt(16)
+                .inputs(new ItemStack(Items.PORKCHOP))
+                .output(dustSmall, Meat, 6)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(60).EUt(16)
+                .inputs(new ItemStack(Items.BEEF))
+                .output(dustSmall, Meat, 6)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(60).EUt(16)
+                .inputs(new ItemStack(Items.RABBIT))
+                .output(dustSmall, Meat, 6)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(40).EUt(16)
+                .inputs(new ItemStack(Items.CHICKEN))
+                .output(dust, Meat)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(40).EUt(16)
+                .inputs(new ItemStack(Items.MUTTON))
+                .output(dust, Meat)
                 .buildAndRegister();
     }
 }

@@ -48,7 +48,7 @@ import java.util.List;
 import java.util.Map;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.handlers.VoidMinerHandler.*;
+import static gregicadditions.recipes.categories.handlers.VoidMinerHandler.*;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 

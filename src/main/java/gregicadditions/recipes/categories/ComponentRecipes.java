@@ -1,11 +1,15 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAEnums.GAOrePrefix.round;
@@ -14,6 +18,7 @@ import static gregicadditions.GAMaterials.Pikyonium;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMetaItems.ELECTRIC_PUMP_UEV;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
@@ -469,6 +474,11 @@ public class ComponentRecipes {
         ModHandler.removeRecipes(FIELD_GENERATOR_HV.getStackForm());
         ModHandler.removeRecipes(FIELD_GENERATOR_EV.getStackForm());
         ModHandler.removeRecipes(FIELD_GENERATOR_IV.getStackForm());
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Basic, 4), OreDictUnifier.get(dust, EnderPearl)}, new FluidStack[]{Osmium.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Good, 4), OreDictUnifier.get(dust, EnderEye)}, new FluidStack[]{Osmium.getFluid(L * 4)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Advanced, 4), QUANTUM_EYE.getStackForm()}, new FluidStack[]{Osmium.getFluid(L * 8)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Elite, 4), OreDictUnifier.get(dust, NetherStar)}, new FluidStack[]{Osmium.getFluid(L * 16)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(circuit, Master, 4), QUANTUM_STAR.getStackForm()}, new FluidStack[]{Osmium.getFluid(L * 32)});
 
         ModHandler.addShapedRecipe("ga_lv_field_generator", FIELD_GENERATOR_LV.getStackForm(),
                 "WSW", "SGS", "WSW",

@@ -1,13 +1,16 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -27,8 +30,10 @@ import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -43,7 +48,6 @@ public class CasingRecipes {
     public static void init() {
         componentCasings();
         multiblockCasings();
-        metalCasings();
         coilCasings();
         tieredCasings();
         tieredGlass();
@@ -373,6 +377,14 @@ public class CasingRecipes {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah_alloy"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_superconductor"));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Cupronickel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Kanthal, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Nichrome, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, TungstenSteel, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, HSSG, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Naquadah, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, NaquadahAlloy, 8), getIntegratedCircuit(8));
+        removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Superconductor, 8), getIntegratedCircuit(8));
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8)
                 .input(wireGtDouble, Cupronickel, 8)
@@ -487,9 +499,6 @@ public class CasingRecipes {
                 .buildAndRegister();
     }
 
-    private static void metalCasings() {
-    }
-
     private static void multiblockCasings() {
 
         // Tungstensteel Gearbox Casing
@@ -540,11 +549,17 @@ public class CasingRecipes {
 
         // GTCE Casings
         ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE, 3));
-        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN, 3));
         ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID, 3));
+        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF, 3));
+        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN, 3));
+        ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE, 3));
         ModHandler.removeRecipes(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST, 3));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Invar, 6), OreDictUnifier.get(frameGt, Invar));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 6), OreDictUnifier.get(frameGt, Steel));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 6), OreDictUnifier.get(frameGt, Aluminium));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 6), OreDictUnifier.get(frameGt, StainlessSteel));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 6), OreDictUnifier.get(frameGt, Titanium));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 6), OreDictUnifier.get(frameGt, TungstenSteel));
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
                 .notConsumable(new IntCircuitIngredient(30))
@@ -576,13 +591,6 @@ public class CasingRecipes {
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
                 .notConsumable(new IntCircuitIngredient(30))
-                .input(plate, TungstenSteel, 6)
-                .input(frameGt, TungstenSteel)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .notConsumable(new IntCircuitIngredient(30))
                 .input(plate, StainlessSteel, 6)
                 .input(frameGt, StainlessSteel)
                 .outputs(MetaBlocks.METAL_CASING.getItemVariant(STAINLESS_CLEAN, 3))
@@ -593,6 +601,13 @@ public class CasingRecipes {
                 .input(plate, Titanium, 6)
                 .input(frameGt, Titanium)
                 .outputs(MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE, 3))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
+                .notConsumable(new IntCircuitIngredient(30))
+                .input(plate, TungstenSteel, 6)
+                .input(frameGt, TungstenSteel)
+                .outputs(MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST, 3))
                 .buildAndRegister();
 
         // Fusion Casing Recipes

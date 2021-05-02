@@ -1,4 +1,4 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.helper;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;

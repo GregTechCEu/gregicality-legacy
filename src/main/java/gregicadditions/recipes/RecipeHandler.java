@@ -7,6 +7,12 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
+import gregicadditions.recipes.chain.*;
+import gregicadditions.recipes.chain.optical.Lasers;
+import gregicadditions.recipes.chain.optical.OpticalCircuits;
+import gregicadditions.recipes.chain.optical.OpticalComponents;
+import gregicadditions.recipes.chain.optical.OpticalFiber;
+import gregicadditions.recipes.chain.wetware.*;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
@@ -24,9 +30,12 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -34,11 +43,12 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
 import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -46,7 +56,7 @@ import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SM
 import static gregtech.api.unification.material.type.Material.MatFlags.DECOMPOSITION_REQUIRES_HYDROGEN;
 import static gregtech.api.unification.material.type.Material.MatFlags.DISABLE_DECOMPOSITION;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class RecipeHandler {
 
@@ -90,10 +100,80 @@ public class RecipeHandler {
         }
         dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
         foil.addProcessingHandler(IngotMaterial.class, RecipeHandler::processFoil);
-
     }
 
-    public static void processIngotComposition(OrePrefix ingot, IngotMaterial material) {
+    public static void registerOreDict() {
+        OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
+        OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
+        OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
+    }
+
+    public static void initChains() {
+        GoldChain.init();
+        NaquadahChain.init();
+        OpticalFiber.init();
+        NuclearChain.init();
+        PlasticChain.init();
+        PlatinumSludgeGroupChain.init();
+        TungstenChain.init();
+        REEChain.init();
+        BacteriaCultures.init();
+        GrowthMedium.init();
+        StemCells.init();
+        SterilizedGrowthMedium.init();
+        ProcessingUnits.init();
+        Circuits.init();
+        Batteries.init();
+        RheniumChain.init();
+        UHVMaterials.init();
+        PEEKChain.init();
+        ZylonChain.init();
+        FullereneChain.init();
+        BariumChain.init();
+        UraniumChain.init();
+        VanadiumChain.init();
+        IodineChain.init();
+        ZirconChain.init();
+        ZincChain.init();
+        AluminiumChain.init();
+        AmmoniaChain.init();
+        ChromiumChain.init();
+        LithiumChain.init();
+        WaferChain.init();
+        BrineChain.init();
+        FusionElementsChain.init();
+        NanotubeChain.init();
+        VariousChains.init();
+        SuperconductorsSMDChain.init();
+        FusionComponents.init();
+        NiobiumTantalumChain.init();
+        Lasers.init();
+        Dyes.init();
+        SensorEmitter.init();
+        SeleniumChain.init();
+        OpticalComponents.init();
+        OpticalCircuits.init();
+        WormholeGeneratorChain.init();
+        CosmicComponents.init();
+        SupraCausalComponents.init();
+        UltimateMaterials.init();
+        DigitalInterfaces.init();
+        InsulationWireAssemblyChain.init();
+        ArcFurnaceOxidation.init();
+    }
+
+    public static void registerLargeMachineRecipes() {
+        registerLargeChemicalRecipes();
+        registerLargeMixerRecipes();
+        registerLargeForgeHammerRecipes();
+        registerAlloyBlastRecipes();
+        registerChemicalPlantRecipes();
+        registerGreenHouseRecipes();
+        registerLargeCentrifugeRecipes();
+        registerLaserEngraverRecipes();
+    }
+
+    private static void processIngotComposition(OrePrefix ingot, IngotMaterial material) {
         if (material.materialComponents.size() <= 1 || material.blastFurnaceTemperature == 0 || material.hasFlag(DISABLE_AUTOGENERATED_MIXER_RECIPE))
             return;
 
@@ -144,14 +224,7 @@ public class RecipeHandler {
 
     }
 
-    public static void processGem(OrePrefix dustPrefix, GemMaterial material) {
-        ItemStack[] explosives = new ItemStack[]{
-                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL, 48),
-                new ItemStack(Blocks.TNT, 24),
-                MetaItems.DYNAMITE.getStackForm(12),
-                GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6)
-        };
-
+    private static void processGem(OrePrefix dustPrefix, GemMaterial material) {
         ItemStack gemStack = OreDictUnifier.get(gem, material);
         ItemStack flawlessStack = OreDictUnifier.get(gemFlawless, material);
         ItemStack exquisiteStack = OreDictUnifier.get(gemExquisite, material);
@@ -218,7 +291,7 @@ public class RecipeHandler {
         }
     }
 
-    public static void processStick(OrePrefix stickPrefix, DustMaterial material) {
+    private static void processStick(OrePrefix stickPrefix, DustMaterial material) {
         if (material instanceof GemMaterial || material instanceof IngotMaterial) {
             OrePrefix orePrefix = material instanceof IngotMaterial ? ingot : gem;
             Recipe r = LATHE_RECIPES.findRecipe(Long.MAX_VALUE, Collections.singletonList(OreDictUnifier.get(orePrefix, material)), Collections.emptyList(), Integer.MAX_VALUE);
@@ -255,6 +328,20 @@ public class RecipeHandler {
     }
 
 
+    // TODO This is very broken
+    /*
+     * ULV, LV: rubber
+     * MV: polycap
+     * HV: PE
+     * EV: PVC
+     * IV, LuV: Polyphenylene
+     * ZPM, UV: PBI
+     * UHV, UEV: PEEK
+     * UIV, UMV: Zylon + insulation assembly
+     * UXV, MAX: fullerene + insulation assembly
+     *
+     * Try to synchronize with machine hulls somewhat
+     */
     private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
         if (material.cableProperties == null) return;
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
@@ -405,7 +492,7 @@ public class RecipeHandler {
         }
     }
 
-    public static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {
+    private static void processTurbine(OrePrefix toolPrefix, IngotMaterial material) {
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(plate, material, 5), OreDictUnifier.get(screw, material, 2), IntCircuitIngredient.getIntegratedCircuit(10));
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, OreDictUnifier.get(stickLong, Titanium), OreDictUnifier.get(turbineBlade, material, 8));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:" + String.format("turbine_blade_%s", material)));
@@ -460,7 +547,7 @@ public class RecipeHandler {
     }
 
 
-    public static void registerLargeChemicalRecipes() {
+    private static void registerLargeChemicalRecipes() {
         RecipeMaps.CHEMICAL_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder largeRecipeMap = GARecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())
@@ -475,7 +562,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerLaserEngraverRecipes() {
+    private static void registerLaserEngraverRecipes() {
         LASER_ENGRAVER_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder largeRecipeMap = LARGE_ENGRAVER_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())
@@ -490,7 +577,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerLargeMixerRecipes() {
+    private static void registerLargeMixerRecipes() {
         RecipeMaps.MIXER_RECIPES.getRecipeList().forEach(recipe -> {
             List<CountableIngredient> inputList = new ArrayList<>();
             IntCircuitIngredient circuitIngredient = null;
@@ -517,7 +604,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerLargeCentrifugeRecipes() {
+    private static void registerLargeCentrifugeRecipes() {
         CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder builder = LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())
@@ -531,7 +618,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerLargeForgeHammerRecipes() {
+    private static void registerLargeForgeHammerRecipes() {
         RecipeMaps.FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
             LargeRecipeBuilder builder = GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())
@@ -545,7 +632,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerAlloyBlastRecipes() {
+    private static void registerAlloyBlastRecipes() {
         for (Material material : Material.MATERIAL_REGISTRY) {
             if (!(material instanceof IngotMaterial))
                 continue;
@@ -573,7 +660,7 @@ public class RecipeHandler {
         }
     }
 
-    public static void registerChemicalPlantRecipes() {
+    private static void registerChemicalPlantRecipes() {
         RecipeMaps.BREWING_RECIPES.getRecipeList().forEach(recipe -> {
             FluidStack fluidInput = recipe.getFluidInputs().get(0).copy();
             fluidInput.amount = (fluidInput.amount * 10 * 125 / 100);
@@ -590,7 +677,7 @@ public class RecipeHandler {
         });
     }
 
-    public static void registerGreenHouseRecipes() {
+    private static void registerGreenHouseRecipes() {
 
         GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.POTATO)).outputs(new ItemStack(Items.POTATO, 1)).chancedOutput(new ItemStack(Items.POISONOUS_POTATO, 1), 100, 50).buildAndRegister();
         GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000).notConsumable(new IntCircuitIngredient(0)).fluidInputs(Water.getFluid(2000)).notConsumable(new ItemStack(Items.CARROT)).outputs(new ItemStack(Items.CARROT, 1)).buildAndRegister();
@@ -715,5 +802,141 @@ public class RecipeHandler {
         builder.buildAndRegister();
     }
 
+    public static void generatedRecipes() {
+        List<ResourceLocation> recipesToRemove = new ArrayList<>();
 
+        for (IRecipe recipe : CraftingManager.REGISTRY) {
+            if (recipe.getRecipeOutput().isEmpty()) {
+                //dont know how it can be possible but its appear
+                continue;
+            }
+            if (recipe.getIngredients().size() == 9) {
+                if (recipe.getIngredients().get(0).getMatchingStacks().length > 0 && Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) != Blocks.AIR) {
+                    boolean match = true;
+                    for (int i = 1; i < recipe.getIngredients().size(); i++) {
+                        if (recipe.getIngredients().get(i).getMatchingStacks().length == 0 || !recipe.getIngredients().get(0).getMatchingStacks()[0].isItemEqual(recipe.getIngredients().get(i).getMatchingStacks()[0])) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match) {
+                        if (GAConfig.GT5U.Remove3x3BlockRecipes) recipesToRemove.add(recipe.getRegistryName());
+                        if (GAConfig.GT5U.GenerateCompressorRecipes && !recipe.getIngredients().get(0).test(new ItemStack(Items.WHEAT))) {
+                            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                                    .inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size()))
+                                    .outputs(recipe.getRecipeOutput())
+                                    .buildAndRegister();
+                        } else {
+                            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                                    .inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size()))
+                                    .notConsumable(SCHEMATIC_3X3.getStackForm())
+                                    .outputs(recipe.getRecipeOutput())
+                                    .buildAndRegister();
+                        }
+                    }
+                }
+            }
+            if (recipe.getIngredients().size() == 9) {
+                if (recipe.getIngredients().get(0).getMatchingStacks().length > 0 && Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) == Blocks.AIR) {
+                    boolean match = true;
+                    for (int i = 1; i < recipe.getIngredients().size(); i++) {
+                        if (recipe.getIngredients().get(i).getMatchingStacks().length == 0 || !recipe.getIngredients().get(0).getMatchingStacks()[0].isItemEqual(recipe.getIngredients().get(i).getMatchingStacks()[0])) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match && !recipesToRemove.contains(recipe.getRegistryName()) && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustTiny") && !hasPrefix(recipe.getRecipeOutput(), "ingot") && recipe.getRecipeOutput().getCount() == 1 && GAConfig.Misc.Packager3x3Recipes) {
+                        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                                .inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size()))
+                                .notConsumable(SCHEMATIC_3X3.getStackForm())
+                                .outputs(recipe.getRecipeOutput())
+                                .buildAndRegister();
+                    }
+                }
+            }
+            if (recipe.getIngredients().size() == 4) {
+                if (recipe.getIngredients().get(0).getMatchingStacks().length > 0 && Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) != Blocks.QUARTZ_BLOCK) {
+                    boolean match = true;
+                    for (int i = 1; i < recipe.getIngredients().size(); i++) {
+                        if (recipe.getIngredients().get(i).getMatchingStacks().length == 0 || !recipe.getIngredients().get(0).getMatchingStacks()[0].isItemEqual(recipe.getIngredients().get(i).getMatchingStacks()[0])) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match && !recipesToRemove.contains(recipe.getRegistryName()) && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustSmall") && recipe.getRecipeOutput().getCount() == 1 && GAConfig.Misc.Packager2x2Recipes) {
+                        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                                .inputs(CountableIngredient.from(recipe.getIngredients().get(0).getMatchingStacks()[0], recipe.getIngredients().size()))
+                                .notConsumable(SCHEMATIC_2X2.getStackForm())
+                                .outputs(recipe.getRecipeOutput())
+                                .buildAndRegister();
+                    }
+                }
+            }
+            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9 && !hasPrefix(recipe.getIngredients().get(0).getMatchingStacks()[0], "ingot") && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.AIR && Block.getBlockFromItem(recipe.getIngredients().get(0).getMatchingStacks()[0].getItem()) != Blocks.SLIME_BLOCK) {
+                boolean isIngot = false;
+                for (int i : OreDictionary.getOreIDs(recipe.getRecipeOutput())) {
+                    if (OreDictionary.getOreName(i).startsWith("ingot")) {
+                        isIngot = true;
+                        break;
+                    }
+                }
+                if (GAConfig.GT5U.RemoveBlockUncraftingRecipes) recipesToRemove.add(recipe.getRegistryName());
+                if (!isIngot) {
+                    FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                            .inputs(recipe.getIngredients().get(0).getMatchingStacks()[0])
+                            .outputs(recipe.getRecipeOutput())
+                            .buildAndRegister();
+                }
+            }
+            if (recipe.getIngredients().size() == 1 && recipe.getIngredients().get(0).getMatchingStacks().length > 0 && recipe.getRecipeOutput().getCount() == 9 && !hasPrefix(recipe.getIngredients().get(0).getMatchingStacks()[0], "ingot")) {
+                if (!recipesToRemove.contains(recipe.getRegistryName()) && GAConfig.Misc.Unpackager3x3Recipes) {
+                    UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
+                            .inputs(recipe.getIngredients().get(0).getMatchingStacks()[0])
+                            .notConsumable(SCHEMATIC_3X3.getStackForm())
+                            .outputs(recipe.getRecipeOutput())
+                            .buildAndRegister();
+                }
+            }
+
+        }
+
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_compress_clay"));
+        recipesToRemove.add(new ResourceLocation("gtadditions:block_decompress_clay"));
+
+        for (ResourceLocation r : recipesToRemove)
+            ModHandler.removeRecipeByName(r);
+        recipesToRemove.clear();
+
+        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:glowstone"));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_compress_glowstone"));
+            ModHandler.removeRecipeByName(new ResourceLocation("minecraft:quartz_block"));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_compress_nether_quartz"));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:block_decompress_nether_quartz"));
+            ModHandler.removeRecipeByName(new ResourceLocation("gregtech:nether_quartz_block_to_nether_quartz"));
+            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                    .inputs(OreDictUnifier.get(block, NetherQuartz))
+                    .outputs(OreDictUnifier.get(gem, NetherQuartz, 4))
+                    .buildAndRegister();
+
+            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                    .input(gem, Materials.NetherQuartz, 4)
+                    .outputs(new ItemStack(Blocks.QUARTZ_BLOCK)).
+                    buildAndRegister();
+        }
+
+
+        if (GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
+            List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood").stream().flatMap(stack -> ModHandler.getAllSubItems(stack).stream()).collect(Collectors.toList());
+
+            for (ItemStack stack : allWoodLogs) {
+                ItemStack smeltingOutput = ModHandler.getSmeltingOutput(stack);
+                if (!smeltingOutput.isEmpty() && smeltingOutput.getItem() == Items.COAL && smeltingOutput.getMetadata() == 1) {
+                    ItemStack woodStack = stack.copy();
+                    woodStack.setItemDamage(OreDictionary.WILDCARD_VALUE);
+                    ModHandler.removeFurnaceSmelting(woodStack);
+                }
+            }
+        }
+    }
 }

@@ -1,16 +1,12 @@
-package gregicadditions.recipes;
+package gregicadditions.recipes.categories;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.ELECTRIC_PUMP_UMV;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.Superconductor;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Nitrogen;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
 import static gregtech.common.items.MetaItems.*;
 
 public class SuperconductorRecipes {
@@ -208,5 +204,68 @@ public class SuperconductorRecipes {
                 .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(12))
                 .buildAndRegister();
 
+        // TODO Remove these once MAX-tier cables are properly handled
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(24)
+                .input(wireGtSingle, Superconductor)
+                .input(foil, PolyphenyleneSulfide)
+                .output(cableGtSingle, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(25)
+                .input(wireGtSingle, Superconductor, 2)
+                .input(foil, PolyphenyleneSulfide, 2)
+                .output(cableGtDouble, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(26)
+                .input(wireGtSingle, Superconductor, 4)
+                .input(foil, PolyphenyleneSulfide, 4)
+                .output(cableGtQuadruple, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(27)
+                .input(wireGtSingle, Superconductor, 8)
+                .input(foil, PolyphenyleneSulfide, 8)
+                .output(cableGtOctal, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(28)
+                .input(wireGtSingle, Superconductor, 16)
+                .input(foil, PolyphenyleneSulfide, 16)
+                .output(cableGtHex, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(24)
+                .input(wireGtDouble, Superconductor)
+                .input(foil, PolyphenyleneSulfide, 2)
+                .output(cableGtDouble, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(24)
+                .input(wireGtQuadruple, Superconductor)
+                .input(foil, PolyphenyleneSulfide, 4)
+                .output(cableGtQuadruple, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(24)
+                .input(wireGtOctal, Superconductor)
+                .input(foil, PolyphenyleneSulfide, 8)
+                .output(cableGtOctal, Superconductor)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .circuitMeta(24)
+                .input(wireGtHex, Superconductor)
+                .input(foil, PolyphenyleneSulfide, 16)
+                .output(cableGtHex, Superconductor)
+                .buildAndRegister();
     }
 }

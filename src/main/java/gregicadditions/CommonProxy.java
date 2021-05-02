@@ -13,9 +13,10 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.pipelike.cable.GAItemBlockCable;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
+import gregicadditions.recipes.categories.handlers.*;
 import gregicadditions.recipes.compat.ForestryCompat;
-import gregicadditions.recipes.handlers.*;
-import gregicadditions.recipes.MachineCraftingRecipes;
+import gregicadditions.recipes.categories.*;
+import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
@@ -166,37 +167,40 @@ public class CommonProxy {
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
-        ConfigCircuitRecipeRemoval.init();
-        GAMachineRecipeRemoval.init();
-        GARecipeAddition.generatedRecipes();
-        RecipeHandler.registerLargeChemicalRecipes();
-        RecipeHandler.registerLargeMixerRecipes();
-        RecipeHandler.registerLargeForgeHammerRecipes();
-        RecipeHandler.registerAlloyBlastRecipes();
-        RecipeHandler.registerChemicalPlantRecipes();
-        RecipeHandler.registerGreenHouseRecipes();
-        RecipeHandler.registerLargeCentrifugeRecipes();
-        RecipeHandler.registerLaserEngraverRecipes();
+        GARecipeAddition.init();
+        GAMetaItems.registerRecipes();
+        MachineCraftingRecipes.init();
+
+        RecipeHandler.generatedRecipes();
+        RecipeHandler.registerLargeMachineRecipes();
         VoidMinerHandler.init();
     }
 
     @SubscribeEvent
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering ore prefix...");
+
+        // Register GTCE Material Handlers
         RecipeHandler.register();
         NuclearHandler.register();
         OreRecipeHandler.register();
-        GARecipeRemoval.init();
-        GARecipeAddition.init();
+
+        // Register OreDictionary Entries
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
+        RecipeHandler.registerOreDict();
+
+        // Run GTCE Material Handlers
         OrePrefix.runMaterialHandlers();
-        GAMetaItems.registerRecipes();
-        GARecipeAddition.init2();
-        GARecipeAddition.initChains();
+
+        // Run some early recipe addition
+        // These do not need to be here, but since they do not remove
+        // any recipes, they are fine to be run early
         ForestryCompat.init();
-        MatterReplication.init();
-        MachineCraftingRecipes.init();
+        RecipeHandler.initChains();
+
+        // TODO
+        GARecipeRemoval.init();
         FuelHandler.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {

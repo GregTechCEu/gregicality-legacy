@@ -1,4 +1,4 @@
-package gregicadditions.recipes.handlers;
+package gregicadditions.recipes.categories.handlers;
 
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
@@ -7,6 +7,7 @@ import gregicadditions.GAValues;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
@@ -20,6 +21,8 @@ import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 
 public class FuelHandler {
+
+    // TODO
     public static void init() {
         //Removal
         //removeFuelRecipe(RecipeMaps.DIESEL_GENERATOR_FUELS, Materials.BioFuel.getFluid(2));
@@ -184,6 +187,11 @@ public class FuelHandler {
     }
 
     private static void removeFuelRecipe(FuelRecipeMap map, FluidStack fluidStack) {
-        map.removeRecipe(map.findRecipe(Integer.MAX_VALUE, fluidStack));
+        if(map.removeRecipe(map.findRecipe(Integer.MAX_VALUE, fluidStack))) {
+            GALog.logger.info("Removed Generator Recipe for " + map.getUnlocalizedName() + " for Fluid: " + fluidStack.getUnlocalizedName());
+        }
+        else {
+            GALog.logger.warn("Failed to remove Generator Recipe for " + map.getUnlocalizedName() + " for Fluid: " + fluidStack.getUnlocalizedName());
+        }
     }
 }

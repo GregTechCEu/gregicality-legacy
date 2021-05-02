@@ -1,4 +1,4 @@
-package gregicadditions.recipes.handlers;
+package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.recipes.CountableIngredient;
