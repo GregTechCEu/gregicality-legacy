@@ -18,6 +18,7 @@ public class GAConfig {
     public static class Client {
         @Config.Comment("Should use advanced model for casings")
         @Config.Name("Advanced Casing Model")
+        @Config.RequiresMcRestart
         public boolean AdvancedCasingModel = true;
     }
 
