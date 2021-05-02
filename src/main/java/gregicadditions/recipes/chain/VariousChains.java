@@ -270,7 +270,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .fluidInputs(NitrationMixture.getFluid(200))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT))
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(300))
                 .buildAndRegister();
 
