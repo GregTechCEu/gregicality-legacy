@@ -271,7 +271,7 @@ public class VariousChains {
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .fluidInputs(NitrationMixture.getFluid(200))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(300))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(150))
                 .buildAndRegister();
 
         ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL),
