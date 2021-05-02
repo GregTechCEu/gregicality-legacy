@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
 	"textures": {
 		"0": "gtadditions:blocks/casing/lv",
 		"1": "gtadditions:blocks/casing/mv",

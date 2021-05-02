@@ -7,6 +7,7 @@ public class EmitterCasing extends ReTexturedCasing<EmitterCasing.CasingType> {
 
     public EmitterCasing() {
         super(new ResourceLocation("gtadditions","block/casing/emitter"));
+        setTranslationKey("ga_emitter_casing");
         setDefaultState(getState(CasingType.EMITTER_LV));
     }
 
