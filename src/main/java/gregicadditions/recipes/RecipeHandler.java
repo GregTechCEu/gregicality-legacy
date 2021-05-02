@@ -7,6 +7,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
+import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.chain.*;
 import gregicadditions.recipes.chain.optical.Lasers;
 import gregicadditions.recipes.chain.optical.OpticalCircuits;
@@ -160,6 +161,16 @@ public class RecipeHandler {
         DigitalInterfaces.init();
         InsulationWireAssemblyChain.init();
         ArcFurnaceOxidation.init();
+    }
+
+    public static void initRecipes() {
+        RecipeOverride.init();
+        ComponentRecipes.init();
+        MetaItemRecipes.init();
+        CasingRecipes.init();
+        SuperconductorRecipes.init();
+        MaterialIteration.init();
+        AlloyRecipes.init();
     }
 
     public static void registerLargeMachineRecipes() {
@@ -347,6 +358,7 @@ public class RecipeHandler {
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
         OrePrefix cablePrefix = valueOf("cable" + wireGt.name().substring(4));
         ItemStack cableStack = OreDictUnifier.get(cablePrefix, material);
+        /*
 
 
         for (FluidMaterial fluid : OLD_INSULATION_MATERIAL) {
@@ -359,7 +371,7 @@ public class RecipeHandler {
             removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtQuadruple, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(576)});
             removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(1152)});
             removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(2304)});
-        }
+        }*/
 
         int tier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);

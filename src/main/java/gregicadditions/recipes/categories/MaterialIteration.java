@@ -1,16 +1,11 @@
 package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaItems;
 import gregtech.api.GTValues;
-import gregtech.api.items.toolitem.ToolMetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.*;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 

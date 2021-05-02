@@ -1,6 +1,5 @@
 package gregicadditions.recipes.categories;
 
-import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;

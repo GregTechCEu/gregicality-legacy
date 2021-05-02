@@ -23,7 +23,7 @@ import static gregtech.api.unification.material.Materials.UUMatter;
 import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class OreRecipeHandler {
+public class OreRecipeHandler { // TODO
 
     public static void register() {
         //ore tripling

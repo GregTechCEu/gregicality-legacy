@@ -318,6 +318,36 @@ public enum GACraftingComponents {
             }
         }
     },
+    CABLE_SINGLE_WORSE {
+        @Override
+        public Object getIngredient(int tier) {
+            return CABLE_SINGLE.getIngredient(tier == 0 ? tier : tier - 1);
+        }
+    },
+    CABLE_DOUBLE_WORSE {
+        @Override
+        public Object getIngredient(int tier) {
+            return CABLE_DOUBLE.getIngredient(tier == 0 ? tier : tier - 1);
+        }
+    },
+    CABLE_QUAD_WORSE {
+        @Override
+        public Object getIngredient(int tier) {
+            return CABLE_QUAD.getIngredient(tier == 0 ? tier : tier - 1);
+        }
+    },
+    CABLE_OCTAL_WORSE {
+        @Override
+        public Object getIngredient(int tier) {
+            return CABLE_OCTAL.getIngredient(tier == 0 ? tier : tier - 1);
+        }
+    },
+    CABLE_HEX_WORSE {
+        @Override
+        public Object getIngredient(int tier) {
+            return CABLE_HEX.getIngredient(tier == 0 ? tier : tier - 1);
+        }
+    },
     WIRE {
         @Override
         public Object getIngredient(int tier) {

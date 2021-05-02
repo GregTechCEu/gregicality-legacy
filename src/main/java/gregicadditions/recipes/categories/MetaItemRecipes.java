@@ -5,15 +5,12 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -103,7 +100,7 @@ public class MetaItemRecipes {
         ModHandler.addShapedRecipe("gtadditions:insulating_tape", INSULATING_TAPE.getStackForm(6),
                 "RRR", "SSS",
                 'R', new ItemStack(Items.PAPER),
-                'S', MetaItems.RUBBER_DROP);
+                'S', RUBBER_DROP);
 
         // Jetpacks
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(100)
@@ -347,7 +344,7 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Data Stick
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(90)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(90)
                 .input(circuit, Good)
                 .inputs(PLASTIC_BOARD.getStackForm())
                 .inputs(NAND_MEMORY_CHIP.getStackForm(32))
@@ -356,14 +353,6 @@ public class MetaItemRecipes {
                 .input(plate, Plastic, 4)
                 .fluidInputs(SolderingAlloy.getFluid(144))
                 .outputs(TOOL_DATA_STICK.getStackForm())
-                .buildAndRegister();
-
-        // Dynamite
-        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(4)
-                .inputs(new ItemStack(Items.PAPER))
-                .inputs(new ItemStack(Items.STRING))
-                .fluidInputs(Glyceryl.getFluid(500))
-                .outputs(DYNAMITE.getStackForm())
                 .buildAndRegister();
 
         // Lapotron Crystal Recipes
@@ -426,7 +415,7 @@ public class MetaItemRecipes {
                 .input(wireFine, Gold, 4)
                 .input(gtMetalCasing, Aluminium)
                 .inputs(LASER_DIODE.getStackForm())
-                .input(circuit, MarkerMaterials.Tier.Ultimate)
+                .input(circuit, Ultimate)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
                 .buildAndRegister();
 

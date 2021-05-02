@@ -164,11 +164,13 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering recipe low...");
+
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
-        GARecipeAddition.init();
-        GAMetaItems.registerRecipes();
+
+        RecipeHandler.initRecipes();
+        GAMetaItems.registerRecipes(); // TODO This is just tool recipes
         MachineCraftingRecipes.init();
 
         RecipeHandler.generatedRecipes();
@@ -198,15 +200,11 @@ public class CommonProxy {
         // any recipes, they are fine to be run early
         ForestryCompat.init();
         RecipeHandler.initChains();
-
-        // TODO
-        GARecipeRemoval.init();
         FuelHandler.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
         }
-
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

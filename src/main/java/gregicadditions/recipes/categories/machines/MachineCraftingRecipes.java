@@ -28,7 +28,7 @@ import java.util.List;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.AdditionMethods.*;
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
@@ -125,7 +125,6 @@ public class MachineCraftingRecipes {
             add(GAConfig.GT5U.enableZPMandUVBats ? GAMetaItems.ENERGY_CLUSTER.getStackForm() : last_bat);
             add(last_bat);
         }};
-        ModHandler.addShapedRecipe("ga_charger_ev",  MetaTileEntities.CHARGER[GAValues.EV].getStackForm(),  "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GAValues.EV].getStackForm(),  'W', new UnificationEntry(wireGtHex, Aluminium),      'T', OreDictNames.chestWood, 'B', MetaItems.LAPOTRON_CRYSTAL, 'C', new UnificationEntry(circuit, Extreme));
         ModHandler.addShapedRecipe("ga_charger_zpm", MetaTileEntities.CHARGER[GAValues.ZPM].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GAValues.ZPM].getStackForm(), 'W', new UnificationEntry(wireGtHex, Naquadah),       'T', OreDictNames.chestWood, 'B', batteries.get(0),           'C', new UnificationEntry(circuit, Ultimate));
         ModHandler.addShapedRecipe("ga_charger_uv",  MetaTileEntities.CHARGER[GAValues.UV].getStackForm(),  "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GAValues.UV].getStackForm(),  'W', new UnificationEntry(wireGtHex, NaquadahAlloy),  'T', OreDictNames.chestWood, 'B', batteries.get(1),           'C', new UnificationEntry(circuit, Superconductor));
         ModHandler.addShapedRecipe("ga_charger_max", MetaTileEntities.CHARGER[GTValues.MAX].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.MAX].getStackForm(), 'W', new UnificationEntry(wireGtHex, Superconductor), 'T', OreDictNames.chestWood, 'B', batteries.get(2),           'C', new UnificationEntry(circuit, Infinite));
@@ -285,7 +284,6 @@ public class MachineCraftingRecipes {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:transformer_max"));
 
         // Chargers
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_ev"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_zpm"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_uv"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:charger_max"));
@@ -308,121 +306,81 @@ public class MachineCraftingRecipes {
         removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(wireGtSingle, Superconductor, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(288)});
     }
 
-    // TODO These need to be done better than this
     private static void highAmpMachines() {
 
-        GATileEntities.TRANSFORMER_1_AMPS.forEach(transformer -> {
-            int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(),
-                    "KBB", "CM ", "KBB",
-                    'M', WORSE_HULL.getIngredient(tier),
-                    'C', CABLE_DOUBLE.getIngredient(tier),
-                    'B', CABLE_DOUBLE.getIngredient(tier - 1),
-                    'K', MetaItems.SMALL_COIL);
-        });
+        registerMachineRecipe(GATileEntities.TRANSFORMER_1_AMPS,
+                "KBB", "CM ", "KBB",
+                'M', WORSE_HULL,
+                'C', CABLE_DOUBLE,
+                'B', CABLE_DOUBLE_WORSE,
+                'K', MetaItems.SMALL_COIL);
 
-        GATileEntities.TRANSFORMER_4_AMPS.forEach(transformer -> {
-            int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(),
-                    "KBB", "CM ", "KBB",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_DOUBLE.getIngredient(tier),
-                    'B', CABLE_DOUBLE.getIngredient(tier - 1),
-                    'K', MetaItems.SMALL_COIL);
-        });
+        registerMachineRecipe(GATileEntities.TRANSFORMER_4_AMPS,
+                "KBB", "CM ", "KBB",
+                'M', WORSE_HULL,
+                'C', CABLE_DOUBLE,
+                'B', CABLE_DOUBLE_WORSE,
+                'K', MetaItems.SMALL_COIL);
 
-        GATileEntities.TRANSFORMER_8_AMPS.forEach(transformer -> {
-            int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(),
-                    "KBB", "CM ", "KBB",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_QUAD.getIngredient(tier),
-                    'B', CABLE_QUAD.getIngredient(tier - 1),
-                    'K', MetaItems.SMALL_COIL);
-        });
+        registerMachineRecipe(GATileEntities.TRANSFORMER_8_AMPS,
+                "KBB", "CM ", "KBB",
+                'M', WORSE_HULL,
+                'C', CABLE_QUAD,
+                'B', CABLE_QUAD_WORSE,
+                'K', MetaItems.SMALL_COIL);
 
-        GATileEntities.TRANSFORMER_12_AMPS.forEach(transformer -> {
-            int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(),
-                    "KBB", "CM ", "KBB",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_OCTAL.getIngredient(tier),
-                    'B', CABLE_OCTAL.getIngredient(tier - 1),
-                    'K', MetaItems.SMALL_COIL);
-        });
+        registerMachineRecipe(GATileEntities.TRANSFORMER_12_AMPS,
+                "KBB", "CM ", "KBB",
+                'M', WORSE_HULL,
+                'C', CABLE_OCTAL,
+                'B', CABLE_OCTAL_WORSE,
+                'K', MetaItems.SMALL_COIL);
 
-        GATileEntities.TRANSFORMER_16_AMPS.forEach(transformer -> {
-            int tier = transformer.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", transformer.getMetaName()), transformer.getStackForm(),
-                    "KBB", "CM ", "KBB",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_HEX.getIngredient(tier),
-                    'B', CABLE_HEX.getIngredient(tier - 1),
-                    'K', MetaItems.SMALL_COIL);
-        });
+        registerMachineRecipe(GATileEntities.TRANSFORMER_16_AMPS,
+                "KBB", "CM ", "KBB",
+                'M', WORSE_HULL,
+                'C', CABLE_HEX,
+                'B', CABLE_HEX_WORSE,
+                'K', MetaItems.SMALL_COIL);
 
-        GATileEntities.ENERGY_INPUT_HATCH_4_AMPS.forEach(energyInputHatch -> {
-            int tier = energyInputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyInputHatch.getMetaName()), energyInputHatch.getStackForm(),
-                    "CM ",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_DOUBLE.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_4_AMPS,
+                "CM ",
+                'M', HULL,
+                'C', CABLE_DOUBLE);
 
-        GATileEntities.ENERGY_INPUT_HATCH_16_AMPS.forEach(energyInputHatch -> {
-            int tier = energyInputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyInputHatch.getMetaName()), energyInputHatch.getStackForm(),
-                    "CM ",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_QUAD.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_16_AMPS,
+                "CM ",
+                'M', HULL,
+                'C', CABLE_QUAD);
 
-        GATileEntities.ENERGY_INPUT_HATCH_64_AMPS.forEach(energyInputHatch -> {
-            int tier = energyInputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyInputHatch.getMetaName()), energyInputHatch.getStackForm(),
-                    "CM ",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_OCTAL.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_64_AMPS,
+                "CM ",
+                'M', HULL,
+                'C', CABLE_OCTAL);
 
-        GATileEntities.ENERGY_INPUT_HATCH_128_AMPS.forEach(energyInputHatch -> {
-            int tier = energyInputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyInputHatch.getMetaName()), energyInputHatch.getStackForm(),
-                    "CM ",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_HEX.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_128_AMPS,
+                "CM ",
+                'M', HULL,
+                'C', CABLE_HEX);
 
-        GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS.forEach(energyOutputHatch -> {
-            int tier = energyOutputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(),
-                    " MC",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_DOUBLE.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS,
+                " MC",
+                'M', HULL,
+                'C', CABLE_DOUBLE);
 
-        GATileEntities.ENERGY_OUTPUT_HATCH_32_AMPS.forEach(energyOutputHatch -> {
-            int tier = energyOutputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(),
-                    " MC",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_QUAD.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_32_AMPS,
+                " MC",
+                'M', HULL,
+                'C', CABLE_QUAD);
 
-        GATileEntities.ENERGY_OUTPUT_HATCH_64_AMPS.forEach(energyOutputHatch -> {
-            int tier = energyOutputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(),
-                    " MC",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_OCTAL.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_64_AMPS,
+                " MC",
+                'M', HULL,
+                'C', CABLE_OCTAL);
 
-        GATileEntities.ENERGY_OUTPUT_HATCH_128_AMPS.forEach(energyOutputHatch -> {
-            int tier = energyOutputHatch.getTier();
-            ModHandler.addShapedRecipe(String.format("ga_%s", energyOutputHatch.getMetaName()), energyOutputHatch.getStackForm(),
-                    " MC",
-                    'M', HULL.getIngredient(tier),
-                    'C', CABLE_HEX.getIngredient(tier));
-        });
+        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_128_AMPS,
+                " MC",
+                'M', HULL,
+                'C', CABLE_HEX);
     }
 }

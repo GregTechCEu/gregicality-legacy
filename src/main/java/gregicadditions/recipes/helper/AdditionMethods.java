@@ -1,14 +1,19 @@
 package gregicadditions.recipes.helper;
 
-import gregicadditions.GAConfig;
+import forestry.core.fluids.Fluids;
+import gregicadditions.GAValues;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
+import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
 import gregicadditions.utils.GALog;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.*;
+import gregtech.api.recipes.recipes.FuelRecipe;
+import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -18,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class AdditionMethods {
-
+// TODO COMMENTS
     public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
         List<ItemStack> inputs = new ArrayList<>();
         List<String> names = new ArrayList<>();
@@ -115,6 +120,20 @@ public class AdditionMethods {
         }
     }
 
+    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(List<T> metaTileEntities, Object... recipe) {
+        for (T mte : metaTileEntities) {
+            ModHandler.addShapedRecipe(String.format("ga%s", mte.getMetaName()), mte.getStackForm(),
+                    prepareRecipe(mte.getTier(), Arrays.copyOf(recipe, recipe.length)));
+        }
+    }
+
+    public static void registerMachineRecipes(List<GAMetaTileEntityEnergyHatch> metaTileEntities, Object... recipe) {
+        for (GAMetaTileEntityEnergyHatch mte : metaTileEntities) {
+            ModHandler.addShapedRecipe(String.format("ga%s", mte.getMetaName()), mte.getStackForm(),
+                    prepareRecipe(mte.getTier(), Arrays.copyOf(recipe, recipe.length)));
+        }
+    }
+
     private static Object[] prepareRecipe(int tier, Object... recipe) {
         for (int i = 3; i < recipe.length; i++) {
             if (recipe[i] instanceof GACraftingComponents) {
@@ -122,5 +141,71 @@ public class AdditionMethods {
             }
         }
         return recipe;
+    }
+
+    public static void registerPlasmaFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.DIESEL_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerGasGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerSemiFluidGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerHyperReactorFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerHotCoolantTurbineFuel(FluidStack input, FluidMaterial output, int duration, int tier) {
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
+    }
+
+    public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier) {
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder()
+                .qubit(1)
+                .input(prefix, material)
+                .duration(duration)
+                .EUt(GAValues.V[tier])
+                .buildAndRegister();
+    }
+
+    public static class GenericFluid {
+
+        private FluidMaterial material;
+        private Fluids fluids;
+
+        public GenericFluid(FluidMaterial material) {
+            this.material = material;
+        }
+
+        public GenericFluid(Fluids fluids) {
+            this.fluids = fluids;
+        }
+
+        public FluidStack getFluid(int amount) {
+            if (material == null)
+                return fluids.getFluid(amount);
+            else
+                return material.getFluid(amount);
+        }
     }
 }

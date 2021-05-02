@@ -5,11 +5,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.recipes.GARecipeMaps;
-import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
@@ -27,7 +23,6 @@ import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.GAReactorCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.machines.GATileEntities.*;
-import static gregicadditions.machines.GATileEntities.LARGE_NAQUADAH_REACTOR;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -35,6 +30,7 @@ import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX;
+import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.BRONZE_BRICKS;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING;
@@ -96,7 +92,7 @@ public class MultiblockCraftingRecipes {
                 .buildAndRegister();
 
         // Void Miner Mk2
-        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(500000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(500000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 27))
                 .fluidInputs(Polyetheretherketone.getFluid(2592))
                 .inputs(SENSOR_UHV.getStackForm(2))
@@ -117,7 +113,7 @@ public class MultiblockCraftingRecipes {
                 .buildAndRegister();
 
         // Void Miner Mk3
-        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(2000000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(2000000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 54))
                 .fluidInputs(Zylon.getFluid(L * 18))
                 .inputs(SENSOR_UEV.getStackForm(2))
@@ -576,6 +572,14 @@ public class MultiblockCraftingRecipes {
                 'D', MetaTileEntities.CENTRIFUGE[HV].getStackForm(),
                 'P', GAMetaBlocks.MOTOR_CASING.getItemVariant(MotorCasing.CasingType.MOTOR_HV));
 
+        // Hot Coolant Turbine
+        ModHandler.addShapedRecipe("ga_large_high_pressure_steam_turbine", GATileEntities.HOT_COOLANT_TURBINE.getStackForm(),
+                "PSP", "SAS", "CSC",
+                'S', new UnificationEntry(gear, Stellite),
+                'P', new UnificationEntry(circuit, Advanced),
+                'A', MetaTileEntities.HULL[EV].getStackForm(),
+                'C', new UnificationEntry(pipeLarge, Ultimet));
+
         // Steam Grinder
         ModHandler.addShapedRecipe("ga_steam_grinder", STEAM_GRINDER.getStackForm(),
                 "CGC", "CFC", "CGC",
@@ -871,14 +875,6 @@ public class MultiblockCraftingRecipes {
                 'A', MetaTileEntities.HULL[HV].getStackForm(),
                 'C', new UnificationEntry(pipeLarge, Steel));
 
-        // TODO Move out of this method?
-        ModHandler.addShapedRecipe("ga_large_high_pressure_steam_turbine", GATileEntities.HOT_COOLANT_TURBINE.getStackForm(),
-                "PSP", "SAS", "CSC",
-                'S', new UnificationEntry(gear, Stellite),
-                'P', new UnificationEntry(circuit, Advanced),
-                'A', MetaTileEntities.HULL[EV].getStackForm(),
-                'C', new UnificationEntry(pipeLarge, Ultimet));
-
         // Large Gas Turbine
         ModHandler.addShapedRecipe("ga_large_gas_turbine", GATileEntities.LARGE_GAS_TURBINE.getStackForm(),
                 "PSP", "SAS", "CSC",
@@ -895,20 +891,33 @@ public class MultiblockCraftingRecipes {
                 'A', MetaTileEntities.HULL[UV].getStackForm(),
                 'C', new UnificationEntry(pipeLarge, TungstenSteel));
 
+        // Large Bronze Boiler TODO This uses old casings
         ModHandler.addShapedRecipe("ga_large_bronze_boiler", MetaTileEntities.LARGE_BRONZE_BOILER.getStackForm(),
                 "PSP", "SAS", "PSP",
                 'P', new UnificationEntry(cableGtSingle, Tin),
                 'S', new UnificationEntry(circuit, Basic),
-                'A', MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS));
+                'A', MetaBlocks.METAL_CASING.getItemVariant(BRONZE_BRICKS));
 
-        // TODO
-        ModHandler.addShapedRecipe("ga_large_steel_boiler", MetaTileEntities.LARGE_STEEL_BOILER.getStackForm(), "PSP", "SAS", "PSP", 'P', new UnificationEntry(cableGtSingle, Copper), 'S', new UnificationEntry(circuit, MarkerMaterials.Tier.Advanced), 'A', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Steel));
-        ModHandler.addShapedRecipe("ga_large_titanium_boiler", MetaTileEntities.LARGE_TITANIUM_BOILER.getStackForm(), "PSP", "SAS", "PSP", 'P', new UnificationEntry(cableGtSingle, Gold), 'S', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite), 'A', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), Titanium));
-        ModHandler.addShapedRecipe("ga_large_tungstensteel_boiler", MetaTileEntities.LARGE_TUNGSTENSTEEL_BOILER.getStackForm(), "PSP", "SAS", "PSP", 'P', new UnificationEntry(cableGtSingle, Aluminium), 'S', new UnificationEntry(circuit, Master), 'A', new UnificationEntry(OrePrefix.valueOf("gtMetalCasing"), TungstenSteel));
-        ASSEMBLER_RECIPES.recipeBuilder().inputs(MetaTileEntities.LARGE_BRONZE_BOILER.getStackForm()).inputs(CountableIngredient.from(plate, Steel, 2), CountableIngredient.from(circuit, MarkerMaterials.Tier.Advanced, 2)).outputs(MetaTileEntities.LARGE_STEEL_BOILER.getStackForm()).EUt(120).duration(600).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().inputs(MetaTileEntities.LARGE_STEEL_BOILER.getStackForm()).inputs(CountableIngredient.from(plate, Titanium, 2), CountableIngredient.from(circuit, MarkerMaterials.Tier.Advanced, 2)).outputs(MetaTileEntities.LARGE_TITANIUM_BOILER.getStackForm()).EUt(500).duration(600).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().inputs(MetaTileEntities.LARGE_TITANIUM_BOILER.getStackForm()).inputs(CountableIngredient.from(plate, TungstenSteel, 2), CountableIngredient.from(circuit, MarkerMaterials.Tier.Advanced, 2)).outputs(MetaTileEntities.LARGE_TUNGSTENSTEEL_BOILER.getStackForm()).EUt(2000).duration(600).buildAndRegister();
+        // Large Steel Boiler
+        ModHandler.addShapedRecipe("ga_large_steel_boiler", MetaTileEntities.LARGE_STEEL_BOILER.getStackForm(),
+                "PSP", "SAS", "PSP",
+                'P', new UnificationEntry(cableGtSingle, Copper),
+                'S', new UnificationEntry(circuit, Advanced),
+                'A', new UnificationEntry(gtMetalCasing, Steel));
 
+        // Large Titanium Boiler
+        ModHandler.addShapedRecipe("ga_large_titanium_boiler", MetaTileEntities.LARGE_TITANIUM_BOILER.getStackForm(),
+                "PSP", "SAS", "PSP",
+                'P', new UnificationEntry(cableGtSingle, Gold),
+                'S', new UnificationEntry(circuit, Elite),
+                'A', new UnificationEntry(gtMetalCasing, Titanium));
+
+        // Large Tungstensteel Boiler
+        ModHandler.addShapedRecipe("ga_large_tungstensteel_boiler", MetaTileEntities.LARGE_TUNGSTENSTEEL_BOILER.getStackForm(),
+                "PSP", "SAS", "PSP",
+                'P', new UnificationEntry(cableGtSingle, Aluminium),
+                'S', new UnificationEntry(circuit, Master),
+                'A', new UnificationEntry(gtMetalCasing, TungstenSteel));
 
         // Recipes added to convert from GTCE to Gregicality versions of overridden multiblocks ========================
         ModHandler.addShapelessRecipe("ga_cracking_unit_compatibility", GATileEntities.CRACKER.getStackForm(), MetaTileEntities.CRACKER.getStackForm());

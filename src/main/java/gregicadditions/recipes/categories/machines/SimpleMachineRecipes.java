@@ -2,17 +2,11 @@ package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.OreDictNames;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
-
-import java.util.Arrays;
 
 import static gregicadditions.recipes.helper.AdditionMethods.registerMachineRecipe;
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
