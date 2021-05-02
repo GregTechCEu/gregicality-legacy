@@ -449,7 +449,7 @@ public class FusionElementsChain {
                 .fluidOutputs(Uranium.getFluid(16))
                 .buildAndRegister();
 
-        FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(120000000)
+        FUSION_RECIPES.recipeBuilder().duration(128).EUt(8192).EUToStart(120000000)
                 .fluidInputs(Uranium.getFluid(16))
                 .fluidInputs(Helium.getFluid(16))
                 .fluidOutputs(Plutonium.getFluid(16))
