@@ -399,7 +399,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
 
             if (lastItemInputsMatrix == null || lastItemInputsMatrix.length != getInputBuses().size()) {
                 lastItemInputsMatrix = new ItemStack[getInputBuses().size()][];
-                GALog.logger.info("Num buses: " + getInputBuses().size());
             }
             if (lastItemInputsMatrix[index] == null || lastItemInputsMatrix[index].length != inputs.getSlots()) {
                 this.lastItemInputsMatrix[index] = new ItemStack[inputs.getSlots()];
