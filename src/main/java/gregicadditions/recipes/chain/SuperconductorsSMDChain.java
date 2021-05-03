@@ -2,7 +2,7 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAEnums;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GASimpleBlock;
+import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -240,12 +240,6 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(NitricAcid.getFluid(2000))
                 .fluidOutputs(Chlorine.getFluid(2000))
                 .output(dust, LeadZirconateTitanate, 6)
-                .buildAndRegister();
-
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(560).EUt(2000)
-                .input(dust, LeadZirconateTitanate, 4)
-                .fluidInputs(DistilledWater.getFluid(2000))
-                .output(gemExquisite, LeadZirconateTitanate)
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(430).EUt(30720)
@@ -701,7 +695,7 @@ public class SuperconductorsSMDChain {
 
         // AcH3 + 9H -> AcH12 (multiplied by 18)
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(260).EUt(7800000)
-                .inputs(GAMetaBlocks.SIMPLE_BLOCK.getItemVariant(GASimpleBlock.CasingType.NAQUADRIA_CHARGE))
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .inputs(ActiniumHydride.getItemStack(72))
                 .fluidInputs(Hydrogen.getFluid(162000))
                 .fluidOutputs(ActiniumSuperhydridePlasma.getFluid(72000))

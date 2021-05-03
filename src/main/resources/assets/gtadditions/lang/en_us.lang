@@ -1919,11 +1919,13 @@ tile.ga_fusion_casing.fusion_blanket.name=Advanced Fusion Blanket
 tile.ga_fusion_casing.blanket_base.name=Advanced Fusion Blanket Base
 tile.ga_fusion_casing.breeding_blanket.name=Advanced Breeding Blanket
 tile.ga_multiblock_casing2.laser_engraver_casing.name=Laser Engraver Casing
-tile.ga_simple_block.superheavy_block.name=Super Heavy Block
-tile.ga_simple_block.taranium_charge.name=Taranium Charge
-tile.ga_simple_block.naquadria_charge.name=Naquadria Charge
-tile.ga_simple_block.leptonic_charge.name=Leptonic Charge
-tile.ga_simple_block.qcd_charge.name=Quantum Chromodynamic Charge
+tile.ga_simple_block.superheavy_block.name=Superheavy Block
+tile.ga_explosive.taranium_charge.name=Taranium Charge
+tile.ga_explosive.naquadria_charge.name=Naquadria Charge
+tile.ga_explosive.leptonic_charge.name=Leptonic Charge
+tile.ga_explosive.qcd_charge.name=Quantum Chromodynamic Charge
+tile.ga_explosive.industrial_tnt.name=Industrial TNT
+tile.ga_explosive.powder_barrel.name=Powder Barrel
 
 
 

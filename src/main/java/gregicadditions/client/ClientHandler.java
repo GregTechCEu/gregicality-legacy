@@ -2,7 +2,6 @@ package gregicadditions.client;
 
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
-import gregicadditions.blocks.PowderBarrelRenderer;
 import gregicadditions.machines.CrateRenderer;
 import gregicadditions.machines.DrumRenderer;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
@@ -51,7 +50,6 @@ public class ClientHandler {
     public static OrientedOverlayRenderer FUSION_REACTOR_OVERLAY = new OrientedOverlayRenderer("machines/fusion_reactor", OverlayFace.FRONT);
     public static DrumRenderer BARREL = new DrumRenderer("storage/drums/barrel");
     public static DrumRenderer DRUM = new DrumRenderer("storage/drums/drum");
-    public static PowderBarrelRenderer POWDER_BARREL = new PowderBarrelRenderer("powder_barrel");
     public static CrateRenderer WOODEN_CRATE = new CrateRenderer("storage/crates/wooden_crate");
     public static CrateRenderer METAL_CRATE = new CrateRenderer("storage/crates/metal_crate");
     public static final TextureArea BRONZE_FLUID_SLOT = TextureArea.fullImage("textures/gui/steam/fluid_slot.png");
