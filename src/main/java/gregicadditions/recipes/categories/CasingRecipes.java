@@ -611,6 +611,8 @@ public class CasingRecipes {
                 'P', new UnificationEntry(plate, TungstenSteel),
                 'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
 
+        // Assembler Recipe for MK1 Fusion Casing added by GTCE
+
         ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(FUSION_CASING_MK2),
                 "PhP", "PHP", "PwP",
                 'P', new UnificationEntry(plate, Rutherfordium),

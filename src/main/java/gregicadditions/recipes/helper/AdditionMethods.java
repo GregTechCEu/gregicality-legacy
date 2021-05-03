@@ -41,7 +41,7 @@ public class AdditionMethods {
         removeRecipesByInputs(map, new ItemStack[0], fluidInputs);
     }
 
-    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack[] itemInputs, FluidStack[] fluidInputs) {
+    public static <R extends RecipeBuilder<R>> boolean removeRecipesByInputs(RecipeMap<R> map, ItemStack[] itemInputs, FluidStack[] fluidInputs) {
 
         List<String> fluidNames = new ArrayList<>();
         List<String> itemNames = new ArrayList<>();
@@ -68,6 +68,7 @@ public class AdditionMethods {
                 GALog.logger.info("Removed Recipe for inputs: Items: {} Fluids: {}", itemNames, fluidNames);
             else GALog.logger.info("Failed to Remove Recipe for inputs: Items: {} Fluids: {}", itemNames, fluidNames);
         }
+        return wasRemoved;
     }
     public static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
 
