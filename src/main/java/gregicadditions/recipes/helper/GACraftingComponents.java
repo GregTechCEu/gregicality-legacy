@@ -280,7 +280,6 @@ public enum GACraftingComponents {
             }
         }
     },
-
     CABLE_HEX {
         @Override
         public Object getIngredient(int tier) {
@@ -996,8 +995,7 @@ public enum GACraftingComponents {
 
             }
         }
-    },
-    ;
+    };
 
     public abstract Object getIngredient(int tier);
 }

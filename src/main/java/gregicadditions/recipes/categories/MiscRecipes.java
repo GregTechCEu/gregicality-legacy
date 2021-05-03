@@ -4,16 +4,20 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.BLAST_ALLOY_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.GTValues.L;
-import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.FLUID_EXTRACTION_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
+import static gregtech.common.items.MetaItems.PLANT_BALL;
 
-public class AlloyRecipes {
+public class MiscRecipes {
 
     public static void init() {
 
@@ -28,19 +32,8 @@ public class AlloyRecipes {
         // Staballoy Dust
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
                 .input(dust, UraniumRadioactive.getMaterial(), 9)
-                .input(dust, Titanium, 1)
+                .input(dust, Titanium)
                 .output(dust, Staballoy, 10)
-                .buildAndRegister();
-
-        // Reactor Steel
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(12000).EUt(120)
-                .notConsumable(new IntCircuitIngredient(5))
-                .input(dust, Iron, 15)
-                .input(dust, Niobium, 1)
-                .input(dust, Vanadium, 4)
-                .input(dust, Carbon, 2)
-                .fluidInputs(Argon.getFluid(1000))
-                .fluidOutputs(ReactorSteel.getFluid(L * 22))
                 .buildAndRegister();
 
         // Quantum Dust
@@ -82,52 +75,61 @@ public class AlloyRecipes {
                 .input(dust, Aluminium, 3)
                 .input(dust, Chrome, 5)
                 .input(dust, Yttrium, 1)
-                .outputs(OreDictUnifier.get(dust, IncoloyMA956, 25))
+                .output(dust, IncoloyMA956, 25)
                 .EUt(500)
                 .duration(100)
                 .buildAndRegister();
 
-        // BLAST ALLOY RECIPES =========================================================================================
-
-        // Soldering Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(775).EUt(1200)
-                .input(dust, Tin, 9)
-                .input(dust, Antimony)
-                .fluidOutputs(SolderingAlloy.getFluid(L * 10))
+        // Pyrolyse Oven Charcoal from Sugar
+        PYROLYSE_RECIPES.recipeBuilder().duration(640).EUt(64)
+                .inputs(new ItemStack(Items.SUGAR, 23))
+                .circuitMeta(1)
+                .output(dust, Charcoal, 12)
+                .fluidOutputs(Water.getFluid(1500))
                 .buildAndRegister();
 
-        // Red Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(473).EUt(240)
-                .input(dust, Redstone, 3)
-                .input(dust, Copper)
-                .fluidOutputs(RedAlloy.getFluid(L * 4))
+        // Pyrolyse Oven Fermented Biomass
+        PYROLYSE_RECIPES.recipeBuilder().duration(200).EUt(10)
+                .inputs(PLANT_BALL.getStackForm())
+                .circuitMeta(2)
+                .fluidInputs(Water.getFluid(1500))
+                .chancedOutput(PLANT_BALL.getStackForm(), 1000, 100)
+                .fluidOutputs(FermentedBiomass.getFluid(1500))
                 .buildAndRegister();
 
-        // Magnalium
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(320).EUt(360)
-                .input(dust, Aluminium, 2)
-                .input(dust, Magnesium)
-                .fluidOutputs(Magnalium.getFluid(L * 3))
+        // Ender Pearl
+        MIXER_RECIPES.recipeBuilder().EUt(300).duration(880)
+                .input(dust, Beryllium)
+                .input(dust, Potassium, 4)
+                .fluidInputs(Nitrogen.getFluid(5000))
+                .output(dust, EnderPearl, 10)
                 .buildAndRegister();
 
-        // Tin Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
-                .input(dust, Tin)
-                .input(dust, Iron)
-                .fluidOutputs(TinAlloy.getFluid(L * 2))
+        // Silicon Carbide
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(3000).blastFurnaceTemp(2500)
+                .input(dust, Silicon)
+                .input(dust, Carbon)
+                .notConsumable(new IntCircuitIngredient(2))
+                .notConsumable(Argon.getFluid(0))
+                .outputs(SiliconCarbide.getItemStack(2))
                 .buildAndRegister();
 
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
-                .input(dust, Tin)
-                .input(dust, WroughtIron)
-                .fluidOutputs(TinAlloy.getFluid(L * 2))
+        // Diamond Implosion Recipe
+        IMPLOSION_RECIPES.recipeBuilder().EUt(30).duration(20).explosivesAmount(48)
+                .input(dust, Diamond, 4)
+                .output(gem, Diamond, 3)
+                .output(dustTiny, DarkAsh, 2)
                 .buildAndRegister();
 
-        // Battery Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(512).EUt(600)
-                .input(dust, Lead, 4)
-                .input(dust, Antimony)
-                .fluidOutputs(BatteryAlloy.getFluid(L * 5))
+        // Redstone and Glowstone Fluid Extraction
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
+                .input(dust, Redstone)
+                .fluidOutputs(Redstone.getFluid(L))
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
+                .input(dust, Glowstone)
+                .fluidOutputs(Glowstone.getFluid(L))
                 .buildAndRegister();
     }
 }

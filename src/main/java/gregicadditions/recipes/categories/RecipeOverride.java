@@ -12,12 +12,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
 import static gregicadditions.recipes.helper.AdditionMethods.*;
 import static gregtech.api.GTValues.L;
+import static gregtech.api.GTValues.W;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.Materials.*;
@@ -104,25 +108,21 @@ public class RecipeOverride {
 
         // Osmiridium Mixer Recipe
         removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
-        MIXER_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(764)
                 .input(dust, Iridium, 3)
                 .input(dust, Osmium)
                 .notConsumable(new IntCircuitIngredient(0))
                 .output(dust, Osmiridium, 4)
-                .EUt(30)
-                .duration(764)
                 .buildAndRegister();
 
         // HSS-G Mixer Recipe
         removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
-        MIXER_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(1160)
                 .input(dust, HSSG, 6)
                 .input(dust, Iridium, 2)
                 .input(dust, Osmium)
                 .notConsumable(new IntCircuitIngredient(1))
                 .output(dust, HSSS, 9)
-                .EUt(30)
-                .duration(1160)
                 .buildAndRegister();
 
         // Ethylene from Ethanol
@@ -418,11 +418,12 @@ public class RecipeOverride {
     private static void gregtechOverride() {
 
         // GTNH Bricks
-        removeFurnaceRecipe(new ItemStack(Items.CLAY_BALL, 1, OreDictionary.WILDCARD_VALUE));
+        removeFurnaceRecipe(new ItemStack(Items.CLAY_BALL, 1, W));
         removeFurnaceRecipe(COMPRESSED_CLAY.getStackForm());
-        // removeFurnaceRecipe(FIRECLAY_BRICK.getStackForm()); TODO Dead recipe
         removeRecipeByName("gregtech:brick_to_dust");
         removeRecipeByName("gregtech:brick_block_to_dust");
+        removeRecipeByName("gtadditions:block_compress_clay");
+        removeRecipeByName("gtadditions:block_decompress_clay");
 
         ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
 
@@ -495,10 +496,20 @@ public class RecipeOverride {
                 .outputs(new ItemStack(Items.DYE, 4, 15))
                 .buildAndRegister();
 
-        //wood pipe
-        if (GAConfig.GT6.BendingCylinders) {
+        // Wood Pipes
+        if (GAConfig.GT6.BendingPipes) {
             removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
             removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
+
+            ModHandler.addShapedRecipe("pipe_ga_tiny_wood", OreDictUnifier.get(pipeTiny, Wood, 8),
+                    "PPP", "hCw", "PPP",
+                    'P', "plankWood",
+                    'C', "craftingToolBendingCylinder");
+
+            ModHandler.addShapedRecipe("pipe_ga_small_wood", OreDictUnifier.get(pipeSmall, Wood, 4),
+                    "PsP", "PCP", "PhP",
+                    'P', "plankWood",
+                    'C', "craftingToolBendingCylinder");
 
             ModHandler.addShapedRecipe("pipe_ga_wood", OreDictUnifier.get(pipeMedium, Wood, 2),
                     "PPP", "sCh", "PPP",
@@ -510,10 +521,16 @@ public class RecipeOverride {
                     'P', "plankWood",
                     'C', "craftingToolBendingCylinder");
 
-            ModHandler.addShapedRecipe("pipe_ga_small_wood", OreDictUnifier.get(pipeSmall, Wood, 4),
-                    "PsP", "PCP", "PhP",
-                    'P', "plankWood",
-                    'C', "craftingToolBendingCylinder");
+        } else {
+
+            // Only add Tiny and Large Wood Pipes if Bending Cylinders are not enabled
+            ModHandler.addShapedRecipe("pipe_ga_tiny_wood", OreDictUnifier.get(pipeTiny, Wood, 8),
+                    "PPP", "h w", "PPP",
+                    'P', "plankWood");
+
+            ModHandler.addShapedRecipe("pipe_ga_large_wood", OreDictUnifier.get(pipeLarge, Wood),
+                    "PhP", "P P", "PsP",
+                    'P', "plankWood");
         }
 
         // GTNH Coils
@@ -618,7 +635,7 @@ public class RecipeOverride {
                 .output(plate, CertusQuartz)
                 .buildAndRegister();
 
-        // Seed Oil
+        // Seed Oil TODO This duplicates
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
                 .input("listAllSeed", 1)
                 .fluidOutputs(SeedOil.getFluid(10))
@@ -755,13 +772,64 @@ public class RecipeOverride {
                     "R R", "RhR",
                     'R', new UnificationEntry(ring, Iron));
         }
+
+        // Glowstone / Nether Quartz Block Recipes
+        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+            removeRecipeByName("minecraft:glowstone");
+            removeRecipeByName("minecraft:quartz_block");
+            removeRecipeByName("gregtech:nether_quartz_block_to_nether_quartz");
+
+            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                    .input(block, NetherQuartz)
+                    .output(gem, NetherQuartz, 4)
+                    .buildAndRegister();
+
+            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                    .input(gem, NetherQuartz, 4)
+                    .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
+                    .buildAndRegister();
+
+            COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
+                    .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
+                    .outputs(new ItemStack(Blocks.GLOWSTONE))
+                    .buildAndRegister();
+        }
+
+        // Snow Block Recipes
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(24).duration(50)
+                .input(block, Snow)
+                .outputs(OreDictUnifier.get(dust, Snow, 4))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(2).duration(200)
+                .input(dust, Snow, 4)
+                .outputs(OreDictUnifier.get(block, Snow, 4))
+                .buildAndRegister();
+
+        // Log -> Charcoal Recipes
+        // TODO Ignores Forestry wood
+        if (GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
+            List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood")
+                                                       .stream()
+                                                       .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())
+                                                       .collect(Collectors.toList());
+
+            for (ItemStack stack : allWoodLogs) {
+                ItemStack smeltingOutput = ModHandler.getSmeltingOutput(stack);
+                if (!smeltingOutput.isEmpty() && smeltingOutput.getItem() == Items.COAL && smeltingOutput.getMetadata() == 1) {
+                    ItemStack woodStack = stack.copy();
+                    woodStack.setItemDamage(W);
+                    removeFurnaceRecipe(woodStack);
+                }
+            }
+        }
     }
 
     private static void recipeRemoval() {
 
         // Remove GTCE Platinum and Palladium Recipes
         removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(crushedPurified, Chalcopyrite)}, new FluidStack[]{NitricAcid.getFluid(1000)});
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(crushedPurified, Pentlandite)}, new FluidStack[]{NitricAcid.getFluid(1000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(crushedPurified, Pentlandite)},  new FluidStack[]{NitricAcid.getFluid(1000)});
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, PlatinumGroupSludge));
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Endstone));
 
@@ -770,8 +838,8 @@ public class RecipeOverride {
 
         // Remove MAX-Superconductor Wire Recipes
         removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, YttriumBariumCuprate, 3), OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, NiobiumTitanium, 3), OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, VanadiumGallium, 3), OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, NiobiumTitanium, 3),      OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, VanadiumGallium, 3),      OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
 
         // Remove Nuclear Processing
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
@@ -793,10 +861,10 @@ public class RecipeOverride {
         removeRecipesByInputs(MIXER_RECIPES, DinitrogenTetroxide.getFluid(1000), Dimethylhydrazine.getFluid(1000));
 
         // QCD Matter progression skipping
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_INGOT.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(144)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_NUGGET.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(144)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_PLATE.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(144)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(1296)});
+        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_INGOT.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
+        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_NUGGET.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(L)});
+        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_PLATE.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
+        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L * 9)});
 
         // Remove Yttrium Barium Cuprate Recipes
         removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Copper, 3), OreDictUnifier.get(dust, Barium, 2), OreDictUnifier.get(dust, Yttrium)}, new FluidStack[]{Oxygen.getFluid(7000)});

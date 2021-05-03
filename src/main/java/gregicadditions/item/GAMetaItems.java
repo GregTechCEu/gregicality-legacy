@@ -3,10 +3,13 @@ package gregicadditions.item;
 import gregicadditions.utils.GALog;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -16,6 +19,11 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.List;
+
+import static gregicadditions.GAMaterials.Snow;
+import static gregtech.api.unification.ore.OrePrefix.block;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
 
@@ -527,45 +535,10 @@ public class GAMetaItems {
                 ((GAMetaItem) item).registerOreDict();
             }
         }
-    }
 
-    public static void registerRecipes() {
-        for (MetaItem<?> item : ITEMS) {
-            if (item instanceof GAMetaTool) ((GAMetaTool) item).registerRecipes();
-        }
-    }
-
-    public static ItemStack getFilledCell(Fluid fluid, int count) {
-        ItemStack fluidCell = MetaItems.FLUID_CELL.getStackForm().copy();
-        IFluidHandlerItem fluidHandlerItem = fluidCell.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-        try {
-            fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
-
-        } catch (Exception e) {
-            GALog.logger.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
-            GALog.logger.error(e);
-            fluidHandlerItem.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
-        }
-        fluidCell = fluidHandlerItem.getContainer();
-        fluidCell.setCount(count);
-        return fluidCell;
-    }
-
-    public static ItemStack getFilledCell(Fluid fluid) {
-        return getFilledCell(fluid, 1);
-    }
-
-    public static boolean hasPrefix(ItemStack stack, String prefix, String... ignore) {
-        for (int i : OreDictionary.getOreIDs(stack)) {
-            if (OreDictionary.getOreName(i).startsWith(prefix)) {
-                boolean valid = true;
-                for (String s : ignore) {
-                    if (OreDictionary.getOreName(i).startsWith(s)) valid = false;
-                }
-                if (!valid) continue;
-                return true;
-            }
-        }
-        return false;
+        // Misc OreDictionary Additions
+        OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
+        OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
+        OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
     }
 }

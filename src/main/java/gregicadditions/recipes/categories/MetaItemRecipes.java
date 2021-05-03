@@ -5,7 +5,6 @@ import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.GemMaterial;
@@ -14,7 +13,6 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
@@ -25,7 +23,6 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipeByName;
 import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -50,7 +47,7 @@ public class MetaItemRecipes {
                 .inputs(BATTERY_RE_MV_LITHIUM.getStackForm())
                 .inputs(INSULATING_TAPE.getStackForm(2))
                 .outputs(NIGHTVISION_GOGGLES.getStackForm())
-                .notConsumable(new IntCircuitIngredient(3))
+                .circuitMeta(3)
                 .buildAndRegister();
 
         // NanoMuscle Suite
@@ -58,7 +55,7 @@ public class MetaItemRecipes {
                 .input(circuit, Advanced)
                 .inputs(CARBON_PLATE.getStackForm(7))
                 .inputs(BATTERY_RE_HV_LITHIUM.getStackForm())
-                .notConsumable(new IntCircuitIngredient(0))
+                .circuitMeta(0)
                 .outputs(NANO_MUSCLE_SUITE_CHESTPLATE.getStackForm())
                 .buildAndRegister();
 
@@ -66,7 +63,7 @@ public class MetaItemRecipes {
                 .input(circuit, Advanced)
                 .inputs(CARBON_PLATE.getStackForm(6))
                 .inputs(BATTERY_RE_HV_LITHIUM.getStackForm())
-                .notConsumable(new IntCircuitIngredient(1))
+                .circuitMeta(1)
                 .outputs(NANO_MUSCLE_SUITE_LEGGINS.getStackForm())
                 .buildAndRegister();
 
@@ -74,7 +71,7 @@ public class MetaItemRecipes {
                 .input(circuit, Advanced)
                 .inputs(CARBON_PLATE.getStackForm(4))
                 .inputs(BATTERY_RE_HV_LITHIUM.getStackForm())
-                .notConsumable(new IntCircuitIngredient(2))
+                .circuitMeta(2)
                 .outputs(NANO_MUSCLE_SUITE_BOOTS.getStackForm())
                 .buildAndRegister();
 
@@ -84,7 +81,7 @@ public class MetaItemRecipes {
                 .inputs(NIGHTVISION_GOGGLES.getStackForm())
                 .inputs(CARBON_PLATE.getStackForm(5))
                 .inputs(BATTERY_RE_HV_LITHIUM.getStackForm())
-                .notConsumable(new IntCircuitIngredient(3))
+                .circuitMeta(3)
                 .outputs(NANO_MUSCLE_SUITE_HELMET.getStackForm())
                 .buildAndRegister();
 
@@ -157,19 +154,19 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Battery Packs
-        ModHandler.addShapedRecipe("gtadditions:battery_pack.lv", BATPACK_LV.getStackForm(),
+        ModHandler.addShapedRecipe("battery_pack.lv", BATPACK_LV.getStackForm(),
                 "BPB", "BCB", "B B",
                 'B', BATTERY_RE_LV_LITHIUM,
                 'C', new UnificationEntry(circuit, Basic),
                 'P', new UnificationEntry(plate, Steel));
 
-        ModHandler.addShapedRecipe("gtadditions:battery_pack.mv", BATPACK_MV.getStackForm(),
+        ModHandler.addShapedRecipe("battery_pack.mv", BATPACK_MV.getStackForm(),
                 "BPB", "BCB", "B B",
                 'B', BATTERY_RE_MV_LITHIUM,
                 'C', new UnificationEntry(circuit, Good),
                 'P', new UnificationEntry(plate, Aluminium));
 
-        ModHandler.addShapedRecipe("gtadditions:battery_pack.hv", BATPACK_HV.getStackForm(),
+        ModHandler.addShapedRecipe("battery_pack.hv", BATPACK_HV.getStackForm(),
                 "BPB", "BCB", "B B",
                 'B', BATTERY_RE_HV_LITHIUM,
                 'C', new UnificationEntry(circuit, Advanced),
@@ -223,7 +220,7 @@ public class MetaItemRecipes {
                 .input(circuit, Master, 4)
                 .input(wireGtSingle, IVSuperconductor, 4)
                 .inputs(POWER_INTEGRATED_CIRCUIT.getStackForm(4))
-                .fluidInputs(SolderingAlloy.getFluid(1152))
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
                 .outputs(GRAVITATION_ENGINE.getStackForm())
                 .buildAndRegister();
 
@@ -234,7 +231,7 @@ public class MetaItemRecipes {
                 .inputs(PLATE_IRIDIUM_ALLOY.getStackForm(12))
                 .input(circuit, Elite, 4)
                 .inputs(QUARK_TECH_SUITE_CHESTPLATE.getStackForm())
-                .fluidInputs(SolderingAlloy.getFluid(1152))
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
                 .outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm())
                 .buildAndRegister();
 
@@ -245,7 +242,7 @@ public class MetaItemRecipes {
                 .inputs(PLATE_IRIDIUM_ALLOY.getStackForm(16))
                 .input(circuit, Elite, 2)
                 .inputs(ADVANCED_NANO_MUSCLE_CHESTPLATE.getStackForm())
-                .fluidInputs(SolderingAlloy.getFluid(1152))
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
                 .outputs(ADVANCED_QAURK_TECH_SUITE_CHESTPLATE.getStackForm())
                 .buildAndRegister();
 
@@ -262,7 +259,7 @@ public class MetaItemRecipes {
             if (prop[0] == null) continue;
             fluid.amount = prop[0].getCapacity();
             cont.fill(fluid, true);
-            ModHandler.addShapelessRecipe("gtadditions:clean_jetpack_" + fluid.getUnlocalizedName(), SEMIFLUID_JETPACK.getStackForm(), jetpack);
+            ModHandler.addShapelessRecipe("clean_jetpack_" + fluid.getUnlocalizedName(), SEMIFLUID_JETPACK.getStackForm(), jetpack);
         }
 
         // Pyrolytic Carbon
@@ -271,7 +268,7 @@ public class MetaItemRecipes {
                 .outputs(PYROLYTIC_CARBON.getStackForm())
                 .buildAndRegister();
 
-        //Schematic
+        // Schematic
         ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4)
                 .input(circuit, Good, 4)
                 .input(plate, StainlessSteel, 2)
@@ -329,7 +326,7 @@ public class MetaItemRecipes {
                 .inputs(ELECTRIC_MOTOR_LV.getStackForm())
                 .input(stick, Steel)
                 .input(ring, Rubber, 2)
-                .fluidInputs(SolderingAlloy.getFluid(1440))
+                .fluidInputs(SolderingAlloy.getFluid(L * 10))
                 .outputs(HAND_PUMP.getStackForm())
                 .buildAndRegister();
 
@@ -338,7 +335,7 @@ public class MetaItemRecipes {
                 .inputs(ELECTRIC_MOTOR_HV.getStackForm())
                 .input(circuit, Advanced, 2)
                 .input(stick, StainlessSteel)
-                .fluidInputs(SolderingAlloy.getFluid(1440))
+                .fluidInputs(SolderingAlloy.getFluid(L * 10))
                 .outputs(FREEDOM_WRENCH.getStackForm())
                 .buildAndRegister();
 
@@ -350,7 +347,7 @@ public class MetaItemRecipes {
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(4))
                 .input(wireFine, RedAlloy, 8)
                 .input(plate, Plastic, 4)
-                .fluidInputs(SolderingAlloy.getFluid(144))
+                .fluidInputs(SolderingAlloy.getFluid(L))
                 .outputs(TOOL_DATA_STICK.getStackForm())
                 .buildAndRegister();
 
@@ -358,8 +355,8 @@ public class MetaItemRecipes {
         for (GemMaterial gem : new GemMaterial[]{Lapis, Lazurite, Sodalite}) {
             ModHandler.addShapelessRecipe("lapotron_crystal_shapeless" + gem.toString(),
                     LAPOTRON_CRYSTAL.getStackForm(),
-                    OreDictUnifier.get(gemExquisite, Sapphire),
-                    OreDictUnifier.get(stick, gem),
+                    new UnificationEntry(gemExquisite, Sapphire),
+                    new UnificationEntry(stick, gem),
                     CAPACITOR.getStackForm());
         }
 

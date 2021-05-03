@@ -170,12 +170,11 @@ public class CommonProxy {
         }
 
         RecipeHandler.initRecipes();
-        GAMetaItems.registerRecipes(); // TODO This is just tool recipes
         MachineCraftingRecipes.init();
 
         RecipeHandler.generatedRecipes();
         RecipeHandler.registerLargeMachineRecipes();
-        VoidMinerHandler.init();
+        VoidMinerHandler.addWhitelist();
     }
 
     @SubscribeEvent
@@ -186,11 +185,11 @@ public class CommonProxy {
         RecipeHandler.register();
         NuclearHandler.register();
         OreRecipeHandler.register();
+        VoidMinerHandler.register();
 
         // Register OreDictionary Entries
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
-        RecipeHandler.registerOreDict();
 
         // Run GTCE Material Handlers
         OrePrefix.runMaterialHandlers();

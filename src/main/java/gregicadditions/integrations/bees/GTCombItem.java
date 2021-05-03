@@ -7,9 +7,9 @@ import forestry.core.config.Constants;
 import forestry.core.items.IColoredItem;
 import forestry.core.utils.ItemTooltipUtil;
 import forestry.core.utils.Translator;
+import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
-import gregtech.api.unification.material.type.FluidMaterial;
-import net.minecraft.client.resources.I18n;
+import gregtech.api.GTValues;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -20,14 +20,12 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
-import org.apache.commons.lang3.text.WordUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 
-@Optional.InterfaceList({@Optional.Interface(iface = "forestry.api.core.IItemModelRegister", modid = "forestry"), @Optional.Interface(iface = "forestry.core.items.IColoredItem", modid = "forestry")})
+@Optional.InterfaceList({@Optional.Interface(iface = "forestry.api.core.IItemModelRegister", modid = GAValues.MODID_FR), @Optional.Interface(iface = "forestry.core.items.IColoredItem", modid = GAValues.MODID_FR)})
 public class GTCombItem extends Item implements IColoredItem, IItemModelRegister {
 	public GTCombItem() {
 		setMaxDamage(0);
@@ -37,19 +35,19 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		setTranslationKey(Gregicality.MODID + ":comb");
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public boolean isDamageable() {
 		return false;
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public boolean isRepairable() {
 		return false;
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModel(Item item, IModelManager manager) {
@@ -59,7 +57,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		}
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public String getTranslationKey(ItemStack stack) {
 		GTCombs honeyComb = GTCombs.get(stack.getItemDamage());
@@ -79,7 +77,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		return super.getItemStackDisplayName(stack);
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
 		if (tab == Tabs.tabApiculture) for (int i = 0; i < GTCombs.VALUES.length; i++) {
@@ -91,7 +89,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		return new ItemStack(GTCombs.combItem, amount, honeyComb.ordinal());
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public int getColorFromItemstack(ItemStack itemstack, int tintIndex) {
 		GTCombs honeyComb = GTCombs.get(itemstack.getItemDamage());
@@ -102,7 +100,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 		}
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
@@ -119,7 +117,7 @@ public class GTCombItem extends Item implements IColoredItem, IItemModelRegister
 	}
 
 	public ItemStack getWildcard() {
-		return new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
+		return new ItemStack(this, 1, GTValues.W);
 	}
 
 }

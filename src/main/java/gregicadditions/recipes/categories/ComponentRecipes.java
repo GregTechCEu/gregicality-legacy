@@ -93,7 +93,7 @@ public class ComponentRecipes {
                     .input(circuit, Basic)
                     .input(cableGtSingle, Tin)
                     .input(gemFlawless, Quartzite)
-                    .fluidInputs(Brass.getFluid(144))
+                    .fluidInputs(Brass.getFluid(L))
                     .outputs(EMITTER_LV.getStackForm())
                     .buildAndRegister();
 
@@ -101,7 +101,7 @@ public class ComponentRecipes {
                     .input(circuit, Good)
                     .input(cableGtSingle, Copper)
                     .input(gemFlawless, NetherQuartz)
-                    .fluidInputs(Electrum.getFluid(144))
+                    .fluidInputs(Electrum.getFluid(L))
                     .outputs(EMITTER_MV.getStackForm())
                     .buildAndRegister();
 
@@ -109,7 +109,7 @@ public class ComponentRecipes {
                     .input(circuit, Advanced)
                     .input(cableGtSingle, Gold)
                     .input(gemFlawless, Emerald)
-                    .fluidInputs(Chrome.getFluid(144))
+                    .fluidInputs(Chrome.getFluid(L))
                     .outputs(EMITTER_HV.getStackForm())
                     .buildAndRegister();
 
@@ -117,7 +117,7 @@ public class ComponentRecipes {
                     .input(circuit, Extreme)
                     .input(cableGtSingle, Aluminium)
                     .input(gem, EnderPearl)
-                    .fluidInputs(Platinum.getFluid(144))
+                    .fluidInputs(Platinum.getFluid(L))
                     .outputs(EMITTER_EV.getStackForm())
                     .buildAndRegister();
 
@@ -125,7 +125,7 @@ public class ComponentRecipes {
                     .input(circuit, Elite)
                     .input(cableGtSingle, Tungsten)
                     .input(gem, EnderEye)
-                    .fluidInputs(Osmium.getFluid(144))
+                    .fluidInputs(Osmium.getFluid(L))
                     .outputs(EMITTER_IV.getStackForm())
                     .buildAndRegister();
         }
