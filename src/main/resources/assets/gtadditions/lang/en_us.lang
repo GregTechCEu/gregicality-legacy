@@ -2839,6 +2839,9 @@ gtadditions.multiblock.drilling_rig.chunk_capacity=Chunk Capacity: %dB
 gtadditions.multiblock.drilling_rig.chunk_remaining=Chunk Fluid Remaining: %dB
 gtadditions.multiblock.drilling_rig.fluid=Current Fluid: %s
 gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
+gtadditions.multiblock.battery_tower.input=EU/t input: %s
+gtadditions.multiblock.battery_tower.output=EU/t output: %s
+gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

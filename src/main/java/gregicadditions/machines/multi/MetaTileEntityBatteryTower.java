@@ -58,6 +58,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     private CellCasing.CellType cell;
     private long energyInputPerTick;
     private long energyOutputPerTick;
+    private long passiveDrain;
 
     public MetaTileEntityBatteryTower(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -93,7 +94,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
         energyInputPerTick = 0;
         energyOutputPerTick = 0;
-
+        passiveDrain = (long) GAValues.V[cell.getTier()] * GAConfig.multis.batteryTower.lossPercentage / 100;
     }
 
     @Override
@@ -110,13 +111,13 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         if (!getWorld().isRemote) {
             long inputEnergyStore = input.getEnergyStored();
             long energyAddedFromInput = this.addEnergy(inputEnergyStore);
-            energyInputPerTick = input.changeEnergy(-energyAddedFromInput);
+            energyInputPerTick = Math.abs(input.changeEnergy(-energyAddedFromInput));
 
-            this.changeEnergy(-GAValues.V[cell.getTier()] * GAConfig.multis.batteryTower.lossPercentage / 100);
+            this.changeEnergy(-passiveDrain);
 
             long bankEnergyStore = this.getEnergyStored();
             long energyAddedFromBank = output.addEnergy(bankEnergyStore);
-            energyOutputPerTick = this.changeEnergy(-energyAddedFromBank);
+            energyOutputPerTick = Math.abs(this.changeEnergy(-energyAddedFromBank));
         }
     }
 
@@ -155,7 +156,10 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (this.isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_store", getEnergyStored(), getEnergyCapacity()));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_store", String.format("%,d", getEnergyStored()), String.format("%,d", getEnergyCapacity())));
+            textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.input", String.format("%,d", getEnergyInputPerTick())));
+            textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.output", String.format("%,d", getEnergyOutputPerTick())));
+            textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.passive_drain", String.format("%,d", passiveDrain)));
         }
 
         super.addDisplayText(textList);
