@@ -88,8 +88,8 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house",
-            2, 3, 1, 2, 1, 1, 0, 0, new SimpleRecipeBuilder()
+    public static final RecipeMap<IntCircuitRecipeBuilder> GREEN_HOUSE_RECIPES = new RecipeMap<>("green_house",
+            2, 3, 1, 2, 1, 1, 0, 0, new IntCircuitRecipeBuilder()
             .EUt(16))
             .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
 

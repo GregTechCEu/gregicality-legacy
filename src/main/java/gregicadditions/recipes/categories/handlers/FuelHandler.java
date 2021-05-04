@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Loader;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.fluid.GAMetaFluids.getHotFluid;
 import static gregtech.api.GTValues.*;
-import static gregicadditions.recipes.helper.AdditionMethods.*;
+import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.circuit;
@@ -30,17 +30,15 @@ public class FuelHandler {
      * This looks like the standard material, but it will use the Forestry fluid if Forestry is loaded,
      * and if Forestry Integration is enabled.
      */
-    private static final boolean forestry = Loader.isModLoaded(MODID_FR) && GAConfig.Misc.ForestryIntegration;
-
-    private static final GenericFluid Ethanol = forestry ?
-            new GenericFluid(Fluids.BIO_ETHANOL) :
-            new GenericFluid(Materials.Ethanol);
-
-    private static final GenericFluid SeedOil = forestry ?
-            new GenericFluid(Fluids.SEED_OIL) :
-            new GenericFluid(Materials.SeedOil);
+    private static GenericFluid Ethanol = new GenericFluid(Materials.Ethanol);
+    private static GenericFluid SeedOil = new GenericFluid(Materials.SeedOil);
 
     public static void init() {
+
+        if (Loader.isModLoaded(MODID_FR) && GAConfig.Misc.ForestryIntegration) {
+            Ethanol = new GenericFluid(Fluids.BIO_ETHANOL);
+            SeedOil = new GenericFluid(Fluids.SEED_OIL);
+        }
 
         // Steam Turbine
         registerSteamGeneratorFuel(Steam.getFluid(640), 10, LV);

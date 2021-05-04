@@ -4,7 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
 import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
@@ -14,7 +13,7 @@ import gregicadditions.recipes.chain.optical.OpticalCircuits;
 import gregicadditions.recipes.chain.optical.OpticalComponents;
 import gregicadditions.recipes.chain.optical.OpticalFiber;
 import gregicadditions.recipes.chain.wetware.*;
-import gregicadditions.recipes.helper.AdditionMethods;
+import gregicadditions.recipes.helper.HelperMethods;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
@@ -46,7 +45,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregicadditions.recipes.helper.AdditionMethods.*;
+import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -79,7 +78,8 @@ public class RecipeHandler {
             GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6)};
 
     /**
-     * GT Material Handler registration
+     * GT Material Handler registration.
+     * This probably isn't the method you are looking for.
      */
     public static void register() {
 
@@ -115,6 +115,7 @@ public class RecipeHandler {
         foil.addProcessingHandler(IngotMaterial.class, RecipeHandler::processFoil);
         pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
+        rotor.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRotor);
     }
 
     /**
@@ -232,11 +233,11 @@ public class RecipeHandler {
             // Bending Cylinders
             if (GAConfig.GT6.BendingCylinders) {
 
-                ModHandler.addShapedRecipe(String.format("cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) GAMetaItems.BENDING_CYLINDER).getStackForm(material),
+                ModHandler.addShapedRecipe(String.format("cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) BENDING_CYLINDER).getStackForm(material),
                         "sfh", "XXX", "XXX",
                         'X', new UnificationEntry(ingot, material));
 
-                ModHandler.addShapedRecipe(String.format("small_cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) GAMetaItems.SMALL_BENDING_CYLINDER).getStackForm(material),
+                ModHandler.addShapedRecipe(String.format("small_cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) SMALL_BENDING_CYLINDER).getStackForm(material),
                         "sfh", "XXX",
                         'X', new UnificationEntry(ingot, material));
             }
@@ -478,7 +479,6 @@ public class RecipeHandler {
     }
 
 
-    // TODO This is very broken
     /*
      * ULV, LV: rubber
      * MV: polycap
@@ -491,6 +491,8 @@ public class RecipeHandler {
      * UXV, MAX: fullerene + insulation assembly
      *
      * Try to synchronize with machine hulls somewhat
+     *
+     * TODO This code "works" but is really poorly made all around
      */
     private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
         if (material.cableProperties == null) return;
@@ -498,23 +500,21 @@ public class RecipeHandler {
         OrePrefix cablePrefix = valueOf("cable" + wireGt.name().substring(4));
         ItemStack cableStack = OreDictUnifier.get(cablePrefix, material);
 
-
-
         for (FluidMaterial fluid : OLD_INSULATION_MATERIAL) {
 
             // Try to remove 1 recipe with the Fluid type. If it fails, then exit
-            boolean wasRemoved = removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(144)});
+            boolean wasRemoved = removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(144)});
             if (!wasRemoved)
                 continue;
 
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 2), IntCircuitIngredient.getIntegratedCircuit(25)}, new FluidStack[]{fluid.getFluid(288)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 4), IntCircuitIngredient.getIntegratedCircuit(26)}, new FluidStack[]{fluid.getFluid(576)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 8), IntCircuitIngredient.getIntegratedCircuit(27)}, new FluidStack[]{fluid.getFluid(1152)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 16), IntCircuitIngredient.getIntegratedCircuit(28)}, new FluidStack[]{fluid.getFluid(2304)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtDouble, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(288)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtQuadruple, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(576)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(1152)});
-            removeRecipesByInputs(RecipeMaps.ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, material), IntCircuitIngredient.getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(2304)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 2), getIntegratedCircuit(25)}, new FluidStack[]{fluid.getFluid(288)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 4), getIntegratedCircuit(26)}, new FluidStack[]{fluid.getFluid(576)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 8), getIntegratedCircuit(27)}, new FluidStack[]{fluid.getFluid(1152)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 16), getIntegratedCircuit(28)}, new FluidStack[]{fluid.getFluid(2304)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtDouble, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(288)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtQuadruple, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(576)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(1152)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(2304)});
         }
 
         int tier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
@@ -525,53 +525,53 @@ public class RecipeHandler {
             switch (tier) {
                 case 0:
                 case 1:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 2:
                 case 3:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 4:
                 case 5:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 6:
                 case 7:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 8:
                 case 9:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 10:
                 case 11:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 case 12:
                 case 13:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, Zylon, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, Zylon, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
                 default:
-                    RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, FullerenePolymerMatrix, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, FullerenePolymerMatrix, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             }
         }
         switch (tier) {
             case 0:
             case 1:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 2:
             case 3:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 4:
             case 5:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 6:
             case 7:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 8:
             case 9:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 10:
             case 11:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             case 12:
             case 13:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Zylon, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Zylon, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
             default:
-                RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, FullerenePolymerMatrix, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
+                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, FullerenePolymerMatrix, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
         }
     }
 
@@ -606,7 +606,7 @@ public class RecipeHandler {
         if (!OreDictUnifier.get(foil, material).isEmpty()) {
 
             // Handcrafting foils
-            if (GAConfig.GT6.BendingFoils) {
+            if (GAConfig.GT6.BendingFoils && !material.hasFlag(NO_SMASHING)) {
 
                 ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
                         "hPC",
@@ -634,10 +634,12 @@ public class RecipeHandler {
      * - Round Lathe Recipes
      */
     private static void processRound(OrePrefix round, IngotMaterial material) {
+        if (!material.hasFlag(NO_SMASHING)) {
 
-        ModHandler.addShapedRecipe(String.format("round_%s", material.toString()), OreDictUnifier.get(round, material),
-                "fN", "N ",
-                'N', new UnificationEntry(nugget, material));
+            ModHandler.addShapedRecipe(String.format("round_%s", material.toString()), OreDictUnifier.get(round, material),
+                    "fN", "N ",
+                    'N', new UnificationEntry(nugget, material));
+        }
 
         LATHE_RECIPES.recipeBuilder().EUt(8).duration(100)
                 .input(nugget, material)
@@ -645,7 +647,6 @@ public class RecipeHandler {
                 .buildAndRegister();
     }
 
-    // TODO Should check NO_SMASHING flag for additions?
     /**
      * Double Ingot Material Handler. Generates:
      *
@@ -655,16 +656,18 @@ public class RecipeHandler {
      * - Removes Ingot to Plate Hand Recipes
      */
     private static void processDoubleIngot(OrePrefix plate, IngotMaterial material) {
-        if (!material.hasFlag(NO_SMASHING))
+        if (!material.hasFlag(NO_SMASHING)) {
+
             removeCraftingRecipes(OreDictUnifier.get(plate, material));
 
-        ModHandler.addShapedRecipe(String.format("ingot_double_%s", material.toString()), OreDictUnifier.get(ingotDouble, material),
-                "h", "I", "I",
-                'I', new UnificationEntry(ingot, material));
+            ModHandler.addShapedRecipe(String.format("ingot_double_%s", material.toString()), OreDictUnifier.get(ingotDouble, material),
+                    "h", "I", "I",
+                    'I', new UnificationEntry(ingot, material));
 
-        ModHandler.addShapedRecipe(String.format("double_ingot_to_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
-                "h", "I",
-                'I', new UnificationEntry(ingotDouble, material));
+            ModHandler.addShapedRecipe(String.format("double_ingot_to_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
+                    "h", "I",
+                    'I', new UnificationEntry(ingotDouble, material));
+        }
     }
 
     /**
@@ -677,14 +680,17 @@ public class RecipeHandler {
     private static void processPlateCurved(OrePrefix plateCurved, IngotMaterial material) {
 
         // Register Curved Plate recipes
-        ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
-                "h", "P", "C",
-                'P', new UnificationEntry(plate, material),
-                'C', "craftingToolBendingCylinder");
+        if (!material.hasFlag(NO_SMASHING)) {
 
-        ModHandler.addShapedRecipe(String.format("flatten_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
-                "h", "C",
-                'C', new UnificationEntry(plateCurved, material));
+            ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
+                    "h", "P", "C",
+                    'P', new UnificationEntry(plate, material),
+                    'C', "craftingToolBendingCylinder");
+
+            ModHandler.addShapedRecipe(String.format("flatten_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
+                    "h", "C",
+                    'C', new UnificationEntry(plateCurved, material));
+        }
 
         BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass())
                 .input(plate, material)
@@ -697,25 +703,6 @@ public class RecipeHandler {
                 .circuitMeta(0)
                 .output(plate, material)
                 .buildAndRegister();
-
-        // Register Curved Plate Rotor Recipes
-        if (!OreDictUnifier.get(rotor, material).isEmpty() && GAConfig.GT6.BendingRotors) {
-
-            removeCraftingRecipes(OreDictUnifier.get(rotor, material));
-
-            ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
-                    "ChC", "SRf", "CdC",
-                    'C', new UnificationEntry(plateCurved, material),
-                    'S', new UnificationEntry(screw, material),
-                    'R', new UnificationEntry(ring, material));
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                    .input(plateCurved, material, 4)
-                    .input(ring, material)
-                    .fluidInputs(SolderingAlloy.getFluid(32))
-                    .output(rotor, material)
-                    .buildAndRegister();
-        }
 
         // Register Curved Plate Pipe Recipes
         if (!OreDictUnifier.get(pipeMedium, material).isEmpty()) {
@@ -749,6 +736,44 @@ public class RecipeHandler {
     }
 
     /**
+     * Rotor Material Handler. Generates:
+     *
+     * - Curved Plate Rotor Recipes if enabled
+     * - Assembler Rotor Recipe that GTCE removed
+     */
+    private static void processRotor(OrePrefix ingot, IngotMaterial material) {
+        if (!OreDictUnifier.get(rotor, material).isEmpty()) {
+
+            if (GAConfig.GT6.BendingRotors) {
+
+                // Register Curved Plate Rotor Recipes
+                removeCraftingRecipes(OreDictUnifier.get(rotor, material));
+
+                ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
+                        "ChC", "SRf", "CdC",
+                        'C', new UnificationEntry(plateCurved, material),
+                        'S', new UnificationEntry(screw, material),
+                        'R', new UnificationEntry(ring, material));
+
+                ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
+                        .input(plateCurved, material, 4)
+                        .input(ring, material)
+                        .fluidInputs(SolderingAlloy.getFluid(32))
+                        .output(rotor, material)
+                        .buildAndRegister();
+            } else {
+
+                ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
+                        .input(plate, material, 4)
+                        .input(ring, material)
+                        .fluidInputs(SolderingAlloy.getFluid(32))
+                        .output(rotor, material)
+                        .buildAndRegister();
+            }
+        }
+    }
+
+    /**
      * Tiny Pipe Material Handler. Generates:
      *
      * - Tiny Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
@@ -756,6 +781,7 @@ public class RecipeHandler {
      */
     private static void processTinyPipe(OrePrefix prefix, IngotMaterial material) {
         if (!GAConfig.GT6.BendingPipes)
+
             ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
                     "PPP", "h w", "PPP",
                     'P', new UnificationEntry(plate, material));
@@ -769,6 +795,7 @@ public class RecipeHandler {
      */
     private static void processLargePipe(OrePrefix prefix, IngotMaterial material) {
         if (!GAConfig.GT6.BendingPipes)
+
             ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
                     "PhP", "P P", "PwP",
                     'P', new UnificationEntry(plate, material));
@@ -784,15 +811,15 @@ public class RecipeHandler {
         if (material.hasFlag(GENERATE_METAL_CASING)) {
             ItemStack metalCasingStack = OreDictUnifier.get(prefix, material, 3);
 
-            ModHandler.addShapedRecipe(String.format("metal_casing_%s", material), metalCasingStack,
+            ModHandler.addShapedRecipe(String.format("autogen_metal_casing_%s", material), metalCasingStack,
                     "PhP", "PBP", "PwP",
                     'P', new UnificationEntry(plate, material),
                     'B', new UnificationEntry(frameGt, material));
 
-            ASSEMBLER_RECIPES.recipeBuilder().EUt(8).duration(200)
+            ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
                     .input(plate, material, 6)
-                    .input(frameGt, material, 1)
-                    .notConsumable(new IntCircuitIngredient(0))
+                    .input(frameGt, material)
+                    .circuitMeta(0)
                     .outputs(metalCasingStack)
                     .buildAndRegister();
         }
@@ -985,6 +1012,7 @@ public class RecipeHandler {
             if (ingotMaterial.blastFurnaceTemperature == 0)
                 continue;
 
+            // This could use some code cleanup
             LARGE_MIXER_RECIPES.getRecipeList().stream()
                     .filter(recipe -> recipe.getOutputs().size() == 1)
                     .filter(recipe -> recipe.getFluidOutputs().size() == 0)
@@ -1106,7 +1134,7 @@ public class RecipeHandler {
 
             // Potato
             recipes.add(GREEN_HOUSE_RECIPES.recipeBuilder().duration(duration)
-                    .notConsumable(new IntCircuitIngredient(i))
+                    .circuitMeta(i)
                     .fluidInputs(Water.getFluid(2000))
                     .notConsumable(new ItemStack(Items.POTATO))
                     .outputs(new ItemStack(Items.POTATO, i))
@@ -1114,7 +1142,7 @@ public class RecipeHandler {
 
             // Melon
             GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000)
-                    .notConsumable(new IntCircuitIngredient(i))
+                    .circuitMeta(i)
                     .fluidInputs(Water.getFluid(2000))
                     .notConsumable(new ItemStack(Items.MELON_SEEDS))
                     .outputs(new ItemStack(Items.MELON, i))
@@ -1123,7 +1151,7 @@ public class RecipeHandler {
 
             // Pumpkin
             GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000)
-                    .notConsumable(new IntCircuitIngredient(i))
+                    .circuitMeta(i)
                     .fluidInputs(Water.getFluid(2000))
                     .notConsumable(new ItemStack(Items.PUMPKIN_SEEDS))
                     .outputs(new ItemStack(Blocks.PUMPKIN, i))
@@ -1133,10 +1161,10 @@ public class RecipeHandler {
             for (Item input : inputs) {
 
                 recipes.add(GREEN_HOUSE_RECIPES.recipeBuilder().duration(duration)
-                    .notConsumable(new IntCircuitIngredient(i))
-                    .fluidInputs(Water.getFluid(2000))
-                    .notConsumable(new ItemStack(input))
-                    .outputs(new ItemStack(input, i)));
+                        .circuitMeta(i)
+                        .fluidInputs(Water.getFluid(2000))
+                        .notConsumable(new ItemStack(input))
+                        .outputs(new ItemStack(input, i)));
             }
 
             if (fertilizer != null)
@@ -1167,7 +1195,7 @@ public class RecipeHandler {
 
             GREEN_HOUSE_RECIPES.recipeBuilder().duration(1000)
                     .fluidInputs(Water.getFluid(2000))
-                    .notConsumable(new IntCircuitIngredient(0))
+                    .circuitMeta(0)
                     .notConsumable(seed)
                     .outputs(essence)
                     .chancedOutput(seed, 100, 50)
@@ -1177,7 +1205,7 @@ public class RecipeHandler {
             essence.setCount(3);
             GREEN_HOUSE_RECIPES.recipeBuilder().duration(600)
                     .fluidInputs(Water.getFluid(2000))
-                    .notConsumable(new IntCircuitIngredient(2))
+                    .circuitMeta(2)
                     .notConsumable(seed)
                     .input(dust, OrganicFertilizer)
                     .outputs(essence)
@@ -1425,7 +1453,7 @@ public class RecipeHandler {
                         if (GAConfig.GT5U.RemoveBlockUncraftingRecipes)
                             recipesToRemove.add(recipe.getRegistryName());
 
-                        if (!doesStackStartWithOre(recipe.getRecipeOutput(), "ingot")) {
+                        if (!hasPrefix(recipe.getRecipeOutput(), "ingot")) {
 
                             // Add Forge Hammer block recipes, excluding ingots
                             FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
@@ -1448,6 +1476,6 @@ public class RecipeHandler {
                 }
             }
         }
-        recipesToRemove.forEach(AdditionMethods::removeRecipeByName);
+        recipesToRemove.forEach(HelperMethods::removeRecipeByName);
     }
 }

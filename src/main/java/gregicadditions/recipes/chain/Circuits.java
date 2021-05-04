@@ -24,7 +24,7 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.MarkerMaterials.Color.Lime;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.Good;

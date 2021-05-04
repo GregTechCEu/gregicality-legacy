@@ -19,7 +19,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.*;
+import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -450,7 +450,7 @@ public class RecipeOverride {
 
         ModHandler.addSmeltingRecipe(COMPRESSED_COKE_CLAY.getStackForm(), COKE_OVEN_BRICK.getStackForm());
 
-        //GT5U Glass Recipes
+        // GT5U Glass Recipes
         ModHandler.addShapedRecipe("quartz_sand", OreDictUnifier.get(dust, GAMaterials.QuartzSand),
                 "S", "m",
                 'S', "sand");

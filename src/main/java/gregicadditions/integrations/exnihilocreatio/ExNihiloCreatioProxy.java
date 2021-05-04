@@ -40,7 +40,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static gregicadditions.machines.GATileEntities.location;
-import static gregicadditions.recipes.helper.AdditionMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)

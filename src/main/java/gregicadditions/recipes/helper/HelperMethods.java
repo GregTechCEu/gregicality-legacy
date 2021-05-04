@@ -31,16 +31,34 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.*;
 
-public class AdditionMethods {
-// TODO COMMENTS
-    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
-        removeRecipesByInputs(map, itemInputs, new FluidStack[0]);
-    }
+/**
+ * Some Helper Methods for Recipe Addition and Removal
+ */
+public class HelperMethods {
 
-    public static <R extends RecipeBuilder<R>> void removeRecipesByInputs(RecipeMap<R> map, FluidStack... fluidInputs) {
-        removeRecipesByInputs(map, new ItemStack[0], fluidInputs);
-    }
-
+    /**
+     * Removes all Recipes matching given inputs and fluid inputs from a given RecipeMap.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     removeRecipesByInputs(RecipeMaps.CHEMICAL_RECIPES,
+     *         new ItemStack[]{
+     *             OreDictUnifier.get(OrePrefix.dust, Materials.SodiumHydroxide, 3)
+     *         },
+     *         new FluidStack[]{
+     *             Materials.HypochlorousAcid.getFluid(1000),
+     *             Materials.AllylChloride.getFluid(1000)
+     *         });
+     * </cr>
+     *
+     * This method also has varargs parameter methods for when there is only ItemStack or FluidStack inputs.
+     *
+     * @param map         The RecipeMap to search over.
+     * @param itemInputs  The ItemStack[] containing all Recipe item inputs.
+     * @param fluidInputs The FluidStack[] containing all Recipe fluid inputs.
+     *
+     * @return true if a recipe was removed, false otherwise.
+     */
     public static <R extends RecipeBuilder<R>> boolean removeRecipesByInputs(RecipeMap<R> map, ItemStack[] itemInputs, FluidStack[] fluidInputs) {
 
         List<String> fluidNames = new ArrayList<>();
@@ -70,6 +88,26 @@ public class AdditionMethods {
         }
         return wasRemoved;
     }
+
+    public static <R extends RecipeBuilder<R>> boolean removeRecipesByInputs(RecipeMap<R> map, ItemStack... itemInputs) {
+        return removeRecipesByInputs(map, itemInputs, new FluidStack[0]);
+    }
+
+    public static <R extends RecipeBuilder<R>> boolean removeRecipesByInputs(RecipeMap<R> map, FluidStack... fluidInputs) {
+        return removeRecipesByInputs(map, new ItemStack[0], fluidInputs);
+    }
+
+    /**
+     * Removes all Recipes from a given RecipeMap. This method cannot fail at recipe removal, but if called at
+     * the wrong time during recipe registration, it may be an incomplete or overly-complete recipe removal.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     removeAllRecipes(RecipeMaps.BREWING_RECIPES);
+     * </cr>
+     *
+     * @param map The RecipeMap to clear all recipes from.
+     */
     public static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
 
         List<Recipe> recipes = new ArrayList<>(map.getRecipeList());
@@ -214,24 +252,49 @@ public class AdditionMethods {
         }
     }
 
+    /**
+     * Tests if a Crafting Table Recipe contains only one unique input Ingredient.
+     *
+     * @param recipe The Recipe to check.
+     *
+     * @return true if only one unique input Ingredient, false otherwise.
+     */
     public static boolean isSingleIngredient(IRecipe recipe) {
 
-        if (recipe.getIngredients().size() == 0)
+        int recipeSize = recipe.getIngredients().size();
+        ItemStack topLeft = getTopLeft(recipe);
+
+        if (recipeSize == 0)
             return false;
 
-        if (recipe.getIngredients().get(0).getMatchingStacks().length == 0)
+        if (topLeft == null)
             return false;
 
-        for (int i = 1; i < recipe.getIngredients().size(); i++) {
-            if (recipe.getIngredients().get(i).getMatchingStacks().length == 0
-                    || !recipe.getIngredients().get(0).getMatchingStacks()[0]
-                       .isItemEqual(recipe.getIngredients().get(i).getMatchingStacks()[0])) {
+        if (recipeSize == 1)
+            return true;
+
+        for (int i = 1; i < recipeSize; i++) {
+            ItemStack input = getRecipeInput(recipe, i);
+            if (input != null && !topLeft.isItemEqual(input))
                 return false;
-            }
         }
         return true;
     }
 
+    /**
+     * Tests if a Recipe's output is one of the specified Blocks.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     outputIsNot(recipe, Blocks.AIR, Blocks.SLIME_BLOCK)
+     * </cr>
+     *
+     * @param recipe The Recipe to test.
+     * @param blocks The Block[] array to test on the Recipe output.
+     *
+     *
+     * @return true if output does not contain one of those Blocks, false otherwise.
+     */
     public static boolean outputIsNot(IRecipe recipe, Block... blocks) {
         for (Block block : blocks) {
             if (Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) == block)
@@ -240,31 +303,67 @@ public class AdditionMethods {
         return true;
     }
 
-    public static boolean doesStackStartWithOre(ItemStack stack, String ore) {
-        for (int id : OreDictionary.getOreIDs(stack)) {
-            if (OreDictionary.getOreName(id).startsWith(ore)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    /**
+     * Returns the ItemStack at the top-left corner of a Shaped Recipe.
+     *
+     * @param recipe The Crafting Table Recipe to check.
+     *
+     * @return The ItemStack at the top left corner, null otherwise.
+     *         Behavior with shapeless recipes may be unexpected.
+     */
     public static ItemStack getTopLeft(IRecipe recipe) {
-        try {
-            return recipe.getIngredients().get(0).getMatchingStacks()[0];
-        } catch (Exception e) {
-            return null;
-        }
+        return getRecipeInput(recipe, 0);
     }
 
+    // TODO comment
+    public static ItemStack getRecipeInput(IRecipe recipe, int index) {
+
+        if (recipe == null)
+            return null;
+
+        if (index < 0 || index > 9)
+            return null;
+
+        if (recipe.getIngredients().size() <= index)
+            return null;
+
+        if (recipe.getIngredients().get(index).getMatchingStacks().length == 0)
+            return null;
+
+        return recipe.getIngredients().get(index).getMatchingStacks()[0];
+    }
+
+    /**
+     * Sets the first character of the String to Uppercase.
+     *
+     * @param input The String to capitalize.
+     *
+     * @return input, capitalized.
+     */
     public static String titleCase(String input) {
         return input.substring(0, 1).toUpperCase(Locale.US) + input.substring(1);
     }
 
+    /**
+     * Creates a Cell ItemStack with a specified fluid and given count.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     getFilledCell(Materials.HydrochloricAcid.getMaterialFluid(), 4)
+     * </cr>
+     *
+     * The above will return 4 cells containing HCl.
+     *
+     * @param fluid The Fluid to fill the cell.
+     * @param count The number of cells in the ItemStack.
+     *
+     * @return The Cell ItemStack.
+     */
     public static ItemStack getFilledCell(Fluid fluid, int count) {
         ItemStack fluidCell = MetaItems.FLUID_CELL.getStackForm().copy();
         IFluidHandlerItem fluidHandlerItem = fluidCell.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
         try {
+            assert fluidHandlerItem != null;
             fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
 
         } catch (Exception e) {
@@ -281,6 +380,30 @@ public class AdditionMethods {
         return getFilledCell(fluid, 1);
     }
 
+    /**
+     * Used to test if a given ItemStack has a specified OreDictionary prefix.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     assertTrue(
+     *         hasPrefix(OreDictUnifier.get(OrePrefix.dust, Materials.Iron), "dust", "dustTiny")
+     *     );
+     *     assertNotTrue(
+     *         hasPrefix(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Iron), "dust", "dustTiny")
+     *     );
+     * </cr>
+     *
+     * @param stack  The ItemStack to test.
+     * @param prefix The String prefix to the OreDictionary name.
+     * @param ignore Strings to ignore prefixes for. For example:
+     *
+     *               If prefix == "dust", and
+     *                  ignore == "dustTiny",
+     *               it will ignore OreDictionary entries with the prefix "dustTiny",
+     *               but not "dust[something else]".
+     *
+     * @return true if ItemStack has prefix, false otherwise.
+     */
     public static boolean hasPrefix(ItemStack stack, String prefix, String... ignore) {
         for (int i : OreDictionary.getOreIDs(stack)) {
             if (OreDictionary.getOreName(i).startsWith(prefix)) {
@@ -295,19 +418,40 @@ public class AdditionMethods {
         return false;
     }
 
+    /**
+     * Small Helper class useful for Forestry compatibility. If we are generating a recipe with either a
+     * GT Fluid or a Forestry Fluid, we can use this class to make it easier to code.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     boolean forestry = Loader.isModLoaded(MODID_FR) && GAConfig.Misc.ForestryIntegration;
+     *
+     *     GenericFluid Ethanol = forestry ?
+     *             new GenericFluid(Fluids.BIO_ETHANOL) :
+     *             new GenericFluid(Materials.Ethanol);
+     *
+     *     registerDieselGeneratorFuel(Ethanol.getFluid(2), 12, LV);
+     * </cr>
+     */
     public static class GenericFluid {
 
+        // Only one of these must be initialized for any given instance of GenericFluid
         private FluidMaterial material;
         private Fluids fluids;
-
-        public GenericFluid(FluidMaterial material) {
-            this.material = material;
-        }
 
         public GenericFluid(Fluids fluids) {
             this.fluids = fluids;
         }
 
+        public GenericFluid(FluidMaterial material) {
+            this.material = material;
+        }
+
+        /**
+         * Create a FluidStack of the Material.
+         *
+         * @return A FluidStack with specified amount
+         */
         public FluidStack getFluid(int amount) {
             if (material == null)
                 return fluids.getFluid(amount);

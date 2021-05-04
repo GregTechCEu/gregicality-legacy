@@ -6,15 +6,12 @@ import gregicadditions.item.*;
 import gregicadditions.item.components.*;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.helper.GACraftingComponents;
-import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
@@ -28,12 +25,14 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.*;
 import static gregicadditions.item.CellCasing.CellType.*;
 import static gregicadditions.item.GAHeatingCoil.CoilType.*;
-import static gregicadditions.item.GAMetaItems.MICA_INSULATOR_FOIL;
+import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
+import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
+import static gregicadditions.item.GAReactorCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.*;
+import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
@@ -543,12 +542,6 @@ public class CasingRecipes {
                 .buildAndRegister();
 
         // GTCE Casings
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(INVAR_HEATPROOF, 3));
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID, 3));
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(ALUMINIUM_FROSTPROOF, 3));
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(STAINLESS_CLEAN, 3));
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE, 3));
-        removeCraftingRecipes(MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST, 3));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Invar, 6), OreDictUnifier.get(frameGt, Invar));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 6), OreDictUnifier.get(frameGt, Steel));
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 6), OreDictUnifier.get(frameGt, Aluminium));
@@ -559,7 +552,7 @@ public class CasingRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
                 .circuitMeta(30)
                 .input(plate, Bronze, 6)
-                .input(frameGt, Bronze)
+                .inputs(new ItemStack(Blocks.BRICK_BLOCK))
                 .outputs(MetaBlocks.METAL_CASING.getItemVariant(BRONZE_BRICKS, 3))
                 .buildAndRegister();
 
@@ -634,6 +627,97 @@ public class CasingRecipes {
                 .input(plate, Dubnium, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(FUSION_3))
                 .buildAndRegister();
+
+        // Stellar Containment Casing
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(500000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .input(frameGt, Trinium)
+                .input(plate, HDCS, 6)
+                .input(stick, EnrichedNaquadahAlloy, 4)
+                .input(screw, Trinium, 8)
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(STELLAR_CONTAINMENT, 4))
+                .buildAndRegister();
+
+        // Hyper Reactor Casing
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(500000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .input(frameGt, Naquadria)
+                .input(screw, EnrichedNaquadahAlloy, 16)
+                .input(plate, Incoloy813, 8)
+                .outputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CASING, 4))
+                .buildAndRegister();
+
+        // Hyper Reactor Casing 2
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(2000000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .inputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CASING))
+                .input(screw, Pikyonium, 16)
+                .input(plate, TitanSteel, 8)
+                .outputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CASING_2, 4))
+                .buildAndRegister();
+
+        // Hyper Core
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(500000)
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
+                .inputs(SENSOR_UV.getStackForm())
+                .inputs(EMITTER_UV.getStackForm())
+                .input(frameGt, Naquadria, 4)
+                .input(screw, Dubnium, 16)
+                .input(plate, Naquadria, 4)
+                .input(circuit, Superconductor)
+                .outputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CORE, 4))
+                .buildAndRegister();
+
+        // Hyper Core 2
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(2000000)
+                .inputs(FIELD_GENERATOR_UHV.getStackForm(2))
+                .inputs(SENSOR_UHV.getStackForm())
+                .inputs(EMITTER_UHV.getStackForm())
+                .inputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CASING, 2))
+                .input(screw, Rutherfordium, 16)
+                .input(plate, TungstenTitaniumCarbide, 4)
+                .input(circuit, Infinite)
+                .outputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CORE_2, 4))
+                .buildAndRegister();
+
+        // Hyper Core 3
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(8000000)
+                .inputs(FIELD_GENERATOR_UEV.getStackForm(2))
+                .inputs(SENSOR_UEV.getStackForm())
+                .inputs(EMITTER_UEV.getStackForm())
+                .inputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CASING_2, 2))
+                .input(screw, TriniumTitanium, 16)
+                .input(plate, TitanSteel, 4)
+                .input(circuit, GAMaterials.UEV)
+                .outputs(GAMetaBlocks.REACTOR_CASING.getItemVariant(HYPER_CORE_3, 4))
+                .buildAndRegister();
+
+        // Bio Reactor Casing
+        ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(120000)
+                .input(frameGt, HSSS)
+                .input(plate, NaquadahAlloy, 4)
+                .input(screw, Dubnium, 4)
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(GAMultiblockCasing2.CasingType.BIO_REACTOR, 2))
+                .buildAndRegister();
+
+        // Qubit Computer Casing
+        ASSEMBLER_RECIPES.recipeBuilder().duration(120).EUt(6000000)
+                .fluidInputs(SolderingAlloy.getFluid(L * 10))
+                .inputs(FIELD_GENERATOR_UEV.getStackForm(2))
+                .inputs(ROBOT_ARM_UEV.getStackForm())
+                .input(circuit, GAMaterials.UEV, 7)
+                .input(frameGt, Bohrium, 5)
+                .outputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 3))
+                .buildAndRegister();
+
+        // Engine Intake Casing
+        removeRecipeByName("gregtech:engine_intake_casing");
+        ModHandler.addShapedRecipe("ga_engine_intake_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ENGINE_INTAKE_CASING),
+                "PhP", "RFR", "PwP",
+                'R', new UnificationEntry(pipeMedium, Titanium),
+                'F', new UnificationEntry(gtMetalCasing, Titanium),
+                'P', new UnificationEntry(rotor, Titanium));
     }
 
     private static void componentCasings() {

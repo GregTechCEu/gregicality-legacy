@@ -27,6 +27,10 @@ public class EnrichmentProcess {
         return OreDictUnifier.get(orePrefix, material, amount);
     }
 
+    public ItemStack getItemStack(OrePrefix orePrefix) {
+        return getItemStack(orePrefix, 1);
+    }
+
     @Nullable
     public FluidStack getFluidDepletedFuelNitrateSolution(int amount) {
         return depletedFuelNitrateSolution != null ? new FluidStack(depletedFuelNitrateSolution, amount) : null;

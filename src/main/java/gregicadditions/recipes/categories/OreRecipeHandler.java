@@ -16,13 +16,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import static gregicadditions.recipes.GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES;
-import static gregicadditions.recipes.helper.AdditionMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.UUMatter;
 import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class OreRecipeHandler {//TODO
+public class OreRecipeHandler {
 
     private static final List<OrePrefix> ORE_TYPES = Arrays.asList(
             ore, oreBasalt, oreBlackgranite, oreEndstone, oreGravel, oreNetherrack, oreMarble, oreRedgranite, oreSand);
@@ -299,7 +299,6 @@ public class OreRecipeHandler {//TODO
 
         return material.materialComponents.stream()
                                           .mapToDouble(it -> getPercentOfComponentInMaterial(it.material, materialToFind)
-                                                           * (it.amount / amountOfComponents))
-                                          .sum();
+                                                           * (it.amount / amountOfComponents)).sum();
     }
 }

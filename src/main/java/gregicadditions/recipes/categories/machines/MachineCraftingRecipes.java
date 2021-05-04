@@ -7,52 +7,102 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.GTValues;
-import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAValues.*;
 import static gregicadditions.GAValues.ZPM;
-import static gregicadditions.recipes.helper.AdditionMethods.*;
-import static gregicadditions.recipes.helper.GACraftingComponents.*;
+import static gregicadditions.recipes.helper.HelperMethods.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.L;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.ULV;
+import static gregtech.api.GTValues.UV;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
+import static gregtech.api.unification.material.MarkerMaterials.Tier.Superconductor;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Bronze;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class MachineCraftingRecipes {
 
     public static void init() {
-        MachineRecipeOverride.init();
         MultiblockCraftingRecipes.init();
-        newMachines();
-        highTierBasics();
-        highTierMachines();
-        highAmpMachines();
-        otherMachines();
+        SingleblockCraftingRecipes.init();
+        hullOverride();
+        misc();
     }
 
-    private static void highTierBasics() {
+    private static void hullOverride() {
 
-        // Machine Casings
-        ModHandler.addShapedRecipe("ga_casing_uhv", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Seaborgium));
-        ModHandler.addShapedRecipe("ga_casing_uev", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Bohrium));
-        ModHandler.addShapedRecipe("ga_casing_uiv", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Quantum));
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Seaborgium, 8).outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Bohrium, 8)   .outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV)).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Quantum, 8)   .outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV)).buildAndRegister();
+        // Hull Overrides
+        removeTieredRecipeByName("gregtech:hull_", ULV, GTValues.MAX);
 
-        // Hulls
+        if (ConfigHolder.harderMachineHulls) {
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), OreDictUnifier.get(cableGtSingle, Lead, 2)},             new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  OreDictUnifier.get(cableGtSingle, Tin, 2)},              new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, Copper, 2)},           new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, AnnealedCopper, 2)},   new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  OreDictUnifier.get(cableGtSingle, Gold, 2)},             new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  OreDictUnifier.get(cableGtSingle, Aluminium, 2)},        new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  OreDictUnifier.get(cableGtSingle, Tungsten, 2)},         new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), OreDictUnifier.get(cableGtSingle, VanadiumGallium, 2)},  new FluidStack[]{Plastic.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), OreDictUnifier.get(cableGtSingle, Naquadah, 2)},         new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(cableGtSingle, Superconductor, 2)},   new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
+        } else {
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), OreDictUnifier.get(cableGtSingle, Lead, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  OreDictUnifier.get(cableGtSingle, Tin, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, Copper, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, AnnealedCopper, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  OreDictUnifier.get(cableGtSingle, Gold, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  OreDictUnifier.get(cableGtSingle, Aluminium, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  OreDictUnifier.get(cableGtSingle, Tungsten, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), OreDictUnifier.get(cableGtSingle, VanadiumGallium, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), OreDictUnifier.get(cableGtSingle, Naquadah, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy, 2));
+            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(cableGtSingle, Superconductor, 2));
+        }
+
+        ModHandler.addShapedRecipe("ga_hull_ulv", MetaTileEntities.HULL[ULV].getStackForm(), "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), 'C', new UnificationEntry(cableGtSingle, Lead),                    'H', new UnificationEntry(plate, WroughtIron),            'P', new UnificationEntry(plate, Wood));
+        ModHandler.addShapedRecipe("ga_hull_lv",  MetaTileEntities.HULL[LV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  'C', new UnificationEntry(cableGtSingle, Tin),                     'H', new UnificationEntry(plate, Steel),                  'P', new UnificationEntry(plate, WroughtIron));
+        ModHandler.addShapedRecipe("ga_hull_mv",  MetaTileEntities.HULL[MV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  'C', new UnificationEntry(cableGtSingle, Copper),                  'H', new UnificationEntry(plate, Aluminium),              'P', new UnificationEntry(plate, WroughtIron));
+        ModHandler.addShapedRecipe("ga_hull_hv",  MetaTileEntities.HULL[HV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  'C', new UnificationEntry(cableGtSingle, Gold),                    'H', new UnificationEntry(plate, StainlessSteel),         'P', new UnificationEntry(plate, Plastic));
+        ModHandler.addShapedRecipe("ga_hull_ev",  MetaTileEntities.HULL[EV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  'C', new UnificationEntry(cableGtSingle, Aluminium),               'H', new UnificationEntry(plate, Titanium),               'P', new UnificationEntry(plate, Plastic));
+        ModHandler.addShapedRecipe("ga_hull_iv",  MetaTileEntities.HULL[IV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  'C', new UnificationEntry(cableGtSingle, Tungsten),                'H', new UnificationEntry(plate, TungstenSteel),          'P', new UnificationEntry(plate, Polytetrafluoroethylene));
+        ModHandler.addShapedRecipe("ga_hull_luv", MetaTileEntities.HULL[LuV].getStackForm(), "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), 'C', new UnificationEntry(cableGtSingle, VanadiumGallium),         'H', new UnificationEntry(plate, RhodiumPlatedPalladium), 'P', new UnificationEntry(plate, Polytetrafluoroethylene));
+        ModHandler.addShapedRecipe("ga_hull_zpm", MetaTileEntities.HULL[GTValues.ZPM].getStackForm(), "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), 'C', new UnificationEntry(cableGtSingle, Naquadah),                'H', new UnificationEntry(plate, Osmiridium),             'P', new UnificationEntry(plate, Polybenzimidazole));
+        ModHandler.addShapedRecipe("ga_hull_uv",  MetaTileEntities.HULL[UV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  'C', new UnificationEntry(cableGtSingle, NaquadahAlloy),           'H', new UnificationEntry(plate, Tritanium),              'P', new UnificationEntry(plate, Polybenzimidazole));
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(25).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV)).input(cableGtSingle, Lead, 2)           .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[0].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV)) .input(cableGtSingle, Tin, 2)            .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[1].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV)) .input(cableGtSingle, Copper, 2)         .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[2].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV)) .input(cableGtSingle, AnnealedCopper, 2) .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[2].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV)) .input(cableGtSingle, Gold, 2)           .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[3].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV)) .input(cableGtSingle, Aluminium, 2)      .fluidInputs(Plastic.getFluid(L * 2))                .outputs(MetaTileEntities.HULL[4].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV)) .input(cableGtSingle, Tungsten, 2)       .fluidInputs(Polytetrafluoroethylene.getFluid(L * 2)).outputs(MetaTileEntities.HULL[5].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV)).input(cableGtSingle, VanadiumGallium, 2).fluidInputs(Polytetrafluoroethylene.getFluid(L * 2)).outputs(MetaTileEntities.HULL[6].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM)).input(cableGtSingle, Naquadah, 2)       .fluidInputs(Polybenzimidazole.getFluid(L * 2))      .outputs(MetaTileEntities.HULL[7].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(16).inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV)) .input(cableGtSingle, NaquadahAlloy, 2)  .fluidInputs(Polybenzimidazole.getFluid(L * 2))      .outputs(MetaTileEntities.HULL[8].getStackForm()).buildAndRegister();
+
+
+        // UHV+ Hulls
         ModHandler.addShapedRecipe("ga_hull_uhv", GATileEntities.GA_HULLS[0].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV),  'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide), 'H', new UnificationEntry(plate, Seaborgium), 'P', new UnificationEntry(plate, Polyetheretherketone));
         ModHandler.addShapedRecipe("ga_hull_uev", GATileEntities.GA_HULLS[1].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV),  'C', new UnificationEntry(cableGtQuadruple, Pikyonium),            'H', new UnificationEntry(plate, Bohrium),    'P', new UnificationEntry(plate, Polyetheretherketone));
         ModHandler.addShapedRecipe("ga_hull_uiv", GATileEntities.GA_HULLS[2].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV),  'C', new UnificationEntry(cableGtQuadruple, Cinobite),             'H', new UnificationEntry(plate, Quantum),    'P', new UnificationEntry(plate, Zylon));
@@ -60,233 +110,34 @@ public class MachineCraftingRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV)).input(cableGtQuadruple, Pikyonium, 2)           .fluidInputs(Polyetheretherketone.getFluid(L * 2)).outputs(GATileEntities.GA_HULLS[1].getStackForm()).buildAndRegister();
         ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV)).input(cableGtQuadruple, Cinobite, 2)            .fluidInputs(Zylon.getFluid(L * 2))               .outputs(GATileEntities.GA_HULLS[2].getStackForm()).buildAndRegister();
 
-        // Energy Hatches
-        ModHandler.addShapedRecipe("ga_energy_input_hatch_uhv",  GATileEntities.ENERGY_INPUT[0].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
-        ModHandler.addShapedRecipe("ga_energy_input_hatch_uev",  GATileEntities.ENERGY_INPUT[1].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
-        ModHandler.addShapedRecipe("ga_energy_input_hatch_uiv",  GATileEntities.ENERGY_INPUT[2].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
-        ModHandler.addShapedRecipe("ga_energy_output_hatch_uhv", GATileEntities.ENERGY_OUTPUT[0].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
-        ModHandler.addShapedRecipe("ga_energy_output_hatch_uev", GATileEntities.ENERGY_OUTPUT[1].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
-        ModHandler.addShapedRecipe("ga_energy_output_hatch_uiv", GATileEntities.ENERGY_OUTPUT[2].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
+
+        // Casing Overrides
+        // Metals changed from base GTCE
+        removeTieredRecipeByName("gregtech:casing_", LuV, GTValues.MAX);
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Chrome, 8),       getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Iridium, 8),      getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Osmium, 8),       getIntegratedCircuit(8));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Darmstadtium, 8), getIntegratedCircuit(8)); // MAX doesn't have a recipe yet
+
+        ModHandler.addShapedRecipe("ga_casing_luv", MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, RhodiumPlatedPalladium));
+        ModHandler.addShapedRecipe("ga_casing_zpm", MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Osmiridium));
+        ModHandler.addShapedRecipe("ga_casing_uv",  MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Tritanium));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, RhodiumPlatedPalladium, 8).outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Osmiridium, 8)            .outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Tritanium, 8)             .outputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV)) .buildAndRegister();
+
+
+        // UHV+ Casings
+        ModHandler.addShapedRecipe("ga_casing_uhv", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Seaborgium));
+        ModHandler.addShapedRecipe("ga_casing_uev", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Bohrium));
+        ModHandler.addShapedRecipe("ga_casing_uiv", GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV),  "PPP", "PwP", "PPP", 'P', new UnificationEntry(plate, Quantum));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Seaborgium, 8).outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Bohrium, 8)   .outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV)).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).circuitMeta(8).input(plate, Quantum, 8)   .outputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV)).buildAndRegister();
+
     }
 
-    private static void newMachines() {
-
-        registerMachineRecipe(GATileEntities.CIRCUITASSEMBLER,
-                "ACE", "VMV", "WCW",
-                'M', HULL,
-                'V', CONVEYOR,
-                'A', ROBOT_ARM,
-                'C', BETTER_CIRCUIT,
-                'W', CABLE_SINGLE,
-                'E', EMITTER);
-
-        registerMachineRecipe(GATileEntities.CLUSTERMILL,
-                "MMM", "CHC", "MMM",
-                'M', MOTOR,
-                'C', CIRCUIT,
-                'H', HULL);
-
-        registerMachineRecipe(GATileEntities.MASS_FAB,
-                "CFC", "QMQ", "CFC",
-                'M', HULL,
-                'Q', CABLE_QUAD,
-                'C', BETTER_CIRCUIT,
-                'F', FIELD_GENERATOR);
-
-        registerMachineRecipe(GATileEntities.REPLICATOR,
-                "EFE", "CMC", "EQE",
-                'M', HULL,
-                'Q', CABLE_QUAD,
-                'C', BETTER_CIRCUIT,
-                'F', FIELD_GENERATOR,
-                'E', EMITTER);
-
-        registerMachineRecipe(GATileEntities.WORLD_ACCELERATOR,
-                "ABC", "DHE", "FGI",
-                'H', HULL,
-                'A', PISTON,
-                'B', ROBOT_ARM,
-                'C', PUMP,
-                'D', MOTOR,
-                'E', CONVEYOR,
-                'F', EMITTER,
-                'G', SENSOR,
-                'I', FIELD_GENERATOR);
-
-        registerMachineRecipe(GATileEntities.MINER,
-                "WPW", "CMC", "SPS",
-                'M', HULL,
-                'P', PISTON,
-                'C', CIRCUIT,
-                'W', MetaItems.COMPONENT_GRINDER_DIAMOND,
-                'S', SENSOR);
-
-        registerMachineRecipe(GATileEntities.DEHYDRATOR,
-                "WCW", "MHM", "GAG",
-                'C', CIRCUIT,
-                'M', CABLE_QUAD,
-                'H', HULL,
-                'G', GEAR,
-                'A', ROBOT_ARM,
-                'W', COIL_HEATING_DOUBLE);
-
-        registerMachineRecipe(GATileEntities.DECAY_CHAMBER,
-                "RCR", "FMF", "QCQ",
-                'M', HULL,
-                'Q', CABLE_DOUBLE,
-                'C', CIRCUIT,
-                'F', FIELD_GENERATOR,
-                'R', STICK_RADIOACTIVE);
-
-        registerMachineRecipe(GATileEntities.GREEN_HOUSE,
-                "GGG", "AMA", "CQC",
-                'M', HULL,
-                'Q', CABLE_SINGLE,
-                'C', CIRCUIT,
-                'G', GLASS,
-                'A', ROBOT_ARM);
-
-        registerMachineRecipe(GATileEntities.ROCK_BREAKER,
-                "CPC", "CMC", "GGG",
-                'M', HULL,
-                'C', PIPE,
-                'G', GLASS,
-                'P', PISTON);
-
-        registerMachineRecipe(GATileEntities.DISASSEMBLER,
-                "RSV", "PMV", "ICI",
-                'M', HULL,
-                'C', CABLE_SINGLE,
-                'R', ROBOT_ARM,
-                'P', PUMP,
-                'S', SENSOR,
-                'V', CONVEYOR,
-                'I', CIRCUIT);
-
-        registerMachineRecipe(GATileEntities.NAQUADAH_REACTOR,
-                "RCR", "FMF", "QCQ",
-                'M', HULL,
-                'Q', CABLE_QUAD,
-                'C', BETTER_CIRCUIT,
-                'F', FIELD_GENERATOR,
-                'R', STICK_RADIOACTIVE);
-
-        registerMachineRecipe(GATileEntities.ROCKET_GENERATOR,
-                "PCP", "MHM", "GAG",
-                'C', CIRCUIT,
-                'M', MOTOR,
-                'H', HULL,
-                'G', PLATE_DENSE,
-                'A', CABLE_DOUBLE,
-                'P', PISTON);
-
-        registerMachineRecipe(GATileEntities.DIODES,
-                "CCC", "XMX", "CCC",
-                'M', HULL,
-                'C', CABLE_SINGLE,
-                'X', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(1, GATileEntities.BUFFER,
-                " G ", " H ", " C ",
-                'G', GLASS,
-                'H', HULL,
-                'C', OreDictNames.chestWood);
-
-        ModHandler.addShapedRecipe("ga_simple_ore_washer", GATileEntities.SIMPLE_ORE_WASHER.getStackForm(),
-                "PIP", "PTP", "PCP",
-                'C', MetaTileEntities.HULL[GTValues.LV].getStackForm(),
-                'T', MetaItems.ELECTRIC_PUMP_LV,
-                'I', new UnificationEntry(plate, Steel),
-                'P', new UnificationEntry(pipeLarge, Bronze));
-    }
-
-    // Same recipes as default GT (includes our overrides seen below).
-    // Bending Machine does not use a Wrench, instead uses another single tiered cable in its place.
-    private static void highTierMachines() {
-
-        if (GAConfig.GT5U.highTierPumps)
-            registerMachineRecipe(GATileEntities.PUMP,                      "WGW", "GMG", "TGT", 'M', HULL, 'W', CIRCUIT,               'G', PUMP,           'T', PIPE);
-        if (GAConfig.GT5U.highTierAlloySmelter)
-            registerMachineRecipe(GATileEntities.ALLOY_SMELTER,             "ECE", "CMC", "WCW", 'M', HULL, 'E', CIRCUIT,               'W', CABLE_SINGLE,   'C', COIL_HEATING_DOUBLE);
-        if (GAConfig.GT5U.highTierAssemblers)
-            registerMachineRecipe(GATileEntities.ASSEMBLER,                 "ACA", "VMV", "WCW", 'M', HULL, 'V', CONVEYOR,              'A', ROBOT_ARM,      'C', CIRCUIT,      'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierBenders)
-            registerMachineRecipe(GATileEntities.BENDER,                    "PWP", "CMC", "EWE", 'M', HULL, 'E', MOTOR,                 'P', PISTON,         'C', CIRCUIT,      'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierCanners)
-            registerMachineRecipe(GATileEntities.CANNER,                    "WPW", "CMC", "GGG", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierCompressors)
-            registerMachineRecipe(GATileEntities.COMPRESSOR,                " C ", "PMP", "WCW", 'M', HULL, 'P', PISTON,                'C', CIRCUIT,        'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierCutters)
-            registerMachineRecipe(GATileEntities.CUTTER,                    "WCG", "VMB", "CWE", 'M', HULL, 'E', MOTOR,                 'V', CONVEYOR,       'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS, 'B', OreDictNames.craftingDiamondBlade);
-        if (GAConfig.GT5U.highTierElectricFurnace)
-            registerMachineRecipe(GATileEntities.ELECTRIC_FURNACE,          "ECE", "CMC", "WCW", 'M', HULL, 'E', CIRCUIT,               'W', CABLE_SINGLE,   'C', COIL_HEATING);
-        if (GAConfig.GT5U.highTierExtractors)
-            registerMachineRecipe(GATileEntities.EXTRACTOR,                 "GCG", "EMP", "WCW", 'M', HULL, 'E', PISTON,                'P', PUMP,           'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierExtruders)
-            registerMachineRecipe(GATileEntities.EXTRUDER,                  "CCE", "XMP", "CCE", 'M', HULL, 'X', PISTON,                'E', CIRCUIT,        'P', PIPE,         'C', COIL_HEATING_DOUBLE);
-        if (GAConfig.GT5U.highTierLathes)
-            registerMachineRecipe(GATileEntities.LATHE,                     "WCW", "EMD", "CWP", 'M', HULL, 'E', MOTOR,                 'P', PISTON,         'C', CIRCUIT,      'W', CABLE_SINGLE, 'D', DIAMOND);
-        if (GAConfig.GT5U.highTierMacerators)
-            registerMachineRecipe(GATileEntities.MACERATOR,                 "PEG", "WWM", "CCW", 'M', HULL, 'E', MOTOR,                 'P', PISTON,         'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GRINDER);
-        if (GAConfig.GT5U.highTierMicrowaves)
-            registerMachineRecipe(GATileEntities.MICROWAVE,                 "LWC", "LMR", "LEC", 'M', HULL, 'E', MOTOR,                 'R', EMITTER,        'C', CIRCUIT,      'W', CABLE_SINGLE, 'L', new UnificationEntry(plate, Lead));
-        if (GAConfig.GT5U.highTierWiremills)
-            registerMachineRecipe(GATileEntities.WIREMILL,                  "EWE", "CMC", "EWE", 'M', HULL, 'E', MOTOR,                 'C', CIRCUIT,        'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierCentrifuges)
-            registerMachineRecipe(GATileEntities.CENTRIFUGE,                "CEC", "WMW", "CEC", 'M', HULL, 'E', MOTOR,                 'C', CIRCUIT,        'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierElectrolyzers)
-            registerMachineRecipe(GATileEntities.ELECTROLYZER,              "IGI", "IMI", "CWC", 'M', HULL, 'C', CIRCUIT,               'W', CABLE_SINGLE,   'I', WIRE,         'G', GLASS);
-        if (GAConfig.GT5U.highTierThermalCentrifuges)
-            registerMachineRecipe(GATileEntities.THERMAL_CENTRIFUGE,        "CEC", "OMO", "WEW", 'M', HULL, 'E', MOTOR,                 'C', CIRCUIT,        'W', CABLE_SINGLE, 'O', COIL_HEATING_DOUBLE);
-        if (GAConfig.GT5U.highTierOreWashers)
-            registerMachineRecipe(GATileEntities.ORE_WASHER,                "RGR", "CEC", "WMW", 'M', HULL, 'R', ROTOR,                 'E', MOTOR,          'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierPackers)
-            registerMachineRecipe(GATileEntities.PACKER,                    "BCB", "RMV", "WCW", 'M', HULL, 'R', ROBOT_ARM,             'V', CONVEYOR,       'C', CIRCUIT,      'W', CABLE_SINGLE, 'B', OreDictNames.chestWood);
-        if (GAConfig.GT5U.highTierUnpackers)
-            registerMachineRecipe(GATileEntities.UNPACKER,                  "BCB", "VMR", "WCW", 'M', HULL, 'R', ROBOT_ARM,             'V', CONVEYOR,       'C', CIRCUIT,      'W', CABLE_SINGLE, 'B', OreDictNames.chestWood);
-        if (GAConfig.GT5U.highTierChemicalReactors)
-            registerMachineRecipe(GATileEntities.CHEMICAL_REACTOR,          "GRG", "WEW", "CMC", 'M', HULL, 'R', ROTOR,                 'E', MOTOR,          'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierFluidCanners)
-            registerMachineRecipe(GATileEntities.FLUID_CANNER,              "GCG", "GMG", "WPW", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierBreweries)
-            registerMachineRecipe(GATileEntities.BREWERY,                   "GPG", "WMW", "CBC", 'M', HULL, 'B', STICK_DISTILLATION,    'P', PUMP,           'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierFermenters)
-            registerMachineRecipe(GATileEntities.FERMENTER,                 "WPW", "GMG", "WCW", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierFluidExtractors)
-            registerMachineRecipe(GATileEntities.FLUID_EXTRACTOR,           "GCG", "PME", "WCW", 'M', HULL, 'E', PISTON,                'P', PUMP,           'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierFluidSolidifiers)
-            registerMachineRecipe(GATileEntities.FLUID_SOLIDIFIER,          "PGP", "WMW", "CBC", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', CABLE_SINGLE, 'G', GLASS, 'B', OreDictNames.chestWood);
-        if (GAConfig.GT5U.highTierDistilleries)
-            registerMachineRecipe(GATileEntities.DISTILLERY,                "GBG", "CMC", "WPW", 'M', HULL, 'B', STICK_DISTILLATION,    'P', PUMP,           'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierChemicalBaths)
-            registerMachineRecipe(GATileEntities.CHEMICAL_BATH,             "VGW", "PGV", "CMC", 'M', HULL, 'P', PUMP,                  'V', CONVEYOR,       'C', CIRCUIT,      'W', CABLE_SINGLE, 'G', GLASS);
-        if (GAConfig.GT5U.highTierPolarizers)
-            registerMachineRecipe(GATileEntities.POLARIZER,                 "ZSZ", "WMW", "ZSZ", 'M', HULL, 'S', STICK_ELECTROMAGNETIC, 'Z', COIL_ELECTRIC,  'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierElectromagneticSeparators)
-            registerMachineRecipe(GATileEntities.ELECTROMAGNETIC_SEPARATOR, "VWZ", "WMS", "CWZ", 'M', HULL, 'S', STICK_ELECTROMAGNETIC, 'Z', COIL_ELECTRIC,  'V', CONVEYOR,     'C', CIRCUIT,      'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierAutoclaves)
-            registerMachineRecipe(GATileEntities.AUTOCLAVE,                 "IGI", "IMI", "CPC", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'I', PLATE,        'G', GLASS);
-        if (GAConfig.GT5U.highTierMixers)
-            registerMachineRecipe(GATileEntities.MIXER,                     "GRG", "GEG", "CMC", 'M', HULL, 'E', MOTOR,                 'R', ROTOR,          'C', CIRCUIT,      'G', GLASS);
-        if (GAConfig.GT5U.highTierLaserEngravers)
-            registerMachineRecipe(GATileEntities.LASER_ENGRAVER,            "PEP", "CMC", "WCW", 'M', HULL, 'E', EMITTER,               'P', PISTON,         'C', CIRCUIT,      'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierFormingPresses)
-            registerMachineRecipe(GATileEntities.FORMING_PRESS,             "WPW", "CMC", "WPW", 'M', HULL, 'P', PISTON,                'C', CIRCUIT,        'W', CABLE_SINGLE);
-        if (GAConfig.GT5U.highTierForgeHammers)
-            registerMachineRecipe(GATileEntities.FORGE_HAMMER,              "WPW", "CMC", "WAW", 'M', HULL, 'P', PISTON,                'C', CIRCUIT,        'W', CABLE_SINGLE, 'A', OreDictNames.craftingAnvil);
-        if (GAConfig.GT5U.highTierFluidHeaters)
-            registerMachineRecipe(GATileEntities.FLUID_HEATER,              "OGO", "PMP", "WCW", 'M', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', CABLE_SINGLE, 'G', GLASS,        'O', COIL_HEATING_DOUBLE);
-        if (GAConfig.GT5U.highTierSifters)
-            registerMachineRecipe(GATileEntities.SIFTER,                    "WFW", "PMP", "CFC", 'M', HULL, 'P', PISTON,                'C', CIRCUIT,        'W', CABLE_SINGLE, 'F', MetaItems.ITEM_FILTER);
-        if (GAConfig.GT5U.highTierArcFurnaces)
-            registerMachineRecipe(GATileEntities.ARC_FURNACE,               "WGW", "CMC", "PPP", 'M', HULL, 'P', PLATE,                 'C', CIRCUIT,        'W', CABLE_QUAD,   'G', new UnificationEntry(ingot, Graphite));
-        if (GAConfig.GT5U.highTierPlasmaArcFurnaces)
-            registerMachineRecipe(GATileEntities.PLASMA_ARC_FURNACE,        "WGW", "CMC", "TPT", 'M', HULL, 'P', PLATE,                 'C', BETTER_CIRCUIT, 'W', CABLE_QUAD,   'T', PUMP,         'G', new UnificationEntry(ingot, Graphite));
-        if (GAConfig.Misc.highTierCollector)
-            registerMachineRecipe(GATileEntities.AIR_COLLECTOR,             "WFW", "PHP", "WCW", 'H', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', Blocks.IRON_BARS,                'F', MetaItems.ITEM_FILTER);
-    }
-
-    private static void otherMachines() {
+    private static void misc() {
 
         // Fluid Export Hatch
         ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_ulv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.ULV).getStackForm(),     "F", "M", "G", 'M', MetaTileEntities.HULL[ULV].getStackForm(),          'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
@@ -349,83 +200,14 @@ public class MachineCraftingRecipes {
         //Steam Machines
         ModHandler.addShapedRecipe("ga_steam_mixer", GATileEntities.STEAM_MIXER.getStackForm(), "GRG", "GPG", "PMP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'P', new UnificationEntry(pipeSmall, Bronze), 'R', new UnificationEntry(rotor, Bronze), 'G', Blocks.GLASS);
         ModHandler.addShapedRecipe("ga_steam_pump", GATileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(pipeMedium, Bronze), 'L', new UnificationEntry(pipeLarge, Bronze), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'R', new UnificationEntry(rotor, Bronze));
-    }
 
-    private static void highAmpMachines() {
+        // UHV+ Energy Input/Output Hatches
+        ModHandler.addShapedRecipe("ga_energy_input_hatch_uhv",  GATileEntities.ENERGY_INPUT[0].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
+        ModHandler.addShapedRecipe("ga_energy_input_hatch_uev",  GATileEntities.ENERGY_INPUT[1].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
+        ModHandler.addShapedRecipe("ga_energy_input_hatch_uiv",  GATileEntities.ENERGY_INPUT[2].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
+        ModHandler.addShapedRecipe("ga_energy_output_hatch_uhv", GATileEntities.ENERGY_OUTPUT[0].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
+        ModHandler.addShapedRecipe("ga_energy_output_hatch_uev", GATileEntities.ENERGY_OUTPUT[1].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
+        ModHandler.addShapedRecipe("ga_energy_output_hatch_uiv", GATileEntities.ENERGY_OUTPUT[2].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
 
-        registerMachineRecipe(GATileEntities.TRANSFORMER_1_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_DOUBLE,
-                'B', CABLE_DOUBLE_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_4_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_DOUBLE,
-                'B', CABLE_DOUBLE_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_8_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_QUAD,
-                'B', CABLE_QUAD_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_12_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_OCTAL,
-                'B', CABLE_OCTAL_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_16_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_HEX,
-                'B', CABLE_HEX_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_4_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_DOUBLE);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_16_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_QUAD);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_64_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_OCTAL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_128_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_HEX);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_DOUBLE);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_32_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_QUAD);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_64_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_OCTAL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_128_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_HEX);
     }
 }

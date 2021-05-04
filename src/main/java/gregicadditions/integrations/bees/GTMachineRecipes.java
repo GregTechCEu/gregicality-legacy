@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import static gregicadditions.recipes.helper.AdditionMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
 
 public class GTMachineRecipes {
