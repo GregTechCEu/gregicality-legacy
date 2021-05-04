@@ -606,12 +606,21 @@ public class RecipeHandler {
         if (!OreDictUnifier.get(foil, material).isEmpty()) {
 
             // Handcrafting foils
-            if (GAConfig.GT6.BendingFoils && !material.hasFlag(NO_SMASHING)) {
+            if (!material.hasFlag(NO_SMASHING)) {
 
-                ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
-                        "hPC",
-                        'P', new UnificationEntry(plate, material),
-                        'C', "craftingToolBendingCylinder");
+                if (GAConfig.GT6.BendingFoils) {
+
+                    ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
+                            "hPC",
+                            'P', new UnificationEntry(plate, material),
+                            'C', "craftingToolBendingCylinder");
+
+                } else {
+
+                    ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
+                            "hP ",
+                            'P', new UnificationEntry(plate, material));
+                }
             }
 
             // Cluster Mill foils
