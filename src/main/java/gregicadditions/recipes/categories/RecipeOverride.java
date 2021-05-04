@@ -3,6 +3,7 @@ package gregicadditions.recipes.categories;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -678,6 +679,14 @@ public class RecipeOverride {
                 .fluidInputs(Glyceryl.getFluid(500))
                 .outputs(DYNAMITE.getStackForm())
                 .buildAndRegister();
+
+        // Silicon Boule
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Silicon, 32), OreDictUnifier.get(dustTiny, Gallium), getIntegratedCircuit(1));
+        BLAST_RECIPES.recipeBuilder().duration(9000).EUt(120).blastFurnaceTemp(1784)
+                .input(dust, Silicon, 32)
+                .input(dustSmall, GalliumArsenide)
+                .outputs(SILICON_BOULE.getStackForm())
+                .buildAndRegister();
     }
 
     private static void vanillaOverride() {
@@ -871,5 +880,8 @@ public class RecipeOverride {
 
         // Remove Vanilla TNT Recipe
         removeCraftingRecipes(new ItemStack(Blocks.TNT));
+
+        // Ultimate Battery
+        removeRecipesByInputs(ASSEMBLER_RECIPES, ENERGY_LAPOTRONIC_ORB2.getStackForm(8), OreDictUnifier.get(plate, Darmstadtium, 16));
     }
 }

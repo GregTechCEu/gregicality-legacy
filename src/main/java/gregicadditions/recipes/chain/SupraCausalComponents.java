@@ -44,34 +44,6 @@ public class SupraCausalComponents {
                 .outputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(144))
-                .input(plate, ProtoAdamantium)
-                .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
-                .outputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(144))
-                .input(plate, Vibranium)
-                .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
-                .outputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(144))
-                .input(plate, Neutronium)
-                .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
-                .outputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(144))
-                .input(foil, FullerenePolymerMatrix)
-                .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
-                .outputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(32))
-                .buildAndRegister();
-
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728).qubit(32)
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .inputs(TOOL_DATA_ORB.getStackForm())
@@ -103,22 +75,6 @@ public class SupraCausalComponents {
                 .input(stick, NeodymiumMagnetic, 32)
                 .input(plate, Vibranium, 16)
                 .outputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
-                .inputs(NUCLEAR_CLOCK.getStackForm())
-                .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(2))
-                .inputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm(2))
-                .inputs(GRAVITON_TRANSDUCER.getStackForm(4))
-                .inputs(QCD_PROTECTIVE_PLATING.getStackForm(3))
-                .input(plate, Neutronium, 1)
-                .input(wireGtSingle, UMVSuperconductor, 2)
-                .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(16))
-                .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(16))
-                .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(16))
-                .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(16))
-                .fluidInputs(FullerenePolymerMatrix.getFluid(1296))
-                .outputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)

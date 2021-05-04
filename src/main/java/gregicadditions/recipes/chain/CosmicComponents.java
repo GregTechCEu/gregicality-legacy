@@ -366,56 +366,5 @@ public class CosmicComponents {
                 .fluidInputs(SolderingAlloy.getFluid(288))
                 .outputs(SCINTILLATOR.getStackForm())
                 .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(6000000)
-                .input(wireFine, Cinobite, 8)
-                .input(plate, SuperheavyHAlloy, 4)
-                .input(plate, Vibranium, 4)
-                .fluidInputs(Polybenzimidazole.getFluid(1296))
-                .outputs(SMD_DIODE_COSMIC.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(6000000)
-                .input(wireFine, Cinobite, 8)
-                .input(plate, MetastableHassium, 4)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
-                .fluidInputs(Zylon.getFluid(1296))
-                .outputs(SMD_TRANSISTOR_COSMIC.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(6000000)
-                .input(wireFine, Cinobite, 8)
-                .input(foil, Quantum, 4)
-                .input(foil, FullerenePolymerMatrix, 4)
-                .fluidInputs(Zylon.getFluid(1296))
-                .outputs(SMD_CAPACITOR_COSMIC.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(6000000)
-                .input(wireFine, Cinobite, 8)
-                .input(plate, SuperheavyLAlloy, 4)
-                .input(plate, TriniumTitanium, 4)
-                .fluidInputs(Zylon.getFluid(1296))
-                .outputs(SMD_RESISTOR_COSMIC.getStackForm(32))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(11796480).qubit(32)
-                .inputs(COSMIC_PROCESSING_UNIT_CORE.getStackForm())
-                .inputs(SMD_DIODE_COSMIC.getStackForm(2))
-                .inputs(SMD_RESISTOR_COSMIC.getStackForm(2))
-                .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(2))
-                .inputs(SMD_CAPACITOR_COSMIC.getStackForm(2))
-                .input(foil, FullerenePolymerMatrix, 2)
-                .inputs(ULTRASHORT_PULSE_LASER.getStackForm())
-                .input(wireGtSingle, Cinobite, 8)
-                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(8))
-                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(4))
-                .input(plate,BlackTitanium,4)
-                .fluidInputs(Zylon.getFluid(864))
-                .fluidInputs(Quantum.getFluid(432))
-                .fluidInputs(SolderingAlloy.getFluid(1296))
-                .fluidInputs(ProtoAdamantium.getFluid(432))
-                .outputs(COSMIC_PROCESSING_CORE.getStackForm())
-                .buildAndRegister();
     }
 }

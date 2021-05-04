@@ -8,10 +8,7 @@ import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.chain.*;
-import gregicadditions.recipes.chain.optical.Lasers;
-import gregicadditions.recipes.chain.optical.OpticalCircuits;
-import gregicadditions.recipes.chain.optical.OpticalComponents;
-import gregicadditions.recipes.chain.optical.OpticalFiber;
+import gregicadditions.recipes.chain.optical.*;
 import gregicadditions.recipes.chain.wetware.*;
 import gregicadditions.recipes.helper.HelperMethods;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
@@ -135,8 +132,6 @@ public class RecipeHandler {
         GrowthMedium.init();
         StemCells.init();
         SterilizedGrowthMedium.init();
-        ProcessingUnits.init();
-        Circuits.init();
         Batteries.init();
         RheniumChain.init();
         UHVMaterials.init();
@@ -166,7 +161,6 @@ public class RecipeHandler {
         SensorEmitter.init();
         SeleniumChain.init();
         OpticalComponents.init();
-        OpticalCircuits.init();
         WormholeGeneratorChain.init();
         CosmicComponents.init();
         SupraCausalComponents.init();
@@ -925,10 +919,8 @@ public class RecipeHandler {
             LargeRecipeBuilder largeRecipeMap = LARGE_ENGRAVER_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt())
                     .duration(recipe.getDuration())
-                    .fluidInputs(recipe.getFluidInputs())
                     .inputsIngredients(recipe.getInputs())
-                    .outputs(recipe.getOutputs())
-                    .fluidOutputs(recipe.getFluidOutputs());
+                    .outputs(recipe.getOutputs());
 
             recipe.getChancedOutputs().forEach(chanceEntry -> largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
             largeRecipeMap.buildAndRegister();

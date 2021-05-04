@@ -559,5 +559,27 @@ public class MetaItemRecipes {
                 'P', new UnificationEntry(plate, Wood),
                 'S', "string",
                 'G', new UnificationEntry(dust, Gunpowder));
+
+        // Petri Dish
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
+                .fluidInputs(Polystyrene.getFluid(36))
+                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
+                .outputs(PETRI_DISH.getStackForm())
+                .buildAndRegister();
+
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(36))
+                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
+                .outputs(PETRI_DISH.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireFine, Titanium)
+                .fluidInputs(Plastic.getFluid(1008))
+                .inputs(STERILIZED_PETRI_DISH.getStackForm())
+                .outputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
+                .EUt(30720)
+                .duration(100)
+                .buildAndRegister();
     }
 }
