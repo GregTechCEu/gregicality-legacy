@@ -51,6 +51,7 @@ import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
+import static gregtech.api.unification.material.MarkerMaterials.Color.White;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
 import static gregtech.api.unification.material.type.GemMaterial.MatFlags.CRYSTALLISABLE;
@@ -67,6 +68,15 @@ public class RecipeHandler {
      */
     private static final List<FluidMaterial> OLD_INSULATION_MATERIAL = Arrays.asList(Rubber, StyreneButadieneRubber, SiliconeRubber);
     private static final OrePrefix[] WIRE_DOUBLING_ORDER = new OrePrefix[]{wireGtSingle, wireGtDouble, wireGtQuadruple, wireGtOctal, wireGtHex};
+
+    /**
+     * Used for Gem Implosion
+     */
+    private static final ItemStack[] EXPLOSIVES = new ItemStack[]{
+            GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL, 48),
+            new ItemStack(Blocks.TNT, 24),
+            MetaItems.DYNAMITE.getStackForm(12),
+            GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT, 6)};
 
     /**
      * GT Material Handler registration
@@ -288,6 +298,7 @@ public class RecipeHandler {
     /**
      * Gem Material Handler. Generates:
      *
+     * - Laser Engraver Gem Recipes
      * - Implosion Compressor Gem Recipes
      * - Gem Hammer Recipes
      *
@@ -300,19 +311,61 @@ public class RecipeHandler {
 
             removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
 
-            IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dustPrefix, material, 4)
-                    .inputs(new ItemStack(Blocks.TNT, 24))
-                    .output(gem, material, 3)
-                    .output(dustTiny, DarkAsh, 2)
-                    .buildAndRegister();
+            // It isn't uncommon for some GemMaterials to disable one or more of these prefixes.
+            // Lets just check for both to be safe
+            boolean hasFlawless = !OreDictUnifier.get(gemFlawless, material).isEmpty();
+            boolean hasExquisite = !OreDictUnifier.get(gemExquisite, material).isEmpty();
 
-            IMPLOSION_RECIPES.recipeBuilder()
-                    .input(dustPrefix, material, 4)
-                    .inputs(MetaItems.DYNAMITE.getStackForm(12))
-                    .output(gem, material, 3)
-                    .output(dustTiny, DarkAsh, 2)
-                    .buildAndRegister();
+            // Laser Engraver Recipes
+            if (hasFlawless)
+
+                // Gem -> Flawless
+                LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(2000)
+                        .input(gem, material, 4)
+                        .notConsumable(craftingLens, White)
+                        .output(gemFlawless, material)
+                        .buildAndRegister();
+
+            if (hasExquisite)
+
+                // Flawless -> Exquisite
+                LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(2000)
+                        .input(gemFlawless, material, 4)
+                        .notConsumable(craftingLens, White)
+                        .output(gemExquisite, material)
+                        .buildAndRegister();
+
+            // Implosion Compressor Recipes
+            for (ItemStack explosive : EXPLOSIVES) {
+
+                // Dust -> Gem
+                IMPLOSION_RECIPES.recipeBuilder()
+                        .input(dust, material, 4)
+                        .inputs(explosive)
+                        .output(gem, material, 3)
+                        .output(dustTiny, DarkAsh, 2)
+                        .buildAndRegister();
+
+                if (hasFlawless)
+
+                    // Gem -> Flawless
+                    IMPLOSION_RECIPES.recipeBuilder()
+                            .input(gem, material, 3)
+                            .inputs(explosive)
+                            .output(gemFlawless, material)
+                            .output(dustTiny, DarkAsh, 2)
+                            .buildAndRegister();
+
+                if (hasExquisite)
+
+                    // Flawless -> Exquisite
+                    IMPLOSION_RECIPES.recipeBuilder()
+                            .input(gemFlawless, material, 3)
+                            .inputs(explosive)
+                            .output(gemExquisite, material)
+                            .output(dustTiny, DarkAsh, 2)
+                            .buildAndRegister();
+            }
         }
 
         // Gem Hammer Recipes

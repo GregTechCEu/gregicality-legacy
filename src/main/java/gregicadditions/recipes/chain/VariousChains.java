@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,6 @@ import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.PLANT_BALL;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_BLOCK;
 
 public class VariousChains {
@@ -639,19 +637,5 @@ public class VariousChains {
                 .fluidInputs(SulfuricCoalTarOil.getFluid(800))
                 .fluidOutputs(Naphtalene.getFluid(800))
                 .buildAndRegister();
-
-        // Explosives
-        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
-                .inputs(GELLED_TOLUENE.getStackForm(4))
-                .fluidInputs(NitrationMixture.getFluid(200))
-                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(150))
-                .buildAndRegister();
-
-        ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL),
-                "PSP", "GGG", "PGP",
-                'P', OreDictUnifier.get(plate, Wood),
-                'S', "string",
-                'G', OreDictUnifier.get(dust, Gunpowder));
     }
 }

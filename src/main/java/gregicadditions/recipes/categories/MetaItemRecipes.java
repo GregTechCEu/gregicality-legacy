@@ -2,6 +2,7 @@ package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregicadditions.armor.PowerlessJetpack;
+import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.recipes.ModHandler;
@@ -544,5 +545,19 @@ public class MetaItemRecipes {
                 .inputs(new ItemStack(Items.MUTTON))
                 .output(dust, Meat)
                 .buildAndRegister();
+
+        // Explosives
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
+                .inputs(GELLED_TOLUENE.getStackForm(4))
+                .fluidInputs(NitrationMixture.getFluid(200))
+                .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.ITNT))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(150))
+                .buildAndRegister();
+
+        ModHandler.addShapedRecipe("powder_barrel", GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.POWDER_BARREL),
+                "PSP", "GGG", "PGP",
+                'P', new UnificationEntry(plate, Wood),
+                'S', "string",
+                'G', new UnificationEntry(dust, Gunpowder));
     }
 }
