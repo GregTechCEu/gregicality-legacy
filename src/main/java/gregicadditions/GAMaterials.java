@@ -1376,6 +1376,7 @@ public class GAMaterials implements IMaterialHandler {
             Tungstate.addFlag(DISABLE_DECOMPOSITION);
         }
 
+        Polytetrafluoroethylene.setFluidPipeProperties(450, 900, true);
         NiobiumTitanium.setFluidPipeProperties(450, 2900, true);
         Polybenzimidazole.setFluidPipeProperties(450, 900, true);
         Enderium.setFluidPipeProperties(650, 1500, true);

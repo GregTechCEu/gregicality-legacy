@@ -566,12 +566,12 @@ public class MultiblockCraftingRecipes {
 
         // Large Chemical Reactor
         ModHandler.addShapedRecipe("ga_large_chemical_reactor", LARGE_CHEMICAL_REACTOR.getStackForm(),
-                "DBD", "CHC", "DED",
-                'H', MetaTileEntities.CHEMICAL_REACTOR[EV - 1].getStackForm(),
-                'E', MetaTileEntities.HULL[EV].getStackForm(),
-                'C', new UnificationEntry(circuit, Extreme),
-                'B', new UnificationEntry(pipeLarge, StainlessSteel),
-                'D', GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(CHEMICALLY_INERT));
+                "CRC", "PMP", "CHC",
+                'H', MetaTileEntities.HULL[HV].getStackForm(),
+                'C', new UnificationEntry(circuit, Advanced),
+                'P', new UnificationEntry(pipeLarge, Polytetrafluoroethylene),
+                'R', new UnificationEntry(rotor, StainlessSteel),
+                'M', ELECTRIC_MOTOR_HV.getStackForm());
 
         // Large Cutting Machine
         ModHandler.addShapedRecipe("ga_large_cutting", LARGE_CUTTING.getStackForm(),
