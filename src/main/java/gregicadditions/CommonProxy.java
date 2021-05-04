@@ -15,7 +15,6 @@ import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.recipes.categories.handlers.*;
 import gregicadditions.recipes.compat.ForestryCompat;
-import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
@@ -169,10 +168,15 @@ public class CommonProxy {
             MysticalAgricultureItems.removeMARecipe();
         }
 
+        // Main recipe registration
+        // This is called AFTER GregTech registers recipes, so
+        // anything here is safe to call removals in
         RecipeHandler.initRecipes();
         MachineCraftingRecipes.init();
-
         RecipeHandler.generatedRecipes();
+
+        // Run some late recipe addition that depends on other
+        // recipes of ours already being added
         RecipeHandler.registerLargeMachineRecipes();
         VoidMinerHandler.addWhitelist();
     }

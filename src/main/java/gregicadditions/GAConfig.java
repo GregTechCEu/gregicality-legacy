@@ -456,7 +456,7 @@ public class GAConfig {
         "Note that this should be enabled in development only"})
         @Config.Name("Recipe Removal Logging")
         @Config.RequiresMcRestart
-        public boolean enableRecipeRemovalLogging = true;
+        public boolean enableRecipeRemovalLogging = false;
 
         @Config.Comment({"Whether or not to have reverse engineered recipes (Disassembler, Electric Implosion, etc.) done before or after CT recipes.",
         "If True, they will be done after CT, meaning the reversed recipes are not touchable by scripts. If False, it is on the pack maker to fix the recipes manually."})

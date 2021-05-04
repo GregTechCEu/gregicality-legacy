@@ -1,4 +1,4 @@
-package gregicadditions.recipes.categories;
+package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
