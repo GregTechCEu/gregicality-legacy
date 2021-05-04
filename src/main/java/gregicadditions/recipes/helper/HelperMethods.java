@@ -119,16 +119,41 @@ public class HelperMethods {
             GALog.logger.info("Removed all recipes for Recipe Map: {}", map.unlocalizedName);
     }
 
-    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
-        registerMachineRecipe(0, metaTileEntities, recipe);
-    }
-
+    /**
+     * Tiered Machine Recipe Registration method.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     registerMachineRecipe(GATileEntities.DIODES,
+     *                 "CCC", "XMX", "CCC",
+     *                 'M', HULL,
+     *                 'C', CABLE_SINGLE,
+     *                 'X', MetaItems.SMALL_COIL);
+     * </cr>
+     *
+     * - The MetaTileEntity input can be an Array, a List, or an Array of {@link GATileEntities.MTE}.
+     * - The Recipe Input must be Strings of up to 3 characters.
+     * - The inputs must be in pairs of (char, [input]).
+     * - Inputs can be a:
+     *     - String representing an OreDictionary entry
+     *     - ItemStack
+     *     - {@link GACraftingComponents} or {@link gregtech.loaders.recipe.CraftingComponent}
+     *     - {@link gregtech.api.unification.stack.UnificationEntry}
+     *
+     * @param ingredientOffset The starting position in the Array or List of MetaTileEntities
+     * @param metaTileEntities The group of MetaTileEntities to register the same recipe for.
+     * @param recipe           The Recipe Layout, detailed above.
+     */
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(int ingredientOffset, T[] metaTileEntities, Object... recipe) {
         for (T metaTileEntity : metaTileEntities) {
             if (metaTileEntity != null)
                 ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaName()), metaTileEntity.getStackForm(),
                         prepareRecipe(metaTileEntity.getTier() + ingredientOffset, Arrays.copyOf(recipe, recipe.length)));
         }
+    }
+
+    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
+        registerMachineRecipe(0, metaTileEntities, recipe);
     }
 
     public static void registerMachineRecipe(GATileEntities.MTE<?>[] metaTileEntities, Object... recipe) {
@@ -146,6 +171,8 @@ public class HelperMethods {
         }
     }
 
+    // Don't mind the extra "s" on the method name, just Java not recognizing
+    // 2 Lists with different generic types as different parameters for overloading.
     public static void registerMachineRecipes(List<GAMetaTileEntityEnergyHatch> metaTileEntities, Object... recipe) {
         for (GAMetaTileEntityEnergyHatch mte : metaTileEntities) {
             ModHandler.addShapedRecipe(String.format("ga_%s", mte.getMetaName()), mte.getStackForm(),
@@ -162,61 +189,43 @@ public class HelperMethods {
         return recipe;
     }
 
-    public static void registerPlasmaFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.DIESEL_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerGasGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerSemiFluidGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerHyperReactorFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
-    }
-
-    public static void registerHotCoolantTurbineFuel(FluidStack input, FluidMaterial output, int duration, int tier) {
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
-    }
-
-    public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier) {
-        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder()
-                .qubit(1)
-                .input(prefix, material)
-                .duration(duration)
-                .EUt(GAValues.V[tier])
-                .buildAndRegister();
-    }
-
+    /**
+     * Removes Crafting Table Recipes with a range of names, being {@link GTValues} voltage names.
+     * An example of how to use it:
+     *
+     * <cr>
+     *     removeTieredRecipeByName("gregtech:transformer_", EV, UV);
+     * </cr>
+     *
+     * This will remove recipes with names:
+     *
+     * <cr>
+     *     gregtech:transformer_ev
+     *     gregtech:transformer_iv
+     *     gregtech:transformer_luv
+     *     gregtech:transformer_zpm
+     *     gregtech:transformer_uv
+     * </cr>
+     *
+     * Note that it uses {@link GTValues} and not {@link GAValues} because GTValues.MAX is a valid index (being 9)
+     * for GTCE Machine Recipes.
+     *
+     * @param recipeName The base name of the Recipes to remove.
+     * @param startTier  The starting tier index, inclusive.
+     * @param endTier    The ending tier index, inclusive.
+     */
     public static void removeTieredRecipeByName(String recipeName, int startTier, int endTier) {
         // Purposefully uses GTValues for having MAX be index 9 for GTCE recipe removal
         for (int i = startTier; i <= endTier; i++)
             removeRecipeByName(String.format("%s%s", recipeName, GTValues.VN[i].toLowerCase()));
     }
 
-    public static void removeRecipeByName(String recipeName) {
-        removeRecipeByName(new ResourceLocation(recipeName));
-    }
-
+    /**
+     * Removes a Crafting Table Recipe with the given name.
+     *
+     * @param recipe The ResourceLocation of the Recipe.
+     *               Can also accept a String.
+     */
     public static void removeRecipeByName(ResourceLocation recipe) {
         if (GAConfig.Misc.enableRecipeRemovalLogging) {
             String recipeName = recipe.toString();
@@ -227,6 +236,17 @@ public class HelperMethods {
         ModHandler.removeRecipeByName(recipe);
     }
 
+    public static void removeRecipeByName(String recipeName) {
+        removeRecipeByName(new ResourceLocation(recipeName));
+    }
+
+    /**
+     * Removes all Crafting Table Recipes with the given output.
+     * NOTE: This should be used sparingly, as it is much less
+     * efficient than {@link HelperMethods#removeRecipeByName}.
+     *
+     * @param output The Recipe output to remove recipes from.
+     */
     public static void removeCraftingRecipes(ItemStack output) {
         int removedRecipes = ModHandler.removeRecipes(output);
 
@@ -416,6 +436,55 @@ public class HelperMethods {
             }
         }
         return false;
+    }
+
+    ///////////////////////////////////////////////////
+    //              Fuel Recipe Helpers              //
+    ///////////////////////////////////////////////////
+
+    public static void registerPlasmaFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.DIESEL_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerGasGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerSemiFluidGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
+        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerHyperReactorFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {
+        GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+    }
+
+    public static void registerHotCoolantTurbineFuel(FluidStack input, FluidMaterial output, int duration, int tier) {
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
+    }
+
+    public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier) {
+        GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder()
+                .qubit(1)
+                .input(prefix, material)
+                .duration(duration)
+                .EUt(GAValues.V[tier])
+                .buildAndRegister();
     }
 
     /**
