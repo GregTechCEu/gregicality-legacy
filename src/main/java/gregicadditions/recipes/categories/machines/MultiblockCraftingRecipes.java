@@ -808,7 +808,7 @@ public class MultiblockCraftingRecipes {
                 "PSP", "SAS", "CSC",
                 'S', new UnificationEntry(gear, TungstenSteel),
                 'P', new UnificationEntry(circuit, Master),
-                'A', MetaTileEntities.HULL[UV].getStackForm(),
+                'A', MetaTileEntities.HULL[LuV].getStackForm(),
                 'C', new UnificationEntry(pipeLarge, TungstenSteel));
 
         // Large Bronze Boiler
