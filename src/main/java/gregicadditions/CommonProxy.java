@@ -172,7 +172,6 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         RecipeHandler.initRecipes();
-        MachineCraftingRecipes.init();
         RecipeHandler.generatedRecipes();
 
         // Run some late recipe addition that depends on other

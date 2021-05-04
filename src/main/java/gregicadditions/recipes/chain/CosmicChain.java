@@ -11,7 +11,8 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class CosmicComponents {
+public class CosmicChain { // TODO
+
     public static void init() {
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(140).EUt(14000000)
@@ -53,48 +54,6 @@ public class CosmicComponents {
                 .fluidOutputs(RadonRadiumMix.getFluid(288))
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(900000).coilTier(3).euStart(10000000000L).euReturn(50)
-                .fluidInputs(ScandiumTitanium50Mix.getFluid(36))
-                .fluidInputs(RadonRadiumMix.getFluid(144))
-                .fluidOutputs(MetastableHassium.getFluid(144))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Americium.getFluid(144))
-                .fluidInputs(Titanium.getFluid(144))
-                .fluidOutputs(Tennessine.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Plutonium.getFluid(144))
-                .fluidInputs(Titanium.getFluid(144))
-                .fluidOutputs(Livermorium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Neptunium.getMaterial().getFluid(144))
-                .fluidInputs(Titanium.getFluid(144))
-                .fluidOutputs(Moscovium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Astatine.getFluid(144))
-                .fluidInputs(Nickel.getFluid(144))
-                .fluidOutputs(Nihonium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Radium.getFluid(144))
-                .fluidInputs(Vanadium.getFluid(144))
-                .fluidOutputs(Roentgenium.getFluid(288))
-                .buildAndRegister();
-
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Polonium.getFluid(144))
-                .fluidInputs(Chrome.getFluid(144))
-                .fluidOutputs(Meitnerium.getFluid(288))
-                .buildAndRegister();
-
         LARGE_MIXER_RECIPES.recipeBuilder().duration(340).EUt(4500000)
                 .fluidInputs(Deuterium.getFluid(2000))
                 .fluidInputs(MetastableHassium.getFluid(144))
@@ -109,45 +68,12 @@ public class CosmicComponents {
                 .fluidOutputs(HeavyQuarkDegenerateMatter.getFluid(144))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(7500000)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(3))
-                .input(wireFine, HeavyQuarkDegenerateMatter, 6)
-                .input(plate, HeavyQuarkDegenerateMatter, 2)
-                .fluidInputs(CosmicComputingMix.getFluid(1000))
-                .outputs(COSMIC_PROCESSING_UNIT_CORE.getStackForm())
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(50000*3/4)
-                .input(dustTiny, MetastableHassium)
-                .fluidInputs(Nitrogen.getFluid(1000))
-                .outputs(HASSIUM_SEED_CRYSTAL.getStackForm())
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(17000000).blastFurnaceTemp(50000)
-                .input(dust, MetastableHassium, 2)
-                .inputs(HASSIUM_SEED_CRYSTAL.getStackForm())
-                .fluidInputs(Xenon.getFluid(1000))
-                .outputs(HASSIUM_BOULE.getStackForm())
-                .buildAndRegister();
-
-        CUTTER_RECIPES.recipeBuilder().duration(290).EUt(175000)
-                .inputs(HASSIUM_BOULE.getStackForm())
-                .outputs(HASSIUM_SEED_CRYSTAL.getStackForm())
-                .outputs(HASSIUM_WAFER.getStackForm(8))
-                .buildAndRegister();
-
         // 3HCl + Fl -> FlCl3 + 3H
         CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(75000)
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .input(dust, MetastableFlerovium)
                 .fluidOutputs(Trichloroferane.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(3000))
-                .buildAndRegister();
-
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(345000)
-                .inputs(HASSIUM_WAFER.getStackForm())
-                .fluidInputs(Trichloroferane.getFluid(250))
-                .outputs(COATED_HASSIUM_WAFER.getStackForm())
                 .buildAndRegister();
 
         // C6H5F + 2Na -> C6H5Na + NaF
@@ -246,35 +172,6 @@ public class CosmicComponents {
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(695000)
-                .inputs(COATED_HASSIUM_WAFER.getStackForm())
-                .fluidInputs(PhotopolymerSolution.getFluid(500))
-                .outputs(PHOTOCOATED_HASSIUM_WAFER.getStackForm())
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(840000)
-                .input(craftingLens, MarkerMaterials.Color.White)
-                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(8))
-                .outputs(GRATING_LITHOGRAPHY_MASK.getStackForm())
-                .buildAndRegister();
-
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(3200000)
-                .inputs(PHOTOCOATED_HASSIUM_WAFER.getStackForm())
-                .notConsumable(GRATING_LITHOGRAPHY_MASK.getStackForm())
-                .outputs(DIFFRACTOR_GRATING_MIRROR.getStackForm())
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(270).EUt(4500000)
-                .inputs(HIGH_FREQUENCY_LASER.getStackForm())
-                .inputs(DIFFRACTOR_GRATING_MIRROR.getStackForm(4))
-                .inputs(NDYAG_ROD.getStackForm())
-                .inputs(LUTMYVO_ROD.getStackForm())
-                .inputs(ALUMINO_SILICATE_GLASS_TUBE.getStackForm())
-                .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm(2))
-                .fluidInputs(SolderingAlloy.getFluid(384))
-                .outputs(ULTRASHORT_PULSE_LASER.getStackForm())
-                .buildAndRegister();
-
         // Ge + 2S -> GeS2
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(9850)
                 .input(dust, Germanium)
@@ -288,16 +185,6 @@ public class CosmicComponents {
                 .fluidInputs(Oxygen.getFluid(6000))
                 .outputs(GermaniumOxide.getItemStack(3))
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
-                .buildAndRegister();
-
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(380).EUt(500000)
-                .fluidInputs(BismuthNitrateSoluton.getFluid(4000))
-                .inputs(GermaniumOxide.getItemStack(3))
-                .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
-                .outputs(BismuthGermanate.getItemStack(33))
-                .output(dust, Potash, 18)
-                .fluidOutputs(NitrogenDioxide.getFluid(12000))
-                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         // WC + 4O -> WO3 + CO
@@ -317,6 +204,14 @@ public class CosmicComponents {
                 .fluidOutputs(SulfurDioxide.getFluid(1000))
                 .buildAndRegister();
 
+        // CsI + Tm + Tl -> CsITmTl
+        BLAST_RECIPES.recipeBuilder().duration(260).EUt(845000).blastFurnaceTemp(2853)
+                .inputs(CesiumIodide.getItemStack())
+                .input(dustSmall, Thulium, 2)
+                .input(dustSmall, Thallium, 2)
+                .outputs(TlTmCesiumIodide.getItemStack(2))
+                .buildAndRegister();
+
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(740000)
                 .fluidInputs(Anthracene.getFluid(1000))
                 .inputs(Tetracene.getItemStack(2))
@@ -329,42 +224,14 @@ public class CosmicComponents {
                 .outputs(CesiumIodide.getItemStack(2))
                 .buildAndRegister();
 
-        // CsI + Tm + Tl -> CsITmTl
-        BLAST_RECIPES.recipeBuilder().duration(260).EUt(845000).blastFurnaceTemp(2853)
-                .inputs(CesiumIodide.getItemStack())
-                .input(dustSmall, Thulium, 2)
-                .input(dustSmall, Thallium, 2)
-                .outputs(TlTmCesiumIodide.getItemStack(2))
-                .buildAndRegister();
-
-        FORMING_PRESS_RECIPES.recipeBuilder().duration(280).EUt(1500000)
-                .input(plate, Vibranium, 2)
-                .inputs(TlTmCesiumIodide.getItemStack())
-                .inputs(PolycyclicAromaticMix.getItemStack())
-                .inputs(CadmiumTungstate.getItemStack())
-                .inputs(BismuthGermanate.getItemStack())
-                .outputs(SCINTILLATOR_CRYSTAL.getStackForm())
-                .buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder().duration(340).EUt(3450000).blastFurnaceTemp(15000)
-                .input(dust, MetastableHassium)
-                .input(dust, Molybdenum)
-                .input(dust, Rhenium)
-                .fluidInputs(NaquadahAlloy.getFluid(144))
-                .outputs(LEPTON_TRAP_CRYSTAL.getStackForm())
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(3500000)
-                .inputs(SCINTILLATOR_CRYSTAL.getStackForm())
-                .input(screw, HDCS, 12)
-                .input(plate, Cinobite, 4)
-                .input(plate, Quantum, 4)
-                .inputs(SEPARATION_ELECTROMAGNET.getStackForm())
-                .input(foil, Zylon, 6)
-                .input(wireFine, Cinobite, 12)
-                .fluidInputs(TriniumTitanium.getFluid(432))
-                .fluidInputs(SolderingAlloy.getFluid(288))
-                .outputs(SCINTILLATOR.getStackForm())
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(380).EUt(500000)
+                .fluidInputs(BismuthNitrateSoluton.getFluid(4000))
+                .inputs(GermaniumOxide.getItemStack(3))
+                .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
+                .outputs(BismuthGermanate.getItemStack(33))
+                .output(dust, Potash, 18)
+                .fluidOutputs(NitrogenDioxide.getFluid(12000))
+                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
     }
 }

@@ -279,6 +279,14 @@ public class VariousChains {
                 .fluidInputs(Water.getFluid(2000))
                 .fluidOutputs(BentoniteClaySlurry.getFluid(2000))
                 .buildAndRegister();
+
+        // Fe + 3HCl -> FeCl3 + 3H
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(30)
+                .input(dust, Iron)
+                .fluidInputs(HydrochloricAcid.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(3000))
+                .fluidOutputs(Hydrogen.getFluid(3000))
+                .buildAndRegister();
     }
 
     private static void hydrogenPeroxide() {

@@ -352,15 +352,6 @@ public class MetaItemRecipes {
                 .outputs(TOOL_DATA_STICK.getStackForm())
                 .buildAndRegister();
 
-        // Lapotron Crystal Recipes
-        for (GemMaterial gem : new GemMaterial[]{Lapis, Lazurite, Sodalite}) {
-            ModHandler.addShapelessRecipe("lapotron_crystal_shapeless" + gem.toString(),
-                    LAPOTRON_CRYSTAL.getStackForm(),
-                    new UnificationEntry(gemExquisite, Sapphire),
-                    new UnificationEntry(stick, gem),
-                    CAPACITOR.getStackForm());
-        }
-
         // Drilling Rig Pipe
         ASSEMBLER_RECIPES.recipeBuilder().duration(230).EUt(480)
                 .input(pipeLarge, Steel)
@@ -559,27 +550,5 @@ public class MetaItemRecipes {
                 'P', new UnificationEntry(plate, Wood),
                 'S', "string",
                 'G', new UnificationEntry(dust, Gunpowder));
-
-        // Petri Dish
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
-                .fluidInputs(Polystyrene.getFluid(36))
-                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
-                .outputs(PETRI_DISH.getStackForm())
-                .buildAndRegister();
-
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
-                .fluidInputs(Polytetrafluoroethylene.getFluid(36))
-                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
-                .outputs(PETRI_DISH.getStackForm())
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(wireFine, Titanium)
-                .fluidInputs(Plastic.getFluid(1008))
-                .inputs(STERILIZED_PETRI_DISH.getStackForm())
-                .outputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
-                .EUt(30720)
-                .duration(100)
-                .buildAndRegister();
     }
 }

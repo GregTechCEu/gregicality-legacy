@@ -7,9 +7,9 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
+import gregicadditions.recipes.categories.circuits.CircuitRecipes;
+import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.recipes.chain.*;
-import gregicadditions.recipes.chain.optical.*;
-import gregicadditions.recipes.chain.wetware.*;
 import gregicadditions.recipes.helper.HelperMethods;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
@@ -37,8 +37,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
-import static gregicadditions.GAEnums.GAOrePrefix.ingotDouble;
-import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
+import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -122,16 +121,11 @@ public class RecipeHandler {
     public static void initChains() {
         GoldChain.init();
         NaquadahChain.init();
-        OpticalFiber.init();
         NuclearChain.init();
         PlasticChain.init();
         PlatinumSludgeGroupChain.init();
         TungstenChain.init();
         REEChain.init();
-        BacteriaCultures.init();
-        GrowthMedium.init();
-        StemCells.init();
-        SterilizedGrowthMedium.init();
         Batteries.init();
         RheniumChain.init();
         UHVMaterials.init();
@@ -148,7 +142,6 @@ public class RecipeHandler {
         AmmoniaChain.init();
         ChromiumChain.init();
         LithiumChain.init();
-        WaferChain.init();
         BrineChain.init();
         FusionElementsChain.init();
         NanotubeChain.init();
@@ -156,18 +149,17 @@ public class RecipeHandler {
         SuperconductorsSMDChain.init();
         FusionComponents.init();
         NiobiumTantalumChain.init();
-        Lasers.init();
         Dyes.init();
         SensorEmitter.init();
         SeleniumChain.init();
-        OpticalComponents.init();
         WormholeGeneratorChain.init();
-        CosmicComponents.init();
-        SupraCausalComponents.init();
+        CosmicChain.init();
         UltimateMaterials.init();
         DigitalInterfaces.init();
         InsulationWireAssemblyChain.init();
         ArcFurnaceOxidation.init();
+        WetwareChain.init();
+        OpticalChain.init();
     }
 
     /**
@@ -176,6 +168,8 @@ public class RecipeHandler {
      */
     public static void initRecipes() {
         RecipeOverride.init();
+        CircuitRecipes.init();
+        MachineCraftingRecipes.init();
         ComponentRecipes.init();
         MetaItemRecipes.init();
         CasingRecipes.init();

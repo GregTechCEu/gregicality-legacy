@@ -1,4 +1,4 @@
-package gregicadditions.recipes.categories;
+package gregicadditions.recipes.categories.circuits;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
@@ -23,8 +23,6 @@ import static gregicadditions.recipes.helper.HelperMethods.removeRecipeByName;
 import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.MarkerMaterials.Color.Lime;
-import static gregtech.api.unification.material.MarkerMaterials.Tier.Good;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -46,9 +44,6 @@ public class CircuitRecipes {
     // Organized by "Group" rather than by voltage
     public static void init() {
 
-        // TODO Fix this
-
-
         // TODO Clean this up
         removeGTCECircuitRecipes();
 
@@ -66,7 +61,10 @@ public class CircuitRecipes {
         cosmicCircuits();
         supracausalCircuits();
 
-        magnetoCircuits();
+        MagnetoRecipes.init();
+
+        CircuitComponentRecipes.init();
+        WaferRecipes.init();
     }
 
     private static void primitiveCircuits() {
@@ -836,12 +834,12 @@ public class CircuitRecipes {
 
             // Bioware Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(240000)
-                    .outputs(BIOWARE_PROCESSOR.getStackForm(1))
-                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4),
-                            SMD_TRANSISTOR_BIOWARE.getStackForm(8),
-                            SMD_CAPACITOR_BIOWARE.getStackForm(4),
-                            NEURO_PROCESSOR.getStackForm(),
-                            HASOC.getStackForm(1))
+                    .outputs(BIOWARE_PROCESSOR.getStackForm())
+                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                    .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(8))
+                    .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(4))
+                    .inputs(NEURO_PROCESSOR.getStackForm())
+                    .inputs(HASOC.getStackForm())
                     .input(wireFine, NaquadahAlloy, 4)
                     .fluidInputs(fluidStack).buildAndRegister();
         }
@@ -1171,143 +1169,11 @@ public class CircuitRecipes {
                 .buildAndRegister();
     }
 
-    private static void magnetoCircuits() {
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(75).EUt(30)
-                .inputs(VACUUM_TUBE.getStackForm())
-                .input(gem, MagnetoResonatic)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm())
-                .inputs(DIODE.getStackForm(4))
-                .inputs(CAPACITOR.getStackForm(4))
-                .inputs(TRANSISTOR.getStackForm(4))
-                .fluidInputs(SolderingAlloy.getFluid(L / 4))
-                .outputs(CIRCUIT_MAGNETIC_ULV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(150).EUt(120)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm())
-                .input(gem, MagnetoResonatic)
-                .inputs(CIRCUIT_MAGNETIC_ULV.getStackForm())
-                .inputs(SMD_DIODE_REFINED.getStackForm(8))
-                .inputs(SMD_CAPACITOR_REFINED.getStackForm(8))
-                .inputs(SMD_TRANSISTOR_REFINED.getStackForm(8))
-                .fluidInputs(SolderingAlloy.getFluid(L / 2))
-                .outputs(CIRCUIT_MAGNETIC_LV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(225).EUt(480)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm())
-                .input(gem, MagnetoResonatic)
-                .inputs(CIRCUIT_MAGNETIC_LV.getStackForm())
-                .inputs(SMD_DIODE.getStackForm(12))
-                .inputs(SMD_CAPACITOR.getStackForm(12))
-                .inputs(SMD_TRANSISTOR.getStackForm(12))
-                .fluidInputs(SolderingAlloy.getFluid(L * 3/4))
-                .outputs(CIRCUIT_MAGNETIC_MV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm())
-                .input(gem, MagnetoResonatic)
-                .inputs(CIRCUIT_MAGNETIC_MV.getStackForm())
-                .inputs(SMD_DIODE_NANO.getStackForm(16))
-                .inputs(SMD_CAPACITOR_NANO.getStackForm(16))
-                .inputs(SMD_TRANSISTOR_NANO.getStackForm(16))
-                .fluidInputs(SolderingAlloy.getFluid(L))
-                .outputs(CIRCUIT_MAGNETIC_HV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(375).EUt(7680)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm())
-                .input(gem, MagnetoResonatic)
-                .inputs(CIRCUIT_MAGNETIC_HV.getStackForm())
-                .inputs(SMD_DIODE_QUANTUM.getStackForm(20))
-                .inputs(SMD_CAPACITOR_QUANTUM.getStackForm(20))
-                .inputs(SMD_TRANSISTOR_QUANTUM.getStackForm(20))
-                .fluidInputs(SolderingAlloy.getFluid(L * 5/4))
-                .outputs(CIRCUIT_MAGNETIC_EV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(450).EUt(30720)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6))
-                .input(gem, MagnetoResonatic, 6)
-                .inputs(CIRCUIT_MAGNETIC_EV.getStackForm())
-                .inputs(SMD_DIODE_CRYSTAL.getStackForm(24))
-                .inputs(SMD_CAPACITOR_CRYSTAL.getStackForm(24))
-                .inputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(24))
-                .fluidInputs(SolderingAlloy.getFluid(L * 6))
-                .outputs(CIRCUIT_MAGNETIC_IV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(525).EUt(122880)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6))
-                .input(gem, MagnetoResonatic, 6)
-                .inputs(CIRCUIT_MAGNETIC_IV.getStackForm())
-                .inputs(SMD_DIODE_WETWARE.getStackForm(28))
-                .inputs(SMD_CAPACITOR_WETWARE.getStackForm(28))
-                .inputs(SMD_TRANSISTOR_WETWARE.getStackForm(28))
-                .fluidInputs(SolderingAlloy.getFluid(L * 7))
-                .outputs(CIRCUIT_MAGNETIC_LUV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(491520)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6))
-                .input(gemExquisite, MagnetoResonatic)
-                .inputs(CIRCUIT_MAGNETIC_LUV.getStackForm())
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(32))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
-                .fluidInputs(SolderingAlloy.getFluid(L * 32))
-                .outputs(CIRCUIT_MAGNETIC_ZPM.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(675).EUt(1966080)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(6))
-                .input(gemExquisite, MagnetoResonatic, 6)
-                .inputs(CIRCUIT_MAGNETIC_ZPM.getStackForm())
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(36))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(36))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(36))
-                .fluidInputs(SolderingAlloy.getFluid(L * 36))
-                .outputs(CIRCUIT_MAGNETIC_UV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(750).EUt(7864320)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(12))
-                .input(gemExquisite, MagnetoResonatic, 12)
-                .inputs(CIRCUIT_MAGNETIC_UV.getStackForm())
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(40))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(40))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(40))
-                .fluidInputs(SolderingAlloy.getFluid(L * 40))
-                .outputs(CIRCUIT_MAGNETIC_UHV.getStackForm(4))
-                .buildAndRegister();
-
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(825).EUt(31457280)
-                .inputs(IMPRINT_SUPPORTED_BOARD.getStackForm(12))
-                .input(gemExquisite, MagnetoResonatic, 12)
-                .inputs(CIRCUIT_MAGNETIC_UHV.getStackForm())
-                .inputs(SMD_DIODE_BIOWARE.getStackForm(44))
-                .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(44))
-                .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(44))
-                .fluidInputs(SolderingAlloy.getFluid(L * 44))
-                .outputs(CIRCUIT_MAGNETIC_UEV.getStackForm(4))
-                .buildAndRegister();
-    }
-
     private static void removeGTCECircuitRecipes() {
 
-        final MaterialStack[] solderingList = {new MaterialStack(Tin, 2L), new MaterialStack(SolderingAlloy, 1L)};
+        //Remove ALL GTCE Circuit recipes
+        for (MaterialStack stack : new MaterialStack[]{new MaterialStack(Tin, 2L), new MaterialStack(SolderingAlloy, 1L)}) {
 
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MULTILAYER_FIBER_BOARD.getStackForm(), OreDictUnifier.get(circuit, Good)}, new FluidStack[]{Polystyrene.getFluid(144)});
-
-        // Engraved Crystal Chip Removals
-        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, ENGRAVED_CRYSTAL_CHIP.getStackForm(), OreDictUnifier.get(craftingLens, Lime));
-
-        //Remove Circuit Component Recipes
-
-        //Remove GTCE Circuit recipes
-        for (MaterialStack stack : solderingList) {
             IngotMaterial material = (IngotMaterial) stack.material;
             int multiplier = (int) stack.amount;
 
