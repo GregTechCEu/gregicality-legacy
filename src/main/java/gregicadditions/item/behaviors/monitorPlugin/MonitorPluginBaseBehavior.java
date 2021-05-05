@@ -58,7 +58,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     }
 
     /***
-     * Server / Client. Itemstack will be synced to client when init so... yeah normally you don't need to consider nbt init.
+     * Server / Client. Itemstack will be synced to client when preInit2 so... yeah normally you don't need to consider nbt preInit2.
      * this will be called when you markDirty.
      * @param data nbtTag
      */

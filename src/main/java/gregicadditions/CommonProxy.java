@@ -112,6 +112,9 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.ROBOT_ARM_CASING);
         registry.register(GAMetaBlocks.SENSOR_CASING);
         registry.register(GAMetaBlocks.EMITTER_CASING);
+        registry.register(GAMetaBlocks.METAL_CASING_1);
+        registry.register(GAMetaBlocks.METAL_CASING_2);
+        registry.register(GAMetaBlocks.NUCLEAR_CASING);
         registry.register(OPTICAL_FIBER);
         GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(registry::register);
         GA_ORES.forEach(registry::register);
@@ -148,6 +151,9 @@ public class CommonProxy {
         registry.register(createItemBlock(GAMetaBlocks.ROBOT_ARM_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.SENSOR_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.EMITTER_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.METAL_CASING_1, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.METAL_CASING_2, VariantItemBlock::new));
+        registry.register(createItemBlock(GAMetaBlocks.NUCLEAR_CASING, VariantItemBlock::new));
 
         GAMetaBlocks.METAL_CASING.values()
                 .stream().distinct()
@@ -202,6 +208,7 @@ public class CommonProxy {
         ForestryCompat.init();
         RecipeHandler.initChains();
         FuelHandler.init();
+        MetalCasingRecipes.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
@@ -222,7 +229,7 @@ public class CommonProxy {
             registerRecipesAfterCT();
     }
 
-    // These recipes are generated at the beginning of the init() phase with the proper config set.
+    // These recipes are generated at the beginning of the preInit2() phase with the proper config set.
     // This is not great practice, but ensures that they are run AFTER CraftTweaker,
     // meaning they will follow the recipes in the map with CraftTweaker changes,
     // being significantly easier for modpack authors.

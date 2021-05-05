@@ -1,0 +1,93 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "casing_hastelloy_x78": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hastelloy_x78"
+        }
+      },
+      "casing_hastelloy_n": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hastelloy_n"
+        }
+      },
+      "casing_hastelloy_k243": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hastelloy_k243"
+        }
+      },
+      "casing_incoloy_813": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/incoloy_813"
+        }
+      },
+      "casing_incoloy_ma956": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/incoloy_ma956"
+        }
+      },
+      "casing_maraging_steel_250": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/maraging_steel_250"
+        }
+      },
+      "casing_nitinol_60": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/nitinol_60"
+        }
+      },
+      "casing_inconel_625": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/inconel_625"
+        }
+      },
+      "casing_grisium": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/grisium"
+        }
+      },
+      "casing_eglin_steel": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/eglin_steel"
+        }
+      },
+      "casing_babbit_alloy": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/babbit_alloy"
+        }
+      },
+      "casing_hg_1223": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hg_1223"
+        }
+      },
+      "casing_tumbaga": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/tumbaga"
+        }
+      },
+      "casing_talonite": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/talonite"
+        }
+      },
+      "casing_zirconium_carbide": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/zirconium_carbide"
+        }
+      },
+      "casing_potin": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/potin"
+        }
+      }
+    }
+  }
+}

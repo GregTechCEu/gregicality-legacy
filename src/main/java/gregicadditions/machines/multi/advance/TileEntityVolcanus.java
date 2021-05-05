@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.override.MetaTileEntityElectricBlastFurnace;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -28,6 +30,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static gregicadditions.GAMaterials.HastelloyN;
+import static gregicadditions.client.ClientHandler.HASTELLOY_N_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
@@ -65,12 +70,12 @@ public class TileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
     @Override
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.HastelloyN);
+        return HASTELLOY_N_CASING;
     }
 
     @Override

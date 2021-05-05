@@ -25,6 +25,8 @@ import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.recipes.builders.*;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.util.GTUtility;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -40,6 +42,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import java.util.*;
 
+import static gregtech.api.render.Textures.ROBUST_TUNGSTENSTEEL_CASING;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
@@ -66,12 +69,12 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(TungstenSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
-        return GAMetaBlocks.METAL_CASING.get(TungstenSteel);
+        return ROBUST_TUNGSTENSTEEL_CASING;
     }
 
     @Override

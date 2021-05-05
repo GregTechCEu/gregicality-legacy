@@ -6,9 +6,12 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregtech.api.render.Textures.STABLE_TITANIUM_CASING;
 import static gregtech.api.unification.material.Materials.Titanium;
 
 public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityDieselEngine {
@@ -22,11 +25,11 @@ public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(Materials.Titanium);
+		return STABLE_TITANIUM_CASING;
 	}
 
 	@Override
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(Titanium);
+		return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
 	}
 }

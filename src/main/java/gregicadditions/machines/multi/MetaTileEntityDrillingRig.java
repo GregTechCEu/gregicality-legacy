@@ -25,10 +25,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockConcrete;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.blocks.StoneBlock;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -48,6 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
@@ -238,12 +236,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(StainlessSteel);
+        return CLEAN_STAINLESS_STEEL_CASING;
     }
 
     public IBlockState getFrameState() {

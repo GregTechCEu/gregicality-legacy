@@ -1,0 +1,78 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "casing_staballoy": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/staballoy"
+        }
+      },
+      "casing_stellite": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/stellite"
+        }
+      },
+      "casing_enriched_naquadah_alloy": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/enriched_naquadah_alloy"
+        }
+      },
+      "casing_quantum": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/quantum"
+        }
+      },
+      "casing_tritanium": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/tritanium"
+        }
+      },
+      "casing_black_steel": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/black_steel"
+        }
+      },
+      "casing_red_steel": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/red_steel"
+        }
+      },
+      "casing_gold": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/gold"
+        }
+      },
+      "casing_iron": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/iron"
+        }
+      },
+      "casing_hss_g": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hss_g"
+        }
+      },
+      "casing_hss_s": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/hss_s"
+        }
+      },
+      "casing_lead": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/lead"
+        }
+      },
+      "casing_naquadria": {
+        "textures": {
+          "all": "gtadditions:blocks/casings/naquadria"
+        }
+      }
+    }
+  }
+}

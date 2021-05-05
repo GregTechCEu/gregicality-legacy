@@ -2,6 +2,8 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.item.metal.NuclearCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -10,9 +12,13 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockController {
@@ -44,11 +50,11 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     }
 
     private static IBlockState casingPredicate() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     private static IBlockState casingPredicate2() {
-        return GAMetaBlocks.getMetalCasingBlockState(Americium);
+        return NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM);
     }
 
     @Override

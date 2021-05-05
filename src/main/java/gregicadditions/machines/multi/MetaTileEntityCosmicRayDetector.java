@@ -13,6 +13,7 @@ import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -53,6 +54,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+
+import static gregicadditions.client.ClientHandler.QUANTUM_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
 
@@ -264,16 +268,16 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     }
 
     private IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(GAMaterials.Quantum);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM);
     }
 
     private IBlockState getSecondaryCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Materials.Tritanium);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.Quantum);
+        return QUANTUM_CASING;
     }
 
     @Override

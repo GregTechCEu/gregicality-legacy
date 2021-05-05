@@ -823,7 +823,6 @@ public class RecipeHandler {
 
         if (material.hasFlag(GENERATE_METAL_CASING)) {
             ItemStack metalCasingStack = OreDictUnifier.get(prefix, material, 3);
-
             ModHandler.addShapedRecipe(String.format("autogen_metal_casing_%s", material), metalCasingStack,
                     "PhP", "PBP", "PwP",
                     'P', new UnificationEntry(plate, material),

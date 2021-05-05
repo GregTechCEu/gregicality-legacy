@@ -8,6 +8,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -27,6 +28,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
+
+import static gregicadditions.client.ClientHandler.ENRICHED_NAQUADAH_ALLOY_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 
 public class MetaTileEntityStellarForge extends GARecipeMapMultiblockController {
@@ -111,11 +115,11 @@ public class MetaTileEntityStellarForge extends GARecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.EnrichedNaquadahAlloy);
+        return ENRICHED_NAQUADAH_ALLOY_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(GAMaterials.EnrichedNaquadahAlloy);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY);
     }
 
     @Override

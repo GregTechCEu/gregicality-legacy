@@ -2,6 +2,8 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -24,6 +26,9 @@ import java.util.List;
 
 import static gregicadditions.GAMaterials.Staballoy;
 import static gregicadditions.GAMaterials.ZirconiumCarbide;
+import static gregicadditions.client.ClientHandler.ZIRCONIUM_CARBIDE_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController {
 
@@ -62,12 +67,12 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(ZirconiumCarbide);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(ZirconiumCarbide);
+        return ZIRCONIUM_CARBIDE_CASING;
     }
 
 

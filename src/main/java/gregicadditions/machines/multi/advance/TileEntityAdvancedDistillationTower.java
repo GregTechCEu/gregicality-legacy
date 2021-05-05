@@ -7,6 +7,8 @@ import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.MultiRecipesTrait;
 import gregicadditions.machines.multi.override.MetaTileEntityDistillationTower;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -46,6 +48,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.BabbittAlloy;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower {
@@ -197,12 +202,12 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(BabbittAlloy);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.BABBIT_ALLOY);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(BabbittAlloy);
+        return BABBIT_ALLOY_CASING;
     }
 
     @Override

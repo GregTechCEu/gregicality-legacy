@@ -21,6 +21,7 @@ import java.util.Map;
 @EventBusSubscriber(modid = Gregicality.MODID, value = Side.CLIENT)
 public class ClientHandler {
 
+    // Multiblock Casing
     public static SimpleCubeRenderer CHEMICALLY_INERT = new SimpleCubeRenderer("casings/solid/machine_casing_chemically_inert");
     public static SimpleCubeRenderer LARGE_ASSEMBLER = new SimpleCubeRenderer("casings/solid/machine_casing_large_assembler");
     public static SimpleCubeRenderer TIERED_HULL_ULV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_ulv");
@@ -42,6 +43,53 @@ public class ClientHandler {
     public static SimpleCubeRenderer BIO_REACTOR = new SimpleCubeRenderer("casings/solid/bio_reactor_casing");
     public static SimpleCubeRenderer LASER_ENGRAVER = new SimpleCubeRenderer("casings/solid/laser_engraver_casing");
     public static SimpleSidedCubeRenderer[] VOLTAGE_CASINGS = new SimpleSidedCubeRenderer[15];
+    public static SimpleCubeRenderer THORIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/thorium");
+    public static SimpleCubeRenderer PROTACTINIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/protactinium");
+    public static SimpleCubeRenderer URANIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/uranium");
+    public static SimpleCubeRenderer NEPTUNIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/neptunium");
+    public static SimpleCubeRenderer PLUTONIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/plutonium");
+    public static SimpleCubeRenderer AMERICIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/americium");
+    public static SimpleCubeRenderer CURIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/curium");
+    public static SimpleCubeRenderer BERKELIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/berkelium");
+    public static SimpleCubeRenderer CALIFORNIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/californium");
+    public static SimpleCubeRenderer EINSTEINIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/einsteinium");
+    public static SimpleCubeRenderer FERMIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/fermium");
+    public static SimpleCubeRenderer MENDELEVIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/mendelevium");
+    public static SimpleCubeRenderer HASTELLOY_X78_CASING = new SimpleCubeRenderer("casings/metal_casings/hastelloy_x78");
+    public static SimpleCubeRenderer HASTELLOY_N_CASING = new SimpleCubeRenderer("casings/metal_casings/hastelloy_n");
+    public static SimpleCubeRenderer HASTELLOY_K243_CASING = new SimpleCubeRenderer("casings/metal_casings/hastelloy_k243");
+    public static SimpleCubeRenderer INCOLOY_813_CASING = new SimpleCubeRenderer("casings/metal_casings/incoloy_813");
+    public static SimpleCubeRenderer INCOLOY_MA956_CASING = new SimpleCubeRenderer("casings/metal_casings/incoloy_ma956");
+    public static SimpleCubeRenderer MARAGING_STEEL_250_CASING = new SimpleCubeRenderer("casings/metal_casings/maraging_steel_250");
+    public static SimpleCubeRenderer NITINOL_60_CASING = new SimpleCubeRenderer("casings/metal_casings/nitinol_60");
+    public static SimpleCubeRenderer INCONEL_625_CASING = new SimpleCubeRenderer("casings/metal_casings/inconcel_625");
+    public static SimpleCubeRenderer GRISIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/grisium");
+    public static SimpleCubeRenderer EGLIN_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/eglin_steel");
+    public static SimpleCubeRenderer BABBIT_ALLOY_CASING = new SimpleCubeRenderer("casings/metal_casings/babbit_alloy");
+    public static SimpleCubeRenderer HG_1223_CASING = new SimpleCubeRenderer("casings/metal_casings/hg_1223");
+    public static SimpleCubeRenderer TUMBAGA_CASING = new SimpleCubeRenderer("casings/metal_casings/tumbaga");
+    public static SimpleCubeRenderer TALONITE_CASING = new SimpleCubeRenderer("casings/metal_casings/talonite");
+    public static SimpleCubeRenderer ZIRCONIUM_CARBIDE_CASING = new SimpleCubeRenderer("casings/metal_casings/zirconium_carbide");
+    public static SimpleCubeRenderer POTIN_CASING = new SimpleCubeRenderer("casings/metal_casings/potin");
+    public static SimpleCubeRenderer STABALLOY_CASING = new SimpleCubeRenderer("casings/metal_casings/staballoy");
+    public static SimpleCubeRenderer STELLITE_CASING = new SimpleCubeRenderer("casings/metal_casings/stellite");
+    public static SimpleCubeRenderer ENRICHED_NAQUADAH_ALLOY_CASING = new SimpleCubeRenderer("casings/metal_casings/enriched_naquadah_alloy");
+    public static SimpleCubeRenderer QUANTUM_CASING = new SimpleCubeRenderer("casings/metal_casings/quantum");
+    public static SimpleCubeRenderer TRITANIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/tritanium");
+    public static SimpleCubeRenderer BLACK_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/black_steel");
+    public static SimpleCubeRenderer RED_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/red_steel");
+    public static SimpleCubeRenderer GOLD_CASING = new SimpleCubeRenderer("casings/metal_casings/gold");
+    public static SimpleCubeRenderer IRON_CASING = new SimpleCubeRenderer("casings/metal_casings/iron");
+    public static SimpleCubeRenderer HSS_G_CASING = new SimpleCubeRenderer("casings/metal_casings/hss_g");
+    public static SimpleCubeRenderer HSS_S_CASING = new SimpleCubeRenderer("casings/metal_casings/hss_s");
+    public static SimpleCubeRenderer LEAD_CASING = new SimpleCubeRenderer("casings/metal_casings/lead");
+    public static SimpleCubeRenderer NAQUADRIA_CASING = new SimpleCubeRenderer("casings/metal_casings/naquadria");
+
+
+
+
+
+    // Machine Overlays
     public static SimpleCubeRenderer ACTIVE_FUSION_TEXTURE = new SimpleCubeRenderer("gregtech:casings/fusion/machine_casing_fusion_glass_yellow");
     public static OrientedOverlayRenderer NAQADAH_OVERLAY = new OrientedOverlayRenderer("machines/naquadah_reactor", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
     public static OrientedOverlayRenderer ROCKET_OVERLAY = new OrientedOverlayRenderer("machines/rocket_generator", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);

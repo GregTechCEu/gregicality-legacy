@@ -19,7 +19,9 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -33,6 +35,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static gregtech.api.render.Textures.HEAT_PROOF_CASING;
 import static gregtech.api.unification.material.Materials.Invar;
 
 public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities.multi.electric.MetaTileEntityMultiFurnace {
@@ -108,12 +111,12 @@ public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Invar);
+        return HEAT_PROOF_CASING;
     }
 
     @Override
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Invar);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
     }
 
     @Override

@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.nuclear;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantTurbineWorkableHandler;
@@ -28,6 +30,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.List;
+
+import static gregicadditions.client.ClientHandler.MARAGING_STEEL_250_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController {
 
@@ -153,12 +159,12 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     }
 
     public IBlockState getCasingState() {
-        return turbineType.casingState;
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return turbineType.casingRenderer;
+        return MARAGING_STEEL_250_CASING;
     }
 
 }

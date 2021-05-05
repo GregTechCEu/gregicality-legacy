@@ -4,6 +4,8 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -30,6 +32,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.Nitinol60;
+import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController {
@@ -111,11 +116,11 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Nitinol60);
+        return NITINOL_60_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Nitinol60);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60);
     }
 
 }

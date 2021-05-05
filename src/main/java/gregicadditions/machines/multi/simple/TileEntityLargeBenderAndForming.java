@@ -7,6 +7,7 @@ import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -21,6 +22,8 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.type.Material;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,6 +47,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static gregtech.api.render.Textures.STABLE_TITANIUM_CASING;
 import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -87,17 +91,17 @@ public class TileEntityLargeBenderAndForming extends LargeSimpleRecipeMapMultibl
                 .build();
     }
 
-    private static final Material defaultMaterial = Titanium;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeBenderAndForming.casingMaterial);
+    private static final IBlockState defaultCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeBenderAndForming.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeBenderAndForming.casingMaterial, STABLE_TITANIUM_CASING);
     }
 
     @Override

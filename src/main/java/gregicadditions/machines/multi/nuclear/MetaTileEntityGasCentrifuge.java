@@ -11,11 +11,14 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static gregicadditions.recipes.GARecipeMaps.GAS_CENTRIFUGE_RECIPES;
+import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 import static gregtech.api.unification.material.Materials.Steel;
 
@@ -50,11 +53,11 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     public IBlockState getBaseState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     public IBlockState getVentCasing() {
@@ -63,7 +66,7 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(StainlessSteel);
+        return CLEAN_STAINLESS_STEEL_CASING;
     }
 
     @Override

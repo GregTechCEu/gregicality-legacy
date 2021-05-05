@@ -19,7 +19,9 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -37,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
+import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.Steel;
 
 
@@ -251,12 +254,12 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
 
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return SOLID_STEEL_CASING;
     }
 
     @Override

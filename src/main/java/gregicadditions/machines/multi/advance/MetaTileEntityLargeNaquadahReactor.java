@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -28,6 +29,8 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
@@ -94,11 +97,11 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Naquadria);
+        return NAQUADRIA_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Naquadria);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA);
     }
 
 }

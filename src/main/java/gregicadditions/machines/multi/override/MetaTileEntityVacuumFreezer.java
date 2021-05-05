@@ -12,6 +12,8 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -23,6 +25,7 @@ import net.minecraft.util.text.event.HoverEvent;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+import static gregtech.api.render.Textures.FROST_PROOF_CASING;
 import static gregtech.api.unification.material.Materials.Aluminium;
 
 public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentities.multi.electric.MetaTileEntityVacuumFreezer {
@@ -37,12 +40,12 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.Aluminium);
+        return FROST_PROOF_CASING;
     }
 
     @Override
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Aluminium);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
     }
 
     @Override

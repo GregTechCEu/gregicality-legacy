@@ -16,6 +16,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -25,6 +26,7 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
@@ -60,11 +62,11 @@ public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return SOLID_STEEL_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     @Nonnull

@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.override.MetaTileEntityVacuumFreezer;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -28,6 +30,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static gregicadditions.GAMaterials.IncoloyMA956;
+import static gregicadditions.client.ClientHandler.INCOLOY_MA956_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
@@ -67,12 +72,12 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
     @Override
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(IncoloyMA956);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.IncoloyMA956);
+        return INCOLOY_MA956_CASING;
     }
 
     @Override
