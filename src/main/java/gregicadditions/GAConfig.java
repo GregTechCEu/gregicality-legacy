@@ -11,7 +11,6 @@ import java.util.Locale;
 
 @Config(modid = Gregicality.MODID)
 public class GAConfig {
-
     @Config.Comment({"Configs for Client Side"})
     public static Client client = new Client();
 
@@ -22,6 +21,14 @@ public class GAConfig {
         public boolean AdvancedCasingModel = true;
     }
 
+    @Config.Comment("Config Options for Native EU to RF conversion")
+    public static EUtoRF EUtoRF = new EUtoRF();
+
+    public static class EUtoRF {
+        @Config.Comment("Ratio of the Conversion")
+        @Config.Name("Ratio 1EU to XRF")
+        public int RATIO = 4;
+    }
     @Config.Comment("Config options for GT6 features")
     public static GT6 GT6 = new GT6();
 
@@ -264,7 +271,7 @@ public class GAConfig {
 
         @Config.Comment("Whether or not to disable GregTech EU to RF energy converters.")
         @Config.RequiresMcRestart
-        public boolean disableEUtoRF = false;
+        public boolean disableEUtoRF = true;
 
         @Config.Comment("Whether or not to disable RF to GregTech EU energy converters.")
         @Config.RequiresMcRestart

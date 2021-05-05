@@ -1,5 +1,6 @@
 package gregicadditions.integrations.FECompat.Energy;
 
+import gregicadditions.GAConfig;
 import gregicadditions.integrations.FECompat.variables;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IElectricItem;
@@ -51,7 +52,7 @@ public class ItemEnergyContainerWrapper implements IEnergyStorage {
 			maxReceive = speed;
 		}
 
-		maxReceive -= maxReceive % variables.RATIO_INT;
+		maxReceive -= maxReceive % GAConfig.EUtoRF.RATIO;
 
 		if (maxReceive <= 0) {
 			return 0;
@@ -92,7 +93,7 @@ public class ItemEnergyContainerWrapper implements IEnergyStorage {
 			maxExtract = speed;
 		}
 
-		maxExtract -= maxExtract % variables.RATIO_INT;
+		maxExtract -= maxExtract % GAConfig.EUtoRF.RATIO;
 
 		if (maxExtract <= 0) {
 			return 0;

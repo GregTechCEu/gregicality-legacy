@@ -2,6 +2,7 @@ package gregicadditions.integrations.FECompat.Energy;
 
 import javax.annotation.Nullable;
 
+import gregicadditions.GAConfig;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
@@ -130,7 +131,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 			}
 
 			int extract = container.extractEnergy((int) extractValue, true);
-			extract -= extract % variables.RATIO_INT;
+			extract -= extract % GAConfig.EUtoRF.RATIO;
 			return container.extractEnergy(extract, false) / variables.RATIO_LONG;
 		}
 
@@ -141,7 +142,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		}
 
 		int receive = container.receiveEnergy((int) receiveValue, true);
-		receive -= receive % variables.RATIO_INT;
+		receive -= receive % GAConfig.EUtoRF.RATIO;
 		return container.receiveEnergy(receive, false) / variables.RATIO_LONG;
 	}
 
@@ -163,8 +164,8 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		}
 
 		int value = cap.getMaxEnergyStored();
-		value -= value % variables.RATIO_INT;
-		return value / variables.RATIO_INT;
+		value -= value % GAConfig.EUtoRF.RATIO;
+		return value / GAConfig.EUtoRF.RATIO;
 	}
 
 	@Override
@@ -176,8 +177,8 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		}
 
 		int value = cap.getEnergyStored();
-		value -= value % variables.RATIO_INT;
-		return value / variables.RATIO_INT;
+		value -= value % GAConfig.EUtoRF.RATIO;
+		return value / GAConfig.EUtoRF.RATIO;
 	}
 
 	@Override
