@@ -112,6 +112,7 @@ public class RecipeHandler {
         pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
         rotor.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRotor);
+        lens.addProcessingHandler(GemMaterial.class, RecipeHandler::processLens);
     }
 
     /**
@@ -196,9 +197,9 @@ public class RecipeHandler {
     /**
      * Ingot Material Handler. Generates:
      *
-     * - Mixer Recipes for GTCE Materials we add
-     * - Bending Cylinder Recipes
-     * - GT6 Wrench Recipes (plates over ingots)
+     * + Mixer Recipes for GTCE Materials we add
+     * + Bending Cylinder Recipes
+     * + GT6 Wrench Recipes (plates over ingots)
      */
     private static void processIngot(OrePrefix ingot, IngotMaterial material) {
 
@@ -287,9 +288,9 @@ public class RecipeHandler {
     /**
      * Gem Material Handler. Generates:
      *
-     * - Laser Engraver Gem Recipes
-     * - Implosion Compressor Gem Recipes
-     * - Gem Hammer Recipes
+     * + Laser Engraver Gem Recipes
+     * + Implosion Compressor Gem Recipes
+     * + Gem Hammer Recipes
      *
      * - Removes GTCE Gem Implosion Recipes
      */
@@ -370,7 +371,7 @@ public class RecipeHandler {
     /**
      * Rod Material Handler. Generates:
      *
-     * - GT5U Lathe Recipes if enabled (1 rod + 2 small dust)
+     * + GT5U Lathe Recipes if enabled (1 rod + 2 small dust)
      *
      * - Removes old Lathe Rod Recipes if enabled
      */
@@ -393,7 +394,7 @@ public class RecipeHandler {
     /**
      * Tiny Dust Material Handler. Generates:
      *
-     * - Schematic Recipes in favor of Integrated Circuit Packager Recipes
+     * + Schematic Recipes in favor of Integrated Circuit Packager Recipes
      */
     private static void processTinyDust(OrePrefix dustTiny, DustMaterial material) {
 
@@ -409,8 +410,8 @@ public class RecipeHandler {
     /**
      * Small Dust Material Handler. Generates:
      *
-     * - Overrides GTCE Small Dust Uncrafting Recipe to favor GT5's
-     * - Schematic Recipes in favor of Integrated Circuit Packager Recipes
+     * + Overrides GTCE Small Dust Uncrafting Recipe to favor GT5's
+     * + Schematic Recipes in favor of Integrated Circuit Packager Recipes
      */
     private static void processSmallDust(OrePrefix dustSmall, DustMaterial material) {
 
@@ -442,7 +443,7 @@ public class RecipeHandler {
     /**
      * Nugget Material Handler. Generates:
      *
-     * - Schematic Packing and Unpacking Recipes instead of Integrated Circuits if enabled
+     * + Schematic Packing and Unpacking Recipes instead of Integrated Circuits if enabled
      *
      */
     private static void processNugget(OrePrefix nugget, IngotMaterial material) {
@@ -566,7 +567,7 @@ public class RecipeHandler {
     /**
      * Ring Material Handler. Generates:
      *
-     * - Bending Cylinder Ring Recipes if enabled
+     * + Bending Cylinder Ring Recipes if enabled
      *
      * - Removes old Handcrafting Ring Recipes if enabled
      */
@@ -585,8 +586,8 @@ public class RecipeHandler {
     /**
      * Foil Material Handler. Generates:
      *
-     * - Bending Cylinder Foil Recipes if enabled
-     * - Cluster Mill Foil Recipes if enabled
+     * + Bending Cylinder Foil Recipes if enabled
+     * + Cluster Mill Foil Recipes if enabled
      *
      * - Removes Bender Foils if Cluster Mill is enabled
      */
@@ -627,8 +628,8 @@ public class RecipeHandler {
     /**
      * Round Material Handler. Generates:
      *
-     * - Round Handcrafting Recipes
-     * - Round Lathe Recipes
+     * + Round Handcrafting Recipes
+     * + Round Lathe Recipes
      */
     private static void processRound(OrePrefix round, IngotMaterial material) {
         if (!material.hasFlag(NO_SMASHING)) {
@@ -647,8 +648,8 @@ public class RecipeHandler {
     /**
      * Double Ingot Material Handler. Generates:
      *
-     * - Ingot to Double Ingot Hand Recipes
-     * - Double Ingot to Plate Hand Recipes
+     * + Ingot to Double Ingot Hand Recipes
+     * + Double Ingot to Plate Hand Recipes
      *
      * - Removes Ingot to Plate Hand Recipes
      */
@@ -670,9 +671,9 @@ public class RecipeHandler {
     /**
      * Curved Plate Material Handler. Generates:
      *
-     * - Curved Plate Recipes if enabled, Handcrafting and Machine
-     * - Curved Plate Rotor Recipes if enabled
-     * - Curved Plate Pipe Recipes if enabled
+     * + Curved Plate Recipes if enabled, Handcrafting and Machine
+     * + Curved Plate Rotor Recipes if enabled
+     * + Curved Plate Pipe Recipes if enabled
      */
     private static void processPlateCurved(OrePrefix plateCurved, IngotMaterial material) {
 
@@ -735,8 +736,8 @@ public class RecipeHandler {
     /**
      * Rotor Material Handler. Generates:
      *
-     * - Curved Plate Rotor Recipes if enabled
-     * - Assembler Rotor Recipe that GTCE removed
+     * + Curved Plate Rotor Recipes if enabled
+     * + Assembler Rotor Recipe that GTCE removed
      */
     private static void processRotor(OrePrefix ingot, IngotMaterial material) {
         if (!OreDictUnifier.get(rotor, material).isEmpty()) {
@@ -773,8 +774,8 @@ public class RecipeHandler {
     /**
      * Tiny Pipe Material Handler. Generates:
      *
-     * - Tiny Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
-     *   This is needed because GTCE does not generate these recipes normally.
+     * + Tiny Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
+     *       This is needed because GTCE does not generate these recipes normally.
      */
     private static void processTinyPipe(OrePrefix prefix, IngotMaterial material) {
         if (!GAConfig.GT6.BendingPipes)
@@ -787,8 +788,8 @@ public class RecipeHandler {
     /**
      * Large Pipe Material Handler. Generates:
      *
-     * - Large Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
-     *   This is needed because GTCE does not generate these recipes normally.
+     * + Large Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
+     *       This is needed because GTCE does not generate these recipes normally.
      */
     private static void processLargePipe(OrePrefix prefix, IngotMaterial material) {
         if (!GAConfig.GT6.BendingPipes)
@@ -801,7 +802,7 @@ public class RecipeHandler {
     /**
      * Metal Casing Material Handler. Generates:
      *
-     * - Autogenerated Metal Casing Handcrafting and Assembler Recipes
+     * + Autogenerated Metal Casing Handcrafting and Assembler Recipes
      */
     private static void processMetalCasing(OrePrefix prefix, IngotMaterial material) {
 
@@ -825,8 +826,8 @@ public class RecipeHandler {
     /**
      * Turbine Material Handler. Generates:
      *
-     * - Small, Medium, Large, and Huge Turbine Assembler Recipes
-     * - Turbine Blade Forming Press Recipes
+     * + Small, Medium, Large, and Huge Turbine Assembler Recipes
+     * + Turbine Blade Forming Press Recipes
      *
      * - Removes GTCE Recipes for Turbines and Blades, as well as the Handcrafting Turbine Blades Recipes
      */
@@ -882,6 +883,24 @@ public class RecipeHandler {
                 .input(plate, material, 5)
                 .input(screw, material, 2)
                 .output(toolPrefix, material)
+                .buildAndRegister();
+    }
+
+    /**
+     * Lens Material Handler. Generates:
+     *
+     * + Exquisite Gem -> Lens Recipes
+     *
+     * - Plate -> Lens Recipes
+     */
+    private static void processLens(OrePrefix gem, GemMaterial material) {
+
+        removeRecipesByInputs(LATHE_RECIPES, OreDictUnifier.get(plate, material));
+
+        LATHE_RECIPES.recipeBuilder().duration(2400).EUt(30)
+                .input(gemExquisite, material)
+                .output(lens, material)
+                .output(dust, material, 2)
                 .buildAndRegister();
     }
 

@@ -64,7 +64,7 @@ public class FullereneChain {
                 .inputs(Methylbenzophenanthrene.getItemStack(33))
                 .inputs(PotassiumCyanide.getItemStack(3))
                 .inputs(Bromosuccinimide.getItemStack(12))
-                .outputs(Benzophenanthrenylacetonitrile.getItemStack(30))
+                .outputs(Benzophenanthrenylacetonitrile.getItemStack(34))
                 .outputs(PotassiumBromide.getItemStack(2))
                 .outputs(Succinimide.getItemStack(12))
                 .EUt(2000000)

@@ -198,7 +198,7 @@ public class MagnetoRecipes {
                 .output(dust, CircuitCompoundMK3, 6)
                 .buildAndRegister();
 
-        // Gem Recipes
+        // Gem Recipes TODO Do these duplicate?
         AUTOCLAVE_RECIPES.recipeBuilder().duration(4500).EUt(7680)
                 .input(dust, MagnetoResonatic)
                 .fluidInputs(Neon.getFluid(100))

@@ -380,7 +380,6 @@ public class CircuitComponentRecipes {
                 .fluidInputs(Plastic.getFluid(L))
                 .outputs(SMD_DIODE.getStackForm(32))
                 .buildAndRegister();
-
     }
 
     private static void nanoSMD() {
@@ -508,7 +507,9 @@ public class CircuitComponentRecipes {
                 .buildAndRegister();
     }
 
+    // TODO
     private static void biowareSMD() {
+
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 8)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(1296))

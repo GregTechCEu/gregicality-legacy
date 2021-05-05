@@ -12,6 +12,7 @@ import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -550,5 +551,12 @@ public class MetaItemRecipes {
                 'P', new UnificationEntry(plate, Wood),
                 'S', "string",
                 'G', new UnificationEntry(dust, Gunpowder));
+
+        // Glass Lens
+        ModHandler.addShapedRecipe("glass_lens", OreDictUnifier.get(lens, Glass),
+                "FfF", "FGF", "FDF",
+                'F', new ItemStack(Items.FLINT),
+                'G', new ItemStack(Blocks.GLASS),
+                'D', new ItemStack(Items.DIAMOND));
     }
 }
