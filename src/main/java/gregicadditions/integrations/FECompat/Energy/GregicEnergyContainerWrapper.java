@@ -1,9 +1,29 @@
+
+// Copyright (C) 2018 DBot
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+// of the Software, and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all copies
+// or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
 package gregicadditions.integrations.FECompat.Energy;
 
 import javax.annotation.Nullable;
 
 import gregicadditions.GAConfig;
-import gregtech.api.GTValues;
+import gregicadditions.GAValues;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -191,13 +211,13 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 		long voltage = getInputVoltage();
 
-		if (voltage == GTValues.V[GTValues.V.length]) {
+		if (voltage == GAValues.V[GAValues.V.length]) {
 			return 1L;
 		}
 
-		for (int index = 0; index < GTValues.V.length; index++) {
-			if (GTValues.V[index] == voltage) {
-				long voltageNext = GTValues.V[index + 1] * variables.RATIO_LONG;
+		for (int index = 0; index < GAValues.V.length; index++) {
+			if (GAValues.V[index] == voltage) {
+				long voltageNext = GAValues.V[index + 1] * variables.RATIO_LONG;
 
 				if (voltageNext > Integer.MAX_VALUE) {
 					voltageNext = Integer.MAX_VALUE;
@@ -234,13 +254,13 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 		grabMaxInput /= variables.RATIO_LONG;
 
-		long value = GTValues.V[0];
+		long value = GAValues.V[0];
 
 		if (grabMaxInput < value) {
 			return 0L;
 		}
 
-		for (long value2 : GTValues.V) {
+		for (long value2 : GAValues.V) {
 			if (value2 < grabMaxInput) {
 				break;
 			} else {
