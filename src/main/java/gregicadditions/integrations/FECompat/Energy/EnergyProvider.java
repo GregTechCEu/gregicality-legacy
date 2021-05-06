@@ -23,6 +23,7 @@
 package gregicadditions.integrations.FECompat.Energy;
 
 import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -40,48 +41,58 @@ public class EnergyProvider implements ICapabilityProvider {
     private GregicEnergyContainerWrapper wrapper;
 
     /**
-     * "Atomic" boolean to prevent hasCapability and getCapability from colliding
+     * "Atomic" boolean to prevent hasCapability and getCapability from colliding.
+     * Not sure if this is necessary
      */
     private boolean gettingValue = false;
 
-	public EnergyProvider(TileEntity entCap) {
+    public EnergyProvider(TileEntity entCap) {
 		upvalue = entCap;
 	}
 
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
-		if (gettingValue) {
-			return false;
-		}
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 
-		//if (capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER) {
-		if (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER) {
-			return false;
-		}
+        if (gettingValue)
+            return false;
 
-		if (capability == CapabilityEnergy.ENERGY) {
-			int faceID = facing == null ? 6 : facing.getIndex();
+        if (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER)
+            return false;
 
-			if (facesRF[faceID] == null) {
-				facesRF[faceID] = new EnergyContainerWrapper(upvalue.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, facing), facing);
-			}
+        // Wrap GTEU Machines with a RF EnergyContainer
+        if (capability == CapabilityEnergy.ENERGY) {
 
-			gettingValue = true;
-			boolean result = facesRF[faceID].isValid();
-			gettingValue = false;
-			return result;
-		}
+            int faceID = facing == null ? 6 : facing.getIndex();
 
-		if (wrapper == null) {
-			wrapper = new GregicEnergyContainerWrapper(upvalue);
-		}
+            if (facesRF[faceID] == null) {
 
-		gettingValue = true;
-		boolean result = wrapper.isValid(facing);
-		gettingValue = false;
+                IEnergyContainer container = upvalue.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, facing);
+                if (container != null) {
 
-		return result;
-	}
+                    // Locks the Capability only to EU producers
+                    // TODO Give capability to wires and cables
+                    if (container.getOutputVoltage() != 0)
+                        facesRF[faceID] = new EnergyContainerWrapper(container, facing);
+                }
+            }
+
+            gettingValue = true;
+            boolean result = facesRF[faceID] != null && facesRF[faceID].isValid();
+            gettingValue = false;
+            return result;
+        }
+
+        // Wrap RF Machines with a GTEU EnergyContainer
+        if (wrapper == null) {
+            wrapper = new GregicEnergyContainerWrapper(upvalue);
+        }
+
+        gettingValue = true;
+        boolean result = wrapper.isValid(facing);
+        gettingValue = false;
+
+        return result;
+    }
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
