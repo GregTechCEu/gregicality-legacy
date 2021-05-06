@@ -30,7 +30,7 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 					.aisle("OEX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeElectrolyzer.casingMaterial))
+					.where('X', TileEntityLargeElectrolyzer.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)

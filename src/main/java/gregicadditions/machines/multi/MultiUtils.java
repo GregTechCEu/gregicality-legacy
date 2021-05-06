@@ -1,9 +1,13 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.item.metal.NuclearCasing;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -20,6 +24,7 @@ public class MultiUtils {
      * @return Config Casing BlockState
      */
     public static IBlockState getConfigCasing(String casingMaterial, IBlockState defaultState) {
+        casingMaterial = casingMaterial.toLowerCase();
         switch (casingMaterial) {
             case "bronze": {
                 return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS);
@@ -42,6 +47,12 @@ public class MultiUtils {
             case "tungstensteel": {
                 return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
             }
+            case "hss_g": { // Account for naming inconsistency
+                return METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G);
+            }
+            case "hss_s": {
+                return METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S);
+            }
         }
         for (MetalCasing1.CasingType casingType : MetalCasing1.CasingType.values()) {
             if (casingType.getName().equals("casing_" + casingMaterial))
@@ -56,7 +67,7 @@ public class MultiUtils {
                 return NUCLEAR_CASING.getState(casingType);
         }
 
-        return defaultState;
+        return defaultState == null ? MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID) : defaultState;
     }
 
     /**
@@ -65,6 +76,7 @@ public class MultiUtils {
      * @return Config Casing Texture
      */
     public static ICubeRenderer getConfigCasingTexture(String casingMaterial, ICubeRenderer defaultCasingTexture) {
+        casingMaterial = casingMaterial.toLowerCase();
         switch (casingMaterial) {
             case "bronze": {
                 return BRONZE_PLATED_BRICKS;
@@ -87,6 +99,12 @@ public class MultiUtils {
             case "tungstensteel": {
                 return ROBUST_TUNGSTENSTEEL_CASING;
             }
+            case "hss_g": {
+                return ClientHandler.HSS_G_CASING;
+            }
+            case "hss_s": {
+                return ClientHandler.HSS_S_CASING;
+            }
         }
         for (MetalCasing1.CasingType casingType : MetalCasing1.CasingType.values()) {
             if (casingType.getName().equals("casing_" + casingMaterial))
@@ -101,6 +119,38 @@ public class MultiUtils {
                 return casingType.getTexture();
         }
 
-        return defaultCasingTexture;
+        return defaultCasingTexture == null ? SOLID_STEEL_CASING : defaultCasingTexture;
+    }
+
+    /**
+     * Expand this method when new casing classes are created
+     *
+     * @return Casing Material
+     */
+    public static Material getCasingMaterial(String casingMaterial, Material defaultCasingMaterial) {
+        casingMaterial = casingMaterial.toLowerCase();
+        switch (casingMaterial) {
+            case "hss_g": { // Account for naming inconsistency
+                return Materials.HSSG;
+            }
+            case "hss_s": {
+                return Materials.HSSS;
+            }
+        }
+
+        for (MetalCasing1.CasingType casingType : MetalCasing1.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return casingType.getMaterial();
+        }
+        for (MetalCasing2.CasingType casingType : MetalCasing2.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return casingType.getMaterial();
+        }
+        for (NuclearCasing.CasingType casingType : NuclearCasing.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return casingType.getMaterial();
+        }
+
+        return defaultCasingMaterial == null ? Materials.Steel : defaultCasingMaterial;
     }
 }

@@ -3,10 +3,10 @@ package gregicadditions.jei;
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -34,7 +34,7 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 				.aisle("IXX", "S#X", "XXX")
 				.aisle("OXX", "XXX", "XXX")
 				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.WEST)
-				.where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel))
+				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.WEST)
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)

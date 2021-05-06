@@ -1,7 +1,6 @@
 package gregicadditions.jei.multi.miner;
 
 import com.google.common.collect.Lists;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.MetaBlocks;
@@ -36,8 +35,8 @@ public class LargeMinerInfo extends MultiblockInfoPage {
                 .aisle("#####", "#####", "PPPPP", "#CSC#", "#####", "#####", "#####", "#####", "#####", "#####")
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
                 .where('S', largeMiner, EnumFacing.SOUTH)
-                .where('C', GAMetaBlocks.getMetalCasingBlockState(largeMiner.getMaterial()))
-                .where('P', GAMetaBlocks.getMetalCasingBlockState(largeMiner.getMaterial()))
+                .where('C', largeMiner.getCasingState())
+                .where('P', largeMiner.getCasingState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.NORTH)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[0], EnumFacing.WEST)
                 .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[0], EnumFacing.WEST)

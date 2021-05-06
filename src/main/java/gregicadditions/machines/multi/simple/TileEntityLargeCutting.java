@@ -1,9 +1,10 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -15,7 +16,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -23,7 +23,8 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static gregicadditions.GAMaterials.Stellite;
+import static gregicadditions.client.ClientHandler.STELLITE_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockController {
 
@@ -56,17 +57,18 @@ public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockContro
 				.where('C', conveyorPredicate())
 				.build();
 	}
-	private static final Material defaultMaterial = Stellite;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeCutting.casingMaterial);
+
+	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeCutting.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeCutting.casingMaterial, STELLITE_CASING);
 	}
 
 	@Override

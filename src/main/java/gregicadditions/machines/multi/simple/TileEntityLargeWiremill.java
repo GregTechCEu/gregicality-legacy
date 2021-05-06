@@ -1,8 +1,9 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -14,14 +15,14 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.GAMaterials.MaragingSteel250;
+import static gregicadditions.client.ClientHandler.MARAGING_STEEL_250_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockController {
 
@@ -55,16 +56,17 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 				.build();
 	}
 
-	private static final Material defaultMaterial = MaragingSteel250;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeWiremill.casingMaterial);
+	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeWiremill.casingMaterial, defaultCasingState);
+
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeWiremill.casingMaterial, MARAGING_STEEL_250_CASING);
 	}
 
 	@Override

@@ -5,6 +5,8 @@ import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -24,6 +26,9 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import static gregicadditions.GAMaterials.Potin;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.POTIN_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockController {
 
@@ -55,17 +60,17 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 				.build();
 	}
 
-	private static final Material defaultMaterial = Potin;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeMacerator.casingMaterial);
+	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.POTIN);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMacerator.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, POTIN_CASING);
 	}
 
 	@Override

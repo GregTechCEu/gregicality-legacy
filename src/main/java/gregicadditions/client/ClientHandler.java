@@ -62,7 +62,7 @@ public class ClientHandler {
     public static SimpleCubeRenderer INCOLOY_MA956_CASING = new SimpleCubeRenderer("casings/metal_casings/incoloy_ma956");
     public static SimpleCubeRenderer MARAGING_STEEL_250_CASING = new SimpleCubeRenderer("casings/metal_casings/maraging_steel_250");
     public static SimpleCubeRenderer NITINOL_60_CASING = new SimpleCubeRenderer("casings/metal_casings/nitinol_60");
-    public static SimpleCubeRenderer INCONEL_625_CASING = new SimpleCubeRenderer("casings/metal_casings/inconcel_625");
+    public static SimpleCubeRenderer INCONEL_625_CASING = new SimpleCubeRenderer("casings/metal_casings/inconel_625");
     public static SimpleCubeRenderer GRISIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/grisium");
     public static SimpleCubeRenderer EGLIN_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/eglin_steel");
     public static SimpleCubeRenderer BABBIT_ALLOY_CASING = new SimpleCubeRenderer("casings/metal_casings/babbit_alloy");

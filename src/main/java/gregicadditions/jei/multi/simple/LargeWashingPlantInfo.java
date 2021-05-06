@@ -34,7 +34,7 @@ public class LargeWashingPlantInfo extends MultiblockInfoPage {
 					.aisle("IOMEX", "XXSXX", "XXXXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WASHING_PLANT, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeWashingPlant.casingMaterial))
+					.where('X', TileEntityLargeWashingPlant.casingState)
 					.where('#', Blocks.WATER.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)

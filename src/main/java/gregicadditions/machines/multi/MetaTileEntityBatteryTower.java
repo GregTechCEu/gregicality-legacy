@@ -10,6 +10,7 @@ import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -44,6 +45,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.Talonite;
+import static gregicadditions.client.ClientHandler.TALONITE_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer {
@@ -170,12 +173,12 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Talonite);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Talonite);
+        return TALONITE_CASING;
     }
 
     @Override

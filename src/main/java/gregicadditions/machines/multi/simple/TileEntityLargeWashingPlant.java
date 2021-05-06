@@ -6,6 +6,8 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -44,6 +46,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.Grisium;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.GRISIUM_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
 
@@ -87,22 +92,17 @@ public class TileEntityLargeWashingPlant extends LargeSimpleRecipeMapMultiblockC
                 .build();
     }
 
-    private static final Material defaultMaterial = Grisium;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeWashingPlant.casingMaterial);
+    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeWashingPlant.casingMaterial, defaultCasingState);
+
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
-    }
-
-    @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeWashingPlant.casingMaterial, GRISIUM_CASING);
     }
 
     @Override

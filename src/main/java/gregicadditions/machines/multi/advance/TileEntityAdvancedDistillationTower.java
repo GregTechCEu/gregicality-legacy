@@ -4,12 +4,11 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.MultiRecipesTrait;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.machines.multi.override.MetaTileEntityDistillationTower;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -47,10 +46,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.BabbittAlloy;
 import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower {
@@ -201,13 +198,17 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
         };
     }
 
+    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBIT_ALLOY);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.distillationTower.casingMaterial, defaultCasingState);
+
+
     public IBlockState getCasingState() {
-        return METAL_CASING_1.getState(MetalCasing1.CasingType.BABBIT_ALLOY);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return BABBIT_ALLOY_CASING;
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.distillationTower.casingMaterial, BABBIT_ALLOY_CASING);
     }
 
     @Override

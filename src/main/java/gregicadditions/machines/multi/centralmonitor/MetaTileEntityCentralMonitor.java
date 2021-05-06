@@ -4,7 +4,6 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.covers.CoverDigitalInterface;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.utils.BlockPatternChecker;
 import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
@@ -29,6 +28,8 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.pipenet.tile.AttachmentType;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.pipelike.cable.net.EnergyNet;
 import gregtech.common.pipelike.cable.net.WorldENet;
 import gregtech.common.pipelike.cable.tile.TileEntityCable;
@@ -56,11 +57,9 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
-import static gregtech.api.unification.material.Materials.Steel;
 
 public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase implements IRenderMetaTileEntity {
     private final static long ENERGY_COST = -50;
@@ -347,7 +346,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 .aisle(slice.toString()).setRepeatable(3, MAX_WIDTH)
                 .aisle(end.toString())
                 .where('S', selfPredicate())
-                .where('A', statePredicate(GAMetaBlocks.getMetalCasingBlockState(Steel)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
+                .where('A', statePredicate(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)))
                 .where('B', tilePredicate((state, tile) -> tile instanceof MetaTileEntityMonitorScreen))
                 .build();
     }
@@ -393,7 +392,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return Textures.SOLID_STEEL_CASING;
     }
 
     @Override

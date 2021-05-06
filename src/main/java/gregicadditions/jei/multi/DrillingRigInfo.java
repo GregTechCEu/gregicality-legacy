@@ -1,14 +1,10 @@
 package gregicadditions.jei.multi;
 
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockConcrete;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.blocks.StoneBlock;
+import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -37,7 +33,7 @@ public class DrillingRigInfo extends MultiblockInfoPage {
                 .aisle("#######", "#######", "CCCCCCC", "#BBBBB#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#F###F#", "#BB#BB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##")
                 .aisle("#######", "#######", "CCCCCCC", "#BBBBB#", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##F#F##", "##BBB##", "#######", "#######", "#######", "#######", "#######")
                 .aisle("F#####F", "F#####F", "CCCCCCC", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
-                .where('B', GAMetaBlocks.METAL_CASING.get(StainlessSteel).getDefaultState())
+                .where('B', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                 .where('F', MetaBlocks.FRAMES.get(StainlessSteel).getDefaultState())
                 .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('C', MetaBlocks.CONCRETE.withVariant(BlockConcrete.ConcreteVariant.LIGHT_CONCRETE, StoneBlock.ChiselingVariant.NORMAL))

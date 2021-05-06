@@ -18,6 +18,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockFireboxCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.network.PacketBuffer;
@@ -72,7 +73,7 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Bronze);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS);
     }
 
     public IBlockState getFireboxState() {
@@ -88,7 +89,7 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
         if (sourcePart != null && isFireboxPart(sourcePart)) {
             return isActive ? Textures.BRONZE_FIREBOX_ACTIVE : Textures.BRONZE_FIREBOX;
         }
-        return GAMetaBlocks.METAL_CASING.get(Bronze);
+        return Textures.BRONZE_PLATED_BRICKS;
     }
 
     @Override

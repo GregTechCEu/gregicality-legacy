@@ -1,11 +1,11 @@
 package gregicadditions.jei;
 
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -48,7 +48,7 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
             builder.aisle(end)
             .where('S', GATileEntities.CENTRAL_MONITOR, EnumFacing.WEST)
             .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
-            .where('A', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
+            .where('A', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
             .where('B', GATileEntities.MONITOR_SCREEN, EnumFacing.WEST);
             shapes.add(builder.build());
         }

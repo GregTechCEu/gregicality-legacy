@@ -32,7 +32,7 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 					.aisle("IMO", "MSM", "XMX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeWiremill.casingMaterial))
+					.where('X', TileEntityLargeWiremill.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)

@@ -31,7 +31,7 @@ public class LargePackagerInfo extends MultiblockInfoPage {
                 .aisle("XXX", "ISO", "XXX")
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
                 .where('S', GATileEntities.LARGE_PACKAGER, EnumFacing.SOUTH)
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargePackager.casingMaterial))
+                .where('X', TileEntityLargePackager.casingState)
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)

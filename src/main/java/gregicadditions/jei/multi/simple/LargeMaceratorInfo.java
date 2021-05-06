@@ -30,7 +30,7 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 					.aisle("IOE", "XSX", "XXX", "XXX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeMacerator.casingMaterial))
+					.where('X', TileEntityLargeMacerator.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)

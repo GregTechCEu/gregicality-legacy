@@ -2,8 +2,9 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -14,7 +15,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
@@ -29,7 +29,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Iron;
+import static gregicadditions.client.ClientHandler.IRON_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static net.minecraft.block.BlockDirectional.FACING;
 
 public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockController {
@@ -61,18 +62,18 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.large_forge_hammer.tooltip"));
     }
-    private static final Material defaultMaterial = Iron;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeForgeHammer.casingMaterial);
 
-
-    @Override
-    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
-    }
+    private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.IRON);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeForgeHammer.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
+    }
+
+    @Override
+    public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeForgeHammer.casingMaterial, IRON_CASING);
     }
 
     @Override

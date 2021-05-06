@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -22,6 +24,9 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 import static gregicadditions.GAMaterials.Tumbaga;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.TUMBAGA_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockController {
 
@@ -54,17 +59,17 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 				.build();
 	}
 
-	private static final Material defaultMaterial = Tumbaga;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeCentrifuge.casingMaterial);
+	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeCentrifuge.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeCentrifuge.casingMaterial, TUMBAGA_CASING);
 	}
 
 	@Override

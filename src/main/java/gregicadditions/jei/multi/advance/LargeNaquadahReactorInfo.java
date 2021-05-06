@@ -2,6 +2,7 @@ package gregicadditions.jei.multi.advance;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -15,7 +16,6 @@ import net.minecraft.util.EnumFacing;
 import java.util.Collections;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Naquadria;
 
 public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
 
@@ -33,7 +33,7 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
         }
         builder.aisle("CCCCC", "CCCCC", "CCSCC", "CCCCC", "CCCCC")
                 .where('S', GATileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.SOUTH)
-                .where('C', GAMetaBlocks.getMetalCasingBlockState(Naquadria))
+                .where('C', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
                 .where('Y', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL))

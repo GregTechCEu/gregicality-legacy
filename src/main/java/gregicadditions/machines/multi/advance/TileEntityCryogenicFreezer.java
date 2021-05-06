@@ -2,9 +2,7 @@ package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.override.MetaTileEntityVacuumFreezer;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -29,10 +27,8 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
-import static gregicadditions.GAMaterials.IncoloyMA956;
 import static gregicadditions.client.ClientHandler.INCOLOY_MA956_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 

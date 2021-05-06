@@ -30,7 +30,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
                     .aisle("OMX", "XSX")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.SOUTH)
-                    .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeThermalCentrifuge.casingMaterial))
+                    .where('X', TileEntityLargeThermalCentrifuge.casingState)
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)

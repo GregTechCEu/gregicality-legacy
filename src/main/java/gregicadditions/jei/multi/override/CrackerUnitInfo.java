@@ -6,6 +6,7 @@ import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class CrackerUnitInfo extends MultiblockInfoPage {
 
@@ -39,7 +39,7 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
                         .aisle("XCXCX", "H###X", "XCXCX")
                         .aisle("XCXCX", "XCECF", "XCXCX")
                         .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-                        .where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
+                        .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                         .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                         .where('#', Blocks.AIR.getDefaultState())
                         .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.EAST)
@@ -56,7 +56,7 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
                         .aisle("XCXCX", "H###X", "XCXCX")
                         .aisle("XCXCX", "XCECF", "XCXCX")
                         .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-                        .where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
+                        .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                         .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
                         .where('#', Blocks.AIR.getDefaultState())
                         .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.EAST)

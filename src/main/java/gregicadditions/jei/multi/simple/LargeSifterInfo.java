@@ -32,7 +32,7 @@ public class LargeSifterInfo extends MultiblockInfoPage {
 					.aisle("IOEXX", "XPSPX", "XXXXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_SIFTER, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeSifter.casingMaterial))
+					.where('X', TileEntityLargeSifter.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)

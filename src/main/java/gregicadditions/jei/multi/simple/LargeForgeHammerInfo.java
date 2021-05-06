@@ -28,7 +28,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("SBO", "E#X", "IPX", "FpX")
                 .where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.SOUTH)
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeForgeHammer.casingMaterial))
+                .where('X', TileEntityLargeForgeHammer.casingState)
                 .where('B', Blocks.IRON_BLOCK.getDefaultState())
                 .where('P', Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN))
                 .where('#', Blocks.AIR.getDefaultState())

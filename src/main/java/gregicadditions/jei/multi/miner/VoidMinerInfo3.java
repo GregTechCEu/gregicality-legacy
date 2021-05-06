@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.miner;
 
 import com.google.common.collect.Lists;
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.MetaBlocks;
@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class VoidMinerInfo3 extends MultiblockInfoPage {
 
@@ -35,8 +36,8 @@ public class VoidMinerInfo3 extends MultiblockInfoPage {
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', GATileEntities.VOID_MINER[2], EnumFacing.WEST)
-                .where('C', GAMetaBlocks.getMetalCasingBlockState(HastelloyK243))
-                .where('D', GAMetaBlocks.getMetalCasingBlockState(HastelloyX78))
+                .where('C', METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_K243))
+                .where('D', METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_X78))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[8], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[0], EnumFacing.WEST)
                 .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[0], EnumFacing.WEST)

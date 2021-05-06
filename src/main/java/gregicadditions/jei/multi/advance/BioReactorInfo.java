@@ -20,8 +20,6 @@ import net.minecraft.util.EnumFacing;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Staballoy;
-import static gregicadditions.GAMaterials.ZirconiumCarbide;
 
 public class BioReactorInfo extends MultiblockInfoPage {
     @Override

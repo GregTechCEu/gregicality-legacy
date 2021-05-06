@@ -649,7 +649,6 @@ public class GAConfig {
             public int chancedBoostPercentage = 100;
         }
 
-
         public static class AdvFusion {
             @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the recipe duration.")
             @Config.Name("Advanced Fusion Coil duration discount")
@@ -703,6 +702,11 @@ public class GAConfig {
             @Config.Name("Distillery recipe multiplier")
             @Config.RequiresMcRestart
             public int distillerMultiplier = 12;
+
+            @Config.Comment("The casing material to use for the Advanced Distllation Tower.")
+            @Config.Name("Advanced Distillation Tower Casing Material")
+            @Config.RequiresMcRestart
+            public String casingMaterial = "babbit_alloy";
         }
 
         public static class LargeAssembler {
@@ -791,7 +795,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Centrifuge casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "Tumbaga";
+            public String casingMaterial = "tumbaga";
         }
 
         public static class LargeChemicalReactor {
@@ -911,7 +915,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Extruder casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "inconel_a";
+            public String casingMaterial = "inconel_625";
         }
 
         public static class LargeForgeHammer {
@@ -1159,7 +1163,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Wiremill casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "maraging_steel_a";
+            public String casingMaterial = "maraging_steel_250";
         }
 
         public static class VoidMiner {
@@ -1251,7 +1255,7 @@ public class GAConfig {
             @Config.Comment("The name of the material to use as casing.")
             @Config.RequiresMcRestart
             @Config.Name("Large Miner casing material")
-            public String largeMinerCasingMaterial = "hssg";
+            public String largeMinerCasingMaterial = "hss_g";
 
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
@@ -1268,7 +1272,7 @@ public class GAConfig {
             @Config.Comment("The name of the material to use as casing.")
             @Config.RequiresMcRestart
             @Config.Name("Advanced Miner casing material")
-            public String advancedMinerCasingMaterial = "hsss";
+            public String advancedMinerCasingMaterial = "hss_s";
 
         }
 
@@ -1330,18 +1334,18 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Packager.")
             @Config.Name("Large Packager casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "hg_alloy";
+            public String casingMaterial = "hg_1223";
 
         }
 
         public static class HeatingCoils {
-            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Default=\"superconductor\", \"fusion_coil\"")
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Example: \"superconductor\", \"fusion_coil\"")
             @Config.Name("GTCE Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gtceHeatingCoilsBlacklist = new String[]{
                     ""
             };
-            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines. Default=\"\"")
+            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines.")
             @Config.Name("Gregicality Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gregicalityheatingCoilsBlacklist = new String[]{

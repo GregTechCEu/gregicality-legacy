@@ -1,9 +1,9 @@
 package gregicadditions.jei.multi;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -29,7 +29,7 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
                 .aisle("FXf", "XMX", "X#X", "XPX", "XXX")
                 .aisle("ISi", "XXX", "XXX", "XXX", "XXX")
                 .where('S', GATileEntities.PLASMA_CONDENSER, EnumFacing.SOUTH)
-                .where('X', GAMetaBlocks.METAL_CASING.get(GAMaterials.EnrichedNaquadahAlloy).getDefaultState())
+                .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('P', GAMetaBlocks.PUMP_CASING.getState(PumpCasing.CasingType.PUMP_UHV))
                 .where('M', GAMetaBlocks.MOTOR_CASING.getState(MotorCasing.CasingType.MOTOR_UHV))

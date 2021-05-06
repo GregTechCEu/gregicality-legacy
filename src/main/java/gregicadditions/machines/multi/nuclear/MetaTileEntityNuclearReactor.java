@@ -6,6 +6,7 @@ import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.NuclearCasing;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -46,21 +47,23 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 
 
 public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
-        THORIUM(0, GAMetaBlocks.getMetalCasingBlockState(ThoriumRadioactive.getMaterial())),
-        URANIUM(2, GAMetaBlocks.getMetalCasingBlockState(UraniumRadioactive.getMaterial())),
-        PLUTONIUM(10, GAMetaBlocks.getMetalCasingBlockState(PlutoniumRadioactive.getMaterial())),
-        AMERICIUM(15, GAMetaBlocks.getMetalCasingBlockState(AmericiumRadioactive.getMaterial())),
-        CURIUM(25, GAMetaBlocks.getMetalCasingBlockState(Curium.getMaterial())),
-        BERKELIUM(35, GAMetaBlocks.getMetalCasingBlockState(Berkelium.getMaterial())),
-        CALIFORNIUM(50, GAMetaBlocks.getMetalCasingBlockState(Californium.getMaterial())),
-        EINSTEINIUM(75, GAMetaBlocks.getMetalCasingBlockState(Einsteinium.getMaterial())),
-        FERMIUM(100, GAMetaBlocks.getMetalCasingBlockState(Fermium.getMaterial())),
-        MENDELEVIUM(200, GAMetaBlocks.getMetalCasingBlockState(Mendelevium.getMaterial()));
+        // TODO Nuclear Rework neptunium and protactinium casing missing from here
+        THORIUM(0, NUCLEAR_CASING.getState(NuclearCasing.CasingType.THORIUM)),
+        URANIUM(2, NUCLEAR_CASING.getState(NuclearCasing.CasingType.URANIUM)),
+        PLUTONIUM(10, NUCLEAR_CASING.getState(NuclearCasing.CasingType.PLUTONIUM)),
+        AMERICIUM(15, NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM)),
+        CURIUM(25, NUCLEAR_CASING.getState(NuclearCasing.CasingType.CURIUM)),
+        BERKELIUM(35, NUCLEAR_CASING.getState(NuclearCasing.CasingType.BERKELIUM)),
+        CALIFORNIUM(50, NUCLEAR_CASING.getState(NuclearCasing.CasingType.CALIFORNIUM)),
+        EINSTEINIUM(75, NUCLEAR_CASING.getState(NuclearCasing.CasingType.EINSTEINIUM)),
+        FERMIUM(100, NUCLEAR_CASING.getState(NuclearCasing.CasingType.FERMIUM)),
+        MENDELEVIUM(200, NUCLEAR_CASING.getState(NuclearCasing.CasingType.MENDELEVIUM));
 
 
         public final int additionalTemperature;

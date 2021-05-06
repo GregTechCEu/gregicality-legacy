@@ -6,6 +6,7 @@ import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Invar;
 
 public class MultiSmelterInfo extends MultiblockInfoPage {
 
@@ -38,7 +38,7 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 						.aisle("IXX", "CCC", "XXX")
 						.aisle("SXE", "C#C", "XXX")
 						.aisle("OXX", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
+						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
 						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 						.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
@@ -55,7 +55,7 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 						.aisle("IXX", "CCC", "XXX")
 						.aisle("SXE", "C#C", "XXX")
 						.aisle("OXX", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
+						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
 						.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 						.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)

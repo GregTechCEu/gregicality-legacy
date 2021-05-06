@@ -1,8 +1,9 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -14,14 +15,14 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.GAMaterials.EglinSteel;
+import static gregicadditions.client.ClientHandler.EGLIN_STEEL_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockController {
 
@@ -54,17 +55,18 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 				.where('P', pistonPredicate())
 				.build();
 	}
-	private static final Material defaultMaterial = EglinSteel;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeSifter.casingMaterial);
+
+	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeSifter.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeSifter.casingMaterial, EGLIN_STEEL_CASING);
 	}
 
 	@Override

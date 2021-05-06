@@ -7,6 +7,8 @@ import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.RobotArmCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -43,6 +45,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.HG_1223_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -85,17 +90,17 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
                 .build();
     }
 
-    private static final Material defaultMaterial = Titanium;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largePackager.casingMaterial);
+    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.HG_1223);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largePackager.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largePackager.casingMaterial, HG_1223_CASING);
     }
 
     @Override

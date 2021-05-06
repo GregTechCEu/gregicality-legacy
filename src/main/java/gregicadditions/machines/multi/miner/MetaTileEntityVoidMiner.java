@@ -8,6 +8,8 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -49,6 +51,10 @@ import java.util.Map;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.categories.handlers.VoidMinerHandler.*;
+import static gregicadditions.client.ClientHandler.*;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregicadditions.recipes.VoidMinerOres.*;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
@@ -262,24 +268,24 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     public IBlockState getCasingState() {
         switch (tier) {
             case 8:
-                return GAMetaBlocks.getMetalCasingBlockState(HastelloyN);
+                return METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N);
             case 9:
-                return GAMetaBlocks.getMetalCasingBlockState(EnrichedNaquadahAlloy);
+                return METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY);
             case 10:
             default:
-                return GAMetaBlocks.getMetalCasingBlockState(HastelloyK243);
+                return METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_K243);
         }
     }
 
     public IBlockState getSecondaryCasingState() {
         switch (tier) {
             case 8:
-                return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+                return METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
             case 9:
-                return GAMetaBlocks.getMetalCasingBlockState(Incoloy813);
+                return METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_813);
             case 10:
             default:
-                return GAMetaBlocks.getMetalCasingBlockState(HastelloyX78);
+                return METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_X78);
         }
     }
 
@@ -299,12 +305,12 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         switch (tier) {
             case 9:
-                return GAMetaBlocks.METAL_CASING.get(EnrichedNaquadahAlloy);
+                return ENRICHED_NAQUADAH_ALLOY_CASING;
             case 10:
-                return GAMetaBlocks.METAL_CASING.get(HastelloyK243);
+                return HASTELLOY_K243_CASING;
             case 8:
             default:
-                return GAMetaBlocks.METAL_CASING.get(HastelloyN);
+                return HASTELLOY_N_CASING;
         }
     }
 

@@ -3,6 +3,7 @@ package gregicadditions.jei.multi;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -14,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregicadditions.GAMaterials.Talonite;
 
 public class BatteryTowerInfo extends MultiblockInfoPage {
     @Override
@@ -31,7 +31,7 @@ public class BatteryTowerInfo extends MultiblockInfoPage {
                 .aisle("CCCCC", "GRRRG", "GRRRG", "GRRRG", "GRRRG", "CCCCC")
                 .aisle("CCCCC", "GGGGG", "GGGGG", "GGGGG", "GGGGG", "CCCCC")
                 .where('S', GATileEntities.BATTERY_TOWER, EnumFacing.WEST)
-                .where('C', GAMetaBlocks.getMetalCasingBlockState(Talonite))
+                .where('C', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE))
                 .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
                 .where('R', GAMetaBlocks.CELL_CASING.getState(cellType))
                 .build()).collect(Collectors.toList());

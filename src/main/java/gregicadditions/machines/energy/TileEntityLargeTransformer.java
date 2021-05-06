@@ -5,7 +5,6 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.capabilities.EnergyContainerListWithAmps;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -17,6 +16,8 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -26,8 +27,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-
-import static gregtech.api.unification.material.Materials.Aluminium;
 
 public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
 
@@ -110,12 +109,12 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Aluminium);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Aluminium);
+        return Textures.CLEAN_STAINLESS_STEEL_CASING;
     }
 
     @Override

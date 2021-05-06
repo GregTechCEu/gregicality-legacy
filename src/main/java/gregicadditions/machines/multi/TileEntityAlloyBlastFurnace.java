@@ -63,7 +63,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
 
 
     protected IBlockState getCoilState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Staballoy);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
     }
 
     protected IBlockState getCasingState() {

@@ -7,6 +7,9 @@ import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.*;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -45,6 +48,10 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.Staballoy;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.STABALLOY_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
 
@@ -96,17 +103,17 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
                 .build();
     }
 
-    private static final Material defaultMaterial = Staballoy;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeMultiUse.casingMaterial);
+    private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMultiUse.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMultiUse.casingMaterial, STABALLOY_CASING);
     }
 
     @Override

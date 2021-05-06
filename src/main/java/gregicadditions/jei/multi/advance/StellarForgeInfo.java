@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.advance;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -41,7 +41,7 @@ public class StellarForgeInfo extends MultiblockInfoPage {
                 .aisle("######C#C######", "#####FFFFF#####", "###############", "###############", "###############", "###############", "###############", "#####FFFFF#####", "######C#C######")
                 .aisle("###############", "######ISi######", "######f#C######", "######C#C######", "######C#C######", "######C#C######", "######C#C######", "######CCC######", "###############")
                 .where('M', GAMetaBlocks.EMITTER_CASING.getState(EmitterCasing.CasingType.EMITTER_UV))
-                .where('C', GAMetaBlocks.METAL_CASING.get(GAMaterials.EnrichedNaquadahAlloy).getDefaultState())
+                .where('C', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY))
                 .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.STELLAR_CONTAINMENT))
                 .where('F', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_COIL_2))
                 .where('S', GATileEntities.STELLAR_FORGE, EnumFacing.SOUTH)

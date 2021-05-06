@@ -1,6 +1,6 @@
 package gregicadditions.jei.multi.advance;
 
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -15,7 +15,7 @@ import net.minecraft.util.EnumFacing;
 import java.util.Collections;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Nitinol60;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class LargeRocketEngineInfo extends MultiblockInfoPage {
 
@@ -33,7 +33,7 @@ public class LargeRocketEngineInfo extends MultiblockInfoPage {
         }
         builder.aisle("CCC", "CSC", "CCC")
                 .where('S', GATileEntities.LARGE_ROCKET_ENGINE, EnumFacing.SOUTH)
-                .where('C', GAMetaBlocks.getMetalCasingBlockState(Nitinol60))
+                .where('C', METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[4], EnumFacing.NORTH)
                 .where('A', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING))

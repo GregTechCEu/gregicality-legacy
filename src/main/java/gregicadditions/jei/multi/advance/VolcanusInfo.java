@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.advance;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
@@ -37,7 +37,7 @@ public class VolcanusInfo extends MultiblockInfoPage {
 						.aisle("IFX", "CCC", "CCC", "XXX")
 						.aisle("SXE", "C#C", "C#C", "XXX")
 						.aisle("ODX", "CCC", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(GAMaterials.HastelloyN))
+						.where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
 						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 						.where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
@@ -56,7 +56,7 @@ public class VolcanusInfo extends MultiblockInfoPage {
 						.aisle("IFX", "CCC", "CCC", "XXX")
 						.aisle("SXE", "C#C", "C#C", "XXX")
 						.aisle("ODX", "CCC", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(GAMaterials.HastelloyN))
+						.where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
 						.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 						.where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)

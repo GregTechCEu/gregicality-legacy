@@ -32,7 +32,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 					.aisle("OPX", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.LARGE_EXTRUDER, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeExtruder.casingMaterial))
+					.where('X', TileEntityLargeExtruder.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)

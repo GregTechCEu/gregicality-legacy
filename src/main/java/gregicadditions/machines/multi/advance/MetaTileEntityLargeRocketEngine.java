@@ -3,9 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -24,17 +22,14 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
-import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Nitinol60;
 import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController {

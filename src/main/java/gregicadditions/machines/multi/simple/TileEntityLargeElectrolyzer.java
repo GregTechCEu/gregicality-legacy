@@ -4,6 +4,8 @@ import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -23,6 +25,9 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 import static gregicadditions.GAMaterials.Potin;
+import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.POTIN_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockController {
 
@@ -64,17 +69,17 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-	private static final Material defaultMaterial = Potin;
-	public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeElectrolyzer.casingMaterial);
+	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.POTIN);
+	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeElectrolyzer.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
-		return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+		return casingState;
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeElectrolyzer.casingMaterial, POTIN_CASING);
 	}
 
 	@Nonnull

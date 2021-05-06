@@ -5,6 +5,7 @@ import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.advance.TileEntityAdvancedDistillationTower;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -31,7 +32,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
                 .aisle("SFX", "X#X", "X#X", "X#X", "X#X", "XXX")
                 .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(BabbittAlloy))
+                .where('X', TileEntityAdvancedDistillationTower.casingState)
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)
                 .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.EV], EnumFacing.WEST)

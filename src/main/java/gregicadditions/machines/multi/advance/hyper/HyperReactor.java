@@ -6,6 +6,8 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.recipes.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -31,6 +33,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
+import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Helium;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
@@ -114,11 +118,11 @@ public class HyperReactor extends FueledMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Naquadria);
+        return NAQUADRIA_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Naquadria);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA);
     }
 
 }

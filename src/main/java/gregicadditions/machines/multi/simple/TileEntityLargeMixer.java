@@ -3,6 +3,8 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -15,14 +17,14 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.GAMaterials.Staballoy;
+import static gregicadditions.client.ClientHandler.STABALLOY_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockController {
 
@@ -56,17 +58,17 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .build();
     }
 
-    private static final Material defaultMaterial = Staballoy;
-    public static final Material casingMaterial = getCasingMaterial(defaultMaterial, GAConfig.multis.largeMixer.casingMaterial);
+    private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
+    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMixer.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(casingMaterial);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(casingMaterial);
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMixer.casingMaterial, STABALLOY_CASING);
     }
 
     @Override

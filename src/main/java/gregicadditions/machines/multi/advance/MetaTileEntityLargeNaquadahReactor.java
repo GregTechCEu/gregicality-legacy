@@ -32,7 +32,6 @@ import java.util.List;
 import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
-import static gregtech.api.unification.material.Materials.Naquadria;
 
 public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockController {
 

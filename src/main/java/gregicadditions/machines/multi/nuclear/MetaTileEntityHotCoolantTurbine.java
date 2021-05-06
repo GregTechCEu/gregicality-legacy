@@ -43,7 +43,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
 
     public enum TurbineType {
 
-        HOT_COOLANT(GARecipeMaps.HOT_COOLANT_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(GAMaterials.MaragingSteel250), GAMetaBlocks.METAL_CASING.get(GAMaterials.MaragingSteel250), true);
+        HOT_COOLANT(GARecipeMaps.HOT_COOLANT_TURBINE_FUELS, METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250), MARAGING_STEEL_250_CASING, true);
 
         public final HotCoolantRecipeMap recipeMap;
         public final IBlockState casingState;
