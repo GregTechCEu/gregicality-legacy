@@ -43,18 +43,18 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
                 .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
                 .aisle("XXX", "A#A", "A#A", "A#A", "XXX")
                 .aisle("XSX", "AAA", "AAA", "AAA", "XXX")
-                .where('A', statePredicate(casingPredicate2()))
+                .where('A', statePredicate(getCasingState2()))
                 .where('S', selfPredicate())
                 .where('#', isAirPredicate())
-                .where('X', statePredicate(casingPredicate()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .build();
     }
 
-    private static IBlockState casingPredicate() {
+    protected IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
-    private static IBlockState casingPredicate2() {
+    protected IBlockState getCasingState2() {
         return NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM);
     }
 

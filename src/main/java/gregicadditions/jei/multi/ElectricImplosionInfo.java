@@ -1,6 +1,5 @@
 package gregicadditions.jei.multi;
 
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.NuclearCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
@@ -37,7 +36,7 @@ public class ElectricImplosionInfo extends MultiblockInfoPage {
                 .where('S', getController(), EnumFacing.WEST)
                 .where('A', GAMetaBlocks.NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM))
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.UHV], EnumFacing.EAST)
+                .where('E', GATileEntities.ENERGY_INPUT[0], EnumFacing.EAST)
                 .build());
         return shape;
     }
