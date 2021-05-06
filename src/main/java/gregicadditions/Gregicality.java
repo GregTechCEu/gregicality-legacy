@@ -6,8 +6,6 @@ import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.capabilities.SimpleCapabilityManager;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
-import gregicadditions.integrations.FECompat.Energy.EnergyProvider;
-import gregicadditions.integrations.FECompat.Energy.EnergyProviderItem;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.exnihilocreatio.ExNihiloCreatioProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
@@ -33,13 +31,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import gregicadditions.integrations.FECompat.Energy.EnergyProvider;
-import gregicadditions.integrations.FECompat.Energy.EnergyProviderItem;
 
 import java.io.IOException;
 
@@ -61,7 +52,6 @@ public class Gregicality {
     public static final String MODID = "gtadditions";
     public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
-    public ResourceLocation resourceLocation;
 
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
@@ -93,7 +83,6 @@ public class Gregicality {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        resourceLocation = new ResourceLocation(MODID, "fecapability");
         GALog.init(event.getModLog());
         NetworkHandler.preInit();
         proxy.preLoad();
@@ -160,14 +149,5 @@ public class Gregicality {
                 IPSaveData.setInstance(world.provider.getDimension(), worldData);
             }
         }
-    }
-    @SubscribeEvent
-    public void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
-        event.addCapability(resourceLocation, new EnergyProvider(event.getObject()));
-    }
-
-    @SubscribeEvent
-    public void attachItemCapability(AttachCapabilitiesEvent<ItemStack> event) {
-        event.addCapability(resourceLocation, new EnergyProviderItem(event.getObject()));
     }
 }

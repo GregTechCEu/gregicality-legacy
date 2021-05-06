@@ -1,11 +1,21 @@
 package gregicadditions.capabilities;
 
+import gregicadditions.Gregicality;
+import gregicadditions.integrations.FECompat.Energy.EnergyProvider;
+import gregicadditions.integrations.FECompat.Energy.EnergyProviderItem;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+@Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class GregicAdditionsCapabilities {
 
 
@@ -22,4 +32,15 @@ public class GregicAdditionsCapabilities {
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_IMPORT_ITEMS = new MultiblockAbility<>();
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
+    private static final ResourceLocation CAPABILITY_EU_TO_RF = new ResourceLocation(Gregicality.MODID, "fecapability");
+
+    @SubscribeEvent
+    public static void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
+        event.addCapability(CAPABILITY_EU_TO_RF, new EnergyProvider(event.getObject()));
+    }
+
+    @SubscribeEvent
+    public static void attachItemCapability(AttachCapabilitiesEvent<ItemStack> event) {
+        event.addCapability(CAPABILITY_EU_TO_RF, new EnergyProviderItem(event.getObject()));
+    }
 }
