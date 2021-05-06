@@ -116,22 +116,22 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 			return 0L;
 		}
 
-		long maximalValue = voltage * amperage * variables.RATIO_LONG;
+		long maxPacket = voltage * variables.RATIO_LONG;
+		long maximalValue = maxPacket * amperage;
 
 		if (maximalValue > Integer.MAX_VALUE) {
 			maximalValue = Integer.MAX_VALUE;
 		}
 
 		int receive = container.receiveEnergy(safeCastLongToInt(maximalValue), true);
-		receive -= receive % (voltage * variables.RATIO_LONG);
 
-        GALog.logger.info("Voltage: {}, Amperage: {}, \"Receive\": {}", voltage, amperage, receive);
+		if (receive == 0)
+		    return 0L;
 
-		if (receive == 0) {
-			return 0L;
-		}
+        if (receive < maxPacket)
+		    receive -= receive % maxPacket;
 
-		return container.receiveEnergy(receive, false) / (voltage * variables.RATIO_LONG);
+		return container.receiveEnergy(receive, false) / maxPacket;
 	}
 
     private static int safeCastLongToInt(long v) {
