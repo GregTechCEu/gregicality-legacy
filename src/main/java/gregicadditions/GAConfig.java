@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @Config(modid = Gregicality.MODID)
 public class GAConfig {
+
     @Config.Comment({"Configs for Client Side"})
     public static Client client = new Client();
 
@@ -265,6 +266,7 @@ public class GAConfig {
     public static EnergyConverter energyConverter = new EnergyConverter();
 
     public static class EnergyConverter {
+
         @Config.Comment("Define Power converter size")
         @Config.RequiresMcRestart
         public int[] values = new int[]{1, 4, 9, 16};

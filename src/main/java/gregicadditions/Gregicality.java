@@ -53,6 +53,7 @@ public class Gregicality {
     public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
 
+
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
             GAMetalCasingBlockFactory.init();
@@ -150,4 +151,6 @@ public class Gregicality {
             }
         }
     }
+
+
 }
