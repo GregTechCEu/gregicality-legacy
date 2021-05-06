@@ -18,6 +18,8 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
+// Edited by Irgendwer and DStrand1 2021
+
 package gregicadditions.integrations.FECompat.Energy;
 
 import gregtech.api.capability.GregtechCapabilities;
@@ -27,18 +29,27 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 
+import javax.annotation.Nonnull;
+
 public class EnergyProvider implements ICapabilityProvider {
-	private final TileEntity upvalue;
-	private final EnergyContainerWrapper[] facesRF = new EnergyContainerWrapper[7];
-	private GregicEnergyContainerWrapper wrapper;
-	private boolean gettingValue = false;
+
+    private final TileEntity upvalue;
+
+    private final EnergyContainerWrapper[] facesRF = new EnergyContainerWrapper[7];
+
+    private GregicEnergyContainerWrapper wrapper;
+
+    /**
+     * "Atomic" boolean to prevent hasCapability and getCapability from colliding
+     */
+    private boolean gettingValue = false;
 
 	public EnergyProvider(TileEntity entCap) {
 		upvalue = entCap;
 	}
 
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+	public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 		if (gettingValue) {
 			return false;
 		}

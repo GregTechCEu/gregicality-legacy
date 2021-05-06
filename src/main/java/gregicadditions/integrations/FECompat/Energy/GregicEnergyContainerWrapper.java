@@ -18,22 +18,26 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
+// Modified by Irgendwer and DStrand1 2021
+
 package gregicadditions.integrations.FECompat.Energy;
 
 import javax.annotation.Nullable;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-import gregicadditions.integrations.FECompat.variables;
+import gregicadditions.integrations.FECompat.Constants;
+
+import static gregicadditions.integrations.FECompat.Constants.safeCastLongToInt;
 
 public class GregicEnergyContainerWrapper implements IEnergyContainer {
-	private final ICapabilityProvider upvalue;
+
+    private final ICapabilityProvider upvalue;
 	private final IEnergyStorage[] facesRF = new IEnergyStorage[7];
 
 	public GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
@@ -116,7 +120,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 			return 0L;
 		}
 
-		long maxPacket = voltage * variables.RATIO_LONG;
+		long maxPacket = voltage * Constants.RATIO_LONG;
 		long maximalValue = maxPacket * amperage;
 
 		if (maximalValue > Integer.MAX_VALUE) {
@@ -134,10 +138,6 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		return container.receiveEnergy(receive, false) / maxPacket;
 	}
 
-    private static int safeCastLongToInt(long v) {
-        return v > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) v;
-    }
-
 	@Override
 	public long changeEnergy(long delta) {
 		IEnergyStorage container = getStorageCap();
@@ -151,7 +151,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		}
 
 		if (delta < 0L) {
-			long extractValue = delta * variables.RATIO_LONG;
+			long extractValue = delta * Constants.RATIO_LONG;
 
 			if (extractValue > Integer.MAX_VALUE) {
 				extractValue = Integer.MAX_VALUE;
@@ -159,10 +159,10 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 			int extract = container.extractEnergy(safeCastLongToInt(extractValue), true);
 			extract -= extract % GAConfig.EUtoRF.RATIO;
-			return container.extractEnergy(extract, false) / variables.RATIO_LONG;
+			return container.extractEnergy(extract, false) / Constants.RATIO_LONG;
 		}
 
-		long receiveValue = delta * variables.RATIO_LONG;
+		long receiveValue = delta * Constants.RATIO_LONG;
 
 		if (receiveValue > Integer.MAX_VALUE) {
 			receiveValue = Integer.MAX_VALUE;
@@ -170,7 +170,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 		int receive = container.receiveEnergy((int) receiveValue, true);
 		receive -= receive % GAConfig.EUtoRF.RATIO;
-		return container.receiveEnergy(receive, false) / variables.RATIO_LONG;
+		return container.receiveEnergy(receive, false) / Constants.RATIO_LONG;
 	}
 
 	@Nullable
@@ -224,7 +224,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 		for (int index = 0; index < GAValues.V.length; index++) {
 			if (GAValues.V[index] == voltage) {
-				long voltageNext = GAValues.V[index + 1] * variables.RATIO_LONG;
+				long voltageNext = GAValues.V[index + 1] * Constants.RATIO_LONG;
 
 				if (voltageNext > Integer.MAX_VALUE) {
 					voltageNext = Integer.MAX_VALUE;
@@ -232,12 +232,12 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 				int allowedInput = container.receiveEnergy(safeCastLongToInt(voltageNext), true);
 
-				if (allowedInput < voltage * variables.RATIO_LONG) {
+				if (allowedInput < voltage * Constants.RATIO_LONG) {
 					return 1L;
 				}
 
-				allowedInput -= allowedInput % voltage * variables.RATIO_LONG;
-				return allowedInput / (voltage * variables.RATIO_LONG);
+				allowedInput -= allowedInput % voltage * Constants.RATIO_LONG;
+				return allowedInput / (voltage * Constants.RATIO_LONG);
 			}
 		}
 
@@ -253,13 +253,13 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 		}
 
 		long grabMaxInput = container.receiveEnergy(Integer.MAX_VALUE, true);
-		grabMaxInput -= grabMaxInput % variables.RATIO_LONG;
+		grabMaxInput -= grabMaxInput % Constants.RATIO_LONG;
 
 		if (grabMaxInput == 0) {
 			return 0L;
 		}
 
-		grabMaxInput /= variables.RATIO_LONG;
+		grabMaxInput /= Constants.RATIO_LONG;
 
 		long value = GAValues.V[0];
 
