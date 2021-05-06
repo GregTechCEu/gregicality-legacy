@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -121,8 +122,10 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 			maximalValue = Integer.MAX_VALUE;
 		}
 
-		int receive = container.receiveEnergy((int) maximalValue, true);
+		int receive = container.receiveEnergy(safeCastLongToInt(maximalValue), true);
 		receive -= receive % (voltage * variables.RATIO_LONG);
+
+        GALog.logger.info("Voltage: {}, Amperage: {}, \"Receive\": {}", voltage, amperage, receive);
 
 		if (receive == 0) {
 			return 0L;
@@ -130,6 +133,10 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
 		return container.receiveEnergy(receive, false) / (voltage * variables.RATIO_LONG);
 	}
+
+    private static int safeCastLongToInt(long v) {
+        return v > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) v;
+    }
 
 	@Override
 	public long changeEnergy(long delta) {
@@ -150,7 +157,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 				extractValue = Integer.MAX_VALUE;
 			}
 
-			int extract = container.extractEnergy((int) extractValue, true);
+			int extract = container.extractEnergy(safeCastLongToInt(extractValue), true);
 			extract -= extract % GAConfig.EUtoRF.RATIO;
 			return container.extractEnergy(extract, false) / variables.RATIO_LONG;
 		}
@@ -223,7 +230,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 					voltageNext = Integer.MAX_VALUE;
 				}
 
-				int allowedInput = container.receiveEnergy((int) voltageNext, true);
+				int allowedInput = container.receiveEnergy(safeCastLongToInt(voltageNext), true);
 
 				if (allowedInput < voltage * variables.RATIO_LONG) {
 					return 1L;
