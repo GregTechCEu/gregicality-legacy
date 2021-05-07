@@ -81,34 +81,39 @@ public class RecipeHandler {
      */
     public static void register() {
 
-        GAEnums.GAOrePrefix.gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
+        gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
         ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngot);
 
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
-        if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots) {
+
+        if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots)
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
-        }
+
+
         if (GAConfig.GT6.addRounds)
             round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
-        if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders) {
+
+        if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders)
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
-        }
+
+
         if (GAConfig.GT5U.CablesGT5U) {
             for (OrePrefix wirePrefix : WIRE_DOUBLING_ORDER) {
                 wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
             }
         }
+
         dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
         if (GAConfig.Misc.PackagerDustRecipes) {
             dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
             nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
         }
 
-        if (GAConfig.GT5U.stickGT5U) {
+        if (GAConfig.GT5U.stickGT5U)
             stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
-        }
+
         dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
         foil.addProcessingHandler(IngotMaterial.class, RecipeHandler::processFoil);
         pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
@@ -190,14 +195,16 @@ public class RecipeHandler {
      * since they often take recipes from other maps.
      */
     public static void registerLargeMachineRecipes() {
-        registerLargeChemicalRecipes();
+
+        registerLargeMachineRecipes(CHEMICAL_RECIPES, LARGE_CHEMICAL_RECIPES);
+        registerLargeMachineRecipes(LASER_ENGRAVER_RECIPES, LARGE_ENGRAVER_RECIPES);
+        registerLargeMachineRecipes(CENTRIFUGE_RECIPES, LARGE_CENTRIFUGE_RECIPES);
+        registerLargeMachineRecipes(FORGE_HAMMER_RECIPES, LARGE_FORGE_HAMMER_RECIPES);
+
         registerLargeMixerRecipes();
-        registerLargeForgeHammerRecipes();
         registerAlloyBlastRecipes();
         registerChemicalPlantRecipes();
         registerGreenHouseRecipes();
-        registerLargeCentrifugeRecipes();
-        registerLaserEngraverRecipes();
     }
 
     /**
@@ -1050,40 +1057,24 @@ public class RecipeHandler {
         }
     }
 
-    /**
-     * Large Chemical Reactor Recipe creation.
-     * Copies the Chemical Reactor RecipeMap.
-     */
-    private static void registerLargeChemicalRecipes() {
-        CHEMICAL_RECIPES.getRecipeList().forEach(recipe -> {
-            LargeRecipeBuilder largeRecipeMap = LARGE_CHEMICAL_RECIPES.recipeBuilder()
+    private static void registerLargeMachineRecipes(RecipeMap<?> mapToCopy, RecipeMap<LargeRecipeBuilder> mapToForm) {
+
+        for (Recipe recipe : mapToCopy.getRecipeList()) {
+
+            LargeRecipeBuilder largeRecipeBuilder = mapToForm.recipeBuilder()
                     .EUt(recipe.getEUt())
                     .duration(recipe.getDuration())
-                    .fluidInputs(recipe.getFluidInputs())
                     .inputsIngredients(recipe.getInputs())
                     .outputs(recipe.getOutputs())
+                    .fluidInputs(recipe.getFluidInputs())
                     .fluidOutputs(recipe.getFluidOutputs());
 
-            recipe.getChancedOutputs().forEach(chanceEntry -> largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-            largeRecipeMap.buildAndRegister();
-        });
-    }
+            // TODO Giving better way to do this in GTCE
+            for (Recipe.ChanceEntry entry : recipe.getChancedOutputs())
+                largeRecipeBuilder.chancedOutput(entry.getItemStack(), entry.getChance(), entry.getBoostPerTier());
 
-    /**
-     * Large Laser Engraver Recipe Creation.
-     * Copies the Laser Engraver RecipeMap.
-     */
-    private static void registerLaserEngraverRecipes() {
-        LASER_ENGRAVER_RECIPES.getRecipeList().forEach(recipe -> {
-            LargeRecipeBuilder largeRecipeMap = LARGE_ENGRAVER_RECIPES.recipeBuilder()
-                    .EUt(recipe.getEUt())
-                    .duration(recipe.getDuration())
-                    .inputsIngredients(recipe.getInputs())
-                    .outputs(recipe.getOutputs());
-
-            recipe.getChancedOutputs().forEach(chanceEntry -> largeRecipeMap.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-            largeRecipeMap.buildAndRegister();
-        });
+            largeRecipeBuilder.buildAndRegister();
+        }
     }
 
     /**
@@ -1117,44 +1108,6 @@ public class RecipeHandler {
                     .outputs(recipe.getOutputs())
                     .fluidOutputs(recipe.getFluidOutputs())
                     .buildAndRegister();
-        });
-    }
-
-    /**
-     * Large Centrifuge Recipe creation.
-     * Copies the Centrifuge RecipeMap.
-     */
-    private static void registerLargeCentrifugeRecipes() {
-        CENTRIFUGE_RECIPES.getRecipeList().forEach(recipe -> {
-            LargeRecipeBuilder builder = LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                    .EUt(recipe.getEUt())
-                    .duration(recipe.getDuration())
-                    .fluidInputs(recipe.getFluidInputs())
-                    .inputsIngredients(recipe.getInputs())
-                    .outputs(recipe.getOutputs())
-                    .fluidOutputs(recipe.getFluidOutputs());
-
-            recipe.getChancedOutputs().forEach(chanceEntry -> builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-            builder.buildAndRegister();
-        });
-    }
-
-    /**
-     * Large Forge Hammer Recipe creation.
-     * Copies the Forge Hammer RecipeMap.
-     */
-    private static void registerLargeForgeHammerRecipes() {
-        FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
-            LargeRecipeBuilder builder = LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
-                    .EUt(recipe.getEUt())
-                    .duration(recipe.getDuration())
-                    .fluidInputs(Lubricant.getFluid(2))
-                    .inputsIngredients(recipe.getInputs())
-                    .outputs(recipe.getOutputs())
-                    .fluidOutputs(recipe.getFluidOutputs());
-
-            recipe.getChancedOutputs().forEach(chanceEntry -> builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-            builder.buildAndRegister();
         });
     }
 

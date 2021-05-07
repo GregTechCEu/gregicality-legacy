@@ -8,7 +8,6 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -44,7 +43,6 @@ public class CircuitRecipes {
     // Organized by "Group" rather than by voltage
     public static void init() {
 
-        // TODO Clean this up
         removeGTCECircuitRecipes();
 
         primitiveCircuits();
@@ -70,8 +68,7 @@ public class CircuitRecipes {
     private static void primitiveCircuits() {
 
         // Primitive Circuit (Integrated Logic Circuit in game)
-        ModHandler.removeRecipes(BASIC_CIRCUIT_LV.getStackForm()); // TODO need to wrap this still. Do we need both removals
-        ModHandler.removeRecipeByName(new ResourceLocation("gregtech:primitive_circuit"));
+        removeRecipeByName("gregtech:basic_circuit");
         ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(),
                 "RPR", "TBT", "CCC",
                 'R', RESISTOR,
@@ -184,7 +181,8 @@ public class CircuitRecipes {
                     .fluidInputs(fluidStack)
                     .outputs(REFINED_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
-            /*
+
+            /* SoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(600)
                     .inputs(GOOD_PLASTIC_BOARD.getStackForm())
                     .inputs(SYSTEM_ON_CHIP.getStackForm())
@@ -828,24 +826,24 @@ public class CircuitRecipes {
                 .buildAndRegister();
     }
 
-    private static void biowareCircuits() { // TODO
+    private static void biowareCircuits() {
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
             fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
 
             // Bioware Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(240000)
-                    .outputs(BIOWARE_PROCESSOR.getStackForm())
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                     .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(8))
                     .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(4))
                     .inputs(NEURO_PROCESSOR.getStackForm())
                     .inputs(HASOC.getStackForm())
                     .input(wireFine, NaquadahAlloy, 4)
+                    .outputs(BIOWARE_PROCESSOR.getStackForm())
                     .fluidInputs(fluidStack).buildAndRegister();
         }
 
         // Bioware Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(480000)
                 .inputs(BIOWARE_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(16))
@@ -856,17 +854,15 @@ public class CircuitRecipes {
                 .inputs(ARAM.getStackForm(32))
                 .input(plate, Duranium, 2)
                 .input(foil, Polybenzimidazole, 16)
-                .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Titanium.getFluid(1296))
-                .fluidInputs(Plastic.getFluid(2592))
-                .fluidInputs(NaquadahEnriched.getFluid(1296))
-                .EUt(480000)
-                .duration(400)
+                .fluidInputs(Titanium.getFluid(L * 9))
+                .fluidInputs(Plastic.getFluid(L * 18))
+                .fluidInputs(NaquadahEnriched.getFluid(L * 9))
+                .outputs(BIOWARE_ASSEMBLY.getStackForm())
                 .buildAndRegister();
 
         // Bioware Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(960000)
                 .inputs(BIOWARE_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
@@ -879,17 +875,15 @@ public class CircuitRecipes {
                 .input(plate, Tritanium, 2)
                 .input(foil, Polybenzimidazole, 16)
                 .inputs(GRAVI_STAR.getStackForm(2))
-                .outputs(BIOWARE_COMPUTER.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Tritanium.getFluid(288))
-                .fluidInputs(Polybenzimidazole.getFluid(1296))
-                .fluidInputs(NaquadahEnriched.getFluid(1296))
-                .EUt(960000)
-                .duration(600)
+                .fluidInputs(Tritanium.getFluid(L * 2))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .fluidInputs(NaquadahEnriched.getFluid(L * 9))
+                .outputs(BIOWARE_COMPUTER.getStackForm())
                 .buildAndRegister();
 
         // Bioware Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(1920000)
                 .inputs(BIOWARE_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
@@ -899,17 +893,15 @@ public class CircuitRecipes {
                 .input(wireGtSingle, UHVSuperconductor, 6)
                 .inputs(UHPIC.getStackForm(32))
                 .input(plate, Adamantium, 2)
-                .input(frameGt, Adamantium, 1)
+                .input(frameGt, Adamantium)
                 .input(plate, Naquadria, 8)
                 .input(foil, Polybenzimidazole, 64)
                 .inputs(UNSTABLE_STAR.getStackForm())
-                .outputs(BIOWARE_MAINFRAME.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .fluidInputs(Tritanium.getFluid(1296))
-                .fluidInputs(Polybenzimidazole.getFluid(2592))
-                .fluidInputs(Naquadria.getFluid(1296))
-                .EUt(1920000)
-                .duration(800)
+                .fluidInputs(Tritanium.getFluid(L * 9))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 18))
+                .fluidInputs(Naquadria.getFluid(L * 9))
+                .outputs(BIOWARE_MAINFRAME.getStackForm())
                 .buildAndRegister();
     }
 
@@ -996,11 +988,13 @@ public class CircuitRecipes {
     }
 
     private static void exoticCircuits() {
-        // COMING SOON...
 
-        //for (FluidStack fluidStack : SOLDER_FLUIDS) {
-        //    fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
-        //}
+        /* COMING SOON...
+
+        for (FluidStack fluidStack : SOLDER_FLUIDS) {
+            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+        }
+        */
     }
 
     private static void cosmicCircuits() {
