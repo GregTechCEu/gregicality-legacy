@@ -76,7 +76,6 @@ public class CommonProxy {
     // If we want to staggered-remove a material, apply a warning to it here.
     private static final String REMOVED_MAT_TOOLTIP = TextFormatting.RED + "This Material will be removed in next release!";
     private static void setRemovedMaterialTooltips() {
-        FluidTooltipUtil.registerTooltip(GAMaterials.NitrogenTetroxide.getMaterialFluid(), REMOVED_MAT_TOOLTIP);
     }
 
     @SubscribeEvent

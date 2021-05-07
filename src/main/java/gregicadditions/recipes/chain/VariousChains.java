@@ -508,17 +508,9 @@ public class VariousChains {
 
         // Rocket Fuel Tier T4
         // C2H8N2 + N2O4 = H8N4C2O4 (treat like chem reactor recipes)
-        // TODO CONFLICT WITH GTCE
         MIXER_RECIPES.recipeBuilder().duration(280).EUt(480)
                 .fluidInputs(Dimethylhydrazine.getFluid(1000))
                 .fluidInputs(DinitrogenTetroxide.getFluid(1000))
-                .fluidOutputs(RocketFuelH8N4C2O4.getFluid(1000))
-                .buildAndRegister();
-
-        // TODO Remove this recipe one release after Chem Fixes 2 PR is merged
-        MIXER_RECIPES.recipeBuilder().duration(280).EUt(480)
-                .fluidInputs(Dimethylhydrazine.getFluid(1000))
-                .fluidInputs(NitrogenTetroxide.getFluid(1000))
                 .fluidOutputs(RocketFuelH8N4C2O4.getFluid(1000))
                 .buildAndRegister();
 
