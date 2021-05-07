@@ -50,6 +50,7 @@ import static gregtech.api.unification.material.MarkerMaterials.Color.White;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
 import static gregtech.api.unification.material.type.GemMaterial.MatFlags.CRYSTALLISABLE;
+import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.GENERATE_SMALL_GEAR;
 import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
@@ -63,6 +64,7 @@ public class RecipeHandler {
      */
     private static final List<FluidMaterial> OLD_INSULATION_MATERIAL = Arrays.asList(Rubber, StyreneButadieneRubber, SiliconeRubber);
     private static final OrePrefix[] WIRE_DOUBLING_ORDER = new OrePrefix[]{wireGtSingle, wireGtDouble, wireGtQuadruple, wireGtOctal, wireGtHex};
+    private static final OrePrefix[] CABLE_DOUBLING_ORDER = new OrePrefix[]{cableGtSingle, cableGtDouble, cableGtQuadruple, cableGtOctal, cableGtHex};
 
     /**
      * Used for Gem Implosion
@@ -89,7 +91,7 @@ public class RecipeHandler {
             plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
         }
         if (GAConfig.GT6.addRounds)
-            GAEnums.GAOrePrefix.round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
+            round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders) {
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
         }
@@ -113,6 +115,10 @@ public class RecipeHandler {
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
         rotor.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRotor);
         lens.addProcessingHandler(GemMaterial.class, RecipeHandler::processLens);
+        spring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpring);
+        springSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpringSmall);
+        cableGtSingle.addProcessingHandler(IngotMaterial.class, RecipeHandler::processCableStripping);
+        gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
     }
 
     /**
@@ -630,18 +636,41 @@ public class RecipeHandler {
      *
      * + Round Handcrafting Recipes
      * + Round Lathe Recipes
+     * + Round Unification Recipes
      */
     private static void processRound(OrePrefix round, IngotMaterial material) {
         if (!material.hasFlag(NO_SMASHING)) {
 
             ModHandler.addShapedRecipe(String.format("round_%s", material.toString()), OreDictUnifier.get(round, material),
-                    "fN", "N ",
+                    "fN", "Nh",
                     'N', new UnificationEntry(nugget, material));
+
+            ModHandler.addShapedRecipe(String.format("round_from_ingot_%s", material.toString()), OreDictUnifier.get(round, material, 4),
+                    "fIh",
+                    'I', new UnificationEntry(ingot, material));
         }
 
         LATHE_RECIPES.recipeBuilder().EUt(8).duration(100)
                 .input(nugget, material)
                 .output(round, material)
+                .buildAndRegister();
+
+        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
+
+        // Unification Recipes
+        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(16)
+                .input(round, material)
+                .output(dustTiny, material)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(2)
+                .input(round, material)
+                .fluidOutputs(material.getFluid(L / 9))
+                .buildAndRegister();
+
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(16)
+                .input(round, material)
+                .output(nugget, material.arcSmeltInto == null ? material : material.arcSmeltInto)
                 .buildAndRegister();
     }
 
@@ -666,6 +695,19 @@ public class RecipeHandler {
                     "h", "I",
                     'I', new UnificationEntry(ingotDouble, material));
         }
+
+        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
+
+        // Unification Recipes
+        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(60)
+                .input(ingotDouble, material)
+                .output(dust, material, 2)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(160)
+                .input(ingotDouble, material)
+                .fluidOutputs(material.getFluid(L * 2))
+                .buildAndRegister();
     }
 
     /**
@@ -674,6 +716,7 @@ public class RecipeHandler {
      * + Curved Plate Recipes if enabled, Handcrafting and Machine
      * + Curved Plate Rotor Recipes if enabled
      * + Curved Plate Pipe Recipes if enabled
+     * + Curved Plate Unification Recipes
      */
     private static void processPlateCurved(OrePrefix plateCurved, IngotMaterial material) {
 
@@ -731,6 +774,25 @@ public class RecipeHandler {
                         'C', "craftingToolBendingCylinder");
             }
         }
+
+        // Unification Recipes
+        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
+
+        // Uncrafting Recipes
+        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(30)
+                .input(plateCurved, material)
+                .output(dust, material)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(80)
+                .input(plateCurved, material)
+                .fluidOutputs(material.getFluid(L))
+                .buildAndRegister();
+
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(85)
+                .input(plateCurved, material)
+                .output(ingot, material.arcSmeltInto == null ? material : material.arcSmeltInto)
+                .buildAndRegister();
     }
 
     /**
@@ -902,6 +964,90 @@ public class RecipeHandler {
                 .output(lens, material)
                 .output(dust, material, 2)
                 .buildAndRegister();
+    }
+
+    /**
+     * Spring Material Handler. Generates:
+     *
+     * + Crafting Table Recipe for Spring
+     */
+    private static void processSpring(OrePrefix prefix, IngotMaterial material) {
+
+        ModHandler.addShapedRecipe(String.format("spring_%s", material.toString()), OreDictUnifier.get(spring, material),
+                " s ", "fRx", " R ",
+                'R', new UnificationEntry(stickLong, material));
+    }
+
+    /**
+     * Small Spring Material Handler. Generates:
+     *
+     * + Crafting Table Recipe for Small Spring
+     * + Bender Recipe for Small Spring
+     *
+     * - GTCE Fine Wire to Small Spring Recipe
+     */
+    private static void processSpringSmall(OrePrefix prefix, IngotMaterial material) {
+
+        if (material.cableProperties != null)
+            removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(wireGtSingle, material)); // todo double check that this works
+
+
+        ModHandler.addShapedRecipe(String.format("spring_small_%s", material.toString()), OreDictUnifier.get(springSmall, material),
+                " s ", "fRx",
+                'R', new UnificationEntry(stick, material));
+
+        BENDER_RECIPES.recipeBuilder().duration(100).EUt(8)
+                .input(stick, material)
+                .output(springSmall, material, 2)
+                .circuitMeta(1)
+                .buildAndRegister();
+    }
+
+    /**
+     * Cable Stripping Material Handler. Generates:
+     *
+     * + Cable -> Wire Stripping recipes for all Cables
+     */
+    private static void processCableStripping(OrePrefix prefix, IngotMaterial material) {
+        if (material.cableProperties != null) {
+
+            for (int i = 0; i < CABLE_DOUBLING_ORDER.length; i++) {
+
+                UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(7)
+                        .input(CABLE_DOUBLING_ORDER[i], material)
+                        .notConsumable(new IntCircuitIngredient(0))
+                        .output(WIRE_DOUBLING_ORDER[i], material)
+                        .buildAndRegister();
+            }
+        }
+    }
+
+    /**
+     * Small Gear Material Handler. Generates:
+     *
+     * + Classic Crafting Table Recipe
+     * + Extruder Recipe for Small Gears
+     *
+     * - Removes Forge Hammer Recipe for Small Gears
+     */
+    private static void processGearSmall(OrePrefix prefix, IngotMaterial material) {
+
+        if (material.hasFlag(GENERATE_SMALL_GEAR)) {
+            removeRecipeByName(String.format("gtadditions:small_gear_%s", material.toString()));
+
+            ModHandler.addShapedRecipe(String.format("small_gear_%s", material.toString()), OreDictUnifier.get(gearSmall, material),
+                    " R ", "hPx", " R ",
+                    'R', new UnificationEntry(stick, material),
+                    'P', new UnificationEntry(plate, material));
+
+            removeRecipesByInputs(FORGE_HAMMER_RECIPES, OreDictUnifier.get(plate, material, 2));
+
+            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(120)
+                    .input(ingot, material)
+                    .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
+                    .output(gearSmall, material)
+                    .buildAndRegister();
+        }
     }
 
     /**

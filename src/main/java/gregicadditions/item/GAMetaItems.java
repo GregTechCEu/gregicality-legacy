@@ -509,6 +509,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
     public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
 
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_SMALL_GEAR;
+
 
     // GA oredict items
     //public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);

@@ -4179,3 +4179,6 @@ gtadditions.machine.pa.display2=Parallel Recipes: §b%d
 gtadditions.machine.electric_implosion.name=Electric Implosion Compressor
 recipemap.electric_implosion.name=Electric Implosion Compressor
 gtadditions.multiblock.electric_implosion.description=An Implosion Compressor without explosives. Requires UHV-tier power to run, but completes crafts nearly instantly.
+
+metaitem.shape.extruder.gear.small.name=Extruder Shape (Small Gear)
+metaitem.shape.extruder.gear.small.tooltip=Extruder Shape for making Small Gears

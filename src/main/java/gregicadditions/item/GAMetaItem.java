@@ -489,6 +489,8 @@ public class GAMetaItem extends MaterialMetaItem {
         KAPTON_BOARD = addItem(584, "board.kapton");
         KAPTON_CIRCUIT_BOARD = addItem(585, "board_circuit.kapton");
 
+        SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
