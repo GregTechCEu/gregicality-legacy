@@ -248,8 +248,9 @@ public class WorldRenderEventRenderer {
 
             EnumFacing facing = controllerBase.getFrontFacing();
             EnumFacing spin = EnumFacing.NORTH;
-            BlockPatternChecker.updateAllValue(ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern"));
-            BlockPattern.RelativeDirection[] structureDir = BlockPatternChecker.structureDir;
+            BlockPatternChecker checker = new BlockPatternChecker();
+            checker.updateAllValue(ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern"));
+            BlockPattern.RelativeDirection[] structureDir = checker.structureDir;
 
             if (structureDir == null) {
                 reset();
