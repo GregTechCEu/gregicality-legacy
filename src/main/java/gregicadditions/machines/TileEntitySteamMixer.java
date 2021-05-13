@@ -40,6 +40,9 @@ public class TileEntitySteamMixer extends SteamMetaTileEntity {
     }
 
     @Override
+    public IItemHandlerModifiable createExportItemHandler() { return new ItemStackHandler(1); }
+
+    @Override
     public FluidTankList createImportFluidHandler() {
         this.steamFluidTank = (new FilteredFluidHandler(this.getSteamCapacity())).setFillPredicate(ModHandler::isSteam);
         return new FluidTankList(false, this.steamFluidTank, new FluidTank(32000), new FluidTank(32000));
@@ -69,7 +72,9 @@ public class TileEntitySteamMixer extends SteamMetaTileEntity {
                         .setProgressBar(getFullGuiTexture("progress_bar_%s_furnace"),
                                 getFullGuiTexture("progress_bar_%s_furnace_filled"),
                                 ProgressWidget.MoveType.HORIZONTAL))
-                .widget(new TankWidget(this.exportFluids.getTankAt(0), 104, 33, 18, 18)
+                .widget(new SlotWidget(this.exportItems, 0, 104, 33)
+                        .setBackgroundTexture(BRONZE_SLOT_BACKGROUND_TEXTURE))
+                .widget(new TankWidget(this.exportFluids.getTankAt(0), 122, 33, 18, 18)
                         .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(true, false))
                 .build(getHolder(), player);
     }
