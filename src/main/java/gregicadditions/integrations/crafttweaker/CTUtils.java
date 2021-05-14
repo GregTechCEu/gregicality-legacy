@@ -17,6 +17,7 @@ import gregtech.api.unification.material.MaterialIconSet;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -97,8 +98,8 @@ public class CTUtils {
     }
 
     @ZenMethod("registerFluid")
-    public static void registerFluid(String name, int rgb) {
-        new SimpleFluidMaterial(name, rgb);
+    public static void registerFluid(String name, int rgb, @Optional String tooltip) {
+        new SimpleFluidMaterial(name, rgb, tooltip);
     }
 
     @ZenMethod
