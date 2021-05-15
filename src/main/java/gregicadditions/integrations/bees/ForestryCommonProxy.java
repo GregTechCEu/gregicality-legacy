@@ -13,6 +13,7 @@ import forestry.core.fluids.Fluids;
 import forestry.core.items.ItemBlockForestry;
 import forestry.core.items.ItemFluidContainerForestry;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.integrations.bees.alveary.BlockGTAlveary;
 import gregicadditions.integrations.bees.alveary.TileGTAlveary;
@@ -50,18 +51,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
-import static gregicadditions.recipes.GACraftingComponents.*;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
-import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
+import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.GACraftingComponents.*;
 
 @Mod.EventBusSubscriber()
 public class ForestryCommonProxy {
 
     public static SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
 
-    @Optional.Method(modid = "forestry")
+    @Optional.Method(modid = GAValues.MODID_FR)
     public void preInit() {
-        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         BEE_ATTRACTOR[0] = GregTechAPI.registerMetaTileEntity(2759, new SimpleMachineMetaTileEntity(location("attractor.lv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 1));
         BEE_ATTRACTOR[1] = GregTechAPI.registerMetaTileEntity(2760, new SimpleMachineMetaTileEntity(location("attractor.mv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 2));
         BEE_ATTRACTOR[2] = GregTechAPI.registerMetaTileEntity(2761, new SimpleMachineMetaTileEntity(location("attractor.hv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 3));
@@ -72,10 +73,10 @@ public class ForestryCommonProxy {
         BEE_ATTRACTOR[7] = GregTechAPI.registerMetaTileEntity(2766, new SimpleMachineMetaTileEntity(location("attractor.uv"), GARecipeMaps.ATTRACTOR_RECIPES, ClientHandler.BEE_ATTRACTOR, 8));
     }
 
-    @Optional.Method(modid = "forestry")
+    @Optional.Method(modid = GAValues.MODID_FR)
     @Mod.EventHandler
     public void init() {
-        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         GTBeesEffects.initEffects();
         GTBees.initBees();
         registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
@@ -170,7 +171,7 @@ public class ForestryCommonProxy {
                 .chancedOutput(BeeManager.beeRoot.getMemberStack(BeeDefinition.VALIANT.getIndividual(), EnumBeeType.DRONE), 300, 500)
                 .EUt(26).duration(200).buildAndRegister();
 
-        if (Loader.isModLoaded("extrabees") && ExtraBeeDefinition.WATER.getGenome() != null) {
+        if (Loader.isModLoaded(GAValues.MODID_BEES) && ExtraBeeDefinition.WATER.getGenome() != null) {
             GARecipeMaps.ATTRACTOR_RECIPES.recipeBuilder().notConsumable(new ItemStack(Blocks.WATERLILY)).fluidInputs(Fluids.SEED_OIL.getFluid(100))
                     .chancedOutput(BeeManager.beeRoot.getMemberStack(ExtraBeeDefinition.WATER.getIndividual(), EnumBeeType.PRINCESS), 1000, 500)
                     .chancedOutput(BeeManager.beeRoot.getMemberStack(ExtraBeeDefinition.WATER.getIndividual(), EnumBeeType.DRONE), 3000, 500)
@@ -225,10 +226,10 @@ public class ForestryCommonProxy {
     public static BlockGTAlveary GT_ALVEARY;
 
 
-    @Optional.Method(modid = "forestry")
+    @Optional.Method(modid = GAValues.MODID_FR)
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         IForgeRegistry<Block> registry = event.getRegistry();
         GT_ALVEARY = new BlockGTAlveary();
         GT_ALVEARY.setRegistryName(Constants.MOD_ID, "gt_alveary");
@@ -236,19 +237,19 @@ public class ForestryCommonProxy {
         GameRegistry.registerTileEntity(TileGTAlveary.class, new ResourceLocation(Constants.MOD_ID, "gt_alveary"));
     }
 
-    @Optional.Method(modid = "forestry")
+    @Optional.Method(modid = GAValues.MODID_FR)
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.register(GTCombs.combItem);
         registry.register(new ItemBlockForestry<>(GT_ALVEARY).setRegistryName(GT_ALVEARY.getRegistryName()));
     }
 
-    @Optional.Method(modid = "forestry")
+    @Optional.Method(modid = GAValues.MODID_FR)
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded("forestry")) return;
+        if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         ForestryMachineRecipes.init();
     }
 }

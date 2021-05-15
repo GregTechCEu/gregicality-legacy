@@ -3,6 +3,7 @@ package gregicadditions.integrations.bees;
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
@@ -19,25 +20,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ForestryClientProxy extends ForestryCommonProxy {
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public void preInit() {
 		super.preInit();
 	}
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@Override
 	public void init() {
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) itemColors.registerItemColorHandler(ColoredItemItemColor.INSTANCE, GTCombs.combItem);
+		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) itemColors.registerItemColorHandler(ColoredItemItemColor.INSTANCE, GTCombs.combItem);
 		super.init();
 	}
 
 
-	@Optional.Method(modid = "forestry")
+	@Optional.Method(modid = GAValues.MODID_FR)
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
-		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+		if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) {
 			GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
 			ForestryCommonProxy.GT_ALVEARY.registerModel(Item.getItemFromBlock(ForestryCommonProxy.GT_ALVEARY), ForestryAPI.modelManager);
 		}
@@ -52,11 +53,11 @@ public class ForestryClientProxy extends ForestryCommonProxy {
 
 		}
 
-		@Optional.Method(modid = "forestry")
+		@Optional.Method(modid = GAValues.MODID_FR)
 		@Override
 		public int colorMultiplier(ItemStack stack, int tintIndex) {
 			Item item = stack.getItem();
-			if (item instanceof IColoredItem && Loader.isModLoaded("forestry")) {
+			if (item instanceof IColoredItem && Loader.isModLoaded(GAValues.MODID_FR)) {
 				return ((IColoredItem) item).getColorFromItemstack(stack, tintIndex);
 			}
 			return 0xffffff;

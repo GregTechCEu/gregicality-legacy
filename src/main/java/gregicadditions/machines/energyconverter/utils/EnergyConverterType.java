@@ -1,7 +1,7 @@
 package gregicadditions.machines.energyconverter.utils;
 
 import gregicadditions.GAConfig;
-import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.OreDictNames;
 
 public enum EnergyConverterType implements EnergyConverterCraftingHelper.RecipeFunction {

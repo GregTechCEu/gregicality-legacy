@@ -6,7 +6,7 @@ import gregtech.api.unification.material.MarkerMaterials;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.recipes.helper.GACraftingComponents;
 
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;

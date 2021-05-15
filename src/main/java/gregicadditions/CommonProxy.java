@@ -13,6 +13,9 @@ import gregicadditions.network.NetworkHandler;
 import gregicadditions.pipelike.cable.GAItemBlockCable;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
+import gregicadditions.recipes.categories.handlers.*;
+import gregicadditions.recipes.compat.ForestryCompat;
+import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
@@ -73,7 +76,6 @@ public class CommonProxy {
     // If we want to staggered-remove a material, apply a warning to it here.
     private static final String REMOVED_MAT_TOOLTIP = TextFormatting.RED + "This Material will be removed in next release!";
     private static void setRemovedMaterialTooltips() {
-        FluidTooltipUtil.registerTooltip(GAMaterials.NitrogenTetroxide.getMaterialFluid(), REMOVED_MAT_TOOLTIP);
     }
 
     @SubscribeEvent
@@ -160,46 +162,50 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering recipe low...");
+
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
         }
-        ConfigCircuitRecipeRemoval.init();
-        GAMachineRecipeRemoval.init();
-        GARecipeAddition.generatedRecipes();
-        RecipeHandler.registerLargeChemicalRecipes();
-        RecipeHandler.registerLargeMixerRecipes();
-        RecipeHandler.registerLargeForgeHammerRecipes();
-        RecipeHandler.registerAlloyBlastRecipes();
-        RecipeHandler.registerChemicalPlantRecipes();
-        RecipeHandler.registerGreenHouseRecipes();
-        RecipeHandler.registerLargeCentrifugeRecipes();
-        RecipeHandler.registerLaserEngraverRecipes();
-        VoidMinerOres.init();
+
+        // Main recipe registration
+        // This is called AFTER GregTech registers recipes, so
+        // anything here is safe to call removals in
+        RecipeHandler.initRecipes();
+        RecipeHandler.generatedRecipes();
+
+        // Run some late recipe addition that depends on other
+        // recipes of ours already being added
+        RecipeHandler.registerLargeMachineRecipes();
+        VoidMinerHandler.addWhitelist();
     }
 
     @SubscribeEvent
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering ore prefix...");
+
+        // Register GTCE Material Handlers
         RecipeHandler.register();
         NuclearHandler.register();
         OreRecipeHandler.register();
-        GARecipeRemoval.init();
-        GARecipeAddition.init();
+        VoidMinerHandler.register();
+
+        // Register OreDictionary Entries
         GAMetaItems.registerOreDict();
         GAMetaBlocks.registerOreDict();
+
+        // Run GTCE Material Handlers
         OrePrefix.runMaterialHandlers();
-        GAMetaItems.registerRecipes();
-        GARecipeAddition.init2();
-        GARecipeAddition.init3();
-        GARecipeAddition.forestrySupport();
-        MatterReplication.init();
-        MachineCraftingRecipes.init();
-        GeneratorFuels.init();
+
+        // Run some early recipe addition
+        // These do not need to be here, but since they do not remove
+        // any recipes, they are fine to be run early
+        ForestryCompat.init();
+        RecipeHandler.initChains();
+        FuelHandler.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();
         }
-
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

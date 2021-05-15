@@ -1,8 +1,8 @@
 package gregicadditions.machines.multi.impl;
 
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
-import gregicadditions.recipes.nuclear.HotCoolantRecipe;
-import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
+import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
+import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.unification.material.type.FluidMaterial;

@@ -1,7 +1,7 @@
 package gregicadditions.integrations.mysticalagriculture;
 
-import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.mysticalagriculture.block.CropBlockModelFactory;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
@@ -29,7 +29,7 @@ public class MysticalClientProxy extends MysticalCommonProxy {
     @Mod.EventHandler
     public void init() {
         super.init();
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+        if (Loader.isModLoaded(GAValues.MODID_MYSTAGGRA) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerColor();
         }
     }
@@ -38,7 +38,7 @@ public class MysticalClientProxy extends MysticalCommonProxy {
     @SubscribeEvent
     @Optional.Method(modid = Gregicality.MODID)
     public static void registerModels(ModelRegistryEvent event) {
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
+        if (Loader.isModLoaded(GAValues.MODID_MYSTAGGRA) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerModels();
         }
     }
