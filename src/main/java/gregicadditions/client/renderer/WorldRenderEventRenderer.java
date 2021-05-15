@@ -1,7 +1,7 @@
 package gregicadditions.client.renderer;
 
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.jei.JEIGAPlugin;
+import gregicadditions.jei.JEIOptional;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.block.machines.BlockMachine;
@@ -10,11 +10,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.render.scene.WorldSceneRenderer;
-import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
-import mezz.jei.api.IRecipeRegistry;
-import mezz.jei.api.recipe.IFocus;
-import mezz.jei.api.recipe.IRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -41,6 +36,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -178,7 +174,7 @@ public class WorldRenderEventRenderer {
     }
 
     private static void drawMultiBlockPreview(RenderWorldLastEvent evt) {
-        if (controllerBase != null) {
+        if (controllerBase != null && Loader.isModLoaded("jei")) {
             long durTimeMillis = mbpEndTime;
             reset();
             mbpEndTime = System.currentTimeMillis() + durTimeMillis;
@@ -191,18 +187,12 @@ public class WorldRenderEventRenderer {
                 controllerBase = null;
                 return;
             }
-            IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
-            IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, controllerBase.getStackForm());
-            worldSceneRenderer = rr.getRecipeCategories(focus)
-                    .stream()
-                    .map(c -> (IRecipeCategory<IRecipeWrapper>) c)
-                    .map(c -> rr.getRecipeWrappers(c, focus))
-                    .flatMap(List::stream)
-                    .filter(MultiblockInfoRecipeWrapper.class::isInstance)
-                    .findFirst()
-                    .map(MultiblockInfoRecipeWrapper.class::cast)
-                    .map(MultiblockInfoRecipeWrapper::getCurrentRenderer)
-                    .orElse(null);
+            worldSceneRenderer = JEIOptional.getWorldSceneRenderer(controllerBase);
+            if(worldSceneRenderer == null) {
+                reset();
+                controllerBase = null;
+                return;
+            }
 
             mbpPos = controllerBase.getPos();
             EnumFacing frontFacing, previewFacing;
