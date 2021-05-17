@@ -688,6 +688,42 @@ public class RecipeOverride {
                 .input(dustSmall, GalliumArsenide)
                 .outputs(SILICON_BOULE.getStackForm())
                 .buildAndRegister();
+
+        // BartWorks Platinum Group Sludge
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, PlatinumGroupSludge));
+        CENTRIFUGE_RECIPES.recipeBuilder().EUt(30).duration(900)
+                .input(dust, PlatinumGroupSludge)
+                .output(dust, SiliconDioxide)
+                .output(dust, PreciousMetal)
+                .output(dust, PlatinumMetallicPowder, 2)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 95, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrLeachResidue, 3), 90, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrOsLeachResidue, 3), 85, 0)
+                .buildAndRegister();
+
+        // Sheldonite Smelting Recipe
+        removeFurnaceRecipe(OreDictUnifier.get(dust, Cooperite));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(dust, Cooperite), OreDictUnifier.get(dust, PlatinumMetallicPowder, 2));
+
+        // Sheldonite Electrolysis
+        removeRecipesByInputs(ELECTROLYZER_RECIPES, OreDictUnifier.get(dust, Cooperite, 6));
+        ELECTROLYZER_RECIPES.recipeBuilder().EUt(60).duration(2592)
+                .input(dust, Cooperite, 6)
+                .output(dust, PlatinumMetallicPowder, 6)
+                .output(dust, Nickel)
+                .output(dust, Sulfur)
+                .output(dust, PalladiumMetallicPowder, 2)
+                .buildAndRegister();
+
+        // Endstone
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Endstone));
+        CENTRIFUGE_RECIPES.recipeBuilder().EUt(20).duration(320)
+                .input(dust, Endstone)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Tungstate), 1250, 450)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PlatinumMetallicPowder, 2), 625, 150)
+                .chancedOutput(new ItemStack(Blocks.SAND), 9000, 300)
+                .fluidOutputs(Helium.getFluid(120))
+                .buildAndRegister();
     }
 
     private static void vanillaOverride() {
@@ -836,12 +872,6 @@ public class RecipeOverride {
     }
 
     private static void recipeRemoval() {
-
-        // Remove GTCE Platinum and Palladium Recipes
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(crushedPurified, Chalcopyrite)}, new FluidStack[]{NitricAcid.getFluid(1000)});
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(crushedPurified, Pentlandite)},  new FluidStack[]{NitricAcid.getFluid(1000)});
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, PlatinumGroupSludge));
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Endstone));
 
         // Remove Conflicting Redstone Plate Recipe
         removeRecipesByInputs(COMPRESSOR_RECIPES, OreDictUnifier.get(dust, Redstone));
