@@ -1655,6 +1655,9 @@ public class GAMaterials implements IMaterialHandler {
         IrOsLeachResidue.washedIn = SodiumPersulfate;
         IrLeachResidue.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
         IrLeachResidue.washedIn = SodiumPersulfate;
+        Cooperite.oreByProducts.clear();
+        Cooperite.addOreByProducts(PalladiumMetallicPowder, Nickel, IrLeachResidue);
+        Cooperite.disableDirectSmelting = true; // TODO Change to 2 PMP if GTCE ever allows for DustMaterial and multiple-output directSmelting
     }
 
 
