@@ -10,6 +10,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.ArrayUtils;
@@ -82,6 +83,7 @@ public class WireRecipeHandler {
         if (material.cableProperties == null) return;
 
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
+        int gtCableTier = GTUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableTier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);
         OrePrefix cablePrefix = valueOf("cable" + wireGt.name().substring(4)); // TODO
@@ -89,7 +91,7 @@ public class WireRecipeHandler {
         // Removals of GTCE Recipes
         for (FluidMaterial fluid : INSULATION_MATERIALS.keySet()) {
 
-            int materialAmount = getGTCECableMaterialAmount(cableTier, INSULATION_MATERIALS.get(fluid));
+            int materialAmount = getGTCECableMaterialAmount(gtCableTier, INSULATION_MATERIALS.get(fluid));
             if (materialAmount == -1) continue;
 
             // Remove the 1x -> larger cable recipe
