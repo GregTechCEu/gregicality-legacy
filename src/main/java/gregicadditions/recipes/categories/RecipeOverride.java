@@ -696,9 +696,9 @@ public class RecipeOverride {
                 .output(dust, SiliconDioxide)
                 .output(dust, PreciousMetal)
                 .output(dust, PlatinumMetallicPowder, 2)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 95, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrLeachResidue, 3), 90, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrOsLeachResidue, 3), 85, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 9500, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrLeachResidue, 3), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrOsLeachResidue, 3), 8500, 0)
                 .buildAndRegister();
 
         // Sheldonite Smelting Recipe
