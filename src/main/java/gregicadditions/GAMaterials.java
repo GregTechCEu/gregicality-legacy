@@ -1079,7 +1079,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumSulfite = new SimpleDustMaterial("sodium_sulfite", (SodiumHydroxide.materialRGB+Sulfur.materialRGB)/2, (short) 131, MaterialIconSet.FINE, "Na2SO3");
     public static final SimpleDustMaterial Cellulose = new SimpleDustMaterial("cellulose", (0xfefefc), (short) 132, MaterialIconSet.DULL, "C6H10O5");
     public static final SimpleDustMaterial GermaniumOxide = new SimpleDustMaterial("germanium_oxide", (Germanium.materialRGB+10), (short) 133, MaterialIconSet.SHINY, "GeO2");
-    public static final SimpleDustMaterial SodiumDiphosphate = new SimpleDustMaterial("sodium_diphosphate", (Sodium.materialRGB+Phosphorus.materialRGB)/2, (short) 134, MaterialIconSet.ROUGH, "Na2HPO4");
+    public static final SimpleDustMaterial DisodiumPhosphate = new SimpleDustMaterial("sodium_diphosphate", (Sodium.materialRGB+Phosphorus.materialRGB)/2, (short) 134, MaterialIconSet.ROUGH, "Na2HPO4");
     public static final SimpleDustMaterial AcrylicFibers = new SimpleDustMaterial("acrylic_fibers", 0xfdfdfb, (short) 135, MaterialIconSet.FINE, "(C5O2H8)n");
     public static final SimpleDustMaterial UranylNitrate = new SimpleDustMaterial("uranyl_nitrate", 0x33bd45, (short) 136, MaterialIconSet.SHINY, "U" + OXIDE2.formula() + NITRATE.formulaGroup(2));
     public static final SimpleDustMaterial CalciumSalts = new SimpleDustMaterial("calcium_salts", Calcium.materialRGB-10, (short) 137, MaterialIconSet.ROUGH, of(new MaterialStack(Calcite, 1), new MaterialStack(Gypsum, 1)));

@@ -91,12 +91,12 @@ public class ZincChain {
                 .input(dust, SodiumHydroxide, 6)
                 .fluidOutputs(MetalHydroxideMix.getFluid(1000))
                 .fluidOutputs(Water.getFluid(7000))
-                .outputs(SodiumDiphosphate.getItemStack(24))
+                .outputs(DisodiumPhosphate.getItemStack(24))
                 .buildAndRegister();
 
         // Na2HPO4 = H + 4O + P + 2Na
         ELECTROLYZER_RECIPES.recipeBuilder().duration(50).EUt(500)
-                .inputs(SodiumDiphosphate.getItemStack(8))
+                .inputs(DisodiumPhosphate.getItemStack(8))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .output(dust, Phosphorus)
