@@ -3,10 +3,8 @@ package gregicadditions.recipes.categories;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -884,13 +882,11 @@ public class RecipeOverride {
         // Remove Nuclear Processing
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
+        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Aluminium));
+        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Magnesium));
 
         // Remove Rare Earth Centrifuging
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, RareEarth));
-
-        // Remove GTCE Uraninite Recipes
-        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Aluminium));
-        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Magnesium));
 
         // Remove GTCE NZF Recipes
         removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, FerriteMixture, 6)}, new FluidStack[]{Oxygen.getFluid(8000)});
@@ -915,7 +911,8 @@ public class RecipeOverride {
         // Ultimate Battery
         removeRecipesByInputs(ASSEMBLER_RECIPES, ENERGY_LAPOTRONIC_ORB2.getStackForm(8), OreDictUnifier.get(plate, Darmstadtium, 16));
 
-        // Reinforced Epoxy Resin Handcrafting Recipe // TODO WRAP
-        ModHandler.removeRecipes(OreDictUnifier.get(dust, Materials.ReinforcedEpoxyResin));
+        // Reinforced Epoxy Resin Handcrafting Recipes
+        removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_glass");
+        removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_carbon");
     }
 }
