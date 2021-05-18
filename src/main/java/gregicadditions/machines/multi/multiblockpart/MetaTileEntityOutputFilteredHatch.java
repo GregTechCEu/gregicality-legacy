@@ -17,6 +17,7 @@ import gregtech.api.render.Textures;
 import gregtech.common.covers.filter.FilterTypeRegistry;
 import gregtech.common.covers.filter.FluidFilter;
 import gregtech.common.covers.filter.SimpleFluidFilter;
+import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -118,6 +119,13 @@ public class MetaTileEntityOutputFilteredHatch extends GAMetaTileEntityMultibloc
     public void clearMachineInventory(NonNullList<ItemStack> itemBuffer) {
         super.clearMachineInventory(itemBuffer);
         clearInventory(itemBuffer, containerInventory);
+    }
+
+    @Override
+    public void onRemoval() {
+        int slots = filterInventory.getSlots();
+        for (int i = 0; i < slots; i++)
+            Block.spawnAsEntity(getWorld(), getPos(), filterInventory.getStackInSlot(i));
     }
 
     public void setBlacklistFilter(boolean blacklistFilter) {
