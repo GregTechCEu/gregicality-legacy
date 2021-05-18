@@ -1010,12 +1010,12 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(KryptonDifluoride.getFluid(1000))
                 .buildAndRegister();
 
-        // Mn + KrF2 -> MnF2 + 2Kr
+        // Mn + KrF2 -> MnF2 + Kr
         CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(4900)
                 .input(dust, Manganese)
                 .fluidInputs(KryptonDifluoride.getFluid(1000))
                 .outputs(ManganeseFluoride.getItemStack(3))
-                .fluidOutputs(Krypton.getFluid(2000))
+                .fluidOutputs(Krypton.getFluid(1000))
                 .buildAndRegister();
 
         // MnF2 + O + H2O -> MnO2 + 2HF
