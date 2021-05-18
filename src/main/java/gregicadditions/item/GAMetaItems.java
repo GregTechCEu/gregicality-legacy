@@ -21,8 +21,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.Snow;
-import static gregtech.api.unification.ore.OrePrefix.block;
-import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
@@ -542,5 +541,7 @@ public class GAMetaItems {
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
         OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
+        OreDictUnifier.registerOre(HOT_IRON_INGOT.getStackForm(), OrePrefix.ingotHot, Materials.Iron);
+        OreDictionary.registerOre("ingotPyroliticCarbon", PYROLYTIC_CARBON.getStackForm()); // for NC compatibility
     }
 }
