@@ -33,7 +33,7 @@ public class GAConfig {
         public boolean BendingCurvedPlates = true;
         @Config.Name("Bending - Rotors require Curved Plates")
         public boolean BendingRotors = true;
-        @Config.Name("Bending - Rings are crafted with Bending Cyliders")
+        @Config.Name("Bending - Rings are crafted with Bending Cylinders")
         public boolean BendingRings = true;
         @Config.Name("Bending - Foils are made with Bending Cylinders")
         public boolean BendingFoils = false;
@@ -92,7 +92,7 @@ public class GAConfig {
 
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
-        public boolean DisableLogToCharcoalSmeltg = true;
+        public boolean DisableLogToCharcoalSmelting = true;
 
         @Config.Comment("Set to false to disable generated wood sawing recipes")
         @Config.Name("A saw is required to get 4 Planks per Log")
@@ -139,7 +139,7 @@ public class GAConfig {
         public boolean highTierExtruders = true;
         @Config.Name("Should higher tier Fermenters be registered?")
         public boolean highTierFermenters = true;
-        @Config.Name("Should higher tier Eluid Canners be registered?")
+        @Config.Name("Should higher tier Fluid Canners be registered?")
         public boolean highTierFluidCanners = true;
         @Config.Name("Should higher tier Fluid Extractors be registered?")
         public boolean highTierFluidExtractors = true;
@@ -321,7 +321,7 @@ public class GAConfig {
     public static Misc Misc = new Misc();
 
     public static class Misc {
-        @Config.Comment("Set these to flase to disable the generated Packager and Unpackaker recipes")
+        @Config.Comment("Set these to false to disable the generated Packager and Unpackager recipes")
         @Config.Name("Packaging - 1x1 recipes with 9 outputs can be automated with the Unpackaker")
         public boolean Unpackager3x3Recipes = true;
         @Config.Name("Packaging - 3x3 recipes can automated with the Packagers")
@@ -343,11 +343,11 @@ public class GAConfig {
         @Config.Name("Air Collector have IV and LuV version")
         public boolean highTierCollector = true;
 
-        @Config.Comment({"Sets HUD location", "1 - left-upper conrer", "2 - right-upper corner", "3 - left-bottom corner", "4 - right-bottom corner"})
+        @Config.Comment({"Sets HUD location", "1 - left-upper corner", "2 - right-upper corner", "3 - left-bottom corner", "4 - right-bottom corner"})
         public byte hudLocation = 1;
         @Config.Comment("Horizontal offset of HUD [0 ~ 100)")
         public byte hudOffsetX = 0;
-        @Config.Comment("Vertical ooffset of HUD [0 ~ 100)")
+        @Config.Comment("Vertical offset of HUD [0 ~ 100)")
         public byte hudOffsetY = 0;
 
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")

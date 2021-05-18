@@ -808,7 +808,7 @@ public class RecipeOverride {
 
         // Log -> Charcoal Recipes
         // TODO Ignores Forestry wood
-        if (GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
+        if (GAConfig.GT5U.DisableLogToCharcoalSmelting) {
             List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood")
                                                        .stream()
                                                        .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())
