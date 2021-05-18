@@ -312,6 +312,8 @@ public class RecipeHandler {
         // Gem Implosion Recipes
         if (!material.hasFlag(CRYSTALLISABLE) && !material.hasFlag(EXPLOSIVE) && !material.hasFlag(FLAMMABLE)) {
 
+            RecipeBuilder<?> builder;
+
             removeRecipesByInputs(IMPLOSION_RECIPES, OreDictUnifier.get(dustPrefix, material, 4), new ItemStack(Blocks.TNT, 2));
 
             // It isn't uncommon for some GemMaterials to disable one or more of these prefixes.
@@ -342,32 +344,34 @@ public class RecipeHandler {
             for (ItemStack explosive : EXPLOSIVES) {
 
                 // Dust -> Gem
-                IMPLOSION_RECIPES.recipeBuilder()
+                builder = IMPLOSION_RECIPES.recipeBuilder()
                         .input(dust, material, 4)
-                        .inputs(explosive)
                         .output(gem, material, 3)
-                        .output(dustTiny, DarkAsh, 2)
-                        .buildAndRegister();
+                        .output(dustTiny, DarkAsh, 2);
+                builder .applyProperty("explosives", explosive);
+                builder .buildAndRegister();
 
-                if (hasFlawless)
+                if (hasFlawless) {
 
                     // Gem -> Flawless
-                    IMPLOSION_RECIPES.recipeBuilder()
+                    builder = IMPLOSION_RECIPES.recipeBuilder()
                             .input(gem, material, 3)
-                            .inputs(explosive)
                             .output(gemFlawless, material)
-                            .output(dustTiny, DarkAsh, 2)
-                            .buildAndRegister();
+                            .output(dustTiny, DarkAsh, 2);
+                    builder .applyProperty("explosives", explosive);
+                    builder .buildAndRegister();
+                }
 
-                if (hasExquisite)
+                if (hasExquisite) {
 
                     // Flawless -> Exquisite
-                    IMPLOSION_RECIPES.recipeBuilder()
+                    builder = IMPLOSION_RECIPES.recipeBuilder()
                             .input(gemFlawless, material, 3)
-                            .inputs(explosive)
                             .output(gemExquisite, material)
-                            .output(dustTiny, DarkAsh, 2)
-                            .buildAndRegister();
+                            .output(dustTiny, DarkAsh, 2);
+                    builder .applyProperty("explosives", explosive);
+                    builder .buildAndRegister();
+                }
             }
         }
 
