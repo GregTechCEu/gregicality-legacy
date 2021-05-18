@@ -189,16 +189,16 @@ metaitem.small.lithium.sulfide.battery.empty.name=Small Lithium Sulfide Battery 
 metaitem.small.lithium.ion.battery.empty.name=Small Lithium Ion Battery Hull
 metaitem.nickel.metal.hydride.battery.empty.name=Nickel Metal Hydride Battery Hull
 
-metaitem.large.fluoride.battery.empty.tooltip=An Empty UXV Battery
-metaitem.large.lithium.sulfide.battery.empty.tooltip=An Empty UEV Battery
-metaitem.large.lithium.ion.battery.empty.tooltip=An Empty ZPM Battery
-metaitem.medium.fluoride.battery.empty.tooltip=An Empty UMV Battery
-metaitem.medium.lithium.sulfide.battery.empty.tooltip=An Empty UHV Battery
-metaitem.medium.lithium.ion.battery.empty.tooltip=An Empty LuV Battery
-metaitem.small.fluoride.battery.empty.tooltip=An Empty UIV Battery
-metaitem.small.lithium.sulfide.battery.empty.tooltip=An Empty UV Battery
-metaitem.small.lithium.ion.battery.empty.tooltip=An Empty IV Battery
-metaitem.nickel.metal.hydride.battery.empty.tooltip=An Empty EV Battery
+metaitem.large.fluoride.battery.empty.tooltip=An Empty UXV Battery Hull
+metaitem.large.lithium.sulfide.battery.empty.tooltip=An Empty UEV Battery Hull
+metaitem.large.lithium.ion.battery.empty.tooltip=An Empty ZPM Battery Hull
+metaitem.medium.fluoride.battery.empty.tooltip=An Empty UMV Battery Hull
+metaitem.medium.lithium.sulfide.battery.empty.tooltip=An Empty UHV Battery Hull
+metaitem.medium.lithium.ion.battery.empty.tooltip=An Empty LuV Battery Hull
+metaitem.small.fluoride.battery.empty.tooltip=An Empty UIV Battery Hull
+metaitem.small.lithium.sulfide.battery.empty.tooltip=An Empty UV Battery Hull
+metaitem.small.lithium.ion.battery.empty.tooltip=An Empty IV Battery Hull
+metaitem.nickel.metal.hydride.battery.empty.tooltip=An Empty EV Battery Hull
 
 metaitem.large.fluoride.battery.name=Large Fluoride Battery
 metaitem.large.lithium.sulfide.battery.name=Large Lithium Sulfide Battery
