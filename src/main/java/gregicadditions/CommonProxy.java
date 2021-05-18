@@ -185,6 +185,7 @@ public class CommonProxy {
 
         // Register GTCE Material Handlers
         RecipeHandler.register();
+        WireRecipeHandler.register();
         NuclearHandler.register();
         OreRecipeHandler.register();
         VoidMinerHandler.register();

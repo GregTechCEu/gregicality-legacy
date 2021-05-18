@@ -1,8 +1,6 @@
 package gregicadditions.recipes;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
-import gregicadditions.GAUtility;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterialStack;
@@ -33,7 +31,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
@@ -43,7 +40,6 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
-import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Color.White;
@@ -58,13 +54,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
  * Primary Recipe Registration Class
  */
 public class RecipeHandler {
-
-    /**
-     * Used for Cable Coverings
-     */
-    private static final List<FluidMaterial> OLD_INSULATION_MATERIAL = Arrays.asList(Rubber, StyreneButadieneRubber, SiliconeRubber);
-    private static final OrePrefix[] WIRE_DOUBLING_ORDER = new OrePrefix[]{wireGtSingle, wireGtDouble, wireGtQuadruple, wireGtOctal, wireGtHex};
-    private static final OrePrefix[] CABLE_DOUBLING_ORDER = new OrePrefix[]{cableGtSingle, cableGtDouble, cableGtQuadruple, cableGtOctal, cableGtHex};
 
     /**
      * Used for Gem Implosion
@@ -98,13 +87,6 @@ public class RecipeHandler {
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders)
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
 
-
-        if (GAConfig.GT5U.CablesGT5U) {
-            for (OrePrefix wirePrefix : WIRE_DOUBLING_ORDER) {
-                wirePrefix.addProcessingHandler(IngotMaterial.class, RecipeHandler::processWireGt);
-            }
-        }
-
         dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
         if (GAConfig.Misc.PackagerDustRecipes) {
             dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
@@ -122,7 +104,6 @@ public class RecipeHandler {
         lens.addProcessingHandler(GemMaterial.class, RecipeHandler::processLens);
         spring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpring);
         springSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpringSmall);
-        cableGtSingle.addProcessingHandler(IngotMaterial.class, RecipeHandler::processCableStripping);
         gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
     }
 
@@ -478,103 +459,6 @@ public class RecipeHandler {
                 .notConsumable(SCHEMATIC_3X3.getStackForm())
                 .output(nugget, material, 9)
                 .buildAndRegister();
-    }
-
-
-    /*
-     * ULV, LV: rubber
-     * MV: polycap
-     * HV: PE
-     * EV: PVC
-     * IV, LuV: Polyphenylene
-     * ZPM, UV: PBI
-     * UHV, UEV: PEEK
-     * UIV, UMV: Zylon + insulation assembly
-     * UXV, MAX: fullerene + insulation assembly
-     *
-     * Try to synchronize with machine hulls somewhat
-     *
-     * TODO This code "works" but is really poorly made all around
-     */
-    private static void processWireGt(OrePrefix wireGt, IngotMaterial material) {
-        if (material.cableProperties == null) return;
-        int cableAmount = (int) (wireGt.materialAmount * 2 / M);
-        OrePrefix cablePrefix = valueOf("cable" + wireGt.name().substring(4));
-        ItemStack cableStack = OreDictUnifier.get(cablePrefix, material);
-
-        for (FluidMaterial fluid : OLD_INSULATION_MATERIAL) {
-
-            // Try to remove 1 recipe with the Fluid type. If it fails, then exit
-            boolean wasRemoved = removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(144)});
-            if (!wasRemoved)
-                continue;
-
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 2), getIntegratedCircuit(25)}, new FluidStack[]{fluid.getFluid(288)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 4), getIntegratedCircuit(26)}, new FluidStack[]{fluid.getFluid(576)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 8), getIntegratedCircuit(27)}, new FluidStack[]{fluid.getFluid(1152)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, material, 16), getIntegratedCircuit(28)}, new FluidStack[]{fluid.getFluid(2304)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtDouble, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(288)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtQuadruple, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(576)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtOctal, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(1152)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtHex, material), getIntegratedCircuit(24)}, new FluidStack[]{fluid.getFluid(2304)});
-        }
-
-        int tier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
-        int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);
-        int expensiveAmount = (cableAmount == 1) ? 1 : cableAmount / 2;
-
-        if (wireGt != wireGtSingle) {
-            switch (tier) {
-                case 0:
-                case 1:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 2:
-                case 3:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 4:
-                case 5:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 6:
-                case 7:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 8:
-                case 9:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 10:
-                case 11:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                case 12:
-                case 13:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, Zylon, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-                default:
-                    ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24 + cableSize).input(wireGtSingle, material, cableAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).input(foil, FullerenePolymerMatrix, expensiveAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            }
-        }
-        switch (tier) {
-            case 0:
-            case 1:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Rubber, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 2:
-            case 3:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polycaprolactam, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 4:
-            case 5:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Plastic, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 6:
-            case 7:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyvinylChloride, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 8:
-            case 9:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, PolyphenyleneSulfide, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 10:
-            case 11:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Polyetheretherketone, cableAmount).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            case 12:
-            case 13:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, Zylon, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-            default:
-                ASSEMBLER_RECIPES.recipeBuilder().circuitMeta(24).input(wireGt, material).input(foil, FullerenePolymerMatrix, expensiveAmount).inputs(INSULATION_WIRE_ASSEMBLY.getStackForm(expensiveAmount)).outputs(cableStack).duration(150).EUt(8).buildAndRegister();
-        }
     }
 
     /**
@@ -1028,25 +912,6 @@ public class RecipeHandler {
                 .output(springSmall, material, 2)
                 .circuitMeta(1)
                 .buildAndRegister();
-    }
-
-    /**
-     * Cable Stripping Material Handler. Generates:
-     *
-     * + Cable -> Wire Stripping recipes for all Cables
-     */
-    private static void processCableStripping(OrePrefix prefix, IngotMaterial material) {
-        if (material.cableProperties != null) {
-
-            for (int i = 0; i < CABLE_DOUBLING_ORDER.length; i++) {
-
-                UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(7)
-                        .input(CABLE_DOUBLING_ORDER[i], material)
-                        .notConsumable(new IntCircuitIngredient(0))
-                        .output(WIRE_DOUBLING_ORDER[i], material)
-                        .buildAndRegister();
-            }
-        }
     }
 
     /**
