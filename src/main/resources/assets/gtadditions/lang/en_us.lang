@@ -4113,9 +4113,13 @@ metaitem.smd.diode.supracausal.name=Supra-Causal SMD Diode
 metaitem.smd.transistor.supracausal.name=Supra-Causal SMD Transistor
 
 metaitem.circuit.processor.supracausal.name=Supra-Causal Processor
+metaitem.circuit.processor.supracausal.tooltip=§b§oUEV Circuit
 metaitem.circuit.assembly.supracausal.name=Supra-Causal Assembly
+metaitem.circuit.assembly.supracausal.tooltip=§b§oUIV Circuit
 metaitem.circuit.computer.supracausal.name=Supra-Causal Computer
+metaitem.circuit.computer.supracausal.tooltip=§b§oUMV Circuit
 metaitem.circuit.mainframe.supracausal.name=Supra-Causal Mainframe
+metaitem.circuit.mainframe.supracausal.tooltip=§b§oUXV Circuit
 
 metaitem.topological.manipulator.unit.name=Topological Manipulator Unit
 metaitem.relativistic.spinorial.memory.system.name=Relativistic Spinorial Memory
