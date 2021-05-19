@@ -12,16 +12,24 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.common.util.EnumHelper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
+import static gregicadditions.GAMaterials.GENERATE_ROUND;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.GENERATE_PLATE;
+import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.GENERATE_FRAME;
 
 public class GAEnums {
+
+    public static final List<OrePrefix> RICH_ORES = new ArrayList<>();
+    public static final List<OrePrefix> POOR_ORES = new ArrayList<>();
+    public static final List<OrePrefix> PURE_ORES = new ArrayList<>();
 
     public static class GAMaterialIconType {
 
@@ -70,8 +78,8 @@ public class GAEnums {
 
         public final static OrePrefix gtMetalCasing = createOrePrefix("gtMetalCasing", "Metal Casing", Math.round(M * 6.375), null, GAMaterialIconType.gtMetalCasing, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_FRAME | GENERATE_PLATE)));
         public final static OrePrefix plateCurved = createOrePrefix("plateCurved", "Curved Plate", M, null, GAMaterialIconType.plateCurved, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
-        public final static OrePrefix ingotDouble = createOrePrefix("ingotDouble", "Double Ingot", M * 2, null, GAMaterialIconType.ingotDouble, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
-        public final static OrePrefix round = createOrePrefix("round", "Round", M / 9, null, GAMaterialIconType.round, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(IngotMaterial.MatFlags.GENERATE_SMALL_GEAR)));
+        public final static OrePrefix ingotDouble = createOrePrefix("ingotDouble", "Double Ingot", M * 2, null, GAMaterialIconType.ingotDouble, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE) && !mat.hasFlag(NO_SMASHING)));
+        public final static OrePrefix round = createOrePrefix("round", "Round", M / 9, null, GAMaterialIconType.round, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_ROUND)));
         public final static OrePrefix opticalFiberHex = createOrePrefix("opticalFiberHex", "Hex optical fiber", M * 8, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);
         public final static OrePrefix opticalFiberOctal = createOrePrefix("opticalFiberOctal", "Octal optical fiber", M * 4, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);
         public final static OrePrefix opticalFiberQuadruple = createOrePrefix("opticalFiberQuadruple", "Quadruple optical fiber", M * 2, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);
@@ -119,20 +127,21 @@ public class GAEnums {
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Rich " + stoneTypes[i] + " Ore", M * 2, null, MaterialIconType.valueOf("oreRich" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
             OrePrefix.valueOf("oreRich" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
+            RICH_ORES.add(OrePrefix.valueOf("oreRich" + stoneTypes[i]));
 
             EnumHelper.addEnum(MaterialIconType.class, "orePoor" + stoneTypes[i], new Class[0]);
             EnumHelper.addEnum(OrePrefix.class, "orePoor" + stoneTypes[i],
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Poor " + stoneTypes[i] + " Ore", M / 2, null, MaterialIconType.valueOf("orePoor" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
             OrePrefix.valueOf("orePoor" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-
+            POOR_ORES.add(OrePrefix.valueOf("orePoor" + stoneTypes[i]));
 
             EnumHelper.addEnum(MaterialIconType.class, "orePure" + stoneTypes[i], new Class[0]);
             EnumHelper.addEnum(OrePrefix.class, "orePure" + stoneTypes[i],
                     new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
                     "Pure " + stoneTypes[i] + " Ore", M * 4, null, MaterialIconType.valueOf("orePure" + stoneTypes[i]), OrePrefix.Flags.ENABLE_UNIFICATION, null);
             OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-
+            PURE_ORES.add(OrePrefix.valueOf("orePure" + stoneTypes[i]));
         }
 
 

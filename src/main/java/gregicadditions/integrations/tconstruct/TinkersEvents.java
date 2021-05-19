@@ -1,6 +1,7 @@
 package gregicadditions.integrations.tconstruct;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
@@ -17,23 +18,23 @@ import slimeknights.tconstruct.library.events.TinkerRegisterEvent;
 
 @Mod.EventBusSubscriber
 public class TinkersEvents {
-	@Optional.Method(modid = "tconstruct")
+	@Optional.Method(modid = GAValues.MODID_TCON)
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct")) {
+		if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON)) {
 			TinkersGtRecipes.init();
 			TinkersGtRecipes.init2();
 		}
 	}
 
-	@Optional.Method(modid = "tconstruct")
+	@Optional.Method(modid = GAValues.MODID_TCON)
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void smeltingRemoval(TinkerRegisterEvent.MeltingRegisterEvent event) {
 		if (GAConfig.GregsConstruct.EnableGregsConstruct) for (Material mat : Material.MATERIAL_REGISTRY)
 			if (mat instanceof IngotMaterial && ((IngotMaterial) mat).blastFurnaceTemperature > 0 && (matches(event, OrePrefix.ore, mat) || matches(event, OrePrefix.dust, mat) || matches(event, OrePrefix.dustSmall, mat) || matches(event, OrePrefix.dustTiny, mat))) event.setCanceled(true);
 	}
 
-	@Optional.Method(modid = "tconstruct")
+	@Optional.Method(modid = GAValues.MODID_TCON)
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void alloyRemoval(TinkerRegisterEvent.AlloyRegisterEvent event) {
 		if (event.getRecipe().getResult() == gregtech.api.unification.material.Materials.Brass.getFluid(3) && GAConfig.GregsConstruct.TinkersMaterialAlloying) event.setCanceled(true);

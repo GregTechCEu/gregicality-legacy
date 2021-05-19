@@ -1,6 +1,7 @@
 package gregicadditions.integrations.opencomputers;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.opencomputers.driver.*;
 import gregicadditions.integrations.opencomputers.driver.multi.*;
@@ -12,11 +13,11 @@ import net.minecraftforge.fml.common.Optional;
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class OpenComputersCommonProxy {
 
-    @Optional.Method(modid = "opencomputers")
+    @Optional.Method(modid = GAValues.MODID_OC)
     @Mod.EventHandler
     public void init() {
-        if (GAConfig.openComputers.disable || !Loader.isModLoaded("opencomputers")) return;
-        if (!Loader.isModLoaded("gtce2oc")){ // avoid existing driver
+        if (GAConfig.openComputers.disable || !Loader.isModLoaded(GAValues.MODID_OC)) return;
+        if (!Loader.isModLoaded(GAValues.MODID_GTOC)){ // avoid existing driver
             Driver.add(new DriverEnergyContainer());
             Driver.add(new DriverWorkable());
         }

@@ -5,7 +5,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.IStringSerializable;
 
-public class GASimpleBlock extends VariantBlock<GASimpleBlock.CasingType> {
+public class GASimpleBlock extends VariantBlock<GASimpleBlock.BlockType> {
+
 
     public GASimpleBlock() {
         super(Material.IRON);
@@ -14,21 +15,17 @@ public class GASimpleBlock extends VariantBlock<GASimpleBlock.CasingType> {
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CasingType.SUPERHEAVY_BLOCK));
+        setDefaultState(getState(BlockType.SUPERHEAVY_BLOCK));
     }
 
-    public enum CasingType implements IStringSerializable {
+    public enum BlockType implements IStringSerializable {
 
-        SUPERHEAVY_BLOCK("superheavy_block"),
-        TARANIUM_CHARGE("taranium_charge"),
-        NAQUADRIA_CHARGE("naquadria_charge"),
-        LEPTONIC_CHARGE("leptonic_charge"),
-        QCD_CHARGE("qcd_charge");
+        SUPERHEAVY_BLOCK("superheavy_block");
 
 
         private final String name;
 
-        CasingType(String name) {
+        BlockType(String name) {
             this.name = name;
         }
 

@@ -2,27 +2,20 @@ package gregicadditions.integrations.bees;
 
 import forestry.apiculture.ModuleApiculture;
 import forestry.apiculture.blocks.BlockAlvearyType;
-import forestry.apiculture.blocks.BlockRegistryApiculture;
 import forestry.core.ModuleCore;
-import forestry.core.blocks.BlockRegistry;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
-import gregicadditions.Gregicality;
-import gregicadditions.integrations.bees.alveary.BlockGTAlveary;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import org.apache.commons.lang3.text.WordUtils;
 
-import static gregicadditions.recipes.GACraftingComponents.*;
-import static gregicadditions.recipes.MachineCraftingRecipes.registerMachineRecipe;
+import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
+import static gregicadditions.recipes.helper.GACraftingComponents.*;
 
 public class GTMachineRecipes {
     public static void postInit() {

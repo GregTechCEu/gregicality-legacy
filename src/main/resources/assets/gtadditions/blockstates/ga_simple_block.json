@@ -12,23 +12,9 @@
     "variant": {
       "superheavy_block": {
         "textures": {
-          "side": "gregtech:blocks/casings/solid/superheavy_block",
-          "bottom": "gregtech:blocks/casings/solid/superheavy_block",
-          "top": "gregtech:blocks/casings/solid/superheavy_block"
-        }
-      },
-	  "naquadria_charge": {
-		"textures": {
-			"side": "gregtech:blocks/casings/solid/naquadria_charge",
-			"bottom": "gregtech:blocks/casings/solid/naquadria_charge_top_bottom",
-			"top": "gregtech:blocks/casings/solid/naquadria_charge_top_bottom"
-		}
-	  },
-      "taranium_charge": {
-        "textures": {
-          "side": "gregtech:blocks/casings/solid/taranium_charge",
-          "bottom": "gregtech:blocks/casings/solid/taranium_charge_top_bottom",
-          "top": "gregtech:blocks/casings/solid/taranium_charge_top_bottom"
+          "side": "gregtech:blocks/superheavy_block/superheavy_block",
+          "bottom": "gregtech:blocks/superheavy_block/superheavy_block",
+          "top": "gregtech:blocks/superheavy_block/superheavy_block"
         }
       }
     }

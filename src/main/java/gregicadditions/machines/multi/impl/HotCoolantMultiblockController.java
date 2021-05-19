@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.impl;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
+import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;

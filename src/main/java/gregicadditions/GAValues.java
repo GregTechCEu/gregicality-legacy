@@ -26,4 +26,16 @@ public class GAValues {
             "Highly Ultimate Voltage", "Extremely Ultimate Voltage", "Insanely Ultimate Voltage", "Mega Ultimate Voltage",
             "Extended Mega Ultimate Voltage", "Maximum Voltage"};
 
+    public static final String MODID_FR = "forestry";
+    public static final String MODID_BEES = "extrabees";
+    public static final String MODID_IC2 = "ic2";
+    public static final String MODID_BINNIE = "binniecore";
+    public static final String MODID_XU2 = "extrautils2";
+    public static final String MODID_TR = "techreborn";
+    public static final String MODID_TCON = "tconstruct";
+    public static final String MODID_EXNI = "exnihilocreatio";
+    public static final String MODID_OC = "opencomputers";
+    public static final String MODID_GTOC = "gtce2oc";
+    public static final String MODID_MYSTAGGRA = "mysticalagradditions";
+
 }

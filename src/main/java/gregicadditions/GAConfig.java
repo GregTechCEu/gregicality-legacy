@@ -78,10 +78,6 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
-        @Config.Comment("Set to false to disable GT5U Cable isolation recipes")
-        @Config.Name("Cables can be isolated with different combinations of Rubbers and Dusts with varying efficiencies")
-        public boolean CablesGT5U = true;
-
         @Config.Comment("Set these to false to disable the generated Compressor recipes for blocks")
         @Config.Name("Compression - Generate Compressor recipes for blocks")
         public boolean GenerateCompressorRecipes = true;
@@ -463,6 +459,11 @@ public class GAConfig {
         @Config.Name("Reverse recipes after CT")
         @Config.RequiresMcRestart
         public boolean reverseAfterCT = true;
+
+        @Config.Comment("Whether or not to make the recipes for Superconductors harder.")
+        @Config.Name("Harder Superconductor Recipes")
+        @Config.RequiresMcRestart
+        public boolean harderSuperconductors = false;
 
     }
 

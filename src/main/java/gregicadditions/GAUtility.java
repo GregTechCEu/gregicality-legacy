@@ -51,6 +51,12 @@ public class GAUtility {
 
     }
 
+    public static int setBetweenInclusive(int value, int start, int end) {
+        if (value < start)
+            return start;
+        return Math.min(value, end);
+    }
+
     public static void checkRecipeConflicts() {
         for (RecipeMap recipeMap : RecipeMap.getRecipeMaps()) {
             for (Object recipe : recipeMap.getRecipeList()) {

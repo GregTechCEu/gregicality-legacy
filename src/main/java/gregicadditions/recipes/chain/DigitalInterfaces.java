@@ -1,19 +1,13 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GASimpleBlock;
-import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.machines.GATileEntities;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import gregicadditions.recipes.GACraftingComponents;
+import gregicadditions.recipes.helper.GACraftingComponents;
 
-import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;

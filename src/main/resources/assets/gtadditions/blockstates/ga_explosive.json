@@ -1,0 +1,43 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_bottom_top",
+    "textures": {
+      "bottom": "gregtech:blocks/rendering_error",
+      "top": "gregtech:blocks/rendering_error",
+      "side": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+	  "naquadria_charge": {
+		"textures": {
+			"side": "gregtech:blocks/explosives/naquadria_charge/naquadria_charge_side",
+			"bottom": "gregtech:blocks/explosives/naquadria_charge/naquadria_charge_top_bottom",
+			"top": "gregtech:blocks/explosives/naquadria_charge/naquadria_charge_top_bottom"
+		}
+	  },
+      "taranium_charge": {
+        "textures": {
+          "side": "gregtech:blocks/explosives/taranium_charge/taranium_charge_side",
+          "bottom": "gregtech:blocks/explosives/taranium_charge/taranium_charge_top_bottom",
+          "top": "gregtech:blocks/explosives/taranium_charge/taranium_charge_top_bottom"
+        }
+      },
+      "industrial_tnt": {
+        "textures": {
+          "side": "gregtech:blocks/explosives/industrial_tnt/industrial_tnt_side",
+          "bottom": "gregtech:blocks/explosives/industrial_tnt/industrial_tnt_bottom",
+          "top": "gregtech:blocks/explosives/industrial_tnt/industrial_tnt_top"
+        }
+      },
+      "powder_barrel": {
+        "textures": {
+          "side": "gregtech:blocks/explosives/powder_barrel/powder_barrel_side",
+          "bottom": "gregtech:blocks/explosives/powder_barrel/powder_barrel_top_bottom",
+          "top": "gregtech:blocks/explosives/powder_barrel/powder_barrel_top_bottom"
+        }
+      }
+    }
+  }
+}

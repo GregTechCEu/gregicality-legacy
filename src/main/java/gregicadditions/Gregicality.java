@@ -93,12 +93,12 @@ public class Gregicality {
 
         GAMetaBlocks.init();
         GATileEntities.init();
-        if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded("tconstruct"))
+        if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON))
             TinkersMaterials.preInit();
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded(GAValues.MODID_EXNI)) {
             exNihiloCreatioProxy.preInit();
         }
-        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) {
             forestryProxy.preInit();
         }
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
@@ -110,10 +110,10 @@ public class Gregicality {
     @EventHandler
     public void init(FMLInitializationEvent event) throws IOException {
         proxy.onLoad();
-        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded("forestry")) {
+        if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) {
             forestryProxy.init();
         }
-        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded("exnihilocreatio")) {
+        if (!GAConfig.exNihilo.Disable && Loader.isModLoaded(GAValues.MODID_EXNI)) {
             exNihiloCreatioProxy.init(event);
         }
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
@@ -123,7 +123,7 @@ public class Gregicality {
             GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
         }
-        if (Loader.isModLoaded("opencomputers")) {
+        if (Loader.isModLoaded(GAValues.MODID_OC)) {
             openComputersProxy.init();
         }
         CoverBehaviors.init();
