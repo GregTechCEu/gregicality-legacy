@@ -250,7 +250,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
             }
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_boiler.temperature", temperature, maxTemperature));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.drilling_fluid_amount", currentDrillingFluid));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.drilling_fluid_amount", (int) currentDrillingFluid));
             if (overheat) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.universal.overheat").setStyle(new Style().setColor(TextFormatting.RED)));
             }
