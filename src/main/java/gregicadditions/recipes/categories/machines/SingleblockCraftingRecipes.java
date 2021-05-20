@@ -344,8 +344,8 @@ public class SingleblockCraftingRecipes {
         // Steam Macerators now use Flint instead of Diamonds
         removeRecipeByName("gregtech:steam_macerator_bronze");
         removeRecipeByName("gregtech:steam_macerator_steel");
-        ModHandler.addShapedRecipe("ga_steam_macerator_bronze", MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(), "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL),       'X', new UnificationEntry(pipeSmall, Bronze), 'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.FLINT));
-        ModHandler.addShapedRecipe("ga_steam_macerator_steel",  MetaTileEntities.STEAM_MACERATOR_STEEL.getStackForm(),  "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.STEEL_HULL),        'X', new UnificationEntry(pipeSmall, Steel),  'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.FLINT));
+        ModHandler.addShapedRecipe("ga_steam_macerator_bronze", MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(), "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL),       'X', new UnificationEntry(pipeSmall, Bronze), 'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.DIAMOND));
+        ModHandler.addShapedRecipe("ga_steam_macerator_steel",  MetaTileEntities.STEAM_MACERATOR_STEEL.getStackForm(),  "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.STEEL_HULL),        'X', new UnificationEntry(pipeSmall, Steel),  'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.DIAMOND));
     }
 
     private static void highAmpMachines() {

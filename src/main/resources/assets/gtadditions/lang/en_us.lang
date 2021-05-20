@@ -1657,7 +1657,8 @@ gtadditions.machine.miner.basic.name=Basic Large Miner
 gtadditions.machine.miner.large.name=Large Miner
 gtadditions.machine.miner.advance.name=Advanced Large Miner
 gtadditions.machine.miner.multi.description=Mines all ore in an area of %dx%d Chunks. Can mine ore as if it was using a hammer with fortune %s, or with silk touch.
-gtadditions.machine.miner.description=Mines all ores in the current chunk.
+gtadditions.machine.miner.description=Mines all ores in the current chunk. Requires 1 amp.
+gtadditions.machine.miner.steam.description=Mines all ores in the current chunk. Requires 16 mb/t of steam.
 gtadditions.machine.miner.fluid_usage=Consumes %dmb of %s per tick
 
 gtadditions.machine.rotor_holder.ulv.name=Hot Coolant Rotor Holder (ULV)
@@ -3216,6 +3217,7 @@ gtadditions.machine.attractor.uv.name=Elite Bee Attractor IV
 gtadditions.machine.pump.steam.name=Steam Pump
 gtadditions.machine.sieve.steam.name=Steam Sieve
 gtadditions.machine.steam_mixer.name=Steam Mixer
+gtadditions.machine.steam_miner.name=Steam Chunk Miner
 
 gtadditions.machine.rock_breaker.steam.name=Steam Rock Breaker
 item.material.oreprefix.oreSandyChunk=Sandy %s Ore Chunk
