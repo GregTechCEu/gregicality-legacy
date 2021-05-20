@@ -26,26 +26,25 @@ import java.util.function.Predicate;
 
 public class BlockPatternChecker {
     private static Field SPIN_FIELD = ObfuscationReflectionHelper.findField(MetaTileEntity.class, "spin");
-    public static Predicate<BlockWorldState>[][][] blockMatches; //[z][y][x]
-    public static TIntObjectMap<Predicate<PatternMatchContext>> layerMatchers = new TIntObjectHashMap<>();
-    public static Predicate<PatternMatchContext>[] validators;
-    public static BlockPattern.RelativeDirection[] structureDir;
-    public static int[][] aisleRepetitions;
-    public static Pair<Predicate<BlockWorldState>, IntRange>[] countMatches;
-
+    public Predicate<BlockWorldState>[][][] blockMatches; //[z][y][x]
+    public TIntObjectMap<Predicate<PatternMatchContext>> layerMatchers = new TIntObjectHashMap<>();
+    public Predicate<PatternMatchContext>[] validators;
+    public BlockPattern.RelativeDirection[] structureDir;
+    public int[][] aisleRepetitions;
+    public Pair<Predicate<BlockWorldState>, IntRange>[] countMatches;
     // x, y, z, minZ, maxZ
-    public static int[] centerOffset;
+    public int[] centerOffset;
 
-    public static BlockWorldState worldState;
-    public static MutableBlockPos blockPos;
-    public static PatternMatchContext matchContext;
-    public static PatternMatchContext layerContext;
+    public BlockWorldState worldState;
+    public MutableBlockPos blockPos;
+    public PatternMatchContext matchContext;
+    public PatternMatchContext layerContext;
 
     private static <T> T getBlockPatternPrivateValue(BlockPattern blockPattern, String srgName) {
         return ObfuscationReflectionHelper.getPrivateValue(BlockPattern.class, blockPattern, srgName);
     }
 
-    public static boolean updateAllValue(BlockPattern blockPattern) {
+    public boolean updateAllValue(BlockPattern blockPattern) {
         try{
             blockMatches = getBlockPatternPrivateValue(blockPattern, "blockMatches");
             layerMatchers = getBlockPatternPrivateValue(blockPattern, "layerMatchers");
@@ -53,14 +52,12 @@ public class BlockPatternChecker {
             structureDir = getBlockPatternPrivateValue(blockPattern, "structureDir");
             aisleRepetitions = getBlockPatternPrivateValue(blockPattern, "aisleRepetitions");
             countMatches = getBlockPatternPrivateValue(blockPattern, "countMatches");
-            structureDir = getBlockPatternPrivateValue(blockPattern, "structureDir");
-
             centerOffset = getBlockPatternPrivateValue(blockPattern, "centerOffset");
 
-            worldState = getBlockPatternPrivateValue(blockPattern, "worldState");
-            blockPos = getBlockPatternPrivateValue(blockPattern, "blockPos");
-            matchContext = getBlockPatternPrivateValue(blockPattern, "matchContext");
-            layerContext = getBlockPatternPrivateValue(blockPattern, "layerContext");
+            worldState = new BlockWorldState();
+            blockPos = new BlockPos.MutableBlockPos();
+            matchContext = new PatternMatchContext();
+            layerContext = new PatternMatchContext();
         } catch (Exception e){
             return false;
         }
@@ -68,8 +65,14 @@ public class BlockPatternChecker {
     }
 
     public static BlockPos getPatternErrorPos(MultiblockControllerBase controllerBase) {
-        if (checkPatternAt(controllerBase) == null) {
-            return new BlockPos(blockPos);
+        try{
+            BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern");
+            BlockPatternChecker checker = new BlockPatternChecker();
+            if(checker.checkPatternAt(structurePattern, controllerBase.getWorld(), controllerBase.getPos(), controllerBase.getFrontFacing().getOpposite()) == null) {
+                return new BlockPos(checker.blockPos);
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -77,13 +80,14 @@ public class BlockPatternChecker {
     public static PatternMatchContext checkPatternAt(MultiblockControllerBase controllerBase) {
         try{
             BlockPattern structurePattern = ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern");
-            return checkPatternAt(structurePattern, controllerBase.getWorld(), controllerBase.getPos(), controllerBase.getFrontFacing().getOpposite());
-        } catch (Exception e) {
+            BlockPatternChecker checker = new BlockPatternChecker();
+            return checker.checkPatternAt(structurePattern, controllerBase.getWorld(), controllerBase.getPos(), controllerBase.getFrontFacing().getOpposite());
+        } catch (Throwable e) {
             return null;
         }
     }
 
-    public static PatternMatchContext checkPatternAt(BlockPattern blockPattern, World world, BlockPos centerPos, EnumFacing facing) {
+    public PatternMatchContext checkPatternAt(BlockPattern blockPattern, World world, BlockPos centerPos, EnumFacing facing) {
         if (blockPattern == null || !updateAllValue(blockPattern)) return null;
 
         EnumFacing spin = getSpin(world, centerPos);
@@ -170,12 +174,16 @@ public class BlockPatternChecker {
     }
 
     public static EnumFacing getSpin(MetaTileEntity controllerBase) {
+        EnumFacing result = EnumFacing.NORTH;
         try {
-            return (EnumFacing) SPIN_FIELD.get(controllerBase);
+            result = (EnumFacing) SPIN_FIELD.get(controllerBase);
+            if (result == null) {
+                result = EnumFacing.NORTH;
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        return EnumFacing.NORTH;
+        return result;
     }
 
     public static void setSpin(MetaTileEntity controllerBase, EnumFacing spin) {

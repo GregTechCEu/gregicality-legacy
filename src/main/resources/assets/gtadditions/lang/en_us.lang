@@ -404,14 +404,19 @@ metaitem.component.smd.resistor.name=Micro SMD Resistor
 
 metaitem.hand_pump.name=Hand Pump
 metaitem.freedom_wrench.name=Freedom Wrench
-metaitem.freedom_wrench.mode.0=Mode: Projection
+metaitem.freedom_wrench.mode.0=Mode: Preview
 metaitem.freedom_wrench.mode.1=Mode: Perspective
 metaitem.freedom_wrench.mode.2=Mode: Debug
 metaitem.freedom_wrench.mode.3=Mode: Building
-metaitem.freedom_wrench.clear=Remove the Projection
-metaitem.freedom_wrench.info.0=Try to (Sneaking/Not) right-click the (Air Block/Multi-Block Controller).
+metaitem.freedom_wrench.clear=Remove the projection
+metaitem.freedom_wrench.info.0=Right-click the Air Block: Remove the projection
+metaitem.freedom_wrench.info.1=Sneaking Right-click the Air Block: Switch mode
+metaitem.freedom_wrench.info.2=Right-click the controller Block: Build the projection
+metaitem.freedom_wrench.info.3=Sneaking Right-click the controller Block: Adjust the spin or the front-facing of the controller
 metaitem.freedom_wrench.spin=Spin: %s
 metaitem.freedom_wrench.facing=Facing: %s
+metaitem.freedom_wrench.jei_missing=You need to have JEI installed to support the use of other features.
+metaitem.freedom_wrench.mbt_installed=Consider using the Freedom Wrench to build the preview.
 
 metaitem.waste.nuclear.name=%s Waste
 waste.nuclear.global=Nuclear
