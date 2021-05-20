@@ -78,6 +78,10 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
+        @Config.Comment("Set this to false to disable double plates")
+        @Config.Name("Should double plates be registered?")
+        public boolean addDoublePlates = true;
+
         @Config.Comment("Set these to false to disable the generated Compressor recipes for blocks")
         @Config.Name("Compression - Generate Compressor recipes for blocks")
         public boolean GenerateCompressorRecipes = true;

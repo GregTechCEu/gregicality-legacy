@@ -18,8 +18,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.GENERATE_NUCLEAR_COMPOUND;
-import static gregicadditions.GAMaterials.GENERATE_ROUND;
+import static gregicadditions.GAMaterials.*;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.GENERATE_PLATE;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
@@ -50,6 +49,7 @@ public class GAEnums {
         public final static MaterialIconType plateCurved = createMaterialIconType("plateCurved");
         public final static MaterialIconType ingotDouble = createMaterialIconType("ingotDouble");
         public final static MaterialIconType round = createMaterialIconType("round");
+        public final static MaterialIconType plateDouble = createMaterialIconType("plateDouble");
         public final static MaterialIconType coke = createMaterialIconType("coke");
     }
 
@@ -80,6 +80,7 @@ public class GAEnums {
         public final static OrePrefix plateCurved = createOrePrefix("plateCurved", "Curved Plate", M, null, GAMaterialIconType.plateCurved, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE)));
         public final static OrePrefix ingotDouble = createOrePrefix("ingotDouble", "Double Ingot", M * 2, null, GAMaterialIconType.ingotDouble, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE) && !mat.hasFlag(NO_SMASHING)));
         public final static OrePrefix round = createOrePrefix("round", "Round", M / 9, null, GAMaterialIconType.round, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_ROUND)));
+        public final static OrePrefix plateDouble = createOrePrefix("plateDouble", "Double Plate", M * 2, null, GAMaterialIconType.plateDouble, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_PLATE | GENERATE_DOUBLE_PLATE) && !mat.hasFlag(NO_SMASHING)));
         public final static OrePrefix opticalFiberHex = createOrePrefix("opticalFiberHex", "Hex optical fiber", M * 8, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);
         public final static OrePrefix opticalFiberOctal = createOrePrefix("opticalFiberOctal", "Octal optical fiber", M * 4, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);
         public final static OrePrefix opticalFiberQuadruple = createOrePrefix("opticalFiberQuadruple", "Quadruple optical fiber", M * 2, null, null, OrePrefix.Flags.ENABLE_UNIFICATION, null);

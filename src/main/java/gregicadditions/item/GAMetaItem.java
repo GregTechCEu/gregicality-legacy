@@ -37,7 +37,9 @@ public class GAMetaItem extends MaterialMetaItem {
                 GAEnums.GAOrePrefix.depletedFuel, GAEnums.GAOrePrefix.depletedFuelNitride, GAEnums.GAOrePrefix.depletedFuelOxide,
                 GAEnums.GAOrePrefix.depletedFuelTRISO, GAEnums.GAOrePrefix.depletedFuelZirconiumAlloy, GAEnums.GAOrePrefix.fuelCarbide,
                 GAEnums.GAOrePrefix.fuelNitride, GAEnums.GAOrePrefix.fuelOxide, GAEnums.GAOrePrefix.fuelPure, GAEnums.GAOrePrefix.fuelTRISO,
-                GAEnums.GAOrePrefix.fuelZirconiumAlloy, GAEnums.GAOrePrefix.zirconiumAlloy, null, null, null, null, null, null, null, null, null, null, null);
+                GAEnums.GAOrePrefix.fuelZirconiumAlloy, GAEnums.GAOrePrefix.zirconiumAlloy,
+                GAConfig.GT5U.addDoublePlates ? GAEnums.GAOrePrefix.plateDouble : null,
+                null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override

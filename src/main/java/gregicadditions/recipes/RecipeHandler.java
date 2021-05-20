@@ -1,8 +1,8 @@
 package gregicadditions.recipes;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
@@ -32,7 +32,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
@@ -83,6 +86,10 @@ public class RecipeHandler {
 
         if (GAConfig.GT6.addRounds)
             round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
+
+        if (GAConfig.GT5U.addDoublePlates)
+            plateDouble.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoublePlate);
+
 
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders)
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
@@ -566,6 +573,45 @@ public class RecipeHandler {
     }
 
     /**
+     * Double PLate Material Handler. Generates:
+     *
+     * + Plate to Double Plate Hand Recipes
+     * + Double Plate Forge Hammer Recipes
+     * + Double Plate Unification Recipes
+     */
+    private static void processDoublePlate(OrePrefix doublePlate, IngotMaterial material) {
+        if (!material.hasFlag(NO_SMASHING)) {
+            ModHandler.addShapedRecipe(String.format("plate_double_%s", material.toString()), OreDictUnifier.get(ingotDouble, material),
+                    "h", "P", "P",
+                    'P', new UnificationEntry(plate, material));
+        }
+
+        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(200)
+                .input(plate, material, 2)
+                .output(doublePlate, material)
+                .buildAndRegister();
+
+
+        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
+
+        // Unification Recipes
+        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(60)
+                .input(doublePlate, material)
+                .output(dust, material, 2)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(160)
+                .input(doublePlate, material)
+                .fluidOutputs(material.getFluid(L * 2))
+                .buildAndRegister();
+
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(16)
+                .input(doublePlate, material)
+                .output(ingot, material.arcSmeltInto == null ? material : material.arcSmeltInto, 2)
+                .buildAndRegister();
+    }
+
+    /**
      * Double Ingot Material Handler. Generates:
      *
      * + Ingot to Double Ingot Hand Recipes
@@ -573,7 +619,7 @@ public class RecipeHandler {
      *
      * - Removes Ingot to Plate Hand Recipes
      */
-    private static void processDoubleIngot(OrePrefix plate, IngotMaterial material) {
+    private static void processDoubleIngot(OrePrefix ingotDouble, IngotMaterial material) {
         if (!material.hasFlag(NO_SMASHING)) {
 
             removeCraftingRecipes(OreDictUnifier.get(plate, material));
