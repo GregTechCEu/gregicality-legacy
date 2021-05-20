@@ -73,7 +73,7 @@ public class PlasticChain {
 
         // 2C6H4ClNO2 + 2H -> C12H10Cl2N2 + 4O
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(dustTiny, Copper)
+                .notConsumable(dust, Copper)
                 .fluidInputs(Nitrochlorobenzene.getFluid(2000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(Dichlorobenzidine.getFluid(1000))

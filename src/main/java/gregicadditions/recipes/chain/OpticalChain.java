@@ -282,7 +282,7 @@ public class OpticalChain {
                 .buildAndRegister();
 
         // O + 3C2H5NO2 + 2HBr + 2CsOH -> 2CsBr + 2H2O + 2C3H7NO2 + HNO3
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(8000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
                 .inputs(CaesiumHydroxide.getItemStack(6))
                 .fluidInputs(Glycine.getFluid(3000))

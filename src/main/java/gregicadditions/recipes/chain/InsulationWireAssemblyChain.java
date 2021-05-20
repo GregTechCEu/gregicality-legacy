@@ -135,63 +135,6 @@ public class InsulationWireAssemblyChain {
                 .outputs(HIGHLY_INSULATING_FOIL.getStackForm())
                 .buildAndRegister();
 
-        // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
-        MIXER_RECIPES.recipeBuilder().duration(250).EUt(32000)
-                .fluidInputs(IronChloride.getFluid(1000))
-                .inputs(Glucose.getItemStack(24))
-                .fluidOutputs(GlucoseIronSolution.getFluid(1000))
-                .buildAndRegister();
-
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(260).EUt(18000)
-                .fluidInputs(GlucoseIronSolution.getFluid(1000))
-                .outputs(GlucoseIronMixture.getItemStack(28))
-                .buildAndRegister();
-
-        // [FeCl3 + C6H12O6] + 3Na = [6C + Fe] + 3NaCl + 6H2O
-        BLAST_RECIPES.recipeBuilder().duration(270).EUt(19000).blastFurnaceTemp(1800)
-                .inputs(GlucoseIronMixture.getItemStack(28))
-                .input(dust, Sodium, 3)
-                .outputs(GRAPHENE_IRON_PLATE.getStackForm())
-                .output(dust, Salt, 6)
-                .fluidOutputs(Water.getFluid(6000))
-                .buildAndRegister();
-
-        // KMnO4 + NaNO3 + H2SO4 = Graphene Oxidation Solution
-        MIXER_RECIPES.recipeBuilder().duration(260).EUt(1920)
-                .inputs(PotassiumPermanganate.getItemStack(6))
-                .input(dust, SodiumNitrate, 5)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(GrapheneOxidationSolution.getFluid(1000))
-                .buildAndRegister();
-
-        // Graphite + Oxidation Solution = Graphite Oxide
-        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(1920)
-                .input(dust, Graphite)
-                .notConsumable(dust, Osmium)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
-                .outputs(GraphiteOxide.getItemStack(3))
-                .buildAndRegister();
-
-        // Graphene + Oxidation Solution = Graphene Oxide
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(7860)
-                .input(dust, Graphene)
-                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
-                .outputs(GrapheneOxide.getItemStack(3))
-                .buildAndRegister();
-
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(7860)
-                .inputs(GraphiteOxide.getItemStack(3))
-                .fluidInputs(Water.getFluid(1000))
-                .outputs(GrapheneOxide.getItemStack(3))
-                .buildAndRegister();
-
-        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(7860)
-                .inputs(GrapheneOxide.getItemStack(3))
-                .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
-                .fluidInputs(Hydrazine.getFluid(1000))
-                .output(dust, Graphene)
-                .buildAndRegister();
-
         MIXER_RECIPES.recipeBuilder().duration(200).EUt(2048)
                 .fluidInputs(Resorcinol.getFluid(500))
                 .fluidInputs(Formaldehyde.getFluid(1000))

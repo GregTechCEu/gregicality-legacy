@@ -111,7 +111,7 @@ public class WetwareComponents {
                 .outputs(PETRI_DISH.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(30720).duration(100)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(7680).duration(100)
                 .input(wireFine, Titanium)
                 .fluidInputs(Plastic.getFluid(1008))
                 .inputs(STERILIZED_PETRI_DISH.getStackForm())
@@ -158,7 +158,7 @@ public class WetwareComponents {
                 .outputs(Agar.getItemStack())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(30720).duration(100)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(480).duration(100)
                 .inputs(STERILIZED_PETRI_DISH.getStackForm())
                 .inputs(Agar.getItemStack())
                 .fluidInputs(BacterialGrowthMedium.getFluid(1000))

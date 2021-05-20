@@ -101,13 +101,12 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H8 + 2H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H10O
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ethylhexanol.getFluid(5000))
                 .input(dust, PhosphorousPentoxide, 7)
                 .fluidOutputs(DiethylhexylPhosphoricAcid.getFluid(2000))
-                .fluidOutputs(Butene.getFluid(2000))
-                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Butanol.getFluid(2000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
@@ -133,7 +132,7 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        DISTILLATION_RECIPES.recipeBuilder().duration(100).EUt(32)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(100).EUt(32)
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .output(dust, SodiumHydroxide, 3)

@@ -83,20 +83,70 @@ public class VariousChains {
                 .outputs(BCEPellet.getItemStack())
                 .buildAndRegister();
 
-        // Graphene ====================================================================================================
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
-                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
-                .fluidInputs(HydrochloricAcid.getFluid(3000))
-                .fluidOutputs(IronChloride.getFluid(2000))
-                .output(plate, Graphene)
+        // Graphene ==================================================================================================== TODO
+        // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
+        MIXER_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .fluidInputs(IronChloride.getFluid(1000))
+                .inputs(Glucose.getItemStack(24))
+                .fluidOutputs(GlucoseIronSolution.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
-                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
-                .fluidInputs(AquaRegia.getFluid(3000))
-                .fluidOutputs(IronChloride.getFluid(2000))
+        // [FeCl3 + C6H12O6] -> [6CO + Fe] + 3Cl + 5H2O + H2 (H2O and H2 lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(40).EUt(120)
+                .notConsumable(stickLong, YttriumBariumCuprate)
+                .fluidInputs(GlucoseIronSolution.getFluid(1000))
+                .outputs(GRAPHENE_IRON_PLATE.getStackForm())
+                .fluidOutputs(Chlorine.getFluid(3000))
+                .buildAndRegister();
+
+        // KMnO4 + NaNO3 + H2SO4 = Graphene Oxidation Solution
+        MIXER_RECIPES.recipeBuilder().duration(260).EUt(120)
+                .inputs(PotassiumPermanganate.getItemStack(6))
+                .input(dust, SodiumNitrate, 5)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(GrapheneOxidationSolution.getFluid(1000))
+                .buildAndRegister();
+
+        // Graphite + Oxidation Solution = Graphite Oxide + Residue
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Graphite, 3)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
+                .outputs(GraphiteOxide.getItemStack())
+                .outputs(GrapheneOxidationResidue.getItemStack())
+                .buildAndRegister();
+
+        // Graphene + Oxidation Solution = Graphene Oxide + Residue
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(20).EUt(24)
+                .input(dust, Graphene)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GrapheneOxide.getItemStack(3))
-                .fluidOutputs(NitrogenDioxide.getFluid(1500))
+                .outputs(GrapheneOxidationResidue.getItemStack())
+                .buildAndRegister();
+
+        // Graphene Oxidation Residue -> Graphene Oxidation Solution
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(65).EUt(24)
+                .inputs(GrapheneOxidationResidue.getItemStack())
+                .fluidOutputs(GrapheneOxidationSolution.getFluid(100))
+                .buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .inputs(GraphiteOxide.getItemStack())
+                .fluidInputs(Water.getFluid(100))
+                .outputs(GrapheneOxide.getItemStack(3))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(30).EUt(480)
+                .inputs(GrapheneOxide.getItemStack(3))
+                .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
+                .notConsumable(Hydrazine.getFluid(0))
+                .output(dust, Graphene)
+                .buildAndRegister();
+
+        // [6CO + Fe] -> C6O + Fe
+        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder().duration(120).EUt(30)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm())
+                .outputs(GrapheneOxide.getItemStack(3))
+                .output(dust, Iron)
                 .buildAndRegister();
 
         // Liquid Air Distillation =====================================================================================
@@ -333,7 +383,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30)
                 .notConsumable(dust, Lithium)
                 .fluidInputs(Oxygen.getFluid(21000))
-                .fluidInputs(Naphtalene.getFluid(4000))
+                .fluidInputs(Naphthalene.getFluid(4000))
                 .fluidOutputs(PhthalicAcid.getFluid(5000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -629,13 +679,13 @@ public class VariousChains {
         DISTILLERY_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .circuitMeta(0)
                 .fluidInputs(SulfuricCoalTarOil.getFluid(50))
-                .fluidOutputs(Naphtalene.getFluid(50))
+                .fluidOutputs(Naphthalene.getFluid(50))
                 .buildAndRegister();
 
         DISTILLERY_RECIPES.recipeBuilder().duration(5).EUt(480)
                 .circuitMeta(1)
                 .fluidInputs(SulfuricCoalTarOil.getFluid(800))
-                .fluidOutputs(Naphtalene.getFluid(800))
+                .fluidOutputs(Naphthalene.getFluid(800))
                 .buildAndRegister();
     }
 }

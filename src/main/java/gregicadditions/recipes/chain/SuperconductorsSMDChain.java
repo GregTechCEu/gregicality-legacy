@@ -149,7 +149,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // TiCl4 + [NaOH + H2O] + [BaCl2 + H2O] -> BaTiO3 + NaCl + 5HCl
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(4500)
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(BariumChlorideSolution.getFluid(1000))
@@ -724,7 +724,7 @@ public class SuperconductorsSMDChain {
                 .outputs(LanthanumFullereneMix.getItemStack(4))
                 .buildAndRegister();
 
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(125000)
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(2000000)
                 .inputs(LanthanumFullereneMix.getItemStack(4))
                 .notConsumable(craftingLens, Magenta)
                 .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
@@ -929,7 +929,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // 2NaIO4 + 2Ru + 4NaOH + 2CO -> 2NaI + 2Na2O4Ru + 2H2O + 2CO2
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(680000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(960)
                 .inputs(SodiumPeriodate.getItemStack(12))
                 .input(dust, Ruthenium, 2)
                 .input(dust, SodiumHydroxide, 12)
@@ -1055,7 +1055,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(PhenylenedioxydiaceticAcid.getFluid(1000))
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
                 .fluidOutputs(HydrochloricAcid.getFluid(4000))
-                .fluidOutputs(Isophtaloylbisdiethylthiourea.getFluid(1000))
+                .fluidOutputs(Isophthaloylbisdiethylthiourea.getFluid(1000))
                 .buildAndRegister();
 
         // Hs + 4Cl -> HsCl4
@@ -1094,7 +1094,7 @@ public class SuperconductorsSMDChain {
                 .inputs(RheniumChloride.getItemStack(6))
                 .inputs(HassiumChloride.getItemStack(5))
                 .inputs(ThalliumChloride.getItemStack(2))
-                .fluidInputs(Isophtaloylbisdiethylthiourea.getFluid(3000))
+                .fluidInputs(Isophthaloylbisdiethylthiourea.getFluid(3000))
                 .fluidInputs(FluorophosphoricAcid.getFluid(1000))
                 .outputs(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate.getItemStack(125))
                 .fluidOutputs(HydrochloricAcid.getFluid(7000))

@@ -446,7 +446,7 @@ public class SensorEmitter {
 
         // C10H8 + 2CH4O -> 2H2O + C12H12
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(250000)
-                .fluidInputs(Naphtalene.getFluid(1000))
+                .fluidInputs(Naphthalene.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(Dimethylnaphthalene.getFluid(1000))

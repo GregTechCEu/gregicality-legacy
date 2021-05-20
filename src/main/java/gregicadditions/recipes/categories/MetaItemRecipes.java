@@ -310,7 +310,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Master),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, RhodiumPlatedPalladium),
-                'B', ENERGY_LAPOTRONIC_ORB2);
+                'B', BATTERY_MEDIUM_LITHIUM_ION);
 
         ModHandler.addShapedRecipe("ga_prospect_tool_zpm", PROSPECT_TOOL_ZPM.getStackForm(),
                 "EDS", "CTC", "PBP",
@@ -320,7 +320,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Ultimate),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, HSSS),
-                'B', GAConfig.GT5U.enableZPMandUVBats ? ENERGY_MODULE : BATTERY_LARGE_LITHIUM_ION);
+                'B', BATTERY_LARGE_LITHIUM_ION);
 
         // Hand Pump
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(24)

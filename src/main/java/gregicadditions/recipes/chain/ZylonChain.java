@@ -63,8 +63,8 @@ public class ZylonChain {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Propene.getFluid(1000))
                 .fluidOutputs(Isochloropropane.getFluid(1000))
-                .EUt(2000000)
-                .duration(20)
+                .EUt(480)
+                .duration(110)
                 .buildAndRegister();
 
         // C2H2O + CH3COOH -> C4H6O3
