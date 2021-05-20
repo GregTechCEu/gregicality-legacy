@@ -38,6 +38,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
+import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -76,6 +77,7 @@ public class RecipeHandler {
         gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
         turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
         ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngot);
+        plateDense.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDensePlate);
 
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
@@ -113,6 +115,7 @@ public class RecipeHandler {
         springSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpringSmall);
         gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
     }
+
 
     /**
      * Main Method for initializing recipe chains,
@@ -586,11 +589,11 @@ public class RecipeHandler {
                     'P', new UnificationEntry(plate, material));
         }
 
-        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(200)
+        BENDER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .input(plate, material, 2)
                 .output(doublePlate, material)
+                .circuitMeta(2)
                 .buildAndRegister();
-
 
         int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
 
@@ -608,6 +611,23 @@ public class RecipeHandler {
         ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(16)
                 .input(doublePlate, material)
                 .output(ingot, material.arcSmeltInto == null ? material : material.arcSmeltInto, 2)
+                .buildAndRegister();
+    }
+
+
+    private static void processDensePlate(OrePrefix densePlate, IngotMaterial material) {
+        removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(ingot, material, 9), getIntegratedCircuit(5));
+        removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material, 9), getIntegratedCircuit(2));
+
+        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 9).EUt(96)
+                .input(plate, material, 9)
+                .output(densePlate, material, 1)
+                .circuitMeta(9)
+                .buildAndRegister();
+        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 9).EUt(96)
+                .input(ingot, material, 9)
+                .output(densePlate, material, 1)
+                .circuitMeta(9)
                 .buildAndRegister();
     }
 
