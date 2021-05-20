@@ -89,8 +89,7 @@ public class RecipeHandler {
         if (GAConfig.GT6.addRounds)
             round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
 
-        if (GAConfig.GT5U.addDoublePlates)
-            plateDouble.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoublePlate);
+        plateDouble.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoublePlate);
 
 
         if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders)
@@ -619,7 +618,7 @@ public class RecipeHandler {
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(ingot, material, 9), getIntegratedCircuit(5));
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material, 9), getIntegratedCircuit(2));
 
-        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 9).EUt(96)
+        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 4).EUt(96)
                 .input(plate, material, 9)
                 .output(densePlate, material, 1)
                 .circuitMeta(9)
@@ -919,7 +918,7 @@ public class RecipeHandler {
 
         // Turbine Blade recipe
         FORMING_PRESS_RECIPES.recipeBuilder().duration(20).EUt(256)
-                .input(plate, material, 5)
+                .input(plateDouble, material, 5)
                 .input(screw, material, 2)
                 .output(toolPrefix, material)
                 .buildAndRegister();
