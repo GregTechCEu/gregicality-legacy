@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gregtech:items/material_sets/shiny/double_plate",
-    "layer1": "gregtech:items/material_sets/shiny/double_plate_overlay"
+    "layer0": "gregtech:items/material_sets/shiny/plate_double",
+    "layer1": "gregtech:items/material_sets/shiny/plate_double_overlay"
   }
 }

@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "gregtech:items/material_sets/magnetic/double_plate",
-        "layer1": "gregtech:items/material_sets/magnetic/double_plate_overlay"
+        "layer0": "gregtech:items/material_sets/magnetic/plate_double",
+        "layer1": "gregtech:items/material_sets/magnetic/plate_overlay"
     }
 }
