@@ -520,7 +520,6 @@ public class GAMetaItems {
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
         OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
-        OreDictUnifier.registerOre(HOT_IRON_INGOT.getStackForm(), OrePrefix.ingotHot, Materials.Iron);
         OreDictionary.registerOre("ingotPyroliticCarbon", PYROLYTIC_CARBON.getStackForm()); // for NC compatibility
     }
 }
