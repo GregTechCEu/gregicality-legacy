@@ -30,7 +30,7 @@ import static gregtech.api.unification.material.Materials.Thorium;
 public class GAMetaItem extends MaterialMetaItem {
     public GAMetaItem() {
         super(GAConfig.GT6.addCurvedPlates ? GAEnums.GAOrePrefix.plateCurved : null,
-                GAConfig.GT6.addDoubleIngots ? GAEnums.GAOrePrefix.ingotDouble : null,
+                null,
                 GAConfig.GT6.addRounds ? GAEnums.GAOrePrefix.round : null,
                 GAEnums.GAOrePrefix.dioxide, GAEnums.GAOrePrefix.nitride, GAEnums.GAOrePrefix.hexafluoride,
                 GAEnums.GAOrePrefix.carbide, GAEnums.GAOrePrefix.nitrite, GAEnums.GAOrePrefix.oxide,

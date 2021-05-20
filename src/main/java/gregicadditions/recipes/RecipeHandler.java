@@ -82,10 +82,6 @@ public class RecipeHandler {
         if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
             plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
 
-        if (GAConfig.GT6.PlateDoubleIngot && GAConfig.GT6.addDoubleIngots)
-            plate.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoubleIngot);
-
-
         if (GAConfig.GT6.addRounds)
             round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
 
@@ -583,7 +579,7 @@ public class RecipeHandler {
      */
     private static void processDoublePlate(OrePrefix doublePlate, IngotMaterial material) {
         if (!material.hasFlag(NO_SMASHING)) {
-            ModHandler.addShapedRecipe(String.format("plate_double_%s", material.toString()), OreDictUnifier.get(ingotDouble, material),
+            ModHandler.addShapedRecipe(String.format("plate_double_%s", material.toString()), OreDictUnifier.get(doublePlate, material),
                     "h", "P", "P",
                     'P', new UnificationEntry(plate, material));
         }
@@ -613,7 +609,12 @@ public class RecipeHandler {
                 .buildAndRegister();
     }
 
-
+    /**
+     * Dense PLate Material Handler. Generates:
+     *
+     * + Plate/Ingot to Dense Plate Bender Recipes with circuit 9
+     * - Plate/Ingot to Dense Plate Bender Recipes with circuit 2/5
+     */
     private static void processDensePlate(OrePrefix densePlate, IngotMaterial material) {
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(ingot, material, 9), getIntegratedCircuit(5));
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material, 9), getIntegratedCircuit(2));
@@ -630,41 +631,6 @@ public class RecipeHandler {
                 .buildAndRegister();
     }
 
-    /**
-     * Double Ingot Material Handler. Generates:
-     *
-     * + Ingot to Double Ingot Hand Recipes
-     * + Double Ingot to Plate Hand Recipes
-     *
-     * - Removes Ingot to Plate Hand Recipes
-     */
-    private static void processDoubleIngot(OrePrefix ingotDouble, IngotMaterial material) {
-        if (!material.hasFlag(NO_SMASHING)) {
-
-            removeCraftingRecipes(OreDictUnifier.get(plate, material));
-
-            ModHandler.addShapedRecipe(String.format("ingot_double_%s", material.toString()), OreDictUnifier.get(ingotDouble, material),
-                    "h", "I", "I",
-                    'I', new UnificationEntry(ingot, material));
-
-            ModHandler.addShapedRecipe(String.format("double_ingot_to_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
-                    "h", "I",
-                    'I', new UnificationEntry(ingotDouble, material));
-        }
-
-        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
-
-        // Unification Recipes
-        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(60)
-                .input(ingotDouble, material)
-                .output(dust, material, 2)
-                .buildAndRegister();
-
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(160)
-                .input(ingotDouble, material)
-                .fluidOutputs(material.getFluid(L * 2))
-                .buildAndRegister();
-    }
 
     /**
      * Curved Plate Material Handler. Generates:
