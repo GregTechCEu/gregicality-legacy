@@ -20,6 +20,8 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.multiblock.PatternMatchContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
@@ -113,8 +115,8 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
             boolean hasPlayerInventory = false;
             for (Widget widget : ui.guiWidgets.values()) {
                 if (widget instanceof SlotWidget) {
-                    SlotItemHandler handler = ((SlotWidget) widget).getHandle();
-                    if (handler.getItemHandler() instanceof PlayerMainInvWrapper) {
+                    IInventory handler = ((SlotWidget) widget).getHandle().inventory;
+                    if (handler instanceof PlayerMainInvWrapper) {
                         hasPlayerInventory = true;
                         continue;
                     }
