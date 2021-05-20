@@ -6,6 +6,7 @@ import gregicadditions.materials.SimpleFluidMaterial;
 import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.FluidTooltipUtil;
+import gregtech.api.util.GTUtility;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -47,7 +48,7 @@ public class GAMetaFluids {
         });
 
         for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS.values()) {
-            Fluid fluid = new Fluid(fluidMat.name, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
+            Fluid fluid = new Fluid(fluidMat.name, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, GTUtility.convertRGBtoOpaqueRGBA_MC(fluidMat.rgb));
             fluid.setTemperature(fluidMat.temperature);
             if (!FluidRegistry.isFluidRegistered(fluid.getName())) {
                 FluidRegistry.registerFluid(fluid);
@@ -61,7 +62,7 @@ public class GAMetaFluids {
                 fluidMat.fluid = FluidRegistry.getFluid(fluid.getName());
             }
             if (fluidMat.hasPlasma) {
-                Fluid plasma = new Fluid(fluidMat.name + "_plasma", MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, fluidMat.rgb);
+                Fluid plasma = new Fluid(fluidMat.name + "_plasma", MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, MetaFluids.AUTO_GENERATED_FLUID_TEXTURE, GTUtility.convertRGBtoOpaqueRGBA_MC(fluidMat.rgb));
                 plasma.setTemperature(fluidMat.temperature + 10000);
                 if (!FluidRegistry.isFluidRegistered(plasma.getName())) {
                     FluidRegistry.registerFluid(plasma);

@@ -422,25 +422,15 @@ public class RecipeOverride {
         removeFurnaceRecipe(COMPRESSED_CLAY.getStackForm());
         removeRecipeByName("gregtech:brick_to_dust");
         removeRecipeByName("gregtech:brick_block_to_dust");
+        removeRecipeByName("gregtech:compressed_clay");
         removeRecipeByName("gtadditions:block_compress_clay");
         removeRecipeByName("gtadditions:block_decompress_clay");
-
-        ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(200).EUt(2)
                 .inputs(new ItemStack(Items.CLAY_BALL))
                 .notConsumable(SHAPE_MOLD_INGOT)
                 .outputs(new ItemStack(Items.BRICK))
                 .buildAndRegister();
-
-        ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
-                new ItemStack(Items.CLAY_BALL),
-                "formWood");
-
-        ModHandler.addShapedRecipe("eight_clay_brick", COMPRESSED_CLAY.getStackForm(8),
-                "BBB", "BFB", "BBB",
-                'B', new ItemStack(Items.CLAY_BALL),
-                'F', "formWood");
 
         ModHandler.addShapedRecipe("coke_brick", COMPRESSED_COKE_CLAY.getStackForm(3),
                 "BBB", "SFS", "SSS",
@@ -852,7 +842,7 @@ public class RecipeOverride {
 
         // Log -> Charcoal Recipes
         // TODO Ignores Forestry wood
-        if (GAConfig.GT5U.DisableLogToCharcoalSmeltg) {
+        if (GAConfig.GT5U.DisableLogToCharcoalSmelting) {
             List<ItemStack> allWoodLogs = OreDictionary.getOres("logWood")
                                                        .stream()
                                                        .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())

@@ -306,7 +306,6 @@ public class GAMetaItem extends MaterialMetaItem {
         DEGENERATE_RHENIUM_PLATE = addItem(430, "degenerate.rhenium.plate");
         DEGENERATE_RHENIUM_DUST = addItem(432, "degenerate.rhenium.dust");
         PLATE_FIELD_SHAPE = addItem(431, "plate.field.shape");
-        DUST_FIELD_SHAPE = addItem(439, "dust.field.shape");
 
         ZBLAN = addItem(433, "zblan");
         ZBLAN_INGOT = addItem(434, "zblan_ingot");
@@ -326,9 +325,6 @@ public class GAMetaItem extends MaterialMetaItem {
         ACRYLIC_YARN = addItem(448, "acrylic_yarn");
         NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(449, "neutron.plasma.containment.cell");
         INGOT_FIELD_SHAPE = addItem(450, "ingot.field.shape");
-        WELL_PIPE = addItem(451,"well_pipe");
-        WELL_CONNECTOR_PIECE = addItem(452,"well_connector_pipe");
-        RIG_DRILL = addItem(453,"rig_drill");
         MEMORY_FOAM_BLOCK = addItem(454,"memory_foam_block");
         LASER_DIODE = addItem(455,"laser_diode");
         LASER_COOLING_UNIT = addItem(456,"laser_cooling_unit");
@@ -507,13 +503,8 @@ public class GAMetaItem extends MaterialMetaItem {
         MASTER_BOARD = addItem(35, "board.master");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
-//        COMPRESSED_FIRECLAY = addItem(37, "compressed.fireclay");
-//        FIRECLAY_BRICK = addItem(38, "brick.fireclay").setUnificationData(OrePrefix.ingot, Materials.Fireclay);
 
         MetaItems.COMPRESSED_CLAY.setInvisible();
-//        MetaItems.COMPRESSED_FIRECLAY.setInvisible();
-
-
         MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
         MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();
