@@ -1,6 +1,5 @@
 package gregicadditions.recipes.impl;
 
-import com.google.common.collect.ImmutableMap;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
@@ -55,6 +54,6 @@ public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of(), duration, EUt, hidden));
+                        duration, EUt, hidden));
     }
 }
