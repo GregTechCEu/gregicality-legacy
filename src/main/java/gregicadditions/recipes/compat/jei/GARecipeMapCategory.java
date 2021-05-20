@@ -22,6 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -82,14 +83,18 @@ public class GARecipeMapCategory implements IRecipeCategory<GARecipeWrapper> {
 
             if (uiWidget instanceof SlotWidget) {
                 SlotWidget slotWidget = (SlotWidget) uiWidget;
-                if (slotWidget.getHandle().getItemHandler() == importItems) {
+                if (!(slotWidget.getHandle() instanceof SlotItemHandler)) {
+                    continue;
+                }
+                SlotItemHandler handle = (SlotItemHandler) slotWidget.getHandle();
+                if (handle.getItemHandler() == importItems) {
                     //this is input item stack slot widget, so add it to item group
-                    itemStackGroup.init(slotWidget.getHandle().getSlotIndex(), true,
+                    itemStackGroup.init(handle.getSlotIndex(), true,
                             slotWidget.getPosition().x,
                             slotWidget.getPosition().y);
-                } else if (slotWidget.getHandle().getItemHandler() == exportItems) {
+                } else if (handle.getItemHandler() == exportItems) {
                     //this is output item stack slot widget, so add it to item group
-                    itemStackGroup.init(importItems.getSlots() + slotWidget.getHandle().getSlotIndex(), false,
+                    itemStackGroup.init(importItems.getSlots() + handle.getSlotIndex(), false,
                             slotWidget.getPosition().x,
                             slotWidget.getPosition().y);
                 }
