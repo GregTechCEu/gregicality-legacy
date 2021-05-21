@@ -42,6 +42,9 @@ public class GAEnums {
         public final static MaterialIconType oxide = createMaterialIconType("oxide");
         public final static MaterialIconType nuclearFuel = createMaterialIconType("nuclearFuel");
         public final static MaterialIconType depletedFuel = createMaterialIconType("depletedFuel");
+        public final static MaterialIconType fuelTRISO = createMaterialIconType("fuelTriso");
+        public final static MaterialIconType depletedFuelTRISO = createMaterialIconType("depletedFuelTriso");
+
         /////////////////////////////////////
 
 
@@ -68,11 +71,11 @@ public class GAEnums {
         public final static OrePrefix fuelZirconiumAlloy = createOrePrefix("fuelZirconiumAlloy", "Fuel Zirconium Alloy", M / 2, null, GAMaterialIconType.nuclearFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix fuelOxide = createOrePrefix("fuelOxide", "Fuel Oxide", M / 2, null, GAMaterialIconType.nuclearFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix fuelPure = createOrePrefix("fuelPure", "Pure Isotope", M, null, GAMaterialIconType.nuclearFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
-        public final static OrePrefix fuelTRISO = createOrePrefix("fuelTRISO", "Fuel TRISO", M / 4, null, GAMaterialIconType.nuclearFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
+        public final static OrePrefix fuelTRISO = createOrePrefix("fuelTRISO", "Fuel TRISO", M / 4, null, GAMaterialIconType.fuelTRISO, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix depletedFuelNitride = createOrePrefix("depletedFuelNitride", "Depleted Fuel Nitride", M / 2, null, GAMaterialIconType.depletedFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix depletedFuelZirconiumAlloy = createOrePrefix("depletedFuelZirconiumAlloy", "Depleted Fuel Zirconium Alloy", M / 2, null, GAMaterialIconType.depletedFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix depletedFuelOxide = createOrePrefix("depletedFuelOxide", "Depleted Fuel Oxide", M / 2, null, GAMaterialIconType.depletedFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
-        public final static OrePrefix depletedFuelTRISO = createOrePrefix("depletedFuelTRISO", "Depleted Fuel TRISO", M / 4, null, GAMaterialIconType.depletedFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
+        public final static OrePrefix depletedFuelTRISO = createOrePrefix("depletedFuelTRISO", "Depleted Fuel TRISO", M / 4, null, GAMaterialIconType.depletedFuelTRISO, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         public final static OrePrefix depletedFuel = createOrePrefix("depletedFuel", "Depleted Fuel", M, null, GAMaterialIconType.depletedFuel, OrePrefix.Flags.ENABLE_UNIFICATION, pred(mat -> ingot.test(mat) && mat.hasFlag(GENERATE_NUCLEAR_COMPOUND)));
         /////////////////////////////////////
 
