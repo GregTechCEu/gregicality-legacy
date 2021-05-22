@@ -233,8 +233,8 @@ public class NuclearHandler {
             radioactiveMaterial.composition.forEach((key, value) -> builder1.fluidOutputs(key.getFluidHexafluoride(value * 2)));
             builder1.buildAndRegister();
 
-            // [Mat + F6] + 2H2O -> [Mat + F6 + 2H2O]
             radioactiveMaterial.composition.forEach((key, value) -> {
+                // [Mat + F6] + 2H2O -> [Mat + F6 + 2H2O]
                 CRACKING_RECIPES.recipeBuilder().duration(40 * complexity / 100).EUt(120)
                         .fluidInputs(Steam.getFluid(2000))
                         .fluidInputs(key.getFluidHexafluoride(1000))
