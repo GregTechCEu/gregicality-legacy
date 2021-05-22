@@ -69,7 +69,7 @@ public class TungstenChain {
                     .output(dust, CalciumTungstate, 6)
                     .fluidOutputs(SaltWater.getFluid(500))
                     .EUt(480)
-                    .duration(100)
+                    .duration(60)
                     .buildAndRegister();
 
             // WCaO4 + 2H2O -> H2WO4 + Ca(OH)2
@@ -78,7 +78,7 @@ public class TungstenChain {
                     .fluidInputs(Water.getFluid(2000))
                     .output(dust, TungsticAcid, 7)
                     .outputs(CalciumHydroxide.getItemStack(5))
-                    .EUt(960)
+                    .EUt(480)
                     .duration(150)
                     .buildAndRegister();
 
@@ -98,7 +98,7 @@ public class TungstenChain {
                     .output(dust, Tungsten)
                     .fluidOutputs(Water.getFluid(3000))
                     .EUt(1920)
-                    .duration(75)
+                    .duration(65)
                     .buildAndRegister();
 
             // W + 6Cl -> WCl6
@@ -106,8 +106,8 @@ public class TungstenChain {
                     .input(dust, Tungsten)
                     .fluidInputs(Chlorine.getFluid(6000))
                     .output(dust, TungstenHexachloride, 7)
-                    .duration(150)
-                    .EUt(480)
+                    .duration(120)
+                    .EUt(120)
                     .buildAndRegister();
 
             // WCl6 + CH4 + 2H -> WC + 6HCl
@@ -118,7 +118,7 @@ public class TungstenChain {
                     .output(dust, TungstenCarbide, 2)
                     .fluidOutputs(HydrochloricAcid.getFluid(6000))
                     .EUt(480)
-                    .duration(150)
+                    .duration(100)
                     .buildAndRegister();
         }
     }

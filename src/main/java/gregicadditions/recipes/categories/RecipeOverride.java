@@ -79,6 +79,11 @@ public class RecipeOverride {
                 .output(ingotHot, Tungsten)
                 .buildAndRegister();
 
+        // Hot Tungstencarbide
+        if (GAConfig.Misc.tungstenProcess) {
+            removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(ingot, Tungsten), OreDictUnifier.get(dust, Carbon)});
+        }
+
         // Hot Lithium Titanate
         removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, LithiumTitanate));
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(900).blastFurnaceTemp(2500)

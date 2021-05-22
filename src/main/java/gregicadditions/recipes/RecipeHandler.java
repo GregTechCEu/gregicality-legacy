@@ -120,7 +120,7 @@ public class RecipeHandler {
         GoldChain.init();
         NaquadahChain.init();
         NuclearChain.init();
-        PlasticChain.init();
+        PolymerChain.init();
         PlatinumSludgeGroupChain.init();
         TungstenChain.init();
         REEChain.init();
