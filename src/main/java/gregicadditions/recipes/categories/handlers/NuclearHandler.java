@@ -75,7 +75,7 @@ public class NuclearHandler {
                 .input(dust, FerriteMixture)
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelNitride, 1))
                 .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm())
-                .fluidOutputs(RedOil.getFluid(4000))
+                .fluidOutputs(RedOil.getFluid(3000))
                 .buildAndRegister();
 
         // Fuel2N3 = Waste + 3N

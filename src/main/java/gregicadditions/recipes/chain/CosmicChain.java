@@ -21,7 +21,14 @@ public class CosmicChain { // TODO
                 .fluidOutputs(QuarkGluonPlasma.getFluid(2000))
                 .buildAndRegister();
 
-        // TODO Add Separation Electromagnet Recipe
+        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(122880)
+                .input(wireFine, YttriumBariumCuprate, 64)
+                .input(wireFine, NiobiumTitanium, 64)
+                .input(plate, NiobiumNitride, 8)
+                .input(foil, Polybenzimidazole, 16)
+                .input(stickLong, VanadiumGallium)
+                .outputs(SEPARATION_ELECTROMAGNET.getStackForm())
+                .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder().duration(200).EUt(1200000)
                 .fluidInputs(QuarkGluonPlasma.getFluid(1000))

@@ -208,14 +208,13 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // TODO This recipe may be really mean
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(1920)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(250).EUt(1920)
                 .fluidInputs(AlkalineEarthSulfateSolution.getFluid(4000))
                 .fluidOutputs(Water.getFluid(4000))
                 .output(dust, Barite, 3)
                 .output(dust, Gypsum, 8)
                 .outputs(StrontiumSulfate.getItemStack(6))
-                .output(dustTiny, Radium, 3)
+                .output(dustSmall, Radium, 2)
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(7680)
