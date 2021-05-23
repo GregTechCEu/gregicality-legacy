@@ -874,11 +874,19 @@ public class RecipeHandler {
 
         removeRecipesByInputs(LATHE_RECIPES, OreDictUnifier.get(plate, material));
 
-        LATHE_RECIPES.recipeBuilder().duration(2400).EUt(30)
-                .input(gemExquisite, material)
-                .output(lens, material)
-                .output(dust, material, 2)
-                .buildAndRegister();
+        if (!OreDictUnifier.get(gemExquisite, material).isEmpty()) {
+            LATHE_RECIPES.recipeBuilder().duration(2400).EUt(30)
+                    .input(gemExquisite, material)
+                    .output(lens, material)
+                    .output(dust, material, 2)
+                    .buildAndRegister();
+        } else {
+            LATHE_RECIPES.recipeBuilder().duration(2400).EUt(30)
+                    .input(plate, material)
+                    .output(lens, material)
+                    .output(dustTiny, material, 2)
+                    .buildAndRegister();
+        }
     }
 
     /**
