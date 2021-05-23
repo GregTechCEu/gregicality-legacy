@@ -198,7 +198,7 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
         if (!getWorld().isRemote) {
             fillInternalTankFromFluidContainer(fluidContainerInventory, fluidContainerInventory, 0, 1);
 
-            if (ventingStuck || needsVenting) {
+            if (needsVenting && this.getOffsetTimer() % 10L == 0L) {
                 tryDoVenting();
                 if (ventingStuck) {
                     return;
