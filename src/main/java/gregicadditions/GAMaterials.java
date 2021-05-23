@@ -551,8 +551,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Ethanol100 = new SimpleFluidMaterial("ethanol_100", Ethanol.materialRGB, "C2H5OH");
     public static final SimpleFluidMaterial PiranhaSolution = new SimpleFluidMaterial("piranha_solution", 0x4820ab, "(H2SO4)H2O2");
     public static final SimpleFluidMaterial WaterAgarMix = new SimpleFluidMaterial("water_agar_mix", 0x48dbbe, "H2O?");
-    public static final SimpleFluidMaterial BacterialGrowthMedium = new SimpleFluidMaterial("bacterial_growth_medium", 0x0b2e12, "Bacterial Growth Medium");
-    public static final SimpleFluidMaterial DepletedGrowthMedium = new SimpleFluidMaterial("depleted_growth_medium", 0x071209, "Depleted Growth Medium");
+    public static final SimpleFluidMaterial BacterialGrowthMedium = new SimpleFluidMaterial("bacterial_growth_medium", 0x0b2e12, "For Bacteria");
+    public static final SimpleFluidMaterial DepletedGrowthMedium = new SimpleFluidMaterial("depleted_growth_medium", 0x071209, "Depleted");
     public static final SimpleFluidMaterial AnimalCells = new SimpleFluidMaterial("animal_cells", 0xc94996, "???");
     public static final SimpleFluidMaterial RapidlyReplicatingAnimalCells = new SimpleFluidMaterial("rapidly_replicating_animal_cells", 0x7a335e, TextFormatting.OBFUSCATED + "????");
     public static final SimpleFluidMaterial MycGene = new SimpleFluidMaterial("myc_gene", 0x445724, "?");

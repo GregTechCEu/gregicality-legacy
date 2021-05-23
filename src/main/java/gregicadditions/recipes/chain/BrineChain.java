@@ -161,6 +161,7 @@ public class BrineChain {
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(480)
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(SaltWater.getFluid(1000))
                 .fluidOutputs(Brine.getFluid(100))
                 .buildAndRegister();
@@ -344,9 +345,10 @@ public class BrineChain {
                 .outputs(BORON_RETAINING_YARN.getStackForm())
                 .buildAndRegister();
 
+        // 2NaOH + H2SO4 + HBO2 -> H3BO3 + Na2SO4(H2O)
         CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(480)
                 .inputs(BORON_SATURATED_YARN.getStackForm())
-                .input(dust, SodiumHydroxide, 3)
+                .input(dust, SodiumHydroxide, 6)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(BoricAcid.getFluid(1000))
                 .fluidOutputs(SodiumSulfateSolution.getFluid(1000))

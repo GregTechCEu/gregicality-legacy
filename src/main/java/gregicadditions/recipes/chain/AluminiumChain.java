@@ -38,7 +38,7 @@ public class AluminiumChain {
                 .buildAndRegister();
 
         // 3NaF + AlF3 -> Na3AlF6
-        CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
                 .input(dust, SodiumFluoride, 6)
                 .inputs(AluminiumTrifluoride.getItemStack(4))
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))

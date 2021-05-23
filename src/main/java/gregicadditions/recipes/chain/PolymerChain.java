@@ -51,7 +51,7 @@ public class PolymerChain {
 
         // 6O + C8H10 -> 2H2O + C8H6O4
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(dustTiny, PotassiumDichromate)
+                .notConsumable(dust, PotassiumDichromate)
                 .fluidInputs(Oxygen.getFluid(6000))
                 .fluidInputs(OrthoXylene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))

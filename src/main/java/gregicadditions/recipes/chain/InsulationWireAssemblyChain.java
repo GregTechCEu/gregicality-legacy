@@ -13,14 +13,12 @@ public class InsulationWireAssemblyChain {
 
     public static void init() {
 
-        // 3C2H5OH + C2H4 + NH3 + HBr -> C8H20NBr + 3H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
-                .fluidInputs(Ethanol.getFluid(3000))
-                .fluidInputs(Ethylene.getFluid(1000))
+        // 4C2H4 + NH3 + HBr -> C8H20NBr
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
+                .fluidInputs(Ethylene.getFluid(4000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(HydrobromicAcid.getFluid(1000))
                 .fluidOutputs(TetraethylammoniumBromide.getFluid(1000))
-                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         // H2O + C6H12O6 -> C6H14O2 + 5O
@@ -67,7 +65,7 @@ public class InsulationWireAssemblyChain {
                 .inputs(ZeoliteSievingPellets.getItemStack())
                 .fluidInputs(Acetone.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
-                .fluidOutputs(Tertbutanol.getFluid(2000))
+                .fluidOutputs(Tertbutanol.getFluid(1000))
                 .outputs(WetZeoliteSievingPellets.getItemStack())
                 .buildAndRegister();
 
@@ -92,7 +90,7 @@ public class InsulationWireAssemblyChain {
                 .fluidOutputs(Triaminoethaneamine.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(30720)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(30720)
                 .input(foil, Polyetheretherketone)
                 .input(foil, SiliconeRubber)
                 .inputs(AdipicAcid.getItemStack(20))
@@ -129,7 +127,7 @@ public class InsulationWireAssemblyChain {
                 .notConsumable(wireFine, Rhenium)
                 .buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(30).EUt(6780)
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(30).EUt(7680)
                 .inputs(PEEK_POLYAMIDE_FOIL.getStackForm())
                 .fluidInputs(Azafullerene.getFluid(10))
                 .outputs(HIGHLY_INSULATING_FOIL.getStackForm())

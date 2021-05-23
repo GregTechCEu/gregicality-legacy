@@ -111,7 +111,7 @@ public class VariousChains {
                 .input(dust, Graphite, 3)
                 .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GraphiteOxide.getItemStack())
-                .outputs(GrapheneOxidationResidue.getItemStack())
+                .chancedOutput(GrapheneOxidationResidue.getItemStack(), 8000, 1000)
                 .buildAndRegister();
 
         // Graphene + Oxidation Solution = Graphene Oxide + Residue
@@ -119,7 +119,7 @@ public class VariousChains {
                 .input(dust, Graphene)
                 .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GrapheneOxide.getItemStack(3))
-                .outputs(GrapheneOxidationResidue.getItemStack())
+                .chancedOutput(GrapheneOxidationResidue.getItemStack(), 8000, 1000)
                 .buildAndRegister();
 
         // Graphene Oxidation Residue -> Graphene Oxidation Solution
@@ -380,7 +380,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // 21O + 4 C10H8 -> 5C8H6O4 + H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(120)
                 .notConsumable(dust, Lithium)
                 .fluidInputs(Oxygen.getFluid(21000))
                 .fluidInputs(Naphthalene.getFluid(4000))

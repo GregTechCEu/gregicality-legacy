@@ -158,6 +158,7 @@ public class RecipeHandler {
         ArcFurnaceOxidation.init();
         WetwareChain.init();
         OpticalChain.init();
+        CombinedChains.init();
     }
 
     /**

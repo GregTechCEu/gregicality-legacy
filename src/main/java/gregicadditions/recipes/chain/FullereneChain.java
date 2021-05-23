@@ -71,7 +71,7 @@ public class FullereneChain {
                 .buildAndRegister();
 
         // 3C20H13N -> C60H30 + 3NH3
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Benzophenanthrenylacetonitrile.getItemStack(102))
                 .notConsumable(TiAlChloride.getItemStack())
                 .outputs(UnfoldedFullerene.getItemStack())
@@ -203,11 +203,19 @@ public class FullereneChain {
                 .duration(220)
                 .buildAndRegister();
 
+        // H + FeCl3 -> FeCl2 + HCl
+        CHEMICAL_RECIPES.recipeBuilder().duration(40).EUt(30)
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(IronChloride.getFluid(1000))
+                .fluidOutputs(Iron2Chloride.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .buildAndRegister();
+
         // 2C5H6 + FeCl2 -> C10H10Fe + 2HCl
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(ZeoliteSievingPellets.getItemStack())
                 .notConsumable(PdIrReOCeOS.getItemStack())
-                .fluidInputs(IronChloride.getFluid(1000))
+                .fluidInputs(Iron2Chloride.getFluid(1000))
                 .fluidInputs(Cyclopentadiene.getFluid(2000))
                 .fluidOutputs(Ferrocene.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
@@ -281,7 +289,7 @@ public class FullereneChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // [C10H10Fe + C60 + C4H9N] + Pd + CH3COOH + HNO3 -> PdC60
+        // [C10H10Fe + C60 + C4H9N] + Pd + CH3COOH -> PdC60
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ferrocenylfulleropyrrolidine.getFluid(1000))
                 .input(dust, Palladium)
@@ -342,6 +350,7 @@ public class FullereneChain {
                 .fluidInputs(Phenylpentanoicacid.getFluid(1000))
                 .fluidInputs(Dimethylsulfide.getFluid(1000))
                 .fluidInputs(Chlorobenzene.getFluid(1000))
+                .notConsumable(BenzoylPeroxide.getFluid(0))
                 .fluidOutputs(Toluene.getFluid(1000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))

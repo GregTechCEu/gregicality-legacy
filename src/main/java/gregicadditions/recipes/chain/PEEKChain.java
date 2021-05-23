@@ -87,13 +87,13 @@ public class PEEKChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // C6H5F + CH4 + SbHF6 -> C7H7F + 3F + SbF3
+        // C6H5F + CH4 + H2SbF7 -> C7H7F + 4HF + SbF3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(FluoroBenzene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .fluidOutputs(Fluorotoluene.getFluid(1000))
-                .fluidOutputs(Fluorine.getFluid(3000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(4000))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
                 .EUt(480)
                 .duration(150)

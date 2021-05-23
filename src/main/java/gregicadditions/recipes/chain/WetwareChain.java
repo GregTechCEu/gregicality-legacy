@@ -364,7 +364,7 @@ public class WetwareChain { // TODO
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(SulfurTrioxide.getFluid(1000))
                 .EUt(480)
-                .duration(100)
+                .duration(200)
                 .buildAndRegister();
 
         // C6H5NH2 + (CH3CO)2O + HSO3Cl -> C8H8ClNO3S + H2O + CH3COOH
@@ -385,6 +385,13 @@ public class WetwareChain { // TODO
                 .input(dust, SodaAsh, 6)
                 .outputs(SodiumBicarbonate.getItemStack(6))
                 .output(dust, SodiumHydroxide, 3)
+                .buildAndRegister();
+
+        // NaHCO3 -> NaOH + CO2
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(145).EUt(120)
+                .inputs(SodiumBicarbonate.getItemStack(6))
+                .output(dust, SodiumHydroxide, 3)
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // NaHCO3 + C8H8ClNO3S + NH3 -> NaCl + C6H8N2O2S + CO2 + CH3COOH

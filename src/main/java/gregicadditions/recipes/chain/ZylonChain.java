@@ -44,7 +44,6 @@ public class ZylonChain {
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(HydrogenPeroxide.getFluid(1000))
                 .outputs(Terephthalaldehyde.getItemStack(16))
-                .output(dust, Sulfur)
                 .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
