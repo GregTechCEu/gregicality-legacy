@@ -7,6 +7,8 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.RecipeLogicSteam;
+import gregtech.api.damagesources.DamageSources;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.FluidContainerSlotWidget;
@@ -24,13 +26,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagLong;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
@@ -54,12 +57,15 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
     public final Miner.Type minerType;
     private AtomicLong x = new AtomicLong(Long.MAX_VALUE), y = new AtomicLong(Long.MAX_VALUE), z = new AtomicLong(Long.MAX_VALUE);
     private final ItemStackHandler fluidContainerInventory;
+    private boolean needsVenting;
+    private boolean ventingStuck;
 
     public TileEntitySteamMiner(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
         this.inventorySize = 4;
         this.minerType = Miner.Type.STEAM;
         this.fluidContainerInventory = new ItemStackHandler(2);
+        this.needsVenting = false;
         initializeInventory();
     }
 
@@ -92,12 +98,9 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
         IVertexOperation[] coloredPipeline = ArrayUtils.add(pipeline, multiplier);
         Textures.STEAM_CASING_BRONZE.render(renderState, translation, coloredPipeline);
         for (EnumFacing renderSide : EnumFacing.HORIZONTALS) {
-            if (renderSide == getFrontFacing()) {
-                Textures.PIPE_OUT_OVERLAY.renderSided(renderSide, renderState, translation, pipeline);
-            } else {
-                ClientHandler.STEAM_MINER_OVERLAY.renderSided(renderSide, renderState, translation, coloredPipeline);
-            }
+            ClientHandler.STEAM_MINER_OVERLAY.renderSided(renderSide, renderState, translation, coloredPipeline);
         }
+        Textures.PIPE_OUT_OVERLAY.renderSided(EnumFacing.UP, renderState, translation, pipeline);
         Textures.PIPE_IN_OVERLAY.renderSided(EnumFacing.DOWN, renderState, translation, pipeline);
     }
 
@@ -145,11 +148,64 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
         return builder.build(getHolder(), entityPlayer);
     }
 
+    public void setVentingStuck(boolean ventingStuck) {
+        this.ventingStuck = ventingStuck;
+        if (!this.getWorld().isRemote) {
+            this.markDirty();
+            this.writeCustomData(4, (buf) -> {
+                buf.writeBoolean(ventingStuck);
+            });
+        }
+    }
+
+    public void setNeedsVenting(boolean needsVenting) {
+        this.needsVenting = needsVenting;
+        if (!needsVenting && this.ventingStuck) {
+            this.setVentingStuck(false);
+        }
+
+        if (!this.getWorld().isRemote) {
+            this.markDirty();
+            this.writeCustomData(2, (buf) -> {
+                buf.writeBoolean(needsVenting);
+            });
+        }
+    }
+
+    protected void tryDoVenting() {
+        BlockPos machinePos = this.getPos();
+        EnumFacing ventingSide = EnumFacing.UP;
+        BlockPos ventingBlockPos = machinePos.offset(ventingSide);
+        IBlockState blockOnPos = this.getWorld().getBlockState(ventingBlockPos);
+        if (blockOnPos.getCollisionBoundingBox(this.getWorld(), ventingBlockPos) == Block.NULL_AABB) {
+            this.getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(ventingBlockPos), EntitySelectors.CAN_AI_TARGET).forEach((entity) -> {
+                entity.attackEntityFrom(DamageSources.getHeatDamage(), 6.0F);
+            });
+            WorldServer world = (WorldServer)this.getWorld();
+            double posX = (double)machinePos.getX() + 0.5D + (double)ventingSide.getXOffset() * 0.6D;
+            double posY = (double)machinePos.getY() + 0.5D + (double)ventingSide.getYOffset() * 0.6D;
+            double posZ = (double)machinePos.getZ() + 0.5D + (double)ventingSide.getZOffset() * 0.6D;
+            world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 7 + world.rand.nextInt(3), (double)ventingSide.getXOffset() / 2.0D, (double)ventingSide.getYOffset() / 2.0D, (double)ventingSide.getZOffset() / 2.0D, 0.1D, new int[0]);
+            world.playSound((EntityPlayer)null, posX, posY, posZ, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            this.setNeedsVenting(false);
+        } else if (!this.ventingStuck) {
+            this.setVentingStuck(true);
+        }
+    }
+
     @Override
     public void update() {
         super.update();
         if (!getWorld().isRemote) {
             fillInternalTankFromFluidContainer(fluidContainerInventory, fluidContainerInventory, 0, 1);
+
+            if (ventingStuck || needsVenting) {
+                tryDoVenting();
+                if (ventingStuck) {
+                    return;
+                }
+            }
+
             // if sufficient amounts of steam and drilling fluid aren't present, do nothing
             if ((importFluids.getTankAt(0).getFluidAmount() < 1) || (importFluids.getTankAt(1).getFluidAmount() < 16)) {
                 return;
@@ -179,12 +235,9 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
                 if (addItemsToItemHandler(exportItems, true, itemStacks)) {
                     addItemsToItemHandler(exportItems, false, itemStacks);
                     world.destroyBlock(blockPos1, false);
+                    setNeedsVenting(true);
                 }
             });
-
-            if (!getWorld().isRemote && getTimer() % 5 == 0) {
-                pushItemsIntoNearbyHandlers(getFrontFacing());
-            }
         }
     }
 
