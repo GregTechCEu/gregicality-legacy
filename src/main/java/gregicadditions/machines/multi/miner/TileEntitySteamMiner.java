@@ -7,7 +7,6 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.client.ClientHandler;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
-import gregtech.api.capability.impl.RecipeLogicSteam;
 import gregtech.api.damagesources.DamageSources;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
