@@ -365,7 +365,6 @@ public enum GACraftingComponents {
             }
         }
     },
-
     HULL {
         @Override
         public Object getIngredient(int tier) {
@@ -786,20 +785,21 @@ public enum GACraftingComponents {
                 case 0:
                     return new UnificationEntry(wireGtSingle, Tin);
                 case 1:
-                    return new UnificationEntry(wireGtDouble, Tin);
-                case 2:
                     return new UnificationEntry(wireGtDouble, Copper);
+                case 2:
+                    return new UnificationEntry(wireGtQuadruple, Cupronickel);
                 case 3:
-                    return new UnificationEntry(wireGtQuadruple, Copper);
+                    return new UnificationEntry(wireGtQuadruple, Electrum);
                 case 4:
+                    return new UnificationEntry(wireGtQuadruple, AnnealedCopper);
                 case 5:
-                    return new UnificationEntry(wireGtOctal, AnnealedCopper);
+                    return new UnificationEntry(wireGtQuadruple, Graphene);
                 case 6:
-                    return new UnificationEntry(wireGtQuadruple, YttriumBariumCuprate);
+                    return new UnificationEntry(wireGtQuadruple, NiobiumTitanium);
                 case 7:
-                    return new UnificationEntry(wireGtOctal, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtQuadruple, VanadiumGallium);
                 default:
-                    return new UnificationEntry(wireGtHex, MarkerMaterials.Tier.Superconductor);
+                    return new UnificationEntry(wireGtOctal, VanadiumGallium);
             }
         }
     },
