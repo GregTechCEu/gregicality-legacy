@@ -78,7 +78,7 @@ public class Gregicality {
     public static CommonProxy proxy;
 
     public Gregicality() {
-        GAEnums.preInit();
+        GAEnums.onConstruction();
         try {
             GAEnums.addSlotsToGTCEMaps(
                     RecipeMaps.DISTILLERY_RECIPES,
@@ -121,7 +121,7 @@ public class Gregicality {
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();
-        GAEnums.preInit2();
+        GAEnums.preInit();
         GATileEntities.init();
         if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON))
             TinkersMaterials.preInit();

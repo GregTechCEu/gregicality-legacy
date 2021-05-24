@@ -101,7 +101,7 @@ public class GAEnums {
 
     }
 
-    public static void preInit() {
+    public static void onConstruction() {
         EnumHelper.addEnum(Element.class, "Nt",
                 new Class[]{long.class, long.class, long.class, String.class, String.class, boolean.class},
                 0L, 5000L, -1L, null, "NEUTRONIUM", false);
@@ -155,11 +155,9 @@ public class GAEnums {
             OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
             PURE_ORES.add(OrePrefix.valueOf("orePure" + stoneTypes[i]));
         }
-
-
     }
 
-    public static void preInit2() {
+    public static void preInit() {
         // Turbine Overrides
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
