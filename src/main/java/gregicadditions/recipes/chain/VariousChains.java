@@ -82,7 +82,7 @@ public class VariousChains {
                 .outputs(BCEPellet.getItemStack()) //Todo make BCE pellet equivalent to coal as furnace fuel
                 .buildAndRegister();
 
-        // Graphene ==================================================================================================== TODO
+        // Graphene ====================================================================================================
         // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
         MIXER_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .fluidInputs(IronChloride.getFluid(1000))

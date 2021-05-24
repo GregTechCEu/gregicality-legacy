@@ -1,24 +1,15 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAValues;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import net.minecraft.item.ItemStack;
-
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-
 
 public class CombinedChains {
 
     public static void init() {
 
         // Fullerenes ================================================================================================
-
 
         // 10C10H8 + 10C8H10 -> 3C60H30 + 90H (H voided)
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(40).EUt(31457280) // UIV
@@ -29,7 +20,6 @@ public class CombinedChains {
 
 
         // Naquadah ==================================================================================================
-
 
         // Naquadric Compound [Nq] -> Nq
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(50).EUt(491520) // UV
@@ -164,6 +154,5 @@ public class CombinedChains {
                 .fluidOutputs(HydrochloricAcid.getFluid(24000))
                 .fluidOutputs(PCBS.getFluid(8000))
                 .buildAndRegister();
-
     }
 }

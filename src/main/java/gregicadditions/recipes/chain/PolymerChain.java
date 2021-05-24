@@ -124,7 +124,6 @@ public class PolymerChain {
                 .buildAndRegister();
     }
 
-    // TODO DURATION / EUT
     public static void polyimideInit() {
 
         // C6H4(CH3)2 + 2CH3Cl -> C6H2(CH3)4 + 2HCl
