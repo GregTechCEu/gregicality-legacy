@@ -828,7 +828,7 @@ public class CircuitRecipes {
 
     private static void biowareCircuits() {
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
 
             // Bioware Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(240000)
@@ -839,7 +839,7 @@ public class CircuitRecipes {
                     .inputs(HASOC.getStackForm())
                     .input(wireFine, NaquadahAlloy, 4)
                     .outputs(BIOWARE_PROCESSOR.getStackForm())
-                    .fluidInputs(fluidStack).buildAndRegister();
+                    .fluidInputs(fluidStackx4).buildAndRegister();
         }
 
         // Bioware Assembly
@@ -907,7 +907,7 @@ public class CircuitRecipes {
 
     private static void opticalCircuits() {
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
 
             // Optical Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(480000)
@@ -917,7 +917,7 @@ public class CircuitRecipes {
                     .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
                     .inputs(HASOC.getStackForm())
                     .input(wireFine, Pikyonium, 4)
-                    .fluidInputs(fluidStack)
+                    .fluidInputs(fluidStackx4)
                     .outputs(OPTICAL_PROCESSOR.getStackForm())
                     .buildAndRegister();
         }
@@ -999,7 +999,7 @@ public class CircuitRecipes {
 
     private static void cosmicCircuits() {
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
 
             // Cosmic Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(1920000).qubit(16)
@@ -1009,7 +1009,7 @@ public class CircuitRecipes {
                     .inputs(COSMIC_PROCESSING_CORE.getStackForm())
                     .inputs(UHASOC.getStackForm())
                     .input(wireFine, Cinobite, 4)
-                    .fluidInputs(fluidStack)
+                    .fluidInputs(fluidStackx4)
                     .outputs(COSMIC_PROCESSOR.getStackForm())
                     .buildAndRegister();
         }
@@ -1083,7 +1083,7 @@ public class CircuitRecipes {
 
     private static void supracausalCircuits() {
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
 
             // Supracausal Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2097152).qubit(32)
@@ -1093,7 +1093,7 @@ public class CircuitRecipes {
                     .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                     .input(plate, SuperheavyHAlloy, 4)
                     .input(wireGtSingle, UHVSuperconductor, 8)
-                    .fluidInputs(fluidStack)
+                    .fluidInputs(fluidStackx4)
                     .outputs(SUPRACAUSAL_PROCESSOR.getStackForm())
                     .buildAndRegister();
         }
