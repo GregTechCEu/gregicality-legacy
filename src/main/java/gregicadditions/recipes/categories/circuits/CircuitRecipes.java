@@ -182,15 +182,14 @@ public class CircuitRecipes {
                     .outputs(REFINED_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
 
-            /* SoC Recipe
+            // SoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(600)
                     .inputs(GOOD_PLASTIC_BOARD.getStackForm())
                     .inputs(SYSTEM_ON_CHIP.getStackForm())
-                    .input(wireFine, TinAlloy, 2)
+                    .input(wireFine, TinAlloy, 8)
                     .fluidInputs(fluidStack)
                     .outputs(REFINED_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
-            */
 
             // Refined Assembly
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(60)
@@ -289,15 +288,14 @@ public class CircuitRecipes {
                     .outputs(MICRO_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
 
-            /* SoC Recipe
+            // SoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(2400)
                     .inputs(ADVANCED_BOARD.getStackForm())
                     .inputs(SYSTEM_ON_CHIP.getStackForm())
-                    .input(wireFine, RedAlloy, 2)
+                    .input(wireFine, RedAlloy, 8)
                     .fluidInputs(fluidStack)
                     .outputs(MICRO_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
-             */
 
             // Micro Assembly
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(350)
@@ -396,15 +394,14 @@ public class CircuitRecipes {
                     .fluidInputs(fluidStack)
                     .buildAndRegister();
 
-            /* SoC Recipe
+            // SoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(9600)
                     .inputs(EXTREME_BOARD.getStackForm())
                     .inputs(SYSTEM_ON_CHIP.getStackForm())
-                    .input(wireFine, Aluminium, 2)
+                    .input(wireFine, Aluminium, 8)
                     .fluidInputs(fluidStack)
                     .outputs(NANO_PROCESSOR_HV.getStackForm(4))
                     .buildAndRegister();
-             */
 
             // Nano Processor Assembly
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(2000)
@@ -501,15 +498,15 @@ public class CircuitRecipes {
                     .outputs(QUANTUM_PROCESSOR_EV.getStackForm(4))
                     .buildAndRegister();
 
-            /* ASoC Recipe
+            // ASoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(36000)
                     .inputs(ELITE_BOARD.getStackForm())
                     .inputs(ADVANCED_SYSTEM_ON_CHIP.getStackForm())
-                    .input(wireFine, Platinum, 2)
+                    .input(wireFine, Platinum, 8)
                     .fluidInputs(fluidStack)
                     .outputs(QUANTUM_PROCESSOR_EV.getStackForm(4))
                     .buildAndRegister();
-             */
+
 
             // Quantum Assembly
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(4000)
@@ -614,15 +611,14 @@ public class CircuitRecipes {
                     .outputs(CRYSTAL_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
 
-            /* Crystal SoC Recipe
+            // Crystal SoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(86000)
                     .inputs(KAPTON_CIRCUIT_BOARD.getStackForm())
                     .inputs(CRYSTAL_SYSTEM_ON_CHIP.getStackForm())
-                    .input(wireFine, NiobiumTitanium, 2)
+                    .input(wireFine, NiobiumTitanium, 8)
                     .fluidInputs(fluidStack)
                     .outputs(CRYSTAL_PROCESSOR.getStackForm(4))
                     .buildAndRegister();
-             */
 
             // Crystal Processor Assembly
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(20000)
@@ -732,15 +728,14 @@ public class CircuitRecipes {
                     .outputs(WETWARE_PROCESSOR_LUV.getStackForm())
                     .buildAndRegister();
 
-            /* ASoC Recipe
+            // ASoC Recipe
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
                     .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                     .inputs(ADVANCED_SYSTEM_ON_CHIP.getStackForm(4))
-                    .input(wireFine, NaquadahAlloy, 2)
+                    .input(wireFine, NaquadahAlloy, 8)
                     .fluidInputs(fluidStack)
                     .outputs(WETWARE_PROCESSOR_LUV.getStackForm(4))
                     .buildAndRegister();
-             */
         }
 
         // Wetware Assembly
