@@ -5,9 +5,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.*;
-import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.MultiUtils;
 import gregicadditions.recipes.GARecipeMaps;
@@ -23,7 +21,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,10 +44,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static gregicadditions.GAMaterials.Staballoy;
-import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
 import static gregicadditions.client.ClientHandler.STABALLOY_CASING;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
@@ -141,7 +135,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
             }
 
             if (playerIn.isSneaking())
-                this.pos = (pos - 1 < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
+                this.pos = (pos - 1 < 0) ? possibleRecipe.length - 1 : pos % possibleRecipe.length;
             else
                 this.pos = (pos + 1) % possibleRecipe.length;
 

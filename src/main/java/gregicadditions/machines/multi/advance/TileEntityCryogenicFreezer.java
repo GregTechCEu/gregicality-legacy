@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.override.MetaTileEntityVacuumFreezer;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
@@ -13,6 +14,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -22,6 +24,7 @@ import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -84,6 +87,12 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(GAConfig.multis.cryogenicFreezer.energyDecreasePercentage / 100.0)));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(GAConfig.multis.cryogenicFreezer.durationDecreasePercentage / 100.0)));
+    }
+
+    @Nonnull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.FREEZER_OVERLAY;
     }
 
 

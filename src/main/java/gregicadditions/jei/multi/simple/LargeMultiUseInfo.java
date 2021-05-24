@@ -41,8 +41,6 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 					.where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())
 					.where('e', GAMetaBlocks.EMITTER_CASING.getDefaultState())
 					.where('R', GAMetaBlocks.ROBOT_ARM_CASING.getDefaultState())
-
-
 					.build());
 
 

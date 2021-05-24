@@ -167,10 +167,4 @@ public class MetaTileEntityElectricBlastFurnace extends RecipeMapMultiblockContr
 	public IBlockState getCasingState() {
 		return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
 	}
-
-	@Nonnull
-	@Override
-	protected OrientedOverlayRenderer getFrontOverlay() {
-		return Textures.PRIMITIVE_BLAST_FURNACE_OVERLAY;
-	}
 }

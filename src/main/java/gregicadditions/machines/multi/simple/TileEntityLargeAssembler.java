@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.RobotArmCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -17,12 +18,17 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
+
+import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockController {
 
@@ -39,16 +45,21 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 	}
 
 	@Override
-	protected BlockPattern createStructurePattern() {
-		return FactoryBlockPattern.start()
-				.aisle("XXX", "XXX", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XRX", "CSC", "XRX")
+	protected BlockPattern createStructurePattern() { //TODO change pattern to have the controller face the viewer in jei
+		return FactoryBlockPattern.start(FRONT, UP, RIGHT)
+				.aisle("XXXXX", "XXXXX", "XXXXX", "#XXXX")
+				.aisle("XXXXX", "SCPCX", "XRPRX", "#XXXX")
+				.aisle("XXXXX", "GKPKX", "G#CRX", "#GGXX").setRepeatable(0, 9)
+				.aisle("XXXXX", "XXXXX", "XXXXX", "#XXXX")
+				.setAmountAtLeast('X', 30)
 				.where('S', selfPredicate())
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('#', isAirPredicate())
+				.where('#', state -> true)
 				.where('R', robotArmPredicate())
 				.where('C', conveyorPredicate())
+				.where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
+				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
+				.where('K', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
 				.build();
 	}
 

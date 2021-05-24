@@ -78,10 +78,4 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
             textList.add((new TextComponentTranslation("gregtech.multiblock.invalid_structure", new Object[0])).setStyle((new Style()).setColor(TextFormatting.RED).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
     }
-
-    @Nonnull
-    @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
-        return ClientHandler.FREEZER_OVERLAY;
-    }
 }

@@ -7,7 +7,7 @@ import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.recipes.BoostableWorkableHandler;
+import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
