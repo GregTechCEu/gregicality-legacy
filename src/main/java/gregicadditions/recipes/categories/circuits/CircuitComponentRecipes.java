@@ -1,9 +1,7 @@
 package gregicadditions.recipes.categories.circuits;
 
-import gregicadditions.GAConfig;
 import gregicadditions.recipes.categories.circuits.components.*;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -218,23 +216,12 @@ public class CircuitComponentRecipes {
 
         for (Material m : new Material[]{Coal, Charcoal, Carbon}) {
 
-            if (GAConfig.GT6.BendingFoils)
-
-                ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
-                        "RWR", "CMC", " W ",
-                        'M', new UnificationEntry(dust, m),
-                        'R', RUBBER_DROP,
-                        'W', new UnificationEntry(wireFine, Copper),
-                        'C', new UnificationEntry(wireGtSingle, Copper));
-
-            else
-
-                ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
-                        "RCR", "CMC", " C ",
-                        'M', new UnificationEntry(dust, m),
-                        'R', RUBBER_DROP,
-                        'C', new UnificationEntry(wireGtSingle, Copper));
-
+            ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
+                    "RWR", "CMC", " W ",
+                    'M', new UnificationEntry(dust, m),
+                    'R', RUBBER_DROP,
+                    'W', new UnificationEntry(wireFine, Copper),
+                    'C', new UnificationEntry(wireGtSingle, Copper));
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(16)
                     .input(dust, m)

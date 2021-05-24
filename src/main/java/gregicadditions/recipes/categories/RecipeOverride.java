@@ -488,7 +488,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Wood Pipes
-        if (GAConfig.GT6.BendingPipes) {
+        if (GAConfig.GT6.BendingCylinders) {
             removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
             removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
 
@@ -731,7 +731,7 @@ public class RecipeOverride {
 
     private static void vanillaOverride() {
 
-        if (GAConfig.GT6.BendingCylinders && GAConfig.GT6.addCurvedPlates) {
+        if (GAConfig.GT6.addCurvedPlates) {
 
             // Buckets
             removeRecipeByName("gregtech:iron_bucket");
@@ -803,24 +803,24 @@ public class RecipeOverride {
                     "P P", "ChC",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
-
-            // Chain Armor
-            ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
-                    "RRR", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
-                    "RhR", "RRR", "RRR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
-                    "RRR", "RhR", "R R",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
-                    "R R", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
         }
+
+        // Chain Armor
+        ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
+                "RRR", "RhR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
+                "RhR", "RRR", "RRR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
+                "RRR", "RhR", "R R",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
+                "R R", "RhR",
+                'R', new UnificationEntry(ring, Iron));
 
         // Glowstone / Nether Quartz Block Recipes
         if (GAConfig.GT5U.GenerateCompressorRecipes) {

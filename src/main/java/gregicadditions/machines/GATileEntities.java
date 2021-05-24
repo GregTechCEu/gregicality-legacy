@@ -255,21 +255,22 @@ public class GATileEntities {
         CIRCUITASSEMBLER[3] = GregTechAPI.registerMetaTileEntity(2003, new SimpleMachineMetaTileEntity(location("circuit_assembler.ev"), GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, 4));
         LARGE_CIRCUIT_ASSEMBLY_LINE = GregTechAPI.registerMetaTileEntity(2004, new TileEntityLargeCircuitAssemblyLine(location("large_circuit_assembly")));
 
-        CLUSTERMILL[0] = create(2008, new SimpleMachineMetaTileEntity(location("cluster_mill.lv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 1));
-        CLUSTERMILL[1] = create(2009, new SimpleMachineMetaTileEntity(location("cluster_mill.mv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 2));
-        CLUSTERMILL[2] = create(2010, new SimpleMachineMetaTileEntity(location("cluster_mill.hv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 3));
-        CLUSTERMILL[3] = create(2011, new SimpleMachineMetaTileEntity(location("cluster_mill.ev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 4));
-        if (GAConfig.GT5U.highTierClusterMills) {
-            CLUSTERMILL[4] = create(2012, new SimpleMachineMetaTileEntity(location("cluster_mill.iv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 5));
-            CLUSTERMILL[5] = create(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
-            CLUSTERMILL[6] = create(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
-            CLUSTERMILL[7] = create(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
-            CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("cluster_mill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
-            CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("cluster_mill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
-            CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("cluster_mill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
-            CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("cluster_mill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
-            CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("cluster_mill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
-
+        if (GAConfig.GT6.BendingFoilsAutomatic) {
+            CLUSTERMILL[0] = create(2008, new SimpleMachineMetaTileEntity(location("cluster_mill.lv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 1));
+            CLUSTERMILL[1] = create(2009, new SimpleMachineMetaTileEntity(location("cluster_mill.mv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 2));
+            CLUSTERMILL[2] = create(2010, new SimpleMachineMetaTileEntity(location("cluster_mill.hv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 3));
+            CLUSTERMILL[3] = create(2011, new SimpleMachineMetaTileEntity(location("cluster_mill.ev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 4));
+            if (GAConfig.GT5U.highTierClusterMills) {
+                CLUSTERMILL[4] = create(2012, new SimpleMachineMetaTileEntity(location("cluster_mill.iv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 5));
+                CLUSTERMILL[5] = create(2013, new SimpleMachineMetaTileEntity(location("cluster_mill.luv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 6));
+                CLUSTERMILL[6] = create(2014, new SimpleMachineMetaTileEntity(location("cluster_mill.zpm"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 7));
+                CLUSTERMILL[7] = create(2015, new SimpleMachineMetaTileEntity(location("cluster_mill.uv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 8));
+                CLUSTERMILL[8] = create(3244, new GASimpleMachineMetaTileEntity(location("cluster_mill.uhv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 9));
+                CLUSTERMILL[9] = create(3245, new GASimpleMachineMetaTileEntity(location("cluster_mill.uev"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 10));
+                CLUSTERMILL[10] = create(3246, new GASimpleMachineMetaTileEntity(location("cluster_mill.uiv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 11));
+                CLUSTERMILL[11] = create(3247, new GASimpleMachineMetaTileEntity(location("cluster_mill.umv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 12));
+                CLUSTERMILL[12] = create(3248, new GASimpleMachineMetaTileEntity(location("cluster_mill.uxv"), GARecipeMaps.CLUSTER_MILL_RECIPES, Textures.WIREMILL_OVERLAY, 13));
+            }
         }
 
         if (GAConfig.GT5U.highTierElectricFurnace) {
@@ -874,7 +875,7 @@ public class GATileEntities {
             AIR_COLLECTOR[5] = GregTechAPI.registerMetaTileEntity(2206, new MetaTileEntityAirCollector(location("air_collector.luv"), 6));
         }
 
-        if (GAConfig.Misc.registerCrates) {
+        if (GAConfig.GT6.registerCrates) {
             WOODEN_CRATE = GregTechAPI.registerMetaTileEntity(2207, new TileEntityCrate(location("crate.wood"), Materials.Wood, 36));
             BRONZE_CRATE = GregTechAPI.registerMetaTileEntity(2208, new TileEntityCrate(location("crate.bronze"), Materials.Bronze, 54));
             STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2209, new TileEntityCrate(location("crate.steel"), Materials.Steel, 72));

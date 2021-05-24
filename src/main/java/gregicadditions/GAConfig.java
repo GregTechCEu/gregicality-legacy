@@ -26,25 +26,18 @@ public class GAConfig {
     public static GT6 GT6 = new GT6();
 
     public static class GT6 {
-        @Config.Comment("Bending Recipes (disabling Bending Cylinders' recipes disables all of them)")
-        @Config.Name("Bending - Bending Cylinders' recipes")
-        public boolean BendingCylinders = true;
-        @Config.Name("Bending - Curved Plates' recipes")
-        public boolean BendingCurvedPlates = true;
-        @Config.Name("Bending - Rotors require Curved Plates")
-        public boolean BendingRotors = true;
-        @Config.Name("Bending - Rings are crafted with Bending Cylinders")
-        public boolean BendingRings = true;
-        @Config.Name("Bending - Foils are made with Bending Cylinders")
-        public boolean BendingFoils = false;
-        @Config.Name("Bending - Foils are automated in the Cluster Mill instead of the Bending Machine")
-        public boolean BendingFoilsAutomatic = false;
-        @Config.Name("Bending - Pipes are crafted with Curved Plates")
-        public boolean BendingPipes = true;
 
-        @Config.Comment("Set this to false to disable Plates being crafted from Double Ingots")
-        @Config.Name("Plates are crafted from Double Ingots")
-        public boolean PlateDoubleIngot = true;
+        @Config.Comment("Require Bending Cylinders for some components like Rings and Pipes")
+        @Config.Name("Enable Bending Cylinders")
+        public boolean BendingCylinders = true;
+
+        @Config.Comment("Add Curved Plates for Pipes, Rotors, and some late game component recipes")
+        @Config.Name("Enable Curved Plates")
+        public boolean addCurvedPlates = true;
+
+        @Config.Comment("Set this to false to disable the Cluster Mill machine itself")
+        @Config.Name("Enable the Cluster Mill for Foils")
+        public boolean BendingFoilsAutomatic = true;
 
         @Config.Comment("Set this to false to enable the GT5 Wrench recipes")
         @Config.Name("Wrenches are crafted with Plates instead of Ingots")
@@ -54,6 +47,10 @@ public class GAConfig {
         @Config.Name("Should Drums be registered?")
         public boolean registerDrums = true;
 
+        @Config.Comment("Set this to false to disable Crates")
+        @Config.Name("Should Crates be registered?")
+        public boolean registerCrates = true;
+
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
         public boolean electrodes = true;
@@ -61,10 +58,6 @@ public class GAConfig {
         @Config.Comment("Set this to false to disable rounds")
         @Config.Name("Should rounds be registered?")
         public boolean addRounds = true;
-
-        @Config.Comment("Set this to false to disable curved plates")
-        @Config.Name("Should curved plates be registered?")
-        public boolean addCurvedPlates = true;
     }
 
     @Config.Comment("Config options for GT5U features")
@@ -85,10 +78,6 @@ public class GAConfig {
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
         public boolean DisableLogToCharcoalSmelting = true;
-
-        @Config.Comment("Set to false to disable generated wood sawing recipes")
-        @Config.Name("A saw is required to get 4 Planks per Log")
-        public boolean GeneratedSawingRecipes = true;
 
         @Config.Comment("Set these to false to disable the higher tier versions of machines")
         @Config.Name("Should higher tier Alloy Smelters be registered?")
@@ -175,13 +164,13 @@ public class GAConfig {
         public boolean highTierUnpackers = true;
         @Config.Name("Should higher tier Wiremills be registered?")
         public boolean highTierWiremills = true;
-        @Config.Name("Should higher tier Chemical dehydrator be registered?")
+        @Config.Name("Should higher tier Chemical Dehydrators be registered?")
         public boolean highTierChemicalDehydrator = true;
-        @Config.Name("Should higher tier Decay Chamber be registered?")
+        @Config.Name("Should higher tier Decay Chambers be registered?")
         public boolean highTierDecayChamber = true;
-        @Config.Name("Should higher tier Green House be registered?")
+        @Config.Name("Should higher tier Green Houses be registered?")
         public boolean highTierGreenHouse = true;
-        @Config.Name("Should higher tier world accelerator be registered?")
+        @Config.Name("Should higher tier World Accelerators be registered?")
         public boolean highTierWorldAccelerator = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
@@ -326,10 +315,6 @@ public class GAConfig {
         @Config.Comment("Set this to false to disable the Forestry Integration")
         @Config.Name("Forestry's Ethanol and Seed Oil are used in recipes instead of GTCE's")
         public boolean ForestryIntegration = true;
-
-        @Config.Comment("Set this to false to disable Crates")
-        @Config.Name("Should Crates be registered?")
-        public boolean registerCrates = true;
 
         @Config.Comment("Set this to false to disable the high tier Air Collectors")
         @Config.Name("Air Collector have IV and LuV version")
