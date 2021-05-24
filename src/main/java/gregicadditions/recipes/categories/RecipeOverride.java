@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
+import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
@@ -711,6 +712,20 @@ public class RecipeOverride {
                 .chancedOutput(OreDictUnifier.get(dustTiny, PlatinumMetallicPowder, 2), 625, 150)
                 .chancedOutput(new ItemStack(Blocks.SAND), 9000, 300)
                 .fluidOutputs(Helium.getFluid(120))
+                .buildAndRegister();
+
+        // Cells from Dense Plates to Double Plates
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, Steel, 8), OreDictUnifier.get(plateDense, Steel, 2), getIntegratedCircuit(1));
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, TungstenSteel, 8), OreDictUnifier.get(plateDense, TungstenSteel, 2), getIntegratedCircuit(1));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
+                .input(ring, Steel, 8)
+                .input(plateDouble, Steel, 2)
+                .outputs(LARGE_FLUID_CELL_STEEL.getStackForm())
+                .buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
+                .input(ring, TungstenSteel, 8)
+                .input(plateDouble, TungstenSteel, 2)
+                .outputs(LARGE_FLUID_CELL_TUNGSTEN_STEEL.getStackForm())
                 .buildAndRegister();
     }
 

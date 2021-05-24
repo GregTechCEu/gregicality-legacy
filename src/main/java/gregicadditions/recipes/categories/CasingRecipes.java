@@ -21,6 +21,7 @@ import net.minecraft.util.IStringSerializable;
 import java.util.Arrays;
 
 import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
+import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.*;
 import static gregicadditions.item.CellCasing.CellType.*;
@@ -180,45 +181,59 @@ public class CasingRecipes {
 
         // Battery Tower Cells
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200)
-                .input(plateDense, Lead, 4)
+                .input(plateDouble, Lead, 4)
                 .fluidInputs(Oxygen.getFluid(16000))
                 .input(gtMetalCasing, StainlessSteel)
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_HV))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(960).duration(2400)
-                .input(plateDense, Titanium, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(960).duration(1200)
+                .input(plateDouble, Titanium, 4)
                 .fluidInputs(Nitrogen.getFluid(16000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_HV))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_EV))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(3840).duration(4800)
-                .input(plateDense, TungstenSteel, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(3840).duration(1200)
+                .input(plateDouble, TungstenSteel, 4)
                 .fluidInputs(Helium.getFluid(8000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_EV))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_IV))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(15360).duration(9600)
-                .input(plateDense, Iridium, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(15360).duration(1200)
+                .input(plateDouble, Iridium, 4)
                 .fluidInputs(Argon.getFluid(4000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_IV))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_LUV))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(61440).duration(18200)
-                .input(plateDense, NaquadahAlloy, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(61440).duration(1200)
+                .input(plateDouble, NaquadahAlloy, 4)
                 .fluidInputs(Radon.getFluid(4000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_LUV))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_ZPM))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(245760).duration(36400)
-                .input(plateDense, Tritanium, 4)
-                .fluidInputs(Xenon.getFluid(4000))
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(245760).duration(1200)
+                .input(plateDouble, Tritanium, 4)
+                .fluidInputs(Krypton.getFluid(4000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_ZPM))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UV))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(983040).duration(1200)
+                .input(plateDouble, Seaborgium, 4)
+                .fluidInputs(Xenon.getFluid(4000))
+                .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UV))
+                .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UHV))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(3932160).duration(1200)
+                .input(plateDouble, Bohrium, 4)
+                .fluidInputs(FreeAlphaGas.getFluid(4000))
+                .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UHV))
+                .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UEV))
                 .buildAndRegister();
     }
 

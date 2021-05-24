@@ -295,7 +295,7 @@ public class HelperMethods {
 
         for (int i = 1; i < recipeSize; i++) {
             ItemStack input = getRecipeInput(recipe, i);
-            if (input != null && !topLeft.isItemEqual(input))
+            if (input == null || !topLeft.isItemEqual(input))
                 return false;
         }
         return true;

@@ -62,10 +62,6 @@ public class GAConfig {
         @Config.Name("Should rounds be registered?")
         public boolean addRounds = true;
 
-        @Config.Comment("Set this to false to disable double ingots")
-        @Config.Name("Should double ingots be registered?")
-        public boolean addDoubleIngots = true;
-
         @Config.Comment("Set this to false to disable curved plates")
         @Config.Name("Should curved plates be registered?")
         public boolean addCurvedPlates = true;
