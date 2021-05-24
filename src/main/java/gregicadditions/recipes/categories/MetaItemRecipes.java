@@ -353,24 +353,6 @@ public class MetaItemRecipes {
                 .outputs(TOOL_DATA_STICK.getStackForm())
                 .buildAndRegister();
 
-        // Drilling Rig Pipe
-        ASSEMBLER_RECIPES.recipeBuilder().duration(230).EUt(480)
-                .input(pipeLarge, Steel)
-                .input(ring, Steel)
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .outputs(WELL_PIPE.getStackForm())
-                .buildAndRegister();
-
-        // Drilling Rig Drill
-        ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(480)
-                .inputs(ELECTRIC_MOTOR_EV.getStackForm())
-                .inputs(ELECTRIC_PUMP_EV.getStackForm())
-                .input(stickLong, Steel, 6)
-                .input(plate, Steel, 2)
-                .input(toolHeadDrill, Steel)
-                .outputs(RIG_DRILL.getStackForm())
-                .buildAndRegister();
-
         // Cooling Containers
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
                 .input(plateB, Steel, 64)

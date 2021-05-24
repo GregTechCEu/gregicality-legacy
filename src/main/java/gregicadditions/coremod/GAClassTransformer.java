@@ -39,6 +39,9 @@ public class GAClassTransformer implements IClassTransformer {
             case "gregtech.api.metatileentity.multiblock.MultiblockControllerBase":
                 tform = MultiblockControllerBaseTransformer.INSTANCE;
                 break;
+            case "eutros.multiblocktweaker.client.PreviewRenderer":
+                tform = PreviewRendererTransformer.INSTANCE;
+                break;
             default:
                 return basicClass;
         }

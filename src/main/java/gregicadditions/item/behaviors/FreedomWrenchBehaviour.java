@@ -1,8 +1,8 @@
 package gregicadditions.item.behaviors;
 
-import gregicadditions.jei.JEIGAPlugin;
-import gregicadditions.network.CPacketMultiBlockStructure;
 import gregicadditions.client.renderer.WorldRenderEventRenderer;
+import gregicadditions.jei.JEIOptional;
+import gregicadditions.network.CPacketMultiBlockStructure;
 import gregicadditions.utils.BlockPatternChecker;
 import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
@@ -11,24 +11,25 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.net.NetworkHandler;
 import gregtech.api.render.scene.WorldSceneRenderer;
-import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
-import mezz.jei.api.IRecipeRegistry;
-import mezz.jei.api.recipe.IFocus;
-import mezz.jei.api.recipe.IRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class FreedomWrenchBehaviour implements IItemBehaviour {
 
@@ -38,22 +39,12 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
         if (pos != null && world.getTileEntity(pos) instanceof MetaTileEntityHolder) {
             MetaTileEntity mte = ((MetaTileEntityHolder) world.getTileEntity(pos)).getMetaTileEntity();
-            if (mte instanceof MultiblockControllerBase && !player.isSneaking() && Loader.isModLoaded("jei")) { // preview
+            if (mte instanceof MultiblockControllerBase && !player.isSneaking()) { // preview
                 if (world.isRemote) {
-                    if (mode == 3) { // building
-                        IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
-                        IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, mte.getStackForm());
-                        WorldSceneRenderer worldSceneRenderer = rr.getRecipeCategories(focus)
-                                .stream()
-                                .map(c -> (IRecipeCategory<IRecipeWrapper>) c)
-                                .map(c -> rr.getRecipeWrappers(c, focus))
-                                .flatMap(List::stream)
-                                .filter(MultiblockInfoRecipeWrapper.class::isInstance)
-                                .findFirst()
-                                .map(MultiblockInfoRecipeWrapper.class::cast)
-                                .map(MultiblockInfoRecipeWrapper::getCurrentRenderer)
-                                .orElse(null);
-
+                    if(!Loader.isModLoaded("jei")) {
+                        player.sendMessage(new TextComponentTranslation("metaitem.freedom_wrench.jei_missing"));
+                    } else if (mode == 3) { // building
+                        WorldSceneRenderer worldSceneRenderer = JEIOptional.getWorldSceneRenderer((MultiblockControllerBase) mte);
                         if (worldSceneRenderer != null) {
                             List<ItemStack> map = new ArrayList<>();
                             Set<BlockPos> exist = new HashSet<>();
@@ -196,5 +187,8 @@ public class FreedomWrenchBehaviour implements IItemBehaviour {
         byte mode = nbt.hasKey("mode") ? nbt.getByte("mode") : 0;
         lines.add(I18n.format("metaitem.freedom_wrench.mode." + mode));
         lines.add(I18n.format("metaitem.freedom_wrench.info.0"));
+        lines.add(I18n.format("metaitem.freedom_wrench.info.1"));
+        lines.add(I18n.format("metaitem.freedom_wrench.info.2"));
+        lines.add(I18n.format("metaitem.freedom_wrench.info.3"));
     }
 }

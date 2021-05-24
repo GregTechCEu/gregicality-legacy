@@ -164,8 +164,8 @@ public class WidgetOreList extends ScrollableListWidget {
                         if (tick % 20 == 0) {
                             List<ItemStack> list = OreDictUnifier.getAllWithOreDictionaryName(widgetMap.get(widget));
                             if (list.size() > 0 ) {
-                                slotWidget.getHandle().getItemHandler().extractItem(0,64, false);
-                                slotWidget.getHandle().getItemHandler().insertItem(0, list.get(Math.floorMod(tick / 20, list.size())), false);
+                                slotWidget.getHandle().decrStackSize(64);
+                                slotWidget.getHandle().putStack(list.get(Math.floorMod(tick / 20, list.size())));
                             }
                         }
                         slotWidget.setEnabled(widget.getPosition().y >= this.getPosition().y - 9 && widget.getPosition().y <= this.getPosition().y + this.getSize().height - 9);

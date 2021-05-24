@@ -22,6 +22,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -268,6 +269,18 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         isDistinct = data.getBoolean("Distinct");
+    }
+
+    @Override
+    public void writeInitialSyncData(PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
+        buf.writeBoolean(isDistinct);
+    }
+
+    @Override
+    public void receiveInitialSyncData(PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
+        this.isDistinct = buf.readBoolean();
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends GAMultiblockRecipeLogic {

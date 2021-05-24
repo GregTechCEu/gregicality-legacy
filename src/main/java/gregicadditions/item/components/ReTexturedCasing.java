@@ -7,6 +7,7 @@ import gregicadditions.client.model.IReTexturedModel;
 import gregicadditions.client.model.ReTexturedModel;
 import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.utils.BlockPatternChecker;
+import gregicadditions.utils.GALog;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.multiblock.BlockPattern;
@@ -19,16 +20,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.model.IModel;
+import net.minecraftforge.common.property.IExtendedBlockState;
+import net.minecraftforge.common.property.IUnlistedProperty;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -41,8 +43,7 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     private final static ResourceLocation FRAME_MODEL = new ResourceLocation("gtadditions","block/casing/frame");
     private final static ResourceLocation GLASS_MODEL = new ResourceLocation("gtadditions","block/casing/glass");
     private final ResourceLocation CORE_MODEL;
-    private BlockPos lastPos = BlockPos.ORIGIN;
-    private WeakReference<IBlockAccess> lastWorld = new WeakReference<>(null);
+    private ControllerProperty CONTROLLER;
 
 
     public ReTexturedCasing(ResourceLocation core) {
@@ -67,23 +68,14 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
         return new ResourceLocation[]{CORE_MODEL, FRAME_MODEL, GLASS_MODEL};
     }
 
-    private int color_casing = 0XFFFFFFFF; // aBGR
-
     @SideOnly(Side.CLIENT)
     @Override
     public ImmutableMap<String, String> reTextured(IBlockState blockState, EnumFacing enumFacing, ResourceLocation model) {
-        if (model == FRAME_MODEL && blockState != null && enumFacing == null) {
-            MultiblockControllerBase controller = findController();
+        if (model == FRAME_MODEL && blockState instanceof IExtendedBlockState && enumFacing == null) {
+            MultiblockControllerBase controller = ((IExtendedBlockState) blockState).getValue(CONTROLLER);
             if (controller == null) return null;
             ICubeRenderer texture = controller.getBaseTexture(null);
             if (texture == null) return null;
-            if (texture instanceof GAMetalCasing) {
-                int color = ((GAMetalCasing) texture).blockState
-                        .getBaseState()
-                        .getValue(((GAMetalCasing) texture).variantProperty)
-                        .materialRGB; // aRGB
-                color_casing = 0XFF000000 | ((color & 0X00FF0000) >> 16) | (color & 0X0000FF00) | ((color & 0X000000FF) << 16);
-            }
             return new ImmutableMap.Builder<String,String>()
                     .put("1", controller.getBaseTexture(null).getParticleSprite().getIconName())
                     .build();
@@ -94,15 +86,25 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     @SideOnly(Side.CLIENT)
     @Override
     public List<BakedQuad> reBakedQuad(IBlockState blockState, EnumFacing side, ResourceLocation model, List<BakedQuad> base) {
-        if (blockState != null && FRAME_MODEL == model && color_casing != 0XFFFFFFFF) {
-            for (BakedQuad quad : base) {
-                int[] vertexData = quad.getVertexData();
-                vertexData[3] = color_casing;
-                vertexData[10] = color_casing;
-                vertexData[17] = color_casing;
-                vertexData[24] = color_casing;
+        if (blockState instanceof IExtendedBlockState && FRAME_MODEL == model) {
+            MultiblockControllerBase controller = ((IExtendedBlockState) blockState).getValue(CONTROLLER);
+            if(controller != null) {
+                ICubeRenderer texture = controller.getBaseTexture(null);
+                if (texture instanceof GAMetalCasing) {
+                    int color = ((GAMetalCasing) texture).blockState
+                            .getBaseState()
+                            .getValue(((GAMetalCasing) texture).variantProperty)
+                            .materialRGB; // aRGB
+                    int color_casing = 0XFF000000 | ((color & 0X00FF0000) >> 16) | (color & 0X0000FF00) | ((color & 0X000000FF) << 16);
+                    for (BakedQuad quad : base) {
+                        int[] vertexData = quad.getVertexData();
+                        vertexData[3] = color_casing;
+                        vertexData[10] = color_casing;
+                        vertexData[17] = color_casing;
+                        vertexData[24] = color_casing;
+                    }
+                }
             }
-            color_casing = 0XFFFFFFFF;
         }
         return base;
     }
@@ -132,10 +134,11 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     }
 
     @Override
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        lastPos = new BlockPos(pos);
-        lastWorld = new WeakReference<>(worldIn);
-        return super.getActualState(state, worldIn, pos);
+    public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if (state instanceof IExtendedBlockState && FMLCommonHandler.instance().getEffectiveSide().isClient()) {
+            state = ((IExtendedBlockState) state).withProperty(CONTROLLER, findController(world, pos));
+        }
+        return super.getExtendedState(state, world, pos);
     }
 
     @Override
@@ -143,36 +146,30 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
         Class<T> enumClass = GTUtility.getActualTypeParameter(this.getClass(), ReTexturedCasing.class, 0);
         this.VARIANT = PropertyEnum.create("variant", enumClass);
         this.VALUES = enumClass.getEnumConstants();
-        return new BlockStateContainer(this, this.VARIANT);
+        CONTROLLER = new ControllerProperty();
+        return new BlockStateContainer.Builder(this).add(this.VARIANT).add(CONTROLLER).build();
     }
 
     @SideOnly(Side.CLIENT)
-    protected MultiblockControllerBase findController() {
+    protected MultiblockControllerBase findController(IBlockAccess world, BlockPos pos) {
         try {
-            IBlockAccess world = lastWorld.get();
-            if (world == null) {
+            if (world == null || pos == null) {
                 return null;
             }
             for (int x = 0; x < 10; x++) {
                 for (int y = 0; y < 10; y++) {
                     for (int z = 0; z < 10; z++) {
-                        for (BlockPos blockPos : new BlockPos[] {lastPos.add(x, y, z), lastPos.add(-x, y, z), lastPos.add(x, -y, z)
-                                , lastPos.add(x, y, -z), lastPos.add(-x, -y, z), lastPos.add(x, -y, -z)
-                                , lastPos.add(-x, y, -z), lastPos.add(-x, -y, -z)}) {
+                        for (BlockPos blockPos : new BlockPos[] {pos.add(x, y, z), pos.add(-x, y, z), pos.add(x, -y, z)
+                                , pos.add(x, y, -z), pos.add(-x, -y, z), pos.add(x, -y, -z)
+                                , pos.add(-x, y, -z), pos.add(-x, -y, -z)}) {
                             TileEntity te = world.getTileEntity(blockPos);
                             if (te instanceof MetaTileEntityHolder && ((MetaTileEntityHolder) te).getMetaTileEntity() instanceof MultiblockControllerBase) {
                                 MultiblockControllerBase controller = (MultiblockControllerBase) ((MetaTileEntityHolder) te).getMetaTileEntity();
-                                BlockPattern structurePattern = ObfuscationReflectionHelper
-                                        .getPrivateValue(MultiblockControllerBase.class, controller, "structurePattern");
-                                if(structurePattern != null) {
-                                    PatternMatchContext result = BlockPatternChecker
-                                            .checkPatternAt(structurePattern, controller.getWorld(), controller.getPos(),
-                                                    controller.getFrontFacing().getOpposite());
-                                    if (result != null && result.get("validPos") != null) {
-                                        List<BlockPos> validPos = result.get("validPos");
-                                        if (validPos.contains(lastPos)) {
-                                            return controller;
-                                        }
+                                PatternMatchContext result = BlockPatternChecker.checkPatternAt(controller);
+                                if (result != null && result.get("validPos") != null) {
+                                    List<BlockPos> validPos = result.get("validPos");
+                                    if (validPos.contains(pos)) {
+                                        return controller;
                                     }
                                 }
                             }
@@ -181,9 +178,9 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
                 }
             }
         } catch (Throwable e) {
+            GALog.logger.error(pos);
             e.printStackTrace();
         }
-        lastWorld = new WeakReference<>(null);
         return null;
     }
 
@@ -205,6 +202,28 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
     /** @deprecated */
     public boolean isFullCube(IBlockState state) {
         return true;
+    }
+
+    private static class ControllerProperty implements IUnlistedProperty<MultiblockControllerBase>{
+        @Override
+        public String getName() {
+            return "controller";
+        }
+
+        @Override
+        public boolean isValid(MultiblockControllerBase controller) {
+            return true;
+        }
+
+        @Override
+        public Class<MultiblockControllerBase> getType() {
+            return MultiblockControllerBase.class;
+        }
+
+        @Override
+        public String valueToString(MultiblockControllerBase controller) {
+            return controller == null ? "null" : controller.toString();
+        }
     }
 
 }
