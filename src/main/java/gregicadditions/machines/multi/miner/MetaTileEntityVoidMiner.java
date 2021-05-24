@@ -7,7 +7,6 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregtech.api.capability.IEnergyContainer;
@@ -54,7 +53,6 @@ import static gregicadditions.recipes.categories.handlers.VoidMinerHandler.*;
 import static gregicadditions.client.ClientHandler.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
-import static gregicadditions.recipes.VoidMinerOres.*;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
