@@ -269,9 +269,9 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Schematic
-        ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4)
-                .input(circuit, Good, 4)
-                .input(plate, StainlessSteel, 2)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(180).EUt(4)
+                .input(circuit, Basic, 2)
+                .input(plate, Steel, 2)
                 .outputs(SCHEMATIC.getStackForm())
                 .buildAndRegister();
 
