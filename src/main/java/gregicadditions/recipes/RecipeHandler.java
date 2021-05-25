@@ -1427,8 +1427,6 @@ public class RecipeHandler {
 
         for (IRecipe recipe : ForgeRegistries.RECIPES) {
 
-            GALog.logger.info("RECIPE NAME: {}", recipe.getRegistryName().toString());
-
             switch(getSingleInputCount(recipe)) {
                 case -1: continue;
                 case 1: generate1to9Recipes(recipe); break;
@@ -1491,13 +1489,14 @@ public class RecipeHandler {
         ItemStack input = getTopLeft(recipe);
         ItemStack output = recipe.getRecipeOutput();
 
+        // Exclude smallDust->dust recipes, handled elsewhere
         if (output.getCount() != 1
          || hasOrePrefix(input, "dustSmall"))
             return;
 
+        // Add Packager 2x2 Recipes
         if (GAConfig.GT5U.Packager2x2Recipes) {
 
-            // Add Packager 2x2 Recipes, excluding dusts
             PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
                     .inputs(CountableIngredient.from(input, 4))
                     .notConsumable(SCHEMATIC_2X2.getStackForm())
