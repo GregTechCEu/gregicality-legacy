@@ -616,6 +616,14 @@ public class RecipeOverride {
                 .output(dustSmall, PreciousMetal, 2)
                 .buildAndRegister();
 
+        // Precious Metal Dust from Netherrack
+        removeRecipesByInputs(MACERATOR_RECIPES, new ItemStack(Blocks.NETHERRACK));
+        MACERATOR_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .inputs(new ItemStack(Blocks.NETHERRACK))
+                .output(dust, Netherrack)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal), 500, 120)
+                .buildAndRegister();
+
         // GTNH Lava
         removeRecipesByInputs(CENTRIFUGE_RECIPES, Lava.getFluid(100));
         CENTRIFUGE_RECIPES.recipeBuilder().duration(80).EUt(80)
