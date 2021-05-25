@@ -505,7 +505,6 @@ public class GAMetaItem extends MaterialMetaItem {
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
-        MetaItems.COMPRESSED_CLAY.setInvisible();
         MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
         MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();
