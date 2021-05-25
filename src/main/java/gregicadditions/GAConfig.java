@@ -67,13 +67,15 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
-        @Config.Comment("Set these to false to disable the generated Compressor recipes for blocks")
-        @Config.Name("Compression - Generate Compressor recipes for blocks")
+        @Config.Comment("Various 2x2 and 3x3 Compression and Uncompression Recipes")
+        @Config.Name("Compression - Generate Compressor Recipes for blocks")
         public boolean GenerateCompressorRecipes = true;
-        @Config.Name("Compression - Remove 3x3 crafting recipes for blocks")
+        @Config.Name("Compression - Move 3x3 Crafting Recipes for blocks to the Packager (except tiny dusts)")
         public boolean Remove3x3BlockRecipes = true;
-        @Config.Name("Compression - Remove crafting recipes for uncompressing blocks")
+        @Config.Name("Compression - Move 1 to 9 Crafting Recipes to the Unpackager (except tiny dusts)")
         public boolean RemoveBlockUncraftingRecipes = true;
+        @Config.Name("Compression - Add 2x2 Crafting Recipes to the Packager")
+        public boolean Packager2x2Recipes = true;
 
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
@@ -302,15 +304,6 @@ public class GAConfig {
     public static Misc Misc = new Misc();
 
     public static class Misc {
-        @Config.Comment("Set these to false to disable the generated Packager and Unpackager recipes")
-        @Config.Name("Packaging - 1x1 recipes with 9 outputs can be automated with the Unpackaker")
-        public boolean Unpackager3x3Recipes = true;
-        @Config.Name("Packaging - 3x3 recipes can automated with the Packagers")
-        public boolean Packager3x3Recipes = true;
-        @Config.Name("Packaging - 2x2 recipes can automated with the Packagers")
-        public boolean Packager2x2Recipes = true;
-        @Config.Name("Packaging - Dust compressing can automated with the Packagers")
-        public boolean PackagerDustRecipes = true;
 
         @Config.Comment("Set this to false to disable the Forestry Integration")
         @Config.Name("Forestry's Ethanol and Seed Oil are used in recipes instead of GTCE's")
