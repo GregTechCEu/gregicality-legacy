@@ -4189,3 +4189,5 @@ gtadditions.multiblock.electric_implosion.description=An Implosion Compressor wi
 
 metaitem.shape.extruder.gear.small.name=Extruder Shape (Small Gear)
 metaitem.shape.extruder.gear.small.tooltip=Extruder Shape for making Small Gears
+metaitem.shape.extruder.rotor.name=Extruder Shape (Rotor)
+metaitem.shape.extruder.rotor.tooltip=Extruder Shape for making Rotors

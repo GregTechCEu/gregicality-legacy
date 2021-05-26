@@ -1,5 +1,6 @@
 package gregicadditions.recipes.categories;
 
+import appeng.util.item.ItemList;
 import gregicadditions.GAConfig;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.GAExplosive;
@@ -540,5 +541,28 @@ public class MetaItemRecipes {
                 'F', new ItemStack(Items.FLINT),
                 'G', new ItemStack(Blocks.GLASS),
                 'D', new ItemStack(Items.DIAMOND));
+
+        // Extruder Shapes
+        ModHandler.addShapedRecipe("shape_extruder_gear_small", SHAPE_EXTRUDER_SMALL_GEAR.getStackForm(),
+                "W S", "   ", "   ",
+                'S', SHAPE_EMPTY.getStackForm(),
+                'W', WIRE_CUTTER.getStackForm());
+
+        ModHandler.addShapedRecipe("shape_extruder_rotor", SHAPE_EXTRUDER_ROTOR.getStackForm(),
+                "  S", " W ", "   ",
+                'S', SHAPE_EMPTY.getStackForm(),
+                'W', WIRE_CUTTER.getStackForm());
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
+                .inputs(SHAPE_EMPTY.getStackForm())
+                .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR)
+                .outputs(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
+                .buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
+                .inputs(SHAPE_EMPTY.getStackForm())
+                .notConsumable(SHAPE_EXTRUDER_ROTOR)
+                .outputs(SHAPE_EXTRUDER_ROTOR.getStackForm())
+                .buildAndRegister();
     }
 }

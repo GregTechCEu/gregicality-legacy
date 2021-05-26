@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
@@ -726,9 +727,23 @@ public class RecipeHandler {
      *
      * + Curved Plate Rotor Recipes if enabled
      * + Assembler Rotor Recipe that GTCE removed
+     * + Extruder Rotor Recipe
      */
-    private static void processRotor(OrePrefix ingot, IngotMaterial material) {
+    private static void processRotor(OrePrefix rotor, IngotMaterial material) {
         if (!OreDictUnifier.get(rotor, material).isEmpty()) {
+
+            ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
+                    .input(plate, material, 4)
+                    .input(ring, material)
+                    .fluidInputs(SolderingAlloy.getFluid(32))
+                    .output(rotor, material)
+                    .buildAndRegister();
+
+            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
+                    .input(ingot, material, 5)
+                    .notConsumable(SHAPE_EXTRUDER_ROTOR)
+                    .output(rotor, material)
+                    .buildAndRegister();
 
             if (GAConfig.GT6.BendingRotors) {
 
@@ -740,21 +755,6 @@ public class RecipeHandler {
                         'C', new UnificationEntry(plateCurved, material),
                         'S', new UnificationEntry(screw, material),
                         'R', new UnificationEntry(ring, material));
-
-                ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                        .input(plateCurved, material, 4)
-                        .input(ring, material)
-                        .fluidInputs(SolderingAlloy.getFluid(32))
-                        .output(rotor, material)
-                        .buildAndRegister();
-            } else {
-
-                ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                        .input(plate, material, 4)
-                        .input(ring, material)
-                        .fluidInputs(SolderingAlloy.getFluid(32))
-                        .output(rotor, material)
-                        .buildAndRegister();
             }
         }
     }
@@ -977,7 +977,7 @@ public class RecipeHandler {
 
             removeRecipesByInputs(FORGE_HAMMER_RECIPES, OreDictUnifier.get(plate, material, 2));
 
-            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(120)
+            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
                     .input(ingot, material)
                     .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
                     .output(gearSmall, material)

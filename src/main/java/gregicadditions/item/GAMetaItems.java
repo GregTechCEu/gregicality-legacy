@@ -488,6 +488,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
 
     public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_SMALL_GEAR;
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_ROTOR;
 
 
     // GA oredict items
