@@ -1451,9 +1451,7 @@ public class RecipeHandler {
 
         // Exclude tinyDust->dust recipes, handled elsewhere
         if (output.getCount() != 1
-         || hasOrePrefix(input, "dustTiny")
-         || hasOrePrefix(input, "wireGt")
-         || hasOrePrefix(input, "cableGt"))
+         || hasOrePrefix(input, "dustTiny"))
             return;
 
         // Remove 3x3 Block Crafting to Packer
@@ -1491,7 +1489,7 @@ public class RecipeHandler {
         ItemStack input = getTopLeft(recipe);
         ItemStack output = recipe.getRecipeOutput();
 
-        // Exclude smallDust->dust recipes, handled elsewhere
+        // Exclude smallDust->dust recipes and wire/cable compacting, handled elsewhere
         if (output.getCount() != 1
          || hasOrePrefix(input, "dustSmall")
          || hasOrePrefix(input, "wireGt")
