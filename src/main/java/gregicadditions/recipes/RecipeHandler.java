@@ -1451,7 +1451,9 @@ public class RecipeHandler {
 
         // Exclude tinyDust->dust recipes, handled elsewhere
         if (output.getCount() != 1
-         || hasOrePrefix(input, "dustTiny"))
+         || hasOrePrefix(input, "dustTiny")
+         || hasOrePrefix(input, "wireGt")
+         || hasOrePrefix(input, "cableGt"))
             return;
 
         // Remove 3x3 Block Crafting to Packer
@@ -1491,7 +1493,9 @@ public class RecipeHandler {
 
         // Exclude smallDust->dust recipes, handled elsewhere
         if (output.getCount() != 1
-         || hasOrePrefix(input, "dustSmall"))
+         || hasOrePrefix(input, "dustSmall")
+         || hasOrePrefix(input, "wireGt")
+         || hasOrePrefix(input, "cableGt"))
             return;
 
         // Add Packager 2x2 Recipes
