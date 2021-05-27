@@ -854,14 +854,12 @@ public class GATileEntities {
         LARGE_NAQUADAH_REACTOR = GregTechAPI.registerMetaTileEntity(2561, new MetaTileEntityLargeNaquadahReactor(location("large_naquadah_reactor")));
         BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(2562, new MetaTileEntityBatteryTower(location("battery_tower")));
 
-        if (GAConfig.GT6.registerDrums) {
-            WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new MetaTileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
-            BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new MetaTileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
-            STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new MetaTileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
-            STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new MetaTileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
-            TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new MetaTileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
-            TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new MetaTileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
-        }
+        WOODEN_DRUM = GregTechAPI.registerMetaTileEntity(2195, new MetaTileEntityDrum(location("drum.wood"), Materials.Wood, 16000));
+        BRONZE_DRUM = GregTechAPI.registerMetaTileEntity(2196, new MetaTileEntityDrum(location("drum.bronze"), Materials.Bronze, 32000));
+        STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2197, new MetaTileEntityDrum(location("drum.steel"), Materials.Steel, 64000));
+        STAINLESS_STEEL_DRUM = GregTechAPI.registerMetaTileEntity(2198, new MetaTileEntityDrum(location("drum.stainless_steel"), Materials.StainlessSteel, 128000));
+        TITANIUM_DRUM = GregTechAPI.registerMetaTileEntity(2199, new MetaTileEntityDrum(location("drum.titanium"), Materials.Titanium, 192000));
+        TUNGSTENSTEEL_DRUM = GregTechAPI.registerMetaTileEntity(2200, new MetaTileEntityDrum(location("drum.tungstensteel"), Materials.TungstenSteel, 256000));
 
         if (GAConfig.GT5U.highTierPumps) {
             PUMP[4] = GregTechAPI.registerMetaTileEntity(2201, new MetaTileEntityPump(location("pump.iv"), 5));
@@ -875,14 +873,12 @@ public class GATileEntities {
             AIR_COLLECTOR[5] = GregTechAPI.registerMetaTileEntity(2206, new MetaTileEntityAirCollector(location("air_collector.luv"), 6));
         }
 
-        if (GAConfig.GT6.registerCrates) {
-            WOODEN_CRATE = GregTechAPI.registerMetaTileEntity(2207, new TileEntityCrate(location("crate.wood"), Materials.Wood, 36));
-            BRONZE_CRATE = GregTechAPI.registerMetaTileEntity(2208, new TileEntityCrate(location("crate.bronze"), Materials.Bronze, 54));
-            STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2209, new TileEntityCrate(location("crate.steel"), Materials.Steel, 72));
-            STAINLESS_STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2210, new TileEntityCrate(location("crate.stainless_steel"), Materials.StainlessSteel, 90));
-            TITANIUM_CRATE = GregTechAPI.registerMetaTileEntity(2211, new TileEntityCrate(location("crate.titanium"), Materials.Titanium, 108));
-            TUNGSTENSTEEL_CRATE = GregTechAPI.registerMetaTileEntity(2212, new TileEntityCrate(location("crate.tungstensteel"), Materials.TungstenSteel, 126));
-        }
+        WOODEN_CRATE = GregTechAPI.registerMetaTileEntity(2207, new TileEntityCrate(location("crate.wood"), Materials.Wood, 36));
+        BRONZE_CRATE = GregTechAPI.registerMetaTileEntity(2208, new TileEntityCrate(location("crate.bronze"), Materials.Bronze, 54));
+        STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2209, new TileEntityCrate(location("crate.steel"), Materials.Steel, 72));
+        STAINLESS_STEEL_CRATE = GregTechAPI.registerMetaTileEntity(2210, new TileEntityCrate(location("crate.stainless_steel"), Materials.StainlessSteel, 90));
+        TITANIUM_CRATE = GregTechAPI.registerMetaTileEntity(2211, new TileEntityCrate(location("crate.titanium"), Materials.Titanium, 108));
+        TUNGSTENSTEEL_CRATE = GregTechAPI.registerMetaTileEntity(2212, new TileEntityCrate(location("crate.tungstensteel"), Materials.TungstenSteel, 126));
 
         WORLD_ACCELERATOR[0] = GregTechAPI.registerMetaTileEntity(2213, new TileEntityWorldAccelerator(location("world_accelerator.lv"), 1));
         WORLD_ACCELERATOR[1] = GregTechAPI.registerMetaTileEntity(2214, new TileEntityWorldAccelerator(location("world_accelerator.mv"), 2));

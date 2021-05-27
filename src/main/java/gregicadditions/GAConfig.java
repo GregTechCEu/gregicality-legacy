@@ -43,14 +43,6 @@ public class GAConfig {
         @Config.Name("Wrenches are crafted with Plates instead of Ingots")
         public boolean ExpensiveWrenches = true;
 
-        @Config.Comment("Set this to false to disable Drums")
-        @Config.Name("Should Drums be registered?")
-        public boolean registerDrums = true;
-
-        @Config.Comment("Set this to false to disable Crates")
-        @Config.Name("Should Crates be registered?")
-        public boolean registerCrates = true;
-
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
         public boolean electrodes = true;

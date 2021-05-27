@@ -156,27 +156,22 @@ public class MachineCraftingRecipes {
 
         OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
         // Drums
-        if (GAConfig.GT6.registerDrums) {
-            ModHandler.addShapedRecipe("wooden_barrel", GATileEntities.WOODEN_DRUM.getStackForm(), "rSs", "PRP", "PRP", 'S', Items.SLIME_BALL, 'P', "plankWood", 'R', new UnificationEntry(stickLong, Iron));
+        ModHandler.addShapedRecipe("wooden_barrel", GATileEntities.WOODEN_DRUM.getStackForm(), "rSs", "PRP", "PRP", 'S', Items.SLIME_BALL, 'P', "plankWood", 'R', new UnificationEntry(stickLong, Iron));
 
-            ModHandler.addShapedRecipe("bronze_drum",          GATileEntities.BRONZE_DRUM.getStackForm(),          " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
-            ModHandler.addShapedRecipe("steel_drum",           GATileEntities.STEEL_DRUM.getStackForm(),           " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
-            ModHandler.addShapedRecipe("stainless_steel_drum", GATileEntities.STAINLESS_STEEL_DRUM.getStackForm(), " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, StainlessSteel), 'R', new UnificationEntry(stickLong, StainlessSteel));
-            ModHandler.addShapedRecipe("titanium_drum",        GATileEntities.TITANIUM_DRUM.getStackForm(),        " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Titanium),       'R', new UnificationEntry(stickLong, Titanium));
-            ModHandler.addShapedRecipe("tungstensteel_drum",   GATileEntities.TUNGSTENSTEEL_DRUM.getStackForm(),   " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, TungstenSteel),  'R', new UnificationEntry(stickLong, TungstenSteel));
-        }
+        ModHandler.addShapedRecipe("bronze_drum",          GATileEntities.BRONZE_DRUM.getStackForm(),          " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
+        ModHandler.addShapedRecipe("steel_drum",           GATileEntities.STEEL_DRUM.getStackForm(),           " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
+        ModHandler.addShapedRecipe("stainless_steel_drum", GATileEntities.STAINLESS_STEEL_DRUM.getStackForm(), " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, StainlessSteel), 'R', new UnificationEntry(stickLong, StainlessSteel));
+        ModHandler.addShapedRecipe("titanium_drum",        GATileEntities.TITANIUM_DRUM.getStackForm(),        " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Titanium),       'R', new UnificationEntry(stickLong, Titanium));
+        ModHandler.addShapedRecipe("tungstensteel_drum",   GATileEntities.TUNGSTENSTEEL_DRUM.getStackForm(),   " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, TungstenSteel),  'R', new UnificationEntry(stickLong, TungstenSteel));
 
         // Crates
-        if (GAConfig.GT6.registerCrates) {
+        ModHandler.addShapedRecipe("wooden_crate", GATileEntities.WOODEN_CRATE.getStackForm(), "RPR", "PsP", "RPR", 'P', "plankWood", 'R', new UnificationEntry(screw, Iron));
 
-            ModHandler.addShapedRecipe("wooden_crate", GATileEntities.WOODEN_CRATE.getStackForm(), "RPR", "PsP", "RPR", 'P', "plankWood", 'R', new UnificationEntry(screw, Iron));
-
-            ModHandler.addShapedRecipe("bronze_crate",          GATileEntities.BRONZE_CRATE.getStackForm(),          "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
-            ModHandler.addShapedRecipe("steel_crate",           GATileEntities.STEEL_CRATE.getStackForm(),           "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
-            ModHandler.addShapedRecipe("stainless_steel_crate", GATileEntities.STAINLESS_STEEL_CRATE.getStackForm(), "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, StainlessSteel), 'R', new UnificationEntry(stickLong, StainlessSteel));
-            ModHandler.addShapedRecipe("titanium_crate",        GATileEntities.TITANIUM_CRATE.getStackForm(),        "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Titanium),       'R', new UnificationEntry(stickLong, Titanium));
-            ModHandler.addShapedRecipe("tungstensteel_crate",   GATileEntities.TUNGSTENSTEEL_CRATE.getStackForm(),   "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, TungstenSteel),  'R', new UnificationEntry(stickLong, TungstenSteel));
-        }
+        ModHandler.addShapedRecipe("bronze_crate",          GATileEntities.BRONZE_CRATE.getStackForm(),          "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
+        ModHandler.addShapedRecipe("steel_crate",           GATileEntities.STEEL_CRATE.getStackForm(),           "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
+        ModHandler.addShapedRecipe("stainless_steel_crate", GATileEntities.STAINLESS_STEEL_CRATE.getStackForm(), "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, StainlessSteel), 'R', new UnificationEntry(stickLong, StainlessSteel));
+        ModHandler.addShapedRecipe("titanium_crate",        GATileEntities.TITANIUM_CRATE.getStackForm(),        "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Titanium),       'R', new UnificationEntry(stickLong, Titanium));
+        ModHandler.addShapedRecipe("tungstensteel_crate",   GATileEntities.TUNGSTENSTEEL_CRATE.getStackForm(),   "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, TungstenSteel),  'R', new UnificationEntry(stickLong, TungstenSteel));
 
         // Energy Converters
         for (final EnergyConverterType type : EnergyConverterType.values()) {
