@@ -427,6 +427,17 @@ public class RecipeOverride {
         removeRecipeByName("gtadditions:block_compress_clay");
         removeRecipeByName("gtadditions:block_decompress_clay");
 
+        ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
+                new ItemStack(Items.CLAY_BALL),
+                "formWood");
+
+        ModHandler.addShapedRecipe("eight_clay_brick", COMPRESSED_CLAY.getStackForm(8),
+                "BBB", "BFB", "BBB",
+                'B', new ItemStack(Items.CLAY_BALL),
+                'F', "formWood");
+
+        ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
+
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(200).EUt(2)
                 .inputs(new ItemStack(Items.CLAY_BALL))
                 .notConsumable(SHAPE_MOLD_INGOT)
