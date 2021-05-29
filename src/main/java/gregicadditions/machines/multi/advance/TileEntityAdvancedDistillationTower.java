@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.advance;
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
@@ -102,8 +103,8 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
                 .where('Z', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
-                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.INPUT_ENERGY)))
-                .where('X', fluidExportPredicate.or(statePredicate(getCasingState())))
+                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('X', fluidExportPredicate.or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('#', tieredCasing1Predicate().or(tieredCasing2Predicate()))
                 .validateLayer(1, exactlyOneHatch)
                 .validateLayer(2, exactlyOneHatch)

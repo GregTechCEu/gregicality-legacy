@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing2;
@@ -25,7 +26,7 @@ import static gregtech.api.unification.material.Materials.*;
 public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
     };
 
     public MetaTileEntityElectricImplosion(ResourceLocation metaTileEntityId) {

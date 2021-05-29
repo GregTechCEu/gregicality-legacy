@@ -30,10 +30,11 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-				.aisle("EXX", "XXX", "XXX")
-				.aisle("IXX", "S#X", "XXX")
-				.aisle("OXX", "XXX", "XXX")
+				.aisle("XXX", "IXX", "XXX")
+				.aisle("MXX", "S#X", "XXX")
+				.aisle("EXX", "OXX", "XXX")
 				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.WEST)
+				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.WEST)
 				.where('#', Blocks.AIR.getDefaultState())

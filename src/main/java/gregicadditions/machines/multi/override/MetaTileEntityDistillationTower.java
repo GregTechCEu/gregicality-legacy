@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.override;
 
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
@@ -61,8 +62,8 @@ public class MetaTileEntityDistillationTower extends gregtech.common.metatileent
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', this.selfPredicate())
                 .where('Z', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
-                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY)))
-                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())))
+                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('#', isAirPredicate()).validateLayer(1, exactlyOneHatch).validateLayer(2, exactlyOneHatch)
                 .build();
     }

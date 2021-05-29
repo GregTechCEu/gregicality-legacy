@@ -22,8 +22,9 @@ public class QubitComputerInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         return Lists.newArrayList(MultiblockShapeInfo.builder()
                 .aisle("CCCC", "CCCC", "CCCC")
-                .aisle("IOEC", "CSCC", "CCCC")
+                .aisle("IOEC", "CSMC", "CCCC")
                 .where('S', GATileEntities.QUBIT_COMPUTER, EnumFacing.SOUTH)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('C', GAMetaBlocks.QUANTUM_CASING.getState(GAQuantumCasing.CasingType.COMPUTER))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                 .where('O', GATileEntities.QBIT_OUTPUT_HATCH[0], EnumFacing.SOUTH)

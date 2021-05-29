@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.advance;
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -99,9 +100,10 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
         return FactoryBlockPattern.start(LEFT, DOWN, BACK)
                 .aisle("CCC", "CEC", "CCC")
                 .aisle("CAC", "F#F", "CCC").setRepeatable(8)
-                .aisle("CCC", "CSC", "CCC")
+                .aisle("KKK", "KSK", "KKK")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
+                .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('E', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)))
                 .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
                 .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING)))

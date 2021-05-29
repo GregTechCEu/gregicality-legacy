@@ -6,6 +6,7 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
@@ -51,7 +52,7 @@ import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
 
     private long energyStored;

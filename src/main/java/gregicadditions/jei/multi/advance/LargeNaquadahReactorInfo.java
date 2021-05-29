@@ -31,8 +31,9 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
         for (int num = 0; num < 10; num++) {
             builder.aisle("CCCCC", "CYYYC", "CYTYF", "CYYYC", "CCCCC");
         }
-        builder.aisle("CCCCC", "CCCCC", "CCSCC", "CCCCC", "CCCCC")
+        builder.aisle("CCCCC", "CCMCC", "CCSCC", "CCCCC", "CCCCC")
                 .where('S', GATileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.SOUTH)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('C', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)

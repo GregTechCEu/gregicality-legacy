@@ -27,8 +27,9 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
         GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
         builder.aisle("XEX", "XXX", "XXX", "XXX", "XXX")
                 .aisle("FXf", "XMX", "X#X", "XPX", "XXX")
-                .aisle("ISi", "XXX", "XXX", "XXX", "XXX")
+                .aisle("ISi", "XHX", "XXX", "XXX", "XXX")
                 .where('S', GATileEntities.PLASMA_CONDENSER, EnumFacing.SOUTH)
+                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('P', GAMetaBlocks.PUMP_CASING.getState(PumpCasing.CasingType.PUMP_UHV))

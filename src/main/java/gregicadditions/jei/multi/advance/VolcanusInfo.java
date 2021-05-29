@@ -35,9 +35,10 @@ public class VolcanusInfo extends MultiblockInfoPage {
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IFX", "CCC", "CCC", "XXX")
-						.aisle("SXE", "C#C", "C#C", "XXX")
+						.aisle("SXE", "C#C", "C#C", "MXX")
 						.aisle("ODX", "CCC", "CCC", "XXX")
 						.where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 						.where('S', GATileEntities.VOLCANUS, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)

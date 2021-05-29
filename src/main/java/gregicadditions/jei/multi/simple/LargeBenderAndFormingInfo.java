@@ -26,10 +26,11 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XEX", "XXX")
-					.aisle("IXX", "X#X", "XXX")
+					.aisle("IXX", "H#X", "XXX")
 					.aisle("OPX", "MSM", "PPP")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
+					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 					.where('X', TileEntityLargeBenderAndForming.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)

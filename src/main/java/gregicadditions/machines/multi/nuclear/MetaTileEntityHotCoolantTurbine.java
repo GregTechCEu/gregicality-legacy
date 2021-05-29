@@ -2,6 +2,7 @@ package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
@@ -137,7 +138,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() { //todo why does this not form in jei
         return turbineType == null ? null :
                 FactoryBlockPattern.start()
                         .aisle("CCCC", "CHHC", "CCCC")
@@ -155,7 +156,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     public MultiblockAbility[] getAllowedAbilities() {
         return turbineType.hasOutputHatch ?
                 new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS} :
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS};
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
     }
 
     public IBlockState getCasingState() {

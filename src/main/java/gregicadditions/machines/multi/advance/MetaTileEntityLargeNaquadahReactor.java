@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
@@ -84,7 +85,7 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
                 .aisle("CFFFC", "FYYYF", "FYTYF", "FYYYF", "CFFFC").setRepeatable(10)
                 .aisle("CCCCC", "CCCCC", "CCSCC", "CCCCC", "CCCCC")
                 .where('S', selfPredicate())
-                .where('C', statePredicate(getCasingState()))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_UV)))
                 .where('Y', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL)))
                 .where('E', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)))

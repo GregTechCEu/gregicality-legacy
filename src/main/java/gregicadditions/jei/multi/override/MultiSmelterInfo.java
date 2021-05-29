@@ -36,9 +36,10 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IXX", "CCC", "XXX")
-						.aisle("SXE", "C#C", "XXX")
+						.aisle("SXE", "C#C", "MXX")
 						.aisle("OXX", "CCC", "XXX")
 						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 						.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)

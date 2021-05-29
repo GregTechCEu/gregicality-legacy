@@ -110,6 +110,7 @@ public class ClientHandler {
     public static final TextureArea BRONZE_IN_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_in_slot_overlay.png");
     public static final TextureArea BRONZE_OUT_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_out_slot_overlay.png");
     public static final TextureArea BRONZE_TANK_ICON = TextureArea.fullImage("textures/gui/steam/bronze_tank_icon.png");
+    public static final TextureArea MAINTENANCE_ICON = TextureArea.fullImage("textures/gui/maintenance/button_maintenance.png");
     public static SimpleOverlayRenderer STEAM_PUMP_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_steam_pump");
     public static OrientedOverlayRenderer BEE_ATTRACTOR = new OrientedOverlayRenderer("machines/attractor", OverlayFace.FRONT, OverlayFace.SIDE);
     public static OrientedOverlayRenderer FREEZER_OVERLAY = new OrientedOverlayRenderer("machines/freezer", OverlayFace.FRONT);
@@ -122,6 +123,9 @@ public class ClientHandler {
     public static OrientedOverlayRenderer ADVANCED_ALLOY_OVERLAY = new OrientedOverlayRenderer("machines/advanced_alloy_smelter", OverlayFace.FRONT);
     public static SimpleOverlayRenderer HIGH_ENERGY_IN = new SimpleOverlayRenderer("overlay/machine/transformer/overlay_energy_in");
     public static SimpleOverlayRenderer HIGH_ENERGY_OUT = new SimpleOverlayRenderer("overlay/machine/transformer/overlay_energy_out");
+    public static SimpleOverlayRenderer MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_maintenance");
+    public static SimpleOverlayRenderer AUTO_MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_auto_maintenance");
+    public static SimpleOverlayRenderer FULLAUTO_MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_fullauto_maintenance");
     // cover
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID = new SimpleOverlayRenderer("cover/cover_interface_fluid");
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID_GLASS = new SimpleOverlayRenderer("cover/cover_interface_fluid_glass");

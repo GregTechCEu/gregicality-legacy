@@ -29,10 +29,11 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("CXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("SFX", "X#X", "X#X", "X#X", "X#X", "XXX")
+                .aisle("SFX", "M#X", "X#X", "X#X", "X#X", "XXX")
                 .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', TileEntityAdvancedDistillationTower.casingState)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)
                 .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.EV], EnumFacing.WEST)

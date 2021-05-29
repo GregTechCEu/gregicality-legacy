@@ -1744,7 +1744,11 @@ gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet
-gtadditions.machine.solar_fluid_sampler.missing_solar=Need solar pannel on top
+gtadditions.machine.solar_fluid_sampler.missing_solar=Requires LV Solar Pannel On Top!
+
+gtadditions.machine.maintenance_hatch.name=Maintenance Hatch
+gtadditions.machine.auto_maintenance_hatch.name=Auto-Taping Maintenance Hatch
+gtadditions.machine.fullauto_maintenance_hatch.name=Full-Auto Maintenance Hatch
 
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
@@ -2865,6 +2869,7 @@ gtadditions.multiblock.universal.distinct=Distinct Buses:
 gtadditions.multiblock.universal.distinct.yes=§aYes
 gtadditions.multiblock.universal.distinct.no=§cNo
 gtadditions.multiblock.universal.distinct.info=If enabled, each bus will be treated as fully distinct from eachother for recipe lookup. Useful for example for Extruder Shapes, Laser Lenses, etc..
+gtadditions.multiblock.universal.problems=Problems: %s
 gtadditions.multiblock.fusion_reactor.heat=Heat: %d
 gtadditions.multiblock.fusion_reactor.tooltip.1=EU To Start: %s
 gtadditions.multiblock.central_monitor.height=Screen Height:

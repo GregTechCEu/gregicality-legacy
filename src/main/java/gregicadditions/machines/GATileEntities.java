@@ -25,6 +25,11 @@ import gregicadditions.machines.multi.miner.*;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
+import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
+import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
+import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
+import gregicadditions.machines.multi.miner.Miner;
+import gregicadditions.machines.multi.multiblockpart.*;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityGasCentrifuge;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
@@ -32,8 +37,6 @@ import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamHatch;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamItemBus;
 import gregicadditions.machines.multi.steam.MetaTileEntitySteamOven;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
@@ -47,7 +50,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.api.util.GTLog;
@@ -251,6 +253,7 @@ public class GATileEntities {
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
 
     public static TileEntitySteamMiner STEAM_MINER;
+    public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
     public static void init() {
 
@@ -1167,7 +1170,10 @@ public class GATileEntities {
             }
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
-        STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
+        STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner"))); // TODO
+        MAINTENANCE_HATCH[0] = GregTechAPI.registerMetaTileEntity(4212, new MetaTileEntityMaintenanceHatch(location("maintenance_hatch"), 1));
+        MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
+        MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

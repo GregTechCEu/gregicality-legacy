@@ -26,9 +26,10 @@ public class CryogenicFreezerInfo  extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("XXX", "BXH", "XXX")
-                .aisle("XXX", "C#E", "XXX")
+                .aisle("MXX", "C#E", "XXX")
                 .aisle("XXX", "IXF", "XXX")
                 .where('C', GATileEntities.CRYOGENIC_FREEZER, EnumFacing.WEST)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)

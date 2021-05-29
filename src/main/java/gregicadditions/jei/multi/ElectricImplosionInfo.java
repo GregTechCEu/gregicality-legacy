@@ -30,10 +30,11 @@ public class ElectricImplosionInfo extends MultiblockInfoPage {
         shape.add(builder
                 .aisle("IXX", "AAA", "AAA", "AAA", "XXX")
                 .aisle("SXE", "A#A", "A#A", "A#A", "XXX")
-                .aisle("OXX", "AAA", "AAA", "AAA", "XXX")
+                .aisle("OMX", "AAA", "AAA", "AAA", "XXX")
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[1], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[1], EnumFacing.WEST)
                 .where('S', getController(), EnumFacing.WEST)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('A', GAMetaBlocks.NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM))
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                 .where('E', GATileEntities.ENERGY_INPUT[0], EnumFacing.EAST)

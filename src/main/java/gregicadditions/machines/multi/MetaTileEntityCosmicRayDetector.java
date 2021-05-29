@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
@@ -96,7 +97,8 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY,
+            GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
     };
 
     private long maxVoltage = 0;

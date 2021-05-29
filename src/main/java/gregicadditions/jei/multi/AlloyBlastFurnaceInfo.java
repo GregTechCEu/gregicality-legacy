@@ -28,12 +28,14 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         List<MultiblockShapeInfo> shape = new ArrayList<>();
         GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
-        shape.add(builder.aisle("OXX", "YYY", "YYY", "XXX")
-                .aisle("SXX", "Y#Y", "Y#Y", "XXE")
+        shape.add(builder
+                .aisle("OXX", "YYY", "YYY", "XXX")
+                .aisle("SXE", "Y#Y", "Y#Y", "MXX")
                 .aisle("IXX", "YYY", "YYY", "XXX")
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.WEST)
                 .where('S', GATileEntities.ALLOY_BLAST_FURNACE, EnumFacing.WEST)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('Y', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))
                 .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST)

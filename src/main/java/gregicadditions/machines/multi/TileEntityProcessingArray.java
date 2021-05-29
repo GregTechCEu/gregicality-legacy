@@ -3,6 +3,7 @@ package gregicadditions.machines.multi;
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
 import gregicadditions.item.GAMetaBlocks;
@@ -47,7 +48,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);

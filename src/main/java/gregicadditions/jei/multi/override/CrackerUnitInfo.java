@@ -35,10 +35,11 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
             if (!Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName())) {
 
                 shapeInfo.add(MultiblockShapeInfo.builder()
-                        .aisle("XCXCX", "XCSCF", "XCXCX")
+                        .aisle("XCMCX", "XCSCF", "XCXCX")
                         .aisle("XCXCX", "H###X", "XCXCX")
                         .aisle("XCXCX", "XCECF", "XCXCX")
                         .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
+                        .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                         .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                         .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                         .where('#', Blocks.AIR.getDefaultState())

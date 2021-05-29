@@ -22,16 +22,17 @@ public class LargeCuttingInfo extends MultiblockInfoPage {
 	}
 
 	@Override
-	public List<MultiblockShapeInfo> getMatchingShapes() {
+	public List<MultiblockShapeInfo> getMatchingShapes() { //todo why isn't this forming
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XXX", "XXX")
 					.aisle("XXX", "XMX", "XXX")
 					.aisle("XXX", "X#X", "XXX")
 					.aisle("IXX", "XCX", "XXX")
-					.aisle("OEX", "XSX", "XXX")
+					.aisle("OME", "HSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_CUTTING, EnumFacing.SOUTH)
+					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('X', TileEntityLargeCutting.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)

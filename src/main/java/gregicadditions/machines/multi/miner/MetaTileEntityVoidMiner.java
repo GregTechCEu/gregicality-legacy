@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregtech.api.capability.IEnergyContainer;
@@ -58,7 +59,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
     private final int maxTemperature;
     private static final int CONSUME_START = 100;
     private final int tier;

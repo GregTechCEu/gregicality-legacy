@@ -26,16 +26,17 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
     }
 
     @Override
-    public List<MultiblockShapeInfo> getMatchingShapes() {
+    public List<MultiblockShapeInfo> getMatchingShapes() { //TODO change pattern to have the controller face the viewer in jei
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
             shapeInfo.add(MultiblockShapeInfo.builder()
                     .aisle("XXX", "XXX", "XXX", "XXX")
                     .aisle("XXX", "XCX", "XRX", "XXX")
                     .aisle("XXX", "XPX", "XPX", "XXX")
                     .aisle("XXX", "XCX", "XRX", "XXX")
-                    .aisle("OEX", "ISX", "XFX", "###")
+                    .aisle("OEX", "ISM", "XFX", "###")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.LuV], EnumFacing.SOUTH)
                     .where('S', GATileEntities.LARGE_ASSEMBLER, EnumFacing.SOUTH)
+                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                     .where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)

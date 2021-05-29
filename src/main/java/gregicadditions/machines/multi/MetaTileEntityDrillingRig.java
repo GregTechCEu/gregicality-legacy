@@ -8,6 +8,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.capability.IEnergyContainer;
@@ -51,7 +52,7 @@ import static gregtech.api.unification.material.Materials.StainlessSteel;
 public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;

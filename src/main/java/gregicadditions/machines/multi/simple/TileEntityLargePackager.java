@@ -52,7 +52,7 @@ import static gregtech.api.unification.material.Materials.Titanium;
 
 public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
     public RecipeMap<?> recipeMap;
 

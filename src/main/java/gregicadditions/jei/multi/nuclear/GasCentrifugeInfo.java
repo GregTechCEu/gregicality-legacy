@@ -25,12 +25,13 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo.Builder shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("#FEY#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
+                .aisle("#FEM#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("OYYYY", "YYYYY", "#CCC#", "#####", "#####", "#####", "#####")
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("#IYY#", "#YYY#", "#####", "#####", "#####", "#####", "#####")
                 .where('S', GATileEntities.GAS_CENTRIFUGE, EnumFacing.NORTH)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                 .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                 .where('Z', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
