@@ -2,11 +2,17 @@ package gregicadditions.capabilities.impl;
 
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -14,13 +20,24 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController {
 
+    private final List<ItemStack> recoveryItems = new ArrayList<ItemStack>() {{
+        add(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Carbon));
+    }};
+    private final boolean hasMuffler;
 
     public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
+        this(metaTileEntityId, recipeMap, false);
+    }
+
+    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler) {
         super(metaTileEntityId, recipeMap);
+        this.hasMuffler = hasMuffler;
     }
 
     /**
@@ -129,5 +146,18 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         }
 
         textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problems", this.maintenance_problems));
+    }
+
+    protected void addRecoveryItems() {
+        List<MetaTileEntityMufflerHatch> mufflers = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH);
+        if (mufflers != null && mufflers.get(0) != null) {
+            MetaTileEntityMufflerHatch muffler = mufflers.get(0);
+            muffler.recoverItems(recoveryItems);
+        }
+    }
+
+    protected void setRecoveryItems(ItemStack... recoveryItems) {
+        this.recoveryItems.clear();
+        this.recoveryItems.addAll(Arrays.asList(recoveryItems));
     }
 }

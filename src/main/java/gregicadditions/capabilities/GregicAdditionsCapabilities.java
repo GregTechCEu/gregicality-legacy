@@ -1,6 +1,7 @@
 package gregicadditions.capabilities;
 
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -24,5 +25,6 @@ public class GregicAdditionsCapabilities {
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
     public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_CAPABILITY = new MultiblockAbility<>();
+    public static final MultiblockAbility<MetaTileEntityMufflerHatch> MUFFLER_HATCH = new MultiblockAbility<>();
 
 }
