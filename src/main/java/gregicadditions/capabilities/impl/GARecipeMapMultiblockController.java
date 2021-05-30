@@ -9,6 +9,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.util.XSTR;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import gregtech.api.unification.OreDictUnifier;
@@ -33,6 +34,11 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     private final boolean hasMuffler;
     private final boolean hasMaintenance;
 
+    public static final XSTR XSTR_RAND = new XSTR();
+
+    private int timeActive;
+    private static final int minimumMaintenanceTime = 5184000; // 72 real-life hours = 5184000 ticks
+
     public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         this(metaTileEntityId, recipeMap, false, true);
     }
@@ -41,6 +47,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super(metaTileEntityId, recipeMap);
         this.hasMuffler = hasMuffler;
         this.hasMaintenance = hasMaintenance;
+        this.maintenance_problems = 0b000000;
     }
 
     /**
@@ -48,7 +55,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      * A value of 0 means the problem is not fixed, else it is fixed
      * Value positions correspond to the following from left to right: 0=Wrench, 1=Screwdriver, 2=Soft Hammer, 3=Hard Hammer, 4=Wire Cutter, 5=Crowbar
      */
-    protected byte maintenance_problems = 0b000000;
+    protected byte maintenance_problems;
 
     /**
      * Sets the maintenance problem corresponding to index to fixed
@@ -63,7 +70,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      * Used to cause a single random maintenance problem
      */
     protected void causeProblems() {
-        this.maintenance_problems &= ~(1 << ((int) (Math.random()*5)));
+        this.maintenance_problems &= ~(1 << ((int) (XSTR_RAND.nextFloat()*5)));
     }
 
     /**
@@ -79,7 +86,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      * @return the amount of maintenance problems the multiblock has
      */
     public int getNumProblems() {
-        return Integer.bitCount(maintenance_problems);
+        return 6 - Integer.bitCount(maintenance_problems);
     }
 
     /**
@@ -88,6 +95,17 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      */
     public boolean hasProblems() {
         return this.maintenance_problems < 63;
+    }
+
+    /**
+     * Used to calculate whether a maintenance problem should happen based on machine time active
+     * @param duration duration in ticks to add to the counter of active time
+     */
+    public void calculateMaintenance(int duration) {
+        timeActive += duration;
+        if (minimumMaintenanceTime - timeActive <= 0)
+            if(XSTR_RAND.nextFloat() - 0.75f >= 0)
+                causeProblems();
     }
 
     @Override
@@ -161,7 +179,13 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             }
 
             // Maintenance Text
-            if (this.hasProblems()) {
+            if (hasMuffler && !isMufflerFaceFree()) {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.muffler_obstructed")
+                        .setStyle(new Style().setColor(TextFormatting.RED)
+                                .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                        new TextComponentTranslation("gtadditions.multiblock.universal.muffler_obstructed.tooltip")))));
+
+            } else if (this.hasProblems()) {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.has_problems")
                         .setStyle(new Style().setColor(TextFormatting.DARK_RED)));
 
@@ -216,10 +240,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.no_problems")
                         .setStyle(new Style().setColor(TextFormatting.GREEN)));
             }
-            if (hasMuffler && !isMufflerFaceFree()) {
-                textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.muffler_obstructed")
-                        .setStyle(new Style().setColor(TextFormatting.RED)));
-            }
         } else {
             ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
             tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
@@ -230,11 +250,8 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     }
 
     protected void outputRecoveryItems() {
-        List<MetaTileEntityMufflerHatch> mufflers = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH);
-        if (mufflers != null && mufflers.get(0) != null) {
-            MetaTileEntityMufflerHatch muffler = mufflers.get(0);
-            muffler.recoverItems(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
-        }
+        MetaTileEntityMufflerHatch muffler = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH).get(0);
+        muffler.recoverItems(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
     }
 
     @Override
@@ -256,7 +273,9 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         return isStructureFormed() && recipeMapWorkable.isActive();
     }
 
-    public boolean hasMuffler() {
+    public boolean hasMufflerHatch() {
         return hasMuffler;
     }
+
+    public boolean hasMaintenanceHatch() { return hasMaintenance; }
 }

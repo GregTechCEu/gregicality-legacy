@@ -1749,6 +1749,10 @@ gtadditions.machine.solar_fluid_sampler.missing_solar=Requires LV Solar Pannel O
 gtadditions.machine.maintenance_hatch.name=Maintenance Hatch
 gtadditions.machine.auto_maintenance_hatch.name=Auto-Taping Maintenance Hatch
 gtadditions.machine.fullauto_maintenance_hatch.name=Full-Auto Maintenance Hatch
+gtadditions.machine.muffler_hatch.lv.name=LV Muffler Hatch
+gtadditions.machine.muffler_hatch.mv.name=MV Muffler Hatch
+gtadditions.machine.muffler_hatch.hv.name=HV Muffler Hatch
+gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§r of the time!
 
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
@@ -2883,6 +2887,8 @@ gtadditions.multiblock.universal.problem.wirecutter=Wires burned out.
 gtadditions.multiblock.universal.problem.wirecutter.tooltip=Wire Cutter
 gtadditions.multiblock.universal.problem.crowbar=That doesn't belong there.
 gtadditions.multiblock.universal.problem.crowbar.tooltip=Crowbar
+gtadditions.multiblock.universal.muffler_obstructed=Muffler Hatch is Obstructed!
+gtadditions.multiblock.universal.muffler_obstructed.tooltip= Muffler Hatch must have a block of airspace in front of it.
 gtadditions.multiblock.fusion_reactor.heat=Heat: %d
 gtadditions.multiblock.fusion_reactor.tooltip.1=EU To Start: %s
 gtadditions.multiblock.central_monitor.height=Screen Height:

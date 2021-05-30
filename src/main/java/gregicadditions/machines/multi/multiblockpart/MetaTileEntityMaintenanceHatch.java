@@ -5,9 +5,9 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -126,9 +126,9 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
      * @param entityPlayer The player to get duct tape or tools from when a regular hatch
      */
     private void fixProblems(EntityPlayer entityPlayer) {
-        if (!(this.getController() instanceof LargeSimpleRecipeMapMultiblockController))
+        if (!(this.getController() instanceof GARecipeMapMultiblockController))
             return;
-        LargeSimpleRecipeMapMultiblockController controller = (LargeSimpleRecipeMapMultiblockController) this.getController();
+        GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) this.getController();
 
         if (!controller.hasProblems())
             return;
@@ -224,7 +224,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         for (MetaToolValueItem tool : tools) {
             for (ItemStack itemStack : entityPlayer.inventory.mainInventory) {
                 if (itemStack.isItemEqualIgnoreDurability(tool.getStackForm())) {
-                    ((LargeSimpleRecipeMapMultiblockController) this.getController()).setMaintenanceFixed(problemIndex);
+                    ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(problemIndex);
                     damageTool(itemStack);
                 }
             }
@@ -247,16 +247,16 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
      * Fixes every maintenance problem
      */
     private void fixEverything() {
-        if (this.getController() instanceof LargeSimpleRecipeMapMultiblockController)
-            for (int i = 0; i < 6; i++) ((LargeSimpleRecipeMapMultiblockController) this.getController()).setMaintenanceFixed(i);
+        if (this.getController() instanceof GARecipeMapMultiblockController)
+            for (int i = 0; i < 6; i++) ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(i);
     }
 
     @Override
     public void update() {
         super.update();
         if (this.type != 0) {
-            if (this.getController() instanceof LargeSimpleRecipeMapMultiblockController) {
-                if (getOffsetTimer() % 20 == 0 && ((LargeSimpleRecipeMapMultiblockController) this.getController()).hasProblems() && this.getController().isStructureFormed()) {
+            if (this.getController() instanceof GARecipeMapMultiblockController) {
+                if (getOffsetTimer() % 20 == 0 && ((GARecipeMapMultiblockController) this.getController()).hasProblems() && this.getController().isStructureFormed()) {
                     fixProblems(null);
                 }
             }
