@@ -50,7 +50,7 @@ import static gregicadditions.client.ClientHandler.TALONITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer {
+public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer { //todo maintenance
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 

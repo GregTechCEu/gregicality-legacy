@@ -39,7 +39,7 @@ import java.util.function.Predicate;
 import static gregtech.api.render.Textures.HEAT_PROOF_CASING;
 import static gregtech.api.unification.material.Materials.Invar;
 
-public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities.multi.electric.MetaTileEntityMultiFurnace {
+public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities.multi.electric.MetaTileEntityMultiFurnace { //todo extend GARecipeMapMultiblockController
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY

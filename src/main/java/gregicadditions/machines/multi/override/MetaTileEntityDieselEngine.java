@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import static gregtech.api.render.Textures.STABLE_TITANIUM_CASING;
 import static gregtech.api.unification.material.Materials.Titanium;
 
-public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityDieselEngine {
+public class MetaTileEntityDieselEngine extends gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityDieselEngine { //todo maintenance on generators
 	public MetaTileEntityDieselEngine(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId);
 	}

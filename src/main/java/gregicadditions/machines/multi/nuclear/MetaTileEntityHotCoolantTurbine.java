@@ -36,7 +36,7 @@ import static gregicadditions.client.ClientHandler.MARAGING_STEEL_250_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
-public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController {
+public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController { //todo maintenance
 
     public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility();
 

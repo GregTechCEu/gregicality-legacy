@@ -1,37 +1,44 @@
 package gregicadditions.machines.multi.override;
 
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.capability.IEnergyContainer;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.HoverEvent;
 
-import javax.annotation.Nonnull;
-import java.util.List;
-
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
 import static gregtech.api.render.Textures.FROST_PROOF_CASING;
-import static gregtech.api.unification.material.Materials.Aluminium;
 
-public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentities.multi.electric.MetaTileEntityVacuumFreezer {
+public class MetaTileEntityVacuumFreezer extends GARecipeMapMultiblockController {
+
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+
     public MetaTileEntityVacuumFreezer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId);
+        super(metaTileEntityId, VACUUM_RECIPES);
         this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
+    }
+
+    @Override
+    protected BlockPattern createStructurePattern() {
+        return FactoryBlockPattern.start()
+                .aisle("XXX", "XXX", "XXX")
+                .aisle("XXX", "X#X", "XXX")
+                .aisle("XXX", "XSX", "XXX")
+                .setAmountAtLeast('L', 14)
+                .where('S', selfPredicate())
+                .where('L', statePredicate(getCasingState()))
+                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('#', isAirPredicate())
+                .build();
     }
 
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
@@ -43,39 +50,7 @@ public class MetaTileEntityVacuumFreezer extends gregtech.common.metatileentitie
         return FROST_PROOF_CASING;
     }
 
-    @Override
     public IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
-    }
-
-    @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        if (isStructureFormed()) {
-            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-                long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-            }
-
-            if (!recipeMapWorkable.isWorkingEnabled()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-            } else if (recipeMapWorkable.isActive()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
-            } else {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-            }
-
-            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-            }
-        } else {
-            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip", new Object[0]);
-            tooltip.setStyle((new Style()).setColor(TextFormatting.GRAY));
-            textList.add((new TextComponentTranslation("gregtech.multiblock.invalid_structure", new Object[0])).setStyle((new Style()).setColor(TextFormatting.RED).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
-        }
     }
 }

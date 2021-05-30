@@ -39,7 +39,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Helium;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
-public class HyperReactor extends FueledMultiblockController {
+public class HyperReactor extends FueledMultiblockController { //todo generator maintenance
 
 
     public HyperReactor(ResourceLocation metaTileEntityId, long maxVoltage) {

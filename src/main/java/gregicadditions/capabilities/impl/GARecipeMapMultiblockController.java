@@ -137,6 +137,63 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             if (recipeMapWorkable.isHasNotEnoughEnergy()) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             }
+
+            // Maintenance Text
+            if (this.hasProblems()) {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.has_problems")
+                        .setStyle(new Style().setColor(TextFormatting.DARK_RED)));
+
+                // Wrench
+                if (((this.maintenance_problems >> 0) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.wrench")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.wrench.tooltip")))));
+                }
+
+                // Screwdriver
+                if (((this.maintenance_problems >> 1) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.screwdriver")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.screwdriver.tooltip")))));
+                }
+
+                // Soft Hammer
+                if (((this.maintenance_problems >> 2) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.softhammer")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.softhammer.tooltip")))));
+                }
+
+                // Hard Hammer
+                if (((this.maintenance_problems >> 3) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.hardhammer")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.hardhammer.tooltip")))));
+                }
+
+                // Wirecutter
+                if (((this.maintenance_problems >> 4) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.wirecutter")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.wirecutter.tooltip")))));
+                }
+
+                // Crowbar
+                if (((this.maintenance_problems >> 5) & 1) == 0) {
+                    textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.crowbar")
+                            .setStyle(new Style().setColor(TextFormatting.RED)
+                                    .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                            new TextComponentTranslation("gtadditions.multiblock.universal.problem.crowbar.tooltip")))));
+                }
+            } else {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.no_problems")
+                        .setStyle(new Style().setColor(TextFormatting.GREEN)));
+            }
         } else {
             ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
             tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
@@ -144,8 +201,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                     .setStyle(new Style().setColor(TextFormatting.RED)
                             .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
-
-        textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problems", this.maintenance_problems));
     }
 
     protected void addRecoveryItems() {

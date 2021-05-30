@@ -57,7 +57,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
-public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase {
+public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo Maintenance
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
     private final int maxTemperature;

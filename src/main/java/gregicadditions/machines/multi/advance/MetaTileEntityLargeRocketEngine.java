@@ -33,7 +33,7 @@ import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController {
+public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController { //todo generator maintenance
 
 
     public MetaTileEntityLargeRocketEngine(ResourceLocation metaTileEntityId) {

@@ -27,9 +27,10 @@ public class VacuumFreezerInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("XXX", "BXH", "XXX")
-                .aisle("XXX", "C#E", "XXX")
+                .aisle("MXX", "C#E", "XXX")
                 .aisle("XXX", "IXF", "XXX")
                 .where('C', GATileEntities.VACUUM_FREEZER, EnumFacing.WEST)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)

@@ -5,6 +5,7 @@ import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
@@ -42,7 +43,7 @@ import java.util.function.Predicate;
 import static gregtech.api.render.Textures.HEAT_PROOF_CASING;
 import static gregtech.api.unification.material.Materials.Invar;
 
-public class MetaTileEntityElectricBlastFurnace extends RecipeMapMultiblockController {
+public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockController {
 	public MetaTileEntityElectricBlastFurnace(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES);
 		this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
@@ -112,36 +113,7 @@ public class MetaTileEntityElectricBlastFurnace extends RecipeMapMultiblockContr
 
 	@Override
 	protected void addDisplayText(List<ITextComponent> textList) {
-		if (!isStructureFormed()) {
-			ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
-			tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
-			textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure")
-					.setStyle(new Style().setColor(TextFormatting.RED)
-							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
-		}
-		if (isStructureFormed()) {
-			IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-			if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-				long maxVoltage = energyContainer.getInputVoltage();
-				String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-				textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-			}
-
-			if (!recipeMapWorkable.isWorkingEnabled()) {
-				textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-			} else if (recipeMapWorkable.isActive()) {
-				textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-				int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-				textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
-			} else {
-				textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-			}
-
-			if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-				textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-			}
-		}
+		super.addDisplayText(textList);
 		if (isStructureFormed()) {
 			textList.add(new TextComponentTranslation("gregtech.multiblock.blast_furnace.max_temperature", blastFurnaceTemperature));
 		}

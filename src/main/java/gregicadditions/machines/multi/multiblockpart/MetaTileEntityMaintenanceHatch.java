@@ -97,6 +97,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         }
     }
 
+    //todo don't accept items if not type 1
     @Override
     protected IItemHandlerModifiable createImportItemHandler() {
         return new ItemStackHandler(1);

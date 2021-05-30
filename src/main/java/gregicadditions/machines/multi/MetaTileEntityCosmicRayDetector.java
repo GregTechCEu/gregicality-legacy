@@ -59,7 +59,7 @@ import java.util.function.Predicate;
 import static gregicadditions.client.ClientHandler.QUANTUM_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
-public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
+public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase { //todo maintenance, controller turns on when running
 
     public MetaTileEntityCosmicRayDetector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -73,11 +73,11 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
             return;
         }
 
-        if (getTimer() % 20 == 4) {
+        if (getOffsetTimer() % 20 == 4) {
             canSeeSky = canSeeSky();
         }
         if (canSeeSky && !hasEnoughEnergy) {
-            if (getTimer() % 20 == 8) {
+            if (getOffsetTimer() % 20 == 8) {
                 hasEnoughEnergy = drainEnergy();
             }
         }

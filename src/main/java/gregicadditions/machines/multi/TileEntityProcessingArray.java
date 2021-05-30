@@ -85,41 +85,15 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (isStructureFormed()) {
-            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-                long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-            }
+        super.addDisplayText(textList);
 
+        if (isStructureFormed()) {
             String myRecipeMap = "recipemap." + ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName + ".name";
             if (myRecipeMap != null) {
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
                         Math.min(getStackInSlot().getCount(), GAConfig.multis.processingArray.processingArrayMachineLimit)).setStyle(new Style().setColor(TextFormatting.AQUA)));
             }
-
-            if (!recipeMapWorkable.isWorkingEnabled()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-            } else if (recipeMapWorkable.isActive()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
-            } else {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-            }
-
-            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-            }
-        } else {
-            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
-            tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure")
-                    .setStyle(new Style().setColor(TextFormatting.RED)
-                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
     }
 

@@ -98,12 +98,11 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
         Predicate<BlockWorldState> fluidExportPredicate = countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
         Predicate<PatternMatchContext> exactlyOneHatch = context -> context.getInt("HatchesAmount") == 1;
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("YSY", "YZY", "YYY")
+                .aisle("YSY", "YYY", "YYY")
                 .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
-                .where('Z', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
-                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('X', fluidExportPredicate.or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('#', tieredCasing1Predicate().or(tieredCasing2Predicate()))
                 .validateLayer(1, exactlyOneHatch)

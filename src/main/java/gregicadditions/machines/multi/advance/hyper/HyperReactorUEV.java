@@ -35,7 +35,7 @@ import java.util.Objects;
 
 import static gregtech.api.unification.material.Materials.*;
 
-public class HyperReactorUEV extends FueledMultiblockController {
+public class HyperReactorUEV extends FueledMultiblockController { //todo generator maintenance
 
 
     public HyperReactorUEV(ResourceLocation metaTileEntityId, long maxVoltage) {

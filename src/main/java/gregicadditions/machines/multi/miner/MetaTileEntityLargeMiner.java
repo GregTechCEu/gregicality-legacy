@@ -68,7 +68,7 @@ import java.util.stream.IntStream;
 import static gregtech.api.unification.material.Materials.HSSG;
 
 
-public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner {
+public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner { //todo maintenance
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
     public final Miner.Type type;

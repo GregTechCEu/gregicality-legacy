@@ -27,9 +27,10 @@ public class ImplosionCompressorInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
 				.aisle("XXX", "XBX", "XXX")
-				.aisle("XXX", "C#E", "XXX")
+				.aisle("MXX", "C#E", "XXX")
 				.aisle("XXX", "XIX", "XXX")
 				.where('C', GATileEntities.IMPLOSION_COMPRESSOR, EnumFacing.WEST)
+				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)

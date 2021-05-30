@@ -2,7 +2,6 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
@@ -17,6 +16,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
@@ -43,7 +43,7 @@ import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
+public class TileEntityFusionReactor extends RecipeMapMultiblockController {
     private final int tier;
     private EnergyContainerList inputEnergyContainers;
     private long heat = 0; // defined in TileEntityFusionReactor but serialized in FusionRecipeLogic

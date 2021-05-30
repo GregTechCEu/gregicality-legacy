@@ -29,7 +29,7 @@ public class LargeCuttingInfo extends MultiblockInfoPage {
 					.aisle("XXX", "XMX", "XXX")
 					.aisle("XXX", "X#X", "XXX")
 					.aisle("IXX", "XCX", "XXX")
-					.aisle("OME", "HSX", "XXX")
+					.aisle("OHE", "XSX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_CUTTING, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)

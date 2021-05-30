@@ -35,7 +35,7 @@ import java.util.Objects;
 import static gregtech.api.unification.material.Materials.Naquadria;
 import static gregtech.api.unification.material.Materials.Radon;
 
-public class HyperReactorUHV extends FueledMultiblockController {
+public class HyperReactorUHV extends FueledMultiblockController { //todo generator maintenance
 
 
     public HyperReactorUHV(ResourceLocation metaTileEntityId, long maxVoltage) {
