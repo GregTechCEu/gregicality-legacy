@@ -5,6 +5,8 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,24 +22,25 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController {
 
     private final List<ItemStack> recoveryItems = new ArrayList<ItemStack>() {{
-        add(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Carbon));
+        add(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Ash));
     }};
     private final boolean hasMuffler;
+    private final boolean hasMaintenance;
 
     public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        this(metaTileEntityId, recipeMap, false);
+        this(metaTileEntityId, recipeMap, false, true);
     }
 
-    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler) {
+    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler, boolean hasMaintenance) {
         super(metaTileEntityId, recipeMap);
         this.hasMuffler = hasMuffler;
+        this.hasMaintenance = hasMaintenance;
     }
 
     /**
@@ -85,6 +88,25 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      */
     public boolean hasProblems() {
         return this.maintenance_problems < 63;
+    }
+
+    @Override
+    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
+        boolean canForm = super.checkStructureComponents(parts, abilities);
+        if (!canForm)
+            return false;
+
+        int mufflerCount = abilities.getOrDefault(GregicAdditionsCapabilities.MUFFLER_HATCH, Collections.emptyList()).size();
+        int maintenanceCount = abilities.getOrDefault(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY, Collections.emptyList()).size();
+
+        if (hasMuffler) {
+            if (mufflerCount != 1)
+                return false;
+        } else {
+            if (mufflerCount != 0)
+                return false;
+        }
+        return hasMaintenance ? maintenanceCount == 1 : maintenanceCount == 0;
     }
 
     @Override
@@ -203,16 +225,24 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         }
     }
 
-    protected void addRecoveryItems() {
+    protected void outputRecoveryItems() {
         List<MetaTileEntityMufflerHatch> mufflers = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH);
         if (mufflers != null && mufflers.get(0) != null) {
             MetaTileEntityMufflerHatch muffler = mufflers.get(0);
-            muffler.recoverItems(recoveryItems);
+            muffler.recoverItems(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
         }
     }
 
     protected void setRecoveryItems(ItemStack... recoveryItems) {
         this.recoveryItems.clear();
         this.recoveryItems.addAll(Arrays.asList(recoveryItems));
+    }
+
+    public boolean isActive() {
+        return isStructureFormed() && recipeMapWorkable.isActive();
+    }
+
+    public boolean hasMuffler() {
+        return hasMuffler;
     }
 }

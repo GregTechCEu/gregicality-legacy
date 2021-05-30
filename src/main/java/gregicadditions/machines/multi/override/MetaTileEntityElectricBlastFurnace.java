@@ -45,7 +45,7 @@ import static gregtech.api.unification.material.Materials.Invar;
 
 public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockController {
 	public MetaTileEntityElectricBlastFurnace(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES);
+		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES, true, true);
 		this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
 	}
 
@@ -70,13 +70,14 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
 				.aisle("XXX", "CCC", "CCC", "XXX")
-				.aisle("XXX", "C#C", "C#C", "XXX")
+				.aisle("XXX", "C#C", "C#C", "XMX")
 				.aisle("XSX", "CCC", "CCC", "XXX")
-				.setAmountAtLeast('L', 10)
+				.setAmountAtLeast('L', 8)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
+                .where('M', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
 				.where('#', isAirPredicate())
 				.build();
 	}

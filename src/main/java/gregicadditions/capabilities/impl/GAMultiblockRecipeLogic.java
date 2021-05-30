@@ -36,4 +36,16 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
             return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
         }
     }
+
+    @Override
+    protected void completeRecipe() {
+        super.completeRecipe();
+        RecipeMapMultiblockController controller = (RecipeMapMultiblockController) getMetaTileEntity();
+        if (controller instanceof GARecipeMapMultiblockController) {
+            GARecipeMapMultiblockController gaController = (GARecipeMapMultiblockController) controller;
+            if (gaController.hasMuffler()) {
+                gaController.outputRecoveryItems();
+            }
+        }
+    }
 }

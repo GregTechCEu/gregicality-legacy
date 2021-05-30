@@ -126,6 +126,7 @@ public class ClientHandler {
     public static SimpleOverlayRenderer MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_maintenance");
     public static SimpleOverlayRenderer AUTO_MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_auto_maintenance");
     public static SimpleOverlayRenderer FULLAUTO_MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_fullauto_maintenance");
+    public static SimpleOverlayRenderer MUFFLER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/muffler_overlay");
     // cover
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID = new SimpleOverlayRenderer("cover/cover_interface_fluid");
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID_GLASS = new SimpleOverlayRenderer("cover/cover_interface_fluid_glass");
