@@ -43,7 +43,7 @@ public class MetalCasing1 extends VariantBlock<MetalCasing1.CasingType> {
         INCONEL_625("casing_inconel_625", Inconel625),
         GRISIUM("casing_grisium", Grisium),
         EGLIN_STEEL("casing_eglin_steel", EglinSteel),
-        BABBIT_ALLOY("casing_babbit_alloy", BabbittAlloy),
+        BABBITT_ALLOY("casing_babbitt_alloy", BabbittAlloy),
         HG_1223("casing_hg_1223", HG1223),
         TUMBAGA("casing_tumbaga", Tumbaga),
         TALONITE("casing_talonite", Talonite),
@@ -77,7 +77,7 @@ public class MetalCasing1 extends VariantBlock<MetalCasing1.CasingType> {
                 case "casing_inconel_625": { return INCONEL_625_CASING; }
                 case "casing_grisium": { return GRISIUM_CASING; }
                 case "casing_eglin_steel": { return EGLIN_STEEL_CASING; }
-                case "casing_babbit_alloy": { return BABBIT_ALLOY_CASING; }
+                case "casing_babbitt_alloy": { return BABBITT_ALLOY_CASING; }
                 case "casing_hg_1223": { return HG_1223_CASING; }
                 case "casing_tumbaga": { return TUMBAGA_CASING; }
                 case "casing_talonite": { return TALONITE_CASING; }

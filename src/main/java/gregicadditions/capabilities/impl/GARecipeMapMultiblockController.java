@@ -3,11 +3,13 @@ package gregicadditions.capabilities.impl;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.XSTR;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,6 +19,7 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -26,11 +29,15 @@ import net.minecraft.util.text.event.HoverEvent;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static gregicadditions.capabilities.MultiblockDataCodes.STORE_MAINTENANCE;
+import static gregicadditions.capabilities.MultiblockDataCodes.STORE_TAPED;
+
 public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController {
 
     private final List<ItemStack> recoveryItems = new ArrayList<ItemStack>() {{
         add(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Ash));
     }};
+
     private final boolean hasMuffler;
     private final boolean hasMaintenance;
 
@@ -38,6 +45,9 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
 
     private int timeActive;
     private static final int minimumMaintenanceTime = 5184000; // 72 real-life hours = 5184000 ticks
+
+    // Used for data preservation with Maintenance Hatch
+    private boolean storedTaped = false;
 
     public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         this(metaTileEntityId, recipeMap, false, true);
@@ -102,10 +112,52 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      * @param duration duration in ticks to add to the counter of active time
      */
     public void calculateMaintenance(int duration) {
+        MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+        if (maintenanceHatch.getType() == 2) {
+            return;
+        }
+
         timeActive += duration;
         if (minimumMaintenanceTime - timeActive <= 0)
-            if(XSTR_RAND.nextFloat() - 0.75f >= 0)
+            if(XSTR_RAND.nextFloat() - 0.75f >= 0) {
                 causeProblems();
+                maintenanceHatch.setTaped(false);
+            }
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+        if (hasMaintenance) {
+            MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+            if (maintenanceHatch.getType() == 2) {
+                this.maintenance_problems = 0b111111;
+            } else {
+                readMaintenanceData(maintenanceHatch);
+                if (maintenanceHatch.getType() == 0 && storedTaped) {
+                    maintenanceHatch.setTaped(true);
+                    storeTaped(false);
+                }
+            }
+        }
+    }
+
+    private void readMaintenanceData(MetaTileEntityMaintenanceHatch hatch) {
+        if (hatch.hasMaintenanceData()) {
+            Tuple<Byte, Integer> data = hatch.readMaintenanceData();
+            this.maintenance_problems = data.getFirst();
+            this.timeActive = data.getSecond();
+        }
+    }
+
+    @Override
+    public void invalidateStructure() {
+        if (hasMaintenance) {
+            MetaTileEntityMaintenanceHatch maintenance = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+            if (maintenance.getType() != 2)
+                maintenance.storeMaintenanceData(maintenance_problems, timeActive);
+        }
+        super.invalidateStructure();
     }
 
     @Override
@@ -131,6 +183,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         data.setByte("Maintenance", maintenance_problems);
+        data.setInteger("ActiveTimer", timeActive);
         return data;
     }
 
@@ -138,20 +191,30 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         maintenance_problems = data.getByte("Maintenance");
+        timeActive = data.getInteger("ActiveTimer");
     }
 
     @Override
     public void writeInitialSyncData(PacketBuffer buf) {
         super.writeInitialSyncData(buf);
         buf.writeByte(maintenance_problems);
+        buf.writeInt(timeActive);
     }
 
     @Override
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
-        this.maintenance_problems = buf.readByte();
+        maintenance_problems = buf.readByte();
+        timeActive = buf.readInt();
     }
 
+    @Override
+    public void receiveCustomData(int dataId, PacketBuffer buf) {
+        super.receiveCustomData(dataId, buf);
+        if (dataId == STORE_TAPED) {
+            storedTaped = buf.readBoolean();
+        }
+    }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
@@ -251,12 +314,12 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
 
     protected void outputRecoveryItems() {
         MetaTileEntityMufflerHatch muffler = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH).get(0);
-        muffler.recoverItems(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
+        muffler.recoverItemsTable(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
     }
 
     @Override
     protected void updateFormedValid() {
-        if (isMufflerFaceFree())
+        if (!hasMuffler || isMufflerFaceFree())
             super.updateFormedValid();
     }
 
@@ -277,5 +340,14 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         return hasMuffler;
     }
 
-    public boolean hasMaintenanceHatch() { return hasMaintenance; }
+    public boolean hasMaintenanceHatch() {
+        return hasMaintenance;
+    }
+
+    public void storeTaped(boolean isTaped) {
+        this.storedTaped = isTaped;
+        writeCustomData(STORE_TAPED, buf -> {
+            buf.writeBoolean(isTaped);
+        });
+    }
 }

@@ -1,10 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
-import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.IMultiRecipe;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.RobotArmCasing;
 import gregicadditions.item.metal.MetalCasing1;
@@ -21,18 +18,10 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,35 +32,29 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
-import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
 import static gregicadditions.client.ClientHandler.HG_1223_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregtech.api.unification.material.Materials.Titanium;
 
-public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
+public class TileEntityLargePackager extends MultiRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
-    public RecipeMap<?> recipeMap;
-
-    private static final RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
-            RecipeMaps.PACKER_RECIPES,
-            RecipeMaps.UNPACKER_RECIPES
-    };
-    private int pos;
-
-
     public TileEntityLargePackager(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, GAConfig.multis.largePackager.euPercentage, GAConfig.multis.largePackager.durationPercentage, GAConfig.multis.largePackager.chancedBoostPercentage, GAConfig.multis.largePackager.stack);
-        this.recipeMap = recipeMap;
-        pos = Arrays.asList(possibleRecipe).indexOf(recipeMap);
+        super(metaTileEntityId, recipeMap, GAConfig.multis.largePackager.euPercentage, GAConfig.multis.largePackager.durationPercentage, GAConfig.multis.largePackager.chancedBoostPercentage, GAConfig.multis.largePackager.stack, new RecipeMap<?>[]{
+                RecipeMaps.PACKER_RECIPES, RecipeMaps.UNPACKER_RECIPES});
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
         return new TileEntityLargePackager(metaTileEntityId, RecipeMaps.PACKER_RECIPES);
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        if (recipeMapIndex == 1)
+            return Textures.UNPACKER_OVERLAY;
+        return Textures.PACKER_OVERLAY;
     }
 
     @Override
@@ -109,50 +92,6 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
         super.addInformation(stack, player, tooltip, advanced);
     }
 
-
-    @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
-    }
-
-    @Override
-    public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        if (!getWorld().isRemote) {
-            boolean isEmpty = IntStream.range(0, getInputInventory().getSlots())
-                    .mapToObj(i -> getInputInventory().getStackInSlot(i))
-                    .allMatch(ItemStack::isEmpty);
-            if (!isEmpty) {
-                return false;
-            }
-
-            if (playerIn.isSneaking())
-                this.pos = (pos - 1 < 0 ? possibleRecipe.length - 1 : pos) % possibleRecipe.length;
-            else
-                this.pos = (pos + 1) % possibleRecipe.length;
-
-            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-            this.recipeMap = possibleRecipe[pos];
-        }
-
-        return true; // return true here on the server to keep the GUI closed
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
-        super.writeToNBT(data);
-        data.setTag("Recipe", new NBTTagInt(pos));
-        return data;
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound data) {
-        super.readFromNBT(data);
-        this.pos = data.getInteger("Recipe");
-        ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-        this.recipeMap = possibleRecipe[pos];
-    }
-
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing side) {
         T capabilityResult = super.getCapability(capability, side);
@@ -160,16 +99,6 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
             return (T) this;
         }
         return capabilityResult;
-    }
-
-    @Override
-    public RecipeMap<?>[] getRecipes() {
-        return possibleRecipe;
-    }
-
-    @Override
-    public int getCurrentRecipe() {
-        return pos;
     }
 
     @Override
@@ -184,6 +113,6 @@ public class TileEntityLargePackager extends LargeSimpleRecipeMapMultiblockContr
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return (pos == 1) ? Textures.UNPACKER_OVERLAY : Textures.PACKER_OVERLAY;
+        return (this.getRecipeMapIndex() == 1) ? Textures.UNPACKER_OVERLAY : Textures.PACKER_OVERLAY;
     }
 }

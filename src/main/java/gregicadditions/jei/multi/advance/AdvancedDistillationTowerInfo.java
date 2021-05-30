@@ -50,4 +50,9 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{I18n.format("gregtech.multiblock.advanced_distillation_tower.description1")};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.7f;
+    }
 }

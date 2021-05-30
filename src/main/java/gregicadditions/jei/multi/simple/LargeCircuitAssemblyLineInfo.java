@@ -78,4 +78,9 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
     }
 
 
+    @Override
+    public float getDefaultZoom() {
+        return 0.9f;
+    }
+
 }

@@ -3,11 +3,13 @@ package gregicadditions.machines.multi.multiblockpart;
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.utils.GALog;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -19,6 +21,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.items.MetaItems;
@@ -27,10 +30,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import gregtech.api.gui.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.*;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -38,11 +39,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gregicadditions.client.ClientHandler.MAINTENANCE_ICON;
+import static gregicadditions.capabilities.MultiblockDataCodes.*;
 
 public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<MetaTileEntityMaintenanceHatch> {
 
     private ItemStackHandler inventory;
     private final byte type; // Type 0 is regular, 1 is auto taping, 2 is full auto
+    private boolean isTaped;
+
+    // Used to store state temporarily if the Controller is broken
+    private byte problems = -1;
+    private int timeActive = -1;
 
     private final List<MetaToolValueItem> wrenches = new ArrayList<MetaToolValueItem>() {{
         add(MetaItems.WRENCH);
@@ -90,9 +97,14 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
+
         if (shouldRenderOverlay()) {
 
-            SimpleOverlayRenderer renderer = getTier() == 9 ? ClientHandler.FULLAUTO_MAINTENANCE_OVERLAY : getTier() == 5 ? ClientHandler.AUTO_MAINTENANCE_OVERLAY : ClientHandler.MAINTENANCE_OVERLAY;
+            SimpleOverlayRenderer renderer =
+                    getTier() == 9 ? ClientHandler.FULLAUTO_MAINTENANCE_OVERLAY
+                  : getTier() == 5 ? ClientHandler.AUTO_MAINTENANCE_OVERLAY
+                  : isTaped ? ClientHandler.MAINTENANCE_OVERLAY_TAPED
+                  : ClientHandler.MAINTENANCE_OVERLAY;
             renderer.renderSided(getFrontFacing(), renderState, translation, pipeline);
         }
     }
@@ -113,6 +125,35 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         super.initializeInventory();
         this.inventory = new ItemStackHandler(1);
         this.itemInventory = this.inventory;
+    }
+
+    public void setTaped(boolean isTaped) {
+        this.isTaped = isTaped;
+        if (!getWorld().isRemote) {
+            writeCustomData(IS_TAPED, buf -> buf.writeBoolean(isTaped));
+            markDirty();
+        }
+    }
+
+    public void storeMaintenanceData(byte problems, int timeActive) {
+        this.problems = problems;
+        this.timeActive = timeActive;
+        if (!getWorld().isRemote) {
+            writeCustomData(STORE_MAINTENANCE, buf -> {
+                buf.writeByte(problems);
+                buf.writeInt(timeActive);
+            });
+        }
+    }
+
+    public boolean hasMaintenanceData() {
+        return problems != -1;
+    }
+
+    public Tuple<Byte, Integer> readMaintenanceData() {
+        Tuple<Byte, Integer> data = new Tuple<>(problems, timeActive);
+        storeMaintenanceData((byte) -1, -1);
+        return data;
     }
 
     @Override
@@ -140,11 +181,15 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
 
                 // For every slot in the player's main inventory, try to duct tape fix
                 for (int i = 0; i < entityPlayer.inventory.mainInventory.size(); i++) {
-                    if (consumeDuctTape(new ItemStackHandler(entityPlayer.inventory.mainInventory), i)) { //todo duct tape overlay on hatch
+                    if (consumeDuctTape(new ItemStackHandler(entityPlayer.inventory.mainInventory), i)) {
                         fixEverything();
+                        setTaped(true);
                         break;
                     }
                 }
+
+                if (isTaped)
+                    break;
 
                 // For each problem the multi has, try to fix with tools
                 byte problems = controller.getProblems();
@@ -157,12 +202,10 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
             }
             case 1: { // Consume Duct Tape for auto taping repair, then fix everything
                 if(!consumeDuctTape(this.inventory, 0)) //todo make this do something (redstone?) if it fails or is out of tape
+                    fixEverything();
                     break;
             }
-            case 2: { // Fix everything for full auto repair
-                fixEverything();
-                break;
-            }
+            // Fully automatic hatch never lets maintenance change elsewhere
         }
     }
 
@@ -226,6 +269,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
                 if (itemStack.isItemEqualIgnoreDurability(tool.getStackForm())) {
                     ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(problemIndex);
                     damageTool(itemStack);
+                    this.setTaped(false);
                 }
             }
         }
@@ -251,6 +295,26 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
             for (int i = 0; i < 6; i++) ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(i);
     }
 
+    /**
+     * @return maintenance hatch type, bounded [0, 3)
+     */
+    public int getType() {
+        return this.type;
+    }
+
+    @Override
+    protected boolean canMachineConnectRedstone(EnumFacing side) {
+        return super.canMachineConnectRedstone(side);
+    }
+
+    @Override
+    public void onRemoval() {
+        GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) getController();
+        if (!getWorld().isRemote && controller != null)
+            controller.storeTaped(isTaped);
+        super.onRemoval();
+    }
+
     @Override
     public void update() {
         super.update();
@@ -264,9 +328,22 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     }
 
     @Override
+    public void receiveCustomData(int dataId, PacketBuffer buf) {
+        super.receiveCustomData(dataId, buf);
+        if (dataId == IS_TAPED) {
+            this.isTaped = buf.readBoolean();
+            scheduleRenderUpdate();
+        } else if (dataId == STORE_MAINTENANCE) {
+            this.problems = buf.readByte();
+            this.timeActive = buf.readInt();
+        }
+    }
+
+    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         data.setTag("Inventory", this.inventory.serializeNBT());
+        data.setBoolean("Taped", this.isTaped);
         return data;
     }
 
@@ -274,6 +351,19 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         this.inventory.deserializeNBT(data.getCompoundTag("Inventory"));
+        this.isTaped = data.getBoolean("Taped");
+    }
+
+    @Override
+    public void writeInitialSyncData(PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
+        buf.writeBoolean(isTaped);
+    }
+
+    @Override
+    public void receiveInitialSyncData(PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
+        this.isTaped = buf.readBoolean();
     }
 
     @Override
@@ -319,5 +409,9 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     @Override
     public void registerAbilities(List<MetaTileEntityMaintenanceHatch> list) {
         list.add(this);
+    }
+
+    public boolean isTaped() {
+        return isTaped;
     }
 }

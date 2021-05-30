@@ -46,4 +46,10 @@ public class ElectricImplosionInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{I18n.format("gtadditions.multiblock.electric_implosion.description")};
     }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.7f;
+    }
 }

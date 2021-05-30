@@ -52,4 +52,9 @@ public class LargeMinerInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{"Temporary Placeholder"};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.5f;
+    }
 }

@@ -54,4 +54,10 @@ public class HyperReactor3Info extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[] {"Temporary Placeholder"};
     }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.3f;
+    }
 }

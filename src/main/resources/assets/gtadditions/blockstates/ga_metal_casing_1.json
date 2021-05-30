@@ -58,9 +58,9 @@
           "all": "gtadditions:blocks/casings/eglin_steel"
         }
       },
-      "casing_babbit_alloy": {
+      "casing_babbitt_alloy": {
         "textures": {
-          "all": "gtadditions:blocks/casings/babbit_alloy"
+          "all": "gtadditions:blocks/casings/babbitt_alloy"
         }
       },
       "casing_hg_1223": {

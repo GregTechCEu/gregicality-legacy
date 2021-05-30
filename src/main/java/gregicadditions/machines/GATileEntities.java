@@ -1178,7 +1178,7 @@ public class GATileEntities {
         MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
 
         id = 4215;
-        for (int i = 1; i < MUFFLER_HATCH.length; i++)
+        for (int i = 0; i < MUFFLER_HATCH.length; i++)
             MUFFLER_HATCH[i] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i, i * 6)); // todo recovery amount logic
     }
 

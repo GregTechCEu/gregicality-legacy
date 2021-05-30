@@ -117,6 +117,6 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
 
     @Override
     public float getDefaultZoom() {
-        return super.getDefaultZoom();
+        return 0.9f;
     }
 }

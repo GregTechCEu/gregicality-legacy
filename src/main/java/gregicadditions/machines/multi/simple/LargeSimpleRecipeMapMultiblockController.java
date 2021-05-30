@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAMaterials;
+import gregicadditions.GAUtility;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
@@ -330,6 +331,9 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected void trySearchNewRecipe() {
             if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController) {
                 LargeSimpleRecipeMapMultiblockController controller = (LargeSimpleRecipeMapMultiblockController) metaTileEntity;
+                if (controller.getNumProblems() > 5)
+                    return;
+
                 if (controller.canDistinct && controller.isDistinct) {
                     trySearchNewRecipeDistinct();
                     return;
@@ -489,7 +493,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             int tierNeeded;
             int minMultiplier = Integer.MAX_VALUE;
 
-            tierNeeded = Math.max(1, getOverclockingTier(matchingRecipe.getEUt()));
+            tierNeeded = Math.max(1, GAUtility.getTierByVoltage(matchingRecipe.getEUt()));
             maxItemsLimit *= currentTier - tierNeeded;
             maxItemsLimit = Math.max(1, maxItemsLimit);
 
@@ -508,7 +512,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
-                GALog.logger.error("Cannot calculate ratio of items for processing array");
+                GALog.logger.error("Cannot calculate ratio of items for large multiblocks");
                 return null;
             }
 

@@ -1,9 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
-import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
@@ -23,15 +21,9 @@ import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
@@ -42,38 +34,38 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static gregicadditions.client.ClientHandler.STABALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
-public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
+public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
-    public RecipeMap<?> recipeMap;
-
-    private static final RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
-            RecipeMaps.COMPRESSOR_RECIPES,
-            RecipeMaps.LATHE_RECIPES,
-            RecipeMaps.POLARIZER_RECIPES,
-            RecipeMaps.FERMENTING_RECIPES,
-            RecipeMaps.FLUID_EXTRACTION_RECIPES,
-            RecipeMaps.EXTRACTOR_RECIPES,
-            RecipeMaps.AUTOCLAVE_RECIPES,
-            GARecipeMaps.REPLICATOR_RECIPES
-    };
-    private int pos;
-
     public TileEntityLargeMultiUse(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, GAConfig.multis.largeMultiUse.euPercentage, GAConfig.multis.largeMultiUse.durationPercentage, GAConfig.multis.largeMultiUse.chancedBoostPercentage, GAConfig.multis.largeMultiUse.stack, false);
-        this.recipeMap = recipeMap;
-        pos = Arrays.asList(possibleRecipe).indexOf(recipeMap);
+        super(metaTileEntityId, recipeMap, GAConfig.multis.largeMultiUse.euPercentage, GAConfig.multis.largeMultiUse.durationPercentage, GAConfig.multis.largeMultiUse.chancedBoostPercentage, GAConfig.multis.largeMultiUse.stack, new RecipeMap<?>[]{
+                RecipeMaps.COMPRESSOR_RECIPES, RecipeMaps.LATHE_RECIPES, RecipeMaps.POLARIZER_RECIPES,
+                RecipeMaps.FERMENTING_RECIPES, RecipeMaps.FLUID_EXTRACTION_RECIPES, RecipeMaps.EXTRACTOR_RECIPES,
+                RecipeMaps.AUTOCLAVE_RECIPES, GARecipeMaps.REPLICATOR_RECIPES});
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
         return new TileEntityLargeMultiUse(metaTileEntityId, RecipeMaps.COMPRESSOR_RECIPES);
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        switch (recipeMapIndex) {
+            case 1: return Textures.LATHE_OVERLAY;
+            case 2: return Textures.POLARIZER_OVERLAY;
+            case 3: return Textures.FERMENTER_OVERLAY;
+            case 4: return Textures.FLUID_EXTRACTOR_OVERLAY;
+            case 5: return Textures.EXTRACTOR_OVERLAY;
+            case 6: return Textures.AUTOCLAVE_OVERLAY;
+            case 7: return ClientHandler.REPLICATOR_OVERLAY;
+            default: return Textures.COMPRESSOR_OVERLAY;
+        }
     }
 
     @Override
@@ -115,50 +107,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gregtech.multiblock.large_multi_use.description"));
         tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
-    }
-
-
-    @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name")));
-    }
-
-    @Override
-    public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        if (!getWorld().isRemote) {
-            boolean isEmpty = IntStream.range(0, getInputInventory().getSlots())
-                    .mapToObj(i -> getInputInventory().getStackInSlot(i))
-                    .allMatch(ItemStack::isEmpty);
-            if (!isEmpty) {
-                return false;
-            }
-
-            if (playerIn.isSneaking())
-                this.pos = (pos - 1 < 0) ? possibleRecipe.length - 1 : pos % possibleRecipe.length;
-            else
-                this.pos = (pos + 1) % possibleRecipe.length;
-
-            ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-            this.recipeMap = possibleRecipe[pos];
-        }
-
-        return true; // return true here on the server to keep the GUI closed
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
-        super.writeToNBT(data);
-        data.setTag("Recipe", new NBTTagInt(pos));
-        return data;
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound data) {
-        super.readFromNBT(data);
-        this.pos = data.getInteger("Recipe");
-        ((LargeSimpleMultiblockRecipeLogic) (this.recipeMapWorkable)).recipeMap = possibleRecipe[pos];
-        this.recipeMap = possibleRecipe[pos];
+        super.addInformation(stack, player, tooltip, advanced);
     }
 
     @Override
@@ -168,14 +117,6 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
             return (T) this;
         }
         return capabilityResult;
-    }
-
-    @Override
-    public RecipeMap<?>[] getRecipes() { return possibleRecipe; }
-
-    @Override
-    public int getCurrentRecipe() {
-        return pos;
     }
 
     @Override
@@ -196,7 +137,7 @@ public class TileEntityLargeMultiUse extends LargeSimpleRecipeMapMultiblockContr
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        switch (pos) {
+        switch (this.getRecipeMapIndex()) {
             case 1: return Textures.LATHE_OVERLAY;
             case 2: return Textures.POLARIZER_OVERLAY;
             case 3: return Textures.FERMENTER_OVERLAY;

@@ -1,6 +1,8 @@
 package gregicadditions.capabilities.impl;
 
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 

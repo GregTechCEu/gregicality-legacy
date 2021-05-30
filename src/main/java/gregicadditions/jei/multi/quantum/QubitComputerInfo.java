@@ -36,4 +36,10 @@ public class QubitComputerInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[] {"Temporary Placeholder"};
     }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 1.1f;
+    }
 }

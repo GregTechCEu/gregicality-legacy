@@ -55,4 +55,9 @@ public class VoidMinerInfo2 extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{"Temporary Placeholder"};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.4f;
+    }
 }

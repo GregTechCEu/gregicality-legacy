@@ -161,6 +161,7 @@ public class RecipeHandler {
         OrganometallicChains.init();
         QuantumDotsChain.init();
         HNIWChain.init();
+        CasingConvesion.init();
     }
 
     /**

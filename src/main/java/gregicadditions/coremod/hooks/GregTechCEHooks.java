@@ -79,9 +79,6 @@ public class GregTechCEHooks {
 
     //origin: gregtech.api.metatileentity.MetaTileEntity.writeInitialSyncData(PacketBuffer buf)
     public static void writeSpinBuf(PacketBuffer buf, EnumFacing spin) {
-        if (spin == null) {
-            System.out.println("writeSpinBuf null");
-        }
         buf.writeByte(spin == null? EnumFacing.NORTH.getIndex() : spin.getIndex());
     }
 
@@ -92,9 +89,6 @@ public class GregTechCEHooks {
 
     //origin: gregtech.api.metatileentity.MetaTileEntity.writeToNBT(NBTTagCompound data)
     public static NBTTagCompound writeSpinNBT(NBTTagCompound data, EnumFacing spin) {
-        if (spin == null) {
-            System.out.println("writeSpinNBT null");
-        }
         data.setByte("sPin", (byte) (spin == null? EnumFacing.NORTH.getIndex() : spin.getIndex()));
         return data;
     }

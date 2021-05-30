@@ -695,18 +695,12 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Distillation recipe multiplier")
             @Config.RequiresMcRestart
-            public int distillationMultiplier = 4;
-
-            @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a distillery recipe.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Distillery recipe multiplier")
-            @Config.RequiresMcRestart
-            public int distillerMultiplier = 12;
+            public int distillationMultiplier = 8;
 
             @Config.Comment("The casing material to use for the Advanced Distllation Tower.")
             @Config.Name("Advanced Distillation Tower Casing Material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "babbit_alloy";
+            public String casingMaterial = "babbitt_alloy";
         }
 
         public static class LargeAssembler {

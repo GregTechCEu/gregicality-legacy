@@ -31,6 +31,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static gregicadditions.capabilities.impl.GARecipeMapMultiblockController.XSTR_RAND;
 
@@ -44,7 +45,7 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
     public MetaTileEntityMufflerHatch(ResourceLocation metaTileEntityId, int tier, int recoveryChance) {
         super(metaTileEntityId, tier);
         this.recoveryChance = recoveryChance;
-        this.inventory = new ItemStackHandler(4);
+        this.inventory = new ItemStackHandler(16);
         this.frontFaceFree = false;
     }
 
@@ -66,9 +67,19 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
             pollutionParticles();
     }
 
+    // Leaving this here for now to show old behavior
+    @Deprecated
     public void recoverItems(List<ItemStack> recoveryItems) {
         if (calculateChance())
             MetaTileEntity.addItemsToItemHandler(inventory, false, recoveryItems);
+    }
+
+    public void recoverItemsTable(List<ItemStack> recoveryItems) {
+        int numRolls = Math.min(recoveryItems.size(), inventory.getSlots());
+        IntStream.range(0, numRolls).forEach(slot -> {
+            if (calculateChance())
+                inventory.insertItem(slot, recoveryItems.get(slot), false);
+        });
     }
 
     private boolean calculateChance() {
@@ -107,14 +118,14 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
                 18 + 18 + 94 + 18)
                 .label(8, 5, getMetaFullName());
 
-        for (int y = 0; y < 2; y++) {
-            for (int x = 0; x < 2; x++) {
-                int index = y * 2 + x;
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                int index = y * 4 + x;
                 builder.widget(new SlotWidget(inventory, index, 89 - 2 * 9 + x * 18, 17 + y * 18, true, false)
                         .setBackgroundTexture(GuiTextures.SLOT));
             }
         }
-        builder.bindPlayerInventory(player.inventory, GuiTextures.SLOT, 7, 18 + 18 * 2 + 12);
+        builder.bindPlayerInventory(player.inventory, GuiTextures.SLOT, 7, 18 + 18 * 4 + 12);
         return builder.build(getHolder(), player);
     }
 

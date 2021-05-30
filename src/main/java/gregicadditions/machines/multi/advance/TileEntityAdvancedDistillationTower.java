@@ -1,16 +1,17 @@
 package gregicadditions.machines.multi.advance;
 
-import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
+import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.MultiRecipesTrait;
 import gregicadditions.machines.multi.MultiUtils;
-import gregicadditions.machines.multi.override.MetaTileEntityDistillationTower;
+import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -23,42 +24,38 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.*;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
+import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
-import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.BABBITT_ALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillationTower {
-
-    public RecipeMap<?> recipeMap;
-
-    private static final int DISTILLER_MULTIPLIER = GAConfig.multis.distillationTower.distillerMultiplier;
-    private static final int DISTILLATION_MULTIPLIER = GAConfig.multis.distillationTower.distillationMultiplier;
+public class TileEntityAdvancedDistillationTower extends MultiRecipeMapMultiblockController {
 
     public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
+            GAMultiblockCasing.CasingType.TIERED_HULL_ULV,
             GAMultiblockCasing.CasingType.TIERED_HULL_LV,
             GAMultiblockCasing.CasingType.TIERED_HULL_MV,
             GAMultiblockCasing.CasingType.TIERED_HULL_HV,
@@ -74,35 +71,36 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
             GAMultiblockCasing2.CasingType.TIERED_HULL_UMV,
             GAMultiblockCasing2.CasingType.TIERED_HULL_UXV);
 
-    private static final RecipeMap<?>[] possibleRecipe = new RecipeMap<?>[]{
-            RecipeMaps.DISTILLERY_RECIPES,
-            RecipeMaps.DISTILLATION_RECIPES
-    };
-
-    private final MultiRecipesTrait multiRecipesTrait;
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
     public TileEntityAdvancedDistillationTower(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId);
-        this.recipeMap = recipeMap;
-        this.recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
-        this.multiRecipesTrait = new MultiRecipesTrait(this, possibleRecipe);
+        super(metaTileEntityId, recipeMap, 100, 100, 100, GAConfig.multis.distillationTower.distillationMultiplier,
+                new RecipeMap<?>[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES});
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityAdvancedDistillationTower(metaTileEntityId, multiRecipesTrait.getRecipes()[multiRecipesTrait.getCurrentRecipe()]);
+        return new TileEntityAdvancedDistillationTower(metaTileEntityId, RecipeMaps.DISTILLATION_RECIPES);
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        return Textures.DISTILLERY_OVERLAY;
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
-        Predicate<BlockWorldState> fluidExportPredicate = countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
-        Predicate<PatternMatchContext> exactlyOneHatch = context -> context.getInt("HatchesAmount") == 1;
+        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
+        Predicate<PatternMatchContext> exactlyOneHatch = (context) -> {
+            return context.getInt("HatchesAmount") == 1;
+        };
+
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("YSY", "YYY", "YYY")
                 .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
-                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('X', fluidExportPredicate.or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('#', tieredCasing1Predicate().or(tieredCasing2Predicate()))
                 .validateLayer(1, exactlyOneHatch)
@@ -121,7 +119,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
                 if (!CASING1_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                int maxVoltage;
+                long maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_LV:
                         maxVoltage = GAValues.V[GAValues.LV];
@@ -154,7 +152,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
                         maxVoltage = 0;
                         break;
                 }
-                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
@@ -171,7 +169,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
                 if (!CASING2_ALLOWED.contains(tieredCasingType)) {
                     return false;
                 }
-                int maxVoltage;
+                long maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_UHV:
                         maxVoltage = GAValues.V[GAValues.UHV];
@@ -192,13 +190,19 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
                         maxVoltage = 0;
                         break;
                 }
-                int currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
+                long currentMaxVoltage = blockWorldState.getMatchContext().getOrPut("maxVoltage", maxVoltage);
                 return currentMaxVoltage == maxVoltage;
             }
         };
     }
 
-    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBIT_ALLOY);
+    @Override
+    protected void formStructure(PatternMatchContext context) { //todo unknown why this is necessary, reports some voltages incorrectly under some conditions
+        super.formStructure(context);
+        maxVoltage = Math.min(context.getOrDefault("maxVoltage", 0L), this.getEnergyContainer().getInputVoltage()/this.getEnergyContainer().getInputAmperage());
+    }
+
+    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
     public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.distillationTower.casingMaterial, defaultCasingState);
 
 
@@ -208,7 +212,7 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.distillationTower.casingMaterial, BABBIT_ALLOY_CASING);
+        return MultiUtils.getConfigCasingTexture(GAConfig.multis.distillationTower.casingMaterial, BABBITT_ALLOY_CASING);
     }
 
     @Override
@@ -221,92 +225,12 @@ public class TileEntityAdvancedDistillationTower extends MetaTileEntityDistillat
         tooltip.add(I18n.format("gregtech.multiblock.advanced_distillation_tower.description4"));
     }
 
-
     @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
-        if (isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMap.getUnlocalizedName() + ".name").setStyle(new Style().setColor(TextFormatting.AQUA))));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.advanced_distillation_tower.multiplier", ((AdvancedDistillationRecipeLogic) (this.recipeMapWorkable)).multiplier).setStyle(new Style().setColor(TextFormatting.GOLD)));
+    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
+        T capabilityResult = super.getCapability(capability, side);
+        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
+            return (T) this;
         }
-    }
-
-    @Override
-    public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        RecipeMap<?> recipe = multiRecipesTrait.getNextRecipe();
-        if (recipe == null) {
-            return false;
-        }
-        recipeMap = recipe;
-        recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
-        return true;
-    }
-
-
-    @Override
-    public void readFromNBT(NBTTagCompound data) {
-        super.readFromNBT(data);
-        this.recipeMap = multiRecipesTrait.getRecipes()[multiRecipesTrait.getCurrentRecipe()];
-        this.recipeMapWorkable = new AdvancedDistillationRecipeLogic(this, recipeMap);
-    }
-
-
-    public static class AdvancedDistillationRecipeLogic extends GAMultiblockRecipeLogic {
-
-        public RecipeMap<?> recipeMap;
-        public int multiplier;
-
-        public AdvancedDistillationRecipeLogic(RecipeMapMultiblockController tileEntity, RecipeMap<?> recipeMap) {
-            super(tileEntity);
-            this.recipeMap = recipeMap;
-            if (recipeMap == RecipeMaps.DISTILLATION_RECIPES)
-                multiplier = DISTILLATION_MULTIPLIER;
-            if (recipeMap == RecipeMaps.DISTILLERY_RECIPES)
-                multiplier = DISTILLER_MULTIPLIER;
-        }
-
-        @Override
-        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
-            if (recipe == null) {
-                return null;
-            }
-            List<CountableIngredient> newRecipeInputs = new ArrayList<>();
-            List<FluidStack> newFluidInputs = new ArrayList<>();
-            List<ItemStack> outputI = new ArrayList<>();
-            List<FluidStack> outputF = new ArrayList<>();
-            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, recipe, multiplier);
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
-                    .fluidInputs(newFluidInputs)
-                    .outputs(outputI)
-                    .fluidOutputs(outputF)
-                    .EUt((int) (recipe.getEUt()))
-                    .duration((int) (recipe.getDuration()));
-            return newRecipe.build().getResult();
-        }
-
-        protected void multiplyInputsAndOutputs(List<CountableIngredient> newRecipeInputs, List<FluidStack> newFluidInputs, List<ItemStack> outputI, List<FluidStack> outputF, Recipe r, int multiplier) {
-            for (CountableIngredient ci : r.getInputs()) {
-                CountableIngredient newIngredient = new CountableIngredient(ci.getIngredient(), ci.getCount() * multiplier);
-                newRecipeInputs.add(newIngredient);
-            }
-            for (FluidStack fs : r.getFluidInputs()) {
-                FluidStack newFluid = new FluidStack(fs.getFluid(), fs.amount * multiplier);
-                newFluidInputs.add(newFluid);
-            }
-            for (ItemStack s : r.getOutputs()) {
-                int num = s.getCount() * multiplier;
-                ItemStack itemCopy = s.copy();
-                itemCopy.setCount(num);
-                outputI.add(itemCopy);
-            }
-            for (FluidStack f : r.getFluidOutputs()) {
-                int fluidNum = f.amount * multiplier;
-                FluidStack fluidCopy = f.copy();
-                fluidCopy.amount = fluidNum;
-                outputF.add(fluidCopy);
-            }
-        }
+        return capabilityResult;
     }
 }

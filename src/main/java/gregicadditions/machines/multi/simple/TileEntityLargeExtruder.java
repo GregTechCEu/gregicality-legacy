@@ -2,7 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.MultiUtils;
@@ -17,15 +16,12 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.GAMaterials.Inconel625;
-import static gregicadditions.client.ClientHandler.BABBIT_ALLOY_CASING;
 import static gregicadditions.client.ClientHandler.INCONEL_625_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 

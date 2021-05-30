@@ -54,17 +54,13 @@ public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockContro
                 .where('S', this.selfPredicate())
                 .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
                 .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
-                .where('#', isAirPredicate()).validateLayer(1, exactlyOneHatch).validateLayer(2, exactlyOneHatch)
+                .where('#', isAirPredicate())
+                .validateLayer(1, exactlyOneHatch)
+                .validateLayer(2, exactlyOneHatch)
                 .build();
     }
 
     public IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
-    }
-
-    @Nonnull
-    @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.DISTILLERY_OVERLAY;
     }
 }

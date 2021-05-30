@@ -81,4 +81,9 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{I18n.format("gregtech.multiblock.chemical_plant.description")};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.7f;
+    }
 }

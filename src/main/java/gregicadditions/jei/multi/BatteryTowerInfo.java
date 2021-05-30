@@ -43,4 +43,9 @@ public class BatteryTowerInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{I18n.format("gtadditions.multiblock.battery_tower.description")};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.6f;
+    }
 }

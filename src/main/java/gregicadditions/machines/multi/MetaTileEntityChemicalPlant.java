@@ -30,18 +30,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
-import static gregtech.api.unification.material.Materials.Steel;
 
 
 public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController {
@@ -74,18 +70,6 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CHEMICAL_PLANT_RECIPES);
         this.recipeMapWorkable = new ChemicalPlantRecipeLogic(this);
-    }
-
-    @Override
-    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
-        //basically check minimal requirements for inputs count
-        int itemInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_ITEMS, Collections.emptyList())
-                .stream().map(it -> (IItemHandler) it).mapToInt(IItemHandler::getSlots).sum();
-        int fluidOutput = abilities.getOrDefault(MultiblockAbility.EXPORT_FLUIDS, Collections.emptyList()).size();
-        int fluidInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_FLUIDS, Collections.emptyList()).size();
-        return fluidOutput >= 2 &&
-                fluidInputsCount >= 4 && itemInputsCount >= 4 &&
-                abilities.containsKey(MultiblockAbility.INPUT_ENERGY);
     }
 
     @Override

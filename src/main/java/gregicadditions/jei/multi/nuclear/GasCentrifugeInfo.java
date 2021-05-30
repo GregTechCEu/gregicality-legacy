@@ -47,4 +47,10 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[] {"Temporary Placeholder"};
     }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.6f;
+    }
 }
