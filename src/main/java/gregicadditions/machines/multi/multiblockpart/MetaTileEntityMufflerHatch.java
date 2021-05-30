@@ -137,15 +137,14 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
     }
 
     /**
-     * @return true if front face is free and contains only air blocks in 3x3 area
+     * @return true if front face is free and contains only air blocks in 1x1 area
      */
     public boolean isFrontFaceFree() {
         return frontFaceFree;
     }
 
     private boolean checkFrontFaceFree() {
-        EnumFacing facing = getFrontFacing();
-        BlockPos frontPos = new BlockPos(facing.getDirectionVec());
+        BlockPos frontPos = getPos().offset(getFrontFacing());
         IBlockState blockState = getWorld().getBlockState(frontPos);
         return blockState.getBlock().isAir(blockState, getWorld(), frontPos);
     }

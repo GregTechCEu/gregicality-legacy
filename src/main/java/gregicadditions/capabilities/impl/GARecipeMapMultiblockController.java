@@ -216,6 +216,10 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.no_problems")
                         .setStyle(new Style().setColor(TextFormatting.GREEN)));
             }
+            if (hasMuffler && !isMufflerFaceFree()) {
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.muffler_obstructed")
+                        .setStyle(new Style().setColor(TextFormatting.RED)));
+            }
         } else {
             ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
             tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
@@ -231,6 +235,16 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             MetaTileEntityMufflerHatch muffler = mufflers.get(0);
             muffler.recoverItems(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
         }
+    }
+
+    @Override
+    protected void updateFormedValid() {
+        if (isMufflerFaceFree())
+            super.updateFormedValid();
+    }
+
+    public boolean isMufflerFaceFree() {
+        return isStructureFormed() && hasMuffler && getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH).get(0).isFrontFaceFree();
     }
 
     protected void setRecoveryItems(ItemStack... recoveryItems) {
