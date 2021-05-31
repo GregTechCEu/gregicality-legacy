@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi.miner;
 
+import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
@@ -190,6 +191,11 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
         } else if (!this.ventingStuck) {
             this.setVentingStuck(true);
         }
+    }
+
+    @Override
+    public boolean onWrenchClick(EntityPlayer playerIn, EnumHand hand, EnumFacing wrenchSide, CuboidRayTraceResult hitResult) {
+        return false;
     }
 
     @Override
