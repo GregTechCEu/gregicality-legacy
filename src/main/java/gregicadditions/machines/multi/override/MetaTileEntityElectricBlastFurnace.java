@@ -45,7 +45,7 @@ import static gregtech.api.unification.material.Materials.Invar;
 
 public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockController {
 	public MetaTileEntityElectricBlastFurnace(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES, true, true);
+		super(metaTileEntityId, RecipeMaps.BLAST_RECIPES, true, true, true);
 		this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
 	}
 

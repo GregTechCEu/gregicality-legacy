@@ -6,6 +6,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.gui.Widget;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -31,6 +32,8 @@ import java.util.stream.Collectors;
 
 import static gregicadditions.capabilities.MultiblockDataCodes.STORE_MAINTENANCE;
 import static gregicadditions.capabilities.MultiblockDataCodes.STORE_TAPED;
+import static gregtech.api.gui.widgets.AdvancedTextWidget.withButton;
+import static gregtech.api.gui.widgets.AdvancedTextWidget.withHoverTextTranslate;
 
 public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController {
 
@@ -41,6 +44,17 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     private final boolean hasMuffler;
     private final boolean hasMaintenance;
 
+    /**
+     * When false, this multiblock will behave like any other.
+     * When true, this multiblock will treat each of its input buses as distinct,
+     * checking recipes for them independently. This is useful for many machines, for example the
+     * Large Extruder, where the player may want to put one extruder shape per bus, rather than
+     * one machine per extruder shape.
+     */
+    protected boolean isDistinct = false;
+
+    protected final boolean canDistinct;
+
     public static final XSTR XSTR_RAND = new XSTR();
 
     private int timeActive;
@@ -50,14 +64,15 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     private boolean storedTaped = false;
 
     public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        this(metaTileEntityId, recipeMap, false, true);
+        this(metaTileEntityId, recipeMap, false, true, false);
     }
 
-    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler, boolean hasMaintenance) {
+    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler, boolean hasMaintenance, boolean canDistinct) {
         super(metaTileEntityId, recipeMap);
         this.hasMuffler = hasMuffler;
         this.hasMaintenance = hasMaintenance;
         this.maintenance_problems = 0b000000;
+        this.canDistinct = canDistinct;
     }
 
     /**
@@ -184,6 +199,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.writeToNBT(data);
         data.setByte("Maintenance", maintenance_problems);
         data.setInteger("ActiveTimer", timeActive);
+        data.setBoolean("IsDistinct", isDistinct);
         return data;
     }
 
@@ -192,6 +208,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.readFromNBT(data);
         maintenance_problems = data.getByte("Maintenance");
         timeActive = data.getInteger("ActiveTimer");
+        isDistinct = data.getBoolean("IsDistinct");
     }
 
     @Override
@@ -199,6 +216,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.writeInitialSyncData(buf);
         buf.writeByte(maintenance_problems);
         buf.writeInt(timeActive);
+        buf.writeBoolean(isDistinct);
     }
 
     @Override
@@ -206,6 +224,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.receiveInitialSyncData(buf);
         maintenance_problems = buf.readByte();
         timeActive = buf.readInt();
+        isDistinct = buf.readBoolean();
     }
 
     @Override
@@ -302,6 +321,17 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             } else {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.no_problems")
                         .setStyle(new Style().setColor(TextFormatting.GREEN)));
+
+                if (canDistinct) {
+                    ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.universal.distinct");
+                    buttonText.appendText(" ");
+                    ITextComponent button = withButton((isDistinct ?
+                            new TextComponentTranslation("gtadditions.multiblock.universal.distinct.yes") :
+                            new TextComponentTranslation("gtadditions.multiblock.universal.distinct.no")), "distinct");
+                    withHoverTextTranslate(button, "gtadditions.multiblock.universal.distinct.info");
+                    buttonText.appendSibling(button);
+                    textList.add(buttonText);
+                }
             }
         } else {
             ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
@@ -310,6 +340,12 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                     .setStyle(new Style().setColor(TextFormatting.RED)
                             .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
+    }
+
+    @Override
+    protected void handleDisplayClick(String componentData, Widget.ClickData clickData) {
+        super.handleDisplayClick(componentData, clickData);
+        isDistinct = !isDistinct;
     }
 
     protected void outputRecoveryItems() {

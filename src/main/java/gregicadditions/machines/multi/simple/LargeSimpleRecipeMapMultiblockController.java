@@ -7,9 +7,6 @@ import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.gui.Widget;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.recipes.CountableIngredient;
@@ -22,8 +19,6 @@ import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -32,7 +27,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nullable;
@@ -41,9 +35,6 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-import static gregtech.api.gui.widgets.AdvancedTextWidget.withButton;
-import static gregtech.api.gui.widgets.AdvancedTextWidget.withHoverTextTranslate;
-
 abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
     private int EUtPercentage = 100;
@@ -51,17 +42,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     private int chancePercentage = 100;
     private int stack = 1;
     public long maxVoltage = 0;
-
-    /**
-     * When false, this multiblock will behave like any other.
-     * When true, this multiblock will treat each of its input buses as distinct,
-     * checking recipes for them independently. This is useful for many machines, for example the
-     * Large Extruder, where the player may want to put one extruder shape per bus, rather than
-     * one machine per extruder shape.
-     */
-    protected boolean isDistinct = false;
-
-    protected final boolean canDistinct;
 
     DecimalFormat formatter = new DecimalFormat("#0.0");
 
@@ -79,18 +59,13 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
      * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 1
      */
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
-        this(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, true);
-    }
-
-    public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct) {
-        super(metaTileEntityId, recipeMap);
+        super(metaTileEntityId, recipeMap, false, true, true);
         this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
 
         this.EUtPercentage = EUtPercentage;
         this.durationPercentage = durationPercentage;
         this.chancePercentage = chancePercentage;
         this.stack = stack;
-        this.canDistinct = canDistinct;
     }
 
     @Override
@@ -230,7 +205,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         this.maxVoltage = 0;
     }
 
-
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
         return recipe.getEUt() < maxVoltage;
@@ -240,48 +214,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
-
-        if (canDistinct) {
-            ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.universal.distinct");
-            buttonText.appendText(" ");
-            ITextComponent button = withButton((isDistinct ?
-                    new TextComponentTranslation("gtadditions.multiblock.universal.distinct.yes") :
-                    new TextComponentTranslation("gtadditions.multiblock.universal.distinct.no")), "distinct");
-            withHoverTextTranslate(button, "gtadditions.multiblock.universal.distinct.info");
-            buttonText.appendSibling(button);
-            textList.add(buttonText);
-        }
-    }
-
-    @Override
-    protected void handleDisplayClick(String componentData, Widget.ClickData clickData) {
-        super.handleDisplayClick(componentData, clickData);
-        isDistinct = !isDistinct;
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
-        super.writeToNBT(data);
-        data.setBoolean("Distinct", isDistinct);
-        return data;
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound data) {
-        super.readFromNBT(data);
-        isDistinct = data.getBoolean("Distinct");
-    }
-
-    @Override
-    public void writeInitialSyncData(PacketBuffer buf) {
-        super.writeInitialSyncData(buf);
-        buf.writeBoolean(isDistinct);
-    }
-
-    @Override
-    public void receiveInitialSyncData(PacketBuffer buf) {
-        super.receiveInitialSyncData(buf);
-        this.isDistinct = buf.readBoolean();
     }
 
     public static class LargeSimpleMultiblockRecipeLogic extends GAMultiblockRecipeLogic {
@@ -291,11 +223,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         private final int chancePercentage;
         private final int stack;
         public RecipeMap<?> recipeMap;
-
-        // Fields used for distinct mode
-        protected int lastRecipeIndex = 0;
-        protected ItemStack[][] lastItemInputsMatrix;
-
 
         public LargeSimpleMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
             super(tileEntity);
@@ -322,29 +249,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             return stack;
         }
 
-        protected List<IItemHandlerModifiable> getInputBuses() {
-            RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
-            return controller.getAbilities(MultiblockAbility.IMPORT_ITEMS);
-        }
-
         @Override
-        protected void trySearchNewRecipe() {
-            if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController) {
-                LargeSimpleRecipeMapMultiblockController controller = (LargeSimpleRecipeMapMultiblockController) metaTileEntity;
-                if (controller.getNumProblems() > 5)
-                    return;
-
-                if (controller.canDistinct && controller.isDistinct) {
-                    trySearchNewRecipeDistinct();
-                    return;
-                }
-            }
-            trySearchNewRecipeCombined();
-        }
-
-        // Combined buses code =========================================================================================
-
-        private void trySearchNewRecipeCombined() {
+        protected void trySearchNewRecipeCombined() {
             long maxVoltage = getMaxVoltage();
             if (metaTileEntity instanceof LargeSimpleRecipeMapMultiblockController)
                 maxVoltage = ((LargeSimpleRecipeMapMultiblockController) metaTileEntity).maxVoltage;
@@ -371,111 +277,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
                 setupRecipe(currentRecipe);
             }
         }
-
-        // Distinct buses code =========================================================================================
-
-        private void trySearchNewRecipeDistinct() {
-            long maxVoltage = getMaxVoltage();
-            Recipe currentRecipe = null;
-            List<IItemHandlerModifiable> importInventory = getInputBuses();
-            IMultipleTankHandler importFluids = getInputTank();
-
-            // Our caching implementation
-            // This guarantees that if we get a recipe cache hit, our efficiency is no different from other machines
-            if (previousRecipe != null && previousRecipe.matches(false, importInventory.get(lastRecipeIndex), importFluids)) {
-                currentRecipe = previousRecipe;
-                if (setupAndConsumeRecipeInputs(currentRecipe, lastRecipeIndex)) {
-                    setupRecipe(currentRecipe);
-                    return;
-                }
-            }
-
-            // On a cache miss, our efficiency is much worse, as it will check
-            // each bus individually instead of the combined inventory all at once.
-            for (int i = 0; i < importInventory.size(); i++) {
-                IItemHandlerModifiable bus = importInventory.get(i);
-                boolean dirty = checkRecipeInputsDirty(bus, importFluids, i);
-                if (dirty || forceRecipeRecheck) {
-                    this.forceRecipeRecheck = false;
-                    currentRecipe = findRecipe(maxVoltage, bus, importFluids);
-                    if (currentRecipe != null) {
-                        this.previousRecipe = currentRecipe;
-                    }
-                }
-                if (currentRecipe != null && setupAndConsumeRecipeInputs(currentRecipe, i)) {
-                    lastRecipeIndex = i;
-                    setupRecipe(currentRecipe);
-                    break;
-                }
-            }
-        }
-
-        // Replacing this for optimization reasons
-        protected boolean checkRecipeInputsDirty(IItemHandler inputs, IMultipleTankHandler fluidInputs, int index) {
-            boolean shouldRecheckRecipe = false;
-
-            if (lastItemInputsMatrix == null || lastItemInputsMatrix.length != getInputBuses().size()) {
-                lastItemInputsMatrix = new ItemStack[getInputBuses().size()][];
-            }
-            if (lastItemInputsMatrix[index] == null || lastItemInputsMatrix[index].length != inputs.getSlots()) {
-                this.lastItemInputsMatrix[index] = new ItemStack[inputs.getSlots()];
-                Arrays.fill(lastItemInputsMatrix[index], ItemStack.EMPTY);
-            }
-            if (lastFluidInputs == null || lastFluidInputs.length != fluidInputs.getTanks()) {
-                this.lastFluidInputs = new FluidStack[fluidInputs.getTanks()];
-            }
-            for (int i = 0; i < lastItemInputsMatrix[index].length; i++) {
-                ItemStack currentStack = inputs.getStackInSlot(i);
-                ItemStack lastStack = lastItemInputsMatrix[index][i];
-                if (!areItemStacksEqual(currentStack, lastStack)) {
-                    this.lastItemInputsMatrix[index][i] = currentStack.isEmpty() ? ItemStack.EMPTY : currentStack.copy();
-                    shouldRecheckRecipe = true;
-                } else if (currentStack.getCount() != lastStack.getCount()) {
-                    lastStack.setCount(currentStack.getCount());
-                    shouldRecheckRecipe = true;
-                }
-            }
-            for (int i = 0; i < lastFluidInputs.length; i++) {
-                FluidStack currentStack = fluidInputs.getTankAt(i).getFluid();
-                FluidStack lastStack = lastFluidInputs[i];
-                if ((currentStack == null && lastStack != null) ||
-                        (currentStack != null && !currentStack.isFluidEqual(lastStack))) {
-                    this.lastFluidInputs[i] = currentStack == null ? null : currentStack.copy();
-                    shouldRecheckRecipe = true;
-                } else if (currentStack != null && lastStack != null &&
-                        currentStack.amount != lastStack.amount) {
-                    lastStack.amount = currentStack.amount;
-                    shouldRecheckRecipe = true;
-                }
-            }
-            return shouldRecheckRecipe;
-        }
-
-        protected boolean setupAndConsumeRecipeInputs(Recipe recipe, int index) {
-            RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
-            if (controller.checkRecipe(recipe, false)) {
-
-                int[] resultOverclock = calculateOverclock(recipe.getEUt(), recipe.getDuration());
-                int totalEUt = resultOverclock[0] * resultOverclock[1];
-                IItemHandlerModifiable importInventory = getInputBuses().get(index);
-                IItemHandlerModifiable exportInventory = getOutputInventory();
-                IMultipleTankHandler importFluids = getInputTank();
-                IMultipleTankHandler exportFluids = getOutputTank();
-                boolean setup = (totalEUt >= 0 ? getEnergyStored() >= (totalEUt > getEnergyCapacity() / 2 ? resultOverclock[0] : totalEUt) :
-                        (getEnergyStored() - resultOverclock[0] <= getEnergyCapacity())) &&
-                        MetaTileEntity.addItemsToItemHandler(exportInventory, true, recipe.getAllItemOutputs(exportInventory.getSlots())) &&
-                        MetaTileEntity.addFluidsToFluidHandler(exportFluids, true, recipe.getFluidOutputs()) &&
-                        recipe.matches(true, importInventory, importFluids);
-
-                if (setup) {
-                    controller.checkRecipe(recipe, true);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // Shared recipe generation code ===============================================================================
 
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {

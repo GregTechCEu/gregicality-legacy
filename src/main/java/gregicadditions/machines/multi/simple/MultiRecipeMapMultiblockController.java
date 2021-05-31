@@ -44,11 +44,7 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     private int recipeMapIndex; // index of the current selected recipe
 
     public MultiRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, RecipeMap<?>[] recipeMaps) {
-        this(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, true, recipeMaps);
-    }
-
-    public MultiRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct, RecipeMap<?>[] recipeMaps) {
-        super(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, canDistinct);
+        super(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack);
         this.recipeMaps = recipeMaps;
         this.recipeMapWorkable = new MultiRecipeMapMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack, recipeMaps);
         this.recipeMapIndex = 0;
