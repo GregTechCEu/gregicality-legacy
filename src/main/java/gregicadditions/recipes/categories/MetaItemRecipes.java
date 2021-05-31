@@ -544,14 +544,12 @@ public class MetaItemRecipes {
 
         // Extruder Shapes
         ModHandler.addShapedRecipe("shape_extruder_gear_small", SHAPE_EXTRUDER_SMALL_GEAR.getStackForm(),
-                "W S", "   ", "   ",
-                'S', SHAPE_EMPTY.getStackForm(),
-                'W', WIRE_CUTTER.getStackForm());
+                "x S", "   ", "   ",
+                'S', SHAPE_EMPTY.getStackForm());
 
         ModHandler.addShapedRecipe("shape_extruder_rotor", SHAPE_EXTRUDER_ROTOR.getStackForm(),
-                "  S", " W ", "   ",
-                'S', SHAPE_EMPTY.getStackForm(),
-                'W', WIRE_CUTTER.getStackForm());
+                "  S", " x ", "   ",
+                'S', SHAPE_EMPTY.getStackForm());
 
         FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
                 .inputs(SHAPE_EMPTY.getStackForm())
