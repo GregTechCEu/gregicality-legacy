@@ -601,7 +601,7 @@ public class GAConfig {
         public LargeAssembler largeAssembler = new LargeAssembler();
         public LargeBenderAndForming largeBenderAndForming = new LargeBenderAndForming();
         public LargeCentrifuge largeCentrifuge = new LargeCentrifuge();
-        public LargeChemicalReactor largeChemicalReactor = new LargeChemicalReactor();
+        public AdvancedChemicalReactor advancedChemicalReactor = new AdvancedChemicalReactor();
         public LargeCutting largeCutting = new LargeCutting();
         public LargeElectrolyzer largeElectrolyzer = new LargeElectrolyzer();
         public LargeExtruder largeExtruder = new LargeExtruder();
@@ -792,28 +792,28 @@ public class GAConfig {
             public String casingMaterial = "tumbaga";
         }
 
-        public static class LargeChemicalReactor {
-            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Chemical Reactor.")
+        public static class AdvancedChemicalReactor {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor EU/t percentage cost")
+            @Config.Name("Advanced Chemical Reactor EU/t percentage cost")
             @Config.RequiresMcRestart
             public int euPercentage = 50;
 
             @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor parallel recipes per voltage tier difference")
+            @Config.Name("Advanced Chemical Reactor parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The duration percentage of a recipe when done in the Large Chemical Reactor.")
+            @Config.Comment("The duration percentage of a recipe when done in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor duration decrease percentage")
+            @Config.Name("Advanced Chemical Reactor duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 125;
+            public int durationPercentage = 100;
 
-            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Chemical Reactor.")
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor chanced output boost percentage")
+            @Config.Name("Advanced Chemical Reactor chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 

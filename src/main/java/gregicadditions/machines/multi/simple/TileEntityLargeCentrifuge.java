@@ -16,7 +16,9 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -32,7 +34,7 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 
 
 	public TileEntityLargeCentrifuge(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, GARecipeMaps.LARGE_CENTRIFUGE_RECIPES, GAConfig.multis.largeCentrifuge.euPercentage, GAConfig.multis.largeCentrifuge.durationPercentage, GAConfig.multis.largeCentrifuge.chancedBoostPercentage, GAConfig.multis.largeCentrifuge.stack);
+		super(metaTileEntityId, GARecipeMaps.LARGE_CENTRIFUGE_RECIPES, GAConfig.multis.largeCentrifuge.euPercentage, GAConfig.multis.largeCentrifuge.durationPercentage, GAConfig.multis.largeCentrifuge.chancedBoostPercentage, GAConfig.multis.largeCentrifuge.stack, true, true, true);
 	}
 
 	@Override
@@ -43,15 +45,22 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXX", "XXX", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XMX", "XSX", "XMX")
-				.setAmountAtLeast('L', 9)
+				.aisle("AXXXA", "XXGXX", "AXXXA")
+				.aisle("XXXXX", "X###X", "XXXXX")
+				.aisle("XXMXX", "G#P#G", "XXGXX")
+				.aisle("XXXXX", "X###X", "XXXXX")
+				.aisle("AXXXA", "XXSXX", "AXXXA")
+				.setAmountAtLeast('L', 16)
+				.setAmountAtLeast('H', 3)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
+				.where('H', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
+				.where('G', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH).or(statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))))
+				.where('M', motorPredicate())
 				.where('#', isAirPredicate())
+				.where('A', (tile) -> true)
 				.where('M', motorPredicate())
 				.build();
 	}

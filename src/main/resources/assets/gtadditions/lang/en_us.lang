@@ -1596,6 +1596,7 @@ gtadditions.machine.plasma_condenser.name=Plasma Condenser
 gtadditions.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor Computer
 gtadditions.machine.central_monitor.name=Central Monitor
 gtadditions.machine.monitor_screen.name=Monitor Screen
+gtadditions.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
@@ -1757,7 +1758,8 @@ gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§r of the time!
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
-tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert Casing
+tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert PTFE Casing
+tile.ga_multiblock_casing.ptfe_pipe_casing.name=PTFE Pipe Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Large-Scale Assembler Casing
 tile.ga_multiblock_casing.tiered_hull_ulv.name=Integral Framework I
 tile.ga_multiblock_casing.tiered_hull_ulv.tooltip=§eMax Voltage ULV
@@ -3001,6 +3003,7 @@ gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
 gtadditions.multiblock.battery_tower.input=EU/t input: %s
 gtadditions.multiblock.battery_tower.output=EU/t output: %s
 gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
+gtadditions.multiblock.large_chemical_reactor.bonus=Current Speed Boost: %d%%
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

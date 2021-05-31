@@ -43,7 +43,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     private int stack = 1;
     public long maxVoltage = 0;
 
-    DecimalFormat formatter = new DecimalFormat("#0.0");
+    DecimalFormat formatter = new DecimalFormat("#0.00");
 
     /**
      * Create large multiblock machine for simple machine.
@@ -60,6 +60,16 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
      */
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
         super(metaTileEntityId, recipeMap, false, true, true);
+        this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
+
+        this.EUtPercentage = EUtPercentage;
+        this.durationPercentage = durationPercentage;
+        this.chancePercentage = chancePercentage;
+        this.stack = stack;
+    }
+
+    public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct, boolean hasMuffler, boolean hasMaintenance) {
+        super(metaTileEntityId, recipeMap, canDistinct, hasMuffler, hasMaintenance);
         this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
 
         this.EUtPercentage = EUtPercentage;

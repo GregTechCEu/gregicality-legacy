@@ -2,10 +2,11 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.components.ConveyorCasing;
+import gregicadditions.client.ClientHandler;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.components.MotorCasing;
-import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -13,7 +14,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -21,69 +21,60 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
-import java.util.Collections;
 
-import static gregicadditions.client.ClientHandler.STELLITE_CASING;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
-
-public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockController {
+public class TileEntityAdvancedChemicalReactor extends LargeSimpleRecipeMapMultiblockController {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
 
-	public TileEntityLargeCutting(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES, GAConfig.multis.largeCutting.euPercentage, GAConfig.multis.largeCutting.durationPercentage, GAConfig.multis.largeCutting.chancedBoostPercentage, GAConfig.multis.largeCutting.stack);
+	public TileEntityAdvancedChemicalReactor(ResourceLocation metaTileEntityId) {
+		super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, GAConfig.multis.advancedChemicalReactor.euPercentage, GAConfig.multis.advancedChemicalReactor.durationPercentage, GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage, GAConfig.multis.advancedChemicalReactor.stack);
 	}
 
 	@Override
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new TileEntityLargeCutting(metaTileEntityId);
+		return new TileEntityAdvancedChemicalReactor(metaTileEntityId);
 	}
 
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXXXX", "XXXAX", "##XAX")
-				.aisle("XXXCX", "XXXMX", "##XAX").setRepeatable(0, 7)
-				.aisle("XXXCX", "XXXMX", "##XAX")
-				.aisle("XXXXX", "XSXAX", "##XAX")
-				.setAmountAtLeast('L', 12)
+				.aisle("X###X", "XXXXX", "X###X", "XXXXX", "X###X")
+				.aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
+				.aisle("X###X", "XPPPX", "XMMMX", "XPPPX", "X###X")
+				.aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
+				.aisle("X###X", "SXXXX", "X###X", "XXXXX", "X###X")
+				.setAmountAtLeast('L', 22)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('C', TileEntityLargeChemicalReactor.heatingCoilPredicate())
+				.where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
 				.where('#', (tile) -> true)
-				.where('A', isAirPredicate())
 				.where('M', motorPredicate())
-				.where('C', conveyorPredicate())
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeCutting.casingMaterial, defaultCasingState);
-
-
 	public IBlockState getCasingState() {
-		return casingState;
+		return GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT);
 	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeCutting.casingMaterial, STELLITE_CASING);
+		return ClientHandler.CHEMICALLY_INERT;
 	}
 
 	@Override
 	protected void formStructure(PatternMatchContext context) {
 		super.formStructure(context);
 		MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
-		ConveyorCasing.CasingType conveyor = context.getOrDefault("Conveyor", ConveyorCasing.CasingType.CONVEYOR_LV);
-		int min = Collections.min(Arrays.asList(motor.getTier(), conveyor.getTier()));
+		int min = motor.getTier();
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
 	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
-		return Textures.CUTTER_OVERLAY;
+		return Textures.CHEMICAL_REACTOR_OVERLAY;
 	}
 }

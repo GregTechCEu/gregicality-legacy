@@ -254,6 +254,8 @@ public class GATileEntities {
     public static MetaTileEntityMufflerHatch[] MUFFLER_HATCH = new MetaTileEntityMufflerHatch[4]; // TODO (this is just LV-HV)
 
     public static TileEntitySteamMiner STEAM_MINER;
+    public static TileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
+
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
     public static void init() {
@@ -1173,13 +1175,15 @@ public class GATileEntities {
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
         STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner"))); // TODO
 
-        MAINTENANCE_HATCH[0] = GregTechAPI.registerMetaTileEntity(4212, new MetaTileEntityMaintenanceHatch(location("maintenance_hatch"), 1));
-        MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
-        MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
+        MAINTENANCE_HATCH[0] = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityMaintenanceHatch(location("maintenance_hatch"), 1));
+        MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
+        MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(4215, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
 
-        id = 4215;
+        id = 4216;
         for (int i = 0; i < MUFFLER_HATCH.length; i++)
             MUFFLER_HATCH[i] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i, i * 6)); // todo recovery amount logic
+
+        ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4220, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

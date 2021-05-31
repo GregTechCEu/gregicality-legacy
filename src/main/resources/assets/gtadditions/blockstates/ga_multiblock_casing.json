@@ -82,6 +82,11 @@
         "textures": {
           "all": "gregtech:blocks/casings/solid/cladded_reactor_casing"
         }
+      },
+      "ptfe_pipe_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/ptfe_pipe_casing"
+        }
       }
     }
   }
