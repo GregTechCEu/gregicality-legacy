@@ -478,6 +478,17 @@ public class RecipeOverride {
                 .output(dust, Glass, 4)
                 .buildAndRegister();
 
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(20).EUt(30)
+                .inputs(new ItemStack(Blocks.SAND, 1))
+                .outputs(new ItemStack(Blocks.GLASS, 2))
+                .buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .input(dust, Glass)
+                .notConsumable(SHAPE_MOLD_BLOCK.getStackForm())
+                .outputs(new ItemStack(Blocks.GLASS, 1))
+                .buildAndRegister();
+
         // Concrete
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(16)
                 .input(dust, Calcite, 2)
