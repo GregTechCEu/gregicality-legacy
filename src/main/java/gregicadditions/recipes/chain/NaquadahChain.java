@@ -206,6 +206,15 @@ public class NaquadahChain {
                 .duration(100)
                 .buildAndRegister();
 
+        // XeO3 -> Xe + O3
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(XenonTrioxide.getFluid(1000))
+                .fluidOutputs(Xenon.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(3000))
+                .EUt(30)
+                .duration(370)
+                .buildAndRegister();
+
         // Cs + F = CsF
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Caesium)
@@ -298,15 +307,6 @@ public class NaquadahChain {
                 .fluidOutputs(EnrichedXenonHexafluoronaquadate.getFluid(1000))
                 .EUt(480)
                 .duration(200)
-                .buildAndRegister();
-
-        // Au + HNO3 + 4HCl = HAuCl4 + NO + 2H2O (H2O lost to dehydrator)
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(480).duration(50)
-                .input(dust, Gold)
-                .fluidInputs(NitricAcid.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(4000))
-                .fluidOutputs(ChloroauricAcid.getFluid(1000))
-                .fluidOutputs(NitricOxide.getFluid(1000))
                 .buildAndRegister();
 
         // 2Au + 3Cl2 -> Au2Cl6

@@ -21,22 +21,37 @@ public class CombinedChains {
 
         // Naquadah ==================================================================================================
 
-        // Naquadric Compound [Nq] -> Nq
+        // Naquadric Compound [Nq] + KHSO5 + 2H -> Nq + KOH + H2SO4
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(50).EUt(491520) // UV
                 .input(dust, NaquadricCompound)
+                .inputs(PotassiumPeroxymonosulfate.getItemStack(8))
+                .fluidInputs(Hydrogen.getFluid(2000))
                 .output(dust, Naquadah)
+                .fluidOutputs(PotassiumHydroxide.getFluid(1000))
+                .fluidOutputs(SulfuricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        // Enriched Naquadric Compound [Nq+] -> Nq+
+        // Enriched Naquadric Compound [Nq+] + Au2Cl6 + Xe + 3O -> Nq+ + 2Au + 6Cl + XeO3
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(50).EUt(491520) // UV
                 .input(dust, EnrichedNaquadricCompound)
+                .fluidInputs(AuricChloride.getFluid(1000))
+                .fluidInputs(Xenon.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(3000))
                 .output(dust, NaquadahEnriched)
+                .output(dust, Gold, 2)
+                .fluidOutputs(Chlorine.getFluid(6000))
+                .fluidOutputs(XenonTrioxide.getFluid(1000))
                 .buildAndRegister();
 
-        // Naquadriatic Compound [*Nq*] -> *Nq*
+        // Naquadriatic Compound [*Nq*] + Rn + Xe + 6O -> *Nq* + RnO3 + XeO3
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(50).EUt(491520) // UV
                 .input(dust, NaquadriaticCompound)
+                .fluidInputs(Radon.getFluid(1000))
+                .fluidInputs(Xenon.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(6000))
                 .output(dust, Naquadria)
+                .fluidOutputs(RadonTrioxide.getFluid(1000))
+                .fluidOutputs(XenonTrioxide.getFluid(1000))
                 .buildAndRegister();
 
 
@@ -56,7 +71,7 @@ public class CombinedChains {
         // Polytetrafluoroethylene (unneeded)
 
         // Epoxy
-        // 2C6H6 + 8O + 2C2H4 + C3H6 -> C2H4O + CO2 + 3H2O (gtce epoxy is not balanced as well)
+        // 2C6H6 + 8O + 2C2H4 + C3H6 -> C2H4O + CO2 + 3H2O (gtce epoxy is not balanced)
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(30720) // LuV
                 .fluidInputs(Benzene.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(8000))
