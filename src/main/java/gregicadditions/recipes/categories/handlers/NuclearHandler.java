@@ -234,19 +234,19 @@ public class NuclearHandler {
             builder1.buildAndRegister();
 
             radioactiveMaterial.composition.forEach((key, value) -> {
-                // [Mat + F6] + 2H2O -> [Mat + F6 + 2H2O]
+                // [Mat + F6] + 3H2O -> [Mat + F6 + 3H2O]
                 CRACKING_RECIPES.recipeBuilder().duration(40 * complexity / 100).EUt(120)
-                        .fluidInputs(Steam.getFluid(2000))
+                        .fluidInputs(Steam.getFluid(3000))
                         .fluidInputs(key.getFluidHexafluoride(1000))
                         .fluidOutputs(key.getFluidHexafluorideSteamCracked(1000))
                         .buildAndRegister();
 
-                // [Mat + F6 + 2H2O] -> [Mat + 2O] + 6F + 4H (H lost)
+                // [Mat + F6 + 3H2O] -> [Mat + 2O] + 6HF + O (O lost)
                 BLAST_RECIPES.recipeBuilder().blastFurnaceTemp(600).duration(600 * complexity / 100).EUt(120)
                         .notConsumable(new IntCircuitIngredient(0))
                         .fluidInputs(key.getFluidHexafluorideSteamCracked(1000))
                         .outputs(key.getItemStack(GAEnums.GAOrePrefix.dioxide, 3))
-                        .fluidOutputs(Fluorine.getFluid(6000))
+                        .fluidOutputs(HydrofluoricAcid.getFluid(6000))
                         .buildAndRegister();
 
                 // [Mat + 2O] -> Mat + 2O
