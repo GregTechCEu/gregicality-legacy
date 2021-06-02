@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
 import static gregicadditions.GAEnums.GAOrePrefix.round;
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.GAValues.ZPM;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
@@ -695,7 +696,7 @@ public class MultiblockCraftingRecipes {
                 'A', MetaTileEntities.HULL[LuV].getStackForm(),
                 'R', ROBOT_ARM_LUV,
                 'C', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING),
-                'S', new UnificationEntry(circuit, Master));
+                'S', new UnificationEntry(circuit, Ultimate));
     }
 
     private static void multiblockOverride() {

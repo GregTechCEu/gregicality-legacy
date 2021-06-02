@@ -8,7 +8,6 @@ import gregicadditions.item.GATransparentCasing;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -36,8 +35,7 @@ import static gregtech.common.items.MetaItems.*;
 
 public class MetaItemRecipes {
 
-    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates && GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders ?
-            plateCurved : plate;
+    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
 
     public static void init() {
 
@@ -271,9 +269,9 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Schematic
-        ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4)
-                .input(circuit, Good, 4)
-                .input(plate, StainlessSteel, 2)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(180).EUt(4)
+                .input(circuit, Basic, 2)
+                .input(plate, Steel, 2)
                 .outputs(SCHEMATIC.getStackForm())
                 .buildAndRegister();
 

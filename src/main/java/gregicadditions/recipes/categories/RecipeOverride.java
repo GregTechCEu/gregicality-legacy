@@ -451,6 +451,17 @@ public class RecipeOverride {
         removeRecipeByName("gtadditions:block_compress_clay");
         removeRecipeByName("gtadditions:block_decompress_clay");
 
+        ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
+                new ItemStack(Items.CLAY_BALL),
+                "formWood");
+
+        ModHandler.addShapedRecipe("eight_clay_brick", COMPRESSED_CLAY.getStackForm(8),
+                "BBB", "BFB", "BBB",
+                'B', new ItemStack(Items.CLAY_BALL),
+                'F', "formWood");
+
+        ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
+
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(200).EUt(2)
                 .inputs(new ItemStack(Items.CLAY_BALL))
                 .notConsumable(SHAPE_MOLD_INGOT)
@@ -491,6 +502,17 @@ public class RecipeOverride {
                 .output(dust, Glass, 4)
                 .buildAndRegister();
 
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(20).EUt(30)
+                .inputs(new ItemStack(Blocks.SAND, 1))
+                .outputs(new ItemStack(Blocks.GLASS, 2))
+                .buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .input(dust, Glass)
+                .notConsumable(SHAPE_MOLD_BLOCK.getStackForm())
+                .outputs(new ItemStack(Blocks.GLASS, 1))
+                .buildAndRegister();
+
         // Concrete
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(16)
                 .input(dust, Calcite, 2)
@@ -512,7 +534,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Wood Pipes
-        if (GAConfig.GT6.BendingPipes) {
+        if (GAConfig.GT6.BendingCylinders) {
             removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
             removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
 
@@ -630,6 +652,33 @@ public class RecipeOverride {
                 .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal, 2), 625, 500)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Sulfur), 9900, 100)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Coal), 5625, 850)
+                .buildAndRegister();
+
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone));
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(488).EUt(80)
+                .input(dust, Glowstone)
+                .output(dustSmall, Netherrack, 2)
+                .output(dustSmall, PreciousMetal, 2)
+                .buildAndRegister();
+
+        // Precious Metal Dust from Netherrack
+        removeRecipesByInputs(MACERATOR_RECIPES, new ItemStack(Blocks.NETHERRACK));
+        MACERATOR_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .inputs(new ItemStack(Blocks.NETHERRACK))
+                .output(dust, Netherrack)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal), 500, 120)
+                .buildAndRegister();
+
+        // GTNH Lava
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, Lava.getFluid(100));
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(80).EUt(80)
+                .fluidInputs(Lava.getFluid(100))
+                .chancedOutput(OreDictUnifier.get(dustSmall, SiliconDioxide),5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Magnesia),1000, 100)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Quicklime),1000, 100)
+                .chancedOutput(OreDictUnifier.get(dustSmall, PreciousMetal),250, 90)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Sapphire),1250, 150)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Tantalite),500, 90)
                 .buildAndRegister();
 
         // Quartz Plates
@@ -830,7 +879,7 @@ public class RecipeOverride {
 
     private static void vanillaOverride() {
 
-        if (GAConfig.GT6.BendingCylinders && GAConfig.GT6.addCurvedPlates) {
+        if (GAConfig.GT6.addCurvedPlates) {
 
             // Buckets
             removeRecipeByName("gregtech:iron_bucket");
@@ -902,24 +951,24 @@ public class RecipeOverride {
                     "P P", "ChC",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
-
-            // Chain Armor
-            ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
-                    "RRR", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
-                    "RhR", "RRR", "RRR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
-                    "RRR", "RhR", "R R",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
-                    "R R", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
         }
+
+        // Chain Armor
+        ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
+                "RRR", "RhR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
+                "RhR", "RRR", "RRR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
+                "RRR", "RhR", "R R",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
+                "R R", "RhR",
+                'R', new UnificationEntry(ring, Iron));
 
         // Glowstone / Nether Quartz Block Recipes
         if (GAConfig.GT5U.GenerateCompressorRecipes) {
@@ -932,6 +981,11 @@ public class RecipeOverride {
                     .output(gem, NetherQuartz, 4)
                     .buildAndRegister();
 
+            MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
+                    .input(block, Glowstone)
+                    .output(dust, Glowstone, 4)
+                    .buildAndRegister();
+
             COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
                     .input(gem, NetherQuartz, 4)
                     .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
@@ -942,6 +996,19 @@ public class RecipeOverride {
                     .outputs(new ItemStack(Blocks.GLOWSTONE))
                     .buildAndRegister();
         }
+
+        // Glowstone Recipes
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, Redstone)
+                .input(dust, PreciousMetal)
+                .output(dust, Glowstone)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, Redstone)
+                .input(dust, Gold)
+                .output(dust, Glowstone, 2)
+                .buildAndRegister();
 
         // Snow Block Recipes
         FORGE_HAMMER_RECIPES.recipeBuilder().EUt(24).duration(50)
