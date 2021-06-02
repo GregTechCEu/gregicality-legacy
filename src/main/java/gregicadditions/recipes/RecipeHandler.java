@@ -117,7 +117,7 @@ public class RecipeHandler {
         GoldChain.init();
         NaquadahChain.init();
         NuclearChain.init();
-        PlasticChain.init();
+        PolymerChain.init();
         PlatinumSludgeGroupChain.init();
         TungstenChain.init();
         REEChain.init();
@@ -155,6 +155,7 @@ public class RecipeHandler {
         ArcFurnaceOxidation.init();
         WetwareChain.init();
         OpticalChain.init();
+        CombinedChains.init();
     }
 
     /**

@@ -13,15 +13,15 @@ public class ZylonChain {
                 .fluidInputs(OrthoXylene.getFluid(1000))
                 .input(dust, Zeolite)
                 .fluidOutputs(OrthoXyleneZeoliteMixture.getFluid(1000))
-                .EUt(2000000)
+                .EUt(480)
                 .duration(50)
                 .buildAndRegister();
 
-        DISTILLATION_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(OrthoXyleneZeoliteMixture.getFluid(1000))
                 .output(dust, Zeolite)
                 .fluidOutputs(ParaXylene.getFluid(1000))
-                .EUt(2000000)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -32,19 +32,19 @@ public class ZylonChain {
                 .fluidInputs(Bromine.getFluid(2000))
                 .fluidOutputs(Dibromomethylbenzene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(2000000)
+                .EUt(7680)
                 .duration(150)
                 .buildAndRegister();
 
-        // C8H8Br2 + H2SO4 -> 2Br + 2H2O + C8H6O2 + S
+        // C8H8Br2 + H2SO4 -> 2Br + H2O2 + H2S + C8H6O2
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dibromomethylbenzene.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(Bromine.getFluid(2000))
-                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(HydrogenPeroxide.getFluid(1000))
                 .outputs(Terephthalaldehyde.getItemStack(16))
-                .output(dust, Sulfur)
-                .EUt(2000000)
+                .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
 
@@ -55,7 +55,7 @@ public class ZylonChain {
                 .input(dust, Carbon)
                 .outputs(AuPdCCatalyst.getItemStack(3))
                 .EUt(2000000)
-                .duration(1)
+                .duration(60)
                 .buildAndRegister();
 
         // HCl + C3H6 -> C3H7Cl
@@ -63,8 +63,8 @@ public class ZylonChain {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Propene.getFluid(1000))
                 .fluidOutputs(Isochloropropane.getFluid(1000))
-                .EUt(2000000)
-                .duration(20)
+                .EUt(480)
+                .duration(110)
                 .buildAndRegister();
 
         // C2H2O + CH3COOH -> C4H6O3
@@ -72,8 +72,8 @@ public class ZylonChain {
                 .fluidInputs(Ethenone.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidOutputs(AceticAnhydride.getFluid(1000))
-                .EUt(30720)
-                .duration(20)
+                .EUt(480)
+                .duration(80)
                 .buildAndRegister();
 
         // C6H6O2 + C3H7Cl + C4H6O3 + 2HNO3 + Na2O + C3H6 -> C12H16O2(NO2)2 + 2H2O + CH3COOH + C2H3NaO2 + NaCl
@@ -89,8 +89,15 @@ public class ZylonChain {
                 .fluidOutputs(AceticAcid.getFluid(1000))
                 .fluidOutputs(SodiumAcetate.getFluid(1000))
                 .output(dust, Salt, 2)
-                .EUt(2000000)
+                .EUt(7680)
                 .duration(50)
+                .buildAndRegister();
+
+        // C2H3NaO2 -> NaOH + C2H2O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(80).EUt(120)
+                .fluidInputs(SodiumAcetate.getFluid(1000))
+                .output(dust, SodiumHydroxide, 3)
+                .fluidOutputs(Ethenone.getFluid(1000))
                 .buildAndRegister();
 
         // C12H16O2(NO2)2 + C8H6O2 -> C20H22N2O2 + 6O
@@ -100,7 +107,7 @@ public class ZylonChain {
                 .notConsumable(AuPdCCatalyst.getItemStack())
                 .outputs(PreZylon.getItemStack())
                 .fluidOutputs(Oxygen.getFluid(6000))
-                .EUt(2000000)
+                .EUt(1966080)
                 .duration(50)
                 .buildAndRegister();
 
@@ -109,8 +116,8 @@ public class ZylonChain {
                 .inputs(PreZylon.getItemStack())
                 .fluidOutputs(Propane.getFluid(2000))
                 .output(dust, Zylon)
-                .EUt(2000000)
-                .duration(100)
+                .EUt(120)
+                .duration(16000)
                 .blastFurnaceTemp(10000)
                 .buildAndRegister();
     }

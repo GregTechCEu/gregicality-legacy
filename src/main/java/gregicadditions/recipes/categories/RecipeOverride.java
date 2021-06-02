@@ -20,6 +20,7 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
@@ -414,6 +415,29 @@ public class RecipeOverride {
                 .fluidOutputs(Methane.getFluid(600))
                 .fluidOutputs(Butanol.getFluid(100))
                 .buildAndRegister();
+
+        // Fix GTCE Hypochlorous Acid Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000)});
+
+        // 10Cl + 10H2O -> 10HClO + 10H
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(8)
+                .fluidInputs(Chlorine.getFluid(10000))
+                .fluidInputs(Water.getFluid(10000))
+                .notConsumable(Mercury.getFluid(0))
+                .fluidOutputs(HypochlorousAcid.getFluid(10000))
+                .fluidOutputs(Hydrogen.getFluid(10000))
+                .buildAndRegister();
+
+        // Fix GTCE Cumene Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000)});
+
+        // 8C3H6 + 8C6H6 -> 8C9H12
+        CHEMICAL_RECIPES.recipeBuilder().duration(1920).EUt(30)
+                .fluidInputs(Propene.getFluid(8000))
+                .fluidInputs(Benzene.getFluid(8000))
+                .notConsumable(PhosphoricAcid.getFluid(0))
+                .fluidOutputs(Cumene.getFluid(8000))
+                .buildAndRegister();
     }
 
     private static void gregtechOverride() {
@@ -765,16 +789,91 @@ public class RecipeOverride {
 
         // Cells from Dense Plates to Double Plates
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, Steel, 8), OreDictUnifier.get(plateDense, Steel, 2), getIntegratedCircuit(1));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, TungstenSteel, 8), OreDictUnifier.get(plateDense, TungstenSteel, 2), getIntegratedCircuit(1));
         ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
                 .input(ring, Steel, 8)
                 .input(plateDouble, Steel, 2)
                 .outputs(LARGE_FLUID_CELL_STEEL.getStackForm())
                 .buildAndRegister();
+
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, TungstenSteel, 8), OreDictUnifier.get(plateDense, TungstenSteel, 2), getIntegratedCircuit(1));
         ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
                 .input(ring, TungstenSteel, 8)
                 .input(plateDouble, TungstenSteel, 2)
                 .outputs(LARGE_FLUID_CELL_TUNGSTEN_STEEL.getStackForm())
+                .buildAndRegister();
+
+        // Oil Hydrodesulfurization Catalysis
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricGas.getFluid(16000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricNaphtha.getFluid(12000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricLightFuel.getFluid(12000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricHeavyFuel.getFluid(8000)});
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricGas.getFluid(16000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Gas.getFluid(16000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricGas.getFluid(8000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Gas.getFluid(8000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricNaphtha.getFluid(12000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Naphtha.getFluid(12000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricNaphtha.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Naphtha.getFluid(6000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricLightFuel.getFluid(12000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(LightFuel.getFluid(12000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricLightFuel.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(LightFuel.getFluid(6000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricHeavyFuel.getFluid(8000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(8000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricHeavyFuel.getFluid(4000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(4000))
                 .buildAndRegister();
     }
 
@@ -986,5 +1085,8 @@ public class RecipeOverride {
         // Reinforced Epoxy Resin Handcrafting Recipes
         removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_glass");
         removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_carbon");
+
+        // Remove Bad Sulfuric Acid Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Sulfur)}, new FluidStack[]{Water.getFluid(4000)});
     }
 }

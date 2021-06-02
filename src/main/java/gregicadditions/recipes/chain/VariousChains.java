@@ -37,7 +37,7 @@ public class VariousChains {
 
         // Sodium Hypochlorite =========================================================================================
         // 2NaOH + 2Cl -> H2O + NaCl + NaClO
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(480)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(120)
                 .fluidInputs(Chlorine.getFluid(2000))
                 .input(dust, SodiumHydroxide, 6)
                 .fluidOutputs(Water.getFluid(1000))
@@ -46,7 +46,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // HClO + NaOH -> H2O + NaClO
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(256)
+        CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(120)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
                 .notConsumable(new IntCircuitIngredient(0))
@@ -55,7 +55,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // NaClO + HCl -> NaCl + HClO
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(256)
+        CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(120)
                 .inputs(SodiumHypochlorite.getItemStack(3))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .output(dust, Salt, 2)
@@ -63,40 +63,89 @@ public class VariousChains {
                 .buildAndRegister();
 
         // Lignite Processing ==========================================================================================
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(320).EUt(120)
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .circuitMeta(0)
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .fluidOutputs(HotNitrogen.getFluid(1000))
                 .buildAndRegister();
 
-        // C2(H2O)4C + N(hot) -> N + 3C + 4H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(120)
+        // C2(H2O)4C + N(hot) -> N + 3C + 4H2O (H2O lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(190).EUt(120)
                 .input(dust, Lignite)
                 .fluidInputs(HotNitrogen.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .outputs(DehydratedLignite.getItemStack(3))
-                .fluidOutputs(Steam.getFluid(4000))
                 .buildAndRegister();
 
-        COMPRESSOR_RECIPES.recipeBuilder().duration(230).EUt(64)
+        COMPRESSOR_RECIPES.recipeBuilder().duration(40).EUt(30)
                 .inputs(DehydratedLignite.getItemStack(3))
-                .outputs(BCEPellet.getItemStack())
+                .outputs(BCEPellet.getItemStack()) //Todo make BCE pellet equivalent to coal as furnace fuel
                 .buildAndRegister();
 
         // Graphene ====================================================================================================
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
-                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
-                .fluidInputs(HydrochloricAcid.getFluid(3000))
-                .fluidOutputs(IronChloride.getFluid(2000))
-                .output(plate, Graphene)
+        // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
+        MIXER_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .fluidInputs(IronChloride.getFluid(1000))
+                .inputs(Glucose.getItemStack(24))
+                .fluidOutputs(GlucoseIronSolution.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(28000)
-                .inputs(GRAPHENE_IRON_PLATE.getStackForm(2))
-                .fluidInputs(AquaRegia.getFluid(3000))
-                .fluidOutputs(IronChloride.getFluid(2000))
+        // [FeCl3 + C6H12O6] -> [6CO + Fe] + 3Cl + 5H2O + H2 (H2O and H2 lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(40).EUt(120)
+                .notConsumable(stickLong, YttriumBariumCuprate)
+                .fluidInputs(GlucoseIronSolution.getFluid(1000))
+                .outputs(GRAPHENE_IRON_PLATE.getStackForm())
+                .fluidOutputs(Chlorine.getFluid(3000))
+                .buildAndRegister();
+
+        // KMnO4 + NaNO3 + H2SO4 = Graphene Oxidation Solution
+        MIXER_RECIPES.recipeBuilder().duration(260).EUt(120)
+                .inputs(PotassiumPermanganate.getItemStack(6))
+                .input(dust, SodiumNitrate, 5)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(GrapheneOxidationSolution.getFluid(1000))
+                .buildAndRegister();
+
+        // Graphite + Oxidation Solution = Graphite Oxide + Residue
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(100).EUt(480)
+                .input(dust, Graphite, 3)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
+                .outputs(GraphiteOxide.getItemStack())
+                .chancedOutput(GrapheneOxidationResidue.getItemStack(), 8000, 1000)
+                .buildAndRegister();
+
+        // Graphene + Oxidation Solution = Graphene Oxide + Residue
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(20).EUt(24)
+                .input(dust, Graphene)
+                .fluidInputs(GrapheneOxidationSolution.getFluid(100))
                 .outputs(GrapheneOxide.getItemStack(3))
-                .fluidOutputs(NitrogenDioxide.getFluid(1500))
+                .chancedOutput(GrapheneOxidationResidue.getItemStack(), 8000, 1000)
+                .buildAndRegister();
+
+        // Graphene Oxidation Residue -> Graphene Oxidation Solution
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(65).EUt(24)
+                .inputs(GrapheneOxidationResidue.getItemStack())
+                .fluidOutputs(GrapheneOxidationSolution.getFluid(100))
+                .buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .inputs(GraphiteOxide.getItemStack())
+                .fluidInputs(Water.getFluid(100))
+                .outputs(GrapheneOxide.getItemStack(3))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(30).EUt(480)
+                .inputs(GrapheneOxide.getItemStack(3))
+                .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
+                .notConsumable(Hydrazine.getFluid(0))
+                .output(dust, Graphene)
+                .buildAndRegister();
+
+        // [6CO + Fe] -> C6O + Fe
+        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder().duration(120).EUt(30)
+                .inputs(GRAPHENE_IRON_PLATE.getStackForm())
+                .outputs(GrapheneOxide.getItemStack(3))
+                .output(dust, Iron)
                 .buildAndRegister();
 
         // Liquid Air Distillation =====================================================================================
@@ -115,17 +164,17 @@ public class VariousChains {
                 .buildAndRegister();
 
         // Pyrotheum ===================================================================================================
-        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .input(dust, Coal)
                 .input(dust, Sulfur)
-                .fluidInputs(Lava.getFluid(100))
+                .notConsumable(Lava.getFluid(0))
                 .output(dust, Blaze, 2)
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .input(dust, Charcoal)
                 .input(dust, Sulfur)
-                .fluidInputs(Lava.getFluid(100))
+                .notConsumable(Lava.getFluid(0))
                 .output(dust, Blaze, 2)
                 .buildAndRegister();
 
@@ -136,15 +185,16 @@ public class VariousChains {
                 .output(dust, Pyrotheum, 2)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(24)
                 .input(dust, Pyrotheum)
                 .fluidOutputs(Pyrotheum.getFluid(250))
                 .buildAndRegister();
 
         // Cryotheum ===================================================================================================
-        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .input(dust, Snow)
-                .fluidInputs(Redstone.getFluid(L))
+                .input(dust, Redstone)
+                .notConsumable(Ice.getFluid(0))
                 .output(dust, Blizz, 2)
                 .buildAndRegister();
 
@@ -155,23 +205,22 @@ public class VariousChains {
                 .output(dust, Cryotheum, 2)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(24)
                 .input(dust, Cryotheum)
                 .fluidOutputs(Cryotheum.getFluid(250))
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
                 .duration(200)
-                .EUt(491520)
+                .EUt(480)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Cryotheum.getFluid(10000))
                 .fluidOutputs(SupercooledCryotheum.getFluid(10000))
                 .buildAndRegister();
 
         // Nuclear Process Distillation ================================================================================
-        // TODO: NUCLEAR REWORK: CHANGE FERRITE MIXTURE OUTPUT
-        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
-                .fluidInputs(RedOil.getFluid(4000))
+        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(120)
+                .fluidInputs(RedOil.getFluid(3000))
                 .output(dust, FerriteMixture)
                 .fluidOutputs(Hydrazine.getFluid(1000))
                 .fluidOutputs(RP1.getFluid(1000))
@@ -179,7 +228,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // 3Cl + P -> PCl3
-        CHEMICAL_RECIPES.recipeBuilder().duration(20)
+        CHEMICAL_RECIPES.recipeBuilder().duration(60)
                 .fluidInputs(Chlorine.getFluid(3000))
                 .input(dust, Phosphorus)
                 .notConsumable(new IntCircuitIngredient(3))
@@ -187,14 +236,14 @@ public class VariousChains {
                 .buildAndRegister();
 
         // PCl3 + O -> POCl3
-        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .fluidInputs(PhosphorusTrichloride.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(PhosphorylChloride.getFluid(1000))
                 .buildAndRegister();
 
         // POCl3 + 3C4H10O -> C12H27O4P + 3HCl
-        CHEMICAL_RECIPES.recipeBuilder().duration(300)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .fluidInputs(PhosphorylChloride.getFluid(1000))
                 .fluidInputs(Butanol.getFluid(3000))
                 .fluidOutputs(HydrochloricAcid.getFluid(3000))
@@ -203,14 +252,14 @@ public class VariousChains {
 
         // Formic acid =================================================================================================
         // CO + NaOH -> HCOONa
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(15)
+        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(60)
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
                 .fluidOutputs(SodiumFormate.getFluid(1000))
                 .buildAndRegister();
 
         // HCOONa + H2SO4 -> CH2O2 + NaHSO4
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(15)
+        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(60)
                 .fluidInputs(SodiumFormate.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(FormicAcid.getFluid(1000))
@@ -219,7 +268,7 @@ public class VariousChains {
 
         // Misc Reactions ==============================================================================================
         // 3Ca + 3PO4 + H + O -> [3Ca + 3PO4 + H + O]
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(300)
+        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(100)
                 .input(dust, Calcium, 3)
                 .input(dust, Phosphate, 3) // this is probably wrong
                 .fluidInputs(Hydrogen.getFluid(1000))
@@ -228,7 +277,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // 2HCl + CaCO3 -> H2O + CO2 + CaCl2
-        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .input(dust, Calcite, 5)
                 .fluidOutputs(Water.getFluid(1000))
@@ -237,35 +286,35 @@ public class VariousChains {
                 .buildAndRegister();
 
         // ZrCl4 -> Zr + 4Cl
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .inputs(ZirconiumTetrachloride.getItemStack(5))
                 .output(dust, Zirconium)
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .buildAndRegister();
 
         // SiF4 -> Si + 4F
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(SiliconFluoride.getFluid(1000))
                 .output(dust, Silicon)
                 .fluidOutputs(Fluorine.getFluid(4000))
                 .buildAndRegister();
 
         // CF4 -> C + 4F
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(CarbonFluoride.getFluid(1000))
                 .output(dust, Carbon)
                 .fluidOutputs(Fluorine.getFluid(4000))
                 .buildAndRegister();
 
         // BaSO4 + H2O -> [BaSO4 + H2O]
-        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .input(dust, Barite)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(BariumSulfateSolution.getFluid(1000))
                 .buildAndRegister();
 
         // CaCO3 + H2O -> [CaCO3 + H2O]
-        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .input(dust, Calcite)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Water.getFluid(1000))
@@ -273,7 +322,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // Bentonite + Clay + 2H2O -> 2[H2O + 0.5 Bentonite + 0.5 Clay]
-        MIXER_RECIPES.recipeBuilder().duration(220).EUt(64)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .input(dust, Bentonite)
                 .input(dust, Clay)
                 .fluidInputs(Water.getFluid(2000))
@@ -281,7 +330,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // Fe + 3HCl -> FeCl3 + 3H
-        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Iron)
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .fluidOutputs(IronChloride.getFluid(3000))
@@ -301,7 +350,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // 2H + C16H12O2 -> C16H12O2H2
-        CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(120)
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidInputs(EthylAnthraQuinone.getFluid(1000))
                 .fluidOutputs(EthylAnthraHydroQuinone.getFluid(1000))
@@ -316,7 +365,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // C2H4 + C6H6 -> C8H10
-        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(60)
                 .notConsumable(new IntCircuitIngredient(1))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Benzene.getFluid(1000))
@@ -324,16 +373,16 @@ public class VariousChains {
                 .buildAndRegister();
 
         // C8H6O4 -> C8H4O3 + H2O (H2O voided - Dehydrator)
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(1200).EUt(120)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(600).EUt(120)
                 .fluidInputs(PhthalicAcid.getFluid(1000))
                 .output(dust, PhthalicAnhydride, 15)
                 .buildAndRegister();
 
         // 21O + 4 C10H8 -> 5C8H6O4 + H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(120)
                 .notConsumable(dust, Lithium)
                 .fluidInputs(Oxygen.getFluid(21000))
-                .fluidInputs(Naphtalene.getFluid(4000))
+                .fluidInputs(Naphthalene.getFluid(4000))
                 .fluidOutputs(PhthalicAcid.getFluid(5000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -342,14 +391,14 @@ public class VariousChains {
     private static void drillingMud() {
 
         // HClO + C2H4 -> C2H5ClO
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(480)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidOutputs(Chloroethanol.getFluid(1000))
                 .buildAndRegister();
 
         // C2H5ClO + C3H9N + Na -> C5H14NO + NaCl
-        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(480)
                 .input(dust, Sodium)
                 .fluidInputs(Chloroethanol.getFluid(1000))
                 .fluidInputs(Trimethylamine.getFluid(1000))
@@ -358,13 +407,13 @@ public class VariousChains {
                 .buildAndRegister();
 
         // C2(H2O)4C + C5H14NO -> ATL
-        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(256)
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .input(dust, Lignite)
                 .fluidInputs(Choline.getFluid(1000))
                 .fluidOutputs(ATL.getFluid(1000))
                 .buildAndRegister();
 
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(120).EUt(480)
                 .fluidInputs(BariumSulfateSolution.getFluid(1000))
                 .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
                 .fluidInputs(BentoniteClaySlurry.getFluid(1000))
@@ -374,39 +423,39 @@ public class VariousChains {
                 .fluidOutputs(DrillingMud.getFluid(6000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .fluidInputs(BariumSulfateSolution.getFluid(1000))
                 .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
                 .fluidOutputs(CaCBaSMixture.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .fluidInputs(BentoniteClaySlurry.getFluid(1000))
                 .fluidInputs(Lubricant.getFluid(1000))
                 .fluidOutputs(LubricantClaySlurry.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .fluidInputs(ATL.getFluid(1000))
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
                 .fluidOutputs(ATLEthylene.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(120)
                 .fluidInputs(CaCBaSMixture.getFluid(2000))
                 .fluidInputs(LubricantClaySlurry.getFluid(2000))
                 .fluidOutputs(DrillingMudMixture.getFluid(4000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(120)
                 .fluidInputs(DrillingMudMixture.getFluid(4000))
                 .fluidInputs(ATLEthylene.getFluid(2000))
                 .fluidOutputs(DrillingMud.getFluid(6000))
                 .buildAndRegister();
 
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(120).EUt(480)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .fluidInputs(UsedDrillingMud.getFluid(1000))
-                .fluidOutputs(DrillingMud.getFluid(950))
+                .fluidOutputs(DrillingMud.getFluid(990))
                 .outputs(new ItemStack(Blocks.GRAVEL))
                 .buildAndRegister();
     }
@@ -414,21 +463,21 @@ public class VariousChains {
     private static void memoryFoam() {
 
         // C2H4O + H2O -> [C2H4O + H2O]
-        MIXER_RECIPES.recipeBuilder().duration(240).EUt(480)
+        MIXER_RECIPES.recipeBuilder().duration(140).EUt(120)
                 .fluidInputs(EthyleneOxide.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(WetEthyleneOxide.getFluid(1000))
                 .buildAndRegister();
 
         // [C2H4O + H2O] -> C2H6O2
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(230).EUt(120)
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(130).EUt(120)
                 .circuitMeta(0)
                 .fluidInputs(WetEthyleneOxide.getFluid(1000))
                 .fluidOutputs(EthyleneGlycol.getFluid(1000))
                 .buildAndRegister();
 
         // C7H8 + 2COCl2 + 2HNO3 -> C9H6N2O2 + 4HClO + 2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(960)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(480)
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(Phosgene.getFluid(2000))
                 .fluidInputs(NitricAcid.getFluid(2000))
@@ -438,7 +487,7 @@ public class VariousChains {
                 .buildAndRegister();
 
         // C9H6N2O2 + 4C2H6O2 + O -> C17H16N2O4 + 7H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(960)
+        CHEMICAL_RECIPES.recipeBuilder().duration(110).EUt(480)
                 .fluidInputs(TolueneDiisocyanate.getFluid(1000))
                 .fluidInputs(EthyleneGlycol.getFluid(4000))
                 .fluidInputs(Oxygen.getFluid(1000))
@@ -446,26 +495,26 @@ public class VariousChains {
                 .fluidOutputs(Water.getFluid(7000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(230).EUt(720)
+        MIXER_RECIPES.recipeBuilder().duration(110).EUt(120)
                 .fluidInputs(Polyurethane.getFluid(1000))
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
                 .input(dust, Calcite, 5)
                 .fluidOutputs(ViscoelasticPolyurethane.getFluid(2000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(250).EUt(720)
+        MIXER_RECIPES.recipeBuilder().duration(150).EUt(120)
                 .fluidInputs(ViscoelasticPolyurethane.getFluid(1000))
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(ViscoelasticPolyurethaneFoam.getFluid(2000))
                 .buildAndRegister();
 
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(200).EUt(960)
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(60).EUt(30)
                 .fluidInputs(ViscoelasticPolyurethaneFoam.getFluid(1000))
                 .notConsumable(SHAPE_MOLD_BLOCK)
                 .outputs(MEMORY_FOAM_BLOCK.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(1000)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(260).EUt(8)
                 .input(stick, Wood, 3)
                 .inputs(MEMORY_FOAM_BLOCK.getStackForm(3))
                 .outputs(new ItemStack(Items.BED))
@@ -629,13 +678,13 @@ public class VariousChains {
         DISTILLERY_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .circuitMeta(0)
                 .fluidInputs(SulfuricCoalTarOil.getFluid(50))
-                .fluidOutputs(Naphtalene.getFluid(50))
+                .fluidOutputs(Naphthalene.getFluid(50))
                 .buildAndRegister();
 
         DISTILLERY_RECIPES.recipeBuilder().duration(5).EUt(480)
                 .circuitMeta(1)
                 .fluidInputs(SulfuricCoalTarOil.getFluid(800))
-                .fluidOutputs(Naphtalene.getFluid(800))
+                .fluidOutputs(Naphthalene.getFluid(800))
                 .buildAndRegister();
     }
 }

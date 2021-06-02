@@ -17,7 +17,7 @@ public class PEEKChain {
                 .fluidOutputs(BoricAcid.getFluid(4000))
                 .fluidOutputs(Water.getFluid(5000))
                 .output(dust, Salt, 4)
-                .EUt(7680)
+                .EUt(120)
                 .duration(150)
                 .buildAndRegister();
 
@@ -27,14 +27,14 @@ public class PEEKChain {
                 .fluidInputs(HydrofluoricAcid.getFluid(4000))
                 .fluidOutputs(FluoroBoricAcid.getFluid(1000))
                 .fluidOutputs(Water.getFluid(3000))
-                .EUt(500000)
-                .duration(10)
+                .EUt(120)
+                .duration(100)
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Cobalt)
                 .input(dust, Charcoal, 2)
-                .input(plate, Steel)
+                .input(plate, Polybenzimidazole)
                 .fluidInputs(Acetylene.getFluid(1000))
                 .fluidInputs(Steam.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(4000))
@@ -49,8 +49,8 @@ public class PEEKChain {
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, SodiumNitrate, 5)
                 .fluidOutputs(SodiumNitrateSolution.getFluid(1000))
-                .EUt(122880)
-                .duration(2)
+                .EUt(120)
+                .duration(80)
                 .buildAndRegister();
 
         // NaNO3(H2O) -> NaNO2 + H2O + O
@@ -60,8 +60,8 @@ public class PEEKChain {
                 .outputs(SodiumNitrite.getItemStack(4))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(500000)
-                .duration(20)
+                .EUt(30)
+                .duration(300)
                 .buildAndRegister();
 
         // HBF4 + HCl + C6H5NH2 + NaNO2 -> NaCl + C6H5BF4N2 + 2H2O
@@ -73,8 +73,8 @@ public class PEEKChain {
                 .output(dust, Salt, 2)
                 .fluidOutputs(BenzenediazoniumTetrafluoroborate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .duration(150)
-                .EUt(500000)
+                .duration(130)
+                .EUt(30720)
                 .buildAndRegister();
 
         // C6H5BF4N2 -> BF3 + 2N + C6H5F
@@ -87,15 +87,15 @@ public class PEEKChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // C6H5F + CH4 + SbHF6 -> C7H7F + 3F + SbF3
+        // C6H5F + CH4 + H2SbF7 -> C7H7F + 4HF + SbF3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(FluoroBenzene.getFluid(1000))
                 .fluidInputs(Methane.getFluid(1000))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .fluidOutputs(Fluorotoluene.getFluid(1000))
-                .fluidOutputs(Fluorine.getFluid(3000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(4000))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
-                .EUt(500000)
+                .EUt(480)
                 .duration(150)
                 .buildAndRegister();
 
@@ -104,8 +104,8 @@ public class PEEKChain {
                 .inputs(AntimonyTrifluoride.getItemStack(4))
                 .output(dust, Antimony)
                 .fluidOutputs(Fluorine.getFluid(3000))
-                .EUt(48)
-                .duration(360)
+                .EUt(120)
+                .duration(160)
                 .buildAndRegister();
 
         // Zn + Fe + Al + Cl -> ZnFeAlCl
@@ -115,8 +115,8 @@ public class PEEKChain {
                 .input(dust, Aluminium)
                 .fluidInputs(Chlorine.getFluid(1000))
                 .outputs(ZnFeAlClCatalyst.getItemStack(4))
-                .EUt(15000)
-                .duration(500)
+                .EUt(15360)
+                .duration(250)
                 .buildAndRegister();
 
         // H2O + 6Cl + C7H7F + C6H5F -> C13H8OF2 + 6HCl
@@ -128,7 +128,7 @@ public class PEEKChain {
                 .notConsumable(ZnFeAlClCatalyst.getItemStack())
                 .outputs(Difluorobenzophenone.getItemStack(24))
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
-                .EUt(500000)
+                .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
 
@@ -142,7 +142,7 @@ public class PEEKChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .output(dust, SodiumFluoride, 4)
-                .EUt(500000)
+                .EUt(122880)
                 .duration(250)
                 .buildAndRegister();
 
@@ -155,7 +155,7 @@ public class PEEKChain {
                 .fluidOutputs(Hydroquinone.getFluid(1000))
                 .fluidOutputs(Resorcinol.getFluid(1000))
                 .EUt(7860)
-                .duration(800)
+                .duration(200)
                 .buildAndRegister();
 
         // MgClBr -> Mg + Cl + Br
@@ -164,8 +164,8 @@ public class PEEKChain {
                 .output(dust, Magnesium)
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .fluidOutputs(Bromine.getFluid(1000))
-                .EUt(1920)
-                .duration(100)
+                .EUt(120)
+                .duration(160)
                 .buildAndRegister();
     }
 }

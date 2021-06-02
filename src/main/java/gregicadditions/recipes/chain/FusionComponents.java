@@ -21,16 +21,17 @@ public class FusionComponents {
     public static void init() {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
-                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1),
-                        OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8),
-                        OreDictUnifier.get(plate, Einsteinium.getMaterial(), 8),
-                        FIELD_GENERATOR_UV.getStackForm(2),
-                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
-                        HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64),
-                        OreDictUnifier.get(wireGtQuadruple, UVSuperconductor, 64))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
+                .inputs(OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8))
+                .inputs(OreDictUnifier.get(plate, Einsteinium.getMaterial(), 8))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
+                .inputs(OreDictUnifier.get(wireGtQuadruple, UVSuperconductor, 64))
                 .input(circuit, MarkerMaterials.Tier.Infinite, 4)
                 .fluidInputs(SolderingAlloy.getFluid(2880 * 2))
-                .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm()).buildAndRegister();
+                .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm())
+                .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(wireGtOctal, UVSuperconductor, 4)
@@ -183,8 +184,8 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_3, 4))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(500000).
-                inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(500000)
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.FUSION_3))
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 6)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .duration(50)

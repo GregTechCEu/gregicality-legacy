@@ -20,6 +20,14 @@ public class ChromiumChain {
                 .fluidOutputs(SodiumCarbonateSolution.getFluid(1000))
                 .buildAndRegister();
 
+        // 2NaOH + CO2 -> Na2CO3 + H2O
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
+                .input(dust, SodiumHydroxide, 6)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .output(dust, SodaAsh, 6)
+                .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
         // CaCO3 + 2NaCl -> Na2CO3 + CaCl2
         BLAST_RECIPES.recipeBuilder().duration(120).EUt(120).blastFurnaceTemp(500)
                 .input(dust, Calcite, 5)
@@ -29,7 +37,7 @@ public class ChromiumChain {
                 .buildAndRegister();
 
         // 2Cr2FeO4 + 4Na2CO3(H2O) + 7O -> Fe2O3 + 4CO2 + 4Na2CrO4(H2O)
-        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(125)
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .input(dust, Chromite, 14)
                 .fluidInputs(SodiumCarbonateSolution.getFluid(4000))
                 .fluidInputs(Oxygen.getFluid(7000))
@@ -38,17 +46,16 @@ public class ChromiumChain {
                 .fluidOutputs(SodiumChromateSolution.getFluid(4000))
                 .buildAndRegister();
 
-        // 2Na2CrO4(H2O) + H2SO4 -> Na2Cr2O7 + Na2SO4(H2O) + 2H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(125)
+        // 2Na2CrO4(H2O) + H2SO4 -> Na2Cr2O7(H2O) + Na2SO4 + 2H2O (H2O lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .fluidInputs(SodiumChromateSolution.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(SodiumDichromateSolution.getFluid(1000))
-                .fluidOutputs(SodiumSulfateSolution.getFluid(1000))
-                .fluidOutputs(Water.getFluid(2000))
+                .output(dust, SodiumSulfate, 7)
                 .buildAndRegister();
 
-        // CO2 + Na2Cr2O7 -> Na2CO3 + 2CrO3
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(125)
+        // CO2 + Na2Cr2O7(H2O) -> Na2CO3 + 2CrO3 + H2O (H2O lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(120)
                 .fluidInputs(CarbonDioxide.getFluid(1000))
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .output(dust, SodaAsh, 6)
@@ -56,7 +63,7 @@ public class ChromiumChain {
                 .buildAndRegister();
 
         // CrO3 + 2Al -> Cr + Al2O3
-        BLAST_RECIPES.recipeBuilder().duration(200).EUt(125).blastFurnaceTemp(1200)
+        BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1200)
                 .input(dust, ChromiumTrioxide, 4)
                 .input(dust, Aluminium, 2)
                 .output(dust, Chrome)
@@ -64,68 +71,68 @@ public class ChromiumChain {
                 .buildAndRegister();
 
         // Na2SO4(H2O) -> Na2SO4
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(125)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .fluidInputs(SodiumSulfateSolution.getFluid(1000))
                 .output(dust, SodiumSulfate, 7)
                 .buildAndRegister();
 
-        // Al2O3Cr + (HNO3 + HCl) -> Al2O3CrCl? + (H2NO3)
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(2000)
+        // Al2O3Cr + (HNO3 + HCl) -> Al2O3Cr(HNO3HCl)
+        MIXER_RECIPES.recipeBuilder().duration(280).EUt(1920)
                 .input(dust, Ruby, 6)
                 .fluidInputs(AquaRegia.getFluid(2000))
-                .fluidOutputs(RubySlurry.getFluid(1000))
-                .fluidOutputs(DiluteNitricAcid.getFluid(1000))
+                .fluidOutputs(RubySlurry.getFluid(2000))
                 .buildAndRegister();
 
-        // Al2O3CrCl? -> 2Al + Cr + Cl + 3O + ? + ? + ?
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
-                .fluidInputs(RubySlurry.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
+        // Al2O3Cr(HNO3HCl) -> 2Al + Cr + 3O + Ti + Fe + V + HNO3 + HCl
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
+                .fluidInputs(RubySlurry.getFluid(2000))
                 .output(dust, Aluminium, 2)
                 .output(dust, Chrome)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Vanadium), 2000, 0)
                 .fluidOutputs(Oxygen.getFluid(3000))
+                .fluidOutputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        // Al2O3 + (HNO3 + HCl) -> Al2O3Cl? + (H2NO3)
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(2000)
+        // Al2O3 + (HNO3 + HCl) -> Al2O3(HNO3HCl)
+        MIXER_RECIPES.recipeBuilder().duration(280).EUt(1920)
                 .input(dust, Sapphire, 5)
                 .fluidInputs(AquaRegia.getFluid(2000))
-                .fluidOutputs(SapphireSlurry.getFluid(1000))
-                .fluidOutputs(DiluteNitricAcid.getFluid(1000))
+                .fluidOutputs(SapphireSlurry.getFluid(2000))
                 .buildAndRegister();
 
-        // Al2O3Cl? -> 2Al + + Cl + 3O + ? + ? + ?
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
-                .fluidInputs(SapphireSlurry.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
+        // Al2O3(HNO3HCl) -> 2Al + 3O + Ti + Fe + V + HNO3 + HCl
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
+                .fluidInputs(SapphireSlurry.getFluid(2000))
                 .output(dust, Aluminium, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Vanadium), 2000, 0)
                 .fluidOutputs(Oxygen.getFluid(3000))
+                .fluidOutputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        // Al2O3 + (HNO3 + HCl) -> Al2O3Cl? + (H2NO3)
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(2000)
+        // Al2O3 + (HNO3 + HCl) -> Al2O3(HNO3HCl)
+        MIXER_RECIPES.recipeBuilder().duration(280).EUt(1920)
                 .input(dust, GreenSapphire, 5)
                 .fluidInputs(AquaRegia.getFluid(2000))
-                .fluidOutputs(GreenSapphireSlurry.getFluid(1000))
-                .fluidOutputs(DiluteNitricAcid.getFluid(1000))
+                .fluidOutputs(GreenSapphireSlurry.getFluid(2000))
                 .buildAndRegister();
 
-        // Al2O3Cl? -> 2Al + + Cl + 3O + ? + ? + ?
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(320).EUt(2000)
-                .fluidInputs(GreenSapphireSlurry.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
+        // Al2O3(HNO3HCl) -> 2Al + 3O + Be + Ti + Fe + V + HNO3 + HCl
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
+                .fluidInputs(GreenSapphireSlurry.getFluid(2000))
                 .output(dust, Aluminium, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Beryllium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Titanium), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iron), 2000, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Vanadium), 2000, 0)
                 .fluidOutputs(Oxygen.getFluid(3000))
+                .fluidOutputs(NitricAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
     }
 }

@@ -82,14 +82,10 @@ public class CrystalComponents {
                 .buildAndRegister();
 
         // Raw Crystal CPU (MEANT TO BE DONE ONCE)
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).input(gemExquisite, Olivine).fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 5000, 750).buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).input(gemExquisite, Emerald).fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 5000, 750).buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).input(gemFlawless, Olivine) .fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 2500, 500).buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(320).input(gemFlawless, Emerald) .fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 2500, 500).buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).input(gemExquisite, Olivine).fluidInputs(Helium.getFluid(1000))        .chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 500, 75)  .buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).input(gemExquisite, Emerald).fluidInputs(Helium.getFluid(1000))        .chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 500, 75)  .buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).input(gemFlawless, Olivine) .fluidInputs(Helium.getFluid(1000))        .chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 250, 50)  .buildAndRegister();
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(24000).EUt(320).input(gemFlawless, Emerald) .fluidInputs(Helium.getFluid(1000))        .chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 250, 50)  .buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(480).input(gemExquisite, Olivine).fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 5000, 1000).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(480).input(gemExquisite, Emerald).fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 5000, 1000).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(480).input(gemFlawless, Olivine) .fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 2500, 750).buildAndRegister();
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(12000).EUt(480).input(gemFlawless, Emerald) .fluidInputs(Rutherfordium.getFluid(L / 2)).chancedOutput(RAW_CRYSTAL_CHIP.getStackForm(), 2500, 750).buildAndRegister();
 
         // Engraved Crystal CPU
         removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(plate, Emerald, 10), OreDictUnifier.get(gemExquisite, Emerald)}, new FluidStack[]{Helium.getFluid(5000)});
