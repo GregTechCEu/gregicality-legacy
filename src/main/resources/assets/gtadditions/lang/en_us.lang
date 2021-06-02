@@ -1587,7 +1587,7 @@ gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
 gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
-gtadditions.machine.large_forge_hammer.name=Large Forge Hammer
+gtadditions.machine.large_forge_hammer.name=Large Hammering Machine
 gtadditions.machine.large_naquadah_reactor.name=Large Naquadah Reactor
 gtadditions.machine.battery_tower.name=Battery Tower
 gtadditions.machine.large_laser_engraver.name=Large Laser Engraver
@@ -1597,6 +1597,10 @@ gtadditions.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor Compute
 gtadditions.machine.central_monitor.name=Central Monitor
 gtadditions.machine.monitor_screen.name=Monitor Screen
 gtadditions.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor
+gtadditions.machine.large_brewery.name=Large Brewery
+gtadditions.machine.large_electromagnet.name=Large Electromagnet
+gtadditions.machine.large_extractor.name=Large Extractor
+gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
@@ -1757,7 +1761,8 @@ gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§r of the time!
 
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
-tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Assembly Line Casing
+tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Tungstensteel Gear Box Casing
+tile.ga_multiblock_casing.assembly_line_casing.name=Assembly Line Casing
 tile.ga_multiblock_casing.chemically_inert_casing.name=Chemically Inert PTFE Casing
 tile.ga_multiblock_casing.ptfe_pipe_casing.name=PTFE Pipe Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Large-Scale Assembler Casing
@@ -2844,7 +2849,6 @@ item.ga_essence.material.name=%s Essence
 
 gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 layers high. You can put energy hatches anywhere, and the hatch tier cannot be higher than the tier of the cell casings.
 gregtech.multiblock.large_forge_hammer.description=Uses Lubricant to process items.
-gregtech.multiblock.large_forge_hammer.tooltip=Processes 2 items per voltage tier difference, 1.25x faster and 90%% EUt.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant is a 5x5 structure with Tiered Casings which define the maximum voltage tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". It is a complex Assembling Machine used for creating advanced crafting components.
@@ -3003,7 +3007,7 @@ gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
 gtadditions.multiblock.battery_tower.input=EU/t input: %s
 gtadditions.multiblock.battery_tower.output=EU/t output: %s
 gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
-gtadditions.multiblock.large_chemical_reactor.bonus=Current Speed Boost: %d%%
+gtadditions.multiblock.large_chemical_reactor.bonus=Current Energy Boost: %d%%
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

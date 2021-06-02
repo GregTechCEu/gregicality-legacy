@@ -2,7 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.machines.multi.MultiUtils;
@@ -25,10 +24,8 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -99,15 +96,6 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
         tooltip.add(I18n.format("gregtech.multiblock.large_bender_and_forming.description"));
         tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
         super.addInformation(stack, player, tooltip, advanced);
-    }
-
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
-        T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
-            return (T) this;
-        }
-        return capabilityResult;
     }
 
     @Override

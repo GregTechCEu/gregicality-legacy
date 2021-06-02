@@ -15,17 +15,22 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
+import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Predicate;
 
 public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblockController {
 
@@ -46,18 +51,16 @@ public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblock
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX","XXX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
+                .aisle("XXX", "GCG","XEX","#T#").setRepeatable(3, 6)
                 .aisle("XXX", "XSX","XXX","#T#")
-                .setAmountAtLeast('L', 22)
+                .setAmountAtLeast('L', 18)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .where('C', conveyorPredicate())
                 .where('E', emitterPredicate())
-                .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
+                .where('T', statePredicate(MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.IRIDIUM_GLASS)))
                 .build();
     }

@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.MultiUtils;
@@ -18,6 +19,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -44,16 +46,17 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "XYX", "XXX")
-                .aisle("XXX", "XYX", "XXX")
-                .aisle("XMX", "XSX", "XXX")
+                .aisle("AXXXA", "AXXXA", "AXXXA")
+                .aisle("XXXXX", "X#M#X", "AXXXA")
+                .aisle("XXXXX", "X#Y#X", "AXXXA").setRepeatable(2, 4)
+                .aisle("AXXXA", "AXSXA", "AXXXA")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
-                .where('Y', statePredicate(GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel).getDefaultState()))
+                .where('Y', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+                .where('A', (tile) -> true)
                 .where('#', isAirPredicate())
                 .where('M', motorPredicate())
                 .build();

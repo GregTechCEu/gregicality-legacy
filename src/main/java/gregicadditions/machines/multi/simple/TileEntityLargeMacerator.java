@@ -5,7 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
-import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -24,8 +24,9 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static gregicadditions.client.ClientHandler.HSS_S_CASING;
 import static gregicadditions.client.ClientHandler.POTIN_CASING;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockController {
 
@@ -44,10 +45,10 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXX", "XXX","XXX","XXX", "XXX")
-				.aisle("XXX", "XMX","X#X","XPX", "XXX")
-				.aisle("XXX", "XSX","XXX","XXX", "XXX")
-				.setAmountAtLeast('L', 9)
+				.aisle("XXX", "XXX","XXX","XXX", "XXX", "XXX")
+				.aisle("XXX", "XMX","X#X","XPX", "X#X", "XXX")
+				.aisle("XSX", "XXX","XXX","XXX", "XXX", "XXX")
+				.setAmountAtLeast('L', 10)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
@@ -57,7 +58,7 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.POTIN);
+	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S);
 	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMacerator.casingMaterial, defaultCasingState);
 
 
@@ -67,7 +68,7 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, POTIN_CASING);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, HSS_S_CASING);
 	}
 
 	@Override

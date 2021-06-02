@@ -13,9 +13,9 @@
           "all": "gregtech:blocks/casings/solid/machine_coke_oven_bricks"
         }
       },
-      "tungstensteel_gearbox_casing": {
+      "assembly_line_casing": {
         "textures": {
-          "all": "gregtech:blocks/casings/gearbox/machine_casing_gearbox_tungstensteel"
+          "all": "gregtech:blocks/casings/gearbox/machine_casing_gearbox_assembly_line"
         }
       },
       "chemically_inert_casing": {
@@ -86,6 +86,11 @@
       "ptfe_pipe_casing": {
         "textures": {
           "all": "gregtech:blocks/casings/solid/ptfe_pipe_casing"
+        }
+      },
+      "tungstensteel_gearbox_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/gearbox/machine_casing_gearbox_tungstensteel"
         }
       }
     }

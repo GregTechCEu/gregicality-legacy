@@ -61,7 +61,7 @@ public class TileEntityLargePackager extends MultiRecipeMapMultiblockController 
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
-                .aisle("XCX", "X#X", "XRX")
+                .aisle("XXX", "XCX", "XRX").setRepeatable(1, 6)
                 .aisle("XXX", "XSX", "XXX")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
@@ -90,15 +90,6 @@ public class TileEntityLargePackager extends MultiRecipeMapMultiblockController 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-    }
-
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
-        T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
-            return (T) this;
-        }
-        return capabilityResult;
     }
 
     @Override

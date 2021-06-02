@@ -40,8 +40,8 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
-    private int speedBonus;
-    
+    private int energyBonus;
+
     public TileEntityLargeChemicalReactor(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.LARGE_CHEMICAL_RECIPES, false, true, true);
         this.recipeMapWorkable = new LargeChemicalReactorWorkableHandler(this);
@@ -97,7 +97,7 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed())
-            textList.add(new TextComponentTranslation("gtadditions.multiblock.large_chemical_reactor.bonus", this.speedBonus).setStyle(new Style().setColor(TextFormatting.AQUA)));
+            textList.add(new TextComponentTranslation("gtadditions.multiblock.large_chemical_reactor.bonus", this.energyBonus).setStyle(new Style().setColor(TextFormatting.AQUA)));
     }
 
     @Override
@@ -105,50 +105,48 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
         super.formStructure(context);
         int temperature = context.getOrDefault("reactorCoilTemperature", 0);
         if (temperature <= 2700)
-            this.speedBonus = 0;
+            this.energyBonus = 0;
         else if (temperature == 3600)
-            this.speedBonus = 10;
-        else if (temperature == 4500)
-            this.speedBonus = 20;
+            this.energyBonus = 5;
         else if (temperature == 5400)
-            this.speedBonus = 25;
+            this.energyBonus = 10;
         else if (temperature <= 9700)
-            this.speedBonus = 33;
+            this.energyBonus = 20;
     }
 
-    public int getSpeedBonus() {
-        return this.speedBonus;
+    public int getEnergyBonus() {
+        return this.energyBonus;
     }
 
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
-        this.speedBonus = 0;
+        this.energyBonus = 0;
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
-        data.setInteger("speedBonus", this.speedBonus);
+        data.setInteger("energyBonus", this.energyBonus);
         return data;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
-        this.speedBonus = data.getInteger("speedBonus");
+        this.energyBonus = data.getInteger("energyBonus");
     }
 
     @Override
     public void writeInitialSyncData(PacketBuffer buf) {
         super.writeInitialSyncData(buf);
-        buf.writeInt(speedBonus);
+        buf.writeInt(energyBonus);
     }
 
     @Override
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
-        this.speedBonus = buf.readInt();
+        this.energyBonus = buf.readInt();
     }
 
     public static class LargeChemicalReactorWorkableHandler extends GAMultiblockRecipeLogic {
@@ -160,13 +158,18 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
         @Override
         protected void setupRecipe(Recipe recipe) {
             TileEntityLargeChemicalReactor metaTileEntity = (TileEntityLargeChemicalReactor) getMetaTileEntity();
-            int speedBonus = metaTileEntity.getSpeedBonus();
+            int energyBonus = metaTileEntity.getEnergyBonus();
 
             int[] resultOverclock = calculateOverclock(recipe.getEUt(), recipe.getDuration());
             this.progressTime = 1;
 
-            // apply speed bonus
-            resultOverclock[1] -= (int) (resultOverclock[1] * speedBonus * 0.01f);
+            // perfect overclocking
+            if (resultOverclock[1] < recipe.getDuration())
+                resultOverclock[1] *= 0.5;
+
+            // apply energy bonus
+            resultOverclock[0] -= (int) (resultOverclock[0] * energyBonus * 0.01f);
+
             setMaxProgress(resultOverclock[1]);
 
             this.recipeEUt = resultOverclock[0];

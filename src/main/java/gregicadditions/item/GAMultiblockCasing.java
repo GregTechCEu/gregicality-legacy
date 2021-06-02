@@ -18,7 +18,7 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CasingType.TUNGSTENSTEEL_GEARBOX_CASING));
+        setDefaultState(getState(CasingType.ASSEMBLY_LINE_CASING));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
 
     public enum CasingType implements IStringSerializable {
 
-        TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing"),
+        ASSEMBLY_LINE_CASING("assembly_line_casing"),
         CHEMICALLY_INERT("chemically_inert_casing"),
         LARGE_ASSEMBLER("large_assembler_casing"),
         TIERED_HULL_ULV("tiered_hull_ulv"),
@@ -42,7 +42,8 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
         TIERED_HULL_UV("tiered_hull_uv"),
         TIERED_HULL_MAX("tiered_hull_max"),
         CLADDED_REACTOR_CASING("cladded_reactor_casing"),
-        PTFE_PIPE("ptfe_pipe_casing");
+        PTFE_PIPE("ptfe_pipe_casing"),
+        TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing");
 
         private final String name;
 

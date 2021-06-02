@@ -255,6 +255,10 @@ public class GATileEntities {
 
     public static TileEntitySteamMiner STEAM_MINER;
     public static TileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
+    public static TileEntityLargeBrewery LARGE_BREWERY;
+    public static TileEntityLargeElectromagnet LARGE_ELECTROMAGNET;
+    public static TileEntityLargeExtractor LARGE_EXTRACTOR;
+    public static TileEntityLargeArcFurnace LARGE_ARC_FURNACE;
 
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
@@ -1184,6 +1188,10 @@ public class GATileEntities {
             MUFFLER_HATCH[i] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i, i * 6)); // todo recovery amount logic
 
         ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4220, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
+        LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4221, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));
+        LARGE_ELECTROMAGNET = GregTechAPI.registerMetaTileEntity(4222, new TileEntityLargeElectromagnet(location("large_electromagnet"), RecipeMaps.POLARIZER_RECIPES));
+        LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4223, new TileEntityLargeExtractor(location("large_extractor"), RecipeMaps.FLUID_EXTRACTION_RECIPES));
+        LARGE_ARC_FURNACE = GregTechAPI.registerMetaTileEntity(4224, new TileEntityLargeArcFurnace(location("large_arc_furnace"), RecipeMaps.ARC_FURNACE_RECIPES));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

@@ -5,6 +5,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAUtility;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -24,7 +25,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
@@ -45,6 +49,13 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
 
     public MultiRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, RecipeMap<?>[] recipeMaps) {
         super(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack);
+        this.recipeMaps = recipeMaps;
+        this.recipeMapWorkable = new MultiRecipeMapMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack, recipeMaps);
+        this.recipeMapIndex = 0;
+    }
+
+    public MultiRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, RecipeMap<?>[] recipeMaps, boolean canDistinct, boolean hasMuffler, boolean hasMaintenance) {
+        super(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, canDistinct, hasMuffler, hasMaintenance);
         this.recipeMaps = recipeMaps;
         this.recipeMapWorkable = new MultiRecipeMapMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack, recipeMaps);
         this.recipeMapIndex = 0;
@@ -125,9 +136,20 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     }
 
     @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
+        T capabilityResult = super.getCapability(capability, side);
+        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
+            return (T) this;
+        }
+        return capabilityResult;
+    }
+
+    @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMaps[this.recipeMapIndex].getUnlocalizedName() + ".name")));
+        if (isStructureFormed())
+            textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMaps[this.recipeMapIndex].getUnlocalizedName() + ".name")
+                    .setStyle(new Style().setColor(TextFormatting.AQUA))));
     }
 
     @Override

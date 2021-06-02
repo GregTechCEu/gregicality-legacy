@@ -511,7 +511,7 @@ public class CasingRecipes {
     private static void multiblockCasings() {
 
         // Tungstensteel Gearbox Casing
-        ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TUNGSTENSTEEL_GEARBOX_CASING, 2),
+        ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLY_LINE_CASING, 2),
                 "PhP", "AFA", "PwP",
                 'P', new UnificationEntry(plate, Steel),
                 'A', ROBOT_ARM_IV,
@@ -521,7 +521,7 @@ public class CasingRecipes {
                 .inputs(ROBOT_ARM_IV.getStackForm(2))
                 .input(plate, Steel, 4)
                 .input(frameGt, TungstenSteel)
-                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TUNGSTENSTEEL_GEARBOX_CASING, 2))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLY_LINE_CASING, 2))
                 .buildAndRegister();
 
         // Assembly Line Casing

@@ -14,8 +14,10 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
@@ -32,25 +34,31 @@ import java.util.List;
 
 import static gregicadditions.client.ClientHandler.IRON_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregtech.api.recipes.RecipeMaps.COMPRESSOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FORGE_HAMMER_RECIPES;
 import static net.minecraft.block.BlockDirectional.FACING;
 
-public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockController {
+public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
 
     public TileEntityLargeForgeHammer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES, GAConfig.multis.largeForgeHammer.euPercentage, GAConfig.multis.largeForgeHammer.durationPercentage, GAConfig.multis.largeForgeHammer.chancedBoostPercentage, GAConfig.multis.largeForgeHammer.stack);
+        super(metaTileEntityId, GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES, GAConfig.multis.largeForgeHammer.euPercentage, GAConfig.multis.largeForgeHammer.durationPercentage, GAConfig.multis.largeForgeHammer.chancedBoostPercentage, GAConfig.multis.largeForgeHammer.stack,
+                new RecipeMap<?>[]{FORGE_HAMMER_RECIPES, COMPRESSOR_RECIPES});
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("SBX", "X#X", "XPX", "XpX")
-                .setAmountAtLeast('X', 4)
+                .aisle("XXX", "X#X", "XPX", "XpX").setRepeatable(0, 4)
+                .aisle("SXX", "X#X", "XPX", "XpX")
+                .setAmountAtLeast('Y', 3)
                 .where('S', selfPredicate())
+                .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('B', blockPredicate(Blocks.IRON_BLOCK))
                 .where('P', statePredicate(Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN)))
                 .where('#', isAirPredicate())
                 .where('p', pistonPredicate())
@@ -61,7 +69,6 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gregtech.multiblock.large_forge_hammer.tooltip"));
     }
 
     private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.IRON);
@@ -93,6 +100,11 @@ public class TileEntityLargeForgeHammer extends LargeSimpleRecipeMapMultiblockCo
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return ClientHandler.IMPLOSION_OVERLAY;
+        return (getRecipeMapIndex() == 0) ? Textures.FORGE_HAMMER_OVERLAY : Textures.COMPRESSOR_OVERLAY;
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        return (getRecipeMapIndex() == 0) ? Textures.FORGE_HAMMER_OVERLAY : Textures.COMPRESSOR_OVERLAY;
     }
 }

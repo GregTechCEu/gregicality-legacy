@@ -16,6 +16,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -42,16 +44,17 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXXXX", "XXXXX", "XXXXX")
-				.aisle("XXXXX", "X###X", "XXXXX")
-				.aisle("XXXXX", "X###X", "XXXXX")
-				.aisle("XXXXX", "X###X", "XXXXX")
-				.aisle("XXXXX", "XPSPX", "XXXXX")
+				.aisle("XXXXX", "PXXXP", "XXXXX")
+				.aisle("XXXXX", "X###X", "XGGGX")
+				.aisle("XXXXX", "X###X", "XGGGX")
+				.aisle("XXXXX", "X###X", "XGGGX")
+				.aisle("XXXXX", "PXSXP", "XXXXX")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+				.where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
 				.where('#', isAirPredicate())
 				.where('P', pistonPredicate())
 				.build();

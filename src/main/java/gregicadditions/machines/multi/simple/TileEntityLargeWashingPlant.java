@@ -5,6 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,14 +18,22 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.util.List;
 
 import static gregicadditions.client.ClientHandler.GRISIUM_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
@@ -35,7 +44,7 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
 
     public TileEntityLargeWashingPlant(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeWashingPlant.euPercentage, GAConfig.multis.largeWashingPlant.durationPercentage, GAConfig.multis.largeWashingPlant.chancedBoostPercentage, GAConfig.multis.largeWashingPlant.stack,
-                new RecipeMap<?>[]{RecipeMaps.ORE_WASHER_RECIPES, RecipeMaps.CHEMICAL_BATH_RECIPES});
+                new RecipeMap<?>[]{RecipeMaps.ORE_WASHER_RECIPES, RecipeMaps.CHEMICAL_BATH_RECIPES, GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES, RecipeMaps.AUTOCLAVE_RECIPES});
     }
 
     @Override
@@ -44,27 +53,20 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
     }
 
     @Override
-    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
-        if (recipeMapIndex == 1)
-            return Textures.CHEMICAL_BATH_OVERLAY;
-        return Textures.ORE_WASHER_OVERLAY;
-    }
-
-    @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "X###X", "X###X")
-                .aisle("XXXXX", "X###X", "X###X")
-                .aisle("XXXXX", "X###X", "X###X")
-                .aisle("XXXXX", "X###X", "X###X")
-                .aisle("XXXXX", "X###X", "X###X")
+                .aisle("XXXXX", "XP#PX", "X###X")
+                .aisle("XXXXX", "XP#PX", "X###X")
+                .aisle("XXXXX", "XP#PX", "X###X")
+                .aisle("XXXXX", "XP#PX", "X###X")
+                .aisle("XXXXX", "XP#PX", "X###X")
                 .aisle("XXMXX", "XXSXX", "XXXXX")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
+                .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
                 .where('#', statePredicate(Blocks.WATER.getDefaultState()))
                 .where('M', motorPredicate())
                 .build();
@@ -84,15 +86,6 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
     }
 
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
-        T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
-            return (T) this;
-        }
-        return capabilityResult;
-    }
-
-    @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
@@ -100,9 +93,34 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
         maxVoltage = (long) (Math.pow(4, min) * 8);
     }
 
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+    }
+
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return (this.getRecipeMapIndex() == 1) ? Textures.CHEMICAL_BATH_OVERLAY : Textures.ORE_WASHER_OVERLAY;
+        switch (this.getRecipeMapIndex()) {
+            case 1:
+                return Textures.CHEMICAL_BATH_OVERLAY;
+            case 3:
+                return Textures.AUTOCLAVE_OVERLAY;
+            default:
+                return Textures.ORE_WASHER_OVERLAY;
+        }
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        switch (this.getRecipeMapIndex()) {
+            case 1:
+                return Textures.CHEMICAL_BATH_OVERLAY;
+            case 3:
+                return Textures.AUTOCLAVE_OVERLAY;
+            default:
+                return Textures.ORE_WASHER_OVERLAY;
+        }
     }
 }

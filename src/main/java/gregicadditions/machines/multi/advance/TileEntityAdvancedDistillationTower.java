@@ -75,17 +75,12 @@ public class TileEntityAdvancedDistillationTower extends MultiRecipeMapMultibloc
 
     public TileEntityAdvancedDistillationTower(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, 100, 100, 100, GAConfig.multis.distillationTower.distillationMultiplier,
-                new RecipeMap<?>[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES});
+                new RecipeMap<?>[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES, RecipeMaps.FLUID_HEATER_RECIPES});
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
         return new TileEntityAdvancedDistillationTower(metaTileEntityId, RecipeMaps.DISTILLATION_RECIPES);
-    }
-
-    @Override
-    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
-        return Textures.DISTILLERY_OVERLAY;
     }
 
     @Override
@@ -225,12 +220,14 @@ public class TileEntityAdvancedDistillationTower extends MultiRecipeMapMultibloc
         tooltip.add(I18n.format("gregtech.multiblock.advanced_distillation_tower.description4"));
     }
 
+    @Nonnull
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing side) {
-        T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
-            return (T) this;
-        }
-        return capabilityResult;
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return (getRecipeMapIndex() < 2) ? Textures.DISTILLERY_OVERLAY : Textures.FLUID_HEATER_OVERLAY;
+    }
+
+    @Override
+    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+        return (getRecipeMapIndex() < 2) ? Textures.DISTILLERY_OVERLAY : Textures.FLUID_HEATER_OVERLAY;
     }
 }

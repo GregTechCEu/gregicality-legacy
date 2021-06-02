@@ -16,6 +16,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -27,7 +29,9 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockController {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+			MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
 
 	public TileEntityLargeExtruder(ResourceLocation metaTileEntityId) {
@@ -42,17 +46,16 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXX", "XXX", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XPX", "XSX", "XXX")
+				.aisle("XXXX", "XXXX", "XXX#")
+//				.aisle("XXXX", "XCPX", "XXX#").setRepeatable(0, 5)
+				.aisle("XXXX", "XCPX", "XXX#").setRepeatable(2, 6)
+				.aisle("XXXX", "XSXX", "XXX#")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
-				.where('#', isAirPredicate())
+				.where('C', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
+				.where('#', (tile) -> true)
 				.where('P', pistonPredicate())
 				.build();
 	}

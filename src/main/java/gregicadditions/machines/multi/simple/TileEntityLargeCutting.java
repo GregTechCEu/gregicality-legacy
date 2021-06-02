@@ -13,27 +13,37 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static gregicadditions.client.ClientHandler.STELLITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregtech.api.recipes.RecipeMaps.CUTTER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LATHE_RECIPES;
 
-public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockController {
+public class TileEntityLargeCutting extends MultiRecipeMapMultiblockController {
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
 
 
 	public TileEntityLargeCutting(ResourceLocation metaTileEntityId) {
-		super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES, GAConfig.multis.largeCutting.euPercentage, GAConfig.multis.largeCutting.durationPercentage, GAConfig.multis.largeCutting.chancedBoostPercentage, GAConfig.multis.largeCutting.stack);
+		super(metaTileEntityId, CUTTER_RECIPES, GAConfig.multis.largeCutting.euPercentage, GAConfig.multis.largeCutting.durationPercentage, GAConfig.multis.largeCutting.chancedBoostPercentage, GAConfig.multis.largeCutting.stack,
+				new RecipeMap<?>[]{CUTTER_RECIPES, LATHE_RECIPES});
 	}
 
 	@Override
@@ -45,8 +55,7 @@ public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockContro
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
 				.aisle("XXXXX", "XXXAX", "##XAX")
-				.aisle("XXXCX", "XXXMX", "##XAX").setRepeatable(0, 7)
-				.aisle("XXXCX", "XXXMX", "##XAX")
+				.aisle("XXXCX", "XXXMX", "##XAX").setRepeatable(1, 8)
 				.aisle("XXXXX", "XSXAX", "##XAX")
 				.setAmountAtLeast('L', 12)
 				.where('S', selfPredicate())
@@ -81,9 +90,20 @@ public class TileEntityLargeCutting extends LargeSimpleRecipeMapMultiblockContro
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
+		super.addInformation(stack, player, tooltip, advanced);
+	}
+
+	@Override
+	public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
+		return (getRecipeMapIndex() == 0) ? Textures.CUTTER_OVERLAY : Textures.LATHE_OVERLAY;
+	}
+
 	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
-		return Textures.CUTTER_OVERLAY;
+		return (getRecipeMapIndex() == 0) ? Textures.CUTTER_OVERLAY : Textures.LATHE_OVERLAY;
 	}
 }
