@@ -733,7 +733,7 @@ public class RecipeHandler {
         if (!OreDictUnifier.get(rotor, material).isEmpty()) {
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                    .input(plate, material, 4)
+                    .input(GAConfig.GT6.addCurvedPlates ? plateCurved : plate, material, 4)
                     .input(ring, material)
                     .fluidInputs(SolderingAlloy.getFluid(32))
                     .output(rotor, material)
