@@ -4,17 +4,21 @@ import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.utils.BlockPatternChecker;
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
 import gregtech.api.cover.CoverBehavior;
 import gregtech.api.cover.ICoverable;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import gregtech.common.items.behaviors.CoverPlaceBehavior;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
 
 @SuppressWarnings("unused")
 public class GregTechCEHooks {
@@ -125,5 +129,24 @@ public class GregTechCEHooks {
         if (SPIN_ID == dataId) {
             BlockPatternChecker.setSpin(mte, EnumFacing.VALUES[buf.readByte()]);
         }
+    }
+
+    //origin: gregtech.common.pipelike.cable.BlockCable.getCapability(Capability<IEnergyContainer> capability, EnumFacing facing)
+    public static <T> T getCapability(TileEntity tileEntity, Capability<T> capability, EnumFacing facing) {
+        T result = tileEntity.getCapability(capability, facing);
+        if (result == null) {
+            if (!tileEntity.getWorld().isRemote) {
+                TileEntity teCable = tileEntity.getWorld().getTileEntity(tileEntity.getPos().offset(facing));
+                if (teCable instanceof TileEntityPipeBase) {
+                    CoverBehavior cover = ((TileEntityPipeBase<?,?>) teCable).getCoverableImplementation().getCoverAtSide(facing.getOpposite());
+                    if (cover instanceof CoverDigitalInterface
+                            && ((CoverDigitalInterface) cover).isProxy()
+                            && ((CoverDigitalInterface) cover).canCapabilityAttach()) {
+                        return (T) CoverDigitalInterface.proxyCapability;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

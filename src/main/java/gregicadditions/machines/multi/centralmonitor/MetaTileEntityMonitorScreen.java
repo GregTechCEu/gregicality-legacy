@@ -2,19 +2,20 @@ package gregicadditions.machines.multi.centralmonitor;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.covers.CoverDigitalInterface;
-import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
+import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.utils.BlockPatternChecker;
-import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.WidgetARGB;
+import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregicadditions.widgets.monitor.WidgetMonitorScreen;
 import gregicadditions.widgets.monitor.WidgetPluginConfig;
-import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.cover.CoverBehavior;
+import gregtech.api.cover.ICoverable;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
@@ -22,7 +23,10 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.pipenet.tile.PipeCoverableImplementation;
+import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -33,7 +37,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -47,7 +54,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
@@ -108,11 +118,21 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     public CoverDigitalInterface getCoverFromPosSide(Tuple<BlockPos, EnumFacing> posFacing) {
         if (posFacing == null) return null;
+        ICoverable mte = null;
         MetaTileEntityHolder holder = getHolderFromPos(posFacing.getKey());
-        if (holder == null) return null;
-        CoverBehavior cover = holder.getMetaTileEntity().getCoverAtSide(posFacing.getValue());
-        if (cover instanceof CoverDigitalInterface){
-            return (CoverDigitalInterface) cover;
+        if (holder == null) {
+            TileEntity te = this.getWorld() == null || posFacing.getKey() == null? null:this.getWorld().getTileEntity(posFacing.getKey());
+            if (te instanceof TileEntityPipeBase) {
+                mte = ((TileEntityPipeBase<?, ?>) te).getCoverableImplementation();
+            }
+        } else {
+            mte = holder.getMetaTileEntity();
+        }
+        if(mte != null){
+            CoverBehavior cover = mte.getCoverAtSide(posFacing.getValue());
+            if (cover instanceof CoverDigitalInterface){
+                return (CoverDigitalInterface) cover;
+            }
         }
         return null;
     }
@@ -128,7 +148,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     public void updateCoverValid(List<Tuple<BlockPos, EnumFacing>> covers) {
         if (this.coverPos != null) {
             if (!covers.contains(this.coverPos)) {
-                setMode(null, this.mode);
+                setMode(null, CoverDigitalInterface.MODE.PROXY);
             }
         }
     }
@@ -232,7 +252,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         if (this.coverPos != null && this.mode != CoverDigitalInterface.MODE.PROXY) {
             CoverDigitalInterface cover = coverTMP != null? coverTMP : this.getCoverFromPosSide(this.coverPos);
             if (cover != null) {
-                if (cover.isValid() && cover.isProxy()) {
+                if (cover.isProxy()) {
                     coverTMP = cover;
                     return true;
                 }
@@ -294,11 +314,30 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             if (this.mode == CoverDigitalInterface.MODE.PROXY) return;
             if (flag) {
                 coverTMP.renderMode(this.mode, this.slot, partialTicks);
-                // render machine
-                RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
 
-                // render name
-                RenderHelper.renderText(0, -3.5f/16, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
+                ItemStack itemStack = coverTMP.coverHolder.getStackForm();
+                String name = "";
+                BlockPos pos = coverTMP.coverHolder.getPos();
+                if (coverTMP.coverHolder instanceof PipeCoverableImplementation) {
+                    itemStack = null;
+                    pos = pos.offset(coverTMP.attachedSide);
+                    TileEntity tileEntity = coverTMP.coverHolder.getWorld().getTileEntity(pos);
+                    IBlockState state = coverTMP.coverHolder.getWorld().getBlockState(pos);
+                    if (tileEntity != null) {
+                        itemStack = tileEntity.getBlockType().getItem(coverTMP.coverHolder.getWorld(), pos, state);
+                        name = itemStack.getDisplayName();
+                    }
+                } else if (coverTMP.coverHolder instanceof MetaTileEntity){
+                    name = I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName());
+                }
+
+                if(itemStack != null) {
+                    // render machine
+                    RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, itemStack);
+
+                    // render name
+                    RenderHelper.renderText(0, -3.5f/16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
+                }
             }
             // render frame
             RenderHelper.renderRect(-7f/16, -7f/16, 14f/16, 0.01f,0.003f, frameColor);
@@ -597,7 +636,14 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 }
                 if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS) {
                     if (!playerIn.isSneaking() && this.openGUIOnRightClick()) {
-                        MetaTileEntityUIFactory.INSTANCE.openUI(((MetaTileEntity)coverBehavior.coverHolder).getHolder(), (EntityPlayerMP)playerIn);
+                        if (coverBehavior.coverHolder instanceof MetaTileEntity) {
+                            ((MetaTileEntity)coverBehavior.coverHolder).onRightClick(playerIn, hand, coverBehavior.attachedSide, null);
+                        } else if (coverBehavior.coverHolder instanceof PipeCoverableImplementation) {
+                            BlockPos pos = coverBehavior.coverHolder.getPos().offset(coverBehavior.attachedSide);
+                            IBlockState state = coverBehavior.coverHolder.getWorld().getBlockState(pos);
+                            state.getBlock().onBlockActivated(coverBehavior.coverHolder.getWorld(), pos, state, playerIn,
+                                    hand, coverBehavior.attachedSide.getOpposite(), 0.5f, 0.5f, 0.5f);
+                        }
                         return true;
                     } else {
                         return false;
