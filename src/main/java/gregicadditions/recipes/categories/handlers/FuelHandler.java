@@ -62,7 +62,7 @@ public class FuelHandler {
 
         // Gas Turbine Fuels
         registerGasGeneratorFuel(NaturalGas        .getFluid(20),    13, LV);
-        registerGasGeneratorFuel(Hydrogen          .getFluid(20),    13, LV);
+        registerGasGeneratorFuel(Hydrogen          .getFluid(20),    1, LV);
         registerGasGeneratorFuel(CarbonMonoxde     .getFluid(20),    15, LV);
         registerGasGeneratorFuel(WoodGas           .getFluid(20),    15, LV);
         registerGasGeneratorFuel(SulfuricNaphtha   .getFluid( 8),    10, LV);

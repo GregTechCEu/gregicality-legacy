@@ -210,7 +210,7 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<IntCircuitRecipeBuilder> GAS_CENTRIFUGE_RECIPES = new RecipeMap<>("gas_centrifuge",
-            1, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
+            0, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
             .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.VERTICAL_INVERTED);
 

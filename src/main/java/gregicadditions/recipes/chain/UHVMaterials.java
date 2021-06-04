@@ -29,7 +29,7 @@ public class UHVMaterials {
                 .input(bolt, Titanium, 4)
                 .fluidInputs(Glyceryl.getFluid(1000))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
-                .EUt(2000000)
+                .EUt(1966080)
                 .duration(100)
                 .buildAndRegister();
 
@@ -37,7 +37,7 @@ public class UHVMaterials {
                 .input(ingot, Rhenium)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .fluidOutputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
-                .EUt(2000000)
+                .EUt(1966080)
                 .duration(20)
                 .buildAndRegister();
 
@@ -45,7 +45,7 @@ public class UHVMaterials {
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
                 .outputs(RHENIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
-                .EUt(500000)
+                .EUt(30720)
                 .duration(20)
                 .buildAndRegister();
 
@@ -56,14 +56,14 @@ public class UHVMaterials {
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
-                .EUt(500000)
+                .EUt(122880)
                 .duration(250)
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(Helium.getFluid(5000))
                 .fluidOutputs(LiquidHelium.getFluid(5000))
-                .EUt(122880)
+                .EUt(7680)
                 .duration(20)
                 .buildAndRegister();
       
@@ -80,7 +80,7 @@ public class UHVMaterials {
                 .fluidInputs(Titanium.getFluid(2592))
                 .fluidInputs(NaquadahEnriched.getFluid(1584))
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
-                .EUt(1500000)
+                .EUt(983040)
                 .duration(50)
                 .buildAndRegister();
 
@@ -150,7 +150,7 @@ public class UHVMaterials {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .EUt(524288)
+                .EUt(491520)
                 .duration(2)
                 .buildAndRegister();
     }

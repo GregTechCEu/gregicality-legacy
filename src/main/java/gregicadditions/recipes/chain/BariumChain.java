@@ -11,7 +11,7 @@ public class BariumChain {
     public static void init() {
 
         // Ba + 2HCl -> BaCl2 + 2H
-        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Barium)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .outputs(BariumChloride.getItemStack(3))
@@ -27,7 +27,7 @@ public class BariumChain {
                 .buildAndRegister();
 
         // BaSO4 + 2C -> BaS + 2CO2
-        BLAST_RECIPES.recipeBuilder().duration(480).EUt(500).blastFurnaceTemp(1200)
+        BLAST_RECIPES.recipeBuilder().duration(220).EUt(120).blastFurnaceTemp(1200)
                 .input(dust, Barite, 6)
                 .input(dust, Carbon, 2)
                 .outputs(BariumSulfide.getItemStack(2))
@@ -35,7 +35,7 @@ public class BariumChain {
                 .buildAndRegister();
 
         // BaS + H2O + CO2 -> BaCO3 + H2S
-        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(30)
                 .inputs(BariumSulfide.getItemStack(2))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidInputs(CarbonDioxide.getFluid(1000))
@@ -44,15 +44,15 @@ public class BariumChain {
                 .buildAndRegister();
 
         // BaCO3 -> CO2 + BaO
-        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(250)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(BariumCarbonate.getItemStack(5))
-                .outputs(BariumOxide.getItemStack(2))
                 .notConsumable(new IntCircuitIngredient(0))
+                .outputs(BariumOxide.getItemStack(2))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // 4BaO + 2Al -> 3Ba + Al2BaO4
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(500).blastFurnaceTemp(700)
+        BLAST_RECIPES.recipeBuilder().duration(180).EUt(120).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(8))
                 .input(dust, Aluminium, 2)
                 .output(ingot, Barium, 3)
@@ -60,7 +60,7 @@ public class BariumChain {
                 .buildAndRegister();
 
         // 2Al2BaO4 -> BaO + Al2O3
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(500)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(30)
                 .inputs(BariumAluminate.getItemStack(14))
                 .outputs(BariumOxide.getItemStack(2))
                 .outputs(Alumina.getItemStack(5))

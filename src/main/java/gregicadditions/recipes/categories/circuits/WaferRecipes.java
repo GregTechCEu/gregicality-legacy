@@ -7,8 +7,7 @@ import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.MarkerMaterials.Color.*;
@@ -160,18 +159,18 @@ public class WaferRecipes {
         CUTTER_RECIPES.recipeBuilder().inputs(UHASOC_WAFER.getStackForm()).outputs(UHASOC.getStackForm(6)).EUt(48).duration(600).buildAndRegister();
 
         // Optical SoC
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(260000)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(30)
                 .inputs(ZBLANDust.getItemStack())
                 .fluidOutputs(LiquidZBLAN.getFluid(L))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(390).EUt(1600000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(390).EUt(983040)
                 .inputs(UHASOC_WAFER.getStackForm())
                 .fluidInputs(LiquidZBLAN.getFluid(L))
                 .fluidInputs(CarbonNanotubes.getFluid(L))
                 .fluidInputs(SeaborgiumDopedNanotubes.getFluid(L))
                 .input(dust, IndiumPhospide)
-                .fluidInputs(DielectricMirrorFormationMix.getFluid(400))
+                .fluidInputs(DielectricMirrorFormationMix.getFluid(250))
                 .outputs(OPTICAL_SOC_WAFER.getStackForm())
                 .buildAndRegister();
 
@@ -181,7 +180,7 @@ public class WaferRecipes {
                 .buildAndRegister();
 
         // Optical Boules
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(30000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(30720)
                 .notConsumable(stick, Sapphire)
                 .inputs(PrHoYLFNanoparticles.getItemStack())
                 .fluidInputs(PrHoYLF.getFluid(L / 9))
@@ -194,12 +193,12 @@ public class WaferRecipes {
                 .output(dustTiny, PrHoYLF)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(30)
                 .inputs(PrHoYLFNanoparticles.getItemStack())
                 .fluidOutputs(PrHoYLF.getFluid(L))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(20).EUt(30)
                 .input(dustTiny, PrHoYLF)
                 .fluidOutputs(PrHoYLF.getFluid(L / 9))
                 .buildAndRegister();
@@ -217,26 +216,26 @@ public class WaferRecipes {
                 .output(dustTiny, LuTmYVO)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(30)
                 .inputs(LuTmYVONanoparticles.getItemStack())
                 .fluidOutputs(LuTmYVO.getFluid(L))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(20).EUt(30)
                 .input(dustTiny, LuTmYVO)
                 .fluidOutputs(LuTmYVO.getFluid(L / 9))
                 .buildAndRegister();
 
         // NdYAG Boules
         // 9Y2O3 + Nd2O3 -> 10 Neodymium Doped Yttrium
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(250).EUt(6400)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(220).EUt(7680)
                 .input(dust, YttriumOxide,45)
                 .inputs(NeodymiumOxide.getItemStack(5))
                 .outputs(NeodymiumDopedYttrium.getItemStack(10))
                 .buildAndRegister();
 
         // [Al2O3  + CH2Cl2 + 2C12H27N] + Neodymium Doped Yttrium + (NH2)CO(NH2) -> 2Unprocessed Nd:YAG + 2C12H27N
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(32000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(7680)
                 .fluidInputs(AluminaSolution.getFluid(1000))
                 .inputs(NeodymiumDopedYttrium.getItemStack())
                 .inputs(Urea.getItemStack(8))
@@ -245,20 +244,20 @@ public class WaferRecipes {
                 .buildAndRegister();
 
         // Unprocessed Nd:YAG -> Unprocessed Nd:YAG Dust + CH2Cl2
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(16000)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(7680)
                 .fluidInputs(UnprocessedNdYAGSolution.getFluid(1000))
                 .fluidOutputs(Dichloromethane.getFluid(1000))
                 .outputs(UnprocessedNdYAGDust.getItemStack())
                 .buildAndRegister();
 
         // Unprocessed Nd:YAG Dust -> Nd:YAG Nanoparticles
-        BLAST_RECIPES.recipeBuilder().duration(280).EUt(24500).blastFurnaceTemp(300)
+        BLAST_RECIPES.recipeBuilder().duration(3800).EUt(120).blastFurnaceTemp(300)
                 .inputs(UnprocessedNdYAGDust.getItemStack())
                 .outputs(NdYAGNanoparticles.getItemStack())
                 .buildAndRegister();
 
         // Nd:YAG Nanoparticles + NdYAG -> Nd:YAG Boule
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(30000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(210).EUt(30720)
                 .notConsumable(stick, Sapphire)
                 .inputs(NdYAGNanoparticles.getItemStack())
                 .fluidInputs(NdYAG.getFluid(L / 9))
@@ -271,12 +270,12 @@ public class WaferRecipes {
                 .output(dustTiny, NdYAG)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(30)
                 .inputs(NdYAGNanoparticles.getItemStack())
                 .fluidOutputs(NdYAG.getFluid(L))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(3200)
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(20).EUt(30)
                 .input(dustTiny, NdYAG)
                 .fluidOutputs(NdYAG.getFluid(L / 9))
                 .buildAndRegister();

@@ -9,7 +9,6 @@ import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
 import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.recipes.chain.*;
-import gregicadditions.recipes.helper.HelperMethods;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
@@ -27,10 +26,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
@@ -39,7 +37,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
-import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -80,7 +77,7 @@ public class RecipeHandler {
         ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngot);
         plateDense.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDensePlate);
 
-        if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
+        if (GAConfig.GT6.addCurvedPlates)
             plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
 
         if (GAConfig.GT6.addRounds)
@@ -88,28 +85,28 @@ public class RecipeHandler {
 
         plateDouble.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoublePlate);
 
-
-        if (GAConfig.GT6.BendingRings && GAConfig.GT6.BendingCylinders)
+        if (GAConfig.GT6.BendingCylinders)
             ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
 
         dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
-        if (GAConfig.Misc.PackagerDustRecipes) {
-            dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
-            nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
-        }
+        dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
+        nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
 
         if (GAConfig.GT5U.stickGT5U)
             stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
 
         dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
         foil.addProcessingHandler(IngotMaterial.class, RecipeHandler::processFoil);
-        pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
-        pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
         rotor.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRotor);
         lens.addProcessingHandler(GemMaterial.class, RecipeHandler::processLens);
         spring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpring);
         springSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpringSmall);
         gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
+
+        pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
+        pipeSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSmallPipe);
+        pipeMedium.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMediumPipe);
+        pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
     }
 
 
@@ -121,7 +118,7 @@ public class RecipeHandler {
         GoldChain.init();
         NaquadahChain.init();
         NuclearChain.init();
-        PlasticChain.init();
+        PolymerChain.init();
         PlatinumSludgeGroupChain.init();
         TungstenChain.init();
         REEChain.init();
@@ -159,6 +156,7 @@ public class RecipeHandler {
         ArcFurnaceOxidation.init();
         WetwareChain.init();
         OpticalChain.init();
+        CombinedChains.init();
     }
 
     /**
@@ -414,41 +412,23 @@ public class RecipeHandler {
     /**
      * Small Dust Material Handler. Generates:
      *
-     * + Overrides GTCE Small Dust Uncrafting Recipe to favor GT5's
      * + Schematic Recipes in favor of Integrated Circuit Packager Recipes
      */
     private static void processSmallDust(OrePrefix dustSmall, DustMaterial material) {
 
-        // Small Dust Uncrafting Recipe Fix
-        if (!OreDictUnifier.get(dustSmall, material).isEmpty()) {
+        removeRecipesByInputs(PACKER_RECIPES, OreDictUnifier.get(dustSmall, material, 4), getIntegratedCircuit(2));
 
-            removeRecipeByName(String.format("gtadditions:small_dust_disassembling_%s", material.toString()));
-
-            ModHandler.addShapedRecipe("dust_small_" + material.toString(), OreDictUnifier.get(dustSmall, material, 4),
-                    " D", "  ", 'D',
-                    new UnificationEntry(dust, material));
-        }
-
-        // Packager Small Dust Recipes
-        // NOTE This config is checked here instead of in "register()" because this method always needs to be hit
-        // in order to fix the Small Dust Uncrafting recipes
-        if (GAConfig.Misc.PackagerDustRecipes) {
-
-            removeRecipesByInputs(PACKER_RECIPES, OreDictUnifier.get(dustSmall, material, 4), getIntegratedCircuit(2));
-
-            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                    .input(dustSmall, material, 4)
-                    .notConsumable(SCHEMATIC_DUST.getStackForm())
-                    .output(dust, material)
-                    .buildAndRegister();
-        }
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                .input(dustSmall, material, 4)
+                .notConsumable(SCHEMATIC_DUST.getStackForm())
+                .output(dust, material)
+                .buildAndRegister();
     }
 
     /**
      * Nugget Material Handler. Generates:
      *
-     * + Schematic Packing and Unpacking Recipes instead of Integrated Circuits if enabled
-     *
+     * + Schematic Packing and Unpacking Recipes instead of Integrated Circuits
      */
     private static void processNugget(OrePrefix nugget, IngotMaterial material) {
 
@@ -504,7 +484,7 @@ public class RecipeHandler {
             // Handcrafting foils
             if (!material.hasFlag(NO_SMASHING)) {
 
-                if (GAConfig.GT6.BendingFoils) {
+                if (GAConfig.GT6.BendingCylinders) {
 
                     ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
                             "hPC",
@@ -647,13 +627,22 @@ public class RecipeHandler {
      */
     private static void processPlateCurved(OrePrefix plateCurved, IngotMaterial material) {
 
+        //if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
+
         // Register Curved Plate recipes
         if (!material.hasFlag(NO_SMASHING)) {
+            if (GAConfig.GT6.BendingCylinders) {
 
-            ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
-                    "h", "P", "C",
-                    'P', new UnificationEntry(plate, material),
-                    'C', "craftingToolBendingCylinder");
+                ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
+                        "h", "P", "C",
+                        'P', new UnificationEntry(plate, material),
+                        'C', "craftingToolBendingCylinder");
+            } else {
+
+                ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
+                        "h", "P", "f",
+                        'P', new UnificationEntry(plate, material));
+            }
 
             ModHandler.addShapedRecipe(String.format("flatten_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
                     "h", "C",
@@ -671,36 +660,6 @@ public class RecipeHandler {
                 .circuitMeta(0)
                 .output(plate, material)
                 .buildAndRegister();
-
-        // Register Curved Plate Pipe Recipes
-        if (!OreDictUnifier.get(pipeMedium, material).isEmpty()) {
-
-            if (GAConfig.GT6.BendingPipes && !OreDictUnifier.get(plateCurved, material).isEmpty()) {
-
-                removeCraftingRecipes(OreDictUnifier.get(pipeSmall, material, 4));
-                removeCraftingRecipes(OreDictUnifier.get(pipeMedium, material, 2));
-
-                ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
-                        "PPP", "hCw", "PPP",
-                        'P', new UnificationEntry(plateCurved, material),
-                        'C', "craftingToolBendingCylinder");
-
-                ModHandler.addShapedRecipe(String.format("pipe_ga_small_%s", material.toString()), OreDictUnifier.get(pipeSmall, material, 4),
-                        "PwP", "PCP", "PhP",
-                        'P', new UnificationEntry(plateCurved, material),
-                        'C', "craftingToolBendingCylinder");
-
-                ModHandler.addShapedRecipe(String.format("pipe_ga_%s", material.toString()), OreDictUnifier.get(pipeMedium, material, 2),
-                        "PPP", "wCh", "PPP",
-                        'P', new UnificationEntry(plateCurved, material),
-                        'C', "craftingToolBendingCylinder");
-
-                ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
-                        "PhP", "PCP", "PwP",
-                        'P', new UnificationEntry(plateCurved, material),
-                        'C', "craftingToolBendingCylinder");
-            }
-        }
 
         // Unification Recipes
         int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
@@ -725,66 +684,120 @@ public class RecipeHandler {
     /**
      * Rotor Material Handler. Generates:
      *
-     * + Curved Plate Rotor Recipes if enabled
+     * + Curved Plate Rotor Recipe
      * + Assembler Rotor Recipe that GTCE removed
      * + Extruder Rotor Recipe
      */
-    private static void processRotor(OrePrefix rotor, IngotMaterial material) {
-        if (!OreDictUnifier.get(rotor, material).isEmpty()) {
+    private static void processRotor(OrePrefix ingot, IngotMaterial material) {
 
-            ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                    .input(GAConfig.GT6.addCurvedPlates ? plateCurved : plate, material, 4)
-                    .input(ring, material)
-                    .fluidInputs(SolderingAlloy.getFluid(32))
-                    .output(rotor, material)
-                    .buildAndRegister();
+        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
 
-            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
+        removeCraftingRecipes(OreDictUnifier.get(rotor, material));
+
+        ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
+                "ChC", "SRf", "CdC",
+                'C', new UnificationEntry(plateOrCurved, material),
+                'S', new UnificationEntry(screw, material),
+                'R', new UnificationEntry(ring, material));
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
+                .input(plateOrCurved, material, 4)
+                .input(ring, material)
+                .fluidInputs(SolderingAlloy.getFluid(32))
+                .output(rotor, material)
+                .buildAndRegister();
+
+        EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
                     .input(ingot, material, 5)
                     .notConsumable(SHAPE_EXTRUDER_ROTOR)
                     .output(rotor, material)
                     .buildAndRegister();
-
-            if (GAConfig.GT6.BendingRotors) {
-
-                // Register Curved Plate Rotor Recipes
-                removeCraftingRecipes(OreDictUnifier.get(rotor, material));
-
-                ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
-                        "ChC", "SRf", "CdC",
-                        'C', new UnificationEntry(plateCurved, material),
-                        'S', new UnificationEntry(screw, material),
-                        'R', new UnificationEntry(ring, material));
-            }
-        }
     }
 
     /**
      * Tiny Pipe Material Handler. Generates:
      *
-     * + Tiny Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
-     *       This is needed because GTCE does not generate these recipes normally.
+     * + Tiny Pipe Handcrafting Recipes
      */
     private static void processTinyPipe(OrePrefix prefix, IngotMaterial material) {
-        if (!GAConfig.GT6.BendingPipes)
+
+        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
+
+        if (GAConfig.GT6.BendingCylinders)
 
             ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
+                    "PPP", "hCw", "PPP",
+                    'P', new UnificationEntry(plateOrCurved, material),
+                    'C', "craftingToolBendingCylinder");
+        else
+            ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
                     "PPP", "h w", "PPP",
-                    'P', new UnificationEntry(plate, material));
+                    'P', new UnificationEntry(plateOrCurved, material));
+    }
+
+    /**
+     * Small Pipe Material Handler. Generates:
+     *
+     * + Small Pipe Handcrafting Recipes
+     */
+    private static void processSmallPipe(OrePrefix prefix, IngotMaterial material) {
+
+        removeCraftingRecipes(OreDictUnifier.get(pipeSmall, material, 4));
+        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
+
+        if (GAConfig.GT6.BendingCylinders)
+
+            ModHandler.addShapedRecipe(String.format("pipe_ga_small_%s", material.toString()), OreDictUnifier.get(pipeSmall, material, 4),
+                    "PwP", "PCP", "PhP",
+                    'P', new UnificationEntry(plateOrCurved, material),
+                    'C', "craftingToolBendingCylinder");
+        else
+            ModHandler.addShapedRecipe(String.format("pipe_ga_small_%s", material.toString()), OreDictUnifier.get(pipeSmall, material, 4),
+                    "PwP", "P P", "PhP",
+                    'P', new UnificationEntry(plateOrCurved, material));
+    }
+
+    /**
+     * Medium Pipe Material Handler. Generates:
+     *
+     * + Medium Pipe Handcrafting Recipes
+     */
+    private static void processMediumPipe(OrePrefix prefix, IngotMaterial material) {
+
+        removeCraftingRecipes(OreDictUnifier.get(pipeMedium, material, 2));
+        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
+
+        if (GAConfig.GT6.BendingCylinders)
+
+            ModHandler.addShapedRecipe(String.format("pipe_ga_%s", material.toString()), OreDictUnifier.get(pipeMedium, material, 2),
+                    "PPP", "wCh", "PPP",
+                    'P', new UnificationEntry(plateOrCurved, material),
+                    'C', "craftingToolBendingCylinder");
+        else
+            ModHandler.addShapedRecipe(String.format("pipe_ga_%s", material.toString()), OreDictUnifier.get(pipeMedium, material, 2),
+                    "PPP", "w h", "PPP",
+                    'P', new UnificationEntry(plateOrCurved, material));
     }
 
     /**
      * Large Pipe Material Handler. Generates:
      *
-     * + Large Pipe Handcrafting Recipes, if Curved Plate recipes are disabled.
-     *       This is needed because GTCE does not generate these recipes normally.
+     * + Large Pipe Handcrafting Recipes
      */
     private static void processLargePipe(OrePrefix prefix, IngotMaterial material) {
-        if (!GAConfig.GT6.BendingPipes)
+
+        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
+
+        if (GAConfig.GT6.BendingCylinders)
 
             ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
+                    "PhP", "PCP", "PwP",
+                    'P', new UnificationEntry(plateOrCurved, material),
+                    'C', "craftingToolBendingCylinder");
+        else
+            ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
                     "PhP", "P P", "PwP",
-                    'P', new UnificationEntry(plate, material));
+                    'P', new UnificationEntry(plateOrCurved, material));
     }
 
     /**
@@ -1414,124 +1427,121 @@ public class RecipeHandler {
     }
 
     /**
-     * Recipe Generation for any recipes that need to iterate over the entire Crafting Table recipe registry. Generates:
+     * Recipe Generation for any recipes that need to iterate over the entire Crafting Table recipe registry.
      *
-     * - Compressor Block Crafting Recipes if enabled (Removes Handcrafting Recipes)
-     * - Packer Block Compression Recipes if not enabled
-     *
-     * - Packer 3x3 Recipes that are not Ingots or Dusts (like Mystical Agriculture recipes)
-     * - Packer 2x2 Recipes that are not Ingots or Dusts
-     *
-     * - Forge Hammer Block Uncrafting Recipes if enabled (Removes Hand Uncrafting Recipes)
-     * - Unpacker Block Uncrafting Recipes if not enabled
+     * Details on recipe registration in each individual method. It works only on recipes that
+     * have exactly one unique Item input.
      */
     public static void generatedRecipes() {
 
-        List<ResourceLocation> recipesToRemove = new ArrayList<>();
-        for (IRecipe recipe : CraftingManager.REGISTRY) {
+        for (IRecipe recipe : ForgeRegistries.RECIPES) {
 
-            if (recipe.getRecipeOutput().isEmpty())
-                continue;
-
-            ItemStack stack = getTopLeft(recipe);
-            if (stack == null)
-                continue;
-
-            if (recipe.getIngredients().size() == 9) {
-
-                if (outputIsNot(recipe, Blocks.AIR) && isSingleIngredient(recipe)) {
-
-                    // Remove 3x3 Block Handcrafting Recipes
-                    if (GAConfig.GT5U.Remove3x3BlockRecipes)
-                        recipesToRemove.add(recipe.getRegistryName());
-
-                    if (GAConfig.GT5U.GenerateCompressorRecipes
-                            && !recipe.getIngredients().get(0).test(new ItemStack(Items.WHEAT))) {
-
-                        // Add Compressor Blockcrafting Recipes (excluding Wheat)
-                        COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
-                                .inputs(CountableIngredient.from(stack, 9))
-                                .outputs(recipe.getRecipeOutput())
-                                .buildAndRegister();
-
-                    } else {
-
-                        // Add Packager Recipes if Compressor Recipes are not generated
-                        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                                .inputs(CountableIngredient.from(stack, 9))
-                                .notConsumable(SCHEMATIC_3X3.getStackForm())
-                                .outputs(recipe.getRecipeOutput())
-                                .buildAndRegister();
-                    }
-
-                    if (!recipesToRemove.contains(recipe.getRegistryName())
-                            && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustTiny")
-                            && !hasPrefix(recipe.getRecipeOutput(), "ingot")
-                            && recipe.getRecipeOutput().getCount() == 1
-                            && GAConfig.Misc.Packager3x3Recipes) {
-
-                        // Add Packager 3x3 Recipes, excluding dusts and ingots
-                        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                                .inputs(CountableIngredient.from(stack, 9))
-                                .notConsumable(SCHEMATIC_3X3.getStackForm())
-                                .outputs(recipe.getRecipeOutput())
-                                .buildAndRegister();
-                    }
-                }
-            }
-
-            if (recipe.getIngredients().size() == 4) {
-
-                if (outputIsNot(recipe, Blocks.QUARTZ_BLOCK) && isSingleIngredient(recipe)) {
-
-                    if (!recipesToRemove.contains(recipe.getRegistryName())
-                            && !hasPrefix(recipe.getRecipeOutput(), "dust", "dustSmall")
-                            && recipe.getRecipeOutput().getCount() == 1
-                            && GAConfig.Misc.Packager2x2Recipes) {
-
-                        // Add Packager 2x2 Recipes, excluding dusts
-                        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                                .inputs(CountableIngredient.from(stack, 4))
-                                .notConsumable(SCHEMATIC_2X2.getStackForm())
-                                .outputs(recipe.getRecipeOutput())
-                                .buildAndRegister();
-                    }
-                }
-            }
-
-            if (recipe.getIngredients().size() == 1 && recipe.getRecipeOutput().getCount() == 9) {
-
-                if (!hasPrefix(recipe.getIngredients().get(0).getMatchingStacks()[0], "ingot")) {
-
-                    if (outputIsNot(recipe, Blocks.AIR, Blocks.SLIME_BLOCK)) {
-
-                        // Remove Block Uncrafting Recipes
-                        if (GAConfig.GT5U.RemoveBlockUncraftingRecipes)
-                            recipesToRemove.add(recipe.getRegistryName());
-
-                        if (!hasPrefix(recipe.getRecipeOutput(), "ingot")) {
-
-                            // Add Forge Hammer block recipes, excluding ingots
-                            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
-                                    .inputs(stack)
-                                    .outputs(recipe.getRecipeOutput())
-                                    .buildAndRegister();
-                        }
-                    }
-
-                    if (!recipesToRemove.contains(recipe.getRegistryName())
-                            && GAConfig.Misc.Unpackager3x3Recipes) {
-
-                        // Add Unpackager 3x3 recipes, excluding ingots
-                        UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
-                                .inputs(stack)
-                                .notConsumable(SCHEMATIC_3X3.getStackForm())
-                                .outputs(recipe.getRecipeOutput())
-                                .buildAndRegister();
-                    }
-                }
+            switch(getSingleInputCount(recipe)) {
+                case -1: continue;
+                case 1: generate1to9Recipes(recipe); break;
+                case 4: generate2x2Recipes(recipe); break;
+                case 9: generate3x3Recipes(recipe); break;
             }
         }
-        recipesToRemove.forEach(HelperMethods::removeRecipeByName);
+    }
+
+    /**
+     * 3x3 Single Input Recipe Generation. Generates:
+     *
+     * + Compressor Recipes for 3x3 Crafting Recipes, if enabled
+     * + Packer Recipes for 3x3 Crafting Recipes, if enabled
+     *
+     * - Removes handcrafting 3x3 Recipes in favor of Packer, if enabled
+     */
+    private static void generate3x3Recipes(IRecipe recipe) {
+
+        ItemStack input = getTopLeft(recipe);
+        ItemStack output = recipe.getRecipeOutput();
+
+        // Exclude tinyDust->dust recipes, handled elsewhere
+        if (output.getCount() != 1
+         || hasOrePrefix(input, "dustTiny"))
+            return;
+
+        // Remove 3x3 Block Crafting to Packer
+        if (GAConfig.GT5U.Remove3x3BlockRecipes) {
+
+            removeRecipeByName(recipe.getRegistryName());
+            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                    .inputs(CountableIngredient.from(input, 9))
+                    .notConsumable(SCHEMATIC_3X3.getStackForm())
+                    .outputs(output)
+                    .buildAndRegister();
+        }
+
+        // Add Compressor 3x3 Recipes
+        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+
+            // Exclude Wheat, since it compresses to Plant Balls
+            if (ItemStack.areItemsEqual(input, new ItemStack(Items.WHEAT)))
+                return;
+
+            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                    .inputs(CountableIngredient.from(input, 9))
+                    .outputs(output)
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * 2x2 Single Input Recipe Generation. Generates:
+     *
+     * + Packer Recipes for 2x2 Crafting Recipes, if enabled
+     */
+    private static void generate2x2Recipes(IRecipe recipe) {
+
+        ItemStack input = getTopLeft(recipe);
+        ItemStack output = recipe.getRecipeOutput();
+
+        // Exclude smallDust->dust recipes and wire/cable compacting, handled elsewhere
+        if (output.getCount() != 1
+         || hasOrePrefix(input, "dustSmall")
+         || hasOrePrefix(input, "wireGt")
+         || hasOrePrefix(input, "cableGt"))
+            return;
+
+        // Add Packager 2x2 Recipes
+        if (GAConfig.GT5U.Packager2x2Recipes) {
+
+            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                    .inputs(CountableIngredient.from(input, 4))
+                    .notConsumable(SCHEMATIC_2X2.getStackForm())
+                    .outputs(output)
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * 1 to 9 Single Input Recipe Generation. Generates:
+     *
+     * + Unpacker Recipes for 1 to 9 Crafting Recipes, if enabled
+     *
+     * - Removes handcrafting 1 to 9 Recipes in favor of Unpacker, if enabled
+     */
+    private static void generate1to9Recipes(IRecipe recipe) {
+
+        ItemStack input = getTopLeft(recipe);
+        ItemStack output = recipe.getRecipeOutput();
+
+        // Exclude dust->tinyDust recipes, handled elsewhere
+        if (output.getCount() != 9
+         || hasOrePrefix(output, "dustTiny"))
+            return;
+
+        // Move Block Uncrafting to the Compressor
+        if (GAConfig.GT5U.RemoveBlockUncraftingRecipes) {
+
+            removeRecipeByName(recipe.getRegistryName());
+            UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
+                    .inputs(input)
+                    .notConsumable(SCHEMATIC_3X3.getStackForm())
+                    .outputs(output)
+                    .buildAndRegister();
+        }
     }
 }

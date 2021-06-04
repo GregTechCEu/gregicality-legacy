@@ -125,7 +125,7 @@ public class CasingRecipes {
                 .input(plate, IncoloyMA956, 8)
                 .input(cableGtOctal, Platinum)
                 .inputs(MetaTileEntities.HULL[LuV].getStackForm())
-                .fluidInputs(Uranium235.getFluid(L * 10))
+                .fluidInputs(Uranium238Isotope.getMaterial().getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TIERED_HULL_LUV))
                 .buildAndRegister();
 
@@ -135,7 +135,7 @@ public class CasingRecipes {
                 .input(plate, BabbittAlloy, 8)
                 .input(cableGtOctal, NiobiumTitanium)
                 .inputs(MetaTileEntities.HULL[GAValues.ZPM].getStackForm())
-                .fluidInputs(Plutonium241.getFluid(L * 10))
+                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TIERED_HULL_ZPM))
                 .buildAndRegister();
 
