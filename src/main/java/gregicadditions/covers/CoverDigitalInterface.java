@@ -996,7 +996,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
         }
         int i = 1;
 
-        while (number / 10000000 != 0) {
+        while (number / 10000000 != 0 && i < units.length) {
             number = number / 1000;
             ++i;
         }
