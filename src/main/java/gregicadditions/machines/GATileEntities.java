@@ -21,10 +21,7 @@ import gregicadditions.machines.multi.advance.hyper.HyperReactorUHV;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
-import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
-import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
-import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
-import gregicadditions.machines.multi.miner.Miner;
+import gregicadditions.machines.multi.miner.*;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
@@ -244,6 +241,8 @@ public class GATileEntities {
 
     public static MTE<?>[] DISASSEMBLER = new MTE[14];
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
+
+    public static TileEntitySteamMiner STEAM_MINER;
 
     public static void init() {
 
@@ -1150,6 +1149,7 @@ public class GATileEntities {
             }
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
+        STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public interface Miner {
 
     enum Type {
+        STEAM(8, 1, 0, "", 1),
         LV(4, 1, 0, "", 1),
         MV(2, 1, 0, "", 2),
         HV(1, 1, 0, "", 4),
