@@ -5,6 +5,7 @@ import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
+import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.network.IPSaveData;
@@ -20,6 +21,7 @@ import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
+import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.util.FluidTooltipUtil;
 import gregtech.common.blocks.VariantItemBlock;
@@ -171,6 +173,11 @@ public class CommonProxy {
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.removeMARecipe();
+        }
+
+        for (GAHeatingCoil.CoilType values : GAHeatingCoil.CoilType.values()) {
+            BlastTemperatureProperty.registerCoilType(values.getCoilTemperature(), null,
+                    "tile.ga_heating_coil." + values.getName() + ".name");
         }
 
         // Main recipe registration

@@ -97,7 +97,7 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed())
-            textList.add(new TextComponentTranslation("gtadditions.multiblock.large_chemical_reactor.bonus", this.energyBonus).setStyle(new Style().setColor(TextFormatting.AQUA)));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_usage", 100-this.energyBonus).setStyle(new Style().setColor(TextFormatting.AQUA)));
     }
 
     @Override

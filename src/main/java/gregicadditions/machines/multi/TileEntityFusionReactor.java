@@ -204,15 +204,15 @@ public class TileEntityFusionReactor extends RecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         switch (tier) {
             case 6: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "1,600,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "160,000,000"));
                 break;
             }
             case 7: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "3,200,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "320,000,000"));
                 break;
             }
             case 8: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "6,400,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "640,000,000"));
                 break;
             }
         }

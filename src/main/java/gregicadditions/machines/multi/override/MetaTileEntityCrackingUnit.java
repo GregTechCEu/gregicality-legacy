@@ -3,7 +3,6 @@ package gregicadditions.machines.multi.override;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -21,7 +20,9 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +38,7 @@ public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController 
             MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
     };
 
-    protected int heatingCoilLevel = 1;
-    protected int heatingCoilDiscount = 1;
+    protected int heatingCoilTier = 0;
 
     public MetaTileEntityCrackingUnit(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, CRACKING_RECIPES);
@@ -52,8 +52,11 @@ public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController 
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        this.heatingCoilLevel = context.getOrDefault("heatingCoilLevel", 0);
-        this.heatingCoilDiscount = context.getOrDefault("heatingCoilDiscount", 0);
+        BlockWireCoil.CoilType coilType = context.getOrDefault("coilType", HEATING_COILS[0]);
+        int coilTier = Arrays.asList(HEATING_COILS).indexOf(coilType);
+
+        coilTier = Math.max(0, coilTier);
+        this.heatingCoilTier = coilTier;
     }
 
     public static Predicate<BlockWorldState> heatingCoilPredicate() {
@@ -65,44 +68,22 @@ public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController 
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
             if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
                 return false;
-            int heatingCoilDiscount = coilType.getEnergyDiscount();
-            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
-            int heatingCoilLevel = coilType.getLevel();
-            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
-            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
-        };
-    }
-
-    public static Predicate<BlockWorldState> heatingCoilPredicate2() {
-        return blockWorldState -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if (!(blockState.getBlock() instanceof GAHeatingCoil))
-                return false;
-            GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
-            GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
-            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
-                return false;
-            int heatingCoilDiscount = coilType.getEnergyDiscount();
-            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
-            int heatingCoilLevel = coilType.getLevel();
-            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
-            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+            BlockWireCoil.CoilType currentCoilType = blockWorldState.getMatchContext().getOrPut("coilType", coilType);
+            return coilType.equals(currentCoilType);
         };
     }
 
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
-        this.heatingCoilLevel = 1;
-        this.heatingCoilDiscount = 1;
+        this.heatingCoilTier = 0;
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_level", heatingCoilLevel));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_discount", heatingCoilDiscount));
+        if (isStructureFormed() && !hasProblems()) {
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_usage", 100 - (this.heatingCoilTier*5)).setStyle(new Style().setColor(TextFormatting.AQUA)));
         }
     }
 
@@ -117,7 +98,7 @@ public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController 
                 .where('L', statePredicate(getCasingState()))
                 .where('H', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('#', isAirPredicate())
-                .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
+                .where('C', heatingCoilPredicate())
                 .build();
     }
 
@@ -133,7 +114,7 @@ public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController 
     protected class CrackingUnitWorkable extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
         public CrackingUnitWorkable(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity, 100 / heatingCoilDiscount, 100, 100, heatingCoilLevel);
+            super(tileEntity, 100 - (heatingCoilTier*5), 100, 100, 0);
         }
 
     }

@@ -13,7 +13,6 @@ import net.minecraft.world.IBlockAccess;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.client.ClientHandler.*;
-import static gregicadditions.client.ClientHandler.POTIN_CASING;
 import static gregtech.api.unification.material.Materials.*;
 
 public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
@@ -39,7 +38,7 @@ public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
         STELLITE("casing_stellite", Stellite),
         ENRICHED_NAQUADAH_ALLOY("casing_enriched_naquadah_alloy", EnrichedNaquadahAlloy),
         QUANTUM("casing_quantum", Quantum),
-        TRITANIUM("casing_tritanium", Trinium),
+        TRITANIUM("casing_tritanium", Tritanium),
         BLACK_STEEL("casing_black_steel", BlackSteel),
         RED_STEEL("casing_red_steel", RedSteel),
         GOLD("casing_gold", Gold),

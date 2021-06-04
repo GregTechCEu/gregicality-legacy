@@ -11,6 +11,7 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import scala.tools.cmd.Meta;
 
 import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
 import static gregicadditions.GAEnums.GAOrePrefix.round;
@@ -29,8 +30,8 @@ import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX;
-import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.BRONZE_BRICKS;
-import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS;
+import static gregtech.common.blocks.BlockFireboxCasing.FireboxCasingType.STEEL_FIREBOX;
+import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING;
 import static gregtech.common.blocks.BlockWireCoil.CoilType.CUPRONICKEL;
 import static gregtech.common.blocks.BlockWireCoil.CoilType.FUSION_COIL;
@@ -496,20 +497,38 @@ public class MultiblockCraftingRecipes {
                 'A', MetaTileEntities.HULL[EV].getStackForm(),
                 'C', new UnificationEntry(pipeLarge, Ultimet));
 
-        // Steam Grinder
-        ModHandler.addShapedRecipe("ga_steam_grinder", STEAM_GRINDER.getStackForm(),
-                "CGC", "CFC", "CGC",
-                'G', new UnificationEntry(gear, Potin),
-                'F', MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(),
-                'C', new UnificationEntry(gtMetalCasing, Bronze));
+        if (GAConfig.multis.steamMultis.useSteelMultis) {
+            // Steam Grinder
+            ModHandler.addShapedRecipe("ga_steam_grinder", STEAM_GRINDER.getStackForm(),
+                    "CGC", "CFC", "CGC",
+                    'G', new UnificationEntry(gear, Potin),
+                    'F', MetaTileEntities.STEAM_MACERATOR_STEEL.getStackForm(),
+                    'C', MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID));
 
-        // Steam Oven
-        ModHandler.addShapedRecipe("ga_steam_oven", STEAM_OVEN.getStackForm(),
-                "CGC", "FMF", "CGC",
-                'F', MetaBlocks.BOILER_FIREBOX_CASING.getItemVariant(BRONZE_FIREBOX),
-                'C', new UnificationEntry(gtMetalCasing, Bronze),
-                'M', MetaTileEntities.STEAM_FURNACE_BRONZE.getStackForm(),
-                'G', new UnificationEntry(gear, Invar));
+            // Steam Oven
+            ModHandler.addShapedRecipe("ga_steam_oven", STEAM_OVEN.getStackForm(),
+                    "CGC", "FMF", "CGC",
+                    'F', MetaBlocks.BOILER_FIREBOX_CASING.getItemVariant(STEEL_FIREBOX),
+                    'C', MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID),
+                    'M', MetaTileEntities.STEAM_FURNACE_STEEL.getStackForm(),
+                    'G', new UnificationEntry(gear, Invar));
+        }
+        else {
+            // Steam Grinder
+            ModHandler.addShapedRecipe("ga_steam_grinder", STEAM_GRINDER.getStackForm(),
+                    "CGC", "CFC", "CGC",
+                    'G', new UnificationEntry(gear, Potin),
+                    'F', MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(),
+                    'C', new UnificationEntry(gtMetalCasing, Bronze));
+
+            // Steam Oven
+            ModHandler.addShapedRecipe("ga_steam_oven", STEAM_OVEN.getStackForm(),
+                    "CGC", "FMF", "CGC",
+                    'F', MetaBlocks.BOILER_FIREBOX_CASING.getItemVariant(BRONZE_FIREBOX),
+                    'C', new UnificationEntry(gtMetalCasing, Bronze),
+                    'M', MetaTileEntities.STEAM_FURNACE_BRONZE.getStackForm(),
+                    'G', new UnificationEntry(gear, Invar));
+        }
 
         // Electric Implosion Compressor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(48000).EUt(491520)
@@ -533,8 +552,8 @@ public class MultiblockCraftingRecipes {
                 "PPP", "IHO", "PPP",
                 'H', MetaTileEntities.HULL[LV].getStackForm(),
                 'P', new UnificationEntry(plate, Aluminium),
-                'I', ENERGY_INPUT_HATCH_4_AMPS.get(MV).getStackForm(),
-                'O', ENERGY_OUTPUT_HATCH_16_AMPS.get(MV).getStackForm());
+                'I', MetaTileEntities.TRANSFORMER[1].getStackForm(),
+                'O', MetaTileEntities.TRANSFORMER[0].getStackForm());
 
         // Large Thermal Centrifuge
         ModHandler.addShapedRecipe("ga_large_thermal_centrifuge", LARGE_THERMAL_CENTRIFUGE.getStackForm(),

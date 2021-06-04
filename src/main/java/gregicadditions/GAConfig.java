@@ -618,6 +618,9 @@ public class GAConfig {
         public LargeElectromagnet largeElectromagnet = new LargeElectromagnet();
         public LargeExtractor largeExtractor = new LargeExtractor();
         public LargeArcFurnace largeArcFurnace = new LargeArcFurnace();
+        public LargeCanningMachine largeCanningMachine = new LargeCanningMachine();
+        public LargeMassFabricator largeMassFabricator = new LargeMassFabricator();
+        public LargeReplicator largeReplicator = new LargeReplicator();
         public BatteryTower batteryTower = new BatteryTower();
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
@@ -1288,6 +1291,99 @@ public class GAConfig {
         public String casingMaterial = "invar";
     }
 
+    public static class LargeCanningMachine {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 80;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 4;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Canning Machine.")
+        @Config.Name("Large Canning Machine casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "steel";
+    }
+
+    public static class LargeMassFabricator {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 100;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 0)
+        @Config.Name("Large Mass Fabricator parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 0;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Mass Fabricator.")
+        @Config.Name("Large Mass Fabricator casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "tritanium";
+    }
+
+    public static class LargeReplicator {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 100;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 0)
+        @Config.Name("Large Mass Fabricator parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 0;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Mass Fabricator.")
+        @Config.Name("Large Mass Fabricator casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "tritanium";
+    }
+
         public static class VoidMiner {
             @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
             @Config.RangeInt(min = 1000)
@@ -1495,6 +1591,11 @@ public class GAConfig {
             @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
             @Config.RequiresMcRestart
             public double steamToEU = 0.5;
+
+            @Config.Comment("Whether to use Steel casings instead of Bronze for the steam multiblocks.")
+            @Config.RequiresMcRestart
+            @Config.Name("Enable steel steam multis")
+            public boolean useSteelMultis = false;
         }
 
         public static class Prospector {

@@ -1601,6 +1601,9 @@ gtadditions.machine.large_brewery.name=Large Brewery
 gtadditions.machine.large_electromagnet.name=Large Electromagnet
 gtadditions.machine.large_extractor.name=Large Extractor
 gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
+gtadditions.machine.large_canning_machine.name=Large Canning Machine
+gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
+gtadditions.machine.large_replicator.name=Large Replicator
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
@@ -2973,6 +2976,7 @@ gregtech.multiblock.universal.helium_plasma_amount=Helium Plasma: %dmb
 gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %dmb
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid Hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
+gregtech.multiblock.universal.energy_usage=Current Energy Usage: %d%%
 gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen to Boost: %dmB
 gregtech.multiblock.large_rocket_engine.boost=Boosted!
 gregtech.multiblock.large_rocket_engine.no_fuel=No Fuel Loaded
@@ -3007,7 +3011,7 @@ gtadditions.multiblock.drilling_rig.replenish=Replenish Rate: %dmB/sec
 gtadditions.multiblock.battery_tower.input=EU/t input: %s
 gtadditions.multiblock.battery_tower.output=EU/t output: %s
 gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
-gtadditions.multiblock.large_chemical_reactor.bonus=Current Energy Boost: %d%%
+gtadditions.multiblock.blast_furnace.additional_temperature=Additional Temperature: %dK
 
 
 item.material.oreprefix.plateCurved=Curved %s Plate

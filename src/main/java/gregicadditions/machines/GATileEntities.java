@@ -30,14 +30,12 @@ import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.machines.multi.multiblockpart.*;
-import gregicadditions.machines.multi.nuclear.MetaTileEntityGasCentrifuge;
-import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
-import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
+import gregicadditions.machines.multi.nuclear.*;
 import gregicadditions.machines.multi.override.*;
-import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
+import gregicadditions.machines.multi.qubit.*;
 import gregicadditions.machines.multi.simple.*;
-import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
-import gregicadditions.machines.multi.steam.MetaTileEntitySteamOven;
+import gregicadditions.machines.multi.steam.*;
+import gregicadditions.machines.multi.uumatter.*;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
@@ -259,6 +257,9 @@ public class GATileEntities {
     public static TileEntityLargeElectromagnet LARGE_ELECTROMAGNET;
     public static TileEntityLargeExtractor LARGE_EXTRACTOR;
     public static TileEntityLargeArcFurnace LARGE_ARC_FURNACE;
+    public static TileEntityLargeCanningMachine LARGE_CANNING_MACHINE;
+    public static TileEntityLargeMassFabricator LARGE_MASS_FABRICATOR;
+    public static TileEntityLargeReplicator LARGE_REPLICATOR;
 
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
@@ -1192,6 +1193,9 @@ public class GATileEntities {
         LARGE_ELECTROMAGNET = GregTechAPI.registerMetaTileEntity(4222, new TileEntityLargeElectromagnet(location("large_electromagnet"), RecipeMaps.POLARIZER_RECIPES));
         LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4223, new TileEntityLargeExtractor(location("large_extractor"), RecipeMaps.FLUID_EXTRACTION_RECIPES));
         LARGE_ARC_FURNACE = GregTechAPI.registerMetaTileEntity(4224, new TileEntityLargeArcFurnace(location("large_arc_furnace"), RecipeMaps.ARC_FURNACE_RECIPES));
+        LARGE_CANNING_MACHINE = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeCanningMachine(location("large_canning_machine"), RecipeMaps.CANNER_RECIPES));
+        LARGE_MASS_FABRICATOR = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeMassFabricator(location("large_mass_fabricator"), GARecipeMaps.MASS_FAB_RECIPES));
+        LARGE_REPLICATOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeReplicator(location("large_replicator"), GARecipeMaps.REPLICATOR_RECIPES));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

@@ -26,8 +26,11 @@ import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
 import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
 public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockController {
+
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+
     public MetaTileEntityDistillationTower(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, DISTILLATION_RECIPES);
+        super(metaTileEntityId, DISTILLATION_RECIPES, true, true, false);
         this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
     }
 
@@ -43,17 +46,16 @@ public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
-        Predicate<PatternMatchContext> exactlyOneHatch = (context) -> {
-            return context.getInt("HatchesAmount") == 1;
-        };
+        Predicate<PatternMatchContext> exactlyOneHatch = (context) -> context.getInt("HatchesAmount") == 1;
 
         return FactoryBlockPattern.start(BlockPattern.RelativeDirection.RIGHT, BlockPattern.RelativeDirection.FRONT, BlockPattern.RelativeDirection.UP)
                 .aisle("YSY", "YYY", "YYY")
                 .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
-                .aisle("XXX", "XXX", "XXX")
+                .aisle("XXX", "XMX", "XXX")
                 .where('S', this.selfPredicate())
                 .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
-                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('M', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
                 .where('#', isAirPredicate())
                 .validateLayer(1, exactlyOneHatch)
                 .validateLayer(2, exactlyOneHatch)

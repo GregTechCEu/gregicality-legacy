@@ -3,6 +3,7 @@ package gregicadditions.capabilities.impl;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.capability.IEnergyContainer;
@@ -13,6 +14,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.XSTR;
+import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import gregtech.api.unification.OreDictUnifier;
@@ -386,4 +388,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             buf.writeBoolean(isTaped);
         });
     }
+
+    protected static final BlockWireCoil.CoilType[] HEATING_COILS = BlockWireCoil.CoilType.values();
+    protected static final GAHeatingCoil.CoilType[] GA_HEATING_COILS = GAHeatingCoil.CoilType.values();
 }

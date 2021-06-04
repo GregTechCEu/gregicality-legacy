@@ -19,7 +19,7 @@ import java.util.List;
 public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
 
     // Field used for maintenance
-    private int previousRecipeDuration;
+    protected int previousRecipeDuration;
 
     // Fields used for distinct mode
     protected int lastRecipeIndex = 0;

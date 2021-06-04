@@ -24,10 +24,13 @@ import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 
 public class MetaTileEntityImplosionCompressor extends GARecipeMapMultiblockController {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+			MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY,
+			GregicAdditionsCapabilities.MUFFLER_HATCH};
 
 	public MetaTileEntityImplosionCompressor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, IMPLOSION_RECIPES);
+        super(metaTileEntityId, IMPLOSION_RECIPES, true, true, false);
         this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
     }
 
