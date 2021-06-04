@@ -3,6 +3,7 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
@@ -685,6 +686,7 @@ public class RecipeHandler {
      *
      * + Curved Plate Rotor Recipe
      * + Assembler Rotor Recipe that GTCE removed
+     * + Extruder Rotor Recipe
      */
     private static void processRotor(OrePrefix ingot, IngotMaterial material) {
 
@@ -704,6 +706,12 @@ public class RecipeHandler {
                 .fluidInputs(SolderingAlloy.getFluid(32))
                 .output(rotor, material)
                 .buildAndRegister();
+
+        EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
+                    .input(ingot, material, 5)
+                    .notConsumable(SHAPE_EXTRUDER_ROTOR)
+                    .output(rotor, material)
+                    .buildAndRegister();
     }
 
     /**
@@ -982,7 +990,7 @@ public class RecipeHandler {
 
             removeRecipesByInputs(FORGE_HAMMER_RECIPES, OreDictUnifier.get(plate, material, 2));
 
-            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(120)
+            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
                     .input(ingot, material)
                     .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
                     .output(gearSmall, material)
