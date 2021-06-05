@@ -10,7 +10,10 @@ import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.utils.GALog;
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.common.items.MetaItems;
+import li.cil.repack.org.luaj.vm2.ast.Str;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -32,6 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @SideOnly(Side.CLIENT)
@@ -84,6 +88,23 @@ public class ClientProxy extends CommonProxy {
     public static void addMaterialFormulaHandler(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         if (!(itemStack.getItem() instanceof ItemBlock)) {
+
+            if (itemStack.getItem() instanceof MetaItem) {
+                LangOverride.MetaItemName translations = LangOverride.META_ITEM_TRANSLATIONS.get(itemStack.getItem());
+                if (translations != null) {
+                    String name = translations.getName();
+                    String tooltip = translations.getTooltip();
+                    if (name != null)
+                        event.getToolTip().set(0, name);
+                    if (tooltip != null) {
+                        if (event.getToolTip().size() >= 2)
+                            event.getToolTip().set(1, tooltip);
+                        else
+                            event.getToolTip().add(tooltip);
+                    }
+                }
+            }
+
             Optional<String> oreDictName = OreDictUnifier.getOreDictionaryNames(itemStack).stream().findFirst();
             if (oreDictName.isPresent() && GADustItem.oreDictToSimpleDust.containsKey(oreDictName.get())) {
                 SimpleDustMaterial material = SimpleDustMaterial.GA_DUSTS.get((short) itemStack.getItemDamage());

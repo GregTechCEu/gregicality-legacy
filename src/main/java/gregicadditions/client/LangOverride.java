@@ -1,11 +1,14 @@
 package gregicadditions.client;
 
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.common.items.MetaItems;
 import net.minecraft.util.text.translation.LanguageMap;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,16 +32,30 @@ public class LangOverride {
      *
      * If we get a sufficiently large number of overrides here, we should break it
      * into methods for each language to keep it clean.
+     *
+     * Examples of the methods:
+     *
+     * Normal Blocks and Items:
+     * <code>
+     *     setLocalization(EN_US, "tile.wire_coil.cupronickel.name", "funni coil");
+     * </code>
+     *
+     * GTCE MetaItems:
+     * <code>
+     *     setMetaItemName(RU_RU, MetaItems.CREDIT_COPPER.getMetaItem(), "модный кредит");
+     * </code>
+     *
+     * GTCE MetaItem Tooltips:
+     * <code>
+     *     setMetaItemTooltip(ZH_CN, MetaItems.CREDIT_COPPER.getMetaItem(), "最值钱!");
+     * </code>
      */
     public static void registerOverrides() {
-        /*
-         * Example implementation:
-         * setLocalization(EN_US, "tile.wire_coil.cupronickel.name", "funni coil");
-         */
         setLocalization("tile.chest.name", "Some nonsense idk");
         setLocalization("tile.wire_coil.cupronickel.name", "funni coil");
         setLocalization("metaitem.credit.copper.name", "idk man this better work");
-        setLocalization("material.salt", "exquisitely salty");
+        setMetaItemName(EN_US, MetaItems.CREDIT_COPPER.getMetaItem(), "hehe dumb credit");
+        setMetaItemTooltip(EN_US, MetaItems.CREDIT_COPPER.getMetaItem(), "good description");
     }
 
 
@@ -47,6 +64,7 @@ public class LangOverride {
      */
     private static final Map<String, String> TRANSLATIONS = LanguageMap.instance.languageList;
     public static final List<SetTranslation> TRANSLATION_LIST = new ArrayList<>();
+    public static final Map<MetaItem<?>, MetaItemName> META_ITEM_TRANSLATIONS = new HashMap<>();
 
     private static void setLocalization(String lang, String key, String value) {
         SetTranslation translation = new SetTranslation(lang, key, value);
@@ -58,13 +76,46 @@ public class LangOverride {
         setLocalization(null, key, value);
     }
 
+    private static void setMetaItemName(String locale, MetaItem<?> item, String name) {
+        if (META_ITEM_TRANSLATIONS.containsKey(item))
+            META_ITEM_TRANSLATIONS.put(item, META_ITEM_TRANSLATIONS.get(item).setName(locale, name));
+        else META_ITEM_TRANSLATIONS.put(item, new MetaItemName().setName(locale, name));
+    }
+
+    private static void setMetaItemName(MetaItem<?> item, String name) {
+        setMetaItemName(EN_US, item, name);
+        setMetaItemName(RU_RU, item, name);
+        setMetaItemName(ZH_CN, item, name);
+    }
+
+    private static void setMetaItemTooltip(String locale, MetaItem<?> item, String tooltip) {
+        if (META_ITEM_TRANSLATIONS.containsKey(item))
+            META_ITEM_TRANSLATIONS.put(item, META_ITEM_TRANSLATIONS.get(item).setTooltip(locale, tooltip));
+        else META_ITEM_TRANSLATIONS.put(item, new MetaItemName().setTooltip(locale, tooltip));
+    }
+
+    private static void setMetaItemTooltip(MetaItem<?> item, String name) {
+        setMetaItemTooltip(EN_US, item, name);
+        setMetaItemTooltip(RU_RU, item, name);
+        setMetaItemTooltip(ZH_CN, item, name);
+    }
+
+    private static String getLanguage() {
+        return FMLCommonHandler.instance().getSide() == Side.SERVER ? null : FMLClientHandler.instance().getCurrentLanguage();
+    }
+
+    private static boolean checkLanguage(String lang) {
+        String current = getLanguage();
+        return current != null && current.equals(lang);
+    }
+
     public static class SetTranslation {
 
         private final String lang;
         private final String key;
         private final String text;
 
-        public SetTranslation(String lang, String key, String text) {
+        private SetTranslation(String lang, String key, String text) {
             this.lang = lang;
             this.key = key;
             this.text = text;
@@ -74,10 +125,40 @@ public class LangOverride {
             if (lang == null || checkLanguage(lang))
                 TRANSLATIONS.put(key, text);
         }
+    }
 
-        private static boolean checkLanguage(String lang) {
-            String current = FMLCommonHandler.instance().getSide() == Side.SERVER ? null : FMLClientHandler.instance().getCurrentLanguage();
-            return current != null && current.equals(lang);
+    public static class MetaItemName {
+
+        private final Map<String, String> names;
+        private final Map<String, String> tooltips;
+
+        private MetaItemName() {
+            names = new HashMap<>();
+            tooltips = new HashMap<>();
+        }
+
+        private MetaItemName setName(String locale, String name) {
+            this.names.put(locale, name);
+            return this;
+        }
+
+        private MetaItemName setTooltip(String locale, String tooltip) {
+            this.tooltips.put(locale, tooltip);
+            return this;
+        }
+
+        public String getName() {
+            String name = names.get(getLanguage());
+            if (name == null && !names.isEmpty())
+                name = (String) names.keySet().toArray()[0];
+            return name;
+        }
+
+        public String getTooltip() {
+            String tooltip = tooltips.get(getLanguage());
+            if (tooltip == null && !tooltips.isEmpty())
+                tooltip = (String) tooltips.keySet().toArray()[0];
+            return tooltip;
         }
     }
 }
