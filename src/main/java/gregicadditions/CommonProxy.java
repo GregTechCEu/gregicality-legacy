@@ -3,6 +3,7 @@ package gregicadditions;
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
+import gregicadditions.client.LangOverride;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.item.GAMetaBlocks;
@@ -253,6 +254,9 @@ public class CommonProxy {
     @SubscribeEvent
     public static void onUnload(WorldEvent.Unload event) {
         IPSaveData.setDirty(0);
+    }
+
+    public void registerReloadListener() {
     }
 
 }
