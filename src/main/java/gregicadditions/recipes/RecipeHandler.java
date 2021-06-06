@@ -997,6 +997,12 @@ public class RecipeHandler {
                     .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
                     .output(gearSmall, material)
                     .buildAndRegister();
+
+            ALLOY_SMELTER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(30)
+                    .input(ingot, material, 2)
+                    .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm())
+                    .output(gearSmall, material)
+                    .buildAndRegister();
         }
     }
 
