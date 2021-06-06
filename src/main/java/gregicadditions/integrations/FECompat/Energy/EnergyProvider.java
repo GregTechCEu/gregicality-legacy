@@ -48,7 +48,7 @@ public class EnergyProvider implements ICapabilityProvider {
                 if (container != null) {
 
                     // Locks the Capability only to EU producers
-                    // TODO Give capability to wires and cables
+                    // TODO Give capability to wires and cables?
                     if (container.getOutputVoltage() != 0)
                         facesRF[faceID] = new EnergyContainerWrapper(container, facing);
                 }
@@ -72,8 +72,9 @@ public class EnergyProvider implements ICapabilityProvider {
         return result;
     }
 
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+    // TODO Cleanup
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
 		if (gettingValue) {
 			return null;
 		}

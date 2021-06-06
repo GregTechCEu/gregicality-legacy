@@ -3,8 +3,8 @@ package gregicadditions.integrations.FECompat.Energy;
 import javax.annotation.Nullable;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -17,75 +17,72 @@ import static gregicadditions.integrations.FECompat.Constants.safeCastLongToInt;
 public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
     private final ICapabilityProvider upvalue;
-	private final IEnergyStorage[] facesRF = new IEnergyStorage[7];
+    private final IEnergyStorage[] facesRF = new IEnergyStorage[7];
 
-	private int rfBuffer = 0;
+    private int rfBuffer = 0;
 
-	public GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
-		this.upvalue = upvalue;
-	}
+    public GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
+        this.upvalue = upvalue;
+    }
 
-	boolean isValid(EnumFacing face) {
-		if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face)) {
-			return true;
-		}
+    boolean isValid(EnumFacing face) {
 
-		if (face == null) {
-			for (EnumFacing face2 : EnumFacing.VALUES) {
-				if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face2)) {
-					return true;
-				}
-			}
-		}
+        if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face))
+            return true;
 
-		return false;
-	}
+        if (face == null) {
+            for (EnumFacing face2 : EnumFacing.VALUES) {
+                if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face2)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	private IEnergyStorage getStorageCap() {
-		IEnergyStorage container = def();
+    private IEnergyStorage getStorageCap() {
 
-		if (container != null && container.getMaxEnergyStored() > 0) {
-			return container;
-		}
+        IEnergyStorage container = def();
 
-		for (EnumFacing face : EnumFacing.VALUES) {
-			container = facesRF[face.getIndex()];
+        if (container != null && container.getMaxEnergyStored() > 0)
+            return container;
 
-			if (container == null) {
-				container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
-				facesRF[face.getIndex()] = container;
-			}
+        for (EnumFacing face : EnumFacing.VALUES) {
+            container = facesRF[face.getIndex()];
 
-			if (container != null && container.getMaxEnergyStored() > 0) {
-				return container;
-			}
-		}
+            if (container == null) {
+                container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
+                facesRF[face.getIndex()] = container;
+            }
 
-		return container;
-	}
+            if (container != null && container.getMaxEnergyStored() > 0)
+                return container;
+        }
 
-	private IEnergyStorage getAcceptionCap() {
-		IEnergyStorage container = def();
+        return container;
+    }
 
-		if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0) {
-			return container;
-		}
+    private IEnergyStorage getAcceptionCap() {
 
-		for (EnumFacing face : EnumFacing.VALUES) {
-			container = facesRF[face.getIndex()];
+        IEnergyStorage container = def();
 
-			if (container == null) {
-				container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
-				facesRF[face.getIndex()] = container;
-			}
+        if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0)
+            return container;
 
-			if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0) {
-				return container;
-			}
-		}
+        for (EnumFacing face : EnumFacing.VALUES) {
+            container = facesRF[face.getIndex()];
 
-		return container;
-	}
+            if (container == null) {
+                container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
+                facesRF[face.getIndex()] = container;
+            }
+
+            if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0)
+                return container;
+        }
+
+        return container;
+    }
 
     @Override
     public long acceptEnergyFromNetwork(EnumFacing facing, long voltage, long amperage) {
@@ -105,8 +102,6 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
         // Try to use the internal buffer before consuming a new packet
         if (rfBuffer > 0) {
-
-            GALog.logger.info("Buffering");
 
             receive = container.receiveEnergy(rfBuffer, true);
 
@@ -131,8 +126,6 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
         // Try to consume our remainder buffer plus a fresh packet
         if (receive != 0) {
-
-            GALog.logger.info("Remainder Buffer + New Amp");
 
             int consumable = container.receiveEnergy(safeCastLongToInt(maximalValue + receive), true);
 
@@ -169,8 +162,6 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         // Else try to draw 1 full packet
         } else {
 
-            GALog.logger.info("New Amp Only");
-
             int consumable = container.receiveEnergy(safeCastLongToInt(maximalValue), true);
 
             // Machine unable to consume any power
@@ -196,168 +187,118 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         }
     }
 
-	@Override
-	public long changeEnergy(long delta) {
-		IEnergyStorage container = getStorageCap();
+    @Override
+    public long changeEnergy(long delta) {
 
-		if (container == null) {
-			return 0L;
-		}
+        IEnergyStorage container = getStorageCap();
 
-		if (delta == 0L) {
-			return 0L;
-		}
+        if (container == null || delta == 0)
+            return 0;
 
-		if (delta < 0L) {
-			long extractValue = delta * Constants.RATIO_LONG;
+        long energyValue = delta * Constants.RATIO_LONG;
+        if (energyValue > Integer.MAX_VALUE)
+            energyValue = Integer.MAX_VALUE;
 
-			if (extractValue > Integer.MAX_VALUE) {
-				extractValue = Integer.MAX_VALUE;
-			}
+        if (delta < 0L) {
 
-			int extract = container.extractEnergy(safeCastLongToInt(extractValue), true);
-			extract -= extract % GAConfig.EUtoRF.RATIO;
-			return container.extractEnergy(extract, false) / Constants.RATIO_LONG;
-		}
+            int extract = container.extractEnergy(safeCastLongToInt(energyValue), true);
 
-		long receiveValue = delta * Constants.RATIO_LONG;
+            if (extract != GAConfig.EUtoRF.RATIO)
+                extract -= extract % GAConfig.EUtoRF.RATIO;
 
-		if (receiveValue > Integer.MAX_VALUE) {
-			receiveValue = Integer.MAX_VALUE;
-		}
+            return container.extractEnergy(extract, false) / Constants.RATIO_LONG;
 
-		int receive = container.receiveEnergy((int) receiveValue, true);
-		receive -= receive % GAConfig.EUtoRF.RATIO;
-		return container.receiveEnergy(receive, false) / Constants.RATIO_LONG;
-	}
+        } else {
 
-	@Nullable
-	private IEnergyStorage def() {
-		if (facesRF[6] == null) {
-			facesRF[6] = upvalue.getCapability(CapabilityEnergy.ENERGY, null);
-		}
+            int receive = container.receiveEnergy((int) energyValue, true);
 
-		return facesRF[6];
-	}
+            if (receive != GAConfig.EUtoRF.RATIO)
+                receive -= receive % GAConfig.EUtoRF.RATIO;
 
-	@Override
-	public long getEnergyCapacity() {
-		IEnergyStorage cap = getStorageCap();
+            return container.receiveEnergy(receive, false) / Constants.RATIO_LONG;
+        }
+    }
 
-		if (cap == null) {
-			return 0L;
-		}
+    @Nullable
+    private IEnergyStorage def() {
 
-		int value = cap.getMaxEnergyStored();
-		value -= value % GAConfig.EUtoRF.RATIO;
-		return value / GAConfig.EUtoRF.RATIO;
-	}
+        if (facesRF[6] == null)
+            facesRF[6] = upvalue.getCapability(CapabilityEnergy.ENERGY, null);
 
-	@Override
-	public long getEnergyStored() {
-		IEnergyStorage cap = getStorageCap();
+        return facesRF[6];
+    }
 
-		if (cap == null) {
-			return 0L;
-		}
+    @Override
+    public long getEnergyCapacity() {
+        IEnergyStorage cap = getStorageCap();
 
-		int value = cap.getEnergyStored();
-		value -= value % GAConfig.EUtoRF.RATIO;
-		return value / GAConfig.EUtoRF.RATIO;
-	}
+        if (cap == null)
+            return 0L;
 
-	@Override
-	public long getInputAmperage() {
-		IEnergyStorage container = getAcceptionCap();
+        return cap.getMaxEnergyStored() / GAConfig.EUtoRF.RATIO;
+    }
 
-		if (container == null) {
-			return 0L;
-		}
+    @Override
+    public long getEnergyStored() {
+        IEnergyStorage cap = getStorageCap();
 
-		long voltage = getInputVoltage();
+        if (cap == null)
+            return 0L;
 
-		if (voltage == GAValues.V[GAValues.V.length]) {
-			return 1L;
-		}
+        return cap.getEnergyStored() / GAConfig.EUtoRF.RATIO;
+    }
 
-		for (int index = 0; index < GAValues.V.length; index++) {
-			if (GAValues.V[index] == voltage) {
-				long voltageNext = GAValues.V[index + 1] * Constants.RATIO_LONG;
+    @Override
+    public long getInputAmperage() {
+        IEnergyStorage container = getAcceptionCap();
 
-				if (voltageNext > Integer.MAX_VALUE) {
-					voltageNext = Integer.MAX_VALUE;
-				}
+        if (container == null)
+            return 0;
 
-				int allowedInput = container.receiveEnergy(safeCastLongToInt(voltageNext), true);
+        long voltage = getInputVoltage();
 
-				if (allowedInput < voltage * Constants.RATIO_LONG) {
-					return 1L;
-				}
+        return voltage == 0 ? 0 : 2;
+    }
 
-				allowedInput -= allowedInput % voltage * Constants.RATIO_LONG;
-				return allowedInput / (voltage * Constants.RATIO_LONG);
-			}
-		}
+    @Override
+    public long getInputVoltage() {
+        IEnergyStorage container = getStorageCap();
 
-		return 1L;
-	}
+        if (container == null)
+            return 0;
 
-	@Override
-	public long getInputVoltage() {
-		IEnergyStorage container = getStorageCap();
+        long grabMaxInput = container.receiveEnergy(Integer.MAX_VALUE, true);
 
-		if (container == null) {
-			return 0L;
-		}
+        if (grabMaxInput == 0)
+            return 0;
 
-		long grabMaxInput = container.receiveEnergy(Integer.MAX_VALUE, true);
-		grabMaxInput -= grabMaxInput % Constants.RATIO_LONG;
+        grabMaxInput /= Constants.RATIO_LONG;
+        return GAValues.V[GAUtility.getTierByVoltage(grabMaxInput)];
+    }
 
-		if (grabMaxInput == 0) {
-			return 0L;
-		}
+    @Override
+    public boolean inputsEnergy(EnumFacing facing) {
 
-		grabMaxInput /= Constants.RATIO_LONG;
+        int faceID = facing == null ? 6 : facing.getIndex();
+        IEnergyStorage container = facesRF[faceID];
 
-		long value = GAValues.V[0];
+        if (container == null) {
+            container = upvalue.getCapability(CapabilityEnergy.ENERGY, facing);
+            facesRF[faceID] = container;
+        }
 
-		if (grabMaxInput < value) {
-			return 0L;
-		}
+        if (container == null)
+            return false;
 
-		for (long value2 : GAValues.V) {
-			if (value2 < grabMaxInput) {
-				break;
-			} else {
-				value = value2;
-			}
-		}
+        return container.canReceive();
+    }
 
-		return value;
-	}
-
-	@Override
-	public boolean inputsEnergy(EnumFacing facing) {
-		int faceID = facing == null ? 6 : facing.getIndex();
-		IEnergyStorage container = facesRF[faceID];
-
-		if (container == null) {
-			container = upvalue.getCapability(CapabilityEnergy.ENERGY, facing);
-			facesRF[faceID] = container;
-		}
-
-		if (container == null) {
-			return false;
-		}
-
-		return container.canReceive();
-	}
-
-	@Override
-	public boolean outputsEnergy(EnumFacing arg0) {
-		// return container.canExtract();
-		// we just want to receive energy from ENet without hacks
-		// FE based blocks will push energy on it's own to us using EnergyContainerWrapper.
-		return false;
-	}
+    /**
+     * We just want to receive energy from ENet without hacks. FE based blocks will
+     * push energy on it's own to us using {@link EnergyContainerWrapper}.
+     */
+    @Override
+    public boolean outputsEnergy(EnumFacing arg0) {
+        return false;
+    }
 }

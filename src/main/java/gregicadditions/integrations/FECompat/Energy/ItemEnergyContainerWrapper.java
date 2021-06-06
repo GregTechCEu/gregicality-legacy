@@ -6,144 +6,99 @@ import gregicadditions.GAValues;
 import gregtech.api.capability.IElectricItem;
 import net.minecraftforge.energy.IEnergyStorage;
 
+import static gregicadditions.integrations.FECompat.Constants.safeCastLongToInt;
+
 public class ItemEnergyContainerWrapper implements IEnergyStorage {
-	private final IElectricItem container;
 
-	public ItemEnergyContainerWrapper(IElectricItem container) {
-		this.container = container;
-	}
+    private final IElectricItem container;
 
-	boolean isValid() {
-		return container != null;
-	}
+    public ItemEnergyContainerWrapper(IElectricItem container) {
+        this.container = container;
+    }
 
-	private long itemVoltage() {
-		return GAValues.V[container.getTier()];
-	}
+    boolean isValid() {
+        return container != null;
+    }
 
-	private int getMaxSpeed() {
-		long result = itemVoltage() * Constants.RATIO_LONG;
+    private int getMaxSpeed() {
+        return safeCastLongToInt(GAValues.V[container.getTier()] * Constants.RATIO_LONG);
+    }
 
-		if (result > Integer.MAX_VALUE) {
-			return Integer.MAX_VALUE;
-		}
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
 
-		return (int) result;
-	}
+        // Assuming we hit Mekanism or EnderIO Charger
+        if (maxReceive == 1 && simulate)
+            maxReceive = Integer.MAX_VALUE;
 
-	@Override
-	public int receiveEnergy(int maxReceive, boolean simulate) {
-		/* if (!canReceive()) {
-			return 0;
-		}
+        int speed = getMaxSpeed();
 
-		if (container.getMaxCharge() <= 0) {
-			return 0;
-		} */
+        if (maxReceive > speed)
+            maxReceive = speed;
 
-		if (maxReceive == 1 && simulate) {
-			// assuming we hit mekanism or enderio charger
-			maxReceive = Integer.MAX_VALUE;
-		}
+        if (maxReceive != GAConfig.EUtoRF.RATIO)
+            maxReceive -= maxReceive % GAConfig.EUtoRF.RATIO;
 
-		int speed = getMaxSpeed();
+        if (maxReceive <= 0)
+            return 0;
 
-		if (maxReceive > speed) {
-			maxReceive = speed;
-		}
+        long simulated = container.charge(maxReceive / Constants.RATIO_LONG, Integer.MAX_VALUE, false, true);
 
-		maxReceive -= maxReceive % GAConfig.EUtoRF.RATIO;
+        if (simulated < 0)
+            return 0;
 
-		if (maxReceive <= 0) {
-			return 0;
-		}
+        if (!simulate)
+            container.charge(simulated, Integer.MAX_VALUE, false, false);
 
-		long simulated = container.charge(maxReceive / Constants.RATIO_LONG, Integer.MAX_VALUE, false, true);
+        return safeCastLongToInt(simulated * Constants.RATIO_LONG);
+    }
 
-		if (simulated < 0L) {
-		// if (simulated < 0L || simulated < itemVoltage()) {
-			return 0;
-		}
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate) {
 
-		if (!simulate) {
-			container.charge(simulated, Integer.MAX_VALUE, false, false);
-		}
+        // Assuming we hit Mekanism
+        if (maxExtract == 1 && simulate)
+            maxExtract = Integer.MAX_VALUE;
 
-		return (int) (simulated * Constants.RATIO_LONG);
-	}
+        int speed = getMaxSpeed();
 
-	@Override
-	public int extractEnergy(int maxExtract, boolean simulate) {
-		/* if (!canExtract()) {
-			return 0;
-		}
+        if (maxExtract > speed)
+            maxExtract = speed;
 
-		if (container.getMaxCharge() <= 0) {
-			return 0;
-		} */
+        if (maxExtract != GAConfig.EUtoRF.RATIO)
+            maxExtract -= maxExtract % GAConfig.EUtoRF.RATIO;
 
-		if (maxExtract == 1 && simulate) {
-			// assuming we hit mekanism
-			maxExtract = Integer.MAX_VALUE;
-		}
+        if (maxExtract <= 0)
+            return 0;
 
-		int speed = getMaxSpeed();
+        long simulated = container.discharge(maxExtract / Constants.RATIO_LONG, Integer.MAX_VALUE, false, true, true);
 
-		if (maxExtract > speed) {
-			maxExtract = speed;
-		}
+        if (simulated < 0L)
+            return 0;
 
-		maxExtract -= maxExtract % GAConfig.EUtoRF.RATIO;
+        if (!simulate)
+            container.discharge(simulated, Integer.MAX_VALUE, false, true, false);
 
-		if (maxExtract <= 0) {
-			return 0;
-		}
+        return safeCastLongToInt(simulated * Constants.RATIO_LONG);
+    }
 
-		long simulated = container.discharge(maxExtract / Constants.RATIO_LONG, Integer.MAX_VALUE, false, true, true);
+    @Override
+    public int getEnergyStored() {
+        return safeCastLongToInt(container.getCharge());
+    }
 
-		if (simulated < 0L) {
-		// if (simulated < 0L || simulated < itemVoltage()) {
-			return 0;
-		}
+    @Override
+    public int getMaxEnergyStored() {
+        return safeCastLongToInt(container.getMaxCharge());
+    }
 
-		if (!simulate) {
-			container.discharge(simulated, Integer.MAX_VALUE, false, true, false);
-		}
+    @Override
+    public boolean canExtract() {
+        return container.canProvideChargeExternally();
+    }
 
-		return (int) (simulated * Constants.RATIO_LONG);
-	}
-
-	// IElectricItem has no interface for getting current charge
-	// using workaround
-	@Override
-	public int getEnergyStored() {
-		long value = container.getCharge();
-
-		if (value >= Constants.MAX_VALUE_AS_LONG || value > Constants.OVERFLOW_CHECK) {
-			return Integer.MAX_VALUE;
-		}
-
-		return (int) (value * Constants.RATIO_LONG);
-	}
-
-	@Override
-	public int getMaxEnergyStored() {
-		long value = container.getMaxCharge();
-
-		if (value >= Constants.MAX_VALUE_AS_LONG || value > Constants.OVERFLOW_CHECK) {
-			return Integer.MAX_VALUE;
-		}
-
-		return (int) (value * Constants.RATIO_LONG);
-	}
-
-	@Override
-	public boolean canExtract() {
-		return container.canProvideChargeExternally();
-	}
-
-	@Override
-	public boolean canReceive() {
-		return container.charge(container.getTransferLimit(), Integer.MAX_VALUE, true, true) != 0L;
-	}
+    @Override
+    public boolean canReceive() {
+        return container.charge(container.getTransferLimit(), Integer.MAX_VALUE, true, true) != 0;
+    }
 }

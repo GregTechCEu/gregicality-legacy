@@ -7,53 +7,68 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 
+import javax.annotation.Nonnull;
+
 public class EnergyProviderItem implements ICapabilityProvider {
-	private final ItemStack upvalue;
-	private ItemEnergyContainerWrapper rfwrapper;
-	private GregicEnergyContainerWrapper wrapper;
-	private final boolean valid;
 
-	public EnergyProviderItem(ItemStack entCap) {
-		upvalue = entCap;
+    private final ItemStack upvalue;
+    private ItemEnergyContainerWrapper rfWrapper;
+    private GregicItemContainerWrapper gtWrapper;
+    private final boolean valid;
 
-		valid = entCap.getCount() == 1;
-	}
+    public EnergyProviderItem(ItemStack entCap) {
+        upvalue = entCap;
+        valid = entCap.getCount() == 1;
+    }
 
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (!valid) {
-			return false;
-		}
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 
-		if (capability == CapabilityEnergy.ENERGY) {
-			if (rfwrapper == null) {
-				rfwrapper = new ItemEnergyContainerWrapper(upvalue.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null));
-			}
+        if (!valid)
+            return false;
 
-			return rfwrapper.isValid();
-		}
+        if (capability == CapabilityEnergy.ENERGY) {
 
-		return false;
-	}
+            if (rfWrapper == null)
+                rfWrapper = new ItemEnergyContainerWrapper(upvalue.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null));
 
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (!hasCapability(capability, facing)) {
-			return null;
-		}
+            return rfWrapper.isValid();
+        }
+        // TODO
+        else if (capability == GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM) {
 
-		if (capability == CapabilityEnergy.ENERGY) {
-			if (rfwrapper == null) {
-				rfwrapper = new ItemEnergyContainerWrapper(upvalue.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null));
-			}
+            if (gtWrapper == null)
+                gtWrapper = new GregicItemContainerWrapper(upvalue.getCapability(CapabilityEnergy.ENERGY, null));
 
-			if (rfwrapper.isValid()) {
-				return (T) rfwrapper;
-			}
+            return gtWrapper.isValid();
+        }
 
-			return null;
-		}
+        return false;
+    }
 
-		return null;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
+
+        if (!hasCapability(capability, facing))
+            return null;
+
+        if (capability == CapabilityEnergy.ENERGY) {
+
+            if (rfWrapper == null)
+                rfWrapper = new ItemEnergyContainerWrapper(upvalue.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null));
+
+            if (rfWrapper.isValid())
+                return (T) rfWrapper;
+
+        } else if (capability == GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM) {
+
+            if (gtWrapper == null)
+                gtWrapper = new GregicItemContainerWrapper(upvalue.getCapability(CapabilityEnergy.ENERGY, null));
+
+            if (gtWrapper.isValid())
+                return (T) gtWrapper;
+        }
+        return null;
+    }
 }
