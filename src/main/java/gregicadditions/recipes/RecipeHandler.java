@@ -973,7 +973,7 @@ public class RecipeHandler {
     /**
      * Small Gear Material Handler. Generates:
      *
-     * + GT5U Crafting Table Recipe, if enabled
+     * + Harder Small Gear Crafting Table Recipe
      * + Extruder Recipe for Small Gears
      * + Lossy Small Gear recipe in Alloy Smelter (similar to normal Gears)
      *
@@ -983,14 +983,11 @@ public class RecipeHandler {
 
         if (material.hasFlag(GENERATE_SMALL_GEAR)) {
 
-            if (GAConfig.GT5U.smallGearGT5U) {
-
-                removeRecipeByName(String.format("gtadditions:small_gear_%s", material.toString()));
-                ModHandler.addShapedRecipe(String.format("small_gear_%s", material.toString()), OreDictUnifier.get(gearSmall, material),
-                        " R ", "hPx", " R ",
-                        'R', new UnificationEntry(stick, material),
-                        'P', new UnificationEntry(plate, material));
-            }
+            removeRecipeByName(String.format("gtadditions:small_gear_%s", material.toString()));
+            ModHandler.addShapedRecipe(String.format("small_gear_%s", material.toString()), OreDictUnifier.get(gearSmall, material),
+                    " R ", "hPx", " R ",
+                    'R', new UnificationEntry(stick, material),
+                    'P', new UnificationEntry(plate, material));
 
             removeRecipesByInputs(FORGE_HAMMER_RECIPES, OreDictUnifier.get(plate, material, 2));
             EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
