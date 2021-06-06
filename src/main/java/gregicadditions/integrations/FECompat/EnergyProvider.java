@@ -1,7 +1,6 @@
 package gregicadditions.integrations.FECompat;
 
 import gregicadditions.GAConfig;
-import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregtech.api.capability.GregtechCapabilities;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -49,6 +48,7 @@ public class EnergyProvider implements ICapabilityProvider {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
 
         if (!GAConfig.EUtoRF.enableNativeEUtoRF)

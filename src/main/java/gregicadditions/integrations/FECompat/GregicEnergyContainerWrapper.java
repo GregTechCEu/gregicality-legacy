@@ -61,7 +61,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         return container;
     }
 
-    private IEnergyStorage getAcceptionCap() {
+    private IEnergyStorage getAcceptingCap() {
 
         IEnergyStorage container = def();
 
@@ -249,7 +249,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
     @Override
     public long getInputAmperage() {
-        IEnergyStorage container = getAcceptionCap();
+        IEnergyStorage container = getAcceptingCap();
 
         if (container == null)
             return 0;
@@ -266,13 +266,13 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (container == null)
             return 0;
 
-        long grabMaxInput = container.receiveEnergy(Integer.MAX_VALUE, true);
+        long maxInput = container.receiveEnergy(Integer.MAX_VALUE, true);
 
-        if (grabMaxInput == 0)
+        if (maxInput == 0)
             return 0;
 
-        grabMaxInput /= EnergyProvider.RATIO_LONG;
-        return GAValues.V[GAUtility.getTierByVoltage(grabMaxInput)];
+        maxInput /= EnergyProvider.RATIO_LONG;
+        return GAValues.V[GAUtility.getTierByVoltage(maxInput)];
     }
 
     @Override
