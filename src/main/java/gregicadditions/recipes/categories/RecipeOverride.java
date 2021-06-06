@@ -1038,6 +1038,13 @@ public class RecipeOverride {
                 }
             }
         }
+
+        // Steel Fluid Extraction (to allow automation of Small Steel Gears at LV)
+        removeRecipesByInputs(FLUID_EXTRACTION_RECIPES, OreDictUnifier.get(ingot, Steel));
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(30).duration(80)
+                .input(ingot, Steel)
+                .fluidOutputs(Steel.getFluid(L))
+                .buildAndRegister();
     }
 
     private static void recipeRemoval() {
