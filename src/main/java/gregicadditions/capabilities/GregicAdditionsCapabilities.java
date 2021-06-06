@@ -1,10 +1,8 @@
 package gregicadditions.capabilities;
 
 import gregicadditions.Gregicality;
-import gregicadditions.integrations.FECompat.Energy.EnergyProvider;
-import gregicadditions.integrations.FECompat.Energy.EnergyProviderItem;
+import gregicadditions.integrations.FECompat.EnergyProvider;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
@@ -37,10 +35,5 @@ public class GregicAdditionsCapabilities {
     @SubscribeEvent
     public static void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
         event.addCapability(CAPABILITY_EU_TO_RF, new EnergyProvider(event.getObject()));
-    }
-
-    @SubscribeEvent
-    public static void attachItemCapability(AttachCapabilitiesEvent<ItemStack> event) {
-        event.addCapability(CAPABILITY_EU_TO_RF, new EnergyProviderItem(event.getObject()));
     }
 }

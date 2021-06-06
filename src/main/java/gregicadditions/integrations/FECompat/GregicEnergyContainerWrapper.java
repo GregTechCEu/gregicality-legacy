@@ -1,4 +1,4 @@
-package gregicadditions.integrations.FECompat.Energy;
+package gregicadditions.integrations.FECompat;
 
 import javax.annotation.Nullable;
 
@@ -10,9 +10,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-import gregicadditions.integrations.FECompat.Constants;
 
-import static gregicadditions.integrations.FECompat.Constants.safeCastLongToInt;
+import static gregicadditions.integrations.FECompat.EnergyProvider.safeCastLongToInt;
 
 public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
@@ -21,11 +20,11 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
     private int rfBuffer = 0;
 
-    public GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
+    protected GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
         this.upvalue = upvalue;
     }
 
-    boolean isValid(EnumFacing face) {
+    protected boolean isValid(EnumFacing face) {
 
         if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face))
             return true;
@@ -121,7 +120,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
             }
         }
 
-        long maxPacket = voltage * Constants.RATIO_LONG;
+        long maxPacket = voltage * EnergyProvider.RATIO_LONG;
         long maximalValue = maxPacket * amperage;
 
         // Try to consume our remainder buffer plus a fresh packet
@@ -195,7 +194,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (container == null || delta == 0)
             return 0;
 
-        long energyValue = delta * Constants.RATIO_LONG;
+        long energyValue = delta * EnergyProvider.RATIO_LONG;
         if (energyValue > Integer.MAX_VALUE)
             energyValue = Integer.MAX_VALUE;
 
@@ -206,7 +205,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
             if (extract != GAConfig.EUtoRF.RATIO)
                 extract -= extract % GAConfig.EUtoRF.RATIO;
 
-            return container.extractEnergy(extract, false) / Constants.RATIO_LONG;
+            return container.extractEnergy(extract, false) / EnergyProvider.RATIO_LONG;
 
         } else {
 
@@ -215,7 +214,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
             if (receive != GAConfig.EUtoRF.RATIO)
                 receive -= receive % GAConfig.EUtoRF.RATIO;
 
-            return container.receiveEnergy(receive, false) / Constants.RATIO_LONG;
+            return container.receiveEnergy(receive, false) / EnergyProvider.RATIO_LONG;
         }
     }
 
@@ -272,7 +271,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (grabMaxInput == 0)
             return 0;
 
-        grabMaxInput /= Constants.RATIO_LONG;
+        grabMaxInput /= EnergyProvider.RATIO_LONG;
         return GAValues.V[GAUtility.getTierByVoltage(grabMaxInput)];
     }
 
@@ -295,10 +294,15 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
     /**
      * We just want to receive energy from ENet without hacks. FE based blocks will
-     * push energy on it's own to us using {@link EnergyContainerWrapper}.
+     * push energy on it's own to us using EnergyContainerWrapper.
      */
     @Override
-    public boolean outputsEnergy(EnumFacing arg0) {
+    public boolean outputsEnergy(EnumFacing facing) {
         return false;
+    }
+
+    @Override
+    public boolean isOneProbeHidden() {
+        return true;
     }
 }
