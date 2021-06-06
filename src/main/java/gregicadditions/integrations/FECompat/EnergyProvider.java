@@ -31,6 +31,9 @@ public class EnergyProvider implements ICapabilityProvider {
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 
+        if (!GAConfig.EUtoRF.enableNativeEUtoRF)
+            return false;
+
         if (gettingValue || (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER))
             return false;
 
@@ -47,6 +50,9 @@ public class EnergyProvider implements ICapabilityProvider {
 
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
+
+        if (!GAConfig.EUtoRF.enableNativeEUtoRF)
+            return null;
 
         if (gettingValue || !hasCapability(capability, facing))
             return null;

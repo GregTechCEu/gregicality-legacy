@@ -26,6 +26,9 @@ public class GAConfig {
     public static EUtoRF EUtoRF = new EUtoRF();
 
     public static class EUtoRF {
+        @Config.Comment("Enable Native EU to RF via GT cables and wires")
+        public boolean enableNativeEUtoRF = true;
+
         @Config.Comment("Ratio of the Conversion")
         @Config.Name("Ratio 1EU to XRF")
         public int RATIO = 4;
