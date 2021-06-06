@@ -975,6 +975,7 @@ public class RecipeHandler {
      *
      * + GT5U Crafting Table Recipe, if enabled
      * + Extruder Recipe for Small Gears
+     * + Lossy Small Gear recipe in Alloy Smelter (similar to normal Gears)
      *
      * - Removes Forge Hammer Recipe for Small Gears
      */
