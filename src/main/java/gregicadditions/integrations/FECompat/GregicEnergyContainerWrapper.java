@@ -30,7 +30,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
      * on the conversion to RF. This is hidden from the player, but ensures that no energy
      * is ever lost on conversion, no matter the voltage tier or RF storage abilities.
      */
-    private int rfBuffer = 0;
+    private long rfBuffer = 0;
 
     protected GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
         this.upvalue = upvalue;
@@ -120,7 +120,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         // Try to use the internal buffer before consuming a new packet
         if (rfBuffer > 0) {
 
-            receive = container.receiveEnergy(rfBuffer, true);
+            receive = container.receiveEnergy(safeCastLongToInt(rfBuffer), true);
 
             if (receive == 0)
                 return 0;
@@ -133,7 +133,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
             // Buffer could not provide max value, save the remainder and continue processing
             } else {
-                receive = rfBuffer;
+                receive = safeCastLongToInt(rfBuffer);
                 rfBuffer = 0;
             }
         }
