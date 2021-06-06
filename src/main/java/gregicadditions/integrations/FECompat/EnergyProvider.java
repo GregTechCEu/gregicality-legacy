@@ -12,19 +12,23 @@ import javax.annotation.Nonnull;
 
 public class EnergyProvider implements ICapabilityProvider {
 
-    private final TileEntity upvalue;
+    private final TileEntity tileEntity;
     private GregicEnergyContainerWrapper wrapper;
 
+    /**
+     * Long value of the EU to RF ratio, to not need to cast as often.
+     */
     public static final long RATIO_LONG = GAConfig.EUtoRF.RATIO;
 
     /**
      * "Atomic" boolean to prevent hasCapability and getCapability from colliding.
-     * Not sure if this is necessary
+     * Not sure if this is necessary, or if it could be implemented properly
+     * with an AtomicBoolean instead.
      */
     private boolean gettingValue = false;
 
-    public EnergyProvider(TileEntity entCap) {
-        upvalue = entCap;
+    public EnergyProvider(TileEntity tileEntity) {
+        this.tileEntity = tileEntity;
     }
 
     @Override
@@ -37,8 +41,7 @@ public class EnergyProvider implements ICapabilityProvider {
             return false;
 
         // Wrap RF Machines with a GTEU EnergyContainer
-        if (wrapper == null)
-            wrapper = new GregicEnergyContainerWrapper(upvalue);
+        if (wrapper == null) wrapper = new GregicEnergyContainerWrapper(tileEntity);
 
         gettingValue = true;
         boolean result = wrapper.isValid(facing);
@@ -57,8 +60,7 @@ public class EnergyProvider implements ICapabilityProvider {
         if (gettingValue || !hasCapability(capability, facing))
             return null;
 
-        if (wrapper == null)
-            wrapper = new GregicEnergyContainerWrapper(upvalue);
+        if (wrapper == null) wrapper = new GregicEnergyContainerWrapper(tileEntity);
 
         gettingValue = true;
 
@@ -69,9 +71,5 @@ public class EnergyProvider implements ICapabilityProvider {
 
         gettingValue = false;
         return null;
-    }
-
-    public static int safeCastLongToInt(long v) {
-        return v > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) v;
     }
 }

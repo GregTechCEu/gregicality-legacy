@@ -11,25 +11,43 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-import static gregicadditions.integrations.FECompat.EnergyProvider.safeCastLongToInt;
+import static gregicadditions.GAUtility.safeCastLongToInt;
 
 public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
+    /**
+     * Capability Provider for the EU-capability.
+     */
     private final ICapabilityProvider upvalue;
+
+    /**
+     * Capability holder for the RF-capability.
+     */
     private final IEnergyStorage[] facesRF = new IEnergyStorage[7];
 
+    /**
+     * Internally used RF Buffer so that a very large packet of EU is not partially destroyed
+     * on the conversion to RF. This is hidden from the player, but ensures that no energy
+     * is ever lost on conversion, no matter the voltage tier or RF storage abilities.
+     */
     private int rfBuffer = 0;
 
     protected GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
         this.upvalue = upvalue;
     }
 
-    protected boolean isValid(EnumFacing face) {
+    /**
+     * Test this EnergyContainer for sided Capabilities.
+     *
+     * @param side The side of the TileEntity to test for the Capability
+     * @return True if side has Capability, false otherwise
+     */
+    protected boolean isValid(EnumFacing side) {
 
-        if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face))
+        if (upvalue.hasCapability(CapabilityEnergy.ENERGY, side))
             return true;
 
-        if (face == null) {
+        if (side == null) {
             for (EnumFacing face2 : EnumFacing.VALUES) {
                 if (upvalue.hasCapability(CapabilityEnergy.ENERGY, face2)) {
                     return true;
@@ -293,14 +311,18 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     }
 
     /**
-     * We just want to receive energy from ENet without hacks. FE based blocks will
-     * push energy on it's own to us using EnergyContainerWrapper.
+     * Wrapped RF-consumers should not be able to output EU.
      */
     @Override
     public boolean outputsEnergy(EnumFacing facing) {
         return false;
     }
 
+    /**
+     * Hide this TileEntity EU-capability in TOP. Allows RF-machines to
+     * "silently" accept EU without showing their charge in EU in TOP.
+     * Let the machine display it in RF instead, however it chooses to.
+     */
     @Override
     public boolean isOneProbeHidden() {
         return true;
