@@ -59,6 +59,9 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
+        @Config.Comment("Change the manual recipe of Small Gears to be more expensive")
+        public boolean smallGearGT5U = true;
+
         @Config.Comment("Various 2x2 and 3x3 Compression and Uncompression Recipes")
         @Config.Name("Compression - Generate Compressor Recipes for blocks")
         public boolean GenerateCompressorRecipes = true;
