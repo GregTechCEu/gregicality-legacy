@@ -197,6 +197,7 @@ public class RecipeHandler {
      * + Mixer Recipes for GTCE Materials we add
      * + Bending Cylinder Recipes
      * + GT6 Wrench Recipes (plates over ingots)
+     * + Ingot -> Nugget Alloy Smelter recipes
      */
     private static void processIngot(OrePrefix ingot, IngotMaterial material) {
 
@@ -228,6 +229,12 @@ public class RecipeHandler {
                         'X', new UnificationEntry(ingot, material));
             }
         }
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(8).duration((int) material.getAverageMass())
+                .input(ingot, material)
+                .notConsumable(MetaItems.SHAPE_MOLD_NUGGET.getStackForm())
+                .output(nugget, material, 9)
+                .buildAndRegister();
     }
 
     /**
@@ -427,26 +434,20 @@ public class RecipeHandler {
     /**
      * Nugget Material Handler. Generates:
      *
-     * + Schematic Packing and Unpacking Recipes instead of Integrated Circuits
+     * + Ingot -> Nugget Alloy Smelter Recipes
+     *
+     * - GTCE Packer / Unpacker recipes, to be registered elsewhere if configured.
      */
     private static void processNugget(OrePrefix nugget, IngotMaterial material) {
 
-        // Packer
+        // Packer / Unpacker removal, to be readded elsewhere depending on Config settings
         removeRecipesByInputs(PACKER_RECIPES, OreDictUnifier.get(nugget, material, 9), getIntegratedCircuit(1));
-
-        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                .input(nugget, material, 9)
-                .notConsumable(SCHEMATIC_3X3.getStackForm())
-                .output(ingot, material)
-                .buildAndRegister();
-
-        // Unpacker
         removeRecipesByInputs(UNPACKER_RECIPES, OreDictUnifier.get(ingot, material, 1), getIntegratedCircuit(1));
 
-        UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                .input(ingot, material)
-                .notConsumable(SCHEMATIC_3X3.getStackForm())
-                .output(nugget, material, 9)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(8).duration((int) material.getAverageMass())
+                .input(nugget, material, 9)
+                .notConsumable(MetaItems.SHAPE_MOLD_INGOT.getStackForm())
+                .output(ingot, material)
                 .buildAndRegister();
     }
 
