@@ -971,31 +971,32 @@ public class RecipeOverride {
                 'R', new UnificationEntry(ring, Iron));
 
         // Glowstone / Nether Quartz Block Recipes
-        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+        if (GAConfig.GT5U.Remove3x3BlockRecipes) {
             removeRecipeByName("minecraft:glowstone");
             removeRecipeByName("minecraft:quartz_block");
             removeRecipeByName("gregtech:nether_quartz_block_to_nether_quartz");
-
-            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
-                    .input(block, NetherQuartz)
-                    .output(gem, NetherQuartz, 4)
-                    .buildAndRegister();
-
-            MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
-                    .input(block, Glowstone)
-                    .output(dust, Glowstone, 4)
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
-                    .input(gem, NetherQuartz, 4)
-                    .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
-                    .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
-                    .outputs(new ItemStack(Blocks.GLOWSTONE))
-                    .buildAndRegister();
         }
+
+        FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, NetherQuartz)
+                .output(gem, NetherQuartz, 4)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, Glowstone)
+                .output(dust, Glowstone, 4)
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                .input(gem, NetherQuartz, 4)
+                .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
+                .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
+                .outputs(new ItemStack(Blocks.GLOWSTONE))
+                .buildAndRegister();
+
 
         // Glowstone Recipes
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
