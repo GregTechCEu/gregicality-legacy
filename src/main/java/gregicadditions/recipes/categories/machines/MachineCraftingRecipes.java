@@ -158,6 +158,7 @@ public class MachineCraftingRecipes {
         OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
         // Drums
         ModHandler.addShapedRecipe("wooden_barrel", GATileEntities.WOODEN_DRUM.getStackForm(), "rSs", "PRP", "PRP", 'S', Items.SLIME_BALL, 'P', "plankWood", 'R', new UnificationEntry(stickLong, Iron));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(30).duration(200).inputs(new ItemStack(Blocks.PLANKS, 4, GTValues.W)).inputs(new ItemStack(Items.SLIME_BALL)).input(stickLong, Iron, 2).outputs(GATileEntities.WOODEN_DRUM.getStackForm()).circuitMeta(1).buildAndRegister();
 
         ModHandler.addShapedRecipe("bronze_drum",          GATileEntities.BRONZE_DRUM.getStackForm(),          " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
         ModHandler.addShapedRecipe("steel_drum",           GATileEntities.STEEL_DRUM.getStackForm(),           " h ", "PRP", "PRP", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
@@ -172,6 +173,7 @@ public class MachineCraftingRecipes {
 
         // Crates
         ModHandler.addShapedRecipe("wooden_crate", GATileEntities.WOODEN_CRATE.getStackForm(), "RPR", "PsP", "RPR", 'P', "plankWood", 'R', new UnificationEntry(screw, Iron));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(30).duration(200).inputs(new ItemStack(Blocks.PLANKS, 4, GTValues.W)).input(screw, Iron, 4).outputs(GATileEntities.WOODEN_CRATE.getStackForm()).circuitMeta(2).buildAndRegister();
 
         ModHandler.addShapedRecipe("bronze_crate",          GATileEntities.BRONZE_CRATE.getStackForm(),          "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Bronze),         'R', new UnificationEntry(stickLong, Bronze));
         ModHandler.addShapedRecipe("steel_crate",           GATileEntities.STEEL_CRATE.getStackForm(),           "RPR", "PhP", "RPR", 'P', new UnificationEntry(plateOrCurved, Steel),          'R', new UnificationEntry(stickLong, Steel));
