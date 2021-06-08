@@ -1585,6 +1585,8 @@ public class GAMaterials implements IMaterialHandler {
         OrePrefix.dustTiny.setIgnored(Snow);
 
         Magnetite.setDirectSmelting(Iron);
+        BasalticMineralSand.setDirectSmelting(Iron);
+        GraniticMineralSand.setDirectSmelting(Iron);
 
         Duranium.addFlag(GENERATE_FOIL);
         Graphene.addFlag(GENERATE_FOIL);
