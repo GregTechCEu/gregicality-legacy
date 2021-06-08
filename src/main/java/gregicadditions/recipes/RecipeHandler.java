@@ -3,7 +3,6 @@ package gregicadditions.recipes;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMetaItems;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
@@ -504,7 +503,7 @@ public class RecipeHandler {
 
                 removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material), getIntegratedCircuit(0));
 
-                CLUSTER_MILL_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass())
+                CLUSTER_MILL_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
                         .input(plate, material)
                         .output(foil, material, 4)
                         .buildAndRegister();
@@ -569,7 +568,7 @@ public class RecipeHandler {
                     'P', new UnificationEntry(plate, material));
         }
 
-        BENDER_RECIPES.recipeBuilder().EUt(30).duration(200)
+        BENDER_RECIPES.recipeBuilder().EUt(30).duration((int) material.getAverageMass())
                 .input(plate, material, 2)
                 .output(doublePlate, material)
                 .circuitMeta(2)
@@ -588,7 +587,7 @@ public class RecipeHandler {
                 .fluidOutputs(material.getFluid(L * 2))
                 .buildAndRegister();
 
-        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(16)
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(120)
                 .input(doublePlate, material)
                 .output(ingot, material.arcSmeltInto == null ? material : material.arcSmeltInto, 2)
                 .buildAndRegister();
@@ -604,12 +603,12 @@ public class RecipeHandler {
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(ingot, material, 9), getIntegratedCircuit(5));
         removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material, 9), getIntegratedCircuit(2));
 
-        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 4).EUt(96)
+        BENDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass() * 4).EUt(96)
                 .input(plate, material, 9)
                 .output(densePlate, material, 1)
                 .circuitMeta(9)
                 .buildAndRegister();
-        BENDER_RECIPES.recipeBuilder().duration((int) material.getMass() * 9).EUt(96)
+        BENDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass() * 9).EUt(96)
                 .input(ingot, material, 9)
                 .output(densePlate, material, 1)
                 .circuitMeta(9)
@@ -649,13 +648,13 @@ public class RecipeHandler {
                     'C', new UnificationEntry(plateCurved, material));
         }
 
-        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass())
+        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
                 .input(plate, material)
                 .circuitMeta(1)
                 .output(plateCurved, material)
                 .buildAndRegister();
 
-        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getMass())
+        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
                 .input(plateCurved, material)
                 .circuitMeta(0)
                 .output(plate, material)
@@ -956,14 +955,13 @@ public class RecipeHandler {
     private static void processSpringSmall(OrePrefix prefix, IngotMaterial material) {
 
         if (material.cableProperties != null)
-            removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(wireGtSingle, material)); // todo double check that this works
-
+            removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(wireGtSingle, material));
 
         ModHandler.addShapedRecipe(String.format("spring_small_%s", material.toString()), OreDictUnifier.get(springSmall, material),
                 " s ", "fRx",
                 'R', new UnificationEntry(stick, material));
 
-        BENDER_RECIPES.recipeBuilder().duration(100).EUt(8)
+        BENDER_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() / 2)).EUt(8)
                 .input(stick, material)
                 .output(springSmall, material, 2)
                 .circuitMeta(1)
