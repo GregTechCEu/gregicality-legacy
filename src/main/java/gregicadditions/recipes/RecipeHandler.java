@@ -1109,6 +1109,7 @@ public class RecipeHandler {
                 .input(dust, Tin, 9)
                 .input(dust, Antimony)
                 .fluidOutputs(SolderingAlloy.getFluid(L * 10))
+                .notConsumable(new IntCircuitIngredient(10))
                 .buildAndRegister();
 
         // Red Alloy
@@ -1130,12 +1131,14 @@ public class RecipeHandler {
                 .input(dust, Tin)
                 .input(dust, Iron)
                 .fluidOutputs(TinAlloy.getFluid(L * 2))
+                .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
         BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
                 .input(dust, Tin)
                 .input(dust, WroughtIron)
                 .fluidOutputs(TinAlloy.getFluid(L * 2))
+                .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
         // Battery Alloy
@@ -1143,6 +1146,7 @@ public class RecipeHandler {
                 .input(dust, Lead, 4)
                 .input(dust, Antimony)
                 .fluidOutputs(BatteryAlloy.getFluid(L * 5))
+                .notConsumable(new IntCircuitIngredient(5))
                 .buildAndRegister();
 
         // Reactor Steel
