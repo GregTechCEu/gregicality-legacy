@@ -273,54 +273,35 @@ public class HelperMethods {
     }
 
     /**
-     * Tests if a Crafting Table Recipe contains only one unique input Ingredient.
+     * Tests if a Crafting Table recipe has only one unique Item input.
      *
      * @param recipe The Recipe to check.
-     *
-     * @return true if only one unique input Ingredient, false otherwise.
+     * @return An int, being -1 if multiple input items, or [1, 9] if
+     *         only one unique input Item, meaning the number of input items in the recipe.
      */
-    public static boolean isSingleIngredient(IRecipe recipe) {
+    public static int getSingleInputCount(IRecipe recipe) {
 
         int recipeSize = recipe.getIngredients().size();
         ItemStack topLeft = getTopLeft(recipe);
 
-        if (recipeSize == 0)
-            return false;
+        if (recipe.getRecipeOutput().isEmpty())
+            return -1;
 
         if (topLeft == null)
-            return false;
+            return -1;
+
+        if (recipeSize == 0)
+            return -1;
 
         if (recipeSize == 1)
-            return true;
+            return 1;
 
         for (int i = 1; i < recipeSize; i++) {
             ItemStack input = getRecipeInput(recipe, i);
             if (input == null || !topLeft.isItemEqual(input))
-                return false;
+                return -1;
         }
-        return true;
-    }
-
-    /**
-     * Tests if a Recipe's output is one of the specified Blocks.
-     * An example of how to use it:
-     *
-     * <cr>
-     *     outputIsNot(recipe, Blocks.AIR, Blocks.SLIME_BLOCK)
-     * </cr>
-     *
-     * @param recipe The Recipe to test.
-     * @param blocks The Block[] array to test on the Recipe output.
-     *
-     *
-     * @return true if output does not contain one of those Blocks, false otherwise.
-     */
-    public static boolean outputIsNot(IRecipe recipe, Block... blocks) {
-        for (Block block : blocks) {
-            if (Block.getBlockFromItem(recipe.getRecipeOutput().getItem()) == block)
-                return false;
-        }
-        return true;
+        return recipeSize;
     }
 
     /**
@@ -335,7 +316,13 @@ public class HelperMethods {
         return getRecipeInput(recipe, 0);
     }
 
-    // TODO comment
+    /**
+     * Returns the ItemStack at the specified index of the Shaped Crafting Recipe.
+     *
+     * @param recipe The Recipe to check.
+     * @param index  The index of the recipe grid.
+     * @return The ItemStack at specified index, or null if none or invalid parameters.
+     */
     public static ItemStack getRecipeInput(IRecipe recipe, int index) {
 
         if (recipe == null)
@@ -424,7 +411,7 @@ public class HelperMethods {
      *
      * @return true if ItemStack has prefix, false otherwise.
      */
-    public static boolean hasPrefix(ItemStack stack, String prefix, String... ignore) {
+    public static boolean hasOrePrefix(ItemStack stack, String prefix, String... ignore) {
         for (int i : OreDictionary.getOreIDs(stack)) {
             if (OreDictionary.getOreName(i).startsWith(prefix)) {
                 boolean valid = true;

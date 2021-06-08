@@ -487,6 +487,7 @@ public class GAMetaItem extends MaterialMetaItem {
         KAPTON_CIRCUIT_BOARD = addItem(585, "board_circuit.kapton");
 
         SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
+        SHAPE_EXTRUDER_ROTOR = addItem(587, "shape.extruder.rotor");
 
         FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(587, "fullerene.polymer.matrix.soft.tubing");
         FULLERENE_POLYMER_MATRIX_FINE_TUBING = addItem(588, "fullerene.polymer.matrix.fine.tubing");

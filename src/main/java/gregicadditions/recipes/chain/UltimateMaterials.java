@@ -23,188 +23,188 @@ public class UltimateMaterials {
     public static void init() {
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(270).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Ruthenium),
-                        OreDictUnifier.get(dust, Rhodium),
-                        OreDictUnifier.get(dust, Palladium),
-                        OreDictUnifier.get(dust, Silver),
-                        OreDictUnifier.get(dust, Rhenium),
-                        OreDictUnifier.get(dust, Osmium),
-                        OreDictUnifier.get(dust, Iridium),
-                        OreDictUnifier.get(dust, Platinum),
-                        OreDictUnifier.get(dust, Gold))
+                .inputs(OreDictUnifier.get(dust, Ruthenium))
+                .inputs(OreDictUnifier.get(dust, Rhodium))
+                .inputs(OreDictUnifier.get(dust, Palladium))
+                .inputs(OreDictUnifier.get(dust, Silver))
+                .inputs(OreDictUnifier.get(dust, Rhenium))
+                .inputs(OreDictUnifier.get(dust, Osmium))
+                .inputs(OreDictUnifier.get(dust, Iridium))
+                .inputs(OreDictUnifier.get(dust, Platinum))
+                .inputs(OreDictUnifier.get(dust, Gold))
                 .outputs(PreciousMetals.getItemStack(9))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(210).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Zirconium),
-                        OreDictUnifier.get(dust, Hafnium),
-                        OreDictUnifier.get(dust, Niobium),
-                        OreDictUnifier.get(dust, Tantalum),
-                        OreDictUnifier.get(dust, Molybdenum),
-                        OreDictUnifier.get(dust, Tungsten),
-                        OreDictUnifier.get(dust, Technetium))
+                .inputs(OreDictUnifier.get(dust, Zirconium))
+                .inputs(OreDictUnifier.get(dust, Hafnium))
+                .inputs(OreDictUnifier.get(dust, Niobium))
+                .inputs(OreDictUnifier.get(dust, Tantalum))
+                .inputs(OreDictUnifier.get(dust, Molybdenum))
+                .inputs(OreDictUnifier.get(dust, Tungsten))
+                .inputs(OreDictUnifier.get(dust, Technetium))
                 .outputs(RefractoryMetals.getItemStack(7))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(240).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Titanium),
-                        OreDictUnifier.get(dust, Vanadium),
-                        OreDictUnifier.get(dust, Manganese),
-                        OreDictUnifier.get(dust, Chrome),
-                        OreDictUnifier.get(dust, Iron),
-                        OreDictUnifier.get(dust, Nickel),
-                        OreDictUnifier.get(dust, Cobalt),
-                        OreDictUnifier.get(dust, Copper))
+                .inputs(OreDictUnifier.get(dust, Titanium))
+                .inputs(OreDictUnifier.get(dust, Vanadium))
+                .inputs(OreDictUnifier.get(dust, Manganese))
+                .inputs(OreDictUnifier.get(dust, Chrome))
+                .inputs(OreDictUnifier.get(dust, Iron))
+                .inputs(OreDictUnifier.get(dust, Nickel))
+                .inputs(OreDictUnifier.get(dust, Cobalt))
+                .inputs(OreDictUnifier.get(dust, Copper))
                 .outputs(LightTranstionMetals.getItemStack(8))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(420).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Beryllium),
-                        OreDictUnifier.get(dust, Magnesium),
-                        OreDictUnifier.get(dust, Calcium),
-                        OreDictUnifier.get(dust, Strontium),
-                        OreDictUnifier.get(dust, Barium),
-                        OreDictUnifier.get(dust, Radium),
-                        OreDictUnifier.get(dust, Scandium),
-                        OreDictUnifier.get(dust, Yttrium))
-                .fluidInputs(Lithium.getFluid(144),
-                        Sodium.getFluid(144),
-                        Potassium.getFluid(144),
-                        Rubidium.getFluid(144),
-                        Caesium.getFluid(144),
-                        Francium.getFluid(144))
+                .inputs(OreDictUnifier.get(dust, Beryllium))
+                .inputs(OreDictUnifier.get(dust, Magnesium))
+                .inputs(OreDictUnifier.get(dust, Calcium))
+                .inputs(OreDictUnifier.get(dust, Strontium))
+                .inputs(OreDictUnifier.get(dust, Barium))
+                .inputs(OreDictUnifier.get(dust, Radium))
+                .inputs(OreDictUnifier.get(dust, Scandium))
+                .inputs(OreDictUnifier.get(dust, Yttrium))
+                .fluidInputs(Lithium.getFluid(144))
+                .fluidInputs(Sodium.getFluid(144))
+                .fluidInputs(Potassium.getFluid(144))
+                .fluidInputs(Rubidium.getFluid(144))
+                .fluidInputs(Caesium.getFluid(144))
+                .fluidInputs(Francium.getFluid(144))
                 .outputs(Alkalis.getItemStack(14))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(420).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Zinc),
-                        OreDictUnifier.get(dust, Cadmium),
-                        OreDictUnifier.get(dust, Aluminium),
-                        OreDictUnifier.get(dust, Silicon),
-                        OreDictUnifier.get(dust, Germanium),
-                        OreDictUnifier.get(dust, Antimony),
-                        OreDictUnifier.get(dust, Thallium),
-                        OreDictUnifier.get(dust, Lead))
-                .fluidInputs(Mercury.getFluid(144),
-                        Tin.getFluid(144),
-                        Gallium.getFluid(144),
-                        Indium.getFluid(144),
-                        Bismuth.getFluid(144),
-                        Polonium.getFluid(144))
+                .inputs(OreDictUnifier.get(dust, Zinc))
+                .inputs(OreDictUnifier.get(dust, Cadmium))
+                .inputs(OreDictUnifier.get(dust, Aluminium))
+                .inputs(OreDictUnifier.get(dust, Silicon))
+                .inputs(OreDictUnifier.get(dust, Germanium))
+                .inputs(OreDictUnifier.get(dust, Antimony))
+                .inputs(OreDictUnifier.get(dust, Thallium))
+                .inputs(OreDictUnifier.get(dust, Lead))
+                .fluidInputs(Mercury.getFluid(144))
+                .fluidInputs(Tin.getFluid(144))
+                .fluidInputs(Gallium.getFluid(144))
+                .fluidInputs(Indium.getFluid(144))
+                .fluidInputs(Bismuth.getFluid(144))
+                .fluidInputs(Polonium.getFluid(144))
                 .outputs(PostTransitionMetals.getItemStack(14))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(450).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Samarium),
-                        OreDictUnifier.get(dust, Gadolinium),
-                        OreDictUnifier.get(dust, Terbium),
-                        OreDictUnifier.get(dust, Thulium),
-                        OreDictUnifier.get(dust, Holmium),
-                        OreDictUnifier.get(dust, Lutetium),
-                        OreDictUnifier.get(dust, Scandium),
-                        OreDictUnifier.get(dust, Yttrium))
-                .fluidInputs(Lanthanum.getFluid(144),
-                        Cerium.getFluid(144),
-                        Praseodymium.getFluid(144),
-                        Neodymium.getFluid(144),
-                        Europium.getFluid(144),
-                        Ytterbium.getFluid(144))
+                .inputs(OreDictUnifier.get(dust, Samarium))
+                .inputs(OreDictUnifier.get(dust, Gadolinium))
+                .inputs(OreDictUnifier.get(dust, Terbium))
+                .inputs(OreDictUnifier.get(dust, Thulium))
+                .inputs(OreDictUnifier.get(dust, Holmium))
+                .inputs(OreDictUnifier.get(dust, Lutetium))
+                .inputs(OreDictUnifier.get(dust, Scandium))
+                .inputs(OreDictUnifier.get(dust, Yttrium))
+                .fluidInputs(Lanthanum.getFluid(144))
+                .fluidInputs(Cerium.getFluid(144))
+                .fluidInputs(Praseodymium.getFluid(144))
+                .fluidInputs(Neodymium.getFluid(144))
+                .fluidInputs(Europium.getFluid(144))
+                .fluidInputs(Ytterbium.getFluid(144))
                 .outputs(Lanthanoids.getItemStack(15))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(390).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Actinium),
-                        OreDictUnifier.get(dust, Thorium),
-                        OreDictUnifier.get(dust, Protactinium.getMaterial()),
-                        OreDictUnifier.get(dust, UraniumRadioactive.getMaterial()),
-                        OreDictUnifier.get(dust, Americium),
-                        OreDictUnifier.get(dust, Curium.getMaterial()),
-                        OreDictUnifier.get(dust, Berkelium.getMaterial()),
-                        OreDictUnifier.get(dust, Fermium.getMaterial()),
-                        OreDictUnifier.get(dust, Californium.getMaterial()))
-                .fluidInputs(Neptunium.getMaterial().getFluid(144),
-                        Plutonium.getFluid(144),
-                        Mendelevium.getMaterial().getFluid(144),
-                        Einsteinium.getMaterial().getFluid(144))
+                .inputs(OreDictUnifier.get(dust, Actinium))
+                .inputs(OreDictUnifier.get(dust, Thorium))
+                .inputs(OreDictUnifier.get(dust, Protactinium.getMaterial()))
+                .inputs(OreDictUnifier.get(dust, UraniumRadioactive.getMaterial()))
+                .inputs(OreDictUnifier.get(dust, Americium))
+                .inputs(OreDictUnifier.get(dust, Curium.getMaterial()))
+                .inputs(OreDictUnifier.get(dust, Berkelium.getMaterial()))
+                .inputs(OreDictUnifier.get(dust, Fermium.getMaterial()))
+                .inputs(OreDictUnifier.get(dust, Californium.getMaterial()))
+                .fluidInputs(Neptunium.getMaterial().getFluid(144))
+                .fluidInputs(Plutonium.getFluid(144))
+                .fluidInputs(Mendelevium.getMaterial().getFluid(144))
+                .fluidInputs(Einsteinium.getMaterial().getFluid(144))
                 .outputs(Actinoids.getItemStack(13))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(450).EUt(250000)
-                .inputs(OreDictUnifier.get(dust, Boron),
-                        OreDictUnifier.get(dust, Carbon),
-                        OreDictUnifier.get(dust, Phosphorus),
-                        OreDictUnifier.get(dust, Sulfur),
-                        OreDictUnifier.get(dust, Arsenic),
-                        OreDictUnifier.get(dust, Selenium),
-                        OreDictUnifier.get(dust, Tellurium),
-                        OreDictUnifier.get(dust, Iodine),
-                        OreDictUnifier.get(dust, Astatine))
-                .fluidInputs(Oxygen.getFluid(1000),
-                        Nitrogen.getFluid(1000),
-                        Hydrogen.getFluid(1000),
-                        Fluorine.getFluid(1000),
-                        Chlorine.getFluid(1000),
-                        Bromine.getFluid(1000))
+                .inputs(OreDictUnifier.get(dust, Boron))
+                .inputs(OreDictUnifier.get(dust, Carbon))
+                .inputs(OreDictUnifier.get(dust, Phosphorus))
+                .inputs(OreDictUnifier.get(dust, Sulfur))
+                .inputs(OreDictUnifier.get(dust, Arsenic))
+                .inputs(OreDictUnifier.get(dust, Selenium))
+                .inputs(OreDictUnifier.get(dust, Tellurium))
+                .inputs(OreDictUnifier.get(dust, Iodine))
+                .inputs(OreDictUnifier.get(dust, Astatine))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Nitrogen.getFluid(1000))
+                .fluidInputs(Hydrogen.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(1000))
                 .fluidOutputs(NonMetals.getFluid(15000))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(180).EUt(250000)
-                .fluidInputs(Helium.getFluid(1000),
-                        Neon.getFluid(1000),
-                        Argon.getFluid(1000),
-                        Krypton.getFluid(1000),
-                        Xenon.getFluid(1000),
-                        Radon.getFluid(1000))
+                .fluidInputs(Helium.getFluid(1000))
+                .fluidInputs(Neon.getFluid(1000))
+                .fluidInputs(Argon.getFluid(1000))
+                .fluidInputs(Krypton.getFluid(1000))
+                .fluidInputs(Xenon.getFluid(1000))
+                .fluidInputs(Radon.getFluid(1000))
                 .fluidOutputs(GAMaterials.NobleGases.getFluid(6000))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
-                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7),
-                        OreDictUnifier.get(dust, SuperheavyHAlloy, 7),
-                        Alkalis.getItemStack(14),
-                        RefractoryMetals.getItemStack(7),
-                        LightTranstionMetals.getItemStack(8),
-                        PreciousMetals.getItemStack(9),
-                        PostTransitionMetals.getItemStack(14),
-                        Lanthanoids.getItemStack(15),
-                        Actinoids.getItemStack(13))
-                .fluidInputs(NonMetals.getFluid(15000),
-                        GAMaterials.NobleGases.getFluid(6000))
+                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7))
+                .inputs(OreDictUnifier.get(dust, SuperheavyHAlloy, 7))
+                .inputs(Alkalis.getItemStack(14))
+                .inputs(RefractoryMetals.getItemStack(7))
+                .inputs(LightTranstionMetals.getItemStack(8))
+                .inputs(PreciousMetals.getItemStack(9))
+                .inputs(PostTransitionMetals.getItemStack(14))
+                .inputs(Lanthanoids.getItemStack(15))
+                .inputs(Actinoids.getItemStack(13))
+                .fluidInputs(NonMetals.getFluid(15000))
+                .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
                 .outputs(OreDictUnifier.get(dust, Periodicium, 115))
                 .buildAndRegister();
 
         BLAST_ALLOY_RECIPES.recipeBuilder().duration(360).EUt(54000000)
-                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7),
-                        OreDictUnifier.get(dust, SuperheavyHAlloy, 7),
-                        Alkalis.getItemStack(14),
-                        RefractoryMetals.getItemStack(7),
-                        LightTranstionMetals.getItemStack(8),
-                        PreciousMetals.getItemStack(9),
-                        PostTransitionMetals.getItemStack(14),
-                        Lanthanoids.getItemStack(15),
-                        Actinoids.getItemStack(13))
-                .fluidInputs(NonMetals.getFluid(15000),
-                        GAMaterials.NobleGases.getFluid(6000))
+                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7))
+                .inputs(OreDictUnifier.get(dust, SuperheavyHAlloy, 7))
+                .inputs(Alkalis.getItemStack(14))
+                .inputs(RefractoryMetals.getItemStack(7))
+                .inputs(LightTranstionMetals.getItemStack(8))
+                .inputs(PreciousMetals.getItemStack(9))
+                .inputs(PostTransitionMetals.getItemStack(14))
+                .inputs(Lanthanoids.getItemStack(15))
+                .inputs(Actinoids.getItemStack(13))
+                .fluidInputs(NonMetals.getFluid(15000))
+                .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
                 .fluidOutputs(Periodicium.getFluid(16560))
                 .buildAndRegister();
 
-        VACUUM_RECIPES.recipeBuilder().duration(20).EUt(122880)
+        VACUUM_RECIPES.recipeBuilder().duration(20).EUt(30720)
                 .fluidInputs(Helium3.getFluid(5000))
                 .fluidOutputs(LiquidHelium3.getFluid(5000))
                 .buildAndRegister();
 
-        VACUUM_RECIPES.recipeBuilder().duration(20).EUt(61400)
+        VACUUM_RECIPES.recipeBuilder().duration(20).EUt(480)
                 .fluidInputs(Nitrogen.getFluid(5000))
                 .fluidOutputs(LiquidNitrogen.getFluid(5000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(60).EUt(8000)
+        MIXER_RECIPES.recipeBuilder().duration(60).EUt(7680)
                 .fluidInputs(LiquidHelium.getFluid(1000))
                 .fluidInputs(LiquidHelium3.getFluid(1000))
                 .fluidOutputs(LiquidEnrichedHelium.getFluid(2000))
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(150).EUt(725000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(725000)
                 .fluidInputs(LiquidEnrichedHelium.getFluid(2000))
                 .fluidInputs(LiquidNitrogen.getFluid(1000))
                 .fluidOutputs(SuperfluidHelium.getFluid(1000))
@@ -291,7 +291,7 @@ public class UltimateMaterials {
         MetaItem<?>.MetaValueItem[] fieldShapes = { PLATE_FIELD_SHAPE, INGOT_FIELD_SHAPE, WIRE_FIELD_SHAPE, SPHERE_FIELD_SHAPE, ROD_FIELD_SHAPE };
         MetaItem<?>.MetaValueItem[] molds = { SHAPE_MOLD_PLATE, SHAPE_MOLD_INGOT, SHAPE_EXTRUDER_WIRE, SHAPE_MOLD_BALL, SHAPE_EXTRUDER_ROD };
         for (int i = 0; i < fieldShapes.length; i++) {
-            ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(85000)
+            ASSEMBLER_RECIPES.recipeBuilder().duration(340).EUt(122880)
                     .inputs(molds[i].getStackForm())
                     .input(plate, Polybenzimidazole, 2)
                     .input(plate, Polyetheretherketone, 2)

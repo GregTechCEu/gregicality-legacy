@@ -10,6 +10,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustSmall;
 import static gregtech.common.items.MetaItems.RUBBER_DROP;
 import static net.minecraft.init.Items.APPLE;
 
@@ -26,8 +27,8 @@ public class WetwareChain { // TODO
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .outputs(CalciumCarbide.getItemStack(6))
                 .blastFurnaceTemp(2500)
-                .EUt(7680)
-                .duration(100)
+                .EUt(120)
+                .duration(300)
                 .buildAndRegister();
 
         // CaC2 + 2H2O -> Ca(OH)2 + C2H2
@@ -37,8 +38,8 @@ public class WetwareChain { // TODO
                 .outputs(CalciumHydroxide.getItemStack(5))
                 .fluidOutputs(Acetylene.getFluid(1000))
                 .blastFurnaceTemp(2300)
-                .EUt(30720)
-                .duration(10)
+                .EUt(120)
+                .duration(200)
                 .buildAndRegister();
 
         // Ca(OH)2 + 2HCl -> 2H2O + CaCl2
@@ -47,8 +48,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .output(dust, CalciumChloride, 3)
-                .EUt(480)
-                .duration(50)
+                .EUt(120)
+                .duration(60)
                 .buildAndRegister();
 
         // O + CH3OH -> CH2O + H2O
@@ -58,8 +59,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(Methanol.getFluid(1000))
                 .fluidOutputs(Formaldehyde.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(4096)
-                .duration(100)
+                .EUt(30720)
+                .duration(200)
                 .buildAndRegister();
 
         // CH2O + C2H2 -> C3H4O
@@ -68,8 +69,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(Formaldehyde.getFluid(1000))
                 .fluidInputs(Acetylene.getFluid(1000))
                 .fluidOutputs(PropargylAlcohol.getFluid(1000))
-                .EUt(30720)
-                .duration(100)
+                .EUt(120)
+                .duration(120)
                 .buildAndRegister();
 
         // C3H4O + 2Cl -> C3H3Cl + HClO
@@ -78,20 +79,22 @@ public class WetwareChain { // TODO
                 .fluidInputs(Chlorine.getFluid(2000))
                 .fluidOutputs(PropargylChloride.getFluid(1000))
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
-                .EUt(30720)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder()
                 .inputs(RUBBER_DROP.getStackForm())
                 .fluidOutputs(Resin.getFluid(100))
-                .EUt(32)
+                .EUt(24)
                 .duration(100)
                 .buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder()
+                .output(dustSmall, RawRubber)
                 .fluidInputs(Resin.getFluid(1000))
                 .fluidOutputs(Turpentine.getFluid(200))
+                .fluidOutputs(Isoprene.getFluid(20))
                 .EUt(480)
                 .duration(500)
                 .buildAndRegister();
@@ -102,8 +105,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(BetaPinene.getItemStack(26))
                 .fluidOutputs(SulfuricAcid.getFluid(1000))
-                .EUt(30720)
-                .duration(50)
+                .EUt(480)
+                .duration(110)
                 .buildAndRegister();
 
         // C10H16 + 2C5H8 + 2O -> 2C10H16O
@@ -112,7 +115,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(Isoprene.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Citral.getFluid(2000))
-                .EUt(30720)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -122,7 +125,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(Acetone.getFluid(1000))
                 .fluidOutputs(BetaIonone.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(30720)
+                .EUt(120)
                 .duration(250)
                 .buildAndRegister();
 
@@ -133,15 +136,15 @@ public class WetwareChain { // TODO
                 .fluidOutputs(VitaminA.getFluid(17000))
                 .fluidOutputs(Oxygen.getFluid(8000))
                 .fluidOutputs(HydrochloricAcid.getFluid(5000))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(150)
                 .buildAndRegister();
 
         // This needs to be better, Zalgo was working on something
         MACERATOR_RECIPES.recipeBuilder()
                 .inputs(new ItemStack(APPLE))
-                .chancedOutput(Yeast.getItemStack(), 500, 250)
-                .EUt(120)
+                .chancedOutput(Yeast.getItemStack(), 500, 500)
+                .EUt(30)
                 .duration(50)
                 .buildAndRegister();
 
@@ -150,7 +153,7 @@ public class WetwareChain { // TODO
                 .inputs(Yeast.getItemStack())
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .fluidOutputs(LinoleicAcid.getFluid(1000))
-                .EUt(30720)
+                .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
 
@@ -160,8 +163,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(EthyleneOxide.getFluid(1000))
-                .EUt(500)
-                .duration(400)
+                .EUt(480)
+                .duration(100)
                 .buildAndRegister();
 
         // NH3 + C2H4O -> C2H7NO
@@ -169,8 +172,8 @@ public class WetwareChain { // TODO
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(EthyleneOxide.getFluid(1000))
                 .fluidOutputs(Ethanolamine.getFluid(1000))
-                .EUt(30720)
-                .duration(150)
+                .EUt(7680)
+                .duration(60)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
@@ -179,26 +182,26 @@ public class WetwareChain { // TODO
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Biotin.getFluid(2000))
-                .EUt(30720)
-                .duration(200)
+                .EUt(7680)
+                .duration(40)
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Biotin.getFluid(1000))
                 .fluidInputs(LinoleicAcid.getFluid(1000))
                 .fluidInputs(Catalase.getFluid(1000))
                 .fluidInputs(VitaminA.getFluid(1000))
                 .fluidInputs(Ethanolamine.getFluid(1000))
                 .fluidOutputs(B27Supplement.getFluid(5000))
-                .EUt(30720)
-                .duration(250)
+                .EUt(7680)
+                .duration(150)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(CleanAmmoniaSolution.getFluid(2000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -214,15 +217,15 @@ public class WetwareChain { // TODO
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, Meat)
                 .fluidOutputs(Blood.getFluid(250))
-                .EUt(32)
+                .EUt(30)
                 .duration(50)
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(Blood.getFluid(1000))
-                .fluidOutputs(BloodCells.getFluid(450))
-                .fluidOutputs(BloodPlasma.getFluid(550))
-                .EUt(1920)
+                .fluidOutputs(BloodCells.getFluid(500))
+                .fluidOutputs(BloodPlasma.getFluid(500))
+                .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
@@ -235,14 +238,14 @@ public class WetwareChain { // TODO
                 .duration(50)
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
+        LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(B27Supplement.getFluid(1000))
                 .fluidInputs(AmmoniumNitrate.getFluid(1000))
                 .inputs(Glutamine.getItemStack(20))
                 .fluidInputs(BFGF.getFluid(1000))
                 .fluidInputs(EGF.getFluid(1000))
                 .fluidOutputs(RawGrowthMedium.getFluid(4000))
-                .EUt(30720)
+                .EUt(480)
                 .duration(500)
                 .buildAndRegister();
 
@@ -251,50 +254,50 @@ public class WetwareChain { // TODO
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(BacterialGrowthMedium.getFluid(2000))
-                .EUt(30720)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
         // STERILIZED GROWTH MEDIUM ====================================================================================
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
                 .input(dust, SiliconDioxide, 3)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(Steam.getFluid(1000))
                 .fluidOutputs(SilicaGelBase.getFluid(3000))
-                .EUt(30720)
-                .duration(500)
+                .EUt(120)
+                .duration(120)
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .fluidInputs(SilicaGelBase.getFluid(1000))
                 .outputs(SilicaGel.getItemStack(3))
                 .output(dust, Salt, 2)
-                .EUt(30720)
-                .duration(250)
+                .EUt(480)
+                .duration(125)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .inputs(SilicaGel.getItemStack(3))
                 .inputs(Alumina.getItemStack(5))
                 .outputs(SilicaAluminaGel.getItemStack(8))
-                .EUt(30720)
-                .duration(500)
+                .EUt(30)
+                .duration(60)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .inputs(SilicaAluminaGel.getItemStack())
                 .outputs(ZeoliteSievingPellets.getItemStack())
                 .blastFurnaceTemp(4500)
-                .EUt(30720)
+                .EUt(120)
                 .duration(400)
                 .buildAndRegister();
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .inputs(WetZeoliteSievingPellets.getItemStack())
                 .outputs(ZeoliteSievingPellets.getItemStack())
-                .EUt(30720)
+                .EUt(120)
                 .duration(50)
                 .buildAndRegister();
 
@@ -303,7 +306,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(Ethanol.getFluid(1000))
                 .fluidOutputs(Ethanol100.getFluid(1000))
                 .outputs(WetZeoliteSievingPellets.getItemStack())
-                .EUt(30720)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
@@ -311,7 +314,7 @@ public class WetwareChain { // TODO
                 .inputs(PETRI_DISH.getStackForm())
                 .fluidInputs(Ethanol100.getFluid(100))
                 .outputs(STERILIZED_PETRI_DISH.getStackForm())
-                .EUt(30720)
+                .EUt(7680)
                 .duration(25)
                 .buildAndRegister();
 
@@ -319,7 +322,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(PiranhaSolution.getFluid(2000))
-                .EUt(480)
+                .EUt(30)
                 .duration(50)
                 .buildAndRegister();
 
@@ -327,7 +330,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(PiranhaSolution.getFluid(100))
                 .inputs(CONTAMINATED_PETRI_DISH.getStackForm())
                 .outputs(PETRI_DISH.getStackForm())
-                .EUt(30720)
+                .EUt(30)
                 .duration(25)
                 .buildAndRegister();
 
@@ -360,28 +363,35 @@ public class WetwareChain { // TODO
                 .fluidOutputs(ChlorosulfonicAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(SulfurTrioxide.getFluid(1000))
-                .EUt(30720)
-                .duration(100)
+                .EUt(480)
+                .duration(200)
                 .buildAndRegister();
 
         // C6H5NH2 + (CH3CO)2O + HSO3Cl -> C8H8ClNO3S + H2O + CH3COOH
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Aniline.getFluid(1000))
                 .fluidInputs(AceticAnhydride.getFluid(1000))
                 .fluidInputs(ChlorosulfonicAcid.getFluid(1000))
                 .fluidOutputs(AcetylsulfanilylChloride.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(AceticAcid.getFluid(1000))
-                .EUt(30720)
+                .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
 
         // H2O + Na2CO3 -> NaHCO3 + NaOH
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(30)
                 .fluidInputs(Water.getFluid(1000))
                 .input(dust, SodaAsh, 6)
                 .outputs(SodiumBicarbonate.getItemStack(6))
                 .output(dust, SodiumHydroxide, 3)
+                .buildAndRegister();
+
+        // NaHCO3 -> NaOH + CO2
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(145).EUt(120)
+                .inputs(SodiumBicarbonate.getItemStack(6))
+                .output(dust, SodiumHydroxide, 3)
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // NaHCO3 + C8H8ClNO3S + NH3 -> NaCl + C6H8N2O2S + CO2 + CH3COOH
@@ -394,7 +404,7 @@ public class WetwareChain { // TODO
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(AceticAcid.getFluid(1000))
                 .EUt(30720)
-                .duration(100)
+                .duration(50)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
@@ -412,7 +422,7 @@ public class WetwareChain { // TODO
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(AnimalCells.getFluid(1000))
                 .EUt(480)
-                .duration(400)
+                .duration(100)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
@@ -426,32 +436,32 @@ public class WetwareChain { // TODO
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(1))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(100)
                 .fluidOutputs(MycGene.getFluid(1000))
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(100)
                 .fluidOutputs(Oct4Gene.getFluid(1000))
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(3))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(100)
                 .fluidOutputs(SOX2Gene.getFluid(1000))
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(RapidlyReplicatingAnimalCells.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(4))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(100)
                 .fluidOutputs(KFL4Gene.getFluid(1000))
                 .buildAndRegister();
 
@@ -469,15 +479,15 @@ public class WetwareChain { // TODO
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
                 .outputs(STEM_CELLS.getStackForm(2))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(500))
-                .EUt(30720)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
         FERMENTING_RECIPES.recipeBuilder()
                 .fluidInputs(DepletedGrowthMedium.getFluid(1000))
                 .fluidOutputs(FermentedBiomass.getFluid(1000))
-                .EUt(120)
-                .duration(200)
+                .EUt(30)
+                .duration(100)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
@@ -485,8 +495,8 @@ public class WetwareChain { // TODO
                 .inputs(StreptococcusPyogenes.getItemStack())
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(Cas9.getFluid(1000))
-                .EUt(30720)
-                .duration(200)
+                .EUt(480)
+                .duration(100)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
@@ -497,48 +507,48 @@ public class WetwareChain { // TODO
                 .fluidInputs(KFL4Gene.getFluid(1000))
                 .inputs(EschericiaColi.getItemStack())
                 .fluidOutputs(GenePlasmids.getFluid(5000))
-                .EUt(30720)
-                .duration(250)
+                .EUt(1920)
+                .duration(50)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .input("listAllmushroom", 1)
                 .fluidOutputs(Chitin.getFluid(100))
-                .EUt(480)
-                .duration(200)
+                .EUt(30)
+                .duration(100)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .inputs(new ItemStack(Blocks.BROWN_MUSHROOM, 1))
                 .fluidOutputs(Chitin.getFluid(100))
-                .EUt(480)
-                .duration(200)
+                .EUt(30)
+                .duration(100)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .notConsumable(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .inputs(new ItemStack(Blocks.RED_MUSHROOM, 1))
                 .fluidOutputs(Chitin.getFluid(100))
-                .EUt(480)
-                .duration(200)
+                .EUt(30)
+                .duration(100)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(Chitin.getFluid(1000))
                 .inputs(BifidobacteriumBreve.getItemStack())
                 .fluidOutputs(Chitosan.getFluid(1000))
-                .EUt(7680)
-                .duration(200)
+                .EUt(120)
+                .duration(100)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(GenePlasmids.getFluid(1000))
                 .fluidInputs(Chitosan.getFluid(1000))
                 .fluidOutputs(GeneTherapyFluid.getFluid(2000))
-                .EUt(30720)
-                .duration(200)
+                .EUt(7680)
+                .duration(25)
                 .buildAndRegister();
     }
 }

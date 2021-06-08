@@ -334,7 +334,7 @@ public class Dyes {
                 .input(dust, SodiumHydroxide, 3)
                 .notConsumable(ZincChloride.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidInputs(Naphtalene.getFluid(1000))
+                .fluidInputs(Naphthalene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Naphthylamine.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(4000))

@@ -5,8 +5,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.NANOTOME;
 import static gregicadditions.item.GAMetaItems.PIEZOELECTRIC_CRYSTAL;
-import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -18,7 +17,7 @@ public class NanotubeChain {
     public static void init() {
 
         // C6H6 + C7H8 -> C12H10 + CH4
-        CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(200000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(480)
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidOutputs(Methane.getFluid(1000))
@@ -26,7 +25,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // (NH4)2SO4 + H2SO4 -> (NH4)2(SO4)2 + H2
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(3200)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(120)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(AmmoniumSulfate.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
@@ -35,7 +34,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // 2I + C12H10 + H2SO4 + (NH4)2SO4 -> C12H8I2 + (NH4)2(SO4)2 + 2H2
-        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(280000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(480)
                 .input(dust, Iodine, 2)
                 .inputs(Biphenyl.getItemStack(22))
                 .fluidInputs(AmmoniumSulfate.getFluid(1000))
@@ -46,7 +45,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // Li + C4H10 -> C4H9Li + H
-        CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(140000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(480)
                 .input(dust, Lithium)
                 .fluidInputs(Butane.getFluid(1000))
                 .fluidOutputs(ButylLithium.getFluid(1000))
@@ -54,33 +53,25 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // Sn + 2Cl -> SnCl2
-        CHEMICAL_RECIPES.recipeBuilder().duration(65).EUt(19200)
+        CHEMICAL_RECIPES.recipeBuilder().duration(65).EUt(30)
                 .input(dust, Tin)
                 .fluidInputs(Chlorine.getFluid(2000))
                 .outputs(TinChloride.getItemStack(3))
                 .buildAndRegister();
 
         // SnCl2 + 3CH4 + O -> C3H9SnCl + HCl(H2O)
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(260).EUt(180000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1920)
                 .inputs(TinChloride.getItemStack(3))
                 .notConsumable(dust, Magnesium)
                 .notConsumable(dust, Iodine)
                 .fluidInputs(Methane.getFluid(3000))
                 .fluidInputs(Oxygen.getFluid(1000))
-                .fluidOutputs(TetramethyltinChloride.getFluid(1000))
+                .fluidOutputs(TrimethyltinChloride.getFluid(1000))
                 .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
-        // C2H2 + H2O -> C2H4O
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2400)
-                .notConsumable(dust, Copper)
-                .fluidInputs(Acetylene.getFluid(1000))
-                .fluidInputs(Water.getFluid(1000))
-                .fluidOutputs(Acetaldehyde.getFluid(1000))
-                .buildAndRegister();
-
         // 2Tl + 2HCl -> 2TlCl + 2H
-        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(30720)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Thallium, 2)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(1000))
@@ -89,7 +80,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // CH2O + 2C2H4O + NH3 -> C5H5N + 3H2O + 2H
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(75000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1920)
                 .notConsumable(ThalliumChloride.getItemStack())
                 .fluidInputs(Formaldehyde.getFluid(1000))
                 .fluidInputs(Acetaldehyde.getFluid(2000))
@@ -100,14 +91,14 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // Ni + Al -> NiAl
-        MIXER_RECIPES.recipeBuilder().duration(150).EUt(400)
+        MIXER_RECIPES.recipeBuilder().duration(150).EUt(120)
                 .input(dust, Nickel)
                 .input(dust, Aluminium)
                 .outputs(NiAlCatalyst.getItemStack(2))
                 .buildAndRegister();
 
         // 2C5H5N -> C10H8N2 + H2
-        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(95000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(1920)
                 .fluidInputs(Pyridine.getFluid(2000))
                 .notConsumable(NiAlCatalyst.getItemStack())
                 .outputs(Bipyridine.getItemStack(20))
@@ -115,7 +106,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // C7H5ClO + 2H -> C7H6O + HCl
-        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(4800)
+        CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(480)
                 .notConsumable(dust, Barite)
                 .notConsumable(dust, Palladium)
                 .fluidInputs(BenzoylChloride.getFluid(2000))
@@ -125,7 +116,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // 2C7H6O + C3H6O -> C17H14O + 2H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(45000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(480)
                 .fluidInputs(Benzaldehyde.getFluid(2000))
                 .fluidInputs(Acetone.getFluid(1000))
                 .fluidOutputs(Dibenzylideneacetone.getFluid(1000))
@@ -133,32 +124,31 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // Pd + 2Cl -> PdCl2
-        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(10000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(30)
                 .input(dust, Palladium)
                 .fluidInputs(Chlorine.getFluid(2000))
                 .outputs(PalladiumChloride.getItemStack(3))
                 .buildAndRegister();
 
         // 3C17H14O + 2PdCl2 -> 4Cl + C51H42O3Pd2
-        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(140000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(1920)
                 .fluidInputs(Dibenzylideneacetone.getFluid(3000))
                 .inputs(PalladiumChloride.getItemStack(6))
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .outputs(PalladiumBisDibenzylidieneacetone.getItemStack(16))
                 .buildAndRegister();
 
-        // Pt + 4HNO3 + 6HCl -> H2PtCl6 + 4NO2 + 4H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(145).EUt(40000)
+        // Pt + 4HNO3 + 6HCl -> H2PtCl6 + 4NO2 + 4H2O (H2O lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(115).EUt(1920)
                 .input(dust, Platinum)
                 .fluidInputs(NitricAcid.getFluid(4000))
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
                 .fluidOutputs(ChloroPlatinicAcid.getFluid(1000))
                 .fluidOutputs(NitrogenDioxide.getFluid(4000))
-                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         // H2PtCl6 + 2K -> K2PtCl4 + 2HCl
-        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(50000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(480)
                 .fluidInputs(ChloroPlatinicAcid.getFluid(1000))
                 .input(dust, Potassium, 2)
                 .outputs(PotassiumTetrachloroplatinate.getItemStack(7))
@@ -180,7 +170,7 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // NiCl2 + 6C6H5OH + 2PCl3 -> C36H30Cl2NiP2 + 6HCl + 6O
-        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(45000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(1920)
                 .inputs(NickelChloride.getItemStack(3))
                 .fluidInputs(Phenol.getFluid(6000))
                 .fluidInputs(PhosphorusTrichloride.getFluid(2000))
@@ -190,14 +180,14 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // 2C4H6 -> C8H12
-        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(55000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(110).EUt(480)
                 .fluidInputs(Butadiene.getFluid(2000))
                 .notConsumable(NickelTriphenylPhosphite.getItemStack())
                 .fluidOutputs(Cyclooctadiene.getFluid(1000))
                 .buildAndRegister();
 
         // C8H12 + K2PtCl4 -> C8H12Cl2Pt + 2KCl
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(140000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(480)
                 .fluidInputs(Cyclooctadiene.getFluid(1000))
                 .inputs(PotassiumTetrachloroplatinate.getItemStack(7))
                 .outputs(Dichlorocycloctadieneplatinium.getItemStack(23))
@@ -205,14 +195,14 @@ public class NanotubeChain {
                 .buildAndRegister();
 
         // 4C12H8I2 + 2C8H12Cl2Pt + 8C + 4AgBF4 + 4C3H9SnCl -> 10C6H4 + 4BF3 + 3C8H16 + 4HF + 2PtCl2 + 8I + 4AgCl + 4Sn
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(460).EUt(450000)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(460).EUt(491520)
                 .notConsumable(Bipyridine.getItemStack())
                 .notConsumable(PalladiumBisDibenzylidieneacetone.getItemStack())
                 .inputs(Diiodobiphenyl.getItemStack(4))
-                .inputs(Dichlorocycloctadieneplatinium.getItemStack(2))
+                .inputs(Dichlorocycloctadieneplatinium.getItemStack(23))
                 .input(dust, Carbon, 8)
                 .fluidInputs(Silvertetrafluoroborate.getFluid(4000))
-                .fluidInputs(TetramethyltinChloride.getFluid(4000))
+                .fluidInputs(TrimethyltinChloride.getFluid(4000))
                 .fluidOutputs(Cycloparaphenylene.getFluid(10000))
                 .fluidOutputs(BoronFluoride.getFluid(4000))
                 .fluidOutputs(Oct1ene.getFluid(3000))
@@ -223,7 +213,7 @@ public class NanotubeChain {
                 .output(dust, Tin, 4)
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(200000)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(200000)
                 .inputs(ELECTRIC_MOTOR_UV.getStackForm())
                 .inputs(SENSOR_UV.getStackForm())
                 .input(gemExquisite, Diamond)
@@ -258,19 +248,19 @@ public class NanotubeChain {
                 .fluidOutputs(FullereneDopedNanotubes.getFluid(18000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(240).EUt(250000)
+        MIXER_RECIPES.recipeBuilder().duration(240).EUt(122880)
                 .input(foil, Graphene)
                 .input(dust, CarbonNanotubes)
                 .outputs(GrapheneNanotubeMix.getItemStack())
                 .buildAndRegister();
 
-        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder().duration(310).EUt(280000)
+        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder().duration(260).EUt(122880)
                 .inputs(GrapheneNanotubeMix.getItemStack())
                 .output(dustSmall, CarbonNanotubes, 3)
                 .outputs(GrapheneAlignedCNT.getItemStack())
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(270).EUt(700000)
+        MIXER_RECIPES.recipeBuilder().duration(200).EUt(983040)
                 .notConsumable(NANOTOME.getStackForm())
                 .inputs(GrapheneAlignedCNT.getItemStack())
                 .output(foil, Graphene)
