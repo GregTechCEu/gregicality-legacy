@@ -6,6 +6,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
+import gregicadditions.recipes.categories.circuits.components.ExoticComponents;
 import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.recipes.chain.*;
 import gregicadditions.recipes.helper.HelperMethods;
@@ -158,6 +159,9 @@ public class RecipeHandler {
         ArcFurnaceOxidation.init();
         WetwareChain.init();
         OpticalChain.init();
+        OrganometallicChains.init();
+        QuantumDotsChain.init();
+        ExoticComponents.init();
     }
 
     /**

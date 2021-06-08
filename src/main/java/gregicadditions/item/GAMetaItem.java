@@ -488,6 +488,30 @@ public class GAMetaItem extends MaterialMetaItem {
 
         SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
 
+        FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(587, "fullerene.polymer.matrix.soft.tubing");
+        FULLERENE_POLYMER_MATRIX_FINE_TUBING = addItem(588, "fullerene.polymer.matrix.fine.tubing");
+        X_RAY_WAVEGUIDE = addItem(589, "xray.waveguide");
+        MICROFOCUS_X_RAY_TUBE = addItem(590, "microfocus.xray.tube");
+        X_RAY_MIRROR_PLATE = addItem(591, "xray.mirror.plate");
+        UNTREATED_EXOTIC_WAFER = addItem(592, "untreated.exotic.wafer");
+        EXOTIC_WAFER = addItem(593, "exotic.wafer");
+        EXOTIC_CHIP = addItem(594, "exotic.chip");
+        EXCITATION_MAINTAINER = addItem(595, "excitation.maintainer");
+        CRYOGENIC_INTERFACE = addItem(596, "cryogenic.interface");
+        RYDBERG_SPINORIAL_ASSEMBLY = addItem(597, "rydberg.spinorial.assembly");
+        X_RAY_LASER = addItem(598, "xray.laser");
+        EXOTIC_PROCESSING_CORE = addItem(599, "exotic.processing.core");
+
+        SMD_CAPACITOR_EXOTIC = addItem(600, "smd.capacitor.exotic");
+        SMD_RESISTOR_EXOTIC = addItem(601, "smd.resistor.exotic");
+        SMD_DIODE_EXOTIC = addItem(602, "smd.diode.exotic");
+        SMD_TRANSISTOR_EXOTIC = addItem(603, "smd.transistor.exotic");
+
+        EXOTIC_PROCESSOR = addItem(604, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        EXOTIC_ASSEMBLY = addItem(605, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, UEV);
+        EXOTIC_COMPUTER = addItem(606, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
+        EXOTIC_MAINFRAME = addItem(607, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
