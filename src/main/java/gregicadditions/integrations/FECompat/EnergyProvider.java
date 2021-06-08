@@ -9,6 +9,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class EnergyProvider implements ICapabilityProvider {
 
@@ -21,11 +22,9 @@ public class EnergyProvider implements ICapabilityProvider {
     public static final long RATIO_LONG = GAConfig.EUtoRF.RATIO;
 
     /**
-     * "Atomic" boolean to prevent hasCapability and getCapability from colliding.
-     * Not sure if this is necessary, or if it could be implemented properly
-     * with an AtomicBoolean instead.
+     * Lock used for concurrency protection between hasCapability and getCapability.
      */
-    private boolean gettingValue = false;
+    ReentrantLock lock = new ReentrantLock();
 
     public EnergyProvider(TileEntity tileEntity) {
         this.tileEntity = tileEntity;
@@ -37,17 +36,18 @@ public class EnergyProvider implements ICapabilityProvider {
         if (!GAConfig.EUtoRF.enableNativeEUtoRF)
             return false;
 
-        if (gettingValue || (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER))
+        if (lock.isLocked() || (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER))
             return false;
 
         // Wrap RF Machines with a GTEU EnergyContainer
         if (wrapper == null) wrapper = new GregicEnergyContainerWrapper(tileEntity);
 
-        gettingValue = true;
-        boolean result = wrapper.isValid(facing);
-        gettingValue = false;
-
-        return result;
+        lock.lock();
+        try {
+            return wrapper.isValid(facing);
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
@@ -57,19 +57,16 @@ public class EnergyProvider implements ICapabilityProvider {
         if (!GAConfig.EUtoRF.enableNativeEUtoRF)
             return null;
 
-        if (gettingValue || !hasCapability(capability, facing))
+        if (lock.isLocked() || !hasCapability(capability, facing))
             return null;
 
         if (wrapper == null) wrapper = new GregicEnergyContainerWrapper(tileEntity);
 
-        gettingValue = true;
-
-        if (wrapper.isValid(facing)) {
-            gettingValue = false;
-            return (T) wrapper;
+        lock.lock();
+        try {
+            return wrapper.isValid(facing) ? (T) wrapper : null;
+        } finally {
+            lock.unlock();
         }
-
-        gettingValue = false;
-        return null;
     }
 }
