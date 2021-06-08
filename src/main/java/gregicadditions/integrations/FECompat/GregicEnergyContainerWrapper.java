@@ -16,7 +16,7 @@ import static gregicadditions.GAUtility.safeCastLongToInt;
 public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
     /**
-     * Capability Provider for the EU-capability.
+     * Capability Provider of the FE TileEntity for the EU-capability.
      */
     private final ICapabilityProvider upvalue;
 
@@ -83,7 +83,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
         IEnergyStorage container = def();
 
-        if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0)
+        if (container != null && container.canReceive())
             return container;
 
         for (EnumFacing face : EnumFacing.VALUES) {
@@ -94,7 +94,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
                 facesRF[face.getIndex()] = container;
             }
 
-            if (container != null && container.receiveEnergy(Integer.MAX_VALUE, true) > 0)
+            if (container != null && container.canReceive())
                 return container;
         }
 
