@@ -1457,10 +1457,14 @@ public class RecipeHandler {
     /**
      * 3x3 Single Input Recipe Generation. Generates:
      *
-     * + Compressor Recipes for 3x3 Crafting Recipes, if enabled
-     * + Packer Recipes for 3x3 Crafting Recipes, if enabled
+     * + Compressor Recipes for 3x3 Crafting Recipes
+     * + Packer Recipes for 3x3 Crafting Recipes
      *
-     * - Removes handcrafting 3x3 Recipes in favor of Packer, if enabled
+     * - Removes handcrafting 3x3 Recipes for:
+     *     - Blocks
+     *     - Nuggets
+     *     - All others
+     *   depending on config values.
      */
     private static void generate3x3Recipes(IRecipe recipe) {
 
@@ -1472,35 +1476,33 @@ public class RecipeHandler {
          || hasOrePrefix(input, "dustTiny"))
             return;
 
-        // Remove 3x3 Block Crafting to Packer
-        if (GAConfig.GT5U.Remove3x3BlockRecipes) {
-
+        if (GAConfig.GT5U.Remove3x3BlockRecipes && hasOrePrefix(output, "block"))
             removeRecipeByName(recipe.getRegistryName());
-            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                    .inputs(CountableIngredient.from(input, 9))
-                    .notConsumable(SCHEMATIC_3X3.getStackForm())
-                    .outputs(output)
-                    .buildAndRegister();
-        }
 
-        // Add Compressor 3x3 Recipes
-        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+        else if (GAConfig.GT5U.Remove3x3NuggetRecipes && hasOrePrefix(input, "nugget"))
+            removeRecipeByName(recipe.getRegistryName());
 
-            // Exclude Wheat, since it compresses to Plant Balls
-            if (ItemStack.areItemsEqual(input, new ItemStack(Items.WHEAT)))
-                return;
+        else if (GAConfig.GT5U.Remove3x3MiscRecipes && !hasOrePrefix(output, "block") && !hasOrePrefix(input, "nugget"))
+            removeRecipeByName(recipe.getRegistryName());
 
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                .inputs(CountableIngredient.from(input, 9))
+                .notConsumable(SCHEMATIC_3X3.getStackForm())
+                .outputs(output)
+                .buildAndRegister();
+
+        // Exclude Wheat, since it compresses to Plant Balls
+        if (!ItemStack.areItemsEqual(input, new ItemStack(Items.WHEAT)))
             COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
                     .inputs(CountableIngredient.from(input, 9))
                     .outputs(output)
                     .buildAndRegister();
-        }
     }
 
     /**
      * 2x2 Single Input Recipe Generation. Generates:
      *
-     * + Packer Recipes for 2x2 Crafting Recipes, if enabled
+     * + Packer Recipes for 2x2 Crafting Recipes
      */
     private static void generate2x2Recipes(IRecipe recipe) {
 
@@ -1515,22 +1517,23 @@ public class RecipeHandler {
             return;
 
         // Add Packager 2x2 Recipes
-        if (GAConfig.GT5U.Packager2x2Recipes) {
-
-            PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                    .inputs(CountableIngredient.from(input, 4))
-                    .notConsumable(SCHEMATIC_2X2.getStackForm())
-                    .outputs(output)
-                    .buildAndRegister();
-        }
+        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
+                .inputs(CountableIngredient.from(input, 4))
+                .notConsumable(SCHEMATIC_2X2.getStackForm())
+                .outputs(output)
+                .buildAndRegister();
     }
 
     /**
      * 1 to 9 Single Input Recipe Generation. Generates:
      *
-     * + Unpacker Recipes for 1 to 9 Crafting Recipes, if enabled
+     * + Unpacker Recipes for 1 to 9 Crafting Recipes
      *
-     * - Removes handcrafting 1 to 9 Recipes in favor of Unpacker, if enabled
+     * - Removes handcrafting 1 to 9 Recipes for:
+     *     - Blocks
+     *     - Nuggets
+     *     - All others
+     *   depending on config values.
      */
     private static void generate1to9Recipes(IRecipe recipe) {
 
@@ -1542,15 +1545,19 @@ public class RecipeHandler {
          || hasOrePrefix(output, "dustTiny"))
             return;
 
-        // Move Block Uncrafting to the Compressor
-        if (GAConfig.GT5U.RemoveBlockUncraftingRecipes) {
-
+        if (GAConfig.GT5U.Remove1to9BlockRecipes && hasOrePrefix(input, "block"))
             removeRecipeByName(recipe.getRegistryName());
-            UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
-                    .inputs(input)
-                    .notConsumable(SCHEMATIC_3X3.getStackForm())
-                    .outputs(output)
-                    .buildAndRegister();
-        }
+
+        else if (GAConfig.GT5U.Remove1to9NuggetRecipes && hasOrePrefix(output, "nugget"))
+            removeRecipeByName(recipe.getRegistryName());
+
+        else if (GAConfig.GT5U.Remove1to9MiscRecipes && !hasOrePrefix(input, "block") && !hasOrePrefix(output, "nugget"))
+            removeRecipeByName(recipe.getRegistryName());
+
+        UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
+                .inputs(input)
+                .notConsumable(SCHEMATIC_3X3.getStackForm())
+                .outputs(output)
+                .buildAndRegister();
     }
 }
