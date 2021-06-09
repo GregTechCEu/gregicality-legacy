@@ -37,7 +37,7 @@ public class CircuitComponentRecipes {
         WetwareComponents.init();
         biowareSMD();
         OpticalComponents.init();
-        // EXOTIC COMING SOON...
+        ExoticComponents.init();
         CosmicComponents.init();
         SupracausalComponents.init();
     }

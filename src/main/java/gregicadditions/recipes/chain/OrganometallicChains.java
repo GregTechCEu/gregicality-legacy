@@ -25,7 +25,7 @@ public class OrganometallicChains {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(2000)
-                .fluidInputs(Cyclooctadiene.getFluid(1000))
+                .fluidInputs(Cyclopentadiene.getFluid(1000))
                 .fluidInputs(Dimethoxyethane.getFluid(1000))
                 .fluidInputs(ButylLithium.getFluid(1000))
                 .fluidOutputs(Butane.getFluid(1000))

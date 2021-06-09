@@ -161,7 +161,6 @@ public class RecipeHandler {
         OpticalChain.init();
         OrganometallicChains.init();
         QuantumDotsChain.init();
-        ExoticComponents.init();
     }
 
     /**
