@@ -984,12 +984,80 @@ public class CircuitRecipes {
 
     private static void exoticCircuits() {
 
-        /* COMING SOON...
-
         for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            fluidStack.amount = Math.min(64000, fluidStack.amount * 4);
+            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
+
+            //Exotic Processor
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt((int)2E+6).qubit(8)
+                    .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
+                    .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(8))
+                    .inputs(EXOTIC_PROCESSING_CORE.getStackForm())
+                    .input(wireFine, Cinobite, 4)
+                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                    .inputs(HASOC.getStackForm(1))
+                    .fluidInputs(fluidStackx4)
+                    .outputs(EXOTIC_PROCESSOR.getStackForm())
+                    .buildAndRegister();
         }
-        */
+
+        //Exotic Assembly
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)2E+6).qubit(8)
+                .inputs(SMD_RESISTOR_EXOTIC.getStackForm(16))
+                .inputs(SMD_DIODE_EXOTIC.getStackForm(16))
+                .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(16))
+                .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(16))
+                .inputs(EXOTIC_PROCESSOR.getStackForm(3))
+                .input(wireFine, Cinobite, 4)
+                .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                .input(plate, EnrichedNaquadahAlloy, 2)
+                .inputs(ARAM.getStackForm(2))
+                .input(wireGtSingle, UHVSuperconductor, 2)
+                .fluidInputs(EnrichedNaquadahAlloy.getFluid(144))
+                .fluidInputs(TriniumTitanium.getFluid(144))
+                .fluidInputs(Quantum.getFluid(144))
+                .fluidInputs(QuantumDots.getFluid(10))
+                .outputs(EXOTIC_ASSEMBLY.getStackForm())
+                .buildAndRegister();
+
+        //Exotic Computer
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt((int)2E+6).qubit(8)
+                .inputs(SMD_DIODE_EXOTIC.getStackForm(32))
+                .inputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
+                .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
+                .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
+                .inputs(EXOTIC_ASSEMBLY.getStackForm(4))
+                .input(wireFine, Quantum, 4)
+                .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                .inputs(UHPIC.getStackForm(4))
+                .inputs(ARAM.getStackForm(8))
+                .input(wireGtSingle, UEVSuperconductor, 4)
+                .fluidInputs(Polyetheretherketone.getFluid(1000))
+                .fluidInputs(Vibranium.getFluid(144))
+                .fluidInputs(EnrichedNaquadahAlloy.getFluid(144))
+                .fluidInputs(TriniumTitanium.getFluid(144))
+                .outputs(EXOTIC_COMPUTER.getStackForm())
+                .buildAndRegister();
+
+        //Exotic Mainframe
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt((int)2E+6).qubit(8)
+                .inputs(SMD_RESISTOR_EXOTIC.getStackForm(64))
+                .inputs(SMD_DIODE_EXOTIC.getStackForm(64))
+                .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(64))
+                .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(64))
+                .inputs(EXOTIC_COMPUTER.getStackForm(2))
+                .input(wireFine, Vibranium, 4)
+                .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                .inputs(UHASOC.getStackForm(4))
+                .input(frameGt, TriniumTitanium)
+                .inputs(UHPIC.getStackForm(2))
+                .inputs(ARAM.getStackForm(16))
+                .input(wireGtSingle, UIVSuperconductor, 8)
+                .fluidInputs(LiquidEnrichedHelium.getFluid(100))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144))
+                .fluidInputs(Quantum.getFluid(144))
+                .fluidInputs(Naquadria.getFluid(144))
+                .outputs(EXOTIC_MAINFRAME.getStackForm())
+                .buildAndRegister();
     }
 
     private static void cosmicCircuits() {

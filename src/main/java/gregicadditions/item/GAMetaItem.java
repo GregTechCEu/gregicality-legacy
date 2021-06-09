@@ -489,6 +489,30 @@ public class GAMetaItem extends MaterialMetaItem {
         SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
         SHAPE_EXTRUDER_ROTOR = addItem(587, "shape.extruder.rotor");
 
+        FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(588, "fullerene.polymer.matrix.soft.tubing");
+        FULLERENE_POLYMER_MATRIX_FINE_TUBING = addItem(589, "fullerene.polymer.matrix.fine.tubing");
+        X_RAY_WAVEGUIDE = addItem(590, "xray.waveguide");
+        MICROFOCUS_X_RAY_TUBE = addItem(591, "microfocus.xray.tube");
+        X_RAY_MIRROR_PLATE = addItem(592, "xray.mirror.plate");
+        UNTREATED_EXOTIC_WAFER = addItem(593, "untreated.exotic.wafer");
+        EXOTIC_WAFER = addItem(594, "exotic.wafer");
+        EXOTIC_CHIP = addItem(595, "exotic.chip");
+        EXCITATION_MAINTAINER = addItem(596, "excitation.maintainer");
+        CRYOGENIC_INTERFACE = addItem(597, "cryogenic.interface");
+        RYDBERG_SPINORIAL_ASSEMBLY = addItem(598, "rydberg.spinorial.assembly");
+        X_RAY_LASER = addItem(599, "xray.laser");
+        EXOTIC_PROCESSING_CORE = addItem(600, "exotic.processing.core");
+
+        SMD_CAPACITOR_EXOTIC = addItem(601, "smd.capacitor.exotic");
+        SMD_RESISTOR_EXOTIC = addItem(602, "smd.resistor.exotic");
+        SMD_DIODE_EXOTIC = addItem(603, "smd.diode.exotic");
+        SMD_TRANSISTOR_EXOTIC = addItem(604, "smd.transistor.exotic");
+
+        EXOTIC_PROCESSOR = addItem(605, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        EXOTIC_ASSEMBLY = addItem(606, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, UEV);
+        EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
+        EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
