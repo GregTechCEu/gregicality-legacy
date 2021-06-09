@@ -77,16 +77,10 @@ public class OpticalComponents {
                 .outputs(OPTICAL_PROCESSING_CORE.getStackForm())
                 .buildAndRegister();
 
-        // [C10Nb2O20 + NH4] + 2LiNbO4 -> Nanoparticles TODO Move out
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(950000)
-                .input(dust, LithiumNiobate, 12)
-                .fluidInputs(AmmoniumNiobiumOxalateSolution.getFluid(1000))
-                .outputs(LithiumNiobateNanoparticles.getItemStack(3))
-                .buildAndRegister();
-
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(750000)
                 .input(dustSmall, Radium)
                 .input(plate, Polybenzimidazole, 4)
+                .input(plate, Polyetheretherketone, 6)
                 .input(plate, Steel, 4)
                 .fluidInputs(SolderingAlloy.getFluid(L))
                 .outputs(ELECTRON_SOURCE.getStackForm())
@@ -99,7 +93,7 @@ public class OpticalComponents {
                 .outputs(ROTATING_TRANSPARENT_SURFACE.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(320).EUt(3200000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(3200000)
                 .inputs(LithiumNiobateNanoparticles.getItemStack(2))
                 .notConsumable(ROTATING_TRANSPARENT_SURFACE)
                 .notConsumable(ELECTRON_SOURCE)
@@ -112,7 +106,7 @@ public class OpticalComponents {
                 .outputs(NON_LINEAR_OPTICAL_LENS.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(240).EUt(710000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(710000)
                 .input(plate, Germanium)
                 .fluidInputs(Zinc.getFluid(144))
                 .fluidInputs(HydrogenSulfide.getFluid(1000))
@@ -126,7 +120,7 @@ public class OpticalComponents {
         ItemStack[] lasers = {LOW_FREQUENCY_LASER.getStackForm(), MEDIUM_FREQUENCY_LASER.getStackForm(), HIGH_FREQUENCY_LASER.getStackForm()};
 
         for (int i = 0; i < laser_components.length; i++) {
-            ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(910000)
+            ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(491520)
                     .inputs(laser_components[i])
                     .inputs(HIGHLY_REFLECTIVE_MIRROR.getStackForm())
                     .inputs(NON_LINEAR_OPTICAL_LENS.getStackForm())
@@ -153,21 +147,21 @@ public class OpticalComponents {
                 .outputs(ErbiumDopedZBLANDust.getItemStack(2))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().EUt(262000).duration(6000)
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
                 .inputs(ZBLANDust.getItemStack())
                 .outputs(ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().EUt(262000).duration(6000)
+        BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
                 .inputs(ErbiumDopedZBLANDust.getItemStack())
                 .outputs(ERBIUM_DOPED_ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
-        FORMING_PRESS_RECIPES.recipeBuilder().EUt(4000).duration(2000)
+        FORMING_PRESS_RECIPES.recipeBuilder().EUt(7680).duration(2000)
                 .notConsumable(SHAPE_MOLD_INGOT)
                 .inputs(ZBLAN.getStackForm())
                 .outputs(ZBLAN_INGOT.getStackForm())
@@ -179,7 +173,7 @@ public class OpticalComponents {
                 .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
                 .buildAndRegister();
 
-        EXTRUDER_RECIPES.recipeBuilder().EUt(4000).duration(2000)
+        EXTRUDER_RECIPES.recipeBuilder().EUt(7680).duration(2000)
                 .notConsumable(SHAPE_EXTRUDER_WIRE)
                 .inputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
                 .outputs(ZBLAN_FIBER.getStackForm(2))
@@ -192,7 +186,7 @@ public class OpticalComponents {
                 .outputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(8).duration(150)
+        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(30).duration(150)
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
                 .outputs(OreDictUnifier.get(opticalFiberSingle.toString()))
@@ -213,33 +207,5 @@ public class OpticalComponents {
         ModHandler.addShapelessRecipe("ga_optical_hex", OreDictUnifier.get(opticalFiberHex.toString()),
                 OreDictUnifier.get(opticalFiberOctal.toString()),
                 OreDictUnifier.get(opticalFiberOctal.toString()));
-
-        // MgF2 + ZnS + Ta2O5 + TiO2 + C2H5OH -> Dielectric Mirror Formation Mix
-        MIXER_RECIPES.recipeBuilder().duration(270).EUt(970000)
-                .inputs(MagnesiumFluoride.getItemStack(3))
-                .inputs(ZincSulfide.getItemStack(2))
-                .inputs(TantalumOxide.getItemStack(7))
-                .input(dust, Rutile, 3)
-                .fluidInputs(Ethanol.getFluid(1000))
-                .fluidOutputs(DielectricMirrorFormationMix.getFluid(1000))
-                .buildAndRegister();
-
-        // TODO ^ v
-
-        // Be + LiF + 2NH4HF2 + CO + [6Y(NO3)3 + 2Pr(NO3)3 + 2Nd(NO3)3 + 15H2O] -> 2PrHoYLF Nanoparticles + 2NH4NO3 + 2HF + BeF2 + CO2
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(2000)
-                .input(dust, LithiumFluoride, 2)
-                .input(dust, Beryllium)
-                .inputs(AmmoniumBifluoride.getItemStack(16))
-                .fluidInputs(PrYHoNitrateSolution.getFluid(2000))
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .notConsumable(CetaneTrimethylAmmoniumBromide.getFluid(0))
-                .notConsumable(EDTA.getFluid(0))
-                .outputs(PrHoYLFNanoparticles.getItemStack(2))
-                .output(dust, BerylliumFluoride, 3)
-                .fluidOutputs(AmmoniumNitrate.getFluid(2000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(2000))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
     }
 }

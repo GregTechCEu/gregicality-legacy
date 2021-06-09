@@ -497,6 +497,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
 
     public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_SMALL_GEAR;
+    public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_ROTOR;
 
     public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_SOFT_TUBING;
     public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_FINE_TUBING;

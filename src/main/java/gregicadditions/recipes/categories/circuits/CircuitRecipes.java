@@ -857,7 +857,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Bioware Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(960000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(480000)
                 .inputs(BIOWARE_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_BIOWARE.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(32))
@@ -905,7 +905,7 @@ public class CircuitRecipes {
             FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
 
             // Optical Processor
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(480000)
+            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(960000)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                     .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(8))
                     .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(4))

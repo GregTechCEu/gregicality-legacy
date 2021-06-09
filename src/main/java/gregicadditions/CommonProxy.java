@@ -171,7 +171,6 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         RecipeHandler.initRecipes();
-        RecipeHandler.generatedRecipes();
 
         // Run some late recipe addition that depends on other
         // recipes of ours already being added
@@ -218,6 +217,7 @@ public class CommonProxy {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
         RecipeHandler.runRecipeGeneration();
+        RecipeHandler.generatedRecipes();
         if (!GAConfig.Misc.reverseAfterCT)
             registerRecipesAfterCT();
     }

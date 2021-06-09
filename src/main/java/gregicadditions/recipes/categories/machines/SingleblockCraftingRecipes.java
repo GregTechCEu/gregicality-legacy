@@ -338,14 +338,6 @@ public class SingleblockCraftingRecipes {
         ModHandler.addShapedRecipe("ga_charger_zpm", MetaTileEntities.CHARGER[GTValues.ZPM].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.ZPM].getStackForm(), 'W', new UnificationEntry(wireGtHex, Naquadah),       'T', OreDictNames.chestWood, 'B', batteries.get(0), 'C', new UnificationEntry(circuit, Ultimate));
         ModHandler.addShapedRecipe("ga_charger_uv",  MetaTileEntities.CHARGER[GTValues.UV].getStackForm(),  "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.UV].getStackForm(),  'W', new UnificationEntry(wireGtHex, NaquadahAlloy),  'T', OreDictNames.chestWood, 'B', batteries.get(1), 'C', new UnificationEntry(circuit, Superconductor));
         ModHandler.addShapedRecipe("ga_charger_max", MetaTileEntities.CHARGER[GTValues.MAX].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.MAX].getStackForm(), 'W', new UnificationEntry(wireGtHex, Superconductor), 'T', OreDictNames.chestWood, 'B', batteries.get(2), 'C', new UnificationEntry(circuit, Infinite));
-
-
-        // Steam Machines
-        // Steam Macerators now use Flint instead of Diamonds
-        removeRecipeByName("gregtech:steam_macerator_bronze");
-        removeRecipeByName("gregtech:steam_macerator_steel");
-        ModHandler.addShapedRecipe("ga_steam_macerator_bronze", MetaTileEntities.STEAM_MACERATOR_BRONZE.getStackForm(), "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL),       'X', new UnificationEntry(pipeSmall, Bronze), 'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.FLINT));
-        ModHandler.addShapedRecipe("ga_steam_macerator_steel",  MetaTileEntities.STEAM_MACERATOR_STEEL.getStackForm(),  "DXD", "XMX", "PXP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.STEEL_HULL),        'X', new UnificationEntry(pipeSmall, Steel),  'P', OreDictNames.craftingPiston, 'D', new ItemStack(Items.FLINT));
     }
 
     private static void highAmpMachines() {

@@ -8,7 +8,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class PlasticChain {
+public class PolymerChain {
 
     public static void init() {
         polybenzimidazoleInit();
@@ -25,7 +25,7 @@ public class PlasticChain {
                 .fluidOutputs(Phenol.getFluid(2000))
                 .fluidOutputs(Polybenzimidazole.getFluid(1008))
                 .fluidOutputs(Water.getFluid(2000))
-                .EUt(7500)
+                .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
 
@@ -35,7 +35,7 @@ public class PlasticChain {
                 .fluidInputs(PhthalicAcid.getFluid(1000))
                 .fluidOutputs(Diphenylisophtalate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .EUt(7500)
+                .EUt(7680)
                 .duration(1000)
                 .buildAndRegister();
 
@@ -46,12 +46,12 @@ public class PlasticChain {
                 .fluidOutputs(OrthoXylene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(120)
-                .duration(4000)
+                .duration(800)
                 .buildAndRegister();
 
         // 6O + C8H10 -> 2H2O + C8H6O4
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(dustTiny, PotassiumDichromate)
+                .notConsumable(dust, PotassiumDichromate)
                 .fluidInputs(Oxygen.getFluid(6000))
                 .fluidInputs(OrthoXylene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
@@ -67,13 +67,13 @@ public class PlasticChain {
                 .fluidInputs(Dichlorobenzidine.getFluid(1000))
                 .fluidOutputs(Diaminobenzidine.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
-                .EUt(7500)
+                .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
 
         // 2C6H4ClNO2 + 2H -> C12H10Cl2N2 + 4O
         CHEMICAL_RECIPES.recipeBuilder()
-                .notConsumable(dustTiny, Copper)
+                .notConsumable(dust, Copper)
                 .fluidInputs(Nitrochlorobenzene.getFluid(2000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(Dichlorobenzidine.getFluid(1000))
@@ -124,7 +124,6 @@ public class PlasticChain {
                 .buildAndRegister();
     }
 
-    // TODO DURATION / EUT
     public static void polyimideInit() {
 
         // C6H4(CH3)2 + 2CH3Cl -> C6H2(CH3)4 + 2HCl
@@ -165,7 +164,7 @@ public class PlasticChain {
                 .fluidInputs(Oxydianiline.getFluid(1000))
                 .fluidOutputs(PolyamicAcid.getFluid(1000))
                 .EUt(7680)
-                .duration(500)
+                .duration(400)
                 .buildAndRegister();
 
         // Lose water
@@ -175,7 +174,7 @@ public class PlasticChain {
                 .fluidInputs(PolyamicAcid.getFluid(144))
                 .fluidOutputs(Polyimide.getFluid(144))
                 .EUt(30)
-                .duration(300)
+                .duration(270)
                 .buildAndRegister();
     }
 

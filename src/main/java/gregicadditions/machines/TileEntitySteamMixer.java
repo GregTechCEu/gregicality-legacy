@@ -65,14 +65,14 @@ public class TileEntitySteamMixer extends SteamMetaTileEntity {
                 .widget(new SlotWidget(this.importItems, 3, 54, 43)
                         .setBackgroundTexture(BRONZE_SLOT_BACKGROUND_TEXTURE))
                 .widget(new TankWidget(this.importFluids.getTankAt(1), 18, 25, 18, 18)
-                        .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(false, true))
+                        .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(true, true))
                 .widget(new TankWidget(this.importFluids.getTankAt(2), 18, 43, 18, 18)
-                        .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(false, true))
+                        .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(true, true))
                 .widget(new ProgressWidget(workableHandler::getProgressPercent, 78, 34, 20, 16)
                         .setProgressBar(getFullGuiTexture("progress_bar_%s_furnace"),
                                 getFullGuiTexture("progress_bar_%s_furnace_filled"),
                                 ProgressWidget.MoveType.HORIZONTAL))
-                .widget(new SlotWidget(this.exportItems, 0, 104, 33)
+                .widget(new SlotWidget(this.exportItems, 0, 104, 33, true, false)
                         .setBackgroundTexture(BRONZE_SLOT_BACKGROUND_TEXTURE))
                 .widget(new TankWidget(this.exportFluids.getTankAt(0), 122, 33, 18, 18)
                         .setBackgroundTexture(ClientHandler.BRONZE_FLUID_SLOT).setAlwaysShowFull(true).setContainerClicking(true, false))

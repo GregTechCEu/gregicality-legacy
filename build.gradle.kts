@@ -53,7 +53,6 @@ configure<UserBaseExtension> {
     version = forgeVersion
     mappings = config["mcp.version"] as String
     runDir = "run"
-    makeObfSourceJar = false;
     replace("@VERSION@", modVersion)
     replaceIn("Gregicality.java")
 }

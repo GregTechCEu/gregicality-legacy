@@ -118,7 +118,6 @@ public class GoldChain {
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .outputs(CopperLeach.getItemStack(4))
                 .fluidOutputs(ChloroauricAcid.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         // STEP 4
