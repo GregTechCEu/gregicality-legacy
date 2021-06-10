@@ -1041,13 +1041,13 @@ metaitem.circuit.mainframe.exotic.tooltip=§b§oUMV Circuit
 
 ##cosmic
 metaitem.circuit.processor.cosmic.name=Cosmic Processor
-metaitem.circuit.processor.cosmic.tooltip=§b§oUHV Circuit
+metaitem.circuit.processor.cosmic.tooltip=§b§oUEV Circuit
 metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
-metaitem.circuit.assembly.cosmic.tooltip=§b§oUEV Circuit
+metaitem.circuit.assembly.cosmic.tooltip=§b§oUIV Circuit
 metaitem.circuit.computer.cosmic.name=Cosmic Computer
-metaitem.circuit.computer.cosmic.tooltip=§b§oUIV Circuit
+metaitem.circuit.computer.cosmic.tooltip=§b§oUMV Circuit
 metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
-metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV Circuit
+metaitem.circuit.mainframe.cosmic.tooltip=§b§oUXV Circuit
 
 
 ####################################################################
@@ -4179,13 +4179,13 @@ metaitem.smd.diode.supracausal.name=Supra-Causal SMD Diode
 metaitem.smd.transistor.supracausal.name=Supra-Causal SMD Transistor
 
 metaitem.circuit.processor.supracausal.name=Supra-Causal Processor
-metaitem.circuit.processor.supracausal.tooltip=§b§oUEV Circuit
+metaitem.circuit.processor.supracausal.tooltip=§b§oUIV Circuit
 metaitem.circuit.assembly.supracausal.name=Supra-Causal Assembly
-metaitem.circuit.assembly.supracausal.tooltip=§b§oUIV Circuit
+metaitem.circuit.assembly.supracausal.tooltip=§b§oUMV Circuit
 metaitem.circuit.computer.supracausal.name=Supra-Causal Computer
-metaitem.circuit.computer.supracausal.tooltip=§b§oUMV Circuit
+metaitem.circuit.computer.supracausal.tooltip=§b§oUXV Circuit
 metaitem.circuit.mainframe.supracausal.name=Supra-Causal Mainframe
-metaitem.circuit.mainframe.supracausal.tooltip=§b§oUXV Circuit
+metaitem.circuit.mainframe.supracausal.tooltip=§b§oMAX Circuit
 
 metaitem.topological.manipulator.unit.name=Topological Manipulator Unit
 metaitem.relativistic.spinorial.memory.system.name=Relativistic Spinorial Memory

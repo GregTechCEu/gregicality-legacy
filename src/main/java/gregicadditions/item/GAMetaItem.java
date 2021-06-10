@@ -191,10 +191,10 @@ public class GAMetaItem extends MaterialMetaItem {
         WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
-        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UEV);
-        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UIV);
-        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UMV);
+        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, UEV);
+        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UIV);
+        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UMV);
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UXV);
 
         BOULE_DUBNIUM = addItem(340, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(341, "boule.rutherfordium");
@@ -426,10 +426,10 @@ public class GAMetaItem extends MaterialMetaItem {
         SMD_DIODE_SUPRACAUSAL = addItem(544, "smd.diode.supracausal");
         SMD_TRANSISTOR_SUPRACAUSAL = addItem(545, "smd.transistor.supracausal");
 
-        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UEV);
-        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UIV);
-        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UMV);
-        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UIV);
+        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UMV);
+        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, MAX);
 
         TOPOLOGICAL_MANIPULATOR_UNIT = addItem(550, "topological.manipulator.unit");
         RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(551, "relativistic.spinorial.memory.system");

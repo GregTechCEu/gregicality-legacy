@@ -1039,7 +1039,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt((int)2E+6).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt((int)1E+7).qubit(8)
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(64))
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(64))

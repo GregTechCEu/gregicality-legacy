@@ -102,7 +102,7 @@ public class ExoticComponents{
                 .outputs(CRYOGENIC_INTERFACE.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(160).EUt(8000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(160).EUt(4000000)
                 .inputs(CRYOGENIC_INTERFACE.getStackForm())
                 .inputs(EXCITATION_MAINTAINER.getStackForm())
                 .inputs(EXOTIC_CHIP.getStackForm())
@@ -115,7 +115,7 @@ public class ExoticComponents{
                 .outputs(RYDBERG_SPINORIAL_ASSEMBLY.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(160).EUt(8000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(160).EUt(4000000)
                 .inputs(NON_LINEAR_OPTICAL_LENS.getStackForm())
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .input(foil, TriniumTitanium)
@@ -157,13 +157,13 @@ public class ExoticComponents{
                 .outputs(FULLERENE_POLYMER_MATRIX_FINE_TUBING.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(8000)
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(800000)
                 .inputs(FULLERENE_POLYMER_MATRIX_FINE_TUBING.getStackForm())
                 .fluidInputs(IridiumTrichlorideSolution.getFluid(100))
                 .outputs(X_RAY_WAVEGUIDE.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(2000)
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(200000)
                 .fluidInputs(IridiumTrichlorideSolution.getFluid(100))
                 .input(plate, Graphene)
                 .outputs(X_RAY_MIRROR_PLATE.getStackForm())

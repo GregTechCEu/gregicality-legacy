@@ -47,7 +47,7 @@ public class OrganometallicChains{
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(2000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(200000)
                 .fluidInputs(LithiumCyclopentadienide.getFluid(3000))
                 .inputs(CaliforniumTrichloride.getItemStack(4))
                 .outputs(LithiumChloride.getItemStack(6))

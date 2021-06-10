@@ -41,7 +41,7 @@ public class QuantumDotsChain{
                 .fluidOutputs(Trioctylphosphine.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(5000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(500000)
                 .fluidInputs(Trioctylphosphine.getFluid(100))
                 .fluidInputs(StearicAcid.getFluid(1000))
                 .input(dust, Selenium, 1)
