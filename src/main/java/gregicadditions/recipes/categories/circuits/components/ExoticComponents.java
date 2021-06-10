@@ -37,32 +37,32 @@ public class ExoticComponents{
             ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(8000)
                     .fluidInputs(fluidStack)
                     .input(stick, Californium.getMaterial())
-                    .input(wireFine, Pikyonium)
+                    .input(wireFine, Pikyonium, 4)
                     .inputs(ALUMINO_SILICATE_GLASS_TUBE.getStackForm())
                     .outputs(MICROFOCUS_X_RAY_TUBE.getStackForm())
                     .buildAndRegister();
 
         }
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000).fluidInputs(Zylon.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
                 .input(foil, Cinobite)
                 .input(foil, Quantum)
                 .outputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000).fluidInputs(Zylon.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
                 .input(wireFine, Cinobite)
                 .input(foil, TriniumTitanium)
                 .outputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000).fluidInputs(Zylon.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
                 .input(plate, Vibranium)
                 .input(plate, Quantum)
                 .outputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000).fluidInputs(Zylon.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .input(foil, TriniumTitanium)
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
@@ -83,6 +83,18 @@ public class ExoticComponents{
         CUTTER_RECIPES.recipeBuilder().duration(160).EUt(2000)
                 .inputs(EXOTIC_WAFER.getStackForm())
                 .fluidInputs(Lubricant.getFluid(1))
+                .outputs(EXOTIC_CHIP.getStackForm(16))
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder().duration(480).EUt(2000)
+                .inputs(EXOTIC_WAFER.getStackForm())
+                .fluidInputs(DistilledWater.getFluid(3))
+                .outputs(EXOTIC_CHIP.getStackForm(16))
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder().duration(800).EUt(2000)
+                .inputs(EXOTIC_WAFER.getStackForm())
+                .fluidInputs(Water.getFluid(5))
                 .outputs(EXOTIC_CHIP.getStackForm(16))
                 .buildAndRegister();
 
@@ -133,21 +145,21 @@ public class ExoticComponents{
                 .outputs(X_RAY_LASER.getStackForm())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120)
+        BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2IrO2 -> Ir2O3 + H2O
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .input(dust, IridiumDioxide, 6)
                 .outputs(IridiumTrioxide.getItemStack(5))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2000)
+        MIXER_RECIPES.recipeBuilder().duration(240).EUt(2000)
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
-                .inputs(IridiumTrioxide.getItemStack(5))
-                .fluidOutputs(IridiumTrichlorideSolution.getFluid(12000))
+                .inputs(IridiumTrioxide.getItemStack(3))
+                .fluidOutputs(IridiumTrichlorideSolution.getFluid(6000))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(80).EUt(100)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(10))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(18))
                 .notConsumable(wireFine, Polyetheretherketone)
                 .outputs(FULLERENE_POLYMER_MATRIX_SOFT_TUBING.getStackForm())
                 .buildAndRegister();

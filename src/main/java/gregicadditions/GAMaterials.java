@@ -946,11 +946,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Dimethoxyethane = new SimpleFluidMaterial("dimethoxyethane", 0x2acbb4, "C4H10O2");
     public static final SimpleFluidMaterial LithiumCyclopentadienide = new SimpleFluidMaterial("lithiumcyclopentadienide", 0x95556a, "LiC5H5");
     public static final SimpleFluidMaterial CaliforniumCyclopentadienide = new SimpleFluidMaterial("californiumcyclopentadienide", 0x94445b, "C15H15Cf");
-    public static final SimpleFluidMaterial Soap = new SimpleFluidMaterial("soap", 0xFFAE42);
+    public static final SimpleFluidMaterial Soap = new SimpleFluidMaterial("soap", 0xFFAE42, "?");
     public static final SimpleFluidMaterial DeglyceratedSoap = new SimpleFluidMaterial("deglyceratedsoap", 0xFFAE41);
     public static final SimpleFluidMaterial StearicAcid = new SimpleFluidMaterial("stearicacid", 0x2bbbb4, "C18H36O2");
     public static final SimpleFluidMaterial Trioctylphosphine = new SimpleFluidMaterial("trioctylphosphine", 0xF1E130, "C24H51P");
-    public static final SimpleFluidMaterial QuantumDots = new SimpleFluidMaterial("quantumdots", 0xff0000);
+    public static final SimpleFluidMaterial QuantumDots = new SimpleFluidMaterial("quantumdots", 0xff0000, "CdSe", true);
     public static final SimpleFluidMaterial IridiumTrichlorideSolution = new SimpleFluidMaterial("iridiumtrichloridesolution", 0x96821a, "IrCl3");
     public static final SimpleFluidMaterial SemisolidHydrogen = new SimpleFluidMaterial("semisolidhydrogen", 0x044c4b, "H");
     public static final SimpleFluidMaterial MicrocrystallizingHydrogen = new SimpleFluidMaterial("microcrystallizinghydrogen", 0x155d5c, "H");
