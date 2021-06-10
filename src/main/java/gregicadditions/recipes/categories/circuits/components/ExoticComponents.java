@@ -68,7 +68,7 @@ public class ExoticComponents{
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(160).EUt(8000)
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(160).EUt(800000)
                 .inputs(WAFER_RUTHERFORDIUM.getStackForm())
                 .notConsumable(lens, Diamond)
                 .outputs(UNTREATED_EXOTIC_WAFER.getStackForm())
@@ -80,19 +80,19 @@ public class ExoticComponents{
                 .outputs(EXOTIC_WAFER.getStackForm())
                 .buildAndRegister();
 
-        CUTTER_RECIPES.recipeBuilder().duration(160).EUt(2000)
+        CUTTER_RECIPES.recipeBuilder().duration(160).EUt(200000)
                 .inputs(EXOTIC_WAFER.getStackForm())
                 .fluidInputs(Lubricant.getFluid(1))
                 .outputs(EXOTIC_CHIP.getStackForm(16))
                 .buildAndRegister();
 
-        CUTTER_RECIPES.recipeBuilder().duration(480).EUt(2000)
+        CUTTER_RECIPES.recipeBuilder().duration(480).EUt(200000)
                 .inputs(EXOTIC_WAFER.getStackForm())
                 .fluidInputs(DistilledWater.getFluid(3))
                 .outputs(EXOTIC_CHIP.getStackForm(16))
                 .buildAndRegister();
 
-        CUTTER_RECIPES.recipeBuilder().duration(800).EUt(2000)
+        CUTTER_RECIPES.recipeBuilder().duration(800).EUt(200000)
                 .inputs(EXOTIC_WAFER.getStackForm())
                 .fluidInputs(Water.getFluid(5))
                 .outputs(EXOTIC_CHIP.getStackForm(16))
@@ -154,7 +154,7 @@ public class ExoticComponents{
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(2000)
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
-                .inputs(IridiumTrioxide.getItemStack(3))
+                .inputs(IridiumTrioxide.getItemStack(5))
                 .fluidOutputs(IridiumTrichlorideSolution.getFluid(6000))
                 .buildAndRegister();
 
