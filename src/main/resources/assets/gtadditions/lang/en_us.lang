@@ -2857,7 +2857,7 @@ gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock stru
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". It is a complex Assembling Machine used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is used to create high tier circuits.
 gregtech.multiblock.processing_array.description=The Processing Array combines up to %d single block machines in a single multiblock, effectively easing automation.
-gregtech.multiblock.volcanus.description=The Volcanus is built the same as the EBF, but with different casings. It consumes pyrotheum at 10mB/tick per voltage tier overclocked.
+gregtech.multiblock.volcanus.description=The Volcanus is built the same as the EBF, but with different casings. It consumes pyrotheum at 10 + amount of voltage tiers overclocked per tick. Has a native 600K temperature increase.
 gregtech.multiblock.large_bender_and_forming.description=The Large Bending and Forming Machine can be used as a Bending Machine, Forming Press, or Cluster Mill.
 gregtech.multiblock.large_multi_use.description=The Multi Use Machine can be used as a Compressor, Lathe, Polarizer, Fermenter, Fluid Extractor, Extractor, Autoclave, or Replicator.
 gregtech.multiblock.large_washing_plant.description=The Washing Plant can be used as an Ore Washer or Chemical Bath.
@@ -2921,8 +2921,8 @@ gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Indust
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's an upgraded version of The Primitive Blast Furnace.
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitive Blast Furnace can be automated and sped up.
 gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite, Diorite and Granite. Must be adjacent to lava and water.
-gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes cryotheum at 10mB/tick per voltage tier overclocked.
-gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and with integral frameworks.
+gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes cryotheum at 10 + amount of voltage tiers overclocked per tick.
+gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and tungstensteel pipe casings in the center.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
@@ -2936,12 +2936,13 @@ gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
 gtadditions.multiblock.large_rocket_engine.tooltip.7=Above ZPM is 20%%
 gtadditions.multiblock.large_rocket_engine.tooltip.8=Above UV is 10%%
 gtadditions.multiblock.alloy_blast_furnace.tooltip.1=Quicker than the Blast Furnace
-gtadditions.multiblock.large_naquadah_reactor.tooltip.1=The Large Naquadah Reactor has no efficiency loss.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Boost output with Potassium Plasma.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.3=Medium Naquadah Fuel => 1UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.4=Heavy Naquadah Fuel => 2UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.5=Medium Enriched Naquadah Fuel => 2UV.
-gtadditions.multiblock.large_naquadah_reactor.tooltip.6=Heavy Enriched Naquadah Fuel => 3UV.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.1=Consumes 1000mb of Tritium every 20 fuel consumes.
+gtadditions.multiblock.large_naquadah_reactor.tooltip.2=Increase output by 4X with 50mb Oxygen Plasma every fuel consume (also consumes 2X fuel).
+gtadditions.multiblock.large_naquadah_reactor.tooltip.3=Overclocks to UV tier.
+gregtech.multiblock.large_naquadah_reactor.tritium_amount=Tritium: %dmb
+gregtech.multiblock.large_naquadah_reactor.oxygen_amount=Oxygen Plasma: %sL
+gregtech.multiblock.large_naquadah_reactor.oxygen_boosted=Oxygen Plasma boosted.
+gregtech.multiblock.large_naquadah_reactor.supply_tritium_to_boost=Supply Oxygen Plasma to boost.
 gtadditions.multiblock.hyper_reactor.tooltip.1=Boost With: %s
 gtadditions.multiblock.hyper_reactor.tooltip.2=Max Voltage: %,d
 
@@ -2969,8 +2970,6 @@ gregtech.multiblock.universal.framework.tooltip=The framework casings define whi
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
-gregtech.multiblock.universal.carbon_dioxide_amount=Carbon Dioxide: %dmB
-gregtech.multiblock.universal.potassium_plasma_amount=Potassium Plasma: %dmb
 gregtech.multiblock.universal.oxygen_plasma_amount=Oxygen Plasma: %dmb
 gregtech.multiblock.universal.helium_plasma_amount=Helium Plasma: %dmb
 gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %dmb

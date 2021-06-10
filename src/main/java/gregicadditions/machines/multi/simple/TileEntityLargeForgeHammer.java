@@ -2,7 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.MultiUtils;
@@ -19,7 +18,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -42,7 +40,7 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     public TileEntityLargeForgeHammer(ResourceLocation metaTileEntityId) {

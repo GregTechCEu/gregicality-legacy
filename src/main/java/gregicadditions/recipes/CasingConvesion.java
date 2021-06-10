@@ -127,9 +127,6 @@ public class CasingConvesion {
         ModHandler.addShapedRecipe("casing_convert_red_steel", METAL_CASING_2.getItemVariant(RED_STEEL),
                 "C", 'C', OreDictUnifier.get(gtMetalCasing, RedSteel));
 
-        ModHandler.addShapedRecipe("casing_convert_gold", METAL_CASING_2.getItemVariant(GOLD),
-                "C", 'C', OreDictUnifier.get(gtMetalCasing, Gold));
-
         ModHandler.addShapedRecipe("casing_convert_iron", METAL_CASING_2.getItemVariant(IRON),
                 "C", 'C', OreDictUnifier.get(gtMetalCasing, Iron));
 

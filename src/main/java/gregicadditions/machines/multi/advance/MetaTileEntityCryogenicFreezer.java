@@ -34,25 +34,28 @@ import java.util.Optional;
 import static gregicadditions.client.ClientHandler.INCOLOY_MA956_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
-public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
+public class MetaTileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     private static final int ENERGY_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.energyDecreasePercentage;
 
     private static final int DURATION_DECREASE_FACTOR = GAConfig.multis.cryogenicFreezer.durationDecreasePercentage;
 
-    private final DecimalFormat formatter = new DecimalFormat("#0.0");
+    private final DecimalFormat formatter = new DecimalFormat("#0.00");
 
-    public TileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityCryogenicFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
-        this.recipeMapWorkable = new CryogenicFreezerRecipeLogic(this, ENERGY_DECREASE_FACTOR, DURATION_DECREASE_FACTOR, 100, 1);
+        this.recipeMapWorkable = new CryogenicFreezerRecipeLogic(this, ENERGY_DECREASE_FACTOR, DURATION_DECREASE_FACTOR, 100, 0);
         reinitializeStructurePattern();
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityCryogenicFreezer(metaTileEntityId);
+        return new MetaTileEntityCryogenicFreezer(metaTileEntityId);
     }
 
     @Override
@@ -103,10 +106,9 @@ public class TileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer {
             super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, stack);
         }
 
-
         @Override
         protected boolean drawEnergy(int recipeEUt) {
-            int drain = 10 * getOverclockingTier(getMaxVoltage());
+            int drain = 10 + getOverclockingTier(getMaxVoltage());
             long resultEnergy = this.getEnergyStored() - (long) recipeEUt;
             Optional<IFluidTank> fluidTank =
                     getInputFluidInventory().getFluidTanks().stream()

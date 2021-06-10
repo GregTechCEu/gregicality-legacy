@@ -9,7 +9,6 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -25,7 +24,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -39,7 +37,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -52,7 +49,7 @@ import static gregtech.api.unification.material.Materials.StainlessSteel;
 public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase { //todo maintenance
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;

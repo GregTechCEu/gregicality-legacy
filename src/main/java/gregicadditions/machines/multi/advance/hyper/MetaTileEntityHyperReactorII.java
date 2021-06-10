@@ -35,10 +35,10 @@ import java.util.Objects;
 import static gregtech.api.unification.material.Materials.Naquadria;
 import static gregtech.api.unification.material.Materials.Radon;
 
-public class HyperReactorUHV extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityHyperReactorII extends FueledMultiblockController { //todo generator maintenance
 
 
-    public HyperReactorUHV(ResourceLocation metaTileEntityId, long maxVoltage) {
+    public MetaTileEntityHyperReactorII(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[1]);
@@ -55,7 +55,7 @@ public class HyperReactorUHV extends FueledMultiblockController { //todo generat
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new gregicadditions.machines.multi.advance.hyper.HyperReactorUHV(metaTileEntityId, this.maxVoltage);
+        return new MetaTileEntityHyperReactorII(metaTileEntityId, this.maxVoltage);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class HyperReactorUHV extends FueledMultiblockController { //todo generat
                 .aisle("###CCCCCCCCC###", "##C##CCCCC##C##", "###CCCCCCCCC###")
                 .aisle("####CCCCCCC####", "###CC#####CC###", "####CCCCCCC####")
                 .aisle("#######C#######", "#####CCSCC#####", "#######C#######")
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
                 .where('#', (tile) -> true)
                 .where('S', selfPredicate())
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))

@@ -5,7 +5,7 @@ import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.advance.TileEntityAdvancedDistillationTower;
+import gregicadditions.machines.multi.advance.MetaTileEntityAdvancedDistillationTower;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -14,8 +14,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
-
-import static gregicadditions.GAMaterials.BabbittAlloy;
 
 public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
 
@@ -32,7 +30,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
                 .aisle("SFX", "M#X", "X#X", "X#X", "X#X", "XXX")
                 .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
-                .where('X', TileEntityAdvancedDistillationTower.casingState)
+                .where('X', MetaTileEntityAdvancedDistillationTower.casingState)
                 .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)

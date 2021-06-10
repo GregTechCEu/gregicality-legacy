@@ -59,7 +59,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo Maintenance
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
     private final int maxTemperature;
     private static final int CONSUME_START = 100;
     private final int tier;

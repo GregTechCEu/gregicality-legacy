@@ -35,10 +35,10 @@ import java.util.Objects;
 
 import static gregtech.api.unification.material.Materials.*;
 
-public class HyperReactorUEV extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityHyperReactorIII extends FueledMultiblockController { //todo generator maintenance
 
 
-    public HyperReactorUEV(ResourceLocation metaTileEntityId, long maxVoltage) {
+    public MetaTileEntityHyperReactorIII(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[2]);
@@ -54,7 +54,7 @@ public class HyperReactorUEV extends FueledMultiblockController { //todo generat
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new gregicadditions.machines.multi.advance.hyper.HyperReactorUEV(metaTileEntityId, this.maxVoltage);
+        return new MetaTileEntityHyperReactorIII(metaTileEntityId, this.maxVoltage);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class HyperReactorUEV extends FueledMultiblockController { //todo generat
                 .aisle("##F#####F##","##F#####F##","##F#####F##","##F#####F##","##F#####F##", "##F#####F##", "##FCCCCCF##", "##C#####C##", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "##C#####C##", "###CCCCC###", "###########")
                 .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###CCCCC###", "##CC###CC##", "##C#####C##", "##C#####C##", "##C#####C##", "##CC###CC##", "###CCCCC###", "###########", "###########")
                 .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###########", "####CCC####", "###CCCCC###", "###CCSCC###", "###CCCCC###", "####CCC####", "###########", "###########", "###########")
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
                 .where('#', (tile) -> true)
                 .where('S', selfPredicate())
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))

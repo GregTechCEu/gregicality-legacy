@@ -3,13 +3,11 @@ package gregicadditions.machines.multi.multiblockpart;
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.utils.GALog;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -21,7 +19,6 @@ import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.items.MetaItems;
@@ -403,7 +400,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
 
     @Override
     public MultiblockAbility<MetaTileEntityMaintenanceHatch> getAbility() {
-        return GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY;
+        return GregicAdditionsCapabilities.MAINTENANCE_HATCH;
     }
 
     @Override

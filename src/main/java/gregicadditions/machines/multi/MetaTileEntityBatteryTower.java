@@ -27,7 +27,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -45,14 +44,13 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.Talonite;
 import static gregicadditions.client.ClientHandler.TALONITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
 public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer { //todo maintenance
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     private long energyStored;

@@ -34,7 +34,7 @@ import java.util.List;
 
 public class TileEntityLargeElectromagnet extends MultiRecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public TileEntityLargeElectromagnet(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeElectromagnet.euPercentage, GAConfig.multis.largeElectromagnet.durationPercentage, GAConfig.multis.largeElectromagnet.chancedBoostPercentage, GAConfig.multis.largeElectromagnet.stack,

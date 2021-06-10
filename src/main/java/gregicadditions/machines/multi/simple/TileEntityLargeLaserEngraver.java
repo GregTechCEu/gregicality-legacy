@@ -4,7 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
@@ -15,14 +14,12 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -30,7 +27,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.function.Predicate;
 
 public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblockController {
 
@@ -44,7 +40,7 @@ public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblock
     }
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS,
-            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     @Override

@@ -7,7 +7,6 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAHeatingCoil;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -45,14 +44,13 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 		return new MetaTileEntityElectricBlastFurnace(this.metaTileEntityId);
 	}
 
-	private int blastFurnaceTemperature;
+	protected int blastFurnaceTemperature;
 	private int bonusTemperature;
-	private int heatingCoilTier = 0;
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
 			MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
 			MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
 	};
 
 	@Override
@@ -126,19 +124,6 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 	protected void formStructure(PatternMatchContext context) {
 		super.formStructure(context);
 		blastFurnaceTemperature = context.getOrDefault("blastFurnaceTemperature", 0);
-
-		int coilTier = 0;
-
-		BlockWireCoil.CoilType coilType = context.get("coilType");
-		GAHeatingCoil.CoilType gaCoilType = context.get("gaCoilType");
-
-		if (coilType != null)
-			coilTier = Arrays.asList(HEATING_COILS).indexOf(coilType);
-		else if (gaCoilType != null)
-			coilTier = HEATING_COILS.length - 2 + Arrays.asList(GA_HEATING_COILS).indexOf(gaCoilType);
-
-		coilTier = Math.max(0, coilTier);
-		this.heatingCoilTier = coilTier;
 
 		int energyTier = GAUtility.getTierByVoltage(getEnergyContainer().getInputVoltage());
 		this.bonusTemperature = Math.max(0, 100 * (energyTier - 2));

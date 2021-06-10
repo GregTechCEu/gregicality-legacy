@@ -27,7 +27,7 @@ import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
 public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public MetaTileEntityDistillationTower(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, DISTILLATION_RECIPES, true, true, false);
@@ -53,7 +53,7 @@ public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockContro
                 .aisle("XXX", "X#X", "XXX").setRepeatable(0, 11)
                 .aisle("XXX", "XMX", "XXX")
                 .where('S', this.selfPredicate())
-                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('Y', statePredicate(new IBlockState[]{this.getCasingState()}).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
                 .where('X', fluidExportPredicate.or(statePredicate(this.getCasingState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('M', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
                 .where('#', isAirPredicate())

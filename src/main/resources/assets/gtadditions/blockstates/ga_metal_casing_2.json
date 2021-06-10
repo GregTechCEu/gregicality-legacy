@@ -43,11 +43,6 @@
           "all": "gtadditions:blocks/casings/red_steel"
         }
       },
-      "casing_gold": {
-        "textures": {
-          "all": "gtadditions:blocks/casings/gold"
-        }
-      },
       "casing_iron": {
         "textures": {
           "all": "gtadditions:blocks/casings/iron"

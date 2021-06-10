@@ -32,7 +32,6 @@ import net.minecraft.util.text.event.HoverEvent;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static gregicadditions.capabilities.MultiblockDataCodes.STORE_MAINTENANCE;
 import static gregicadditions.capabilities.MultiblockDataCodes.STORE_TAPED;
 import static gregtech.api.gui.widgets.AdvancedTextWidget.withButton;
 import static gregtech.api.gui.widgets.AdvancedTextWidget.withHoverTextTranslate;
@@ -129,7 +128,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
      * @param duration duration in ticks to add to the counter of active time
      */
     public void calculateMaintenance(int duration) {
-        MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+        MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
         if (maintenanceHatch.getType() == 2) {
             return;
         }
@@ -146,7 +145,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         if (hasMaintenance) {
-            MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+            MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
             if (maintenanceHatch.getType() == 2) {
                 this.maintenance_problems = 0b111111;
             } else {
@@ -170,7 +169,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     @Override
     public void invalidateStructure() {
         if (hasMaintenance) {
-            MetaTileEntityMaintenanceHatch maintenance = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY).get(0);
+            MetaTileEntityMaintenanceHatch maintenance = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
             if (maintenance.getType() != 2)
                 maintenance.storeMaintenanceData(maintenance_problems, timeActive);
         }
@@ -184,7 +183,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             return false;
 
         int mufflerCount = abilities.getOrDefault(GregicAdditionsCapabilities.MUFFLER_HATCH, Collections.emptyList()).size();
-        int maintenanceCount = abilities.getOrDefault(GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY, Collections.emptyList()).size();
+        int maintenanceCount = abilities.getOrDefault(GregicAdditionsCapabilities.MAINTENANCE_HATCH, Collections.emptyList()).size();
 
         if (hasMuffler) {
             if (mufflerCount != 1)
@@ -236,6 +235,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             storedTaped = buf.readBoolean();
         }
     }
+
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {

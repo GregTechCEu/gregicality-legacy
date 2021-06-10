@@ -24,7 +24,7 @@ public class GregicAdditionsCapabilities {
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_IMPORT_ITEMS = new MultiblockAbility<>();
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
-    public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_CAPABILITY = new MultiblockAbility<>();
+    public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_HATCH = new MultiblockAbility<>();
     public static final MultiblockAbility<MetaTileEntityMufflerHatch> MUFFLER_HATCH = new MultiblockAbility<>();
 
 }

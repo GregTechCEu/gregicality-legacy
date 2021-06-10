@@ -15,9 +15,7 @@ import gregicadditions.machines.energyconverter.utils.ConverterType;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.machines.multi.*;
 import gregicadditions.machines.multi.advance.*;
-import gregicadditions.machines.multi.advance.hyper.HyperReactor;
-import gregicadditions.machines.multi.advance.hyper.HyperReactorUEV;
-import gregicadditions.machines.multi.advance.hyper.HyperReactorUHV;
+import gregicadditions.machines.multi.advance.hyper.*;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
@@ -140,25 +138,25 @@ public class GATileEntities {
     public static TileEntityLargeWiremill LARGE_WIREMILL;
     public static TileEntityLargeChemicalReactor LARGE_CHEMICAL_REACTOR;
     public static TileEntityLargeExtruder LARGE_EXTRUDER;
-    public static TileEntityVolcanus VOLCANUS;
+    public static MetaTileEntityVolcanus VOLCANUS;
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
     public static MetaTileEntityVoidMiner[] VOID_MINER = new MetaTileEntityVoidMiner[3];
     public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityIndustrialPrimitiveBlastFurnace INDUSTRIAL_PRIMITIVE_BLAST_FURNACE;
-    public static TileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
-    public static TileEntityCryogenicFreezer CRYOGENIC_FREEZER;
+    public static MetaTileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
+    public static MetaTileEntityCryogenicFreezer CRYOGENIC_FREEZER;
     public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
     public static MetaTileEntityLargeRocketEngine LARGE_ROCKET_ENGINE;
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
     public static MetaTileEntityLargeNaquadahReactor LARGE_NAQUADAH_REACTOR;
-    public static HyperReactor HYPER_REACTOR;
-    public static HyperReactorUHV HYPER_REACTOR_UHV;
-    public static HyperReactorUEV HYPER_REACTOR_UEV;
+    public static MetaTileEntityHyperReactorI HYPER_REACTOR;
+    public static MetaTileEntityHyperReactorII HYPER_REACTOR_UHV;
+    public static MetaTileEntityHyperReactorIII HYPER_REACTOR_UEV;
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
-    public static TileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
+    public static MetaTileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
@@ -838,7 +836,7 @@ public class GATileEntities {
         LARGE_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(2530, new TileEntityLargeChemicalReactor(location("large_chemical_reactor")));
         LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(2531, new TileEntityLargeExtruder(location("large_extruder")));
         ELECTRIC_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityElectricBlastFurnace(location("electric_blast_furnace"))); // Register before Volcanus for JEI tab icon
-        VOLCANUS = GregTechAPI.registerMetaTileEntity(2532, new TileEntityVolcanus(location("volcanus")));
+        VOLCANUS = GregTechAPI.registerMetaTileEntity(2532, new MetaTileEntityVolcanus(location("volcanus")));
         LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeAssembler(location("large_assembler")));
 
         VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(2535, new MetaTileEntityVacuumFreezer(location("vacuum_freezer")));
@@ -874,9 +872,9 @@ public class GATileEntities {
         VOID_MINER[0] = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner"), GAValues.UV, GAConfig.multis.voidMiner.maxTemp));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));
         INDUSTRIAL_PRIMITIVE_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2553, new MetaTileEntityIndustrialPrimitiveBlastFurnace(location("industrial_primitive_blast_furnace")));
-        ADVANCED_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2554, new TileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLERY_RECIPES));
-        GregTechAPI.registerMetaTileEntity(2555, new TileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLATION_RECIPES));
-        CRYOGENIC_FREEZER = GregTechAPI.registerMetaTileEntity(2556, new TileEntityCryogenicFreezer(location("cryogenic_freezer")));
+        ADVANCED_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2554, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLERY_RECIPES));
+        GregTechAPI.registerMetaTileEntity(2555, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLATION_RECIPES));
+        CRYOGENIC_FREEZER = GregTechAPI.registerMetaTileEntity(2556, new MetaTileEntityCryogenicFreezer(location("cryogenic_freezer")));
         CHEMICAL_PLANT = GregTechAPI.registerMetaTileEntity(2557, new MetaTileEntityChemicalPlant(location("chemical_plant")));
         LARGE_ROCKET_ENGINE = GregTechAPI.registerMetaTileEntity(2558, new MetaTileEntityLargeRocketEngine(location("large_rocket_engine")));
         ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2559, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
@@ -1051,10 +1049,10 @@ public class GATileEntities {
 
         PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
 
-        HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new HyperReactor(location("hyper_reactor.uv"), GAConfig.multis.hyperReactors.euGeneration[0]));
-        HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new HyperReactorUHV(location("hyper_reactor.uhv"), GAConfig.multis.hyperReactors.euGeneration[1]));
-        HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new HyperReactorUEV(location("hyper_reactor.uev"), GAConfig.multis.hyperReactors.euGeneration[2]));
-        ADVANCED_FUSION_REACTOR = GregTechAPI.registerMetaTileEntity(3237, new TileEntityAdvFusionReactor(location("advanced_fusion_reactor")));
+        HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new MetaTileEntityHyperReactorI(location("hyper_reactor.uv"), GAConfig.multis.hyperReactors.euGeneration[0]));
+        HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new MetaTileEntityHyperReactorII(location("hyper_reactor.uhv"), GAConfig.multis.hyperReactors.euGeneration[1]));
+        HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new MetaTileEntityHyperReactorIII(location("hyper_reactor.uev"), GAConfig.multis.hyperReactors.euGeneration[2]));
+        ADVANCED_FUSION_REACTOR = GregTechAPI.registerMetaTileEntity(3237, new MetaTileEntityAdvFusionReactor(location("advanced_fusion_reactor")));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
         GA_HULLS[2] = GregTechAPI.registerMetaTileEntity(3241, new GAMetaTileEntityHull(location("hull.uiv"), 11));

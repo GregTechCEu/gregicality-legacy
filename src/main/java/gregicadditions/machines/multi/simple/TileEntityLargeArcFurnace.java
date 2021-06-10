@@ -2,8 +2,6 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.components.MotorCasing;
-import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -29,13 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public TileEntityLargeArcFurnace(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeArcFurnace.euPercentage, GAConfig.multis.largeArcFurnace.durationPercentage, GAConfig.multis.largeArcFurnace.chancedBoostPercentage, GAConfig.multis.largeArcFurnace.stack,

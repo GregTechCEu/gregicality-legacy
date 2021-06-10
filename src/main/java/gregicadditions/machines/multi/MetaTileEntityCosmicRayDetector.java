@@ -9,13 +9,10 @@ import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
-import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -30,16 +27,11 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -98,7 +90,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY,
-            GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+            GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     private long maxVoltage = 0;

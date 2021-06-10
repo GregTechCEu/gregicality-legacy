@@ -8,7 +8,6 @@ import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -37,12 +36,11 @@ import java.util.Objects;
 import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Helium;
-import static gregtech.api.unification.material.Materials.Naquadria;
 
-public class HyperReactor extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityHyperReactorI extends FueledMultiblockController { //todo generator maintenance
 
 
-    public HyperReactor(ResourceLocation metaTileEntityId, long maxVoltage) {
+    public MetaTileEntityHyperReactorI(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[0]);
@@ -58,7 +56,7 @@ public class HyperReactor extends FueledMultiblockController { //todo generator 
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new HyperReactor(metaTileEntityId, this.maxVoltage);
+        return new MetaTileEntityHyperReactorI(metaTileEntityId, this.maxVoltage);
     }
 
     @Override
@@ -107,7 +105,7 @@ public class HyperReactor extends FueledMultiblockController { //todo generator 
                 .aisle("CCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
                 .aisle("CCSCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
                 .where('S', selfPredicate())
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
                 .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_UV)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
                 .where('H', statePredicate(GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE)))

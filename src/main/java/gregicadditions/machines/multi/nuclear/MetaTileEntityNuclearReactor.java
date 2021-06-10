@@ -47,7 +47,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 
 
@@ -93,7 +92,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
         return new MetaTileEntityNuclearReactor(metaTileEntityId, recipeMap);
     }
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     @Override
     protected BlockPattern createStructurePattern() {

@@ -34,7 +34,7 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public TileEntityLargeReplicator(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {

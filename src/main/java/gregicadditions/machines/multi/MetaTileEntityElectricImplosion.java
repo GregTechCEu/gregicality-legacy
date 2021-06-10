@@ -2,8 +2,6 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.item.metal.NuclearCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -19,14 +17,12 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
-import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityElectricImplosion(ResourceLocation metaTileEntityId) {

@@ -41,7 +41,6 @@ public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
         TRITANIUM("casing_tritanium", Tritanium),
         BLACK_STEEL("casing_black_steel", BlackSteel),
         RED_STEEL("casing_red_steel", RedSteel),
-        GOLD("casing_gold", Gold),
         IRON("casing_iron", Iron),
         HSS_G("casing_hss_g", HSSG),
         HSS_S("casing_hss_s", HSSS),
@@ -73,7 +72,6 @@ public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
                 case "casing_tritanium": { return TRITANIUM_CASING; }
                 case "casing_black_steel": { return BLACK_STEEL_CASING; }
                 case "casing_red_steel": { return RED_STEEL_CASING; }
-                case "casing_gold": { return GOLD_CASING; }
                 case "casing_iron": { return IRON_CASING; }
                 case "casing_hss_g": { return HSS_G_CASING; }
                 case "casing_hss_s": { return HSS_S_CASING; }

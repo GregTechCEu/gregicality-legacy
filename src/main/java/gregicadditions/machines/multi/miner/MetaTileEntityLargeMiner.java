@@ -8,10 +8,6 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
-import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -31,8 +27,6 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -63,14 +57,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.IntStream;
-
-import static gregtech.api.unification.material.Materials.HSSG;
 
 
 public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner { //todo maintenance
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+
     public final Miner.Type type;
     private final IBlockState casingState;
     private final ICubeRenderer casingTexture;

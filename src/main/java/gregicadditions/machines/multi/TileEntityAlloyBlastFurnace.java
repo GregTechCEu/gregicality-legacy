@@ -2,7 +2,6 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
@@ -25,8 +24,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregicadditions.GAMaterials.Staballoy;
-import static gregicadditions.GAMaterials.ZirconiumCarbide;
 import static gregicadditions.client.ClientHandler.ZIRCONIUM_CARBIDE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
@@ -36,7 +33,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public TileEntityAlloyBlastFurnace(ResourceLocation metaTileEntityId) {

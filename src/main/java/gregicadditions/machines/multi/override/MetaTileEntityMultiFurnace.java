@@ -5,7 +5,6 @@ import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAHeatingCoil;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -19,7 +18,6 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -37,12 +35,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static gregtech.api.render.Textures.HEAT_PROOF_CASING;
-import static gregtech.api.unification.material.Materials.Invar;
 
 public class MetaTileEntityMultiFurnace extends gregtech.common.metatileentities.multi.electric.MetaTileEntityMultiFurnace { //todo extend GARecipeMapMultiblockController
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityMultiFurnace(ResourceLocation metaTileEntityId) {

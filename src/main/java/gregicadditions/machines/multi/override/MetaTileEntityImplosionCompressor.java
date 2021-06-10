@@ -26,7 +26,7 @@ public class MetaTileEntityImplosionCompressor extends GARecipeMapMultiblockCont
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
 			MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY,
+			MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH,
 			GregicAdditionsCapabilities.MUFFLER_HATCH};
 
 	public MetaTileEntityImplosionCompressor(ResourceLocation metaTileEntityId) {

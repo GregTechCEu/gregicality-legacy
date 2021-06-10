@@ -1,17 +1,14 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.utils.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -35,7 +32,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
@@ -44,11 +40,10 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import java.util.*;
 
 import static gregtech.api.render.Textures.ROBUST_TUNGSTENSTEEL_CASING;
-import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);

@@ -25,12 +25,11 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import static gregicadditions.client.ClientHandler.HSS_S_CASING;
-import static gregicadditions.client.ClientHandler.POTIN_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockController {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_CAPABILITY};
+	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
 	public TileEntityLargeMacerator(ResourceLocation metaTileEntityId) {
