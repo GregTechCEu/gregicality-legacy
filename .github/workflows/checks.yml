@@ -74,7 +74,7 @@ jobs:
           rm -f ~/.gradle/caches/modules-2/gc.properties
 
   checkStyle:
-    name: lint
+    name: JavaLint
     runs-on: ubuntu-latest
 
     steps:
@@ -87,3 +87,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'linter'
+          fail_on_error: true
