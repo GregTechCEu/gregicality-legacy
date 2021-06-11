@@ -82,19 +82,6 @@ public class ExoticComponents{
 
         CUTTER_RECIPES.recipeBuilder().duration(160).EUt(200000)
                 .inputs(EXOTIC_WAFER.getStackForm())
-                .fluidInputs(Lubricant.getFluid(1))
-                .outputs(EXOTIC_CHIP.getStackForm(16))
-                .buildAndRegister();
-
-        CUTTER_RECIPES.recipeBuilder().duration(480).EUt(200000)
-                .inputs(EXOTIC_WAFER.getStackForm())
-                .fluidInputs(DistilledWater.getFluid(3))
-                .outputs(EXOTIC_CHIP.getStackForm(16))
-                .buildAndRegister();
-
-        CUTTER_RECIPES.recipeBuilder().duration(800).EUt(200000)
-                .inputs(EXOTIC_WAFER.getStackForm())
-                .fluidInputs(Water.getFluid(5))
                 .outputs(EXOTIC_CHIP.getStackForm(16))
                 .buildAndRegister();
 
