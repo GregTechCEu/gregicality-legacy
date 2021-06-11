@@ -85,6 +85,7 @@ jobs:
         uses: nikitasavinov/checkstyle-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: sun_checks.xml
           reporter: 'github-pr-check'
           tool_name: 'linter'
           fail_on_error: true
