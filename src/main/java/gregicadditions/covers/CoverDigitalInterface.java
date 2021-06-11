@@ -25,6 +25,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.pipenet.tile.PipeCoverableImplementation;
+import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import gregtech.api.util.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -33,6 +34,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
@@ -960,11 +962,25 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                 RenderHelper.renderText(-5.5f / 16, -5.5F / 16, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
                 RenderHelper.renderText(5.7f / 16, -5.5F / 16, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
                 RenderHelper.renderText(0, -5.5F / 16, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
+                String name;
+                ItemStack stack = this.coverHolder.getStackForm();
                 if (this.coverHolder instanceof MetaTileEntity) {
-                    RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
-                    RenderHelper.renderText(0, -3.5F / 16, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName()), true);
+                    name = I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName());
+                } else if (this.coverHolder instanceof PipeCoverableImplementation){
+                    TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
+                    if (te != null) {
+                        stack = Item.getItemFromBlock(te.getBlockType()).getDefaultInstance();
+                        name = stack.getDisplayName();
+                    } else {
+                        name = "===???===";
+                    }
                 }
-                RenderHelper.renderItemOverLay(-8f / 16, -5f / 16, 0.002f, 1f / 32, this.coverHolder.getStackForm());
+                else {
+                    return true;
+                }
+                RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
+                RenderHelper.renderText(0, -3.5F / 16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
+                RenderHelper.renderItemOverLay(-8f / 16, -5f / 16, 0.002f, 1f / 32, stack);
                 return true;
             }
         }
