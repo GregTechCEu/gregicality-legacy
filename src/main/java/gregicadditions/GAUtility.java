@@ -84,8 +84,4 @@ public class GAUtility {
             }
         }
     }
-
-    public static void terribleTestMethodFormatting(int i) { GALog . logger  . info("bad");;;;}
-
-
 }
