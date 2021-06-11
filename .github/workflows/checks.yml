@@ -57,3 +57,4 @@ jobs:
           reporter: 'github-pr-check'
           tool_name: 'linter'
           fail_on_error: true
+          level: error
