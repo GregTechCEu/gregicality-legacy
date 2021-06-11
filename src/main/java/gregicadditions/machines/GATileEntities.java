@@ -19,6 +19,7 @@ import gregicadditions.machines.multi.advance.hyper.*;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
+import gregicadditions.machines.multi.mega.MetaTileEntityMegaDistillationTower;
 import gregicadditions.machines.multi.miner.*;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
@@ -258,6 +259,7 @@ public class GATileEntities {
     public static TileEntityLargeCanningMachine LARGE_CANNING_MACHINE;
     public static TileEntityLargeMassFabricator LARGE_MASS_FABRICATOR;
     public static TileEntityLargeReplicator LARGE_REPLICATOR;
+    public static MetaTileEntityMegaDistillationTower MEGA_DISTILLATION_TOWER;
 
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
@@ -1194,6 +1196,7 @@ public class GATileEntities {
         LARGE_CANNING_MACHINE = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeCanningMachine(location("large_canning_machine"), RecipeMaps.CANNER_RECIPES));
         LARGE_MASS_FABRICATOR = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeMassFabricator(location("large_mass_fabricator"), GARecipeMaps.MASS_FAB_RECIPES));
         LARGE_REPLICATOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeReplicator(location("large_replicator"), GARecipeMaps.REPLICATOR_RECIPES));
+        MEGA_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(4228, new MetaTileEntityMegaDistillationTower(location("mega_distillation_tower")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

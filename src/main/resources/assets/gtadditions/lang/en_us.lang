@@ -1605,6 +1605,8 @@ gtadditions.machine.large_canning_machine.name=Large Canning Machine
 gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
 gtadditions.machine.large_replicator.name=Large Replicator
 
+gtadditions.machine.mega_distillation_tower.name=Mega Distillation Tower
+
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
 gtadditions.machine.naquadah_reactor.mk4.name=Naquadah Reactor MK III
@@ -2922,10 +2924,10 @@ gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's an upgraded v
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitive Blast Furnace can be automated and sped up.
 gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite, Diorite and Granite. Must be adjacent to lava and water.
 gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes cryotheum at 10 + amount of voltage tiers overclocked per tick.
-gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and tungstensteel pipe casings in the center.
+gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and titanium pipe casings in the center.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
-gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => 4 Parallel
-gregtech.multiblock.advanced_distillation_tower.description4=    Distillery => 12 Parallel
+gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => Max 8 Parallel, 2 per overclock
+gregtech.multiblock.advanced_distillation_tower.description4=    Distillery & Fluid Heater => Max 64 Parallel, 8 per overclock
 gtadditions.multiblock.chemical_plant.tooltip=Better coils provide an increasing speed bonus.
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
 gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
@@ -2966,7 +2968,7 @@ gregtech.multiblock.universal.overheat=Overheated!
 gregtech.machine.world_accelerator.mode.tile=Tile Entity Mode
 gregtech.machine.world_accelerator.mode.entity=Entity Mode
 gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
-gregtech.multiblock.universal.framework.tooltip=The framework casings define which tier of recipe the multiblock is able to run.
+gregtech.multiblock.universal.framework.tooltip=The framework casings define the maximum voltage tier the multiblock is able to run.
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelEfficiency=Fuel Efficiency: %d %%
@@ -3011,7 +3013,9 @@ gtadditions.multiblock.battery_tower.input=EU/t input: %s
 gtadditions.multiblock.battery_tower.output=EU/t output: %s
 gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
 gtadditions.multiblock.blast_furnace.additional_temperature=Additional Temperature: %dK
-
+gtadditions.multiblock.mega_logic.tooltip.1=Max Parallel: §e256
+gtadditions.multiblock.mega_logic.tooltip.2=EU/t Usage: §eParallel Amount * Recipe EU/t * 0.5
+gtadditions.multiblock.mega_logic.tooltip.3=Duration Multiplier: §e2.00
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

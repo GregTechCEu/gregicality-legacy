@@ -28,32 +28,38 @@ public class GAMultiblockCasing extends VariantBlock<GAMultiblockCasing.CasingTy
 
     public enum CasingType implements IStringSerializable {
 
-        ASSEMBLY_LINE_CASING("assembly_line_casing"),
-        CHEMICALLY_INERT("chemically_inert_casing"),
-        LARGE_ASSEMBLER("large_assembler_casing"),
-        TIERED_HULL_ULV("tiered_hull_ulv"),
-        TIERED_HULL_LV("tiered_hull_lv"),
-        TIERED_HULL_MV("tiered_hull_mv"),
-        TIERED_HULL_HV("tiered_hull_hv"),
-        TIERED_HULL_EV("tiered_hull_ev"),
-        TIERED_HULL_IV("tiered_hull_iv"),
-        TIERED_HULL_LUV("tiered_hull_luv"),
-        TIERED_HULL_ZPM("tiered_hull_zpm"),
-        TIERED_HULL_UV("tiered_hull_uv"),
-        TIERED_HULL_MAX("tiered_hull_max"),
-        CLADDED_REACTOR_CASING("cladded_reactor_casing"),
-        PTFE_PIPE("ptfe_pipe_casing"),
-        TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing");
+        ASSEMBLY_LINE_CASING("assembly_line_casing", -1),
+        CHEMICALLY_INERT("chemically_inert_casing", -1),
+        LARGE_ASSEMBLER("large_assembler_casing", -1),
+        TIERED_HULL_ULV("tiered_hull_ulv", 0),
+        TIERED_HULL_LV("tiered_hull_lv", 1),
+        TIERED_HULL_MV("tiered_hull_mv", 2),
+        TIERED_HULL_HV("tiered_hull_hv", 3),
+        TIERED_HULL_EV("tiered_hull_ev", 4),
+        TIERED_HULL_IV("tiered_hull_iv", 5),
+        TIERED_HULL_LUV("tiered_hull_luv", 6),
+        TIERED_HULL_ZPM("tiered_hull_zpm", 7),
+        TIERED_HULL_UV("tiered_hull_uv", 8),
+        TIERED_HULL_MAX("tiered_hull_max", 14),
+        CLADDED_REACTOR_CASING("cladded_reactor_casing", -1),
+        PTFE_PIPE("ptfe_pipe_casing", -1),
+        TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing", -1);
 
         private final String name;
+        private final int tier;
 
-        CasingType(String name) {
+        CasingType(String name, int tier) {
             this.name = name;
+            this.tier = tier;
         }
 
         @Override
         public String getName() {
             return this.name;
+        }
+
+        public int getTier() {
+            return this.tier;
         }
 
     }
