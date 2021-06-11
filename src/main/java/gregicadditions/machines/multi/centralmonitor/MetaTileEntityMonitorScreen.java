@@ -485,9 +485,11 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @Override
-    public void removeFromMultiBlock(MultiblockControllerBase controllerBase) {
-        super.removeFromMultiBlock(controllerBase);
-//        this.setMode(null, this.mode);
+    public void onRemoval() {
+        super.onRemoval();
+        if (!this.getWorld().isRemote) {
+            this.setMode(null, this.mode);
+        }
     }
 
     @Override
