@@ -101,6 +101,8 @@ public class RecipeHandler {
         spring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpring);
         springSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSpringSmall);
         gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
+        gear.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGear);
+        ingotHot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngotHot);
 
         pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
         pipeSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSmallPipe);
@@ -198,6 +200,7 @@ public class RecipeHandler {
      * + Bending Cylinder Recipes
      * + GT6 Wrench Recipes (plates over ingots)
      * + Ingot -> Nugget Alloy Smelter recipes
+     * + Block -> Ingot Alloy Smelter recipes
      */
     private static void processIngot(OrePrefix ingot, IngotMaterial material) {
 
@@ -235,6 +238,13 @@ public class RecipeHandler {
                 .notConsumable(MetaItems.SHAPE_MOLD_NUGGET.getStackForm())
                 .output(nugget, material, 9)
                 .buildAndRegister();
+
+        if (!OreDictUnifier.get(block, material).isEmpty())
+            ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(8).duration((int) material.getAverageMass() * 9)
+                    .input(block, material)
+                    .notConsumable(MetaItems.SHAPE_MOLD_INGOT.getStackForm())
+                    .output(ingot, material, 9)
+                    .buildAndRegister();
     }
 
     /**
@@ -999,6 +1009,38 @@ public class RecipeHandler {
                     .input(ingot, material, 2)
                     .notConsumable(MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm())
                     .output(gearSmall, material)
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * Gear Material Handler. Generates:
+     *
+     * + Replace GTCE Gear recipe to use proper tool
+     */
+    private static void processGear(OrePrefix prefix, IngotMaterial material) {
+
+        removeRecipeByName(String.format("gtadditions:gear_%s", material.toString()));
+        ModHandler.addShapedRecipe(String.format("gear_%s", material.toString()), OreDictUnifier.get(gear, material),
+                "RPR", "PwP", "RPR",
+                'R', new UnificationEntry(stick, material),
+                'P', new UnificationEntry(plate, material));
+    }
+
+    /**
+     * Hot Ingot Material Handler. Generates:
+     *
+     * + Increased duration Hot Ingot Recipes, to make Cryogenic Freezer viable
+     */
+    private static void processIngotHot(OrePrefix prefix, IngotMaterial material) {
+
+        // Temperature at which a Hot Ingot is generated
+        if (material.blastFurnaceTemperature > 1750) {
+
+            removeRecipesByInputs(VACUUM_RECIPES, OreDictUnifier.get(ingotHot, material));
+            VACUUM_RECIPES.recipeBuilder().duration((int) (material.getAverageMass() * 3))
+                    .input(ingotHot, material)
+                    .output(ingot, material)
                     .buildAndRegister();
         }
     }
