@@ -5,6 +5,7 @@ import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,6 @@ import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
@@ -417,7 +418,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Fix GTCE Hypochlorous Acid Recipe
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000));
 
         // 10Cl + 10H2O -> 10HClO + 10H
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(8)
@@ -429,7 +430,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Fix GTCE Cumene Recipe
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000)});
+        removeRecipesByInputs(CHEMICAL_RECIPES, Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000));
 
         // 8C3H6 + 8C6H6 -> 8C9H12
         CHEMICAL_RECIPES.recipeBuilder().duration(1920).EUt(30)
@@ -802,11 +803,11 @@ public class RecipeOverride {
                 .outputs(LARGE_FLUID_CELL_TUNGSTEN_STEEL.getStackForm())
                 .buildAndRegister();
 
-        // Oil Hydrodesulfurization Catalysis
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricGas.getFluid(16000)});
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricNaphtha.getFluid(12000)});
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricLightFuel.getFluid(12000)});
-        removeRecipesByInputs(CHEMICAL_RECIPES, new FluidStack[]{Hydrogen.getFluid(2000), SulfuricHeavyFuel.getFluid(8000)});
+        // Oil Desulfurization Catalysis
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricGas.getFluid(16000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricNaphtha.getFluid(12000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricLightFuel.getFluid(12000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricHeavyFuel.getFluid(8000));
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
@@ -971,31 +972,32 @@ public class RecipeOverride {
                 'R', new UnificationEntry(ring, Iron));
 
         // Glowstone / Nether Quartz Block Recipes
-        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+        if (GAConfig.GT5U.Remove3x3BlockRecipes) {
             removeRecipeByName("minecraft:glowstone");
             removeRecipeByName("minecraft:quartz_block");
             removeRecipeByName("gregtech:nether_quartz_block_to_nether_quartz");
-
-            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
-                    .input(block, NetherQuartz)
-                    .output(gem, NetherQuartz, 4)
-                    .buildAndRegister();
-
-            MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
-                    .input(block, Glowstone)
-                    .output(dust, Glowstone, 4)
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
-                    .input(gem, NetherQuartz, 4)
-                    .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
-                    .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
-                    .outputs(new ItemStack(Blocks.GLOWSTONE))
-                    .buildAndRegister();
         }
+
+        FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, NetherQuartz)
+                .output(gem, NetherQuartz, 4)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, Glowstone)
+                .output(dust, Glowstone, 4)
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                .input(gem, NetherQuartz, 4)
+                .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
+                .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
+                .outputs(new ItemStack(Blocks.GLOWSTONE))
+                .buildAndRegister();
+
 
         // Glowstone Recipes
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
@@ -1088,5 +1090,69 @@ public class RecipeOverride {
 
         // Remove Bad Sulfuric Acid Recipe
         removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Sulfur)}, new FluidStack[]{Water.getFluid(4000)});
+
+        // Remove Small and Tiny Dust Mixer Recipes ====================================================================
+
+        ///////////////////////////////////////////////////
+        //                  Tiny Dusts                   //
+        ///////////////////////////////////////////////////
+
+        // Borosilicate Glass Tiny Dust Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Boron), OreDictUnifier.get(dustTiny, Glass, 7));
+        // Brass Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Zinc));
+        // Bronze Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Tin));
+        // Red Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, SterlingSilver), OreDictUnifier.get(dustTiny, BismuthBronze), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
+        // Blue Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, RoseGold), OreDictUnifier.get(dustTiny, Brass), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
+        // Ultimet Hand
+        removeRecipeByName("gregtech:dust_tiny_ultimet");
+        // Cobalt Brass Hand
+        removeRecipeByName("gregtech:dust_tiny_cobalt_brass");
+        // Stainless Steel Hand
+        removeRecipeByName("gregtech:dust_tiny_stainless_steel");
+        // Kanthal Hand
+        removeRecipeByName("gregtech:dust_tiny_kanthal");
+
+        ///////////////////////////////////////////////////
+        //                  Small Dusts                  //
+        ///////////////////////////////////////////////////
+
+        // Stainless Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Iron, 4), OreDictUnifier.get(dustSmall, Invar, 3), OreDictUnifier.get(dustSmall, Manganese), OreDictUnifier.get(dustSmall, Chrome));
+        // Ultimet Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Cobalt, 5), OreDictUnifier.get(dustSmall, Chrome, 2), OreDictUnifier.get(dustSmall, Nickel), OreDictUnifier.get(dustSmall, Molybdenum));
+        // Cobalt Brass Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Brass, 7), OreDictUnifier.get(dustSmall, Aluminium), OreDictUnifier.get(dustSmall, Cobalt));
+        // Gunpowder from Coal Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Saltpeter, 2), OreDictUnifier.get(dustSmall, Sulfur), OreDictUnifier.get(dustSmall, Coal));
+
+        // Some of them have both Small and Tiny Dust Mixer Recipes
+        for (OrePrefix prefix : Arrays.asList(dustSmall, dustTiny)) {
+            // Indium Gallium Phosphide
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Indium), OreDictUnifier.get(prefix, Gallium), OreDictUnifier.get(prefix, Phosphorus));
+            // Electrum
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Gold), OreDictUnifier.get(prefix, Silver));
+            // Invar
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron, 2), OreDictUnifier.get(prefix, Nickel), IntCircuitIngredient.getIntegratedCircuit(1));
+            // Kanthal
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron), OreDictUnifier.get(prefix, Aluminium), OreDictUnifier.get(prefix, Chrome));
+            // Cupronickel
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Nickel));
+            // Rose Gold
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Gold));
+            // Sterling Silver
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Silver, 4));
+            // Black Bronze
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper, 3), OreDictUnifier.get(prefix, Electrum, 2));
+            // Bismuth Bronze
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Bismuth), OreDictUnifier.get(prefix, Brass, 4));
+            // Black Steel
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, BlackBronze), OreDictUnifier.get(prefix, Nickel), OreDictUnifier.get(prefix, Steel, 3));
+            // Gunpowder from Charcoal
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Saltpeter, 2), OreDictUnifier.get(prefix, Sulfur), OreDictUnifier.get(prefix, Charcoal));
+        }
     }
 }

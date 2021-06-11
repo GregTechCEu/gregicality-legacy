@@ -59,15 +59,21 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
-        @Config.Comment("Various 2x2 and 3x3 Compression and Uncompression Recipes")
-        @Config.Name("Compression - Generate Compressor Recipes for blocks")
-        public boolean GenerateCompressorRecipes = true;
-        @Config.Name("Compression - Move 3x3 Crafting Recipes for blocks to the Packager (except tiny dusts)")
-        public boolean Remove3x3BlockRecipes = true;
-        @Config.Name("Compression - Move 1 to 9 Crafting Recipes to the Unpackager (except tiny dusts)")
-        public boolean RemoveBlockUncraftingRecipes = true;
-        @Config.Name("Compression - Add 2x2 Crafting Recipes to the Packager")
-        public boolean Packager2x2Recipes = true;
+        @Config.Comment("3x3 Crafting Table Recipe Removals")
+        @Config.Name("Crafting - Remove 3x3 Block Crafting Recipes from Crafting Table")
+        public boolean Remove3x3BlockRecipes = false;
+        @Config.Name("Crafting - Remove 3x3 Nugget Crafting Recipes from Crafting Table")
+        public boolean Remove3x3NuggetRecipes = false;
+        @Config.Name("Crafting - Remove 3x3 Misc Recipes from Crafting Table (all others)")
+        public boolean Remove3x3MiscRecipes = false;
+
+        @Config.Comment("1->9 Crafting Table Recipe Removals")
+        @Config.Name("Crafting - Remove 1->9 Block Uncrafting Recipes from Crafting Table")
+        public boolean Remove1to9BlockRecipes = false;
+        @Config.Name("Crafting - Remove 1->9 Nugget Uncrafting Recipes from Crafting Table")
+        public boolean Remove1to9NuggetRecipes = false;
+        @Config.Name("Crafting - Remove 1-> Misc Recipes from Crafting Table (all others)")
+        public boolean Remove1to9MiscRecipes = false;
 
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
