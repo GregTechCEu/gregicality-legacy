@@ -6,7 +6,7 @@
   "dimension_filter": ["name:the_end"],
   "vein_populator": {
     "type": "surface_rock",
-    "material": "naquadah"
+    "material": "naquadric_compound"
   },
   "generator": {
     "type": "ellipsoid",
