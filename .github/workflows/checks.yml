@@ -10,7 +10,7 @@ on:
 
 jobs:
   checks:
-    name: Checks
+    name: Compilation
     runs-on: ubuntu-latest
 
     steps:
@@ -40,3 +40,21 @@ jobs:
         run: |
           rm -f ~/.gradle/caches/modules-2/modules-2.lock
           rm -f ~/.gradle/caches/modules-2/gc.properties
+
+  checkStyle:
+    name: JavaLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run linter
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: sun_checks.xml
+          reporter: 'github-pr-check'
+          tool_name: 'linter'
+          fail_on_error: true
+          level: error
