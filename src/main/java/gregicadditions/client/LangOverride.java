@@ -51,11 +51,6 @@ public class LangOverride {
      * </code>
      */
     public static void registerOverrides() {
-        setLocalization("tile.chest.name", "Some nonsense idk");
-        setLocalization("tile.wire_coil.cupronickel.name", "funni coil");
-        setLocalization("metaitem.credit.copper.name", "idk man this better work");
-        setMetaItemName(EN_US, MetaItems.CREDIT_COPPER.getMetaItem(), "hehe dumb credit");
-        setMetaItemTooltip(EN_US, MetaItems.CREDIT_COPPER.getMetaItem(), "good description");
     }
 
 

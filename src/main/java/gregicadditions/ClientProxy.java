@@ -12,8 +12,6 @@ import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.utils.GALog;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.common.items.MetaItems;
-import li.cil.repack.org.luaj.vm2.ast.Str;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -35,7 +33,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 @SideOnly(Side.CLIENT)
