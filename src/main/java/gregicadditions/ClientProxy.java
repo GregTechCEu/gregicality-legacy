@@ -10,6 +10,8 @@ import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.utils.GALog;
+import gregicadditions.client.LangOverride.MetaItemName;
+import gregicadditions.client.LangOverride.SetTranslation;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.state.IBlockState;
@@ -87,17 +89,21 @@ public class ClientProxy extends CommonProxy {
         if (!(itemStack.getItem() instanceof ItemBlock)) {
 
             if (itemStack.getItem() instanceof MetaItem) {
-                LangOverride.MetaItemName translations = LangOverride.META_ITEM_TRANSLATIONS.get(itemStack.getItem());
+                MetaItemName translations = LangOverride
+                        .META_ITEM_TRANSLATIONS.get(itemStack.getItem());
+
                 if (translations != null) {
                     String name = translations.getName();
                     String tooltip = translations.getTooltip();
-                    if (name != null)
+                    if (name != null) {
                         event.getToolTip().set(0, name);
+                    }
                     if (tooltip != null) {
-                        if (event.getToolTip().size() >= 2)
+                        if (event.getToolTip().size() >= 2) {
                             event.getToolTip().set(1, tooltip);
-                        else
+                        } else {
                             event.getToolTip().add(tooltip);
+                        }
                     }
                 }
             }
@@ -115,13 +121,23 @@ public class ClientProxy extends CommonProxy {
         }
     }
 
+    /**
+     * Used for Overriding default Lang entries.
+     */
     @Override
     public void registerReloadListener() {
         super.registerReloadListener();
-        IReloadableResourceManager manager = (IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager();
-        manager.registerReloadListener((ISelectiveResourceReloadListener) (resManager, resPredicate) -> {
+        IReloadableResourceManager manager = (IReloadableResourceManager)
+                Minecraft.getMinecraft().getResourceManager();
+
+        manager.registerReloadListener(
+                (ISelectiveResourceReloadListener)
+                        (resManager, resPredicate) -> {
+
             if (resPredicate.test(VanillaResourceType.LANGUAGES)) {
-                for (LangOverride.SetTranslation translation : LangOverride.TRANSLATION_LIST) {
+                for (SetTranslation translation
+                        : LangOverride.TRANSLATION_LIST) {
+
                     translation.apply();
                 }
             }
