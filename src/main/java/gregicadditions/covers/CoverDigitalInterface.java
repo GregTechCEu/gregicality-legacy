@@ -25,16 +25,13 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.pipenet.tile.PipeCoverableImplementation;
-import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import gregtech.api.util.Position;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
@@ -227,6 +224,22 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
         return false;
     }
 
+    public TileEntity getCoveredTE() {
+        if (this.coverHolder instanceof PipeCoverableImplementation) {
+            return this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
+        } else if (this.coverHolder instanceof MetaTileEntity){
+            return ((MetaTileEntity) this.coverHolder).getHolder();
+        }
+        return null;
+    }
+
+    public EnumFacing getCoveredFacing() {
+        if (this.coverHolder instanceof PipeCoverableImplementation) {
+            return this.attachedSide.getOpposite();
+        } else {
+            return this.attachedSide;
+        }
+    }
 
     @Override
     public void writeToNBT(NBTTagCompound tagCompound) {
@@ -250,7 +263,6 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
         this.proxyMode[1] = tagCompound.hasKey("cdi1") ? tagCompound.getInteger("cdi1") : 0;
         this.proxyMode[2] = tagCompound.hasKey("cdi2") ? tagCompound.getInteger("cdi2") : 0;
         this.proxyMode[3] = tagCompound.hasKey("cdi3") ? tagCompound.getInteger("cdi3") : 0;
-
     }
 
     @Override
@@ -728,15 +740,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     }
 
     public IFluidHandler getFluidCapability() {
-        IFluidHandler capability = null;
-        if (this.coverHolder instanceof PipeCoverableImplementation) {
-            TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
-            if (te != null) {
-                capability = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide.getOpposite());
-            }
-        } else {
-            capability = this.coverHolder.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, this.attachedSide);
-        }
+        TileEntity te = getCoveredTE();
+        IFluidHandler capability = te == null ? null : te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, getCoveredFacing());
         if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
             List<IFluidTank> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.IMPORT_FLUIDS);
             List<IFluidTank> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.EXPORT_FLUIDS);
@@ -753,15 +758,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     }
 
     public IItemHandler getItemCapability() {
-        IItemHandler capability = null;
-        if (this.coverHolder instanceof PipeCoverableImplementation) {
-            TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
-            if (te != null) {
-                capability = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
-            }
-        } else {
-            capability = this.coverHolder.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.attachedSide);
-        }
+        TileEntity te = getCoveredTE();
+        IItemHandler capability = te == null ? null : te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getCoveredFacing());
         if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
             List<IItemHandlerModifiable> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.IMPORT_ITEMS);
             List<IItemHandlerModifiable> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.EXPORT_ITEMS);
@@ -778,15 +776,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     }
 
     public IEnergyContainer getEnergyCapability() {
-        IEnergyContainer capability = null;
-        if (this.coverHolder instanceof PipeCoverableImplementation) {
-            TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
-            if (te != null) {
-                capability = te.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide);
-            }
-        } else {
-            capability = this.coverHolder.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, this.attachedSide);
-        }
+        TileEntity te = getCoveredTE();
+        IEnergyContainer capability = te == null ? null : te.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, getCoveredFacing());
         if (capability == null && this.coverHolder instanceof MultiblockControllerBase) {
             List<IEnergyContainer> input = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.INPUT_ENERGY);
             List<IEnergyContainer> output = ((MultiblockControllerBase) this.coverHolder).getAbilities(MultiblockAbility.OUTPUT_ENERGY);
@@ -803,16 +794,8 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     }
 
     public IWorkable getMachineCapability() {
-        IWorkable capability = null;
-        if (this.coverHolder instanceof PipeCoverableImplementation) {
-            TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
-            if (te != null) {
-                capability = te.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
-            }
-        } else {
-            capability = this.coverHolder.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, this.attachedSide);
-        }
-        return capability;
+        TileEntity te = getCoveredTE();
+        return te == null ? null : te.getCapability(GregtechTileCapabilities.CAPABILITY_WORKABLE, getCoveredFacing());
     }
 
 
@@ -962,25 +945,14 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                 RenderHelper.renderText(-5.5f / 16, -5.5F / 16, 0, 1.0f / 70, 0XFFFFFFFF, "<", true);
                 RenderHelper.renderText(5.7f / 16, -5.5F / 16, 0, 1.0f / 70, 0XFFFFFFFF, ">", true);
                 RenderHelper.renderText(0, -5.5F / 16, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
-                String name;
-                ItemStack stack = this.coverHolder.getStackForm();
-                if (this.coverHolder instanceof MetaTileEntity) {
-                    name = I18n.format(((MetaTileEntity) this.coverHolder).getMetaFullName());
-                } else if (this.coverHolder instanceof PipeCoverableImplementation){
-                    TileEntity te = this.coverHolder.getWorld().getTileEntity(this.coverHolder.getPos().offset(this.attachedSide));
-                    if (te != null) {
-                        stack = Item.getItemFromBlock(te.getBlockType()).getDefaultInstance();
-                        name = stack.getDisplayName();
-                    } else {
-                        name = "===???===";
-                    }
+                TileEntity te = getCoveredTE();
+                if (te != null) {
+                    ItemStack itemStack = te.getBlockType().getItem(te.getWorld(), te.getPos(), te.getWorld().getBlockState(te.getPos()));
+                    String  name = itemStack.getDisplayName();
+                    RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
+                    RenderHelper.renderText(0, -3.5F / 16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
+                    RenderHelper.renderItemOverLay(-8f / 16, -5f / 16, 0.002f, 1f / 32, itemStack);
                 }
-                else {
-                    return true;
-                }
-                RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
-                RenderHelper.renderText(0, -3.5F / 16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
-                RenderHelper.renderItemOverLay(-8f / 16, -5f / 16, 0.002f, 1f / 32, stack);
                 return true;
             }
         }

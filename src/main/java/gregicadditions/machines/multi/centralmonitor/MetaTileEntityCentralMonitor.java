@@ -35,6 +35,7 @@ import gregtech.api.render.Textures;
 import gregtech.common.pipelike.cable.net.EnergyNet;
 import gregtech.common.pipelike.cable.net.WorldENet;
 import gregtech.common.pipelike.cable.tile.TileEntityCable;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.resources.I18n;
@@ -47,6 +48,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -437,7 +439,8 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 float lastBrightnessX = OpenGlHelper.lastBrightnessX;
                 float lastBrightnessY = OpenGlHelper.lastBrightnessY;
                 OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
-
+                EntityPlayer player = Minecraft.getMinecraft().player;
+                RayTraceResult rayTraceResult = player == null ? null : player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
                 int size = 0;
                 for (int w = 0; w < width; w++) {
                     for (int h = 0; h < height; h++) {
@@ -450,7 +453,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                                 GlStateManager.pushMatrix();
                                 RenderHelper.moveToFace(x + pos.getX() - pos2.getX(), y + pos.getY() - pos2.getY(), z + pos.getZ() - pos2.getZ(), this.frontFacing);
                                 RenderHelper.rotateToFace(this.frontFacing, spin);
-                                screen.renderScreen(partialTicks);
+                                screen.renderScreen(partialTicks, rayTraceResult);
                                 GlStateManager.popMatrix();
                             }
                         }

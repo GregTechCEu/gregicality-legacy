@@ -8,6 +8,7 @@ import gregtech.api.gui.widgets.TextFieldWidget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -75,7 +76,7 @@ public class TextPluginBehavior extends MonitorPluginBaseBehavior {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void renderPlugin(float partialTicks) {
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult) {
         for (int i = 0; i < texts.length; i++) {
             RenderHelper.renderText(-0.5f, -0.4625f + i / 16f, 0.002f, 1/128f, colors[i], texts[i], false);
         }

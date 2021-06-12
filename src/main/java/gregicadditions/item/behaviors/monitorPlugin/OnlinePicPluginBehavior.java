@@ -9,6 +9,7 @@ import gregtech.api.gui.widgets.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -137,7 +138,7 @@ public class OnlinePicPluginBehavior extends MonitorPluginBaseBehavior {
     }
 
     @Override
-    public void renderPlugin(float partialTicks) {
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult) {
         if (!this.url.equals("")) {
             if (texture != null && texture.hasTexture()) {
                 texture.render(-0.5f, -0.5f, 1, 1, this.rotation, this.scaleX, this.scaleY, this.flippedX, this.flippedY);

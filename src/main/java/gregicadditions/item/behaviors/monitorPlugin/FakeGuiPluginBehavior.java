@@ -29,6 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -208,9 +209,9 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
     }
 
     @Override
-    public void renderPlugin(float partialTicks) {
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult) {
         if (fakeModularGui != null) {
-            Tuple<Double, Double> result = this.screen.checkLookingAt(partialTicks);
+            Tuple<Double, Double> result = this.screen.checkLookingAt(rayTraceResult);
             if (result == null)
                 fakeModularGui.drawScreen(0, 0, partialTicks);
             else

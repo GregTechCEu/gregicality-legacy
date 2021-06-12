@@ -21,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -165,7 +166,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
      * Client. Write rendering here
      */
     @SideOnly(Side.CLIENT)
-    abstract public void renderPlugin(float partialTicks);
+    abstract public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult);
 
     public static MonitorPluginBaseBehavior getBehavior(ItemStack itemStack) {
         if (itemStack.getItem() instanceof MetaItem<?>){
