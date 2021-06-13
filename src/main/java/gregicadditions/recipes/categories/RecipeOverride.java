@@ -884,6 +884,14 @@ public class RecipeOverride {
                 .outputs(SodiumBicarbonate.getItemStack(6))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
+
+        // Ilmenite Processing
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Ilmenite), OreDictUnifier.get(dust, Carbon));
+        BLAST_RECIPES.recipeBuilder().EUt(500).duration(600).blastFurnaceTemp(1700)
+                .input(dust, Ilmenite, 5)
+                .output(ingot, WroughtIron)
+                .output(dust, Rutile, 3)
+                .buildAndRegister();
     }
 
     private static void vanillaOverride() {
