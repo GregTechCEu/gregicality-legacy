@@ -633,7 +633,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial RichNitrogenMix = new SimpleFluidMaterial("rich_nitrogen_mix", 0x6891d8, "H2O(CH4)?");
     public static final SimpleFluidMaterial OxidisedNitrogenMix = new SimpleFluidMaterial("oxidised_nitrogen_mix", 0x708ACD, "(H2O)2(CH4)??");
     public static final SimpleFluidMaterial PurifiedNitrogenMix = new SimpleFluidMaterial("purified_nitrogen_mix", 0x6891d8, "(H2O)2(CH4)?");
-    public static final SimpleFluidMaterial HotPurifiedNitrogenMix = new SimpleFluidMaterial("hot_purified_nitrogen_mix", 0x6891d8, "(H2O)2(CH4)?");
     public static final SimpleFluidMaterial CarbonatedEthanolamine = new SimpleFluidMaterial("carbonated_ethanolamine", 0x6f7d87, "H2NCH2CH2OHC");
     public static final SimpleFluidMaterial AmmoniaRichMix = new SimpleFluidMaterial("ammonia_rich_mix", 0x2f5d99, "NH3((H2O)2(CH4)?)");
     public static final SimpleFluidMaterial DissolvedLithiumOre = new SimpleFluidMaterial("dissolved_lithium_ores", 0x664850, "LiAlO2(H2SO4)");
