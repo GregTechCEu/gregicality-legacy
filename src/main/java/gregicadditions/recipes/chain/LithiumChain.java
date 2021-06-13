@@ -12,21 +12,21 @@ public class LithiumChain {
 
         // LiAlSi2O6 = LiAlSi2O6
         BLAST_RECIPES.recipeBuilder().duration(80).EUt(120).blastFurnaceTemp(1400)
-                .input(dust, Spodumene, 10)
-                .outputs(RoastedSpodumene.getItemStack(10))
+                .input(dust, Spodumene, 4)
+                .outputs(RoastedSpodumene.getItemStack())
                 .buildAndRegister();
 
         // KLi3Al4F2O10 + CaO = CaF2 + (KLi3Al4O10)O
         BLAST_RECIPES.recipeBuilder().duration(160).EUt(120).blastFurnaceTemp(1400)
-                .input(dust, Lepidolite, 20)
+                .input(dust, Lepidolite, 8)
                 .input(dust, Quicklime, 2)
-                .outputs(RoastedLepidolite.getItemStack(19))
+                .outputs(RoastedLepidolite.getItemStack())
                 .output(dust, Fluorite, 3)
                 .buildAndRegister();
 
         // LiAlSi2O6 + H2SO4 = [LiAlO2 + H2SO4] + 2SiO2
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .inputs(RoastedSpodumene.getItemStack(10))
+                .inputs(RoastedSpodumene.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(1000))
                 .output(dust, SiliconDioxide, 6)
@@ -34,7 +34,7 @@ public class LithiumChain {
 
         // (KLi3Al4O10)O + Al + 3H2SO4 = 3[LiAlO2 + H2SO4] + Al2O3 + K2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(120)
-                .inputs(RoastedLepidolite.getItemStack(19))
+                .inputs(RoastedLepidolite.getItemStack())
                 .input(dust, Aluminium)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(3000))
@@ -81,14 +81,26 @@ public class LithiumChain {
         // [LiCl + H2O] = LiCl + H2O (H2O Voided - Dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .fluidInputs(LithiumChlorideSolution.getFluid(1000))
-                .outputs(LithiumChloride.getItemStack(2))
-                .buildAndRegister();
-
-        // LiCl + KCl -> Li + Cl
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(110).EUt(120)
-                .inputs(LithiumChloride.getItemStack(2))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .output(dust, Lithium)
+                .buildAndRegister();
+
+        // Combined Step - Lepidolite
+        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(1920).duration(200)
+                .input(dust, Lepidolite, 8)
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .output(dust, LithiumFluoride, 4)
+                .output(dust, Potash, 3)
+                .outputs(AluminiumSulfate.getItemStack(17))
+                .buildAndRegister();
+
+        // Combined Step - Spodumene
+        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(1920).duration(200)
+                .input(dust, Spodumene, 8)
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .output(dust, SiliconDioxide, 12)
+                .outputs(AluminiumSulfate.getItemStack(17))
+                .output(dust, Lithium, 2)
                 .buildAndRegister();
     }
 }

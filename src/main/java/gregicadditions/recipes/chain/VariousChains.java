@@ -336,6 +336,21 @@ public class VariousChains {
                 .fluidOutputs(IronChloride.getFluid(3000))
                 .fluidOutputs(Hydrogen.getFluid(3000))
                 .buildAndRegister();
+
+        // LiCl -> Li + Cl
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(110).EUt(120)
+                .inputs(LithiumChloride.getItemStack(2))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .output(dust, Lithium)
+                .buildAndRegister();
+
+        // Li + Cl -> LiCl
+        CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(120)
+                .input(dust, Lithium)
+                .fluidInputs(Chlorine.getFluid(1000))
+                .notConsumable(IntCircuitIngredient.getIntegratedCircuit(1))
+                .outputs(LithiumChloride.getItemStack(2))
+                .buildAndRegister();
     }
 
     private static void hydrogenPeroxide() {

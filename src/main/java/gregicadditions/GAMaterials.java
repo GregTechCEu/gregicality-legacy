@@ -1453,8 +1453,6 @@ public class GAMaterials implements IMaterialHandler {
         Titanium.addFlag(GENERATE_PLASMA);
 
         // Decomposition TODO
-        Spodumene.addFlag(DISABLE_DECOMPOSITION);
-        Lepidolite.addFlag(DISABLE_DECOMPOSITION);
         Chromite.addFlag(DISABLE_DECOMPOSITION);
         Barite.addFlag(DISABLE_DECOMPOSITION);
         VanadiumMagnetite.addFlag(DISABLE_DECOMPOSITION);
