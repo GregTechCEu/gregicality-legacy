@@ -1454,11 +1454,11 @@ public class GAMaterials implements IMaterialHandler {
 
         // Decomposition
         Barite.addFlag(DISABLE_DECOMPOSITION);
-        VanadiumMagnetite.addFlag(DISABLE_DECOMPOSITION);
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);
         Pitchblende.addFlag(DISABLE_DECOMPOSITION);
         NaquadahAlloy.addFlag(DISABLE_DECOMPOSITION);
         Trona.addFlag(DISABLE_DECOMPOSITION);
+        Columbite.addFlag(DISABLE_DECOMPOSITION);
         removeFlags(Zeolite, DISABLE_DECOMPOSITION);
         if (GAConfig.Misc.tungstenProcess) {
             Scheelite.addFlag(DISABLE_DECOMPOSITION);
