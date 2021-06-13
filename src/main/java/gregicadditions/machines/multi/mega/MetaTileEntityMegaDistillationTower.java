@@ -23,10 +23,11 @@ public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMap
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+            GregicAdditionsCapabilities.MAINTENANCE_HATCH
+    };
 
     public MetaTileEntityMegaDistillationTower(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, DISTILLATION_RECIPES, 100, 100, 100, 0);
+        super(metaTileEntityId, DISTILLATION_RECIPES, 100, 200, 100, 0);
     }
 
     @Override
@@ -40,6 +41,8 @@ public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMap
                 .aisle("#YSY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
                 .aisle("#XXX#", "XCpCX", "XpPpX", "XCpCX", "#XXX#").setRepeatable(11)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
+                .setAmountAtLeast('L', 100)
+                .where('L', statePredicate(getCasingState()))
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('X', abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS).or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH)))

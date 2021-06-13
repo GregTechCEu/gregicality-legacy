@@ -217,7 +217,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVoltage;
+        return recipe.getEUt() <= maxVoltage;
     }
 
     @Override

@@ -36,7 +36,7 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
 
     public MegaMultiblockRecipeMapController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct, boolean hasMuffler, boolean hasMaintenance) {
         super(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, canDistinct, hasMuffler, hasMaintenance);
-        this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
+        this.recipeMapWorkable = new MegaMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage);
     }
 
     public static Predicate<BlockWorldState> frameworkPredicate() {
@@ -81,7 +81,7 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
         tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.1"));
         tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.2"));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.3", (double) ((MegaMultiblockRecipeLogic) this.recipeMapWorkable).getDurationPercentage()/100));
     }
 
     @Override
@@ -96,8 +96,8 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
 
     public static class MegaMultiblockRecipeLogic extends LargeSimpleMultiblockRecipeLogic {
 
-        private static final int OVERCLOCK_FACTOR = 2;
-        private static final int MAX_ITEMS_LIMIT = 256;
+        protected static final int OVERCLOCK_FACTOR = 2;
+        protected static final int MAX_ITEMS_LIMIT = 256;
 
         public MegaMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage) {
             super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, 256);
@@ -132,13 +132,13 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
             duration = matchingRecipe.getDuration();
 
             // Get parallel recipes to run: [0, 256]
-            minMultiplier = Math.min(minMultiplier, (int) (getMaxVoltage() / matchingRecipe.getEUt()));
+            int multiplier = Math.min(minMultiplier, (int) (getMaxVoltage() / EUt));
 
             List<CountableIngredient> newRecipeInputs = new ArrayList<>();
             List<FluidStack> newFluidInputs = new ArrayList<>();
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
-            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
+            this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, multiplier);
 
             // determine if there is enough room in the output to fit all of this
             boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
@@ -147,10 +147,10 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
                 return null;
 
             // Get EUt for the recipe, pre overclocking
-            long totalEUt = (long) minMultiplier * EUt;
+            long totalEUt = (long) multiplier * EUt;
 
             EUt = (int) (totalEUt / OVERCLOCK_FACTOR);
-            duration *= OVERCLOCK_FACTOR;
+            duration /= OVERCLOCK_FACTOR;
 
             RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)
@@ -160,7 +160,7 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
                     .EUt(Math.max(1, EUt * this.getEUtPercentage() / 100))
                     .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)));
 
-            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+            copyChancedItemOutputs(newRecipe, matchingRecipe, multiplier);
 
             return newRecipe.build().getResult();
         }

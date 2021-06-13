@@ -1499,13 +1499,13 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
-            public int durationDecreasePercentage = 50;
+            public int durationDecreasePercentage = 75;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.75.")
             @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
-            public int energyDecreasePercentage = 75;
+            public int energyDecreasePercentage = 90;
 
         }
 
@@ -1514,13 +1514,13 @@ public class GAConfig {
             @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer recipe EU/t discount")
-            public int energyDecreasePercentage = 75;
+            public int energyDecreasePercentage = 90;
 
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer duration decrease factor")
-            public int durationDecreasePercentage = 50;
+            public int durationDecreasePercentage = 75;
 
         }
 

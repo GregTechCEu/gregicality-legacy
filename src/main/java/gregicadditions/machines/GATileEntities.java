@@ -19,7 +19,9 @@ import gregicadditions.machines.multi.advance.hyper.*;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
+import gregicadditions.machines.multi.mega.MetaTileEntityMegaBlastFurnace;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaDistillationTower;
+import gregicadditions.machines.multi.mega.MetaTileEntityMegaVacuumFreezer;
 import gregicadditions.machines.multi.miner.*;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
@@ -259,7 +261,10 @@ public class GATileEntities {
     public static TileEntityLargeCanningMachine LARGE_CANNING_MACHINE;
     public static TileEntityLargeMassFabricator LARGE_MASS_FABRICATOR;
     public static TileEntityLargeReplicator LARGE_REPLICATOR;
+
     public static MetaTileEntityMegaDistillationTower MEGA_DISTILLATION_TOWER;
+    public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
+    public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
 
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
@@ -1197,6 +1202,8 @@ public class GATileEntities {
         LARGE_MASS_FABRICATOR = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeMassFabricator(location("large_mass_fabricator"), GARecipeMaps.MASS_FAB_RECIPES));
         LARGE_REPLICATOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeReplicator(location("large_replicator"), GARecipeMaps.REPLICATOR_RECIPES));
         MEGA_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(4228, new MetaTileEntityMegaDistillationTower(location("mega_distillation_tower")));
+        MEGA_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(4229, new MetaTileEntityMegaBlastFurnace(location("mega_blast_furnace")));
+        MEGA_VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(4230, new MetaTileEntityMegaVacuumFreezer(location("mega_vacuum_freezer")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

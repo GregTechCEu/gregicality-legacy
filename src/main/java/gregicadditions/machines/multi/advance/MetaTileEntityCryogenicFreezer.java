@@ -108,7 +108,7 @@ public class MetaTileEntityCryogenicFreezer extends MetaTileEntityVacuumFreezer 
 
         @Override
         protected boolean drawEnergy(int recipeEUt) {
-            int drain = 10 + getOverclockingTier(getMaxVoltage());
+            int drain = (int) Math.pow(2, getOverclockingTier(getMaxVoltage()));
             long resultEnergy = this.getEnergyStored() - (long) recipeEUt;
             Optional<IFluidTank> fluidTank =
                     getInputFluidInventory().getFluidTanks().stream()

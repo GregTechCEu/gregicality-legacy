@@ -1606,6 +1606,8 @@ gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
 gtadditions.machine.large_replicator.name=Large Replicator
 
 gtadditions.machine.mega_distillation_tower.name=Mega Distillation Tower
+gtadditions.machine.mega_blast_furnace.name=Mega Blast Furnace
+gtadditions.machine.mega_vacuum_freezer.name=Mega Vacuum Freezer
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
@@ -2859,7 +2861,7 @@ gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock stru
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". It is a complex Assembling Machine used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is used to create high tier circuits.
 gregtech.multiblock.processing_array.description=The Processing Array combines up to %d single block machines in a single multiblock, effectively easing automation.
-gregtech.multiblock.volcanus.description=The Volcanus is built the same as the EBF, but with different casings. It consumes pyrotheum at 10 + amount of voltage tiers overclocked per tick. Has a native 600K temperature increase.
+gregtech.multiblock.volcanus.description=The Volcanus is built the same as the EBF, but with different casings. It consumes pyrotheum 2 ^ max voltage tier mB of pyrotheum per tick. Has a native 600K temperature increase.
 gregtech.multiblock.large_bender_and_forming.description=The Large Bending and Forming Machine can be used as a Bending Machine, Forming Press, or Cluster Mill.
 gregtech.multiblock.large_multi_use.description=The Multi Use Machine can be used as a Compressor, Lathe, Polarizer, Fermenter, Fluid Extractor, Extractor, Autoclave, or Replicator.
 gregtech.multiblock.large_washing_plant.description=The Washing Plant can be used as an Ore Washer or Chemical Bath.
@@ -2923,7 +2925,7 @@ gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Indust
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's an upgraded version of The Primitive Blast Furnace.
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitive Blast Furnace can be automated and sped up.
 gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite, Diorite and Granite. Must be adjacent to lava and water.
-gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes cryotheum at 10 + amount of voltage tiers overclocked per tick.
+gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes pyrotheum 2 ^ max voltage tier mB of cryotheum per tick.
 gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and titanium pipe casings in the center.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => Max 8 Parallel, 2 per overclock
@@ -3015,7 +3017,9 @@ gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
 gtadditions.multiblock.blast_furnace.additional_temperature=Additional Temperature: %dK
 gtadditions.multiblock.mega_logic.tooltip.1=Max Parallel: §e256
 gtadditions.multiblock.mega_logic.tooltip.2=EU/t Usage: §eParallel Amount * Recipe EU/t * 0.5
-gtadditions.multiblock.mega_logic.tooltip.3=Duration Multiplier: §e2.00
+gtadditions.multiblock.mega_logic.tooltip.3=Duration Multiplier: §e%d
+gtadditions.multiblock.mega_blast_logic.tooltip.1=EU/t Usage: §eParallel Amount * Recipe EU/t
+gtadditions.multiblock.mega_blast_logic.tooltip.2=Prioritizes Parallel Recipes over Heating Coil Bonuses.
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

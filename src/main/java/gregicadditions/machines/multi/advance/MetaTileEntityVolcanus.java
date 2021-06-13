@@ -17,6 +17,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -89,6 +90,12 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
     }
 
     @Override
+    public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
+        int recipeRequiredTemp = recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0);
+        return this.blastFurnaceTemperature >= recipeRequiredTemp;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
@@ -112,7 +119,7 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
         @Override
         protected boolean drawEnergy(int recipeEUt) {
-            int drain = 10 + getOverclockingTier(getMaxVoltage());
+            int drain = (int) Math.pow(2, getOverclockingTier(getMaxVoltage()));
             long resultEnergy = this.getEnergyStored() - (long) recipeEUt;
             Optional<IFluidTank> fluidTank =
                     getInputFluidInventory().getFluidTanks().stream()
@@ -184,7 +191,7 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
                 // Do not overclock further if duration is already too small
                 // Apply Super Overclocks for every 1800k above the base recipe temperature
-                for (int i = bonusAmount; resultEUt <= GAValues.V[tier - 1] && resultDuration >= 3 && i > 0; i--) {
+                for (int i = bonusAmount; resultEUt <= GAValues.V[tier] && resultDuration >= 3 && i > 0; i--) {
                     if (i % 2 == 0) {
                         resultEUt *= 4;
                         resultDuration *= 0.25;
@@ -193,7 +200,7 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
                 // Do not overclock further if duration is already too small
                 // Apply Regular Overclocking
-                while (resultDuration >= 3 && resultEUt <= GAValues.V[tier - 1]) {
+                while (resultDuration >= 3 && resultEUt <= GAValues.V[tier]) {
                     resultEUt *= 4;
                     resultDuration /= 2.8;
                 }
