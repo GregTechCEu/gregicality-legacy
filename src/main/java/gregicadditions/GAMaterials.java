@@ -1461,6 +1461,7 @@ public class GAMaterials implements IMaterialHandler {
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);
         Pitchblende.addFlag(DISABLE_DECOMPOSITION);
         NaquadahAlloy.addFlag(DISABLE_DECOMPOSITION);
+        Trona.addFlag(DISABLE_DECOMPOSITION);
         removeFlags(Zeolite, DISABLE_DECOMPOSITION);
         if (GAConfig.Misc.tungstenProcess) {
             Scheelite.addFlag(DISABLE_DECOMPOSITION);
@@ -1627,6 +1628,7 @@ public class GAMaterials implements IMaterialHandler {
         PreciousMetal.setOreMultiplier(2);
         PlatinumMetallicPowder.setOreMultiplier(2);
         PalladiumMetallicPowder.setOreMultiplier(2);
+        Trona.setOreMultiplier(2);
 
         // Washed In
         PlatinumMetallicPowder.washedIn = SodiumPersulfate;
@@ -1641,6 +1643,28 @@ public class GAMaterials implements IMaterialHandler {
         Caliche.addOreByProducts(Niter, Saltpeter, Lepidolite);
         Zircon.addOreByProducts(Cobalt, Lead, UraniumRadioactive.getMaterial());
         PreciousMetal.addOreByProducts(Lead, Silver, Nickel);
+        Pyrochlore.addOreByProducts(Apatite, Calcite, Niobium);
+        Uranium.addOreByProducts(Lead, UraniumRadioactive.getMaterial(), Thorium);
+        Alunite.addOreByProducts(Zinc, Gallium, Iron);
+        Fluorite.addOreByProducts(Calcium);
+        FluoroApatite.addOreByProducts(Apatite, Fluorite, Phosphorus);
+        BandedIron.addOreByProducts(Magnetite, Calcium, Magnesium, SiliconDioxide);
+        Soapstone.addOreByProducts(SiliconDioxide, Magnesium, Calcite, Talc);
+        Dolomite.addOreByProducts(Dolomite, Calcium, Magnesium);
+        Wollastonite.addOreByProducts(Calcite, SiliconDioxide, Calcite, SiliconDioxide);
+        Kyanite.addOreByProducts(Talc, Aluminium, Silicon);
+        Kaolinite.addOreByProducts(Clay, Clay, SiliconDioxide, Kaolinite);
+        Gypsum.addOreByProducts(Sulfur, Calcite, Salt);
+        Talc.addOreByProducts(Clay, Clay, Carbon);
+        Wulfenite.addOreByProducts(Iron, Manganese, Manganese, Lead);
+        Powellite.addOreByProducts(Iron, Molybdenite, Potassium);
+        Trona.addOreByProducts(Sodium, SodaAsh, SodaAsh);
+        Mica.addOreByProducts(Potassium, Aluminium, Fluorite);
+        Prasiolite.addOreByProducts(Prasiolite, Iron, SiliconDioxide);
+        Saltpeter.addOreByProducts(Salt, Potassium);
+        Rhodocrosite.addOreByProducts(Calcium, Manganese);
+        Zeolite.addOreByProducts(Calcium, Silicon, Aluminium);
+        Columbite.addOreByProducts(Iron, Manganese, Niobium);
         EnrichedNaquadricCompound.addOreByProducts(NaquadricCompound, NaquadriaticCompound);
         NaquadricCompound.addOreByProducts(EnrichedNaquadricCompound);
         PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue, IrOsLeachResidue, PlatinumMetallicPowder);

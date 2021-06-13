@@ -876,6 +876,14 @@ public class RecipeOverride {
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(HeavyFuel.getFluid(4000))
                 .buildAndRegister();
+
+        // Trona Electrolysis
+        ELECTROLYZER_RECIPES.recipeBuilder().EUt(60).duration(784)
+                .input(dust, Trona, 14)
+                .output(dust, SodaAsh, 6)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .fluidOutputs(Water.getFluid(2000))
+                .buildAndRegister();
     }
 
     private static void vanillaOverride() {
