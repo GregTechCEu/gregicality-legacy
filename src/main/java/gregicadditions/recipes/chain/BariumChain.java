@@ -51,6 +51,13 @@ public class BariumChain {
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
+        // BaO -> Ba + O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(220).EUt(30)
+                .inputs(BariumOxide.getItemStack(2))
+                .output(dust, Barium)
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
         // 4BaO + 2Al -> 3Ba + Al2BaO4
         BLAST_RECIPES.recipeBuilder().duration(180).EUt(120).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(8))

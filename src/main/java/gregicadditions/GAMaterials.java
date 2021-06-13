@@ -623,8 +623,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial UraniumSulfateWasteSolution = new SimpleFluidMaterial("uranium_sulfate_waste_solution", 0xdfe018, "PbRaSr(H2SO4)");
     public static final SimpleFluidMaterial PurifiedUranylNitrate = new SimpleFluidMaterial("purified_uranyl_nitrate_solution", 0xeff028, "UO2(NO3)2(H2O)");
     public static final SimpleFluidMaterial UraniumDiuranate = new SimpleFluidMaterial("uranium_diuranate", 0xeff028, "(NH4)2U2O7");
-    public static final SimpleFluidMaterial HotUraniumDiuranate = new SimpleFluidMaterial("hot_uranium_diuranate", 0xeff028, "H2O(NH4)2U2O7");
-    public static final SimpleFluidMaterial HotPotassiumUranylTricarbonate = new SimpleFluidMaterial("hot_potassium_uranyl_carbonate", 0xeff028, "(NH4)2U2O7");
     public static final SimpleFluidMaterial UraniumRefinementWasteSolution = new SimpleFluidMaterial("uranium_refinement_waste_solution", 0xeff028, "H2SO4C?");
     public static final SimpleFluidMaterial ThoriumNitrateSolution = new SimpleFluidMaterial("thorium_nitrate_solution", 0x33bd45, "Th(NO3)4(H2O)");
     public static final SimpleFluidMaterial SodiumHexafluoroaluminate = new SimpleFluidMaterial("sodium_hexafluoroaluminate", (Sodium.materialRGB+Aluminium.materialRGB+Fluorine.materialRGB)/3, "Na3AlF6");
@@ -1455,7 +1453,7 @@ public class GAMaterials implements IMaterialHandler {
         // Decomposition
         Barite.addFlag(DISABLE_DECOMPOSITION);
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);
-        Pitchblende.addFlag(DISABLE_DECOMPOSITION);
+        Uraninite.addFlag(DISABLE_DECOMPOSITION);
         NaquadahAlloy.addFlag(DISABLE_DECOMPOSITION);
         Trona.addFlag(DISABLE_DECOMPOSITION);
         Columbite.addFlag(DISABLE_DECOMPOSITION);
