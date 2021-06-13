@@ -1452,8 +1452,7 @@ public class GAMaterials implements IMaterialHandler {
         Calcium.addFlag(GENERATE_PLASMA);
         Titanium.addFlag(GENERATE_PLASMA);
 
-        // Decomposition TODO
-        Chromite.addFlag(DISABLE_DECOMPOSITION);
+        // Decomposition
         Barite.addFlag(DISABLE_DECOMPOSITION);
         VanadiumMagnetite.addFlag(DISABLE_DECOMPOSITION);
         TungstenCarbide.addFlag(DISABLE_DECOMPOSITION);

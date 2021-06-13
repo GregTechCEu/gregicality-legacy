@@ -38,7 +38,7 @@ public class ChromiumChain {
 
         // 2Cr2FeO4 + 4Na2CO3(H2O) + 7O -> Fe2O3 + 4CO2 + 4Na2CrO4(H2O)
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .input(dust, Chromite, 14)
+                .input(dust, Chromite, 7)
                 .fluidInputs(SodiumCarbonateSolution.getFluid(4000))
                 .fluidInputs(Oxygen.getFluid(7000))
                 .output(dust, BandedIron, 5)
@@ -68,6 +68,15 @@ public class ChromiumChain {
                 .input(dust, Aluminium, 2)
                 .output(dust, Chrome)
                 .outputs(Alumina.getItemStack(5))
+                .buildAndRegister();
+
+        // Combined Step - Chromite
+        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(1920).duration(200)
+                .input(dust, Chromite, 7)
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .output(dust, BandedIron, 5)
+                .output(dust, Sulfur, 3)
+                .output(dust, Chrome, 4)
                 .buildAndRegister();
 
         // Na2SO4(H2O) -> Na2SO4
