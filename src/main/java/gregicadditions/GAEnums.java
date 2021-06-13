@@ -161,7 +161,11 @@ public class GAEnums {
      *
      * @throws Exception If failed.
      */
-    public static void addSlotsToGTCEMaps(RecipeMap<?> map, String slotType, int value) throws Exception {
+    public static void addSlotsToGTCEMaps(
+            final RecipeMap<?> map,
+            final String       slotType,
+            final int          value)
+            throws Exception {
 
         // set public
         Field field = RecipeMap.class.getDeclaredField(slotType);

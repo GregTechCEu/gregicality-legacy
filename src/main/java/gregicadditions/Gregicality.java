@@ -80,11 +80,24 @@ public class Gregicality {
     public Gregicality() {
         GAEnums.preInit();
         try {
-            GAEnums.addSlotsToGTCEMaps(RecipeMaps.DISTILLERY_RECIPES, "maxOutputs", 1);
-            GAEnums.addSlotsToGTCEMaps(RecipeMaps.CHEMICAL_BATH_RECIPES, "maxFluidOutputs", 1);
-            GAEnums.addSlotsToGTCEMaps(RecipeMaps.CHEMICAL_RECIPES, "maxOutputs", 2);
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.DISTILLERY_RECIPES,
+                    "maxOutputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.CHEMICAL_BATH_RECIPES,
+                    "maxFluidOutputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.CHEMICAL_RECIPES,
+                    "maxOutputs",
+                    2
+            );
         } catch (Exception e) {
-            GALog.logger.error("Error setting recipe map fields, {}", e.toString());
+            GALog.logger.error("Error setting recipe map fields, {}",
+                    e.toString());
         }
     }
 
