@@ -1626,6 +1626,7 @@ public class GAMaterials implements IMaterialHandler {
         PlatinumMetallicPowder.setOreMultiplier(2);
         PalladiumMetallicPowder.setOreMultiplier(2);
         Trona.setOreMultiplier(2);
+        Lepidolite.setOreMultiplier(2);
 
         // Washed In
         PlatinumMetallicPowder.washedIn = SodiumPersulfate;
