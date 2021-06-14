@@ -10,28 +10,28 @@
   },
   "variants": {
     "variant": {
-      "heating_coil_1": {
+      "titan_steel_coil": {
         "textures": {
           "bottom": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "top": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "side": "gregtech:blocks/casings/solid/heating_coil/heating.coil.uhv"
         }
       },
-      "heating_coil_2": {
+      "pikyonium_coil": {
         "textures": {
           "bottom": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "top": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "side": "gregtech:blocks/casings/solid/heating_coil/heating.coil.uev"
         }
       },
-      "heating_coil_3": {
+      "black_titanium_coil": {
         "textures": {
           "bottom": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "top": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "side": "gregtech:blocks/casings/solid/heating_coil/heating.coil.uiv"
         }
       },
-      "heating_coil_4": {
+      "neutronium_coil": {
         "textures": {
           "bottom": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "top": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",

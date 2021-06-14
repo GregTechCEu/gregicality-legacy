@@ -186,6 +186,7 @@ public class UltimateMaterials {
                 .fluidInputs(NonMetals.getFluid(15000))
                 .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
                 .fluidOutputs(Periodicium.getFluid(16560))
+                .blastFurnaceTemp(65000)
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder().duration(20).EUt(30720)

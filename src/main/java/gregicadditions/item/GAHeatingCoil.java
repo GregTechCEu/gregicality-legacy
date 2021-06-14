@@ -27,7 +27,7 @@ public class GAHeatingCoil extends VariantBlock<GAHeatingCoil.CoilType> {
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CoilType.HEATING_COIL_1));
+        setDefaultState(getState(CoilType.TITAN_STEEL_COIL));
     }
 
     @Override
@@ -51,11 +51,11 @@ public class GAHeatingCoil extends VariantBlock<GAHeatingCoil.CoilType> {
 
     public enum CoilType implements IStringSerializable {
 
-        HEATING_COIL_1("heating_coil_1", 10000, 32, 8, null),
-        HEATING_COIL_2("heating_coil_2", 25000, 32, 8, null),
-        HEATING_COIL_3("heating_coil_3", 50000, 64, 16, null),
-        HEATING_COIL_4("heating_coil_4", 75000, 64, 16, null),
-        HEATING_COIL_5("heating_coil_5", 100000, 128, 32, null);
+        TITAN_STEEL_COIL("titan_steel_coil", 9600, 32, 8, null),
+        PIKYONIUM_COIL("pikyonium_coil", 10600, 32, 8, null),
+        BLACK_TITANIUM_COIL("black_titanium_coil", 11200, 64, 16, null),
+        NEUTRONIUM_COIL("neutronium_coil", 12600, 64, 16, null),
+        HEATING_COIL_5("heating_coil_5", 14200, 128, 32, null);
 
         private final String name;
         private final int coilTemperature;

@@ -1942,10 +1942,10 @@ tile.ga_robot_arm_casing.robot_arm_uiv.name=Robot Arm Block (UIV)
 tile.ga_robot_arm_casing.robot_arm_umv.name=Robot Arm Block (UMV)
 tile.ga_robot_arm_casing.robot_arm_uxv.name=Robot Arm Block (UXV)
 tile.ga_robot_arm_casing.robot_arm_max.name=Robot Arm Block (MAX)
-tile.ga_heating_coil.heating_coil_1.name=Advanced Heating Coil MK I
-tile.ga_heating_coil.heating_coil_2.name=Advanced Heating Coil MK II
-tile.ga_heating_coil.heating_coil_3.name=Advanced Heating Coil MK III
-tile.ga_heating_coil.heating_coil_4.name=Advanced Heating Coil MK IV
+tile.ga_heating_coil.titan_steel_coil.name=Titan Steel Coil
+tile.ga_heating_coil.pikyonium_coil.name=Pikyonium Coil
+tile.ga_heating_coil.black_titanium_coil.name=Black Titanium Coil
+tile.ga_heating_coil.neutronium_coil.name=Neutronium Coil
 tile.ga_heating_coil.heating_coil_5.name=Advanced Heating Coil MK V
 
 tile.ga_divertor_casing.divertor_1.name=Advanced Fusion Divertor MK I

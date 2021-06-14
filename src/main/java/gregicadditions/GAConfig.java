@@ -1499,7 +1499,7 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
-            public int durationDecreasePercentage = 75;
+            public int durationDecreasePercentage = 66;
 
             @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.75.")
             @Config.RangeInt(min = 1, max = 100)

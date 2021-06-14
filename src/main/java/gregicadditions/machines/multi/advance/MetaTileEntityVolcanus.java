@@ -1,13 +1,12 @@
 package gregicadditions.machines.multi.advance;
 
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.override.MetaTileEntityElectricBlastFurnace;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -33,25 +32,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
 import static gregicadditions.client.ClientHandler.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
-public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
+public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace { //todo staged removal
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
-    private final DecimalFormat formatter = new DecimalFormat("#0.00");
-
     public MetaTileEntityVolcanus(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
-        this.recipeMapWorkable = new VolcanusRecipeLogic(this, GAConfig.multis.volcanus.energyDecreasePercentage, GAConfig.multis.volcanus.durationDecreasePercentage, 100, 0);
+        this.recipeMapWorkable = new VolcanusRecipeLogic(this);
         reinitializeStructurePattern();
     }
 
@@ -100,9 +96,6 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.volcanus.description"));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(GAConfig.multis.volcanus.energyDecreasePercentage / 100.0)));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(GAConfig.multis.volcanus.durationDecreasePercentage / 100.0)));
     }
 
     @Nonnull
@@ -111,10 +104,10 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
         return Textures.PRIMITIVE_BLAST_FURNACE_OVERLAY;
     }
 
-    public class VolcanusRecipeLogic extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
+    public class VolcanusRecipeLogic extends GAMultiblockRecipeLogic {
 
-        public VolcanusRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
-            super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, stack);
+        public VolcanusRecipeLogic(RecipeMapMultiblockController tileEntity) {
+            super(tileEntity);
         }
 
         @Override
@@ -141,7 +134,7 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
 
         @Override
         protected void setupRecipe(Recipe recipe) {
-            int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getIntegerProperty("blast_furnace_temperature"));
+            int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0));
             this.progressTime = 1;
             this.setMaxProgress(resultOverclock[1]);
             this.recipeEUt = resultOverclock[0];
@@ -167,6 +160,12 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
                 return new int[]{EUt, durationModified};
             }
             boolean negativeEU = EUt < 0;
+
+            int bonusAmount = Math.max(0, ((MetaTileEntityVolcanus) metaTileEntity).getBlastFurnaceTemperature() - recipeTemp) / 900;
+
+            // Apply EUt discount for every 900K above the base recipe temperature
+            EUt *= Math.pow(0.95, bonusAmount);
+
             int tier = getOverclockingTier(voltage);
             if (GAValues.V[tier] <= EUt || tier == 0)
                 return new int[]{EUt, durationModified};
@@ -183,30 +182,14 @@ public class MetaTileEntityVolcanus extends MetaTileEntityElectricBlastFurnace {
                 double resultDuration = durationModified;
                 previousRecipeDuration = (int) resultDuration;
 
-                if (!(this.metaTileEntity instanceof MetaTileEntityElectricBlastFurnace)) {
-                    return calculateOverclock(EUt, voltage, duration);
-                }
-
-                int bonusAmount = Math.max(0, ((MetaTileEntityVolcanus) metaTileEntity).getBlastFurnaceTemperature() - recipeTemp) / 900;
-
                 // Do not overclock further if duration is already too small
                 // Apply Super Overclocks for every 1800k above the base recipe temperature
-                for (int i = bonusAmount; resultEUt <= GAValues.V[tier] && resultDuration >= 3 && i > 0; i--) {
+                for (int i = bonusAmount; resultEUt <= GAValues.V[tier - 1] && resultDuration >= 3 && i > 0; i--) {
                     if (i % 2 == 0) {
                         resultEUt *= 4;
                         resultDuration *= 0.25;
                     }
                 }
-
-                // Do not overclock further if duration is already too small
-                // Apply Regular Overclocking
-                while (resultDuration >= 3 && resultEUt <= GAValues.V[tier]) {
-                    resultEUt *= 4;
-                    resultDuration /= 2.8;
-                }
-
-                // Apply EUt discount for every 900K above the base recipe temperature
-                resultEUt *= Math.pow(0.95, bonusAmount);
 
                 return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
             }

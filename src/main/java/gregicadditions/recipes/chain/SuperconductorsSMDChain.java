@@ -268,6 +268,7 @@ public class SuperconductorsSMDChain {
                 .input(dust, Garnierite, 2)
                 .input(dust, SodaAsh, 6)
                 .fluidOutputs(WoodsGlass.getFluid(1296))
+                .blastFurnaceTemp(1400)
                 .buildAndRegister();
 
         // Fe + 2I -> FeI2

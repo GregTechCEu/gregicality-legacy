@@ -12,6 +12,7 @@ import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -152,8 +153,8 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy",
-            0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder())
+    public static final RecipeMapExtended<BlastRecipeBuilder> BLAST_ALLOY_RECIPES = (RecipeMapExtended<BlastRecipeBuilder>) new RecipeMapExtended<>("blast_alloy",
+            0, 9, 0, 0, 0, 2, 1, 1, new BlastRecipeBuilder())
             .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
 
 

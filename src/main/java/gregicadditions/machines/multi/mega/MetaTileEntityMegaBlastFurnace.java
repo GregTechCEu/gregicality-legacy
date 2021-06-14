@@ -3,11 +3,9 @@ package gregicadditions.machines.multi.mega;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.override.MetaTileEntityElectricBlastFurnace;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -101,6 +99,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
     public void invalidateStructure() {
         super.invalidateStructure();
         this.blastFurnaceTemperature = 0;
+        this.bonusTemperature = 0;
     }
 
     @Override
@@ -141,7 +140,8 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
         return this.blastFurnaceTemperature;
     }
 
-    public static class MegaBlastFurnaceRecipeLogic extends MegaMultiblockRecipeLogic {
+
+    protected static class MegaBlastFurnaceRecipeLogic extends MegaMultiblockRecipeLogic {
 
         private static final double LOG_4 = Math.log(4);
 
@@ -164,6 +164,15 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             } else {
                 this.setActive(true);
             }
+        }
+
+        @Override
+        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
+            int currentTemp = ((MetaTileEntityMegaBlastFurnace) metaTileEntity).getBlastFurnaceTemperature();
+            if (recipe != null && recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0) <= currentTemp)
+                return createRecipe(maxVoltage, inputs, fluidInputs, recipe);
+            return null;
         }
 
         @Override
@@ -194,9 +203,10 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
 
             EUt = matchingRecipe.getEUt();
             duration = matchingRecipe.getDuration();
+            int currentTemp = ((MetaTileEntityMegaBlastFurnace) this.metaTileEntity).getBlastFurnaceTemperature();
 
             // Get amount of 900Ks over the recipe temperature
-            int bonusAmount = Math.max(0, ((MetaTileEntityMegaBlastFurnace) metaTileEntity).getBlastFurnaceTemperature() - recipeTemp) / 900;
+            int bonusAmount = Math.max(0, (currentTemp - recipeTemp) / 900);
 
             // Apply EUt discount for every 900K above the base recipe temperature
             EUt *= Math.pow(0.95, bonusAmount);
@@ -238,6 +248,9 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             // if there isn't, we can't process this recipe.
             if (!canFitOutputs)
                 return null;
+
+            if (duration < 3)
+                duration = 3;
 
             RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
                     .inputsIngredients(newRecipeInputs)

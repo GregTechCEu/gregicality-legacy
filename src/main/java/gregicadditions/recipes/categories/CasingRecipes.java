@@ -452,31 +452,31 @@ public class CasingRecipes {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(500000)
-                .input(wireGtDouble, TungstenTitaniumCarbide, 8)
+                .input(wireGtDouble, TitanSteel, 8)
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Tritanium.getFluid(L))
-                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(HEATING_COIL_1))
+                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(TITAN_STEEL_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2000000)
                 .input(wireGtDouble, Pikyonium, 8)
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Adamantium.getFluid(L))
-                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(HEATING_COIL_2))
+                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(PIKYONIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(8000000)
-                .input(wireGtDouble, Cinobite, 8)
+                .input(wireGtDouble, BlackTitanium, 8)
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Vibranium.getFluid(L))
-                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(HEATING_COIL_3))
+                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(BLACK_TITANIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(32000000)
                 .input(wireGtDouble, Neutronium, 8)
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Neutronium.getFluid(L))
-                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(HEATING_COIL_4))
+                .fluidInputs(Cinobite.getFluid(L))
+                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(NEUTRONIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)

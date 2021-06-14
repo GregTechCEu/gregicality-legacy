@@ -135,6 +135,7 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 	public void invalidateStructure() {
 		super.invalidateStructure();
 		this.blastFurnaceTemperature = 0;
+		this.bonusTemperature = 0;
 	}
 
 	@Override
@@ -159,7 +160,7 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 
 		@Override
 		protected void setupRecipe(Recipe recipe) {
-			int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getIntegerProperty("blast_furnace_temperature"));
+			int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0));
 			this.progressTime = 1;
 			this.setMaxProgress(resultOverclock[1]);
 			this.recipeEUt = resultOverclock[0];
@@ -185,6 +186,12 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 				return new int[]{EUt, durationModified};
 			}
 			boolean negativeEU = EUt < 0;
+
+			int bonusAmount = Math.max(0, ((MetaTileEntityElectricBlastFurnace) metaTileEntity).getBlastFurnaceTemperature() - recipeTemp) / 900;
+
+			// Apply EUt discount for every 900K above the base recipe temperature
+			EUt *= Math.pow(0.95, bonusAmount);
+
 			int tier = getOverclockingTier(voltage);
 			if (GAValues.V[tier] <= EUt || tier == 0)
 				return new int[]{EUt, durationModified};
@@ -200,12 +207,6 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 				int resultEUt = EUt;
 				double resultDuration = durationModified;
 				previousRecipeDuration = (int) resultDuration;
-
-				if (!(this.metaTileEntity instanceof MetaTileEntityElectricBlastFurnace)) {
-					return calculateOverclock(EUt, voltage, duration);
-				}
-
-				int bonusAmount = Math.max(0, ((MetaTileEntityElectricBlastFurnace) metaTileEntity).getBlastFurnaceTemperature() - recipeTemp) / 900;
 
 				// Do not overclock further if duration is already too small
 				// Apply Super Overclocks for every 1800k above the base recipe temperature
@@ -223,8 +224,8 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 					resultDuration /= 2.8;
 				}
 
-				// Apply EUt discount for every 900K above the base recipe temperature
-				resultEUt *= Math.pow(0.95, bonusAmount);
+				if (resultDuration < 3)
+					resultDuration = 3;
 
 				return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
 			}

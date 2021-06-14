@@ -1,5 +1,6 @@
 package gregicadditions.capabilities.impl;
 
+import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
@@ -7,6 +8,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
@@ -68,6 +70,11 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
             previousRecipeDuration = (int) resultDuration;
             return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
         }
+    }
+
+    @Override
+    protected int getOverclockingTier(long voltage) {
+        return GAUtility.getTierByVoltage(voltage);
     }
 
     @Override
