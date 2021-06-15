@@ -684,7 +684,7 @@ public class SuperconductorsSMDChain {
 
         // Ac(C2O4)2 + 3NaH + 13Na + 4CCl4 -> AcH3 + 16NaCl + 8CO
         BLAST_RECIPES.recipeBuilder().duration(530).EUt(120)
-                .blastFurnaceTemp(10000)
+                .blastFurnaceTemp(10700)
                 .inputs(ActiniumOxalate.getItemStack(13))
                 .inputs(SodiumHydride.getItemStack(6))
                 .input(dust, Sodium, 13)
@@ -891,7 +891,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // Fr4B4C5 + 2[3At + Ho + Th + Cn + Fl] + 2 C = B4C7Fr4At6Ho2Th2Fl2Cn2
-        BLAST_RECIPES.recipeBuilder().duration(15000).EUt(120).blastFurnaceTemp(10000)
+        BLAST_RECIPES.recipeBuilder().duration(15000).EUt(120).blastFurnaceTemp(11300)
                 .inputs(BoronFranciumCarbide.getItemStack(13))
                 .input(dust, Carbon, 2)
                 .inputs(MixedAstatideSalts.getItemStack(14))
@@ -1067,7 +1067,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // Re + 5Cl -> ReCl5
-        BLAST_RECIPES.recipeBuilder().duration(930).EUt(120).blastFurnaceTemp(25000)
+        BLAST_RECIPES.recipeBuilder().duration(930).EUt(120).blastFurnaceTemp(12500)
                 .input(dust, Rhenium)
                 .fluidInputs(Chlorine.getFluid(5000))
                 .outputs(RheniumChloride.getItemStack(6))

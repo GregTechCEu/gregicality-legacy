@@ -176,6 +176,8 @@ public class GATileEntities {
 
     //multiblock
     public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
+    public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>();
+    public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>();
 
     // Steam Multis
     public static MetaTileEntitySteamHatch STEAM_HATCH;
@@ -1131,11 +1133,7 @@ public class GATileEntities {
             TRANSFORMER_12_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".12"), i, 12, 48)));
             TRANSFORMER_16_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase() + ".16"), i, 16, 64)));
         }
-        GTLog.logger.info(id);
         id = 4127;
-        for (int i = 9; i < GAValues.V.length - 1; i++) {
-            OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GAValues.VN[i].toLowerCase()), i)));
-        }
 
         LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4137, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
         BATTERY_BUFFERS[5][0] = GregTechAPI.registerMetaTileEntity(4138, new GAMetaTileEntityBatteryBuffer(gregtechId("battery_buffer.max.1"), GAValues.MAX, 1));
@@ -1204,6 +1202,12 @@ public class GATileEntities {
         MEGA_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(4228, new MetaTileEntityMegaDistillationTower(location("mega_distillation_tower")));
         MEGA_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(4229, new MetaTileEntityMegaBlastFurnace(location("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(4230, new MetaTileEntityMegaVacuumFreezer(location("mega_vacuum_freezer")));
+
+        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4241, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_4x"), 2, false)));
+        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4242, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_9x"), 3, false)));
+
+        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4243, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_4x"), 2, true)));
+        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4244, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_9x"), 3, true)));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

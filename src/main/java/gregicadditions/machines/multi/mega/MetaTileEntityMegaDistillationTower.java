@@ -21,9 +21,8 @@ import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
 public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMapController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityMegaDistillationTower(ResourceLocation metaTileEntityId) {

@@ -68,13 +68,13 @@ public class WaferRecipes {
                 .buildAndRegister();
 
         // Hassium Boule
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(50000*3/4)
+        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(11800)
                 .input(dustTiny, MetastableHassium)
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .outputs(HASSIUM_SEED_CRYSTAL.getStackForm())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(17000000).blastFurnaceTemp(50000)
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(17000000).blastFurnaceTemp(11200)
                 .input(dust, MetastableHassium, 2)
                 .inputs(HASSIUM_SEED_CRYSTAL.getStackForm())
                 .fluidInputs(Xenon.getFluid(1000))

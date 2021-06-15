@@ -1731,6 +1731,13 @@ gtadditions.machine.fluid_hatch.export_filtered.umv.name=Filtered Output Hatch (
 gtadditions.machine.fluid_hatch.export_filtered.uxv.name=Filtered Output Hatch (UXV)
 gtadditions.machine.fluid_hatch.export_filtered.max.name=Filtered Output Hatch (MAX)
 
+gtadditions.machine.multi_fluid_input_4x.name=Quadruple Input Hatch
+gtadditions.machine.multi_fluid_input_9x.name=Nonuple Input Hatch
+gtadditions.machine.multi_fluid_output_4x.name=Quadruple Output Hatch
+gtadditions.machine.multi_fluid_output_9x.name=Nonuple Output Hatch
+gtadditions.machine.multi_fluid_hatch_universal.tooltip.1=Capacity: §b16000mB§7 per tank.
+gtadditions.machine.multi_fluid_hatch_universal.tooltip.2=Tank Count: §b%d
+
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
 gtadditions.machine.qubit_computer.name=Quantum Computer
 gtadditions.machine.stellar_forge.name=Stellar Forge
@@ -1986,7 +1993,7 @@ tile.ga_metal_casing_1.casing_hastelloy_x78.name=Matrix-Stiffened Hastelloy X78 
 tile.ga_metal_casing_1.casing_hastelloy_n.name=Oxidation Resistant Hastelloy N Casing
 tile.ga_metal_casing_1.casing_hastelloy_k243.name=High Stability Hastelloy K243 Casing
 tile.ga_metal_casing_1.casing_incoloy_813.name=Corrosion Proof Incoloy 813 Casing
-tile.ga_metal_casing_1.casing_incoloy_ma956.name=Spacecraft Grade Incoloy-MA956 Casing
+tile.ga_metal_casing_1.casing_incoloy_ma956.name=Spacecraft Grade Incoloy MA-956 Casing
 tile.ga_metal_casing_1.casing_maraging_steel_250.name=Long-Lasting Maraging Steel 250 Casing
 tile.ga_metal_casing_1.casing_nitinol_60.name=Superelastic Nitinol 60 Casing
 tile.ga_metal_casing_1.casing_inconel_625.name=High-Stress Inconel 625 Casing

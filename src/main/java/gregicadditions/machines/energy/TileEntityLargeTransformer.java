@@ -19,6 +19,7 @@ import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -37,7 +38,7 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     private boolean isActive = false;
     private long currentDrain = 0;
     private long drain = 0;
-    DecimalFormat formatter = new DecimalFormat("#0.0");
+    DecimalFormat formatter = new DecimalFormat("#0.00");
 
     public TileEntityLargeTransformer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -48,8 +49,7 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     public void invalidateStructure() {
         super.invalidateStructure();
         resetTileAbilities();
-        if (isActive)
-            setActive(false);
+        setActive(false);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
                     currentDrain += left;
                 }
             }
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 drain = currentDrain / 20;
                 currentDrain = 0;
             }
@@ -155,6 +155,18 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         this.isActive = buf.readBoolean();
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        data.setBoolean("isActive", this.isActive);
+        return super.writeToNBT(data);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        this.isActive = data.getBoolean("isActive");
     }
 
     @Override

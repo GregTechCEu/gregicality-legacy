@@ -52,7 +52,7 @@ public class GAHeatingCoil extends VariantBlock<GAHeatingCoil.CoilType> {
     public enum CoilType implements IStringSerializable {
 
         TITAN_STEEL_COIL("titan_steel_coil", 9600, 32, 8, null),
-        PIKYONIUM_COIL("pikyonium_coil", 10600, 32, 8, null),
+        PIKYONIUM_COIL("pikyonium_coil", 10700, 32, 8, null),
         BLACK_TITANIUM_COIL("black_titanium_coil", 11200, 64, 16, null),
         NEUTRONIUM_COIL("neutronium_coil", 12600, 64, 16, null),
         HEATING_COIL_5("heating_coil_5", 14200, 128, 32, null);
