@@ -1047,7 +1047,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial BariumCarbonate = new SimpleDustMaterial("barium_carbonate", Salt.materialRGB+10, (short) 94, MaterialIconSet.FINE, "BaCO3");
     public static final SimpleDustMaterial BariumOxide = new SimpleDustMaterial("barium_oxide", (Barium.materialRGB+Oxygen.materialRGB)/2, (short) 95, MaterialIconSet.FINE, "BaO");
     public static final SimpleDustMaterial BariumAluminate = new SimpleDustMaterial("barium_aluminate", Saltpeter.materialRGB+10, (short) 96, MaterialIconSet.FINE, "BaAl2O4");
-    public static final SimpleDustMaterial PitchblendeBaCOmix = new SimpleDustMaterial("pitchblende_barium_mixture", 0xb8c319, (short) 97, MaterialIconSet.ROUGH, "((UO2)3ThPb)BaCO3");
     public static final SimpleDustMaterial PotassiumUranylTricarbonate = new SimpleDustMaterial("potassium_uranyl_carbonate", 0xeff028, (short) 98, MaterialIconSet.METALLIC, "(UO2)CO3");
     public static final SimpleDustMaterial UraniumPeroxideThoriumOxide = new SimpleDustMaterial("uranium_peroxide_thorium_oxide", 0x202020, (short) 99, MaterialIconSet.SHINY, "(UO3)(H2O2)ThO2");
     public static final SimpleDustMaterial UraniumThoriumOxide = new SimpleDustMaterial("uranium_thorium_oxide", 0x202020, (short) 100, MaterialIconSet.SHINY, "UO2ThO2");
