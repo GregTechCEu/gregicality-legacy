@@ -116,8 +116,8 @@ dependencies {
     }
 
     // Change to "compile" to add one of these to game
-    "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
-    "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))
+    "compile"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
+    "compile"(files("extdeps/refinedstorage-1.6.15.jar"))
     "compileOnly"(files("extdeps/Cucumber-1.12.2-1.1.3.jar"))
     "compileOnly"(files("extdeps/MysticalAgriculture-1.12.2-1.7.5.jar"))
     "compileOnly"(files("extdeps/MysticalAgradditions-1.12.2-1.3.2.jar"))
