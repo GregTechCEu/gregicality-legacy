@@ -22,9 +22,7 @@ import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonito
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.miner.*;
-import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
+import gregicadditions.machines.multi.multiblockpart.*;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityGasCentrifuge;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
@@ -32,8 +30,6 @@ import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.MetaTileEntityQubitComputer;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.multi.steam.MetaTileEntitySteamGrinder;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamHatch;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntitySteamItemBus;
 import gregicadditions.machines.multi.steam.MetaTileEntitySteamOven;
 import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
@@ -243,6 +239,8 @@ public class GATileEntities {
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
 
     public static TileEntitySteamMiner STEAM_MINER;
+
+    public static MetaTileEntityDigitalItemBus DIGITAL_OUTPUT_BUS;
 
     public static void init() {
 
@@ -1150,6 +1148,7 @@ public class GATileEntities {
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
         STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
+        DIGITAL_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityDigitalItemBus(location("digital_output")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

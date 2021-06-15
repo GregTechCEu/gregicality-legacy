@@ -1,9 +1,14 @@
 package gregicadditions.machines.multi.multiblockpart;
 
 import com.raoulvdberge.refinedstorage.RS;
+import com.raoulvdberge.refinedstorage.api.IRSAPI;
 import com.raoulvdberge.refinedstorage.api.network.INetwork;
 import com.raoulvdberge.refinedstorage.api.network.node.INetworkNode;
+import com.raoulvdberge.refinedstorage.api.network.node.INetworkNodeManager;
+import com.raoulvdberge.refinedstorage.api.network.node.INetworkNodeProxy;
 import com.raoulvdberge.refinedstorage.api.util.Action;
+import com.raoulvdberge.refinedstorage.apiimpl.API;
+import com.raoulvdberge.refinedstorage.capability.CapabilityNetworkNodeProxy;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -13,7 +18,11 @@ import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMu
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
@@ -22,7 +31,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IItemHandlerModifiable>, INetworkNode {
+public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IItemHandlerModifiable>, INetworkNode, INetworkNodeProxy {
 
     protected INetwork network;
     public static final String ID = "digital_item_bus";
@@ -34,6 +43,16 @@ public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart i
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
         return new MetaTileEntityDigitalItemBus(metaTileEntityId);
+    }
+
+    @Override
+    public void onLoad() {
+        IRSAPI instance = API.instance();
+        World world = getWorld();
+        INetworkNodeManager manager = instance.getNetworkNodeManager(world);
+        BlockPos blockPos = getPos();
+        manager.setNode(blockPos, this);
+        super.onLoad();
     }
 
     @Override
@@ -70,6 +89,8 @@ public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart i
                 validateSlotIndex(slot);
 
                 ItemStack result;
+
+                //Something here is broken...
                 if (simulate) {
                     result = network.insertItem(stack, stack.getCount(), Action.SIMULATE);
                 } else {
@@ -129,5 +150,24 @@ public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart i
     @Override
     public String getId() {
         return ID;
+    }
+
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing side) {
+        if (capability == CapabilityNetworkNodeProxy.NETWORK_NODE_PROXY_CAPABILITY) {
+            return CapabilityNetworkNodeProxy.NETWORK_NODE_PROXY_CAPABILITY.cast(this);
+        }
+
+        return super.getCapability(capability, side);
+    }
+
+    @Nonnull
+    @Override
+    public INetworkNode getNode() {
+        return this;
+    }
+
+    public boolean isTickable() {
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAEnums;
+import gregicadditions.utils.GALog;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.unification.OreDictUnifier;
@@ -290,12 +291,13 @@ public class OreRecipeHandler {
     }
 
     public static void processCrushed(OrePrefix dustCrushedPrefix, DustMaterial material) {
-
-        SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
-                .input(dustCrushedPrefix, material)
-                .fluidInputs(Water.getFluid(100))
-                .output(crushedPurified, material)
-                .buildAndRegister();
+        if (OreDictUnifier.get(crushedPurified, material) != ItemStack.EMPTY) {
+            SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
+                    .input(dustCrushedPrefix, material)
+                    .fluidInputs(Water.getFluid(100))
+                    .output(crushedPurified, material)
+                    .buildAndRegister();
+        }
     }
 
     private static double getPercentOfComponentInMaterial(Material material, Material materialToFind) {
