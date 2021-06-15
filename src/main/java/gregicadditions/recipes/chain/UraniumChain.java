@@ -69,7 +69,7 @@ public class UraniumChain {
                 .buildAndRegister();
 
         // (NH4)2U2O7 + 2K2CO3 -> 2UO2(CO3) + 2K2O + 2NH3 + H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(120)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(120)
                 .fluidInputs(UraniumDiuranate.getFluid(1000))
                 .inputs(PotassiumCarbonate.getItemStack(12))
                 .outputs(PotassiumUranylTricarbonate.getItemStack(5))

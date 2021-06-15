@@ -272,7 +272,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial Zincite = new DustMaterial(957, "zincite", 8947843, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Zinc, 1), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial CobaltOxide = new DustMaterial(956, "cobalt_oxide", 3556352, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Cobalt, 1), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial ArsenicTrioxide = new DustMaterial(955, "arsenic_trioxide", Arsenic.materialRGB-10, MaterialIconSet.ROUGH, 1, ImmutableList.of(new MaterialStack(Arsenic, 2), new MaterialStack(Oxygen, 3)), 0);
-    public static final DustMaterial CupricOxide = new DustMaterial(954, "cupric_oxide", 526344, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Copper, 1), new MaterialStack(Oxygen, 1)), 0);
+    // FREE ID 954
     public static final DustMaterial Ferrosilite = new DustMaterial(953, "ferrosilite", 5256470, MaterialIconSet.SAND, 1, ImmutableList.of(new MaterialStack(Iron, 1), new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial Blizz = new DustMaterial(951, "blizz", 0x01F3F6, MaterialIconSet.DULL, 1, ImmutableList.of(new MaterialStack(Redstone, 1), new MaterialStack(Water, 1)), NO_SMELTING | SMELT_INTO_FLUID | MORTAR_GRINDABLE | BURNING);
     public static final DustMaterial Snow = new DustMaterial(950, "snow", 0xFFFFFF, MaterialIconSet.OPAL, 1, ImmutableList.of(new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 1)), NO_SMELTING);
@@ -283,7 +283,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial CircuitCompoundMK3 = new DustMaterial(907, "circuit_compound_mkc", 0x003316, MaterialIconSet.SAND, 2, of(new MaterialStack(IndiumGalliumPhosphide, 1), new MaterialStack(Dibismusthydroborat, 3), new MaterialStack(BismuthTellurite, 2)), 0);
     public static final DustMaterial YttriumOxide = new DustMaterial(906, "yttrium_oxide", 0xC6EBB3, MaterialIconSet.SAND, 2, of(new MaterialStack(Yttrium, 2), new MaterialStack(Oxygen, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial Zirkelite = new DustMaterial(904, "zirkelite", 0x6B5E6A, MaterialIconSet.DULL, 4, of(new MaterialStack(Calcium, 2), new MaterialStack(Thorium, 2), new MaterialStack(Cerium, 1), new MaterialStack(Zirconium, 7), new MaterialStack(Rutile, 6), new MaterialStack(Niobium, 4), new MaterialStack(Oxygen, 10)), GENERATE_ORE);
-    public static final DustMaterial PlatinumSaltCrude = new DustMaterial(902, "platinum_salt", Platinum.materialRGB, MaterialIconSet.DULL, 2, of(new MaterialStack(Platinum, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
+    public static final DustMaterial PlatinumSalt = new DustMaterial(902, "platinum_salt", Platinum.materialRGB, MaterialIconSet.DULL, 2, of(new MaterialStack(Platinum, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PlatinumSaltRefined = new DustMaterial(901, "refined_platinum_salt", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(new MaterialStack(Platinum, 1), new MaterialStack(RareEarth, 1), new MaterialStack(Chlorine, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PlatinumMetallicPowder = new DustMaterial(900, "platinum_metallic_powder", Platinum.materialRGB, MaterialIconSet.METALLIC, 2, of(new MaterialStack(Platinum, 1), new MaterialStack(RareEarth, 1)), GENERATE_ORE | DISABLE_DECOMPOSITION);
     public static final DustMaterial PlatinumResidue = new DustMaterial(898, "platinum_residue", 0x64632E, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(RareEarth, 1), new MaterialStack(RareEarth, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
@@ -297,8 +297,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial CalciumChloride = new DustMaterial(884, "calcium_chloride", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Calcium, 1), new MaterialStack(Chlorine, 2)), 0);
     public static final DustMaterial SodiumRuthenate = new DustMaterial(882, "sodium_ruthenate", 0x3A40CB, MaterialIconSet.SHINY, 2, of(new MaterialStack(Sodium, 2), new MaterialStack(Oxygen, 4), new MaterialStack(Ruthenium, 1)), DISABLE_DECOMPOSITION);
     public static final DustMaterial RutheniumTetroxide = new DustMaterial(881, "ruthenium_tetroxide", 0xC7C7C7, MaterialIconSet.DULL, 2, of(new MaterialStack(Ruthenium, 1), new MaterialStack(Oxygen, 4)), SMELT_INTO_FLUID | GENERATE_FLUID_BLOCK | EXCLUDE_BLOCK_CRAFTING_RECIPES | DISABLE_DECOMPOSITION);
-    public static final DustMaterial IrOsLeachResidue = new DustMaterial(878, "rarest_metal_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 2), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3), new MaterialStack(RareEarth, 1)), GENERATE_ORE | DISABLE_DECOMPOSITION);
-    public static final DustMaterial IrLeachResidue = new DustMaterial(877, "iridium_metal_residue", 0x846649, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 4), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), GENERATE_ORE | DISABLE_DECOMPOSITION);
+    public static final DustMaterial RarestMetalResidue = new DustMaterial(878, "rarest_metal_residue", 0x644629, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 2), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3), new MaterialStack(RareEarth, 1)), GENERATE_ORE | DISABLE_DECOMPOSITION);
+    public static final DustMaterial IrMetalResidue = new DustMaterial(877, "iridium_metal_residue", 0x846649, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Iridium, 2), new MaterialStack(Oxygen, 4), new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), GENERATE_ORE | DISABLE_DECOMPOSITION);
     public static final DustMaterial PGSDResidue = new DustMaterial(876, "sludge_dust_residue", (SiliconDioxide.materialRGB + Gold.materialRGB)/2, MaterialIconSet.DULL, 2, of(new MaterialStack(SiliconDioxide, 2), new MaterialStack(Gold, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial IridiumChloride = new DustMaterial(871, "iridium_chloride", (Iridium.materialRGB+Chlorine.materialRGB)/2, MaterialIconSet.LAPIS, 2, of(new MaterialStack(Iridium, 1), new MaterialStack(Chlorine, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial PGSDResidue2 = new DustMaterial(870, "metallic_sludge_dust_residue", (Copper.materialRGB+Nickel.materialRGB)/2, MaterialIconSet.DULL, 2, of(new MaterialStack(Copper, 1), new MaterialStack(Nickel, 1)), DECOMPOSITION_BY_CENTRIFUGING);
@@ -307,7 +307,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial RhodiumNitrate = new DustMaterial(864, "rhodium_nitrate", (SodiumNitrate.materialRGB+Rhodium.materialRGB)/2, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(Ammonia, 3)), DISABLE_DECOMPOSITION);
     public static final DustMaterial ZincSulfate = new DustMaterial(863, "zinc_sulfate", (Zinc.materialRGB+Sulfur.materialRGB)/2, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)), 0);
     public static final DustMaterial RhodiumFilterCake = new DustMaterial(862, "rhodium_filter_cake", RhodiumNitrate.materialRGB-10, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION);
-    public static final DustMaterial ReRhodium = new DustMaterial(860, "reprecipitated_rhodium", Rhodium.materialRGB-10, MaterialIconSet.QUARTZ, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(RareEarth, 1)), DISABLE_DECOMPOSITION); // TODO Remove material at some point
+    // FREE ID 860
     // FREE ID 849
     public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial PotassiumDichromate = new DustMaterial(845, "potassium_dichromate", 0xFF084E, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 2), new MaterialStack(Chrome, 2), new MaterialStack(Oxygen, 7)), 0);
@@ -339,8 +339,12 @@ public class GAMaterials implements IMaterialHandler {
     public static final DustMaterial PrHoYLF = new DustMaterial(687,"prho_ylf",0x6f20af,MaterialIconSet.SHINY,6,of(),SMELT_INTO_FLUID);
     public static final DustMaterial LuTmYVO = new DustMaterial(686,"lutm_yvo",0x206faf,MaterialIconSet.SHINY,6,of(),SMELT_INTO_FLUID);
     public static final DustMaterial IndiumPhospide = new DustMaterial(684,"indium_phosphide",0x5c9c9c,MaterialIconSet.SHINY,6,of(new MaterialStack(Indium, 1), new MaterialStack(Phosphorus, 1)),0);
-
-
+    public static final DustMaterial Barytocalcite = new DustMaterial(670, "barytocalcite", 0xbf9c7c, MaterialIconSet.SHINY, 2, of (new MaterialStack(Barium, 1), new MaterialStack(Calcium, 1), new MaterialStack(Carbon, 2), new MaterialStack(Oxygen, 6)), GENERATE_ORE | DISABLE_DECOMPOSITION);
+    public static final DustMaterial Witherite = new DustMaterial(669, "witherite", 0xc6c29d, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Barium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3)), GENERATE_ORE | DISABLE_DECOMPOSITION);
+    public static final DustMaterial Arsenopyrite = new DustMaterial(668, "arsenopyrite", 0xaa9663, MaterialIconSet.METALLIC, 2, of(new MaterialStack(Iron, 1), new MaterialStack(Arsenic, 1), new MaterialStack(Sulfur, 1)), GENERATE_ORE);
+    public static final DustMaterial Gallite = new DustMaterial(667, "gallite", 0x7f7b9e, MaterialIconSet.SHINY, 2, of(new MaterialStack(Copper, 1), new MaterialStack(Gallium, 1), new MaterialStack(Sulfur, 2)), GENERATE_ORE);
+    public static final DustMaterial Bowieite = new DustMaterial(666, "bowieite", 0x8b8995, MaterialIconSet.ROUGH, 2, of(new MaterialStack(Rhodium, 1), new MaterialStack(Iridium, 1), new MaterialStack(Platinum, 1), new MaterialStack(Sulfur, 3)), GENERATE_ORE | DISABLE_DECOMPOSITION);
+    public static final DustMaterial Celestine = new DustMaterial(665, "celestine", 0x9db1b8, MaterialIconSet.SHINY, 2, of(new MaterialStack(Strontium, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4)), GENERATE_ORE);
 
     // GEM MATERIALS
     public static final GemMaterial CubicZirconia = new GemMaterial(911, "cubic_zirconia", 0xFFDFE2, MaterialIconSet.DIAMOND, 6, of(new MaterialStack(Zirconium, 1), new MaterialStack(Oxygen, 2)), NO_RECYCLING | NO_SMELTING | GENERATE_LENSE);
@@ -1624,11 +1628,13 @@ public class GAMaterials implements IMaterialHandler {
         PalladiumMetallicPowder.setOreMultiplier(2);
         Trona.setOreMultiplier(2);
         Lepidolite.setOreMultiplier(2);
+        Barytocalcite.setOreMultiplier(2);
 
         // Washed In
         PlatinumMetallicPowder.washedIn = SodiumPersulfate;
-        IrOsLeachResidue.washedIn = SodiumPersulfate;
-        IrLeachResidue.washedIn = SodiumPersulfate;
+        RarestMetalResidue.washedIn = SodiumPersulfate;
+        IrMetalResidue.washedIn = SodiumPersulfate;
+        Witherite.washedIn = SodiumPersulfate;
 
         // Byproducts
         Salt.addOreByProducts(Borax);
@@ -1660,11 +1666,17 @@ public class GAMaterials implements IMaterialHandler {
         Rhodocrosite.addOreByProducts(Calcium, Manganese);
         Zeolite.addOreByProducts(Calcium, Silicon, Aluminium);
         Columbite.addOreByProducts(Iron, Manganese, Niobium);
+        Barytocalcite.addOreByProducts(Calcite, Magnesium, Barite);
+        Witherite.addOreByProducts(Calcite, Barite, Lead);
+        Arsenopyrite.addOreByProducts(Iron, Cobaltite, Cobalt);
+        Gallite.addOreByProducts(Sulfur, Copper, Copper, Gallium);
+        Celestine.addOreByProducts(Gypsum, Calcite, Calcite, Strontium);
+        Bowieite.addOreByProducts(Nickel, PlatinumMetallicPowder, RarestMetalResidue, CrudeRhodiumMetal);
         EnrichedNaquadricCompound.addOreByProducts(NaquadricCompound, NaquadriaticCompound);
         NaquadricCompound.addOreByProducts(EnrichedNaquadricCompound);
-        PlatinumMetallicPowder.addOreByProducts(Nickel, IrLeachResidue, IrOsLeachResidue, PlatinumMetallicPowder);
-        IrOsLeachResidue.addOreByProducts(IrLeachResidue, IrLeachResidue, IrLeachResidue, IrOsLeachResidue);
-        IrLeachResidue.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
+        PlatinumMetallicPowder.addOreByProducts(Nickel, IrMetalResidue, RarestMetalResidue, PlatinumMetallicPowder);
+        RarestMetalResidue.addOreByProducts(IrMetalResidue, IrMetalResidue, IrMetalResidue, RarestMetalResidue);
+        IrMetalResidue.addOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
 
         // Byproduct Overrides
         Bornite.oreByProducts.clear();
@@ -1689,16 +1701,16 @@ public class GAMaterials implements IMaterialHandler {
         Nickel.addOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);
 
         Iridium.oreByProducts.clear();
-        Iridium.addOreByProducts(PlatinumMetallicPowder, IrOsLeachResidue);
+        Iridium.addOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
 
         Platinum.oreByProducts.clear();
-        Platinum.addOreByProducts(Nickel, IrLeachResidue);
+        Platinum.addOreByProducts(Nickel, IrMetalResidue);
 
         Osmium.oreByProducts.clear();
-        Osmium.addOreByProducts(IrLeachResidue);
+        Osmium.addOreByProducts(IrMetalResidue);
 
         Cooperite.oreByProducts.clear();
-        Cooperite.addOreByProducts(PalladiumMetallicPowder, Nickel, IrLeachResidue);
+        Cooperite.addOreByProducts(PalladiumMetallicPowder, Nickel, IrMetalResidue);
     }
 
     private static void initNuclearMaterial() {
