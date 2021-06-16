@@ -95,6 +95,16 @@ public class Gregicality {
                     "maxOutputs",
                     2
             );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.FERMENTING_RECIPES,
+                    "maxInputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.FERMENTING_RECIPES,
+                    "maxOutputs",
+                    1
+            );
         } catch (Exception e) {
             GALog.logger.error("Error setting recipe map fields, {}",
                     e.toString());
