@@ -99,7 +99,7 @@ public class MetaTileEntityDigitalItemBus extends MetaTileEntityMultiblockPart i
                 if (result == null) {
                     return ItemHandlerHelper.copyStackWithSize(stack, 0);
                 } else {
-                    return ItemHandlerHelper.copyStackWithSize(stack, stack.getCount() - result.getCount());
+                    return result;
                 }
             }
         };
