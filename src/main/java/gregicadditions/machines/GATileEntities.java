@@ -18,6 +18,7 @@ import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.advance.hyper.*;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityMonitorScreen;
+import gregicadditions.machines.multi.drill.MetaTileEntityDrillingPlant;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaBlastFurnace;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaDistillationTower;
@@ -51,7 +52,6 @@ import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
-import gregtech.api.util.GTLog;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
@@ -165,6 +165,8 @@ public class GATileEntities {
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
     public static MetaTileEntityDrillingRig DRILLING_RIG;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
+    public static MetaTileEntityDrillingPlant[] DRILLING_PLANT = new MetaTileEntityDrillingPlant[3];
+
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
     public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
@@ -206,7 +208,7 @@ public class GATileEntities {
     public static MetaTileEntityDistillationTower DISTILLATION_TOWER;
     public static MetaTileEntityCrackingUnit CRACKER;
     public static MetaTileEntityMultiFurnace MULTI_FURNACE;
-    public static MetaTileEntityDieselEngine DIESEL_ENGINE;
+    public static MetaTileEntityLargeCombustionEngine[] LARGE_COMBUSTION_ENGINE = new MetaTileEntityLargeCombustionEngine[2];
     public static MetaTileEntityPyrolyseOven PYROLYSE_OVEN;
     public static GAMetaTileEntityBatteryBuffer[][] BATTERY_BUFFERS = new GAMetaTileEntityBatteryBuffer[6][4];
     public static GAMetaTileEntityCharger[] CHARGER = new GAMetaTileEntityCharger[6];
@@ -853,7 +855,7 @@ public class GATileEntities {
         DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2537, new MetaTileEntityDistillationTower(location("distillation_tower")));
         CRACKER = GregTechAPI.registerMetaTileEntity(2538, new MetaTileEntityCrackingUnit(location("cracker")));
         MULTI_FURNACE = GregTechAPI.registerMetaTileEntity(2539, new MetaTileEntityMultiFurnace(location("multi_furnace")));
-        DIESEL_ENGINE = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityDieselEngine(location("diesel_engine")));
+        LARGE_COMBUSTION_ENGINE[0] = GregTechAPI.registerMetaTileEntity(2540, new MetaTileEntityLargeCombustionEngine(location("diesel_engine")));
 
         LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(location("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
         LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(location("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
@@ -1203,11 +1205,15 @@ public class GATileEntities {
         MEGA_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(4229, new MetaTileEntityMegaBlastFurnace(location("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(4230, new MetaTileEntityMegaVacuumFreezer(location("mega_vacuum_freezer")));
 
-        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4241, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_4x"), 2, false)));
-        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4242, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_9x"), 3, false)));
+        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4231, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_4x"), 2, false)));
+        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4232, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_9x"), 3, false)));
 
-        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4243, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_4x"), 2, true)));
-        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4244, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_9x"), 3, true)));
+        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4233, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_4x"), 2, true)));
+        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(4234, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_9x"), 3, true)));
+
+        DRILLING_PLANT[0] = GregTechAPI.registerMetaTileEntity(4235, new MetaTileEntityDrillingPlant(location("drilling_plant_mv"), 2));
+        DRILLING_PLANT[1] = GregTechAPI.registerMetaTileEntity(4236, new MetaTileEntityDrillingPlant(location("drilling_plant_hv"), 3));
+        DRILLING_PLANT[2] = GregTechAPI.registerMetaTileEntity(4237, new MetaTileEntityDrillingPlant(location("drilling_plant_ev"), 4));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

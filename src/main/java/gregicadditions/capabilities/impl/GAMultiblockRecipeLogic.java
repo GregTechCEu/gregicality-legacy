@@ -41,7 +41,7 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
         int numMaintenanceProblems = (this.metaTileEntity instanceof GARecipeMapMultiblockController) ?
                 ((GARecipeMapMultiblockController) metaTileEntity).getNumProblems() : 0;
 
-        double maintenanceDurationMultiplier = 1.0 + (0.1 * numMaintenanceProblems);
+        double maintenanceDurationMultiplier = 1.0 + (0.2 * numMaintenanceProblems);
         int durationModified = (int) (duration * maintenanceDurationMultiplier);
 
         if (!allowOverclocking) {

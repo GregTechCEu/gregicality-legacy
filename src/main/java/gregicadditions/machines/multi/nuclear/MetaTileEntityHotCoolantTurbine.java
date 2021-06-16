@@ -34,7 +34,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController { //todo maintenance
 
-    public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility();
+    public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility<>();
 
     private static final int MIN_DURABILITY_TO_WARN = 10;
 
@@ -134,7 +134,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     }
 
     @Override
-    protected BlockPattern createStructurePattern() { //todo why does this not form in jei
+    protected BlockPattern createStructurePattern() {
         return turbineType == null ? null :
                 FactoryBlockPattern.start()
                         .aisle("CCCC", "CHHC", "CCCC")
@@ -151,7 +151,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
 
     public MultiblockAbility[] getAllowedAbilities() {
         return turbineType.hasOutputHatch ?
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS} :
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH} :
                 new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
     }
 

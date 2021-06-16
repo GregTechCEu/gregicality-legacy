@@ -5,6 +5,8 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.machines.multi.GAFuelRecipeLogic;
+import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -38,7 +40,7 @@ import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockController {
 
 
     public MetaTileEntityLargeRocketEngine(ResourceLocation metaTileEntityId) {
@@ -57,6 +59,7 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
         if (isStructureFormed()) {
             FluidStack hydrogen = importFluidHandler.drain(GAMaterials.LiquidHydrogen.getFluid(Integer.MAX_VALUE), false);
             FluidStack air = importFluidHandler.drain(Materials.Air.getFluid(Integer.MAX_VALUE), false);
@@ -79,7 +82,6 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
             if (isBoosted)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.large_rocket_engine.boost").setStyle(new Style().setColor(TextFormatting.GREEN)));
         }
-        super.addDisplayText(textList);
     }
 
     @Override
@@ -89,12 +91,10 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.2"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.4"));
-        if (GAConfig.Misc.largeRocketEfficiency) {
-            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.5"));
-            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.6"));
-            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.7"));
-            tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.8"));
-        }
+        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.5"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.6"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.7"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.8"));
     }
 
     @Override
@@ -122,7 +122,7 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
         return METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60);
     }
 
-    public static class RocketEngineWorkableHandler extends FuelRecipeLogic {
+    public static class RocketEngineWorkableHandler extends GAFuelRecipeLogic {
 
         private boolean isUsingOxygen = false;
         private int oxygenNeededToBoost;
@@ -186,7 +186,7 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
 
         @Override
         protected int calculateRecipeDuration(FuelRecipe recipe) {
-            return TICK_PER_SEC;
+            return super.calculateRecipeDuration(recipe) + TICK_PER_SEC;
         }
 
         @Override
@@ -208,16 +208,14 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
             }
 
             // Apply efficiency
-            if (GAConfig.Misc.largeRocketEfficiency) {
-                EUt = EUt * 80 / 100;
+            EUt *= 0.8;
 
-                if (EUt > GAValues.V[GAValues.LuV])
-                    EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
-                if (EUt > GAValues.V[GAValues.ZPM])
-                    EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 20 / 100);
-                if (EUt > GAValues.V[GAValues.UV])
-                    EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 10 / 100);
-            }
+            if (EUt > GAValues.V[GAValues.LuV])
+                EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
+            if (EUt > GAValues.V[GAValues.ZPM])
+                EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 20 / 100);
+            if (EUt > GAValues.V[GAValues.UV])
+                EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 10 / 100);
 
             // Refresh our internal FluidStack
             fuelStack.amount -= fuelUsed;

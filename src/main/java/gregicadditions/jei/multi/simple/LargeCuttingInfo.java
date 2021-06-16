@@ -22,7 +22,7 @@ public class LargeCuttingInfo extends MultiblockInfoPage {
 	}
 
 	@Override
-	public List<MultiblockShapeInfo> getMatchingShapes() { //todo why isn't this forming
+	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "XXX", "XXX")

@@ -18,11 +18,11 @@ import net.minecraft.util.EnumFacing;
 import java.util.List;
 
 
-public class DieselEngineInfo extends MultiblockInfoPage {
+public class LargeCombustionEngineInfo extends MultiblockInfoPage {
 
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.DIESEL_ENGINE;
+		return GATileEntities.LARGE_COMBUSTION_ENGINE[0];
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class DieselEngineInfo extends MultiblockInfoPage {
 				.where('H', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
 				.where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
 				.where('A', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING))
-				.where('C', GATileEntities.DIESEL_ENGINE, EnumFacing.NORTH)
+				.where('C', GATileEntities.LARGE_COMBUSTION_ENGINE[0], EnumFacing.NORTH)
 				.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.EV], EnumFacing.WEST)
 				.where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[GAValues.EV], EnumFacing.SOUTH)
 				.where('#', Blocks.AIR.getDefaultState())

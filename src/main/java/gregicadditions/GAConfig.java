@@ -368,11 +368,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean rocketEfficiency = true;
 
-        @Config.Comment("Whether or not to add diminishing returns for the Large Rocket Engine")
-        @Config.Name("Large Rocket Engine efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean largeRocketEfficiency = true;
-
 
 
         @Config.Comment("Whether or not to add diminishing returns for Gregicality Naquadah Reactors. Does not affect the Large Nauqadah Reactor")
@@ -694,7 +689,7 @@ public class GAConfig {
             @Config.RangeInt(min = 0, max = 10000)
             @Config.RequiresMcRestart
             @Config.Comment("The percentage of EU of the Battery Tower's tier of voltage to loss every tick. E.g. if we are using MV cells, we lose 10% of 128, 12.8 rounded down to 12, every tick.")
-            public int lossPercentage = 10;
+            public int lossPercentage = 0;
         }
 
         public static class DistillationTower {
@@ -978,7 +973,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Macerator casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "hss_s";
+            public String casingMaterial = "stellite";
         }
 
         public static class LargeMixer {

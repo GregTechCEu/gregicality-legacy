@@ -53,9 +53,10 @@ import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
-        // TODO Nuclear Rework neptunium and protactinium casing missing from here
         THORIUM(0, NUCLEAR_CASING.getState(NuclearCasing.CasingType.THORIUM)),
+        PROTACTINIUM(1, NUCLEAR_CASING.getState(NuclearCasing.CasingType.PROTACTINIUM)),
         URANIUM(2, NUCLEAR_CASING.getState(NuclearCasing.CasingType.URANIUM)),
+        NEPTUNIUM(7, NUCLEAR_CASING.getState(NuclearCasing.CasingType.NEPTUNIUM)),
         PLUTONIUM(10, NUCLEAR_CASING.getState(NuclearCasing.CasingType.PLUTONIUM)),
         AMERICIUM(15, NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM)),
         CURIUM(25, NUCLEAR_CASING.getState(NuclearCasing.CasingType.CURIUM)),

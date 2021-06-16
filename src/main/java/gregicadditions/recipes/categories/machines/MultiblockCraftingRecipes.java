@@ -11,12 +11,10 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import scala.tools.cmd.Meta;
 
 import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
 import static gregicadditions.GAEnums.GAOrePrefix.round;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAValues.ZPM;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
@@ -786,7 +784,7 @@ public class MultiblockCraftingRecipes {
 
         // Large Diesel Engine
         removeRecipeByName("gregtech:diesel_engine");
-        ModHandler.addShapedRecipe("ga_diesel_engine", GATileEntities.DIESEL_ENGINE.getStackForm(),
+        ModHandler.addShapedRecipe("ga_diesel_engine", GATileEntities.LARGE_COMBUSTION_ENGINE[0].getStackForm(),
                 "PCP", "EME", "GWG",
                 'M', MetaTileEntities.HULL[EV].getStackForm(),
                 'P', MetaItems.ELECTRIC_PISTON_EV,
@@ -868,7 +866,7 @@ public class MultiblockCraftingRecipes {
         ModHandler.addShapelessRecipe("ga_electric_blast_furnace_compatibility", GATileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(), MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm());
         ModHandler.addShapelessRecipe("ga_vacuum_freezer_compatibility", GATileEntities.VACUUM_FREEZER.getStackForm(), MetaTileEntities.VACUUM_FREEZER.getStackForm());
         ModHandler.addShapelessRecipe("ga_implosion_compressor_compatibility", GATileEntities.IMPLOSION_COMPRESSOR.getStackForm(), MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm());
-        ModHandler.addShapelessRecipe("ga_diesel_engine_compatibility", GATileEntities.DIESEL_ENGINE.getStackForm(), MetaTileEntities.DIESEL_ENGINE.getStackForm());
+        ModHandler.addShapelessRecipe("ga_diesel_engine_compatibility", GATileEntities.LARGE_COMBUSTION_ENGINE[0].getStackForm(), MetaTileEntities.DIESEL_ENGINE.getStackForm());
         ModHandler.addShapelessRecipe("ga_multi_furnace_compatibility", GATileEntities.MULTI_FURNACE.getStackForm(), MetaTileEntities.MULTI_FURNACE.getStackForm());
         ModHandler.addShapelessRecipe("ga_large_steam_turbine_compatibility", GATileEntities.LARGE_STEAM_TURBINE.getStackForm(), MetaTileEntities.LARGE_STEAM_TURBINE.getStackForm());
         ModHandler.addShapelessRecipe("ga_large_gas_turbine_compatibility", GATileEntities.LARGE_GAS_TURBINE.getStackForm(), MetaTileEntities.LARGE_GAS_TURBINE.getStackForm());

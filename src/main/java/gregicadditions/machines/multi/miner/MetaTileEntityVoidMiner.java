@@ -10,6 +10,7 @@ import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -19,7 +20,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
@@ -57,14 +57,15 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
 
-public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo Maintenance
+public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //todo soft hammerable
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
     private final int maxTemperature;
     private static final int CONSUME_START = 100;
     private final int tier;
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
+    private IMultipleTankHandler exportFluidHandler;
     protected IItemHandlerModifiable outputInventory;
     private boolean isActive = false;
     private boolean overheat = false;
@@ -98,6 +99,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
 
     private void initializeAbilities() {
         this.importFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        this.exportFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.EXPORT_FLUIDS));
         this.outputInventory = new ItemHandlerList(getAbilities(MultiblockAbility.EXPORT_ITEMS));
         this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
     }
@@ -110,6 +112,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
 
     private void resetTileAbilities() {
         this.importFluidHandler = new FluidTankList(true);
+        this.exportFluidHandler = new FluidTankList(true);
         this.outputInventory = new ItemStackHandler(0);
         this.energyContainer = new EnergyContainerList(Lists.newArrayList());
     }
@@ -124,7 +127,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
 
     @Override
     protected void updateFormedValid() {
-        if (!getWorld().isRemote) {
+        if (!getWorld().isRemote && this.getNumProblems() < 6) {
             if (overheat || !drainEnergy()) {
                 if (temperature > 0) {
                     temperature--;
@@ -144,17 +147,31 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
                 return;
             }
 
-            if (!isActive)
-                setActive(true);
-
-
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 FluidStack pyrotheumFluid = GAMaterials.Pyrotheum.getFluid((int) currentDrillingFluid);
                 FluidStack cryotheumFluid = GAMaterials.Cryotheum.getFluid((int) currentDrillingFluid);
+                FluidStack drillingMudFluid = DrillingMud.getFluid((int) currentDrillingFluid);
+                FluidStack usedDrillingMudFluid = UsedDrillingMud.getFluid((int) currentDrillingFluid);
                 FluidStack canDrainPyrotheum = importFluidHandler.drain(pyrotheumFluid, false);
                 FluidStack canDrainCryotheum = importFluidHandler.drain(cryotheumFluid, false);
+                FluidStack canDrainDrillingMud = importFluidHandler.drain(drillingMudFluid, false);
+                int canFillUsedDrillingMud = exportFluidHandler.fill(usedDrillingMudFluid, false);
                 boolean hasConsume = false;
                 //consume fluid
+                if (canDrainDrillingMud != null && canDrainDrillingMud.amount == (int) currentDrillingFluid &&
+                    canFillUsedDrillingMud != 0 && canFillUsedDrillingMud == (int) currentDrillingFluid) {
+                    importFluidHandler.drain(drillingMudFluid, true);
+                    exportFluidHandler.fill(usedDrillingMudFluid, true);
+                } else {
+                    setActive(false);
+                    return;
+                }
+
+                if (!isActive)
+                    setActive(true);
+
+                calculateMaintenance(20);
+
                 if (usingPyrotheum && canDrainPyrotheum != null && canDrainPyrotheum.amount == (int) currentDrillingFluid) {
                     importFluidHandler.drain(pyrotheumFluid, true);
                     temperature += currentDrillingFluid / 100;
@@ -178,6 +195,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
                 }
                 usingPyrotheum = !usingPyrotheum;
 
+                currentDrillingFluid += this.getNumProblems();
                 //mine
 
                 int nbOres = temperature / 1000;
@@ -225,7 +243,7 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('D', statePredicate(getSecondaryCasingState()))
                 .where('F', statePredicate(getFrameState()))
-                .where('#', blockWorldState -> true)
+                .where('#', (tile) -> true)
                 .build();
     }
 
@@ -243,11 +261,12 @@ public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo 
         tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.4"));
         tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.5"));
+        tooltip.add(I18n.format("gtadditions.multiblock.void_miner.description.6"));
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (this.isStructureFormed()) {
+        if (this.isStructureFormed() && !this.hasProblems()) {
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
                 String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];

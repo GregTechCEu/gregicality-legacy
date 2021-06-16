@@ -49,7 +49,8 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     public void invalidateStructure() {
         super.invalidateStructure();
         resetTileAbilities();
-        setActive(false);
+        if (isActive)
+            setActive(false);
     }
 
     @Override
@@ -72,9 +73,9 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     @Override
     protected void updateFormedValid() {
         if (!getWorld().isRemote) {
-            if (!isActive)
-                setActive(true);
             if (output.getEnergyStored() < output.getEnergyCapacity()) {
+                if (!isActive)
+                    setActive(true);
                 if (input.getEnergyStored() < output.getEnergyCapacity() - output.getEnergyStored()) {
                     long drain = input.getEnergyStored();
                     output.addEnergy(drain);
@@ -86,6 +87,8 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
                     input.removeEnergy(left);
                     currentDrain += left;
                 }
+            } else if (isActive) {
+                setActive(false);
             }
             if (getOffsetTimer() % 20 == 0) {
                 drain = currentDrain / 20;

@@ -1,27 +1,21 @@
-package gregicadditions.capabilities.impl;
+package gregicadditions.machines.multi;
 
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.GAHeatingCoil;
-import gregicadditions.machines.multi.IMaintenance;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.gui.Widget;
+import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.util.XSTR;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
+import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.util.XSTR;
+import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
@@ -34,10 +28,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregicadditions.capabilities.MultiblockDataCodes.STORE_TAPED;
-import static gregtech.api.gui.widgets.AdvancedTextWidget.withButton;
-import static gregtech.api.gui.widgets.AdvancedTextWidget.withHoverTextTranslate;
 
-public abstract class GARecipeMapMultiblockController extends RecipeMapMultiblockController implements IMaintenance {
+public abstract class GAFueledMultiblockController extends FueledMultiblockController implements IMaintenance {
 
     private final List<ItemStack> recoveryItems = new ArrayList<ItemStack>() {{
         add(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Ash));
@@ -45,17 +37,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
 
     private final boolean hasMuffler;
     private final boolean hasMaintenance;
-
-    /**
-     * When false, this multiblock will behave like any other.
-     * When true, this multiblock will treat each of its input buses as distinct,
-     * checking recipes for them independently. This is useful for many machines, for example the
-     * Large Extruder, where the player may want to put one extruder shape per bus, rather than
-     * one machine per extruder shape.
-     */
-    protected boolean isDistinct = false;
-
-    protected final boolean canDistinct;
 
     public static final XSTR XSTR_RAND = new XSTR();
 
@@ -65,24 +46,34 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     // Used for data preservation with Maintenance Hatch
     private boolean storedTaped = false;
 
-    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        this(metaTileEntityId, recipeMap, false, true, false);
-    }
-
-    public GARecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMuffler, boolean hasMaintenance, boolean canDistinct) {
-        super(metaTileEntityId, recipeMap);
-        this.hasMuffler = hasMuffler;
-        this.hasMaintenance = hasMaintenance;
-        this.maintenance_problems = 0b000000;
-        this.canDistinct = canDistinct;
-    }
-
     /**
      * This value stores whether each of the 5 maintenance problems have been fixed.
      * A value of 0 means the problem is not fixed, else it is fixed
      * Value positions correspond to the following from left to right: 0=Wrench, 1=Screwdriver, 2=Soft Hammer, 3=Hard Hammer, 4=Wire Cutter, 5=Crowbar
      */
     protected byte maintenance_problems;
+
+    public GAFueledMultiblockController(ResourceLocation metaTileEntityId, FuelRecipeMap recipeMap, long maxVoltage) {
+        this(metaTileEntityId, recipeMap, maxVoltage, false, true);
+
+    }
+
+    public GAFueledMultiblockController(ResourceLocation metaTileEntityId, FuelRecipeMap recipeMap, long maxVoltage, boolean hasMuffler, boolean hasMaintenance) {
+        super(metaTileEntityId, recipeMap, maxVoltage);
+        this.hasMuffler = hasMuffler;
+        this.hasMaintenance = hasMaintenance;
+        this.maintenance_problems = 0b000000;
+        this.workableHandler = this.createWorkable(maxVoltage);
+    }
+
+    @Override
+    protected FuelRecipeLogic createWorkable(long maxVoltage) {
+        return new GAFuelRecipeLogic(this, this.recipeMap, () -> {
+            return this.energyContainer;
+        }, () -> {
+            return this.importFluidHandler;
+        }, maxVoltage);
+    }
 
     /**
      * Sets the maintenance problem corresponding to index to fixed
@@ -205,7 +196,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.writeToNBT(data);
         data.setByte("Maintenance", maintenance_problems);
         data.setInteger("ActiveTimer", timeActive);
-        data.setBoolean("IsDistinct", isDistinct);
         return data;
     }
 
@@ -214,7 +204,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.readFromNBT(data);
         maintenance_problems = data.getByte("Maintenance");
         timeActive = data.getInteger("ActiveTimer");
-        isDistinct = data.getBoolean("IsDistinct");
     }
 
     @Override
@@ -222,7 +211,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.writeInitialSyncData(buf);
         buf.writeByte(maintenance_problems);
         buf.writeInt(timeActive);
-        buf.writeBoolean(isDistinct);
     }
 
     @Override
@@ -230,7 +218,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.receiveInitialSyncData(buf);
         maintenance_problems = buf.readByte();
         timeActive = buf.readInt();
-        isDistinct = buf.readBoolean();
     }
 
     @Override
@@ -241,30 +228,16 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         }
     }
 
-
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (isStructureFormed()) {
-            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-                long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-            }
-
-            if (!recipeMapWorkable.isWorkingEnabled()) {
+        if (this.isStructureFormed()) {
+            if (!this.workableHandler.isWorkingEnabled()) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-            } else if (recipeMapWorkable.isActive()) {
+            } else if (this.workableHandler.isActive()) {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.generation_eu", this.workableHandler.getRecipeOutputVoltage()));
             } else {
                 textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-            }
-
-            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             }
 
             // Maintenance Text
@@ -328,17 +301,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             } else {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.no_problems")
                         .setStyle(new Style().setColor(TextFormatting.GREEN)));
-
-                if (canDistinct) {
-                    ITextComponent buttonText = new TextComponentTranslation("gtadditions.multiblock.universal.distinct");
-                    buttonText.appendText(" ");
-                    ITextComponent button = withButton((isDistinct ?
-                            new TextComponentTranslation("gtadditions.multiblock.universal.distinct.yes") :
-                            new TextComponentTranslation("gtadditions.multiblock.universal.distinct.no")), "distinct");
-                    withHoverTextTranslate(button, "gtadditions.multiblock.universal.distinct.info");
-                    buttonText.appendSibling(button);
-                    textList.add(buttonText);
-                }
             }
         } else {
             ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
@@ -347,12 +309,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                     .setStyle(new Style().setColor(TextFormatting.RED)
                             .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
-    }
-
-    @Override
-    protected void handleDisplayClick(String componentData, Widget.ClickData clickData) {
-        super.handleDisplayClick(componentData, clickData);
-        isDistinct = !isDistinct;
     }
 
     protected void outputRecoveryItems() {
@@ -376,7 +332,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     }
 
     public boolean isActive() {
-        return isStructureFormed() && recipeMapWorkable.isActive();
+        return isStructureFormed() && workableHandler.isActive();
     }
 
     public boolean hasMufflerHatch() {
@@ -393,7 +349,4 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
             buf.writeBoolean(isTaped);
         });
     }
-
-    protected static final BlockWireCoil.CoilType[] HEATING_COILS = BlockWireCoil.CoilType.values();
-    protected static final GAHeatingCoil.CoilType[] GA_HEATING_COILS = GAHeatingCoil.CoilType.values();
 }

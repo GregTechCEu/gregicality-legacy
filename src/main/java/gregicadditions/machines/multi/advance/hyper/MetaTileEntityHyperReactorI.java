@@ -6,6 +6,8 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.machines.multi.GABoostableWorkableHandler;
+import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
@@ -18,7 +20,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -37,7 +38,7 @@ import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Helium;
 
-public class MetaTileEntityHyperReactorI extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
 
 
     public MetaTileEntityHyperReactorI(ResourceLocation metaTileEntityId, long maxVoltage) {
@@ -63,7 +64,7 @@ public class MetaTileEntityHyperReactorI extends FueledMultiblockController { //
     protected FuelRecipeLogic createWorkable(long maxVoltage) {
         int fuelMultiplier = GAConfig.multis.hyperReactors.boostedFuelAmount[0];
         int euMultiplier = GAConfig.multis.hyperReactors.boostedEuAmount[0];
-        return new BoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
+        return new GABoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
                 maxVoltage, booster, fuelMultiplier, euMultiplier);
     }
 
@@ -71,8 +72,8 @@ public class MetaTileEntityHyperReactorI extends FueledMultiblockController { //
     protected void addDisplayText(List<ITextComponent> textList) {
         if (isStructureFormed()) {
             FluidStack booster = importFluidHandler.drain(this.booster, false);
-            FluidStack fuelStack = ((BoostableWorkableHandler) workableHandler).getFuelStack();
-            boolean isBoosted = ((BoostableWorkableHandler) workableHandler).isBoosted();
+            FluidStack fuelStack = ((GABoostableWorkableHandler) workableHandler).getFuelStack();
+            boolean isBoosted = ((GABoostableWorkableHandler) workableHandler).isBoosted();
             int boosterAmount = booster == null ? 0 : booster.amount;
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 

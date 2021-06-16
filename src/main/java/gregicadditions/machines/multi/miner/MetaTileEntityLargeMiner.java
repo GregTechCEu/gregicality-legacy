@@ -5,9 +5,11 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -23,7 +25,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
@@ -58,8 +59,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-
-public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner { //todo maintenance
+public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
@@ -116,11 +116,11 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     public boolean drainEnergy() {
         long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
-        FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
-        FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
+        FluidStack drillingMud = GAMaterials.DrillingMud.getFluid(type.drillingFluidConsumePerTick);
+        FluidStack canDrain = importFluidHandler.drain(drillingMud, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
             energyContainer.removeEnergy(energyContainer.getInputVoltage());
-            importFluidHandler.drain(drillingFluid, true);
+            importFluidHandler.drain(drillingMud, true);
             return true;
         }
         return false;
@@ -201,7 +201,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             }
 
 
-            if (!getWorld().isRemote && getTimer() % 5 == 0) {
+            if (!getWorld().isRemote && getOffsetTimer() % 5 == 0) {
                 pushItemsIntoNearbyHandlers(getFrontFacing());
             }
         }
@@ -240,7 +240,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gtadditions.machine.miner.multi.description", type.chunk, type.chunk, type.fortuneString));
-        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));
+        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(GAMaterials.DrillingMud.getFluid(0).getUnlocalizedName())));
     }
 
     @Override
@@ -257,8 +257,6 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.mode"));
             if (done)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.done", getNbBlock()).setStyle(new Style().setColor(TextFormatting.GREEN)));
-
-
         }
 
         super.addDisplayText(textList);

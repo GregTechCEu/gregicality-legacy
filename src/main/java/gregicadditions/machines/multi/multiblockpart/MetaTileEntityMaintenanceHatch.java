@@ -5,9 +5,9 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
+import gregicadditions.machines.multi.IMaintenance;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -106,14 +106,18 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         }
     }
 
-    //todo don't accept items if not type 1
+    //todo don't accept items if not type 1 (currently doesn't work)
     @Override
     protected IItemHandlerModifiable createImportItemHandler() {
+        if (this.type != 1)
+            return super.createImportItemHandler();
         return new ItemStackHandler(1);
     }
 
     @Override
     protected IItemHandlerModifiable createExportItemHandler() {
+        if (this.type != 1)
+            return super.createExportItemHandler();
         return new ItemStackHandler(1);
     }
 
@@ -164,12 +168,15 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
      * @param entityPlayer The player to get duct tape or tools from when a regular hatch
      */
     private void fixProblems(EntityPlayer entityPlayer) {
-        if (!(this.getController() instanceof GARecipeMapMultiblockController))
-            return;
-        GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) this.getController();
+        byte problems;
 
-        if (!controller.hasProblems())
+        if (!(this.getController() instanceof IMaintenance))
             return;
+
+        if (!((IMaintenance) this.getController()).hasProblems())
+            return;
+
+        problems = ((IMaintenance) this.getController()).getProblems();
 
         switch (this.type) {
             case 0: { // Manual
@@ -189,8 +196,6 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
                     break;
 
                 // For each problem the multi has, try to fix with tools
-                byte problems = controller.getProblems();
-
                 for (byte i = 0; i < 6; i++) {
                     if (((problems >> i) & 1) == 0)
                         fixProblemWithTool(i, entityPlayer);
@@ -264,7 +269,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         for (MetaToolValueItem tool : tools) {
             for (ItemStack itemStack : entityPlayer.inventory.mainInventory) {
                 if (itemStack.isItemEqualIgnoreDurability(tool.getStackForm())) {
-                    ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(problemIndex);
+                    ((IMaintenance) this.getController()).setMaintenanceFixed(problemIndex);
                     damageTool(itemStack);
                     this.setTaped(false);
                 }
@@ -288,8 +293,8 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
      * Fixes every maintenance problem
      */
     private void fixEverything() {
-        if (this.getController() instanceof GARecipeMapMultiblockController)
-            for (int i = 0; i < 6; i++) ((GARecipeMapMultiblockController) this.getController()).setMaintenanceFixed(i);
+        if (this.getController() instanceof IMaintenance)
+            for (int i = 0; i < 6; i++) ((IMaintenance) this.getController()).setMaintenanceFixed(i);
     }
 
     /**
@@ -306,7 +311,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
 
     @Override
     public void onRemoval() {
-        GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) getController();
+        IMaintenance controller = (IMaintenance) getController();
         if (!getWorld().isRemote && controller != null)
             controller.storeTaped(isTaped);
         super.onRemoval();
@@ -316,8 +321,8 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     public void update() {
         super.update();
         if (this.type != 0) {
-            if (this.getController() instanceof GARecipeMapMultiblockController) {
-                if (getOffsetTimer() % 20 == 0 && ((GARecipeMapMultiblockController) this.getController()).hasProblems() && this.getController().isStructureFormed()) {
+            if (this.getController() instanceof IMaintenance) {
+                if (getOffsetTimer() % 20 == 0 && ((IMaintenance) this.getController()).hasProblems() && this.getController().isStructureFormed()) {
                     fixProblems(null);
                 }
             }

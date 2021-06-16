@@ -5,6 +5,8 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.GAFuelRecipeLogic;
+import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -38,7 +40,7 @@ import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
-public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
@@ -117,7 +119,7 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
         return METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA);
     }
 
-    public static class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
+    public static class NaquadahReactorWorkableHandler extends GAFuelRecipeLogic {
 
         private final int maxCycleLength = 20;
         private int currentCycle = 0;

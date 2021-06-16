@@ -135,11 +135,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase { //tod
             return;
         }
 
-        if (getTimer() % 20 == 0) {
+        if (getOffsetTimer() % 20 == 0) {
             int residual = getResidualOil();
+
             if (availableOil() > 0 || residual > 0) {
-                int oilAmnt = availableOil() <= 0 ? residual * getTier() : availableOil();
-                FluidStack out = new FluidStack(availableFluid(), Math.min(fluidDrain(), oilAmnt));
+                int oilAmount = availableOil() <= 0 ? residual * getTier() : availableOil();
+                FluidStack out = new FluidStack(availableFluid(), Math.min(fluidDrain(), oilAmount));
                 int drained = exportFluidHandler.fill(out, true);
                 extractOil(drained);
             } else {

@@ -18,9 +18,7 @@ import java.util.List;
 
 public class ProcessingArrayInfo extends MultiblockInfoPage {
 
-	public ProcessingArrayInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ProcessingArrayInfo() { }
 
 	@Override
 	public MultiblockControllerBase getController() {
@@ -46,7 +44,6 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		// TODO Auto-generated method stub
 		return new String[] { I18n.format("gregtech.multiblock.processing_array.description",
 				GAConfig.multis.processingArray.processingArrayMachineLimit) };
 	}

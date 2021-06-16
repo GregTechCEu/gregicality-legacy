@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static gregicadditions.client.ClientHandler.HSS_S_CASING;
+import static gregicadditions.client.ClientHandler.STELLITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockController {
@@ -57,7 +57,7 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S);
+	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
 	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMacerator.casingMaterial, defaultCasingState);
 
 
@@ -67,7 +67,7 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, HSS_S_CASING);
+		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, STELLITE_CASING);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
+import gregicadditions.machines.multi.GABoostableWorkableHandler;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
@@ -35,7 +36,7 @@ import java.util.Objects;
 import static gregtech.api.unification.material.Materials.Naquadria;
 import static gregtech.api.unification.material.Materials.Radon;
 
-public class MetaTileEntityHyperReactorII extends FueledMultiblockController { //todo generator maintenance
+public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
 
 
     public MetaTileEntityHyperReactorII(ResourceLocation metaTileEntityId, long maxVoltage) {
@@ -62,7 +63,7 @@ public class MetaTileEntityHyperReactorII extends FueledMultiblockController { /
     protected FuelRecipeLogic createWorkable(long maxVoltage) {
         int fuelMultiplier = GAConfig.multis.hyperReactors.boostedFuelAmount[1];
         int euMultiplier = GAConfig.multis.hyperReactors.boostedEuAmount[1];
-        return new BoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
+        return new GABoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
                 maxVoltage, booster, fuelMultiplier, euMultiplier);
     }
 
@@ -70,8 +71,8 @@ public class MetaTileEntityHyperReactorII extends FueledMultiblockController { /
     protected void addDisplayText(List<ITextComponent> textList) {
         if (isStructureFormed()) {
             FluidStack booster = importFluidHandler.drain(this.booster, false);
-            FluidStack fuelStack = ((BoostableWorkableHandler) workableHandler).getFuelStack();
-            boolean isBoosted = ((BoostableWorkableHandler) workableHandler).isBoosted();
+            FluidStack fuelStack = ((GABoostableWorkableHandler) workableHandler).getFuelStack();
+            boolean isBoosted = ((GABoostableWorkableHandler) workableHandler).isBoosted();
             int boosterAmount = booster == null ? 0 : booster.amount;
             int fuelAmount = fuelStack == null ? 0 : fuelStack.amount;
 
