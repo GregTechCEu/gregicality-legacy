@@ -158,6 +158,8 @@ public class RecipeHandler {
         WetwareChain.init();
         OpticalChain.init();
         CombinedChains.init();
+        OrganometallicChains.init();
+        QuantumDotsChain.init();
     }
 
     /**

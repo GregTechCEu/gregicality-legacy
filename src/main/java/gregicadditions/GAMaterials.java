@@ -398,7 +398,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial EnrichedNaquadahAlloy = new IngotMaterial(733, "enriched_naquadah_alloy", 0x403f3d, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Rhodium, 2), new MaterialStack(Ruthenium, 2), new MaterialStack(Dubnium, 1), new MaterialStack(Rubidium, 2), new MaterialStack(Einsteinium255.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 10000);
     public static final IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 25000);
     public static final IngotMaterial HastelloyK243 = new IngotMaterial(731, "hastelloy_k243", 0xa5f564, MaterialIconSet.SHINY, 2, of(new MaterialStack(HastelloyX78, 5), new MaterialStack(NiobiumNitride, 2), new MaterialStack(Tritanium, 4), new MaterialStack(TungstenCarbide, 4), new MaterialStack(Promethium, 4), new MaterialStack(Mendelevium261.getMaterial(), 1)), EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 25000);
-    public static final IngotMaterial Polyetheretherketone = new IngotMaterial(730, "polyetheretherketone", 0x403e37, MaterialIconSet.DULL, 2, of(new MaterialStack(Carbon, 20), new MaterialStack(Hydrogen, 12), new MaterialStack(Oxygen, 3)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | NO_SMASHING | GENERATE_FOIL | DISABLE_DECOMPOSITION, null);
+    public static final IngotMaterial Polyetheretherketone = new IngotMaterial(730, "polyetheretherketone", 0x403e37, MaterialIconSet.DULL, 2, of(new MaterialStack(Carbon, 20), new MaterialStack(Hydrogen, 12), new MaterialStack(Oxygen, 3)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | NO_SMASHING | GENERATE_FOIL | DISABLE_DECOMPOSITION | GENERATE_FINE_WIRE, null);
     public static final IngotMaterial Zylon = new IngotMaterial(729, "zylon", 0xFFE000, MaterialIconSet.SHINY, 2, of(new MaterialStack(Carbon, 14), new MaterialStack(Hydrogen, 6), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 2)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL | NO_SMASHING | DISABLE_DECOMPOSITION, null);
     public static final IngotMaterial FullerenePolymerMatrix = new IngotMaterial(728, "fullerene_polymer_matrix", 0x403e37, MaterialIconSet.DULL, 2, of(new MaterialStack(Palladium, 1), new MaterialStack(Carbon, 140), new MaterialStack(Hydrogen, 21), new MaterialStack(Oxygen, 2)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL | NO_SMASHING | DISABLE_DECOMPOSITION, null);
     public static final IngotMaterial CarbonNanotubes = new IngotMaterial(709, "carbon_nanotubes", 0x2c2c2c, MaterialIconSet.SHINY, 5, of(new MaterialStack(Carbon, 1)), EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID | GENERATE_FOIL | DISABLE_DECOMPOSITION, null);
@@ -942,7 +942,18 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Oxydianiline = new SimpleFluidMaterial("oxydianiline", 0xF0E130, "C12H12N2O");
     public static final SimpleFluidMaterial PolyamicAcid = new SimpleFluidMaterial("polyamic_acid", 0xFFAE42, "C22H14N2O7");
     public static final SimpleFluidMaterial Hexafluoropropylene = new SimpleFluidMaterial("hexafluoropropylene", 0x111111, "C3F6");
-
+    public static final SimpleFluidMaterial Dimethylether = new SimpleFluidMaterial("dimethylether", 0xe6cd11, "C2H6O");
+    public static final SimpleFluidMaterial Dimethoxyethane = new SimpleFluidMaterial("dimethoxyethane", 0x2acbb4, "C4H10O2");
+    public static final SimpleFluidMaterial LithiumCyclopentadienide = new SimpleFluidMaterial("lithiumcyclopentadienide", 0x95556a, "LiC5H5");
+    public static final SimpleFluidMaterial CaliforniumCyclopentadienide = new SimpleFluidMaterial("californiumcyclopentadienide", 0x94445b, "C15H15Cf");
+    public static final SimpleFluidMaterial Soap = new SimpleFluidMaterial("soap", 0xFFAE42, "?");
+    public static final SimpleFluidMaterial DeglyceratedSoap = new SimpleFluidMaterial("deglyceratedsoap", 0xFFAE41);
+    public static final SimpleFluidMaterial StearicAcid = new SimpleFluidMaterial("stearicacid", 0x2bbbb4, "C18H36O2");
+    public static final SimpleFluidMaterial Trioctylphosphine = new SimpleFluidMaterial("trioctylphosphine", 0xF1E130, "C24H51P");
+    public static final SimpleFluidMaterial QuantumDots = new SimpleFluidMaterial("quantumdots", 0xff0000, "CdSe", true);
+    public static final SimpleFluidMaterial IridiumTrichlorideSolution = new SimpleFluidMaterial("iridiumtrichloridesolution", 0x96821a, "IrCl3");
+    public static final SimpleFluidMaterial SemisolidHydrogen = new SimpleFluidMaterial("semisolidhydrogen", 0x044c4b, "H");
+    public static final SimpleFluidMaterial MicrocrystallizingHydrogen = new SimpleFluidMaterial("microcrystallizinghydrogen", 0x155d5c, "H");
 
 
 
@@ -1346,6 +1357,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial GoldLeach = new SimpleDustMaterial("gold_leach", 0xBBA52B, (short) 904, MaterialIconSet.ROUGH, "Cu3Au?");
     public static final SimpleDustMaterial Durene = new SimpleDustMaterial("durene", 0xA39C95, (short) 905, MaterialIconSet.ROUGH, "C6H2(CH3)4");
     public static final SimpleDustMaterial PyromelliticDianhydride = new SimpleDustMaterial("pyromellitic_dianhydride", 0xF0EAD6, (short) 906, MaterialIconSet.SHINY, "C6H2(C2O3)2");
+    public static final SimpleDustMaterial CaliforniumTrioxide = new SimpleDustMaterial("californiumtrioxide", 0x7cc922, (short) 907, MaterialIconSet.ROUGH, "Cf2O3");
+    public static final SimpleDustMaterial CaliforniumTrichloride = new SimpleDustMaterial("californiumtrichloride", 0x3e9837, (short) 908, MaterialIconSet.ROUGH, "CfCl3");
+    public static final SimpleDustMaterial IridiumTrioxide = new SimpleDustMaterial("iridiumtrioxide", 0x9a9a2b, (short) 909, MaterialIconSet.ROUGH,"Ir2O3");
 
 
 

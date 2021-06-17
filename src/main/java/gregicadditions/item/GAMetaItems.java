@@ -33,6 +33,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
     
@@ -43,6 +44,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
     
@@ -53,6 +55,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
 
@@ -63,6 +66,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
 
@@ -223,6 +227,11 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
     public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem EXOTIC_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem EXOTIC_COMPUTER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_MAINFRAME;
 
     public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSOR;
     public static MetaItem<?>.MetaValueItem SUPRACAUSAL_ASSEMBLY;
@@ -490,7 +499,19 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_SMALL_GEAR;
     public static MetaItem<?>.MetaValueItem SHAPE_EXTRUDER_ROTOR;
 
-
+    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_SOFT_TUBING;
+    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_FINE_TUBING;
+    public static MetaItem<?>.MetaValueItem X_RAY_WAVEGUIDE;
+    public static MetaItem<?>.MetaValueItem MICROFOCUS_X_RAY_TUBE;
+    public static MetaItem<?>.MetaValueItem X_RAY_MIRROR_PLATE;
+    public static MetaItem<?>.MetaValueItem UNTREATED_EXOTIC_WAFER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_WAFER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_CHIP;
+    public static MetaItem<?>.MetaValueItem EXCITATION_MAINTAINER;
+    public static MetaItem<?>.MetaValueItem CRYOGENIC_INTERFACE;
+    public static MetaItem<?>.MetaValueItem RYDBERG_SPINORIAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem X_RAY_LASER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSING_CORE;
     // GA oredict items
     //public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
 
