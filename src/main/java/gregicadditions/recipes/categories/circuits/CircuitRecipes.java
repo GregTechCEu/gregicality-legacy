@@ -898,9 +898,6 @@ public class CircuitRecipes {
 
     private static void exoticCircuits() {
 
-        for (FluidStack fluidStack : SOLDER_FLUIDS) {
-            FluidStack fluidStackx4 = new FluidStack(fluidStack.getFluid(), Math.min(64000, fluidStack.amount * 4));
-
             //Exotic Processor
             CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt((int)2E+6).qubit(8)
                     .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
@@ -909,10 +906,9 @@ public class CircuitRecipes {
                     .input(wireFine, Cinobite, 4)
                     .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                     .inputs(HASOC.getStackForm(1))
-                    .fluidInputs(fluidStackx4)
+                    .solderMultiplier(4)
                     .outputs(EXOTIC_PROCESSOR.getStackForm())
                     .buildAndRegister();
-        }
 
         //Exotic Assembly
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)2E+6).qubit(8)
