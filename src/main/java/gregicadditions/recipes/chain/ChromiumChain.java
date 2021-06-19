@@ -54,19 +54,20 @@ public class ChromiumChain {
                 .output(dust, SodiumSulfate, 7)
                 .buildAndRegister();
 
-        // CO2 + Na2Cr2O7(H2O) -> Na2CO3 + 2CrO3 + H2O (H2O lost to dehydrator)
+        // 2C + Na2Cr2O7(H2O) -> Na2CO3 + Cr2O3 + CO + H2O (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(120)
-                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .input(dust, Carbon)
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .output(dust, SodaAsh, 6)
-                .output(dust, ChromiumTrioxide, 8)
+                .outputs(ChromiumIIIOxide.getItemStack(5))
+                .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
         // CrO3 + 2Al -> Cr + Al2O3
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, ChromiumTrioxide, 4)
+                .inputs(ChromiumIIIOxide.getItemStack(5))
                 .input(dust, Aluminium, 2)
-                .output(dust, Chrome)
+                .output(dust, Chrome, 2)
                 .outputs(Alumina.getItemStack(5))
                 .buildAndRegister();
 
