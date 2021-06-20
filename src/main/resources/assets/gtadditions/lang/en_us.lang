@@ -4216,6 +4216,24 @@ fluid.free_alpha_gas=Free Alpha Gas
 fluid.krypton_difluoride=Krypton Difluoride
 fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
 
+metaitem.fullerene.polymer.matrix.soft.tubing.name=Fullerene Polymer Matrix Soft Tubing
+metaitem.fullerene.polymer.matrix.fine.tubing.name=Fullerene Polymer Matrix Fine Tubing
+metaitem.xray.waveguide.name=X-Ray Waveguide
+metaitem.microfocus.xray.tube.name=Microfocus X-Ray Tube
+metaitem.xray.mirror.plate.name=X-Ray Mirror Plate
+metaitem.untreated.exotic.wafer.name=Untreated Exotic Wafer
+metaitem.exotic.wafer.name=Exotic Wafer
+metaitem.exotic.chip.name=Exotic Chip
+metaitem.excitation.maintainer.name=Excitation Maintainer
+metaitem.cryogenic.interface.name=Cryogenic Interface
+metaitem.rydberg.spinorial.assembly.name=Rydberg Spinorial Assembly
+metaitem.xray.laser.name=X-Ray Laser
+metaitem.exotic.processing.core.name=Exotic Processing Core
+metaitem.smd.capacitor.exotic.name=Exotic SMD Capacitor
+metaitem.smd.resistor.exotic.name=Exotic SMD Resistor
+metaitem.smd.transistor.exotic.name=Exotic SMD Transistor
+metaitem.smd.diode.exotic.name=Exotic SMD Diode
+
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Macerates up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Buses
 gtadditions.multiblock.steam_grinder.description=A Multiblock Macerator at the Steam Age. Requires at least 14 Bronze Casings to form. Cannot use normal Input/Output busses, nor Fluid Hatches other than the Steam Hatch.

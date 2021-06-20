@@ -837,7 +837,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Nitrotoluene = new SimpleFluidMaterial("nitrotoluene",0xfcca00, "C7H7NO2");
     public static final SimpleFluidMaterial Naphthylamine = new SimpleFluidMaterial("naphthylamine",0xe3e81c, "C10H9N");
     public static final SimpleFluidMaterial Acetoacetanilide = new SimpleFluidMaterial("acetoacetanilide",0xffffc2, "C10H11NO2");
-    public static final SimpleFluidMaterial Quinizarin = new SimpleFluidMaterial("quinizarin",0x3c5a2c0, "C14H10N2O2");
+    public static final SimpleFluidMaterial Quinizarin = new SimpleFluidMaterial("quinizarin",0x3c5a2c0, "C14H8O4");
     public static final SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00, "C7H7SO3Na");
     public static final SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680, "C7H12O4");
     public static final SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad, "C4H2O3");
@@ -1255,7 +1255,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial DirectBrown = new SimpleDustMaterial("direct_brown",0x663300,(short) 301,MaterialIconSet.DULL, "C26H19N6NaO3S");
     public static final SimpleDustMaterial DianilineterephthalicAcid = new SimpleDustMaterial("dianilineterephthalic_acid",0xff0000,(short) 302,MaterialIconSet.DULL, "C20H16N2O4");
     public static final SimpleDustMaterial Quinacridone = new SimpleDustMaterial("quinacridone",0xff0000,(short) 303,MaterialIconSet.DULL, "C20H12N2O2");
-    public static final SimpleDustMaterial DiarylideYellow = new SimpleDustMaterial("diarylide_yellow",0xffff00,(short) 304,MaterialIconSet.DULL, "C36H34Cl2N6O4");
+    public static final SimpleDustMaterial DiarylideYellow = new SimpleDustMaterial("diarylide_yellow",0xffff00,(short) 304,MaterialIconSet.DULL, "C32H26Cl2N6O4");
     public static final SimpleDustMaterial AlizarineCyanineGreen = new SimpleDustMaterial("alizarine_cyanine_green",0x00ff00,(short) 305,MaterialIconSet.DULL, "C28H20N2Na2O8S2");
     public static final SimpleDustMaterial Aminoanthraquinone = new SimpleDustMaterial("aminoanthraquinone",0x0000ff,(short) 306,MaterialIconSet.DULL, "C14H9NO2");
     public static final SimpleDustMaterial IndanthroneBlue = new SimpleDustMaterial("indanthrone_blue",0x0000ff,(short) 307,MaterialIconSet.DULL, "C28H14N2O2");

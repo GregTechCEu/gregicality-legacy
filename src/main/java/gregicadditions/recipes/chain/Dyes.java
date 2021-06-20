@@ -180,23 +180,23 @@ public class Dyes {
                 .outputs(OreDictUnifier.get(dust, RockSalt, 4))
                 .buildAndRegister();
 
-        // NH4VO3 + [Bi(NO3)3 + H2O] + 2 NH3 + 2 H2O -> 3 NH4NO3 + BiVO4(H2O)
+        // NH4VO3 + [Bi(NO3)3 + H2O] + 2 NH3 + H2O -> 3 NH4NO3 + BiVO4(H2O)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
                 .inputs(AmmoniumVanadate.getItemStack(9))
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(2000))
-                .fluidInputs(Water.getFluid(2000))
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(AmmoniumNitrate.getFluid(3000))
                 .fluidOutputs(BismuthVanadateSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // BiVO4(H2O) -> BiVO4
+        // BiVO4(H2O) -> BiVO4 (H2O lost because it is a dehydration step)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(190).EUt(600)
                 .fluidInputs(BismuthVanadateSolution.getFluid(1000))
                 .outputs(BismuthVanadate.getItemStack(6))
                 .buildAndRegister();
 
-        // As2O3 + 2 [CuSO4 + H2O] + 2 [NaOH + H2O] + Na2CO3 -> CuAsHO3 + 2 [Na2SO4 + H2O] + CO2
+        // As2O3 + 2 [CuSO4 + H2O] + 2 [NaOH + H2O] + Na2CO3 -> 2 CuAsHO3 + 2 [Na2SO4 + H2O] + CO2 (2 H2O voided)
         CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(125)
                 .fluidInputs(CopperSulfateSolution.getFluid(2000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(2000))
@@ -223,7 +223,7 @@ public class Dyes {
                 .outputs(CobaltAluminate.getItemStack(9))
                 .buildAndRegister();
 
-        // 6HCN + FeCl2 + 4 KOH +  -> K4Fe(CN) + 4H2O + 2 HCl
+        // 6HCN + FeCl2 + 4 KOH +  -> K4Fe(CN)6 + 4H2O + 2 HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(640)
                 .fluidInputs(Iron2Chloride.getFluid(1000))
                 .fluidInputs(HydrogenCyanide.getFluid(12000))
@@ -233,7 +233,7 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
-        // 3K4Fe(CN)6(H2O)3 + 4FeCl3 -> Fe7(CN)18 + 12KCl + 9H2O
+        // 3 K4Fe(CN)6 + 4 FeCl3 -> Fe7(CN)18 + 12 KCl
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(300).EUt(720)
                 .inputs(PotassiumFerrocyanide.getItemStack(17))
                 .fluidInputs(IronChloride.getFluid(4000))
@@ -241,7 +241,7 @@ public class Dyes {
                 .output(dust, RockSalt, 24)
                 .buildAndRegister();
 
-        // 20TiO2 + Sb2O3 + NiO -> NiO·Sb2O3·20TiO2
+        // 20 TiO2 + Sb2O3 + NiO -> NiO·Sb2O3·20TiO2
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(600)
                 .input(dust, Rutile, 60)
                 .input(dust, AntimonyTrioxide, 5)
@@ -249,8 +249,8 @@ public class Dyes {
                 .outputs(TitaniumYellow.getItemStack(67))
                 .buildAndRegister();
 
-        // 2MnO2 + Zn + H2SO4 -> ZnSO4 + Mn2O3 + H2O
-        BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(600)
+        // 2 MnO2 + Zn + H2SO4 -> ZnSO4 + Mn2O3 + H2O
+        BLAST_RECIPES.recipeBuilder().duration(340).EUt(500).blastFurnaceTemp(500)
                 .input(dust, Pyrolusite, 4)
                 .input(dust, Zinc)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
@@ -259,7 +259,7 @@ public class Dyes {
                 .fluidOutputs(Steam.getFluid(1000))
                 .buildAndRegister();
 
-        // Mn2O3 + 2NH3 + 4H3PO4 + 6C -> 2 NH4MnP2O7 + 5H2O
+        // Mn2O3 + 2NH3 + 4H3PO4 -> 2 NH4MnP2O7 + 5H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(500)
                 .inputs(ManganeseIIIOxide.getItemStack(5))
                 .fluidInputs(Ammonia.getFluid(2000))
@@ -326,7 +326,7 @@ public class Dyes {
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .buildAndRegister();
 
-        // NaOH + H2SO4 + C6H5NH2 -> 2H2O + C6H6NNaO3S
+        // NaOH + H2SO4 + C6H5NH2 -> 2 H2O + C6H6NNaO3S
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1800)
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
@@ -356,7 +356,7 @@ public class Dyes {
                 .outputs(DirectBrown.getItemStack(2))
                 .buildAndRegister();
 
-        // 4 NaOH + 2 H2SO4 + 2 C4H6O4 + 2 C6H5NH2 + O -> 9 H2O + C20H16N2O4 + 2 Na2SO4
+        // 4 NaOH + 2 H2SO4 + 2 C4H6O4 + 2 C6H5NH2 + O -> 7 H2O + C20H16N2O4 + 2 [Na2SO4 + H2O]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1600)
                 .input(dust, SodiumHydroxide, 12)
                 .fluidInputs(SulfuricAcid.getFluid(2000))
@@ -382,14 +382,15 @@ public class Dyes {
                 .fluidOutputs(Acetoacetanilide.getFluid(1000))
                 .buildAndRegister();
 
-        // C10H11NO2 + C12H10Cl2N2 + 2 HCl + 2 NaNO2 -> 2NaCl + C36H34Cl2N6O4
+        // 2 C10H11NO2 + C12H10Cl2N2 + 2 HCl + 2 NaNO2 -> 2NaCl + C32H26Cl2N6O4 + 4H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1800)
                 .fluidInputs(Acetoacetanilide.getFluid(2000))
                 .fluidInputs(Dichlorobenzidine.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .inputs(SodiumNitrite.getItemStack(8))
                 .outputs(OreDictUnifier.get(dust, Salt, 4))
-                .outputs(DiarylideYellow.getItemStack(41))
+                .outputs(DiarylideYellow.getItemStack(35))
+                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         // C7H8 + H2SO4 + NaCl -> C7H7SO3Na + (H2O)(HCl)
@@ -407,6 +408,7 @@ public class Dyes {
                 .input(dust, PhthalicAnhydride, 15)
                 .notConsumable(Toluenesulfonate.getFluid(1))
                 .fluidOutputs(Quinizarin.getFluid(1000))
+                .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         //C14H8O4 + 2 C7H9N + 2 H2SO4 + 2 NaOH -> C28H20N2Na2O8S2 + 6 H2O
@@ -450,7 +452,7 @@ public class Dyes {
                 .fluidInputs(Ammonia.getFluid(1000))
                 .inputs(Anthraquinone.getItemStack(24))
                 .outputs(Aminoanthraquinone.getItemStack(26))
-                .fluidOutputs(DilutedSulfuricAcid.getFluid(4000))
+                .fluidOutputs(DilutedSulfuricAcid.getFluid(3000))
                 .buildAndRegister();
 
         //2 C14H9NO2 + 2 NaClO -> 2 NaCl + 2 H2O + C28H14N2O4
@@ -519,7 +521,7 @@ public class Dyes {
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(3000))
                 .fluidOutputs(Benzonitrile.getFluid(1000))
-                .fluidInputs(Water.getFluid(3000))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         //2 C7H5N + C10H18O4 -> 2 C3H8O + C16H12N2O2
@@ -532,7 +534,7 @@ public class Dyes {
                 .outputs(Diketopyrrolopyrrole.getItemStack())
                 .buildAndRegister();
 
-        //2 CH2O + 2 HCN + 2 C7H7N + 2O -> C16H10N2O2 + 2 H2O + 2 NH3
+        //2 CH2O + 2 HCN + 2 C6H7N + 2O -> C16H10N2O2 + 2 H2O + 2 NH3
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1100)
                 .fluidInputs(Formaldehyde.getFluid(2000))
                 .fluidInputs(HydrogenCyanide.getFluid(2000))
@@ -546,7 +548,7 @@ public class Dyes {
                 .fluidOutputs(Ammonia.getFluid(2000))
                 .buildAndRegister();
 
-        //C16H10N2O2 + 4 Br -> C16H6Br4N2O2
+        //C16H10N2O2 + 4 Br -> C16H6Br4N2O2 + 4 H
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(850)
                 .inputs(Indigo.getItemStack(15))
                 .fluidInputs(Bromine.getFluid(4000))
