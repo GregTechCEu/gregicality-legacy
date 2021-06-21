@@ -948,7 +948,7 @@ public class GATileEntities {
         int id = 2900;
         for (final ConverterType t : ConverterType.values()) {
             for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
-                for (int value : GAConfig.energyConverter.values) {
+                for (int value : GAConfig.EnergyConversion.values) {
                     final String vn = GTValues.VN[tier].toLowerCase();
                     ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
                     ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
@@ -1084,9 +1084,9 @@ public class GATileEntities {
         }
         for (final ConverterType t : ConverterType.values()) {
             for (int tier = t.getMaxTier(); tier < GAValues.V.length - 1; ++tier) {
-                for (int value : GAConfig.energyConverter.values) {
+                for (int value : GAConfig.EnergyConversion.values) {
                     final String vn = GAValues.VN[tier].toLowerCase();
-                    Long voltage = ((long) GAValues.V[tier] * value * GAConfig.energyConverter.RatioEUtoRF);
+                    Long voltage = (long) (GAValues.V[tier] * value * GAConfig.EnergyConversion.RATIO);
                     if (voltage.compareTo((long) Integer.MAX_VALUE) > 0) continue;
                     ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
                     ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
