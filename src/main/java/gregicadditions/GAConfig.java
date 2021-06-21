@@ -32,7 +32,8 @@ public class GAConfig {
         public boolean enableNativeEUtoFE = true;
 
         @Config.Comment({"EU to FE Ratio. Can be less than 1 for multiple EU per unit of FE.",
-                         "Decimal point precision will be lost if Ratio is greater than 1."})
+                         "Decimal point precision will be lost if Ratio is greater than 1.",
+                         "If Ratio is less than 1, precision will be lost if (1 / ratio) is not a whole number."})
         @Config.Name("EU/FE Ratio")
         @Config.RequiresMcRestart
         public double RATIO = 4;
