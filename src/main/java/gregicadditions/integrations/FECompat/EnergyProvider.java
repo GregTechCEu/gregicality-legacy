@@ -17,11 +17,6 @@ public class EnergyProvider implements ICapabilityProvider {
     private GregicEnergyContainerWrapper wrapper;
 
     /**
-     * Long value of the EU to RF ratio, to not need to cast as often.
-     */
-    public static final long RATIO_LONG = GAConfig.EUtoRF.RATIO;
-
-    /**
      * Lock used for concurrency protection between hasCapability and getCapability.
      */
     ReentrantLock lock = new ReentrantLock();
@@ -33,13 +28,13 @@ public class EnergyProvider implements ICapabilityProvider {
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 
-        if (!GAConfig.EUtoRF.enableNativeEUtoRF)
+        if (!GAConfig.EnergyConversion.enableNativeEUtoFE)
             return false;
 
         if (lock.isLocked() || (capability != CapabilityEnergy.ENERGY && capability != GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER))
             return false;
 
-        // Wrap RF Machines with a GTEU EnergyContainer
+        // Wrap FE Machines with a GTEU EnergyContainer
         if (wrapper == null) wrapper = new GregicEnergyContainerWrapper(tileEntity);
 
         lock.lock();
@@ -54,7 +49,7 @@ public class EnergyProvider implements ICapabilityProvider {
     @SuppressWarnings("unchecked")
     public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
 
-        if (!GAConfig.EUtoRF.enableNativeEUtoRF)
+        if (!GAConfig.EnergyConversion.enableNativeEUtoFE)
             return null;
 
         if (lock.isLocked() || !hasCapability(capability, facing))

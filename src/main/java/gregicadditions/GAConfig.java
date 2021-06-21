@@ -22,16 +22,36 @@ public class GAConfig {
         public boolean AdvancedCasingModel = true;
     }
 
-    @Config.Comment("Config Options for Native EU to RF conversion")
-    public static EUtoRF EUtoRF = new EUtoRF();
+    @Config.Comment("Config Options for Native EU to FE conversion")
+    public static EnergyConversion EnergyConversion = new EnergyConversion();
 
-    public static class EUtoRF {
+    public static class EnergyConversion {
+
         @Config.Comment("Enable Native EU to RF via GT cables and wires")
-        public boolean enableNativeEUtoRF = true;
+        @Config.RequiresMcRestart
+        public boolean enableNativeEUtoFE = true;
 
-        @Config.Comment("Ratio of the Conversion")
-        @Config.Name("Ratio 1EU to XRF")
-        public int RATIO = 4;
+        @Config.Comment({"EU to FE Ratio. Can be less than 1 for multiple EU per unit of FE.",
+                         "Decimal point precision will be lost if Ratio is greater than 1."})
+        @Config.Name("EU/FE Ratio")
+        @Config.RequiresMcRestart
+        public double RATIO = 4;
+
+        @Config.Comment("Energy Converter Machine Options")
+        @Config.Name("Power converter sizes (in amperage)")
+        @Config.RequiresMcRestart
+        public int[] values = new int[]{1, 4, 9, 16};
+
+        @Config.Name("Disable GregTech EU to FE Energy Converters?")
+        @Config.RequiresMcRestart
+        public boolean disableEUtoFEConverter = true;
+
+        @Config.Name("Dusable FE to GregTech EU Energy Converters?")
+        @Config.RequiresMcRestart
+        public boolean disableFEtoEUConverter = false;
+
+        @Config.Name("Should Energy Converters require matching voltage batteries?")
+        public boolean PermitOnlyExactVoltage = false;
     }
     @Config.Comment("Config options for GT6 features")
     public static GT6 GT6 = new GT6();
@@ -263,33 +283,6 @@ public class GAConfig {
         @Config.Comment("Whether or not to register fluid solidification recipes for parts")
         @Config.Name("Fluid solidification recipes for parts")
         public boolean castingRecipes = true;
-    }
-
-    @Config.Comment("Config options for Energy Converter features")
-    public static EnergyConverter energyConverter = new EnergyConverter();
-
-    public static class EnergyConverter {
-
-        @Config.Comment("Define Power converter size")
-        @Config.RequiresMcRestart
-        public int[] values = new int[]{1, 4, 9, 16};
-
-        @Config.Comment("Whether or not to disable GregTech EU to RF energy converters.")
-        @Config.RequiresMcRestart
-        public boolean disableEUtoRF = true;
-
-        @Config.Comment("Whether or not to disable RF to GregTech EU energy converters.")
-        @Config.RequiresMcRestart
-        public boolean disableRFtoEU = false;
-
-        @Config.Comment("True if you want Energy Converter to accept batteries with same voltage as the Energy Converter. False if you want Energy Converter to accept any tier of batteries.")
-        public boolean PermitOnlyExactVoltage = false;
-
-        @Config.Name("Ratio 1 EU to X RF")
-        public int RatioEUtoRF = 4;
-
-        @Config.Name("Ratio X RF to 1 EU")
-        public int RatioRFtoEU = 4;
     }
 
     @Config.Comment("Config options for exNihilo features")

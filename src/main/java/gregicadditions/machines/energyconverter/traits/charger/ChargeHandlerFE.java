@@ -169,7 +169,7 @@ public class ChargeHandlerFE extends ChargeHandler {
 		}
 		if (wrapEUBattery) {
 			final IElectricItem i = this.getBatteryContainer(s, false);
-			return (i != null && (!GAConfig.energyConverter.PermitOnlyExactVoltage || i.getTier() == this.energyConverter.getTier())) ? new EnergyStorageGTEU(this.energyConverter, i) : null;
+			return (i != null && (!GAConfig.EnergyConversion.PermitOnlyExactVoltage || i.getTier() == this.energyConverter.getTier())) ? new EnergyStorageGTEU(this.energyConverter, i) : null;
 		}
 		return null;
 	}

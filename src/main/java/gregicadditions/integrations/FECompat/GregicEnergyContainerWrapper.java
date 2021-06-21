@@ -21,16 +21,16 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     private final ICapabilityProvider upvalue;
 
     /**
-     * Capability holder for the RF-capability.
+     * Capability holder for the FE-capability.
      */
-    private final IEnergyStorage[] facesRF = new IEnergyStorage[7];
+    private final IEnergyStorage[] facesFE = new IEnergyStorage[7];
 
     /**
-     * Internally used RF Buffer so that a very large packet of EU is not partially destroyed
-     * on the conversion to RF. This is hidden from the player, but ensures that no energy
-     * is ever lost on conversion, no matter the voltage tier or RF storage abilities.
+     * Internally used FE Buffer so that a very large packet of EU is not partially destroyed
+     * on the conversion to FE. This is hidden from the player, but ensures that no energy
+     * is ever lost on conversion, no matter the voltage tier or FE storage abilities.
      */
-    private long rfBuffer = 0;
+    private long feBuffer = 0;
 
     protected GregicEnergyContainerWrapper(ICapabilityProvider upvalue) {
         this.upvalue = upvalue;
@@ -65,11 +65,11 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
             return container;
 
         for (EnumFacing face : EnumFacing.VALUES) {
-            container = facesRF[face.getIndex()];
+            container = facesFE[face.getIndex()];
 
             if (container == null) {
                 container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
-                facesRF[face.getIndex()] = container;
+                facesFE[face.getIndex()] = container;
             }
 
             if (container != null && container.getMaxEnergyStored() > 0)
@@ -87,11 +87,11 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
             return container;
 
         for (EnumFacing face : EnumFacing.VALUES) {
-            container = facesRF[face.getIndex()];
+            container = facesFE[face.getIndex()];
 
             if (container == null) {
                 container = upvalue.getCapability(CapabilityEnergy.ENERGY, face);
-                facesRF[face.getIndex()] = container;
+                facesFE[face.getIndex()] = container;
             }
 
             if (container != null && container.canReceive())
@@ -105,11 +105,11 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     public long acceptEnergyFromNetwork(EnumFacing facing, long voltage, long amperage) {
 
         int faceID = facing == null ? 6 : facing.getIndex();
-        IEnergyStorage container = facesRF[faceID];
+        IEnergyStorage container = facesFE[faceID];
 
         if (container == null) {
             container = upvalue.getCapability(CapabilityEnergy.ENERGY, facing);
-            facesRF[faceID] = container;
+            facesFE[faceID] = container;
         }
 
         if (container == null)
@@ -118,27 +118,27 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         int receive = 0;
 
         // Try to use the internal buffer before consuming a new packet
-        if (rfBuffer > 0) {
+        if (feBuffer > 0) {
 
-            receive = container.receiveEnergy(safeCastLongToInt(rfBuffer), true);
+            receive = container.receiveEnergy(safeCastLongToInt(feBuffer), true);
 
             if (receive == 0)
                 return 0;
 
             // Internal Buffer could provide the max RF the consumer could consume
-            if (rfBuffer > receive) {
-                rfBuffer -= receive;
+            if (feBuffer > receive) {
+                feBuffer -= receive;
                 container.receiveEnergy(receive, false);
                 return 0;
 
             // Buffer could not provide max value, save the remainder and continue processing
             } else {
-                receive = safeCastLongToInt(rfBuffer);
-                rfBuffer = 0;
+                receive = safeCastLongToInt(feBuffer);
+                feBuffer = 0;
             }
         }
 
-        long maxPacket = voltage * EnergyProvider.RATIO_LONG;
+        long maxPacket = (long) (voltage * GAConfig.EnergyConversion.RATIO);
         long maximalValue = maxPacket * amperage;
 
         // Try to consume our remainder buffer plus a fresh packet
@@ -172,7 +172,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
             // Able to consume buffered amount plus some amount of power with a packet remainder
             int ampsToConsume = safeCastLongToInt((newPower / maxPacket) + 1);
-            rfBuffer = safeCastLongToInt((maxPacket * ampsToConsume) - consumable);
+            feBuffer = safeCastLongToInt((maxPacket * ampsToConsume) - consumable);
             container.receiveEnergy(consumable, false);
             return ampsToConsume;
 
@@ -198,7 +198,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
             // Able to consume power with some amount of power remainder in the packet
             int ampsToConsume = safeCastLongToInt((consumable / maxPacket) + 1);
-            rfBuffer = safeCastLongToInt((maxPacket * ampsToConsume) - consumable);
+            feBuffer = safeCastLongToInt((maxPacket * ampsToConsume) - consumable);
             container.receiveEnergy(consumable, false);
             return ampsToConsume;
         }
@@ -212,7 +212,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (container == null || delta == 0)
             return 0;
 
-        long energyValue = delta * EnergyProvider.RATIO_LONG;
+        long energyValue = (long) (delta * GAConfig.EnergyConversion.RATIO);
         if (energyValue > Integer.MAX_VALUE)
             energyValue = Integer.MAX_VALUE;
 
@@ -220,29 +220,29 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
 
             int extract = container.extractEnergy(safeCastLongToInt(energyValue), true);
 
-            if (extract != GAConfig.EUtoRF.RATIO)
-                extract -= extract % GAConfig.EUtoRF.RATIO;
+            if (extract != GAConfig.EnergyConversion.RATIO)
+                extract -= extract % GAConfig.EnergyConversion.RATIO;
 
-            return container.extractEnergy(extract, false) / EnergyProvider.RATIO_LONG;
+            return (long) (container.extractEnergy(extract, false) / GAConfig.EnergyConversion.RATIO);
 
         } else {
 
             int receive = container.receiveEnergy((int) energyValue, true);
 
-            if (receive != GAConfig.EUtoRF.RATIO)
-                receive -= receive % GAConfig.EUtoRF.RATIO;
+            if (receive != GAConfig.EnergyConversion.RATIO)
+                receive -= receive % GAConfig.EnergyConversion.RATIO;
 
-            return container.receiveEnergy(receive, false) / EnergyProvider.RATIO_LONG;
+            return (long) (container.receiveEnergy(receive, false) / GAConfig.EnergyConversion.RATIO);
         }
     }
 
     @Nullable
     private IEnergyStorage def() {
 
-        if (facesRF[6] == null)
-            facesRF[6] = upvalue.getCapability(CapabilityEnergy.ENERGY, null);
+        if (facesFE[6] == null)
+            facesFE[6] = upvalue.getCapability(CapabilityEnergy.ENERGY, null);
 
-        return facesRF[6];
+        return facesFE[6];
     }
 
     @Override
@@ -252,7 +252,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (cap == null)
             return 0L;
 
-        return cap.getMaxEnergyStored() / GAConfig.EUtoRF.RATIO;
+        return (long) (cap.getMaxEnergyStored() / GAConfig.EnergyConversion.RATIO);
     }
 
     @Override
@@ -262,7 +262,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (cap == null)
             return 0L;
 
-        return cap.getEnergyStored() / GAConfig.EUtoRF.RATIO;
+        return (long) (cap.getEnergyStored() / GAConfig.EnergyConversion.RATIO);
     }
 
     @Override
@@ -289,7 +289,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
         if (maxInput == 0)
             return 0;
 
-        maxInput /= EnergyProvider.RATIO_LONG;
+        maxInput = (long) (maxInput / GAConfig.EnergyConversion.RATIO);
         return GAValues.V[GAUtility.getTierByVoltage(maxInput)];
     }
 
@@ -297,11 +297,11 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     public boolean inputsEnergy(EnumFacing facing) {
 
         int faceID = facing == null ? 6 : facing.getIndex();
-        IEnergyStorage container = facesRF[faceID];
+        IEnergyStorage container = facesFE[faceID];
 
         if (container == null) {
             container = upvalue.getCapability(CapabilityEnergy.ENERGY, facing);
-            facesRF[faceID] = container;
+            facesFE[faceID] = container;
         }
 
         if (container == null)
@@ -311,7 +311,7 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     }
 
     /**
-     * Wrapped RF-consumers should not be able to output EU.
+     * Wrapped FE-consumers should not be able to output EU.
      */
     @Override
     public boolean outputsEnergy(EnumFacing facing) {
@@ -319,9 +319,9 @@ public class GregicEnergyContainerWrapper implements IEnergyContainer {
     }
 
     /**
-     * Hide this TileEntity EU-capability in TOP. Allows RF-machines to
+     * Hide this TileEntity EU-capability in TOP. Allows FE-machines to
      * "silently" accept EU without showing their charge in EU in TOP.
-     * Let the machine display it in RF instead, however it chooses to.
+     * Let the machine display it in FE instead, however it chooses to.
      */
     @Override
     public boolean isOneProbeHidden() {

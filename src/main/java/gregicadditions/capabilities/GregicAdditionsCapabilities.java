@@ -30,10 +30,10 @@ public class GregicAdditionsCapabilities {
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_IMPORT_ITEMS = new MultiblockAbility<>();
     public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
-    private static final ResourceLocation CAPABILITY_EU_TO_RF = new ResourceLocation(Gregicality.MODID, "fecapability");
+    private static final ResourceLocation CAPABILITY_EU_TO_FE = new ResourceLocation(Gregicality.MODID, "fecapability");
 
     @SubscribeEvent
     public static void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
-        event.addCapability(CAPABILITY_EU_TO_RF, new EnergyProvider(event.getObject()));
+        event.addCapability(CAPABILITY_EU_TO_FE, new EnergyProvider(event.getObject()));
     }
 }
