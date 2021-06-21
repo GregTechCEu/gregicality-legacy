@@ -63,7 +63,7 @@ public class ChromiumChain {
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
 
-        // CrO3 + 2Al -> Cr + Al2O3
+        // Cr2O3 + 2Al -> 2 Cr + Al2O3
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1200)
                 .inputs(ChromiumIIIOxide.getItemStack(5))
                 .input(dust, Aluminium, 2)
