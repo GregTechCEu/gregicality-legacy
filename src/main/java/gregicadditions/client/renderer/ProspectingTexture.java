@@ -12,41 +12,70 @@ import net.minecraft.client.resources.IResourceManager;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
+import java.util.HashMap;
 
-
+@SideOnly(Side.CLIENT)
 public class ProspectingTexture extends AbstractTexture {
-
-    private final ProspectingPacket packet;
-    private String selected = "all";
-    private int bgColor = Color.WHITE.getRGB();
+    private String selected = "[all]";
+    private boolean darkMode = false;
     private int imageWidth = -1;
     private int imageHeight = -1;
+    public final HashMap<Byte, String>[][] map;
+    public static HashMap<Byte, String> emptyTag = new HashMap<>();
+    private int playerI;
+    private int playerJ;
+    private final int mode;
+    private final int radius;
 
-    public ProspectingTexture(ProspectingPacket aPacket) {
-        packet = aPacket;
+    public ProspectingTexture(int mode, int radius) {
+        this.radius = radius;
+        this.mode = mode;
+        if (this.mode == 1)
+            map = new HashMap[(radius * 2 - 1)][(radius * 2 - 1)];
+        else
+            map = new HashMap[(radius * 2 - 1) * 16][(radius * 2 - 1) * 16];
+    }
+
+    public void updateTexture(ProspectingPacket packet) {
+        int playerChunkX = packet.posX >> 4;
+        int playerChunkZ = packet.posZ >> 4;
+        playerI = packet.posX - (playerChunkX - this.radius + 1) * 16 - 1;
+        playerJ = packet.posZ - (playerChunkZ - this.radius + 1) * 16 - 1;
+        if (this.mode == 1) {
+            map[packet.chunkX - (playerChunkX - radius + 1)][packet.chunkZ - (playerChunkZ - radius + 1)] = packet.map[0][0] == null ?
+                    emptyTag : packet.map[0][0];
+        } else {
+            for (int x = 0; x < 16; x++) {
+                for (int z = 0; z < 16; z++) {
+                    map[x + (packet.chunkX - (playerChunkX - radius) - 1) * 16][z + (packet.chunkZ - (playerChunkZ - radius) - 1) * 16] = packet.map[x][z] == null ?
+                            emptyTag : packet.map[x][z];
+                }
+            }
+        }
+        loadTexture(null);
     }
 
     private BufferedImage getImage() {
-        int wh = (packet.radius * 2 + 1) * 16;
+        int wh = (this.radius * 2 - 1) * 16;
         BufferedImage image = new BufferedImage(wh, wh, BufferedImage.TYPE_INT_ARGB);
         WritableRaster raster = image.getRaster();
 
-        int playerI = packet.posX - (packet.chunkX - packet.radius) * 16 - 1; // Correct player offset
-        int playerJ = packet.posZ - (packet.chunkZ - packet.radius) * 16 - 1;
-
         for (int i = 0; i < wh; i++){
             for (int j = 0; j < wh; j++) {
+                HashMap<Byte, String> data = this.map[this.mode == 0 ? i : i / 16][this.mode == 0 ? j : j / 16];
                 // draw bg
-                image.setRGB(i, j, bgColor);
+                image.setRGB(i, j, ((data == null) ^ darkMode) ? Color.darkGray.getRGB(): Color.WHITE.getRGB());
                 //draw ore
-                if (packet.pType == 0 && packet.map[i][j] != null) {
-                    for (String orePrefix : packet.map[i][j].values()) {
-                        if (!selected.equals("all") && !selected.equals(orePrefix)) continue;
+                if (this.mode == 0 && data != null) {
+                    for (String orePrefix : data.values()) {
+                        if (!selected.equals("[all]") && !selected.equals(orePrefix)) continue;
                         MaterialStack mterialStack = OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix));
                         image.setRGB(i, j, mterialStack==null? orePrefix.hashCode():mterialStack.material.materialRGB | 0XFF000000);
                         break;
@@ -72,13 +101,11 @@ public class ProspectingTexture extends AbstractTexture {
     @Override
     public void loadTexture(@Nullable IResourceManager resourceManager) {
         this.deleteGlTexture();
-        if (packet != null) {
-            int tId = getGlTextureId();
-            if (tId < 0) return;
-            TextureUtil.uploadTextureImageAllocate(this.getGlTextureId(), getImage(), false, false);
-            imageWidth = packet.getSize();
-            imageHeight = packet.getSize();
-        }
+        int tId = getGlTextureId();
+        if (tId < 0) return;
+        TextureUtil.uploadTextureImageAllocate(this.getGlTextureId(), getImage(), false, false);
+        imageWidth = (radius * 2 - 1) * 16;
+        imageHeight = (radius * 2 - 1) * 16;
     }
 
     public void loadTexture(@Nullable IResourceManager resourceManager, String selected){
@@ -86,8 +113,8 @@ public class ProspectingTexture extends AbstractTexture {
         loadTexture(resourceManager);
     }
 
-    public void loadTexture(@Nullable IResourceManager resourceManager, int backGroundColor){
-        this.bgColor = backGroundColor;
+    public void loadTexture(@Nullable IResourceManager resourceManager, boolean darkMode){
+        this.darkMode = darkMode;
         loadTexture(resourceManager);
     }
 
@@ -96,17 +123,16 @@ public class ProspectingTexture extends AbstractTexture {
     }
 
     public void draw(int x, int y) {
-        if (packet != null) {
-            GlStateManager.bindTexture(this.getGlTextureId());
-            Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
-            if(packet.pType == 1) { // draw fluids in grid
-                for (int cx = 0; cx < packet.radius * 2 + 1; cx++){
-                    for (int cz = 0; cz < packet.radius * 2 + 1; cz++){
-                        if (packet.map[cx][cz] != null) {
-                            Fluid fluid = FluidRegistry.getFluid(packet.map[cx][cz].get((byte) 1));
-                            if (selected.equals("all") || selected.equals(fluid.getName())) {
-                                RenderUtil.drawFluidForGui(new FluidStack(fluid, 1), 1, x + cx * 16 + 1, y + cz * 16 + 1, 16, 16);
-                            }
+        if(this.glTextureId < 0) return;
+        GlStateManager.bindTexture(this.getGlTextureId());
+        Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+        if(this.mode == 1) { // draw fluids in grid
+            for (int cx = 0; cx < this.radius * 2 - 1; cx++){
+                for (int cz = 0; cz < this.radius * 2 - 1; cz++){
+                    if (this.map[cx][cz] != null && !this.map[cx][cz].isEmpty()) {
+                        Fluid fluid = FluidRegistry.getFluid(this.map[cx][cz].get((byte) 1));
+                        if (selected.equals("[all]") || selected.equals(fluid.getName())) {
+                            RenderUtil.drawFluidForGui(new FluidStack(fluid, 1), 1, x + cx * 16 + 1, y + cz * 16 + 1, 16, 16);
                         }
                     }
                 }
