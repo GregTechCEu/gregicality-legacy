@@ -4363,3 +4363,23 @@ metaitem.mgcl_bromide.name=Бромид хлорида магния
 metaitem.sarcosine.name=Саркозин
 metaitem.cyanonaphthalene.name=Цианонафталин
 material.fullerene_polymer_matrix=Полимерная матрица фуллерена
+
+metaitem.boule.rutherfordium.name=Рутерфодовый монокристалл
+metaitem.boule.dubnium.name=Дубниевый монокристалл
+
+item.zylon.ingot=Зайлоновый слиток
+item.zylon.dustTiny=Крохотная кучка зайлона
+item.zylon.dustSmall=Маленькая кучка зайлона
+item.zylon.dust=Пыль зайлона
+item.zylon.nugget=Самородок зайлона
+item.zylon.plateDense=Плотный зайлоновый лист
+item.zylon.plate=Зайлоновый лист
+item.zylon.foil=Тонкий зайлоновый лист
+item.fullerene_polymer_matrix.ingot=Матричный стержень из фуллеренового полимера
+item.fullerene_polymer_matrix.dustTiny=Крошечная пыль фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.dustSmall=Маленькая пыль фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.dust=Пыль фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.nugget=Самородок фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.plateDense=Плотный лист фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.plate=Лист фуллереновой полимерной матрицы
+item.fullerene_polymer_matrix.foil=Тонкий лист фуллереновой полимерной матрицы
