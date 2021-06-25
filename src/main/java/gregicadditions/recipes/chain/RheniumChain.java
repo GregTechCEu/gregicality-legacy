@@ -298,7 +298,7 @@ public class RheniumChain {
 
         // ? + RSM -> ? + ?(20%) + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, PlatinumSaltCrude, 2)
+                .input(dust, PlatinumSalt, 2)
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
                 .output(dust, PlatinumSaltRefined, 2)
                 .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined, 2), 2000, 0)

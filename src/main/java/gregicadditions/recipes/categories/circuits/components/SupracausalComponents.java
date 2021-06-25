@@ -216,10 +216,10 @@ public class SupracausalComponents {
                 .output(plate, QCDMatter)
                 .buildAndRegister();
 
-        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
-                .fluidInputs(QCDMatter.getFluid(L))
-                .fluidInputs(LiquidHelium.getFluid(20000))
-                .fluidOutputs(Helium.getFluid(20000))
+        PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(200).EUt(134217728)
+                .fluidInputs(QCDMatter.getFluid(L / 2))
+                .fluidInputs(LiquidHelium.getFluid(10000))
+                .fluidOutputs(Helium.getFluid(10000))
                 .notConsumable(ROD_FIELD_SHAPE.getStackForm())
                 .output(stick, QCDMatter)
                 .buildAndRegister();

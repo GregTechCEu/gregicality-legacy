@@ -4,6 +4,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -13,7 +14,7 @@ public class VanadiumChain {
 
         // Fe3O4V + C = 3Fe + (VO)C(TiO2) + CO
         BLAST_RECIPES.recipeBuilder().duration(220).EUt(120).blastFurnaceTemp(1500)
-                .input(dust, VanadiumMagnetite, 8)
+                .input(dust, VanadiumMagnetite, 4)
                 .input(dust, Carbon)
                 .output(ingot, Iron, 3)
                 .outputs(VanadiumSlag.getItemStack(5))
@@ -79,5 +80,13 @@ public class VanadiumChain {
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
+        // Combined Step - Vanadium Magnetite
+        CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(1920).duration(200)
+                .input(dust, VanadiumMagnetite, 4)
+                .fluidInputs(SulfuricAcid.getFluid(3000))
+                .output(dust, Vanadium, 2)
+                .output(dust, Magnetite, 7)
+                .output(dust, Sulfur, 3)
+                .buildAndRegister();
     }
 }
