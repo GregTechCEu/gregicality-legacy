@@ -19,6 +19,7 @@ import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeMaps;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -77,9 +78,37 @@ public class Gregicality {
     public static CommonProxy proxy;
 
     public Gregicality() {
-
         GAEnums.preInit();
-
+        try {
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.DISTILLERY_RECIPES,
+                    "maxOutputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.CHEMICAL_BATH_RECIPES,
+                    "maxFluidOutputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.CHEMICAL_RECIPES,
+                    "maxOutputs",
+                    2
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.FERMENTING_RECIPES,
+                    "maxInputs",
+                    1
+            );
+            GAEnums.addSlotsToGTCEMaps(
+                    RecipeMaps.FERMENTING_RECIPES,
+                    "maxOutputs",
+                    1
+            );
+        } catch (Exception e) {
+            GALog.logger.error("Error setting recipe map fields, {}",
+                    e.toString());
+        }
     }
 
     @EventHandler
