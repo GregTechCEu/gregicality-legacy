@@ -1,7 +1,6 @@
 package gregicadditions.widgets;
 
 import gregicadditions.client.renderer.ProspectingTexture;
-import gregicadditions.item.behaviors.ProspectingToolBehaviour;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.network.ProspectingPacket;
 import gregicadditions.worldgen.PumpjackHandler;
@@ -21,21 +20,24 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
 
 public class WidgetProspectingMap extends Widget {
     private final int chunkRadius;
     private final PlayerInventoryHolder holder;
-    private static ProspectingTexture map;
     private WidgetOreList oreList = null;
-    private ProspectingPacket packet = null;
     private boolean darkMode = false;
+    private int mode = 0;
+    private int chunkIndex = 0;
+    private int scanTick;
+    @SideOnly(Side.CLIENT)
+    private ProspectingTexture texture;
 
     public WidgetProspectingMap(int xPosition, int yPosition, int chunkRadius, PlayerInventoryHolder playerInventoryHolder) {
         super(new Position(xPosition, yPosition), new Size(16 * (chunkRadius * 2 - 1), 16 * (chunkRadius * 2 - 1)));
@@ -43,12 +45,14 @@ public class WidgetProspectingMap extends Widget {
         this.holder = playerInventoryHolder;
     }
 
-    public WidgetProspectingMap(int xPosition, int yPosition, int chunkRadius, PlayerInventoryHolder playerInventoryHolder, WidgetOreList widgetOreList) {
+    public WidgetProspectingMap(int xPosition, int yPosition, int chunkRadius, PlayerInventoryHolder playerInventoryHolder, WidgetOreList widgetOreList, int mode, int scanTick) {
         this(xPosition,yPosition,chunkRadius,playerInventoryHolder);
+        this.mode = mode;
+        this.scanTick = scanTick;
         oreList = widgetOreList;
         oreList.onSelected = name->{
-            if (map != null) {
-                map.loadTexture(null, name);
+            if (texture != null) {
+                texture.loadTexture(null, name);
             }
         };
     }
@@ -56,8 +60,8 @@ public class WidgetProspectingMap extends Widget {
     public void setDarkMode(boolean mode) {
         if (darkMode != mode) {
             darkMode = mode;
-            if (map != null) {
-                map.loadTexture(null, darkMode? Color.darkGray.getRGB(): Color.WHITE.getRGB());
+            if (texture != null) {
+                texture.loadTexture(null, darkMode);
             }
         }
     }
@@ -70,30 +74,30 @@ public class WidgetProspectingMap extends Widget {
     public void detectAndSendChanges() {
         EntityPlayer player = holder.player;
         World world = player.world;
-        if (!world.isRemote && packet == null) {
-            ItemStack itemStack = holder.getCurrentItem();
-            ProspectingToolBehaviour behavior = ProspectingToolBehaviour.getInstanceFor(itemStack);
-            int data = behavior.getToolGTDetravData(itemStack);
-
+        if (FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter() % scanTick == 0 && chunkIndex < (chunkRadius * 2 - 1) * (chunkRadius * 2 - 1)) {
             int cX = ((int) player.posX) >> 4;
             int cZ = ((int) player.posZ) >> 4;
-            List<Chunk> chunks = new ArrayList<Chunk>();
-            for (int i = -chunkRadius; i <= chunkRadius; i++)
-                for (int j = -chunkRadius; j <= chunkRadius; j++)
-                    if (i != -chunkRadius && i != chunkRadius && j != -chunkRadius && j != chunkRadius)
-                        chunks.add(world.getChunk(cX + i, cZ + j));
-            packet = new ProspectingPacket(cX, cZ, (int) player.posX, (int) player.posZ, chunkRadius - 1, data);
-            if (data > 1) return;
-            for (Chunk c : chunks) {
-                switch (data) {
+            int r = (int) Math.floor(Math.sqrt(chunkIndex));
+            r = r / 2 + ((r % 2 == 0) ? 0 : 1);
+            int side = r == 0 ? 0 : (chunkIndex -  (2 * r - 1) * (2 * r - 1)) / (2 * r);
+            int offset = r == 0 ? -1 : (chunkIndex -  (2 * r - 1) * (2 * r - 1)) % (2 * r);
+
+            int ox = side == 0 ? -r : side == 1 ? (offset - r + 1) : side == 2 ? r : -(offset - r + 1);
+            int oz = side == 3 ? r : side == 0 ? -(offset - r + 1) : side == 1 ? -r : (offset - r + 1);
+
+            Chunk chunk = world.getChunk(cX + ox, cZ + oz);
+            ProspectingPacket packet = new ProspectingPacket(cX + ox, cZ + oz, (int) player.posX, (int) player.posZ, this.mode);
+
+            if (chunk != null) {
+                switch (mode) {
                     case 0:
                         for (int x = 0; x < 16; x++) {
                             for (int z = 0; z < 16; z++) {
-                                int ySize = c.getHeightValue(x, z);
+                                int ySize = chunk.getHeightValue(x, z);
                                 for (int y = 1; y < ySize; y++) {
-                                    Block block = c.getBlockState(x, y, z).getBlock();
+                                    Block block = chunk.getBlockState(x, y, z).getBlock();
                                     if (Miner.isOre(block)) {
-                                        packet.addBlock(c.x * 16 + x, y, c.z * 16 + z,
+                                        packet.addBlock(x, y, z,
                                                 OreDictUnifier.getOreDictionaryNames(new ItemStack(block)).stream()
                                                         .findFirst().get());
                                     }
@@ -102,10 +106,10 @@ public class WidgetProspectingMap extends Widget {
                         }
                         break;
                     case 1:
-                        PumpjackHandler.OilWorldInfo fStack = PumpjackHandler.getOilWorldInfo(world, c.x, c.z);
+                        PumpjackHandler.OilWorldInfo fStack = PumpjackHandler.getOilWorldInfo(world, chunk.x, chunk.z);
                         if (fStack != null && fStack.getType() != null) {
-                            packet.addBlock(c.x, 2, c.z, fStack.current + "");
-                            packet.addBlock(c.x, 1, c.z, fStack.getType().fluid);
+                            packet.addBlock(0, 2, 0, fStack.current + "");
+                            packet.addBlock(0, 1, 0, fStack.getType().fluid);
                         }
                         break;
                     default:
@@ -114,16 +118,17 @@ public class WidgetProspectingMap extends Widget {
             }
             writeUpdateInfo(2, packet::writePacketData);
             if (oreList != null) {
-                oreList.addOres(packet);
+                oreList.addOres(packet.ores, packet.mode);
             }
+            chunkIndex++;
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void drawInBackground(int mouseX, int mouseY, IRenderContext context) {
-        if(map!=null) {
-            map.draw(this.getPosition().x, this.getPosition().y);
+        if(texture !=null) {
+            texture.draw(this.getPosition().x, this.getPosition().y);
         }
     }
 
@@ -132,15 +137,13 @@ public class WidgetProspectingMap extends Widget {
     public void readUpdateInfo(int id, PacketBuffer buffer) {
         super.readUpdateInfo(id, buffer);
         if (id == 2) {
-            if (map != null) {
-                map.deleteGlTexture();
-                map = null;
+            ProspectingPacket packet = ProspectingPacket.readPacketData(buffer);
+            if (texture == null) {
+                texture = new ProspectingTexture(packet.mode, chunkRadius);
             }
-            packet = ProspectingPacket.readPacketData(buffer);
-            map = new ProspectingTexture(packet);
-            map.loadTexture(null);
+            texture.updateTexture(packet);
             if (oreList != null) {
-                oreList.addOres(packet);
+                oreList.addOres(packet.ores, packet.mode);
             }
         }
     }
@@ -149,7 +152,7 @@ public class WidgetProspectingMap extends Widget {
     @Override
     public void drawInForeground(int mouseX, int mouseY) {
         // draw tooltips
-        if (this.isMouseOverElement(mouseX, mouseY) && packet != null && map!= null) {
+        if (this.isMouseOverElement(mouseX, mouseY) && texture != null) {
             List<String> tooltips = new ArrayList<>();
             int cX = (mouseX - this.getPosition().x) / 16;
             int cZ = (mouseY - this.getPosition().y) / 16;
@@ -161,15 +164,15 @@ public class WidgetProspectingMap extends Widget {
                     (cX + 1) * 16 + this.getPosition().x,
                     (cZ + 1) * 16 + this.getPosition().y,
                     new Color(0x4B6C6C6C, true).getRGB());
-            if (packet.pType == 0) { // draw ore
+            if (this.mode == 0) { // draw ore
                 tooltips.add(I18n.format("metaitem.tool.prospect.tooltips.ore"));
                 HashMap<String, Integer> oreInfo = new HashMap<>();
                 for (int i = 0; i < 16; i++) {
                     for (int j = 0; j < 16; j++) {
-                        if (packet.map[cX * 16 + i][cZ * 16 + j] != null) {
-                            packet.map[cX * 16 + i][cZ * 16 + j].values().forEach(dict -> {
+                        if (texture.map[cX * 16 + i][cZ * 16 + j] != null) {
+                            texture.map[cX * 16 + i][cZ * 16 + j].values().forEach(dict -> {
                                 String name = OreDictUnifier.get(dict).getDisplayName();
-                                if (map.getSelected().equals("all") || map.getSelected().equals(dict)) {
+                                if (texture.getSelected().equals("[all]") || texture.getSelected().equals(dict)) {
                                     oreInfo.put(name, oreInfo.getOrDefault(name, 0) + 1);
                                 }
                             });
@@ -177,12 +180,12 @@ public class WidgetProspectingMap extends Widget {
                     }
                 }
                 oreInfo.forEach((name, count)->tooltips.add(name + " --- " + count));
-            } else if(packet.pType == 1){
+            } else if(this.mode == 1){
                 tooltips.add(I18n.format("metaitem.tool.prospect.tooltips.fluid"));
-                if (packet.map[cX][cZ] != null) {
-                    String name = FluidRegistry.getFluidStack(packet.map[cX][cZ].get((byte) 1),1).getLocalizedName();
-                    if (map.getSelected().equals("all") || map.getSelected().equals(packet.map[cX][cZ].get((byte) 1))) {
-                        tooltips.add(name + " --- " + packet.map[cX][cZ].get((byte) 2));
+                if (texture.map[cX][cZ] != null && !texture.map[cX][cZ].isEmpty()) {
+                    String name = FluidRegistry.getFluidStack(texture.map[cX][cZ].get((byte) 1),1).getLocalizedName();
+                    if (texture.getSelected().equals("[all]") || texture.getSelected().equals(texture.map[cX][cZ].get((byte) 1))) {
+                        tooltips.add(name + " --- " + texture.map[cX][cZ].get((byte) 2));
                     }
                 }
             }

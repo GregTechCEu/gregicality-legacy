@@ -1384,6 +1384,12 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             public int[] scanRadii = {2, 3, 6, 7};
 
+            @Config.Comment("The ticks for the prospector to scan each chunk.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan time cost")
+            @Config.RangeInt(min = 1)
+            public int[] scanTicks = {4, 3, 2, 1};
+
             @Config.Comment("The EU capacity of the prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector energy capacity")

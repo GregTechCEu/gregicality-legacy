@@ -15,13 +15,11 @@ import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.recipes.categories.handlers.*;
 import gregicadditions.recipes.compat.ForestryCompat;
-import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.util.FluidTooltipUtil;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -253,6 +251,9 @@ public class CommonProxy {
     @SubscribeEvent
     public static void onUnload(WorldEvent.Unload event) {
         IPSaveData.setDirty(0);
+    }
+
+    public void registerReloadListener() {
     }
 
 }

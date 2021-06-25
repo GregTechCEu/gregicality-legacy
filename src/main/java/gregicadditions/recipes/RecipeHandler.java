@@ -158,6 +158,8 @@ public class RecipeHandler {
         WetwareChain.init();
         OpticalChain.init();
         CombinedChains.init();
+        OrganometallicChains.init();
+        QuantumDotsChain.init();
     }
 
     /**
@@ -698,7 +700,7 @@ public class RecipeHandler {
      * + Assembler Rotor Recipe that GTCE removed
      * + Extruder Rotor Recipe
      */
-    private static void processRotor(OrePrefix ingot, IngotMaterial material) {
+    private static void processRotor(OrePrefix rotor, IngotMaterial material) {
 
         OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
 
