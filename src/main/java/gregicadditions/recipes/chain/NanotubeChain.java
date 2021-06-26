@@ -108,7 +108,7 @@ public class NanotubeChain {
         // C7H5ClO + 2H -> C7H6O + HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(480)
                 .notConsumable(dust, Barite)
-                .notConsumable(dust, Palladium)
+                .notConsumable(PdCCatalyst.getItemStack())
                 .fluidInputs(BenzoylChloride.getFluid(2000))
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Benzaldehyde.getFluid(1000))
