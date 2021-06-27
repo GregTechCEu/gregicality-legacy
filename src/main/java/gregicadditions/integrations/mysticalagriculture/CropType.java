@@ -342,8 +342,8 @@ public final class CropType {
         SEEDS.put(PlatinumMetallicPowder, new ItemTierSeed(CROPS.get(PlatinumMetallicPowder), PlatinumMetallicPowder, 3));
         SEEDS.put(PalladiumMetallicPowder, new ItemTierSeed(CROPS.get(PalladiumMetallicPowder), PalladiumMetallicPowder, 3));
         SEEDS.put(Ruthenium, new ItemTierSeed(CROPS.get(Ruthenium), Ruthenium, 6));
-        SEEDS.put(IrOsLeachResidue, new ItemTierSeed(CROPS.get(IrOsLeachResidue), IrOsLeachResidue, 3));
-        SEEDS.put(IrLeachResidue, new ItemTierSeed(CROPS.get(IrLeachResidue), IrLeachResidue, 3));
+        SEEDS.put(RarestMetalResidue, new ItemTierSeed(CROPS.get(RarestMetalResidue), RarestMetalResidue, 3));
+        SEEDS.put(IrMetalResidue, new ItemTierSeed(CROPS.get(IrMetalResidue), IrMetalResidue, 3));
         SEEDS.put(Rhodium, new ItemTierSeed(CROPS.get(Rhodium), Rhodium, 6));
         SEEDS.put(RhodiumPlatedPalladium, new ItemTierSeed(CROPS.get(RhodiumPlatedPalladium), RhodiumPlatedPalladium, 7));
         SEEDS.put(Polybenzimidazole, new ItemTierSeed(CROPS.get(Polybenzimidazole), Polybenzimidazole, 5));

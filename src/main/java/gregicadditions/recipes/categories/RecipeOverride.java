@@ -760,8 +760,8 @@ public class RecipeOverride {
                 .output(dust, PreciousMetal)
                 .output(dust, PlatinumMetallicPowder, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 9500, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrLeachResidue, 3), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrOsLeachResidue, 3), 8500, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrMetalResidue, 3), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, RarestMetalResidue, 3), 8500, 0)
                 .buildAndRegister();
 
         // Sheldonite Smelting Recipe
@@ -875,6 +875,22 @@ public class RecipeOverride {
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(HeavyFuel.getFluid(4000))
+                .buildAndRegister();
+
+        // Trona Electrolysis
+        ELECTROLYZER_RECIPES.recipeBuilder().EUt(60).duration(784)
+                .input(dust, Trona, 14)
+                .output(dust, SodaAsh, 6)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .fluidOutputs(Water.getFluid(2000))
+                .buildAndRegister();
+
+        // Ilmenite Processing
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Ilmenite), OreDictUnifier.get(dust, Carbon));
+        BLAST_RECIPES.recipeBuilder().EUt(500).duration(600).blastFurnaceTemp(1700)
+                .input(dust, Ilmenite, 5)
+                .output(ingot, WroughtIron)
+                .output(dust, Rutile, 3)
                 .buildAndRegister();
     }
 

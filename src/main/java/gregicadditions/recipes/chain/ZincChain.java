@@ -17,7 +17,7 @@ public class ZincChain {
 
         // ZnS + C + H2O = [ZnS + C + H2O]
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
-                .input(dust, Sphalerite, 2)
+                .input(dust, Sphalerite)
                 .input(dust, Coke)
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .outputs(ZincCokePellets.getItemStack(3))
@@ -32,10 +32,10 @@ public class ZincChain {
                 .fluidOutputs(ZincExhaustMixture.getFluid(1000))
                 .buildAndRegister();
 
-        // ZnO + H2SO4 = ZnSO4 + ZincLeachingResidue [Contains: H2O]
+        // ZnO + 2H2SO4 = ZnSO4 + ZincLeachingResidue [Contains: (H2O)(H2SO4)]
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(40).EUt(480)
                 .input(dust, Zincite, 2)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(2000))
                 .output(dust, ZincSulfate, 6)
                 .outputs(ZincLeachingResidue.getItemStack())
                 .buildAndRegister();
@@ -261,10 +261,10 @@ public class ZincChain {
                 .fluidOutputs(WoodTar.getFluid(500))
                 .buildAndRegister();
 
-        // ZincLeachingResidue [Contains: H2O] + Tannic Acid = FeSO4 + 0.5H4GeO4
+        // ZincLeachingResidue [Contains: (H2O)(H2SO4)] -> FeSO4 + 0.5H4GeO4
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .inputs(ZincLeachingResidue.getItemStack())
-                .fluidInputs(TannicAcid.getFluid(1000))
+                .notConsumable(TannicAcid.getFluid(1))
                 .outputs(IronSulfateDust.getItemStack(6))
                 .fluidOutputs(GermanicAcidSolution.getFluid(500))
                 .buildAndRegister();

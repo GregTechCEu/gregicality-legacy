@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import static gregicadditions.GAEnums.GAOrePrefix.dioxide;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -168,6 +169,16 @@ public class CombinedChains {
                 .fluidOutputs(HydrogenSulfide.getFluid(8000))
                 .fluidOutputs(HydrochloricAcid.getFluid(24000))
                 .fluidOutputs(PCBS.getFluid(8000))
+                .buildAndRegister();
+
+        // Combined Process - Uraninite
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().EUt(7680).duration(864)
+                .input(dust, Uraninite, 3)
+                .fluidInputs(NitrationMixture.getFluid(4000))
+                .output(dioxide, UraniumRadioactive.getMaterial(), 3)
+                .fluidOutputs(UraniumSulfateWasteSolution.getFluid(1000))
+                .fluidOutputs(UraniumRefinementWasteSolution.getFluid(1000))
+                .fluidOutputs(ThoriumNitrateSolution.getFluid(1000))
                 .buildAndRegister();
     }
 }
