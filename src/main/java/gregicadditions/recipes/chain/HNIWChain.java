@@ -297,7 +297,7 @@ public class HNIWChain {
                 .outputs(NitrosoniumTetrafluoroborate.getItemStack(14))
                 .fluidOutputs(TetrafluoroboricAcid.getFluid(6000))
                 .fluidOutputs(AceticAcid.getFluid(4000))
-                .EUt(30720)
+                .EUt(491520)
                 .duration(100)
                 .buildAndRegister();
 
