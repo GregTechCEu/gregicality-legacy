@@ -56,7 +56,7 @@ public class HNIWChain {
                 .buildAndRegister();
 
         //2 K2NHS2O7 + 4 H2O -> 2 K2SO4 + H2SO4 + N2H8SO6
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(PotassiumHydroxylaminedisulfonate.getItemStack(26))
                 .fluidInputs(Water.getFluid(4000))
                 .outputs(HydroxylammoniumSulfate.getItemStack(17))
