@@ -2,7 +2,6 @@ package gregicadditions;
 
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
-import gregicadditions.client.LangOverride;
 import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregicadditions.input.Keybinds;
@@ -10,15 +9,11 @@ import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregicadditions.utils.GALog;
-import gregicadditions.client.LangOverride.MetaItemName;
-import gregicadditions.client.LangOverride.SetTranslation;
-import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -26,8 +21,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
-import net.minecraftforge.client.resource.ISelectiveResourceReloadListener;
-import net.minecraftforge.client.resource.VanillaResourceType;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -73,7 +66,6 @@ public class ClientProxy extends CommonProxy {
         super.onLoad();
         Keybinds.registerClient();
         GAMetaBlocks.registerColors();
-        LangOverride.registerOverrides();
     }
 
 
@@ -87,27 +79,6 @@ public class ClientProxy extends CommonProxy {
     public static void addMaterialFormulaHandler(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         if (!(itemStack.getItem() instanceof ItemBlock)) {
-
-            if (itemStack.getItem() instanceof MetaItem) {
-                MetaItemName translations = LangOverride
-                        .META_ITEM_TRANSLATIONS.get(itemStack.getItem());
-
-                if (translations != null) {
-                    String name = translations.getName();
-                    String tooltip = translations.getTooltip();
-                    if (name != null) {
-                        event.getToolTip().set(0, name);
-                    }
-                    if (tooltip != null) {
-                        if (event.getToolTip().size() >= 2) {
-                            event.getToolTip().set(1, tooltip);
-                        } else {
-                            event.getToolTip().add(tooltip);
-                        }
-                    }
-                }
-            }
-
             Optional<String> oreDictName = OreDictUnifier.getOreDictionaryNames(itemStack).stream().findFirst();
             if (oreDictName.isPresent() && GADustItem.oreDictToSimpleDust.containsKey(oreDictName.get())) {
                 SimpleDustMaterial material = SimpleDustMaterial.GA_DUSTS.get((short) itemStack.getItemDamage());
@@ -119,28 +90,5 @@ public class ClientProxy extends CommonProxy {
                 }
             }
         }
-    }
-
-    /**
-     * Used for Overriding default Lang entries.
-     */
-    @Override
-    public void registerReloadListener() {
-        super.registerReloadListener();
-        IReloadableResourceManager manager = (IReloadableResourceManager)
-                Minecraft.getMinecraft().getResourceManager();
-
-        manager.registerReloadListener(
-                (ISelectiveResourceReloadListener)
-                        (resManager, resPredicate) -> {
-
-            if (resPredicate.test(VanillaResourceType.LANGUAGES)) {
-                for (SetTranslation translation
-                        : LangOverride.TRANSLATION_LIST) {
-
-                    translation.apply();
-                }
-            }
-        });
     }
 }

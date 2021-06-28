@@ -139,7 +139,6 @@ public class Gregicality {
     @EventHandler
     public void init(FMLInitializationEvent event) throws IOException {
         proxy.onLoad();
-        proxy.registerReloadListener();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) {
             forestryProxy.init();
         }
