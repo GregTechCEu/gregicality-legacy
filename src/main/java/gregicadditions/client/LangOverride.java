@@ -1,6 +1,5 @@
 package gregicadditions.client;
 
-import gregicadditions.utils.GALog;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.common.items.MetaItems;
 import net.minecraft.util.text.translation.LanguageMap;
@@ -8,7 +7,6 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +16,6 @@ import java.util.Map;
  * Class used for overriding GTCE (or other) lang entries in a way that
  * is guaranteed to choose our translation over the original mod's.
  */
-@SuppressWarnings("unchecked")
 public class LangOverride {
 
     /**
@@ -60,18 +57,9 @@ public class LangOverride {
     /**
      * Implementation details below.
      */
-    private static Map<String, String> TRANSLATIONS;
+    private static final Map<String, String> TRANSLATIONS = LanguageMap.instance.languageList;
     public static final List<SetTranslation> TRANSLATION_LIST = new ArrayList<>();
     public static final Map<MetaItem<?>, MetaItemName> META_ITEM_TRANSLATIONS = new HashMap<>();
-
-    static {
-        try {
-            LanguageMap instance = (LanguageMap) LanguageMap.class.getDeclaredField("instance").get(null);
-            TRANSLATIONS = (Map<String, String>) LanguageMap.class.getField("languageList").get(instance);
-        } catch (Exception e) {
-            GALog.logger.error("failed to acquire LanguageMap, some translations may be wrong!!");
-        }
-    }
 
     private static void setLocalization(String lang, String key, String value) {
         SetTranslation translation = new SetTranslation(lang, key, value);
