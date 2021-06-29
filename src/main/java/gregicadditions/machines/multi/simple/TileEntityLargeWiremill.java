@@ -45,9 +45,9 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
-				.aisle("XXXX", "XXXX", "XXXX")
-				.aisle("XXXX", "XGMX", "XXXX").setRepeatable(2, 6)
-				.aisle("XX##", "XS##", "XX##")
+				.aisle("XXXXX", "XXXXX", "XXXXX")
+				.aisle("XXXXX", "XMGMX", "XXXXX").setRepeatable(2, 6)
+				.aisle("XXX##", "XSX##", "XXX##")
 				.setAmountAtLeast('L', 8)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))

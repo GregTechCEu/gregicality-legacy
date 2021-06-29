@@ -7,6 +7,8 @@ import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.advance.MetaTileEntityAdvancedDistillationTower;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -27,7 +29,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("CXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("SFX", "M#X", "X#X", "X#X", "X#X", "XXX")
+                .aisle("SFX", "MPX", "XPX", "XPX", "XPX", "XXX")
                 .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', MetaTileEntityAdvancedDistillationTower.casingState)
@@ -38,6 +40,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
                 .where('I', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.EV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.EV], EnumFacing.DOWN)
                 .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.EV], EnumFacing.WEST)
+                .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
                 .build();
         return Lists.newArrayList(shapeInfo);
     }

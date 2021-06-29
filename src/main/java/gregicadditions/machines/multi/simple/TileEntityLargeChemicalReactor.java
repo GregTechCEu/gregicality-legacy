@@ -96,7 +96,7 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed())
+        if (isStructureFormed() && !hasProblems())
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_usage", 100-this.energyBonus).setStyle(new Style().setColor(TextFormatting.AQUA)));
     }
 
@@ -149,7 +149,7 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
         this.energyBonus = buf.readInt();
     }
 
-    public static class LargeChemicalReactorWorkableHandler extends GAMultiblockRecipeLogic {
+    private static class LargeChemicalReactorWorkableHandler extends GAMultiblockRecipeLogic {
 
         public LargeChemicalReactorWorkableHandler(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);

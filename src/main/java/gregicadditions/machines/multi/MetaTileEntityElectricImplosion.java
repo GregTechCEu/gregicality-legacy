@@ -35,7 +35,7 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() { //TODO: Make this *not* a literal rectangular prism
         return FactoryBlockPattern.start()
                 .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
                 .aisle("XXX", "A#A", "A#A", "A#A", "XXX")

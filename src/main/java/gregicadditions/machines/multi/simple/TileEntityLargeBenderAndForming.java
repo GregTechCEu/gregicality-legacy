@@ -37,7 +37,7 @@ import java.util.List;
 
 import static gregtech.api.render.Textures.STABLE_TITANIUM_CASING;
 
-public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockController {
+public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockController { //todo this doesn't form (again)
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 

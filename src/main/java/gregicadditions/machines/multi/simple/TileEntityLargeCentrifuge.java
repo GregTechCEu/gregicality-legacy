@@ -61,7 +61,6 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 				.where('M', motorPredicate())
 				.where('#', isAirPredicate())
 				.where('A', (tile) -> true)
-				.where('M', motorPredicate())
 				.build();
 	}
 

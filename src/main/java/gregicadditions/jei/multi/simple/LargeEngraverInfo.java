@@ -9,7 +9,11 @@ import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.multi.simple.TileEntityLargeCutting;
+import gregicadditions.machines.multi.simple.TileEntityLargeLaserEngraver;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -28,28 +32,28 @@ public class LargeEngraverInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-        shapeInfo.add(MultiblockShapeInfo.builder()
-                .aisle("XXX", "XeX", "XXX", "#T#")
-                .aisle("XCX", "G#G", "XEX", "#T#")
-                .aisle("XCX", "G#G", "XEX", "#T#")
-                .aisle("XCX", "G#G", "XEX", "#T#")
-                .aisle("XMX", "ISO", "XXX", "#T#")
-                .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.ZPM], EnumFacing.NORTH)
-                .where('S', GATileEntities.LARGE_LASER_ENGRAVER, EnumFacing.SOUTH)
-                .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER))
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                .where('#', Blocks.AIR.getDefaultState())
-                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
-                .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
-                .where('C', GAMetaBlocks.CONVEYOR_CASING.getState(ConveyorCasing.CasingType.CONVEYOR_ZPM))
-                .where('E', GAMetaBlocks.EMITTER_CASING.getState(EmitterCasing.CasingType.EMITTER_ZPM))
-                .where('T', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING))
-                .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.IRIDIUM_GLASS))
-                .build());
+        for (int i = 3; i < 7; i++) {
+            MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder()
+                    .aisle("XXX", "XXX","XXX","#T#");
+            for(int j = 0; j < i; j++) {
+                builder.aisle("IXX", "GCG","XEX","#T#");
+            }
+            builder.aisle("eHX", "XSX","XOX","#T#")
+                    .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+                    .where('S', GATileEntities.LARGE_LASER_ENGRAVER, EnumFacing.SOUTH)
+                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER))
+                    .where('#', Blocks.AIR.getDefaultState())
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
+                    .where('E', GAMetaBlocks.EMITTER_CASING.getDefaultState())
+                    .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.IRIDIUM_GLASS))
+                    .where('T', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
+                    .where('C', GAMetaBlocks.CONVEYOR_CASING.getDefaultState());
+            shapeInfo.add(builder.build());
+        }
 
-
-        return Lists.newArrayList(shapeInfo);
-    }
+        return Lists.newArrayList(shapeInfo);    }
 
     @Override
     public String[] getDescription() {

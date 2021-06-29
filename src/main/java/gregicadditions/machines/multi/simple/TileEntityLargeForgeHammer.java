@@ -14,6 +14,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -32,6 +33,7 @@ import java.util.List;
 
 import static gregicadditions.client.ClientHandler.IRON_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregicadditions.recipes.GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.COMPRESSOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.FORGE_HAMMER_RECIPES;
 import static net.minecraft.block.BlockDirectional.FACING;
@@ -39,21 +41,20 @@ import static net.minecraft.block.BlockDirectional.FACING;
 public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     public TileEntityLargeForgeHammer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.LARGE_FORGE_HAMMER_RECIPES, GAConfig.multis.largeForgeHammer.euPercentage, GAConfig.multis.largeForgeHammer.durationPercentage, GAConfig.multis.largeForgeHammer.chancedBoostPercentage, GAConfig.multis.largeForgeHammer.stack,
+        super(metaTileEntityId, LARGE_FORGE_HAMMER_RECIPES, GAConfig.multis.largeForgeHammer.euPercentage, GAConfig.multis.largeForgeHammer.durationPercentage, GAConfig.multis.largeForgeHammer.chancedBoostPercentage, GAConfig.multis.largeForgeHammer.stack,
                 new RecipeMap<?>[]{FORGE_HAMMER_RECIPES, COMPRESSOR_RECIPES});
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "X#X", "XPX", "XpX").setRepeatable(0, 4)
                 .aisle("SXX", "X#X", "XPX", "XpX")
-                .setAmountAtLeast('Y', 3)
+                .aisle("XXX", "X#X", "XPX", "XpX").setRepeatable(0, 4)
+                .setAmountAtLeast('Y', 2)
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))

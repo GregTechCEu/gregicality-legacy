@@ -31,7 +31,7 @@ import java.util.function.Predicate;
 import static gregicadditions.client.ClientHandler.ENRICHED_NAQUADAH_ALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
-public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
+public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController { //TODO: Make this *not* a literal rectangular prism
 
     public MetaTileEntityPlasmaCondenser(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PLASMA_CONDENSER_RECIPES);

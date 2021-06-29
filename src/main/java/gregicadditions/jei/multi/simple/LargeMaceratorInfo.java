@@ -25,9 +25,9 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
-					.aisle("XXX", "XXX", "XXX", "XXX", "XXX")
-					.aisle("XXX", "XMX", "X#X", "XPX", "XXX")
-					.aisle("IOE", "HSX", "XXX", "XXX", "XXX")
+					.aisle("XXX", "XXX","XXX","XXX", "XXX", "XXX")
+					.aisle("XXX", "XMX","X#X","XPX", "X#X", "XXX")
+					.aisle("XSX", "XHX","XEX","XIX", "XOX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)

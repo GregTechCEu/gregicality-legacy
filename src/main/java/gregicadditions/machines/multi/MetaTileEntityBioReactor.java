@@ -56,7 +56,7 @@ public class MetaTileEntityBioReactor extends GARecipeMapMultiblockController {
 
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() { //TODO: Make this *not* a literal rectangular prism
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XGGGX", "XGGGX", "XGGGX", "XXXXX")
                 .aisle("XXXXX", "G###G", "G#s#G", "G###G", "XXXXX")

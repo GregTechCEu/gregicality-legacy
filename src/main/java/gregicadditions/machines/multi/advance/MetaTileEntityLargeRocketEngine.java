@@ -60,7 +60,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed()) {
+        if (isStructureFormed() && !hasProblems()) {
             FluidStack hydrogen = importFluidHandler.drain(GAMaterials.LiquidHydrogen.getFluid(Integer.MAX_VALUE), false);
             FluidStack air = importFluidHandler.drain(Materials.Air.getFluid(Integer.MAX_VALUE), false);
             FluidStack fuelStack = ((RocketEngineWorkableHandler) workableHandler).getFuelStack();

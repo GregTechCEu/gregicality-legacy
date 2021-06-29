@@ -91,11 +91,11 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#CCC#", "#CGC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#####")
+                .aisle("#CCC#", "#CGC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
                 .aisle("CCCCC", "CPAPC", "CgAgC", "#PAP#", "#PAP#", "CgAgC", "CPAPC", "#CCC#")
                 .aisle("CCCCC", "GAFAG", "CAFAC", "CAFAC", "CAFAC", "CAFAC", "GAFAG", "#CmC#")
                 .aisle("CCCCC", "CPAPC", "CgAgC", "#PAP#", "#PAP#", "CgAgC", "CPAPC", "#CCC#")
-                .aisle("#CCC#", "#CSC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#####")
+                .aisle("#CCC#", "#CSC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
                 .setAmountAtLeast('L', 45)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))

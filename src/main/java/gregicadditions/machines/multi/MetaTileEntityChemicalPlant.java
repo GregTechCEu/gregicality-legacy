@@ -73,7 +73,7 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() { //TODO: Make this *not* a literal rectangular prism
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                 .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")

@@ -3001,6 +3001,7 @@ gregtech.multiblock.universal.cryotheum_amount=Cryotheum: %dmb
 gregtech.multiblock.universal.liquid_hydrogen_amount=Liquid Hydrogen: %dmB
 gregtech.multiblock.universal.air_amount=Air: %dmB
 gregtech.multiblock.universal.energy_usage=Current Energy Usage: %d%%
+gregtech.multiblock.universal.speed_increase=Current Speed Increase: %d%%
 
 gregtech.multiblock.large_rocket_engine.hydrogen_need=Hydrogen to Boost: %dmB
 gregtech.multiblock.large_rocket_engine.boost=Boosted!

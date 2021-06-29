@@ -5,6 +5,7 @@ import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeBenderAndForming;
+import gregicadditions.machines.multi.simple.TileEntityLargeCanningMachine;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -17,10 +18,10 @@ import net.minecraft.util.EnumFacing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
+public class LargeCanningMachineInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_BENDER_AND_FORMING;
+        return GATileEntities.LARGE_CANNING_MACHINE;
     }
 
     @Override
@@ -28,29 +29,31 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (int i = 2; i < 9; i++) {
             MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder()
-                    .aisle("XXXX", "XXXX", "XXIX");
+                    .aisle("XHX", "XEX", "XXX");
             for (int j = 0; j < i; j++) {
-                builder.aisle("iXXX", "XPMX", "XXIO");
+                builder.aisle("IXi", "XpX", "OXo");
             }
-            builder.aisle("EXXX", "XSHX", "XXIX")
+            builder.aisle("PHP", "PSP", "PPP")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
-                    .where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
+                    .where('S', GATileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                    .where('X', TileEntityLargeBenderAndForming.casingState)
+                    .where('X', TileEntityLargeCanningMachine.casingState)
                     .where('#', Blocks.AIR.getDefaultState())
-                    .where('i', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.EAST)
-                    .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-                    .where('P', GAMetaBlocks.PISTON_CASING.getDefaultState())
-                    .where('I', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE));
+                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
+                    .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.EAST)
+                    .where('p', GAMetaBlocks.PUMP_CASING.getDefaultState())
+                    .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE));
             shapeInfo.add(builder.build());
         }
 
         return Lists.newArrayList(shapeInfo);
     }
 
-	@Override
-	public String[] getDescription() {
-		return new String[]{"Temporary Placeholder"};
-	}
+    @Override
+    public String[] getDescription() {
+        return new String[]{"Only one of the steel pipes may be exchanged with an input, output or maintenance hatch.",
+        "On that note, this will only form with at least 8 normal steel casings as well."};
+    }
 }

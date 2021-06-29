@@ -6,6 +6,8 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeSifter;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -25,13 +27,14 @@ public class LargeSifterInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 			shapeInfo.add(MultiblockShapeInfo.builder()
-					.aisle("XXXXX", "XXXXX", "XXXXX")
-					.aisle("XXXXX", "X###X", "XXXXX")
-					.aisle("XXXXX", "X###X", "XXXXX")
-					.aisle("XXXXX", "X###X", "XXXXX")
-					.aisle("IOMEX", "XPSPX", "XXXXX")
+					.aisle("XXXXX", "PXXXP", "XXXXX")
+					.aisle("XXXXX", "X###X", "XGGGX")
+					.aisle("XXXXX", "X###X", "XGGGX")
+					.aisle("XXXXX", "X###X", "XGGGX")
+					.aisle("XIMOX", "PXSXP", "XXEXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_SIFTER, EnumFacing.SOUTH)
+					.where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 					.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('X', TileEntityLargeSifter.casingState)
 					.where('#', Blocks.AIR.getDefaultState())

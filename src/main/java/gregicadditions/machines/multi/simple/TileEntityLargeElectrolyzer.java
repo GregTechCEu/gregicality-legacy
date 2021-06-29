@@ -46,7 +46,7 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 		return FactoryBlockPattern.start()
 				.aisle("XXCXX", "XXCXX", "XXCXX", "XX#XX")
 				.aisle("XXCXX", "XP#MX", "XXCXX", "X###X").setRepeatable(1, 6)
-				.aisle("XXSXX", "XXCXX", "XXCXX", "XX#XX")
+				.aisle("XXXXX", "XXSXX", "XXCXX", "XX#XX")
 				.setAmountAtLeast('L', 12)
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
