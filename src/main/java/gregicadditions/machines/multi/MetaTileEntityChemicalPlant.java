@@ -40,7 +40,7 @@ import java.util.function.Predicate;
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 
 
-public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController {
+public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController { //todo staged removal
 
     public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
             GAMultiblockCasing.CasingType.TIERED_HULL_LV,
@@ -73,7 +73,7 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     }
 
     @Override
-    protected BlockPattern createStructurePattern() { //TODO: Make this *not* a literal rectangular prism
+    protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                 .aisle("XXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")

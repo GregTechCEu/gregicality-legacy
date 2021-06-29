@@ -48,7 +48,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
                     .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-                    .where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.UP)
+                    .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                     .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
                     .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                     .where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))

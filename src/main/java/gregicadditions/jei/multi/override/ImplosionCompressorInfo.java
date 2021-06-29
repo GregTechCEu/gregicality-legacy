@@ -31,7 +31,7 @@ public class ImplosionCompressorInfo extends MultiblockInfoPage {
 				.aisle("XXX", "XIX", "XXX")
 				.where('C', GATileEntities.IMPLOSION_COMPRESSOR, EnumFacing.WEST)
 				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
-				.where('m', GATileEntities.MUFFLER_HATCH[3], EnumFacing.UP)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)

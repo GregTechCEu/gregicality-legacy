@@ -196,7 +196,7 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser",
-            1, 2, 1, 2, 1, 2, 1, 2, (new SimpleRecipeBuilder()))
+            1, 2, 0, 2, 1, 2, 1, 2, (new SimpleRecipeBuilder()))
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
 

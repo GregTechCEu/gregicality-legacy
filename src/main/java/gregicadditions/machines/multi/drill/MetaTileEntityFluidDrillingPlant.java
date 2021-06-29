@@ -43,7 +43,7 @@ import java.util.Map;
 
 import static gregtech.api.unification.material.Materials.*;
 
-public class MetaTileEntityDrillingPlant extends MultiblockWithDisplayBase { //todo add maintenance and soft hammering
+public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase { //todo add maintenance and soft hammering, cache values
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[] {
             MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
@@ -69,7 +69,7 @@ public class MetaTileEntityDrillingPlant extends MultiblockWithDisplayBase { //t
 
     private int[] currentLocation;
 
-    public MetaTileEntityDrillingPlant(ResourceLocation metaTileEntityId, int rigTier) {
+    public MetaTileEntityFluidDrillingPlant(ResourceLocation metaTileEntityId, int rigTier) {
         super(metaTileEntityId);
         this.isActive = false;
         this.canWork = true;
@@ -84,7 +84,7 @@ public class MetaTileEntityDrillingPlant extends MultiblockWithDisplayBase { //t
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityDrillingPlant(metaTileEntityId, this.rigTier);
+        return new MetaTileEntityFluidDrillingPlant(metaTileEntityId, this.rigTier);
     }
 
     @Override

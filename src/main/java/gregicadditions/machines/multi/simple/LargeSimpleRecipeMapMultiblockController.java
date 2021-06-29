@@ -37,10 +37,10 @@ import java.util.stream.IntStream;
 
 abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
-    private int EUtPercentage = 100;
-    private int durationPercentage = 100;
-    private int chancePercentage = 100;
-    private int stack = 1;
+    protected int EUtPercentage = 100;
+    protected int durationPercentage = 100;
+    protected int chancePercentage = 100;
+    protected int stack = 1;
     public long maxVoltage = 0;
 
     DecimalFormat formatter = new DecimalFormat("#0.00");
@@ -223,7 +223,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (!hasProblems())
+        if (isStructureFormed() && !hasProblems())
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 

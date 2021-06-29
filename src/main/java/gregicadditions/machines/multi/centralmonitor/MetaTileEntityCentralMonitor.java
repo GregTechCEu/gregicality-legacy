@@ -318,7 +318,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
 
     @Override
     protected void updateFormedValid() {
-        if (this.getTimer() % 20 ==0) {
+        if (this.getOffsetTimer() % 20 ==0) {
             setActive(inputEnergy.changeEnergy(ENERGY_COST * this.getMultiblockParts().size()) == ENERGY_COST * this.getMultiblockParts().size());
             if (checkCovers()) {
                 this.getMultiblockParts().forEach(part -> {

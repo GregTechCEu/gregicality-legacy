@@ -41,7 +41,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('S', GATileEntities.LARGE_BREWERY, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('X', TileEntityLargeBrewery.casingState)
-                .where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.UP)
+                .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
                 .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)

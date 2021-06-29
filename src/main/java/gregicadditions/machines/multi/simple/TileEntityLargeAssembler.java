@@ -48,11 +48,11 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 	@Override
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start(FRONT, UP, RIGHT)
-				.aisle("XXXXX", "XXXXX", "XXXXX", "#XXXX")
-				.aisle("XXXXX", "SCPCX", "XRPRX", "#XXXX")
-				.aisle("XXXXX", "GKPKX", "G#CRX", "#GGXX").setRepeatable(0, 9)
-				.aisle("XXXXX", "XXXXX", "XXXXX", "#XXXX")
-				.setAmountAtLeast('X', 30)
+				.aisle("XXXX", "XXXX", "XXXX", "XXXX")
+				.aisle("XXXX", "SCRX", "XPPX", "XXXX")
+				.aisle("XXXX", "RCPX", "G#PX", "GGGX").setRepeatable(0, 9)
+				.aisle("XXXX", "XXXX", "XXXX", "XXXX")
+				.setAmountAtLeast('X', 25)
 				.where('S', selfPredicate())
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('#', state -> true)
@@ -60,7 +60,6 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 				.where('C', conveyorPredicate())
 				.where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
 				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
-				.where('K', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
 				.build();
 	}
 

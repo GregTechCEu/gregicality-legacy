@@ -50,7 +50,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                     .where('P', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                     .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS))
-                    .where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.UP)
+                    .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                     .where('g', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
             shapeInfo.add(builder.build());
         }

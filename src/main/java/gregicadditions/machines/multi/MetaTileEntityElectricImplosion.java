@@ -2,6 +2,9 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
+import gregicadditions.client.ClientHandler;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.NuclearCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -13,6 +16,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -26,7 +30,7 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     };
 
     public MetaTileEntityElectricImplosion(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.ELECTRIC_IMPLOSION_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.ELECTRIC_IMPLOSION_RECIPES, true, true, true);
     }
 
     @Override
@@ -35,28 +39,25 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     }
 
     @Override
-    protected BlockPattern createStructurePattern() { //TODO: Make this *not* a literal rectangular prism
+    protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "AAA", "AAA", "AAA", "XXX")
-                .aisle("XXX", "A#A", "A#A", "A#A", "XXX")
-                .aisle("XSX", "AAA", "AAA", "AAA", "XXX")
-                .where('A', statePredicate(getCasingState2()))
+                .aisle("XXX", "GXG", "GXG", "GXG", "GXG", "GXG", "XXX")
+                .aisle("XXX", "X#X", "X#X", "X#X", "X#X", "X#X", "XMX")
+                .aisle("XSX", "GXG", "GXG", "GXG", "GXG", "GXG", "XXX")
                 .where('S', selfPredicate())
                 .where('#', isAirPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('M', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
                 .build();
     }
 
     protected IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
-    }
-
-    protected IBlockState getCasingState2() {
-        return NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM);
+        return GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return ClientHandler.INCOLOY_MA956_CASING;
     }
 }

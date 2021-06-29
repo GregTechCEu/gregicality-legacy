@@ -43,7 +43,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 					.where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 					.where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-					.where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.UP)
+					.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 					.where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
 					.where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 					.build());
@@ -64,7 +64,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-				.where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.WEST)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.WEST)
 				.where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
 				.where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 				.build());
@@ -85,7 +85,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-				.where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.EAST)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.EAST)
 				.where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
 				.where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 				.build());
@@ -105,7 +105,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.WEST)
 				.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
-				.where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.NORTH)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.NORTH)
 				.where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
 				.where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 				.build());

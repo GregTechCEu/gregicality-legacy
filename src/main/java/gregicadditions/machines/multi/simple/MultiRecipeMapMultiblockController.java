@@ -16,6 +16,7 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.util.InventoryUtils;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,10 +29,14 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -44,7 +49,7 @@ import static gregicadditions.capabilities.MultiblockDataCodes.RECIPE_MAP_INDEX;
  */
 public abstract class MultiRecipeMapMultiblockController extends LargeSimpleRecipeMapMultiblockController implements IMultiRecipe {
 
-    private final RecipeMap<?>[] recipeMaps; // array of possible recipes, specific to each multi
+    protected RecipeMap<?>[] recipeMaps; // array of possible recipes, specific to each multi
     private int recipeMapIndex; // index of the current selected recipe
 
     public MultiRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, RecipeMap<?>[] recipeMaps) {
@@ -147,9 +152,19 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed())
+        if (isStructureFormed() && !hasProblems())
             textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMaps[this.recipeMapIndex].getUnlocalizedName() + ".name")
                     .setStyle(new Style().setColor(TextFormatting.AQUA))));
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName())); //todo display all recipemaps
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
     }
 
     @Override

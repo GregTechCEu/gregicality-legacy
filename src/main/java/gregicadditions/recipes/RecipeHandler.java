@@ -108,6 +108,8 @@ public class RecipeHandler {
         pipeSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSmallPipe);
         pipeMedium.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMediumPipe);
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
+
+        dust.addProcessingHandler(FluidMaterial.class, RecipeHandler::processPlasma);
     }
 
 
@@ -1588,5 +1590,25 @@ public class RecipeHandler {
                 .notConsumable(SCHEMATIC_3X3.getStackForm())
                 .outputs(output)
                 .buildAndRegister();
+    }
+
+    /**
+     * Plasma to Fluid plasma condenser recipes
+     *
+     * + Plasma Condenser recipes
+     */
+    private static void processPlasma(OrePrefix prefix, FluidMaterial material) {
+        if (material.shouldGeneratePlasma()) {
+            int fluidAmount = material instanceof DustMaterial ? GTValues.L : 100;
+            //todo this doesn't work on fluidmaterials because of gtce limitations
+
+            PLASMA_CONDENSER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(960)
+                    .fluidInputs(LiquidHelium.getFluid(100))
+                    .fluidInputs(material.getPlasma(fluidAmount))
+                    .notConsumable(new IntCircuitIngredient(1))
+                    .fluidOutputs(Helium.getFluid(100))
+                    .fluidOutputs(material.getFluid(fluidAmount))
+                    .buildAndRegister();
+        }
     }
 }

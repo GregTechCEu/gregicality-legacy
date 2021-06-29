@@ -42,16 +42,41 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
 
     private boolean frontFaceFree;
 
-    public MetaTileEntityMufflerHatch(ResourceLocation metaTileEntityId, int tier, int recoveryChance) {
+    public MetaTileEntityMufflerHatch(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
-        this.recoveryChance = recoveryChance;
-        this.inventory = new ItemStackHandler(16);
+        switch (tier) { //todo replace this with a proper function
+            case 2:
+                recoveryChance = 20;
+                break;
+            case 3:
+                recoveryChance = 33;
+                break;
+            case 4:
+                recoveryChance = 44;
+                break;
+            case 5:
+                recoveryChance = 53;
+                break;
+            case 6:
+                recoveryChance = 61;
+                break;
+            case 7:
+                recoveryChance = 68;
+                break;
+            case 8:
+                recoveryChance = 73;
+                break;
+            default:
+                recoveryChance = 5;
+                break;
+        }
+        this.inventory = new ItemStackHandler((int) Math.pow(tier + 1, 2));
         this.frontFaceFree = false;
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityMufflerHatch(metaTileEntityId, getTier(), recoveryChance);
+        return new MetaTileEntityMufflerHatch(metaTileEntityId, getTier());
     }
 
     @Override
@@ -113,20 +138,22 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
     }
 
     @Override
-    protected ModularUI createUI(EntityPlayer player) {
+    protected ModularUI createUI(EntityPlayer entityPlayer) {
+        int rowSize = this.getTier() + 1;
         ModularUI.Builder builder = ModularUI.builder(GuiTextures.BACKGROUND, 176,
-                18 + 18 + 94 + 18)
-                .label(8, 5, getMetaFullName());
+                18 + 18 * rowSize + 94)
+                .label(10, 5, this.getMetaFullName());
 
-        for (int y = 0; y < 4; y++) {
-            for (int x = 0; x < 4; x++) {
-                int index = y * 4 + x;
-                builder.widget(new SlotWidget(inventory, index, 89 - 2 * 9 + x * 18, 17 + y * 18, true, false)
+        for(int y = 0; y < rowSize; ++y) {
+            for(int x = 0; x < rowSize; ++x) {
+                int index = y * rowSize + x;
+                builder.widget((new SlotWidget(inventory, index, 89 - rowSize * 9 + x * 18, 18 + y * 18, true, false))
                         .setBackgroundTexture(GuiTextures.SLOT));
             }
         }
-        builder.bindPlayerInventory(player.inventory, GuiTextures.SLOT, 7, 18 + 18 * 4 + 12);
-        return builder.build(getHolder(), player);
+
+        builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 8, 18 + 18 * rowSize + 12);
+        return builder.build(this.getHolder(), entityPlayer);
     }
 
     @Override

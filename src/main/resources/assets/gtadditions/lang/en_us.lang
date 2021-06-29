@@ -1759,9 +1759,9 @@ gtadditions.machine.hull.uxv.name=UXV Machine Hull
 
 gtadditions.machine.drilling_rig.name=Drilling Rig
 gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
-gtadditions.machine.drilling_plant_mv.name=Fluid Drilling Plant 1
-gtadditions.machine.drilling_plant_hv.name=Fluid Drilling Plant 2
-gtadditions.machine.drilling_plant_ev.name=Fluid Drilling Plant 3
+gtadditions.machine.fluid_drilling_plant_mv.name=Fluid Drilling Plant 1
+gtadditions.machine.fluid_drilling_plant_hv.name=Fluid Drilling Plant 2
+gtadditions.machine.fluid_drilling_plant_ev.name=Fluid Drilling Plant 3
 
 gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 
@@ -1777,7 +1777,12 @@ gtadditions.machine.fullauto_maintenance_hatch.name=Full-Auto Maintenance Hatch
 gtadditions.machine.muffler_hatch.lv.name=LV Muffler Hatch
 gtadditions.machine.muffler_hatch.mv.name=MV Muffler Hatch
 gtadditions.machine.muffler_hatch.hv.name=HV Muffler Hatch
-gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§r of the time!
+gtadditions.machine.muffler_hatch.ev.name=EV Muffler Hatch
+gtadditions.machine.muffler_hatch.iv.name=IV Muffler Hatch
+gtadditions.machine.muffler_hatch.luv.name=LuV Muffler Hatch
+gtadditions.machine.muffler_hatch.zpm.name=ZPM Muffler Hatch
+gtadditions.machine.muffler_hatch.uv.name=UV Muffler Hatch
+gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§7 of the time!
 
 
 tile.ga_multiblock_casing.coke_oven_bricks.name=Coke Oven Bricks
@@ -2006,7 +2011,7 @@ tile.ga_metal_casing_1.casing_inconel_625.name=High-Stress Inconel 625 Casing
 tile.ga_metal_casing_1.casing_grisium.name=Watertight Grisium Casing
 tile.ga_metal_casing_1.casing_eglin_steel.name=High-Impact Eglin Steel Casing
 tile.ga_metal_casing_1.casing_babbitt_alloy.name=Gall Resistant Babbitt Alloy Casing
-tile.ga_metal_casing_1.casing_hg_1223.name=Toxic Hg-1223 Casing
+tile.ga_metal_casing_1.casing_hg_1223.name=Toxic HG-1223 Casing
 tile.ga_metal_casing_1.casing_tumbaga.name=Malleable Tumbaga Casing
 tile.ga_metal_casing_1.casing_talonite.name=Low Friction Talonite Casing
 tile.ga_metal_casing_1.casing_zirconium_carbide.name=Ultra Heat Tolerant Zirconium Carbide Casing
@@ -3061,6 +3066,8 @@ gtadditions.multiblock.mega_logic.tooltip.3=Duration Multiplier: §e%d
 
 gtadditions.multiblock.mega_blast_logic.tooltip.1=EU/t Usage: §eParallel Amount * Recipe EU/t
 gtadditions.multiblock.mega_blast_logic.tooltip.2=Prioritizes Parallel Recipes over Heating Coil Bonuses.
+
+gtadditions.multiblock.advanced_chemical_reactor.tooltip.1=Does not run in parallel when running chemical plant recipes.
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

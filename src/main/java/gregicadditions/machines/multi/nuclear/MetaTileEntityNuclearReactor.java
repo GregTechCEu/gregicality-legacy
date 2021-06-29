@@ -207,7 +207,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
                 notEnoughCoolant = false;
                 return;
             }
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
                 if (fluidStack != null) {
                     coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());

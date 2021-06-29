@@ -32,7 +32,7 @@ public class DistillationTowerInfo extends MultiblockInfoPage {
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
 				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
-				.where('m', GATileEntities.MUFFLER_HATCH[GAValues.HV], EnumFacing.UP)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 				.where('S', GATileEntities.DISTILLATION_TOWER, EnumFacing.WEST)
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.WEST)
 				.where('I', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.EV], EnumFacing.WEST)
