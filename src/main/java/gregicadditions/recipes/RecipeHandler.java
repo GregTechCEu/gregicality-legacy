@@ -190,7 +190,6 @@ public class RecipeHandler {
         registerLargeMachineRecipes(LASER_ENGRAVER_RECIPES, LARGE_ENGRAVER_RECIPES);
         registerLargeMachineRecipes(CENTRIFUGE_RECIPES, LARGE_CENTRIFUGE_RECIPES);
 
-        registerLargeForgeHammerRecipes();
         registerLargeMixerRecipes();
         registerAlloyBlastRecipes();
         registerChemicalPlantRecipes();
@@ -1066,21 +1065,6 @@ public class RecipeHandler {
 
             largeRecipeBuilder.buildAndRegister();
         }
-    }
-
-    private static void registerLargeForgeHammerRecipes() {
-        FORGE_HAMMER_RECIPES.getRecipeList().forEach(recipe -> {
-            LargeRecipeBuilder builder = LARGE_FORGE_HAMMER_RECIPES.recipeBuilder()
-                    .EUt(recipe.getEUt())
-                    .duration(recipe.getDuration())
-                    .fluidInputs(Lubricant.getFluid(2))
-                    .inputsIngredients(recipe.getInputs())
-                    .outputs(recipe.getOutputs())
-                    .fluidOutputs(recipe.getFluidOutputs());
-
-            recipe.getChancedOutputs().forEach(chanceEntry -> builder.chancedOutput(chanceEntry.getItemStack(), chanceEntry.getChance(), chanceEntry.getBoostPerTier()));
-            builder.buildAndRegister();
-        });
     }
 
     /**
