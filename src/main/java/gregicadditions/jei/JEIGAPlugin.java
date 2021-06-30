@@ -45,7 +45,8 @@ public class JEIGAPlugin implements IModPlugin {
             registry.addRecipeCategories(new HotCoolantRecipeMapCategory(hotCoolantRecipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
         for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
-            registry.addRecipeCategories(new GARecipeMapCategory(recipeMap, registry.getJeiHelpers().getGuiHelper()));
+            if(!recipeMap.isHidden)
+                registry.addRecipeCategories(new GARecipeMapCategory(recipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
 
         registry.addRecipeCategories(new GADrillingRigCategory(registry.getJeiHelpers().getGuiHelper()));
