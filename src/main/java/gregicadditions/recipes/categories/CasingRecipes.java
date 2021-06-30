@@ -4,6 +4,7 @@ import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.metaitem.MetaItem;
@@ -183,7 +184,7 @@ public class CasingRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200)
                 .input(plateDouble, Lead, 4)
                 .fluidInputs(Oxygen.getFluid(16000))
-                .input(gtMetalCasing, StainlessSteel)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_HV))
                 .buildAndRegister();
 
@@ -534,10 +535,17 @@ public class CasingRecipes {
 
         // Large Chemical Reactor Casing
         ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(2000)
-                .input(gtMetalCasing, Steel)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(216))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(CHEMICALLY_INERT))
                 .buildAndRegister();
+
+        // PTFE Pipe Casing
+        ModHandler.addShapedRecipe("ga_ptfe_pipe_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(PTFE_PIPE),
+                "SPS", "PFP", "SPS",
+                'S', new UnificationEntry(plate, Polytetrafluoroethylene),
+                'P', new UnificationEntry(pipeMedium, Polytetrafluoroethylene),
+                'F', new UnificationEntry(frameGt, Polytetrafluoroethylene));
 
         // Reactor Casing
         FORMING_PRESS_RECIPES.recipeBuilder().duration(1500).EUt(500)
@@ -551,8 +559,8 @@ public class CasingRecipes {
         // Large Assembler Casing
         ASSEMBLER_RECIPES.recipeBuilder().EUt(8000).duration(600)
                 .fluidInputs(HastelloyN.getFluid(L * 4))
-                .input(gtMetalCasing, Staballoy, 2)
-                .input(circuit, Extreme)
+                .inputs(GAMetaBlocks.METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.STABALLOY, 2))
+                .input(circuit, Advanced)
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(LARGE_ASSEMBLER, 2))
                 .buildAndRegister();
 
@@ -731,7 +739,7 @@ public class CasingRecipes {
         ModHandler.addShapedRecipe("ga_engine_intake_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ENGINE_INTAKE_CASING),
                 "PhP", "RFR", "PwP",
                 'R', new UnificationEntry(pipeMedium, Titanium),
-                'F', new UnificationEntry(gtMetalCasing, Titanium),
+                'F', MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE),
                 'P', new UnificationEntry(rotor, Titanium));
     }
 

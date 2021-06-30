@@ -1,6 +1,7 @@
 package gregicadditions.recipes;
 
 import gregicadditions.GAConfig;
+import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterialStack;
@@ -109,7 +110,8 @@ public class RecipeHandler {
         pipeMedium.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMediumPipe);
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
 
-        dust.addProcessingHandler(FluidMaterial.class, RecipeHandler::processPlasma);
+        dust.addProcessingHandler(FluidMaterial.class, RecipeHandler::registerPlasmaCondenserRecipes);
+        ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::registerStellarForgeRecipes);
     }
 
 
@@ -179,6 +181,8 @@ public class RecipeHandler {
         CasingRecipes.init();
         SuperconductorRecipes.init();
         MiscRecipes.init();
+        StagedRemovalRecipes.init();
+        MetalCasingRecipes.init();
     }
 
     /**
@@ -1126,13 +1130,32 @@ public class RecipeHandler {
                     .ifPresent(recipe -> {
                         ItemStack itemStack = recipe.getOutputs().get(0);
                         IngotMaterial ingot = ((IngotMaterial) (OreDictUnifier.getUnificationEntry(itemStack).material));
-                        int duration = Math.max(1, (int) (ingot.getAverageMass() * ingot.blastFurnaceTemperature / 50L));
-                        BLAST_ALLOY_RECIPES.recipeBuilder()
-                                .duration(duration * 80 / 100)
-                                .EUt(120 * itemStack.getCount())
-                                .fluidInputs(recipe.getFluidInputs())
-                                .inputsIngredients(recipe.getInputs())
-                                .fluidOutputs(ingot.getFluid(itemStack.getCount() * GTValues.L)).buildAndRegister();
+                        int duration = Math.max(1, (int) (ingot.getAverageMass() * ingot.blastFurnaceTemperature / 100));
+                        if(ingot.blastFurnaceTemperature <= 1750) {
+                            BLAST_ALLOY_RECIPES.recipeBuilder()
+                                    .duration(duration * 50 / 100)
+                                    .EUt(30 * ingot.blastFurnaceTemperature / 100)
+                                    .fluidInputs(recipe.getFluidInputs())
+                                    .inputsIngredients(recipe.getInputs())
+                                    .fluidOutputs(ingot.getFluid(itemStack.getCount() * GTValues.L))
+                                    .blastFurnaceTemp(ingot.blastFurnaceTemperature)
+                                    .buildAndRegister();
+                        } else {
+                            BLAST_ALLOY_RECIPES.recipeBuilder()
+                                    .duration(duration * 50 / 100)
+                                    .EUt(30 * ingot.blastFurnaceTemperature / 100)
+                                    .fluidInputs(recipe.getFluidInputs())
+                                    .inputsIngredients(recipe.getInputs())
+                                    .fluidOutputs(GAMetaFluids.getMoltenFluid(ingotMaterial, GTValues.L))
+                                    .blastFurnaceTemp(ingot.blastFurnaceTemperature)
+                                    .buildAndRegister();
+                            VACUUM_RECIPES.recipeBuilder()
+                                    .duration((int) (material.getAverageMass() * 5))
+                                    .EUt(30 * ingot.blastFurnaceTemperature / 100)
+                                    .fluidInputs(GAMetaFluids.getMoltenFluid(ingotMaterial, GTValues.L))
+                                    .fluidOutputs(ingot.getFluid(GTValues.L))
+                                    .buildAndRegister();
+                        }
                     });
         }
 
@@ -1204,11 +1227,12 @@ public class RecipeHandler {
             CountableIngredient itemInput = new CountableIngredient(recipe.getInputs().get(0).getIngredient(), recipe.getInputs().get(0).getCount() * 10);
             FluidStack fluidOutput = FermentationBase.getFluid(recipe.getFluidOutputs().get(0).amount * 10);
 
-            CHEMICAL_PLANT_RECIPES.recipeBuilder()
+            MIXER_RECIPES.recipeBuilder()
                     .EUt(recipe.getEUt() * 10)
                     .duration(recipe.getDuration() * 10)
                     .fluidInputs(fluidInput)
                     .inputsIngredients(Collections.singleton(itemInput))
+                    .notConsumable(new IntCircuitIngredient(1))
                     .fluidOutputs(fluidOutput)
                     .buildAndRegister();
         });
@@ -1597,7 +1621,7 @@ public class RecipeHandler {
      *
      * + Plasma Condenser recipes
      */
-    private static void processPlasma(OrePrefix prefix, FluidMaterial material) {
+    private static void registerPlasmaCondenserRecipes(OrePrefix prefix, FluidMaterial material) {
         if (material.shouldGeneratePlasma()) {
             int fluidAmount = material instanceof DustMaterial ? GTValues.L : 100;
             //todo this doesn't work on fluidmaterials because of gtce limitations
@@ -1608,6 +1632,33 @@ public class RecipeHandler {
                     .notConsumable(new IntCircuitIngredient(1))
                     .fluidOutputs(Helium.getFluid(100))
                     .fluidOutputs(material.getFluid(fluidAmount))
+                    .buildAndRegister();
+        }
+    }
+
+    /**
+     * Stellar Forge Recipes for materials with too large EBF temperatures
+     *
+     * + Stellar Forge EBF recipe analogues
+     */
+    private static void registerStellarForgeRecipes(OrePrefix prefix, IngotMaterial material) {
+        if (material.blastFurnaceTemperature >= 14500) {
+            int duration = Math.max(1, (int) (material.getAverageMass() * 100L));
+
+            ItemStack explosive;
+            if (material.blastFurnaceTemperature >= 65000)
+                explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE);
+            else if (material.blastFurnaceTemperature >= 35000)
+                explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE);
+            else if (material.blastFurnaceTemperature >= 22500)
+                explosive =  GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE);
+            else
+                explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE);
+
+            STELLAR_FORGE_RECIPES.recipeBuilder().duration(duration).EUt(7680)
+                    .input(dust, material)
+                    .inputs(explosive)
+                    .fluidOutputs(material.getFluid(L))
                     .buildAndRegister();
         }
     }

@@ -21,7 +21,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 public class HyperReactor1Info extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.HYPER_REACTOR;
+        return GATileEntities.HYPER_REACTOR_I;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class HyperReactor1Info extends MultiblockInfoPage {
                 .aisle("CCCCC", "G#H#G", "GHHHG", "G#H#G", "CCCCC")
                 .aisle("CCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
                 .aisle("CFSMC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
-                .where('S', GATileEntities.HYPER_REACTOR, EnumFacing.SOUTH)
+                .where('S', GATileEntities.HYPER_REACTOR_I, EnumFacing.SOUTH)
                 .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('C', METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)

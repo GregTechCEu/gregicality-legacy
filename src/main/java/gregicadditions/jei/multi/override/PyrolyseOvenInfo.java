@@ -56,11 +56,12 @@ public class PyrolyseOvenInfo extends MultiblockInfoPage {
             if (!Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName())) {
 
                 shapeInfo.add(MultiblockShapeInfo.builder()
-                        .aisle("XXX", "ISF", "XXX")
+                        .aisle("XMX", "ISF", "XXX")
                         .aisle("CCC", "C#C", "CCC")
                         .aisle("CCC", "C#C", "CCC")
                         .aisle("XXX", "BEH", "XXX")
                         .where('S', GATileEntities.PYROLYSE_OVEN, EnumFacing.NORTH)
+                        .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                         .where('X', MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.ULV))
                         .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
                         .where('#', Blocks.AIR.getDefaultState())

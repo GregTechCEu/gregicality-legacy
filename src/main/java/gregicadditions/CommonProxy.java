@@ -76,8 +76,9 @@ public class CommonProxy {
 
     // This method is used to set tooltips for materials to be removed in the future.
     // If we want to staggered-remove a material, apply a warning to it here.
-    private static final String REMOVED_MAT_TOOLTIP = TextFormatting.RED + "This Material will be removed in next release!";
+    private static final String REMOVED_MAT_TOOLTIP = TextFormatting.RED + "This will be removed in next release!";
     private static void setRemovedMaterialTooltips() {
+
     }
 
     @SubscribeEvent
@@ -215,7 +216,6 @@ public class CommonProxy {
         ForestryCompat.init();
         RecipeHandler.initChains();
         FuelHandler.init();
-        MetalCasingRecipes.init();
 
         if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
             MysticalAgricultureItems.registerOreDict();

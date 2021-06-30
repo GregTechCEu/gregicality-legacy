@@ -1103,7 +1103,7 @@ metaarmor.energy_share.disable=Energy Supply: Gadgets charging disabled
 metaarmor.energy_share.tooltip=Supply mode: %s
 metaarmor.energy_share.tooltip.guide=To change mode shift-right click when holding item
 
-
+gtadditions.machine.removal.universal=§4This machine will be removed in the next update!
 
 gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
 
@@ -1743,9 +1743,9 @@ gtadditions.machine.qubit_computer.name=Quantum Computer
 gtadditions.machine.stellar_forge.name=Stellar Forge
 gtadditions.machine.void_miner.uhv.name=Void Miner MK II
 gtadditions.machine.void_miner.uev.name=Void Miner MK III
-gtadditions.machine.hyper_reactor.uv.name=Hyper Reactor I
-gtadditions.machine.hyper_reactor.uhv.name=Hyper Reactor II
-gtadditions.machine.hyper_reactor.uev.name=Hyper Reactor III
+gtadditions.machine.hyper_reactor.i.name=Hyper Reactor I
+gtadditions.machine.hyper_reactor.ii.name=Hyper Reactor II
+gtadditions.machine.hyper_reactor.iii.name=Hyper Reactor III
 gtadditions.machine.fusion_reactor.uhv.name=Fusion Reactor Mark 4
 gtadditions.machine.fusion_reactor.uev.name=Fusion Reactor Mark 5
 gtadditions.machine.fusion_casing_3.name=Fusion Casing MK III
@@ -1769,7 +1769,7 @@ gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 
 gtadditions.machine.coke_item_bus.name=[Deprecated] Coke Oven Chute
 gtadditions.machine.coke_fluid_hatch.name=[Deprecated] Coke Oven Faucet
-gtadditions.machine.solar_fluid_sampler.missing_solar=Requires LV Solar Pannel On Top!
+gtadditions.machine.solar_fluid_sampler.missing_solar=Requires an LV Solar Panel on top.
 
 gtadditions.machine.maintenance_hatch.name=Maintenance Hatch
 gtadditions.machine.auto_maintenance_hatch.name=Auto-Taping Maintenance Hatch
@@ -4200,6 +4200,72 @@ fluid.tetrahydrofuran=Tetrahydrofuran
 fluid.triethylamine=Triethylamine
 fluid.tetrafluoroboric_acid=Tetrafluoroboric Acid
 
+fluid.kanthal_molten=Molten Kanthal
+fluid.nichrome_molten=Molten Nichrome
+fluid.niobium_nitride_molten=Molten Niobium Nitride
+fluid.niobium_titanium_molten=Molten Niobium-Titanium
+fluid.ultimet_molten=Molten Ultimet
+fluid.vanadium_gallium_molten=Molten Vanadium-Gallium
+fluid.yttrium_barium_cuprate_molten=Molten Yttrium Barium Cuprate
+fluid.osmiridium_molten=Molten Osmiridium
+fluid.black_bronze_molten=Molten Black Bronze
+fluid.tungsten_steel_molten=Molten Tungstensteel
+fluid.tungsten_carbide_molten=Molten Tungstencarbide
+fluid.hssg_molten=Molten HSS-G
+fluid.hsse_molten=Molten HSS-E
+fluid.hsss_molten=Molten HSS-S
+fluid.naquadah_alloy_molten=Molten Naquadah Alloy
+fluid.periodicium_molten=Molten Periodicium
+fluid.superheavy_l_alloy_molten=Molten Superheavy-L Alloy
+fluid.superheavy_h_alloy_molten=Molten Superheavy-H Alloy
+fluid.lithium_niobate_molten=Molten Lithium Niobate
+fluid.germanium_tungsten_nitride_molten=Molten Germanium Tungsten Nitride
+fluid.tantalum_hafnium_seaborgium_carbide_molten=Molten Tantalum Hafnium Seaborgium Carbide
+fluid.lithium_titanate_molten=Molten Lithium Titanate
+fluid.trinium_titanium_molten=Molten Trinium Titanium
+fluid.proto_adamantium_molten=Molten Proto Adamantium
+fluid.hdcs_molten=Molten High Durability Compound Steel
+fluid.cinobite_molten=Molten Cinobite
+fluid.uxv_superconductor_base_molten=Molten UXV Superconductor Base
+fluid.umv_superconductor_base_molten=Molten UMV Superconductor Base
+fluid.uiv_superconductor_base_molten=Molten UIV Superconductor Base
+fluid.uev_superconductor_base_molten=Molten UEV Superconductor Base
+fluid.uhv_superconductor_base_molten=Molten UHV Superconductor Base
+fluid.uv_superconductor_base_molten=Molten UV Superconductor Base
+fluid.zpm_superconductor_base_molten=Molten ZPM Superconductor Base
+fluid.luv_superconductor_base_molten=Molten LuV Superconductor Base
+fluid.iv_superconductor_base_molten=Molten IV Superconductor Base
+fluid.ev_superconductor_base_molten=Molten EV Superconductor Base
+fluid.hv_superconductor_base_molten=Molten HV Superconductor Base
+fluid.hastelloy_k243_molten=Molten Hastelloy K243
+fluid.hastelloy_x78_molten=Molten Hastelloy X78
+fluid.enriched_naquadah_alloy_molten=Molten Enriched Naquadah Alloy
+fluid.incoloy813_molten=Molten Incoloy 813
+fluid.abyssal_alloy_molten=Molten Abyssal Alloy
+fluid.naquadriatic_taranium_molten=Molten Naquadriatic Taranium
+fluid.zeron_molten=Molten Zeron
+fluid.lafium_molten=Molten Lafium
+fluid.pikyonium_molten=Molten Pikyonium
+fluid.inconel_b_molten=Molten Inconel 792
+fluid.titan_steel_molten=Molten Titan Steel
+fluid.tungsten_titanium_carbide_molten=Molten Tungsten Titanium Carbide
+fluid.black_titanium_molten=Molten Black Titanium
+fluid.quantum_molten=Molten Quantum
+fluid.ruridit_molten=Molten Ruridit
+fluid.rhodium_plated_palladium_molten=Molten Rhodium Plated Palladium
+fluid.incoloy_ma_molten=Molten Incoloy MA-956
+fluid.hg_alloy_molten=Molten HG-1223
+fluid.nitinol_a_molten=Molten Nitinol 60
+fluid.enderium_molten=Molten Enderium
+fluid.talonite_molten=Molten Talonite
+fluid.stellite_molten=Molten Stellite
+fluid.hastelloy_n_molten=Molten Hastelloy N
+fluid.staballoy_molten=Molten Staballoy
+fluid.maraging_steel_a_molten=Molten Maraging Steel 250
+fluid.inconel_a_molten=Molten Inconel 625
+fluid.grisium_molten=Molten Grisium
+
+
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer
 gtadditions.machine.buffer.hv.name=Advanced Buffer II
@@ -4449,7 +4515,7 @@ gtadditions.machine.pa.display2=Parallel Recipes: §b%d
 
 gtadditions.machine.electric_implosion.name=Electric Implosion Compressor
 recipemap.electric_implosion.name=Electric Implosion Compressor
-gtadditions.multiblock.electric_implosion.description=An Implosion Compressor without explosives. Requires UHV-tier power to run, but completes crafts nearly instantly.
+gtadditions.multiblock.electric_implosion.description=An Implosion Compressor without explosives. Requires UV-tier power to run, but completes crafts nearly instantly.
 
 metaitem.shape.extruder.gear.small.name=Extruder Shape (Small Gear)
 metaitem.shape.extruder.gear.small.tooltip=Extruder Shape for making Small Gears

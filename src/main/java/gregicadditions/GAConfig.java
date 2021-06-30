@@ -849,7 +849,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Cutting Machine casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "stellite";
+            public String casingMaterial = "maraging_steel_250";
         }
 
         public static class LargeElectrolyzer {
@@ -1552,7 +1552,7 @@ public class GAConfig {
         }
 
         public static class HeatingCoils {
-            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Example: \"superconductor\", \"fusion_coil\"")
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Adding Superconducting and Fusion Coils is recommended. Example: \"superconductor\", \"fusion_coil\"")
             @Config.Name("GTCE Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gtceHeatingCoilsBlacklist = new String[]{
@@ -1624,7 +1624,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Hyper Reactor EU/t generation")
             @Config.RangeInt(min = 1)
-            public int[] euGeneration = {GAValues.V[GAValues.UV], GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV]};
+            public int[] euGeneration = {GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV], GAValues.V[GAValues.UIV]};
 
             @Config.Comment("The fuel multiplier when the Reactor is boosted.")
             @Config.RequiresMcRestart

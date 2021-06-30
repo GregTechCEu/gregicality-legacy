@@ -113,7 +113,7 @@ public class CosmicComponents {
                 .outputs(SCINTILLATOR_CRYSTAL.getStackForm())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(340).EUt(3450000).blastFurnaceTemp(11900)
+        BLAST_RECIPES.recipeBuilder().duration(340).EUt(3450000).blastFurnaceTemp(10900)
                 .input(dust, MetastableHassium)
                 .input(dust, Molybdenum)
                 .input(dust, Rhenium)

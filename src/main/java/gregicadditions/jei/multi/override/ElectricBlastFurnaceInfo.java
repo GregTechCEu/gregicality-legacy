@@ -57,9 +57,11 @@ public class ElectricBlastFurnaceInfo extends MultiblockInfoPage {
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IFX", "CCC", "CCC", "XXX")
-						.aisle("SXE", "C#C", "C#C", "XXX")
-						.aisle("ODX", "CCC", "CCC", "XXX")
+						.aisle("SXE", "C#C", "C#C", "XHX")
+						.aisle("ODM", "CCC", "CCC", "XXX")
 						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+						.where('H', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 						.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 						.where('S', GATileEntities.ELECTRIC_BLAST_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)

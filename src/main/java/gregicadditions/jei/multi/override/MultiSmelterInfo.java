@@ -32,7 +32,8 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
 		for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-			if (!Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName())) {
+			if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
+				continue;
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IXX", "CCC", "XXX")
@@ -48,15 +49,16 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 						.where('#', Blocks.AIR.getDefaultState())
 						.build());
 			}
-		}
 		for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
-			if (!Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName())) {
+			if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
+				continue;
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IXX", "CCC", "XXX")
-						.aisle("SXE", "C#C", "XXX")
+						.aisle("SXE", "C#C", "MXX")
 						.aisle("OXX", "CCC", "XXX")
 						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
 						.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 						.where('S', GATileEntities.MULTI_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
@@ -65,7 +67,6 @@ public class MultiSmelterInfo extends MultiblockInfoPage {
 						.where('#', Blocks.AIR.getDefaultState())
 						.build());
 			}
-		}
 		return shapeInfo;
 	}
 

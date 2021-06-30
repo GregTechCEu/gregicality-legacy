@@ -49,23 +49,6 @@ public class CrackerUnitInfo extends MultiblockInfoPage {
                         .build());
             }
         }
-        for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
-            if (!Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName())) {
-
-                shapeInfo.add(MultiblockShapeInfo.builder()
-                        .aisle("XCXCX", "XCSCF", "XCXCX")
-                        .aisle("XCXCX", "H###X", "XCXCX")
-                        .aisle("XCXCX", "XCECF", "XCXCX")
-                        .where('S', GATileEntities.CRACKER, EnumFacing.NORTH)
-                        .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
-                        .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
-                        .where('#', Blocks.AIR.getDefaultState())
-                        .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.EAST)
-                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
-                        .where('H', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.WEST)
-                        .build());
-            }
-        }
         return shapeInfo;
     }
 

@@ -59,7 +59,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance
+public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance in miner algorithm overhaul
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 

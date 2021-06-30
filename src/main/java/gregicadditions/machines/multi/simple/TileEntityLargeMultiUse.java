@@ -36,7 +36,7 @@ import java.util.List;
 import static gregicadditions.client.ClientHandler.STABALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
-public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController {
+public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController { //todo staged removal
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
@@ -106,6 +106,7 @@ public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController 
         tooltip.add(I18n.format("gregtech.multiblock.large_multi_use.description"));
         tooltip.add(I18n.format("gregtech.multiblock.recipe", this.recipeMap.getLocalizedName()));
         super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
     }
 
     @Override

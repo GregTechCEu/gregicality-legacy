@@ -410,7 +410,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial TungstenTitaniumCarbide = new IngotMaterial(855, "tungsten_titanium_carbide", 0x800d0d, MaterialIconSet.SHINY, 7, of(new MaterialStack(TungstenCarbide, 7), new MaterialStack(Titanium, 3)), CORE_METAL | DISABLE_DECOMPOSITION, null, 4422);
     public static final IngotMaterial TitanSteel = new IngotMaterial(854, "titan_steel", 0xAA0d0d, MaterialIconSet.SHINY, 7, of(new MaterialStack(TungstenTitaniumCarbide, 3), new MaterialStack(Jasper, 3)), CORE_METAL | DISABLE_DECOMPOSITION, null, 9200);
     public static final IngotMaterial Inconel792 = new IngotMaterial(853, "inconel_b", 0x6CF076, MaterialIconSet.SHINY, 5, of(new MaterialStack(Nickel, 2), new MaterialStack(Niobium, 1), new MaterialStack(Aluminium, 2), new MaterialStack(Nichrome, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 6200);
-    public static final IngotMaterial Pikyonium = new IngotMaterial(852, "pikyonium", 0x3467BA, MaterialIconSet.SHINY, 7, of(new MaterialStack(Inconel792, 8), new MaterialStack(EglinSteel, 5), new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Cerium, 3), new MaterialStack(Antimony, 2), new MaterialStack(Platinum, 2), new MaterialStack(Ytterbium, 1), new MaterialStack(TungstenSteel, 4)), CORE_METAL | DISABLE_DECOMPOSITION, null, 10800);
+    public static final IngotMaterial Pikyonium = new IngotMaterial(852, "pikyonium", 0x3467BA, MaterialIconSet.SHINY, 7, of(new MaterialStack(Inconel792, 8), new MaterialStack(EglinSteel, 5), new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Cerium, 3), new MaterialStack(Antimony, 2), new MaterialStack(Platinum, 2), new MaterialStack(Ytterbium, 1), new MaterialStack(TungstenSteel, 4)), CORE_METAL | DISABLE_DECOMPOSITION, null, 10500);
     public static final IngotMaterial Lafium = new IngotMaterial(851, "lafium", 0x0d0d60, MaterialIconSet.SHINY, 7, of(new MaterialStack(HastelloyN, 8), new MaterialStack(Naquadah, 4), new MaterialStack(Samarium, 2), new MaterialStack(Tungsten, 4), new MaterialStack(Argon, 2), new MaterialStack(Aluminium, 6), new MaterialStack(Nickel, 8), new MaterialStack(Carbon, 2)), CORE_METAL | DISABLE_DECOMPOSITION, null, 9865);
     public static final IngotMaterial Zeron100 = new IngotMaterial(850, "zeron", 0xB4B414, MaterialIconSet.SHINY, 5, of(new MaterialStack(Chrome, 13), new MaterialStack(Nickel, 3), new MaterialStack(Molybdenum, 2), new MaterialStack(Copper, 10), new MaterialStack(Tungsten, 2), new MaterialStack(Steel, 20)), CORE_METAL | DISABLE_DECOMPOSITION, null, 6100);
     public static final IngotMaterial Cinobite = new IngotMaterial(721, "cinobite", 0x010101, MaterialIconSet.SHINY, 5, of(new MaterialStack(Zeron100, 8), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Mercury, 1), new MaterialStack(Tin, 1), new MaterialStack(Titanium, 6), new MaterialStack(Osmiridium, 1)), CORE_METAL | DISABLE_DECOMPOSITION, null, 11565);
@@ -783,7 +783,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial CalciumCarbonateSolution = new SimpleFluidMaterial("calcium_carbonate_solution", Calcite.materialRGB, "(H2O)CaCO3");
     public static final SimpleFluidMaterial BariumSulfateSolution = new SimpleFluidMaterial("barium_sulfate_solution", Barite.materialRGB, "(H2O)BaSO4");
     public static final SimpleFluidMaterial BentoniteClaySlurry = new SimpleFluidMaterial("bentonite_clay_solution", 0xdbc9c5, "H2O?");
-    public static final SimpleFluidMaterial DrillingMud = new SimpleFluidMaterial("drilling_mud", 0x996600, "For the Drilling Rig");
+    public static final SimpleFluidMaterial DrillingMud = new SimpleFluidMaterial("drilling_mud", 0x996600, "For the Void Miner");
     public static final SimpleFluidMaterial UsedDrillingMud = new SimpleFluidMaterial("used_drilling_mud", 0x998833, "Used Mud");
     public static final SimpleFluidMaterial TolueneDiisocyanate = new SimpleFluidMaterial("toluene_diisocyanate", 0xbaf6ca, "C9H6N2O2");
     public static final SimpleFluidMaterial HydroselenicAcid = new SimpleFluidMaterial("hydroselenic_acid", Selenium.materialRGB, "H2Se");
@@ -1510,6 +1510,7 @@ public class GAMaterials implements IMaterialHandler {
         }
 
         // Casings
+        // todo remove these flags from these materials for the release after the multiblock pr is released
         Iron.addFlag(GENERATE_METAL_CASING);
         Bronze.addFlag(GENERATE_METAL_CASING);
         RedSteel.addFlag(GENERATE_METAL_CASING);
@@ -1548,6 +1549,9 @@ public class GAMaterials implements IMaterialHandler {
         Zinc.addFlag(GENERATE_FINE_WIRE);
         Duranium.addFlag(GENERATE_FINE_WIRE);
 
+        // Frames
+        Polytetrafluoroethylene.addFlag(GENERATE_FRAME);
+
         // Gears
         BlackSteel.addFlag(GENERATE_GEAR);
         RedSteel.addFlag(GENERATE_GEAR);
@@ -1580,6 +1584,7 @@ public class GAMaterials implements IMaterialHandler {
         ReinforcedEpoxyResin.addFlag(GENERATE_ROD);
         Apatite.addFlag(GENERATE_ROD);
         Thorium.addFlag(GENERATE_ROD);
+        Polytetrafluoroethylene.addFlag(GENERATE_ROD);
 
         // Bolt/Screw
         Cobalt.addFlag(GENERATE_BOLT_SCREW);

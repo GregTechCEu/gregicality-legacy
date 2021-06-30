@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeBenderAndForming;
 import gregicadditions.machines.multi.simple.TileEntityLargeCanningMachine;
@@ -28,20 +29,20 @@ public class LargeCanningMachineInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (int i = 2; i < 9; i++) {
-            MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder()
+            GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder()
                     .aisle("XHX", "XEX", "XXX");
             for (int j = 0; j < i; j++) {
                 builder.aisle("IXi", "XpX", "OXo");
             }
-            builder.aisle("PHP", "PSP", "PPP")
+            builder.aisle("PPP", "PSP", "PPP")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
-                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                     .where('X', TileEntityLargeCanningMachine.casingState)
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.EAST)
-                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
+                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.EAST)
                     .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.EAST)
                     .where('p', GAMetaBlocks.PUMP_CASING.getDefaultState())
                     .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE));

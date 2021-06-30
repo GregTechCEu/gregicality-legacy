@@ -263,6 +263,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase { //tod
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", GAConfig.Extraction.drillingMud, I18n.format(GAMaterials.DrillingMud.getFluid(0).getUnlocalizedName())));
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
     }
 
     @Override

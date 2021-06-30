@@ -225,6 +225,7 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.universal.framework.tooltip"));
         tooltip.add(I18n.format("gtadditions.multiblock.chemical_plant.tooltip"));
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
     }
 
     @Override

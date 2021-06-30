@@ -344,7 +344,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
-        data.setTag("Inventory", this.inventory.serializeNBT()); //todo (major) this causes an NPE and ExecutionException when breaking a hatch that has a controller attached to it
+        data.setTag("Inventory", this.inventory.serializeNBT());
         data.setBoolean("Taped", this.isTaped);
         return data;
     }

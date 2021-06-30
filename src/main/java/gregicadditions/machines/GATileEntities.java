@@ -155,9 +155,9 @@ public class GATileEntities {
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
     public static MetaTileEntityLargeNaquadahReactor LARGE_NAQUADAH_REACTOR;
-    public static MetaTileEntityHyperReactorI HYPER_REACTOR;
-    public static MetaTileEntityHyperReactorII HYPER_REACTOR_UHV;
-    public static MetaTileEntityHyperReactorIII HYPER_REACTOR_UEV;
+    public static MetaTileEntityHyperReactorI HYPER_REACTOR_I;
+    public static MetaTileEntityHyperReactorII HYPER_REACTOR_II;
+    public static MetaTileEntityHyperReactorIII HYPER_REACTOR_III;
     public static MetaTileEntityBatteryTower BATTERY_TOWER;
     public static MetaTileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
@@ -1061,9 +1061,9 @@ public class GATileEntities {
 
         PYROLYSE_OVEN = GregTechAPI.registerMetaTileEntity(3233, new MetaTileEntityPyrolyseOven(location("pyrolyse_oven")));
 
-        HYPER_REACTOR = GregTechAPI.registerMetaTileEntity(3234, new MetaTileEntityHyperReactorI(location("hyper_reactor.uv"), GAConfig.multis.hyperReactors.euGeneration[0]));
-        HYPER_REACTOR_UHV = GregTechAPI.registerMetaTileEntity(3235, new MetaTileEntityHyperReactorII(location("hyper_reactor.uhv"), GAConfig.multis.hyperReactors.euGeneration[1]));
-        HYPER_REACTOR_UEV = GregTechAPI.registerMetaTileEntity(3236, new MetaTileEntityHyperReactorIII(location("hyper_reactor.uev"), GAConfig.multis.hyperReactors.euGeneration[2]));
+        HYPER_REACTOR_I = GregTechAPI.registerMetaTileEntity(3234, new MetaTileEntityHyperReactorI(location("hyper_reactor.i"), GAConfig.multis.hyperReactors.euGeneration[0]));
+        HYPER_REACTOR_II = GregTechAPI.registerMetaTileEntity(3235, new MetaTileEntityHyperReactorII(location("hyper_reactor.ii"), GAConfig.multis.hyperReactors.euGeneration[1]));
+        HYPER_REACTOR_III = GregTechAPI.registerMetaTileEntity(3236, new MetaTileEntityHyperReactorIII(location("hyper_reactor.iii"), GAConfig.multis.hyperReactors.euGeneration[2]));
         ADVANCED_FUSION_REACTOR = GregTechAPI.registerMetaTileEntity(3237, new MetaTileEntityAdvFusionReactor(location("advanced_fusion_reactor")));
         GA_HULLS[0] = GregTechAPI.registerMetaTileEntity(3239, new GAMetaTileEntityHull(location("hull.uhv"), 9));
         GA_HULLS[1] = GregTechAPI.registerMetaTileEntity(3240, new GAMetaTileEntityHull(location("hull.uev"), 10));
@@ -1184,7 +1184,7 @@ public class GATileEntities {
             }
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
-        STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner"))); // TODO
+        STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
 
         MAINTENANCE_HATCH[0] = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityMaintenanceHatch(location("maintenance_hatch"), 1));
         MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
@@ -1192,7 +1192,7 @@ public class GATileEntities {
 
         id = 4215;
         for (int i = 1; i <= MUFFLER_HATCH.length; i++)
-            MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i)); // todo recovery amount logic
+            MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i));
 
         ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4224, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
         LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));

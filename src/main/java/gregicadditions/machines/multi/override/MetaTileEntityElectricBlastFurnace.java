@@ -103,6 +103,7 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 			GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
 			if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
 				return false;
+
 			int blastFurnaceTemperature = coilType.getCoilTemperature();
 			int currentTemperature = blockWorldState.getMatchContext().getOrPut("blastFurnaceTemperature", blastFurnaceTemperature);
 

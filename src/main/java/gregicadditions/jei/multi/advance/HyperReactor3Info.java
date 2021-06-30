@@ -21,7 +21,7 @@ import static gregtech.api.unification.material.Materials.Naquadria;
 public class HyperReactor3Info extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.HYPER_REACTOR_UEV;
+        return GATileEntities.HYPER_REACTOR_III;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class HyperReactor3Info extends MultiblockInfoPage {
                   .aisle("##F#####F##","##F#####F##","##F#####F##","##F#####F##","##F#####F##", "##F#####F##", "##FCCCCCF##", "##C#####C##", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "##C#####C##", "###CCCCC###", "###########")
                   .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###CCCCC###", "##CC###CC##", "##C#####C##", "##C#####C##", "##C#####C##", "##CC###CC##", "###CCCCC###", "###########", "###########")
                   .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###########", "####CCC####", "###CCMCC###", "###CfSCC###", "###CCCCC###", "####CCC####", "###########", "###########", "###########")
-                  .where('S', GATileEntities.HYPER_REACTOR_UEV, EnumFacing.SOUTH)
+                  .where('S', GATileEntities.HYPER_REACTOR_III, EnumFacing.SOUTH)
                   .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                   .where('C', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING_2))
                   .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)

@@ -173,22 +173,6 @@ public class UltimateMaterials {
                 .outputs(OreDictUnifier.get(dust, Periodicium, 115))
                 .buildAndRegister();
 
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(360).EUt(54000000)
-                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7))
-                .inputs(OreDictUnifier.get(dust, SuperheavyHAlloy, 7))
-                .inputs(Alkalis.getItemStack(14))
-                .inputs(RefractoryMetals.getItemStack(7))
-                .inputs(LightTranstionMetals.getItemStack(8))
-                .inputs(PreciousMetals.getItemStack(9))
-                .inputs(PostTransitionMetals.getItemStack(14))
-                .inputs(Lanthanoids.getItemStack(15))
-                .inputs(Actinoids.getItemStack(13))
-                .fluidInputs(NonMetals.getFluid(15000))
-                .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
-                .fluidOutputs(Periodicium.getFluid(16560))
-                .blastFurnaceTemp(65000)
-                .buildAndRegister();
-
         VACUUM_RECIPES.recipeBuilder().duration(20).EUt(30720)
                 .fluidInputs(Helium3.getFluid(5000))
                 .fluidOutputs(LiquidHelium3.getFluid(5000))
