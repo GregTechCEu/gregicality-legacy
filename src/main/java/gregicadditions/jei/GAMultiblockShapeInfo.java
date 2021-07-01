@@ -141,7 +141,7 @@ public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
             for (int i = 0; i < 3; i++) {
                 if (currentDir[i] == LEFT || currentDir[i] == DOWN || currentDir[i] == BACK) {
                     if (canReverseLines) {
-                        position[i] = bounds[i] - position[i];
+                        position[i] = bounds[i] - position[i] - 1;
                     }
                     switch (currentDir[i]) {
                         case LEFT:

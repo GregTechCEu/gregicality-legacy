@@ -24,10 +24,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.InventoryUtils;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -41,8 +38,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static gregicadditions.GAMaterials.Bohrium;
+import static gregicadditions.GAMaterials.Seaborgium;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapController {
 
@@ -67,22 +67,47 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(RIGHT, FRONT, UP)
+        return FactoryBlockPattern.start(FRONT, RIGHT, DOWN)
+                /*
                 .aisle("XXXXXXXSXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX")
                 .aisle("GGGGGGGGGGGGGGG", "GCCCCCCCCCCCCCG", "GCP###ppp###PCG", "GC###########CG", "GC###########CG", "GC###########CG", "GCp#########pCG", "GCp#########pCG", "GCp#########pCG", "GC###########CG", "GC###########CG", "GC###########CG", "GCP###ppp###PCG", "GCCCCCCCCCCCCCG", "GGGGGGGGGGGGGGG").setRepeatable(18)
                 .aisle("XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXggggXXXggggXX", "XXggggXmXggggXX", "XXggggXXXggggXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXgggggggggggXX", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX")
+                 */
+                .aisle("###############", "###############", "###############", "######TTT######", "####TTTTTTT####", "####TTTTTTT####", "###TTTTTTTTT###", "###TTTTmTTTT###", "###TTTTpTTTT###", "####TTTpTTT####", "####TTTpTTT####", "######TTT######", "###############", "###############", "###############")
+                .aisle("###############", "###############", "###############", "###############", "#######f#######", "#####CCCCC#####", "#####C###C#####", "####fC###Cf####", "#####C###C#####", "#####CCCCC#####", "#######p#######", "###############", "###############", "###############", "###############").setRepeatable(6)
+                .aisle("###############", "###############", "###############", "#######T#######", "#######f#######", "#####CCCCC#####", "#####C###C#####", "###TfC###CfT###", "#####C###C#####", "#####CCCCC#####", "#######p#######", "#######p#######", "#######p#######", "#######p#######", "###############")
+                .aisle("###############", "###############", "###############", "######TTT######", "####TTTTTTT####", "####TTTTTTT####", "###TTTTTTTTT###", "###TTTTTTTTT###", "###TTTTTTTTT###", "####TTTTTTT####", "####TTTTTTT####", "######TTT######", "###############", "#######p#######", "###############")
+                .aisle("###############", "#FFFFFFFFFFFFF#", "#FFFFFFFFFFFFF#", "#FF#########FF#", "#FF####T####FF#", "#FF##T###T##FF#", "#FF#########FF#", "#FF#T##P##T#FF#", "#FF#########FF#", "#FF##T###T##FF#", "#FF####T####FF#", "#FF#########FF#", "#FFFFFXXXFFFFF#", "#FFFFFXpXFFFFF#", "###############")
+                .aisle("#######p#######", "#F##ppppppp####", "##ppp#####ppp##", "##p#########p##", "#pp####T####pp#", "#pp##T###T###p#", "##pp#########p#", "##ppT##P##T##pp", "#############p#", "#pp##T###T###p#", "#pp####T####pp#", "##p#########p##", "##ppp#####ppp##", "####ppppppp####", "#######p#######")
+                .aisle("#####XXpXX#####", "#F#XpXXpXXpX###", "##pXpXXXXXpXp##", "#XXXXXXXXXXXXX#", "#ppXXXXXXXXXpp#", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "GGGpXXXPXXXXXpp", "XXXXXXXXXXXXXXX", "XXXXXXXXXXXXXXX", "#ppXXXXXXXXXpp#", "#XXXXXXXXXXXXX#", "##pXpXXXXXpXp##", "###XpXXpXXpX###", "#####XXpXX#####")
+                .aisle("#####XXXXX#####", "#F#XXX#p#XXX###", "##XXp#X#X#pXX##", "#XXX##X#X##XXX#", "#Xp#X##X##X#pX#", "XX###X#X#X###XX", "XXXX##XXX##XXXX", "GGGpXXXPXXX##pX", "XXXX##XXX##XXXX", "XX###X#X#X###XX", "#Xp#X##X##X#pX#", "#XXX##X#X##XXX#", "##XXp#X#X#pXX##", "###XXX#p#XXX###", "#####XXXXX#####")
+                .aisle("#####XXGXX#####", "#F#XXX#R#XXX###", "##GXR#X#X#RXG##", "#XXX##X#X##XXX#", "#GR#X##X##X#RG#", "XX###X#X#X###XX", "XXXX##XXX##XXXX", "GGGpXXXPXXX##RG", "XXXX##XXX##XXXX", "XX###X#X#X###XX", "#GR#X##X##X#RG#", "#XXX##X#X##XXX#", "##GXR#X#X#RXG##", "###XXX#R#XXX###", "#####XXGXX#####")
+                .aisle("#####XXXXX#####", "#F#XXXBBBXXX###", "##XXBBXBXBBXX##", "#XXXBBXBXBBXXX#", "#XBBXBBXBBXBBX#", "XXBBBXBXBXBBBXX", "XXXXBBXXXBBXXBX", "SGGpXXXPXXXBBBX", "XXXXBBXXXBBXXBX", "XXBBBXBXBXBBBXX", "#XBBXBBXBBXBBX#", "#XXXBBXBXBBXXX#", "##XXBBXBXBBXX##", "###XXXBBBXXX###", "#####XXXXX#####")
                 .setAmountAtLeast('L', 100)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
+                .where('f', statePredicate(getFrameState()))
+                .where('F', statePredicate(getSecondaryFrameState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('T', statePredicate(getSecondaryCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate().or(MetaTileEntityElectricBlastFurnace.heatingCoilPredicate2()))
                 .where('P', frameworkPredicate().or(frameworkPredicate2()))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
                 .where('g', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('m', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
+                .where('R', statePredicate(MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.TUNGSTENSTEEL_FIREBOX)))
+                .where('B', statePredicate(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS)))
                 .where('#', isAirPredicate())
                 .build();
+    }
+
+    public static IBlockState getFrameState() {
+        return MetaBlocks.FRAMES.get(BlueSteel).getDefaultState();
+    }
+
+    public static IBlockState getSecondaryFrameState() {
+        return MetaBlocks.FRAMES.get(BlackSteel).getDefaultState();
     }
 
     @Override
@@ -129,6 +154,12 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
 
     public IBlockState getCasingState() {
         return casingState;
+    }
+
+    public static final IBlockState secondaryCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
+
+    public IBlockState getSecondaryCasingState() {
+        return secondaryCasingState;
     }
 
     @Override
