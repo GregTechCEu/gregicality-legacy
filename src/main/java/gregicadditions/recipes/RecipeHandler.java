@@ -162,6 +162,7 @@ public class RecipeHandler {
         WetwareChain.init();
         OpticalChain.init();
         CombinedChains.init();
+        CasingConvesion.init();
         OrganometallicChains.init();
         QuantumDotsChain.init();
         HNIWChain.init();
@@ -1161,47 +1162,53 @@ public class RecipeHandler {
         }
 
         // Soldering Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(775).EUt(1200)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(775).EUt(120)
                 .input(dust, Tin, 9)
                 .input(dust, Antimony)
                 .fluidOutputs(SolderingAlloy.getFluid(L * 10))
+                .blastFurnaceTemp(700)
                 .notConsumable(new IntCircuitIngredient(10))
                 .buildAndRegister();
 
         // Red Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(473).EUt(240)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(473).EUt(120)
                 .input(dust, Redstone, 3)
                 .input(dust, Copper)
                 .fluidOutputs(RedAlloy.getFluid(L * 4))
+                .blastFurnaceTemp(600)
                 .buildAndRegister();
 
         // Magnalium
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(320).EUt(360)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(320).EUt(120)
                 .input(dust, Aluminium, 2)
                 .input(dust, Magnesium)
                 .fluidOutputs(Magnalium.getFluid(L * 3))
+                .blastFurnaceTemp(900)
                 .buildAndRegister();
 
         // Tin Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(120)
                 .input(dust, Tin)
                 .input(dust, Iron)
                 .fluidOutputs(TinAlloy.getFluid(L * 2))
+                .blastFurnaceTemp(600)
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(174)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(556).EUt(120)
                 .input(dust, Tin)
                 .input(dust, WroughtIron)
                 .fluidOutputs(TinAlloy.getFluid(L * 2))
+                .blastFurnaceTemp(600)
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
         // Battery Alloy
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(512).EUt(600)
+        BLAST_ALLOY_RECIPES.recipeBuilder().duration(512).EUt(120)
                 .input(dust, Lead, 4)
                 .input(dust, Antimony)
                 .fluidOutputs(BatteryAlloy.getFluid(L * 5))
+                .blastFurnaceTemp(700)
                 .notConsumable(new IntCircuitIngredient(5))
                 .buildAndRegister();
 

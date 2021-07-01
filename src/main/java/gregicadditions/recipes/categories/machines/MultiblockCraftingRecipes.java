@@ -184,17 +184,20 @@ public class MultiblockCraftingRecipes {
         // Naquadah Reactor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
-                .input(screw, NaquadahAlloy, 16)
-                .input(gear, NaquadahEnriched)
-                .input(foil, Naquadah, 16)
+                .fluidInputs(Protactinium233.getMaterial().getFluid(288)) // This doesn't have a use, so I'm giving it one. -bruberu
+                .input(plate, Tritanium, 8)
+                .input(foil, EnrichedNaquadahAlloy, 24)
+                .input(gear, Duranium, 16)
                 .input(plateDense, Naquadria, 4)
-                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
-                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
-                .input(wireGtSingle, UVSuperconductor, 32)
-                .input(circuit, Infinite)
-                .input(circuit, Infinite)
-                .input(circuit, Infinite)
-                .input(circuit, Infinite)
+                .inputs(FIELD_GENERATOR_UV.getStackForm(1))
+                .inputs(ELECTRIC_PUMP_UV.getStackForm(1))
+                .inputs(ELECTRIC_PISTON_UV.getStackForm(2))
+                .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
+                .input(wireGtSingle, ZPMSuperconductor, 32)
+                .input(circuit, Superconductor)
+                .input(circuit, Superconductor)
+                .input(circuit, Superconductor)
+                .input(circuit, Superconductor)
                 .outputs(LARGE_NAQUADAH_REACTOR.getStackForm())
                 .buildAndRegister();
 
@@ -738,7 +741,7 @@ public class MultiblockCraftingRecipes {
                 "PCP", "KHK", "WRW",
                 'P', new UnificationEntry(plate, BabbittAlloy),
                 'C', new UnificationEntry(circuit, Elite),
-                'K', CONVEYOR_MODULE_IV,
+                'K', CONVEYOR_MODULE_IV.getStackForm(),
                 'H', HULL[IV].getStackForm(),
                 'W', new UnificationEntry(wireGtOctal, Graphene),
                 'R', new UnificationEntry(stickLong, VanadiumGallium));

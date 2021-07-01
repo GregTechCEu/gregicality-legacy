@@ -4521,3 +4521,16 @@ metaitem.shape.extruder.gear.small.name=Extruder Shape (Small Gear)
 metaitem.shape.extruder.gear.small.tooltip=Extruder Shape for making Small Gears
 metaitem.shape.extruder.rotor.name=Extruder Shape (Rotor)
 metaitem.shape.extruder.rotor.tooltip=Extruder Shape for making Rotors
+
+gtadditions.multiblock.large_chemical_reactor.tooltip.1=This multiblock perfectly overclocks, meaning that for each tier, the energy usage per recipe remains the same.
+gtadditions.multiblock.large_chemical_reactor.tooltip.2=The coil also reduces the EU/t for each recipe by a certain amount, depending on the tier.
+gtadditions.multiblock.large_chemical_reactor.tooltip.3=Coils above §e2700K§7 provide a §c5%%§7 reduction in EU/t.
+gtadditions.multiblock.large_chemical_reactor.tooltip.4=Coils above §e3600K§7 provide a §c10%%§7 reduction in EU/t.
+gtadditions.multiblock.large_chemical_reactor.tooltip.5=Coils above §e5400K§7 provide a §c20%%§7 reduction in EU/t.
+
+gtadditions.multiblock.pyrolyse_oven.tooltip.1=For every tier higher of coil used, this multiblock will process one more recipe at a time.
+gtadditions.multiblock.pyrolyse_oven.tooltip.2=The coil's energy discount also applies to this multiblock as well.
+
+gtadditions.multiblock.electric_blast_furnace.tooltip.1=For every 900K that the coils can handle above a recipe's temperature, a small EU/t discount is applied.
+gtadditions.multiblock.electric_blast_furnace.tooltip.2=For every 1800K above the recipe's temperature, the EU/t may be increased by 4x, while the duration may be decreased by 4x, if there is enough power.
+

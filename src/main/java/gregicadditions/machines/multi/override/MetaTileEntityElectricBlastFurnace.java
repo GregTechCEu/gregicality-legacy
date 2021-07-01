@@ -25,10 +25,14 @@ import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -151,6 +155,13 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 
 	protected int getBlastFurnaceTemperature() {
 		return this.blastFurnaceTemperature;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+		super.addInformation(stack, player, tooltip, advanced);
+		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.1"));
+		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.2"));
 	}
 
 	protected static class ElectricBlastFurnaceWorkable extends GAMultiblockRecipeLogic {

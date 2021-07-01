@@ -22,6 +22,8 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +31,9 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -106,12 +110,22 @@ public class TileEntityLargeChemicalReactor extends GARecipeMapMultiblockControl
         int temperature = context.getOrDefault("reactorCoilTemperature", 0);
         if (temperature <= 2700)
             this.energyBonus = 0;
-        else if (temperature == 3600)
+        else if (temperature <= 3600)
             this.energyBonus = 5;
-        else if (temperature == 5400)
+        else if (temperature <= 5400)
             this.energyBonus = 10;
-        else if (temperature <= 9700)
+        else
             this.energyBonus = 20;
+    }
+
+
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.multiblock.large_chemical_reactor.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_chemical_reactor.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_chemical_reactor.tooltip.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_chemical_reactor.tooltip.4"));
+        tooltip.add(I18n.format("gtadditions.multiblock.large_chemical_reactor.tooltip.5"));
     }
 
     public int getEnergyBonus() {

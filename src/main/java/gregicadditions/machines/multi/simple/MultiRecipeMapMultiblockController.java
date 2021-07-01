@@ -157,10 +157,21 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
                     .setStyle(new Style().setColor(TextFormatting.AQUA))));
     }
 
+    @SideOnly(Side.CLIENT)
+    public String recipeMapsToString() {
+        String recipeMapsString = "";
+        for(int i = 0; i < recipeMaps.length; i++) {
+            recipeMapsString += recipeMaps[i].getLocalizedName();
+            if(recipeMaps.length - 1 != i)
+                recipeMapsString += ", "; // For delimiting
+        }
+        return recipeMapsString;
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName())); //todo display all recipemaps
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMapsToString()));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));

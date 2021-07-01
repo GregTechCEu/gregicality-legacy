@@ -5,8 +5,7 @@ import gregtech.api.unification.OreDictUnifier;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class ArcFurnaceOxidation {
 
@@ -23,6 +22,14 @@ public class ArcFurnaceOxidation {
                 .input(dust, FerriteMixture, 6)
                 .fluidInputs(Oxygen.getFluid(8000))
                 .outputs(OreDictUnifier.get(ingot, NickelZincFerrite, 14))
+                .buildAndRegister();
+
+
+        // YBa2Cu3O6 + O -> YBa2Cu3O7
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(2509).EUt(7680)
+                .inputs(WellMixedYBCOxides.getItemStack(12))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(ingotHot, YttriumBariumCuprate, 13)
                 .buildAndRegister();
     }
 }

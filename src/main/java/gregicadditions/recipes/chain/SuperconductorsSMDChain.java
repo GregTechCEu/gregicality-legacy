@@ -620,7 +620,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // 3Cu(NO3)2 + 2Ba(NO3)2 + Y(NO3)3 + 2NH3 + C6H8O7 -> YBa2Cu3O6 + 15NO2 + 6CO + 4H2O + 6H
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(260).EUt(7680)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(7680)
                 .inputs(CopperNitrate.getItemStack(27))
                 .inputs(BariumNitrate.getItemStack(18))
                 .inputs(YttriumNitrate.getItemStack(13))
@@ -631,13 +631,6 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(CarbonMonoxde.getFluid(6000))
                 .fluidOutputs(Water.getFluid(4000))
                 .fluidOutputs(Hydrogen.getFluid(6000))
-                .buildAndRegister();
-
-        // YBa2Cu3O6 + O -> YBa2Cu3O7
-        ARC_FURNACE_RECIPES.recipeBuilder().duration(2509).EUt(7680)
-                .inputs(WellMixedYBCOxides.getItemStack(12))
-                .fluidInputs(Oxygen.getFluid(1000))
-                .output(ingotHot, YttriumBariumCuprate, 13)
                 .buildAndRegister();
 
         // 2Th + 2Ba + 3Cu + 2Ca -> TBCC
