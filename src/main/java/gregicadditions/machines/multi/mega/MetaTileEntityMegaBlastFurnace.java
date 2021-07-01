@@ -18,7 +18,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
@@ -41,8 +41,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 import java.util.*;
 
-import static gregicadditions.GAMaterials.Bohrium;
-import static gregicadditions.GAMaterials.Seaborgium;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
@@ -296,13 +294,14 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             if (duration < 3)
                 duration = 3;
 
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
+            BlastRecipeBuilder newRecipe = ((BlastRecipeBuilder) recipeMap.recipeBuilder())
                     .inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) Math.max(1, EUt * this.getEUtPercentage() / 100))
-                    .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)));
+                    .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)))
+                    .blastFurnaceTemp(recipeTemp);
 
             copyChancedItemOutputs(newRecipe, matchingRecipe, multiplier);
 

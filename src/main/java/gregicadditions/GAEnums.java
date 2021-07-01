@@ -4,6 +4,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.api.unification.material.Materials;
@@ -167,6 +168,35 @@ public class GAEnums {
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
                 new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
                 RecipeMaps.PLASMA_GENERATOR_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), Textures.ROBUST_TUNGSTENSTEEL_CASING, true);
+    }
+
+    /**
+     * Sets a RecipeMap to have a different number of slots for inputs or outputs.
+     * USE THIS SPARINGLY!
+     *
+     * @param map      The RecipeMap to set the field of.
+     * @param slotType The slot (maxInputs, maxOutputs, etc.) to set.
+     * @param value    The new value of slotType
+     *
+     * @throws Exception If failed.
+     */
+    public static void addSlotsToGTCEMaps(
+            final RecipeMap<?> map,
+            final String       slotType,
+            final int          value)
+            throws Exception {
+
+        // set public
+        Field field = RecipeMap.class.getDeclaredField(slotType);
+        field.setAccessible(true);
+
+        // set non-final
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+        // set the value of the parameter
+        field.setInt(map, value);
     }
 
     public static final Predicate<Material> dust = mat -> mat instanceof DustMaterial;

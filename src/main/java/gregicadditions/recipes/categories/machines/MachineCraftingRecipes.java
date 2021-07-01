@@ -6,6 +6,7 @@ import gregicadditions.item.*;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.recipes.ModHandler;
@@ -37,7 +38,7 @@ import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
-import static gregtech.api.unification.material.MarkerMaterials.Tier.Superconductor;
+import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
@@ -220,6 +221,20 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uhv", GATileEntities.ENERGY_OUTPUT[0].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uev", GATileEntities.ENERGY_OUTPUT[1].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uiv", GATileEntities.ENERGY_OUTPUT[2].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
+
+        // Maintenance Hatches
+        ModHandler.addShapedRecipe("ga_maintenance_hatch", GATileEntities.MAINTENANCE_HATCH[0].getStackForm(), "dwx", "hHc", "fsr", 'H', MetaTileEntities.HULL[1].getStackForm());
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(30).duration(500).inputs(MetaTileEntities.HULL[LV].getStackForm()).circuitMeta(21).outputs(GATileEntities.MAINTENANCE_HATCH[0].getStackForm()).buildAndRegister();
+        ModHandler.addShapedRecipe("ga_maintenance_hatch_auto_tape", GATileEntities.MAINTENANCE_HATCH[1].getStackForm(), "CMC", "RHR", "CMC", 'C', new UnificationEntry(circuit, Elite), 'M', GATileEntities.MAINTENANCE_HATCH[0].getStackForm(), 'R', MetaItems.ROBOT_ARM_IV, 'H', MetaTileEntities.HULL[IV].getStackForm());
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(500).inputs(MetaTileEntities.HULL[IV].getStackForm(), MetaItems.ROBOT_ARM_IV.getStackForm(2), GATileEntities.MAINTENANCE_HATCH[0].getStackForm(2)).input(circuit, Elite, 2).outputs(GATileEntities.MAINTENANCE_HATCH[1].getStackForm()).buildAndRegister();
+        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).duration(1000).input(wireFine, Dubnium, 64).input(circuit, Superconductor, 4).inputs(MetaItems.ROBOT_ARM_UV.getStackForm(), MetaItems.ELECTRIC_PUMP_UV.getStackForm(), MetaItems.CONVEYOR_MODULE_UV.getStackForm(), MetaItems.ENERGY_LAPOTRONIC_ORB2.getStackForm(), GAMetaItems.INSULATING_TAPE.getStackForm(64), GAMetaItems.INSULATING_TAPE.getStackForm(64), GATileEntities.MAINTENANCE_HATCH[1].getStackForm()).fluidInputs(SolderingAlloy.getFluid(1296), Lubricant.getFluid(64000)).outputs(GATileEntities.MAINTENANCE_HATCH[2].getStackForm()).buildAndRegister();
+
+        //Quadruple and Nonuple Inputs and Outputs
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(120).duration(100).inputs(MetaTileEntities.HULL[HV].getStackForm()).input(pipeLarge, Titanium, 4).circuitMeta(0).outputs(GATileEntities.INPUT_HATCH_MULTI.get(0).getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(120).duration(100).inputs(MetaTileEntities.HULL[HV].getStackForm()).input(pipeLarge, Titanium, 4).circuitMeta(1).outputs(GATileEntities.OUTPUT_HATCH_MULTI.get(0).getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(100).inputs(MetaTileEntities.HULL[IV].getStackForm()).input(pipeLarge, TungstenSteel, 9).circuitMeta(0).outputs(GATileEntities.INPUT_HATCH_MULTI.get(1).getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(100).inputs(MetaTileEntities.HULL[IV].getStackForm()).input(pipeLarge, TungstenSteel, 9).circuitMeta(1).outputs(GATileEntities.OUTPUT_HATCH_MULTI.get(1).getStackForm()).buildAndRegister();
+
 
     }
 }

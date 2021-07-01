@@ -9,6 +9,7 @@ import gregicadditions.client.ClientHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
+import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
@@ -36,7 +37,7 @@ import java.util.stream.IntStream;
 
 import static gregicadditions.capabilities.impl.GARecipeMapMultiblockController.XSTR_RAND;
 
-public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<MetaTileEntityMufflerHatch> {
+public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<MetaTileEntityMufflerHatch>, ITieredMetaTileEntity {
 
     private final int recoveryChance;
     private final ItemStackHandler inventory;
