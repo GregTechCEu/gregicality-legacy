@@ -22,6 +22,7 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
@@ -29,6 +30,8 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.HoverEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -392,6 +395,11 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         writeCustomData(STORE_TAPED, buf -> {
             buf.writeBoolean(isTaped);
         });
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void runMufflerEffect(float xPos, float yPos, float zPos, float xSpd, float ySpd, float zSpd) {
+        getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, xPos, yPos, zPos, xSpd, ySpd, zSpd);
     }
 
     protected static final BlockWireCoil.CoilType[] HEATING_COILS = BlockWireCoil.CoilType.values();

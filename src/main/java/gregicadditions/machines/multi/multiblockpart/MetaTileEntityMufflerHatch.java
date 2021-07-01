@@ -13,6 +13,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -205,7 +206,10 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
             xSpd = facing.getXOffset() * (0.1F + 0.2F * XSTR_RAND.nextFloat());
             zSpd = facing.getZOffset() * (0.1F + 0.2F * XSTR_RAND.nextFloat());
         }
-
-        getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, xPos, yPos, zPos, xSpd, ySpd, zSpd);
+        MultiblockControllerBase controllerBase = getController();
+        if (controllerBase instanceof GARecipeMapMultiblockController) {
+            GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) controllerBase;
+            controller.runMufflerEffect(xPos, yPos, zPos, xSpd, ySpd, zSpd);
+        }
     }
 }

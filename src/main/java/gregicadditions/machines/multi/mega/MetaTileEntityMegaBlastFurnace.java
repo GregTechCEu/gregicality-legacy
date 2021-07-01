@@ -28,11 +28,14 @@ import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nullable;
@@ -148,6 +151,16 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
         tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.1"));
         tooltip.add(I18n.format("gtadditions.multiblock.mega_blast_logic.tooltip.1"));
         tooltip.add(I18n.format("gtadditions.multiblock.mega_blast_logic.tooltip.2"));
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void runMufflerEffect(float xPos, float yPos, float zPos, float xSpd, float ySpd, float zSpd) {
+        for (int x = -1; x <= 1; x++) {
+            for (int z = -1; z <= 1; z++) {
+                getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, xPos + x, yPos, zPos + z, xSpd, ySpd, zSpd);
+            }
+        }
     }
 
     public static final IBlockState casingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
