@@ -41,7 +41,7 @@ public class DisassemblyHandler {
      * Passed parameter is the List of circuits to use for each tier,
      * always the worst of the tier.
      */
-    private static final Map<Integer, Tuple<ItemStack, Integer>> circuitToUse = createCircuitMap(Arrays.asList(
+    private static final Map<String, Tuple<ItemStack, Integer>> circuitToUse = createCircuitMap(Arrays.asList(
             MetaItems.BASIC_CIRCUIT_LV.getStackForm(),
             GAMetaItems.PRIMITIVE_ASSEMBLY.getStackForm(),
             GAMetaItems.ELECTRONIC_COMPUTER.getStackForm(),
@@ -144,9 +144,9 @@ public class DisassemblyHandler {
 
                 // Check for if a circuit needs to be replaced, otherwise insert the ItemStack
                 else {
-                    int key = itemStacks[0].getItemDamage();
-                    if (circuitToUse.containsKey(key))
-                        outputItems.add(circuitToUse.get(key).getFirst());
+                    Tuple<Boolean, String> isCircuit = isCircuit(itemStacks[0]);
+                    if (isCircuit.getFirst())
+                        outputItems.add(circuitToUse.get(isCircuit.getSecond()).getFirst());
                     else
                         outputItems.add(itemStacks[0]);
                 }
@@ -246,18 +246,30 @@ public class DisassemblyHandler {
      * Implemented using OreDict, so this will work for all current
      * and future circuits.
      */
-    private static Map<Integer, Tuple<ItemStack, Integer>> createCircuitMap(List<ItemStack> circuitsMasterList) {
-        Map<Integer, Tuple<ItemStack, Integer>> circuits = new HashMap<>();
+    private static Map<String, Tuple<ItemStack, Integer>> createCircuitMap(List<ItemStack> circuitsMasterList) {
+        Map<String, Tuple<ItemStack, Integer>> circuits = new HashMap<>();
 
         // Map each circuit in circuitsMasterList as the value
         // for every circuit in its OreDict
         circuitsMasterList.forEach(output ->
                 OreDictUnifier.getOreDictionaryNames(output).forEach(name ->
                         OreDictUnifier.getAllWithOreDictionaryName(name).forEach(itemStack ->
-                                circuits.put(itemStack.getItemDamage(), new Tuple<>(output, circuitsMasterList.indexOf(output) + 1))
+                                circuits.put(name, new Tuple<>(output, circuitsMasterList.indexOf(output) + 1))
                         )
                 )
         );
         return circuits;
+    }
+
+    private static Tuple<Boolean, String> isCircuit(ItemStack stack) {
+        Set<String> stackOres = OreDictUnifier.getOreDictionaryNames(stack);
+        for (String circuitOre : circuitToUse.keySet()) {
+            for (String stackOre : stackOres) {
+                if (circuitOre.equals(stackOre)) {
+                    return new Tuple<>(true, stackOre);
+                }
+            }
+        }
+        return new Tuple<>(false, "");
     }
 }

@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -51,6 +52,13 @@ public class BariumChain {
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
+        // BaO -> Ba + O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(220).EUt(30)
+                .inputs(BariumOxide.getItemStack(2))
+                .output(dust, Barium)
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
         // 4BaO + 2Al -> 3Ba + Al2BaO4
         BLAST_RECIPES.recipeBuilder().duration(180).EUt(120).blastFurnaceTemp(700)
                 .inputs(BariumOxide.getItemStack(8))
@@ -64,6 +72,39 @@ public class BariumChain {
                 .inputs(BariumAluminate.getItemStack(14))
                 .outputs(BariumOxide.getItemStack(2))
                 .outputs(Alumina.getItemStack(5))
+                .buildAndRegister();
+
+        // NEW BARIUM-HOLDING ORES
+
+        // BaCa(CO3)2 + H2SO4 -> BaSO4 + (H2O)CaCO3 + CO2
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .input(dust, Barytocalcite, 10)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .output(dust, Barite, 6)
+                .fluidOutputs(CalciumCarbonateSolution.getFluid(1000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .buildAndRegister();
+
+        // (H20)CaCO3 -> H2O + CaCO3
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(200).EUt(30)
+                .fluidInputs(CalciumCarbonateSolution.getFluid(1000))
+                .output(dust, Calcite, 5)
+                .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        // BaCa(CO3)2 -> BaCO3 + CaCO3
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(1040).EUt(60)
+                .input(dust, Barytocalcite, 10)
+                .outputs(BariumCarbonate.getItemStack(5))
+                .output(dust, Calcite, 5)
+                .buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(50).EUt(80)
+                .input(dust, Witherite, 5)
+                .outputs(BariumCarbonate.getItemStack(5))
+                .chancedOutput(OreDictUnifier.get(dustTiny, Calcite), 9000, 150)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Galena), 7000, 120)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Barite), 4000, 90)
                 .buildAndRegister();
     }
 }

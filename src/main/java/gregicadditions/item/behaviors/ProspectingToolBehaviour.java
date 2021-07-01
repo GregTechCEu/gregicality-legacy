@@ -62,12 +62,14 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
     protected final int costs;
     protected final int chunkRadius;
     protected final int tier;
+    protected final int scanTick;
 
 
-    public ProspectingToolBehaviour(int tier, int cost, int radius) {
+    public ProspectingToolBehaviour(int tier, int cost, int radius, int scanTick) {
         this.costs = cost;
         this.chunkRadius = radius;
         this.tier = tier;
+        this.scanTick = scanTick;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -106,7 +108,7 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
             if(((ModularUIContainer) ((EntityPlayer) entity).openContainer).getModularUI().holder instanceof PlayerInventoryHolder) {
                 if(((PlayerInventoryHolder) ((ModularUIContainer) ((EntityPlayer) entity).openContainer).getModularUI().holder).getCurrentItem() == itemStack) {
                     IElectricItem electricItem = itemStack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
-                    if (electricItem != null) {
+                    if (electricItem != null && !((EntityPlayer) entity).isCreative()) {
                         electricItem.discharge(costs, tier, false, false, false);
                         if (electricItem.getCharge() == 0) {
                             ((EntityPlayer) entity).closeScreen();
@@ -120,16 +122,18 @@ public class ProspectingToolBehaviour implements IItemBehaviour, ItemUIFactory {
 
     @Override
     public ModularUI createUI(PlayerInventoryHolder playerInventoryHolder, EntityPlayer entityPlayer) {
-        WidgetOreList widgetItemFluidList = new WidgetOreList(32 * chunkRadius + 30, 32, 150, Math.max(((32 * chunkRadius) / 18) - 1, 1));
-        WidgetProspectingMap widgetProspectingMap = new WidgetProspectingMap(30, 32, chunkRadius, playerInventoryHolder, widgetItemFluidList);
-        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 32 * chunkRadius + 220, 32 * chunkRadius + 30)
-                .label(20, 17, "metaitem.tool.prospect.gui.title", Color.WHITE.getRGB())
-                .widget(new ProgressWidget(() -> getEuStored(playerInventoryHolder.getCurrentItem()), 32 * chunkRadius + 30, 13, 150, 18,
+        int minSize = Math.max(chunkRadius, 5);
+        WidgetOreList widgetItemFluidList = new WidgetOreList(32 * minSize + 30, 32, 150, Math.max(((32 * minSize) / 18) - 1, 1));
+        WidgetProspectingMap widgetProspectingMap = new WidgetProspectingMap(30 + (minSize - chunkRadius) * 16, 32 + (minSize - chunkRadius) * 16, chunkRadius, playerInventoryHolder, widgetItemFluidList, getToolGTDetravData(playerInventoryHolder.getCurrentItem()),
+                scanTick);
+        return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 32 * minSize + 220, 32 * minSize + 30)
+                .label(50, 17, "metaitem.tool.prospect.gui.title", Color.WHITE.getRGB())
+                .widget(new ProgressWidget(() -> getEuStored(playerInventoryHolder.getCurrentItem()), 32 * minSize + 30, 13, 150, 18,
                         TextureArea.fullImage("textures/gui/progress_bar/progress_bar_energy.png"),
                         ProgressWidget.MoveType.HORIZONTAL))
                 .widget(widgetProspectingMap)
                 .widget(widgetItemFluidList)
-                .widget(new ToggleButtonWidget(0, -18, 18, 18,
+                .widget(new ToggleButtonWidget(28, 12, 18, 18,
                         GuiTextures.BUTTON_BLACKLIST, ()->false, (pressed)->{}) {
                     @Override
                     public boolean mouseClicked(int mouseX, int mouseY, int button) {

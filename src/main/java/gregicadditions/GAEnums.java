@@ -1,5 +1,6 @@
 package gregicadditions;
 
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.Element;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.api.unification.material.Materials;
@@ -12,6 +13,8 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.MetaFluids;
 import net.minecraftforge.common.util.EnumHelper;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -146,8 +149,35 @@ public class GAEnums {
             OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
             PURE_ORES.add(OrePrefix.valueOf("orePure" + stoneTypes[i]));
         }
+    }
 
+    /**
+     * Sets a RecipeMap to have a different number of slots for inputs or outputs.
+     * USE THIS SPARINGLY!
+     *
+     * @param map      The RecipeMap to set the field of.
+     * @param slotType The slot (maxInputs, maxOutputs, etc.) to set.
+     * @param value    The new value of slotType
+     *
+     * @throws Exception If failed.
+     */
+    public static void addSlotsToGTCEMaps(
+            final RecipeMap<?> map,
+            final String       slotType,
+            final int          value)
+            throws Exception {
 
+        // set public
+        Field field = RecipeMap.class.getDeclaredField(slotType);
+        field.setAccessible(true);
+
+        // set non-final
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+        // set the value of the parameter
+        field.setInt(map, value);
     }
 
     public static final Predicate<Material> dust = mat -> mat instanceof DustMaterial;

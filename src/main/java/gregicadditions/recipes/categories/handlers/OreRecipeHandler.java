@@ -290,7 +290,9 @@ public class OreRecipeHandler {
     }
 
     public static void processCrushed(OrePrefix dustCrushedPrefix, DustMaterial material) {
-
+        if (OreDictUnifier.get(crushedPurified, material).isEmpty()) {
+            return;
+        }
         SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
                 .input(dustCrushedPrefix, material)
                 .fluidInputs(Water.getFluid(100))

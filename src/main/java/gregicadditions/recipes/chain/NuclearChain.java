@@ -303,13 +303,5 @@ public class NuclearChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Bromine, 2), 6250, 900)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Iodine, 2), 6250, 1000)
                 .buildAndRegister();
-
-        ELECTROLYZER_RECIPES.recipeBuilder()
-                .EUt(120)
-                .duration((int) Uraninite.getAverageProtons() * 3 * 8)
-                .input(dust, Uraninite, 3)
-                .output(dust, UraniumRadioactive.getMaterial())
-                .fluidOutputs(Oxygen.getFluid(2000))
-                .buildAndRegister();
     }
 }

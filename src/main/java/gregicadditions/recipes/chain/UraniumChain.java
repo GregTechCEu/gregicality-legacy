@@ -12,31 +12,8 @@ import static gregicadditions.GAEnums.GAOrePrefix.dioxide;
 public class UraniumChain {
     public static void init() {
 
-        // Uraninite and Pitchblende MUST NOT be creatable from each's respective components
-
-        // (UO2)3ThPb + BaCO3 -> [(UO2)3ThPb + BaCO3]
-        MIXER_RECIPES.recipeBuilder().duration(50).EUt(30)
-                .input(dust, Pitchblende, 5)
-                .inputs(BariumCarbonate.getItemStack(5))
-                .outputs(PitchblendeBaCOmix.getItemStack(10))
-                .buildAndRegister();
-
-        // [(UO2)3ThPb + BaCO3] + 3HCl + 3HClO -> 3[UO2Cl2 + H2O + ?] + CO2 + BaO
-        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(30)
-                .inputs(PitchblendeBaCOmix.getItemStack(10))
-                .fluidInputs(HydrochloricAcid.getFluid(3000))
-                .fluidInputs(HypochlorousAcid.getFluid(3000))
-                .outputs(BariumOxide.getItemStack(2))
-                .fluidOutputs(UranylChlorideSolution.getFluid(3000))
-                .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        // BaO -> Ba + O
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(220).EUt(30)
-                .inputs(BariumOxide.getItemStack(2))
-                .output(dust, Barium)
-                .fluidOutputs(Oxygen.getFluid(1000))
-                .buildAndRegister();
+        // Pitchblende Processing was removed to save 2 steps
+        // and was simplified to just electrolysis into Uraninite.
 
         // UO2 + HCl + HClO -> [UO2Cl2 + H2O + ?]
         CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(120)
@@ -83,12 +60,6 @@ public class UraniumChain {
                 .fluidOutputs(CarbonMonoxde.getFluid(8000))
                 .buildAndRegister();
 
-        FLUID_HEATER_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .circuitMeta(1)
-                .fluidInputs(UraniumDiuranate.getFluid(1000))
-                .fluidOutputs(HotUraniumDiuranate.getFluid(1000))
-                .buildAndRegister();
-
         // CO2 + 2KOH -> K2CO3 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(30)
                 .fluidInputs(PotassiumHydroxide.getFluid(2000))
@@ -99,18 +70,12 @@ public class UraniumChain {
 
         // (NH4)2U2O7 + 2K2CO3 -> 2UO2(CO3) + 2K2O + 2NH3 + H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(120)
-                .fluidInputs(HotUraniumDiuranate.getFluid(1000))
+                .fluidInputs(UraniumDiuranate.getFluid(1000))
                 .inputs(PotassiumCarbonate.getItemStack(12))
-                .fluidOutputs(HotPotassiumUranylTricarbonate.getFluid(2000))
+                .outputs(PotassiumUranylTricarbonate.getItemStack(5))
                 .fluidOutputs(Ammonia.getFluid(2000))
                 .fluidOutputs(Water.getFluid(1000))
                 .output(dust, Potash, 6)
-                .buildAndRegister();
-
-        // UO2(CO3) (hot) -> UO2(CO3)
-        VACUUM_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .fluidInputs(HotPotassiumUranylTricarbonate.getFluid(1000))
-                .outputs(PotassiumUranylTricarbonate.getItemStack(5))
                 .buildAndRegister();
 
         // UO2(CO3) + [H2O2 + H2SO4] -> [UO3•H2O2 + ThO2] + [? + C + H2SO4]
