@@ -56,7 +56,7 @@ public class ChromiumChain {
 
         // 2C + Na2Cr2O7(H2O) -> Na2CO3 + Cr2O3 + CO + H2O (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(120)
-                .input(dust, Carbon)
+                .input(dust, Carbon, 2)
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .output(dust, SodaAsh, 6)
                 .outputs(ChromiumIIIOxide.getItemStack(5))

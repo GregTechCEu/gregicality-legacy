@@ -31,8 +31,6 @@ public class Dyes {
          * - ApatiteAcidicLeach: Ca4P3O102Cl TREAT AS 1
          * - FluoroapatiteAcidicLeach: Ca4P3O10F TREAT AS 1
          *
-         * Organic Dyes will use half the amount of dust per mol as the
-         * mol convention would dictate for solids
          */
 
         // Ca5(PO4)3Cl + H2SO4 -> CaS(H2O)2O4 + Ca4P3O102Cl
@@ -181,7 +179,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // NH4VO3 + [Bi(NO3)3 + H2O] + 2 NH3 + H2O -> 3 NH4NO3 + BiVO4(H2O)
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(640)
                 .inputs(AmmoniumVanadate.getItemStack(9))
                 .fluidInputs(BismuthNitrateSoluton.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(2000))
@@ -201,7 +199,7 @@ public class Dyes {
                 .fluidInputs(CopperSulfateSolution.getFluid(2000))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(2000))
                 .input(dust, ArsenicTrioxide, 5)
-                .input(dust, SodaAsh)
+                .input(dust, SodaAsh, 6)
                 .outputs(CopperArsenite.getItemStack(12))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(SodiumSulfateSolution.getFluid(2000))
@@ -278,7 +276,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // 2Pb(NO3)2 + K2Cr2O7 + H2O -> 2PbCrO4 + 2 KNO3 + 2 HNO3
-        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(500) //Will use 2 item output CR
+        CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(500)
                 .input(dust, LeadNitrate, 18)
                 .input(dust, PotassiumDichromate, 11)
                 .fluidInputs(Water.getFluid(1000))
@@ -316,7 +314,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // 4 C6H7N + 2 C6H5NO2 + HCl + 2 H2SO4 + 2 NaOH -> C36H26N5ClNa2S2O6 + 8 H2O + NH3
-        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1400)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1400)
                 .fluidInputs(NitroBenzene.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(2000))
                 .fluidInputs(HydrochloricAcid.getFluid(500))
@@ -339,7 +337,7 @@ public class Dyes {
 
         //C10H8 + HNO3 + H2SO4 + 6 H -> C10H9N + H2SO4 + 3 H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(1400)
-                .fluidInputs(NitrationMixture.getFluid(1000))
+                .fluidInputs(NitrationMixture.getFluid(2000))
                 .fluidInputs(Naphthalene.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(6000))
                 .fluidOutputs(Naphthylamine.getFluid(1000))
@@ -418,6 +416,7 @@ public class Dyes {
                 .fluidInputs(Quinizarin.getFluid(1000))
                 .fluidInputs(Toluidine.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(2000))
+                .input(dust, SodiumHydroxide, 6)
                 .notConsumable(BoricAcid.getFluid(1))
                 .notConsumable(TinChloride.getItemStack())
                 .outputs(AlizarineCyanineGreen.getItemStack(31))
@@ -503,12 +502,12 @@ public class Dyes {
                 .outputs(Mauveine.getItemStack(34))
                 .buildAndRegister();
 
-        //C6H6 + 9 O -> 2 CO2 + C4H2O3 + 2 H2O (H2O voided)
+        //C4H10 + 7 O -> C4H2O3 + 4 H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(520).EUt(1340)
-                .notConsumable(MolybdenumTrioxide.getItemStack())
-                .fluidInputs(Benzene.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(9000))
-                .fluidOutputs(CarbonDioxide.getFluid(2000))
+                .notConsumable(BismuthVanadate.getItemStack())
+                .fluidInputs(Butane.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(7000))
+                .fluidOutputs(Water.getFluid(4000))
                 .fluidOutputs(MaleicAnhydride.getFluid(1000))
                 .buildAndRegister();
 
@@ -586,7 +585,7 @@ public class Dyes {
                 .buildAndRegister();
 
         //C20H12O5 + 4 I + 2 NaOH -> C20H6I4Na2O5 + 4 H + 2 H2O
-        CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(750)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(750)
                 .input(dust, Iodine, 4)
                 .input(dust, SodiumHydroxide, 6)
                 .inputs(Fluorescein.getItemStack(37))
