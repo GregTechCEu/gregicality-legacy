@@ -181,7 +181,8 @@ public class HelperMethods {
     }
 
     private static Object[] prepareRecipe(int tier, Object... recipe) {
-        for (int i = 3; i < recipe.length; i++) {
+        //Don't assume that the recipes are all 3x3. Some recipes are 1x3 shaped, which will fail if the 3x3 assumption is made
+        for (int i = 0; i < recipe.length; i++) {
             if (recipe[i] instanceof GACraftingComponents) {
                 recipe[i] = ((GACraftingComponents) recipe[i]).getIngredient(tier);
             }
