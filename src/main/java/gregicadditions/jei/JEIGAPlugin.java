@@ -19,9 +19,11 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IIngredientRegistry;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.*;
 import net.minecraft.util.ResourceLocation;
 
@@ -96,6 +98,14 @@ public class JEIGAPlugin implements IModPlugin {
                 }
             }
         }
+
+        //Multiblock info page registration
+        GAMultiblockInfoCategory.multiblockRecipes.values().forEach(v -> {
+            MultiblockInfoPage infoPage = v.getInfoPage();
+            registry.addIngredientInfo(infoPage.getController().getStackForm(),
+                    VanillaTypes.ITEM,
+                    infoPage.getDescription());
+        });
 
 
     }
