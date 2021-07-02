@@ -527,16 +527,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 covers.add(getCoverFromPosSide(coverPos));
             });
             WidgetPluginConfig pluginWidget = new WidgetPluginConfig();
-            return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
-                    .widget(pluginWidget)
-                    .widget(new WidgetMonitorScreen(330, 0, 150, this))
-                    .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
-                    .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
-                        if (((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid())
-                            MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
-                    }))
-
-                    .widget(new LabelWidget(15, 55, "monitor.gui.title.scale", 0xFFFFFFFF))
+            WidgetPluginConfig mainGroup = new WidgetPluginConfig().setSize(width, height);
+            mainGroup.widget(new LabelWidget(15, 55, "monitor.gui.title.scale", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(this.slot, ((float)Math.round((scale - (data.isShiftClick? 1.0f:0.1f))*10)/10), this.frameColor)))
                     .widget(new ClickButtonWidget(130, 50, 20, 20, "+1", (data) -> setConfig(this.slot, ((float)Math.round((scale + (data.isShiftClick? 1.0f:0.1f))*10)/10), this.frameColor)))
                     .widget(new ImageWidget(70, 50, 60, 20, GuiTextures.DISPLAY))
@@ -568,23 +560,17 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                                 }
                             }))
                     .widget(new ClickButtonWidget(80, 130, 40, 20, "monitor.gui.title.config", (data)->{
-                        if (plugin != null) {
-                            if (pluginWidget.getContainedWidgets(true).size() > 0) {
-                                pluginWidget.removePluginWidget();
-                            } else {
-                                plugin.customUI(pluginWidget, this.getHolder(), entityPlayer);
-                            }
+                        if (plugin != null && mainGroup.isVisible()) {
+                            plugin.customUI(pluginWidget, this.getHolder(), entityPlayer);
+                            mainGroup.setVisible(false);
                         }
                     }) {
                         @Override
                         protected void triggerButton() {
                             super.triggerButton();
-                            if (plugin != null) {
-                                if (pluginWidget.getContainedWidgets(true).size() > 0) {
-                                    pluginWidget.removePluginWidget();
-                                } else {
-                                    plugin.customUI(pluginWidget, getHolder(), entityPlayer);
-                                }
+                            if (plugin != null && mainGroup.isVisible()) {
+                                plugin.customUI(pluginWidget, getHolder(), entityPlayer);
+                                mainGroup.setVisible(false);
                             }
                         }
                     })
@@ -602,8 +588,42 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(buttons[2])
                     .widget(buttons[3])
                     .widget(buttons[4])
+                    .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170);
 
-                    .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170)
+            return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
+                    .widget(pluginWidget)
+                    .widget(mainGroup)
+                    .widget(new WidgetMonitorScreen(330, 0, 150, this))
+                    .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
+                    .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
+                        if (mainGroup.isVisible() && ((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid()) {
+                            MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
+                        }
+                        else if (!mainGroup.isVisible()) {
+                            pluginWidget.removePluginWidget();
+                            mainGroup.setVisible(true);
+                            if(plugin != null) {
+                                plugin.markAsDirty();
+                            }
+                        }
+                    }) {
+                        @Override
+                        protected void triggerButton() {
+                            super.triggerButton();
+                            if (!mainGroup.isVisible()) {
+                                pluginWidget.removePluginWidget();
+                                mainGroup.setVisible(true);
+                                if(plugin != null) {
+                                    plugin.markAsDirty();
+                                }
+                            }
+                        }
+                    })
+                    .bindCloseListener(()->{
+                        if(plugin != null) {
+                            plugin.markAsDirty();
+                        }
+                    })
                     .build(this.getHolder(), entityPlayer);
         }
         return null;

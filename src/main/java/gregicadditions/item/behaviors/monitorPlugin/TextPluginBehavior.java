@@ -29,7 +29,7 @@ public class TextPluginBehavior extends MonitorPluginBaseBehavior {
                 packetBuffer.writeInt(colors[i]);
             }
         });
-        markDirty();
+        markAsDirty();
     }
 
     @Override

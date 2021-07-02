@@ -174,7 +174,7 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
             buffer.writeFloat(spin);
             buffer.writeBoolean(connect);
         });
-        markDirty();
+        markAsDirty();
     }
 
     @Override
