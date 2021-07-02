@@ -61,7 +61,7 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
         writePluginData(1, buffer -> {
             buffer.writeVarInt(this.partIndex);
         });
-        markDirty();
+        markAsDirty();
     }
 
     public MetaTileEntity getRealMTE() {
