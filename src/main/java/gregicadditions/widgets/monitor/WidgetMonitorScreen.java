@@ -30,7 +30,7 @@ public class WidgetMonitorScreen extends Widget {
             GlStateManager.scale(1 / screen.scale,1 / screen.scale,1 / screen.scale);
             GlStateManager.translate(-(screen.scale - 1) * 0.5, -(screen.scale - 1) * 0.5, 0);
 
-            screen.renderScreen(0);
+            screen.renderScreen(0,null);
             GlStateManager.popMatrix();
         }
 
