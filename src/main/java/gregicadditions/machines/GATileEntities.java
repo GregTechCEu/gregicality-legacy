@@ -244,6 +244,8 @@ public class GATileEntities {
 
     public static TileEntitySteamMiner STEAM_MINER;
 
+    public static MetaTileEntityCVDUnit CVD_UNIT;
+
     public static void init() {
 
         MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(1999, new MetaTileEntityMonitorScreen(location("monitor_screen")));
@@ -1150,6 +1152,7 @@ public class GATileEntities {
         }
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
         STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
+        CVD_UNIT = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityCVDUnit(location("cvd_unit")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {
