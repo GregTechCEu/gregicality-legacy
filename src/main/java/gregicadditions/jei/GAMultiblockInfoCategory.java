@@ -105,6 +105,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("steam_oven", new MultiblockInfoRecipeWrapper(new SteamOvenInfo()))
                     .put("cosmic_ray_detector", new MultiblockInfoRecipeWrapper(new CosmicRayDetectorInfo()))
                     .put("electric_implosion", new MultiblockInfoRecipeWrapper(new ElectricImplosionInfo()))
+                    .put("cvd_unit", new MultiblockInfoRecipeWrapper(new CVDUnitInfo()))
                     .build();
         }
 
