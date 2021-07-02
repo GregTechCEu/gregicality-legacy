@@ -100,7 +100,7 @@ public class JEIGAPlugin implements IModPlugin {
         }
 
         //Multiblock info page registration
-        GAMultiblockInfoCategory.multiblockRecipes.values().forEach(v -> {
+        GAMultiblockInfoCategory.getRecipes().values().forEach(v -> {
             MultiblockInfoPage infoPage = v.getInfoPage();
             registry.addIngredientInfo(infoPage.getController().getStackForm(),
                     VanillaTypes.ITEM,
