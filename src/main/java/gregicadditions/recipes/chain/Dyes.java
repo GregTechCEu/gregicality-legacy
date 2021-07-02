@@ -26,76 +26,72 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class Dyes {
     public static void init(){
 
-        /*
-         * Unknown compounds key:
-         * - ApatiteAcidicLeach: Ca4P3O102Cl TREAT AS 1
-         * - FluoroapatiteAcidicLeach: Ca4P3O10F TREAT AS 1
-         *
-         */
-
-        // Ca5(PO4)3Cl + H2SO4 -> CaS(H2O)2O4 + Ca4P3O102Cl
+        // Ca5(PO4)3Cl + H2SO4 -> 5 CaS(H2O)2O4 + [3 H3PO4 + HCl + ? + ?]
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, Apatite, 9)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
-                .outputs(ApatiteAcidicLeach.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(5000))
+                .output(dust, Gypsum, 40)
+                .fluidOutputs(ApatiteAcidicLeach.getFluid(4000))
                 .buildAndRegister();
 
-        // Na2CO3 + Ca6(PO4)3ClO + SiO2 + H2O -> ? + ??
+        // 3 [3 H3PO4 + HCl] + 3 HCl + SiO2 + Na2CO3 -> 9 H3PO4 + [Na2SiCl6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
-                .inputs(ApatiteAcidicLeach.getItemStack())
-                .notConsumable(dust, Bentonite)
+                .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
-                .outputs(ApatiteSolidResidue.getItemStack())
+                .outputs(ApatiteSolidResidue.getItemStack(11))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        // 5HCl + ?? -> SiCl4 + NaCl + 0.2FeCl3
+        // [Na2SiCl6 + 0.25 Fe2O3] + 1.5 HCl -> SiCl4 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
-                .fluidInputs(HydrochloricAcid.getFluid(5000))
-                .inputs(ApatiteSolidResidue.getItemStack())
+                .fluidInputs(HydrochloricAcid.getFluid(1500))
+                .inputs(ApatiteSolidResidue.getItemStack(11))
                 .outputs(SiliconChloride.getItemStack(5))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
-                .fluidOutputs(IronChloride.getFluid(200))
+                .output(dust, Salt, 2)
+                .fluidOutputs(IronChloride.getFluid(500))
+                .fluidOutputs(Water.getFluid(750))
                 .buildAndRegister();
 
-        // Ca5(PO4)3F + H2SO4 -> CaS(H2O)2O4 + Ca4P3O10F
+        // Ca5(PO4)3Cl + H2SO4 -> 5 CaS(H2O)2O4 + [3 H3PO4 + HCl + ? + ?]
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, FluoroApatite, 9)
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Gypsum, 8))
-                .outputs(FluoroapatiteAcidicLeach.getItemStack())
+                .fluidInputs(SulfuricAcid.getFluid(5000))
+                .output(dust, Gypsum, 40)
+                .fluidOutputs(FluoroapatiteAcidicLeach.getFluid(4000))
                 .buildAndRegister();
 
-        // Na2CO3 + Ca4P3O10F + SiO2 + H2O ->
+        // 3 [3 H3PO4 + HF] + 3 HF + SiO2 + Na2CO3 -> 9 H3PO4? + [Na2SiF6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
         MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
-                .inputs(FluoroapatiteAcidicLeach.getItemStack())
-                .notConsumable(dust, Bentonite)
+                .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
-                .outputs(FluoroapatiteSolidResidue.getItemStack())
+                .outputs(ApatiteSolidResidue.getItemStack(11))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        // 2HCl + ?? -> H2SiF6 + NaCl + 0.2FeCl3
+        // [Na2SiCl6 + 0.25 Fe2O3] + 1.5 HCl -> SiCl4 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
-                .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .inputs(FluoroapatiteSolidResidue.getItemStack())
-                .fluidOutputs(FluorosilicicAcid.getFluid(1000))
-                .outputs(OreDictUnifier.get(dust, Salt, 2))
-                .fluidOutputs(IronChloride.getFluid(200))
+                .fluidInputs(HydrochloricAcid.getFluid(1500))
+                .inputs(ApatiteSolidResidue.getItemStack(11))
+                .outputs(SiliconChloride.getItemStack(5))
+                .output(dust, Salt, 2)
+                .fluidOutputs(IronChloride.getFluid(500))
+                .fluidOutputs(Water.getFluid(750))
                 .buildAndRegister();
 
-        // ? + 4Na2S -> Na3AsO4 + CdS + 10H3PO4
+        // 15H3PO4? + 2 Na2S + 2 NaOH -> 2 Na3AsO4 + 2 CdS + 15H3PO4
         CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
-                .fluidInputs(PhosphorousArsenicSolution.getFluid(10000))
-                .input(dust, SodiumSulfide,4)
+                .fluidInputs(PhosphorousArsenicSolution.getFluid(12000))
+                .input(dust, SodiumSulfide,6)
+                .input(dust, SodiumHydroxide, 6)
                 .outputs(SodiumArsenate.getItemStack(16))
-                .outputs(CadmiumSulfide.getItemStack(2))
-                .fluidOutputs(PhosphoricAcid.getFluid(10000))
+                .outputs(CadmiumSulfide.getItemStack(4))
+                .fluidOutputs(PhosphoricAcid.getFluid(12000))
                 .buildAndRegister();
 
         // 2Na3AsO4 + 5 H2SO4 + 4 NaI -> As2O3 + 5 Na2SO4(H2O) + 4 I

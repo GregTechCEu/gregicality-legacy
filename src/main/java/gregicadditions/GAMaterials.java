@@ -956,6 +956,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial SemisolidHydrogen = new SimpleFluidMaterial("semisolidhydrogen", 0x044c4b, "H");
     public static final SimpleFluidMaterial MicrocrystallizingHydrogen = new SimpleFluidMaterial("microcrystallizinghydrogen", 0x155d5c, "H");
     public static final SimpleFluidMaterial Toluidine = new SimpleFluidMaterial("toluidine",(Toluene.materialRGB+ Aniline.rgb)/2,"C7H9N");
+    public static final SimpleFluidMaterial ApatiteAcidicLeach = new SimpleFluidMaterial("apatite_acidic_leach", PhosphoricAcid.materialRGB, "H10P3O12Cl??");
+    public static final SimpleFluidMaterial FluoroapatiteAcidicLeach = new SimpleFluidMaterial("fluoroapatite_acidic_leach", PhosphoricAcid.materialRGB,"H10P3O12F??");
 
 
 
@@ -1222,8 +1224,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PotassiumPermanganate = new SimpleDustMaterial("potassium_permanganate",PotassiumManganate.rgb-15,(short) 270,MaterialIconSet.ROUGH, "KMnO4");
     public static final SimpleDustMaterial Urea = new SimpleDustMaterial("urea",0x30cf20,(short) 271,MaterialIconSet.ROUGH, "CH4N2O");
     public static final SimpleDustMaterial CesiumBromide = new SimpleDustMaterial("cesium_bromide", CaesiumHydroxide.rgb, (short) 272,MaterialIconSet.SHINY, "CsBr");
-    public static final SimpleDustMaterial ApatiteAcidicLeach = new SimpleDustMaterial("apatite_acidic_leach", PhosphoricAcid.materialRGB, (short) 273,MaterialIconSet.DULL, "Ca4P3O102Cl");
-    public static final SimpleDustMaterial FluoroapatiteAcidicLeach = new SimpleDustMaterial("fluoroapatite_acidic_leach", PhosphoricAcid.materialRGB, (short) 274,MaterialIconSet.ROUGH, "Ca4P3O10F");
+    //FREE IDs 273-274
     public static final SimpleDustMaterial FluoroapatiteSolidResidue = new SimpleDustMaterial("fluoroapatite_solid_residue",0x3cb290,(short) 275,MaterialIconSet.SHINY, "Ca6PO4SiO3F");
     public static final SimpleDustMaterial ApatiteSolidResidue = new SimpleDustMaterial("apatite_solid_residue",0x3cb290,(short) 319,MaterialIconSet.FINE, "Ca6PO4SiO3");
     public static final SimpleDustMaterial AmmoniumBifluoride = new SimpleDustMaterial("ammonium_bifluoride",0x20cfcf,(short) 276,MaterialIconSet.ROUGH, "NH4HF2");
