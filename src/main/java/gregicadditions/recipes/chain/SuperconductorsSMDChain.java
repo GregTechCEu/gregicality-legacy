@@ -1053,7 +1053,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // Hs + 4Cl -> HsCl4
-        BLAST_RECIPES.recipeBuilder().duration(930).EUt(120).blastFurnaceTemp(25000)
+        BLAST_RECIPES.recipeBuilder().duration(930).EUt(120).blastFurnaceTemp(12000)
                 .input(dust, MetastableHassium)
                 .fluidInputs(Chlorine.getFluid(4000))
                 .outputs(HassiumChloride.getItemStack(5))
