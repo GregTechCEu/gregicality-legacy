@@ -45,6 +45,6 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{};
+		return new String[]{"Temporary Placeholder"};
 	}
 }
