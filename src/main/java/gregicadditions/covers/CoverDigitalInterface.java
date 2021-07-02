@@ -22,6 +22,7 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
 import gregtech.api.metatileentity.IRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.pipenet.tile.PipeCoverableImplementation;
@@ -40,7 +41,10 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.IFluidTank;
@@ -789,6 +793,33 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                 list.addAll(output);
             }
             capability = new EnergyContainerList(list);
+        } else if (capability == null) {
+            IEnergyStorage fe = te.getCapability(CapabilityEnergy.ENERGY, getCoveredFacing());
+            if(fe != null) {
+                return new IEnergyContainer() {
+                    public long acceptEnergyFromNetwork(EnumFacing enumFacing, long l, long l1) {
+                        return 0;
+                    }
+                    public boolean inputsEnergy(EnumFacing enumFacing) {
+                        return false;
+                    }
+                    public long changeEnergy(long l) {
+                        return 0;
+                    }
+                    public long getEnergyStored() {
+                        return fe.getEnergyStored() / 4;
+                    }
+                    public long getEnergyCapacity() {
+                        return fe.getMaxEnergyStored() / 4;
+                    }
+                    public long getInputAmperage() {
+                        return 0;
+                    }
+                    public long getInputVoltage() {
+                        return 0;
+                    }
+                };
+            }
         }
         return capability;
     }
@@ -947,8 +978,14 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                 RenderHelper.renderText(0, -5.5F / 16, 0, 1.0f / 120, 0XFFFFFFFF, "Slot: " + slot, true);
                 TileEntity te = getCoveredTE();
                 if (te != null) {
-                    ItemStack itemStack = te.getBlockType().getItem(te.getWorld(), te.getPos(), te.getWorld().getBlockState(te.getPos()));
-                    String  name = itemStack.getDisplayName();
+                    ItemStack itemStack;
+                    if (te instanceof MetaTileEntityHolder) {
+                        itemStack = ((MetaTileEntityHolder) te).getMetaTileEntity().getStackForm();
+                    } else {
+                        BlockPos pos = te.getPos();
+                        itemStack = te.getBlockType().getPickBlock(te.getWorld().getBlockState(pos), new RayTraceResult(new Vec3d(0.5, 0.5, 0.5), getCoveredFacing(), pos), te.getWorld(), pos, Minecraft.getMinecraft().player);
+                    }
+                    String name = itemStack.getDisplayName();
                     RenderHelper.renderRect(-7f / 16, -4f / 16, 14f / 16, 1f / 16, 0.002f, 0XFF000000);
                     RenderHelper.renderText(0, -3.5F / 16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
                     RenderHelper.renderItemOverLay(-8f / 16, -5f / 16, 0.002f, 1f / 32, itemStack);
