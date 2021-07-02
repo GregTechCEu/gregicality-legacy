@@ -8,6 +8,7 @@ import gregicadditions.recipes.impl.*;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.impl.QubitConsumerRecipeBuilder;
 import gregicadditions.recipes.impl.QubitProducerRecipeBuilder;
+import gregicadditions.recipes.multiinput.MultiInputRecipeBuilder;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -232,7 +233,9 @@ public class GARecipeMaps {
             1, 2, 1, 2, 0, 0, 0, 0, new SimpleRecipeBuilder()
                 .duration(1).EUt(1500000)); // UHV-tier, 1tick processing time
 
-
+    @ZenProperty
+    public static final RecipeMap<MultiInputRecipeBuilder> CVD_RECIPES = new RecipeMap<>("cvd_unit",
+            1, 2, 1, 2, 2, 2, 0, 0, new MultiInputRecipeBuilder());
 
     // Fuel Recipe Maps ================================================================================================
 
