@@ -149,7 +149,9 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
                 } else {
                     CoverBehavior cover = ((TileEntityPipeBase<?,?>) tileEntityCable).getCoverableImplementation().getCoverAtSide(facing);
                     if (cover instanceof CoverDigitalInterface && ((CoverDigitalInterface) cover).isProxy()) {
-                        checkCovers.add(new Tuple<>(tileEntityCable.getPos(), cover.attachedSide));
+                        if(((CoverDigitalInterface) cover).getCoveredTE() != null) {
+                            checkCovers.add(new Tuple<>(tileEntityCable.getPos(), cover.attachedSide));
+                        }
                     }
                 }
             }
