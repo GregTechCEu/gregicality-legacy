@@ -235,7 +235,7 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<MultiInputRecipeBuilder> CVD_RECIPES = new RecipeMap<>("cvd_unit",
-            1, 2, 1, 2, 2, 2, 0, 0, new MultiInputRecipeBuilder());
+            1, 2, 1, 2, 0, 1, 0, 0, new MultiInputRecipeBuilder());
 
     // Fuel Recipe Maps ================================================================================================
 
