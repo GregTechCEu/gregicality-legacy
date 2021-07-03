@@ -65,7 +65,7 @@ public class ElectricImplosionHandler {
                                             .map(Ingredient::getMatchingStacks)
                                             .filter(stack -> stack.length != 0)
                                             .map(array -> array[0])
-                                            .peek(is -> is.setCount(stackCount.get()))
+                                            .peek(is -> is.copy().setCount(stackCount.get()))
                                             .collect(Collectors.toSet()));
 
             // Make sure inputs were properly acquired, and remove explosive
