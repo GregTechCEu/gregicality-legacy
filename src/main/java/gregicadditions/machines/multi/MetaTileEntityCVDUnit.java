@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -18,12 +19,19 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import static gregtech.api.unification.material.Materials.Aluminium;
@@ -47,13 +55,16 @@ public class MetaTileEntityCVDUnit extends GARecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("CCC", "CCC", "CCC")
-                .aisle("CCC", "HPH", "CCC")
-                .aisle("CCC", "CSC", "CCC")
+                .aisle("CCCCC", "CCCCC", "CCCCC", "CC#CC")
+                .aisle("CCCCC", "GHPHG", "GIIIG", "C###C")
+                .aisle("CCCCC", "CCSCC", "CCCCC", "CC#CC")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('H', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .where('P', pumpPredicate())
+                .where('I', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
+                .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS)))
+                .where('#', isAirPredicate())
                 .build();
     }
 
@@ -117,6 +128,15 @@ public class MetaTileEntityCVDUnit extends GARecipeMapMultiblockController {
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         maxVoltage = context.getOrDefault("maxVoltage", 0);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.multiblock.cvd_unit.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cvd_unit.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cvd_unit.tooltip.3"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cvd_unit.tooltip.4"));
     }
 
     @Override

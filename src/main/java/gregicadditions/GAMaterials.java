@@ -778,6 +778,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Choline = new SimpleFluidMaterial("choline", 0x63e45f, "C5H14NO");
     public static final SimpleFluidMaterial ATL = new SimpleFluidMaterial("atl", 0x709c4a, "ATL");
     public static final SimpleFluidMaterial HotNitrogen = new SimpleFluidMaterial("hot_nitrogen", Nitrogen.materialRGB, "N");
+    public static final SimpleFluidMaterial VeryHotNitrogen = new SimpleFluidMaterial("very_hot_nitrogen", Nitrogen.materialRGB, "N");
     public static final SimpleFluidMaterial ViscoelasticPolyurethane = new SimpleFluidMaterial("viscoelastic_polyurethane", 0xeffcef, "C17H16N2O4?");
     public static final SimpleFluidMaterial ViscoelasticPolyurethaneFoam = new SimpleFluidMaterial("viscoelastic_polyurethane_foam", 0xeffcef, "C17H16N2O4?");
     public static final SimpleFluidMaterial CalciumCarbonateSolution = new SimpleFluidMaterial("calcium_carbonate_solution", Calcite.materialRGB, "(H2O)CaCO3");
@@ -1567,6 +1568,8 @@ public class GAMaterials implements IMaterialHandler {
 
         // Smelt-Into
         Sulfur.addFlag(SMELT_INTO_FLUID);
+        Boron.addFlag(SMELT_INTO_FLUID);
+        Phosphorus.addFlag(SMELT_INTO_FLUID);
 
         // Core Metal
         Tritanium.addFlag(CORE_METAL);

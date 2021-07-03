@@ -5,6 +5,7 @@ import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.type.MarkerMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
@@ -27,6 +28,7 @@ import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
+import static gregtech.api.unification.material.MarkerMaterials.Color;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -1170,5 +1172,21 @@ public class RecipeOverride {
             // Gunpowder from Charcoal
             removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Saltpeter, 2), OreDictUnifier.get(prefix, Sulfur), OreDictUnifier.get(prefix, Charcoal));
         }
+
+        ///////////////////////////////////////////////////
+        //                  Wafers                       //
+        ///////////////////////////////////////////////////
+
+        // ILC & CPU Wafers
+        for (MarkerMaterial lensColor : Arrays.asList(Color.Red, Color.White)) {
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), SILICON_WAFER.getStackForm());
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), GLOWSTONE_WAFER.getStackForm());
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), NAQUADAH_WAFER.getStackForm());
+        }
+
+        // RAM Wafer (because the green sapphire lens is a special snowflake
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), SILICON_WAFER.getStackForm());
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), GLOWSTONE_WAFER.getStackForm());
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), NAQUADAH_WAFER.getStackForm());
     }
 }

@@ -514,6 +514,18 @@ public class GAMetaItem extends MaterialMetaItem {
         EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
         EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
 
+        // ids 609-623 reserved for lithography masks
+        LITHOGRAPHY_MASK_ILC = addItem(609, "lithography.mask.ilc");
+        LITHOGRAPHY_MASK_CPU = addItem(610, "lithography.mask.cpu");
+        LITHOGRAPHY_MASK_RAM = addItem(611, "lithography.mask.ram");
+
+        ILC_WAFER_ETCHED = addItem(624, "ilc.wafer.etched");
+        ILC_WAFER_DOPED = addItem(625, "ilc.wafer.doped");
+        CPU_WAFER_ETCHED = addItem(626, "cpu.wafer.etched");
+        CPU_WAFER_DOPED = addItem(627, "cpu.wafer.doped");
+        RAM_WAFER_ETCHED = addItem(628, "ram.wafer.etched");
+        RAM_WAFER_DOPED = addItem(629, "ram.wafer.doped");
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
