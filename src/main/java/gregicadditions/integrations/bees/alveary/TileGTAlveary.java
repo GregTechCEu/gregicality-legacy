@@ -29,8 +29,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +55,14 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
             }
         };
         itemStackHandler = new ItemStackHandler(4) {
-            @NotNull
+            @Nonnull
             @Override
-            public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+            public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
                 return isItemValid(slot, stack)? super.insertItem(slot, stack, simulate) : stack;
             }
 
             @Override
-            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.getItem() instanceof MetaItem;
             }
 

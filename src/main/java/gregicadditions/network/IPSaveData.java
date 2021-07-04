@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Map;
 
@@ -37,7 +37,7 @@ public class IPSaveData extends WorldSavedData {
     }
 
     @Override
-    public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound nbt) {
+    public @Nonnull NBTTagCompound writeToNBT(@Nonnull NBTTagCompound nbt) {
         NBTTagList oilList = new NBTTagList();
         for (Map.Entry<DimensionChunkCoords, PumpjackHandler.OilWorldInfo> e : PumpjackHandler.oilCache.entrySet()) {
             if (e.getKey() != null && e.getValue() != null) {

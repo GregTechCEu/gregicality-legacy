@@ -39,7 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import static gregtech.common.items.MetaItems.TOOL_DATA_STICK;
 
@@ -128,7 +128,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
     protected IItemHandlerModifiable createImportItemHandler() {
         return new ItemStackHandler(1) {
             @Override
-            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.isItemEqualIgnoreDurability(TOOL_DATA_STICK.getStackForm(1));
             }
         };
@@ -139,7 +139,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
     protected IItemHandlerModifiable createExportItemHandler() {
         return new ItemStackHandler(1) {
             @Override
-            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return false;
             }
         };

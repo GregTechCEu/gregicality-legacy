@@ -18,7 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -43,7 +43,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     }
 
     // server
-    public void writePluginData(int id, @NotNull Consumer<PacketBuffer> buf) {
+    public void writePluginData(int id, @Nonnull Consumer<PacketBuffer> buf) {
         if (screen != null) {
             screen.writeCustomData(2, packetBuffer->{
                 packetBuffer.writeInt(id);

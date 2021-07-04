@@ -28,7 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import org.apache.commons.lang3.text.WordUtils;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.annotation.Nullable;
 import java.awt.*;
@@ -761,7 +761,7 @@ public enum GTBees implements IBeeDefinition {
 	}
 
 	@Nullable
-	public static Fluid getFluidMaterial(@NotNull String uid){
+	public static Fluid getFluidMaterial(@Nonnull String uid){
 		return Fluids.fluidMap.get(uid);
 	}
 

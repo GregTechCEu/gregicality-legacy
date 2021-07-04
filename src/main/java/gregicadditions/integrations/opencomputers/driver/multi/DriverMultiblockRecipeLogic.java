@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,7 +90,7 @@ public class DriverMultiblockRecipeLogic extends DriverSidedTileEntity {
             return new Object[] {tileEntity.getEnergyContainer().getInputAmperage()};
         }
 
-        @NotNull
+        @Nonnull
         private Object[] getInventory(IItemHandlerModifiable handler) {
             List<Map<String, Object>> result = new ArrayList<>();
             for (int slot = 0; slot < handler.getSlots(); slot++) {
@@ -116,7 +116,7 @@ public class DriverMultiblockRecipeLogic extends DriverSidedTileEntity {
             return getInventory(controller.getOutputInventory());
         }
 
-        @NotNull
+        @Nonnull
         private Object[] getTank(IMultipleTankHandler handler) {
             List<Map<String, Object>> result = new ArrayList<>();
             handler.getFluidTanks().forEach(tank->{
