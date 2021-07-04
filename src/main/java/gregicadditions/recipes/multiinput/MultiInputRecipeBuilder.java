@@ -11,6 +11,7 @@ import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.ValidationResult;
+import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
@@ -81,6 +82,33 @@ public class MultiInputRecipeBuilder extends RecipeBuilder<MultiInputRecipeBuild
         this.multiInputItems.add(item);
         return this;
     }
+
+    public MultiInputRecipeBuilder fluidInputs(MultiInputFluid ... fluids) {
+        for (MultiInputFluid fluid : fluids) {
+            if (fluid.getBaseAmount() <= 0) {
+                GTLog.logger.error("Fluid input amount for MultiInputs must be greater than zero", new IllegalArgumentException());
+                recipeStatus = EnumValidationResult.INVALID;
+            }
+            this.multiInputFluids.add(fluid);
+        }
+
+        return this;
+    }
+
+    public MultiInputRecipeBuilder fluidInputs(FluidStack recipeInputFluid, MultiInputFluid ... recipeMultiInputFluids) {
+        for (MultiInputFluid fluid : recipeMultiInputFluids) {
+            if (fluid.getBaseAmount() <= 0) {
+                GTLog.logger.error("Fluid input amount for MultiInputs must be greater than zero", new IllegalArgumentException());
+                recipeStatus = EnumValidationResult.INVALID;
+            }
+            this.multiInputFluids.add(fluid);
+        }
+
+        this.fluidInputs.add(recipeInputFluid);
+
+        return this;
+    }
+
 
     /**
      * The tier of this recipe, used to calculate how much of a material is consumed on craft.<br>

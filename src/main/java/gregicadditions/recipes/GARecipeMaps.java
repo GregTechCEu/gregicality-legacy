@@ -6,6 +6,7 @@ import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.map.LargeRecipeBuilder;
 import gregicadditions.recipes.map.NuclearReactorBuilder;
 import gregicadditions.recipes.map.RecipeMapAssemblyLine;
+import gregicadditions.recipes.multiinput.MultiInputRecipeBuilder;
 import gregicadditions.recipes.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.qubit.QubitConsumerRecipeBuilder;
 import gregicadditions.recipes.qubit.QubitProducerRecipeBuilder;
@@ -89,6 +90,8 @@ public class GARecipeMaps {
     public static final RecipeMap<AdvFusionRecipeBuilder> ADV_FUSION_RECIPES;
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DISASSEMBLER_RECIPES;
+    @ZenProperty
+    public static final RecipeMap<MultiInputRecipeBuilder> CVD_RECIPES;
 
     static {
         CLUSTER_MILL_RECIPES = new RecipeMap<>("cluster_mill", 1, 1, 1, 1, 0, 0, 0, 0, new SimpleRecipeBuilder()).setSlotOverlay(false, false, GuiTextures.BENDER_OVERLAY).setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
@@ -163,6 +166,8 @@ public class GARecipeMaps {
                 .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)
                 .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
                 .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
+
+        CVD_RECIPES = new RecipeMap<>("cvd_unit", 1, 2, 1, 2, 0, 1, 0, 0, new MultiInputRecipeBuilder());
 
     }
 }

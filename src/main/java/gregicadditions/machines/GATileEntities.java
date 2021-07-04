@@ -244,6 +244,8 @@ public class GATileEntities {
 
     public static List<GASimpleMachineMetaTileEntity> DISASSEMBLER = new ArrayList<>();
 
+    public static MetaTileEntityCVDUnit CVD_UNIT;
+
     public static void init() {
 
         MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(1999, new MetaTileEntityMonitorScreen(location("monitor_screen")));
@@ -1175,6 +1177,8 @@ public class GATileEntities {
                 }));
             }
         }
+
+        CVD_UNIT = GregTechAPI.registerMetaTileEntity(4213, new MetaTileEntityCVDUnit(location("cvd_unit")));
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> MTE<T> create(int id, T sampleMetaTileEntity) {

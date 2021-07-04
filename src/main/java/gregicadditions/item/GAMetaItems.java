@@ -332,6 +332,16 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_LARGE_NEUTRONIUM;
 
+    public static MetaItem<?>.MetaValueItem LITHOGRAPHY_MASK_ILC;
+    public static MetaItem<?>.MetaValueItem LITHOGRAPHY_MASK_CPU;
+    public static MetaItem<?>.MetaValueItem LITHOGRAPHY_MASK_RAM;
+
+    public static MetaItem<?>.MetaValueItem ILC_WAFER_ETCHED;
+    public static MetaItem<?>.MetaValueItem ILC_WAFER_DOPED;
+    public static MetaItem<?>.MetaValueItem CPU_WAFER_ETCHED;
+    public static MetaItem<?>.MetaValueItem CPU_WAFER_DOPED;
+    public static MetaItem<?>.MetaValueItem RAM_WAFER_ETCHED;
+    public static MetaItem<?>.MetaValueItem RAM_WAFER_DOPED;
     public static MetaItem<?>.MetaValueItem HASOC;
     public static MetaItem<?>.MetaValueItem HASOC_WAFER;
     public static MetaItem<?>.MetaValueItem UHASOC;

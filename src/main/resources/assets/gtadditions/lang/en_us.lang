@@ -134,6 +134,15 @@ metaitem.neutron.reflector.name=Neutron Reflector
 metaitem.processor.neuro.name=Neuro Processing Unit
 metaitem.hot_iron_ingot.name=Hot Iron Ingot
 metaitem.plate.field.shape.name=Plate Field Shape
+metaitem.lithography.mask.ilc.name=IC Lithography Mask
+metaitem.lithography.mask.cpu.name=CPU Lithography Mask
+metaitem.lithography.mask.ram.name=RAM Lithography Mask
+metaitem.ilc.wafer.etched.name=Etched IC Wafer
+metaitem.ilc.wafer.doped.name=Doped IC Wafer
+metaitem.cpu.wafer.etched.name=Etched CPU Wafer
+metaitem.cpu.wafer.doped.name=Doped CPU Wafer
+metaitem.ram.wafer.etched.name=Etched RAM Wafer
+metaitem.ram.wafer.doped.name=Doped RAM Wafer
 metaitem.wafer.aram.name=ARAM Wafer
 metaitem.plate.aram.name=ARAM
 metaitem.uhpic.wafer.name=UHPIC Wafer
@@ -1633,6 +1642,7 @@ gtadditions.machine.hull.uxv.name=UXV Machine Hull
 gtadditions.machine.drilling_rig.name=Drilling Rig
 gtadditions.machine.solar_fluid_sampler.name=Solar Fluid Sampler
 gtadditions.machine.cosmic_ray_detector.name=Cosmic Ray Detector
+gtadditions.machine.cvd_unit.name=CVD Unit
 
 
 
@@ -1926,6 +1936,7 @@ recipemap.stellar_forge.name=Stellar Forge
 recipemap.plasma_condenser.name=Plasma Condenser
 recipemap.drilling_rig.name=Drilling Fluid
 recipemap.hyper_reactor.name=Hyper Reactor
+recipemap.cvd_unit.name=Chemical Vapor Deposition
 
 
 gtadditions.recipe.drilling_rig.fluid=%s
@@ -2650,6 +2661,10 @@ gtadditions.multiblock.central_monitor.tooltip.4=Energy consumption: %d EU/s for
 gtadditions.multiblock.monitor_screen.tooltip.1=GUI can be opened with a right-click of a screwdriver.
 gtadditions.multiblock.monitor_screen.tooltip.2=The proxy mode of Cover digital interface can delegate machines' capabilities and GUI. (Yeah, you can connect pipes directly on the screen.)
 gtadditions.multiblock.monitor_screen.tooltip.3=The screen also supports plugins.
+gtadditions.multiblock.cvd_unit.tooltip.1=Forms transistors on wafers with combinations of dopants.
+gtadditions.multiblock.cvd_unit.tooltip.2=Dopants are listed in increasing tiers. Recipes take (144 / 2 ^ dopant tier - 1) millibuckets each of N and P dopant.
+gtadditions.multiblock.cvd_unit.tooltip.3=§cP Dopants: §fB, Al, Ga, In, Tl, Nh
+gtadditions.multiblock.cvd_unit.tooltip.4=§bN Dopants: §fP, As, Sb, Bi, Mc
 
 gtadditions.multiblock.void_miner.description.1=The Void Ore Miner will produce tons of ores.
 gtadditions.multiblock.void_miner.description.2=It will consume Pyrotheum and Cryotheum alternating each second.
@@ -3697,6 +3712,7 @@ fluid.chloroethanol=Chloroethanol
 fluid.choline=Choline
 fluid.atl=ATL
 fluid.hot_nitrogen=Hot Nitrogen
+fluid.very_hot_nitrogen=Very Hot Nitrogen
 fluid.viscoelastic_polyurethane=Viscoelastic Polyurethane
 fluid.viscoelastic_polyurethane_foam=Viscoelastic Polyurethane Foam
 fluid.calcium_carbonate_solution=Calcium Carbonate Solution

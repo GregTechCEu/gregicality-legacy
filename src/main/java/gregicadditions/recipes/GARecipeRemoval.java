@@ -1,26 +1,26 @@
 package gregicadditions.recipes;
 
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.type.MarkerMaterial;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import gregtech.api.unification.material.type.MarkerMaterial;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 
-import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GAMachineRecipeRemoval.removeAllRecipes;
+import java.util.Arrays;
+
 import static gregicadditions.recipes.GAMachineRecipeRemoval.removeRecipesByInputs;
-import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.unification.material.Materials.GreenSapphire;
+import static gregtech.api.unification.material.Materials.YttriumBariumCuprate;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
+import static gregtech.api.unification.material.MarkerMaterials.Color;
 
 public class GARecipeRemoval {
     public static void init() {
@@ -97,6 +97,18 @@ public class GARecipeRemoval {
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_naquadah_alloy"));
         ModHandler.removeRecipeByName(new ResourceLocation("gregtech:wire_coil_superconductor"));
+
+        // ILC & CPU Wafers
+        for (MarkerMaterial lensColor : Arrays.asList(Color.Red, Color.White)) {
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), SILICON_WAFER.getStackForm());
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), GLOWSTONE_WAFER.getStackForm());
+            removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(craftingLens, lensColor), NAQUADAH_WAFER.getStackForm());
+        }
+
+        // RAM Wafer (because the green sapphire lens is a special snowflake)
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), SILICON_WAFER.getStackForm());
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), GLOWSTONE_WAFER.getStackForm());
+        removeRecipesByInputs(LASER_ENGRAVER_RECIPES, OreDictUnifier.get(lens, GreenSapphire), NAQUADAH_WAFER.getStackForm());
 
         ModHandler.removeRecipes(OreDictUnifier.get(dust, YttriumBariumCuprate, 6));
         ModHandler.removeRecipes(OreDictUnifier.get(dustTiny, YttriumBariumCuprate, 6));

@@ -929,6 +929,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Choline = new SimpleFluidMaterial("choline", 0x63e45f);
     public static final SimpleFluidMaterial ATL = new SimpleFluidMaterial("atl", 0x709c4a);
     public static final SimpleFluidMaterial HotNitrogen = new SimpleFluidMaterial("hot_nitrogen", Nitrogen.materialRGB);
+    public static final SimpleFluidMaterial VeryHotNitrogen = new SimpleFluidMaterial("very_hot_nitrogen", Nitrogen.materialRGB);
     public static final SimpleDustMaterial DehydratedLignite = new SimpleDustMaterial("dehydrated_lignite", 0x5c4020, (short) 196, MaterialIconSet.DULL);
     public static final SimpleDustMaterial BCEPellet = new SimpleDustMaterial("bce_pellet", 0x3c3020, (short) 197, MaterialIconSet.LIGNITE);
     public static final SimpleFluidMaterial ViscoelasticPolyurethane = new SimpleFluidMaterial("viscoelastic_polyurethane", 0xeffcef);
@@ -1450,7 +1451,10 @@ public class GAMaterials implements IMaterialHandler {
         Argon.addFlag(GENERATE_PLASMA);
         Calcium.addFlag(GENERATE_PLASMA);
         Titanium.addFlag(GENERATE_PLASMA);
+
         Sulfur.addFlag(SMELT_INTO_FLUID);
+        Boron.addFlag(SMELT_INTO_FLUID);
+        Phosphorus.addFlag(SMELT_INTO_FLUID);
 
         Tellurium.addFlag(GENERATE_ORE);
         Diatomite.addFlag(GENERATE_ORE);

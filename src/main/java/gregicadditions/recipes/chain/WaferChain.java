@@ -1,13 +1,18 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.recipes.multiinput.MultiInputLists;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.unification.material.MarkerMaterials.Color.Red;
+import static gregtech.api.unification.material.MarkerMaterials.Color.White;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
@@ -15,6 +20,32 @@ public class WaferChain {
 
     public static void init() {
 
+        // LITHOGRAPHY MASKS ===========================================================================================
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(OreDictUnifier.get(plateDense, Aluminium))
+                .notConsumable(craftingLens, Red)
+                .outputs(LITHOGRAPHY_MASK_ILC.getStackForm())
+                .duration(900)
+                .EUt(120)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(OreDictUnifier.get(plateDense, Aluminium))
+                .notConsumable(craftingLens, White)
+                .outputs(LITHOGRAPHY_MASK_CPU.getStackForm())
+                .duration(900)
+                .EUt(120)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(OreDictUnifier.get(plateDense, Aluminium))
+                .notConsumable(craftingLens, Silver)
+                .outputs(LITHOGRAPHY_MASK_RAM.getStackForm())
+                .duration(900)
+                .EUt(120)
+                .buildAndRegister();
+
+        // BOULES ===========================================================================================
         BLAST_RECIPES.recipeBuilder()
                 .input(block, Silicon, 16)
                 .input(ingot, Rutherfordium)
@@ -65,9 +96,132 @@ public class WaferChain {
                 .duration(1600)
                 .buildAndRegister();
 
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(20)).buildAndRegister();
+        // WAFERS =============================================================================================
+
+        /*
+            ILC Wafer
+        */
+
+        // Etching
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .inputs(MetaItems.SILICON_WAFER.getStackForm())
+                .notConsumable(LITHOGRAPHY_MASK_ILC)
+                .outputs(ILC_WAFER_ETCHED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        //// Doping
+        // Low-efficiency recipe
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(ILC_WAFER_ETCHED.getStackForm(), OreDictUnifier.get(dustSmall, GalliumArsenide))
+                .fluidInputs(VeryHotNitrogen.getFluid(250))
+                .outputs(ILC_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        CVD_RECIPES.recipeBuilder()
+                .inputs(ILC_WAFER_ETCHED.getStackForm())
+                .fluidInputs(VeryHotNitrogen.getFluid(250), MultiInputLists.N_DOPANT.getIngredient(144), MultiInputLists.P_DOPANT.getIngredient(144))
+                .outputs(ILC_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(480)
+                .buildAndRegister();
+
+        // Electroplating
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(ILC_WAFER_DOPED.getStackForm(), OreDictUnifier.get(dust, AnnealedCopper))
+                .fluidInputs(Chlorine.getFluid(250))
+                .outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        /*
+            CPU Wafer
+        */
+
+        CVD_RECIPES.recipeBuilder()
+                .inputs(CPU_WAFER_ETCHED.getStackForm())
+                .fluidInputs(VeryHotNitrogen.getFluid(250), MultiInputLists.N_DOPANT.getIngredient(144), MultiInputLists.P_DOPANT.getIngredient(144))
+                .outputs(CPU_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(480)
+                .buildAndRegister();
+
+        // Etching
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .inputs(MetaItems.SILICON_WAFER.getStackForm())
+                .notConsumable(LITHOGRAPHY_MASK_CPU)
+                .outputs(CPU_WAFER_ETCHED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        //// Doping
+        // Low-efficiency recipe
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(CPU_WAFER_ETCHED.getStackForm(), OreDictUnifier.get(dustSmall, GalliumArsenide))
+                .fluidInputs(VeryHotNitrogen.getFluid(250))
+                .outputs(CPU_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        // Etching
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .inputs(MetaItems.SILICON_WAFER.getStackForm())
+                .notConsumable(LITHOGRAPHY_MASK_RAM)
+                .outputs(RAM_WAFER_ETCHED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        /*
+            RAM Wafer
+        */
+
+        // Etching
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .inputs(MetaItems.SILICON_WAFER.getStackForm())
+                .notConsumable(LITHOGRAPHY_MASK_RAM)
+                .outputs(RAM_WAFER_ETCHED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        //// Doping
+        // Low-efficiency recipe
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(RAM_WAFER_ETCHED.getStackForm(), OreDictUnifier.get(dustSmall, GalliumArsenide))
+                .fluidInputs(VeryHotNitrogen.getFluid(250))
+                .outputs(RAM_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+        CVD_RECIPES.recipeBuilder()
+                .inputs(RAM_WAFER_ETCHED.getStackForm())
+                .fluidInputs(VeryHotNitrogen.getFluid(250), MultiInputLists.N_DOPANT.getIngredient(144), MultiInputLists.P_DOPANT.getIngredient(144))
+                .outputs(RAM_WAFER_DOPED.getStackForm())
+                .duration(400)
+                .EUt(480)
+                .buildAndRegister();
+
+        // Electroplating
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(RAM_WAFER_DOPED.getStackForm(), OreDictUnifier.get(dust, AnnealedCopper))
+                .fluidInputs(Chlorine.getFluid(250))
+                .outputs(MetaItems.RANDOM_ACCESS_MEMORY_WAFER.getStackForm())
+                .duration(400)
+                .EUt(120)
+                .buildAndRegister();
+
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(12)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, Red).outputs(MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(20)).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680).inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Silver).outputs(ARAM_WAFER.getStackForm(1)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720).inputs(WAFER_DUBNIUM.getStackForm()).notConsumable(OrePrefix.craftingLens, MarkerMaterials.Color.Silver).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
@@ -115,5 +269,11 @@ public class WaferChain {
         CUTTER_RECIPES.recipeBuilder().inputs(HASOC_WAFER.getStackForm()).outputs(HASOC.getStackForm(6)).EUt(48).duration(600).buildAndRegister();
         CUTTER_RECIPES.recipeBuilder().inputs(UHASOC_WAFER.getStackForm()).outputs(UHASOC.getStackForm(6)).EUt(48).duration(600).buildAndRegister();
 
+        // MISCELLANEOUS ===============================================================================================
+        FLUID_HEATER_RECIPES.recipeBuilder().duration(120).EUt(120)
+                .circuitMeta(0)
+                .fluidInputs(HotNitrogen.getFluid(1000))
+                .fluidOutputs(VeryHotNitrogen.getFluid(1000))
+                .buildAndRegister();
     }
 }
