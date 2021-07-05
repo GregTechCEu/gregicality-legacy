@@ -174,13 +174,13 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
 
                 if (usingPyrotheum && canDrainPyrotheum != null && canDrainPyrotheum.amount == (int) currentDrillingFluid) {
                     importFluidHandler.drain(pyrotheumFluid, true);
-                    temperature += currentDrillingFluid / 100;
+                    temperature += (int)(currentDrillingFluid / 100.0);
                     currentDrillingFluid = currentDrillingFluid * 1.02;
                     hasConsume = true;
                 } else if (temperature > 0 && canDrainCryotheum != null && canDrainCryotheum.amount == (int) currentDrillingFluid) {
                     importFluidHandler.drain(cryotheumFluid, true);
-                    temperature -= currentDrillingFluid / 100;
-                    currentDrillingFluid = currentDrillingFluid * 0.98;
+                    currentDrillingFluid = currentDrillingFluid / 1.02;
+                    temperature -= (int)(currentDrillingFluid / 100.0);
                 }
                 if (temperature < 0) {
                     temperature = 0;
