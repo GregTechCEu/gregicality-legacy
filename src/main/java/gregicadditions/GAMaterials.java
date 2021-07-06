@@ -955,11 +955,11 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial IridiumTrichlorideSolution = new SimpleFluidMaterial("iridiumtrichloridesolution", 0x96821a, "IrCl3");
     public static final SimpleFluidMaterial SemisolidHydrogen = new SimpleFluidMaterial("semisolidhydrogen", 0x044c4b, "H");
     public static final SimpleFluidMaterial MicrocrystallizingHydrogen = new SimpleFluidMaterial("microcrystallizinghydrogen", 0x155d5c, "H");
-    public static final SimpleFluidMaterial NitrousAcid = new SimpleFluidMaterial("nitrous_acid", 0x1e73b0);
-    public static final SimpleFluidMaterial HydroxylamineHydrochloride = new SimpleFluidMaterial("hydroxylamine_hydrochloride", ((Barium.materialRGB+Chlorine.materialRGB)/2 + 0xF0EAD6)/2);
-    public static final SimpleFluidMaterial SelenousAcid = new SimpleFluidMaterial("selenous_acid", (0xFFFF66 + Water.materialRGB)/2);
+    public static final SimpleFluidMaterial NitrousAcid = new SimpleFluidMaterial("nitrous_acid", 0x1e73b0, "HNO2");
+    public static final SimpleFluidMaterial HydroxylamineHydrochloride = new SimpleFluidMaterial("hydroxylamine_hydrochloride", ((Barium.materialRGB+Chlorine.materialRGB)/2 + 0xF0EAD6)/2, "HONH2HCl");
+    public static final SimpleFluidMaterial SelenousAcid = new SimpleFluidMaterial("selenous_acid", (0xFFFF66 + Water.materialRGB)/2, "H2SeO3");
     public static final SimpleFluidMaterial Glyoxal = new SimpleFluidMaterial("glyoxal", 0xf2f068, "C2H2O2");
-    public static final SimpleFluidMaterial BenzylChloride = new SimpleFluidMaterial("benzyl_chloride", 0xaef7fc);
+    public static final SimpleFluidMaterial BenzylChloride = new SimpleFluidMaterial("benzyl_chloride", 0xaef7fc, "C7H7Cl");
     public static final SimpleFluidMaterial Benzylamine = new SimpleFluidMaterial("benzylamine", 0x5c8082, "C7H9N");
     public static final SimpleFluidMaterial Tetrahydrofuran = new SimpleFluidMaterial("tetrahydrofuran", 0xb7ebcd, "(CH2)4O");
     public static final SimpleFluidMaterial Triethylamine = new SimpleFluidMaterial("triethylamine", Ethylenediamine.rgb, "N(CH2CH3)3");
@@ -1384,7 +1384,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial NitrosoniumTetrafluoroborate = new SimpleDustMaterial("nitrosonium_tetrafluoroborate", 0x7e8d94, (short) 921, MaterialIconSet.DULL, "NOBF4");
     public static final SimpleDustMaterial Hexamethylenetetramine = new SimpleDustMaterial("hexamethylenetetramine", 0x7e8d94, (short) 922, MaterialIconSet.DULL, "(CH2)6N4");
     public static final SimpleDustMaterial PdCCatalyst = new SimpleDustMaterial("pdc_catalyst", (Palladium.materialRGB + Carbon.materialRGB)/2, (short) 923, MaterialIconSet.DULL, "PdC");
-    public static final SimpleDustMaterial Tetraacetyldinitrosohexaazaisowurtzitane = new SimpleDustMaterial("tetraacetyldinitrosohexaazaisowurtzitane",(DibenzylTetraacetylhexaazaisowurtzitane.rgb+Hexabenzylhexaazaisowurtzitane.rgb)/2,(short) 924, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial Tetraacetyldinitrosohexaazaisowurtzitane = new SimpleDustMaterial("tetraacetyldinitrosohexaazaisowurtzitane",(DibenzylTetraacetylhexaazaisowurtzitane.rgb+Hexabenzylhexaazaisowurtzitane.rgb)/2,(short) 924, MaterialIconSet.DULL, "C14N8H18O6");
     public static final SimpleDustMaterial CrudeHexanitroHexaaxaisowurtzitane = new SimpleDustMaterial("crude_hexanitrohexaaxaisowurtzitane", HexanitroHexaaxaisowurtzitane.rgb*5/7, (short) 925, MaterialIconSet.DULL, "C6H6N12O12");
     public static final SimpleDustMaterial PotassiumBisulfite = new SimpleDustMaterial("potassium_bisulfite", 0xF0EAD6, (short) 926, MaterialIconSet.DULL, "KHSO3");
     public static final SimpleDustMaterial PotassiumNitrite = new SimpleDustMaterial("potassium_nitrite", 0xF0EAD6, (short) 927, MaterialIconSet.DULL, "KNO2");

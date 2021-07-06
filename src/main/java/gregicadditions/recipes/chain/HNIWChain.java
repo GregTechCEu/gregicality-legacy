@@ -18,7 +18,7 @@ public class HNIWChain {
                 .fluidInputs(Water.getFluid(1000))
                 .outputs(PotassiumBisulfite.getItemStack(12))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -27,7 +27,7 @@ public class HNIWChain {
                 .input(dust, Saltpeter, 5)
                 .input(dust, Lead)
                 .outputs(PotassiumNitrite.getItemStack(4))
-                .output(dust, Massicot)
+                .output(dust, Massicot, 2)
                 .blastFurnaceTemp(3000)
                 .EUt(120)
                 .duration(200)
@@ -41,7 +41,7 @@ public class HNIWChain {
                 .fluidOutputs(NitrousAcid.getFluid(1000))
                 .output(dust, RockSalt, 2)
                 .fluidOutputs(SodiumAcetate.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -56,7 +56,7 @@ public class HNIWChain {
                 .buildAndRegister();
 
         //2 K2NHS2O7 + 4 H2O -> 2 K2SO4 + H2SO4 + N2H8SO6
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(PotassiumHydroxylaminedisulfonate.getItemStack(26))
                 .fluidInputs(Water.getFluid(4000))
                 .outputs(HydroxylammoniumSulfate.getItemStack(17))
@@ -72,7 +72,7 @@ public class HNIWChain {
                 .inputs(BariumChloride.getItemStack(3))
                 .fluidOutputs(HydroxylamineHydrochloride.getFluid(2000))
                 .fluidOutputs(BariumSulfateSolution.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -83,7 +83,7 @@ public class HNIWChain {
                 .notConsumable(dust, CalciumChloride)
                 .outputs(SuccinicAnhydride.getItemStack(11))
                 .fluidOutputs(AceticAcid.getFluid(2000))
-                .EUt(30720)
+                .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
 
@@ -94,7 +94,7 @@ public class HNIWChain {
                 .fluidInputs(Hydrogen.getFluid(4000))
                 .fluidOutputs(Tetrahydrofuran.getFluid(1000))
                 .EUt(7680)
-                .duration(100)
+                .duration(75)
                 .buildAndRegister();
 
         //C4H4O3 + H4NOCl + Na -> C4H5NO3 + H2O + NaCl + H
@@ -108,7 +108,7 @@ public class HNIWChain {
                 .outputs(NHydroxysuccinimide.getItemStack(13))
                 .fluidOutputs(Water.getFluid(6000))
                 .fluidOutputs(Hydrogen.getFluid(6000))
-                .EUt(30720)
+                .EUt(1920)
                 .duration(400)
                 .buildAndRegister();
 
@@ -118,19 +118,19 @@ public class HNIWChain {
                 .fluidInputs(Ethanol.getFluid(3000))
                 .fluidOutputs(Triethylamine.getFluid(1000))
                 .fluidOutputs(Water.getFluid(3000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
-        //C4H5NO3 + (CH3CO)2O -> C6H7NO4 + CH3COOH
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
-                .fluidInputs(Triethylamine.getFluid(500))
+        //(CH2CO)2NOH + (CH3CO)2O -> C6H7NO4 + CH3COOH
+        CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(Triethylamine.getFluid(1000))
                 .fluidInputs(AceticAnhydride.getFluid(1000))
                 .inputs(NHydroxysuccinimide.getItemStack(13))
                 .notConsumable(Tetrahydrofuran.getFluid(1000))
                 .outputs(SuccinimidylAcetate.getItemStack(18))
                 .fluidOutputs(AceticAcid.getFluid(1000))
-                .EUt(30720)
+                .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
 
@@ -139,7 +139,7 @@ public class HNIWChain {
                 .inputs(SeleniumOxide.getItemStack())
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(SelenousAcid.getFluid(1000))
-                .EUt(1920)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
@@ -150,7 +150,7 @@ public class HNIWChain {
                 .notConsumable(SelenousAcid.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(Glyoxal.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -169,7 +169,7 @@ public class HNIWChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .inputs(AmmoniumAcetate.getItemStack(12))
                 .outputs(Acetamide.getItemStack(9))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -177,7 +177,7 @@ public class HNIWChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder()
                 .inputs(Acetamide.getItemStack(9))
                 .outputs(Acetonitrile.getItemStack(6))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -188,7 +188,7 @@ public class HNIWChain {
                 .notConsumable(GAMetaItems.UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(BenzylChloride.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -198,12 +198,12 @@ public class HNIWChain {
                 .fluidOutputs(Ammonia.getFluid(6000))
                 .outputs(Hexamethylenetetramine.getItemStack(22))
                 .fluidOutputs(Water.getFluid(6000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
         //C7H7Cl + C6H12N4 + 2 HCl + 6 H2O -> C7H9N + 6 CH2O + 3 NH4Cl
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(BenzylChloride.getFluid(1000))
                 .inputs(Hexamethylenetetramine.getItemStack(22))
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
@@ -211,7 +211,7 @@ public class HNIWChain {
                 .fluidOutputs(Benzylamine.getFluid(1000))
                 .fluidOutputs(AmmoniumChloride.getFluid(3000))
                 .fluidOutputs(Formaldehyde.getFluid(6000))
-                .EUt(30720)
+                .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
 
@@ -222,7 +222,7 @@ public class HNIWChain {
                 .notConsumable(Hydrogen.getFluid(1000))
                 .inputs(Acetonitrile.getItemStack())
                 .outputs(Hexabenzylhexaazaisowurtzitane.getItemStack())
-                .EUt(30720)
+                .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
 
@@ -236,7 +236,7 @@ public class HNIWChain {
                 .duration(100)
                 .buildAndRegister();
 
-        //C48N6H48 + 4 C6H7NO4 + 4H -> 4 C7H8 + C28N6H32O4
+        //C48N6H48 + 4 C6H7NO4 + 4H -> 4 C7H8 + C28N6H32O4 + C4H5NO2
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
                 .fluidInputs(Hydrogen.getFluid(4000))
                 .notConsumable(PdCCatalyst.getItemStack())
@@ -270,7 +270,7 @@ public class HNIWChain {
                 .fluidInputs(DinitrogenTetroxide.getFluid(2000))
                 .outputs(NitrosoniumTetrafluoroborate.getItemStack(7))
                 .fluidOutputs(NitricAcid.getFluid(1000))
-                .EUt(1920)
+                .EUt(480)
                 .duration(100)
                 .buildAndRegister();
 
@@ -284,7 +284,7 @@ public class HNIWChain {
                 .fluidOutputs(TetrafluoroboricAcid.getFluid(6000))
                 .fluidOutputs(NitricOxide.getFluid(4000))
                 .fluidOutputs(Benzaldehyde.getFluid(2000))
-                .EUt(30720)
+                .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
 
@@ -306,7 +306,7 @@ public class HNIWChain {
                 .fluidInputs(Ethylenediamine.getFluid(1000))
                 .inputs(SilicaGel.getItemStack())
                 .outputs(HexanitroHexaaxaisowurtzitane.getItemStack())
-                .EUt(30720)
+                .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
 
@@ -315,7 +315,7 @@ public class HNIWChain {
                 .fluidInputs(Water.getFluid(3000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(4000))
                 .fluidOutputs(BoricAcid.getFluid(1000))
-                .EUt(1920)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
