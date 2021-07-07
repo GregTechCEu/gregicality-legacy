@@ -44,7 +44,7 @@ public class CVDUnitInfo extends MultiblockInfoPage {
                         .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
                         .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
                         .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.EAST)
-                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
                         .where('P', GAMetaBlocks.PUMP_CASING.getState(PumpCasing.CasingType.PUMP_HV))
                         .where('H', MetaBlocks.WIRE_COIL.getState(coilType))
                         .where('U', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))

@@ -22,7 +22,7 @@ public class WaferRecipes {
 
     public static void init() {
         // LITHOGRAPHY MASKS ===========================================================================================
-        ASSEMBLER_RECIPES.recipeBuilder()
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .inputs(OreDictUnifier.get(plateDense, Aluminium))
                 .notConsumable(craftingLens, Red)
                 .outputs(LITHOGRAPHY_MASK_ILC.getStackForm())
@@ -30,7 +30,7 @@ public class WaferRecipes {
                 .EUt(120)
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder()
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .inputs(OreDictUnifier.get(plateDense, Aluminium))
                 .notConsumable(craftingLens, White)
                 .outputs(LITHOGRAPHY_MASK_CPU.getStackForm())
@@ -38,7 +38,7 @@ public class WaferRecipes {
                 .EUt(120)
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder()
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .inputs(OreDictUnifier.get(plateDense, Aluminium))
                 .notConsumable(craftingLens, Silver)
                 .outputs(LITHOGRAPHY_MASK_RAM.getStackForm())
