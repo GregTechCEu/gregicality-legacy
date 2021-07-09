@@ -35,7 +35,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // 3 [3 H3PO4 + HCl] + 3 HCl + SiO2 + Na2CO3 -> 9 H3PO4 + [Na2SiCl6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
-        MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
                 .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
@@ -64,7 +64,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // 3 [3 H3PO4 + HF] + 3 HF + SiO2 + Na2CO3 -> 9 H3PO4? + [Na2SiF6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
-        MIXER_RECIPES.recipeBuilder().duration(260).EUt(500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
                 .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
@@ -85,7 +85,7 @@ public class Dyes {
                 .buildAndRegister();
 
         // 15H3PO4? + 2 Na2S + 2 NaOH -> 2 Na3AsO4 + 2 CdS + 15H3PO4
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(220).EUt(500)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .fluidInputs(PhosphorousArsenicSolution.getFluid(12000))
                 .input(dust, SodiumSulfide,6)
                 .input(dust, SodiumHydroxide, 6)
