@@ -94,6 +94,12 @@ public class ForestryCommonProxy {
             }
 
         if (GAConfig.GTBees.GenerateExtractorRecipes) {
+
+            //Fix Seed oil recipes not having the amounts properly copied from the Forestry Squeezer
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.MELON_SEEDS));
+            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
+
             for (ISqueezerRecipe recipe : RecipeManagers.squeezerManager.recipes()) {
                 if (recipe.getResources().size() != 1 || recipe.getResources().get(0).getItem() instanceof ItemFluidContainerForestry)
                     continue;
@@ -109,10 +115,6 @@ public class ForestryCommonProxy {
                 builder.buildAndRegister();
             }
 
-            //Fix Seed Oil Recipe
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.MELON_SEEDS));
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
         }
         //Bees
         List<ItemStack> allFlowers = OreDictionary.getOres("flower").stream()

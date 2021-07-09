@@ -66,6 +66,6 @@ public class CosmicRayDetectorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[0];
+        return new String[] {"Temporary Placeholder"};
     }
 }

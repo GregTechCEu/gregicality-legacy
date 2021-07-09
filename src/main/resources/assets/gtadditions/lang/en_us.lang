@@ -859,6 +859,26 @@ metaitem.gallium_chloride.name=Gallium Chloride
 metaitem.copper_leach.name=Leached Copper
 metaitem.gold_leach.name=Gold Leach
 
+metaitem.potassium_bisulfite.name=Potassium Bisulfite
+metaitem.potassium_nitrite.name=Potassium Nitrite
+metaitem.hydroxylammonium_sulfate.name=Hydroxylammonium Sulfate
+metaitem.potassium_hydroxylaminedisulfonate.name=Potassium Hydroxylaminedisulfonate
+metaitem.succinic_anhydride.name=Succinic Anhydride
+metaitem.ammonium_acetate=Ammonium Acetate
+metaitem.acetamide.name=Acetamide
+metaitem.acetonitrile.name=Acetonitrile
+metaitem.n-hydroxysuccinimide.name=N-Hydroxysuccinimide
+metaitem.hexabenzylhexaazaisowurtzitane.name=Hexabenzylhexaazaisowurtzitane
+metaitem.succinimidyl_acetate.name=Succinimidyl Acetate
+metaitem.dibenzyltetraacetylhexaazaisowurtzitane.name=Dibenzyltetraacetylhexaazaisowurtzitane
+metaitem.hexanitrohexaaxaisowurtzitane.name=Hexanitrohexaaxaisowurtzitane
+metaitem.nitronium_tetrafluoroborate.name=Nitronium Tetrafluoroborate
+metaitem.nitrosonium_tetrafluoroborate.name=Nitrosonium Tetrafluoroborate
+metaitem.hexamethylenetetramine.name=Hexamethylenetetramine
+metaitem.pdc_catalyst.name=Palladium on Carbon
+metaitem.tetraacetyldinitrosohexaazaisowurtzitane.name=Tetraacetyldinitrosohexaazaisowurtzitane
+metaitem.crude_hexanitrohexaaxaisowurtzitane.name=Crude Hexanitrohexaaxaisowurtzitane
+
 metaitem.unstable.star.name=Unstable Star
 
 metaitem.tool.prospect.mv.name=Prospector MV
@@ -4028,7 +4048,15 @@ fluid.quantumdots=Quantum Dots
 fluid.iridiumtrichloridesolution=Iridium Trichloride Solution
 fluid.semisolidhydrogen=Semi-Solid Hydrogen
 fluid.microcrystallizinghydrogen=Microcrystallizing Hydrogen
-
+fluid.nitrous_acid=Nitrous Acid
+fluid.hydroxylamine_hydrochloride=Hydroxylamine Hydrochloride
+fluid.selenous_acid=Selenous Acid
+fluid.glyoxal=Glyoxal
+fluid.benzyl_chloride=Benzyl Chloride
+fluid.benzylamine=Benzylamine
+fluid.tetrahydrofuran=Tetrahydrofuran
+fluid.triethylamine=Triethylamine
+fluid.tetrafluoroboric_acid=Tetrafluoroboric Acid
 
 gtadditions.machine.buffer.lv.name=Basic Buffer
 gtadditions.machine.buffer.mv.name=Advanced Buffer

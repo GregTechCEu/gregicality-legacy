@@ -33,6 +33,6 @@ public class QubitComputerInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[0];
+        return new String[] {"Temporary Placeholder"};
     }
 }
