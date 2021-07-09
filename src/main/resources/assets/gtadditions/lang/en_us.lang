@@ -4263,10 +4263,10 @@ metaitem.cryogenic.interface.name=Cryogenic Interface
 metaitem.rydberg.spinorial.assembly.name=Rydberg Spinorial Assembly
 metaitem.xray.laser.name=X-Ray Laser
 metaitem.exotic.processing.core.name=Exotic Processing Core
-metaitem.smd.capacitor.exotic.name=Exotic SMD Capacitor
-metaitem.smd.resistor.exotic.name=Exotic SMD Resistor
-metaitem.smd.transistor.exotic.name=Exotic SMD Transistor
-metaitem.smd.diode.exotic.name=Exotic SMD Diode
+metaitem.component.smd.capacitor.exotic.name=Exotic SMD Capacitor
+metaitem.component.smd.resistor.exotic.name=Exotic SMD Resistor
+metaitem.component.smd.transistor.exotic.name=Exotic SMD Transistor
+metaitem.component.smd.diode.exotic.name=Exotic SMD Diode
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Macerates up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Buses

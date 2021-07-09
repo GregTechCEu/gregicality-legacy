@@ -504,10 +504,10 @@ public class GAMetaItem extends MaterialMetaItem {
         X_RAY_LASER = addItem(599, "xray.laser");
         EXOTIC_PROCESSING_CORE = addItem(600, "exotic.processing.core");
 
-        SMD_CAPACITOR_EXOTIC = addItem(601, "smd.capacitor.exotic");
-        SMD_RESISTOR_EXOTIC = addItem(602, "smd.resistor.exotic");
-        SMD_DIODE_EXOTIC = addItem(603, "smd.diode.exotic");
-        SMD_TRANSISTOR_EXOTIC = addItem(604, "smd.transistor.exotic");
+        SMD_CAPACITOR_EXOTIC = addItem(601, "component.smd.capacitor.exotic");
+        SMD_RESISTOR_EXOTIC = addItem(602, "component.smd.resistor.exotic");
+        SMD_DIODE_EXOTIC = addItem(603, "component.smd.diode.exotic");
+        SMD_TRANSISTOR_EXOTIC = addItem(604, "component.smd.transistor.exotic");
 
         EXOTIC_PROCESSOR = addItem(605, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
         EXOTIC_ASSEMBLY = addItem(606, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, UEV);
