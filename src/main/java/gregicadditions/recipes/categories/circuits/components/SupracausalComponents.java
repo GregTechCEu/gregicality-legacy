@@ -156,7 +156,7 @@ public class SupracausalComponents {
                 .input(plate, FullerenePolymerMatrix, 36)
                 .inputs(FIELD_GENERATOR_UHV.getStackForm(3))
                 .input(plateDense, Neutronium)
-                .input(plate, Taranium, 64)
+                .input(plate, Taranium, 2)
                 .input(frameGt, Neutronium)
                 .input(plate, HeavyQuarkDegenerateMatter, 6)
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
