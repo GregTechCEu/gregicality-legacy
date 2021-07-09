@@ -754,10 +754,11 @@ metaitem.chrome_orange.name=Chrome Orange
 metaitem.diaminostilbenedisulfonic_acid.name=Diaminostilbenedisulfonic Acid
 metaitem.nigrosin.name=Nigrosin
 metaitem.direct_brown.name=Direct Brown 77
-metaitem.aminoterephthalic_acid.name=Aminoterephthalic Acid
+metaitem.dianilineterephthalic_acid.name=Dianilineterephthalic Acid
 metaitem.quinacridone.name=Quinacridone
 metaitem.diarylide_yellow.name=Diarylide Yellow
 metaitem.alizarine_cyanine_green.name=Alizarine Cyanine Green
+metaitem.chromium_iii_oxide.name=Chromium (III) Oxide
 metaitem.aminoanthraquinone.name=Aminoanthraquinone
 metaitem.indanthrone_blue.name=Indanthrone Blue
 metaitem.diketopyrrolopyrrole.name=Diketopyrrolopyrrole
@@ -1059,6 +1060,7 @@ metaitem.circuit.computer.exotic.name=Exotic Computer
 metaitem.circuit.computer.exotic.tooltip=§b§oUIV Circuit
 metaitem.circuit.mainframe.exotic.name=Exotic Mainframe
 metaitem.circuit.mainframe.exotic.tooltip=§b§oUMV Circuit
+
 
 ##cosmic
 metaitem.circuit.processor.cosmic.name=Cosmic Processor
@@ -3935,10 +3937,11 @@ fluid.lutmy_chloride_solution=Lutetium Thulium Yttrium Chloride Solution
 fluid.mercury_nitrate=Mercury Nitrate
 fluid.bismuth_vanadate_solution=Bismuth Vanadate Solution
 fluid.nitrotoluene=Nitrotoluene
+fluid.toluidine=Toluidine
 fluid.naphthylamine=Naphthylamine
 fluid.toluenesulfonate=Toluenesulfonate
 fluid.acetoacetanilide=Acetoacetanilide
-fluid.diaminoanthraquinone=Diaminoanthraquinone
+fluid.quinizarin=Quinizarin
 fluid.isopropylsuccinate=Isopropyl Succinate
 fluid.maleic_anhydride=Maleic Anhydride
 fluid.benzonitrile=Benzonitrile
@@ -4045,7 +4048,6 @@ fluid.quantumdots=Quantum Dots
 fluid.iridiumtrichloridesolution=Iridium Trichloride Solution
 fluid.semisolidhydrogen=Semi-Solid Hydrogen
 fluid.microcrystallizinghydrogen=Microcrystallizing Hydrogen
-
 fluid.nitrous_acid=Nitrous Acid
 fluid.hydroxylamine_hydrochloride=Hydroxylamine Hydrochloride
 fluid.selenous_acid=Selenous Acid
@@ -4241,6 +4243,13 @@ metaitem.insulation_wire_assembly.name=Insulation Wire Assembly
 metaitem.coloured.leds.name=Coloured LEDs
 metaitem.display.name=Display
 
+material.qcd_confined_matter=Quantumchromodynamically Confined Matter
+
+fluid.free_electron_gas=Free Electron Gas
+fluid.free_alpha_gas=Free Alpha Gas
+fluid.krypton_difluoride=Krypton Difluoride
+fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
+
 metaitem.fullerene.polymer.matrix.soft.tubing.name=Fullerene Polymer Matrix Soft Tubing
 metaitem.fullerene.polymer.matrix.fine.tubing.name=Fullerene Polymer Matrix Fine Tubing
 metaitem.xray.waveguide.name=X-Ray Waveguide
@@ -4258,13 +4267,6 @@ metaitem.smd.capacitor.exotic.name=Exotic SMD Capacitor
 metaitem.smd.resistor.exotic.name=Exotic SMD Resistor
 metaitem.smd.transistor.exotic.name=Exotic SMD Transistor
 metaitem.smd.diode.exotic.name=Exotic SMD Diode
-
-material.qcd_confined_matter=Quantumchromodynamically Confined Matter
-
-fluid.free_electron_gas=Free Electron Gas
-fluid.free_alpha_gas=Free Alpha Gas
-fluid.krypton_difluoride=Krypton Difluoride
-fluid.high_energy_qgp=High Energy Quark-Gluon Plasma
 
 gtadditions.machine.steam_grinder.name=Steam Grinder
 gtadditions.machine.steam_grinder.tooltip=Macerates up to 8 items per craft. Takes 1.5x base duration to process, not affected by number of items. Requires §eSteam Hatches and Buses
