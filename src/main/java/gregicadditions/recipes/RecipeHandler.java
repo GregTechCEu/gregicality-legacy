@@ -160,6 +160,7 @@ public class RecipeHandler {
         CombinedChains.init();
         OrganometallicChains.init();
         QuantumDotsChain.init();
+        HNIWChain.init();
     }
 
     /**

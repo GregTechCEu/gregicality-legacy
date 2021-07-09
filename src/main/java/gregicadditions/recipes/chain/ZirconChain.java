@@ -29,7 +29,7 @@ public class ZirconChain {
 
         // C6H10O + C + H2O = C6H12O + CO
         CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(480)
-                .notConsumable(dust, Palladium)
+                .notConsumable(PdCCatalyst.getItemStack())
                 .input(dust, Carbon)
                 .fluidInputs(MesitylOxide.getFluid(1000))
                 .fluidInputs(WaterAgarMix.getFluid(1000))
