@@ -65,6 +65,7 @@ public class FusionReactor4Info extends MultiblockInfoPage {
         return Lists.newArrayList(shapeInfo);
     }
 
+
     @Override
     public String[] getDescription() {
         return new String[] {"Temporary Placeholder"};
