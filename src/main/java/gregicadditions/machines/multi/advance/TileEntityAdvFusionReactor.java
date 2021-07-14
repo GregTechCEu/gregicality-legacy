@@ -1,9 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
@@ -35,6 +32,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
+import gregtech.api.recipes.recipeproperties.FusionEUToStartProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
@@ -66,7 +64,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
             SupercriticalFLiNaK.fluid, SupercriticalFLiBe.fluid, SupercriticalLeadBismuthEutectic.fluid);
 
     private EnergyContainerList inputEnergyContainers;
-    private int heat = 0;
+    private long heat = 0;
 
 
     public TileEntityAdvFusionReactor(ResourceLocation metaTileEntityId) {
@@ -309,7 +307,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
             RecipeBuilder<?> newRecipe;
-            if (recipe == null || (long) recipe.getProperty("eu_to_start") > energyContainer.getEnergyCapacity()) {
+            if (recipe == null || recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) > energyContainer.getEnergyCapacity()) {
                 return null;
             } else {
                 int recipeTier = recipe.getIntegerProperty("coil_tier");
@@ -340,7 +338,7 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
 
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
-            long heatDiff = ((long) recipe.getProperty("eu_to_start")) - (long) heat;
+            long heatDiff = recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) - heat;
             if (heatDiff <= 0) {
                 return super.setupAndConsumeRecipeInputs(recipe);
             }
@@ -355,14 +353,14 @@ public class TileEntityAdvFusionReactor extends GARecipeMapMultiblockController 
         @Override
         public NBTTagCompound serializeNBT() {
             NBTTagCompound tag = super.serializeNBT();
-            tag.setInteger("Heat", heat);
+            tag.setLong("Heat", heat);
             return tag;
         }
 
         @Override
         public void deserializeNBT(NBTTagCompound compound) {
             super.deserializeNBT(compound);
-            heat = compound.getInteger("Heat");
+            heat = compound.getLong("Heat");
         }
     }
 
