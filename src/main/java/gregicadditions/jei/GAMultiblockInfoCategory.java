@@ -19,6 +19,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -138,5 +139,8 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, MultiblockInfoRecipeWrapper recipeWrapper, IIngredients ingredients) {
         recipeWrapper.setRecipeLayout((RecipeLayout) recipeLayout, guiHelper);
+
+        IGuiItemStackGroup itemStackGroup = recipeLayout.getItemStacks();
+        itemStackGroup.addTooltipCallback(recipeWrapper::addBlockTooltips);
     }
 }
