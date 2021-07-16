@@ -10,10 +10,14 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import javax.annotation.Nonnull;
 
 import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
 import static gregtech.api.render.Textures.FROST_PROOF_CASING;
@@ -52,5 +56,11 @@ public class MetaTileEntityVacuumFreezer extends GARecipeMapMultiblockController
 
     public IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
+    }
+
+    @Nonnull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.VACUUM_FREEZER_OVERLAY;
     }
 }

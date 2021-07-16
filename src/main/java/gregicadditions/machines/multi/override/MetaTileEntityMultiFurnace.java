@@ -148,7 +148,7 @@ public class MetaTileEntityMultiFurnace extends GARecipeMapMultiblockController 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.FURNACE_OVERLAY;
+        return Textures.MULTI_FURNACE_OVERLAY;
     }
 
     protected class GAMultiFurnaceWorkable extends GAMultiblockRecipeLogic {

@@ -14,12 +14,15 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+
+import javax.annotation.Nonnull;
 
 import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 
@@ -59,5 +62,11 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return ClientHandler.INCOLOY_MA956_CASING;
+    }
+
+    @Nonnull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return ClientHandler.IMPLOSION_OVERLAY;
     }
 }

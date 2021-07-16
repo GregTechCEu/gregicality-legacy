@@ -20,6 +20,8 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
@@ -32,6 +34,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
@@ -162,6 +165,12 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 		super.addInformation(stack, player, tooltip, advanced);
 		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.1"));
 		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.2"));
+	}
+
+	@Nonnull
+	@Override
+	protected OrientedOverlayRenderer getFrontOverlay() {
+		return Textures.BLAST_FURNACE_OVERLAY;
 	}
 
 	protected static class ElectricBlastFurnaceWorkable extends GAMultiblockRecipeLogic {

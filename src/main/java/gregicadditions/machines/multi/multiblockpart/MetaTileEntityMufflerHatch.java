@@ -90,7 +90,7 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
                 this.frontFaceFree = checkFrontFaceFree();
         }
         GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) getController();
-        if (controller != null && controller.isActive())
+        if (getWorld().isRemote && controller != null && controller.isActive())
             pollutionParticles();
     }
 

@@ -20,6 +20,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -32,6 +34,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -109,6 +112,12 @@ public class MetaTileEntityLargeCombustionEngine extends GAFueledMultiblockContr
 
 	public IBlockState getCasingState() {
 		return MultiUtils.getConfigCasing("", MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE));
+	}
+
+	@Nonnull
+	@Override
+	protected OrientedOverlayRenderer getFrontOverlay() {
+		return Textures.DIESEL_ENGINE_OVERLAY;
 	}
 
 	public static class LargeCombustionEngineWorkable extends GAFuelRecipeLogic {

@@ -140,7 +140,7 @@ public class MetaTileEntityPyrolyseOven extends GARecipeMapMultiblockController 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.ELECTRIC_FURNACE_OVERLAY;
+        return Textures.PYROLYSE_OVEN_OVERLAY;
     }
 
     @Override

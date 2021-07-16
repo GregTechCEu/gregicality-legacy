@@ -12,6 +12,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -64,6 +65,6 @@ public class MetaTileEntityImplosionCompressor extends GARecipeMapMultiblockCont
 	@Nonnull
 	@Override
 	protected OrientedOverlayRenderer getFrontOverlay() {
-		return ClientHandler.IMPLOSION_OVERLAY;
+		return Textures.IMPLOSION_COMPRESSOR_OVERLAY;
 	}
 }
