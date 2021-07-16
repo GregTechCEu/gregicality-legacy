@@ -1148,7 +1148,7 @@ public class RecipeHandler {
                                     .EUt(30 * ingot.blastFurnaceTemperature / 100)
                                     .fluidInputs(recipe.getFluidInputs())
                                     .inputsIngredients(recipe.getInputs())
-                                    .fluidOutputs(GAMetaFluids.getMoltenFluid(ingotMaterial, GTValues.L))
+                                    .fluidOutputs(GAMetaFluids.getMoltenFluid(ingotMaterial, itemStack.getCount() * GTValues.L))
                                     .blastFurnaceTemp(ingot.blastFurnaceTemperature)
                                     .buildAndRegister();
                             VACUUM_RECIPES.recipeBuilder()
