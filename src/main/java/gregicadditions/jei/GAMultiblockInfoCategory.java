@@ -3,17 +3,11 @@ package gregicadditions.jei;
 import com.google.common.collect.ImmutableMap;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
-import gregicadditions.jei.multi.mega.MegaDistillationTowerInfo;
-import gregicadditions.jei.multi.mega.MegaBlastFurnaceInfo;
-import gregicadditions.jei.multi.mega.MegaVacuumFreezerInfo;
-import gregicadditions.jei.multi.miner.LargeMinerInfo;
-import gregicadditions.jei.multi.miner.VoidMinerInfo;
-import gregicadditions.jei.multi.miner.VoidMinerInfo2;
-import gregicadditions.jei.multi.miner.VoidMinerInfo3;
-import gregicadditions.jei.multi.nuclear.HotCoolantTurbineInfo;
-import gregicadditions.jei.multi.nuclear.NuclearReactorInfo;
+import gregicadditions.jei.multi.mega.*;
+import gregicadditions.jei.multi.miner.*;
+import gregicadditions.jei.multi.nuclear.*;
 import gregicadditions.jei.multi.override.*;
-import gregicadditions.jei.multi.quantum.QubitComputerInfo;
+import gregicadditions.jei.multi.quantum.*;
 import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
@@ -48,7 +42,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("central_monitor", new MultiblockInfoRecipeWrapper(new CentralMonitorInfo()))
                     .put("electric_blast_furnace", new MultiblockInfoRecipeWrapper(new ElectricBlastFurnaceInfo()))
                     .put("cracker_unit", new MultiblockInfoRecipeWrapper(new CrackerUnitInfo()))
-                    .put("diesel_engine", new MultiblockInfoRecipeWrapper(new DieselEngineInfo()))
+                    .put("diesel_engine", new MultiblockInfoRecipeWrapper(new LargeCombustionEngineInfo()))
                     .put("distillation_tower", new MultiblockInfoRecipeWrapper(new DistillationTowerInfo()))
                     .put("implosion_compressor", new MultiblockInfoRecipeWrapper(new ImplosionCompressorInfo()))
                     .put("multi_smelter", new MultiblockInfoRecipeWrapper(new MultiSmelterInfo()))
