@@ -628,7 +628,7 @@ public class MultiblockCraftingRecipes {
                 "DED", "CHC", "DED",
                 'H', GAConfig.GT5U.highTierExtruders ?
                         GATileEntities.EXTRUDER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.EXTRUDER[EV - 1].getStackForm(),
+                        MetaTileEntities.EXTRUDER[EV - 2].getStackForm(),
                 'C', ELECTRIC_PISTON_IV,
                 'E', new UnificationEntry(circuit, Elite),
                 'D', new UnificationEntry(plate, Inconel625));

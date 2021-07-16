@@ -38,7 +38,7 @@
           "side": "gregtech:blocks/casings/solid/heating_coil/heating.coil.umv"
         }
       },
-      "heating_coil_5": {
+      "cosmic_neutronium_coil": {
         "textures": {
           "bottom": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",
           "top": "gregtech:blocks/casings/solid/heating_coil/heating.coil.top.bottom",

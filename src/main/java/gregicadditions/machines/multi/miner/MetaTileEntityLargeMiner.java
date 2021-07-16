@@ -5,11 +5,14 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
+import gregicadditions.machines.multi.MultiUtils;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -19,12 +22,12 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
@@ -59,6 +62,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static gregicadditions.client.ClientHandler.*;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregtech.api.unification.material.Materials.*;
+
 public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance in miner algorithm overhaul
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
@@ -79,12 +86,35 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     protected boolean wasActiveAndNeedsUpdate;
 
 
-    public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type, IBlockState casingState, ICubeRenderer casingTexture, Material material) {
+    public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type) {
         super(metaTileEntityId);
         this.type = type;
-        this.casingState = casingState;
-        this.casingTexture = casingTexture;
-        this.material = material;
+        switch (this.type) {
+            case LARGE: {
+                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
+                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
+
+                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSG;
+                break;
+            }
+            case ADVANCE: {
+                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
+                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
+
+                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSS;
+                break;
+            }
+            default: {
+                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
+                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
+
+                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : BlackSteel;
+                break;
+            }
+        }
         reinitializeStructurePattern();
     }
 
@@ -116,11 +146,11 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
 
     public boolean drainEnergy() {
         long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
-        FluidStack drillingMud = GAMaterials.DrillingMud.getFluid(type.drillingFluidConsumePerTick);
-        FluidStack canDrain = importFluidHandler.drain(drillingMud, false);
+        FluidStack drillingFluid = DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
+        FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
             energyContainer.removeEnergy(energyContainer.getInputVoltage());
-            importFluidHandler.drain(drillingMud, true);
+            importFluidHandler.drain(drillingFluid, true);
             return true;
         }
         return false;
@@ -240,7 +270,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gtadditions.machine.miner.multi.description", type.chunk, type.chunk, type.fortuneString));
-        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(GAMaterials.DrillingMud.getFluid(0).getUnlocalizedName())));
+        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(DrillingFluid.getFluid(0).getUnlocalizedName())));
     }
 
     @Override
@@ -277,7 +307,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityLargeMiner(metaTileEntityId, getType(), casingState, casingTexture, material);
+        return new MetaTileEntityLargeMiner(metaTileEntityId, getType());
     }
 
     @Override

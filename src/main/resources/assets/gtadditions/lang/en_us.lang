@@ -1964,7 +1964,7 @@ tile.ga_heating_coil.titan_steel_coil.name=Titan Steel Coil
 tile.ga_heating_coil.pikyonium_coil.name=Pikyonium Coil
 tile.ga_heating_coil.black_titanium_coil.name=Black Titanium Coil
 tile.ga_heating_coil.neutronium_coil.name=Neutronium Coil
-tile.ga_heating_coil.heating_coil_5.name=Advanced Heating Coil MK V
+tile.ga_heating_coil.cosmic_neutronium_coil.name=Cosmic Neutronium Coil
 
 tile.ga_divertor_casing.divertor_1.name=Advanced Fusion Divertor MK I
 tile.ga_divertor_casing.divertor_2.name=Advanced Fusion Divertor MK II

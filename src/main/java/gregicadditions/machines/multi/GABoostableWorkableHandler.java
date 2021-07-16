@@ -42,21 +42,7 @@ public class GABoostableWorkableHandler extends GAFuelRecipeLogic {
 
         FluidStack drainBooster = fluidTank.get().drain(booster, false);
         this.boosted = drainBooster != null && drainBooster.amount >= booster.amount;
-        int duration = super.calculateFuelAmount(currentRecipe) * (boosted ? this.fuelMultiplier : 1);
-
-        if (metaTileEntity instanceof GAFueledMultiblockController) {
-            GAFueledMultiblockController gaController = (GAFueledMultiblockController) metaTileEntity;
-            if (gaController.hasMaintenanceHatch()) {
-                int numMaintenanceProblems = gaController.getNumProblems();
-                double maintenanceDurationMultiplier = 1.0 + (0.1 * numMaintenanceProblems);
-                int durationModified = (int) (duration * maintenanceDurationMultiplier);
-
-                gaController.calculateMaintenance(durationModified);
-                return durationModified;
-            }
-        }
-
-        return duration;
+        return super.calculateFuelAmount(currentRecipe) * (boosted ? this.fuelMultiplier : 1);
     }
 
     @Override

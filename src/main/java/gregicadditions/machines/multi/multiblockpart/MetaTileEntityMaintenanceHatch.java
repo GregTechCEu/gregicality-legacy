@@ -8,6 +8,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.multi.IMaintenance;
+import gregicadditions.tools.GTToolTypes;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -47,35 +48,6 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     // Used to store state temporarily if the Controller is broken
     private byte problems = -1;
     private int timeActive = -1;
-
-    private final List<MetaToolValueItem> wrenches = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.WRENCH);
-        add(MetaItems.WRENCH_LV);
-        add(MetaItems.WRENCH_MV);
-        add(MetaItems.WRENCH_HV);
-    }};
-
-    private final List<MetaToolValueItem> screwdrivers = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.SCREWDRIVER);
-        add(MetaItems.SCREWDRIVER_LV);
-    }};
-
-    private final List<MetaToolValueItem> softHammers = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.SOFT_HAMMER);
-    }};
-
-    private final List<MetaToolValueItem> hardHammers = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.HARD_HAMMER);
-    }};
-
-    private final List<MetaToolValueItem> wireCutters = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.WIRE_CUTTER);
-    }};
-
-    private final List<MetaToolValueItem> crowbars = new ArrayList<MetaToolValueItem>() {{
-        add(MetaItems.CROWBAR);
-    }};
-
 
     public MetaTileEntityMaintenanceHatch(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
@@ -244,22 +216,22 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
 
         switch (problemIndex) {
             case 0:
-                tools = wrenches;
+                tools = GTToolTypes.wrenches;
                 break;
             case 1:
-                tools = screwdrivers;
+                tools = GTToolTypes.screwdrivers;
                 break;
             case 2:
-                tools = softHammers;
+                tools = GTToolTypes.softHammers;
                 break;
             case 3:
-                tools = hardHammers;
+                tools = GTToolTypes.hardHammers;
                 break;
             case 4:
-                tools = wireCutters;
+                tools = GTToolTypes.wireCutters;
                 break;
             case 5:
-                tools = crowbars;
+                tools = GTToolTypes.crowbars;
                 break;
         }
 
@@ -400,8 +372,6 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
         builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 8, 18 + 18 + 12);
         return builder.build(this.getHolder(), entityPlayer);
     }
-
-
 
     @Override
     public MultiblockAbility<MetaTileEntityMaintenanceHatch> getAbility() {

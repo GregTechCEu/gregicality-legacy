@@ -865,20 +865,11 @@ public class GATileEntities {
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
         NUCLEAR_BREEDER = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("nuclear_breeder"), GARecipeMaps.NUCLEAR_BREEDER_RECIPES));
 
-        IBlockState basicMinerCasing = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
-        ICubeRenderer basicMinerTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
-        Material basicMinerMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
-        LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC, basicMinerCasing, basicMinerTexture, basicMinerMaterial instanceof SolidMaterial && basicMinerMaterial.hasFlag("GENERATE_FRAME") ? basicMinerMaterial : BlackSteel));
+        LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC));
 
-        IBlockState largeMinerCasing = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
-        ICubeRenderer largeMinerTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
-        Material largeMinerMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
-        LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE, largeMinerCasing, largeMinerTexture, largeMinerMaterial instanceof SolidMaterial && largeMinerMaterial.hasFlag("GENERATE_FRAME") ? largeMinerMaterial : HSSG));
+        LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE));
 
-        IBlockState advancedMinerCasing = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
-        ICubeRenderer advancedMinerTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
-        Material advancedMinerMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
-        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE, advancedMinerCasing, advancedMinerTexture, advancedMinerMaterial instanceof SolidMaterial && advancedMinerMaterial.hasFlag("GENERATE_FRAME") ? advancedMinerMaterial : HSSS));
+        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE));
 
         VOID_MINER[0] = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner"), GAValues.UV, GAConfig.multis.voidMiner.maxTemp));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));

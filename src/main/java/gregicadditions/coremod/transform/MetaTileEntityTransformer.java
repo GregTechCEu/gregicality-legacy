@@ -57,7 +57,7 @@ public class MetaTileEntityTransformer extends ClassMapper {
         public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
             if(name.equals("placeCoverOnSide")) {
                 return new TransformPlaceCoverOnSide(api, super.visitMethod(access, name, desc, signature, exceptions));
-            } else if (name.equals("<preInit2>")) {
+            } else if (name.equals("<init>")) {
                 return new TransformInit(api, super.visitMethod(access, name, desc, signature, exceptions));
             } else if (name.equals("writeInitialSyncData")){
                 return new TransformInitial(api, super.visitMethod(access, name, desc, signature, exceptions), true);
