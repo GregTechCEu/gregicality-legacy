@@ -46,17 +46,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     DecimalFormat formatter = new DecimalFormat("#0.00");
 
     /**
-     * Create large multiblock machine for simple machine.
-     * <p>
-     * Percentage : 80 => 0.8 mean lower
-     * Percentage : 120 => 1.2 mean higher
-     *
-     * @param metaTileEntityId
-     * @param recipeMap
-     * @param EUtPercentage      should be between 0 ~ Integer.MAX_VALUE, Default should be 100
-     * @param durationPercentage should be between 0 ~ Integer.MAX_VALUE, Default should be 100
-     * @param chancePercentage   should be between 0 ~ Integer.MAX_VALUE, Default should be 100
-     * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 1
+     * @deprecated
+     * use {@link LargeSimpleRecipeMapMultiblockController#LargeSimpleRecipeMapMultiblockController(ResourceLocation, RecipeMap, int, int, int, int, boolean, boolean, boolean)
      */
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
         super(metaTileEntityId, recipeMap, false, true, true);
@@ -68,6 +59,22 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         this.stack = stack;
     }
 
+    /**
+     * Create large multiblock machine for simple machine.
+     * <p>
+     * Percentage : 80 => 0.8 mean lower
+     * Percentage : 120 => 1.2 mean higher
+     *
+     * @param metaTileEntityId
+     * @param recipeMap
+     * @param EUtPercentage      should be between 0 ~ Integer.MAX_VALUE, Default should be 100
+     * @param durationPercentage should be between 0 ~ Integer.MAX_VALUE, Default should be 100
+     * @param chancePercentage   should be between 0 ~ Integer.MAX_VALUE, Default should be 100
+     * @param stack              should be between 0 ~ Integer.MAX_VALUE, Default should be 1
+     * @param canDistinct
+     * @param hasMuffler
+     * @param hasMaintenance
+     */
     public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct, boolean hasMuffler, boolean hasMaintenance) {
         super(metaTileEntityId, recipeMap, canDistinct, hasMuffler, hasMaintenance);
         this.recipeMapWorkable = new LargeSimpleMultiblockRecipeLogic(this, EUtPercentage, durationPercentage, chancePercentage, stack);
@@ -76,6 +83,14 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         this.durationPercentage = durationPercentage;
         this.chancePercentage = chancePercentage;
         this.stack = stack;
+    }
+
+    /**
+     * @deprecated
+     * use {@link LargeSimpleRecipeMapMultiblockController#LargeSimpleRecipeMapMultiblockController(ResourceLocation, RecipeMap, int, int, int, int, boolean, boolean, boolean)
+     */
+    public LargeSimpleRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, int EUtPercentage, int durationPercentage, int chancePercentage, int stack, boolean canDistinct) {
+        this(metaTileEntityId, recipeMap, EUtPercentage, durationPercentage, chancePercentage, stack, canDistinct, false, true);
     }
 
     @Override
