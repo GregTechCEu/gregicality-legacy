@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 public class SimpleDustMaterial extends SimpleMaterial {
+    //TODO convert GA_DUSTS into GTControlledRegistry
 
     public static Map<Short, SimpleDustMaterial> GA_DUSTS = new HashMap<>();
 

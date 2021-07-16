@@ -1,5 +1,6 @@
 package gregicadditions.capabilities.impl;
 
+import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
@@ -63,7 +64,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     public static final XSTR XSTR_RAND = new XSTR();
 
     private int timeActive;
-    private static final int minimumMaintenanceTime = 5184000; // 72 real-life hours = 5184000 ticks
+    private static int minimumMaintenanceTime = GAConfig.GT5U.minimumMaintenanceTime;
 
     // Used for data preservation with Maintenance Hatch
     private boolean storedTaped = false;
@@ -135,7 +136,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
             return;
         MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-        if (maintenanceHatch.getType() == 2) {
+        if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
             return;
         }
 
@@ -152,7 +153,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         super.formStructure(context);
         if (hasMaintenance) {
             MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-            if (maintenanceHatch.getType() == 2) {
+            if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
                 this.maintenance_problems = 0b111111;
             } else {
                 readMaintenanceData(maintenanceHatch);

@@ -178,6 +178,13 @@ public class GAConfig {
         public boolean enableZPMandUVBats = false;
         @Config.Name("Batteries - Replace the Ultimate Battery with a MAX Battery")
         public boolean replaceUVwithMAXBat = false;
+
+        @Config.Comment("This value determines the minimum amount of time in ticks a multiblock must be run for a single maintenance problem to have a change to occur. The default is 48 real-world hours.")
+        @Config.RequiresMcRestart
+        public int minimumMaintenanceTime = 3456000;
+
+        @Config.Comment("Whether to enable maintenance. Multiblocks will still require maintenance hatches in their structures, however the involved mechanics are disabled.")
+        public boolean enableMaintenance = true;
     }
 
     @Config.Comment("Config options of GTCE Bees features")
