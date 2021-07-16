@@ -65,7 +65,7 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
                         .or(abilityPartPredicate(GregicAdditionsCapabilities.STEAM)).test(state))
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(
                         GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS, GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS)))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 
