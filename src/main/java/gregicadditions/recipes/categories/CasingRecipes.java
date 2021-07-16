@@ -10,7 +10,9 @@ import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
@@ -562,6 +564,15 @@ public class CasingRecipes {
                 .inputs(GAMetaBlocks.METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.STABALLOY, 2))
                 .input(circuit, Advanced)
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(LARGE_ASSEMBLER, 2))
+                .buildAndRegister();
+
+        // Laser-Safe Casing
+        ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(7680)
+                .fluidInputs(Polybenzimidazole.getFluid(144))
+                .input(frameGt, Zeron100)
+                .input(plate, HG1223, 6)
+                .inputs(OreDictUnifier.get(dye, MarkerMaterials.Color.Black, 6))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(LASER_ENGRAVER))
                 .buildAndRegister();
 
         // GTCE Casings
