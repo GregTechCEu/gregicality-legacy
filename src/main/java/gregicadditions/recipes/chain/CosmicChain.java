@@ -71,7 +71,7 @@ public class CosmicChain { // TODO
                 .fluidOutputs(DeuteriumSuperheavyMix.getFluid(2592))
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(1100000).coilTier(3).euStart(18000000000L).euReturn(50)
+        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(1100000).coilTier(3).euStart(5000000000L).euReturn(50)
                 .fluidInputs(DeuteriumSuperheavyMix.getFluid(144))
                 .fluidInputs(HeavyQuarkEnrichedMix.getFluid(144))
                 .fluidOutputs(HeavyQuarkDegenerateMatter.getFluid(144))
