@@ -351,6 +351,14 @@ public class VariousChains {
                 .notConsumable(IntCircuitIngredient.getIntegratedCircuit(1))
                 .outputs(LithiumChloride.getItemStack(2))
                 .buildAndRegister();
+
+        // Al + 3Cl -> AlCl3
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .input(dust, Aluminium)
+                .fluidInputs(Chlorine.getFluid(3000))
+                .notConsumable(IntCircuitIngredient.getIntegratedCircuit(1))
+                .outputs(AluminiumChloride.getItemStack(4))
+                .buildAndRegister();
     }
 
     private static void hydrogenPeroxide() {
