@@ -184,7 +184,7 @@ public class MultiblockCraftingRecipes {
         // Naquadah Reactor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
-                .fluidInputs(Protactinium233.getMaterial().getFluid(288)) // This doesn't have a use, so I'm giving it one. -bruberu
+                .fluidInputs(Protactinium233.getMaterial().getFluid(L * 2))
                 .input(plate, Tritanium, 8)
                 .input(foil, EnrichedNaquadahAlloy, 24)
                 .input(gear, Duranium, 16)
@@ -813,14 +813,11 @@ public class MultiblockCraftingRecipes {
         // Mega Blast Furnace
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2400).EUt(491520)
                 .fluidInputs(SolderingAlloy.getFluid(L * 64))
-                .fluidInputs(Pyrotheum.getFluid(L * 256))
+                .fluidInputs(Pyrotheum.getFluid(32000))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 64))
                 .inputs(ELECTRIC_BLAST_FURNACE.getStackForm(64))
                 .input(gear, TitanSteel, 16)
                 .input(gearSmall, Seaborgium, 32)
-                .input(wireFine, YttriumBariumCuprate, 64)
-                .input(wireFine, YttriumBariumCuprate, 64)
-                .input(wireFine, YttriumBariumCuprate, 64)
                 .input(wireFine, YttriumBariumCuprate, 64)
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .input(foil, Dubnium, 64)
@@ -830,21 +827,18 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
-                .inputs(UHPIC.getStackForm(64))
+                .inputs(UHPIC.getStackForm(32))
                 .outputs(MEGA_BLAST_FURNACE.getStackForm())
                 .buildAndRegister();
 
         // Mega Vacuum Freezer
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2400).EUt(491520)
                 .fluidInputs(SolderingAlloy.getFluid(L * 64))
-                .fluidInputs(Cryotheum.getFluid(L * 256))
+                .fluidInputs(Cryotheum.getFluid(32000))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 64))
                 .inputs(VACUUM_FREEZER.getStackForm(64))
                 .input(gear, AbyssalAlloy, 16)
                 .input(gearSmall, Duranium, 32)
-                .input(pipeSmall, Zeron100, 64)
-                .input(pipeSmall, Zeron100, 64)
-                .input(pipeSmall, Zeron100, 64)
                 .input(pipeSmall, Zeron100, 64)
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .input(foil, Rutherfordium, 64)
@@ -854,7 +848,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
-                .inputs(UHPIC.getStackForm(64))
+                .inputs(UHPIC.getStackForm(32))
                 .outputs(MEGA_VACUUM_FREEZER.getStackForm())
                 .buildAndRegister();
 
@@ -862,7 +856,7 @@ public class MultiblockCraftingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(2400).EUt(30720)
                 .fluidInputs(SolderingAlloy.getFluid(L * 64))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 32))
-                .inputs(ADVANCED_DISTILLATION_TOWER.getStackForm(16))
+                .inputs(ADVANCED_DISTILLATION_TOWER.getStackForm(4))
                 .input(gear, Zeron100, 8)
                 .input(gear, Zeron100, 8)
                 .input(gearSmall, HSSE, 32)
