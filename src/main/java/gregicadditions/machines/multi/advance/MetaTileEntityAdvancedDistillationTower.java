@@ -89,7 +89,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        maxVoltage = Integer.MAX_VALUE; // don't care about tiered casings, controller will show this value
+        maxVoltage = this.energyContainer.getInputVoltage();
     }
 
     private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
