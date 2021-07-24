@@ -432,33 +432,25 @@ public class BrineChain {
                 .fluidOutputs(Oxygen.getFluid(6000))
                 .buildAndRegister();
 
-        // C6H6O2 + C3H6ClNS + 2H -> C6H6OS + (CH3)2NCH + HClO
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(480)
+        // C6H6O2 + (CH3)2NCClS  + LiAlH4 -> C6H6OS + (CH3)2NCHO + LiCl + AlH3
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(500)
                 .notConsumable(dust, Palladium)
                 .notConsumable(SodiumHydride.getItemStack())
+                .notConsumable(Dimethylformamide.getFluid(500))
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .fluidInputs(DimethylthiocarbamoilChloride.getFluid(1000))
-                .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidOutputs(Mercaphenol.getFluid(1000))
+                .inputs(LithiumAluminiumHydride.getItemStack(6))
+                .fluidOutputs(Mercaptophenol.getFluid(1000))
                 .fluidOutputs(Dimethylformamide.getFluid(1000))
-                .fluidOutputs(HypochlorousAcid.getFluid(1000))
+                .outputs(LithiumChloride.getItemStack(2))
+                .outputs(AluminiumHydride.getItemStack(4))
                 .buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder().duration(40).EUt(120)
                 .fluidInputs(Hydrogen.getFluid(250))
                 .fluidInputs(Dimethylformamide.getFluid(750))
-                .fluidOutputs(HydrogenCrackedDMF.getFluid(1000))
-                .buildAndRegister();
-
-        DISTILLATION_RECIPES.recipeBuilder().duration(160).EUt(480)
-                .fluidInputs(HydrogenCrackedDMF.getFluid(1000))
                 .fluidOutputs(Formaldehyde.getFluid(120))
-                .fluidOutputs(Methanol.getFluid(120))
-                .fluidOutputs(CarbonMonoxde.getFluid(70))
-                .fluidOutputs(Methylamine.getFluid(330))
                 .fluidOutputs(Dimethylamine.getFluid(160))
-                .fluidOutputs(Methane.getFluid(100))
-                .fluidOutputs(Ammonia.getFluid(100))
                 .buildAndRegister();
 
         // CH3OH + NH3 -> CH3OH(NH3)
@@ -475,6 +467,12 @@ public class BrineChain {
                 .fluidOutputs(Dimethylamine.getFluid(800))
                 .fluidOutputs(Methylamine.getFluid(700))
                 .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .fluidInputs(Dimethylamine.getFluid(1000))
+                .fluidInputs(MethylFormate.getFluid(1000))
+                .fluidOutputs(Dimethylformamide.getFluid(1000))
+                .fluidOutputs(Methanol.getFluid(1000));
 
         // MoO3 + 2NaOH -> Na2MoO4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
@@ -510,16 +508,37 @@ public class BrineChain {
                 .notConsumable(SodiumPhosphomolybdate.getItemStack())
                 .notConsumable(SodiumPhosphotungstate.getItemStack())
                 .buildAndRegister();
-
-        // Ir + 2PCl3 + C3H8O + C6H6OS -> ? + 6Cl
-        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(4096)
-                .input(dust, Iridium)
-                .fluidInputs(PhosphorusTrichloride.getFluid(2000))
-                .fluidInputs(IsopropylAlcohol.getFluid(1000))
-                .fluidInputs(Mercaphenol.getFluid(1000))
-                .outputs(DehydrogenationCatalyst.getItemStack())
-                .fluidOutputs(Chlorine.getFluid(6000))
+        //2 IrCl3 + 2 C8H12 -> (C8H12)2IrCl2 + 4 Cl
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, IridiumChloride, 8)
+                .fluidInputs(Cyclooctadiene.getFluid(2000))
+                .outputs(IridiumCyclooctadienylChloride.getItemStack(44))
+                .fluidOutputs(Chlorine.getFluid(4000))
                 .buildAndRegister();
+
+        //4 Li + PCl3 + 2 C3H8O -> 2 LiCl + 2 LiOH + P(C3H7)2Cl
+        CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(500)
+                .input(dust, Lithium, 3)
+                .fluidInputs(Water.getFluid(2000))
+                .fluidInputs(PhosphorusTrichloride.getFluid(1000))
+                .fluidInputs(IsopropylAlcohol.getFluid(2000))
+                .outputs(LithiumChloride.getItemStack(4))
+                .fluidOutputs(LithiumHydroxideSolution.getFluid(2000))
+                .fluidOutputs(ChlorodiisopropylPhosphine.getFluid(1000))
+                .buildAndRegister();
+
+        //4 P(C3H7)2Cl + (C8H12)2IrCl2 + 2 C6H6OS -> 2 IrP2C18H32SOCl + 2 C8H12 + 2 Cl + 2 HCl (divided by 2)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1200)
+                .inputs(IridiumCyclooctadienylChloride.getItemStack(22))
+                .fluidInputs(ChlorodiisopropylPhosphine.getFluid(2000))
+                .fluidInputs(Mercaptophenol.getFluid(1000))
+                .notConsumable(dust, BerylliumFluoride)
+                .outputs(DehydrogenationCatalyst.getItemStack(56))
+                .fluidOutputs(Cyclooctadiene.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .buildAndRegister();
+
 
         // C4H8 + C8H18 -> C4H10 + C8H16
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(120)

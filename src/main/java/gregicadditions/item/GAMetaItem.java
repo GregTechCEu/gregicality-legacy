@@ -514,6 +514,9 @@ public class GAMetaItem extends MaterialMetaItem {
         EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
         EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
 
+        PROTONATED_FULLERENE_SIEVING_MATRIX = addItem(609, "protonated.fullerene.sieving.matrix");
+        SATURATED_FULLERENE_SIEVING_MATRIX =addItem(610, "saturated.fullerene.sieving.matrix");
+
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
