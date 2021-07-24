@@ -2986,8 +2986,8 @@ gregtech.multiblock.recipe=Screw to change recipe. Currently using: %s
 
 gregtech.universal.tooltip.efficiency=Efficiency: %s %%
 
-gregtech.multiblock.universal.energy_used=Energy using: %d EU
-gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Fluid: %.2fmB
+gregtech.multiblock.universal.energy_used=Energy Use: %d EU
+gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Mud: %.2fmB
 gregtech.multiblock.universal.overheat=Overheated!
 
 gregtech.machine.world_accelerator.mode.tile=Tile Entity Mode
