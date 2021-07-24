@@ -3,6 +3,7 @@ package gregicadditions.jei;
 import com.google.common.collect.ImmutableMap;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
+import gregicadditions.jei.multi.drill.FluidDrillingPlantInfo;
 import gregicadditions.jei.multi.mega.*;
 import gregicadditions.jei.multi.miner.*;
 import gregicadditions.jei.multi.nuclear.*;
@@ -106,6 +107,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("steam_oven", new MultiblockInfoRecipeWrapper(new SteamOvenInfo()))
                     .put("cosmic_ray_detector", new MultiblockInfoRecipeWrapper(new CosmicRayDetectorInfo()))
                     .put("electric_implosion", new MultiblockInfoRecipeWrapper(new ElectricImplosionInfo()))
+                    .put("fluid_drilling_plant_1", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[0])))
+                    .put("fluid_drilling_plant_2", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[1])))
+                    .put("fluid_drilling_plant_3", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[2])))
                     .build();
         }
 
@@ -194,6 +198,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                 add(new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()));
                 add(new MultiblockInfoRecipeWrapper(new LargeMassFabricatorInfo()));
                 add(new MultiblockInfoRecipeWrapper(new LargeReplicatorInfo()));
+                add(new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[0])));
+                add(new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[1])));
+                add(new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[2])));
             }
         };
 

@@ -27,9 +27,9 @@ public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
     }
 
     @Override
-    public List<MultiblockShapeInfo> getMatchingShapes() { //TODO change pattern to have the controller face the viewer in jei, fix integral frameworks per page
+    public List<MultiblockShapeInfo> getMatchingShapes() { //TODO fix integral frameworks per page
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-        for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
+//        for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             builder.aisle("#HXMIO#", "#XXSfE#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
                     .aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX");
@@ -51,7 +51,7 @@ public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
                     .where('F', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                     .where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
             shapeInfo.add(builder.build());
-        }
+//        }
         return Lists.newArrayList(shapeInfo);
     }
 
