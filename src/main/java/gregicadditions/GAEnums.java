@@ -1,8 +1,10 @@
 package gregicadditions;
 
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.unification.Element;
@@ -162,14 +164,14 @@ public class GAEnums {
     public static void preInit() {
         // Turbine Overrides
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.STEAM_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID), Textures.SOLID_STEEL_CASING, true);
+                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
+                RecipeMaps.STEAM_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID), Textures.SOLID_STEEL_CASING, true, Textures.LARGE_STEAM_TURBINE_OVERLAY);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.GAS_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), Textures.CLEAN_STAINLESS_STEEL_CASING, false);
+                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
+                RecipeMaps.GAS_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), Textures.CLEAN_STAINLESS_STEEL_CASING, false, Textures.LARGE_GAS_TURBINE_OVERLAY);
         EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.PLASMA_GENERATOR_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), Textures.ROBUST_TUNGSTENSTEEL_CASING, true);
+                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
+                RecipeMaps.PLASMA_GENERATOR_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), Textures.ROBUST_TUNGSTENSTEEL_CASING, true, Textures.LARGE_PLASMA_TURBINE_OVERLAY);
     }
 
     /**

@@ -78,7 +78,6 @@ public class ClientHandler {
     public static SimpleCubeRenderer TRITANIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/tritanium");
     public static SimpleCubeRenderer BLACK_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/black_steel");
     public static SimpleCubeRenderer RED_STEEL_CASING = new SimpleCubeRenderer("casings/metal_casings/red_steel");
-    public static SimpleCubeRenderer GOLD_CASING = new SimpleCubeRenderer("casings/metal_casings/gold");
     public static SimpleCubeRenderer IRON_CASING = new SimpleCubeRenderer("casings/metal_casings/iron");
     public static SimpleCubeRenderer HSS_G_CASING = new SimpleCubeRenderer("casings/metal_casings/hss_g");
     public static SimpleCubeRenderer HSS_S_CASING = new SimpleCubeRenderer("casings/metal_casings/hss_s");

@@ -27,13 +27,13 @@ public class IndustrialPrimitiveBlastFurnaceInfo extends MultiblockInfoPage {
         List<MultiblockShapeInfo> shapes = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
-            builder.aisle("YYY", "YOY", "YYY", "YYY");
+            builder.aisle("YYY", "YCY", "YYY", "YYY");
             for (int num = 0; num < 1 + i; num++) {
                 builder.aisle("YYY", "I#Y", "Y#Y", "Y#Y");
             }
-            builder.aisle("YYY", "YCY", "YYY", "YYY")
+            builder.aisle("YYY", "YOY", "YYY", "YYY")
                     .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS))
-                    .where('C', GATileEntities.INDUSTRIAL_PRIMITIVE_BLAST_FURNACE, EnumFacing.SOUTH)
+                    .where('C', GATileEntities.INDUSTRIAL_PRIMITIVE_BLAST_FURNACE, EnumFacing.NORTH)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[1], EnumFacing.NORTH)
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[1], EnumFacing.WEST)
                     .where('#', Blocks.AIR.getDefaultState());

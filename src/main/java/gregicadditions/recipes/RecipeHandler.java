@@ -162,11 +162,11 @@ public class RecipeHandler {
         WetwareChain.init();
         OpticalChain.init();
         CombinedChains.init();
-        CasingConvesion.init();
+        CasingConversion.init();
         OrganometallicChains.init();
         QuantumDotsChain.init();
         HNIWChain.init();
-        CasingConvesion.init();
+        CasingConversion.init();
     }
 
     /**

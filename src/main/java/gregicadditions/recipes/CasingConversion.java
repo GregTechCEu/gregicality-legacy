@@ -14,7 +14,7 @@ import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregicadditions.GAMaterials.*;
 
 
-public class CasingConvesion {
+public class CasingConversion {
 
     public static void init() {
         // TODO Remove this class for the release after the casing changes release
