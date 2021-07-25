@@ -34,7 +34,7 @@ public class IndustrialPrimitiveBlastFurnaceInfo extends MultiblockInfoPage {
             builder.aisle("YYY", "YOY", "YYY", "YYY")
                     .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS))
                     .where('C', GATileEntities.INDUSTRIAL_PRIMITIVE_BLAST_FURNACE, EnumFacing.NORTH)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[1], EnumFacing.NORTH)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[1], EnumFacing.SOUTH)
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[1], EnumFacing.WEST)
                     .where('#', Blocks.AIR.getDefaultState());
             shapes.add(builder.build());
