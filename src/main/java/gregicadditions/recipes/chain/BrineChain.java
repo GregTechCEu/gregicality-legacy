@@ -623,7 +623,7 @@ public class BrineChain {
 
         // SrSO4 + Na2CO3 + 2C -> SrCO3 + 2CO2 + Na2S
         BLAST_RECIPES.recipeBuilder().duration(360).EUt(120).blastFurnaceTemp(1200)
-                .inputs(StrontiumSulfate.getItemStack(6))
+                .input(dust, Celestine, 6)
                 .input(dust, SodaAsh, 6)
                 .input(dust, Carbon, 2)
                 .outputs(StrontiumCarbonate.getItemStack(5))

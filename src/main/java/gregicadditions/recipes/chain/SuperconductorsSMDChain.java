@@ -380,7 +380,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(480)
                 .inputs(StrontiumChloride.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(StrontiumSulfate.getItemStack(6))
+                .output(dust, Celestine, 6)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
