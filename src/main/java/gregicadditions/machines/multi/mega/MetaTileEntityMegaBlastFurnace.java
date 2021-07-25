@@ -228,14 +228,14 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             Set<ItemStack> countIngredients = new HashSet<>();
             if (matchingRecipe.getInputs().size() != 0) {
                 this.findIngredients(countIngredients, inputs);
-                minMultiplier = Math.min(MAX_ITEMS_LIMIT, this.getMinRatioItem(countIngredients, matchingRecipe, MAX_ITEMS_LIMIT));
+                minMultiplier = this.getMinRatioItem(countIngredients, matchingRecipe, MAX_ITEMS_LIMIT);
             }
 
             Map<String, Integer> countFluid = new HashMap<>();
             if (matchingRecipe.getFluidInputs().size() != 0) {
 
                 this.findFluid(countFluid, fluidInputs);
-                minMultiplier = Math.min(minMultiplier, this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT));
+                minMultiplier = this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT);
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
@@ -299,8 +299,8 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt((int) Math.max(1, EUt * this.getEUtPercentage() / 100))
-                    .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)))
+                    .EUt((int) Math.max(1, EUt))
+                    .duration(duration)
                     .blastFurnaceTemp(recipeTemp);
 
             copyChancedItemOutputs(newRecipe, matchingRecipe, multiplier);

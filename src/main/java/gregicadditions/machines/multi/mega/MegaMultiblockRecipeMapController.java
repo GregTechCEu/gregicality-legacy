@@ -109,7 +109,12 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
 
         public MegaMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage) {
             super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, 256);
+        }
 
+        @Override
+        public long getMaxVoltage() {
+            MetaTileEntityMegaBlastFurnace controller = (MetaTileEntityMegaBlastFurnace) this.metaTileEntity;
+            return controller.maxVoltage;
         }
 
         @Override
@@ -121,14 +126,14 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
             Set<ItemStack> countIngredients = new HashSet<>();
             if (matchingRecipe.getInputs().size() != 0) {
                 this.findIngredients(countIngredients, inputs);
-                minMultiplier = Math.min(MAX_ITEMS_LIMIT, this.getMinRatioItem(countIngredients, matchingRecipe, MAX_ITEMS_LIMIT));
+                minMultiplier = this.getMinRatioItem(countIngredients, matchingRecipe, MAX_ITEMS_LIMIT);
             }
 
             Map<String, Integer> countFluid = new HashMap<>();
             if (matchingRecipe.getFluidInputs().size() != 0) {
 
                 this.findFluid(countFluid, fluidInputs);
-                minMultiplier = Math.min(minMultiplier, this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT));
+                minMultiplier = this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT);
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
