@@ -198,7 +198,7 @@ public class TriniumChain {
         LARGE_MIXER_RECIPES.recipeBuilder().duration(210).EUt(262000)
                 .input(dust, Radium, 6)
                 .inputs(ActiniumTriniumHydroxides.getItemStack(58))
-                .input(PROTONATED_FULLERENE_SIEVING_MATRIX.getMetaItem())
+                .inputs(PROTONATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidInputs(Water.getFluid(2000))
                 .outputs(SATURATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidOutputs(ActiniumRadiumHydroxideSolution.getFluid(2000))
@@ -206,7 +206,7 @@ public class TriniumChain {
 
         //Ke6C65H70B55F55 + 13 H2SbF7 + 59 KrF2 -> 59 Kr + 13 SbF3 + 6 KeF4 + 32 C2H2 + CF4 + 55 BF3 + 32 HF
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(131000)
-                .input(SATURATED_FULLERENE_SIEVING_MATRIX.getMetaItem())
+                .inputs(SATURATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidInputs(FluoroantimonicAcid.getFluid(13000))
                 .fluidInputs(KryptonDifluoride.getFluid(59000))
                 .outputs(AntimonyTrifluoride.getItemStack(52))
@@ -292,7 +292,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         //C2H5ONa + C6H6SO + C4H5F3O2 + HCl -> NaCl + 2 C2H5OH + C8H5F3O2S
-        CHEMICAL_RECIPES.recipeBuilder()
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(500)
                 .inputs(SodiumEthoxide.getItemStack(9))
                 .fluidInputs(EthylTrifluoroacetate.getFluid(1000))
                 .fluidInputs(Acetothienone.getFluid(1000))

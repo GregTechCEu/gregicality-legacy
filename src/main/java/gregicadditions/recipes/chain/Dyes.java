@@ -66,19 +66,19 @@ public class Dyes {
         // 3 [3 H3PO4 + HF] + 3 HF + SiO2 + Na2CO3 -> 9 H3PO4? + [Na2SiF6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
-                .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
+                .fluidInputs(FluoroapatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
-                .outputs(ApatiteSolidResidue.getItemStack(11))
+                .outputs(FluoroapatiteSolidResidue.getItemStack(11))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        // [Na2SiCl6 + 0.25 Fe2O3] + 1.5 HCl -> SiCl4 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
+        // [Na2SiF6 + 0.25 Fe2O3] + 3.5 HCl -> H2SiF6 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
-                .fluidInputs(HydrochloricAcid.getFluid(1500))
-                .inputs(ApatiteSolidResidue.getItemStack(11))
-                .outputs(SiliconChloride.getItemStack(5))
+                .fluidInputs(HydrochloricAcid.getFluid(3500))
+                .inputs(FluoroapatiteSolidResidue.getItemStack(11))
+                .fluidOutputs(FluorosilicicAcid.getFluid(1000))
                 .output(dust, Salt, 2)
                 .fluidOutputs(IronChloride.getFluid(500))
                 .fluidOutputs(Water.getFluid(750))
