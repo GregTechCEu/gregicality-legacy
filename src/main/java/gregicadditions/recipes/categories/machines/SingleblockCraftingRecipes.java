@@ -345,8 +345,8 @@ public class SingleblockCraftingRecipes {
         registerMachineRecipe(GATileEntities.TRANSFORMER_1_AMPS,
                 "KBB", "CM ", "KBB",
                 'M', WORSE_HULL,
-                'C', CABLE_DOUBLE,
-                'B', CABLE_DOUBLE_WORSE,
+                'C', CABLE_SINGLE,
+                'B', CABLE_SINGLE_WORSE,
                 'K', MetaItems.SMALL_COIL);
 
         registerMachineRecipe(GATileEntities.TRANSFORMER_4_AMPS,
