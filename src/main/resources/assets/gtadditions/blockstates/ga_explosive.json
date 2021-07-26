@@ -37,6 +37,20 @@
           "bottom": "gregtech:blocks/explosives/powder_barrel/powder_barrel_top_bottom",
           "top": "gregtech:blocks/explosives/powder_barrel/powder_barrel_top_bottom"
         }
+      },
+      "qcd_charge": {
+        "textures": {
+          "side": "gregtech:blocks/explosives/qcd_charge/qcd_charge_side",
+          "bottom": "gregtech:blocks/explosives/qcd_charge/qcd_charge_top_bottom",
+          "top": "gregtech:blocks/explosives/qcd_charge/qcd_charge_top_bottom"
+        }
+      },
+      "leptonic_charge": {
+        "textures": {
+          "side": "gregtech:blocks/explosives/leptonic_charge/leptonic_charge_side",
+          "bottom": "gregtech:blocks/explosives/leptonic_charge/leptonic_charge_top_bottom",
+          "top": "gregtech:blocks/explosives/leptonic_charge/leptonic_charge_top_bottom"
+        }
       }
     }
   }
