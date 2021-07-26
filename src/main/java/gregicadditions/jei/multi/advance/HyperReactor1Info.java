@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
@@ -27,16 +28,16 @@ public class HyperReactor1Info extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
-         builder.aisle("CCECC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
-                .aisle("CCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
-                .aisle("CCCCC", "G#H#G", "GHHHG", "G#H#G", "CCCCC")
-                .aisle("CCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
-                .aisle("CFSMC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
-                .where('S', GATileEntities.HYPER_REACTOR_I, EnumFacing.SOUTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+         builder.aisle("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
+                .aisle("MCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
+                .aisle("SCCCE", "G#H#G", "GHHHG", "G#H#G", "CCCCC")
+                .aisle("FCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
+                .aisle("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
+                .where('S', GATileEntities.HYPER_REACTOR_I, EnumFacing.WEST)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('C', METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
-                .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
+                .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.EAST)
                 .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS))
                 .where('H', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE))
                 .where('#', Blocks.AIR.getDefaultState());
@@ -45,7 +46,7 @@ public class HyperReactor1Info extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[]{I18n.format("gtadditions.multiblock.hyper_reactor.description")};
     }
 
     @Override

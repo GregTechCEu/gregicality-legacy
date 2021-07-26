@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import gregicadditions.jei.multi.*;
 import gregicadditions.jei.multi.advance.*;
 import gregicadditions.jei.multi.drill.FluidDrillingPlantInfo;
+import gregicadditions.jei.multi.mega.MegaBlastFurnaceInfo;
+import gregicadditions.jei.multi.mega.MegaDistillationTowerInfo;
+import gregicadditions.jei.multi.mega.MegaVacuumFreezerInfo;
 import gregicadditions.jei.multi.miner.*;
 import gregicadditions.jei.multi.nuclear.*;
 import gregicadditions.jei.multi.override.*;
@@ -90,7 +93,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("hyper_reactor_2", new MultiblockInfoRecipeWrapper(new HyperReactor2Info()))
                     .put("hyper_reactor_3", new MultiblockInfoRecipeWrapper(new HyperReactor3Info()))
                     .put("fusion_reactor_4", new MultiblockInfoRecipeWrapper(new FusionReactor4Info()))
-                    .put("qbit_computer", new MultiblockInfoRecipeWrapper(new QubitComputerInfo()))
+                    .put("qubit_computer", new MultiblockInfoRecipeWrapper(new QubitComputerInfo()))
                     .put("drilling_rig", new MultiblockInfoRecipeWrapper(new DrillingRigInfo()))
                     .put("stellar_forge", new MultiblockInfoRecipeWrapper(new StellarForgeInfo()))
                     .put("large_engraver", new MultiblockInfoRecipeWrapper(new LargeEngraverInfo()))
@@ -106,6 +109,10 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("fluid_drilling_plant_1", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[0])))
                     .put("fluid_drilling_plant_2", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[1])))
                     .put("fluid_drilling_plant_3", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[2])))
+                    .put("mega_blast_furnace", new MultiblockInfoRecipeWrapper(new MegaBlastFurnaceInfo()))
+                    .put("mega_vacuum_freezer", new MultiblockInfoRecipeWrapper(new MegaVacuumFreezerInfo()))
+                    .put("mega_distillation_tower", new MultiblockInfoRecipeWrapper(new MegaDistillationTowerInfo()))
+                    .put("large_replicator", new MultiblockInfoRecipeWrapper(new LargeReplicatorInfo()))
                     .build();
         }
 

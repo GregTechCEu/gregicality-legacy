@@ -140,7 +140,9 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
         return Math.max(rigTier, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()));
     }
 
-
+    public int getRigTier() {
+        return this.rigTier;
+    }
 
     @Override
     protected void updateFormedValid() {

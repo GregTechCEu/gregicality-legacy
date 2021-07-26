@@ -1,7 +1,6 @@
 package gregicadditions.jei.multi.drill;
 
 import com.google.common.collect.Lists;
-import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.drill.MetaTileEntityFluidDrillingPlant;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.util.BlockInfo;
@@ -15,10 +14,12 @@ import java.util.List;
 
 public class FluidDrillingPlantInfo extends MultiblockInfoPage {
 
-    private MetaTileEntityFluidDrillingPlant drillingPlant;
+    private final MetaTileEntityFluidDrillingPlant drillingPlant;
+    private final int hatchTier;
 
     public FluidDrillingPlantInfo(MetaTileEntityFluidDrillingPlant drillingPlant) {
         this.drillingPlant = drillingPlant;
+        this.hatchTier = drillingPlant.getRigTier();
     }
 
     @Override
@@ -35,8 +36,8 @@ public class FluidDrillingPlantInfo extends MultiblockInfoPage {
                 .where('S', getController(), EnumFacing.WEST)
                 .where('C', drillingPlant.getCasingState())
                 .where('F', drillingPlant.getFrameState())
-                .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[2], EnumFacing.WEST)
-                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[2], EnumFacing.EAST)
+                .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[hatchTier], EnumFacing.WEST)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[hatchTier], EnumFacing.EAST)
                 .where('#', BlockInfo.EMPTY)
                 .build();
 

@@ -3,20 +3,25 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.components.EmitterCasing;
+import gregicadditions.item.components.FieldGenCasing;
+import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.components.SensorCasing;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.uumatter.TileEntityLargeMassFabricator;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeReplicator;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +71,29 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{};
+        return new String[]{I18n.format("gtadditions.multiblock.large_replicator.description")};
     }
+
+    @Override
+    protected void generateBlockTooltips() {
+        super.generateBlockTooltips();
+
+        for (FieldGenCasing.CasingType casingType : FieldGenCasing.CasingType.values()) {
+            this.addBlockTooltip(GAMetaBlocks.FIELD_GEN_CASING.getItemVariant(casingType), tieredCasingTooltip);
+        }
+
+        for (PumpCasing.CasingType casingType : PumpCasing.CasingType.values()) {
+            this.addBlockTooltip(GAMetaBlocks.PUMP_CASING.getItemVariant(casingType), tieredCasingTooltip);
+        }
+
+        for (SensorCasing.CasingType casingType : SensorCasing.CasingType.values()) {
+            this.addBlockTooltip(GAMetaBlocks.SENSOR_CASING.getItemVariant(casingType), tieredCasingTooltip);
+        }
+
+        for (EmitterCasing.CasingType casingType : EmitterCasing.CasingType.values()) {
+            this.addBlockTooltip(GAMetaBlocks.EMITTER_CASING.getItemVariant(casingType), tieredCasingTooltip);
+        }
+    }
+
+    private static final ITextComponent tieredCasingTooltip = new TextComponentTranslation("gregtech.multiblock.universal.component_casing.tooltip").setStyle(new Style().setColor(TextFormatting.RED));
 }

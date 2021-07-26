@@ -99,7 +99,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
                 .where('m', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
                 .where('R', statePredicate(MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.TUNGSTENSTEEL_FIREBOX)))
                 .where('B', statePredicate(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS)))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 

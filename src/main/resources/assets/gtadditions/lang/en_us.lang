@@ -1571,6 +1571,7 @@ gtadditions.machine.large_cutting.name=Large Cutting Machine
 gtadditions.machine.large_macerator.name=Large Macerator
 gtadditions.machine.large_mixer.name=Large Mixer
 gtadditions.machine.large_sifter.name=Large Sifter
+gtadditions.multiblock.large_sifter.description=A large version of the Sifter
 gtadditions.machine.large_bender_and_forming.name=Large Bending and Forming Machine
 gtadditions.machine.large_packager.name=Large Packaging Machine
 gtadditions.machine.large_multi_use.name=Large Multi Use Machine
@@ -1579,6 +1580,7 @@ gtadditions.machine.large_washing_plant.name=Large Washing Plant
 gtadditions.machine.coke_oven.name=[Deprecated] Coke Oven
 gtadditions.machine.cracker_unit.name=[Deprecated] Cracking Unit
 gtadditions.machine.large_turbine.hot_coolant.name=Hot Coolant Turbine
+gtadditions.machine.hot_coolant_turbine.description=The Hot Coolant Turbine takes in hot coolant and converts it regular coolant. The rate and power produced from this is based on the rotor holder efficiency and speed.
 gtadditions.machine.large_transformer.name=Large Transformer
 gtadditions.machine.void_miner.name=Void Ore Miner
 gtadditions.machine.industrial_primitive_blast_furnace.name=Industrial Primitive Blast Furnace
@@ -1604,10 +1606,14 @@ gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
 gtadditions.machine.large_canning_machine.name=Large Canning Machine
 gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
 gtadditions.machine.large_replicator.name=Large Replicator
+gtadditions.multiblock.large_replicator.description=Replication machine for duplicating materials.
 
 gtadditions.machine.mega_distillation_tower.name=Mega Distillation Tower
+gtadditions.multiblock.mega_distillation_tower.description=Massive Fractional Distillery for separating large quantities of fluids.
 gtadditions.machine.mega_blast_furnace.name=Mega Blast Furnace
+gtadditions.multiblock.mega_blast_furnace.description=Rotary Hearth Furnace for refining large quantities of metals.
 gtadditions.machine.mega_vacuum_freezer.name=Mega Vacuum Freezer
+gtadditions.multiblock.mega_vacuum_freezer.description=Huge Vacuum Chamber for cooling large quantities of material.
 
 gtadditions.machine.naquadah_reactor.mk2.name=Naquadah Reactor MK I
 gtadditions.machine.naquadah_reactor.mk3.name=Naquadah Reactor MK II
@@ -1740,6 +1746,7 @@ gtadditions.machine.multi_fluid_hatch_universal.tooltip.2=Tank Count: §b%d
 
 gtadditions.machine.gas_centrifuge.name=Gas Centrifuge
 gtadditions.machine.qubit_computer.name=Quantum Computer
+gtadditions.multiblock.qubit_computer.description=Utilizes circuits to produce qubits for advanced machine recipes.
 gtadditions.machine.stellar_forge.name=Stellar Forge
 gtadditions.machine.void_miner.uhv.name=Void Miner MK II
 gtadditions.machine.void_miner.uev.name=Void Miner MK III
@@ -2966,8 +2973,11 @@ gregtech.multiblock.large_naquadah_reactor.tritium_amount=Tritium: %dmb
 gregtech.multiblock.large_naquadah_reactor.oxygen_amount=Oxygen Plasma: %sL
 gregtech.multiblock.large_naquadah_reactor.oxygen_boosted=Oxygen Plasma boosted.
 gregtech.multiblock.large_naquadah_reactor.supply_tritium_to_boost=Supply Oxygen Plasma to boost.
+gtadditions.multiblock.large_naquadah_reactor.description=Large Version of the Naquadah Reactor generator.
 gtadditions.multiblock.hyper_reactor.tooltip.1=Boost With: %s
 gtadditions.multiblock.hyper_reactor.tooltip.2=Max Voltage: %,d
+gtadditions.multiblock.hyper_reactor.description=The Hyper Reactor uses Hyper Fuel to produce large amounts of power. The power output can be boosted with various fluids.
+gtadditions.multiblock.stellar_forge.description=The Stellar Forge produces late game materials using very powerful explosives.
 
 gtadditions.multiblock.battery_tower.tooltip.1=The Battery Tower is a large multiblock battery that can store large amounts of EU.
 gtadditions.multiblock.battery_tower.tooltip.2=All of the cells in the tower need to be of the same tier and the tower will drain %d%% of the cells' voltage tier per tick.
@@ -2994,7 +3004,9 @@ gregtech.machine.world_accelerator.mode.tile=Tile Entity Mode
 gregtech.machine.world_accelerator.mode.entity=Entity Mode
 
 gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
-gregtech.multiblock.universal.framework.tooltip=The framework casings define the maximum voltage tier the multiblock is able to run.
+gregtech.multiblock.universal.framework.tooltip=The framework casings define the maximum voltage tier the multiblock is able to run at.
+
+gregtech.multiblock.universal.component_casing.tooltip=The tier of this casing determines the maximum voltage the multiblock is able to run at. Any tier casing can be used.
 
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.size=Current size: %d
 gregtech.multiblock.machine.primitive_blast_furnace.industrial.fuelUnitsLeft=Fuel Unit Left: %d Units
@@ -3068,6 +3080,9 @@ gtadditions.multiblock.mega_blast_logic.tooltip.1=EU/t Usage: §eParallel Amount
 gtadditions.multiblock.mega_blast_logic.tooltip.2=Prioritizes Parallel Recipes over Heating Coil Bonuses.
 
 gtadditions.multiblock.advanced_chemical_reactor.tooltip.1=Does not run in parallel when running chemical plant recipes.
+
+gtadditions.multiblock.preview.left_or_right=Can only be placed in the second layer, on the left or right sides, excluding the front and back faces
+gtadditions.multiblock.preview.rear_output=Can only be placed in the second layer in the center of the back face
 
 item.material.oreprefix.plateCurved=Curved %s Plate
 item.material.oreprefix.ingotDouble=Double %s Ingot

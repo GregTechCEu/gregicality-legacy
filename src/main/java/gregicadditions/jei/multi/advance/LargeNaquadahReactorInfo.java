@@ -13,6 +13,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumFacing;
 
 import java.util.Collections;
@@ -31,16 +32,16 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder()
-                .aisle("#CEC#", "#CGC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
+                .aisle("#CMC#", "#CSC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
                 .aisle("CCCCC", "CPAPC", "CgAgC", "#PAP#", "#PAP#", "CgAgC", "CPAPC", "#CCC#")
                 .aisle("CCCCf", "GAFAG", "CAFAC", "CAFAC", "CAFAC", "CAFAC", "GAFAG", "#CCC#")
                 .aisle("CCCCC", "CPAPC", "CgAgC", "#PAP#", "#PAP#", "CgAgC", "CPAPC", "#CCC#")
-                .aisle("#CMC#", "#CSC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
-                .where('S', GATileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.SOUTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .aisle("#CEC#", "#CGC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
+                .where('S', GATileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.NORTH)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                 .where('C', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
-                .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.NORTH)
+                .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.SOUTH)
                 .where('Y', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.FUSION_COIL))
                 .where('F', MetaBlocks.FRAMES.get(Naquadria).getDefaultState())
                 .where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
@@ -53,7 +54,7 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{"Temporary Placeholder"};
+        return new String[]{I18n.format("gtadditions.multiblock.large_naquadah_reactor.description")};
     }
 
     @Override
