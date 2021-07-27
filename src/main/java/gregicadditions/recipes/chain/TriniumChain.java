@@ -78,6 +78,7 @@ public class TriniumChain {
                 .inputs(CesiumCarboranePrecusor.getItemStack(38))
                 .inputs(SodiumHydride.getItemStack(2))
                 .fluidInputs(BoraneDimethylsulfide.getFluid(1000))
+                .notConsumable(Tetrahydrofuran.getFluid(250))
                 .outputs(CesiumCarborane.getItemStack(25))
                 .output(dust, Salt, 2)
                 .fluidOutputs(Trimethylamine.getFluid(1000))
@@ -186,7 +187,7 @@ public class TriniumChain {
                 .output(dust, RockSalt, 12)
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(32768)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(32750)
                 .input(wireFine, CarbonNanotubes)
                 .inputs(Fullerene.getItemStack())
                 .inputs(Fluorocarborane.getItemStack(125))
@@ -236,7 +237,7 @@ public class TriniumChain {
                 .fluidInputs(MoltenCalciumSalts.getFluid(1000))
                 .output(dust, Trinium)
                 .output(dust, Calcium, 2)
-                .fluidOutputs(Fluorine.getFluid(7000))
+                .fluidOutputs(Fluorine.getFluid(6000))
                 .buildAndRegister();
 
         //QoL to hook up the acetylene output into the fullerene chain
@@ -250,7 +251,7 @@ public class TriniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(500)
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Acetylene.getFluid(2000))
-                .notConsumable(OreDictUnifier.get(dust, Olivine))
+                .notConsumable(OreDictUnifier.get(dust, Vinteum))
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(Naphthalene.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(2000))
@@ -275,14 +276,14 @@ public class TriniumChain {
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(500)
+        BLAST_RECIPES.recipeBuilder().duration(190).EUt(500).blastFurnaceTemp(900)
                 .input(dust, Phosphorus, 4)
                 .input(dust, Sulfur, 10)
                 .outputs(PhosphorousPentasulfide.getItemStack(14))
                 .buildAndRegister();
 
         //P4S10 + 10 C4H6O2 + 10 C2H3OCl -> P4O10 + 10 C6H6SO + 10 [HCl + H2O]
-        CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(210).EUt(500)
                 .inputs(PhosphorousPentasulfide.getItemStack(7))
                 .fluidInputs(Succinaldehyde.getFluid(5000))
                 .fluidInputs(AcetylChloride.getFluid(5000))
@@ -292,7 +293,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         //C2H5ONa + C6H6SO + C4H5F3O2 + HCl -> NaCl + 2 C2H5OH + C8H5F3O2S
-        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(500)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(1000)
                 .inputs(SodiumEthoxide.getItemStack(9))
                 .fluidInputs(EthylTrifluoroacetate.getFluid(1000))
                 .fluidInputs(Acetothienone.getFluid(1000))
@@ -302,7 +303,7 @@ public class TriniumChain {
                 .output(dust, Salt, 2)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(8100)
+        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(4100)
                 .fluidInputs(ActiniumRadiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(12000))
                 .fluidOutputs(ActiniumRadiumNitrateSolution.getFluid(13000))
@@ -320,7 +321,7 @@ public class TriniumChain {
                 .fluidOutputs(Water.getFluid(13000))
                 .buildAndRegister();
 
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(160).EUt(500)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(210).EUt(500)
                 .inputs(ActiniumNitrate.getItemStack(13))
                 .output(dust, Actinium)
                 .fluidOutputs(Nitrogen.getFluid(3000))
