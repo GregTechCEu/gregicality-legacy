@@ -228,6 +228,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     public void invalidateStructure() {
         super.invalidateStructure();
         this.maxVoltage = 0;
+        ((LargeSimpleMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
     }
 
     @Override
@@ -273,6 +274,18 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
 
         public int getStack() {
             return stack;
+        }
+
+        protected List<IItemHandlerModifiable> getInputBuses() {
+            RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
+            return controller.getAbilities(MultiblockAbility.IMPORT_ITEMS);
+        }
+
+        /**
+         * Used to reset cached values after multiblock structure deforms
+         */
+        protected void invalidate() {
+            lastRecipeIndex = 0;
         }
 
         @Override
