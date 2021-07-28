@@ -5,7 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -68,7 +68,7 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 	}
 
 	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.POTIN);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeElectrolyzer.casingMaterial, defaultCasingState);
+	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeElectrolyzer.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
@@ -77,7 +77,7 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeElectrolyzer.casingMaterial, POTIN_CASING);
+		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeElectrolyzer.casingMaterial, POTIN_CASING);
 	}
 
 	@Nonnull

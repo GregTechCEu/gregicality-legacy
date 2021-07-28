@@ -12,8 +12,13 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,9 +55,17 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[] {I18n.format("gtadditions.multiblock.plasma_condenser.description")};
     }
 
+    @Override
+    protected void generateBlockTooltips() {
+        super.generateBlockTooltips();
+
+        ITextComponent casingTooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 25).setStyle(new Style().setColor(TextFormatting.RED));
+
+        this.addBlockTooltip(GAMetaBlocks.METAL_CASING_1.getItemVariant(MetalCasing1.CasingType.HASTELLOY_N), casingTooltip);
+    }
 
     @Override
     public float getDefaultZoom() {

@@ -5,7 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -67,7 +67,7 @@ public class TileEntityLargeCutting extends MultiRecipeMapMultiblockController {
 	}
 
 	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeCutting.casingMaterial, defaultCasingState);
+	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeCutting.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
@@ -76,7 +76,7 @@ public class TileEntityLargeCutting extends MultiRecipeMapMultiblockController {
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeCutting.casingMaterial, STELLITE_CASING);
+		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeCutting.casingMaterial, STELLITE_CASING);
 	}
 
 	@Override

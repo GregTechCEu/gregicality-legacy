@@ -73,8 +73,14 @@ public class AssemblyLineInfo extends MultiblockInfoPage {
 
 		ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.only", itemStack.getDisplayName()).setStyle(new Style().setColor(TextFormatting.RED));
 
+		ITextComponent outputTooltip = new TextComponentTranslation(
+				"gregtech.multiblock.preview.only_location",
+				new TextComponentTranslation("gtadditions.multiblock.preview.location_end"))
+				.setStyle(new Style().setColor(TextFormatting.RED));
+
 		for(int i = 0; i < GTValues.V.length; ++i) {
 			this.addBlockTooltip(MetaTileEntities.ITEM_EXPORT_BUS[i].getStackForm(), defaultText);
+			this.addBlockTooltip(MetaTileEntities.ITEM_EXPORT_BUS[i].getStackForm(), outputTooltip);
 			this.addBlockTooltip(MetaTileEntities.ITEM_IMPORT_BUS[i].getStackForm(), tooltip);
 			this.addBlockTooltip(MetaTileEntities.FLUID_EXPORT_HATCH[i].getStackForm(), defaultText);
 			this.addBlockTooltip(MetaTileEntities.FLUID_IMPORT_HATCH[i].getStackForm(), defaultText);

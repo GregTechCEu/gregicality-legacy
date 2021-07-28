@@ -9,7 +9,7 @@ import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -76,7 +76,7 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
     }
 
     private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeBrewery.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeBrewery.casingMaterial, defaultCasingState);
 
     public IBlockState getCasingState() {
         return casingState;
@@ -84,7 +84,7 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeBrewery.casingMaterial, ClientHandler.GRISIUM_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeBrewery.casingMaterial, ClientHandler.GRISIUM_CASING);
     }
 
     @Override

@@ -7,7 +7,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -79,7 +79,7 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
     }
 
     private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMassFabricator.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMassFabricator.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -88,7 +88,7 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMassFabricator.casingMaterial, ClientHandler.TRITANIUM_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMassFabricator.casingMaterial, ClientHandler.TRITANIUM_CASING);
     }
 
     @Override

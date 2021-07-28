@@ -38,6 +38,9 @@ import static gregtech.api.unification.material.Materials.Radon;
 
 public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
 
+    public static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+    };
 
     public MetaTileEntityHyperReactorII(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
@@ -115,7 +118,7 @@ public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
                 .aisle("###CCCCCCCCC###", "##C##CCCCC##C##", "###CCCCCCCCC###")
                 .aisle("####CCCCCCC####", "###CC#####CC###", "####CCCCCCC####")
                 .aisle("#######C#######", "#####CCSCC#####", "#######C#######")
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('#', (tile) -> true)
                 .where('S', selfPredicate())
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))

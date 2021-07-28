@@ -1559,11 +1559,12 @@ public class GAConfig {
         }
 
         public static class HeatingCoils {
-            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Adding Superconducting and Fusion Coils is recommended. Example: \"superconductor\", \"fusion_coil\"")
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. The default and recommended configs are for Superconducting and Fusion Coils. Example: \"superconductor\", \"fusion_coil\"")
             @Config.Name("GTCE Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gtceHeatingCoilsBlacklist = new String[]{
-                    ""
+                    "superconductor",
+                    "fusion_coil"
             };
             @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines.")
             @Config.Name("Gregicality Heating Coil Blacklist")

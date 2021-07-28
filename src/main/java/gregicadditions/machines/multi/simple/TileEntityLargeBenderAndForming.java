@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -78,7 +78,7 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
     }
 
     private static final IBlockState defaultCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeBenderAndForming.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeBenderAndForming.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -87,7 +87,7 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeBenderAndForming.casingMaterial, STABLE_TITANIUM_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeBenderAndForming.casingMaterial, STABLE_TITANIUM_CASING);
     }
 
     @Override

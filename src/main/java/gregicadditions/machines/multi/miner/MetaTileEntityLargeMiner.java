@@ -6,13 +6,12 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -27,7 +26,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
@@ -91,26 +89,26 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
         this.type = type;
         switch (this.type) {
             case LARGE: {
-                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
-                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
 
-                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
                 this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSG;
                 break;
             }
             case ADVANCE: {
-                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
-                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
 
-                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
                 this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSS;
                 break;
             }
             default: {
-                this.casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
-                this.casingTexture = MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
 
-                Material possibleMaterial = MultiUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
                 this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : BlackSteel;
                 break;
             }

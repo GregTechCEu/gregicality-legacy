@@ -70,6 +70,11 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
     }
 
     @Override
+    public float getDefaultZoom() {
+        return 0.4f;
+    }
+
+    @Override
     public String[] getDescription() {
         return new String[]{I18n.format("gtadditions.multiblock.large_replicator.description")};
     }

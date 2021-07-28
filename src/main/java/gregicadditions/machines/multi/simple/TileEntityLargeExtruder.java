@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -60,7 +60,7 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 	}
 
 	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeExtruder.casingMaterial, defaultCasingState);
+	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeExtruder.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
@@ -69,7 +69,7 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeExtruder.casingMaterial, INCONEL_625_CASING);
+		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeExtruder.casingMaterial, INCONEL_625_CASING);
 	}
 
 	@Override

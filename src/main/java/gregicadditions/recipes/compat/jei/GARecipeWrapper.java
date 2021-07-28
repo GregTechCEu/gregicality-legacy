@@ -131,7 +131,9 @@ public class GARecipeWrapper implements IRecipeWrapper {
         minecraft.fontRenderer.drawString(I18n.format("gregtech.recipe.duration", recipe.getDuration() / 20f), 0, yPosition += lineHeight, 0x111111);
         for (Map.Entry<RecipeProperty<?>, Object> propertyEntry : recipe.getRecipePropertyStorage().getRecipeProperties()) {
             // todo blacklist coils
-            propertyEntry.getKey().drawInfo(minecraft, 0, yPosition += lineHeight, 0x111111, propertyEntry.getValue());
+            if (!propertyEntry.getKey().isHidden()) {
+                propertyEntry.getKey().drawInfo(minecraft, 0, yPosition += lineHeight, 0x111111, propertyEntry.getValue());
+            }
         }
     }
 

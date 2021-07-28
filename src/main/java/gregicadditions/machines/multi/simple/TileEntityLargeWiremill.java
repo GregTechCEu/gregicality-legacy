@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -59,7 +59,7 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 	}
 
 	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeWiremill.casingMaterial, defaultCasingState);
+	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeWiremill.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
@@ -68,7 +68,7 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeWiremill.casingMaterial, MARAGING_STEEL_250_CASING);
+		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeWiremill.casingMaterial, MARAGING_STEEL_250_CASING);
 	}
 
 	@Override

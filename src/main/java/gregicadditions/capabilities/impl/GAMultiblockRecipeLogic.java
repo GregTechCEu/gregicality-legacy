@@ -31,6 +31,13 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
         super(tileEntity);
     }
 
+    /**
+     * Used to reset cached values after multiblock structure deforms
+     */
+    protected void invalidate() {
+        lastRecipeIndex = 0;
+    }
+
     protected List<IItemHandlerModifiable> getInputBuses() {
         RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
         return controller.getAbilities(MultiblockAbility.IMPORT_ITEMS);

@@ -7,6 +7,7 @@ import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.recipes.CountableIngredient;
@@ -228,7 +229,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     public void invalidateStructure() {
         super.invalidateStructure();
         this.maxVoltage = 0;
-        ((LargeSimpleMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
     }
 
     @Override
@@ -279,13 +279,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected List<IItemHandlerModifiable> getInputBuses() {
             RecipeMapMultiblockController controller = (RecipeMapMultiblockController) metaTileEntity;
             return controller.getAbilities(MultiblockAbility.IMPORT_ITEMS);
-        }
-
-        /**
-         * Used to reset cached values after multiblock structure deforms
-         */
-        protected void invalidate() {
-            lastRecipeIndex = 0;
         }
 
         @Override

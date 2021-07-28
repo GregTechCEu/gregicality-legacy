@@ -7,7 +7,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -68,7 +68,7 @@ public class TileEntityLargeExtractor extends MultiRecipeMapMultiblockController
     }
 
     private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeExtractor.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeExtractor.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -77,7 +77,7 @@ public class TileEntityLargeExtractor extends MultiRecipeMapMultiblockController
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeExtractor.casingMaterial, ClientHandler.TALONITE_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeExtractor.casingMaterial, ClientHandler.TALONITE_CASING);
     }
 
     @Override

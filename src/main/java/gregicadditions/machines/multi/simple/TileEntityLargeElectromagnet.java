@@ -7,7 +7,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -66,7 +66,7 @@ public class TileEntityLargeElectromagnet extends MultiRecipeMapMultiblockContro
     }
 
     private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeElectromagnet.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeElectromagnet.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -75,7 +75,7 @@ public class TileEntityLargeElectromagnet extends MultiRecipeMapMultiblockContro
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeElectromagnet.casingMaterial, ClientHandler.BABBITT_ALLOY_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeElectromagnet.casingMaterial, ClientHandler.BABBITT_ALLOY_CASING);
     }
 
     @Override

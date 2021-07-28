@@ -4,7 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -65,7 +65,7 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 	}
 
 	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA);
-	public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeCentrifuge.casingMaterial, defaultCasingState);
+	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeCentrifuge.casingMaterial, defaultCasingState);
 
 
 	public IBlockState getCasingState() {
@@ -74,7 +74,7 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeCentrifuge.casingMaterial, TUMBAGA_CASING);
+		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeCentrifuge.casingMaterial, TUMBAGA_CASING);
 	}
 
 	@Override

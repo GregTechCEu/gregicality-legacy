@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.components.PumpCasing;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -64,7 +64,7 @@ public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockControlle
     }
 
     private static final IBlockState defaultCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeArcFurnace.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeArcFurnace.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -73,7 +73,7 @@ public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockControlle
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeArcFurnace.casingMaterial, Textures.HEAT_PROOF_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeArcFurnace.casingMaterial, Textures.HEAT_PROOF_CASING);
     }
 
     @Override

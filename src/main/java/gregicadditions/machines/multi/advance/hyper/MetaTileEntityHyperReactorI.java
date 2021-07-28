@@ -40,6 +40,9 @@ import static gregtech.api.unification.material.Materials.Helium;
 
 public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
 
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+    };
 
     public MetaTileEntityHyperReactorI(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
@@ -106,7 +109,7 @@ public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
                 .aisle("CCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
                 .aisle("CCSCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
                 .where('S', selfPredicate())
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_UV)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
                 .where('H', statePredicate(GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CORE)))

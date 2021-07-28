@@ -11,19 +11,20 @@ import gregtech.api.unification.material.type.Material;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 
 import static gregicadditions.item.GAMetaBlocks.*;
 import static gregtech.api.render.Textures.*;
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 
-public class MultiUtils {
+public class CasingUtils {
 
     /**
      * Expand this method when new casing classes are created
      *
      * @return Config Casing BlockState
      */
-    public static IBlockState getConfigCasing(String casingMaterial, IBlockState defaultState) {
+    public static IBlockState getConfigCasingBlockState(String casingMaterial, IBlockState defaultState) {
         casingMaterial = casingMaterial.toLowerCase();
         switch (casingMaterial) {
             case "bronze": {
@@ -152,5 +153,57 @@ public class MultiUtils {
         }
 
         return defaultCasingMaterial == null ? Materials.Steel : defaultCasingMaterial;
+    }
+
+    /**
+     * Expand this method when new casing classes are created
+     *
+     * @return Config Casing ItemStack
+     */
+    public static ItemStack getConfigCasingItemStack(String casingMaterial, ItemStack defaultState) {
+        casingMaterial = casingMaterial.toLowerCase();
+        switch (casingMaterial) {
+            case "bronze": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS);
+            }
+            case "invar": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
+            }
+            case "aluminium": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
+            }
+            case "steel": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+            }
+            case "stainless_steel": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
+            }
+            case "titanium": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
+            }
+            case "tungstensteel": {
+                return MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
+            }
+            case "hss_g": { // Account for naming inconsistency
+                return METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.HSS_G);
+            }
+            case "hss_s": {
+                return METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.HSS_S);
+            }
+        }
+        for (MetalCasing1.CasingType casingType : MetalCasing1.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return METAL_CASING_1.getItemVariant(casingType);
+        }
+        for (MetalCasing2.CasingType casingType : MetalCasing2.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return METAL_CASING_2.getItemVariant(casingType);
+        }
+        for (NuclearCasing.CasingType casingType : NuclearCasing.CasingType.values()) {
+            if (casingType.getName().equals("casing_" + casingMaterial))
+                return NUCLEAR_CASING.getItemVariant(casingType);
+        }
+
+        return defaultState == null ? MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID) : defaultState;
     }
 }

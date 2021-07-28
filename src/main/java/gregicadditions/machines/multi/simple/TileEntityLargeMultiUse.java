@@ -5,7 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -88,7 +88,7 @@ public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController 
     }
 
     private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
-    public static final IBlockState casingState = MultiUtils.getConfigCasing(GAConfig.multis.largeMultiUse.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMultiUse.casingMaterial, defaultCasingState);
 
 
     public IBlockState getCasingState() {
@@ -97,7 +97,7 @@ public class TileEntityLargeMultiUse extends MultiRecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return MultiUtils.getConfigCasingTexture(GAConfig.multis.largeMultiUse.casingMaterial, STABALLOY_CASING);
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMultiUse.casingMaterial, STABALLOY_CASING);
     }
 
     @Override

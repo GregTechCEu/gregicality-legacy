@@ -5,7 +5,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.machines.multi.GAFuelRecipeLogic;
 import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.machines.multi.IMaintenance;
-import gregicadditions.machines.multi.MultiUtils;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -107,11 +107,11 @@ public class MetaTileEntityLargeCombustionEngine extends GAFueledMultiblockContr
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return MultiUtils.getConfigCasingTexture("", STABLE_TITANIUM_CASING);
+		return CasingUtils.getConfigCasingTexture("", STABLE_TITANIUM_CASING);
 	}
 
 	public IBlockState getCasingState() {
-		return MultiUtils.getConfigCasing("", MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE));
+		return CasingUtils.getConfigCasingBlockState("", MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE));
 	}
 
 	@Nonnull

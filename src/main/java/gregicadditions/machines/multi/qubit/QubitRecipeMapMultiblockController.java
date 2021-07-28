@@ -17,7 +17,7 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-public abstract class QubitRecipeMapMultiblockController extends RecipeMapMultiblockController {
+public abstract class QubitRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
     protected IQubitContainer inputQubit;
     protected IQubitContainer outputQubit;
