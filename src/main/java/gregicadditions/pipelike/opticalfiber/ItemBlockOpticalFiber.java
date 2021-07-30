@@ -4,7 +4,7 @@ import gregicadditions.GAUtility;
 import gregtech.api.GTValues;
 import gregtech.api.pipenet.block.ItemBlockPipe;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.LocalisationUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -21,12 +21,12 @@ public class ItemBlockOpticalFiber extends ItemBlockPipe<OpticalFiberSize, Optic
         super(block);
     }
 
-    @SideOnly(Side.CLIENT)
+    @SuppressWarnings("deprecation")
     public String getItemStackDisplayName(ItemStack stack) {
         OpticalFiberSize pipeType = blockPipe.getItemPipeType(stack);
         OrePrefix orePrefix = pipeType.getOrePrefix();
         String specfiedUnlocalized = "item.oreprefix." + orePrefix.name();
-        return I18n.format(specfiedUnlocalized);
+        return LocalisationUtils.format(specfiedUnlocalized);
     }
 
     @Override

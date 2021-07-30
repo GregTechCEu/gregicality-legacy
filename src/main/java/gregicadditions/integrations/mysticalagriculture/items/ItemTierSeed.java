@@ -6,6 +6,7 @@ import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import com.blakebr0.mysticalagriculture.items.ItemSeed;
 import com.blakebr0.mysticalagriculture.lib.Tooltips;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.LocalisationUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -31,9 +32,9 @@ public class ItemTierSeed extends ItemSeed implements IColoredItem {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
+    @SuppressWarnings("deprecation")
     public String getItemStackDisplayName(ItemStack stack) {
-        return I18n.format("item.ga_seed.material.name", material.getLocalizedName());
+        return LocalisationUtils.format("item.ga_seed.material.name", material.getLocalizedName());
     }
 
     @Override

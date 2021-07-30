@@ -1,13 +1,10 @@
 package gregicadditions.blocks;
 
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.LocalisationUtils;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 public class GAMetalCasingItemBlock extends ItemBlock {
 
     private final GAMetalCasing metalCasingBlock;
@@ -30,10 +27,10 @@ public class GAMetalCasingItemBlock extends ItemBlock {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
+    @SuppressWarnings("deprecation")
     public String getItemStackDisplayName(ItemStack stack) {
         Material material = getBlockState(stack).getValue(metalCasingBlock.variantProperty);
-        return I18n.format("tile.ga_metal_casing.material.name", material.getLocalizedName());
+        return LocalisationUtils.format("tile.ga_metal_casing.material.name", material.getLocalizedName());
     }
 
 

@@ -3,10 +3,9 @@ package gregicadditions.item.behaviors;
 import gregtech.api.items.metaitem.stats.IItemColorProvider;
 import gregtech.api.items.metaitem.stats.IItemNameProvider;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.LocalisationUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
 
@@ -41,11 +40,11 @@ public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
+    @SuppressWarnings("deprecation")
     public String getItemStackDisplayName(ItemStack itemStack, String unlocalizedName) {
         if (material != null)
-            return I18n.format(unlocalizedName, material.getLocalizedName());
+            return LocalisationUtils.format(unlocalizedName, material.getLocalizedName());
         else
-            return I18n.format(unlocalizedName, I18n.format(this.unlocalizedName));
+            return LocalisationUtils.format(unlocalizedName, I18n.format(this.unlocalizedName));
     }
 }
