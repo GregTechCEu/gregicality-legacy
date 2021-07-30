@@ -45,6 +45,6 @@ public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
         if (material != null)
             return LocalisationUtils.format(unlocalizedName, material.getLocalizedName());
         else
-            return LocalisationUtils.format(unlocalizedName, I18n.format(this.unlocalizedName));
+            return LocalisationUtils.format(unlocalizedName, LocalisationUtils.format(this.unlocalizedName));
     }
 }
