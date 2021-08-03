@@ -57,7 +57,6 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
     private boolean isActive;
     private boolean canWork;
 
-    private int voltageTier;
     private int overclockAmount;
 
     private final int rigTier;
@@ -109,8 +108,7 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
     private void initializeAbilities() {
         this.exportFluidHandler = new FluidTankList(true, getAbilities(MultiblockAbility.EXPORT_FLUIDS));
         this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        this.voltageTier = getVoltageTier();
-        this.overclockAmount = Math.max(0, this.voltageTier - this.rigTier);
+        this.overclockAmount = Math.max(0, getVoltageTier() - this.rigTier);
     }
 
     private void resetTileAbilities() {
@@ -133,11 +131,19 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
     }
 
     public long getMaxVoltage() {
-        return GAValues.V[voltageTier];
+        return GAValues.V[getVoltageTier()];
     }
 
     public int getVoltageTier() {
-        return Math.max(rigTier, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()));
+        int voltageCap = this.rigTier == 2 ? 5 : this.rigTier == 3 ? 8 : 9;
+        // adjust voltage for hatch amperage
+        int inputVoltage = GAUtility.getTierByVoltage(energyContainer.getInputVoltage());
+
+        if (inputVoltage < this.rigTier)
+            return this.rigTier;
+        else if (inputVoltage > voltageCap)
+            return voltageCap;
+        return inputVoltage;
     }
 
     public int getRigTier() {
@@ -330,7 +336,7 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.fluid", fluidName));
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_capacity", oilWorldInfo.capacity / 1000));
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.chunk_remaining", oilWorldInfo.current / 1000));
-                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.replenish", oilWorldInfo.type.replenishRate * voltageTier));
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.drilling_rig.replenish", oilWorldInfo.type.replenishRate * getVoltageTier()));
             }
         }
     }
