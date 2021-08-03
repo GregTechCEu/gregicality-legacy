@@ -15,6 +15,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
@@ -66,7 +67,7 @@ public class CosmicRayDetectorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[] {I18n.format("gtadditions.multiblock.cosmic_ray_detector.description")};
     }
 
 

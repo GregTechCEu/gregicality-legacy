@@ -46,7 +46,6 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 	protected BlockPattern createStructurePattern() {
 		return FactoryBlockPattern.start()
 				.aisle("XXXX", "XXXX", "XXX#")
-//				.aisle("XXXX", "XCPX", "XXX#").setRepeatable(0, 5)
 				.aisle("XXXX", "XCPX", "XXX#").setRepeatable(2, 6)
 				.aisle("XXXX", "XSXX", "XXX#")
 				.setAmountAtLeast('L', 9)

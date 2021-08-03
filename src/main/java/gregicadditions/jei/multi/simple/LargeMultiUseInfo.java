@@ -50,6 +50,6 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{"Temporary Placeholder"};
+		return new String[]{"This Multiblock will be removed in the next update. Use the dedicated multiblocks for each machine instead."};
 	}
 }

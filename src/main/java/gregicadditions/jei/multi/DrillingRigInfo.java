@@ -48,7 +48,7 @@ public class DrillingRigInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[] {"This Multiblock will be removed in the next update. Use the Fluid Drilling Plants instead."};
     }
 
 

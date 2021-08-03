@@ -64,6 +64,8 @@ public class StellarForgeInfo extends MultiblockInfoPage {
         return new String[] {I18n.format("gtadditions.multiblock.stellar_forge.description")};
     }
 
+    private static final ITextComponent emitterTooltip = new TextComponentTranslation("gregtech.multiblock.universal.component_casing.tooltip").setStyle(new Style().setColor(TextFormatting.RED));
+
     @Override
     protected void generateBlockTooltips() {
         super.generateBlockTooltips();
@@ -72,8 +74,6 @@ public class StellarForgeInfo extends MultiblockInfoPage {
             this.addBlockTooltip(GAMetaBlocks.EMITTER_CASING.getItemVariant(casingType), emitterTooltip);
         }
     }
-
-    private static final ITextComponent emitterTooltip = new TextComponentTranslation("gregtech.multiblock.universal.component_casing.tooltip").setStyle(new Style().setColor(TextFormatting.RED));
 
     @Override
     public float getDefaultZoom() {
