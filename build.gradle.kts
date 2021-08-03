@@ -95,7 +95,7 @@ repositories {
 dependencies {
 
     // These 7 will always be in game
-    "deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
+    //"deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-$mcVersion:${config["ccl.version"]}:universal")
     "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
     "deobfCompile"("mezz.jei:jei_$mcVersion:${config["jei.version"]}")
@@ -115,6 +115,7 @@ dependencies {
         isTransitive = false
     }
 
+    "provided"(files("libs/gregtech-1.12.2-2.0.0.1168-alpha.jar"))
     // Change to "compile" to add one of these to game
     "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
     "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))
