@@ -31,7 +31,7 @@ import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
     public TileEntityAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.ASSEMBLY_LINE_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.ASSEMBLY_LINE_RECIPES, false);
         this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 

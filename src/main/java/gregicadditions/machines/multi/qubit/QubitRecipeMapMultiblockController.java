@@ -26,6 +26,10 @@ public abstract class QubitRecipeMapMultiblockController extends GARecipeMapMult
         super(metaTileEntityId, recipeMap);
     }
 
+    public QubitRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMaintenance) {
+        super(metaTileEntityId, recipeMap, false, hasMaintenance, true);
+    }
+
     public IQubitContainer getInputQubitContainer() {
         return inputQubit;
     }
