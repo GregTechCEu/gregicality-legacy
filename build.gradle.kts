@@ -121,7 +121,7 @@ dependencies {
     "compileOnly"(files("extdeps/Cucumber-1.12.2-1.1.3.jar"))
     "compileOnly"(files("extdeps/MysticalAgriculture-1.12.2-1.7.5.jar"))
     "compileOnly"(files("extdeps/MysticalAgradditions-1.12.2-1.3.2.jar"))
-    "compileOnly"(files("extdeps/multiblocktweaker-1.12.2-stable.1.4.0.jar"))
+    "compileOnly"(files("extdeps/multiblocktweaker-1.12.2-stable-1.4.0.jar"))
 
     // JUnit testing used for GitHub Actions
     "testImplementation"("junit:junit:${config["junit.version"]}")
