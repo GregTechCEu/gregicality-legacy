@@ -66,6 +66,8 @@ public class GAFuelRecipeLogic extends FuelRecipeLogic {
                             int numMaintenanceProblems = gaController.getNumProblems();
                             if (numMaintenanceProblems != 6)
                                 this.tryAcquireNewRecipe();
+                        } else {
+                            this.tryAcquireNewRecipe();
                         }
                     } else {
                         this.tryAcquireNewRecipe();

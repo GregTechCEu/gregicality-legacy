@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
@@ -123,7 +124,7 @@ public abstract class GAFueledMultiblockController extends FueledMultiblockContr
         if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
             return;
         MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-        if (maintenanceHatch.getType() == 2) {
+        if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
             return;
         }
 
