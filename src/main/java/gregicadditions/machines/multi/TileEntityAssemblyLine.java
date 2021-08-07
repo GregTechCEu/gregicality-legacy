@@ -31,7 +31,7 @@ import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
     public TileEntityAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.ASSEMBLY_LINE_RECIPES, false);
+        super(metaTileEntityId, GARecipeMaps.ASSEMBLY_LINE_RECIPES, true);
         this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 
@@ -48,7 +48,7 @@ public class TileEntityAssemblyLine extends QubitRecipeMapMultiblockController {
                 .aisle("#Y#", "GSG", "RTR", "FIF")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
+                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH))))
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS)))
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)).or(abilityPartPredicate(GregicAdditionsCapabilities.INPUT_QBIT)))
                 .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[0].metaTileEntityId)))

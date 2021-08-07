@@ -43,8 +43,9 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
                 if (num == 1) builder.aisle("CIC", "RTR", "GAG");
                 else builder.aisle("CIC", "RTR", "GAG");
             }
-            builder.aisle("FIC", "RTR", "GSG")
+            builder.aisle("FIM", "RTR", "GSG")
                     .where('S', GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE, EnumFacing.SOUTH)
+                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                     .where('C', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.DOWN)

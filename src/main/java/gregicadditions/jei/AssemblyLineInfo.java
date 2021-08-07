@@ -38,13 +38,14 @@ public class AssemblyLineInfo extends MultiblockInfoPage {
 		List<MultiblockShapeInfo> shapes = new ArrayList<>();
 		for (int i = 0; i < 12; i++) {
 			GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
-			builder.aisle("FIC", "RTR", "GSG", "#Q#");
+			builder.aisle("FIM", "RTR", "GSG", "#Q#");
 			for (int num = 0; num < 3 + i; num++) {
 				if (num == 4 || num == 9) builder.aisle("FIC", "RTR", "GAG", "#Y#");
 				else builder.aisle("CIC", "RTR", "GAG", "#C#");
 			}
 			builder.aisle("COC", "RTR", "GAG", "#Y#")
 					.where('S', GATileEntities.ASSEMBLY_LINE, EnumFacing.NORTH)
+					.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
 					.where('C', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
 					.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.DOWN)
