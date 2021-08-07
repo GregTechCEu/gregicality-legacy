@@ -18,7 +18,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class GregicAdditionsCapabilities {
 
-
     @CapabilityInject(IMultiRecipe.class)
     public static Capability<IMultiRecipe> MULTI_RECIPE_CAPABILITY;
 
@@ -27,10 +26,6 @@ public class GregicAdditionsCapabilities {
 
     public static MultiblockAbility<IQubitContainer> INPUT_QBIT = new MultiblockAbility();
     public static MultiblockAbility<IQubitContainer> OUTPUT_QBIT = new MultiblockAbility();
-
-    public static final MultiblockAbility<IFluidTank> STEAM = new MultiblockAbility();
-    public static final MultiblockAbility<IItemHandlerModifiable> STEAM_IMPORT_ITEMS = new MultiblockAbility<>();
-    public static final MultiblockAbility<IItemHandlerModifiable> STEAM_EXPORT_ITEMS = new MultiblockAbility<>();
 
     private static final ResourceLocation CAPABILITY_EU_TO_FE = new ResourceLocation(Gregicality.MODID, "fecapability");
 

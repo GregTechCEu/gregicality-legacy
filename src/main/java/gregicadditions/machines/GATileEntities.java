@@ -180,13 +180,6 @@ public class GATileEntities {
     public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>();
     public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>();
 
-    // Steam Multis
-    public static MetaTileEntitySteamHatch STEAM_HATCH;
-    public static MetaTileEntitySteamItemBus STEAM_INPUT_BUS;
-    public static MetaTileEntitySteamItemBus STEAM_OUTPUT_BUS;
-    public static MetaTileEntitySteamGrinder STEAM_GRINDER;
-    public static MetaTileEntitySteamOven STEAM_OVEN;
-
     //override from GTCE
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_4_AMPS = new ArrayList<>();
     public static List<GAMetaTileEntityEnergyHatch> ENERGY_INPUT_HATCH_16_AMPS = new ArrayList<>();
@@ -1111,10 +1104,6 @@ public class GATileEntities {
         LARGE_PACKAGER = GregTechAPI.registerMetaTileEntity(4172, new TileEntityLargePackager(location("large_packager"), RecipeMaps.PACKER_RECIPES));
         COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(4174, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
 
-        STEAM_HATCH = GregTechAPI.registerMetaTileEntity(4175, new MetaTileEntitySteamHatch(location("steam_hatch")));
-        STEAM_INPUT_BUS = GregTechAPI.registerMetaTileEntity(4176, new MetaTileEntitySteamItemBus(location("steam_input_bus"), false));
-        STEAM_OUTPUT_BUS = GregTechAPI.registerMetaTileEntity(4177, new MetaTileEntitySteamItemBus(location("steam_output_bus"), true));
-        STEAM_GRINDER = GregTechAPI.registerMetaTileEntity(4178, new MetaTileEntitySteamGrinder(location("steam_grinder")));
         id = 4179;
         for (int i = 9; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier
             TRANSFORMER_1_AMPS.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityTransformer(location("transformer." + GAValues.VN[i].toLowerCase()), i, 1, 4)));
@@ -1123,7 +1112,6 @@ public class GATileEntities {
         for (int i = 1; i < GAValues.V.length - 1; i++) { // minus 1 because we dont want MAX tier, plus one because we dont want ULV
             DIODES.add(GregTechAPI.registerMetaTileEntity(id++, new GAMetaTileEntityDiode(location("diode." + GAValues.VN[i].toLowerCase()), i)));
         }
-        STEAM_OVEN = GregTechAPI.registerMetaTileEntity(4197, new MetaTileEntitySteamOven(location("steam_oven")));
 
         if (GAConfig.Misc.enableDisassembly) {
             id = 4198;

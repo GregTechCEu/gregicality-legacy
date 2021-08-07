@@ -4243,20 +4243,6 @@ metaitem.component.smd.resistor.exotic.name=異域SMD電阻
 metaitem.component.smd.transistor.exotic.name=異域SMD晶體管
 metaitem.component.smd.diode.exotic.name=異域SMD二極管
 
-gtadditions.machine.steam_grinder.name=蒸汽磨粉機
-gtadditions.machine.steam_grinder.tooltip=每次運作最多處理 8 個物品。配方耗時 1.5 倍，不受物品數量影響。需要使用§e蒸汽倉/總線搭建
-gtadditions.multiblock.steam_grinder.description=蒸汽時代的多方塊磨粉機。需要至少 14 個青銅機器外殼以形成結構。無法使用常規輸入/出倉，只能使用蒸汽倉/總線。
-gtadditions.multiblock.steam_grinder.low_steam=蒸汽不足，無法運作！
-gtadditions.multiblock.steam.steam_stored=蒸汽: %s / %s mB
-gtadditions.machine.steam_hatch.name=蒸汽總線
-gtadditions.machine.steam.steam_hatch.tooltip=可接受流體: §e蒸汽
-gtadditions.machine.steam_input_bus.name=輸入倉（蒸汽）
-gtadditions.machine.steam_output_bus.name=輸出倉（蒸汽）
-gtadditions.machine.steam_bus.tooltip=無法用于不使用蒸汽的多方塊結構
-gtadditions.machine.steam_oven.name=蒸汽爐
-gtadditions.machine.steam_oven.tooltip=每次運作最多熔煉 8 個物品。配方耗時 1.5 倍，不受物品數量影響。需要使用§e蒸汽倉/總線搭建
-gtadditions.multiblock.steam_oven.description=蒸汽時代的多方塊熔爐。需要至少 6 個青銅機器外殼以形成結構。無法使用常規輸入/出倉，只能使用蒸汽倉/總線。蒸汽倉必須放置在底層，且最多只能放置一個。
-
 gtadditions.machine.diode.message=最大電流通過量: %s
 gtadditions.machine.diode.tooltip_general=一個簡單的單向導電的二極管。
 gtadditions.machine.diode.tooltip_tool_usage=使用軟錘敲擊來轉換電路方向。

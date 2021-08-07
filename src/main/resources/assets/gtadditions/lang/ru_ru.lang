@@ -3429,20 +3429,6 @@ fluid.free_alpha_gas=ГАЗ свободных альфа частиц
 fluid.krypton_difluoride=Криптона дифторид
 fluid.high_energy_qgp=Высокоэнергетичная кварк-глюонная плазма
 
-gtadditions.machine.steam_grinder.name=Паровой измельчитель
-gtadditions.machine.steam_grinder.tooltip=Дробит до 8 предметов за раз. Работает в полтора раза медленнее по сравнению с обычным паровым дробителем, не зависимо от числа предметов. Требует §eпаровые люки
-gtadditions.multiblock.steam_grinder.description=Многоблочный дробитель в паровой эпохе. Требует как минимум 14 бронзовых машинных корпусов. Может использовать только паровые люки.
-gtadditions.multiblock.steam.low_steam=Недостаточно пара для работы!
-gtadditions.multiblock.steam.steam_stored=Пар: %s / %s милливедер
-gtadditions.machine.steam_hatch.name=Паровой люк
-gtadditions.machine.steam.steam_hatch.tooltip=Принимает жидкости: §eпар
-gtadditions.machine.steam_input_bus.name=Входной предметный люк(пар)
-gtadditions.machine.steam_output_bus.name=Выходной предметный люк (пар)
-gtadditions.machine.steam_bus.tooltip=Не работает с электрическими мультиблочными структурами.
-gtadditions.machine.steam_oven.name=Паровая мультиплавильня
-gtadditions.machine.steam_oven.tooltip=Плавит до 8 предметов за раз. Работает в полтора раза медленнее по сравнению с обычной паровой печью, не зависимо от числа предметов. Требует §eпаровые люки.
-gtadditions.multiblock.steam_oven.description=Паровая мультиплавильня в паровой эпохе. Требует как минимум 6 бронзовых машинных корпусов. Может использовать только паровые люки. Паровой люк должен находится в нижнем и он может быть только один.
-
 gtadditions.machine.diode.message=Максимальная пропускная способность в амперах: %s
 gtadditions.machine.diode.tooltip_general=Простой диод, пропускающий электричество лишь в одном направлении.
 gtadditions.machine.diode.tooltip_tool_usage=Ударьте киянкой для переключения направления напряжения.

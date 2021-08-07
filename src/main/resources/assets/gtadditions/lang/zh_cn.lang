@@ -4053,20 +4053,6 @@ fluid.free_alpha_gas=自由α粒子气体
 fluid.krypton_difluoride=二氟化氪
 fluid.high_energy_qgp=高能夸克-胶子等离子体
 
-gtadditions.machine.steam_grinder.name=蒸汽磨粉机
-gtadditions.machine.steam_grinder.tooltip=每次运作最多处理 8 个物品。配方耗时 1.5 倍，不受物品数量影响。需要使用§e蒸汽仓/总线搭建
-gtadditions.multiblock.steam_grinder.description=蒸汽时代的多方块磨粉机。需要至少 14 个青铜机器外壳以形成结构。无法使用常规输入/出仓，只能使用蒸汽仓/总线。
-gtadditions.multiblock.steam_grinder.low_steam=蒸汽不足，无法运作！
-gtadditions.multiblock.steam.steam_stored=蒸汽: %s / %s mB
-gtadditions.machine.steam_hatch.name=蒸汽总线
-gtadditions.machine.steam.steam_hatch.tooltip=可接受流体: §e蒸汽
-gtadditions.machine.steam_input_bus.name=输入仓（蒸汽）
-gtadditions.machine.steam_output_bus.name=输出仓（蒸汽）
-gtadditions.machine.steam_bus.tooltip=无法用于不使用蒸汽的多方块结构
-gtadditions.machine.steam_oven.name=蒸汽炉
-gtadditions.machine.steam_oven.tooltip=每次运作最多熔炼 8 个物品。配方耗时 1.5 倍，不受物品数量影响。需要使用§e蒸汽仓/总线搭建
-gtadditions.multiblock.steam_oven.description=蒸汽时代的多方块熔炉。需要至少 6 个青铜机器外壳以形成结构。无法使用常规输入/出仓，只能使用蒸汽仓/总线。蒸汽仓必须放置在底层，且最多只能放置一个。
-
 gtadditions.machine.diode.message=最大电流通过量: %s
 gtadditions.machine.diode.tooltip_general=一个简单的单向导电的二极管。
 gtadditions.machine.diode.tooltip_tool_usage=使用软锤敲击来转换电路方向。

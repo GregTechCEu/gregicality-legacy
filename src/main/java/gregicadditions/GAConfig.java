@@ -1596,17 +1596,6 @@ public class GAConfig {
             };
         }
 
-        public static class SteamMultis {
-            @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
-            @Config.RequiresMcRestart
-            public double steamToEU = 0.5;
-
-            @Config.Comment("Whether to use Steel casings instead of Bronze for the steam multiblocks.")
-            @Config.RequiresMcRestart
-            @Config.Name("Enable steel steam multis")
-            public boolean useSteelMultis = false;
-        }
-
         public static class CentralMonitor {
             @Config.Comment("The EU drain per tick for each screen.")
             @Config.Name("CentralMonitor cost")
