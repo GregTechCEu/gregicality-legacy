@@ -2,6 +2,7 @@ package gregicadditions;
 
 public class GAValues {
 
+    // TODO Remove voltage stuff from this class
     public static final int[] QUBIT = new int[]{1, 16, 256, 4096, 65536, 1048576, 16777216, 268435456};
     public static final int[] V = new int[]{8, 32, 128, 512, 2048, 8192, 32768, 131072, 524288, 2097152, 8388608, 33554432, 134217728, 536870912, Integer.MAX_VALUE};
     public static final int ULV = 0;
