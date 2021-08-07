@@ -283,9 +283,11 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
 
     @Override
     public void onRemoval() {
-        IMaintenance controller = (IMaintenance) getController();
-        if (!getWorld().isRemote && controller != null)
-            controller.storeTaped(isTaped);
+        if (getController() instanceof IMaintenance) {
+            IMaintenance controller = (IMaintenance) getController();
+            if (!getWorld().isRemote && controller != null)
+                controller.storeTaped(isTaped);
+        }
         super.onRemoval();
     }
 
