@@ -3,6 +3,7 @@ package gregicadditions.recipes.chain;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.UVA_HALIDE_LAMP;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -13,14 +14,36 @@ import static gregtech.api.unification.material.MarkerMaterials.Color.Magenta;
 public class FullereneChain {
     public static void init() {
 
-        // 2NaOCN + 2C10H8 -> 2NaOH + 2C10H7CN
+        // NaCN + 2 Br + C10H8 -> NaBr + C10H7CN + HBr
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Naphthalene.getFluid(2000))
-                .fluidInputs(SodiumCyanide.getFluid(2000))
-                .output(dust, SodiumHydroxide, 6)
-                .outputs(Cyanonaphthalene.getItemStack(38))
+                .fluidInputs(Naphthalene.getFluid(1000))
+                .fluidInputs(SodiumCyanide.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(2000))
+                .outputs(SodiumBromide.getItemStack(2))
+                .notConsumable(UVA_HALIDE_LAMP)
+                .fluidOutputs(HydrobromicAcid.getFluid(1000))
+                .outputs(Cyanonaphthalene.getItemStack(19))
                 .EUt(1920)
                 .duration(80)
+                .buildAndRegister();
+
+        //HBr + Cl -> HCl + Br
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(HydrobromicAcid.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .duration(160)
+                .EUt(125)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(SodiumBromide.getItemStack(2))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(HydrobromicAcid.getFluid(1000))
+                .output(dust, SodiumBisulfate, 7)
+                .duration(190)
+                .EUt(125)
                 .buildAndRegister();
 
         // C10H7CN + H2O + 3HCl -> C11H8O + NH4Cl + 2Cl
@@ -80,13 +103,13 @@ public class FullereneChain {
                 .duration(250)
                 .buildAndRegister();
 
-        // C60H30 + 15O -> C60 + 15H2O
+        // C60H30 + 10N -> C60 + 10NH3
         LARGE_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(craftingLens, Magenta)
                 .inputs(UnfoldedFullerene.getItemStack())
-                .fluidInputs(Oxygen.getFluid(15000))
+                .fluidInputs(Nitrogen.getFluid(10000))
                 .outputs(Fullerene.getItemStack())
-                .fluidOutputs(Water.getFluid(15000))
+                .fluidOutputs(Ammonia.getFluid(10000))
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();

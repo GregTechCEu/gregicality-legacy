@@ -380,7 +380,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(480)
                 .inputs(StrontiumChloride.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(StrontiumSulfate.getItemStack(6))
+                .output(dust, Celestine, 6)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
@@ -717,16 +717,19 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Helium.getFluid(24000))
                 .buildAndRegister();
 
-        // 2La + 2C60 -> La2(C60)2
+        // 2La + 2 C60H30 -> La2(C60H30)2
         MIXER_RECIPES.recipeBuilder().duration(140).EUt(30720)
                 .input(dust, Lanthanum, 2)
                 .inputs(UnfoldedFullerene.getItemStack(2))
                 .outputs(LanthanumFullereneMix.getItemStack(4))
                 .buildAndRegister();
 
+        //La2(C60H30)2 + 20 N -> La2(C60)2 + 20 NH3
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(1966080)
                 .inputs(LanthanumFullereneMix.getItemStack(4))
+                .fluidInputs(Nitrogen.getFluid(20000))
                 .notConsumable(craftingLens, Magenta)
+                .fluidOutputs(Ammonia.getFluid(20000))
                 .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .buildAndRegister();
 
