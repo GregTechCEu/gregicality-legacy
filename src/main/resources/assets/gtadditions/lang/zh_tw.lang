@@ -1107,15 +1107,6 @@ metaarmor.energy_share.tooltip.guide=手持物品潛行右鍵以更改模式
 
 gtadditions.universal.tooltip.amperage_in=電流：§a%d §7
 
-gtadditions.machine.circuit_assembler.lv.name=基礎電路組裝機
-gtadditions.machine.circuit_assembler.mv.name=進階電路組裝機
-gtadditions.machine.circuit_assembler.hv.name=進階電路組裝機 II
-gtadditions.machine.circuit_assembler.ev.name=進階電路組裝機 III
-gtadditions.machine.circuit_assembler.iv.name=精英電路組裝機
-gtadditions.machine.circuit_assembler.luv.name=精英電路組裝機 II
-gtadditions.machine.circuit_assembler.zpm.name=精英電路組裝機 III
-gtadditions.machine.circuit_assembler.uv.name=精英電路組裝機 IV
-
 gtadditions.machine.cluster_mill.lv.name=基礎多輥式軋機
 gtadditions.machine.cluster_mill.mv.name=進階多輥式軋機
 gtadditions.machine.cluster_mill.hv.name=進階多輥式軋機 II
@@ -1984,7 +1975,6 @@ metaitem.tool.bending_cylinder_small.name=小型%s彎曲繞筒
 
 recipemap.blast_alloy.name=工業合金爐
 recipemap.cluster_mill.name=多輥式軋機
-recipemap.circuit_assembler.name=電路組裝機
 recipemap.coke_oven.name=[棄用]焦爐
 recipemap.distill_tower.name=[棄用]蒸餾塔
 recipemap.assembly_line.name=裝配線

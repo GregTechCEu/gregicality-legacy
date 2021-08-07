@@ -36,15 +36,6 @@ public class SingleblockCraftingRecipes {
 
     private static void newMachines() {
 
-        registerMachineRecipe(GATileEntities.CIRCUITASSEMBLER,
-                "ACE", "VMV", "WCW",
-                'M', HULL,
-                'V', CONVEYOR,
-                'A', ROBOT_ARM,
-                'C', BETTER_CIRCUIT,
-                'W', CABLE_SINGLE,
-                'E', EMITTER);
-
         registerMachineRecipe(GATileEntities.CLUSTERMILL,
                 "MMM", "CHC", "MMM",
                 'M', MOTOR,

@@ -2,7 +2,6 @@ package gregicadditions.recipes.categories.circuits;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;

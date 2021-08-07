@@ -48,13 +48,6 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<QubitConsumerRecipeBuilder> CIRCUIT_ASSEMBLER_RECIPES = new RecipeMap<>("circuit_assembler",
-            1, 6, 1, 1, 0, 1, 0, 0, new QubitConsumerRecipeBuilder())
-            .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
-            .setProgressBar(GAGuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
-
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES = new SieveRecipeMap("electric_sieve",
             2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder())
             .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);

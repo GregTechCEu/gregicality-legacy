@@ -1107,15 +1107,6 @@ gtadditions.machine.removal.universal=§4This machine will be removed in the nex
 
 gtadditions.universal.tooltip.amperage_in=Amperage IN: §a%d §7
 
-gtadditions.machine.circuit_assembler.lv.name=Basic Circuit Assembling Machine
-gtadditions.machine.circuit_assembler.mv.name=Advanced Circuit Assembling Machine
-gtadditions.machine.circuit_assembler.hv.name=Advanced Circuit Assembling Machine II
-gtadditions.machine.circuit_assembler.ev.name=Advanced Circuit Assembling Machine III
-gtadditions.machine.circuit_assembler.iv.name=Elite Circuit Assembling Machine 
-gtadditions.machine.circuit_assembler.luv.name=Elite Circuit Assembling Machine II
-gtadditions.machine.circuit_assembler.zpm.name=Elite Circuit Assembling Machine III
-gtadditions.machine.circuit_assembler.uv.name=Elite Circuit Assembling Machine IV
-
 gtadditions.machine.cluster_mill.lv.name=Basic Cluster Mill
 gtadditions.machine.cluster_mill.mv.name=Advanced Cluster Mill
 gtadditions.machine.cluster_mill.hv.name=Advanced Cluster Mill II
@@ -2106,7 +2097,6 @@ metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
 
 recipemap.blast_alloy.name=Blast Alloy
 recipemap.cluster_mill.name=Cluster Mill
-recipemap.circuit_assembler.name=Circuit Assembler
 recipemap.coke_oven.name=[Deprecated] Coke Oven
 recipemap.distill_tower.name=[Deprecated] Distillation Tower
 recipemap.assembly_line.name=Assembly Line

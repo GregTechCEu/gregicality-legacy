@@ -251,15 +251,6 @@ gtadditions.machine.processing_array.name=Массив обработки
 gtadditions.machine.vending_machine.name=§eТорговый автомат
 gtadditions.machine.vending_machine.label=Торговый автомат
 
-gtadditions.machine.circuit_assembler.lv.name=Базовый станок по сборке интегральных микросхем
-gtadditions.machine.circuit_assembler.mv.name=Улучшеный станок по сборке интегральных микросхем
-gtadditions.machine.circuit_assembler.hv.name=Улучшеный станок по сборке интегральных микросхем II
-gtadditions.machine.circuit_assembler.ev.name=Улучшеный станок по сборке интегральных микросхем III
-gtadditions.machine.circuit_assembler.iv.name=Улучшеный станок по сборке интегральных микросхем IV
-gtadditions.machine.circuit_assembler.luv.name=Улучшеный станок по сборке интегральных микросхем V
-gtadditions.machine.circuit_assembler.zpm.name=Улучшеный станок по сборке интегральных микросхем VI
-gtadditions.machine.circuit_assembler.uv.name=Улучшеный станок по сборке интегральных микросхем VII
-
 
 gtadditions.machine.cluster_mill.lv.name=Базовый прокатный станок
 gtadditions.machine.cluster_mill.mv.name=Улучшеный прокатный станок
@@ -519,7 +510,6 @@ metaitem.tool.bending_cylinder.name=%s гнущий цилиндр
 metaitem.tool.bending_cylinder_small.name=Малый %s гнущий цилиндр
 
 recipemap.cluster_mill.name=Прокатывание
-recipemap.circuit_assembler.name=Сборка микросхем
 recipemap.assembly_line.name=Сборочный конвеер
 recipemap.naquadah_reactor.name=Топливо для наквадах реактора
 recipemap.replicator.name=Репликация
