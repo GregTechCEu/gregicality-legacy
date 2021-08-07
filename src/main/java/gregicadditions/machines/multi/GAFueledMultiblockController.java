@@ -141,7 +141,7 @@ public abstract class GAFueledMultiblockController extends FueledMultiblockContr
         super.formStructure(context);
         if (hasMaintenance) {
             MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-            if (maintenanceHatch.getType() == 2) {
+            if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
                 this.maintenance_problems = 0b111111;
             } else {
                 readMaintenanceData(maintenanceHatch);

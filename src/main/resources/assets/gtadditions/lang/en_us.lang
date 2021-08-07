@@ -1619,6 +1619,7 @@ gtadditions.machine.monitor_screen.name=Monitor Screen
 gtadditions.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor
 gtadditions.multiblock.advanced_chemical_reactor.description=The Advanced Chemical Reactor functions as a parallel Large Chemical Reactor and non-parallel Chemical Plant.
 gtadditions.machine.large_brewery.name=Large Brewery
+gtadditions.multiblock.large_brewery.description=The Large Brewery is a multiblock version of the Brewery, Fermenter, and Chemical Dehydrator.
 gtadditions.machine.large_electromagnet.name=Large Electromagnet
 gtadditions.machine.large_extractor.name=Large Extractor
 gtadditions.machine.large_arc_furnace.name=Large Arc Furnace

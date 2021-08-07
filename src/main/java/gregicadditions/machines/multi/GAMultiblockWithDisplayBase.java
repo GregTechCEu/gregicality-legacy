@@ -128,7 +128,7 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
             if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
                 return;
             MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-            if (maintenanceHatch.getType() == 2) {
+            if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
                 this.maintenance_problems = 0b111111;
             } else {
                 readMaintenanceData(maintenanceHatch);
