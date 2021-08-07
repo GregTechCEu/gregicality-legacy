@@ -2,19 +2,20 @@ package gregicadditions.machines.multi.centralmonitor;
 
 import codechicken.lib.raytracer.CuboidRayTraceResult;
 import gregicadditions.client.ClientHandler;
+import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.covers.CoverDigitalInterface;
-import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
+import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.utils.BlockPatternChecker;
-import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.WidgetARGB;
+import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregicadditions.widgets.monitor.WidgetMonitorScreen;
 import gregicadditions.widgets.monitor.WidgetPluginConfig;
-import gregicadditions.widgets.monitor.WidgetCoverList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.cover.CoverBehavior;
+import gregtech.api.cover.ICoverable;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
@@ -22,7 +23,9 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.MetaTileEntityUIFactory;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.pipenet.tile.TileEntityPipeBase;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -33,9 +36,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -47,7 +54,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
@@ -108,11 +118,21 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
 
     public CoverDigitalInterface getCoverFromPosSide(Tuple<BlockPos, EnumFacing> posFacing) {
         if (posFacing == null) return null;
+        ICoverable mte = null;
         MetaTileEntityHolder holder = getHolderFromPos(posFacing.getKey());
-        if (holder == null) return null;
-        CoverBehavior cover = holder.getMetaTileEntity().getCoverAtSide(posFacing.getValue());
-        if (cover instanceof CoverDigitalInterface){
-            return (CoverDigitalInterface) cover;
+        if (holder == null) {
+            TileEntity te = this.getWorld() == null || posFacing.getKey() == null? null:this.getWorld().getTileEntity(posFacing.getKey());
+            if (te instanceof TileEntityPipeBase) {
+                mte = ((TileEntityPipeBase<?, ?>) te).getCoverableImplementation();
+            }
+        } else {
+            mte = holder.getMetaTileEntity();
+        }
+        if(mte != null){
+            CoverBehavior cover = mte.getCoverAtSide(posFacing.getValue());
+            if (cover instanceof CoverDigitalInterface){
+                return (CoverDigitalInterface) cover;
+            }
         }
         return null;
     }
@@ -128,7 +148,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     public void updateCoverValid(List<Tuple<BlockPos, EnumFacing>> covers) {
         if (this.coverPos != null) {
             if (!covers.contains(this.coverPos)) {
-                setMode(null, this.mode);
+                setMode(null, CoverDigitalInterface.MODE.PROXY);
             }
         }
     }
@@ -232,7 +252,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
         if (this.coverPos != null && this.mode != CoverDigitalInterface.MODE.PROXY) {
             CoverDigitalInterface cover = coverTMP != null? coverTMP : this.getCoverFromPosSide(this.coverPos);
             if (cover != null) {
-                if (cover.isValid() && cover.isProxy()) {
+                if (cover.isProxy()) {
                     coverTMP = cover;
                     return true;
                 }
@@ -273,20 +293,19 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @SideOnly(Side.CLIENT)
-    public void renderScreen(float partialTicks) {
+    public void renderScreen(float partialTicks, RayTraceResult rayTraceResult) {
         EnumFacing side = getController().getFrontFacing();
         GlStateManager.translate((scale - 1) * 0.5, (scale - 1) * 0.5, 0);
         GlStateManager.scale(this.scale,this.scale,1);
 
         if (plugin != null) {
-            plugin.renderPlugin(partialTicks);
+            plugin.renderPlugin(partialTicks, rayTraceResult);
         }
 
         if (coverTMP != null) {
             boolean flag = true;
-            if(checkLookingAt(partialTicks) != null && plugin == null && this.mode != CoverDigitalInterface.MODE.PROXY) {
+            if(checkLookingAt(rayTraceResult) != null && plugin == null && this.mode != CoverDigitalInterface.MODE.PROXY) {
                 EntityPlayer player = Minecraft.getMinecraft().player;
-                RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
                 if(coverTMP.renderSneakingLookAt(rayTraceResult.getBlockPos(), side, slot, partialTicks)) {
                     flag = false;
                 }
@@ -294,11 +313,23 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
             if (this.mode == CoverDigitalInterface.MODE.PROXY) return;
             if (flag) {
                 coverTMP.renderMode(this.mode, this.slot, partialTicks);
-                // render machine
-                RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, coverTMP.coverHolder.getStackForm());
 
-                // render name
-                RenderHelper.renderText(0, -3.5f/16, 0, 1.0f / 200, 0XFFFFFFFF, I18n.format(((MetaTileEntity) coverTMP.coverHolder).getMetaFullName()), true);
+                TileEntity te = coverTMP.getCoveredTE();
+                if (te != null) {
+                    ItemStack itemStack;
+                    if (te instanceof MetaTileEntityHolder) {
+                        itemStack = ((MetaTileEntityHolder) te).getMetaTileEntity().getStackForm();
+                    } else {
+                        BlockPos pos = te.getPos();
+                        itemStack = te.getBlockType().getPickBlock(te.getWorld().getBlockState(pos), new RayTraceResult(new Vec3d(0.5, 0.5, 0.5), coverTMP.getCoveredFacing(), pos), te.getWorld(), pos, Minecraft.getMinecraft().player);
+                    }
+                    String name = itemStack.getDisplayName();
+                    // render machine
+                    RenderHelper.renderItemOverLay(-2.6f, -2.65f, 0.003f,1/100f, itemStack);
+                    // render name
+                    RenderHelper.renderText(0, -3.5f/16, 0, 1.0f / 200, 0XFFFFFFFF, name, true);
+                }
+
             }
             // render frame
             RenderHelper.renderRect(-7f/16, -7f/16, 14f/16, 0.01f,0.003f, frameColor);
@@ -446,9 +477,11 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @Override
-    public void removeFromMultiBlock(MultiblockControllerBase controllerBase) {
-        super.removeFromMultiBlock(controllerBase);
-        this.setMode(null, this.mode);
+    public void onRemoval() {
+        super.onRemoval();
+        if (!this.getWorld().isRemote) {
+            this.setMode(null, this.mode);
+        }
     }
 
     @Override
@@ -494,16 +527,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 covers.add(getCoverFromPosSide(coverPos));
             });
             WidgetPluginConfig pluginWidget = new WidgetPluginConfig();
-            return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
-                    .widget(pluginWidget)
-                    .widget(new WidgetMonitorScreen(330, 0, 150, this))
-                    .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
-                    .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
-                        if (((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid())
-                            MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
-                    }))
-
-                    .widget(new LabelWidget(15, 55, "monitor.gui.title.scale", 0xFFFFFFFF))
+            WidgetPluginConfig mainGroup = new WidgetPluginConfig().setSize(width, height);
+            mainGroup.widget(new LabelWidget(15, 55, "monitor.gui.title.scale", 0xFFFFFFFF))
                     .widget(new ClickButtonWidget(50, 50, 20, 20, "-1", (data) -> setConfig(this.slot, ((float)Math.round((scale - (data.isShiftClick? 1.0f:0.1f))*10)/10), this.frameColor)))
                     .widget(new ClickButtonWidget(130, 50, 20, 20, "+1", (data) -> setConfig(this.slot, ((float)Math.round((scale + (data.isShiftClick? 1.0f:0.1f))*10)/10), this.frameColor)))
                     .widget(new ImageWidget(70, 50, 60, 20, GuiTextures.DISPLAY))
@@ -535,23 +560,17 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                                 }
                             }))
                     .widget(new ClickButtonWidget(80, 130, 40, 20, "monitor.gui.title.config", (data)->{
-                        if (plugin != null) {
-                            if (pluginWidget.getContainedWidgets(true).size() > 0) {
-                                pluginWidget.removePluginWidget();
-                            } else {
-                                plugin.customUI(pluginWidget, this.getHolder(), entityPlayer);
-                            }
+                        if (plugin != null && mainGroup.isVisible()) {
+                            plugin.customUI(pluginWidget, this.getHolder(), entityPlayer);
+                            mainGroup.setVisible(false);
                         }
                     }) {
                         @Override
                         protected void triggerButton() {
                             super.triggerButton();
-                            if (plugin != null) {
-                                if (pluginWidget.getContainedWidgets(true).size() > 0) {
-                                    pluginWidget.removePluginWidget();
-                                } else {
-                                    plugin.customUI(pluginWidget, getHolder(), entityPlayer);
-                                }
+                            if (plugin != null && mainGroup.isVisible()) {
+                                plugin.customUI(pluginWidget, getHolder(), entityPlayer);
+                                mainGroup.setVisible(false);
                             }
                         }
                     })
@@ -569,8 +588,42 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                     .widget(buttons[2])
                     .widget(buttons[3])
                     .widget(buttons[4])
+                    .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170);
 
-                    .bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 15, 170)
+            return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, width, height)
+                    .widget(pluginWidget)
+                    .widget(mainGroup)
+                    .widget(new WidgetMonitorScreen(330, 0, 150, this))
+                    .widget(new LabelWidget(15, 13, "gtadditions.machine.monitor_screen.name", 0XFFFFFFFF))
+                    .widget(new ClickButtonWidget(15, 25, 40, 20, "monitor.gui.title.back", data->{
+                        if (mainGroup.isVisible() && ((MetaTileEntityCentralMonitor)controller).isActive() && controller.isValid()) {
+                            MetaTileEntityUIFactory.INSTANCE.openUI(controller.getHolder(), (EntityPlayerMP) entityPlayer);
+                        }
+                        else if (!mainGroup.isVisible()) {
+                            pluginWidget.removePluginWidget();
+                            mainGroup.setVisible(true);
+                            if(plugin != null) {
+                                plugin.markAsDirty();
+                            }
+                        }
+                    }) {
+                        @Override
+                        protected void triggerButton() {
+                            super.triggerButton();
+                            if (!mainGroup.isVisible()) {
+                                pluginWidget.removePluginWidget();
+                                mainGroup.setVisible(true);
+                                if(plugin != null) {
+                                    plugin.markAsDirty();
+                                }
+                            }
+                        }
+                    })
+                    .bindCloseListener(()->{
+                        if(plugin != null) {
+                            plugin.markAsDirty();
+                        }
+                    })
                     .build(this.getHolder(), entityPlayer);
         }
         return null;
@@ -597,7 +650,12 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
                 }
                 if(coverBehavior.modeRightClick(playerIn, hand, this.mode, this.slot) == EnumActionResult.PASS) {
                     if (!playerIn.isSneaking() && this.openGUIOnRightClick()) {
-                        MetaTileEntityUIFactory.INSTANCE.openUI(((MetaTileEntity)coverBehavior.coverHolder).getHolder(), (EntityPlayerMP)playerIn);
+                        TileEntity te = coverBehavior.getCoveredTE();
+                        if(te != null) {
+                            BlockPos pos = te.getPos();
+                            IBlockState state = te.getWorld().getBlockState(pos);
+                            state.getBlock().onBlockActivated(coverBehavior.coverHolder.getWorld(), pos, state, playerIn, hand, coverBehavior.getCoveredFacing(), 0.5f, 0.5f, 0.5f);
+                        }
                         return true;
                     } else {
                         return false;
@@ -687,10 +745,8 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     }
 
     @SideOnly(Side.CLIENT)
-    public Tuple<Double, Double> checkLookingAt(float partialTicks) {
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        if (this.getWorld() != null && player != null) {
-            RayTraceResult rayTraceResult = player.rayTrace(Minecraft.getMinecraft().playerController.getBlockReachDistance(), partialTicks);
+    public Tuple<Double, Double> checkLookingAt(RayTraceResult rayTraceResult) {
+        if (this.getWorld() != null) {
             MultiblockControllerBase controller = this.getController();
             if (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK && controller != null && rayTraceResult.sideHit == controller.getFrontFacing()) {
                 int i = -1,j = -1;

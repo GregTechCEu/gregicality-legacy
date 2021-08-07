@@ -630,6 +630,7 @@ public class GAConfig {
         public SteamMultis steamMultis = new SteamMultis();
         public ProcessingArray processingArray = new ProcessingArray();
         public HyperReactors hyperReactors = new HyperReactors();
+        public CentralMonitor centralMonitor = new CentralMonitor();
     }
 
         public static class LargeEngraver {
@@ -1599,6 +1600,13 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Enable steel steam multis")
             public boolean useSteelMultis = false;
+        }
+
+        public static class CentralMonitor {
+            @Config.Comment("The EU drain per tick for each screen.")
+            @Config.Name("CentralMonitor cost")
+            @Config.RangeInt(min = 0)
+            public int euCost = 50;
         }
 
         public static class Prospector {

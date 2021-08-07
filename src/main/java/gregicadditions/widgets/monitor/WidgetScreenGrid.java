@@ -67,7 +67,7 @@ public class WidgetScreenGrid extends Widget {
                 GlStateManager.translate(x + (width / 2), y + (height / 2), 100);
                 GlStateManager.scale(width, height, 1);
                 RenderHelper.renderRect(-0.5f, -0.5f, this.monitorScreen.scale, this.monitorScreen.scale, 0, 0XFF000000);
-                monitorScreen.renderScreen(0);
+                monitorScreen.renderScreen(0, null);
                 GlStateManager.popMatrix();
             }
         }

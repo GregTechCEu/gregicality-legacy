@@ -239,8 +239,12 @@ public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase impl
     public void receiveCustomData(int dataId, PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == 1) {
+            long last = this.energyStored;
             this.energyStored = buf.readLong();
-            getHolder().scheduleChunkForRenderUpdate();
+            if (last * this.energyStored == 0 && last + this.energyStored != 0) {
+                getHolder().scheduleChunkForRenderUpdate();
+
+            }
         }
     }
 
