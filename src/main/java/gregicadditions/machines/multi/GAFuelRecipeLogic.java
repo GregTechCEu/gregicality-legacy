@@ -31,6 +31,11 @@ public class GAFuelRecipeLogic extends FuelRecipeLogic {
     }
 
     @Override
+    public long getRecipeOutputVoltage() {
+        return this.recipeOutputVoltage;
+    }
+
+    @Override
     protected int calculateRecipeDuration(FuelRecipe currentRecipe) {
         if (metaTileEntity instanceof GAFueledMultiblockController) {
             GAFueledMultiblockController gaController = (GAFueledMultiblockController) metaTileEntity;
