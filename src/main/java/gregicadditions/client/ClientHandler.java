@@ -2,8 +2,6 @@ package gregicadditions.client;
 
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
-import gregicadditions.machines.CrateRenderer;
-import gregicadditions.machines.DrumRenderer;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.gui.resources.AdoptableTextureArea;
 import gregtech.api.gui.resources.TextureArea;
@@ -95,10 +93,6 @@ public class ClientHandler {
     public static OrientedOverlayRenderer REPLICATOR_OVERLAY = new OrientedOverlayRenderer("machines/replicator", OverlayFace.FRONT);
     public static OrientedOverlayRenderer MASS_FAB_OVERLAY = new OrientedOverlayRenderer("machines/mass_fab", OverlayFace.FRONT);
     public static OrientedOverlayRenderer FUSION_REACTOR_OVERLAY = new OrientedOverlayRenderer("machines/fusion_reactor", OverlayFace.FRONT);
-    public static DrumRenderer BARREL = new DrumRenderer("storage/drums/barrel");
-    public static DrumRenderer DRUM = new DrumRenderer("storage/drums/drum");
-    public static CrateRenderer WOODEN_CRATE = new CrateRenderer("storage/crates/wooden_crate");
-    public static CrateRenderer METAL_CRATE = new CrateRenderer("storage/crates/metal_crate");
     public static final TextureArea BRONZE_FLUID_SLOT = TextureArea.fullImage("textures/gui/steam/fluid_slot.png");
     public static OrientedOverlayRenderer STEAM_MIXER_OVERLAY = new OrientedOverlayRenderer("machines/steam_mixer", OverlayFace.FRONT, OverlayFace.SIDE, OverlayFace.TOP);
     public static SimpleOverlayRenderer STEAM_MINER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_steam_miner");

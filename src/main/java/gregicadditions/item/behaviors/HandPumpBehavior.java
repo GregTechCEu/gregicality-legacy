@@ -1,9 +1,9 @@
 package gregicadditions.item.behaviors;
 
-import gregicadditions.machines.MetaTileEntityDrum;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.common.metatileentities.storage.MetaTileEntityDrum;
 import gregtech.common.metatileentities.storage.MetaTileEntityTank;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

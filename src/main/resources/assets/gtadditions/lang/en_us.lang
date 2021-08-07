@@ -3148,21 +3148,6 @@ tile.ga_metal_casing.material.name=%s Metal Casing
 gregtech.machine.primitive_blast_furnace.bronze.tooltip=Structure: 3x3x4 (WxLxH) The entire structure is made out of Firebricks (32 in total)./nFirst Layer is a 3x3 square./nSecond, third, and fourth layers are hollow, without the middle block./nThis block goes on the middle of any side in the second layer./nThe sides of Blast Furnaces can be shared, if the side does not have a controller./n
 gregtech.machine.primitive_blast_furnace.industrial.tooltip=It's the upgraded version of The Primitive Blast Furnace.
 
-
-gtadditions.machine.drum.wood.name=Wooden Barrel
-gtadditions.machine.drum.bronze.name=Bronze Drum
-gtadditions.machine.drum.steel.name=Steel Drum
-gtadditions.machine.drum.stainless_steel.name=Stainless Steel Drum
-gtadditions.machine.drum.titanium.name=Titanium Drum
-gtadditions.machine.drum.tungstensteel.name=Tungstensteel Drum
-
-gtadditions.machine.crate.wood.name=Wooden Crate
-gtadditions.machine.crate.bronze.name=Bronze Crate
-gtadditions.machine.crate.steel.name=Steel Crate
-gtadditions.machine.crate.stainless_steel.name=Stainless Steel Crate
-gtadditions.machine.crate.titanium.name=Titanium Crate
-gtadditions.machine.crate.tungstensteel.name=Tungstensteel Crate
-
 fluid.tile.water=Water
 fluid.tile.lava=Lava
 

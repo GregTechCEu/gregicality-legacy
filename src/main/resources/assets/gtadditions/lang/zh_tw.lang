@@ -2967,21 +2967,6 @@ tile.ga_metal_casing.material.name=%s金屬外殼
 gregtech.machine.primitive_blast_furnace.bronze.tooltip=結構：3x3x4（寬、長、高）/n整個多方塊結構一共需要32個耐火磚塊：/n第一層是3x3的正方形，/n第二三四層是中空的正方形。/n土高爐的控制器在第二層每面的中間。/n每臺土高爐可以共用方塊。/n
 gregtech.machine.primitive_blast_furnace.industrial.tooltip=土高爐的升級版本
 
-
-gtadditions.machine.drum.wood.name=木桶
-gtadditions.machine.drum.bronze.name=青銅桶
-gtadditions.machine.drum.steel.name=鋼桶
-gtadditions.machine.drum.stainless_steel.name=不銹鋼桶
-gtadditions.machine.drum.titanium.name=鈦桶
-gtadditions.machine.drum.tungstensteel.name=鎢鋼桶
-
-gtadditions.machine.crate.wood.name=木板條箱
-gtadditions.machine.crate.bronze.name=青銅板條箱
-gtadditions.machine.crate.steel.name=鋼板條箱
-gtadditions.machine.crate.stainless_steel.name=不銹鋼板條箱
-gtadditions.machine.crate.titanium.name=鈦板條箱
-gtadditions.machine.crate.tungstensteel.name=鎢鋼板條箱
-
 fluid.tile.water=水
 fluid.tile.lava=岩漿
 
