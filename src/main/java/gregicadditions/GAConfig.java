@@ -88,9 +88,6 @@ public class GAConfig {
     public static GT5U GT5U = new GT5U();
 
     public static class GT5U {
-        @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
-        public boolean stickGT5U = false;
-
         @Config.Comment("3x3 Crafting Table Recipe Removals")
         @Config.Name("Crafting - Remove 3x3 Block Crafting Recipes from Crafting Table")
         public boolean Remove3x3BlockRecipes = false;
@@ -110,106 +107,6 @@ public class GAConfig {
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
         public boolean DisableLogToCharcoalSmelting = true;
-
-        @Config.Comment("Set these to false to disable the higher tier versions of machines")
-        @Config.Name("Should higher tier Alloy Smelters be registered?")
-        public boolean highTierAlloySmelter = true;
-        @Config.Name("Should higher tier Arc Furnaces be registered?")
-        public boolean highTierArcFurnaces = true;
-        @Config.Name("Should higher tier Assembling Machines be registered?")
-        public boolean highTierAssemblers = true;
-        @Config.Name("Should higher tier Autoclaves be registered?")
-        public boolean highTierAutoclaves = true;
-        @Config.Name("Should higher tier Bending Machines be registered?")
-        public boolean highTierBenders = true;
-        @Config.Name("Should higher tier Breweries be registered?")
-        public boolean highTierBreweries = true;
-        @Config.Name("Should higher tier Canning Machines be registered?")
-        public boolean highTierCanners = true;
-        @Config.Name("Should higher tier Centrifuges be registered?")
-        public boolean highTierCentrifuges = true;
-        @Config.Name("Should higher tier Chemical Baths be registered?")
-        public boolean highTierChemicalBaths = true;
-        @Config.Name("Should higher tier Chemical Reactors be registered?")
-        public boolean highTierChemicalReactors = true;
-        @Config.Name("Should higher tier Compressors be registered?")
-        public boolean highTierCompressors = true;
-        @Config.Name("Should higher tier Cutting Machines be registered?")
-        public boolean highTierCutters = true;
-        @Config.Name("Should higher tier Cluster Mills be registered?")
-        public boolean highTierClusterMills = true;
-        @Config.Name("Should higher tier Distilleries be registered?")
-        public boolean highTierDistilleries = true;
-        @Config.Name("Should higher tier Electric Furnaces be registered?")
-        public boolean highTierElectricFurnace = true;
-        @Config.Name("Should higher tier Electrolyzers be registered?")
-        public boolean highTierElectrolyzers = true;
-        @Config.Name("Should higher tier Electromagnetic Separators be registered?")
-        public boolean highTierElectromagneticSeparators = true;
-        @Config.Name("Should higher tier Extractors be registered?")
-        public boolean highTierExtractors = true;
-        @Config.Name("Should higher tier Extruders be registered?")
-        public boolean highTierExtruders = true;
-        @Config.Name("Should higher tier Fermenters be registered?")
-        public boolean highTierFermenters = true;
-        @Config.Name("Should higher tier Fluid Canners be registered?")
-        public boolean highTierFluidCanners = true;
-        @Config.Name("Should higher tier Fluid Extractors be registered?")
-        public boolean highTierFluidExtractors = true;
-        @Config.Name("Should higher tier Fluid Heaters be registered?")
-        public boolean highTierFluidHeaters = true;
-        @Config.Name("Should higher tier Fluid Heaters be registered?")
-        public boolean highTierFluidSolidifiers = true;
-        @Config.Name("Should higher tier Forge Hammers be registered?")
-        public boolean highTierForgeHammers = true;
-        @Config.Name("Should higher tier Forming Presses be registered?")
-        public boolean highTierFormingPresses = true;
-        @Config.Name("Should higher tier Lathes be registered?")
-        public boolean highTierLathes = true;
-        @Config.Name("Should higher tier Microwaves be registered?")
-        public boolean highTierMicrowaves = true;
-        @Config.Name("Should higher tier Mixers be registered?")
-        public boolean highTierMixers = true;
-        @Config.Name("Should higher tier Ore Washers be registered?")
-        public boolean highTierOreWashers = true;
-        @Config.Name("Should higher tier Packagers be registered?")
-        public boolean highTierPackers = true;
-        @Config.Name("Should higher tier Plasma Arc Furnaces be registered?")
-        public boolean highTierPlasmaArcFurnaces = true;
-        @Config.Name("Should higher tier Polarizers be registered?")
-        public boolean highTierPolarizers = true;
-        @Config.Name("Should higher tier Precision Laser Engravers be registered?")
-        public boolean highTierLaserEngravers = true;
-        @Config.Name("Should higher tier Pumps be registered?")
-        public boolean highTierPumps = true;
-        @Config.Name("Should higher tier Replicators be registered?")
-        public boolean highTierReplicators = true;
-        @Config.Name("Should higher tier Sifting Machines be registered?")
-        public boolean highTierSifters = true;
-        @Config.Name("Should higher tier Thermal Centrifuges be registered?")
-        public boolean highTierThermalCentrifuges = true;
-        @Config.Name("Should higher tier Macerators be registered?")
-        public boolean highTierMacerators = true;
-        @Config.Name("Should higher tier Mass Fabricators be registered?")
-        public boolean highTierMassFabs = true;
-        @Config.Name("Should higher tier Unpackagers be registered?")
-        public boolean highTierUnpackers = true;
-        @Config.Name("Should higher tier Wiremills be registered?")
-        public boolean highTierWiremills = true;
-        @Config.Name("Should higher tier Chemical Dehydrators be registered?")
-        public boolean highTierChemicalDehydrator = true;
-        @Config.Name("Should higher tier Decay Chambers be registered?")
-        public boolean highTierDecayChamber = true;
-        @Config.Name("Should higher tier Green Houses be registered?")
-        public boolean highTierGreenHouse = true;
-        @Config.Name("Should higher tier World Accelerators be registered?")
-        public boolean highTierWorldAccelerator = true;
-
-        @Config.Comment("Set these to true to enable certain Batteries.")
-        @Config.Name("Batteries - Enable an extra ZPM and UV Battery (this also makes the Ultimate Battery harder to make)")
-        public boolean enableZPMandUVBats = false;
-        @Config.Name("Batteries - Replace the Ultimate Battery with a MAX Battery")
-        public boolean replaceUVwithMAXBat = false;
 
         @Config.Comment("This value determines the minimum amount of time in ticks a multiblock must be run for a single maintenance problem to have a change to occur. The default is 48 real-world hours.")
         @Config.RequiresMcRestart
@@ -318,10 +215,6 @@ public class GAConfig {
         @Config.Comment("Set this to false to disable the Forestry Integration")
         @Config.Name("Forestry's Ethanol and Seed Oil are used in recipes instead of GTCE's")
         public boolean ForestryIntegration = true;
-
-        @Config.Comment("Set this to false to disable the high tier Air Collectors")
-        @Config.Name("Air Collector have IV and LuV version")
-        public boolean highTierCollector = true;
 
         @Config.Comment({"Sets HUD location", "1 - left-upper corner", "2 - right-upper corner", "3 - left-bottom corner", "4 - right-bottom corner"})
         public byte hudLocation = 1;
@@ -632,7 +525,6 @@ public class GAConfig {
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
         public HeatingCoils heatingCoils = new HeatingCoils();
-        public SteamMultis steamMultis = new SteamMultis();
         public ProcessingArray processingArray = new ProcessingArray();
         public HyperReactors hyperReactors = new HyperReactors();
         public CentralMonitor centralMonitor = new CentralMonitor();
