@@ -59,23 +59,10 @@ public class GAMaterials implements IMaterialHandler {
     static long CORE_METAL = EXT2_METAL | GENERATE_RING | GENERATE_FRAME | GENERATE_ROTOR | GENERATE_SMALL_GEAR | GENERATE_DENSE;
 
 
-    // NEW ELEMENTS
-    public static final IngotMaterial Neutronium = new IngotMaterial(993, "neutronium", 12829635, MaterialIconSet.METALLIC, 6, of(), CORE_METAL | DISABLE_REPLICATION, Element.valueOf("Nt"), 24.0F, 12F, 655360);
-    public static final IngotMaterial Ruthenium = new IngotMaterial(883, "ruthenium", 0x646464, MaterialIconSet.METALLIC, 2, of(), EXT2_METAL, Element.Ru, 2607);
-    public static final IngotMaterial Rhodium = new IngotMaterial(869, "rhodium", 0xF4F4F4, MaterialIconSet.METALLIC, 2, of(), EXT2_METAL, Element.Rh, 2237);
-    public static final IngotMaterial Trinium = new IngotMaterial(719, "trinium", 0x9aa19c, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_ORE, Element.valueOf("Ke"), 8600);
-    public static final IngotMaterial Adamantium = new IngotMaterial(718, "adamantium", 0x2d365c, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Ad"), 10850);
-    public static final IngotMaterial Vibranium = new IngotMaterial(717, "vibranium", 0x828aad, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Vb"), 11220);
-    public static final IngotMaterial Taranium = new IngotMaterial(714, "taranium", 0x0c0c0d, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Tn"), 10000);
-    public static final IngotMaterial MetastableOganesson = new IngotMaterial(707, "metastable_oganesson", 0xE61C24, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Og"), 10380);
-    public static final IngotMaterial MetastableFlerovium = new IngotMaterial(706, "metastable_flerovium", 0x521973, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Fl"), 10990);
-    public static final IngotMaterial MetastableHassium = new IngotMaterial(683,"metastable_hassium",0x2d3a9d,MaterialIconSet.SHINY,6,of(),CORE_METAL,Element.valueOf("Hs"),11240);
-    public static final FluidMaterial Xenon = new FluidMaterial(916, "xenon", 0x270095, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION, Xe);
-    public static final FluidMaterial Neon = new FluidMaterial(915, "neon", 0xFF422A, MaterialIconSet.FLUID, of(), NO_RECYCLING | DISABLE_DECOMPOSITION | GENERATE_PLASMA, Ne);
-    public static final FluidMaterial Krypton = new FluidMaterial(914, "krypton", 0x31C42F, MaterialIconSet.FLUID, of(), NO_RECYCLING | GENERATE_PLASMA | DISABLE_DECOMPOSITION, Kr);
-    public static final IngotMaterial Zirconium = new IngotMaterial(912, "zirconium", 0xE0E1E1, MaterialIconSet.METALLIC, 6, of(), EXT2_METAL, Zr);
-    public static final IngotMaterial Polonium = new IngotMaterial(838, "polonium", 0xC9D47E, MaterialIconSet.DULL, 4, of(), SMELT_INTO_FLUID, Po);
-    public static final IngotMaterial Copernicium = new IngotMaterial(837, "copernicium", 0xFFFEFF, MaterialIconSet.DULL, 4, of(), GENERATE_FLUID_BLOCK, Cn);
+    // NEW ELEMENTS todo
+    public static final IngotMaterial MetastableOganesson = new IngotMaterial(707, "metastable_oganesson", 0xE61C24, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Og"), 38000);
+    public static final IngotMaterial MetastableFlerovium = new IngotMaterial(706, "metastable_flerovium", 0x521973, MaterialIconSet.SHINY, 7, of(), CORE_METAL, Element.valueOf("Fl"), 65000);
+    public static final IngotMaterial MetastableHassium = new IngotMaterial(683,"metastable_hassium",0x2d3a9d,MaterialIconSet.SHINY,6,of(),CORE_METAL,Element.valueOf("Hs"),78000);
     public static final RadioactiveMaterial Protactinium = new RadioactiveMaterial(824, "protactinium", 0xA78B6D, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL, Pa, 0, 0, 0, 0);
     public static final RadioactiveMaterial UraniumRadioactive = new RadioactiveMaterial(822, "uranium_radioactive", Uranium.materialRGB, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL | GENERATE_ORE, U, 0, 0, 0, 0);
     public static final RadioactiveMaterial Neptunium = new RadioactiveMaterial(818, "neptunium", 0x284D7B, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL, Np, 0, 0, 0, 0);
@@ -86,28 +73,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final RadioactiveMaterial Einsteinium = new RadioactiveMaterial(791, "einsteinium", 0xCE9F00, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL, Es, 0, 0, 0, 0);
     public static final RadioactiveMaterial Fermium = new RadioactiveMaterial(786, "fermium", 0x984ACF, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL, Fm, 0, 0, 0, 0);
     public static final RadioactiveMaterial Mendelevium = new RadioactiveMaterial(780, "mendelevium", 0x1D4ACF, MaterialIconSet.METALLIC, 3, of(), EXT2_METAL, Md, 0, 0, 0, 0);
-    public static final IngotMaterial Francium = new IngotMaterial(767, "francium", 0xAAAAAA, MaterialIconSet.SHINY, 2, of(), 0, Fr);
-    public static final IngotMaterial Radium = new IngotMaterial(766, "radium", 0xFFC840, MaterialIconSet.SHINY, 2, of(), 0, Ra);
-    public static final IngotMaterial Actinium = new IngotMaterial(765, "actinium", 0xC3D1FF, MaterialIconSet.SHINY, 2, of(), 0, Ac);
-    public static final IngotMaterial Hafnium = new IngotMaterial(764, "hafnium", 0x99999a, MaterialIconSet.SHINY, 2, of(), 0, Hf);
-    public static final IngotMaterial Rhenium = new IngotMaterial(763, "rhenium", 0xb6bac3, MaterialIconSet.SHINY, 2, of(), EXT2_METAL, Re);
-    public static final IngotMaterial Technetium = new IngotMaterial(762, "technetium", 0x545455, MaterialIconSet.SHINY, 2, of(), 0, Tc);
-    public static final IngotMaterial Thallium = new IngotMaterial(761, "thalium", 0xc1c1de, MaterialIconSet.SHINY, 2, of(), GENERATE_FOIL, Tl);
-    public static final IngotMaterial Germanium = new IngotMaterial(760, "germanium", 0x434343, MaterialIconSet.SHINY, 2, of(), GENERATE_PLATE, Ge);
-    public static final DustMaterial Selenium = new IngotMaterial(759, "selenium", 0xB6BA6B, MaterialIconSet.SHINY, 2, of(), 0, Se);
-    public static final FluidMaterial Bromine = new FluidMaterial(758, "bromine", 0xB64D6B, MaterialIconSet.SHINY, of(), 0, Br);
-    public static final DustMaterial Iodine = new DustMaterial(757, "iodine", 0x2C344F, MaterialIconSet.SHINY, 2, of(), 0, I);
-    public static final IngotMaterial Astatine = new IngotMaterial(756, "astatine", 0x241a24, MaterialIconSet.DULL, 2, of(), 0, At);
-    public static final IngotMaterial Rutherfordium = new IngotMaterial(743, "rutherfordium", 0xFFF6A1, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Rf);
-    public static final IngotMaterial Dubnium = new IngotMaterial(742, "dubnium", 0xD3FDFF, MaterialIconSet.SHINY, 7, of(), EXT2_METAL, Db);
-    public static final IngotMaterial Seaborgium = new IngotMaterial(736, "seaborgium", 0x19c5ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_FRAME, Sg);
-    public static final IngotMaterial Bohrium = new IngotMaterial(735, "bohrium", 0xdc57ff, MaterialIconSet.SHINY, 7, of(), CORE_METAL | GENERATE_FRAME | GENERATE_ROUND, Bh);
-    public static final IngotMaterial Tennessine = new IngotMaterial(681, "tennessine" , 0x977fd6, MaterialIconSet.SHINY, 2, of(), 0, Ts);
-    public static final IngotMaterial Livermorium = new IngotMaterial(680, "livermorium" , 0xc7b204, MaterialIconSet.SHINY, 2, of(), 0, Lv);
-    public static final IngotMaterial Moscovium = new IngotMaterial(679, "moscovium" , 0x7854ad, MaterialIconSet.SHINY, 2, of(), 0, Mc);
-    public static final IngotMaterial Nihonium = new IngotMaterial(678, "nihonium" , 0x08269e, MaterialIconSet.SHINY, 2, of(), 0, Nh);
-    public static final IngotMaterial Roentgenium = new IngotMaterial(677, "roentgenium" , 0xe3fdec, MaterialIconSet.SHINY, 2, of(), 0, Rg);
-    public static final IngotMaterial Meitnerium = new IngotMaterial(676, "meitnerium" , 0x2246be, MaterialIconSet.SHINY, 2, of(), 0, Mt);
 
     // ELEMENT IDS: 993, 916, 915, 914, 913, 912, 883, 869, 838, 837, 824, 822, 818, 814, 807, 801, 797, 791, 786, 780, 767, 766, 765, 764, 763, 762, 761, 760, 759, 758, 757, 756, 743, 742, 736, 735, 681, 680, 679, 678, 677, 676
 
