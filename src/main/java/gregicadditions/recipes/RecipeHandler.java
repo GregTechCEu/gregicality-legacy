@@ -1221,6 +1221,7 @@ public class RecipeHandler {
                 .input(dust, Carbon, 2)
                 .fluidInputs(Argon.getFluid(1000))
                 .fluidOutputs(ReactorSteel.getFluid(L * 22))
+                .blastFurnaceTemp(3800)
                 .buildAndRegister();
     }
 

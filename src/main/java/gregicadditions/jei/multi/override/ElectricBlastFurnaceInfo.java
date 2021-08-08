@@ -68,7 +68,7 @@ public class ElectricBlastFurnaceInfo extends MultiblockInfoPage {
 						.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.NORTH)
-						.where('D', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
+						.where('D', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
 						.where('#', Blocks.AIR.getDefaultState())
 						.build());
 			}

@@ -113,8 +113,10 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("mega_vacuum_freezer", new MultiblockInfoRecipeWrapper(new MegaVacuumFreezerInfo()))
                     .put("mega_distillation_tower", new MultiblockInfoRecipeWrapper(new MegaDistillationTowerInfo()))
                     .put("large_replicator", new MultiblockInfoRecipeWrapper(new LargeReplicatorInfo()))
+                    .put("large_mass_fabricator", new MultiblockInfoRecipeWrapper(new LargeMassFabricatorInfo()))
                     .put("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()))
                     .put("advanced_chemical_reactor", new MultiblockInfoRecipeWrapper(new AdvancedChemicalReactorInfo()))
+                    .put("gas_centrifuge", new MultiblockInfoRecipeWrapper(new GasCentrifugeInfo()))
                     .build();
         }
 
