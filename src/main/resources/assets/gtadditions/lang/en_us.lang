@@ -1626,6 +1626,7 @@ gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
 gtadditions.multiblock.large_arc_furnace.description=The Large Arc Furnace is a large version of the regular and plasma arc furance.
 gtadditions.machine.large_canning_machine.name=Large Canning Machine
 gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
+gtadditions.multiblock.large_mass_fabricator.description=Mass Fabrication machine for turning materials into matter.
 gtadditions.machine.large_replicator.name=Large Replicator
 gtadditions.multiblock.large_replicator.description=Replication machine for duplicating materials.
 
