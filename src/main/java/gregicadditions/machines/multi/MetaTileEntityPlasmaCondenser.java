@@ -1,11 +1,12 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.GAMaterials;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -19,6 +20,10 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -27,6 +32,11 @@ import net.minecraft.util.text.TextComponentTranslation;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
+
+import static gregicadditions.client.ClientHandler.ENRICHED_NAQUADAH_ALLOY_CASING;
+import static gregicadditions.client.ClientHandler.HASTELLOY_N_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
 
@@ -43,7 +53,7 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public long maxVoltage;
@@ -51,29 +61,21 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     @Override
     protected BlockPattern createStructurePattern() {
         return  FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XMX", "X#X", "XPX", "XXX")
-                .aisle("XSX", "XXX", "XXX", "XXX", "XXX")
+                .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
+                .aisle("#XXX#", "XGAGX", "XAPAX", "XGpGX", "#XXX#")
+                .aisle("#XXX#", "XAPAX", "XPPPX", "XpPpX", "#XXX#")
+                .aisle("#XXX#", "XGAGX", "XAPAX", "XGpGX", "#XXX#")
+                .aisle("#####", "#XXX#", "#XSX#", "#XXX#", "#####")
+                .setAmountAtLeast('L', 25)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', isAirPredicate())
-                .where('P', pumpPredicate())
-                .where('M', motorPredicate())
+                .where('L', statePredicate(getCasingState()))
+                .where('G', statePredicate(MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX)))
+                .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
+                .where('A', isAirPredicate())
+                .where('#', (tile) -> true)
+                .where('p', pumpPredicate())
                 .build();
-    }
-
-    public static Predicate<BlockWorldState> motorPredicate() {
-        return (blockWorldState) -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if (!(blockState.getBlock() instanceof MotorCasing)) {
-                return false;
-            } else {
-                MotorCasing motorCasing = (MotorCasing) blockState.getBlock();
-                MotorCasing.CasingType tieredCasingType = motorCasing.getState(blockState);
-                MotorCasing.CasingType currentCasing = blockWorldState.getMatchContext().getOrPut("Motor", tieredCasingType);
-                return currentCasing.getName().equals(tieredCasingType.getName());
-            }
-        };
     }
 
     public static Predicate<BlockWorldState> pumpPredicate() {
@@ -93,16 +95,15 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        MotorCasing.CasingType motor = context.getOrDefault("Motor", MotorCasing.CasingType.MOTOR_LV);
         PumpCasing.CasingType pump = context.getOrDefault("Pump", PumpCasing.CasingType.PUMP_LV);
-        int min = Math.min(motor.getTier(), pump.getTier());
-        maxVoltage = (long) (Math.pow(4, min) * 8);
+        maxVoltage = (long) (Math.pow(4, pump.getTier()) * 8);
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
+        if (isStructureFormed() && !hasProblems())
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 
     @Override
@@ -117,12 +118,12 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     }
 
     private IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(GAMaterials.EnrichedNaquadahAlloy);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.EnrichedNaquadahAlloy);
+        return HASTELLOY_N_CASING;
     }
 
     @Override

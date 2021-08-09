@@ -4,6 +4,7 @@ import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.utils.BlockPatternChecker;
+import gregicadditions.utils.GALog;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerBatteryBuffer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -83,9 +84,6 @@ public class GregTechCEHooks {
 
     //origin: gregtech.api.metatileentity.MetaTileEntity.writeInitialSyncData(PacketBuffer buf)
     public static void writeSpinBuf(PacketBuffer buf, EnumFacing spin) {
-        if (spin == null) {
-            System.out.println("writeSpinBuf null");
-        }
         buf.writeByte(spin == null? EnumFacing.NORTH.getIndex() : spin.getIndex());
     }
 
@@ -96,9 +94,8 @@ public class GregTechCEHooks {
 
     //origin: gregtech.api.metatileentity.MetaTileEntity.writeToNBT(NBTTagCompound data)
     public static NBTTagCompound writeSpinNBT(NBTTagCompound data, EnumFacing spin) {
-        if (spin == null) {
-            System.out.println("writeSpinNBT null");
-        }
+        if (spin == null)
+            GALog.logger.debug("writeSpinNBT null");
         data.setByte("sPin", (byte) (spin == null? EnumFacing.NORTH.getIndex() : spin.getIndex()));
         return data;
     }

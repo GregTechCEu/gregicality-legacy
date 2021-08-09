@@ -72,7 +72,7 @@ public class MetaTileEntityRotorHolderForNuclearCoolant extends MetaTileEntityMu
         if (getWorld().isRemote) {
             return;
         }
-        if (getTimer() % 10 == 0) {
+        if (getOffsetTimer() % 20 == 0) {
             this.frontFaceFree = checkTurbineFaceFree();
         }
 

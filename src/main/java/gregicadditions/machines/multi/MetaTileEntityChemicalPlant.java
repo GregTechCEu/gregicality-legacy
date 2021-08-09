@@ -2,6 +2,7 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.*;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
@@ -19,7 +20,9 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -27,20 +30,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 
-import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 
 
-public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController {
+public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController { //todo staged removal
 
     public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
             GAMultiblockCasing.CasingType.TIERED_HULL_LV,
@@ -60,7 +60,7 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     private int maxVoltage = 0;
@@ -70,18 +70,6 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.CHEMICAL_PLANT_RECIPES);
         this.recipeMapWorkable = new ChemicalPlantRecipeLogic(this);
-    }
-
-    @Override
-    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
-        //basically check minimal requirements for inputs count
-        int itemInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_ITEMS, Collections.emptyList())
-                .stream().map(it -> (IItemHandler) it).mapToInt(IItemHandler::getSlots).sum();
-        int fluidOutput = abilities.getOrDefault(MultiblockAbility.EXPORT_FLUIDS, Collections.emptyList()).size();
-        int fluidInputsCount = abilities.getOrDefault(MultiblockAbility.IMPORT_FLUIDS, Collections.emptyList()).size();
-        return fluidOutput >= 2 &&
-                fluidInputsCount >= 4 && itemInputsCount >= 4 &&
-                abilities.containsKey(MultiblockAbility.INPUT_ENERGY);
     }
 
     @Override
@@ -237,6 +225,7 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.multiblock.universal.framework.tooltip"));
         tooltip.add(I18n.format("gtadditions.multiblock.chemical_plant.tooltip"));
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
     }
 
     @Override
@@ -251,12 +240,12 @@ public class MetaTileEntityChemicalPlant extends GARecipeMapMultiblockController
 
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return SOLID_STEEL_CASING;
     }
 
     @Override
