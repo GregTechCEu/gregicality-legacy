@@ -38,7 +38,7 @@ public class RheniumChain {
                 .fluidInputs(Oxygen.getFluid(3000))
                 .fluidOutputs(HydrogenCyanide.getFluid(1000))
                 .fluidOutputs(Water.getFluid(3000))
-                .EUt(7680)
+                .EUt(1920)
                 .duration(50)
                 .buildAndRegister();
 
@@ -49,7 +49,7 @@ public class RheniumChain {
                 .input(dust, Sodium, 2)
                 .fluidOutputs(SodiumCyanide.getFluid(2000))
                 .fluidOutputs(Water.getFluid(1000))
-                .EUt(491520)
+                .EUt(1920)
                 .duration(12)
                 .buildAndRegister();
 
@@ -59,7 +59,7 @@ public class RheniumChain {
                 .fluidInputs(SodiumCyanide.getFluid(1000))
                 .fluidOutputs(GoldCyanide.getFluid(1000))
                 .outputs(GoldDepleteMolybdenite.getItemStack(3))
-                .EUt(122880)
+                .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
 
@@ -69,7 +69,7 @@ public class RheniumChain {
                 .input(dust, Sodium)
                 .fluidOutputs(SodiumCyanide.getFluid(1000))
                 .output(dust, Gold)
-                .EUt(7680)
+                .EUt(1920)
                 .duration(150)
                 .buildAndRegister();
 
@@ -79,7 +79,7 @@ public class RheniumChain {
                 .fluidInputs(IronChloride.getFluid(500))
                 .outputs(MolybdenumConcentrate.getItemStack(4))
                 .fluidOutputs(ChlorideLeachedSolution.getFluid(500))
-                .EUt(491520)
+                .EUt(1920)
                 .duration(10)
                 .buildAndRegister();
 
@@ -100,7 +100,7 @@ public class RheniumChain {
                 .fluidInputs(Iron2Chloride.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
                 .fluidOutputs(IronChloride.getFluid(1000))
-                .EUt(120)
+                .EUt(30)
                 .duration(150)
                 .buildAndRegister();
 
@@ -109,7 +109,7 @@ public class RheniumChain {
                 .inputs(CopperChloride.getItemStack(3))
                 .output(dust, Copper)
                 .fluidOutputs(Chlorine.getFluid(2000))
-                .EUt(480)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
@@ -118,7 +118,7 @@ public class RheniumChain {
                 .inputs(LeadChloride.getItemStack(3))
                 .output(dust, Lead)
                 .fluidOutputs(Chlorine.getFluid(2000))
-                .EUt(480)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
@@ -127,7 +127,7 @@ public class RheniumChain {
                 .inputs(BismuthChloride.getItemStack(4))
                 .output(dust, Bismuth)
                 .fluidOutputs(Chlorine.getFluid(3000))
-                .EUt(480)
+                .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
@@ -136,8 +136,8 @@ public class RheniumChain {
                 .inputs(MolybdenumConcentrate.getItemStack(4))
                 .fluidInputs(Oxygen.getFluid(7250))
                 .blastFurnaceTemp(8550)
-                .EUt(491520)
-                .duration(50)
+                .EUt(120)
+                .duration(340)
                 .fluidOutputs(MolybdenumFlue.getFluid(3000))
                 .outputs(MolybdenumTrioxide.getItemStack(4))
                 .buildAndRegister();
@@ -149,7 +149,7 @@ public class RheniumChain {
                 .output(dust, Molybdenum)
                 .fluidOutputs(Steam.getFluid(3000))
                 .blastFurnaceTemp(1000)
-                .EUt(480)
+                .EUt(120)
                 .duration(200)
                 .buildAndRegister();
 
@@ -168,8 +168,8 @@ public class RheniumChain {
                 .fluidInputs(Ammonia.getFluid(500))
                 .fluidOutputs(SulfurDioxide.getFluid(3000))
                 .fluidOutputs(AmmoniumPerrhenate.getFluid(500))
-                .EUt(491520)
-                .duration(25)
+                .EUt(480)
+                .duration(90)
                 .buildAndRegister();
 
         // NH4ReO4 + 7H -> Re + NH3 + 4H2O
@@ -179,8 +179,8 @@ public class RheniumChain {
                 .output(dust, Rhenium)
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(4000))
-                .EUt(491520)
-                .duration(20)
+                .EUt(480)
+                .duration(110)
                 .buildAndRegister();
 
         // Hg + 2CH3COOH -> C4H6O4Hg + H2
@@ -189,7 +189,7 @@ public class RheniumChain {
                 .fluidInputs(AceticAcid.getFluid(2000))
                 .outputs(MercuryAcetate.getItemStack(15))
                 .fluidOutputs(Hydrogen.getFluid(2000))
-                .EUt(125000)
+                .EUt(480)
                 .duration(90)
                 .buildAndRegister();
 
@@ -198,7 +198,7 @@ public class RheniumChain {
                 .fluidInputs(EthyleneOxide.getFluid(1000))
                 .fluidInputs(Methylamine.getFluid(1000))
                 .fluidOutputs(Methylethanolamine.getFluid(1000))
-                .EUt(125000)
+                .EUt(480)
                 .duration(90)
                 .buildAndRegister();
 
@@ -209,8 +209,8 @@ public class RheniumChain {
                 .outputs(CalciumCyanamide.getItemStack(4))
                 .output(dust, Carbon)
                 .blastFurnaceTemp(2000)
-                .EUt(4800)
-                .duration(90)
+                .EUt(120)
+                .duration(360)
                 .buildAndRegister();
 
         // 2HCl + C3H9NO + O + CaCN2 -> C2H7N3 + CH3COOH + CaCl2
@@ -224,8 +224,8 @@ public class RheniumChain {
                 .output(dust, CalciumChloride, 3)
                 .notConsumable(dust,Palladium)
                 .notConsumable(MercuryAcetate.getItemStack())
-                .EUt(250000)
-                .duration(40)
+                .EUt(480)
+                .duration(240)
                 .buildAndRegister();
 
         // C2H7N3 + HNO3 + H2SO4 + HCl + NaNO2 -> 2H2SO4(dil.) + C2H5N5O3 + NaCl
@@ -238,8 +238,8 @@ public class RheniumChain {
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(2000))
                 .fluidOutputs(Methylnitronitrosoguanidine.getFluid(1000))
                 .output(dust, Salt, 2)
-                .EUt(250000)
-                .duration(40)
+                .EUt(480)
+                .duration(220)
                 .buildAndRegister();
 
         // C6H12O6 + bacteria -> C5H12O
@@ -256,12 +256,12 @@ public class RheniumChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Oct1ene.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
-                .fluidInputs(PhosphoricAcid.getFluid(10))
                 .fluidOutputs(Octanol.getFluid(1000))
+                .notConsumable(PhosphoricAcid.getFluid(0))
                 .notConsumable(PalladiumLoadedRutileNanoparticles.getItemStack())
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
-                .EUt(150000)
-                .duration(90)
+                .EUt(30720)
+                .duration(110)
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
@@ -269,7 +269,7 @@ public class RheniumChain {
                 .notConsumable(UVA_HALIDE_LAMP)
                 .fluidInputs(Methylnitronitrosoguanidine.getFluid(250))
                 .outputs(SelectivelyMutatedCupriavidiusNecator.getItemStack())
-                .EUt(491520)
+                .EUt(30720)
                 .duration(20)
                 .buildAndRegister();
 
@@ -279,7 +279,7 @@ public class RheniumChain {
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(3000))
                 .fluidOutputs(Trioctylamine.getFluid(1000))
-                .EUt(125000)
+                .EUt(480)
                 .duration(90)
                 .buildAndRegister();
 
@@ -292,18 +292,18 @@ public class RheniumChain {
                 .fluidInputs(AceticAcid.getFluid(375))
                 .fluidInputs(IsoamylAlcohol.getFluid(375))
                 .fluidOutputs(RheniumSeparationMixture.getFluid(4000))
-                .EUt(125000)
+                .EUt(7680)
                 .duration(90)
                 .buildAndRegister();
 
         // ? + RSM -> ? + ?(20%) + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, PlatinumSaltCrude, 2)
+                .input(dust, PlatinumSalt, 2)
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
                 .output(dust, PlatinumSaltRefined, 2)
                 .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined, 2), 2000, 0)
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
-                .EUt(50000)
+                .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
 
@@ -313,7 +313,7 @@ public class RheniumChain {
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
                 .outputs(PurifiedColumbite.getItemStack())
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
-                .EUt(50000)
+                .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
 
@@ -323,7 +323,7 @@ public class RheniumChain {
                 .fluidInputs(RheniumSeparationMixture.getFluid(200))
                 .outputs(PurifiedPyrochlore.getItemStack())
                 .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
-                .EUt(50000)
+                .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
 
@@ -332,7 +332,7 @@ public class RheniumChain {
                 .inputs(PurifiedColumbite.getItemStack())
                 .fluidInputs(HydrofluoricAcid.getFluid(5000))
                 .fluidOutputs(FluoroniobicAcid.getFluid(1000))
-                .EUt(1230)
+                .EUt(480)
                 .duration(180)
                 .buildAndRegister();
 
@@ -341,7 +341,7 @@ public class RheniumChain {
                 .inputs(PurifiedPyrochlore.getItemStack())
                 .fluidInputs(HydrofluoricAcid.getFluid(5000))
                 .fluidOutputs(FluoroniobicAcid.getFluid(1000))
-                .EUt(1230)
+                .EUt(480)
                 .duration(180)
                 .buildAndRegister();
 
@@ -352,8 +352,8 @@ public class RheniumChain {
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(AmmoniumSulfate.getFluid(1000))
                 .fluidOutputs(AmmoniumPerrhenate.getFluid(1000))
-                .EUt(491520)
-                .duration(25)
+                .EUt(1920)
+                .duration(110)
                 .buildAndRegister();
     }
 }

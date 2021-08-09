@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.Loader;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Thorium;
 
@@ -80,10 +81,10 @@ public class GAMetaItem extends MaterialMetaItem {
         PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
         COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
-        SCHEMATIC = addItem(131, "schematic").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
-        SCHEMATIC_2X2 = addItem(132, "schematic.2by2").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
-        SCHEMATIC_3X3 = addItem(133, "schematic.3by3").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
-        SCHEMATIC_DUST = addItem(134, "schematic.dust").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.StainlessSteel, 7257600L)));
+        SCHEMATIC = addItem(131, "schematic").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
+        SCHEMATIC_2X2 = addItem(132, "schematic.2by2").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
+        SCHEMATIC_3X3 = addItem(133, "schematic.3by3").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
+        SCHEMATIC_DUST = addItem(134, "schematic.dust").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
 
         PRIMITIVE_ASSEMBLY = addItem(200, "circuit.assembly.primitive").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
         ELECTRONIC_ASSEMBLY = addItem(201, "circuit.assembly.electronic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
@@ -191,10 +192,10 @@ public class GAMetaItem extends MaterialMetaItem {
         WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
-        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UEV);
-        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UIV);
-        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UMV);
+        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, UEV);
+        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UIV);
+        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UMV);
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UXV);
 
         BOULE_DUBNIUM = addItem(340, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(341, "boule.rutherfordium");
@@ -426,10 +427,10 @@ public class GAMetaItem extends MaterialMetaItem {
         SMD_DIODE_SUPRACAUSAL = addItem(544, "smd.diode.supracausal");
         SMD_TRANSISTOR_SUPRACAUSAL = addItem(545, "smd.transistor.supracausal");
 
-        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UEV);
-        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UIV);
-        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UMV);
-        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UIV);
+        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UMV);
+        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UXV);
+        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, MAX);
 
         TOPOLOGICAL_MANIPULATOR_UNIT = addItem(550, "topological.manipulator.unit");
         RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(551, "relativistic.spinorial.memory.system");
@@ -487,6 +488,31 @@ public class GAMetaItem extends MaterialMetaItem {
         KAPTON_CIRCUIT_BOARD = addItem(585, "board_circuit.kapton");
 
         SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
+        SHAPE_EXTRUDER_ROTOR = addItem(587, "shape.extruder.rotor");
+
+        FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(588, "fullerene.polymer.matrix.soft.tubing");
+        FULLERENE_POLYMER_MATRIX_FINE_TUBING = addItem(589, "fullerene.polymer.matrix.fine.tubing");
+        X_RAY_WAVEGUIDE = addItem(590, "xray.waveguide");
+        MICROFOCUS_X_RAY_TUBE = addItem(591, "microfocus.xray.tube");
+        X_RAY_MIRROR_PLATE = addItem(592, "xray.mirror.plate");
+        UNTREATED_EXOTIC_WAFER = addItem(593, "untreated.exotic.wafer");
+        EXOTIC_WAFER = addItem(594, "exotic.wafer");
+        EXOTIC_CHIP = addItem(595, "exotic.chip");
+        EXCITATION_MAINTAINER = addItem(596, "excitation.maintainer");
+        CRYOGENIC_INTERFACE = addItem(597, "cryogenic.interface");
+        RYDBERG_SPINORIAL_ASSEMBLY = addItem(598, "rydberg.spinorial.assembly");
+        X_RAY_LASER = addItem(599, "xray.laser");
+        EXOTIC_PROCESSING_CORE = addItem(600, "exotic.processing.core");
+
+        SMD_CAPACITOR_EXOTIC = addItem(601, "component.smd.capacitor.exotic");
+        SMD_RESISTOR_EXOTIC = addItem(602, "component.smd.resistor.exotic");
+        SMD_DIODE_EXOTIC = addItem(603, "component.smd.diode.exotic");
+        SMD_TRANSISTOR_EXOTIC = addItem(604, "component.smd.transistor.exotic");
+
+        EXOTIC_PROCESSOR = addItem(605, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        EXOTIC_ASSEMBLY = addItem(606, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, UEV);
+        EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
+        EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
@@ -505,7 +531,6 @@ public class GAMetaItem extends MaterialMetaItem {
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
-        MetaItems.COMPRESSED_CLAY.setInvisible();
         MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
         MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
         MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();

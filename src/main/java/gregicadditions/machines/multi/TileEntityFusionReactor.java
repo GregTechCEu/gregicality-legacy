@@ -2,7 +2,6 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
@@ -17,11 +16,13 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.recipeproperties.FusionEUToStartProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -42,10 +43,10 @@ import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
+public class TileEntityFusionReactor extends RecipeMapMultiblockController {
     private final int tier;
     private EnergyContainerList inputEnergyContainers;
-    private int heat = 0; // defined in TileEntityFusionReactor but serialized in FusionRecipeLogic
+    private long heat = 0; // defined in TileEntityFusionReactor but serialized in FusionRecipeLogic
 
     public TileEntityFusionReactor(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, RecipeMaps.FUSION_RECIPES);
@@ -71,7 +72,7 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
         return FactoryBlockPattern.start(LEFT, DOWN, BACK)
                 .aisle("###############", "######OCO######", "###############")
                 .aisle("######ICI######", "####CCcccCC####", "######ICI######")
-                .aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
+                .aisle("####CC###CC####", "###EccOSOccE###", "####CC###CC####")
                 .aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
                 .aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##")
                 .aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
@@ -83,7 +84,7 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
                 .aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
                 .aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
                 .aisle("######ICI######", "####CCcccCC####", "######ICI######")
-                .aisle("###############", "######OSO######", "###############")
+                .aisle("###############", "######OCO######", "###############")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
                 .where('c', statePredicate(getCoilState()))
@@ -203,15 +204,15 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         switch (tier) {
             case 6: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "1,600,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "160,000,000"));
                 break;
             }
             case 7: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "3,200,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "320,000,000"));
                 break;
             }
             case 8: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "6,400,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "640,000,000"));
                 break;
             }
         }
@@ -234,12 +235,12 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
         @Override
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
-            return (recipe != null && recipe.getIntegerProperty("eu_to_start") <= energyContainer.getEnergyCapacity()) ? recipe : null;
+            return (recipe != null && recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) <= energyContainer.getEnergyCapacity()) ? recipe : null;
         }
 
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
-            int heatDiff = recipe.getIntegerProperty("eu_to_start") - heat;
+            long heatDiff = recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) - heat;
             if (heatDiff <= 0) {
                 return super.setupAndConsumeRecipeInputs(recipe);
             }
@@ -254,18 +255,18 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
         @Override
         public NBTTagCompound serializeNBT() {
             NBTTagCompound tag = super.serializeNBT();
-            tag.setInteger("Heat", heat);
+            tag.setLong("Heat", heat);
             return tag;
         }
 
         @Override
         public void deserializeNBT(NBTTagCompound compound) {
             super.deserializeNBT(compound);
-            heat = compound.getInteger("Heat");
+            heat = compound.getLong("Heat");
         }
     }
 
-    public int getHeat() {
+    public long getHeat() {
         return heat;
     }
 }

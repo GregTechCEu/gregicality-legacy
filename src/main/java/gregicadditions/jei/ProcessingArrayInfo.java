@@ -3,10 +3,10 @@ package gregicadditions.jei;
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -18,9 +18,7 @@ import java.util.List;
 
 public class ProcessingArrayInfo extends MultiblockInfoPage {
 
-	public ProcessingArrayInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ProcessingArrayInfo() { }
 
 	@Override
 	public MultiblockControllerBase getController() {
@@ -30,11 +28,12 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 	@Override
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
-				.aisle("EXX", "XXX", "XXX")
-				.aisle("IXX", "S#X", "XXX")
-				.aisle("OXX", "XXX", "XXX")
+				.aisle("XXX", "IXX", "XXX")
+				.aisle("MXX", "S#X", "XXX")
+				.aisle("EXX", "OXX", "XXX")
 				.where('S', GATileEntities.PROCESSING_ARRAY, EnumFacing.WEST)
-				.where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel))
+				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.WEST)
 				.where('#', Blocks.AIR.getDefaultState())
 				.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
@@ -45,7 +44,6 @@ public class ProcessingArrayInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		// TODO Auto-generated method stub
 		return new String[] { I18n.format("gregtech.multiblock.processing_array.description",
 				GAConfig.multis.processingArray.processingArrayMachineLimit) };
 	}

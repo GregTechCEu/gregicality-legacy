@@ -54,12 +54,7 @@ public class ElectricImplosionHandler {
         RecipeMaps.IMPLOSION_RECIPES.getRecipeList().forEach(recipe -> {
 
             // Get the explosive type used in this recipe
-            ItemStack explosive;
-            try {
-                explosive = recipe.getProperty(PROPERTY);
-            } catch (IllegalArgumentException e) {
-                explosive = new ItemStack(Blocks.TNT);
-            }
+            ItemStack explosive = (ItemStack) recipe.getRecipePropertyStorage().getRawRecipePropertyValue(PROPERTY);
 
             // Get the input list, converting from CountableIngredient to ItemStack
             AtomicInteger stackCount = new AtomicInteger();
@@ -70,7 +65,7 @@ public class ElectricImplosionHandler {
                                             .map(Ingredient::getMatchingStacks)
                                             .filter(stack -> stack.length != 0)
                                             .map(array -> array[0])
-                                            .peek(is -> is.setCount(stackCount.get()))
+                                            .peek(is -> is.copy().setCount(stackCount.get()))
                                             .collect(Collectors.toSet()));
 
             // Make sure inputs were properly acquired, and remove explosive

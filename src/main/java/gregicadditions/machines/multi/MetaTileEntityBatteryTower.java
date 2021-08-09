@@ -6,10 +6,12 @@ import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -25,7 +27,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -43,12 +44,13 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.Talonite;
+import static gregicadditions.client.ClientHandler.TALONITE_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer {
+public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase implements IEnergyContainer { //todo maintenance
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     private long energyStored;
@@ -94,16 +96,17 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
         maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
         energyInputPerTick = 0;
         energyOutputPerTick = 0;
-        passiveDrain = (long) GAValues.V[cell.getTier()] * GAConfig.multis.batteryTower.lossPercentage / 100;
+        passiveDrain = (long) (GAValues.V[cell.getTier()] * (GAConfig.multis.batteryTower.lossPercentage / 100.0) + (5L * this.getNumProblems() / 100.0));
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.2", GAConfig.multis.batteryTower.lossPercentage));
+        if (GAConfig.multis.batteryTower.lossPercentage != 0)
+            tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.2", GAConfig.multis.batteryTower.lossPercentage));
         tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.3"));
-
+        tooltip.add(I18n.format("gtadditions.multiblock.battery_tower.tooltip.4"));
     }
 
     @Override
@@ -129,7 +132,7 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
                 .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('X', statePredicate(getGlassState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('X', statePredicate(getGlassState()).or(statePredicate(getCasingState())).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('R', cellPredicate())
                 .build();
     }
@@ -155,11 +158,12 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (this.isStructureFormed()) {
+        if (this.isStructureFormed() && !this.hasProblems()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_store", String.format("%,d", getEnergyStored()), String.format("%,d", getEnergyCapacity())));
             textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.input", String.format("%,d", getEnergyInputPerTick())));
             textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.output", String.format("%,d", getEnergyOutputPerTick())));
-            textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.passive_drain", String.format("%,d", passiveDrain)));
+            if (GAConfig.multis.batteryTower.lossPercentage != 0)
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.passive_drain", String.format("%,d", passiveDrain)));
         }
 
         super.addDisplayText(textList);
@@ -170,12 +174,12 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Talonite);
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(Talonite);
+        return TALONITE_CASING;
     }
 
     @Override
@@ -235,8 +239,12 @@ public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implem
     public void receiveCustomData(int dataId, PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == 1) {
+            long last = this.energyStored;
             this.energyStored = buf.readLong();
-            getHolder().scheduleChunkForRenderUpdate();
+            if (last * this.energyStored == 0 && last + this.energyStored != 0) {
+                getHolder().scheduleChunkForRenderUpdate();
+
+            }
         }
     }
 

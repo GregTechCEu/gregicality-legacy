@@ -159,7 +159,7 @@ public class MagnetoRecipes {
                 .buildAndRegister();
 
         // Cubic Zirconia
-        BLAST_RECIPES.recipeBuilder().duration(56000).EUt(480).blastFurnaceTemp(2953)
+        BLAST_RECIPES.recipeBuilder().duration(56000).EUt(120).blastFurnaceTemp(2953)
                 .input(dust, Zirconium, 10)
                 .input(dust, YttriumOxide)
                 .fluidInputs(Oxygen.getFluid(10000))
@@ -198,11 +198,11 @@ public class MagnetoRecipes {
                 .output(dust, CircuitCompoundMK3, 6)
                 .buildAndRegister();
 
-        // Gem Recipes TODO Do these duplicate?
-        AUTOCLAVE_RECIPES.recipeBuilder().duration(4500).EUt(7680)
+        // Gem Recipes
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(90000).EUt(7680)
                 .input(dust, MagnetoResonatic)
                 .fluidInputs(Neon.getFluid(100))
-                .output(gemChipped, MagnetoResonatic, 9)
+                .output(gem, MagnetoResonatic)
                 .buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder().duration(4500).EUt(7680)

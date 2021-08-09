@@ -42,6 +42,9 @@ public class GAClassTransformer implements IClassTransformer {
             case "eutros.multiblocktweaker.client.PreviewRenderer":
                 tform = PreviewRendererTransformer.INSTANCE;
                 break;
+            case "gregtech.common.pipelike.cable.BlockCable":
+                tform = BlockCableTransformer.INSTANCE;
+                break;
             default:
                 return basicClass;
         }

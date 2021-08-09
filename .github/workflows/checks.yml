@@ -10,7 +10,7 @@ on:
 
 jobs:
   checks:
-    name: Checks
+    name: Compilation
     runs-on: ubuntu-latest
 
     steps:

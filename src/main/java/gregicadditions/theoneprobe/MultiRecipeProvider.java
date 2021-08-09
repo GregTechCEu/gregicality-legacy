@@ -39,9 +39,9 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
 
     protected void addProbeInfo(IMultiRecipe iMultiRecipe, IProbeInfo iProbeInfo, TileEntity tileEntity, EnumFacing enumFacing) {
 
-        RecipeMap<?>[] recipes = iMultiRecipe.getRecipes();
+        RecipeMap<?>[] recipes = iMultiRecipe.getRecipeMaps();
         for (int i = 0; i < recipes.length; i++) {
-            if (iMultiRecipe.getCurrentRecipe() == i) {
+            if (iMultiRecipe.getRecipeMapIndex() == i) {
                 iProbeInfo.text(TextStyleClass.INFOIMP + "{*recipemap." + recipes[i].getUnlocalizedName() + ".name*} {*<*}");
             } else {
                 iProbeInfo.text(TextStyleClass.INFO + recipes[i].getLocalizedName());

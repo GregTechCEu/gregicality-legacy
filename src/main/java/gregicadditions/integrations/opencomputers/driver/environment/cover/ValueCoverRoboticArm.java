@@ -2,6 +2,7 @@ package gregicadditions.integrations.opencomputers.driver.environment.cover;
 
 import gregtech.api.cover.CoverBehavior;
 import gregtech.common.covers.CoverRoboticArm;
+import gregtech.common.covers.TransferMode;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
@@ -20,7 +21,7 @@ public class ValueCoverRoboticArm extends ValueCoverConveyor {
         if (!(coverBehavior instanceof CoverRoboticArm)) return new Object[] {null, "Found no cover, this is an invalid object."};
         int mode = args.checkInteger(0);
         if (mode < 0 || mode > 2) throw new IllegalArgumentException("Expect a number between 0 and 2.");
-        ((CoverRoboticArm) coverBehavior).setTransferMode(CoverRoboticArm.TransferMode.values()[mode]);
+        ((CoverRoboticArm) coverBehavior).setTransferMode(TransferMode.values()[mode]);
         return new Object[]{};
     }
 

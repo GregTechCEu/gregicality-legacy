@@ -27,10 +27,11 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 			shapeInfo.add(MultiblockShapeInfo.builder()
 					.aisle("XXX", "CMP", "XXX")
 					.aisle("IXX", "p#s", "XXX")
-					.aisle("OEX", "eSR", "XXX")
+					.aisle("OEH", "eSR", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MULTI_USE, EnumFacing.SOUTH)
-					.where('X', GAMetaBlocks.getMetalCasingBlockState(TileEntityLargeMultiUse.casingMaterial))
+					.where('X', TileEntityLargeMultiUse.casingState)
+					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
@@ -41,8 +42,6 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 					.where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())
 					.where('e', GAMetaBlocks.EMITTER_CASING.getDefaultState())
 					.where('R', GAMetaBlocks.ROBOT_ARM_CASING.getDefaultState())
-
-
 					.build());
 
 
@@ -51,6 +50,6 @@ public class LargeMultiUseInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{};
+		return new String[]{"This Multiblock will be removed in the next update. Use the dedicated multiblocks for each machine instead."};
 	}
 }

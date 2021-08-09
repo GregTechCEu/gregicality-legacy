@@ -1,7 +1,9 @@
 package gregicadditions.jei;
 
 import gregicadditions.Gregicality;
+import gregicadditions.capabilities.impl.GAAbstractRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
+import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.recipes.impl.nuclear.GTHotCoolantRecipeWrapper;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMapCategory;
@@ -19,9 +21,11 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IIngredientRegistry;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.*;
 import net.minecraft.util.ResourceLocation;
 
@@ -45,7 +49,8 @@ public class JEIGAPlugin implements IModPlugin {
             registry.addRecipeCategories(new HotCoolantRecipeMapCategory(hotCoolantRecipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
         for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
-            registry.addRecipeCategories(new GARecipeMapCategory(recipeMap, registry.getJeiHelpers().getGuiHelper()));
+            if(!recipeMap.isHidden)
+                registry.addRecipeCategories(new GARecipeMapCategory(recipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
 
         registry.addRecipeCategories(new GADrillingRigCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -90,11 +95,25 @@ public class JEIGAPlugin implements IModPlugin {
                     HotCoolantRecipeMap recipeMap = ((HotCoolantRecipeLogic) workableCapability).recipeMap;
                     registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
                 } else if (workableCapability instanceof AbstractRecipeLogic) {
-                    RecipeMap<?> recipeMap = ((AbstractRecipeLogic) workableCapability).recipeMap;
-                    registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                    if (metaTileEntity instanceof MultiRecipeMapMultiblockController) {
+                        for (RecipeMap<?> recipeMap : ((MultiRecipeMapMultiblockController) metaTileEntity).getRecipeMaps()) {
+                            registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                        }
+                    } else {
+                        RecipeMap<?> recipeMap = ((AbstractRecipeLogic) workableCapability).recipeMap;
+                        registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                    }
                 }
             }
         }
+
+        //Multiblock info page registration
+        GAMultiblockInfoCategory.getRecipes().values().forEach(v -> {
+            MultiblockInfoPage infoPage = v.getInfoPage();
+            registry.addIngredientInfo(infoPage.getController().getStackForm(),
+                    VanillaTypes.ITEM,
+                    infoPage.getDescription());
+        });
 
 
     }

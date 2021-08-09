@@ -7,7 +7,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.RecipeMapSteamMultiblockController;
 import gregicadditions.capabilities.impl.SteamMultiWorkable;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,13 +17,12 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockFireboxCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-
-import static gregtech.api.unification.material.Materials.Bronze;
 
 public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController {
 
@@ -67,16 +65,20 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
                         .or(abilityPartPredicate(GregicAdditionsCapabilities.STEAM)).test(state))
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(
                         GregicAdditionsCapabilities.STEAM_IMPORT_ITEMS, GregicAdditionsCapabilities.STEAM_EXPORT_ITEMS)))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .build();
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Bronze);
+        return GAConfig.multis.steamMultis.useSteelMultis ?
+                MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID) :
+                MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS);
     }
 
     public IBlockState getFireboxState() {
-        return MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX);
+        return GAConfig.multis.steamMultis.useSteelMultis ?
+                MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.STEEL_FIREBOX) :
+                MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX);
     }
 
     private boolean isFireboxPart(IMultiblockPart sourcePart) {
@@ -85,10 +87,18 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        if (sourcePart != null && isFireboxPart(sourcePart)) {
-            return isActive ? Textures.BRONZE_FIREBOX_ACTIVE : Textures.BRONZE_FIREBOX;
+        if (GAConfig.multis.steamMultis.useSteelMultis) {
+            if (sourcePart != null && isFireboxPart(sourcePart)) {
+                return isActive ? Textures.STEEL_FIREBOX_ACTIVE : Textures.STEEL_FIREBOX;
+            }
+            return Textures.SOLID_STEEL_CASING;
+
+        } else {
+            if (sourcePart != null && isFireboxPart(sourcePart)) {
+                return isActive ? Textures.BRONZE_FIREBOX_ACTIVE : Textures.BRONZE_FIREBOX;
+            }
+            return Textures.BRONZE_PLATED_BRICKS;
         }
-        return GAMetaBlocks.METAL_CASING.get(Bronze);
     }
 
     @Override
@@ -161,6 +171,6 @@ public class MetaTileEntitySteamOven extends RecipeMapSteamMultiblockController 
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-        Textures.FURNACE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
+        Textures.ELECTRIC_FURNACE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
     }
 }

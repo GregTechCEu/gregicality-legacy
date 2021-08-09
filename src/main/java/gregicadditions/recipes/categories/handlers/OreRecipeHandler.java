@@ -43,6 +43,7 @@ public class OreRecipeHandler {
         }
 
         dustImpure.addProcessingHandler(DustMaterial.class, OreRecipeHandler::processDirtyDust);
+        crushed.addProcessingHandler(DustMaterial.class, OreRecipeHandler::processCrushed);
     }
 
 
@@ -285,6 +286,17 @@ public class OreRecipeHandler {
                 .input(dustImpurePrefix, dustMaterial)
                 .fluidInputs(Water.getFluid(100))
                 .output(dust, dustMaterial)
+                .buildAndRegister();
+    }
+
+    public static void processCrushed(OrePrefix dustCrushedPrefix, DustMaterial material) {
+        if (OreDictUnifier.get(crushedPurified, material).isEmpty()) {
+            return;
+        }
+        SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
+                .input(dustCrushedPrefix, material)
+                .fluidInputs(Water.getFluid(100))
+                .output(crushedPurified, material)
                 .buildAndRegister();
     }
 

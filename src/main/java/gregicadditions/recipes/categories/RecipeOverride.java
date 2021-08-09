@@ -5,6 +5,7 @@ import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -102,7 +104,7 @@ public class RecipeOverride {
         MIXER_RECIPES.recipeBuilder().duration(20).EUt(16)
                 .input(dust, Clay)
                 .input(dust, Stone, 3)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(3))
                 .fluidInputs(Water.getFluid(500))
                 .fluidOutputs(Concrete.getFluid(L * 4))
                 .buildAndRegister();
@@ -112,7 +114,7 @@ public class RecipeOverride {
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(764)
                 .input(dust, Iridium, 3)
                 .input(dust, Osmium)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(2))
                 .output(dust, Osmiridium, 4)
                 .buildAndRegister();
 
@@ -122,7 +124,7 @@ public class RecipeOverride {
                 .input(dust, HSSG, 6)
                 .input(dust, Iridium, 2)
                 .input(dust, Osmium)
-                .notConsumable(new IntCircuitIngredient(1))
+                .notConsumable(new IntCircuitIngredient(3))
                 .output(dust, HSSS, 9)
                 .buildAndRegister();
 
@@ -414,6 +416,29 @@ public class RecipeOverride {
                 .fluidOutputs(Methane.getFluid(600))
                 .fluidOutputs(Butanol.getFluid(100))
                 .buildAndRegister();
+
+        // Fix GTCE Hypochlorous Acid Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000));
+
+        // 10Cl + 10H2O -> 10HClO + 10H
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(8)
+                .fluidInputs(Chlorine.getFluid(10000))
+                .fluidInputs(Water.getFluid(10000))
+                .notConsumable(Mercury.getFluid(0))
+                .fluidOutputs(HypochlorousAcid.getFluid(10000))
+                .fluidOutputs(Hydrogen.getFluid(10000))
+                .buildAndRegister();
+
+        // Fix GTCE Cumene Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000));
+
+        // 8C3H6 + 8C6H6 -> 8C9H12
+        CHEMICAL_RECIPES.recipeBuilder().duration(1920).EUt(30)
+                .fluidInputs(Propene.getFluid(8000))
+                .fluidInputs(Benzene.getFluid(8000))
+                .notConsumable(PhosphoricAcid.getFluid(0))
+                .fluidOutputs(Cumene.getFluid(8000))
+                .buildAndRegister();
     }
 
     private static void gregtechOverride() {
@@ -426,6 +451,17 @@ public class RecipeOverride {
         removeRecipeByName("gregtech:compressed_clay");
         removeRecipeByName("gtadditions:block_compress_clay");
         removeRecipeByName("gtadditions:block_decompress_clay");
+
+        ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
+                new ItemStack(Items.CLAY_BALL),
+                "formWood");
+
+        ModHandler.addShapedRecipe("eight_clay_brick", COMPRESSED_CLAY.getStackForm(8),
+                "BBB", "BFB", "BBB",
+                'B', new ItemStack(Items.CLAY_BALL),
+                'F', "formWood");
+
+        ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(200).EUt(2)
                 .inputs(new ItemStack(Items.CLAY_BALL))
@@ -467,6 +503,17 @@ public class RecipeOverride {
                 .output(dust, Glass, 4)
                 .buildAndRegister();
 
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(20).EUt(30)
+                .inputs(new ItemStack(Blocks.SAND, 1))
+                .outputs(new ItemStack(Blocks.GLASS, 2))
+                .buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .input(dust, Glass)
+                .notConsumable(SHAPE_MOLD_BLOCK.getStackForm())
+                .outputs(new ItemStack(Blocks.GLASS, 1))
+                .buildAndRegister();
+
         // Concrete
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(16)
                 .input(dust, Calcite, 2)
@@ -488,7 +535,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Wood Pipes
-        if (GAConfig.GT6.BendingPipes) {
+        if (GAConfig.GT6.BendingCylinders) {
             removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
             removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
 
@@ -608,6 +655,33 @@ public class RecipeOverride {
                 .chancedOutput(OreDictUnifier.get(dustTiny, Coal), 5625, 850)
                 .buildAndRegister();
 
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone));
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(488).EUt(80)
+                .input(dust, Glowstone)
+                .output(dustSmall, Netherrack, 2)
+                .output(dustSmall, PreciousMetal, 2)
+                .buildAndRegister();
+
+        // Precious Metal Dust from Netherrack
+        removeRecipesByInputs(MACERATOR_RECIPES, new ItemStack(Blocks.NETHERRACK));
+        MACERATOR_RECIPES.recipeBuilder().duration(150).EUt(8)
+                .inputs(new ItemStack(Blocks.NETHERRACK))
+                .output(dust, Netherrack)
+                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal), 500, 120)
+                .buildAndRegister();
+
+        // GTNH Lava
+        removeRecipesByInputs(CENTRIFUGE_RECIPES, Lava.getFluid(100));
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(80).EUt(80)
+                .fluidInputs(Lava.getFluid(100))
+                .chancedOutput(OreDictUnifier.get(dustSmall, SiliconDioxide),5000, 500)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Magnesia),1000, 100)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Quicklime),1000, 100)
+                .chancedOutput(OreDictUnifier.get(dustSmall, PreciousMetal),250, 90)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Sapphire),1250, 150)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Tantalite),500, 90)
+                .buildAndRegister();
+
         // Quartz Plates
         removeRecipesByInputs(CUTTER_RECIPES, new ItemStack[]{new ItemStack(Blocks.QUARTZ_BLOCK)}, new FluidStack[]{Water.getFluid(73)});
         removeRecipesByInputs(CUTTER_RECIPES, new ItemStack[]{OreDictUnifier.get(block, CertusQuartz)}, new FluidStack[]{Water.getFluid(73)});
@@ -686,8 +760,8 @@ public class RecipeOverride {
                 .output(dust, PreciousMetal)
                 .output(dust, PlatinumMetallicPowder, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 9500, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrLeachResidue, 3), 9000, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, IrOsLeachResidue, 3), 8500, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, IrMetalResidue, 3), 9000, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, RarestMetalResidue, 3), 8500, 0)
                 .buildAndRegister();
 
         // Sheldonite Smelting Recipe
@@ -716,22 +790,113 @@ public class RecipeOverride {
 
         // Cells from Dense Plates to Double Plates
         removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, Steel, 8), OreDictUnifier.get(plateDense, Steel, 2), getIntegratedCircuit(1));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, TungstenSteel, 8), OreDictUnifier.get(plateDense, TungstenSteel, 2), getIntegratedCircuit(1));
         ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
                 .input(ring, Steel, 8)
                 .input(plateDouble, Steel, 2)
                 .outputs(LARGE_FLUID_CELL_STEEL.getStackForm())
                 .buildAndRegister();
+
+        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(ring, TungstenSteel, 8), OreDictUnifier.get(plateDense, TungstenSteel, 2), getIntegratedCircuit(1));
         ASSEMBLER_RECIPES.recipeBuilder().EUt(64).duration(100)
                 .input(ring, TungstenSteel, 8)
                 .input(plateDouble, TungstenSteel, 2)
                 .outputs(LARGE_FLUID_CELL_TUNGSTEN_STEEL.getStackForm())
                 .buildAndRegister();
+
+        // Oil Desulfurization Catalysis
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricGas.getFluid(16000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricNaphtha.getFluid(12000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricLightFuel.getFluid(12000));
+        removeRecipesByInputs(CHEMICAL_RECIPES, Hydrogen.getFluid(2000), SulfuricHeavyFuel.getFluid(8000));
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricGas.getFluid(16000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Gas.getFluid(16000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricGas.getFluid(8000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Gas.getFluid(8000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricNaphtha.getFluid(12000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Naphtha.getFluid(12000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricNaphtha.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(Naphtha.getFluid(6000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricLightFuel.getFluid(12000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(LightFuel.getFluid(12000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricLightFuel.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(LightFuel.getFluid(6000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(SulfuricHeavyFuel.getFluid(8000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(8000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
+                .notConsumable(dust, Molybdenite)
+                .notConsumable(CobaltAluminate.getItemStack())
+                .fluidInputs(SulfuricHeavyFuel.getFluid(4000))
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidOutputs(HydrogenSulfide.getFluid(1000))
+                .fluidOutputs(HeavyFuel.getFluid(4000))
+                .buildAndRegister();
+
+        // Trona Electrolysis
+        ELECTROLYZER_RECIPES.recipeBuilder().EUt(60).duration(784)
+                .input(dust, Trona, 14)
+                .output(dust, SodaAsh, 6)
+                .outputs(SodiumBicarbonate.getItemStack(6))
+                .fluidOutputs(Water.getFluid(2000))
+                .buildAndRegister();
+
+        // Ilmenite Processing
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Ilmenite), OreDictUnifier.get(dust, Carbon));
+        BLAST_RECIPES.recipeBuilder().EUt(500).duration(600).blastFurnaceTemp(1700)
+                .input(dust, Ilmenite, 5)
+                .output(ingot, WroughtIron)
+                .output(dust, Rutile, 3)
+                .buildAndRegister();
     }
 
     private static void vanillaOverride() {
 
-        if (GAConfig.GT6.BendingCylinders && GAConfig.GT6.addCurvedPlates) {
+        if (GAConfig.GT6.addCurvedPlates) {
 
             // Buckets
             removeRecipeByName("gregtech:iron_bucket");
@@ -803,46 +968,65 @@ public class RecipeOverride {
                     "P P", "ChC",
                     'P', new UnificationEntry(plate, Gold),
                     'C', new UnificationEntry(plateCurved, Gold));
-
-            // Chain Armor
-            ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
-                    "RRR", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
-                    "RhR", "RRR", "RRR",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
-                    "RRR", "RhR", "R R",
-                    'R', new UnificationEntry(ring, Iron));
-
-            ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
-                    "R R", "RhR",
-                    'R', new UnificationEntry(ring, Iron));
         }
 
+        // Chain Armor
+        ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),
+                "RRR", "RhR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_chestplate", new ItemStack(Items.CHAINMAIL_CHESTPLATE),
+                "RhR", "RRR", "RRR",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_leggings", new ItemStack(Items.CHAINMAIL_LEGGINGS),
+                "RRR", "RhR", "R R",
+                'R', new UnificationEntry(ring, Iron));
+
+        ModHandler.addShapedRecipe("chain_boots", new ItemStack(Items.CHAINMAIL_BOOTS),
+                "R R", "RhR",
+                'R', new UnificationEntry(ring, Iron));
+
         // Glowstone / Nether Quartz Block Recipes
-        if (GAConfig.GT5U.GenerateCompressorRecipes) {
+        if (GAConfig.GT5U.Remove3x3BlockRecipes) {
             removeRecipeByName("minecraft:glowstone");
             removeRecipeByName("minecraft:quartz_block");
             removeRecipeByName("gregtech:nether_quartz_block_to_nether_quartz");
-
-            FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
-                    .input(block, NetherQuartz)
-                    .output(gem, NetherQuartz, 4)
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
-                    .input(gem, NetherQuartz, 4)
-                    .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
-                    .buildAndRegister();
-
-            COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
-                    .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
-                    .outputs(new ItemStack(Blocks.GLOWSTONE))
-                    .buildAndRegister();
         }
+
+        FORGE_HAMMER_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, NetherQuartz)
+                .output(gem, NetherQuartz, 4)
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(100).EUt(24)
+                .input(block, Glowstone)
+                .output(dust, Glowstone, 4)
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().duration(400).EUt(2)
+                .input(gem, NetherQuartz, 4)
+                .outputs(new ItemStack(Blocks.QUARTZ_BLOCK))
+                .buildAndRegister();
+
+        COMPRESSOR_RECIPES.recipeBuilder().EUt(16).duration(40)
+                .inputs(new ItemStack(Items.GLOWSTONE_DUST, 4))
+                .outputs(new ItemStack(Blocks.GLOWSTONE))
+                .buildAndRegister();
+
+
+        // Glowstone Recipes
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, Redstone)
+                .input(dust, PreciousMetal)
+                .output(dust, Glowstone)
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, Redstone)
+                .input(dust, Gold)
+                .output(dust, Glowstone, 2)
+                .buildAndRegister();
 
         // Snow Block Recipes
         FORGE_HAMMER_RECIPES.recipeBuilder().EUt(24).duration(50)
@@ -919,5 +1103,72 @@ public class RecipeOverride {
         // Reinforced Epoxy Resin Handcrafting Recipes
         removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_glass");
         removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_carbon");
+
+        // Remove Bad Sulfuric Acid Recipe
+        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Sulfur)}, new FluidStack[]{Water.getFluid(4000)});
+
+        // Remove Small and Tiny Dust Mixer Recipes ====================================================================
+
+        ///////////////////////////////////////////////////
+        //                  Tiny Dusts                   //
+        ///////////////////////////////////////////////////
+
+        // Borosilicate Glass Tiny Dust Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Boron), OreDictUnifier.get(dustTiny, Glass, 7));
+        // Brass Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Zinc));
+        // Bronze Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Tin));
+        // Red Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, SterlingSilver), OreDictUnifier.get(dustTiny, BismuthBronze), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
+        // Blue Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, RoseGold), OreDictUnifier.get(dustTiny, Brass), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
+        // Ultimet Hand
+        removeRecipeByName("gregtech:dust_tiny_ultimet");
+        // Cobalt Brass Hand
+        removeRecipeByName("gregtech:dust_tiny_cobalt_brass");
+        // Stainless Steel Hand
+        removeRecipeByName("gregtech:dust_tiny_stainless_steel");
+        // Kanthal Hand
+        removeRecipeByName("gregtech:dust_tiny_kanthal");
+
+        ///////////////////////////////////////////////////
+        //                  Small Dusts                  //
+        ///////////////////////////////////////////////////
+
+        // Stainless Steel Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Iron, 4), OreDictUnifier.get(dustSmall, Invar, 3), OreDictUnifier.get(dustSmall, Manganese), OreDictUnifier.get(dustSmall, Chrome));
+        // Ultimet Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Cobalt, 5), OreDictUnifier.get(dustSmall, Chrome, 2), OreDictUnifier.get(dustSmall, Nickel), OreDictUnifier.get(dustSmall, Molybdenum));
+        // Cobalt Brass Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Brass, 7), OreDictUnifier.get(dustSmall, Aluminium), OreDictUnifier.get(dustSmall, Cobalt));
+        // Gunpowder from Coal Mixer
+        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Saltpeter, 2), OreDictUnifier.get(dustSmall, Sulfur), OreDictUnifier.get(dustSmall, Coal));
+
+        // Some of them have both Small and Tiny Dust Mixer Recipes
+        for (OrePrefix prefix : Arrays.asList(dustSmall, dustTiny)) {
+            // Indium Gallium Phosphide
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Indium), OreDictUnifier.get(prefix, Gallium), OreDictUnifier.get(prefix, Phosphorus));
+            // Electrum
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Gold), OreDictUnifier.get(prefix, Silver));
+            // Invar
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron, 2), OreDictUnifier.get(prefix, Nickel), IntCircuitIngredient.getIntegratedCircuit(1));
+            // Kanthal
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron), OreDictUnifier.get(prefix, Aluminium), OreDictUnifier.get(prefix, Chrome));
+            // Cupronickel
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Nickel));
+            // Rose Gold
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Gold));
+            // Sterling Silver
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Silver, 4));
+            // Black Bronze
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper, 3), OreDictUnifier.get(prefix, Electrum, 2));
+            // Bismuth Bronze
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Bismuth), OreDictUnifier.get(prefix, Brass, 4));
+            // Black Steel
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, BlackBronze), OreDictUnifier.get(prefix, Nickel), OreDictUnifier.get(prefix, Steel, 3));
+            // Gunpowder from Charcoal
+            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Saltpeter, 2), OreDictUnifier.get(prefix, Sulfur), OreDictUnifier.get(prefix, Charcoal));
+        }
     }
 }

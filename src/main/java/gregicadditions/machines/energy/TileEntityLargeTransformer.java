@@ -5,7 +5,6 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.capabilities.EnergyContainerListWithAmps;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -17,7 +16,10 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -26,8 +28,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-
-import static gregtech.api.unification.material.Materials.Aluminium;
 
 public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
 
@@ -38,7 +38,7 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     private boolean isActive = false;
     private long currentDrain = 0;
     private long drain = 0;
-    DecimalFormat formatter = new DecimalFormat("#0.0");
+    DecimalFormat formatter = new DecimalFormat("#0.00");
 
     public TileEntityLargeTransformer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -73,9 +73,9 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     @Override
     protected void updateFormedValid() {
         if (!getWorld().isRemote) {
-            if (!isActive)
-                setActive(true);
             if (output.getEnergyStored() < output.getEnergyCapacity()) {
+                if (!isActive)
+                    setActive(true);
                 if (input.getEnergyStored() < output.getEnergyCapacity() - output.getEnergyStored()) {
                     long drain = input.getEnergyStored();
                     output.addEnergy(drain);
@@ -87,8 +87,10 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
                     input.removeEnergy(left);
                     currentDrain += left;
                 }
+            } else if (isActive) {
+                setActive(false);
             }
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 drain = currentDrain / 20;
                 currentDrain = 0;
             }
@@ -110,12 +112,12 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Aluminium);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Aluminium);
+        return Textures.FROST_PROOF_CASING;
     }
 
     @Override
@@ -156,6 +158,18 @@ public class TileEntityLargeTransformer extends MultiblockWithDisplayBase {
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         this.isActive = buf.readBoolean();
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        data.setBoolean("isActive", this.isActive);
+        return super.writeToNBT(data);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        this.isActive = data.getBoolean("isActive");
     }
 
     @Override

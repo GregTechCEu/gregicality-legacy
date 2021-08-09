@@ -1,5 +1,6 @@
 package gregicadditions.recipes.categories;
 
+import appeng.util.item.ItemList;
 import gregicadditions.GAConfig;
 import gregicadditions.armor.PowerlessJetpack;
 import gregicadditions.item.GAExplosive;
@@ -8,9 +9,10 @@ import gregicadditions.item.GATransparentCasing;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.GemMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -36,8 +38,7 @@ import static gregtech.common.items.MetaItems.*;
 
 public class MetaItemRecipes {
 
-    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates && GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders ?
-            plateCurved : plate;
+    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
 
     public static void init() {
 
@@ -271,9 +272,9 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Schematic
-        ASSEMBLER_RECIPES.recipeBuilder().duration(3200).EUt(4)
-                .input(circuit, Good, 4)
-                .input(plate, StainlessSteel, 2)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(180).EUt(4)
+                .input(circuit, Basic, 2)
+                .input(plate, Steel, 2)
                 .outputs(SCHEMATIC.getStackForm())
                 .buildAndRegister();
 
@@ -310,7 +311,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Master),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, RhodiumPlatedPalladium),
-                'B', ENERGY_LAPOTRONIC_ORB2);
+                'B', BATTERY_MEDIUM_LITHIUM_ION);
 
         ModHandler.addShapedRecipe("ga_prospect_tool_zpm", PROSPECT_TOOL_ZPM.getStackForm(),
                 "EDS", "CTC", "PBP",
@@ -320,7 +321,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Ultimate),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, HSSS),
-                'B', GAConfig.GT5U.enableZPMandUVBats ? ENERGY_MODULE : BATTERY_LARGE_LITHIUM_ION);
+                'B', BATTERY_LARGE_LITHIUM_ION);
 
         // Hand Pump
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(24)
@@ -384,7 +385,7 @@ public class MetaItemRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 2))
                 .input(wireFine, Gold, 4)
-                .input(gtMetalCasing, Aluminium)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .inputs(LASER_DIODE.getStackForm())
                 .input(circuit, Ultimate)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
@@ -394,7 +395,7 @@ public class MetaItemRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 3))
                 .input(wireGtDouble, UVSuperconductor, 2)
-                .input(gtMetalCasing, Aluminium)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
@@ -540,5 +541,26 @@ public class MetaItemRecipes {
                 'F', new ItemStack(Items.FLINT),
                 'G', new ItemStack(Blocks.GLASS),
                 'D', new ItemStack(Items.DIAMOND));
+
+        // Extruder Shapes
+        ModHandler.addShapedRecipe("shape_extruder_gear_small", SHAPE_EXTRUDER_SMALL_GEAR.getStackForm(),
+                "x S", "   ", "   ",
+                'S', SHAPE_EMPTY.getStackForm());
+
+        ModHandler.addShapedRecipe("shape_extruder_rotor", SHAPE_EXTRUDER_ROTOR.getStackForm(),
+                "  S", " x ", "   ",
+                'S', SHAPE_EMPTY.getStackForm());
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
+                .inputs(SHAPE_EMPTY.getStackForm())
+                .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR)
+                .outputs(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
+                .buildAndRegister();
+
+        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
+                .inputs(SHAPE_EMPTY.getStackForm())
+                .notConsumable(SHAPE_EXTRUDER_ROTOR)
+                .outputs(SHAPE_EXTRUDER_ROTOR.getStackForm())
+                .buildAndRegister();
     }
 }

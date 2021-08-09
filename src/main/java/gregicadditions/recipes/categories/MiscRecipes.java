@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.recipes.GARecipeMaps.BLAST_ALLOY_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -128,6 +129,54 @@ public class MiscRecipes {
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
                 .input(dust, Glowstone)
                 .fluidOutputs(Glowstone.getFluid(L))
+                .buildAndRegister();
+
+        // Mixing Dust Mixer Recipes
+        // Soldering Alloy
+        MIXER_RECIPES.recipeBuilder().duration(10 * 50).EUt(16)
+                .input(dust, Tin, 9)
+                .input(dust, Antimony)
+                .output(dust, SolderingAlloy, 10)
+                .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        // Red Alloy
+        MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
+                .input(dust, Redstone, 3)
+                .input(dust, Copper)
+                .output(dust, RedAlloy)
+                .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        // Magnalium
+        MIXER_RECIPES.recipeBuilder().duration(3 * 50).EUt(16)
+                .input(dust, Aluminium, 2)
+                .input(dust, Magnesium)
+                .output(dust, Magnalium,3)
+                .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        // Tin Alloy
+        MIXER_RECIPES.recipeBuilder().duration(2 * 50).EUt(16)
+                .input(dust, Tin)
+                .input(dust, Iron)
+                .output(dust, TinAlloy, 2)
+                .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder().duration(2 * 50).EUt(16)
+                .input(dust, Tin)
+                .input(dust, WroughtIron)
+                .output(dust, TinAlloy, 2)
+                .notConsumable(new IntCircuitIngredient(2))
+                .buildAndRegister();
+
+        // Battery Alloy
+        MIXER_RECIPES.recipeBuilder().duration(5 * 50).EUt(16)
+                .input(dust, Lead, 4)
+                .input(dust, Antimony)
+                .output(dust, BatteryAlloy, 5)
+                .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
     }
 }

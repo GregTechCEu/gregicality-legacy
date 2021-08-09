@@ -21,6 +21,7 @@ import gregtech.api.recipes.Recipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -39,6 +40,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.Steel;
 
 public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblockController {
@@ -59,7 +61,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     private long maxVoltage = 0;
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, true);
         this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 
@@ -76,7 +78,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 .aisle("GSG", "RTR", "FIF")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
+                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH))))
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS)))
                 .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[0].metaTileEntityId)))
                 .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
@@ -189,11 +191,11 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Steel);
+        return SOLID_STEEL_CASING;
     }
 
     protected IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     @Nonnull

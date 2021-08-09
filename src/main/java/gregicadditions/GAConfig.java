@@ -58,33 +58,22 @@ public class GAConfig {
     public static GT6 GT6 = new GT6();
 
     public static class GT6 {
-        @Config.Comment("Bending Recipes (disabling Bending Cylinders' recipes disables all of them)")
-        @Config.Name("Bending - Bending Cylinders' recipes")
-        public boolean BendingCylinders = true;
-        @Config.Name("Bending - Curved Plates' recipes")
-        public boolean BendingCurvedPlates = true;
-        @Config.Name("Bending - Rotors require Curved Plates")
-        public boolean BendingRotors = true;
-        @Config.Name("Bending - Rings are crafted with Bending Cylinders")
-        public boolean BendingRings = true;
-        @Config.Name("Bending - Foils are made with Bending Cylinders")
-        public boolean BendingFoils = false;
-        @Config.Name("Bending - Foils are automated in the Cluster Mill instead of the Bending Machine")
-        public boolean BendingFoilsAutomatic = false;
-        @Config.Name("Bending - Pipes are crafted with Curved Plates")
-        public boolean BendingPipes = true;
 
-        @Config.Comment("Set this to false to disable Plates being crafted from Double Ingots")
-        @Config.Name("Plates are crafted from Double Ingots")
-        public boolean PlateDoubleIngot = true;
+        @Config.Comment("Require Bending Cylinders for some components like Rings and Pipes")
+        @Config.Name("Enable Bending Cylinders")
+        public boolean BendingCylinders = true;
+
+        @Config.Comment("Add Curved Plates for Pipes, Rotors, and some late game component recipes")
+        @Config.Name("Enable Curved Plates")
+        public boolean addCurvedPlates = true;
+
+        @Config.Comment("Set this to false to disable the Cluster Mill machine itself")
+        @Config.Name("Enable the Cluster Mill for Foils")
+        public boolean BendingFoilsAutomatic = true;
 
         @Config.Comment("Set this to false to enable the GT5 Wrench recipes")
         @Config.Name("Wrenches are crafted with Plates instead of Ingots")
         public boolean ExpensiveWrenches = true;
-
-        @Config.Comment("Set this to false to disable Drums")
-        @Config.Name("Should Drums be registered?")
-        public boolean registerDrums = true;
 
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
@@ -93,10 +82,6 @@ public class GAConfig {
         @Config.Comment("Set this to false to disable rounds")
         @Config.Name("Should rounds be registered?")
         public boolean addRounds = true;
-
-        @Config.Comment("Set this to false to disable curved plates")
-        @Config.Name("Should curved plates be registered?")
-        public boolean addCurvedPlates = true;
     }
 
     @Config.Comment("Config options for GT5U features")
@@ -106,21 +91,25 @@ public class GAConfig {
         @Config.Comment("Change the recipe of rods to result in 1 stick and 2 small piles of dusts.")
         public boolean stickGT5U = false;
 
-        @Config.Comment("Set these to false to disable the generated Compressor recipes for blocks")
-        @Config.Name("Compression - Generate Compressor recipes for blocks")
-        public boolean GenerateCompressorRecipes = true;
-        @Config.Name("Compression - Remove 3x3 crafting recipes for blocks")
-        public boolean Remove3x3BlockRecipes = true;
-        @Config.Name("Compression - Remove crafting recipes for uncompressing blocks")
-        public boolean RemoveBlockUncraftingRecipes = true;
+        @Config.Comment("3x3 Crafting Table Recipe Removals")
+        @Config.Name("Crafting - Remove 3x3 Block Crafting Recipes from Crafting Table")
+        public boolean Remove3x3BlockRecipes = false;
+        @Config.Name("Crafting - Remove 3x3 Nugget Crafting Recipes from Crafting Table")
+        public boolean Remove3x3NuggetRecipes = false;
+        @Config.Name("Crafting - Remove 3x3 Misc Recipes from Crafting Table (all others)")
+        public boolean Remove3x3MiscRecipes = false;
+
+        @Config.Comment("1->9 Crafting Table Recipe Removals")
+        @Config.Name("Crafting - Remove 1->9 Block Uncrafting Recipes from Crafting Table")
+        public boolean Remove1to9BlockRecipes = false;
+        @Config.Name("Crafting - Remove 1->9 Nugget Uncrafting Recipes from Crafting Table")
+        public boolean Remove1to9NuggetRecipes = false;
+        @Config.Name("Crafting - Remove 1-> Misc Recipes from Crafting Table (all others)")
+        public boolean Remove1to9MiscRecipes = false;
 
         @Config.Comment("Set to false to enable Log>Charcoal smelting recipes")
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
         public boolean DisableLogToCharcoalSmelting = true;
-
-        @Config.Comment("Set to false to disable generated wood sawing recipes")
-        @Config.Name("A saw is required to get 4 Planks per Log")
-        public boolean GeneratedSawingRecipes = true;
 
         @Config.Comment("Set these to false to disable the higher tier versions of machines")
         @Config.Name("Should higher tier Alloy Smelters be registered?")
@@ -207,13 +196,13 @@ public class GAConfig {
         public boolean highTierUnpackers = true;
         @Config.Name("Should higher tier Wiremills be registered?")
         public boolean highTierWiremills = true;
-        @Config.Name("Should higher tier Chemical dehydrator be registered?")
+        @Config.Name("Should higher tier Chemical Dehydrators be registered?")
         public boolean highTierChemicalDehydrator = true;
-        @Config.Name("Should higher tier Decay Chamber be registered?")
+        @Config.Name("Should higher tier Decay Chambers be registered?")
         public boolean highTierDecayChamber = true;
-        @Config.Name("Should higher tier Green House be registered?")
+        @Config.Name("Should higher tier Green Houses be registered?")
         public boolean highTierGreenHouse = true;
-        @Config.Name("Should higher tier world accelerator be registered?")
+        @Config.Name("Should higher tier World Accelerators be registered?")
         public boolean highTierWorldAccelerator = true;
 
         @Config.Comment("Set these to true to enable certain Batteries.")
@@ -221,6 +210,13 @@ public class GAConfig {
         public boolean enableZPMandUVBats = false;
         @Config.Name("Batteries - Replace the Ultimate Battery with a MAX Battery")
         public boolean replaceUVwithMAXBat = false;
+
+        @Config.Comment("This value determines the minimum amount of time in ticks a multiblock must be run for a single maintenance problem to have a change to occur. The default is 48 real-world hours.")
+        @Config.RequiresMcRestart
+        public int minimumMaintenanceTime = 3456000;
+
+        @Config.Comment("Whether to enable maintenance. Multiblocks will still require maintenance hatches in their structures, however the involved mechanics are disabled.")
+        public boolean enableMaintenance = true;
     }
 
     @Config.Comment("Config options of GTCE Bees features")
@@ -318,23 +314,10 @@ public class GAConfig {
     public static Misc Misc = new Misc();
 
     public static class Misc {
-        @Config.Comment("Set these to false to disable the generated Packager and Unpackager recipes")
-        @Config.Name("Packaging - 1x1 recipes with 9 outputs can be automated with the Unpackaker")
-        public boolean Unpackager3x3Recipes = true;
-        @Config.Name("Packaging - 3x3 recipes can automated with the Packagers")
-        public boolean Packager3x3Recipes = true;
-        @Config.Name("Packaging - 2x2 recipes can automated with the Packagers")
-        public boolean Packager2x2Recipes = true;
-        @Config.Name("Packaging - Dust compressing can automated with the Packagers")
-        public boolean PackagerDustRecipes = true;
 
         @Config.Comment("Set this to false to disable the Forestry Integration")
         @Config.Name("Forestry's Ethanol and Seed Oil are used in recipes instead of GTCE's")
         public boolean ForestryIntegration = true;
-
-        @Config.Comment("Set this to false to disable Crates")
-        @Config.Name("Should Crates be registered?")
-        public boolean registerCrates = true;
 
         @Config.Comment("Set this to false to disable the high tier Air Collectors")
         @Config.Name("Air Collector have IV and LuV version")
@@ -396,11 +379,6 @@ public class GAConfig {
         @Config.Name("Rocket Engine efficiency loss")
         @Config.RequiresMcRestart
         public boolean rocketEfficiency = true;
-
-        @Config.Comment("Whether or not to add diminishing returns for the Large Rocket Engine")
-        @Config.Name("Large Rocket Engine efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean largeRocketEfficiency = true;
 
 
 
@@ -630,7 +608,7 @@ public class GAConfig {
         public LargeAssembler largeAssembler = new LargeAssembler();
         public LargeBenderAndForming largeBenderAndForming = new LargeBenderAndForming();
         public LargeCentrifuge largeCentrifuge = new LargeCentrifuge();
-        public LargeChemicalReactor largeChemicalReactor = new LargeChemicalReactor();
+        public AdvancedChemicalReactor advancedChemicalReactor = new AdvancedChemicalReactor();
         public LargeCutting largeCutting = new LargeCutting();
         public LargeElectrolyzer largeElectrolyzer = new LargeElectrolyzer();
         public LargeExtruder largeExtruder = new LargeExtruder();
@@ -643,6 +621,13 @@ public class GAConfig {
         public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
         public LargeWashingPlant largeWashingPlant = new LargeWashingPlant();
         public LargeWiremill largeWiremill = new LargeWiremill();
+        public LargeBrewery largeBrewery = new LargeBrewery();
+        public LargeElectromagnet largeElectromagnet = new LargeElectromagnet();
+        public LargeExtractor largeExtractor = new LargeExtractor();
+        public LargeArcFurnace largeArcFurnace = new LargeArcFurnace();
+        public LargeCanningMachine largeCanningMachine = new LargeCanningMachine();
+        public LargeMassFabricator largeMassFabricator = new LargeMassFabricator();
+        public LargeReplicator largeReplicator = new LargeReplicator();
         public BatteryTower batteryTower = new BatteryTower();
         public AdvFusion advFusion = new AdvFusion();
         public LargeEngraver largeEngraver = new LargeEngraver();
@@ -650,6 +635,7 @@ public class GAConfig {
         public SteamMultis steamMultis = new SteamMultis();
         public ProcessingArray processingArray = new ProcessingArray();
         public HyperReactors hyperReactors = new HyperReactors();
+        public CentralMonitor centralMonitor = new CentralMonitor();
     }
 
         public static class LargeEngraver {
@@ -661,23 +647,22 @@ public class GAConfig {
 
             @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Macerator parallel recipes per voltage tier difference")
+            @Config.Name("Large Engraver parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
             public int stack = 1;
 
-            @Config.Comment("The duration percentage of a recipe when done in the Large Macerator.")
+            @Config.Comment("The duration percentage of a recipe when done in the Large Engraver.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Macerator duration decrease percentage")
+            @Config.Name("Large Engraver duration decrease percentage")
             @Config.RequiresMcRestart
             public int durationPercentage = 100;
 
-            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Macerator.")
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Engraver.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Macerator chanced output boost percentage")
+            @Config.Name("Large Engraver chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
         }
-
 
         public static class AdvFusion {
             @Config.Comment("The percentage per tier above the tier required by the recipe to decrease the recipe duration.")
@@ -717,7 +702,7 @@ public class GAConfig {
             @Config.RangeInt(min = 0, max = 10000)
             @Config.RequiresMcRestart
             @Config.Comment("The percentage of EU of the Battery Tower's tier of voltage to loss every tick. E.g. if we are using MV cells, we lose 10% of 128, 12.8 rounded down to 12, every tick.")
-            public int lossPercentage = 10;
+            public int lossPercentage = 0;
         }
 
         public static class DistillationTower {
@@ -725,13 +710,12 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Distillation recipe multiplier")
             @Config.RequiresMcRestart
-            public int distillationMultiplier = 4;
+            public int distillationMultiplier = 8;
 
-            @Config.Comment("The amount of parallel recipes the Advanced Distillation Tower will run if the recipe is a distillery recipe.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Distillery recipe multiplier")
+            @Config.Comment("The casing material to use for the Advanced Distllation Tower.")
+            @Config.Name("Advanced Distillation Tower Casing Material")
             @Config.RequiresMcRestart
-            public int distillerMultiplier = 12;
+            public String casingMaterial = "babbitt_alloy";
         }
 
         public static class LargeAssembler {
@@ -820,31 +804,31 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Centrifuge casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "Tumbaga";
+            public String casingMaterial = "tumbaga";
         }
 
-        public static class LargeChemicalReactor {
-            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Chemical Reactor.")
+        public static class AdvancedChemicalReactor {
+            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor EU/t percentage cost")
+            @Config.Name("Advanced Chemical Reactor EU/t percentage cost")
             @Config.RequiresMcRestart
             public int euPercentage = 50;
 
             @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor parallel recipes per voltage tier difference")
+            @Config.Name("Advanced Chemical Reactor parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
             public int stack = 2;
 
-            @Config.Comment("The duration percentage of a recipe when done in the Large Chemical Reactor.")
+            @Config.Comment("The duration percentage of a recipe when done in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor duration decrease percentage")
+            @Config.Name("Advanced Chemical Reactor duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 125;
+            public int durationPercentage = 100;
 
-            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Chemical Reactor.")
+            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
-            @Config.Name("Large Chemical Reactor chanced output boost percentage")
+            @Config.Name("Advanced Chemical Reactor chanced output boost percentage")
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
@@ -878,7 +862,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Cutting Machine casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "stellite";
+            public String casingMaterial = "maraging_steel_250";
         }
 
         public static class LargeElectrolyzer {
@@ -940,7 +924,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Extruder casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "inconel_a";
+            public String casingMaterial = "inconel_625";
         }
 
         public static class LargeForgeHammer {
@@ -1002,7 +986,7 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Macerator casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "potin";
+            public String casingMaterial = "stellite";
         }
 
         public static class LargeMixer {
@@ -1084,13 +1068,13 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 250;
+            public int durationPercentage = 225;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Sifter.")
             @Config.RangeInt(min = 1)
             @Config.Name("Large Sifter chanced output boost percentage")
             @Config.RequiresMcRestart
-            public int chancedBoostPercentage = 188;
+            public int chancedBoostPercentage = 200;
 
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Sifter casing material")
@@ -1115,7 +1099,7 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Thermal Centrifuge duration decrease percentage")
             @Config.RequiresMcRestart
-            public int durationPercentage = 250;
+            public int durationPercentage = 200;
 
             @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Thermal Centrifuge.")
             @Config.RangeInt(min = 1)
@@ -1188,8 +1172,225 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Wiremill casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "maraging_steel_a";
+            public String casingMaterial = "maraging_steel_250";
         }
+
+    public static class LargeBrewery {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Brewery.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Brewery EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 80;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Brewery parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 8;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Brewery.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Brewery duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 200;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Brewery.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Brewery chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Brewery.")
+        @Config.Name("Large Brewery casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "grisium";
+    }
+
+    public static class LargeElectromagnet {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Electromagnet.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Electromagnet EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 80;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Electromagnet parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 16;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Electromagnet.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Electromagnet duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 400;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Electromagnet.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Electromagnet chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Electromagnet.")
+        @Config.Name("Large Electromagnet casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "babbitt_alloy";
+    }
+
+    public static class LargeExtractor {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Extractor.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Extractor EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 75;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Extractor parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 16;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Extractor.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Extractor duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 400;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Extractor.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Extractor chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Extractor.")
+        @Config.Name("Large Extractor casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "talonite";
+    }
+
+    public static class LargeArcFurnace {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Arc Furnace.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Arc Furnace EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 80;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Arc Furnace parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 4;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Arc Furnace.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Arc Furnace duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 200;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Arc Furnace.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Arc Furnace chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Arc Furnace.")
+        @Config.Name("Large Arc Furnace casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "invar";
+    }
+
+    public static class LargeCanningMachine {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 80;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 4;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Canning Machine.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Canning Machine chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Canning Machine.")
+        @Config.Name("Large Canning Machine casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "steel";
+    }
+
+    public static class LargeMassFabricator {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 100;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 0)
+        @Config.Name("Large Mass Fabricator parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 0;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Mass Fabricator.")
+        @Config.Name("Large Mass Fabricator casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "tritanium";
+    }
+
+    public static class LargeReplicator {
+        @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator EU/t percentage cost")
+        @Config.RequiresMcRestart
+        public int euPercentage = 100;
+
+        @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
+        @Config.RangeInt(min = 0)
+        @Config.Name("Large Mass Fabricator parallel recipes per voltage tier difference")
+        @Config.RequiresMcRestart
+        public int stack = 0;
+
+        @Config.Comment("The duration percentage of a recipe when done in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator duration decrease percentage")
+        @Config.RequiresMcRestart
+        public int durationPercentage = 100;
+
+        @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Mass Fabricator.")
+        @Config.RangeInt(min = 1)
+        @Config.Name("Large Mass Fabricator chanced output boost percentage")
+        @Config.RequiresMcRestart
+        public int chancedBoostPercentage = 100;
+
+        @Config.Comment("The casing material to use for the Large Mass Fabricator.")
+        @Config.Name("Large Mass Fabricator casing material")
+        @Config.RequiresMcRestart
+        public String casingMaterial = "tritanium";
+    }
 
         public static class VoidMiner {
             @Config.Comment("The maximum temperature the void miner can reach before overheating. Every second the void miner will generate 10 different ores with amount between 1 and (temperature/1000)^2 ores. default: [9000]")
@@ -1280,7 +1481,7 @@ public class GAConfig {
             @Config.Comment("The name of the material to use as casing.")
             @Config.RequiresMcRestart
             @Config.Name("Large Miner casing material")
-            public String largeMinerCasingMaterial = "hssg";
+            public String largeMinerCasingMaterial = "hss_g";
 
             @Config.Comment("The length in chunks of the side of the square centered on the Miner that will be mined.")
             @Config.RangeInt(min = 1)
@@ -1297,7 +1498,7 @@ public class GAConfig {
             @Config.Comment("The name of the material to use as casing.")
             @Config.RequiresMcRestart
             @Config.Name("Advanced Miner casing material")
-            public String advancedMinerCasingMaterial = "hsss";
+            public String advancedMinerCasingMaterial = "hss_s";
 
         }
 
@@ -1306,28 +1507,28 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe duration decrease factor")
-            public int durationDecreasePercentage = 33;
+            public int durationDecreasePercentage = 66;
 
-            @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.8.")
+            @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.75.")
             @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Volcanus recipe EU/t discount")
-            public int energyDecreasePercentage = 80;
+            public int energyDecreasePercentage = 90;
 
         }
 
         public static class CryogenicFreezer {
-            @Config.Comment("The amount by which the EU/t for recipes in the Cryogenic Freezer is decreased. E.g. EU/t * 0.8.")
+            @Config.Comment("The amount by which the EU/t for recipes in the Cryogenic Freezer is decreased. E.g. EU/t * 0.75.")
             @Config.RangeInt(min = 1, max = 100)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer recipe EU/t discount")
-            public int energyDecreasePercentage = 80;
+            public int energyDecreasePercentage = 90;
 
             @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
             @Config.RangeInt(min = 1)
             @Config.RequiresMcRestart
             @Config.Name("Cryogenic Freezer duration decrease factor")
-            public int durationDecreasePercentage = 50;
+            public int durationDecreasePercentage = 75;
 
         }
 
@@ -1342,7 +1543,7 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             @Config.Name("Large Packager parallel recipes per voltage tier difference")
             @Config.RequiresMcRestart
-            public int stack = 4;
+            public int stack = 10;
 
             @Config.Comment("The duration percentage of a recipe when done in the Large Packager.")
             @Config.RangeInt(min = 1)
@@ -1359,18 +1560,19 @@ public class GAConfig {
             @Config.Comment("The casing material to use for the Large Packager.")
             @Config.Name("Large Packager casing material")
             @Config.RequiresMcRestart
-            public String casingMaterial = "hg_alloy";
+            public String casingMaterial = "hg_1223";
 
         }
 
         public static class HeatingCoils {
-            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. Default=\"superconductor\", \"fusion_coil\"")
+            @Config.Comment("GregTech CE heating coils to blacklist from working in non-fusion multiblock machines. The default and recommended configs are for Superconducting and Fusion Coils. Example: \"superconductor\", \"fusion_coil\"")
             @Config.Name("GTCE Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gtceHeatingCoilsBlacklist = new String[]{
-                    ""
+                    "superconductor",
+                    "fusion_coil"
             };
-            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines. Default=\"\"")
+            @Config.Comment("Gregicality heating coils to blacklist from working in non-fusion multiblock machines.")
             @Config.Name("Gregicality Heating Coil Blacklist")
             @Config.RequiresMcRestart
             public String[] gregicalityheatingCoilsBlacklist = new String[]{
@@ -1398,6 +1600,18 @@ public class GAConfig {
             @Config.Comment({"Steam to EU multiplier for steam multiblocks. 1.0 means 1 Steam -> 1EU. 2.0 means 1 Steam -> 2EU. 0.5 means 2 Steam -> 1EU"})
             @Config.RequiresMcRestart
             public double steamToEU = 0.5;
+
+            @Config.Comment("Whether to use Steel casings instead of Bronze for the steam multiblocks.")
+            @Config.RequiresMcRestart
+            @Config.Name("Enable steel steam multis")
+            public boolean useSteelMultis = false;
+        }
+
+        public static class CentralMonitor {
+            @Config.Comment("The EU drain per tick for each screen.")
+            @Config.Name("CentralMonitor cost")
+            @Config.RangeInt(min = 0)
+            public int euCost = 50;
         }
 
         public static class Prospector {
@@ -1413,6 +1627,12 @@ public class GAConfig {
             @Config.RangeInt(min = 1)
             public int[] scanRadii = {2, 3, 6, 7};
 
+            @Config.Comment("The ticks for the prospector to scan each chunk.")
+            @Config.RequiresMcRestart
+            @Config.Name("Prospector scan time cost")
+            @Config.RangeInt(min = 1)
+            public int[] scanTicks = {4, 3, 2, 1};
+
             @Config.Comment("The EU capacity of the prospectors.")
             @Config.RequiresMcRestart
             @Config.Name("Prospector energy capacity")
@@ -1425,7 +1645,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Hyper Reactor EU/t generation")
             @Config.RangeInt(min = 1)
-            public int[] euGeneration = {GAValues.V[GAValues.UV], GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV]};
+            public int[] euGeneration = {GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV], GAValues.V[GAValues.UIV]};
 
             @Config.Comment("The fuel multiplier when the Reactor is boosted.")
             @Config.RequiresMcRestart

@@ -2,6 +2,8 @@ package gregicadditions.capabilities;
 
 import gregicadditions.Gregicality;
 import gregicadditions.integrations.FECompat.EnergyProvider;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -36,4 +38,7 @@ public class GregicAdditionsCapabilities {
     public static void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
         event.addCapability(CAPABILITY_EU_TO_FE, new EnergyProvider(event.getObject()));
     }
+    public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_HATCH = new MultiblockAbility<>();
+    public static final MultiblockAbility<MetaTileEntityMufflerHatch> MUFFLER_HATCH = new MultiblockAbility<>();
+
 }

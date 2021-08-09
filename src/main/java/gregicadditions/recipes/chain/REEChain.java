@@ -42,7 +42,7 @@ public class REEChain {
                 .fluidInputs(SulfuricAcid.getFluid(500))
                 .fluidOutputs(AcidicSaltWater.getFluid(3000))
                 .EUt(480)
-                .duration(200)
+                .duration(180)
                 .buildAndRegister();
 
         // 2H2SO4(NaCl)3(H2O)3 -> 6NaCl + 2H2SO4Br(H2O) + 4H2O
@@ -52,7 +52,7 @@ public class REEChain {
                 .fluidOutputs(SulfuricBromineSolution.getFluid(2000))
                 .fluidOutputs(DebrominatedWater.getFluid(4000))
                 .EUt(480)
-                .duration(200)
+                .duration(180)
                 .buildAndRegister();
 
         // H2SO4Br(H2O) + H2O -> H2SO4Br(H2O)2
@@ -70,7 +70,7 @@ public class REEChain {
                 .fluidOutputs(DilutedSulfuricAcid.getFluid(2000))
                 .fluidOutputs(DampBromine.getFluid(1000))
                 .EUt(480)
-                .duration(200)
+                .duration(180)
                 .buildAndRegister();
 
         // Br(H2O) -> Br
@@ -78,7 +78,7 @@ public class REEChain {
                 .fluidInputs(DampBromine.getFluid(2000))
                 .fluidOutputs(Bromine.getFluid(1000))
                 .EUt(480)
-                .duration(500)
+                .duration(400)
                 .buildAndRegister();
 
         // CO + C3H6 + 2H -> C4H8O
@@ -101,13 +101,12 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H8 + 2H2O
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H10O
+        CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ethylhexanol.getFluid(5000))
                 .input(dust, PhosphorousPentoxide, 7)
                 .fluidOutputs(DiethylhexylPhosphoricAcid.getFluid(2000))
-                .fluidOutputs(Butene.getFluid(2000))
-                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Butanol.getFluid(2000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
@@ -115,8 +114,7 @@ public class REEChain {
         // [REE] + NaOH + H2O -> Na[REE]-OH(H2O)
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, RareEarth)
-                .input(dust, SodiumHydroxide, 3)
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidOutputs(RareEarthHydroxidesSolution.getFluid(1000))
                 .EUt(480)
                 .duration(200)
@@ -133,7 +131,7 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        DISTILLATION_RECIPES.recipeBuilder().duration(100).EUt(32)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .output(dust, SodiumHydroxide, 3)
@@ -160,7 +158,7 @@ public class REEChain {
                 .chancedOutput(NeodymiumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(CeriumOxide.getItemStack(5), 4300, 275)
                 .EUt(480)
-                .duration(250)
+                .duration(220)
                 .buildAndRegister();
 
         // 4ScEuGdSmOx -> Sc2O3 + Eu2O3 + Gd2O3 + Sm2O3 (each 43% +2.75%)
@@ -171,7 +169,7 @@ public class REEChain {
                 .chancedOutput(GadoliniumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(SamariumOxide.getItemStack(5), 4300, 275)
                 .EUt(480)
-                .duration(250)
+                .duration(220)
                 .buildAndRegister();
 
         // 4YTbDyHoOx -> Y2O3 + Tb2O3 + Dy2O3 + Ho2O3 (each 43% +2.75%)
@@ -182,7 +180,7 @@ public class REEChain {
                 .chancedOutput(DysprosiumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(HolmiumOxide.getItemStack(5), 4300, 275)
                 .EUt(480)
-                .duration(250)
+                .duration(220)
                 .buildAndRegister();
 
         // 4ErTmYtLuOx -> Er2O3 + Tm2O3 + Yt2O3 + Lu2O3 (each 43% +2.75%)
@@ -193,7 +191,7 @@ public class REEChain {
                 .chancedOutput(YtterbiumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(LutetiumOxide.getItemStack(5), 4300, 275)
                 .EUt(480)
-                .duration(250)
+                .duration(220)
                 .buildAndRegister();
 
         // 3C + 2La2O3 -> 4La + 3CO2
@@ -380,7 +378,7 @@ public class REEChain {
                 .chancedOutput(OreDictUnifier.get(dustTiny, UraniumRadioactive.getMaterial()), 2000, 150)
                 .output(oxide, Thorium)
                 .EUt(480)
-                .duration(500)
+                .duration(250)
                 .buildAndRegister();
     }
 }

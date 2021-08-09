@@ -2,7 +2,10 @@
   "weight": 80,
   "density": 0.4,
   "min_height": 180,
-
+  "vein_populator": {
+    "type": "surface_rock",
+    "material": "chalcopyrite"
+  },
   "generator": {
     "type": "ellipsoid",
     "radius": [13, 15]

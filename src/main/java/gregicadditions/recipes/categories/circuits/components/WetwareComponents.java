@@ -64,7 +64,6 @@ public class WetwareComponents {
 
         // Neuro Support Unit
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .fluidInputs(UUMatter.getFluid(100))
                 .input(wireFine, NaquadahAlloy, 16)
                 .input(plate, Tritanium, 2)
                 .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
@@ -99,26 +98,26 @@ public class WetwareComponents {
 
     private static void bacteriaCultures() {
 
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(24)
                 .fluidInputs(Polystyrene.getFluid(L / 4))
                 .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
                 .outputs(PETRI_DISH.getStackForm())
                 .buildAndRegister();
 
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(16)
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(24)
                 .fluidInputs(Polytetrafluoroethylene.getFluid(L / 4))
                 .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
                 .outputs(PETRI_DISH.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(30720).duration(100)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(7680).duration(100)
                 .input(wireFine, Titanium)
                 .fluidInputs(Plastic.getFluid(1008))
                 .inputs(STERILIZED_PETRI_DISH.getStackForm())
                 .outputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(1920).duration(400)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(200)
                 .fluidInputs(Biomass.getFluid(1000))
                 .fluidInputs(SaltWater.getFluid(1000))
                 .outputs(GreenAlgae.getItemStack())
@@ -126,39 +125,39 @@ public class WetwareComponents {
                 .outputs(BrownAlgae.getItemStack())
                 .buildAndRegister();
 
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(7680).duration(250)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(150)
                 .inputs(RedAlgae.getItemStack())
                 .outputs(DryRedAlgae.getItemStack())
                 .buildAndRegister();
 
-        MACERATOR_RECIPES.recipeBuilder().EUt(7680).duration(75)
+        MACERATOR_RECIPES.recipeBuilder().EUt(30).duration(75)
                 .inputs(DryRedAlgae.getItemStack())
                 .outputs(RedAlgaePowder.getItemStack())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30720).duration(150)
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(150)
                 .inputs(RedAlgaePowder.getItemStack())
-                .input(dust, SodaAsh)
+                .input(dustSmall, SodaAsh)
                 .outputs(PreFreezeAgar.getItemStack())
                 .buildAndRegister();
 
-        VACUUM_RECIPES.recipeBuilder().EUt(30720).duration(100)
+        VACUUM_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(PreFreezeAgar.getItemStack())
                 .outputs(FrozenAgarCrystals.getItemStack())
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().EUt(30720).duration(200)
+        MIXER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(FrozenAgarCrystals.getItemStack())
                 .fluidInputs(DistilledWater.getFluid(1000))
                 .fluidOutputs(WaterAgarMix.getFluid(1000))
                 .buildAndRegister();
 
-        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(7680).duration(50)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(50)
                 .fluidInputs(WaterAgarMix.getFluid(1000))
                 .outputs(Agar.getItemStack())
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(30720).duration(100)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(480).duration(100)
                 .inputs(STERILIZED_PETRI_DISH.getStackForm())
                 .inputs(Agar.getItemStack())
                 .fluidInputs(BacterialGrowthMedium.getFluid(1000))
@@ -167,7 +166,7 @@ public class WetwareComponents {
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(30720).duration(500)
                 .inputs(PIEZOELECTRIC_CRYSTAL.getStackForm())
-                .input(stick, RhodiumPlatedPalladium)
+                .input(stickLong, RhodiumPlatedPalladium)
                 .outputs(ULTRASONIC_HOMOGENIZER.getStackForm())
                 .buildAndRegister();
 
@@ -261,42 +260,42 @@ public class WetwareComponents {
                 .outputs(CONTAMINATED_PETRI_DISH.getStackForm())
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(Shewanella.getItemStack())
                 .outputs(Shewanella.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(250))
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(BrevibacteriumFlavium.getItemStack())
                 .outputs(BrevibacteriumFlavium.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(250))
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(EschericiaColi.getItemStack())
                 .outputs(EschericiaColi.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(250))
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(StreptococcusPyogenes.getItemStack())
                 .outputs(StreptococcusPyogenes.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(250))
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(BifidobacteriumBreve.getItemStack())
                 .outputs(BifidobacteriumBreve.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(250))
                 .buildAndRegister();
 
-        BIO_REACTOR_RECIPES.recipeBuilder().EUt(30720).duration(50)
+        BIO_REACTOR_RECIPES.recipeBuilder().EUt(120).duration(100)
                 .inputs(CupriavidusNecator.getItemStack())
                 .outputs(CupriavidusNecator.getItemStack(2))
                 .fluidInputs(BacterialGrowthMedium.getFluid(250))

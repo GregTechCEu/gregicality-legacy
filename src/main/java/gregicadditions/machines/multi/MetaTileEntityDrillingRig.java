@@ -8,7 +8,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -24,11 +24,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockConcrete;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.blocks.StoneBlock;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -41,19 +37,19 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 import static gregtech.api.unification.material.Materials.StainlessSteel;
 
-public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
+public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase { //todo staged removal
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     private IEnergyContainer energyContainer;
     private IMultipleTankHandler importFluidHandler;
@@ -139,11 +135,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
             return;
         }
 
-        if (getTimer() % 20 == 0) {
+        if (getOffsetTimer() % 20 == 0) {
             int residual = getResidualOil();
+
             if (availableOil() > 0 || residual > 0) {
-                int oilAmnt = availableOil() <= 0 ? residual * getTier() : availableOil();
-                FluidStack out = new FluidStack(availableFluid(), Math.min(fluidDrain(), oilAmnt));
+                int oilAmount = availableOil() <= 0 ? residual * getTier() : availableOil();
+                FluidStack out = new FluidStack(availableFluid(), Math.min(fluidDrain(), oilAmount));
                 int drained = exportFluidHandler.fill(out, true);
                 extractOil(drained);
             } else {
@@ -238,12 +235,12 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(StainlessSteel);
+        return CLEAN_STAINLESS_STEEL_CASING;
     }
 
     public IBlockState getFrameState() {
@@ -266,6 +263,7 @@ public class MetaTileEntityDrillingRig extends MultiblockWithDisplayBase {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", GAConfig.Extraction.drillingMud, I18n.format(GAMaterials.DrillingMud.getFluid(0).getUnlocalizedName())));
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
     }
 
     @Override

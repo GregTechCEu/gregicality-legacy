@@ -12,6 +12,7 @@ import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.machines.FuelRecipeMap;
@@ -152,18 +153,9 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> BLAST_ALLOY_RECIPES = new RecipeMap<>("blast_alloy",
-            0, 9, 0, 0, 0, 2, 1, 1, new SimpleRecipeBuilder())
+    public static final RecipeMapExtended<BlastRecipeBuilder> BLAST_ALLOY_RECIPES = (RecipeMapExtended<BlastRecipeBuilder>) new RecipeMapExtended<>("blast_alloy",
+            0, 9, 0, 0, 0, 2, 1, 1, new BlastRecipeBuilder())
             .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY);
-
-
-
-    @ZenProperty
-    public static final LargeRecipeMap LARGE_FORGE_HAMMER_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_forge_hammer",
-            1, 1, 1, 1, 1, 1, 0, 0, new LargeRecipeBuilder(RecipeMaps.FORGE_HAMMER_RECIPES))
-            .setSlotOverlay(false, false, GuiTextures.HAMMER_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);
-
 
     @ZenProperty
     public static final RecipeMap<NuclearReactorBuilder> NUCLEAR_REACTOR_RECIPES = new RecipeMap<>("nuclear_reactor",
@@ -204,13 +196,13 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser",
-            1, 2, 1, 2, 1, 2, 1, 2, (new SimpleRecipeBuilder()))
+            1, 2, 0, 2, 1, 2, 1, 2, (new SimpleRecipeBuilder()))
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
 
 
     @ZenProperty
     public static final RecipeMap<IntCircuitRecipeBuilder> GAS_CENTRIFUGE_RECIPES = new RecipeMap<>("gas_centrifuge",
-            1, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
+            0, 1, 0, 0, 1, 1, 1, 3, new IntCircuitRecipeBuilder())
             .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.VERTICAL_INVERTED);
 
@@ -230,7 +222,7 @@ public class GARecipeMaps {
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_RECIPES = new RecipeMap<>("electric_implosion",
             1, 2, 1, 2, 0, 0, 0, 0, new SimpleRecipeBuilder()
-                .duration(1).EUt(1500000)); // UHV-tier, 1tick processing time
+                .duration(1).EUt(375000)); // UV-tier, 1tick processing time
 
 
 

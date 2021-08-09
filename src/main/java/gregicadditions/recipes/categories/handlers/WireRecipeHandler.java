@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.INSULATION_WIRE_ASSEMBLY;
@@ -27,6 +28,7 @@ import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs
 import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.UNPACKER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.PACKER_RECIPES;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -116,6 +118,7 @@ public class WireRecipeHandler {
             wirePrefix.addProcessingHandler(IngotMaterial.class, WireRecipeHandler::processWireGt);
 
         cableGtSingle.addProcessingHandler(IngotMaterial.class, WireRecipeHandler::processCableStripping);
+        wireGtSingle.addProcessingHandler(IngotMaterial.class, WireRecipeHandler::processWireCompression);
     }
 
     /**
@@ -200,6 +203,24 @@ public class WireRecipeHandler {
                         .notConsumable(new IntCircuitIngredient(0))
                         .output(WIRE_DOUBLING_ORDER[i], material)
                         .buildAndRegister();
+            }
+        }
+    }
+
+
+    /**
+     * Wire compression Material Handler
+     */
+    private static void processWireCompression(OrePrefix prefix, IngotMaterial material) {
+        if (material.cableProperties != null) {
+            for(int startTier = 0; startTier < 4; startTier++) {
+                for (int i = 1; i < 5 - startTier; i++) {
+                    PACKER_RECIPES.recipeBuilder()
+                        .inputs(OreDictUnifier.get(WIRE_DOUBLING_ORDER[startTier], material, 1 << i))
+                        .notConsumable(new IntCircuitIngredient(i))
+                        .outputs(OreDictUnifier.get(WIRE_DOUBLING_ORDER[startTier + i], material, 1))
+                        .buildAndRegister();
+                }
             }
         }
     }

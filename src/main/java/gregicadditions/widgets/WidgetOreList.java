@@ -21,38 +21,42 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 public class WidgetOreList extends ScrollableListWidget {
     private WidgetGroup selected;
     private final Map<WidgetGroup, String> widgetMap;
     public Consumer<String> onSelected = null;
+    public Set<String> ores;
 
     public WidgetOreList(int xPosition, int yPosition, int width, int slotSize) {
         super(xPosition, yPosition, width, slotSize * 18);
         widgetMap = new HashMap<>();
+        ores = new HashSet<>();
         clear();
     }
 
-    public void addOres(ProspectingPacket packet) {
-        if (packet.ores != null) {
-            switch (packet.pType) {
-                case 0:
-                    packet.ores.stream().sorted().forEach(this::addOre);
-                    break;
-                case 1:
-                    packet.ores.stream().sorted().forEach(this::addOil);
-                    break;
-                default:
-                    break;
-            }
+    public void addOres(Set<String> ores, int mode) {
+        switch (mode) {
+            case 0:
+                ores.stream().sorted().forEach(this::addOre);
+                break;
+            case 1:
+                ores.stream().sorted().forEach(this::addOil);
+                break;
+            default:
+                break;
         }
     }
 
     private void addOre(String orePrefix) {
+        if (ores.contains(orePrefix)) {
+            return;
+        } else {
+           ores.add(orePrefix);
+        }
         ItemStack itemStack = OreDictUnifier.get(orePrefix);
         MaterialStack mterialStack = OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix));
         ItemStackHandler itemStackHandler = new ItemStackHandler(1);
@@ -64,9 +68,15 @@ public class WidgetOreList extends ScrollableListWidget {
         if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
             this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
         this.addWidget(widgetGroup);
+        this.widgets.sort(Comparator.comparing(widgetMap::get));
     }
 
     private void addOil(String orePrefix) {
+        if (ores.contains(orePrefix)) {
+            return;
+        } else {
+            ores.add(orePrefix);
+        }
         FluidStack fluidStack = FluidRegistry.getFluidStack(orePrefix, 1);
         if (fluidStack == null) return;
         FluidTank fluidTank = new FluidTank(1);
@@ -82,6 +92,7 @@ public class WidgetOreList extends ScrollableListWidget {
         if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
             this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
         this.addWidget(widgetGroup);
+        this.widgets.sort(Comparator.comparing(widgetMap::get));
     }
 
     public void clear() {
@@ -91,7 +102,7 @@ public class WidgetOreList extends ScrollableListWidget {
         widgetGroup.addWidget(new ImageWidget(0, 0, 18, 18, GuiTextures.LOCK));
         widgetGroup.addWidget(new LabelWidget(20, 9, "metaitem.tool.prospect.gui.list"));
         selected = widgetGroup;
-        widgetMap.put(widgetGroup, "all");
+        widgetMap.put(widgetGroup, "[all]");
         this.addWidget(widgetGroup);
     }
 
@@ -115,7 +126,7 @@ public class WidgetOreList extends ScrollableListWidget {
             if (widget instanceof WidgetGroup) {
                 this.selected = (WidgetGroup) widget;
                 if (onSelected != null) {
-                    onSelected.accept(widgetMap.getOrDefault(widget, "all"));
+                    onSelected.accept(widgetMap.getOrDefault(widget, "[all]"));
                 }
             }
         }

@@ -1,9 +1,7 @@
 package gregicadditions.recipes.categories.circuits;
 
-import gregicadditions.GAConfig;
 import gregicadditions.recipes.categories.circuits.components.*;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -37,7 +35,7 @@ public class CircuitComponentRecipes {
         WetwareComponents.init();
         biowareSMD();
         OpticalComponents.init();
-        // EXOTIC COMING SOON...
+        ExoticComponents.init();
         CosmicComponents.init();
         SupracausalComponents.init();
     }
@@ -77,14 +75,14 @@ public class CircuitComponentRecipes {
                 'W', new UnificationEntry(wireGtSingle, Copper),
                 'B', PHENOLIC_BOARD);
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(PHENOLIC_BOARD.getStackForm())
                 .input(foil, Copper, 4)
                 .fluidInputs(SodiumPersulfate.getFluid(200))
                 .outputs(GOOD_PHENOLIC_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(PHENOLIC_BOARD.getStackForm())
                 .input(foil, Copper, 4)
                 .fluidInputs(IronChloride.getFluid(100))
@@ -94,14 +92,14 @@ public class CircuitComponentRecipes {
         // Plastic Circuit Board handled by GTCE
 
         // Good Plastic Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(PLASTIC_BOARD.getStackForm())
                 .input(foil, Copper, 6)
                 .fluidInputs(SodiumPersulfate.getFluid(500))
                 .outputs(GOOD_PLASTIC_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(800).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(PLASTIC_BOARD.getStackForm())
                 .input(foil, Copper, 6)
                 .fluidInputs(IronChloride.getFluid(250))
@@ -111,14 +109,14 @@ public class CircuitComponentRecipes {
         // Epoxy Circuit Board handled by GTCE
 
         // Advanced Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(1200).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(30)
                 .inputs(EPOXY_BOARD.getStackForm())
                 .input(foil, Electrum, 8)
                 .fluidInputs(SodiumPersulfate.getFluid(1000))
                 .outputs(ADVANCED_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(1200).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(30)
                 .inputs(EPOXY_BOARD.getStackForm())
                 .input(foil, Electrum, 8)
                 .fluidInputs(IronChloride.getFluid(500))
@@ -128,14 +126,14 @@ public class CircuitComponentRecipes {
         // Fiber-Reinforced Circuit Board handled by GTCE
 
         // Extreme Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(1800).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30)
                 .inputs(FIBER_BOARD.getStackForm())
                 .input(foil, AnnealedCopper, 12)
                 .fluidInputs(SodiumPersulfate.getFluid(2000))
                 .outputs(EXTREME_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(1800).EUt(30)
+        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(30)
                 .inputs(FIBER_BOARD.getStackForm())
                 .input(foil, AnnealedCopper, 12)
                 .fluidInputs(IronChloride.getFluid(1000))
@@ -145,14 +143,14 @@ public class CircuitComponentRecipes {
         // Multi-Layer Fiber-Reinforced Circuit Board handled by GTCE
 
         // Elite Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(2400).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(120)
                 .inputs(MULTILAYER_FIBER_BOARD.getStackForm())
                 .input(foil, Platinum, 16)
                 .fluidInputs(SodiumPersulfate.getFluid(4000))
                 .outputs(ELITE_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(2400).EUt(120)
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(120)
                 .inputs(MULTILAYER_FIBER_BOARD.getStackForm())
                 .input(foil, Platinum, 16)
                 .fluidInputs(IronChloride.getFluid(2000))
@@ -167,14 +165,14 @@ public class CircuitComponentRecipes {
                 .buildAndRegister();
 
         // Insane Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(2600).EUt(240)
+        CHEMICAL_RECIPES.recipeBuilder().duration(500).EUt(240)
                 .inputs(KAPTON_BOARD.getStackForm())
                 .input(foil, VanadiumGallium, 24)
                 .fluidInputs(SodiumPersulfate.getFluid(6000))
                 .outputs(KAPTON_CIRCUIT_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(2600).EUt(240)
+        CHEMICAL_RECIPES.recipeBuilder().duration(500).EUt(240)
                 .inputs(KAPTON_BOARD.getStackForm())
                 .input(foil, VanadiumGallium, 24)
                 .fluidInputs(IronChloride.getFluid(3000))
@@ -195,14 +193,14 @@ public class CircuitComponentRecipes {
                 .buildAndRegister();
 
         // Master Circuit Board
-        CHEMICAL_RECIPES.recipeBuilder().duration(3000).EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .inputs(WETWARE_BOARD.getStackForm())
                 .input(foil, NiobiumTitanium, 32)
                 .fluidInputs(SodiumPersulfate.getFluid(10000))
                 .outputs(MASTER_BOARD.getStackForm())
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(3000).EUt(480)
+        CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .inputs(WETWARE_BOARD.getStackForm())
                 .input(foil, NiobiumTitanium, 32)
                 .fluidInputs(IronChloride.getFluid(5000))
@@ -218,23 +216,12 @@ public class CircuitComponentRecipes {
 
         for (Material m : new Material[]{Coal, Charcoal, Carbon}) {
 
-            if (GAConfig.GT6.BendingFoils)
-
-                ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
-                        "RWR", "CMC", " W ",
-                        'M', new UnificationEntry(dust, m),
-                        'R', RUBBER_DROP,
-                        'W', new UnificationEntry(wireFine, Copper),
-                        'C', new UnificationEntry(wireGtSingle, Copper));
-
-            else
-
-                ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
-                        "RCR", "CMC", " C ",
-                        'M', new UnificationEntry(dust, m),
-                        'R', RUBBER_DROP,
-                        'C', new UnificationEntry(wireGtSingle, Copper));
-
+            ModHandler.addShapedRecipe(String.format("resistor_%s", m.toString()), RESISTOR.getStackForm(),
+                    "RWR", "CMC", " W ",
+                    'M', new UnificationEntry(dust, m),
+                    'R', RUBBER_DROP,
+                    'W', new UnificationEntry(wireFine, Copper),
+                    'C', new UnificationEntry(wireGtSingle, Copper));
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(320).EUt(16)
                     .input(dust, m)
