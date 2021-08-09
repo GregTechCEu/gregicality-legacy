@@ -111,21 +111,23 @@ public class REEChain {
                 .duration(200)
                 .buildAndRegister();
 
-        // [REE] + NaOH + H2O -> Na[REE]-OH(H2O)
-        MIXER_RECIPES.recipeBuilder()
+        // [REE] + 3 [NaOH + H2O] + 3 H2O -> [REE(OH)3 + 3 NaOH + 3 H2O] + 3 H
+        CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, RareEarth)
-                .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
+                .fluidInputs(SodiumHydroxideSolution.getFluid(3000))
+                .fluidInputs(Water.getFluid(3000))
                 .fluidOutputs(RareEarthHydroxidesSolution.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(3000))
                 .EUt(480)
                 .duration(200)
                 .buildAndRegister();
 
-        // HCl + Na[REE]-OH(H2O) -> ThU + H[REE]-Cl+ [NaOH + H2O]
+        // 3 HCl + [REE(OH)3 + 3 NaOH] -> ThU + [REECl3 + 3 H2O] + 3 [NaOH + H2O]
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .fluidInputs(RareEarthHydroxidesSolution.getFluid(1000))
-                .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
-                .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
+                .fluidOutputs(RareEarthChloridesSolution.getFluid(3000))
+                .fluidOutputs(SodiumHydroxideSolution.getFluid(3000))
                 .outputs(ThUSludge.getItemStack(2))
                 .EUt(480)
                 .duration(200)
@@ -137,15 +139,15 @@ public class REEChain {
                 .output(dust, SodiumHydroxide, 3)
                 .buildAndRegister();
 
-        // H[REE]-Cl + C16H35O4P(cat.) -> [REE](sep.) + HCl
+        // [REECl3 + 3 H2O] + C16H35O4P(cat.) -> [REE2O3](sep.) + 3 HCl
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(RareEarthChloridesSolution.getFluid(1000))
+                .fluidInputs(RareEarthChloridesSolution.getFluid(3000))
                 .notConsumable(DiethylhexylPhosphoricAcid.getFluid(0))
                 .fluidOutputs(LaNdOxidesSolution.getFluid(250))
                 .fluidOutputs(SmGdOxidesSolution.getFluid(250))
                 .fluidOutputs(TbHoOxidesSolution.getFluid(250))
                 .fluidOutputs(ErLuOxidesSolution.getFluid(250))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(3000))
                 .EUt(480)
                 .duration(600)
                 .buildAndRegister();
