@@ -943,14 +943,14 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
 
-        // Sg + NaOH + 5F + 2H2O -> 5HF + NaSgO3
+        // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4
         CHEMICAL_RECIPES.recipeBuilder().duration(820).EUt(30720)
                 .input(dust, Seaborgium)
-                .input(dust, SodiumHydroxide, 3)
-                .fluidInputs(Fluorine.getFluid(5000))
+                .input(dust, SodiumHydroxide, 6)
+                .fluidInputs(Fluorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(2000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(5000))
-                .outputs(SodiumSeaborgate.getItemStack(5))
+                .fluidOutputs(HydrofluoricAcid.getFluid(6000))
+                .outputs(SodiumSeaborgate.getItemStack(7))
                 .buildAndRegister();
 
         // Sr + 2Cl -> SrCl2

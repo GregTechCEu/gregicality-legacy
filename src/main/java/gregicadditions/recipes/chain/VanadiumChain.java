@@ -31,7 +31,7 @@ public class VanadiumChain {
 
         // 2VO + 3Na2CO3 = 2Na3VO4 + 3CO
         BLAST_RECIPES.recipeBuilder().duration(150).EUt(120).blastFurnaceTemp(700)
-                .inputs(VanadiumSlagDust.getItemStack(2))
+                .inputs(VanadiumSlagDust.getItemStack(4))
                 .input(dust, SodaAsh, 18)
                 .outputs(SodiumVanadate.getItemStack(16))
                 .fluidOutputs(CarbonMonoxde.getFluid(3000))

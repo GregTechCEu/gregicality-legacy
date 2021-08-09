@@ -333,7 +333,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, Iron)
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
-                .fluidOutputs(IronChloride.getFluid(3000))
+                .fluidOutputs(IronChloride.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(3000))
                 .buildAndRegister();
 

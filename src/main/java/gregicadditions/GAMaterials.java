@@ -1206,7 +1206,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial SodiumIodide = new SimpleDustMaterial("sodium_iodide", 0x555588, (short) 236, MaterialIconSet.ROUGH, "NaI");
     public static final SimpleDustMaterial SodiumIodate = new SimpleDustMaterial("sodium_iodate", 0x11116d, (short) 237, MaterialIconSet.ROUGH, "NaIO3");
     public static final SimpleDustMaterial SodiumPeriodate = new SimpleDustMaterial("sodium_periodate", 0x11116d, (short) 238, MaterialIconSet.SHINY, "NaIO4");
-    public static final SimpleDustMaterial SodiumSeaborgate = new SimpleDustMaterial("sodium_seaborgate", 0x55bbd4, (short) 239, MaterialIconSet.SHINY, "NaSgO3");
+    public static final SimpleDustMaterial SodiumSeaborgate = new SimpleDustMaterial("sodium_seaborgate", 0x55bbd4, (short) 239, MaterialIconSet.SHINY, "Na2SgO4");
     public static final SimpleDustMaterial OsmiumTetroxide = new SimpleDustMaterial("osmium_tetroxide", 0x82cbd6, (short) 240, MaterialIconSet.SHINY, "OsO4");
     public static final SimpleDustMaterial StrontiumChloride = new SimpleDustMaterial("strontium_chloride", 0x3a9aba, (short) 241, MaterialIconSet.SHINY, "SrCl2");
     public static final SimpleDustMaterial YttriumEuropiumVanadate = new SimpleDustMaterial("yttrium_europium_vanadate", (Yttrium.materialRGB+ Europium.materialRGB+Vanadium.materialRGB)/3, (short) 242, MaterialIconSet.SHINY, "YEuVO4");
