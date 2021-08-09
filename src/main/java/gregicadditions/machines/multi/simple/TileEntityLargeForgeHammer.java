@@ -23,6 +23,7 @@ import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -58,13 +59,12 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("SXX", "X#X", "XPX", "XpX")
-                //.aisle("XXX", "X#X", "XPX", "XpX").setRepeatable(0, 4) //TODO: fix formation of multiblocks in GTCE so that this can function properly
-                .setAmountAtLeast('Y', 2)
+                .aisle("SXX", "X#X", "XpX", "XXX")
+                //.aisle("XXX", "X#X", "XpX", "XXX").setRepeatable(0, 4) //TODO: fix formation of multiblocks in GTCE so that this can function properly
+                .setAmountAtLeast('Y', 4)
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('P', statePredicate(Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN)))
                 .where('#', isAirPredicate())
                 .where('p', pistonPredicate())
                 .build();
@@ -73,6 +73,7 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gregtech.multiblock.large_forge_hammer.description"));
         super.addInformation(stack, player, tooltip, advanced);
     }
 
@@ -158,8 +159,8 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
             List<FluidStack> newFluidInputs = new ArrayList<>();
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
-            newFluidInputs.add(Materials.Lubricant.getFluid(1)); // Here's the important part!
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
+            newFluidInputs.add(Materials.Lubricant.getFluid(minMultiplier)); // Here's the important part!
 
             // determine if there is enough room in the output to fit all of this
             boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
