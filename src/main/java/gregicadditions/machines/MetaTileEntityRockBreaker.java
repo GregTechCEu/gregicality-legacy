@@ -42,7 +42,7 @@ public class MetaTileEntityRockBreaker extends TieredMetaTileEntity {
     @Override
     public void update() {
         super.update();
-        if (!getWorld().isRemote && getTimer() % 20 == 0 && checkSides(Blocks.LAVA) && checkSides(Blocks.WATER) && energyContainer.getEnergyStored() >= getEnergyPerBlockBreak()) {
+        if (!getWorld().isRemote && getOffsetTimer() % 20 == 0 && checkSides(Blocks.LAVA) && checkSides(Blocks.WATER) && energyContainer.getEnergyStored() >= getEnergyPerBlockBreak()) {
             int stack = (int) Math.pow(2, getTier());
 
             ItemStack diorite = new ItemStack(Blocks.STONE, stack, 3);

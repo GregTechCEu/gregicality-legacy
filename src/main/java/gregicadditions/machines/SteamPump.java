@@ -161,7 +161,7 @@ public class SteamPump extends MetaTileEntity {
                 .widget(new ImageWidget(91, 36, 14, 15, ClientHandler.BRONZE_TANK_ICON))
                 .widget(new SlotWidget(exportItems, 0, 90, 54, true, false)
                         .setBackgroundTexture(GuiTextures.BRONZE_SLOT, ClientHandler.BRONZE_OUT_SLOT_OVERLAY))
-                .bindPlayerInventory(entityPlayer.inventory, GuiTextures.BRONZE_SLOT)
+                .bindPlayerInventory(entityPlayer.inventory, GuiTextures.BRONZE_SLOT, 0)
                 .build(getHolder(), entityPlayer);
     }
 
@@ -199,7 +199,7 @@ public class SteamPump extends MetaTileEntity {
             }
 
         } else if (fluidSourceBlocks.isEmpty()) {
-            if (getTimer() % 20 == 0 && pumpHeadY < 50) {
+            if (getOffsetTimer() % 20 == 0 && pumpHeadY < 50) {
                 this.pumpHeadY++;
                 writeCustomData(-200, b -> b.writeInt(pumpHeadY));
                 markDirty();
@@ -207,7 +207,7 @@ public class SteamPump extends MetaTileEntity {
                 this.initializedQueue = false;
             }
 
-            if (!initializedQueue || getTimer() % 6000 == 0) {
+            if (!initializedQueue || getOffsetTimer() % 6000 == 0 || isFirstTick()) {
                 this.initializedQueue = true;
                 //just add ourselves to check list and see how this will go
                 this.blocksToCheck.add(selfPos);
@@ -245,7 +245,7 @@ public class SteamPump extends MetaTileEntity {
         pushFluidsIntoNearbyHandlers(getFrontFacing());
         fillContainerFromInternalTank(importItems, exportItems, 0, 0);
         updateQueueState();
-        if (getTimer() % getPumpingCycleLength() == 0 && !fluidSourceBlocks.isEmpty() &&
+        if (getOffsetTimer() % getPumpingCycleLength() == 0 && !fluidSourceBlocks.isEmpty() &&
                 steamFluidTank.getFluidAmount() >= STEAM_DRAIN_PER_CYCLE) {
             tryPumpFirstBlock();
         }

@@ -8,11 +8,11 @@ import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.FluidTooltipUtil;
 import gregtech.api.util.GTUtility;
+import gregtech.api.unification.material.Material;
 import gregtech.common.MetaFluids;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -22,6 +22,7 @@ import java.util.Map;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
 
+// todo is this class needed?
 public class GAMetaFluids {
 
 
@@ -48,14 +49,14 @@ public class GAMetaFluids {
 
 
         RadioactiveMaterial.REGISTRY.forEach((ingotMaterial, radioactiveMaterial) -> {
-            radioactiveMaterial.fluidHexachloride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXACHLORIDE"), 300);
-            radioactiveMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
+            radioactiveMaterial.fluidHexachloride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXACHLORIDE"), 300, false);
+            radioactiveMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300, false);
         });
 
         IsotopeMaterial.REGISTRY.forEach((ingotMaterial, isotopeMaterial) -> {
-            isotopeMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300);
-            isotopeMaterial.depletedFuelNitrateSolution = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"), 300);
-            isotopeMaterial.hexafluorideSteamCracked = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE_STEAM_CRACKED"), 300);
+            isotopeMaterial.fluidHexafluoride = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE"), 300, false);
+            isotopeMaterial.depletedFuelNitrateSolution = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"), 300, false);
+            isotopeMaterial.hexafluorideSteamCracked = MetaFluids.registerFluid(ingotMaterial, MetaFluids.FluidType.valueOf("HEXAFLUORIDE_STEAM_CRACKED"), 300, false);
         });
 
         for (SimpleFluidMaterial fluidMat : SimpleFluidMaterial.GA_FLUIDS.values()) {

@@ -9,7 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.item.GAMetaBlocks;
-import gregtech.api.unification.material.type.DustMaterial;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
 import gregtech.api.unification.ore.StoneTypes;
@@ -87,7 +87,7 @@ public class GAFillerUtils {
     }
 
     public static Map<StoneType, IBlockState> getOreStateMap(String stringDeclaration) {
-        DustMaterial material;
+        Material material;
         String materialName;
         if (stringDeclaration.startsWith("ore:")) {
             if (stringDeclaration.contains("poor:") || stringDeclaration.contains("rich:") || stringDeclaration.contains("pure:")) {
@@ -106,9 +106,9 @@ public class GAFillerUtils {
         }
     }
 
-    public static Map<StoneType, IBlockState> getOreForMaterial(DustMaterial material, String orePrefix) {
+    public static Map<StoneType, IBlockState> getOreForMaterial(Material material, String orePrefix) {
         List<GABlockOre> oreBlocks = GAMetaBlocks.GA_ORES.stream()
-                .filter(ore -> ore.material == material && ore.getOrePrefix() == OrePrefix.valueOf("ore" + orePrefix))
+                .filter(ore -> ore.material == material && ore.getOrePrefix() == OrePrefix.getPrefix("ore" + orePrefix))
                 .collect(Collectors.toList());
         HashMap<StoneType, IBlockState> stoneTypeMap = new HashMap<>();
         for (BlockOre blockOre : oreBlocks) {

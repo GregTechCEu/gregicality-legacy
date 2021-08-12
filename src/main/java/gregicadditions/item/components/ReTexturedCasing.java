@@ -94,7 +94,7 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
                     int color = ((GAMetalCasing) texture).blockState
                             .getBaseState()
                             .getValue(((GAMetalCasing) texture).variantProperty)
-                            .materialRGB; // aRGB
+                            .getMaterialRGB(); // aRGB
                     int color_casing = 0XFF000000 | ((color & 0X00FF0000) >> 16) | (color & 0X0000FF00) | ((color & 0X000000FF) << 16);
                     for (BakedQuad quad : base) {
                         int[] vertexData = quad.getVertexData();

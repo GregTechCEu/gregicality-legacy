@@ -4,6 +4,7 @@ package gregicadditions;
 import gregicadditions.utils.GALog;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.CountableIngredient;
+import gregtech.api.recipes.MatchingMode;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.common.ConfigHolder;
@@ -66,7 +67,7 @@ public class GAUtility {
     }
 
     public static void checkRecipeConflicts() {
-        for (RecipeMap recipeMap : RecipeMap.getRecipeMaps()) {
+        for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
             for (Object recipe : recipeMap.getRecipeList()) {
                 if (recipe instanceof Recipe) {
                     Recipe r = (Recipe) recipe;
@@ -78,7 +79,7 @@ public class GAUtility {
                             itemStacks.add(ci.getIngredient().getMatchingStacks()[0]);
                         }
                     }
-                    Recipe result = recipeMap.findRecipe(Integer.MAX_VALUE, itemStacks, fluidInputs, Integer.MAX_VALUE);
+                    Recipe result = recipeMap.findRecipe(Integer.MAX_VALUE, itemStacks, fluidInputs, Integer.MAX_VALUE, MatchingMode.DEFAULT);
                     if (result != null && result != r) {
                         List<String> outputs = result.getOutputs().stream().map(ItemStack::getDisplayName).collect(Collectors.toList());
                         List<String> outputs2 = r.getOutputs().stream().map(ItemStack::getDisplayName).collect(Collectors.toList());

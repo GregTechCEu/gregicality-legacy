@@ -77,7 +77,7 @@ public class ProspectingTexture extends AbstractTexture {
                     for (String orePrefix : data.values()) {
                         if (!selected.equals("[all]") && !selected.equals(orePrefix)) continue;
                         MaterialStack mterialStack = OreDictUnifier.getMaterial(OreDictUnifier.get(orePrefix));
-                        image.setRGB(i, j, mterialStack==null? orePrefix.hashCode():mterialStack.material.materialRGB | 0XFF000000);
+                        image.setRGB(i, j, mterialStack==null? orePrefix.hashCode():mterialStack.material.getMaterialRGB() | 0XFF000000);
                         break;
                     }
                 }

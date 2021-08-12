@@ -2,9 +2,9 @@ package gregicadditions.pipelike.cable;
 
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregtech.api.unification.material.properties.WireProperties;
 import gregtech.common.pipelike.cable.BlockCable;
 import gregtech.common.pipelike.cable.ItemBlockCable;
-import gregtech.common.pipelike.cable.WireProperties;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;

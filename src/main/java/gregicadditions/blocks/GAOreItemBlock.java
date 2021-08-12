@@ -23,7 +23,7 @@ public class GAOreItemBlock extends OreItemBlock {
         IBlockState blockState = getBlockState(stack);
         StoneType stoneType = blockState.getValue(oreBlock.STONE_TYPE);
         OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? oreBlock.getOrePrefix() :
-                OrePrefix.valueOf(oreBlock.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
+                OrePrefix.getPrefix(oreBlock.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
         return orePrefix.getLocalNameForItem(oreBlock.material);
     }
 }

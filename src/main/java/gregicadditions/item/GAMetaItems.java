@@ -514,8 +514,6 @@ public class GAMetaItems {
         tool.setRegistryName("ga_meta_tool");
         GAMetaArmor armor = new GAMetaArmor();
         armor.setRegistryName("ga_armor");
-        GADustItem dustItem = new GADustItem((short) 0);
-        dustItem.setRegistryName("ga_dust");
     }
 
     public static void registerOreDict() {
