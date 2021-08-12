@@ -6,8 +6,8 @@ import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.GTValues;
+import gregtech.api.unification.material.MaterialRegistry;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.util.GTLog;
 import gregtech.common.MetaFluids;
 import gregtech.common.blocks.MetaBlocks;
@@ -34,7 +34,7 @@ public class MaterialIdTest {
         GAEnums.onConstruction();
         GAMaterials gaMaterials = new GAMaterials();
         gaMaterials.onMaterialsInit();
-        Material.freezeRegistry();
+        MaterialRegistry.freeze();
         MetaFluids.init();
         GAMetaFluids.init();
 
@@ -42,7 +42,6 @@ public class MaterialIdTest {
         MetaBlocks.init();
         GAMetaBlocks.init();
         MetaTileEntities.init();
-        GAEnums.preInit();
         GATileEntities.init();
     }
 
@@ -60,7 +59,7 @@ public class MaterialIdTest {
         );
         assertNotNull(
                 "OreDictUnifier failed to gather a Gregicality Material ItemStack",
-                GAMaterials.Tumbaga
+                GAMaterials.Pikyonium
         );
     }
 
@@ -74,7 +73,7 @@ public class MaterialIdTest {
     public void areMTEsGenerated() {
         assertNotNull(
                 "GTCE MetaTileEntity is still null!",
-                MetaTileEntities.DIESEL_ENGINE
+                MetaTileEntities.LARGE_COMBUSTION_ENGINE
         );
         assertNotNull(
                 "Gregicality MetaTileEntity is still null!",

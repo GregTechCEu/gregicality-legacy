@@ -22,7 +22,6 @@ import gregicadditions.machines.multi.mega.MetaTileEntityMegaBlastFurnace;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaDistillationTower;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaVacuumFreezer;
 import gregicadditions.machines.multi.miner.*;
-import gregicadditions.machines.multi.multiblockpart.MetaTileEntityOutputFilteredHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityQubitHatch;
 import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
@@ -30,7 +29,6 @@ import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
 import gregicadditions.machines.multi.multiblockpart.*;
 import gregicadditions.machines.multi.nuclear.*;
-import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.multi.uumatter.*;
@@ -53,7 +51,6 @@ public class GATileEntities {
 
     // TODO Removals
     public static MetaTileEntityHull[] GA_HULLS = new MetaTileEntityHull[5]; // todo remove, carefully
-    public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>(); // todo remove and replace with filtering normal fluid hatches
 
     // TODO Move to CEu
     public static MetaTileEntityMonitorScreen MONITOR_SCREEN; // todo move to CEu
@@ -115,10 +112,7 @@ public class GATileEntities {
     public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
     public static MetaTileEntityQubitHatch[] QBIT_INPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
     public static MetaTileEntityQubitHatch[] QBIT_OUTPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
-    public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
     public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
-    public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
-    public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
     public static SteamPump STEAM_PUMP;
     public static TileEntitySteamMixer STEAM_MIXER;
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
@@ -171,9 +165,6 @@ public class GATileEntities {
         LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(2531, new TileEntityLargeExtruder(location("large_extruder")));
         LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeAssembler(location("large_assembler")));
 
-        LARGE_STEAM_TURBINE = GregTechAPI.registerMetaTileEntity(2541, new MetaTileEntityLargeTurbine(location("large_turbine.steam"), MetaTileEntityLargeTurbine.TurbineType.valueOf("STEAM_OVERRIDE")));
-        LARGE_GAS_TURBINE = GregTechAPI.registerMetaTileEntity(2542, new MetaTileEntityLargeTurbine(location("large_turbine.gas"), MetaTileEntityLargeTurbine.TurbineType.valueOf("GAS_OVERRIDE")));
-        LARGE_PLASMA_TURBINE = GregTechAPI.registerMetaTileEntity(2543, new MetaTileEntityLargeTurbine(location("large_turbine.plasma"), MetaTileEntityLargeTurbine.TurbineType.valueOf("PLASMA_OVERRIDE")));
         HOT_COOLANT_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityHotCoolantTurbine(location("large_turbine.hot_coolant"), MetaTileEntityHotCoolantTurbine.TurbineType.HOT_COOLANT));
 
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
@@ -232,11 +223,6 @@ public class GATileEntities {
         registerSimpleMetaTileEntity(DEHYDRATOR, 4000, "dehydrator", GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, true, GATileEntities::location);
         registerSimpleMetaTileEntity(DECAY_CHAMBER, 3201, "decay_chamber", GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.REPLICATOR_OVERLAY, true, GATileEntities::location);
         registerSimpleMetaTileEntity(GREEN_HOUSE, 3211, "green_house", GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, true, GATileEntities::location);
-
-        id = 3220;
-        for (int i = 0; i < GTValues.V.length; i++) {
-            OUTPUT_HATCH_FILTERED.add(GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityOutputFilteredHatch(location("fluid_hatch.export_filtered." + GTValues.VN[i].toLowerCase()), i == 9 ? GAValues.MAX : i)));
-        }
 
         BUFFER[0] = GregTechAPI.registerMetaTileEntity(3230, new TileEntityBuffer(location("buffer.lv"), 3));
         BUFFER[1] = GregTechAPI.registerMetaTileEntity(3231, new TileEntityBuffer(location("buffer.mv"), 4));

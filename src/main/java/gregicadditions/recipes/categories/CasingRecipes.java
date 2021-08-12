@@ -11,8 +11,6 @@ import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
@@ -23,8 +21,6 @@ import net.minecraft.util.IStringSerializable;
 
 import java.util.Arrays;
 
-import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
-import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.*;
 import static gregicadditions.item.CellCasing.CellType.*;
@@ -35,8 +31,6 @@ import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.GAReactorCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
-import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;

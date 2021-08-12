@@ -1,17 +1,13 @@
 package gregicadditions.recipes.categories.machines;
 
-import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.*;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
-import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
-import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockMachineCasing;
@@ -26,7 +22,6 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.ZPM;
-import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -141,18 +136,6 @@ public class MachineCraftingRecipes {
 
     private static void misc() {
 
-        // Fluid Export Hatch
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_ulv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.ULV).getStackForm(),     "F", "M", "G", 'M', MetaTileEntities.HULL[ULV].getStackForm(),          'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_lv",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.LV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[LV].getStackForm(),           'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_mv",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.MV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.MV].getStackForm(),  'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_hv",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.HV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.HV].getStackForm(),  'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_ev",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.EV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.EV].getStackForm(),  'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_iv",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.IV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.IV].getStackForm(),  'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_luv", GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.LuV).getStackForm(),     "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.LuV].getStackForm(), 'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_zpm", GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.ZPM).getStackForm(),     "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.ZPM].getStackForm(), 'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_uv",  GATileEntities.OUTPUT_HATCH_FILTERED.get(GAValues.UV).getStackForm(),      "F", "M", "G", 'M', MetaTileEntities.HULL[GAValues.UV].getStackForm(),  'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-        ModHandler.addShapedRecipe("ga_filtered_fluid_export_hatch_max", GATileEntities.OUTPUT_HATCH_FILTERED.get(9).getStackForm(),                "F", "M", "G", 'M', MetaTileEntities.HULL[GTValues.MAX].getStackForm(), 'G', Blocks.GLASS, 'F', MetaItems.FLUID_FILTER);
-
         // Energy Converters
         for (final EnergyConverterType type : EnergyConverterType.values()) {
             if (GATileEntities.ENERGY_CONVERTER.containsKey(type)) {
@@ -169,15 +152,6 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_qubit_input_hatch",  GATileEntities.QBIT_INPUT_HATCH[0].getStackForm(),  "   ", "CM ", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberHex));
         ModHandler.addShapedRecipe("ga_qubit_output_hatch", GATileEntities.QBIT_OUTPUT_HATCH[0].getStackForm(), "   ", " MC", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberSingle));
 
-        if (GAConfig.multis.steamMultis.useSteelMultis) {
-            ModHandler.addShapedRecipe("ga_steam_hatch", GATileEntities.STEAM_HATCH.getStackForm(), "BPB", "BTB", "BPB", 'B', new UnificationEntry(plate, Steel), 'P', new UnificationEntry(pipeMedium, Steel), 'T', MetaTileEntities.STEEL_TANK.getStackForm());
-            ModHandler.addShapedRecipe("ga_steam_input_bus", GATileEntities.STEAM_INPUT_BUS.getStackForm(), "BMB", "THT", "BMB", 'B', new UnificationEntry(plate, Steel), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
-            ModHandler.addShapedRecipe("ga_steam_output_bus", GATileEntities.STEAM_OUTPUT_BUS.getStackForm(), "BTB", "MHM", "BTB", 'B', new UnificationEntry(plate, Steel), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
-        } else {
-            ModHandler.addShapedRecipe("ga_steam_hatch", GATileEntities.STEAM_HATCH.getStackForm(), "BPB", "BTB", "BPB", 'B', new UnificationEntry(plate, Bronze), 'P', new UnificationEntry(pipeMedium, Bronze), 'T', MetaTileEntities.BRONZE_TANK.getStackForm());
-            ModHandler.addShapedRecipe("ga_steam_input_bus", GATileEntities.STEAM_INPUT_BUS.getStackForm(), "BMB", "THT", "BMB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
-            ModHandler.addShapedRecipe("ga_steam_output_bus", GATileEntities.STEAM_OUTPUT_BUS.getStackForm(), "BTB", "MHM", "BTB", 'B', new UnificationEntry(plate, Bronze), 'M', new UnificationEntry(plate, Potin), 'T', new UnificationEntry(plate, Tin), 'H', Blocks.CHEST);
-        }
         //Steam Machines
         ModHandler.addShapedRecipe("ga_steam_mixer", GATileEntities.STEAM_MIXER.getStackForm(), "GRG", "GPG", "PMP", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'P', new UnificationEntry(pipeSmall, Bronze), 'R', new UnificationEntry(rotor, Bronze), 'G', Blocks.GLASS);
         ModHandler.addShapedRecipe("ga_steam_pump", GATileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(pipeMedium, Bronze), 'L', new UnificationEntry(pipeLarge, Bronze), 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.BRONZE_HULL), 'R', new UnificationEntry(rotor, Bronze));
@@ -188,7 +162,7 @@ public class MachineCraftingRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().EUt(30).duration(500).inputs(MetaTileEntities.HULL[LV].getStackForm()).circuitMeta(21).outputs(GATileEntities.MAINTENANCE_HATCH[0].getStackForm()).buildAndRegister();
         ModHandler.addShapedRecipe("ga_maintenance_hatch_auto_tape", GATileEntities.MAINTENANCE_HATCH[1].getStackForm(), "CMC", "RHR", "CMC", 'C', new UnificationEntry(circuit, Elite), 'M', GATileEntities.MAINTENANCE_HATCH[0].getStackForm(), 'R', MetaItems.ROBOT_ARM_IV, 'H', MetaTileEntities.HULL[IV].getStackForm());
         ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(500).inputs(MetaTileEntities.HULL[IV].getStackForm(), MetaItems.ROBOT_ARM_IV.getStackForm(2), GATileEntities.MAINTENANCE_HATCH[0].getStackForm(2)).input(circuit, Elite, 2).outputs(GATileEntities.MAINTENANCE_HATCH[1].getStackForm()).buildAndRegister();
-        GARecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).duration(1000).input(wireFine, Dubnium, 64).input(circuit, Superconductor, 4).inputs(MetaItems.ROBOT_ARM_UV.getStackForm(), MetaItems.ELECTRIC_PUMP_UV.getStackForm(), MetaItems.CONVEYOR_MODULE_UV.getStackForm(), MetaItems.ENERGY_LAPOTRONIC_ORB2.getStackForm(), GAMetaItems.INSULATING_TAPE.getStackForm(64), GAMetaItems.INSULATING_TAPE.getStackForm(64), GATileEntities.MAINTENANCE_HATCH[1].getStackForm()).fluidInputs(SolderingAlloy.getFluid(1296), Lubricant.getFluid(64000)).outputs(GATileEntities.MAINTENANCE_HATCH[2].getStackForm()).buildAndRegister();
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).duration(1000).input(wireFine, Dubnium, 64).input(circuit, Superconductor, 4).inputs(MetaItems.ROBOT_ARM_UV.getStackForm(), MetaItems.ELECTRIC_PUMP_UV.getStackForm(), MetaItems.CONVEYOR_MODULE_UV.getStackForm(), MetaItems.ENERGY_LAPOTRONIC_ORB2.getStackForm(), GAMetaItems.INSULATING_TAPE.getStackForm(64), GAMetaItems.INSULATING_TAPE.getStackForm(64), GATileEntities.MAINTENANCE_HATCH[1].getStackForm()).fluidInputs(SolderingAlloy.getFluid(1296), Lubricant.getFluid(64000)).outputs(GATileEntities.MAINTENANCE_HATCH[2].getStackForm()).buildAndRegister();
 
         //Quadruple and Nonuple Inputs and Outputs
         ASSEMBLER_RECIPES.recipeBuilder().EUt(120).duration(100).inputs(MetaTileEntities.HULL[HV].getStackForm()).input(pipeLarge, Titanium, 4).circuitMeta(0).outputs(GATileEntities.INPUT_HATCH_MULTI.get(0).getStackForm()).buildAndRegister();

@@ -14,25 +14,20 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
-import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.machines.GATileEntities.*;
-import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipeByName;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.blocks.BlockFireboxCasing.FireboxCasingType.BRONZE_FIREBOX;
-import static gregtech.common.blocks.BlockFireboxCasing.FireboxCasingType.STEEL_FIREBOX;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING;
-import static gregtech.common.blocks.BlockWireCoil.CoilType.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 
@@ -826,33 +821,6 @@ public class MultiblockCraftingRecipes {
                 'P', new UnificationEntry(plate, Iron),
                 'B', MetaBlocks.METAL_CASING.getItemVariant(PRIMITIVE_BRICKS));
 
-        // Large Steam Turbine
-        removeRecipeByName("gregtech:large_steam_turbine");
-        ModHandler.addShapedRecipe("ga_large_steam_turbine", GATileEntities.LARGE_STEAM_TURBINE.getStackForm(),
-                "PSP", "SAS", "CSC",
-                'S', new UnificationEntry(gear, Steel),
-                'P', new UnificationEntry(circuit, Advanced),
-                'A', MetaTileEntities.HULL[HV].getStackForm(),
-                'C', new UnificationEntry(pipeLarge, Steel));
-
-        // Large Gas Turbine
-        removeRecipeByName("gregtech:large_gas_turbine");
-        ModHandler.addShapedRecipe("ga_large_gas_turbine", GATileEntities.LARGE_GAS_TURBINE.getStackForm(),
-                "PSP", "SAS", "CSC",
-                'S', new UnificationEntry(gear, StainlessSteel),
-                'P', new UnificationEntry(circuit, Extreme),
-                'A', MetaTileEntities.HULL[EV].getStackForm(),
-                'C', new UnificationEntry(pipeLarge, StainlessSteel));
-
-        // Large Plasma Turbine
-        removeRecipeByName("gregtech:large_plasma_turbine");
-        ModHandler.addShapedRecipe("ga_large_plasma_turbine", GATileEntities.LARGE_PLASMA_TURBINE.getStackForm(),
-                "PSP", "SAS", "CSC",
-                'S', new UnificationEntry(gear, TungstenSteel),
-                'P', new UnificationEntry(circuit, Master),
-                'A', MetaTileEntities.HULL[LuV].getStackForm(),
-                'C', new UnificationEntry(pipeLarge, TungstenSteel));
-
         // Large Bronze Boiler
         removeRecipeByName("gregtech:large_bronze_boiler");
         ModHandler.addShapedRecipe("ga_large_bronze_boiler", MetaTileEntities.LARGE_BRONZE_BOILER.getStackForm(),
@@ -884,10 +852,5 @@ public class MultiblockCraftingRecipes {
                 'P', new UnificationEntry(cableGtSingle, Aluminium),
                 'S', new UnificationEntry(circuit, Master),
                 'A', MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST));
-
-        // Recipes added to convert from GTCE to Gregicality versions of overridden multiblocks ========================
-        ModHandler.addShapelessRecipe("ga_large_steam_turbine_compatibility", GATileEntities.LARGE_STEAM_TURBINE.getStackForm(), MetaTileEntities.LARGE_STEAM_TURBINE.getStackForm());
-        ModHandler.addShapelessRecipe("ga_large_gas_turbine_compatibility", GATileEntities.LARGE_GAS_TURBINE.getStackForm(), MetaTileEntities.LARGE_GAS_TURBINE.getStackForm());
-        ModHandler.addShapelessRecipe("ga_large_plasma_turbine_compatibility", GATileEntities.LARGE_PLASMA_TURBINE.getStackForm(), MetaTileEntities.LARGE_PLASMA_TURBINE.getStackForm());
     }
 }

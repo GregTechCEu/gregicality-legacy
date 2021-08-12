@@ -86,10 +86,6 @@ public class GAEnums {
         public static final OrePrefix depletedFuelTRISO = new OrePrefix("depletedFuelTRISO", M / 4, null, GAMaterialIconType.depletedFuelTRISO, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
         public static final OrePrefix depletedFuel = new OrePrefix("depletedFuel", M, null, GAMaterialIconType.depletedFuel, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
 
-        // todo make these blocks
-        // todo remove gtMetalCasing
-        public static final OrePrefix gtMetalCasing = new OrePrefix("gtMetalCasing", Math.round(M * 6.375), null, GAMaterialIconType.gtMetalCasing, ENABLE_UNIFICATION, hasIngotProperty.and(mat -> mat.hasFlags(GENERATE_FRAME, GENERATE_PLATE)));
-
         public static final OrePrefix opticalFiberHex = new OrePrefix("opticalFiberHex", M * 8, null, null, ENABLE_UNIFICATION, null);
         public static final OrePrefix opticalFiberOctal = new OrePrefix("opticalFiberOctal", M * 4, null, null, ENABLE_UNIFICATION, null);
         public static final OrePrefix opticalFiberQuadruple = new OrePrefix("opticalFiberQuadruple", M * 2, null, null, ENABLE_UNIFICATION, null);
@@ -141,19 +137,6 @@ public class GAEnums {
             OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
             PURE_ORES.add(OrePrefix.valueOf("orePure" + stoneTypes[i]));
         }
-    }
-
-    public static void preInit() {
-        // Turbine Overrides
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
-                RecipeMaps.STEAM_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID), Textures.SOLID_STEEL_CASING, true, Textures.LARGE_STEAM_TURBINE_OVERLAY);
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
-                RecipeMaps.GAS_TURBINE_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), Textures.CLEAN_STAINLESS_STEEL_CASING, false, Textures.LARGE_GAS_TURBINE_OVERLAY);
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class, OrientedOverlayRenderer.class},
-                RecipeMaps.PLASMA_GENERATOR_FUELS, MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), Textures.ROBUST_TUNGSTENSTEEL_CASING, true, Textures.LARGE_PLASMA_TURBINE_OVERLAY);
     }
 
     public static final Predicate<Material> dust = mat -> mat.hasProperty(PropertyKey.DUST);
