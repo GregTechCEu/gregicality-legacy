@@ -1,12 +1,8 @@
 package gregicadditions.materials;
 
-import com.google.common.collect.ImmutableList;
 import gregicadditions.GAMaterials;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.stack.MaterialStack;
 
-import static com.google.common.collect.ImmutableList.of;
 import static gregtech.api.unification.material.Material.FluidType;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
@@ -20,7 +16,7 @@ public class GAHighDegreeMaterials {
 
     public static void register() {
 
-        // Fourth Degree Materials
+        // Fourth Degree Materials, 18500-18999
         Pyrotheum = new Material.Builder(18500, "pyrotheum")
                 .dust(1).fluid(FluidType.FLUID, true)
                 .color(0xFF9A3C).iconSet(SAND)
@@ -43,18 +39,50 @@ public class GAHighDegreeMaterials {
                 .blastTemp(25000)
                 .build();
 
+        Pikyonium = new Material.Builder(18503, "pikyonium")
+                .ingot(7).fluid()
+                .color(0x3467BA).iconSet(SHINY)
+                .components(Inconel792, 8, EglinSteel, 5, NaquadahEnriched, 4, Cerium, 3, Antimony, 2, Platinum, 2, Ytterbium, 1, TungstenSteel, 4)
+                .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
+                .blastTemp(9865)
+                .build();
 
-        public static IngotMaterial Pikyonium = new IngotMaterial(852, "pikyonium", 0x3467BA, MaterialIconSet.SHINY, 7, of(new MaterialStack(Inconel792, 8), new MaterialStack(EglinSteel, 5), new MaterialStack(NaquadahEnriched, 4), new MaterialStack(Cerium, 3), new MaterialStack(Antimony, 2), new MaterialStack(Platinum, 2), new MaterialStack(Ytterbium, 1), new MaterialStack(TungstenSteel, 4)), GA_CORE_METAL | DISABLE_DECOMPOSITION, null, 9865);
-        public static SimpleFluidMaterial DrillingMudMixture = new SimpleFluidMaterial("drilling_mud_mixture", (CaCBaSMixture.rgb + LubricantClaySlurry.rgb) / 2);
-        public static SimpleDustMaterial CalciumSalts = new SimpleDustMaterial("calcium_salts", Calcium.materialRGB-10, (short) 137, MaterialIconSet.ROUGH, of(new MaterialStack(Calcite, 1), new MaterialStack(Gypsum, 1)));
-        public static SimpleDustMaterial RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate = new SimpleDustMaterial("rhenium_hassium_thallium_isophtaloylbisdiethylthiourea", 0xa26a8b,(short) 384, MaterialIconSet.SHINY, "ReHsTlC60PN12H84S6O12F6");
+        CalciumSalts = new Material.Builder(18505, "calcium_salts")
+                .dust()
+                .color(0xFFF5EB).iconSet(ROUGH)
+                .components(Calcite, 1, Gypsum, 1)
+                .flags(DISABLE_DECOMPOSITION)
+                .build();
+
+        RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate = new Material.Builder(18506, "rhenium_hassium_thallium_isophtaloylbisdiethylthiourea")
+                .dust()
+                .color(0xA26A8B).iconSet(SHINY)
+                //.components("ReHsTlC60PN12H84S6O12F6") todo :omegaweary:
+                .build();
 
 
-        // Fifth Degree Materials
-        public static DustMaterial Cryotheum = new DustMaterial(952, "cryotheum", 0x01F3F6, SAND, 1, ImmutableList.of(new MaterialStack(Redstone, 1), new MaterialStack(Blizz, 2), new MaterialStack(Water, 1)), DISABLE_DECOMPOSITION | EXCLUDE_BLOCK_CRAFTING_RECIPES | SMELT_INTO_FLUID);
-        public static IngotMaterial HDCS = new IngotMaterial(720, "hdcs", 0x334433, MaterialIconSet.SHINY, 5, of(new MaterialStack(TungstenSteel, 12), new MaterialStack(HSSS, 9), new MaterialStack(HSSG, 6), new MaterialStack(Ruridit, 3), new MaterialStack(MagnetoResonatic, 2), new MaterialStack(Plutonium, 1)), GA_CORE_METAL | DISABLE_DECOMPOSITION | GENERATE_ROUND, null, 9000);
+        // Fifth Degree Materials, 19000-19499
+        Cryotheum = new Material.Builder(19000, "cryotheum")
+                .dust(1).fluid()
+                .color(0x01F3F6).iconSet(SAND)
+                .components(Redstone, 1, Blizz, 2, Water, 1)
+                .flags(DISABLE_DECOMPOSITION, EXCLUDE_BLOCK_CRAFTING_RECIPES)
+                .build();
 
-        // Sixth Degree Materials
-        public static SimpleFluidMaterial SupercooledCryotheum = new SimpleFluidMaterial("supercooled_cryotheum", Cryotheum.materialRGB-10, of(new MaterialStack(Cryotheum, 1)));
+        HDCS = new Material.Builder(19001, "hdcs")
+                .ingot(5).fluid()
+                .color(0x334433).iconSet(SHINY)
+                .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1) // todo check this Plutonium, needs to be the std one
+                .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND)
+                .blastTemp(9000)
+                .build();
+
+
+        // Sixth Degree Materials, 19500-19999
+        SupercooledCryotheum = new Material.Builder(19500, "supercooled_cryotheum")
+                .fluid()
+                .color(0x01F3EC)
+                .components(Cryotheum, 1)
+                .build();
     }
 }

@@ -91,7 +91,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Neptunium239;
 
     // Plutonium
-    public static Material Plutonium239;
+    //public static Material Plutonium239; todo remove, is in CEu
     public static Material Plutonium240;
     public static Material Plutonium241Isotope;
     public static Material Plutonium244Isotope;
@@ -872,7 +872,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Blizz;
     public static Material HastelloyK243;
     public static Material Pikyonium;
-    public static Material DrillingMudMixture;
     public static Material CalciumSalts;
     public static Material RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate;
 
@@ -1301,6 +1300,7 @@ public class GAMaterials implements IMaterialHandler {
     public static SimpleDustMaterial LuTmYVOPrecipitate = new SimpleDustMaterial("lutm_yvo_precipitate",0xcf8acf,(short) 318,MaterialIconSet.DULL, "Lu/Tm:YVO?");
     public static SimpleDustMaterial SelectivelyMutatedCupriavidiusNecator = new SimpleDustMaterial("selectively_mutated_cupriavidius_necator", CupriavidusNecator.rgb * 5 / 4, (short) 373, MaterialIconSet.SHINY, "Bacteria");
     public static SimpleDustMaterial CoAcABCatalyst = new SimpleDustMaterial("coacab_catalyst", 0x755f30, (short) 900, MaterialIconSet.FINE, "Co/AC-AB");
+    public static Material DrillingMudMixture = new Material.Builder(18504, "drilling_mud_mixture").fluid().color(CaCBaSMixture.rgb + LubricantClaySlurry.rgb).build();
 
     // todo remove
     public static Material UEV = new MarkerMaterial("UEV");
