@@ -4,8 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAMetaTool;
-import gregicadditions.machines.overrides.GAMetaTileEntityHull;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -76,8 +74,7 @@ public class DisassemblyHandler {
             if ((mte instanceof EnergyContainerHandler.IEnergyChangeListener
                     || mte instanceof MultiblockControllerBase
                     || mte instanceof SteamMetaTileEntity)
-                    && (!(mte instanceof MetaTileEntityHull)
-                    && !(mte instanceof GAMetaTileEntityHull))) {
+                    && (!(mte instanceof MetaTileEntityHull))) {
 
                 if (!mteMap.containsKey(mte.metaTileEntityId))
                     mteMap.put(mte.metaTileEntityId, mte);
@@ -189,8 +186,7 @@ public class DisassemblyHandler {
 
                     // Check if itemStack is an MTE, and set the voltage to its tier
                     else if ((tempMTE = testAndGetMTE(itemStack)) != null
-                          && (tempMTE instanceof TieredMetaTileEntity
-                          ||  tempMTE instanceof GATieredMetaTileEntity)) {
+                          && tempMTE instanceof TieredMetaTileEntity) {
                         voltage = GAValues.V[((ITieredMetaTileEntity) tempMTE).getTier()];
                         break;
                     }

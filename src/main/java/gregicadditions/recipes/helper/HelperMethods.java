@@ -1,32 +1,24 @@
 package gregicadditions.recipes.helper;
 
 import forestry.core.fluids.Fluids;
-import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
 import gregicadditions.utils.GALog;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.recipes.FuelRecipe;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.*;
@@ -83,15 +75,6 @@ public class HelperMethods {
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(List<T> metaTileEntities, Object... recipe) {
         for (T mte : metaTileEntities) {
-            ModHandler.addShapedRecipe(String.format("ga_%s", mte.getMetaName()), mte.getStackForm(),
-                    prepareRecipe(mte.getTier(), Arrays.copyOf(recipe, recipe.length)));
-        }
-    }
-
-    // Don't mind the extra "s" on the method name, just Java not recognizing
-    // 2 Lists with different generic types as different parameters for overloading.
-    public static void registerMachineRecipes(List<GAMetaTileEntityEnergyHatch> metaTileEntities, Object... recipe) {
-        for (GAMetaTileEntityEnergyHatch mte : metaTileEntities) {
             ModHandler.addShapedRecipe(String.format("ga_%s", mte.getMetaName()), mte.getStackForm(),
                     prepareRecipe(mte.getTier(), Arrays.copyOf(recipe, recipe.length)));
         }

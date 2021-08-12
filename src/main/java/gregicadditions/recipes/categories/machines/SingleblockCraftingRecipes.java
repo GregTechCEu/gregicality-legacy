@@ -31,7 +31,6 @@ public class SingleblockCraftingRecipes {
         newMachines();
         highTierMachines();
         singleblockOverride();
-        highAmpMachines();
     }
 
     private static void newMachines() {
@@ -332,83 +331,5 @@ public class SingleblockCraftingRecipes {
         ModHandler.addShapedRecipe("ga_charger_zpm", MetaTileEntities.CHARGER[GTValues.ZPM].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.ZPM].getStackForm(), 'W', new UnificationEntry(wireGtHex, Naquadah),       'T', OreDictNames.chestWood, 'B', batteries.get(0), 'C', new UnificationEntry(circuit, Ultimate));
         ModHandler.addShapedRecipe("ga_charger_uv",  MetaTileEntities.CHARGER[GTValues.UV].getStackForm(),  "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.UV].getStackForm(),  'W', new UnificationEntry(wireGtHex, NaquadahAlloy),  'T', OreDictNames.chestWood, 'B', batteries.get(1), 'C', new UnificationEntry(circuit, Superconductor));
         ModHandler.addShapedRecipe("ga_charger_max", MetaTileEntities.CHARGER[GTValues.MAX].getStackForm(), "WTW", "WMW", "BCB", 'M', MetaTileEntities.HULL[GTValues.MAX].getStackForm(), 'W', new UnificationEntry(wireGtHex, Superconductor), 'T', OreDictNames.chestWood, 'B', batteries.get(2), 'C', new UnificationEntry(circuit, Infinite));
-    }
-
-    private static void highAmpMachines() {
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_1_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_SINGLE,
-                'B', CABLE_SINGLE_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_4_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_DOUBLE,
-                'B', CABLE_DOUBLE_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_8_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_QUAD,
-                'B', CABLE_QUAD_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_12_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_OCTAL,
-                'B', CABLE_OCTAL_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipe(GATileEntities.TRANSFORMER_16_AMPS,
-                "KBB", "CM ", "KBB",
-                'M', WORSE_HULL,
-                'C', CABLE_HEX,
-                'B', CABLE_HEX_WORSE,
-                'K', MetaItems.SMALL_COIL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_4_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_DOUBLE);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_16_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_QUAD);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_64_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_OCTAL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_INPUT_HATCH_128_AMPS,
-                "CM ",
-                'M', HULL,
-                'C', CABLE_HEX);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_16_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_DOUBLE);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_32_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_QUAD);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_64_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_OCTAL);
-
-        registerMachineRecipes(GATileEntities.ENERGY_OUTPUT_HATCH_128_AMPS,
-                " MC",
-                'M', HULL,
-                'C', CABLE_HEX);
     }
 }

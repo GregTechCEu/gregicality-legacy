@@ -15,6 +15,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,7 @@ import net.minecraftforge.fluids.IFluidTank;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityMultiFluidHatch extends GAMetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
+public class MetaTileEntityMultiFluidHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
 
     protected FluidTankList fluidTanks;
     private boolean isExportHatch;

@@ -9,6 +9,7 @@ import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -49,7 +50,7 @@ public class CosmicRayDetectorInfo extends MultiblockInfoPage {
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "###############")
                 .where('S', GATileEntities.COSMIC_RAY_DETECTOR, EnumFacing.NORTH)
                 .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
-                .where('e', GATileEntities.ENERGY_INPUT[0], EnumFacing.NORTH)
+                .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UHV], EnumFacing.NORTH)
                 .where('f', MetaTileEntities.FLUID_EXPORT_HATCH[0], EnumFacing.NORTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM))
                 .where('x', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))

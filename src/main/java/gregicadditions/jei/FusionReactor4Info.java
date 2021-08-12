@@ -7,6 +7,7 @@ import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -55,7 +56,7 @@ public class FusionReactor4Info extends MultiblockInfoPage {
                 .where('X', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING))
                 .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[8], EnumFacing.SOUTH)
                 .where('F', MetaTileEntities.FLUID_EXPORT_HATCH[8], EnumFacing.SOUTH)
-                .where('E', GATileEntities.ENERGY_INPUT[0], EnumFacing.NORTH)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UHV], EnumFacing.NORTH)
                 .where('c', GAMetaBlocks.CRYOSTAT_CASING.getState(GACryostatCasing.CasingType.values()[i]))
                 .where('v', GAMetaBlocks.VACUUM_CASING.getState(GAVacuumCasing.CasingType.values()[i]))
                 .where('b', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET))

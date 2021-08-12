@@ -12,7 +12,6 @@ import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -34,6 +33,7 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.recipeproperties.FusionEUToStartProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -99,12 +99,12 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
                 .where('#', (tile) -> true)
                 .where('C', coilPredicate())
                 .where('X', statePredicate(getCasingState()))
-                .where('d', divertorPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('v', vacuumPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('c', cryostatPredicate().or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('d', divertorPredicate().or(tilePredicate((state, tile) -> tile instanceof MetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('v', vacuumPredicate().or(tilePredicate((state, tile) -> tile instanceof MetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('c', cryostatPredicate().or(tilePredicate((state, tile) -> tile instanceof MetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('b', statePredicate(GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.FUSION_BLANKET)).or(tilePredicate((state, tile) -> tile instanceof MetaTileEntityEnergyHatch)).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .setAmountAtMost('E', 16)
-                .where('E', tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch))
+                .where('E', tilePredicate((state, tile) -> tile instanceof MetaTileEntityEnergyHatch))
                 .setAmountAtMost('I', 3)
                 .where('I', abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS))
                 .setAmountAtMost('i', 3)

@@ -5,7 +5,6 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
 import gregtech.api.gui.GuiTextures;
@@ -13,6 +12,7 @@ import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.pipenet.block.material.TileEntityMaterialPipeBase;
 import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class TileEntityWorldAccelerator extends GATieredMetaTileEntity implements IControllable {
+public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements IControllable {
 
     private final long energyPerTick;
     private boolean tileMode = true;

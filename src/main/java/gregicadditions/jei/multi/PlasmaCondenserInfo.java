@@ -5,6 +5,7 @@ import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -44,7 +45,7 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
                 .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('p', GAMetaBlocks.PUMP_CASING.getState(PumpCasing.CasingType.PUMP_LUV))
-                .where('E', GATileEntities.ENERGY_INPUT[0], EnumFacing.WEST)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UHV], EnumFacing.WEST)
                 .where('f', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.WEST)

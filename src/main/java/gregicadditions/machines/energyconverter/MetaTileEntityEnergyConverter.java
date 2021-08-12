@@ -12,12 +12,12 @@ import gregicadditions.machines.energyconverter.utils.Energy;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.machines.energyconverter.utils.Numbers;
 import gregicadditions.machines.energyconverter.utils.Ratio;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,7 +35,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityEnergyConverter extends GATieredMetaTileEntity implements EnergyConverterCharger {
+public class MetaTileEntityEnergyConverter extends TieredMetaTileEntity implements EnergyConverterCharger {
     protected final EnergyConverterType type;
     protected final int invSize;
     private UniversalEnergyStorage energyStorage;

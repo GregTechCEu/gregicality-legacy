@@ -6,12 +6,12 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GAEnergyContainerHandler;
-import gregicadditions.machines.overrides.GATieredMetaTileEntity;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.tool.ISoftHammerItem;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.render.Textures;
 import gregtech.api.util.PipelineUtil;
 import gregtech.common.tools.DamageValues;
@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class GAMetaTileEntityDiode extends GATieredMetaTileEntity {
+public class GAMetaTileEntityDiode extends TieredMetaTileEntity {
 
     private int amps;
 
