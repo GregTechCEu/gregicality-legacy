@@ -9,13 +9,13 @@ import static gregtech.api.unification.material.info.MaterialIconSet.*;
 public class GAElementMaterials {
 
     /*
-     * IDs 3000-3500
+     * IDs 3000-3499
      */
-    public static void init() {
+    public static void register() {
         MetastableOganesson = new Material.Builder(3000, "metastable_oganesson")
                 .ingot(7)
                 .color(0xE61C24).iconSet(SHINY)
-                .flags(CORE_METAL)
+                .flags(GA_CORE_METAL)
                 .components(Og)
                 .blastTemp(38000)
                 .build();
@@ -23,7 +23,7 @@ public class GAElementMaterials {
         MetastableFlerovium = new Material.Builder(3001, "metastable_flerovium")
                 .ingot(7)
                 .color(0x521973).iconSet(SHINY)
-                .flags(CORE_METAL)
+                .flags(GA_CORE_METAL)
                 .element(Fl)
                 .blastTemp(65000)
                 .build();
@@ -31,22 +31,22 @@ public class GAElementMaterials {
         MetastableHassium = new Material.Builder(3002, "metastable_hassium")
                 .ingot(6)
                 .color(0x2D3A9D).iconSet(SHINY)
-                .flags(CORE_METAL)
+                .flags(GA_CORE_METAL)
                 .element(Hs)
                 .blastTemp(78000)
                 .build();
 
         // todo
-//        Protactinium = new RadioactiveMaterial(824, "protactinium", 0xA78B6D, METALLIC, 3, of(), EXT2_METAL, Pa, 0, 0, 0, 0);
-//        UraniumRadioactive = new RadioactiveMaterial(822, "uranium_radioactive", Uranium.materialRGB, METALLIC, 3, of(), EXT2_METAL | GENERATE_ORE, U, 0, 0, 0, 0);
-//        Neptunium = new RadioactiveMaterial(818, "neptunium", 0x284D7B, METALLIC, 3, of(), EXT2_METAL, Np, 0, 0, 0, 0);
-//        PlutoniumRadioactive = new RadioactiveMaterial(814, "plutonium_radioactive", Plutonium.materialRGB, METALLIC, 3, of(), EXT2_METAL, Pu, 0, 0, 0, 0);
-//        Curium = new RadioactiveMaterial(807, "curium", 0x7B544E, METALLIC, 3, of(), EXT2_METAL, Cm, 0, 0, 0, 0);
-//        Berkelium = new RadioactiveMaterial(801, "berkelium", 0x645A88, METALLIC, 3, of(), EXT2_METAL, Bk, 0, 0, 0, 0);
-//        Californium = new RadioactiveMaterial(797, "californium", 0xA85A12, METALLIC, 3, of(), EXT2_METAL, Cf, 0, 0, 0, 0);
-//        Einsteinium = new RadioactiveMaterial(791, "einsteinium", 0xCE9F00, METALLIC, 3, of(), EXT2_METAL, Es, 0, 0, 0, 0);
-//        Fermium = new RadioactiveMaterial(786, "fermium", 0x984ACF, METALLIC, 3, of(), EXT2_METAL, Fm, 0, 0, 0, 0);
-//        Mendelevium = new RadioactiveMaterial(780, "mendelevium", 0x1D4ACF, METALLIC, 3, of(), EXT2_METAL, Md, 0, 0, 0, 0);
+//        Protactinium = new RadioactiveMaterial(824, "protactinium", 0xA78B6D, METALLIC, 3, of(), GA_EXT2_METAL, Pa, 0, 0, 0, 0);
+//        UraniumRadioactive = new RadioactiveMaterial(822, "uranium_radioactive", Uranium.materialRGB, METALLIC, 3, of(), GA_EXT2_METAL | GENERATE_ORE, U, 0, 0, 0, 0);
+//        Neptunium = new RadioactiveMaterial(818, "neptunium", 0x284D7B, METALLIC, 3, of(), GA_EXT2_METAL, Np, 0, 0, 0, 0);
+//        PlutoniumRadioactive = new RadioactiveMaterial(814, "plutonium_radioactive", Plutonium.materialRGB, METALLIC, 3, of(), GA_EXT2_METAL, Pu, 0, 0, 0, 0);
+//        Curium = new RadioactiveMaterial(807, "curium", 0x7B544E, METALLIC, 3, of(), GA_EXT2_METAL, Cm, 0, 0, 0, 0);
+//        Berkelium = new RadioactiveMaterial(801, "berkelium", 0x645A88, METALLIC, 3, of(), GA_EXT2_METAL, Bk, 0, 0, 0, 0);
+//        Californium = new RadioactiveMaterial(797, "californium", 0xA85A12, METALLIC, 3, of(), GA_EXT2_METAL, Cf, 0, 0, 0, 0);
+//        Einsteinium = new RadioactiveMaterial(791, "einsteinium", 0xCE9F00, METALLIC, 3, of(), GA_EXT2_METAL, Es, 0, 0, 0, 0);
+//        Fermium = new RadioactiveMaterial(786, "fermium", 0x984ACF, METALLIC, 3, of(), GA_EXT2_METAL, Fm, 0, 0, 0, 0);
+//        Mendelevium = new RadioactiveMaterial(780, "mendelevium", 0x1D4ACF, METALLIC, 3, of(), GA_EXT2_METAL, Md, 0, 0, 0, 0);
 
 //        // Thorium
 //        RadioactiveMaterial ThoriumRadioactive = new RadioactiveMaterial(Thorium);
