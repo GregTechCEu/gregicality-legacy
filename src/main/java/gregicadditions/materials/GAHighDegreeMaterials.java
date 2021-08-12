@@ -36,7 +36,7 @@ public class GAHighDegreeMaterials {
                 .color(0xA5F564).iconSet(SHINY)
                 .components(HastelloyX78, 5, NiobiumNitride, 2, Tritanium, 4, TungstenCarbide, 4, Promethium, 4, Mendelevium261, 1)
                 .flags(GAMaterials.GA_EXT2_METAL, DISABLE_DECOMPOSITION) // GENERATE_METAL_CASING
-                .blastTemp(25000)
+                .blastTemp(12400)
                 .build();
 
         Pikyonium = new Material.Builder(18503, "pikyonium")
@@ -44,7 +44,7 @@ public class GAHighDegreeMaterials {
                 .color(0x3467BA).iconSet(SHINY)
                 .components(Inconel792, 8, EglinSteel, 5, NaquadahEnriched, 4, Cerium, 3, Antimony, 2, Platinum, 2, Ytterbium, 1, TungstenSteel, 4)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
-                .blastTemp(9865)
+                .blastTemp(10500)
                 .build();
 
         CalciumSalts = new Material.Builder(18505, "calcium_salts")
@@ -74,7 +74,7 @@ public class GAHighDegreeMaterials {
                 .color(0x334433).iconSet(SHINY)
                 .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1) // todo check this Plutonium, needs to be the std one
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND)
-                .blastTemp(9000)
+                .blastTemp(9900)
                 .build();
 
 

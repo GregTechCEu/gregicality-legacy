@@ -17,7 +17,7 @@ public class GAElementMaterials {
                 .color(0xE61C24).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .components(Og)
-                .blastTemp(38000)
+                .blastTemp(10380)
                 .build();
 
         MetastableFlerovium = new Material.Builder(3001, "metastable_flerovium")
@@ -25,7 +25,7 @@ public class GAElementMaterials {
                 .color(0x521973).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .element(Fl)
-                .blastTemp(65000)
+                .blastTemp(10990)
                 .build();
 
         MetastableHassium = new Material.Builder(3002, "metastable_hassium")
@@ -33,7 +33,7 @@ public class GAElementMaterials {
                 .color(0x2D3A9D).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .element(Hs)
-                .blastTemp(78000)
+                .blastTemp(11240)
                 .build();
 
         // todo
