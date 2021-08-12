@@ -167,8 +167,6 @@ public class SingleblockCraftingRecipes {
     // Bending Machine does not use a Wrench, instead uses another single tiered cable in its place.
     private static void highTierMachines() {
 
-        if (GAConfig.GT5U.highTierPumps)
-            registerMachineRecipe(GATileEntities.PUMP,                      "WGW", "GMG", "TGT", 'M', HULL, 'W', CIRCUIT,               'G', PUMP,           'T', PIPE);
         if (GAConfig.GT5U.highTierAlloySmelter)
             registerMachineRecipe(GATileEntities.ALLOY_SMELTER,             "ECE", "CMC", "WCW", 'M', HULL, 'E', CIRCUIT,               'W', CABLE_SINGLE,   'C', COIL_HEATING_DOUBLE);
         if (GAConfig.GT5U.highTierAssemblers)
@@ -245,8 +243,6 @@ public class SingleblockCraftingRecipes {
             registerMachineRecipe(GATileEntities.ARC_FURNACE,               "WGW", "CMC", "PPP", 'M', HULL, 'P', PLATE,                 'C', CIRCUIT,        'W', CABLE_QUAD,   'G', new UnificationEntry(ingot, Graphite));
         if (GAConfig.GT5U.highTierPlasmaArcFurnaces)
             registerMachineRecipe(GATileEntities.PLASMA_ARC_FURNACE,        "WGW", "CMC", "TPT", 'M', HULL, 'P', PLATE,                 'C', BETTER_CIRCUIT, 'W', CABLE_QUAD,   'T', PUMP,         'G', new UnificationEntry(ingot, Graphite));
-        if (GAConfig.Misc.highTierCollector)
-            registerMachineRecipe(GATileEntities.AIR_COLLECTOR,             "WFW", "PHP", "WCW", 'H', HULL, 'P', PUMP,                  'C', CIRCUIT,        'W', Blocks.IRON_BARS,                'F', MetaItems.ITEM_FILTER);
     }
 
     private static void singleblockOverride() {

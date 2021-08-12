@@ -395,14 +395,6 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, UEV)
                 .outputs(QUBIT_COMPUTER.getStackForm()).buildAndRegister();
 
-        // Assembly Line
-        ModHandler.addShapedRecipe("ga_assline", ASSEMBLY_LINE.getStackForm(),
-                "CRC", "SAS", "CRC",
-                'A', HULL[IV].getStackForm(),
-                'R', ROBOT_ARM_IV,
-                'C', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING),
-                'S', new UnificationEntry(circuit, Elite));
-
         // Nuclear Reactor
         ModHandler.addShapedRecipe("ga_boiling_water_thorium_reactor", NUCLEAR_REACTOR.getStackForm(),
                 "GCG", "IHI", "PCP",

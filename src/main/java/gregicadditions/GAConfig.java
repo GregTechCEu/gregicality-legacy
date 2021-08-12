@@ -237,7 +237,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
 
-
         @Config.Comment("Remove the standard electrolyzer recipes of Scheelite and Tungstate and add a more complex chemical purification process")
         @Config.Name("Tungsten Purification Process")
         @Config.RequiresMcRestart
@@ -252,33 +251,6 @@ public class GAConfig {
         @Config.Name("Assembler can make components")
         @Config.RequiresMcRestart
         public boolean assemblerCanMakeComponents = true;
-
-        @Config.Comment("Whether or not to add diminishing returns for GTCE Diesel Generators")
-        @Config.Name("Diesel Generator efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean dieselEfficiency = true;
-
-        @Config.Comment("Whether or not to add diminishing returns for GTCE Steam Turbines")
-        @Config.Name("Steam Turbine efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean steamEfficiency = true;
-
-        @Config.Comment("Whether or not to add diminishing returns for GTCE Gas Turbines")
-        @Config.Name("Gas Turbine efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean gasEfficiency = true;
-
-        @Config.Comment("Whether or not to add diminishing returns for Gregicality Rocket Engines. Does not affect the Large Rocket Engine")
-        @Config.Name("Rocket Engine efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean rocketEfficiency = true;
-
-
-
-        @Config.Comment("Whether or not to add diminishing returns for Gregicality Naquadah Reactors. Does not affect the Large Nauqadah Reactor")
-        @Config.Name("Naquadah Reactor efficiency loss")
-        @Config.RequiresMcRestart
-        public boolean naqEfficieny = true;
 
         @Config.Comment("Change replication to be quicker or longer")
         @Config.Name("Replication time factor")
