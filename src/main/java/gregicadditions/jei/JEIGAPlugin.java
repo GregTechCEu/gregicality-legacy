@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.DRILLING_RIG;
+import static gregicadditions.machines.GATileEntities.FLUID_DRILLING_PLANT;
 
 @JEIPlugin
 public class JEIGAPlugin implements IModPlugin {
@@ -76,7 +77,9 @@ public class JEIGAPlugin implements IModPlugin {
                 .map(reservoirTypeIntegerEntry -> new GADrillingRigRecipeWrapper(reservoirTypeIntegerEntry.getKey(), reservoirTypeIntegerEntry.getValue()))
                 .collect(Collectors.toList());
         registry.addRecipes(fluidRecipe, Gregicality.MODID + ":drilling_rig");
-        registry.addRecipeCatalyst(DRILLING_RIG.getStackForm(), Gregicality.MODID + ":drilling_rig");
+        registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[0].getStackForm(), Gregicality.MODID + ":drilling_rig");
+        registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[1].getStackForm(), Gregicality.MODID + ":drilling_rig");
+        registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[2].getStackForm(), Gregicality.MODID + ":drilling_rig");
 
         for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
             List<GARecipeWrapper> recipesList = recipeMap.getRecipeList()
