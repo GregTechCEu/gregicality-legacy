@@ -34,15 +34,12 @@ import gregicadditions.machines.multi.override.*;
 import gregicadditions.machines.multi.qubit.*;
 import gregicadditions.machines.multi.simple.*;
 import gregicadditions.machines.multi.uumatter.*;
-import gregicadditions.machines.overrides.*;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleGeneratorMetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.metatileentities.electric.MetaTileEntityHull;
 import net.minecraft.util.ResourceLocation;
@@ -50,24 +47,38 @@ import net.minecraft.util.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.common.metatileentities.MetaTileEntities.getHighTier;
-import static gregtech.common.metatileentities.MetaTileEntities.getMidTier;
+import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
 public class GATileEntities {
+
+    // TODO Removals
+    public static MetaTileEntityHull[] GA_HULLS = new MetaTileEntityHull[5]; // todo remove, carefully
+    public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>(); // todo remove and replace with filtering normal fluid hatches
+
+    // TODO Move to CEu
+    public static MetaTileEntityMonitorScreen MONITOR_SCREEN; // todo move to CEu
+    public static MetaTileEntityCentralMonitor CENTRAL_MONITOR; // todo move to CEu
+    public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3]; // todo move to CEu
+    public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8]; // todo move to CEu
+    public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create(); // todo move to CEu
+    public static MetaTileEntityBatteryTower BATTERY_TOWER; // todo move to CEu, and rework
+    public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3]; // todo move to CEu
+    public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
+    public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
+    public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3]; // todo move to CEu
+    public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>(); // todo move to CEu
+    public static SimpleMachineMetaTileEntity SIMPLE_ORE_WASHER; // todo move to CEu
+    public static SimpleMachineMetaTileEntity[] DISASSEMBLER = new SimpleMachineMetaTileEntity[14]; // todo move to CEu
+    public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3]; // todo move to CEu
+    public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8]; // todo move to CEu
+
+    // TODO Organize
     public static SimpleMachineMetaTileEntity[] DEHYDRATOR = new SimpleMachineMetaTileEntity[14];
     public static SimpleMachineMetaTileEntity[] DECAY_CHAMBER = new SimpleMachineMetaTileEntity[14];
     public static SimpleMachineMetaTileEntity[] GREEN_HOUSE = new SimpleMachineMetaTileEntity[14];
-    public static SimpleMachineMetaTileEntity[] DISASSEMBLER = new SimpleMachineMetaTileEntity[14];
-
-    public static SimpleGeneratorMetaTileEntity[] NAQUADAH_REACTOR = new SimpleGeneratorMetaTileEntity[8];
+    public static SimpleGeneratorMetaTileEntity[] NAQUADAH_REACTOR = new SimpleGeneratorMetaTileEntity[8]; // todo idk what but something needs to be done about this
     public static SimpleGeneratorMetaTileEntity[] ROCKET_GENERATOR = new SimpleGeneratorMetaTileEntity[8];
-    public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8];
-    public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create();
     public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[4];
-    public static TileEntityBuffer[] BUFFER = new TileEntityBuffer[3];
-    //multiblock
-    public static MetaTileEntityMonitorScreen MONITOR_SCREEN;
-    public static MetaTileEntityCentralMonitor CENTRAL_MONITOR;
     public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
     public static TileEntityLargeElectrolyzer LARGE_ELECTROLYZER;
     public static TileEntityLargeCentrifuge LARGE_CENTRIFUGE;
@@ -81,7 +92,6 @@ public class GATileEntities {
     public static TileEntityLargeExtruder LARGE_EXTRUDER;
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
-    public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
     public static MetaTileEntityVoidMiner[] VOID_MINER = new MetaTileEntityVoidMiner[3];
     public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
@@ -92,51 +102,28 @@ public class GATileEntities {
     public static MetaTileEntityHyperReactorI HYPER_REACTOR_I;
     public static MetaTileEntityHyperReactorII HYPER_REACTOR_II;
     public static MetaTileEntityHyperReactorIII HYPER_REACTOR_III;
-    public static MetaTileEntityBatteryTower BATTERY_TOWER;
     public static MetaTileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
-    public static MetaTileEntityHull[] GA_HULLS = new MetaTileEntityHull[5]; // todo remove, carefully
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
-    public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3];
-
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
     public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
-    //Nuclear
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
     public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
-
-    //multiblock
-    public static List<MetaTileEntityOutputFilteredHatch> OUTPUT_HATCH_FILTERED = new ArrayList<>();
-    public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>();
-    public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>();
-
-    //optical fiber
     public static MetaTileEntityQubitHatch[] QBIT_INPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
     public static MetaTileEntityQubitHatch[] QBIT_OUTPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
-
     public static MetaTileEntityLargeTurbine LARGE_STEAM_TURBINE;
     public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_GAS_TURBINE;
     public static MetaTileEntityLargeTurbine LARGE_PLASMA_TURBINE;
-
     public static SteamPump STEAM_PUMP;
     public static TileEntitySteamMixer STEAM_MIXER;
-    public static SimpleMachineMetaTileEntity SIMPLE_ORE_WASHER;
-
-    public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8];
-    public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3];
-
-    public static List<GAMetaTileEntityDiode> DIODES = new ArrayList<>();
-
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
-
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
     public static MetaTileEntityMufflerHatch[] MUFFLER_HATCH = new MetaTileEntityMufflerHatch[8];
-
     public static TileEntitySteamMiner STEAM_MINER;
     public static TileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
     public static TileEntityLargeBrewery LARGE_BREWERY;
@@ -146,11 +133,9 @@ public class GATileEntities {
     public static TileEntityLargeCanningMachine LARGE_CANNING_MACHINE;
     public static TileEntityLargeMassFabricator LARGE_MASS_FABRICATOR;
     public static TileEntityLargeReplicator LARGE_REPLICATOR;
-
     public static MetaTileEntityMegaDistillationTower MEGA_DISTILLATION_TOWER;
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
-
     public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
     public static void init() {
@@ -244,9 +229,9 @@ public class GATileEntities {
         ROTOR_HOLDER[1] = GregTechAPI.registerMetaTileEntity(3209, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.luv"), GTValues.LuV, 1.35f));
         ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3210, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GAValues.UHV, 1.7f));
 
-        registerSimpleMetaTileEntity(DEHYDRATOR, 4000, "dehydrator", GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY);
-        registerSimpleMetaTileEntity(DECAY_CHAMBER, 3201, "decay_chamber", GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.REPLICATOR_OVERLAY);
-        registerSimpleMetaTileEntity(GREEN_HOUSE, 3211, "green_house", GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY);
+        registerSimpleMetaTileEntity(DEHYDRATOR, 4000, "dehydrator", GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, true, GATileEntities::location);
+        registerSimpleMetaTileEntity(DECAY_CHAMBER, 3201, "decay_chamber", GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.REPLICATOR_OVERLAY, true, GATileEntities::location);
+        registerSimpleMetaTileEntity(GREEN_HOUSE, 3211, "green_house", GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, true, GATileEntities::location);
 
         id = 3220;
         for (int i = 0; i < GTValues.V.length; i++) {
@@ -308,7 +293,7 @@ public class GATileEntities {
         }
 
         // todo this needs to deal with tiered tooltip
-        if (GAConfig.Misc.enableDisassembly) registerSimpleMetaTileEntity(DISASSEMBLER, 4198, "disassembler", GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY);
+        if (GAConfig.Misc.enableDisassembly) registerSimpleMetaTileEntity(DISASSEMBLER, 4198, "disassembler", GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, true, GATileEntities::location);
 
         ELECTRIC_IMPLOSION = GregTechAPI.registerMetaTileEntity(4211, new MetaTileEntityElectricImplosion(location("electric_implosion")));
         STEAM_MINER = GregTechAPI.registerMetaTileEntity(4212, new TileEntitySteamMiner(location("steam_miner")));
@@ -324,11 +309,11 @@ public class GATileEntities {
         ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4224, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
         LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));
         LARGE_ELECTROMAGNET = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeElectromagnet(location("large_electromagnet"), RecipeMaps.POLARIZER_RECIPES));
-        LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeExtractor(location("large_extractor"), RecipeMaps.FLUID_EXTRACTION_RECIPES));
+        LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeExtractor(location("large_extractor"), RecipeMaps.EXTRACTOR_RECIPES)); // todo make sure this multi is ok
         LARGE_ARC_FURNACE = GregTechAPI.registerMetaTileEntity(4228, new TileEntityLargeArcFurnace(location("large_arc_furnace"), RecipeMaps.ARC_FURNACE_RECIPES));
         LARGE_CANNING_MACHINE = GregTechAPI.registerMetaTileEntity(4229, new TileEntityLargeCanningMachine(location("large_canning_machine"), RecipeMaps.CANNER_RECIPES));
-        LARGE_MASS_FABRICATOR = GregTechAPI.registerMetaTileEntity(4230, new TileEntityLargeMassFabricator(location("large_mass_fabricator"), GARecipeMaps.MASS_FAB_RECIPES));
-        LARGE_REPLICATOR = GregTechAPI.registerMetaTileEntity(4231, new TileEntityLargeReplicator(location("large_replicator"), GARecipeMaps.REPLICATOR_RECIPES));
+        LARGE_MASS_FABRICATOR = GregTechAPI.registerMetaTileEntity(4230, new TileEntityLargeMassFabricator(location("large_mass_fabricator"), RecipeMaps.MASS_FABRICATOR_RECIPES));
+        LARGE_REPLICATOR = GregTechAPI.registerMetaTileEntity(4231, new TileEntityLargeReplicator(location("large_replicator"), RecipeMaps.REPLICATOR_RECIPES));
         MEGA_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(4232, new MetaTileEntityMegaDistillationTower(location("mega_distillation_tower")));
         MEGA_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(4233, new MetaTileEntityMegaBlastFurnace(location("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(4234, new MetaTileEntityMegaVacuumFreezer(location("mega_vacuum_freezer")));
@@ -342,22 +327,6 @@ public class GATileEntities {
         FLUID_DRILLING_PLANT[0] = GregTechAPI.registerMetaTileEntity(4239, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_mv"), 2));
         FLUID_DRILLING_PLANT[1] = GregTechAPI.registerMetaTileEntity(4240, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_hv"), 3));
         FLUID_DRILLING_PLANT[2] = GregTechAPI.registerMetaTileEntity(4241, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_ev"), 4));
-    }
-
-    // todo make this usable from CE's
-    private static void registerSimpleMetaTileEntity(SimpleMachineMetaTileEntity[] machines,
-                                                     int startId,
-                                                     String name,
-                                                     RecipeMap<?> map,
-                                                     OrientedOverlayRenderer texture) {
-        for (int i = 0; i < machines.length - 1; i++) {
-            if (i > 4 && !getMidTier(name)) continue;
-            if (i > 7 && !getHighTier(name)) break;
-
-            String voltageName = GTValues.VN[i + 1].toLowerCase();
-            machines[i] = GregTechAPI.registerMetaTileEntity(startId + i,
-                    new SimpleMachineMetaTileEntity(location(String.format("%s.%s", name, voltageName)), map, texture, i + 1, false));
-        }
     }
 
     public static ResourceLocation location(String name) {
