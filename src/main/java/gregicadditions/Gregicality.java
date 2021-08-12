@@ -79,7 +79,6 @@ public class Gregicality {
 
     public Gregicality() {
         GAEnums.onConstruction();
-        GAEnums.preInit();
     }
 
     @EventHandler
