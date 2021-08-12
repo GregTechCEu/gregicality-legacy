@@ -179,7 +179,7 @@ public class MagnetoRecipes {
                 .input(dust, Bismuth, 2)
                 .input(dust, Boron)
                 .fluidInputs(Hydrogen.getFluid(1000))
-                .output(dust, Dibismusthydroborat, 4)
+                .output(dust, Dibismusthydroborate, 4)
                 .buildAndRegister();
 
         // 2Bi + + 3Te -> Bi2Te3
@@ -192,7 +192,7 @@ public class MagnetoRecipes {
         // Circuit Compound
         MIXER_RECIPES.recipeBuilder().duration(982).EUt(15)
                 .input(dust, IndiumGalliumPhosphide)
-                .input(dust, Dibismusthydroborat, 3)
+                .input(dust, Dibismusthydroborate, 3)
                 .input(dust, BismuthTellurite, 2)
                 .output(dust, CircuitCompoundMK3, 6)
                 .buildAndRegister();

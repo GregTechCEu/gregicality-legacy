@@ -1,4 +1,4 @@
-package gregicadditions.materials;
+package gregicadditions.nuclearMaterials;
 
 import gregtech.api.unification.material.type.IngotMaterial;
 

@@ -439,7 +439,7 @@ public class PlatinumSludgeGroupChain {
         // OsO4(H2O)(HCl) -> OsO4(H2O) + HCl
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(AcidicOsmiumSolution.getFluid(2000))
-                .fluidOutputs(OsmiumSolution.getFluid(1000))
+                .fluidOutputs(OsmiumTetroxideSolution.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .EUt(7680)
                 .duration(150)
@@ -447,7 +447,7 @@ public class PlatinumSludgeGroupChain {
 
         // OsO4(H2O) + 8HCl -> Os + 8Cl + 5H2O
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(OsmiumSolution.getFluid(1000))
+                .fluidInputs(OsmiumTetroxideSolution.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(8000))
                 .output(dust, Osmium)
                 .fluidOutputs(Chlorine.getFluid(8000))

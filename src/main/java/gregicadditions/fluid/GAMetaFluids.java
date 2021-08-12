@@ -1,5 +1,12 @@
 package gregicadditions.fluid;
 
+import gregicadditions.nuclearMaterials.IsotopeMaterial;
+import gregicadditions.nuclearMaterials.RadioactiveMaterial;
+import gregicadditions.materials.SimpleFluidMaterial;
+import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.type.Material;
+import gregtech.api.util.FluidTooltipUtil;
+import gregtech.api.util.GTUtility;
 import gregicadditions.materials.IsotopeMaterial;
 import gregicadditions.materials.RadioactiveMaterial;
 import gregicadditions.materials.SimpleFluidMaterial;

@@ -1,9 +1,8 @@
 package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.GAEnums;
-import gregicadditions.GAValues;
-import gregicadditions.materials.IsotopeMaterial;
-import gregicadditions.materials.RadioactiveMaterial;
+import gregicadditions.nuclearMaterials.IsotopeMaterial;
+import gregicadditions.nuclearMaterials.RadioactiveMaterial;
 import gregicadditions.recipes.impl.NuclearReactorBuilder;
 import gregtech.api.recipes.builders.IntCircuitRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;

@@ -1,4 +1,4 @@
-package gregicadditions.materials;
+package gregicadditions.nuclearMaterials;
 
 import com.google.common.collect.ImmutableList;
 import gregtech.api.items.metaitem.MetaItem;
