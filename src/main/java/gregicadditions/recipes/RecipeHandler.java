@@ -16,6 +16,7 @@ import gregtech.api.items.toolitem.ToolMetaItem;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
@@ -51,6 +52,7 @@ import static gregtech.api.unification.material.type.GemMaterial.MatFlags.CRYSTA
 import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.GENERATE_SMALL_GEAR;
 import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.plateCurved;
 
 /**
  * Primary Recipe Registration Class
@@ -72,25 +74,25 @@ public class RecipeHandler {
      */
     public static void register() {
 
-        gtMetalCasing.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMetalCasing);
-        turbineBlade.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTurbine);
-        ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngot);
-        plateDense.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDensePlate);
+        gtMetalCasing.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processMetalCasing);
+        turbineBlade.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processTurbine);
+        ingot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngot);
+        plateDense.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDensePlate);
 
         if (GAConfig.GT6.addCurvedPlates)
-            plateCurved.addProcessingHandler(IngotMaterial.class, RecipeHandler::processPlateCurved);
+            plateCurved.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processPlateCurved);
 
         if (GAConfig.GT6.addRounds)
-            round.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRound);
+            round.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRound);
 
-        plateDouble.addProcessingHandler(IngotMaterial.class, RecipeHandler::processDoublePlate);
+        plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
 
         if (GAConfig.GT6.BendingCylinders)
-            ring.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRing);
+            ring.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRing);
 
-        dustSmall.addProcessingHandler(DustMaterial.class, RecipeHandler::processSmallDust);
-        dustTiny.addProcessingHandler(DustMaterial.class, RecipeHandler::processTinyDust);
-        nugget.addProcessingHandler(IngotMaterial.class, RecipeHandler::processNugget);
+        dustSmall.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processSmallDust);
+        dustTiny.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processTinyDust);
+        nugget.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processNugget);
 
         if (GAConfig.GT5U.stickGT5U)
             stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);

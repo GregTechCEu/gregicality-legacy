@@ -1,17 +1,17 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GAElectricStats;
 import gregicadditions.item.behaviors.*;
 import gregicadditions.item.behaviors.monitorPlugin.AdvancedMonitorPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
-import gregtech.api.items.materialitem.MaterialMetaItem;
+import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.FluidStats;
-import gregtech.api.items.metaitem.stats.IItemComponent;
+import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
@@ -21,26 +21,15 @@ import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 
+import javax.annotation.Nonnull;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Thorium;
 
-
-public class GAMetaItem extends MaterialMetaItem {
-    public GAMetaItem() {
-        super(GAConfig.GT6.addCurvedPlates ? GAEnums.GAOrePrefix.plateCurved : null,
-                GAEnums.GAOrePrefix.plateDouble,
-                GAConfig.GT6.addRounds ? GAEnums.GAOrePrefix.round : null,
-                GAEnums.GAOrePrefix.dioxide, GAEnums.GAOrePrefix.nitride, GAEnums.GAOrePrefix.hexafluoride,
-                GAEnums.GAOrePrefix.carbide, GAEnums.GAOrePrefix.nitrite, GAEnums.GAOrePrefix.oxide,
-                GAEnums.GAOrePrefix.depletedFuel, GAEnums.GAOrePrefix.depletedFuelNitride, GAEnums.GAOrePrefix.depletedFuelOxide,
-                GAEnums.GAOrePrefix.depletedFuelTRISO, GAEnums.GAOrePrefix.depletedFuelZirconiumAlloy, GAEnums.GAOrePrefix.fuelCarbide,
-                GAEnums.GAOrePrefix.fuelNitride, GAEnums.GAOrePrefix.fuelOxide, GAEnums.GAOrePrefix.fuelPure, GAEnums.GAOrePrefix.fuelTRISO,
-                GAEnums.GAOrePrefix.fuelZirconiumAlloy, GAEnums.GAOrePrefix.zirconiumAlloy,
-                null, null, null, null, null, null, null, null, null, null, null);
-    }
+public class GAMetaItem extends StandardMetaItem {
 
     @Override
     public void registerSubItems() {
@@ -63,16 +52,6 @@ public class GAMetaItem extends MaterialMetaItem {
             if (Loader.isModLoaded(GAValues.MODID_IC2) || Loader.isModLoaded(GAValues.MODID_TR) || Loader.isModLoaded(GAValues.MODID_BINNIE))
                 ELECTRODE_RUBBER = addItem(120, "electrode.rubber");
             ELECTRODE_TIN = addItem(121, "electrode.tin");
-        }
-
-        if (GAConfig.GT5U.enableZPMandUVBats) {
-            ENERGY_MODULE = addItem(122, "energy.module").addComponents(new IItemComponent[]{ElectricStats.createRechargeableBattery(10000000000L, 7)}).setModelAmount(8);
-            ENERGY_CLUSTER = addItem(123, "energy.cluster").addComponents(new IItemComponent[]{ElectricStats.createRechargeableBattery(100000000000L, 8)}).setModelAmount(8);
-        }
-
-        if (GAConfig.GT5U.replaceUVwithMAXBat) {
-            MAX_BATTERY = addItem(124, "max.battery").addComponents(new IItemComponent[]{ElectricStats.createRechargeableBattery(9223372036854775807L, 9)}).setModelAmount(8);
-            MetaItems.ZPM2.setInvisible();
         }
 
         PLUGIN_ADVANCED_MONITOR = addItem(126, "plugin.advanced_monitor").addComponents(new AdvancedMonitorPluginBehavior());
@@ -115,7 +94,7 @@ public class GAMetaItem extends MaterialMetaItem {
         CIRCUIT_MAGNETIC_ZPM = addItem(227, "circuit.resonatic.zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
         CIRCUIT_MAGNETIC_UV = addItem(228, "circuit.resonatic.uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
         CIRCUIT_MAGNETIC_UHV = addItem(229, "circuit.resonatic.uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        CIRCUIT_MAGNETIC_UEV = addItem(232, "circuit.resonatic.uev").setUnificationData(OrePrefix.circuit, UEV);
+        CIRCUIT_MAGNETIC_UEV = addItem(232, "circuit.resonatic.uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
         RAW_IMPRINT_SUPPORTED_BOARD = addItem(230, "board.raw.magnetic");
         IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
 
@@ -192,10 +171,10 @@ public class GAMetaItem extends MaterialMetaItem {
         WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
         WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
-        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, UEV);
-        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, UIV);
-        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, UMV);
-        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, UXV);
+        COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        COSMIC_COMPUTER = addItem(338, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
+        COSMIC_MAINFRAME = addItem(339, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
 
         BOULE_DUBNIUM = addItem(340, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(341, "boule.rutherfordium");
@@ -274,7 +253,7 @@ public class GAMetaItem extends MaterialMetaItem {
         BIOWARE_PROCESSOR = addItem(401, "circuit.processor.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
         BIOWARE_ASSEMBLY = addItem(402, "circuit.assembly.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
         BIOWARE_COMPUTER = addItem(403, "circuit.computer.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware").setUnificationData(OrePrefix.circuit, UEV);
+        BIOWARE_MAINFRAME = addItem(404, "circuit.mainframe.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
 
         SMD_TRANSISTOR_BIOWARE = addItem(405, "component.smd.transistor.bioware");
         SMD_CAPACITOR_BIOWARE = addItem(406, "component.smd.capacitor.bioware");
@@ -379,8 +358,8 @@ public class GAMetaItem extends MaterialMetaItem {
         OPTICAL_PROCESSING_CORE = addItem(500,"optical_processing_core");
         OPTICAL_PROCESSOR = addItem(501,"circuit.processor.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
         OPTICAL_ASSEMBLY = addItem(502,"circuit.assembly.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        OPTICAL_COMPUTER = addItem(503,"circuit.computer.optical").setUnificationData(OrePrefix.circuit, UEV);
-        OPTICAL_MAINFRAME = addItem(504,"circuit.mainframe.optical").setUnificationData(OrePrefix.circuit, UIV);
+        OPTICAL_COMPUTER = addItem(503,"circuit.computer.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        OPTICAL_MAINFRAME = addItem(504,"circuit.mainframe.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
 
         PEEK_POLYAMIDE_FOIL = addItem(505,"peek_polyamide_foil");
         HIGHLY_INSULATING_FOIL = addItem(506,"highly_insulating_foil");
@@ -427,10 +406,10 @@ public class GAMetaItem extends MaterialMetaItem {
         SMD_DIODE_SUPRACAUSAL = addItem(544, "smd.diode.supracausal");
         SMD_TRANSISTOR_SUPRACAUSAL = addItem(545, "smd.transistor.supracausal");
 
-        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, UIV);
-        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, UMV);
-        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, UXV);
-        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, MAX);
+        SUPRACAUSAL_PROCESSOR = addItem(546, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        SUPRACAUSAL_ASSEMBLY = addItem(547, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
+        SUPRACAUSAL_COMPUTER = addItem(548, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
+        SUPRACAUSAL_MAINFRAME = addItem(549, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Maximum);
 
         TOPOLOGICAL_MANIPULATOR_UNIT = addItem(550, "topological.manipulator.unit");
         RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM = addItem(551, "relativistic.spinorial.memory.system");
@@ -510,9 +489,9 @@ public class GAMetaItem extends MaterialMetaItem {
         SMD_TRANSISTOR_EXOTIC = addItem(604, "component.smd.transistor.exotic");
 
         EXOTIC_PROCESSOR = addItem(605, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        EXOTIC_ASSEMBLY = addItem(606, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, UEV);
-        EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, UIV);
-        EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, UMV);
+        EXOTIC_ASSEMBLY = addItem(606, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
 
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
@@ -531,23 +510,39 @@ public class GAMetaItem extends MaterialMetaItem {
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
-        MetaItems.DATA_CONTROL_CIRCUIT_IV.setInvisible();
+        BATTERY_NIMH = addItem(609, "nickel.metal.hydride.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, GTValues.EV)).setModelAmount(8);
+
+        BATTERY_SMALL_LITHIUM_ION = addItem(610, "small.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(28800000, GTValues.IV)).setModelAmount(8);
+        BATTERY_MEDIUM_LITHIUM_ION = addItem(611, "medium.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(115200000, GTValues.LuV)).setModelAmount(8);
+        BATTERY_LARGE_LITHIUM_ION = addItem(612, "large.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(460800000, GTValues.ZPM)).setModelAmount(8);
+
+        BATTERY_SMALL_LIS = addItem(613, "small.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(1843200000, GTValues.UV)).setModelAmount(8);
+        BATTERY_MEDIUM_LIS = addItem(614, "medium.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(7372800000L, GTValues.UHV)).setModelAmount(8);
+        BATTERY_LARGE_LIS = addItem(615, "large.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(29491200000L, GTValues.UEV)).setModelAmount(8);
+
+        BATTERY_SMALL_FLUORIDE = addItem(616, "small.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, GTValues.UIV)).setModelAmount(8);
+        BATTERY_MEDIUM_FLUORIDE = addItem(617, "medium.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(471859200000L, GTValues.UMV)).setModelAmount(8);
+        BATTERY_LARGE_FLUORIDE = addItem(618, "large.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(1887436800000L, GTValues.UXV)).setModelAmount(8);
+
+        GAMetaItems.PROSPECT_TOOL_MV = addItem(619, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2, GAConfig.equipment.prospector.scanCosts[0], GAConfig.equipment.prospector.scanRadii[0], GAConfig.equipment.prospector.scanTicks[0])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[0], 2)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_HV = addItem(620, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3, GAConfig.equipment.prospector.scanCosts[1], GAConfig.equipment.prospector.scanRadii[1], GAConfig.equipment.prospector.scanTicks[1])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[1], 3)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_LuV = addItem(621, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6, GAConfig.equipment.prospector.scanCosts[2], GAConfig.equipment.prospector.scanRadii[2], GAConfig.equipment.prospector.scanTicks[2])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[2], 6)).setMaxStackSize(1);
+        GAMetaItems.PROSPECT_TOOL_ZPM = addItem(622, "tool.prospect.zpm").addComponents(new ProspectingToolBehaviour(7, GAConfig.equipment.prospector.scanCosts[3], GAConfig.equipment.prospector.scanRadii[3], GAConfig.equipment.prospector.scanTicks[3])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[3], 7)).setMaxStackSize(1);
+
         MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
-        MetaItems.ADVANCED_CIRCUIT_MV.setInvisible();
-        MetaItems.GOOD_INTEGRATED_CIRCUIT_MV.setInvisible();
-        MetaItems.ADVANCED_CIRCUIT_PARTS_LV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
         MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior());
 
     }
 
     @Override
+    @Nonnull
     public ItemStack getContainerItem(ItemStack stack) {
         return stack.copy();
     }
 
     @Override
-    public boolean hasEffect(ItemStack itemStack) {
+    public boolean hasEffect(@Nonnull ItemStack itemStack) {
         return super.hasEffect(itemStack) || itemStack.getMetadata() == UNSTABLE_STAR.getStackForm().getMetadata();
     }
 }

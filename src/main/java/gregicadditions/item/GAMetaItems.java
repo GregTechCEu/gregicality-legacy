@@ -3,22 +3,16 @@ package gregicadditions.item;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import java.util.List;
 
 import static gregicadditions.GAMaterials.Snow;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
-
-    private static final List<MetaItem<?>> ITEMS = MetaItem.getMetaItems();
 
     public static MetaItem<?>.MetaValueItem PETRI_DISH;
     public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY;
@@ -525,19 +519,11 @@ public class GAMetaItems {
         armor.setRegistryName("ga_armor");
         GADustItem dustItem = new GADustItem((short) 0);
         dustItem.setRegistryName("ga_dust");
-        GAMetaItem2 item2 = new GAMetaItem2((short) 0);
-        item2.setRegistryName("ga_meta_item2");
         GAOredictItem oreDictItem = new GAOredictItem((short) 0);
         oreDictItem.setRegistryName("ga_oredict_item");
     }
 
     public static void registerOreDict() {
-        for (MetaItem<?> item : ITEMS) {
-            if (item instanceof GAMetaItem) {
-                ((GAMetaItem) item).registerOreDict();
-            }
-        }
-
         // Misc OreDictionary Additions
         OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);

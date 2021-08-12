@@ -16,14 +16,12 @@ import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.recipes.categories.handlers.*;
 import gregicadditions.recipes.compat.ForestryCompat;
-import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregicadditions.worldgen.StoneGenEvents;
 import gregicadditions.worldgen.WorldGenRegister;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.util.FluidTooltipUtil;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -52,16 +50,13 @@ import java.util.function.Function;
 import static gregicadditions.item.GAMetaBlocks.GA_ORES;
 import static gregicadditions.item.GAMetaBlocks.OPTICAL_FIBER;
 
-
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class CommonProxy {
-
 
     public void preLoad() {
         GAMetaItems.init();
         GAMetaFluids.init();
         WorldGenRegister.preInit();
-
     }
 
     public void onLoad() throws IOException {
@@ -246,7 +241,6 @@ public class CommonProxy {
             DisassemblyHandler.buildDisassemblerRecipes();
     }
 
-
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.world.isRemote) {
@@ -268,5 +262,4 @@ public class CommonProxy {
     public static void onUnload(WorldEvent.Unload event) {
         IPSaveData.setDirty(0);
     }
-
 }

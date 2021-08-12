@@ -63,7 +63,7 @@ public class WidgetOreList extends ScrollableListWidget {
         itemStackHandler.insertItem(0, itemStack, false);
         WidgetGroup widgetGroup = new WidgetGroup();
         widgetGroup.addWidget(new SlotWidget(itemStackHandler, 0, 0, 0, false, false));
-        widgetGroup.addWidget(new LabelWidget(20, 5, itemStack.getDisplayName(), mterialStack==null? orePrefix.hashCode():mterialStack.material.materialRGB | 0XFF000000));
+        widgetGroup.addWidget(new LabelWidget(20, 5, itemStack.getDisplayName(), mterialStack==null? orePrefix.hashCode():mterialStack.material.getMaterialRGB() | 0XFF000000));
         widgetMap.put(widgetGroup, orePrefix);
         if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
             this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
