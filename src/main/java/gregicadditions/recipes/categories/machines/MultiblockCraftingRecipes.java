@@ -69,7 +69,7 @@ public class MultiblockCraftingRecipes {
                 'Z', OreDictUnifier.get(plateDense, ZirconiumCarbide),
                 'S', OreDictUnifier.get(plateDense, Staballoy),
                 'C', new UnificationEntry(circuit, Extreme),
-                'B', GATileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
+                'B', MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
                 'T', OreDictUnifier.get(gear, TungstenCarbide));
 
         // Void Miner Mk1
@@ -201,6 +201,7 @@ public class MultiblockCraftingRecipes {
                 .outputs(LARGE_NAQUADAH_REACTOR.getStackForm())
                 .buildAndRegister();
 
+        /* TODO
         // Fusion Reactor Mk1
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(30000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
@@ -248,6 +249,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Infinite)
                 .outputs(GATileEntities.FUSION_REACTOR[2].getStackForm())
                 .buildAndRegister();
+         */
 
         // Hyper Reactor Mk1
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(500).EUt(2000000)
@@ -446,13 +448,6 @@ public class MultiblockCraftingRecipes {
                 'I', COMPONENT_GRINDER_TUNGSTEN,
                 'S', SENSOR_LUV);
 
-        // Industrial Primitive Blast Furnace (IPBF)
-        ModHandler.addShapedRecipe("ga_industrial_primitive_blast_furnace", INDUSTRIAL_PRIMITIVE_BLAST_FURNACE.getStackForm(),
-                "PFP", "FOF", "PFP",
-                'P', MetaBlocks.METAL_CASING.getItemVariant(PRIMITIVE_BRICKS),
-                'F', Blocks.FURNACE,
-                'O', MetaTileEntities.PRIMITIVE_BLAST_FURNACE.getStackForm());
-
         // Advanced Distillation Tower
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(30720)
                 .fluidInputs(Kanthal.getFluid(L * 16))
@@ -462,7 +457,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Elite)
                 .input(circuit, Elite)
                 .input(gear, Nitinol60, 16)
-                .inputs(GATileEntities.DISTILLATION_TOWER.getStackForm())
+                .inputs(MetaTileEntities.DISTILLATION_TOWER.getStackForm())
                 .outputs(ADVANCED_DISTILLATION_TOWER.getStackForm())
                 .buildAndRegister();
 
@@ -508,7 +503,7 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(L * 10))
                 .fluidInputs(Osmium.getFluid(L * 10))
                 .fluidInputs(Americium.getFluid(L * 10))
-                .inputs(GATileEntities.IMPLOSION_COMPRESSOR.getStackForm())
+                .inputs(MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm())
                 .input(block, IncoloyMA956, 2)
                 .input(stickLong, Osmium, 64)
                 .input(ring, Osmium, 64)
@@ -560,15 +555,6 @@ public class MultiblockCraftingRecipes {
                 'B', new UnificationEntry(pipeLarge, TungstenSteel),
                 'D', new UnificationEntry(plate, Tumbaga),
                 'R', new UnificationEntry(gear, Titanium));
-
-        // Large Chemical Reactor
-        ModHandler.addShapedRecipe("ga_large_chemical_reactor", LARGE_CHEMICAL_REACTOR.getStackForm(),
-                "CRC", "PMP", "CHC",
-                'H', HULL[HV].getStackForm(),
-                'C', new UnificationEntry(circuit, Advanced),
-                'P', new UnificationEntry(pipeLarge, Polytetrafluoroethylene),
-                'R', new UnificationEntry(rotor, StainlessSteel),
-                'M', ELECTRIC_MOTOR_HV.getStackForm());
 
         // Large Cutting Machine
         ModHandler.addShapedRecipe("ga_large_cutting", LARGE_CUTTING.getStackForm(),
@@ -783,7 +769,7 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(L * 64))
                 .fluidInputs(Pyrotheum.getFluid(32000))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 64))
-                .inputs(ELECTRIC_BLAST_FURNACE.getStackForm(64))
+                .inputs(MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(64))
                 .input(gear, TitanSteel, 16)
                 .input(gearSmall, Seaborgium, 32)
                 .input(wireFine, YttriumBariumCuprate, 64)
@@ -804,7 +790,7 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(L * 64))
                 .fluidInputs(Cryotheum.getFluid(32000))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 64))
-                .inputs(VACUUM_FREEZER.getStackForm(64))
+                .inputs(MetaTileEntities.VACUUM_FREEZER.getStackForm(64))
                 .input(gear, AbyssalAlloy, 16)
                 .input(gearSmall, Duranium, 32)
                 .input(pipeSmall, Zeron100, 64)
@@ -839,24 +825,6 @@ public class MultiblockCraftingRecipes {
 
     private static void multiblockOverride() {
 
-        // Distillation Tower
-        removeRecipeByName("gregtech:distillation_tower");
-        ModHandler.addShapedRecipe("ga_distillation_tower", GATileEntities.DISTILLATION_TOWER.getStackForm(),
-                "CBC", "FMF", "CBC",
-                'M', HULL[EV].getStackForm(),
-                'B', new UnificationEntry(pipeLarge, StainlessSteel),
-                'C', new UnificationEntry(circuit, Extreme),
-                'F', MetaItems.ELECTRIC_PUMP_EV);
-
-        // Cracker Unit
-        removeRecipeByName("gregtech:cracking_unit");
-        ModHandler.addShapedRecipe("ga_cracking_unit", GATileEntities.CRACKER.getStackForm(),
-                "CEC", "PHP", "CEC",
-                'C', MetaBlocks.WIRE_COIL.getItemVariant(CUPRONICKEL),
-                'E', MetaItems.ELECTRIC_PUMP_HV,
-                'P', new UnificationEntry(circuit, Advanced),
-                'H', HULL[HV].getStackForm());
-
         // Primitive Blast Furnace (PBF)
         removeRecipeByName("gregtech:bronze_primitive_blast_furnace");
         ModHandler.addShapedRecipe("ga_primitive_blast_furnace", MetaTileEntities.PRIMITIVE_BLAST_FURNACE.getStackForm(),
@@ -866,65 +834,7 @@ public class MultiblockCraftingRecipes {
                 'P', new UnificationEntry(plate, Iron),
                 'B', MetaBlocks.METAL_CASING.getItemVariant(PRIMITIVE_BRICKS));
 
-        // Electric Blast Furnace (EBF)
-        removeRecipeByName("gregtech:electric_blast_furnace");
-        ModHandler.addShapedRecipe("ga_electric_blast_furnace", GATileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
-                "FFF", "CMC", "WCW",
-                'M', MetaBlocks.METAL_CASING.getItemVariant(INVAR_HEATPROOF),
-                'F', Blocks.FURNACE,
-                'C', new UnificationEntry(circuit, Basic),
-                'W', new UnificationEntry(cableGtSingle, Tin));
-
-        // Vacuum Freezer
-        removeRecipeByName("gregtech:vacuum_freezer");
-        ModHandler.addShapedRecipe("ga_vacuum_freezer", GATileEntities.VACUUM_FREEZER.getStackForm(),
-                "PPP", "CMC", "WCW",
-                'M', MetaBlocks.METAL_CASING.getItemVariant(ALUMINIUM_FROSTPROOF),
-                'P', MetaItems.ELECTRIC_PUMP_HV,
-                'C', new UnificationEntry(circuit, Advanced),
-                'W', new UnificationEntry(cableGtSingle, Gold));
-
-        // Implosion Compressor
-        removeRecipeByName("gregtech:implosion_compressor");
-        ModHandler.addShapedRecipe("ga_implosion_compressor", GATileEntities.IMPLOSION_COMPRESSOR.getStackForm(),
-                "OOO", "CMC", "WCW",
-                'M', MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID),
-                'O', new UnificationEntry(stone, Obsidian),
-                'C', new UnificationEntry(circuit, Advanced),
-                'W', new UnificationEntry(cableGtSingle, Aluminium));
-
-        // Pyrolyse Oven
-        removeRecipeByName("gregtech:pyrolyse_oven");
-        ModHandler.addShapedRecipe("ga_pyrolyse_oven", GATileEntities.PYROLYSE_OVEN.getStackForm(),
-                "WEP", "EME", "WCP",
-                'M', HULL[MV].getStackForm(),
-                'W', MetaItems.ELECTRIC_PISTON_MV,
-                'P', new UnificationEntry(wireGtQuadruple, Cupronickel),
-                'E', new UnificationEntry(circuit, Good),
-                'C', MetaItems.ELECTRIC_PUMP_MV);
-
-        // Large Diesel Engine
-        removeRecipeByName("gregtech:diesel_engine");
-        ModHandler.addShapedRecipe("ga_diesel_engine", GATileEntities.LARGE_COMBUSTION_ENGINE[0].getStackForm(),
-                "PCP", "EME", "GWG",
-                'M', HULL[EV].getStackForm(),
-                'P', MetaItems.ELECTRIC_PISTON_EV,
-                'E', MetaItems.ELECTRIC_MOTOR_EV,
-                'C', new UnificationEntry(circuit, Elite),
-                'W', new UnificationEntry(cableGtSingle, TungstenSteel),
-                'G', new UnificationEntry(gear, Titanium));
-
-        // Multi-Smelter
-        removeRecipeByName("gregtech:multi_furnace");
-        ModHandler.addShapedRecipe("ga_multi_furnace", GATileEntities.MULTI_FURNACE.getStackForm(),
-                "PPP", "ASA", "CAC",
-                'P', Blocks.FURNACE,
-                'A', new UnificationEntry(circuit, Advanced),
-                'S', MetaBlocks.METAL_CASING.getItemVariant(INVAR_HEATPROOF),
-                'C', new UnificationEntry(cableGtSingle, AnnealedCopper));
-
         // Large Steam Turbine
-
         removeRecipeByName("gregtech:large_steam_turbine");
         ModHandler.addShapedRecipe("ga_large_steam_turbine", GATileEntities.LARGE_STEAM_TURBINE.getStackForm(),
                 "PSP", "SAS", "CSC",
@@ -984,16 +894,8 @@ public class MultiblockCraftingRecipes {
                 'A', MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST));
 
         // Recipes added to convert from GTCE to Gregicality versions of overridden multiblocks ========================
-        ModHandler.addShapelessRecipe("ga_cracking_unit_compatibility", GATileEntities.CRACKER.getStackForm(), MetaTileEntities.CRACKER.getStackForm());
-        ModHandler.addShapelessRecipe("ga_electric_blast_furnace_compatibility", GATileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(), MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm());
-        ModHandler.addShapelessRecipe("ga_vacuum_freezer_compatibility", GATileEntities.VACUUM_FREEZER.getStackForm(), MetaTileEntities.VACUUM_FREEZER.getStackForm());
-        ModHandler.addShapelessRecipe("ga_implosion_compressor_compatibility", GATileEntities.IMPLOSION_COMPRESSOR.getStackForm(), MetaTileEntities.IMPLOSION_COMPRESSOR.getStackForm());
-        ModHandler.addShapelessRecipe("ga_diesel_engine_compatibility", GATileEntities.LARGE_COMBUSTION_ENGINE[0].getStackForm(), MetaTileEntities.DIESEL_ENGINE.getStackForm());
-        ModHandler.addShapelessRecipe("ga_multi_furnace_compatibility", GATileEntities.MULTI_FURNACE.getStackForm(), MetaTileEntities.MULTI_FURNACE.getStackForm());
         ModHandler.addShapelessRecipe("ga_large_steam_turbine_compatibility", GATileEntities.LARGE_STEAM_TURBINE.getStackForm(), MetaTileEntities.LARGE_STEAM_TURBINE.getStackForm());
         ModHandler.addShapelessRecipe("ga_large_gas_turbine_compatibility", GATileEntities.LARGE_GAS_TURBINE.getStackForm(), MetaTileEntities.LARGE_GAS_TURBINE.getStackForm());
         ModHandler.addShapelessRecipe("ga_large_plasma_turbine_compatibility", GATileEntities.LARGE_PLASMA_TURBINE.getStackForm(), MetaTileEntities.LARGE_PLASMA_TURBINE.getStackForm());
-        ModHandler.addShapelessRecipe("ga_pyrolyse_oven_compatibility", GATileEntities.PYROLYSE_OVEN.getStackForm(), MetaTileEntities.PYROLYSE_OVEN.getStackForm());
-        ModHandler.addShapelessRecipe("ga_distillation_tower_compatibility", GATileEntities.DISTILLATION_TOWER.getStackForm(), MetaTileEntities.DISTILLATION_TOWER.getStackForm());
     }
 }

@@ -184,7 +184,6 @@ public class RecipeHandler {
         CasingRecipes.init();
         SuperconductorRecipes.init();
         MiscRecipes.init();
-        StagedRemovalRecipes.init();
         MetalCasingRecipes.init();
     }
 

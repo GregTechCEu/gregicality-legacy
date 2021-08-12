@@ -17,8 +17,8 @@ public class RecipeMapLargeExtended<R extends RecipeBuilder<R>> extends LargeRec
     private TextureArea progressBarTexture;
     private ProgressWidget.MoveType moveType;
 
-    public RecipeMapLargeExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, R defaultRecipe) {
-        super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, (LargeRecipeBuilder) defaultRecipe);
+    public RecipeMapLargeExtended(String unlocalizedName, int inputs, int outputs, int fluidInputs, int fluidOutputs, R defaultRecipe, boolean isHidden) {
+        super(unlocalizedName, inputs, outputs, fluidInputs, fluidOutputs, (LargeRecipeBuilder) defaultRecipe, isHidden);
         this.progressBarTexture = GuiTextures.PROGRESS_BAR_ARROW;
         this.moveType = ProgressWidget.MoveType.HORIZONTAL;
     }

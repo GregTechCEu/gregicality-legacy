@@ -21,6 +21,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.metatileentities.multi.electric.MetaTileEntityLargeChemicalReactor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -67,7 +68,7 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('C', TileEntityLargeChemicalReactor.heatingCoilPredicate())
+				.where('C', MetaTileEntityLargeChemicalReactor.heatingCoilPredicate()) // todo
 				.where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
 				.where('#', (tile) -> true)
 				.where('M', motorPredicate())
