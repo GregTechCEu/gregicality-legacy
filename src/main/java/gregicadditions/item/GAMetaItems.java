@@ -506,9 +506,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem RYDBERG_SPINORIAL_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem X_RAY_LASER;
     public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSING_CORE;
-    // GA oredict items
-    //public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
-
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
@@ -519,8 +516,6 @@ public class GAMetaItems {
         armor.setRegistryName("ga_armor");
         GADustItem dustItem = new GADustItem((short) 0);
         dustItem.setRegistryName("ga_dust");
-        GAOredictItem oreDictItem = new GAOredictItem((short) 0);
-        oreDictItem.setRegistryName("ga_oredict_item");
     }
 
     public static void registerOreDict() {
