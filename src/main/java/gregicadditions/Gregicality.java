@@ -50,7 +50,7 @@ import java.io.IOException;
                 "after:genetics"
 )
 public class Gregicality {
-    public static final String MODID = "gtadditions";
+    public static final String MODID = "gregicality";
     public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
 
@@ -79,36 +79,7 @@ public class Gregicality {
 
     public Gregicality() {
         GAEnums.onConstruction();
-        try {
-            GAEnums.addSlotsToGTCEMaps(
-                    RecipeMaps.DISTILLERY_RECIPES,
-                    "maxOutputs",
-                    1
-            );
-            GAEnums.addSlotsToGTCEMaps(
-                    RecipeMaps.CHEMICAL_BATH_RECIPES,
-                    "maxFluidOutputs",
-                    1
-            );
-            GAEnums.addSlotsToGTCEMaps(
-                    RecipeMaps.CHEMICAL_RECIPES,
-                    "maxOutputs",
-                    2
-            );
-            GAEnums.addSlotsToGTCEMaps(
-                    RecipeMaps.FERMENTING_RECIPES,
-                    "maxInputs",
-                    1
-            );
-            GAEnums.addSlotsToGTCEMaps(
-                    RecipeMaps.FERMENTING_RECIPES,
-                    "maxOutputs",
-                    1
-            );
-        } catch (Exception e) {
-            GALog.logger.error("Error setting recipe map fields, {}",
-                    e.toString());
-        }
+        GAEnums.preInit();
     }
 
     @EventHandler
