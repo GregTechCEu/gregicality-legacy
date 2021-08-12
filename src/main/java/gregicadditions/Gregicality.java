@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.io.IOException;
 
 @Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
-        dependencies = "required-after:gregtech@[1.15.0.721,);" +
+        dependencies = "required-after:gregtech@[1.15.0.721,2.0);" +
                 "after:forestry;" +
                 "after:tconstruct;" +
                 "after:exnihilocreatio;" +
