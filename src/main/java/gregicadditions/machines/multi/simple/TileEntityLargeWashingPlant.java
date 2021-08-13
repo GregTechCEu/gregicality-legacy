@@ -41,7 +41,7 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
 
     public TileEntityLargeWashingPlant(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeWashingPlant.euPercentage, GAConfig.multis.largeWashingPlant.durationPercentage, GAConfig.multis.largeWashingPlant.chancedBoostPercentage, GAConfig.multis.largeWashingPlant.stack,
-                new RecipeMap<?>[]{RecipeMaps.ORE_WASHER_RECIPES, RecipeMaps.CHEMICAL_BATH_RECIPES, GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES, RecipeMaps.AUTOCLAVE_RECIPES});
+                new RecipeMap<?>[]{RecipeMaps.ORE_WASHER_RECIPES, RecipeMaps.CHEMICAL_BATH_RECIPES, RecipeMaps.AUTOCLAVE_RECIPES});
     }
 
     @Override

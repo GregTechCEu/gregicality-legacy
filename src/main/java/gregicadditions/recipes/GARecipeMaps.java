@@ -44,14 +44,6 @@ public class GARecipeMaps { // todo assembly line qubit?
 
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SIMPLE_ORE_WASHER_RECIPES = new RecipeMap<>("simple_ore_washer",
-            1, 1, 1, 0, new SimpleRecipeBuilder().duration(5).EUt(7), false)
-            .setSlotOverlay(false, false, GuiTextures.CRUSHED_ORE_OVERLAY)
-            .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressWidget.MoveType.HORIZONTAL);
-
-
-    @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DECAY_CHAMBERS_RECIPES = new RecipeMap<>("decay_chamber",
             1, 1, 1, 1, new SimpleRecipeBuilder().EUt(32), false)
             .setProgressBar(GuiTextures.PROGRESS_BAR_HAMMER, ProgressWidget.MoveType.VERTICAL);

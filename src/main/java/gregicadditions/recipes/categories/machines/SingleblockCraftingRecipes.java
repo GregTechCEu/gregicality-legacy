@@ -147,13 +147,6 @@ public class SingleblockCraftingRecipes {
                 'M', MOTOR,
                 'P', PIPE,
                 'R', ROTOR);
-
-        ModHandler.addShapedRecipe("ga_simple_ore_washer", GATileEntities.SIMPLE_ORE_WASHER.getStackForm(),
-                "PIP", "PTP", "PCP",
-                'C', MetaTileEntities.HULL[GTValues.LV].getStackForm(),
-                'T', MetaItems.ELECTRIC_PUMP_LV,
-                'I', new UnificationEntry(plate, Steel),
-                'P', new UnificationEntry(pipeLarge, Bronze));
     }
 
     // Same recipes as default GT (includes our overrides seen below).

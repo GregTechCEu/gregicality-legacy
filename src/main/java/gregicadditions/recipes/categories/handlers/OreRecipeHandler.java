@@ -15,11 +15,9 @@ import net.minecraft.item.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregicadditions.recipes.GARecipeMaps.SIMPLE_ORE_WASHER_RECIPES;
 import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.UUMatter;
-import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class OreRecipeHandler {
@@ -278,26 +276,6 @@ public class OreRecipeHandler {
                     .EUt(60)
                     .buildAndRegister();
         }
-    }
-
-    public static void processDirtyDust(OrePrefix dustImpurePrefix, DustMaterial dustMaterial) {
-
-        SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
-                .input(dustImpurePrefix, dustMaterial)
-                .fluidInputs(Water.getFluid(100))
-                .output(dust, dustMaterial)
-                .buildAndRegister();
-    }
-
-    public static void processCrushed(OrePrefix dustCrushedPrefix, DustMaterial material) {
-        if (OreDictUnifier.get(crushedPurified, material).isEmpty()) {
-            return;
-        }
-        SIMPLE_ORE_WASHER_RECIPES.recipeBuilder()
-                .input(dustCrushedPrefix, material)
-                .fluidInputs(Water.getFluid(100))
-                .output(crushedPurified, material)
-                .buildAndRegister();
     }
 
     private static double getPercentOfComponentInMaterial(Material material, Material materialToFind) {
