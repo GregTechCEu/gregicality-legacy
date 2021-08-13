@@ -1,19 +1,12 @@
 package gregicadditions.capabilities;
 
 import gregicadditions.Gregicality;
-import gregicadditions.integrations.FECompat.EnergyProvider;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.items.IItemHandlerModifiable;
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
 public class GregicAdditionsCapabilities {
@@ -27,12 +20,6 @@ public class GregicAdditionsCapabilities {
     public static MultiblockAbility<IQubitContainer> INPUT_QBIT = new MultiblockAbility();
     public static MultiblockAbility<IQubitContainer> OUTPUT_QBIT = new MultiblockAbility();
 
-    private static final ResourceLocation CAPABILITY_EU_TO_FE = new ResourceLocation(Gregicality.MODID, "fecapability");
-
-    @SubscribeEvent
-    public static void attachTileCapability(AttachCapabilitiesEvent<TileEntity> event) {
-        event.addCapability(CAPABILITY_EU_TO_FE, new EnergyProvider(event.getObject()));
-    }
     public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_HATCH = new MultiblockAbility<>();
     public static final MultiblockAbility<MetaTileEntityMufflerHatch> MUFFLER_HATCH = new MultiblockAbility<>();
 

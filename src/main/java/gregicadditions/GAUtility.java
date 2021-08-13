@@ -56,16 +56,6 @@ public class GAUtility {
         return Math.min(value, end);
     }
 
-    /**
-     * Safely cast a Long to an Int without overflow.
-     *
-     * @param v The Long value to cast to an Int.
-     * @return v, casted to Int, or Integer.MAX_VALUE if it would overflow.
-     */
-    public static int safeCastLongToInt(long v) {
-        return v > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) v;
-    }
-
     public static void checkRecipeConflicts() {
         for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
             for (Object recipe : recipeMap.getRecipeList()) {

@@ -27,17 +27,6 @@ public class GAConfig {
 
     public static class EnergyConversion {
 
-        @Config.Comment("Enable Native EU to RF via GT cables and wires")
-        @Config.RequiresMcRestart
-        public boolean enableNativeEUtoFE = true;
-
-        @Config.Comment({"EU to FE Ratio. Can be less than 1 for multiple EU per unit of FE.",
-                         "Decimal point precision will be lost if Ratio is greater than 1.",
-                         "If Ratio is less than 1, precision will be lost if (1 / ratio) is not a whole number."})
-        @Config.Name("EU/FE Ratio")
-        @Config.RequiresMcRestart
-        public double RATIO = 4;
-
         @Config.Comment("Energy Converter Machine Options")
         @Config.Name("Power converter sizes (in amperage)")
         @Config.RequiresMcRestart
