@@ -4358,22 +4358,6 @@ metaitem.emitter.umv.name=Emitter (UMV)
 metaitem.emitter.uxv.name=Emitter (UXV)
 metaitem.emitter.max.name=Emitter (MAX)
 
-metaitem.infinite.water.mv.name=MV Infinite Water
-metaitem.infinite.water.hv.name=HV Infinite Water
-metaitem.infinite.water.ev.name=EV Infinite Water
-metaitem.infinite.water.iv.name=IV Infinite Water
-metaitem.infinite.water.luv.name=LuV Infinite Water
-metaitem.infinite.water.zpm.name=ZPM Infinite Water
-metaitem.infinite.water.uv.name=UV Infinite Water
-
-metaitem.infinite.water.mv.tooltip=Cover That Produce 64 Buckets of Water Each 20 Ticks
-metaitem.infinite.water.hv.tooltip=Cover That Produce 64 Buckets of Water Each 15 Ticks
-metaitem.infinite.water.ev.tooltip=Cover That Produce 64 Buckets of Water Each 10 Ticks
-metaitem.infinite.water.iv.tooltip=Cover That Produce 64 Buckets of Water Each 6 Ticks
-metaitem.infinite.water.luv.tooltip=Cover That Produce 64 Buckets of Water Each 4 Ticks
-metaitem.infinite.water.zpm.tooltip=Cover That Produce 64 Buckets of Water Each 2 Ticks
-metaitem.infinite.water.uv.tooltip=Cover That Produce 64 Buckets of Water Each 1 Tick
-
 gtadditions.machine.charger.uhv.name=UHV Voltage Battery Charger
 gtadditions.machine.charger.uev.name=UEV Voltage Battery Charger
 gtadditions.machine.charger.uiv.name=UIV Voltage Battery Charger

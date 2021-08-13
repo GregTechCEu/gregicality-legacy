@@ -79,7 +79,7 @@ public class GAEventHandler {
             final ItemStack NANO = GAMetaItems.NANO_MUSCLE_SUITE_BOOTS.getStackForm();
             final ItemStack QUARK = GAMetaItems.QUARK_TECH_SUITE_BOOTS.getStackForm();
             if (armor != null) {
-                int fallDamage = 0;
+                int fallDamage;
                 if (armor.isItemEqual(NANO)) {
                     fallDamage = MathHelper.floor(event.getDistance() - 3.0);
                     if (fallDamage >= 8) return;

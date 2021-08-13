@@ -1,7 +1,6 @@
 package gregicadditions.jei;
 
 import gregicadditions.Gregicality;
-import gregicadditions.capabilities.impl.GAAbstractRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.recipes.impl.nuclear.GTHotCoolantRecipeWrapper;

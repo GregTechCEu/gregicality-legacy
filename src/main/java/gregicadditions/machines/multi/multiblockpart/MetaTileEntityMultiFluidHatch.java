@@ -30,7 +30,7 @@ import java.util.List;
 public class MetaTileEntityMultiFluidHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
 
     protected FluidTankList fluidTanks;
-    private boolean isExportHatch;
+    private final boolean isExportHatch;
     private static final int TANK_SIZE = 16000;
 
     public MetaTileEntityMultiFluidHatch(ResourceLocation metaTileEntityId, int tier, boolean isExportHatch) {

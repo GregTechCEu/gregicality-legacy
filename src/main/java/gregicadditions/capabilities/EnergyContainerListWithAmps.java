@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EnergyContainerListWithAmps implements IEnergyContainer {
 
-    private List<IEnergyContainer> energyContainerList;
+    private final List<IEnergyContainer> energyContainerList;
 
     public EnergyContainerListWithAmps(List<IEnergyContainer> energyContainerList) {
         this.energyContainerList = energyContainerList;

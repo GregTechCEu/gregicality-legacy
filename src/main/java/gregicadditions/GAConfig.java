@@ -247,9 +247,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public int replicationTimeFactor = 750;
 
-        @Config.Name("Enable RockBreaker")
-        @Config.RequiresMcRestart
-        public boolean enableRockBreaker = true;
         @Config.Name("Enable RockBreaker high tier")
         @Config.RequiresMcRestart
         public boolean enableRockBreakerHighTier = true;

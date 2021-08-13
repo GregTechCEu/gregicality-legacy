@@ -1,8 +1,8 @@
 package gregicadditions.blocks.factories;
 
 import com.google.common.base.Joiner;
-import gregicadditions.blocks.AbstractBlockModelFactory;
 import gregicadditions.blocks.GABlockOre;
+import gregtech.api.model.AbstractBlockModelFactory;
 import gregtech.api.model.ResourcePackHook;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.common.blocks.BlockOre;

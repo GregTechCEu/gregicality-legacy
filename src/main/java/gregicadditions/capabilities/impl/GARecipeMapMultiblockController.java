@@ -404,7 +404,4 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
     public void runMufflerEffect(float xPos, float yPos, float zPos, float xSpd, float ySpd, float zSpd) {
         getWorld().spawnParticle(EnumParticleTypes.SMOKE_LARGE, xPos, yPos, zPos, xSpd, ySpd, zSpd);
     }
-
-    protected static final BlockWireCoil.CoilType[] HEATING_COILS = BlockWireCoil.CoilType.values();
-    protected static final GAHeatingCoil.CoilType[] GA_HEATING_COILS = GAHeatingCoil.CoilType.values();
 }

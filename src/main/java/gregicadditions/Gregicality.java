@@ -19,7 +19,6 @@ import gregicadditions.theoneprobe.TheOneProbeCompatibility;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeMaps;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;

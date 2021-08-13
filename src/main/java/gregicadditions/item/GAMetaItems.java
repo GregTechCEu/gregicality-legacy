@@ -472,20 +472,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem PLUGIN_FAKE_GUI;
     public static MetaItem<?>.MetaValueItem PLUGIN_ADVANCED_MONITOR;
 
-
-
     public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
     public static MetaItem<?>.MetaValueItem DISPLAY;
-  
-    //infinite water source cover
-//    public static MetaItem<?>.MetaValueItem LV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem MV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem HV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem EV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem IV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem LuV_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem ZPM_INFINITE_WATER_SOURCE;
-    public static MetaItem<?>.MetaValueItem UV_INFINITE_WATER_SOURCE;
 
     public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
     public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;

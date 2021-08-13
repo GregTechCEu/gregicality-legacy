@@ -22,16 +22,6 @@ public class ClientHandler {
     // Multiblock Casing
     public static SimpleCubeRenderer CHEMICALLY_INERT = new SimpleCubeRenderer("casings/solid/machine_casing_chemically_inert");
     public static SimpleCubeRenderer LARGE_ASSEMBLER = new SimpleCubeRenderer("casings/solid/machine_casing_large_assembler");
-    public static SimpleCubeRenderer TIERED_HULL_ULV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_ulv");
-    public static SimpleCubeRenderer TIERED_HULL_LV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_lv");
-    public static SimpleCubeRenderer TIERED_HULL_MV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_mv");
-    public static SimpleCubeRenderer TIERED_HULL_HV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_hv");
-    public static SimpleCubeRenderer TIERED_HULL_EV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_ev");
-    public static SimpleCubeRenderer TIERED_HULL_IV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_iv");
-    public static SimpleCubeRenderer TIERED_HULL_LUV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_luv");
-    public static SimpleCubeRenderer TIERED_HULL_ZPM = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_zpm");
-    public static SimpleCubeRenderer TIERED_HULL_UV = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_uv");
-    public static SimpleCubeRenderer TIERED_HULL_MAX = new SimpleCubeRenderer("casings/solid/machine_casing_tiered_hull_max");
     public static SimpleCubeRenderer QUANTUM_COMPUTER = new SimpleCubeRenderer("casings/solid/quantum/computer");
     public static SimpleCubeRenderer QUANTUM_GENERATOR = new SimpleCubeRenderer("casings/solid/quantum/generator");
     public static SimpleCubeRenderer CLADDED_REACTOR_CASING = new SimpleCubeRenderer("casings/solid/cladded_reactor_casing");
@@ -87,7 +77,6 @@ public class ClientHandler {
 
 
     // Machine Overlays
-    public static SimpleCubeRenderer ACTIVE_FUSION_TEXTURE = new SimpleCubeRenderer("gregtech:casings/fusion/machine_casing_fusion_glass_yellow");
     public static OrientedOverlayRenderer NAQADAH_OVERLAY = new OrientedOverlayRenderer("machines/naquadah_reactor", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
     public static OrientedOverlayRenderer ROCKET_OVERLAY = new OrientedOverlayRenderer("machines/rocket_generator", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
     public static OrientedOverlayRenderer REPLICATOR_OVERLAY = new OrientedOverlayRenderer("machines/replicator", OverlayFace.FRONT);
@@ -137,7 +126,6 @@ public class ClientHandler {
     public static TextureArea COVER_INTERFACE_MACHINE_ON_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_on_proxy.png");
     public static TextureArea COVER_INTERFACE_MACHINE_OFF_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_off_proxy.png");
     public static SimpleOverlayRenderer COVER_INFINITE_WATER = new SimpleOverlayRenderer("cover/cover_water_overlay");
-    public static final TextureArea CONTROLLER_SLOT = AdoptableTextureArea.fullImage("textures/gui/base/slot_mbc.png", 21, 21, 4, 4);
 
 
     static {

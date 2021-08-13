@@ -1,10 +1,8 @@
 package gregicadditions.machines.multi.advance;
 
-
 import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.GAEnergyContainerHandler;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
@@ -69,7 +67,7 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
     public MetaTileEntityAdvFusionReactor(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.ADV_FUSION_RECIPES);
         this.recipeMapWorkable = new AdvFusionRecipeLogic(this);
-        this.energyContainer = new GAEnergyContainerHandler(this, Integer.MAX_VALUE, 0, 0, 0, 0) {
+        this.energyContainer = new EnergyContainerHandler(this, Integer.MAX_VALUE, 0, 0, 0, 0) {
             @Override
             public String getName() {
                 return "EnergyContainerInternal";
@@ -220,7 +218,7 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
         for (IEnergyContainer energyContainer : energyInputs) {
             euCapacity += 10000000L * (long) Math.pow(2, Math.min(GAUtility.getTierByVoltage(energyContainer.getInputVoltage()), tier) - GAValues.LuV);
         }
-        this.energyContainer = new GAEnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
+        this.energyContainer = new EnergyContainerHandler(this, euCapacity, GAValues.V[tier], 0, 0, 0) {
             @Override
             public String getName() {
                 return "EnergyContainerInternal";

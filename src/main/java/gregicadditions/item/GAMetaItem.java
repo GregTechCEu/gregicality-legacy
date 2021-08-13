@@ -2,7 +2,6 @@ package gregicadditions.item;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.GAElectricStats;
 import gregicadditions.item.behaviors.*;
 import gregicadditions.item.behaviors.monitorPlugin.AdvancedMonitorPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.FakeGuiPluginBehavior;
@@ -447,14 +446,6 @@ public class GAMetaItem extends StandardMetaItem {
         Fermium.waste = FERMIUM_WASTE;
         Mendelevium.waste = MENDELEVIUM_WASTE;
 
-        MV_INFINITE_WATER_SOURCE = addItem(571, "infinite.water.mv");
-        HV_INFINITE_WATER_SOURCE = addItem(572, "infinite.water.hv");
-        EV_INFINITE_WATER_SOURCE = addItem(573, "infinite.water.ev");
-        IV_INFINITE_WATER_SOURCE = addItem(574, "infinite.water.iv");
-        LuV_INFINITE_WATER_SOURCE = addItem(575, "infinite.water.luv");
-        ZPM_INFINITE_WATER_SOURCE = addItem(576, "infinite.water.zpm");
-        UV_INFINITE_WATER_SOURCE = addItem(577, "infinite.water.uv");
-
         COLOURED_LEDS = addItem(578, "coloured.leds");
         DISPLAY = addItem(579, "display");
 
@@ -510,19 +501,19 @@ public class GAMetaItem extends StandardMetaItem {
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
-        BATTERY_NIMH = addItem(609, "nickel.metal.hydride.battery").addComponents(GAElectricStats.createRechargeableBattery(7200000, GTValues.EV)).setModelAmount(8);
+        BATTERY_NIMH = addItem(609, "nickel.metal.hydride.battery").addComponents(ElectricStats.createRechargeableBattery(7200000, GTValues.EV)).setModelAmount(8);
 
-        BATTERY_SMALL_LITHIUM_ION = addItem(610, "small.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(28800000, GTValues.IV)).setModelAmount(8);
-        BATTERY_MEDIUM_LITHIUM_ION = addItem(611, "medium.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(115200000, GTValues.LuV)).setModelAmount(8);
-        BATTERY_LARGE_LITHIUM_ION = addItem(612, "large.lithium.ion.battery").addComponents(GAElectricStats.createRechargeableBattery(460800000, GTValues.ZPM)).setModelAmount(8);
+        BATTERY_SMALL_LITHIUM_ION = addItem(610, "small.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(28800000, GTValues.IV)).setModelAmount(8);
+        BATTERY_MEDIUM_LITHIUM_ION = addItem(611, "medium.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(115200000, GTValues.LuV)).setModelAmount(8);
+        BATTERY_LARGE_LITHIUM_ION = addItem(612, "large.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(460800000, GTValues.ZPM)).setModelAmount(8);
 
-        BATTERY_SMALL_LIS = addItem(613, "small.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(1843200000, GTValues.UV)).setModelAmount(8);
-        BATTERY_MEDIUM_LIS = addItem(614, "medium.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(7372800000L, GTValues.UHV)).setModelAmount(8);
-        BATTERY_LARGE_LIS = addItem(615, "large.lithium.sulfide.battery").addComponents(GAElectricStats.createRechargeableBattery(29491200000L, GTValues.UEV)).setModelAmount(8);
+        BATTERY_SMALL_LIS = addItem(613, "small.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(1843200000, GTValues.UV)).setModelAmount(8);
+        BATTERY_MEDIUM_LIS = addItem(614, "medium.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(7372800000L, GTValues.UHV)).setModelAmount(8);
+        BATTERY_LARGE_LIS = addItem(615, "large.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(29491200000L, GTValues.UEV)).setModelAmount(8);
 
-        BATTERY_SMALL_FLUORIDE = addItem(616, "small.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(117964800000L, GTValues.UIV)).setModelAmount(8);
-        BATTERY_MEDIUM_FLUORIDE = addItem(617, "medium.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(471859200000L, GTValues.UMV)).setModelAmount(8);
-        BATTERY_LARGE_FLUORIDE = addItem(618, "large.fluoride.battery").addComponents(GAElectricStats.createRechargeableBattery(1887436800000L, GTValues.UXV)).setModelAmount(8);
+        BATTERY_SMALL_FLUORIDE = addItem(616, "small.fluoride.battery").addComponents(ElectricStats.createRechargeableBattery(117964800000L, GTValues.UIV)).setModelAmount(8);
+        BATTERY_MEDIUM_FLUORIDE = addItem(617, "medium.fluoride.battery").addComponents(ElectricStats.createRechargeableBattery(471859200000L, GTValues.UMV)).setModelAmount(8);
+        BATTERY_LARGE_FLUORIDE = addItem(618, "large.fluoride.battery").addComponents(ElectricStats.createRechargeableBattery(1887436800000L, GTValues.UXV)).setModelAmount(8);
 
         GAMetaItems.PROSPECT_TOOL_MV = addItem(619, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2, GAConfig.equipment.prospector.scanCosts[0], GAConfig.equipment.prospector.scanRadii[0], GAConfig.equipment.prospector.scanTicks[0])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[0], 2)).setMaxStackSize(1);
         GAMetaItems.PROSPECT_TOOL_HV = addItem(620, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3, GAConfig.equipment.prospector.scanCosts[1], GAConfig.equipment.prospector.scanRadii[1], GAConfig.equipment.prospector.scanTicks[1])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[1], 3)).setMaxStackSize(1);

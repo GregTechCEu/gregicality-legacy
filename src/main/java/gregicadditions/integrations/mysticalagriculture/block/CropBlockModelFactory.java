@@ -1,6 +1,6 @@
 package gregicadditions.integrations.mysticalagriculture.block;
 
-import gregicadditions.blocks.AbstractBlockModelFactory;
+import gregtech.api.model.AbstractBlockModelFactory;
 import gregtech.api.model.ResourcePackHook;
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.api.unification.material.type.Material;
