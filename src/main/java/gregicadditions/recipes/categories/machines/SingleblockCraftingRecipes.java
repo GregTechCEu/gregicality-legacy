@@ -135,12 +135,6 @@ public class SingleblockCraftingRecipes {
                 'A', CABLE_DOUBLE,
                 'P', PISTON);
 
-        registerMachineRecipe(GATileEntities.DIODES,
-                "CCC", "XMX", "CCC",
-                'M', HULL,
-                'C', CABLE_SINGLE,
-                'X', MetaItems.SMALL_COIL);
-
         registerMachineRecipe(1, GATileEntities.BUFFER,
                 " G ", " H ", " C ",
                 'G', GLASS,

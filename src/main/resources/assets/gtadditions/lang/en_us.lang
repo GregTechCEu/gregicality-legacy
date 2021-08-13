@@ -3522,20 +3522,6 @@ gtadditions.machine.transformer.uxv.8.name=Extended Mega Ultimate Voltage Transf
 gtadditions.machine.transformer.uxv.12.name=Extended Mega Ultimate Voltage Transformer 12 Amps
 gtadditions.machine.transformer.uxv.16.name=Extended Mega Ultimate Voltage Transformer 16 Amps
 
-gtadditions.machine.diode.lv.name=Low Voltage Diode
-gtadditions.machine.diode.mv.name=Medium Voltage Diode
-gtadditions.machine.diode.hv.name=High Voltage Diode
-gtadditions.machine.diode.ev.name=Extreme Voltage Diode
-gtadditions.machine.diode.iv.name=Insane Voltage Diode
-gtadditions.machine.diode.luv.name=Ludicrous Voltage Diode
-gtadditions.machine.diode.zpm.name=ZPM Voltage Diode
-gtadditions.machine.diode.uv.name=Ultimate Voltage Diode
-gtadditions.machine.diode.uhv.name=Ultimately High Voltage Diode
-gtadditions.machine.diode.uev.name=Ultimately Extreme Voltage Diode
-gtadditions.machine.diode.uiv.name=Ultimately Insane Voltage Diode
-gtadditions.machine.diode.umv.name=Mega Ultimate Voltage Diode
-gtadditions.machine.diode.uxv.name=Extended Mega Ultimate Voltage Diode
-
 gtadditions.machine.energy_hatch.input.ulv.4.name=Energy Input Hatch 4 Amps (ULV)
 gtadditions.machine.energy_hatch.input.ulv.16.name=Energy Input Hatch 16 Amps (ULV)
 gtadditions.machine.energy_hatch.input.ulv.64.name=Energy Input Hatch 64 Amps (ULV)
@@ -4489,10 +4475,6 @@ metaitem.component.smd.capacitor.exotic.name=Exotic SMD Capacitor
 metaitem.component.smd.resistor.exotic.name=Exotic SMD Resistor
 metaitem.component.smd.transistor.exotic.name=Exotic SMD Transistor
 metaitem.component.smd.diode.exotic.name=Exotic SMD Diode
-
-gtadditions.machine.diode.message=Max Amperage throughput: %s
-gtadditions.machine.diode.tooltip_general=A simple Diode that will allow Energy Flow in only one direction.
-gtadditions.machine.diode.tooltip_tool_usage=Hit with a Soft Hammer to toggle Amperage flow.
 
 gtadditions.machine.disassembler.lv.name=Basic Disassembler
 gtadditions.machine.disassembler.mv.name=Advanced Disassembler
