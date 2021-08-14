@@ -1,6 +1,5 @@
 package gregicadditions.recipes.categories.handlers;
 
-import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregicadditions.utils.Tuple;
 import gregtech.api.recipes.RecipeBuilder;
@@ -132,7 +131,7 @@ public class WireRecipeHandler {
 
         int cableAmount = (int) (wireGt.materialAmount * 2 / M);
         int gtCableTier = GTUtility.getTierByVoltage(material.cableProperties.voltage);
-        int cableTier = GAUtility.getTierByVoltage(material.cableProperties.voltage);
+        int cableTier = GTUtility.getTierByVoltage(material.cableProperties.voltage);
         int cableSize = ArrayUtils.indexOf(WIRE_DOUBLING_ORDER, wireGt);
         OrePrefix cablePrefix = OrePrefix.valueOf("cable" + wireGt.name().substring(4));
 
@@ -229,8 +228,7 @@ public class WireRecipeHandler {
      * This is a copy-paste of {@link gregtech.loaders.oreprocessing.WireRecipeHandler} getMaterialAmount() which is private.
      * It is only used to get consistent behavior with GTCE for the removal of the old wire insulation recipes.
      *
-     * @param cableTier      The tier of the cable. MUST use {@link GTUtility#getTierByVoltage(long)} as
-     *                       {@link GAUtility} will cause this to have the wrong amounts of fluids for recipes.
+     * @param cableTier      The tier of the cable.
      * @param insulationTier The tier of the insulation material, from {@link gregtech.loaders.oreprocessing.WireRecipeHandler#INSULATION_MATERIALS}.
      * @return The amount of fluid used in the Recipe.
      */

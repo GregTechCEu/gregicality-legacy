@@ -1,11 +1,11 @@
 package gregicadditions.machines.energyconverter.energy;
 
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
 import gregicadditions.machines.energyconverter.utils.Numbers;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -43,7 +43,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
                 final BlockPos pos = this.energyConverter.getPos();
                 this.energyConverter.getWorld().removeTileEntity(pos);
                 if (ConfigHolder.doExplosions) {
-                    this.energyConverter.getWorld().createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, GAUtility.getTierByVoltage(voltage), true);
+                    this.energyConverter.getWorld().createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, GTUtility.getTierByVoltage(voltage), true);
                 }
                 return Math.min(amperage, this.getInputAmperage());
             }
@@ -90,7 +90,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
     }
 
     public long getInputVoltage() {
-        return GAValues.V[this.energyConverter.getTier()];
+        return GTValues.V[this.energyConverter.getTier()];
     }
 
     public long getOutputVoltage() {
@@ -162,7 +162,7 @@ public class UniversalEnergyStorage implements IEnergyContainer, INBTSerializabl
         }
 
         public long getTransferLimit() {
-            return GAValues.V[this.getTier()];
+            return GTValues.V[this.getTier()];
         }
     }
 }

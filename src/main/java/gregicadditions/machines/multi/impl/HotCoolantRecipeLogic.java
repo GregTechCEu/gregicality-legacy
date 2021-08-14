@@ -1,16 +1,15 @@
 package gregicadditions.machines.multi.impl;
 
-
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
+import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MTETrait;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.util.GTUtility;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.common.capabilities.Capability;
@@ -170,7 +169,7 @@ public class HotCoolantRecipeLogic extends MTETrait implements IControllable {
     }
 
     public static long getTieredVoltage(long voltage) {
-        return GAValues.V[GAUtility.getTierByVoltage(voltage)];
+        return GTValues.V[GTUtility.getTierByVoltage(voltage)];
     }
 
     private void setActive(boolean active) {

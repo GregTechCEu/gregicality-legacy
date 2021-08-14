@@ -5,14 +5,13 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -27,6 +26,7 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -239,12 +239,12 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     }
 
     public long getOverclock() {
-        int tierDifference = GAUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.UHV;
+        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.UHV;
         return (long) Math.floor(Math.pow(2, tierDifference));
     }
 
     private long getVoltage() {
-        return GAValues.V[GAValues.UHV];
+        return GTValues.V[GTValues.UHV];
     }
 
     @Override

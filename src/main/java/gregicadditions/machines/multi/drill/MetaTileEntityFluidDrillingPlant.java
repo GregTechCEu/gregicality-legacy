@@ -4,9 +4,8 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.worldgen.PumpjackHandler;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -21,6 +20,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -131,13 +131,13 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
     }
 
     public long getMaxVoltage() {
-        return GAValues.V[getVoltageTier()];
+        return GTValues.V[getVoltageTier()];
     }
 
     public int getVoltageTier() {
         int voltageCap = this.rigTier == 2 ? 5 : this.rigTier == 3 ? 8 : 9;
         // adjust voltage for hatch amperage
-        int inputVoltage = GAUtility.getTierByVoltage(energyContainer.getInputVoltage());
+        int inputVoltage = GTUtility.getTierByVoltage(energyContainer.getInputVoltage());
 
         if (inputVoltage < this.rigTier)
             return this.rigTier;
@@ -322,7 +322,7 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
             if (this.isStructureFormed()) {
                 if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                     long maxVoltage = energyContainer.getInputVoltage();
-                    String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
+                    String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
                     textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
                 }
             }
@@ -345,9 +345,9 @@ public class MetaTileEntityFluidDrillingPlant extends MultiblockWithDisplayBase 
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.2", GAValues.VN[this.rigTier], GAValues.VN[this.rigTier == 2 ? 5 : this.rigTier == 3 ? 8 : 9]));
+        tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.2", GTValues.VN[this.rigTier], GTValues.VN[this.rigTier == 2 ? 5 : this.rigTier == 3 ? 8 : 9]));
         tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.3"));
-        tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.4", overclockFluidProduction(), GAValues.VN[this.rigTier]));
+        tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.4", overclockFluidProduction(), GTValues.VN[this.rigTier]));
         tooltip.add(I18n.format("gtadditions.multiblock.drilling_rig.tooltip.5", getTieredFluidMultiplier()));
     }
 

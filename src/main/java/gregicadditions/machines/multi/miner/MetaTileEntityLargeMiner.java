@@ -6,12 +6,11 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
 import gregicadditions.machines.multi.CasingUtils;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -28,6 +27,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.material.type.SolidMaterial;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
@@ -143,7 +143,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     }
 
     public boolean drainEnergy() {
-        long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
+        long energyDrain = GTValues.V[Math.max(GTValues.EV, GTUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
         FluidStack drillingFluid = DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
@@ -156,7 +156,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
 
     @Override
     public long getNbBlock() {
-        int tierDifference = GAUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.EV;
+        int tierDifference = GTUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GTValues.EV;
         return (long) Math.floor(Math.pow(2, tierDifference));
     }
 

@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.CasingUtils;
@@ -21,6 +20,7 @@ import gregtech.api.recipes.*;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTUtility;
 import gregtech.api.util.InventoryUtils;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -41,7 +41,7 @@ import java.util.function.Predicate;
 
 import static gregicadditions.client.ClientHandler.BABBITT_ALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMultiblockController {
 
@@ -137,7 +137,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
 
             int mode = ((MetaTileEntityAdvancedDistillationTower) this.getMetaTileEntity()).getRecipeMapIndex();
 
-            tierNeeded = Math.max(1, GAUtility.getTierByVoltage(matchingRecipe.getEUt()));
+            tierNeeded = Math.max(1, GTUtility.getTierByVoltage(matchingRecipe.getEUt()));
             maxItemsLimit *= currentTier - tierNeeded;
 
             if (mode == 0) { // Distillation tower = 2 parallel/oc, max 8

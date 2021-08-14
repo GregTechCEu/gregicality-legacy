@@ -8,8 +8,6 @@ import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMapCategory;
 import gregicadditions.recipes.compat.jei.GADrillingRigCategory;
 import gregicadditions.recipes.compat.jei.GADrillingRigRecipeWrapper;
-import gregicadditions.recipes.compat.jei.GARecipeMapCategory;
-import gregicadditions.recipes.compat.jei.GARecipeWrapper;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
@@ -18,7 +16,6 @@ import gregtech.api.capability.IControllable;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import mezz.jei.api.*;
@@ -31,7 +28,6 @@ import net.minecraft.util.ResourceLocation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregicadditions.machines.GATileEntities.DRILLING_RIG;
 import static gregicadditions.machines.GATileEntities.FLUID_DRILLING_PLANT;
 
 @JEIPlugin
@@ -48,10 +44,6 @@ public class JEIGAPlugin implements IModPlugin {
         for (HotCoolantRecipeMap hotCoolantRecipeMap : HotCoolantRecipeMap.getRecipeMaps()) {
             registry.addRecipeCategories(new HotCoolantRecipeMapCategory(hotCoolantRecipeMap, registry.getJeiHelpers().getGuiHelper()));
         }
-        for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
-            if(!recipeMap.isHidden)
-                registry.addRecipeCategories(new GARecipeMapCategory(recipeMap, registry.getJeiHelpers().getGuiHelper()));
-        }
 
         registry.addRecipeCategories(new GADrillingRigCategory(registry.getJeiHelpers().getGuiHelper()));
 
@@ -63,7 +55,6 @@ public class JEIGAPlugin implements IModPlugin {
         itemBlacklist = registry.getJeiHelpers().getIngredientBlacklist();
         iItemRegistry = registry.getIngredientRegistry();
         GAMultiblockInfoCategory.registerRecipes(registry);
-        registry.getJeiHelpers().getIngredientBlacklist().addIngredientToBlacklist(MetaItems.DATA_CONTROL_CIRCUIT_IV.getStackForm());
 
         for (HotCoolantRecipeMap hotCoolantRecipeMap : HotCoolantRecipeMap.getRecipeMaps()) {
             List<GTHotCoolantRecipeWrapper> recipeList = hotCoolantRecipeMap.getRecipeList().stream()
@@ -79,14 +70,6 @@ public class JEIGAPlugin implements IModPlugin {
         registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[0].getStackForm(), Gregicality.MODID + ":drilling_rig");
         registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[1].getStackForm(), Gregicality.MODID + ":drilling_rig");
         registry.addRecipeCatalyst(FLUID_DRILLING_PLANT[2].getStackForm(), Gregicality.MODID + ":drilling_rig");
-
-        for (RecipeMap<?> recipeMap : RecipeMap.getRecipeMaps()) {
-            List<GARecipeWrapper> recipesList = recipeMap.getRecipeList()
-                    .stream().filter(recipe -> !recipe.isHidden() && recipe.hasValidInputsForDisplay())
-                    .map(r -> new GARecipeWrapper(r))
-                    .collect(Collectors.toList());
-            registry.addRecipes(recipesList, Gregicality.MODID + ":" + recipeMap.unlocalizedName);
-        }
 
         for (ResourceLocation metaTileEntityId : GregTechAPI.META_TILE_ENTITY_REGISTRY.getKeys()) {
             MetaTileEntity metaTileEntity = GregTechAPI.META_TILE_ENTITY_REGISTRY.getObject(metaTileEntityId);

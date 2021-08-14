@@ -1,11 +1,10 @@
 package gregicadditions.machines.multi.mega;
 
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.utils.GALog;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -116,7 +115,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
         super.formStructure(context);
         blastFurnaceTemperature = context.getOrDefault("blastFurnaceTemperature", 0);
 
-        int energyTier = GAUtility.getTierByVoltage(getEnergyContainer().getInputVoltage());
+        int energyTier = GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage());
         this.bonusTemperature = Math.max(0, 100 * (energyTier - 2));
         this.blastFurnaceTemperature += this.bonusTemperature;
     }
@@ -266,7 +265,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             duration *= 0.5;
 
             // Apply Super Overclocks for every 1800k above the base recipe temperature
-            for (int i = bonusAmount; EUt <= GAValues.V[tier - 1] && duration >= 3 && i > 0; i--) {
+            for (int i = bonusAmount; EUt <= GTValues.V[tier - 1] && duration >= 3 && i > 0; i--) {
                 if (i % 2 == 0) {
                     EUt *= 4;
                     duration *= 0.25;
@@ -274,7 +273,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             }
 
             // Apply Regular Overclocking
-            while (duration >= 3 && EUt <= GAValues.V[tier - 1]) {
+            while (duration >= 3 && EUt <= GTValues.V[tier - 1]) {
                 EUt *= 4;
                 duration /= 2.8;
             }

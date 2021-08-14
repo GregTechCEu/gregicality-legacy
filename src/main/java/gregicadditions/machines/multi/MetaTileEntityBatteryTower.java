@@ -4,14 +4,13 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.metal.MetalCasing1;
+import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -20,13 +19,13 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -46,7 +45,7 @@ import java.util.function.Predicate;
 
 import static gregicadditions.client.ClientHandler.TALONITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase implements IEnergyContainer { //todo maintenance
 
@@ -82,8 +81,8 @@ public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase impl
         this.cell = context.getOrDefault("CellType", CellCasing.CellType.CELL_HV);
         int size = context.getOrDefault("nbCell", 0);
 
-        long inputAboveTier = getAbilities(MultiblockAbility.INPUT_ENERGY).stream().map(iEnergyContainer -> GAUtility.getTierByVoltage(iEnergyContainer.getInputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
-        long outputAboveTier = getAbilities(MultiblockAbility.OUTPUT_ENERGY).stream().map(iEnergyContainer -> GAUtility.getTierByVoltage(iEnergyContainer.getOutputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
+        long inputAboveTier = getAbilities(MultiblockAbility.INPUT_ENERGY).stream().map(iEnergyContainer -> GTUtility.getTierByVoltage(iEnergyContainer.getInputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
+        long outputAboveTier = getAbilities(MultiblockAbility.OUTPUT_ENERGY).stream().map(iEnergyContainer -> GTUtility.getTierByVoltage(iEnergyContainer.getOutputVoltage())).filter(aByte -> aByte > cell.getTier()).count();
 
         if (inputAboveTier > 0 || outputAboveTier > 0) {
             this.invalidateStructure();
@@ -96,7 +95,7 @@ public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase impl
         maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
         energyInputPerTick = 0;
         energyOutputPerTick = 0;
-        passiveDrain = (long) (GAValues.V[cell.getTier()] * (GAConfig.multis.batteryTower.lossPercentage / 100.0) + (5L * this.getNumProblems() / 100.0));
+        passiveDrain = (long) (GTValues.V[cell.getTier()] * (GAConfig.multis.batteryTower.lossPercentage / 100.0) + (5L * this.getNumProblems() / 100.0));
     }
 
     @Override

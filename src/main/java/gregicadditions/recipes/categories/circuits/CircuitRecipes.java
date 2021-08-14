@@ -1,7 +1,6 @@
 package gregicadditions.recipes.categories.circuits;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.IngotMaterial;

@@ -5,12 +5,11 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -25,6 +24,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
+import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -56,7 +56,6 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.TungstenSteel;
 
-
 public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //todo soft hammerable
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
@@ -78,7 +77,7 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
     public MetaTileEntityVoidMiner(ResourceLocation metaTileEntityId, int tier, int temp) {
         super(metaTileEntityId);
         this.tier = tier;
-        this.energyDrain = GAValues.V[tier];
+        this.energyDrain = GTValues.V[tier];
         this.maxTemperature = temp;
         this.reinitializeStructurePattern();
     }
@@ -269,7 +268,7 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
         if (this.isStructureFormed() && !this.hasProblems()) {
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
+                String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];
                 textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
             }
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_used", energyDrain));

@@ -1,6 +1,5 @@
 package gregicadditions.capabilities.impl;
 
-import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
@@ -16,7 +15,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import java.util.Arrays;
 import java.util.List;
-
 
 public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
 
@@ -81,7 +79,7 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
 
     @Override
     protected int getOverclockingTier(long voltage) {
-        return GAUtility.getTierByVoltage(voltage);
+        return GTUtility.getTierByVoltage(voltage);
     }
 
     @Override
