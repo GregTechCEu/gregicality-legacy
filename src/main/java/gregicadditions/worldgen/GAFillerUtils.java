@@ -108,7 +108,7 @@ public class GAFillerUtils {
 
     public static Map<StoneType, IBlockState> getOreForMaterial(Material material, String orePrefix) {
         List<GABlockOre> oreBlocks = GAMetaBlocks.GA_ORES.stream()
-                .filter(ore -> ore.material == material && ore.getOrePrefix() == OrePrefix.getPrefix("ore" + orePrefix))
+                .filter(ore -> ore.material == material && ore.orePrefix == OrePrefix.getPrefix("ore" + orePrefix))
                 .collect(Collectors.toList());
         HashMap<StoneType, IBlockState> stoneTypeMap = new HashMap<>();
         for (BlockOre blockOre : oreBlocks) {

@@ -6,6 +6,7 @@ import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.recipes.MatchingMode;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
@@ -32,7 +33,8 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
     /**
      * Used to reset cached values after multiblock structure deforms
      */
-    protected void invalidate() {
+    public void invalidate() {
+        super.invalidate();
         lastRecipeIndex = 0;
     }
 
@@ -140,7 +142,7 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
             boolean dirty = checkRecipeInputsDirty(bus, importFluids, i);
             if (dirty || forceRecipeRecheck) {
                 this.forceRecipeRecheck = false;
-                currentRecipe = findRecipe(maxVoltage, bus, importFluids);
+                currentRecipe = findRecipe(maxVoltage, bus, importFluids, MatchingMode.DEFAULT);
                 if (currentRecipe != null) {
                     this.previousRecipe = currentRecipe;
                 }

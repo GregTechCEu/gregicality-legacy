@@ -181,7 +181,6 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                 maintenance.storeMaintenanceData(maintenance_problems, timeActive);
         }
         super.invalidateStructure();
-        ((GAMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
     }
 
     @Override
@@ -282,7 +281,7 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                         .setStyle(new Style().setColor(TextFormatting.DARK_RED)));
 
                 // Wrench
-                if (((this.maintenance_problems >> 0) & 1) == 0) {
+                if ((this.maintenance_problems & 1) == 0) {
                     textList.add(new TextComponentTranslation("gtadditions.multiblock.universal.problem.wrench")
                             .setStyle(new Style().setColor(TextFormatting.RED)
                                     .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,

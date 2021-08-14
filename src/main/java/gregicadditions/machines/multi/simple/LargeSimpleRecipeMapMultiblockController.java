@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.simple;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.*;
@@ -9,11 +8,7 @@ import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockWorldState;
-import gregtech.api.recipes.CountableIngredient;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.recipes.*;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
@@ -37,10 +32,10 @@ import java.util.stream.IntStream;
 
 abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
 
-    protected int EUtPercentage = 100;
-    protected int durationPercentage = 100;
-    protected int chancePercentage = 100;
-    protected int stack = 1;
+    protected int EUtPercentage;
+    protected int durationPercentage;
+    protected int chancePercentage;
+    protected int stack;
     public long maxVoltage = 0;
 
     DecimalFormat formatter = new DecimalFormat("#0.00");
@@ -102,14 +97,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));
         tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
-    }
-
-    protected static Material getCasingMaterial(Material defaultMaterial, String materialString) {
-        Material mat = Material.MATERIAL_REGISTRY.getObject(materialString);
-        if (mat != null && mat.hasFlag(GAMaterials.GENERATE_METAL_CASING)) {
-            return mat;
-        }
-        return defaultMaterial;
     }
 
     public static Predicate<BlockWorldState> motorPredicate() {
@@ -228,7 +215,6 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     public void invalidateStructure() {
         super.invalidateStructure();
         this.maxVoltage = 0;
-        ((LargeSimpleMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
     }
 
     @Override
@@ -284,7 +270,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         /**
          * Used to reset cached values after multiblock structure deforms
          */
-        protected void invalidate() {
+        public void invalidate() {
+            super.invalidate();
             lastRecipeIndex = 0;
         }
 
@@ -304,7 +291,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             if (dirty || forceRecipeRecheck) {
                 this.forceRecipeRecheck = false;
                 //else, try searching new recipe for given inputs
-                currentRecipe = findRecipe(maxVoltage, importInventory, importFluids);
+                currentRecipe = findRecipe(maxVoltage, importInventory, importFluids, MatchingMode.DEFAULT);
                 if (currentRecipe != null) {
                     this.previousRecipe = currentRecipe;
                 }
@@ -318,8 +305,8 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         }
 
         @Override
-        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
+        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs, MatchingMode matchingMode) {
+            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs, matchingMode);
             if (recipe != null)
                 return createRecipe(maxVoltage, inputs, fluidInputs, recipe);
             return null;

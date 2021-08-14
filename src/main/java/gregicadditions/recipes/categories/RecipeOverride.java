@@ -614,18 +614,11 @@ public class RecipeOverride {
                 .outputs(MICA_INSULATOR_SHEET.getStackForm(8))
                 .buildAndRegister();
 
-        if (GAConfig.GT6.BendingFoilsAutomatic) {
-            CLUSTER_MILL_RECIPES.recipeBuilder().duration(100).EUt(30)
-                    .inputs(MICA_INSULATOR_SHEET.getStackForm())
-                    .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
-                    .buildAndRegister();
-        } else {
-            BENDER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                    .inputs(MICA_INSULATOR_SHEET.getStackForm())
-                    .circuitMeta(0)
-                    .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
-                    .buildAndRegister();
-        }
+        BENDER_RECIPES.recipeBuilder().duration(100).EUt(30)
+                .inputs(MICA_INSULATOR_SHEET.getStackForm())
+                .circuitMeta(0)
+                .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
+                .buildAndRegister();
 
         // Ash Recipes
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, DarkAsh, 2));

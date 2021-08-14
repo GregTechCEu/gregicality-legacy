@@ -8,9 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 public class GAOreItemBlock extends OreItemBlock {
 
-    private GABlockOre oreBlock;
+    private final GABlockOre oreBlock;
 
     public GAOreItemBlock(GABlockOre oreBlock) {
         super(oreBlock);
@@ -18,12 +20,13 @@ public class GAOreItemBlock extends OreItemBlock {
     }
 
     @Override
+    @Nonnull
     @SideOnly(Side.CLIENT)
-    public String getItemStackDisplayName(ItemStack stack) {
+    public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         IBlockState blockState = getBlockState(stack);
         StoneType stoneType = blockState.getValue(oreBlock.STONE_TYPE);
-        OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? oreBlock.getOrePrefix() :
-                OrePrefix.getPrefix(oreBlock.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
+        OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? oreBlock.orePrefix :
+                OrePrefix.getPrefix(oreBlock.orePrefix.name() + stoneType.processingPrefix.name().substring(3));
         return orePrefix.getLocalNameForItem(oreBlock.material);
     }
 }

@@ -74,7 +74,7 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
 
     }
 
-    @SubscribeEvent
+    @SubscribeEvent // class isnt registered to event bus :thonk:
     public void onModelsBake(ModelBakeEvent event) {
         GALog.logger.info("Injected cable render model");
         event.getModelRegistry().putObject(MODEL_LOCATION, this);

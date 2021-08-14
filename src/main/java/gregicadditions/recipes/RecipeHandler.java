@@ -81,9 +81,6 @@ public class RecipeHandler {
         if (GAConfig.GT6.addCurvedPlates)
             plateCurved.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processPlateCurved);
 
-        if (GAConfig.GT6.addRounds)
-            round.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRound);
-
         plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
 
         if (GAConfig.GT6.BendingCylinders)
@@ -217,16 +214,6 @@ public class RecipeHandler {
 
         // Tools
         if (!material.hasFlag(NO_SMASHING) && material.toolDurability > 0) {
-
-            // GT6 Expensive Wrenches (Plates over Ingots)
-            if (GAConfig.GT6.ExpensiveWrenches) {
-
-                removeRecipeByName(String.format("gtadditions:wrench_%s", material.toString()));
-
-                ModHandler.addShapedRecipe(String.format("ga_wrench_%s", material.toString()), MetaItems.WRENCH.getStackForm(material),
-                        "XhX", "XXX", " X ",
-                        'X', new UnificationEntry(plate, material));
-            }
 
             // Bending Cylinders
             if (GAConfig.GT6.BendingCylinders) {
@@ -515,17 +502,6 @@ public class RecipeHandler {
                             "hP ",
                             'P', new UnificationEntry(plate, material));
                 }
-            }
-
-            // Cluster Mill foils
-            if (GAConfig.GT6.BendingFoilsAutomatic) {
-
-                removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, material), getIntegratedCircuit(0));
-
-                CLUSTER_MILL_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
-                        .input(plate, material)
-                        .output(foil, material, 4)
-                        .buildAndRegister();
             }
         }
     }

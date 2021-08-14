@@ -8,8 +8,8 @@ import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.render.scene.WorldSceneRenderer;
+import gregtech.api.util.RelativeDirection;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -240,7 +240,7 @@ public class WorldRenderEventRenderer {
             EnumFacing spin = EnumFacing.NORTH;
             BlockPatternChecker checker = new BlockPatternChecker();
             checker.updateAllValue(ObfuscationReflectionHelper.getPrivateValue(MultiblockControllerBase.class, controllerBase, "structurePattern"));
-            BlockPattern.RelativeDirection[] structureDir = checker.structureDir;
+            RelativeDirection[] structureDir = checker.structureDir;
 
             if (structureDir == null) {
                 reset();

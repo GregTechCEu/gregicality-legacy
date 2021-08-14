@@ -376,7 +376,7 @@ public class MultiblockCraftingRecipes {
                 .input(frameGt, Bohrium, 16)
                 .input(plate, Bohrium, 16)
                 .input(gearSmall, Bohrium, 16)
-                .input(GAConfig.GT6.addRounds ? round : screw, Bohrium, 16)
+                .input(round, Bohrium, 16)
                 .inputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 4))
                 .inputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 4))
                 .inputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 4))

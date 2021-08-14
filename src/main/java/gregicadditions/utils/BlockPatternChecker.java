@@ -11,6 +11,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.util.IntRange;
+import gregtech.api.util.RelativeDirection;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +30,7 @@ public class BlockPatternChecker {
     public Predicate<BlockWorldState>[][][] blockMatches; //[z][y][x]
     public TIntObjectMap<Predicate<PatternMatchContext>> layerMatchers = new TIntObjectHashMap<>();
     public Predicate<PatternMatchContext>[] validators;
-    public BlockPattern.RelativeDirection[] structureDir;
+    public RelativeDirection[] structureDir;
     public int[][] aisleRepetitions;
     public Pair<Predicate<BlockWorldState>, IntRange>[] countMatches;
     // x, y, z, minZ, maxZ
@@ -207,7 +208,7 @@ public class BlockPatternChecker {
         return getSpin(((MetaTileEntityHolder)world.getTileEntity(pos)).getMetaTileEntity());
     }
 
-    public static MutableBlockPos setActualRelativeOffset(MutableBlockPos pos, int x, int y, int z, EnumFacing facing, EnumFacing spin, BlockPattern.RelativeDirection[] structureDir) {
+    public static MutableBlockPos setActualRelativeOffset(MutableBlockPos pos, int x, int y, int z, EnumFacing facing, EnumFacing spin, RelativeDirection[] structureDir) {
         int[] c0 = new int[]{x, y, z}, c1 = new int[3];
         if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
             EnumFacing of = facing == EnumFacing.DOWN ? spin : spin.getOpposite();

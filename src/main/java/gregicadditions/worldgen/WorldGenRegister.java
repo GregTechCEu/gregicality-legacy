@@ -1,6 +1,5 @@
 package gregicadditions.worldgen;
 
-
 import gregicadditions.utils.GALog;
 import gregtech.api.GTValues;
 import gregtech.api.worldgen.config.WorldGenRegistry;
@@ -38,8 +37,6 @@ public class WorldGenRegister {
             GALog.logger.fatal("Failed to add GA worldgen", exception);
         }
 
-//        GregicalityLogger.logger.info("Reloading ore vein definitions to use our block filler");
-//        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
         GALog.logger.info(String.format("WorldGen preInit2 finished for %.3f seconds", t));
     }
@@ -54,7 +51,7 @@ public class WorldGenRegister {
             for (String dim : dims) {
                 Path currentDir = worldgenRootPath.resolve(dim);
                 List<Path> configs = Files.walk(currentDir)
-                        .filter(file -> Files.isRegularFile(file))
+                        .filter(Files::isRegularFile)
                         .filter(file -> file.toString().endsWith(".json"))
                         .filter(file ->
                                 file.getFileName().toString().startsWith("platinum_vein.json")
@@ -110,7 +107,7 @@ public class WorldGenRegister {
             GALog.logger.info(String.format("Attempting extraction of worldgen definitions from %s to %s",
                     worldgenJarRootPath, worldgenRootPath));
             List<Path> jarFiles = Files.walk(worldgenJarRootPath)
-                    .filter(jarFile -> Files.isRegularFile(jarFile))
+                    .filter(Files::isRegularFile)
                     .collect(Collectors.toList());
             for (Path jarFile : jarFiles) {
                 Path worldgenPath = worldgenRootPath.resolve(worldgenJarRootPath.relativize(jarFile).toString());
