@@ -5,12 +5,12 @@ import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.behaviors.DataStickFluidSamplerBehavior;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.DimensionChunkCoords;
 import gregicadditions.worldgen.PumpjackHandler;
+import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IWorkable;
@@ -165,7 +165,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
 
     @SideOnly(Side.CLIENT)
     private SimpleSidedCubeRenderer getBaseRenderer() {
-        return Textures.VOLTAGE_CASINGS[GAValues.HV];
+        return Textures.VOLTAGE_CASINGS[GTValues.HV];
     }
 
     @Override

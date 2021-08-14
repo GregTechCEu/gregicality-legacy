@@ -1,9 +1,8 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import gregicadditions.blocks.factories.GAMetalCasingBlockFactory;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
-import gregicadditions.capabilities.SimpleCapabilityManager;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
@@ -49,14 +48,13 @@ import java.io.IOException;
                 "after:genetics"
 )
 public class Gregicality {
+
     public static final String MODID = "gregicality";
     public static final String NAME = "Gregicality";
     public static final String VERSION = "@VERSION@";
 
-
     static {
         if (FMLCommonHandler.instance().getSide().isClient()) {
-            GAMetalCasingBlockFactory.init();
             GAOreBlockFactory.init();
         }
     }
@@ -86,7 +84,7 @@ public class Gregicality {
         NetworkHandler.preInit();
         proxy.preLoad();
         Keybinds.register();
-        SimpleCapabilityManager.init();
+        GregicalityCapabilities.init();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();

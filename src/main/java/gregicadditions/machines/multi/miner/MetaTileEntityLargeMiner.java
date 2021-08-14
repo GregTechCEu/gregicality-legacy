@@ -6,7 +6,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
 import gregicadditions.machines.multi.CasingUtils;
@@ -66,7 +66,7 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance in miner algorithm overhaul
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
     public final Miner.Type type;
     private final IBlockState casingState;

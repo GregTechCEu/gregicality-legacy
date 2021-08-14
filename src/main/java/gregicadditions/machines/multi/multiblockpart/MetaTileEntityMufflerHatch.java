@@ -3,7 +3,7 @@ package gregicadditions.machines.multi.multiblockpart;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregtech.api.gui.GuiTextures;
@@ -23,7 +23,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -165,7 +164,7 @@ public class MetaTileEntityMufflerHatch extends MetaTileEntityMultiblockPart imp
 
     @Override
     public MultiblockAbility<MetaTileEntityMufflerHatch> getAbility() {
-        return GregicAdditionsCapabilities.MUFFLER_HATCH;
+        return GregicalityCapabilities.MUFFLER_HATCH;
     }
 
     @Override

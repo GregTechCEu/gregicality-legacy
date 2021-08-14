@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi.nuclear;
 
-import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
@@ -9,6 +8,7 @@ import gregicadditions.machines.multi.impl.HotCoolantTurbineWorkableHandler;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
+import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -59,7 +59,7 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
     public IFluidHandler exportFluidHandler;
 
     public MetaTileEntityHotCoolantTurbine(ResourceLocation metaTileEntityId, TurbineType turbineType) {
-        super(metaTileEntityId, turbineType.recipeMap, GAValues.V[GAValues.EV]);
+        super(metaTileEntityId, turbineType.recipeMap, GTValues.V[GTValues.EV]);
         this.turbineType = turbineType;
         reinitializeStructurePattern();
     }
@@ -151,8 +151,8 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
 
     public MultiblockAbility[] getAllowedAbilities() {
         return turbineType.hasOutputHatch ?
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH} :
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH} :
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH};
     }
 
     public IBlockState getCasingState() {

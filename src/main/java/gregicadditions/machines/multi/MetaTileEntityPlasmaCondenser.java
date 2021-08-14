@@ -1,12 +1,10 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -21,7 +19,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -33,10 +30,8 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.client.ClientHandler.ENRICHED_NAQUADAH_ALLOY_CASING;
 import static gregicadditions.client.ClientHandler.HASTELLOY_N_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
 
@@ -53,7 +48,7 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public long maxVoltage;

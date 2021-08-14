@@ -1,8 +1,8 @@
 package gregicadditions.jei;
 
-import gregicadditions.GAValues;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.centralmonitor.MetaTileEntityCentralMonitor;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -47,7 +47,7 @@ public class CentralMonitorInfo extends MultiblockInfoPage {
             }
             builder.aisle(end)
             .where('S', GATileEntities.CENTRAL_MONITOR, EnumFacing.WEST)
-            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+            .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
             .where('A', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
             .where('B', GATileEntities.MONITOR_SCREEN, EnumFacing.WEST);
             shapes.add(builder.build());

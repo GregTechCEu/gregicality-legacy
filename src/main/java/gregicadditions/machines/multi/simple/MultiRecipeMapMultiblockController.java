@@ -4,7 +4,7 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.IntStream;
 
-import static gregicadditions.capabilities.MultiblockDataCodes.IS_TAPED;
 import static gregicadditions.capabilities.MultiblockDataCodes.RECIPE_MAP_INDEX;
 
 
@@ -143,7 +142,7 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing side) {
         T capabilityResult = super.getCapability(capability, side);
-        if (capabilityResult == null && capability == GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY) {
+        if (capabilityResult == null && capability == GregicalityCapabilities.MULTI_RECIPE_CAPABILITY) {
             return (T) this;
         }
         return capabilityResult;

@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAValues;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.unification.material.Materials;
@@ -51,11 +51,11 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
                 .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('C', turbine.turbineType.casingState)
                 .where('R', new BlockInfo(MetaBlocks.MACHINE.getDefaultState(), holder))
-                .where('D', MetaTileEntities.ENERGY_OUTPUT_HATCH[GAValues.EV], EnumFacing.EAST)
+                .where('D', MetaTileEntities.ENERGY_OUTPUT_HATCH[GTValues.EV], EnumFacing.EAST)
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.NORTH);
+                .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.NORTH);
         if (turbine.turbineType.hasOutputHatch) {
-            shapeInfo.where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.EV], EnumFacing.NORTH);
+            shapeInfo.where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.EV], EnumFacing.NORTH);
         } else {
             shapeInfo.where('O', turbine.turbineType.casingState);
         }

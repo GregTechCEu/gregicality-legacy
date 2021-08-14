@@ -1,13 +1,12 @@
 package gregicadditions.machines.multi.advance.hyper;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
-import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -110,7 +109,7 @@ public class MetaTileEntityHyperReactorIII extends FueledMultiblockController {
                 .aisle("##F#####F##","##F#####F##","##F#####F##","##F#####F##","##F#####F##", "##F#####F##", "##FCCCCCF##", "##C#####C##", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "#C#######C#", "##C#####C##", "###CCCCC###", "###########")
                 .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###CCCCC###", "##CC###CC##", "##C#####C##", "##C#####C##", "##C#####C##", "##CC###CC##", "###CCCCC###", "###########", "###########")
                 .aisle("###########","###########","###########","###########","###########", "###########", "###########", "###########", "####CCC####", "###CCCCC###", "###CCSCC###", "###CCCCC###", "####CCC####", "###########", "###########", "###########")
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH)))
                 .where('#', (tile) -> true)
                 .where('S', selfPredicate())
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))

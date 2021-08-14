@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GAMetaTool;
+import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -154,7 +155,7 @@ public class DisassemblyHandler {
 
             // If MTE is tiered, use the tier value as the EU/t
             if (mte instanceof ITieredMetaTileEntity) {
-                voltage = GAValues.V[((ITieredMetaTileEntity) mte).getTier()];
+                voltage = (int) GTValues.V[((ITieredMetaTileEntity) mte).getTier()];
             }
             // If MTE is an energy container, use the voltage I/O as the EU/t
             else if (mte instanceof IEnergyContainer) {
@@ -180,14 +181,14 @@ public class DisassemblyHandler {
 
                     // Check if itemStack is a circuit, and set the voltage to its tier
                     if ((voltage = ((tempTuple = circuitToUse.get(itemStack.getItemDamage())) != null ? tempTuple.getSecond() : 0)) != 0) {
-                        voltage = GAValues.V[voltage];
+                        voltage = (int) GTValues.V[voltage];
                         break;
                     }
 
                     // Check if itemStack is an MTE, and set the voltage to its tier
                     else if ((tempMTE = testAndGetMTE(itemStack)) != null
                           && tempMTE instanceof TieredMetaTileEntity) {
-                        voltage = GAValues.V[((ITieredMetaTileEntity) tempMTE).getTier()];
+                        voltage = (int) GTValues.V[((ITieredMetaTileEntity) tempMTE).getTier()];
                         break;
                     }
                 }

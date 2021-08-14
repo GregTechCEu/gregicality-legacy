@@ -4,7 +4,7 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.GAValues;
+import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
 import gregtech.api.gui.GuiTextures;
@@ -50,7 +50,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
     public TileEntityWorldAccelerator(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         //consume 8 amps
-        this.energyPerTick = GAValues.V[tier] * getMaxInputOutputAmperage();
+        this.energyPerTick = GTValues.V[tier] * getMaxInputOutputAmperage();
         this.lastTick = 0;
         initializeInventory();
     }
@@ -79,7 +79,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GAValues.VN[getTier()]));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
         tooltip.add(I18n.format("gtadditions.universal.tooltip.amperage_in", getMaxInputOutputAmperage()));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
         tooltip.add(I18n.format("gtadditions.machine.world_accelerator.description"));

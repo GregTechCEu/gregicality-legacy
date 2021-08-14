@@ -1,6 +1,6 @@
 package gregicadditions.theoneprobe;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IMultiRecipe;
 import gregicadditions.utils.GALog;
 import gregtech.api.recipes.RecipeMap;
@@ -24,7 +24,7 @@ public class MultiRecipeProvider implements IProbeInfoProvider {
             TileEntity tileEntity = world.getTileEntity(data.getPos());
             if (tileEntity == null) return;
             try {
-                IMultiRecipe resultCapability = tileEntity.getCapability(GregicAdditionsCapabilities.MULTI_RECIPE_CAPABILITY, null);
+                IMultiRecipe resultCapability = tileEntity.getCapability(GregicalityCapabilities.MULTI_RECIPE_CAPABILITY, null);
                 if (resultCapability != null) {
                     addProbeInfo(resultCapability, probeInfo, tileEntity, sideHit);
                 }

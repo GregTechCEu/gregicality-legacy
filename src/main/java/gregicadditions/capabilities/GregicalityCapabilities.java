@@ -8,8 +8,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.common.Mod;
 
+import static gregtech.api.capability.SimpleCapabilityManager.registerCapabilityWithNoDefault;
+
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
-public class GregicAdditionsCapabilities {
+public class GregicalityCapabilities {
 
     @CapabilityInject(IMultiRecipe.class)
     public static Capability<IMultiRecipe> MULTI_RECIPE_CAPABILITY;
@@ -23,4 +25,8 @@ public class GregicAdditionsCapabilities {
     public static final MultiblockAbility<MetaTileEntityMaintenanceHatch> MAINTENANCE_HATCH = new MultiblockAbility<>();
     public static final MultiblockAbility<MetaTileEntityMufflerHatch> MUFFLER_HATCH = new MultiblockAbility<>();
 
+    public static void init() {
+        registerCapabilityWithNoDefault(IMultiRecipe.class);
+        registerCapabilityWithNoDefault(IQubitContainer.class);
+    }
 }

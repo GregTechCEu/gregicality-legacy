@@ -1,7 +1,6 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
@@ -9,6 +8,7 @@ import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeReplicator;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -51,15 +51,15 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .aisle("##XXXXXEXXXXX##", "##XCCCXEXCCCX##", "###XXF#s#FXX###")
                 .aisle("###XXXXXXXXX###", "###XXCCCCCXX###", "#####XPXPX#####")
                 .aisle("#####XXEXX#####", "#####XXEXX#####", "#######X#######")
-                .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.UV], EnumFacing.NORTH)
+                .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)
                 .where('S', GATileEntities.LARGE_REPLICATOR, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('X', TileEntityLargeReplicator.casingState)
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.EAST)
-                .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.EAST)
-                .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.WEST)
-                .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.WEST)
+                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.EAST)
+                .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.EAST)
+                .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.WEST)
+                .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LV], EnumFacing.WEST)
                 .where('F', GAMetaBlocks.FIELD_GEN_CASING.getDefaultState())
                 .where('P', GAMetaBlocks.PUMP_CASING.getDefaultState())
                 .where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())

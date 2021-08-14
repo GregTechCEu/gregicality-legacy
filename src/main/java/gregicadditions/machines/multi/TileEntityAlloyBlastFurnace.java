@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAHeatingCoil;
@@ -51,7 +51,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public TileEntityAlloyBlastFurnace(ResourceLocation metaTileEntityId) {
@@ -84,7 +84,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
                 .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('c', statePredicate(getCasingState2()))
-                .where('m', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
+                .where('m', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH))
                 .where('#', (tile) -> true)
                 .where('A', isAirPredicate())
                 .build();

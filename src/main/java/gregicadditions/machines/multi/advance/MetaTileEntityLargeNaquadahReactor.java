@@ -1,13 +1,13 @@
 package gregicadditions.machines.multi.advance;
 
-import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.GAFuelRecipeLogic;
 import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -22,7 +22,6 @@ import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.*;
-import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -43,12 +42,12 @@ import static gregtech.api.unification.material.Materials.Naquadria;
 public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.OUTPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.OUTPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
 
     public MetaTileEntityLargeNaquadahReactor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.NAQUADAH_REACTOR_FUELS, GAValues.V[GAValues.UV]);
+        super(metaTileEntityId, GARecipeMaps.NAQUADAH_REACTOR_FUELS, GTValues.V[GTValues.UV]);
     }
 
     @Override
@@ -73,7 +72,7 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
 
             ITextComponent fuelName = new TextComponentTranslation(fuelAmount == 0 ? "gregtech.fluid.empty" : fuelStack.getUnlocalizedName());
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_naquadah_reactor.tritium_amount", tritiumAmount));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.diesel_engine.fuel_amount", fuelAmount, fuelName));
+            textList.add(new TextComponentTranslation("gregtech.multiblock.large_combustion_engine.fuel_amount", fuelAmount, fuelName));
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_naquadah_reactor.oxygen_amount", oxygenAmount));
             textList.add(new TextComponentTranslation(oxygenAmount >= 2 ? "gregtech.multiblock.large_naquadah_reactor.oxygen_boosted" : "gregtech.multiblock.large_naquadah_reactor.supply_tritium_to_boost"));
         }
@@ -100,11 +99,11 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('g', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
-                .where('m', abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH).or(statePredicate(getCasingState())))
+                .where('m', abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH).or(statePredicate(getCasingState())))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .build();

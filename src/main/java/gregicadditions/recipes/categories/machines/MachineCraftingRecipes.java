@@ -21,7 +21,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAValues.ZPM;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -31,6 +30,7 @@ import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.MV;
 import static gregtech.api.GTValues.ULV;
 import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;

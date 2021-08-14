@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeMacerator;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -29,13 +29,13 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 					.aisle("XXX", "XXX","XXX","XXX", "XXX", "XXX")
 					.aisle("XXX", "XMX","X#X","XPX", "X#X", "XXX")
 					.aisle("XSX", "XHX","XEX","XIX", "XOX", "XXX")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.SOUTH)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('X', TileEntityLargeMacerator.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.SOUTH)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
 					.where('P', GAMetaBlocks.PISTON_CASING.getDefaultState())
 					.build());

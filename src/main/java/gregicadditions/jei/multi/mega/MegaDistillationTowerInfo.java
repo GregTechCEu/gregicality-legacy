@@ -1,11 +1,11 @@
 package gregicadditions.jei.multi.mega;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -21,7 +21,7 @@ import net.minecraft.util.EnumFacing;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MegaDistillationTowerInfo extends MultiblockInfoPage {
     @Override
@@ -38,14 +38,14 @@ public class MegaDistillationTowerInfo extends MultiblockInfoPage {
                 builder.aisle("#XXX#", "XCpCX", "XpPpX", "XCpCX", "#XEX#");
             }
             builder.aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XEX#")
-                    .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.IV], EnumFacing.SOUTH)
+                    .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.IV], EnumFacing.SOUTH)
                     .where('S', GATileEntities.MEGA_DISTILLATION_TOWER, EnumFacing.SOUTH)
                     .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                     .where('#', Blocks.AIR.getDefaultState())
-                    .where('E', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.HV], EnumFacing.SOUTH)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.HV], EnumFacing.SOUTH)
-                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.SOUTH)
+                    .where('E', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
+                    .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                     .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NICHROME))
                     .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                     .where('P', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV));

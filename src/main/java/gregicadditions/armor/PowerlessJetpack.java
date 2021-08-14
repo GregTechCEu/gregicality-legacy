@@ -2,8 +2,8 @@ package gregicadditions.armor;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import gregicadditions.GAValues;
 import gregicadditions.input.EnumKey;
+import gregtech.api.GTValues;
 import gregtech.api.items.armor.ArmorMetaItem.ArmorMetaValueItem;
 import gregtech.api.items.armor.IArmorLogic;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
@@ -99,7 +99,7 @@ public class PowerlessJetpack implements IArmorLogic {
                 player.sendMessage(new TextComponentTranslation("metaarmor.jetpack.hover.disable"));
             }
 
-            if (internalTank.drain(fuel, false).amount == fuel.amount || burntime >= GAValues.V[burnTier]) {
+            if (internalTank.drain(fuel, false).amount == fuel.amount || burntime >= GTValues.V[burnTier]) {
                 if (!hover) {
                     if (ArmorUtils.isKeyDown(player, EnumKey.JUMP)) {
                         if (player.motionY < 0.6D) player.motionY += 0.2D;
@@ -143,12 +143,12 @@ public class PowerlessJetpack implements IArmorLogic {
 
                 if (suc) {
                     if (!player.onGround) {
-                        if (burntime < GAValues.V[burnTier]) {
+                        if (burntime < GTValues.V[burnTier]) {
                             player.fallDistance = 0.0F;
                             burntime = (int) (currentRecipe.getDuration() * currentRecipe.getMinVoltage());
                             internalTank.drain(fuel.amount, true);
                         } else {
-                            burntime -= GAValues.V[burnTier];
+                            burntime -= GTValues.V[burnTier];
                         }
                     }
                 }
@@ -271,7 +271,7 @@ public class PowerlessJetpack implements IArmorLogic {
     }
 
     static {
-        fuels = RecipeMaps.DIESEL_GENERATOR_FUELS.getRecipeList();
+        fuels = RecipeMaps.COMBUSTION_GENERATOR_FUELS.getRecipeList();
         forbiddenFuels = Arrays.asList(Materials.Oil.getFluid(1).getFluid(),
                 Materials.SulfuricLightFuel.getFluid(1).getFluid());
     }

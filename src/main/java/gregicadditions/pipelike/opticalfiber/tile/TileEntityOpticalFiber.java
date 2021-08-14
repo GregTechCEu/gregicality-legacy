@@ -1,6 +1,6 @@
 package gregicadditions.pipelike.opticalfiber.tile;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
@@ -34,7 +34,7 @@ public class TileEntityOpticalFiber extends TileEntityPipeBase<OpticalFiberSize,
     @Nullable
     @Override
     public <T> T getCapabilityInternal(Capability<T> capability, @Nullable EnumFacing facing) {
-        if (capability == GregicAdditionsCapabilities.QBIT_CAPABILITY) {
+        if (capability == GregicalityCapabilities.QBIT_CAPABILITY) {
             return (T) getEnergyContainer();
         }
         return super.getCapabilityInternal(capability, facing);

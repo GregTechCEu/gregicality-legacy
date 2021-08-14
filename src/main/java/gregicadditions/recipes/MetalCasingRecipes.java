@@ -5,7 +5,7 @@ import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.item.metal.NuclearCasing;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.util.IStringSerializable;
 
@@ -34,7 +34,7 @@ public class MetalCasingRecipes {
 
     private static <T extends Enum<T> & IStringSerializable> void registerMetalCasingRecipe(Material inputMaterial, VariantBlock<T> outputCasingType, T outputCasing) {
 
-        ModHandler.addShapedRecipe(String.format("metal_casing_%s", inputMaterial), outputCasingType.getItemVariant(outputCasing, 3),
+        ModHandler.addShapedRecipe(String.format("metal_casing_%s", inputMaterial), outputCasingType.getItemVariant(outputCasing, 2),
                 "PhP", "PFP", "PwP",
                 'P', OreDictUnifier.get(plate, inputMaterial),
                 'F', OreDictUnifier.get(frameGt, inputMaterial));
@@ -43,7 +43,7 @@ public class MetalCasingRecipes {
                 .input(plate, inputMaterial, 6)
                 .input(frameGt, inputMaterial)
                 .circuitMeta(0)
-                .outputs(outputCasingType.getItemVariant(outputCasing, 3))
+                .outputs(outputCasingType.getItemVariant(outputCasing, 2))
                 .buildAndRegister();
     }
 }

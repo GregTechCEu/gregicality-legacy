@@ -1,6 +1,6 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
@@ -38,7 +38,7 @@ public class MetaTileEntityStellarForge extends GARecipeMapMultiblockController 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     private long maxVoltage;

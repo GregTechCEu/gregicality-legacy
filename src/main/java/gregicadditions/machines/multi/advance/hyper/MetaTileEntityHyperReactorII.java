@@ -1,12 +1,11 @@
 package gregicadditions.machines.multi.advance.hyper;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
-import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -39,7 +38,7 @@ import static gregtech.api.unification.material.Materials.Radon;
 public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
 
     public static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityHyperReactorII(ResourceLocation metaTileEntityId, long maxVoltage) {

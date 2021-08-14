@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.CasingUtils;
@@ -46,7 +46,7 @@ import static net.minecraft.block.BlockDirectional.FACING;
 public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
 
     public TileEntityLargeForgeHammer(ResourceLocation metaTileEntityId) {

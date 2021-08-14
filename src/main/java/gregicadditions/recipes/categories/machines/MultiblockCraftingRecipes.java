@@ -1,10 +1,10 @@
 package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -326,7 +326,7 @@ public class MultiblockCraftingRecipes {
 
         // Fluid Drilling Rig I
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(120)
-                .inputs(HULL[GAValues.MV].getStackForm())
+                .inputs(HULL[GTValues.MV].getStackForm())
                 .input(frameGt, Steel)
                 .input(circuit, Good)
                 .inputs(ELECTRIC_MOTOR_MV.getStackForm(4))

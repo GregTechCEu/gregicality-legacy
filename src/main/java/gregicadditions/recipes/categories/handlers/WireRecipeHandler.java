@@ -1,12 +1,10 @@
 package gregicadditions.recipes.categories.handlers;
 
-import gregicadditions.GAValues;
 import gregicadditions.utils.Tuple;
+import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
@@ -19,11 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.INSULATION_WIRE_ASSEMBLY;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.M;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.UNPACKER_RECIPES;
@@ -42,15 +38,15 @@ public class WireRecipeHandler {
      * but Rubber can only be used for ULV and LV cables.
      */
     private static final List<Tuple<IngotMaterial, Integer>> GA_INSULATIONS = Arrays.asList(
-            new Tuple<>(Rubber,                 GAValues.LV),
-            new Tuple<>(Polycaprolactam,        GAValues.MV),
-            new Tuple<>(Plastic,                GAValues.HV),
-            new Tuple<>(PolyvinylChloride,      GAValues.EV),
-            new Tuple<>(PolyphenyleneSulfide,   GAValues.LuV),
-            new Tuple<>(Polybenzimidazole,      GAValues.UV),
-            new Tuple<>(Polyetheretherketone,   GAValues.UEV),
-            new Tuple<>(Zylon,                  GAValues.UMV),
-            new Tuple<>(FullerenePolymerMatrix, GAValues.MAX)
+            new Tuple<>(Rubber,                 GTValues.LV),
+            new Tuple<>(Polycaprolactam,        GTValues.MV),
+            new Tuple<>(Polyethylene,           GTValues.HV),
+            new Tuple<>(PolyvinylChloride,      GTValues.EV),
+            new Tuple<>(PolyphenyleneSulfide,   GTValues.LuV),
+            new Tuple<>(Polybenzimidazole,      GTValues.UV),
+            new Tuple<>(Polyetheretherketone,   GTValues.UEV),
+            new Tuple<>(Zylon,                  GTValues.UMV),
+            new Tuple<>(FullerenePolymerMatrix, GTValues.MAX)
     );
 
     /**
@@ -86,7 +82,7 @@ public class WireRecipeHandler {
      * Right now it is UMV, meaning only UMV, UXV, and MAX cables require it.
      * This is different from before, where any cable covered with Zylon or Fullerene needed Assembly.
      */
-    private static final int INSULATION_ASSEMBLY_TIER = GAValues.UMV;
+    private static final int INSULATION_ASSEMBLY_TIER = GTValues.UMV;
 
     /**
      * Some helper data structures for the logic below. Nothing below here should need to be changed, and
@@ -104,7 +100,7 @@ public class WireRecipeHandler {
         // Populate the material mapping map
         List<Integer> insulationCutoffs = GA_INSULATIONS.stream().map(Tuple::getValue).collect(Collectors.toList());
         int insulationIndex = 0;
-        for (int i = GAValues.ULV; i <= GAValues.MAX; i++) {
+        for (int i = GTValues.ULV; i <= GTValues.MAX; i++) {
             int cutoff = insulationCutoffs.get(insulationIndex);
             if (i <= cutoff)
                 MATERIAL_MAPPING.put(i, insulationIndex);

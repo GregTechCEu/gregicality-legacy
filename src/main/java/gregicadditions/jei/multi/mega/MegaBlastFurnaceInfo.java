@@ -2,15 +2,13 @@ package gregicadditions.jei.multi.mega;
 
 import com.google.common.collect.Lists;
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaBlastFurnace;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -19,13 +17,12 @@ import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
-import scala.tools.cmd.Meta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
     @Override
@@ -53,7 +50,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .aisle("#####XXXXX#####", "#F#XXX#p#XXX###", "##XXp#X#X#pXX##", "#XXX##X#X##XXX#", "#Xp#X##X##X#pX#", "OX###X#X#X###XX", "XXXX##XXX##XXXX", "GGGpXXXPXXX##pX", "OXXX##XXX##XXXX", "XX###X#X#X###XX", "#Xp#X##X##X#pX#", "#XXX##X#X##XXX#", "##XXp#X#X#pXX##", "###XXX#p#XXX###", "#####XXXXX#####")
                     .aisle("#####XXGXX#####", "#F#XXX#R#XXX###", "##GXR#X#X#RXG##", "#XXX##X#X##XXX#", "#GR#X##X##X#RG#", "iX###X#X#X###XX", "HXXX##XXX##XXXX", "GGGpXXXPXXX##RG", "iXXX##XXX##XXXX", "XX###X#X#X###XX", "#GR#X##X##X#RG#", "#XXX##X#X##XXX#", "##GXR#X#X#RXG##", "###XXX#R#XXX###", "#####XXGXX#####")
                     .aisle("#####XXXXX#####", "#F#XXXBBBXXX###", "##XXBBXBXBBXX##", "#XXXBBXBXBBXXX#", "#XBBXBBXBBXBBX#", "IXBBBXBXBXBBBXX", "MXXXBBXXXBBXXBX", "SGGpXXXPXXXBBBX", "IXXXBBXXXBBXXBX", "XXBBBXBXBXBBBXX", "#XBBXBBXBBXBBX#", "#XXXBBXBXBBXXX#", "##XXBBXBXBBXX##", "###XXXBBBXXX###", "#####XXXXX#####")
-                    .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.UV], EnumFacing.WEST)
+                    .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.WEST)
                     .where('S', GATileEntities.MEGA_BLAST_FURNACE, EnumFacing.WEST)
                     .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                     .where('T', MetaTileEntityMegaBlastFurnace.secondaryCasingState)
@@ -61,10 +58,10 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('f', MetaTileEntityMegaBlastFurnace.getFrameState())
                     .where('F', MetaTileEntityMegaBlastFurnace.getSecondaryFrameState())
                     .where('#', Blocks.AIR.getDefaultState())
-                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LuV], EnumFacing.WEST)
-                    .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LuV], EnumFacing.WEST)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LuV], EnumFacing.WEST)
-                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LuV], EnumFacing.WEST)
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LuV], EnumFacing.WEST)
+                    .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LuV], EnumFacing.WEST)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LuV], EnumFacing.WEST)
+                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LuV], EnumFacing.WEST)
                     .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                     .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                     .where('P', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
@@ -72,7 +69,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('m', GATileEntities.MUFFLER_HATCH[2], EnumFacing.UP)
                     .where('B', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS))
                     .where('R', MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.TUNGSTENSTEEL_FIREBOX))
-                    .where('g', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
+                    .where('g', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
             shapeInfo.add(builder.build());
         }
 

@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.uumatter;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
@@ -34,7 +34,7 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public TileEntityLargeReplicator(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {

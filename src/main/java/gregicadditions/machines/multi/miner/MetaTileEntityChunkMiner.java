@@ -1,11 +1,10 @@
 package gregicadditions.machines.multi.miner;
 
 import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.ColourMultiplier;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.GAValues;
 import gregicadditions.client.ClientHandler;
+import gregtech.api.GTValues;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
@@ -19,7 +18,6 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.util.GTUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +35,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -55,7 +52,7 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
     public MetaTileEntityChunkMiner(ResourceLocation metaTileEntityId, Miner.Type type, int tier) {
         super(metaTileEntityId, tier);
         this.inventorySize = (tier + 1) * (tier + 1);
-        this.energyPerTick = GAValues.V[tier];
+        this.energyPerTick = GTValues.V[tier];
         this.type = type;
         this.containerInventory = new ItemStackHandler(2);
         initializeInventory();
@@ -147,7 +144,7 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GAValues.VN[getTier()]));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
         tooltip.add(I18n.format("gtadditions.machine.miner.description"));
         tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));

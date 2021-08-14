@@ -2,9 +2,9 @@ package gregicadditions.recipes.helper;
 
 import com.google.common.base.Preconditions;
 import forestry.core.fluids.Fluids;
-import gregicadditions.GAValues;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.*;
@@ -194,44 +194,45 @@ public class HelperMethods {
         return false;
     }
 
+    // TODO These should (mostly) be in CEu
     ///////////////////////////////////////////////////
     //              Fuel Recipe Helpers              //
     ///////////////////////////////////////////////////
 
     public static void registerPlasmaFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.COMBUSTION_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.COMBUSTION_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerGasGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerSemiFluidGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerHyperReactorFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        GARecipeMaps.HYPER_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerRocketFuel(FluidStack fuelStack, int duration, int tier) {
-        GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }
 
     public static void registerHotCoolantTurbineFuel(FluidStack input, Material output, int duration, int tier) {
-        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
+        GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GTValues.V[tier], output.getFluid(input.amount)));
     }
 
     public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier) {
@@ -239,7 +240,7 @@ public class HelperMethods {
                 .qubit(1)
                 .input(prefix, material)
                 .duration(duration)
-                .EUt(GAValues.V[tier])
+                .EUt((int)GTValues.V[tier])
                 .buildAndRegister();
     }
 

@@ -1,13 +1,13 @@
 package gregicadditions.machines.multi.advance;
 
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.GAFuelRecipeLogic;
 import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -23,7 +23,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -38,13 +37,13 @@ import java.util.function.Supplier;
 
 import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockController {
 
 
     public MetaTileEntityLargeRocketEngine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.ROCKET_FUEL_RECIPES, GAValues.V[GAValues.EV]);
+        super(metaTileEntityId, GARecipeMaps.ROCKET_FUEL_RECIPES, GTValues.V[GTValues.EV]);
     }
 
     @Override
@@ -105,7 +104,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
                 .aisle("KKK", "KSK", "KKK")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
+                .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH)))
                 .where('E', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)))
                 .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
                 .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING)))
@@ -210,12 +209,12 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
             // Apply efficiency
             EUt *= 0.8;
 
-            if (EUt > GAValues.V[GAValues.LuV])
-                EUt = GAValues.V[GAValues.LuV] + ((EUt - GAValues.V[GAValues.LuV]) * 40 / 100);
-            if (EUt > GAValues.V[GAValues.ZPM])
-                EUt = GAValues.V[GAValues.ZPM] + ((EUt - GAValues.V[GAValues.ZPM]) * 20 / 100);
-            if (EUt > GAValues.V[GAValues.UV])
-                EUt = GAValues.V[GAValues.UV] + ((EUt - GAValues.V[GAValues.UV]) * 10 / 100);
+            if (EUt > GTValues.V[GTValues.LuV])
+                EUt = GTValues.V[GTValues.LuV] + ((EUt - GTValues.V[GTValues.LuV]) * 40 / 100);
+            if (EUt > GTValues.V[GTValues.ZPM])
+                EUt = GTValues.V[GTValues.ZPM] + ((EUt - GTValues.V[GTValues.ZPM]) * 20 / 100);
+            if (EUt > GTValues.V[GTValues.UV])
+                EUt = GTValues.V[GTValues.UV] + ((EUt - GTValues.V[GTValues.UV]) * 10 / 100);
 
             // Refresh our internal FluidStack
             fuelStack.amount -= fuelUsed;

@@ -2,6 +2,7 @@ package gregicadditions;
 
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
+import gregtech.api.GTValues;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -1370,7 +1371,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             @Config.Name("Hyper Reactor EU/t generation")
             @Config.RangeInt(min = 1)
-            public int[] euGeneration = {GAValues.V[GAValues.UHV], GAValues.V[GAValues.UEV], GAValues.V[GAValues.UIV]};
+            public int[] euGeneration = {(int)GTValues.V[GTValues.UHV], (int)GTValues.V[GTValues.UEV], (int)GTValues.V[GTValues.UIV]};
 
             @Config.Comment("The fuel multiplier when the Reactor is boosted.")
             @Config.RequiresMcRestart

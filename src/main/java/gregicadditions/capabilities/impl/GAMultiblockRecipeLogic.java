@@ -1,6 +1,6 @@
 package gregicadditions.capabilities.impl;
 
-import gregicadditions.GAValues;
+import gregtech.api.GTValues;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -56,7 +56,7 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
         }
         boolean negativeEU = EUt < 0;
         int tier = getOverclockingTier(voltage);
-        if (GAValues.V[tier] <= EUt || tier == 0)
+        if (GTValues.V[tier] <= EUt || tier == 0)
             return new int[]{EUt, durationModified};
         if (negativeEU)
             EUt = -EUt;
@@ -70,7 +70,7 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
             int resultEUt = EUt;
             double resultDuration = durationModified;
             //do not overclock further if duration is already too small
-            while (resultDuration >= 3 && resultEUt <= GAValues.V[tier - 1]) {
+            while (resultDuration >= 3 && resultEUt <= GTValues.V[tier - 1]) {
                 resultEUt *= 4;
                 resultDuration /= 2.8;
             }

@@ -1,13 +1,12 @@
 package gregicadditions.jei.multi;
 
-import gregicadditions.GAValues;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
@@ -16,10 +15,7 @@ import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +50,7 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('c', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))
                     .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE))
                     .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST)
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.EAST)
                     .build());
         }
         for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
@@ -72,7 +68,7 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('c', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))
                     .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE))
                     .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST)
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.EAST)
                     .build());
         }
 

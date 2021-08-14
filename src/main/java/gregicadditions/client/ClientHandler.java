@@ -1,8 +1,8 @@
 package gregicadditions.client;
 
-import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
+import gregtech.api.GTValues;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
@@ -133,7 +133,7 @@ public class ClientHandler {
             CONVERTER_FACES.put(t, new SimpleOverlayRenderer("overlay/machine/converter/" + t.toString().toLowerCase()));
         }
         for (int i = 0; i < VOLTAGE_CASINGS.length; i++) {
-            String voltageName = GAValues.VN[i].toLowerCase();
+            String voltageName = GTValues.VN[i].toLowerCase();
             VOLTAGE_CASINGS[i] = new SimpleSidedCubeRenderer("casings/voltage/" + voltageName);
         }
     }

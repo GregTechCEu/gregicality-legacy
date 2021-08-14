@@ -1,6 +1,6 @@
 package gregicadditions.machines.multi.qubit;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.QubitProducerRecipeLogic;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 
 public class MetaTileEntityQubitComputer extends QubitRecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicAdditionsCapabilities.OUTPUT_QBIT, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicalityCapabilities.OUTPUT_QBIT, GregicalityCapabilities.MAINTENANCE_HATCH};
 
 
     public MetaTileEntityQubitComputer(ResourceLocation metaTileEntityId) {

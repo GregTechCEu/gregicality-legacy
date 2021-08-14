@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHatch;
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -108,7 +108,7 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
      * @param duration duration in ticks to add to the counter of active time
      */
     public void calculateMaintenance(int duration) {
-        MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
+        MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicalityCapabilities.MAINTENANCE_HATCH).get(0);
         if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
             return;
         }
@@ -125,9 +125,9 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         if (hasMaintenance) {
-            if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
+            if (getAbilities(GregicalityCapabilities.MAINTENANCE_HATCH).isEmpty())
                 return;
-            MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
+            MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicalityCapabilities.MAINTENANCE_HATCH).get(0);
             if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
                 this.maintenance_problems = 0b111111;
             } else {
@@ -151,9 +151,9 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
     @Override
     public void invalidateStructure() {
         if (hasMaintenance) {
-            if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
+            if (getAbilities(GregicalityCapabilities.MAINTENANCE_HATCH).isEmpty())
                 return;
-            MetaTileEntityMaintenanceHatch maintenance = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
+            MetaTileEntityMaintenanceHatch maintenance = getAbilities(GregicalityCapabilities.MAINTENANCE_HATCH).get(0);
             if (maintenance.getType() != 2)
                 maintenance.storeMaintenanceData(maintenance_problems, timeActive);
         }
@@ -166,8 +166,8 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
         if (!canForm)
             return false;
 
-        int mufflerCount = abilities.getOrDefault(GregicAdditionsCapabilities.MUFFLER_HATCH, Collections.emptyList()).size();
-        int maintenanceCount = abilities.getOrDefault(GregicAdditionsCapabilities.MAINTENANCE_HATCH, Collections.emptyList()).size();
+        int mufflerCount = abilities.getOrDefault(GregicalityCapabilities.MUFFLER_HATCH, Collections.emptyList()).size();
+        int maintenanceCount = abilities.getOrDefault(GregicalityCapabilities.MAINTENANCE_HATCH, Collections.emptyList()).size();
 
         if (hasMuffler) {
             if (mufflerCount != 1)
@@ -276,12 +276,12 @@ public abstract class GAMultiblockWithDisplayBase extends MultiblockWithDisplayB
     }
 
     protected void outputRecoveryItems() {
-        MetaTileEntityMufflerHatch muffler = getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH).get(0);
+        MetaTileEntityMufflerHatch muffler = getAbilities(GregicalityCapabilities.MUFFLER_HATCH).get(0);
         muffler.recoverItemsTable(recoveryItems.stream().map(ItemStack::copy).collect(Collectors.toList()));
     }
 
     public boolean isMufflerFaceFree() {
-        return isStructureFormed() && hasMuffler && getAbilities(GregicAdditionsCapabilities.MUFFLER_HATCH).get(0).isFrontFaceFree();
+        return isStructureFormed() && hasMuffler && getAbilities(GregicalityCapabilities.MUFFLER_HATCH).get(0).isFrontFaceFree();
     }
 
     protected void setRecoveryItems(ItemStack... recoveryItems) {

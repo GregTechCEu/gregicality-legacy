@@ -1,14 +1,13 @@
 package gregicadditions.jei.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
-import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.TileEntityLargeThermalCentrifuge;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -29,7 +28,6 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
@@ -51,18 +49,18 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
                     .aisle("HXMXX", "SCPCG", "E#P#X", "#XmX#")
                     .aisle("XXXXX", "XCCCX", "O###X", "#XXX#")
                     .aisle("#XXX#", "#XGX#", "#XXX#", "#####")
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.WEST)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                     .where('X', TileEntityLargeThermalCentrifuge.casingState)
                     .where('#', Blocks.AIR.getDefaultState())
-                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
                     .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                     .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE))
                     .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
-                    .where('G', MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
+                    .where('G', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
                     .build());
         }
 

@@ -4,7 +4,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.capabilities.impl.QubitContainerHandler;
 import gregtech.api.GTValues;
@@ -59,7 +59,7 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
 
     @Override
     public MultiblockAbility<IQubitContainer> getAbility() {
-        return isExportHatch ? GregicAdditionsCapabilities.OUTPUT_QBIT : GregicAdditionsCapabilities.INPUT_QBIT;
+        return isExportHatch ? GregicalityCapabilities.OUTPUT_QBIT : GregicalityCapabilities.INPUT_QBIT;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        String tierName = GAValues.VN[getTier()];
+        String tierName = GTValues.VN[getTier()];
 
         if (isExportHatch) {
             tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", qubitContainer.getOutputQubit(), tierName));

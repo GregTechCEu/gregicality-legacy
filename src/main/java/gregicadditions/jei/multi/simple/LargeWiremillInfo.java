@@ -1,13 +1,13 @@
 package gregicadditions.jei.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.TileEntityLargeWiremill;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -44,14 +44,14 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 				builder.aisle("IXXXX", "XMGMX", "OXXXX");
 			}
 			builder.aisle("XHX##", "XSX##", "EXX##")
-					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('X', TileEntityLargeWiremill.casingState)
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
-					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
-					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
+					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
+					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState());
 			shapeInfo.add(builder.build());
 		}

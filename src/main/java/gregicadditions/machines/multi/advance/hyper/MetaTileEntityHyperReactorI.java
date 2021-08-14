@@ -1,14 +1,13 @@
 package gregicadditions.machines.multi.advance.hyper;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
 import gregicadditions.machines.multi.GAFueledMultiblockController;
-import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
@@ -41,7 +40,7 @@ import static gregtech.api.unification.material.Materials.Helium;
 public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityHyperReactorI(ResourceLocation metaTileEntityId, long maxVoltage) {

@@ -1,6 +1,6 @@
 package gregicadditions.pipelike.opticalfiber.tile;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
@@ -68,7 +68,7 @@ public class CableQubitContainer implements IQubitContainer {
             if (tileEntity == null || tileEntityCable.getPipeBlock().getPipeTileEntity(tileEntity) != null) {
                 continue; //do not emit into other cable tile entities
             }
-            IQubitContainer qubitContainer = tileEntity.getCapability(GregicAdditionsCapabilities.QBIT_CAPABILITY, facing.getOpposite());
+            IQubitContainer qubitContainer = tileEntity.getCapability(GregicalityCapabilities.QBIT_CAPABILITY, facing.getOpposite());
             if (qubitContainer == null) continue;
             currentParallel += qubitContainer.acceptQubitFromNetwork(facing.getOpposite(), voltage, amperage - currentParallel);
             if (currentParallel == amperage)

@@ -1,14 +1,13 @@
 package gregicadditions.machines.multi.simple;
 
-import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
-import gregicadditions.recipes.GARecipeMaps;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,6 +17,7 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -39,9 +39,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
-import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblockController {
 
@@ -61,7 +60,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     private long maxVoltage = 0;
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, true);
+        super(metaTileEntityId, RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, true);
         this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
     }
 
@@ -78,11 +77,11 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 .aisle("GSG", "RTR", "FIF")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH))))
+                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH))))
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS)))
                 .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[0].metaTileEntityId)))
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-                .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)).or(abilityPartPredicate(GregicAdditionsCapabilities.INPUT_QBIT)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('A', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING)).or(abilityPartPredicate(MultiblockAbility.INPUT_ENERGY)).or(abilityPartPredicate(GregicalityCapabilities.INPUT_QBIT)))
                 .where('R', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS)))
                 .where('T', tieredCasing1Predicate().or(tieredCasing2Predicate()))
                 .build();
@@ -103,19 +102,19 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 long maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_IV:
-                        maxVoltage = GAValues.V[GAValues.IV];
+                        maxVoltage = GTValues.V[GTValues.IV];
                         break;
                     case TIERED_HULL_LUV:
-                        maxVoltage = GAValues.V[GAValues.LuV];
+                        maxVoltage = GTValues.V[GTValues.LuV];
                         break;
                     case TIERED_HULL_ZPM:
-                        maxVoltage = GAValues.V[GAValues.ZPM];
+                        maxVoltage = GTValues.V[GTValues.ZPM];
                         break;
                     case TIERED_HULL_UV:
-                        maxVoltage = GAValues.V[GAValues.UV];
+                        maxVoltage = GTValues.V[GTValues.UV];
                         break;
                     case TIERED_HULL_MAX:
-                        maxVoltage = GAValues.V[GAValues.MAX];
+                        maxVoltage = GTValues.V[GTValues.MAX];
                         break;
                     default:
                         maxVoltage = 0;
@@ -141,19 +140,19 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 long maxVoltage;
                 switch (tieredCasingType) {
                     case TIERED_HULL_UHV:
-                        maxVoltage = GAValues.V[GAValues.UHV];
+                        maxVoltage = GTValues.V[GTValues.UHV];
                         break;
                     case TIERED_HULL_UEV:
-                        maxVoltage = GAValues.V[GAValues.UEV];
+                        maxVoltage = GTValues.V[GTValues.UEV];
                         break;
                     case TIERED_HULL_UIV:
-                        maxVoltage = GAValues.V[GAValues.UIV];
+                        maxVoltage = GTValues.V[GTValues.UIV];
                         break;
                     case TIERED_HULL_UMV:
-                        maxVoltage = GAValues.V[GAValues.UMV];
+                        maxVoltage = GTValues.V[GTValues.UMV];
                         break;
                     case TIERED_HULL_UXV:
-                        maxVoltage = GAValues.V[GAValues.UXV];
+                        maxVoltage = GTValues.V[GTValues.UXV];
                         break;
                     default:
                         maxVoltage = 0;

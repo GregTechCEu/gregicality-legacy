@@ -1,7 +1,7 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
@@ -41,7 +41,7 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
     public TileEntityLargeBrewery(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeBrewery.euPercentage, GAConfig.multis.largeBrewery.durationPercentage, GAConfig.multis.largeBrewery.chancedBoostPercentage, GAConfig.multis.largeBrewery.stack,
@@ -71,7 +71,7 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
                 .where('#', (tile) -> true)
                 .where('M', motorPredicate())
                 .where('P', pumpPredicate())
-                .where('m', abilityPartPredicate(GregicAdditionsCapabilities.MUFFLER_HATCH))
+                .where('m', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH))
                 .build();
     }
 

@@ -1,6 +1,6 @@
 package gregicadditions.pipelike.opticalfiber;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.pipelike.opticalfiber.net.WorldOpticalFiberNet;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
@@ -67,7 +67,7 @@ public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, Optical
             //do not connect to null cables and ignore cables
             if (tileEntity == null || getPipeTileEntity(tileEntity) != null) continue;
             EnumFacing opposite = side.getOpposite();
-            IQubitContainer qubitContainer = tileEntity.getCapability(GregicAdditionsCapabilities.QBIT_CAPABILITY, opposite);
+            IQubitContainer qubitContainer = tileEntity.getCapability(GregicalityCapabilities.QBIT_CAPABILITY, opposite);
             if (qubitContainer != null) {
                 activeNodeConnections |= 1 << side.getIndex();
             }

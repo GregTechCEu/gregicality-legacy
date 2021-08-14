@@ -1,7 +1,7 @@
 package gregicadditions.capabilities.impl;
 
 import gregicadditions.capabilities.GATraitNetworkIds;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregtech.api.metatileentity.MTETrait;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -63,7 +63,7 @@ public class QubitContainerHandler extends MTETrait implements IQubitContainer {
 
     @Override
     public <T> T getCapability(Capability<T> capability) {
-        if (capability == GregicAdditionsCapabilities.QBIT_CAPABILITY) {
+        if (capability == GregicalityCapabilities.QBIT_CAPABILITY) {
             return (T) this;
         }
         return null;
@@ -114,8 +114,8 @@ public class QubitContainerHandler extends MTETrait implements IQubitContainer {
                 if (!outputsQubit(side)) continue;
                 TileEntity tileEntity = metaTileEntity.getWorld().getTileEntity(metaTileEntity.getPos().offset(side));
                 EnumFacing oppositeSide = side.getOpposite();
-                if (tileEntity != null && tileEntity.hasCapability(GregicAdditionsCapabilities.QBIT_CAPABILITY, oppositeSide)) {
-                    IQubitContainer qubitContainer = tileEntity.getCapability(GregicAdditionsCapabilities.QBIT_CAPABILITY, oppositeSide);
+                if (tileEntity != null && tileEntity.hasCapability(GregicalityCapabilities.QBIT_CAPABILITY, oppositeSide)) {
+                    IQubitContainer qubitContainer = tileEntity.getCapability(GregicalityCapabilities.QBIT_CAPABILITY, oppositeSide);
                     if (qubitContainer == null || !qubitContainer.inputsQubit(oppositeSide)) continue;
                     currentParallel += qubitContainer.acceptQubitFromNetwork(oppositeSide, outputQubit, outputParallel - currentParallel);
                     if (currentParallel == outputParallel) break;

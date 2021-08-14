@@ -1,6 +1,6 @@
 package gregicadditions.theoneprobe;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.integration.theoneprobe.provider.CapabilityInfoProvider;
@@ -15,7 +15,7 @@ public class QubitContainerInfoProvider extends CapabilityInfoProvider<IQubitCon
 
     @Override
     protected Capability<IQubitContainer> getCapability() {
-        return GregicAdditionsCapabilities.QBIT_CAPABILITY;
+        return GregicalityCapabilities.QBIT_CAPABILITY;
     }
 
     @Override

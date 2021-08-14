@@ -3,7 +3,6 @@ package gregicadditions.machines.energyconverter;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
-import gregicadditions.GAValues;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.energyconverter.energy.EnergyConverterCharger;
 import gregicadditions.machines.energyconverter.energy.UniversalEnergyStorage;
@@ -12,6 +11,7 @@ import gregicadditions.machines.energyconverter.utils.Energy;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.machines.energyconverter.utils.Numbers;
 import gregicadditions.machines.energyconverter.utils.Ratio;
+import gregtech.api.GTValues;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -171,7 +171,7 @@ public class MetaTileEntityEnergyConverter extends TieredMetaTileEntity implemen
         if (this.type == null) {
             return;
         }
-        this.energyStorage = new UniversalEnergyStorage(this, GAValues.V[this.getTier()] * 32L);
+        this.energyStorage = new UniversalEnergyStorage(this, GTValues.V[this.getTier()] * 32L);
         this.type.getInput().createEnergyReceiverTrait(this);
         this.type.getOutput().createEnergyEmitterTrait(this);
         this.itemChargeHandler = this.type.getConverterType().getEnergyOutput().createChargeHandler(this);
@@ -195,11 +195,11 @@ public class MetaTileEntityEnergyConverter extends TieredMetaTileEntity implemen
             tooltip.add(I18n.format("gtadditions.converter.disabled"));
         } else {
             if (this.type.getInput() == Energy.GTEU) {
-                tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", this.energyStorage.getInputVoltage(), GAValues.VN[this.getTier()]));
+                tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", this.energyStorage.getInputVoltage(), GTValues.VN[this.getTier()]));
             } else {
-                tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", this.energyStorage.getOutputVoltage(), GAValues.VN[this.getTier()]));
+                tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", this.energyStorage.getOutputVoltage(), GTValues.VN[this.getTier()]));
             }
-            tooltip.add(I18n.format(this.isGTEU() ? "gtadditions.converter.energy_out" : "gtadditions.converter.energy_in", this.type.getConverterType().getEnergyOutput(), this.ratioGteuAsInput().convert(GAValues.V[this.getTier()] * this.invSize, this.type.getConverterType().getEnergyOutput().getNumberType())));
+            tooltip.add(I18n.format(this.isGTEU() ? "gtadditions.converter.energy_out" : "gtadditions.converter.energy_in", this.type.getConverterType().getEnergyOutput(), this.ratioGteuAsInput().convert(GTValues.V[this.getTier()] * this.invSize, this.type.getConverterType().getEnergyOutput().getNumberType())));
             tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", this.energyStorage.getEnergyCapacity()));
         }
     }

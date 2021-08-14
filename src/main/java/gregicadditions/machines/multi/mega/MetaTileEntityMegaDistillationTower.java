@@ -1,6 +1,6 @@
 package gregicadditions.machines.multi.mega;
 
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -22,7 +22,7 @@ public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMap
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityMegaDistillationTower(ResourceLocation metaTileEntityId) {
@@ -44,7 +44,7 @@ public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMap
                 .where('L', statePredicate(getCasingState()))
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('X', abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS).or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicAdditionsCapabilities.MAINTENANCE_HATCH)))
+                .where('X', abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS).or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH)))
                 .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.NICHROME)))
                 .where('P', frameworkPredicate().or(frameworkPredicate2()))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))

@@ -1,10 +1,10 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeCutting;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -29,17 +29,17 @@ public class LargeCuttingInfo extends MultiblockInfoPage {
             MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder()
                     .aisle("EXXXX", "XXX#X", "##X#X");
             for(int j = 0; j < i; j++) {
-					builder.aisle("IXXCX", "OXXMX", "##X#X");
+                builder.aisle("IXXCX", "OXXMX", "##X#X");
             }
             builder.aisle("iHXXX", "XSX#X", "##X#X")
-                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.WEST)
+                    .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('S', GATileEntities.LARGE_CUTTING, EnumFacing.SOUTH)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                     .where('X', TileEntityLargeCutting.casingState)
                     .where('#', Blocks.AIR.getDefaultState())
-                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
-                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
-                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
+                    .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
+                    .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.SOUTH)
+                    .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
                     .where('C', GAMetaBlocks.CONVEYOR_CASING.getDefaultState());
             shapeInfo.add(builder.build());

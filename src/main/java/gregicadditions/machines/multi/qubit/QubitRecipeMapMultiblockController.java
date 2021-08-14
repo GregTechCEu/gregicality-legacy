@@ -1,12 +1,11 @@
 package gregicadditions.machines.multi.qubit;
 
 import com.google.common.collect.Lists;
-import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.capabilities.impl.QubitContainerList;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.util.ResourceLocation;
@@ -51,8 +50,8 @@ public abstract class QubitRecipeMapMultiblockController extends GARecipeMapMult
     }
 
     private void initializeAbilities() {
-        this.inputQubit = new QubitContainerList(getAbilities(GregicAdditionsCapabilities.INPUT_QBIT));
-        this.outputQubit = new QubitContainerList(getAbilities(GregicAdditionsCapabilities.OUTPUT_QBIT));
+        this.inputQubit = new QubitContainerList(getAbilities(GregicalityCapabilities.INPUT_QBIT));
+        this.outputQubit = new QubitContainerList(getAbilities(GregicalityCapabilities.OUTPUT_QBIT));
     }
 
     private void resetTileAbilities() {

@@ -1,12 +1,11 @@
 package gregicadditions.recipes.categories;
 
-import gregicadditions.GAMaterials;
-import gregicadditions.GAValues;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.helper.GACraftingComponents;
+import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -22,7 +21,6 @@ import net.minecraft.util.IStringSerializable;
 import java.util.Arrays;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAValues.*;
 import static gregicadditions.item.CellCasing.CellType.*;
 import static gregicadditions.item.GAHeatingCoil.CoilType.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -31,7 +29,7 @@ import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.GAReactorCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
-import static gregtech.api.GTValues.L;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
@@ -131,7 +129,7 @@ public class CasingRecipes {
                 .input(gear, BabbittAlloy, 8)
                 .input(plate, BabbittAlloy, 8)
                 .input(cableGtOctal, NiobiumTitanium)
-                .inputs(MetaTileEntities.HULL[GAValues.ZPM].getStackForm())
+                .inputs(MetaTileEntities.HULL[GTValues.ZPM].getStackForm())
                 .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TIERED_HULL_ZPM))
                 .buildAndRegister();
