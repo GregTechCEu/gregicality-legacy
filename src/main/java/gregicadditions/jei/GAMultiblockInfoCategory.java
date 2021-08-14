@@ -90,6 +90,10 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()))
                     .put("advanced_chemical_reactor", new MultiblockInfoRecipeWrapper(new AdvancedChemicalReactorInfo()))
                     .put("gas_centrifuge", new MultiblockInfoRecipeWrapper(new GasCentrifugeInfo()))
+                    .put("large_canner", new MultiblockInfoRecipeWrapper(new LargeCanningMachineInfo()))
+                    .put("large_brewery", new MultiblockInfoRecipeWrapper(new LargeBreweryInfo()))
+                    .put("large_electromagnet", new MultiblockInfoRecipeWrapper(new LargeElectromagnetInfo()))
+                    .put("large_extractor", new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()))
                     .build();
         }
 

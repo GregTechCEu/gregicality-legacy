@@ -179,6 +179,7 @@ public class RecipeHandler {
         SuperconductorRecipes.init();
         MiscRecipes.init();
         MetalCasingRecipes.init();
+        PlasmaCondenserPlasmaRecipes.init();
     }
 
     /**

@@ -16,8 +16,6 @@ import net.minecraft.util.EnumFacing;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.minecraft.block.BlockDirectional.FACING;
-
 public class LargeForgeHammerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
@@ -29,14 +27,13 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
         ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (int i = 0; i < 1; i++) { //TODO: set 1 to 5 once GTCE formation logic is well-done enough to reinstate the extendable LFH
             MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder();
-            builder.aisle("OXS", "E#M", "IPX", "FpX");
+            builder.aisle("OXS", "E#M", "IpX", "FXX");
             for (int j = 0; j < i; j++) {
-                builder.aisle("OXX", "X#X", "IPX", "XpX");
+                builder.aisle("OXX", "X#X", "IpX", "XXX");
             }
             builder.where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.NORTH)
                     .where('X', TileEntityLargeForgeHammer.casingState)
                     .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
-                    .where('P', Blocks.PISTON.getDefaultState().withProperty(FACING, EnumFacing.DOWN))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)

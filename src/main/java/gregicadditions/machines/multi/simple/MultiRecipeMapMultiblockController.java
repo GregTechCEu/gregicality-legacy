@@ -39,9 +39,9 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static gregicadditions.capabilities.MultiblockDataCodes.RECIPE_MAP_INDEX;
-
 
 /**
  * To be used for multiblocks that can swap between multiple different RecipeMaps
@@ -89,12 +89,28 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
 
     public abstract OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex);
 
+    /**
+     * Used to get all possible RecipeMaps a MultiBlock can run
+     * @return array of RecipeMaps
+     */
     public RecipeMap<?>[] getRecipeMaps() {
         return recipeMaps;
     }
 
+    /**
+     * Used to get the current index of the selected RecipeMap
+     * @return index of the current recipe
+     */
     public int getRecipeMapIndex() {
         return recipeMapIndex;
+    }
+
+    /**
+     * Used to add new RecipeMaps to a given MultiBlock
+     * @param recipeMaps to add to the MultiBlock
+     */
+    public void addRecipeMaps(RecipeMap<?>... recipeMaps) {
+        this.recipeMaps = Stream.concat(Arrays.stream(this.recipeMaps), Arrays.stream(recipeMaps)).toArray(RecipeMap<?>[]::new);
     }
 
     public void setRecipeMapIndex(int index) {

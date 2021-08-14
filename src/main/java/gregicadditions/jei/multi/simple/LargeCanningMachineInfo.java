@@ -12,6 +12,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
@@ -53,7 +54,6 @@ public class LargeCanningMachineInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{"Only one of the steel pipes may be exchanged with an input, output or maintenance hatch.",
-        "On that note, this will only form with at least 8 normal steel casings as well."};
+        return new String[]{I18n.format("gtadditions.multiblock.large_canning_machine.description")};
     }
 }
