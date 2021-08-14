@@ -843,24 +843,24 @@ public class GAMaterials implements IMaterialHandler {
 
 
     // Third Degree Materials
-    public static FluidMaterial HotRutheniumTetroxideSolution = new FluidMaterial(880, "hot_ruthenium_tetroxide_solution", 0xC7C7C7, MaterialIconSet.FLUID, of(new MaterialStack(RutheniumTetroxideSolution, 1), new MaterialStack(Water, 1)), DISABLE_DECOMPOSITION);
-    public static FluidMaterial AcidicOsmiumSolution = new FluidMaterial(875, "acidic_osmium_solution", OsmiumTetroxideSolution.materialRGB-20, MaterialIconSet.FLUID, of(new MaterialStack(OsmiumTetroxideSolution, 1), new MaterialStack(HydrochloricAcid, 1)), DISABLE_DECOMPOSITION);
-    public static FluidMaterial AcidicIridiumSolution = new FluidMaterial(872, "acidic_iridium_solution", IridiumDioxide.materialRGB-20, MaterialIconSet.FLUID, of(new MaterialStack(HydrochloricAcid, 2), new MaterialStack(IridiumDioxide, 2)), DISABLE_DECOMPOSITION);
-    public static GemMaterial MagnetoResonatic = new GemMaterial(913, "magneto_resonatic", 0xFF97FF, MaterialIconSet.MAGNETIC, 2, of(new MaterialStack(Prasiolite, 3), new MaterialStack(BismuthTellurite, 6), new MaterialStack(CubicZirconia, 1), new MaterialStack(SteelMagnetic, 1)), NO_RECYCLING | DISABLE_DECOMPOSITION | FLAMMABLE | HIGH_SIFTER_OUTPUT | NO_SMELTING | GENERATE_LENSE);
-    public static IngotMaterial EglinSteel = new IngotMaterial(989, "eglin_steel", 0x8B4513, MaterialIconSet.METALLIC, 6, ImmutableList.of(new MaterialStack(GAMaterials.EglinSteelBase, 10), new MaterialStack(Sulfur, 1), new MaterialStack(Silicon, 1), new MaterialStack(Carbon, 1)), GA_EXT2_METAL | GENERATE_METAL_CASING, null, 1048);
-    public static IngotMaterial HastelloyX78 = new IngotMaterial(732, "hastelloy_x78", 0x6ba3e3, MaterialIconSet.SHINY, 2, of(new MaterialStack(NaquadahAlloy, 10), new MaterialStack(Rhenium, 5), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Strontium, 2), new MaterialStack(Polonium, 3), new MaterialStack(Rutherfordium, 2), new MaterialStack(Fermium258.getMaterial(), 1)), GA_EXT2_METAL | DISABLE_DECOMPOSITION | GENERATE_METAL_CASING, null, 12300);
-    public static IngotMaterial TitanSteel = new IngotMaterial(854, "titan_steel", 0xAA0d0d, MaterialIconSet.SHINY, 7, of(new MaterialStack(TungstenTitaniumCarbide, 3), new MaterialStack(Jasper, 3)), GA_CORE_METAL | DISABLE_DECOMPOSITION, null, 9200);
-    public static IngotMaterial Cinobite = new IngotMaterial(721, "cinobite", 0x010101, MaterialIconSet.SHINY, 5, of(new MaterialStack(Zeron100, 8), new MaterialStack(Naquadria, 4), new MaterialStack(Gadolinium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Mercury, 1), new MaterialStack(Tin, 1), new MaterialStack(Titanium, 6), new MaterialStack(Osmiridium, 1)), GA_CORE_METAL | DISABLE_DECOMPOSITION, null, 11565);
-    SimpleFluidMaterial IodineBrineMix = new SimpleFluidMaterial("iodine_brine_mix", 0x525242, "I??");
-    public static SimpleFluidMaterial MetalHydroxideMix = new SimpleFluidMaterial("metal_hydroxide_mix", (Zinc.materialRGB-30), "?ZnOH");
-    public static SimpleFluidMaterial CaCBaSMixture = new SimpleFluidMaterial("cacbas_mixture", (CalciumCarbonateSolution.rgb + BariumSulfateSolution.rgb) / 2);
-    public static SimpleFluidMaterial LubricantClaySlurry = new SimpleFluidMaterial("lubricant_clay_slurry", (Lubricant.materialRGB + BentoniteClaySlurry.rgb) / 2);
-    public static SimpleFluidMaterial ATLEthylene = new SimpleFluidMaterial("atl_ethylene_mixture", (ATL.rgb + EthyleneGlycol.rgb) / 2);
-    public static SimpleDustMaterial ErbiumDopedZBLANDust = new SimpleDustMaterial("erbium_doped_zblan_dust", (ZBLANDust.rgb+ErbiumTrifluoride.rgb)/2, (short) 62, MaterialIconSet.SHINY, "(ErF3)(ZrF4)18(BaF2)7(LaF3)2(AlF3)(NaF)7");
-    public static SimpleDustMaterial RoastedSpodumene = new SimpleDustMaterial("roasted_spodumene", 0x3d3d29, (short) 110, MaterialIconSet.DULL, "LiAlSi2O6");
-    public static SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL, "KLi3Al4O11");
-    public static SimpleDustMaterial CassiteriteCokePellets = new SimpleDustMaterial("cassiterite_coke_pellets", 0x8f8f8f, (short) 191, MaterialIconSet.ROUGH, "SnO2C?");
-    public static SimpleDustMaterial LanthanumFullereneNanotubes = new SimpleDustMaterial("lanthanum_fullerene_nanotubes", LanthanumFullereneMix.rgb*3/5, (short) 386, MaterialIconSet.SHINY, "La2(C60)2CNT");
+    public static Material HotRutheniumTetroxideSolution;
+    public static Material AcidicOsmiumSolution;
+    public static Material AcidicIridiumSolution;
+    public static Material MagnetoResonatic ;
+    public static Material EglinSteel;
+    public static Material HastelloyX78;
+    public static Material TitanSteel;
+    public static Material Cinobite;
+    public static Material IodineBrineMix;
+    public static Material MetalHydroxideMix;
+    public static Material CaCBaSMixture;
+    public static Material LubricantClaySlurry;
+    public static Material ATLEthylene;
+    public static Material ErbiumDopedZBLANDust;
+    public static Material RoastedSpodumene;
+    public static Material RoastedLepidolite;
+    public static Material CassiteriteCokePellets;
+    public static Material LanthanumFullereneNanotubes;
 
     // Fourth Degree Materials
     public static Material Pyrotheum;
