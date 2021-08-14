@@ -97,7 +97,7 @@ public class ComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(61440)
                 .input(frameGt, HSSE)
-                .inputs(LeadSenenide.getItemStack(16))
+                .inputs(LeadSelenide.getItemStack(16))
                 .input(foil, Platinum, 64)
                 .input(wireGtDouble, Naquadah, 8)
                 .input(gemExquisite, Emerald, 2)

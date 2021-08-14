@@ -67,13 +67,6 @@ public class ZirconChain {
                 .chancedOutput(OreDictUnifier.get(dust, RareEarth), 200, 20)
                 .buildAndRegister();
 
-        // SiCl4 = Si + 4Cl
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(120)
-                .inputs(SiliconChloride.getItemStack(5))
-                .output(dust, Silicon)
-                .fluidOutputs(Chlorine.getFluid(4000))
-                .buildAndRegister();
-
         // ZrHfCl4 + H2O = Cl2HfOZr + 2HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .fluidInputs(Water.getFluid(1000))

@@ -103,14 +103,6 @@ public class UraniumChain {
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
-        // CsOH -> Cs + O + H
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(100).EUt(120)
-                .inputs(CaesiumHydroxide.getItemStack(3))
-                .output(dust, Caesium)
-                .fluidOutputs(Hydrogen.getFluid(1000))
-                .fluidOutputs(Oxygen.getFluid(1000))
-                .buildAndRegister();
-
         // [UO3•H2O2 + ThO2] -> [UO2 + ThO2] + H2O + 2O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .inputs(UraniumPeroxideThoriumOxide.getItemStack(8))

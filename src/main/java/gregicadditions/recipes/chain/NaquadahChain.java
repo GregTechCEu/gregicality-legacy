@@ -219,14 +219,14 @@ public class NaquadahChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Caesium)
                 .fluidInputs(Fluorine.getFluid(1000))
-                .fluidOutputs(CesiumFluoride.getFluid(1000))
+                .fluidOutputs(CaesiumFluoride.getFluid(1000))
                 .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
         // CsF + XeO3 = CsXeO3F
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(CesiumFluoride.getFluid(1000))
+                .fluidInputs(CaesiumFluoride.getFluid(1000))
                 .fluidInputs(XenonTrioxide.getFluid(1000))
                 .fluidOutputs(CesiumXenontrioxideFluoride.getFluid(1000))
                 .EUt(120)
@@ -238,7 +238,7 @@ public class NaquadahChain {
                 .fluidInputs(CesiumXenontrioxideFluoride.getFluid(1000))
                 .fluidInputs(RadonNaquadriaoctafluoride.getFluid(1000))
                 .fluidOutputs(RadonTrioxide.getFluid(1000))
-                .fluidOutputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
+                .fluidOutputs(NaquadriaCaesiumXenonNonfluoride.getFluid(1000))
                 .EUt(7680)
                 .duration(200)
                 .buildAndRegister();
@@ -255,7 +255,7 @@ public class NaquadahChain {
         // 2NO2F + NqCsXeF9 = (NO2)2XeF8 + NqF2CsF
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(NitrylFluoride.getFluid(2000))
-                .fluidInputs(NaquadriaCesiumXenonNonfluoride.getFluid(1000))
+                .fluidInputs(NaquadriaCaesiumXenonNonfluoride.getFluid(1000))
                 .fluidOutputs(NitrosoniumOctafluoroxenate.getFluid(1000))
                 .fluidOutputs(NaquadriaCesiumfluoride.getFluid(1000))
                 .EUt(480)
@@ -451,7 +451,7 @@ public class NaquadahChain {
                 .fluidOutputs(ClearNaquadahLiquid.getFluid(1000))
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(NitricAcid.getFluid(1000))
-                .output(dustTiny, PlatinumRawPowder, 15)
+                .output(dustTiny, ReprecipitatedPlatinum, 15)
                 .output(dustTiny, IridiumChloride, 12)
                 .output(dustTiny, Naquadah)
                 .EUt(7680)
@@ -578,7 +578,7 @@ public class NaquadahChain {
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ENaquadahSolution.getFluid(2000))
-                .output(dustTiny, PlatinumRawPowder, 3)
+                .output(dustTiny, ReprecipitatedPlatinum, 3)
                 .fluidOutputs(OsmiumTetroxideSolution.getFluid(350))
                 .output(dustTiny, NaquadahEnriched)
                 .fluidOutputs(ClearENaquadahLiquid.getFluid(1000))

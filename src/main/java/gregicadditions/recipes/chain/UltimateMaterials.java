@@ -155,7 +155,7 @@ public class UltimateMaterials {
                 .fluidInputs(Krypton.getFluid(1000))
                 .fluidInputs(Xenon.getFluid(1000))
                 .fluidInputs(Radon.getFluid(1000))
-                .fluidOutputs(GAMaterials.NobleGases.getFluid(6000))
+                .fluidOutputs(GAMaterials.NobleGasesMixture.getFluid(6000))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
@@ -169,7 +169,7 @@ public class UltimateMaterials {
                 .inputs(Lanthanoids.getItemStack(15))
                 .inputs(Actinoids.getItemStack(13))
                 .fluidInputs(NonMetals.getFluid(15000))
-                .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
+                .fluidInputs(GAMaterials.NobleGasesMixture.getFluid(6000))
                 .outputs(OreDictUnifier.get(dust, Periodicium, 115))
                 .buildAndRegister();
 

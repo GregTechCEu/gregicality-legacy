@@ -134,6 +134,7 @@ public class GAOrganicChemistryMaterials {
                 .color(0x5cef20).iconSet(DULL)
                 .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
                 .components(Carbon, 6, Hydrogen, 6, Oxygen, 2, Sulfur, 1)
+                .cableProperties(GTValues.V[GTValues.ZPM], 6, 4)
                 .build();
 
         public static SimpleFluidMaterial Butyraldehyde = new SimpleFluidMaterial("butyraldehyde", 0xe7cf6e, "CH3(CH2)3CH(CH2CH3)CH2OH");

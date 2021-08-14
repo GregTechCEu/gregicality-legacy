@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
-import gregtech.api.unification.material.MarkerMaterials;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -81,7 +80,7 @@ public class CosmicChain { // TODO
         CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(7680)
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .input(dust, MetastableFlerovium)
-                .fluidOutputs(Trichloroferane.getFluid(1000))
+                .fluidOutputs(Trichloroflerane.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(3000))
                 .buildAndRegister();
 
@@ -214,7 +213,7 @@ public class CosmicChain { // TODO
 
         // CsI + Tm + Tl -> CsITmTl
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(120).blastFurnaceTemp(2853)
-                .inputs(CesiumIodide.getItemStack())
+                .inputs(CaesiumIodide.getItemStack())
                 .input(dustSmall, Thulium, 2)
                 .input(dustSmall, Thallium, 2)
                 .outputs(TlTmCesiumIodide.getItemStack(2))
@@ -229,7 +228,7 @@ public class CosmicChain { // TODO
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(120)
                 .input(dust, Caesium)
                 .input(dust, Iodine)
-                .outputs(CesiumIodide.getItemStack(2))
+                .outputs(CaesiumIodide.getItemStack(2))
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(500000)

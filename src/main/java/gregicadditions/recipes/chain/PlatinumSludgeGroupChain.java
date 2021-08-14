@@ -110,7 +110,7 @@ public class PlatinumSludgeGroupChain {
                 .input(dust, IridiumChloride, 4)
                 .fluidInputs(Hydrogen.getFluid(3000))
                 .fluidOutputs(HydrochloricAcid.getFluid(3000))
-                .output(dust, PGSDResidue2, 2)
+                .output(dust, MetallicSludgeResidue, 2)
                 .output(dust, Iridium)
                 .duration(300)
                 .EUt(1920)
@@ -209,7 +209,7 @@ public class PlatinumSludgeGroupChain {
                 .fluidInputs(PlatinumConcentrate.getFluid(2000))
                 .fluidInputs(AmmoniumChloride.getFluid(200))
                 .output(dustSmall, PlatinumSalt, 10)
-                .output(dust, PlatinumRawPowder, 2)
+                .output(dust, ReprecipitatedPlatinum, 2)
                 .fluidOutputs(PalladiumAmmonia.getFluid(200))
                 .fluidOutputs(NitricAcid.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(1200))
@@ -235,7 +235,7 @@ public class PlatinumSludgeGroupChain {
 
         // PtCl2 + Ca -> Pt + CaCl2
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, PlatinumRawPowder, 3)
+                .input(dust, ReprecipitatedPlatinum, 3)
                 .input(dust, Calcium)
                 .output(dust, Platinum)
                 .output(dust, CalciumChloride, 3)

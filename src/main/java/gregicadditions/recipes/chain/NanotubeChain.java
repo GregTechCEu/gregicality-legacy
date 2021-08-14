@@ -207,7 +207,7 @@ public class NanotubeChain {
                 .fluidOutputs(BoronFluoride.getFluid(4000))
                 .fluidOutputs(Oct1ene.getFluid(3000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(4000))
-                .output(dust, PlatinumRawPowder, 6)
+                .output(dust, ReprecipitatedPlatinum, 6)
                 .output(dust, Iodine, 8)
                 .output(dust, SilverChloride, 8)
                 .output(dust, Tin, 4)

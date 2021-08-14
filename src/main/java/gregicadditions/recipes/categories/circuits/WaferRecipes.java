@@ -1,9 +1,6 @@
 package gregicadditions.recipes.categories.circuits;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -89,7 +86,7 @@ public class WaferRecipes {
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(345000)
                 .inputs(HASSIUM_WAFER.getStackForm())
-                .fluidInputs(Trichloroferane.getFluid(250))
+                .fluidInputs(Trichloroflerane.getFluid(250))
                 .outputs(COATED_HASSIUM_WAFER.getStackForm())
                 .buildAndRegister();
 

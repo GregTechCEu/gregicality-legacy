@@ -76,14 +76,14 @@ public class FusionElementsChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(3400).EUt(7680)
                 .fluidInputs(Nitrogen.getFluid(100000))
                 .fluidOutputs(Nitrogen14.getFluid(99636))
-                .fluidOutputs(NItrogen15.getFluid(364))
+                .fluidOutputs(Nitrogen15.getFluid(364))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(250).EUt(7680)
                 .fluidInputs(Carbon12.getFluid(1000))
                 .fluidInputs(Carbon13.getFluid(1000))
                 .fluidInputs(Nitrogen14.getFluid(1000))
-                .fluidInputs(NItrogen15.getFluid(1000))
+                .fluidInputs(Nitrogen15.getFluid(1000))
                 .fluidOutputs(CNOcatalyst.getFluid(4000))
                 .buildAndRegister();
 
