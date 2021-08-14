@@ -29,17 +29,12 @@ public class QubitConsumerRecipeBuilder extends RecipeBuilder<QubitConsumerRecip
     static {
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
-            int amount = setBetweenInclusive(Integer.parseInt(fluidSplit[1]), 1, 64000);
+            int rawAmount = Integer.parseInt(fluidSplit[1]);
+            int amount = rawAmount < 1 ? 1 : Math.min(rawAmount, 64000);
 
             FluidStack fluidStack = FluidRegistry.getFluidStack(fluidSplit[0], amount);
             if (fluidStack != null) SOLDER_FLUIDS.add(fluidStack);
         }
-    }
-
-    private static int setBetweenInclusive(int value, int start, int end) {
-        if (value < start)
-            return start;
-        return Math.min(value, end);
     }
 
     private int qubit;

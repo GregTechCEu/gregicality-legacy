@@ -4,6 +4,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.util.BlockInfo;
+import gregtech.api.util.RelativeDirection;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.block.state.IBlockState;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
 
@@ -36,7 +37,7 @@ public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
         return builder(RIGHT, UP, FRONT);
     }
 
-    public static Builder builder(BlockPattern.RelativeDirection charDir, BlockPattern.RelativeDirection stringDir, BlockPattern.RelativeDirection aisleDir) {
+    public static Builder builder(RelativeDirection charDir, RelativeDirection stringDir, RelativeDirection aisleDir) {
         return new GAMultiblockShapeInfo.Builder(charDir, stringDir, aisleDir);
     }
 
@@ -45,11 +46,11 @@ public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
 
         private List<String[]> shape = new ArrayList<>();
         private Map<Character, BlockInfo> symbolMap = new HashMap<>();
-        private BlockPattern.RelativeDirection[] structureDir = new BlockPattern.RelativeDirection[3];
-        private final BlockPattern.RelativeDirection[] idealDir = {RIGHT, UP, FRONT};
+        private RelativeDirection[] structureDir = new RelativeDirection[3];
+        private final RelativeDirection[] idealDir = {RIGHT, UP, FRONT};
 
 
-        public Builder(BlockPattern.RelativeDirection charDir, BlockPattern.RelativeDirection stringDir, BlockPattern.RelativeDirection aisleDir) {
+        public Builder(RelativeDirection charDir, RelativeDirection stringDir, RelativeDirection aisleDir) {
             this.structureDir[0] = charDir;
             this.structureDir[1] = stringDir;
             this.structureDir[2] = aisleDir;
@@ -133,7 +134,7 @@ public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
 
         // Transforms from the builder's structureDir to the default (RIGHT, UP, FRONT) at a position in the 3D array. If
         private Triple<Integer, Integer, Integer> transformPos(int posZ, int posY, int posX, int maxZ, int maxY, int maxX, boolean canReverseLines) { // This reversal is required because the array structure does not fit easily with the structureDir formatting.
-            BlockPattern.RelativeDirection[] currentDir = this.structureDir.clone();
+            RelativeDirection[] currentDir = this.structureDir.clone();
             int[] position = {posX, posY, posZ};
             int[] bounds = {maxX, maxY, maxZ};
 
@@ -173,7 +174,7 @@ public class GAMultiblockShapeInfo extends MultiblockShapeInfo {
                 }
             }
 
-            return new MutableTriple<Integer, Integer, Integer>(position[2], position[1], position[0]);
+            return new MutableTriple<>(position[2], position[1], position[0]);
         }
 
         @Override

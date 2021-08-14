@@ -3,7 +3,6 @@ package gregicadditions.client;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
-import gregtech.api.gui.resources.AdoptableTextureArea;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
@@ -72,10 +71,6 @@ public class ClientHandler {
     public static SimpleCubeRenderer LEAD_CASING = new SimpleCubeRenderer("casings/metal_casings/lead");
     public static SimpleCubeRenderer NAQUADRIA_CASING = new SimpleCubeRenderer("casings/metal_casings/naquadria");
 
-
-
-
-
     // Machine Overlays
     public static OrientedOverlayRenderer NAQADAH_OVERLAY = new OrientedOverlayRenderer("machines/naquadah_reactor", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
     public static OrientedOverlayRenderer ROCKET_OVERLAY = new OrientedOverlayRenderer("machines/rocket_generator", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.TOP);
@@ -125,6 +120,12 @@ public class ClientHandler {
     public static TextureArea BUTTON_INTERFACE = TextureArea.fullImage("textures/blocks/cover/cover_interface_computer_button.png");
     public static TextureArea COVER_INTERFACE_MACHINE_ON_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_on_proxy.png");
     public static TextureArea COVER_INTERFACE_MACHINE_OFF_PROXY = TextureArea.fullImage("textures/blocks/cover/cover_interface_machine_off_proxy.png");
+
+    // Progress Bars
+    public static final TextureArea PROGRESS_BAR_DISASSEMBLER = TextureArea.fullImage("textures/gui/progress_bar/progress_bar_disassembler.png");
+
+    // Slot Overlays
+    public static final TextureArea DISASSEMBLER_IN_OVERLAY = TextureArea.fullImage("textures/gui/overlay/disassembler_in_slot_overlay.png");
 
 
     static {

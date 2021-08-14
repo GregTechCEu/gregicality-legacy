@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import gregicadditions.blocks.GAMetalCasingItemBlock;
 import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
@@ -11,7 +10,6 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.network.IPSaveData;
 import gregicadditions.network.MessageReservoirListSync;
 import gregicadditions.network.NetworkHandler;
-import gregicadditions.pipelike.cable.GAItemBlockCable;
 import gregicadditions.pipelike.opticalfiber.ItemBlockOpticalFiber;
 import gregicadditions.recipes.*;
 import gregicadditions.recipes.categories.handlers.*;
@@ -115,7 +113,6 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.NUCLEAR_CASING);
         registry.register(OPTICAL_FIBER);
         GA_ORES.forEach(registry::register);
-        registry.register(GAMetaBlocks.GA_CABLE);
     }
 
 
@@ -124,7 +121,6 @@ public class CommonProxy {
         GALog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
-        registry.register(createItemBlock(GAMetaBlocks.GA_CABLE, GAItemBlockCable::new));
         registry.register(createItemBlock(GAMetaBlocks.OPTICAL_FIBER, ItemBlockOpticalFiber::new));
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.MUTLIBLOCK_CASING2, VariantItemBlock::new));

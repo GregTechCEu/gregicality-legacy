@@ -1,7 +1,7 @@
 package gregicadditions.recipes;
 
 import crafttweaker.annotations.ZenRegister;
-import gregicadditions.gui.GAGuiTextures;
+import gregicadditions.client.ClientHandler;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.recipes.impl.*;
@@ -58,9 +58,9 @@ public class GARecipeMaps { // todo assembly line qubit?
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> DISASSEMBLER_RECIPES = new RecipeMap<>("disassembler",
             1, 9, 0, 0, new SimpleRecipeBuilder(), false)
-            .setSlotOverlay(false, false, GAGuiTextures.DISASSEMBLER_IN_OVERLAY)
+            .setSlotOverlay(false, false, ClientHandler.DISASSEMBLER_IN_OVERLAY)
             .setSlotOverlay(true, false, GuiTextures.CIRCUIT_OVERLAY)
-            .setProgressBar(GAGuiTextures.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
+            .setProgressBar(ClientHandler.PROGRESS_BAR_DISASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 
 
     // Multiblock Recipe Maps ==========================================================================================

@@ -22,16 +22,17 @@ public class GAValues {
     public static final int MAX = 14;
     public static final String[] VN = new String[] {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "UHV", "UEV", "UIV", "UMV", "UXV", "MAX"};
 
-    public static final String MODID_FR = "forestry";
-    public static final String MODID_BEES = "extrabees";
-    public static final String MODID_IC2 = "ic2";
-    public static final String MODID_BINNIE = "binniecore";
-    public static final String MODID_XU2 = "extrautils2";
-    public static final String MODID_TR = "techreborn";
-    public static final String MODID_TCON = "tconstruct";
-    public static final String MODID_EXNI = "exnihilocreatio";
-    public static final String MODID_OC = "opencomputers";
-    public static final String MODID_GTOC = "gtce2oc";
-    public static final String MODID_MYSTAGGRA = "mysticalagradditions";
-
+    public static final String
+            MODID_FR = "forestry",
+            MODID_BEES = "extrabees",
+            MODID_IC2 = "ic2",
+            MODID_BINNIE = "binniecore",
+            MODID_XU2 = "extrautils2",
+            MODID_TR = "techreborn",
+            MODID_TCON = "tconstruct",
+            MODID_EXNI = "exnihilocreatio",
+            MODID_OC = "opencomputers",
+            MODID_GTOC = "gtce2oc",
+            MODID_MYSTAGGRA = "mysticalagradditions",
+            MODID_JEI = "jei";
 }

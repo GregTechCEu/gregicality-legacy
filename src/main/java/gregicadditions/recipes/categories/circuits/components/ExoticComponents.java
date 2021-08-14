@@ -1,8 +1,6 @@
 package gregicadditions.recipes.categories.circuits.components;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
-import gregicadditions.GAUtility;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -10,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -23,17 +20,12 @@ public class ExoticComponents{
     static {
         for (String fluid : GAConfig.Misc.solderingFluidList) {
             String[] fluidSplit = fluid.split(":");
-            int amount = setBetweenInclusive(Integer.parseInt(fluidSplit[1]), 1, 64000);
+            int rawAmount = Integer.parseInt(fluidSplit[1]);
+            int amount = rawAmount < 1 ? 1 : Math.min(rawAmount, 64000);
 
             FluidStack fluidStack = FluidRegistry.getFluidStack(fluidSplit[0], amount);
             if (fluidStack != null) SOLDER_FLUIDS.add(fluidStack);
         }
-    }
-
-    private static int setBetweenInclusive(int value, int start, int end) {
-        if (value < start)
-            return start;
-        return Math.min(value, end);
     }
 
     public static void init(){

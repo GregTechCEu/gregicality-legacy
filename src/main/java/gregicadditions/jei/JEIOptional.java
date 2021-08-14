@@ -1,5 +1,6 @@
 package gregicadditions.jei;
 
+import gregicadditions.GAValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.scene.WorldSceneRenderer;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
@@ -13,7 +14,9 @@ import net.minecraftforge.fml.common.Optional;
 import java.util.List;
 
 public class JEIOptional {
-    @Optional.Method(modid = "jei")
+
+    @Optional.Method(modid = GAValues.MODID_JEI)
+    @SuppressWarnings("unchecked")
     public static WorldSceneRenderer getWorldSceneRenderer(MultiblockControllerBase controllerBase){
         IRecipeRegistry rr = JEIGAPlugin.jeiRuntime.getRecipeRegistry();
         IFocus<ItemStack> focus = rr.createFocus(IFocus.Mode.INPUT, controllerBase.getStackForm());

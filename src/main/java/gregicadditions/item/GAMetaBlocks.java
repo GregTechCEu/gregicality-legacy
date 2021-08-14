@@ -90,7 +90,6 @@ public class GAMetaBlocks {
     public static NuclearCasing NUCLEAR_CASING;
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
-    public static BlockCable GA_CABLE;
 
 
     public static BlockOpticalFiber OPTICAL_FIBER;
@@ -104,8 +103,6 @@ public class GAMetaBlocks {
                 }
             }
         }
-        GA_CABLE = new BlockCable();
-        GA_CABLE.setRegistryName(GTValues.MODID + ":ga_cable");
 
         QUANTUM_CASING = new GAQuantumCasing();
         QUANTUM_CASING.setRegistryName("ga_quantum_casing");
@@ -185,31 +182,7 @@ public class GAMetaBlocks {
         OPTICAL_FIBER = new BlockOpticalFiber();
         OPTICAL_FIBER.setRegistryName("ga_cable");
 
-        MetaBlocks.FLUID_PIPE.addPipeMaterial(Materials.Ultimet, new FluidPipeProperties(1500, 12000, true));
-        //MetaBlocks.FLUID_PIPE.addPipeMaterial(GAMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
-
-        Map<Material, WireProperties> enabledMaterials = ObfuscationReflectionHelper.getPrivateValue(BlockCable.class, MetaBlocks.CABLE, "enabledMaterials");
-
-        enabledMaterials.remove(UHVSuperconductorBase);
-        enabledMaterials.remove(UEVSuperconductorBase);
-        enabledMaterials.remove(UIVSuperconductorBase);
-        enabledMaterials.remove(UMVSuperconductorBase);
-        enabledMaterials.remove(UXVSuperconductorBase);
-        enabledMaterials.remove(TungstenTitaniumCarbide);
-        enabledMaterials.remove(AbyssalAlloy);
-        enabledMaterials.remove(EnrichedNaquadahAlloy);
-        enabledMaterials.remove(Pikyonium);
-        enabledMaterials.remove(TitanSteel);
-        enabledMaterials.remove(Cinobite);
-        enabledMaterials.remove(BlackTitanium);
-        enabledMaterials.remove(Neutronium);
-        enabledMaterials.remove(UHVSuperconductor);
-        enabledMaterials.remove(UEVSuperconductor);
-        enabledMaterials.remove(UIVSuperconductor);
-        enabledMaterials.remove(UMVSuperconductor);
-        enabledMaterials.remove(UXVSuperconductor);
-
-
+/* TODO Check that all these are set in the respective Materials classes
         GA_CABLE.addCableMaterial(UHVSuperconductorBase, new WireProperties(GAValues.V[GAValues.UHV], 4, 2));
         GA_CABLE.addCableMaterial(UEVSuperconductorBase, new WireProperties(GAValues.V[GAValues.UEV], 4, 2));
         GA_CABLE.addCableMaterial(UIVSuperconductorBase, new WireProperties(GAValues.V[GAValues.UIV], 4, 2));
@@ -228,7 +201,7 @@ public class GAMetaBlocks {
         GA_CABLE.addCableMaterial(UIVSuperconductor, new WireProperties(GAValues.V[GAValues.UIV], 4, 0));
         GA_CABLE.addCableMaterial(UMVSuperconductor, new WireProperties(GAValues.V[GAValues.UMV], 4, 0));
         GA_CABLE.addCableMaterial(UXVSuperconductor, new WireProperties(GAValues.V[GAValues.UXV], 4, 0));
-
+*/
         registerTileEntity();
     }
 
@@ -280,7 +253,6 @@ public class GAMetaBlocks {
     public static void registerItemModels() {
 
         ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPTICAL_FIBER), stack -> OpticalFiberRenderer.MODEL_LOCATION);
-        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(GA_CABLE), stack -> CableRenderer.MODEL_LOCATION);
         registerItemModel(MUTLIBLOCK_CASING);
         registerItemModel(QUANTUM_CASING);
         registerItemModel(MUTLIBLOCK_CASING2);
@@ -316,12 +288,6 @@ public class GAMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerStateMappers() {
-        ModelLoader.setCustomStateMapper(GA_CABLE, new DefaultStateMapper() {
-            @Override
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return CableRenderer.MODEL_LOCATION;
-            }
-        });
         ModelLoader.setCustomStateMapper(OPTICAL_FIBER, new DefaultStateMapper() {
             @Override
             protected @Nonnull ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -375,14 +341,6 @@ public class GAMetaBlocks {
             ItemStack itemStack = OPTICAL_FIBER.getItem(opticalFiberSize);
             OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix().name());
         }
-
-        for (Material pipeMaterial : GA_CABLE.getEnabledMaterials()) {
-            for (Insulation insulation : Insulation.values()) {
-                ItemStack itemStack = GA_CABLE.getItem(insulation, pipeMaterial);
-                OreDictUnifier.registerOre(itemStack, insulation.getOrePrefix(), pipeMaterial);
-            }
-        }
-
     }
 
 
