@@ -42,10 +42,6 @@ public class GAEnums {
         public final static MaterialIconType depletedFuel = createMaterialIconType("depletedFuel");
         public final static MaterialIconType fuelTRISO = createMaterialIconType("fuelTriso");
         public final static MaterialIconType depletedFuelTRISO = createMaterialIconType("depletedFuelTriso");
-
-        /////////////////////////////////////
-
-        public final static MaterialIconType coke = createMaterialIconType("coke");
     }
 
     public static class GAOrePrefix {
