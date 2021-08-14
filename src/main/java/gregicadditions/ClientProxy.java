@@ -2,7 +2,6 @@ package gregicadditions;
 
 import codechicken.lib.texture.TextureUtils;
 import gregicadditions.blocks.GABlockOre;
-import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregicadditions.fluid.GAMetaFluids;
@@ -26,15 +25,6 @@ import java.io.IOException;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
-
-    public static final IBlockColor METAL_CASING_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) ->
-            state.getValue(((GAMetalCasing) state.getBlock()).variantProperty).getMaterialRGB();
-
-    public static final IItemColor METAL_CASING_ITEM_COLOR = (stack, tintIndex) -> {
-        GAMetalCasing block = (GAMetalCasing) ((ItemBlock) stack.getItem()).getBlock();
-        IBlockState state = block.getStateFromMeta(stack.getItemDamage());
-        return state.getValue(block.variantProperty).getMaterialRGB();
-    };
 
     public static final IBlockColor ORE_BLOCK_COLOR = (IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) ->
             tintIndex == 1 ? ((GABlockOre) state.getBlock()).material.getMaterialRGB() : 0xFFFFFF;

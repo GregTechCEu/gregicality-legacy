@@ -4,7 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.blocks.GABlockOre;
-import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.client.model.IReTexturedModel;
 import gregicadditions.item.components.*;
 import gregicadditions.item.fusion.GACryostatCasing;
@@ -20,23 +19,14 @@ import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.machines.FuelRecipeMap;
-import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
 import gregtech.api.unification.ore.StoneTypes;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.pipelike.cable.BlockCable;
 import gregtech.common.pipelike.cable.Insulation;
-import gregtech.common.pipelike.cable.WireProperties;
-import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
 import gregtech.common.render.CableRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
@@ -48,7 +38,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -99,8 +88,6 @@ public class GAMetaBlocks {
 
     //nuclear casing
     public static NuclearCasing NUCLEAR_CASING;
-
-    public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
     public static Collection<GABlockOre> GA_ORES = new HashSet<>();
     public static BlockCable GA_CABLE;
@@ -242,8 +229,6 @@ public class GAMetaBlocks {
         GA_CABLE.addCableMaterial(UMVSuperconductor, new WireProperties(GAValues.V[GAValues.UMV], 4, 0));
         GA_CABLE.addCableMaterial(UXVSuperconductor, new WireProperties(GAValues.V[GAValues.UXV], 4, 0));
 
-
-        createMachineCasing();
         registerTileEntity();
     }
 
@@ -321,7 +306,6 @@ public class GAMetaBlocks {
         registerItemModel(METAL_CASING_1);
         registerItemModel(METAL_CASING_2);
         registerItemModel(NUCLEAR_CASING);
-        METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
         GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }
 
@@ -369,11 +353,6 @@ public class GAMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerColors() {
-        GAMetaBlocks.METAL_CASING.values().stream().distinct().forEach(block -> {
-            Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(METAL_CASING_BLOCK_COLOR, block);
-            Minecraft.getMinecraft().getItemColors().registerItemColorHandler(METAL_CASING_ITEM_COLOR, block);
-        });
-
         GAMetaBlocks.GA_ORES.stream().distinct().forEach(block -> {
             Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(ORE_BLOCK_COLOR, block);
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ORE_ITEM_COLOR, block);
@@ -382,13 +361,6 @@ public class GAMetaBlocks {
     }
 
     public static void registerOreDict() {
-        for (Map.Entry<IngotMaterial, GAMetalCasing> entry : METAL_CASING.entrySet()) {
-            IngotMaterial material = entry.getKey();
-            GAMetalCasing block = entry.getValue();
-            ItemStack itemStack = block.getItem(material);
-            OreDictUnifier.registerOre(itemStack, OrePrefix.valueOf("gtMetalCasing"), material);
-        }
-
         for (GABlockOre blockOre : GA_ORES) {
             DustMaterial mat = blockOre.material;
             for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
@@ -441,21 +413,4 @@ public class GAMetaBlocks {
     private static <T extends Comparable<T>> String getPropertyName(IProperty<T> property, Comparable<?> value) {
         return property.getName((T) value);
     }
-
-
-    private static void createMachineCasing() {
-        for (Material material : Material.MATERIAL_REGISTRY) {
-            if (material instanceof IngotMaterial && material.hasFlag(GENERATE_METAL_CASING)) {
-                GAMetalCasing block = new GAMetalCasing(material);
-                block.setRegistryName("gregtech:metal_casing_" + material.toString());
-                METAL_CASING.put((IngotMaterial) material, block);
-            }
-        }
-    }
-
-    public static IBlockState getMetalCasingBlockState(Material material) {
-        return METAL_CASING.get(material).getStateFromMaterial(material);
-    }
-
-
 }

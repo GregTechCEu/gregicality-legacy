@@ -1,14 +1,5 @@
 package gregicadditions;
 
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.machines.FuelRecipeMap;
-import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.Element;
-import gregtech.api.unification.material.MaterialIconType;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialIconType;
@@ -16,10 +7,6 @@ import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.MetaFluids;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
-import net.minecraft.block.state.IBlockState;
 import gregtech.common.items.MetaItems;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -31,7 +18,6 @@ import java.util.function.Predicate;
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.GTValues.M;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FRAME;
 import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_PLATE;
 import static gregtech.api.unification.ore.OrePrefix.Conditions.hasIngotProperty;
 import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
@@ -59,8 +45,6 @@ public class GAEnums {
 
         /////////////////////////////////////
 
-
-        public final static MaterialIconType gtMetalCasing = createMaterialIconType("gtMetalCasing");
         public final static MaterialIconType coke = createMaterialIconType("coke");
     }
 
