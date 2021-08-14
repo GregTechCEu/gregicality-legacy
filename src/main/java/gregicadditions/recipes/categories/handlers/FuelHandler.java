@@ -142,9 +142,10 @@ public class FuelHandler {
         registerQubitGeneratorFuel(circuit, Ultimate,       15, UV);
         registerQubitGeneratorFuel(circuit, Superconductor, 50, UV);
         registerQubitGeneratorFuel(circuit, Infinite,      200, UV);
-        registerQubitGeneratorFuel(circuit, UEV,           800, UV);
-        registerQubitGeneratorFuel(circuit, UIV,          3200, UV);
-        registerQubitGeneratorFuel(circuit, UMV,         12800, UV);
-        registerQubitGeneratorFuel(circuit, UXV,         51200, UV);
+        registerQubitGeneratorFuel(circuit, Ultra,         800, UV);
+        registerQubitGeneratorFuel(circuit, Insane,       3200, UV);
+        registerQubitGeneratorFuel(circuit, UMVCircuit,  12800, UV);
+        registerQubitGeneratorFuel(circuit, UXVCircuit,  51200, UV);
+        registerQubitGeneratorFuel(circuit, Maximum,    102400, UV);
     }
 }

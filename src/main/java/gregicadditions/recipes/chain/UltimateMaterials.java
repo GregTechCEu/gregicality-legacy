@@ -206,7 +206,7 @@ public class UltimateMaterials {
                 .input(frameGt, QCDMatter)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_4))
                 .inputs(ELECTRIC_PUMP_UMV.getStackForm(2))
-                .input(circuit, UIV)
+                .input(circuit, MarkerMaterials.Tier.Insane)
                 .input(pipeLarge, Neutronium, 4)
                 .input(plateB, Neutronium, 12)
                 .fluidInputs(ProtoAdamantium.getFluid(2592))

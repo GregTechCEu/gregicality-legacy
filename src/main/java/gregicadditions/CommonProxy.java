@@ -62,9 +62,6 @@ public class CommonProxy {
             registerRecipesAfterCT();
         setRemovedMaterialTooltips();
         WorldGenRegister.init();
-        if (GAConfig.Misc.multiStoneGen) {
-            MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
-        }
     }
 
     // This method is used to set tooltips for materials to be removed in the future.

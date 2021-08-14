@@ -1,14 +1,10 @@
 package gregicadditions.recipes.categories;
 
-import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.BLAST_ALLOY_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -19,14 +15,6 @@ import static gregtech.common.items.MetaItems.PLANT_BALL;
 public class MiscRecipes {
 
     public static void init() {
-
-        // Manual Potin Dust
-        ModHandler.addShapelessRecipe("ga_potin_dust", OreDictUnifier.get(dust, Potin, 5),
-                new UnificationEntry(dust, Lead),
-                new UnificationEntry(dust, Lead),
-                new UnificationEntry(dust, Bronze),
-                new UnificationEntry(dust, Bronze),
-                new UnificationEntry(dust, Tin));
 
         // Staballoy Dust
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)

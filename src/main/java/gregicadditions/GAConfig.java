@@ -229,11 +229,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean enableRockBreakerHighTier = true;
 
-        @Config.Comment("Whether or not to generate all minecraft stones with lava flooding")
-        @Config.Name("Generate minecraft stones with lava flow")
-        @Config.RequiresMcRestart
-        public boolean multiStoneGen = true;
-
         @Config.Comment("Whether or not to generate different ore variants. E.g. rich ores, pure ores and poor ores. If you disable this some of your worldgen will break! You will also break any previously created worlds!")
         @Config.Name("Add ore variants")
         @Config.RequiresMcRestart

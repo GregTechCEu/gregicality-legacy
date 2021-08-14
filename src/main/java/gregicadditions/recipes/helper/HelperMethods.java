@@ -1,24 +1,19 @@
 package gregicadditions.recipes.helper;
 
+import com.google.common.base.Preconditions;
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAValues;
-import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
-import gregicadditions.utils.GALog;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.recipes.FuelRecipe;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.*;
@@ -40,7 +35,7 @@ public class HelperMethods {
      *                 'X', MetaItems.SMALL_COIL);
      * </cr>
      *
-     * - The MetaTileEntity input can be an Array, a List, or an Array of {@link GATileEntities.MTE}.
+     * - The MetaTileEntity input can be an Array or a List.
      * - The Recipe Input must be Strings of up to 3 characters.
      * - The inputs must be in pairs of (char, [input]).
      * - Inputs can be a:
@@ -63,14 +58,6 @@ public class HelperMethods {
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
         registerMachineRecipe(0, metaTileEntities, recipe);
-    }
-
-    public static void registerMachineRecipe(GATileEntities.MTE<?>[] metaTileEntities, Object... recipe) {
-        for (GATileEntities.MTE<?> metaTileEntity : metaTileEntities) {
-            if (metaTileEntity != null)
-                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaTileEntity().getMetaName()), metaTileEntity.getMetaTileEntity().getStackForm(),
-                        prepareRecipe(metaTileEntity.getITieredMetaTileEntity().getTier(), Arrays.copyOf(recipe, recipe.length)));
-        }
     }
 
     public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(List<T> metaTileEntities, Object... recipe) {
@@ -170,42 +157,6 @@ public class HelperMethods {
     }
 
     /**
-     * Creates a Cell ItemStack with a specified fluid and given count.
-     * An example of how to use it:
-     *
-     * <cr>
-     *     getFilledCell(Materials.HydrochloricAcid.getMaterialFluid(), 4)
-     * </cr>
-     *
-     * The above will return 4 cells containing HCl.
-     *
-     * @param fluid The Fluid to fill the cell.
-     * @param count The number of cells in the ItemStack.
-     *
-     * @return The Cell ItemStack.
-     */
-    public static ItemStack getFilledCell(Fluid fluid, int count) {
-        ItemStack fluidCell = MetaItems.FLUID_CELL.getStackForm().copy();
-        IFluidHandlerItem fluidHandlerItem = fluidCell.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-        try {
-            assert fluidHandlerItem != null;
-            fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
-
-        } catch (Exception e) {
-            GALog.logger.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
-            GALog.logger.error(e);
-            fluidHandlerItem.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
-        }
-        fluidCell = fluidHandlerItem.getContainer();
-        fluidCell.setCount(count);
-        return fluidCell;
-    }
-
-    public static ItemStack getFilledCell(Fluid fluid) {
-        return getFilledCell(fluid, 1);
-    }
-
-    /**
      * Used to test if a given ItemStack has a specified OreDictionary prefix.
      * An example of how to use it:
      *
@@ -252,7 +203,7 @@ public class HelperMethods {
     }
 
     public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.DIESEL_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
+        RecipeMaps.COMBUSTION_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
     }
 
     public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
@@ -279,7 +230,7 @@ public class HelperMethods {
         GARecipeMaps.ROCKET_FUEL_RECIPES.addRecipe(new FuelRecipe(fuelStack, duration, GAValues.V[tier]));
     }
 
-    public static void registerHotCoolantTurbineFuel(FluidStack input, FluidMaterial output, int duration, int tier) {
+    public static void registerHotCoolantTurbineFuel(FluidStack input, Material output, int duration, int tier) {
         GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
     }
 
@@ -310,14 +261,15 @@ public class HelperMethods {
     public static class GenericFluid {
 
         // Only one of these must be initialized for any given instance of GenericFluid
-        private FluidMaterial material;
+        private Material material;
         private Fluids fluids;
 
         public GenericFluid(Fluids fluids) {
             this.fluids = fluids;
         }
 
-        public GenericFluid(FluidMaterial material) {
+        public GenericFluid(Material material) {
+            Preconditions.checkArgument(material.hasFluid());
             this.material = material;
         }
 

@@ -21,7 +21,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenClass("mods.gtadditions.recipe.GARecipeMaps")
 @ZenRegister
 
-public class GARecipeMaps { // todo assembly line qubit?
+public class GARecipeMaps {
 
     // Simple Recipe Maps ==============================================================================================
 

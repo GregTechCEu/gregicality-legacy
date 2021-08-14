@@ -1056,16 +1056,9 @@ public class RecipeOverride {
         // Remove Conflicting Redstone Plate Recipe
         removeRecipesByInputs(COMPRESSOR_RECIPES, OreDictUnifier.get(dust, Redstone));
 
-        // Remove MAX-Superconductor Wire Recipes
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, YttriumBariumCuprate, 3), OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, NiobiumTitanium, 3),      OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
-        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(wireGtSingle, VanadiumGallium, 3),      OreDictUnifier.get(plate, TungstenSteel, 3), ELECTRIC_PUMP_LV.getStackForm()}, new FluidStack[]{Nitrogen.getFluid(2000)});
-
         // Remove Nuclear Processing
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
-        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Aluminium));
-        removeRecipesByInputs(CHEMICAL_RECIPES, OreDictUnifier.get(dust, Uraninite, 3), OreDictUnifier.get(dust, Magnesium));
 
         // Remove Rare Earth Centrifuging
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, RareEarth));
@@ -1092,76 +1085,5 @@ public class RecipeOverride {
 
         // Ultimate Battery
         removeRecipesByInputs(ASSEMBLER_RECIPES, ENERGY_LAPOTRONIC_ORB2.getStackForm(8), OreDictUnifier.get(plate, Darmstadtium, 16));
-
-        // Reinforced Epoxy Resin Handcrafting Recipes
-        removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_glass");
-        removeRecipeByName("gregtech:reinforcing_epoxy_resin_by_carbon");
-
-        // Remove Bad Sulfuric Acid Recipe
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Sulfur)}, new FluidStack[]{Water.getFluid(4000)});
-
-        // Remove Small and Tiny Dust Mixer Recipes ====================================================================
-
-        ///////////////////////////////////////////////////
-        //                  Tiny Dusts                   //
-        ///////////////////////////////////////////////////
-
-        // Borosilicate Glass Tiny Dust Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Boron), OreDictUnifier.get(dustTiny, Glass, 7));
-        // Brass Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Zinc));
-        // Bronze Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, Copper, 3), OreDictUnifier.get(dustTiny, Tin));
-        // Red Steel Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, SterlingSilver), OreDictUnifier.get(dustTiny, BismuthBronze), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
-        // Blue Steel Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustTiny, RoseGold), OreDictUnifier.get(dustTiny, Brass), OreDictUnifier.get(dustTiny, BlackSteel, 4), OreDictUnifier.get(dustTiny, Steel, 2));
-        // Ultimet Hand
-        removeRecipeByName("gregtech:dust_tiny_ultimet");
-        // Cobalt Brass Hand
-        removeRecipeByName("gregtech:dust_tiny_cobalt_brass");
-        // Stainless Steel Hand
-        removeRecipeByName("gregtech:dust_tiny_stainless_steel");
-        // Kanthal Hand
-        removeRecipeByName("gregtech:dust_tiny_kanthal");
-
-        ///////////////////////////////////////////////////
-        //                  Small Dusts                  //
-        ///////////////////////////////////////////////////
-
-        // Stainless Steel Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Iron, 4), OreDictUnifier.get(dustSmall, Invar, 3), OreDictUnifier.get(dustSmall, Manganese), OreDictUnifier.get(dustSmall, Chrome));
-        // Ultimet Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Cobalt, 5), OreDictUnifier.get(dustSmall, Chrome, 2), OreDictUnifier.get(dustSmall, Nickel), OreDictUnifier.get(dustSmall, Molybdenum));
-        // Cobalt Brass Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Brass, 7), OreDictUnifier.get(dustSmall, Aluminium), OreDictUnifier.get(dustSmall, Cobalt));
-        // Gunpowder from Coal Mixer
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dustSmall, Saltpeter, 2), OreDictUnifier.get(dustSmall, Sulfur), OreDictUnifier.get(dustSmall, Coal));
-
-        // Some of them have both Small and Tiny Dust Mixer Recipes
-        for (OrePrefix prefix : Arrays.asList(dustSmall, dustTiny)) {
-            // Indium Gallium Phosphide
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Indium), OreDictUnifier.get(prefix, Gallium), OreDictUnifier.get(prefix, Phosphorus));
-            // Electrum
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Gold), OreDictUnifier.get(prefix, Silver));
-            // Invar
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron, 2), OreDictUnifier.get(prefix, Nickel), IntCircuitIngredient.getIntegratedCircuit(1));
-            // Kanthal
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Iron), OreDictUnifier.get(prefix, Aluminium), OreDictUnifier.get(prefix, Chrome));
-            // Cupronickel
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Nickel));
-            // Rose Gold
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Gold));
-            // Sterling Silver
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper), OreDictUnifier.get(prefix, Silver, 4));
-            // Black Bronze
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Copper, 3), OreDictUnifier.get(prefix, Electrum, 2));
-            // Bismuth Bronze
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Bismuth), OreDictUnifier.get(prefix, Brass, 4));
-            // Black Steel
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, BlackBronze), OreDictUnifier.get(prefix, Nickel), OreDictUnifier.get(prefix, Steel, 3));
-            // Gunpowder from Charcoal
-            removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(prefix, Saltpeter, 2), OreDictUnifier.get(prefix, Sulfur), OreDictUnifier.get(prefix, Charcoal));
-        }
     }
 }

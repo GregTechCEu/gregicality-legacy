@@ -225,43 +225,6 @@ public class PumpjackHandler {
         }
     }
 
-    private static final HashMap<Biome, String> biomeNames = new HashMap<>();
-
-    /**
-     * Get the biome name associated with a given biome (it's not a recommended method)
-     *
-     * @param biome The biome to get the name
-     * @return The biome's name
-     */
-    public static String getBiomeName(Biome biome) {
-        if (!biomeNames.containsKey(biome)) {
-            String biomeName = ObfuscationReflectionHelper.getPrivateValue(Biome.class, biome, "field_76791_y"); // field_76791_y -> Biome.biomeName
-            biomeNames.put(biome, biomeName.replace(" ", "").replace("_", "").toLowerCase());
-        }
-        return biomeNames.get(biome);
-    }
-
-    public static String convertConfigName(String str) {
-        return str.replace(" ", "").toUpperCase();
-    }
-
-    public static String getTagDisplayName(String tag) {
-        return tag.charAt(0) + tag.substring(1).toLowerCase();
-    }
-
-    public static String getBiomeDisplayName(String str) {
-        String ret = "";
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            if (Character.isUpperCase(c) && i != 0 && str.charAt(i - 1) != ' ') {
-                ret = ret + " " + c;
-            } else {
-                ret = ret + c;
-            }
-        }
-        return ret;
-    }
-
     public static class ReservoirType {
         public String fluid;
 

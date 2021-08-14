@@ -1,6 +1,5 @@
 package gregicadditions.widgets;
 
-import gregicadditions.network.ProspectingPacket;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;

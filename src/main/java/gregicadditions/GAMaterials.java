@@ -1300,13 +1300,6 @@ public class GAMaterials implements IMaterialHandler {
     public static SimpleDustMaterial CoAcABCatalyst = new SimpleDustMaterial("coacab_catalyst", 0x755f30, (short) 900, MaterialIconSet.FINE, "Co/AC-AB");
     public static Material DrillingMudMixture = new Material.Builder(18504, "drilling_mud_mixture").fluid().color(CaCBaSMixture.rgb + LubricantClaySlurry.rgb).build();
 
-    // todo remove
-    public static Material UEV = new MarkerMaterial("UEV");
-    public static Material UIV = new MarkerMaterial("UIV");
-    public static Material UMV = new MarkerMaterial("UMV");
-    public static Material UXV = new MarkerMaterial("UXV");
-    public static Material MAX = new MarkerMaterial("MAX");
-
     @Override
     public void onMaterialsInit() {
 

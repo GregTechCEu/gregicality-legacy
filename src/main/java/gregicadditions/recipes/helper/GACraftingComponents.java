@@ -18,6 +18,7 @@ import static gregtech.api.GTValues.W;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
+// todo rework this class to work with new GTCEu way
 public enum GACraftingComponents {
     CIRCUIT {
         @Override
@@ -44,16 +45,16 @@ public enum GACraftingComponents {
                 case 9:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
                 case 10:
-                    return new UnificationEntry(circuit, UEV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultra);
                 case 11:
-                    return new UnificationEntry(circuit, UIV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Insane);
                 case 12:
-                    return new UnificationEntry(circuit, UMV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.UMVCircuit);
                 case 13:
-                    return new UnificationEntry(circuit, UXV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.UXVCircuit);
                 case 14:
                 default:
-                    return new UnificationEntry(circuit, MAX);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Maximum);
             }
         }
     },
@@ -82,16 +83,16 @@ public enum GACraftingComponents {
                 case 9:
                     return new UnificationEntry(circuit, MarkerMaterials.Tier.Infinite);
                 case 10:
-                    return new UnificationEntry(circuit, UEV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Ultra);
                 case 11:
-                    return new UnificationEntry(circuit, UIV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Insane);
                 case 12:
-                    return new UnificationEntry(circuit, UMV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.UMVCircuit);
                 case 13:
-                    return new UnificationEntry(circuit, UXV);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.UXVCircuit);
                 case 14:
                 default:
-                    return new UnificationEntry(circuit, MAX);
+                    return new UnificationEntry(circuit, MarkerMaterials.Tier.Maximum);
             }
         }
     },

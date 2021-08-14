@@ -76,7 +76,7 @@ public class ComponentRecipes {
                 .input(foil, Osmiridium, 64)
                 .input(cableGtSingle, Pikyonium, 8)
                 .input(gemExquisite, Diamond, 2)
-                .input(circuit, UEV, 2)
+                .input(circuit, Ultra, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(EMITTER_UEV.getStackForm())
                 .buildAndRegister();
@@ -137,7 +137,7 @@ public class ComponentRecipes {
                 .input(cableGtSingle, Pikyonium, 8)
                 .input(gemExquisite, Diamond, 2)
                 .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(8))
-                .input(circuit, UEV, 2)
+                .input(circuit, Ultra, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(SENSOR_UEV.getStackForm())
                 .buildAndRegister();
@@ -191,7 +191,7 @@ public class ComponentRecipes {
                 .input(wireFine, Osmium, 64)
                 .input(wireFine, Osmium, 64)
                 .input(cableGtSingle, Pikyonium, 4)
-                .input(circuit, UEV, 2)
+                .input(circuit, Ultra, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(FIELD_GENERATOR_UEV.getStackForm())
                 .buildAndRegister();

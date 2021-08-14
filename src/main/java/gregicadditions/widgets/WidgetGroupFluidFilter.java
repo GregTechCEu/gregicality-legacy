@@ -8,6 +8,7 @@ import net.minecraft.network.PacketBuffer;
 
 import java.util.function.Supplier;
 
+// todo remove if unneeded
 public class WidgetGroupFluidFilter extends AbstractWidgetGroup {
 
     private final Supplier<FluidFilter> itemFilterSupplier;
