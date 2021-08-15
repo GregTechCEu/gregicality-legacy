@@ -68,67 +68,343 @@ public class GAUnknownCompositionMaterials {
                 .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
                 .components(Carbon, 5, Fluorine, 10)
                 .build();
-        public static IngotMaterial FluorinatedEthylenePropylene = new IngotMaterial(988, "fluorinated_ethylene_propylene", 0xC8C8C8, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 5), new MaterialStack(Fluorine, 10)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
-        public static SimpleFluidMaterial Catalase = new SimpleFluidMaterial("catalase", 0xdb6596, "?");
-        public static SimpleFluidMaterial Blood = new SimpleFluidMaterial("blood", 0x5c0606, "Blood");
-        public static SimpleFluidMaterial BloodCells = new SimpleFluidMaterial("blood_cells", 0xad2424, "???");
-        public static SimpleFluidMaterial BloodPlasma = new SimpleFluidMaterial("blood_plasma", 0xe37171, "???");
-        public static SimpleFluidMaterial BFGF = new SimpleFluidMaterial("bfgf", 0xb365e0, "bFGF");
-        public static SimpleFluidMaterial BacterialGrowthMedium = new SimpleFluidMaterial("bacterial_growth_medium", 0x0b2e12, "For Bacteria");
-        public static SimpleFluidMaterial DepletedGrowthMedium = new SimpleFluidMaterial("depleted_growth_medium", 0x071209, "Depleted");
-        public static SimpleFluidMaterial AnimalCells = new SimpleFluidMaterial("animal_cells", 0xc94996, "???");
-        public static SimpleFluidMaterial RapidlyReplicatingAnimalCells = new SimpleFluidMaterial("rapidly_replicating_animal_cells", 0x7a335e, TextFormatting.OBFUSCATED + "????");
-        public static SimpleFluidMaterial MycGene = new SimpleFluidMaterial("myc_gene", 0x445724, "?");
-        public static SimpleFluidMaterial Oct4Gene = new SimpleFluidMaterial("oct_4_gene", 0x374f0d, "?");
-        public static SimpleFluidMaterial SOX2Gene = new SimpleFluidMaterial("sox_2_gene", 0x5d8714, "?");
-        public static SimpleFluidMaterial KFL4Gene = new SimpleFluidMaterial("kfl_4_gene", 0x759143, "?");
-        public static SimpleFluidMaterial Cas9 = new SimpleFluidMaterial("cas_9", 0x5f6e46, "?");
-        public static SimpleFluidMaterial GenePlasmids = new SimpleFluidMaterial("pluripotency_induction_gene_plasmids", 0xabe053, "?");
-        public static SimpleFluidMaterial Chitin = new SimpleFluidMaterial("chitin", 0xcbd479, "?");
-        public static SimpleFluidMaterial Chitosan = new SimpleFluidMaterial("chitosan", 0xb1bd42, "?");
-        public static SimpleFluidMaterial GeneTherapyFluid = new SimpleFluidMaterial("pluripotency_induction_gene_therapy_fluid", 0x6b2f66, "?");
-        public static SimpleFluidMaterial Resin = new SimpleFluidMaterial("resin", 0x3d2f11, "?");
-        public static SimpleFluidMaterial Brine = new SimpleFluidMaterial("brine", 0xfcfc8a, "?");
-        public static SimpleFluidMaterial ZrHfSeparationMix = new SimpleFluidMaterial("zrhf_separation_mix", 0xfcfc95, "?");
-        public static SimpleFluidMaterial MetalRichSlagSlurry = new SimpleFluidMaterial("metal_slag_slurry", (Zinc.materialRGB-10), "?");
-        public static SimpleFluidMaterial PolyphenolMix = new SimpleFluidMaterial("polyphenol_mix", (Phenol.materialRGB+10), "?");
-        public static SimpleFluidMaterial AcidifiedPolyphenolMix = new SimpleFluidMaterial("acidified_polyphenol_mix", (PolyphenolMix.rgb+SulfuricAcid.materialRGB)/2, "?");
-        public static SimpleFluidMaterial Amidoxime = new SimpleFluidMaterial("amidoxime", 0x66ff33, "?");
-        public static SimpleFluidMaterial DebrominatedWater = new SimpleFluidMaterial("debrominated_brine", 0x0000ff, WATER.formula());
-        public static SimpleFluidMaterial SeaWater = new SimpleFluidMaterial("sea_water", 0x0000FF, WATER.formula()+"?");
-        public static SimpleFluidMaterial ConcentratedBrine = new SimpleFluidMaterial("concentrated_brine", 0xfcfc95, "?");
-        public static SimpleFluidMaterial CalciumFreeBrine = new SimpleFluidMaterial("calcium_free_brine", 0xfcfca6, "?");
-        public static SimpleFluidMaterial SodiumFreeBrine = new SimpleFluidMaterial("sodium_free_brine", 0xfcfcb1, "?");
-        public static SimpleFluidMaterial PotassiumFreeBrine = new SimpleFluidMaterial("potassium_free_brine", 0xfcfcbc, "?");
-        public static SimpleFluidMaterial BoronFreeSolution = new SimpleFluidMaterial("boron_free_solution", 0xfcfccd, "?");
-        public static SimpleFluidMaterial ChilledBrine = new SimpleFluidMaterial("chilled_brine", 0xfcfc95, "?");
-        public static SimpleFluidMaterial Cycloparaphenylene = new SimpleFluidMaterial("cycloparaphenylene", 0x333333, "CPP");
-        public static SimpleFluidMaterial NeutronPlasma = new SimpleFluidMaterial("neutron_plasma", 0xf0e9e9, "n");
-        public static SimpleFluidMaterial QuassifissioningPlasma = new SimpleFluidMaterial("quasifissioning_plasma", 0xD5CB54, TextFormatting.OBFUSCATED + "???");
-        public static SimpleFluidMaterial RubySlurry = new SimpleFluidMaterial("ruby_slurry", Ruby.materialRGB, "?");
-        public static SimpleFluidMaterial SapphireSlurry = new SimpleFluidMaterial("sapphire_slurry", Sapphire.materialRGB, "?");
-        public static SimpleFluidMaterial GreenSapphireSlurry = new SimpleFluidMaterial("green_sapphire_slurry", GreenSapphire.materialRGB, "?");
-        public static SimpleFluidMaterial ATL = new SimpleFluidMaterial("atl", 0x709c4a, "ATL");
-        public static SimpleFluidMaterial DrillingMud = new SimpleFluidMaterial("drilling_mud", 0x996600, "For the Void Miner");
-        public static SimpleFluidMaterial UsedDrillingMud = new SimpleFluidMaterial("used_drilling_mud", 0x998833, "Used Mud");
-        public static SimpleFluidMaterial UnprocessedNdYAGSolution = new SimpleFluidMaterial("unprocessed_ndyag_solution",0x6f20af, "Nd:YAG");
-        public static SimpleFluidMaterial LiquidCrystalDetector = new SimpleFluidMaterial("liquid_crystal_detector",0xda20da);
-        public static SimpleFluidMaterial QuarkGluonPlasma = new SimpleFluidMaterial("quark_gluon_plasma",0x8f00ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial HeavyQuarks = new SimpleFluidMaterial("heavy_quarks",0x008800, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)ds" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial LightQuarks = new SimpleFluidMaterial("light_quarks",0x0000ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(c2)(t2)b" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial Gluons = new SimpleFluidMaterial("gluons",0xfcfcfa, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "g" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial HeavyLeptonMix = new SimpleFluidMaterial("heavy_lepton_mix",0x5adf52, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(t2)u" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial CosmicComputingMix = new SimpleFluidMaterial("cosmic_computing_mix",0xafad2f, TextFormatting.OBFUSCATED + "aaaaa", false, true);
-        public static SimpleFluidMaterial HeavyQuarkEnrichedMix = new SimpleFluidMaterial("heavy_quark_enriched_mix",0xefefef, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)b" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial DenseNeutronPlasma = new SimpleFluidMaterial("dense_neutron_plasma",0xacecac,1000000, false, TextFormatting.OBFUSCATED.toString() + "a" + TextFormatting.RESET + TextFormatting.GRAY + "n" + TextFormatting.OBFUSCATED.toString() + "a");
-        public static SimpleFluidMaterial CosmicMeshPlasma = new SimpleFluidMaterial("cosmic_mesh_plasma",0x1c1c8c,1000000, false, TextFormatting.OBFUSCATED.toString() + "nn");
-        public static SimpleFluidMaterial FreeAlphaGas = new SimpleFluidMaterial("free_alpha_gas", 0xe0d407, "a");
-        public static SimpleFluidMaterial FreeElectronGas = new SimpleFluidMaterial("free_electron_gas", 0x044c4c, "e-");
-        public static SimpleFluidMaterial HighEnergyQGP = new SimpleFluidMaterial("high_energy_qgp", 0x8f00ff, TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false, true);
-        public static SimpleFluidMaterial FermionicUUMatter = new SimpleFluidMaterial("fermionic_uu_matter", UUMatter.materialRGB / 3, TextFormatting.OBFUSCATED + "???");
-        public static SimpleFluidMaterial BosonicUUMatter = new SimpleFluidMaterial("bosonic_uu_matter", UUMatter.materialRGB - FermionicUUMatter.rgb, TextFormatting.OBFUSCATED + "???");
-        public static SimpleFluidMaterial Soap = new SimpleFluidMaterial("soap", 0xFFAE42, "?");
-        public static SimpleFluidMaterial DeglyceratedSoap = new SimpleFluidMaterial("deglyceratedsoap", 0xFFAE41);
+        Catalase = new Material.Builder(9511, "catalase")
+                .fluid()
+                .color(0xdb6596)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Blood = new Material.Builder(9512, "blood")
+                .fluid()
+                .color(0x5c0606)
+                .build()
+                .setFormula("Blood");
+        BloodCells = new Material.Builder(9513, "blood_cells")
+                .fluid()
+                .color(0xad2424)
+                .build()
+                .setFormula("???");
+        BloodPlasma = new Material.Builder(9514, "blood_plasma")
+                .fluid()
+                .color(0xe37171)
+                .build()
+                .setFormula("???");
+        BFGF = new Material.Builder(9515, "bfgf")
+                .fluid()
+                .color(0xb365e0)
+                .build()
+                .setFormula("bFGF");
+        BacterialGrowthMedium = new Material.Builder(9516, "bacterial_growth_medium")
+                .fluid()
+                .color(0x0b2e12)
+                .build()
+                .setFormula("For Bacteria");
+        DepletedGrowthMedium = new Material.Builder(9517, "depleted_growth_medium")
+                .fluid()
+                .color(0x071209)
+                .build()
+                .setFormula("Depleted");
+        AnimalCells = new Material.Builder(9518, "animal_cells")
+                .fluid()
+                .color(0xc94996)
+                .build()
+                .setFormula("???");
+        RapidlyReplicatingAnimalCells = new Material.Builder(9519, "rapidly_replicating_animal_cells")
+                .fluid()
+                .color(0x7a335e)
+                // TextFormatting.OBFUSCATED + "????"
+                .build();
+        MycGene = new Material.Builder(9520, "myc_gene")
+                .fluid()
+                .color(0x445724)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Oct4Gene = new Material.Builder(9521, "oct_4_gene")
+                .fluid()
+                .color(0x374f0d)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        SOX2Gene = new Material.Builder(9522, "sox_2_gene")
+                .fluid()
+                .color(0x5d8714)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        KFL4Gene = new Material.Builder(9523, "kfl_4_gene")
+                .fluid()
+                .color(0x759143)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Cas9 = new Material.Builder(9524, "cas_9")
+                .fluid()
+                .color(0x5f6e46)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        GenePlasmids = new Material.Builder(9525, "pluripotency_induction_gene_plasmids")
+                .fluid()
+                .color(0xabe053)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Chitin = new Material.Builder(9526, "chitin")
+                .fluid()
+                .color(0xcbd479)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Chitosan = new Material.Builder(9527, "chitosan")
+                .fluid()
+                .color(0xb1bd42)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        GeneTherapyFluid = new Material.Builder(9528, "pluripotency_induction_gene_therapy_fluid")
+                .fluid()
+                .color(0x6b2f66)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Resin = new Material.Builder(9529, "resin")
+                .fluid()
+                .color(0x3d2f11)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Brine = new Material.Builder(9530, "brine")
+                .fluid()
+                .color(0xfcfc8a)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        ZrHfSeparationMix = new Material.Builder(9531, "zrhf_separation_mix")
+                .fluid()
+                .color(0xfcfc95)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        MetalRichSlagSlurry = new Material.Builder(9532, "metal_slag_slurry")
+                .fluid()
+                .color(0xFAF0E6)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        PolyphenolMix = new Material.Builder(9533, "polyphenol_mix")
+                .fluid()
+                .color(0x78442B)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        AcidifiedPolyphenolMix = new Material.Builder(9534, "acidified_polyphenol_mix")
+                .fluid()
+                .color(0xBBE215)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Amidoxime = new Material.Builder(9535, "amidoxime")
+                .fluid()
+                .color(0x66ff33)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        DebrominatedWater = new Material.Builder(9536, "debrominated_brine")
+                .fluid()
+                .color(0x0000ff)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 1)
+                .build();
+        SeaWater = new Material.Builder(9537, "sea_water")
+                .fluid()
+                .color(0x0000FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 1, RareEarth, 1)
+                .build();
+        ConcentratedBrine = new Material.Builder(9538, "concentrated_brine")
+                .fluid()
+                .color(0xfcfc95)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        CalciumFreeBrine = new Material.Builder(9539, "calcium_free_brine")
+                .fluid()
+                .color(0xfcfca6)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        SodiumFreeBrine = new Material.Builder(9540, "sodium_free_brine")
+                .fluid()
+                .color(0xfcfcb1)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        PotassiumFreeBrine = new Material.Builder(9541, "potassium_free_brine")
+                .fluid()
+                .color(0xfcfcbc)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        BoronFreeSolution = new Material.Builder(9542, "boron_free_solution")
+                .fluid()
+                .color(0xfcfccd)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        ChilledBrine = new Material.Builder(9543, "chilled_brine")
+                .fluid()
+                .color(0xfcfc95)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        Cycloparaphenylene = new Material.Builder(9544, "cycloparaphenylene")
+                .fluid()
+                .color(0x333333)
+                .build()
+                .setFormula("CPP");
+        NeutronPlasma = new Material.Builder(9545, "neutron_plasma")
+                .fluid()
+                .color(0xf0e9e9)
+                .build()
+                .setFormula("n");
+        QuassifissioningPlasma = new Material.Builder(9546, "quasifissioning_plasma")
+                .fluid()
+                .color(0xD5CB54)
+                // TextFormatting.OBFUSCATED + "???"
+                .build();
+        RubySlurry = new Material.Builder(9547, "ruby_slurry")
+                .fluid()
+                .color(0xFF6464)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        SapphireSlurry = new Material.Builder(9548, "sapphire_slurry")
+                .fluid()
+                .color(0x6464C8)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        GreenSapphireSlurry = new Material.Builder(9549, "green_sapphire_slurry")
+                .fluid()
+                .color(0x64C882)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        ATL = new Material.Builder(9550, "atl")
+                .fluid()
+                .color(0x709c4a)
+                .build()
+                .setFormula("ATL");
+        DrillingMud = new Material.Builder(9551, "drilling_mud")
+                .fluid()
+                .color(0x996600)
+                .build()
+                .setFormula("For the Void Miner");
+        UsedDrillingMud = new Material.Builder(9552, "used_drilling_mud")
+                .fluid()
+                .color(0x998833)
+                .build()
+                .setFormula("Used Mud");
+        UnprocessedNdYAGSolution = new Material.Builder(9553, "unprocessed_ndyag_solution")
+                .fluid()
+                .color(0x6f20af)
+                .build()
+                .setFormula("Nd:YAG");
+        LiquidCrystalDetector = new Material.Builder(9554, "liquid_crystal_detector")
+                .fluid()
+                .color(0xda20da)
+                .build();
+        QuarkGluonPlasma = new Material.Builder(9555, "quark_gluon_plasma")
+                .fluid()
+                .color(0x8f00ff)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        HeavyQuarks = new Material.Builder(9556, "heavy_quarks")
+                .fluid()
+                .color(0x008800)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)ds" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        LightQuarks = new Material.Builder(9557, "light_quarks")
+                .fluid()
+                .color(0x0000ff)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(c2)(t2)b" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        Gluons = new Material.Builder(9558, "gluons")
+                .fluid()
+                .color(0xfcfcfa)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "g" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        HeavyLeptonMix = new Material.Builder(9559, "heavy_lepton_mix")
+                .fluid()
+                .color(0x5adf52)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(t2)u" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        CosmicComputingMix = new Material.Builder(9560, "cosmic_computing_mix")
+                .fluid()
+                .color(0xafad2f)
+                // TextFormatting.OBFUSCATED + "aaaaa"
+                // fancy tooltip
+                .build();
+        HeavyQuarkEnrichedMix = new Material.Builder(9561, "heavy_quark_enriched_mix")
+                .fluid()
+                .color(0xefefef)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)b" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        DenseNeutronPlasma = new Material.Builder(9562, "dense_neutron_plasma")
+                .fluid()
+                .color(0xacecac)
+                .fluidTemp(1000000)
+                // TextFormatting.OBFUSCATED.toString() + "a" + TextFormatting.RESET + TextFormatting.GRAY + "n" + TextFormatting.OBFUSCATED.toString() + "a"
+                .build();
+        CosmicMeshPlasma = new Material.Builder(9563, "cosmic_mesh_plasma")
+                .fluid()
+                .color(0x1c1c8c)
+                .fluidTemp(1000000)
+                // TextFormatting.OBFUSCATED.toString() + "nn"
+                .build();
+        FreeAlphaGas = new Material.Builder(9564, "free_alpha_gas")
+                .fluid()
+                .color(0xe0d407)
+                .build()
+                .setFormula("a");
+        FreeElectronGas = new Material.Builder(9565, "free_electron_gas")
+                .fluid()
+                .color(0x044c4c)
+                .build()
+                .setFormula("e-");
+        HighEnergyQGP = new Material.Builder(9566, "high_energy_qgp")
+                .fluid()
+                .color(0x8f00ff)
+                // TextFormatting.OBFUSCATED + "a" + TextFormatting.RESET + "(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a"
+                // fancy tooltip
+                .build();
+        FermionicUUMatter = new Material.Builder(9567, "fermionic_uu_matter")
+                .fluid()
+                .color(0x27AAD2)
+                // TextFormatting.OBFUSCATED + "???"
+                .build();
+        BosonicUUMatter = new Material.Builder(9568, "bosonic_uu_matter")
+                .fluid()
+                .color(0x4F55A5)
+                // TextFormatting.OBFUSCATED + "???"
+                .build();
+        Soap = new Material.Builder(9569, "soap")
+                .fluid()
+                .color(0xFFAE42)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        DeglyceratedSoap = new Material.Builder(9570, "deglyceratedsoap")
+                .fluid()
+                .color(0xFFAE41)
+                .build();
         public static SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", 0xf0e660, (short) 26, MaterialIconSet.ROUGH, "???");
         public static SimpleDustMaterial GreenAlgae = new SimpleDustMaterial("green_algae", 0x228b22, (short) 32, MaterialIconSet.METALLIC, "An Algae");
         public static SimpleDustMaterial BrownAlgae = new SimpleDustMaterial("brown_algae", 0xa52a2a, (short) 33, MaterialIconSet.METALLIC, "An Algae");
