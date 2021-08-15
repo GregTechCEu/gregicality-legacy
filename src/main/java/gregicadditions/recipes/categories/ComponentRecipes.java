@@ -16,6 +16,7 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregicadditions.recipes.helper.HelperMethods.removeCraftingRecipes;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
@@ -979,6 +980,13 @@ public class ComponentRecipes {
 
         for (MaterialStack stackFluid : cableFluids) {
             IngotMaterial m = (IngotMaterial) stackFluid.material;
+            //Assembler removals
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(OrePrefix.plate, Tin, 2), OreDictUnifier.get(OrePrefix.cableGtSingle, Tin), OreDictUnifier.get(OrePrefix.screw, Tin), OreDictUnifier.get(OrePrefix.rotor, Tin), ELECTRIC_MOTOR_LV.getStackForm()}, new FluidStack[]{m.getFluid((int) stackFluid.amount)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(OrePrefix.plate, Bronze, 2), OreDictUnifier.get(OrePrefix.cableGtSingle, Copper), OreDictUnifier.get(OrePrefix.screw, Bronze), OreDictUnifier.get(OrePrefix.rotor, Bronze), ELECTRIC_MOTOR_MV.getStackForm()}, new FluidStack[]{m.getFluid((int) stackFluid.amount)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(OrePrefix.plate, Steel, 2), OreDictUnifier.get(OrePrefix.cableGtSingle, Gold), OreDictUnifier.get(OrePrefix.screw, Steel), OreDictUnifier.get(OrePrefix.rotor, Steel), ELECTRIC_MOTOR_HV.getStackForm()}, new FluidStack[]{m.getFluid((int) stackFluid.amount)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(OrePrefix.plate, StainlessSteel, 2), OreDictUnifier.get(OrePrefix.cableGtSingle, Aluminium), OreDictUnifier.get(OrePrefix.screw, StainlessSteel), OreDictUnifier.get(OrePrefix.rotor, StainlessSteel), ELECTRIC_MOTOR_EV.getStackForm()}, new FluidStack[]{m.getFluid((int) stackFluid.amount)});
+            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{OreDictUnifier.get(OrePrefix.plate, TungstenSteel, 2), OreDictUnifier.get(OrePrefix.cableGtSingle, Tungsten), OreDictUnifier.get(OrePrefix.screw, TungstenSteel), OreDictUnifier.get(OrePrefix.rotor, TungstenSteel), ELECTRIC_MOTOR_IV.getStackForm()}, new FluidStack[]{m.getFluid((int) stackFluid.amount)});
+            //Assembler additions
             ModHandler.addShapedRecipe(String.format("lv_electric_pump_%s", m.toString()), ELECTRIC_PUMP_LV.getStackForm(), "SRH", "dPw", "HMC", 'S', OreDictUnifier.get(OrePrefix.screw, Tin), 'R', OreDictUnifier.get(OrePrefix.rotor, Tin), 'H', OreDictUnifier.get(OrePrefix.ring, m), 'P', OreDictUnifier.get(OrePrefix.pipeMedium, Bronze), 'M', ELECTRIC_MOTOR_LV.getStackForm(), 'C', OreDictUnifier.get(OrePrefix.cableGtSingle, Tin));
             ModHandler.addShapedRecipe(String.format("mv_electric_pump_%s", m.toString()), ELECTRIC_PUMP_MV.getStackForm(), "SRH", "dPw", "HMC", 'S', OreDictUnifier.get(OrePrefix.screw, Bronze), 'R', OreDictUnifier.get(OrePrefix.rotor, Bronze), 'H', OreDictUnifier.get(OrePrefix.ring, m), 'P', OreDictUnifier.get(OrePrefix.pipeMedium, Steel), 'M', ELECTRIC_MOTOR_MV.getStackForm(), 'C', OreDictUnifier.get(OrePrefix.cableGtSingle, Copper));
             ModHandler.addShapedRecipe(String.format("hv_electric_pump_%s", m.toString()), ELECTRIC_PUMP_HV.getStackForm(), "SRH", "dPw", "HMC", 'S', OreDictUnifier.get(OrePrefix.screw, Steel), 'R', OreDictUnifier.get(OrePrefix.rotor, Steel), 'H', OreDictUnifier.get(OrePrefix.ring, m), 'P', OreDictUnifier.get(OrePrefix.pipeMedium, StainlessSteel), 'M', ELECTRIC_MOTOR_HV.getStackForm(), 'C', OreDictUnifier.get(OrePrefix.cableGtSingle, Gold));
