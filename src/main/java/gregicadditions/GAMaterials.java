@@ -621,6 +621,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PotassiumBisulfite;
     public static Material PotassiumNitrite;
     public static Material HydroxylammoniumSulfate;
+    public static Material Legendarium;
 
 
     // Second Degree Materials
@@ -906,7 +907,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Sulfanilamide;
     public static Material Ethanol100;
     public static Material LinoleicAcid;
-    public static Material CarbonFluoride;
+    public static Material CarbonTetrafluoride;
     public static Material TributylPhosphate;
     public static Material Butanol;
     public static Material HydrogenCyanide;
@@ -1099,10 +1100,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Cyanonaphthalene;
     public static Material Triphenylphosphine;
     public static Material Methylbenzophenanthrene;
-    public static Material ThalliumResidue;
-    public static Material ThalliumChloride;
-    public static Material ZincChloride;
-    public static Material SodiumSulfite;
     public static Material AcrylicFibers;
     public static Material Glucosamine;
     public static Material PolystyreneNanoParticles;
@@ -1167,7 +1164,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Sorbose;
     public static Material CalciumAlginate;
     public static Material BETSPerrhenate;
-    public static Material Legendarium;
     public static Material Durene;
     public static Material PyromelliticDianhydride;
     public static Material SuccinicAnhydride;
