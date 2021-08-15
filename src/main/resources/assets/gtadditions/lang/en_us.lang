@@ -4268,11 +4268,6 @@ fluid.maraging_steel_a_molten=Molten Maraging Steel 250
 fluid.inconel_a_molten=Molten Inconel 625
 fluid.grisium_molten=Molten Grisium
 
-
-gtadditions.machine.buffer.lv.name=Basic Buffer
-gtadditions.machine.buffer.mv.name=Advanced Buffer
-gtadditions.machine.buffer.hv.name=Advanced Buffer II
-
 metaitem.hyperium_essence.name=Hyperium Essence
 metaitem.ludicium_essence.name=Ludicium Essence
 metaitem.hyperium_crafting_seed.name=Tier 7 Crafting Seed

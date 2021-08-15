@@ -998,7 +998,7 @@ public class RecipeHandler {
                     .fluidInputs(recipe.getFluidInputs())
                     .fluidOutputs(recipe.getFluidOutputs());
 
-            // TODO Giving better way to do this in GTCE
+            // TODO Giving better way to do this in GTCE (is in CEu)
             for (Recipe.ChanceEntry entry : recipe.getChancedOutputs())
                 largeRecipeBuilder.chancedOutput(entry.getItemStack(), entry.getChance(), entry.getBoostPerTier());
 

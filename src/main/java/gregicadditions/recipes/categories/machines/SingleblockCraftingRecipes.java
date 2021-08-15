@@ -135,12 +135,6 @@ public class SingleblockCraftingRecipes {
                 'A', CABLE_DOUBLE,
                 'P', PISTON);
 
-        registerMachineRecipe(1, GATileEntities.BUFFER,
-                " G ", " H ", " C ",
-                'G', GLASS,
-                'H', HULL,
-                'C', OreDictNames.chestWood);
-
         registerMachineRecipe(GATileEntities.MUFFLER_HATCH,
                 "HM ", "PR ", "   ",
                 'H', HULL,
