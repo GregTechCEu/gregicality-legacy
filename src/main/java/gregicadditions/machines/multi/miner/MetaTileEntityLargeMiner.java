@@ -93,7 +93,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSG;
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : HSSG;
                 break;
             }
             case ADVANCE: {
@@ -101,7 +101,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSS;
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : HSSS;
                 break;
             }
             default: {
@@ -109,7 +109,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : BlackSteel;
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : BlackSteel;
                 break;
             }
         }

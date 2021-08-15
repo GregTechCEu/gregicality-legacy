@@ -131,6 +131,27 @@ public class CasingUtils {
     public static Material getCasingMaterial(String casingMaterial, Material defaultCasingMaterial) {
         casingMaterial = casingMaterial.toLowerCase();
         switch (casingMaterial) {
+            case "bronze": {
+                return Materials.Bronze;
+            }
+            case "invar": {
+                return Materials.Invar;
+            }
+            case "aluminium": {
+                return Materials.Aluminium;
+            }
+            case "steel": {
+                return Materials.Steel;
+            }
+            case "stainless_steel": {
+                return Materials.StainlessSteel;
+            }
+            case "titanium": {
+                return Materials.Titanium;
+            }
+            case "tungstensteel": {
+                return Materials.TungstenSteel;
+            }
             case "hss_g": { // Account for naming inconsistency
                 return Materials.HSSG;
             }
