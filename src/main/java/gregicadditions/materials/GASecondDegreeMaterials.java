@@ -31,7 +31,7 @@ public class GASecondDegreeMaterials {
     public static void register() {
         PalladiumAmmonia = new Material.Builder(11500, "palladium_enriched_ammonia")
                 .fluid()
-                .color(Platinum.getMaterialRGB())
+                .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Palladium, 1, Ammonia, 1, RareEarth, 1)
                 .build();
@@ -91,7 +91,7 @@ public class GASecondDegreeMaterials {
 
         PalladiumRawPowder = new Material.Builder(11509, "reprecipitated_palladium")
                 .dust()
-                .color(Palladium.getMaterialRGB()).iconSet(METALLIC)
+                .colorAverage().iconSet(METALLIC)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Palladium, 1, Ammonia, 1)
                 .build();
@@ -141,7 +141,7 @@ public class GASecondDegreeMaterials {
 
         FluoroApatite = new Material.Builder(11516, "fluoroapatite")
                 .dust().ore()
-                .color(Apatite.getMaterialRGB())
+                .colorAverage()
                 .components(Calcium, 5, Phosphate, 3, Fluorine, 1)
                 .build();
 
