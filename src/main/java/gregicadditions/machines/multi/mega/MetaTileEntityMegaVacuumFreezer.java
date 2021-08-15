@@ -27,7 +27,7 @@ public class MetaTileEntityMegaVacuumFreezer extends MegaMultiblockRecipeMapCont
     };
 
     public MetaTileEntityMegaVacuumFreezer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, VACUUM_RECIPES, 100, 200, 100, 0);
+        super(metaTileEntityId, VACUUM_RECIPES, 100, 50, 100, 0);
     }
 
     @Override
