@@ -355,11 +355,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean assemblyLineMakeCheaperComponents = true;
 
-        @Config.Comment("Assembler can make components (Motor, Pump, Conveyor, Piston, etc)")
-        @Config.Name("Assembler can make components")
-        @Config.RequiresMcRestart
-        public boolean assemblerCanMakeComponents = true;
-
         @Config.Comment("Whether or not to add diminishing returns for GTCE Diesel Generators")
         @Config.Name("Diesel Generator efficiency loss")
         @Config.RequiresMcRestart
