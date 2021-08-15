@@ -113,7 +113,7 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
 
         @Override
         public long getMaxVoltage() {
-            MetaTileEntityMegaBlastFurnace controller = (MetaTileEntityMegaBlastFurnace) this.metaTileEntity;
+            MegaMultiblockRecipeMapController controller = (MegaMultiblockRecipeMapController) this.metaTileEntity;
             return controller.maxVoltage;
         }
 
