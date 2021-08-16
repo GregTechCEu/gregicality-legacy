@@ -57,6 +57,8 @@ public class Gregicality {
         if (FMLCommonHandler.instance().getSide().isClient()) {
             GAOreBlockFactory.init();
         }
+        // TODO Make sure this is not called too early, may need InterModComms
+        GAConfig.syncMachineConfigs();
     }
 
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.mysticalagriculture.MysticalClientProxy", serverSide = "gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy")
@@ -81,6 +83,7 @@ public class Gregicality {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         GALog.init(event.getModLog());
+        GTValues.HT = true; // force GTCEu to register UHV+ Hulls, Casings, Basic Electric Pieces like Transformers, Bat Buffers, etc.
         NetworkHandler.preInit();
         proxy.preLoad();
         Keybinds.register();
