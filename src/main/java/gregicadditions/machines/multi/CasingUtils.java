@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.client.ClientHandler;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.item.metal.NuclearCasing;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import static gregicadditions.item.GAMetaBlocks.*;
 import static gregtech.api.render.Textures.*;
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
+import static gregtech.api.unification.material.type.Material.MATERIAL_REGISTRY;
 
 public class CasingUtils {
 
@@ -68,6 +70,13 @@ public class CasingUtils {
                 return NUCLEAR_CASING.getState(casingType);
         }
 
+        Material possibleCasingMaterial = getCasingMaterial(casingMaterial, Materials.Steel);
+        if (possibleCasingMaterial != null && !possibleCasingMaterial.equals(Materials.Steel)) {
+            IBlockState possibleCasingBlockState = GAMetaBlocks.getMetalCasingBlockState(getCasingMaterial(casingMaterial, Materials.Steel));
+            if (possibleCasingBlockState != null) {
+                return possibleCasingBlockState;
+            }
+        }
         return defaultState == null ? MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID) : defaultState;
     }
 
@@ -118,6 +127,13 @@ public class CasingUtils {
         for (NuclearCasing.CasingType casingType : NuclearCasing.CasingType.values()) {
             if (casingType.getName().equals("casing_" + casingMaterial))
                 return casingType.getTexture();
+        }
+
+        Material possibleCasingMaterial = getCasingMaterial(casingMaterial, Materials.Steel);
+        if (possibleCasingMaterial != null && !possibleCasingMaterial.equals(Materials.Steel)) {
+            ICubeRenderer possibleRenderer = GAMetaBlocks.METAL_CASING.get(possibleCasingMaterial);
+            if (possibleRenderer != null)
+                return possibleRenderer;
         }
 
         return defaultCasingTexture == null ? SOLID_STEEL_CASING : defaultCasingTexture;
@@ -171,6 +187,13 @@ public class CasingUtils {
         for (NuclearCasing.CasingType casingType : NuclearCasing.CasingType.values()) {
             if (casingType.getName().equals("casing_" + casingMaterial))
                 return casingType.getMaterial();
+        }
+
+        int possibleAutoGenMaterialId = MATERIAL_REGISTRY.getIdByObjectName(casingMaterial);
+        if (possibleAutoGenMaterialId != 0) {
+            Material possibleAutoGenMaterial = MATERIAL_REGISTRY.getObjectById(possibleAutoGenMaterialId);
+            if (possibleAutoGenMaterial != null)
+                return possibleAutoGenMaterial;
         }
 
         return defaultCasingMaterial == null ? Materials.Steel : defaultCasingMaterial;
