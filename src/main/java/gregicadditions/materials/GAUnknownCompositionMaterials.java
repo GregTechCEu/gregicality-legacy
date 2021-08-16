@@ -5,19 +5,19 @@ public class GAUnknownCompositionMaterials {
     public static void register() {
         Kerosene = new Material.Builder(9500, "kerosene")
                 .fluid()
-                .color(0xD570D5)
+                .color(0xd570d5)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         RP1RocketFuel = new Material.Builder(9501, "rocket_fuel_c")
                 .fluid()
-                .color(0xFF503C)
+                .color(0xff503c)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1, Oxygen, 1)
                 .build();
         RP1 = new Material.Builder(9502, "rp")
                 .fluid()
-                .color(0xFF6E5D)
+                .color(0xff6e5d)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
@@ -58,13 +58,13 @@ public class GAUnknownCompositionMaterials {
                 .build();
         Polyimide = new Material.Builder(9509, "polyimide")
                 .ingot(1).fluid()
-                .color(0xFF7F50).iconSet(DULL)
+                .color(0xff7f50).iconSet(DULL)
                 .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
                 .components(Carbon, 22, Hydrogen, 12, Nitrogen, 2, Oxygen, 6)
                 .build();
         FluorinatedEthylenePropylene = new Material.Builder(9510, "fluorinated_ethylene_propylene")
                 .ingot(1).fluid
-                .color(0xC8C8C8).iconSet(DULL)
+                .color(0xc8c8c8).iconSet(DULL)
                 .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
                 .components(Carbon, 5, Fluorine, 10)
                 .build();
@@ -188,19 +188,19 @@ public class GAUnknownCompositionMaterials {
                 .build();
         MetalRichSlagSlurry = new Material.Builder(9532, "metal_slag_slurry")
                 .fluid()
-                .color(0xFAF0E6)
+                .color(0xfaf0e6)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         PolyphenolMix = new Material.Builder(9533, "polyphenol_mix")
                 .fluid()
-                .color(0x78442B)
+                .color(0x78442b)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         AcidifiedPolyphenolMix = new Material.Builder(9534, "acidified_polyphenol_mix")
                 .fluid()
-                .color(0xBBE215)
+                .color(0xbbe215)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
@@ -218,7 +218,7 @@ public class GAUnknownCompositionMaterials {
                 .build();
         SeaWater = new Material.Builder(9537, "sea_water")
                 .fluid()
-                .color(0x0000FF)
+                .color(0x0000ff)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, RareEarth, 1)
                 .build();
@@ -270,24 +270,24 @@ public class GAUnknownCompositionMaterials {
                 .setFormula("n");
         QuassifissioningPlasma = new Material.Builder(9546, "quasifissioning_plasma")
                 .fluid()
-                .color(0xD5CB54)
+                .color(0xd5cb54)
                 // TextFormatting.OBFUSCATED + "???"
                 .build();
         RubySlurry = new Material.Builder(9547, "ruby_slurry")
                 .fluid()
-                .color(0xFF6464)
+                .color(0xff6464)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         SapphireSlurry = new Material.Builder(9548, "sapphire_slurry")
                 .fluid()
-                .color(0x6464C8)
+                .color(0x6464c8)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         GreenSapphireSlurry = new Material.Builder(9549, "green_sapphire_slurry")
                 .fluid()
-                .color(0x64C882)
+                .color(0x64c882)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
@@ -387,52 +387,179 @@ public class GAUnknownCompositionMaterials {
                 .build();
         FermionicUUMatter = new Material.Builder(9567, "fermionic_uu_matter")
                 .fluid()
-                .color(0x27AAD2)
+                .color(0x27aad2)
                 // TextFormatting.OBFUSCATED + "???"
                 .build();
         BosonicUUMatter = new Material.Builder(9568, "bosonic_uu_matter")
                 .fluid()
-                .color(0x4F55A5)
+                .color(0x4f55a5)
                 // TextFormatting.OBFUSCATED + "???"
                 .build();
         Soap = new Material.Builder(9569, "soap")
                 .fluid()
-                .color(0xFFAE42)
+                .color(0xffae42)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
         DeglyceratedSoap = new Material.Builder(9570, "deglyceratedsoap")
                 .fluid()
-                .color(0xFFAE41)
+                .color(0xffae41)
                 .build();
-        public static SimpleDustMaterial Yeast = new SimpleDustMaterial("yeast", 0xf0e660, (short) 26, MaterialIconSet.ROUGH, "???");
-        public static SimpleDustMaterial GreenAlgae = new SimpleDustMaterial("green_algae", 0x228b22, (short) 32, MaterialIconSet.METALLIC, "An Algae");
-        public static SimpleDustMaterial BrownAlgae = new SimpleDustMaterial("brown_algae", 0xa52a2a, (short) 33, MaterialIconSet.METALLIC, "An Algae");
-        public static SimpleDustMaterial RedAlgae = new SimpleDustMaterial("red_algae", 0xf08080, (short) 34, MaterialIconSet.METALLIC, "An Algae");
-        public static SimpleDustMaterial DryRedAlgae = new SimpleDustMaterial("dry_red_algae", 0xff7f50, (short) 35, MaterialIconSet.ROUGH, "A Dry Algae");
-        public static SimpleDustMaterial RedAlgaePowder = new SimpleDustMaterial("red_algae_powder", 0xcc2f2f, (short) 36, MaterialIconSet.ROUGH, "A Powdered Algae");
-        public static SimpleDustMaterial PreFreezeAgar = new SimpleDustMaterial("pre_freeze_agar", 0x132b0d, (short) 37, MaterialIconSet.ROUGH, "Warm Agar");
-        public static SimpleDustMaterial FrozenAgarCrystals = new SimpleDustMaterial("frozen_agar_crystals", 0x68db4b, (short) 38, MaterialIconSet.SHINY, "Cold Agar");
-        public static SimpleDustMaterial BrevibacteriumFlavium = new SimpleDustMaterial("brevibacterium_flavium", 0x2c4d24, (short) 40, MaterialIconSet.ROUGH, "Bacteria");
-        public static SimpleDustMaterial StreptococcusPyogenes = new SimpleDustMaterial("streptococcus_pyogenes", 0x1c3b15, (short) 41, MaterialIconSet.ROUGH, "Bacteria");
-        public static SimpleDustMaterial EschericiaColi = new SimpleDustMaterial("eschericia_coli", 0x2d4228, (short) 42, MaterialIconSet.ROUGH, "Bacteria");
-        public static SimpleDustMaterial BifidobacteriumBreve = new SimpleDustMaterial("bifidobacterium_breve", 0x377528, (short) 43, MaterialIconSet.ROUGH, "Bacteria");
-        public static SimpleDustMaterial Alumina = new SimpleDustMaterial("alumina", 0x0b585c, (short) 44, MaterialIconSet.ROUGH, "Al2O3");
-        public static SimpleDustMaterial CupriavidusNecator = new SimpleDustMaterial("cupriavidus_necator", 0x22704f, (short) 46, MaterialIconSet.ROUGH, "Bacteria");
-        public static SimpleDustMaterial Shewanella = new SimpleDustMaterial("shewanella", 0x8752ab, (short) 47, MaterialIconSet.METALLIC, "Bacteria");
-        public static SimpleDustMaterial ZincResidualSlag = new SimpleDustMaterial("zinc_residual_slag", (Zinc.materialRGB-20), (short) 122, MaterialIconSet.DULL, "?");
-        public static SimpleDustMaterial ZincFlueDust = new SimpleDustMaterial("zinc_flue_dust", 0xfcfca, (short) 123, MaterialIconSet.ROUGH, "?");
-        public static SimpleDustMaterial FineZincSlagDust = new SimpleDustMaterial("fine_zinc_slag_dust", (Zinc.materialRGB-10), (short) 125, MaterialIconSet.FINE, "?");
-        public static SimpleDustMaterial DehydrogenationCatalyst = new SimpleDustMaterial("dehydrogenation_catalyst", 0x6464f5, (short) 148, MaterialIconSet.SHINY, "?");
-        public static SimpleDustMaterial NeodymiumDopedYttrium = new SimpleDustMaterial("neodymium_doped_yttrium",YttriumOxide.materialRGB,(short) 268,MaterialIconSet.DULL, "Nd:Y?");
-        public static SimpleDustMaterial NdYAGNanoparticles = new SimpleDustMaterial("nd_yag_nanoparticles",0x6f20af,(short) 269,MaterialIconSet.SHINY, "Nd:YAG");
-        public static SimpleDustMaterial PotassiumPermanganate = new SimpleDustMaterial("potassium_permanganate",PotassiumManganate.rgb-15,(short) 270,MaterialIconSet.ROUGH, "KMnO4");
-        public static SimpleDustMaterial PrHoYLFNanoparticles = new SimpleDustMaterial("prho_ylf_nanoparticles",0xcf8acf,(short) 278,MaterialIconSet.SHINY, "Pr/Ho:YLF");
-        public static SimpleDustMaterial LuTmYVONanoparticles = new SimpleDustMaterial("lutm_yvo_nanoparticles",0x206faf,(short) 279,MaterialIconSet.SHINY, "Lu/Tm:YVO");
-        public static SimpleDustMaterial UnprocessedNdYAGDust = new SimpleDustMaterial("unprocessed_ndyag_dust",0x6f20af,(short) 283,MaterialIconSet.DULL, "Nd:YAG?");
-        public static SimpleDustMaterial LuTmYVOPrecipitate = new SimpleDustMaterial("lutm_yvo_precipitate",0xcf8acf,(short) 318,MaterialIconSet.DULL, "Lu/Tm:YVO?");
-        public static SimpleDustMaterial SelectivelyMutatedCupriavidiusNecator = new SimpleDustMaterial("selectively_mutated_cupriavidius_necator", CupriavidusNecator.rgb * 5 / 4, (short) 373, MaterialIconSet.SHINY, "Bacteria");
-        public static SimpleDustMaterial CoAcABCatalyst = new SimpleDustMaterial("coacab_catalyst", 0x755f30, (short) 900, MaterialIconSet.FINE, "Co/AC-AB");
-        public static Material DrillingMudMixture = new Material.Builder(18504, "drilling_mud_mixture").fluid().color(CaCBaSMixture.rgb + LubricantClaySlurry.rgb).build();
+        Yeast = new Material.Builder(9571, "yeast")
+                .dust()
+                .color(0xf0e660).iconSet(ROUGH)
+                .build()
+                .setFormula("???");
+        GreenAlgae = new Material.Builder(9572, "green_algae")
+                .dust()
+                .color(0x228b22).iconSet(METALLIC)
+                .build()
+                .setFormula("An Algae");
+        BrownAlgae = new Material.Builder(9573, "brown_algae")
+                .dust()
+                .color(0xa52a2a).iconSet(METALLIC)
+                .build()
+                .setFormula("An Algae");
+        RedAlgae = new Material.Builder(9574, "red_algae")
+                .dust()
+                .color(0xf08080).iconSet(METALLIC)
+                .build()
+                .setFormula("An Algae");
+        DryRedAlgae = new Material.Builder(9575, "dry_red_algae")
+                .dust()
+                .color(0xff7f50).iconSet(ROUGH)
+                .build()
+                .setFormula("A Dry Algae");
+        RedAlgaePowder = new Material.Builder(9576, "red_algae_powder")
+                .dust()
+                .color(0xcc2f2f).iconSet(ROUGH)
+                .build()
+                .setFormula("A Powdered Algae");
+        PreFreezeAgar = new Material.Builder(9577, "pre_freeze_agar")
+                .dust()
+                .color(0x132b0d).iconSet(ROUGH)
+                .build()
+                .setFormula("Warm Agar");
+        FrozenAgarCrystals = new Material.Builder(9578, "frozen_agar_crystals")
+                .dust()
+                .color(0x68db4b).iconSet(SHINY)
+                .build()
+                .setFormula("Warm Agar");
+        BrevibacteriumFlavium = new Material.Builder(9579, "brevibacterium_flavium")
+                .dust()
+                .color(0x2c4d24).iconSet(ROUGH)
+                .build()
+                .setFormula("Bacteria");
+        StreptococcusPyogenes = new Material.Builder(9580, "streptococcus_pyogenes")
+                .dust()
+                .color(0x1c3b15).iconSet(ROUGH)
+                .build()
+                .setFormula("Bacteria");
+        EschericiaColi = new Material.Builder(9581, "eschericia_coli")
+                .dust()
+                .color(0x2d4228).iconSet(ROUGH)
+                .build()
+                .setFormula("Bacteria");
+        BifidobacteriumBreve = new Material.Builder(9582, "bifidobacterium_breve")
+                .dust()
+                .color(0x377528).iconSet(ROUGH)
+                .build()
+                .setFormula("Bacteria");
+        Alumina = new Material.Builder(9583, "alumina")
+                .dust()
+                .color(0x0b585c).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Aluminium, 2, Oxygen, 3)
+                .build();
+        CupriavidusNecator = new Material.Builder(9584, "cupriavidus_necator")
+                .dust()
+                .color(0x22704f).iconSet(ROUGH)
+                .build()
+                .setFormula("Bacteria");
+        Shewanella = new Material.Builder(9585, "shewanella")
+                .dust()
+                .color(0x8752ab).iconSet(METALLIC)
+                .build()
+                .setFormula("Bacteria");
+        ZincResidualSlag = new Material.Builder(9586, "zinc_residual_slag")
+                .dust()
+                .color(0xfaf0dc).iconSet(DULL)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        ZincFlueDust = new Material.Builder(9587, "zinc_flue_dust")
+                .dust()
+                .color(0xfcfca).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        FineZincSlagDust = new Material.Builder(9588, "fine_zinc_slag_dust")
+                .dust()
+                .color(0xfaf0e6).iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        DehydrogenationCatalyst = new Material.Builder(9589, "dehydrogenation_catalyst")
+                .dust()
+                .color(0x6464f5).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(RareEarth, 1)
+                .build();
+        NeodymiumDopedYttrium = new Material.Builder(9590, "neodymium_doped_yttrium")
+                .dust()
+                .color(0xc6ebb3).iconSet(DULL)
+                .build()
+                .setFormula("Nd:Y?");
+        NdYAGNanoparticles = new Material.Builder(9591, "nd_yag_nanoparticles")
+                .dust()
+                .color(0x6f20af).iconSet(SHINY)
+                .build()
+                .setFormula("Nd:YAG");
+        PotassiumPermanganate = new Material.Builder(9592, "potassium_permanganate")
+                .dust()
+                .color(0xaf20a0).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Potassium, 1, Manganese, 1, Oxygen, 4)
+                .build();
+        PrHoYLFNanoparticles = new Material.Builder(9593, "prho_ylf_nanoparticles")
+                .dust()
+                .color(0xcf8acf).iconSet(SHINY)
+                .build()
+                .setFormula("Pr/Ho:YLF");
+        LuTmYVONanoparticles = new Material.Builder(9594, "lutm_yvo_nanoparticles")
+                .dust()
+                .color(0x206faf).iconSet(SHINY)
+                .build()
+                .setFormula("Lu/Tm:YVO");
+        UnprocessedNdYAGDust = new Material.Builder(9595, "unprocessed_ndyag_dust")
+                .dust()
+                .color(0x6f20af).iconSet(DULL)
+                .build()
+                .setFormula("Nd:YAG?");
+        LuTmYVOPrecipitate = new Material.Builder(9596, "lutm_yvo_precipitate")
+                .dust()
+                .color(0xcf8acf).iconSet(DULL)
+                .build()
+                .setFormula("Lu/Tm:YVO?");
+        LuTmYVOPrecipitate = new Material.Builder(9597, "lutm_yvo_precipitate")
+                .dust()
+                .color(0xcf8acf).iconSet(DULL)
+                .build()
+                .setFormula("Lu/Tm:YVO?");
+        SelectivelyMutatedCupriavidiusNecator = new Material.Builder(9598, "selectively_mutated_cupriavidius_necator")
+                .dust()
+                .color(0x2b0c62).iconSet(SHINY)
+                .build()
+                .setFormula("Bacteria");
+        CoAcABCatalyst = new Material.Builder(9599, "coacab_catalyst")
+                .dust()
+                .color(0x755f30).iconSet(FINE)
+                .build()
+                .setFormula("Co/AC-AB");
+        DrillingMudMixture = new Material.Builder(9600, "drilling_mud_mixture")
+                .fluid()
+                .colorAverage()
+                .components(CaCBaSMixture, 1, LubricantClaySlurry, 1)
+                .build();
     }
 }
