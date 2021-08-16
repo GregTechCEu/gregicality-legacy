@@ -126,8 +126,6 @@ public class GATileEntities {
 
     public static void init() {
 
-        // todo need to send a message to CEu about our configs for high-tier machines
-
         // todo REORGANIZE IDs, there will be conflicts, and it is also a total mess right now
 
         // todo rename everything to start with "MetaTileEntity"
