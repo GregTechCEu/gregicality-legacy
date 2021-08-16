@@ -38,7 +38,6 @@ import gregtech.api.metatileentity.SimpleGeneratorMetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.Textures;
-import gregtech.common.metatileentities.electric.MetaTileEntityHull;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
@@ -47,9 +46,6 @@ import java.util.List;
 import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
 public class GATileEntities {
-
-    // TODO Removals
-    public static MetaTileEntityHull[] GA_HULLS = new MetaTileEntityHull[5]; // todo remove, carefully
 
     // TODO Move to CEu
     public static MetaTileEntityMonitorScreen MONITOR_SCREEN; // todo move to CEu

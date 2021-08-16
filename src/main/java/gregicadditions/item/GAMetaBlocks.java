@@ -59,7 +59,6 @@ public class GAMetaBlocks {
     public static GAExplosive EXPLOSIVE;
     public static GATransparentCasing TRANSPARENT_CASING;
     public static GAQuantumCasing QUANTUM_CASING;
-    public static GAMachineCasing MACHINE_CASING;
 
     public static GAHeatingCoil HEATING_COIL;
 
@@ -136,9 +135,6 @@ public class GAMetaBlocks {
 
         CRYOSTAT_CASING = new GACryostatCasing();
         CRYOSTAT_CASING.setRegistryName("ga_cryostat_casing");
-
-        MACHINE_CASING = new GAMachineCasing();
-        MACHINE_CASING.setRegistryName("ga_machine_casing");
 
         TRANSPARENT_CASING = new GATransparentCasing();
         TRANSPARENT_CASING.setRegistryName("ga_transparent_casing");
@@ -264,7 +260,6 @@ public class GAMetaBlocks {
         registerItemModel(HEATING_COIL);
         registerItemModel(DIVERTOR_CASING);
         registerItemModel(CRYOSTAT_CASING);
-        registerItemModel(MACHINE_CASING);
         registerItemModel(TRANSPARENT_CASING);
         registerItemModel(CELL_CASING);
         registerItemModel(CONVEYOR_CASING);

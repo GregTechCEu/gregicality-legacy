@@ -1774,11 +1774,6 @@ gtadditions.machine.fusion_reactor.uhv.name=Fusion Reactor Mark 4
 gtadditions.machine.fusion_reactor.uev.name=Fusion Reactor Mark 5
 gtadditions.machine.fusion_casing_3.name=Fusion Casing MK III
 gtadditions.machine.fusion_casing_4.name=Fusion Casing MK IV
-gtadditions.machine.hull.uhv.name=UHV Machine Hull
-gtadditions.machine.hull.uev.name=UEV Machine Hull
-gtadditions.machine.hull.uiv.name=UIV Machine Hull
-gtadditions.machine.hull.umv.name=UMV Machine Hull
-gtadditions.machine.hull.uxv.name=UXV Machine Hull
 
 
 gtadditions.machine.drilling_rig.name=Drilling Rig
@@ -1863,11 +1858,6 @@ tile.ga_reactor_casing.hyper_core_2.name=Hyper Core II
 tile.ga_reactor_casing.hyper_core_3.name=Hyper Core III
 tile.ga_reactor_casing.hyper_casing.name=Hyper Casing I
 tile.ga_reactor_casing.hyper_casing_2.name=Hyper Casing II
-tile.ga_machine_casing.casing_uhv.name=UHV Machine Casing
-tile.ga_machine_casing.casing_uev.name=UEV Machine Casing
-tile.ga_machine_casing.casing_uiv.name=UIV Machine Casing
-tile.ga_machine_casing.casing_umv.name=UMV Machine Casing
-tile.ga_machine_casing.casing_uxv.name=UXV Machine Casing
 
 tile.ga_fusion_casing.fusion_casing_3.name=Fusion Casing MK III
 tile.ga_fusion_casing.fusion_casing_4.name=Fusion Casing MK IV
