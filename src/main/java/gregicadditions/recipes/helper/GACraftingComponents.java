@@ -6,11 +6,15 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.loaders.recipe.CraftingComponent;
 import gregtech.loaders.recipe.component.IComponentHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -18,6 +22,10 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 
 @IComponentHandler.RegisterComponentHandler
 public class GACraftingComponents implements IComponentHandler {
+
+    public static CraftingComponent.Component GEAR;
+    public static CraftingComponent.Component CABLE_DOUBLE;
+    public static CraftingComponent.Component PLATE_DENSE;
 
     @Override
     public void onComponentsInit() {
@@ -178,221 +186,62 @@ public class GACraftingComponents implements IComponentHandler {
         // TODO Pipe Reactor
 
         // TODO Hermetic Casings?
+
+        // New Components
+        GEAR = new CraftingComponent.Component(Stream.of(new Object[][]{
+
+                {0, new UnificationEntry(gear, Steel)},
+                {1, new UnificationEntry(gear, Steel)},
+                {2, new UnificationEntry(gear, Aluminium)},
+                {3, new UnificationEntry(gear, StainlessSteel)},
+                {4, new UnificationEntry(gear, Titanium)},
+                {5, new UnificationEntry(gear, TungstenSteel)},
+                {6, new UnificationEntry(gear, RhodiumPlatedPalladium)},
+                {7, new UnificationEntry(gear, HSSS)},
+                {8, new UnificationEntry(gear, Tritanium)},
+                {9, new UnificationEntry(gear, Seaborgium)},
+                {10, new UnificationEntry(gear, Bohrium)},
+                {11, new UnificationEntry(gear, Quantum)},
+                {GTValues.FALLBACK, new UnificationEntry(gear, Neutronium)},
+
+        }).collect(Collectors.toMap(data -> (Integer) data[0], data -> data[1])));
+
+        PLATE_DENSE = new CraftingComponent.Component(Stream.of(new Object[][]{
+
+                {0, new UnificationEntry(plateDense, Steel)},
+                {1, new UnificationEntry(plateDense, Steel)},
+                {2, new UnificationEntry(plateDense, Aluminium)},
+                {3, new UnificationEntry(plateDense, StainlessSteel)},
+                {4, new UnificationEntry(plateDense, Titanium)},
+                {5, new UnificationEntry(plateDense, TungstenSteel)},
+                {6, new UnificationEntry(plateDense, RhodiumPlatedPalladium)},
+                {7, new UnificationEntry(plateDense, HSSS)},
+                {8, new UnificationEntry(plateDense, Tritanium)},
+                {9, new UnificationEntry(plateDense, Seaborgium)},
+                {10, new UnificationEntry(plateDense, Bohrium)},
+                {11, new UnificationEntry(plateDense, Quantum)},
+                {GTValues.FALLBACK, new UnificationEntry(plateDense, Neutronium)},
+
+        }).collect(Collectors.toMap(data -> (Integer) data[0], data -> data[1])));
+
+        CABLE_DOUBLE = new CraftingComponent.Component(Stream.of(new Object[][]{
+
+                {0, new UnificationEntry(cableGtDouble, Lead)},
+                {1, new UnificationEntry(cableGtDouble, Tin)},
+                {2, new UnificationEntry(cableGtDouble, Copper)},
+                {3, new UnificationEntry(cableGtDouble, Gold)},
+                {4, new UnificationEntry(cableGtDouble, Aluminium)},
+                {5, new UnificationEntry(cableGtDouble, Platinum)},
+                {6, new UnificationEntry(cableGtDouble, NiobiumTitanium)},
+                {7, new UnificationEntry(cableGtDouble, Naquadah)},
+                {8, new UnificationEntry(cableGtDouble, NaquadahAlloy)},
+                {9, new UnificationEntry(cableGtDouble, AbyssalAlloy)},
+                {10, new UnificationEntry(cableGtDouble, TitanSteel)},
+                {11, new UnificationEntry(cableGtDouble, BlackTitanium)},
+                {12, new UnificationEntry(cableGtDouble, Neutronium)},
+                {13, new UnificationEntry(cableGtDouble, Neutronium)},
+                {14, new UnificationEntry(cableGtDouble, MarkerMaterials.Tier.Superconductor)}
+
+        }).collect(Collectors.toMap(data -> (Integer) data[0], data -> data[1])));
     }
-
-    /* Not in GTCEu, maybe not needed?
-    GEAR {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                case 1:
-                    return new UnificationEntry(plate, Steel);
-                case 2:
-                    return new UnificationEntry(plate, Aluminium);
-                case 3:
-                    return new UnificationEntry(plate, StainlessSteel);
-                case 4:
-                    return new UnificationEntry(plate, Titanium);
-                case 5:
-                    return new UnificationEntry(plate, TungstenSteel);
-                case 6:
-                    return new UnificationEntry(plate, RhodiumPlatedPalladium);
-                case 7:
-                    return new UnificationEntry(plate, HSSS);
-                case 8:
-                    return new UnificationEntry(plate, Tritanium);
-                case 9:
-                    return new UnificationEntry(plate, Seaborgium);
-                case 10:
-                    return new UnificationEntry(plate, Bohrium);
-                case 11:
-                    return new UnificationEntry(plate, Quantum);
-                default:
-                    return new UnificationEntry(plate, Neutronium);
-            }
-        }
-    },
-    PLATE_DENSE {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                case 1:
-                    return new UnificationEntry(plateDense, Steel);
-                case 2:
-                    return new UnificationEntry(plateDense, Aluminium);
-                case 3:
-                    return new UnificationEntry(plateDense, StainlessSteel);
-                case 4:
-                    return new UnificationEntry(plateDense, Titanium);
-                case 5:
-                    return new UnificationEntry(plateDense, TungstenSteel);
-                case 6:
-                    return new UnificationEntry(plateDense, RhodiumPlatedPalladium);
-                case 7:
-                    return new UnificationEntry(plateDense, HSSS);
-                case 8:
-                    return new UnificationEntry(plate, Tritanium);
-                case 9:
-                    return new UnificationEntry(plate, Seaborgium);
-                case 10:
-                    return new UnificationEntry(plate, Bohrium);
-                case 11:
-                    return new UnificationEntry(plate, Quantum);
-                default:
-                    return new UnificationEntry(plate, Neutronium);
-
-            }
-        }
-    };
-
-    CABLE_DOUBLE {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                    return new UnificationEntry(cableGtDouble, Lead);
-                case 1:
-                    return new UnificationEntry(cableGtDouble, Tin);
-                case 2:
-                    return new UnificationEntry(cableGtDouble, Copper);
-                case 3:
-                    return new UnificationEntry(cableGtDouble, Gold);
-                case 4:
-                    return new UnificationEntry(cableGtDouble, Aluminium);
-                case 5:
-                    return new UnificationEntry(cableGtDouble, Platinum);
-                case 6:
-                    return new UnificationEntry(cableGtDouble, NiobiumTitanium);
-                case 7:
-                    return new UnificationEntry(cableGtDouble, Naquadah);
-                case 8:
-                    return new UnificationEntry(cableGtDouble, NaquadahAlloy);
-                case 9:
-                    return new UnificationEntry(cableGtDouble, AbyssalAlloy);
-                case 10:
-                    return new UnificationEntry(cableGtDouble, TitanSteel);
-                case 11:
-                    return new UnificationEntry(cableGtDouble, BlackTitanium);
-                case 12:
-                case 13:
-                    return new UnificationEntry(cableGtDouble, Neutronium);
-                case 14:
-                default:
-                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
-            }
-        }
-    }
-    CABLE_OCTAL {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                    return new UnificationEntry(cableGtOctal, Lead);
-                case 1:
-                    return new UnificationEntry(cableGtOctal, Tin);
-                case 2:
-                    return new UnificationEntry(cableGtOctal, Copper);
-                case 3:
-                    return new UnificationEntry(cableGtOctal, Gold);
-                case 4:
-                    return new UnificationEntry(cableGtOctal, Aluminium);
-                case 5:
-                    return new UnificationEntry(cableGtOctal, Platinum);
-                case 6:
-                    return new UnificationEntry(cableGtOctal, NiobiumTitanium);
-                case 7:
-                    return new UnificationEntry(cableGtOctal, Naquadah);
-                case 8:
-                    return new UnificationEntry(cableGtOctal, NaquadahAlloy);
-                case 9:
-                    return new UnificationEntry(cableGtOctal, AbyssalAlloy);
-                case 10:
-                    return new UnificationEntry(cableGtOctal, TitanSteel);
-                case 11:
-                    return new UnificationEntry(cableGtOctal, BlackTitanium);
-                case 12:
-                case 13:
-                    return new UnificationEntry(cableGtOctal, Neutronium);
-                case 14:
-                default:
-                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
-            }
-        }
-    },
-    CABLE_HEX {
-        @Override
-        public Object getIngredient(int tier) {
-            switch (tier) {
-                case 0:
-                    return new UnificationEntry(cableGtHex, Lead);
-                case 1:
-                    return new UnificationEntry(cableGtHex, Tin);
-                case 2:
-                    return new UnificationEntry(cableGtHex, Copper);
-                case 3:
-                    return new UnificationEntry(cableGtHex, Gold);
-                case 4:
-                    return new UnificationEntry(cableGtHex, Aluminium);
-                case 5:
-                    return new UnificationEntry(cableGtHex, Platinum);
-                case 6:
-                    return new UnificationEntry(cableGtHex, NiobiumTitanium);
-                case 7:
-                    return new UnificationEntry(cableGtHex, Naquadah);
-                case 8:
-                    return new UnificationEntry(cableGtHex, NaquadahAlloy);
-                case 9:
-                    return new UnificationEntry(cableGtHex, AbyssalAlloy);
-                case 10:
-                    return new UnificationEntry(cableGtHex, TitanSteel);
-                case 11:
-                    return new UnificationEntry(cableGtHex, BlackTitanium);
-                case 12:
-                case 13:
-                    return new UnificationEntry(cableGtHex, Neutronium);
-                case 14:
-                default:
-                    return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
-            }
-        }
-    },
-    CABLE_SINGLE_WORSE {
-        @Override
-        public Object getIngredient(int tier) {
-            return CABLE_SINGLE.getIngredient(tier == 0 ? tier : tier - 1);
-        }
-    },
-    CABLE_DOUBLE_WORSE {
-        @Override
-        public Object getIngredient(int tier) {
-            return CABLE_DOUBLE.getIngredient(tier == 0 ? tier : tier - 1);
-        }
-    },
-    CABLE_QUAD_WORSE {
-        @Override
-        public Object getIngredient(int tier) {
-            return CABLE_QUAD.getIngredient(tier == 0 ? tier : tier - 1);
-        }
-    },
-    CABLE_OCTAL_WORSE {
-        @Override
-        public Object getIngredient(int tier) {
-            return CABLE_OCTAL.getIngredient(tier == 0 ? tier : tier - 1);
-        }
-    },
-    CABLE_HEX_WORSE {
-        @Override
-        public Object getIngredient(int tier) {
-            return CABLE_HEX.getIngredient(tier == 0 ? tier : tier - 1);
-        }
-    },
-    WORSE_HULL {
-        @Override
-        public Object getIngredient(int tier) {
-            return tier == 0 ? MetaTileEntities.HULL[0] : HULL.getIngredient(tier - 1);
-        }
-    },
-     */
 }
