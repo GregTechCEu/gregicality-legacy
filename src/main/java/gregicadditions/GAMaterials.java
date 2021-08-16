@@ -625,6 +625,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PotassiumNitrite;
     public static Material HydroxylammoniumSulfate;
     public static Material Legendarium;
+    public static IngotMaterial Polyimide = new IngotMaterial(992, "polyimide", 0xFF7F50, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 22), new MaterialStack(Hydrogen, 12), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 6)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
+    public static IngotMaterial FluorinatedEthylenePropylene = new IngotMaterial(988, "fluorinated_ethylene_propylene", 0xC8C8C8, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 5), new MaterialStack(Fluorine, 10)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
 
 
     // Second Degree Materials
@@ -1193,8 +1195,6 @@ public class GAMaterials implements IMaterialHandler {
     public static IngotMaterial HeavyQuarkDegenerateMatter = new IngotMaterial(682,"heavy_quark_degenerate_matter",0x5dbd3a,MaterialIconSet.SHINY,6,of(), GA_CORE_METAL,null, 13000);
     public static IngotMaterial QCDMatter = new IngotMaterial(673, "qcd_confined_matter", 0xeb9e3f, MaterialIconSet.SHINY, 7, of(), GENERATE_PLATE | DISABLE_REPLICATION | NO_WORKING | NO_SMELTING | NO_SMASHING | GENERATE_FRAME | GENERATE_ROD, null, 13100);
     public static IngotMaterial CosmicNeutronium = new IngotMaterial(671,"cosmic_neutronium",0x323232,MaterialIconSet.SHINY,7,of(new MaterialStack(Neutronium, 1)), GA_CORE_METAL | DISABLE_DECOMPOSITION,null,14100);
-    public static IngotMaterial Polyimide = new IngotMaterial(992, "polyimide", 0xFF7F50, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 22), new MaterialStack(Hydrogen, 12), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 6)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
-    public static IngotMaterial FluorinatedEthylenePropylene = new IngotMaterial(988, "fluorinated_ethylene_propylene", 0xC8C8C8, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 5), new MaterialStack(Fluorine, 10)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
     public static SimpleFluidMaterial Catalase = new SimpleFluidMaterial("catalase", 0xdb6596, "?");
     public static SimpleFluidMaterial Blood = new SimpleFluidMaterial("blood", 0x5c0606, "Blood");
     public static SimpleFluidMaterial BloodCells = new SimpleFluidMaterial("blood_cells", 0xad2424, "???");
