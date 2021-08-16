@@ -4,6 +4,9 @@ import gregtech.api.unification.material.Material;
 
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.Elements.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 
 public class GAElementMaterials {
@@ -35,6 +38,13 @@ public class GAElementMaterials {
                 .element(Hs)
                 .blastTemp(11240)
                 .build();
+
+        Helium4 = new Material.Builder(3007, "helium4")
+                .fluid(Material.FluidType.GAS)
+                .color(0xDDDD22)
+                .element(He4)
+                .build();
+
 
         // todo
 //        Protactinium = new RadioactiveMaterial(824, "protactinium", 0xA78B6D, METALLIC, 3, of(), GA_EXT2_METAL, Pa, 0, 0, 0, 0);

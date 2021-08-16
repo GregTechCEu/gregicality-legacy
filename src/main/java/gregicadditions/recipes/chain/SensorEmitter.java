@@ -148,7 +148,7 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .input(dust, Lead)
                 .input(dust, Selenium)
-                .outputs(LeadSenenide.getItemStack(2))
+                .outputs(LeadSelenide.getItemStack(2))
                 .buildAndRegister();
 
         // Zn + Se -> ZnSe

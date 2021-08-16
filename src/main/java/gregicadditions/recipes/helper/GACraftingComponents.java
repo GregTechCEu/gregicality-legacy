@@ -14,6 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.W;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -371,15 +372,15 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 9:
-                    return GATileEntities.GA_HULLS[0].getStackForm();
+                    return MetaTileEntities.HULL[GTValues.UHV].getStackForm();
                 case 10:
-                    return GATileEntities.GA_HULLS[1].getStackForm();
+                    return MetaTileEntities.HULL[GTValues.UEV].getStackForm();
                 case 11:
-                    return GATileEntities.GA_HULLS[2].getStackForm();
+                    return MetaTileEntities.HULL[GTValues.UIV].getStackForm();
                 case 12:
-                    return GATileEntities.GA_HULLS[3].getStackForm();
+                    return MetaTileEntities.HULL[GTValues.UMV].getStackForm();
                 case 13:
-                    return GATileEntities.GA_HULLS[4].getStackForm();
+                    return MetaTileEntities.HULL[GTValues.UXV].getStackForm();
                 case 14:
                     return MetaTileEntities.HULL[GTValues.MAX].getStackForm();
                 default:

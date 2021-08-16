@@ -94,15 +94,6 @@ public class ZincChain {
                 .outputs(DisodiumPhosphate.getItemStack(24))
                 .buildAndRegister();
 
-        // Na2HPO4 = H + 4O + P + 2Na
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(50).EUt(120)
-                .inputs(DisodiumPhosphate.getItemStack(8))
-                .fluidOutputs(Hydrogen.getFluid(1000))
-                .fluidOutputs(Oxygen.getFluid(4000))
-                .output(dust, Phosphorus)
-                .output(dust, Sodium, 2)
-                .buildAndRegister();
-
         // Metal Hydroxide Mix = 0.25Zn + Zinc Poor Mix
         //
         // People were regularly confused about these three recipes, as it essentially just gave 0.5 of the metal per
@@ -206,13 +197,6 @@ public class ZincChain {
                 .outputs(ZincChloride.getItemStack(3))
                 .buildAndRegister();
 
-        // ZnCl2 = Zn + 2Cl
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(150).EUt(120)
-                .inputs(ZincChloride.getItemStack(3))
-                .output(dust, Zinc)
-                .fluidOutputs(Chlorine.getFluid(2000))
-                .buildAndRegister();
-
         // Na2CO3 + SO2 = Na2SO3 + CO2
         CHEMICAL_RECIPES.recipeBuilder().duration(70).EUt(30)
                 .input(dust, SodaAsh, 6)
@@ -265,7 +249,7 @@ public class ZincChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .inputs(ZincLeachingResidue.getItemStack())
                 .notConsumable(TannicAcid.getFluid(1))
-                .outputs(IronSulfateDust.getItemStack(6))
+                .outputs(IronSulfate.getItemStack(6))
                 .fluidOutputs(GermanicAcidSolution.getFluid(500))
                 .buildAndRegister();
 

@@ -1,21 +1,13 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAEnums;
-import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.ErbiumDopedZBLANDust;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.CLADDED_OPTICAL_FIBER_CORE;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Polytetrafluoroethylene;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_WIRE;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_INGOT;
 
 public class OpticalChain {
 
@@ -307,7 +299,7 @@ public class OpticalChain {
                 .fluidInputs(HydrobromicAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(NitricAcid.getFluid(1000))
-                .outputs(CesiumBromide.getItemStack(4))
+                .outputs(CaesiumBromide.getItemStack(4))
                 .outputs(Sarcosine.getItemStack(26))
                 .buildAndRegister();
 
@@ -320,7 +312,7 @@ public class OpticalChain {
 
         // CsBr -> Cs + Br
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(120)
-                .inputs(CesiumBromide.getItemStack(2))
+                .inputs(CaesiumBromide.getItemStack(2))
                 .fluidOutputs(Bromine.getFluid(1000))
                 .output(dust, Caesium)
                 .buildAndRegister();

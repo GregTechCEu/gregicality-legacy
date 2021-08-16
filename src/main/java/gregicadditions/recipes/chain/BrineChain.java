@@ -362,13 +362,6 @@ public class BrineChain {
                 .outputs(BoronOxide.getItemStack(5))
                 .buildAndRegister();
 
-        // B2O3 -> 2B + 3O
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(120)
-                .inputs(BoronOxide.getItemStack(5))
-                .output(dust, Boron, 2)
-                .fluidOutputs(Oxygen.getFluid(3000))
-                .buildAndRegister();
-
         // B2O3 + 6HF -> 3H2O + 2BF3
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(120)
                 .inputs(BoronOxide.getItemStack(5))
@@ -617,13 +610,6 @@ public class BrineChain {
                 .inputs(StrontiumCarbonate.getItemStack(5))
                 .outputs(StrontiumOxide.getItemStack(2))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
-                .buildAndRegister();
-
-        // SrO -> Sr + O
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(300).EUt(120)
-                .inputs(StrontiumOxide.getItemStack(2))
-                .output(dust, Strontium)
-                .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder().duration(260).EUt(120)

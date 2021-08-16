@@ -149,7 +149,7 @@ public class CasingRecipes {
                 .input(gear, AbyssalAlloy, 8)
                 .input(plate, AbyssalAlloy, 8)
                 .input(cableGtSingle, TungstenTitaniumCarbide, 16)
-                .inputs(GATileEntities.GA_HULLS[0].getStackForm())
+                .inputs(MetaTileEntities.HULL[UHV].getStackForm())
                 .fluidInputs(Naquadria.getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UHV))
                 .buildAndRegister();
@@ -159,7 +159,7 @@ public class CasingRecipes {
                 .input(gear, TitanSteel, 8)
                 .input(plate, TitanSteel, 8)
                 .input(cableGtSingle, Pikyonium, 16)
-                .inputs(GATileEntities.GA_HULLS[1].getStackForm())
+                .inputs(MetaTileEntities.HULL[UEV].getStackForm())
                 .fluidInputs(Naquadria.getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UEV))
                 .buildAndRegister();
@@ -169,7 +169,7 @@ public class CasingRecipes {
                 .input(gear, BlackTitanium, 8)
                 .input(plate, BlackTitanium, 8)
                 .input(cableGtSingle, Cinobite, 16)
-                .inputs(GATileEntities.GA_HULLS[2].getStackForm())
+                .inputs(MetaTileEntities.HULL[UIV].getStackForm())
                 .fluidInputs(Naquadria.getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UIV))
                 .buildAndRegister();

@@ -24,19 +24,11 @@ public class NiobiumTantalumChain {
         // MnCO3 + sugar(tiny) -> H2SO4 + CO2 + MnSO4
         // weird, but probably fine
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(120).blastFurnaceTemp(1500)
-                .input(dust, Rhodocrosite, 5)
+                .input(dust, Rhodochrosite, 5)
                 .input(dustTiny, Sugar)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1111))
                 .outputs(ManganeseSulfate.getItemStack(6))
-                .buildAndRegister();
-
-        // MnSO4 -> Mn + S + 4O
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(120).EUt(500)
-                .inputs(ManganeseSulfate.getItemStack(6))
-                .output(dust, Manganese)
-                .output(dust, Sulfur)
-                .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         // SnO2 + C -> H2O? + CokePellets
@@ -102,16 +94,8 @@ public class NiobiumTantalumChain {
                 .inputs(FusedColumbite.getItemStack(9))
                 .fluidInputs(SulfuricAcid.getFluid(4000))
                 .outputs(LeachedColumbite.getItemStack(17))
-                .outputs(IronSulfateDust.getItemStack(12))
+                .outputs(IronSulfate.getItemStack(12))
                 .output(dust, SodiumSulfate, 14)
-                .buildAndRegister();
-
-        // FeSO4 -> Fe + S + 4O
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(400).EUt(120)
-                .inputs(IronSulfateDust.getItemStack(6))
-                .output(dust, Iron)
-                .output(dust, Sulfur)
-                .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder().duration(260).EUt(120)
