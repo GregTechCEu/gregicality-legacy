@@ -56,18 +56,7 @@ public class GAUnknownCompositionMaterials {
                 .components(Neutronium, 1)
                 .blastTemp(14100)
                 .build();
-        Polyimide = new Material.Builder(9509, "polyimide")
-                .ingot(1).fluid()
-                .color(0xff7f50).iconSet(DULL)
-                .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
-                .components(Carbon, 22, Hydrogen, 12, Nitrogen, 2, Oxygen, 6)
-                .build();
-        FluorinatedEthylenePropylene = new Material.Builder(9510, "fluorinated_ethylene_propylene")
-                .ingot(1).fluid
-                .color(0xc8c8c8).iconSet(DULL)
-                .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
-                .components(Carbon, 5, Fluorine, 10)
-                .build();
+        // TODO: fill 2 empty ids
         Catalase = new Material.Builder(9511, "catalase")
                 .fluid()
                 .color(0xdb6596)
