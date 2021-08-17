@@ -406,6 +406,11 @@ public class GAConfig {
         @Config.RequiresWorldRestart
         public boolean oreVariants = true;
 
+        @Config.Comment("Should ore variants, e.g. Rich, Pure, etc, be hidden in JEI")
+        @Config.Name("Hide ore variants")
+        @Config.RequiresMcRestart
+        public boolean hideOreVariants = false;
+
         @Config.Comment("Whether or not to generate all stone types for ore variants. E.g. basalt rich ores, nether pure ores, etc. This will break existing worlds!")
         @Config.Name("Add ore variant stone types")
         @Config.RequiresMcRestart
